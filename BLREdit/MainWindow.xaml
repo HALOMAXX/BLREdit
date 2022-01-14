@@ -1,0 +1,133 @@
+﻿<Window x:Class="BLREdit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="BLREdit" Height="860" Width="1280" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid AllowDrop="True">
+        <ListView x:Name="ItemList" Margin="344,0,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="3" HorizontalAlignment="Left"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}">
+                        <Image Source="{Binding Image, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
+                        <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="75,216,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="140,281,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="204,151,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="128" Background="Gray" HorizontalAlignment="Left" Margin="140,216,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="269,216,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+
+
+
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="10,516,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="75,516,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="140,581,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="204,451,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="128" Background="Gray" HorizontalAlignment="Left" Margin="140,516,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="269,516,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+
+        <Label Content="Damage:" HorizontalAlignment="Left" Margin="10,346,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryDamageLabel" Content="0" HorizontalAlignment="Left" Margin="67,346,0,0" VerticalAlignment="Top"/>
+        <Label Content="Firerate:" HorizontalAlignment="Left" Margin="14,372,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryRateOfFireLabel" Content="0" HorizontalAlignment="Left" Margin="67,372,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ammo:" HorizontalAlignment="Left" Margin="19,398,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryAmmoLabel" Content="0/0" HorizontalAlignment="Left" Margin="67,398,0,0" VerticalAlignment="Top"/>
+        <Label Content="Reload:" HorizontalAlignment="Left" Margin="18,424,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryReloadLabel" Content="0s" HorizontalAlignment="Left" Margin="67,424,0,0" VerticalAlignment="Top"/>
+        <Label Content="Swap:" HorizontalAlignment="Left" Margin="26,450,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimarySwapLabel" Content="0" HorizontalAlignment="Left" Margin="67,450,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Aim:" HorizontalAlignment="Left" Margin="138,346,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryAimLabel" Content="0°" HorizontalAlignment="Left" Margin="172,346,0,0" VerticalAlignment="Top"/>
+        <Label Content="Hip:" HorizontalAlignment="Left" Margin="142,372,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryHipLabel" Content="0°" HorizontalAlignment="Left" Margin="172,372,0,0" VerticalAlignment="Top"/>
+        <Label Content="Move:" HorizontalAlignment="Left" Margin="129,398,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryMoveLabel" Content="0°" HorizontalAlignment="Left" Margin="172,398,0,0" VerticalAlignment="Top"/>
+        <Label Content="Recoil:" HorizontalAlignment="Left" Margin="128,426,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryRecoilLabel" Content="0°" HorizontalAlignment="Left" Margin="172,424,0,0" VerticalAlignment="Top"/>
+        <Label Content="Zoom:" HorizontalAlignment="Left" Margin="227,348,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryZoomLabel" Content="0" HorizontalAlignment="Left" Margin="268,348,0,0" VerticalAlignment="Top"/>
+        <Label Content="Scope In:" HorizontalAlignment="Left" Margin="210,374,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryScopeInLabel" Content="0s" HorizontalAlignment="Left" Margin="268,374,0,0" VerticalAlignment="Top"/>
+        <Label Content="Range:" HorizontalAlignment="Left" Margin="222,400,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryRangeLabel" Content="0/0" HorizontalAlignment="Left" Margin="268,400,0,0" VerticalAlignment="Top"/>
+        <Label Content="Run:" HorizontalAlignment="Left" Margin="235,426,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryRunLabel" Content="0" HorizontalAlignment="Left" Margin="268,426,0,0" VerticalAlignment="Top"/>
+
+
+
+
+        <Label Content="Damage:" HorizontalAlignment="Left" Margin="10,649,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryDamageLabel" Content="0" HorizontalAlignment="Left" Margin="67,649,0,0" VerticalAlignment="Top"/>
+        <Label Content="Firerate:" HorizontalAlignment="Left" Margin="14,675,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryRateOfFireLabel" Content="0" HorizontalAlignment="Left" Margin="67,675,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ammo:" HorizontalAlignment="Left" Margin="19,701,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryAmmoLabel" Content="0/0" HorizontalAlignment="Left" Margin="67,701,0,0" VerticalAlignment="Top"/>
+        <Label Content="Reload:" HorizontalAlignment="Left" Margin="18,727,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryReloadLabel" Content="0s" HorizontalAlignment="Left" Margin="67,727,0,0" VerticalAlignment="Top"/>
+        <Label Content="Swap:" HorizontalAlignment="Left" Margin="26,753,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondarySwapLabel" Content="0" HorizontalAlignment="Left" Margin="67,753,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Aim:" HorizontalAlignment="Left" Margin="138,649,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryAimLabel" Content="0°" HorizontalAlignment="Left" Margin="172,649,0,0" VerticalAlignment="Top"/>
+        <Label Content="Hip:" HorizontalAlignment="Left" Margin="142,675,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryHipLabel" Content="0°" HorizontalAlignment="Left" Margin="172,675,0,0" VerticalAlignment="Top"/>
+        <Label Content="Move:" HorizontalAlignment="Left" Margin="131,701,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryMoveLabel" Content="0°" HorizontalAlignment="Left" Margin="172,701,0,0" VerticalAlignment="Top"/>
+        <Label Content="Recoil:" HorizontalAlignment="Left" Margin="128,727,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryRecoilLabel" Content="0°" HorizontalAlignment="Left" Margin="172,727,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Zoom:" HorizontalAlignment="Left" Margin="224,649,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryZoomLabel" Content="0" HorizontalAlignment="Left" Margin="271,649,0,0" VerticalAlignment="Top"/>
+        <Label Content="Scope In:" HorizontalAlignment="Left" Margin="210,675,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryScopeInLabel" Content="0s" HorizontalAlignment="Left" Margin="268,675,0,0" VerticalAlignment="Top"/>
+        <Label Content="Range:" HorizontalAlignment="Left" Margin="222,701,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryRangeLabel" Content="0/0" HorizontalAlignment="Left" Margin="265,701,0,0" VerticalAlignment="Top"/>
+        <Label Content="Run:" HorizontalAlignment="Left" Margin="235,727,0,0" VerticalAlignment="Top"/>
+        <Label Name="SecondaryRunLabel" Content="0" HorizontalAlignment="Left" Margin="271,727,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ProfileComboBox" DisplayMemberPath="PlayerName" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="ProfileComboBox_SelectionChanged">
+        </ComboBox>
+        <Button Name="Loadout1Button" Content="Loadout 1" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="105" Click="Loadout1Button_Click"/>
+        <Button Name="Loadout2Button" Content="Loadout 2" HorizontalAlignment="Left" Margin="120,74,0,0" VerticalAlignment="Top" Width="105" Click="Loadout2Button_Click"/>
+        <Button Name="Loadout3Button" Content="Loadout 3" HorizontalAlignment="Left" Margin="230,74,0,0" VerticalAlignment="Top" Width="105" Click="Loadout3Button_Click"/>
+        <Button Name="CopyToClipboardButton" Content="CopyToClipBoard" HorizontalAlignment="Left" Margin="120,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="CopyToClipboardButton_Click"/>
+        <Button Name="AddProfileButton" Content="AddProfile" HorizontalAlignment="Left" Margin="241,0,0,0" VerticalAlignment="Top" Height="22" Click="AddProfileButton_Click"/>
+        <TextBox Name="PlayerNameTextBox"  HorizontalAlignment="Left" Margin="121,0,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="120" Height="22" TextChanged="PlayerNameTextBox_TextChanged"/>
+
+    </Grid>
+</Window>
