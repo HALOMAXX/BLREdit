@@ -1,5 +1,5 @@
 # BLREdit
-Blacklight: Retribution Loadout Editor
+Blacklight Revive Loadout Editor
 
 # Features
 Multiple Profiles. <br>
