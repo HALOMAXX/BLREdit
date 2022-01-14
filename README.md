@@ -8,4 +8,7 @@ Icons for Every Weapon and Part <br>
 Export Loadout to Clipboard for MagiCow's Loadout Customization bot
 
 # Requirements
-.Net 6 Windows x64 https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.1-windows-x64-installer
+.Net 6 Windows x64 https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.1-windows-x64-installer <br>
+
+# Download
+https://github.com/HALOMAXX/BLREdit/releases
