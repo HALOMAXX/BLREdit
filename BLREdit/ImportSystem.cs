@@ -59,6 +59,15 @@ namespace BLREdit {
             LoggingSystem.LogInfo("Finished Initializing Import System");
         }
 
+        public static int GetGearID(ImportItem item)
+        {
+            return GetItemID(item, Gear.attachments);
+        }
+        public static int GetTacticalID(ImportItem item)
+        {
+            return GetItemID(item, Gear.tactical);
+        }
+
         public static int GetMuzzleID(ImportItem item)
         {
             return GetItemID(item, Mods.muzzles);
@@ -177,21 +186,6 @@ namespace BLREdit {
             return stats.ToArray();
         }
 
-        internal static void AddAllPercentageConversions()
-        {
-            DamagePercentToValue.Clear();
-            DamagePercentToValue.Add(-70, -3);
-            DamagePercentToValue.Add(-60, -3);
-            DamagePercentToValue.Add(-30, -1);
-            DamagePercentToValue.Add(-20, -1);
-            DamagePercentToValue.Add(0, 0);
-            DamagePercentToValue.Add(20, 1);
-            DamagePercentToValue.Add(30, 1);
-            DamagePercentToValue.Add(40, 2);
-            DamagePercentToValue.Add(50, 3);
-            DamagePercentToValue.Add(70, 4);
-        }
-
         internal static void UpdateImagesForImportItems(ImportItem[] items, string categoryName)
         {
             LoggingSystem.LogInfo("Updating Images for " + categoryName);
@@ -220,11 +214,14 @@ namespace BLREdit {
             List<ImportItem> cleanedItems = new List<ImportItem>();
             foreach (ImportItem item in importItems)
             {
-                if (!string.IsNullOrEmpty(item.icon))
+                if ( categoryName=="Attachments" || !string.IsNullOrEmpty(item.icon))
                 {
-                    item.Category = categoryName;
-                    item.WikiStats = new WikiStats() { itemName = item.name, itemID = item.uid };
-                    cleanedItems.Add(item);
+                    if (!string.IsNullOrEmpty(item.name))
+                    {
+                        item.Category = categoryName;
+                        item.WikiStats = new WikiStats() { itemName = item.name, itemID = item.uid };
+                        cleanedItems.Add(item);
+                    }
                 }
             }
             LoggingSystem.LogInfo("Finished Cleaning " + categoryName);

@@ -107,6 +107,16 @@ namespace BLREdit
         public static Loadout DefaultLoadout1 { get; } = new Loadout() { Primary = Weapon.DefaultAssaultRifle, Secondary = Weapon.DefaultLightPistol };
         public static Loadout DefaultLoadout2 { get; } = new Loadout() { Primary = Weapon.DefaultSubmachineGun, Secondary = Weapon.DefaultLightPistol };
         public static Loadout DefaultLoadout3 { get; } = new Loadout() { Primary = Weapon.DefaultBAR, Secondary = Weapon.DefaultLightPistol };
+
+        internal ImportItem GetGear(int GearID)
+        {
+            return ImportSystem.Gear.attachments[GearID];
+        }
+
+        internal ImportItem GetTactical()
+        {
+            return ImportSystem.Gear.tactical[Tactical];
+        }
     }
 
     public class Weapon

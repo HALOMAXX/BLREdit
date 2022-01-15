@@ -325,6 +325,10 @@ namespace BLREdit
                             { image.DataContext = item; LoggingSystem.LogInfo("Scope Set!"); }
                             if (image.Name.Contains("Stock") && ImportSystem.Mods.stocks.Contains(item))
                             { image.DataContext = item; LoggingSystem.LogInfo("Stock Set!"); }
+                            if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item))
+                            { image.DataContext = item; LoggingSystem.LogInfo("Gear Set!"); }
+                            if (image.Name.Contains("Tactical") && ImportSystem.Gear.tactical.Contains(item))
+                            { image.DataContext = item; LoggingSystem.LogInfo("Tactical Set!"); }
                             UpdatePrimaryStats();
                             UpdateSecondaryStats();
                         }
@@ -338,6 +342,11 @@ namespace BLREdit
         {
             UpdateLoadoutWeapon(ActiveLoadout.Primary, PrimaryRecieverImage.DataContext as ImportItem, PrimaryMuzzleImage.DataContext as ImportItem, PrimaryBarrelImage.DataContext as ImportItem, PrimaryMagazineImage.DataContext as ImportItem, PrimaryScopeImage.DataContext as ImportItem, PrimaryStockImage.DataContext as ImportItem);
             UpdateLoadoutWeapon(ActiveLoadout.Secondary, SecondaryRecieverImage.DataContext as ImportItem, SecondaryMuzzleImage.DataContext as ImportItem, SecondaryBarrelImage.DataContext as ImportItem, SecondaryMagazineImage.DataContext as ImportItem, SecondaryScopeImage.DataContext as ImportItem, SecondaryStockImage.DataContext as ImportItem);
+            ActiveLoadout.Gear1 = ImportSystem.GetGearID(GearImage1.DataContext as ImportItem);
+            ActiveLoadout.Gear2 = ImportSystem.GetGearID(GearImage2.DataContext as ImportItem);
+            ActiveLoadout.Gear3 = ImportSystem.GetGearID(GearImage3.DataContext as ImportItem);
+            ActiveLoadout.Gear4 = ImportSystem.GetGearID(GearImage4.DataContext as ImportItem);
+            ActiveLoadout.Tactical = ImportSystem.GetTacticalID(TacticalImage.DataContext as ImportItem);
         }
 
         private void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock)
@@ -422,6 +431,18 @@ namespace BLREdit
                         LoggingSystem.LogInfo("ItemList Set for Grips");
                         return;
                     }
+                    if (image.Name.Contains("Gear"))
+                    {
+                        ItemList.ItemsSource = ImportSystem.Gear.attachments;
+                        LoggingSystem.LogInfo("ItemList Set for Gear");
+                        return;
+                    }
+                    if (image.Name.Contains("Tactical"))
+                    {
+                        ItemList.ItemsSource = ImportSystem.Gear.tactical;
+                        LoggingSystem.LogInfo("ItemList Set for Tactical");
+                        return;
+                    }
                     LoggingSystem.LogInfo("ItemList Dind't get set");
                 }
             }
@@ -430,8 +451,14 @@ namespace BLREdit
         public void SetLoadout(Loadout loadout)
         {
             ActiveLoadout = loadout;
+            GearImage1.DataContext = loadout.GetGear(loadout.Gear1);
+            GearImage2.DataContext = loadout.GetGear(loadout.Gear2);
+            GearImage3.DataContext = loadout.GetGear(loadout.Gear3);
+            GearImage4.DataContext = loadout.GetGear(loadout.Gear4);
+            TacticalImage.DataContext = loadout.GetTactical();
             SetPrimary(loadout.Primary);
             SetSecondary(loadout.Secondary);
+
         }
 
         public void SetPrimary(Weapon primary)
