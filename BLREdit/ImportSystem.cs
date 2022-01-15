@@ -214,7 +214,7 @@ namespace BLREdit {
             List<ImportItem> cleanedItems = new List<ImportItem>();
             foreach (ImportItem item in importItems)
             {
-                if ( categoryName=="Attachments" || !string.IsNullOrEmpty(item.icon))
+                if ( categoryName=="Attachments" || categoryName=="Tactical" || !string.IsNullOrEmpty(item.icon))
                 {
                     if (!string.IsNullOrEmpty(item.name))
                     {
