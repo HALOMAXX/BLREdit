@@ -1409,7 +1409,7 @@
                 "ammo",
                 "hanger"
             ],
-            "tooltip": "",
+            "tooltip": "SHOULDN'T BE USED",
             "type": 1,
             "uid": 20013
         },
@@ -1431,7 +1431,7 @@
                 "ammo",
                 "hanger"
             ],
-            "tooltip": "",
+            "tooltip": "SHOULDN'T BE USED",
             "type": 1,
             "uid": 20011
         },
@@ -1455,7 +1455,7 @@
                 "hanger",
                 "scope"
             ],
-            "tooltip": "",
+            "tooltip": "SHOULDN'T BE USED",
             "type": 1,
             "uid": 200013
         },
@@ -1502,7 +1502,7 @@
                 "camo",
                 "hanger"
             ],
-            "tooltip": "",
+            "tooltip": "SHOULDN'T BE USED",
             "type": 1,
             "uid": 20015
         },
@@ -1530,7 +1530,7 @@
                 "scope",
                 "stock"
             ],
-            "tooltip": "The Shotgun sprays damaging pellets at nearby targets. It's very slow, but extremely effective at close range.",
+            "tooltip": "SHOULDN'T BE USED",
             "type": 1,
             "uid": 40005
         },

@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace BLREdit {
@@ -26,6 +20,8 @@ namespace BLREdit {
 
         private static WikiStats[] CorrectedItemStats;
 
+        private static IniStats[] IniItemStats;
+
         public static ImportGear Gear;
         public static ImportMods Mods;
         public static ImportWeapons Weapons;
@@ -34,8 +30,6 @@ namespace BLREdit {
         {
             LoggingSystem.LogInfo("Initializing Import System");
 
-            //AddAllPercentageConversions();
-
             importGear.UpdateImages();
             importMods.UpdateImages();
             importWeapons.UpdateImages();
@@ -43,20 +37,57 @@ namespace BLREdit {
             Mods = new ImportMods(importMods);
             Weapons = new ImportWeapons(importWeapons);
 
-            WikiStats[] stats = LoadWikiStatsFromCSV();
-
-            foreach (WikiStats statsItem in stats)
-            {
-                LoggingSystem.LogInfo(statsItem.ToString());
-            }
-
-            AssignWikiStats(stats);
-
+            CorrectedItemStats = LoadWikiStatsFromCSV();
+            AssignWikiStats(CorrectedItemStats);
             GenerateWikiStats();
 
-            JsonSerializer.Serialize(File.OpenWrite("generatedWikiStats.json"), CorrectedItemStats, IOResources.JSO);
+            IniItemStats = JsonSerializer.Deserialize<IniStats[]>(File.ReadAllText(IOResources.ASSET_DIR + "\\filteredIniStats.json"), IOResources.JSOFields);
+
+            AssignIniStatsTo(Weapons.primary, IniItemStats);
+            AssignIniStatsTo(Weapons.secondary, IniItemStats);
+
 
             LoggingSystem.LogInfo("Finished Initializing Import System");
+        }
+
+        public static IniStats[] GetFromWeapons(ImportItem[] items1, ImportItem[] items2)
+        { 
+            List<IniStats> stats = new List<IniStats>();
+            foreach (ImportItem item in items1)
+            {
+                if (item.IniStats != null)
+                {
+                    stats.Add(item.IniStats);
+                }
+            }
+            foreach (ImportItem item in items2)
+            {
+                if (item.IniStats != null)
+                {
+                    stats.Add(item.IniStats);
+                }
+            }
+            return stats.ToArray();
+        }
+
+        internal static void AssignIniStatsTo(ImportItem[] items, IniStats[] stats)
+        {
+            foreach (ImportItem item in items)
+            {
+                bool found = false;
+                foreach (IniStats stat in stats)
+                {
+                    if (stat.ItemID == item.uid)
+                    {
+                        item.IniStats = stat;
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    LoggingSystem.LogInfo("No IniStats for " + item.name);
+                }
+            }
         }
 
         public static int GetGearID(ImportItem item)
@@ -140,8 +171,6 @@ namespace BLREdit {
             stats.AddRange(importGear.GetWikiStats());
             stats.AddRange(importMods.GetWikiStats());
             stats.AddRange(importWeapons.GetWikiStats());
-
-            CorrectedItemStats = stats.ToArray();
         }
 
         internal static WikiStats[] GetWikiStats(ImportItem[] items)
@@ -165,21 +194,21 @@ namespace BLREdit {
                 stats.Add(new WikiStats() {
                     itemName = parts[0],
                     itemID = int.Parse(parts[1]),
-                    damage = float.Parse(parts[2], CultureInfo.CurrentCulture) / 100.0f,
-                    firerate = float.Parse(parts[3], CultureInfo.CurrentCulture) / 100.0f,
-                    ammoMag = float.Parse(parts[4], CultureInfo.CurrentCulture) / 100.0f,
-                    ammoReserve = float.Parse(parts[5], CultureInfo.CurrentCulture) / 100.0f,
-                    reload = float.Parse(parts[6], CultureInfo.CurrentCulture) / 100.0f,
-                    swaprate = float.Parse(parts[7], CultureInfo.CurrentCulture) / 100.0f,
-                    aimSpread = float.Parse(parts[8], CultureInfo.CurrentCulture) / 100.0f,
-                    hipSpread = float.Parse(parts[9], CultureInfo.CurrentCulture) / 100.0f,
-                    moveSpread = float.Parse(parts[10], CultureInfo.CurrentCulture) / 100.0f,
-                    recoil = float.Parse(parts[11], CultureInfo.CurrentCulture) / 100.0f,
-                    zoom = float.Parse(parts[12], CultureInfo.CurrentCulture) / 100.0f,
-                    scopeInTime = float.Parse(parts[13], CultureInfo.CurrentCulture) / 100.0f,
-                    rangeClose = float.Parse(parts[14], CultureInfo.CurrentCulture) / 100.0f,
-                    rangeFar = float.Parse(parts[15], CultureInfo.CurrentCulture) / 100.0f,
-                    run = float.Parse(parts[16], CultureInfo.CurrentCulture) / 100.0f
+                    damage = float.Parse(parts[2], CultureInfo.InvariantCulture),
+                    firerate = float.Parse(parts[3], CultureInfo.InvariantCulture),
+                    ammoMag = float.Parse(parts[4], CultureInfo.InvariantCulture),
+                    ammoReserve = float.Parse(parts[5], CultureInfo.InvariantCulture),
+                    reload = float.Parse(parts[6], CultureInfo.InvariantCulture),
+                    swaprate = float.Parse(parts[7], CultureInfo.InvariantCulture),
+                    aimSpread = float.Parse(parts[8], CultureInfo.InvariantCulture),
+                    hipSpread = float.Parse(parts[9], CultureInfo.InvariantCulture),
+                    moveSpread = float.Parse(parts[10], CultureInfo.InvariantCulture),
+                    recoil = float.Parse(parts[11], CultureInfo.InvariantCulture),
+                    zoom = float.Parse(parts[12], CultureInfo.InvariantCulture),
+                    scopeInTime = float.Parse(parts[13], CultureInfo.InvariantCulture),
+                    rangeClose = float.Parse(parts[14], CultureInfo.InvariantCulture),
+                    rangeFar = float.Parse(parts[15], CultureInfo.InvariantCulture),
+                    run = float.Parse(parts[16], CultureInfo.InvariantCulture)
                 });
             }
             sr.Close();
@@ -192,6 +221,10 @@ namespace BLREdit {
             foreach (ImportItem item in items)
             {
                 item.LoadImage();
+                if ((categoryName == "Primary" || categoryName == "Secondary") && item.stats != null)
+                {
+                    item.IniStats = new IniStats() { ItemName = item.name, ItemID = item.uid, ROF = item.stats.rateOfFire, Burst = 1, ApplyTime = (60.0f / (float)(item.stats.rateOfFire)) };
+                }
             }
             LoggingSystem.LogInfo("Done Updating Images for " + categoryName);
         }
@@ -214,7 +247,7 @@ namespace BLREdit {
             List<ImportItem> cleanedItems = new List<ImportItem>();
             foreach (ImportItem item in importItems)
             {
-                if ( categoryName=="Attachments" || categoryName=="Tactical" || !string.IsNullOrEmpty(item.icon))
+                if ( (categoryName=="Attachments" || categoryName=="Tactical" || !string.IsNullOrEmpty(item.icon)) && item.tooltip != "SHOULDN'T BE USED")
                 {
                     if (!string.IsNullOrEmpty(item.name))
                     {
@@ -584,11 +617,7 @@ namespace BLREdit {
         public string[] supportedMods { get; set; }
         public Stats stats { get; set; }
         public WikiStats WikiStats { get; set; }
-
-        public ImportItem()
-        {
-            WikiStats = new WikiStats() { itemName = name, itemID = uid };
-        }
+        public IniStats IniStats { get; set; }
 
         public override string ToString()
         {
@@ -754,5 +783,20 @@ namespace BLREdit {
                 itemID, itemName, damage, firerate, ammoMag, ammoReserve, reload, swaprate, aimSpread, hipSpread, moveSpread, recoil, zoom, scopeInTime, rangeClose, rangeFar, run);
             return sb.ToString();
         }
+    }
+
+    public class IniStats
+    { 
+        public int ItemID { get; set; } = 0;
+        public string ItemName { get; set; } = "Nope";
+        public float ROF { get; set; } = 0;
+        public float Burst { get; set; } = 0;
+        public float ApplyTime { get; set; } = 0;
+        public float RecoilSize { get; set; } = 0;
+        public Vector3 RecoilVector { get; set; } = new Vector3(0,0,0);
+        public Vector3 RecoilVectorMultiplier { get; set; } = new Vector3(0, 0, 0);
+        public float RecoilAccumulation { get; set; } = 0;
+        public float RecoilAccumulationMultiplier { get; set; } = 0.95f;
+        public Vector3 ModificationRangeRecoil { get; set; } = new Vector3(0, 0, 0);
     }
 }

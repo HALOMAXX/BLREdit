@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BLREdit
 {
@@ -35,13 +36,23 @@ namespace BLREdit
 
         public static void CopyToClipBoard(Profile profile)
         {
-            try
+            string clipboard = "register " + Environment.NewLine + JsonSerializer.Serialize<Profile>(profile, IOResources.JSO);
+            bool success = false;
+            for (int i = 0; i < 10 && !success; i++)
             {
-                System.Windows.Clipboard.SetText("register \n" + JsonSerializer.Serialize<Profile>(profile, IOResources.JSO));
+                try
+                {
+                    System.Windows.Clipboard.SetDataObject(clipboard,true);
+                    success = true;
+                    LoggingSystem.LogInfo("Copy Succes");
+                }
+                catch
+                {}
             }
-            catch
+            if (!success)
             {
-                LoggingSystem.LogError("Failed CopyToClipboard");
+                LoggingSystem.LogWarning("Failed CopyToClipboard too often!");
+                MessageBox.Show(clipboard, "Copy To Clipboard Failed use this instead! or try again");
             }
         }
 

@@ -15,5 +15,6 @@ namespace BLREdit
 
         public static Encoding FILE_ENCODING { get; } = Encoding.UTF8;
         public static JsonSerializerOptions JSO { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = false, Converters = { new JsonStringEnumConverter() } };
+        public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
     }
 }

@@ -1,0 +1,702 @@
+[
+  {
+    "ItemID": 40017,
+    "ItemName": "Heavy Assault Rifle",
+    "ROF": 500,
+    "Burst": 1,
+    "ApplyTime": 0.119999997,
+    "RecoilSize": 0.5,
+    "RecoilVector": {
+      "X": 0.100000001,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.0500000007,
+      "Y": 0.400000006,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.20000005,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.25,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40014,
+    "ItemName": "LMG Recon",
+    "ROF": 450,
+    "Burst": 1,
+    "ApplyTime": 0.13333334,
+    "RecoilSize": 0.400000006,
+    "RecoilVector": {
+      "X": 0.200000003,
+      "Y": 0.200000003,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.38,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.3,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40013,
+    "ItemName": "Tactical SMG",
+    "ROF": 950,
+    "Burst": 1,
+    "ApplyTime": 0.0631578937,
+    "RecoilSize": 0.699999988,
+    "RecoilVector": {
+      "X": 0.300000012,
+      "Y": 0.800000012,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.800000012,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.38,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.3,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40018,
+    "ItemName": "Burstfire SMG",
+    "ROF": 850,
+    "Burst": 1,
+    "ApplyTime": 0.159999996,
+    "RecoilSize": 0.0850000009,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 1.20000005,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.699999988,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.5,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.3,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40019,
+    "ItemName": "Anti-Materiel Rifle",
+    "ROF": 120,
+    "Burst": 1,
+    "ApplyTime": 0.5,
+    "RecoilSize": 0.3,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 1.2,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.1,
+      "Y": 0.9,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40020,
+    "ItemName": "Bullpup Full Auto",
+    "ROF": 550,
+    "Burst": 1,
+    "ApplyTime": 0.0,
+    "RecoilSize": 0.300000012,
+    "RecoilVector": {
+      "X": 0.300000012,
+      "Y": 0.200000003,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.400000006,
+      "Y": 0.5,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.10000002,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.25,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40023,
+    "ItemName": "AK470 Rifle",
+    "ROF": 650,
+    "Burst": 1,
+    "ApplyTime": 0.0923076943,
+    "RecoilSize": 0.5,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 1.20000005,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.29999995,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.25,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40024,
+    "ItemName": "Compound Bow",
+    "ROF": 360,
+    "Burst": 1,
+    "ApplyTime": 0.166666672,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.5,
+      "Y": 0.75,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40022,
+    "ItemName": "M4X Rifle",
+    "ROF": 750,
+    "Burst": 1,
+    "ApplyTime": 0.0799999982,
+    "RecoilSize": 0.400000006,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 1.20000005,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.800000012,
+      "Y": 0.5,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.29999995,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.25,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40025,
+    "ItemName": "Tactical Assault Rifle",
+    "ROF": 450,
+    "Burst": 1,
+    "ApplyTime": 0.13333334,
+    "RecoilSize": 0.300000012,
+    "RecoilVector": {
+      "X": 0.200000003,
+      "Y": 0.300000012,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.699999988,
+      "Y": 0.699999988,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.39999998,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.11,
+      "Y": 0.9,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40003,
+    "ItemName": "Assault Rifle",
+    "ROF": 650,
+    "Burst": 1,
+    "ApplyTime": 0.0923076943,
+    "RecoilSize": 0.200000003,
+    "RecoilVector": {
+      "X": 0.200000003,
+      "Y": 0.5,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.0500000007,
+      "Y": 0.400000006,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.04999995,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.11,
+      "Y": 0.9,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40007,
+    "ItemName": "Bolt-Action Rifle",
+    "ROF": 60,
+    "Burst": 1,
+    "ApplyTime": 1,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40011,
+    "ItemName": "Light Machine Gun",
+    "ROF": 650,
+    "Burst": 1,
+    "ApplyTime": 0.0923076943,
+    "RecoilSize": 0.300000012,
+    "RecoilVector": {
+      "X": 0.0500000007,
+      "Y": 0.850000024,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.10000002,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.3,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40009,
+    "ItemName": "Burstfire Rifle",
+    "ROF": 725,
+    "Burst": 1,
+    "ApplyTime": 0.239999995,
+    "RecoilSize": 0.649999976,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 1.20000005,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 2,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.3,
+      "Y": 0.85,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40027,
+    "ItemName": "Prestige Assault Rifle",
+    "ROF": 650,
+    "Burst": 1,
+    "ApplyTime": 0.0923076943,
+    "RecoilSize": 0.200000003,
+    "RecoilVector": {
+      "X": 0.200000003,
+      "Y": 0.5,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.0500000007,
+      "Y": 0.400000006,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.04999995,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.11,
+      "Y": 0.9,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40010,
+    "ItemName": "Submachine Gun",
+    "ROF": 900,
+    "Burst": 1,
+    "ApplyTime": 0.0666666701,
+    "RecoilSize": 0.5,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 1.20000005,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.800000012,
+      "Y": 0.300000012,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.3,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40008,
+    "ItemName": "Combat Rifle",
+    "ROF": 300,
+    "Burst": 1,
+    "ApplyTime": 0.200000003,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.3,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40026,
+    "ItemName": "Light Recon Rifle",
+    "ROF": 600,
+    "Burst": 1,
+    "ApplyTime": 0.100000001,
+    "RecoilSize": 0.230000004,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 1.20000005,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 1.25,
+      "Y": 0.8,
+      "Z": 1
+    }
+  },
+  {
+    "ItemID": 40016,
+    "ItemName": "Shotgun AR-k",
+    "ROF": 250,
+    "Burst": 1,
+    "ApplyTime": 0.239999995,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40015,
+    "ItemName": "Breech Loaded Pistol",
+    "ROF": 400,
+    "Burst": 1,
+    "ApplyTime": 0.150000006,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40021,
+    "ItemName": "Snub 260",
+    "ROF": 600,
+    "Burst": 1,
+    "ApplyTime": 0.100000001,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40000,
+    "ItemName": "Heavy Pistol",
+    "ROF": 600,
+    "Burst": 1,
+    "ApplyTime": 0.100000001,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40001,
+    "ItemName": "Light Pistol",
+    "ROF": 600,
+    "Burst": 1,
+    "ApplyTime": 0.100000001,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40006,
+    "ItemName": "Burstfire Pistol",
+    "ROF": 600,
+    "Burst": 1,
+    "ApplyTime": 0.100000001,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40028,
+    "ItemName": "Prestige Light Pistol",
+    "ROF": 600,
+    "Burst": 1,
+    "ApplyTime": 0.100000001,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40004,
+    "ItemName": "Machine Pistol",
+    "ROF": 850,
+    "Burst": 1,
+    "ApplyTime": 0.0705882385,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40002,
+    "ItemName": "Revolver",
+    "ROF": 200,
+    "Burst": 1,
+    "ApplyTime": 0.300000012,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  },
+  {
+    "ItemID": 40005,
+    "ItemName": "Shotgun",
+    "ROF": 100,
+    "Burst": 1,
+    "ApplyTime": 0.600000024,
+    "RecoilSize": 0,
+    "RecoilVector": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilVectorMultiplier": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "ModificationRangeRecoil": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    }
+  }
+]
