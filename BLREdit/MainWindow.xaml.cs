@@ -217,11 +217,11 @@ namespace BLREdit
             {
                 if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
                 {
-                    float allRecoil = Barrel?.stats?.recoil ?? 0;
-                    allRecoil += Muzzle?.stats?.recoil ?? 0;
-                    allRecoil += Stock?.stats?.recoil ?? 0;
-                    allRecoil += Scope?.stats?.recoil ?? 0;
-                    allRecoil += Magazine?.stats?.recoil ?? 0;
+                    float allRecoil = Barrel?.weaponModifiers?.recoil ?? 0;
+                    allRecoil += Muzzle?.weaponModifiers?.recoil ?? 0;
+                    allRecoil += Stock?.weaponModifiers?.recoil ?? 0;
+                    allRecoil += Scope?.weaponModifiers?.recoil ?? 0;
+                    allRecoil += Magazine?.weaponModifiers?.recoil ?? 0;
                     allRecoil /= 100.0f;
                     float recoilModifier = 1.0f;
                     if (allRecoil > 0)
@@ -259,7 +259,7 @@ namespace BLREdit
                         {
                             averageRecoil *= (60 / (Reciever.IniStats.ROF * Reciever.IniStats.ApplyTime));
                         }
-                        Recoil = averageRecoil.Length();
+                        Recoil = averageRecoil.Length() * recoilModifier;
                         Recoil = Recoil * (float)(180 / Math.PI); 
                     }
                     else
