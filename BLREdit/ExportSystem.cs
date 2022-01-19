@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace BLREdit
@@ -38,26 +35,47 @@ namespace BLREdit
         {
             string clipboard = "register " + Environment.NewLine + JsonSerializer.Serialize<Profile>(profile, IOResources.JSO);
             bool success = false;
-            for (int i = 0; i < 10 && !success; i++)
+
+            try
             {
-                try
-                {
-                    System.Windows.Clipboard.SetDataObject(clipboard,true);
-                    success = true;
-                    LoggingSystem.LogInfo("Copy Succes");
-                }
-                catch
-                {}
+                SetClipboard(clipboard);
+                success = true;
+                LoggingSystem.LogInfo("Copy Succes");
             }
+            catch
+            { }
+
             if (!success)
             {
                 LoggingSystem.LogWarning("Failed CopyToClipboard too often!");
-                MessageBox.Show(clipboard, "Copy To Clipboard Failed use this instead! or try again");
+                ClipboardFailed message = new ClipboardFailed(clipboard);
+                message.ShowDialog();
             }
         }
 
+        public static void SetClipboard(string value)
+        {
+            if (value == null)
+                throw new ArgumentNullException("Attempt to set clipboard with null");
+
+            Process clipboardExecutable = new Process();
+            clipboardExecutable.StartInfo = new ProcessStartInfo // Creates the process
+            {
+                RedirectStandardInput = true,
+                FileName = @"clip",
+                UseShellExecute = false
+            };
+            clipboardExecutable.Start();
+
+            clipboardExecutable.StandardInput.Write(value); // CLIP uses STDIN as input.
+            // When we are done writing all the string, close it so clip doesn't wait and get stuck
+            clipboardExecutable.StandardInput.Close();
+
+            return;
+        }
+
         public static Profile LoadProfile(string file)
-        { 
+        {
             return JsonSerializer.Deserialize<Profile>(File.ReadAllText(file), IOResources.JSO);
         }
 
@@ -65,7 +83,7 @@ namespace BLREdit
         {
             foreach (Profile profile in Profiles)
             {
-                StreamWriter sw = new StreamWriter(File.Create(AppDomain.CurrentDomain.BaseDirectory+IOResources.PROFILE_DIR+profile.PlayerName+".json"));
+                StreamWriter sw = new StreamWriter(File.Create(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + profile.PlayerName + ".json"));
                 sw.Write(JsonSerializer.Serialize<Profile>(profile, IOResources.JSO));
                 sw.Close();
             }
@@ -119,7 +137,7 @@ namespace BLREdit
         public static Loadout DefaultLoadout2 { get; } = new Loadout() { Primary = Weapon.DefaultSubmachineGun, Secondary = Weapon.DefaultLightPistol };
         public static Loadout DefaultLoadout3 { get; } = new Loadout() { Primary = Weapon.DefaultBAR, Secondary = Weapon.DefaultLightPistol };
 
-        internal ImportItem GetGear(int GearID)
+        internal static ImportItem GetGear(int GearID)
         {
             return ImportSystem.Gear.attachments[GearID];
         }
@@ -141,12 +159,12 @@ namespace BLREdit
         public string Grip { get; set; } = "";
 
         public ImportItem GetReciever()
-        { 
+        {
             ImportItem item = null;
             foreach (ImportItem primary in ImportSystem.Weapons.primary)
             {
                 if (primary.name == Receiver)
-                { 
+                {
                     item = primary;
                 }
             }
@@ -162,9 +180,9 @@ namespace BLREdit
 
         public ImportItem GetMuzzle()
         {
-            if (Muzzle-1 < 0)
+            if (Muzzle - 1 < 0)
             { return null; }
-            return ImportSystem.Mods.muzzles[Muzzle-1];
+            return ImportSystem.Mods.muzzles[Muzzle - 1];
         }
 
         public ImportItem GetStock()

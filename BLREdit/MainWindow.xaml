@@ -4,18 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="BLREdit" Height="860" Width="1344" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="BLREdit" Height="930" Width="1660" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid AllowDrop="True">
         <ListView x:Name="ItemList" Margin="360,0,0,0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="3" HorizontalAlignment="Left"/>
+                    <UniformGrid Columns="4" HorizontalAlignment="Left"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}">
                         <Image Source="{Binding Image, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
+                        <Image Source="{Binding Crosshair, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
                         <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                     </StackPanel>
                 </DataTemplate>
@@ -32,6 +33,9 @@
         </Border>
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="204,101,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
             <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="269,101,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Center" Source="{Binding MiniCrosshair}" Name="PrimaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="128" Background="Gray" HorizontalAlignment="Left" Margin="140,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
             <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
@@ -53,6 +57,9 @@
         </Border>
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="204,401,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
             <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        </Border>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="269,401,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Center" Source="{Binding MiniCrosshair}" Name="SecondaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="128" Background="Gray" HorizontalAlignment="Left" Margin="140,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
             <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
@@ -144,6 +151,7 @@
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="286,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
             <Image HorizontalAlignment="Left" Source="{Binding Image}" x:Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
+
 
     </Grid>
 </Window>

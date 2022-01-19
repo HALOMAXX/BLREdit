@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BLREdit
 {
@@ -34,7 +26,16 @@ namespace BLREdit
 
             ImportSystem.Initialize();
             InitializeComponent();
-            ItemList.Items.Filter += new Predicate<object>(o => ((ImportItem)o).IsValidFor(FilterWeapon));
+            ItemList.Items.Filter += new Predicate<object>(o => { 
+                if (o != null) 
+                { 
+                    return ((ImportItem)o).IsValidFor(FilterWeapon); 
+                } 
+                else 
+                {
+                    return false;
+                } 
+            });
 
 
             PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
@@ -42,6 +43,7 @@ namespace BLREdit
             ProfileComboBox.SelectedIndex = 0;
             SetLoadout(ExportSystem.ActiveProfile.Loadout1);
 
+            Loadout1Button.IsEnabled = false;
 
             profilechanging = false;
             textchnaging = false;
@@ -102,149 +104,155 @@ namespace BLREdit
             return start * (1 - time) + target * time;
         }
 
+        private bool CheckCalculationReady(ImportItem item)
+        {
+            return item != null && item.WikiStats != null && item.IniStats != null && item.stats != null;
+        }
+
         private void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel)
         {
             LoggingSystem.LogInfo("Updating Stats");
 
             float Damage = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, Run = 0;
 
-            
-            ROF += Reciever?.WikiStats.firerate ?? 0;
-            AmmoMag += Reciever?.WikiStats.ammoMag ?? 0;
-            AmmoRes += Reciever?.WikiStats.ammoReserve ?? 0;
-            Reload += Reciever?.WikiStats.reload ?? 0;
-            Swap += Reciever?.WikiStats.swaprate ?? 0;
-            Aim += Reciever?.WikiStats.aimSpread ?? 0;
-            Hip += Reciever?.WikiStats.hipSpread ?? 0;
-            Move += Reciever?.WikiStats.moveSpread ?? 0;
-            Zoom += Reciever?.WikiStats.zoom ?? 0;
-            ScopeIn += Reciever?.WikiStats.scopeInTime ?? 0;
-            RangeClose += Reciever?.WikiStats.rangeClose ?? 0;
-            RangeFar += Reciever?.WikiStats.rangeFar ?? 0;
-            Run += Reciever?.WikiStats.run ?? 0;
-
-            
-            ROF += Barrel?.WikiStats.firerate ?? 0;
-            AmmoMag += Barrel?.WikiStats.ammoMag ?? 0;
-            AmmoRes += Barrel?.WikiStats.ammoReserve ?? 0;
-            Reload += Barrel?.WikiStats.reload ?? 0;
-            Swap += Barrel?.WikiStats.swaprate ?? 0;
-            Aim += Barrel?.WikiStats.aimSpread ?? 0;
-            Hip += Barrel?.WikiStats.hipSpread ?? 0;
-            Move += Barrel?.WikiStats.moveSpread ?? 0;
-            Zoom += Barrel?.WikiStats.zoom ?? 0;
-            ScopeIn += Barrel?.WikiStats.scopeInTime ?? 0;
-            RangeClose += Barrel?.WikiStats.rangeClose ?? 0;
-            RangeFar += Barrel?.WikiStats.rangeFar ?? 0;
-            Run += Barrel?.WikiStats.run ?? 0;
-
-            
-            ROF += Muzzle?.WikiStats.firerate ?? 0;
-            AmmoMag += Muzzle?.WikiStats.ammoMag ?? 0;
-            AmmoRes += Muzzle?.WikiStats.ammoReserve ?? 0;
-            Reload += Muzzle?.WikiStats.reload ?? 0;
-            Swap += Muzzle?.WikiStats.swaprate ?? 0;
-            Aim += Muzzle?.WikiStats.aimSpread ?? 0;
-            Hip += Muzzle?.WikiStats.hipSpread ?? 0;
-            Move += Muzzle?.WikiStats.moveSpread ?? 0;
-            Zoom += Muzzle?.WikiStats.zoom ?? 0;
-            ScopeIn += Muzzle?.WikiStats.scopeInTime ?? 0;
-            RangeClose += Muzzle?.WikiStats.rangeClose ?? 0;
-            RangeFar += Muzzle?.WikiStats.rangeFar ?? 0;
-            Run += Muzzle?.WikiStats.run ?? 0;
-
-            
-            ROF += Stock?.WikiStats.firerate ?? 0;
-            AmmoMag += Stock?.WikiStats.ammoMag ?? 0;
-            AmmoRes += Stock?.WikiStats.ammoReserve ?? 0;
-            Reload += Stock?.WikiStats.reload ?? 0;
-            Swap += Stock?.WikiStats.swaprate ?? 0;
-            Aim += Stock?.WikiStats.aimSpread ?? 0;
-            Hip += Stock?.WikiStats.hipSpread ?? 0;
-            Move += Stock?.WikiStats.moveSpread ?? 0;
-            Zoom += Stock?.WikiStats.zoom ?? 0;
-            ScopeIn += Stock?.WikiStats.scopeInTime ?? 0;
-            RangeClose += Stock?.WikiStats.rangeClose ?? 0;
-            RangeFar += Stock?.WikiStats.rangeFar ?? 0;
-            Run += Stock?.WikiStats.run ?? 0;
-
-            
-            ROF += Scope?.WikiStats.firerate ?? 0;
-            AmmoMag += Scope?.WikiStats.ammoMag ?? 0;
-            AmmoRes += Scope?.WikiStats.ammoReserve ?? 0;
-            Reload += Scope?.WikiStats.reload ?? 0;
-            Swap += Scope?.WikiStats.swaprate ?? 0;
-            Aim += Scope?.WikiStats.aimSpread ?? 0;
-            Hip += Scope?.WikiStats.hipSpread ?? 0;
-            Move += Scope?.WikiStats.moveSpread ?? 0;
-            Zoom += Scope?.WikiStats.zoom ?? 0;
-            ScopeIn += Scope?.WikiStats.scopeInTime ?? 0;
-            RangeClose += Scope?.WikiStats.rangeClose ?? 0;
-            RangeFar += Scope?.WikiStats.rangeFar ?? 0;
-            Run += Scope?.WikiStats.run ?? 0;
-
-            
-            ROF += Magazine?.WikiStats.firerate ?? 0;
-            AmmoMag += Magazine?.WikiStats.ammoMag ?? 0;
-            AmmoRes += Magazine?.WikiStats.ammoReserve ?? 0;
-            Reload += Magazine?.WikiStats.reload ?? 0;
-            Swap += Magazine?.WikiStats.swaprate ?? 0;
-            Aim += Magazine?.WikiStats.aimSpread ?? 0;
-            Hip += Magazine?.WikiStats.hipSpread ?? 0;
-            Move += Magazine?.WikiStats.moveSpread ?? 0;
-            Zoom += Magazine?.WikiStats.zoom ?? 0;
-            ScopeIn += Magazine?.WikiStats.scopeInTime ?? 0;
-            RangeClose += Magazine?.WikiStats.rangeClose ?? 0;
-            RangeFar += Magazine?.WikiStats.rangeFar ?? 0;
-            Run += Magazine?.WikiStats.run ?? 0;
-
-            if (Reciever?.IniStats.RecoilAccumulation == 0)
+            if (CheckCalculationReady(Reciever))
             {
-                Recoil += Reciever?.WikiStats.recoil ?? 0;
-                Recoil += Barrel?.WikiStats.recoil ?? 0;
-                Recoil += Muzzle?.WikiStats.recoil ?? 0;
-                Recoil += Stock?.WikiStats.recoil ?? 0;
-                Recoil += Scope?.WikiStats.recoil ?? 0;
-                Recoil += Magazine?.WikiStats.recoil ?? 0;
+                ROF += Reciever.WikiStats.firerate;
+                AmmoMag += Reciever.WikiStats.ammoMag;
+                AmmoRes += Reciever.WikiStats.ammoReserve;
+                Reload += Reciever.WikiStats.reload;
+                Swap += Reciever.WikiStats.swaprate;
+                Aim += Reciever.WikiStats.aimSpread;
+                Hip += Reciever.WikiStats.hipSpread;
+                Move += Reciever.WikiStats.moveSpread;
+                Zoom += Reciever.WikiStats.zoom;
+                ScopeIn += Reciever.WikiStats.scopeInTime;
+                RangeClose += Reciever.WikiStats.rangeClose;
+                RangeFar += Reciever.WikiStats.rangeFar;
+                Run += Reciever.WikiStats.run;
 
-                Damage += Reciever?.WikiStats.damage ?? 0;
-                Damage += Barrel?.WikiStats.damage ?? 0;
-                Damage += Muzzle?.WikiStats.damage ?? 0;
-                Damage += Stock?.WikiStats.damage ?? 0;
-                Damage += Scope?.WikiStats.damage ?? 0;
-                Damage += Magazine?.WikiStats.damage ?? 0;
+
+                ROF += Barrel?.WikiStats?.firerate ?? 0;
+                AmmoMag += Barrel?.WikiStats?.ammoMag ?? 0;
+                AmmoRes += Barrel?.WikiStats?.ammoReserve ?? 0;
+                Reload += Barrel?.WikiStats?.reload ?? 0;
+                Swap += Barrel?.WikiStats?.swaprate ?? 0;
+                Aim += Barrel?.WikiStats?.aimSpread ?? 0;
+                Hip += Barrel?.WikiStats?.hipSpread ?? 0;
+                Move += Barrel?.WikiStats?.moveSpread ?? 0;
+                Zoom += Barrel?.WikiStats?.zoom ?? 0;
+                ScopeIn += Barrel?.WikiStats?.scopeInTime ?? 0;
+                RangeClose += Barrel?.WikiStats?.rangeClose ?? 0;
+                RangeFar += Barrel?.WikiStats?.rangeFar ?? 0;
+                Run += Barrel?.WikiStats?.run ?? 0;
+
+
+                ROF += Muzzle?.WikiStats?.firerate ?? 0;
+                AmmoMag += Muzzle?.WikiStats?.ammoMag ?? 0;
+                AmmoRes += Muzzle?.WikiStats?.ammoReserve ?? 0;
+                Reload += Muzzle?.WikiStats?.reload ?? 0;
+                Swap += Muzzle?.WikiStats?.swaprate ?? 0;
+                Aim += Muzzle?.WikiStats?.aimSpread ?? 0;
+                Hip += Muzzle?.WikiStats?.hipSpread ?? 0;
+                Move += Muzzle?.WikiStats?.moveSpread ?? 0;
+                Zoom += Muzzle?.WikiStats?.zoom ?? 0;
+                ScopeIn += Muzzle?.WikiStats?.scopeInTime ?? 0;
+                RangeClose += Muzzle?.WikiStats?.rangeClose ?? 0;
+                RangeFar += Muzzle?.WikiStats?.rangeFar ?? 0;
+                Run += Muzzle?.WikiStats?.run ?? 0;
+
+
+                ROF += Stock?.WikiStats?.firerate ?? 0;
+                AmmoMag += Stock?.WikiStats?.ammoMag ?? 0;
+                AmmoRes += Stock?.WikiStats?.ammoReserve ?? 0;
+                Reload += Stock?.WikiStats?.reload ?? 0;
+                Swap += Stock?.WikiStats?.swaprate ?? 0;
+                Aim += Stock?.WikiStats?.aimSpread ?? 0;
+                Hip += Stock?.WikiStats?.hipSpread ?? 0;
+                Move += Stock?.WikiStats?.moveSpread ?? 0;
+                Zoom += Stock?.WikiStats?.zoom ?? 0;
+                ScopeIn += Stock?.WikiStats?.scopeInTime ?? 0;
+                RangeClose += Stock?.WikiStats?.rangeClose ?? 0;
+                RangeFar += Stock?.WikiStats?.rangeFar ?? 0;
+                Run += Stock?.WikiStats?.run ?? 0;
+
+
+                ROF += Scope?.WikiStats?.firerate ?? 0;
+                AmmoMag += Scope?.WikiStats?.ammoMag ?? 0;
+                AmmoRes += Scope?.WikiStats?.ammoReserve ?? 0;
+                Reload += Scope?.WikiStats?.reload ?? 0;
+                Swap += Scope?.WikiStats?.swaprate ?? 0;
+                Aim += Scope?.WikiStats?.aimSpread ?? 0;
+                Hip += Scope?.WikiStats?.hipSpread ?? 0;
+                Move += Scope?.WikiStats?.moveSpread ?? 0;
+                Zoom += Scope?.WikiStats?.zoom ?? 0;
+                ScopeIn += Scope?.WikiStats?.scopeInTime ?? 0;
+                RangeClose += Scope?.WikiStats?.rangeClose ?? 0;
+                RangeFar += Scope?.WikiStats?.rangeFar ?? 0;
+                Run += Scope?.WikiStats?.run ?? 0;
+
+
+                ROF += Magazine?.WikiStats?.firerate ?? 0;
+                AmmoMag += Magazine?.WikiStats?.ammoMag ?? 0;
+                AmmoRes += Magazine?.WikiStats?.ammoReserve ?? 0;
+                Reload += Magazine?.WikiStats?.reload ?? 0;
+                Swap += Magazine?.WikiStats?.swaprate ?? 0;
+                Aim += Magazine?.WikiStats?.aimSpread ?? 0;
+                Hip += Magazine?.WikiStats?.hipSpread ?? 0;
+                Move += Magazine?.WikiStats?.moveSpread ?? 0;
+                Zoom += Magazine?.WikiStats?.zoom ?? 0;
+                ScopeIn += Magazine?.WikiStats?.scopeInTime ?? 0;
+                RangeClose += Magazine?.WikiStats?.rangeClose ?? 0;
+                RangeFar += Magazine?.WikiStats?.rangeFar ?? 0;
+                Run += Magazine?.WikiStats?.run ?? 0;
+
+                if (Reciever?.IniStats.RecoilAccumulation == 0)
+                {
+                    Recoil += Reciever?.WikiStats?.recoil ?? 0;
+                    Recoil += Barrel?.WikiStats?.recoil ?? 0;
+                    Recoil += Muzzle?.WikiStats?.recoil ?? 0;
+                    Recoil += Stock?.WikiStats?.recoil ?? 0;
+                    Recoil += Scope?.WikiStats?.recoil ?? 0;
+                    Recoil += Magazine?.WikiStats?.recoil ?? 0;
+
+                    Damage += Reciever?.WikiStats?.damage ?? 0;
+                    Damage += Barrel?.WikiStats?.damage ?? 0;
+                    Damage += Muzzle?.WikiStats?.damage ?? 0;
+                    Damage += Stock?.WikiStats?.damage ?? 0;
+                    Damage += Scope?.WikiStats?.damage ?? 0;
+                    Damage += Magazine?.WikiStats?.damage ?? 0;
+                }
+                else
+                {
+                    float allRecoil = Barrel?.weaponModifiers?.recoil ?? 0;
+                    allRecoil += Muzzle?.weaponModifiers?.recoil ?? 0;
+                    allRecoil += Stock?.weaponModifiers?.recoil ?? 0;
+                    allRecoil += Scope?.weaponModifiers?.recoil ?? 0;
+                    allRecoil += Magazine?.weaponModifiers?.recoil ?? 0;
+                    allRecoil /= 100.0f;
+                    Recoil = CalculateRecoil(Reciever, allRecoil);
+
+
+                    float allDamage = Barrel?.weaponModifiers?.damage ?? 0;
+                    allDamage += Muzzle?.weaponModifiers?.damage ?? 0;
+                    allDamage += Stock?.weaponModifiers?.damage ?? 0;
+                    allDamage += Scope?.weaponModifiers?.damage ?? 0;
+                    allDamage += Magazine?.weaponModifiers?.damage ?? 0;
+                    allDamage /= 100.0f;
+                    Damage = CalculateDamage(Reciever, allDamage);
+
+                    float allAccuracy = Barrel?.weaponModifiers?.accuracy ?? 0;
+                    allAccuracy += Muzzle?.weaponModifiers?.accuracy ?? 0;
+                    allAccuracy += Stock?.weaponModifiers?.accuracy ?? 0;
+                    allAccuracy += Scope?.weaponModifiers?.accuracy ?? 0;
+                    allAccuracy += Magazine?.weaponModifiers?.accuracy ?? 0;
+                    allAccuracy /= 100.0f;
+                    var spreads = CalculateSpread(Reciever, allAccuracy);
+                    Aim = spreads[0];
+                    Hip = spreads[1];
+                    Move = spreads[2];
+                }
             }
-            else
-            {
-                float allRecoil = Barrel?.weaponModifiers?.recoil ?? 0;
-                allRecoil += Muzzle?.weaponModifiers?.recoil ?? 0;
-                allRecoil += Stock?.weaponModifiers?.recoil ?? 0;
-                allRecoil += Scope?.weaponModifiers?.recoil ?? 0;
-                allRecoil += Magazine?.weaponModifiers?.recoil ?? 0;
-                allRecoil /= 100.0f;
-                Recoil = CalculateRecoil(Reciever, allRecoil);
-
-
-                float allDamage = Barrel?.weaponModifiers?.damage ?? 0;
-                allDamage += Muzzle?.weaponModifiers?.damage ?? 0;
-                allDamage += Stock?.weaponModifiers?.damage ?? 0;
-                allDamage += Scope?.weaponModifiers?.damage ?? 0;
-                allDamage += Magazine?.weaponModifiers?.damage ?? 0;
-                allDamage /= 100.0f;
-                Damage = CalculateDamage(Reciever, allDamage);
-
-                float allAccuracy = Barrel?.weaponModifiers?.accuracy ?? 0;
-                allAccuracy += Muzzle?.weaponModifiers?.accuracy ?? 0;
-                allAccuracy += Stock?.weaponModifiers?.accuracy ?? 0;
-                allAccuracy += Scope?.weaponModifiers?.accuracy ?? 0;
-                allAccuracy += Magazine?.weaponModifiers?.accuracy ?? 0;
-                allAccuracy /= 100.0f;
-                var spreads = CalculateSpread (Reciever, allAccuracy);
-                Aim = spreads[0];
-                Hip = spreads[1];
-                Move = spreads[2];
-            }
-
             DamageLabel.Content = Damage.ToString("0");
             ROFLabel.Content = ROF.ToString("0");
             AmmoLabel.Content = AmmoMag.ToString("0") + "/" + AmmoRes.ToString("0");
@@ -278,14 +286,14 @@ namespace BLREdit
                     accuracyTABaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeTABaseSpread.Y ?? 0, allAccuracy);
                 }
 
-                float hip = accuracyBaseModifier * (float)(180/Math.PI);
+                float hip = accuracyBaseModifier * (float)(180 / Math.PI);
                 float aim = accuracyTABaseModifier * (float)(180 / Math.PI);
                 float move = (accuracyBaseModifier * Reciever.IniStats.MovementSpreadMultiplier) * (float)(180 / Math.PI);
 
                 return new float[] { aim, hip, move };
             }
             else
-            { 
+            {
                 return new float[] { 0, 0, 0 };
             }
         }
@@ -404,7 +412,7 @@ namespace BLREdit
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.ItemList.ItemsSource = ImportSystem.Weapons.primary;
+            ItemList.ItemsSource = ImportSystem.Weapons.primary;
         }
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
@@ -438,7 +446,28 @@ namespace BLREdit
                     LoggingSystem.LogInfo("Recieving:" + item.name);
                     if (border.Child is Image image)
                     {
-
+                        if (image.Name.Contains("Primary"))
+                        {
+                            if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
+                            {
+                                if (ImportSystem.Mods.scopes.Contains(item))
+                                { 
+                                    PrimaryScopeImage.DataContext = item; LoggingSystem.LogInfo("Scope Set!");
+                                    PrimaryCrosshairImage.DataContext = item; LoggingSystem.LogInfo("Crosshair Set!"); 
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
+                            {
+                                if (ImportSystem.Mods.scopes.Contains(item))
+                                {
+                                    SecondaryScopeImage.DataContext = item; LoggingSystem.LogInfo("Scope Set!");
+                                    SecondaryCrosshairImage.DataContext = item; LoggingSystem.LogInfo("Crosshair Set!");
+                                }
+                            }
+                        }
                         if (image.Name.Contains("Reciever"))
                         {
                             if (image.Name.Contains("Primary") && ImportSystem.Weapons.primary.Contains(item))
@@ -473,8 +502,6 @@ namespace BLREdit
                             { image.DataContext = item; LoggingSystem.LogInfo("Barrel Set!"); }
                             if (image.Name.Contains("Magazine") && ImportSystem.Mods.magazines.Contains(item))
                             { image.DataContext = item; LoggingSystem.LogInfo("Magazine with ID:" + ImportSystem.GetMagazineID(item) + " Set!"); }
-                            if (image.Name.Contains("Scope") && ImportSystem.Mods.scopes.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Scope Set!"); }
                             if (image.Name.Contains("Stock") && ImportSystem.Mods.stocks.Contains(item))
                             { image.DataContext = item; LoggingSystem.LogInfo("Stock Set!"); }
                             if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item))
@@ -528,6 +555,14 @@ namespace BLREdit
                             LoggingSystem.LogInfo("ItemList Set for Primary Reciever");
                             return;
                         }
+                        if (image.Name.Contains("Crosshair"))
+                        {
+                            var item = (PrimaryScopeImage.DataContext as ImportItem);
+                            item.LoadCrosshair();
+                            ItemList.ItemsSource = new ImportItem[] { item };
+                            LoggingSystem.LogInfo("ItemList Set for Scopes");
+                            return;
+                        }
                     }
                     if (image.Name.Contains("Secondary"))
                     {
@@ -537,6 +572,14 @@ namespace BLREdit
                         {
                             ItemList.ItemsSource = ImportSystem.Weapons.secondary;
                             LoggingSystem.LogInfo("ItemList Set for Secondary Reciever");
+                            return;
+                        }
+                        if (image.Name.Contains("Crosshair"))
+                        {
+                            var item = (PrimaryScopeImage.DataContext as ImportItem);
+                            item.LoadCrosshair();
+                            ItemList.ItemsSource = new ImportItem[] { item };
+                            LoggingSystem.LogInfo("ItemList Set for Scopes");
                             return;
                         }
                     }
@@ -567,6 +610,10 @@ namespace BLREdit
                     }
                     if (image.Name.Contains("Scope"))
                     {
+                        foreach (var item in ImportSystem.Mods.scopes)
+                        { 
+                            item.RemoveCrosshair();
+                        }
                         ItemList.ItemsSource = ImportSystem.Mods.scopes;
                         LoggingSystem.LogInfo("ItemList Set for Scopes");
                         return;
@@ -603,10 +650,10 @@ namespace BLREdit
         public void SetLoadout(Loadout loadout)
         {
             ActiveLoadout = loadout;
-            GearImage1.DataContext = loadout.GetGear(loadout.Gear1);
-            GearImage2.DataContext = loadout.GetGear(loadout.Gear2);
-            GearImage3.DataContext = loadout.GetGear(loadout.Gear3);
-            GearImage4.DataContext = loadout.GetGear(loadout.Gear4);
+            GearImage1.DataContext = Loadout.GetGear(loadout.Gear1);
+            GearImage2.DataContext = Loadout.GetGear(loadout.Gear2);
+            GearImage3.DataContext = Loadout.GetGear(loadout.Gear3);
+            GearImage4.DataContext = Loadout.GetGear(loadout.Gear4);
             TacticalImage.DataContext = loadout.GetTactical();
             SetPrimary(loadout.Primary);
             SetSecondary(loadout.Secondary);
@@ -621,6 +668,7 @@ namespace BLREdit
             PrimaryBarrelImage.DataContext = primary.GetBarrel();
             PrimaryMagazineImage.DataContext = primary.GetMagazine();
             PrimaryScopeImage.DataContext = primary.GetScope();
+            PrimaryCrosshairImage.DataContext = primary.GetScope();
             UpdatePrimaryStats();
         }
 
@@ -632,6 +680,7 @@ namespace BLREdit
             SecondaryBarrelImage.DataContext = secondary.GetBarrel();
             SecondaryMagazineImage.DataContext = secondary.GetMagazine();
             SecondaryScopeImage.DataContext = secondary.GetScope();
+            SecondaryCrosshairImage.DataContext = secondary.GetScope();
             UpdateSecondaryStats();
         }
         bool textchnaging = false;
@@ -650,16 +699,25 @@ namespace BLREdit
         private void Loadout1Button_Click(object sender, RoutedEventArgs e)
         {
             SetLoadout(ExportSystem.ActiveProfile.Loadout1);
+            Loadout1Button.IsEnabled = false;
+            Loadout2Button.IsEnabled = true;
+            Loadout3Button.IsEnabled = true;
         }
 
         private void Loadout2Button_Click(object sender, RoutedEventArgs e)
         {
             SetLoadout(ExportSystem.ActiveProfile.Loadout2);
+            Loadout1Button.IsEnabled = true;
+            Loadout2Button.IsEnabled = false;
+            Loadout3Button.IsEnabled = true;
         }
 
         private void Loadout3Button_Click(object sender, RoutedEventArgs e)
         {
             SetLoadout(ExportSystem.ActiveProfile.Loadout3);
+            Loadout1Button.IsEnabled = true;
+            Loadout2Button.IsEnabled = true;
+            Loadout3Button.IsEnabled = false;
         }
 
         private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)

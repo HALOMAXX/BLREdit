@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace BLREdit 
+namespace BLREdit
 {
     public class IOResources
     {
