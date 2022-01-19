@@ -41,11 +41,17 @@ namespace BLREdit {
             AssignWikiStats(CorrectedItemStats);
             GenerateWikiStats();
 
+            try
+            {
+                File.Delete("UpgradedStats.json");
+            }catch{ }
+
             IniItemStats = JsonSerializer.Deserialize<IniStats[]>(File.ReadAllText(IOResources.ASSET_DIR + "\\filteredIniStats.json"), IOResources.JSOFields);
 
             AssignIniStatsTo(Weapons.primary, IniItemStats);
             AssignIniStatsTo(Weapons.secondary, IniItemStats);
 
+            JsonSerializer.Serialize<IniStats[]>(File.OpenWrite("UpgradedStats.json"), IniItemStats, IOResources.JSOFields);
 
             LoggingSystem.LogInfo("Finished Initializing Import System");
         }
@@ -79,6 +85,23 @@ namespace BLREdit {
                 {
                     if (stat.ItemID == item.uid)
                     {
+                        if (stat.CrouchSpreadMultiplier == 0)
+                        {
+                            stat.CrouchSpreadMultiplier = 0.5f;
+                        }
+                        if (stat.ZoomSpreadMultiplier == 0)
+                        {
+                            stat.ZoomSpreadMultiplier = 0.4f;
+                        }
+                        if (stat.JumpSpreadMultiplier == 0)
+                        {
+                            stat.JumpSpreadMultiplier = 4.0f;
+                        }
+                        if (stat.MovementSpreadMultiplier == 0)
+                        {
+                            stat.MovementSpreadMultiplier = 2.5f;
+                        }
+
                         item.IniStats = stat;
                         found = true;
                     }
@@ -101,7 +124,7 @@ namespace BLREdit {
 
         public static int GetMuzzleID(ImportItem item)
         {
-            return GetItemID(item, Mods.muzzles);
+            return GetItemID(item, Mods.muzzles)+1;
         }
         public static int GetMagazineID(ImportItem item)
         {
@@ -793,10 +816,20 @@ namespace BLREdit {
         public float Burst { get; set; } = 0;
         public float ApplyTime { get; set; } = 0;
         public float RecoilSize { get; set; } = 0;
-        public Vector3 RecoilVector { get; set; } = new Vector3(0,0,0);
-        public Vector3 RecoilVectorMultiplier { get; set; } = new Vector3(0, 0, 0);
+        public Vector3 RecoilVector { get; set; } = Vector3.Zero;
+        public Vector3 RecoilVectorMultiplier { get; set; } = Vector3.Zero;
         public float RecoilAccumulation { get; set; } = 0;
         public float RecoilAccumulationMultiplier { get; set; } = 0.95f;
-        public Vector3 ModificationRangeRecoil { get; set; } = new Vector3(0, 0, 0);
+        public float BaseSpread { get; set; } = 0.04f;
+        public float TABaseSpread { get; set; } = 0;
+        public float CrouchSpreadMultiplier { get; set; } = 0.5f;
+        public float JumpSpreadMultiplier { get; set; } = 4.0f;
+        public float MovementSpreadMultiplier { get; set; } = 2.5f;
+        public float ZoomSpreadMultiplier { get; set; } = 0.4f;
+        public bool UseTABaseSpread { get; set; } = false;
+        public Vector3 ModificationRangeDamage { get; set; } = Vector3.Zero;
+        public Vector3 ModificationRangeBaseSpread { get; set; } = Vector3.Zero;
+        public Vector3 ModificationRangeTABaseSpread { get; set; } = Vector3.Zero;
+        public Vector3 ModificationRangeRecoil { get; set; } = Vector3.Zero;
     }
 }

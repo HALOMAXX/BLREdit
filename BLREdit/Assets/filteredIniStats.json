@@ -18,9 +18,31 @@
     },
     "RecoilAccumulation": 1.20000005,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.100000001,
+    "TABaseSpread": 0.100000001,
+    "CrouchSpreadMultiplier": 0.699999988,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.82000005,
+    "ZoomSpreadMultiplier": 0.474999994,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 54,
+      "Y": 71,
+      "Z": 60
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.0610000007,
+      "Y": 0.0209999997,
+      "Z": 0.0410000011
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.0130000003,
+      "Y": 0.00100000005,
+      "Z": 0.00700000022
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.8,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -43,9 +65,31 @@
     },
     "RecoilAccumulation": 1.38,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.0199999996,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 2.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 58,
+      "Y": 78,
+      "Z": 68
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.0549999997,
+      "Y": 0.0250000004,
+      "Z": 0.0399999991
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.0419999994,
+      "Y": 0.00200000009,
+      "Z": 0.0219999999
+    },
     "ModificationRangeRecoil": {
-      "X": 1.3,
-      "Y": 0.8,
+      "X": 1.29999995,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -68,9 +112,31 @@
     },
     "RecoilAccumulation": 1.38,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.05,
+    "TABaseSpread": 0.06,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.1,
+    "ZoomSpreadMultiplier": 0.5,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 20,
+      "Y": 40,
+      "Z": 36
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.06,
+      "Y": 0.01,
+      "Z": 0.035
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
     "ModificationRangeRecoil": {
-      "X": 1.3,
-      "Y": 0.8,
+      "X": 1.29999995,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -93,9 +159,31 @@
     },
     "RecoilAccumulation": 1.5,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 2,
+    "ZoomSpreadMultiplier": 0.5,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 28,
+      "Y": 49,
+      "Z": 30
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.035,
+      "Y": 0.025,
+      "Z": 0.03
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
     "ModificationRangeRecoil": {
-      "X": 1.3,
-      "Y": 0.8,
+      "X": 1.29999995,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -105,22 +193,44 @@
     "ROF": 120,
     "Burst": 1,
     "ApplyTime": 0.5,
-    "RecoilSize": 0.3,
+    "RecoilSize": 0.300000012,
     "RecoilVector": {
       "X": 0,
-      "Y": 1.2,
+      "Y": 1.20000005,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
-      "X": 0,
-      "Y": 0,
+      "X": 0.5,
+      "Y": 1,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
+    "RecoilAccumulation": 1,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.3,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 6,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 275,
+      "Y": 325,
+      "Z": 300
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.5,
+      "Y": 0.5,
+      "Z": 0.5
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.007,
+      "Y": 0,
+      "Z": 0.0035
+    },
     "ModificationRangeRecoil": {
-      "X": 1.1,
-      "Y": 0.9,
+      "X": 1.10000002,
+      "Y": 0.899999976,
       "Z": 1
     }
   },
@@ -129,7 +239,7 @@
     "ItemName": "Bullpup Full Auto",
     "ROF": 550,
     "Burst": 1,
-    "ApplyTime": 0.0,
+    "ApplyTime": 0,
     "RecoilSize": 0.300000012,
     "RecoilVector": {
       "X": 0.300000012,
@@ -143,9 +253,31 @@
     },
     "RecoilAccumulation": 1.10000002,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.05,
+    "TABaseSpread": 0.03,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.3,
+    "ZoomSpreadMultiplier": 0.425,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 45,
+      "Y": 60,
+      "Z": 56
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.053,
+      "Y": 0.03,
+      "Z": 0.0415
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.037,
+      "Y": 0.007,
+      "Z": 0.02
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.8,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -168,9 +300,31 @@
     },
     "RecoilAccumulation": 1.29999995,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.08,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.9,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.25,
+    "ZoomSpreadMultiplier": 0.425,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 43,
+      "Y": 57,
+      "Z": 48
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.0725,
+      "Y": 0.0225,
+      "Z": 0.0425
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.0235,
+      "Y": 0.0035,
+      "Z": 0.0135
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.8,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -193,6 +347,28 @@
     },
     "RecoilAccumulation": 0,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.02,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.1,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.03,
+      "Y": 0.01,
+      "Z": 0.02
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.01,
+      "Y": 0,
+      "Z": 0
+    },
     "ModificationRangeRecoil": {
       "X": 1.5,
       "Y": 0.75,
@@ -218,9 +394,31 @@
     },
     "RecoilAccumulation": 1.29999995,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.04,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.8,
+    "ZoomSpreadMultiplier": 0.425,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 33,
+      "Y": 44,
+      "Z": 39
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.04,
+      "Y": 0.025,
+      "Z": 0.04
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.0255,
+      "Y": 0.0035,
+      "Z": 0.014
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.8,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -243,9 +441,31 @@
     },
     "RecoilAccumulation": 1.39999998,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.5,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.75,
+    "ZoomSpreadMultiplier": 0.425,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 48,
+      "Y": 80,
+      "Z": 55
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.05,
+      "Y": 0.03,
+      "Z": 0.04
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.01925,
+      "Y": 0.00875,
+      "Z": 0.014
+    },
     "ModificationRangeRecoil": {
-      "X": 1.11,
-      "Y": 0.9,
+      "X": 1.11000001,
+      "Y": 0.899999976,
       "Z": 1
     }
   },
@@ -268,9 +488,31 @@
     },
     "RecoilAccumulation": 1.04999995,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.02,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.25,
+    "ZoomSpreadMultiplier": 0.425,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 40,
+      "Y": 49,
+      "Z": 45
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.05,
+      "Y": 0.03,
+      "Z": 0.04
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.01925,
+      "Y": 0.00875,
+      "Z": 0.014
+    },
     "ModificationRangeRecoil": {
-      "X": 1.11,
-      "Y": 0.9,
+      "X": 1.11000001,
+      "Y": 0.899999976,
       "Z": 1
     }
   },
@@ -280,23 +522,45 @@
     "ROF": 60,
     "Burst": 1,
     "ApplyTime": 1,
-    "RecoilSize": 0,
+    "RecoilSize": 0.209999993,
     "RecoilVector": {
-      "X": 0,
-      "Y": 0,
+      "X": 0.100000001,
+      "Y": 0.200000003,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
-      "X": 0,
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.3,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 2,
+    "MovementSpreadMultiplier": 2,
+    "ZoomSpreadMultiplier": 0.2,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 150,
+      "Y": 200,
+      "Z": 175
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.21,
+      "Y": 0.03,
+      "Z": 0.12
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.013963,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 1.25,
+      "Y": 0.800000012,
+      "Z": 1
     }
   },
   {
@@ -318,9 +582,31 @@
     },
     "RecoilAccumulation": 1.10000002,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.08,
+    "TABaseSpread": 0.03,
+    "CrouchSpreadMultiplier": 0.6,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.5,
+    "ZoomSpreadMultiplier": 0.6,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 50,
+      "Y": 63,
+      "Z": 55
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.07,
+      "Y": 0.03,
+      "Z": 0.05
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.05,
+      "Y": 0.01,
+      "Z": 0.03
+    },
     "ModificationRangeRecoil": {
-      "X": 1.3,
-      "Y": 0.8,
+      "X": 1.29999995,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -343,9 +629,31 @@
     },
     "RecoilAccumulation": 2,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.01,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 2,
+    "ZoomSpreadMultiplier": 0.4375,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 48,
+      "Y": 60,
+      "Z": 54
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.045,
+      "Y": 0.015,
+      "Z": 0.03
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.007,
+      "Y": 0,
+      "Z": 0.0035
+    },
     "ModificationRangeRecoil": {
-      "X": 1.3,
-      "Y": 0.85,
+      "X": 1.29999995,
+      "Y": 0.850000024,
       "Z": 1
     }
   },
@@ -368,9 +676,31 @@
     },
     "RecoilAccumulation": 1.04999995,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.02,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.25,
+    "ZoomSpreadMultiplier": 0.425,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 40,
+      "Y": 49,
+      "Z": 45
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.05,
+      "Y": 0.03,
+      "Z": 0.04
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.01925,
+      "Y": 0.00875,
+      "Z": 0.014
+    },
     "ModificationRangeRecoil": {
-      "X": 1.11,
-      "Y": 0.9,
+      "X": 1.11000001,
+      "Y": 0.899999976,
       "Z": 1
     }
   },
@@ -393,9 +723,31 @@
     },
     "RecoilAccumulation": 1,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.02,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.1,
+    "ZoomSpreadMultiplier": 0.5,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 25,
+      "Y": 38,
+      "Z": 33
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.075,
+      "Y": 0.055,
+      "Z": 0.065
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0.032,
+      "Y": 0.008,
+      "Z": 0.02
+    },
     "ModificationRangeRecoil": {
-      "X": 1.3,
-      "Y": 0.8,
+      "X": 1.29999995,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -405,22 +757,44 @@
     "ROF": 300,
     "Burst": 1,
     "ApplyTime": 0.200000003,
-    "RecoilSize": 0,
+    "RecoilSize": 0.379999995,
     "RecoilVector": {
-      "X": 0,
-      "Y": 0,
+      "X": 0.0399999991,
+      "Y": 0.5,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.04999995,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.25,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.9,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.2,
+    "ZoomSpreadMultiplier": 0.01,
+    "UseTABaseSpread": true,
+    "ModificationRangeDamage": {
+      "X": 90,
+      "Y": 97,
+      "Z": 92
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.08,
+      "Y": 0.01,
+      "Z": 0.045
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 1.3,
-      "Y": 0.8,
+      "X": 1.29999995,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -443,9 +817,31 @@
     },
     "RecoilAccumulation": 1,
     "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.04,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 62,
+      "Y": 83,
+      "Z": 76
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.065,
+      "Y": 0.025,
+      "Z": 0.045
+    },
+    "ModificationRangeTABaseSpread": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.8,
+      "Y": 0.800000012,
       "Z": 1
     }
   },
@@ -455,23 +851,45 @@
     "ROF": 250,
     "Burst": 1,
     "ApplyTime": 0.239999995,
-    "RecoilSize": 0,
+    "RecoilSize": 0.899999976,
     "RecoilVector": {
-      "X": 0,
-      "Y": 0,
+      "X": 0.137500003,
+      "Y": 1.10000002,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0.912,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.04,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 1.5,
+    "MovementSpreadMultiplier": 1.5,
+    "ZoomSpreadMultiplier": 0.3,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 18,
+      "Y": 24,
+      "Z": 20
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.03,
+      "Y": 0.02,
+      "Z": 0.025
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 2,
+      "Y": 0.5,
+      "Z": 1
     }
   },
   {
@@ -479,24 +897,46 @@
     "ItemName": "Breech Loaded Pistol",
     "ROF": 400,
     "Burst": 1,
-    "ApplyTime": 0.150000006,
-    "RecoilSize": 0,
+    "ApplyTime": 0.100000001,
+    "RecoilSize": 0.300000012,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 1.20000005,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.04,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 2.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 20,
+      "Y": 20,
+      "Z": 20
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.05,
+      "Y": 0.035,
+      "Z": 0.04
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 2,
+      "Y": 0.800000012,
+      "Z": 1
     }
   },
   {
@@ -504,24 +944,46 @@
     "ItemName": "Snub 260",
     "ROF": 600,
     "Burst": 1,
-    "ApplyTime": 0.100000001,
-    "RecoilSize": 0,
+    "ApplyTime": 0.119999997,
+    "RecoilSize": 0.300000012,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 0.600000024,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 2.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 55,
+      "Y": 70,
+      "Z": 62
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.06,
+      "Y": 0.035,
+      "Z": 0.05
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 1.29999995,
+      "Y": 0.850000024,
+      "Z": 1
     }
   },
   {
@@ -530,23 +992,45 @@
     "ROF": 600,
     "Burst": 1,
     "ApplyTime": 0.100000001,
-    "RecoilSize": 0,
+    "RecoilSize": 0.200000003,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 1.20000005,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 50,
+      "Y": 60,
+      "Z": 55
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.065,
+      "Y": 0.025,
+      "Z": 0.045
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 1.25,
+      "Y": 0.800000012,
+      "Z": 1
     }
   },
   {
@@ -555,48 +1039,92 @@
     "ROF": 600,
     "Burst": 1,
     "ApplyTime": 0.100000001,
-    "RecoilSize": 0,
+    "RecoilSize": 0.200000003,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 1.20000005,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 45,
+      "Y": 55,
+      "Z": 50
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.06625,
+      "Y": 0.02625,
+      "Z": 0.04625
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 1.25,
+      "Y": 0.800000012,
+      "Z": 1
     }
   },
   {
     "ItemID": 40006,
     "ItemName": "Burstfire Pistol",
     "ROF": 600,
-    "Burst": 1,
+    "Burst": 3,
     "ApplyTime": 0.100000001,
-    "RecoilSize": 0,
+    "RecoilSize": 0.0799999982,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 1.20000005,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.42499995,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 38,
+      "Y": 53,
+      "Z": 48
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.0675,
+      "Y": 0.0275,
+      "Z": 0.0475
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 1.25,
+      "Y": 0.899999976,
+      "Z": 1
     }
   },
   {
@@ -605,23 +1133,45 @@
     "ROF": 600,
     "Burst": 1,
     "ApplyTime": 0.100000001,
-    "RecoilSize": 0,
+    "RecoilSize": 0.300000012,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 1.20000005,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 45,
+      "Y": 55,
+      "Z": 50
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.06625,
+      "Y": 0.02625,
+      "Z": 0.04625
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 1.25,
+      "Y": 0.800000012,
+      "Z": 1
     }
   },
   {
@@ -630,23 +1180,45 @@
     "ROF": 850,
     "Burst": 1,
     "ApplyTime": 0.0705882385,
-    "RecoilSize": 0,
+    "RecoilSize": 0.5,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 1.20000005,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 0.75999999,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.15,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.75,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 1.05,
+    "ZoomSpreadMultiplier": 0.5,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 25,
+      "Y": 38,
+      "Z": 30
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.1,
+      "Y": 0.06,
+      "Z": 0.08
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 1.25,
+      "Y": 0.800000012,
+      "Z": 1
     }
   },
   {
@@ -654,24 +1226,46 @@
     "ItemName": "Revolver",
     "ROF": 200,
     "Burst": 1,
-    "ApplyTime": 0.300000012,
-    "RecoilSize": 0,
+    "ApplyTime": 0.200000003,
+    "RecoilSize": 0.699999988,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 0.600000024,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.04,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.5,
+    "JumpSpreadMultiplier": 4,
+    "MovementSpreadMultiplier": 2.5,
+    "ZoomSpreadMultiplier": 0.400000006,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 70,
+      "Y": 125,
+      "Z": 97
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.045,
+      "Y": 0.035,
+      "Z": 0.04
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 1.14999998,
+      "Y": 0.850000024,
+      "Z": 1
     }
   },
   {
@@ -679,24 +1273,46 @@
     "ItemName": "Shotgun",
     "ROF": 100,
     "Burst": 1,
-    "ApplyTime": 0.600000024,
-    "RecoilSize": 0,
+    "ApplyTime": 0.150000006,
+    "RecoilSize": 0.300000012,
     "RecoilVector": {
       "X": 0,
-      "Y": 0,
+      "Y": 1.20000005,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
+      "X": 0.5,
+      "Y": 1,
+      "Z": 0
+    },
+    "RecoilAccumulation": 1.33000004,
+    "RecoilAccumulationMultiplier": 0.949999988,
+    "BaseSpread": 0.04,
+    "TABaseSpread": 0,
+    "CrouchSpreadMultiplier": 0.7,
+    "JumpSpreadMultiplier": 1.5,
+    "MovementSpreadMultiplier": 1.5,
+    "ZoomSpreadMultiplier": 0.3,
+    "UseTABaseSpread": false,
+    "ModificationRangeDamage": {
+      "X": 20,
+      "Y": 30,
+      "Z": 23
+    },
+    "ModificationRangeBaseSpread": {
+      "X": 0.04,
+      "Y": 0.02,
+      "Z": 0.03
+    },
+    "ModificationRangeTABaseSpread": {
       "X": 0,
       "Y": 0,
       "Z": 0
     },
-    "RecoilAccumulation": 0,
-    "RecoilAccumulationMultiplier": 0.949999988,
     "ModificationRangeRecoil": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 2,
+      "Y": 0.5,
+      "Z": 1
     }
   }
 ]
