@@ -211,7 +211,7 @@ namespace BLREdit
         internal static WikiStats[] LoadWikiStatsFromCSV()
         {
             List<WikiStats> stats = new List<WikiStats>();
-            StreamReader sr = new StreamReader("BLR Wiki Stats.csv");
+            StreamReader sr = new StreamReader(IOResources.ASSET_DIR + "\\BLR Wiki Stats.csv");
             string line;
             while ((line = sr.ReadLine()) != null)
             {
