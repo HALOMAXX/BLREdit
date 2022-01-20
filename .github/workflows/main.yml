@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release_build
-          path: BLREdit\bin\Release\net48
+          path: BLREdit\bin\Release\net48\
