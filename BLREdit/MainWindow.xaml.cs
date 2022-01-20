@@ -206,23 +206,6 @@ namespace BLREdit
                 RangeFar += Magazine?.WikiStats?.rangeFar ?? 0;
                 Run += Magazine?.WikiStats?.run ?? 0;
 
-                if (Reciever?.IniStats.RecoilAccumulation == 0)
-                {
-                    Recoil += Reciever?.WikiStats?.recoil ?? 0;
-                    Recoil += Barrel?.WikiStats?.recoil ?? 0;
-                    Recoil += Muzzle?.WikiStats?.recoil ?? 0;
-                    Recoil += Stock?.WikiStats?.recoil ?? 0;
-                    Recoil += Scope?.WikiStats?.recoil ?? 0;
-                    Recoil += Magazine?.WikiStats?.recoil ?? 0;
-
-                    Damage += Reciever?.WikiStats?.damage ?? 0;
-                    Damage += Barrel?.WikiStats?.damage ?? 0;
-                    Damage += Muzzle?.WikiStats?.damage ?? 0;
-                    Damage += Stock?.WikiStats?.damage ?? 0;
-                    Damage += Scope?.WikiStats?.damage ?? 0;
-                    Damage += Magazine?.WikiStats?.damage ?? 0;
-                }
-                else
                 {
                     float allRecoil = Barrel?.weaponModifiers?.recoil ?? 0;
                     allRecoil += Muzzle?.weaponModifiers?.recoil ?? 0;
@@ -253,7 +236,7 @@ namespace BLREdit
                     Move = spreads[2];
                 }
             }
-            DamageLabel.Content = Damage.ToString("0");
+            DamageLabel.Content = Damage.ToString("0.0");
             ROFLabel.Content = ROF.ToString("0");
             AmmoLabel.Content = AmmoMag.ToString("0") + "/" + AmmoRes.ToString("0");
             ReloadLabel.Content = Reload.ToString("0.00") + "s";
@@ -287,7 +270,11 @@ namespace BLREdit
                 }
 
                 float hip = accuracyBaseModifier * (float)(180 / Math.PI);
-                float aim = accuracyTABaseModifier * (float)(180 / Math.PI);
+                float aim = (accuracyBaseModifier * Reciever.IniStats.ZoomSpreadMultiplier) * (float)(180 / Math.PI);
+                if (Reciever.IniStats.UseTABaseSpread)
+                {
+                     aim = accuracyTABaseModifier * (float)(180 / Math.PI);
+                }
                 float move = (accuracyBaseModifier * Reciever.IniStats.MovementSpreadMultiplier) * (float)(180 / Math.PI);
 
                 return new float[] { aim, hip, move };
@@ -333,7 +320,6 @@ namespace BLREdit
                 {
                     recoilModifier = Lerp(Reciever?.IniStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.IniStats?.ModificationRangeRecoil.Y ?? 0, allRecoil);
                 }
-                //recoilModifier = 1.0f;
                 if (Reciever?.WikiStats.ammoMag > 0)
                 {
                     float averageShotCount = Math.Min(Reciever?.WikiStats.ammoMag ?? 0, 15.0f);

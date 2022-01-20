@@ -144,7 +144,7 @@
     "ItemID": 40018,
     "ItemName": "Burstfire SMG",
     "ROF": 850,
-    "Burst": 1,
+    "Burst": 4,
     "ApplyTime": 0.159999996,
     "RecoilSize": 0.0850000009,
     "RecoilVector": {
@@ -614,7 +614,7 @@
     "ItemID": 40009,
     "ItemName": "Burstfire Rifle",
     "ROF": 725,
-    "Burst": 1,
+    "Burst": 3,
     "ApplyTime": 0.239999995,
     "RecoilSize": 0.649999976,
     "RecoilVector": {

@@ -15,10 +15,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ContentWithTargetPath Remove="Assets\crosshairs\EMI Infrared Scope Mk.2.bmp" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <PackageReference Include="System.Text.Json" Version="6.0.1" />
 	</ItemGroup>
 
