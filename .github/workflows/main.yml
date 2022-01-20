@@ -30,6 +30,11 @@ jobs:
       - name: Build App
         run: msbuild $env:Solution_Name /t:Restore /p:Configuration=Release /p:DeployOnBuild=true
         
+      - name: ListFiles
+        shell: pwsh
+        run: |
+          Get-ChildItem -Recurse
+        
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
