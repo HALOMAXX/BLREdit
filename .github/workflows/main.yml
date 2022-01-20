@@ -27,14 +27,14 @@ jobs:
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1.0.2
         
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.0.2
+#      - name: Setup NuGet
+#        uses: NuGet/setup-nuget@v1.0.2
         
-      - name: Restore NuGet Packages
-        run: nuget restore $env:Solution_Name
+#      - name: Restore NuGet Packages
+#        run: nuget restore $env:Solution_Name
         
       - name: Build App
-        run: msbuild $env:Solution_Name /p:Configuration=Release /p:DeployOnBuild=true
+        run: msbuild $env:Solution_Name /t:Restore /p:Configuration=Release /p:DeployOnBuild=true
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
