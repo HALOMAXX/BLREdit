@@ -27,8 +27,11 @@ jobs:
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1.0.2
         
-      - name: Build App
+      - name: Restore NuGet
         run: msbuild $env:Solution_Name /t:Restore /p:Configuration=Release /p:DeployOnBuild=true
+        
+      - name: Build App
+        run: msbuild $env:Solution_Name /p:Configuration=Release /p:DeployOnBuild=true
         
       - name: ListFiles
         shell: pwsh
