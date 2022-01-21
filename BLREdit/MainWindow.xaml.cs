@@ -204,7 +204,7 @@ namespace BLREdit
             RecoilLabel.Content = Recoil.ToString("0.00") + "°";
             ZoomLabel.Content = Zoom.ToString("0.00");
             ScopeInLabel.Content = ScopeIn.ToString("0.00") + "s";
-            RangeLabel.Content = RangeClose.ToString("0") + " / " + RangeFar.ToString("0") + " / " + RangeMax.ToString("0");
+            RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
             RunLabel.Content = Run.ToString("0.00");
             LoggingSystem.LogInfo("Finished Updating Stats");
         }
