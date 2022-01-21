@@ -70,8 +70,9 @@ namespace BLREdit
 
             AssignIniStatsTo(Weapons.primary, IniItemStats);
             AssignIniStatsTo(Weapons.secondary, IniItemStats);
-
+#if DEBUG
             JsonSerializer.Serialize<IniStats[]>(File.OpenWrite("UpgradedStats.json"), IniItemStats, IOResources.JSOFields);
+#endif
         }
 
         public static IniStats[] GetFromWeapons(ImportItem[] items1, ImportItem[] items2)
