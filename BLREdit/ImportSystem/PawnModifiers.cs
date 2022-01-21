@@ -27,9 +27,7 @@ namespace BLREdit
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("BodyDamageReduction:{0}, ElectroProtection:{1}, ExplosiveProtection:{2}, GearSlots:{3}, HRVDuration:{4}, HRVRechargeRate:{5}, Health:{6}, HealthRecharge:{7}, HelmetDamageReduction:{8}, IncendiaryProtection:{9}, InfraredProtection:{10}, LegsDamageReduction:{11}, MeleeProtection:{12}, MeleeRange:{13}, MovementSpeed:{14}, PermanentHealthProtection:{15}, SprintMultiplier:{16}, Stamina:{17}, SwitchWeaponSpeed:{18}, ToxicProtection{19}", BodyDamageReduction, ElectroProtection, ExplosiveProtection, GearSlots, HRVDuration, HRVRechargeRate, Health, HealthRecharge, HelmetDamageReduction, IncendiaryProtection, InfraredProtection, LegsDamageReduction, MeleeProtection, MeleeRange, MovementSpeed, PermanentHealthProtection, SprintMultiplier, Stamina, SwitchWeaponSpeed, ToxicProtection);
-            return sb.ToString();
+            return LoggingSystem.ObjectToTextWall(this);
         }
     }
 }

@@ -15,9 +15,7 @@ namespace BLREdit
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("Accuracy:{0}, Damage:{1}, MovementSpeed:{2}, Range:{3}, RateOfFire:{4}, Recoil:{5}, ReloadSpeed:{6}, WeaponWeight:{7}", accuracy, damage, movementSpeed, range, rateOfFire, recoil, reloadSpeed, weaponWeight);
-            return sb.ToString();
+            return LoggingSystem.ObjectToTextWall(this);
         }
 
     }

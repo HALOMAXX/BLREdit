@@ -14,10 +14,10 @@
             </ItemsControl.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}">
+                    <StackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}">
                         <Image Source="{Binding Image, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
                         <Image Source="{Binding Crosshair, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
-                        <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                        <TextBlock Text="{Binding name}" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

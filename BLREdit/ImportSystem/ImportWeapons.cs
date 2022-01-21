@@ -41,27 +41,7 @@ namespace BLREdit
 
         public override string ToString()
         {
-            string TextWall = "{";
-
-            TextWall += "Depot:\n";
-            foreach (ImportItem item in depot)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nPrimaries:\n";
-            foreach (ImportItem item in primary)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nSecondaries:\n";
-            foreach (ImportItem item in secondary)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            return TextWall + "}";
+            return LoggingSystem.ObjectToTextWall(this);
         }
     }
 }

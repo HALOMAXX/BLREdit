@@ -100,17 +100,17 @@ namespace BLREdit
         );
         }
 
-        private double Lerp(double start, double target, double time)
+        private static double Lerp(double start, double target, double time)
         {
             return start * (1.0d - time) + target * time;
         }
 
-        private bool CheckCalculationReady(ImportItem item)
+        private static bool CheckCalculationReady(ImportItem item)
         {
             return item != null && item.WikiStats != null && item.IniStats != null && item.stats != null;
         }
 
-        private void UpdateStat(ImportItem[] items, ref double ROF, ref double AmmoMag, ref double AmmoRes, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
+        private static void UpdateStat(ImportItem[] items, ref double ROF, ref double AmmoMag, ref double AmmoRes, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
         {
             foreach (ImportItem item in items)
             { 
@@ -125,9 +125,9 @@ namespace BLREdit
             }
         }
 
-        private void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel)
+        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel)
         {
-            LoggingSystem.LogInfo("Updating Stats");
+            var watch = LoggingSystem.LogInfo("Updating Stats","");
 
             double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
 
@@ -175,7 +175,6 @@ namespace BLREdit
                 allRange += Stock?.weaponModifiers?.range ?? 0;
                 allRange += Scope?.weaponModifiers?.range ?? 0;
                 allRange += Magazine?.weaponModifiers?.range ?? 0;
-                LoggingSystem.LogInfo("AllRange: " + allRange);
                 allRange /= 100.0f;
                 var ranges = CalculateRange(Reciever, allRange);
                 RangeClose = ranges[0];
@@ -206,10 +205,10 @@ namespace BLREdit
             ScopeInLabel.Content = ScopeIn.ToString("0.00") + "s";
             RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
             RunLabel.Content = Run.ToString("0.00");
-            LoggingSystem.LogInfo("Finished Updating Stats");
+            LoggingSystem.LogInfoAppend(watch);
         }
 
-        private double[] CalculateRange(ImportItem Reciever, double allRange)
+        private static double[] CalculateRange(ImportItem Reciever, double allRange)
         {
             if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
             {
@@ -235,12 +234,12 @@ namespace BLREdit
             }
         }
 
-        private double[] CalculateSpread(ImportItem Reciever, double allAccuracy)
+        private static double[] CalculateSpread(ImportItem Reciever, double allAccuracy)
         {
             if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
             {
-                double accuracyBaseModifier = 1.0f;
-                double accuracyTABaseModifier = 1.0f;
+                double accuracyBaseModifier;
+                double accuracyTABaseModifier;
                 double alpha = Math.Abs(allAccuracy);
                 if (allAccuracy > 0)
                 {
@@ -269,11 +268,11 @@ namespace BLREdit
             }
         }
 
-        private double[] CalculateDamage(ImportItem Reciever, double allDamage)
+        private static double[] CalculateDamage(ImportItem Reciever, double allDamage)
         {
             if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
             {
-                double damageModifier = 1.0f;
+                double damageModifier;
                 double alpha = Math.Abs(allDamage);
                 if (allDamage > 0)
                 {
@@ -292,11 +291,11 @@ namespace BLREdit
             }
         }
 
-        private double CalculateRecoil(ImportItem Reciever, double allRecoil)
+        private static double CalculateRecoil(ImportItem Reciever, double allRecoil)
         {
             if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
             {
-                double recoilModifier = 1.0f;
+                double recoilModifier;
                 double alpha = Math.Abs(allRecoil);
                 if (allRecoil > 0)
                 {
@@ -313,9 +312,11 @@ namespace BLREdit
 
                     for (int shot = 1; shot <= averageShotCount; shot++)
                     {
-                        Vector3 newRecoil = new Vector3(0, 0, 0);
-                        newRecoil.X = (Reciever.IniStats.RecoilVector.X * Reciever.IniStats.RecoilVectorMultiplier.X) / 8.0f;
-                        newRecoil.Y = (Reciever.IniStats.RecoilVector.Y * Reciever.IniStats.RecoilVectorMultiplier.Y) / 2.0f;
+                        Vector3 newRecoil = new Vector3(0, 0, 0)
+                        {
+                            X = (Reciever.IniStats.RecoilVector.X * Reciever.IniStats.RecoilVectorMultiplier.X) / 8.0f,
+                            Y = (Reciever.IniStats.RecoilVector.Y * Reciever.IniStats.RecoilVectorMultiplier.Y) / 2.0f
+                        };
 
                         double previousMultiplier = Reciever.IniStats.RecoilSize * Math.Pow(shot / Reciever.IniStats.Burst, (Reciever.IniStats.RecoilAccumulation * Reciever.IniStats.RecoilAccumulationMultiplier));
                         double currentMultiplier = Reciever.IniStats.RecoilSize * Math.Pow(shot / Reciever.IniStats.Burst + 1.0f, (Reciever.IniStats.RecoilAccumulation * Reciever.IniStats.RecoilAccumulationMultiplier));
@@ -375,10 +376,9 @@ namespace BLREdit
             CheckValidity(SecondaryStockImage, secondary);
         }
 
-        private void CheckValidity(Image image, ImportItem item)
+        private static void CheckValidity(Image image, ImportItem item)
         {
-            ImportItem importItem = image.DataContext as ImportItem;
-            if (importItem != null && !importItem.IsValidFor(item))
+            if (image.DataContext is ImportItem importItem && !importItem.IsValidFor(item))
             { LoggingSystem.LogInfo(importItem.name + " was not a Valid Mod for " + item.name); image.DataContext = null; }
         }
 
@@ -389,6 +389,7 @@ namespace BLREdit
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            LoggingSystem.LogInfo("MouseDown in ListView/StackPanel");
             var pt = e.GetPosition(ItemList);
             var result = VisualTreeHelper.HitTest(ItemList, pt);
             if (result.VisualHit is Image image)
@@ -397,6 +398,21 @@ namespace BLREdit
                 {
                     LoggingSystem.LogInfo("Sending:" + item.name);
                     DragDrop.DoDragDrop(image, item, DragDropEffects.Copy);
+                }
+            }
+            else if (result.VisualHit is StackPanel panel)
+            {
+                LoggingSystem.LogInfo(panel.DataContext.ToString());
+                foreach (var child in panel.Children)
+                {
+                    if (child is Image imageChild)
+                    {
+                        if (imageChild.DataContext is ImportItem item)
+                        {
+                            LoggingSystem.LogInfo("Sending:" + item.name);
+                            DragDrop.DoDragDrop(imageChild, item, DragDropEffects.Copy);
+                        }
+                    }
                 }
             }
         }
@@ -476,8 +492,21 @@ namespace BLREdit
                             { image.DataContext = item; LoggingSystem.LogInfo("Barrel Set!"); }
                             if (image.Name.Contains("Magazine") && ImportSystem.Mods.magazines.Contains(item))
                             { image.DataContext = item; LoggingSystem.LogInfo("Magazine with ID:" + ImportSystem.GetMagazineID(item) + " Set!"); }
+
                             if (image.Name.Contains("Stock") && ImportSystem.Mods.stocks.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Stock Set!"); }
+                            {
+                                if (image.Name.Contains("Primary"))
+                                {
+                                    SetStock(PrimaryRecieverImage, PrimaryBarrelImage, PrimaryStockImage, item);
+                                    LoggingSystem.LogInfo("Stock Set!");
+                                }
+                                else
+                                {
+                                    SetStock(SecondaryRecieverImage, SecondaryBarrelImage, SecondaryStockImage, item);
+                                    LoggingSystem.LogInfo("Stock Set!");
+                                }
+                            }
+
                             if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item))
                             { image.DataContext = item; LoggingSystem.LogInfo("Gear Set!"); }
                             if (image.Name.Contains("Tactical") && ImportSystem.Gear.tactical.Contains(item))
@@ -487,6 +516,27 @@ namespace BLREdit
                         }
                         UpdateActiveLoadout();
                     }
+                }
+            }
+        }
+
+        private void SetStock(Image reciever, Image barrel, Image stock, ImportItem item)
+        {
+            if (reciever.DataContext is ImportItem Reciever)
+            {
+                if (Reciever.name == "Light Pistol" || Reciever.name == "Heavy Pistol")
+                {
+                    if (barrel.DataContext is ImportItem Barrel)
+                    {
+                        if (Barrel.name != "No Barrel Mod")
+                        {
+                            stock.DataContext = item;
+                        }
+                    }
+                }
+                else
+                {
+                    stock.DataContext = item;
                 }
             }
         }
@@ -501,16 +551,34 @@ namespace BLREdit
             FillEmptyMods(reciever, SecondaryMuzzleImage, SecondaryBarrelImage, SecondaryMagazineImage, SecondaryScopeImage, SecondaryCrosshairImage, SecondaryStockImage);
         }
 
-        private void FillEmptyMods(ImportItem reciever, Image muzzle, Image barrel, Image magazine, Image scope, Image crosshair, Image Stock)
+        private static void FillEmptyMods(ImportItem reciever, Image muzzle, Image barrel, Image magazine, Image scope, Image crosshair, Image stock)
         {
             Weapon weapon = Weapon.GetDefaultSetupOfReciever(reciever);
             if (muzzle.DataContext == null)
             { 
                 muzzle.DataContext = weapon.GetMuzzle();
             }
-            if (barrel.DataContext == null)
+            if (barrel.DataContext == null || (barrel.DataContext as ImportItem).name == Weapon.NoBarrel)
             {
                 barrel.DataContext = weapon.GetBarrel();
+                if (reciever.name == "Light Pistol" || reciever.name == "Heavy Pistol")
+                {
+                    stock.DataContext = weapon.GetStock();
+                }
+            }
+            else
+            {
+                if (stock.DataContext == null || (stock.DataContext as ImportItem).name == Weapon.NoStock)
+                {
+                    if (reciever.name == "Light Pistol" || reciever.name == "Heavy Pistol")
+                    {
+                        stock.DataContext = Weapon.DefaultAssaultRifle.GetStock();
+                    }
+                    else
+                    { 
+                        stock.DataContext= weapon.GetStock();
+                    }
+                }
             }
             if (magazine.DataContext == null)
             {
@@ -520,10 +588,6 @@ namespace BLREdit
             {
                 scope.DataContext = weapon.GetScope();
                 crosshair.DataContext = weapon.GetScope();
-            }
-            if (Stock.DataContext == null)
-            {
-                Stock.DataContext = weapon.GetStock();
             }
         }
 
@@ -586,7 +650,7 @@ namespace BLREdit
                         }
                         if (image.Name.Contains("Crosshair"))
                         {
-                            var item = (PrimaryScopeImage.DataContext as ImportItem);
+                            var item = (SecondaryScopeImage.DataContext as ImportItem);
                             item.LoadCrosshair();
                             ItemList.ItemsSource = new ImportItem[] { item };
                             LoggingSystem.LogInfo("ItemList Set for Scopes");
