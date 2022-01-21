@@ -47,7 +47,7 @@ namespace BLREdit
             BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
             var fields = obj.GetType().GetFields(flags);
             var props = obj.GetType().GetProperties(flags);
-            sb.Append("{");
+            sb.Append('{');
             foreach (FieldInfo field in fields)
             {
                 sb.AppendFormat(" {0}:{1},", field.Name, field.GetValue(obj));

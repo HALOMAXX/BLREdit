@@ -277,7 +277,7 @@ namespace BLREdit
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 104,  Muzzle = 9,     Receiver = "LMG Recon",                 Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 1  LMG Recon
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 107,  Muzzle = 9,     Receiver = "Tactical SMG",              Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 2  Tactical SMG
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 140,  Muzzle = 9,     Receiver = "Burstfire SMG",             Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 3  Burstfire SMG
-            new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = -1,    Muzzle = 0,     Receiver = "Anti-Materiel Rifle",       Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 4  Anti-Materiel Rifle
+            new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = -1,   Muzzle = 0,     Receiver = "Anti-Materiel Rifle",       Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 4  Anti-Materiel Rifle
             new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = 149,  Muzzle = 9,     Receiver = "Bullpup Full Auto",         Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 5  Bullpup Full Auto
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 195,  Muzzle = 9,     Receiver = "AK470 Rifle",               Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 6  AK470 Rifle
             new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = 205,  Muzzle = 0,     Receiver = "Compound Bow",              Stock = "No Stock",                             Scope="No Optic Mod" },                 // 7  Compound Bow
@@ -302,6 +302,11 @@ namespace BLREdit
             new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = 99,   Muzzle = 0,     Receiver = "Revolver",                  Stock = "No Stock",                             Scope="No Optic Mod" },                 // 26 Revolver
             new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = 29,   Muzzle = 0,     Receiver = "Shotgun",                   Stock = "Silverwood Standard Stock",            Scope="No Optic Mod" },                 // 27 Shotgun
         };
+
+        public const string NoBarrel = "No Barrel Mod";
+        public const string NoGrip = "";
+        public const string NoStock = "No Stock";
+        public const string NoScope = "No Optic Mod";
 
         public static Weapon DefaultAssaultRifle { get { return DefaultWeapons[10]; } }
         public static Weapon DefaultSubmachineGun { get { return DefaultWeapons[15]; } }

@@ -125,7 +125,7 @@ namespace BLREdit
 
         public static int GetMuzzleID(ImportItem item)
         {
-            return GetItemID(item, Mods.muzzles) + 1;
+            return GetItemID(item, Mods.muzzles);
         }
         public static int GetMagazineID(ImportItem item)
         {
