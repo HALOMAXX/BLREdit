@@ -129,7 +129,7 @@ namespace BLREdit
         {
             var watch = LoggingSystem.LogInfo("Updating Stats","");
 
-            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
+            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
 
             if (CheckCalculationReady(Reciever))
             {
@@ -158,6 +158,7 @@ namespace BLREdit
                 allRecoil += Magazine?.weaponModifiers?.recoil ?? 0;
                 allRecoil /= 100.0f;
                 Recoil = CalculateRecoil(Reciever, allRecoil);
+                RecoilZoom = Reciever.IniStats.RecoilZoomMultiplier * 0.8;
 
 
                 double allDamage = Barrel?.weaponModifiers?.damage ?? 0;
@@ -200,9 +201,9 @@ namespace BLREdit
             AimLabel.Content = Aim.ToString("0.00") + "°";
             HipLabel.Content = Hip.ToString("0.00") + "°";
             MoveLabel.Content = Move.ToString("0.00") + "°";
-            RecoilLabel.Content = Recoil.ToString("0.00") + "°";
+            RecoilLabel.Content = Recoil.ToString("0.00") + "°" + " / " + RecoilZoom.ToString("0.000");
             ZoomLabel.Content = Zoom.ToString("0.00");
-            ScopeInLabel.Content = ScopeIn.ToString("0.00") + "s";
+            ScopeInLabel.Content = ScopeIn.ToString("0.000") + "s";
             RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
             RunLabel.Content = Run.ToString("0.00");
             LoggingSystem.LogInfoAppend(watch);
