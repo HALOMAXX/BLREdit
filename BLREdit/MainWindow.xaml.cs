@@ -68,6 +68,7 @@ namespace BLREdit
                 PrimaryHipLabel,
                 PrimaryMoveLabel,
                 PrimaryRecoilLabel,
+                PrimaryZoomRecoilLabel,
                 PrimaryZoomLabel,
                 PrimaryScopeInLabel,
                 PrimaryRangeLabel,
@@ -93,6 +94,7 @@ namespace BLREdit
                 SecondaryHipLabel,
                 SecondaryMoveLabel,
                 SecondaryRecoilLabel,
+                SecondaryZoomRecoilLabel,
                 SecondaryZoomLabel,
                 SecondaryScopeInLabel,
                 SecondaryRangeLabel,
@@ -125,7 +127,7 @@ namespace BLREdit
             }
         }
 
-        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel)
+        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel)
         {
             var watch = LoggingSystem.LogInfo("Updating Stats","");
 
@@ -158,7 +160,7 @@ namespace BLREdit
                 allRecoil += Magazine?.weaponModifiers?.recoil ?? 0;
                 allRecoil /= 100.0f;
                 Recoil = CalculateRecoil(Reciever, allRecoil);
-                RecoilZoom = Reciever.IniStats.RecoilZoomMultiplier * 0.8;
+                RecoilZoom = Recoil * Reciever.IniStats.RecoilZoomMultiplier * 0.8;
 
 
                 double allDamage = Barrel?.weaponModifiers?.damage ?? 0;
@@ -201,7 +203,8 @@ namespace BLREdit
             AimLabel.Content = Aim.ToString("0.00") + "°";
             HipLabel.Content = Hip.ToString("0.00") + "°";
             MoveLabel.Content = Move.ToString("0.00") + "°";
-            RecoilLabel.Content = Recoil.ToString("0.00") + "°" + " / " + RecoilZoom.ToString("0.000");
+            RecoilLabel.Content = Recoil.ToString("0.00") + "°";
+            ZoomRecoilLabel.Content = RecoilZoom.ToString("0.00") + "°";
             ZoomLabel.Content = Zoom.ToString("0.00");
             ScopeInLabel.Content = ScopeIn.ToString("0.000") + "s";
             RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
