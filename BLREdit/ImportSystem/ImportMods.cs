@@ -66,69 +66,7 @@ namespace BLREdit
         }
         public override string ToString()
         {
-            string TextWall = "{";
-
-            TextWall += "Ammo:\n";
-            foreach (ImportItem item in ammo)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nAmmos:\n";
-            foreach (ImportItem item in ammos)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nBarrels:\n";
-            foreach (ImportItem item in barrels)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nCamos:\n";
-            foreach (ImportItem item in camos)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nGrips:\n";
-            foreach (ImportItem item in grips)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nMagazines:\n";
-            foreach (ImportItem item in magazines)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nMuzzles:\n";
-            foreach (ImportItem item in muzzles)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nPrimarySkins:\n";
-            foreach (ImportItem item in primarySkins)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nScopes:\n";
-            foreach (ImportItem item in scopes)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nStocks:\n";
-            foreach (ImportItem item in stocks)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            return TextWall + "}";
+            return LoggingSystem.ObjectToTextWall(this);
         }
     }
 }

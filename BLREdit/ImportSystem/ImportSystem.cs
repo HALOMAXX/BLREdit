@@ -27,14 +27,14 @@ namespace BLREdit
 
         internal static void Initialize()
         {
-            LoggingSystem.LogInfo("Initializing Import System");
+            var watch = LoggingSystem.LogInfo("Initializing Import System");
 
             UpdateImages();
             CleanItems();
             LoadWikiStats();
             LoadIniStats();
 
-            LoggingSystem.LogInfo("Finished Initializing Import System");
+            LoggingSystem.LogInfoAppend(watch, "Import System");
         }
 
         private static void UpdateImages()
@@ -70,24 +70,6 @@ namespace BLREdit
 
             AssignIniStatsTo(Weapons.primary, IniItemStats);
             AssignIniStatsTo(Weapons.secondary, IniItemStats);
-
-            //foreach (IniStats stat in IniItemStats)
-            //{
-            //    stat.ApplyTime = Math.Round(stat.ApplyTime, 10);
-            //    stat.BaseSpread = Math.Round(stat.BaseSpread, 10);
-            //    stat.Burst = Math.Round(stat.Burst, 10);
-            //    stat.CrouchSpreadMultiplier = Math.Round(stat.CrouchSpreadMultiplier, 10);
-            //    stat.IdealDistance = Math.Round(stat.IdealDistance, 10);
-            //    stat.JumpSpreadMultiplier = Math.Round(stat.ApplyTime, 10);
-            //    stat.MaxDistance = Math.Round(stat.ApplyTime, 10);
-            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
-            //    stat. = Math.Round(stat.ApplyTime, 10);
-            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
-            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
-            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
-            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
-            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
-            //}
 
             JsonSerializer.Serialize<IniStats[]>(File.OpenWrite("UpgradedStats.json"), IniItemStats, IOResources.JSOFields);
         }
@@ -262,7 +244,7 @@ namespace BLREdit
 
         internal static void UpdateImagesForImportItems(ImportItem[] items, string categoryName)
         {
-            LoggingSystem.LogInfo("Updating Images for " + categoryName);
+            var watch = LoggingSystem.LogInfo("Updating Images for " + categoryName, "");
             foreach (ImportItem item in items)
             {
                 item.LoadImage();
@@ -271,54 +253,50 @@ namespace BLREdit
                     item.IniStats = new IniStats() { ItemName = item.name, ItemID = item.uid, ROF = item.stats.rateOfFire, Burst = 1, ApplyTime = (60.0f / item.stats.rateOfFire) };
                 }
             }
-            LoggingSystem.LogInfo("Done Updating Images for " + categoryName);
+            LoggingSystem.LogInfoAppend(watch);
         }
 
         private static FoxIcon[] LoadAllIcons()
         {
-            LoggingSystem.LogInfo("Loading All Icons");
+            var watch = LoggingSystem.LogInfo("Loading All Icons","");
             var icons = new List<FoxIcon>();
             foreach (var icon in Directory.EnumerateFiles("Assets\\textures"))
             {
                 icons.Add(new FoxIcon(icon));
             }
-            LoggingSystem.LogInfo("Finished Loading All Icons");
+            LoggingSystem.LogInfoAppend(watch);
             return icons.ToArray();
         }
         private static FoxIcon[] LoadAllCrosshairs()
         {
-            LoggingSystem.LogInfo("Loading All Crosshairs");
+            var watch = LoggingSystem.LogInfo("Loading All Crosshairs","");
             var icons = new List<FoxIcon>();
             foreach (var icon in Directory.EnumerateFiles("Assets\\crosshairs"))
             {
                 icons.Add(new FoxIcon(icon));
             }
-            LoggingSystem.LogInfo("Finished Loading All Crosshairs");
+            LoggingSystem.LogInfoAppend(watch);
             return icons.ToArray();
         }
 
         public static ImportItem[] CleanItems(ImportItem[] importItems, string categoryName)
         {
-            LoggingSystem.LogInfo("Cleaning " + categoryName);
+            var watch = LoggingSystem.LogInfo("Started Cleaning " + categoryName,"");
             List<ImportItem> cleanedItems = new List<ImportItem>();
             foreach (ImportItem item in importItems)
             {
-                if (IsExceptionCategory(categoryName) || IsValidItem(item))
+                if (IsValidItem(item))
                 {
                     item.Category = categoryName;
                     cleanedItems.Add(item);
                 }
             }
-            LoggingSystem.LogInfo("Finished Cleaning " + categoryName);
+            LoggingSystem.LogInfoAppend(watch);
             return cleanedItems.ToArray();
-        }
-        public static bool IsExceptionCategory(string category)
-        {
-            return category == "Attachments" || category == "Tactical";
         }
         public static bool IsValidItem(ImportItem item)
         {
-            return !string.IsNullOrEmpty(item.icon) && item.tooltip != "SHOULDN'T BE USED" && !string.IsNullOrEmpty(item.name);
+            return item.tooltip != "SHOULDN'T BE USED" && !string.IsNullOrEmpty(item.name);
         }
     }
 }

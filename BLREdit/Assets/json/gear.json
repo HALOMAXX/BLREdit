@@ -203,34 +203,34 @@
             "tooltip": "Armor item.<br>Hides agent heat signature from IR scopes",
             "uid": 12030
         },
-        {
-            "class": "FoxDataProvider_Gear_Attachment",
-            "icon": "",
-            "name": "",
-            "tooltip": "",
-            "uid": 12099
-        },
-        {
-            "class": "FoxDataProvider_Gear_Attachment",
-            "icon": "",
-            "name": "",
-            "tooltip": "",
-            "uid": 12098
-        },
-        {
-            "class": "FoxDataProvider_Gear_Attachment",
-            "icon": "",
-            "name": "",
-            "tooltip": "",
-            "uid": 12097
-        },
-        {
-            "class": "FoxDataProvider_Gear_Attachment",
-            "icon": "",
-            "name": "",
-            "tooltip": "",
-            "uid": 12096
-        },
+      {
+        "class": "FoxDataProvider_Gear_Attachment",
+        "icon": "",
+        "name": "",
+        "tooltip": "SHOULDN'T BE USED",
+        "uid": 12099
+      },
+      {
+        "class": "FoxDataProvider_Gear_Attachment",
+        "icon": "",
+        "name": "",
+        "tooltip": "SHOULDN'T BE USED",
+        "uid": 12098
+      },
+      {
+        "class": "FoxDataProvider_Gear_Attachment",
+        "icon": "",
+        "name": "",
+        "tooltip": "SHOULDN'T BE USED",
+        "uid": 12097
+      },
+      {
+        "class": "FoxDataProvider_Gear_Attachment",
+        "icon": "",
+        "name": "",
+        "tooltip": "SHOULDN'T BE USED",
+        "uid": 12096
+      },
         {
             "class": "FoxDataProvider_Gear_Attachment",
             "icon": "t_Gear_ToxicHammer_128x128",
@@ -8881,13 +8881,13 @@
             "tooltip": "Tactical gear.<br>Equip to shield yourself from the front.",
             "uid": 13013
         },
-        {
-            "class": "FoxDataProvider_Gear_Tactical",
-            "icon": "",
-            "name": "",
-            "tooltip": "",
-            "uid": 13099
-        }
+      {
+        "class": "FoxDataProvider_Gear_Tactical",
+        "icon": "",
+        "name": "",
+        "tooltip": "SHOULDN'T BE USED",
+        "uid": 13099
+      }
     ],
     "upperBodies": [
         {

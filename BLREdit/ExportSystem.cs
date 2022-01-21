@@ -123,6 +123,10 @@ namespace BLREdit
         public Loadout Loadout1 { get; set; } = Loadout.DefaultLoadout1;
         public Loadout Loadout2 { get; set; } = Loadout.DefaultLoadout2;
         public Loadout Loadout3 { get; set; } = Loadout.DefaultLoadout3;
+        public override string ToString()
+        {
+            return LoggingSystem.ObjectToTextWall(this);
+        }
     }
 
     public class Loadout
@@ -134,6 +138,11 @@ namespace BLREdit
         public int Gear3 { get; set; } = 0;
         public int Gear4 { get; set; } = 0;
         public int Tactical { get; set; } = 0;
+
+        public override string ToString()
+        {
+            return LoggingSystem.ObjectToTextWall(this);
+        }
 
         public static Loadout DefaultLoadout1 { get; } = new Loadout() { Primary = Weapon.DefaultAssaultRifle, Secondary = Weapon.DefaultLightPistol };
         public static Loadout DefaultLoadout2 { get; } = new Loadout() { Primary = Weapon.DefaultSubmachineGun, Secondary = Weapon.DefaultLightPistol };
@@ -160,6 +169,11 @@ namespace BLREdit
         public string Scope { get; set; } = "No Optic Mod";
         public string Grip { get; set; } = "";
 
+        public override string ToString()
+        {
+            return LoggingSystem.ObjectToTextWall(this);
+        }
+
         public ImportItem GetReciever()
         {
             ImportItem item = null;
@@ -182,9 +196,9 @@ namespace BLREdit
 
         public ImportItem GetMuzzle()
         {
-            if (Muzzle - 1 < 0)
+            if (Muzzle < 0)
             { return null; }
-            return ImportSystem.Mods.muzzles[Muzzle - 1];
+            return ImportSystem.Mods.muzzles[Muzzle];
         }
 
         public ImportItem GetStock()

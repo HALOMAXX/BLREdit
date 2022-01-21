@@ -72,63 +72,7 @@ namespace BLREdit
 
         public override string ToString()
         {
-            string TextWall = "{";
-
-            TextWall += "Atachments:\n";
-            foreach (ImportItem item in attachments)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nAvatars:\n";
-            foreach (ImportItem item in avatars)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nBadges:\n";
-            foreach (ImportItem item in badges)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nEmotes:\n";
-            foreach (ImportItem item in emotes)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nHelmets:\n";
-            foreach (ImportItem item in helmets)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nHelmets:\n";
-            foreach (ImportItem item in helmets)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nLowerBodies:\n";
-            foreach (ImportItem item in lowerBodies)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nTactical:\n";
-            foreach (ImportItem item in tactical)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            TextWall += "\nUpperBodies:\n";
-            foreach (ImportItem item in upperBodies)
-            {
-                TextWall += "\t" + item.ToString() + "\n";
-            }
-
-            return TextWall + "}";
+            return LoggingSystem.ObjectToTextWall(this);
         }
     }
 }

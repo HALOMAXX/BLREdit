@@ -24,10 +24,7 @@ namespace BLREdit
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("[ ID={0}, Name={1}, Damage={2}, ROF={3}, Ammo={4}/{5}, Reload={6}, SwapRate={7}, Aim={8}, Hip={9}, Move={10}, Recoil={11}, Zoom={12}, Scope In={13}, Range={14}/{15}, Run={16}]",
-                itemID, itemName, damage, firerate, ammoMag, ammoReserve, reload, swaprate, aimSpread, hipSpread, moveSpread, recoil, zoom, scopeInTime, rangeClose, rangeFar, run);
-            return sb.ToString();
+            return LoggingSystem.ObjectToTextWall(this);
         }
     }
 }

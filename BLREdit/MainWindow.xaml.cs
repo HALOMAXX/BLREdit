@@ -127,7 +127,7 @@ namespace BLREdit
 
         private void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel)
         {
-            LoggingSystem.LogInfo("Updating Stats");
+            var watch = LoggingSystem.LogInfo("Updating Stats","");
 
             double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
 
@@ -175,7 +175,6 @@ namespace BLREdit
                 allRange += Stock?.weaponModifiers?.range ?? 0;
                 allRange += Scope?.weaponModifiers?.range ?? 0;
                 allRange += Magazine?.weaponModifiers?.range ?? 0;
-                LoggingSystem.LogInfo("AllRange: " + allRange);
                 allRange /= 100.0f;
                 var ranges = CalculateRange(Reciever, allRange);
                 RangeClose = ranges[0];
@@ -206,7 +205,7 @@ namespace BLREdit
             ScopeInLabel.Content = ScopeIn.ToString("0.00") + "s";
             RangeLabel.Content = RangeClose.ToString("0") + " / " + RangeFar.ToString("0") + " / " + RangeMax.ToString("0");
             RunLabel.Content = Run.ToString("0.00");
-            LoggingSystem.LogInfo("Finished Updating Stats");
+            LoggingSystem.LogInfoAppend(watch);
         }
 
         private double[] CalculateRange(ImportItem Reciever, double allRange)
@@ -389,6 +388,7 @@ namespace BLREdit
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            LoggingSystem.LogInfo("MouseDown in ListView/StackPanel");
             var pt = e.GetPosition(ItemList);
             var result = VisualTreeHelper.HitTest(ItemList, pt);
             if (result.VisualHit is Image image)
@@ -397,6 +397,21 @@ namespace BLREdit
                 {
                     LoggingSystem.LogInfo("Sending:" + item.name);
                     DragDrop.DoDragDrop(image, item, DragDropEffects.Copy);
+                }
+            }
+            else if (result.VisualHit is StackPanel panel)
+            {
+                LoggingSystem.LogInfo(panel.DataContext.ToString());
+                foreach (var child in panel.Children)
+                {
+                    if (child is Image imageChild)
+                    {
+                        if (imageChild.DataContext is ImportItem item)
+                        {
+                            LoggingSystem.LogInfo("Sending:" + item.name);
+                            DragDrop.DoDragDrop(imageChild, item, DragDropEffects.Copy);
+                        }
+                    }
                 }
             }
         }
@@ -586,7 +601,7 @@ namespace BLREdit
                         }
                         if (image.Name.Contains("Crosshair"))
                         {
-                            var item = (PrimaryScopeImage.DataContext as ImportItem);
+                            var item = (SecondaryScopeImage.DataContext as ImportItem);
                             item.LoadCrosshair();
                             ItemList.ItemsSource = new ImportItem[] { item };
                             LoggingSystem.LogInfo("ItemList Set for Scopes");
