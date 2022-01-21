@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text.Json;
@@ -69,6 +70,24 @@ namespace BLREdit
 
             AssignIniStatsTo(Weapons.primary, IniItemStats);
             AssignIniStatsTo(Weapons.secondary, IniItemStats);
+
+            //foreach (IniStats stat in IniItemStats)
+            //{
+            //    stat.ApplyTime = Math.Round(stat.ApplyTime, 10);
+            //    stat.BaseSpread = Math.Round(stat.BaseSpread, 10);
+            //    stat.Burst = Math.Round(stat.Burst, 10);
+            //    stat.CrouchSpreadMultiplier = Math.Round(stat.CrouchSpreadMultiplier, 10);
+            //    stat.IdealDistance = Math.Round(stat.IdealDistance, 10);
+            //    stat.JumpSpreadMultiplier = Math.Round(stat.ApplyTime, 10);
+            //    stat.MaxDistance = Math.Round(stat.ApplyTime, 10);
+            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
+            //    stat. = Math.Round(stat.ApplyTime, 10);
+            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
+            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
+            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
+            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
+            //    stat.MaxRangeDamageMultiplier = Math.Round(stat.ApplyTime, 10);
+            //}
 
             JsonSerializer.Serialize<IniStats[]>(File.OpenWrite("UpgradedStats.json"), IniItemStats, IOResources.JSOFields);
         }

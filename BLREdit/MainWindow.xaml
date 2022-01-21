@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="BLREdit" Height="930" Width="1660" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="BLREdit" Height="940" Width="1660" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid AllowDrop="True">
         <ListView x:Name="ItemList" Margin="360,0,0,0">
             <ItemsControl.ItemsPanel>
@@ -14,7 +14,7 @@
             </ItemsControl.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}">
                         <Image Source="{Binding Image, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
                         <Image Source="{Binding Crosshair, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
                         <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />

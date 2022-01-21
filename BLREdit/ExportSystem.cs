@@ -58,12 +58,14 @@ namespace BLREdit
             if (value == null)
                 throw new ArgumentNullException("Attempt to set clipboard with null");
 
-            Process clipboardExecutable = new Process();
-            clipboardExecutable.StartInfo = new ProcessStartInfo // Creates the process
+            Process clipboardExecutable = new Process
             {
-                RedirectStandardInput = true,
-                FileName = @"clip",
-                UseShellExecute = false
+                StartInfo = new ProcessStartInfo // Creates the process
+                {
+                    RedirectStandardInput = true,
+                    FileName = @"clip",
+                    UseShellExecute = false
+                }
             };
             clipboardExecutable.Start();
 
@@ -243,14 +245,26 @@ namespace BLREdit
             return item;
         }
 
+        public static Weapon GetDefaultSetupOfReciever(ImportItem item)
+        {
+            foreach (Weapon weapon in DefaultWeapons)
+            {
+                if (weapon.Receiver == item.name)
+                { 
+                    return weapon;
+                }
+            }
+            return null;
+        }
+
         public static readonly Weapon[] DefaultWeapons = new Weapon[]
         {
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 115,  Muzzle = 9,     Receiver = "Heavy Assault Rifle",       Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 0  Heavy Assault Rifle
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 104,  Muzzle = 9,     Receiver = "LMG Recon",                 Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 1  LMG Recon
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 107,  Muzzle = 9,     Receiver = "Tactical SMG",              Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 2  Tactical SMG
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 140,  Muzzle = 9,     Receiver = "Burstfire SMG",             Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 3  Burstfire SMG
-            new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = 0,    Muzzle = 0,     Receiver = "Anti-Materiel Rifle",       Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 4  Anti-Materiel Rifle
-            new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 149,  Muzzle = 9,     Receiver = "Bullpup Full Auto",         Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 5  Bullpup Full Auto
+            new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = -1,    Muzzle = 0,     Receiver = "Anti-Materiel Rifle",       Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 4  Anti-Materiel Rifle
+            new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = 149,  Muzzle = 9,     Receiver = "Bullpup Full Auto",         Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 5  Bullpup Full Auto
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 195,  Muzzle = 9,     Receiver = "AK470 Rifle",               Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 6  AK470 Rifle
             new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = 205,  Muzzle = 0,     Receiver = "Compound Bow",              Stock = "No Stock",                             Scope="No Optic Mod" },                 // 7  Compound Bow
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 185,  Muzzle = 9,     Receiver = "M4X Rifle",                 Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 8  M4X Rifle

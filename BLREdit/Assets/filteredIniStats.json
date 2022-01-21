@@ -4,7 +4,7 @@
     "ItemName": "Heavy Assault Rifle",
     "ROF": 500,
     "Burst": 1,
-    "ApplyTime": 0.12,
+    "ApplyTime": 0.119999997,
     "RecoilSize": 0.5,
     "RecoilVector": {
       "X": 0.1,
@@ -24,6 +24,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.82,
     "ZoomSpreadMultiplier": 0.475,
+    "IdealDistance": 6000,
+    "MaxDistance": 9000,
+    "MaxTraceDistance": 10000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 54,
@@ -44,6 +48,16 @@
       "X": 1.25,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 5000,
+      "Y": 7000,
+      "Z": 6000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 8000,
+      "Y": 10000,
+      "Z": 9000
     }
   },
   {
@@ -63,14 +77,18 @@
       "Y": 1,
       "Z": 0
     },
-    "RecoilAccumulation": 1.4,
+    "RecoilAccumulation": 1.39999998,
     "RecoilAccumulationMultiplier": 0.95,
     "BaseSpread": 0.05,
     "TABaseSpread": 0.01,
     "CrouchSpreadMultiplier": 0.9,
     "JumpSpreadMultiplier": 4,
-    "MovementSpreadMultiplier": 2.0,
+    "MovementSpreadMultiplier": 2,
     "ZoomSpreadMultiplier": 0.45,
+    "IdealDistance": 4500,
+    "MaxDistance": 6500,
+    "MaxTraceDistance": 7500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 58,
@@ -91,6 +109,16 @@
       "X": 1.3,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 4800,
+      "Y": 5200,
+      "Z": 4500
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 6000,
+      "Y": 7200,
+      "Z": 6500
     }
   },
   {
@@ -118,6 +146,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.1,
     "ZoomSpreadMultiplier": 0.5,
+    "IdealDistance": 1700,
+    "MaxDistance": 4500,
+    "MaxTraceDistance": 6000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 20,
@@ -138,6 +170,16 @@
       "X": 1.3,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 1500,
+      "Y": 2200,
+      "Z": 1700
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 3500,
+      "Y": 5500,
+      "Z": 4500
     }
   },
   {
@@ -145,7 +187,7 @@
     "ItemName": "Burstfire SMG",
     "ROF": 850,
     "Burst": 4,
-    "ApplyTime": 0.16,
+    "ApplyTime": 0.159999996,
     "RecoilSize": 0.085,
     "RecoilVector": {
       "X": 0,
@@ -165,6 +207,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 2,
     "ZoomSpreadMultiplier": 0.5,
+    "IdealDistance": 1000,
+    "MaxDistance": 5000,
+    "MaxTraceDistance": 5500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 28,
@@ -185,6 +231,16 @@
       "X": 1.3,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 500,
+      "Y": 1500,
+      "Z": 1000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 4500,
+      "Y": 5500,
+      "Z": 5000
     }
   },
   {
@@ -212,6 +268,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 6,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 18000,
+    "MaxDistance": 20000,
+    "MaxTraceDistance": 25000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 275,
@@ -232,6 +292,16 @@
       "X": 1.1,
       "Y": 0.9,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 16000,
+      "Y": 20000,
+      "Z": 18000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 18000,
+      "Y": 22000,
+      "Z": 20000
     }
   },
   {
@@ -259,6 +329,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.3,
     "ZoomSpreadMultiplier": 0.425,
+    "IdealDistance": 3000,
+    "MaxDistance": 3500,
+    "MaxTraceDistance": 3800,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 45,
@@ -277,8 +351,18 @@
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.800000012,
+      "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 2800,
+      "Y": 3500,
+      "Z": 3000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 3200,
+      "Y": 3800,
+      "Z": 3500
     }
   },
   {
@@ -306,6 +390,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.25,
     "ZoomSpreadMultiplier": 0.425,
+    "IdealDistance": 4500,
+    "MaxDistance": 7000,
+    "MaxTraceDistance": 10500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 43,
@@ -326,6 +414,16 @@
       "X": 1.25,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 3500,
+      "Y": 6200,
+      "Z": 4500
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 6000,
+      "Y": 8000,
+      "Z": 7000
     }
   },
   {
@@ -353,6 +451,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.1,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 8000,
+    "MaxDistance": 16384,
+    "MaxTraceDistance": 15000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 0,
@@ -373,6 +475,16 @@
       "X": 1.5,
       "Y": 0.75,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 7000,
+      "Y": 9000,
+      "Z": 8000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 9000,
+      "Y": 10500,
+      "Z": 10000
     }
   },
   {
@@ -399,7 +511,11 @@
     "CrouchSpreadMultiplier": 0.7,
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.8,
-    "ZoomSpreadMultiplier": 0.425,
+    "ZoomSpreadMultiplier": 0.4250,
+    "IdealDistance": 2500,
+    "MaxDistance": 4000,
+    "MaxTraceDistance": 4500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 33,
@@ -420,6 +536,16 @@
       "X": 1.25,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 2000,
+      "Y": 3000,
+      "Z": 2500
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 3000,
+      "Y": 4500,
+      "Z": 4000
     }
   },
   {
@@ -447,6 +573,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.75,
     "ZoomSpreadMultiplier": 0.425,
+    "IdealDistance": 5000,
+    "MaxDistance": 8000,
+    "MaxTraceDistance": 12000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 48,
@@ -464,9 +594,19 @@
       "Z": 0.014
     },
     "ModificationRangeRecoil": {
-      "X": 1.11000001,
-      "Y": 0.899999976,
+      "X": 1.11,
+      "Y": 0.7,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 4000,
+      "Y": 6000,
+      "Z": 5000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 7000,
+      "Y": 9000,
+      "Z": 8000
     }
   },
   {
@@ -494,6 +634,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.25,
     "ZoomSpreadMultiplier": 0.425,
+    "IdealDistance": 4000,
+    "MaxDistance": 7000,
+    "MaxTraceDistance": 10500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 40,
@@ -514,6 +658,16 @@
       "X": 1.11,
       "Y": 0.9,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 3500,
+      "Y": 4500,
+      "Z": 4000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 6000,
+      "Y": 8000,
+      "Z": 7000
     }
   },
   {
@@ -541,6 +695,10 @@
     "JumpSpreadMultiplier": 2,
     "MovementSpreadMultiplier": 2,
     "ZoomSpreadMultiplier": 0.2,
+    "IdealDistance": 8000,
+    "MaxDistance": 13000,
+    "MaxTraceDistance": 14000,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 150,
@@ -561,6 +719,16 @@
       "X": 1.25,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 7000,
+      "Y": 10000,
+      "Z": 8000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 11000,
+      "Y": 14000,
+      "Z": 13000
     }
   },
   {
@@ -588,6 +756,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.5,
     "ZoomSpreadMultiplier": 0.6,
+    "IdealDistance": 4500,
+    "MaxDistance": 6500,
+    "MaxTraceDistance": 7000,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 50,
@@ -608,6 +780,16 @@
       "X": 1.3,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 4000,
+      "Y": 5000,
+      "Z": 4500
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 5800,
+      "Y": 7000,
+      "Z": 6500
     }
   },
   {
@@ -615,7 +797,7 @@
     "ItemName": "Burstfire Rifle",
     "ROF": 725,
     "Burst": 3,
-    "ApplyTime": 0.24,
+    "ApplyTime": 0.239999995,
     "RecoilSize": 0.65,
     "RecoilVector": {
       "X": 0,
@@ -635,6 +817,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 2,
     "ZoomSpreadMultiplier": 0.4375,
+    "IdealDistance": 6000,
+    "MaxDistance": 10000,
+    "MaxTraceDistance": 11000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 48,
@@ -655,6 +841,16 @@
       "X": 1.3,
       "Y": 0.85,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 4000,
+      "Y": 7000,
+      "Z": 6000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 8000,
+      "Y": 11000,
+      "Z": 10000
     }
   },
   {
@@ -682,6 +878,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.25,
     "ZoomSpreadMultiplier": 0.425,
+    "IdealDistance": 3500,
+    "MaxDistance": 4500,
+    "MaxTraceDistance": 4000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 40,
@@ -702,6 +902,16 @@
       "X": 1.11,
       "Y": 0.9,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 3500,
+      "Y": 4500,
+      "Z": 4000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 6000,
+      "Y": 8000,
+      "Z": 7000
     }
   },
   {
@@ -729,6 +939,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.1,
     "ZoomSpreadMultiplier": 0.5,
+    "IdealDistance": 1200,
+    "MaxDistance": 4500,
+    "MaxTraceDistance": 5500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 25,
@@ -749,6 +963,16 @@
       "X": 1.3,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 900,
+      "Y": 1500,
+      "Z": 1200
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 3500,
+      "Y": 5500,
+      "Z": 4500
     }
   },
   {
@@ -776,6 +1000,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.2,
     "ZoomSpreadMultiplier": 0.01,
+    "IdealDistance": 10000,
+    "MaxDistance": 12000,
+    "MaxTraceDistance": 12500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 90,
@@ -796,6 +1024,16 @@
       "X": 1.3,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 9500,
+      "Y": 11000,
+      "Z": 10000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 10500,
+      "Y": 12500,
+      "Z": 12000
     }
   },
   {
@@ -823,6 +1061,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.5,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 4500,
+    "MaxDistance": 8000,
+    "MaxTraceDistance": 8500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 62,
@@ -843,6 +1085,16 @@
       "X": 1.25,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 4000,
+      "Y": 5000,
+      "Z": 4500
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 7000,
+      "Y": 8500,
+      "Z": 8000
     }
   },
   {
@@ -870,6 +1122,10 @@
     "JumpSpreadMultiplier": 1.5,
     "MovementSpreadMultiplier": 1.5,
     "ZoomSpreadMultiplier": 0.3,
+    "IdealDistance": 1200,
+    "MaxDistance": 2500,
+    "MaxTraceDistance": 5000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 18,
@@ -890,6 +1146,16 @@
       "X": 2,
       "Y": 0.5,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 1000,
+      "Y": 1500,
+      "Z": 1200
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 1800,
+      "Y": 5000,
+      "Z": 2500
     }
   },
   {
@@ -917,6 +1183,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 2.5,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 2500,
+    "MaxDistance": 4000,
+    "MaxTraceDistance": 15000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 20,
@@ -935,8 +1205,18 @@
     },
     "ModificationRangeRecoil": {
       "X": 2,
-      "Y": 0.800000012,
+      "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 2000,
+      "Y": 3000,
+      "Z": 2500
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 3000,
+      "Y": 5000,
+      "Z": 4000
     }
   },
   {
@@ -944,11 +1224,11 @@
     "ItemName": "Snub 260",
     "ROF": 600,
     "Burst": 1,
-    "ApplyTime": 0.119999997,
-    "RecoilSize": 0.300000012,
+    "ApplyTime": 0.12,
+    "RecoilSize": 0.3,
     "RecoilVector": {
       "X": 0,
-      "Y": 0.600000024,
+      "Y": 0.6,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
@@ -964,6 +1244,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 2.5,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 1000,
+    "MaxDistance": 1500,
+    "MaxTraceDistance": 3000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 55,
@@ -981,9 +1265,19 @@
       "Z": 0
     },
     "ModificationRangeRecoil": {
-      "X": 1.29999995,
-      "Y": 0.850000024,
+      "X": 1.3,
+      "Y": 0.85,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 800,
+      "Y": 1200,
+      "Z": 1000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 1200,
+      "Y": 3000,
+      "Z": 1500
     }
   },
   {
@@ -991,11 +1285,11 @@
     "ItemName": "Heavy Pistol",
     "ROF": 600,
     "Burst": 1,
-    "ApplyTime": 0.100000001,
-    "RecoilSize": 0.200000003,
+    "ApplyTime": 0.1,
+    "RecoilSize": 0.2,
     "RecoilVector": {
       "X": 0,
-      "Y": 1.20000005,
+      "Y": 1.2,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
@@ -1011,6 +1305,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.5,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 1500,
+    "MaxDistance": 5000,
+    "MaxTraceDistance": 7000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 50,
@@ -1031,6 +1329,16 @@
       "X": 1.25,
       "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 1000,
+      "Y": 2000,
+      "Z": 1500
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 4000,
+      "Y": 5500,
+      "Z": 5000
     }
   },
   {
@@ -1038,8 +1346,8 @@
     "ItemName": "Light Pistol",
     "ROF": 600,
     "Burst": 1,
-    "ApplyTime": 0.100000001,
-    "RecoilSize": 0.200000003,
+    "ApplyTime": 0.1,
+    "RecoilSize": 0.2,
     "RecoilVector": {
       "X": 0,
       "Y": 1.2,
@@ -1058,6 +1366,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.5,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 1000,
+    "MaxDistance": 5000,
+    "MaxTraceDistance": 6000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 45,
@@ -1076,8 +1388,18 @@
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.800000012,
+      "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 900,
+      "Y": 1500,
+      "Z": 1000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 4000,
+      "Y": 5300,
+      "Z": 5000
     }
   },
   {
@@ -1105,6 +1427,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.5,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 1000,
+    "MaxDistance": 5000,
+    "MaxTraceDistance": 6000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 38,
@@ -1125,6 +1451,16 @@
       "X": 1.25,
       "Y": 0.9,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 900,
+      "Y": 1500,
+      "Z": 1000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 4000,
+      "Y": 6000,
+      "Z": 5000
     }
   },
   {
@@ -1152,6 +1488,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.5,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 1000,
+    "MaxDistance": 5000,
+    "MaxTraceDistance": 6000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 45,
@@ -1170,8 +1510,18 @@
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.800000012,
+      "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 900,
+      "Y": 1500,
+      "Z": 1000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 4000,
+      "Y": 5300,
+      "Z": 5000
     }
   },
   {
@@ -1183,7 +1533,7 @@
     "RecoilSize": 0.5,
     "RecoilVector": {
       "X": 0,
-      "Y": 1.20000005,
+      "Y": 1.2,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
@@ -1199,6 +1549,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 1.05,
     "ZoomSpreadMultiplier": 0.5,
+    "IdealDistance": 1000,
+    "MaxDistance": 2000,
+    "MaxTraceDistance": 3000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 25,
@@ -1217,8 +1571,18 @@
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
-      "Y": 0.800000012,
+      "Y": 0.8,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 500,
+      "Y": 1500,
+      "Z": 1000
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 1200,
+      "Y": 3000,
+      "Z": 2000
     }
   },
   {
@@ -1246,6 +1610,10 @@
     "JumpSpreadMultiplier": 4,
     "MovementSpreadMultiplier": 2.5,
     "ZoomSpreadMultiplier": 0.4,
+    "IdealDistance": 2500,
+    "MaxDistance": 3000,
+    "MaxTraceDistance": 3500,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 70,
@@ -1266,6 +1634,16 @@
       "X": 1.15,
       "Y": 0.85,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 2000,
+      "Y": 2700,
+      "Z": 2500
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 2500,
+      "Y": 3200,
+      "Z": 3000
     }
   },
   {
@@ -1293,6 +1671,10 @@
     "JumpSpreadMultiplier": 1.5,
     "MovementSpreadMultiplier": 1.5,
     "ZoomSpreadMultiplier": 0.3,
+    "IdealDistance": 750,
+    "MaxDistance": 2000,
+    "MaxTraceDistance": 5000,
+    "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 20,
@@ -1313,6 +1695,16 @@
       "X": 2,
       "Y": 0.5,
       "Z": 1
+    },
+    "ModificationRangeIdealDistance": {
+      "X": 500,
+      "Y": 1000,
+      "Z": 750
+    },
+    "ModificationRangeMaxDistance": {
+      "X": 1500,
+      "Y": 2200,
+      "Z": 2000
     }
   }
 ]
