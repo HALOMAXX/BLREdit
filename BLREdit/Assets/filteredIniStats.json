@@ -27,7 +27,7 @@
     "IdealDistance": 6000,
     "MaxDistance": 9000,
     "MaxTraceDistance": 10000,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 54,
@@ -88,7 +88,7 @@
     "IdealDistance": 4500,
     "MaxDistance": 6500,
     "MaxTraceDistance": 7500,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 58,
@@ -149,7 +149,7 @@
     "IdealDistance": 1700,
     "MaxDistance": 4500,
     "MaxTraceDistance": 6000,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.25,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 20,
@@ -210,7 +210,7 @@
     "IdealDistance": 1000,
     "MaxDistance": 5000,
     "MaxTraceDistance": 5500,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.25,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 28,
@@ -271,7 +271,7 @@
     "IdealDistance": 18000,
     "MaxDistance": 20000,
     "MaxTraceDistance": 25000,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 275,
@@ -332,7 +332,7 @@
     "IdealDistance": 3000,
     "MaxDistance": 3500,
     "MaxTraceDistance": 3800,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 45,
@@ -393,7 +393,7 @@
     "IdealDistance": 4500,
     "MaxDistance": 7000,
     "MaxTraceDistance": 10500,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 43,
@@ -515,7 +515,7 @@
     "IdealDistance": 2500,
     "MaxDistance": 4000,
     "MaxTraceDistance": 4500,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 33,
@@ -576,7 +576,7 @@
     "IdealDistance": 5000,
     "MaxDistance": 8000,
     "MaxTraceDistance": 12000,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 48,
@@ -637,7 +637,7 @@
     "IdealDistance": 4000,
     "MaxDistance": 7000,
     "MaxTraceDistance": 10500,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 40,
@@ -820,7 +820,7 @@
     "IdealDistance": 6000,
     "MaxDistance": 10000,
     "MaxTraceDistance": 11000,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 48,
@@ -881,7 +881,7 @@
     "IdealDistance": 3500,
     "MaxDistance": 4500,
     "MaxTraceDistance": 4000,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 40,
@@ -942,7 +942,7 @@
     "IdealDistance": 1200,
     "MaxDistance": 4500,
     "MaxTraceDistance": 5500,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.25,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 25,
@@ -1003,7 +1003,7 @@
     "IdealDistance": 10000,
     "MaxDistance": 12000,
     "MaxTraceDistance": 12500,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
       "X": 90,
@@ -1064,7 +1064,7 @@
     "IdealDistance": 4500,
     "MaxDistance": 8000,
     "MaxTraceDistance": 8500,
-    "MaxRangeDamageMultiplier": 0.1,
+    "MaxRangeDamageMultiplier": 0.3,
     "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 62,
