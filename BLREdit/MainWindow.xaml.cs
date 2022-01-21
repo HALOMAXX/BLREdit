@@ -129,7 +129,7 @@ namespace BLREdit
         {
             LoggingSystem.LogInfo("Updating Stats");
 
-            double Damage = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
+            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
 
             if (CheckCalculationReady(Reciever))
             {
@@ -166,13 +166,16 @@ namespace BLREdit
                 allDamage += Scope?.weaponModifiers?.damage ?? 0;
                 allDamage += Magazine?.weaponModifiers?.damage ?? 0;
                 allDamage /= 100.0f;
-                Damage = CalculateDamage(Reciever, allDamage);
+                var damages = CalculateDamage(Reciever, allDamage);
+                Damage = damages[0];
+                DamageFar = damages[1];
 
                 double allRange = Barrel?.weaponModifiers?.range ?? 0;
                 allRange += Muzzle?.weaponModifiers?.range ?? 0;
                 allRange += Stock?.weaponModifiers?.range ?? 0;
                 allRange += Scope?.weaponModifiers?.range ?? 0;
                 allRange += Magazine?.weaponModifiers?.range ?? 0;
+                LoggingSystem.LogInfo("AllRange: " + allRange);
                 allRange /= 100.0f;
                 var ranges = CalculateRange(Reciever, allRange);
                 RangeClose = ranges[0];
@@ -190,9 +193,9 @@ namespace BLREdit
                 Hip = spreads[1];
                 Move = spreads[2];
             }
-            DamageLabel.Content = Damage.ToString("0.0");
+            DamageLabel.Content = Damage.ToString("0.0") + " / " + DamageFar.ToString("0.0");
             ROFLabel.Content = ROF.ToString("0");
-            AmmoLabel.Content = AmmoMag.ToString("0") + "/" + AmmoRes.ToString("0");
+            AmmoLabel.Content = AmmoMag.ToString("0") + " / " + AmmoRes.ToString("0");
             ReloadLabel.Content = Reload.ToString("0.00") + "s";
             SwapLabel.Content = Swap.ToString("0.00");
             AimLabel.Content = Aim.ToString("0.00") + "°";
@@ -201,7 +204,7 @@ namespace BLREdit
             RecoilLabel.Content = Recoil.ToString("0.00") + "°";
             ZoomLabel.Content = Zoom.ToString("0.00");
             ScopeInLabel.Content = ScopeIn.ToString("0.00") + "s";
-            RangeLabel.Content = RangeClose.ToString("0") + "/" + RangeFar.ToString("0") + "/" + RangeMax.ToString("0");
+            RangeLabel.Content = RangeClose.ToString("0") + " / " + RangeFar.ToString("0") + " / " + RangeMax.ToString("0");
             RunLabel.Content = Run.ToString("0.00");
             LoggingSystem.LogInfo("Finished Updating Stats");
         }
@@ -212,15 +215,16 @@ namespace BLREdit
             {
                 double idealRange;
                 double maxRange;
+                double alpha = Math.Abs(allRange);
                 if (allRange > 0)
                 {
-                    idealRange = Lerp(Reciever?.IniStats?.ModificationRangeIdealDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeIdealDistance.Y ?? 0, allRange);
-                    maxRange = Lerp(Reciever?.IniStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeMaxDistance.Y ?? 0, allRange);
+                    idealRange = (int)Lerp(Reciever?.IniStats?.ModificationRangeIdealDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeIdealDistance.Y ?? 0, alpha);
+                    maxRange = Lerp(Reciever?.IniStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeMaxDistance.Y ?? 0, alpha);
                 }
                 else
                 {
-                    idealRange = Lerp(Reciever?.IniStats?.ModificationRangeIdealDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeIdealDistance.Y ?? 0, allRange);
-                    maxRange = Lerp(Reciever?.IniStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeMaxDistance.Y ?? 0, allRange);
+                    idealRange = (int)Lerp(Reciever?.IniStats?.ModificationRangeIdealDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeIdealDistance.X ?? 0, alpha);
+                    maxRange = Lerp(Reciever?.IniStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeMaxDistance.X ?? 0, alpha);
                 }
 
                 return new double[] { idealRange/100, maxRange/100, (Reciever?.IniStats?.MaxTraceDistance ?? 0) / 100 };
@@ -237,15 +241,16 @@ namespace BLREdit
             {
                 double accuracyBaseModifier = 1.0f;
                 double accuracyTABaseModifier = 1.0f;
+                double alpha = Math.Abs(allAccuracy);
                 if (allAccuracy > 0)
                 {
-                    accuracyBaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeBaseSpread.Y ?? 0, allAccuracy);
-                    accuracyTABaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeTABaseSpread.Y ?? 0, allAccuracy);
+                    accuracyBaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeBaseSpread.Y ?? 0, alpha);
+                    accuracyTABaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeTABaseSpread.Y ?? 0, alpha);
                 }
                 else
                 {
-                    accuracyBaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeBaseSpread.Y ?? 0, allAccuracy);
-                    accuracyTABaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeTABaseSpread.Y ?? 0, allAccuracy);
+                    accuracyBaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeBaseSpread.X ?? 0, alpha);
+                    accuracyTABaseModifier = Lerp(Reciever?.IniStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.IniStats?.ModificationRangeTABaseSpread.X ?? 0, alpha);
                 }
 
                 double hip = accuracyBaseModifier * (180 / Math.PI);
@@ -264,25 +269,26 @@ namespace BLREdit
             }
         }
 
-        private double CalculateDamage(ImportItem Reciever, double allDamage)
+        private double[] CalculateDamage(ImportItem Reciever, double allDamage)
         {
             if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
             {
                 double damageModifier = 1.0f;
+                double alpha = Math.Abs(allDamage);
                 if (allDamage > 0)
                 {
-                    damageModifier = Lerp(Reciever?.IniStats?.ModificationRangeDamage.Z ?? 0, Reciever?.IniStats?.ModificationRangeDamage.Y ?? 0, allDamage);
+                    damageModifier = Lerp(Reciever?.IniStats?.ModificationRangeDamage.Z ?? 0, Reciever?.IniStats?.ModificationRangeDamage.Y ?? 0, alpha);
                 }
                 else
                 {
-                    damageModifier = Lerp(Reciever?.IniStats?.ModificationRangeDamage.Z ?? 0, Reciever?.IniStats?.ModificationRangeDamage.Y ?? 0, allDamage);
+                    damageModifier = Lerp(Reciever?.IniStats?.ModificationRangeDamage.Z ?? 0, Reciever?.IniStats?.ModificationRangeDamage.X ?? 0, alpha);
                 }
 
-                return damageModifier;
+                return new double[] { damageModifier, damageModifier*(Reciever?.IniStats?.MaxRangeDamageMultiplier??0.1d) };
             }
             else
             {
-                return 0;
+                return new double[] { 0, 0 };
             }
         }
 
@@ -291,13 +297,14 @@ namespace BLREdit
             if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
             {
                 double recoilModifier = 1.0f;
+                double alpha = Math.Abs(allRecoil);
                 if (allRecoil > 0)
                 {
-                    recoilModifier = Lerp(Reciever?.IniStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.IniStats?.ModificationRangeRecoil.Y ?? 0, allRecoil);
+                    recoilModifier = Lerp(Reciever?.IniStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.IniStats?.ModificationRangeRecoil.Y ?? 0, alpha);
                 }
                 else
                 {
-                    recoilModifier = Lerp(Reciever?.IniStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.IniStats?.ModificationRangeRecoil.Y ?? 0, allRecoil);
+                    recoilModifier = Lerp(Reciever?.IniStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.IniStats?.ModificationRangeRecoil.X ?? 0, alpha);
                 }
                 if (Reciever?.WikiStats.ammoMag > 0)
                 {

@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: TestBuild
+name: Build
 
 # Controls when the workflow will run
 on:
@@ -33,10 +33,10 @@ jobs:
       - name: Build App
         run: msbuild $env:Solution_Name /p:Configuration=Release /p:DeployOnBuild=true
         
-      - name: ListFiles
-        shell: pwsh
-        run: |
-          Get-ChildItem -Recurse
+#      - name: ListFiles
+#        shell: pwsh
+#        run: |
+#          Get-ChildItem -Recurse
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
