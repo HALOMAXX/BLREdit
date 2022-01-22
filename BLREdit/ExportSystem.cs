@@ -174,6 +174,19 @@ namespace BLREdit
             return LoggingSystem.ObjectToTextWall(this);
         }
 
+        public Weapon Copy()
+        {
+            return new Weapon()
+            {
+                Barrel = this.Barrel,
+                Grip = this.Grip,
+                Magazine = this.Magazine,
+                Muzzle = this.Muzzle,
+                Receiver = this.Receiver,
+                Scope = this.Scope,
+                Stock = this.Stock
+            };
+        }
         public ImportItem GetReciever()
         {
             ImportItem item = null;
@@ -265,13 +278,13 @@ namespace BLREdit
             {
                 if (weapon.Receiver == item.name)
                 { 
-                    return weapon;
+                    return weapon.Copy();
                 }
             }
             return null;
         }
 
-        public static readonly Weapon[] DefaultWeapons = new Weapon[]
+        private static readonly Weapon[] DefaultWeapons = new Weapon[]
         {
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 115,  Muzzle = 9,     Receiver = "Heavy Assault Rifle",       Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 0  Heavy Assault Rifle
             new Weapon() { Barrel = "Frontier Standard Barrel",             Grip = "", Magazine = 104,  Muzzle = 9,     Receiver = "LMG Recon",                 Stock = "Silverwood Standard Stock",            Scope="Titan Rail Sight" },             // 1  LMG Recon
@@ -308,9 +321,9 @@ namespace BLREdit
         public const string NoStock = "No Stock";
         public const string NoScope = "No Optic Mod";
 
-        public static Weapon DefaultAssaultRifle { get { return DefaultWeapons[10]; } }
-        public static Weapon DefaultSubmachineGun { get { return DefaultWeapons[15]; } }
-        public static Weapon DefaultBAR { get { return DefaultWeapons[11]; } }
-        public static Weapon DefaultLightPistol { get { return DefaultWeapons[22]; } }
+        public static Weapon DefaultAssaultRifle { get { return DefaultWeapons[10].Copy(); } }
+        public static Weapon DefaultSubmachineGun { get { return DefaultWeapons[15].Copy(); } }
+        public static Weapon DefaultBAR { get { return DefaultWeapons[11].Copy(); } }
+        public static Weapon DefaultLightPistol { get { return DefaultWeapons[22].Copy(); } }
     }
 }
