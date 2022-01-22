@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -27,26 +28,106 @@ namespace BLREdit
                 }
             }
             else
-            { 
+            {
                 iconname = iconparts[0];
             }
             Name = iconname;
             Icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + file, UriKind.Absolute);
         }
 
-        public static BitmapImage CreateEmptyBitmap()
+        public BitmapSource GetWideImage()
+        {
+
+            DrawingGroup group = new DrawingGroup();
+
+            ImageDrawing baseImage = new ImageDrawing();
+            baseImage.Rect = new Rect(0, 0, IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Height);
+            baseImage.ImageSource = CreateEmptyBitmap(IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Height);
+            group.Children.Add(baseImage);
+
+            var tmp = GetImage();
+            ImageDrawing actualImage = new ImageDrawing();
+            int offsetX = (IOResources.Settings.WideImageSize.Width - tmp.PixelWidth) / 2;
+            if (offsetX < 0)
+            { offsetX = 0; }
+
+            actualImage.Rect = new Rect(offsetX, 0, tmp.PixelWidth, tmp.PixelHeight);
+            actualImage.ImageSource = tmp;
+            group.Children.Add(actualImage);
+
+            var finished = new DrawingImage(group);
+            return ToBitmapSource(finished);
+        }
+
+        public BitmapSource GetLargeSquareImage()
+        {
+            return GetSquareImage(IOResources.Settings.LargeSquareImageSize.Width);
+        }
+
+        public BitmapSource GetSmallSquareImage()
+        {
+            return GetSquareImage(IOResources.Settings.SmallSquareImageSize.Width);
+        }
+
+        public BitmapSource GetSquareImage(int square)
+        {
+
+            DrawingGroup group = new DrawingGroup();
+
+            ImageDrawing baseImage = new ImageDrawing();
+            baseImage.Rect = new Rect(0, 0, square, square);
+            baseImage.ImageSource = CreateEmptyBitmap(square, square);
+            group.Children.Add(baseImage);
+
+            var tmp = GetImage();
+            ImageDrawing actualImage = new ImageDrawing();
+            int offsetY = (square - tmp.PixelWidth);
+            if (offsetY < 0)
+            {
+                actualImage.Rect = new Rect(0, 0, square, tmp.PixelHeight / 2);
+            }
+            else
+            {
+                actualImage.Rect = new Rect(0, 0, square, square);
+            }
+            actualImage.ImageSource = tmp;
+            group.Children.Add(actualImage);
+
+            var finished = new DrawingImage(group);
+            return ToBitmapSource(finished);
+        }
+
+        private BitmapSource GetImage()
+        {
+            return new BitmapImage(this.Icon);
+        }
+
+        public static BitmapSource ToBitmapSource(DrawingImage source)
+        {
+            DrawingVisual drawingVisual = new DrawingVisual();
+            DrawingContext drawingContext = drawingVisual.RenderOpen();
+            drawingContext.DrawImage(source, new Rect(new Point(0, 0), new Size(source.Width, source.Height)));
+            drawingContext.Close();
+
+            RenderTargetBitmap bmp = new RenderTargetBitmap((int)source.Width, (int)source.Height, 96, 96, PixelFormats.Pbgra32);
+            bmp.Render(drawingVisual);
+            return bmp;
+        }
+
+        public static BitmapImage CreateEmptyBitmap(int width, int height)
         {
             // Define parameters used to create the BitmapSource.
-            PixelFormat pf = PixelFormats.Bgr32;
-            int width = 128;
-            int height = 128;
-            int rawStride = (width * pf.BitsPerPixel + 7) / 8;
+            PixelFormat pf = PixelFormats.Bgra32;
+            int rawStride = (width * pf.BitsPerPixel) / 8;
             byte[] rawImage = new byte[rawStride * height];
 
             // Initialize the image with data.
-            for (int i = 0; i < rawImage.Length; i++)
+            for (int i = 0; i < rawImage.Length; i += 4)
             {
-                rawImage[i] = (byte)(128);
+                rawImage[i] = IOResources.Settings.BackGroundItemColor.Blue;
+                rawImage[i + 1] = IOResources.Settings.BackGroundItemColor.Green;
+                rawImage[i + 2] = IOResources.Settings.BackGroundItemColor.Red;
+                rawImage[i + 3] = IOResources.Settings.BackGroundItemColor.Alpha;
             }
 
             // Create a BitmapSource.

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Windows.Media.Imaging;
 
 namespace BLREdit
@@ -8,7 +9,9 @@ namespace BLREdit
         public string Category { get; set; }
         public string _class { get; set; }
         public string icon { get; set; }
-        public BitmapSource Image { get; private set; }
+        public BitmapSource WideImage { get; private set; }
+        public BitmapSource LargeSquareImage { get; private set; }
+        public BitmapSource SmallSquareImage { get; private set; }
         public BitmapSource Crosshair { get; private set; }
         public BitmapSource MiniCrosshair { get { return GetBitmapCrosshair(name); } }
         public string name { get; set; }
@@ -42,7 +45,22 @@ namespace BLREdit
 
         public void LoadImage()
         {
-            Image = GetBitmapImage(icon);
+            if (!string.IsNullOrEmpty(icon))
+            {
+                foreach (FoxIcon foxicon in ImportSystem.Icons)
+                {
+                    if (foxicon.Name == icon)
+                    {
+                        WideImage = foxicon.GetWideImage();
+                        LargeSquareImage = foxicon.GetLargeSquareImage();
+                        SmallSquareImage = foxicon.GetSmallSquareImage();
+                        return;
+                    }
+                }
+            }
+            WideImage = FoxIcon.CreateEmptyBitmap(256, 128);
+            LargeSquareImage = FoxIcon.CreateEmptyBitmap(128, 128);
+            SmallSquareImage = FoxIcon.CreateEmptyBitmap(64, 64);
         }
 
         public void LoadCrosshair()
@@ -53,21 +71,6 @@ namespace BLREdit
         public void RemoveCrosshair()
         {
             Crosshair = null;
-        }
-
-        public static BitmapSource GetBitmapImage(string name)
-        {
-            if (!string.IsNullOrEmpty(name))
-            {
-                foreach (FoxIcon icon in ImportSystem.Icons)
-                {
-                    if (icon.Name == name)
-                    {
-                        return new BitmapImage(icon.Icon);
-                    }
-                }
-            }
-            return FoxIcon.CreateEmptyBitmap();
         }
 
         public static BitmapSource GetBitmapCrosshair(string name)
@@ -82,7 +85,7 @@ namespace BLREdit
                     }
                 }
             }
-            return FoxIcon.CreateEmptyBitmap();
+            return FoxIcon.CreateEmptyBitmap(1, 1);
         }
 
         private string PrintIntArray(int[] ints)
@@ -96,6 +99,13 @@ namespace BLREdit
                 }
             }
             return array + ']';
+        }
+
+        internal void PrepareImages()
+        {
+            WideImage = WideImage.Clone();
+            LargeSquareImage = LargeSquareImage.Clone();
+            SmallSquareImage = SmallSquareImage.Clone();
         }
 
         private string PrintStringArray(string[] strings)

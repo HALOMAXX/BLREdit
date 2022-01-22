@@ -277,7 +277,7 @@ namespace BLREdit
             foreach (Weapon weapon in DefaultWeapons)
             {
                 if (weapon.Receiver == item.name)
-                { 
+                {
                     return weapon.Copy();
                 }
             }

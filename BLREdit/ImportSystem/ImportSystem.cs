@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -247,12 +248,20 @@ namespace BLREdit
         {
             var watch = LoggingSystem.LogInfo("Updating Images for " + categoryName, "");
             foreach (ImportItem item in items)
-            {
-                item.LoadImage();
-                if ((categoryName == "Primary" || categoryName == "Secondary") && item.stats != null)
+                Parallel.ForEach(items, item =>
                 {
-                    item.IniStats = new IniStats() { ItemName = item.name, ItemID = item.uid, ROF = item.stats.rateOfFire, Burst = 1, ApplyTime = (60.0f / item.stats.rateOfFire) };
-                }
+                    item.LoadImage();
+                    if ((categoryName == "Primary" || categoryName == "Secondary") && item.stats != null)
+                    {
+                        item.IniStats = new IniStats() { ItemName = item.name, ItemID = item.uid, ROF = item.stats.rateOfFire, Burst = 1, ApplyTime = (60.0f / item.stats.rateOfFire) };
+                    }
+                    item.WideImage.Freeze();
+                    item.LargeSquareImage.Freeze();
+                    item.SmallSquareImage.Freeze();
+                });
+            foreach (ImportItem item in items)
+            {
+                item.PrepareImages();
             }
             LoggingSystem.LogInfoAppend(watch);
         }

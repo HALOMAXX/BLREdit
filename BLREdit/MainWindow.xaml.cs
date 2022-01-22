@@ -528,7 +528,7 @@ namespace BLREdit
         {
             if (reciever.DataContext is ImportItem Reciever)
             {
-                if (Reciever.name == "Light Pistol" || Reciever.name == "Heavy Pistol")
+                if (Reciever.name == "Light Pistol" || Reciever.name == "Heavy Pistol" || Reciever.name == "Prestige Light Pistol")
                 {
                     if (barrel.DataContext is ImportItem Barrel)
                     {
