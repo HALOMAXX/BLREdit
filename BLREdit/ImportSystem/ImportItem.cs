@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Windows.Media.Imaging;
 
 namespace BLREdit
@@ -111,6 +112,13 @@ namespace BLREdit
                 }
             }
             return array + ']';
+        }
+
+        internal void PrepareImages()
+        {
+            WideImage = WideImage.Clone();
+            LargeSquareImage = LargeSquareImage.Clone();
+            SmallSquareImage = SmallSquareImage.Clone();
         }
     }
 }
