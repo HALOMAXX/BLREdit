@@ -15,7 +15,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}">
-                        <Image Source="{Binding Image, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
+                        <Image Source="{Binding WideImage, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
                         <Image Source="{Binding Crosshair, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
                         <TextBlock Text="{Binding name}" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" />
                     </StackPanel>
@@ -23,49 +23,49 @@
             </ListView.ItemTemplate>
         </ListView>
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="75,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="140,231,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="204,101,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="205,101,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="269,101,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="270,101,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
             <Image HorizontalAlignment="Center" Source="{Binding MiniCrosshair}" Name="PrimaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="128" Background="Gray" HorizontalAlignment="Left" Margin="140,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="129" Background="Gray" HorizontalAlignment="Left" Margin="140,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding WideImage}" Name="PrimaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="269,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="PrimaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="270,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
 
 
 
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="10,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="75,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="140,531,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="204,401,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="205,401,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="269,401,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="270,401,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
             <Image HorizontalAlignment="Center" Source="{Binding MiniCrosshair}" Name="SecondaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="128" Background="Gray" HorizontalAlignment="Left" Margin="140,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="129" Background="Gray" HorizontalAlignment="Left" Margin="140,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding WideImage}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="269,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="270,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
 
         <Label Content="Damage:" HorizontalAlignment="Left" Margin="10,296,0,0" VerticalAlignment="Top"/>
@@ -85,7 +85,7 @@
         <Label Name="PrimaryHipLabel" Content="0°" HorizontalAlignment="Left" Margin="172,322,0,0" VerticalAlignment="Top"/>
         <Label Content="Move:" HorizontalAlignment="Left" Margin="129,348,0,0" VerticalAlignment="Top"/>
         <Label Name="PrimaryMoveLabel" Content="0°" HorizontalAlignment="Left" Margin="172,348,0,0" VerticalAlignment="Top"/>
-        <Label Content="Recoil:" HorizontalAlignment="Left" Margin="128,375,0,0" VerticalAlignment="Top"/>
+        <Label Content="Recoil:" HorizontalAlignment="Left" Margin="128,373,0,0" VerticalAlignment="Top"/>
         <Label Name="PrimaryRecoilLabel" Content="0°" HorizontalAlignment="Left" Margin="172,373,0,0" VerticalAlignment="Top"/>
         <Label Content="Zoom:" HorizontalAlignment="Left" Margin="227,296,0,0" VerticalAlignment="Top"/>
         <Label Name="PrimaryZoomLabel" Content="0" HorizontalAlignment="Left" Margin="268,296,0,0" VerticalAlignment="Top"/>
@@ -93,8 +93,8 @@
         <Label Name="PrimaryScopeInLabel" Content="0s" HorizontalAlignment="Left" Margin="268,322,0,0" VerticalAlignment="Top"/>
         <Label Content="Range:" HorizontalAlignment="Left" Margin="222,348,0,0" VerticalAlignment="Top"/>
         <Label Name="PrimaryRangeLabel" Content="0/0" HorizontalAlignment="Left" Margin="268,348,0,0" VerticalAlignment="Top"/>
-        <Label Content="Run:" HorizontalAlignment="Left" Margin="235,375,0,0" VerticalAlignment="Top"/>
-        <Label Name="PrimaryRunLabel" Content="0" HorizontalAlignment="Left" Margin="268,375,0,0" VerticalAlignment="Top"/>
+        <Label Content="Run:" HorizontalAlignment="Left" Margin="235,373,0,0" VerticalAlignment="Top"/>
+        <Label Name="PrimaryRunLabel" Content="0" HorizontalAlignment="Left" Margin="268,373,0,0" VerticalAlignment="Top"/>
 
 
 
@@ -137,19 +137,19 @@
         <TextBox Name="PlayerNameTextBox"  HorizontalAlignment="Left" Margin="121,0,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="120" Height="22" TextChanged="PlayerNameTextBox_TextChanged"/>
         
         <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="10,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="79,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="75,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="148,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="140,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="217,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="205,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
-        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="286,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding Image}" x:Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+        <Border Height="64" Width="64" Background="Gray" HorizontalAlignment="Left" Margin="270,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
 
 
