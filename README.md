@@ -20,4 +20,4 @@ Mostly Accurate Stats for Weapons and Parts
 Export Loadout to Clipboard for MagiCow's Loadout Customization bot
 
 # Download
-https://github.com/HALOMAXX/BLREdit/releases
+[Download From Github Releases]https://github.com/MythicalPigeon/BLREdit/releases
