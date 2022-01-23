@@ -85,7 +85,7 @@ namespace BLREdit
                     }
                 }
             }
-            return FoxIcon.CreateEmptyBitmap(1,1);
+            return FoxIcon.CreateEmptyBitmap(1, 1);
         }
 
         private static string  PrintIntArray(int[] ints)

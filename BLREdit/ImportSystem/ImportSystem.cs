@@ -247,6 +247,7 @@ namespace BLREdit
         internal static void UpdateImagesForImportItems(ImportItem[] items, string categoryName)
         {
             var watch = LoggingSystem.LogInfo("Updating Images for " + categoryName, "");
+
             Parallel.ForEach(items, item =>
             {
                 item.LoadImage();

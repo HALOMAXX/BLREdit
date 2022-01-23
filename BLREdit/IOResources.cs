@@ -64,7 +64,7 @@ namespace BLREdit
     }
 
     public class ImageSize
-    { 
+    {
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -76,9 +76,9 @@ namespace BLREdit
 
     public class ByteColor
     {
-        public byte Red { get; set; } = 128;
-        public byte Green { get; set; } = 128;
-        public byte Blue { get; set; } = 128;
-        public byte Alpha { get; set; } = 255;
+        public byte Red { get; set; } = 0;
+        public byte Green { get; set; } = 0;
+        public byte Blue { get; set; } = 0;
+        public byte Alpha { get; set; } = 30;
     }
 }

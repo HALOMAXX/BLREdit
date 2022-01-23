@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -187,7 +186,7 @@ namespace BLREdit
                 Stock = this.Stock
             };
         }
-
+      
         public ImportItem GetReciever()
         {
             return GetReciever(this);

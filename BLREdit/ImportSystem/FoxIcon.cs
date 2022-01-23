@@ -39,7 +39,7 @@ namespace BLREdit
                 }
             }
             else
-            { 
+            {
                 iconname = iconparts[0];
             }
             Name = iconname;
@@ -86,7 +86,7 @@ namespace BLREdit
         {
 
             DrawingGroup group = new DrawingGroup();
-
+          
             ImageDrawing baseImage = new ImageDrawing
             {
                 Rect = new Rect(0, 0, square, square),
@@ -133,6 +133,7 @@ namespace BLREdit
         {
             // Define parameters used to create the BitmapSource.
             PixelFormat pf = PixelFormats.Bgra32;
+          
             int rawStride = (width * pf.BitsPerPixel)/ 8;
             byte[] rawImage = new byte[rawStride * height];
 

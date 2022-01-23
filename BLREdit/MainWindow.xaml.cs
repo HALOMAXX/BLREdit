@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -68,6 +67,7 @@ namespace BLREdit
                 PrimaryHipLabel,
                 PrimaryMoveLabel,
                 PrimaryRecoilLabel,
+                PrimaryZoomRecoilLabel,
                 PrimaryZoomLabel,
                 PrimaryScopeInLabel,
                 PrimaryRangeLabel,
@@ -93,6 +93,7 @@ namespace BLREdit
                 SecondaryHipLabel,
                 SecondaryMoveLabel,
                 SecondaryRecoilLabel,
+                SecondaryZoomRecoilLabel,
                 SecondaryZoomLabel,
                 SecondaryScopeInLabel,
                 SecondaryRangeLabel,
@@ -125,11 +126,11 @@ namespace BLREdit
             }
         }
 
-        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel)
+        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel)
         {
             var watch = LoggingSystem.LogInfo("Updating Stats","");
 
-            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
+            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
 
             if (CheckCalculationReady(Reciever))
             {
@@ -158,6 +159,7 @@ namespace BLREdit
                 allRecoil += Magazine?.weaponModifiers?.recoil ?? 0;
                 allRecoil /= 100.0f;
                 Recoil = CalculateRecoil(Reciever, allRecoil);
+                RecoilZoom = Recoil * Reciever.IniStats.RecoilZoomMultiplier * 0.8;
 
 
                 double allDamage = Barrel?.weaponModifiers?.damage ?? 0;
@@ -201,9 +203,10 @@ namespace BLREdit
             HipLabel.Content = Hip.ToString("0.00") + "°";
             MoveLabel.Content = Move.ToString("0.00") + "°";
             RecoilLabel.Content = Recoil.ToString("0.00") + "°";
+            ZoomRecoilLabel.Content = RecoilZoom.ToString("0.00") + "°";
             ZoomLabel.Content = Zoom.ToString("0.00");
-            ScopeInLabel.Content = ScopeIn.ToString("0.00") + "s";
-            RangeLabel.Content = RangeClose.ToString("0") + " / " + RangeFar.ToString("0") + " / " + RangeMax.ToString("0");
+            ScopeInLabel.Content = ScopeIn.ToString("0.000") + "s";
+            RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
             RunLabel.Content = Run.ToString("0.00");
             LoggingSystem.LogInfoAppend(watch);
         }
@@ -314,7 +317,7 @@ namespace BLREdit
                     {
                         Vector3 newRecoil = new Vector3(0, 0, 0)
                         {
-                            X = (Reciever.IniStats.RecoilVector.X * Reciever.IniStats.RecoilVectorMultiplier.X) / 8.0f,
+                            X = (Reciever.IniStats.RecoilVector.X * Reciever.IniStats.RecoilVectorMultiplier.X) / 4.0f,
                             Y = (Reciever.IniStats.RecoilVector.Y * Reciever.IniStats.RecoilVectorMultiplier.Y) / 2.0f
                         };
 
