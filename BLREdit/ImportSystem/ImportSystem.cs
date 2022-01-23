@@ -22,9 +22,9 @@ namespace BLREdit
 
         private static IniStats[] IniItemStats;
 
-        public static ImportGear Gear;
-        public static ImportMods Mods;
-        public static ImportWeapons Weapons;
+        public static ImportGear Gear { get; private set; }
+        public static ImportMods Mods { get; private set; }
+        public static ImportWeapons Weapons { get; private set; }
 
         internal static void Initialize()
         {

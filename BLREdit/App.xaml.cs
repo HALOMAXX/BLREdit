@@ -11,9 +11,9 @@ namespace BLREdit
     /// </summary>
     public partial class App : System.Windows.Application
     {
-        public static bool IsNewVersionAvailable = false;
-        public static bool IsBaseRuntimeMissing = false;
-        public static bool IsUpdateRuntimeMissing = false;
+        public static bool IsNewVersionAvailable { get; private set; } = false;
+        public static bool IsBaseRuntimeMissing { get; private set; } = false;
+        public static bool IsUpdateRuntimeMissing { get; private set; } = false;
 
         public App()
         {

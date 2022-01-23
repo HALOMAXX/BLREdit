@@ -529,7 +529,7 @@ namespace BLREdit
             return item.name == "Light Pistol" || item.name == "Heavy Pistol" || item.name == "Prestige Light Pistol";
         }
 
-        private void SetStock(Image reciever, Image barrel, Image stock, ImportItem item)
+        private static void SetStock(Image reciever, Image barrel, Image stock, ImportItem item)
         {
             if (reciever.DataContext is ImportItem Reciever)
             {
@@ -618,7 +618,7 @@ namespace BLREdit
             ActiveLoadout.Tactical = ImportSystem.GetTacticalID(TacticalImage.DataContext as ImportItem);
         }
 
-        private void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock)
+        private static void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock)
         {
             weapon.Receiver = reciever.name;
             weapon.Muzzle = ImportSystem.GetMuzzleID(muzzle);

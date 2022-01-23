@@ -56,7 +56,7 @@ namespace BLREdit
         public static void SetClipboard(string value)
         {
             if (value == null)
-                throw new ArgumentNullException("Attempt to set clipboard with null");
+                throw new ArgumentNullException(nameof(value), "SetClipboard value was null shoul never happen");
 
             Process clipboardExecutable = new Process
             {
@@ -226,7 +226,7 @@ namespace BLREdit
         {
             return GetStock(this);
         }
-        public ImportItem GetStock(Weapon weapon)
+        public static ImportItem GetStock(Weapon weapon)
         {
             ImportItem item = null;
             foreach (ImportItem stock in ImportSystem.Mods.stocks)

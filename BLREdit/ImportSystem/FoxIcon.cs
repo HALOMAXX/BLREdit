@@ -11,9 +11,9 @@ namespace BLREdit
         public string Name { get; set; } = "";
         public Uri Icon { get; set; } = null;
 
-        private static BitmapImage WideEmpty = CreateEmptyBitmap(IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Width);
-        private static BitmapImage LargeSquareEmpty = CreateEmptyBitmap(IOResources.Settings.LargeSquareImageSize.Width, IOResources.Settings.LargeSquareImageSize.Width);
-        private static BitmapImage SmallSquareEmpty = CreateEmptyBitmap(IOResources.Settings.SmallSquareImageSize.Width, IOResources.Settings.SmallSquareImageSize.Width);
+        private static readonly BitmapImage WideEmpty = CreateEmptyBitmap(IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Width);
+        private static readonly BitmapImage LargeSquareEmpty = CreateEmptyBitmap(IOResources.Settings.LargeSquareImageSize.Width, IOResources.Settings.LargeSquareImageSize.Width);
+        private static readonly BitmapImage SmallSquareEmpty = CreateEmptyBitmap(IOResources.Settings.SmallSquareImageSize.Width, IOResources.Settings.SmallSquareImageSize.Width);
 
         static FoxIcon()
         { 
@@ -51,9 +51,11 @@ namespace BLREdit
 
             DrawingGroup group = new DrawingGroup();
 
-            ImageDrawing baseImage = new ImageDrawing();
-            baseImage.Rect = new Rect(0,0,IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Height);
-            baseImage.ImageSource = WideEmpty.Clone();
+            ImageDrawing baseImage = new ImageDrawing
+            {
+                Rect = new Rect(0, 0, IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Height),
+                ImageSource = WideEmpty.Clone()
+            };
             group.Children.Add(baseImage);
 
             var tmp = GetImage();
@@ -85,9 +87,11 @@ namespace BLREdit
 
             DrawingGroup group = new DrawingGroup();
 
-            ImageDrawing baseImage = new ImageDrawing();
-            baseImage.Rect = new Rect(0, 0, square, square);
-            baseImage.ImageSource = empty;
+            ImageDrawing baseImage = new ImageDrawing
+            {
+                Rect = new Rect(0, 0, square, square),
+                ImageSource = empty
+            };
             group.Children.Add(baseImage);
 
             var tmp = GetImage();
