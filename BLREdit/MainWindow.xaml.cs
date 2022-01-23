@@ -473,6 +473,7 @@ namespace BLREdit
                                 CheckPrimaryModsForValidity(item);
                                 FillEmptyPrimaryMods(item);
                                 UpdatePrimaryStats();
+                                UpdateActiveLoadout();
                                 return;
                             }
                             if (image.Name.Contains("Secondary") && ImportSystem.Weapons.secondary.Contains(item))
@@ -482,6 +483,7 @@ namespace BLREdit
                                 CheckSecondaryModsForValidity(item);
                                 FillEmptySecondaryMods(item);
                                 UpdateSecondaryStats();
+                                UpdateActiveLoadout();
                                 return;
                             }
                             LoggingSystem.LogInfo("Not a Valid Primary or Secondary!");
@@ -522,10 +524,10 @@ namespace BLREdit
                             UpdatePrimaryStats();
                             UpdateSecondaryStats();
                         }
-                        UpdateActiveLoadout();
                     }
                 }
             }
+            UpdateActiveLoadout();
         }
 
         private static bool CheckForPistolAndBarrel(ImportItem item)
