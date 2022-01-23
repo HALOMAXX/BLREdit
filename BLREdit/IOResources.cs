@@ -58,9 +58,9 @@ namespace BLREdit
 
     public class ByteColor
     {
-        public byte Red { get; set; } = 255;
-        public byte Green { get; set; } = 255;
-        public byte Blue { get; set; } = 255;
+        public byte Red { get; set; } = 128;
+        public byte Green { get; set; } = 128;
+        public byte Blue { get; set; } = 128;
         public byte Alpha { get; set; } = 255;
     }
 }
