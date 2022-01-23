@@ -15,8 +15,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Assets\textures\Default_2016.png" />
+	  <None Remove="Default_2016.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="Costura.Fody" Version="4.1.0" />
 	  <PackageReference Include="System.Text.Json" Version="6.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Assets\textures\Default_2016.png" />
 	</ItemGroup>
 
 </Project>

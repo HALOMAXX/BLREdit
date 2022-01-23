@@ -318,7 +318,7 @@ namespace BLREdit
                     {
                         Vector3 newRecoil = new Vector3(0, 0, 0)
                         {
-                            X = (Reciever.IniStats.RecoilVector.X * Reciever.IniStats.RecoilVectorMultiplier.X) / 8.0f,
+                            X = (Reciever.IniStats.RecoilVector.X * Reciever.IniStats.RecoilVectorMultiplier.X) / 4.0f,
                             Y = (Reciever.IniStats.RecoilVector.Y * Reciever.IniStats.RecoilVectorMultiplier.Y) / 2.0f
                         };
 
