@@ -1,4 +1,4 @@
-﻿<Window x:Class="BLREdit.MainWindow"
+﻿<Window x:Class="BLREdit.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="BLREdit" Height="940" Width="1660" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Black">
     <Window.Background>
-        <ImageBrush ImageSource="Assets/textures/Default_2016.png"/>
+        <ImageBrush ImageSource="Resources/Default_2016.png" />
     </Window.Background>
     <Grid AllowDrop="True">
         <ListView x:Name="ItemList" Margin="361,0,0,0" Background="#4C000000" BorderBrush="#0C9E9E9E">

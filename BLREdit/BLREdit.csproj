@@ -6,17 +6,12 @@
     <UseWPF>true</UseWPF>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
   </PropertyGroup>
-
+	
 	<ItemGroup>
 		<ContentWithTargetPath Include="Assets\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<TargetPath>Assets\%(RecursiveDir)\%(Filename)%(Extension)</TargetPath>
 		</ContentWithTargetPath>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Assets\textures\Default_2016.png" />
-	  <None Remove="Default_2016.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -26,7 +21,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="Assets\textures\Default_2016.png" />
+	  <Resource Include="UI\Resources\**" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Page Include="App.xaml" />
+	</ItemGroup>
+	
 </Project>

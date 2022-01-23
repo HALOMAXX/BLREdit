@@ -8,7 +8,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace BLREdit
+namespace BLREdit.UI
 {
 
     /// <summary>
