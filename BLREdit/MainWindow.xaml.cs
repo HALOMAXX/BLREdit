@@ -385,6 +385,12 @@ namespace BLREdit
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ItemList.ItemsSource = ImportSystem.Weapons.primary;
+            if (App.IsNewVersionAvailable)
+            {
+                var github = new InfoPopups.ShowGitHubReleases();
+                github.WebBrowser.Source = new Uri("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
+                github.ShowDialog();
+            }
         }
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
@@ -520,15 +526,20 @@ namespace BLREdit
             }
         }
 
+        private static bool CheckForPistolAndBarrel(ImportItem item)
+        {
+            return item.name == "Light Pistol" || item.name == "Heavy Pistol" || item.name == "Prestige Light Pistol";
+        }
+
         private void SetStock(Image reciever, Image barrel, Image stock, ImportItem item)
         {
             if (reciever.DataContext is ImportItem Reciever)
             {
-                if (Reciever.name == "Light Pistol" || Reciever.name == "Heavy Pistol" || Reciever.name == "Prestige Light Pistol")
+                if (CheckForPistolAndBarrel(Reciever))
                 {
                     if (barrel.DataContext is ImportItem Barrel)
                     {
-                        if (Barrel.name != "No Barrel Mod")
+                        if (!string.IsNullOrEmpty(Barrel.name) && Barrel.name != "No Barrel Mod")
                         {
                             stock.DataContext = item;
                         }
@@ -561,7 +572,7 @@ namespace BLREdit
             if (barrel.DataContext == null || (barrel.DataContext as ImportItem).name == Weapon.NoBarrel)
             {
                 barrel.DataContext = weapon.GetBarrel();
-                if (reciever.name == "Light Pistol" || reciever.name == "Heavy Pistol")
+                if (CheckForPistolAndBarrel(reciever))
                 {
                     stock.DataContext = weapon.GetStock();
                 }
@@ -570,9 +581,16 @@ namespace BLREdit
             {
                 if (stock.DataContext == null || (stock.DataContext as ImportItem).name == Weapon.NoStock)
                 {
-                    if (reciever.name == "Light Pistol" || reciever.name == "Heavy Pistol")
+                    if (CheckForPistolAndBarrel(reciever))
                     {
-                        stock.DataContext = Weapon.DefaultAssaultRifle.GetStock();
+                        if (reciever.name.Contains("Prestige"))
+                        {
+                            stock.DataContext = Weapon.DefaultPrestigeAssaultRifle.GetStock();
+                        }
+                        else
+                        {
+                            stock.DataContext = Weapon.DefaultAssaultRifle.GetStock();
+                        }
                     }
                     else
                     { 

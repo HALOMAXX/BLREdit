@@ -187,39 +187,51 @@ namespace BLREdit
                 Stock = this.Stock
             };
         }
+
         public ImportItem GetReciever()
         {
-            ImportItem item = null;
+            return GetReciever(this);
+        }
+        public static ImportItem GetReciever(Weapon weapon)
+        {
             foreach (ImportItem primary in ImportSystem.Weapons.primary)
             {
-                if (primary.name == Receiver)
+                if (primary.name == weapon.Receiver)
                 {
-                    item = primary;
+                    return primary;
                 }
             }
             foreach (ImportItem secondary in ImportSystem.Weapons.secondary)
             {
-                if (secondary.name == Receiver)
+                if (secondary.name == weapon.Receiver)
                 {
-                    item = secondary;
+                    return secondary;
                 }
             }
-            return item;
+            return null;
         }
 
         public ImportItem GetMuzzle()
         {
+            return GetMuzzle(this);
+        }
+        public ImportItem GetMuzzle(Weapon weapon)
+        {
             if (Muzzle < 0)
             { return null; }
-            return ImportSystem.Mods.muzzles[Muzzle];
+            return ImportSystem.Mods.muzzles[weapon.Muzzle];
         }
 
         public ImportItem GetStock()
         {
+            return GetStock(this);
+        }
+        public ImportItem GetStock(Weapon weapon)
+        {
             ImportItem item = null;
             foreach (ImportItem stock in ImportSystem.Mods.stocks)
             {
-                if (stock.name == Stock)
+                if (stock.name == weapon.Stock)
                 {
                     item = stock;
                 }
@@ -229,10 +241,14 @@ namespace BLREdit
 
         public ImportItem GetBarrel()
         {
+            return GetBarrel(this);
+        }
+        public static ImportItem GetBarrel(Weapon weapon)
+        {
             ImportItem item = null;
             foreach (ImportItem barrel in ImportSystem.Mods.barrels)
             {
-                if (barrel.name == Barrel)
+                if (barrel.name == weapon.Barrel)
                 {
                     item = barrel;
                 }
@@ -242,29 +258,42 @@ namespace BLREdit
 
         public ImportItem GetMagazine()
         {
-            if (Magazine < 0)
+            return GetMagazine(this);
+        }
+        public static ImportItem GetMagazine(Weapon weapon)
+        {
+            if (weapon.Magazine < 0)
             { return null; }
-            return ImportSystem.Mods.magazines[Magazine];
+            return ImportSystem.Mods.magazines[weapon.Magazine];
         }
 
         public ImportItem GetScope()
         {
+            return GetScope(this);
+        }
+        public static ImportItem GetScope(Weapon weapon)
+        {
             ImportItem item = null;
             foreach (ImportItem scope in ImportSystem.Mods.scopes)
             {
-                if (scope.name == Scope)
+                if (scope.name == weapon.Scope)
                 {
                     item = scope;
                 }
             }
             return item;
         }
+
         public ImportItem GetGrip()
+        {
+            return GetGrip(this);
+        }
+        public static ImportItem GetGrip(Weapon weapon)
         {
             ImportItem item = null;
             foreach (ImportItem grip in ImportSystem.Mods.grips)
             {
-                if (grip.name == Grip)
+                if (grip.name == weapon.Grip)
                 {
                     item = grip;
                 }
@@ -322,6 +351,7 @@ namespace BLREdit
         public const string NoScope = "No Optic Mod";
 
         public static Weapon DefaultAssaultRifle { get { return DefaultWeapons[10].Copy(); } }
+        public static Weapon DefaultPrestigeAssaultRifle { get { return DefaultWeapons[14].Copy(); } }
         public static Weapon DefaultSubmachineGun { get { return DefaultWeapons[15].Copy(); } }
         public static Weapon DefaultBAR { get { return DefaultWeapons[11].Copy(); } }
         public static Weapon DefaultLightPistol { get { return DefaultWeapons[22].Copy(); } }

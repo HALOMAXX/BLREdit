@@ -1,0 +1,26 @@
+﻿<Window x:Class="BLREdit.InfoPopups.DownloadRuntimes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BLREdit.InfoPopups"
+        mc:Ignorable="d"
+        Title="DownloadRuntimes" Height="450" Width="522">
+    <Grid>
+        <FlowDocumentReader>
+            <FlowDocument>
+                <Section>
+                    <Paragraph>
+                        <Hyperlink Name="Link2012"  NavigateUri="https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe">
+                            <TextBlock Name="Link2012Content" Text="Microsoft Visual C++ 2012(x86)"/>
+                        </Hyperlink>
+                        <LineBreak/>
+                        <Hyperlink Name="Link2012Update4" NavigateUri="https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe">
+                            <TextBlock Name="Link2012Updatet4Content" Text="Microsoft Visual C++ 2012 Update 4"/> 
+                        </Hyperlink>
+                    </Paragraph>
+                </Section>
+            </FlowDocument>
+        </FlowDocumentReader>
+    </Grid>
+</Window>
