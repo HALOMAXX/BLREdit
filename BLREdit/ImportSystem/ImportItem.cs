@@ -88,7 +88,7 @@ namespace BLREdit
             return FoxIcon.CreateEmptyBitmap(1, 1);
         }
 
-        private string PrintIntArray(int[] ints)
+        private static string  PrintIntArray(int[] ints)
         {
             string array = "[";
             if (ints != null)
@@ -101,14 +101,7 @@ namespace BLREdit
             return array + ']';
         }
 
-        internal void PrepareImages()
-        {
-            WideImage = WideImage.Clone();
-            LargeSquareImage = LargeSquareImage.Clone();
-            SmallSquareImage = SmallSquareImage.Clone();
-        }
-
-        private string PrintStringArray(string[] strings)
+        private static string PrintStringArray(string[] strings)
         {
             string array = "[";
             if (strings != null)
@@ -119,6 +112,13 @@ namespace BLREdit
                 }
             }
             return array + ']';
+        }
+
+        internal void PrepareImages()
+        {
+            WideImage = WideImage.Clone();
+            LargeSquareImage = LargeSquareImage.Clone();
+            SmallSquareImage = SmallSquareImage.Clone();
         }
     }
 }

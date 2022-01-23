@@ -22,9 +22,9 @@ namespace BLREdit
 
         private static IniStats[] IniItemStats;
 
-        public static ImportGear Gear;
-        public static ImportMods Mods;
-        public static ImportWeapons Weapons;
+        public static ImportGear Gear { get; private set; }
+        public static ImportMods Mods { get; private set; }
+        public static ImportWeapons Weapons { get; private set; }
 
         internal static void Initialize()
         {
@@ -247,17 +247,18 @@ namespace BLREdit
         internal static void UpdateImagesForImportItems(ImportItem[] items, string categoryName)
         {
             var watch = LoggingSystem.LogInfo("Updating Images for " + categoryName, "");
-                Parallel.ForEach(items, item =>
+
+            Parallel.ForEach(items, item =>
+            {
+                item.LoadImage();
+                if ((categoryName == "Primary" || categoryName == "Secondary") && item.stats != null)
                 {
-                    item.LoadImage();
-                    if ((categoryName == "Primary" || categoryName == "Secondary") && item.stats != null)
-                    {
-                        item.IniStats = new IniStats() { ItemName = item.name, ItemID = item.uid, ROF = item.stats.rateOfFire, Burst = 1, ApplyTime = (60.0f / item.stats.rateOfFire) };
-                    }
-                    item.WideImage.Freeze();
-                    item.LargeSquareImage.Freeze();
-                    item.SmallSquareImage.Freeze();
-                });
+                    item.IniStats = new IniStats() { ItemName = item.name, ItemID = item.uid, ROF = item.stats.rateOfFire, Burst = 1, ApplyTime = (60.0f / item.stats.rateOfFire) };
+                }
+                item.WideImage.Freeze();
+                item.LargeSquareImage.Freeze();
+                item.SmallSquareImage.Freeze();
+            });
             foreach (ImportItem item in items)
             {
                 item.PrepareImages();

@@ -11,6 +11,17 @@ namespace BLREdit
         public string Name { get; set; } = "";
         public Uri Icon { get; set; } = null;
 
+        private static readonly BitmapImage WideEmpty = CreateEmptyBitmap(IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Width);
+        private static readonly BitmapImage LargeSquareEmpty = CreateEmptyBitmap(IOResources.Settings.LargeSquareImageSize.Width, IOResources.Settings.LargeSquareImageSize.Width);
+        private static readonly BitmapImage SmallSquareEmpty = CreateEmptyBitmap(IOResources.Settings.SmallSquareImageSize.Width, IOResources.Settings.SmallSquareImageSize.Width);
+
+        static FoxIcon()
+        { 
+            WideEmpty.Freeze();
+            LargeSquareEmpty.Freeze();
+            SmallSquareEmpty.Freeze();
+        }
+
         public FoxIcon(string file)
         {
             string[] fileparts = file.Split('\\');
@@ -40,9 +51,11 @@ namespace BLREdit
 
             DrawingGroup group = new DrawingGroup();
 
-            ImageDrawing baseImage = new ImageDrawing();
-            baseImage.Rect = new Rect(0, 0, IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Height);
-            baseImage.ImageSource = CreateEmptyBitmap(IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Height);
+            ImageDrawing baseImage = new ImageDrawing
+            {
+                Rect = new Rect(0, 0, IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Height),
+                ImageSource = WideEmpty.Clone()
+            };
             group.Children.Add(baseImage);
 
             var tmp = GetImage();
@@ -61,22 +74,24 @@ namespace BLREdit
 
         public BitmapSource GetLargeSquareImage()
         {
-            return GetSquareImage(IOResources.Settings.LargeSquareImageSize.Width);
+            return GetSquareImage(IOResources.Settings.LargeSquareImageSize.Width, LargeSquareEmpty.Clone());
         }
 
         public BitmapSource GetSmallSquareImage()
         {
-            return GetSquareImage(IOResources.Settings.SmallSquareImageSize.Width);
+            return GetSquareImage(IOResources.Settings.SmallSquareImageSize.Width, SmallSquareEmpty.Clone());
         }
 
-        public BitmapSource GetSquareImage(int square)
+        public BitmapSource GetSquareImage(int square, BitmapImage empty)
         {
 
             DrawingGroup group = new DrawingGroup();
-
-            ImageDrawing baseImage = new ImageDrawing();
-            baseImage.Rect = new Rect(0, 0, square, square);
-            baseImage.ImageSource = CreateEmptyBitmap(square, square);
+          
+            ImageDrawing baseImage = new ImageDrawing
+            {
+                Rect = new Rect(0, 0, square, square),
+                ImageSource = empty
+            };
             group.Children.Add(baseImage);
 
             var tmp = GetImage();
@@ -118,16 +133,17 @@ namespace BLREdit
         {
             // Define parameters used to create the BitmapSource.
             PixelFormat pf = PixelFormats.Bgra32;
-            int rawStride = (width * pf.BitsPerPixel) / 8;
+          
+            int rawStride = (width * pf.BitsPerPixel)/ 8;
             byte[] rawImage = new byte[rawStride * height];
 
             // Initialize the image with data.
-            for (int i = 0; i < rawImage.Length; i += 4)
+            for (int i = 0; i < rawImage.Length; i+=4)
             {
                 rawImage[i] = IOResources.Settings.BackGroundItemColor.Blue;
-                rawImage[i + 1] = IOResources.Settings.BackGroundItemColor.Green;
-                rawImage[i + 2] = IOResources.Settings.BackGroundItemColor.Red;
-                rawImage[i + 3] = IOResources.Settings.BackGroundItemColor.Alpha;
+                rawImage[i+1] = IOResources.Settings.BackGroundItemColor.Green;
+                rawImage[i+2] = IOResources.Settings.BackGroundItemColor.Red;
+                rawImage[i+3] = IOResources.Settings.BackGroundItemColor.Alpha;
             }
 
             // Create a BitmapSource.

@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -389,6 +388,14 @@ namespace BLREdit
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ItemList.ItemsSource = ImportSystem.Weapons.primary;
+            if (App.IsNewVersionAvailable && IOResources.Settings.ShowUpdateNotice)
+            {
+                System.Diagnostics.Process.Start("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
+            }
+            if (IOResources.Settings.DoRuntimeCheck || IOResources.Settings.ForceRuntimeCheck)
+            {
+                App.RuntimeCheck(IOResources.Settings.ForceRuntimeCheck);
+            }
         }
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
@@ -469,6 +476,7 @@ namespace BLREdit
                                 CheckPrimaryModsForValidity(item);
                                 FillEmptyPrimaryMods(item);
                                 UpdatePrimaryStats();
+                                UpdateActiveLoadout();
                                 return;
                             }
                             if (image.Name.Contains("Secondary") && ImportSystem.Weapons.secondary.Contains(item))
@@ -478,6 +486,7 @@ namespace BLREdit
                                 CheckSecondaryModsForValidity(item);
                                 FillEmptySecondaryMods(item);
                                 UpdateSecondaryStats();
+                                UpdateActiveLoadout();
                                 return;
                             }
                             LoggingSystem.LogInfo("Not a Valid Primary or Secondary!");
@@ -518,21 +527,26 @@ namespace BLREdit
                             UpdatePrimaryStats();
                             UpdateSecondaryStats();
                         }
-                        UpdateActiveLoadout();
                     }
                 }
             }
+            UpdateActiveLoadout();
         }
 
-        private void SetStock(Image reciever, Image barrel, Image stock, ImportItem item)
+        private static bool CheckForPistolAndBarrel(ImportItem item)
+        {
+            return item.name == "Light Pistol" || item.name == "Heavy Pistol" || item.name == "Prestige Light Pistol";
+        }
+
+        private static void SetStock(Image reciever, Image barrel, Image stock, ImportItem item)
         {
             if (reciever.DataContext is ImportItem Reciever)
             {
-                if (Reciever.name == "Light Pistol" || Reciever.name == "Heavy Pistol" || Reciever.name == "Prestige Light Pistol")
+                if (CheckForPistolAndBarrel(Reciever))
                 {
                     if (barrel.DataContext is ImportItem Barrel)
                     {
-                        if (Barrel.name != "No Barrel Mod")
+                        if (!string.IsNullOrEmpty(Barrel.name) && Barrel.name != "No Barrel Mod")
                         {
                             stock.DataContext = item;
                         }
@@ -565,7 +579,7 @@ namespace BLREdit
             if (barrel.DataContext == null || (barrel.DataContext as ImportItem).name == Weapon.NoBarrel)
             {
                 barrel.DataContext = weapon.GetBarrel();
-                if (reciever.name == "Light Pistol" || reciever.name == "Heavy Pistol")
+                if (CheckForPistolAndBarrel(reciever))
                 {
                     stock.DataContext = weapon.GetStock();
                 }
@@ -574,9 +588,16 @@ namespace BLREdit
             {
                 if (stock.DataContext == null || (stock.DataContext as ImportItem).name == Weapon.NoStock)
                 {
-                    if (reciever.name == "Light Pistol" || reciever.name == "Heavy Pistol")
+                    if (CheckForPistolAndBarrel(reciever))
                     {
-                        stock.DataContext = Weapon.DefaultAssaultRifle.GetStock();
+                        if (reciever.name.Contains("Prestige"))
+                        {
+                            stock.DataContext = Weapon.DefaultPrestigeAssaultRifle.GetStock();
+                        }
+                        else
+                        {
+                            stock.DataContext = Weapon.DefaultAssaultRifle.GetStock();
+                        }
                     }
                     else
                     { 
@@ -606,7 +627,7 @@ namespace BLREdit
             ActiveLoadout.Tactical = ImportSystem.GetTacticalID(TacticalImage.DataContext as ImportItem);
         }
 
-        private void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock)
+        private static void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock)
         {
             weapon.Receiver = reciever.name;
             weapon.Muzzle = ImportSystem.GetMuzzleID(muzzle);

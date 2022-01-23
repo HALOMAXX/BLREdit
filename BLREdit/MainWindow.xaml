@@ -18,9 +18,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}" >
-						<Border BorderBrush="#0C9E9E9E" BorderThickness="1,1,1,1">
+						            <Border BorderBrush="#0C9E9E9E" BorderThickness="1,1,1,1">
                             <Image Source="{Binding WideImage, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
-					    </Border>
+					              </Border>
                         <Image Source="{Binding Crosshair, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
                         <TextBlock Text="{Binding name}" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" />
                     </StackPanel>

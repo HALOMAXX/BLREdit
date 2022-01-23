@@ -23,13 +23,29 @@ namespace BLREdit
         {
             if (File.Exists("Settings.json"))
             {
-                return JsonSerializer.Deserialize<BLREditSettings>(File.OpenText("Settings.json").ReadToEnd(), JSO);
+                BLREditSettings settings;
+                using (var file = File.OpenText("Settings.json"))
+                {
+                    settings = JsonSerializer.Deserialize<BLREditSettings>(file.ReadToEnd(), JSO);
+                    file.Close();
+                }
+                File.Delete("Settings.json");
+                using (var file = File.OpenWrite("Settings.json"))
+                {
+                    JsonSerializer.Serialize<BLREditSettings>(file, settings, JSO);
+                    file.Close();
+                }
+                return settings;
             }
             else
             {
-                var tmp = new BLREditSettings();
-                JsonSerializer.Serialize<BLREditSettings>(File.OpenWrite("Settings.json"), tmp, JSO);
-                return tmp;
+                using (var file = File.OpenWrite("Settings.json"))
+                {
+                    var tmp = new BLREditSettings();
+                    JsonSerializer.Serialize<BLREditSettings>(file, tmp, JSO);
+                    file.Close();
+                    return tmp;
+                }
             }
         }
 
@@ -38,7 +54,10 @@ namespace BLREdit
 
     public class BLREditSettings
     {
-        public ImageSize WideImageSize { get; set; } = new ImageSize() { Width = 256, Height = 128 };
+        public bool ShowUpdateNotice { get; set; } = true;
+        public bool DoRuntimeCheck { get; set; } = true;
+        public bool ForceRuntimeCheck { get; set; } = false;
+        public ImageSize WideImageSize { get; set; } = new ImageSize() { Width=256, Height=128};
         public ImageSize LargeSquareImageSize { get; set; } = new ImageSize() { Width = 128, Height = 128 };
         public ImageSize SmallSquareImageSize { get; set; } = new ImageSize() { Width = 64, Height = 64 };
         public ByteColor BackGroundItemColor { get; set; } = new ByteColor();
