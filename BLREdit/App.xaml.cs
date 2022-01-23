@@ -36,10 +36,10 @@ namespace BLREdit
             LoggingSystem.LogInfo("Newest Version: " + latest.TagName + " of " + latest.Name + " vs Current: " + CurrentVersion + " of " + CurrentVersionName);
                 
             string[] remoteVersionParts = latest.TagName.Split('v');
-            remoteVersionParts = remoteVersionParts[1].Split('.');
+            remoteVersionParts = remoteVersionParts[remoteVersionParts.Length-1].Split('.');
 
             string[] currentVersionParts = CurrentVersion.Split('v');
-            currentVersionParts = currentVersionParts[1].Split('.');
+            currentVersionParts = currentVersionParts[currentVersionParts.Length - 1].Split('.');
 
             for (int i = 0; i < currentVersionParts.Length && i < remoteVersionParts.Length; i++)
             {
@@ -58,6 +58,10 @@ namespace BLREdit
                     if (remote > current)
                     {
                         IsNewVersionAvailable = true;
+                        return;
+                    }
+                    if (current > remote)
+                    {
                         return;
                     }
                 }

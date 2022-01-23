@@ -6,6 +6,13 @@
         <Setter Property="BorderBrush" Value="#0C9E9E9E"/>
     </Style>
 
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="#80000000"/>
+        <Setter Property="Foreground" Value="#FFFFFFFF"/>
+        <Setter Property="BorderBrush" Value="#0C9E9E9E"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+    </Style>
+
     <DataTemplate DataType="{x:Type system:String}">
         <TextBlock Text="{Binding}">
             <TextBlock.Resources>
@@ -20,6 +27,127 @@
 
     <Style TargetType="Label" x:Key="DisplayLabel">
         <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
+    </Style>
+
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+        <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="ComboBoxToggleButton"  TargetType="{x:Type ToggleButton}">
+        <Grid Background="Transparent">
+            <Image Name="Normal" Visibility="Hidden" Source="Resources/CleanedButton.png" Stretch="Fill" Width="{Binding (ComboBox.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}" Height="{Binding (ComboBox.Height), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}"/>
+            <Image Name="Hover" Source="Resources/CleanedButtonHover.png" Stretch="Fill" Width="{Binding (ComboBox.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}" Height="{Binding (ComboBox.Height), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock Text="{Binding PlayerName}" Foreground="White"/>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid>
+                        <ToggleButton 
+                            Name="ToggleButton" 
+                            Template="{StaticResource ComboBoxToggleButton}" 
+                            Grid.Column="2" 
+                            Focusable="false"
+                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                            ClickMode="Press">
+                        </ToggleButton>
+                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="20,0,0,0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" />
+                        <TextBox x:Name="PART_EditableTextBox"
+                            Style="{x:Null}" 
+                            Template="{StaticResource ComboBoxTextBox}" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" 
+                            Margin="20,0,0,0"
+                            Focusable="True" 
+                            Background="#FF3F3F3F"
+                            Foreground="Green"
+                            Visibility="Hidden"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
+
+                        <Popup 
+                            Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True" 
+                            Focusable="False"
+                            HorizontalOffset="18"
+                            PopupAnimation="Slide">
+
+                            <Grid Name="DropDown"
+                              SnapsToDevicePixels="True"                
+                              MinWidth="{TemplateBinding ActualWidth}"
+                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border 
+                                x:Name="DropDownBorder"
+                                Background="#FF3F3F3F"
+
+                                BorderThickness="0"
+                                BorderBrush="#888888"/>
+                                <ScrollViewer Margin="20,0,0,0" SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                        <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                            <Setter TargetName="DropDownBorder" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Grid Margin="1,1,1,1" Background="Transparent">
+                        <Image Name="Normal" Source="Resources/CleanedButton.png" Stretch="Fill" Width="{Binding (ComboBox.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}" Height="{Binding (ComboBox.Height), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}"/>
+                        <Image Name="Hover" Visibility="Hidden" Source="Resources/CleanedButtonHover.png" Stretch="Fill" Width="{Binding (ComboBox.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}" Height="{Binding (ComboBox.Height), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}"/>
+                        <TextBlock Name="ButtonContent"  Foreground="#FF78AEBC" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Text="{Binding PlayerName}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="Button">
