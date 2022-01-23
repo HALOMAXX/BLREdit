@@ -385,11 +385,9 @@ namespace BLREdit
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ItemList.ItemsSource = ImportSystem.Weapons.primary;
-            if (App.IsNewVersionAvailable)
+            if (App.IsNewVersionAvailable && IOResources.Settings.ShowUpdateNotice)
             {
-                var github = new InfoPopups.ShowGitHubReleases();
-                github.WebBrowser.Source = new Uri("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
-                github.ShowDialog();
+                System.Diagnostics.Process.Start("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
             }
         }
 

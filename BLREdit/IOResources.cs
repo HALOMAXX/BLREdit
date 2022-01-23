@@ -37,7 +37,8 @@ namespace BLREdit
     }
 
     public class BLREditSettings
-    { 
+    {
+        public bool ShowUpdateNotice { get; set; } = true;
         public ImageSize WideImageSize { get; set; } = new ImageSize() { Width=256, Height=128};
         public ImageSize LargeSquareImageSize { get; set; } = new ImageSize() { Width = 128, Height = 128 };
         public ImageSize SmallSquareImageSize { get; set; } = new ImageSize() { Width = 64, Height = 64 };
