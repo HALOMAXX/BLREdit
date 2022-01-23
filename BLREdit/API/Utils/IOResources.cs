@@ -57,28 +57,5 @@ namespace BLREdit
         public bool ShowUpdateNotice { get; set; } = true;
         public bool DoRuntimeCheck { get; set; } = true;
         public bool ForceRuntimeCheck { get; set; } = false;
-        public ImageSize WideImageSize { get; set; } = new ImageSize() { Width=256, Height=128};
-        public ImageSize LargeSquareImageSize { get; set; } = new ImageSize() { Width = 128, Height = 128 };
-        public ImageSize SmallSquareImageSize { get; set; } = new ImageSize() { Width = 64, Height = 64 };
-        public ByteColor BackGroundItemColor { get; set; } = new ByteColor();
-    }
-
-    public class ImageSize
-    {
-        public int Width { get; set; }
-        public int Height { get; set; }
-
-        public ImageSize Copy()
-        {
-            return new ImageSize() { Width = this.Width, Height = this.Height };
-        }
-    }
-
-    public class ByteColor
-    {
-        public byte Red { get; set; } = 0;
-        public byte Green { get; set; } = 0;
-        public byte Blue { get; set; } = 0;
-        public byte Alpha { get; set; } = 30;
     }
 }

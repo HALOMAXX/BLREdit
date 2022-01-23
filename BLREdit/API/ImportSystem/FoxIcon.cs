@@ -8,12 +8,19 @@ namespace BLREdit
 {
     public class FoxIcon
     {
+        private const int WideImageWidth = 256;
+        private const int WideImageHeight = 128;
+
+        private const int LargeSquareImageWidth = 128;
+
+        private const int SmallSquareImageWidth = 64;
+
         public string Name { get; set; } = "";
         public Uri Icon { get; set; } = null;
 
-        private static readonly BitmapImage WideEmpty = CreateEmptyBitmap(IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Width);
-        private static readonly BitmapImage LargeSquareEmpty = CreateEmptyBitmap(IOResources.Settings.LargeSquareImageSize.Width, IOResources.Settings.LargeSquareImageSize.Width);
-        private static readonly BitmapImage SmallSquareEmpty = CreateEmptyBitmap(IOResources.Settings.SmallSquareImageSize.Width, IOResources.Settings.SmallSquareImageSize.Width);
+        private static readonly BitmapImage WideEmpty = CreateEmptyBitmap(WideImageWidth, WideImageHeight);
+        private static readonly BitmapImage LargeSquareEmpty = CreateEmptyBitmap(LargeSquareImageWidth, LargeSquareImageWidth);
+        private static readonly BitmapImage SmallSquareEmpty = CreateEmptyBitmap(SmallSquareImageWidth, SmallSquareImageWidth);
 
         static FoxIcon()
         { 
@@ -53,14 +60,14 @@ namespace BLREdit
 
             ImageDrawing baseImage = new ImageDrawing
             {
-                Rect = new Rect(0, 0, IOResources.Settings.WideImageSize.Width, IOResources.Settings.WideImageSize.Height),
+                Rect = new Rect(0, 0, WideImageWidth, WideImageHeight),
                 ImageSource = WideEmpty.Clone()
             };
             group.Children.Add(baseImage);
 
             var tmp = GetImage();
             ImageDrawing actualImage = new ImageDrawing();
-            int offsetX = (IOResources.Settings.WideImageSize.Width - tmp.PixelWidth) / 2;
+            int offsetX = (WideImageWidth - tmp.PixelWidth) / 2;
             if (offsetX < 0)
             { offsetX = 0; }
 
@@ -74,12 +81,12 @@ namespace BLREdit
 
         public BitmapSource GetLargeSquareImage()
         {
-            return GetSquareImage(IOResources.Settings.LargeSquareImageSize.Width, LargeSquareEmpty.Clone());
+            return GetSquareImage(LargeSquareImageWidth, LargeSquareEmpty.Clone());
         }
 
         public BitmapSource GetSmallSquareImage()
         {
-            return GetSquareImage(IOResources.Settings.SmallSquareImageSize.Width, SmallSquareEmpty.Clone());
+            return GetSquareImage(SmallSquareImageWidth, SmallSquareEmpty.Clone());
         }
 
         public BitmapSource GetSquareImage(int square, BitmapImage empty)
@@ -140,10 +147,10 @@ namespace BLREdit
             // Initialize the image with data.
             for (int i = 0; i < rawImage.Length; i+=4)
             {
-                rawImage[i] = IOResources.Settings.BackGroundItemColor.Blue;
-                rawImage[i+1] = IOResources.Settings.BackGroundItemColor.Green;
-                rawImage[i+2] = IOResources.Settings.BackGroundItemColor.Red;
-                rawImage[i+3] = IOResources.Settings.BackGroundItemColor.Alpha;
+                rawImage[i] = 0;    //Blue
+                rawImage[i+1] = 0;  //Green
+                rawImage[i+2] = 0;  //Red
+                rawImage[i+3] = 30; //Alpha
             }
 
             // Create a BitmapSource.
