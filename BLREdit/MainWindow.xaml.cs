@@ -389,6 +389,10 @@ namespace BLREdit
             {
                 System.Diagnostics.Process.Start("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
             }
+            if (IOResources.Settings.DoRuntimeCheck || IOResources.Settings.ForceRuntimeCheck)
+            {
+                App.RuntimeCheck(IOResources.Settings.ForceRuntimeCheck);
+            }
         }
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)

@@ -23,5 +23,13 @@ namespace BLREdit.InfoPopups
         {
             InitializeComponent();
         }
+
+        private void Link_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Hyperlink link)
+            {
+                System.Diagnostics.Process.Start(link.NavigateUri.ToString());
+            }
+        }
     }
 }

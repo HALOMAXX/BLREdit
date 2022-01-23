@@ -12,8 +12,8 @@ namespace BLREdit
     public partial class App : System.Windows.Application
     {
         public static bool IsNewVersionAvailable { get; private set; } = false;
-        public static bool IsBaseRuntimeMissing { get; private set; } = false;
-        public static bool IsUpdateRuntimeMissing { get; private set; } = false;
+        public static bool IsBaseRuntimeMissing { get; private set; } = true;
+        public static bool IsUpdateRuntimeMissing { get; private set; } = true;
 
         public App()
         {
@@ -68,13 +68,13 @@ namespace BLREdit
             }
         }
 
-        public static void RuntimeCheck()
+        public static void RuntimeCheck(bool force)
         {
             var x86 = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\{33d1fd90-4274-48a1-9bc1-97e33d9c2d6f}", "Version", "-1");
             var x86Update = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\Microsoft.VS.VC_RuntimeAdditional_x86,v11", "Version", "-1");
             if (x86 is string VC32Bit && x86Update is string VC32BitUpdate4)
             {
-                if (VC32Bit == "11.0.61030.0" && VC32BitUpdate4 == "11.0.61030")
+                if ((VC32Bit == "11.0.61030.0" && VC32BitUpdate4 == "11.0.61030") && !force)
                 {
                     LoggingSystem.LogInfo("Both VC++ 2012 Runtimes are installed for BLRevive!");
                     return;
@@ -82,17 +82,11 @@ namespace BLREdit
                 else
                 { 
                     var info = new InfoPopups.DownloadRuntimes();
-                    if (VC32Bit == "11.0.61030.0")
-                    {
-                        IsBaseRuntimeMissing = true;
-                        info.Link2012.IsEnabled = false;
-                        info.Link2012Content.Text = "Microsoft Visual C++ 2012(x86) is already installed!";
-                    }
                     if (VC32BitUpdate4 == "11.0.61030")
                     {
-                        IsUpdateRuntimeMissing = true;
+                        IsUpdateRuntimeMissing = false;
                         info.Link2012Update4.IsEnabled = false;
-                        info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4 is already installed!";
+                        info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!";
                     }
                     info.ShowDialog();
                 }
