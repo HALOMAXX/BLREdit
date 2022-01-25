@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace BLREdit
+﻿namespace BLREdit
 {
     public class PawnModifiers
     {

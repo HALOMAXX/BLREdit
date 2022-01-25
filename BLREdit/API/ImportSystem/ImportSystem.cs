@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace BLREdit
 {
@@ -265,7 +264,7 @@ namespace BLREdit
 
         private static FoxIcon[] LoadAllIcons()
         {
-            var watch = LoggingSystem.LogInfo("Loading All Icons","");
+            var watch = LoggingSystem.LogInfo("Loading All Icons", "");
             var icons = new List<FoxIcon>();
             foreach (var icon in Directory.EnumerateFiles("Assets\\textures"))
             {
@@ -276,7 +275,7 @@ namespace BLREdit
         }
         private static FoxIcon[] LoadAllCrosshairs()
         {
-            var watch = LoggingSystem.LogInfo("Loading All Crosshairs","");
+            var watch = LoggingSystem.LogInfo("Loading All Crosshairs", "");
             var icons = new List<FoxIcon>();
             foreach (var icon in Directory.EnumerateFiles("Assets\\crosshairs"))
             {
@@ -288,7 +287,7 @@ namespace BLREdit
 
         public static ImportItem[] CleanItems(ImportItem[] importItems, string categoryName)
         {
-            var watch = LoggingSystem.LogInfo("Started Cleaning " + categoryName,"");
+            var watch = LoggingSystem.LogInfo("Started Cleaning " + categoryName, "");
             List<ImportItem> cleanedItems = new List<ImportItem>();
             foreach (ImportItem item in importItems)
             {

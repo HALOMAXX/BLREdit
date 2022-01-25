@@ -19,16 +19,16 @@
         {
             return new Weapon()
             {
-                Barrel = this.Barrel,
-                Grip = this.Grip,
-                Magazine = this.Magazine,
-                Muzzle = this.Muzzle,
-                Receiver = this.Receiver,
-                Scope = this.Scope,
-                Stock = this.Stock
+                Barrel = Barrel,
+                Grip = Grip,
+                Magazine = Magazine,
+                Muzzle = Muzzle,
+                Receiver = Receiver,
+                Scope = Scope,
+                Stock = Stock
             };
         }
-      
+
         public ImportItem GetReciever()
         {
             return GetReciever(this);

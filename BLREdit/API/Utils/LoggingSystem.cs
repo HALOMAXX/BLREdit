@@ -12,7 +12,7 @@ namespace BLREdit
 #else
         public static bool IsDebuggingEnabled = false;
 #endif
-        public static Stopwatch LogInfo(string info, string newLine="\n")
+        public static Stopwatch LogInfo(string info, string newLine = "\n")
         {
             if (IsDebuggingEnabled)
             {
@@ -50,7 +50,7 @@ namespace BLREdit
         }
 
         public static string ObjectToTextWall<T>(T obj)
-        { 
+        {
             StringBuilder sb = new StringBuilder();
             BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
             var fields = obj.GetType().GetFields(flags);

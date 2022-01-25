@@ -44,7 +44,7 @@ namespace BLREdit
             if (string.IsNullOrEmpty(filePath)) { LoggingSystem.LogWarning("filePath was empty!"); return; }
 
             //remove file before we write to it to prevent resedue data
-            if (File.Exists(filePath)) { var tmp = LoggingSystem.LogInfo("file already exist's deleting it"); File.Delete(filePath); LoggingSystem.LogInfoAppend(tmp,""); }
+            if (File.Exists(filePath)) { var tmp = LoggingSystem.LogInfo("file already exist's deleting it"); File.Delete(filePath); LoggingSystem.LogInfoAppend(tmp, ""); }
             else
             { LoggingSystem.LogInfo("file doesn't exist were good to create it"); }
 
@@ -70,7 +70,7 @@ namespace BLREdit
             if (string.IsNullOrEmpty(filePath)) { return temp; }
 
             //check if file exist's before we try to read it if it doesn't exist return and Write an error to log
-            if (!File.Exists(filePath)) 
+            if (!File.Exists(filePath))
             { LoggingSystem.LogError("File:(" + filePath + ") was not found for Deserialization!"); return temp; }
 
             using (var file = File.OpenText(filePath))

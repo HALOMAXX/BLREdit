@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Windows.Media.Imaging;
 
 namespace BLREdit
@@ -34,11 +33,11 @@ namespace BLREdit
             return sb.ToString();
         }
 
-        public string GetDescriptorName() 
+        public string GetDescriptorName()
         {
             if (!string.IsNullOrEmpty(descriptorName))
             { return descriptorName + ":" + weaponModifiers.rating; }
-            if (IniStats == null) 
+            if (IniStats == null)
             { return ""; }
 
             string desc = "";
@@ -63,7 +62,7 @@ namespace BLREdit
             foreach (StatDecriptor st in IniStats.StatDecriptors)
             {
                 if (points >= st.Points)
-                { 
+                {
                     currentbest = st.Name;
                 }
             }
@@ -126,7 +125,7 @@ namespace BLREdit
             return FoxIcon.CreateEmptyBitmap(1, 1);
         }
 
-        private static string  PrintIntArray(int[] ints)
+        private static string PrintIntArray(int[] ints)
         {
             string array = "[";
             if (ints != null)

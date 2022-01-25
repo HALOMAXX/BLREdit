@@ -4,7 +4,6 @@ using System.Linq;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -28,15 +27,16 @@ namespace BLREdit.UI
 
             InitializeComponent();
 
-            ItemList.Items.Filter += new Predicate<object>(o => { 
-                if (o != null) 
-                { 
-                    return ((ImportItem)o).IsValidFor(FilterWeapon); 
-                } 
-                else 
+            ItemList.Items.Filter += new Predicate<object>(o =>
+            {
+                if (o != null)
+                {
+                    return ((ImportItem)o).IsValidFor(FilterWeapon);
+                }
+                else
                 {
                     return false;
-                } 
+                }
             });
 
 
@@ -118,7 +118,7 @@ namespace BLREdit.UI
         private static void UpdateStat(ImportItem[] items, ref double ROF, ref double AmmoMag, ref double AmmoRes, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
         {
             foreach (ImportItem item in items)
-            { 
+            {
                 ROF += item?.WikiStats?.firerate ?? 0;
                 AmmoMag += item?.WikiStats?.ammoMag ?? 0;
                 AmmoRes += item?.WikiStats?.ammoReserve ?? 0;
@@ -132,15 +132,15 @@ namespace BLREdit.UI
 
         private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel, Label Descriptor)
         {
-            var watch = LoggingSystem.LogInfo("Updating Stats","");
+            var watch = LoggingSystem.LogInfo("Updating Stats", "");
 
             double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
 
             if (CheckCalculationReady(Reciever))
             {
                 List<ImportItem> items = new List<ImportItem>();
-                if(Reciever != null)
-                    items.Add(Reciever); 
+                if (Reciever != null)
+                    items.Add(Reciever);
                 if (Barrel != null)
                     items.Add(Barrel);
                 if (Magazine != null)
@@ -290,7 +290,7 @@ namespace BLREdit.UI
                     maxRange = Lerp(Reciever?.IniStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.IniStats?.ModificationRangeMaxDistance.X ?? 0, alpha);
                 }
 
-                return new double[] { idealRange/100, maxRange/100, (Reciever?.IniStats?.MaxTraceDistance ?? 0) / 100 };
+                return new double[] { idealRange / 100, maxRange / 100, (Reciever?.IniStats?.MaxTraceDistance ?? 0) / 100 };
             }
             else
             {
@@ -320,7 +320,7 @@ namespace BLREdit.UI
                 double aim = (accuracyBaseModifier * Reciever.IniStats.ZoomSpreadMultiplier) * (180 / Math.PI);
                 if (Reciever.IniStats.UseTABaseSpread)
                 {
-                     aim = accuracyTABaseModifier * (float)(180 / Math.PI);
+                    aim = accuracyTABaseModifier * (float)(180 / Math.PI);
                 }
                 double move = (accuracyBaseModifier * Reciever.IniStats.MovementSpreadMultiplier) * (180 / Math.PI);
 
@@ -347,7 +347,7 @@ namespace BLREdit.UI
                     damageModifier = Lerp(Reciever?.IniStats?.ModificationRangeDamage.Z ?? 0, Reciever?.IniStats?.ModificationRangeDamage.X ?? 0, alpha);
                 }
 
-                return new double[] { damageModifier, damageModifier*(Reciever?.IniStats?.MaxRangeDamageMultiplier??0.1d) };
+                return new double[] { damageModifier, damageModifier * (Reciever?.IniStats?.MaxRangeDamageMultiplier ?? 0.1d) };
             }
             else
             {
@@ -511,9 +511,9 @@ namespace BLREdit.UI
                             if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
                             {
                                 if (ImportSystem.Mods.scopes.Contains(item))
-                                { 
+                                {
                                     PrimaryScopeImage.DataContext = item; LoggingSystem.LogInfo("Scope Set!");
-                                    PrimaryCrosshairImage.DataContext = item; LoggingSystem.LogInfo("Crosshair Set!"); 
+                                    PrimaryCrosshairImage.DataContext = item; LoggingSystem.LogInfo("Crosshair Set!");
                                 }
                             }
                         }
@@ -634,7 +634,7 @@ namespace BLREdit.UI
         {
             Weapon weapon = Weapon.GetDefaultSetupOfReciever(reciever);
             if (muzzle.DataContext == null || (muzzle.DataContext as ImportItem).name == Weapon.NoMuzzle)
-            { 
+            {
                 muzzle.DataContext = weapon.GetMuzzle();
             }
             if (barrel.DataContext == null || (barrel.DataContext as ImportItem).name == Weapon.NoBarrel)
@@ -754,7 +754,7 @@ namespace BLREdit.UI
                     if (image.Name.Contains("Scope"))
                     {
                         foreach (var item in ImportSystem.Mods.scopes)
-                        { 
+                        {
                             item.RemoveCrosshair();
                         }
                         ItemList.ItemsSource = ImportSystem.Mods.scopes;

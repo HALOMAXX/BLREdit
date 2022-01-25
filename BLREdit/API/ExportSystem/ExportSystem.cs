@@ -10,7 +10,7 @@ namespace BLREdit
         public static ObservableCollection<Profile> Profiles { get; } = LoadAllProfiles();
 
         private static int currentProfile = 0;
-        public static Profile ActiveProfile { get{ return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
+        public static Profile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
 
         private static Profile GetCurrentProfile()
         {
@@ -43,7 +43,7 @@ namespace BLREdit
                 currentProfile = 0;
             }
             else
-            { 
+            {
                 currentProfile = tempProfileIndex;
             }
         }

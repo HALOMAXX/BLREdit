@@ -1,11 +1,10 @@
 ﻿using Octokit;
 
 using System.Diagnostics;
-using System.Windows;
 
 namespace BLREdit
 {
-    
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -34,9 +33,9 @@ namespace BLREdit
             releases.Wait();
             var latest = releases.Result[0];
             LoggingSystem.LogInfo("Newest Version: " + latest.TagName + " of " + latest.Name + " vs Current: " + CurrentVersion + " of " + CurrentVersionName);
-                
+
             string[] remoteVersionParts = latest.TagName.Split('v');
-            remoteVersionParts = remoteVersionParts[remoteVersionParts.Length-1].Split('.');
+            remoteVersionParts = remoteVersionParts[remoteVersionParts.Length - 1].Split('.');
 
             string[] currentVersionParts = CurrentVersion.Split('v');
             currentVersionParts = currentVersionParts[currentVersionParts.Length - 1].Split('.');
@@ -49,7 +48,8 @@ namespace BLREdit
                 {
                     remote = int.Parse(remoteVersionParts[i]);
                     current = int.Parse(currentVersionParts[i]);
-                } catch
+                }
+                catch
                 {
                     LoggingSystem.LogWarning("Can't determine version differences!");
                 }
@@ -84,7 +84,7 @@ namespace BLREdit
                     return;
                 }
                 else
-                { 
+                {
                     var info = new InfoPopups.DownloadRuntimes();
                     if (VC32BitUpdate4 == "11.0.61030")
                     {

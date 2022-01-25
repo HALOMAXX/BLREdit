@@ -23,7 +23,7 @@ namespace BLREdit
         private static readonly BitmapImage SmallSquareEmpty = CreateEmptyBitmap(SmallSquareImageWidth, SmallSquareImageWidth);
 
         static FoxIcon()
-        { 
+        {
             WideEmpty.Freeze();
             LargeSquareEmpty.Freeze();
             SmallSquareEmpty.Freeze();
@@ -87,13 +87,25 @@ namespace BLREdit
 
             var tmp = GetImage(); //Load the actual image we want to draw
 
-            double offsetX = (Width - tmp.PixelWidth);
-            double offsetY = (Height - tmp.PixelHeight);
+            ImageDrawing actualImage = new ImageDrawing
+            {
+                Rect = CreateRectForImage(Width, Height, tmp.Width, tmp.Height, Uniform),
+                ImageSource = tmp
+            };
+            group.Children.Add(actualImage);
 
-            double scaleX =  Width / (double)tmp.PixelWidth;
-            double scaleY = Height / (double)tmp.PixelHeight;
+            var finished = new DrawingImage(group);
+            return ToBitmapSource(finished);
+        }
 
-            Rect Rectangle;
+        public static Rect CreateRectForImage(double BaseWidth, double BaseHeight, double InsertWidth, double InsertHeight, bool Uniform)
+        {
+            double offsetX = (BaseWidth - InsertWidth);
+            double offsetY = (BaseHeight - InsertHeight);
+
+            double scaleX = BaseWidth / InsertWidth;
+            double scaleY = BaseHeight / InsertHeight;
+
             if (Uniform)
             {
                 if (scaleX <= scaleY)
@@ -101,37 +113,25 @@ namespace BLREdit
                     double finalOffset = 0;
                     if (offsetX != offsetY)
                     {
-                        double scaledOffset = Height - (tmp.PixelHeight * scaleX);
+                        double scaledOffset = BaseHeight - (InsertHeight * scaleX);
                         finalOffset = scaledOffset - (scaledOffset / 2.0);
                     }
-                    Rectangle = new Rect(0, finalOffset, tmp.PixelWidth * scaleX, tmp.PixelHeight * scaleX);
+                    return new Rect(0, finalOffset, InsertWidth * scaleX, InsertHeight * scaleX);
                 }
                 else
                 {
-                    Rectangle = new Rect((offsetX * scaleY)/2.0, 0, tmp.PixelWidth * scaleY, tmp.PixelHeight * scaleY);
+                    return new Rect((offsetX * scaleY) / 2.0, 0, InsertWidth * scaleY, InsertHeight * scaleY);
                 }
             }
-            else 
+            else
             {
-                Rectangle = new Rect(0, 0, tmp.PixelWidth * scaleX, tmp.PixelHeight * scaleY);
+                return new Rect(0, 0, InsertWidth * scaleX, InsertHeight * scaleY);
             }
-
-            ImageDrawing actualImage = new ImageDrawing
-            {
-                Rect = Rectangle,
-                ImageSource = tmp
-            };
-
-
-            group.Children.Add(actualImage);
-
-            var finished = new DrawingImage(group);
-            return ToBitmapSource(finished);
         }
 
         private BitmapSource GetImage()
         {
-            return new BitmapImage(this.Icon);
+            return new BitmapImage(Icon);
         }
 
         public static BitmapSource ToBitmapSource(DrawingImage source)
@@ -150,17 +150,17 @@ namespace BLREdit
         {
             // Define parameters used to create the BitmapSource.
             PixelFormat pf = PixelFormats.Bgra32;
-          
-            int rawStride = (width * pf.BitsPerPixel)/ 8;
+
+            int rawStride = (width * pf.BitsPerPixel) / 8;
             byte[] rawImage = new byte[rawStride * height];
 
             // Initialize the image with data.
-            for (int i = 0; i < rawImage.Length; i+=4)
+            for (int i = 0; i < rawImage.Length; i += 4)
             {
                 rawImage[i] = 0;    //Blue
-                rawImage[i+1] = 0;  //Green
-                rawImage[i+2] = 0;  //Red
-                rawImage[i+3] = 30; //Alpha
+                rawImage[i + 1] = 0;  //Green
+                rawImage[i + 2] = 0;  //Red
+                rawImage[i + 3] = 30; //Alpha
             }
 
             // Create a BitmapSource.
