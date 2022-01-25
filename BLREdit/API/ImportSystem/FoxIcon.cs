@@ -55,28 +55,7 @@ namespace BLREdit
 
         public BitmapSource GetWideImage()
         {
-
-            DrawingGroup group = new DrawingGroup();
-
-            ImageDrawing baseImage = new ImageDrawing
-            {
-                Rect = new Rect(0, 0, WideImageWidth, WideImageHeight),
-                ImageSource = WideEmpty.Clone()
-            };
-            group.Children.Add(baseImage);
-
-            var tmp = GetImage();
-            ImageDrawing actualImage = new ImageDrawing();
-            int offsetX = (WideImageWidth - tmp.PixelWidth) / 2;
-            if (offsetX < 0)
-            { offsetX = 0; }
-
-            actualImage.Rect = new Rect(offsetX, 0, tmp.PixelWidth, tmp.PixelHeight);
-            actualImage.ImageSource = tmp;
-            group.Children.Add(actualImage);
-
-            var finished = new DrawingImage(group);
-            return ToBitmapSource(finished);
+            return GetImage(WideImageWidth, WideImageHeight, WideEmpty.Clone(), true);
         }
 
         public BitmapSource GetLargeSquareImage()
@@ -91,28 +70,59 @@ namespace BLREdit
 
         public BitmapSource GetSquareImage(int square, BitmapImage empty)
         {
+            return GetImage(square, square, empty, true);
+        }
 
+        private BitmapSource GetImage(int Width, int Height, BitmapImage empty, bool Uniform)
+        {
             DrawingGroup group = new DrawingGroup();
-          
-            ImageDrawing baseImage = new ImageDrawing
+
+
+            ImageDrawing baseImage = new ImageDrawing //background for Image
             {
-                Rect = new Rect(0, 0, square, square),
+                Rect = new Rect(0, 0, Width, Height),
                 ImageSource = empty
             };
             group.Children.Add(baseImage);
 
-            var tmp = GetImage();
-            ImageDrawing actualImage = new ImageDrawing();
-            int offsetY = (square - tmp.PixelWidth);
-            if (offsetY < 0)
+            var tmp = GetImage(); //Load the actual image we want to draw
+
+            double offsetX = (Width - tmp.PixelWidth);
+            double offsetY = (Height - tmp.PixelHeight);
+
+            double scaleX =  Width / (double)tmp.PixelWidth;
+            double scaleY = Height / (double)tmp.PixelHeight;
+
+            Rect Rectangle;
+            if (Uniform)
             {
-                actualImage.Rect = new Rect(0, 0, square, tmp.PixelHeight / 2);
+                if (scaleX <= scaleY)
+                {
+                    double finalOffset = 0;
+                    if (offsetX != offsetY)
+                    {
+                        double scaledOffset = Height - (tmp.PixelHeight * scaleX);
+                        finalOffset = scaledOffset - (scaledOffset / 2.0);
+                    }
+                    Rectangle = new Rect(0, finalOffset, tmp.PixelWidth * scaleX, tmp.PixelHeight * scaleX);
+                }
+                else
+                {
+                    Rectangle = new Rect((offsetX * scaleY)/2.0, 0, tmp.PixelWidth * scaleY, tmp.PixelHeight * scaleY);
+                }
             }
-            else
+            else 
             {
-                actualImage.Rect = new Rect(0, 0, square, square);
+                Rectangle = new Rect(0, 0, tmp.PixelWidth * scaleX, tmp.PixelHeight * scaleY);
             }
-            actualImage.ImageSource = tmp;
+
+            ImageDrawing actualImage = new ImageDrawing
+            {
+                Rect = Rectangle,
+                ImageSource = tmp
+            };
+
+
             group.Children.Add(actualImage);
 
             var finished = new DrawingImage(group);

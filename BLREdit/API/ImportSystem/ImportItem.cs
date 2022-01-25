@@ -38,6 +38,9 @@ namespace BLREdit
         {
             if (!string.IsNullOrEmpty(descriptorName))
             { return descriptorName + ":" + weaponModifiers.rating; }
+            if (IniStats == null) 
+            { return ""; }
+
             string desc = "";
             int i = 0;
             foreach (StatDecriptor st in IniStats.StatDecriptors)
