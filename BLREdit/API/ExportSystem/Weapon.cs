@@ -186,6 +186,7 @@
             new Weapon() { Barrel = "No Barrel Mod",                        Grip = "", Magazine = 29,   Muzzle = 0,     Receiver = "Shotgun",                   Stock = "Silverwood Standard Stock",            Scope="No Optic Mod" },                 // 27 Shotgun
         };
 
+        public const string NoMuzzle = "No Muzzle Mod";
         public const string NoBarrel = "No Barrel Mod";
         public const string NoGrip = "";
         public const string NoStock = "No Stock";

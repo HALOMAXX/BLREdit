@@ -32,11 +32,18 @@ namespace BLREdit
         public Vector3 ModificationRangeRecoil { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeIdealDistance { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeMaxDistance { get; set; } = Vector3.Zero;
+        public StatDecriptor[] StatDecriptors { get; set; } = new StatDecriptor[]{ new StatDecriptor() };
 
         public override string ToString()
         {
             return LoggingSystem.ObjectToTextWall(this);
         }
+    }
+
+    public class StatDecriptor
+    {
+        public string Name { get; set; } = "Classic";
+        public int Points { get; set; } = 0;
     }
 }
 

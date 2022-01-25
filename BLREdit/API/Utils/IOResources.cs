@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Windows;
 
 namespace BLREdit
 {
@@ -17,7 +18,7 @@ namespace BLREdit
 
         public static Encoding FILE_ENCODING { get; } = Encoding.UTF8;
         public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
-        public static BLREditSettings Settings { get; } = LoadSettings();
+        public static BLREditSettings Settings { get; set; } = LoadSettings();
 
         public static BLREditSettings LoadSettings()
         {
@@ -87,6 +88,7 @@ namespace BLREdit
         public bool ShowUpdateNotice { get; set; } = true;
         public bool DoRuntimeCheck { get; set; } = true;
         public bool ForceRuntimeCheck { get; set; } = false;
+        public Visibility DebugVisibility { get; set; } = Visibility.Collapsed;
 
         public void ApplySettings()
         {

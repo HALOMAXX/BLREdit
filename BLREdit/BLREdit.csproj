@@ -25,11 +25,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="UI\Resources\CleanedButton.png" />
-	  <None Remove="UI\Resources\CleanedButtonHover.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Page Include="App.xaml" />
 	</ItemGroup>
 	

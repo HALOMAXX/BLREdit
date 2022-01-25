@@ -59,7 +59,53 @@
       "X": 8000,
       "Y": 10000,
       "Z": 9000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Punisher",
+        "Points": 10
+      },
+      {
+        "Name": "Vulture",
+        "Points": 20
+      },
+      {
+        "Name": "Ambassador",
+        "Points": 30
+      },
+      {
+        "Name": "Kestrel",
+        "Points": 40
+      },
+      {
+        "Name": "Powerhouse",
+        "Points": 50
+      },
+      {
+        "Name": "Last Word",
+        "Points": 60
+      },
+      {
+        "Name": "Condor",
+        "Points": 70
+      },
+      {
+        "Name": "Osprey",
+        "Points": 80
+      },
+      {
+        "Name": "Eagle",
+        "Points": 90
+      },
+      {
+        "Name": "Falcon",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40014,
@@ -121,7 +167,53 @@
       "X": 6000,
       "Y": 7200,
       "Z": 6500
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Calamity",
+        "Points": 10
+      },
+      {
+        "Name": "Blight",
+        "Points": 20
+      },
+      {
+        "Name": "Disaster",
+        "Points": 30
+      },
+      {
+        "Name": "Plague",
+        "Points": 40
+      },
+      {
+        "Name": "Tormentor",
+        "Points": 50
+      },
+      {
+        "Name": "Ruiner",
+        "Points": 60
+      },
+      {
+        "Name": "Affliction",
+        "Points": 70
+      },
+      {
+        "Name": "Scourge",
+        "Points": 80
+      },
+      {
+        "Name": "Pestilence",
+        "Points": 90
+      },
+      {
+        "Name": "Abomination",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40013,
@@ -183,7 +275,53 @@
       "X": 3500,
       "Y": 5500,
       "Z": 4500
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Element",
+        "Points": 10
+      },
+      {
+        "Name": "Wasp",
+        "Points": 20
+      },
+      {
+        "Name": "Scrounger",
+        "Points": 30
+      },
+      {
+        "Name": "Cut-Throat",
+        "Points": 40
+      },
+      {
+        "Name": "Stalker",
+        "Points": 50
+      },
+      {
+        "Name": "Criminal",
+        "Points": 60
+      },
+      {
+        "Name": "Predator",
+        "Points": 70
+      },
+      {
+        "Name": "Stryker",
+        "Points": 80
+      },
+      {
+        "Name": "Adder",
+        "Points": 90
+      },
+      {
+        "Name": "Lion",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40018,
@@ -245,7 +383,53 @@
       "X": 4500,
       "Y": 5500,
       "Z": 5000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Animal",
+        "Points": 10
+      },
+      {
+        "Name": "Sprinter",
+        "Points": 20
+      },
+      {
+        "Name": "Huntsman",
+        "Points": 30
+      },
+      {
+        "Name": "Courier",
+        "Points": 40
+      },
+      {
+        "Name": "Ape",
+        "Points": 50
+      },
+      {
+        "Name": "Perforator",
+        "Points": 60
+      },
+      {
+        "Name": "Harrier",
+        "Points": 70
+      },
+      {
+        "Name": "Marathon",
+        "Points": 80
+      },
+      {
+        "Name": "Squire",
+        "Points": 90
+      },
+      {
+        "Name": "Samurai",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40019,
@@ -307,7 +491,53 @@
       "X": 18000,
       "Y": 22000,
       "Z": 20000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Saboteur",
+        "Points": 10
+      },
+      {
+        "Name": "Adversary",
+        "Points": 20
+      },
+      {
+        "Name": "Antagonist",
+        "Points": 30
+      },
+      {
+        "Name": "Eagle-Eye",
+        "Points": 40
+      },
+      {
+        "Name": "Killer",
+        "Points": 50
+      },
+      {
+        "Name": "Sinner",
+        "Points": 60
+      },
+      {
+        "Name": "Terror",
+        "Points": 70
+      },
+      {
+        "Name": "Howitzer",
+        "Points": 80
+      },
+      {
+        "Name": "Demon",
+        "Points": 90
+      },
+      {
+        "Name": "Liquidator",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40020,
@@ -369,7 +599,53 @@
       "X": 3200,
       "Y": 3800,
       "Z": 3500
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Combatant",
+        "Points": 10
+      },
+      {
+        "Name": "Militant",
+        "Points": 20
+      },
+      {
+        "Name": "Instigator",
+        "Points": 30
+      },
+      {
+        "Name": "Dissident",
+        "Points": 40
+      },
+      {
+        "Name": "Caballero",
+        "Points": 50
+      },
+      {
+        "Name": "Magnate",
+        "Points": 60
+      },
+      {
+        "Name": "Mediator",
+        "Points": 70
+      },
+      {
+        "Name": "Venturer",
+        "Points": 80
+      },
+      {
+        "Name": "Reconciler",
+        "Points": 90
+      },
+      {
+        "Name": "Imerator",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40023,
@@ -431,7 +707,41 @@
       "X": 6000,
       "Y": 8000,
       "Z": 7000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Artifact",
+        "Points": 15
+      },
+      {
+        "Name": "Remnant",
+        "Points": 30
+      },
+      {
+        "Name": "Memento",
+        "Points": 45
+      },
+      {
+        "Name": "Relic",
+        "Points": 60
+      },
+      {
+        "Name": "Shrapnel",
+        "Points": 75
+      },
+      {
+        "Name": "Survivor",
+        "Points": 90
+      },
+      {
+        "Name": "War Trophy",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40024,
@@ -493,7 +803,53 @@
       "X": 9000,
       "Y": 10500,
       "Z": 10000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Punisher",
+        "Points": 10
+      },
+      {
+        "Name": "Vulture",
+        "Points": 20
+      },
+      {
+        "Name": "Ambassador",
+        "Points": 30
+      },
+      {
+        "Name": "Kestrel",
+        "Points": 40
+      },
+      {
+        "Name": "Powerhouse",
+        "Points": 50
+      },
+      {
+        "Name": "Last Word",
+        "Points": 60
+      },
+      {
+        "Name": "Condor",
+        "Points": 70
+      },
+      {
+        "Name": "Osprey",
+        "Points": 80
+      },
+      {
+        "Name": "Eagle",
+        "Points": 90
+      },
+      {
+        "Name": "Falcon",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40022,
@@ -555,7 +911,41 @@
       "X": 3000,
       "Y": 4500,
       "Z": 4000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Infantry",
+        "Points": 15
+      },
+      {
+        "Name": "Brigade",
+        "Points": 30
+      },
+      {
+        "Name": "Formation",
+        "Points": 45
+      },
+      {
+        "Name": "Commander",
+        "Points": 60
+      },
+      {
+        "Name": "Regiment",
+        "Points": 75
+      },
+      {
+        "Name": "Battalion",
+        "Points": 90
+      },
+      {
+        "Name": "Admiral",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40025,
@@ -617,7 +1007,53 @@
       "X": 7000,
       "Y": 9000,
       "Z": 8000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Punisher",
+        "Points": 10
+      },
+      {
+        "Name": "Vulture",
+        "Points": 20
+      },
+      {
+        "Name": "Ambassador",
+        "Points": 30
+      },
+      {
+        "Name": "Kestrel",
+        "Points": 40
+      },
+      {
+        "Name": "Powerhouse",
+        "Points": 50
+      },
+      {
+        "Name": "Last Word",
+        "Points": 60
+      },
+      {
+        "Name": "Condor",
+        "Points": 70
+      },
+      {
+        "Name": "Osprey",
+        "Points": 80
+      },
+      {
+        "Name": "Eagle",
+        "Points": 90
+      },
+      {
+        "Name": "Falcon",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40003,
@@ -679,7 +1115,53 @@
       "X": 6000,
       "Y": 8000,
       "Z": 7000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Knight",
+        "Points": 10
+      },
+      {
+        "Name": "Stallion",
+        "Points": 20
+      },
+      {
+        "Name": "Jackal",
+        "Points": 30
+      },
+      {
+        "Name": "Rebel",
+        "Points": 40
+      },
+      {
+        "Name": "Templar",
+        "Points": 50
+      },
+      {
+        "Name": "Barron",
+        "Points": 60
+      },
+      {
+        "Name": "Arbiter",
+        "Points": 70
+      },
+      {
+        "Name": "Pioneer",
+        "Points": 80
+      },
+      {
+        "Name": "Marshal",
+        "Points": 90
+      },
+      {
+        "Name": "Legend",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40007,
@@ -741,7 +1223,53 @@
       "X": 11000,
       "Y": 14000,
       "Z": 13000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Punisher",
+        "Points": 10
+      },
+      {
+        "Name": "Vulture",
+        "Points": 20
+      },
+      {
+        "Name": "Ambassador",
+        "Points": 30
+      },
+      {
+        "Name": "Kestrel",
+        "Points": 40
+      },
+      {
+        "Name": "Powerhouse",
+        "Points": 50
+      },
+      {
+        "Name": "Last Word",
+        "Points": 60
+      },
+      {
+        "Name": "Condor",
+        "Points": 70
+      },
+      {
+        "Name": "Osprey",
+        "Points": 80
+      },
+      {
+        "Name": "Eagle",
+        "Points": 90
+      },
+      {
+        "Name": "Falcon",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40011,
@@ -803,7 +1331,53 @@
       "X": 5800,
       "Y": 7000,
       "Z": 6500
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Savage",
+        "Points": 10
+      },
+      {
+        "Name": "Pillager",
+        "Points": 20
+      },
+      {
+        "Name": "Demolisher",
+        "Points": 30
+      },
+      {
+        "Name": "Raider",
+        "Points": 40
+      },
+      {
+        "Name": "Killer",
+        "Points": 50
+      },
+      {
+        "Name": "Annihilator",
+        "Points": 60
+      },
+      {
+        "Name": "Executioner",
+        "Points": 70
+      },
+      {
+        "Name": "Temper",
+        "Points": 80
+      },
+      {
+        "Name": "Berzerker",
+        "Points": 90
+      },
+      {
+        "Name": "Frenzy",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40009,
@@ -865,7 +1439,53 @@
       "X": 8000,
       "Y": 11000,
       "Z": 10000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Hatchet",
+        "Points": 10
+      },
+      {
+        "Name": "Maul",
+        "Points": 20
+      },
+      {
+        "Name": "Battle-axe",
+        "Points": 30
+      },
+      {
+        "Name": "Butcher",
+        "Points": 40
+      },
+      {
+        "Name": "Tomahawk",
+        "Points": 50
+      },
+      {
+        "Name": "Scythe",
+        "Points": 60
+      },
+      {
+        "Name": "Broad-axe",
+        "Points": 70
+      },
+      {
+        "Name": "Pike",
+        "Points": 80
+      },
+      {
+        "Name": "Halberd",
+        "Points": 90
+      },
+      {
+        "Name": "Chainsaw",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40027,
@@ -927,7 +1547,53 @@
       "X": 6000,
       "Y": 8000,
       "Z": 7000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Knight",
+        "Points": 10
+      },
+      {
+        "Name": "Stallion",
+        "Points": 20
+      },
+      {
+        "Name": "Jackal",
+        "Points": 30
+      },
+      {
+        "Name": "Rebel",
+        "Points": 40
+      },
+      {
+        "Name": "Templar",
+        "Points": 50
+      },
+      {
+        "Name": "Barron",
+        "Points": 60
+      },
+      {
+        "Name": "Arbiter",
+        "Points": 70
+      },
+      {
+        "Name": "Pioneer",
+        "Points": 80
+      },
+      {
+        "Name": "Marshal",
+        "Points": 90
+      },
+      {
+        "Name": "Legend",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40010,
@@ -989,7 +1655,53 @@
       "X": 3500,
       "Y": 5500,
       "Z": 4500
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Fighter",
+        "Points": 10
+      },
+      {
+        "Name": "Duelist",
+        "Points": 20
+      },
+      {
+        "Name": "Contender",
+        "Points": 30
+      },
+      {
+        "Name": "Boxer",
+        "Points": 40
+      },
+      {
+        "Name": "Wildcat",
+        "Points": 50
+      },
+      {
+        "Name": "Rioter",
+        "Points": 60
+      },
+      {
+        "Name": "Partisan",
+        "Points": 70
+      },
+      {
+        "Name": "Guerrilla",
+        "Points": 80
+      },
+      {
+        "Name": "Ravager",
+        "Points": 90
+      },
+      {
+        "Name": "Warrior",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40008,
@@ -1051,7 +1763,53 @@
       "X": 10500,
       "Y": 12500,
       "Z": 12000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Hotshot",
+        "Points": 10
+      },
+      {
+        "Name": "Spartan",
+        "Points": 20
+      },
+      {
+        "Name": "Expert",
+        "Points": 30
+      },
+      {
+        "Name": "Negotiator",
+        "Points": 40
+      },
+      {
+        "Name": "Lance",
+        "Points": 50
+      },
+      {
+        "Name": "Shepherd",
+        "Points": 60
+      },
+      {
+        "Name": "Spearhead",
+        "Points": 70
+      },
+      {
+        "Name": "Specialist",
+        "Points": 80
+      },
+      {
+        "Name": "Highwayman",
+        "Points": 90
+      },
+      {
+        "Name": "Vanguard",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40026,
@@ -1113,7 +1871,53 @@
       "X": 7000,
       "Y": 8500,
       "Z": 8000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Hotshot",
+        "Points": 10
+      },
+      {
+        "Name": "Spartan",
+        "Points": 20
+      },
+      {
+        "Name": "Expert",
+        "Points": 30
+      },
+      {
+        "Name": "Negotiator",
+        "Points": 40
+      },
+      {
+        "Name": "Lance",
+        "Points": 50
+      },
+      {
+        "Name": "Shepherd",
+        "Points": 60
+      },
+      {
+        "Name": "Spearhead",
+        "Points": 70
+      },
+      {
+        "Name": "Specialist",
+        "Points": 80
+      },
+      {
+        "Name": "Highwayman",
+        "Points": 90
+      },
+      {
+        "Name": "Vanguard",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40016,
@@ -1175,7 +1979,53 @@
       "X": 1800,
       "Y": 5000,
       "Z": 2500
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Riptide",
+        "Points": 10
+      },
+      {
+        "Name": "Charger",
+        "Points": 20
+      },
+      {
+        "Name": "Downpour",
+        "Points": 30
+      },
+      {
+        "Name": "Bull-rush",
+        "Points": 40
+      },
+      {
+        "Name": "Flood",
+        "Points": 50
+      },
+      {
+        "Name": "Confronter",
+        "Points": 60
+      },
+      {
+        "Name": "Drowner",
+        "Points": 70
+      },
+      {
+        "Name": "Rebellion",
+        "Points": 80
+      },
+      {
+        "Name": "Tsunami",
+        "Points": 90
+      },
+      {
+        "Name": "Outrage",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40015,
@@ -1237,7 +2087,53 @@
       "X": 3000,
       "Y": 5000,
       "Z": 4000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Bully",
+        "Points": 10
+      },
+      {
+        "Name": "Menace",
+        "Points": 20
+      },
+      {
+        "Name": "Brawler",
+        "Points": 30
+      },
+      {
+        "Name": "Gladiator",
+        "Points": 40
+      },
+      {
+        "Name": "Bruiser",
+        "Points": 50
+      },
+      {
+        "Name": "Breaker",
+        "Points": 60
+      },
+      {
+        "Name": "Crusher",
+        "Points": 70
+      },
+      {
+        "Name": "Temper",
+        "Points": 80
+      },
+      {
+        "Name": "Bulldozer",
+        "Points": 90
+      },
+      {
+        "Name": "Champion",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40021,
@@ -1299,7 +2195,53 @@
       "X": 1200,
       "Y": 3000,
       "Z": 1500
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Constable",
+        "Points": 10
+      },
+      {
+        "Name": "Showstopper",
+        "Points": 20
+      },
+      {
+        "Name": "Backup",
+        "Points": 30
+      },
+      {
+        "Name": "Hornet",
+        "Points": 40
+      },
+      {
+        "Name": "Fallback",
+        "Points": 50
+      },
+      {
+        "Name": "Flatfoot",
+        "Points": 60
+      },
+      {
+        "Name": "Gumshoe",
+        "Points": 70
+      },
+      {
+        "Name": "Wheelgun",
+        "Points": 80
+      },
+      {
+        "Name": "Shortstop",
+        "Points": 90
+      },
+      {
+        "Name": "Balik Special",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40000,
@@ -1361,7 +2303,53 @@
       "X": 4000,
       "Y": 5500,
       "Z": 5000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Custodian",
+        "Points": 10
+      },
+      {
+        "Name": "Cleaner",
+        "Points": 20
+      },
+      {
+        "Name": "Saint",
+        "Points": 30
+      },
+      {
+        "Name": "Hardballer",
+        "Points": 40
+      },
+      {
+        "Name": "Marauder",
+        "Points": 50
+      },
+      {
+        "Name": "Slugger",
+        "Points": 60
+      },
+      {
+        "Name": "Villain",
+        "Points": 70
+      },
+      {
+        "Name": "Judge",
+        "Points": 80
+      },
+      {
+        "Name": "Vindicator",
+        "Points": 90
+      },
+      {
+        "Name": "Bronco",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40001,
@@ -1423,7 +2411,53 @@
       "X": 4000,
       "Y": 5300,
       "Z": 5000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Peashooter",
+        "Points": 10
+      },
+      {
+        "Name": "Defender",
+        "Points": 20
+      },
+      {
+        "Name": "Patroler",
+        "Points": 30
+      },
+      {
+        "Name": "Stonewall",
+        "Points": 40
+      },
+      {
+        "Name": "Equalizer",
+        "Points": 50
+      },
+      {
+        "Name": "Protector",
+        "Points": 60
+      },
+      {
+        "Name": "Flintlock",
+        "Points": 70
+      },
+      {
+        "Name": "Brandish",
+        "Points": 80
+      },
+      {
+        "Name": "Scout",
+        "Points": 90
+      },
+      {
+        "Name": "Warden",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40006,
@@ -1485,7 +2519,53 @@
       "X": 4000,
       "Y": 6000,
       "Z": 5000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Punisher",
+        "Points": 10
+      },
+      {
+        "Name": "Vulture",
+        "Points": 20
+      },
+      {
+        "Name": "Ambassador",
+        "Points": 30
+      },
+      {
+        "Name": "Kestrel",
+        "Points": 40
+      },
+      {
+        "Name": "Powerhouse",
+        "Points": 50
+      },
+      {
+        "Name": "Last Word",
+        "Points": 60
+      },
+      {
+        "Name": "Condor",
+        "Points": 70
+      },
+      {
+        "Name": "Osprey",
+        "Points": 80
+      },
+      {
+        "Name": "Eagle",
+        "Points": 90
+      },
+      {
+        "Name": "Falcon",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40028,
@@ -1547,7 +2627,53 @@
       "X": 4000,
       "Y": 5300,
       "Z": 5000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Peashooter",
+        "Points": 10
+      },
+      {
+        "Name": "Defender",
+        "Points": 20
+      },
+      {
+        "Name": "Patroler",
+        "Points": 30
+      },
+      {
+        "Name": "Stonewall",
+        "Points": 40
+      },
+      {
+        "Name": "Equalizer",
+        "Points": 50
+      },
+      {
+        "Name": "Protector",
+        "Points": 60
+      },
+      {
+        "Name": "Flintlock",
+        "Points": 70
+      },
+      {
+        "Name": "Brandish",
+        "Points": 80
+      },
+      {
+        "Name": "Scout",
+        "Points": 90
+      },
+      {
+        "Name": "Warden",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40004,
@@ -1609,7 +2735,53 @@
       "X": 1200,
       "Y": 3000,
       "Z": 2000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Shank",
+        "Points": 10
+      },
+      {
+        "Name": "Blade",
+        "Points": 20
+      },
+      {
+        "Name": "Cutlass",
+        "Points": 30
+      },
+      {
+        "Name": "Scalpel",
+        "Points": 40
+      },
+      {
+        "Name": "Cutter",
+        "Points": 50
+      },
+      {
+        "Name": "Lance",
+        "Points": 60
+      },
+      {
+        "Name": "Sabre",
+        "Points": 70
+      },
+      {
+        "Name": "Stilleto",
+        "Points": 80
+      },
+      {
+        "Name": "Lacerator",
+        "Points": 90
+      },
+      {
+        "Name": "Cleaver",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40002,
@@ -1671,7 +2843,53 @@
       "X": 2500,
       "Y": 3200,
       "Z": 3000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Spitfire",
+        "Points": 10
+      },
+      {
+        "Name": "Masher",
+        "Points": 20
+      },
+      {
+        "Name": "Blackjack",
+        "Points": 30
+      },
+      {
+        "Name": "Prowler",
+        "Points": 40
+      },
+      {
+        "Name": "Cannon",
+        "Points": 50
+      },
+      {
+        "Name": "Desperado",
+        "Points": 60
+      },
+      {
+        "Name": "Howitzer",
+        "Points": 70
+      },
+      {
+        "Name": "Gunslinger",
+        "Points": 80
+      },
+      {
+        "Name": "Outlaw",
+        "Points": 90
+      },
+      {
+        "Name": "Hellfire",
+        "Points": 100
+      }
+    ]
   },
   {
     "ItemID": 40005,
@@ -1733,6 +2951,52 @@
       "X": 1500,
       "Y": 2200,
       "Z": 2000
-    }
+    },
+    "StatDecriptors": [
+      {
+        "Name": "Classic",
+        "Points": 0
+      },
+      {
+        "Name": "Bully",
+        "Points": 10
+      },
+      {
+        "Name": "Menace",
+        "Points": 20
+      },
+      {
+        "Name": "Brawler",
+        "Points": 30
+      },
+      {
+        "Name": "Gladiator",
+        "Points": 40
+      },
+      {
+        "Name": "Bruiser",
+        "Points": 50
+      },
+      {
+        "Name": "Breaker",
+        "Points": 60
+      },
+      {
+        "Name": "Crusher",
+        "Points": 70
+      },
+      {
+        "Name": "Temper",
+        "Points": 80
+      },
+      {
+        "Name": "Bulldozer",
+        "Points": 90
+      },
+      {
+        "Name": "Champion",
+        "Points": 100
+      }
+    ]
   }
 ]

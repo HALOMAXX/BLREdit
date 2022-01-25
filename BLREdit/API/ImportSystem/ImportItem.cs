@@ -15,11 +15,13 @@ namespace BLREdit
         public BitmapSource Crosshair { get; private set; }
         public BitmapSource MiniCrosshair { get { return GetBitmapCrosshair(name); } }
         public string name { get; set; }
+        public string descriptorName { get; set; } = "";
+        public string DescriptorName { get { return GetDescriptorName(); } }
         public PawnModifiers pawnModifiers { get; set; }
         public string tooltip { get; set; }
         public int uid { get; set; }
         public int[] validFor { get; set; }
-        public WeaponModifiers weaponModifiers { get; set; }
+        public WeaponModifiers weaponModifiers { get; set; } = new WeaponModifiers();
         public string[] supportedMods { get; set; }
         public ImportStats stats { get; set; }
         public WikiStats WikiStats { get; set; }
@@ -30,6 +32,39 @@ namespace BLREdit
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("[Class={0}, Icon={1}, Name={2}, PawnModifiers={3}, Tooltip={4}, UID={5}, ValidFor={6}, WeaponModifiers={7}, SupportedMods={8}, Stats={9}]", _class, icon, name, pawnModifiers, tooltip, uid, PrintIntArray(validFor), weaponModifiers, PrintStringArray(supportedMods), stats);
             return sb.ToString();
+        }
+
+        public string GetDescriptorName() 
+        {
+            if (!string.IsNullOrEmpty(descriptorName))
+            { return descriptorName + ":" + weaponModifiers.rating; }
+            string desc = "";
+            int i = 0;
+            foreach (StatDecriptor st in IniStats.StatDecriptors)
+            {
+                if (i <= 0)
+                {
+                    desc += st.Name;
+                    i++;
+                }
+                else
+                {
+                    desc += "/" + st.Name;
+                }
+            }
+            return desc;
+        }
+        public string GetDescriptorName(int points)
+        {
+            string currentbest = "";
+            foreach (StatDecriptor st in IniStats.StatDecriptors)
+            {
+                if (points >= st.Points)
+                { 
+                    currentbest = st.Name;
+                }
+            }
+            return currentbest;
         }
 
         public bool IsValidFor(ImportItem item)

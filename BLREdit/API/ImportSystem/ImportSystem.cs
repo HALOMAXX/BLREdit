@@ -34,7 +34,14 @@ namespace BLREdit
             LoadWikiStats();
             LoadIniStats();
 
+            //UpgradeIniStats();
+
             LoggingSystem.LogInfoAppend(watch, "Import System");
+        }
+
+        private static void UpgradeIniStats()
+        {
+            IOResources.Serialize<IniStats[]>("upgraded.json", IniItemStats);
         }
 
         private static void UpdateImages()
