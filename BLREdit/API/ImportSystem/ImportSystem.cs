@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text.Json;
 
 namespace BLREdit
 {
@@ -14,9 +13,9 @@ namespace BLREdit
 
         public static readonly FoxIcon[] Icons = LoadAllIcons();
         public static readonly FoxIcon[] Crosshairs = LoadAllCrosshairs();
-        private static readonly ImportGear importGear = JsonSerializer.Deserialize<ImportGear>(File.ReadAllText(IOResources.GEAR_FILE), IOResources.JSO);
-        private static readonly ImportMods importMods = JsonSerializer.Deserialize<ImportMods>(File.ReadAllText(IOResources.MOD_FILE), IOResources.JSO);
-        private static readonly ImportWeapons importWeapons = JsonSerializer.Deserialize<ImportWeapons>(File.ReadAllText(IOResources.WEAPON_FILE), IOResources.JSO);
+        private static readonly ImportGear importGear = IOResources.Deserialize<ImportGear>(IOResources.GEAR_FILE);
+        private static readonly ImportMods importMods = IOResources.Deserialize<ImportMods>(IOResources.MOD_FILE);
+        private static readonly ImportWeapons importWeapons = IOResources.Deserialize<ImportWeapons>(IOResources.WEAPON_FILE);
 
         private static WikiStats[] CorrectedItemStats;
 
@@ -61,19 +60,10 @@ namespace BLREdit
 
         private static void LoadIniStats()
         {
-            try
-            {
-                File.Delete("UpgradedStats.json");
-            }
-            catch { }
-
-            IniItemStats = JsonSerializer.Deserialize<IniStats[]>(File.ReadAllText(IOResources.ASSET_DIR + "\\filteredIniStats.json"), IOResources.JSOFields);
+            IniItemStats = IOResources.Deserialize<IniStats[]>(IOResources.ASSET_DIR + "\\filteredIniStats.json");
 
             AssignIniStatsTo(Weapons.primary, IniItemStats);
             AssignIniStatsTo(Weapons.secondary, IniItemStats);
-#if DEBUG
-            JsonSerializer.Serialize<IniStats[]>(File.OpenWrite("UpgradedStats.json"), IniItemStats, IOResources.JSOFields);
-#endif
         }
 
         public static IniStats[] GetFromWeapons(ImportItem[] items1, ImportItem[] items2)

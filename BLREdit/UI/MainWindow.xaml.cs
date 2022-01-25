@@ -24,9 +24,10 @@ namespace BLREdit.UI
             profilechanging = true;
             textchnaging = true;
 
-
             ImportSystem.Initialize();
+
             InitializeComponent();
+
             ItemList.Items.Filter += new Predicate<object>(o => { 
                 if (o != null) 
                 { 

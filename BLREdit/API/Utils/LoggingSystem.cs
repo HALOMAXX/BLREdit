@@ -6,39 +6,47 @@ using System.Text;
 namespace BLREdit
 {
     public static class LoggingSystem
-    { 
-    
+    {
+#if DEBUG
+        public static bool IsDebuggingEnabled = true;
+#else
+        public static bool IsDebuggingEnabled = false;
+#endif
         public static Stopwatch LogInfo(string info, string newLine="\n")
         {
-#if DEBUG
-            var now = DateTime.Now;
-            Trace.Write("[" + now + "]Info:" + info + newLine);
-            return Stopwatch.StartNew();
-#endif
+            if (IsDebuggingEnabled)
+            {
+                var now = DateTime.Now;
+                Trace.Write("[" + now + "]Info:" + info + newLine);
+                return Stopwatch.StartNew();
+            }
             return null;
         }
 
         public static void LogInfoAppend(Stopwatch watch, string finish = "")
         {
-#if DEBUG
-            Trace.WriteLine(finish + " Done! in " + watch.ElapsedMilliseconds + "ms");
-#endif
+            if (IsDebuggingEnabled && watch != null)
+            {
+                Trace.WriteLine(finish + " Done! in " + watch.ElapsedMilliseconds + "ms");
+            }
         }
 
         public static void LogWarning(string info)
         {
-#if DEBUG
-            var now = DateTime.Now;
-            Trace.WriteLine("[" + now + "]Warning:" + info);
-#endif
+            if (IsDebuggingEnabled)
+            {
+                var now = DateTime.Now;
+                Trace.WriteLine("[" + now + "]Warning:" + info);
+            }
         }
 
         public static void LogError(string info)
         {
-#if DEBUG
-            var now = DateTime.Now;
-            Trace.WriteLine("[" + now + "]Error:" + info);
-#endif
+            if (IsDebuggingEnabled)
+            {
+                var now = DateTime.Now;
+                Trace.WriteLine("[" + now + "]Error:" + info);
+            }
         }
 
         public static string ObjectToTextWall<T>(T obj)

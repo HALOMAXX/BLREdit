@@ -2,8 +2,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.Text.Json;
-using System.Windows;
 
 namespace BLREdit
 {
@@ -12,17 +10,54 @@ namespace BLREdit
         public static ObservableCollection<Profile> Profiles { get; } = LoadAllProfiles();
 
         private static int currentProfile = 0;
-        public static Profile ActiveProfile { get { if (currentProfile < 0) { LoggingSystem.LogError("currentProfile was not found"); return Profiles[0]; } else { return Profiles[currentProfile]; } } set { currentProfile = Profiles.IndexOf(value); } }
+        public static Profile ActiveProfile { get{ return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
 
-        public static ObservableCollection<Profile> LoadAllProfiles()
+        private static Profile GetCurrentProfile()
+        {
+            if (currentProfile <= 0 && currentProfile >= Profiles.Count)
+            {
+                AddProfile();
+                currentProfile = 0;
+            }
+            else if (currentProfile < 0)
+            {
+                currentProfile = 0;
+            }
+            else if (currentProfile >= Profiles.Count)
+            {
+                currentProfile = Profiles.Count - 1;
+            }
+            return Profiles[currentProfile];
+        }
+
+        private static void SetCurrentProfile(Profile profile)
+        {
+            if (profile == null)
+            {
+                LoggingSystem.LogError("Profile was null when settings currentProfile");
+                throw new ArgumentNullException(nameof(profile), "target profile can't be null for currentProfile");
+            }
+            int tempProfileIndex = Profiles.IndexOf(profile);
+            if (tempProfileIndex < 0)
+            {
+                currentProfile = 0;
+            }
+            else
+            { 
+                currentProfile = tempProfileIndex;
+            }
+        }
+
+        private static ObservableCollection<Profile> LoadAllProfiles()
         {
             ObservableCollection<Profile> profiles = new ObservableCollection<Profile>();
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
             foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
             {
-                profiles.Add(LoadProfile(file));
+                profiles.Add(IOResources.Deserialize<Profile>(file));
             }
 
+            //initialize profiles with atleast one profile
             if (profiles.Count <= 0)
             {
                 profiles.Add(new Profile());
@@ -33,7 +68,7 @@ namespace BLREdit
 
         public static void CopyToClipBoard(Profile profile)
         {
-            string clipboard = "register " + Environment.NewLine + JsonSerializer.Serialize<Profile>(profile, IOResources.JSO);
+            string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile);
             bool success = false;
 
             try
@@ -76,18 +111,11 @@ namespace BLREdit
             return;
         }
 
-        public static Profile LoadProfile(string file)
-        {
-            return JsonSerializer.Deserialize<Profile>(File.ReadAllText(file), IOResources.JSO);
-        }
-
         public static void SaveProfiles()
         {
             foreach (Profile profile in Profiles)
             {
-                StreamWriter sw = new StreamWriter(File.Create(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + profile.PlayerName + ".json"));
-                sw.Write(JsonSerializer.Serialize<Profile>(profile, IOResources.JSO));
-                sw.Close();
+                profile.SaveProfile();
             }
         }
 
