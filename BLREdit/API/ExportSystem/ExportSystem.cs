@@ -68,7 +68,7 @@ namespace BLREdit
 
         public static void CopyToClipBoard(Profile profile)
         {
-            string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile);
+            string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile, true);
             bool success = false;
 
             try

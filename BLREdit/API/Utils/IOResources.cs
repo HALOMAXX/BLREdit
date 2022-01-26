@@ -18,6 +18,7 @@ namespace BLREdit
 
         public static Encoding FILE_ENCODING { get; } = Encoding.UTF8;
         public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
+        public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
         public static BLREditSettings Settings { get; set; } = LoadSettings();
 
         public static BLREditSettings LoadSettings()
@@ -38,7 +39,7 @@ namespace BLREdit
             }
         }
 
-        public static void Serialize<T>(string filePath, T obj)
+        public static void Serialize<T>(string filePath, T obj, bool compact = false)
         {
             //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
             if (string.IsNullOrEmpty(filePath)) { LoggingSystem.LogWarning("filePath was empty!"); return; }
@@ -56,12 +57,18 @@ namespace BLREdit
             }
         }
 
-        public static string Serialize<T>(T obj)
+        public static string Serialize<T>(T obj, bool compact = false)
         {
             //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
             if (obj == null) { LoggingSystem.LogWarning("object were empty!"); return ""; }
-
-            return JsonSerializer.Serialize<T>(obj, JSOFields);
+            if (compact)
+            {
+                return JsonSerializer.Serialize<T>(obj, JSOCompacted);
+            }
+            else
+            {
+                return JsonSerializer.Serialize<T>(obj, JSOFields);
+            }
         }
 
         public static T Deserialize<T>(string filePath)
