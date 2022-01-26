@@ -605,6 +605,13 @@ namespace BLREdit.UI
                                 }
                             }
 
+                            if (image.Name.Contains("Helmet") && ImportSystem.Gear.helmets.Contains(item))
+                            { image.DataContext = item; LoggingSystem.LogInfo("Helmet Set!"); }
+                            if (image.Name.Contains("UpperBody") && ImportSystem.Gear.upperBodies.Contains(item))
+                            { image.DataContext = item; LoggingSystem.LogInfo("UpperBody Set!"); }
+                            if (image.Name.Contains("LowerBody") && ImportSystem.Gear.lowerBodies.Contains(item))
+                            { image.DataContext = item; LoggingSystem.LogInfo("LowerBody Set!"); }
+
                             if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item))
                             { image.DataContext = item; LoggingSystem.LogInfo("Gear Set!"); }
                             if (image.Name.Contains("Tactical") && ImportSystem.Gear.tactical.Contains(item))
@@ -693,6 +700,10 @@ namespace BLREdit.UI
             ActiveLoadout.Gear3 = ImportSystem.GetGearID(GearImage3.DataContext as ImportItem);
             ActiveLoadout.Gear4 = ImportSystem.GetGearID(GearImage4.DataContext as ImportItem);
             ActiveLoadout.Tactical = ImportSystem.GetTacticalID(TacticalImage.DataContext as ImportItem);
+            ExportSystem.ActiveProfile.Helmet = (HelmetImage.DataContext as ImportItem).name;
+            ExportSystem.ActiveProfile.UpperBody = (UpperBodyImage.DataContext as ImportItem).name;
+            ExportSystem.ActiveProfile.LowerBody = (LowerBodyImage.DataContext as ImportItem).name;
+            ExportSystem.ActiveProfile.Camo = ImportSystem.GetCamoID((PlayerCamoImage.DataContext as ImportItem));
         }
 
         private static void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock, ImportItem tag, ImportItem camo)
