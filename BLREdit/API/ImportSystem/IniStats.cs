@@ -20,6 +20,8 @@ namespace BLREdit
         public double CrouchSpreadMultiplier { get; set; } = 0.5f;
         public double JumpSpreadMultiplier { get; set; } = 4.0f;
         public double MovementSpreadMultiplier { get; set; } = 2.5f;
+        public double MovementSpreadConstant { get; set; } = 0.0f;
+        public double Weight { get; set; } = 150.0f;
         public double ZoomSpreadMultiplier { get; set; } = 0.4f;
         public double IdealDistance { get; set; } = 8000;
         public double MaxDistance { get; set; } = 16384;
