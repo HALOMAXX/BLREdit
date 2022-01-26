@@ -50,6 +50,8 @@ namespace BLREdit.UI
             PlayerCamoImage.DataContext = ExportSystem.ActiveProfile.GetCamo();
             SetLoadout(ExportSystem.ActiveProfile.Loadout1);
 
+            IsFemaleCheckBox.DataContext = ExportSystem.ActiveProfile;
+
             Loadout1Button.IsEnabled = false;
 
             profilechanging = false;
@@ -906,6 +908,8 @@ namespace BLREdit.UI
                 ExportSystem.ActiveProfile = ProfileComboBox.SelectedValue as Profile;
                 PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
 
+                IsFemaleCheckBox.DataContext = ExportSystem.ActiveProfile;
+
                 HelmetImage.DataContext = ExportSystem.ActiveProfile.GetHelmet();
                 UpperBodyImage.DataContext = ExportSystem.ActiveProfile.GetUpperBody();
                 LowerBodyImage.DataContext = ExportSystem.ActiveProfile.GetLowerBody();
@@ -969,6 +973,26 @@ namespace BLREdit.UI
                 ProfileComboBox.SelectedIndex = index;
                 textchnaging = false;
             }
+        }
+
+        private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var upper = UpperBodyImage.DataContext as ImportItem;
+            var lower = LowerBodyImage.DataContext as ImportItem;
+            UpperBodyImage.DataContext = null;
+            LowerBodyImage.DataContext = null;
+            UpperBodyImage.DataContext = upper;
+            LowerBodyImage.DataContext = lower;
+        }
+
+        private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var upper = UpperBodyImage.DataContext as ImportItem;
+            var lower = LowerBodyImage.DataContext as ImportItem;
+            UpperBodyImage.DataContext = null;
+            LowerBodyImage.DataContext = null;
+            UpperBodyImage.DataContext = upper;
+            LowerBodyImage.DataContext = lower;
         }
     }
 }

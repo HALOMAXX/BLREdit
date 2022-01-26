@@ -22,8 +22,8 @@ namespace BLREdit
             VersionCheck();
 
         }
-        const string CurrentVersion = "v0.1.0";
-        const string CurrentVersionName = "BLREdit UI Styling Upgrade";
+        const string CurrentVersion = "v0.2.0";
+        const string CurrentVersionName = "BLREdit Full Character Customization";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()

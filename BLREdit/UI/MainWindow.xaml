@@ -195,5 +195,6 @@
 
         <Label Name="PrimaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
         <Label Name="SecondaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <CheckBox Name="IsFemaleCheckBox" Foreground="White" Content="Female" IsChecked="{Binding IsFemale}" HorizontalAlignment="Left" Margin="10,808,0,0" VerticalAlignment="Top" Checked="IsFemaleCheckBox_Checked" Unchecked="IsFemaleCheckBox_Unchecked"/>
     </Grid>
 </Window>
