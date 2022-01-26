@@ -322,7 +322,23 @@ namespace BLREdit.UI
                 {
                     aim = accuracyTABaseModifier * (float)(180 / Math.PI);
                 }
-                double move = (accuracyBaseModifier * Reciever.IniStats.MovementSpreadMultiplier) * (180 / Math.PI);
+
+                double weight_alpha = Math.Abs(Reciever.IniStats.Weight / 80.0);
+                double weight_clampalpha = Math.Min(Math.Max(weight_alpha, -1.0), 1.0); // Don't ask me why they clamp the absolute value with a negative, I have no idea.
+                double weight_multiplier;
+                if (Reciever.IniStats.Weight > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
+                {
+                    weight_multiplier = Lerp(1.0, 0.5, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
+                }
+                else
+                {
+                    weight_multiplier = Lerp(1.0, 2.0, weight_clampalpha);
+                }
+                double movemultiplier_current = 1.0 + ((Reciever.IniStats.MovementSpreadMultiplier - 1.0) * weight_multiplier);
+                double moveconstant_current = Reciever.IniStats.MovementSpreadConstant * weight_multiplier;
+
+                double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
+                //double move = (accuracyBaseModifier * Reciever.IniStats.MovementSpreadMultiplier) * (180 / Math.PI);  // Old.
 
                 return new double[] { aim, hip, move };
             }
