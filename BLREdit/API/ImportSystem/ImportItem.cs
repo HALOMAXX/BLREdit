@@ -8,9 +8,18 @@ namespace BLREdit
         public string Category { get; set; }
         public string _class { get; set; }
         public string icon { get; set; }
-        public BitmapSource WideImage { get; private set; }
-        public BitmapSource LargeSquareImage { get; private set; }
-        public BitmapSource SmallSquareImage { get; private set; }
+        public BitmapSource WideImage { get { return GetWideImage(); } }
+        public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(); } }
+        public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(); } }
+
+        public BitmapSource wideImageMale = null;
+        public BitmapSource largeSquareImageMale = null;
+        public BitmapSource smallSquareImageMale = null;
+
+        public BitmapSource wideImageFemale = null;
+        public BitmapSource largeSquareImageFemale = null;
+        public BitmapSource smallSquareImageFemale = null;
+
         public BitmapSource Crosshair { get; private set; }
         public BitmapSource MiniCrosshair { get { return GetBitmapCrosshair(name); } }
         public string name { get; set; }
@@ -31,6 +40,33 @@ namespace BLREdit
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("[Class={0}, Icon={1}, Name={2}, PawnModifiers={3}, Tooltip={4}, UID={5}, ValidFor={6}, WeaponModifiers={7}, SupportedMods={8}, Stats={9}]", _class, icon, name, pawnModifiers, tooltip, uid, PrintIntArray(validFor), weaponModifiers, PrintStringArray(supportedMods), stats);
             return sb.ToString();
+        }
+
+        public BitmapSource GetWideImage()
+        {
+            return GetImage(wideImageMale, wideImageFemale);
+        }
+        public BitmapSource GetLargeSquareImage()
+        {
+            return GetImage(largeSquareImageMale, largeSquareImageFemale);
+        }
+        public BitmapSource GetSmallSquareImage()
+        {
+            return GetImage(smallSquareImageMale, smallSquareImageFemale);
+        }
+
+        public static BitmapSource GetImage(BitmapSource male, BitmapSource female)
+        {
+            if (ExportSystem.ActiveProfile.IsFemale)
+            {
+                if (female == null)
+                { return male; }
+                return female;
+            }
+            else
+            {
+                return male;
+            }
         }
 
         public string GetDescriptorName()
@@ -82,22 +118,54 @@ namespace BLREdit
 
         public void LoadImage()
         {
+            bool male = false;
             if (!string.IsNullOrEmpty(icon))
             {
                 foreach (FoxIcon foxicon in ImportSystem.Icons)
                 {
                     if (foxicon.Name == icon)
                     {
-                        WideImage = foxicon.GetWideImage();
-                        LargeSquareImage = foxicon.GetLargeSquareImage();
-                        SmallSquareImage = foxicon.GetSmallSquareImage();
-                        return;
+                        wideImageMale = foxicon.GetWideImage();
+                        largeSquareImageMale = foxicon.GetLargeSquareImage();
+                        smallSquareImageMale = foxicon.GetSmallSquareImage();
+                        male = true;
+                    }
+                    if (foxicon.Name == GetFemaleIconName())
+                    {
+                        wideImageFemale = foxicon.GetWideImage();
+                        largeSquareImageFemale = foxicon.GetLargeSquareImage();
+                        smallSquareImageFemale = foxicon.GetSmallSquareImage();
                     }
                 }
             }
-            WideImage = FoxIcon.CreateEmptyBitmap(256, 128);
-            LargeSquareImage = FoxIcon.CreateEmptyBitmap(128, 128);
-            SmallSquareImage = FoxIcon.CreateEmptyBitmap(64, 64);
+            if (!male)
+            {
+                wideImageMale = FoxIcon.CreateEmptyBitmap(256, 128);
+                largeSquareImageMale = FoxIcon.CreateEmptyBitmap(128, 128);
+                smallSquareImageMale = FoxIcon.CreateEmptyBitmap(64, 64);
+            }
+        }
+
+        private string GetFemaleIconName()
+        { 
+            string[] parts = icon.Split('_');
+            string female = "";
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (i == parts.Length - 1)
+                {
+                    female += "_Female";
+                }
+                if (i == 0)
+                {
+                    female += parts[i];
+                }
+                else
+                {
+                    female += "_" + parts[i];
+                }
+            }
+            return female;
         }
 
         public void LoadCrosshair()
@@ -153,9 +221,14 @@ namespace BLREdit
 
         internal void PrepareImages()
         {
-            WideImage = WideImage.Clone();
-            LargeSquareImage = LargeSquareImage.Clone();
-            SmallSquareImage = SmallSquareImage.Clone();
+            wideImageMale = wideImageMale?.Clone();
+            wideImageFemale = wideImageFemale?.Clone();
+
+            largeSquareImageMale = largeSquareImageMale?.Clone();
+            largeSquareImageFemale = largeSquareImageFemale?.Clone();
+
+            smallSquareImageMale = smallSquareImageMale?.Clone();
+            smallSquareImageFemale = smallSquareImageFemale?.Clone();
         }
     }
 }

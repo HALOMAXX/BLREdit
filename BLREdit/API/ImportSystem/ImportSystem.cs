@@ -92,6 +92,26 @@ namespace BLREdit
             return stats.ToArray();
         }
 
+        public static ImportItem GetItemByID(int index, ImportItem[] items)
+        {
+            if (index < 0)
+            { return null; }
+            return items[index];
+        }
+
+
+        public static ImportItem GetItemByName(string name, ImportItem[] items)
+        {
+            foreach (ImportItem item in items)
+            {
+                if (item.name == name)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
         internal static void AssignIniStatsTo(ImportItem[] items, IniStats[] stats)
         {
             foreach (ImportItem item in items)
@@ -128,6 +148,14 @@ namespace BLREdit
         public static int GetMagazineID(ImportItem item)
         {
             return GetItemID(item, Mods.magazines);
+        }
+        public static int GetTagID(ImportItem item)
+        {
+            return GetItemID(item, Gear.hangers);
+        }
+        public static int GetCamoID(ImportItem item)
+        {
+            return GetItemID(item, Mods.camos);
         }
         public static int GetItemID(ImportItem item, ImportItem[] items)
         {
@@ -251,9 +279,12 @@ namespace BLREdit
                 {
                     item.IniStats = new IniStats() { ItemName = item.name, ItemID = item.uid, ROF = item.stats.rateOfFire, Burst = 1, ApplyTime = (60.0f / item.stats.rateOfFire) };
                 }
-                item.WideImage.Freeze();
-                item.LargeSquareImage.Freeze();
-                item.SmallSquareImage.Freeze();
+                item.wideImageMale.Freeze();
+                item.wideImageFemale?.Freeze();
+                item.largeSquareImageMale.Freeze();
+                item.largeSquareImageFemale?.Freeze();
+                item.smallSquareImageMale.Freeze();
+                item.smallSquareImageFemale?.Freeze();
             });
             foreach (ImportItem item in items)
             {

@@ -8706,7 +8706,7 @@
         },
         {
             "class": "FoxDataProvider_Gear_LowerBody",
-            "icon": "t_ArmcomPiranhaZ700_128x128",
+            "icon": "t_ArmComPiranhaZ700_128x128",
             "name": "ArmCom Piranha Z700",
             "tooltip": "Heavy leg armor. Provides two gear slots.<br>Increases health but reduces speed.",
             "uid": 30100
@@ -8762,7 +8762,7 @@
         },
         {
             "class": "FoxDataProvider_Gear_LowerBody",
-            "icon": "t_GuardianCollossusRC6_128x128",
+            "icon": "t_GuardianColossusRC6_128x128",
             "name": "Guardian ColossusRC6",
             "tooltip": "Heavy leg armor. Provides two gear slots.<br>Increases health but reduces speed.",
             "uid": 30109
@@ -8776,7 +8776,7 @@
         },
         {
             "class": "FoxDataProvider_Gear_LowerBody",
-            "icon": "t_Gold_Pants_Male_128x128",
+            "icon": "t_Gold_AlliedLZViper_128x128",
             "name": "Prestige Allied LZ Viper",
             "tooltip": "Prestigious leg armor. Provides one gear slot.<br>Standard-issue leg armor with no stat modifications.",
             "uid": 30111
@@ -8934,7 +8934,7 @@
         },
         {
             "class": "FoxDataProvider_Gear_UpperBody",
-            "icon": "t_AlliedRangedLT_128x128",
+          "icon": "t_AlliedRangerLT_128x128",
             "name": "Allied Ranger LT",
             "tooltip": "Standard chest armor. Provides no gear slots.<br>Increases speed but reduces health.",
             "uid": 30206
