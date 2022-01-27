@@ -227,7 +227,7 @@ namespace BLREdit.UI
 
             DamageLabel.Content = Damage.ToString("0.0") + " / " + DamageFar.ToString("0.0");
             ROFLabel.Content = ROF.ToString("0");
-            AmmoLabel.Content = AmmoMag.ToString("0") + " / " + AmmoRes.ToString("0");
+            AmmoLabel.Content = AmmoMag.ToString("0") + " / " + (AmmoMag * Reciever.IniStats.InitialMagazines).ToString("0");
             ReloadLabel.Content = Reload.ToString("0.00") + "s";
             SwapLabel.Content = Swap.ToString("0.00");
             AimLabel.Content = Aim.ToString("0.00") + "°";
