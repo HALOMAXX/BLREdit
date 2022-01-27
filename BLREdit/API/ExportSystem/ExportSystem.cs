@@ -54,7 +54,10 @@ namespace BLREdit
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
             foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
             {
-                profiles.Add(IOResources.Deserialize<Profile>(file));
+                Profile profile;
+                try { profile = IOResources.Deserialize<Profile>(file); }
+                catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.Deserialize<OldProfile>(file).ConvertToNew(); }
+                profiles.Add(profile);
             }
 
             //initialize profiles with atleast one profile

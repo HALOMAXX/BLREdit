@@ -747,9 +747,9 @@ namespace BLREdit.UI
             ActiveLoadout.Gear3 = ImportSystem.GetGearID(GearImage3.DataContext as ImportItem);
             ActiveLoadout.Gear4 = ImportSystem.GetGearID(GearImage4.DataContext as ImportItem);
             ActiveLoadout.Tactical = ImportSystem.GetTacticalID(TacticalImage.DataContext as ImportItem);
-            ExportSystem.ActiveProfile.Helmet = (HelmetImage.DataContext as ImportItem).name;
-            ExportSystem.ActiveProfile.UpperBody = (UpperBodyImage.DataContext as ImportItem).name;
-            ExportSystem.ActiveProfile.LowerBody = (LowerBodyImage.DataContext as ImportItem).name;
+            ExportSystem.ActiveProfile.Helmet = ImportSystem.GetHelmetID(HelmetImage.DataContext as ImportItem);
+            ExportSystem.ActiveProfile.UpperBody = ImportSystem.GetUpperBodyID(UpperBodyImage.DataContext as ImportItem);
+            ExportSystem.ActiveProfile.LowerBody = ImportSystem.GetLowerBodyID(LowerBodyImage.DataContext as ImportItem);
             ExportSystem.ActiveProfile.Camo = ImportSystem.GetCamoBodyID((PlayerCamoBodyImage.DataContext as ImportItem));
         }
 

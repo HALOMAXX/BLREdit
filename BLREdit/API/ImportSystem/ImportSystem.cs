@@ -35,6 +35,9 @@ namespace BLREdit
 
             //UpgradeIniStats();
 
+            LoggingSystem.LogInfo("BodyCamoCount:" + Mods.camosBody.Length);
+            LoggingSystem.LogInfo("WeaponCamoCount:" + Mods.camosWeapon.Length);
+
             LoggingSystem.LogInfoAppend(watch, "Import System");
         }
 
@@ -152,6 +155,18 @@ namespace BLREdit
         public static int GetTagID(ImportItem item)
         {
             return GetItemID(item, Gear.hangers);
+        }
+        public static int GetHelmetID(ImportItem item)
+        {
+            return GetItemID(item, Gear.helmets);
+        }
+        public static int GetUpperBodyID(ImportItem item)
+        {
+            return GetItemID(item, Gear.upperBodies);
+        }
+        public static int GetLowerBodyID(ImportItem item)
+        {
+            return GetItemID(item, Gear.lowerBodies);
         }
         public static int GetCamoWeaponID(ImportItem item)
         {
