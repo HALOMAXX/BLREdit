@@ -57,7 +57,7 @@ namespace BLREdit
 
         public static BitmapSource GetImage(BitmapSource male, BitmapSource female)
         {
-            if (ExportSystem.ActiveProfile.IsFemale)
+            if (UI.MainWindow.ActiveLoadout.IsFemale)
             {
                 if (female == null)
                 { return male; }

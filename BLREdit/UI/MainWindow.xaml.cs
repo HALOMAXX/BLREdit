@@ -16,7 +16,7 @@ namespace BLREdit.UI
     public partial class MainWindow : Window
     {
         private ImportItem FilterWeapon = null;
-        private Loadout ActiveLoadout = null;
+        public static Loadout ActiveLoadout = null;
 
         public MainWindow()
         {
@@ -44,13 +44,7 @@ namespace BLREdit.UI
             ProfileComboBox.ItemsSource = ExportSystem.Profiles;
             ProfileComboBox.SelectedIndex = 0;
 
-            HelmetImage.DataContext = ExportSystem.ActiveProfile.GetHelmet();
-            UpperBodyImage.DataContext = ExportSystem.ActiveProfile.GetUpperBody();
-            LowerBodyImage.DataContext = ExportSystem.ActiveProfile.GetLowerBody();
-            PlayerCamoBodyImage.DataContext = ExportSystem.ActiveProfile.GetCamo();
             SetLoadout(ExportSystem.ActiveProfile.Loadout1);
-
-            IsFemaleCheckBox.DataContext = ExportSystem.ActiveProfile;
 
             Loadout1Button.IsEnabled = false;
 
@@ -747,10 +741,10 @@ namespace BLREdit.UI
             ActiveLoadout.Gear3 = ImportSystem.GetGearID(GearImage3.DataContext as ImportItem);
             ActiveLoadout.Gear4 = ImportSystem.GetGearID(GearImage4.DataContext as ImportItem);
             ActiveLoadout.Tactical = ImportSystem.GetTacticalID(TacticalImage.DataContext as ImportItem);
-            ExportSystem.ActiveProfile.Helmet = ImportSystem.GetHelmetID(HelmetImage.DataContext as ImportItem);
-            ExportSystem.ActiveProfile.UpperBody = ImportSystem.GetUpperBodyID(UpperBodyImage.DataContext as ImportItem);
-            ExportSystem.ActiveProfile.LowerBody = ImportSystem.GetLowerBodyID(LowerBodyImage.DataContext as ImportItem);
-            ExportSystem.ActiveProfile.Camo = ImportSystem.GetCamoBodyID((PlayerCamoBodyImage.DataContext as ImportItem));
+            ActiveLoadout.Helmet = ImportSystem.GetHelmetID(HelmetImage.DataContext as ImportItem);
+            ActiveLoadout.UpperBody = ImportSystem.GetUpperBodyID(UpperBodyImage.DataContext as ImportItem);
+            ActiveLoadout.LowerBody = ImportSystem.GetLowerBodyID(LowerBodyImage.DataContext as ImportItem);
+            ActiveLoadout.Camo = ImportSystem.GetCamoBodyID((PlayerCamoBodyImage.DataContext as ImportItem));
         }
 
         private static void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock, ImportItem tag, ImportItem camo)
@@ -918,6 +912,14 @@ namespace BLREdit.UI
             GearImage3.DataContext = Loadout.GetGear(loadout.Gear3);
             GearImage4.DataContext = Loadout.GetGear(loadout.Gear4);
             TacticalImage.DataContext = loadout.GetTactical();
+
+            HelmetImage.DataContext = loadout.GetHelmet();
+            UpperBodyImage.DataContext = loadout.GetUpperBody();
+            LowerBodyImage.DataContext = loadout.GetLowerBody();
+            PlayerCamoBodyImage.DataContext = loadout.GetCamo();
+
+            IsFemaleCheckBox.DataContext = loadout;
+
             SetPrimary(loadout.Primary);
             SetSecondary(loadout.Secondary);
 
@@ -960,11 +962,6 @@ namespace BLREdit.UI
                 PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
 
                 IsFemaleCheckBox.DataContext = ExportSystem.ActiveProfile;
-
-                HelmetImage.DataContext = ExportSystem.ActiveProfile.GetHelmet();
-                UpperBodyImage.DataContext = ExportSystem.ActiveProfile.GetUpperBody();
-                LowerBodyImage.DataContext = ExportSystem.ActiveProfile.GetLowerBody();
-                PlayerCamoBodyImage.DataContext = ExportSystem.ActiveProfile.GetCamo();
 
                 SetLoadout(ExportSystem.ActiveProfile.Loadout1);
                 profilechanging = false;
