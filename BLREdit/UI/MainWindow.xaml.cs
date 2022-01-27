@@ -644,6 +644,10 @@ namespace BLREdit.UI
                         {
                             stock.DataContext = item;
                         }
+                        else
+                        {
+                            stock.DataContext = Weapon.GetDefaultSetupOfReciever(reciever).GetStock();
+                        }
                     }
                 }
                 else

@@ -185,6 +185,7 @@
     </Style>
 
     <Style TargetType="Border">
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="#0C9E9E9E"/>
         <Setter Property="BorderThickness" Value="1,1,1,1"/>
     </Style>
@@ -195,6 +196,7 @@
     </Style>
 
     <Style x:Key="DebugBorder" BasedOn="{StaticResource DebugElement}" TargetType="Border">
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="#0C9E9E9E"/>
         <Setter Property="BorderThickness" Value="1,1,1,1"/>
     </Style>
