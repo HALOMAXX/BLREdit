@@ -23507,7 +23507,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 11,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope_IR",
@@ -23545,7 +23558,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 9,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope_Counter_01",
@@ -23585,7 +23611,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 11,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope_Counter_02",
@@ -23623,7 +23662,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 11,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope_IR",
@@ -23661,7 +23713,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 11,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -23701,7 +23766,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 2,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -23739,7 +23817,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 10,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -23777,7 +23868,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 6,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -23817,7 +23921,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 3,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -23855,7 +23972,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -23893,7 +24023,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 4,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -23933,7 +24076,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 9,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -23971,7 +24127,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 6,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24011,7 +24180,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 9,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24051,7 +24233,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 7,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24089,7 +24284,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 8,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24127,7 +24335,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 5,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24165,7 +24386,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 9,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24203,7 +24437,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 7,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24243,7 +24490,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 8,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24281,7 +24541,20 @@
         40026,
         40027,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 6,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24301,7 +24574,20 @@
         40019,
         40025,
         40027
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 10,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope",
@@ -24341,7 +24627,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 1,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope_Default",
@@ -24359,7 +24658,20 @@
         40005,
         40015,
         40028
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     },
     {
       "class": "FoxWeaponScope_Gold9",
@@ -24399,7 +24711,20 @@
         40028,
         40024,
         40024
-      ]
+      ],
+      "weaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 1,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      }
     }
   ],
   "secondarySkins": [],

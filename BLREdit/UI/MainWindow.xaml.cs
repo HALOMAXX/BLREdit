@@ -220,8 +220,8 @@ namespace BLREdit.UI
             if (Stock != null)
                 mods.Add(Stock);
 
-            string barrelVSmag = CompareItemDescriptor(Barrel, Magazine);
-            string stockVSmuzzle = CompareItemDescriptor(Stock, Muzzle);
+            string barrelVSmag = CompareItemDescriptor1(Barrel, Magazine);
+            string stockVSmuzzle = CompareItemDescriptor2(Stock, Muzzle, Scope);
 
             string weaponDescriptor = Reciever.GetDescriptorName(TotalPoints(mods));
 
@@ -253,7 +253,7 @@ namespace BLREdit.UI
             return points;
         }
 
-        private static string CompareItemDescriptor(ImportItem item1, ImportItem item2)
+        private static string CompareItemDescriptor1(ImportItem item1, ImportItem item2)
         {
             if (item1 == null && item2 != null)
             {
@@ -268,7 +268,6 @@ namespace BLREdit.UI
                 return "Standard";
             }
 
-
             if (item1.weaponModifiers.rating > item2.weaponModifiers.rating)
             {
                 return item1.descriptorName;
@@ -277,6 +276,46 @@ namespace BLREdit.UI
             {
                 return item2.descriptorName;
             }
+        }
+
+        private static string CompareItemDescriptor2(ImportItem item1, ImportItem item2, ImportItem item3)
+        {
+            if (item1 == null && item2 == null && item3 == null)
+            {
+                return "Basic";
+            }
+
+            if (item1 == null && item2 != null)
+            {
+                return item2.descriptorName;
+            }
+            else if (item1 != null && item2 == null)
+            {
+                return item1.descriptorName;
+            }
+            else if (item1 == null && item2 == null && item3 != null)
+            {
+                return item3.descriptorName;
+            }
+
+            if ( (item1.weaponModifiers.rating >= item2.weaponModifiers.rating) && (item1.weaponModifiers.rating >= item3.weaponModifiers.rating) )
+            {
+                if (item1.weaponModifiers.rating > 0)
+                {
+                    return item1.descriptorName;
+                }
+                return "Basic";
+            }
+            else if ( (item2.weaponModifiers.rating >= item1.weaponModifiers.rating) && (item2.weaponModifiers.rating >= item3.weaponModifiers.rating) )
+            {
+                return item2.descriptorName;
+            }
+            else if ( (item3.weaponModifiers.rating >= item1.weaponModifiers.rating) && (item3.weaponModifiers.rating >= item2.weaponModifiers.rating) )
+            {
+                return item3.descriptorName;
+            }
+
+            return item1.descriptorName;
         }
 
         private static double[] CalculateRange(ImportItem Reciever, double allRange)
