@@ -47,7 +47,7 @@ namespace BLREdit.UI
             HelmetImage.DataContext = ExportSystem.ActiveProfile.GetHelmet();
             UpperBodyImage.DataContext = ExportSystem.ActiveProfile.GetUpperBody();
             LowerBodyImage.DataContext = ExportSystem.ActiveProfile.GetLowerBody();
-            PlayerCamoImage.DataContext = ExportSystem.ActiveProfile.GetCamo();
+            PlayerCamoBodyImage.DataContext = ExportSystem.ActiveProfile.GetCamo();
             SetLoadout(ExportSystem.ActiveProfile.Loadout1);
 
             IsFemaleCheckBox.DataContext = ExportSystem.ActiveProfile;
@@ -591,8 +591,10 @@ namespace BLREdit.UI
                             { image.DataContext = item; LoggingSystem.LogInfo("Magazine with ID:" + ImportSystem.GetMagazineID(item) + " Set!"); }
                             if (image.Name.Contains("Tag") && ImportSystem.Gear.hangers.Contains(item))
                             { image.DataContext = item; LoggingSystem.LogInfo("Hanger with ID:" + ImportSystem.GetTagID(item) + " Set!"); }
-                            if (image.Name.Contains("Camo") && ImportSystem.Mods.camos.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoID(item) + " Set!"); }
+                            if (image.Name.Contains("CamoWeapon") && ImportSystem.Mods.camosWeapon.Contains(item))
+                            { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoWeaponID(item) + " Set!"); }
+                            if (image.Name.Contains("CamoBody") && ImportSystem.Mods.camosBody.Contains(item))
+                            { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoBodyID(item) + " Set!"); }
                             if (image.Name.Contains("Stock") && ImportSystem.Mods.stocks.Contains(item))
                             {
                                 if (image.Name.Contains("Primary"))
@@ -699,8 +701,8 @@ namespace BLREdit.UI
 
         private void UpdateActiveLoadout()
         {
-            UpdateLoadoutWeapon(ActiveLoadout.Primary, PrimaryRecieverImage.DataContext as ImportItem, PrimaryMuzzleImage.DataContext as ImportItem, PrimaryBarrelImage.DataContext as ImportItem, PrimaryMagazineImage.DataContext as ImportItem, PrimaryScopeImage.DataContext as ImportItem, PrimaryStockImage.DataContext as ImportItem, PrimaryTagImage.DataContext as ImportItem, PrimaryCamoImage.DataContext as ImportItem);
-            UpdateLoadoutWeapon(ActiveLoadout.Secondary, SecondaryRecieverImage.DataContext as ImportItem, SecondaryMuzzleImage.DataContext as ImportItem, SecondaryBarrelImage.DataContext as ImportItem, SecondaryMagazineImage.DataContext as ImportItem, SecondaryScopeImage.DataContext as ImportItem, SecondaryStockImage.DataContext as ImportItem, SecondaryTagImage.DataContext as ImportItem, SecondaryCamoImage.DataContext as ImportItem);
+            UpdateLoadoutWeapon(ActiveLoadout.Primary, PrimaryRecieverImage.DataContext as ImportItem, PrimaryMuzzleImage.DataContext as ImportItem, PrimaryBarrelImage.DataContext as ImportItem, PrimaryMagazineImage.DataContext as ImportItem, PrimaryScopeImage.DataContext as ImportItem, PrimaryStockImage.DataContext as ImportItem, PrimaryTagImage.DataContext as ImportItem, PrimaryCamoWeaponImage.DataContext as ImportItem);
+            UpdateLoadoutWeapon(ActiveLoadout.Secondary, SecondaryRecieverImage.DataContext as ImportItem, SecondaryMuzzleImage.DataContext as ImportItem, SecondaryBarrelImage.DataContext as ImportItem, SecondaryMagazineImage.DataContext as ImportItem, SecondaryScopeImage.DataContext as ImportItem, SecondaryStockImage.DataContext as ImportItem, SecondaryTagImage.DataContext as ImportItem, SecondaryCamoWeaponImage.DataContext as ImportItem);
             ActiveLoadout.Gear1 = ImportSystem.GetGearID(GearImage1.DataContext as ImportItem);
             ActiveLoadout.Gear2 = ImportSystem.GetGearID(GearImage2.DataContext as ImportItem);
             ActiveLoadout.Gear3 = ImportSystem.GetGearID(GearImage3.DataContext as ImportItem);
@@ -709,7 +711,7 @@ namespace BLREdit.UI
             ExportSystem.ActiveProfile.Helmet = (HelmetImage.DataContext as ImportItem).name;
             ExportSystem.ActiveProfile.UpperBody = (UpperBodyImage.DataContext as ImportItem).name;
             ExportSystem.ActiveProfile.LowerBody = (LowerBodyImage.DataContext as ImportItem).name;
-            ExportSystem.ActiveProfile.Camo = ImportSystem.GetCamoID((PlayerCamoImage.DataContext as ImportItem));
+            ExportSystem.ActiveProfile.Camo = ImportSystem.GetCamoBodyID((PlayerCamoBodyImage.DataContext as ImportItem));
         }
 
         private static void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock, ImportItem tag, ImportItem camo)
@@ -721,7 +723,7 @@ namespace BLREdit.UI
             weapon.Scope = scope?.name ?? "No Optic Mod";
             weapon.Stock = stock?.name ?? "No Stock";
             weapon.Tag = ImportSystem.GetTagID(tag);
-            weapon.Camo = ImportSystem.GetCamoID(camo);
+            weapon.Camo = ImportSystem.GetCamoWeaponID(camo);
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -834,10 +836,16 @@ namespace BLREdit.UI
                         LoggingSystem.LogInfo("ItemList Set for Tags");
                         return;
                     }
-                    if (image.Name.Contains("Camo"))
+                    if (image.Name.Contains("CamoWeapon"))
                     {
-                        ItemList.ItemsSource = ImportSystem.Mods.camos;
-                        LoggingSystem.LogInfo("ItemList Set for Camos");
+                        ItemList.ItemsSource = ImportSystem.Mods.camosWeapon;
+                        LoggingSystem.LogInfo("ItemList Set for Weapon Camos");
+                        return;
+                    }
+                    if (image.Name.Contains("CamoBody"))
+                    {
+                        ItemList.ItemsSource = ImportSystem.Mods.camosBody;
+                        LoggingSystem.LogInfo("ItemList Set for Body Camos");
                         return;
                     }
                     if (image.Name.Contains("Helmet"))
@@ -886,7 +894,7 @@ namespace BLREdit.UI
             PrimaryScopeImage.DataContext = primary.GetScope();
             PrimaryCrosshairImage.DataContext = primary.GetScope();
             PrimaryTagImage.DataContext = primary.GetTag();
-            PrimaryCamoImage.DataContext = primary.GetCamo();
+            PrimaryCamoWeaponImage.DataContext = primary.GetCamo();
             UpdatePrimaryStats();
         }
 
@@ -900,7 +908,7 @@ namespace BLREdit.UI
             SecondaryScopeImage.DataContext = secondary.GetScope();
             SecondaryCrosshairImage.DataContext = secondary.GetScope();
             SecondaryTagImage.DataContext = secondary.GetTag();
-            SecondaryCamoImage.DataContext = secondary.GetCamo();
+            SecondaryCamoWeaponImage.DataContext = secondary.GetCamo();
             UpdateSecondaryStats();
         }
         bool textchnaging = false;
@@ -917,7 +925,7 @@ namespace BLREdit.UI
                 HelmetImage.DataContext = ExportSystem.ActiveProfile.GetHelmet();
                 UpperBodyImage.DataContext = ExportSystem.ActiveProfile.GetUpperBody();
                 LowerBodyImage.DataContext = ExportSystem.ActiveProfile.GetLowerBody();
-                PlayerCamoImage.DataContext = ExportSystem.ActiveProfile.GetCamo();
+                PlayerCamoBodyImage.DataContext = ExportSystem.ActiveProfile.GetCamo();
 
                 SetLoadout(ExportSystem.ActiveProfile.Loadout1);
                 profilechanging = false;

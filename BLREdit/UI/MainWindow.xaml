@@ -55,10 +55,10 @@
             <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="PrimaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="PrimaryCamoImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
 
 
@@ -85,10 +85,10 @@
             <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="SecondaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="SecondaryCamoImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
 
 
@@ -181,16 +181,16 @@
         </Border>
 
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="HelmetImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="HelmetImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="UpperBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="UpperBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="LowerBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="LowerBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="PlayerCamoImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PlayerCamoBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
         </Border>
 
         <Label Name="PrimaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>

@@ -31,7 +31,7 @@ namespace BLREdit
 
         public ImportItem GetCamo()
         {
-            return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camos);
+            return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosBody);
         }
 
         public void SaveProfile()

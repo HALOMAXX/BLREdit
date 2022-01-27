@@ -89,7 +89,7 @@ namespace BLREdit
 
             ImageDrawing actualImage = new ImageDrawing
             {
-                Rect = CreateRectForImage(Width, Height, tmp.Width, tmp.Height, Uniform),
+                Rect = CreateRectForImage(Width, Height, tmp.PixelWidth, tmp.PixelHeight, Uniform),
                 ImageSource = tmp
             };
             group.Children.Add(actualImage);

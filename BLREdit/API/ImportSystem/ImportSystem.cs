@@ -153,9 +153,13 @@ namespace BLREdit
         {
             return GetItemID(item, Gear.hangers);
         }
-        public static int GetCamoID(ImportItem item)
+        public static int GetCamoWeaponID(ImportItem item)
         {
-            return GetItemID(item, Mods.camos);
+            return GetItemID(item, Mods.camosWeapon);
+        }
+        public static int GetCamoBodyID(ImportItem item)
+        {
+            return GetItemID(item, Mods.camosBody);
         }
         public static int GetItemID(ImportItem item, ImportItem[] items)
         {
