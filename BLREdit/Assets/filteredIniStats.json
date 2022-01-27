@@ -4,6 +4,8 @@
     "ItemName": "Heavy Assault Rifle",
     "ROF": 500,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 22,
     "ApplyTime": 0.119999997,
     "RecoilSize": 0.5,
     "RecoilVector": {
@@ -114,6 +116,8 @@
     "ItemName": "LMG Recon",
     "ROF": 450,
     "Burst": 1,
+    "InitialMagazines": 3,
+    "MagSize": 65,
     "ApplyTime": 0.13333334,
     "RecoilSize": 0.4,
     "RecoilVector": {
@@ -224,6 +228,8 @@
     "ItemName": "Tactical SMG",
     "ROF": 950,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 35,
     "ApplyTime": 0.0631578937,
     "RecoilSize": 0.7,
     "RecoilVector": {
@@ -334,6 +340,8 @@
     "ItemName": "Burstfire SMG",
     "ROF": 850,
     "Burst": 4,
+    "InitialMagazines": 4,
+    "MagSize": 33,
     "ApplyTime": 0.159999996,
     "RecoilSize": 0.085,
     "RecoilVector": {
@@ -444,6 +452,8 @@
     "ItemName": "Anti-Materiel Rifle",
     "ROF": 120,
     "Burst": 1,
+    "InitialMagazines": 9,
+    "MagSize": 1,
     "ApplyTime": 0.5,
     "RecoilSize": 0.3,
     "RecoilVector": {
@@ -554,6 +564,8 @@
     "ItemName": "Bullpup Full Auto",
     "ROF": 550,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 25,
     "ApplyTime": 0,
     "RecoilSize": 0.3,
     "RecoilVector": {
@@ -664,6 +676,8 @@
     "ItemName": "AK470 Rifle",
     "ROF": 650,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 30,
     "ApplyTime": 0.0923076943,
     "RecoilSize": 0.5,
     "RecoilVector": {
@@ -762,6 +776,8 @@
     "ItemName": "Compound Bow",
     "ROF": 360,
     "Burst": 1,
+    "InitialMagazines": 0,
+    "MagSize": 1,
     "ApplyTime": 0.166666672,
     "RecoilSize": 0,
     "RecoilVector": {
@@ -872,6 +888,8 @@
     "ItemName": "M4X Rifle",
     "ROF": 750,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 30,
     "ApplyTime": 0.08,
     "RecoilSize": 0.4,
     "RecoilVector": {
@@ -970,6 +988,8 @@
     "ItemName": "Tactical Assault Rifle",
     "ROF": 450,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 20,
     "ApplyTime": 0.13333334,
     "RecoilSize": 0.3,
     "RecoilVector": {
@@ -1080,6 +1100,8 @@
     "ItemName": "Assault Rifle",
     "ROF": 650,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 30,
     "ApplyTime": 0.0923076943,
     "RecoilSize": 0.2,
     "RecoilVector": {
@@ -1190,6 +1212,8 @@
     "ItemName": "Bolt-Action Rifle",
     "ROF": 60,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 5,
     "ApplyTime": 1,
     "RecoilSize": 0.21,
     "RecoilVector": {
@@ -1300,6 +1324,8 @@
     "ItemName": "Light Machine Gun",
     "ROF": 650,
     "Burst": 1,
+    "InitialMagazines": 3,
+    "MagSize": 150,
     "ApplyTime": 0.0923076943,
     "RecoilSize": 0.3,
     "RecoilVector": {
@@ -1410,6 +1436,8 @@
     "ItemName": "Burstfire Rifle",
     "ROF": 725,
     "Burst": 3,
+    "InitialMagazines": 4,
+    "MagSize": 15,
     "ApplyTime": 0.239999995,
     "RecoilSize": 0.65,
     "RecoilVector": {
@@ -1520,6 +1548,8 @@
     "ItemName": "Prestige Assault Rifle",
     "ROF": 650,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 30,
     "ApplyTime": 0.0923076943,
     "RecoilSize": 0.2,
     "RecoilVector": {
@@ -1630,6 +1660,8 @@
     "ItemName": "Submachine Gun",
     "ROF": 900,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 45,
     "ApplyTime": 0.0666666701,
     "RecoilSize": 0.5,
     "RecoilVector": {
@@ -1740,6 +1772,8 @@
     "ItemName": "Combat Rifle",
     "ROF": 300,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 9,
     "ApplyTime": 0.2,
     "RecoilSize": 0.38,
     "RecoilVector": {
@@ -1850,6 +1884,8 @@
     "ItemName": "Light Recon Rifle",
     "ROF": 600,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 12,
     "ApplyTime": 0.1,
     "RecoilSize": 0.28,
     "RecoilVector": {
@@ -1960,6 +1996,8 @@
     "ItemName": "Shotgun AR-k",
     "ROF": 250,
     "Burst": 1,
+    "InitialMagazines": 2,
+    "MagSize": 10,
     "ApplyTime": 0.24,
     "RecoilSize": 0.9,
     "RecoilVector": {
@@ -2070,6 +2108,8 @@
     "ItemName": "Breech Loaded Pistol",
     "ROF": 400,
     "Burst": 1,
+    "InitialMagazines": 2,
+    "MagSize": 1,
     "ApplyTime": 0.1,
     "RecoilSize": 0.3,
     "RecoilVector": {
@@ -2180,6 +2220,8 @@
     "ItemName": "Snub 260",
     "ROF": 600,
     "Burst": 1,
+    "InitialMagazines": 2,
+    "MagSize": 8,
     "ApplyTime": 0.12,
     "RecoilSize": 0.3,
     "RecoilVector": {
@@ -2290,6 +2332,8 @@
     "ItemName": "Heavy Pistol",
     "ROF": 600,
     "Burst": 1,
+    "InitialMagazines": 3,
+    "MagSize": 8,
     "ApplyTime": 0.1,
     "RecoilSize": 0.2,
     "RecoilVector": {
@@ -2400,6 +2444,8 @@
     "ItemName": "Light Pistol",
     "ROF": 600,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 10,
     "ApplyTime": 0.1,
     "RecoilSize": 0.2,
     "RecoilVector": {
@@ -2510,6 +2556,8 @@
     "ItemName": "Burstfire Pistol",
     "ROF": 600,
     "Burst": 3,
+    "InitialMagazines": 3,
+    "MagSize": 12,
     "ApplyTime": 0.1,
     "RecoilSize": 0.08,
     "RecoilVector": {
@@ -2620,6 +2668,8 @@
     "ItemName": "Prestige Light Pistol",
     "ROF": 600,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 10,
     "ApplyTime": 0.1,
     "RecoilSize": 0.3,
     "RecoilVector": {
@@ -2730,6 +2780,8 @@
     "ItemName": "Machine Pistol",
     "ROF": 850,
     "Burst": 1,
+    "InitialMagazines": 2,
+    "MagSize": 25,
     "ApplyTime": 0.0705882385,
     "RecoilSize": 0.5,
     "RecoilVector": {
@@ -2840,6 +2892,8 @@
     "ItemName": "Revolver",
     "ROF": 200,
     "Burst": 1,
+    "InitialMagazines": 2,
+    "MagSize": 6,
     "ApplyTime": 0.2,
     "RecoilSize": 0.7,
     "RecoilVector": {
@@ -2950,6 +3004,8 @@
     "ItemName": "Shotgun",
     "ROF": 100,
     "Burst": 1,
+    "InitialMagazines": 4,
+    "MagSize": 8,
     "ApplyTime": 0.15,
     "RecoilSize": 0.3,
     "RecoilVector": {
