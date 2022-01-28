@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Windows.Media.Imaging;
 
 namespace BLREdit
@@ -108,10 +109,25 @@ namespace BLREdit
         public bool IsValidFor(ImportItem item)
         {
             if (validFor == null || item == null) { return true; }
+
             foreach (int id in validFor)
             {
                 if (id == item.uid)
                 { return true; }
+            }
+            return false;
+        }
+
+
+        internal bool IsValidModType(string modType)
+        {
+            if (modType == "Helmets" || modType == "LowerBodies" || modType == "UpperBodies" || modType == "Tactical" || modType == "Depot") { return true; }
+            foreach (string supportedModType in supportedMods)
+            {
+                if (modType == supportedModType)
+                {
+                    return true;
+                }
             }
             return false;
         }

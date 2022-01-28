@@ -15,8 +15,11 @@ namespace BLREdit.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Image LastSelectedImage = null;
         private ImportItem FilterWeapon = null;
         public static Loadout ActiveLoadout = null;
+
+        
 
         public MainWindow()
         {
@@ -479,8 +482,6 @@ namespace BLREdit.UI
             CheckValidity(PrimaryMagazineImage, primary);
 
             CheckValidity(PrimaryMuzzleImage, primary);
-            if (primary.name.Contains("Bow"))
-            { PrimaryMuzzleImage.DataContext = null; }
 
             CheckValidity(PrimaryScopeImage, primary);
 
@@ -502,13 +503,17 @@ namespace BLREdit.UI
 
         private static void CheckValidity(Image image, ImportItem item)
         {
-            if (image.DataContext is ImportItem importItem && !importItem.IsValidFor(item))
-            { LoggingSystem.LogInfo(importItem.name + " was not a Valid Mod for " + item.name); image.DataContext = null; }
+            if(image.DataContext is ImportItem importItem)
+            {
+                if (!importItem.IsValidFor(item) || !item.IsValidModType(importItem.Category))
+                { LoggingSystem.LogInfo(importItem.name + " was not a Valid Mod for " + item.name); image.DataContext = null; }
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ItemList.ItemsSource = ImportSystem.Weapons.primary;
+            LastSelectedImage = PrimaryRecieverImage;
             if (App.IsNewVersionAvailable && IOResources.Settings.ShowUpdateNotice)
             {
                 System.Diagnostics.Process.Start("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
@@ -528,8 +533,15 @@ namespace BLREdit.UI
             {
                 if (image.DataContext is ImportItem item)
                 {
-                    LoggingSystem.LogInfo("Sending:" + item.name);
-                    DragDrop.DoDragDrop(image, item, DragDropEffects.Copy);
+                    if (e.ClickCount >= 2)
+                    {
+                        SetItemToImage(LastSelectedImage, item);
+                    }
+                    else
+                    {
+                        LoggingSystem.LogInfo("Sending:" + item.name);
+                        DragDrop.DoDragDrop(image, item, DragDropEffects.Copy);
+                    }
                 }
             }
             else if (result.VisualHit is StackPanel panel)
@@ -541,8 +553,15 @@ namespace BLREdit.UI
                     {
                         if (imageChild.DataContext is ImportItem item)
                         {
-                            LoggingSystem.LogInfo("Sending:" + item.name);
-                            DragDrop.DoDragDrop(imageChild, item, DragDropEffects.Copy);
+                            if (e.ClickCount >= 2)
+                            {
+                                SetItemToImage(LastSelectedImage, item);
+                            }
+                            else
+                            {
+                                LoggingSystem.LogInfo("Sending:" + item.name);
+                                DragDrop.DoDragDrop(imageChild, item, DragDropEffects.Copy);
+                            }
                         }
                     }
                 }
@@ -566,103 +585,110 @@ namespace BLREdit.UI
                     LoggingSystem.LogInfo("Recieving:" + item.name);
                     if (border.Child is Image image)
                     {
-                        if (image.Name.Contains("Primary"))
-                        {
-                            if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
-                            {
-                                if (ImportSystem.Mods.scopes.Contains(item))
-                                {
-                                    PrimaryScopeImage.DataContext = item; LoggingSystem.LogInfo("Scope Set!");
-                                    PrimaryCrosshairImage.DataContext = item; LoggingSystem.LogInfo("Crosshair Set!");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
-                            {
-                                if (ImportSystem.Mods.scopes.Contains(item))
-                                {
-                                    SecondaryScopeImage.DataContext = item; LoggingSystem.LogInfo("Scope Set!");
-                                    SecondaryCrosshairImage.DataContext = item; LoggingSystem.LogInfo("Crosshair Set!");
-                                }
-                            }
-                        }
-                        if (image.Name.Contains("Reciever"))
-                        {
-                            if (image.Name.Contains("Primary") && ImportSystem.Weapons.primary.Contains(item))
-                            {
-                                image.DataContext = item;
-                                LoggingSystem.LogInfo("Primary Set!");
-                                CheckPrimaryModsForValidity(item);
-                                FillEmptyPrimaryMods(item);
-                                UpdatePrimaryStats();
-                                UpdateActiveLoadout();
-                                return;
-                            }
-                            if (image.Name.Contains("Secondary") && ImportSystem.Weapons.secondary.Contains(item))
-                            {
-                                image.DataContext = item;
-                                LoggingSystem.LogInfo("Secondary Set!");
-                                CheckSecondaryModsForValidity(item);
-                                FillEmptySecondaryMods(item);
-                                UpdateSecondaryStats();
-                                UpdateActiveLoadout();
-                                return;
-                            }
-                            LoggingSystem.LogInfo("Not a Valid Primary or Secondary!");
-                        }
-                        else
-                        {
-                            if (image.Name.Contains("Primary") && !item.IsValidFor(PrimaryRecieverImage.DataContext as ImportItem))
-                            { LoggingSystem.LogInfo("Not a Valid Mod for " + (PrimaryRecieverImage.DataContext as ImportItem).name); return; }
-
-                            if (image.Name.Contains("Secondary") && !item.IsValidFor(SecondaryRecieverImage.DataContext as ImportItem))
-                            { LoggingSystem.LogInfo("Not a Valid Mod for " + (SecondaryRecieverImage.DataContext as ImportItem).name); return; }
-
-                            if (image.Name.Contains("Muzzle") && ImportSystem.Mods.muzzles.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Muzzle with ID:" + ImportSystem.GetMuzzleID(item) + " Set!"); }
-                            if (image.Name.Contains("Barrel") && ImportSystem.Mods.barrels.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Barrel Set!"); }
-                            if (image.Name.Contains("Magazine") && ImportSystem.Mods.magazines.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Magazine with ID:" + ImportSystem.GetMagazineID(item) + " Set!"); }
-                            if (image.Name.Contains("Tag") && ImportSystem.Gear.hangers.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Hanger with ID:" + ImportSystem.GetTagID(item) + " Set!"); }
-                            if (image.Name.Contains("CamoWeapon") && ImportSystem.Mods.camosWeapon.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoWeaponID(item) + " Set!"); }
-                            if (image.Name.Contains("CamoBody") && ImportSystem.Mods.camosBody.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoBodyID(item) + " Set!"); }
-                            if (image.Name.Contains("Stock") && ImportSystem.Mods.stocks.Contains(item))
-                            {
-                                if (image.Name.Contains("Primary"))
-                                {
-                                    SetStock((PrimaryRecieverImage.DataContext as ImportItem), PrimaryBarrelImage, PrimaryStockImage, item);
-                                    LoggingSystem.LogInfo("Stock Set!");
-                                }
-                                else
-                                {
-                                    SetStock((SecondaryRecieverImage.DataContext as ImportItem), SecondaryBarrelImage, SecondaryStockImage, item);
-                                    LoggingSystem.LogInfo("Stock Set!");
-                                }
-                            }
-
-                            if (image.Name.Contains("Helmet") && ImportSystem.Gear.helmets.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Helmet Set!"); }
-                            if (image.Name.Contains("UpperBody") && ImportSystem.Gear.upperBodies.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("UpperBody Set!"); }
-                            if (image.Name.Contains("LowerBody") && ImportSystem.Gear.lowerBodies.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("LowerBody Set!"); }
-
-                            if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Gear Set!"); }
-                            if (image.Name.Contains("Tactical") && ImportSystem.Gear.tactical.Contains(item))
-                            { image.DataContext = item; LoggingSystem.LogInfo("Tactical Set!"); }
-                            UpdatePrimaryStats();
-                            UpdateSecondaryStats();
-                        }
+                        SetItemToImage(image, item);
                     }
                 }
             }
+            
+        }
+
+        public void SetItemToImage(Image image, ImportItem item)
+        {
+            if (image.Name.Contains("Primary"))
+            {
+                if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
+                {
+                    if (ImportSystem.Mods.scopes.Contains(item))
+                    {
+                        PrimaryScopeImage.DataContext = item; LoggingSystem.LogInfo("Scope Set!");
+                        PrimaryCrosshairImage.DataContext = item; LoggingSystem.LogInfo("Crosshair Set!");
+                    }
+                }
+            }
+            else
+            {
+                if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
+                {
+                    if (ImportSystem.Mods.scopes.Contains(item))
+                    {
+                        SecondaryScopeImage.DataContext = item; LoggingSystem.LogInfo("Scope Set!");
+                        SecondaryCrosshairImage.DataContext = item; LoggingSystem.LogInfo("Crosshair Set!");
+                    }
+                }
+            }
+            if (image.Name.Contains("Reciever"))
+            {
+                if (image.Name.Contains("Primary") && ImportSystem.Weapons.primary.Contains(item))
+                {
+                    image.DataContext = item;
+                    LoggingSystem.LogInfo("Primary Set!");
+                    CheckPrimaryModsForValidity(item);
+                    FillEmptyPrimaryMods(item);
+                    UpdatePrimaryStats();
+                    UpdateActiveLoadout();
+                    return;
+                }
+                if (image.Name.Contains("Secondary") && ImportSystem.Weapons.secondary.Contains(item))
+                {
+                    image.DataContext = item;
+                    LoggingSystem.LogInfo("Secondary Set!");
+                    CheckSecondaryModsForValidity(item);
+                    FillEmptySecondaryMods(item);
+                    UpdateSecondaryStats();
+                    UpdateActiveLoadout();
+                    return;
+                }
+                LoggingSystem.LogInfo("Not a Valid Primary or Secondary!");
+            }
+            else
+            {
+                if (image.Name.Contains("Primary") && !item.IsValidFor(PrimaryRecieverImage.DataContext as ImportItem))
+                { LoggingSystem.LogInfo("Not a Valid Mod for " + (PrimaryRecieverImage.DataContext as ImportItem).name); return; }
+
+                if (image.Name.Contains("Secondary") && !item.IsValidFor(SecondaryRecieverImage.DataContext as ImportItem))
+                { LoggingSystem.LogInfo("Not a Valid Mod for " + (SecondaryRecieverImage.DataContext as ImportItem).name); return; }
+
+                if (image.Name.Contains("Muzzle") && ImportSystem.Mods.muzzles.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Muzzle with ID:" + ImportSystem.GetMuzzleID(item) + " Set!"); }
+                if (image.Name.Contains("Barrel") && ImportSystem.Mods.barrels.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Barrel Set!"); }
+                if (image.Name.Contains("Magazine") && ImportSystem.Mods.magazines.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Magazine with ID:" + ImportSystem.GetMagazineID(item) + " Set!"); }
+                if (image.Name.Contains("Tag") && ImportSystem.Gear.hangers.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Hanger with ID:" + ImportSystem.GetTagID(item) + " Set!"); }
+                if (image.Name.Contains("CamoWeapon") && ImportSystem.Mods.camosWeapon.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoWeaponID(item) + " Set!"); }
+                if (image.Name.Contains("CamoBody") && ImportSystem.Mods.camosBody.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoBodyID(item) + " Set!"); }
+                if (image.Name.Contains("Stock") && ImportSystem.Mods.stocks.Contains(item))
+                {
+                    if (image.Name.Contains("Primary"))
+                    {
+                        SetStock((PrimaryRecieverImage.DataContext as ImportItem), PrimaryBarrelImage, PrimaryStockImage, item);
+                        LoggingSystem.LogInfo("Stock Set!");
+                    }
+                    else
+                    {
+                        SetStock((SecondaryRecieverImage.DataContext as ImportItem), SecondaryBarrelImage, SecondaryStockImage, item);
+                        LoggingSystem.LogInfo("Stock Set!");
+                    }
+                }
+
+                if (image.Name.Contains("Helmet") && ImportSystem.Gear.helmets.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Helmet Set!"); }
+                if (image.Name.Contains("UpperBody") && ImportSystem.Gear.upperBodies.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("UpperBody Set!"); }
+                if (image.Name.Contains("LowerBody") && ImportSystem.Gear.lowerBodies.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("LowerBody Set!"); }
+
+                if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Gear Set!"); }
+                if (image.Name.Contains("Tactical") && ImportSystem.Gear.tactical.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Tactical Set!"); }
+
+            }
+            UpdatePrimaryStats();
+            UpdateSecondaryStats();
             UpdateActiveLoadout();
         }
 
@@ -763,6 +789,131 @@ namespace BLREdit.UI
             weapon.Camo = ImportSystem.GetCamoBodyID(camo);
         }
 
+        private void UpdatePrimaryImages(Image image)
+        {
+            FilterWeapon = PrimaryRecieverImage.DataContext as ImportItem;
+            LoggingSystem.LogInfo("ItemList Filter set Primary:" + (FilterWeapon?.name ?? "None"));
+
+
+            if (image.Name.Contains("Reciever"))
+            {
+                ItemList.ItemsSource = ImportSystem.Weapons.primary;
+                LastSelectedImage = PrimaryRecieverImage;
+                LoggingSystem.LogInfo("ItemList Set for Primary Reciever");
+                return;
+            }
+
+            if (image.Name.Contains("Muzzle"))
+            {
+                if (!(PrimaryRecieverImage.DataContext as ImportItem).IsValidModType("muzzle"))
+                { return; }
+                ItemList.ItemsSource = ImportSystem.Mods.muzzles;
+                LastSelectedImage = image;
+                LoggingSystem.LogInfo("ItemList Set for Muzzles");
+                return;
+            }
+            if (image.Name.Contains("Crosshair"))
+            {
+                var item = (PrimaryScopeImage.DataContext as ImportItem);
+                item.LoadCrosshair();
+                ItemList.ItemsSource = new ImportItem[] { item };
+                LastSelectedImage = PrimaryScopeImage;
+                LoggingSystem.LogInfo("ItemList Set for Scopes");
+                return;
+            }
+            UpdateImages(image);
+        }
+
+        private void UpdateSecondaryImages(Image image)
+        {
+            FilterWeapon = SecondaryRecieverImage.DataContext as ImportItem;
+            LoggingSystem.LogInfo("ItemList Filter set Secondary:" + (FilterWeapon?.name ?? "None"));
+
+            if (image.Name.Contains("Reciever"))
+            {
+                ItemList.ItemsSource = ImportSystem.Weapons.secondary;
+                LastSelectedImage = SecondaryRecieverImage;
+                LoggingSystem.LogInfo("ItemList Set for Secondary Reciever");
+                return;
+            }
+
+            if (image.Name.Contains("Muzzle"))
+            {
+                ItemList.ItemsSource = ImportSystem.Mods.muzzles;
+                LastSelectedImage = image;
+                LoggingSystem.LogInfo("ItemList Set for Muzzles");
+                return;
+            }
+            if (image.Name.Contains("Crosshair"))
+            {
+                var item = (SecondaryScopeImage.DataContext as ImportItem);
+                item.LoadCrosshair();
+                ItemList.ItemsSource = new ImportItem[] { item };
+                LastSelectedImage = SecondaryScopeImage;
+                LoggingSystem.LogInfo("ItemList Set for Scopes");
+                return;
+            }
+            UpdateImages(image);
+        }
+
+        private void UpdateImages(Image image)
+        {
+            LastSelectedImage = image;
+            
+            if (image.Name.Contains("Reciever"))
+            {
+                ItemList.ItemsSource = ImportSystem.Weapons.primary;
+                LoggingSystem.LogInfo("ItemList Set for Primary Reciever");
+                return;
+            }
+            if (image.Name.Contains("Magazine"))
+            {
+                ItemList.ItemsSource = ImportSystem.Mods.magazines;
+                LoggingSystem.LogInfo("ItemList Set for Magazines");
+                return;
+            }
+            if (image.Name.Contains("Stock"))
+            {
+                ItemList.ItemsSource = ImportSystem.Mods.stocks;
+                LoggingSystem.LogInfo("ItemList Set for Stocks");
+                return;
+            }
+            if (image.Name.Contains("Scope"))
+            {
+                foreach (var item in ImportSystem.Mods.scopes)
+                {
+                    item.RemoveCrosshair();
+                }
+                ItemList.ItemsSource = ImportSystem.Mods.scopes;
+                LoggingSystem.LogInfo("ItemList Set for Scopes");
+                return;
+            }
+            if (image.Name.Contains("Barrel"))
+            {
+                ItemList.ItemsSource = ImportSystem.Mods.barrels;
+                LoggingSystem.LogInfo("ItemList Set for Barrels");
+                return;
+            }
+            if (image.Name.Contains("Grip"))
+            {
+                ItemList.ItemsSource = ImportSystem.Mods.grips;
+                LoggingSystem.LogInfo("ItemList Set for Grips");
+                return;
+            }
+            if (image.Name.Contains("Tag"))
+            {
+                ItemList.ItemsSource = ImportSystem.Gear.hangers;
+                LoggingSystem.LogInfo("ItemList Set for Tags");
+                return;
+            }
+            if (image.Name.Contains("CamoWeapon"))
+            {
+                ItemList.ItemsSource = ImportSystem.Mods.camosWeapon;
+                LoggingSystem.LogInfo("ItemList Set for Weapon Camos");
+                return;
+            }
+        }
+
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (sender is Border border)
@@ -772,138 +923,59 @@ namespace BLREdit.UI
                     ItemList.ItemsSource = null;
                     if (image.Name.Contains("Primary"))
                     {
-                        FilterWeapon = PrimaryRecieverImage.DataContext as ImportItem;
-                        LoggingSystem.LogInfo("ItemList Filter set Primary:" + (FilterWeapon?.name ?? "None"));
-                        if (image.Name.Contains("Reciever"))
-                        {
-                            ItemList.ItemsSource = ImportSystem.Weapons.primary;
-                            LoggingSystem.LogInfo("ItemList Set for Primary Reciever");
-                            return;
-                        }
-                        if (image.Name.Contains("Crosshair"))
-                        {
-                            var item = (PrimaryScopeImage.DataContext as ImportItem);
-                            item.LoadCrosshair();
-                            ItemList.ItemsSource = new ImportItem[] { item };
-                            LoggingSystem.LogInfo("ItemList Set for Scopes");
-                            return;
-                        }
+                        UpdatePrimaryImages(image);
+                        return;
                     }
                     if (image.Name.Contains("Secondary"))
                     {
-                        FilterWeapon = SecondaryRecieverImage.DataContext as ImportItem;
-                        LoggingSystem.LogInfo("ItemList Filter set Secondary:" + (FilterWeapon?.name ?? "None"));
-                        if (image.Name.Contains("Reciever"))
-                        {
-                            ItemList.ItemsSource = ImportSystem.Weapons.secondary;
-                            LoggingSystem.LogInfo("ItemList Set for Secondary Reciever");
-                            return;
-                        }
-                        if (image.Name.Contains("Crosshair"))
-                        {
-                            var item = (SecondaryScopeImage.DataContext as ImportItem);
-                            item.LoadCrosshair();
-                            ItemList.ItemsSource = new ImportItem[] { item };
-                            LoggingSystem.LogInfo("ItemList Set for Scopes");
-                            return;
-                        }
-                    }
-                    if (image.Name.Contains("Muzzle"))
-                    {
-                        if (!((PrimaryRecieverImage?.DataContext as ImportItem)?.name == "Compound Bow"))
-                        {
-                            ItemList.ItemsSource = ImportSystem.Mods.muzzles;
-                            LoggingSystem.LogInfo("ItemList Set for Muzzles");
-                        }
-                        else
-                        {
-                            LoggingSystem.LogInfo("Muzzles are not Valid for " + (PrimaryRecieverImage.DataContext as ImportItem).name + "!");
-                        }
+                        UpdateSecondaryImages(image);
                         return;
                     }
-                    if (image.Name.Contains("Magazine"))
-                    {
-                        ItemList.ItemsSource = ImportSystem.Mods.magazines;
-                        LoggingSystem.LogInfo("ItemList Set for Magazines");
-                        return;
-                    }
-                    if (image.Name.Contains("Stock"))
-                    {
-                        ItemList.ItemsSource = ImportSystem.Mods.stocks;
-                        LoggingSystem.LogInfo("ItemList Set for Stocks");
-                        return;
-                    }
-                    if (image.Name.Contains("Scope"))
-                    {
-                        foreach (var item in ImportSystem.Mods.scopes)
-                        {
-                            item.RemoveCrosshair();
-                        }
-                        ItemList.ItemsSource = ImportSystem.Mods.scopes;
-                        LoggingSystem.LogInfo("ItemList Set for Scopes");
-                        return;
-                    }
-                    if (image.Name.Contains("Barrel"))
-                    {
-                        ItemList.ItemsSource = ImportSystem.Mods.barrels;
-                        LoggingSystem.LogInfo("ItemList Set for Barrels");
-                        return;
-                    }
-                    if (image.Name.Contains("Grip"))
-                    {
-                        ItemList.ItemsSource = ImportSystem.Mods.grips;
-                        LoggingSystem.LogInfo("ItemList Set for Grips");
-                        return;
-                    }
+
+
                     if (image.Name.Contains("Gear"))
                     {
                         ItemList.ItemsSource = ImportSystem.Gear.attachments;
+                        LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Gear");
                         return;
                     }
                     if (image.Name.Contains("Tactical"))
                     {
                         ItemList.ItemsSource = ImportSystem.Gear.tactical;
+                        LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Tactical");
-                        return;
-                    }
-                    if (image.Name.Contains("Tag"))
-                    {
-                        ItemList.ItemsSource = ImportSystem.Gear.hangers;
-                        LoggingSystem.LogInfo("ItemList Set for Tags");
-                        return;
-                    }
-                    if (image.Name.Contains("CamoWeapon"))
-                    {
-                        ItemList.ItemsSource = ImportSystem.Mods.camosWeapon;
-                        LoggingSystem.LogInfo("ItemList Set for Weapon Camos");
                         return;
                     }
                     if (image.Name.Contains("CamoBody"))
                     {
                         ItemList.ItemsSource = ImportSystem.Mods.camosBody;
+                        LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Body Camos");
                         return;
                     }
                     if (image.Name.Contains("Helmet"))
                     {
                         ItemList.ItemsSource = ImportSystem.Gear.helmets;
+                        LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Helemts");
                         return;
                     }
                     if (image.Name.Contains("UpperBody"))
                     {
                         ItemList.ItemsSource = ImportSystem.Gear.upperBodies;
+                        LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for UpperBodies");
                         return;
                     }
                     if (image.Name.Contains("LowerBody"))
                     {
                         ItemList.ItemsSource = ImportSystem.Gear.lowerBodies;
+                        LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for LowerBodies");
                         return;
                     }
-                    LoggingSystem.LogInfo("ItemList Dind't get set");
+                    LoggingSystem.LogInfo("ItemList Din't get set");
                 }
             }
         }
