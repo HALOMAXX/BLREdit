@@ -163,6 +163,7 @@ namespace BLREdit.UI
                 allRecoil += Scope?.weaponModifiers?.recoil ?? 0;
                 allRecoil += Magazine?.weaponModifiers?.recoil ?? 0;
                 allRecoil /= 100.0f;
+                allRecoil = Math.Min(Math.Max(allRecoil, -1.0f), 1.0f);
                 Recoil = CalculateRecoil(Reciever, allRecoil);
                 RecoilZoom = Recoil * Reciever.IniStats.RecoilZoomMultiplier * 0.8;
 
@@ -173,6 +174,7 @@ namespace BLREdit.UI
                 allDamage += Scope?.weaponModifiers?.damage ?? 0;
                 allDamage += Magazine?.weaponModifiers?.damage ?? 0;
                 allDamage /= 100.0f;
+                allDamage = Math.Min(Math.Max(allDamage, -1.0f), 1.0f);
                 var damages = CalculateDamage(Reciever, allDamage);
                 Damage = damages[0];
                 DamageFar = damages[1];
@@ -183,6 +185,7 @@ namespace BLREdit.UI
                 allRange += Scope?.weaponModifiers?.range ?? 0;
                 allRange += Magazine?.weaponModifiers?.range ?? 0;
                 allRange /= 100.0f;
+                allRange = Math.Min(Math.Max(allRange, -1.0f), 1.0f);
                 var ranges = CalculateRange(Reciever, allRange);
                 RangeClose = ranges[0];
                 RangeFar = ranges[1];
@@ -194,6 +197,7 @@ namespace BLREdit.UI
                 allAccuracy += Scope?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy += Magazine?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy /= 100.0f;
+                allAccuracy = Math.Min(Math.Max(allAccuracy,-1.0f),1.0f);
                 var spreads = CalculateSpread(Reciever, allAccuracy);
                 Aim = spreads[0];
                 Hip = spreads[1];
