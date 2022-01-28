@@ -756,7 +756,7 @@ namespace BLREdit.UI
             weapon.Scope = scope?.name ?? "No Optic Mod";
             weapon.Stock = stock?.name ?? "No Stock";
             weapon.Tag = ImportSystem.GetTagID(tag);
-            weapon.Camo = ImportSystem.GetCamoWeaponID(camo);
+            weapon.Camo = ImportSystem.GetCamoBodyID(camo);
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)

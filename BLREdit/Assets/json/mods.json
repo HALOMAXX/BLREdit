@@ -3708,6 +3708,264 @@
       "name": "Easter Yellow",
       "tooltip": "CamoDesc",
       "uid": 630220
+    },
+    {
+      "icon": "t_CamoKBMOD_new_128x128",
+      "name": "KBMOD.com New",
+      "tooltip": "CamoDesc",
+      "uid": 630411
+    },
+    {
+      "icon": "t_Camo_EBL_128x128",
+      "name": "EBL Tourney",
+      "tooltip": "CamoDesc",
+      "uid": 630412
+    },
+    {
+      "icon": "TX_Camo_Bloodmoney_128x128",
+      "name": "Bloodmoney",
+      "tooltip": "CamoDesc",
+      "uid": 630413
+    },
+    {
+      "icon": "TX_Camo_Bloodmoney2_128x128",
+      "name": "Bloodmoney 2",
+      "tooltip": "CamoDesc",
+      "uid": 630414
+    },
+    {
+      "icon": "TX_Camo_Cracked_Apple_128x128",
+      "name": "Cracked Apple",
+      "tooltip": "CamoDesc",
+      "uid": 630415
+    },
+    {
+      "icon": "TX_Camo_Cracked_Apple_Pink_128x128",
+      "name": "Cracked Apple Pink",
+      "tooltip": "CamoDesc",
+      "uid": 630416
+    },
+    {
+      "icon": "TX_Camo_Cracked_Apple_Red_128x128",
+      "name": "Cracked Apple Red",
+      "tooltip": "CamoDesc",
+      "uid": 630417
+    },
+    {
+      "icon": "TX_Camo_Digiplex_128x128",
+      "name": "Digiplex",
+      "tooltip": "CamoDesc",
+      "uid": 630418
+    },
+    {
+      "icon": "TX_Camo_Digiplex2_128x128",
+      "name": "Digiplex 2",
+      "tooltip": "CamoDesc",
+      "uid": 630419
+    },
+    {
+      "icon": "TX_Camo_Digital_Scatter_128x128",
+      "name": "Digital Scatter",
+      "tooltip": "CamoDesc",
+      "uid": 630420
+    },
+    {
+      "icon": "TX_Camo_Digital_Scatter_Green_128x128",
+      "name": "Digital Scatter Green",
+      "tooltip": "CamoDesc",
+      "uid": 630421
+    },
+    {
+      "icon": "TX_Camo_Digital_Scatter_Orange_128x128",
+      "name": "Digital Scatter Orange",
+      "tooltip": "CamoDesc",
+      "uid": 630422
+    },
+    {
+      "icon": "TX_Camo_Fluffy_Punk_128x128",
+      "name": "Fluffy Punk",
+      "tooltip": "CamoDesc",
+      "uid": 630423
+    },
+    {
+      "icon": "TX_Camo_GoFast_128x128",
+      "name": "GoFast",
+      "tooltip": "CamoDesc",
+      "uid": 630424
+    },
+    {
+      "icon": "TX_Camo_Jagged_Metallic_128x128",
+      "name": "Jagged Metallic",
+      "tooltip": "CamoDesc",
+      "uid": 630425
+    },
+    {
+      "icon": "TX_Camo_Jagged_Metallic_Green_128x128",
+      "name": "Jagged Metallic Green",
+      "tooltip": "CamoDesc",
+      "uid": 630426
+    },
+    {
+      "icon": "TX_Camo_Jagged_Metallic_Red_128x128",
+      "name": "Jagged Metallic Red",
+      "tooltip": "CamoDesc",
+      "uid": 630427
+    },
+    {
+      "icon": "TX_Camo_MolternShards_128x128",
+      "name": "Molten Shards",
+      "tooltip": "CamoDesc",
+      "uid": 630428
+    },
+    {
+      "icon": "TX_Camo_Mud_Rough_128x128",
+      "name": "Mud Rough",
+      "tooltip": "CamoDesc",
+      "uid": 630429
+    },
+    {
+      "icon": "TX_Camo_Mud_Rough_Pink_128x128",
+      "name": "Mud Rough Pink",
+      "tooltip": "CamoDesc",
+      "uid": 630430
+    },
+    {
+      "icon": "TX_Camo_Mud_Rough_Red_128x128",
+      "name": "Mud Rough Red",
+      "tooltip": "CamoDesc",
+      "uid": 630431
+    },
+    {
+      "icon": "TX_Camo_Quiet_Sand_128x128",
+      "name": "Quiet Sand",
+      "tooltip": "CamoDesc",
+      "uid": 630432
+    },
+    {
+      "icon": "TX_Camo_Quiet_Sand_Blue_128x128",
+      "name": "Quiet Sand Blue",
+      "tooltip": "CamoDesc",
+      "uid": 630433
+    },
+    {
+      "icon": "TX_Camo_Quiet_Sand_Green_128x128",
+      "name": "Quiet Sand Green",
+      "tooltip": "CamoDesc",
+      "uid": 630434
+    },
+    {
+      "icon": "TX_Camo_Rock_Metal_128x128",
+      "name": "Rock Matal",
+      "tooltip": "CamoDesc",
+      "uid": 630435
+    },
+    {
+      "icon": "TX_Camo_Rock_Metal_Blue_128x128",
+      "name": "Rock Metal Blue",
+      "tooltip": "CamoDesc",
+      "uid": 630436
+    },
+    {
+      "icon": "TX_Camo_Rock_Metal_Orange_128x128",
+      "name": "Rock Metal Orange",
+      "tooltip": "CamoDesc",
+      "uid": 630437
+    },
+    {
+      "icon": "TX_Camo_Rocked_Scuff_128x128",
+      "name": "Rocked Scuff",
+      "tooltip": "CamoDesc",
+      "uid": 630438
+    },
+    {
+      "icon": "TX_Camo_Rocked_Scuff_Blue_128x128",
+      "name": "Rocked Scuff Blue",
+      "tooltip": "CamoDesc",
+      "uid": 630439
+    },
+    {
+      "icon": "TX_Camo_Rocked_Scuff_Yellow_128x128",
+      "name": "Rocked Scuff Yellow",
+      "tooltip": "CamoDesc",
+      "uid": 630440
+    },
+    {
+      "icon": "TX_Camo_Scarred_Stone_128x128",
+      "name": "Scarred Stone",
+      "tooltip": "CamoDesc",
+      "uid": 630441
+    },
+    {
+      "icon": "TX_Camo_Scarred_Stone_Orange_128x128",
+      "name": "Scarred Stone Orange",
+      "tooltip": "CamoDesc",
+      "uid": 630442
+    },
+    {
+      "icon": "TX_Camo_Scarred_Stone_Pink_128x128",
+      "name": "Scarred Stone Pink",
+      "tooltip": "CamoDesc",
+      "uid": 630443
+    },
+    {
+      "icon": "TX_Camo_Scarred_Stone_Teal_128x128",
+      "name": "Scarred Stone Teal",
+      "tooltip": "CamoDesc",
+      "uid": 630444
+    },
+    {
+      "icon": "TX_Camo_Splatter_Smudge_128x128",
+      "name": "Splatter Smudge",
+      "tooltip": "CamoDesc",
+      "uid": 630445
+    },
+    {
+      "icon": "TX_Camo_Splatter_Smudge_Blue_128x128",
+      "name": "Splatter Smudge Blue",
+      "tooltip": "CamoDesc",
+      "uid": 630446
+    },
+    {
+      "icon": "TX_Camo_Splatter_Smudge_Red_128x128",
+      "name": "Splatter Smudge Red",
+      "tooltip": "CamoDesc",
+      "uid": 630447
+    },
+    {
+      "icon": "TX_Camo_Splinter_Bark_128x128",
+      "name": "Splinter Bark",
+      "tooltip": "CamoDesc",
+      "uid": 630448
+    },
+    {
+      "icon": "TX_Camo_Splinter_Bark_Blue_128x128",
+      "name": "Splinter Bark Blue",
+      "tooltip": "CamoDesc",
+      "uid": 630449
+    },
+    {
+      "icon": "TX_Camo_Splinter_Bark_Green_128x128",
+      "name": "Splinter Bark Green",
+      "tooltip": "CamoDesc",
+      "uid": 630450
+    },
+    {
+      "icon": "TX_Camo_Splinter_Bark_Red_128x128",
+      "name": "Splinter Bark Red",
+      "tooltip": "CamoDesc",
+      "uid": 630451
+    },
+    {
+      "icon": "TX_Camo_Surfer_Panic_128x128",
+      "name": "Surfer Panic",
+      "tooltip": "CamoDesc",
+      "uid": 630452
+    },
+    {
+      "icon": "TX_Camo_Arc_128x128",
+      "name": "Arc",
+      "tooltip": "CamoDesc",
+      "uid": 630453
     }
   ],
   "camosWeapon": [

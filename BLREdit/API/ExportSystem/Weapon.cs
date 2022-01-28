@@ -60,7 +60,7 @@
 
         public ImportItem GetCamo()
         {
-            return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosWeapon);
+            return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosBody);
         }
         public ImportItem GetTag()
         {

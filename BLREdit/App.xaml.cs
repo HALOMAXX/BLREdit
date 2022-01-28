@@ -22,8 +22,8 @@ namespace BLREdit
             VersionCheck();
 
         }
-        const string CurrentVersion = "v0.2.0";
-        const string CurrentVersionName = "BLREdit Advanced Customization";
+        const string CurrentVersion = "v0.2.2";
+        const string CurrentVersionName = "BLREdit Camo Correction";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()
