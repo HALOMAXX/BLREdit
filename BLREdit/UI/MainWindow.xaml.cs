@@ -1107,6 +1107,9 @@ namespace BLREdit.UI
             LowerBodyImage.DataContext = null;
             UpperBodyImage.DataContext = upper;
             LowerBodyImage.DataContext = lower;
+            var source = ItemList.ItemsSource;
+            ItemList.ItemsSource = null;
+            ItemList.ItemsSource = source;
         }
 
         private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -1117,6 +1120,9 @@ namespace BLREdit.UI
             LowerBodyImage.DataContext = null;
             UpperBodyImage.DataContext = upper;
             LowerBodyImage.DataContext = lower;
+            var source = ItemList.ItemsSource;
+            ItemList.ItemsSource = null;
+            ItemList.ItemsSource = source;
         }
     }
 }
