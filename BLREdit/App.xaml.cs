@@ -20,7 +20,7 @@ namespace BLREdit
             Trace.AutoFlush = true;
             LoggingSystem.LogInfo("BLREdit Starting!");
             VersionCheck();
-
+            ImportSystem.Initialize();
         }
         const string CurrentVersion = "v0.2.3";
         const string CurrentVersionName = "BLREdit Bug Fixes With QoL";

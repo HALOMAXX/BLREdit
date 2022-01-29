@@ -26,7 +26,7 @@ namespace BLREdit.UI
             profilechanging = true;
             textchnaging = true;
 
-            ImportSystem.Initialize();
+            
 
             InitializeComponent();
 
@@ -672,17 +672,14 @@ namespace BLREdit.UI
                 {
                     if (image.Name.Contains("Secondary"))
                     {
-                        if (SecondaryRecieverImage.DataContext is ImportItem reciever && SecondaryStockImage.DataContext is ImportItem stock)
+                        if (SecondaryRecieverImage.DataContext is ImportItem reciever)
                         {
                             if (CheckForPistolAndBarrel(reciever))
                             {
-                                if (image.DataContext is ImportItem barrel)
-                                {
                                     if (item.name == Weapon.NoBarrel)
                                     {
                                         SecondaryStockImage.DataContext = Weapon.GetDefaultSetupOfReciever(reciever).GetStock();
                                     }
-                                }
                             }
                         }
                     }
