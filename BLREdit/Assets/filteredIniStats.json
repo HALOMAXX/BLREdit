@@ -2622,43 +2622,83 @@
         "Points": 0
       },
       {
-        "Name": "Punisher",
+        "Name": "Regular",
+        "Points": 5
+      },
+      {
+        "Name": "Spartan",
         "Points": 10
       },
       {
-        "Name": "Vulture",
+        "Name": "Firebrand",
+        "Points": 15
+      },
+      {
+        "Name": "Champion",
         "Points": 20
       },
       {
-        "Name": "Ambassador",
+        "Name": "Slayer",
+        "Points": 25
+      },
+      {
+        "Name": "Hunter",
         "Points": 30
       },
       {
-        "Name": "Kestrel",
+        "Name": "Vandal",
+        "Points": 35
+      },
+      {
+        "Name": "Mercenary",
         "Points": 40
       },
       {
-        "Name": "Powerhouse",
+        "Name": "Destroyer",
+        "Points": 45
+      },
+      {
+        "Name": "Nemesis",
         "Points": 50
       },
       {
-        "Name": "Last Word",
+        "Name": "Saint",
+        "Points": 55
+      },
+      {
+        "Name": "Nightmare",
         "Points": 60
       },
       {
-        "Name": "Condor",
+        "Name": "Wrath",
+        "Points": 65
+      },
+      {
+        "Name": "Widowmaker",
         "Points": 70
       },
       {
-        "Name": "Osprey",
+        "Name": "Rebel",
+        "Points": 75
+      },
+      {
+        "Name": "Jackal",
         "Points": 80
       },
       {
-        "Name": "Eagle",
+        "Name": "Hammer",
+        "Points": 85
+      },
+      {
+        "Name": "Legend",
         "Points": 90
       },
       {
-        "Name": "Falcon",
+        "Name": "Persuader",
+        "Points": 95
+      },
+      {
+        "Name": "Prototype",
         "Points": 100
       }
     ]
