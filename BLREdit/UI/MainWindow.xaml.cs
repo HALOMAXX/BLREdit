@@ -194,6 +194,12 @@ namespace BLREdit.UI
                 RangeFar = ranges[1];
                 RangeMax = ranges[2];
 
+                float allMovementSpread = Barrel?.weaponModifiers?.movementSpeed ?? 0;  // For specifically my move spread change, hence no mag/scope added.
+                allMovementSpread += Muzzle?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementSpread += Stock?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementSpread /= 100.0f;
+                allMovementSpread = Math.Min(Math.Max(allMovementSpread, -1.0f), 1.0f);
+
                 float allAccuracy = Barrel?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy += Muzzle?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy += Stock?.weaponModifiers?.accuracy ?? 0;
@@ -201,7 +207,7 @@ namespace BLREdit.UI
                 allAccuracy += Magazine?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy /= 100.0f;
                 allAccuracy = Math.Min(Math.Max(allAccuracy,-1.0f),1.0f);
-                var spreads = CalculateSpread(Reciever, allAccuracy);
+                var spreads = CalculateSpread(Reciever, allAccuracy, allMovementSpread);
                 Aim = spreads[0];
                 Hip = spreads[1];
                 Move = spreads[2];
@@ -345,7 +351,7 @@ namespace BLREdit.UI
             }
         }
 
-        private static double[] CalculateSpread(ImportItem Reciever, double allAccuracy)
+        private static double[] CalculateSpread(ImportItem Reciever, double allAccuracy, double allMovementSpread)
         {
             if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
             {
@@ -381,8 +387,20 @@ namespace BLREdit.UI
                 {
                     weight_multiplier = Lerp(1.0, 2.0, weight_clampalpha);
                 }
-                double movemultiplier_current = 1.0 + ((Reciever.IniStats.MovementSpreadMultiplier - 1.0) * weight_multiplier);
-                double moveconstant_current = Reciever.IniStats.MovementSpreadConstant * weight_multiplier;
+
+                double move_alpha = Math.Abs(allMovementSpread);
+                double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
+                if (allMovementSpread > 0)
+                {
+                    move_multiplier = Lerp(1.0, 0.5, move_alpha);
+                }
+                else
+                {
+                    move_multiplier = Lerp(1.0, 2.0, move_alpha);
+                }
+
+                double movemultiplier_current = 1.0 + ((Reciever.IniStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier));
+                double moveconstant_current = Reciever.IniStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
 
                 double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
                 //double move = (accuracyBaseModifier * Reciever.IniStats.MovementSpreadMultiplier) * (180 / Math.PI);  // Old.
