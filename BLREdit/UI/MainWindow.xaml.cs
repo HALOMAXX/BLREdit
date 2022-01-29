@@ -669,7 +669,25 @@ namespace BLREdit.UI
                 if (image.Name.Contains("Muzzle") && ImportSystem.Mods.muzzles.Contains(item))
                 { image.DataContext = item; LoggingSystem.LogInfo("Muzzle with ID:" + ImportSystem.GetMuzzleID(item) + " Set!"); }
                 if (image.Name.Contains("Barrel") && ImportSystem.Mods.barrels.Contains(item))
-                { image.DataContext = item; LoggingSystem.LogInfo("Barrel Set!"); }
+                {
+                    if (image.Name.Contains("Secondary"))
+                    {
+                        if (SecondaryRecieverImage.DataContext is ImportItem reciever && SecondaryStockImage.DataContext is ImportItem stock)
+                        {
+                            if (CheckForPistolAndBarrel(reciever))
+                            {
+                                if (image.DataContext is ImportItem barrel)
+                                {
+                                    if (item.name == Weapon.NoBarrel)
+                                    {
+                                        SecondaryStockImage.DataContext = Weapon.GetDefaultSetupOfReciever(reciever).GetStock();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    image.DataContext = item; LoggingSystem.LogInfo("Barrel Set!");
+                }
                 if (image.Name.Contains("Magazine") && ImportSystem.Mods.magazines.Contains(item))
                 { image.DataContext = item; LoggingSystem.LogInfo("Magazine with ID:" + ImportSystem.GetMagazineID(item) + " Set!"); }
                 if (image.Name.Contains("Tag") && ImportSystem.Gear.hangers.Contains(item))

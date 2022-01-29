@@ -35,6 +35,7 @@ namespace BLREdit
         public ImportWeapons(ImportWeapons weapons)
         {
             depot = ImportSystem.CleanItems(weapons.depot, "Depot");
+            LoggingSystem.LogInfo("depot Items" + depot.Length);
             primary = ImportSystem.CleanItems(weapons.primary, "Primary");
             secondary = ImportSystem.CleanItems(weapons.secondary, "Secondary");
         }

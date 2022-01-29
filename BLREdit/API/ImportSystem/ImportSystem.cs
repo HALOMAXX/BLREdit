@@ -12,17 +12,17 @@ namespace BLREdit
 
         public static readonly FoxIcon[] Icons = LoadAllIcons();
         public static readonly FoxIcon[] Crosshairs = LoadAllCrosshairs();
-        private static readonly ImportGear importGear = IOResources.Deserialize<ImportGear>(IOResources.GEAR_FILE);
-        private static readonly ImportMods importMods = IOResources.Deserialize<ImportMods>(IOResources.MOD_FILE);
-        private static readonly ImportWeapons importWeapons = IOResources.Deserialize<ImportWeapons>(IOResources.WEAPON_FILE);
+        //private static readonly ImportGear importGear 
+        //private static readonly ImportMods importMods 
+        //private static readonly ImportWeapons importWeapons 
 
         private static WikiStats[] CorrectedItemStats;
 
         private static IniStats[] IniItemStats;
 
-        public static ImportGear Gear { get; private set; }
-        public static ImportMods Mods { get; private set; }
-        public static ImportWeapons Weapons { get; private set; }
+        public static ImportGear Gear { get; private set; } = IOResources.Deserialize<ImportGear>(IOResources.GEAR_FILE);
+        public static ImportMods Mods { get; private set; } = IOResources.Deserialize<ImportMods>(IOResources.MOD_FILE);
+        public static ImportWeapons Weapons { get; private set; } = IOResources.Deserialize<ImportWeapons>(IOResources.WEAPON_FILE);
 
         internal static void Initialize()
         {
@@ -48,16 +48,16 @@ namespace BLREdit
 
         private static void UpdateImages()
         {
-            importGear.UpdateImages();
-            importMods.UpdateImages();
-            importWeapons.UpdateImages();
+            Gear.UpdateImages();
+            Mods.UpdateImages();
+            Weapons.UpdateImages();
         }
 
         private static void CleanItems()
         {
-            Gear = new ImportGear(importGear);
-            Mods = new ImportMods(importMods);
-            Weapons = new ImportWeapons(importWeapons);
+            Gear = new ImportGear(Gear);
+            Mods = new ImportMods(Mods);
+            Weapons = new ImportWeapons(Weapons);
         }
 
         private static void LoadWikiStats()
@@ -239,9 +239,9 @@ namespace BLREdit
         {
             List<WikiStats> stats = new List<WikiStats>();
 
-            stats.AddRange(importGear.GetWikiStats());
-            stats.AddRange(importMods.GetWikiStats());
-            stats.AddRange(importWeapons.GetWikiStats());
+            stats.AddRange(Gear.GetWikiStats());
+            stats.AddRange(Mods.GetWikiStats());
+            stats.AddRange(Weapons.GetWikiStats());
         }
 
         internal static WikiStats[] GetWikiStats(ImportItem[] items)
