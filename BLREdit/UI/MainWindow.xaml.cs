@@ -20,7 +20,6 @@ namespace BLREdit.UI
         private ImportItem FilterWeapon = null;
         public static Loadout ActiveLoadout = null;
         public static MainWindow self = null;
-        public double currentGearSlots = 0;
 
 
 
@@ -66,6 +65,9 @@ namespace BLREdit.UI
                 PrimaryMuzzleImage.DataContext as ImportItem,
                 PrimaryScopeImage.DataContext as ImportItem,
                 PrimaryStockImage.DataContext as ImportItem,
+                                HelmetImage.DataContext as ImportItem,
+                UpperBodyImage.DataContext as ImportItem,
+                LowerBodyImage.DataContext as ImportItem,
                 PrimaryDamageLabel,
                 PrimaryRateOfFireLabel,
                 PrimaryAmmoLabel,
@@ -93,6 +95,9 @@ namespace BLREdit.UI
                 SecondaryMuzzleImage.DataContext as ImportItem,
                 SecondaryScopeImage.DataContext as ImportItem,
                 SecondaryStockImage.DataContext as ImportItem,
+                HelmetImage.DataContext as ImportItem,
+                UpperBodyImage.DataContext as ImportItem,
+                LowerBodyImage.DataContext as ImportItem,
                 SecondaryDamageLabel,
                 SecondaryRateOfFireLabel,
                 SecondaryAmmoLabel,
@@ -136,7 +141,7 @@ namespace BLREdit.UI
             }
         }
 
-        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel, Label Descriptor)
+        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, ImportItem Helmet, ImportItem UpperBody, ImportItem LowerBody, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel, Label Descriptor)
         {
             var watch = LoggingSystem.LogInfo("Updating Stats", "");
 
@@ -223,7 +228,7 @@ namespace BLREdit.UI
                 allMovementSpeed += Magazine?.weaponModifiers?.movementSpeed ?? 0;
                 allMovementSpeed /= 100.0f;
                 allMovementSpeed = Math.Min(Math.Max(allMovementSpeed, -1.0f), 1.0f);
-                MoveSpeed = CalculateSpeed(Reciever, allMovementSpeed);
+                MoveSpeed = CalculateSpeed(Reciever, Helmet, UpperBody, LowerBody, allMovementSpeed);
 
                 List<ImportItem> mods = new List<ImportItem>();
                 if (Barrel != null)
@@ -427,7 +432,7 @@ namespace BLREdit.UI
             }
         }
 
-        public static double CalculateSpeed(ImportItem Reciever, double allMovementSpeed)
+        public static double CalculateSpeed(ImportItem Reciever, ImportItem helmet, ImportItem upperBody, ImportItem lowerBody, double allMovementSpeed)
         {
             if (Reciever != null && Reciever.IniStats != null)
             {
@@ -441,7 +446,7 @@ namespace BLREdit.UI
                 {
                     move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.X, move_alpha);
                 }
-                double speed = (765 + move_modifier) / 100.0f;
+                double speed = (GetMoveSpeedArmor(helmet, upperBody, lowerBody) + move_modifier) / 100.0f;
                 return speed;
             }
             return 0;
@@ -755,16 +760,62 @@ namespace BLREdit.UI
                 { image.DataContext = item; LoggingSystem.LogInfo("Tactical Set!"); }
 
             }
-            UpdateGearSlots();
+            UpdateArmorStats();
             UpdatePrimaryStats();
             UpdateSecondaryStats();
             if(updateLoadout)
                 UpdateActiveLoadout();
         }
 
-        public void UpdateGearSlots()
+        public void UpdateArmorStats()
+        {
+            var helmet = (HelmetImage.DataContext as ImportItem);
+            var upperBody = (UpperBodyImage.DataContext as ImportItem);
+            var lowerBody = (LowerBodyImage.DataContext as ImportItem);
+            UpdateHealth(helmet, upperBody, lowerBody);
+            UpdateHeadProtection(helmet);
+            UpdateRun(helmet, upperBody, lowerBody);
+            UpdateHRV(helmet);
+            UpdateHRVRecharge(helmet);
+            UpdateGearSlots(upperBody, lowerBody);
+            
+        }
+
+
+
+        public void UpdateHealth(ImportItem helmet, ImportItem upperBody, ImportItem lowerBody)
         { 
-            currentGearSlots = ((UpperBodyImage.DataContext as ImportItem)?.pawnModifiers?.GearSlots ?? 0) + ((LowerBodyImage.DataContext as ImportItem)?.pawnModifiers?.GearSlots ?? 0);
+            double currentHealth = 200 + (helmet?.pawnModifiers.Health ?? 0) + (upperBody?.pawnModifiers.Health ?? 0) + (lowerBody?.pawnModifiers.Health ?? 0);
+            ArmorHealthLabel.Content = currentHealth.ToString("0");
+        }
+        public void UpdateHeadProtection(ImportItem helmet)
+        {
+            double currentHealth = (helmet?.pawnModifiers.HelmetDamageReduction ?? 0);
+            ArmorHeadProtectionLabel.Content = currentHealth.ToString("0") + '%';
+        }
+        public void UpdateRun(ImportItem helmet, ImportItem upperBody, ImportItem lowerBody)
+        {
+            double currentHealth = GetMoveSpeedArmor(helmet, upperBody, lowerBody) / 100.0;
+            ArmorRunLabel.Content = currentHealth.ToString("0.00");
+        }
+
+        public static double GetMoveSpeedArmor(ImportItem helmet, ImportItem upperBody, ImportItem lowerBody)
+        {
+            return (7.65 + (helmet?.pawnModifiers.MovementSpeed ?? 0) + (upperBody?.pawnModifiers.MovementSpeed ?? 0) + (lowerBody?.pawnModifiers.MovementSpeed ?? 0))* 100.0;
+        }
+        public void UpdateHRV(ImportItem helmet)
+        {
+            double currentHealth = (helmet?.pawnModifiers.HRVDuration ?? 0);
+            ArmorHRVLabel.Content = currentHealth.ToString("0.0") + 'u';
+        }
+        public void UpdateHRVRecharge(ImportItem helmet)
+        {
+            double currentHealth = (helmet?.pawnModifiers.HRVRechargeRate ?? 0);
+            ArmorHRVRechargeLabel.Content = currentHealth.ToString("0.0") + "u/s";
+        }
+        public void UpdateGearSlots(ImportItem upperBody, ImportItem lowerBody)
+        { 
+            double currentGearSlots = (upperBody?.pawnModifiers?.GearSlots ?? 0) + (lowerBody?.pawnModifiers?.GearSlots ?? 0);
             
             GearImage1.IsEnabled = false;
             GearImage2.IsEnabled = false;
@@ -796,6 +847,7 @@ namespace BLREdit.UI
                 GearImage4.IsEnabled = true;
                 Gear4Rect.Visibility = Visibility.Hidden;
             }
+            ArmorGearLabel.Content = currentGearSlots.ToString("0");
         }
 
         private static bool CheckForPistolAndBarrel(ImportItem item)
