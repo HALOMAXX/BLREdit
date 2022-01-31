@@ -16065,7 +16065,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Flashbrake muzzle.<br>Improves damage, but also impairs spread and recoil.",
+      "tooltip": "Flashbrake muzzle.<br>Improves damage, but impairs recoil.",
       "uid": 43011,
       "validFor": null,
       "weaponModifiers": {
@@ -16109,7 +16109,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Flash brake muzzle.<br>Significantly improves damage, but impairs range, spread, and recoil.",
+      "tooltip": "Flash brake muzzle.<br>Significantly improves damage, but impairs recoil.",
       "uid": 43002,
       "validFor": null,
       "weaponModifiers": {
