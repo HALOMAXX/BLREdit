@@ -36,57 +36,211 @@ namespace BLREdit
         public WikiStats WikiStats { get; set; }
         public IniStats IniStats { get; set; }
 
-        public string StatDisplay
+        public string DisplayStatDesc1
+        {
+            get 
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    return "Damage:";
+                }
+                else if(Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return "Damage:";
+                }
+                else if (Category == "scope")
+                {
+                    return "Zoom:";
+                }
+                return "";
+            }
+        }
+        public string DisplayStat1
         {
             get
             {
-                if (stats != null)
+                if (Category == "primary" || Category == "secondary")
                 {
                     double[] damage = UI.MainWindow.CalculateDamage(this, 0);
-                    double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
-                    double recoil = UI.MainWindow.CalculateRecoil(this, 0);
-                    double[] range = UI.MainWindow.CalculateRange(this, 0);
-                    StringBuilder sb = new StringBuilder();
-                    sb.AppendFormat("Damage: {0}/{1}\tAim: {2}\tHip: {3}\nMove: {4}\tRecoil: {5}\tRange:{6}/{7}", damage[0].ToString("0"), damage[1].ToString("0"), spread[0].ToString("0.00"), spread[1].ToString("0.00"), spread[2].ToString("0.00"), recoil.ToString("0.00"), range[0].ToString("0"), range[1].ToString("0"));
-                    return sb.ToString();
+                    return damage[0].ToString("0") + "/" + damage[1].ToString("0");
                 }
-                else
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                { 
+                    return weaponModifiers.damage + "%";
+                }
+                else if (Category == "scope")
                 {
-                    ImportItem reciever;
-                    if (UI.MainWindow.LastSelectedImage.Name.Contains("Primary"))
-                    {
-                        reciever = UI.MainWindow.PrimaryReciever;
-                    }
-                    else
-                    {
-                        reciever = UI.MainWindow.SecondaryReciever;
-                    }
-                    if (reciever != null && (weaponModifiers != null && weaponModifiers.IsNotZero))
-                    {
-                        double[] damageBase = UI.MainWindow.CalculateDamage(reciever, 0);
-                        double[] spreadBase = UI.MainWindow.CalculateSpread(reciever, 0, 0);
-                        double recoilBase = UI.MainWindow.CalculateRecoil(reciever, 0);
-                        double[] rangeBase = UI.MainWindow.CalculateRange(reciever, 0);
-
-                        double[] damageNew = UI.MainWindow.CalculateDamage(reciever, weaponModifiers.damage / 100.0);
-                        double[] spreadNew = UI.MainWindow.CalculateSpread(reciever, weaponModifiers.accuracy / 100.0, weaponModifiers.movementSpeed / 100.0);
-                        double recoilNew = UI.MainWindow.CalculateRecoil(reciever, weaponModifiers.recoil / 100.0);
-                        double[] rangeNew = UI.MainWindow.CalculateRange(reciever, weaponModifiers.range / 100.0);
-
-                        double[] damage = new double[] { damageNew[0] - damageBase[0], damageNew[1] - damageBase[1] };
-                        double[] spread = new double[] { spreadNew[0] - spreadBase[0], spreadNew[1] - spreadBase[1], spreadNew[2] - spreadBase[2] };
-                        double recoil = recoilNew - recoilBase;
-                        double[] range = new double[] { rangeNew[0] - rangeBase[0], rangeNew[1] - rangeBase[1] };
-
-                        StringBuilder sb = new StringBuilder();
-                        sb.AppendFormat("Damage: {0}/{1}\tAim: {2}\tHip: {3}\nMove: {4}\tRecoil: {5}\tRange:{6}/{7}", damage[0].ToString("0"), damage[1].ToString("0"), spread[0].ToString("0.00"), spread[1].ToString("0.00"), spread[2].ToString("0.00"), recoil.ToString("0.00"), range[0].ToString("0"), range[1].ToString("0"));
-                        return sb.ToString();
-                    }
-                    else
-                    {
-                        return "";
-                    }
+                    return (1.3 + (WikiStats?.zoom ?? 0)).ToString("0.00") + "x";
                 }
+                return "";
+            }
+        }
+
+        public string DisplayStatDesc2
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    return "Aim:";
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return "Accuracy:";
+                }
+                else if (Category == "scope")
+                {
+                    return "Scope In:";
+                }
+                return "";
+            }
+        }
+        public string DisplayStat2
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
+                    return spread[0].ToString("0.00") + '°';
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return weaponModifiers.accuracy + "%";
+                }
+                else if (Category == "scope")
+                {
+                    return (0.240 + (WikiStats?.scopeInTime ?? 0)).ToString("0.000") + "s";
+                }
+                return "";
+            }
+        }
+
+        public string DisplayStatDesc3
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    return "Hip:";
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return "Recoil:";
+                }
+                return "";
+            }
+        }
+        public string DisplayStat3
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
+                    return spread[1].ToString("0.00") + '°';
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return weaponModifiers.recoil + "%";
+                }
+                return "";
+            }
+        }
+
+        public string DisplayStatDesc4
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    return "Move:";
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return "Range:";
+                }
+                return "";
+            }
+        }
+        public string DisplayStat4
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
+                    return spread[2].ToString("0.00") + '°';
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return weaponModifiers.range + "%";
+                }
+                return "";
+            }
+        }
+
+        public string DisplayStatDesc5
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    return "Recoil:";
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return "Run:";
+                }
+                return "";
+            }
+        }
+        public string DisplayStat5
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double recoil = UI.MainWindow.CalculateRecoil(this, 0);
+                    return recoil.ToString("0.00") + '°';
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return weaponModifiers.movementSpeed + "%";
+                }
+                return "";
+            }
+        }
+
+        public string DisplayStatDesc6
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    return "Range:";
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return "";
+                }
+                return "";
+            }
+        }
+        public string DisplayStat6
+        {
+            get
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] range = UI.MainWindow.CalculateRange(this, 0);
+                    return range[0].ToString("0") + '/' + range[1].ToString("0");
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                {
+                    return "";
+                }
+                return "";
             }
         }
 

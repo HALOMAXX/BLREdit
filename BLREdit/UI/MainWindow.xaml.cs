@@ -19,8 +19,7 @@ namespace BLREdit.UI
         public static Image LastSelectedImage = null;
         private ImportItem FilterWeapon = null;
         public static Loadout ActiveLoadout = null;
-        public static ImportItem PrimaryReciever = null;
-        public static ImportItem SecondaryReciever = null;
+        public static MainWindow self = null;
 
 
 
@@ -30,7 +29,7 @@ namespace BLREdit.UI
             textchnaging = true;
 
             InitializeComponent();
-
+            self = this;
             ItemList.Items.Filter += new Predicate<object>(o =>
             {
                 if (o != null)
@@ -643,7 +642,6 @@ namespace BLREdit.UI
             {
                 if (image.Name.Contains("Primary") && ImportSystem.Weapons.primary.Contains(item))
                 {
-                    PrimaryReciever = item;
                     image.DataContext = item;
                     LoggingSystem.LogInfo("Primary Set!");
                     CheckPrimaryModsForValidity(item);
@@ -655,7 +653,6 @@ namespace BLREdit.UI
                 }
                 if (image.Name.Contains("Secondary") && ImportSystem.Weapons.secondary.Contains(item))
                 {
-                    SecondaryReciever = item;
                     image.DataContext = item;
                     LoggingSystem.LogInfo("Secondary Set!");
                     CheckSecondaryModsForValidity(item);

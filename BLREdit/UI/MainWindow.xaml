@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:utils="clr-namespace:BLREdit"
         mc:Ignorable="d"
-        Title="BLREdit" Height="962" Width="1660" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Black">
+        Title="BLREdit" Height="962" Width="1920" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Black">
 
     <Window.Background>
         <ImageBrush ImageSource="Resources/Default_2016.png" />
@@ -21,14 +21,44 @@
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}" >
                         <Border>
-                            <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
+                            <Image Source="{Binding WideImage, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
                         </Border>
                         <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
                         <Border BorderThickness="1,0,1,1">
                             <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
                         </Border>
                         <Border BorderThickness="1,0,1,1">
-                            <TextBlock Text="{Binding StatDisplay}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
+                            <UniformGrid Columns="3">
+                                <UniformGrid Columns="2">
+                                    <Label Content="{Binding DisplayStatDesc1}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStat1}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0"/>
+                                </UniformGrid>
+
+                                <UniformGrid Columns="2">
+                                    <Label Content="{Binding DisplayStatDesc2}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStat2}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0"/>
+                                </UniformGrid>
+
+                                <UniformGrid Columns="2">
+                                    <Label Content="{Binding DisplayStatDesc3}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStat3}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0"/>
+                                </UniformGrid>
+
+                                <UniformGrid Columns="2">
+                                    <Label Content="{Binding DisplayStatDesc4}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStat4}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0"/>
+                                </UniformGrid>
+
+                                <UniformGrid Columns="2">
+                                    <Label Content="{Binding DisplayStatDesc5}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStat5}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0"/>
+                                </UniformGrid>
+
+                                <UniformGrid Columns="2">
+                                    <Label Content="{Binding DisplayStatDesc6}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStat6}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0"/>
+                                </UniformGrid>
+                            </UniformGrid>
                         </Border>
                         <Border BorderThickness="1,0,1,1" Style="{StaticResource DebugBorder}">
                             <TextBlock Text="{Binding DescriptorName}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />

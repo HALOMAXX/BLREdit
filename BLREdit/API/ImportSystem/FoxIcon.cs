@@ -160,7 +160,7 @@ namespace BLREdit
                 rawImage[i] = 0;    //Blue
                 rawImage[i + 1] = 0;  //Green
                 rawImage[i + 2] = 0;  //Red
-                rawImage[i + 3] = 30; //Alpha
+                rawImage[i + 3] = 0; //Alpha
             }
 
             // Create a BitmapSource.

@@ -10,6 +10,11 @@
         <Setter Property="BorderBrush" Value="#0C9E9E9E"/>
     </Style>
 
+    <Style TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+    </Style>
+
     <Style TargetType="TextBox">
         <Setter Property="Background" Value="#80000000"/>
         <Setter Property="Foreground" Value="#FFFFFFFF"/>
@@ -65,10 +70,10 @@
                             ClickMode="Press">
                         </ToggleButton>
                         <ContentPresenter Name="ContentSite" IsHitTestVisible="False"
-                            Content="{TemplateBinding ComboBox.SelectionBoxItem}"
-                            ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ComboBox.ItemTemplateSelector}"
-                            ContentStringFormat="{TemplateBinding ComboBox.SelectionBoxItemStringFormat}"
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left">
                             <ContentPresenter.Resources>
@@ -106,7 +111,6 @@
                                 <Border 
                                 x:Name="DropDownBorder"
                                 Background="#FF3F3F3F"
-
                                 BorderThickness="0"
                                 BorderBrush="#888888"/>
                                 <ScrollViewer Margin="20,0,0,0" SnapsToDevicePixels="True">
@@ -191,7 +195,7 @@
     </Style>
 
     <Style TargetType="Border">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="#20000000"/>
         <Setter Property="BorderBrush" Value="#0C9E9E9E"/>
         <Setter Property="BorderThickness" Value="1,1,1,1"/>
     </Style>
