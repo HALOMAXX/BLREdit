@@ -428,18 +428,22 @@ namespace BLREdit.UI
 
         public static double CalculateSpeed(ImportItem Reciever, double allMovementSpeed)
         {
-            double move_alpha = Math.Abs(allMovementSpeed);
-            double move_modifier;
-            if (allMovementSpeed > 0)
+            if (Reciever != null && Reciever.IniStats != null)
             {
-                move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.Y, move_alpha);
+                double move_alpha = Math.Abs(allMovementSpeed);
+                double move_modifier;
+                if (allMovementSpeed > 0)
+                {
+                    move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.Y, move_alpha);
+                }
+                else
+                {
+                    move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.X, move_alpha);
+                }
+                double speed = (765 + move_modifier) / 100.0f;
+                return speed;
             }
-            else
-            {
-                move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.X, move_alpha);
-            }
-            double speed = (765 + move_modifier) / 100.0f;
-            return speed;
+            return 0;
         }
 
         public static double[] CalculateDamage(ImportItem Reciever, double allDamage)
