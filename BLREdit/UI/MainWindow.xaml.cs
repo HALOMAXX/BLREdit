@@ -640,6 +640,13 @@ namespace BLREdit.UI
                 if (e.Data.GetData(typeof(ImportItem)) is ImportItem item)
                 {
                     LoggingSystem.LogInfo("Recieving:" + item.name);
+                    if (border.Child is Grid grid)
+                    {
+                        if (grid.Children[0] is Image img)
+                        {
+                            SetItemToImage(img, item);
+                        }
+                    }
                     if (border.Child is Image image)
                     {
                         SetItemToImage(image, item);

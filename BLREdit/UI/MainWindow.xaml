@@ -260,23 +260,23 @@
 
         <ComboBox Name="SortComboBox1" ItemsSource="{Binding Source={utils:EnumBindingSourceExtension {x:Type utils:ImportItemSortingType}}}" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="361,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
 
-        <Label Content="Health:" HorizontalAlignment="Left" Margin="20,900,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorHealthLabel" Content="0" HorizontalAlignment="Left" Margin="67,900,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="Health:" HorizontalAlignment="Left" Margin="10,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorHealthLabel" Content="0" HorizontalAlignment="Left" Margin="50,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-        <Label Content="Head Armor:" HorizontalAlignment="Left" Margin="94,900,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorHeadProtectionLabel" Content="0%" HorizontalAlignment="Left" Margin="172,900,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="Head Armor:" HorizontalAlignment="Left" Margin="85,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorHeadProtectionLabel" Content="0%" HorizontalAlignment="Left" Margin="155,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-        <Label Content="Run:" HorizontalAlignment="Left" Margin="235,900,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorRunLabel" Content="0" HorizontalAlignment="Left" Margin="268,900,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="Run:" HorizontalAlignment="Left" Margin="235,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorRunLabel" Content="0" HorizontalAlignment="Left" Margin="261,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
 
-        <Label Content="HRV:" HorizontalAlignment="Left" Margin="31,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorHRVLabel" Content="0" HorizontalAlignment="Left" Margin="67,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="HRV:" HorizontalAlignment="Left" Margin="23,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorHRVLabel" Content="0" HorizontalAlignment="Left" Margin="52,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-        <Label Content="Recharge:" HorizontalAlignment="Left" Margin="110,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorHRVRechargeLabel" Content="0u/s" HorizontalAlignment="Left" Margin="172,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="Recharge:" HorizontalAlignment="Left" Margin="102,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorHRVRechargeLabel" Content="0u/s" HorizontalAlignment="Left" Margin="156,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-        <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="205,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorGearLabel" Content="0" HorizontalAlignment="Left" Margin="268,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="203,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorGearLabel" Content="0" HorizontalAlignment="Left" Margin="262,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
     </Grid>
 </Window>
