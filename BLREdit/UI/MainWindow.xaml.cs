@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -15,18 +16,18 @@ namespace BLREdit.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Image LastSelectedImage = null;
+        public static Image LastSelectedImage = null;
         private ImportItem FilterWeapon = null;
         public static Loadout ActiveLoadout = null;
+        public static ImportItem PrimaryReciever = null;
+        public static ImportItem SecondaryReciever = null;
 
-        
+
 
         public MainWindow()
         {
             profilechanging = true;
             textchnaging = true;
-
-            
 
             InitializeComponent();
 
@@ -42,6 +43,7 @@ namespace BLREdit.UI
                 }
             });
 
+            //SortComboBox1.ItemsSource = Enum.GetValues(typeof(ImportItemSortingType));
 
             PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
             ProfileComboBox.ItemsSource = ExportSystem.Profiles;
@@ -116,7 +118,7 @@ namespace BLREdit.UI
 
         private static bool CheckCalculationReady(ImportItem item)
         {
-            return item != null && item.WikiStats != null && item.IniStats != null && item.stats != null;
+            return item != null && item.IniStats != null && item.stats != null;
         }
 
         private static void UpdateStat(ImportItem[] items, ref double ROF, ref double AmmoMag, ref double AmmoRes, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
@@ -139,6 +141,8 @@ namespace BLREdit.UI
             var watch = LoggingSystem.LogInfo("Updating Stats", "");
 
             double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
+
+            string barrelVSmag = "", stockVSmuzzle = "", weaponDescriptor = "";
 
             if (CheckCalculationReady(Reciever))
             {
@@ -211,30 +215,31 @@ namespace BLREdit.UI
                 Aim = spreads[0];
                 Hip = spreads[1];
                 Move = spreads[2];
+            
+
+                List<ImportItem> mods = new List<ImportItem>();
+                if (Barrel != null)
+                    mods.Add(Barrel);
+                if (Magazine != null)
+                    mods.Add(Magazine);
+                if (Muzzle != null)
+                    mods.Add(Muzzle);
+                if (Scope != null)
+                    mods.Add(Scope);
+                if (Stock != null)
+                    mods.Add(Stock);
+                if (Stock != null)
+                    mods.Add(Stock);
+
+                barrelVSmag = CompareItemDescriptor1(Barrel, Magazine);
+                stockVSmuzzle = CompareItemDescriptor2(Stock, Muzzle, Scope);
+                weaponDescriptor = Reciever.GetDescriptorName(TotalPoints(mods));
+
             }
-
-            List<ImportItem> mods = new List<ImportItem>();
-            if (Barrel != null)
-                mods.Add(Barrel);
-            if (Magazine != null)
-                mods.Add(Magazine);
-            if (Muzzle != null)
-                mods.Add(Muzzle);
-            if (Scope != null)
-                mods.Add(Scope);
-            if (Stock != null)
-                mods.Add(Stock);
-            if (Stock != null)
-                mods.Add(Stock);
-
-            string barrelVSmag = CompareItemDescriptor1(Barrel, Magazine);
-            string stockVSmuzzle = CompareItemDescriptor2(Stock, Muzzle, Scope);
-
-            string weaponDescriptor = Reciever.GetDescriptorName(TotalPoints(mods));
 
             DamageLabel.Content = Damage.ToString("0.0") + " / " + DamageFar.ToString("0.0");
             ROFLabel.Content = ROF.ToString("0");
-            AmmoLabel.Content = AmmoMag.ToString("0") + " / " + (AmmoMag * Reciever.IniStats.InitialMagazines).ToString("0");
+            AmmoLabel.Content = AmmoMag.ToString("0") + " / " + (AmmoMag * Reciever?.IniStats?.InitialMagazines ?? 0).ToString("0");
             ReloadLabel.Content = Reload.ToString("0.00") + "s";
             SwapLabel.Content = Swap.ToString("0.00");
             AimLabel.Content = Aim.ToString("0.00") + "°";
@@ -325,9 +330,9 @@ namespace BLREdit.UI
             return item1.descriptorName;
         }
 
-        private static double[] CalculateRange(ImportItem Reciever, double allRange)
+        public static double[] CalculateRange(ImportItem Reciever, double allRange)
         {
-            if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
+            if (Reciever != null && Reciever.IniStats != null)
             {
                 double idealRange;
                 double maxRange;
@@ -351,9 +356,9 @@ namespace BLREdit.UI
             }
         }
 
-        private static double[] CalculateSpread(ImportItem Reciever, double allAccuracy, double allMovementSpread)
+        public static double[] CalculateSpread(ImportItem Reciever, double allAccuracy, double allMovementSpread)
         {
-            if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
+            if (Reciever != null && Reciever.IniStats != null)
             {
                 double accuracyBaseModifier;
                 double accuracyTABaseModifier;
@@ -413,9 +418,9 @@ namespace BLREdit.UI
             }
         }
 
-        private static double[] CalculateDamage(ImportItem Reciever, double allDamage)
+        public static double[] CalculateDamage(ImportItem Reciever, double allDamage)
         {
-            if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
+            if (Reciever != null && Reciever.IniStats != null)
             {
                 double damageModifier;
                 double alpha = Math.Abs(allDamage);
@@ -436,9 +441,9 @@ namespace BLREdit.UI
             }
         }
 
-        private static double CalculateRecoil(ImportItem Reciever, double allRecoil)
+        public static double CalculateRecoil(ImportItem Reciever, double allRecoil)
         {
-            if (Reciever != null && Reciever.WikiStats != null && Reciever.IniStats != null)
+            if (Reciever != null && Reciever.IniStats != null)
             {
                 double recoilModifier;
                 double alpha = Math.Abs(allRecoil);
@@ -450,9 +455,9 @@ namespace BLREdit.UI
                 {
                     recoilModifier = Lerp(Reciever?.IniStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.IniStats?.ModificationRangeRecoil.X ?? 0, alpha);
                 }
-                if (Reciever?.WikiStats.ammoMag > 0)
+                if (Reciever?.IniStats.MagSize > 0)
                 {
-                    double averageShotCount = Math.Min(Reciever?.WikiStats.ammoMag ?? 0, 15.0f);
+                    double averageShotCount = Math.Min(Reciever?.IniStats.MagSize ?? 0, 15.0f);
                     Vector3 averageRecoil = new Vector3(0, 0, 0);
 
                     for (int shot = 1; shot <= averageShotCount; shot++)
@@ -530,7 +535,7 @@ namespace BLREdit.UI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ItemList.ItemsSource = ImportSystem.Weapons.primary;
+            SetItemList(ImportSystem.Weapons.primary);
             LastSelectedImage = PrimaryRecieverImage;
             if (App.IsNewVersionAvailable && IOResources.Settings.ShowUpdateNotice)
             {
@@ -610,7 +615,7 @@ namespace BLREdit.UI
             
         }
 
-        public void SetItemToImage(Image image, ImportItem item)
+        public void SetItemToImage(Image image, ImportItem item, bool updateLoadout = true)
         {
             if (image.Name.Contains("Primary"))
             {
@@ -638,22 +643,26 @@ namespace BLREdit.UI
             {
                 if (image.Name.Contains("Primary") && ImportSystem.Weapons.primary.Contains(item))
                 {
+                    PrimaryReciever = item;
                     image.DataContext = item;
                     LoggingSystem.LogInfo("Primary Set!");
                     CheckPrimaryModsForValidity(item);
                     FillEmptyPrimaryMods(item);
                     UpdatePrimaryStats();
-                    UpdateActiveLoadout();
+                    if(updateLoadout)
+                        UpdateActiveLoadout();
                     return;
                 }
                 if (image.Name.Contains("Secondary") && ImportSystem.Weapons.secondary.Contains(item))
                 {
+                    SecondaryReciever = item;
                     image.DataContext = item;
                     LoggingSystem.LogInfo("Secondary Set!");
                     CheckSecondaryModsForValidity(item);
                     FillEmptySecondaryMods(item);
                     UpdateSecondaryStats();
-                    UpdateActiveLoadout();
+                    if (updateLoadout)
+                        UpdateActiveLoadout();
                     return;
                 }
                 LoggingSystem.LogInfo("Not a Valid Primary or Secondary!");
@@ -689,8 +698,8 @@ namespace BLREdit.UI
                 { image.DataContext = item; LoggingSystem.LogInfo("Magazine with ID:" + ImportSystem.GetMagazineID(item) + " Set!"); }
                 if (image.Name.Contains("Tag") && ImportSystem.Gear.hangers.Contains(item))
                 { image.DataContext = item; LoggingSystem.LogInfo("Hanger with ID:" + ImportSystem.GetTagID(item) + " Set!"); }
-                if (image.Name.Contains("CamoWeapon") && ImportSystem.Mods.camosWeapon.Contains(item))
-                { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoWeaponID(item) + " Set!"); }
+                if (image.Name.Contains("CamoWeapon") && ImportSystem.Mods.camosBody.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoBodyID(item) + " Set!"); }
                 if (image.Name.Contains("CamoBody") && ImportSystem.Mods.camosBody.Contains(item))
                 { image.DataContext = item; LoggingSystem.LogInfo("Camo with ID:" + ImportSystem.GetCamoBodyID(item) + " Set!"); }
                 if (image.Name.Contains("Stock") && ImportSystem.Mods.stocks.Contains(item))
@@ -722,7 +731,8 @@ namespace BLREdit.UI
             }
             UpdatePrimaryStats();
             UpdateSecondaryStats();
-            UpdateActiveLoadout();
+            if(updateLoadout)
+                UpdateActiveLoadout();
         }
 
         private static bool CheckForPistolAndBarrel(ImportItem item)
@@ -812,7 +822,7 @@ namespace BLREdit.UI
 
         private static void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock, ImportItem tag, ImportItem camo)
         {
-            weapon.Receiver = reciever.name;
+            weapon.Receiver = reciever?.name ?? "Assault Rifle";
             weapon.Muzzle = ImportSystem.GetMuzzleID(muzzle);
             weapon.Barrel = barrel?.name ?? "No Barrel Mod";
             weapon.Magazine = ImportSystem.GetMagazineID(magazine);
@@ -830,7 +840,7 @@ namespace BLREdit.UI
 
             if (image.Name.Contains("Reciever"))
             {
-                ItemList.ItemsSource = ImportSystem.Weapons.primary;
+                SetItemList(ImportSystem.Weapons.primary);
                 LastSelectedImage = PrimaryRecieverImage;
                 LoggingSystem.LogInfo("ItemList Set for Primary Reciever");
                 return;
@@ -840,7 +850,7 @@ namespace BLREdit.UI
             {
                 if (!(PrimaryRecieverImage.DataContext as ImportItem).IsValidModType("muzzle"))
                 { return; }
-                ItemList.ItemsSource = ImportSystem.Mods.muzzles;
+                SetItemList(ImportSystem.Mods.muzzles);
                 LastSelectedImage = image;
                 LoggingSystem.LogInfo("ItemList Set for Muzzles");
                 return;
@@ -864,7 +874,7 @@ namespace BLREdit.UI
 
             if (image.Name.Contains("Reciever"))
             {
-                ItemList.ItemsSource = ImportSystem.Weapons.secondary;
+                SetItemList(ImportSystem.Weapons.secondary);
                 LastSelectedImage = SecondaryRecieverImage;
                 LoggingSystem.LogInfo("ItemList Set for Secondary Reciever");
                 return;
@@ -872,7 +882,7 @@ namespace BLREdit.UI
 
             if (image.Name.Contains("Muzzle"))
             {
-                ItemList.ItemsSource = ImportSystem.Mods.muzzles;
+                SetItemList(ImportSystem.Mods.muzzles);
                 LastSelectedImage = image;
                 LoggingSystem.LogInfo("ItemList Set for Muzzles");
                 return;
@@ -895,19 +905,19 @@ namespace BLREdit.UI
             
             if (image.Name.Contains("Reciever"))
             {
-                ItemList.ItemsSource = ImportSystem.Weapons.primary;
+                SetItemList(ImportSystem.Weapons.primary);
                 LoggingSystem.LogInfo("ItemList Set for Primary Reciever");
                 return;
             }
             if (image.Name.Contains("Magazine"))
             {
-                ItemList.ItemsSource = ImportSystem.Mods.magazines;
+                SetItemList(ImportSystem.Mods.magazines);
                 LoggingSystem.LogInfo("ItemList Set for Magazines");
                 return;
             }
             if (image.Name.Contains("Stock"))
             {
-                ItemList.ItemsSource = ImportSystem.Mods.stocks;
+                SetItemList(ImportSystem.Mods.stocks);
                 LoggingSystem.LogInfo("ItemList Set for Stocks");
                 return;
             }
@@ -917,34 +927,40 @@ namespace BLREdit.UI
                 {
                     item.RemoveCrosshair();
                 }
-                ItemList.ItemsSource = ImportSystem.Mods.scopes;
+                SetItemList(ImportSystem.Mods.scopes);
                 LoggingSystem.LogInfo("ItemList Set for Scopes");
                 return;
             }
             if (image.Name.Contains("Barrel"))
             {
-                ItemList.ItemsSource = ImportSystem.Mods.barrels;
+                SetItemList(ImportSystem.Mods.barrels);
                 LoggingSystem.LogInfo("ItemList Set for Barrels");
                 return;
             }
             if (image.Name.Contains("Grip"))
             {
-                ItemList.ItemsSource = ImportSystem.Mods.grips;
+                SetItemList(ImportSystem.Mods.grips);
                 LoggingSystem.LogInfo("ItemList Set for Grips");
                 return;
             }
             if (image.Name.Contains("Tag"))
             {
-                ItemList.ItemsSource = ImportSystem.Gear.hangers;
+                SetItemList(ImportSystem.Gear.hangers);
                 LoggingSystem.LogInfo("ItemList Set for Tags");
                 return;
             }
             if (image.Name.Contains("CamoWeapon"))
             {
-                ItemList.ItemsSource = ImportSystem.Mods.camosWeapon;
-                LoggingSystem.LogInfo("ItemList Set for Weapon Camos");
+                SetItemList(ImportSystem.Mods.camosBody);
+                LoggingSystem.LogInfo("ItemList Set for 'Weapon' Camos");
                 return;
             }
+        }
+
+        public void SetItemList(ImportItem[] list)
+        {
+            ItemList.ItemsSource = list;
+            ApplySorting();
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -968,42 +984,42 @@ namespace BLREdit.UI
 
                     if (image.Name.Contains("Gear"))
                     {
-                        ItemList.ItemsSource = ImportSystem.Gear.attachments;
+                        SetItemList(ImportSystem.Gear.attachments);
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Gear");
                         return;
                     }
                     if (image.Name.Contains("Tactical"))
                     {
-                        ItemList.ItemsSource = ImportSystem.Gear.tactical;
+                        SetItemList(ImportSystem.Gear.tactical);
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Tactical");
                         return;
                     }
                     if (image.Name.Contains("CamoBody"))
                     {
-                        ItemList.ItemsSource = ImportSystem.Mods.camosBody;
+                        SetItemList(ImportSystem.Mods.camosBody);
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Body Camos");
                         return;
                     }
                     if (image.Name.Contains("Helmet"))
                     {
-                        ItemList.ItemsSource = ImportSystem.Gear.helmets;
+                        SetItemList(ImportSystem.Gear.helmets);
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Helemts");
                         return;
                     }
                     if (image.Name.Contains("UpperBody"))
                     {
-                        ItemList.ItemsSource = ImportSystem.Gear.upperBodies;
+                        SetItemList(ImportSystem.Gear.upperBodies);
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for UpperBodies");
                         return;
                     }
                     if (image.Name.Contains("LowerBody"))
                     {
-                        ItemList.ItemsSource = ImportSystem.Gear.lowerBodies;
+                        SetItemList(ImportSystem.Gear.lowerBodies);
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for LowerBodies");
                         return;
@@ -1016,49 +1032,49 @@ namespace BLREdit.UI
         public void SetLoadout(Loadout loadout)
         {
             ActiveLoadout = loadout;
-            GearImage1.DataContext = Loadout.GetGear(loadout.Gear1);
-            GearImage2.DataContext = Loadout.GetGear(loadout.Gear2);
-            GearImage3.DataContext = Loadout.GetGear(loadout.Gear3);
-            GearImage4.DataContext = Loadout.GetGear(loadout.Gear4);
-            TacticalImage.DataContext = loadout.GetTactical();
+            SetItemToImage(GearImage1, Loadout.GetGear(loadout.Gear1), false);
+            SetItemToImage(GearImage2, Loadout.GetGear(loadout.Gear2), false);
+            SetItemToImage(GearImage3, Loadout.GetGear(loadout.Gear3), false);
+            SetItemToImage(GearImage4, Loadout.GetGear(loadout.Gear4), false);
+            SetItemToImage(TacticalImage, loadout.GetTactical(), false);
 
-            HelmetImage.DataContext = loadout.GetHelmet();
-            UpperBodyImage.DataContext = loadout.GetUpperBody();
-            LowerBodyImage.DataContext = loadout.GetLowerBody();
-            PlayerCamoBodyImage.DataContext = loadout.GetCamo();
+            SetItemToImage(HelmetImage, loadout.GetHelmet(), false);
+            SetItemToImage(UpperBodyImage, loadout.GetUpperBody(), false);
+            SetItemToImage(LowerBodyImage, loadout.GetLowerBody(), false);
+            SetItemToImage(PlayerCamoBodyImage, loadout.GetCamo(), false);
 
             IsFemaleCheckBox.DataContext = loadout;
 
-            SetPrimary(loadout.Primary);
-            SetSecondary(loadout.Secondary);
+            SetPrimary(loadout.Primary, false);
+            SetSecondary(loadout.Secondary, false);
 
         }
 
-        public void SetPrimary(Weapon primary)
+        public void SetPrimary(Weapon primary, bool updateLoadout = true)
         {
-            PrimaryRecieverImage.DataContext = primary.GetReciever();
-            PrimaryMuzzleImage.DataContext = primary.GetMuzzle();
-            PrimaryStockImage.DataContext = primary.GetStock();
-            PrimaryBarrelImage.DataContext = primary.GetBarrel();
-            PrimaryMagazineImage.DataContext = primary.GetMagazine();
-            PrimaryScopeImage.DataContext = primary.GetScope();
-            PrimaryCrosshairImage.DataContext = primary.GetScope();
-            PrimaryTagImage.DataContext = primary.GetTag();
-            PrimaryCamoWeaponImage.DataContext = primary.GetCamo();
+            SetItemToImage(PrimaryRecieverImage, primary.GetReciever(), updateLoadout);
+            SetItemToImage(PrimaryMuzzleImage, primary.GetMuzzle(), updateLoadout);
+            SetItemToImage(PrimaryStockImage, primary.GetStock(), updateLoadout);
+            SetItemToImage(PrimaryBarrelImage, primary.GetBarrel(), updateLoadout);
+            SetItemToImage(PrimaryMagazineImage, primary.GetMagazine(), updateLoadout);
+            SetItemToImage(PrimaryScopeImage, primary.GetScope(), updateLoadout);
+            SetItemToImage(PrimaryCrosshairImage, primary.GetScope(), updateLoadout);
+            SetItemToImage(PrimaryTagImage, primary.GetTag(), updateLoadout);
+            SetItemToImage(PrimaryCamoWeaponImage, primary.GetCamo(), updateLoadout);
             UpdatePrimaryStats();
         }
 
-        public void SetSecondary(Weapon secondary)
+        public void SetSecondary(Weapon secondary, bool updateLoadout = true)
         {
-            SecondaryRecieverImage.DataContext = secondary.GetReciever();
-            SecondaryMuzzleImage.DataContext = secondary.GetMuzzle();
-            SecondaryStockImage.DataContext = secondary.GetStock();
-            SecondaryBarrelImage.DataContext = secondary.GetBarrel();
-            SecondaryMagazineImage.DataContext = secondary.GetMagazine();
-            SecondaryScopeImage.DataContext = secondary.GetScope();
-            SecondaryCrosshairImage.DataContext = secondary.GetScope();
-            SecondaryTagImage.DataContext = secondary.GetTag();
-            SecondaryCamoWeaponImage.DataContext = secondary.GetCamo();
+            SetItemToImage(SecondaryRecieverImage, secondary.GetReciever(), updateLoadout);
+            SetItemToImage(SecondaryMuzzleImage, secondary.GetMuzzle(), updateLoadout);
+            SetItemToImage(SecondaryStockImage, secondary.GetStock(), updateLoadout);
+            SetItemToImage(SecondaryBarrelImage, secondary.GetBarrel(), updateLoadout);
+            SetItemToImage(SecondaryMagazineImage, secondary.GetMagazine(), updateLoadout);
+            SetItemToImage(SecondaryScopeImage, secondary.GetScope(), updateLoadout);
+            SetItemToImage(SecondaryCrosshairImage, secondary.GetScope(), updateLoadout);
+            SetItemToImage(SecondaryTagImage, secondary.GetTag(), updateLoadout);
+            SetItemToImage(SecondaryCamoWeaponImage, secondary.GetCamo(), updateLoadout);
             UpdateSecondaryStats();
         }
         bool textchnaging = false;
@@ -1156,6 +1172,58 @@ namespace BLREdit.UI
             var source = ItemList.ItemsSource;
             ItemList.ItemsSource = null;
             ItemList.ItemsSource = source;
+        }
+
+        public void ApplySorting()
+        {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ItemList.ItemsSource);
+            if (view != null)
+            {
+                view.SortDescriptions.Clear();
+                switch ((ImportItemSortingType)SortComboBox1.SelectedItem)
+                {
+                    case ImportItemSortingType.NameAsc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("name", System.ComponentModel.ListSortDirection.Ascending));
+                        break;
+                    case ImportItemSortingType.NameDesc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("name", System.ComponentModel.ListSortDirection.Descending));
+                        break;
+
+                    case ImportItemSortingType.DamageAsc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Damage", System.ComponentModel.ListSortDirection.Ascending));
+                        break;
+                    case ImportItemSortingType.DamageDesc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Damage", System.ComponentModel.ListSortDirection.Descending));
+                        break;
+
+                    case ImportItemSortingType.SpreadAsc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Spread", System.ComponentModel.ListSortDirection.Ascending));
+                        break;
+                    case ImportItemSortingType.SpreadDesc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Spread", System.ComponentModel.ListSortDirection.Descending));
+                        break;
+
+                    case ImportItemSortingType.RecoilAsc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Recoil", System.ComponentModel.ListSortDirection.Ascending));
+                        break;
+                    case ImportItemSortingType.RecoilDesc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Recoil", System.ComponentModel.ListSortDirection.Descending));
+                        break;
+
+
+                    case ImportItemSortingType.RangeAsc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Range", System.ComponentModel.ListSortDirection.Ascending));
+                        break;
+                    case ImportItemSortingType.RangeDesc:
+                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Range", System.ComponentModel.ListSortDirection.Descending));
+                        break;
+                }
+            }
+        }
+
+        private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplySorting();
         }
     }
 }

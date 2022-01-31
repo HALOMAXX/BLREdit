@@ -14,6 +14,11 @@
         public int switchWeaponSpeed { get; set; } = 0;
         public int weaponWeight { get; set; } = 0;
 
+
+        public bool IsNotZero { get 
+            { 
+                return (accuracy != 0) || (damage != 0) || (movementSpeed != 0) || (recoil != 0);
+            } }
         public override string ToString()
         {
             return LoggingSystem.ObjectToTextWall(this);

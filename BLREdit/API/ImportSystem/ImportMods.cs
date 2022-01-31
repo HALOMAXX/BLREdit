@@ -8,7 +8,7 @@ namespace BLREdit
         public ImportItem[] ammos { get; set; }
         public ImportItem[] barrels { get; set; }
         public ImportItem[] camosBody { get; set; }
-        public ImportItem[] camosWeapon { get; set; }
+        //public ImportItem[] camosWeapon { get; set; }
         public ImportItem[] grips { get; set; }
         public ImportItem[] magazines { get; set; }
         public ImportItem[] muzzles { get; set; }
@@ -39,17 +39,17 @@ namespace BLREdit
 
         public void UpdateImages()
         {
-            ImportSystem.UpdateImagesForImportItems(ammo, "ammo");
-            ImportSystem.UpdateImagesForImportItems(ammos, "ammos");
-            ImportSystem.UpdateImagesForImportItems(barrels, "barrel");
-            ImportSystem.UpdateImagesForImportItems(camosBody, "camoBody");
-            ImportSystem.UpdateImagesForImportItems(camosWeapon, "camoWeapon");
-            ImportSystem.UpdateImagesForImportItems(grips, "grip");
-            ImportSystem.UpdateImagesForImportItems(magazines, "magazine");
-            ImportSystem.UpdateImagesForImportItems(muzzles, "muzzle");
-            ImportSystem.UpdateImagesForImportItems(primarySkins, "primarySkin");
-            ImportSystem.UpdateImagesForImportItems(scopes, "scope");
-            ImportSystem.UpdateImagesForImportItems(stocks, "stock");
+            ImportSystem.UpdateImagesForImportItems(ammo);
+            ImportSystem.UpdateImagesForImportItems(ammos);
+            ImportSystem.UpdateImagesForImportItems(barrels);
+            ImportSystem.UpdateImagesForImportItems(camosBody);
+            //ImportSystem.UpdateImagesForImportItems(camosWeapon, "camoWeapon");
+            ImportSystem.UpdateImagesForImportItems(grips);
+            ImportSystem.UpdateImagesForImportItems(magazines);
+            ImportSystem.UpdateImagesForImportItems(muzzles);
+            ImportSystem.UpdateImagesForImportItems(primarySkins);
+            ImportSystem.UpdateImagesForImportItems(scopes);
+            ImportSystem.UpdateImagesForImportItems(stocks);
         }
 
         public ImportMods() { }
@@ -59,7 +59,7 @@ namespace BLREdit
             ammos = ImportSystem.CleanItems(mods.ammos, "ammos");
             barrels = ImportSystem.CleanItems(mods.barrels, "barrel");
             camosBody = ImportSystem.CleanItems(mods.camosBody, "camoBody");
-            camosWeapon = ImportSystem.CleanItems(mods.camosWeapon, "camoWeapon");
+            //camosWeapon = ImportSystem.CleanItems(mods.camosWeapon, "camoWeapon");
             grips = ImportSystem.CleanItems(mods.grips, "grip");
             magazines = ImportSystem.CleanItems(mods.magazines, "magazine");
             muzzles = ImportSystem.CleanItems(mods.muzzles, "muzzle");

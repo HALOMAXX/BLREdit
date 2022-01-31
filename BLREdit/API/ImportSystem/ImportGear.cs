@@ -45,29 +45,29 @@ namespace BLREdit
 
         public void UpdateImages()
         {
-            ImportSystem.UpdateImagesForImportItems(attachments, "Attachments");
-            ImportSystem.UpdateImagesForImportItems(avatars, "Avatars");
-            ImportSystem.UpdateImagesForImportItems(badges, "Badges");
-            ImportSystem.UpdateImagesForImportItems(emotes, "Emotes");
-            ImportSystem.UpdateImagesForImportItems(hangers, "Hangers");
-            ImportSystem.UpdateImagesForImportItems(helmets, "Helmets");
-            ImportSystem.UpdateImagesForImportItems(lowerBodies, "LowerBodies");
-            ImportSystem.UpdateImagesForImportItems(tactical, "Tactical");
-            ImportSystem.UpdateImagesForImportItems(upperBodies, "UpperBodies");
+            ImportSystem.UpdateImagesForImportItems(attachments);
+            ImportSystem.UpdateImagesForImportItems(avatars);
+            ImportSystem.UpdateImagesForImportItems(badges);
+            ImportSystem.UpdateImagesForImportItems(emotes);
+            ImportSystem.UpdateImagesForImportItems(hangers);
+            ImportSystem.UpdateImagesForImportItems(helmets);
+            ImportSystem.UpdateImagesForImportItems(lowerBodies);
+            ImportSystem.UpdateImagesForImportItems(tactical);
+            ImportSystem.UpdateImagesForImportItems(upperBodies);
         }
 
         public ImportGear() { }
         public ImportGear(ImportGear gear)
         {
-            attachments = ImportSystem.CleanItems(gear.attachments, "Attachments");
-            avatars = ImportSystem.CleanItems(gear.avatars, "Avatars");
-            badges = ImportSystem.CleanItems(gear.badges, "Badges");
-            emotes = ImportSystem.CleanItems(gear.emotes, "Emotes");
-            hangers = ImportSystem.CleanItems(gear.hangers, "Hangers");
-            helmets = ImportSystem.CleanItems(gear.helmets, "Helmets");
-            lowerBodies = ImportSystem.CleanItems(gear.lowerBodies, "LowerBodies");
-            tactical = ImportSystem.CleanItems(gear.tactical, "Tactical");
-            upperBodies = ImportSystem.CleanItems(gear.upperBodies, "UpperBodies");
+            attachments = ImportSystem.CleanItems(gear.attachments, "attachments");
+            avatars = ImportSystem.CleanItems(gear.avatars, "avatar");
+            badges = ImportSystem.CleanItems(gear.badges, "badge");
+            emotes = ImportSystem.CleanItems(gear.emotes, "emote");
+            hangers = ImportSystem.CleanItems(gear.hangers, "hanger");
+            helmets = ImportSystem.CleanItems(gear.helmets, "helmet");
+            lowerBodies = ImportSystem.CleanItems(gear.lowerBodies, "lowerBody");
+            tactical = ImportSystem.CleanItems(gear.tactical, "tactical");
+            upperBodies = ImportSystem.CleanItems(gear.upperBodies, "upperBody");
         }
 
         public override string ToString()

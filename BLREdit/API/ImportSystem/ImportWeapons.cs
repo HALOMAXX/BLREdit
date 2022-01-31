@@ -26,18 +26,17 @@ namespace BLREdit
 
         public void UpdateImages()
         {
-            ImportSystem.UpdateImagesForImportItems(depot, "Depot");
-            ImportSystem.UpdateImagesForImportItems(primary, "Primary");
-            ImportSystem.UpdateImagesForImportItems(secondary, "Secondary");
+            ImportSystem.UpdateImagesForImportItems(depot);
+            ImportSystem.UpdateImagesForImportItems(primary);
+            ImportSystem.UpdateImagesForImportItems(secondary);
         }
 
         public ImportWeapons() { }
         public ImportWeapons(ImportWeapons weapons)
         {
-            depot = ImportSystem.CleanItems(weapons.depot, "Depot");
-            LoggingSystem.LogInfo("depot Items" + depot.Length);
-            primary = ImportSystem.CleanItems(weapons.primary, "Primary");
-            secondary = ImportSystem.CleanItems(weapons.secondary, "Secondary");
+            depot = ImportSystem.CleanItems(weapons.depot, "depot");
+            primary = ImportSystem.CleanItems(weapons.primary, "primary");
+            secondary = ImportSystem.CleanItems(weapons.secondary, "secondary");
         }
 
         public override string ToString()

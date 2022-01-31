@@ -26,7 +26,7 @@
     </DataTemplate>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock">
-        <Setter Property="Foreground" Value="#FFD2D2D2"/>
+        <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="Label" x:Key="DisplayLabel">
@@ -52,15 +52,6 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="MinWidth" Value="120"/>
         <Setter Property="MinHeight" Value="20"/>
-        <Setter Property="ItemTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <Grid>
-                        <TextBlock Text="{Binding PlayerName}" Foreground="White"/>
-                    </Grid>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -73,12 +64,20 @@
                             IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
                             ClickMode="Press">
                         </ToggleButton>
-                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}"
-                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            Margin="20,0,0,0"
+                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"
+                            Content="{TemplateBinding ComboBox.SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ComboBox.ItemTemplateSelector}"
+                            ContentStringFormat="{TemplateBinding ComboBox.SelectionBoxItemStringFormat}"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Left" />
+                            HorizontalAlignment="Left">
+                            <ContentPresenter.Resources>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Margin" Value="20,0,0,0"/>
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
                         <TextBox x:Name="PART_EditableTextBox"
                             Style="{x:Null}" 
                             Template="{StaticResource ComboBoxTextBox}" 
@@ -147,7 +146,14 @@
                     <Grid Margin="1,1,1,1" Background="Transparent">
                         <Image Name="Normal" Source="Resources/CleanedButton.png" Stretch="Fill" Width="{Binding (ComboBox.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}" Height="{Binding (ComboBox.Height), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}"/>
                         <Image Name="Hover" Visibility="Hidden" Source="Resources/CleanedButtonHover.png" Stretch="Fill" Width="{Binding (ComboBox.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}" Height="{Binding (ComboBox.Height), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}"/>
-                        <TextBlock Name="ButtonContent"  Foreground="#FF78AEBC" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Text="{Binding PlayerName}"/>
+                        <ContentPresenter>
+                            <ContentPresenter.Resources>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="#FF7494A0"/>
+                                    <Setter Property="Margin" Value="20,0,0,0"/>
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

@@ -3,28 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:utils="clr-namespace:BLREdit"
         mc:Ignorable="d"
-        Title="BLREdit" Height="940" Width="1660" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Black">
+        Title="BLREdit" Height="962" Width="1660" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Black">
 
     <Window.Background>
         <ImageBrush ImageSource="Resources/Default_2016.png" />
     </Window.Background>
     <Grid AllowDrop="True">
-        <ListView x:Name="ItemList" Margin="361,0,0,0">
+        <ListView x:Name="ItemList" Margin="361,22,0,0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="4" HorizontalAlignment="Left"/>
+                    <UniformGrid Columns="4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}" >
                         <Border>
-                            <Image Source="{Binding WideImage, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
+                            <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
                         </Border>
-                        <Image Source="{Binding Crosshair, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
+                        <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
                         <Border BorderThickness="1,0,1,1">
                             <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
+                        </Border>
+                        <Border BorderThickness="1,0,1,1">
+                            <TextBlock Text="{Binding StatDisplay}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
                         </Border>
                         <Border BorderThickness="1,0,1,1" Style="{StaticResource DebugBorder}">
                             <TextBlock Text="{Binding DescriptorName}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
@@ -155,8 +159,7 @@
         <Label Name="SecondaryRangeLabel" Content="0/0" HorizontalAlignment="Left" Margin="265,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
         <Label Content="Run:" HorizontalAlignment="Left" Margin="235,677,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
         <Label Name="SecondaryRunLabel" Content="0" HorizontalAlignment="Left" Margin="271,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-        <ComboBox Name="ProfileComboBox" DisplayMemberPath="PlayerName" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="ProfileComboBox_SelectionChanged">
-        </ComboBox>
+        <ComboBox Name="ProfileComboBox" DisplayMemberPath="PlayerName" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="ProfileComboBox_SelectionChanged"/>
         <Button Name="Loadout1Button" Content="Loadout 1" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout1Button_Click"/>
         <Button Name="Loadout2Button" Content="Loadout 2" HorizontalAlignment="Left" Margin="120,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout2Button_Click"/>
         <Button Name="Loadout3Button" Content="Loadout 3" HorizontalAlignment="Left" Margin="230,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout3Button_Click"/>
@@ -196,5 +199,8 @@
         <Label Name="PrimaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
         <Label Name="SecondaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
         <CheckBox Name="IsFemaleCheckBox" Foreground="White" Content="Female" IsChecked="{Binding IsFemale}" HorizontalAlignment="Left" Margin="10,808,0,0" VerticalAlignment="Top" Checked="IsFemaleCheckBox_Checked" Unchecked="IsFemaleCheckBox_Unchecked"/>
+
+        <ComboBox Name="SortComboBox1" ItemsSource="{Binding Source={utils:EnumBindingSourceExtension {x:Type utils:ImportItemSortingType}}}" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="361,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
+
     </Grid>
 </Window>

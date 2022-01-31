@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
@@ -28,15 +29,15 @@ namespace BLREdit
         {
             var watch = LoggingSystem.LogInfo("Initializing Import System");
 
-            UpdateImages();
             CleanItems();
+            UpdateImages();
             LoadWikiStats();
             LoadIniStats();
 
             //UpgradeIniStats();
 
             LoggingSystem.LogInfo("BodyCamoCount:" + Mods.camosBody.Length);
-            LoggingSystem.LogInfo("WeaponCamoCount:" + Mods.camosWeapon.Length);
+            //LoggingSystem.LogInfo("WeaponCamoCount:" + Mods.camosWeapon.Length);
 
             LoggingSystem.LogInfoAppend(watch, "Import System");
         }
@@ -168,10 +169,6 @@ namespace BLREdit
         {
             return GetItemID(item, Gear.lowerBodies);
         }
-        public static int GetCamoWeaponID(ImportItem item)
-        {
-            return GetItemID(item, Mods.camosWeapon);
-        }
         public static int GetCamoBodyID(ImportItem item)
         {
             return GetItemID(item, Mods.camosBody);
@@ -221,10 +218,10 @@ namespace BLREdit
                         found = true;
                     }
                 }
-                if (!found)
-                {
-                    LoggingSystem.LogInfo("No Wiki Stats for " + item.name);
-                }
+                //if (!found)
+                //{
+                //    LoggingSystem.LogInfo("No Wiki Stats for " + item.name);
+                //}
             }
         }
 
@@ -287,29 +284,24 @@ namespace BLREdit
             return stats.ToArray();
         }
 
-        internal static void UpdateImagesForImportItems(ImportItem[] items, string categoryName)
+        internal static void UpdateImagesForImportItems(ImportItem[] items)
         {
-            var watch = LoggingSystem.LogInfo("Updating Images for " + categoryName, "");
+            if (items.Length > 0)
+            {
+                var watch = LoggingSystem.LogInfo("Updating Images for " + items[0].Category, "");
 
-            Parallel.ForEach(items, item =>
-            {
-                item.LoadImage();
-                if ((categoryName == "Primary" || categoryName == "Secondary") && item.stats != null)
+                Parallel.ForEach(items, item =>
                 {
-                    item.IniStats = new IniStats() { ItemName = item.name, ItemID = item.uid, ROF = item.stats.rateOfFire, Burst = 1, ApplyTime = (60.0f / item.stats.rateOfFire) };
-                }
-                item.wideImageMale.Freeze();
-                item.wideImageFemale?.Freeze();
-                item.largeSquareImageMale.Freeze();
-                item.largeSquareImageFemale?.Freeze();
-                item.smallSquareImageMale.Freeze();
-                item.smallSquareImageFemale?.Freeze();
-            });
-            foreach (ImportItem item in items)
-            {
-                item.PrepareImages();
+                    item.LoadImage();
+                    item.wideImageMale.Freeze();
+                    item.wideImageFemale?.Freeze();
+                    item.largeSquareImageMale.Freeze();
+                    item.largeSquareImageFemale?.Freeze();
+                    item.smallSquareImageMale.Freeze();
+                    item.smallSquareImageFemale?.Freeze();
+                });
+                LoggingSystem.LogInfoAppend(watch);
             }
-            LoggingSystem.LogInfoAppend(watch);
         }
 
         private static FoxIcon[] LoadAllIcons()
@@ -347,7 +339,7 @@ namespace BLREdit
                     cleanedItems.Add(item);
                 }
             }
-            LoggingSystem.LogInfoAppend(watch);
+            LoggingSystem.LogInfoAppend(watch, " items:" + cleanedItems.Count + " are Left");
             return cleanedItems.ToArray();
         }
         public static bool IsValidItem(ImportItem item)
