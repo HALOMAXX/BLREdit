@@ -36,6 +36,7 @@ namespace BLREdit
         public Vector3 ModificationRangeRecoil { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeIdealDistance { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeMaxDistance { get; set; } = Vector3.Zero;
+        public Vector3 ModificationRangeMoveSpeed { get; set; } = Vector3.Zero;
         public StatDecriptor[] StatDecriptors { get; set; } = new StatDecriptor[] { new StatDecriptor() };
 
         public override string ToString()

@@ -139,7 +139,7 @@ namespace BLREdit.UI
         {
             var watch = LoggingSystem.LogInfo("Updating Stats", "");
 
-            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0;
+            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0, MoveSpeed = 0;
 
             string barrelVSmag = "", stockVSmuzzle = "", weaponDescriptor = "";
 
@@ -214,7 +214,15 @@ namespace BLREdit.UI
                 Aim = spreads[0];
                 Hip = spreads[1];
                 Move = spreads[2];
-            
+
+                float allMovementSpeed = Barrel?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementSpeed += Muzzle?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementSpeed += Stock?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementSpeed += Scope?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementSpeed += Magazine?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementSpeed /= 100.0f;
+                allMovementSpeed = Math.Min(Math.Max(allMovementSpeed, -1.0f), 1.0f);
+                MoveSpeed = CalculateSpeed(Reciever, allMovementSpeed);
 
                 List<ImportItem> mods = new List<ImportItem>();
                 if (Barrel != null)
@@ -249,7 +257,8 @@ namespace BLREdit.UI
             ZoomLabel.Content = Zoom.ToString("0.00");
             ScopeInLabel.Content = ScopeIn.ToString("0.000") + "s";
             RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
-            RunLabel.Content = Run.ToString("0.00");
+            //RunLabel.Content = Run.ToString("0.00");
+            RunLabel.Content = MoveSpeed.ToString("0.00");
             Descriptor.Content = barrelVSmag + " " + stockVSmuzzle + " " + weaponDescriptor;
             LoggingSystem.LogInfoAppend(watch);
         }
@@ -415,6 +424,22 @@ namespace BLREdit.UI
             {
                 return new double[] { 0, 0, 0 };
             }
+        }
+
+        public static double CalculateSpeed(ImportItem Reciever, double allMovementSpeed)
+        {
+            double move_alpha = Math.Abs(allMovementSpeed);
+            double move_modifier;
+            if (allMovementSpeed > 0)
+            {
+                move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.Y, move_alpha);
+            }
+            else
+            {
+                move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.X, move_alpha);
+            }
+            double speed = (765 + move_modifier) / 100.0f;
+            return speed;
         }
 
         public static double[] CalculateDamage(ImportItem Reciever, double allDamage)
