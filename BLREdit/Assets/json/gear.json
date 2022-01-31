@@ -8077,623 +8077,1427 @@
       "icon": "t_ArmetXKWAll_128x128",
       "name": "Overmatch Armet X",
       "tooltip": "Standard helmet.<br>Standard-issue helmet with no stat modifications.",
-      "uid": 30300
+      "uid": 30300,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AlliedR5XGhost_128x128",
       "name": "Allied R5X GHOST",
       "tooltip": "Light helmet.<br>Slightly increases speed and recharge rate.",
-      "uid": 30301
+      "uid": 30301,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_DataLuxeSlantX2_128x128",
       "name": "Dataluxe Slant-X2",
       "tooltip": "Heavy helmet.<br>Greatly increases health and armor.",
-      "uid": 30302
+      "uid": 30302,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": 10,
+        "HelmetDamageReduction": 14,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AlliedRET3Astral_128x128",
       "name": "Allied RET-3 Astral",
       "tooltip": "Standard helmet.<br>Increases speed and recharge rate.",
-      "uid": 30303
+      "uid": 30303,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.4,
+        "Health": -2,
+        "HelmetDamageReduction": 9,
+        "MovementSpeed": 0.05,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_OvermatchBonebreaker_128x128",
       "name": "Overmatch Bonebreaker BKR.a",
       "tooltip": "Standard helmet.<br>Increases speed and recharge rate.",
-      "uid": 30304
+      "uid": 30304,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AlliedR21VHunter_128x128",
       "name": "Allied R21V Hunter",
       "tooltip": "Heavy helmet.<br>Greatly increases health and recharge rate.",
-      "uid": 30305
+      "uid": 30305,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 8.6,
+        "Health": 8,
+        "HelmetDamageReduction": 5,
+        "MovementSpeed": -0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_DataLuxeBreachX7_128x128",
       "name": "Dataluxe Breach-X7",
       "tooltip": "Heavy helmet.<br>Slightly increases health and armor.",
-      "uid": 30306
+      "uid": 30306,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.1,
+        "Health": 4,
+        "HelmetDamageReduction": 16,
+        "MovementSpeed": -0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AlliedR97_128x128",
       "name": "Allied R97 II",
       "tooltip": "Light helmet.<br>Increases speed and recharge rate.",
-      "uid": 30307
+      "uid": 30307,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 8.3,
+        "Health": -6,
+        "HelmetDamageReduction": 6,
+        "MovementSpeed": 0.15,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmexGold_128x128",
       "name": "ArmetX - Gold",
       "tooltip": "Standard helmet.<br>A gold version of the Overmatch ArmetX.",
-      "uid": 30308
+      "uid": 30308,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AstralDamaged_128x128",
       "name": "RET-3 Astral - Damaged",
       "tooltip": "Standard helmet.<br>Battle-damaged version of the Allied RET-3 Astral.",
-      "uid": 30309
+      "uid": 30309,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.4,
+        "Health": -2,
+        "HelmetDamageReduction": 9,
+        "MovementSpeed": 0.05,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AstralRed_128x128",
       "name": "RET-3 Astral - Red",
       "tooltip": "Standard helmet.<br>A red version of the Allied RET-3 Astral",
-      "uid": 30310
+      "uid": 30310,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.4,
+        "Health": -2,
+        "HelmetDamageReduction": 9,
+        "MovementSpeed": 0.05,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AstralGold_128x128",
       "name": "RET-3 Astral - Gold",
       "tooltip": "Standard helmet.<br>A gold version of the Allied RET-3 Astral.",
-      "uid": 30311
+      "uid": 30311,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.4,
+        "Health": -2,
+        "HelmetDamageReduction": 9,
+        "MovementSpeed": 0.05,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AstralBlack_128x128",
       "name": "RET-3 Astral - Black",
       "tooltip": "Standard helmet.<br>A black version of the Allied RET-3 Astral.",
-      "uid": 30312
+      "uid": 30312,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.4,
+        "Health": -2,
+        "HelmetDamageReduction": 9,
+        "MovementSpeed": 0.05,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_BonebreakerClown_128x128",
       "name": "Bonebreaker - Clown",
       "tooltip": "Standard helmet.<br>A version of the Overmatch Bonebreaker painted like a clown's face.",
-      "uid": 30313
+      "uid": 30313,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_BonebreakerBloody_128x128",
       "name": "Bonebreaker - Bloody",
       "tooltip": "Standard helmet.<br>Streaks of blood adorn this version of the Overmatch Bonebreaker.",
-      "uid": 30314
+      "uid": 30314,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_BonebreakerBlack_128x128",
       "name": "Bonebreaker - Black",
       "tooltip": "Standard helmet.<br>A black version of the Overmatch Bonebreaker.",
-      "uid": 30315
+      "uid": 30315,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_BonebreakerGold_128x128",
       "name": "Bonebreaker - Gold",
       "tooltip": "Standard helmet.<br>A gold version of the Overmatch Bonebreaker.",
-      "uid": 30316
+      "uid": 30316,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_SlantCamo_128x128",
       "name": "Slant-X2 - Camo",
       "tooltip": "Heavy helmet.<br>A special version of the Dataluxe Slant-X2 that uses your armor camo.",
-      "uid": 30317
+      "uid": 30317,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": 10,
+        "HelmetDamageReduction": 14,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_SlantStealth_128x128",
       "name": "Slant-X2 - Stealth",
       "tooltip": "Heavy helmet.<br>A stealth camo version of the Dataluxe Slant-X2.",
-      "uid": 30318
+      "uid": 30318,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": 10,
+        "HelmetDamageReduction": 14,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_SlantTarget_128x128",
       "name": "Slant-X2 - Target",
       "tooltip": "Heavy helmet.<br>A bull's-eye adorns this version of the Dataluxe Slant-X2.",
-      "uid": 30319
+      "uid": 30319,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": 10,
+        "HelmetDamageReduction": 14,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_SlantBomber_128x128",
       "name": "Slant-X2 - Bomber",
       "tooltip": "Heavy helmet.<br>A row of large sharks' teeth adorns this version of the Dataluxe Slant-X2.",
-      "uid": 30320
+      "uid": 30320,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": 10,
+        "HelmetDamageReduction": 14,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_HunterBuuurink_128x128",
       "name": "R21V HUNTER - 'BUUURINK'",
       "tooltip": "Heavy helmet.<br>A large, yellow exclamation mark adorns this version of the Allied R21V HUNTER.",
-      "uid": 30321
+      "uid": 30321,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 8.6,
+        "Health": 8,
+        "HelmetDamageReduction": 5,
+        "MovementSpeed": -0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXJollyRoger_128x128",
       "name": "ArmetX - Jolly Jack",
       "tooltip": "Standard helmet.<br>A Jolly Roger adorns this version of the Overmatch ArmetX.",
-      "uid": 30322
+      "uid": 30322,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXJollyRogerDark_128x128",
       "name": "ArmetX - Jolly Jack Dark",
       "tooltip": "Standard helmet.<br>A Jolly Roger adorns this version of the Overmatch ArmetX.",
-      "uid": 30323
+      "uid": 30323,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXTango_128x128",
       "name": "ArmetX - Tango",
       "tooltip": "Standard helmet.<br>A Tango Down version of the Overmatch ArmetX.",
-      "uid": 30324
+      "uid": 30324,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXRetribution_128x128",
       "name": "ArmetX - Retribution",
       "tooltip": "Standard helmet.<br>A Retribution version of the Overmatch ArmetX",
-      "uid": 30325
+      "uid": 30325,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXIllin_128x128",
       "name": "ArmetX - Illin'",
       "tooltip": "Standard helmet.<br>An Illin' version of the Overmatch ArmetX.",
-      "uid": 30326
+      "uid": 30326,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXMachinima_128x128",
       "name": "ArmetX - Machinima",
       "tooltip": "Standard helmet.<br>The Machinima logo adorns this version of the Overmatch ArmetX.",
-      "uid": 30327
+      "uid": 30327,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXRedStripe_128x128",
       "name": "ArmetX - Race Stripe",
       "tooltip": "Standard helmet.<br>A red racing strip adorns this version of the Overmatch ArmetX.",
-      "uid": 30328
+      "uid": 30328,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXYingYang_128x128",
       "name": "ArmetX - Yin and Yang",
       "tooltip": "Standard helmet.<br>A large yin/yang adorns this version of the Overmatch ArmetX.",
-      "uid": 30329
+      "uid": 30329,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_R5XGhostTheMark_128x128",
       "name": "R5X GHOST - The Mark",
       "tooltip": "Light helmet.<br>A white hand print adorns this version of the Allied R5X GHOST.",
-      "uid": 30330
+      "uid": 30330,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_R5XGhostSmoker_128x128",
       "name": "R5X GHOST - Smoker",
       "tooltip": "Light helmet.<br>A row of oversized yellow teeth adorns this version of the Allied R5X GHOST.",
-      "uid": 30331
+      "uid": 30331,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_R5XGhostSkullKnucke_128x128",
       "name": "R5X GHOST - Skull Knuckle",
       "tooltip": "Light helmet.<br>A skull adorns this version of the Allied R5X GHOST.",
-      "uid": 30332
+      "uid": 30332,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_R5XGhostBearSpirit_128x128",
       "name": "R5X GHOST - Bear Spirit",
       "tooltip": "Light helmet.<br>A ghostly bear adorns this version of the Allied R5X GHOST.",
-      "uid": 30333
+      "uid": 30333,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_R5XGhostStangMan_128x128",
       "name": "R5X GHOST - The Stangman",
       "tooltip": "Light helmet.<br>A yellow face adorns this version of the Allied R5X GHOST",
-      "uid": 30334
+      "uid": 30334,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_R5xGhostVeteran_128x128",
       "name": "R5X GHOST - The Veteran",
       "tooltip": "Light helmet.<br>A battle-damaged version of the Allied R5X GHOST.",
-      "uid": 30335
+      "uid": 30335,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXBetaVeteran_128x128",
       "name": "ArmetX - Beta Veteran",
       "tooltip": "Standard helmet.<br>An Overmatch ArmetX, battle-damaged from fighting in the Beta.",
-      "uid": 30336
+      "uid": 30336,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AlliedR21VHunter_128x128",
       "name": "Battle Damaged Hunter",
       "tooltip": "Heavy helmet.<br>A battle-damaged version of the Allied R21V HUNTER.",
-      "uid": 30337
+      "uid": 30337,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 8.6,
+        "Health": 8,
+        "HelmetDamageReduction": 5,
+        "MovementSpeed": -0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_R97Valve_128x128",
       "name": "R97 II - Valve",
       "tooltip": "Light helmet.<br>An Allied R97 II with emergency head valve.",
-      "uid": 30338
+      "uid": 30338,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 8.3,
+        "Health": -6,
+        "HelmetDamageReduction": 6,
+        "MovementSpeed": 0.15,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_R97Valve_128x128",
       "name": "TEMP!",
       "tooltip": "TEMP!",
-      "uid": 30339
+      "uid": 30339,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 71.5,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_FoxCatSR7_128x128",
       "name": "Fox+Cat SR-7",
       "tooltip": "Heavy helmet.<br>Increased health and armor, with improved HRV.",
-      "uid": 30340
+      "uid": 30340,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 40,
+        "HRVRechargeRate": 9.3,
+        "Health": 10,
+        "HelmetDamageReduction": 6,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_DamagedAlliedR5X_128x128",
       "name": "Damaged Allied R5X",
       "tooltip": "Light helmet.<br>A heavily-damaged version of the Allied R5X GHOST. Remember Balik!",
-      "uid": 30341
+      "uid": 30341,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AlliedR5XGhost_128x128",
       "name": "R5X GHOST - Bright",
       "tooltip": "Light helmet.<br>Statement redacted",
-      "uid": 30342
+      "uid": 30342,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AnimeEyes_128x128",
       "name": "ArmetX - KW-aII",
       "tooltip": "Standard helmet.<br>Statement redacted",
-      "uid": 30343
+      "uid": 30343,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmetXKWAll_128x128",
       "name": "R5X GHOST - B4T",
       "tooltip": "Light helmet.<br>An Allied R5X GHOST adorned with mascot.",
-      "uid": 30344
+      "uid": 30344,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_PrexChemHazmatRespirator_128x128",
       "name": "Prex Chem/Hazmat Respirator-XPL",
       "tooltip": "Light helmet.<br>Reduces all explosive damage 16%.",
-      "uid": 30345
+      "uid": 30345,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0,
+        "ExplosiveProtection": 16
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_PrexChemHazmatBlue_128x128",
       "name": "Prex Chem/Hazmat Respirator-TOX",
       "tooltip": "Light helmet.<br>A green version of the Prex Chemical/Hazmat Respirator. Reduces all toxic damage 20%.",
-      "uid": 30346
+      "uid": 30346,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0,
+        "ToxicProtection": 20
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_PrexChemHazmatOrange_128x128",
       "name": "Prex Chem/Hazmat Respirator-INC",
       "tooltip": "Light helmet.<br>An orange version of the Prex Chemical/Hazmat Respirator. Reduces all incendiary and flame damage 20%.",
-      "uid": 30347
+      "uid": 30347,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0,
+        "IncendiaryProtection": 20
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AlliedR75Sniper_128x128",
       "name": "Allied R7S Sniper",
       "tooltip": "Light helmet.<br>Greatly increases HRV duration and recharge rate.",
-      "uid": 30348
+      "uid": 30348,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 71.5,
+        "HRVRechargeRate": 10,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_TheEye_128x128",
       "name": "R5X GHOST - Vision",
       "tooltip": "Light helmet.<br>An Allied R5X GHOST helmet.",
-      "uid": 30349
+      "uid": 30349,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -4,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_OvermatchR12BattleAxe_128x128",
       "name": "Overmatch R-12 Battleaxe",
       "tooltip": "Heavy Helmet.<br>Increases armor and headshot protection.",
-      "uid": 30350
+      "uid": 30350,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 5,
+        "Health": 10,
+        "HelmetDamageReduction": 25,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_OvermatchR12Hatchet_128x128",
       "name": "Overmatch R-12 Hatchet",
-      "tooltip": "Light Helmet.<br>Increases armor and headshot protection.",
-      "uid": 30351
+      "tooltip": "Light Helmet. Increases armor and headshot protection.",
+      "uid": 30351,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 5,
+        "Health": -10,
+        "HelmetDamageReduction": 25,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_AlliedAPCRanger_128x128",
       "name": "Allied APC Ranger",
-      "tooltip": "Standard helmet.<br>Increases health and HRV recharge rate.",
-      "uid": 30352
+      "tooltip": "Standard helmet. Increases health and HRV recharge rate.",
+      "uid": 30352,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 58,
+        "HRVRechargeRate": 9.3,
+        "Health": 5,
+        "HelmetDamageReduction": 3,
+        "MovementSpeed": -0.12,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_ArmComTAUX001Prototype_128x128",
       "name": "ArmCom Ta.UX001 Prototype",
-      "tooltip": "Standard helmet.<br>Increases health and armor.",
-      "uid": 30353
+      "tooltip": "Standard helmet. Increases health and armor.",
+      "uid": 30353,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 50.5,
+        "HRVRechargeRate": 5.5,
+        "Health": 2,
+        "HelmetDamageReduction": 25,
+        "MovementSpeed": -0.06,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_CarcharodonR3X_128x128",
       "name": "Carcharodon R-3x",
-      "tooltip": "Standard helmet.<br> Greatly increased armor",
-      "uid": 30354
+      "tooltip": "Standard helmet. Greatly increased armor",
+      "uid": 30354,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 55,
+        "HRVRechargeRate": 5.4,
+        "Health": 10,
+        "HelmetDamageReduction": 21,
+        "MovementSpeed": -0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_RecluseB1T3_128x128",
       "name": "Recluse B-1t3",
       "tooltip": "Standard helmet.<br> Greatly increases HRV recharge, slight health boost",
-      "uid": 30355
+      "uid": 30355,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 71.5,
+        "HRVRechargeRate": 10,
+        "Health": 4,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Polaris_128x128",
       "name": "Polaris",
       "tooltip": "Standard helmet.<br> Armor and movement speed increased",
-      "uid": 30356
+      "uid": 30356,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": 6,
+        "HelmetDamageReduction": 21,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Atago_128x128",
       "name": "Atago 9",
       "tooltip": "Standard helmet.<br> Movement speed and HRV recharge increased",
-      "uid": 30357
+      "uid": 30357,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 71.5,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 2,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Volk34R_128x128",
       "name": "Volk 34r",
       "tooltip": "Standard helmet.<br> Increased HRV recharge and Movement",
-      "uid": 30358
+      "uid": 30358,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cupid_128x128",
       "name": "Cupid",
       "tooltip": "Happy Valentines Day!<br>",
-      "uid": 30359
+      "uid": 30359,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_HugsAndKisses_128x128",
       "name": "Hugs and Kisses",
       "tooltip": "Happy Valentines Day!<br>",
-      "uid": 30360
+      "uid": 30360,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Tartarus_128x128",
       "name": "Tartarus",
       "tooltip": "<br>",
-      "uid": 30361
+      "uid": 30361,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Sugared_BoneBreaker_Orange_128x128",
       "name": "Orange Sugared Bone Breaker",
       "tooltip": "A helmet to help celebrate the dead...and those who soon will be. It's pretty sweet.<br>",
-      "uid": 30362
+      "uid": 30362,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Sugared_BoneBreaker_Blue_128x128",
       "name": "Blue Sugared Bone Breaker",
       "tooltip": "A helmet to help celebrate the dead...and those who soon will be. It's pretty sweet.<br>",
-      "uid": 30363
+      "uid": 30363,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Sugared_BoneBreaker_Green_128x128",
       "name": "Green Sugared Bone Breaker",
       "tooltip": "A helmet to help celebrate the dead...and those who soon will be. It's pretty sweet.<br>",
-      "uid": 30364
+      "uid": 30364,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Sugared_BoneBreaker_Pink_128x128",
       "name": "Pink Sugared Bone Breaker",
       "tooltip": "A helmet to help celebrate the dead...and those who soon will be. It's pretty sweet.<br>",
-      "uid": 30365
+      "uid": 30365,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Sugared_BoneBreaker_Red_128x128",
       "name": "Red Sugared Bone Breaker",
       "tooltip": "A helmet to help celebrate the dead...and those who soon will be. It's pretty sweet.<br>",
-      "uid": 30366
+      "uid": 30366,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Sugared_BoneBreaker_White_128x128",
       "name": "White Sugared Bone Breaker",
       "tooltip": "A helmet to help celebrate the dead...and those who soon will be. It's pretty sweet.<br>",
-      "uid": 30367
+      "uid": 30367,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Sugared_BoneBreaker_Yellow_128x128",
       "name": "Yellow Sugared Bone Breaker",
       "tooltip": "A helmet to help celebrate the dead...and those who soon will be. It's pretty sweet.<br>",
-      "uid": 30368
+      "uid": 30368,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 7.1,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_MLG_Champion_128x128",
       "name": "MLG Championship Helmet",
       "tooltip": "This helmet is only awarded to the individual members of the MLG First Place Championship team.",
-      "uid": 30369
+      "uid": 30369,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Psyonix_Helmet_128x128",
       "name": "Psyonix Rocket League Helmet",
       "tooltip": "Check out the game Rocket League on PSN , from our friends at Psyonix",
-      "uid": 30370
+      "uid": 30370,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Gold_Helmet_128x128",
       "name": "Prestige Overmatch Armet",
       "tooltip": "A very prestigious helmet!<br>",
-      "uid": 30371
+      "uid": 30371,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Volk_Vet_128x128",
       "name": "Helmet of the Drought",
       "tooltip": "I lost items you never even knew existed.<br>Earned by those who lost significant items during the Parity Patch upgrade.",
-      "uid": 30372
+      "uid": 30372,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.6,
+        "Health": 0,
+        "HelmetDamageReduction": 12,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Volk_34r_elite_128x128",
       "name": "Volk 34r Elite",
       "tooltip": "Elite version of the standard issue Volk 34r helmet<br>",
-      "uid": 30373
+      "uid": 30373,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_BLC_Champion_128x128",
       "name": "BCL Championship Helmet",
       "tooltip": "This helmet is only awarded to the individual members of the BCL First Place Championship team",
-      "uid": 30374
+      "uid": 30374,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_MLG_01_Champion_128x128",
       "name": "Helmet of Champions",
       "tooltip": "Standard helmet.<br>",
-      "uid": 30375
+      "uid": 30375,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Atago_Santa_128x128",
       "name": "Santago",
       "tooltip": "Holiday helmet.<br>",
-      "uid": 30376
+      "uid": 30376,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_HelmetIrishFlag_128x128",
       "name": "1R-3 Clogad",
       "tooltip": "Standard helmet.<br>",
-      "uid": 30377
+      "uid": 30377,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_EasterHelmet_128x128",
       "name": "Helm of Caerbannog",
       "tooltip": "This helmet is earned through collecting all 10 rabbit ears for Spring 2016.",
-      "uid": 30378
+      "uid": 30378,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 40,
+        "HRVRechargeRate": 9.3,
+        "Health": 10,
+        "HelmetDamageReduction": 6,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_01_128x128",
       "name": "Grimalkin Mk.I",
       "tooltip": "First attempts are always rough.",
-      "uid": 30379
+      "uid": 30379,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_02_128x128",
       "name": "Grimalkin Mk.II",
       "tooltip": "Progress made through trial and error.",
-      "uid": 30380
+      "uid": 30380,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_03_128x128",
       "name": "Grimalkin Mk.III",
       "tooltip": "Blood, sweat, and tears.",
-      "uid": 30381
+      "uid": 30381,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_04_128x128",
       "name": "Grimalkin Mk.IV",
       "tooltip": "Best in class.",
-      "uid": 30382
+      "uid": 30382,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_05_128x128",
       "name": "Grimalkin Mk.V",
       "tooltip": "Perfection achieved through pain.",
-      "uid": 30383
+      "uid": 30383,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": -10,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_06_128x128",
       "name": "Mouser",
       "tooltip": "I see you.",
-      "uid": 30384
+      "uid": 30384,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 43,
+        "HRVRechargeRate": 9.3,
+        "Health": -5,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_07_128x128",
       "name": "Tabby",
       "tooltip": "Lazy Sunday naps.",
-      "uid": 30385
+      "uid": 30385,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 43,
+        "HRVRechargeRate": 9.3,
+        "Health": -5,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_08_128x128",
       "name": "Calico",
       "tooltip": "Strange days indeed.",
-      "uid": 30386
+      "uid": 30386,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 43,
+        "HRVRechargeRate": 9.3,
+        "Health": -5,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": 0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Cat_09_128x128",
       "name": "Nine Lives",
       "tooltip": "+9",
-      "uid": 30387
+      "uid": 30387,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 46,
+        "HRVRechargeRate": 9.3,
+        "Health": 0,
+        "HelmetDamageReduction": 10,
+        "MovementSpeed": -0.10,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_Logitech_128x128",
-      "name": "",
+      "name": "Unnamed",
       "tooltip": "",
-      "uid": 30388
+      "uid": 30388,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 70,
+        "HRVRechargeRate": 6.4,
+        "Health": 6,
+        "HelmetDamageReduction": 21,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     }
   ],
   "lowerBodies": [
@@ -8702,84 +9506,192 @@
       "icon": "t_AlliedLZViper_128x128",
       "name": "Allied LZ Viper",
       "tooltip": "Standard leg armor. Provides one gear slot.<br>Standard-issue leg armor with no stat modifications.",
-      "uid": 30106
+      "uid": 30106,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_ArmComPiranhaZ700_128x128",
       "name": "ArmCom Piranha Z700",
       "tooltip": "Heavy leg armor. Provides two gear slots.<br>Increases health but reduces speed.",
-      "uid": 30100
+      "uid": 30100,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 13,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.29,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_GuardianWarmongerRC2_128x128",
       "name": "Guardian WarmongerRC2",
       "tooltip": "Light leg armor. Provides no gear slots.<br>Greatly increases health but reduces speed.",
-      "uid": 30101
+      "uid": 30101,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 18,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.44,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_OvermatchDiamondback_128x128",
       "name": "Overmatch Diamondback.2",
       "tooltip": "Heavy leg armor. Provides two gear slots.<br>Greatly increases health but reduces speed.",
-      "uid": 30102
+      "uid": 30102,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 20,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.49,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_DataluxeR2Skirmisher_128x128",
       "name": "Dataluxe R2 Skirmisher",
       "tooltip": "Heavy leg armor. Provides one gear slot.<br>Greatly increases speed but reduces health.",
-      "uid": 30103
+      "uid": 30103,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": -18,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0.44,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_DataluxeR7Skirmisher_128x128",
       "name": "Dataluxe R7 Skirmisher",
       "tooltip": "Heavy leg armor. Provides two gear slots.<br>Increases speed but reduces health.",
-      "uid": 30104
+      "uid": 30104,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": -10,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_AlliedLSViper_128x128",
       "name": "Allied LS Viper",
       "tooltip": "Standard leg armor. Provides one gear slot.<br>Increases speed but reduces health.",
-      "uid": 30105
+      "uid": 30105,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": -12,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0.29,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_SpeedDemon_128x128",
       "name": "The SpeedDemon",
       "tooltip": "Light leg armor. Provides no gear slots.<br>Greatly increases speed but reduces health.",
-      "uid": 30107
+      "uid": 30107,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": -20,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0.49,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_AlliedAPCL9Raven_128x128",
       "name": "Allied APC L9-Raven",
       "tooltip": "Light leg armor. Provides no gear slots.<br>Significantly increases health but reduces speed.",
-      "uid": 30108
+      "uid": 30108,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 10,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_GuardianColossusRC6_128x128",
       "name": "Guardian ColossusRC6",
       "tooltip": "Heavy leg armor. Provides two gear slots.<br>Increases health but reduces speed.",
-      "uid": 30109
+      "uid": 30109,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 12,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.29,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_ArmComBreakguardLegplates_128x128",
       "name": "ArmCom Break Guard Legplates",
       "tooltip": "Heavy leg armor. Provides two gear slots.<br>Increases health slightly. Reduces speed slightly.",
-      "uid": 30110
+      "uid": 30110,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 2,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.05,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_Gold_AlliedLZViper_128x128",
       "name": "Prestige Allied LZ Viper",
       "tooltip": "Prestigious leg armor. Provides one gear slot.<br>Standard-issue leg armor with no stat modifications.",
-      "uid": 30111
+      "uid": 30111,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     }
   ],
   "tactical": [
@@ -8895,77 +9807,176 @@
       "icon": "t_OvermatchAnaconda_128x128",
       "name": "Overmatch Anaconda KX7",
       "tooltip": "Standard chest armor. Provides one gear slot.<br>Standard-issue chest armor with no stat modifications.",
-      "uid": 30200
+      "uid": 30200,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_GuardianWarmongerL1_128x128",
       "name": "Guardian WarmongerL1",
       "tooltip": "Heavy chest armor. Provides one gear slot.<br>Increases health but reduces speed.",
-      "uid": 30201
+      "uid": 30201,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 10,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_OvermatchImpactCQT_128x128",
       "name": "Overmatch Impact CQT",
       "tooltip": "Heavy chest armor. Provides two gear slots.<br>Greatly increases health but reduces speed.",
-      "uid": 30202
+      "uid": 30202,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 20,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.49,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_DataluxeBattleVestOS_128x128",
       "name": "Dataluxe BattleVest OS",
       "tooltip": "Light chest armor. Provides no gear slots.<br>Greatly increases speed but reduces health.",
-      "uid": 30203
+      "uid": 30203,
+      "pawnModifiers": {
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": -20,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0.49,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_AlliedWarzoneOX9_128x128",
       "name": "Allied Warzone oX9",
       "tooltip": "Heavy chest armor. Provides two gear slots.<br>Greatly increases health but reduces speed.",
-      "uid": 30204
+      "uid": 30204,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 20,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.49,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_OvermatchBattleFrontXSL_128x128",
       "name": "Overmatch BattleFront XsI",
       "tooltip": "Standard chest armor. Provides one gear slot.<br>Increases speed but reduces health.",
-      "uid": 30205
+      "uid": 30205,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": -8,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_AlliedRangerLT_128x128",
       "name": "Allied Ranger LT",
       "tooltip": "Standard chest armor. Provides no gear slots.<br>Increases speed but reduces health.",
-      "uid": 30206
+      "uid": 30206,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": -16,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0.39,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_DataluxeX2Tactical_128x128",
       "name": "Dataluxe X2 Tactical",
       "tooltip": "Standard chest armor. Provides one gear slot.<br>Increases health but reduces speed.",
-      "uid": 30207
+      "uid": 30207,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 8,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.19,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_OvermatchDeltai6_128x128",
       "name": "Overmatch Delta i6",
       "tooltip": "Standard chest armor. Provides one gear slot.<br>Increases speed but reduces health.",
-      "uid": 30208
+      "uid": 30208,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": -10,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0.24,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_ArmComBreakGuard_128x128",
       "name": "ArmCom Break Guard Chest plate",
       "tooltip": "Standard chest armor. Provides two gear slots.<br>Increases health slightly. Reduces speed slightly.",
-      "uid": 30209
+      "uid": 30209,
+      "pawnModifiers": {
+        "GearSlots": 2,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 2,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": -0.05,
+        "SprintMultiplier": 1.0
+      }
     },
     {
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_Gold_OvermatchAnaconda_128x128",
       "name": "Prestige Overmatch Anaconda KX7",
       "tooltip": "Prestigious chest armor. Provides one gear slot.<br>Standard-issue chest armor with no stat modifications.",
-      "uid": 30210
+      "uid": 30210,
+      "pawnModifiers": {
+        "GearSlots": 1,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 0,
+        "SprintMultiplier": 1.0
+      }
     }
   ]
 }
