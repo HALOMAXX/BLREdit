@@ -198,16 +198,44 @@
         <TextBox Name="PlayerNameTextBox"  HorizontalAlignment="Left" Margin="121,0,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="120" Height="22" TextChanged="PlayerNameTextBox_TextChanged"/>
 
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Grid>
+                <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+                <Rectangle Width="64" Height="64" Name="Gear1Rect">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#77000000"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Grid>
+                <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+                <Rectangle Width="64" Height="64" Name="Gear2Rect">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#77000000"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Grid>
+                <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+                <Rectangle Width="64" Height="64" Name="Gear3Rect">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#77000000"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+            <Grid>
+                <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>
+                <Rectangle Width="64" Height="64" Name="Gear4Rect">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#77000000"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
         </Border>
         <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
             <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}"/>

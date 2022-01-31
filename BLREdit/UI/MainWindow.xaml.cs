@@ -20,6 +20,7 @@ namespace BLREdit.UI
         private ImportItem FilterWeapon = null;
         public static Loadout ActiveLoadout = null;
         public static MainWindow self = null;
+        public double currentGearSlots = 0;
 
 
 
@@ -748,17 +749,53 @@ namespace BLREdit.UI
                 { image.DataContext = item; LoggingSystem.LogInfo("UpperBody Set!"); }
                 if (image.Name.Contains("LowerBody") && ImportSystem.Gear.lowerBodies.Contains(item))
                 { image.DataContext = item; LoggingSystem.LogInfo("LowerBody Set!"); }
-
-                if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item))
+                if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item) && (image.IsEnabled || !updateLoadout))
                 { image.DataContext = item; LoggingSystem.LogInfo("Gear Set!"); }
                 if (image.Name.Contains("Tactical") && ImportSystem.Gear.tactical.Contains(item))
                 { image.DataContext = item; LoggingSystem.LogInfo("Tactical Set!"); }
 
             }
+            UpdateGearSlots();
             UpdatePrimaryStats();
             UpdateSecondaryStats();
             if(updateLoadout)
                 UpdateActiveLoadout();
+        }
+
+        public void UpdateGearSlots()
+        { 
+            currentGearSlots = ((UpperBodyImage.DataContext as ImportItem)?.pawnModifiers?.GearSlots ?? 0) + ((LowerBodyImage.DataContext as ImportItem)?.pawnModifiers?.GearSlots ?? 0);
+            
+            GearImage1.IsEnabled = false;
+            GearImage2.IsEnabled = false;
+            GearImage3.IsEnabled = false;
+            GearImage4.IsEnabled = false;
+
+            Gear1Rect.Visibility = Visibility.Visible;
+            Gear2Rect.Visibility = Visibility.Visible;
+            Gear3Rect.Visibility = Visibility.Visible;
+            Gear4Rect.Visibility = Visibility.Visible;
+
+            if (currentGearSlots > 0)
+            { 
+                GearImage1.IsEnabled = true;
+                Gear1Rect.Visibility = Visibility.Hidden;
+            }
+            if (currentGearSlots > 1)
+            {
+                GearImage2.IsEnabled = true;
+                Gear2Rect.Visibility = Visibility.Hidden;
+            }
+            if (currentGearSlots > 2)
+            {
+                GearImage3.IsEnabled = true;
+                Gear3Rect.Visibility = Visibility.Hidden;
+            }
+            if (currentGearSlots > 3)
+            {
+                GearImage4.IsEnabled = true;
+                Gear4Rect.Visibility = Visibility.Hidden;
+            }
         }
 
         private static bool CheckForPistolAndBarrel(ImportItem item)
@@ -835,10 +872,26 @@ namespace BLREdit.UI
         {
             UpdateLoadoutWeapon(ActiveLoadout.Primary, PrimaryRecieverImage.DataContext as ImportItem, PrimaryMuzzleImage.DataContext as ImportItem, PrimaryBarrelImage.DataContext as ImportItem, PrimaryMagazineImage.DataContext as ImportItem, PrimaryScopeImage.DataContext as ImportItem, PrimaryStockImage.DataContext as ImportItem, PrimaryTagImage.DataContext as ImportItem, PrimaryCamoWeaponImage.DataContext as ImportItem);
             UpdateLoadoutWeapon(ActiveLoadout.Secondary, SecondaryRecieverImage.DataContext as ImportItem, SecondaryMuzzleImage.DataContext as ImportItem, SecondaryBarrelImage.DataContext as ImportItem, SecondaryMagazineImage.DataContext as ImportItem, SecondaryScopeImage.DataContext as ImportItem, SecondaryStockImage.DataContext as ImportItem, SecondaryTagImage.DataContext as ImportItem, SecondaryCamoWeaponImage.DataContext as ImportItem);
-            ActiveLoadout.Gear1 = ImportSystem.GetGearID(GearImage1.DataContext as ImportItem);
-            ActiveLoadout.Gear2 = ImportSystem.GetGearID(GearImage2.DataContext as ImportItem);
-            ActiveLoadout.Gear3 = ImportSystem.GetGearID(GearImage3.DataContext as ImportItem);
-            ActiveLoadout.Gear4 = ImportSystem.GetGearID(GearImage4.DataContext as ImportItem);
+            if (GearImage1.IsEnabled)
+            { ActiveLoadout.Gear1 = ImportSystem.GetGearID(GearImage1.DataContext as ImportItem); }
+            else
+            { ActiveLoadout.Gear1 = 0; }
+
+            if (GearImage2.IsEnabled)
+            { ActiveLoadout.Gear2 = ImportSystem.GetGearID(GearImage2.DataContext as ImportItem); }
+            else
+            { ActiveLoadout.Gear2 = 0; }
+
+            if (GearImage3.IsEnabled)
+            { ActiveLoadout.Gear3 = ImportSystem.GetGearID(GearImage3.DataContext as ImportItem); }
+            else
+            { ActiveLoadout.Gear3 = 0; }
+
+            if (GearImage4.IsEnabled)
+            { ActiveLoadout.Gear4 = ImportSystem.GetGearID(GearImage4.DataContext as ImportItem); }
+            else
+            { ActiveLoadout.Gear4 = 0; }
+
             ActiveLoadout.Tactical = ImportSystem.GetTacticalID(TacticalImage.DataContext as ImportItem);
             ActiveLoadout.Helmet = ImportSystem.GetHelmetID(HelmetImage.DataContext as ImportItem);
             ActiveLoadout.UpperBody = ImportSystem.GetUpperBodyID(UpperBodyImage.DataContext as ImportItem);
@@ -993,6 +1046,19 @@ namespace BLREdit.UI
         {
             if (sender is Border border)
             {
+                if (border.Child is Grid grid)
+                {
+                    if (grid.Children[0] is Image img)
+                    {
+                        if (img.Name.Contains("Gear"))
+                        {
+                            SetItemList(ImportSystem.Gear.attachments);
+                            LastSelectedImage = img;
+                            LoggingSystem.LogInfo("ItemList Set for Gear");
+                            return;
+                        }
+                    }
+                }
                 if (border.Child is Image image)
                 {
                     ItemList.ItemsSource = null;
@@ -1004,15 +1070,6 @@ namespace BLREdit.UI
                     if (image.Name.Contains("Secondary"))
                     {
                         UpdateSecondaryImages(image);
-                        return;
-                    }
-
-
-                    if (image.Name.Contains("Gear"))
-                    {
-                        SetItemList(ImportSystem.Gear.attachments);
-                        LastSelectedImage = image;
-                        LoggingSystem.LogInfo("ItemList Set for Gear");
                         return;
                     }
                     if (image.Name.Contains("Tactical"))
@@ -1058,16 +1115,18 @@ namespace BLREdit.UI
         public void SetLoadout(Loadout loadout)
         {
             ActiveLoadout = loadout;
+            //Set Armor first to get gear slot amount for gear
+            SetItemToImage(HelmetImage, loadout.GetHelmet(), false);
+            SetItemToImage(UpperBodyImage, loadout.GetUpperBody(), false);
+            SetItemToImage(LowerBodyImage, loadout.GetLowerBody(), false);
+
+            SetItemToImage(PlayerCamoBodyImage, loadout.GetCamo(), false);
+            
             SetItemToImage(GearImage1, Loadout.GetGear(loadout.Gear1), false);
             SetItemToImage(GearImage2, Loadout.GetGear(loadout.Gear2), false);
             SetItemToImage(GearImage3, Loadout.GetGear(loadout.Gear3), false);
             SetItemToImage(GearImage4, Loadout.GetGear(loadout.Gear4), false);
             SetItemToImage(TacticalImage, loadout.GetTactical(), false);
-
-            SetItemToImage(HelmetImage, loadout.GetHelmet(), false);
-            SetItemToImage(UpperBodyImage, loadout.GetUpperBody(), false);
-            SetItemToImage(LowerBodyImage, loadout.GetLowerBody(), false);
-            SetItemToImage(PlayerCamoBodyImage, loadout.GetCamo(), false);
 
             IsFemaleCheckBox.DataContext = loadout;
 

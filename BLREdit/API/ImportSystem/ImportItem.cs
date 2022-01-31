@@ -280,6 +280,18 @@ namespace BLREdit
                 {
                     return "";
                 }
+                else if (name == "Prex Chem/Hazmat Respirator-TOX")
+                {
+                    return "Toxic:";
+                }
+                else if (name == "Prex Chem/Hazmat Respirator-INC")
+                {
+                    return "Fire:";
+                }
+                else if (name == "Prex Chem/Hazmat Respirator-XPL")
+                {
+                    return "Explo:";
+                }
                 return "";
             }
         }
@@ -295,6 +307,18 @@ namespace BLREdit
                 else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
                 {
                     return "";
+                }
+                else if (name == "Prex Chem/Hazmat Respirator-TOX")
+                {
+                    return (pawnModifiers?.ToxicProtection ?? 0).ToString("0") + '%';
+                }
+                else if (name == "Prex Chem/Hazmat Respirator-INC")
+                {
+                    return (pawnModifiers?.IncendiaryProtection ?? 0).ToString("0") + '%';
+                }
+                else if (name == "Prex Chem/Hazmat Respirator-XPL")
+                {
+                    return (pawnModifiers?.ExplosiveProtection ?? 0).ToString("0") + '%';
                 }
                 return "";
             }
