@@ -69,6 +69,12 @@ namespace BLREdit
             return profiles;
         }
 
+        public static void CreateSEProfile(MagiCowsProfile profile)
+        { 
+            SELoadout[] player = SELoadout.CreateFromMagiCowsProfile(profile);
+            IOResources.Serialize("SEProfiles\\" + profile.PlayerName + ".json", player);
+        }
+
         public static void CopyToClipBoard(MagiCowsProfile profile)
         {
             string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile, true);

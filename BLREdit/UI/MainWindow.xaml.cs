@@ -1302,6 +1302,7 @@ namespace BLREdit.UI
         private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
         {
             ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
+            ExportSystem.CreateSEProfile(ExportSystem.ActiveProfile);
         }
 
         private void AddProfileButton_Click(object sender, RoutedEventArgs e)
