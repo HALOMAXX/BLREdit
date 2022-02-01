@@ -170,7 +170,14 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    return WikiStats.reload.ToString("0.00") + 's';
+                    if (Contains(40021, 40002))
+                    { 
+                        return weaponModifiers.reloadSpeed.ToString("0") + "%";
+                    }
+                    else
+                    {
+                        return WikiStats.reload.ToString("0.00") + 's';
+                    }
                 }
                 else if (Category == "helmet")
                 {
@@ -200,8 +207,16 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    if (WikiStats.reload == 0)
-                    {  return true; }
+                    if (Contains(40021, 40002))
+                    {
+                        if (weaponModifiers.reloadSpeed == 0)
+                        { return true; }
+                    }
+                    else
+                    {
+                        if (WikiStats.reload == 0)
+                        { return true; }
+                    }
                 }
                 else if (Category == "helmet")
                 {
@@ -263,7 +278,14 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    return WikiStats.run.ToString("0.00");
+                    if (Contains(40021, 40002))
+                    {
+                        return weaponModifiers.movementSpeed.ToString("0") + "%";
+                    }
+                    else
+                    {
+                        return WikiStats.run.ToString("0.00");
+                    }
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
@@ -294,8 +316,16 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    if (WikiStats.run == 0)
-                    { return true; }
+                    if (Contains(40021, 40002))
+                    {
+                        if (weaponModifiers.movementSpeed == 0)
+                        { return true; }
+                    }
+                    else
+                    {
+                        if (WikiStats.run == 0)
+                        { return true; }
+                    }
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
@@ -477,6 +507,13 @@ namespace BLREdit
                 {
                     return "Explo:";
                 }
+                else if (Category == "magazine")
+                {
+                    if (Contains(40021, 40002))
+                    {
+                        return "Accuracy:";
+                    }
+                }
                 return "";
             }
         }
@@ -501,6 +538,13 @@ namespace BLREdit
                 {
                     return pawnModifiers.ExplosiveProtection.ToString("0") + '%';
                 }
+                else if (Category == "magazine")
+                {
+                    if (Contains(40021, 40002))
+                    {
+                        return weaponModifiers.accuracy.ToString("0") + '%'; ;
+                    }
+                }
                 return "";
             }
         }
@@ -513,6 +557,14 @@ namespace BLREdit
                     double[] range = UI.MainWindow.CalculateRange(this, 0);
                     if (range[0] == 0)
                     { return true; }
+                }
+                else if (Category == "magazine")
+                {
+                    if (Contains(40021, 40002))
+                    {
+                        if (weaponModifiers.accuracy == 0)
+                        { return true; }
+                    }
                 }
                 return false;
             }
@@ -616,6 +668,22 @@ namespace BLREdit
                 }
             }
             return currentbest;
+        }
+
+
+        public bool Contains(params int[] args)
+        {
+            foreach (int valid in validFor)
+            {
+                foreach (int uid in args)
+                {
+                    if (valid == uid)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public bool IsValidFor(ImportItem item)
