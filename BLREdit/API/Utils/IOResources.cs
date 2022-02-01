@@ -9,6 +9,7 @@ namespace BLREdit
     public class IOResources
     {
         public const string PROFILE_DIR = "Profiles\\";
+        public const string SEPROFILE_DIR = "SEProfiles\\";
         public const string ASSET_DIR = "Assets\\";
         public const string JSON_DIR = "json\\";
         public const string GEAR_FILE = ASSET_DIR + JSON_DIR + "gear.json";

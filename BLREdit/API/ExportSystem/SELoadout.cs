@@ -2,9 +2,9 @@
 {
     public class SELoadout
     {
-        SEWeapon Primary { get; set; }
-        SEWeapon Secondary { get; set; }
-        SEGear Gear { get; set; }
+        public SEWeapon Primary { get; set; }
+        public SEWeapon Secondary { get; set; }
+        public SEGear Gear { get; set; }
 
         public static SELoadout[] CreateFromMagiCowsProfile(MagiCowsProfile profile)
         { 

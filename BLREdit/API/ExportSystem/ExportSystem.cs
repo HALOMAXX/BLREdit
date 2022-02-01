@@ -52,6 +52,7 @@ namespace BLREdit
         {
             ObservableCollection<MagiCowsProfile> profiles = new ObservableCollection<MagiCowsProfile>();
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.SEPROFILE_DIR);
             foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
             {
                 MagiCowsProfile profile;
@@ -72,7 +73,7 @@ namespace BLREdit
         public static void CreateSEProfile(MagiCowsProfile profile)
         { 
             SELoadout[] player = SELoadout.CreateFromMagiCowsProfile(profile);
-            IOResources.Serialize("SEProfiles\\" + profile.PlayerName + ".json", player);
+            IOResources.Serialize(IOResources.SEPROFILE_DIR + profile.PlayerName + ".json", player);
         }
 
         public static void CopyToClipBoard(MagiCowsProfile profile)

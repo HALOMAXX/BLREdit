@@ -65,7 +65,7 @@
                 Receiver = weapon.GetReciever().uid,
                 Barrel = weapon.GetBarrel().uid,
                 Scope = weapon.GetScope().uid,
-                Grip = weapon.GetGrip().uid,
+                Grip = weapon.GetGrip()?.uid ?? 62000,
                 Muzzle = weapon.Muzzle,
                 Magazine = weapon.Magazine,
                 CamoIndex = weapon.Camo,
