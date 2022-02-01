@@ -22,8 +22,8 @@ namespace BLREdit
             VersionCheck();
             ImportSystem.Initialize();
         }
-        const string CurrentVersion = "v0.3.0";
-        const string CurrentVersionName = "BLREdit Armor Stats and Better Stat Display";
+        const string CurrentVersion = "v0.3.1";
+        const string CurrentVersionName = "BLREdit Scope Preview Improvement and Better Stat Display";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()
