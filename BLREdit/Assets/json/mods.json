@@ -13062,7 +13062,7 @@
     },
     {
       "class": "FoxDataProvider_Magazine",
-      "icon": "t_MagBKT_Magnum_128x128",
+      "icon": "t_MagLMG2_Magnum_128x128",
       "name": "Magnum Ammo Box",
       "descriptorName": "Magnum",
       "pawnModifiers": {
