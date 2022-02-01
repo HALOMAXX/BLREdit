@@ -131,8 +131,6 @@ namespace BLREdit.UI
             foreach (ImportItem item in items)
             {
                 ROF += item?.IniStats?.ROF ?? 0;
-                AmmoMag += item?.WikiStats?.ammoMag ?? 0;
-                AmmoRes += (item?.WikiStats?.ammoReserve ?? 0);
                 Reload += item?.WikiStats?.reload ?? 0;
                 Swap += item?.WikiStats?.swaprate ?? 0;
                 Zoom += item?.WikiStats?.zoom ?? 0;
@@ -168,6 +166,9 @@ namespace BLREdit.UI
                     items.Add(Stock);
 
                 UpdateStat(items.ToArray(), ref ROF, ref AmmoMag, ref AmmoRes, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
+
+                AmmoMag = Reciever.IniStats.MagSize + Magazine.weaponModifiers.ammo; 
+                AmmoRes = AmmoMag * Reciever.IniStats.InitialMagazines;
 
                 double allRecoil = Barrel?.weaponModifiers?.recoil ?? 0;
                 allRecoil += Muzzle?.weaponModifiers?.recoil ?? 0;
@@ -228,7 +229,7 @@ namespace BLREdit.UI
                 allMovementSpeed += Magazine?.weaponModifiers?.movementSpeed ?? 0;
                 allMovementSpeed /= 100.0f;
                 allMovementSpeed = Math.Min(Math.Max(allMovementSpeed, -1.0f), 1.0f);
-                MoveSpeed = CalculateSpeed(Reciever, Helmet, UpperBody, LowerBody, allMovementSpeed);
+                MoveSpeed = CalculateSpeed(Reciever, allMovementSpeed);
 
                 List<ImportItem> mods = new List<ImportItem>();
                 if (Barrel != null)
@@ -432,7 +433,7 @@ namespace BLREdit.UI
             }
         }
 
-        public static double CalculateSpeed(ImportItem Reciever, ImportItem helmet, ImportItem upperBody, ImportItem lowerBody, double allMovementSpeed)
+        public static double CalculateSpeed(ImportItem Reciever, double allMovementSpeed)
         {
             if (Reciever != null && Reciever.IniStats != null)
             {
@@ -446,7 +447,7 @@ namespace BLREdit.UI
                 {
                     move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.X, move_alpha);
                 }
-                double speed = (GetMoveSpeedArmor(helmet, upperBody, lowerBody) + move_modifier) / 100.0f;
+                double speed = (765 + move_modifier) / 100.0f;
                 return speed;
             }
             return 0;
