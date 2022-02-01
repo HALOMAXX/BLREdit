@@ -8116,9 +8116,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8132,9 +8132,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 14,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8148,9 +8148,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.4,
-        "Health": -2,
+        "Health": -4,
         "HelmetDamageReduction": 9,
-        "MovementSpeed": 0.05,
+        "MovementSpeed": 4,
         "SprintMultiplier": 1.0
       }
     },
@@ -8164,9 +8164,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8180,9 +8180,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 8.6,
-        "Health": 8,
+        "Health": 16,
         "HelmetDamageReduction": 5,
-        "MovementSpeed": -0.19,
+        "MovementSpeed": -16,
         "SprintMultiplier": 1.0
       }
     },
@@ -8196,9 +8196,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.1,
-        "Health": 4,
+        "Health": 8,
         "HelmetDamageReduction": 16,
-        "MovementSpeed": -0.10,
+        "MovementSpeed": -8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8212,9 +8212,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 8.3,
-        "Health": -6,
+        "Health": -12,
         "HelmetDamageReduction": 6,
-        "MovementSpeed": 0.15,
+        "MovementSpeed": 12,
         "SprintMultiplier": 1.0
       }
     },
@@ -8244,9 +8244,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.4,
-        "Health": -2,
+        "Health": -4,
         "HelmetDamageReduction": 9,
-        "MovementSpeed": 0.05,
+        "MovementSpeed": 4,
         "SprintMultiplier": 1.0
       }
     },
@@ -8260,9 +8260,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.4,
-        "Health": -2,
+        "Health": -4,
         "HelmetDamageReduction": 9,
-        "MovementSpeed": 0.05,
+        "MovementSpeed": 4,
         "SprintMultiplier": 1.0
       }
     },
@@ -8276,9 +8276,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.4,
-        "Health": -2,
+        "Health": -4,
         "HelmetDamageReduction": 9,
-        "MovementSpeed": 0.05,
+        "MovementSpeed": 4,
         "SprintMultiplier": 1.0
       }
     },
@@ -8292,9 +8292,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.4,
-        "Health": -2,
+        "Health": -4,
         "HelmetDamageReduction": 9,
-        "MovementSpeed": 0.05,
+        "MovementSpeed": 4,
         "SprintMultiplier": 1.0
       }
     },
@@ -8308,9 +8308,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8324,9 +8324,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8340,9 +8340,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8356,9 +8356,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8372,9 +8372,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 14,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8388,9 +8388,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 14,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8404,9 +8404,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 14,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8420,9 +8420,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 14,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8436,9 +8436,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 8.6,
-        "Health": 8,
+        "Health": 16,
         "HelmetDamageReduction": 5,
-        "MovementSpeed": -0.19,
+        "MovementSpeed": -16,
         "SprintMultiplier": 1.0
       }
     },
@@ -8580,9 +8580,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8596,9 +8596,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8612,9 +8612,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8628,9 +8628,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8644,9 +8644,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8660,9 +8660,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8692,9 +8692,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 8.6,
-        "Health": 8,
+        "Health": 16,
         "HelmetDamageReduction": 5,
-        "MovementSpeed": -0.19,
+        "MovementSpeed": -16,
         "SprintMultiplier": 1.0
       }
     },
@@ -8708,9 +8708,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 8.3,
-        "Health": -6,
+        "Health": -12,
         "HelmetDamageReduction": 6,
-        "MovementSpeed": 0.15,
+        "MovementSpeed": 12,
         "SprintMultiplier": 1.0
       }
     },
@@ -8740,9 +8740,9 @@
         "GearSlots": 0,
         "HRVDuration": 40,
         "HRVRechargeRate": 9.3,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 6,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8756,9 +8756,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8772,9 +8772,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8804,9 +8804,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8820,9 +8820,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0,
         "ExplosiveProtection": 16
       }
@@ -8837,9 +8837,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0,
         "ToxicProtection": 20
       }
@@ -8854,9 +8854,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0,
         "IncendiaryProtection": 20
       }
@@ -8871,9 +8871,9 @@
         "GearSlots": 0,
         "HRVDuration": 71.5,
         "HRVRechargeRate": 10,
-        "Health": -4,
-        "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "Health": -8,
+        "HelmetDamageReduction": 0,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8887,9 +8887,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -4,
+        "Health": -8,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8903,9 +8903,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 5,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 25,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8919,9 +8919,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 5,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 25,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -8935,9 +8935,9 @@
         "GearSlots": 0,
         "HRVDuration": 58,
         "HRVRechargeRate": 9.3,
-        "Health": 5,
+        "Health": 10,
         "HelmetDamageReduction": 3,
-        "MovementSpeed": -0.12,
+        "MovementSpeed": -10,
         "SprintMultiplier": 1.0
       }
     },
@@ -8951,9 +8951,9 @@
         "GearSlots": 0,
         "HRVDuration": 50.5,
         "HRVRechargeRate": 5.5,
-        "Health": 2,
+        "Health": 5,
         "HelmetDamageReduction": 25,
-        "MovementSpeed": -0.06,
+        "MovementSpeed": -5,
         "SprintMultiplier": 1.0
       }
     },
@@ -8967,9 +8967,9 @@
         "GearSlots": 0,
         "HRVDuration": 55,
         "HRVRechargeRate": 5.4,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 21,
-        "MovementSpeed": -0.19,
+        "MovementSpeed": -16,
         "SprintMultiplier": 1.0
       }
     },
@@ -8983,9 +8983,9 @@
         "GearSlots": 0,
         "HRVDuration": 71.5,
         "HRVRechargeRate": 10,
-        "Health": 4,
+        "Health": 8,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.10,
+        "MovementSpeed": -8,
         "SprintMultiplier": 1.0
       }
     },
@@ -8999,9 +8999,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": 6,
+        "Health": 12,
         "HelmetDamageReduction": 21,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9015,9 +9015,9 @@
         "GearSlots": 0,
         "HRVDuration": 71.5,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 2,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9031,9 +9031,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9079,9 +9079,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9095,9 +9095,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9111,9 +9111,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9127,9 +9127,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9143,9 +9143,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9159,9 +9159,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9175,9 +9175,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9191,9 +9191,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 7.1,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9207,9 +9207,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9223,9 +9223,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9271,9 +9271,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9287,9 +9287,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9303,9 +9303,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9319,9 +9319,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9335,9 +9335,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9351,9 +9351,9 @@
         "GearSlots": 0,
         "HRVDuration": 40,
         "HRVRechargeRate": 9.3,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 6,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9367,9 +9367,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9383,9 +9383,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9399,9 +9399,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9415,9 +9415,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9431,9 +9431,9 @@
         "GearSlots": 0,
         "HRVDuration": 46,
         "HRVRechargeRate": 9.3,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9447,9 +9447,9 @@
         "GearSlots": 0,
         "HRVDuration": 43,
         "HRVRechargeRate": 9.3,
-        "Health": -5,
+        "Health": -10,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 10,
         "SprintMultiplier": 1.0
       }
     },
@@ -9463,9 +9463,9 @@
         "GearSlots": 0,
         "HRVDuration": 43,
         "HRVRechargeRate": 9.3,
-        "Health": -5,
+        "Health": -10,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 10,
         "SprintMultiplier": 1.0
       }
     },
@@ -9479,9 +9479,9 @@
         "GearSlots": 0,
         "HRVDuration": 43,
         "HRVRechargeRate": 9.3,
-        "Health": -5,
+        "Health": -10,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": 0.10,
+        "MovementSpeed": 10,
         "SprintMultiplier": 1.0
       }
     },
@@ -9497,7 +9497,7 @@
         "HRVRechargeRate": 9.3,
         "Health": 0,
         "HelmetDamageReduction": 10,
-        "MovementSpeed": -0.10,
+        "MovementSpeed": -10,
         "SprintMultiplier": 1.0
       }
     },
@@ -9511,9 +9511,9 @@
         "GearSlots": 0,
         "HRVDuration": 70,
         "HRVRechargeRate": 6.4,
-        "Health": 6,
+        "Health": 12,
         "HelmetDamageReduction": 21,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     }
@@ -9545,9 +9545,9 @@
         "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 13,
+        "Health": 26,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.29,
+        "MovementSpeed": -24,
         "SprintMultiplier": 1.0
       }
     },
@@ -9555,15 +9555,15 @@
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_GuardianWarmongerRC2_128x128",
       "name": "Guardian WarmongerRC2",
-      "tooltip": "Light leg armor. Provides no gear slots.<br>Greatly increases health but reduces speed.",
+      "tooltip": "Light leg armor. Provides two gear slots.<br>Greatly increases health but reduces speed.",
       "uid": 30101,
       "pawnModifiers": {
-        "GearSlots": 0,
+        "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 18,
+        "Health": 45,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.44,
+        "MovementSpeed": -40,
         "SprintMultiplier": 1.0
       }
     },
@@ -9577,9 +9577,9 @@
         "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 20,
+        "Health": 40,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.49,
+        "MovementSpeed": -40,
         "SprintMultiplier": 1.0
       }
     },
@@ -9587,15 +9587,15 @@
       "class": "FoxDataProvider_Gear_LowerBody",
       "icon": "t_DataluxeR2Skirmisher_128x128",
       "name": "Dataluxe R2 Skirmisher",
-      "tooltip": "Heavy leg armor. Provides one gear slot.<br>Greatly increases speed but reduces health.",
+      "tooltip": "Heavy leg armor. Provides no gear slots.<br>Greatly increases speed but reduces health.",
       "uid": 30103,
       "pawnModifiers": {
-        "GearSlots": 2,
+        "GearSlots": 0,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": -18,
+        "Health": -40,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": 0.44,
+        "MovementSpeed": 30,
         "SprintMultiplier": 1.0
       }
     },
@@ -9609,9 +9609,9 @@
         "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9625,9 +9625,9 @@
         "GearSlots": 1,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": -12,
+        "Health": -24,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": 0.29,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9641,9 +9641,9 @@
         "GearSlots": 0,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": -20,
+        "Health": -45,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": 0.49,
+        "MovementSpeed": 35,
         "SprintMultiplier": 1.0
       }
     },
@@ -9657,9 +9657,9 @@
         "GearSlots": 0,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 10,
+        "Health": 20,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9673,9 +9673,9 @@
         "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 12,
+        "Health": 45,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.29,
+        "MovementSpeed": -45,
         "SprintMultiplier": 1.0
       }
     },
@@ -9689,9 +9689,9 @@
         "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 2,
+        "Health": 5,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.05,
+        "MovementSpeed": -10,
         "SprintMultiplier": 1.0
       }
     },
@@ -9840,15 +9840,15 @@
       "class": "FoxDataProvider_Gear_UpperBody",
       "icon": "t_GuardianWarmongerL1_128x128",
       "name": "Guardian WarmongerL1",
-      "tooltip": "Heavy chest armor. Provides one gear slot.<br>Increases health but reduces speed.",
+      "tooltip": "Heavy chest armor. Provides no gear slots.<br>Increases health but reduces speed.",
       "uid": 30201,
       "pawnModifiers": {
-        "GearSlots": 2,
+        "GearSlots": 0,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 10,
+        "Health": 40,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.24,
+        "MovementSpeed": -40,
         "SprintMultiplier": 1.0
       }
     },
@@ -9862,9 +9862,9 @@
         "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 20,
+        "Health": 60,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.49,
+        "MovementSpeed": -65,
         "SprintMultiplier": 1.0
       }
     },
@@ -9878,9 +9878,9 @@
         "GearSlots": 0,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": -20,
+        "Health": -65,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": 0.49,
+        "MovementSpeed": 40,
         "SprintMultiplier": 1.0
       }
     },
@@ -9894,9 +9894,9 @@
         "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 20,
+        "Health": 60,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.49,
+        "MovementSpeed": -65,
         "SprintMultiplier": 1.0
       }
     },
@@ -9910,9 +9910,9 @@
         "GearSlots": 1,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": -8,
+        "Health": -16,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": 0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9923,12 +9923,12 @@
       "tooltip": "Standard chest armor. Provides no gear slots.<br>Increases speed but reduces health.",
       "uid": 30206,
       "pawnModifiers": {
-        "GearSlots": 1,
+        "GearSlots": 0,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": -16,
+        "Health": -45,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": 0.39,
+        "MovementSpeed": 30,
         "SprintMultiplier": 1.0
       }
     },
@@ -9942,9 +9942,9 @@
         "GearSlots": 1,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 8,
+        "Health": 16,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.19,
+        "MovementSpeed": 16,
         "SprintMultiplier": 1.0
       }
     },
@@ -9958,9 +9958,9 @@
         "GearSlots": 1,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": -10,
+        "Health": -20,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": 0.24,
+        "MovementSpeed": 20,
         "SprintMultiplier": 1.0
       }
     },
@@ -9974,9 +9974,9 @@
         "GearSlots": 2,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
-        "Health": 2,
+        "Health": 4,
         "HelmetDamageReduction": 0,
-        "MovementSpeed": -0.05,
+        "MovementSpeed": -10,
         "SprintMultiplier": 1.0
       }
     },
