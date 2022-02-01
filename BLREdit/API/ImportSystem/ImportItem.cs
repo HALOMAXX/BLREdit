@@ -44,13 +44,17 @@ namespace BLREdit
                 {
                     return "Damage:";
                 }
-                else if(Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if(Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return "Damage:";
                 }
                 else if (Category == "scope")
                 {
                     return "Zoom:";
+                }
+                else if (Category == "magazine")
+                {
+                    return "Ammo:";
                 }
                 else if (Category == "helmet" || Category == "upperBody" || Category == "lowerBody")
                 {
@@ -68,7 +72,7 @@ namespace BLREdit
                     double[] damage = UI.MainWindow.CalculateDamage(this, 0);
                     return damage[0].ToString("0") + "/" + damage[1].ToString("0");
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 { 
                     return weaponModifiers.damage + "%";
                 }
@@ -76,9 +80,13 @@ namespace BLREdit
                 {
                     return (1.3 + (WikiStats?.zoom ?? 0)).ToString("0.00") + "x";
                 }
+                else if (Category == "magazine")
+                {
+                    return weaponModifiers.ammo.ToString("0");
+                }
                 else if (Category == "helmet" || Category == "upperBody" || Category == "lowerBody")
                 {
-                    return (pawnModifiers?.Health ?? 0).ToString("0");
+                    return pawnModifiers.Health.ToString("0");
                 }
                 return "";
             }
@@ -92,13 +100,17 @@ namespace BLREdit
                 {
                     return "Aim:";
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return "Accuracy:";
                 }
                 else if (Category == "scope")
                 {
                     return "Scope In:";
+                }
+                else if (Category == "magazine")
+                {
+                    return "Reload:";
                 }
                 else if (Category == "helmet")
                 {
@@ -120,13 +132,17 @@ namespace BLREdit
                     double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
                     return spread[0].ToString("0.00") + '°';
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return weaponModifiers.accuracy + "%";
                 }
                 else if (Category == "scope")
                 {
                     return (0.240 + (WikiStats?.scopeInTime ?? 0)).ToString("0.000") + "s";
+                }
+                else if (Category == "magazine")
+                {
+                    return weaponModifiers.reloadSpeed.ToString("0") + '%';
                 }
                 else if (Category == "helmet")
                 {
@@ -148,13 +164,17 @@ namespace BLREdit
                 {
                     return "Hip:";
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return "Recoil:";
                 }
                 else if (Category == "helmet")
                 {
                     return "Run:";
+                }
+                else if (Category == "magazine")
+                {
+                    return "Move:";
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
@@ -172,17 +192,21 @@ namespace BLREdit
                     double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
                     return spread[1].ToString("0.00") + '°';
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return weaponModifiers.recoil + "%";
                 }
                 else if (Category == "helmet")
                 {
-                    return (pawnModifiers?.MovementSpeed ?? 0).ToString("0.00");
+                    return pawnModifiers.MovementSpeed.ToString("0.00");
+                }
+                else if (Category == "magazine")
+                {
+                    return weaponModifiers.movementSpeed.ToString("0") + '%';
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
-                    return (pawnModifiers?.GearSlots ?? 0).ToString("0");
+                    return pawnModifiers.GearSlots.ToString("0");
                 }
                 return "";
             }
@@ -196,9 +220,13 @@ namespace BLREdit
                 {
                     return "Move:";
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return "Range:";
+                }
+                else if (Category == "magazine")
+                {
+                    return "Damage:";
                 }
                 else if (Category == "helmet")
                 {
@@ -216,13 +244,17 @@ namespace BLREdit
                     double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
                     return spread[2].ToString("0.00") + '°';
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return weaponModifiers.range + "%";
                 }
+                else if (Category == "magazine")
+                {
+                    return weaponModifiers.damage.ToString("0") + '%';
+                }
                 else if (Category == "helmet")
                 {
-                    return (pawnModifiers?.HRVDuration ?? 0).ToString("0.0");
+                    return pawnModifiers.HRVDuration.ToString("0.0");
                 }
                 return "";
             }
@@ -236,7 +268,7 @@ namespace BLREdit
                 {
                     return "Recoil:";
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return "Run:";
                 }
@@ -256,13 +288,13 @@ namespace BLREdit
                     double recoil = UI.MainWindow.CalculateRecoil(this, 0);
                     return recoil.ToString("0.00") + '°';
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return weaponModifiers.movementSpeed + "%";
                 }
                 else if (Category == "helmet")
                 {
-                    return (pawnModifiers?.HRVDuration ?? 0).ToString("0.0") + "u/s";
+                    return pawnModifiers.HRVDuration.ToString("0.0") + "u/s";
                 }
                 return "";
             }
@@ -275,10 +307,6 @@ namespace BLREdit
                 if (Category == "primary" || Category == "secondary")
                 {
                     return "Range:";
-                }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
-                {
-                    return "";
                 }
                 else if (name == "Prex Chem/Hazmat Respirator-TOX")
                 {
@@ -304,21 +332,17 @@ namespace BLREdit
                     double[] range = UI.MainWindow.CalculateRange(this, 0);
                     return range[0].ToString("0") + '/' + range[1].ToString("0");
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "magazine" || Category == "stock")
-                {
-                    return "";
-                }
                 else if (name == "Prex Chem/Hazmat Respirator-TOX")
                 {
-                    return (pawnModifiers?.ToxicProtection ?? 0).ToString("0") + '%';
+                    return pawnModifiers.ToxicProtection.ToString("0") + '%';
                 }
                 else if (name == "Prex Chem/Hazmat Respirator-INC")
                 {
-                    return (pawnModifiers?.IncendiaryProtection ?? 0).ToString("0") + '%';
+                    return pawnModifiers.IncendiaryProtection.ToString("0") + '%';
                 }
                 else if (name == "Prex Chem/Hazmat Respirator-XPL")
                 {
-                    return (pawnModifiers?.ExplosiveProtection ?? 0).ToString("0") + '%';
+                    return pawnModifiers.ExplosiveProtection.ToString("0") + '%';
                 }
                 return "";
             }
