@@ -30,14 +30,25 @@
                         <Border BorderThickness="1,0,1,1">
                             <UniformGrid Columns="3">
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc1}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStatDesc1}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Label.Style>
+                                            <Style>
+                                                <Setter Property="TextBlock.Foreground" Value="White"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding DisplayStat1Gray}" Value="true">
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
                                     <Label Content="{Binding DisplayStat1}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
                                                 <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding DisplayStat1Gray}" Value="true">
-                                                        <Setter Property="TextBlock.Foreground" Value="Gray"/>
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -46,14 +57,25 @@
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc2}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStatDesc2}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Label.Style>
+                                            <Style>
+                                                <Setter Property="TextBlock.Foreground" Value="White"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding DisplayStat2Gray}" Value="true">
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
                                     <Label Content="{Binding DisplayStat2}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
                                                 <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding DisplayStat2Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="Gray"/>
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -62,14 +84,25 @@
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc3}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStatDesc3}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Label.Style>
+                                            <Style>
+                                                <Setter Property="TextBlock.Foreground" Value="White"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding DisplayStat3Gray}" Value="true">
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
                                     <Label Content="{Binding DisplayStat3}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
                                                 <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding DisplayStat3Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="Gray"/>
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -78,14 +111,25 @@
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc4}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStatDesc4}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Label.Style>
+                                            <Style>
+                                                <Setter Property="TextBlock.Foreground" Value="White"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding DisplayStat4Gray}" Value="true">
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
                                     <Label Content="{Binding DisplayStat4}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
                                                 <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding DisplayStat4Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="Gray"/>
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -94,14 +138,25 @@
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc5}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStatDesc5}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Label.Style>
+                                            <Style>
+                                                <Setter Property="TextBlock.Foreground" Value="White"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding DisplayStat5Gray}" Value="true">
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
                                     <Label Content="{Binding DisplayStat5}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
                                                 <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding DisplayStat5Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="Gray"/>
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -110,14 +165,25 @@
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc6}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding DisplayStatDesc6}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Label.Style>
+                                            <Style>
+                                                <Setter Property="TextBlock.Foreground" Value="White"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding DisplayStat6Gray}" Value="true">
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
                                     <Label Content="{Binding DisplayStat6}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
                                                 <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding DisplayStat6Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="Gray"/>
+                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
