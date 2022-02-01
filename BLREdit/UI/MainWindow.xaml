@@ -31,7 +31,18 @@
                             <UniformGrid Columns="3">
                                 <UniformGrid Columns="2">
                                     <Label Content="{Binding DisplayStatDesc1}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                    <Label Content="{Binding DisplayStat1}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0"/>
+                                    <Label Content="{Binding DisplayStat1}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                                        <Label.Style>
+                                            <Style>
+                                                <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding DisplayStat1Gray}">
+                                                        
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">

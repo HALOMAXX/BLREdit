@@ -34,10 +34,6 @@
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
-    <Style TargetType="Label" x:Key="DisplayLabel">
-        <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
-    </Style>
-
     <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
         <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
     </ControlTemplate>
@@ -192,6 +188,10 @@
 
     <Style TargetType="Label" x:Key="DescriptorLabel">
         <Setter Property="TextBlock.Foreground" Value="#FFD2D2D2"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="DisplayLabel">
+        <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
     </Style>
 
     <Style TargetType="Border">

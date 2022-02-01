@@ -92,6 +92,14 @@ namespace BLREdit
             }
         }
 
+        public bool DisplayStat1Gray
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public string DisplayStatDesc2
         {
             get
@@ -142,7 +150,7 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    return weaponModifiers.reloadSpeed.ToString("0") + '%';
+                    return WikiStats.reload.ToString("0.00") + 's';
                 }
                 else if (Category == "helmet")
                 {
@@ -153,6 +161,13 @@ namespace BLREdit
                     return (pawnModifiers?.MovementSpeed ?? 0).ToString("0.00");
                 }
                 return "";
+            }
+        }
+        public bool DisplayStat2Gray
+        {
+            get
+            {
+                return false;
             }
         }
 
@@ -202,13 +217,20 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    return weaponModifiers.movementSpeed.ToString("0") + '%';
+                    return WikiStats.run.ToString("0.00");
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
                     return pawnModifiers.GearSlots.ToString("0");
                 }
                 return "";
+            }
+        }
+        public bool DisplayStat3Gray
+        {
+            get
+            {
+                return false;
             }
         }
 
@@ -259,6 +281,13 @@ namespace BLREdit
                 return "";
             }
         }
+        public bool DisplayStat4Gray
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         public string DisplayStatDesc5
         {
@@ -271,6 +300,10 @@ namespace BLREdit
                 else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
                 {
                     return "Run:";
+                }
+                else if (Category == "magazine")
+                {
+                    return "Recoil:";
                 }
                 else if (Category == "helmet")
                 {
@@ -292,11 +325,22 @@ namespace BLREdit
                 {
                     return weaponModifiers.movementSpeed + "%";
                 }
+                else if (Category == "magazine")
+                {
+                    return weaponModifiers.recoil + "%"; ;
+                }
                 else if (Category == "helmet")
                 {
                     return pawnModifiers.HRVDuration.ToString("0.0") + "u/s";
                 }
                 return "";
+            }
+        }
+        public bool DisplayStat5Gray
+        {
+            get
+            {
+                return false;
             }
         }
 
@@ -345,6 +389,13 @@ namespace BLREdit
                     return pawnModifiers.ExplosiveProtection.ToString("0") + '%';
                 }
                 return "";
+            }
+        }
+        public bool DisplayStat6Gray
+        {
+            get
+            {
+                return false;
             }
         }
 

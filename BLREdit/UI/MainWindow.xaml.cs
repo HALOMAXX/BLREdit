@@ -65,7 +65,7 @@ namespace BLREdit.UI
                 PrimaryMuzzleImage.DataContext as ImportItem,
                 PrimaryScopeImage.DataContext as ImportItem,
                 PrimaryStockImage.DataContext as ImportItem,
-                                HelmetImage.DataContext as ImportItem,
+                HelmetImage.DataContext as ImportItem,
                 UpperBodyImage.DataContext as ImportItem,
                 LowerBodyImage.DataContext as ImportItem,
                 PrimaryDamageLabel,
