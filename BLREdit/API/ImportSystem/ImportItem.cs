@@ -73,7 +73,7 @@ namespace BLREdit
                     return damage[0].ToString("0") + "/" + damage[1].ToString("0");
                 }
                 else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
-                { 
+                {
                     return weaponModifiers.damage + "%";
                 }
                 else if (Category == "scope")
@@ -91,11 +91,31 @@ namespace BLREdit
                 return "";
             }
         }
-
         public bool DisplayStat1Gray
         {
             get
             {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] damage = UI.MainWindow.CalculateDamage(this, 0);
+                    if (damage[0] == 0)
+                    { return true; }
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                {
+                    if (weaponModifiers.damage == 0)
+                    { return true; }
+                }
+                else if (Category == "magazine")
+                {
+                    if (weaponModifiers.ammo == 0)
+                    { return true; }
+                }
+                else if (Category == "helmet" || Category == "upperBody" || Category == "lowerBody")
+                {
+                    if (pawnModifiers.Health == 0)
+                    { return true; }
+                }
                 return false;
             }
         }
@@ -154,19 +174,45 @@ namespace BLREdit
                 }
                 else if (Category == "helmet")
                 {
-                    return (pawnModifiers?.HelmetDamageReduction ?? 0).ToString("0") + '%';
+                    return pawnModifiers.HelmetDamageReduction.ToString("0") + '%';
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
-                    return (pawnModifiers?.MovementSpeed ?? 0).ToString("0.00");
+                    return pawnModifiers.MovementSpeed.ToString("0.00");
                 }
                 return "";
             }
         }
         public bool DisplayStat2Gray
         {
-            get
+            get 
             {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
+                    if (spread[0] == 0)
+                    { return true; }
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                {
+                    if (weaponModifiers.accuracy == 0)
+                    { return true; }
+                }
+                else if (Category == "magazine")
+                {
+                    if (WikiStats.reload == 0)
+                    {  return true; }
+                }
+                else if (Category == "helmet")
+                {
+                    if (pawnModifiers.HelmetDamageReduction == 0)
+                    { return true; }
+                }
+                else if (Category == "upperBody" || Category == "lowerBody")
+                {
+                    if (pawnModifiers.MovementSpeed == 0)
+                    { return true; }
+                }
                 return false;
             }
         }
@@ -212,7 +258,7 @@ namespace BLREdit
                     return weaponModifiers.recoil + "%";
                 }
                 else if (Category == "helmet")
-                {
+                { 
                     return pawnModifiers.MovementSpeed.ToString("0.00");
                 }
                 else if (Category == "magazine")
@@ -228,8 +274,34 @@ namespace BLREdit
         }
         public bool DisplayStat3Gray
         {
-            get
+            get 
             {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
+                    if (spread[1] == 0)
+                    { return true; }
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                {
+                    if (weaponModifiers.recoil == 0)
+                    { return true; }
+                }
+                else if (Category == "helmet")
+                {
+                    if (pawnModifiers.MovementSpeed == 0)
+                    { return true; }
+                }
+                else if (Category == "magazine")
+                {
+                    if (WikiStats.run == 0)
+                    { return true; }
+                }
+                else if (Category == "upperBody" || Category == "lowerBody")
+                {
+                    if (pawnModifiers.GearSlots == 0)
+                    { return true; }
+                }
                 return false;
             }
         }
@@ -281,10 +353,30 @@ namespace BLREdit
                 return "";
             }
         }
-        public bool DisplayStat4Gray
-        {
-            get
+        public bool DisplayStat4Gray { 
+            get 
             {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
+                    if (spread[2] == 0)
+                    { return true; }
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                {
+                    if (weaponModifiers.range == 0)
+                    { return true; }
+                }
+                else if (Category == "magazine")
+                {
+                    if (weaponModifiers.damage == 0)
+                    { return true; }
+                }
+                else if (Category == "helmet")
+                {
+                    if (pawnModifiers.HRVDuration == 0)
+                    { return true; }
+                }
                 return false;
             }
         }
@@ -338,8 +430,29 @@ namespace BLREdit
         }
         public bool DisplayStat5Gray
         {
-            get
+            get 
             {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double recoil = UI.MainWindow.CalculateRecoil(this, 0);
+                    if (recoil == 0)
+                    { return true; }
+                }
+                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                {
+                    if (weaponModifiers.movementSpeed == 0)
+                    { return true; }
+                }
+                else if (Category == "magazine")
+                {
+                    if (weaponModifiers.recoil == 0)
+                    { return true; }
+                }
+                else if (Category == "helmet")
+                {
+                    if (pawnModifiers.HRVDuration == 0)
+                    { return true; }
+                }
                 return false;
             }
         }
@@ -393,8 +506,14 @@ namespace BLREdit
         }
         public bool DisplayStat6Gray
         {
-            get
+            get 
             {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    double[] range = UI.MainWindow.CalculateRange(this, 0);
+                    if (range[0] == 0)
+                    { return true; }
+                }
                 return false;
             }
         }
