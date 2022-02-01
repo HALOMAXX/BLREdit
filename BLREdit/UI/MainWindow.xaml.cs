@@ -131,8 +131,8 @@ namespace BLREdit.UI
             foreach (ImportItem item in items)
             {
                 ROF += item?.IniStats?.ROF ?? 0;
-                AmmoMag += item?.IniStats?.MagSize ?? 0;
-                AmmoRes += (item?.IniStats?.MagSize ?? 0) * (item?.IniStats?.InitialMagazines ?? 0);
+                AmmoMag += item?.WikiStats?.ammoMag ?? 0;
+                AmmoRes += (item?.WikiStats?.ammoReserve ?? 0);
                 Reload += item?.WikiStats?.reload ?? 0;
                 Swap += item?.WikiStats?.swaprate ?? 0;
                 Zoom += item?.WikiStats?.zoom ?? 0;

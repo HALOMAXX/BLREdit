@@ -270,13 +270,13 @@
         <Label Name="ArmorRunLabel" Content="0" HorizontalAlignment="Left" Margin="261,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
 
-        <Label Content="HRV:" HorizontalAlignment="Left" Margin="23,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorHRVLabel" Content="0" HorizontalAlignment="Left" Margin="52,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="HRV:" HorizontalAlignment="Left" Margin="23,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorHRVLabel" Content="0" HorizontalAlignment="Left" Margin="52,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-        <Label Content="Recharge:" HorizontalAlignment="Left" Margin="102,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorHRVRechargeLabel" Content="0u/s" HorizontalAlignment="Left" Margin="156,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="Recharge:" HorizontalAlignment="Left" Margin="102,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorHRVRechargeLabel" Content="0u/s" HorizontalAlignment="Left" Margin="156,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-        <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="203,940,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Label Name="ArmorGearLabel" Content="0" HorizontalAlignment="Left" Margin="262,940,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+        <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="203,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Label Name="ArmorGearLabel" Content="0" HorizontalAlignment="Left" Margin="262,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
     </Grid>
 </Window>
