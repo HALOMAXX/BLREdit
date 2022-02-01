@@ -7,12 +7,12 @@ namespace BLREdit
 {
     public class ExportSystem
     {
-        public static ObservableCollection<Profile> Profiles { get; } = LoadAllProfiles();
+        public static ObservableCollection<MagiCowsProfile> Profiles { get; } = LoadAllProfiles();
 
         private static int currentProfile = 0;
-        public static Profile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
+        public static MagiCowsProfile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
 
-        private static Profile GetCurrentProfile()
+        private static MagiCowsProfile GetCurrentProfile()
         {
             if (currentProfile <= 0 && currentProfile >= Profiles.Count)
             {
@@ -30,7 +30,7 @@ namespace BLREdit
             return Profiles[currentProfile];
         }
 
-        private static void SetCurrentProfile(Profile profile)
+        private static void SetCurrentProfile(MagiCowsProfile profile)
         {
             if (profile == null)
             {
@@ -48,28 +48,28 @@ namespace BLREdit
             }
         }
 
-        private static ObservableCollection<Profile> LoadAllProfiles()
+        private static ObservableCollection<MagiCowsProfile> LoadAllProfiles()
         {
-            ObservableCollection<Profile> profiles = new ObservableCollection<Profile>();
+            ObservableCollection<MagiCowsProfile> profiles = new ObservableCollection<MagiCowsProfile>();
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
             foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
             {
-                Profile profile;
-                try { profile = IOResources.Deserialize<Profile>(file); }
-                catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.Deserialize<OldProfile>(file).ConvertToNew(); }
+                MagiCowsProfile profile;
+                try { profile = IOResources.Deserialize<MagiCowsProfile>(file); }
+                catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.Deserialize<MagiCowsOldProfile>(file).ConvertToNew(); }
                 profiles.Add(profile);
             }
 
             //initialize profiles with atleast one profile
             if (profiles.Count <= 0)
             {
-                profiles.Add(new Profile());
+                profiles.Add(new MagiCowsProfile());
             }
 
             return profiles;
         }
 
-        public static void CopyToClipBoard(Profile profile)
+        public static void CopyToClipBoard(MagiCowsProfile profile)
         {
             string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile, true);
             bool success = false;
@@ -116,7 +116,7 @@ namespace BLREdit
 
         public static void SaveProfiles()
         {
-            foreach (Profile profile in Profiles)
+            foreach (MagiCowsProfile profile in Profiles)
             {
                 profile.SaveProfile();
             }
@@ -130,7 +130,7 @@ namespace BLREdit
         public static void AddProfile()
         {
             int count = 0;
-            foreach (Profile profile in Profiles)
+            foreach (MagiCowsProfile profile in Profiles)
             {
                 if (profile.PlayerName.Contains("Player"))
                 {
@@ -139,11 +139,11 @@ namespace BLREdit
             }
             if (count == 0)
             {
-                Profiles.Add(new Profile() { PlayerName = "Player" });
+                Profiles.Add(new MagiCowsProfile() { PlayerName = "Player" });
             }
             else
             {
-                Profiles.Add(new Profile() { PlayerName = "Player" + count });
+                Profiles.Add(new MagiCowsProfile() { PlayerName = "Player" + count });
             }
         }
     }

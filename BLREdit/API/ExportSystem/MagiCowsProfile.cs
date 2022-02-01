@@ -2,12 +2,12 @@
 
 namespace BLREdit
 {
-    public class Profile
+    public class MagiCowsProfile
     {
         public string PlayerName { get; set; } = "Player";
-        public Loadout Loadout1 { get; set; } = Loadout.DefaultLoadout1;
-        public Loadout Loadout2 { get; set; } = Loadout.DefaultLoadout2;
-        public Loadout Loadout3 { get; set; } = Loadout.DefaultLoadout3;
+        public MagiCowsLoadout Loadout1 { get; set; } = MagiCowsLoadout.DefaultLoadout1;
+        public MagiCowsLoadout Loadout2 { get; set; } = MagiCowsLoadout.DefaultLoadout2;
+        public MagiCowsLoadout Loadout3 { get; set; } = MagiCowsLoadout.DefaultLoadout3;
 
         public void SaveProfile()
         {

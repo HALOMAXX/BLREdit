@@ -18,7 +18,7 @@ namespace BLREdit.UI
     {
         public static Image LastSelectedImage = null;
         private ImportItem FilterWeapon = null;
-        public static Loadout ActiveLoadout = null;
+        public static MagiCowsLoadout ActiveLoadout = null;
         public static MainWindow self = null;
 
 
@@ -725,9 +725,9 @@ namespace BLREdit.UI
                         {
                             if (CheckForPistolAndBarrel(reciever))
                             {
-                                    if (item.name == Weapon.NoBarrel)
+                                    if (item.name == MagiCowsWeapon.NoBarrel)
                                     {
-                                        SecondaryStockImage.DataContext = Weapon.GetDefaultSetupOfReciever(reciever).GetStock();
+                                        SecondaryStockImage.DataContext = MagiCowsWeapon.GetDefaultSetupOfReciever(reciever).GetStock();
                                     }
                             }
                         }
@@ -877,7 +877,7 @@ namespace BLREdit.UI
                         }
                         else
                         {
-                            stock.DataContext = Weapon.GetDefaultSetupOfReciever(reciever).GetStock();
+                            stock.DataContext = MagiCowsWeapon.GetDefaultSetupOfReciever(reciever).GetStock();
                         }
                     }
                 }
@@ -900,12 +900,12 @@ namespace BLREdit.UI
 
         private static void FillEmptyMods(ImportItem reciever, Image muzzle, Image barrel, Image magazine, Image scope, Image crosshair, Image stock)
         {
-            Weapon weapon = Weapon.GetDefaultSetupOfReciever(reciever);
-            if (muzzle.DataContext == null || (muzzle.DataContext as ImportItem).name == Weapon.NoMuzzle)
+            MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(reciever);
+            if (muzzle.DataContext == null || (muzzle.DataContext as ImportItem).name == MagiCowsWeapon.NoMuzzle)
             {
                 muzzle.DataContext = weapon.GetMuzzle();
             }
-            if (barrel.DataContext == null || (barrel.DataContext as ImportItem).name == Weapon.NoBarrel)
+            if (barrel.DataContext == null || (barrel.DataContext as ImportItem).name == MagiCowsWeapon.NoBarrel)
             {
                 barrel.DataContext = weapon.GetBarrel();
                 if (CheckForPistolAndBarrel(reciever))
@@ -913,7 +913,7 @@ namespace BLREdit.UI
                     stock.DataContext = null;
                 }
             }
-            if (stock.DataContext == null || (barrel.DataContext as ImportItem).name == Weapon.NoStock)
+            if (stock.DataContext == null || (barrel.DataContext as ImportItem).name == MagiCowsWeapon.NoStock)
             {
                 SetStock(reciever, barrel, stock, weapon.GetStock());
             }
@@ -959,7 +959,7 @@ namespace BLREdit.UI
             ActiveLoadout.Camo = ImportSystem.GetCamoBodyID((PlayerCamoBodyImage.DataContext as ImportItem));
         }
 
-        private static void UpdateLoadoutWeapon(Weapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock, ImportItem tag, ImportItem camo)
+        private static void UpdateLoadoutWeapon(MagiCowsWeapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock, ImportItem tag, ImportItem camo)
         {
             weapon.Receiver = reciever?.name ?? "Assault Rifle";
             weapon.Muzzle = ImportSystem.GetMuzzleID(muzzle);
@@ -1172,7 +1172,7 @@ namespace BLREdit.UI
             }
         }
 
-        public void SetLoadout(Loadout loadout)
+        public void SetLoadout(MagiCowsLoadout loadout)
         {
             ActiveLoadout = loadout;
             //Set Armor first to get gear slot amount for gear
@@ -1182,10 +1182,10 @@ namespace BLREdit.UI
 
             SetItemToImage(PlayerCamoBodyImage, loadout.GetCamo(), false);
             
-            SetItemToImage(GearImage1, Loadout.GetGear(loadout.Gear1), false);
-            SetItemToImage(GearImage2, Loadout.GetGear(loadout.Gear2), false);
-            SetItemToImage(GearImage3, Loadout.GetGear(loadout.Gear3), false);
-            SetItemToImage(GearImage4, Loadout.GetGear(loadout.Gear4), false);
+            SetItemToImage(GearImage1, MagiCowsLoadout.GetGear(loadout.Gear1), false);
+            SetItemToImage(GearImage2, MagiCowsLoadout.GetGear(loadout.Gear2), false);
+            SetItemToImage(GearImage3, MagiCowsLoadout.GetGear(loadout.Gear3), false);
+            SetItemToImage(GearImage4, MagiCowsLoadout.GetGear(loadout.Gear4), false);
             SetItemToImage(TacticalImage, loadout.GetTactical(), false);
 
             IsFemaleCheckBox.DataContext = loadout;
@@ -1195,7 +1195,7 @@ namespace BLREdit.UI
 
         }
 
-        public void SetPrimary(Weapon primary, bool updateLoadout = true)
+        public void SetPrimary(MagiCowsWeapon primary, bool updateLoadout = true)
         {
             SetItemToImage(PrimaryRecieverImage, primary.GetReciever(), updateLoadout);
             SetItemToImage(PrimaryMuzzleImage, primary.GetMuzzle(), updateLoadout);
@@ -1209,7 +1209,7 @@ namespace BLREdit.UI
             UpdatePrimaryStats();
         }
 
-        public void SetSecondary(Weapon secondary, bool updateLoadout = true)
+        public void SetSecondary(MagiCowsWeapon secondary, bool updateLoadout = true)
         {
             SetItemToImage(SecondaryRecieverImage, secondary.GetReciever(), updateLoadout);
             SetItemToImage(SecondaryMuzzleImage, secondary.GetMuzzle(), updateLoadout);
@@ -1228,7 +1228,7 @@ namespace BLREdit.UI
             if (!textchnaging)
             {
                 profilechanging = true;
-                ExportSystem.ActiveProfile = ProfileComboBox.SelectedValue as Profile;
+                ExportSystem.ActiveProfile = ProfileComboBox.SelectedValue as MagiCowsProfile;
                 PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
 
                 IsFemaleCheckBox.DataContext = ExportSystem.ActiveProfile;

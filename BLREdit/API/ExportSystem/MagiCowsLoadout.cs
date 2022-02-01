@@ -1,9 +1,9 @@
 ﻿namespace BLREdit
 {
-    public class Loadout
+    public class MagiCowsLoadout
     {
-        public Weapon Primary { get; set; } = Weapon.DefaultAssaultRifle;
-        public Weapon Secondary { get; set; } = Weapon.DefaultLightPistol;
+        public MagiCowsWeapon Primary { get; set; } = MagiCowsWeapon.DefaultAssaultRifle;
+        public MagiCowsWeapon Secondary { get; set; } = MagiCowsWeapon.DefaultLightPistol;
         public int Gear1 { get; set; } = 1;
         public int Gear2 { get; set; } = 2;
         public int Gear3 { get; set; } = 0;
@@ -20,9 +20,9 @@
             return LoggingSystem.ObjectToTextWall(this);
         }
 
-        public static Loadout DefaultLoadout1 { get; } = new Loadout() { Primary = Weapon.DefaultAssaultRifle, Secondary = Weapon.DefaultLightPistol };
-        public static Loadout DefaultLoadout2 { get; } = new Loadout() { Primary = Weapon.DefaultSubmachineGun, Secondary = Weapon.DefaultLightPistol };
-        public static Loadout DefaultLoadout3 { get; } = new Loadout() { Primary = Weapon.DefaultBAR, Secondary = Weapon.DefaultLightPistol };
+        public static MagiCowsLoadout DefaultLoadout1 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultAssaultRifle, Secondary = MagiCowsWeapon.DefaultLightPistol };
+        public static MagiCowsLoadout DefaultLoadout2 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultSubmachineGun, Secondary = MagiCowsWeapon.DefaultLightPistol };
+        public static MagiCowsLoadout DefaultLoadout3 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultBAR, Secondary = MagiCowsWeapon.DefaultLightPistol };
 
         public static ImportItem GetGear(int GearID)
         {
