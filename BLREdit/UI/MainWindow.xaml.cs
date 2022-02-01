@@ -792,24 +792,61 @@ namespace BLREdit.UI
 
 
         public void UpdateHealth(ImportItem helmet, ImportItem upperBody, ImportItem lowerBody)
-        { 
-            double currentHealth = 200 + (helmet?.pawnModifiers.Health ?? 0) + (upperBody?.pawnModifiers.Health ?? 0) + (lowerBody?.pawnModifiers.Health ?? 0);
+        {
+            double allHealth = (helmet?.pawnModifiers.Health ?? 0);
+            allHealth += (upperBody?.pawnModifiers.Health ?? 0);
+            allHealth += (lowerBody?.pawnModifiers.Health ?? 0);
+            allHealth = Math.Min(Math.Max((int)allHealth, -100), 100);
+
+            double health_alpha = Math.Abs(allHealth) / 100;
+
+            double basehealth = 200;
+            double currentHealth;
+
+            if (allHealth > 0)
+            {
+                currentHealth = Lerp(basehealth, 250, health_alpha);
+            }
+            else
+            {
+                currentHealth = Lerp(basehealth, 150, health_alpha);
+            }
+
             ArmorHealthLabel.Content = currentHealth.ToString("0");
         }
         public void UpdateHeadProtection(ImportItem helmet)
         {
-            double currentHealth = (helmet?.pawnModifiers.HelmetDamageReduction ?? 0);
-            ArmorHeadProtectionLabel.Content = currentHealth.ToString("0") + '%';
+            double currentHSProt = (helmet?.pawnModifiers.HelmetDamageReduction ?? 0);
+            ArmorHeadProtectionLabel.Content = currentHSProt.ToString("0") + '%';
         }
         public void UpdateRun(ImportItem helmet, ImportItem upperBody, ImportItem lowerBody)
         {
-            double currentHealth = GetMoveSpeedArmor(helmet, upperBody, lowerBody) / 100.0;
-            ArmorRunLabel.Content = currentHealth.ToString("0.00");
+            double finalRun = GetMoveSpeedArmor(helmet, upperBody, lowerBody) / 100.0;
+            ArmorRunLabel.Content = finalRun.ToString("0.00");
         }
 
         public static double GetMoveSpeedArmor(ImportItem helmet, ImportItem upperBody, ImportItem lowerBody)
         {
-            return (7.65 + (helmet?.pawnModifiers.MovementSpeed ?? 0) + (upperBody?.pawnModifiers.MovementSpeed ?? 0) + (lowerBody?.pawnModifiers.MovementSpeed ?? 0))* 100.0;
+            double allRun = (helmet?.pawnModifiers.MovementSpeed ?? 0);
+            allRun += (upperBody?.pawnModifiers.MovementSpeed ?? 0);
+            allRun += (lowerBody?.pawnModifiers.MovementSpeed ?? 0);
+            allRun = Math.Min(Math.Max(allRun, -100), 100);
+
+            double run_alpha = Math.Abs(allRun) / 100;
+
+            double baserun = 765;
+            double currentRun;
+
+            if (allRun > 0)
+            {
+                currentRun = Lerp(baserun, 900, run_alpha);
+            }
+            else
+            {
+                currentRun = Lerp(baserun, 630, run_alpha);
+            }
+
+            return currentRun;
         }
         public void UpdateHRV(ImportItem helmet)
         {
