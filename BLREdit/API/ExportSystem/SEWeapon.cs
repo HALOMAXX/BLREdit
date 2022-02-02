@@ -47,7 +47,7 @@
         /// <summary>
         /// Contains the Index of the Skin
         /// </summary>
-        public int Skin { get; set; } = 0;
+        public int Skin { get; set; } = -1;
 
         /// <summary>
         /// Contains the Index of the CamoIndex

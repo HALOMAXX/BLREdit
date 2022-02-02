@@ -3,7 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:BLREdit">
 
-    <local:IOResources x:Key="IOResource"/>
+    <local:BLREditSettings x:Key="Settings"/>
 
     <Style TargetType="ListView">
         <Setter Property="Background" Value="#4C000000"/>
@@ -202,7 +202,7 @@
 
 
     <Style x:Key="DebugElement" TargetType="{x:Type FrameworkElement}">
-        <Setter Property="Visibility" Value="{Binding Source={StaticResource IOResource}, Path=Settings.DebugVisibility}"/>
+        <Setter Property="Visibility" Value="{Binding Source={StaticResource Settings}, Path=Settings.DebugVisibility}"/>
     </Style>
 
     <Style x:Key="DebugBorder" BasedOn="{StaticResource DebugElement}" TargetType="Border">

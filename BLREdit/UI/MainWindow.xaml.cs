@@ -161,7 +161,7 @@ namespace BLREdit.UI
 
                 UpdateStat(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
 
-                AmmoMag = Reciever.IniStats.MagSize + Magazine.weaponModifiers.ammo; 
+                AmmoMag = Reciever.IniStats.MagSize + Magazine?.weaponModifiers?.ammo ?? 0; 
                 AmmoRes = AmmoMag * Reciever.IniStats.InitialMagazines;
 
                 double allRecoil = Barrel?.weaponModifiers?.recoil ?? 0;

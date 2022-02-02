@@ -15,7 +15,7 @@
         public int Gear_L2 { get; set; } = 0;
         public int Tactical { get; set; } = 0;
         public int ButtPack { get; set; } = 0;
-        public int Avatar { get; set; } = 0;
+        public int Avatar { get; set; } = -1;
         public int PatchIcon { get; set; } = 0;
         public int PatchIconColor { get; set; } = 0;
         public int PatchShape { get; set; } = 0;
