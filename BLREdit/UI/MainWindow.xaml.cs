@@ -16,10 +16,10 @@ namespace BLREdit.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Image LastSelectedImage = null;
+        public static Image LastSelectedImage { get; private set; } = null;
         private ImportItem FilterWeapon = null;
-        public static MagiCowsLoadout ActiveLoadout = null;
-        public static MainWindow self = null;
+        public static MagiCowsLoadout ActiveLoadout { get; set; } = null;
+        public static MainWindow self { get; private set; } = null;
 
 
 
@@ -65,9 +65,6 @@ namespace BLREdit.UI
                 PrimaryMuzzleImage.DataContext as ImportItem,
                 PrimaryScopeImage.DataContext as ImportItem,
                 PrimaryStockImage.DataContext as ImportItem,
-                HelmetImage.DataContext as ImportItem,
-                UpperBodyImage.DataContext as ImportItem,
-                LowerBodyImage.DataContext as ImportItem,
                 PrimaryDamageLabel,
                 PrimaryRateOfFireLabel,
                 PrimaryAmmoLabel,
@@ -95,9 +92,6 @@ namespace BLREdit.UI
                 SecondaryMuzzleImage.DataContext as ImportItem,
                 SecondaryScopeImage.DataContext as ImportItem,
                 SecondaryStockImage.DataContext as ImportItem,
-                HelmetImage.DataContext as ImportItem,
-                UpperBodyImage.DataContext as ImportItem,
-                LowerBodyImage.DataContext as ImportItem,
                 SecondaryDamageLabel,
                 SecondaryRateOfFireLabel,
                 SecondaryAmmoLabel,
@@ -126,7 +120,7 @@ namespace BLREdit.UI
             return item != null && item.IniStats != null && item.stats != null;
         }
 
-        private static void UpdateStat(ImportItem[] items, ref double ROF, ref double AmmoMag, ref double AmmoRes, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
+        private static void UpdateStat(ImportItem[] items, ref double ROF, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
         {
             foreach (ImportItem item in items)
             {
@@ -139,7 +133,7 @@ namespace BLREdit.UI
             }
         }
 
-        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, ImportItem Helmet, ImportItem UpperBody, ImportItem LowerBody, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel, Label Descriptor)
+        private static void UpdateStats(ImportItem Reciever, ImportItem Barrel, ImportItem Magazine, ImportItem Muzzle, ImportItem Scope, ImportItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel, Label Descriptor)
         {
             var watch = LoggingSystem.LogInfo("Updating Stats", "");
 
@@ -165,7 +159,7 @@ namespace BLREdit.UI
                 if (Stock != null)
                     items.Add(Stock);
 
-                UpdateStat(items.ToArray(), ref ROF, ref AmmoMag, ref AmmoRes, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
+                UpdateStat(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
 
                 AmmoMag = Reciever.IniStats.MagSize + Magazine.weaponModifiers.ammo; 
                 AmmoRes = AmmoMag * Reciever.IniStats.InitialMagazines;
@@ -253,7 +247,7 @@ namespace BLREdit.UI
 
             DamageLabel.Content = Damage.ToString("0.0") + " / " + DamageFar.ToString("0.0");
             ROFLabel.Content = ROF.ToString("0");
-            AmmoLabel.Content = AmmoMag.ToString("0") + " / " + (AmmoMag * Reciever?.IniStats?.InitialMagazines ?? 0).ToString("0");
+            AmmoLabel.Content = AmmoMag.ToString("0") + " / " + AmmoRes.ToString("0");
             ReloadLabel.Content = Reload.ToString("0.00") + "s";
             SwapLabel.Content = Swap.ToString("0.00");
             AimLabel.Content = Aim.ToString("0.00") + "°";
@@ -572,13 +566,13 @@ namespace BLREdit.UI
         {
             SetItemList(ImportSystem.Weapons.primary);
             LastSelectedImage = PrimaryRecieverImage;
-            if (App.IsNewVersionAvailable && IOResources.Settings.ShowUpdateNotice)
+            if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
             {
                 System.Diagnostics.Process.Start("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
             }
-            if (IOResources.Settings.DoRuntimeCheck || IOResources.Settings.ForceRuntimeCheck)
+            if (BLREditSettings.Settings.DoRuntimeCheck || BLREditSettings.Settings.ForceRuntimeCheck)
             {
-                App.RuntimeCheck(IOResources.Settings.ForceRuntimeCheck);
+                App.RuntimeCheck(BLREditSettings.Settings.ForceRuntimeCheck);
             }
         }
 

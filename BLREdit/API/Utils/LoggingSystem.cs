@@ -8,9 +8,9 @@ namespace BLREdit
     public static class LoggingSystem
     {
 #if DEBUG
-        public static bool IsDebuggingEnabled = true;
+        public static bool IsDebuggingEnabled { get; set; } = true;
 #else
-        public static bool IsDebuggingEnabled = false;
+        public static bool IsDebuggingEnabled { get; set; } = false;
 #endif
         public static Stopwatch LogInfo(string info, string newLine = "\n")
         {

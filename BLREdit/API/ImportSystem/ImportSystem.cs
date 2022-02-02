@@ -42,7 +42,9 @@ namespace BLREdit
             LoggingSystem.LogInfoAppend(watch, "Import System");
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
         private static void UpgradeIniStats()
+#pragma warning restore IDE0051 // Remove unused private members
         {
             IOResources.Serialize<IniStats[]>("upgraded.json", IniItemStats);
         }

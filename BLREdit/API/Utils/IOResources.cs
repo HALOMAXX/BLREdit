@@ -2,7 +2,6 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Windows;
 
 namespace BLREdit
 {
@@ -20,25 +19,8 @@ namespace BLREdit
         public static Encoding FILE_ENCODING { get; } = Encoding.UTF8;
         public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
         public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
-        public static BLREditSettings Settings { get; set; } = LoadSettings();
 
-        public static BLREditSettings LoadSettings()
-        {
-            if (File.Exists(SETTINGS_FILE))
-            {
-                BLREditSettings settings = Deserialize<BLREditSettings>(SETTINGS_FILE); //Load settings file
-                settings.ApplySettings();                                               //apply settings
-                Serialize(SETTINGS_FILE, settings);                                     //write it back to disk to clean out settings that don't exist anymore from old builds/versions
-                return settings;
-            }
-            else
-            {
-                var tmp = new BLREditSettings();
-                tmp.ApplySettings();
-                Serialize(SETTINGS_FILE, tmp);
-                return tmp;
-            }
-        }
+
 
         public static void Serialize<T>(string filePath, T obj, bool compact = false)
         {
@@ -87,21 +69,6 @@ namespace BLREdit
                 file.Close();
             }
             return temp;
-        }
-    }
-
-    public class BLREditSettings
-    {
-        public bool EnableDebugging { get; set; } = false;
-        public bool ShowUpdateNotice { get; set; } = true;
-        public bool DoRuntimeCheck { get; set; } = true;
-        public bool ForceRuntimeCheck { get; set; } = false;
-        public Visibility DebugVisibility { get; set; } = Visibility.Collapsed;
-
-        public void ApplySettings()
-        {
-            if (EnableDebugging)
-            { LoggingSystem.IsDebuggingEnabled = true; }
         }
     }
 }
