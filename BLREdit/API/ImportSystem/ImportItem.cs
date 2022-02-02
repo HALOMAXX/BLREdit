@@ -250,7 +250,7 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    return "Move:";
+                    return "Run:";
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
@@ -278,14 +278,7 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    if (Contains(40021, 40002))
-                    {
-                        return weaponModifiers.movementSpeed.ToString("0") + "%";
-                    }
-                    else
-                    {
-                        return WikiStats.run.ToString("0.00");
-                    }
+                    return weaponModifiers.movementSpeed.ToString("0") + "%";
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
@@ -316,16 +309,8 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    if (Contains(40021, 40002))
-                    {
-                        if (weaponModifiers.movementSpeed == 0)
-                        { return true; }
-                    }
-                    else
-                    {
-                        if (WikiStats.run == 0)
-                        { return true; }
-                    }
+                    if (weaponModifiers.movementSpeed == 0)
+                    { return true; }
                 }
                 else if (Category == "upperBody" || Category == "lowerBody")
                 {
