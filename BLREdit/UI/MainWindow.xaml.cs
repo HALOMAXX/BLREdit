@@ -1229,9 +1229,9 @@ namespace BLREdit.UI
         public void SetPrimary(MagiCowsWeapon primary, bool updateLoadout = true)
         {
             SetItemToImage(PrimaryRecieverImage, primary.GetReciever(), updateLoadout);
+            SetItemToImage(PrimaryBarrelImage, primary.GetBarrel(), updateLoadout);
             SetItemToImage(PrimaryMuzzleImage, primary.GetMuzzle(), updateLoadout);
             SetItemToImage(PrimaryStockImage, primary.GetStock(), updateLoadout);
-            SetItemToImage(PrimaryBarrelImage, primary.GetBarrel(), updateLoadout);
             SetItemToImage(PrimaryMagazineImage, primary.GetMagazine(), updateLoadout);
             SetItemToImage(PrimaryScopeImage, primary.GetScope(), updateLoadout);
             SetItemToImage(PrimaryCrosshairImage, primary.GetScope(), updateLoadout);
@@ -1243,9 +1243,9 @@ namespace BLREdit.UI
         public void SetSecondary(MagiCowsWeapon secondary, bool updateLoadout = true)
         {
             SetItemToImage(SecondaryRecieverImage, secondary.GetReciever(), updateLoadout);
+            SetItemToImage(SecondaryBarrelImage, secondary.GetBarrel(), updateLoadout);
             SetItemToImage(SecondaryMuzzleImage, secondary.GetMuzzle(), updateLoadout);
             SetItemToImage(SecondaryStockImage, secondary.GetStock(), updateLoadout);
-            SetItemToImage(SecondaryBarrelImage, secondary.GetBarrel(), updateLoadout);
             SetItemToImage(SecondaryMagazineImage, secondary.GetMagazine(), updateLoadout);
             SetItemToImage(SecondaryScopeImage, secondary.GetScope(), updateLoadout);
             SetItemToImage(SecondaryCrosshairImage, secondary.GetScope(), updateLoadout);
