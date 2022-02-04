@@ -25,7 +25,7 @@ namespace BLREdit
         public static ImportMods Mods { get; private set; } = IOResources.Deserialize<ImportMods>(IOResources.MOD_FILE);
         public static ImportWeapons Weapons { get; private set; } = IOResources.Deserialize<ImportWeapons>(IOResources.WEAPON_FILE);
 
-        internal static void Initialize()
+        public static void Initialize()
         {
             var watch = LoggingSystem.LogInfo("Initializing Import System");
 
@@ -305,15 +305,22 @@ namespace BLREdit
                 LoggingSystem.LogInfoAppend(watch);
             }
         }
-
         private static FoxIcon[] LoadAllIcons()
         {
             var watch = LoggingSystem.LogInfo("Loading All Icons", "");
             var icons = new List<FoxIcon>();
-            foreach (var icon in Directory.EnumerateFiles("Assets\\textures"))
+            foreach (var icon in Directory.GetFiles("Assets\\textures"))
             {
-                icons.Add(new FoxIcon(icon));
+                if (icon.StartsWith("\\"))
+                {
+                    icons.Add(new FoxIcon(icon));
+                }
+                else
+                {
+                    icons.Add(new FoxIcon("\\" + icon));
+                }
             }
+
             LoggingSystem.LogInfoAppend(watch);
             return icons.ToArray();
         }
