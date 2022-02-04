@@ -16,6 +16,7 @@ namespace BLREdit.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static bool IsUnitTest = false;
         public static Image LastSelectedImage { get; private set; } = null;
         private ImportItem FilterWeapon = null;
         public static MagiCowsLoadout ActiveLoadout { get; set; } = null;
@@ -567,6 +568,7 @@ namespace BLREdit.UI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (IsUnitTest) { this.Close(); }
             if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
             {
                 System.Diagnostics.Process.Start("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");

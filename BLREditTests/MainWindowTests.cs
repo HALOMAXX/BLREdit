@@ -14,6 +14,7 @@ namespace BLREditTests
         public static void TestIni(TestContext context)
         {
             app = new App();
+            MainWindow.IsUnitTest = true;
             app.InitializeComponent();
             app.Run();
         }
