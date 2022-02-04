@@ -20,28 +20,25 @@ namespace BLREditTests
 
 
         [TestMethod]
-        public void Primarys()
+        public void Primaries()
         {
             foreach (ImportItem primary in ImportSystem.Weapons.primary)
             { 
                 MainWindow.self.SetItemToImage(MainWindow.self.PrimaryRecieverImage ,primary);
             }
-            LoggingSystem.LogInfo("-----Primarys Done!-----");
-
         }
 
         [TestMethod]
-        public void Secondarys()
+        public void Secondaries()
         {
             foreach (ImportItem secondary in ImportSystem.Weapons.secondary)
             {
                 MainWindow.self.SetItemToImage(MainWindow.self.SecondaryRecieverImage, secondary);
             }
-            LoggingSystem.LogInfo("-----Secondarys Done!-----");
         }
 
         [TestMethod]
-        public void PrimarysAndMods()
+        public void PrimariesAndMods()
         {
             foreach (ImportItem reciever in ImportSystem.Weapons.primary)
             {
@@ -71,11 +68,21 @@ namespace BLREditTests
                 {
                     MainWindow.self.SetItemToImage(MainWindow.self.PrimaryStockImage, stock);
                 }
+
+                foreach (ImportItem camo in ImportSystem.Mods.camosBody)
+                {
+                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryCamoWeaponImage, camo);
+                }
+
+                foreach (ImportItem hanger in ImportSystem.Gear.hangers)
+                {
+                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryTagImage, hanger);
+                }
             }
         }
 
         [TestMethod]
-        public void SecondarysAndMods()
+        public void SecondariesAndMods()
         {
             foreach (ImportItem reciever in ImportSystem.Weapons.secondary)
             {
@@ -104,6 +111,16 @@ namespace BLREditTests
                 foreach (ImportItem stock in ImportSystem.Mods.stocks)
                 {
                     MainWindow.self.SetItemToImage(MainWindow.self.SecondaryStockImage, stock);
+                }
+
+                foreach (ImportItem camo in ImportSystem.Mods.camosBody)
+                {
+                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryCamoWeaponImage, camo);
+                }
+
+                foreach (ImportItem hanger in ImportSystem.Gear.hangers)
+                {
+                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryTagImage, hanger);
                 }
             }
         }
