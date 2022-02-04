@@ -22,8 +22,8 @@ namespace BLREdit
             VersionCheck();
             ImportSystem.Initialize();
         }
-        const string CurrentVersion = "v0.3.2";
-        const string CurrentVersionName = "BLREdit Hotfix for crash with AMR";
+        const string CurrentVersion = "v0.3.3";
+        const string CurrentVersionName = "BLREdit Hotfix for disappearing stocks on secondary weapons";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()
