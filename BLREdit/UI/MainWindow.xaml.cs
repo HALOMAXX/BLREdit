@@ -654,6 +654,8 @@ namespace BLREdit.UI
 
         public void SetItemToImage(Image image, ImportItem item, bool updateLoadout = true)
         {
+            if (item == null)
+            { image.DataContext = null; return; }
             if (image.Name.Contains("Primary"))
             {
                 if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
@@ -785,7 +787,6 @@ namespace BLREdit.UI
             UpdateHRV(helmet);
             UpdateHRVRecharge(helmet);
             UpdateGearSlots(upperBody, lowerBody);
-            
         }
 
 
@@ -926,41 +927,61 @@ namespace BLREdit.UI
 
         private void FillEmptyPrimaryMods(ImportItem reciever)
         {
-            FillEmptyMods(reciever, PrimaryMuzzleImage, PrimaryBarrelImage, PrimaryMagazineImage, PrimaryScopeImage, PrimaryCrosshairImage, PrimaryStockImage);
+            FillEmptyMods(reciever, PrimaryMuzzleImage, PrimaryBarrelImage, PrimaryMagazineImage, PrimaryScopeImage, PrimaryCrosshairImage, PrimaryStockImage, PrimaryCamoWeaponImage, PrimaryTagImage);
         }
 
         private void FillEmptySecondaryMods(ImportItem reciever)
         {
-            FillEmptyMods(reciever, SecondaryMuzzleImage, SecondaryBarrelImage, SecondaryMagazineImage, SecondaryScopeImage, SecondaryCrosshairImage, SecondaryStockImage);
+            FillEmptyMods(reciever, SecondaryMuzzleImage, SecondaryBarrelImage, SecondaryMagazineImage, SecondaryScopeImage, SecondaryCrosshairImage, SecondaryStockImage, SecondaryCamoWeaponImage, SecondaryTagImage);
         }
 
-        private static void FillEmptyMods(ImportItem reciever, Image muzzle, Image barrel, Image magazine, Image scope, Image crosshair, Image stock)
+        private static void FillEmptyMods(ImportItem reciever, Image muzzle, Image barrel, Image magazine, Image scope, Image crosshair, Image stock, Image camo, Image tag)
         {
-            MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(reciever);
-            if (muzzle.DataContext == null || (muzzle.DataContext as ImportItem).name == MagiCowsWeapon.NoMuzzle)
+            if (reciever.tooltip != "Depot Item!")
             {
-                muzzle.DataContext = weapon.GetMuzzle();
-            }
-            if (barrel.DataContext == null || (barrel.DataContext as ImportItem).name == MagiCowsWeapon.NoBarrel)
-            {
-                barrel.DataContext = weapon.GetBarrel();
-                if (CheckForPistolAndBarrel(reciever))
+                MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(reciever);
+                if (muzzle.DataContext == null || (muzzle.DataContext as ImportItem).name == MagiCowsWeapon.NoMuzzle)
                 {
-                    stock.DataContext = null;
+                    muzzle.DataContext = weapon.GetMuzzle();
+                }
+                if (barrel.DataContext == null || (barrel.DataContext as ImportItem).name == MagiCowsWeapon.NoBarrel)
+                {
+                    barrel.DataContext = weapon.GetBarrel();
+                    if (CheckForPistolAndBarrel(reciever))
+                    {
+                        stock.DataContext = null;
+                    }
+                }
+                if (stock.DataContext == null || (barrel.DataContext as ImportItem).name == MagiCowsWeapon.NoStock)
+                {
+                    SetStock(reciever, barrel, stock, weapon.GetStock());
+                }
+                if (magazine.DataContext == null)
+                {
+                    magazine.DataContext = weapon.GetMagazine();
+                }
+                if (scope.DataContext == null)
+                {
+                    scope.DataContext = weapon.GetScope();
+                    crosshair.DataContext = weapon.GetScope();
+                }
+                if (camo.DataContext == null)
+                {
+                    camo.DataContext = weapon.GetCamo();
+                }
+                if (tag.DataContext == null)
+                {
+                    tag.DataContext = weapon.GetTag();   
                 }
             }
-            if (stock.DataContext == null || (barrel.DataContext as ImportItem).name == MagiCowsWeapon.NoStock)
+            else
             {
-                SetStock(reciever, barrel, stock, weapon.GetStock());
-            }
-            if (magazine.DataContext == null)
-            {
-                magazine.DataContext = weapon.GetMagazine();
-            }
-            if (scope.DataContext == null)
-            {
-                scope.DataContext = weapon.GetScope();
-                crosshair.DataContext = weapon.GetScope();
+                muzzle.DataContext = null;
+                barrel.DataContext=null;
+                magazine.DataContext=null;
+                scope.DataContext=null;
+                stock.DataContext=null;
+                crosshair.DataContext=null;
             }
         }
 

@@ -136,6 +136,7 @@
         };
 
         public const string NoMuzzle = "No Muzzle Mod";
+        public const int NoMuzzleID = 0;
         public const string NoBarrel = "No Barrel Mod";
         public const string NoGrip = "";
         public const string NoStock = "No Stock";

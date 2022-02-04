@@ -1392,74 +1392,6 @@
       "uid": 40015
     },
     {
-      "class": "FoxWeapon_HSDecoy",
-      "icon": "t_HSDecoy",
-      "name": "Hardsuit HRV Decoy",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 0,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "hanger"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20013
-    },
-    {
-      "class": "FoxWeapon_Katana",
-      "icon": "t_katana",
-      "name": "Katana",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 0,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "hanger"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20011
-    },
-    {
-      "class": "FoxWeapon_BotTargeter",
-      "icon": "",
-      "name": "MK1 Assault AI",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 10,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "camo",
-        "hanger",
-        "scope"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 200013
-    },
-    {
       "class": "FoxWeapon_SnubNose",
       "icon": "t_Snub260_128x128",
       "name": "Snub 260",
@@ -1533,273 +1465,6 @@
       "tooltip": "SHOULDN'T BE USED",
       "type": 1,
       "uid": 40005
-    },
-    {
-      "class": "FoxWeapon_AirStrike",
-      "icon": "t_airStrike",
-      "name": "Airstrike",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 400,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20006
-    },
-    {
-      "class": "FoxWeapon_DeployableTurretContent",
-      "icon": "t_turret",
-      "name": "Turret",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 0,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "camo",
-        "hanger",
-        "scope"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20009
-    },
-    {
-      "class": "FoxWeapon_FlameThrower",
-      "icon": "",
-      "name": "Flamethrower",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 800,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "scope",
-        "stock"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20003
-    },
-    {
-      "class": "FoxWeapon_GrenadeLauncher",
-      "icon": "",
-      "name": "Grenade Launcher",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 120,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20007
-    },
-    {
-      "class": "FoxWeapon_HardSuitTargeter",
-      "icon": "",
-      "name": "Rhino Hardsuit",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 10,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "camo",
-        "hanger",
-        "scope"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20004
-    },
-    {
-      "class": "FoxWeapon_HardSuitTargeterLight",
-      "icon": "",
-      "name": "Gunman Hardsuit",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 10,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "camo",
-        "hanger",
-        "scope"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20004
-    },
-    {
-      "class": "FoxWeapon_MiniGun",
-      "icon": "",
-      "name": "Minigun",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 850,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20008
-    },
-    {
-      "class": "FoxWeapon_RailGun",
-      "icon": "",
-      "name": "Railgun",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 35,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "camo",
-        "hanger",
-        "scope"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20005
-    },
-    {
-      "class": "FoxWeapon_RocketLauncher",
-      "icon": "",
-      "name": "Rocket Swarm",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 56,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20002
-    },
-    {
-      "class": "FoxWeapon_RocketLauncher_AV",
-      "icon": "",
-      "name": "Rocket Stinger",
-      "stats": {
-        "accuracy": 0.0,
-        "damage": 0.0,
-        "movementSpeed": 0.0,
-        "range": 0.0,
-        "rateOfFire": 56,
-        "recoil": 0.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0
-      },
-      "supportedMods": [
-        "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
-      ],
-      "tooltip": "SHOULDN'T BE USED",
-      "type": 1,
-      "uid": 20011
     },
     {
       "class": "FoxWeapon_45Pistol",
@@ -1989,6 +1654,341 @@
       "tooltip": "The Shotgun sprays damaging pellets at nearby targets. It's very slow, but extremely effective at close range.",
       "type": 1,
       "uid": 40005
+    },
+    {
+      "class": "FoxWeapon_AirStrike",
+      "icon": "t_Depot_Airstrike_128x128",
+      "name": "Airstrike",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 400,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "camo",
+        "grip",
+        "hanger",
+        "magazine",
+        "muzzle",
+        "scope",
+        "stock"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20006
+    },
+    {
+      "class": "FoxWeapon_DeployableTurretContent",
+      "icon": "t_Depot_Turret_128x128",
+      "name": "Turret",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 0,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "camo",
+        "hanger",
+        "scope"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20009
+    },
+    {
+      "class": "FoxWeapon_FlameThrower",
+      "icon": "t_Depot_Flamethrower_128x128",
+      "name": "Flamethrower",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 800,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "barrel",
+        "camo",
+        "grip",
+        "hanger",
+        "magazine",
+        "scope",
+        "stock"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20003
+    },
+    {
+      "class": "FoxWeapon_GrenadeLauncher",
+      "icon": "t_Depot_GrenadeLauncher_128x128",
+      "name": "Grenade Launcher",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 120,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "barrel",
+        "camo",
+        "hanger",
+        "magazine",
+        "muzzle",
+        "scope",
+        "stock"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20007
+    },
+    {
+      "class": "FoxWeapon_HardSuitTargeter",
+      "icon": "t_Depot_HardSuit_128x128",
+      "name": "Rhino Hardsuit",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 10,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "camo",
+        "hanger",
+        "scope"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20004
+    },
+    {
+      "class": "FoxWeapon_HardSuitTargeterLight",
+      "icon": "t_Depot_LightHardSuit_128x128",
+      "name": "Gunman Hardsuit",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 10,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "camo",
+        "hanger",
+        "scope"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20004
+    },
+    {
+      "class": "FoxWeapon_MiniGun",
+      "icon": "t_Depot_MiniGun_128x128",
+      "name": "Minigun",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 850,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "barrel",
+        "camo",
+        "grip",
+        "hanger",
+        "magazine",
+        "muzzle",
+        "scope",
+        "stock"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20008
+    },
+    {
+      "class": "FoxWeapon_RailGun",
+      "icon": "t_Depot_Railgun_128x128",
+      "name": "Railgun",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 35,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "camo",
+        "hanger",
+        "scope"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20005
+    },
+    {
+      "class": "FoxWeapon_RocketLauncher",
+      "icon": "t_Depot_RocketLauncherSwarm_128x128",
+      "name": "Rocket Swarm",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 56,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "barrel",
+        "camo",
+        "grip",
+        "hanger",
+        "magazine",
+        "muzzle",
+        "scope",
+        "stock"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20002
+    },
+    {
+      "class": "FoxWeapon_RocketLauncher_AV",
+      "icon": "t_Depot_RocketLauncherArmor_128x128",
+      "name": "Rocket Stinger",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 56,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "barrel",
+        "camo",
+        "grip",
+        "hanger",
+        "magazine",
+        "muzzle",
+        "scope",
+        "stock"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20011
+    },
+    {
+      "class": "FoxWeapon_HSDecoy",
+      "icon": "t_Depot_HardsuitHRVDecoy_128x128",
+      "name": "Hardsuit HRV Decoy",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 0,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "hanger"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20013
+    },
+    {
+      "class": "FoxWeapon_Katana",
+      "icon": "t_Depot_Katana_128x128",
+      "name": "Katana",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 0,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "hanger"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 20011
+    },
+    {
+      "class": "FoxWeapon_BotTargeter",
+      "icon": "t_Depot_AssaultBot_128x128",
+      "name": "MK1 Assault AI",
+      "stats": {
+        "accuracy": 0.0,
+        "damage": 0.0,
+        "movementSpeed": 0.0,
+        "range": 0.0,
+        "rateOfFire": 10,
+        "recoil": 0.0,
+        "reloadSpeed": 1.0,
+        "weaponWeight": 1.0
+      },
+      "supportedMods": [
+        "ammo",
+        "camo",
+        "hanger",
+        "scope"
+      ],
+      "tooltip": "Depot Item!",
+      "type": 1,
+      "uid": 200013
     }
   ]
 }
