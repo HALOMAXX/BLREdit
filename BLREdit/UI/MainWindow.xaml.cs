@@ -202,13 +202,13 @@ namespace BLREdit.UI
                 RangeFar = ranges[1];
                 RangeMax = ranges[2];
 
-                float allMovementSpread = Barrel?.weaponModifiers?.movementSpeed ?? 0;  // For specifically my move spread change, hence no mag/scope added.
+                double allMovementSpread = Barrel?.weaponModifiers?.movementSpeed ?? 0;  // For specifically my move spread change, hence no mag/scope added.
                 allMovementSpread += Muzzle?.weaponModifiers?.movementSpeed ?? 0;
                 allMovementSpread += Stock?.weaponModifiers?.movementSpeed ?? 0;
                 allMovementSpread /= 100.0f;
                 allMovementSpread = Math.Min(Math.Max(allMovementSpread, -1.0f), 1.0f);
 
-                float allAccuracy = Barrel?.weaponModifiers?.accuracy ?? 0;
+                double allAccuracy = Barrel?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy += Muzzle?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy += Stock?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy += Scope?.weaponModifiers?.accuracy ?? 0;
@@ -220,7 +220,7 @@ namespace BLREdit.UI
                 Hip = spreads[1];
                 Move = spreads[2];
 
-                float allMovementSpeed = Barrel?.weaponModifiers?.movementSpeed ?? 0;
+                double allMovementSpeed = Barrel?.weaponModifiers?.movementSpeed ?? 0;
                 allMovementSpeed += Muzzle?.weaponModifiers?.movementSpeed ?? 0;
                 allMovementSpeed += Stock?.weaponModifiers?.movementSpeed ?? 0;
                 allMovementSpeed += Scope?.weaponModifiers?.movementSpeed ?? 0;
@@ -268,9 +268,9 @@ namespace BLREdit.UI
             LoggingSystem.LogInfoAppend(watch);
         }
 
-        private static int TotalPoints(IEnumerable<ImportItem> items)
+        private static double TotalPoints(IEnumerable<ImportItem> items)
         {
-            int points = 0;
+            double points = 0;
             foreach (ImportItem item in items)
             {
                 points += item.weaponModifiers.rating;

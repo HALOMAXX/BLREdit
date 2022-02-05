@@ -642,7 +642,7 @@ namespace BLREdit
             }
             return desc;
         }
-        public string GetDescriptorName(int points)
+        public string GetDescriptorName(double points)
         {
             string currentbest = "";
             foreach (StatDecriptor st in IniStats.StatDecriptors)
