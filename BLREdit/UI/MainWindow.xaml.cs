@@ -229,8 +229,12 @@ namespace BLREdit.UI
                 allMovementSpeed = Math.Min(Math.Max(allMovementSpeed, -1.0f), 1.0f);
                 MoveSpeed = CalculateSpeed(Reciever, allMovementSpeed);
 
+                double allReloadSpeed = Magazine?.weaponModifiers?.reloadSpeed ?? 0;
+                allReloadSpeed /= 100.0f;
+                allReloadSpeed = Math.Min(Math.Max(allReloadSpeed, -1.0f), 1.0f);
+
                 CockRateMultiplier = CalculateCockRate(Reciever, allRecoil);
-                ReloadRateMultiplier = CalculateRecoilReloadRate(Reciever, allRecoil);
+                ReloadRateMultiplier = CalculateReloadRate(Reciever, allRecoil, allReloadSpeed);
 
                 List<ImportItem> mods = new List<ImportItem>();
                 if (Barrel != null)
@@ -557,13 +561,27 @@ namespace BLREdit.UI
             return 1.0;
         }
 
-        public static double CalculateRecoilReloadRate(ImportItem Reciever, double allRecoil)
+        public static double CalculateReloadRate(ImportItem Reciever, double allRecoil, double allReloadSpeed)
         {
             double WeaponReloadRate = 1.0;
+            double rate_alpha;
+
+            if (Reciever.IniStats.ModificationRangeReloadRate.Z > 0)
+            {
+                rate_alpha = Math.Abs(allReloadSpeed);
+                if (allReloadSpeed > 0)
+                {
+                    WeaponReloadRate = Lerp(Reciever.IniStats.ModificationRangeReloadRate.Z, Reciever.IniStats.ModificationRangeReloadRate.X, rate_alpha);
+                }
+                else
+                {
+                    WeaponReloadRate = Lerp(Reciever.IniStats.ModificationRangeReloadRate.Z, Reciever.IniStats.ModificationRangeReloadRate.Y, rate_alpha);
+                }
+            }
             
             if (Reciever.IniStats.ModificationRangeRecoilReloadRate.Z == 1)
             {
-                double rate_alpha = Math.Abs(allRecoil);
+                rate_alpha = Math.Abs(allRecoil);
                 if (allRecoil > 0)
                 {
                     WeaponReloadRate = Lerp(Reciever.IniStats.ModificationRangeRecoilReloadRate.Z, Reciever.IniStats.ModificationRangeRecoilReloadRate.X, rate_alpha);
