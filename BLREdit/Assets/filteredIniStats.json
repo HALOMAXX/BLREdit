@@ -842,9 +842,9 @@
     "MaxRangeDamageMultiplier": 0.1,
     "UseTABaseSpread": true,
     "ModificationRangeDamage": {
-      "X": 0,
-      "Y": 0,
-      "Z": 0
+      "X": 200,
+      "Y": 275,
+      "Z": 240
     },
     "ModificationRangeBaseSpread": {
       "X": 0.03,
