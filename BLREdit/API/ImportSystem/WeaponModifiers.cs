@@ -2,17 +2,17 @@
 {
     public class WeaponModifiers
     {
-        public int accuracy { get; set; } = 0;
-        public int ammo { get; set; } = 0;
-        public int damage { get; set; } = 0;
-        public int movementSpeed { get; set; } = 0;
-        public int range { get; set; } = 0;
-        public int rateOfFire { get; set; } = 0;
-        public int rating { get; set; } = 0;
-        public int recoil { get; set; } = 0;
-        public int reloadSpeed { get; set; } = 0;
-        public int switchWeaponSpeed { get; set; } = 0;
-        public int weaponWeight { get; set; } = 0;
+        public double accuracy { get; set; } = 0;
+        public double ammo { get; set; } = 0;
+        public double damage { get; set; } = 0;
+        public double movementSpeed { get; set; } = 0;
+        public double range { get; set; } = 0;
+        public double rateOfFire { get; set; } = 0;
+        public double rating { get; set; } = 0;
+        public double recoil { get; set; } = 0;
+        public double reloadSpeed { get; set; } = 0;
+        public double switchWeaponSpeed { get; set; } = 0;
+        public double weaponWeight { get; set; } = 0;
 
 
         public bool IsNotZero { get 
