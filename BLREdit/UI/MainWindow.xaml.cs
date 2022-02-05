@@ -141,7 +141,7 @@ namespace BLREdit.UI
         {
             var watch = LoggingSystem.LogInfo("Updating Stats", "");
 
-            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0, MoveSpeed = 0;
+            double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0, MoveSpeed = 0, CockRateMultiplier = 0, ReloadRateMultiplier = 0;
 
             string barrelVSmag = "", stockVSmuzzle = "", weaponDescriptor = "";
 
@@ -229,6 +229,9 @@ namespace BLREdit.UI
                 allMovementSpeed = Math.Min(Math.Max(allMovementSpeed, -1.0f), 1.0f);
                 MoveSpeed = CalculateSpeed(Reciever, allMovementSpeed);
 
+                CockRateMultiplier = CalculateCockRate(Reciever, allRecoil);
+                ReloadRateMultiplier = CalculateRecoilReloadRate(Reciever, allRecoil);
+
                 List<ImportItem> mods = new List<ImportItem>();
                 if (Barrel != null)
                     mods.Add(Barrel);
@@ -250,9 +253,9 @@ namespace BLREdit.UI
             }
 
             DamageLabel.Content = Damage.ToString("0.0") + " / " + DamageFar.ToString("0.0");
-            ROFLabel.Content = ROF.ToString("0");
+            ROFLabel.Content = (ROF * CockRateMultiplier).ToString("0");
             AmmoLabel.Content = AmmoMag.ToString("0") + " / " + AmmoRes.ToString("0");
-            ReloadLabel.Content = Reload.ToString("0.00") + "s";
+            ReloadLabel.Content = (Reload * ReloadRateMultiplier).ToString("0.00") + "s";
             SwapLabel.Content = Swap.ToString("0.00");
             AimLabel.Content = Aim.ToString("0.00") + "°";
             HipLabel.Content = Hip.ToString("0.00") + "°";
@@ -529,6 +532,48 @@ namespace BLREdit.UI
             {
                 return 0;
             }
+        }
+
+        public static double CalculateCockRate(ImportItem Reciever, double allRecoil)
+        {
+            double alpha = Math.Abs(allRecoil);
+            double cockrate;
+            if (Reciever.IniStats.ModificationRangeCockRate.Z != 0)
+            {
+                if (allRecoil > 0)
+                {
+                    cockrate = Lerp(Reciever.IniStats.ModificationRangeCockRate.Z, Reciever.IniStats.ModificationRangeCockRate.Y, alpha);
+                }
+                else
+                {
+                    cockrate = Lerp(Reciever.IniStats.ModificationRangeCockRate.Z, Reciever.IniStats.ModificationRangeCockRate.X, alpha);
+                }
+                if (cockrate > 0)
+                {
+                    cockrate = 1.0 / cockrate;
+                }
+                return cockrate;
+            }
+            return 1.0;
+        }
+
+        public static double CalculateRecoilReloadRate(ImportItem Reciever, double allRecoil)
+        {
+            double WeaponReloadRate = 1.0;
+            
+            if (Reciever.IniStats.ModificationRangeRecoilReloadRate.Z == 1)
+            {
+                double rate_alpha = Math.Abs(allRecoil);
+                if (allRecoil > 0)
+                {
+                    WeaponReloadRate = Lerp(Reciever.IniStats.ModificationRangeRecoilReloadRate.Z, Reciever.IniStats.ModificationRangeRecoilReloadRate.X, rate_alpha);
+                }
+                else
+                {
+                    WeaponReloadRate = Lerp(Reciever.IniStats.ModificationRangeRecoilReloadRate.Z, Reciever.IniStats.ModificationRangeRecoilReloadRate.Y, rate_alpha);
+                }
+            }
+            return WeaponReloadRate;
         }
 
         private void CheckPrimaryModsForValidity(ImportItem primary)

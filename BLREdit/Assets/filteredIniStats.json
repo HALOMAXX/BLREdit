@@ -537,6 +537,11 @@
       "Y": 25,
       "Z": -100
     },
+    "ModificationRangeRecoilReloadRate": {
+      "X": 0.73,
+      "Y": 1.4,
+      "Z": 1
+    },
     "StatDecriptors": [
       {
         "Name": "Classic",
@@ -875,6 +880,11 @@
       "X": -100,
       "Y": 100,
       "Z": 0
+    },
+    "ModificationRangeCockRate": {
+      "X": 2.5,
+      "Y": 0.75,
+      "Z": 1.5
     },
     "StatDecriptors": [
       {
@@ -1331,6 +1341,11 @@
       "X": -100,
       "Y": 0,
       "Z": -50
+    },
+    "ModificationRangeCockRate": {
+      "X": 1.334,
+      "Y": 0.667,
+      "Z": 1
     },
     "StatDecriptors": [
       {
