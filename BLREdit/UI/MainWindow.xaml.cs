@@ -17,17 +17,39 @@ namespace BLREdit.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Contains the last selected Image for setting the ItemList
+        /// </summary>
         public static Image LastSelectedImage { get; private set; } = null;
+
+        /// <summary>
+        /// Contains the weapon to filter out Items From the ItemList
+        /// </summary>
         private ImportItem FilterWeapon = null;
+
+        /// <summary>
+        /// Contains the current active loadout
+        /// </summary>
         public static MagiCowsLoadout ActiveLoadout { get; set; } = null;
+
+        /// <summary>
+        /// Contains the Sorting Direction for the ItemList
+        /// </summary>
         public ListSortDirection SortDirection { get; set; } = ListSortDirection.Ascending;
 
-
+        /// <summary>
+        /// Prevents Profile Changes
+        /// </summary>
+        public bool IsPlayerNameChanging { get; private set; } = false;
+        /// <summary>
+        /// Prevents Profile Name Changes
+        /// </summary>
+        public bool IsPlayerProfileChanging { get; private set; } = false;
 
         public MainWindow()
         {
-            profilechanging = true;
-            textchnaging = true;
+            IsPlayerProfileChanging = true;
+            IsPlayerNameChanging = true;
 
             InitializeComponent();
 
@@ -51,8 +73,8 @@ namespace BLREdit.UI
 
             Loadout1Button.IsEnabled = false;
 
-            profilechanging = false;
-            textchnaging = false;
+            IsPlayerProfileChanging = false;
+            IsPlayerNameChanging = false;
 
             
             LastSelectedImage = PrimaryRecieverImage;
@@ -1385,19 +1407,20 @@ namespace BLREdit.UI
             SetItemToImage(SecondaryCamoWeaponImage, secondary.GetCamo(), updateLoadout);
             UpdateSecondaryStats();
         }
-        bool textchnaging = false;
+        
         private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!textchnaging)
+            if (!IsPlayerNameChanging)
             {
-                profilechanging = true;
-                ExportSystem.ActiveProfile = ProfileComboBox.SelectedValue as MagiCowsProfile;
-                PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
-
-                IsFemaleCheckBox.DataContext = ExportSystem.ActiveProfile;
-
-                SetLoadout(ExportSystem.ActiveProfile.Loadout1);
-                profilechanging = false;
+                IsPlayerProfileChanging = true;
+                if (ProfileComboBox.SelectedValue is MagiCowsProfile profile)
+                {
+                    ExportSystem.ActiveProfile = profile;
+                    PlayerNameTextBox.Text = profile.PlayerName;
+                    IsFemaleCheckBox.DataContext = profile;
+                    SetLoadout(profile.Loadout1);
+                }
+                IsPlayerProfileChanging = false;
             }
         }
 
@@ -1440,31 +1463,38 @@ namespace BLREdit.UI
         {
             ExportSystem.SaveProfiles();
         }
-        bool profilechanging = false;
         private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!profilechanging)
+            if (!IsPlayerProfileChanging)
             {
-                textchnaging = true;
+                IsPlayerNameChanging = true;
                 int index = ProfileComboBox.SelectedIndex;
                 ProfileComboBox.ItemsSource = null;
-                ProfileComboBox.Items.Clear();
+                //ProfileComboBox.Items.Clear();
                 ExportSystem.RemoveActiveProfileFromDisk();
                 ExportSystem.ActiveProfile.PlayerName = PlayerNameTextBox.Text;
                 ProfileComboBox.ItemsSource = ExportSystem.Profiles;
                 ProfileComboBox.SelectedIndex = index;
-                textchnaging = false;
+                IsPlayerNameChanging = false;
             }
         }
 
         private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            var upper = UpperBodyImage.DataContext as ImportItem;
-            var lower = LowerBodyImage.DataContext as ImportItem;
-            UpperBodyImage.DataContext = null;
-            LowerBodyImage.DataContext = null;
-            UpperBodyImage.DataContext = upper;
-            LowerBodyImage.DataContext = lower;
+            //Update upper body armor image
+            if (UpperBodyImage.DataContext is ImportItem upper)
+            {
+                UpperBodyImage.DataContext = null;
+                UpperBodyImage.DataContext = upper;
+            }
+            //update lower body armor image
+            if (LowerBodyImage.DataContext is ImportItem lower)
+            {
+                LowerBodyImage.DataContext = null;
+                LowerBodyImage.DataContext = lower;
+            }
+            
+            //reset item list
             var source = ItemList.ItemsSource;
             ItemList.ItemsSource = null;
             ItemList.ItemsSource = source;
@@ -1472,12 +1502,20 @@ namespace BLREdit.UI
 
         private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            var upper = UpperBodyImage.DataContext as ImportItem;
-            var lower = LowerBodyImage.DataContext as ImportItem;
-            UpperBodyImage.DataContext = null;
-            LowerBodyImage.DataContext = null;
-            UpperBodyImage.DataContext = upper;
-            LowerBodyImage.DataContext = lower;
+            //Update upper body armor image
+            if (UpperBodyImage.DataContext is ImportItem upper)
+            {
+                UpperBodyImage.DataContext = null;
+                UpperBodyImage.DataContext = upper;
+            }
+            //update lower body armor image
+            if (LowerBodyImage.DataContext is ImportItem lower)
+            {
+                LowerBodyImage.DataContext = null;
+                LowerBodyImage.DataContext = lower;
+            }
+
+            //reset item list
             var source = ItemList.ItemsSource;
             ItemList.ItemsSource = null;
             ItemList.ItemsSource = source;
@@ -1488,7 +1526,9 @@ namespace BLREdit.UI
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ItemList.ItemsSource);
             if (view != null)
             {
+                //Clear old sorting descriptions
                 view.SortDescriptions.Clear();
+
                 if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null && Enum.GetName(SortComboBox1.SelectedItem.GetType(), SortComboBox1.SelectedItem) != "None")
                 {
                     view.SortDescriptions.Add(new SortDescription(Enum.GetName(SortComboBox1.SelectedItem.GetType(), SortComboBox1.SelectedItem), SortDirection));
