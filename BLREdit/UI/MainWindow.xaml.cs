@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.ComponentModel;
 
 namespace BLREdit.UI
 {
@@ -16,10 +17,10 @@ namespace BLREdit.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static bool IsUnitTest = false;
         public static Image LastSelectedImage { get; private set; } = null;
         private ImportItem FilterWeapon = null;
         public static MagiCowsLoadout ActiveLoadout { get; set; } = null;
+        public ListSortDirection SortDirection { get; set; } = ListSortDirection.Ascending;
 
 
 
@@ -1094,7 +1095,7 @@ namespace BLREdit.UI
         {
             FilterWeapon = PrimaryRecieverImage.DataContext as ImportItem;
             LoggingSystem.LogInfo("ItemList Filter set Primary:" + (FilterWeapon?.name ?? "None"));
-
+            SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = new EnumBindingSourceExtension(typeof(ImportWeaponSortingType)) });
 
             if (image.Name.Contains("Reciever"))
             {
@@ -1217,8 +1218,50 @@ namespace BLREdit.UI
 
         public void SetItemList(ImportItem[] list)
         {
-            ItemList.ItemsSource = list;
-            ApplySorting();
+            if (list.Length > 0)
+            {
+                int index = SortComboBox1.SelectedIndex;
+                SortComboBox1.ItemsSource = null;
+                SortComboBox1.Items.Clear();
+
+                if (list[0].Category == "helmet")
+                {
+                    SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = Enum.GetValues(typeof(ImportHelmetSortingType)), BindsDirectlyToSource=true });
+                }
+
+                if (list[0].Category == "upperBody" || list[0].Category == "lowerBody")
+                {
+                    SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = Enum.GetValues(typeof(ImportArmorSortingType)), BindsDirectlyToSource = true });
+                }
+
+                if (list[0].Category == "attachments")
+                {
+                    SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = Enum.GetValues(typeof(ImportGearSortingType)), BindsDirectlyToSource = true });
+                }
+
+                if (list[0].Category == "tactical")
+                {
+                    SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = Enum.GetValues(typeof(ImportTacticalSortingType)), BindsDirectlyToSource = true });
+                }
+
+                if (list[0].Category != "helmet" && list[0].Category != "upperBody" && list[0].Category != "lowerBody" && list[0].Category != "attachments" && list[0].Category != "tactical")
+                {
+                    SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = Enum.GetValues(typeof(ImportWeaponSortingType)), BindsDirectlyToSource = true });
+                }
+
+                if (index > SortComboBox1.Items.Count)
+                {
+                    index = SortComboBox1.Items.Count - 1;
+                }
+                if (index < 0)
+                {
+                    index = 0;
+                }
+                SortComboBox1.SelectedIndex = index;
+
+                ItemList.ItemsSource = list;
+                ApplySorting();
+            }
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -1317,6 +1360,7 @@ namespace BLREdit.UI
         public void SetPrimary(MagiCowsWeapon primary, bool updateLoadout = true)
         {
             SetItemToImage(PrimaryRecieverImage, primary.GetReciever(), updateLoadout);
+            FilterWeapon = primary.GetReciever();
             SetItemToImage(PrimaryBarrelImage, primary.GetBarrel(), updateLoadout);
             SetItemToImage(PrimaryMuzzleImage, primary.GetMuzzle(), updateLoadout);
             SetItemToImage(PrimaryStockImage, primary.GetStock(), updateLoadout);
@@ -1394,10 +1438,7 @@ namespace BLREdit.UI
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!IsUnitTest)
-            {
-                ExportSystem.SaveProfiles();
-            }
+            ExportSystem.SaveProfiles();
         }
         bool profilechanging = false;
         private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -1448,49 +1489,30 @@ namespace BLREdit.UI
             if (view != null)
             {
                 view.SortDescriptions.Clear();
-                switch ((ImportItemSortingType)SortComboBox1.SelectedItem)
+                if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null && Enum.GetName(SortComboBox1.SelectedItem.GetType(), SortComboBox1.SelectedItem) != "None")
                 {
-                    case ImportItemSortingType.NameAsc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("name", System.ComponentModel.ListSortDirection.Ascending));
-                        break;
-                    case ImportItemSortingType.NameDesc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("name", System.ComponentModel.ListSortDirection.Descending));
-                        break;
-
-                    case ImportItemSortingType.DamageAsc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Damage", System.ComponentModel.ListSortDirection.Ascending));
-                        break;
-                    case ImportItemSortingType.DamageDesc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Damage", System.ComponentModel.ListSortDirection.Descending));
-                        break;
-
-                    case ImportItemSortingType.SpreadAsc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Spread", System.ComponentModel.ListSortDirection.Ascending));
-                        break;
-                    case ImportItemSortingType.SpreadDesc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Spread", System.ComponentModel.ListSortDirection.Descending));
-                        break;
-
-                    case ImportItemSortingType.RecoilAsc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Recoil", System.ComponentModel.ListSortDirection.Ascending));
-                        break;
-                    case ImportItemSortingType.RecoilDesc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Recoil", System.ComponentModel.ListSortDirection.Descending));
-                        break;
-
-
-                    case ImportItemSortingType.RangeAsc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Range", System.ComponentModel.ListSortDirection.Ascending));
-                        break;
-                    case ImportItemSortingType.RangeDesc:
-                        view.SortDescriptions.Add(new System.ComponentModel.SortDescription("Range", System.ComponentModel.ListSortDirection.Descending));
-                        break;
+                    view.SortDescriptions.Add(new SortDescription(Enum.GetName(SortComboBox1.SelectedItem.GetType(), SortComboBox1.SelectedItem), SortDirection));
                 }
             }
         }
 
         private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ApplySorting();
+        }
+
+        private void ChangeSortingDirection(object sender, RoutedEventArgs e)
+        {
+            if (SortDirection == ListSortDirection.Ascending)
+            {
+                SortDirection = ListSortDirection.Descending;
+                SortDirectionButton.Content = "Descending";
+            }
+            else
+            {
+                SortDirection = ListSortDirection.Ascending;
+                SortDirectionButton.Content = "Ascending";
+            }
             ApplySorting();
         }
     }

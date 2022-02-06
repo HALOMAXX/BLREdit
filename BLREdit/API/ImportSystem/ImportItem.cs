@@ -138,7 +138,14 @@ namespace BLREdit
                 }
                 else if (Category == "magazine")
                 {
-                    return "Reload:";
+                    if (Contains(40021, 40002))
+                    {
+                        return "Range:";
+                    }
+                    else
+                    {
+                        return "Reload:";
+                    }
                 }
                 else if (Category == "helmet")
                 {
@@ -172,7 +179,7 @@ namespace BLREdit
                 {
                     if (Contains(40021, 40002))
                     { 
-                        return weaponModifiers.reloadSpeed.ToString("0") + "%";
+                        return weaponModifiers.range.ToString("0") + "%";
                     }
                     else
                     {
@@ -209,7 +216,7 @@ namespace BLREdit
                 {
                     if (Contains(40021, 40002))
                     {
-                        if (weaponModifiers.reloadSpeed == 0)
+                        if (weaponModifiers.range == 0)
                         { return true; }
                     }
                     else
@@ -498,6 +505,10 @@ namespace BLREdit
                     {
                         return "Accuracy:";
                     }
+                    else
+                    {
+                        return "Range:";
+                    }
                 }
                 return "";
             }
@@ -527,7 +538,11 @@ namespace BLREdit
                 {
                     if (Contains(40021, 40002))
                     {
-                        return weaponModifiers.accuracy.ToString("0") + '%'; ;
+                        return weaponModifiers.accuracy.ToString("0") + '%';
+                    }
+                    else
+                    {
+                        return weaponModifiers.range.ToString("0") + '%';
                     }
                 }
                 return "";
@@ -550,10 +565,17 @@ namespace BLREdit
                         if (weaponModifiers.accuracy == 0)
                         { return true; }
                     }
+                    else
+                    {
+                        if (weaponModifiers.range == 0)
+                        { return true; }
+                    }
                 }
                 return false;
             }
         }
+
+        public string Name { get { return name; } }
 
         public double Damage { get { if (stats != null) { return stats?.damage ?? 0; } else { return weaponModifiers?.damage ?? 0; } } }
         public double Spread
@@ -582,6 +604,106 @@ namespace BLREdit
                 if (stats != null)
                 { return UI.MainWindow.CalculateRange(this, 0)[0]; }
                 else { return weaponModifiers?.range ?? 0; }
+            }
+        }
+
+        public double Health
+        {
+            get
+            {
+                return pawnModifiers?.Health ?? 0;
+            }
+        }
+
+        public double Head_Protection
+        {
+            get
+            {
+                return pawnModifiers?.HelmetDamageReduction ?? 0;
+            }
+        }
+
+        public double HRV_Duration
+        {
+            get
+            {
+                return pawnModifiers?.HRVDuration ?? 0;
+            }
+        }
+
+        public double HRV_Recharge
+        {
+            get
+            {
+                return pawnModifiers?.HRVRechargeRate ?? 0;
+            }
+        }
+
+        public double GearSlots
+        {
+            get 
+            {
+                return pawnModifiers?.GearSlots ?? 0;
+            }
+        }
+
+        public double ElectroArmor
+        {
+            get 
+            {
+                return pawnModifiers?.ElectroProtection ?? 0;
+            }
+        }
+
+        public double ToxicArmor
+        {
+            get
+            {
+                return pawnModifiers?.ToxicProtection ?? 0;
+            }
+        }
+
+        public double IncendiaryArmor
+        {
+            get
+            {
+                return pawnModifiers?.IncendiaryProtection ?? 0;
+            }
+        }
+
+        public double MeleeArmor
+        {
+            get
+            {
+                return pawnModifiers?.MeleeProtection ?? 0;
+            }
+        }
+
+        public double InfraredArmor
+        {
+            get
+            {
+                return pawnModifiers?.InfraredProtection ?? 0;
+            }
+        }
+
+        public double Run
+        {
+            get
+            {
+                if (stats != null)
+                { return UI.MainWindow.CalculateSpeed(this, 0); }
+                else
+                {
+                    if (Category == "helmet" || Category == "upperBody" || Category == "lowerBody")
+                    { 
+                        return pawnModifiers?.MovementSpeed ?? 0;
+                    }
+                    else
+                    {
+                        return weaponModifiers?.movementSpeed ?? 0;
+                    }
+                }
             }
         }
 
