@@ -1222,7 +1222,7 @@ namespace BLREdit.UI
             {
                 int index = SortComboBox1.SelectedIndex;
                 SortComboBox1.ItemsSource = null;
-                SortComboBox1.Items.Clear();
+                //SortComboBox1.Items.Clear();
 
                 if (list[0].Category == "helmet")
                 {
