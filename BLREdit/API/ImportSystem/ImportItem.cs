@@ -673,7 +673,7 @@ namespace BLREdit
 
         public bool IsValidFor(ImportItem item)
         {
-            if (item != null && item.tooltip == "Depot Item!" && (Category != "secondary" && Category != "tactical" && Category != "attachments" && Category != "helmet" && Category != "lowerBody" && Category != "upperBody")) { return false; }
+            if (item.tooltip == "Depot Item!" && (Category != "secondary" && Category != "tactical" && Category != "attachments" && Category != "helmet" && Category != "lowerBody" && Category != "upperBody")) { return false; }
             if (validFor == null) { return true; }
 
             foreach (int id in validFor)

@@ -20,7 +20,6 @@ namespace BLREdit.UI
         public static Image LastSelectedImage { get; private set; } = null;
         private ImportItem FilterWeapon = null;
         public static MagiCowsLoadout ActiveLoadout { get; set; } = null;
-        public static MainWindow self { get; private set; } = null;
 
 
 
@@ -30,10 +29,10 @@ namespace BLREdit.UI
             textchnaging = true;
 
             InitializeComponent();
-            self = this;
+
             ItemList.Items.Filter += new Predicate<object>(o =>
             {
-                if (o != null)
+                if (o != null && FilterWeapon != null)
                 {
                     return ((ImportItem)o).IsValidFor(FilterWeapon);
                 }
@@ -42,8 +41,6 @@ namespace BLREdit.UI
                     return false;
                 }
             });
-
-            //SortComboBox1.ItemsSource = Enum.GetValues(typeof(ImportItemSortingType));
 
             PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
             ProfileComboBox.ItemsSource = ExportSystem.Profiles;
@@ -56,7 +53,7 @@ namespace BLREdit.UI
             profilechanging = false;
             textchnaging = false;
 
-            SetItemList(ImportSystem.Weapons.primary);
+            
             LastSelectedImage = PrimaryRecieverImage;
         }
 
@@ -631,7 +628,7 @@ namespace BLREdit.UI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (IsUnitTest) { this.Close(); }
+            SetItemList(ImportSystem.Weapons.primary);
             if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
             {
                 System.Diagnostics.Process.Start("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
@@ -1397,7 +1394,10 @@ namespace BLREdit.UI
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ExportSystem.SaveProfiles();
+            if (!IsUnitTest)
+            {
+                ExportSystem.SaveProfiles();
+            }
         }
         bool profilechanging = false;
         private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)

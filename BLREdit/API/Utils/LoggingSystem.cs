@@ -49,6 +49,12 @@ namespace BLREdit
             }
         }
 
+        public static void LogStatus(string status)
+        {
+            var now = DateTime.Now;
+            Trace.WriteLine("[" + now + "]Status:" + status);
+        }
+
         public static string ObjectToTextWall<T>(T obj)
         {
             StringBuilder sb = new StringBuilder();

@@ -8,6 +8,8 @@ namespace BLREdit
 {
     public class FoxIcon
     {
+        private static bool AddFolderLine = AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\");
+
         private const int WideImageWidth = 256;
         private const int WideImageHeight = 128;
 
@@ -50,7 +52,14 @@ namespace BLREdit
                 iconname = iconparts[0];
             }
             Name = iconname;
-            Icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + file, UriKind.Absolute);
+            if (!AddFolderLine)
+            {
+                Icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\" + file, UriKind.Absolute);
+            }
+            else
+            {
+                Icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + file, UriKind.Absolute);
+            }
         }
 
         public BitmapSource GetWideImage()

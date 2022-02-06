@@ -2,7 +2,11 @@
 using BLREdit;
 using BLREdit.UI;
 using System;
+using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.Threading;
+using System.Windows.Controls;
 
 namespace BLREditTests
 {
@@ -10,119 +14,72 @@ namespace BLREditTests
     public class MainWindowTests
     {
         static App app;
-        [AssemblyInitialize, STAThread]
+
+        [AssemblyInitialize]
         public static void TestIni(TestContext context)
         {
             app = new App();
-            MainWindow.IsUnitTest = true;
+
+            LoggingSystem.LogInfo(context.ToString());
+
             app.InitializeComponent();
-            app.Run();
-        }
-
-
-        [TestMethod]
-        public void Primaries()
-        {
-            foreach (ImportItem primary in ImportSystem.Weapons.primary)
-            { 
-                MainWindow.self.SetItemToImage(MainWindow.self.PrimaryRecieverImage ,primary);
-            }
-        }
-
-        [TestMethod]
-        public void Secondaries()
-        {
-            foreach (ImportItem secondary in ImportSystem.Weapons.secondary)
-            {
-                MainWindow.self.SetItemToImage(MainWindow.self.SecondaryRecieverImage, secondary);
-            }
         }
 
         [TestMethod]
         public void PrimariesAndMods()
         {
+            MainWindow window = new MainWindow();
             foreach (ImportItem reciever in ImportSystem.Weapons.primary)
             {
-                MainWindow.self.SetItemToImage(MainWindow.self.PrimaryRecieverImage, reciever);
-
-                foreach (ImportItem barrel in ImportSystem.Mods.barrels)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryBarrelImage, barrel);
-                }
-
-                foreach (ImportItem muzzle in ImportSystem.Mods.muzzles)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryMuzzleImage, muzzle);
-                }
-
-                foreach (ImportItem magazine in ImportSystem.Mods.magazines)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryMagazineImage, magazine);
-                }
-
-                foreach (ImportItem scope in ImportSystem.Mods.scopes)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryScopeImage, scope);
-                }
-
-                foreach (ImportItem stock in ImportSystem.Mods.stocks)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryStockImage, stock);
-                }
-
-                foreach (ImportItem camo in ImportSystem.Mods.camosBody)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryCamoWeaponImage, camo);
-                }
-
-                foreach (ImportItem hanger in ImportSystem.Gear.hangers)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.PrimaryTagImage, hanger);
-                }
+                FullRecieverTest(reciever, window, window.PrimaryRecieverImage, window.PrimaryBarrelImage, window.PrimaryStockImage, window.PrimaryScopeImage, window.PrimaryMuzzleImage, window.PrimaryMagazineImage, window.PrimaryCamoWeaponImage, window.PrimaryTagImage);
             }
         }
 
         [TestMethod]
         public void SecondariesAndMods()
         {
+            MainWindow window = new MainWindow();
             foreach (ImportItem reciever in ImportSystem.Weapons.secondary)
             {
-                MainWindow.self.SetItemToImage(MainWindow.self.SecondaryRecieverImage, reciever);
+                FullRecieverTest(reciever, window, window.SecondaryRecieverImage, window.SecondaryBarrelImage, window.SecondaryStockImage, window.SecondaryScopeImage, window.SecondaryMuzzleImage, window.SecondaryMagazineImage, window.SecondaryCamoWeaponImage, window.SecondaryTagImage);
+            }
+        }
 
-                foreach (ImportItem barrel in ImportSystem.Mods.barrels)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryBarrelImage, barrel);
-                }
+        public void FullRecieverTest(ImportItem reciever, MainWindow window, Image RecieverImg, Image BarrelImg, Image StockImg, Image ScopeImg, Image MuzzleImg, Image MagazineImg, Image CamoImg, Image HangerImg)
+        {
+            window.SetItemToImage(RecieverImg, reciever);
+            foreach (ImportItem scope in ImportSystem.Mods.scopes)
+            {
+                window.SetItemToImage(ScopeImg, scope);
+            }
 
-                foreach (ImportItem muzzle in ImportSystem.Mods.muzzles)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryMuzzleImage, muzzle);
-                }
+            foreach (ImportItem muzzle in ImportSystem.Mods.muzzles)
+            {
+                window.SetItemToImage(MuzzleImg, muzzle);
+            }
 
-                foreach (ImportItem magazine in ImportSystem.Mods.magazines)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryMagazineImage, magazine);
-                }
-
-                foreach (ImportItem scope in ImportSystem.Mods.scopes)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryScopeImage, scope);
-                }
-
+            foreach (ImportItem barrel in ImportSystem.Mods.barrels)
+            {
+                window.SetItemToImage(BarrelImg, barrel);
                 foreach (ImportItem stock in ImportSystem.Mods.stocks)
                 {
-                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryStockImage, stock);
+                    window.SetItemToImage(StockImg, stock);
                 }
+            }
 
-                foreach (ImportItem camo in ImportSystem.Mods.camosBody)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryCamoWeaponImage, camo);
-                }
+            foreach (ImportItem magazine in ImportSystem.Mods.magazines)
+            {
+                window.SetItemToImage(MagazineImg, magazine);
+            }
 
-                foreach (ImportItem hanger in ImportSystem.Gear.hangers)
-                {
-                    MainWindow.self.SetItemToImage(MainWindow.self.SecondaryTagImage, hanger);
-                }
+            foreach (ImportItem camo in ImportSystem.Mods.camosBody)
+            {
+                window.SetItemToImage(CamoImg, camo);
+            }
+
+            foreach (ImportItem hanger in ImportSystem.Gear.hangers)
+            {
+                window.SetItemToImage(HangerImg, hanger);
             }
         }
     }
