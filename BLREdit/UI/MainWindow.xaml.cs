@@ -528,8 +528,14 @@ namespace BLREdit.UI
                             Y = (Reciever.IniStats.RecoilVector.Y * Reciever.IniStats.RecoilVectorMultiplier.Y) / 2.0f
                         };
 
-                        double previousMultiplier = Reciever.IniStats.RecoilSize * Math.Pow(shot / Reciever.IniStats.Burst, (Reciever.IniStats.RecoilAccumulation * Reciever.IniStats.RecoilAccumulationMultiplier));
-                        double currentMultiplier = Reciever.IniStats.RecoilSize * Math.Pow(shot / Reciever.IniStats.Burst + 1.0f, (Reciever.IniStats.RecoilAccumulation * Reciever.IniStats.RecoilAccumulationMultiplier));
+                        double accumExponent = Reciever.IniStats.RecoilAccumulation;
+                        if (accumExponent > 1)
+                        {
+                            accumExponent = ((accumExponent - 1.0) * Reciever.IniStats.RecoilAccumulationMultiplier) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
+                        }
+
+                        double previousMultiplier = Reciever.IniStats.RecoilSize * Math.Pow(shot / Reciever.IniStats.Burst, accumExponent);
+                        double currentMultiplier = Reciever.IniStats.RecoilSize * Math.Pow(shot / Reciever.IniStats.Burst + 1.0f, accumExponent);
                         double multiplier = currentMultiplier - previousMultiplier;
                         newRecoil *= (float)multiplier;
                         averageRecoil += newRecoil;
