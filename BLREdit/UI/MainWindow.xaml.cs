@@ -623,8 +623,8 @@ namespace BLREdit.UI
                     {
                         Vector3 newRecoil = new Vector3(0, 0, 0)
                         {
-                            X = (Reciever.IniStats.RecoilVector.X * Reciever.IniStats.RecoilVectorMultiplier.X) / 4.0f,
-                            Y = (Reciever.IniStats.RecoilVector.Y * Reciever.IniStats.RecoilVectorMultiplier.Y) / 2.0f
+                            X = (Reciever.IniStats.RecoilVector.X * Reciever.IniStats.RecoilVectorMultiplier.X * 0.5f) / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
+                            Y = (Reciever.IniStats.RecoilVector.Y * Reciever.IniStats.RecoilVectorMultiplier.Y * 0.3535f)
                         };
 
                         double accumExponent = Reciever.IniStats.RecoilAccumulation;
