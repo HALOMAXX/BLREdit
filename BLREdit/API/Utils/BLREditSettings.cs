@@ -23,16 +23,16 @@ namespace BLREdit
         {
             if (File.Exists(IOResources.SETTINGS_FILE))
             {
-                BLREditSettings settings = IOResources.Deserialize<BLREditSettings>(IOResources.SETTINGS_FILE); //Load settings file
+                BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>(IOResources.SETTINGS_FILE); //Load settings file
                 settings.ApplySettings();                                               //apply settings
-                IOResources.Serialize(IOResources.SETTINGS_FILE, settings);                                     //write it back to disk to clean out settings that don't exist anymore from old builds/versions
+                IOResources.SerializeFile(IOResources.SETTINGS_FILE, settings);                                     //write it back to disk to clean out settings that don't exist anymore from old builds/versions
                 return settings;
             }
             else
             {
                 var tmp = new BLREditSettings();
                 tmp.ApplySettings();
-                IOResources.Serialize(IOResources.SETTINGS_FILE, tmp);
+                IOResources.SerializeFile(IOResources.SETTINGS_FILE, tmp);
                 return tmp;
             }
         }

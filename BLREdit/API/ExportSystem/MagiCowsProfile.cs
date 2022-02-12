@@ -11,7 +11,7 @@ namespace BLREdit
 
         public void SaveProfile()
         {
-            IOResources.Serialize(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + "\\" + PlayerName + ".json", this);
+            IOResources.SerializeFile(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + "\\" + PlayerName + ".json", this);
         }
 
         public override string ToString()

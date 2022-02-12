@@ -56,8 +56,8 @@ namespace BLREdit
             foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
             {
                 MagiCowsProfile profile;
-                try { profile = IOResources.Deserialize<MagiCowsProfile>(file); }
-                catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.Deserialize<MagiCowsOldProfile>(file).ConvertToNew(); }
+                try { profile = IOResources.DeserializeFile<MagiCowsProfile>(file); }
+                catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
                 profiles.Add(profile);
             }
 
@@ -73,7 +73,7 @@ namespace BLREdit
         public static void CreateSEProfile(MagiCowsProfile profile)
         { 
             SELoadout[] player = SELoadout.CreateFromMagiCowsProfile(profile);
-            IOResources.Serialize(IOResources.SEPROFILE_DIR + profile.PlayerName + ".json", player);
+            IOResources.SerializeFile(IOResources.SEPROFILE_DIR + profile.PlayerName + ".json", player);
         }
 
         public static void CopyToClipBoard(MagiCowsProfile profile)

@@ -1,6 +1,7 @@
 ﻿using Octokit;
 
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace BLREdit
 {
@@ -18,11 +19,24 @@ namespace BLREdit
         {
             Trace.Listeners.Add(new TextWriterTraceListener("log.txt", "loggingListener"));
             Trace.AutoFlush = true;
+
+            //TestREST().GetAwaiter().GetResult();
+
             LoggingSystem.LogInfo("BLREdit Starting!");
             VersionCheck();
             ImportSystem.Initialize();
         }
-        const string CurrentVersion = "v0.3.6";
+
+        public async Task TestREST()
+        {
+            MagiCowsProfile[] profiles = await MagiCowClient.GetAllPlayers();
+            foreach (MagiCowsProfile profile in profiles)
+            {
+                LoggingSystem.LogInfo(profile.ToString());
+            }
+        }
+
+        public const string CurrentVersion = "v0.3.6";
         const string CurrentVersionName = "BLREdit Improved Scope-In Stat";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";

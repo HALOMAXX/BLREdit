@@ -22,7 +22,7 @@ namespace BLREdit
 
 
 
-        public static void Serialize<T>(string filePath, T obj, bool compact = false)
+        public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
         {
             //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
             if (string.IsNullOrEmpty(filePath)) { LoggingSystem.LogWarning("filePath was empty!"); return; }
@@ -54,7 +54,7 @@ namespace BLREdit
             }
         }
 
-        public static T Deserialize<T>(string filePath)
+        public static T DeserializeFile<T>(string filePath)
         {
             T temp = default;
             if (string.IsNullOrEmpty(filePath)) { return temp; }
@@ -65,10 +65,15 @@ namespace BLREdit
 
             using (var file = File.OpenText(filePath))
             {
-                temp = JsonSerializer.Deserialize<T>(file.ReadToEnd(), JSOFields);
+                temp = Deserialize<T>(file.ReadToEnd());
                 file.Close();
             }
             return temp;
+        }
+
+        public static T Deserialize<T>(string json)
+        {
+            return JsonSerializer.Deserialize<T>(json, JSOFields);
         }
     }
 }

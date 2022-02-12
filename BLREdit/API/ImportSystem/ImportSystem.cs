@@ -21,9 +21,9 @@ namespace BLREdit
 
         private static IniStats[] IniItemStats;
 
-        public static ImportGear Gear { get; private set; } = IOResources.Deserialize<ImportGear>(IOResources.GEAR_FILE);
-        public static ImportMods Mods { get; private set; } = IOResources.Deserialize<ImportMods>(IOResources.MOD_FILE);
-        public static ImportWeapons Weapons { get; private set; } = IOResources.Deserialize<ImportWeapons>(IOResources.WEAPON_FILE);
+        public static ImportGear Gear { get; private set; } = IOResources.DeserializeFile<ImportGear>(IOResources.GEAR_FILE);
+        public static ImportMods Mods { get; private set; } = IOResources.DeserializeFile<ImportMods>(IOResources.MOD_FILE);
+        public static ImportWeapons Weapons { get; private set; } = IOResources.DeserializeFile<ImportWeapons>(IOResources.WEAPON_FILE);
 
         public static void Initialize()
         {
@@ -46,7 +46,7 @@ namespace BLREdit
         private static void UpgradeIniStats()
 #pragma warning restore IDE0051 // Remove unused private members
         {
-            IOResources.Serialize<IniStats[]>("upgraded.json", IniItemStats);
+            IOResources.SerializeFile<IniStats[]>("upgraded.json", IniItemStats);
         }
 
         private static void UpdateImages()
@@ -72,7 +72,7 @@ namespace BLREdit
 
         private static void LoadIniStats()
         {
-            IniItemStats = IOResources.Deserialize<IniStats[]>(IOResources.ASSET_DIR + "\\filteredIniStats.json");
+            IniItemStats = IOResources.DeserializeFile<IniStats[]>(IOResources.ASSET_DIR + "\\filteredIniStats.json");
 
             AssignIniStatsTo(Weapons.primary, IniItemStats);
             AssignIniStatsTo(Weapons.secondary, IniItemStats);
