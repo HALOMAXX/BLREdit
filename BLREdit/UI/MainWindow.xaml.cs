@@ -162,6 +162,7 @@ namespace BLREdit.UI
             var watch = LoggingSystem.LogInfo("Updating Stats", "");
 
             double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0, MoveSpeed = 0, CockRateMultiplier = 0, ReloadRateMultiplier = 0;
+            double BaseScopeIn = 0;
 
             string barrelVSmag = "", stockVSmuzzle = "", weaponDescriptor = "";
 
@@ -228,6 +229,13 @@ namespace BLREdit.UI
                 allMovementSpread /= 100.0f;
                 allMovementSpread = Math.Min(Math.Max(allMovementSpread, -1.0f), 1.0f);
 
+                double allMovementScopeIn = Barrel?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementScopeIn += Stock?.weaponModifiers?.movementSpeed ?? 0;
+                allMovementScopeIn /= 80.0f;
+                allMovementScopeIn = Math.Min(Math.Max(allMovementScopeIn, -1.0f), 1.0f);
+                double WikiScopeIn = ScopeIn;
+                BaseScopeIn = CalculateBaseScopeIn(Reciever, allMovementScopeIn, WikiScopeIn, Scope);
+
                 double allAccuracy = Barrel?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy += Muzzle?.weaponModifiers?.accuracy ?? 0;
                 allAccuracy += Stock?.weaponModifiers?.accuracy ?? 0;
@@ -287,7 +295,7 @@ namespace BLREdit.UI
             RecoilLabel.Content = Recoil.ToString("0.00") + "°";
             ZoomRecoilLabel.Content = RecoilZoom.ToString("0.00") + "°";
             ZoomLabel.Content = Zoom.ToString("0.00");
-            ScopeInLabel.Content = ScopeIn.ToString("0.000") + "s";
+            ScopeInLabel.Content = BaseScopeIn.ToString("0.000") + "s";
             RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
             //RunLabel.Content = Run.ToString("0.00");
             RunLabel.Content = MoveSpeed.ToString("0.00");
@@ -456,6 +464,42 @@ namespace BLREdit.UI
             {
                 return new double[] { 0, 0, 0 };
             }
+        }
+
+        public static double CalculateBaseScopeIn(ImportItem Reciever, double allMovementScopeIn, double WikiScopeIn, ImportItem Scope)
+        {
+            double TTTA_alpha = Math.Abs(allMovementScopeIn);
+            double TightAimTime, ComboScopeMod;
+
+            if (allMovementScopeIn > 0)
+            {
+                TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
+                ComboScopeMod = Lerp(0.0, 0.03, TTTA_alpha);
+            }
+            else
+            {
+                TightAimTime = Lerp(0.225, 0.30, TTTA_alpha);
+                ComboScopeMod = Lerp(0.0, -0.05, TTTA_alpha);
+            }
+
+            if (Reciever.IniStats.TightAimTime > 0) {
+                return Reciever.IniStats.TightAimTime;
+            }
+            else
+            {
+                if (TightAimTime > 0)
+                {
+                    if (Scope.uid == 45005)
+                    {
+                        return TightAimTime + ComboScopeMod + WikiScopeIn;
+                    }
+                    else
+                    {
+                        return TightAimTime + WikiScopeIn;
+                    }
+                }
+            }
+            return 0.225;
         }
 
         public static double CalculateSpeed(ImportItem Reciever, double allMovementSpeed)

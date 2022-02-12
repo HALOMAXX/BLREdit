@@ -173,7 +173,8 @@ namespace BLREdit
                 }
                 else if (Category == "scope")
                 {
-                    return (0.240 + (WikiStats?.scopeInTime ?? 0)).ToString("0.000") + "s";
+                    //return (0.240 + (WikiStats?.scopeInTime ?? 0)).ToString("0.000") + "s";
+                    return (0.0 + (WikiStats?.scopeInTime ?? 0)).ToString("0.00") + "s";
                 }
                 else if (Category == "magazine")
                 {
@@ -211,6 +212,11 @@ namespace BLREdit
                 {
                     if (weaponModifiers.accuracy == 0)
                     { return true; }
+                }
+                else if (Category == "scope")
+                {
+                    //if (WikiStats?.scopeInTime == 0)
+                    //{ return true; } // the "invalid scope" for some reason doesn't follow this, so currently disabling it for consistency's sake
                 }
                 else if (Category == "magazine")
                 {
