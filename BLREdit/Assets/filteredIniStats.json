@@ -816,7 +816,7 @@
   {
     "ItemID": 40024,
     "ItemName": "Compound Bow",
-    "ROF": 360,
+    "ROF": 103.5,
     "Burst": 1,
     "InitialMagazines": 0,
     "MagSize": 1,

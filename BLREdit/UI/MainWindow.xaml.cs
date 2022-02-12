@@ -469,17 +469,36 @@ namespace BLREdit.UI
         public static double CalculateBaseScopeIn(ImportItem Reciever, double allMovementScopeIn, double WikiScopeIn, ImportItem Scope)
         {
             double TTTA_alpha = Math.Abs(allMovementScopeIn);
-            double TightAimTime, ComboScopeMod;
+            double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
 
+            // giant cheat incoming, please lord forgive me for what i am about to do
             if (allMovementScopeIn > 0)
             {
                 TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
                 ComboScopeMod = Lerp(0.0, 0.03, TTTA_alpha);
+                FourXAmmoCounterMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
+                ArmComInfraredMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
+                EMITechScopeMod = Lerp(WikiScopeIn, 0.215, TTTA_alpha);
+                EMIInfraredMod = Lerp(WikiScopeIn, 0.215, TTTA_alpha);
+                EMIInfraredMK2Mod = Lerp(WikiScopeIn, 0.36, TTTA_alpha);
+                ArmComSniperMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
+                KraneSniperScopeMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
+                SilverwoodHeavyMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
+                FrontierSniperMod = Lerp(WikiScopeIn, 0.315, TTTA_alpha);
             }
             else
             {
                 TightAimTime = Lerp(0.225, 0.30, TTTA_alpha);
                 ComboScopeMod = Lerp(0.0, -0.05, TTTA_alpha);
+                FourXAmmoCounterMod = Lerp(WikiScopeIn, 0.10, TTTA_alpha);
+                ArmComInfraredMod = Lerp(WikiScopeIn, 0.10, TTTA_alpha);
+                EMITechScopeMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
+                EMIInfraredMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
+                EMIInfraredMK2Mod = Lerp(WikiScopeIn, 0.30, TTTA_alpha);
+                ArmComSniperMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
+                KraneSniperScopeMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
+                SilverwoodHeavyMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
+                FrontierSniperMod = Lerp(WikiScopeIn, 0.235, TTTA_alpha);
             }
 
             if (Reciever.IniStats.TightAimTime > 0) {
@@ -492,6 +511,42 @@ namespace BLREdit.UI
                     if (Scope.uid == 45005)
                     {
                         return TightAimTime + ComboScopeMod + WikiScopeIn;
+                    }
+                    else if (Scope.uid == 45023)
+                    {
+                        return TightAimTime + FourXAmmoCounterMod;
+                    }
+                    else if (Scope.uid == 45021)
+                    {
+                        return TightAimTime + ArmComInfraredMod;
+                    }
+                    else if (Scope.uid == 45020)
+                    {
+                        return TightAimTime + EMIInfraredMod;
+                    }
+                    else if (Scope.uid == 45019)
+                    {
+                        return TightAimTime + EMIInfraredMK2Mod;
+                    }
+                    else if (Scope.uid == 45015)
+                    {
+                        return TightAimTime + ArmComSniperMod;
+                    }
+                    else if (Scope.uid == 45008)
+                    {
+                        return TightAimTime + SilverwoodHeavyMod;
+                    }
+                    else if (Scope.uid == 45007)
+                    {
+                        return TightAimTime + KraneSniperScopeMod;
+                    }
+                    else if (Scope.uid == 45004)
+                    {
+                        return TightAimTime + EMITechScopeMod;
+                    }
+                    else if (Scope.uid == 45001)
+                    {
+                        return TightAimTime + FrontierSniperMod;
                     }
                     else
                     {
