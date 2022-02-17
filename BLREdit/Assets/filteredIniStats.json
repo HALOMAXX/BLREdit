@@ -1435,7 +1435,7 @@
     "MaxDistance": 6500,
     "MaxTraceDistance": 7000,
     "MaxRangeDamageMultiplier": 0.3,
-    "UseTABaseSpread": true,
+    "UseTABaseSpread": false,
     "ModificationRangeDamage": {
       "X": 50,
       "Y": 63,
