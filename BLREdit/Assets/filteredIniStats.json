@@ -49,6 +49,11 @@
       "Y": 0.001,
       "Z": 0.007
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 1.928,
+      "Y": 0.5,
+      "Z": 0.997
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
       "Y": 0.8,
@@ -165,6 +170,11 @@
       "X": 0.042,
       "Y": 0.002,
       "Z": 0.022
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.92,
+      "Y": 0.5,
+      "Z": 1.3
     },
     "ModificationRangeRecoil": {
       "X": 1.3,
@@ -284,6 +294,11 @@
       "Y": 0,
       "Z": 0
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
+    },
     "ModificationRangeRecoil": {
       "X": 1.3,
       "Y": 0.8,
@@ -400,6 +415,11 @@
       "X": 0,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
     },
     "ModificationRangeRecoil": {
       "X": 1.3,
@@ -518,6 +538,11 @@
       "X": 0.007,
       "Y": 0,
       "Z": 0.0035
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
     },
     "ModificationRangeRecoil": {
       "X": 1.1,
@@ -641,6 +666,11 @@
       "Y": 0.007,
       "Z": 0.02
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
       "Y": 0.8,
@@ -758,6 +788,11 @@
       "Y": 0.0035,
       "Z": 0.0135
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.404,
+      "Y": 0.5,
+      "Z": 1.162
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
       "Y": 0.8,
@@ -862,6 +897,11 @@
       "X": 0.01,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
     },
     "ModificationRangeRecoil": {
       "X": 1.5,
@@ -990,6 +1030,11 @@
       "Y": 0.0035,
       "Z": 0.014
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.215,
+      "Y": 0.5,
+      "Z": 1.11
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
       "Y": 0.8,
@@ -1095,9 +1140,14 @@
       "Y": 0.00875,
       "Z": 0.014
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.097,
+      "Y": 0.5,
+      "Z": 1.06
+    },
     "ModificationRangeRecoil": {
       "X": 1.11,
-      "Y": 0.7,
+      "Y": 0.9,
       "Z": 1
     },
     "ModificationRangeIdealDistance": {
@@ -1211,6 +1261,11 @@
       "X": 0.01925,
       "Y": 0.00875,
       "Z": 0.014
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.404,
+      "Y": 0.5,
+      "Z": 1.162
     },
     "ModificationRangeRecoil": {
       "X": 1.11,
@@ -1328,6 +1383,11 @@
       "X": 0.013963,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.3688,
+      "Y": 0.5,
+      "Z": 1.117
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
@@ -1451,6 +1511,11 @@
       "Y": 0.01,
       "Z": 0.03
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.092,
+      "Y": 0.5,
+      "Z": 1.0635
+    },
     "ModificationRangeRecoil": {
       "X": 1.3,
       "Y": 0.8,
@@ -1567,6 +1632,11 @@
       "X": 0.007,
       "Y": 0,
       "Z": 0.0035
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 1.919,
+      "Y": 0.5,
+      "Z": 0.98
     },
     "ModificationRangeRecoil": {
       "X": 1.3,
@@ -1685,6 +1755,11 @@
       "Y": 0.00875,
       "Z": 0.014
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.404,
+      "Y": 0.5,
+      "Z": 1.162
+    },
     "ModificationRangeRecoil": {
       "X": 1.11,
       "Y": 0.9,
@@ -1801,6 +1876,11 @@
       "X": 0.032,
       "Y": 0.008,
       "Z": 0.02
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.9365,
+      "Y": 0.5,
+      "Z": 1.3
     },
     "ModificationRangeRecoil": {
       "X": 1.3,
@@ -1919,6 +1999,11 @@
       "Y": 0,
       "Z": 0
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
+    },
     "ModificationRangeRecoil": {
       "X": 1.3,
       "Y": 0.8,
@@ -2035,6 +2120,11 @@
       "X": 0,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 0.808
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
@@ -2153,6 +2243,11 @@
       "Y": 0,
       "Z": 0
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
+    },
     "ModificationRangeRecoil": {
       "X": 2,
       "Y": 0.5,
@@ -2269,6 +2364,11 @@
       "X": 0,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
     },
     "ModificationRangeRecoil": {
       "X": 2,
@@ -2387,6 +2487,11 @@
       "Y": 0,
       "Z": 0
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
+    },
     "ModificationRangeRecoil": {
       "X": 1.3,
       "Y": 0.85,
@@ -2503,6 +2608,11 @@
       "X": 0,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
@@ -2621,6 +2731,11 @@
       "Y": 0,
       "Z": 0
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
       "Y": 0.8,
@@ -2737,6 +2852,11 @@
       "X": 0,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
@@ -2895,6 +3015,11 @@
       "Y": 0,
       "Z": 0
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
+    },
     "ModificationRangeRecoil": {
       "X": 1.25,
       "Y": 0.8,
@@ -3011,6 +3136,11 @@
       "X": 0,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
@@ -3129,6 +3259,11 @@
       "Y": 0,
       "Z": 0
     },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
+    },
     "ModificationRangeRecoil": {
       "X": 1.15,
       "Y": 0.85,
@@ -3245,6 +3380,11 @@
       "X": 0,
       "Y": 0,
       "Z": 0
+    },
+    "ModificationRangeWeightMultiplier": {
+      "X": 2.0,
+      "Y": 0.5,
+      "Z": 1.0
     },
     "ModificationRangeRecoil": {
       "X": 2,

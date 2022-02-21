@@ -34,6 +34,7 @@ namespace BLREdit
         public Vector3 ModificationRangeDamage { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeBaseSpread { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeTABaseSpread { get; set; } = Vector3.Zero;
+        public Vector3 ModificationRangeWeightMultiplier { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeRecoil { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeIdealDistance { get; set; } = Vector3.Zero;
         public Vector3 ModificationRangeMaxDistance { get; set; } = Vector3.Zero;

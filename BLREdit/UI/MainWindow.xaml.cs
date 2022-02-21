@@ -434,22 +434,22 @@ namespace BLREdit.UI
                 double weight_multiplier;
                 if (Reciever.IniStats.Weight > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
                 {
-                    weight_multiplier = Lerp(1.0, 0.5, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
+                    weight_multiplier = Lerp(Reciever?.IniStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.IniStats?.ModificationRangeWeightMultiplier.Y ?? 0, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
                 }
                 else
                 {
-                    weight_multiplier = Lerp(1.0, 2.0, weight_clampalpha);
+                    weight_multiplier = Lerp(Reciever?.IniStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.IniStats?.ModificationRangeWeightMultiplier.X ?? 0, weight_clampalpha);
                 }
 
                 double move_alpha = Math.Abs(allMovementSpread);
                 double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
                 if (allMovementSpread > 0)
                 {
-                    move_multiplier = Lerp(1.0, 0.5, move_alpha);
+                    move_multiplier = Lerp(Reciever?.IniStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.IniStats?.ModificationRangeWeightMultiplier.Y ?? 0, move_alpha);
                 }
                 else
                 {
-                    move_multiplier = Lerp(1.0, 2.0, move_alpha);
+                    move_multiplier = Lerp(Reciever?.IniStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.IniStats?.ModificationRangeWeightMultiplier.X ?? 0, move_alpha);
                 }
 
                 double movemultiplier_current = 1.0 + ((Reciever.IniStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier));
