@@ -6,7 +6,7 @@
     "Burst": 1,
     "InitialMagazines": 4,
     "MagSize": 22,
-    "ApplyTime": 0.119999997,
+    "ApplyTime": 0.12,
     "RecoilSize": 0.5,
     "RecoilVector": {
       "X": 0.1,
@@ -373,7 +373,7 @@
     "Burst": 4,
     "InitialMagazines": 4,
     "MagSize": 33,
-    "ApplyTime": 0.159999996,
+    "ApplyTime": 0.16,
     "RecoilSize": 0.085,
     "RecoilVector": {
       "X": 0,
@@ -495,7 +495,7 @@
     "Burst": 1,
     "InitialMagazines": 9,
     "MagSize": 1,
-    "ApplyTime": 0.5,
+    "ApplyTime": 0.1,
     "RecoilSize": 0.3,
     "RecoilVector": {
       "X": 0,
@@ -503,8 +503,8 @@
       "Z": 0
     },
     "RecoilVectorMultiplier": {
-      "X": 0.5,
-      "Y": 1,
+      "X": 0.2,
+      "Y": 0.2,
       "Z": 0
     },
     "RecoilAccumulation": 1,
@@ -623,7 +623,7 @@
     "Burst": 1,
     "InitialMagazines": 4,
     "MagSize": 25,
-    "ApplyTime": 0,
+    "ApplyTime": 0.109090909,
     "RecoilSize": 0.3,
     "RecoilVector": {
       "X": 0.3,
@@ -753,7 +753,7 @@
       "Z": 0
     },
     "RecoilVectorMultiplier": {
-      "X": 0.5,
+      "X": 0.8,
       "Y": 1,
       "Z": 0
     },
@@ -1341,10 +1341,10 @@
     "Burst": 1,
     "InitialMagazines": 4,
     "MagSize": 5,
-    "ApplyTime": 1,
+    "ApplyTime": 0.1,
     "RecoilSize": 0.21,
     "RecoilVector": {
-      "X": 0.1,
+      "X": 0.3,
       "Y": 0.2,
       "Z": 0
     },
@@ -1590,7 +1590,7 @@
     "Burst": 3,
     "InitialMagazines": 4,
     "MagSize": 15,
-    "ApplyTime": 0.239999995,
+    "ApplyTime": 0.24,
     "RecoilSize": 0.65,
     "RecoilVector": {
       "X": 0,
@@ -1834,7 +1834,7 @@
     "Burst": 1,
     "InitialMagazines": 4,
     "MagSize": 45,
-    "ApplyTime": 0.0666666701,
+    "ApplyTime": 0.0666666667,
     "RecoilSize": 0.5,
     "RecoilVector": {
       "X": 0,
@@ -1959,13 +1959,13 @@
     "ApplyTime": 0.2,
     "RecoilSize": 0.38,
     "RecoilVector": {
-      "X": 0.04,
-      "Y": 0.5,
+      "X": 0.1,
+      "Y": 1,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
-      "X": 0.5,
-      "Y": 1,
+      "X": 0.4,
+      "Y": 0.5,
       "Z": 0
     },
     "RecoilAccumulation": 1.4,
@@ -2200,11 +2200,11 @@
     "Burst": 1,
     "InitialMagazines": 2,
     "MagSize": 10,
-    "ApplyTime": 0.24,
-    "RecoilSize": 0.9,
+    "ApplyTime": 0.1,
+    "RecoilSize": 0.075,
     "RecoilVector": {
-      "X": 0.1375,
-      "Y": 1.1,
+      "X": 0,
+      "Y": 1.2,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
@@ -2448,12 +2448,12 @@
     "RecoilSize": 0.3,
     "RecoilVector": {
       "X": 0,
-      "Y": 0.6,
+      "Y": 1.2,
       "Z": 0
     },
     "RecoilVectorMultiplier": {
-      "X": 0.5,
-      "Y": 1,
+      "X": 1,
+      "Y": 0.5,
       "Z": 0
     },
     "RecoilAccumulation": 1,
@@ -3102,7 +3102,7 @@
       "Z": 0
     },
     "RecoilVectorMultiplier": {
-      "X": 0.5,
+      "X": 0.8,
       "Y": 1,
       "Z": 0
     },

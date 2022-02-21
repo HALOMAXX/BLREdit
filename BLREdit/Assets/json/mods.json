@@ -12509,7 +12509,7 @@
     },
     {
       "class": "FoxDataProvider_Magazine",
-      "icon": "t_magnumAmmo",
+      "icon": "t_MagRifle_Magnum_128x128",
       "name": "Magnum Mag",
       "descriptorName": "Magnum",
       "pawnModifiers": {
@@ -12693,7 +12693,7 @@
     },
     {
       "class": "FoxDataProvider_Magazine",
-      "icon": "t_magnumAmmo",
+      "icon": "t_MagShell_Magnum_128x128",
       "name": "Magnum Mag",
       "descriptorName": "Magnum",
       "pawnModifiers": {
