@@ -441,7 +441,7 @@ namespace BLREdit.UI
                     weight_multiplier = Lerp(Reciever?.IniStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.IniStats?.ModificationRangeWeightMultiplier.X ?? 0, weight_clampalpha);
                 }
 
-                double move_alpha = Math.Abs(allMovementSpread);
+                double move_alpha = Math.Abs(allMovementSpread); // Combied movement speed modifiers from only barrel and stock, divided by 100
                 double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
                 if (allMovementSpread > 0)
                 {
@@ -456,7 +456,6 @@ namespace BLREdit.UI
                 double moveconstant_current = Reciever.IniStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
 
                 double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
-                //double move = (accuracyBaseModifier * Reciever.IniStats.MovementSpreadMultiplier) * (180 / Math.PI);  // Old.
 
                 return new double[] { aim, hip, move };
             }
