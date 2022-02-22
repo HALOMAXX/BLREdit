@@ -1507,7 +1507,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "",
+      "tooltip": "No grip mod.",
       "uid": 41026,
       "validFor": [
         40020

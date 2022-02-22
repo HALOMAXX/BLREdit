@@ -36,8 +36,8 @@ namespace BLREdit
             }
         }
 
-        public const string CurrentVersion = "v0.3.6";
-        const string CurrentVersionName = "BLREdit Improved Scope-In Stat";
+        public const string CurrentVersion = "v0.3.7";
+        const string CurrentVersionName = "BLREdit Weapon Stat Improvements";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()

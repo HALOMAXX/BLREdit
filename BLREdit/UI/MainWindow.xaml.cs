@@ -297,7 +297,6 @@ namespace BLREdit.UI
             ZoomLabel.Content = Zoom.ToString("0.00");
             ScopeInLabel.Content = BaseScopeIn.ToString("0.000") + "s";
             RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
-            //RunLabel.Content = Run.ToString("0.00");
             RunLabel.Content = MoveSpeed.ToString("0.00");
             Descriptor.Content = barrelVSmag + " " + stockVSmuzzle + " " + weaponDescriptor;
             LoggingSystem.LogInfoAppend(watch);
@@ -570,7 +569,7 @@ namespace BLREdit.UI
                 {
                     move_modifier = Lerp(Reciever.IniStats.ModificationRangeMoveSpeed.Z, Reciever.IniStats.ModificationRangeMoveSpeed.X, move_alpha);
                 }
-                double speed = (765 + move_modifier) / 100.0f;
+                double speed = (765 + (move_modifier * 0.9)) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
                 return speed;
             }
             return 0;
