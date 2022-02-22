@@ -50,9 +50,9 @@
       "Z": 0.007
     },
     "ModificationRangeWeightMultiplier": {
-      "X": 1.928,
-      "Y": 0.5,
-      "Z": 0.997
+      "X": 2.006,
+      "Y": 0.4807,
+      "Z": 1.036
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
@@ -1031,9 +1031,9 @@
       "Z": 0.014
     },
     "ModificationRangeWeightMultiplier": {
-      "X": 2.215,
-      "Y": 0.5,
-      "Z": 1.11
+      "X": 2.265,
+      "Y": 0.488,
+      "Z": 1.138
     },
     "ModificationRangeRecoil": {
       "X": 1.25,
