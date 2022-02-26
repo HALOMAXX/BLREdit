@@ -267,6 +267,10 @@ namespace BLREdit
                 {
                     return "Run:";
                 }
+                else if (Category == "scope")
+                {
+                    return "Is Infrared:";
+                }
                 else if (Category == "magazine")
                 {
                     return "Run:";
@@ -292,8 +296,15 @@ namespace BLREdit
                     return weaponModifiers.recoil + "%";
                 }
                 else if (Category == "helmet")
-                { 
+                {
                     return pawnModifiers.MovementSpeed.ToString("0.00");
+                }
+                else if (Category == "scope")
+                {
+                    if (uid == 45019 || uid == 45020 || uid == 45021)
+                    { return "True"; }
+                    else
+                    { return "False"; }
                 }
                 else if (Category == "magazine")
                 {
@@ -324,6 +335,11 @@ namespace BLREdit
                 else if (Category == "helmet")
                 {
                     if (pawnModifiers.MovementSpeed == 0)
+                    { return true; }
+                }
+                else if (Category == "scope")
+                {
+                    if (uid != 45019 && uid != 45020 && uid != 45021)
                     { return true; }
                 }
                 else if (Category == "magazine")
