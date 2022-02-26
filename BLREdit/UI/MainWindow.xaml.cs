@@ -46,8 +46,11 @@ namespace BLREdit.UI
         /// </summary>
         public bool IsPlayerProfileChanging { get; private set; } = false;
 
+        public static MainWindow self = null;
+
         public MainWindow()
         {
+            self = this;
             IsPlayerProfileChanging = true;
             IsPlayerNameChanging = true;
 
@@ -497,7 +500,7 @@ namespace BLREdit.UI
                 FrontierSniperMod = Lerp(WikiScopeIn, 0.235, TTTA_alpha);
             }
 
-            if (Reciever.IniStats.TightAimTime > 0) {
+            if ((Reciever.IniStats?.TightAimTime ?? 0) > 0) {
                 return Reciever.IniStats.TightAimTime;
             }
             else

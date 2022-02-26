@@ -734,6 +734,7 @@ namespace BLREdit
                 if (Category == "primary" || Category == "secondary")
                 {
                     var defaultWeapon = MagiCowsWeapon.GetDefaultSetupOfReciever(this);
+                    if(defaultWeapon == null) { return 0; }
                     var defaultStock = defaultWeapon.GetStock();
                     var defaultBarrel = defaultWeapon.GetBarrel();
                     var defaultScope = defaultWeapon.GetScope();
@@ -760,9 +761,77 @@ namespace BLREdit
 
                     return UI.MainWindow.CalculateBaseScopeIn(this, allMovementScopeIn, WikiScopeIn, defaultScope);
                 }
-                else
+                else if (Category == "scope")
                 {
                     return WikiStats?.scopeInTime ?? 0;
+                }
+                else
+                {
+                    var defaultWeapon = MagiCowsWeapon.DefaultAssaultRifle;
+                    var defaultReciever = defaultWeapon.GetReciever();
+                    var defaultStock = defaultWeapon.GetStock();
+                    var defaultBarrel = defaultWeapon.GetBarrel();
+                    var defaultScope = defaultWeapon.GetScope();
+                    var defaultMagazine = defaultWeapon.GetMagazine();
+                    var defaultMuzzle = defaultWeapon.GetMuzzle();
+
+                    var window = UI.MainWindow.self;
+
+                    if (UI.MainWindow.LastSelectedImage.Name.Contains("primary"))
+                    {
+                        defaultReciever = window.PrimaryRecieverImage.DataContext as ImportItem;
+                        defaultStock = window.PrimaryStockImage.DataContext as ImportItem;
+                        defaultBarrel = window.PrimaryBarrelImage.DataContext as ImportItem;
+                        defaultScope = window.PrimaryScopeImage.DataContext as ImportItem;
+                        defaultMagazine = window.PrimaryMagazineImage.DataContext as ImportItem;
+                        defaultMuzzle = window.PrimaryMuzzleImage.DataContext as ImportItem;
+                    }
+                    else
+                    {
+                        defaultReciever = window.SecondaryRecieverImage.DataContext as ImportItem;
+                        defaultStock = window.SecondaryStockImage.DataContext as ImportItem;
+                        defaultBarrel = window.SecondaryBarrelImage.DataContext as ImportItem;
+                        defaultScope = window.SecondaryScopeImage.DataContext as ImportItem;
+                        defaultMagazine = window.SecondaryMagazineImage.DataContext as ImportItem;
+                        defaultMuzzle = window.SecondaryMuzzleImage.DataContext as ImportItem;
+                    }
+
+                    switch (Category)
+                    {
+                        case "barrel":
+                            defaultBarrel = this;
+                            break;
+                        case "stock":
+                            defaultStock = this;
+                            break;
+                        case "magazine":
+                            defaultMagazine = this;
+                            break;
+                        case "muzzle":
+                            defaultMuzzle = this;
+                            break;
+                    }
+
+                    List<ImportItem> items = new List<ImportItem>
+                    { 
+                        defaultReciever,
+                        defaultBarrel,
+                        defaultMagazine,
+                        defaultMuzzle,
+                        defaultScope,
+                        defaultStock
+                    };
+
+                    double ROF = 0, Reload = 0, Swap = 0, Zoom = 0, ScopeIn = 0, Run = 0;
+                    UI.MainWindow.AccumulateStatsOfWeaponParts(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
+
+                    double allMovementScopeIn = defaultBarrel?.weaponModifiers?.movementSpeed ?? 0;
+                    allMovementScopeIn += defaultStock?.weaponModifiers?.movementSpeed ?? 0;
+                    allMovementScopeIn /= 80.0f;
+                    allMovementScopeIn = Math.Min(Math.Max(allMovementScopeIn, -1.0f), 1.0f);
+                    double WikiScopeIn = ScopeIn;
+
+                    return UI.MainWindow.CalculateBaseScopeIn(defaultReciever, allMovementScopeIn, WikiScopeIn, defaultScope);
                 }
             }
         }
