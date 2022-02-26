@@ -144,7 +144,7 @@ namespace BLREdit.UI
             return item != null && item.IniStats != null && item.stats != null;
         }
 
-        private static void UpdateStat(ImportItem[] items, ref double ROF, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
+        public static void AccumulateStatsOfWeaponParts(ImportItem[] items, ref double ROF, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
         {
             foreach (ImportItem item in items)
             {
@@ -181,10 +181,8 @@ namespace BLREdit.UI
                     items.Add(Scope);
                 if (Stock != null)
                     items.Add(Stock);
-                if (Stock != null)
-                    items.Add(Stock);
 
-                UpdateStat(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
+                AccumulateStatsOfWeaponParts(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
 
                 AmmoMag = Reciever.IniStats.MagSize + Magazine?.weaponModifiers?.ammo ?? 0; 
                 AmmoRes = AmmoMag * Reciever.IniStats.InitialMagazines;

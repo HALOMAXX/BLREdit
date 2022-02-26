@@ -11,6 +11,8 @@ namespace BLREdit
         Recoil = 4,
         Range = 5,
         Run = 6,
+        Zoom = 7,
+        ScopeInTime = 8,
     }
 
     public enum ImportGearSortingType

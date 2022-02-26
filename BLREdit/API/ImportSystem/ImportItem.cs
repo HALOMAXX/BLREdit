@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media.Imaging;
 
@@ -106,6 +107,11 @@ namespace BLREdit
                     if (weaponModifiers.damage == 0)
                     { return true; }
                 }
+                else if (Category == "scope")
+                {
+                    if ((WikiStats?.zoom ?? 0) == 0)
+                    { return true; }
+                }
                 else if (Category == "magazine")
                 {
                     if (weaponModifiers.ammo == 0)
@@ -174,7 +180,7 @@ namespace BLREdit
                 else if (Category == "scope")
                 {
                     //return (0.240 + (WikiStats?.scopeInTime ?? 0)).ToString("0.000") + "s";
-                    return (0.0 + (WikiStats?.scopeInTime ?? 0)).ToString("0.00") + "s";
+                    return "+" + (0.0 + (WikiStats?.scopeInTime ?? 0)).ToString("0.00") + "s";
                 }
                 else if (Category == "magazine")
                 {
@@ -215,8 +221,8 @@ namespace BLREdit
                 }
                 else if (Category == "scope")
                 {
-                    //if (WikiStats?.scopeInTime == 0)
-                    //{ return true; } // the "invalid scope" for some reason doesn't follow this, so currently disabling it for consistency's sake
+                    if ((WikiStats?.scopeInTime ?? 0) == 0)
+                    { return true; } // the "invalid scope" for some reason doesn't follow this, so currently disabling it for consistency's sake
                 }
                 else if (Category == "magazine")
                 {
@@ -709,6 +715,54 @@ namespace BLREdit
                     {
                         return weaponModifiers?.movementSpeed ?? 0;
                     }
+                }
+            }
+        }
+
+        public double Zoom
+        {
+            get
+            {
+                return WikiStats?.zoom ?? 0;
+            }
+        }
+
+        public double ScopeInTime
+        {
+            get 
+            {
+                if (Category == "primary" || Category == "secondary")
+                {
+                    var defaultWeapon = MagiCowsWeapon.GetDefaultSetupOfReciever(this);
+                    var defaultStock = defaultWeapon.GetStock();
+                    var defaultBarrel = defaultWeapon.GetBarrel();
+                    var defaultScope = defaultWeapon.GetScope();
+
+
+
+                    List<ImportItem> items = new List<ImportItem>
+                    { this,
+                        defaultBarrel,
+                        defaultWeapon.GetMagazine(),
+                        defaultWeapon.GetMuzzle(),
+                        defaultScope,
+                        defaultStock
+                    };
+
+                    double ROF = 0, Reload = 0, Swap = 0, Zoom = 0, ScopeIn = 0, Run = 0;
+                    UI.MainWindow.AccumulateStatsOfWeaponParts(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
+
+                    double allMovementScopeIn = defaultBarrel?.weaponModifiers?.movementSpeed ?? 0;
+                    allMovementScopeIn += defaultStock?.weaponModifiers?.movementSpeed ?? 0;
+                    allMovementScopeIn /= 80.0f;
+                    allMovementScopeIn = Math.Min(Math.Max(allMovementScopeIn, -1.0f), 1.0f);
+                    double WikiScopeIn = ScopeIn;
+
+                    return UI.MainWindow.CalculateBaseScopeIn(this, allMovementScopeIn, WikiScopeIn, defaultScope);
+                }
+                else
+                {
+                    return WikiStats?.scopeInTime ?? 0;
                 }
             }
         }
