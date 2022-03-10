@@ -17,10 +17,11 @@ namespace BLREdit
         public string LowerBody { get; set; }
         public int Camo { get; set; }
 
-        public MagiCowsProfile ConvertToNew()
+        public ExportSystemProfile ConvertToNew()
         {
-            MagiCowsProfile profile = new MagiCowsProfile 
+            ExportSystemProfile profile = new ExportSystemProfile
             {
+                ProfileName = PlayerName,
                 PlayerName = PlayerName,
                 Loadout1 = Loadout1,
                 Loadout2 = Loadout2,

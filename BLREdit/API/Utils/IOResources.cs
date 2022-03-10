@@ -21,6 +21,11 @@ namespace BLREdit
         public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
 
 
+        public static void CopyToBackup(string file)
+        {
+            FileInfo info = new FileInfo(file);
+            File.Copy(file, ExportSystem.CurrentBackupFolder.FullName + info.Name);
+        }
 
         public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
         {

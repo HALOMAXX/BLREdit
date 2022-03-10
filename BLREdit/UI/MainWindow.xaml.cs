@@ -1517,7 +1517,7 @@ namespace BLREdit.UI
             if (!IsPlayerNameChanging)
             {
                 IsPlayerProfileChanging = true;
-                if (ProfileComboBox.SelectedValue is MagiCowsProfile profile)
+                if (ProfileComboBox.SelectedValue is ExportSystemProfile profile)
                 {
                     ExportSystem.ActiveProfile = profile;
                     PlayerNameTextBox.Text = profile.PlayerName;

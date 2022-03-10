@@ -9,11 +9,6 @@ namespace BLREdit
         public MagiCowsLoadout Loadout2 { get; set; } = MagiCowsLoadout.DefaultLoadout2;
         public MagiCowsLoadout Loadout3 { get; set; } = MagiCowsLoadout.DefaultLoadout3;
 
-        public void SaveProfile()
-        {
-            IOResources.SerializeFile(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + "\\" + PlayerName + ".json", this);
-        }
-
         public override string ToString()
         {
             return LoggingSystem.ObjectToTextWall(this);

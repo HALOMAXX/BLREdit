@@ -7,12 +7,13 @@ namespace BLREdit
 {
     public class ExportSystem
     {
-        public static ObservableCollection<MagiCowsProfile> Profiles { get; } = LoadAllProfiles();
+        public static DirectoryInfo CurrentBackupFolder { get; private set; }
+        public static ObservableCollection<ExportSystemProfile> Profiles { get; } = LoadAllProfiles();
 
         private static int currentProfile = 0;
-        public static MagiCowsProfile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
+        public static ExportSystemProfile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
 
-        private static MagiCowsProfile GetCurrentProfile()
+        private static ExportSystemProfile GetCurrentProfile()
         {
             if (currentProfile <= 0 && currentProfile >= Profiles.Count)
             {
@@ -30,7 +31,7 @@ namespace BLREdit
             return Profiles[currentProfile];
         }
 
-        private static void SetCurrentProfile(MagiCowsProfile profile)
+        private static void SetCurrentProfile(ExportSystemProfile profile)
         {
             if (profile == null)
             {
@@ -48,15 +49,17 @@ namespace BLREdit
             }
         }
 
-        private static ObservableCollection<MagiCowsProfile> LoadAllProfiles()
+        private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()
         {
-            ObservableCollection<MagiCowsProfile> profiles = new ObservableCollection<MagiCowsProfile>();
+            ObservableCollection<ExportSystemProfile> profiles = new ObservableCollection<ExportSystemProfile>();
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.SEPROFILE_DIR);
+            CurrentBackupFolder = Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\Backup\\" + System.DateTime.Now.ToString("dd-MM-yy") + "\\" + System.DateTime.Now.ToString("HH-mm") + "\\");
             foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
             {
-                MagiCowsProfile profile;
-                try { profile = IOResources.DeserializeFile<MagiCowsProfile>(file); }
+                IOResources.CopyToBackup(file);
+                ExportSystemProfile profile;
+                try { profile = IOResources.DeserializeFile<ExportSystemProfile>(file); }
                 catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
                 profiles.Add(profile);
             }
@@ -64,19 +67,19 @@ namespace BLREdit
             //initialize profiles with atleast one profile
             if (profiles.Count <= 0)
             {
-                profiles.Add(new MagiCowsProfile());
+                profiles.Add(new ExportSystemProfile());
             }
 
             return profiles;
         }
 
-        public static void CreateSEProfile(MagiCowsProfile profile)
+        public static void CreateSEProfile(ExportSystemProfile profile)
         { 
             SELoadout[] player = SELoadout.CreateFromMagiCowsProfile(profile);
             IOResources.SerializeFile(IOResources.SEPROFILE_DIR + profile.PlayerName + ".json", player);
         }
 
-        public static void CopyToClipBoard(MagiCowsProfile profile)
+        public static void CopyToClipBoard(ExportSystemProfile profile)
         {
             string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile, true);
             bool success = false;
@@ -123,34 +126,27 @@ namespace BLREdit
 
         public static void SaveProfiles()
         {
-            foreach (MagiCowsProfile profile in Profiles)
+            foreach (ExportSystemProfile profile in Profiles)
             {
-                profile.SaveProfile();
+                IOResources.SerializeFile(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + "\\" + profile.ProfileName + ".json", profile as MagiCowsProfile);
             }
         }
 
         public static void RemoveActiveProfileFromDisk()
         {
-            File.Delete(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + ActiveProfile.PlayerName + ".json");
+            File.Delete(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + ActiveProfile.ProfileName + ".json");
         }
 
         public static void AddProfile()
         {
-            int count = 0;
-            foreach (MagiCowsProfile profile in Profiles)
+            
+            if (Profiles.Count <= 0)
             {
-                if (profile.PlayerName.Contains("Player"))
-                {
-                    count++;
-                }
-            }
-            if (count == 0)
-            {
-                Profiles.Add(new MagiCowsProfile() { PlayerName = "Player" });
+                Profiles.Add(new ExportSystemProfile() { ProfileName = "Profile", PlayerName = ActiveProfile.PlayerName });
             }
             else
             {
-                Profiles.Add(new MagiCowsProfile() { PlayerName = "Player" + count });
+                Profiles.Add(new ExportSystemProfile() { ProfileName = "Profile" + Profiles.Count, PlayerName = ActiveProfile.PlayerName });
             }
         }
     }
