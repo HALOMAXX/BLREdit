@@ -60,7 +60,7 @@ namespace BLREdit
             Regex regex = new Regex(@"\((.)\)");
 
             bool oldProfiles = false;
-
+            int i = 0;
             foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
             {
                 IOResources.CopyToBackup(file);
@@ -75,7 +75,10 @@ namespace BLREdit
                     LoggingSystem.LogInfo("Old Profile: " + file);
                     oldProfiles = true;
                     File.Delete(file);
+                    profile.ProfileName = i.ToString();
                 }
+
+                i++;
             }
 
             //initialize profiles with atleast one profile
