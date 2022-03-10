@@ -9,6 +9,8 @@ namespace BLREdit
     public class ExportSystemProfile : MagiCowsProfile
     {
         public string ProfileName { get; set; } = "0";
-        public string Name { get { return PlayerName + '(' + ProfileName + ')'; } }
+        public string Name { get { return '(' + ProfileName + ')' + PlayerName; } }
+
+        public int Index { get { return int.Parse(ProfileName); } }
     }
 }

@@ -36,8 +36,8 @@ namespace BLREdit
             }
         }
 
-        public const string CurrentVersion = "v0.3.8";
-        const string CurrentVersionName = "BLREdit Added Zoom and ScopeInTime sorting options";
+        public const string CurrentVersion = "v0.3.9";
+        const string CurrentVersionName = "BLREdit New Profile System";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()

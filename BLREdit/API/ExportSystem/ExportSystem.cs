@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace BLREdit
@@ -52,12 +54,13 @@ namespace BLREdit
 
         private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()
         {
-            ObservableCollection<ExportSystemProfile> profiles = new ObservableCollection<ExportSystemProfile>();
+            //ObservableCollection<ExportSystemProfile> profiles = new ObservableCollection<ExportSystemProfile>();
+            List<ExportSystemProfile> profiles = new List<ExportSystemProfile>();
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.SEPROFILE_DIR);
             CurrentBackupFolder = Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\Backup\\" + System.DateTime.Now.ToString("dd-MM-yy") + "\\" + System.DateTime.Now.ToString("HH-mm") + "\\");
 
-            Regex regex = new Regex(@"\((.)\)");
+            Regex regex = new Regex(@"\((.*)\)");
 
             bool oldProfiles = false;
             int i = 0;
@@ -87,14 +90,16 @@ namespace BLREdit
                 profiles.Add(new ExportSystemProfile());
             }
 
+            profiles.Sort((x,y) => x.Index.CompareTo(y.Index));
+
             if (oldProfiles)
             {
                 //Not Good!
-                Profiles = profiles;
+                Profiles = new ObservableCollection<ExportSystemProfile>(profiles);
                 SaveProfiles();
             }
 
-            return profiles;
+            return new ObservableCollection<ExportSystemProfile>(profiles); ;
         }
 
         public static void CreateSEProfile(ExportSystemProfile profile)

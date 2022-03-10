@@ -24,7 +24,7 @@ namespace BLREdit
         public static void CopyToBackup(string file)
         {
             FileInfo info = new FileInfo(file);
-            File.Copy(file, ExportSystem.CurrentBackupFolder.FullName + info.Name);
+            File.Copy(file, ExportSystem.CurrentBackupFolder.FullName + info.Name, true);
         }
 
         public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
