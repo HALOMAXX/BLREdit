@@ -8,6 +8,7 @@ namespace BLREdit
 {
     public class ExportSystemProfile : MagiCowsProfile
     {
-        public string ProfileName { get; set; } = "Profile";
+        public string ProfileName { get; set; } = "0";
+        public string Name { get { return PlayerName + '(' + ProfileName + ')'; } }
     }
 }

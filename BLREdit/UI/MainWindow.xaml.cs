@@ -1527,6 +1527,25 @@ namespace BLREdit.UI
                 IsPlayerProfileChanging = false;
             }
         }
+        private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!IsPlayerProfileChanging)
+            {
+                IsPlayerNameChanging = true;
+                int index = ProfileComboBox.SelectedIndex;
+                ProfileComboBox.ItemsSource = null;
+                //ProfileComboBox.Items.Clear();
+                ExportSystem.RemoveActiveProfileFromDisk();
+                ExportSystem.ActiveProfile.PlayerName = PlayerNameTextBox.Text;
+                ProfileComboBox.ItemsSource = ExportSystem.Profiles;
+                ProfileComboBox.SelectedIndex = index;
+                IsPlayerNameChanging = false;
+            }
+        }
+        private void AddProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExportSystem.AddProfile();
+        }
 
         private void Loadout1Button_Click(object sender, RoutedEventArgs e)
         {
@@ -1558,29 +1577,9 @@ namespace BLREdit.UI
             ExportSystem.CreateSEProfile(ExportSystem.ActiveProfile);
         }
 
-        private void AddProfileButton_Click(object sender, RoutedEventArgs e)
-        {
-            ExportSystem.AddProfile();
-        }
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ExportSystem.SaveProfiles();
-        }
-        private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!IsPlayerProfileChanging)
-            {
-                IsPlayerNameChanging = true;
-                int index = ProfileComboBox.SelectedIndex;
-                ProfileComboBox.ItemsSource = null;
-                //ProfileComboBox.Items.Clear();
-                ExportSystem.RemoveActiveProfileFromDisk();
-                ExportSystem.ActiveProfile.PlayerName = PlayerNameTextBox.Text;
-                ProfileComboBox.ItemsSource = ExportSystem.Profiles;
-                ProfileComboBox.SelectedIndex = index;
-                IsPlayerNameChanging = false;
-            }
         }
 
         private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)

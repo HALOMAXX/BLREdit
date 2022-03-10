@@ -2,13 +2,14 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace BLREdit
 {
     public class ExportSystem
     {
         public static DirectoryInfo CurrentBackupFolder { get; private set; }
-        public static ObservableCollection<ExportSystemProfile> Profiles { get; } = LoadAllProfiles();
+        public static ObservableCollection<ExportSystemProfile> Profiles { get; private set; } = LoadAllProfiles();
 
         private static int currentProfile = 0;
         public static ExportSystemProfile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
@@ -55,19 +56,39 @@ namespace BLREdit
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.SEPROFILE_DIR);
             CurrentBackupFolder = Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\Backup\\" + System.DateTime.Now.ToString("dd-MM-yy") + "\\" + System.DateTime.Now.ToString("HH-mm") + "\\");
+
+            Regex regex = new Regex(@"\((.)\)");
+
+            bool oldProfiles = false;
+
             foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
             {
                 IOResources.CopyToBackup(file);
                 ExportSystemProfile profile;
+
                 try { profile = IOResources.DeserializeFile<ExportSystemProfile>(file); }
                 catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
                 profiles.Add(profile);
+
+                if (!regex.IsMatch(file))
+                {
+                    LoggingSystem.LogInfo("Old Profile: " + file);
+                    oldProfiles = true;
+                    File.Delete(file);
+                }
             }
 
             //initialize profiles with atleast one profile
             if (profiles.Count <= 0)
             {
                 profiles.Add(new ExportSystemProfile());
+            }
+
+            if (oldProfiles)
+            {
+                //Not Good!
+                Profiles = profiles;
+                SaveProfiles();
             }
 
             return profiles;
@@ -81,7 +102,7 @@ namespace BLREdit
 
         public static void CopyToClipBoard(ExportSystemProfile profile)
         {
-            string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile, true);
+            string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile as MagiCowsProfile, true);
             bool success = false;
 
             try
@@ -128,7 +149,7 @@ namespace BLREdit
         {
             foreach (ExportSystemProfile profile in Profiles)
             {
-                IOResources.SerializeFile(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + "\\" + profile.ProfileName + ".json", profile as MagiCowsProfile);
+                IOResources.SerializeFile(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + "\\" + profile.Name + ".json", profile);
             }
         }
 
@@ -139,15 +160,7 @@ namespace BLREdit
 
         public static void AddProfile()
         {
-            
-            if (Profiles.Count <= 0)
-            {
-                Profiles.Add(new ExportSystemProfile() { ProfileName = "Profile", PlayerName = ActiveProfile.PlayerName });
-            }
-            else
-            {
-                Profiles.Add(new ExportSystemProfile() { ProfileName = "Profile" + Profiles.Count, PlayerName = ActiveProfile.PlayerName });
-            }
+            Profiles.Add(new ExportSystemProfile() { ProfileName = Profiles.Count.ToString(), PlayerName = ActiveProfile.PlayerName });
         }
     }
 }
