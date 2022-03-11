@@ -1267,6 +1267,8 @@ namespace BLREdit.UI
 
             if (image.Name.Contains("Muzzle"))
             {
+                if (!(SecondaryRecieverImage.DataContext as ImportItem).IsValidModType("muzzle"))
+                { return; }
                 SetItemList(ImportSystem.Mods.muzzles);
                 LastSelectedImage = image;
                 LoggingSystem.LogInfo("ItemList Set for Muzzles");
