@@ -1,9 +1,11 @@
-﻿namespace BLREdit
+﻿using System;
+
+namespace BLREdit
 {
-    public class MagiCowsLoadout
+    public class MagiCowsLoadout : ICloneable
     {
-        public MagiCowsWeapon Primary { get; set; } = MagiCowsWeapon.DefaultAssaultRifle;
-        public MagiCowsWeapon Secondary { get; set; } = MagiCowsWeapon.DefaultLightPistol;
+        public MagiCowsWeapon Primary { get; set; } = (MagiCowsWeapon)MagiCowsWeapon.DefaultAssaultRifle.Clone();
+        public MagiCowsWeapon Secondary { get; set; } = (MagiCowsWeapon)MagiCowsWeapon.DefaultLightPistol.Clone();
         public int Gear1 { get; set; } = 1;
         public int Gear2 { get; set; } = 2;
         public int Gear3 { get; set; } = 0;
@@ -18,6 +20,14 @@
         public override string ToString()
         {
             return LoggingSystem.ObjectToTextWall(this);
+        }
+
+        public object Clone()
+        {
+            MagiCowsLoadout clone = (MagiCowsLoadout)this.MemberwiseClone();
+            clone.Primary = (MagiCowsWeapon)this.Primary.Clone();
+            clone.Secondary = (MagiCowsWeapon)this.Secondary.Clone();
+            return clone;
         }
 
         public static MagiCowsLoadout DefaultLoadout1 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultAssaultRifle, Secondary = MagiCowsWeapon.DefaultLightPistol };
@@ -52,5 +62,7 @@
         {
             return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosBody);
         }
+
+
     }
 }

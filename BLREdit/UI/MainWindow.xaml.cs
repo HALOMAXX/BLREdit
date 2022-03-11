@@ -1545,6 +1545,8 @@ namespace BLREdit.UI
         private void AddProfileButton_Click(object sender, RoutedEventArgs e)
         {
             ExportSystem.AddProfile();
+            this.ProfileComboBox.DataContext = null;
+            this.ProfileComboBox.DataContext = ExportSystem.Profiles;
         }
 
         private void Loadout1Button_Click(object sender, RoutedEventArgs e)

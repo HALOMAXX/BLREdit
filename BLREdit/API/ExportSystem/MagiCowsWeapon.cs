@@ -1,6 +1,8 @@
-﻿namespace BLREdit
+﻿using System;
+
+namespace BLREdit
 {
-    public class MagiCowsWeapon
+    public class MagiCowsWeapon : ICloneable
     {
         public string Receiver { get; set; } = "Assault Rifle";
         public int Muzzle { get; set; } = 8;
@@ -17,20 +19,15 @@
             return LoggingSystem.ObjectToTextWall(this);
         }
 
-        public MagiCowsWeapon Copy()
+        public object Clone()
         {
-            return new MagiCowsWeapon()
-            {
-                Barrel = Barrel,
-                Grip = Grip,
-                Magazine = Magazine,
-                Muzzle = Muzzle,
-                Receiver = Receiver,
-                Scope = Scope,
-                Stock = Stock,
-                Tag = Tag,
-                Camo = Camo
-            };
+            MagiCowsWeapon clone = (MagiCowsWeapon)this.MemberwiseClone();
+            clone.Receiver = string.Copy(this.Receiver);
+            clone.Stock = string.Copy(this.Stock);
+            clone.Barrel = string.Copy(this.Barrel);
+            clone.Scope = string.Copy(this.Scope);
+            clone.Grip = string.Copy(this.Grip);
+            return clone;
         }
 
 
@@ -97,7 +94,7 @@
             {
                 if (weapon.Receiver == item.name)
                 {
-                    return weapon.Copy();
+                    return (MagiCowsWeapon)weapon.Clone();
                 }
             }
             return null;
@@ -146,10 +143,10 @@
         public const string DefaultStock = "Silverwood Standard Stock";
         public const string DefaultBPStock = "MMRS BP-SR Tactical";
 
-        public static MagiCowsWeapon DefaultAssaultRifle { get { return DefaultWeapons[10].Copy(); } }
-        public static MagiCowsWeapon DefaultPrestigeAssaultRifle { get { return DefaultWeapons[14].Copy(); } }
-        public static MagiCowsWeapon DefaultSubmachineGun { get { return DefaultWeapons[15].Copy(); } }
-        public static MagiCowsWeapon DefaultBAR { get { return DefaultWeapons[11].Copy(); } }
-        public static MagiCowsWeapon DefaultLightPistol { get { return DefaultWeapons[22].Copy(); } }
+        public static MagiCowsWeapon DefaultAssaultRifle { get { return (MagiCowsWeapon)DefaultWeapons[10].Clone(); } }
+        public static MagiCowsWeapon DefaultPrestigeAssaultRifle { get { return (MagiCowsWeapon)DefaultWeapons[14].Clone(); } }
+        public static MagiCowsWeapon DefaultSubmachineGun { get { return (MagiCowsWeapon)DefaultWeapons[15].Clone(); } }
+        public static MagiCowsWeapon DefaultBAR { get { return (MagiCowsWeapon)DefaultWeapons[11].Clone(); } }
+        public static MagiCowsWeapon DefaultLightPistol { get { return (MagiCowsWeapon)DefaultWeapons[22].Clone(); } }
     }
 }
