@@ -473,7 +473,7 @@ namespace BLREdit
                 }
                 else if (Category == "helmet")
                 {
-                    return pawnModifiers.HRVDuration.ToString("0.0") + "u/s";
+                    return pawnModifiers.HRVRechargeRate.ToString("0.0") + "u/s";
                 }
                 return "";
             }
@@ -500,7 +500,7 @@ namespace BLREdit
                 }
                 else if (Category == "helmet")
                 {
-                    if (pawnModifiers.HRVDuration == 0)
+                    if (pawnModifiers.HRVRechargeRate == 0)
                     { return true; }
                 }
                 return false;
