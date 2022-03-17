@@ -166,9 +166,16 @@ namespace BLREdit
             File.Delete(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + ActiveProfile.ProfileName + ".json");
         }
 
-        public static void AddProfile()
+        public static ExportSystemProfile AddProfile(string Name)
         {
-            Profiles.Add(new ExportSystemProfile() { ProfileName = Profiles.Count.ToString(), PlayerName = ActiveProfile.PlayerName });
+            var prof = new ExportSystemProfile() { ProfileName = Profiles.Count.ToString(), PlayerName = Name };
+            Profiles.Add(prof);
+            return prof;
+        }
+
+        public static ExportSystemProfile AddProfile()
+        {
+            return AddProfile(ActiveProfile.PlayerName);
         }
     }
 }

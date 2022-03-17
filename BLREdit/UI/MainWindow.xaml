@@ -328,7 +328,7 @@
                     <Button Name="Loadout1Button" Content="Loadout 1" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout1Button_Click"/>
                     <Button Name="Loadout2Button" Content="Loadout 2" HorizontalAlignment="Left" Margin="120,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout2Button_Click"/>
                     <Button Name="Loadout3Button" Content="Loadout 3" HorizontalAlignment="Left" Margin="230,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout3Button_Click"/>
-                    <Button Name="CopyToClipboardButton" Content="CopyToClipBoard" HorizontalAlignment="Left" Margin="120,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="CopyToClipboardButton_Click"/>
+                    <Button Name="CopyToClipboardButton" Content="CopyToClipBoard" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="CopyToClipboardButton_Click"/>
                     <Button Name="AddProfileButton" Content="AddProfile" HorizontalAlignment="Left" Margin="241,0,0,0" VerticalAlignment="Top" Height="22" Width="100" Click="AddProfileButton_Click"/>
                     <TextBox Name="PlayerNameTextBox"  HorizontalAlignment="Left" Margin="121,0,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="120" Height="22" TextChanged="PlayerNameTextBox_TextChanged"/>
 
@@ -412,6 +412,7 @@
 
                     <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="203,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorGearLabel" Content="0" HorizontalAlignment="Left" Margin="262,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Button Name="RandomLoadout" Content="RandomLoadout" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
                 </Grid>
             </ScrollViewer>
         </Grid>

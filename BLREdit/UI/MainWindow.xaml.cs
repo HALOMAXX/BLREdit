@@ -17,6 +17,8 @@ namespace BLREdit.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static Random rng = new Random();
+
         /// <summary>
         /// Contains the last selected Image for setting the ItemList
         /// </summary>
@@ -1661,6 +1663,131 @@ namespace BLREdit.UI
                 SortDirectionButton.Content = "Ascending";
             }
             ApplySorting();
+        }
+
+        private void RandomLoadout_Click(object sender, RoutedEventArgs e)
+        {
+
+            ExportSystemProfile rngProfile = ExportSystem.AddProfile("Random");
+
+            rngProfile.Loadout1 = RandomizeLoadout();
+            rngProfile.Loadout2 = RandomizeLoadout();
+            rngProfile.Loadout3 = RandomizeLoadout();
+
+            IsPlayerProfileChanging = true;
+            IsPlayerNameChanging = true;
+
+            ExportSystem.ActiveProfile = rngProfile;
+
+            PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
+
+            ProfileComboBox.SelectedIndex = ExportSystem.Profiles.IndexOf(ExportSystem.ActiveProfile);
+
+            SetLoadout(ExportSystem.ActiveProfile.Loadout1);
+
+            Loadout1Button.IsEnabled = false;
+            Loadout2Button.IsEnabled = true;
+            Loadout3Button.IsEnabled = true;
+
+            IsPlayerProfileChanging = false;
+            IsPlayerNameChanging = false;
+
+
+            LastSelectedImage = PrimaryRecieverImage;
+        }
+
+        private MagiCowsLoadout RandomizeLoadout()
+        {
+            MagiCowsLoadout loadout = new MagiCowsLoadout();
+            //get random recievers
+            loadout.Primary = MagiCowsWeapon.GetDefaultSetupOfReciever(ImportSystem.Weapons.primary[rng.Next(0, ImportSystem.Weapons.primary.Length)]);
+
+            loadout.Secondary.Stock = null;
+            loadout.Secondary.Barrel = null;
+            loadout.Secondary.Scope = null;
+            loadout.Secondary.Muzzle = 0;
+            loadout.Secondary.Magazine = 0;
+
+            ImportItem secon = ImportSystem.Weapons.secondary[rng.Next(0, ImportSystem.Weapons.secondary.Length)];
+
+            if (MagiCowsWeapon.GetDefaultSetupOfReciever(secon) != null)
+            {
+                loadout.Secondary = MagiCowsWeapon.GetDefaultSetupOfReciever(secon);
+            }
+            else
+            {
+                loadout.Secondary.Receiver = secon.name;
+            }
+
+
+
+
+            loadout.Tactical = rng.Next(0, ImportSystem.Gear.tactical.Length);
+            
+            loadout.Gear1 = rng.Next(0, ImportSystem.Gear.attachments.Length);
+            loadout.Gear2 = rng.Next(0, ImportSystem.Gear.attachments.Length);
+            loadout.Gear3 = rng.Next(0, ImportSystem.Gear.attachments.Length);
+            loadout.Gear4 = rng.Next(0, ImportSystem.Gear.attachments.Length);
+
+            loadout.Camo = rng.Next(0, ImportSystem.Mods.camosBody.Length);
+
+            loadout.Helmet = rng.Next(0, ImportSystem.Gear.helmets.Length);
+            loadout.UpperBody = rng.Next(0, ImportSystem.Gear.upperBodies.Length);
+            loadout.LowerBody = rng.Next(0, ImportSystem.Gear.lowerBodies.Length);
+
+
+            int i = rng.Next(0, 2);
+            if (i > 0)
+            {
+                loadout.IsFemale = false;
+            }
+            else
+            {
+                loadout.IsFemale = true;
+            }
+
+            loadout.Primary = RandomizeWeapon(loadout.Primary.GetReciever());
+            if (loadout.Secondary.Magazine != 0)
+            {
+                loadout.Secondary = RandomizeWeapon(loadout.Secondary.GetReciever());
+            }
+            return loadout;
+        }
+
+        private MagiCowsWeapon RandomizeWeapon(ImportItem Weapon)
+        {
+            MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(Weapon);
+            var Barrels = ImportSystem.Mods.barrels.Where(o => o.IsValidFor(Weapon)).ToArray();
+            var Muzzles = ImportSystem.Mods.muzzles.Where(o => o.IsValidFor(Weapon)).ToArray();
+            var Scopes = ImportSystem.Mods.scopes.Where(o => o.IsValidFor(Weapon)).ToArray();
+            var Magazines = ImportSystem.Mods.magazines.Where(o => o.IsValidFor(Weapon)).ToArray();
+            var Stocks = ImportSystem.Mods.stocks.Where(o => o.IsValidFor(Weapon)).ToArray();
+
+            if (Barrels.Length > 0)
+            {
+                weapon.Barrel = Barrels[rng.Next(0, Barrels.Length)].name;
+            }
+
+            if (Scopes.Length > 0)
+            {
+                weapon.Scope = Scopes[rng.Next(0, Scopes.Length)].name;
+            }
+
+            if (Stocks.Length > 0)
+            {
+                weapon.Stock = Stocks[rng.Next(0, Stocks.Length)].name;
+            }
+
+            if (Muzzles.Length > 0)
+            {
+                weapon.Muzzle = ImportSystem.GetMuzzleID(Muzzles[rng.Next(0, Muzzles.Length)]);
+            }
+
+            if (Magazines.Length > 0)
+            {
+                weapon.Magazine = ImportSystem.GetMuzzleID(Magazines[rng.Next(0, Magazines.Length)]);
+            }
+            return weapon;
         }
     }
 }
