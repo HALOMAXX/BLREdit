@@ -1749,18 +1749,19 @@ namespace BLREdit.UI
             loadout.Primary = RandomizeWeapon(loadout.Primary.GetReciever());
             if (loadout.Secondary.Magazine != 0)
             {
-                loadout.Secondary = RandomizeWeapon(loadout.Secondary.GetReciever());
+                loadout.Secondary = RandomizeWeapon(loadout.Secondary.GetReciever(), true);
             }
             return loadout;
         }
 
-        private MagiCowsWeapon RandomizeWeapon(ImportItem Weapon)
+        private MagiCowsWeapon RandomizeWeapon(ImportItem Weapon, bool IsSecondary = false)
         {
             MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(Weapon);
             var Barrels = ImportSystem.Mods.barrels.Where(o => o.IsValidFor(Weapon)).ToArray();
-            var Muzzles = ImportSystem.Mods.muzzles.Where(o => o.IsValidFor(Weapon)).ToArray();
             var Scopes = ImportSystem.Mods.scopes.Where(o => o.IsValidFor(Weapon)).ToArray();
             var Magazines = ImportSystem.Mods.magazines.Where(o => o.IsValidFor(Weapon)).ToArray();
+            //Dependant of Barrel on secondarioes
+            var Muzzles = ImportSystem.Mods.muzzles.Where(o => o.IsValidFor(Weapon)).ToArray();
             var Stocks = ImportSystem.Mods.stocks.Where(o => o.IsValidFor(Weapon)).ToArray();
 
             if (Barrels.Length > 0)
@@ -1773,19 +1774,21 @@ namespace BLREdit.UI
                 weapon.Scope = Scopes[rng.Next(0, Scopes.Length)].name;
             }
 
-            if (Stocks.Length > 0)
-            {
-                weapon.Stock = Stocks[rng.Next(0, Stocks.Length)].name;
-            }
-
-            if (Muzzles.Length > 0)
-            {
-                weapon.Muzzle = ImportSystem.GetMuzzleID(Muzzles[rng.Next(0, Muzzles.Length)]);
-            }
-
             if (Magazines.Length > 0)
             {
-                weapon.Magazine = ImportSystem.GetMuzzleID(Magazines[rng.Next(0, Magazines.Length)]);
+                weapon.Magazine = ImportSystem.GetMagazineID(Magazines[rng.Next(0, Magazines.Length)]);
+            }
+
+            if (CheckForPistolAndBarrel(Weapon) && weapon.Barrel != "" && weapon.Barrel != MagiCowsWeapon.NoBarrel || !IsSecondary)
+            {
+                if (Stocks.Length > 0)
+                { 
+                    weapon.Stock = Stocks[rng.Next(0, Stocks.Length)].name;
+                }
+                if (Muzzles.Length > 0)
+                {
+                    weapon.Muzzle = ImportSystem.GetMuzzleID(Muzzles[rng.Next(0, Muzzles.Length)]);
+                }
             }
             return weapon;
         }
