@@ -1785,7 +1785,7 @@ namespace BLREdit.UI
 
             if (Magazines.Length > 0)
             {
-                weapon.Magazine = ImportSystem.GetMuzzleID(Magazines[rng.Next(0, Magazines.Length)]);
+                weapon.Magazine = ImportSystem.GetMagazineID(Magazines[rng.Next(0, Magazines.Length)]);
             }
             return weapon;
         }
