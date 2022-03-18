@@ -1785,10 +1785,11 @@ namespace BLREdit.UI
                 { 
                     weapon.Stock = Stocks[rng.Next(0, Stocks.Length)].name;
                 }
-                if (Muzzles.Length > 0)
-                {
-                    weapon.Muzzle = ImportSystem.GetMuzzleID(Muzzles[rng.Next(0, Muzzles.Length)]);
-                }
+            }
+
+            if (Muzzles.Length > 0)
+            {
+                weapon.Muzzle = ImportSystem.GetMuzzleID(Muzzles[rng.Next(0, Muzzles.Length)]);
             }
             return weapon;
         }
