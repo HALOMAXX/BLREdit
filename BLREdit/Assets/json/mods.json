@@ -6243,7 +6243,7 @@
     },
     {
       "class": "FoxDataProvider_Magazine",
-      "icon": "t_MagSniper_Explosive_128x128",
+      "icon": "t_MagSniper_Incendiary_128x128",
       "name": "Incendiary Mag",
       "descriptorName": "Incendiary",
       "pawnModifiers": {
@@ -12970,7 +12970,7 @@
     },
     {
       "class": "FoxDataProvider_Magazine",
-      "icon": "t_MagRevolver_Standard_128x128",
+      "icon": "t_MagRevolver_Magnum_128x128",
       "name": "Magnum Cylinder",
       "descriptorName": "Magnum",
       "pawnModifiers": {
