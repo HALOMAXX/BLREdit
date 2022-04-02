@@ -1791,6 +1791,9 @@ namespace BLREdit.UI
             {
                 weapon.Muzzle = ImportSystem.GetMuzzleID(Muzzles[rng.Next(0, Muzzles.Length)]);
             }
+
+            weapon.IsHealthOkAndRepair();
+
             return weapon;
         }
     }

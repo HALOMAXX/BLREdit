@@ -69,16 +69,29 @@ namespace BLREdit
                 IOResources.CopyToBackup(file);
                 ExportSystemProfile profile;
 
+                bool requestDelete = false;
+
                 try { profile = IOResources.DeserializeFile<ExportSystemProfile>(file); }
                 catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
                 profiles.Add(profile);
+
+                if (!profile.IsHealthOkAndRepair())
+                {
+                    requestDelete = true;
+                }
 
                 if (!regex.IsMatch(file))
                 {
                     LoggingSystem.LogInfo("Old Profile: " + file);
                     oldProfiles = true;
-                    File.Delete(file);
+                    requestDelete = true;
                     profile.ProfileName = i.ToString();
+                }
+
+                if (requestDelete)
+                {
+                    try { File.Delete(file); }
+                    catch { LoggingSystem.LogError("Could not delete file:" + file); }
                 }
 
                 i++;

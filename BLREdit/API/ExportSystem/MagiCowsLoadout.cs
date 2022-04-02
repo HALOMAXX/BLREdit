@@ -30,6 +30,20 @@ namespace BLREdit
             return clone;
         }
 
+        public bool IsHealthOkAndRepair()
+        {
+            bool isHealthy = true;
+            if (!Primary.IsHealthOkAndRepair())
+            {
+                isHealthy = false;
+            }
+            if (!Secondary.IsHealthOkAndRepair())
+            {
+                isHealthy = false;
+            }
+            return isHealthy;
+        }
+
         public static MagiCowsLoadout DefaultLoadout1 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultAssaultRifle, Secondary = MagiCowsWeapon.DefaultLightPistol };
         public static MagiCowsLoadout DefaultLoadout2 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultSubmachineGun, Secondary = MagiCowsWeapon.DefaultLightPistol };
         public static MagiCowsLoadout DefaultLoadout3 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultBAR, Secondary = MagiCowsWeapon.DefaultLightPistol };

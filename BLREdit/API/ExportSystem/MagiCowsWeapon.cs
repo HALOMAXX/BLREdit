@@ -30,7 +30,28 @@ namespace BLREdit
             return clone;
         }
 
+        public bool IsHealthOkAndRepair()
+        {
+            if (string.IsNullOrEmpty(Barrel) || string.IsNullOrEmpty(Stock) || string.IsNullOrEmpty(Scope))
+            {
+                if (string.IsNullOrEmpty(Barrel))
+                {
+                    Barrel = NoBarrel;
+                }
 
+                if (string.IsNullOrEmpty(Stock))
+                {
+                    Stock = NoStock;
+                }
+
+                if (string.IsNullOrEmpty(Scope))
+                {
+                    Scope = NoScope;
+                }
+                return false;
+            }
+            return true;
+        }
 
         public ImportItem GetReciever()
         {
@@ -73,15 +94,15 @@ namespace BLREdit
         }
         public ImportItem GetStock()
         {
-            return ImportSystem.GetItemByName(this.Stock, ImportSystem.Mods.stocks);
+            return ImportSystem.GetItemByName(this.Stock, ImportSystem.Mods.stocks) ?? ImportSystem.GetItemByName(NoStock, ImportSystem.Mods.stocks);
         }
         public ImportItem GetBarrel()
         {
-            return ImportSystem.GetItemByName(this.Barrel, ImportSystem.Mods.barrels);
+            return ImportSystem.GetItemByName(this.Barrel, ImportSystem.Mods.barrels) ?? ImportSystem.GetItemByName(NoBarrel, ImportSystem.Mods.barrels);
         }
         public ImportItem GetScope()
         {
-            return ImportSystem.GetItemByName(this.Scope, ImportSystem.Mods.scopes);
+            return ImportSystem.GetItemByName(this.Scope, ImportSystem.Mods.scopes) ?? ImportSystem.GetItemByName(NoScope, ImportSystem.Mods.scopes);
         }
         public ImportItem GetGrip()
         {

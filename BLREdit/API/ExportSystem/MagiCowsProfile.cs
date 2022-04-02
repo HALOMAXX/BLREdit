@@ -13,5 +13,23 @@ namespace BLREdit
         {
             return LoggingSystem.ObjectToTextWall(this);
         }
+
+        public bool IsHealthOkAndRepair()
+        {
+            bool isHealthy = true;
+            if (!Loadout1.IsHealthOkAndRepair())
+            {
+                isHealthy = false;
+            }
+            if (!Loadout2.IsHealthOkAndRepair())
+            {
+                isHealthy = false;
+            }
+            if (!Loadout3.IsHealthOkAndRepair())
+            {
+                isHealthy = false;
+            }
+            return isHealthy;
+        }
     }
 }
