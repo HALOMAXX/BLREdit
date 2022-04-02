@@ -36,54 +36,60 @@ namespace BLREdit
             }
         }
 
-        public const string CurrentVersion = "v0.4.0";
-        const string CurrentVersionName = "BLREdit New Profile System and Random Loadout Generation";
+        public const string CurrentVersion = "v0.4.1";
+        const string CurrentVersionName = "BLREdit Some Fixes";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()
         {
-            GitHubClient client = new GitHubClient(new ProductHeaderValue("BLREdit"));
-            var releases = client.Repository.Release.GetAll(CurrentOwner, CurrentRepo);
-            releases.Wait();
-            var latest = releases.Result[0];
-            LoggingSystem.LogInfo("Newest Version: " + latest.TagName + " of " + latest.Name + " vs Current: " + CurrentVersion + " of " + CurrentVersionName);
-
-            string[] remoteVersionParts = latest.TagName.Split('v');
-            remoteVersionParts = remoteVersionParts[remoteVersionParts.Length - 1].Split('.');
-
-            string[] currentVersionParts = CurrentVersion.Split('v');
-            currentVersionParts = currentVersionParts[currentVersionParts.Length - 1].Split('.');
-
-            for (int i = 0; i < currentVersionParts.Length && i < remoteVersionParts.Length; i++)
+            try
             {
-                int? remote = null;
-                int? current = null;
-                try
+                GitHubClient client = new GitHubClient(new ProductHeaderValue("BLREdit"));
+                var releases = client.Repository.Release.GetAll(CurrentOwner, CurrentRepo);
+                releases.Wait();
+                var latest = releases.Result[0];
+                LoggingSystem.LogInfo("Newest Version: " + latest.TagName + " of " + latest.Name + " vs Current: " + CurrentVersion + " of " + CurrentVersionName);
+
+                string[] remoteVersionParts = latest.TagName.Split('v');
+                remoteVersionParts = remoteVersionParts[remoteVersionParts.Length - 1].Split('.');
+
+                string[] currentVersionParts = CurrentVersion.Split('v');
+                currentVersionParts = currentVersionParts[currentVersionParts.Length - 1].Split('.');
+
+                for (int i = 0; i < currentVersionParts.Length && i < remoteVersionParts.Length; i++)
                 {
-                    remote = int.Parse(remoteVersionParts[i]);
-                    current = int.Parse(currentVersionParts[i]);
-                }
-                catch
-                {
-                    LoggingSystem.LogWarning("Can't determine version differences!");
-                }
-                if (remote != null && current != null)
-                {
-                    if (remote > current)
+                    int? remote = null;
+                    int? current = null;
+                    try
                     {
-                        IsNewVersionAvailable = true;
-                        return;
+                        remote = int.Parse(remoteVersionParts[i]);
+                        current = int.Parse(currentVersionParts[i]);
                     }
-                    if (current > remote)
+                    catch
                     {
-                        return;
+                        LoggingSystem.LogWarning("Can't determine version differences!");
+                    }
+                    if (remote != null && current != null)
+                    {
+                        if (remote > current)
+                        {
+                            IsNewVersionAvailable = true;
+                            return;
+                        }
+                        if (current > remote)
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        LoggingSystem.LogWarning("Can't determine version differences!");
                     }
                 }
-                else
-                {
-                    LoggingSystem.LogWarning("Can't determine version differences!");
-                }
+
             }
+            catch 
+            { LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
         }
 
         public static void RuntimeCheck(bool force)
