@@ -1279,7 +1279,7 @@ namespace BLREdit.UI
             if (image.Name.Contains("Crosshair"))
             {
                 var item = (SecondaryScopeImage.DataContext as ImportItem);
-                item.LoadCrosshair();
+                item?.LoadCrosshair();
                 ItemList.ItemsSource = new ImportItem[] { item };
                 LastSelectedImage = SecondaryScopeImage;
                 LoggingSystem.LogInfo("ItemList Set for Scopes");
