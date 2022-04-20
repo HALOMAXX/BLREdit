@@ -36,7 +36,19 @@ namespace BLREdit
 
             //UpgradeIniStats();
 
-            LoggingSystem.LogInfo("BodyCamoCount:" + Mods.camosBody.Length);
+            for (int i = 0; i < Mods.camosBody.Length; i++)
+            {
+                if (i < Mods.camosWeapon.Length && Mods.camosBody[i].name == Mods.camosWeapon[i].name)
+                {
+
+                }
+                else
+                {
+                    LoggingSystem.LogInfo(Mods.camosBody[i].name + " is not the same!");
+                }
+            }
+
+            //LoggingSystem.LogInfo("BodyCamoCount:" + Mods.camosBody.Length);
             //LoggingSystem.LogInfo("WeaponCamoCount:" + Mods.camosWeapon.Length);
 
             LoggingSystem.LogInfoAppend(watch, "Import System");

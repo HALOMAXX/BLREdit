@@ -1340,7 +1340,7 @@ namespace BLREdit.UI
             }
             if (image.Name.Contains("CamoWeapon"))
             {
-                SetItemList(ImportSystem.Mods.camosBody);
+                SetItemList(ImportSystem.Mods.camosWeapon);
                 LoggingSystem.LogInfo("ItemList Set for 'Weapon' Camos");
                 return;
             }
