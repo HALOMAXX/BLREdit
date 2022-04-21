@@ -112,7 +112,7 @@ namespace BLREdit
 
         public static ImportItem GetItemByID(int index, ImportItem[] items)
         {
-            if (index < 0)
+            if (index < 0 || index >= items.Length)
             { return null; }
             return items[index];
         }
@@ -187,6 +187,15 @@ namespace BLREdit
         {
             return GetItemID(item, Mods.camosBody);
         }
+        public static int GetCamoWeaponID(ImportItem item)
+        {
+            return GetItemID(item, Mods.camosWeapon);
+        }
+        public static int GetAvatarID(ImportItem item)
+        {
+            return GetItemID(item, Gear.avatars);
+        }
+
         public static int GetItemID(ImportItem item, ImportItem[] items)
         {
             if (item == null) { return -1; }

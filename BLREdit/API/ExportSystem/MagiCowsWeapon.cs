@@ -78,7 +78,7 @@ namespace BLREdit
 
         public ImportItem GetCamo()
         {
-            return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosBody);
+            return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosWeapon);
         }
         public ImportItem GetTag()
         {

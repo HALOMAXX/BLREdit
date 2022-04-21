@@ -45,6 +45,9 @@ namespace BLREdit
 
         public void UpdateImages()
         {
+            List<ImportItem> newavatars = new List<ImportItem>(avatars);
+            newavatars.Add(new ImportItem() { name = "No Avatar" });
+            avatars = newavatars.ToArray();
             ImportSystem.UpdateImagesForImportItems(attachments);
             ImportSystem.UpdateImagesForImportItems(avatars);
             ImportSystem.UpdateImagesForImportItems(badges);

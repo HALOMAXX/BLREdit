@@ -16,6 +16,7 @@ namespace BLREdit
         public int UpperBody { get; set; } = 0;
         public int LowerBody { get; set; } = 0;
         public int Camo { get; set; } = 0;
+        public int Skin { get; set; } = 99;
 
         public override string ToString()
         {
@@ -77,6 +78,9 @@ namespace BLREdit
             return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosBody);
         }
 
-
+        public ImportItem GetSkin()
+        {
+            return ImportSystem.GetItemByID(this.Skin, ImportSystem.Gear.avatars);
+        }
     }
 }

@@ -926,8 +926,8 @@ namespace BLREdit.UI
                 { image.DataContext = item; LoggingSystem.LogInfo("Magazine:" + item.name + " with ID:" + ImportSystem.GetMagazineID(item) + " Set!"); }
                 if (image.Name.Contains("Tag") && ImportSystem.Gear.hangers.Contains(item))
                 { image.DataContext = item; LoggingSystem.LogInfo("Hanger:" + item.name + " with ID:" + ImportSystem.GetTagID(item) + " Set!"); }
-                if (image.Name.Contains("CamoWeapon") && ImportSystem.Mods.camosBody.Contains(item))
-                { image.DataContext = item; LoggingSystem.LogInfo("Camo:" + item.name + " with ID:" + ImportSystem.GetCamoBodyID(item) + " Set!"); }
+                if (image.Name.Contains("CamoWeapon") && ImportSystem.Mods.camosWeapon.Contains(item))
+                { image.DataContext = item; LoggingSystem.LogInfo("Camo:" + item.name + " with ID:" + ImportSystem.GetCamoWeaponID(item) + " Set!"); }
                 if (image.Name.Contains("CamoBody") && ImportSystem.Mods.camosBody.Contains(item))
                 { image.DataContext = item; LoggingSystem.LogInfo("Camo:" + item.name + " with ID:" + ImportSystem.GetCamoBodyID(item) + " Set!"); }
                 if (image.Name.Contains("Stock") && ImportSystem.Mods.stocks.Contains(item))
@@ -948,6 +948,10 @@ namespace BLREdit.UI
                 { image.DataContext = item; }
                 if (image.Name.Contains("LowerBody") && ImportSystem.Gear.lowerBodies.Contains(item))
                 { image.DataContext = item; }
+
+                if (image.Name.Contains("Avatar") && ImportSystem.Gear.avatars.Contains(item))
+                { image.DataContext = item; }
+
                 if (image.Name.Contains("Gear") && ImportSystem.Gear.attachments.Contains(item) && (image.IsEnabled || !updateLoadout))
                 { image.DataContext = item; }
                 if (image.Name.Contains("Tactical") && ImportSystem.Gear.tactical.Contains(item))
@@ -1205,6 +1209,7 @@ namespace BLREdit.UI
             ActiveLoadout.UpperBody = ImportSystem.GetUpperBodyID(UpperBodyImage.DataContext as ImportItem);
             ActiveLoadout.LowerBody = ImportSystem.GetLowerBodyID(LowerBodyImage.DataContext as ImportItem);
             ActiveLoadout.Camo = ImportSystem.GetCamoBodyID((PlayerCamoBodyImage.DataContext as ImportItem));
+            ActiveLoadout.Skin = ImportSystem.GetAvatarID(AvatarImage.DataContext as ImportItem);
         }
 
         private static void UpdateLoadoutWeapon(MagiCowsWeapon weapon, ImportItem reciever, ImportItem muzzle, ImportItem barrel, ImportItem magazine, ImportItem scope, ImportItem stock, ImportItem tag, ImportItem camo)
@@ -1452,6 +1457,15 @@ namespace BLREdit.UI
                         LoggingSystem.LogInfo("ItemList Set for UpperBodies");
                         return;
                     }
+
+                    if (image.Name.Contains("Avatar"))
+                    {
+                        SetItemList(ImportSystem.Gear.avatars);
+                        LastSelectedImage = image;
+                        LoggingSystem.LogInfo("ItemList Set for Avatars");
+                        return;
+                    }
+
                     if (image.Name.Contains("LowerBody"))
                     {
                         SetItemList(ImportSystem.Gear.lowerBodies);
@@ -1471,6 +1485,8 @@ namespace BLREdit.UI
             SetItemToImage(HelmetImage, loadout.GetHelmet(), false);
             SetItemToImage(UpperBodyImage, loadout.GetUpperBody(), false);
             SetItemToImage(LowerBodyImage, loadout.GetLowerBody(), false);
+
+            SetItemToImage(AvatarImage, loadout.GetSkin(), false);
 
             SetItemToImage(PlayerCamoBodyImage, loadout.GetCamo(), false);
             
