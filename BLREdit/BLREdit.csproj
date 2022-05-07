@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
+    <ApplicationIcon>BLREdit Logo (DraagonLizzard).ico</ApplicationIcon>
   </PropertyGroup>
 	
 	<ItemGroup>
@@ -23,6 +24,10 @@
 
 	<ItemGroup>
 	  <Resource Include="UI\Resources\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="BLREdit Logo (DraagonLizzard).ico" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -29,7 +29,7 @@ namespace BLREditTests
         public void PrimariesAndMods()
         {
             MainWindow window = new MainWindow();
-            foreach (ImportItem reciever in ImportSystem.Weapons.primary)
+            foreach (ImportItem reciever in ImportSystem.GetItemListOfType("primary"))
             {
                 FullRecieverTest(reciever, window, window.PrimaryRecieverImage, window.PrimaryBarrelImage, window.PrimaryStockImage, window.PrimaryScopeImage, window.PrimaryMuzzleImage, window.PrimaryMagazineImage, window.PrimaryCamoWeaponImage, window.PrimaryTagImage);
             }
@@ -39,7 +39,7 @@ namespace BLREditTests
         public void SecondariesAndMods()
         {
             MainWindow window = new MainWindow();
-            foreach (ImportItem reciever in ImportSystem.Weapons.secondary)
+            foreach (ImportItem reciever in ImportSystem.GetItemListOfType("secondary"))
             {
                 FullRecieverTest(reciever, window, window.SecondaryRecieverImage, window.SecondaryBarrelImage, window.SecondaryStockImage, window.SecondaryScopeImage, window.SecondaryMuzzleImage, window.SecondaryMagazineImage, window.SecondaryCamoWeaponImage, window.SecondaryTagImage);
             }
@@ -48,36 +48,36 @@ namespace BLREditTests
         public void FullRecieverTest(ImportItem reciever, MainWindow window, Image RecieverImg, Image BarrelImg, Image StockImg, Image ScopeImg, Image MuzzleImg, Image MagazineImg, Image CamoImg, Image HangerImg)
         {
             window.SetItemToImage(RecieverImg, reciever);
-            foreach (ImportItem scope in ImportSystem.Mods.scopes)
+            foreach (ImportItem scope in ImportSystem.GetItemListOfType("scopes"))
             {
                 window.SetItemToImage(ScopeImg, scope);
             }
 
-            foreach (ImportItem muzzle in ImportSystem.Mods.muzzles)
+            foreach (ImportItem muzzle in ImportSystem.GetItemListOfType("muzzles"))
             {
                 window.SetItemToImage(MuzzleImg, muzzle);
             }
 
-            foreach (ImportItem barrel in ImportSystem.Mods.barrels)
+            foreach (ImportItem barrel in ImportSystem.GetItemListOfType("barrels"))
             {
                 window.SetItemToImage(BarrelImg, barrel);
-                foreach (ImportItem stock in ImportSystem.Mods.stocks)
+                foreach (ImportItem stock in ImportSystem.GetItemListOfType("stocks"))
                 {
                     window.SetItemToImage(StockImg, stock);
                 }
             }
 
-            foreach (ImportItem magazine in ImportSystem.Mods.magazines)
+            foreach (ImportItem magazine in ImportSystem.GetItemListOfType("magazines"))
             {
                 window.SetItemToImage(MagazineImg, magazine);
             }
 
-            foreach (ImportItem camo in ImportSystem.Mods.camosBody)
+            foreach (ImportItem camo in ImportSystem.GetItemListOfType("camosBody"))
             {
                 window.SetItemToImage(CamoImg, camo);
             }
 
-            foreach (ImportItem hanger in ImportSystem.Gear.hangers)
+            foreach (ImportItem hanger in ImportSystem.GetItemListOfType("hangers"))
             {
                 window.SetItemToImage(HangerImg, hanger);
             }

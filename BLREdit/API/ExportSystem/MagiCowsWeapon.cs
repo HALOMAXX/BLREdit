@@ -55,58 +55,48 @@ namespace BLREdit
 
         public ImportItem GetReciever()
         {
-            return GetReciever(this);
-        }
-        public static ImportItem GetReciever(MagiCowsWeapon weapon)
-        {
-            foreach (ImportItem primary in ImportSystem.Weapons.primary)
-            {
-                if (primary.name == weapon.Receiver)
-                {
-                    return primary;
-                }
-            }
-            foreach (ImportItem secondary in ImportSystem.Weapons.secondary)
-            {
-                if (secondary.name == weapon.Receiver)
-                {
-                    return secondary;
-                }
-            }
+            ImportItem primary = ImportSystem.GetItemByNameAndType("primary", Receiver);
+            if (primary != null)
+                return primary;
+
+            ImportItem secondary = ImportSystem.GetItemByNameAndType("secondary", Receiver);
+            if (secondary != null)
+                return secondary;
+
             return null;
         }
 
         public ImportItem GetCamo()
         {
-            return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosWeapon);
+            return ImportSystem.GetItemByIDAndType("camosWeapon", Camo);
         }
         public ImportItem GetTag()
         {
-            return ImportSystem.GetItemByID(this.Tag, ImportSystem.Gear.hangers);
+            return ImportSystem.GetItemByIDAndType("hangers", Tag);
         }
         public ImportItem GetMagazine()
         {
-            return ImportSystem.GetItemByID(this.Magazine, ImportSystem.Mods.magazines);
+            return ImportSystem.GetItemByIDAndType("magazines", Magazine);
         }
         public ImportItem GetMuzzle()
         {
-            return ImportSystem.GetItemByID(this.Muzzle, ImportSystem.Mods.muzzles);
+            return ImportSystem.GetItemByIDAndType("muzzles", Muzzle);
         }
         public ImportItem GetStock()
         {
-            return ImportSystem.GetItemByName(this.Stock, ImportSystem.Mods.stocks) ?? ImportSystem.GetItemByName(NoStock, ImportSystem.Mods.stocks);
+            return ImportSystem.GetItemByNameAndType("stocks", Stock) ?? ImportSystem.GetItemByNameAndType("stocks", NoStock);
         }
         public ImportItem GetBarrel()
         {
-            return ImportSystem.GetItemByName(this.Barrel, ImportSystem.Mods.barrels) ?? ImportSystem.GetItemByName(NoBarrel, ImportSystem.Mods.barrels);
+            return ImportSystem.GetItemByNameAndType("barrels", Barrel) ?? ImportSystem.GetItemByNameAndType("barrels", NoBarrel);
         }
         public ImportItem GetScope()
         {
-            return ImportSystem.GetItemByName(this.Scope, ImportSystem.Mods.scopes) ?? ImportSystem.GetItemByName(NoScope, ImportSystem.Mods.scopes);
+            return ImportSystem.GetItemByNameAndType("scopes", Scope) ?? ImportSystem.GetItemByNameAndType("scopes", NoScope);
         }
         public ImportItem GetGrip()
         {
-            return ImportSystem.GetItemByName(this.Grip, ImportSystem.Mods.grips);
+            return ImportSystem.GetItemByNameAndType("grips", Grip);
         }
 
         public static MagiCowsWeapon GetDefaultSetupOfReciever(ImportItem item)

@@ -51,36 +51,33 @@ namespace BLREdit
 
         public static ImportItem GetGear(int GearID)
         {
-            return ImportSystem.Gear.attachments[GearID];
+            return ImportSystem.GetItemByIDAndType("attachments", GearID);
         }
-
         public ImportItem GetTactical()
         {
-            return ImportSystem.Gear.tactical[Tactical];
+            return ImportSystem.GetItemByIDAndType("tactical", Tactical);
         }
         public ImportItem GetHelmet()
         {
-            return ImportSystem.GetItemByID(this.Helmet, ImportSystem.Gear.helmets);
+            return ImportSystem.GetItemByIDAndType("helmets", Helmet);
         }
 
         public ImportItem GetUpperBody()
         {
-            return ImportSystem.GetItemByID(this.UpperBody, ImportSystem.Gear.upperBodies);
+            return ImportSystem.GetItemByIDAndType("upperBodies", UpperBody);
         }
 
         public ImportItem GetLowerBody()
         {
-            return ImportSystem.GetItemByID(this.LowerBody, ImportSystem.Gear.lowerBodies);
+            return ImportSystem.GetItemByIDAndType("lowerBodies", LowerBody);
         }
-
         public ImportItem GetCamo()
         {
-            return ImportSystem.GetItemByID(this.Camo, ImportSystem.Mods.camosBody);
+            return ImportSystem.GetItemByIDAndType("camosBody", Camo);
         }
-
         public ImportItem GetSkin()
         {
-            return ImportSystem.GetItemByID(this.Skin, ImportSystem.Gear.avatars);
+            return ImportSystem.GetItemByIDAndType("avatars", Skin);
         }
     }
 }

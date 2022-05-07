@@ -561,8 +561,8 @@
     },
     {
       "class": "FoxDataProvider_Avatar",
-      "icon": "t_hero_Grendel",
-      "name": "",
+      "icon": "t_MARS_128x128",
+      "name": "Urban MARS",
       "tooltip": "",
       "uid": 50015
     },
