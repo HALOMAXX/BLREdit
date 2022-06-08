@@ -46,6 +46,9 @@ namespace BLREdit
             ItemLists.Add(nameof(Mods.scopes), Mods.scopes);
             ItemLists.Add(nameof(Mods.stocks), Mods.stocks);
 
+            //LoggingSystem.LogInfo(Gear.helmets[0].weaponModifiers.ToString());
+            //LoggingSystem.LogInfo(Gear.helmets[0].pawnModifiers.ToString());
+
             ItemLists.Add(nameof(Weapons.depot), Weapons.depot);
             ItemLists.Add(nameof(Weapons.primary), Weapons.primary);
             ItemLists.Add(nameof(Weapons.secondary), Weapons.secondary);
@@ -85,7 +88,7 @@ namespace BLREdit
 
                 if (entry.Key == "avatars")
                 {
-                    entry.Value.Add(new ImportItem() { name = "No Avatar" });
+                    entry.Value.Add(new ImportItem() { name = "No Avatar", Category = "avatars" });
                 }
                 LoggingSystem.LogInfoAppend(watch, " " + ToRemove.Count + " have been Removed");
             }
@@ -218,6 +221,7 @@ namespace BLREdit
 
         public static List<ImportItem> GetItemListOfType(string Type)
         {
+            if (string.IsNullOrEmpty(Type)) return null;
             if (ItemLists.TryGetValue(Type, out List<ImportItem> items))
             {
                 return items;
@@ -228,8 +232,22 @@ namespace BLREdit
             }
         }
 
+        public static ImportItem[] GetItemArrayOfType(string Type)
+        {
+            if (string.IsNullOrEmpty(Type)) return null;
+            if (ItemLists.TryGetValue(Type, out List<ImportItem> items))
+            {
+                return items.ToArray();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static int GetIDOfItem(ImportItem item)
         {
+            if (item == null) return -1;
             if (ItemLists.TryGetValue(item.Category, out List<ImportItem> items))
             {
                 return items.IndexOf(item);
@@ -242,9 +260,10 @@ namespace BLREdit
 
         public static ImportItem GetItemByIDAndType(string Type, int ID)
         {
+            if (ID < 0 || string.IsNullOrEmpty(Type)) return null;
             if (ItemLists.TryGetValue(Type, out List<ImportItem> items))
             {
-                if (ID < items.Count && ID >= 0)
+                if (ID < items.Count)
                 {
                     return items[ID];
                 }
@@ -262,6 +281,7 @@ namespace BLREdit
 
         public static int GetIDByNameAndType(string Type, string Name)
         {
+            if(string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;
             if (ItemLists.TryGetValue(Type, out List<ImportItem> items))
             {
                 foreach (ImportItem item in items)
@@ -281,6 +301,7 @@ namespace BLREdit
 
         public static ImportItem GetItemByNameAndType(string Type, string Name)
         {
+            if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return null;
             if (ItemLists.TryGetValue(Type, out List<ImportItem> items))
             {
                 foreach (ImportItem item in items)

@@ -36,8 +36,8 @@ namespace BLREdit
             }
         }
 
-        public const string CurrentVersion = "v0.4.6";
-        const string CurrentVersionName = "BLREdit Fixes";
+        public const string CurrentVersion = "v0.4.8";
+        const string CurrentVersionName = "BLREdit Hotfix";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()

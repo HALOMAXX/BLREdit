@@ -45,19 +45,19 @@ namespace BLREdit
                 {
                     return "Damage:";
                 }
-                else if(Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if(Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return "Damage:";
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     return "Zoom:";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     return "Ammo:";
                 }
-                else if (Category == "helmet" || Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "helmets" || Category == "upperBodies" || Category == "lowerBodies")
                 {
                     return "Health:";
                 }
@@ -73,19 +73,19 @@ namespace BLREdit
                     double[] damage = UI.MainWindow.CalculateDamage(this, 0);
                     return damage[0].ToString("0") + "/" + damage[1].ToString("0");
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return weaponModifiers.damage + "%";
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     return (1.3 + (WikiStats?.zoom ?? 0)).ToString("0.00") + "x";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     return weaponModifiers.ammo.ToString("0");
                 }
-                else if (Category == "helmet" || Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "helmets" || Category == "upperBodies" || Category == "lowerBodies")
                 {
                     return pawnModifiers.Health.ToString("0");
                 }
@@ -102,22 +102,22 @@ namespace BLREdit
                     if (damage[0] == 0)
                     { return true; }
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     if (weaponModifiers.damage == 0)
                     { return true; }
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     if ((WikiStats?.zoom ?? 0) == 0)
                     { return true; }
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (weaponModifiers.ammo == 0)
                     { return true; }
                 }
-                else if (Category == "helmet" || Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "helmets" || Category == "upperBodies" || Category == "lowerBodies")
                 {
                     if (pawnModifiers.Health == 0)
                     { return true; }
@@ -134,15 +134,15 @@ namespace BLREdit
                 {
                     return "Aim:";
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return "Accuracy:";
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     return "Scope In:";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (Contains(40021, 40002))
                     {
@@ -153,11 +153,11 @@ namespace BLREdit
                         return "Reload:";
                     }
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     return "Head Armor:";
                 }
-                else if (Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "upperBodies" || Category == "lowerBodies")
                 {
                     return "Run:";
                 }
@@ -173,16 +173,16 @@ namespace BLREdit
                     double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
                     return spread[0].ToString("0.00") + '°';
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return weaponModifiers.accuracy + "%";
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     //return (0.240 + (WikiStats?.scopeInTime ?? 0)).ToString("0.000") + "s";
                     return "+" + (0.0 + (WikiStats?.scopeInTime ?? 0)).ToString("0.00") + "s";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (Contains(40021, 40002))
                     { 
@@ -193,11 +193,11 @@ namespace BLREdit
                         return WikiStats.reload.ToString("0.00") + 's';
                     }
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     return pawnModifiers.HelmetDamageReduction.ToString("0") + '%';
                 }
-                else if (Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "upperBodies" || Category == "lowerBodies")
                 {
                     return pawnModifiers.MovementSpeed.ToString("0.00");
                 }
@@ -214,17 +214,17 @@ namespace BLREdit
                     if (spread[0] == 0)
                     { return true; }
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     if (weaponModifiers.accuracy == 0)
                     { return true; }
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     if ((WikiStats?.scopeInTime ?? 0) == 0)
                     { return true; } // the "invalid scope" for some reason doesn't follow this, so currently disabling it for consistency's sake
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (Contains(40021, 40002))
                     {
@@ -237,12 +237,12 @@ namespace BLREdit
                         { return true; }
                     }
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     if (pawnModifiers.HelmetDamageReduction == 0)
                     { return true; }
                 }
-                else if (Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "upperBodies" || Category == "lowerBodies")
                 {
                     if (pawnModifiers.MovementSpeed == 0)
                     { return true; }
@@ -259,23 +259,23 @@ namespace BLREdit
                 {
                     return "Hip:";
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return "Recoil:";
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     return "Run:";
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     return "Is Infrared:";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     return "Run:";
                 }
-                else if (Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "upperBodies" || Category == "lowerBodies")
                 {
                     return "Gear:";
                 }
@@ -291,26 +291,26 @@ namespace BLREdit
                     double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
                     return spread[1].ToString("0.00") + '°';
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return weaponModifiers.recoil + "%";
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     return pawnModifiers.MovementSpeed.ToString("0.00");
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     if (uid == 45019 || uid == 45020 || uid == 45021)
                     { return "True"; }
                     else
                     { return "False"; }
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     return weaponModifiers.movementSpeed.ToString("0") + "%";
                 }
-                else if (Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "upperBodies" || Category == "lowerBodies")
                 {
                     return pawnModifiers.GearSlots.ToString("0");
                 }
@@ -327,27 +327,27 @@ namespace BLREdit
                     if (spread[1] == 0)
                     { return true; }
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     if (weaponModifiers.recoil == 0)
                     { return true; }
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     if (pawnModifiers.MovementSpeed == 0)
                     { return true; }
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     if (uid != 45019 && uid != 45020 && uid != 45021)
                     { return true; }
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (weaponModifiers.movementSpeed == 0)
                     { return true; }
                 }
-                else if (Category == "upperBody" || Category == "lowerBody")
+                else if (Category == "upperBodies" || Category == "lowerBodies")
                 {
                     if (pawnModifiers.GearSlots == 0)
                     { return true; }
@@ -364,15 +364,15 @@ namespace BLREdit
                 {
                     return "Move:";
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return "Range:";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     return "Damage:";
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     return "HRV:";
                 }
@@ -388,15 +388,15 @@ namespace BLREdit
                     double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
                     return spread[2].ToString("0.00") + '°';
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return weaponModifiers.range + "%";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     return weaponModifiers.damage.ToString("0") + '%';
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     return pawnModifiers.HRVDuration.ToString("0.0");
                 }
@@ -412,17 +412,17 @@ namespace BLREdit
                     if (spread[2] == 0)
                     { return true; }
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     if (weaponModifiers.range == 0)
                     { return true; }
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (weaponModifiers.damage == 0)
                     { return true; }
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     if (pawnModifiers.HRVDuration == 0)
                     { return true; }
@@ -439,15 +439,15 @@ namespace BLREdit
                 {
                     return "Recoil:";
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return "Run:";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     return "Recoil:";
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     return "Recharge:";
                 }
@@ -463,15 +463,15 @@ namespace BLREdit
                     double recoil = UI.MainWindow.CalculateRecoil(this, 0);
                     return recoil.ToString("0.00") + '°';
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     return weaponModifiers.movementSpeed + "%";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     return weaponModifiers.recoil + "%"; ;
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     return pawnModifiers.HRVRechargeRate.ToString("0.0") + "u/s";
                 }
@@ -488,17 +488,17 @@ namespace BLREdit
                     if (recoil == 0)
                     { return true; }
                 }
-                else if (Category == "barrel" || Category == "muzzle" || Category == "stock")
+                else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
                 {
                     if (weaponModifiers.movementSpeed == 0)
                     { return true; }
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (weaponModifiers.recoil == 0)
                     { return true; }
                 }
-                else if (Category == "helmet")
+                else if (Category == "helmets")
                 {
                     if (pawnModifiers.HRVRechargeRate == 0)
                     { return true; }
@@ -527,7 +527,7 @@ namespace BLREdit
                 {
                     return "Explo:";
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (Contains(40021, 40002))
                     {
@@ -562,7 +562,7 @@ namespace BLREdit
                 {
                     return pawnModifiers.ExplosiveProtection.ToString("0") + '%';
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (Contains(40021, 40002))
                     {
@@ -586,7 +586,7 @@ namespace BLREdit
                     if (range[0] == 0)
                     { return true; }
                 }
-                else if (Category == "magazine")
+                else if (Category == "magazines")
                 {
                     if (Contains(40021, 40002))
                     {
@@ -723,7 +723,7 @@ namespace BLREdit
                 { return UI.MainWindow.CalculateSpeed(this, 0); }
                 else
                 {
-                    if (Category == "helmet" || Category == "upperBody" || Category == "lowerBody")
+                    if (Category == "helmets" || Category == "upperBodies" || Category == "lowerBodies")
                     { 
                         return pawnModifiers?.MovementSpeed ?? 0;
                     }
@@ -777,7 +777,7 @@ namespace BLREdit
 
                     return UI.MainWindow.CalculateBaseScopeIn(this, allMovementScopeIn, WikiScopeIn, defaultScope);
                 }
-                else if (Category == "scope")
+                else if (Category == "scopes")
                 {
                     return WikiStats?.scopeInTime ?? 0;
                 }
@@ -814,16 +814,16 @@ namespace BLREdit
 
                     switch (Category)
                     {
-                        case "barrel":
+                        case "barrels":
                             defaultBarrel = this;
                             break;
-                        case "stock":
+                        case "stocks":
                             defaultStock = this;
                             break;
-                        case "magazine":
+                        case "magazines":
                             defaultMagazine = this;
                             break;
-                        case "muzzle":
+                        case "muzzles":
                             defaultMuzzle = this;
                             break;
                     }
@@ -940,7 +940,7 @@ namespace BLREdit
 
         public bool IsValidFor(ImportItem item)
         {
-            if (item.tooltip == "Depot Item!" && (Category != "secondary" && Category != "tactical" && Category != "attachments" && Category != "helmet" && Category != "lowerBody" && Category != "upperBody")) { return false; }
+            if (item.tooltip == "Depot Item!" && (Category != "secondary" && Category != "tactical" && Category != "attachments" && Category != "helmets" && Category != "lowerBodies" && Category != "upperBodies")) { return false; }
             if (validFor == null) { return true; }
 
             foreach (int id in validFor)
@@ -954,7 +954,7 @@ namespace BLREdit
 
         internal bool IsValidModType(string modType)
         {
-            if (modType == "helmet" || modType == "lowerBody" || modType == "upperBody" || modType == "tactical" || modType == "depot") { return true; }
+            if (modType == "helmets" || modType == "lowerBodies" || modType == "upperBodies" || modType == "tactical" || modType == "depot") { return true; }
             foreach (string supportedModType in supportedMods)
             {
                 if (modType == supportedModType)

@@ -757,7 +757,7 @@ namespace BLREdit.UI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SetItemList(ImportSystem.GetItemListOfType("primary"));
+            SetItemList("primary");
             if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
             {
                 System.Diagnostics.Process.Start("https://github.com/" + App.CurrentOwner + "/" + App.CurrentRepo + "/releases");
@@ -1231,7 +1231,7 @@ namespace BLREdit.UI
 
             if (image.Name.Contains("Reciever"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("primary"));
+                SetItemList("primary");
                 LastSelectedImage = PrimaryRecieverImage;
                 LoggingSystem.LogInfo("ItemList Set for Primary Reciever");
                 return;
@@ -1241,7 +1241,7 @@ namespace BLREdit.UI
             {
                 if (!(PrimaryRecieverImage.DataContext as ImportItem).IsValidModType("muzzle"))
                 { return; }
-                SetItemList(ImportSystem.GetItemListOfType("muzzles"));
+                SetItemList("muzzles");
                 LastSelectedImage = image;
                 LoggingSystem.LogInfo("ItemList Set for Muzzles");
                 return;
@@ -1265,7 +1265,7 @@ namespace BLREdit.UI
 
             if (image.Name.Contains("Reciever"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("secondary"));
+                SetItemList("secondary");
                 LastSelectedImage = SecondaryRecieverImage;
                 LoggingSystem.LogInfo("ItemList Set for Secondary Reciever");
                 return;
@@ -1275,7 +1275,7 @@ namespace BLREdit.UI
             {
                 if (!(SecondaryRecieverImage.DataContext as ImportItem).IsValidModType("muzzle"))
                 { return; }
-                SetItemList(ImportSystem.GetItemListOfType("muzzles"));
+                SetItemList("muzzles");
                 LastSelectedImage = image;
                 LoggingSystem.LogInfo("ItemList Set for Muzzles");
                 return;
@@ -1298,19 +1298,19 @@ namespace BLREdit.UI
             
             if (image.Name.Contains("Reciever"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("primary"));
+                SetItemList("primary");
                 LoggingSystem.LogInfo("ItemList Set for Primary Reciever");
                 return;
             }
             if (image.Name.Contains("Magazine"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("magazines"));
+                SetItemList("magazines");
                 LoggingSystem.LogInfo("ItemList Set for Magazines");
                 return;
             }
             if (image.Name.Contains("Stock"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("stocks"));
+                SetItemList("stocks");
                 LoggingSystem.LogInfo("ItemList Set for Stocks");
                 return;
             }
@@ -1320,38 +1320,39 @@ namespace BLREdit.UI
                 {
                     item.RemoveCrosshair();
                 }
-                SetItemList(ImportSystem.GetItemListOfType("scopes"));
+                SetItemList("scopes");
                 LoggingSystem.LogInfo("ItemList Set for Scopes");
                 return;
             }
             if (image.Name.Contains("Barrel"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("barrels"));
+                SetItemList("barrels");
                 LoggingSystem.LogInfo("ItemList Set for Barrels");
                 return;
             }
             if (image.Name.Contains("Grip"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("grips"));
+                SetItemList("grips");
                 LoggingSystem.LogInfo("ItemList Set for Grips");
                 return;
             }
             if (image.Name.Contains("Tag"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("hangers"));
+                SetItemList("hangers");
                 LoggingSystem.LogInfo("ItemList Set for Tags");
                 return;
             }
             if (image.Name.Contains("CamoWeapon"))
             {
-                SetItemList(ImportSystem.GetItemListOfType("camosWeapon"));
+                SetItemList("camosWeapon");
                 LoggingSystem.LogInfo("ItemList Set for 'Weapon' Camos");
                 return;
             }
         }
 
-        public void SetItemList(List<ImportItem> list)
+        public void SetItemList(string Type)
         {
+            var list = ImportSystem.GetItemListOfType(Type);
             if (list.Count > 0)
             {
                 int index = SortComboBox1.SelectedIndex;
@@ -1407,7 +1408,7 @@ namespace BLREdit.UI
                     {
                         if (img.Name.Contains("Gear"))
                         {
-                            SetItemList(ImportSystem.GetItemListOfType("attachments"));
+                            SetItemList("attachments");
                             LastSelectedImage = img;
                             LoggingSystem.LogInfo("ItemList Set for Gear");
                             return;
@@ -1429,28 +1430,28 @@ namespace BLREdit.UI
                     }
                     if (image.Name.Contains("Tactical"))
                     {
-                        SetItemList(ImportSystem.GetItemListOfType("tactical"));
+                        SetItemList("tactical");
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Tactical");
                         return;
                     }
                     if (image.Name.Contains("CamoBody"))
                     {
-                        SetItemList(ImportSystem.GetItemListOfType("camosBody"));
+                        SetItemList("camosBody");
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Body Camos");
                         return;
                     }
                     if (image.Name.Contains("Helmet"))
                     {
-                        SetItemList(ImportSystem.GetItemListOfType("helmets"));
+                        SetItemList("helmets");
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Helemts");
                         return;
                     }
                     if (image.Name.Contains("UpperBody"))
                     {
-                        SetItemList(ImportSystem.GetItemListOfType("upperBodies"));
+                        SetItemList("upperBodies");
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for UpperBodies");
                         return;
@@ -1458,7 +1459,7 @@ namespace BLREdit.UI
 
                     if (image.Name.Contains("Avatar"))
                     {
-                        SetItemList(ImportSystem.GetItemListOfType("avatars"));
+                        SetItemList("avatars");
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for Avatars");
                         return;
@@ -1466,7 +1467,7 @@ namespace BLREdit.UI
 
                     if (image.Name.Contains("LowerBody"))
                     {
-                        SetItemList(ImportSystem.GetItemListOfType("lowerBodies"));
+                        SetItemList("lowerBodies");
                         LastSelectedImage = image;
                         LoggingSystem.LogInfo("ItemList Set for LowerBodies");
                         return;
