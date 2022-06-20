@@ -21,92 +21,100 @@ namespace BLREdit
             System.Diagnostics.Stopwatch watch = null;
             if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Initializing Import System");
 
-            //ImportGear Gear = IOResources.DeserializeFile<ImportGear>(IOResources.GEAR_FILE);
-            //ImportMods Mods = IOResources.DeserializeFile<ImportMods>(IOResources.MOD_FILE);
-            //ImportWeapons Weapons = IOResources.DeserializeFile<ImportWeapons>(IOResources.WEAPON_FILE);
-
-            //ItemLists.Add(nameof(Gear.attachments), Gear.attachments);
-            //ItemLists.Add(nameof(Gear.avatars), Gear.avatars);
-            //ItemLists.Add(nameof(Gear.badges), Gear.badges);
-            //ItemLists.Add(nameof(Gear.emotes), Gear.emotes);
-            //ItemLists.Add(nameof(Gear.hangers), Gear.hangers);
-            //ItemLists.Add(nameof(Gear.helmets), Gear.helmets);
-            //ItemLists.Add(nameof(Gear.lowerBodies), Gear.lowerBodies);
-            //ItemLists.Add(nameof(Gear.tactical), Gear.tactical);
-            //ItemLists.Add(nameof(Gear.upperBodies), Gear.upperBodies);
-
-            //ItemLists.Add(nameof(Mods.ammo), Mods.ammo);
-            //ItemLists.Add(nameof(Mods.ammos), Mods.ammos);
-            //ItemLists.Add(nameof(Mods.barrels), Mods.barrels);
-            //ItemLists.Add(nameof(Mods.camosBody), Mods.camosBody);
-            //ItemLists.Add(nameof(Mods.camosWeapon), Mods.camosWeapon);
-            //ItemLists.Add(nameof(Mods.grips), Mods.grips);
-            //ItemLists.Add(nameof(Mods.magazines), Mods.magazines);
-            //ItemLists.Add(nameof(Mods.muzzles), Mods.muzzles);
-            //ItemLists.Add(nameof(Mods.primarySkins), Mods.primarySkins);
-            //ItemLists.Add(nameof(Mods.scopes), Mods.scopes);
-            //ItemLists.Add(nameof(Mods.stocks), Mods.stocks);
-
-            //ItemLists.Add(nameof(Weapons.depot), Weapons.depot);
-            //ItemLists.Add(nameof(Weapons.primary), Weapons.primary);
-            //ItemLists.Add(nameof(Weapons.secondary), Weapons.secondary);
-
             ItemLists = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>(IOResources.ITEM_LIST_FILE);
-
-            //CleanItems();
+            
             UpdateImages();
-            //LoadWikiStats();
-            //LoadIniStats();
 
-            //Dictionary<string, List<BLRItem>> Items = new();
-
-            //foreach (var itemList in ItemLists)
-            //{
-            //    List<BLRItem> items = new List<BLRItem>();
-            //    foreach (var item in itemList.Value)
-            //    {
-            //        items.Add(new BLRItem(item));
-            //    }
-            //    Items.Add(itemList.Key, items);
-            //}
-
-            //IOResources.SerializeFile("itemList.json", Items);
+            //UnifyItemList();
 
             if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch, "Import System");
         }
 
-        private static void CleanItems()
+        private static void UnifyItemList()
+        {
+            ImportGear Gear = IOResources.DeserializeFile<ImportGear>(IOResources.GEAR_FILE);
+            ImportMods Mods = IOResources.DeserializeFile<ImportMods>(IOResources.MOD_FILE);
+            ImportWeapons Weapons = IOResources.DeserializeFile<ImportWeapons>(IOResources.WEAPON_FILE);
+
+            Dictionary<string, List<ImportItem>> ListItems = new();
+
+            ListItems.Add(nameof(Gear.attachments), Gear.attachments);
+            ListItems.Add(nameof(Gear.avatars), Gear.avatars);
+            ListItems.Add(nameof(Gear.badges), Gear.badges);
+            ListItems.Add(nameof(Gear.emotes), Gear.emotes);
+            ListItems.Add(nameof(Gear.hangers), Gear.hangers);
+            ListItems.Add(nameof(Gear.helmets), Gear.helmets);
+            ListItems.Add(nameof(Gear.lowerBodies), Gear.lowerBodies);
+            ListItems.Add(nameof(Gear.tactical), Gear.tactical);
+            ListItems.Add(nameof(Gear.upperBodies), Gear.upperBodies);
+
+            ListItems.Add(nameof(Mods.ammo), Mods.ammo);
+            ListItems.Add(nameof(Mods.ammos), Mods.ammos);
+            ListItems.Add(nameof(Mods.barrels), Mods.barrels);
+            ListItems.Add(nameof(Mods.camosBody), Mods.camosBody);
+            ListItems.Add(nameof(Mods.camosWeapon), Mods.camosWeapon);
+            ListItems.Add(nameof(Mods.grips), Mods.grips);
+            ListItems.Add(nameof(Mods.magazines), Mods.magazines);
+            ListItems.Add(nameof(Mods.muzzles), Mods.muzzles);
+            ListItems.Add(nameof(Mods.primarySkins), Mods.primarySkins);
+            ListItems.Add(nameof(Mods.scopes), Mods.scopes);
+            ListItems.Add(nameof(Mods.stocks), Mods.stocks);
+
+            ListItems.Add(nameof(Weapons.depot), Weapons.depot);
+            ListItems.Add(nameof(Weapons.primary), Weapons.primary);
+            ListItems.Add(nameof(Weapons.secondary), Weapons.secondary);
+
+            CleanItems(ListItems);
+            LoadWikiStats(ListItems);
+            LoadIniStats(ListItems);
+
+            Dictionary<string, List<BLRItem>> Items = new();
+
+            foreach (var itemList in ListItems)
+            {
+                List<BLRItem> items = new List<BLRItem>();
+                foreach (var item in itemList.Value)
+                {
+                    items.Add(new BLRItem(item));
+                }
+                Items.Add(itemList.Key, items);
+            }
+
+            IOResources.SerializeFile("itemList.json", Items);
+        }
+
+        private static void CleanItems(Dictionary<string, List<ImportItem>> ListItems)
         {
 
-            //foreach (KeyValuePair<string, List<BLRItem>> entry in ItemLists)
-            //{
-            //    System.Diagnostics.Stopwatch watch = null;
-            //    if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Started Cleaning " + entry.Key, "");
-            //    List<ImportItem> ToRemove = new();
-            //    foreach (ImportItem item in entry.Value)
-            //    {
-            //        if (IsValidItem(item))
-            //        {
-            //            item.Category = entry.Key;
-            //        }
-            //        else
-            //        {
-            //            ToRemove.Add(item);
-            //        }
+            foreach (var entry in ListItems)
+            {
+                System.Diagnostics.Stopwatch watch = null;
+                if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Started Cleaning " + entry.Key, "");
+                List<ImportItem> ToRemove = new();
+                foreach (ImportItem item in entry.Value)
+                {
+                    if (IsValidItem(item))
+                    {
+                        item.Category = entry.Key;
+                    }
+                    else
+                    {
+                        ToRemove.Add(item);
+                    }
 
-            //    }
+                }
 
-            //    foreach (ImportItem item in ToRemove)
-            //    { 
-            //        entry.Value.Remove(item);
-            //    }
+                foreach (ImportItem item in ToRemove)
+                {
+                    entry.Value.Remove(item);
+                }
 
-            //    if (entry.Key == "avatars")
-            //    {
-            //        entry.Value.Add(new ImportItem() { name = "No Avatar", Category = "avatars" });
-            //    }
-            //    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch, " " + ToRemove.Count + " have been Removed");
-            //}
+                if (entry.Key == "avatars")
+                {
+                    entry.Value.Add(new ImportItem() { name = "No Avatar", Category = "avatars" });
+                }
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch, " " + ToRemove.Count + " have been Removed");
+            }
         }
 
         private static void UpdateImages()
@@ -129,10 +137,10 @@ namespace BLREdit
             }
         }
 
-        //private static void LoadWikiStats()
-        //{
-        //    AssignWikiStats(LoadWikiStatsFromCSV());
-        //}
+        private static void LoadWikiStats(Dictionary<string, List<ImportItem>> ListItems)
+        {
+            AssignWikiStats(LoadWikiStatsFromCSV(), ListItems);
+        }
 
         private static WikiStats[] LoadWikiStatsFromCSV()
         {
@@ -166,74 +174,74 @@ namespace BLREdit
             sr.Close();
             return stats.ToArray();
         }
-        //private static void AssignWikiStats(WikiStats[] stats)
-        //{
-        //    foreach (KeyValuePair<string, List<ImportItem>> entry in ItemLists)
-        //    {
-        //        foreach (BLRItem item in entry.Value)
-        //        {
-        //            bool found = false;
-        //            foreach (WikiStats stat in stats)
-        //            {
-        //                if (!found && stat.itemID == item.UID)
-        //                {
-        //                    item.WikiStats = new WikiStats()
-        //                    {
-        //                        itemID = item.UID,
-        //                        itemName = item.Name,
-        //                        aimSpread = stat.aimSpread,
-        //                        ammoMag = stat.ammoMag,
-        //                        ammoReserve = stat.ammoReserve,
-        //                        damage = stat.damage,
-        //                        firerate = stat.firerate,
-        //                        hipSpread = stat.hipSpread,
-        //                        moveSpread = stat.moveSpread,
-        //                        rangeClose = stat.rangeClose,
-        //                        rangeFar = stat.rangeFar,
-        //                        recoil = stat.recoil,
-        //                        reload = stat.reload,
-        //                        run = stat.run,
-        //                        scopeInTime = stat.scopeInTime,
-        //                        swaprate = stat.swaprate,
-        //                        zoom = stat.zoom
-        //                    };
-        //                    found = true;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        private static void AssignWikiStats(WikiStats[] stats, Dictionary<string, List<ImportItem>> ListItems)
+        {
+            foreach (var entry in ListItems)
+            {
+                foreach (ImportItem item in entry.Value)
+                {
+                    bool found = false;
+                    foreach (WikiStats stat in stats)
+                    {
+                        if (!found && stat.itemID == item.uid)
+                        {
+                            item.WikiStats = new WikiStats()
+                            {
+                                itemID = item.uid,
+                                itemName = item.name,
+                                aimSpread = stat.aimSpread,
+                                ammoMag = stat.ammoMag,
+                                ammoReserve = stat.ammoReserve,
+                                damage = stat.damage,
+                                firerate = stat.firerate,
+                                hipSpread = stat.hipSpread,
+                                moveSpread = stat.moveSpread,
+                                rangeClose = stat.rangeClose,
+                                rangeFar = stat.rangeFar,
+                                recoil = stat.recoil,
+                                reload = stat.reload,
+                                run = stat.run,
+                                scopeInTime = stat.scopeInTime,
+                                swaprate = stat.swaprate,
+                                zoom = stat.zoom
+                            };
+                            found = true;
+                        }
+                    }
+                }
+            }
+        }
 
-        //private static void LoadIniStats()
-        //{
-        //    var iniStats = IOResources.DeserializeFile<IniStats[]>(IOResources.ASSET_DIR + "\\filteredIniStats.json");
+        private static void LoadIniStats(Dictionary<string, List<ImportItem>> ListItems)
+        {
+            var iniStats = IOResources.DeserializeFile<IniStats[]>(IOResources.ASSET_DIR + "\\filteredIniStats.json");
 
-        //    ItemLists.TryGetValue("primary", out List<ImportItem> primary);
-        //    ItemLists.TryGetValue("secondary", out List<ImportItem> secondary);
+            ListItems.TryGetValue("primary", out List<ImportItem> primary);
+            ListItems.TryGetValue("secondary", out List<ImportItem> secondary);
 
-        //    AssignIniStatsTo(primary, iniStats);
-        //    AssignIniStatsTo(secondary, iniStats);
-        //}
+            AssignIniStatsTo(primary, iniStats);
+            AssignIniStatsTo(secondary, iniStats);
+        }
 
-        //internal static void AssignIniStatsTo(List<ImportItem> items, IniStats[] stats)
-        //{
-        //    foreach (ImportItem item in items)
-        //    {
-        //        bool found = false;
-        //        foreach (IniStats stat in stats)
-        //        {
-        //            if (stat.ItemID == item.uid)
-        //            {
-        //                item.IniStats = stat;
-        //                found = true;
-        //            }
-        //        }
-        //        if (!found)
-        //        {
-        //            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("No IniStats for " + item.name);
-        //        }
-        //    }
-        //}
+        internal static void AssignIniStatsTo(List<ImportItem> items, IniStats[] stats)
+        {
+            foreach (ImportItem item in items)
+            {
+                bool found = false;
+                foreach (IniStats stat in stats)
+                {
+                    if (stat.ItemID == item.uid)
+                    {
+                        item.IniStats = stat;
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("No IniStats for " + item.name);
+                }
+            }
+        }
 
         public static List<BLRItem> GetItemListOfType(string Type)
         {
@@ -369,9 +377,9 @@ namespace BLREdit
         }
 
 
-        public static bool IsValidItem(BLRItem item)
+        public static bool IsValidItem(ImportItem item)
         {
-            return item.Tooltip != "SHOULDN'T BE USED" && !string.IsNullOrEmpty(item.Name);
+            return item.tooltip != "SHOULDN'T BE USED" && !string.IsNullOrEmpty(item.name);
         }
     }
 }

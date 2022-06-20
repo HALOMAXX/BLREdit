@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media.Imaging;
 using System.Numerics;
+using System.Text.Json.Serialization;
 
 namespace BLREdit;
 
@@ -11,7 +12,7 @@ public class BLRItem
     public string DescriptorName { get; set; } = "";
     public string Icon { get; set; }
     public string Name { get; set; }
-    
+
     public BLRPawnModifiers PawnModifiers { get; set; }
     public List<string> SupportedMods { get; set; }
     public string Tooltip { get; set; }
@@ -21,53 +22,62 @@ public class BLRItem
     public BLRWeaponStats WeaponStats { get; set; }
     public BLRWikiStats WikiStats { get; set; }
 
+    
     public BitmapSource WideImage { get { return GetWideImage(); } }
     public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(); } }
     public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(); } }
-
+    [JsonIgnore]
     public BitmapSource wideImageMale = null;
+    [JsonIgnore]
     public BitmapSource largeSquareImageMale = null;
+    [JsonIgnore]
     public BitmapSource smallSquareImageMale = null;
-
+    [JsonIgnore]
     public BitmapSource wideImageFemale = null;
+    [JsonIgnore]
     public BitmapSource largeSquareImageFemale = null;
+    [JsonIgnore]
     public BitmapSource smallSquareImageFemale = null;
 
+
+    [JsonIgnore]
     public BitmapSource Crosshair { get; private set; }
     public BitmapSource MiniCrosshair { get { return GetBitmapCrosshair(Name); } }
 
-    //public BLRItem(ImportItem item)
-    //{ 
-    //    Category = item.Category;
-    //    Class = item._class;
-    //    DescriptorName = item.descriptorName;
-    //    Icon = item.icon;
-    //    Name = item.name;
 
-    //    if(item.pawnModifiers != null)
-    //    PawnModifiers = new BLRPawnModifiers(item.pawnModifiers);
+    public BLRItem() { }
+    public BLRItem(ImportItem item)
+    {
+        Category = item.Category;
+        Class = item._class;
+        DescriptorName = item.descriptorName;
+        Icon = item.icon;
+        Name = item.name;
 
-    //    SupportedMods = new();
-    //    if (item.supportedMods != null)
-    //    {
-    //        SupportedMods.AddRange(item.supportedMods);
-    //    }
-    //    Tooltip = item.tooltip;
-    //    UID = item.uid;
-    //    ValidFor = new();
-    //    if (item.validFor != null)
-    //    { 
-    //        ValidFor.AddRange(item.validFor);
-    //    }
-    //    if(item.weaponModifiers != null)
-    //    WeaponModifiers = new BLRWeaponModifiers(item.weaponModifiers);
+        if (item.pawnModifiers != null)
+            PawnModifiers = new BLRPawnModifiers(item.pawnModifiers);
 
-    //    if(item.stats != null && item.IniStats != null)
-    //    WeaponStats = new BLRWeaponStats(item.stats, item.IniStats);
+        SupportedMods = new();
+        if (item.supportedMods != null)
+        {
+            SupportedMods.AddRange(item.supportedMods);
+        }
+        Tooltip = item.tooltip;
+        UID = item.uid;
+        ValidFor = new();
+        if (item.validFor != null)
+        {
+            ValidFor.AddRange(item.validFor);
+        }
+        if (item.weaponModifiers != null)
+            WeaponModifiers = new BLRWeaponModifiers(item.weaponModifiers);
 
-    //    if(item.WikiStats != null)
-    //    WikiStats = new BLRWikiStats(item.WikiStats);
-    //}
+        if (item.stats != null && item.IniStats != null)
+            WeaponStats = new BLRWeaponStats(item.stats, item.IniStats);
+
+        if (item.WikiStats != null)
+            WikiStats = new BLRWikiStats(item.WikiStats);
+    }
 
     public BitmapSource GetWideImage()
     {
@@ -843,31 +853,32 @@ public class BLRPawnModifiers
     public double SwitchWeaponSpeed { get; set; } = 0;
     public double ToxicProtection { get; set; } = 0;
 
-    //public BLRPawnModifiers(PawnModifiers pawnModifiers)
-    //{
-    //    if (pawnModifiers == null)
-    //    { return; }
-    //    BodyDamageReduction = pawnModifiers.BodyDamageReduction;
-    //    ElectroProtection = pawnModifiers.ElectroProtection;
-    //    ExplosiveProtection = pawnModifiers.ExplosiveProtection;
-    //    GearSlots = pawnModifiers.GearSlots;
-    //    HRVDuration = pawnModifiers.HRVDuration;
-    //    HRVRechargeRate = pawnModifiers.HRVRechargeRate;
-    //    Health = pawnModifiers.Health;
-    //    HealthRecharge = pawnModifiers.HealthRecharge;
-    //    HelmetDamageReduction = pawnModifiers.HelmetDamageReduction;
-    //    IncendiaryProtection = pawnModifiers.IncendiaryProtection;
-    //    InfraredProtection = pawnModifiers.InfraredProtection;
-    //    LegsDamageReduction = pawnModifiers.LegsDamageReduction;
-    //    MeleeProtection = pawnModifiers.MeleeProtection;
-    //    MeleeRange = pawnModifiers.MeleeRange;
-    //    MovementSpeed = pawnModifiers.MovementSpeed;
-    //    PermanentHealthProtection = pawnModifiers.PermanentHealthProtection;
-    //    SprintMultiplier = pawnModifiers.SprintMultiplier;
-    //    Stamina = pawnModifiers.Stamina;
-    //    SwitchWeaponSpeed = pawnModifiers.SwitchWeaponSpeed;
-    //    ToxicProtection = pawnModifiers.ToxicProtection;
-    //}
+    public BLRPawnModifiers(PawnModifiers pawnModifiers)
+    {
+        if (pawnModifiers == null)
+        { return; }
+        BodyDamageReduction = pawnModifiers.BodyDamageReduction;
+        ElectroProtection = pawnModifiers.ElectroProtection;
+        ExplosiveProtection = pawnModifiers.ExplosiveProtection;
+        GearSlots = pawnModifiers.GearSlots;
+        HRVDuration = pawnModifiers.HRVDuration;
+        HRVRechargeRate = pawnModifiers.HRVRechargeRate;
+        Health = pawnModifiers.Health;
+        HealthRecharge = pawnModifiers.HealthRecharge;
+        HelmetDamageReduction = pawnModifiers.HelmetDamageReduction;
+        IncendiaryProtection = pawnModifiers.IncendiaryProtection;
+        InfraredProtection = pawnModifiers.InfraredProtection;
+        LegsDamageReduction = pawnModifiers.LegsDamageReduction;
+        MeleeProtection = pawnModifiers.MeleeProtection;
+        MeleeRange = pawnModifiers.MeleeRange;
+        MovementSpeed = pawnModifiers.MovementSpeed;
+        PermanentHealthProtection = pawnModifiers.PermanentHealthProtection;
+        SprintMultiplier = pawnModifiers.SprintMultiplier;
+        Stamina = pawnModifiers.Stamina;
+        SwitchWeaponSpeed = pawnModifiers.SwitchWeaponSpeed;
+        ToxicProtection = pawnModifiers.ToxicProtection;
+    }
+    public BLRPawnModifiers() { }
 }
 
 public class BLRWeaponModifiers
@@ -884,22 +895,23 @@ public class BLRWeaponModifiers
     public double switchWeaponSpeed { get; set; } = 0;
     public double weaponWeight { get; set; } = 0;
 
-    //public BLRWeaponModifiers(WeaponModifiers weaponModifiers)
-    //{
-    //    if (weaponModifiers == null)
-    //    { return; }
-    //    accuracy = weaponModifiers.accuracy;
-    //    ammo = weaponModifiers.ammo;
-    //    damage = weaponModifiers.damage;
-    //    movementSpeed = weaponModifiers.movementSpeed;
-    //    range = weaponModifiers.range;
-    //    rateOfFire = weaponModifiers.rateOfFire;
-    //    rating = weaponModifiers.rating;
-    //    recoil = weaponModifiers.recoil;
-    //    reloadSpeed = weaponModifiers.reloadSpeed;
-    //    switchWeaponSpeed = weaponModifiers.switchWeaponSpeed;
-    //    weaponWeight = weaponModifiers.weaponWeight;
-    //}
+    public BLRWeaponModifiers(WeaponModifiers weaponModifiers)
+    {
+        if (weaponModifiers == null)
+        { return; }
+        accuracy = weaponModifiers.accuracy;
+        ammo = weaponModifiers.ammo;
+        damage = weaponModifiers.damage;
+        movementSpeed = weaponModifiers.movementSpeed;
+        range = weaponModifiers.range;
+        rateOfFire = weaponModifiers.rateOfFire;
+        rating = weaponModifiers.rating;
+        recoil = weaponModifiers.recoil;
+        reloadSpeed = weaponModifiers.reloadSpeed;
+        switchWeaponSpeed = weaponModifiers.switchWeaponSpeed;
+        weaponWeight = weaponModifiers.weaponWeight;
+    }
+    public BLRWeaponModifiers() { }
 }
 
 public class BLRWeaponStats
@@ -951,85 +963,88 @@ public class BLRWeaponStats
     public double Weight { get; set; } = 150.0f;
     public double ZoomSpreadMultiplier { get; set; } = 0.4f;
 
-    //public BLRWeaponStats(ImportStats stats, IniStats iniStats)
-    //{
-    //    if (stats != null)
-    //    {
-    //        accuracy = stats.accuracy;
-    //        damage = stats.damage;
-    //        movementSpeed = stats.movementSpeed;
-    //        range = stats.range;
-    //        rateOfFire = stats.rateOfFire;
-    //        recoil = stats.recoil;
-    //        reloadSpeed = stats.reloadSpeed;
-    //        weaponWeight = stats.weaponWeight;
-    //    }
+    public BLRWeaponStats(ImportStats stats, IniStats iniStats)
+    {
+        if (stats != null)
+        {
+            accuracy = stats.accuracy;
+            damage = stats.damage;
+            movementSpeed = stats.movementSpeed;
+            range = stats.range;
+            rateOfFire = stats.rateOfFire;
+            recoil = stats.recoil;
+            reloadSpeed = stats.reloadSpeed;
+            weaponWeight = stats.weaponWeight;
+        }
 
-    //    if (iniStats != null)
-    //    {
-    //        ApplyTime = iniStats.ApplyTime;
-    //        Burst = iniStats.Burst;
-    //        BaseSpread = iniStats.BaseSpread;
-    //        CrouchSpreadMultiplier = iniStats.CrouchSpreadMultiplier;
-    //        InitialMagazines = iniStats.InitialMagazines;
-    //        IdealDistance = iniStats.IdealDistance;
-    //        JumpSpreadMultiplier = iniStats.JumpSpreadMultiplier;
-    //        MagSize = iniStats.MagSize;
-    //        MaxDistance = iniStats.MaxDistance;
-    //        MaxRangeDamageMultiplier = iniStats.MaxRangeDamageMultiplier;
-    //        MaxTraceDistance = iniStats.MaxTraceDistance;
-    //        ModificationRangeBaseSpread = iniStats.ModificationRangeBaseSpread;
-    //        ModificationRangeCockRate = iniStats.ModificationRangeCockRate;
-    //        ModificationRangeDamage = iniStats.ModificationRangeDamage;
-    //        ModificationRangeIdealDistance = iniStats.ModificationRangeIdealDistance;
-    //        ModificationRangeMaxDistance = iniStats.ModificationRangeMaxDistance;
-    //        ModificationRangeMoveSpeed = iniStats.ModificationRangeMoveSpeed;
-    //        ModificationRangeRecoil = iniStats.ModificationRangeRecoil;
-    //        ModificationRangeRecoilReloadRate = iniStats.ModificationRangeRecoilReloadRate;
-    //        ModificationRangeReloadRate = iniStats.ModificationRangeReloadRate;
-    //        ModificationRangeTABaseSpread = iniStats.ModificationRangeTABaseSpread;
-    //        ModificationRangeWeightMultiplier = iniStats.ModificationRangeWeightMultiplier;
-    //        MovementSpreadConstant = iniStats.MovementSpreadConstant;
-    //        MovementSpreadMultiplier = iniStats.MovementSpreadMultiplier;
-    //        RecoilAccumulation = iniStats.RecoilAccumulation;
-    //        RecoilAccumulationMultiplier = iniStats.RecoilAccumulationMultiplier;
-    //        RecoilSize = iniStats.RecoilSize;
-    //        RecoilVector = iniStats.RecoilVector;
-    //        RecoilVectorMultiplier = iniStats.RecoilVectorMultiplier;
-    //        RecoilZoomMultiplier = iniStats.RecoilZoomMultiplier;
-    //        ROF = iniStats.ROF;
-    //        StatDecriptors = iniStats.StatDecriptors;
-    //        TABaseSpread = iniStats.TABaseSpread;
-    //        TightAimTime = iniStats.TightAimTime;
-    //        UseTABaseSpread = iniStats.UseTABaseSpread;
-    //        Weight = iniStats.Weight;
-    //        ZoomSpreadMultiplier = iniStats.ZoomSpreadMultiplier;
-    //    }
-    //}
+        if (iniStats != null)
+        {
+            ApplyTime = iniStats.ApplyTime;
+            Burst = iniStats.Burst;
+            BaseSpread = iniStats.BaseSpread;
+            CrouchSpreadMultiplier = iniStats.CrouchSpreadMultiplier;
+            InitialMagazines = iniStats.InitialMagazines;
+            IdealDistance = iniStats.IdealDistance;
+            JumpSpreadMultiplier = iniStats.JumpSpreadMultiplier;
+            MagSize = iniStats.MagSize;
+            MaxDistance = iniStats.MaxDistance;
+            MaxRangeDamageMultiplier = iniStats.MaxRangeDamageMultiplier;
+            MaxTraceDistance = iniStats.MaxTraceDistance;
+            ModificationRangeBaseSpread = iniStats.ModificationRangeBaseSpread;
+            ModificationRangeCockRate = iniStats.ModificationRangeCockRate;
+            ModificationRangeDamage = iniStats.ModificationRangeDamage;
+            ModificationRangeIdealDistance = iniStats.ModificationRangeIdealDistance;
+            ModificationRangeMaxDistance = iniStats.ModificationRangeMaxDistance;
+            ModificationRangeMoveSpeed = iniStats.ModificationRangeMoveSpeed;
+            ModificationRangeRecoil = iniStats.ModificationRangeRecoil;
+            ModificationRangeRecoilReloadRate = iniStats.ModificationRangeRecoilReloadRate;
+            ModificationRangeReloadRate = iniStats.ModificationRangeReloadRate;
+            ModificationRangeTABaseSpread = iniStats.ModificationRangeTABaseSpread;
+            ModificationRangeWeightMultiplier = iniStats.ModificationRangeWeightMultiplier;
+            MovementSpreadConstant = iniStats.MovementSpreadConstant;
+            MovementSpreadMultiplier = iniStats.MovementSpreadMultiplier;
+            RecoilAccumulation = iniStats.RecoilAccumulation;
+            RecoilAccumulationMultiplier = iniStats.RecoilAccumulationMultiplier;
+            RecoilSize = iniStats.RecoilSize;
+            RecoilVector = iniStats.RecoilVector;
+            RecoilVectorMultiplier = iniStats.RecoilVectorMultiplier;
+            RecoilZoomMultiplier = iniStats.RecoilZoomMultiplier;
+            ROF = iniStats.ROF;
+            StatDecriptors = iniStats.StatDecriptors;
+            TABaseSpread = iniStats.TABaseSpread;
+            TightAimTime = iniStats.TightAimTime;
+            UseTABaseSpread = iniStats.UseTABaseSpread;
+            Weight = iniStats.Weight;
+            ZoomSpreadMultiplier = iniStats.ZoomSpreadMultiplier;
+        }
+    }
+    public BLRWeaponStats() { }
 }
 
 public class BLRWikiStats
 {
-    //public BLRWikiStats(WikiStats wikiStats)
-    //{
-    //    if (wikiStats == null) 
-    //    { return; }
-    //    aimSpread = wikiStats.aimSpread;
-    //    ammoMag = wikiStats.ammoMag;
-    //    ammoReserve = wikiStats.ammoReserve;
-    //    damage = wikiStats.damage;
-    //    firerate = wikiStats.firerate;
-    //    hipSpread = wikiStats.hipSpread;
-    //    moveSpread = wikiStats.moveSpread;
-    //    rangeClose = wikiStats.rangeClose;
-    //    rangeFar = wikiStats.rangeFar;
-    //    recoil = wikiStats.recoil;
-    //    reload = wikiStats.reload;
-    //    run = wikiStats.run;
-    //    scopeInTime = wikiStats.scopeInTime;
-    //    swaprate = wikiStats.swaprate;
-    //    zoom = wikiStats.zoom;
-    //}
+    public BLRWikiStats(WikiStats wikiStats)
+    {
+        if (wikiStats == null)
+        { return; }
+        aimSpread = wikiStats.aimSpread;
+        ammoMag = wikiStats.ammoMag;
+        ammoReserve = wikiStats.ammoReserve;
+        damage = wikiStats.damage;
+        firerate = wikiStats.firerate;
+        hipSpread = wikiStats.hipSpread;
+        moveSpread = wikiStats.moveSpread;
+        rangeClose = wikiStats.rangeClose;
+        rangeFar = wikiStats.rangeFar;
+        recoil = wikiStats.recoil;
+        reload = wikiStats.reload;
+        run = wikiStats.run;
+        scopeInTime = wikiStats.scopeInTime;
+        swaprate = wikiStats.swaprate;
+        zoom = wikiStats.zoom;
+    }
+
+    public BLRWikiStats() { }
 
     public float aimSpread { get; set; }
     public float ammoMag { get; set; }
