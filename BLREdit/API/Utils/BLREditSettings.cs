@@ -1,40 +1,39 @@
 ﻿using System.IO;
 using System.Windows;
 
-namespace BLREdit
+namespace BLREdit;
+
+public class BLREditSettings
 {
-    public class BLREditSettings
+    public static BLREditSettings Settings { get; set; } = LoadSettings();
+
+    public bool EnableDebugging { get; set; } = false;
+    public bool ShowUpdateNotice { get; set; } = true;
+    public bool DoRuntimeCheck { get; set; } = true;
+    public bool ForceRuntimeCheck { get; set; } = false;
+    public Visibility DebugVisibility { get; set; } = Visibility.Collapsed;
+
+    public void ApplySettings()
     {
-        public static BLREditSettings Settings { get; set; } = LoadSettings();
+        if (EnableDebugging)
+        { LoggingSystem.IsDebuggingEnabled = true; }
+    }
 
-        public bool EnableDebugging { get; set; } = false;
-        public bool ShowUpdateNotice { get; set; } = true;
-        public bool DoRuntimeCheck { get; set; } = true;
-        public bool ForceRuntimeCheck { get; set; } = false;
-        public Visibility DebugVisibility { get; set; } = Visibility.Collapsed;
-
-        public void ApplySettings()
+    public static BLREditSettings LoadSettings()
+    {
+        if (File.Exists(IOResources.SETTINGS_FILE))
         {
-            if (EnableDebugging)
-            { LoggingSystem.IsDebuggingEnabled = true; }
+            BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>(IOResources.SETTINGS_FILE); //Load settings file
+            settings.ApplySettings();                                               //apply settings
+            IOResources.SerializeFile(IOResources.SETTINGS_FILE, settings);                                     //write it back to disk to clean out settings that don't exist anymore from old builds/versions
+            return settings;
         }
-
-        public static BLREditSettings LoadSettings()
+        else
         {
-            if (File.Exists(IOResources.SETTINGS_FILE))
-            {
-                BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>(IOResources.SETTINGS_FILE); //Load settings file
-                settings.ApplySettings();                                               //apply settings
-                IOResources.SerializeFile(IOResources.SETTINGS_FILE, settings);                                     //write it back to disk to clean out settings that don't exist anymore from old builds/versions
-                return settings;
-            }
-            else
-            {
-                var tmp = new BLREditSettings();
-                tmp.ApplySettings();
-                IOResources.SerializeFile(IOResources.SETTINGS_FILE, tmp);
-                return tmp;
-            }
+            var tmp = new BLREditSettings();
+            tmp.ApplySettings();
+            IOResources.SerializeFile(IOResources.SETTINGS_FILE, tmp);
+            return tmp;
         }
     }
 }

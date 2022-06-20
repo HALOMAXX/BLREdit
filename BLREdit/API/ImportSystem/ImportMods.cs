@@ -4,18 +4,18 @@ namespace BLREdit
 {
     public class ImportMods
     {
-        public List<ImportItem> ammo { get; set; }
-        public List<ImportItem> ammos { get; set; }
-        public List<ImportItem> barrels { get; set; }
-        public List<ImportItem> camosBody { get; set; }
-        public List<ImportItem> camosWeapon { get; set; }
-        public List<ImportItem> grips { get; set; }
-        public List<ImportItem> magazines { get; set; }
-        public List<ImportItem> muzzles { get; set; }
-        public List<ImportItem> primarySkins { get; set; }
-        public List<ImportItem> scopes { get; set; }
+        public List<BLRItem> ammo { get; set; }
+        public List<BLRItem> ammos { get; set; }
+        public List<BLRItem> barrels { get; set; }
+        public List<BLRItem> camosBody { get; set; }
+        public List<BLRItem> camosWeapon { get; set; }
+        public List<BLRItem> grips { get; set; }
+        public List<BLRItem> magazines { get; set; }
+        public List<BLRItem> muzzles { get; set; }
+        public List<BLRItem> primarySkins { get; set; }
+        public List<BLRItem> scopes { get; set; }
         public object[] secondarySkins { get; set; }
-        public List<ImportItem> stocks { get; set; }
+        public List<BLRItem> stocks { get; set; }
 
         public override string ToString()
         {

@@ -49,33 +49,33 @@ namespace BLREdit
         public static MagiCowsLoadout DefaultLoadout2 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultSubmachineGun, Secondary = MagiCowsWeapon.DefaultLightPistol };
         public static MagiCowsLoadout DefaultLoadout3 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultBAR, Secondary = MagiCowsWeapon.DefaultLightPistol };
 
-        public static ImportItem GetGear(int GearID)
+        public static BLRItem GetGear(int GearID)
         {
             return ImportSystem.GetItemByIDAndType("attachments", GearID);
         }
-        public ImportItem GetTactical()
+        public BLRItem GetTactical()
         {
             return ImportSystem.GetItemByIDAndType("tactical", Tactical);
         }
-        public ImportItem GetHelmet()
+        public BLRItem GetHelmet()
         {
             return ImportSystem.GetItemByIDAndType("helmets", Helmet);
         }
 
-        public ImportItem GetUpperBody()
+        public BLRItem GetUpperBody()
         {
             return ImportSystem.GetItemByIDAndType("upperBodies", UpperBody);
         }
 
-        public ImportItem GetLowerBody()
+        public BLRItem GetLowerBody()
         {
             return ImportSystem.GetItemByIDAndType("lowerBodies", LowerBody);
         }
-        public ImportItem GetCamo()
+        public BLRItem GetCamo()
         {
             return ImportSystem.GetItemByIDAndType("camosBody", Camo);
         }
-        public ImportItem GetSkin()
+        public BLRItem GetSkin()
         {
             return ImportSystem.GetItemByIDAndType("avatars", Skin);
         }

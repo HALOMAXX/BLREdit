@@ -53,57 +53,57 @@ namespace BLREdit
             return true;
         }
 
-        public ImportItem GetReciever()
+        public BLRItem GetReciever()
         {
-            ImportItem primary = ImportSystem.GetItemByNameAndType("primary", Receiver);
+            BLRItem primary = ImportSystem.GetItemByNameAndType("primary", Receiver);
             if (primary != null)
                 return primary;
 
-            ImportItem secondary = ImportSystem.GetItemByNameAndType("secondary", Receiver);
+            BLRItem secondary = ImportSystem.GetItemByNameAndType("secondary", Receiver);
             if (secondary != null)
                 return secondary;
 
             return null;
         }
 
-        public ImportItem GetCamo()
+        public BLRItem GetCamo()
         {
             return ImportSystem.GetItemByIDAndType("camosWeapon", Camo);
         }
-        public ImportItem GetTag()
+        public BLRItem GetTag()
         {
             return ImportSystem.GetItemByIDAndType("hangers", Tag);
         }
-        public ImportItem GetMagazine()
+        public BLRItem GetMagazine()
         {
             return ImportSystem.GetItemByIDAndType("magazines", Magazine);
         }
-        public ImportItem GetMuzzle()
+        public BLRItem GetMuzzle()
         {
             return ImportSystem.GetItemByIDAndType("muzzles", Muzzle);
         }
-        public ImportItem GetStock()
+        public BLRItem GetStock()
         {
             return ImportSystem.GetItemByNameAndType("stocks", Stock) ?? ImportSystem.GetItemByNameAndType("stocks", NoStock);
         }
-        public ImportItem GetBarrel()
+        public BLRItem GetBarrel()
         {
             return ImportSystem.GetItemByNameAndType("barrels", Barrel) ?? ImportSystem.GetItemByNameAndType("barrels", NoBarrel);
         }
-        public ImportItem GetScope()
+        public BLRItem GetScope()
         {
             return ImportSystem.GetItemByNameAndType("scopes", Scope) ?? ImportSystem.GetItemByNameAndType("scopes", NoScope);
         }
-        public ImportItem GetGrip()
+        public BLRItem GetGrip()
         {
             return ImportSystem.GetItemByNameAndType("grips", Grip);
         }
 
-        public static MagiCowsWeapon GetDefaultSetupOfReciever(ImportItem item)
+        public static MagiCowsWeapon GetDefaultSetupOfReciever(BLRItem item)
         {
             foreach (MagiCowsWeapon weapon in DefaultWeapons)
             {
-                if (weapon.Receiver == item.name)
+                if (weapon.Receiver == item.Name)
                 {
                     return (MagiCowsWeapon)weapon.Clone();
                 }

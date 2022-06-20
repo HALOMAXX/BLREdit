@@ -19,7 +19,7 @@ namespace BLREdit
 
         public ExportSystemProfile ConvertToNew()
         {
-            ExportSystemProfile profile = new ExportSystemProfile
+            ExportSystemProfile profile = new()
             {
                 ProfileName = PlayerName,
                 PlayerName = PlayerName,

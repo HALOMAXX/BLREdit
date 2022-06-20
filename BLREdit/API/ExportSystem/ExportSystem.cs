@@ -55,12 +55,12 @@ namespace BLREdit
         private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()
         {
             //ObservableCollection<ExportSystemProfile> profiles = new ObservableCollection<ExportSystemProfile>();
-            List<ExportSystemProfile> profiles = new List<ExportSystemProfile>();
+            List<ExportSystemProfile> profiles = new();
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.SEPROFILE_DIR);
             CurrentBackupFolder = Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\Backup\\" + System.DateTime.Now.ToString("dd-MM-yy") + "\\" + System.DateTime.Now.ToString("HH-mm") + "\\");
 
-            Regex regex = new Regex(@"\((.*)\)");
+            Regex regex = new(@"\((.*)\)");
 
             bool oldProfiles = false;
             int i = 0;
@@ -72,7 +72,7 @@ namespace BLREdit
                 bool requestDelete = false;
 
                 try { profile = IOResources.DeserializeFile<ExportSystemProfile>(file); }
-                catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
+                catch { if(LoggingSystem.IsDebuggingEnabled)LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
                 profiles.Add(profile);
 
                 if (!profile.IsHealthOkAndRepair())
@@ -82,7 +82,7 @@ namespace BLREdit
 
                 if (!regex.IsMatch(file))
                 {
-                    LoggingSystem.LogInfo("Old Profile: " + file);
+                    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Old Profile: " + file);
                     oldProfiles = true;
                     requestDelete = true;
                     profile.ProfileName = i.ToString();
@@ -91,7 +91,7 @@ namespace BLREdit
                 if (requestDelete)
                 {
                     try { File.Delete(file); }
-                    catch { LoggingSystem.LogError("Could not delete file:" + file); }
+                    catch { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("Could not delete file:" + file); }
                 }
 
                 i++;
@@ -130,15 +130,15 @@ namespace BLREdit
             {
                 SetClipboard(clipboard);
                 success = true;
-                LoggingSystem.LogInfo("Copy Succes");
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Copy Succes");
             }
             catch
             { }
 
             if (!success)
             {
-                LoggingSystem.LogWarning("Failed CopyToClipboard too often!");
-                ClipboardFailed message = new ClipboardFailed(clipboard);
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Failed CopyToClipboard too often!");
+                ClipboardFailed message = new(clipboard);
                 message.ShowDialog();
             }
         }
@@ -148,7 +148,7 @@ namespace BLREdit
             if (value == null)
                 throw new ArgumentNullException(nameof(value), "SetClipboard value was null shoul never happen");
 
-            Process clipboardExecutable = new Process
+            Process clipboardExecutable = new()
             {
                 StartInfo = new ProcessStartInfo // Creates the process
                 {

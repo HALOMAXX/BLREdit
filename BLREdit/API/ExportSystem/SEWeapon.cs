@@ -62,10 +62,10 @@
         public static SEWeapon CreateFromMagiCowsWeapon(MagiCowsWeapon weapon)
         {
             return new SEWeapon { 
-                Receiver = weapon.GetReciever().uid,
-                Barrel = weapon.GetBarrel().uid,
-                Scope = weapon.GetScope().uid,
-                Grip = weapon.GetGrip()?.uid ?? 62000,
+                Receiver = weapon.GetReciever().UID,
+                Barrel = weapon.GetBarrel().UID,
+                Scope = weapon.GetScope().UID,
+                Grip = weapon.GetGrip()?.UID ?? 62000,
                 Muzzle = weapon.Muzzle,
                 Magazine = weapon.Magazine,
                 CamoIndex = weapon.Camo,
