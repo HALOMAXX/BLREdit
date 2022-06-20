@@ -329,7 +329,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces incendiary and flame damage by 25%",
+      "Tooltip": "Armor item.\u003Cbr\u003EReduces incendiary and flame damage by 20%",
       "UID": 12021,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -365,7 +365,7 @@
         "ToxicProtection": 25
       },
       "SupportedMods": [],
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces all toxic damage by 25% and prevents max health reduction.",
+      "Tooltip": "Armor item.\u003Cbr\u003EReduces all toxic damage by 20% and prevents max health reduction.",
       "UID": 12022,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -401,7 +401,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces all explosive damage by 25%",
+      "Tooltip": "Armor item.\u003Cbr\u003EReduces all explosive damage by 20%",
       "UID": 12023,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -437,7 +437,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces Electro Ammo and Electronic Explosions by 25%",
+      "Tooltip": "Armor item.\u003Cbr\u003EReduces Electro Ammo and Electronic Explosions by 20%",
       "UID": 12024,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -473,7 +473,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces Melee damage by 25%",
+      "Tooltip": "Armor item.\u003Cbr\u003EReduces Melee damage by 20%",
       "UID": 12025,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -21771,7 +21771,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44006,
       "ValidFor": [
         40010
@@ -21837,7 +21837,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime.",
       "UID": 44007,
       "ValidFor": [
         40010
@@ -21903,7 +21903,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44008,
       "ValidFor": [
         40010
@@ -22335,7 +22335,7 @@
         "rangeClose": 0,
         "rangeFar": 0,
         "recoil": 0,
-        "reload": 0,
+        "reload": 0.409999996,
         "run": -0.159999996,
         "scopeInTime": 0,
         "swaprate": 0,
@@ -22402,7 +22402,7 @@
         "rangeClose": 0,
         "rangeFar": 0,
         "recoil": 0,
-        "reload": 0,
+        "reload": 0.560000002,
         "run": -0.280000001,
         "scopeInTime": 0,
         "swaprate": 0,
@@ -22438,7 +22438,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Special ammo that deals more damage to mechanical targets. impairs reload and running speeds.",
+      "Tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
       "UID": 44016,
       "ValidFor": [
         40003,
@@ -22505,7 +22505,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Special ammo that prevents revives and damages vision. impairs reload and running speeds.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44017,
       "ValidFor": [
         40003,
@@ -22572,7 +22572,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Special ammo that does damage over time. Worses reload and running speeds.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44018,
       "ValidFor": [
         40003,
@@ -22639,7 +22639,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Special ammo that deals damage over time and affects vision. impairs reload and running speeds.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44019,
       "ValidFor": [
         40003,
@@ -23102,7 +23102,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44026,
       "ValidFor": [
         40008
@@ -23168,7 +23168,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44027,
       "ValidFor": [
         40008
@@ -23234,7 +23234,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44028,
       "ValidFor": [
         40008
@@ -23762,7 +23762,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44036,
       "ValidFor": [
         40005
@@ -23828,7 +23828,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44037,
       "ValidFor": [
         40005
@@ -23894,7 +23894,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44038,
       "ValidFor": [
         40005
@@ -24158,7 +24158,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44042,
       "ValidFor": [
         40011
@@ -24224,7 +24224,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44043,
       "ValidFor": [
         40011
@@ -24290,7 +24290,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44044,
       "ValidFor": [
         40011
@@ -24752,7 +24752,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44051,
       "ValidFor": [
         40000
@@ -24818,7 +24818,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44052,
       "ValidFor": [
         40000
@@ -24884,7 +24884,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44053,
       "ValidFor": [
         40000
@@ -25352,7 +25352,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44060,
       "ValidFor": [
         40001,
@@ -25419,7 +25419,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44061,
       "ValidFor": [
         40001,
@@ -25486,7 +25486,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44062,
       "ValidFor": [
         40001,
@@ -25949,7 +25949,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
       "UID": 44069,
       "ValidFor": [
         40004
@@ -26015,7 +26015,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44070,
       "ValidFor": [
         40004
@@ -26081,7 +26081,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44071,
       "ValidFor": [
         40004
@@ -26543,7 +26543,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44078,
       "ValidFor": [
         40006
@@ -26609,7 +26609,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44079,
       "ValidFor": [
         40006
@@ -26675,7 +26675,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44080,
       "ValidFor": [
         40006
@@ -27137,7 +27137,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44087,
       "ValidFor": [
         40009
@@ -27203,7 +27203,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44088,
       "ValidFor": [
         40009
@@ -27269,7 +27269,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44089,
       "ValidFor": [
         40009
@@ -27731,7 +27731,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44096,
       "ValidFor": [
         40007
@@ -27797,7 +27797,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44097,
       "ValidFor": [
         40007
@@ -27863,7 +27863,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44098,
       "ValidFor": [
         40007
@@ -28061,7 +28061,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44100,
       "ValidFor": [
         40002
@@ -28127,7 +28127,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44101,
       "ValidFor": [
         40002
@@ -28193,7 +28193,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44102,
       "ValidFor": [
         40002
@@ -28787,7 +28787,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44113,
       "ValidFor": [
         40013
@@ -28853,7 +28853,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44114,
       "ValidFor": [
         40013
@@ -28919,7 +28919,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44115,
       "ValidFor": [
         40013
@@ -29381,7 +29381,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44122,
       "ValidFor": [
         40017
@@ -29447,7 +29447,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44123,
       "ValidFor": [
         40017
@@ -29513,7 +29513,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44124,
       "ValidFor": [
         40017
@@ -29975,7 +29975,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44131,
       "ValidFor": [
         40016
@@ -30041,7 +30041,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44132,
       "ValidFor": [
         40016
@@ -30107,7 +30107,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44133,
       "ValidFor": [
         40016
@@ -30437,7 +30437,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44138,
       "ValidFor": [
         40014
@@ -30503,7 +30503,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44139,
       "ValidFor": [
         40014
@@ -30569,7 +30569,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44140,
       "ValidFor": [
         40014
@@ -31031,7 +31031,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44147,
       "ValidFor": [
         40018
@@ -31097,7 +31097,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44148,
       "ValidFor": [
         40018
@@ -31625,7 +31625,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44156,
       "ValidFor": [
         40020
@@ -31691,7 +31691,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44157,
       "ValidFor": [
         40020
@@ -31757,7 +31757,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44158,
       "ValidFor": [
         40020
@@ -33277,7 +33277,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44182,
       "ValidFor": [
         40021
@@ -33409,7 +33409,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44184,
       "ValidFor": [
         40021
@@ -33475,7 +33475,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44185,
       "ValidFor": [
         40021
@@ -33971,7 +33971,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44193,
       "ValidFor": [
         40022
@@ -34037,7 +34037,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44194,
       "ValidFor": [
         40022
@@ -34103,7 +34103,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44195,
       "ValidFor": [
         40022
@@ -34631,7 +34631,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44203,
       "ValidFor": [
         40023
@@ -34697,7 +34697,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44204,
       "ValidFor": [
         40023
@@ -34763,7 +34763,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Toxic magazines deal periodic damage and obscure the target\u0027s vision.",
+      "Tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target\u0027s vision.",
       "UID": 44205,
       "ValidFor": [
         40023
@@ -35753,7 +35753,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed.",
+      "Tooltip": "Explosive magazines jar the target\u0027s vision and prevent them from being revived if killed, but deal reduced damage.",
       "UID": 44222,
       "ValidFor": [
         40025
@@ -35819,7 +35819,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Incendiary magazines deal periodic damage.",
+      "Tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
       "UID": 44223,
       "ValidFor": [
         40025

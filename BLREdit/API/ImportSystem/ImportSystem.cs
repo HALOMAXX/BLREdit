@@ -25,7 +25,7 @@ namespace BLREdit
             
             UpdateImages();
 
-            //UnifyItemList();
+            UnifyItemList();
 
             if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch, "Import System");
         }

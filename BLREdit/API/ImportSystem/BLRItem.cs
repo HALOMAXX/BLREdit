@@ -22,9 +22,11 @@ public class BLRItem
     public BLRWeaponStats WeaponStats { get; set; }
     public BLRWikiStats WikiStats { get; set; }
 
-    
+    [JsonIgnore]
     public BitmapSource WideImage { get { return GetWideImage(); } }
+    [JsonIgnore]
     public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(); } }
+    [JsonIgnore]
     public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(); } }
     [JsonIgnore]
     public BitmapSource wideImageMale = null;
@@ -42,6 +44,7 @@ public class BLRItem
 
     [JsonIgnore]
     public BitmapSource Crosshair { get; private set; }
+    [JsonIgnore]
     public BitmapSource MiniCrosshair { get { return GetBitmapCrosshair(Name); } }
 
 
@@ -262,6 +265,7 @@ public class BLRItem
         return FoxIcon.CreateEmptyBitmap(1, 1);
     }
 
+    [JsonIgnore]
     public string DisplayStatDesc1
     {
         get
@@ -289,6 +293,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public string DisplayStat1
     {
         get
@@ -317,6 +322,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public bool DisplayStat1Gray
     {
         get
@@ -350,7 +356,7 @@ public class BLRItem
             return false;
         }
     }
-
+    [JsonIgnore]
     public string DisplayStatDesc2
     {
         get
@@ -389,6 +395,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public string DisplayStat2
     {
         get
@@ -429,6 +436,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public bool DisplayStat2Gray
     {
         get
@@ -475,7 +483,7 @@ public class BLRItem
             return false;
         }
     }
-
+    [JsonIgnore]
     public string DisplayStatDesc3
     {
         get
@@ -507,6 +515,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public string DisplayStat3
     {
         get
@@ -542,6 +551,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public bool DisplayStat3Gray
     {
         get
@@ -580,7 +590,7 @@ public class BLRItem
             return false;
         }
     }
-
+    [JsonIgnore]
     public string DisplayStatDesc4
     {
         get
@@ -604,6 +614,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public string DisplayStat4
     {
         get
@@ -628,6 +639,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public bool DisplayStat4Gray
     {
         get
@@ -656,7 +668,7 @@ public class BLRItem
             return false;
         }
     }
-
+    [JsonIgnore]
     public string DisplayStatDesc5
     {
         get
@@ -680,6 +692,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public string DisplayStat5
     {
         get
@@ -704,6 +717,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public bool DisplayStat5Gray
     {
         get
@@ -732,7 +746,7 @@ public class BLRItem
             return false;
         }
     }
-
+    [JsonIgnore]
     public string DisplayStatDesc6
     {
         get
@@ -767,6 +781,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public string DisplayStat6
     {
         get
@@ -802,6 +817,7 @@ public class BLRItem
             return "";
         }
     }
+    [JsonIgnore]
     public bool DisplayStat6Gray
     {
         get
