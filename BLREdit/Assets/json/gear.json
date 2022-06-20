@@ -144,7 +144,7 @@
       "class": "FoxDataProvider_Gear_Attachment",
       "icon": "t_Gear_IncendiaryArmor_128x128",
       "name": "Incendiary Protection Gear",
-      "tooltip": "Armor item.<br>Reduces incendiary and flame damage by 25%",
+      "tooltip": "Armor item.<br>Reduces incendiary and flame damage by 20%",
       "uid": 12021,
       "pawnModifiers": {
         "IncendiaryProtection" : 25
@@ -154,7 +154,7 @@
       "class": "FoxDataProvider_Gear_Attachment",
       "icon": "t_Gear_ToxicArmor_128x128",
       "name": "Toxic Protection Gear",
-      "tooltip": "Armor item.<br>Reduces all toxic damage by 25% and prevents max health reduction.",
+      "tooltip": "Armor item.<br>Reduces all toxic damage by 20% and prevents max health reduction.",
       "uid": 12022,
       "pawnModifiers": {
         "ToxicProtection": 25
@@ -164,7 +164,7 @@
       "class": "FoxDataProvider_Gear_Attachment",
       "icon": "t_Gear_ExplosiveArmor_128x128",
       "name": "Explosive Protection Gear",
-      "tooltip": "Armor item.<br>Reduces all explosive damage by 25%",
+      "tooltip": "Armor item.<br>Reduces all explosive damage by 20%",
       "uid": 12023,
       "pawnModifiers": {
         "ExplosionProtection": 25
@@ -174,7 +174,7 @@
       "class": "FoxDataProvider_Gear_Attachment",
       "icon": "t_Gear_ElectroArmor_128x128",
       "name": "Electro Protection Gear",
-      "tooltip": "Armor item.<br>Reduces Electro Ammo and Electronic Explosions by 25%",
+      "tooltip": "Armor item.<br>Reduces Electro Ammo and Electronic Explosions by 20%",
       "uid": 12024,
       "pawnModifiers": {
         "ElectroProtection": 25
@@ -184,7 +184,7 @@
       "class": "FoxDataProvider_Gear_Attachment",
       "icon": "t_Gear_MeleeArmor_128x128",
       "name": "Melee Protection Gear",
-      "tooltip": "Armor item.<br>Reduces Melee damage by 25%",
+      "tooltip": "Armor item.<br>Reduces Melee damage by 20%",
       "uid": 12025,
       "pawnModifiers": {
         "MeleeProtection": 25
