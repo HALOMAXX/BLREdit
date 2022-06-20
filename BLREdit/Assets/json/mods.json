@@ -1207,7 +1207,7 @@
     {
       "class": "FoxWeaponBarrel_Grip",
       "icon": "t_Barrel_BPGrip02_128x128",
-      "name": "Armcom BAR-01",
+      "name": "ArmCom BAR-01",
       "descriptorName": "Restrained",
       "pawnModifiers": {
         "BodyDamageReduction": 0,
@@ -1253,7 +1253,7 @@
     {
       "class": "FoxWeaponBarrel_Grip",
       "icon": "t_Barrel_BPGrip03_128x128",
-      "name": "Armcom BARl1",
+      "name": "ArmCom BARl1",
       "descriptorName": "Clutched",
       "pawnModifiers": {
         "BodyDamageReduction": 0,
