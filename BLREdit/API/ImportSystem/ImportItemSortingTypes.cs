@@ -10,6 +10,7 @@ public enum ImportWeaponSortingType
     Move,
     Recoil,
     Range,
+    Ammo,
 }
 
 public enum ImportModificationSortingType

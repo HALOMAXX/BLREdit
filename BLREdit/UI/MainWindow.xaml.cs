@@ -409,6 +409,13 @@ namespace BLREdit.UI
             }
         }
 
+        /// <summary>
+        /// Calculates Spread of reciever with precentage modifiers for Aim, Hip, Move Spread
+        /// </summary>
+        /// <param name="Reciever">The Reciever</param>
+        /// <param name="allAccuracy">the percentages of all parts that modify the general accuracy</param>
+        /// <param name="allMovementSpread">the percentages of all parts that modify the accuracy multiplier when moving</param>
+        /// <returns>[0]Aim, [1]Hip, [2]Move</returns>
         public static double[] CalculateSpread(BLRItem Reciever, double allAccuracy, double allMovementSpread)
         {
             if (Reciever != null && Reciever.WeaponStats != null)
@@ -1745,7 +1752,7 @@ namespace BLREdit.UI
         static readonly List<BLRItem> UpperBodies = ImportSystem.GetItemListOfType(ImportSystem.UPPER_BODIES_CATEGORY);
         static readonly List<BLRItem> LowerBodies = ImportSystem.GetItemListOfType(ImportSystem.LOWER_BODIES_CATEGORY);
         static readonly List<BLRItem> Avatars = ImportSystem.GetItemListOfType(ImportSystem.AVATARS_CATEGORY);
-        private MagiCowsLoadout RandomizeLoadout()
+        private static MagiCowsLoadout RandomizeLoadout()
         {
             MagiCowsLoadout loadout = new()
             {
@@ -1805,7 +1812,7 @@ namespace BLREdit.UI
             return loadout;
         }
 
-        private MagiCowsWeapon RandomizeWeapon(BLRItem Weapon, bool IsSecondary = false)
+        private static MagiCowsWeapon RandomizeWeapon(BLRItem Weapon, bool IsSecondary = false)
         {
             MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(Weapon);
             var FilteredBarrels = Barrels.Where(o => o.IsValidFor(Weapon)).ToArray();

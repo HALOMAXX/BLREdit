@@ -623,33 +623,34 @@ namespace BLREdit
             ImportMods Mods = IOResources.DeserializeFile<ImportMods>(IOResources.MOD_FILE);
             ImportWeapons Weapons = IOResources.DeserializeFile<ImportWeapons>(IOResources.WEAPON_FILE);
 
-            Dictionary<string, List<ImportItem>> ListItems = new();
+            Dictionary<string, List<ImportItem>> ListItems = new()
+            {
+                { nameof(Gear.attachments), Gear.attachments },
+                { nameof(Gear.avatars), Gear.avatars },
+                { nameof(Gear.badges), Gear.badges },
+                { nameof(Gear.emotes), Gear.emotes },
+                { nameof(Gear.hangers), Gear.hangers },
+                { nameof(Gear.helmets), Gear.helmets },
+                { nameof(Gear.lowerBodies), Gear.lowerBodies },
+                { nameof(Gear.tactical), Gear.tactical },
+                { nameof(Gear.upperBodies), Gear.upperBodies },
 
-            ListItems.Add(nameof(Gear.attachments), Gear.attachments);
-            ListItems.Add(nameof(Gear.avatars), Gear.avatars);
-            ListItems.Add(nameof(Gear.badges), Gear.badges);
-            ListItems.Add(nameof(Gear.emotes), Gear.emotes);
-            ListItems.Add(nameof(Gear.hangers), Gear.hangers);
-            ListItems.Add(nameof(Gear.helmets), Gear.helmets);
-            ListItems.Add(nameof(Gear.lowerBodies), Gear.lowerBodies);
-            ListItems.Add(nameof(Gear.tactical), Gear.tactical);
-            ListItems.Add(nameof(Gear.upperBodies), Gear.upperBodies);
+                { nameof(Mods.ammo), Mods.ammo },
+                { nameof(Mods.ammos), Mods.ammos },
+                { nameof(Mods.barrels), Mods.barrels },
+                { nameof(Mods.camosBody), Mods.camosBody },
+                { nameof(Mods.camosWeapon), Mods.camosWeapon },
+                { nameof(Mods.grips), Mods.grips },
+                { nameof(Mods.magazines), Mods.magazines },
+                { nameof(Mods.muzzles), Mods.muzzles },
+                { nameof(Mods.primarySkins), Mods.primarySkins },
+                { nameof(Mods.scopes), Mods.scopes },
+                { nameof(Mods.stocks), Mods.stocks },
 
-            ListItems.Add(nameof(Mods.ammo), Mods.ammo);
-            ListItems.Add(nameof(Mods.ammos), Mods.ammos);
-            ListItems.Add(nameof(Mods.barrels), Mods.barrels);
-            ListItems.Add(nameof(Mods.camosBody), Mods.camosBody);
-            ListItems.Add(nameof(Mods.camosWeapon), Mods.camosWeapon);
-            ListItems.Add(nameof(Mods.grips), Mods.grips);
-            ListItems.Add(nameof(Mods.magazines), Mods.magazines);
-            ListItems.Add(nameof(Mods.muzzles), Mods.muzzles);
-            ListItems.Add(nameof(Mods.primarySkins), Mods.primarySkins);
-            ListItems.Add(nameof(Mods.scopes), Mods.scopes);
-            ListItems.Add(nameof(Mods.stocks), Mods.stocks);
-
-            ListItems.Add(nameof(Weapons.depot), Weapons.depot);
-            ListItems.Add(nameof(Weapons.primary), Weapons.primary);
-            ListItems.Add(nameof(Weapons.secondary), Weapons.secondary);
+                { nameof(Weapons.depot), Weapons.depot },
+                { nameof(Weapons.primary), Weapons.primary },
+                { nameof(Weapons.secondary), Weapons.secondary }
+            };
 
             CleanItems(ListItems);
             LoadWikiStats(ListItems);
@@ -659,7 +660,7 @@ namespace BLREdit
 
             foreach (var itemList in ListItems)
             {
-                List<BLRItem> items = new List<BLRItem>();
+                List<BLRItem> items = new();
                 foreach (var item in itemList.Value)
                 {
                     items.Add(new BLRItem(item));

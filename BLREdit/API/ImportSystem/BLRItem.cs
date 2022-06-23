@@ -258,65 +258,356 @@ public class BLRItem
     public DisplayStatDiscriptor DisplayStat6 { get; set; }
 
     [JsonIgnore]
-    public double Accuracy { get; }
+    public double Accuracy
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.SECONDARY_CATEGORY:
+                case ImportSystem.PRIMARY_CATEGORY:
+                    return WeaponStats.accuracy;
+                default:
+                    return WeaponModifiers?.accuracy ?? 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Aim { get; }
+    public double Aim
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.SECONDARY_CATEGORY:
+                case ImportSystem.PRIMARY_CATEGORY:
+                    return UI.MainWindow.CalculateSpread(this, 0, 0)[0];
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Ammo { get; }
+    public double Ammo
+    {
+        get 
+        {
+            switch (Category)
+            {
+                case ImportSystem.SECONDARY_CATEGORY:
+                case ImportSystem.PRIMARY_CATEGORY:
+                    return WikiStats.ammoMag;
+                case ImportSystem.MAGAZINES_CATEGORY:
+                    return WeaponModifiers.ammo;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
     public double Damage
     {
         get
         {
-            if (Category == ImportSystem.PRIMARY_CATEGORY)
+            switch (Category)
             {
-                return UI.MainWindow.CalculateDamage(this, 0)[0];
-            }
-            else
-            {
-                return WeaponModifiers.damage;
+                case ImportSystem.PRIMARY_CATEGORY:
+                case ImportSystem.SECONDARY_CATEGORY:
+                    return UI.MainWindow.CalculateDamage(this, 0)[0];
+                default:
+                    return WeaponModifiers?.damage ?? 0;
             }
         }
     }
 
     [JsonIgnore]
-    public double ElectroProtection { get; }
+    public double ElectroProtection
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                case ImportSystem.ATTACHMENTS_CATEGORY:
+                    return PawnModifiers?.ElectroProtection ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double ExplosiveProtection { get; }
+    public double ExplosiveProtection 
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                case ImportSystem.ATTACHMENTS_CATEGORY:
+                    return PawnModifiers?.ExplosiveProtection ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double GearSlots { get; }
+    public double GearSlots 
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.UPPER_BODIES_CATEGORY:
+                case ImportSystem.LOWER_BODIES_CATEGORY:
+                    return PawnModifiers?.GearSlots ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Health { get; }
+    public double Health 
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                case ImportSystem.UPPER_BODIES_CATEGORY:
+                case ImportSystem.LOWER_BODIES_CATEGORY:
+                    return PawnModifiers?.Health ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double HeadProtection { get; }
+    public double HeadProtection
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                    return PawnModifiers?.HelmetDamageReduction ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Hip { get; }
+    public double Hip
+    {
+        get 
+        {
+            switch (Category)
+            {
+                case ImportSystem.PRIMARY_CATEGORY:
+                case ImportSystem.SECONDARY_CATEGORY:
+                    return UI.MainWindow.CalculateSpread(this, 0, 0)[1];
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double HRVDuration { get; }
+    public double HRVDuration
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                    return PawnModifiers?.HRVDuration ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double HRVRecharge { get; }
+    public double HRVRecharge
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                    return PawnModifiers?.HRVRechargeRate ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double IncendiaryProtection { get; }
+    public double IncendiaryProtection
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                case ImportSystem.ATTACHMENTS_CATEGORY:
+                    return PawnModifiers?.IncendiaryProtection ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double InfraredProtection { get; }
+    public double InfraredProtection 
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                case ImportSystem.ATTACHMENTS_CATEGORY:
+                    return PawnModifiers?.InfraredProtection ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Infrared { get; }
+    public double Infrared
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.SCOPES_CATEGORY:
+                    if (UID != 45019 && UID != 45020 && UID != 45021)
+                    {
+                        return WikiStats?.zoom ?? 0;
+                    }
+                    else
+                    {
+                        return (WikiStats?.zoom ?? 0) + 10;
+                    }
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double MeleeProtection { get; }
+    public double MeleeProtection
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                case ImportSystem.ATTACHMENTS_CATEGORY:
+                    return PawnModifiers?.MeleeProtection ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Move { get; }
+    public double Move
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.PRIMARY_CATEGORY:
+                case ImportSystem.SECONDARY_CATEGORY:
+                    return UI.MainWindow.CalculateSpread(this, 0, 0)[2];
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Range { get; }
+    public double Range
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.PRIMARY_CATEGORY:
+                case ImportSystem.SECONDARY_CATEGORY:
+                    return WeaponStats?.range ?? 0;
+                default:
+                    return WeaponModifiers?.range ?? 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Recoil { get; }
+    public double Recoil
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.PRIMARY_CATEGORY:
+                case ImportSystem.SECONDARY_CATEGORY:
+                    return WeaponStats?.recoil ?? 0;
+                default:
+                    return WeaponModifiers?.recoil ?? 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Run { get; }
+    public double Run
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                case ImportSystem.UPPER_BODIES_CATEGORY:
+                case ImportSystem.LOWER_BODIES_CATEGORY:
+                    return PawnModifiers?.MovementSpeed ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double ScopeInTime { get; }
+    public double ScopeInTime
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.SCOPES_CATEGORY:
+                    return WikiStats?.scopeInTime ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double ToxicProtection { get; }
+    public double ToxicProtection
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.HELMETS_CATEGORY:
+                case ImportSystem.ATTACHMENTS_CATEGORY:
+                    return PawnModifiers?.ToxicProtection ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
     [JsonIgnore]
-    public double Zoom { get; }
+    public double Zoom
+    {
+        get
+        {
+            switch (Category)
+            {
+                case ImportSystem.SCOPES_CATEGORY:
+                    return WikiStats?.zoom ?? 0;
+                default:
+                    return 0;
+            }
+        }
+    }
 
 }
 
@@ -536,19 +827,19 @@ public class BLRWikiStats
 
     public BLRWikiStats() { }
 
-    public float aimSpread { get; set; }
-    public float ammoMag { get; set; }
-    public float ammoReserve { get; set; }
-    public float damage { get; set; }
-    public float firerate { get; set; }
-    public float hipSpread { get; set; }
-    public float moveSpread { get; set; }
-    public float rangeClose { get; set; }
-    public float rangeFar { get; set; }
-    public float recoil { get; set; }
-    public float reload { get; set; }
-    public float run { get; set; }
-    public float scopeInTime { get; set; }
-    public float swaprate { get; set; }
-    public float zoom { get; set; }
+    public double aimSpread { get; set; }
+    public double ammoMag { get; set; }
+    public double ammoReserve { get; set; }
+    public double damage { get; set; }
+    public double firerate { get; set; }
+    public double hipSpread { get; set; }
+    public double moveSpread { get; set; }
+    public double rangeClose { get; set; }
+    public double rangeFar { get; set; }
+    public double recoil { get; set; }
+    public double reload { get; set; }
+    public double run { get; set; }
+    public double scopeInTime { get; set; }
+    public double swaprate { get; set; }
+    public double zoom { get; set; }
 }
