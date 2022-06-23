@@ -2,6 +2,7 @@
 using System.Windows.Media.Imaging;
 using System.Numerics;
 using System.Text.Json.Serialization;
+using System.Drawing;
 
 namespace BLREdit;
 
@@ -109,29 +110,6 @@ public class BLRItem
         }
     }
 
-    //public string GetDescriptorName()
-    //{
-    //    if (!string.IsNullOrEmpty(DescriptorName))
-    //    { return DescriptorName + ":" + weaponModifiers.rating; }
-    //    if (IniStats == null)
-    //    { return ""; }
-
-    //    string desc = "";
-    //    int i = 0;
-    //    foreach (StatDecriptor st in IniStats.StatDecriptors)
-    //    {
-    //        if (i <= 0)
-    //        {
-    //            desc += st.Name;
-    //            i++;
-    //        }
-    //        else
-    //        {
-    //            desc += "/" + st.Name;
-    //        }
-    //    }
-    //    return desc;
-    //}
     public string GetDescriptorName(double points)
     {
         string currentbest = "";
@@ -163,8 +141,9 @@ public class BLRItem
 
     public bool IsValidFor(BLRItem item)
     {
-        if (Category != "magazines" && Category != "muzzles" && Category != "scopes" && Category != "stocks" && Category != "barrels") return true;
-        
+        if (item is null) return false;
+        if (Category != ImportSystem.MAGAZINES_CATEGORY && Category != ImportSystem.MUZZELS_CATEGORY && Category != ImportSystem.SCOPES_CATEGORY && Category != ImportSystem.STOCKS_CATEGORY && Category != ImportSystem.BARRELS_CATEGORY) return true;
+
         if (ValidFor == null) { return true; }
 
         foreach (int id in ValidFor)
@@ -189,12 +168,12 @@ public class BLRItem
     }
 
     public void LoadImage()
-{
+    {
         bool male = false;
         if (!string.IsNullOrEmpty(Icon))
         {
             foreach (FoxIcon foxicon in ImportSystem.Icons)
-{
+            {
                 if (foxicon.Name == Icon)
                 {
                     wideImageMale = foxicon.GetWideImage();
@@ -219,7 +198,7 @@ public class BLRItem
     }
 
     private string GetFemaleIconName()
-{
+    {
         string[] parts = Icon.Split('_');
         string female = "";
         for (int i = 0; i < parts.Length; i++)
@@ -241,7 +220,7 @@ public class BLRItem
     }
 
     public void LoadCrosshair()
-{
+    {
         Crosshair = GetBitmapCrosshair(Name);
     }
 
@@ -266,584 +245,79 @@ public class BLRItem
     }
 
     [JsonIgnore]
-    public string DisplayStatDesc1
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                return "Damage:";
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return "Damage:";
-            }
-            else if (Category == "scopes")
-            {
-                return "Zoom:";
-            }
-            else if (Category == "magazines")
-            {
-                return "Ammo:";
-            }
-            else if (Category == "helmets" || Category == "upperBodies" || Category == "lowerBodies")
-            {
-                return "Health:";
-            }
-            return "";
-        }
-    }
+    public DisplayStatDiscriptor DisplayStat1 { get; set; }
     [JsonIgnore]
-    public string DisplayStat1
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] damage = UI.MainWindow.CalculateDamage(this, 0);
-                return damage[0].ToString("0") + "/" + damage[1].ToString("0");
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return WeaponModifiers.damage + "%";
-            }
-            else if (Category == "scopes")
-            {
-                return (1.3 + (WikiStats?.zoom ?? 0)).ToString("0.00") + "x";
-            }
-            else if (Category == "magazines")
-            {
-                return WeaponModifiers.ammo.ToString("0");
-            }
-            else if (Category == "helmets" || Category == "upperBodies" || Category == "lowerBodies")
-            {
-                return PawnModifiers.Health.ToString("0");
-            }
-            return "";
-        }
-    }
+    public DisplayStatDiscriptor DisplayStat2 { get; set; }
     [JsonIgnore]
-    public bool DisplayStat1Gray
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] damage = UI.MainWindow.CalculateDamage(this, 0);
-                if (damage[0] == 0)
-                { return true; }
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                if (WeaponModifiers.damage == 0)
-                { return true; }
-            }
-            else if (Category == "scopes")
-            {
-                if ((WikiStats?.zoom ?? 0) == 0)
-                { return true; }
-            }
-            else if (Category == "magazines")
-            {
-                if (WeaponModifiers.ammo == 0)
-                { return true; }
-            }
-            else if (Category == "helmets" || Category == "upperBodies" || Category == "lowerBodies")
-            {
-                if (PawnModifiers.Health == 0)
-                { return true; }
-            }
-            return false;
-        }
-    }
+    public DisplayStatDiscriptor DisplayStat3 { get; set; }
     [JsonIgnore]
-    public string DisplayStatDesc2
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                return "Aim:";
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return "Accuracy:";
-            }
-            else if (Category == "scopes")
-            {
-                return "Scope In:";
-            }
-            else if (Category == "magazines")
-            {
-                if (IsValidForItemIDS(40021, 40002))
-                {
-                    return "Range:";
-                }
-                else
-                {
-                    return "Reload:";
-                }
-            }
-            else if (Category == "helmets")
-            {
-                return "Head Armor:";
-            }
-            else if (Category == "upperBodies" || Category == "lowerBodies")
-            {
-                return "Run:";
-            }
-            return "";
-        }
-    }
+    public DisplayStatDiscriptor DisplayStat4 { get; set; }
     [JsonIgnore]
-    public string DisplayStat2
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
-                return spread[0].ToString("0.00") + '°';
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return WeaponModifiers.accuracy + "%";
-            }
-            else if (Category == "scopes")
-            {
-                //return (0.240 + (WikiStats?.scopeInTime ?? 0)).ToString("0.000") + "s";
-                return "+" + (0.0 + (WikiStats?.scopeInTime ?? 0)).ToString("0.00") + "s";
-            }
-            else if (Category == "magazines")
-            {
-                if (IsValidForItemIDS(40021, 40002))
-                {
-                    return WeaponModifiers.range.ToString("0") + "%";
-                }
-                else
-                {
-                    return WikiStats.reload.ToString("0.00") + 's';
-                }
-            }
-            else if (Category == "helmets")
-            {
-                return PawnModifiers.HelmetDamageReduction.ToString("0") + '%';
-            }
-            else if (Category == "upperBodies" || Category == "lowerBodies")
-            {
-                return PawnModifiers.MovementSpeed.ToString("0.00");
-            }
-            return "";
-        }
-    }
+    public DisplayStatDiscriptor DisplayStat5 { get; set; }
     [JsonIgnore]
-    public bool DisplayStat2Gray
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
-                if (spread[0] == 0)
-                { return true; }
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                if (WeaponModifiers.accuracy == 0)
-                { return true; }
-            }
-            else if (Category == "scopes")
-            {
-                if ((WikiStats?.scopeInTime ?? 0) == 0)
-                { return true; } // the "invalid scope" for some reason doesn't follow this, so currently disabling it for consistency's sake
-            }
-            else if (Category == "magazines")
-            {
-                if (IsValidForItemIDS(40021, 40002))
-                {
-                    if (WeaponModifiers.range == 0)
-                    { return true; }
-                }
-                else
-                {
-                    if (WikiStats.reload == 0)
-                    { return true; }
-                }
-            }
-            else if (Category == "helmets")
-            {
-                if (PawnModifiers.HelmetDamageReduction == 0)
-                { return true; }
-            }
-            else if (Category == "upperBodies" || Category == "lowerBodies")
-            {
-                if (PawnModifiers.MovementSpeed == 0)
-                { return true; }
-            }
-            return false;
-        }
-    }
+    public DisplayStatDiscriptor DisplayStat6 { get; set; }
+
     [JsonIgnore]
-    public string DisplayStatDesc3
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                return "Hip:";
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return "Recoil:";
-            }
-            else if (Category == "helmets")
-            {
-                return "Run:";
-            }
-            else if (Category == "scopes")
-            {
-                return "Is Infrared:";
-            }
-            else if (Category == "magazines")
-            {
-                return "Run:";
-            }
-            else if (Category == "upperBodies" || Category == "lowerBodies")
-            {
-                return "Gear:";
-            }
-            return "";
-        }
-    }
+    public double Accuracy { get; }
     [JsonIgnore]
-    public string DisplayStat3
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
-                return spread[1].ToString("0.00") + '°';
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return WeaponModifiers.recoil + "%";
-            }
-            else if (Category == "helmets")
-            {
-                return PawnModifiers.MovementSpeed.ToString("0.00");
-            }
-            else if (Category == "scopes")
-            {
-                if (UID == 45019 || UID == 45020 || UID == 45021)
-                { return "True"; }
-                else
-                { return "False"; }
-            }
-            else if (Category == "magazines")
-            {
-                return WeaponModifiers.movementSpeed.ToString("0") + "%";
-            }
-            else if (Category == "upperBodies" || Category == "lowerBodies")
-            {
-                return PawnModifiers.GearSlots.ToString("0");
-            }
-            return "";
-        }
-    }
+    public double Aim { get; }
     [JsonIgnore]
-    public bool DisplayStat3Gray
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
-                if (spread[1] == 0)
-                { return true; }
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                if (WeaponModifiers.recoil == 0)
-                { return true; }
-            }
-            else if (Category == "helmets")
-            {
-                if (PawnModifiers.MovementSpeed == 0)
-                { return true; }
-            }
-            else if (Category == "scopes")
-            {
-                if (UID != 45019 && UID != 45020 && UID != 45021)
-                { return true; }
-            }
-            else if (Category == "magazines")
-            {
-                if (WeaponModifiers.movementSpeed == 0)
-                { return true; }
-            }
-            else if (Category == "upperBodies" || Category == "lowerBodies")
-            {
-                if (PawnModifiers.GearSlots == 0)
-                { return true; }
-            }
-            return false;
-        }
-    }
+    public double Ammo { get; }
     [JsonIgnore]
-    public string DisplayStatDesc4
+    public double Damage
     {
         get
         {
-            if (Category == "primary" || Category == "secondary")
+            if (Category == ImportSystem.PRIMARY_CATEGORY)
             {
-                return "Move:";
+                return UI.MainWindow.CalculateDamage(this, 0)[0];
             }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
+            else
             {
-                return "Range:";
+                return WeaponModifiers.damage;
             }
-            else if (Category == "magazines")
-            {
-                return "Damage:";
-            }
-            else if (Category == "helmets")
-            {
-                return "HRV:";
-            }
-            return "";
         }
     }
+
     [JsonIgnore]
-    public string DisplayStat4
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
-                return spread[2].ToString("0.00") + '°';
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return WeaponModifiers.range + "%";
-            }
-            else if (Category == "magazines")
-            {
-                return WeaponModifiers.damage.ToString("0") + '%';
-            }
-            else if (Category == "helmets")
-            {
-                return PawnModifiers.HRVDuration.ToString("0.0");
-            }
-            return "";
-        }
-    }
+    public double ElectroProtection { get; }
     [JsonIgnore]
-    public bool DisplayStat4Gray
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] spread = UI.MainWindow.CalculateSpread(this, 0, 0);
-                if (spread[2] == 0)
-                { return true; }
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                if (WeaponModifiers.range == 0)
-                { return true; }
-            }
-            else if (Category == "magazines")
-            {
-                if (WeaponModifiers.damage == 0)
-                { return true; }
-            }
-            else if (Category == "helmets")
-            {
-                if (PawnModifiers.HRVDuration == 0)
-                { return true; }
-            }
-            return false;
-        }
-    }
+    public double ExplosiveProtection { get; }
     [JsonIgnore]
-    public string DisplayStatDesc5
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                return "Recoil:";
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return "Run:";
-            }
-            else if (Category == "magazines")
-            {
-                return "Recoil:";
-            }
-            else if (Category == "helmets")
-            {
-                return "Recharge:";
-            }
-            return "";
-        }
-    }
+    public double GearSlots { get; }
     [JsonIgnore]
-    public string DisplayStat5
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double recoil = UI.MainWindow.CalculateRecoil(this, 0);
-                return recoil.ToString("0.00") + '°';
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                return WeaponModifiers.movementSpeed + "%";
-            }
-            else if (Category == "magazines")
-            {
-                return WeaponModifiers.recoil + "%"; ;
-            }
-            else if (Category == "helmets")
-            {
-                return PawnModifiers.HRVRechargeRate.ToString("0.0") + "u/s";
-            }
-            return "";
-        }
-    }
+    public double Health { get; }
     [JsonIgnore]
-    public bool DisplayStat5Gray
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double recoil = UI.MainWindow.CalculateRecoil(this, 0);
-                if (recoil == 0)
-                { return true; }
-            }
-            else if (Category == "barrels" || Category == "muzzles" || Category == "stocks")
-            {
-                if (WeaponModifiers.movementSpeed == 0)
-                { return true; }
-            }
-            else if (Category == "magazines")
-            {
-                if (WeaponModifiers.recoil == 0)
-                { return true; }
-            }
-            else if (Category == "helmets")
-            {
-                if (PawnModifiers.HRVRechargeRate == 0)
-                { return true; }
-            }
-            return false;
-        }
-    }
+    public double HeadProtection { get; }
     [JsonIgnore]
-    public string DisplayStatDesc6
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                return "Range:";
-            }
-            else if (Name == "Prex Chem/Hazmat Respirator-TOX")
-            {
-                return "Toxic:";
-            }
-            else if (Name == "Prex Chem/Hazmat Respirator-INC")
-            {
-                return "Fire:";
-            }
-            else if (Name == "Prex Chem/Hazmat Respirator-XPL")
-            {
-                return "Explo:";
-            }
-            else if (Category == "magazines")
-            {
-                if (IsValidForItemIDS(40021, 40002))
-                {
-                    return "Accuracy:";
-                }
-                else
-                {
-                    return "Range:";
-                }
-            }
-            return "";
-        }
-    }
+    public double Hip { get; }
     [JsonIgnore]
-    public string DisplayStat6
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] range = UI.MainWindow.CalculateRange(this, 0);
-                return range[0].ToString("0") + '/' + range[1].ToString("0");
-            }
-            else if (Name == "Prex Chem/Hazmat Respirator-TOX")
-            {
-                return PawnModifiers.ToxicProtection.ToString("0") + '%';
-            }
-            else if (Name == "Prex Chem/Hazmat Respirator-INC")
-            {
-                return PawnModifiers.IncendiaryProtection.ToString("0") + '%';
-            }
-            else if (Name == "Prex Chem/Hazmat Respirator-XPL")
-            {
-                return PawnModifiers.ExplosiveProtection.ToString("0") + '%';
-            }
-            else if (Category == "magazines")
-            {
-                if (IsValidForItemIDS(40021, 40002))
-                {
-                    return WeaponModifiers.accuracy.ToString("0") + '%';
-                }
-                else
-                {
-                    return WeaponModifiers.range.ToString("0") + '%';
-                }
-            }
-            return "";
-        }
-    }
+    public double HRVDuration { get; }
     [JsonIgnore]
-    public bool DisplayStat6Gray
-    {
-        get
-        {
-            if (Category == "primary" || Category == "secondary")
-            {
-                double[] range = UI.MainWindow.CalculateRange(this, 0);
-                if (range[0] == 0)
-                { return true; }
-            }
-            else if (Category == "magazines")
-            {
-                if (IsValidForItemIDS(40021, 40002))
-                {
-                    if (WeaponModifiers.accuracy == 0)
-                    { return true; }
-                }
-                else
-                {
-                    if (WeaponModifiers.range == 0)
-                    { return true; }
-                }
-            }
-            return false;
-        }
-    }
+    public double HRVRecharge { get; }
+    [JsonIgnore]
+    public double IncendiaryProtection { get; }
+    [JsonIgnore]
+    public double InfraredProtection { get; }
+    [JsonIgnore]
+    public double Infrared { get; }
+    [JsonIgnore]
+    public double MeleeProtection { get; }
+    [JsonIgnore]
+    public double Move { get; }
+    [JsonIgnore]
+    public double Range { get; }
+    [JsonIgnore]
+    public double Recoil { get; }
+    [JsonIgnore]
+    public double Run { get; }
+    [JsonIgnore]
+    public double ScopeInTime { get; }
+    [JsonIgnore]
+    public double ToxicProtection { get; }
+    [JsonIgnore]
+    public double Zoom { get; }
+
 }
 
 public class BLRPawnModifiers

@@ -55,11 +55,11 @@ namespace BLREdit
 
         public BLRItem GetReciever()
         {
-            BLRItem primary = ImportSystem.GetItemByNameAndType("primary", Receiver);
+            BLRItem primary = ImportSystem.GetItemByNameAndType(ImportSystem.PRIMARY_CATEGORY, Receiver);
             if (primary != null)
                 return primary;
 
-            BLRItem secondary = ImportSystem.GetItemByNameAndType("secondary", Receiver);
+            BLRItem secondary = ImportSystem.GetItemByNameAndType(ImportSystem.SECONDARY_CATEGORY, Receiver);
             if (secondary != null)
                 return secondary;
 
@@ -68,35 +68,35 @@ namespace BLREdit
 
         public BLRItem GetCamo()
         {
-            return ImportSystem.GetItemByIDAndType("camosWeapon", Camo);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, Camo);
         }
         public BLRItem GetTag()
         {
-            return ImportSystem.GetItemByIDAndType("hangers", Tag);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, Tag);
         }
         public BLRItem GetMagazine()
         {
-            return ImportSystem.GetItemByIDAndType("magazines", Magazine);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.MAGAZINES_CATEGORY, Magazine);
         }
         public BLRItem GetMuzzle()
         {
-            return ImportSystem.GetItemByIDAndType("muzzles", Muzzle);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);
         }
         public BLRItem GetStock()
         {
-            return ImportSystem.GetItemByNameAndType("stocks", Stock) ?? ImportSystem.GetItemByNameAndType("stocks", NoStock);
+            return ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, Stock) ?? ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, NoStock);
         }
         public BLRItem GetBarrel()
         {
-            return ImportSystem.GetItemByNameAndType("barrels", Barrel) ?? ImportSystem.GetItemByNameAndType("barrels", NoBarrel);
+            return ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, Barrel) ?? ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, NoBarrel);
         }
         public BLRItem GetScope()
         {
-            return ImportSystem.GetItemByNameAndType("scopes", Scope) ?? ImportSystem.GetItemByNameAndType("scopes", NoScope);
+            return ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, Scope) ?? ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, NoScope);
         }
         public BLRItem GetGrip()
         {
-            return ImportSystem.GetItemByNameAndType("grips", Grip);
+            return ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, Grip);
         }
 
         public static MagiCowsWeapon GetDefaultSetupOfReciever(BLRItem item)

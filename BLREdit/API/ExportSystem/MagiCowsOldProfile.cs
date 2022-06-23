@@ -33,17 +33,17 @@ namespace BLREdit
             profile.Loadout2.Camo = Camo;
             profile.Loadout3.Camo = Camo;
             //Helmet
-            profile.Loadout1.Helmet = ImportSystem.GetIDByNameAndType("helmets", Helmet);
-            profile.Loadout2.Helmet = ImportSystem.GetIDByNameAndType("helmets", Helmet);
-            profile.Loadout3.Helmet = ImportSystem.GetIDByNameAndType("helmets", Helmet);
+            profile.Loadout1.Helmet = ImportSystem.GetIDByNameAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
+            profile.Loadout2.Helmet = ImportSystem.GetIDByNameAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
+            profile.Loadout3.Helmet = ImportSystem.GetIDByNameAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
             //Upper Body
-            profile.Loadout1.UpperBody = ImportSystem.GetIDByNameAndType("upperBodies", UpperBody);
-            profile.Loadout2.UpperBody = ImportSystem.GetIDByNameAndType("upperBodies", UpperBody);
-            profile.Loadout3.UpperBody = ImportSystem.GetIDByNameAndType("upperBodies", UpperBody);
+            profile.Loadout1.UpperBody = ImportSystem.GetIDByNameAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
+            profile.Loadout2.UpperBody = ImportSystem.GetIDByNameAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
+            profile.Loadout3.UpperBody = ImportSystem.GetIDByNameAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
             //Lower Body
-            profile.Loadout1.LowerBody = ImportSystem.GetIDByNameAndType("lowerBodies", LowerBody);
-            profile.Loadout2.LowerBody = ImportSystem.GetIDByNameAndType("lowerBodies", LowerBody);
-            profile.Loadout3.LowerBody = ImportSystem.GetIDByNameAndType("lowerBodies", LowerBody);
+            profile.Loadout1.LowerBody = ImportSystem.GetIDByNameAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody);
+            profile.Loadout2.LowerBody = ImportSystem.GetIDByNameAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody);
+            profile.Loadout3.LowerBody = ImportSystem.GetIDByNameAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody);
 
             return profile;
         }

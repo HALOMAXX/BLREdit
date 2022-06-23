@@ -125,7 +125,7 @@ namespace BLREdit
 
         public bool IsValidFor(ImportItem item)
         {
-            if (item.tooltip == "Depot Item!" && (Category != "secondary" && Category != "tactical" && Category != "attachments" && Category != "helmets" && Category != "lowerBodies" && Category != "upperBodies")) { return false; }
+            if (item.tooltip == "Depot Item!" && (Category != ImportSystem.SECONDARY_CATEGORY && Category != ImportSystem.TACTICAL_CATEGORY && Category != ImportSystem.ATTACHMENTS_CATEGORY && Category != ImportSystem.HELMETS_CATEGORY && Category != ImportSystem.LOWER_BODIES_CATEGORY && Category != ImportSystem.UPPER_BODIES_CATEGORY)) { return false; }
             if (validFor == null) { return true; }
 
             foreach (int id in validFor)
@@ -139,7 +139,7 @@ namespace BLREdit
 
         internal bool IsValidModType(string modType)
         {
-            if (modType == "helmets" || modType == "lowerBodies" || modType == "upperBodies" || modType == "tactical" || modType == "depot") { return true; }
+            if (modType == ImportSystem.HELMETS_CATEGORY || modType == ImportSystem.LOWER_BODIES_CATEGORY || modType == ImportSystem.UPPER_BODIES_CATEGORY || modType == ImportSystem.TACTICAL_CATEGORY || modType == "depot") { return true; }
             foreach (string supportedModType in supportedMods)
             {
                 if (modType == supportedModType)

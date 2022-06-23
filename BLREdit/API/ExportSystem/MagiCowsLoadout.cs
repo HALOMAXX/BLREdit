@@ -51,33 +51,33 @@ namespace BLREdit
 
         public static BLRItem GetGear(int GearID)
         {
-            return ImportSystem.GetItemByIDAndType("attachments", GearID);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, GearID);
         }
         public BLRItem GetTactical()
         {
-            return ImportSystem.GetItemByIDAndType("tactical", Tactical);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, Tactical);
         }
         public BLRItem GetHelmet()
         {
-            return ImportSystem.GetItemByIDAndType("helmets", Helmet);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
         }
 
         public BLRItem GetUpperBody()
         {
-            return ImportSystem.GetItemByIDAndType("upperBodies", UpperBody);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
         }
 
         public BLRItem GetLowerBody()
         {
-            return ImportSystem.GetItemByIDAndType("lowerBodies", LowerBody);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody);
         }
         public BLRItem GetCamo()
         {
-            return ImportSystem.GetItemByIDAndType("camosBody", Camo);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Camo);
         }
         public BLRItem GetSkin()
         {
-            return ImportSystem.GetItemByIDAndType("avatars", Skin);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, Skin);
         }
     }
 }
