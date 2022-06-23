@@ -9,7 +9,7 @@ public struct DisplayStatDiscriptor
     public string Description { get; set; } = "";
     public Brush ValueColor { 
         get {
-            if (UI.MainWindow.Self.CurrentSortingPropertyName?.Equals(PropertyName) ?? false)
+            if (UI.MainWindow.Self.CurrentSortingPropertyName != "None" && (UI.MainWindow.Self.CurrentSortingPropertyName?.Equals(PropertyName) ?? false))
             {
                 return HighlightValueColor;
             }
@@ -23,7 +23,7 @@ public struct DisplayStatDiscriptor
     {
         get
         {
-            if (UI.MainWindow.Self.CurrentSortingPropertyName?.Equals(PropertyName) ?? false)
+            if (UI.MainWindow.Self.CurrentSortingPropertyName != "None" && (UI.MainWindow.Self.CurrentSortingPropertyName?.Equals(PropertyName) ?? false))
             {
                 return HighlightDescriptorColor;
             }

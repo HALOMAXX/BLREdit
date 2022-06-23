@@ -1268,7 +1268,7 @@ namespace BLREdit.UI
             if (image.Name.Contains("Crosshair"))
             {
                 var item = (PrimaryScopeImage.DataContext as BLRItem);
-                item.LoadCrosshair();
+                item.LoadCrosshair(true);
                 ItemList.ItemsSource = new BLRItem[] { item };
                 LastSelectedImage = PrimaryScopeImage;
                 return;
@@ -1298,7 +1298,7 @@ namespace BLREdit.UI
             if (image.Name.Contains("Crosshair"))
             {
                 var item = (SecondaryScopeImage.DataContext as BLRItem);
-                item.LoadCrosshair();
+                item.LoadCrosshair(false);
                 ItemList.ItemsSource = new BLRItem[] { item };
                 LastSelectedImage = SecondaryScopeImage;
                 return;

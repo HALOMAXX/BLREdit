@@ -219,7 +219,7 @@ public class BLRItem
         return female;
     }
 
-    public void LoadCrosshair()
+    public void LoadCrosshair(bool isPrimary)
     {
         Crosshair = GetBitmapCrosshair(Name);
     }
@@ -256,6 +256,15 @@ public class BLRItem
     public DisplayStatDiscriptor DisplayStat5 { get; set; }
     [JsonIgnore]
     public DisplayStatDiscriptor DisplayStat6 { get; set; }
+
+    [JsonIgnore]
+    public double None
+    {
+        get
+        {
+            return UID;
+        }
+    }
 
     [JsonIgnore]
     public double Accuracy
