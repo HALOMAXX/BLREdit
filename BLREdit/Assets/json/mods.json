@@ -11843,7 +11843,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal periodic damage and blur the target's vision.",
+      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44149,
       "validFor": [
         40018
@@ -15157,7 +15157,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal periodic damage and blur the target's vision.",
+      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44224,
       "validFor": [
         40025

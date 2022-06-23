@@ -8814,7 +8814,7 @@
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_PrexChemHazmatRespirator_128x128",
       "name": "Prex Chem/Hazmat Respirator-XPL",
-      "tooltip": "Light helmet.<br>Reduces all explosive damage 16%.",
+      "tooltip": "Light helmet.<br>Reduces all explosive damage 12.8%.",
       "uid": 30345,
       "pawnModifiers": {
         "GearSlots": 0,
@@ -8831,7 +8831,7 @@
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_PrexChemHazmatBlue_128x128",
       "name": "Prex Chem/Hazmat Respirator-TOX",
-      "tooltip": "Light helmet.<br>A green version of the Prex Chemical/Hazmat Respirator. Reduces all toxic damage 20%.",
+      "tooltip": "Light helmet.<br>A green version of the Prex Chemical/Hazmat Respirator. Reduces all toxic damage 16%.",
       "uid": 30346,
       "pawnModifiers": {
         "GearSlots": 0,
@@ -8848,7 +8848,7 @@
       "class": "FoxDataProvider_Gear_Helmet",
       "icon": "t_PrexChemHazmatOrange_128x128",
       "name": "Prex Chem/Hazmat Respirator-INC",
-      "tooltip": "Light helmet.<br>An orange version of the Prex Chemical/Hazmat Respirator. Reduces all incendiary and flame damage 20%.",
+      "tooltip": "Light helmet.<br>An orange version of the Prex Chemical/Hazmat Respirator. Reduces all incendiary and flame damage 16%.",
       "uid": 30347,
       "pawnModifiers": {
         "GearSlots": 0,
