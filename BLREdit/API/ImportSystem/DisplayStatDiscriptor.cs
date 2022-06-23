@@ -11,7 +11,7 @@ public struct DisplayStatDiscriptor
         get {
             if (UI.MainWindow.Self.CurrentSortingPropertyName?.Equals(PropertyName) ?? false)
             {
-                return HighlightColor;
+                return HighlightValueColor;
             }
             else
             {
@@ -25,7 +25,7 @@ public struct DisplayStatDiscriptor
         {
             if (UI.MainWindow.Self.CurrentSortingPropertyName?.Equals(PropertyName) ?? false)
             {
-                return HighlightColor;
+                return HighlightDescriptorColor;
             }
             else
             {
@@ -35,7 +35,8 @@ public struct DisplayStatDiscriptor
     }
     public Brush DefaultValueColor { get; set; } = new SolidColorBrush(Color.FromArgb(255, 116, 148, 160));
     public Brush DefaultDescriptionColor { get; set; } = new SolidColorBrush(Color.FromArgb(255,255,255,255));
-    public Brush HighlightColor { get; set; } = new SolidColorBrush(Color.FromArgb(255, 255, 105, 0));
+    public Brush HighlightValueColor { get; set; } = new SolidColorBrush(Color.FromArgb(255, 180, 100, 50));
+    public Brush HighlightDescriptorColor { get; set; } = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0));
 
     public DisplayStatDiscriptor()
     { }
