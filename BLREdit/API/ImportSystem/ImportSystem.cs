@@ -147,11 +147,14 @@ namespace BLREdit
                             item.DisplayStat6 = desc6;
                         }
                         break;
+                    case MUZZELS_CATEGORY:
+                    case STOCKS_CATEGORY:
                     case BARRELS_CATEGORY:
                         foreach (var item in itemCategory.Value)
                         {
                             double damage = item?.WeaponModifiers?.damage ?? 0;
                             double spread = item?.WeaponModifiers?.accuracy ?? 0;
+                            double recoil = item?.WeaponModifiers?.recoil ?? 0;
                             double range = item?.WeaponModifiers?.range ?? 0;
                             double run = item?.WeaponModifiers?.movementSpeed ?? 0;
 
@@ -166,131 +169,6 @@ namespace BLREdit
                                 desc1.DefaultDescriptionColor = grey;
                                 desc1.DefaultValueColor = grey;
                             }
-
-                            var desc2 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Accuracy",
-                                Description = "Accuracy:",
-                                Value = spread + "%"
-                            };
-                            if (spread == 0)
-                            {
-                                desc2.DefaultDescriptionColor = grey;
-                                desc2.DefaultValueColor = grey;
-                            }
-
-                            var desc3 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Range",
-                                Description = "Range:",
-                                Value = range + "%"
-                            };
-                            if (range == 0)
-                            {
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
-                            }
-
-                            var desc4 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Run",
-                                Description = "Run:",
-                                Value = run + "%"
-                            };
-                            if (run == 0)
-                            {
-                                desc4.DefaultDescriptionColor = grey;
-                                desc4.DefaultValueColor = grey;
-                            }
-
-
-                            var desc5 = new DisplayStatDiscriptor();
-                            var desc6 = new DisplayStatDiscriptor();
-
-                            item.DisplayStat1 = desc1;
-                            item.DisplayStat2 = desc2;
-                            item.DisplayStat3 = desc3;
-                            item.DisplayStat4 = desc4;
-                            item.DisplayStat5 = desc5;
-                            item.DisplayStat6 = desc6;
-                        }
-                        break;
-                    case MUZZELS_CATEGORY:
-                        foreach (var item in itemCategory.Value)
-                        {
-                            double damage = item?.WeaponModifiers?.damage ?? 0;
-                            double spread = item?.WeaponModifiers?.accuracy ?? 0;
-                            double recoil = item?.WeaponModifiers?.recoil ?? 0;
-                            double range = item?.WeaponModifiers?.range ?? 0;
-
-                            var desc1 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Damage",
-                                Description = "Damage:",
-                                Value = damage + "%"
-                            };
-                            if (damage == 0)
-                            {
-                                desc1.DefaultDescriptionColor = grey;
-                                desc1.DefaultValueColor = grey;
-                            }
-
-                            var desc2 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Accuracy",
-                                Description = "Accuracy:",
-                                Value = spread + "%"
-                            };
-                            if (spread == 0)
-                            {
-                                desc2.DefaultDescriptionColor = grey;
-                                desc2.DefaultValueColor = grey;
-                            }
-
-                            var desc3 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Recoil",
-                                Description = "Recoil:",
-                                Value = recoil + "%"
-                            };
-                            if (recoil == 0)
-                            {
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
-                            }
-
-                            var desc4 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Range",
-                                Description = "Range:",
-                                Value = range + "%"
-                            };
-                            if (range == 0)
-                            {
-                                desc4.DefaultDescriptionColor = grey;
-                                desc4.DefaultValueColor = grey;
-                            }
-
-                            var desc5 = new DisplayStatDiscriptor();
-                            var desc6 = new DisplayStatDiscriptor();
-
-                            item.DisplayStat1 = desc1;
-                            item.DisplayStat2 = desc2;
-                            item.DisplayStat3 = desc3;
-                            item.DisplayStat4 = desc4;
-                            item.DisplayStat5 = desc5;
-                            item.DisplayStat6 = desc6;
-                        }
-                        break;
-                    case STOCKS_CATEGORY:
-                        foreach (var item in itemCategory.Value)
-                        {
-                            double spread = item?.WeaponModifiers?.accuracy ?? 0;
-                            double recoil = item?.WeaponModifiers?.recoil ?? 0;
-                            double range = item?.WeaponModifiers?.range ?? 0;
-                            double run = item?.WeaponModifiers?.movementSpeed ?? 0;
-
-                            var desc1 = new DisplayStatDiscriptor();
 
                             var desc2 = new DisplayStatDiscriptor()
                             {
