@@ -979,7 +979,7 @@ namespace BLREdit.UI
 
                 if (image.Name.Contains("Gear") && item.Category == ImportSystem.ATTACHMENTS_CATEGORY && (image.IsEnabled || !updateLoadout))
                 { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Gear:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
-                if (image.Name.Contains(ImportSystem.TACTICAL_CATEGORY) && item.Category == ImportSystem.TACTICAL_CATEGORY)
+                if (image.Name.Contains("Tactical") && item.Category == ImportSystem.TACTICAL_CATEGORY)
                 { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Tactical:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
             }
             UpdateArmorStats();
@@ -1188,10 +1188,10 @@ namespace BLREdit.UI
                 {
                     camo.DataContext = weapon.GetCamo();
                 }
-                if (tag.DataContext == null || (tag.DataContext as BLRItem).Name == "No Weapon Tag")
+                if (tag.DataContext == null)
                 {
                     var newTag = weapon.GetTag();
-                    if (newTag == null || newTag.Name == "No Weapon Tag")
+                    if (newTag == null)
                     {
                         tag.DataContext = Hangers[rng.Next(0, Hangers.Count)];
                     }
