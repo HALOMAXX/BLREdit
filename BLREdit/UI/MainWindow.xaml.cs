@@ -37,7 +37,7 @@ namespace BLREdit.UI
         /// <summary>
         /// Contains the Sorting Direction for the ItemList
         /// </summary>
-        public ListSortDirection SortDirection { get; set; } = ListSortDirection.Ascending;
+        public ListSortDirection SortDirection { get; set; } = ListSortDirection.Descending;
 
         public string CurrentSortingPropertyName { get; set; } = "None";
 
