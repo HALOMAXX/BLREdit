@@ -585,7 +585,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Increases damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Decreases damage otherwise.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 90001,
       "validFor": [
         40010,
@@ -656,7 +656,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Slightly decreases damage, but causes a loud ear-ringing explosion and prevents revives.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 90002,
       "validFor": [
         40010,
@@ -798,7 +798,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Some direct damage with heavy fire damage over time. Hardsuit pilots will take some fire damage.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 90003,
       "validFor": [
         40010,
@@ -5245,7 +5245,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44005,
       "validFor": [
         40010
@@ -5291,7 +5291,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44006,
       "validFor": [
         40010
@@ -5337,7 +5337,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44007,
       "validFor": [
         40010
@@ -5383,7 +5383,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44008,
       "validFor": [
         40010
@@ -5758,7 +5758,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44016,
       "validFor": [
         40003,
@@ -5805,7 +5805,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44017,
       "validFor": [
         40003,
@@ -5852,7 +5852,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44018,
       "validFor": [
         40003,
@@ -5899,7 +5899,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44019,
       "validFor": [
         40003,
@@ -6176,7 +6176,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44025,
       "validFor": [
         40008
@@ -6222,7 +6222,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44026,
       "validFor": [
         40008
@@ -6268,7 +6268,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44027,
       "validFor": [
         40008
@@ -6314,7 +6314,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44028,
       "validFor": [
         40008
@@ -6636,7 +6636,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44035,
       "validFor": [
         40005
@@ -6682,7 +6682,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44036,
       "validFor": [
         40005
@@ -6728,7 +6728,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44037,
       "validFor": [
         40005
@@ -6774,7 +6774,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44038,
       "validFor": [
         40005
@@ -6912,7 +6912,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44041,
       "validFor": [
         40011
@@ -6958,7 +6958,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44042,
       "validFor": [
         40011
@@ -7004,7 +7004,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44043,
       "validFor": [
         40011
@@ -7050,7 +7050,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44044,
       "validFor": [
         40011
@@ -7326,7 +7326,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44050,
       "validFor": [
         40000
@@ -7372,7 +7372,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44051,
       "validFor": [
         40000
@@ -7418,7 +7418,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44052,
       "validFor": [
         40000
@@ -7464,7 +7464,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44053,
       "validFor": [
         40000
@@ -7745,7 +7745,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44059,
       "validFor": [
         40001,
@@ -7792,7 +7792,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44060,
       "validFor": [
         40001,
@@ -7839,7 +7839,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44061,
       "validFor": [
         40001,
@@ -7886,7 +7886,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44062,
       "validFor": [
         40001,
@@ -8163,7 +8163,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44068,
       "validFor": [
         40004
@@ -8209,7 +8209,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44069,
       "validFor": [
         40004
@@ -8255,7 +8255,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44070,
       "validFor": [
         40004
@@ -8301,7 +8301,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44071,
       "validFor": [
         40004
@@ -8577,7 +8577,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44077,
       "validFor": [
         40006
@@ -8623,7 +8623,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44078,
       "validFor": [
         40006
@@ -8669,7 +8669,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44079,
       "validFor": [
         40006
@@ -8715,7 +8715,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44080,
       "validFor": [
         40006
@@ -8991,7 +8991,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44086,
       "validFor": [
         40009
@@ -9037,7 +9037,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44087,
       "validFor": [
         40009
@@ -9083,7 +9083,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44088,
       "validFor": [
         40009
@@ -9129,7 +9129,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44089,
       "validFor": [
         40009
@@ -9405,7 +9405,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44095,
       "validFor": [
         40007
@@ -9451,7 +9451,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44096,
       "validFor": [
         40007
@@ -9497,7 +9497,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44097,
       "validFor": [
         40007
@@ -9543,7 +9543,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44098,
       "validFor": [
         40007
@@ -9635,7 +9635,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44099,
       "validFor": [
         40002
@@ -9681,7 +9681,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44100,
       "validFor": [
         40002
@@ -9727,7 +9727,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44101,
       "validFor": [
         40002
@@ -9773,7 +9773,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44102,
       "validFor": [
         40002
@@ -10141,7 +10141,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44112,
       "validFor": [
         40013
@@ -10187,7 +10187,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44113,
       "validFor": [
         40013
@@ -10233,7 +10233,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44114,
       "validFor": [
         40013
@@ -10279,7 +10279,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44115,
       "validFor": [
         40013
@@ -10555,7 +10555,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44121,
       "validFor": [
         40017
@@ -10601,7 +10601,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44122,
       "validFor": [
         40017
@@ -10647,7 +10647,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44123,
       "validFor": [
         40017
@@ -10693,7 +10693,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44124,
       "validFor": [
         40017
@@ -10969,7 +10969,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44130,
       "validFor": [
         40016
@@ -11015,7 +11015,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44131,
       "validFor": [
         40016
@@ -11061,7 +11061,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44132,
       "validFor": [
         40016
@@ -11107,7 +11107,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44133,
       "validFor": [
         40016
@@ -11291,7 +11291,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44137,
       "validFor": [
         40014
@@ -11337,7 +11337,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44138,
       "validFor": [
         40014
@@ -11383,7 +11383,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44139,
       "validFor": [
         40014
@@ -11429,7 +11429,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44140,
       "validFor": [
         40014
@@ -11705,7 +11705,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44146,
       "validFor": [
         40018
@@ -11751,7 +11751,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44147,
       "validFor": [
         40018
@@ -11797,7 +11797,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44148,
       "validFor": [
         40018
@@ -11843,7 +11843,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44149,
       "validFor": [
         40018
@@ -12119,7 +12119,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44155,
       "validFor": [
         40020
@@ -12165,7 +12165,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44156,
       "validFor": [
         40020
@@ -12211,7 +12211,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44157,
       "validFor": [
         40020
@@ -12257,7 +12257,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44158,
       "validFor": [
         40020
@@ -12303,7 +12303,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44159,
       "validFor": [
         40010
@@ -12349,7 +12349,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44160,
       "validFor": [
         40018
@@ -12395,7 +12395,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Special ammo that improves damage and range, but impairs recoil and running speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44161,
       "validFor": [
         40003,
@@ -12442,7 +12442,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44162,
       "validFor": [
         40009
@@ -12488,7 +12488,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44163,
       "validFor": [
         40017
@@ -12534,7 +12534,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44164,
       "validFor": [
         40020
@@ -12580,7 +12580,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44165,
       "validFor": [
         40008
@@ -12626,7 +12626,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44166,
       "validFor": [
         40007
@@ -12672,7 +12672,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44167,
       "validFor": [
         40005
@@ -12718,7 +12718,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44168,
       "validFor": [
         40016
@@ -12764,7 +12764,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44169,
       "validFor": [
         40011
@@ -12810,7 +12810,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44170,
       "validFor": [
         40000
@@ -12856,7 +12856,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44171,
       "validFor": [
         40001,
@@ -12903,7 +12903,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44172,
       "validFor": [
         40004
@@ -12949,7 +12949,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44173,
       "validFor": [
         40006
@@ -12995,7 +12995,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44174,
       "validFor": [
         40002
@@ -13041,7 +13041,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44175,
       "validFor": [
         40013
@@ -13087,7 +13087,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44176,
       "validFor": [
         40014
@@ -13317,7 +13317,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44182,
       "validFor": [
         40021
@@ -13363,7 +13363,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44183,
       "validFor": [
         40021
@@ -13409,7 +13409,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44184,
       "validFor": [
         40021
@@ -13455,7 +13455,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44185,
       "validFor": [
         40021
@@ -13501,7 +13501,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44186,
       "validFor": [
         40021
@@ -13777,7 +13777,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44192,
       "validFor": [
         40022
@@ -13823,7 +13823,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44193,
       "validFor": [
         40022
@@ -13869,7 +13869,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44194,
       "validFor": [
         40022
@@ -13915,7 +13915,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44195,
       "validFor": [
         40022
@@ -13961,7 +13961,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44196,
       "validFor": [
         40022
@@ -14237,7 +14237,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44202,
       "validFor": [
         40023
@@ -14283,7 +14283,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44203,
       "validFor": [
         40023
@@ -14329,7 +14329,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44204,
       "validFor": [
         40023
@@ -14375,7 +14375,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44205,
       "validFor": [
         40023
@@ -14421,7 +14421,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Improves damage, and range at the cost of stability and movement speed.",
+      "tooltip": "Improves damage and range at the cost of stability and movement speed.",
       "uid": 44206,
       "validFor": [
         40023
@@ -15019,7 +15019,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Electro magazines deal slightly reduced damage to players, and slightly increased damage to mechanical targets.",
+      "tooltip": "Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.",
       "uid": 44221,
       "validFor": [
         40025
@@ -15065,7 +15065,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Explosive magazines jar the target's vision and prevent them from being revived if killed, but deal reduced damage.",
+      "tooltip": "Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.",
       "uid": 44222,
       "validFor": [
         40025
@@ -15111,7 +15111,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Incendiary magazines deal 90% damage up front, and 20% overtime. Burn does not stack.",
+      "tooltip": "Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.",
       "uid": 44223,
       "validFor": [
         40025
@@ -15157,7 +15157,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "tooltip": "Toxic magazines deal 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
+      "tooltip": "Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.",
       "uid": 44224,
       "validFor": [
         40025
