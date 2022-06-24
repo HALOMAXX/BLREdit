@@ -290,7 +290,9 @@ namespace BLREdit
                             double range = item?.WeaponModifiers?.range ?? 0;
                             double run = item?.WeaponModifiers?.movementSpeed ?? 0;
 
-                            var desc1 = new DisplayStatDiscriptor()
+                            var desc1 = new DisplayStatDiscriptor();
+
+                            var desc2 = new DisplayStatDiscriptor()
                             {
                                 PropertyName = "Accuracy",
                                 Description = "Accuracy:",
@@ -298,11 +300,11 @@ namespace BLREdit
                             };
                             if (spread == 0)
                             {
-                                desc1.DefaultDescriptionColor = grey;
-                                desc1.DefaultValueColor = grey;
+                                desc2.DefaultDescriptionColor = grey;
+                                desc2.DefaultValueColor = grey;
                             }
 
-                            var desc2 = new DisplayStatDiscriptor()
+                            var desc3 = new DisplayStatDiscriptor()
                             {
                                 PropertyName = "Recoil",
                                 Description = "Recoil:",
@@ -310,11 +312,11 @@ namespace BLREdit
                             };
                             if (recoil == 0)
                             {
-                                desc2.DefaultDescriptionColor = grey;
-                                desc2.DefaultValueColor = grey;
+                                desc3.DefaultDescriptionColor = grey;
+                                desc3.DefaultValueColor = grey;
                             }
 
-                            var desc3 = new DisplayStatDiscriptor()
+                            var desc4 = new DisplayStatDiscriptor()
                             {
                                 PropertyName = "Range",
                                 Description = "Range:",
@@ -322,11 +324,11 @@ namespace BLREdit
                             };
                             if (range == 0)
                             {
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
+                                desc4.DefaultDescriptionColor = grey;
+                                desc4.DefaultValueColor = grey;
                             }
 
-                            var desc4 = new DisplayStatDiscriptor()
+                            var desc5 = new DisplayStatDiscriptor()
                             {
                                 PropertyName = "Run",
                                 Description = "Run:",
@@ -334,11 +336,9 @@ namespace BLREdit
                             };
                             if (run == 0)
                             {
-                                desc4.DefaultDescriptionColor = grey;
-                                desc4.DefaultValueColor = grey;
+                                desc5.DefaultDescriptionColor = grey;
+                                desc5.DefaultValueColor = grey;
                             }
-
-                            var desc5 = new DisplayStatDiscriptor();
 
                             var desc6 = new DisplayStatDiscriptor();
 
