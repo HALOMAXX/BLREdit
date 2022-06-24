@@ -1641,7 +1641,7 @@ namespace BLREdit.UI
         private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
         {
             ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
-            ExportSystem.CreateSEProfile(ExportSystem.ActiveProfile);
+            //ExportSystem.CreateSEProfile(ExportSystem.ActiveProfile); //Not really in use currently only makes waste on the Hard Drive
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
