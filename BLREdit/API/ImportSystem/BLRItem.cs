@@ -339,7 +339,14 @@ public class BLRItem
     {
         get
         {
-            return UID;
+            if (Tooltip == "Depot Item!")
+            {
+                return -1;
+            }
+            else
+            {
+                return 1;
+            }
         }
     }
 
