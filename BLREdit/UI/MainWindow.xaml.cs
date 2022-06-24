@@ -795,10 +795,14 @@ namespace BLREdit.UI
                     if (e.ClickCount >= 2)
                     {
                         SetItemToImage(LastSelectedImage, item);
+                        if (item.Category == ImportSystem.SECONDARY_CATEGORY)
+                        {
+                            SetItemToImage(SecondaryScopeImage, (SecondaryScopeImage.DataContext as BLRItem), false);
+                        }
                     }
                     else
                     {
-                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Sending:" + item.Name);
+                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Double Clicking:" + item.Name);
                         DragDrop.DoDragDrop(image, item, DragDropEffects.Copy);
                     }
                 }
@@ -815,10 +819,14 @@ namespace BLREdit.UI
                             if (e.ClickCount >= 2)
                             {
                                 SetItemToImage(LastSelectedImage, item);
+                                if (item.Category == ImportSystem.SECONDARY_CATEGORY)
+                                {
+                                    SetItemToImage(SecondaryScopeImage, (SecondaryScopeImage.DataContext as BLRItem), false);
+                                }
                             }
                             else
                             {
-                                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Sending:" + item.Name);
+                                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Double Clicking2:" + item.Name);
                                 DragDrop.DoDragDrop(imageChild, item, DragDropEffects.Copy);
                             }
                         }
@@ -879,6 +887,8 @@ namespace BLREdit.UI
                 {
                     if (item.Category == ImportSystem.SCOPES_CATEGORY)
                     {
+                        SecondaryScopeImage.DataContext = null;
+                        SecondaryCrosshairImage.DataContext = null;
                         SecondaryScopeImage.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(item.Name + " Set!");
                         SecondaryCrosshairImage.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(item.Name + "Preview Set!");
                     }
@@ -1427,7 +1437,7 @@ namespace BLREdit.UI
                 //Clear old sorting descriptions
                 view.SortDescriptions.Clear();
 
-                if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null && Enum.GetName(SortComboBox1.SelectedItem.GetType(), SortComboBox1.SelectedItem) != "None")
+                if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
                 {
                     CurrentSortingPropertyName = Enum.GetName(SortComboBox1.SelectedItem.GetType(), SortComboBox1.SelectedItem);
                     view.SortDescriptions.Add(new SortDescription(CurrentSortingPropertyName, SortDirection));

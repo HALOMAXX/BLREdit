@@ -46,7 +46,9 @@ public class BLRItem
     [JsonIgnore]
     public BitmapSource Crosshair { get; private set; }
     [JsonIgnore]
-    public BitmapSource MiniCrosshair { get { return GetBitmapCrosshair(Name); } }
+    public BitmapSource MiniPrimaryCrosshair { get { return GetBitmapCrosshair(Name); } }
+    [JsonIgnore]
+    public BitmapSource MiniSecondaryCrosshair { get { return GetBitmapCrosshair(GetSecondaryScope()); } }
 
 
     public BLRItem() { }
@@ -221,7 +223,82 @@ public class BLRItem
 
     public void LoadCrosshair(bool isPrimary)
     {
-        Crosshair = GetBitmapCrosshair(Name);
+        if (isPrimary)
+        {
+            Crosshair = GetBitmapCrosshair(Name);
+        }
+        else
+        {
+            Crosshair = GetBitmapCrosshair(GetSecondaryScope());
+        }
+    }
+
+    private string GetSecondaryScope()
+    {
+        var name = (UI.MainWindow.Self.SecondaryRecieverImage.DataContext as BLRItem)?.Name ?? "";
+        switch (Name)
+        {
+            case "No Optic Mod":
+
+                if (name.Contains("Prestige"))
+                {
+                    return Name + " Light Pistol";
+                }
+                else
+                {
+                    return Name + " " + name;
+                }
+
+            //Pistols Only
+            case "OPRL Holo Sight":
+            case "Lightsky Reflex Sight":
+            case "Krane Tactical Scope":
+            case "EON Electric Scope":
+            case "EMI Electric Scope":
+            case "ArmCom CQC Scope":
+            case "Aim Point Ammo Counter":
+                return Name + GetSecondayScopePistol(name);
+
+            //Pistols and shotguns
+            case "Titan Rail Sight":
+            case "MMRS Flip-Up Rail Sight":
+            case "Lightsky Red Dot Sight":
+            case "Krane Holo Sight":
+                return Name + GetSecondayScopePistol(name) + GetSecondayScopeShotgun(name);
+
+            default:
+                return Name;
+        }
+    }
+
+    private string GetSecondayScopePistol(string secondaryName)
+    {
+        switch (secondaryName)
+        {
+            case "Breech Loaded Pistol":
+            case "Snub 260":
+            case "Heavy Pistol":
+            case "Light Pistol":
+            case "Burstfire Pistol":
+            case "Prestige Light Pistol":
+            case "Machine Pistol":
+            case "Revolver":
+                return " Pistol";
+            default:
+                return "";
+        }
+    }
+
+    private string GetSecondayScopeShotgun(string secondaryName)
+    {
+        switch (secondaryName)
+        {
+            case "Shotgun":
+            case "Shotgun AR-k":
+                return " Shotgun";
+            default:
+                return "";
+        }
     }
 
     public void RemoveCrosshair()
