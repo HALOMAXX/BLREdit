@@ -8,7 +8,7 @@ namespace BLREdit
 {
     public class FoxIcon
     {
-        private static bool AddFolderLine = AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\");
+        private static readonly bool AddFolderLine = AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\");
 
         private const int WideImageWidth = 256;
         private const int WideImageHeight = 128;
@@ -84,10 +84,10 @@ namespace BLREdit
 
         private BitmapSource GetImage(int Width, int Height, BitmapImage empty, bool Uniform)
         {
-            DrawingGroup group = new DrawingGroup();
+            DrawingGroup group = new();
 
 
-            ImageDrawing baseImage = new ImageDrawing //background for Image
+            ImageDrawing baseImage = new() //background for Image
             {
                 Rect = new Rect(0, 0, Width, Height),
                 ImageSource = empty
@@ -96,7 +96,7 @@ namespace BLREdit
 
             var tmp = GetImage(); //Load the actual image we want to draw
 
-            ImageDrawing actualImage = new ImageDrawing
+            ImageDrawing actualImage = new()
             {
                 Rect = CreateRectForImage(Width, Height, tmp.PixelWidth, tmp.PixelHeight, Uniform),
                 ImageSource = tmp
@@ -145,12 +145,12 @@ namespace BLREdit
 
         public static BitmapSource ToBitmapSource(DrawingImage source)
         {
-            DrawingVisual drawingVisual = new DrawingVisual();
+            DrawingVisual drawingVisual = new();
             DrawingContext drawingContext = drawingVisual.RenderOpen();
             drawingContext.DrawImage(source, new Rect(new Point(0, 0), new Size(source.Width, source.Height)));
             drawingContext.Close();
 
-            RenderTargetBitmap bmp = new RenderTargetBitmap((int)source.Width, (int)source.Height, 96, 96, PixelFormats.Pbgra32);
+            RenderTargetBitmap bmp = new((int)source.Width, (int)source.Height, 96, 96, PixelFormats.Pbgra32);
             bmp.Render(drawingVisual);
             return bmp;
         }
@@ -176,9 +176,9 @@ namespace BLREdit
             BitmapSource bitmap = BitmapSource.Create(width, height,
                 96, 96, pf, null,
                 rawImage, rawStride);
-            PngBitmapEncoder encoder = new PngBitmapEncoder();
-            MemoryStream stream = new MemoryStream();
-            BitmapImage bitmapImage = new BitmapImage();
+            PngBitmapEncoder encoder = new();
+            MemoryStream stream = new();
+            BitmapImage bitmapImage = new();
             encoder.Frames.Add(BitmapFrame.Create(bitmap));
             encoder.Save(stream);
 

@@ -3,75 +3,66 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 
-namespace BLREdit
+namespace BLREdit;
+
+public static class LoggingSystem
 {
-    public static class LoggingSystem
-    {
 #if DEBUG
-        public static bool IsDebuggingEnabled { get; set; } = true;
+    public static bool IsDebuggingEnabled { get; set; } = true;
 #else
-        public static bool IsDebuggingEnabled { get; set; } = false;
+    public static bool IsDebuggingEnabled { get; set; } = false;
 #endif
-        public static Stopwatch LogInfo(string info, string newLine = "\n")
-        {
-            if (IsDebuggingEnabled)
-            {
-                var now = DateTime.Now;
-                Trace.Write("[" + now + "]Info:" + info + newLine);
-                return Stopwatch.StartNew();
-            }
-            return null;
-        }
+    public static Stopwatch LogInfo(string info, string newLine = "\n")
+    {
+        var now = DateTime.Now;
+        Trace.Write("[" + now + "]Info:" + info + newLine);
+        return Stopwatch.StartNew();
+    }
 
-        public static void LogInfoAppend(Stopwatch watch, string finish = "")
+#nullable enable
+    public static void LogInfoAppend(Stopwatch? watch, string finish = "")
+    {
+        if (watch is not null)
         {
-            if (IsDebuggingEnabled && watch != null)
-            {
-                Trace.WriteLine(finish + " Done! in " + watch.ElapsedMilliseconds + "ms");
-            }
+            Trace.WriteLine(finish + " Done! in " + watch.ElapsedMilliseconds + "ms");
         }
+    }
+#nullable disable
 
-        public static void LogWarning(string info)
-        {
-            if (IsDebuggingEnabled)
-            {
-                var now = DateTime.Now;
-                Trace.WriteLine("[" + now + "]Warning:" + info);
-            }
-        }
+    public static void LogWarning(string info)
+    {
+        var now = DateTime.Now;
+        Trace.WriteLine("[" + now + "]Warning:" + info);
+    }
 
-        public static void LogError(string info)
-        {
-            if (IsDebuggingEnabled)
-            {
-                var now = DateTime.Now;
-                Trace.WriteLine("[" + now + "]Error:" + info);
-            }
-        }
+    public static void LogError(string info)
+    {
+        var now = DateTime.Now;
+        Trace.WriteLine("[" + now + "]Error:" + info);
+    }
 
-        public static void LogStatus(string status)
-        {
-            var now = DateTime.Now;
-            Trace.WriteLine("[" + now + "]Status:" + status);
-        }
+    public static void LogStatus(string status)
+    {
+        var now = DateTime.Now;
+        Trace.WriteLine("[" + now + "]Status:" + status);
+    }
 
-        public static string ObjectToTextWall<T>(T obj)
+    public static string ObjectToTextWall<T>(T obj)
+    {
+        StringBuilder sb = new();
+        BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+        var fields = obj.GetType().GetFields(flags);
+        var props = obj.GetType().GetProperties(flags);
+        sb.Append('{');
+        foreach (FieldInfo field in fields)
         {
-            StringBuilder sb = new StringBuilder();
-            BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
-            var fields = obj.GetType().GetFields(flags);
-            var props = obj.GetType().GetProperties(flags);
-            sb.Append('{');
-            foreach (FieldInfo field in fields)
-            {
-                sb.AppendFormat(" {0}:{1},", field.Name, field.GetValue(obj));
-            }
-            foreach (PropertyInfo prop in props)
-            {
-                sb.AppendFormat(" {0}:{1},", prop.Name, prop.GetValue(obj));
-            }
-            sb.Append(" }");
-            return sb.ToString();
+            sb.AppendFormat(" {0}:{1},", field.Name, field.GetValue(obj));
         }
+        foreach (PropertyInfo prop in props)
+        {
+            sb.AppendFormat(" {0}:{1},", prop.Name, prop.GetValue(obj));
+        }
+        sb.Append(" }");
+        return sb.ToString();
     }
 }

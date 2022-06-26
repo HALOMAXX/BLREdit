@@ -18,6 +18,8 @@ namespace BLREdit
         public int Camo { get; set; } = 0;
         public int Skin { get; set; } = 99;
 
+        public int Trophy { get; set; } = 0;
+
         public override string ToString()
         {
             return LoggingSystem.ObjectToTextWall(this);
@@ -49,35 +51,40 @@ namespace BLREdit
         public static MagiCowsLoadout DefaultLoadout2 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultSubmachineGun, Secondary = MagiCowsWeapon.DefaultLightPistol };
         public static MagiCowsLoadout DefaultLoadout3 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultBAR, Secondary = MagiCowsWeapon.DefaultLightPistol };
 
-        public static ImportItem GetGear(int GearID)
+        public static BLRItem GetGear(int GearID)
         {
-            return ImportSystem.GetItemByIDAndType("attachments", GearID);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, GearID);
         }
-        public ImportItem GetTactical()
+        public BLRItem GetTactical()
         {
-            return ImportSystem.GetItemByIDAndType("tactical", Tactical);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, Tactical);
         }
-        public ImportItem GetHelmet()
+        public BLRItem GetHelmet()
         {
-            return ImportSystem.GetItemByIDAndType("helmets", Helmet);
-        }
-
-        public ImportItem GetUpperBody()
-        {
-            return ImportSystem.GetItemByIDAndType("upperBodies", UpperBody);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
         }
 
-        public ImportItem GetLowerBody()
+        public BLRItem GetUpperBody()
         {
-            return ImportSystem.GetItemByIDAndType("lowerBodies", LowerBody);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
         }
-        public ImportItem GetCamo()
+
+        public BLRItem GetLowerBody()
         {
-            return ImportSystem.GetItemByIDAndType("camosBody", Camo);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody);
         }
-        public ImportItem GetSkin()
+        public BLRItem GetCamo()
         {
-            return ImportSystem.GetItemByIDAndType("avatars", Skin);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Camo);
+        }
+        public BLRItem GetSkin()
+        {
+            return ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, Skin);
+        }
+
+        public BLRItem GetTrophy()
+        {
+            return ImportSystem.GetItemByIDAndType(ImportSystem.BADGE_CATEGORY, Trophy);
         }
     }
 }

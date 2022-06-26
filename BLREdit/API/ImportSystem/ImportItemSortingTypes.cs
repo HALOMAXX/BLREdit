@@ -1,54 +1,76 @@
-﻿using System.ComponentModel;
+﻿namespace BLREdit;
 
-namespace BLREdit
+public enum ImportWeaponSortingType
 {
-    public enum ImportWeaponSortingType
-    {
-        None = 0,
-        Name = 1,
-        Damage = 2,
-        Spread = 3,
-        Recoil = 4,
-        Range = 5,
-        Run = 6,
-        Zoom = 7,
-        ScopeInTime = 8,
-    }
+    None,
+    Name,
+    Damage,
+    Aim,
+    Hip,
+    Move,
+    Recoil,
+    Range,
+    Ammo,
+}
 
-    public enum ImportGearSortingType
-    {
-        None = 0,
-        Name = 1,
-        ElectroArmor=2,
-        ToxicArmor=3,
-        IncendiaryArmor=4,
-        MeleeArmor=5,
-        InfraredArmor=6,
-    }
+public enum ImportModificationSortingType
+{
+    None,
+    Name,
+    Ammo,
+    Damage,
+    Accuracy,
+    Recoil,
+    Range,
+    Run,
+}
 
-    public enum ImportTacticalSortingType
-    {
-        None = 0,
-        Name = 1,
-    }
+public enum ImportScopeSortingType
+{ 
+    None,
+    Name,
+    Zoom,
+    ScopeInTime,
+    Infrared
+}
 
-    public enum ImportHelmetSortingType
-    {
-        None = 0,
-        Name = 1,
-        Health = 2,
-        Head_Protection = 3,
-        HRV_Duration = 4,
-        HRV_Recharge = 5,
-        Run = 6,
-    }
+public enum ImportGearSortingType
+{
+    None,
+    Name,
+    IncendiaryProtection,
+    ToxicProtection,
+    ExplosiveProtection,
+    ElectroProtection,
+    MeleeProtection,
+    InfraredProtection,
+}
 
-    public enum ImportArmorSortingType
-    {
-        None = 0,
-        Name = 1,
-        Health = 2,
-        GearSlots = 3,
-        Run = 4,
-    }
+public enum ImportNoStatsSortingType
+{
+    None,
+    Name,
+}
+
+public enum ImportHelmetSortingType
+{
+    None,
+    Name,
+    Health,
+    HeadProtection,
+    Run,
+    HRVDuration,
+    HRVRecharge,
+    ToxicProtection,
+    IncendiaryProtection,
+    ExplosiveProtection,
+}
+
+public enum ImportArmorSortingType
+{
+    None,
+    Name,
+    Health,
+    GearSlots,
+    Run,
 }

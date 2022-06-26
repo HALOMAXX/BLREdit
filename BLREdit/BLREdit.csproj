@@ -8,6 +8,7 @@
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
     <ApplicationIcon>BLREdit Logo (DraagonLizzard).ico</ApplicationIcon>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 	
 	<ItemGroup>

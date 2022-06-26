@@ -19,177 +19,118 @@
             </ItemsControl.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding tooltip}" >
+                    <StackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="ItemList_MouseDown" ToolTip="{Binding Tooltip}" >
                         <Border>
                             <Image Source="{Binding WideImage, IsAsync=True}" CacheMode="BitmapCache" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" />
                         </Border>
                         <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
                         <Border BorderThickness="1,0,1,1">
-                            <TextBlock Text="{Binding name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
+                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
                         </Border>
                         <Border BorderThickness="1,0,1,1">
                             <UniformGrid Columns="3">
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc1}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Label Content="{Binding DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="White"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat1Gray}" Value="true">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.DescriptionColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
-                                    <Label Content="{Binding DisplayStat1}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                                    <Label Content="{Binding DisplayStat1.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat1Gray}" Value="true">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.ValueColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc2}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Label Content="{Binding DisplayStat2.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="White"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat2Gray}" Value="true">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.DescriptionColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
-                                    <Label Content="{Binding DisplayStat2}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                                    <Label Content="{Binding DisplayStat2.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat2Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.ValueColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc3}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Label Content="{Binding DisplayStat3.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="White"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat3Gray}" Value="true">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.DescriptionColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
-                                    <Label Content="{Binding DisplayStat3}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                                    <Label Content="{Binding DisplayStat3.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat3Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.ValueColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc4}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Label Content="{Binding DisplayStat4.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="White"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat4Gray}" Value="true">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.DescriptionColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
-                                    <Label Content="{Binding DisplayStat4}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                                    <Label Content="{Binding DisplayStat4.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat4Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.ValueColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc5}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Label Content="{Binding DisplayStat5.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="White"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat5Gray}" Value="true">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.DescriptionColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
-                                    <Label Content="{Binding DisplayStat5}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                                    <Label Content="{Binding DisplayStat5.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat5Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.ValueColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
                                 </UniformGrid>
 
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStatDesc6}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Label Content="{Binding DisplayStat6.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="White"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat6Gray}" Value="true">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.DescriptionColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
-                                    <Label Content="{Binding DisplayStat6}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                                    <Label Content="{Binding DisplayStat6.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
                                         <Label.Style>
                                             <Style>
-                                                <Setter Property="TextBlock.Foreground" Value="#FF7494A0"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DisplayStat6Gray}" Value="True">
-                                                        <Setter Property="TextBlock.Foreground" Value="#80888888"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
+                                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.ValueColor}"/>
                                             </Style>
                                         </Label.Style>
                                     </Label>
                                 </UniformGrid>
+
                             </UniformGrid>
                         </Border>
                         <Border BorderThickness="1,0,1,1" Style="{StaticResource DebugBorder}">
@@ -208,59 +149,59 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <Grid>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,100,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,100,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Center" Source="{Binding MiniCrosshair}" Name="PrimaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Center" Source="{Binding MiniPrimaryCrosshair}" Name="PrimaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="133" HorizontalAlignment="Left" Margin="148,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding WideImage}" Name="PrimaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public" />
+                        <Image HorizontalAlignment="Left" Source="{Binding WideImage}" Name="PrimaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public" />
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,400,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,400,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Center" Source="{Binding MiniCrosshair}" Name="SecondaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Center" Source="{Binding MiniSecondaryCrosshair}" Name="SecondaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="133" HorizontalAlignment="Left" Margin="148,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding WideImage}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding WideImage}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
 
@@ -334,7 +275,7 @@
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                             <Rectangle Width="64" Height="64" Name="Gear1Rect">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#77000000"/>
@@ -344,7 +285,7 @@
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                             <Rectangle Width="64" Height="64" Name="Gear2Rect">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#77000000"/>
@@ -354,7 +295,7 @@
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                             <Rectangle Width="64" Height="64" Name="Gear3Rect">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#77000000"/>
@@ -364,7 +305,7 @@
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                             <Rectangle Width="64" Height="64" Name="Gear4Rect">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#77000000"/>
@@ -373,24 +314,28 @@
                         </Grid>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="HelmetImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="HelmetImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="UpperBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="UpperBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="LowerBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="LowerBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PlayerCamoBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PlayerCamoBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="291,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="AvatarImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding tooltip}" x:FieldModifier="public"/>
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="AvatarImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                    </Border>
+
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,900,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="TrophyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
                     <Label Name="PrimaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>

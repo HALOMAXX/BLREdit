@@ -22,33 +22,33 @@ namespace BLREdit
 
             //TestREST().GetAwaiter().GetResult();
 
-            LoggingSystem.LogInfo("BLREdit Starting!");
+            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("BLREdit Starting!");
             VersionCheck();
             ImportSystem.Initialize();
         }
 
-        public async Task TestREST()
+        public static async Task TestREST()
         {
             MagiCowsProfile[] profiles = await MagiCowClient.GetAllPlayers();
             foreach (MagiCowsProfile profile in profiles)
             {
-                LoggingSystem.LogInfo(profile.ToString());
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(profile.ToString());
             }
         }
 
-        public const string CurrentVersion = "v0.4.8";
-        const string CurrentVersionName = "BLREdit Hotfix";
+        public const string CurrentVersion = "v0.5.0";
+        const string CurrentVersionName = "BLREdit Internal Rework";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
         public static void VersionCheck()
         {
             try
             {
-                GitHubClient client = new GitHubClient(new ProductHeaderValue("BLREdit"));
+                GitHubClient client = new(new ProductHeaderValue("BLREdit"));
                 var releases = client.Repository.Release.GetAll(CurrentOwner, CurrentRepo);
                 releases.Wait();
                 var latest = releases.Result[0];
-                LoggingSystem.LogInfo("Newest Version: " + latest.TagName + " of " + latest.Name + " vs Current: " + CurrentVersion + " of " + CurrentVersionName);
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Newest Version: " + latest.TagName + " of " + latest.Name + " vs Current: " + CurrentVersion + " of " + CurrentVersionName);
 
                 string[] remoteVersionParts = latest.TagName.Split('v');
                 remoteVersionParts = remoteVersionParts[remoteVersionParts.Length - 1].Split('.');
@@ -67,7 +67,7 @@ namespace BLREdit
                     }
                     catch
                     {
-                        LoggingSystem.LogWarning("Can't determine version differences!");
+                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Can't determine version differences!");
                     }
                     if (remote != null && current != null)
                     {
@@ -83,13 +83,13 @@ namespace BLREdit
                     }
                     else
                     {
-                        LoggingSystem.LogWarning("Can't determine version differences!");
+                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Can't determine version differences!");
                     }
                 }
 
             }
             catch 
-            { LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
+            { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
         }
 
         public static void RuntimeCheck(bool force)
@@ -100,7 +100,7 @@ namespace BLREdit
             {
                 if ((VC32Bit == "11.0.61030.0" && VC32BitUpdate4 == "11.0.61030") && !force)
                 {
-                    LoggingSystem.LogInfo("Both VC++ 2012 Runtimes are installed for BLRevive!");
+                    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Both VC++ 2012 Runtimes are installed for BLRevive!");
                     return;
                 }
                 else
