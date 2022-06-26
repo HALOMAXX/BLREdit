@@ -17,7 +17,7 @@ Blacklight Revive Loadout Editor
 </details>
 <details>
   <summary>Scope Selection and Preview</summary>
-  <img src="/Screenshots/Readme/ScopeSelection.png"/>
+  <img src="/Screenshots/Readme/Scope%20Selection.png"/>
   <img src="/Screenshots/Readme/ScopePreview.png"/>
 </details>
 <details>
