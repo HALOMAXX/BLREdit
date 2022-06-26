@@ -57,7 +57,7 @@ namespace BLREdit
             //ObservableCollection<ExportSystemProfile> profiles = new ObservableCollection<ExportSystemProfile>();
             List<ExportSystemProfile> profiles = new();
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.SEPROFILE_DIR);
+            //Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.SEPROFILE_DIR);
             CurrentBackupFolder = Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\Backup\\" + System.DateTime.Now.ToString("dd-MM-yy") + "\\" + System.DateTime.Now.ToString("HH-mm") + "\\");
 
             Regex regex = new(@"\((.*)\)");
