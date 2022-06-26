@@ -18,6 +18,8 @@ namespace BLREdit
         public int Camo { get; set; } = 0;
         public int Skin { get; set; } = 99;
 
+        public int Trophy { get; set; } = 0;
+
         public override string ToString()
         {
             return LoggingSystem.ObjectToTextWall(this);
@@ -78,6 +80,11 @@ namespace BLREdit
         public BLRItem GetSkin()
         {
             return ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, Skin);
+        }
+
+        public BLRItem GetTrophy()
+        {
+            return ImportSystem.GetItemByIDAndType(ImportSystem.BADGE_CATEGORY, Trophy);
         }
     }
 }

@@ -977,6 +977,9 @@ namespace BLREdit.UI
                 if (image.Name.Contains("Avatar") && item.Category == ImportSystem.AVATARS_CATEGORY)
                 { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Avatar:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
 
+                if (image.Name.Contains("Trophy") && item.Category == ImportSystem.BADGE_CATEGORY)
+                { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Trophy:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
+
                 if (image.Name.Contains("Gear") && item.Category == ImportSystem.ATTACHMENTS_CATEGORY && (image.IsEnabled || !updateLoadout))
                 { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Gear:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
                 if (image.Name.Contains("Tactical") && item.Category == ImportSystem.TACTICAL_CATEGORY)
@@ -1242,6 +1245,7 @@ namespace BLREdit.UI
             ActiveLoadout.LowerBody = ImportSystem.GetIDOfItem(LowerBodyImage.DataContext as BLRItem);
             ActiveLoadout.Camo = ImportSystem.GetIDOfItem((PlayerCamoBodyImage.DataContext as BLRItem));
             ActiveLoadout.Skin = ImportSystem.GetIDOfItem(AvatarImage.DataContext as BLRItem);
+            ActiveLoadout.Trophy = ImportSystem.GetIDOfItem(TrophyImage.DataContext as BLRItem);
         }
 
         private static void UpdateLoadoutWeapon(MagiCowsWeapon weapon, BLRItem reciever, BLRItem muzzle, BLRItem barrel, BLRItem magazine, BLRItem scope, BLRItem stock, BLRItem tag, BLRItem camo)
@@ -1400,6 +1404,7 @@ namespace BLREdit.UI
                     case ImportSystem.CAMOS_WEAPONS_CATEGORY:
                     case ImportSystem.HANGERS_CATEGORY:
                     case ImportSystem.TACTICAL_CATEGORY:
+                    case ImportSystem.BADGE_CATEGORY:
                         SetSortingType(typeof(ImportNoStatsSortingType));
                         break;
 
@@ -1517,6 +1522,13 @@ namespace BLREdit.UI
                         LastSelectedImage = image;
                         return;
                     }
+
+                    if (image.Name.Contains("Trophy"))
+                    {
+                        SetItemList(ImportSystem.BADGE_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
                     if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("ItemList Din't get set");
                 }
             }
@@ -1531,6 +1543,8 @@ namespace BLREdit.UI
             SetItemToImage(LowerBodyImage, loadout.GetLowerBody(), false);
 
             SetItemToImage(AvatarImage, loadout.GetSkin(), false);
+
+            SetItemToImage(TrophyImage, loadout.GetTrophy(), false);
 
             SetItemToImage(PlayerCamoBodyImage, loadout.GetCamo(), false);
             

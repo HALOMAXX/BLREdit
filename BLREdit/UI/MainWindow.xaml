@@ -130,7 +130,7 @@
                                         </Label.Style>
                                     </Label>
                                 </UniformGrid>
-                                
+
                             </UniformGrid>
                         </Border>
                         <Border BorderThickness="1,0,1,1" Style="{StaticResource DebugBorder}">
@@ -330,8 +330,12 @@
                         <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PlayerCamoBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="291,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="AvatarImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="AvatarImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                    </Border>
+
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,900,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="TrophyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
                     <Label Name="PrimaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
