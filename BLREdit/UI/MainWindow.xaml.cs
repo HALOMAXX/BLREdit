@@ -977,7 +977,7 @@ namespace BLREdit.UI
                 if (image.Name.Contains("Avatar") && item.Category == ImportSystem.AVATARS_CATEGORY)
                 { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Avatar:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
 
-                if (image.Name.Contains("Trophy") && item.Category == ImportSystem.BADGE_CATEGORY)
+                if (image.Name.Contains("Trophy") && item.Category == ImportSystem.BADGES_CATEGORY)
                 { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Trophy:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
 
                 if (image.Name.Contains("Gear") && item.Category == ImportSystem.ATTACHMENTS_CATEGORY && (image.IsEnabled || !updateLoadout))
@@ -1404,7 +1404,7 @@ namespace BLREdit.UI
                     case ImportSystem.CAMOS_WEAPONS_CATEGORY:
                     case ImportSystem.HANGERS_CATEGORY:
                     case ImportSystem.TACTICAL_CATEGORY:
-                    case ImportSystem.BADGE_CATEGORY:
+                    case ImportSystem.BADGES_CATEGORY:
                         SetSortingType(typeof(ImportNoStatsSortingType));
                         break;
 
@@ -1525,7 +1525,7 @@ namespace BLREdit.UI
 
                     if (image.Name.Contains("Trophy"))
                     {
-                        SetItemList(ImportSystem.BADGE_CATEGORY);
+                        SetItemList(ImportSystem.BADGES_CATEGORY);
                         LastSelectedImage = image;
                         return;
                     }
@@ -1776,69 +1776,76 @@ namespace BLREdit.UI
         static readonly List<BLRItem> UpperBodies = ImportSystem.GetItemListOfType(ImportSystem.UPPER_BODIES_CATEGORY);
         static readonly List<BLRItem> LowerBodies = ImportSystem.GetItemListOfType(ImportSystem.LOWER_BODIES_CATEGORY);
         static readonly List<BLRItem> Avatars = ImportSystem.GetItemListOfType(ImportSystem.AVATARS_CATEGORY);
+        static readonly List<BLRItem> Badges = ImportSystem.GetItemListOfType(ImportSystem.BADGES_CATEGORY);
+
         private static MagiCowsLoadout RandomizeLoadout()
         {
             MagiCowsLoadout loadout = new()
             {
-                Primary = MagiCowsWeapon.GetDefaultSetupOfReciever(Primaries[rng.Next(0, Primaries.Count)])
+                Primary = RandomizeWeapon(Primaries[rng.Next(0, Primaries.Count)]),
+                Secondary = RandomizeWeapon(Secondaries[rng.Next(0, Secondaries.Count)], true),
+                Tactical = rng.Next(0, Tacticals.Count),
+
+                Gear1 = rng.Next(0, Attachments.Count),
+                Gear2 = rng.Next(0, Attachments.Count),
+                Gear3 = rng.Next(0, Attachments.Count),
+                Gear4 = rng.Next(0, Attachments.Count),
+
+                Camo = rng.Next(0, CamosBody.Count),
+
+                Helmet = rng.Next(0, Helmets.Count),
+                UpperBody = rng.Next(0, UpperBodies.Count),
+                LowerBody = rng.Next(0, LowerBodies.Count),
+                Skin = rng.Next(0, Avatars.Count),
+                Trophy = rng.Next(0, Badges.Count),
+
+                IsFemale = NextBoolean()
             };
 
-            loadout.Secondary.Stock = null;
-            loadout.Secondary.Barrel = null;
-            loadout.Secondary.Scope = null;
-            loadout.Secondary.Muzzle = 0;
-            loadout.Secondary.Magazine = 0;
 
-            BLRItem secon = Secondaries[rng.Next(0, Secondaries.Count)];
+            double gearSlots = 0;
+            gearSlots += UpperBodies[loadout.UpperBody].PawnModifiers.GearSlots;
+            gearSlots += LowerBodies[loadout.LowerBody].PawnModifiers.GearSlots;
 
-            if (MagiCowsWeapon.GetDefaultSetupOfReciever(secon) != null)
+            if (gearSlots < 4)
             {
-                loadout.Secondary = MagiCowsWeapon.GetDefaultSetupOfReciever(secon);
+                loadout.Gear4 = 0;
             }
-            else
+            if (gearSlots < 3)
             {
-                loadout.Secondary.Receiver = secon.Name;
+                loadout.Gear3 = 0;
             }
-
-
-
-
-            loadout.Tactical = rng.Next(0, Tacticals.Count);
-            
-            loadout.Gear1 = rng.Next(0, Attachments.Count);
-            loadout.Gear2 = rng.Next(0, Attachments.Count);
-            loadout.Gear3 = rng.Next(0, Attachments.Count);
-            loadout.Gear4 = rng.Next(0, Attachments.Count);
-
-            loadout.Camo = rng.Next(0, CamosBody.Count);
-
-            loadout.Helmet = rng.Next(0, Helmets.Count);
-            loadout.UpperBody = rng.Next(0, UpperBodies.Count);
-            loadout.LowerBody = rng.Next(0, LowerBodies.Count);
-            loadout.Skin = rng.Next(0, Avatars.Count);
-
-
-            int i = rng.Next(0, 2);
-            if (i > 0)
+            if (gearSlots < 2)
             {
-                loadout.IsFemale = false;
+                loadout.Gear2 = 0;
             }
-            else
+            if (gearSlots < 1)
             {
-                loadout.IsFemale = true;
+                loadout.Gear1 = 0;
             }
 
-            loadout.Primary = RandomizeWeapon(loadout.Primary.GetReciever());
-            if (loadout.Secondary.Magazine != 0)
-            {
-                loadout.Secondary = RandomizeWeapon(loadout.Secondary.GetReciever(), true);
-            }
+
             return loadout;
+        }
+
+        public static bool NextBoolean()
+        {
+            return rng.Next() > (Int32.MaxValue / 2);
+            // Next() returns an int in the range [0..Int32.MaxValue]
         }
 
         private static MagiCowsWeapon RandomizeWeapon(BLRItem Weapon, bool IsSecondary = false)
         {
             MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(Weapon);
+
+            if (weapon == null)
+            {
+                return new()
+                {
+                    Receiver = Weapon.Name
+                };
+            }
+
             var FilteredBarrels = Barrels.Where(o => o.IsValidFor(Weapon)).ToArray();
             var FilteredScopes = Scopes.Where(o => o.IsValidFor(Weapon)).ToArray();
             var FilteredMagazines = Magazines.Where(o => o.IsValidFor(Weapon)).ToArray();
@@ -1881,9 +1888,13 @@ namespace BLREdit.UI
                 weapon.Tag = ImportSystem.GetIDOfItem(FilteredHangers[rng.Next(0, FilteredHangers.Length)]);
             }
 
-            if (FilteredCamos.Length > 0)
+            if (FilteredCamos.Length > 0 && Weapon.Tooltip != "Depot Item!")
             {
                 weapon.Camo = ImportSystem.GetIDOfItem(FilteredCamos[rng.Next(0, FilteredCamos.Length)]);
+            }
+            else
+            {
+                weapon.Camo = -1;
             }
 
             weapon.IsHealthOkAndRepair();

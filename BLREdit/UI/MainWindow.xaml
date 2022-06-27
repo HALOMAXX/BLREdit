@@ -142,7 +142,7 @@
         </ListView>
 
         <ComboBox Name="SortComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="379,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
-        <Button Name="SortDirectionButton" Content="Ascending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="500,0,0,0" Click="ChangeSortingDirection"/>
+        <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="500,0,0,0" Click="ChangeSortingDirection"/>
 
 
         <Grid HorizontalAlignment="Left" Width="374">
@@ -330,11 +330,11 @@
                         <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PlayerCamoBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="290,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="AvatarImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,900,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="290,900,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="TrophyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 

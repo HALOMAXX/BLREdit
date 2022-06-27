@@ -11,8 +11,8 @@ namespace BLREdit
         public int Magazine { get; set; } = 9;
         public string Scope { get; set; } = "No Optic Mod";
         public string Grip { get; set; } = "";
-        public int Tag { get; set; } = 0;
-        public int Camo { get; set; } = 0;
+        public int Tag { get; set; } = -1;
+        public int Camo { get; set; } = -1;
 
         public override string ToString()
         {

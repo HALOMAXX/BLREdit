@@ -84,7 +84,7 @@ namespace BLREdit
 
         public BLRItem GetTrophy()
         {
-            return ImportSystem.GetItemByIDAndType(ImportSystem.BADGE_CATEGORY, Trophy);
+            return ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Trophy);
         }
     }
 }

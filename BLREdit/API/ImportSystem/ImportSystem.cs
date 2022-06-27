@@ -48,7 +48,7 @@ namespace BLREdit
         /// <summary>
         /// Armor Trophy Category
         /// </summary>
-        public const string BADGE_CATEGORY = "badges";
+        public const string BADGES_CATEGORY = "badges";
 
         //public static readonly Dictionary<float, float> DamagePercentToValue = new Dictionary<float, float>(); not in use
 

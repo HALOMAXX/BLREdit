@@ -271,7 +271,7 @@ public class BLRItem
         }
     }
 
-    private string GetSecondayScopePistol(string secondaryName)
+    private static string GetSecondayScopePistol(string secondaryName)
     {
         switch (secondaryName)
         {
@@ -289,7 +289,7 @@ public class BLRItem
         }
     }
 
-    private string GetSecondayScopeShotgun(string secondaryName)
+    private static string GetSecondayScopeShotgun(string secondaryName)
     {
         switch (secondaryName)
         {
