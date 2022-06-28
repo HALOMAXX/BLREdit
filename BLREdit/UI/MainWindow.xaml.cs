@@ -1073,12 +1073,12 @@ namespace BLREdit.UI
         }
         public void UpdateHRV(BLRItem helmet, BLRItem tactical)
         {
-            double currentHRV = Math.Min(Math.Max((helmet?.PawnModifiers.HRVDuration ?? 0) + (tactical?.PawnModifiers.HRVDuration ?? 0),0.0),100.0);
+            double currentHRV = Math.Min(Math.Max((helmet?.PawnModifiers.HRVDuration ?? 0) + (tactical?.PawnModifiers.HRVDuration ?? 0), 40.0), 100.0);
             ArmorHRVLabel.Content = currentHRV.ToString("0.0") + 'u';
         }
         public void UpdateHRVRecharge(BLRItem helmet, BLRItem tactical)
         {
-            double currentHRVRecharge = Math.Min(Math.Max((helmet?.PawnModifiers.HRVRechargeRate ?? 0) + (tactical?.PawnModifiers.HRVRechargeRate ?? 0),0.0), 10.0);
+            double currentHRVRecharge = Math.Min(Math.Max((helmet?.PawnModifiers.HRVRechargeRate ?? 0) + (tactical?.PawnModifiers.HRVRechargeRate ?? 0), 5.0), 10.0);
             ArmorHRVRechargeLabel.Content = currentHRVRecharge.ToString("0.0") + "u/s";
         }
         public void UpdateGearSlots(BLRItem upperBody, BLRItem lowerBody)
