@@ -636,7 +636,7 @@ public class BLRItem
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return WeaponStats?.recoil ?? 0;
+                    return UI.MainWindow.CalculateRecoil(this, 0);
                 default:
                     return WeaponModifiers?.recoil ?? 0;
             }

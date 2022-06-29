@@ -4,13 +4,13 @@ public enum ImportWeaponSortingType
 {
     None,
     Name,
+    Ammo,
     Damage,
-    Aim,
-    Hip,
-    Move,
     Recoil,
     Range,
-    Ammo,
+    Move,
+    Aim,
+    Hip,
 }
 
 public enum ImportModificationSortingType
@@ -19,10 +19,10 @@ public enum ImportModificationSortingType
     Name,
     Ammo,
     Damage,
-    Accuracy,
     Recoil,
     Range,
     Run,
+    Accuracy,
 }
 
 public enum ImportScopeSortingType
@@ -56,9 +56,9 @@ public enum ImportHelmetSortingType
 {
     None,
     Name,
+    Run,
     Health,
     HeadProtection,
-    Run,
     HRVDuration,
     HRVRecharge,
     ToxicProtection,
@@ -70,7 +70,7 @@ public enum ImportArmorSortingType
 {
     None,
     Name,
+    Run,
     Health,
     GearSlots,
-    Run,
 }
