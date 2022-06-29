@@ -23956,7 +23956,7 @@
       "Category": "magazines",
       "Class": null,
       "DescriptorName": "Standard",
-      "Icon": "t_MagLMG2_Standard_128x128",
+      "Icon": "t_MagBKT_Standard_128x128",
       "Name": "Standard Ammo Belt",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
