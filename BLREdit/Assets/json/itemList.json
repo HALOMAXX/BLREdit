@@ -33273,8 +33273,8 @@
       "Category": "magazines",
       "Class": null,
       "DescriptorName": "Incendiary",
-      "Icon": "t_MagCylinder_08Explosive_128x128",
-      "Name": "Incendiary Rounds",
+      "Icon": "t_MagCylinder_08Incendiary_128x128",
+      "Name": "Incendiary Cylinder",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
@@ -33340,7 +33340,7 @@
       "Class": null,
       "DescriptorName": "Electro",
       "Icon": "t_MagCylinder_08Electro_128x128",
-      "Name": "Electro Rounds",
+      "Name": "Electro Cylinder",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
@@ -33406,7 +33406,7 @@
       "Class": null,
       "DescriptorName": "Explosive",
       "Icon": "t_MagCylinder_08Explosive_128x128",
-      "Name": "Explosive Rounds",
+      "Name": "Explosive Cylinder",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
@@ -33472,7 +33472,7 @@
       "Class": null,
       "DescriptorName": "Toxic",
       "Icon": "t_MagCylinder_08Toxic_128x128",
-      "Name": "Toxic Rounds",
+      "Name": "Toxic Cylinder",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
@@ -33522,7 +33522,7 @@
       "Class": null,
       "DescriptorName": "Magnum",
       "Icon": "t_MagCylinger_08Magnum_128x128",
-      "Name": "Magnum Rounds",
+      "Name": "Magnum Cylinder",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
