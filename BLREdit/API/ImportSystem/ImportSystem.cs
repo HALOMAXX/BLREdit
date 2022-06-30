@@ -74,7 +74,7 @@ namespace BLREdit
 
         public static void ApplyDisplayStats()
         {
-            Brush grey = new SolidColorBrush(Color.FromArgb(136, 136, 136, 136));
+            
             foreach (var itemCategory in ItemLists)
             {
                 switch (itemCategory.Key)
@@ -89,77 +89,19 @@ namespace BLREdit
                             double recoil = UI.MainWindow.CalculateRecoil(item, 0);
                             double[] range = UI.MainWindow.CalculateRange(item, 0);
 
-                            var desc1 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Damage",
-                                Description = "Damage:",
-                                Value = damage[0].ToString("0") + "/" + damage[1].ToString("0")
-                            };
-                            if (damage[0] == 0)
-                            {
-                                desc1.DefaultDescriptionColor = grey;
-                                desc1.DefaultValueColor = grey;
-                            }
+                            var desc1 = new DisplayStatDiscriptor();
+                            var desc2 = new DisplayStatDiscriptor();
+                            var desc3 = new DisplayStatDiscriptor();
+                            var desc4 = new DisplayStatDiscriptor();
+                            var desc5 = new DisplayStatDiscriptor();
+                            var desc6 = new DisplayStatDiscriptor();
 
-                            var desc2 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Aim",
-                                Description = "Aim:",
-                                Value = spread[0].ToString("0.00") + '°'
-                            };
-                            if (spread[0] == 0)
-                            {
-                                desc2.DefaultDescriptionColor = grey;
-                                desc2.DefaultValueColor = grey;
-                            }
-
-                            var desc3 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Hip",
-                                Description = "Hip:",
-                                Value = spread[1].ToString("0.00") + '°'
-                            };
-                            if (spread[1] == 0)
-                            {
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
-                            }
-
-                            var desc4 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Move",
-                                Description = "Move:",
-                                Value = spread[2].ToString("0.00") + '°'
-                            };
-                            if (spread[2] == 0)
-                            {
-                                desc4.DefaultDescriptionColor = grey;
-                                desc4.DefaultValueColor = grey;
-                            }
-
-                            var desc5 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Recoil",
-                                Description = "Recoil:",
-                                Value = recoil.ToString("0.00") + '°'
-                            };
-                            if (recoil == 0)
-                            {
-                                desc5.DefaultDescriptionColor = grey;
-                                desc5.DefaultValueColor = grey;
-                            }
-
-                            var desc6 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Range",
-                                Description = "Range:",
-                                Value = range[0].ToString("0") + '/' + range[1].ToString("0")
-                            };
-                            if (range[0] == 0)
-                            {
-                                desc6.DefaultDescriptionColor = grey;
-                                desc6.DefaultValueColor = grey;
-                            }
+                            FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "", "/");
+                            FormatDisplayStat(ref desc2, "Aim", "Aim:", spread[0], "0.00", "°");
+                            FormatDisplayStat(ref desc3, "Hip", "Hip:", spread[1], "0.00", "°");
+                            FormatDisplayStat(ref desc4, "Move", "Move:", spread[2], "0.00", "°");
+                            FormatDisplayStat(ref desc5, "Recoil", "Recoil:", recoil, "0.00", "°");
+                            FormatDisplayStat(ref desc6, "Range", "Range:", range, "0", "", "/");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -180,67 +122,18 @@ namespace BLREdit
                             double range = item?.WeaponModifiers?.range ?? 0;
                             double run = item?.WeaponModifiers?.movementSpeed ?? 0;
 
-                            var desc1 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Damage",
-                                Description = "Damage:",
-                                Value = damage + "%"
-                            };
-                            if (damage == 0)
-                            {
-                                desc1.DefaultDescriptionColor = grey;
-                                desc1.DefaultValueColor = grey;
-                            }
-
-                            var desc2 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Accuracy",
-                                Description = "Accuracy:",
-                                Value = spread + "%"
-                            };
-                            if (spread == 0)
-                            {
-                                desc2.DefaultDescriptionColor = grey;
-                                desc2.DefaultValueColor = grey;
-                            }
-
-                            var desc3 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Recoil",
-                                Description = "Recoil:",
-                                Value = recoil + "%"
-                            };
-                            if (recoil == 0)
-                            {
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
-                            }
-
-                            var desc4 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Range",
-                                Description = "Range:",
-                                Value = range + "%"
-                            };
-                            if (range == 0)
-                            {
-                                desc4.DefaultDescriptionColor = grey;
-                                desc4.DefaultValueColor = grey;
-                            }
-
-                            var desc5 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Run",
-                                Description = "Run:",
-                                Value = run + "%"
-                            };
-                            if (run == 0)
-                            {
-                                desc5.DefaultDescriptionColor = grey;
-                                desc5.DefaultValueColor = grey;
-                            }
-
+                            var desc1 = new DisplayStatDiscriptor();
+                            var desc2 = new DisplayStatDiscriptor();
+                            var desc3 = new DisplayStatDiscriptor();
+                            var desc4 = new DisplayStatDiscriptor();
+                            var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
+
+                            FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
+                            FormatDisplayStat(ref desc2, "Accuracy", "Accuracy:", spread, "0", "%");
+                            FormatDisplayStat(ref desc3, "Recoil", "Recoil:", recoil, "0", "%");
+                            FormatDisplayStat(ref desc4, "Range", "Range:", range, "0", "%");
+                            FormatDisplayStat(ref desc5, "Run", "Run:", run, "0", "%");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -253,36 +146,16 @@ namespace BLREdit
                     case SCOPES_CATEGORY:
                         foreach (var item in itemCategory.Value)
                         {
-                            var desc1 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Zoom",
-                                Description = "Zoom:",
-                                Value = (1.3 + (item?.WikiStats?.zoom ?? 0)).ToString("0.00") + "x"
-                            };
-
-                            var desc2 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "ScopeInTime",
-                                Description = "Scope In:",
-                                Value = "+" + (0.0 + (item?.WikiStats?.scopeInTime ?? 0)).ToString("0.00") + "s"
-                            };
-
-                            var desc3 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Infrared",
-                                Description = "Is Infrared:",
-                                Value = "True"
-                            };
-                            if (item.UID != 45019 && item.UID != 45020 && item.UID != 45021)
-                            {
-                                desc3.Value = "False";
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
-                            }
-
+                            var desc1 = new DisplayStatDiscriptor();
+                            var desc2 = new DisplayStatDiscriptor();
+                            var desc3 = new DisplayStatDiscriptor();
                             var desc4 = new DisplayStatDiscriptor();
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
+
+                            FormatDisplayStat(ref desc1, "Zoom", "Zoom:", (1.3 + (item?.WikiStats?.zoom ?? 0)), "0.00", "x");
+                            FormatDisplayStat(ref desc2, "ScopeInTime", "Scope In:", (0.0 + (item?.WikiStats?.scopeInTime ?? 0)), "0.00", "s", "+");
+                            FormatDisplayStat(ref desc3, "Infrared", "Is Infrared:", item.UID == 45019 || item.UID == 45020 || item.UID == 45021, "");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -303,99 +176,26 @@ namespace BLREdit
                             double recoil = item?.WeaponModifiers?.recoil ?? 0;
                             double accuracy = item?.WeaponModifiers?.accuracy ?? 0;
 
-                            var desc1 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Ammo",
-                                Description = "Ammo:",
-                                Value = ammo.ToString("0")
-                            };
-                            if (ammo == 0)
-                            {
-                                desc1.DefaultDescriptionColor = grey;
-                                desc1.DefaultValueColor = grey;
-                            }
+                            var desc1 = new DisplayStatDiscriptor();
                             var desc2 = new DisplayStatDiscriptor();
-                            if (item.IsValidForItemIDS(40021, 40002))
-                            {
-                                desc2.PropertyName = "Range";
-                                desc2.Description = "Range:";
-                                desc2.Value = range.ToString("0") + "%";
-                                if (range == 0)
-                                {
-                                    desc2.DefaultDescriptionColor = grey;
-                                    desc2.DefaultValueColor = grey;
-                                }
-                            }
-                            else
-                            {
-                                desc2.PropertyName = "Reload";
-                                desc2.Description = "Reload:";
-                                desc2.Value = reload.ToString("0.00") + 's';
-                                if (reload == 0)
-                                {
-                                    desc2.DefaultDescriptionColor = grey;
-                                    desc2.DefaultValueColor = grey;
-                                }
-                            }
-
-                            var desc3 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Run",
-                                Description = "Run:",
-                                Value = movementSpeed.ToString("0") + "%"
-                            };
-                            if (movementSpeed == 0)
-                            {
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
-                            }
-
-                            var desc4 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Damage",
-                                Description = "Damage:",
-                                Value = damage.ToString("0") + '%'
-                            };
-                            if (damage == 0)
-                            {
-                                desc4.DefaultDescriptionColor = grey;
-                                desc4.DefaultValueColor = grey;
-                            }
-
-                            var desc5 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Recoil",
-                                Description = "Recoil:",
-                                Value = recoil.ToString("0") + '%'
-                            };
-                            if (recoil == 0)
-                            {
-                                desc5.DefaultDescriptionColor = grey;
-                                desc5.DefaultValueColor = grey;
-                            }
-
+                            var desc3 = new DisplayStatDiscriptor();
+                            var desc4 = new DisplayStatDiscriptor();
+                            var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
+
+                            FormatDisplayStat(ref desc1, "Ammo", "Ammo:", ammo, "0");
+                            FormatDisplayStat(ref desc2, "Damage", "Damage:", damage, "0", "%");
+                            FormatDisplayStat(ref desc3, "Run", "Run:", movementSpeed, "0", "%");
+                            FormatDisplayStat(ref desc4, "Recoil", "Recoil:", recoil, "0", "%");
+                            FormatDisplayStat(ref desc5, "Range", "Range:", range, "0", "%");
+
                             if (item.IsValidForItemIDS(40021, 40002))
                             {
-                                desc6.PropertyName = "Accuracy";
-                                desc6.Description = "Accuracy:";
-                                desc6.Value = accuracy.ToString("0") + '%';
-                                if (accuracy == 0)
-                                {
-                                    desc6.DefaultDescriptionColor = grey;
-                                    desc6.DefaultValueColor = grey;
-                                }
+                                FormatDisplayStat(ref desc6, "Accuracy", "Accuracy:", accuracy, "0", "%");
                             }
                             else
                             {
-                                desc6.PropertyName = "Range";
-                                desc6.Description = "Range:";
-                                desc6.Value = range.ToString("0") + '%';
-                                if (range == 0)
-                                {
-                                    desc6.DefaultDescriptionColor = grey;
-                                    desc6.DefaultValueColor = grey;
-                                }
+                                FormatDisplayStat(ref desc6, "Reload", "Reload:", reload, "0.00", "s");
                             }
 
                             item.DisplayStat1 = desc1;
@@ -415,86 +215,66 @@ namespace BLREdit
                             double hrv = item?.PawnModifiers?.HRVDuration ?? 0;
                             double recharge = item?.PawnModifiers?.HRVRechargeRate ?? 0;
 
-                            var desc1 = new DisplayStatDiscriptor()
+                            string prop = "";
+                            string desc = "";
+                            double value = 0;
+
+                            switch (item.Name)
                             {
-                                PropertyName = "Health",
-                                Description = "Health:",
-                                Value = health.ToString("0")
-                            };
-                            if (health == 0)
-                            {
-                                desc1.DefaultDescriptionColor = grey;
-                                desc1.DefaultValueColor = grey;
+                                case "Prex Chem/Hazmat Respirator-TOX":
+                                    prop = "ToxicProtection";
+                                    desc = "Toxic:";
+                                    value = item.PawnModifiers.ToxicProtection;
+                                    break;
+                                case "Prex Chem/Hazmat Respirator-INC":
+                                    prop = "IncendiaryProtection";
+                                    desc = "Fire:";
+                                    value = item.PawnModifiers.IncendiaryProtection;
+                                    break;
+                                case "Prex Chem/Hazmat Respirator-XPL":
+                                    prop = "ExplosiveProtection";
+                                    desc = "Explo:";
+                                    value = item.PawnModifiers.ExplosiveProtection;
+                                    break;
                             }
 
-                            var desc2 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "HeadProtection",
-                                Description = "Head Armor:",
-                                Value = dmgReduction.ToString("0") + "%"
-                            };
-                            if (dmgReduction == 0)
-                            {
-                                desc2.DefaultDescriptionColor = grey;
-                                desc2.DefaultValueColor = grey;
-                            }
-
-                            var desc3 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Run",
-                                Description = "Run:",
-                                Value = movement.ToString("0.00")
-                            };
-                            if (movement == 0)
-                            {
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
-                            }
-
-                            var desc4 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "HRVDuration",
-                                Description = "HRV:",
-                                Value = hrv.ToString("0.0")
-                            };
-                            if (hrv == 0)
-                            {
-                                desc4.DefaultDescriptionColor = grey;
-                                desc4.DefaultValueColor = grey;
-                            }
-
-                            var desc5 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "HRVRecharge",
-                                Description = "Recharge:",
-                                Value = recharge.ToString("0.0") + "u/s"
-                            };
-                            if (recharge == 0)
-                            {
-                                desc5.DefaultDescriptionColor = grey;
-                                desc5.DefaultValueColor = grey;
-                            }
-
+                            var desc1 = new DisplayStatDiscriptor();
+                            var desc2 = new DisplayStatDiscriptor();
+                            var desc3 = new DisplayStatDiscriptor();
+                            var desc4 = new DisplayStatDiscriptor();
+                            var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            if (item.Name == "Prex Chem/Hazmat Respirator-TOX")
-                            {
-                                desc6.PropertyName = "ToxicProtection";
-                                desc6.Description = "Toxic:";
-                                desc6.Value = item.PawnModifiers.ToxicProtection.ToString("0") + '%';
-                            }
-                            else if (item.Name == "Prex Chem/Hazmat Respirator-INC")
-                            {
-                                desc6.PropertyName = "IncendiaryProtection";
-                                desc6.Description = "Fire:";
-                                desc6.Value = item.PawnModifiers.IncendiaryProtection.ToString("0") + '%';
-                            }
-                            else if (item.Name == "Prex Chem/Hazmat Respirator-XPL")
-                            {
-                                desc6.PropertyName = "ExplosiveProtection";
-                                desc6.Description = "Explo:";
-                                desc6.Value = item.PawnModifiers.ExplosiveProtection.ToString("0") + '%';
-                            }
+                            FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
+                            FormatDisplayStat(ref desc2, "HeadProtection", "Head Armor:", dmgReduction, "0", "%");
+                            FormatDisplayStat(ref desc3, "Run", "Run:", movement, "0.00");
+                            FormatDisplayStat(ref desc4, "HRVDuration", "HRV:", hrv, "0.0");
+                            FormatDisplayStat(ref desc5, "HRVRecharge", "Recharge:", recharge, "0.0", "u/s");
+                            FormatDisplayStat(ref desc6, prop, desc, value, "0", "%");
+
+                            item.DisplayStat1 = desc1;
+                            item.DisplayStat2 = desc2;
+                            item.DisplayStat3 = desc3;
+                            item.DisplayStat4 = desc4;
+                            item.DisplayStat5 = desc5;
+                            item.DisplayStat6 = desc6;
+                        }
+                        break;
+                    case TACTICAL_CATEGORY:
+                        foreach (var item in itemCategory.Value)
+                        {
+                            double hrv = item?.PawnModifiers?.HRVDuration ?? 0;
+                            double recharge = item?.PawnModifiers?.HRVRechargeRate ?? 0;
+
+                            var desc1 = new DisplayStatDiscriptor();
+                            var desc2 = new DisplayStatDiscriptor();
+                            var desc3 = new DisplayStatDiscriptor();
+                            var desc4 = new DisplayStatDiscriptor();
+                            var desc5 = new DisplayStatDiscriptor();
+                            var desc6 = new DisplayStatDiscriptor();
+
+                            FormatDisplayStat(ref desc1, "HRVDuration", "HRV:", hrv, "0.0");
+                            FormatDisplayStat(ref desc2, "HRVRecharge", "Recharge:", recharge, "0.0", "u/s");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -512,47 +292,17 @@ namespace BLREdit
                             double movement = item?.PawnModifiers?.MovementSpeed ?? 0;
                             double gear = item?.PawnModifiers?.GearSlots ?? 0;
 
-                            var desc1 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Health",
-                                Description = "Health:",
-                                Value = health.ToString("0")
-                            };
-                            if (health == 0)
-                            {
-                                desc1.DefaultDescriptionColor = grey;
-                                desc1.DefaultValueColor = grey;
-                            }
-
-                            var desc2 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Run",
-                                Description = "Run:",
-                                Value = movement.ToString("0.00")
-                            };
-                            if (movement == 0)
-                            {
-                                desc2.DefaultDescriptionColor = grey;
-                                desc2.DefaultValueColor = grey;
-                            }
-
-                            var desc3 = new DisplayStatDiscriptor()
-                            {
-                                PropertyName = "Gear",
-                                Description = "Gear:",
-                                Value = gear.ToString("0")
-                            };
-                            if (gear == 0)
-                            {
-                                desc3.DefaultDescriptionColor = grey;
-                                desc3.DefaultValueColor = grey;
-                            }
-
+                            var desc1 = new DisplayStatDiscriptor();
+                            var desc2 = new DisplayStatDiscriptor();
+                            var desc3 = new DisplayStatDiscriptor();
                             var desc4 = new DisplayStatDiscriptor();
-
                             var desc5 = new DisplayStatDiscriptor();
-
                             var desc6 = new DisplayStatDiscriptor();
+
+
+                            FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
+                            FormatDisplayStat(ref desc2, "Run", "Run:", movement, "0.00");
+                            FormatDisplayStat(ref desc3, "Gear", "Gear:", gear, "0");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -573,54 +323,50 @@ namespace BLREdit
                             double InfraredProtection = item?.PawnModifiers?.InfraredProtection ?? 0;
 
                             var desc1 = new DisplayStatDiscriptor();
-
-                            if (item.Name == "Incendiary Protection Gear")
-                            {
-                                desc1.PropertyName = "IncendiaryProtection";
-                                desc1.Description = "Fire:";
-                                desc1.Value = IncendiaryProtection.ToString("0") + '%';
-                            }
-                            else if (item.Name == "Toxic Protection Gear")
-                            {
-                                desc1.PropertyName = "ToxicProtection";
-                                desc1.Description = "Toxic:";
-                                desc1.Value = ToxicProtection.ToString("0") + '%';
-                            }
-                            else if (item.Name == "Explosive Protection Gear")
-                            {
-                                desc1.PropertyName = "ExplosiveProtection";
-                                desc1.Description = "Expl:";
-                                desc1.Value = ExplosiveProtection.ToString("0") + '%';
-                            }
-                            else if (item.Name == "Electro Protection Gear")
-                            {
-                                desc1.PropertyName = "ElectroProtection";
-                                desc1.Description = "Electro:";
-                                desc1.Value = ElectroProtection.ToString("0") + '%';
-                            }
-                            else if (item.Name == "Melee Protection Gear")
-                            {
-                                desc1.PropertyName = "MeleeProtection";
-                                desc1.Description = "Melee:";
-                                desc1.Value = MeleeProtection.ToString("0") + '%';
-                            }
-                            else if (item.Name == "Infrared Protection Gear")
-                            {
-                                desc1.PropertyName = "InfraredProtection";
-                                desc1.Description = "Infra:";
-                                desc1.Value = InfraredProtection.ToString("0") + '%';
-                            }
-
-
                             var desc2 = new DisplayStatDiscriptor();
-
                             var desc3 = new DisplayStatDiscriptor();
-
                             var desc4 = new DisplayStatDiscriptor();
-
                             var desc5 = new DisplayStatDiscriptor();
-
                             var desc6 = new DisplayStatDiscriptor();
+
+                            string prop = "";
+                            string desc = "";
+                            double value = 0;
+
+                            switch (item.Name)
+                            {
+                                case "Incendiary Protection Gear":
+                                    prop = "IncendiaryProtection";
+                                    desc = "Fire:";
+                                    value = IncendiaryProtection;
+                                    break;
+                                case "Toxic Protection Gear":
+                                    prop = "ToxicProtection";
+                                    desc = "Toxic:";
+                                    value = ToxicProtection;
+                                    break;
+                                case "Explosive Protection Gear":
+                                    prop = "ExplosiveProtection";
+                                    desc = "Expl:";
+                                    value = ExplosiveProtection;
+                                    break;
+                                case "Electro Protection Gear":
+                                    prop = "ElectroProtection";
+                                    desc = "Electro:";
+                                    value = ElectroProtection;
+                                    break;
+                                case "Melee Protection Gear":
+                                    prop = "MeleeProtection";
+                                    desc = "Melee:";
+                                    value = MeleeProtection;
+                                    break;
+                                case "Infrared Protection Gear":
+                                    prop = "InfraredProtection";
+                                    desc = "Infra:";
+                                    value = InfraredProtection;
+                                    break;
+                            }
+                            FormatDisplayStat(ref desc1, prop, desc, value, "0", "%");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -631,6 +377,46 @@ namespace BLREdit
                         }
                         break;
                 }
+            }
+        }
+        static readonly Brush grey = new SolidColorBrush(Color.FromArgb(136, 136, 136, 136));
+        private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, string format, string suffix = "", string prefix = "")
+        { 
+            desc.PropertyName = propertyName;
+            desc.Description = description;
+
+            bool isGrey = false;
+
+            switch (value)
+            {
+                case double d:
+                    desc.Value = prefix + d.ToString(format) + suffix;
+                    isGrey = d == 0;
+                    break;
+                case bool b:
+                    desc.Value = b.ToString();
+                    isGrey = !b;
+                    break;
+                case double[] db:
+                    if (db.Length > 0)
+                    {
+                        isGrey = db[0] == 0;
+                        string vv = "";
+                        for (int i = 0; i < db.Length; i++)
+                        {
+                            if (i > 0)
+                            { vv += prefix; }
+                            vv += db[i].ToString(format);
+                        }
+                        desc.Value = vv;
+                    }
+                    break;
+            }
+
+            if (isGrey)
+            {
+                desc.DefaultDescriptionColor = grey;
+                desc.DefaultValueColor = grey;
             }
         }
 
