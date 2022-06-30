@@ -101,7 +101,7 @@ namespace BLREdit
                             FormatDisplayStat(ref desc3, "Hip", "Hip:", spread[1], "0.00", "°");
                             FormatDisplayStat(ref desc4, "Move", "Move:", spread[2], "0.00", "°");
                             FormatDisplayStat(ref desc5, "Recoil", "Recoil:", recoil, "0.00", "°");
-                            FormatDisplayStat(ref desc6, "Range", "Range:", range, "0", "", "/");
+                            FormatDisplayStat(ref desc6, "Range", "Range:", range, "0", "", "/", 2);
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -388,7 +388,7 @@ namespace BLREdit
             }
         }
         static readonly Brush grey = new SolidColorBrush(Color.FromArgb(136, 136, 136, 136));
-        private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, string format, string suffix = "", string prefix = "")
+        private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, string format, string suffix = "", string prefix = "", int count = -1)
         { 
             desc.PropertyName = propertyName;
             desc.Description = description;
@@ -410,7 +410,16 @@ namespace BLREdit
                     {
                         isGrey = db[0] == 0;
                         string vv = "";
-                        for (int i = 0; i < db.Length; i++)
+                        int indexes = 0;
+                        if (count < 0)
+                        {
+                            indexes = db.Length;
+                        }
+                        else
+                        {
+                            indexes = count;
+                        }
+                        for (int i = 0; i < indexes; i++)
                         {
                             if (i > 0)
                             { vv += prefix; }
