@@ -247,7 +247,7 @@ namespace BLREdit
 
                             FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
                             FormatDisplayStat(ref desc2, "HeadProtection", "Head Armor:", dmgReduction, "0", "%");
-                            FormatDisplayStat(ref desc3, "Run", "Run:", movement, "0.00");
+                            FormatDisplayStat(ref desc3, "Run", "Run:", movement, "0");
                             FormatDisplayStat(ref desc4, "HRVDuration", "HRV:", hrv, "0.0");
                             FormatDisplayStat(ref desc5, "HRVRecharge", "Recharge:", recharge, "0.0", "u/s");
                             FormatDisplayStat(ref desc6, prop, desc, value, "0", "%");
@@ -333,40 +333,48 @@ namespace BLREdit
                             string desc = "";
                             double value = 0;
 
+                            bool isPatch = false;
+
                             switch (item.Name)
                             {
                                 case "Incendiary Protection Gear":
                                     prop = "IncendiaryProtection";
                                     desc = "Fire:";
                                     value = IncendiaryProtection;
+                                    isPatch = true;
                                     break;
                                 case "Toxic Protection Gear":
                                     prop = "ToxicProtection";
                                     desc = "Toxic:";
                                     value = ToxicProtection;
+                                    isPatch = true;
                                     break;
                                 case "Explosive Protection Gear":
                                     prop = "ExplosiveProtection";
-                                    desc = "Expl:";
+                                    desc = "Explo:";
                                     value = ExplosiveProtection;
+                                    isPatch = true;
                                     break;
                                 case "Electro Protection Gear":
                                     prop = "ElectroProtection";
                                     desc = "Electro:";
                                     value = ElectroProtection;
+                                    isPatch = true;
                                     break;
                                 case "Melee Protection Gear":
                                     prop = "MeleeProtection";
                                     desc = "Melee:";
                                     value = MeleeProtection;
+                                    isPatch = true;
                                     break;
                                 case "Infrared Protection Gear":
                                     prop = "InfraredProtection";
                                     desc = "Infra:";
                                     value = InfraredProtection;
+                                    isPatch = true;
                                     break;
                             }
-                            FormatDisplayStat(ref desc1, prop, desc, value, "0", "%");
+                            if(isPatch)FormatDisplayStat(ref desc1, prop, desc, value, "0", "%");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
