@@ -246,7 +246,7 @@ namespace BLREdit
                             var desc6 = new DisplayStatDiscriptor();
 
                             FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
-                            FormatDisplayStat(ref desc2, "HeadProtection", "Head Armor:", dmgReduction, "0", "%");
+                            FormatDisplayStat(ref desc2, "HeadProtection", "Head Armor:", dmgReduction, "0.0", "%");
                             FormatDisplayStat(ref desc3, "Run", "Run:", movement, "0");
                             FormatDisplayStat(ref desc4, "HRVDuration", "HRV:", hrv, "0.0");
                             FormatDisplayStat(ref desc5, "HRVRecharge", "Recharge:", recharge, "0.0", "u/s");
