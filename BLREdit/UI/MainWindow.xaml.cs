@@ -1003,11 +1003,12 @@ namespace BLREdit.UI
             var helmet = (HelmetImage.DataContext as BLRItem);
             var upperBody = (UpperBodyImage.DataContext as BLRItem);
             var lowerBody = (LowerBodyImage.DataContext as BLRItem);
+            var tactical = (TacticalImage.DataContext as BLRItem);
             UpdateHealth(helmet, upperBody, lowerBody);
             UpdateHeadProtection(helmet);
             UpdateRun(helmet, upperBody, lowerBody);
-            UpdateHRV(helmet);
-            UpdateHRVRecharge(helmet);
+            UpdateHRV(helmet, tactical);
+            UpdateHRVRecharge(helmet, tactical);
             UpdateGearSlots(upperBody, lowerBody);
         }
 
@@ -1070,15 +1071,15 @@ namespace BLREdit.UI
 
             return currentRun;
         }
-        public void UpdateHRV(BLRItem helmet)
+        public void UpdateHRV(BLRItem helmet, BLRItem tactical)
         {
-            double currentHealth = (helmet?.PawnModifiers.HRVDuration ?? 0);
-            ArmorHRVLabel.Content = currentHealth.ToString("0.0") + 'u';
+            double currentHRV = Math.Min(Math.Max((helmet?.PawnModifiers.HRVDuration ?? 0) + (tactical?.PawnModifiers.HRVDuration ?? 0), 40.0), 100.0);
+            ArmorHRVLabel.Content = currentHRV.ToString("0.0") + 'u';
         }
-        public void UpdateHRVRecharge(BLRItem helmet)
+        public void UpdateHRVRecharge(BLRItem helmet, BLRItem tactical)
         {
-            double currentHealth = (helmet?.PawnModifiers.HRVRechargeRate ?? 0);
-            ArmorHRVRechargeLabel.Content = currentHealth.ToString("0.0") + "u/s";
+            double currentHRVRecharge = Math.Min(Math.Max((helmet?.PawnModifiers.HRVRechargeRate ?? 0) + (tactical?.PawnModifiers.HRVRechargeRate ?? 0), 5.0), 10.0);
+            ArmorHRVRechargeLabel.Content = currentHRVRecharge.ToString("0.0") + "u/s";
         }
         public void UpdateGearSlots(BLRItem upperBody, BLRItem lowerBody)
         { 
