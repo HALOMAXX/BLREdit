@@ -1040,7 +1040,7 @@ namespace BLREdit.UI
         public void UpdateHeadProtection(BLRItem helmet)
         {
             double currentHSProt = (helmet?.PawnModifiers.HelmetDamageReduction ?? 0);
-            ArmorHeadProtectionLabel.Content = currentHSProt.ToString("0") + '%';
+            ArmorHeadProtectionLabel.Content = currentHSProt.ToString("0.0") + '%';
         }
         public void UpdateRun(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
         {
