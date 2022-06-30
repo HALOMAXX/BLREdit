@@ -301,7 +301,7 @@ namespace BLREdit
 
 
                             FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
-                            FormatDisplayStat(ref desc2, "Run", "Run:", movement, "0.00");
+                            FormatDisplayStat(ref desc2, "Run", "Run:", movement, "0");
                             FormatDisplayStat(ref desc3, "Gear", "Gear:", gear, "0");
 
                             item.DisplayStat1 = desc1;
