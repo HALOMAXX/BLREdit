@@ -47496,7 +47496,7 @@
         "muzzle",
         "scope"
       ],
-      "Tooltip": "The Tactical SMG offers an extremely high rate of fire and mobility with very little recoil, but with a high spread and reload speed.",
+      "Tooltip": "The Tactical SMG offers an extremely high rate of fire and mobility, but with a high spread and recoil.",
       "UID": 40013,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -47677,7 +47677,7 @@
         "muzzle",
         "scope"
       ],
-      "Tooltip": "The Burstfire SMG is a 4 round burstfire SMG.",
+      "Tooltip": "The Burstfire SMG fires a 4 round burst with good accuracy and low recoil, but has low damage and range.",
       "UID": 40018,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -47693,7 +47693,7 @@
         "ApplyTime": 0.16,
         "BaseSpread": 0,
         "Burst": 4,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 1000,
         "JumpSpreadMultiplier": 4,
@@ -50192,7 +50192,7 @@
         "scope",
         "stock"
       ],
-      "Tooltip": "The Light Recon Rifle is a short to medium range semi-automatic weapon with good stability.",
+      "Tooltip": "The Light Recon Rifle is a short to medium range semi-automatic weapon with good stability and speed.",
       "UID": 40026,
       "ValidFor": [],
       "WeaponModifiers": null,
