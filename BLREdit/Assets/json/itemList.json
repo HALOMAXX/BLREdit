@@ -13276,7 +13276,7 @@
         "LegsDamageReduction": 0,
         "MeleeProtection": 0,
         "MeleeRange": 0,
-        "MovementSpeed": 16,
+        "MovementSpeed": -16,
         "PermanentHealthProtection": 0,
         "SprintMultiplier": 1,
         "Stamina": 0,
@@ -47148,7 +47148,7 @@
         "ApplyTime": 0.12,
         "BaseSpread": 0.10000000000000001,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.9,
         "InitialMagazines": 4,
         "IdealDistance": 6000,
         "JumpSpreadMultiplier": 4,
@@ -47875,7 +47875,7 @@
         "CrouchSpreadMultiplier": 0.5,
         "InitialMagazines": 9,
         "IdealDistance": 18000,
-        "JumpSpreadMultiplier": 4,
+        "JumpSpreadMultiplier": 6,
         "MagSize": 1,
         "MaxDistance": 20000,
         "MaxRangeDamageMultiplier": 0.29999999999999999,
@@ -48411,7 +48411,7 @@
         "IdealDistance": 8000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 1,
-        "MaxDistance": 16384,
+        "MaxDistance": 10000,
         "MaxRangeDamageMultiplier": 0.10000000000000001,
         "MaxTraceDistance": 15000,
         "ModificationRangeBaseSpread": {
@@ -48967,7 +48967,7 @@
           "Z": 45
         },
         "ModificationRangeIdealDistance": {
-          "X": 3500,
+          "X": 3000,
           "Y": 4500,
           "Z": 4000
         },
@@ -49699,7 +49699,7 @@
           "Z": 45
         },
         "ModificationRangeIdealDistance": {
-          "X": 3500,
+          "X": 3000,
           "Y": 4500,
           "Z": 4000
         },
@@ -49839,7 +49839,7 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.066666666700000002,
+        "ApplyTime": 0.06666666699997,
         "BaseSpread": 0.02,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.69999999999999996,
@@ -51183,7 +51183,7 @@
         "MovementSpreadMultiplier": 1.5,
         "RecoilAccumulation": 1,
         "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.20000000000000001,
+        "RecoilSize": 0.1,
         "RecoilVector": {
           "X": 0,
           "Y": 1.20000005,
@@ -51587,7 +51587,7 @@
         "MovementSpreadMultiplier": 1.5,
         "RecoilAccumulation": 1,
         "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilSize": 0.1,
         "RecoilVector": {
           "X": 0,
           "Y": 1.20000005,
@@ -51935,12 +51935,12 @@
         "RecoilSize": 0.69999999999999996,
         "RecoilVector": {
           "X": 0,
-          "Y": 0.600000024,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.5,
-          "Y": 1,
+          "X": 1.0,
+          "Y": 0.5,
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.29999999999999999,
