@@ -363,6 +363,32 @@ namespace BLREdit
                             item.DisplayStat6 = desc6;
                         }
                         break;
+                    case GRIPS_CATEGORY:
+                        foreach (var item in itemCategory.Value)
+                        {
+                            double damage = item?.WeaponModifiers?.damage ?? 0;
+                            double rof = item?.WeaponModifiers?.rateOfFire ?? 0;
+                            double recoil = item?.WeaponModifiers?.recoil ?? 0;
+
+                            var desc1 = new DisplayStatDiscriptor();
+                            var desc2 = new DisplayStatDiscriptor();
+                            var desc3 = new DisplayStatDiscriptor();
+                            var desc4 = new DisplayStatDiscriptor();
+                            var desc5 = new DisplayStatDiscriptor();
+                            var desc6 = new DisplayStatDiscriptor();
+
+                            FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
+                            FormatDisplayStat(ref desc2, "Recoil", "Recoil:", recoil, "0", "%");
+                            FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
+
+                            item.DisplayStat1 = desc1;
+                            item.DisplayStat2 = desc2;
+                            item.DisplayStat3 = desc3;
+                            item.DisplayStat4 = desc4;
+                            item.DisplayStat5 = desc5;
+                            item.DisplayStat6 = desc6;
+                        }
+                        break;
                 }
             }
         }
