@@ -176,6 +176,7 @@
                         <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
+
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
@@ -202,6 +203,9 @@
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                    </Border>
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryGripImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
 
@@ -362,6 +366,7 @@
                     <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="203,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorGearLabel" Content="0" HorizontalAlignment="Left" Margin="262,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Button Name="RandomLoadout" Content="RandomLoadout" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
+
                 </Grid>
             </ScrollViewer>
         </Grid>

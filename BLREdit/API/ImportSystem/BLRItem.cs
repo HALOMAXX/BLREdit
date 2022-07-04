@@ -144,7 +144,7 @@ public class BLRItem
     public bool IsValidFor(BLRItem item)
     {
         if (item is null) return false;
-        if (Category != ImportSystem.MAGAZINES_CATEGORY && Category != ImportSystem.MUZZELS_CATEGORY && Category != ImportSystem.SCOPES_CATEGORY && Category != ImportSystem.STOCKS_CATEGORY && Category != ImportSystem.BARRELS_CATEGORY) return true;
+        if (Category != ImportSystem.MAGAZINES_CATEGORY && Category != ImportSystem.MUZZELS_CATEGORY && Category != ImportSystem.SCOPES_CATEGORY && Category != ImportSystem.STOCKS_CATEGORY && Category != ImportSystem.BARRELS_CATEGORY && Category != ImportSystem.GRIPS_CATEGORY) return true;
 
         if (ValidFor == null) { return true; }
 

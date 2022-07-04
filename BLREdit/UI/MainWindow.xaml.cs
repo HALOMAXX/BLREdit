@@ -758,6 +758,8 @@ namespace BLREdit.UI
             CheckValidity(SecondaryTagImage, secondary);
 
             CheckValidity(SecondaryCamoWeaponImage, secondary);
+
+            CheckValidity(SecondaryGripImage, secondary);
         }
 
         private static void CheckValidity(Image image, BLRItem item)
@@ -893,6 +895,9 @@ namespace BLREdit.UI
                         SecondaryCrosshairImage.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(item.Name + "Preview Set!");
                     }
                 }
+
+                if (image.Name.Contains("Grip") && item.Category == ImportSystem.GRIPS_CATEGORY && item.IsValidFor(SecondaryRecieverImage.DataContext as BLRItem))
+                { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Grip:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
             }
             if (image.Name.Contains("Reciever"))
             {
@@ -1150,24 +1155,24 @@ namespace BLREdit.UI
 
         private void FillEmptyPrimaryMods(BLRItem reciever)
         {
-            FillEmptyMods(reciever, PrimaryMuzzleImage, PrimaryBarrelImage, PrimaryMagazineImage, PrimaryScopeImage, PrimaryCrosshairImage, PrimaryStockImage, PrimaryCamoWeaponImage, PrimaryTagImage);
+            FillEmptyMods(reciever, PrimaryMuzzleImage, PrimaryBarrelImage, PrimaryMagazineImage, PrimaryScopeImage, PrimaryCrosshairImage, PrimaryStockImage, PrimaryCamoWeaponImage, PrimaryTagImage, null);
         }
 
         private void FillEmptySecondaryMods(BLRItem reciever)
         {
-            FillEmptyMods(reciever, SecondaryMuzzleImage, SecondaryBarrelImage, SecondaryMagazineImage, SecondaryScopeImage, SecondaryCrosshairImage, SecondaryStockImage, SecondaryCamoWeaponImage, SecondaryTagImage);
+            FillEmptyMods(reciever, SecondaryMuzzleImage, SecondaryBarrelImage, SecondaryMagazineImage, SecondaryScopeImage, SecondaryCrosshairImage, SecondaryStockImage, SecondaryCamoWeaponImage, SecondaryTagImage, SecondaryGripImage);
         }
 
-        private static void FillEmptyMods(BLRItem reciever, Image muzzle, Image barrel, Image magazine, Image scope, Image crosshair, Image stock, Image camo, Image tag)
+        private static void FillEmptyMods(BLRItem reciever, Image muzzle, Image barrel, Image magazine, Image scope, Image crosshair, Image stock, Image camo, Image tag, Image grip)
         {
             if (reciever.Tooltip != "Depot Item!")
             {
                 MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(reciever);
-                if (muzzle.DataContext == null || (muzzle.DataContext as BLRItem).Name == MagiCowsWeapon.NoMuzzle)
+                if (muzzle.DataContext is null || (muzzle.DataContext as BLRItem).Name == MagiCowsWeapon.NoMuzzle)
                 {
                     muzzle.DataContext = weapon.GetMuzzle();
                 }
-                if (barrel.DataContext == null || (barrel.DataContext as BLRItem).Name == MagiCowsWeapon.NoBarrel)
+                if (barrel.DataContext is null || (barrel.DataContext as BLRItem).Name == MagiCowsWeapon.NoBarrel)
                 {
                     barrel.DataContext = weapon.GetBarrel();
                     if (CheckForPistolAndBarrel(reciever))
@@ -1175,24 +1180,24 @@ namespace BLREdit.UI
                         stock.DataContext = null;
                     }
                 }
-                if (stock.DataContext == null || (barrel.DataContext as BLRItem).Name == MagiCowsWeapon.NoStock)
+                if (stock.DataContext is null || (barrel.DataContext as BLRItem).Name == MagiCowsWeapon.NoStock)
                 {
                     SetStock(reciever, barrel, stock, weapon.GetStock());
                 }
-                if (magazine.DataContext == null)
+                if (magazine.DataContext is null)
                 {
                     magazine.DataContext = weapon.GetMagazine();
                 }
-                if (scope.DataContext == null)
+                if (scope.DataContext is null)
                 {
                     scope.DataContext = weapon.GetScope();
                     crosshair.DataContext = weapon.GetScope();
                 }
-                if (camo.DataContext == null)
+                if (camo.DataContext is null)
                 {
                     camo.DataContext = weapon.GetCamo();
                 }
-                if (tag.DataContext == null)
+                if (tag.DataContext is null)
                 {
                     var newTag = weapon.GetTag();
                     if (newTag == null)
@@ -1204,6 +1209,10 @@ namespace BLREdit.UI
                         tag.DataContext = newTag;
                     }
                 }
+                if (grip is not null && grip.DataContext is null)
+                {
+                    grip.DataContext = weapon.GetGrip();
+                }
             }
             else
             {
@@ -1213,13 +1222,15 @@ namespace BLREdit.UI
                 scope.DataContext=null;
                 stock.DataContext=null;
                 crosshair.DataContext=null;
+                if (grip is not null)
+                { grip.DataContext = null; }
             }
         }
 
         private void UpdateActiveLoadout()
         {
-            UpdateLoadoutWeapon(ActiveLoadout.Primary, PrimaryRecieverImage.DataContext as BLRItem, PrimaryMuzzleImage.DataContext as BLRItem, PrimaryBarrelImage.DataContext as BLRItem, PrimaryMagazineImage.DataContext as BLRItem, PrimaryScopeImage.DataContext as BLRItem, PrimaryStockImage.DataContext as BLRItem, PrimaryTagImage.DataContext as BLRItem, PrimaryCamoWeaponImage.DataContext as BLRItem);
-            UpdateLoadoutWeapon(ActiveLoadout.Secondary, SecondaryRecieverImage.DataContext as BLRItem, SecondaryMuzzleImage.DataContext as BLRItem, SecondaryBarrelImage.DataContext as BLRItem, SecondaryMagazineImage.DataContext as BLRItem, SecondaryScopeImage.DataContext as BLRItem, SecondaryStockImage.DataContext as BLRItem, SecondaryTagImage.DataContext as BLRItem, SecondaryCamoWeaponImage.DataContext as BLRItem);
+            UpdateLoadoutWeapon(ActiveLoadout.Primary, PrimaryRecieverImage.DataContext as BLRItem, PrimaryMuzzleImage.DataContext as BLRItem, PrimaryBarrelImage.DataContext as BLRItem, PrimaryMagazineImage.DataContext as BLRItem, PrimaryScopeImage.DataContext as BLRItem, PrimaryStockImage.DataContext as BLRItem, PrimaryTagImage.DataContext as BLRItem, PrimaryCamoWeaponImage.DataContext as BLRItem, null);
+            UpdateLoadoutWeapon(ActiveLoadout.Secondary, SecondaryRecieverImage.DataContext as BLRItem, SecondaryMuzzleImage.DataContext as BLRItem, SecondaryBarrelImage.DataContext as BLRItem, SecondaryMagazineImage.DataContext as BLRItem, SecondaryScopeImage.DataContext as BLRItem, SecondaryStockImage.DataContext as BLRItem, SecondaryTagImage.DataContext as BLRItem, SecondaryCamoWeaponImage.DataContext as BLRItem, SecondaryGripImage.DataContext as BLRItem);
             if (GearImage1.IsEnabled)
             { ActiveLoadout.Gear1 = ImportSystem.GetIDOfItem(GearImage1.DataContext as BLRItem); }
             else
@@ -1249,7 +1260,7 @@ namespace BLREdit.UI
             ActiveLoadout.Trophy = ImportSystem.GetIDOfItem(TrophyImage.DataContext as BLRItem);
         }
 
-        private static void UpdateLoadoutWeapon(MagiCowsWeapon weapon, BLRItem reciever, BLRItem muzzle, BLRItem barrel, BLRItem magazine, BLRItem scope, BLRItem stock, BLRItem tag, BLRItem camo)
+        private static void UpdateLoadoutWeapon(MagiCowsWeapon weapon, BLRItem reciever, BLRItem muzzle, BLRItem barrel, BLRItem magazine, BLRItem scope, BLRItem stock, BLRItem tag, BLRItem camo, BLRItem grip)
         {
             weapon.Receiver = reciever?.Name ?? "Assault Rifle";
             weapon.Muzzle = ImportSystem.GetIDOfItem(muzzle);
@@ -1257,6 +1268,7 @@ namespace BLREdit.UI
             weapon.Magazine = ImportSystem.GetIDOfItem(magazine);
             weapon.Scope = scope?.Name ?? "No Optic Mod";
             weapon.Stock = stock?.Name ?? "No Stock";
+            weapon.Grip = grip?.Name ?? "";
             weapon.Tag = ImportSystem.GetIDOfItem(tag);
             weapon.Camo = ImportSystem.GetIDOfItem(camo);
         }
@@ -1301,12 +1313,17 @@ namespace BLREdit.UI
                 LastSelectedImage = SecondaryRecieverImage;
                 return;
             }
-
             if (image.Name.Contains("Muzzle"))
             {
                 if (!(SecondaryRecieverImage.DataContext as BLRItem).IsValidModType("muzzle"))
                 { return; }
                 SetItemList(ImportSystem.MUZZELS_CATEGORY);
+                LastSelectedImage = image;
+                return;
+            }
+            if (image.Name.Contains("Grip"))
+            {
+                SetItemList(ImportSystem.GRIPS_CATEGORY);
                 LastSelectedImage = image;
                 return;
             }
@@ -1353,11 +1370,6 @@ namespace BLREdit.UI
             if (image.Name.Contains("Barrel"))
             {
                 SetItemList(ImportSystem.BARRELS_CATEGORY);
-                return;
-            }
-            if (image.Name.Contains("Grip"))
-            {
-                SetItemList(ImportSystem.GRIPS_CATEGORY);
                 return;
             }
             if (image.Name.Contains("Tag"))
@@ -1589,6 +1601,7 @@ namespace BLREdit.UI
             SetItemToImage(SecondaryCrosshairImage, secondary.GetScope(), updateLoadout);
             SetItemToImage(SecondaryTagImage, secondary.GetTag(), updateLoadout);
             SetItemToImage(SecondaryCamoWeaponImage, secondary.GetCamo(), updateLoadout);
+            SetItemToImage(SecondaryGripImage, secondary.GetGrip(), updateLoadout);
             UpdateSecondaryStats();
         }
         
@@ -1768,6 +1781,7 @@ namespace BLREdit.UI
         static readonly List<BLRItem> Stocks = ImportSystem.GetItemListOfType(ImportSystem.STOCKS_CATEGORY);
         static readonly List<BLRItem> Hangers = ImportSystem.GetItemListOfType(ImportSystem.HANGERS_CATEGORY);
         static readonly List<BLRItem> CamosWeapon = ImportSystem.GetItemListOfType(ImportSystem.CAMOS_WEAPONS_CATEGORY);
+        static readonly List<BLRItem> Grips = ImportSystem.GetItemListOfType(ImportSystem.GRIPS_CATEGORY);
 
 
         static readonly List<BLRItem> Tacticals = ImportSystem.GetItemListOfType(ImportSystem.TACTICAL_CATEGORY);
@@ -1896,6 +1910,15 @@ namespace BLREdit.UI
             else
             {
                 weapon.Camo = -1;
+            }
+
+            if (Weapon.Name == "Shotgun")
+            {
+                weapon.Grip = Grips[rng.Next(0, Grips.Count)].Name;
+            }
+            else
+            {
+                weapon.Grip = "";
             }
 
             weapon.IsHealthOkAndRepair();
