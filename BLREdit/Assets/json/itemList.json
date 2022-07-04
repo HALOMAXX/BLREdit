@@ -13276,7 +13276,7 @@
         "LegsDamageReduction": 0,
         "MeleeProtection": 0,
         "MeleeRange": 0,
-        "MovementSpeed": 16,
+        "MovementSpeed": -16,
         "PermanentHealthProtection": 0,
         "SprintMultiplier": 1,
         "Stamina": 0,
@@ -18344,7 +18344,7 @@
       "Class": null,
       "DescriptorName": "",
       "Icon": "TX_Camo_Anniversary_2013_128x128",
-      "Name": "Class of 2023",
+      "Name": "Class of 2013",
       "PawnModifiers": null,
       "SupportedMods": [],
       "Tooltip": "CamoDesc",
@@ -47137,7 +47137,7 @@
       "ValidFor": [],
       "WeaponModifiers": null,
       "WeaponStats": {
-        "accuracy": 0.041000001132488251,
+        "accuracy": 0.041,
         "damage": 60,
         "movementSpeed": -30,
         "range": 6000,
@@ -47146,20 +47146,20 @@
         "reloadSpeed": 1,
         "weaponWeight": 1,
         "ApplyTime": 0.12,
-        "BaseSpread": 0.10000000000000001,
+        "BaseSpread": 0.1,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.9,
         "InitialMagazines": 4,
         "IdealDistance": 6000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 22,
         "MaxDistance": 9000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 10000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0610000007,
-          "Y": 0.0209999997,
-          "Z": 0.0410000011
+          "X": 0.061,
+          "Y": 0.021,
+          "Z": 0.041
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -47188,7 +47188,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -47202,28 +47202,28 @@
           "Z": 0
         },
         "ModificationRangeTABaseSpread": {
-          "X": 0.0130000003,
-          "Y": 0.00100000005,
-          "Z": 0.00700000022
+          "X": 0.013,
+          "Y": 0.001,
+          "Z": 0.007
         },
         "ModificationRangeWeightMultiplier": {
           "X": 2.00600004,
           "Y": 0.480699986,
           "Z": 1.03600001
         },
-        "MovementSpreadConstant": 0.10000000000000001,
-        "MovementSpreadMultiplier": 1.8200000000000001,
+        "MovementSpreadConstant": 0.1,
+        "MovementSpreadMultiplier": 1.82,
         "RecoilAccumulation": 1.2,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
+        "RecoilAccumulationMultiplier": 0.95,
         "RecoilSize": 0.5,
         "RecoilVector": {
-          "X": 0.100000001,
+          "X": 0.1,
           "Y": 1,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.0500000007,
-          "Y": 0.400000006,
+          "X": 0.05,
+          "Y": 0.4,
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.5,
@@ -47274,11 +47274,11 @@
             "Points": 100
           }
         ],
-        "TABaseSpread": 0.10000000000000001,
+        "TABaseSpread": 0.1,
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 150,
-        "ZoomSpreadMultiplier": 0.47499999999999998
+        "ZoomSpreadMultiplier": 0.475
       },
       "WikiStats": {
         "aimSpread": 0.40000000596046448,
@@ -47329,20 +47329,20 @@
         "reloadSpeed": 1,
         "weaponWeight": 1,
         "ApplyTime": 0.13333333999999999,
-        "BaseSpread": 0.050000000000000003,
+        "BaseSpread": 0.05,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.90000000000000002,
+        "CrouchSpreadMultiplier": 0.9,
         "InitialMagazines": 3,
         "IdealDistance": 4500,
         "JumpSpreadMultiplier": 4,
         "MagSize": 65,
         "MaxDistance": 6500,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 7500,
         "ModificationRangeBaseSpread": {
-          "X": 0.0549999997,
-          "Y": 0.0250000004,
-          "Z": 0.0399999991
+          "X": 0.055,
+          "Y": 0.025,
+          "Z": 0.04
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -47371,7 +47371,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -47385,9 +47385,9 @@
           "Z": 0
         },
         "ModificationRangeTABaseSpread": {
-          "X": 0.0419999994,
-          "Y": 0.00200000009,
-          "Z": 0.0219999999
+          "X": 0.042,
+          "Y": 0.002,
+          "Z": 0.022
         },
         "ModificationRangeWeightMultiplier": {
           "X": 2.92000008,
@@ -47396,12 +47396,12 @@
         },
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 2,
-        "RecoilAccumulation": 1.3999999999999999,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.40000000000000002,
+        "RecoilAccumulation": 1.4,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.4,
         "RecoilVector": {
-          "X": 0.200000003,
-          "Y": 0.200000003,
+          "X": 0.2,
+          "Y": 0.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -47461,7 +47461,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 300,
-        "ZoomSpreadMultiplier": 0.45000000000000001
+        "ZoomSpreadMultiplier": 0.45
       },
       "WikiStats": {
         "aimSpread": 1.2599999904632568,
@@ -47496,7 +47496,7 @@
         "muzzle",
         "scope"
       ],
-      "Tooltip": "The Tactical SMG offers an extremely high rate of fire and mobility with very little recoil, but with a high spread and reload speed.",
+      "Tooltip": "The Tactical SMG offers an extremely high rate of fire and mobility, but with a high spread and recoil.",
       "UID": 40013,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -47510,9 +47510,9 @@
         "reloadSpeed": 1,
         "weaponWeight": 1,
         "ApplyTime": 0.063157893699999995,
-        "BaseSpread": 0.050000000000000003,
+        "BaseSpread": 0.05,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 1700,
         "JumpSpreadMultiplier": 4,
@@ -47521,9 +47521,9 @@
         "MaxRangeDamageMultiplier": 0.25,
         "MaxTraceDistance": 6000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0599999987,
-          "Y": 0.00999999978,
-          "Z": 0.0350000001
+          "X": 0.06,
+          "Y": 0.01,
+          "Z": 0.035
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -47552,7 +47552,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -47576,21 +47576,21 @@
           "Z": 1
         },
         "MovementSpreadConstant": 0,
-        "MovementSpreadMultiplier": 1.1000000000000001,
-        "RecoilAccumulation": 1.3799999999999999,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.69999999999999996,
+        "MovementSpreadMultiplier": 1.1,
+        "RecoilAccumulation": 1.38,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.7,
         "RecoilVector": {
-          "X": 0.300000012,
-          "Y": 0.800000012,
+          "X": 0.3,
+          "Y": 0.8,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.800000012,
+          "X": 0.8,
           "Y": 1,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.40000000000000002,
+        "RecoilZoomMultiplier": 0.4,
         "ROF": 950,
         "StatDecriptors": [
           {
@@ -47638,8 +47638,8 @@
             "Points": 100
           }
         ],
-        "TABaseSpread": 0.059999999999999998,
-        "TightAimTime": 0.14999999999999999,
+        "TABaseSpread": 0.06,
+        "TightAimTime": 0.15,
         "UseTABaseSpread": false,
         "Weight": 100,
         "ZoomSpreadMultiplier": 0.5
@@ -47677,7 +47677,7 @@
         "muzzle",
         "scope"
       ],
-      "Tooltip": "The Burstfire SMG is a 4 round burstfire SMG.",
+      "Tooltip": "The Burstfire SMG fires a 4 round burst with good accuracy and low recoil, but has low damage and range.",
       "UID": 40018,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -47693,7 +47693,7 @@
         "ApplyTime": 0.16,
         "BaseSpread": 0,
         "Burst": 4,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 1000,
         "JumpSpreadMultiplier": 4,
@@ -47702,9 +47702,9 @@
         "MaxRangeDamageMultiplier": 0.25,
         "MaxTraceDistance": 5500,
         "ModificationRangeBaseSpread": {
-          "X": 0.0350000001,
-          "Y": 0.0250000004,
-          "Z": 0.0299999993
+          "X": 0.035,
+          "Y": 0.025,
+          "Z": 0.03
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -47733,7 +47733,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -47759,19 +47759,19 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 2,
         "RecoilAccumulation": 1.5,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.085000000000000006,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.085,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.699999988,
+          "X": 0.7,
           "Y": 1,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.59999999999999998,
+        "RecoilZoomMultiplier": 0.6,
         "ROF": 850,
         "StatDecriptors": [
           {
@@ -47869,16 +47869,16 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
-        "BaseSpread": 0.29999999999999999,
+        "ApplyTime": 0.1,
+        "BaseSpread": 0.3,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.5,
         "InitialMagazines": 9,
         "IdealDistance": 18000,
-        "JumpSpreadMultiplier": 4,
+        "JumpSpreadMultiplier": 6,
         "MagSize": 1,
         "MaxDistance": 20000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 25000,
         "ModificationRangeBaseSpread": {
           "X": 0.5,
@@ -47911,8 +47911,8 @@
           "Z": -100
         },
         "ModificationRangeRecoil": {
-          "X": 1.10000002,
-          "Y": 0.899999976,
+          "X": 1.1,
+          "Y": 0.9,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -47921,8 +47921,8 @@
           "Z": 0
         },
         "ModificationRangeRecoilReloadRate": {
-          "X": 0.730000019,
-          "Y": 1.39999998,
+          "X": 0.73,
+          "Y": 1.4,
           "Z": 1
         },
         "ModificationRangeTABaseSpread": {
@@ -47938,16 +47938,16 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 6,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.3,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.200000003,
-          "Y": 0.200000003,
+          "X": 0.2,
+          "Y": 0.2,
           "Z": 0
         },
         "RecoilZoomMultiplier": 1,
@@ -48002,7 +48002,7 @@
         "TightAimTime": 0.5,
         "UseTABaseSpread": true,
         "Weight": 285,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 0.20000000298023224,
@@ -48056,18 +48056,18 @@
         "ApplyTime": 0.109090909,
         "BaseSpread": 0.050000000000000003,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 3000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 25,
         "MaxDistance": 3500,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 3800,
         "ModificationRangeBaseSpread": {
-          "X": 0.0529999994,
-          "Y": 0.0299999993,
-          "Z": 0.0414999984
+          "X": 0.053,
+          "Y": 0.03,
+          "Z": 0.0415
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -48096,7 +48096,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -48110,9 +48110,9 @@
           "Z": 0
         },
         "ModificationRangeTABaseSpread": {
-          "X": 0.0370000005,
-          "Y": 0.00700000022,
-          "Z": 0.0199999996
+          "X": 0.037,
+          "Y": 0.007,
+          "Z": 0.02
         },
         "ModificationRangeWeightMultiplier": {
           "X": 2,
@@ -48121,20 +48121,20 @@
         },
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.3,
-        "RecoilAccumulation": 1.1000000000000001,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilAccumulation": 1.1,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.3,
         "RecoilVector": {
-          "X": 0.300000012,
-          "Y": 0.200000003,
+          "X": 0.3,
+          "Y": 0.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.400000006,
+          "X": 0.4,
           "Y": 0.5,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.42499999999999999,
+        "RecoilZoomMultiplier": 0.425,
         "ROF": 550,
         "StatDecriptors": [
           {
@@ -48182,11 +48182,11 @@
             "Points": 100
           }
         ],
-        "TABaseSpread": 0.029999999999999999,
+        "TABaseSpread": 0.03,
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 150,
-        "ZoomSpreadMultiplier": 0.42499999999999999
+        "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
         "aimSpread": 1.1499999761581421,
@@ -48237,20 +48237,20 @@
         "reloadSpeed": 1,
         "weaponWeight": 1,
         "ApplyTime": 0.092307694300000007,
-        "BaseSpread": 0.080000000000000002,
+        "BaseSpread": 0.08,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.90000000000000002,
+        "CrouchSpreadMultiplier": 0.9,
         "InitialMagazines": 4,
         "IdealDistance": 4500,
         "JumpSpreadMultiplier": 4,
         "MagSize": 30,
         "MaxDistance": 7000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 10000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0724999979,
-          "Y": 0.0225000009,
-          "Z": 0.0425000004
+          "X": 0.0725,
+          "Y": 0.0225,
+          "Z": 0.0425
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -48279,7 +48279,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -48302,22 +48302,22 @@
           "Y": 0.5,
           "Z": 1.16199994
         },
-        "MovementSpreadConstant": 0.050000000000000003,
+        "MovementSpreadConstant": 0.05,
         "MovementSpreadMultiplier": 1.25,
         "RecoilAccumulation": 1.3,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
+        "RecoilAccumulationMultiplier": 0.95,
         "RecoilSize": 0.5,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.800000012,
+          "X": 0.8,
           "Y": 1,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.42499999999999999,
+        "RecoilZoomMultiplier": 0.425,
         "ROF": 650,
         "StatDecriptors": [
           {
@@ -48357,7 +48357,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 150,
-        "ZoomSpreadMultiplier": 0.42499999999999999
+        "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
         "aimSpread": 0.76999998092651367,
@@ -48403,7 +48403,7 @@
         "recoil": 0,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.16666667199999999,
+        "ApplyTime": 0.166666666667,
         "BaseSpread": 0.02,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.5,
@@ -48411,13 +48411,13 @@
         "IdealDistance": 8000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 1,
-        "MaxDistance": 16384,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxDistance": 10000,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 15000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0299999993,
-          "Y": 0.00999999978,
-          "Z": 0.0199999996
+          "X": 0.03,
+          "Y": 0.01,
+          "Z": 0.02
         },
         "ModificationRangeCockRate": {
           "X": 2.5,
@@ -48460,7 +48460,7 @@
           "Z": 0
         },
         "ModificationRangeTABaseSpread": {
-          "X": 0.00999999978,
+          "X": 0.01,
           "Y": 0,
           "Z": 0
         },
@@ -48469,10 +48469,10 @@
           "Y": 0.5,
           "Z": 1
         },
-        "MovementSpreadConstant": 0.10000000000000001,
-        "MovementSpreadMultiplier": 1.1000000000000001,
+        "MovementSpreadConstant": 0.1,
+        "MovementSpreadMultiplier": 1.1,
         "RecoilAccumulation": 0,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
+        "RecoilAccumulationMultiplier": 0.95,
         "RecoilSize": 0,
         "RecoilVector": {
           "X": 0,
@@ -48536,7 +48536,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 1.1499999761581421,
@@ -48586,21 +48586,21 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.080000000000000002,
-        "BaseSpread": 0.040000000000000001,
+        "ApplyTime": 0.08,
+        "BaseSpread": 0.04,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 2500,
         "JumpSpreadMultiplier": 4,
         "MagSize": 30,
         "MaxDistance": 4000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 4500,
         "ModificationRangeBaseSpread": {
-          "X": 0.0399999991,
-          "Y": 0.0250000004,
-          "Z": 0.0399999991
+          "X": 0.04,
+          "Y": 0.025,
+          "Z": 0.04
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -48629,7 +48629,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -48644,8 +48644,8 @@
         },
         "ModificationRangeTABaseSpread": {
           "X": 0.0254999995,
-          "Y": 0.00350000011,
-          "Z": 0.0140000004
+          "Y": 0.0035,
+          "Z": 0.014
         },
         "ModificationRangeWeightMultiplier": {
           "X": 2.2650001,
@@ -48655,15 +48655,15 @@
         "MovementSpreadConstant": 0.02,
         "MovementSpreadMultiplier": 1.8,
         "RecoilAccumulation": 1.3,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.40000000000000002,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.4,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.800000012,
+          "X": 0.8,
           "Y": 0.5,
           "Z": 0
         },
@@ -48707,7 +48707,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 150,
-        "ZoomSpreadMultiplier": 0.42499999999999999
+        "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
         "aimSpread": 0.80000001192092896,
@@ -48757,21 +48757,21 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.13333333999999999,
-        "BaseSpread": 0.050000000000000003,
+        "ApplyTime": 0.1333333333334,
+        "BaseSpread": 0.05,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 5000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 20,
         "MaxDistance": 8000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 9000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0500000007,
-          "Y": 0.0299999993,
-          "Z": 0.0399999991
+          "X": 0.05,
+          "Y": 0.03,
+          "Z": 0.04
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -48799,8 +48799,8 @@
           "Z": 0
         },
         "ModificationRangeRecoil": {
-          "X": 1.11000001,
-          "Y": 0.899999976,
+          "X": 1.11,
+          "Y": 0.9,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -48814,31 +48814,31 @@
           "Z": 0
         },
         "ModificationRangeTABaseSpread": {
-          "X": 0.0192499999,
-          "Y": 0.00875000004,
-          "Z": 0.0140000004
+          "X": 0.01925,
+          "Y": 0.00875,
+          "Z": 0.014
         },
         "ModificationRangeWeightMultiplier": {
           "X": 2.09699988,
           "Y": 0.5,
           "Z": 1.05999994
         },
-        "MovementSpreadConstant": 0.040000000000000001,
+        "MovementSpreadConstant": 0.04,
         "MovementSpreadMultiplier": 1.75,
-        "RecoilAccumulation": 1.3999999999999999,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilAccumulation": 1.4,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.3,
         "RecoilVector": {
-          "X": 0.200000003,
-          "Y": 0.300000012,
+          "X": 0.2,
+          "Y": 0.3,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.699999988,
-          "Y": 0.699999988,
+          "X": 0.7,
+          "Y": 0.7,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.42499999999999999,
+        "RecoilZoomMultiplier": 0.425,
         "ROF": 450,
         "StatDecriptors": [
           {
@@ -48890,7 +48890,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 150,
-        "ZoomSpreadMultiplier": 0.42499999999999999
+        "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
         "aimSpread": 0.80000001192092896,
@@ -48943,18 +48943,18 @@
         "ApplyTime": 0.092307694300000007,
         "BaseSpread": 0.02,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 4000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 30,
         "MaxDistance": 7000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 10000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0500000007,
-          "Y": 0.0299999993,
-          "Z": 0.0399999991
+          "X": 0.05,
+          "Y": 0.03,
+          "Z": 0.04
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -48967,7 +48967,7 @@
           "Z": 45
         },
         "ModificationRangeIdealDistance": {
-          "X": 3500,
+          "X": 3000,
           "Y": 4500,
           "Z": 4000
         },
@@ -48982,8 +48982,8 @@
           "Z": 0
         },
         "ModificationRangeRecoil": {
-          "X": 1.11000001,
-          "Y": 0.899999976,
+          "X": 1.11,
+          "Y": 0.9,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -49006,22 +49006,22 @@
           "Y": 0.5,
           "Z": 1.16199994
         },
-        "MovementSpreadConstant": 0.040000000000000001,
+        "MovementSpreadConstant": 0.04,
         "MovementSpreadMultiplier": 1.25,
         "RecoilAccumulation": 1.05,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.20000000000000001,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.2,
         "RecoilVector": {
-          "X": 0.200000003,
+          "X": 0.2,
           "Y": 0.5,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.0500000007,
-          "Y": 0.400000006,
+          "X": 0.05,
+          "Y": 0.4,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.29999999999999999,
+        "RecoilZoomMultiplier": 0.3,
         "ROF": 650,
         "StatDecriptors": [
           {
@@ -49073,7 +49073,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 150,
-        "ZoomSpreadMultiplier": 0.42499999999999999
+        "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
         "aimSpread": 0.80000001192092896,
@@ -49123,8 +49123,8 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
-        "BaseSpread": 0.29999999999999999,
+        "ApplyTime": 0.1,
+        "BaseSpread": 0.3,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.5,
         "InitialMagazines": 4,
@@ -49132,16 +49132,16 @@
         "JumpSpreadMultiplier": 2,
         "MagSize": 5,
         "MaxDistance": 13000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 14000,
         "ModificationRangeBaseSpread": {
-          "X": 0.209999993,
-          "Y": 0.0299999993,
-          "Z": 0.119999997
+          "X": 0.21,
+          "Y": 0.03,
+          "Z": 0.12
         },
         "ModificationRangeCockRate": {
-          "X": 1.33399999,
-          "Y": 0.666999996,
+          "X": 1.334,
+          "Y": 0.667,
           "Z": 1
         },
         "ModificationRangeDamage": {
@@ -49166,7 +49166,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -49189,14 +49189,14 @@
           "Y": 0.5,
           "Z": 1.11699998
         },
-        "MovementSpreadConstant": 0.050000000000000003,
+        "MovementSpreadConstant": 0.05,
         "MovementSpreadMultiplier": 2,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.20999999999999999,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.21,
         "RecoilVector": {
-          "X": 0.300000012,
-          "Y": 0.200000003,
+          "X": 0.3,
+          "Y": 0.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -49204,7 +49204,7 @@
           "Y": 1,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.69999999999999996,
+        "RecoilZoomMultiplier": 0.7,
         "ROF": 60,
         "StatDecriptors": [
           {
@@ -49256,7 +49256,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 262,
-        "ZoomSpreadMultiplier": 0.20000000000000001
+        "ZoomSpreadMultiplier": 0.2
       },
       "WikiStats": {
         "aimSpread": 0,
@@ -49307,20 +49307,20 @@
         "reloadSpeed": 1,
         "weaponWeight": 1,
         "ApplyTime": 0.092307694300000007,
-        "BaseSpread": 0.080000000000000002,
+        "BaseSpread": 0.08,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.59999999999999998,
+        "CrouchSpreadMultiplier": 0.6,
         "InitialMagazines": 3,
         "IdealDistance": 4500,
         "JumpSpreadMultiplier": 4,
         "MagSize": 150,
         "MaxDistance": 6500,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 7000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0700000003,
-          "Y": 0.0299999993,
-          "Z": 0.0500000007
+          "X": 0.07,
+          "Y": 0.03,
+          "Z": 0.05
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -49348,8 +49348,8 @@
           "Z": -50
         },
         "ModificationRangeRecoil": {
-          "X": 1.29999995,
-          "Y": 0.800000012,
+          "X": 1.3,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -49363,9 +49363,9 @@
           "Z": 0
         },
         "ModificationRangeTABaseSpread": {
-          "X": 0.0500000007,
-          "Y": 0.00999999978,
-          "Z": 0.0299999993
+          "X": 0.05,
+          "Y": 0.01,
+          "Z": 0.03
         },
         "ModificationRangeWeightMultiplier": {
           "X": 2.09200001,
@@ -49374,12 +49374,12 @@
         },
         "MovementSpreadConstant": 0.13,
         "MovementSpreadMultiplier": 1.5,
-        "RecoilAccumulation": 1.1000000000000001,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilAccumulation": 1.1,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.3,
         "RecoilVector": {
-          "X": 0.0500000007,
-          "Y": 0.850000024,
+          "X": 0.05,
+          "Y": 0.85,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -49387,7 +49387,7 @@
           "Y": 1,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.40000000000000002,
+        "RecoilZoomMultiplier": 0.4,
         "ROF": 650,
         "StatDecriptors": [
           {
@@ -49435,11 +49435,11 @@
             "Points": 100
           }
         ],
-        "TABaseSpread": 0.029999999999999999,
+        "TABaseSpread": 0.03,
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 300,
-        "ZoomSpreadMultiplier": 0.59999999999999998
+        "ZoomSpreadMultiplier": 0.6
       },
       "WikiStats": {
         "aimSpread": 1.7200000286102295,
@@ -49489,21 +49489,21 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.23999999999999999,
+        "ApplyTime": 0.24,
         "BaseSpread": 0.01,
         "Burst": 3,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 6000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 15,
         "MaxDistance": 10000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 11000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0450000018,
-          "Y": 0.0149999997,
-          "Z": 0.0299999993
+          "X": 0.045,
+          "Y": 0.015,
+          "Z": 0.03
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -49531,8 +49531,8 @@
           "Z": -15
         },
         "ModificationRangeRecoil": {
-          "X": 1.29999995,
-          "Y": 0.850000024,
+          "X": 1.3,
+          "Y": 0.85,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -49546,23 +49546,23 @@
           "Z": 0
         },
         "ModificationRangeTABaseSpread": {
-          "X": 0.00700000022,
+          "X": 0.007,
           "Y": 0,
-          "Z": 0.00350000011
+          "Z": 0.0035
         },
         "ModificationRangeWeightMultiplier": {
           "X": 1.91900003,
           "Y": 0.5,
           "Z": 0.980000019
         },
-        "MovementSpreadConstant": 0.059999999999999998,
+        "MovementSpreadConstant": 0.06,
         "MovementSpreadMultiplier": 2,
         "RecoilAccumulation": 2,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.65000000000000002,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.65,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -49675,13 +49675,13 @@
         "ApplyTime": 0.092307694300000007,
         "BaseSpread": 0.02,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 4000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 30,
         "MaxDistance": 7000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 10000,
         "ModificationRangeBaseSpread": {
           "X": 0.0500000007,
@@ -49699,7 +49699,7 @@
           "Z": 45
         },
         "ModificationRangeIdealDistance": {
-          "X": 3500,
+          "X": 3000,
           "Y": 4500,
           "Z": 4000
         },
@@ -49714,8 +49714,8 @@
           "Z": 0
         },
         "ModificationRangeRecoil": {
-          "X": 1.11000001,
-          "Y": 0.899999976,
+          "X": 1.11,
+          "Y": 0.9,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -49730,30 +49730,30 @@
         },
         "ModificationRangeTABaseSpread": {
           "X": 0.0192499999,
-          "Y": 0.00875000004,
-          "Z": 0.0140000004
+          "Y": 0.00875,
+          "Z": 0.014
         },
         "ModificationRangeWeightMultiplier": {
           "X": 2.40400004,
           "Y": 0.5,
           "Z": 1.16199994
         },
-        "MovementSpreadConstant": 0.040000000000000001,
+        "MovementSpreadConstant": 0.04,
         "MovementSpreadMultiplier": 1.25,
         "RecoilAccumulation": 1.05,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.20000000000000001,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.2,
         "RecoilVector": {
-          "X": 0.200000003,
+          "X": 0.2,
           "Y": 0.5,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.0500000007,
-          "Y": 0.400000006,
+          "X": 0.05,
+          "Y": 0.4,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.29999999999999999,
+        "RecoilZoomMultiplier": 0.3,
         "ROF": 650,
         "StatDecriptors": [
           {
@@ -49805,7 +49805,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": true,
         "Weight": 150,
-        "ZoomSpreadMultiplier": 0.42499999999999999
+        "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": null
     },
@@ -49839,10 +49839,10 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.066666666700000002,
+        "ApplyTime": 0.06666666666667,
         "BaseSpread": 0.02,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 1200,
         "JumpSpreadMultiplier": 4,
@@ -49881,8 +49881,8 @@
           "Z": 30
         },
         "ModificationRangeRecoil": {
-          "X": 1.29999995,
-          "Y": 0.850000024,
+          "X": 1.3,
+          "Y": 0.85,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -49906,21 +49906,21 @@
           "Z": 1.29999995
         },
         "MovementSpreadConstant": 0,
-        "MovementSpreadMultiplier": 1.1000000000000001,
+        "MovementSpreadMultiplier": 1.1,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
+        "RecoilAccumulationMultiplier": 0.95,
         "RecoilSize": 0.5,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.800000012,
-          "Y": 0.300000012,
+          "X": 0.8,
+          "Y": 0.3,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.80000000000000004,
+        "RecoilZoomMultiplier": 0.8,
         "ROF": 900,
         "StatDecriptors": [
           {
@@ -50025,18 +50025,18 @@
         "ApplyTime": 0.20000000000000001,
         "BaseSpread": 0.25,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.90000000000000002,
+        "CrouchSpreadMultiplier": 0.9,
         "InitialMagazines": 4,
         "IdealDistance": 10000,
         "JumpSpreadMultiplier": 4,
         "MagSize": 9,
         "MaxDistance": 12000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 12500,
         "ModificationRangeBaseSpread": {
-          "X": 0.0799999982,
-          "Y": 0.00999999978,
-          "Z": 0.0450000018
+          "X": 0.08,
+          "Y": 0.01,
+          "Z": 0.045
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -50064,8 +50064,8 @@
           "Z": -25
         },
         "ModificationRangeRecoil": {
-          "X": 1.29999995,
-          "Y": 0.800000012,
+          "X": 1.3,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -50090,16 +50090,16 @@
         },
         "MovementSpreadConstant": 0.02,
         "MovementSpreadMultiplier": 1.2,
-        "RecoilAccumulation": 1.3999999999999999,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
+        "RecoilAccumulation": 1.4,
+        "RecoilAccumulationMultiplier": 0.95,
         "RecoilSize": 0.38,
         "RecoilVector": {
-          "X": 0.100000001,
+          "X": 0.1,
           "Y": 1,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.400000006,
+          "X": 0.4,
           "Y": 0.5,
           "Z": 0
         },
@@ -50192,7 +50192,7 @@
         "scope",
         "stock"
       ],
-      "Tooltip": "The Light Recon Rifle is a short to medium range semi-automatic weapon with good stability.",
+      "Tooltip": "The Light Recon Rifle is a short to medium range semi-automatic weapon with good stability and speed.",
       "UID": 40026,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -50205,21 +50205,21 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
-        "BaseSpread": 0.059999999999999998,
+        "ApplyTime": 0.1,
+        "BaseSpread": 0.06,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.59999999999999998,
+        "CrouchSpreadMultiplier": 0.6,
         "InitialMagazines": 4,
         "IdealDistance": 4500,
         "JumpSpreadMultiplier": 4,
         "MagSize": 12,
         "MaxDistance": 8000,
-        "MaxRangeDamageMultiplier": 0.29999999999999999,
+        "MaxRangeDamageMultiplier": 0.3,
         "MaxTraceDistance": 8500,
         "ModificationRangeBaseSpread": {
-          "X": 0.0649999976,
-          "Y": 0.0250000004,
-          "Z": 0.0450000018
+          "X": 0.065,
+          "Y": 0.025,
+          "Z": 0.045
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -50248,7 +50248,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -50274,11 +50274,11 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.5,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.28000000000000003,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.28,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -50338,7 +50338,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 1.0299999713897705,
@@ -50376,7 +50376,7 @@
         "scope",
         "stock"
       ],
-      "Tooltip": "The Shotgun Assault Rifle-k offers a high rate of fire but is highly inaccurate at a distance.",
+      "Tooltip": "The Shotgun Assault Rifle-k fires 5 pellets and offers a high rate of fire but is highly inaccurate at a distance.",
       "UID": 40016,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -50389,21 +50389,21 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
-        "BaseSpread": 0.040000000000000001,
+        "ApplyTime": 0.1,
+        "BaseSpread": 0.04,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 2,
         "IdealDistance": 1200,
         "JumpSpreadMultiplier": 1.5,
         "MagSize": 10,
         "MaxDistance": 2500,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 5000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0299999993,
-          "Y": 0.0199999996,
-          "Z": 0.0250000004
+          "X": 0.03,
+          "Y": 0.02,
+          "Z": 0.025
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -50457,12 +50457,12 @@
         },
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.5,
-        "RecoilAccumulation": 0.94999999999999996,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.074999999999999997,
+        "RecoilAccumulation": 0.95,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.075,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -50522,7 +50522,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 200,
-        "ZoomSpreadMultiplier": 0.29999999999999999
+        "ZoomSpreadMultiplier": 0.3
       },
       "WikiStats": {
         "aimSpread": 0.43000000715255737,
@@ -50568,8 +50568,8 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
-        "BaseSpread": 0.040000000000000001,
+        "ApplyTime": 0.1,
+        "BaseSpread": 0.04,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.5,
         "InitialMagazines": 2,
@@ -50577,12 +50577,12 @@
         "JumpSpreadMultiplier": 4,
         "MagSize": 1,
         "MaxDistance": 4000,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 15000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0500000007,
-          "Y": 0.0350000001,
-          "Z": 0.0399999991
+          "X": 0.05,
+          "Y": 0.035,
+          "Z": 0.04
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -50611,7 +50611,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 2,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -50637,11 +50637,11 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 2.5,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.3,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -50701,7 +50701,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 0.92000001668930054,
@@ -50756,12 +50756,12 @@
         "JumpSpreadMultiplier": 4,
         "MagSize": 8,
         "MaxDistance": 1500,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 3000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0599999987,
-          "Y": 0.0350000001,
-          "Z": 0.0500000007
+          "X": 0.06,
+          "Y": 0.035,
+          "Z": 0.05
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -50789,8 +50789,8 @@
           "Z": 15
         },
         "ModificationRangeRecoil": {
-          "X": 1.29999995,
-          "Y": 0.850000024,
+          "X": 1.3,
+          "Y": 0.85,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -50816,11 +50816,11 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 2.5,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.3,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -50880,7 +50880,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 1.1499999761581421,
@@ -50930,7 +50930,7 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
+        "ApplyTime": 0.1,
         "BaseSpread": 0,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.5,
@@ -50939,12 +50939,12 @@
         "JumpSpreadMultiplier": 4,
         "MagSize": 8,
         "MaxDistance": 5000,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 7000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0649999976,
-          "Y": 0.0250000004,
-          "Z": 0.0450000018
+          "X": 0.065,
+          "Y": 0.025,
+          "Z": 0.045
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -50973,7 +50973,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -50999,11 +50999,11 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.5,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.20000000000000001,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.2,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -51063,7 +51063,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 1.0299999713897705,
@@ -51113,7 +51113,7 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
+        "ApplyTime": 0.1,
         "BaseSpread": 0,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.5,
@@ -51122,12 +51122,12 @@
         "JumpSpreadMultiplier": 4,
         "MagSize": 10,
         "MaxDistance": 5000,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 6000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0662499964,
-          "Y": 0.0262499992,
-          "Z": 0.0462500006
+          "X": 0.06625,
+          "Y": 0.02625,
+          "Z": 0.04625
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -51156,7 +51156,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -51182,11 +51182,11 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.5,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.20000000000000001,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.1,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -51246,7 +51246,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 1.059999942779541,
@@ -51294,7 +51294,7 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
+        "ApplyTime": 0.1,
         "BaseSpread": 0,
         "Burst": 3,
         "CrouchSpreadMultiplier": 0.5,
@@ -51303,12 +51303,12 @@
         "JumpSpreadMultiplier": 4,
         "MagSize": 12,
         "MaxDistance": 5000,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 6000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0675000027,
-          "Y": 0.0274999999,
-          "Z": 0.0474999994
+          "X": 0.0675,
+          "Y": 0.0275,
+          "Z": 0.0475
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -51337,7 +51337,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.899999976,
+          "Y": 0.9,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -51363,11 +51363,11 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.5,
         "RecoilAccumulation": 1.5,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.080000000000000002,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.08,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -51375,7 +51375,7 @@
           "Y": 1,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.45000000000000001,
+        "RecoilZoomMultiplier": 0.45,
         "ROF": 600,
         "StatDecriptors": [
           {
@@ -51467,7 +51467,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 1.0900000333786011,
@@ -51517,7 +51517,7 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.10000000000000001,
+        "ApplyTime": 0.1,
         "BaseSpread": 0,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.5,
@@ -51526,12 +51526,12 @@
         "JumpSpreadMultiplier": 4,
         "MagSize": 10,
         "MaxDistance": 5000,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 6000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0662499964,
-          "Y": 0.0262499992,
-          "Z": 0.0462500006
+          "X": 0.06625,
+          "Y": 0.02625,
+          "Z": 0.04625
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -51560,7 +51560,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -51586,11 +51586,11 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.5,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.1,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -51650,7 +51650,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": null
     },
@@ -51683,7 +51683,7 @@
         "reloadSpeed": 1,
         "weaponWeight": 1,
         "ApplyTime": 0.070588238499999997,
-        "BaseSpread": 0.14999999999999999,
+        "BaseSpread": 0.15,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.75,
         "InitialMagazines": 2,
@@ -51691,12 +51691,12 @@
         "JumpSpreadMultiplier": 4,
         "MagSize": 25,
         "MaxDistance": 2000,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 3000,
         "ModificationRangeBaseSpread": {
-          "X": 0.100000001,
-          "Y": 0.0599999987,
-          "Z": 0.0799999982
+          "X": 0.1,
+          "Y": 0.06,
+          "Z": 0.08
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -51725,7 +51725,7 @@
         },
         "ModificationRangeRecoil": {
           "X": 1.25,
-          "Y": 0.800000012,
+          "Y": 0.8,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -51750,20 +51750,20 @@
         },
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.05,
-        "RecoilAccumulation": 0.80000000000000004,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
+        "RecoilAccumulation": 0.8,
+        "RecoilAccumulationMultiplier": 0.95,
         "RecoilSize": 0.5,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.800000012,
+          "X": 0.8,
           "Y": 1,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.45000000000000001,
+        "RecoilZoomMultiplier": 0.45,
         "ROF": 850,
         "StatDecriptors": [
           {
@@ -51862,8 +51862,8 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.20000000000000001,
-        "BaseSpread": 0.040000000000000001,
+        "ApplyTime": 0.2,
+        "BaseSpread": 0.04,
         "Burst": 1,
         "CrouchSpreadMultiplier": 0.5,
         "InitialMagazines": 2,
@@ -51871,12 +51871,12 @@
         "JumpSpreadMultiplier": 4,
         "MagSize": 6,
         "MaxDistance": 3000,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 3500,
         "ModificationRangeBaseSpread": {
-          "X": 0.0450000018,
-          "Y": 0.0350000001,
-          "Z": 0.0399999991
+          "X": 0.045,
+          "Y": 0.035,
+          "Z": 0.04
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -51904,8 +51904,8 @@
           "Z": 15
         },
         "ModificationRangeRecoil": {
-          "X": 1.14999998,
-          "Y": 0.850000024,
+          "X": 1.15,
+          "Y": 0.85,
           "Z": 1
         },
         "ModificationRangeReloadRate": {
@@ -51931,19 +51931,19 @@
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 2.5,
         "RecoilAccumulation": 1,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.69999999999999996,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.7,
         "RecoilVector": {
           "X": 0,
-          "Y": 0.600000024,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
-          "X": 0.5,
-          "Y": 1,
+          "X": 1.0,
+          "Y": 0.5,
           "Z": 0
         },
-        "RecoilZoomMultiplier": 0.29999999999999999,
+        "RecoilZoomMultiplier": 0.3,
         "ROF": 200,
         "StatDecriptors": [
           {
@@ -51995,7 +51995,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 0,
-        "ZoomSpreadMultiplier": 0.40000000000000002
+        "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
         "aimSpread": 0.92000001668930054,
@@ -52032,7 +52032,7 @@
         "scope",
         "stock"
       ],
-      "Tooltip": "The Shotgun sprays damaging pellets at nearby targets. It\u0027s very slow, but extremely effective at close range.",
+      "Tooltip": "The Shotgun sprays 10 damaging pellets at nearby targets. It\u0027s very slow, but extremely effective at close range.",
       "UID": 40005,
       "ValidFor": [],
       "WeaponModifiers": null,
@@ -52045,21 +52045,21 @@
         "recoil": 1,
         "reloadSpeed": 1,
         "weaponWeight": 1,
-        "ApplyTime": 0.14999999999999999,
-        "BaseSpread": 0.040000000000000001,
+        "ApplyTime": 0.15,
+        "BaseSpread": 0.04,
         "Burst": 1,
-        "CrouchSpreadMultiplier": 0.69999999999999996,
+        "CrouchSpreadMultiplier": 0.7,
         "InitialMagazines": 4,
         "IdealDistance": 750,
         "JumpSpreadMultiplier": 1.5,
         "MagSize": 8,
         "MaxDistance": 2000,
-        "MaxRangeDamageMultiplier": 0.10000000000000001,
+        "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 5000,
         "ModificationRangeBaseSpread": {
-          "X": 0.0399999991,
-          "Y": 0.0199999996,
-          "Z": 0.0299999993
+          "X": 0.04,
+          "Y": 0.02,
+          "Z": 0.03
         },
         "ModificationRangeCockRate": {
           "X": 0,
@@ -52113,12 +52113,12 @@
         },
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 1.5,
-        "RecoilAccumulation": 1.3999999999999999,
-        "RecoilAccumulationMultiplier": 0.94999999999999996,
-        "RecoilSize": 0.29999999999999999,
+        "RecoilAccumulation": 1.4,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.3,
         "RecoilVector": {
           "X": 0,
-          "Y": 1.20000005,
+          "Y": 1.2,
           "Z": 0
         },
         "RecoilVectorMultiplier": {
@@ -52178,7 +52178,7 @@
         "TightAimTime": 0,
         "UseTABaseSpread": false,
         "Weight": 200,
-        "ZoomSpreadMultiplier": 0.29999999999999999
+        "ZoomSpreadMultiplier": 0.3
       },
       "WikiStats": {
         "aimSpread": 0.51999998092651367,
