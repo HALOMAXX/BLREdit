@@ -310,7 +310,7 @@ public class BLRItem
     {
         if (!string.IsNullOrEmpty(name))
         {
-            foreach (FoxIcon icon in ImportSystem.Crosshairs)
+            foreach (FoxIcon icon in ImportSystem.ScopePreviews)
             {
                 if (icon.Name.Equals(name))
                 {

@@ -21,39 +21,18 @@ namespace BLREdit
         public const string HANGERS_CATEGORY = "hangers";           //hangers
         public const string CAMOS_BODIES_CATEGORY = "camosBody";    //camosBody
         public const string CAMOS_WEAPONS_CATEGORY = "camosWeapon"; //camosWeapon
-        /// <summary>
-        /// Helmets
-        /// </summary>
         public const string HELMETS_CATEGORY = "helmets";           //helmets
-        /// <summary>
-        /// Leg Armor
-        /// </summary>
         public const string LOWER_BODIES_CATEGORY = "lowerBodies";  //lowerBodies
-        /// <summary>
-        /// Torso Armor
-        /// </summary>
         public const string UPPER_BODIES_CATEGORY = "upperBodies";  //upperBodies
-        /// <summary>
-        /// 1-4 Gear Slot Items
-        /// </summary>
         public const string ATTACHMENTS_CATEGORY = "attachments";   //attachments
-        /// <summary>
-        /// Hero Skin Over Armor
-        /// </summary>
         public const string AVATARS_CATEGORY = "avatars";           //avatars
-        /// <summary>
-        /// Tactical Gear Backpack
-        /// </summary>
         public const string TACTICAL_CATEGORY = "tactical";         //tactical
-        /// <summary>
-        /// Armor Trophy Category
-        /// </summary>
         public const string BADGES_CATEGORY = "badges";
 
         //public static readonly Dictionary<float, float> DamagePercentToValue = new Dictionary<float, float>(); not in use
 
         public static readonly FoxIcon[] Icons = LoadAllIcons();
-        public static readonly FoxIcon[] Crosshairs = LoadAllCrosshairs();
+        public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
         private static Dictionary<string, List<BLRItem>> ItemLists { get; set; } = new Dictionary<string, List<BLRItem>>();
 
@@ -771,7 +750,7 @@ namespace BLREdit
             if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch);
             return icons.ToArray();
         }
-        private static FoxIcon[] LoadAllCrosshairs()
+        private static FoxIcon[] LoadAllScopePreviews()
         {
             System.Diagnostics.Stopwatch watch = null;
             if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Loading All Crosshairs", "");

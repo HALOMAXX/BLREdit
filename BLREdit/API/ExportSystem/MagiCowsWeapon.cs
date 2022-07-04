@@ -140,7 +140,7 @@ namespace BLREdit
             new MagiCowsWeapon() { Barrel = NoBarrel,                               Grip = "", Magazine = 227,  Muzzle = 0,     Receiver = "Prestige Light Pistol",     Stock = NoStock,                                Scope="No Optic Mod", Tag=0, Camo=0 },                 // 24 Prestige Light Pistol
             new MagiCowsWeapon() { Barrel = NoBarrel,                               Grip = "", Magazine = 63,   Muzzle = 0,     Receiver = "Machine Pistol",            Stock = NoStock,                                Scope="No Optic Mod", Tag=0, Camo=0 },                 // 25 Machine Pistol
             new MagiCowsWeapon() { Barrel = NoBarrel,                               Grip = "", Magazine = 99,   Muzzle = 0,     Receiver = "Revolver",                  Stock = NoStock,                                Scope="No Optic Mod", Tag=0, Camo=0 },                 // 26 Revolver
-            new MagiCowsWeapon() { Barrel = NoBarrel,                               Grip = "", Magazine = 29,   Muzzle = 0,     Receiver = "Shotgun",                   Stock = DefaultStock,                           Scope="No Optic Mod", Tag=0, Camo=0 },                 // 27 Shotgun
+            new MagiCowsWeapon() { Barrel = "Titan FFB",                               Grip = "", Magazine = 29,   Muzzle = 0,     Receiver = "Shotgun",                   Stock = DefaultStock,                           Scope="No Optic Mod", Tag=0, Camo=0 },                 // 27 Shotgun
         };
 
         public const string NoMuzzle = "No Muzzle Mod";
