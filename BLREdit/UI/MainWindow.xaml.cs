@@ -1421,6 +1421,10 @@ namespace BLREdit.UI
                         SetSortingType(typeof(ImportNoStatsSortingType));
                         break;
 
+                    case ImportSystem.GRIPS_CATEGORY:
+                        SetSortingType(typeof(ImportGripSortingType));
+                        break;
+
                     case ImportSystem.PRIMARY_CATEGORY:
                     case ImportSystem.SECONDARY_CATEGORY:
                         SetSortingType(typeof(ImportWeaponSortingType));

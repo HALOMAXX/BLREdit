@@ -46,6 +46,13 @@ public enum ImportGearSortingType
     InfraredProtection,
 }
 
+public enum ImportGripSortingType
+{
+    None,
+    Name,
+    Recoil,
+}
+
 public enum ImportNoStatsSortingType
 {
     None,

@@ -377,9 +377,9 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
+                            //FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
                             FormatDisplayStat(ref desc2, "Recoil", "Recoil:", recoil, "0", "%");
-                            FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
+                            //FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
