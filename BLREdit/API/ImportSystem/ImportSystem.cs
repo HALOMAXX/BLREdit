@@ -75,12 +75,12 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "", "/");
-                            FormatDisplayStat(ref desc2, "Aim", "Aim:", spread[0], "0.00", "°");
-                            FormatDisplayStat(ref desc3, "Hip", "Hip:", spread[1], "0.00", "°");
-                            FormatDisplayStat(ref desc4, "Move", "Move:", spread[2], "0.00", "°");
-                            FormatDisplayStat(ref desc5, "Recoil", "Recoil:", recoil, "0.00", "°");
-                            FormatDisplayStat(ref desc6, "Range", "Range:", range, "0", "", "/", 2);
+                            FormatDisplayStat(ref desc1, "Damage", "⚔:", damage, "0", "", "/");
+                            FormatDisplayStat(ref desc2, "Aim", "🔎🎯:", spread[0], "0.00", "°");
+                            FormatDisplayStat(ref desc3, "Hip", "🧎‍🎯:", spread[1], "0.00", "°");
+                            FormatDisplayStat(ref desc4, "Move", "🚶‍🎯:", spread[2], "0.00", "°");
+                            FormatDisplayStat(ref desc5, "Recoil", "💨:", recoil, "0.00", "°");
+                            FormatDisplayStat(ref desc6, "Range", "📏:", range, "0", "", "/", 2);
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -108,11 +108,11 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
-                            FormatDisplayStat(ref desc2, "Accuracy", "Accuracy:", spread, "0", "%");
-                            FormatDisplayStat(ref desc3, "Recoil", "Recoil:", recoil, "0", "%");
-                            FormatDisplayStat(ref desc4, "Range", "Range:", range, "0", "%");
-                            FormatDisplayStat(ref desc5, "Run", "Run:", run, "0", "%");
+                            FormatDisplayStat(ref desc1, "Damage", "⚔:", damage, "0", "%");
+                            FormatDisplayStat(ref desc2, "Accuracy", "🎯:", spread, "0", "%");
+                            FormatDisplayStat(ref desc3, "Recoil", "💨:", recoil, "0", "%");
+                            FormatDisplayStat(ref desc4, "Range", "📏:", range, "0", "%");
+                            FormatDisplayStat(ref desc5, "Run", "🏃:", run, "0", "%");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -162,19 +162,19 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Ammo", "Ammo:", ammo, "0");
-                            FormatDisplayStat(ref desc2, "Damage", "Damage:", damage, "0", "%");
-                            FormatDisplayStat(ref desc3, "Run", "Run:", movementSpeed, "0", "%");
-                            FormatDisplayStat(ref desc4, "Recoil", "Recoil:", recoil, "0", "%");
-                            FormatDisplayStat(ref desc5, "Range", "Range:", range, "0", "%");
+                            FormatDisplayStat(ref desc1, "Ammo", "🔋:", ammo, "0");
+                            FormatDisplayStat(ref desc2, "Damage", "⚔:", damage, "0", "%");
+                            FormatDisplayStat(ref desc3, "Run", "🏃:", movementSpeed, "0", "%");
+                            FormatDisplayStat(ref desc4, "Recoil", "💨:", recoil, "0", "%");
+                            FormatDisplayStat(ref desc5, "Range", "📏:", range, "0", "%");
 
                             if (item.IsValidForItemIDS(40021, 40002))
                             {
-                                FormatDisplayStat(ref desc6, "Accuracy", "Accuracy:", accuracy, "0", "%");
+                                FormatDisplayStat(ref desc6, "Accuracy", "🎯:", accuracy, "0", "%");
                             }
                             else
                             {
-                                FormatDisplayStat(ref desc6, "Reload", "Reload:", reload, "0.00", "s");
+                                FormatDisplayStat(ref desc6, "Reload", "⏱:", reload, "0.00", "s");
                             }
 
                             item.DisplayStat1 = desc1;
@@ -202,17 +202,17 @@ namespace BLREdit
                             {
                                 case "Prex Chem/Hazmat Respirator-TOX":
                                     prop = "ToxicProtection";
-                                    desc = "Toxic:";
+                                    desc = "☣:";
                                     value = item.PawnModifiers.ToxicProtection;
                                     break;
                                 case "Prex Chem/Hazmat Respirator-INC":
                                     prop = "IncendiaryProtection";
-                                    desc = "Fire:";
+                                    desc = "🔥:";
                                     value = item.PawnModifiers.IncendiaryProtection;
                                     break;
                                 case "Prex Chem/Hazmat Respirator-XPL":
                                     prop = "ExplosiveProtection";
-                                    desc = "Explo:";
+                                    desc = "💥:";
                                     value = item.PawnModifiers.ExplosiveProtection;
                                     break;
                             }
@@ -224,13 +224,15 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
-                            FormatDisplayStat(ref desc2, "HeadProtection", "Head Armor:", dmgReduction, "0.0", "%");
-                            FormatDisplayStat(ref desc3, "Run", "Run:", movement, "0");
-                            FormatDisplayStat(ref desc4, "HRVDuration", "HRV:", hrv, "0.0");
-                            FormatDisplayStat(ref desc5, "HRVRecharge", "Recharge:", recharge, "0.0", "u/s");
-                            FormatDisplayStat(ref desc6, prop, desc, value, "0", "%");
-
+                            FormatDisplayStat(ref desc1, "Health", "❤:", health, "0");
+                            FormatDisplayStat(ref desc2, "HeadProtection", "🔰:", dmgReduction, "0.0", "%");
+                            FormatDisplayStat(ref desc3, "Run", "🏃‍:", movement, "0");
+                            FormatDisplayStat(ref desc4, "HRVDuration", "⌚:", hrv, "0.0");
+                            FormatDisplayStat(ref desc5, "HRVRecharge", "♻:", recharge, "0.0", "u/s");
+                            if (value != 0)
+                            {
+                                FormatDisplayStat(ref desc6, prop, desc, value, "0", "%");
+                            }
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
                             item.DisplayStat3 = desc3;
@@ -252,8 +254,8 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "HRVDuration", "HRV:", hrv, "0.0");
-                            FormatDisplayStat(ref desc2, "HRVRecharge", "Recharge:", recharge, "0.0", "u/s");
+                            FormatDisplayStat(ref desc1, "HRVDuration", "⌚:", hrv, "0.0");
+                            FormatDisplayStat(ref desc2, "HRVRecharge", "♻:", recharge, "0.0", "u/s");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -279,9 +281,9 @@ namespace BLREdit
                             var desc6 = new DisplayStatDiscriptor();
 
 
-                            FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
-                            FormatDisplayStat(ref desc2, "Run", "Run:", movement, "0");
-                            FormatDisplayStat(ref desc3, "Gear", "Gear:", gear, "0");
+                            FormatDisplayStat(ref desc1, "Health", "❤:", health, "0");
+                            FormatDisplayStat(ref desc2, "Run", "🏃:", movement, "0");
+                            FormatDisplayStat(ref desc3, "Gear", "🧯:", gear, "0");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -318,37 +320,37 @@ namespace BLREdit
                             {
                                 case "Incendiary Protection Gear":
                                     prop = "IncendiaryProtection";
-                                    desc = "Fire:";
+                                    desc = "🔥:";
                                     value = IncendiaryProtection;
                                     isPatch = true;
                                     break;
                                 case "Toxic Protection Gear":
                                     prop = "ToxicProtection";
-                                    desc = "Toxic:";
+                                    desc = "☣:";
                                     value = ToxicProtection;
                                     isPatch = true;
                                     break;
                                 case "Explosive Protection Gear":
                                     prop = "ExplosiveProtection";
-                                    desc = "Explo:";
+                                    desc = "💥:";
                                     value = ExplosiveProtection;
                                     isPatch = true;
                                     break;
                                 case "Electro Protection Gear":
                                     prop = "ElectroProtection";
-                                    desc = "Electro:";
+                                    desc = "⚡:";
                                     value = ElectroProtection;
                                     isPatch = true;
                                     break;
                                 case "Melee Protection Gear":
                                     prop = "MeleeProtection";
-                                    desc = "Melee:";
+                                    desc = "🤜:";
                                     value = MeleeProtection;
                                     isPatch = true;
                                     break;
                                 case "Infrared Protection Gear":
                                     prop = "InfraredProtection";
-                                    desc = "Infra:";
+                                    desc = "🌀:";
                                     value = InfraredProtection;
                                     isPatch = true;
                                     break;
@@ -378,7 +380,7 @@ namespace BLREdit
                             var desc6 = new DisplayStatDiscriptor();
 
                             //FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
-                            FormatDisplayStat(ref desc2, "Recoil", "Recoil:", recoil, "0", "%");
+                            FormatDisplayStat(ref desc2, "Recoil", "💨:", recoil, "0", "%");
                             //FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
 
                             item.DisplayStat1 = desc1;
