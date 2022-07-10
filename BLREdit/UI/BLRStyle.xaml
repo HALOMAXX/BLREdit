@@ -22,13 +22,13 @@
         <Setter Property="BorderThickness" Value="1,1,1,1"/>
     </Style>
 
-    <DataTemplate DataType="{x:Type system:String}">
+    <!--<DataTemplate DataType="{x:Type system:String}">
         <TextBlock Text="{Binding}">
             <TextBlock.Resources>
                 <Style TargetType="{x:Type TextBlock}"/>
             </TextBlock.Resources>
         </TextBlock>
-    </DataTemplate>
+    </DataTemplate>-->
 
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock">
         <Setter Property="Foreground" Value="White"/>

@@ -39,7 +39,8 @@ namespace BLREdit.UI
         /// </summary>
         public ListSortDirection SortDirection { get; set; } = ListSortDirection.Descending;
 
-        public string CurrentSortingPropertyName { get; set; } = "None";
+        public Type CurrentSortingEnumType { get; private set; }
+        public string CurrentSortingPropertyName { get; private set; } = "None";
 
         /// <summary>
         /// Prevents Profile Changes
@@ -1461,7 +1462,7 @@ namespace BLREdit.UI
 
                 if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
                 {
-                    CurrentSortingPropertyName = Enum.GetName(SortComboBox1.SelectedItem.GetType(), SortComboBox1.SelectedItem);
+                    CurrentSortingPropertyName = Enum.GetName(CurrentSortingEnumType, Enum.GetValues(CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
                     view.SortDescriptions.Add(new SortDescription(CurrentSortingPropertyName, SortDirection));
                 }
             }
@@ -1469,7 +1470,8 @@ namespace BLREdit.UI
 
         private void SetSortingType(Type SortingEnumType)
         {
-            SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = Enum.GetValues(SortingEnumType) });
+            CurrentSortingEnumType = SortingEnumType;
+            SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = API.ImportSystem.LanguageSet.GetWords(SortingEnumType) });
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)

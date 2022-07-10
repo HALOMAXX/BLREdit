@@ -49807,7 +49807,23 @@
         "Weight": 150,
         "ZoomSpreadMultiplier": 0.425
       },
-      "WikiStats": null
+      "WikiStats": {
+        "aimSpread": 0.80000001192092896,
+        "ammoMag": 30,
+        "ammoReserve": 120,
+        "damage": 45,
+        "firerate": 650,
+        "hipSpread": 2.2899999618530273,
+        "moveSpread": 4.1500000953674316,
+        "rangeClose": 40,
+        "rangeFar": 70,
+        "recoil": 26.899999618530273,
+        "reload": 2.4000000953674316,
+        "run": 7.6500000953674316,
+        "scopeInTime": 0,
+        "swaprate": 20,
+        "zoom": 1.2999999523162842
+      }
     },
     {
       "Category": "primary",
