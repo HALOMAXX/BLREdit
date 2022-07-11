@@ -62,7 +62,7 @@ namespace BLREdit
         public int Trophy { get { return trophy; } set { if (trophy != value) { trophy = value; isDirty = true; } } }
 
         [JsonIgnore]
-        private bool isDirty = false;
+        private bool isDirty = true;
         [JsonIgnore]
         public bool IsDirty { get { return (isDirty || primary.IsDirty || secondary.IsDirty); } set { isDirty = value; primary.IsDirty = value; secondary.IsDirty = value; } }
 

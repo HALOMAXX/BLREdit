@@ -14,7 +14,7 @@ namespace BLREdit
         public MagiCowsLoadout Loadout2 { get; set; } = (MagiCowsLoadout)MagiCowsLoadout.DefaultLoadout2.Clone();
         public MagiCowsLoadout Loadout3 { get; set; } = (MagiCowsLoadout)MagiCowsLoadout.DefaultLoadout3.Clone();
         [JsonIgnore]
-        bool isDirty = false;
+        bool isDirty = true;
         [JsonIgnore]
         public bool IsDirty { get { return (isDirty || Loadout1.IsDirty || Loadout2.IsDirty || Loadout3.IsDirty); } set { isDirty = value; Loadout1.IsDirty = value; Loadout2.IsDirty = value; Loadout3.IsDirty = value; } }
 

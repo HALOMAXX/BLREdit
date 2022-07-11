@@ -42,7 +42,7 @@ namespace BLREdit
         public int Camo { get { return camo; } set { if (camo != value) { camo = value; isDirty = true; } } }
 
         [JsonIgnore]
-        private bool isDirty = false;
+        private bool isDirty = true;
         [JsonIgnore]
         public bool IsDirty { get { return (isDirty); } set { isDirty = value; } }
 
