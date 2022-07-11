@@ -24,6 +24,7 @@ namespace BLREdit
 
             if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("BLREdit Starting!");
             VersionCheck();
+            RuntimeCheck();
             ImportSystem.Initialize();
         }
 
@@ -92,27 +93,18 @@ namespace BLREdit
             { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
         }
 
-        public static void RuntimeCheck(bool force)
+        public static void RuntimeCheck()
         {
             var x86 = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\{33d1fd90-4274-48a1-9bc1-97e33d9c2d6f}", "Version", "-1");
             var x86Update = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\Microsoft.VS.VC_RuntimeAdditional_x86,v11", "Version", "-1");
             if (x86 is string VC32Bit && x86Update is string VC32BitUpdate4)
             {
-                if ((VC32Bit == "11.0.61030.0" && VC32BitUpdate4 == "11.0.61030") && !force)
+                IsBaseRuntimeMissing = (VC32Bit != "11.0.61030.0");
+                IsUpdateRuntimeMissing = (VC32BitUpdate4 != "11.0.61030");
+
+                if (!IsBaseRuntimeMissing && !IsUpdateRuntimeMissing)
                 {
                     if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Both VC++ 2012 Runtimes are installed for BLRevive!");
-                    return;
-                }
-                else
-                {
-                    var info = new InfoPopups.DownloadRuntimes();
-                    if (VC32BitUpdate4 == "11.0.61030")
-                    {
-                        IsUpdateRuntimeMissing = false;
-                        info.Link2012Update4.IsEnabled = false;
-                        info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!";
-                    }
-                    info.ShowDialog();
                 }
             }
         }

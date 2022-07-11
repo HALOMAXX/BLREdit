@@ -782,7 +782,16 @@ namespace BLREdit.UI
             }
             if (BLREditSettings.Settings.DoRuntimeCheck || BLREditSettings.Settings.ForceRuntimeCheck)
             {
-                App.RuntimeCheck(BLREditSettings.Settings.ForceRuntimeCheck);
+                if(App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || BLREditSettings.Settings.ForceRuntimeCheck)
+                {
+                    var info = new InfoPopups.DownloadRuntimes();
+                    if (!App.IsUpdateRuntimeMissing)
+                    {
+                        info.Link2012Update4.IsEnabled = false;
+                        info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!";
+                    }
+                    info.ShowDialog();
+                }
             }
         }
 

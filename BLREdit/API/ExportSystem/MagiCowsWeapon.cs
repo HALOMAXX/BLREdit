@@ -1,18 +1,50 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace BLREdit
 {
     public class MagiCowsWeapon : ICloneable
     {
-        public string Receiver { get; set; } = "Assault Rifle";
-        public int Muzzle { get; set; } = 8;
-        public string Stock { get; set; } = "Silverwood Standard Stock";
-        public string Barrel { get; set; } = "Frontier Standard Barrel";
-        public int Magazine { get; set; } = 9;
-        public string Scope { get; set; } = "No Optic Mod";
-        public string Grip { get; set; } = "";
-        public int Tag { get; set; } = -1;
-        public int Camo { get; set; } = -1;
+        [JsonIgnore]
+        private string reciever = "Assault Rifle";
+        public string Receiver { get { return reciever; } set { if (reciever != value) { reciever = value; isDirty = true; } } } 
+
+        [JsonIgnore]
+        private int muzzle = 8;
+        public int Muzzle { get { return muzzle; } set { if (muzzle != value) { muzzle = value; isDirty = true; } } }
+
+        [JsonIgnore]
+        private string stock = "Silverwood Standard Stock";
+        public string Stock { get { return stock; } set { if (stock != value) { stock = value; isDirty = true; } } }
+
+        [JsonIgnore]
+        private string barrel = "Frontier Standard Barrel";
+        public string Barrel { get { return barrel; } set { if (barrel != value) { barrel = value; isDirty = true; } } }
+
+        [JsonIgnore]
+        private int magazine = 9;
+        public int Magazine { get { return magazine; } set { if (magazine != value) { magazine = value; isDirty = true; } } }
+
+        [JsonIgnore]
+        private string scope = "No Optic Mod";
+        public string Scope { get { return scope; } set { if (scope != value) { scope = value; isDirty = true; } } }
+
+        [JsonIgnore]
+        private string grip = "";
+        public string Grip { get { return grip; } set { if (grip != value) { grip = value; isDirty = true; } } }
+
+        [JsonIgnore]
+        private int tag = -1;
+        public int Tag { get { return tag; } set { if (tag != value) { tag = value; isDirty = true; } } }
+
+        [JsonIgnore]
+        private int camo = -1;
+        public int Camo { get { return camo; } set { if (camo != value) { camo = value; isDirty = true; } } }
+
+        [JsonIgnore]
+        private bool isDirty = false;
+        [JsonIgnore]
+        public bool IsDirty { get { return (isDirty); } set { isDirty = value; } }
 
         public override string ToString()
         {
@@ -140,7 +172,7 @@ namespace BLREdit
             new MagiCowsWeapon() { Barrel = NoBarrel,                               Grip = "", Magazine = 227,  Muzzle = 0,     Receiver = "Prestige Light Pistol",     Stock = NoStock,                                Scope="No Optic Mod", Tag=0, Camo=0 },                 // 24 Prestige Light Pistol
             new MagiCowsWeapon() { Barrel = NoBarrel,                               Grip = "", Magazine = 63,   Muzzle = 0,     Receiver = "Machine Pistol",            Stock = NoStock,                                Scope="No Optic Mod", Tag=0, Camo=0 },                 // 25 Machine Pistol
             new MagiCowsWeapon() { Barrel = NoBarrel,                               Grip = "", Magazine = 99,   Muzzle = 0,     Receiver = "Revolver",                  Stock = NoStock,                                Scope="No Optic Mod", Tag=0, Camo=0 },                 // 26 Revolver
-            new MagiCowsWeapon() { Barrel = "Titan FFB",                            Grip = "Briar BrGR1", Magazine = 29,   Muzzle = 0,     Receiver = "Shotgun",                   Stock = DefaultStock,                           Scope="No Optic Mod", Tag=0, Camo=0 },                 // 27 Shotgun
+            new MagiCowsWeapon() { Barrel = "Titan FFB",                            Grip = "Briar BrGR1", Magazine = 29,   Muzzle = 0,     Receiver = "Shotgun",        Stock = DefaultStock,                           Scope="No Optic Mod", Tag=0, Camo=0 },                 // 27 Shotgun
         };
 
         public const string NoMuzzle = "No Muzzle Mod";
