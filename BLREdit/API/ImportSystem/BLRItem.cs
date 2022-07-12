@@ -806,6 +806,8 @@ public class BLRWeaponStats
     public double InitialMagazines { get; set; } = 4;
     public double IdealDistance { get; set; } = 8000;
     public double JumpSpreadMultiplier { get; set; } = 4.0f;
+    public double SpreadCenterWeight { get; set; } = 0.2f;
+    public double SpreadCenter { get; set; } = 0.4f;
     public double MagSize { get; set; } = 30;
     public double MaxDistance { get; set; } = 16384;
     public double MaxRangeDamageMultiplier { get; set; } = 0.1f;
@@ -877,6 +879,8 @@ public class BLRWeaponStats
             ModificationRangeWeightMultiplier = iniStats.ModificationRangeWeightMultiplier;
             MovementSpreadConstant = iniStats.MovementSpreadConstant;
             MovementSpreadMultiplier = iniStats.MovementSpreadMultiplier;
+            SpreadCenterWeight = iniStats.SpreadCenterWeight;
+            SpreadCenter = iniStats.SpreadCenter;
             RecoilAccumulation = iniStats.RecoilAccumulation;
             RecoilAccumulationMultiplier = iniStats.RecoilAccumulationMultiplier;
             RecoilSize = iniStats.RecoilSize;

@@ -469,7 +469,33 @@ namespace BLREdit.UI
 
                 double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
 
-                return new double[] { aim, hip, move };
+                // Average spread over 15 shots to account for random center weight multiplier
+                double[] averageSpread = { 0, 0, 0 };
+                if (Reciever?.WeaponStats.MagSize > 0)
+                {
+                    double averageShotCount = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
+                    for (int shot = 1; shot <= averageShotCount; shot++)
+                    {
+                        if (shot > (averageShotCount - (averageShotCount * Reciever.WeaponStats.SpreadCenterWeight)))
+                        {
+                            averageSpread[0] += (aim * Reciever.WeaponStats.SpreadCenter);
+                            averageSpread[1] += (hip * Reciever.WeaponStats.SpreadCenter);
+                            averageSpread[2] += (move * Reciever.WeaponStats.SpreadCenter);
+                        }
+                        else
+                        {
+                            averageSpread[0] += aim;
+                            averageSpread[1] += hip;
+                            averageSpread[2] += move;
+                        }
+                    }
+                    averageSpread[0] /= averageShotCount;
+                    averageSpread[1] /= averageShotCount;
+                    averageSpread[2] /= averageShotCount;
+                }
+
+                return averageSpread;
+                //return new double[] { aim, hip, move };
             }
             else
             {
