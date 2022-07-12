@@ -17,7 +17,6 @@ public class IOResources
     public const string WEAPON_FILE = ASSET_DIR + JSON_DIR + "weapons.json";
     public const string ITEM_LIST_FILE = ASSET_DIR + JSON_DIR + "itemList.json";
     public const string SETTINGS_FILE = "settings.json";
-    public const string CHECKSUM_FILE = "cheksum.json";
 
     public static Encoding FILE_ENCODING { get; } = Encoding.UTF8;
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
@@ -36,17 +35,17 @@ public class IOResources
 
         bool writeFile;
         bool deleteFile;
-        if (obj is MagiCowsProfile prof)
+        if (obj is ExportSystemProfile prof)
         {
             if (prof.IsDirty)
             {
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(prof.PlayerName + "❕");
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(prof.Name + "❕");
                 deleteFile = File.Exists(filePath);
                 writeFile = true;
             }
             else
             {
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(prof.PlayerName + "✔");
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(prof.Name + "✔");
                 deleteFile = false;
                 writeFile = false;
             }
@@ -93,15 +92,18 @@ public class IOResources
         if (!File.Exists(filePath))
         { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("File:(" + filePath + ") was not found for Deserialization!"); return temp; }
 
+
+
         using (var file = File.OpenText(filePath))
         {
             temp = Deserialize<T>(file.ReadToEnd());
             file.Close();
         }
         
-        if (temp is MagiCowsProfile prof)
+        if (temp is ExportSystemProfile prof)
         {
             prof.IsDirty = false;
+            prof.OriginFileName = filePath;
         }
 
         return temp;

@@ -170,13 +170,13 @@ namespace BLREdit
         {
             foreach (ExportSystemProfile profile in Profiles)
             {
-                IOResources.SerializeFile(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + "\\" + profile.Name + ".json", profile);
+                IOResources.SerializeFile(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + profile.Name + ".json", profile);
             }
         }
 
         public static void RemoveActiveProfileFromDisk()
         {
-            File.Delete(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + ActiveProfile.ProfileName + ".json");
+            File.Delete(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + ActiveProfile.Name + ".json");
         }
 
         public static ExportSystemProfile AddProfile(string Name)

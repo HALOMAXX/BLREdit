@@ -5,7 +5,7 @@ namespace BLREdit.API.ImportSystem;
 
 public class LanguageSet
 {
-    private static LanguageSet currentLanguageSet = CreateEmojiSet();
+    private static LanguageSet currentLanguageSet = CreateDefaultSet();
     public string LanguageName { get; set; }
     public Dictionary<string, string> Words { get; set; }
 
@@ -21,7 +21,7 @@ public class LanguageSet
 
     public static List<string> GetWords(Type type)
     {
-        List<string> words = new List<string>();
+        List<string> words = new();
         if (type.IsEnum)
         {
             foreach (var num in Enum.GetValues(type)) 
@@ -82,7 +82,7 @@ public class LanguageSet
                 { LanguageKeys.AMMO, "🔋" },
                 { LanguageKeys.DAMAGE, "⚔" },
                 { LanguageKeys.RECOIL, "💨" },
-                { LanguageKeys.RELOAD, "-" },
+                { LanguageKeys.RELOAD, "🔄" },
                 { LanguageKeys.RANGE, "📏" },
                 { LanguageKeys.RUN, "🏃" },
                 { LanguageKeys.MOVE, "🚶‍🎯" },
