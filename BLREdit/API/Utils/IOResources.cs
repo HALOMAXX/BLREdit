@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -21,7 +22,6 @@ public class IOResources
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
 
-
     public static void CopyToBackup(string file)
     {
         FileInfo info = new(file);
@@ -33,15 +33,40 @@ public class IOResources
         //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
         if (string.IsNullOrEmpty(filePath)) { LoggingSystem.LogWarning("filePath was empty!"); return; }
 
-        //remove file before we write to it to prevent resedue data
-        if (File.Exists(filePath)) { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("file already exist's deleting it"); File.Delete(filePath); }
+        bool writeFile;
+        bool deleteFile;
+        if (obj is ExportSystemProfile prof)
+        {
+            if (prof.IsDirty)
+            {
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(prof.Name + "❕");
+                deleteFile = File.Exists(filePath);
+                writeFile = true;
+            }
+            else
+            {
+                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(prof.Name + "✔");
+                deleteFile = false;
+                writeFile = false;
+            }
+        }
         else
-        { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("file doesn't exist were good to create it"); }
+        {
+            deleteFile = File.Exists(filePath);
+            writeFile = true;
+        }
 
-        using var file = File.CreateText(filePath);
-        file.Write(Serialize(obj, compact));
-        file.Close();
-        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Serialize Succes!");
+        //remove file before we write to it to prevent resedue data
+        if (deleteFile)
+        { File.Delete(filePath); }
+
+        if (writeFile)
+        {
+            using var file = File.CreateText(filePath);
+            file.Write(Serialize(obj, compact));
+            file.Close();
+            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(typeof(T).Name + " serialize succes!");
+        }
     }
 
     public static string Serialize<T>(T obj, bool compact = false)
@@ -67,11 +92,20 @@ public class IOResources
         if (!File.Exists(filePath))
         { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("File:(" + filePath + ") was not found for Deserialization!"); return temp; }
 
+
+
         using (var file = File.OpenText(filePath))
         {
             temp = Deserialize<T>(file.ReadToEnd());
             file.Close();
         }
+        
+        if (temp is ExportSystemProfile prof)
+        {
+            prof.IsDirty = false;
+            prof.OriginFileName = filePath;
+        }
+
         return temp;
     }
 

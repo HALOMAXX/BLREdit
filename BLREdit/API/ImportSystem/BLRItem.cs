@@ -389,7 +389,7 @@ public class BLRItem
             {
                 case ImportSystem.SECONDARY_CATEGORY:
                 case ImportSystem.PRIMARY_CATEGORY:
-                    return WikiStats.ammoMag;
+                    return WikiStats?.ammoMag ?? 0;
                 case ImportSystem.MAGAZINES_CATEGORY:
                     return WeaponModifiers.ammo;
                 default:
@@ -653,6 +653,10 @@ public class BLRItem
                 case ImportSystem.UPPER_BODIES_CATEGORY:
                 case ImportSystem.LOWER_BODIES_CATEGORY:
                     return PawnModifiers?.MovementSpeed ?? 0;
+                case ImportSystem.BARRELS_CATEGORY:
+                case ImportSystem.STOCKS_CATEGORY:
+                case ImportSystem.MUZZELS_CATEGORY:
+                    return WeaponModifiers?.movementSpeed ?? 0;
                 default:
                     return 0;
             }
