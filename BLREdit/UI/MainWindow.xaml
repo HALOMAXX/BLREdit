@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:utils="clr-namespace:BLREdit"
         mc:Ignorable="d"
-        Title="BLREdit" Height="1007" Width="1920" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Black">
+        Title="BLREdit" Height="1032" Width="1920" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Red">
 
     <Window.Background>
         <ImageBrush ImageSource="Resources/Default_2016.png" />
@@ -133,17 +133,167 @@
 
                             </UniformGrid>
                         </Border>
-                        <Border BorderThickness="1,0,1,1" Style="{StaticResource DebugBorder}">
+                        <!--<Border BorderThickness="1,0,1,1" Style="{StaticResource DebugBorder}">
                             <TextBlock Text="{Binding DescriptorName}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
-                        </Border>
+                        </Border>-->
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
+        <ScrollViewer Name="AdvancedInfo" Margin="374,22,0,0" HorizontalScrollBarVisibility="Auto" Visibility="Visible">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid Width="Auto">
+                        <Label Content="Primary" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+
+                        <Label Content="Fragments Per Shell:" HorizontalAlignment="Left"        Margin="37,26,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99" HorizontalAlignment="Left"        Margin="154,26,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryFragmentsPerShellLabel"/>
+
+                        <Label Content="Zoom Firerate:" HorizontalAlignment="Left"              Margin="67,52,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="9999" HorizontalAlignment="Left"              Margin="154,52,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryZoomFirerateLabel"/>
+
+                        <Label Content="Spread Crouch Multiplier:" HorizontalAlignment="Left"   Margin="10,78,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"   Margin="154,78,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimarySpreadCrouchMultiplierLabel"/>
+
+                        <Label Content="Spread Jump Multiplier:" HorizontalAlignment="Left"     Margin="19,104,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"     Margin="154,104,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimarySpreadJumpMultiplierLabel"/>
+
+                        <Label Content="Spread Center Weight:" HorizontalAlignment="Left"       Margin="25,130,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"       Margin="154,130,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimarySpreadCenterWeightLabel"/>
+
+                        <Label Content="Spread Center:" HorizontalAlignment="Left"              Margin="66,156,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"              Margin="154,156,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimarySpreadCenterLabel"/>
+
+                        <Label Content="Recoil Vertical Ratio:" HorizontalAlignment="Left"      Margin="37,182,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"      Margin="154,182,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryRecoilVerticalRatioLabel"/>
+
+                        <Label Content="Recoil Recovery Time:" HorizontalAlignment="Left"       Margin="30,208,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"       Margin="154,208,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryRecoilRecoveryTimeLabel"/>
+
+                        <Label Content="Current Mods:" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,227,0,0"/>
+
+                        <Label Content="Damage:" HorizontalAlignment="Left"     Margin="10,249,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"     Margin="67,249,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryModDamageLabel"/>
+
+                        <Label Content="Accuracy:" HorizontalAlignment="Left"   Margin="116,249,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"   Margin="176,249,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryModAccuracyLabel"/>
+
+                        <Label Content="Range:" HorizontalAlignment="Left"      Margin="225,249,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"      Margin="271,249,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryModRangeLabel"/>
+
+                        <Label Content="Reload:" HorizontalAlignment="Left"     Margin="18,275,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"     Margin="67,275,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryModReloadLabel"/>
+
+                        <Label Content="Recoil:" HorizontalAlignment="Left"   Margin="132,275,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"   Margin="176,275,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryModRecoilLabel"/>
+
+                        <Label Content="Run:" HorizontalAlignment="Left"      Margin="237,275,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"      Margin="271,275,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="PrimaryModRunLabel"/>
+                    </Grid>
+                </Border>
+
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,350,0,0">
+                    <Grid Width="Auto">
+                        <Label Content="Secondary" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+
+                        <Label Content="Fragments Per Shell:" HorizontalAlignment="Left"        Margin="37,26,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99" HorizontalAlignment="Left"        Margin="154,26,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryFragmentsPerShellLabel"/>
+
+                        <Label Content="Zoom Firerate:" HorizontalAlignment="Left"              Margin="67,52,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="9999" HorizontalAlignment="Left"              Margin="154,52,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryZoomFirerateLabel"/>
+
+                        <Label Content="Spread Crouch Multiplier:" HorizontalAlignment="Left"   Margin="10,78,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"   Margin="154,78,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondarySpreadCrouchMultiplierLabel"/>
+
+                        <Label Content="Spread Jump Multiplier:" HorizontalAlignment="Left"     Margin="19,104,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"     Margin="154,104,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondarySpreadJumpMultiplierLabel"/>
+
+                        <Label Content="Spread Center Weight:" HorizontalAlignment="Left"       Margin="25,130,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"       Margin="154,130,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondarySpreadCenterWeightLabel"/>
+
+                        <Label Content="Spread Center:" HorizontalAlignment="Left"              Margin="66,156,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"              Margin="154,156,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondarySpreadCenterLabel"/>
+
+                        <Label Content="Recoil Vertical Ratio:" HorizontalAlignment="Left"      Margin="37,182,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"      Margin="154,182,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryRecoilVerticalRatioLabel"/>
+
+                        <Label Content="Recoil Recovery Time:" HorizontalAlignment="Left"       Margin="30,208,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="99.9" HorizontalAlignment="Left"       Margin="154,208,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryRecoilRecoveryTimeLabel"/>
+
+                        <Label Content="Current Mods:" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,227,0,0"/>
+
+                        <Label Content="Damage:" HorizontalAlignment="Left"     Margin="10,249,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"     Margin="67,249,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryModDamageLabel"/>
+
+                        <Label Content="Accuracy:" HorizontalAlignment="Left"   Margin="116,249,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"   Margin="176,249,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryModAccuracyLabel"/>
+
+                        <Label Content="Range:" HorizontalAlignment="Left"      Margin="225,249,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"      Margin="271,249,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryModRangeLabel"/>
+
+                        <Label Content="Reload:" HorizontalAlignment="Left"     Margin="18,275,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"     Margin="67,275,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryModReloadLabel"/>
+
+                        <Label Content="Recoil:" HorizontalAlignment="Left"   Margin="132,275,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"   Margin="176,275,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryModRecoilLabel"/>
+
+                        <Label Content="Run:" HorizontalAlignment="Left"      Margin="237,275,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"      Margin="271,275,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="SecondaryModRunLabel"/>
+                    </Grid>
+                </Border>
+
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,680,0,0">
+                    <Grid Width="Auto">
+                        <Label Content="Armor/Gear" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+
+                        <Label Content="Electro Protection:" HorizontalAlignment="Left"         Margin="28,26,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"                       Margin="132,26,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="ArmorGearElectroProtectionLabel"/>
+
+                        <Label Content="Explosive Protection:" HorizontalAlignment="Left"       Margin="16,52,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"              Margin="132,52,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="ArmorGearExplosiveProtectionLabel"/>
+
+                        <Label Content="Incendiary Protection:" HorizontalAlignment="Left"      Margin="10,78,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"   Margin="132,78,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="ArmorGearIncendiaryLabel"/>
+
+                        <Label Content="Infrared Protection:" HorizontalAlignment="Left"        Margin="23,104,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"     Margin="132,104,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="ArmorGearInfraredProtectionLabel"/>
+
+                        <Label Content="Melee Protection:" HorizontalAlignment="Left"           Margin="32,130,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"       Margin="132,130,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="ArmorGearMeleeProtectionLabel"/>
+
+                        <Label Content="Toxic Protection:" HorizontalAlignment="Left"           Margin="38,156,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"              Margin="132,156,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="ArmorGearToxicProtectionLabel"/>
+
+                        <Label Content="Current Mods:" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,182,0,0"/>
+
+                        <Label Content="Health:" HorizontalAlignment="Left"     Margin="10,204,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"     Margin="57,204,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="HealthGearModLabel"/>
+
+                        <Label Content="Head Armor:" HorizontalAlignment="Left"   Margin="101,204,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"   Margin="178,204,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="HeadArmorGearModLabel"/>
+
+                        <Label Content="Run:" HorizontalAlignment="Left"      Margin="226,204,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"      Margin="259,204,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="RunGearModLabel"/>
+
+                        <Label Content="HRV:" HorizontalAlignment="Left"     Margin="21,230,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"     Margin="57,230,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="HRVDurationGearModLabel"/>
+
+                        <Label Content="Recharge:" HorizontalAlignment="Left"   Margin="117,230,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"   Margin="178,230,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="HRVRechargeGearModLabel"/>
+
+                        <Label Content="Gear:" HorizontalAlignment="Left"      Margin="222,230,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                        <Label Content="-100%" HorizontalAlignment="Left"      Margin="259,230,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}" Name="GearSlotsGearModLabel"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+
         <ComboBox Name="SortComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="379,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
         <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="500,0,0,0" Click="ChangeSortingDirection"/>
 
+        <Button Name="ItemListButton" Content="Item List" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="667,0,0,0" Click="ItemListButton_Click"/>
+        <Button Name="AdvancedInfoButton" Content="Advanced Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="793,0,0,0" Click="ItemListButton_Click"/>
 
         <Grid HorizontalAlignment="Left" Width="374">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">

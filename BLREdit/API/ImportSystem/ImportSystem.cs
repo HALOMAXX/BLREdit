@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.API.ImportSystem;
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -75,12 +77,12 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "", "/");
-                            FormatDisplayStat(ref desc2, "Aim", "Aim:", spread[0], "0.00", "°");
-                            FormatDisplayStat(ref desc3, "Hip", "Hip:", spread[1], "0.00", "°");
-                            FormatDisplayStat(ref desc4, "Move", "Move:", spread[2], "0.00", "°");
-                            FormatDisplayStat(ref desc5, "Recoil", "Recoil:", recoil, "0.00", "°");
-                            FormatDisplayStat(ref desc6, "Range", "Range:", range, "0", "", "/", 2);
+                            FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "", "/");
+                            FormatDisplayStat(ref desc2, LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', spread[0], "0.00", "°");
+                            FormatDisplayStat(ref desc3, LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', spread[1], "0.00", "°");
+                            FormatDisplayStat(ref desc4, LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', spread[2], "0.00", "°");
+                            FormatDisplayStat(ref desc5, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0.00", "°");
+                            FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "", "/", 2);
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -108,11 +110,11 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
-                            FormatDisplayStat(ref desc2, "Accuracy", "Accuracy:", spread, "0", "%");
-                            FormatDisplayStat(ref desc3, "Recoil", "Recoil:", recoil, "0", "%");
-                            FormatDisplayStat(ref desc4, "Range", "Range:", range, "0", "%");
-                            FormatDisplayStat(ref desc5, "Run", "Run:", run, "0", "%");
+                            FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "%");
+                            FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, "0", "%");
+                            FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
+                            FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "%");
+                            FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, "0", "%");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -132,9 +134,9 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Zoom", "Zoom:", (1.3 + (item?.WikiStats?.zoom ?? 0)), "0.00", "x");
-                            FormatDisplayStat(ref desc2, "ScopeInTime", "Scope In:", (0.0 + (item?.WikiStats?.scopeInTime ?? 0)), "0.00", "s", "+");
-                            FormatDisplayStat(ref desc3, "Infrared", "Is Infrared:", item.UID == 45019 || item.UID == 45020 || item.UID == 45021, "");
+                            FormatDisplayStat(ref desc1, LanguageKeys.ZOOM, LanguageSet.GetWord(LanguageKeys.ZOOM) + ':', (1.3 + (item?.WikiStats?.zoom ?? 0)), "0.00", "x");
+                            FormatDisplayStat(ref desc2, LanguageKeys.SCOPE_IN_TIME, LanguageSet.GetWord(LanguageKeys.SCOPE_IN_TIME) + ':', (0.0 + (item?.WikiStats?.scopeInTime ?? 0)), "0.00", "s", "+");
+                            FormatDisplayStat(ref desc3, LanguageKeys.INFRARED, LanguageSet.GetWord(LanguageKeys.INFRARED) + ':', item.UID == 45019 || item.UID == 45020 || item.UID == 45021, "");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -162,19 +164,19 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Ammo", "Ammo:", ammo, "0");
-                            FormatDisplayStat(ref desc2, "Damage", "Damage:", damage, "0", "%");
-                            FormatDisplayStat(ref desc3, "Run", "Run:", movementSpeed, "0", "%");
-                            FormatDisplayStat(ref desc4, "Recoil", "Recoil:", recoil, "0", "%");
-                            FormatDisplayStat(ref desc5, "Range", "Range:", range, "0", "%");
+                            FormatDisplayStat(ref desc1, LanguageKeys.AMMO, LanguageSet.GetWord(LanguageKeys.AMMO) + ':', ammo, "0");
+                            FormatDisplayStat(ref desc2, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "%");
+                            FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movementSpeed, "0", "%");
+                            FormatDisplayStat(ref desc4, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
+                            FormatDisplayStat(ref desc5, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "%");
 
                             if (item.IsValidForItemIDS(40021, 40002))
                             {
-                                FormatDisplayStat(ref desc6, "Accuracy", "Accuracy:", accuracy, "0", "%");
+                                FormatDisplayStat(ref desc6, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', accuracy, "0", "%");
                             }
                             else
                             {
-                                FormatDisplayStat(ref desc6, "Reload", "Reload:", reload, "0.00", "s");
+                                FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0.00", "s");
                             }
 
                             item.DisplayStat1 = desc1;
@@ -201,18 +203,18 @@ namespace BLREdit
                             switch (item.Name)
                             {
                                 case "Prex Chem/Hazmat Respirator-TOX":
-                                    prop = "ToxicProtection";
-                                    desc = "Toxic:";
+                                    prop = LanguageKeys.TOXIC_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.TOXIC_PROTECTION) + ':';
                                     value = item.PawnModifiers.ToxicProtection;
                                     break;
                                 case "Prex Chem/Hazmat Respirator-INC":
-                                    prop = "IncendiaryProtection";
-                                    desc = "Fire:";
+                                    prop = LanguageKeys.INCENDIARY_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.INCENDIARY_PROTECTION) + ':';
                                     value = item.PawnModifiers.IncendiaryProtection;
                                     break;
                                 case "Prex Chem/Hazmat Respirator-XPL":
-                                    prop = "ExplosiveProtection";
-                                    desc = "Explo:";
+                                    prop = LanguageKeys.EXPLOSIVE_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.EXPLOSIVE_PROTECTION) + ':';
                                     value = item.PawnModifiers.ExplosiveProtection;
                                     break;
                             }
@@ -224,13 +226,15 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
-                            FormatDisplayStat(ref desc2, "HeadProtection", "Head Armor:", dmgReduction, "0.0", "%");
-                            FormatDisplayStat(ref desc3, "Run", "Run:", movement, "0");
-                            FormatDisplayStat(ref desc4, "HRVDuration", "HRV:", hrv, "0.0");
-                            FormatDisplayStat(ref desc5, "HRVRecharge", "Recharge:", recharge, "0.0", "u/s");
-                            FormatDisplayStat(ref desc6, prop, desc, value, "0", "%");
-
+                            FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, "0");
+                            FormatDisplayStat(ref desc2, LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, "0.0", "%");
+                            FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, "0");
+                            FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, "0.0");
+                            FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, "0.0", "u/s");
+                            if (value != 0)
+                            {
+                                FormatDisplayStat(ref desc6, prop, desc, value, "0", "%");
+                            }
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
                             item.DisplayStat3 = desc3;
@@ -252,8 +256,8 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, "HRVDuration", "HRV:", hrv, "0.0");
-                            FormatDisplayStat(ref desc2, "HRVRecharge", "Recharge:", recharge, "0.0", "u/s");
+                            FormatDisplayStat(ref desc1, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, "0.0");
+                            FormatDisplayStat(ref desc2, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, "0.0", "u/s");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -279,9 +283,9 @@ namespace BLREdit
                             var desc6 = new DisplayStatDiscriptor();
 
 
-                            FormatDisplayStat(ref desc1, "Health", "Health:", health, "0");
-                            FormatDisplayStat(ref desc2, "Run", "Run:", movement, "0");
-                            FormatDisplayStat(ref desc3, "Gear", "Gear:", gear, "0");
+                            FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, "0");
+                            FormatDisplayStat(ref desc2, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, "0");
+                            FormatDisplayStat(ref desc3, LanguageKeys.GEAR_SLOTS, LanguageSet.GetWord(LanguageKeys.GEAR_SLOTS) + ':', gear, "0");
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
@@ -317,38 +321,38 @@ namespace BLREdit
                             switch (item.Name)
                             {
                                 case "Incendiary Protection Gear":
-                                    prop = "IncendiaryProtection";
-                                    desc = "Fire:";
+                                    prop = LanguageKeys.INCENDIARY_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.INCENDIARY_PROTECTION) + ':';
                                     value = IncendiaryProtection;
                                     isPatch = true;
                                     break;
                                 case "Toxic Protection Gear":
-                                    prop = "ToxicProtection";
-                                    desc = "Toxic:";
+                                    prop = LanguageKeys.TOXIC_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.TOXIC_PROTECTION) + ':';
                                     value = ToxicProtection;
                                     isPatch = true;
                                     break;
                                 case "Explosive Protection Gear":
-                                    prop = "ExplosiveProtection";
-                                    desc = "Explo:";
+                                    prop = LanguageKeys.EXPLOSIVE_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.EXPLOSIVE_PROTECTION) + ':';
                                     value = ExplosiveProtection;
                                     isPatch = true;
                                     break;
                                 case "Electro Protection Gear":
-                                    prop = "ElectroProtection";
-                                    desc = "Electro:";
+                                    prop = LanguageKeys.ELECTRO_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.ELECTRO_PROTECTION) + ':';
                                     value = ElectroProtection;
                                     isPatch = true;
                                     break;
                                 case "Melee Protection Gear":
-                                    prop = "MeleeProtection";
-                                    desc = "Melee:";
+                                    prop = LanguageKeys.MELEE_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.MELEE_PROTECTION) + ':';
                                     value = MeleeProtection;
                                     isPatch = true;
                                     break;
                                 case "Infrared Protection Gear":
-                                    prop = "InfraredProtection";
-                                    desc = "Infra:";
+                                    prop = LanguageKeys.INFRARED_PROTECTION;
+                                    desc = LanguageSet.GetWord(LanguageKeys.INFRARED_PROTECTION) + ':';
                                     value = InfraredProtection;
                                     isPatch = true;
                                     break;
@@ -378,7 +382,7 @@ namespace BLREdit
                             var desc6 = new DisplayStatDiscriptor();
 
                             //FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
-                            FormatDisplayStat(ref desc2, "Recoil", "Recoil:", recoil, "0", "%");
+                            FormatDisplayStat(ref desc2, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
                             //FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
 
                             item.DisplayStat1 = desc1;

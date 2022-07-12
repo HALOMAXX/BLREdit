@@ -39,7 +39,8 @@ namespace BLREdit.UI
         /// </summary>
         public ListSortDirection SortDirection { get; set; } = ListSortDirection.Descending;
 
-        public string CurrentSortingPropertyName { get; set; } = "None";
+        public Type CurrentSortingEnumType { get; private set; }
+        public string CurrentSortingPropertyName { get; private set; } = "None";
 
         /// <summary>
         /// Prevents Profile Changes
@@ -59,6 +60,8 @@ namespace BLREdit.UI
             IsPlayerNameChanging = true;
 
             InitializeComponent();
+
+            ItemListButton_Click(ItemListButton, new RoutedEventArgs());
 
             ItemList.Items.Filter += new Predicate<object>(o =>
             {
@@ -153,6 +156,13 @@ namespace BLREdit.UI
 
         public static void AccumulateStatsOfWeaponParts(BLRItem[] items, ref double ROF, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
         {
+            double DamagePercent = 0;
+            double AccuracyPercent = 0;
+            double RangePercent = 0;
+            double ReloadPercent = 0;
+            double RecoilPercent = 0;
+            double RunPercent = 0;
+
             foreach (BLRItem item in items)
             {
                 ROF += item?.WeaponStats?.ROF ?? 0;
@@ -161,6 +171,35 @@ namespace BLREdit.UI
                 Zoom += item?.WikiStats?.zoom ?? 0;
                 ScopeIn += item?.WikiStats?.scopeInTime ?? 0;
                 Run += item?.WikiStats?.run ?? 0;
+
+                DamagePercent += item?.WeaponModifiers?.damage ?? 0;
+                AccuracyPercent += item?.WeaponModifiers?.accuracy ?? 0;
+                RangePercent += item?.WeaponModifiers?.range ?? 0;
+                ReloadPercent += item?.WeaponModifiers?.reloadSpeed ?? 0;
+                RecoilPercent += item?.WeaponModifiers?.recoil ?? 0;
+                RunPercent += item?.WeaponModifiers?.movementSpeed ?? 0;
+            }
+
+
+
+            if (items[0].Category == ImportSystem.PRIMARY_CATEGORY)
+            {
+                Self.PrimaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
+                Self.PrimaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
+                Self.PrimaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
+                Self.PrimaryModReloadLabel.Content = ReloadPercent.ToString("0") + '%';
+                Self.PrimaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
+                Self.PrimaryModRunLabel.Content = RunPercent.ToString("0") + '%';
+            }
+
+            if (items[0].Category == ImportSystem.SECONDARY_CATEGORY)
+            {
+                Self.SecondaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
+                Self.SecondaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
+                Self.SecondaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
+                Self.SecondaryModReloadLabel.Content = ReloadPercent.ToString("0") + '%';
+                Self.SecondaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
+                Self.SecondaryModRunLabel.Content = RunPercent.ToString("0") + '%';
             }
         }
 
@@ -781,7 +820,16 @@ namespace BLREdit.UI
             }
             if (BLREditSettings.Settings.DoRuntimeCheck || BLREditSettings.Settings.ForceRuntimeCheck)
             {
-                App.RuntimeCheck(BLREditSettings.Settings.ForceRuntimeCheck);
+                if(App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || BLREditSettings.Settings.ForceRuntimeCheck)
+                {
+                    var info = new InfoPopups.DownloadRuntimes();
+                    if (!App.IsUpdateRuntimeMissing)
+                    {
+                        info.Link2012Update4.IsEnabled = false;
+                        info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!";
+                    }
+                    info.ShowDialog();
+                }
             }
         }
 
@@ -1015,8 +1063,61 @@ namespace BLREdit.UI
             UpdateHRV(helmet, tactical);
             UpdateHRVRecharge(helmet, tactical);
             UpdateGearSlots(upperBody, lowerBody);
+            UpdateProtections();
         }
 
+
+        public void UpdateProtections()
+        {
+            var helmet = (HelmetImage.DataContext as BLRItem);
+            var gear1 = (GearImage1.DataContext as BLRItem);
+            var gear2 = (GearImage2.DataContext as BLRItem);
+            var gear3 = (GearImage3.DataContext as BLRItem);
+            var gear4 = (GearImage4.DataContext as BLRItem);
+
+            double electroProt = helmet?.PawnModifiers?.ElectroProtection ?? 0;
+            electroProt += gear1?.PawnModifiers?.ElectroProtection ?? 0;
+            electroProt += gear2?.PawnModifiers?.ElectroProtection ?? 0;
+            electroProt += gear3?.PawnModifiers?.ElectroProtection ?? 0;
+            electroProt += gear4?.PawnModifiers?.ElectroProtection ?? 0;
+
+            double exploProt = helmet?.PawnModifiers?.ExplosiveProtection ?? 0;
+            exploProt += gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
+            exploProt += gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
+            exploProt += gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
+            exploProt += gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
+
+            double incendiaryProt = helmet?.PawnModifiers?.IncendiaryProtection ?? 0;
+            incendiaryProt += gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
+            incendiaryProt += gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
+            incendiaryProt += gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
+            incendiaryProt += gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
+
+            double infraProt = helmet?.PawnModifiers?.InfraredProtection ?? 0;
+            infraProt += gear1?.PawnModifiers?.InfraredProtection ?? 0;
+            infraProt += gear2?.PawnModifiers?.InfraredProtection ?? 0;
+            infraProt += gear3?.PawnModifiers?.InfraredProtection ?? 0;
+            infraProt += gear4?.PawnModifiers?.InfraredProtection ?? 0;
+
+            double meleeProt = helmet?.PawnModifiers?.MeleeProtection ?? 0;
+            meleeProt += gear1?.PawnModifiers?.MeleeProtection ?? 0;
+            meleeProt += gear2?.PawnModifiers?.MeleeProtection ?? 0;
+            meleeProt += gear3?.PawnModifiers?.MeleeProtection ?? 0;
+            meleeProt += gear4?.PawnModifiers?.MeleeProtection ?? 0;
+
+            double toxicProt = helmet?.PawnModifiers?.ToxicProtection ?? 0;
+            toxicProt += gear1?.PawnModifiers?.ToxicProtection ?? 0;
+            toxicProt += gear2?.PawnModifiers?.ToxicProtection ?? 0;
+            toxicProt += gear3?.PawnModifiers?.ToxicProtection ?? 0;
+            toxicProt += gear4?.PawnModifiers?.ToxicProtection ?? 0;
+
+            ArmorGearElectroProtectionLabel.Content = electroProt.ToString("0") + '%';
+            ArmorGearExplosiveProtectionLabel.Content = exploProt.ToString("0") + '%';
+            ArmorGearIncendiaryLabel.Content = incendiaryProt.ToString("0") + '%';
+            ArmorGearInfraredProtectionLabel.Content = infraProt.ToString("0") + '%';
+            ArmorGearMeleeProtectionLabel.Content = meleeProt.ToString("0") + '%';
+            ArmorGearToxicProtectionLabel.Content = toxicProt.ToString("0") + '%';
+        }
 
 
         public void UpdateHealth(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
@@ -1025,6 +1126,8 @@ namespace BLREdit.UI
             allHealth += (upperBody?.PawnModifiers.Health ?? 0);
             allHealth += (lowerBody?.PawnModifiers.Health ?? 0);
             allHealth = Math.Min(Math.Max((int)allHealth, -100), 100);
+
+            HealthGearModLabel.Content = allHealth.ToString("0") + '%';
 
             double health_alpha = Math.Abs(allHealth) / 100;
 
@@ -1046,6 +1149,8 @@ namespace BLREdit.UI
         {
             double currentHSProt = (helmet?.PawnModifiers.HelmetDamageReduction ?? 0);
             ArmorHeadProtectionLabel.Content = currentHSProt.ToString("0.0") + '%';
+            HeadArmorGearModLabel.Content = currentHSProt.ToString("0.0") + '%';
+
         }
         public void UpdateRun(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
         {
@@ -1059,6 +1164,8 @@ namespace BLREdit.UI
             allRun += (upperBody?.PawnModifiers.MovementSpeed ?? 0);
             allRun += (lowerBody?.PawnModifiers.MovementSpeed ?? 0);
             allRun = Math.Min(Math.Max(allRun, -100), 100);
+
+            Self.RunGearModLabel.Content = allRun.ToString("0") + '%';
 
             double run_alpha = Math.Abs(allRun) / 100;
 
@@ -1078,18 +1185,24 @@ namespace BLREdit.UI
         }
         public void UpdateHRV(BLRItem helmet, BLRItem tactical)
         {
-            double currentHRV = Math.Min(Math.Max((helmet?.PawnModifiers.HRVDuration ?? 0) + (tactical?.PawnModifiers.HRVDuration ?? 0), 40.0), 100.0);
+            double allHRV = (helmet?.PawnModifiers.HRVDuration ?? 0) + (tactical?.PawnModifiers.HRVDuration ?? 0);
+            double currentHRV = Math.Min(Math.Max(allHRV, 40.0), 100.0);
             ArmorHRVLabel.Content = currentHRV.ToString("0.0") + 'u';
+            HRVDurationGearModLabel.Content = currentHRV.ToString("0.0") + 'u';
+
         }
         public void UpdateHRVRecharge(BLRItem helmet, BLRItem tactical)
         {
             double currentHRVRecharge = Math.Min(Math.Max((helmet?.PawnModifiers.HRVRechargeRate ?? 0) + (tactical?.PawnModifiers.HRVRechargeRate ?? 0), 5.0), 10.0);
             ArmorHRVRechargeLabel.Content = currentHRVRecharge.ToString("0.0") + "u/s";
+            HRVRechargeGearModLabel.Content = currentHRVRecharge.ToString("0.0") + "u/s";
         }
         public void UpdateGearSlots(BLRItem upperBody, BLRItem lowerBody)
         { 
             double currentGearSlots = (upperBody?.PawnModifiers?.GearSlots ?? 0) + (lowerBody?.PawnModifiers?.GearSlots ?? 0);
-            
+
+            GearSlotsGearModLabel.Content = currentGearSlots.ToString("0");
+
             GearImage1.IsEnabled = false;
             GearImage2.IsEnabled = false;
             GearImage3.IsEnabled = false;
@@ -1461,7 +1574,7 @@ namespace BLREdit.UI
 
                 if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
                 {
-                    CurrentSortingPropertyName = Enum.GetName(SortComboBox1.SelectedItem.GetType(), SortComboBox1.SelectedItem);
+                    CurrentSortingPropertyName = Enum.GetName(CurrentSortingEnumType, Enum.GetValues(CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
                     view.SortDescriptions.Add(new SortDescription(CurrentSortingPropertyName, SortDirection));
                 }
             }
@@ -1469,7 +1582,8 @@ namespace BLREdit.UI
 
         private void SetSortingType(Type SortingEnumType)
         {
-            SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = Enum.GetValues(SortingEnumType) });
+            CurrentSortingEnumType = SortingEnumType;
+            SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = API.ImportSystem.LanguageSet.GetWords(SortingEnumType) });
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -1928,6 +2042,38 @@ namespace BLREdit.UI
             weapon.IsHealthOkAndRepair();
 
             return weapon;
+        }
+
+        private void ItemListButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            { 
+                ItemListButton.IsEnabled = true;
+                AdvancedInfoButton.IsEnabled = true;
+                button.IsEnabled = false;
+
+                if (sender == ItemListButton)
+                {
+                    ItemList.Visibility = Visibility.Visible;
+                    ItemList.IsEnabled = true;
+                }
+                else
+                {
+                    ItemList.Visibility = Visibility.Collapsed;
+                    ItemList.IsEnabled = false;
+                }
+
+                if (sender == AdvancedInfoButton)
+                {
+                    AdvancedInfo.Visibility = Visibility.Visible;
+                    AdvancedInfo.IsEnabled = true;
+                }
+                else
+                {
+                    AdvancedInfo.Visibility = Visibility.Collapsed;
+                    AdvancedInfo.IsEnabled = false;
+                }
+            }
         }
     }
 }
