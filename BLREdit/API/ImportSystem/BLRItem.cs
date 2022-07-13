@@ -804,8 +804,11 @@ public class BLRWeaponStats
     public double weaponWeight { get; set; }
 
     public double ApplyTime { get; set; } = 0;
+    public double RecoveryTime { get; set; } = 0;
     public double BaseSpread { get; set; } = 0.04f;
     public double Burst { get; set; } = 0;
+    public double FragmentsPerShell { get; set; } = 1;
+    public double ZoomRateOfFire { get; set; } = 0;
     public double CrouchSpreadMultiplier { get; set; } = 0.5f;
     public double InitialMagazines { get; set; } = 4;
     public double IdealDistance { get; set; } = 8000;
@@ -860,7 +863,9 @@ public class BLRWeaponStats
         if (iniStats != null)
         {
             ApplyTime = iniStats.ApplyTime;
+            RecoveryTime = iniStats.RecoveryTime;
             Burst = iniStats.Burst;
+            FragmentsPerShell = iniStats.FragmentsPerShell;
             BaseSpread = iniStats.BaseSpread;
             CrouchSpreadMultiplier = iniStats.CrouchSpreadMultiplier;
             InitialMagazines = iniStats.InitialMagazines;

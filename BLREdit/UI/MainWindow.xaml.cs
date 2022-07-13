@@ -115,6 +115,21 @@ namespace BLREdit.UI
                 PrimaryRunLabel,
                 PrimaryDescriptorLabel
                 );
+            UpdateAdvancedStats(
+                PrimaryRecieverImage.DataContext as BLRItem,
+                PrimaryBarrelImage.DataContext as BLRItem,
+                PrimaryMagazineImage.DataContext as BLRItem,
+                PrimaryMuzzleImage.DataContext as BLRItem,
+                PrimaryStockImage.DataContext as BLRItem,
+                PrimaryRecoilVerticalRatioLabel,
+                PrimarySpreadCenterWeightLabel,
+                PrimarySpreadCenterLabel,
+                PrimaryFragmentsPerShellLabel,
+                PrimaryZoomFirerateLabel,
+                PrimarySpreadCrouchMultiplierLabel,
+                PrimarySpreadJumpMultiplierLabel,
+                PrimaryRecoilRecoveryTimeLabel
+                );
         }
 
         private void UpdateSecondaryStats()
@@ -141,7 +156,22 @@ namespace BLREdit.UI
                 SecondaryRangeLabel,
                 SecondaryRunLabel,
                 SecondaryDescriptorLabel
-        );
+                );
+            UpdateAdvancedStats(
+                SecondaryRecieverImage.DataContext as BLRItem,
+                SecondaryBarrelImage.DataContext as BLRItem,
+                SecondaryMagazineImage.DataContext as BLRItem,
+                SecondaryMuzzleImage.DataContext as BLRItem,
+                SecondaryStockImage.DataContext as BLRItem,
+                SecondaryRecoilVerticalRatioLabel,
+                SecondarySpreadCenterWeightLabel,
+                SecondarySpreadCenterLabel,
+                SecondaryFragmentsPerShellLabel,
+                SecondaryZoomFirerateLabel,
+                SecondarySpreadCrouchMultiplierLabel,
+                SecondarySpreadJumpMultiplierLabel,
+                SecondaryRecoilRecoveryTimeLabel
+                );
         }
 
         private static double Lerp(double start, double target, double time)
@@ -179,8 +209,6 @@ namespace BLREdit.UI
                 RecoilPercent += item?.WeaponModifiers?.recoil ?? 0;
                 RunPercent += item?.WeaponModifiers?.movementSpeed ?? 0;
             }
-
-
 
             if (items[0].Category == ImportSystem.PRIMARY_CATEGORY)
             {
@@ -309,6 +337,8 @@ namespace BLREdit.UI
                 CockRateMultiplier = CalculateCockRate(Reciever, allRecoil);
                 ReloadRateMultiplier = CalculateReloadRate(Reciever, allRecoil, allReloadSpeed);
 
+                CalculateZoomROF(Reciever, allRecoil);
+
                 List<BLRItem> mods = new();
                 if (Barrel != null)
                     mods.Add(Barrel);
@@ -345,6 +375,28 @@ namespace BLREdit.UI
             RunLabel.Content = MoveSpeed.ToString("0.00");
             Descriptor.Content = barrelVSmag + " " + stockVSmuzzle + " " + weaponDescriptor;
             if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch);
+        }
+
+        private static void UpdateAdvancedStats(BLRItem Reciever, BLRItem Barrel, BLRItem Magazine, BLRItem Muzzle, BLRItem Stock, Label VerticalRatio, Label SpreadWeight, Label SpreadCenter, Label Fragments, Label ZoomROF, Label SpreadCrouch, Label SpreadJump, Label RecoilRecover)
+        {
+            if (CheckCalculationReady(Reciever))
+            {
+                double allRecoil = Barrel?.WeaponModifiers?.recoil ?? 0;
+                allRecoil += Muzzle?.WeaponModifiers?.recoil ?? 0;
+                allRecoil += Stock?.WeaponModifiers?.recoil ?? 0;
+                allRecoil += Magazine?.WeaponModifiers?.recoil ?? 0;
+                allRecoil /= 100.0f;
+                allRecoil = Math.Min(Math.Max(allRecoil, -1.0f), 1.0f);
+
+                VerticalRatio.Content = CalculateRecoilRatio(Reciever).ToString("0.00");
+                SpreadWeight.Content = Reciever.WeaponStats.SpreadCenterWeight.ToString("0.00");
+                SpreadCenter.Content = Reciever.WeaponStats.SpreadCenter.ToString("0.00");
+                Fragments.Content = Reciever.WeaponStats.FragmentsPerShell.ToString("0");
+                ZoomROF.Content = CalculateZoomROF(Reciever, allRecoil).ToString("0");
+                SpreadCrouch.Content = Reciever.WeaponStats.CrouchSpreadMultiplier.ToString("0.0");
+                SpreadJump.Content = Reciever.WeaponStats.JumpSpreadMultiplier.ToString("0.0");
+                RecoilRecover.Content = Reciever.WeaponStats.RecoveryTime.ToString("0.00");
+            }
         }
 
         private static double TotalPoints(IEnumerable<BLRItem> items)
@@ -739,6 +791,49 @@ namespace BLREdit.UI
             }
         }
 
+        // The ratio of vertical recoil
+        public static double CalculateRecoilRatio(BLRItem Reciever)
+        {
+            if (Reciever != null && Reciever.WeaponStats != null)
+            {
+                double vertical = Reciever.WeaponStats.RecoilVector.Y * Reciever.WeaponStats.RecoilVectorMultiplier.Y * 0.3535;
+                double horizontal = Reciever.WeaponStats.RecoilVector.X * Reciever.WeaponStats.RecoilVectorMultiplier.X * 0.5;
+                if ((vertical + horizontal) != 0) {
+                    return vertical / (vertical + horizontal);
+                }
+                return 1;
+            }
+            return 1;
+        }
+
+        // Recoil recovery time
+        public static double CalculateRecoilRecovery(BLRItem Reciever)
+        {
+            if (Reciever != null && Reciever.WeaponStats != null)
+            {
+                if (Reciever.WeaponStats.RecoveryTime > 0) {
+                    return Reciever.WeaponStats.RecoveryTime;
+                }
+                return 60 / Reciever.WeaponStats.ROF;
+            }
+            return 0;
+        }
+
+        // Rate of fire when zoomed
+        public static double CalculateZoomROF(BLRItem Reciever, double allRecoil)
+        {
+            if (Reciever != null && Reciever.WeaponStats != null)
+            {
+                double cockrate = CalculateCockRate(Reciever, allRecoil);
+                if (Reciever.WeaponStats.ZoomRateOfFire > 0)
+                {
+                    return Reciever.WeaponStats.ZoomRateOfFire * cockrate;
+                }
+                return Reciever.WeaponStats.ROF * cockrate;
+            }
+            return 0;
+        }
+
         public static double CalculateCockRate(BLRItem Reciever, double allRecoil)
         {
             double alpha = Math.Abs(allRecoil);
@@ -1106,36 +1201,42 @@ namespace BLREdit.UI
             electroProt += gear2?.PawnModifiers?.ElectroProtection ?? 0;
             electroProt += gear3?.PawnModifiers?.ElectroProtection ?? 0;
             electroProt += gear4?.PawnModifiers?.ElectroProtection ?? 0;
+            electroProt = Math.Min(electroProt, 100.0);
 
             double exploProt = helmet?.PawnModifiers?.ExplosiveProtection ?? 0;
             exploProt += gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
             exploProt += gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
             exploProt += gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
             exploProt += gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
+            exploProt = Math.Min(exploProt, 100.0);
 
             double incendiaryProt = helmet?.PawnModifiers?.IncendiaryProtection ?? 0;
             incendiaryProt += gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
             incendiaryProt += gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
             incendiaryProt += gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
             incendiaryProt += gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
+            incendiaryProt = Math.Min(incendiaryProt, 100.0);
 
             double infraProt = helmet?.PawnModifiers?.InfraredProtection ?? 0;
             infraProt += gear1?.PawnModifiers?.InfraredProtection ?? 0;
             infraProt += gear2?.PawnModifiers?.InfraredProtection ?? 0;
             infraProt += gear3?.PawnModifiers?.InfraredProtection ?? 0;
             infraProt += gear4?.PawnModifiers?.InfraredProtection ?? 0;
+            infraProt = Math.Min(infraProt, 100.0);
 
             double meleeProt = helmet?.PawnModifiers?.MeleeProtection ?? 0;
             meleeProt += gear1?.PawnModifiers?.MeleeProtection ?? 0;
             meleeProt += gear2?.PawnModifiers?.MeleeProtection ?? 0;
             meleeProt += gear3?.PawnModifiers?.MeleeProtection ?? 0;
             meleeProt += gear4?.PawnModifiers?.MeleeProtection ?? 0;
+            meleeProt = Math.Min(meleeProt, 100.0);
 
             double toxicProt = helmet?.PawnModifiers?.ToxicProtection ?? 0;
             toxicProt += gear1?.PawnModifiers?.ToxicProtection ?? 0;
             toxicProt += gear2?.PawnModifiers?.ToxicProtection ?? 0;
             toxicProt += gear3?.PawnModifiers?.ToxicProtection ?? 0;
             toxicProt += gear4?.PawnModifiers?.ToxicProtection ?? 0;
+            toxicProt = Math.Min(toxicProt, 100.0);
 
             ArmorGearElectroProtectionLabel.Content = electroProt.ToString("0") + '%';
             ArmorGearExplosiveProtectionLabel.Content = exploProt.ToString("0") + '%';

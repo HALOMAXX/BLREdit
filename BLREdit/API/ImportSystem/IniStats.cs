@@ -8,9 +8,12 @@ namespace BLREdit
         public string ItemName { get; set; } = "Nope";
         public double ROF { get; set; } = 0;
         public double Burst { get; set; } = 0;
+        public double FragmentsPerShell { get; set; } = 1;
+        public double ZoomRateOfFire { get; set; } = 0;
         public double InitialMagazines { get; set; } = 4;
         public double MagSize { get; set; } = 30;
         public double ApplyTime { get; set; } = 0;
+        public double RecoveryTime { get; set; } = 0;
         public double RecoilSize { get; set; } = 0;
         public Vector3 RecoilVector { get; set; } = Vector3.Zero;
         public Vector3 RecoilVectorMultiplier { get; set; } = Vector3.Zero;
