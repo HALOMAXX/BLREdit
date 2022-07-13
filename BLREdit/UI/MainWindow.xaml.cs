@@ -399,13 +399,17 @@ namespace BLREdit.UI
                 SpreadJump.Content = Reciever.WeaponStats.JumpSpreadMultiplier.ToString("0.00");
                 RecoilRecover.Content = CalculateRecoilRecovery(Reciever).ToString("0.00");
 
+                // Keeping the basic reload time value commented out in case i change my mind again, or at least until I fully figure out the percentages
                 if (Magazine != null)
                 {
-                    Reload.Content = Magazine.WikiStats.reload.ToString("0.00") + "s";
+                    //Reload.Content = Magazine.WikiStats.reload.ToString("0.00") + "s";
+                    double allReload = Magazine?.WeaponModifiers?.reloadSpeed ?? 0;
+                    Reload.Content = allReload.ToString("0") + "%";
                 }
                 else
                 {
-                    Reload.Content = "0.00" + "s";
+                    //Reload.Content = "0.00" + "s";
+                    Reload.Content = "0" + "%";
                 }
             }
         }

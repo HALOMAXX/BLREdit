@@ -24334,7 +24334,7 @@
         "rateOfFire": 0,
         "rating": 2,
         "recoil": 0,
-        "reloadSpeed": 0,
+        "reloadSpeed": 100,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
