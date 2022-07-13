@@ -128,7 +128,8 @@ namespace BLREdit.UI
                 PrimaryZoomFirerateLabel,
                 PrimarySpreadCrouchMultiplierLabel,
                 PrimarySpreadJumpMultiplierLabel,
-                PrimaryRecoilRecoveryTimeLabel
+                PrimaryRecoilRecoveryTimeLabel,
+                PrimaryModReloadLabel
                 );
         }
 
@@ -170,7 +171,8 @@ namespace BLREdit.UI
                 SecondaryZoomFirerateLabel,
                 SecondarySpreadCrouchMultiplierLabel,
                 SecondarySpreadJumpMultiplierLabel,
-                SecondaryRecoilRecoveryTimeLabel
+                SecondaryRecoilRecoveryTimeLabel,
+                SecondaryModReloadLabel
                 );
         }
 
@@ -215,7 +217,7 @@ namespace BLREdit.UI
                 Self.PrimaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
                 Self.PrimaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
                 Self.PrimaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
-                Self.PrimaryModReloadLabel.Content = ReloadPercent.ToString("0") + '%';
+                //Self.PrimaryModReloadLabel.Content = ReloadPercent.ToString("0") + '%';
                 Self.PrimaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
                 Self.PrimaryModRunLabel.Content = RunPercent.ToString("0") + '%';
             }
@@ -225,7 +227,7 @@ namespace BLREdit.UI
                 Self.SecondaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
                 Self.SecondaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
                 Self.SecondaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
-                Self.SecondaryModReloadLabel.Content = ReloadPercent.ToString("0") + '%';
+                //Self.SecondaryModReloadLabel.Content = ReloadPercent.ToString("0") + '%';
                 Self.SecondaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
                 Self.SecondaryModRunLabel.Content = RunPercent.ToString("0") + '%';
             }
@@ -377,7 +379,7 @@ namespace BLREdit.UI
             if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch);
         }
 
-        private static void UpdateAdvancedStats(BLRItem Reciever, BLRItem Barrel, BLRItem Magazine, BLRItem Muzzle, BLRItem Stock, Label VerticalRatio, Label SpreadWeight, Label SpreadCenter, Label Fragments, Label ZoomROF, Label SpreadCrouch, Label SpreadJump, Label RecoilRecover)
+        private static void UpdateAdvancedStats(BLRItem Reciever, BLRItem Barrel, BLRItem Magazine, BLRItem Muzzle, BLRItem Stock, Label VerticalRatio, Label SpreadWeight, Label SpreadCenter, Label Fragments, Label ZoomROF, Label SpreadCrouch, Label SpreadJump, Label RecoilRecover, Label Reload)
         {
             if (CheckCalculationReady(Reciever))
             {
@@ -393,9 +395,18 @@ namespace BLREdit.UI
                 SpreadCenter.Content = Reciever.WeaponStats.SpreadCenter.ToString("0.00");
                 Fragments.Content = Reciever.WeaponStats.FragmentsPerShell.ToString("0");
                 ZoomROF.Content = CalculateZoomROF(Reciever, allRecoil).ToString("0");
-                SpreadCrouch.Content = Reciever.WeaponStats.CrouchSpreadMultiplier.ToString("0.0");
-                SpreadJump.Content = Reciever.WeaponStats.JumpSpreadMultiplier.ToString("0.0");
+                SpreadCrouch.Content = Reciever.WeaponStats.CrouchSpreadMultiplier.ToString("0.00");
+                SpreadJump.Content = Reciever.WeaponStats.JumpSpreadMultiplier.ToString("0.00");
                 RecoilRecover.Content = CalculateRecoilRecovery(Reciever).ToString("0.00");
+
+                if (Magazine != null)
+                {
+                    Reload.Content = Magazine.WikiStats.reload.ToString("0.00") + "s";
+                }
+                else
+                {
+                    Reload.Content = "0.00" + "s";
+                }
             }
         }
 
