@@ -47949,7 +47949,7 @@
         "ModificationRangeWeightMultiplier": {
           "X": 2,
           "Y": 0.5,
-          "Z": 1
+          "Z": 1.3
         },
         "MovementSpreadConstant": 0,
         "MovementSpreadMultiplier": 6,

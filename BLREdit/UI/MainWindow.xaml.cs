@@ -211,13 +211,17 @@ namespace BLREdit.UI
                 RecoilPercent += item?.WeaponModifiers?.recoil ?? 0;
                 RunPercent += item?.WeaponModifiers?.movementSpeed ?? 0;
             }
+            DamagePercent = Math.Min(Math.Max(DamagePercent, -100), 100);
+            AccuracyPercent = Math.Min(Math.Max(AccuracyPercent, -100), 100);
+            RangePercent = Math.Min(Math.Max(RangePercent, -100), 100);
+            RecoilPercent = Math.Min(Math.Max(RecoilPercent, -100), 100);
+            RunPercent = Math.Min(Math.Max(RunPercent, -100), 100);
 
             if (items[0].Category == ImportSystem.PRIMARY_CATEGORY)
             {
                 Self.PrimaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
                 Self.PrimaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
                 Self.PrimaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
-                //Self.PrimaryModReloadLabel.Content = ReloadPercent.ToString("0") + '%';
                 Self.PrimaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
                 Self.PrimaryModRunLabel.Content = RunPercent.ToString("0") + '%';
             }
@@ -227,7 +231,6 @@ namespace BLREdit.UI
                 Self.SecondaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
                 Self.SecondaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
                 Self.SecondaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
-                //Self.SecondaryModReloadLabel.Content = ReloadPercent.ToString("0") + '%';
                 Self.SecondaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
                 Self.SecondaryModRunLabel.Content = RunPercent.ToString("0") + '%';
             }
@@ -261,7 +264,14 @@ namespace BLREdit.UI
 
                 AccumulateStatsOfWeaponParts(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
 
-                AmmoMag = Reciever.WeaponStats.MagSize + Magazine?.WeaponModifiers?.ammo ?? 0; 
+                if (Reciever.UID == 40019)
+                {
+                    AmmoMag = 1; // cheat because for some reason it isn't reading AMR's currently, might be due to lack of mag but am not sure
+                }
+                else
+                {
+                    AmmoMag = Reciever.WeaponStats.MagSize + Magazine?.WeaponModifiers?.ammo ?? 0;
+                }
                 AmmoRes = AmmoMag * Reciever.WeaponStats.InitialMagazines;
 
                 double allRecoil = Barrel?.WeaponModifiers?.recoil ?? 0;
@@ -399,17 +409,18 @@ namespace BLREdit.UI
                 SpreadJump.Content = Reciever.WeaponStats.JumpSpreadMultiplier.ToString("0.00");
                 RecoilRecover.Content = CalculateRecoilRecovery(Reciever).ToString("0.00");
 
-                // Keeping the basic reload time value commented out in case i change my mind again, or at least until I fully figure out the percentages
+                // Reverted back to seconds for now because I found that elemental mags had reload percentages which means it likely doesn't do anything, in addition to LMG's quick mag previously having no percentage
+                // I'll probably go back to percentages if I end up manually curating/fixing all of the mag's reloadSpeed values
                 if (Magazine != null)
                 {
-                    //Reload.Content = Magazine.WikiStats.reload.ToString("0.00") + "s";
-                    double allReload = Magazine?.WeaponModifiers?.reloadSpeed ?? 0;
-                    Reload.Content = allReload.ToString("0") + "%";
+                    Reload.Content = Magazine.WikiStats.reload.ToString("0.00") + "s";
+                    //double allReload = Magazine?.WeaponModifiers?.reloadSpeed ?? 0;
+                    //Reload.Content = allReload.ToString("0") + "%";
                 }
                 else
                 {
-                    //Reload.Content = "0.00" + "s";
-                    Reload.Content = "0" + "%";
+                    Reload.Content = "0.00" + "s";
+                    //Reload.Content = "0" + "%";
                 }
             }
         }
@@ -577,9 +588,18 @@ namespace BLREdit.UI
 
                 // Average spread over 15 shots to account for random center weight multiplier
                 double[] averageSpread = { 0, 0, 0 };
-                if (Reciever?.WeaponStats.MagSize > 0)
+                double magsize = 0;
+                if (Reciever.UID == 40019)
                 {
-                    double averageShotCount = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
+                    magsize = 15.0f; // AMR cheat again
+                }
+                else
+                {
+                    magsize = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
+                }
+                if (magsize > 0)
+                {
+                    double averageShotCount = magsize;
                     for (int shot = 1; shot <= averageShotCount; shot++)
                     {
                         if (shot > (averageShotCount - (averageShotCount * Reciever.WeaponStats.SpreadCenterWeight)))
