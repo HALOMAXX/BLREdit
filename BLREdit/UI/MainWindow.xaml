@@ -297,7 +297,7 @@
 
         <Grid HorizontalAlignment="Left" Width="374">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                <Grid>
+                <Grid Name="ProfileGrid">
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
                     </Border>

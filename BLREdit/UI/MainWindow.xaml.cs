@@ -33,7 +33,7 @@ namespace BLREdit.UI
         /// Contains the current active loadout
         /// </summary>
         public static MagiCowsLoadout ActiveLoadout { get; set; } = null;
-
+        public static BLRLoadoutSetup Loadout { get; } = new();
         /// <summary>
         /// Contains the Sorting Direction for the ItemList
         /// </summary>
@@ -60,6 +60,7 @@ namespace BLREdit.UI
             IsPlayerNameChanging = true;
 
             InitializeComponent();
+            //CreateTags();
 
             ItemListButton_Click(ItemListButton, new RoutedEventArgs());
 
@@ -309,7 +310,7 @@ namespace BLREdit.UI
                 RangeMax = ranges[2];
 
                 double allMovementSpread = Barrel?.WeaponModifiers?.movementSpeed ?? 0;  // For specifically my move spread change, hence no mag/scope added.
-                allMovementSpread += Muzzle?.WeaponModifiers?.movementSpeed ?? 0;
+                allMovementSpread += Muzzle?.WeaponModifiers?.movementSpeed ?? 0; //muzzle is always zero
                 allMovementSpread += Stock?.WeaponModifiers?.movementSpeed ?? 0;
                 allMovementSpread /= 100.0f;
                 allMovementSpread = Math.Min(Math.Max(allMovementSpread, -1.0f), 1.0f);
@@ -327,7 +328,7 @@ namespace BLREdit.UI
                 allAccuracy += Scope?.WeaponModifiers?.accuracy ?? 0;
                 allAccuracy += Magazine?.WeaponModifiers?.accuracy ?? 0;
                 allAccuracy /= 100.0f;
-                allAccuracy = Math.Min(Math.Max(allAccuracy,-1.0f),1.0f);
+                allAccuracy = Math.Min(Math.Max(allAccuracy, -1.0f), 1.0f);
                 var spreads = CalculateSpread(Reciever, allAccuracy, allMovementSpread);
                 Aim = spreads[0];
                 Hip = spreads[1];
@@ -480,7 +481,7 @@ namespace BLREdit.UI
                 return item3.DescriptorName;
             }
 
-            if ( (item1.WeaponModifiers.rating >= item2.WeaponModifiers.rating) && (item1.WeaponModifiers.rating >= item3.WeaponModifiers.rating) )
+            if ((item1.WeaponModifiers.rating >= item2.WeaponModifiers.rating) && (item1.WeaponModifiers.rating >= item3.WeaponModifiers.rating))
             {
                 if (item1.WeaponModifiers.rating > 0)
                 {
@@ -488,11 +489,11 @@ namespace BLREdit.UI
                 }
                 return "Basic";
             }
-            else if ( (item2.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item2.WeaponModifiers.rating >= item3.WeaponModifiers.rating) )
+            else if ((item2.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item2.WeaponModifiers.rating >= item3.WeaponModifiers.rating))
             {
                 return item2.DescriptorName;
             }
-            else if ( (item3.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item3.WeaponModifiers.rating >= item2.WeaponModifiers.rating) )
+            else if ((item3.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item3.WeaponModifiers.rating >= item2.WeaponModifiers.rating))
             {
                 return item3.DescriptorName;
             }
@@ -664,7 +665,8 @@ namespace BLREdit.UI
                 FrontierSniperMod = Lerp(WikiScopeIn, 0.235, TTTA_alpha);
             }
 
-            if ((Reciever.WeaponStats?.TightAimTime ?? 0) > 0) {
+            if ((Reciever.WeaponStats?.TightAimTime ?? 0) > 0)
+            {
                 return Reciever.WeaponStats.TightAimTime;
             }
             else
@@ -833,7 +835,8 @@ namespace BLREdit.UI
             {
                 double vertical = Reciever.WeaponStats.RecoilVector.Y * Reciever.WeaponStats.RecoilVectorMultiplier.Y * 0.3535;
                 double horizontal = Reciever.WeaponStats.RecoilVector.X * Reciever.WeaponStats.RecoilVectorMultiplier.X * 0.5;
-                if ((vertical + horizontal) != 0) {
+                if ((vertical + horizontal) != 0)
+                {
                     return vertical / (vertical + horizontal);
                 }
                 return 1;
@@ -846,7 +849,8 @@ namespace BLREdit.UI
         {
             if (Reciever != null && Reciever.WeaponStats != null)
             {
-                if (Reciever.WeaponStats.RecoveryTime > 0) {
+                if (Reciever.WeaponStats.RecoveryTime > 0)
+                {
                     return Reciever.WeaponStats.RecoveryTime;
                 }
                 return 60 / Reciever.WeaponStats.ROF;
@@ -909,7 +913,7 @@ namespace BLREdit.UI
                     WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.Y, rate_alpha);
                 }
             }
-            
+
             if (Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z == 1)
             {
                 rate_alpha = Math.Abs(allRecoil);
@@ -991,51 +995,19 @@ namespace BLREdit.UI
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("MouseDown in ListView/StackPanel");
-            var pt = e.GetPosition(ItemList);
-            var result = VisualTreeHelper.HitTest(ItemList, pt);
-            if (result.VisualHit is Image image)
+            if (sender is FrameworkElement element)
             {
-                if (image.DataContext is BLRItem item)
+                if(element.DataContext is BLRItem item)
                 {
                     if (e.ClickCount >= 2)
                     {
+                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Double Clicking:" + item.Name);
                         SetItemToImage(LastSelectedImage, item);
-                        if (item.Category == ImportSystem.SECONDARY_CATEGORY)
-                        {
-                            SetItemToImage(SecondaryScopeImage, (SecondaryScopeImage.DataContext as BLRItem), false);
-                        }
                     }
                     else
                     {
-                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Double Clicking:" + item.Name);
-                        DragDrop.DoDragDrop(image, item, DragDropEffects.Copy);
-                    }
-                }
-            }
-            else if (result.VisualHit is StackPanel panel)
-            {
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(panel.DataContext.ToString());
-                foreach (var child in panel.Children)
-                {
-                    if (child is Image imageChild)
-                    {
-                        if (imageChild.DataContext is BLRItem item)
-                        {
-                            if (e.ClickCount >= 2)
-                            {
-                                SetItemToImage(LastSelectedImage, item);
-                                if (item.Category == ImportSystem.SECONDARY_CATEGORY)
-                                {
-                                    SetItemToImage(SecondaryScopeImage, (SecondaryScopeImage.DataContext as BLRItem), false);
-                                }
-                            }
-                            else
-                            {
-                                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Double Clicking2:" + item.Name);
-                                DragDrop.DoDragDrop(imageChild, item, DragDropEffects.Copy);
-                            }
-                        }
+                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Dragging:" + item.Name);
+                        DragDrop.DoDragDrop(element, item, DragDropEffects.Copy);
                     }
                 }
             }
@@ -1072,10 +1044,252 @@ namespace BLREdit.UI
             
         }
 
+        //private void CreateTags()
+        //{
+        //    foreach (var UIElement in ProfileGrid.Children)
+        //    {
+        //        if (UIElement is Border border)
+        //        {
+        //            if (border.Child is Image image)
+        //            {
+        //                List<string> tags = new();
+        //                if (image.Name.Contains("PrimaryReciever"))
+        //                {
+        //                    tags.Add(ImportSystem.PRIMARY_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("SecondaryReciever"))
+        //                {
+        //                    tags.Add(ImportSystem.SECONDARY_CATEGORY);
+        //                }
+
+        //                if (image.Name.Contains("Muzzle"))
+        //                {
+        //                    tags.Add(ImportSystem.MUZZELS_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Barrel"))
+        //                {
+        //                    tags.Add(ImportSystem.BARRELS_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Magazine"))
+        //                {
+        //                    tags.Add(ImportSystem.MAGAZINES_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
+        //                {
+        //                    tags.Add(ImportSystem.SCOPES_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Stock"))
+        //                {
+        //                    tags.Add(ImportSystem.STOCKS_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Tag"))
+        //                {
+        //                    tags.Add(ImportSystem.HANGERS_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("CamoWeapon"))
+        //                {
+        //                    tags.Add(ImportSystem.CAMOS_WEAPONS_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Grip"))
+        //                {
+        //                    tags.Add(ImportSystem.GRIPS_CATEGORY);
+        //                }
+
+        //                if (image.Name.Contains("CamoBody"))
+        //                {
+        //                    tags.Add(ImportSystem.CAMOS_BODIES_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("LowerBody"))
+        //                {
+        //                    tags.Add(ImportSystem.LOWER_BODIES_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("UpperBody"))
+        //                {
+        //                    tags.Add(ImportSystem.UPPER_BODIES_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Helmet"))
+        //                {
+        //                    tags.Add(ImportSystem.HELMETS_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Avatar"))
+        //                {
+        //                    tags.Add(ImportSystem.AVATARS_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Trophy"))
+        //                {
+        //                    tags.Add(ImportSystem.BADGES_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Tactical"))
+        //                {
+        //                    tags.Add(ImportSystem.TACTICAL_CATEGORY);
+        //                }
+        //                if (image.Name.Contains("Gear"))
+        //                {
+        //                    tags.Add(ImportSystem.ATTACHMENTS_CATEGORY);
+        //                }
+
+        //                image.Tag = tags;
+        //            }
+        //        }
+        //    }
+        //}
+
         public void SetItemToImage(Image image, BLRItem item, bool updateLoadout = true)
         {
+            switch (image.Name)
+            {
+                case nameof(PrimaryRecieverImage):
+                    Loadout.Primary.Reciever = item;
+                    image.DataContext = Loadout.Primary.Reciever;
+                    break;
+                case nameof(SecondaryRecieverImage):
+                    Loadout.Secondary.Reciever = item;
+                    image.DataContext = Loadout.Secondary.Reciever;
+                    break;
+
+                case nameof(PrimaryBarrelImage):
+                    Loadout.Primary.Barrel = item;
+                    image.DataContext = Loadout.Primary.Barrel;
+                    break;
+                case nameof(SecondaryBarrelImage):
+                    Loadout.Secondary.Barrel = item;
+                    image.DataContext = Loadout.Secondary.Barrel;
+                    break;
+
+                case nameof(PrimaryMuzzleImage):
+                    Loadout.Primary.Muzzle = item;
+                    image.DataContext = Loadout.Primary.Muzzle;
+                    break;
+                case nameof(SecondaryMuzzleImage):
+                    Loadout.Secondary.Muzzle = item;
+                    image.DataContext = Loadout.Secondary.Muzzle;
+                    break;
+
+                case nameof(PrimaryMagazineImage):
+                    Loadout.Primary.Magazine = item;
+                    image.DataContext = Loadout.Primary.Magazine;
+                    break;
+                case nameof(SecondaryMagazineImage):
+                    Loadout.Secondary.Magazine = item;
+                    image.DataContext = Loadout.Secondary.Magazine;
+                    break;
+
+                case nameof(PrimaryStockImage):
+                    Loadout.Primary.Stock = item;
+                    image.DataContext = Loadout.Primary.Stock;
+                    break;
+                case nameof(SecondaryStockImage):
+                    Loadout.Secondary.Stock = item;
+                    image.DataContext = Loadout.Secondary.Stock;
+                    break;
+
+                case nameof(PrimaryScopeImage):
+                    Loadout.Primary.Scope = item;
+                    PrimaryScopeImage.DataContext = Loadout.Primary.Scope;
+                    PrimaryCrosshairImage.DataContext = Loadout.Primary.Scope;
+                    break;
+                case nameof(SecondaryScopeImage):
+                    Loadout.Secondary.Scope = item;
+                    SecondaryScopeImage.DataContext = Loadout.Secondary.Scope;
+                    SecondaryCrosshairImage.DataContext = Loadout.Secondary.Scope;
+                    break;
+
+                case nameof(PrimaryTagImage):
+                    Loadout.Primary.Tag = item;
+                    image.DataContext = Loadout.Primary.Tag;
+                    break;
+                case nameof(SecondaryTagImage):
+                    Loadout.Secondary.Tag = item;
+                    image.DataContext = Loadout.Secondary.Tag;
+                    break;
+
+                case nameof(PrimaryCamoWeaponImage):
+                    Loadout.Primary.Camo = item;
+                    image.DataContext = Loadout.Primary.Camo;
+                    break;
+                case nameof(SecondaryCamoWeaponImage):
+                    Loadout.Secondary.Camo = item;
+                    image.DataContext = Loadout.Secondary.Camo;
+                    break;
+
+
+                case nameof(HelmetImage):
+                    Loadout.Helmet = item;
+                    image.DataContext = Loadout.Helmet;
+                    break;
+                case nameof(UpperBodyImage):
+                    Loadout.UpperBody = item;
+                    image.DataContext = Loadout.UpperBody;
+                    break;
+                case nameof(LowerBodyImage):
+                    Loadout.LowerBody = item;
+                    image.DataContext = Loadout.LowerBody;
+                    break;
+                case nameof(TacticalImage):
+                    Loadout.Tactical = item;
+                    image.DataContext = Loadout.Tactical;
+                    break;
+                case nameof(GearImage1):
+                    Loadout.Gear1 = item;
+                    image.DataContext = Loadout.Gear1;
+                    break;
+                case nameof(GearImage2):
+                    Loadout.Gear2 = item;
+                    image.DataContext = Loadout.Gear2;
+                    break;
+                case nameof(GearImage3):
+                    Loadout.Gear3 = item;
+                    image.DataContext = Loadout.Gear3;
+                    break;
+                case nameof(GearImage4):
+                    Loadout.Gear4 = item;
+                    image.DataContext = Loadout.Gear4;
+                    break;
+                case nameof(PlayerCamoBodyImage):
+                    Loadout.Camo = item;
+                    image.DataContext = Loadout.Camo;
+                    break;
+                case nameof(AvatarImage):
+                    Loadout.Avatar = item;
+                    image.DataContext = Loadout.Avatar;
+                    break;
+            }
+            return;
+
+
             if (item == null)
             { image.DataContext = null; return; }
+            if (image.Tag is List<string> tags)
+            {
+                if (tags.Contains(item.Category))
+                {
+                    if (item.Category == ImportSystem.SCOPES_CATEGORY)
+                    {
+                        if (image.Name.Contains("Primary"))
+                        {
+                            PrimaryCrosshairImage.DataContext = item;
+                        }
+                        else
+                        {
+                            SecondaryCrosshairImage.DataContext = item;
+                        }
+                    }
+                    image.DataContext = item;
+
+
+
+                    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo('[' + item.Category + "]: " + item.Name + "{" + ImportSystem.GetIDOfItem(item) + "} set!");
+                    if (updateLoadout)
+                    {
+                        UpdatePrimaryStats();
+                        UpdateSecondaryStats();
+                        UpdateActiveLoadout();
+                    }
+                    return;
+                }
+            }
+            return;
+
             if (image.Name.Contains("Primary"))
             {
                 if (image.Name.Contains("Scope") || image.Name.Contains("Crosshair"))
@@ -1101,7 +1315,7 @@ namespace BLREdit.UI
                 }
 
                 if (image.Name.Contains("Grip") && item.Category == ImportSystem.GRIPS_CATEGORY && item.IsValidFor(SecondaryRecieverImage.DataContext as BLRItem))
-                { image.DataContext = item; if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Grip:" + item.Name + " with ID:" + ImportSystem.GetIDOfItem(item) + " Set!"); }
+                { image.DataContext = item;  }
             }
             if (image.Name.Contains("Reciever"))
             {
@@ -1111,7 +1325,6 @@ namespace BLREdit.UI
                     if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(item.Name + " Set!");
                     CheckPrimaryModsForValidity(item);
                     FillEmptyPrimaryMods(item);
-                    UpdatePrimaryStats();
                     if (updateLoadout)
                         UpdateActiveLoadout();
                     return;
@@ -1122,7 +1335,6 @@ namespace BLREdit.UI
                     if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(item.Name + " Set!");
                     CheckSecondaryModsForValidity(item);
                     FillEmptySecondaryMods(item);
-                    UpdateSecondaryStats();
                     if (updateLoadout)
                         UpdateActiveLoadout();
                     return;
@@ -1197,11 +1409,11 @@ namespace BLREdit.UI
             UpdateArmorStats();
             if (image.Name.Contains("Primary"))
             {
-                UpdatePrimaryStats();
+                //UpdatePrimaryStats();
             }
             else
             {
-                UpdateSecondaryStats();
+                //UpdateSecondaryStats();
             }
             if(updateLoadout)
                 UpdateActiveLoadout();
@@ -1867,7 +2079,7 @@ namespace BLREdit.UI
             SetItemToImage(PrimaryCrosshairImage, primary.GetScope(), updateLoadout);
             SetItemToImage(PrimaryTagImage, primary.GetTag(), updateLoadout);
             SetItemToImage(PrimaryCamoWeaponImage, primary.GetCamo(), updateLoadout);
-            UpdatePrimaryStats();
+            //UpdatePrimaryStats();
         }
 
         public void SetSecondary(MagiCowsWeapon secondary, bool updateLoadout = true)
@@ -1882,7 +2094,7 @@ namespace BLREdit.UI
             SetItemToImage(SecondaryTagImage, secondary.GetTag(), updateLoadout);
             SetItemToImage(SecondaryCamoWeaponImage, secondary.GetCamo(), updateLoadout);
             SetItemToImage(SecondaryGripImage, secondary.GetGrip(), updateLoadout);
-            UpdateSecondaryStats();
+            //UpdateSecondaryStats();
         }
         
         private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
