@@ -395,7 +395,7 @@ namespace BLREdit.UI
                 ZoomROF.Content = CalculateZoomROF(Reciever, allRecoil).ToString("0");
                 SpreadCrouch.Content = Reciever.WeaponStats.CrouchSpreadMultiplier.ToString("0.0");
                 SpreadJump.Content = Reciever.WeaponStats.JumpSpreadMultiplier.ToString("0.0");
-                RecoilRecover.Content = Reciever.WeaponStats.RecoveryTime.ToString("0.00");
+                RecoilRecover.Content = CalculateRecoilRecovery(Reciever).ToString("0.00");
             }
         }
 
