@@ -12,25 +12,29 @@ public class BLRLoadoutSetup
     public BLRWeaponSetup Primary { get; } = new BLRWeaponSetup(true);
     public BLRWeaponSetup Secondary { get; } = new BLRWeaponSetup(false);
     private BLRItem helmet = null;
-    public BLRItem Helmet { get { return helmet; } set { if (helmet != value) { helmet = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Helmet { get { return helmet; } set { if (helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { helmet = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem upperBody = null;
-    public BLRItem UpperBody { get { return upperBody; } set { if (upperBody != value) { upperBody = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem UpperBody { get { return upperBody; } set { if (upperBody != value && value.Category == ImportSystem.UPPER_BODIES_CATEGORY) { upperBody = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem lowerBody = null;
-    public BLRItem LowerBody { get { return lowerBody; } set { if (lowerBody != value) { lowerBody = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem LowerBody { get { return lowerBody; } set { if (lowerBody != value && value.Category == ImportSystem.LOWER_BODIES_CATEGORY) { lowerBody = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem tactical = null;
-    public BLRItem Tactical { get { return tactical; } set { if (tactical != value) { tactical = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Tactical { get { return tactical; } set { if (tactical != value && value.Category == ImportSystem.TACTICAL_CATEGORY) { tactical = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear1 = null;
-    public BLRItem Gear1 { get { return gear1; } set { if (gear1 != value && GearSlots > 0) { gear1 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear1 { get { return gear1; } set { if (gear1 != value && GearSlots > 0 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear1 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear2 = null;
-    public BLRItem Gear2 { get { return gear2; } set { if (gear2 != value && GearSlots > 1) { gear2 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear2 { get { return gear2; } set { if (gear2 != value && GearSlots > 1 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear2 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear3 = null;
-    public BLRItem Gear3 { get { return gear3; } set { if (gear3 != value && GearSlots > 2) { gear3 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear3 { get { return gear3; } set { if (gear3 != value && GearSlots > 2 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear3 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear4 = null;
-    public BLRItem Gear4 { get { return gear4; } set { if (gear4 != value && GearSlots > 3) { gear4 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
-    public BLRItem Camo { get; set; }
-    public BLRItem Avatar { get; set; }
-    public BLRItem Trophy { get; set; }
+    public BLRItem Gear4 { get { return gear4; } set { if (gear4 != value && GearSlots > 3 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear4 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    private BLRItem camo = null;
+    public BLRItem Camo { get { return camo; } set { if (camo != value && value.Category == ImportSystem.CAMOS_BODIES_CATEGORY) { camo = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    private BLRItem avatar = null;
+    public BLRItem Avatar { get { return avatar; } set { if (avatar != value && value.Category == ImportSystem.AVATARS_CATEGORY) { avatar = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    private BLRItem trophy = null;
+    public BLRItem Trophy { get { return trophy; } set { if (trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { trophy = value; /* TODO: Calculate Armor/Gear Stats */ } } }
 
+    #region Properties
     public double GearSlots
     {
         get
@@ -295,6 +299,7 @@ public class BLRLoadoutSetup
             return Math.Min(RawToxicProtection, 100.0);
         }
     }
+#endregion Properties
 
 }
 
@@ -302,27 +307,50 @@ public class BLRWeaponSetup
 {
     private bool IsPrimary = false;
     private BLRItem reciever = null;
-    public BLRItem Reciever { get { return reciever; } set { if (reciever != value) { reciever = value; RemoveIncompatibleMods(); CalculateStats(); } } }
+    public BLRItem Reciever { get { return reciever; } set { if (value != null && reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); CalculateStats(); } } }
     private BLRItem barrel = null;
-    public BLRItem Barrel { get { return barrel; } set { if (barrel != value) { barrel = value; AllowStock(); CalculateStats(); } } }
+    public BLRItem Barrel { get { return barrel; } set { if (value != null && barrel != value && value.IsValidFor(reciever) && value.Category == ImportSystem.BARRELS_CATEGORY) { barrel = value; AllowStock(); CalculateStats(); } } }
     private BLRItem magazine = null;
-    public BLRItem Magazine { get { return magazine; } set { if (magazine != value) { magazine = value; CalculateStats(); } } }
+    public BLRItem Magazine { get { return magazine; } set { if (value != null && magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { magazine = value; CalculateStats(); } } }
     private BLRItem muzzle = null;
-    public BLRItem Muzzle { get { return muzzle; } set { if (muzzle != value) { muzzle = value; CalculateStats(); } } }
+    public BLRItem Muzzle { get { return muzzle; } set { if (value != null && muzzle != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MUZZELS_CATEGORY) { muzzle = value; CalculateStats(); } } }
     private BLRItem stock = null;
-    public BLRItem Stock { get { return stock; } set { if (stock != value && AllowStock()) { stock = value; CalculateStats(); } } }
+    public BLRItem Stock { get { return stock; } set { if (value != null && stock != value && AllowStock() && value.IsValidFor(reciever) && value.Category == ImportSystem.STOCKS_CATEGORY) { stock = value; CalculateStats(); } } }
     private BLRItem scope = null;
-    public BLRItem Scope { get { return scope; } set { if (scope != value) { scope = value; CalculateStats(); } } }
+    public BLRItem Scope { get { return scope; } set { if (value != null && scope != value && value.IsValidFor(reciever) && value.Category == ImportSystem.SCOPES_CATEGORY) { scope = value; CalculateStats(); } } }
     private BLRItem grip = null;
-    public BLRItem Grip { get { return grip; } set { if (grip != value) { grip = value; CalculateStats(); } } }
-    public BLRItem Tag { get; set; }
-    public BLRItem Camo { get; set; }
+    public BLRItem Grip { get { return grip; } set { if (value != null && grip != value && value.IsValidFor(reciever) && value.Category == ImportSystem.GRIPS_CATEGORY) { grip = value; CalculateStats(); } } }
+
+    private BLRItem tag = null;
+    public BLRItem Tag { get { return tag; } set { if (value != null && tag != value && value.IsValidFor(reciever) && value.Category == ImportSystem.HANGERS_CATEGORY) { tag = value; } } }
+    private BLRItem camo = null;
+    public BLRItem Camo { get { return camo; } set { if (value != null && camo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.CAMOS_WEAPONS_CATEGORY) { camo = value; } } }
 
     private bool IsPistol()
     {
         if (Reciever == null) return false;
         return Reciever.Name == "Light Pistol" || Reciever.Name == "Heavy Pistol" || Reciever.Name == "Prestige Light Pistol";
     }
+    private bool AllowReciever(BLRItem item)
+    {
+        bool allow = true;
+        if (IsPrimary)
+        {
+            if (item.Category != ImportSystem.PRIMARY_CATEGORY)
+            {
+                allow = false;
+            }
+        }
+        else
+        { 
+            if(item.Category != ImportSystem.SECONDARY_CATEGORY)
+            {
+                allow = false;
+            }
+        }
+        return allow;
+    }
+
     private bool AllowStock()
     {
         bool allow = true;
@@ -342,6 +370,7 @@ public class BLRWeaponSetup
         IsPrimary = isPrimary;
     }
 
+    #region Properties
     public double AccuracyPercentage
     {
         get
@@ -703,8 +732,7 @@ public class BLRWeaponSetup
     public string WeaponDescriptorPart2 { get; private set; }
     public string WeaponDescriptorPart3 { get; private set; }
     public string WeaponDescriptor { get { return WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3; } }
-
-
+    #endregion Properties
     private void RemoveIncompatibleMods()
     {
         MagiCowsWeapon wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
@@ -717,7 +745,7 @@ public class BLRWeaponSetup
         }
         else
         {
-            Muzzle = null;
+            muzzle = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.BARRELS_CATEGORY))
@@ -729,7 +757,7 @@ public class BLRWeaponSetup
         }
         else
         {
-            Barrel = null;
+            barrel = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.STOCKS_CATEGORY))
@@ -741,7 +769,7 @@ public class BLRWeaponSetup
         }
         else
         {
-            Stock = null;
+            stock = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.SCOPES_CATEGORY))
@@ -760,7 +788,7 @@ public class BLRWeaponSetup
             }
             else
             {
-                Scope = null;
+                scope = null;
             }
         }
 
@@ -773,7 +801,7 @@ public class BLRWeaponSetup
         }
         else
         {
-            Magazine = null;
+            magazine = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.GRIPS_CATEGORY))
@@ -785,7 +813,7 @@ public class BLRWeaponSetup
         }
         else
         {
-            Grip = null;
+            grip = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.CAMOS_WEAPONS_CATEGORY))
@@ -797,7 +825,7 @@ public class BLRWeaponSetup
         }
         else
         {
-            Camo = null;
+            camo = null;
         }
 
         if (Tag is null || Reciever.IsValidModType(ImportSystem.HANGERS_CATEGORY))
@@ -809,7 +837,7 @@ public class BLRWeaponSetup
         }
         else
         {
-            Tag = null;
+            tag = null;
         }
     }
 
@@ -1221,7 +1249,7 @@ public class BLRWeaponSetup
             return item3.DescriptorName;
         }
 
-        if ((item1?.WeaponModifiers.rating >= item2?.WeaponModifiers.rating) && (item1?.WeaponModifiers.rating >= item3?.WeaponModifiers.rating))
+        if ((item1.WeaponModifiers.rating >= item2.WeaponModifiers.rating) && (item1.WeaponModifiers.rating >= item3?.WeaponModifiers.rating))
         {
             if (item1.WeaponModifiers.rating > 0)
             {
@@ -1229,13 +1257,13 @@ public class BLRWeaponSetup
             }
             return "Basic";
         }
-        else if ((item2?.WeaponModifiers.rating >= item1?.WeaponModifiers.rating) && (item2?.WeaponModifiers.rating >= item3?.WeaponModifiers.rating))
+        else if ((item2.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item2.WeaponModifiers.rating >= item3?.WeaponModifiers.rating))
         {
             return item2.DescriptorName;
         }
-        else if ((item3?.WeaponModifiers.rating >= item1?.WeaponModifiers.rating) && (item3?.WeaponModifiers.rating >= item2?.WeaponModifiers.rating))
+        else if ((item3?.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item3?.WeaponModifiers.rating >= item2.WeaponModifiers.rating))
         {
-            return item3.DescriptorName;
+            return item3?.DescriptorName;
         }
 
         return item1.DescriptorName;

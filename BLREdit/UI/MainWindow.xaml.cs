@@ -1217,6 +1217,10 @@ namespace BLREdit.UI
                     Loadout.Secondary.Scope = item;
                     break;
 
+                case nameof(SecondaryGripImage):
+                    Loadout.Secondary.Grip = item;
+                    break;
+
                 case nameof(PrimaryTagImage):
                     Loadout.Primary.Tag = item;
                     break;
@@ -1307,9 +1311,12 @@ namespace BLREdit.UI
                 SecondaryGripImage.DataContext = Loadout.Secondary.Grip;
             }
 
-            UpdateStats2();
-            if(updateLoadout)
-            UpdateActiveLoadout();
+
+            if (updateLoadout)
+            {
+                UpdateStats2();
+                UpdateActiveLoadout();
+            }
             return;
             
 
@@ -2119,7 +2126,7 @@ namespace BLREdit.UI
 
             SetPrimary(loadout.Primary, false);
             SetSecondary(loadout.Secondary, false);
-
+            //UpdateStats2();
         }
 
         public void SetPrimary(MagiCowsWeapon primary, bool updateLoadout = true)
