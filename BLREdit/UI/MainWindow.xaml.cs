@@ -289,7 +289,7 @@ namespace BLREdit.UI
             HeadArmorGearModLabel.Content = Loadout.HeadProtection.ToString("0.0") + '%';
 
             ArmorHealthLabel.Content = Loadout.Health;
-            HealthGearModLabel.Content = Loadout.RawHealth;
+            HealthGearModLabel.Content = Loadout.RawHealth.ToString("0") + '%';
 
             ArmorRunLabel.Content = (Loadout.Run / 100.0D).ToString("0.00");
             RunGearModLabel.Content = Loadout.RawMoveSpeed.ToString("0") + '%';
