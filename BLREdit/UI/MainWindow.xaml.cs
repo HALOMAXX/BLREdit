@@ -1295,8 +1295,13 @@ namespace BLREdit.UI
                 SecondaryMuzzleImage.DataContext = Loadout.Secondary.Muzzle;
                 SecondaryMagazineImage.DataContext = Loadout.Secondary.Magazine;
                 SecondaryStockImage.DataContext = Loadout.Secondary.Stock;
+
+                //Have to be set to null other wise the image won't update
+                SecondaryScopeImage.DataContext = null;
+                SecondaryCrosshairImage.DataContext = null;
                 SecondaryScopeImage.DataContext = Loadout.Secondary.Scope;
                 SecondaryCrosshairImage.DataContext = Loadout.Secondary.Scope;
+
                 SecondaryCamoWeaponImage.DataContext = Loadout.Secondary.Camo;
                 SecondaryTagImage.DataContext = Loadout.Secondary.Tag;
                 SecondaryGripImage.DataContext = Loadout.Secondary.Grip;

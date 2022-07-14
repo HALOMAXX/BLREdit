@@ -304,7 +304,7 @@ public class BLRWeaponSetup
     private BLRItem reciever = null;
     public BLRItem Reciever { get { return reciever; } set { if (reciever != value) { reciever = value; RemoveIncompatibleMods(); CalculateStats(); } } }
     private BLRItem barrel = null;
-    public BLRItem Barrel { get { return barrel; } set { if (barrel != value) { barrel = value; CalculateStats(); } } }
+    public BLRItem Barrel { get { return barrel; } set { if (barrel != value) { barrel = value; AllowStock(); CalculateStats(); } } }
     private BLRItem magazine = null;
     public BLRItem Magazine { get { return magazine; } set { if (magazine != value) { magazine = value; CalculateStats(); } } }
     private BLRItem muzzle = null;
@@ -317,7 +317,6 @@ public class BLRWeaponSetup
     public BLRItem Grip { get { return grip; } set { if (grip != value) { grip = value; CalculateStats(); } } }
     public BLRItem Tag { get; set; }
     public BLRItem Camo { get; set; }
-
 
     private bool IsPistol()
     {
@@ -332,6 +331,7 @@ public class BLRWeaponSetup
             if (IsPistol() && (Barrel?.Name ?? MagiCowsWeapon.NoBarrel) == MagiCowsWeapon.NoBarrel)
             {
                 allow = false;
+                stock = null; 
             }
         }
         return allow;
@@ -712,72 +712,80 @@ public class BLRWeaponSetup
         {
             if (muzzle is null || !muzzle.IsValidFor(Reciever))
             { 
-                muzzle = wpn.GetMuzzle();
+                Muzzle = wpn.GetMuzzle();
             }
         }
         else
         {
-            muzzle = null;
+            Muzzle = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.BARRELS_CATEGORY))
         {
             if (barrel is null || !barrel.IsValidFor(Reciever))
             {
-                barrel = wpn.GetBarrel();
+                Barrel = wpn.GetBarrel();
             }
         }
         else
         {
-            barrel = null;
+            Barrel = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.STOCKS_CATEGORY))
         {
             if (stock is null || !stock.IsValidFor(Reciever))
             {
-                stock = wpn.GetStock();
+                Stock = wpn.GetStock();
             }
         }
         else
         {
-            stock = null;
+            Stock = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.SCOPES_CATEGORY))
         {
             if (scope is null || !scope.IsValidFor(Reciever))
             {
-                scope = wpn.GetScope();
+                Scope = wpn.GetScope();
             }
         }
         else
         {
-            scope = null;
+            if ((Reciever?.Name ?? "") == "Snub 260")
+            {
+                //has to be lower case scope as it allows setting it with out compatability checks
+                scope = ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope);
+            }
+            else
+            {
+                Scope = null;
+            }
         }
 
         if (Reciever.IsValidModType(ImportSystem.MAGAZINES_CATEGORY))
         {
             if (magazine is null || !magazine.IsValidFor(Reciever))
             {
-                magazine = wpn.GetMagazine();
+                Magazine = wpn.GetMagazine();
             }
         }
         else
         {
-            magazine = null;
+            Magazine = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.GRIPS_CATEGORY))
         {
             if (grip is null || !grip.IsValidFor(Reciever))
             {
-                grip = wpn.GetGrip();
+                Grip = wpn.GetGrip();
             }
         }
         else
         {
-            grip = null;
+            Grip = null;
         }
 
         if (Reciever.IsValidModType(ImportSystem.CAMOS_WEAPONS_CATEGORY))
