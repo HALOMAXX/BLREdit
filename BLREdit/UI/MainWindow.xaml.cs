@@ -1303,6 +1303,7 @@ namespace BLREdit.UI
             }
 
             UpdateStats2();
+            if(updateLoadout)
             UpdateActiveLoadout();
             return;
             
