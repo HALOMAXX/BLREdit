@@ -226,9 +226,9 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, "0");
+                            FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, "0", "%");
                             FormatDisplayStat(ref desc2, LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, "0.0", "%");
-                            FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, "0");
+                            FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, "0", "%");
                             FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, "0.0");
                             FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, "0.0", "u/s");
                             if (value != 0)
@@ -283,8 +283,8 @@ namespace BLREdit
                             var desc6 = new DisplayStatDiscriptor();
 
 
-                            FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, "0");
-                            FormatDisplayStat(ref desc2, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, "0");
+                            FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, "0", "%");
+                            FormatDisplayStat(ref desc2, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, "0", "%");
                             FormatDisplayStat(ref desc3, LanguageKeys.GEAR_SLOTS, LanguageSet.GetWord(LanguageKeys.GEAR_SLOTS) + ':', gear, "0");
 
                             item.DisplayStat1 = desc1;
