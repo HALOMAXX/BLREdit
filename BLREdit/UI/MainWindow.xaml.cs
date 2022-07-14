@@ -2126,14 +2126,13 @@ namespace BLREdit.UI
 
             SetPrimary(loadout.Primary, false);
             SetSecondary(loadout.Secondary, false);
-            //UpdateStats2();
+            UpdateStats2();
         }
 
         public void SetPrimary(MagiCowsWeapon primary, bool updateLoadout = true)
         {
             var reciever = primary.GetReciever();
             SetItemToImage(PrimaryRecieverImage, reciever, updateLoadout);
-            FilterWeapon = reciever;
             SetItemToImage(PrimaryBarrelImage, primary.GetBarrel(), updateLoadout);
             SetItemToImage(PrimaryMuzzleImage, primary.GetMuzzle(), updateLoadout);
             SetItemToImage(PrimaryStockImage, primary.GetStock(), updateLoadout);

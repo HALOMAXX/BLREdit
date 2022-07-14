@@ -12,27 +12,27 @@ public class BLRLoadoutSetup
     public BLRWeaponSetup Primary { get; } = new BLRWeaponSetup(true);
     public BLRWeaponSetup Secondary { get; } = new BLRWeaponSetup(false);
     private BLRItem helmet = null;
-    public BLRItem Helmet { get { return helmet; } set { if (helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { helmet = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Helmet { get { return helmet; } set { if (value != null && helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { helmet = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem upperBody = null;
-    public BLRItem UpperBody { get { return upperBody; } set { if (upperBody != value && value.Category == ImportSystem.UPPER_BODIES_CATEGORY) { upperBody = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem UpperBody { get { return upperBody; } set { if (value != null && upperBody != value && value.Category == ImportSystem.UPPER_BODIES_CATEGORY) { upperBody = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem lowerBody = null;
-    public BLRItem LowerBody { get { return lowerBody; } set { if (lowerBody != value && value.Category == ImportSystem.LOWER_BODIES_CATEGORY) { lowerBody = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem LowerBody { get { return lowerBody; } set { if (value != null && lowerBody != value && value.Category == ImportSystem.LOWER_BODIES_CATEGORY) { lowerBody = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem tactical = null;
-    public BLRItem Tactical { get { return tactical; } set { if (tactical != value && value.Category == ImportSystem.TACTICAL_CATEGORY) { tactical = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Tactical { get { return tactical; } set { if (value != null && tactical != value && value.Category == ImportSystem.TACTICAL_CATEGORY) { tactical = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear1 = null;
-    public BLRItem Gear1 { get { return gear1; } set { if (gear1 != value && GearSlots > 0 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear1 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear1 { get { return gear1; } set { if (value != null && gear1 != value && GearSlots > 0 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear1 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear2 = null;
-    public BLRItem Gear2 { get { return gear2; } set { if (gear2 != value && GearSlots > 1 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear2 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear2 { get { return gear2; } set { if (value != null && gear2 != value && GearSlots > 1 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear2 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear3 = null;
-    public BLRItem Gear3 { get { return gear3; } set { if (gear3 != value && GearSlots > 2 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear3 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear3 { get { return gear3; } set { if (value != null && gear3 != value && GearSlots > 2 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear3 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear4 = null;
-    public BLRItem Gear4 { get { return gear4; } set { if (gear4 != value && GearSlots > 3 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear4 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear4 { get { return gear4; } set { if (value != null && gear4 != value && GearSlots > 3 && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear4 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem camo = null;
-    public BLRItem Camo { get { return camo; } set { if (camo != value && value.Category == ImportSystem.CAMOS_BODIES_CATEGORY) { camo = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Camo { get { return camo; } set { if (value != null && camo != value && value.Category == ImportSystem.CAMOS_BODIES_CATEGORY) { camo = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem avatar = null;
-    public BLRItem Avatar { get { return avatar; } set { if (avatar != value && value.Category == ImportSystem.AVATARS_CATEGORY) { avatar = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Avatar { get { return avatar; } set { if (value != null && avatar != value && value.Category == ImportSystem.AVATARS_CATEGORY) { avatar = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem trophy = null;
-    public BLRItem Trophy { get { return trophy; } set { if (trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { trophy = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Trophy { get { return trophy; } set { if (value != null && trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { trophy = value; /* TODO: Calculate Armor/Gear Stats */ } } }
 
     #region Properties
     public double GearSlots
