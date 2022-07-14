@@ -285,8 +285,8 @@ namespace BLREdit.UI
             GearSlotsGearModLabel.Content = Loadout.GearSlots.ToString("0");
 
 
-            ArmorHeadProtectionLabel.Content = Loadout.HeadProtection.ToString("0.00") + '%';
-            HeadArmorGearModLabel.Content = Loadout.HeadProtection.ToString("0.00") + '%';
+            ArmorHeadProtectionLabel.Content = Loadout.HeadProtection.ToString("0.0") + '%';
+            HeadArmorGearModLabel.Content = Loadout.HeadProtection.ToString("0.0") + '%';
 
             ArmorHealthLabel.Content = Loadout.Health;
             HealthGearModLabel.Content = Loadout.RawHealth;
@@ -294,8 +294,8 @@ namespace BLREdit.UI
             ArmorRunLabel.Content = (Loadout.Run / 100.0D).ToString("0.00");
             RunGearModLabel.Content = Loadout.RawMoveSpeed.ToString("0") + '%';
 
-            ArmorHRVLabel.Content = Loadout.HRVDuration.ToString("0");
-            HRVDurationGearModLabel.Content = Loadout.HRVDuration.ToString("0");
+            ArmorHRVLabel.Content = Loadout.HRVDuration.ToString("0.0") + "u";
+            HRVDurationGearModLabel.Content = Loadout.HRVDuration.ToString("0.0") + "u";
 
             ArmorHRVRechargeLabel.Content = Loadout.HRVRechargeRate.ToString("0.0") + "u/s";
             HRVRechargeGearModLabel.Content = Loadout.HRVRechargeRate.ToString("0.0") + "u/s";
