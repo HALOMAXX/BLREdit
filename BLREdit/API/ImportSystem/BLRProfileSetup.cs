@@ -20,22 +20,288 @@ public class BLRLoadoutSetup
     private BLRItem tactical = null;
     public BLRItem Tactical { get { return tactical; } set { if (tactical != value) { tactical = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear1 = null;
-    public BLRItem Gear1 { get { return gear1; } set { if (gear1 != value) { gear1 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear1 { get { return gear1; } set { if (gear1 != value && GearSlots > 0) { gear1 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear2 = null;
-    public BLRItem Gear2 { get { return gear2; } set { if (gear2 != value) { gear2 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear2 { get { return gear2; } set { if (gear2 != value && GearSlots > 1) { gear2 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear3 = null;
-    public BLRItem Gear3 { get { return gear3; } set { if (gear3 != value) { gear3 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear3 { get { return gear3; } set { if (gear3 != value && GearSlots > 2) { gear3 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     private BLRItem gear4 = null;
-    public BLRItem Gear4 { get { return gear4; } set { if (gear4 != value) { gear4 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
+    public BLRItem Gear4 { get { return gear4; } set { if (gear4 != value && GearSlots > 3) { gear4 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     public BLRItem Camo { get; set; }
     public BLRItem Avatar { get; set; }
+
+    public double GearSlots
+    {
+        get
+        {
+            double total = 0;
+            total += UpperBody?.PawnModifiers?.GearSlots ?? 0;
+            total += LowerBody?.PawnModifiers?.GearSlots ?? 0;
+            if (total < 4)
+            {
+                gear4 = null;
+            }
+            if (total < 3)
+            {
+                gear3 = null;
+            }
+            if (total < 2)
+            {
+                gear2 = null;
+            }
+            if (total < 1)
+            {
+                gear1 = null;
+            }
+            return total;
+        }
+    }
+
+    public double RawHealth
+    {
+        get
+        {
+            double total = 0;
+            total += Helmet?.PawnModifiers?.Health ?? 0;
+            total += UpperBody?.PawnModifiers?.Health ?? 0;
+            total += LowerBody?.PawnModifiers?.Health ?? 0;
+            return Math.Min(Math.Max((int)total, -100), 100);
+        }
+    }
+
+    public double Health
+    {
+        get 
+        {
+            double health_alpha = Math.Abs(RawHealth) / 100;
+            double basehealth = 200;
+            double currentHealth;
+
+            if (RawHealth > 0)
+            {
+                currentHealth = BLRWeaponSetup.Lerp(basehealth, 250, health_alpha);
+            }
+            else
+            {
+                currentHealth = BLRWeaponSetup.Lerp(basehealth, 150, health_alpha);
+            }
+            return currentHealth;
+        }
+    }
+
+    public double HeadProtection
+    {
+        get
+        {
+            return Helmet?.PawnModifiers?.HelmetDamageReduction ?? 0;
+        }
+    }
+
+    public double RawMoveSpeed
+    {
+        get
+        {
+            double total = 0;
+            total += Helmet?.PawnModifiers?.MovementSpeed ?? 0;
+            total += UpperBody?.PawnModifiers?.MovementSpeed ?? 0;
+            total += LowerBody?.PawnModifiers?.MovementSpeed ?? 0;
+            return total;
+        }
+    }
+
+    public double Run
+    {
+        get
+        {
+            double allRun = Math.Min(Math.Max(RawMoveSpeed, -100), 100);
+
+            double run_alpha = Math.Abs(allRun) / 100;
+
+            double baserun = 765;
+            double currentRun;
+
+            if (allRun > 0)
+            {
+                currentRun = BLRWeaponSetup.Lerp(baserun, 900, run_alpha);
+            }
+            else
+            {
+                currentRun = BLRWeaponSetup.Lerp(baserun, 630, run_alpha);
+            }
+
+            return currentRun;
+        }   
+    }
+
+    public double HRVRechargeRate
+    {
+        get
+        {
+            double total = 0;
+            total += Helmet?.PawnModifiers?.HRVRechargeRate ?? 0;
+            total += Tactical?.PawnModifiers?.HRVRechargeRate ?? 0;
+            return Math.Min(Math.Max(total, 5.0), 10.0); ;
+        }
+    }
+
+    public double HRVDuration
+    {
+        get
+        {
+            double total = 0;
+            total += Helmet?.PawnModifiers.HRVDuration ?? 0;
+            total += Tactical?.PawnModifiers.HRVDuration ?? 0;
+            return Math.Min(Math.Max(total, 40.0), 100.0);
+        }
+    }
+
+    public double RawElectroProtection
+    {
+        get
+        {
+            double total = Helmet?.PawnModifiers?.ElectroProtection ?? 0;
+            total += Gear1?.PawnModifiers?.ElectroProtection ?? 0;
+            total += Gear2?.PawnModifiers?.ElectroProtection ?? 0;
+            total += Gear3?.PawnModifiers?.ElectroProtection ?? 0;
+            total += Gear4?.PawnModifiers?.ElectroProtection ?? 0;
+            return total;
+        }
+    }
+    public double ElectroProtection
+    {
+        get
+        {
+            return Math.Min(RawElectroProtection, 100.0);
+        }
+    }
+
+    public double RawExplosiveProtection
+    {
+        get
+        {
+            double total = Helmet?.PawnModifiers?.ExplosiveProtection ?? 0;
+            total += Gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
+            total += Gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
+            total += Gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
+            total += Gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
+            return total;
+        }
+    }
+    public double ExplosiveProtection
+    {
+        get
+        {
+            return Math.Min(RawExplosiveProtection, 100.0);
+        }
+    }
+
+    public double RawIncendiaryProtection
+    {
+        get
+        {
+            double total = Helmet?.PawnModifiers?.IncendiaryProtection ?? 0;
+            total += Gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
+            total += Gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
+            total += Gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
+            total += Gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
+            return total;
+        }
+    }
+    public double IncendiaryProtection
+    {
+        get
+        {
+            return Math.Min(RawIncendiaryProtection, 100.0);
+        }
+    }
+
+    public double RawInfraredProtection
+    {
+        get
+        {
+            double total = Helmet?.PawnModifiers?.InfraredProtection ?? 0;
+            total += Gear1?.PawnModifiers?.InfraredProtection ?? 0;
+            total += Gear2?.PawnModifiers?.InfraredProtection ?? 0;
+            total += Gear3?.PawnModifiers?.InfraredProtection ?? 0;
+            total += Gear4?.PawnModifiers?.InfraredProtection ?? 0;
+            return total;
+        }
+    }
+    public double InfraredProtection
+    {
+        get
+        {
+            return Math.Min(RawInfraredProtection, 100.0);
+        }
+    }
+
+    public double RawMeleeProtection
+    {
+        get
+        {
+            double total = Helmet?.PawnModifiers?.MeleeProtection ?? 0;
+            total += Gear1?.PawnModifiers?.MeleeProtection ?? 0;
+            total += Gear2?.PawnModifiers?.MeleeProtection ?? 0;
+            total += Gear3?.PawnModifiers?.MeleeProtection ?? 0;
+            total += Gear4?.PawnModifiers?.MeleeProtection ?? 0;
+            return total;
+        }
+    }
+    public double MeleeProtection
+    {
+        get
+        {
+            return Math.Min(RawMeleeProtection, 100.0);
+        }
+    }
+
+    public double RawPermanentHealthProtection
+    {
+        get
+        {
+            double total = Helmet?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            total += Gear1?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            total += Gear2?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            total += Gear3?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            total += Gear4?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            return total;
+        }
+    }
+    public double PermanentHealthProtection
+    {
+        get
+        {
+            return Math.Min(RawPermanentHealthProtection, 100.0);
+        }
+    }
+
+    public double RawToxicProtection
+    {
+        get
+        {
+            double total = Helmet?.PawnModifiers?.ToxicProtection ?? 0;
+            total += Gear1?.PawnModifiers?.ToxicProtection ?? 0;
+            total += Gear2?.PawnModifiers?.ToxicProtection ?? 0;
+            total += Gear3?.PawnModifiers?.ToxicProtection ?? 0;
+            total += Gear4?.PawnModifiers?.ToxicProtection ?? 0;
+            return total;
+        }
+    }
+    public double ToxicProtection
+    {
+        get
+        {
+            return Math.Min(RawToxicProtection, 100.0);
+        }
+    }
+
 }
 
 public class BLRWeaponSetup
 {
     private bool IsPrimary = false;
     private BLRItem reciever = null;
-    public BLRItem Reciever { get { return reciever; } set { if (reciever != value) { reciever = value; CalculateStats(); } } }
+    public BLRItem Reciever { get { return reciever; } set { if (reciever != value) { reciever = value; RemoveIncompatibleMods(); CalculateStats(); } } }
     private BLRItem barrel = null;
     public BLRItem Barrel { get { return barrel; } set { if (barrel != value) { barrel = value; CalculateStats(); } } }
     private BLRItem magazine = null;
@@ -241,11 +507,19 @@ public class BLRWeaponSetup
         }
     }
 
+    public double ZoomMagnification
+    {
+        get
+        {
+            return Scope?.WikiStats?.zoom ?? 1.3D;
+        }
+    }
+
     public double RawAmmoMagazine
     {
         get
         {
-            if (Reciever.UID == 40019)
+            if (Reciever?.UID == 40019)
             {
                 return 1; // cheat because for some reason it isn't reading AMR's currently, might be due to lack of mag but am not sure
             }
@@ -260,10 +534,29 @@ public class BLRWeaponSetup
     { get { return ModifiedAmmoMagazine * (Reciever?.WeaponStats?.InitialMagazines ?? 0); } }
     public double RawRateOfFire
     { get { return Reciever?.WeaponStats?.rateOfFire ?? 0; } }
-    public double ModifiedRateOfFire { get; private set; }
+    public double ModifiedRateOfFire 
+    {
+        get 
+        {
+            return RawRateOfFire * CockRateMultiplier;
+        }
+    }
     public double RawReloadSpeed
-    { get { return Reciever?.WeaponStats?.reloadSpeed ?? 0; } }
-    public double ModifiedReloadSpeed { get; private set; }
+    { 
+        get
+        {
+            double total = 0;
+            total += Reciever?.WikiStats?.reload ?? 0;
+            total += Barrel?.WikiStats?.reload ?? 0;
+            total += Magazine?.WikiStats?.reload ?? 0;
+            total += Muzzle?.WikiStats?.reload ?? 0;
+            total += Stock?.WikiStats?.reload ?? 0;
+            total += Scope?.WikiStats?.reload ?? 0;
+            total += Grip?.WikiStats?.reload ?? 0;
+            return total;
+        } 
+    }
+    public double ModifiedReloadSpeed { get { return RawReloadSpeed * ReloadMultiplier; } }
     public double ReloadMultiplier { get; private set; }
     public double CockRateMultiplier { get; private set; }
     public double RawSwapRate
@@ -291,6 +584,96 @@ public class BLRWeaponSetup
     public double SpreadWhileADS { get; private set; }
     #endregion Spread
 
+    public double VerticalRecoilRatio
+    {
+        get 
+        {
+            if (Reciever != null && Reciever.WeaponStats != null)
+            {
+                double vertical = Reciever.WeaponStats.RecoilVector.Y * Reciever.WeaponStats.RecoilVectorMultiplier.Y * 0.3535;
+                double horizontal = Reciever.WeaponStats.RecoilVector.X * Reciever.WeaponStats.RecoilVectorMultiplier.X * 0.5;
+                if ((vertical + horizontal) != 0)
+                {
+                    return vertical / (vertical + horizontal);
+                }
+                return 1;
+            }
+            return 1;
+        }
+    }
+
+    public double RecoilRecoveryTime
+    {
+        get 
+        {
+            if (Reciever != null && Reciever.WeaponStats != null)
+            {
+                if (Reciever.WeaponStats.RecoveryTime > 0)
+                {
+                    return Reciever.WeaponStats.RecoveryTime;
+                }
+                return 60 / Reciever.WeaponStats.ROF;
+            }
+            return 0;
+        }
+    }
+
+    public double ZoomRateOfFire
+    {
+        get
+        {
+            if (Reciever != null && Reciever.WeaponStats != null)
+            {
+                if (Reciever.WeaponStats.ZoomRateOfFire > 0)
+                {
+                    return Reciever.WeaponStats.ZoomRateOfFire * CockRateMultiplier;
+                }
+                return Reciever.WeaponStats.ROF * CockRateMultiplier;
+            }
+            return 0;
+        }
+    }
+
+    public double SpreadCenterWeight
+    {
+        get
+        {
+            return Reciever?.WeaponStats?.SpreadCenterWeight ?? 0;
+        }
+    }
+
+    public double SpreadCenter
+    {
+        get
+        {
+            return Reciever?.WeaponStats?.SpreadCenter ?? 0;
+        }
+    }
+
+    public double FragmentsPerShell
+    {
+        get
+        {
+            return Reciever?.WeaponStats?.FragmentsPerShell ?? 0;
+        }
+    }
+
+    public double SpreadCrouchMultiplier
+    {
+        get
+        { 
+            return Reciever?.WeaponStats?.CrouchSpreadMultiplier ?? 0;
+        }
+    }
+
+    public double SpreadJumpMultiplier
+    { 
+        get
+        {
+            return Reciever?.WeaponStats?.JumpSpreadMultiplier ?? 0;
+        }
+    }
+
     public double RawScopeInTime 
     { 
         get 
@@ -315,6 +698,106 @@ public class BLRWeaponSetup
     public string WeaponDescriptor { get { return WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3; } }
 
 
+    private void RemoveIncompatibleMods()
+    {
+        MagiCowsWeapon wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
+        if (Reciever.IsValidModType(ImportSystem.MUZZELS_CATEGORY))
+        {
+            if (muzzle is null || !muzzle.IsValidFor(Reciever))
+            { 
+                muzzle = wpn.GetMuzzle();
+            }
+        }
+        else
+        {
+            muzzle = null;
+        }
+
+        if (Reciever.IsValidModType(ImportSystem.BARRELS_CATEGORY))
+        {
+            if (barrel is null || !barrel.IsValidFor(Reciever))
+            {
+                barrel = wpn.GetBarrel();
+            }
+        }
+        else
+        {
+            barrel = null;
+        }
+
+        if (Reciever.IsValidModType(ImportSystem.STOCKS_CATEGORY))
+        {
+            if (stock is null || !stock.IsValidFor(Reciever))
+            {
+                stock = wpn.GetStock();
+            }
+        }
+        else
+        {
+            stock = null;
+        }
+
+        if (Reciever.IsValidModType(ImportSystem.SCOPES_CATEGORY))
+        {
+            if (scope is null || !scope.IsValidFor(Reciever))
+            {
+                scope = wpn.GetScope();
+            }
+        }
+        else
+        {
+            scope = null;
+        }
+
+        if (Reciever.IsValidModType(ImportSystem.MAGAZINES_CATEGORY))
+        {
+            if (magazine is null || !magazine.IsValidFor(Reciever))
+            {
+                magazine = wpn.GetMagazine();
+            }
+        }
+        else
+        {
+            magazine = null;
+        }
+
+        if (Reciever.IsValidModType(ImportSystem.GRIPS_CATEGORY))
+        {
+            if (grip is null || !grip.IsValidFor(Reciever))
+            {
+                grip = wpn.GetGrip();
+            }
+        }
+        else
+        {
+            grip = null;
+        }
+
+        if (Reciever.IsValidModType(ImportSystem.CAMOS_WEAPONS_CATEGORY))
+        {
+            if (Camo is null || !Camo.IsValidFor(Reciever))
+            {
+                Camo = wpn.GetCamo();
+            }
+        }
+        else
+        {
+            Camo = null;
+        }
+
+        if (Tag is null || Reciever.IsValidModType(ImportSystem.HANGERS_CATEGORY))
+        {
+            if (Tag is null || !Tag.IsValidFor(Reciever))
+            {
+                Tag = wpn.GetTag();
+            }
+        }
+        else
+        {
+            Tag = null;
+        }
+    }
+
     private void CalculateStats()
     {
         ResetStats();
@@ -336,9 +819,7 @@ public class BLRWeaponSetup
     }
 
     private void ResetStats()
-    {
-        ModifiedRateOfFire = double.NaN;
-        ModifiedReloadSpeed = double.NaN;
+    {        
         ReloadMultiplier = double.NaN;
         CockRateMultiplier = double.NaN;
         
@@ -458,7 +939,7 @@ public class BLRWeaponSetup
             aim = accuracyTABaseModifier * (float)(180 / Math.PI);
         }
 
-        double weight_alpha = Math.Abs(Reciever.WeaponStats.Weight / 80.0);
+        double weight_alpha = Math.Abs((Reciever?.WeaponStats?.Weight ?? 0) / 80.0);
         double weight_clampalpha = Math.Min(Math.Max(weight_alpha, -1.0), 1.0); // Don't ask me why they clamp the absolute value with a negative, I have no idea.
         double weight_multiplier;
         if ((Reciever?.WeaponStats?.Weight ?? 0) > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
@@ -481,8 +962,8 @@ public class BLRWeaponSetup
             move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, move_alpha);
         }
 
-        double movemultiplier_current = 1.0 + ((Reciever.WeaponStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier));
-        double moveconstant_current = Reciever.WeaponStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
+        double movemultiplier_current = 1.0 + (((Reciever?.WeaponStats?.MovementSpreadMultiplier ?? 0 ) - 1.0) * (weight_multiplier * move_multiplier));
+        double moveconstant_current = Reciever?.WeaponStats?.MovementSpreadConstant ?? 0 * (weight_multiplier * move_multiplier);
 
         double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
 
@@ -495,18 +976,18 @@ public class BLRWeaponSetup
         }
         else
         {
-            magsize = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
+            magsize = Math.Min(Reciever?.WeaponStats?.MagSize ?? 0, 15.0f);
         }
         if (magsize > 0)
         {
             double averageShotCount = magsize;
             for (int shot = 1; shot <= averageShotCount; shot++)
             {
-                if (shot > (averageShotCount - (averageShotCount * Reciever.WeaponStats.SpreadCenterWeight)))
+                if (shot > (averageShotCount - (averageShotCount * (Reciever?.WeaponStats?.SpreadCenterWeight ?? 0))))
                 {
-                    averageSpread[0] += (aim * Reciever.WeaponStats.SpreadCenter);
-                    averageSpread[1] += (hip * Reciever.WeaponStats.SpreadCenter);
-                    averageSpread[2] += (move * Reciever.WeaponStats.SpreadCenter);
+                    averageSpread[0] += (aim * Reciever?.WeaponStats?.SpreadCenter ?? 0);
+                    averageSpread[1] += (hip * Reciever?.WeaponStats?.SpreadCenter ?? 0);
+                    averageSpread[2] += (move * Reciever?.WeaponStats?.SpreadCenter ?? 0);
                 }
                 else
                 {
@@ -622,25 +1103,25 @@ public class BLRWeaponSetup
         }
         if ((Reciever?.WeaponStats?.MagSize ?? 0) > 0)
         {
-            double averageShotCount = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
+            double averageShotCount = Math.Min(Reciever?.WeaponStats?.MagSize ?? 0, 15.0f);
             Vector3 averageRecoil = new(0, 0, 0);
 
             for (int shot = 1; shot <= averageShotCount; shot++)
             {
                 Vector3 newRecoil = new(0, 0, 0)
                 {
-                    X = (Reciever.WeaponStats.RecoilVector.X * Reciever.WeaponStats.RecoilVectorMultiplier.X * 0.5f) / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
-                    Y = (Reciever.WeaponStats.RecoilVector.Y * Reciever.WeaponStats.RecoilVectorMultiplier.Y * 0.3535f)
+                    X = (Reciever?.WeaponStats?.RecoilVector.X ?? 0 * Reciever?.WeaponStats?.RecoilVectorMultiplier.X  ?? 0 * 0.5f) / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
+                    Y = (Reciever?.WeaponStats?.RecoilVector.Y ?? 0 * Reciever?.WeaponStats?.RecoilVectorMultiplier.Y  ?? 0 * 0.3535f)
                 };
 
-                double accumExponent = Reciever.WeaponStats.RecoilAccumulation;
+                double accumExponent = Reciever?.WeaponStats?.RecoilAccumulation ?? 0;
                 if (accumExponent > 1)
                 {
-                    accumExponent = ((accumExponent - 1.0) * Reciever.WeaponStats.RecoilAccumulationMultiplier) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
+                    accumExponent = ((accumExponent - 1.0) * Reciever?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
                 }
 
-                double previousMultiplier = Reciever.WeaponStats.RecoilSize * Math.Pow(shot / Reciever.WeaponStats.Burst, accumExponent);
-                double currentMultiplier = Reciever.WeaponStats.RecoilSize * Math.Pow(shot / Reciever.WeaponStats.Burst + 1.0f, accumExponent);
+                double previousMultiplier = Reciever?.WeaponStats?.RecoilSize ?? 0 * Math.Pow(shot / Reciever?.WeaponStats?.Burst ?? 0, accumExponent);
+                double currentMultiplier = Reciever?.WeaponStats?.RecoilSize ?? 0* Math.Pow(shot / Reciever?.WeaponStats?.Burst ?? 0 + 1.0f, accumExponent);
                 double multiplier = currentMultiplier - previousMultiplier;
                 newRecoil *= (float)multiplier;
                 averageRecoil += newRecoil;
@@ -650,9 +1131,9 @@ public class BLRWeaponSetup
             {
                 averageRecoil /= (float)averageShotCount;
             }
-            if (Reciever.WeaponStats.ROF > 0 && Reciever.WeaponStats.ApplyTime > 60 / Reciever.WeaponStats.ROF)
+            if ((Reciever?.WeaponStats?.ROF ?? 0) > 0 && (Reciever?.WeaponStats?.ApplyTime ?? 0 ) > 60 / (Reciever?.WeaponStats?.ROF ?? 999))
             {
-                averageRecoil *= (float)(60 / (Reciever.WeaponStats.ROF * Reciever.WeaponStats.ApplyTime));
+                averageRecoil *= (float)(60 / (Reciever?.WeaponStats?.ROF ?? 0 * Reciever?.WeaponStats?.ApplyTime ?? 0));
             }
             double recoil = averageRecoil.Length() * recoilModifier;
             recoil *= (180 / Math.PI);
@@ -749,17 +1230,17 @@ public class BLRWeaponSetup
         return item1.DescriptorName;
     }
 
-    private static double Percentage(double input)
+    public static double Percentage(double input)
     { 
         return Clamp(input, -100.0D, 100.0D) / 100.0D;
     }
 
-    private static double Lerp(double start, double target, double time)
+    public static double Lerp(double start, double target, double time)
     {
         return start * (1.0d - time) + target * time;
     }
 
-    private static double Clamp(double input, double min, double max)
+    public static double Clamp(double input, double min, double max)
     { 
         return Math.Min(Math.Max(input, min), max);
     }

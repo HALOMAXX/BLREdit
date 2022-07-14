@@ -115,11 +115,14 @@ public class BLRItem
     public string GetDescriptorName(double points)
     {
         string currentbest = "";
-        foreach (StatDecriptor st in WeaponStats.StatDecriptors)
+        if (WeaponStats != null && WeaponStats.StatDecriptors != null)
         {
-            if (points >= st.Points)
+            foreach (StatDecriptor st in WeaponStats.StatDecriptors)
             {
-                currentbest = st.Name;
+                if (points >= st.Points)
+                {
+                    currentbest = st.Name;
+                }
             }
         }
         return currentbest;

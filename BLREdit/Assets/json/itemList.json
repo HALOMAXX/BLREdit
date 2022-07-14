@@ -46467,7 +46467,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into a cloud of interference that hinders visibility.",
       "UID": 12002,
@@ -46485,7 +46485,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Melee item.\u003Cbr\u003EA familiar-looking weapon for bashing nearby opponents.",
       "UID": 12016,
@@ -46503,7 +46503,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Melee item.\u003Cbr\u003EA familiar-looking weapon for bashing nearby opponents.",
       "UID": 12016,
@@ -46521,7 +46521,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Melee item.\u003Cbr\u003EA familiar-looking weapon for bashing nearby opponents.",
       "UID": 12016,
@@ -46539,7 +46539,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Thrown item.\u003Cbr\u003EInstantly kills the target. Can also be used in melee.",
       "UID": 12016,
@@ -46557,7 +46557,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 12016,
@@ -46575,7 +46575,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 12028,
@@ -46593,8 +46593,8 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger"
+        "camosWeapon",
+        "hangers"
       ],
       "Tooltip": "Makes a copy of you. Decoy is visible in normal view, not visible in HRV.",
       "UID": 12028,
@@ -46612,7 +46612,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 12027,
@@ -46630,7 +46630,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into a cloud of deadly gas that continuously damages and blinds your enemies.",
       "UID": 12006,
@@ -46648,8 +46648,8 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger"
+        "camosWeapon",
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 13004,
@@ -46667,7 +46667,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 12013,
@@ -46685,7 +46685,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 12013,
@@ -46703,7 +46703,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 12013,
@@ -46721,7 +46721,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 12013,
@@ -46739,7 +46739,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Tactical gear.\u003Cbr\u003EUse to place ammo refill crates for your allies.",
       "UID": 13003,
@@ -46757,8 +46757,8 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger"
+        "camosWeapon",
+        "hangers"
       ],
       "Tooltip": "Tactical gear.\u003Cbr\u003EEquip to shield yourself from the front. Can be placed on the ground for stationary cover.",
       "UID": 13004,
@@ -46776,7 +46776,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Tactical gear.\u003Cbr\u003EEquip to shield yourself from the front.",
       "UID": 13013,
@@ -46794,7 +46794,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 13006,
@@ -46812,7 +46812,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 13012,
@@ -46830,7 +46830,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Melee item.\u003Cbr\u003EStab enemies that get too close.",
       "UID": 12011,
@@ -46848,7 +46848,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Thrown item.\u003Cbr\u003EExplodes when thrown, dealing damage to and blinds surrounding players.",
       "UID": 12004,
@@ -46866,7 +46866,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into an EMP that temporarily blinds enemies and shuts down hardsuits.",
       "UID": 12001,
@@ -46884,7 +46884,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Thrown item.\u003Cbr\u003EAn explosive grenade.",
       "UID": 12000,
@@ -46902,7 +46902,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Melee item.\u003Cbr\u003EStab enemies that get too close.",
       "UID": 12011,
@@ -46920,7 +46920,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Thrown item.\u003Cbr\u003EAn explosive grenade.",
       "UID": 12000,
@@ -46938,9 +46938,9 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "scopes"
       ],
       "Tooltip": "Tactical gear.\u003Cbr\u003EUse to heal yourself or your allies, or poison your enemies.",
       "UID": 13001,
@@ -46958,7 +46958,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Thrown item.\u003Cbr\u003EAn extremely powerful explosive grenade.",
       "UID": 12008,
@@ -46976,7 +46976,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Dropped item.\u003Cbr\u003EGenerates a decoy that shows up on your enemies\u0027 HRV.",
       "UID": 12005,
@@ -46994,7 +46994,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Dropped item.\u003Cbr\u003ECreates a field that hides friendly targets from HRV detection.",
       "UID": 12009,
@@ -47012,7 +47012,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "",
       "UID": 12013,
@@ -47030,7 +47030,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Dropped item.\u003Cbr\u003EViolently explodes when triggered by nearby enemies.",
       "UID": 12003,
@@ -47048,9 +47048,9 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "scopes"
       ],
       "Tooltip": "Tactical gear.\u003Cbr\u003EAllows you to repair friendly mechanical targets.",
       "UID": 13002,
@@ -47068,7 +47068,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Melee item.\u003Cbr\u003EMelee weapon with increased damage and a faster attack.",
       "UID": 12012,
@@ -47086,7 +47086,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Dropped item.\u003Cbr\u003EStuns nearby enemies when triggered.",
       "UID": 12007,
@@ -47104,7 +47104,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Tactical gear.\u003Cbr\u003EUse to revive downed teammates.",
       "UID": 13005,
@@ -47124,13 +47124,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Heavy Assault Rifle may not be fast, but it makes up for it in sheer stopping power and range.",
       "UID": 40017,
@@ -47310,13 +47310,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The lightweight machine gun reconnaissance has a quick reload speed, but very low accuracy and low rate of fire.",
       "UID": 40014,
@@ -47497,11 +47497,11 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes"
       ],
       "Tooltip": "The Tactical SMG offers an extremely high rate of fire and mobility, but with a high spread and recoil.",
       "UID": 40013,
@@ -47681,11 +47681,11 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes"
       ],
       "Tooltip": "The Burstfire SMG fires a 4 round burst with good accuracy and low recoil, but has low damage and range.",
       "UID": 40018,
@@ -47865,10 +47865,10 @@
       "Name": "Anti-Materiel Rifle",
       "PawnModifiers": null,
       "SupportedMods": [
-        "camo",
-        "hanger",
-        "scope",
-        "stock"
+        "camosWeapon",
+        "hangers",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Anti-Materiel Rifle is instantly lethal at any range, but has a long reload time after every shot. No one man should have all this power!",
       "UID": 40019,
@@ -48050,13 +48050,13 @@
       "SupportedMods": [
         "ammo",
         "barrelgrip",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Bullpup Full Auto is lightweight and has strong short to mid-range stopping power, but is slow to reload.",
       "UID": 40020,
@@ -48236,13 +48236,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The AK470 Rifle is a balanced weapon overall, offering moderate rate of fire with high stopping power.",
       "UID": 40023,
@@ -48409,10 +48409,10 @@
       "Name": "Compound Bow",
       "PawnModifiers": null,
       "SupportedMods": [
-        "camo",
-        "hanger",
-        "magazine",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "scopes"
       ],
       "Tooltip": "A modernized classic compound bow made using that latest technology. Stealthy and effective for those that can master it.",
       "UID": 40024,
@@ -48592,13 +48592,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The M4X Rifle is a balanced weapon overall, offering high rate of fire with moderate stopping power.",
       "UID": 40022,
@@ -48766,13 +48766,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Tactical Assault Rifle is a very stable weapon, with a lower rate of fire, increased accuracy, and improved stopping power.",
       "UID": 40025,
@@ -48952,13 +48952,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Assault Rifle is a balanced weapon overall, offering a high rate of fire with moderate stopping power.",
       "UID": 40003,
@@ -49138,13 +49138,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Bolt-Action Rifle is an extremely long-range, extremely powerful weapon, but a new bullet must be loaded into the chamber after each shot.",
       "UID": 40007,
@@ -49325,13 +49325,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Light Machine Gun has a high ammo capacity, but sacrifices accuracy for the sheer volume of bullets.",
       "UID": 40011,
@@ -49512,13 +49512,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Burstfire Rifle fires quick bursts of three bullets, with a tight spread.",
       "UID": 40009,
@@ -49699,13 +49699,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Assault Rifle is a balanced weapon overall, offering a high rate of fire with moderate stopping power.",
       "UID": 40027,
@@ -49885,13 +49885,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The SMG is an extremely fast automatic weapon, though the individual bullets don\u0027t pack much punch.",
       "UID": 40010,
@@ -50071,13 +50071,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Combat Rifle is an extremely long-range semi-automatic weapon with moderate stopping power.",
       "UID": 40008,
@@ -50258,13 +50258,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Light Recon Rifle is a short to medium range semi-automatic weapon with good stability and speed.",
       "UID": 40026,
@@ -50446,12 +50446,12 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Shotgun Assault Rifle-k fires 5 pellets and offers a high rate of fire but is highly inaccurate at a distance.",
       "UID": 40016,
@@ -50631,10 +50631,10 @@
       "Name": "Breech Loaded Pistol",
       "PawnModifiers": null,
       "SupportedMods": [
-        "camo",
-        "hanger",
-        "magazine",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "scopes"
       ],
       "Tooltip": "The Breech Loaded Pistol that can be bored to use exotic ammuniation.",
       "UID": 40015,
@@ -50816,9 +50816,9 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "magazine"
+        "camosWeapon",
+        "hangers",
+        "magazines"
       ],
       "Tooltip": "A compact snubnose revolver with a higher rate of fire but less punch than larger revolvers.",
       "UID": 40021,
@@ -50999,13 +50999,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Heavy Pistol is surprisingly powerful for a weapon of its size, but has a high recoil.",
       "UID": 40000,
@@ -51185,13 +51185,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Light Pistol is a standard-issue firearm, with high firerate and accuracy but low damage.",
       "UID": 40001,
@@ -51371,11 +51371,11 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes"
       ],
       "Tooltip": "The Burstfire Pistol fires quick bursts of three bullets. It is extremely light and fast, but suffers from high recoil and poor accuracy.",
       "UID": 40006,
@@ -51595,13 +51595,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Light Pistol is a standard-issue firearm, with high firerate and accuracy but low damage.",
       "UID": 40028,
@@ -51765,11 +51765,11 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes"
       ],
       "Tooltip": "The Machine Pistol fires a continuous stream of bullets, but has a high recoil and poor accuracy.",
       "UID": 40004,
@@ -51949,10 +51949,10 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "magazine",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "scopes"
       ],
       "Tooltip": "The Revolver is exceptionally powerful with a decent range, but is very slow and holds only six bullets at a time.",
       "UID": 40002,
@@ -52133,13 +52133,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "grips",
+        "hangers",
+        "magazines",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "The Shotgun sprays 10 damaging pellets at nearby targets. It\u0027s very slow, but extremely effective at close range.",
       "UID": 40005,
@@ -52321,13 +52321,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "camosWeapon",
+        "grips",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20006,
@@ -52345,9 +52345,9 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "scopes"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20009,
@@ -52365,13 +52365,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "grips",
+        "hangers",
+        "magazines",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20003,
@@ -52389,13 +52389,13 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20007,
@@ -52413,9 +52413,9 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "scopes"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20004,
@@ -52433,9 +52433,9 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "scopes"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20004,
@@ -52453,14 +52453,14 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "grips",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20008,
@@ -52478,9 +52478,9 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "scopes"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20005,
@@ -52498,14 +52498,14 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "grips",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20002,
@@ -52523,14 +52523,14 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "barrel",
-        "camo",
-        "grip",
-        "hanger",
-        "magazine",
-        "muzzle",
-        "scope",
-        "stock"
+        "barrels",
+        "camosWeapon",
+        "grips",
+        "hangers",
+        "magazines",
+        "muzzles",
+        "scopes",
+        "stocks"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20011,
@@ -52548,7 +52548,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20013,
@@ -52566,7 +52566,7 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "hanger"
+        "hangers"
       ],
       "Tooltip": "Depot Item!",
       "UID": 20011,
@@ -52584,9 +52584,9 @@
       "PawnModifiers": null,
       "SupportedMods": [
         "ammo",
-        "camo",
-        "hanger",
-        "scope"
+        "camosWeapon",
+        "hangers",
+        "scopes"
       ],
       "Tooltip": "Depot Item!",
       "UID": 200013,
