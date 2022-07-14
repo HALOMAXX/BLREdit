@@ -1244,6 +1244,10 @@ public class BLRWeaponSetup
         {
             if (itemmuzzle.WeaponModifiers.rating >= itemscope.WeaponModifiers.rating)
             {
+                if ((itemmuzzle.WeaponModifiers.rating + itemscope?.WeaponModifiers.rating) == 0)
+                {
+                    return "Basic";
+                }
                 return itemmuzzle.DescriptorName;
             }
             else
