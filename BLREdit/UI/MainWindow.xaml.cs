@@ -1272,6 +1272,10 @@ namespace BLREdit.UI
                     Loadout.Avatar = item;
                     image.DataContext = Loadout.Avatar;
                     break;
+                case nameof(TrophyImage):
+                    Loadout.Trophy = item;
+                    image.DataContext = Loadout.Trophy;
+                    break;
             }
 
             if (image.Name.Contains("Primary") || image.Name.Contains("Secondary"))

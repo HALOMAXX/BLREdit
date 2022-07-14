@@ -29,6 +29,7 @@ public class BLRLoadoutSetup
     public BLRItem Gear4 { get { return gear4; } set { if (gear4 != value && GearSlots > 3) { gear4 = value; /* TODO: Calculate Armor/Gear Stats */ } } }
     public BLRItem Camo { get; set; }
     public BLRItem Avatar { get; set; }
+    public BLRItem Trophy { get; set; }
 
     public double GearSlots
     {
