@@ -22013,7 +22013,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -22079,7 +22079,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -22145,7 +22145,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -22211,7 +22211,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -22747,7 +22747,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -22814,7 +22814,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -22881,7 +22881,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -22948,7 +22948,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -23344,7 +23344,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -23410,7 +23410,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -23476,7 +23476,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -23542,7 +23542,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -23674,7 +23674,7 @@
         "rateOfFire": 0,
         "rating": 2,
         "recoil": 0,
-        "reloadSpeed": 0,
+        "reloadSpeed": 50,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -23806,7 +23806,7 @@
         "rateOfFire": 0,
         "rating": 4,
         "recoil": 0,
-        "reloadSpeed": 0,
+        "reloadSpeed": 50,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -23872,7 +23872,7 @@
         "rateOfFire": 0,
         "rating": 6,
         "recoil": 0,
-        "reloadSpeed": 50,
+        "reloadSpeed": 80,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -23938,7 +23938,7 @@
         "rateOfFire": 0,
         "rating": 8,
         "recoil": 0,
-        "reloadSpeed": -100,
+        "reloadSpeed": 60,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24004,7 +24004,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24070,7 +24070,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24136,7 +24136,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24202,7 +24202,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24400,7 +24400,7 @@
         "rateOfFire": 0,
         "rating": 4,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24466,7 +24466,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24532,7 +24532,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24598,7 +24598,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -24994,7 +24994,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -25060,7 +25060,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -25126,7 +25126,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -25192,7 +25192,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -25594,7 +25594,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -25661,7 +25661,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -25728,7 +25728,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -25795,7 +25795,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -26191,7 +26191,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -26257,7 +26257,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -26323,7 +26323,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -26389,7 +26389,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -26785,7 +26785,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -26851,7 +26851,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -26917,7 +26917,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -26983,7 +26983,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -27379,7 +27379,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -27445,7 +27445,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -27511,7 +27511,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -27577,7 +27577,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -27973,7 +27973,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -28039,7 +28039,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -28105,7 +28105,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -28171,7 +28171,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -28303,7 +28303,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -28369,7 +28369,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -28435,7 +28435,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -28501,7 +28501,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29029,7 +29029,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29095,7 +29095,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29161,7 +29161,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29227,7 +29227,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29623,7 +29623,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29689,7 +29689,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29755,7 +29755,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29821,7 +29821,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -29953,7 +29953,7 @@
         "rateOfFire": 0,
         "rating": 2,
         "recoil": 0,
-        "reloadSpeed": 0,
+        "reloadSpeed": 50,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -30085,7 +30085,7 @@
         "rateOfFire": 0,
         "rating": 4,
         "recoil": 0,
-        "reloadSpeed": 0,
+        "reloadSpeed": 50,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -30151,7 +30151,7 @@
         "rateOfFire": 0,
         "rating": 6,
         "recoil": 0,
-        "reloadSpeed": 50,
+        "reloadSpeed": 80,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -30217,7 +30217,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -30283,7 +30283,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -30349,7 +30349,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -30415,7 +30415,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -30481,7 +30481,7 @@
         "rateOfFire": 0,
         "rating": 8,
         "recoil": 0,
-        "reloadSpeed": 0,
+        "reloadSpeed": 50,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -31273,7 +31273,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -31339,7 +31339,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -31405,7 +31405,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -31471,7 +31471,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -31867,7 +31867,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -31933,7 +31933,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -31999,7 +31999,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -32065,7 +32065,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -34213,7 +34213,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -34279,7 +34279,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -34345,7 +34345,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -34411,7 +34411,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -34873,7 +34873,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -34939,7 +34939,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -35005,7 +35005,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -35071,7 +35071,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -35995,7 +35995,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -36061,7 +36061,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -36127,7 +36127,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -10,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
@@ -36193,7 +36193,7 @@
         "rateOfFire": 0,
         "rating": 7,
         "recoil": 0,
-        "reloadSpeed": -7,
+        "reloadSpeed": 0,
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       },
