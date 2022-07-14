@@ -1204,69 +1204,80 @@ public class BLRWeaponSetup
         DamageFar = damageModifier * (Reciever?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d);
     }
 
-    private static string CompareItemDescriptor1(BLRItem item1, BLRItem item2)
+    private static string CompareItemDescriptor1(BLRItem itembarrel, BLRItem itemmag)
     {
-        if (item1 == null && item2 != null)
+        if (itembarrel == null && itemmag != null)
         {
-            return item2.DescriptorName;
+            return itemmag.DescriptorName;
         }
-        else if (item1 != null && item2 == null)
+        else if (itembarrel != null && itemmag == null)
         {
-            return item1.DescriptorName;
+            return itembarrel.DescriptorName;
         }
-        else if (item1 == null && item2 == null)
+        else if (itembarrel == null && itemmag == null)
         {
             return "Standard";
         }
 
-        if (item1.WeaponModifiers.rating > item2.WeaponModifiers.rating)
+        if (itembarrel.WeaponModifiers.rating > itemmag.WeaponModifiers.rating)
         {
-            return item1.DescriptorName;
+            return itembarrel.DescriptorName;
         }
         else
         {
-            return item2.DescriptorName;
+            return itemmag.DescriptorName;
         }
     }
 
-    private static string CompareItemDescriptor2(BLRItem item1, BLRItem item2, BLRItem item3)
+    private static string CompareItemDescriptor2(BLRItem itemstock, BLRItem itemmuzzle, BLRItem itemscope)
     {
-        if (item1 == null && item2 == null && item3 == null)
+        if (itemstock == null && itemmuzzle == null && itemscope == null)
         {
             return "Basic";
         }
 
-        if (item1 == null && item2 != null)
+        if (itemstock == null && itemmuzzle == null && itemscope != null)
         {
-            return item2.DescriptorName;
+            return itemscope.DescriptorName;
         }
-        else if (item1 != null && item2 == null)
+        else if (itemstock == null && itemmuzzle != null && itemscope != null)
         {
-            return item1.DescriptorName;
+            if (itemmuzzle.WeaponModifiers.rating >= itemscope.WeaponModifiers.rating)
+            {
+                return itemmuzzle.DescriptorName;
+            }
+            else
+            {
+                return itemscope.DescriptorName;
+            }
         }
-        else if (item1 == null && item2 == null && item3 != null)
+        else if (itemstock == null && itemmuzzle != null)
         {
-            return item3.DescriptorName;
+            return itemmuzzle.DescriptorName;
+        }
+        else if (itemstock != null && itemmuzzle == null)
+        {
+            return itemstock.DescriptorName;
         }
 
-        if ((item1.WeaponModifiers.rating >= item2.WeaponModifiers.rating) && (item1.WeaponModifiers.rating >= item3?.WeaponModifiers.rating))
+        if ((itemstock.WeaponModifiers.rating >= itemmuzzle.WeaponModifiers.rating) && (itemstock.WeaponModifiers.rating >= itemscope?.WeaponModifiers.rating))
         {
-            if (item1.WeaponModifiers.rating > 0)
+            if (itemstock.WeaponModifiers.rating > 0)
             {
-                return item1.DescriptorName;
+                return itemstock.DescriptorName;
             }
             return "Basic";
         }
-        else if ((item2.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item2.WeaponModifiers.rating >= item3?.WeaponModifiers.rating))
+        else if ((itemmuzzle.WeaponModifiers.rating >= itemstock.WeaponModifiers.rating) && (itemmuzzle.WeaponModifiers.rating >= itemscope?.WeaponModifiers.rating))
         {
-            return item2.DescriptorName;
+            return itemmuzzle.DescriptorName;
         }
-        else if ((item3?.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item3?.WeaponModifiers.rating >= item2.WeaponModifiers.rating))
+        else if ((itemscope?.WeaponModifiers.rating >= itemstock.WeaponModifiers.rating) && (itemscope?.WeaponModifiers.rating >= itemmuzzle.WeaponModifiers.rating))
         {
-            return item3?.DescriptorName;
+            return itemscope?.DescriptorName;
         }
 
-        return item1.DescriptorName;
+        return itemstock.DescriptorName;
     }
 
     public static double Percentage(double input)
