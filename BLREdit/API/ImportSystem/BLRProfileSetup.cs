@@ -506,12 +506,18 @@ public class BLRWeaponSetup
             return total;
         }
     }
-
+    public double RawZoomMagnification
+    {
+        get
+        {
+            return Scope?.WikiStats?.zoom ?? 0;
+        }
+    }
     public double ZoomMagnification
     {
         get
         {
-            return Scope?.WikiStats?.zoom ?? 1.3D;
+            return 1.3D + RawZoomMagnification;
         }
     }
 
@@ -962,8 +968,8 @@ public class BLRWeaponSetup
             move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, move_alpha);
         }
 
-        double movemultiplier_current = 1.0 + (((Reciever?.WeaponStats?.MovementSpreadMultiplier ?? 0 ) - 1.0) * (weight_multiplier * move_multiplier));
-        double moveconstant_current = Reciever?.WeaponStats?.MovementSpreadConstant ?? 0 * (weight_multiplier * move_multiplier);
+        double movemultiplier_current = 1.0 + (((Reciever?.WeaponStats?.MovementSpreadMultiplier ?? 0) - 1.0) * (weight_multiplier * move_multiplier));
+        double moveconstant_current = (Reciever?.WeaponStats?.MovementSpreadConstant ?? 0) * (weight_multiplier * move_multiplier);
 
         double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
 
@@ -979,11 +985,11 @@ public class BLRWeaponSetup
             double averageShotCount = Math.Max(magsize, 5.0f);
             for (int shot = 1; shot <= averageShotCount; shot++)
             {
-                if (shot > (averageShotCount - (averageShotCount * Reciever?.WeaponStats?.SpreadCenterWeight ?? 0)))
+                if (shot > (averageShotCount - (averageShotCount * (Reciever?.WeaponStats?.SpreadCenterWeight ?? 0))))
                 {
-                    averageSpread[0] += (aim * Reciever?.WeaponStats?.SpreadCenter ?? 0);
-                    averageSpread[1] += (hip * Reciever?.WeaponStats?.SpreadCenter ?? 0);
-                    averageSpread[2] += (move * Reciever?.WeaponStats?.SpreadCenter ?? 0);
+                    averageSpread[0] += aim * (Reciever?.WeaponStats?.SpreadCenter ?? 0);
+                    averageSpread[1] += hip * (Reciever?.WeaponStats?.SpreadCenter ?? 0);
+                    averageSpread[2] += move * (Reciever?.WeaponStats?.SpreadCenter ?? 0);
                 }
                 else
                 {
@@ -1036,9 +1042,9 @@ public class BLRWeaponSetup
             FrontierSniperMod = Lerp(RawScopeInTime, 0.235, TTTA_alpha);
         }
 
-        if ((Reciever.WeaponStats?.TightAimTime ?? 0) > 0)
+        if ((Reciever?.WeaponStats?.TightAimTime ?? 0) > 0)
         {
-            return Reciever.WeaponStats.TightAimTime;
+            return Reciever?.WeaponStats?.TightAimTime ?? 0;
         }
         else
         {
@@ -1106,18 +1112,18 @@ public class BLRWeaponSetup
             {
                 Vector3 newRecoil = new(0, 0, 0)
                 {
-                    X = (Reciever?.WeaponStats?.RecoilVector.X ?? 0 * Reciever?.WeaponStats?.RecoilVectorMultiplier.X  ?? 0 * 0.5f) / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
-                    Y = (Reciever?.WeaponStats?.RecoilVector.Y ?? 0 * Reciever?.WeaponStats?.RecoilVectorMultiplier.Y  ?? 0 * 0.3535f)
+                    X = ((Reciever?.WeaponStats?.RecoilVector.X ?? 0) * (Reciever?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * 0.5f) / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
+                    Y = ((Reciever?.WeaponStats?.RecoilVector.Y ?? 0) * (Reciever?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * 0.3535f)
                 };
 
                 double accumExponent = Reciever?.WeaponStats?.RecoilAccumulation ?? 0;
                 if (accumExponent > 1)
                 {
-                    accumExponent = ((accumExponent - 1.0) * Reciever?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
+                    accumExponent = ((accumExponent - 1.0) * (Reciever?.WeaponStats?.RecoilAccumulationMultiplier ?? 0)) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
                 }
 
-                double previousMultiplier = Reciever?.WeaponStats?.RecoilSize ?? 0 * Math.Pow(shot / Reciever?.WeaponStats?.Burst ?? 0, accumExponent);
-                double currentMultiplier = Reciever?.WeaponStats?.RecoilSize ?? 0* Math.Pow(shot / Reciever?.WeaponStats?.Burst ?? 0 + 1.0f, accumExponent);
+                double previousMultiplier = (Reciever?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / (Reciever?.WeaponStats?.Burst ?? 0), accumExponent);
+                double currentMultiplier = (Reciever?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / (Reciever?.WeaponStats?.Burst ?? 0) + 1.0f, accumExponent);
                 double multiplier = currentMultiplier - previousMultiplier;
                 newRecoil *= (float)multiplier;
                 averageRecoil += newRecoil;
@@ -1129,7 +1135,7 @@ public class BLRWeaponSetup
             }
             if ((Reciever?.WeaponStats?.ROF ?? 0) > 0 && (Reciever?.WeaponStats?.ApplyTime ?? 0 ) > 60 / (Reciever?.WeaponStats?.ROF ?? 999))
             {
-                averageRecoil *= (float)(60 / (Reciever?.WeaponStats?.ROF ?? 0 * Reciever?.WeaponStats?.ApplyTime ?? 0));
+                averageRecoil *= (float)(60 / ((Reciever?.WeaponStats?.ROF ?? 0) * (Reciever?.WeaponStats?.ApplyTime ?? 0)));
             }
             double recoil = averageRecoil.Length() * recoilModifier;
             recoil *= (180 / Math.PI);

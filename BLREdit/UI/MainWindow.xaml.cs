@@ -193,7 +193,7 @@ namespace BLREdit.UI
             PrimaryZoomLabel.Content = Loadout.Primary.ZoomMagnification.ToString("0.0");
             PrimaryScopeInLabel.Content = Loadout.Primary.ModifiedScopeInTime.ToString("0.00") + 's';
             PrimaryRangeLabel.Content = Loadout.Primary.RangeClose.ToString("0") + '/' + Loadout.Primary.RangeFar.ToString("0") + '/' + Loadout.Primary.RangeTracer.ToString("0");
-            PrimaryRunLabel.Content = Loadout.Primary.ModifiedRunSpeed.ToString("0");
+            PrimaryRunLabel.Content = Loadout.Primary.ModifiedRunSpeed.ToString("0.00");
             PrimaryDescriptorLabel.Content = Loadout.Primary.WeaponDescriptor;
 
             PrimaryRecoilVerticalRatioLabel.Content = Loadout.Primary.VerticalRecoilRatio.ToString("0.00");
@@ -228,7 +228,7 @@ namespace BLREdit.UI
             SecondaryZoomLabel.Content = Loadout.Secondary.ZoomMagnification.ToString("0.0");
             SecondaryScopeInLabel.Content = Loadout.Secondary.ModifiedScopeInTime.ToString("0.00") + 's';
             SecondaryRangeLabel.Content = Loadout.Secondary.RangeClose.ToString("0") + '/' + Loadout.Primary.RangeFar.ToString("0") + '/' + Loadout.Primary.RangeTracer.ToString("0");
-            SecondaryRunLabel.Content = Loadout.Secondary.ModifiedRunSpeed.ToString("0");
+            SecondaryRunLabel.Content = Loadout.Secondary.ModifiedRunSpeed.ToString("0.00");
             SecondaryDescriptorLabel.Content = Loadout.Secondary.WeaponDescriptor;
 
             SecondaryRecoilVerticalRatioLabel.Content = Loadout.Primary.VerticalRecoilRatio.ToString("0.00");
@@ -1177,76 +1177,58 @@ namespace BLREdit.UI
             {
                 case nameof(PrimaryRecieverImage):
                     Loadout.Primary.Reciever = item;
-                    image.DataContext = Loadout.Primary.Reciever;
                     break;
                 case nameof(SecondaryRecieverImage):
                     Loadout.Secondary.Reciever = item;
-                    image.DataContext = Loadout.Secondary.Reciever;
                     break;
 
                 case nameof(PrimaryBarrelImage):
                     Loadout.Primary.Barrel = item;
-                    image.DataContext = Loadout.Primary.Barrel;
                     break;
                 case nameof(SecondaryBarrelImage):
                     Loadout.Secondary.Barrel = item;
-                    image.DataContext = Loadout.Secondary.Barrel;
                     break;
 
                 case nameof(PrimaryMuzzleImage):
                     Loadout.Primary.Muzzle = item;
-                    image.DataContext = Loadout.Primary.Muzzle;
                     break;
                 case nameof(SecondaryMuzzleImage):
                     Loadout.Secondary.Muzzle = item;
-                    image.DataContext = Loadout.Secondary.Muzzle;
                     break;
 
                 case nameof(PrimaryMagazineImage):
                     Loadout.Primary.Magazine = item;
-                    image.DataContext = Loadout.Primary.Magazine;
                     break;
                 case nameof(SecondaryMagazineImage):
                     Loadout.Secondary.Magazine = item;
-                    image.DataContext = Loadout.Secondary.Magazine;
                     break;
 
                 case nameof(PrimaryStockImage):
                     Loadout.Primary.Stock = item;
-                    image.DataContext = Loadout.Primary.Stock;
                     break;
                 case nameof(SecondaryStockImage):
                     Loadout.Secondary.Stock = item;
-                    image.DataContext = Loadout.Secondary.Stock;
                     break;
 
                 case nameof(PrimaryScopeImage):
                     Loadout.Primary.Scope = item;
-                    PrimaryScopeImage.DataContext = Loadout.Primary.Scope;
-                    PrimaryCrosshairImage.DataContext = Loadout.Primary.Scope;
                     break;
                 case nameof(SecondaryScopeImage):
                     Loadout.Secondary.Scope = item;
-                    SecondaryScopeImage.DataContext = Loadout.Secondary.Scope;
-                    SecondaryCrosshairImage.DataContext = Loadout.Secondary.Scope;
                     break;
 
                 case nameof(PrimaryTagImage):
                     Loadout.Primary.Tag = item;
-                    image.DataContext = Loadout.Primary.Tag;
                     break;
                 case nameof(SecondaryTagImage):
                     Loadout.Secondary.Tag = item;
-                    image.DataContext = Loadout.Secondary.Tag;
                     break;
 
                 case nameof(PrimaryCamoWeaponImage):
                     Loadout.Primary.Camo = item;
-                    image.DataContext = Loadout.Primary.Camo;
                     break;
                 case nameof(SecondaryCamoWeaponImage):
                     Loadout.Secondary.Camo = item;
-                    image.DataContext = Loadout.Secondary.Camo;
                     break;
 
 
@@ -1291,6 +1273,31 @@ namespace BLREdit.UI
                     image.DataContext = Loadout.Avatar;
                     break;
             }
+
+            if (image.Name.Contains("Primary") || image.Name.Contains("Secondary"))
+            {
+                PrimaryRecieverImage.DataContext = Loadout.Primary.Reciever;
+                PrimaryBarrelImage.DataContext = Loadout.Primary.Barrel;
+                PrimaryMuzzleImage.DataContext = Loadout.Primary.Muzzle;
+                PrimaryMagazineImage.DataContext = Loadout.Primary.Magazine;
+                PrimaryStockImage.DataContext = Loadout.Primary.Stock;
+                PrimaryScopeImage.DataContext = Loadout.Primary.Scope;
+                PrimaryCrosshairImage.DataContext = Loadout.Primary.Scope;
+                PrimaryCamoWeaponImage.DataContext = Loadout.Primary.Camo;
+                PrimaryTagImage.DataContext = Loadout.Primary.Tag;
+
+                SecondaryRecieverImage.DataContext = Loadout.Secondary.Reciever;
+                SecondaryBarrelImage.DataContext = Loadout.Secondary.Barrel;
+                SecondaryMuzzleImage.DataContext = Loadout.Secondary.Muzzle;
+                SecondaryMagazineImage.DataContext = Loadout.Secondary.Magazine;
+                SecondaryStockImage.DataContext = Loadout.Secondary.Stock;
+                SecondaryScopeImage.DataContext = Loadout.Secondary.Scope;
+                SecondaryCrosshairImage.DataContext = Loadout.Secondary.Scope;
+                SecondaryCamoWeaponImage.DataContext = Loadout.Secondary.Camo;
+                SecondaryTagImage.DataContext = Loadout.Secondary.Tag;
+                SecondaryGripImage.DataContext = Loadout.Secondary.Grip;
+            }
+
             UpdateStats2();
             return;
             
@@ -1811,9 +1818,7 @@ namespace BLREdit.UI
             }
 
             if (image.Name.Contains("Muzzle"))
-            {
-                if (!(PrimaryRecieverImage.DataContext as BLRItem).IsValidModType("muzzle"))
-                { return; }
+            { 
                 SetItemList(ImportSystem.MUZZELS_CATEGORY);
                 LastSelectedImage = image;
                 return;
@@ -1840,9 +1845,7 @@ namespace BLREdit.UI
                 return;
             }
             if (image.Name.Contains("Muzzle"))
-            {
-                if (!(SecondaryRecieverImage.DataContext as BLRItem).IsValidModType("muzzle"))
-                { return; }
+            { 
                 SetItemList(ImportSystem.MUZZELS_CATEGORY);
                 LastSelectedImage = image;
                 return;
@@ -1856,9 +1859,12 @@ namespace BLREdit.UI
             if (image.Name.Contains("Crosshair"))
             {
                 var item = (SecondaryScopeImage.DataContext as BLRItem);
-                item.LoadCrosshair(false);
-                ItemList.ItemsSource = new BLRItem[] { item };
-                LastSelectedImage = SecondaryScopeImage;
+                if (item != null)
+                {
+                    item.LoadCrosshair(false);
+                    ItemList.ItemsSource = new BLRItem[] { item };
+                    LastSelectedImage = SecondaryScopeImage;
+                }
                 return;
             }
             UpdateImages(image);
