@@ -589,6 +589,32 @@ public class BLRWeaponSetup
             total += Stock?.WikiStats?.reload ?? 0;
             total += Scope?.WikiStats?.reload ?? 0;
             total += Grip?.WikiStats?.reload ?? 0;
+
+            // Bullpup FA stocks reload time mods because I'm lazy and don't know how they get their reload times
+            if (Reciever?.UID == 40020)
+            {
+                if (Stock?.UID == 42018) // Hullbreach 89-BPFA
+                {
+                    total += 0.32;
+                }
+                else if (Stock?.UID == 42019) // Silverwood z1200 BPFA
+                {
+                    total += 0.15;
+                }
+            }
+            // Burstfire Rifle stocks reload time mods
+            if (Reciever?.UID == 40009)
+            {
+                if (Stock?.UID == 42018)
+                {
+                    total += 0.72;
+                }
+                else if (Stock?.UID == 42019)
+                {
+                    total += 0.33;
+                }
+            }
+
             return total;
         } 
     }
