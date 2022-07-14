@@ -967,23 +967,19 @@ public class BLRWeaponSetup
 
         double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
 
-        // Average spread over 15 shots to account for random center weight multiplier
+        // Average spread over multiple shots to account for random center weight multiplier
         double[] averageSpread = { 0, 0, 0 };
-        double magsize = 0;
-        if (Reciever.UID == 40019)
+        double magsize = Math.Min(Reciever?.WeaponStats?.MagSize ?? 0, 15.0f);
+        if (magsize <= 1)
         {
-            magsize = 15.0f; // AMR cheat again
-        }
-        else
-        {
-            magsize = Math.Min(Reciever?.WeaponStats?.MagSize ?? 0, 15.0f);
+            magsize = (Reciever?.WeaponStats?.InitialMagazines ?? 0) + 1.0;
         }
         if (magsize > 0)
         {
-            double averageShotCount = magsize;
+            double averageShotCount = Math.Max(magsize, 5.0f);
             for (int shot = 1; shot <= averageShotCount; shot++)
             {
-                if (shot > (averageShotCount - (averageShotCount * (Reciever?.WeaponStats?.SpreadCenterWeight ?? 0))))
+                if (shot > (averageShotCount - (averageShotCount * Reciever?.WeaponStats?.SpreadCenterWeight ?? 0)))
                 {
                     averageSpread[0] += (aim * Reciever?.WeaponStats?.SpreadCenter ?? 0);
                     averageSpread[1] += (hip * Reciever?.WeaponStats?.SpreadCenter ?? 0);
