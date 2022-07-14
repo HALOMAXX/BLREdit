@@ -180,9 +180,9 @@ namespace BLREdit.UI
         private void UpdateStats2()
         {
             #region PrimaryStats
-            PrimaryDamageLabel.Content = Loadout.Primary.DamageClose.ToString("0.0") + '/' + Loadout.Primary.DamageFar.ToString("0.0");
+            PrimaryDamageLabel.Content = Loadout.Primary.DamageClose.ToString("0.0") + " / " + Loadout.Primary.DamageFar.ToString("0.0");
             PrimaryRateOfFireLabel.Content = Loadout.Primary.ModifiedRateOfFire.ToString("0");
-            PrimaryAmmoLabel.Content = Loadout.Primary.ModifiedAmmoMagazine.ToString("0") + '/' + Loadout.Primary.ModifiedAmmoReserve.ToString("0");
+            PrimaryAmmoLabel.Content = Loadout.Primary.ModifiedAmmoMagazine.ToString("0") + " / " + Loadout.Primary.ModifiedAmmoReserve.ToString("0");
             PrimaryReloadLabel.Content = Loadout.Primary.ModifiedReloadSpeed.ToString("0.00") + 's';
             PrimarySwapLabel.Content = Loadout.Primary.RawSwapRate.ToString("0");
             PrimaryAimLabel.Content = Loadout.Primary.SpreadWhileADS.ToString("0.00") + '°';
@@ -192,7 +192,7 @@ namespace BLREdit.UI
             PrimaryZoomRecoilLabel.Content = Loadout.Primary.RecoilZoom.ToString("0.00") + '°';
             PrimaryZoomLabel.Content = Loadout.Primary.ZoomMagnification.ToString("0.00");
             PrimaryScopeInLabel.Content = Loadout.Primary.ModifiedScopeInTime.ToString("0.000") + 's';
-            PrimaryRangeLabel.Content = Loadout.Primary.RangeClose.ToString("0.0") + '/' + Loadout.Primary.RangeFar.ToString("0.0") + '/' + Loadout.Primary.RangeTracer.ToString("0");
+            PrimaryRangeLabel.Content = Loadout.Primary.RangeClose.ToString("0.0") + " / " + Loadout.Primary.RangeFar.ToString("0.0") + " / " + Loadout.Primary.RangeTracer.ToString("0");
             PrimaryRunLabel.Content = Loadout.Primary.ModifiedRunSpeed.ToString("0.00");
             PrimaryDescriptorLabel.Content = Loadout.Primary.WeaponDescriptor;
 
@@ -215,9 +215,9 @@ namespace BLREdit.UI
             #endregion PrimaryStats
 
             #region SecondaryStats
-            SecondaryDamageLabel.Content = Loadout.Secondary.DamageClose.ToString("0.0") + '/' + Loadout.Secondary.DamageFar.ToString("0.0");
+            SecondaryDamageLabel.Content = Loadout.Secondary.DamageClose.ToString("0.0") + " / " + Loadout.Secondary.DamageFar.ToString("0.0");
             SecondaryRateOfFireLabel.Content = Loadout.Secondary.ModifiedRateOfFire.ToString("0");
-            SecondaryAmmoLabel.Content = Loadout.Secondary.ModifiedAmmoMagazine.ToString("0") + '/' + Loadout.Secondary.ModifiedAmmoReserve.ToString("0");
+            SecondaryAmmoLabel.Content = Loadout.Secondary.ModifiedAmmoMagazine.ToString("0") + " / " + Loadout.Secondary.ModifiedAmmoReserve.ToString("0");
             SecondaryReloadLabel.Content = Loadout.Secondary.ModifiedReloadSpeed.ToString("0.00") + 's';
             SecondarySwapLabel.Content = Loadout.Secondary.RawSwapRate.ToString("0");
             SecondaryAimLabel.Content = Loadout.Secondary.SpreadWhileADS.ToString("0.00") + '°';
@@ -227,7 +227,7 @@ namespace BLREdit.UI
             SecondaryZoomRecoilLabel.Content = Loadout.Secondary.RecoilZoom.ToString("0.00") + '°';
             SecondaryZoomLabel.Content = Loadout.Secondary.ZoomMagnification.ToString("0.00");
             SecondaryScopeInLabel.Content = Loadout.Secondary.ModifiedScopeInTime.ToString("0.000") + 's';
-            SecondaryRangeLabel.Content = Loadout.Secondary.RangeClose.ToString("0.0") + '/' + Loadout.Secondary.RangeFar.ToString("0.0") + '/' + Loadout.Secondary.RangeTracer.ToString("0");
+            SecondaryRangeLabel.Content = Loadout.Secondary.RangeClose.ToString("0.0") + " / " + Loadout.Secondary.RangeFar.ToString("0.0") + " / " + Loadout.Secondary.RangeTracer.ToString("0");
             SecondaryRunLabel.Content = Loadout.Secondary.ModifiedRunSpeed.ToString("0.00");
             SecondaryDescriptorLabel.Content = Loadout.Secondary.WeaponDescriptor;
 
