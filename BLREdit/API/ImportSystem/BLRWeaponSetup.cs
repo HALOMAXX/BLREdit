@@ -717,15 +717,15 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         ScopeInTimeDisplay = ModifiedScopeInTime.ToString("0.000") + 's';
         RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTracer.ToString("0");
         RunDisplay = ModifiedRunSpeed.ToString("0.00");
-        ZoomDisplay = 'x' + ZoomMagnification.ToString("0.00");
+        ZoomDisplay = ZoomMagnification.ToString("0.00") + 'x';
 
         FragmentsPerShellDisplay = FragmentsPerShell.ToString("0");
         ZoomFirerateDisplay = ZoomRateOfFire.ToString("0");
-        SpreadCrouchMultiplierDisplay = SpreadCrouchMultiplier.ToString("0.0");
-        SpreadJumpMultiplierDisplay = SpreadJumpMultiplier.ToString("0.0");
-        SpreadCenterWeightDisplay = SpreadCenterWeight.ToString("0.0");
-        SpreadCenterDisplay = SpreadCenter.ToString("0.0");
-        RecoilVerticalRatioDisplay = VerticalRecoilRatio.ToString("0.0");
+        SpreadCrouchMultiplierDisplay = SpreadCrouchMultiplier.ToString("0.00");
+        SpreadJumpMultiplierDisplay = SpreadJumpMultiplier.ToString("0.00");
+        SpreadCenterWeightDisplay = SpreadCenterWeight.ToString("0.00");
+        SpreadCenterDisplay = SpreadCenter.ToString("0.00");
+        RecoilVerticalRatioDisplay = VerticalRecoilRatio.ToString("0.00");
         RecoilRecoveryTimeDisplay = RecoilRecoveryTime.ToString("0.00");
 
         DamagePercentageDisplay = DamagePercentage.ToString("0") + '%';

@@ -412,11 +412,11 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         MeleeProtectionDisplay = RawMeleeProtection.ToString("0") + '%';
         ToxicProtectionDisplay = RawToxicProtection.ToString("0") + '%';
         HealthPercentageDisplay = RawHealth.ToString("0") + '%';
-        HeadArmorPercentageDisplay = HeadProtection.ToString("0") + '%';
+        HeadArmorPercentageDisplay = (HeadProtection - 12.5).ToString("0.0") + '%';
         RunPercentageDisplay = RawMoveSpeed.ToString("0") + '%';
-        HRVDurationPercentageDisplay = (HRVDuration - 70).ToString("0.0") + "u/s";
+        HRVDurationPercentageDisplay = (HRVDuration - 70).ToString("0.0") + "u";
         HRVRechargePercentageDisplay = (HRVRechargeRate - 6.6).ToString("0.0") + "u/s";
-        GearSlotsPercentageDisplay = GearSlots.ToString("0") + '%';
+        GearSlotsPercentageDisplay = (GearSlots - 2).ToString("0");
     }
 
     public void UpdateMagicCowsLoadout(MagiCowsLoadout loadout)
