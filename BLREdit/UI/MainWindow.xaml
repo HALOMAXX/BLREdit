@@ -375,7 +375,7 @@
                     <Label Content="Hip:" HorizontalAlignment="Left" Margin="142,322,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryHipLabel" Content="{Binding Path=Primary.HipSpreadDisplay}" HorizontalAlignment="Left" Margin="172,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Move:" HorizontalAlignment="Left" Margin="129,348,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryMoveLabel" Content="{Binding Path=Primary.AimSpreadDisplay}" HorizontalAlignment="Left" Margin="172,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryMoveLabel" Content="{Binding Path=Primary.MoveSpreadDisplay}" HorizontalAlignment="Left" Margin="172,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Recoil Hip:" HorizontalAlignment="Left" Margin="106,373,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Content="Recoil Aim:" HorizontalAlignment="Left" Margin="103,399,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryRecoilLabel" Content="{Binding Path=Primary.HipRecoilDisplay}" HorizontalAlignment="Left" Margin="172,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
@@ -405,7 +405,7 @@
                     <Label Content="Hip:" HorizontalAlignment="Left" Margin="142,625,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryHipLabel" Content="{Binding Path=Secondary.HipSpreadDisplay}" HorizontalAlignment="Left" Margin="172,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Move:" HorizontalAlignment="Left" Margin="131,651,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryMoveLabel" Content="{Binding Path=Secondary.AimSpreadDisplay}" HorizontalAlignment="Left" Margin="172,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryMoveLabel" Content="{Binding Path=Secondary.MoveSpreadDisplay}" HorizontalAlignment="Left" Margin="172,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Recoil Hip:" HorizontalAlignment="Left" Margin="108,677,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Content="Recoil Aim:" HorizontalAlignment="Left" Margin="106,703,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryRecoilLabel" Content="{Binding Path=Secondary.HipRecoilDisplay}" HorizontalAlignment="Left" Margin="172,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
