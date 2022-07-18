@@ -100,7 +100,7 @@ public partial class MainWindow : Window
         PrimaryRateOfFireLabel.Content = Loadout.Primary.ModifiedRateOfFire.ToString("0");
         PrimaryAmmoLabel.Content = Loadout.Primary.ModifiedAmmoMagazine.ToString("0") + " / " + Loadout.Primary.ModifiedAmmoReserve.ToString("0");
         PrimaryReloadLabel.Content = Loadout.Primary.ModifiedReloadSpeed.ToString("0.00") + 's';
-        PrimarySwapLabel.Content = Loadout.Primary.RawSwapRate.ToString("0");
+        PrimarySwapLabel.Content = Loadout.Primary.RawSwapRate.ToString("0.00");
         PrimaryAimLabel.Content = Loadout.Primary.SpreadWhileADS.ToString("0.00") + '°';
         PrimaryHipLabel.Content = Loadout.Primary.SpreadWhileStanding.ToString("0.00") + '°';
         PrimaryMoveLabel.Content = Loadout.Primary.SpreadWhileMoving.ToString("0.00") + '°';
@@ -135,7 +135,7 @@ public partial class MainWindow : Window
         SecondaryRateOfFireLabel.Content = Loadout.Secondary.ModifiedRateOfFire.ToString("0");
         SecondaryAmmoLabel.Content = Loadout.Secondary.ModifiedAmmoMagazine.ToString("0") + " / " + Loadout.Secondary.ModifiedAmmoReserve.ToString("0");
         SecondaryReloadLabel.Content = Loadout.Secondary.ModifiedReloadSpeed.ToString("0.00") + 's';
-        SecondarySwapLabel.Content = Loadout.Secondary.RawSwapRate.ToString("0");
+        SecondarySwapLabel.Content = Loadout.Secondary.RawSwapRate.ToString("0.00");
         SecondaryAimLabel.Content = Loadout.Secondary.SpreadWhileADS.ToString("0.00") + '°';
         SecondaryHipLabel.Content = Loadout.Secondary.SpreadWhileStanding.ToString("0.00") + '°';
         SecondaryMoveLabel.Content = Loadout.Secondary.SpreadWhileMoving.ToString("0.00") + '°';
