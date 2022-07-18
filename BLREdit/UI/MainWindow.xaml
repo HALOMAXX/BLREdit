@@ -500,23 +500,25 @@
 
 
                     <Label Content="Health:" HorizontalAlignment="Left" Margin="10,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorHealthLabel" Content="0" HorizontalAlignment="Left" Margin="54,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorHealthLabel" Content="{Binding Path=HealthDisplay}" HorizontalAlignment="Left" Margin="54,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Head Armor:" HorizontalAlignment="Left" Margin="85,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorHeadProtectionLabel" Content="0%" HorizontalAlignment="Left" Margin="158,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorHeadProtectionLabel" Content="{Binding Path=HeadArmorDisplay}" HorizontalAlignment="Left" Margin="158,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Run:" HorizontalAlignment="Left" Margin="235,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorRunLabel" Content="0" HorizontalAlignment="Left" Margin="262,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorRunLabel" Content="{Binding Path=RunDisplay}" HorizontalAlignment="Left" Margin="262,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
 
                     <Label Content="HRV:" HorizontalAlignment="Left" Margin="22,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorHRVLabel" Content="0" HorizontalAlignment="Left" Margin="54,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorHRVLabel" Content="{Binding Path=HRVDurationDisplay}" HorizontalAlignment="Left" Margin="54,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Recharge:" HorizontalAlignment="Left" Margin="101,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorHRVRechargeLabel" Content="0u/s" HorizontalAlignment="Left" Margin="158,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorHRVRechargeLabel" Content="{Binding Path=HRVRechargeDisplay}" HorizontalAlignment="Left" Margin="158,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="202,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorGearLabel" Content="0" HorizontalAlignment="Left" Margin="262,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorGearLabel" Content="{Binding Path=GearSlotsDsiplay}" HorizontalAlignment="Left" Margin="262,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    
+                    
                     <Button Name="RandomLoadout" Content="RandomLoadout" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
 
                 </Grid>

@@ -54,7 +54,6 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
-        //LoggingSystem.LogInfo(propertyName + " triggered Property Changed Event");
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
@@ -158,7 +157,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
                 currentRun = BLRWeaponSetup.Lerp(baserun, 630, run_alpha);
             }
 
-            return currentRun;
+            return currentRun / 100.0D;
         }   
     }
 
@@ -330,7 +329,23 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     #endregion CalculatedProperties
 
     #region DisplayProperties
+    private string healthDisplay;
+    public string HealthDisplay { get { return healthDisplay; } set { healthDisplay = value; OnPropertyChanged(); } }
 
+    private string headArmor;
+    public string HeadArmorDisplay { get { return headArmor; } set { headArmor = value; OnPropertyChanged(); } }
+
+    private string runDisplay;
+    public string RunDisplay { get { return runDisplay; } set { runDisplay = value; OnPropertyChanged(); } }
+
+    private string hrvDurationDisplay;
+    public string HRVDurationDisplay { get { return hrvDurationDisplay; } set { hrvDurationDisplay = value; OnPropertyChanged(); } }
+
+    private string hrvRechargeDisplay;
+    public string HRVRechargeDisplay { get { return hrvRechargeDisplay; } set { hrvRechargeDisplay = value; OnPropertyChanged(); } }
+
+    private string gearSlotsDsiplay;
+    public string GearSlotsDsiplay { get { return gearSlotsDsiplay; } set { gearSlotsDsiplay = value; OnPropertyChanged(); } }
     #endregion DisplayProperties
 
     private void UpdateImages()
@@ -349,8 +364,14 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     }
 
     private void CreateDisplay()
-    { 
-        
+    {
+        HealthDisplay = Health.ToString("0");
+        HeadArmorDisplay = HeadProtection.ToString("0.00") + '%';
+        RunDisplay = Run.ToString("0.00");
+
+        HRVDurationDisplay = HRVDuration.ToString("0.0") + 's';
+        HRVRechargeDisplay = HRVRechargeRate.ToString("0.0") + "U/s";
+        GearSlotsDsiplay = GearSlots.ToString("0");
     }
 
     public void UpdateMagicCowsLoadout(MagiCowsLoadout loadout)
@@ -369,10 +390,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
 
         loadout.IsFemale = IsFemale;
 
-        if (GearSlots > 0) { loadout.Gear1 = Gear1.GetMagicCowsID(); }
-        if (GearSlots > 1) { loadout.Gear2 = Gear2.GetMagicCowsID(); }
-        if (GearSlots > 2) { loadout.Gear3 = Gear3.GetMagicCowsID(); }
-        if (GearSlots > 3) { loadout.Gear4 = Gear4.GetMagicCowsID(); }
+        if (GearSlots > 0) { loadout.Gear1 = Gear1?.GetMagicCowsID() ?? -1; }
+        if (GearSlots > 1) { loadout.Gear2 = Gear2?.GetMagicCowsID() ?? -1; }
+        if (GearSlots > 2) { loadout.Gear3 = Gear3?.GetMagicCowsID() ?? -1; }
+        if (GearSlots > 3) { loadout.Gear4 = Gear4?.GetMagicCowsID() ?? -1; }
     }
     public void LoadMagicCowsLoadout(MagiCowsLoadout loadout)
     {
