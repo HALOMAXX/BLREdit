@@ -157,7 +157,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
                 currentRun = BLRWeaponSetup.Lerp(baserun, 630, run_alpha);
             }
 
-            return currentRun / 100.0D;
+            return currentRun;
         }   
     }
 
@@ -398,7 +398,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     {
         HealthDisplay = Health.ToString("0.0");
         HeadArmorDisplay = HeadProtection.ToString("0.0") + '%';
-        RunDisplay = Run.ToString("0.00");
+        RunDisplay = (Run / 100.0D).ToString("0.00");
 
         HRVDurationDisplay = HRVDuration.ToString("0.0") + 'u';
         HRVRechargeDisplay = HRVRechargeRate.ToString("0.0") + "u/s";
@@ -414,8 +414,8 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         HealthPercentageDisplay = RawHealth.ToString("0") + '%';
         HeadArmorPercentageDisplay = HeadProtection.ToString("0") + '%';
         RunPercentageDisplay = RawMoveSpeed.ToString("0") + '%';
-        HRVDurationPercentageDisplay = HRVDuration.ToString("0") + '%';
-        HRVRechargePercentageDisplay = HRVRechargeRate.ToString("0") + '%';
+        HRVDurationPercentageDisplay = (HRVDuration - 70).ToString("0.0") + "u/s";
+        HRVRechargePercentageDisplay = (HRVRechargeRate - 6.6).ToString("0.0") + "u/s";
         GearSlotsPercentageDisplay = GearSlots.ToString("0") + '%';
     }
 

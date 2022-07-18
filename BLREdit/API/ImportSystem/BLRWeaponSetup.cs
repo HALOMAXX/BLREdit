@@ -696,7 +696,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         RateOfFireDisplay = ModifiedRateOfFire.ToString("0");
         AmmoDisplay = ModifiedAmmoMagazine.ToString("0") + " / " + ModifiedAmmoReserve.ToString("0");
         ReloadTimeDisplay = ModifiedReloadSpeed.ToString("0.00") + 's';
-        SwapDisplay = RawSwapRate.ToString("0");
+        SwapDisplay = RawSwapRate.ToString("0.00");
         AimSpreadDisplay = SpreadWhileADS.ToString("0.00") + '°';
         HipSpreadDisplay = SpreadWhileStanding.ToString("0.00") + '°';
         MoveSpreadDisplay = SpreadWhileMoving.ToString("0.00") + '°';
