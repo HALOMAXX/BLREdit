@@ -910,17 +910,18 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     private double CalculateScopeInTime(double allMovementScopeIn)
     {
         double TTTA_alpha = Math.Abs(allMovementScopeIn);
-        double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
+        double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMIACOGMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
 
         // giant cheat incoming, please lord forgive me for what i am about to do
         if (allMovementScopeIn > 0)
         {
             TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
-            ComboScopeMod = Lerp(0.0, 0.03, TTTA_alpha);
+            ComboScopeMod = Lerp(0.0, 0.032, TTTA_alpha);
             FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
             ArmComInfraredMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            EMITechScopeMod = Lerp(RawScopeInTime, 0.215, TTTA_alpha);
-            EMIInfraredMod = Lerp(RawScopeInTime, 0.215, TTTA_alpha);
+            EMIACOGMod = Lerp(RawScopeInTime, 0.19, TTTA_alpha);
+            EMITechScopeMod = Lerp(RawScopeInTime, 0.2185, TTTA_alpha);
+            EMIInfraredMod = Lerp(RawScopeInTime, 0.2185, TTTA_alpha);
             EMIInfraredMK2Mod = Lerp(RawScopeInTime, 0.36, TTTA_alpha);
             ArmComSniperMod = Lerp(RawScopeInTime, 0.275, TTTA_alpha);
             KraneSniperScopeMod = Lerp(RawScopeInTime, 0.275, TTTA_alpha);
@@ -930,15 +931,16 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         else
         {
             TightAimTime = Lerp(0.225, 0.30, TTTA_alpha);
-            ComboScopeMod = Lerp(0.0, -0.05, TTTA_alpha);
-            FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.10, TTTA_alpha);
-            ArmComInfraredMod = Lerp(RawScopeInTime, 0.10, TTTA_alpha);
+            ComboScopeMod = Lerp(0.0, -0.042, TTTA_alpha);
+            FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.105, TTTA_alpha);
+            ArmComInfraredMod = Lerp(RawScopeInTime, 0.105, TTTA_alpha);
+            EMIACOGMod = Lerp(RawScopeInTime, 0.14, TTTA_alpha);
             EMITechScopeMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
             EMIInfraredMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            EMIInfraredMK2Mod = Lerp(RawScopeInTime, 0.30, TTTA_alpha);
-            ArmComSniperMod = Lerp(RawScopeInTime, 0.20, TTTA_alpha);
-            KraneSniperScopeMod = Lerp(RawScopeInTime, 0.20, TTTA_alpha);
-            SilverwoodHeavyMod = Lerp(RawScopeInTime, 0.20, TTTA_alpha);
+            EMIInfraredMK2Mod = Lerp(RawScopeInTime, 0.305, TTTA_alpha);
+            ArmComSniperMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
+            KraneSniperScopeMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
+            SilverwoodHeavyMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
             FrontierSniperMod = Lerp(RawScopeInTime, 0.235, TTTA_alpha);
         }
 
@@ -955,6 +957,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
                     45005 => TightAimTime + ComboScopeMod + RawScopeInTime,
                     45023 => TightAimTime + FourXAmmoCounterMod,
                     45021 => TightAimTime + ArmComInfraredMod,
+                    45002 => TightAimTime + EMIACOGMod,
                     45020 => TightAimTime + EMIInfraredMod,
                     45019 => TightAimTime + EMIInfraredMK2Mod,
                     45015 => TightAimTime + ArmComSniperMod,

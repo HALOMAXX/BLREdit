@@ -12145,7 +12145,7 @@
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
         "ExplosiveProtection": 0,
-        "GearSlots": 2,
+        "GearSlots": 0,
         "HRVDuration": 0,
         "HRVRechargeRate": 0,
         "Health": 45,
@@ -12164,7 +12164,7 @@
         "ToxicProtection": 0
       },
       "SupportedMods": [],
-      "Tooltip": "Light leg armor. Provides two gear slots.\u003Cbr\u003EGreatly increases health but reduces speed.",
+      "Tooltip": "Light leg armor. Provides no gear slots.\u003Cbr\u003EGreatly increases health but reduces speed.",
       "UID": 30101,
       "ValidFor": [],
       "WeaponModifiers": null,

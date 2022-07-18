@@ -396,12 +396,12 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
 
     private void CreateDisplay()
     {
-        HealthDisplay = Health.ToString("0");
-        HeadArmorDisplay = HeadProtection.ToString("0.00") + '%';
+        HealthDisplay = Health.ToString("0.0");
+        HeadArmorDisplay = HeadProtection.ToString("0.0") + '%';
         RunDisplay = Run.ToString("0.00");
 
-        HRVDurationDisplay = HRVDuration.ToString("0.0") + 's';
-        HRVRechargeDisplay = HRVRechargeRate.ToString("0.0") + "U/s";
+        HRVDurationDisplay = HRVDuration.ToString("0.0") + 'u';
+        HRVRechargeDisplay = HRVRechargeRate.ToString("0.0") + "u/s";
         GearSlotsDsiplay = GearSlots.ToString("0");
 
 
