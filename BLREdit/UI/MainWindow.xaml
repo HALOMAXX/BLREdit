@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:utils="clr-namespace:BLREdit"
+        xmlns:utils="clr-namespace:BLREdit" d:DataContext="{d:DesignInstance Type=utils:BLRLoadoutSetup}"
         mc:Ignorable="d"
         Title="BLREdit" Height="1032" Width="1920" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Red">
 
@@ -295,130 +295,132 @@
         <Button Name="ItemListButton" Content="Item List" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="667,0,0,0" Click="ItemListButton_Click"/>
         <Button Name="AdvancedInfoButton" Content="Advanced Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="793,0,0,0" Click="ItemListButton_Click"/>
 
-        <Grid HorizontalAlignment="Left" Width="374">
+        <Grid Name="LoadoutGrid" HorizontalAlignment="Left" Width="374">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <Grid Name="ProfileGrid">
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Muzzle.SmallSquareImage }" Name="PrimaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Muzzle.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Barrel.SmallSquareImage}" Name="PrimaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Barrel.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Magazine.SmallSquareImage}" Name="PrimaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Magazine.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,100,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Scope.SmallSquareImage}" Tag="{Binding Path=Primary.Scope}" Name="PrimaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Scope.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,100,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Center" Source="{Binding MiniPrimaryCrosshair}" Name="PrimaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Center" Source="{Binding Path=Primary.Scope.MiniPrimaryCrosshair}" Tag="{Binding Path=Primary.Scope}" Name="PrimaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Primary.Scope.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="133" HorizontalAlignment="Left" Margin="148,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding WideImage}" Name="PrimaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public" />
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Reciever.WideImage}" Tag="{Binding Path=Primary.Reciever}" Name="PrimaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Reciever.Tooltip}" x:FieldModifier="public" />
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Stock.SmallSquareImage}" Name="PrimaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Stock.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Tag.SmallSquareImage}" Name="PrimaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Tag.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PrimaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Camo.SmallSquareImage}" Name="PrimaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Camo.Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Muzzle.SmallSquareImage}" Name="SecondaryMuzzleImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Muzzle.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Barrel.SmallSquareImage}" Name="SecondaryBarrelImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Barrel.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Magazine.SmallSquareImage}" Name="SecondaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Magazine.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,400,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Scope.SmallSquareImage}" Tag="{Binding Path=Secondary.Scope}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Scope.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,400,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Center" Source="{Binding MiniSecondaryCrosshair}" Name="SecondaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Center" Source="{Binding Path=Secondary.Scope.MiniSecondaryCrosshair}" Tag="{Binding Path=Secondary.Scope}" Name="SecondaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Secondary.Scope.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="133" HorizontalAlignment="Left" Margin="148,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding WideImage}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Reciever.WideImage}" Tag="{Binding Path=Secondary.Reciever}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Reciever.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Stock.SmallSquareImage}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Stock.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Tag.SmallSquareImage}" Name="SecondaryTagImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Tag.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Camo.SmallSquareImage}" Name="SecondaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Camo.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="SecondaryGripImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Grip.SmallSquareImage}" Name="SecondaryGripImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Grip.Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
 
                     <Label Content="Damage:" HorizontalAlignment="Left" Margin="10,296,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryDamageLabel" Content="0" HorizontalAlignment="Left" Margin="67,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryDamageLabel" Content="{Binding Path=Primary.DamageDisplay}" HorizontalAlignment="Left" Margin="67,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Firerate:" HorizontalAlignment="Left" Margin="14,322,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryRateOfFireLabel" Content="0" HorizontalAlignment="Left" Margin="67,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryRateOfFireLabel" Content="{Binding Path=Primary.RateOfFireDisplay}" HorizontalAlignment="Left" Margin="67,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Ammo:" HorizontalAlignment="Left" Margin="19,348,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryAmmoLabel" Content="0/0" HorizontalAlignment="Left" Margin="67,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryAmmoLabel" Content="{Binding Path=Primary.AmmoDisplay}" HorizontalAlignment="Left" Margin="67,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Reload:" HorizontalAlignment="Left" Margin="18,373,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryReloadLabel" Content="0s" HorizontalAlignment="Left" Margin="67,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryReloadLabel" Content="{Binding Path=Primary.ReloadTimeDisplay}" HorizontalAlignment="Left" Margin="67,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Swap:" HorizontalAlignment="Left" Margin="26,399,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimarySwapLabel" Content="0" HorizontalAlignment="Left" Margin="67,399,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimarySwapLabel" Content="{Binding Path=Primary.SwapDisplay}" HorizontalAlignment="Left" Margin="67,399,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Aim:" HorizontalAlignment="Left" Margin="138,296,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryAimLabel" Content="0°" HorizontalAlignment="Left" Margin="172,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryAimLabel" Content="{Binding Path=Primary.AimSpreadDisplay}" HorizontalAlignment="Left" Margin="172,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Hip:" HorizontalAlignment="Left" Margin="142,322,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryHipLabel" Content="0°" HorizontalAlignment="Left" Margin="172,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryHipLabel" Content="{Binding Path=Primary.HipSpreadDisplay}" HorizontalAlignment="Left" Margin="172,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Move:" HorizontalAlignment="Left" Margin="129,348,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryMoveLabel" Content="0°" HorizontalAlignment="Left" Margin="172,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryMoveLabel" Content="{Binding Path=Primary.AimSpreadDisplay}" HorizontalAlignment="Left" Margin="172,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Recoil Hip:" HorizontalAlignment="Left" Margin="106,373,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Content="Recoil Aim:" HorizontalAlignment="Left" Margin="103,399,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryRecoilLabel" Content="0°" HorizontalAlignment="Left" Margin="172,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Name="PrimaryZoomRecoilLabel" Content="0°" HorizontalAlignment="Left" Margin="172,399,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryRecoilLabel" Content="{Binding Path=Primary.HipRecoilDisplay}" HorizontalAlignment="Left" Margin="172,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryZoomRecoilLabel" Content="{Binding Path=Primary.AimRecoilDisplay}" HorizontalAlignment="Left" Margin="172,399,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Zoom:" HorizontalAlignment="Left" Margin="227,296,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryZoomLabel" Content="0" HorizontalAlignment="Left" Margin="268,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryZoomLabel" Content="{Binding Path=Primary.ZoomDisplay}" HorizontalAlignment="Left" Margin="268,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Scope In:" HorizontalAlignment="Left" Margin="210,322,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryScopeInLabel" Content="0s" HorizontalAlignment="Left" Margin="268,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryScopeInLabel" Content="{Binding Path=Primary.ScopeInTimeDisplay}" HorizontalAlignment="Left" Margin="268,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Range:" HorizontalAlignment="Left" Margin="222,348,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryRangeLabel" Content="0/0" HorizontalAlignment="Left" Margin="268,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryRangeLabel" Content="{Binding Path=Primary.RangeDisplay}" HorizontalAlignment="Left" Margin="268,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Run:" HorizontalAlignment="Left" Margin="235,373,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="PrimaryRunLabel" Content="0" HorizontalAlignment="Left" Margin="268,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="PrimaryRunLabel" Content="{Binding Path=Primary.RunDisplay}" HorizontalAlignment="Left" Margin="268,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Damage:" HorizontalAlignment="Left" Margin="10,599,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryDamageLabel" Content="0" HorizontalAlignment="Left" Margin="67,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryDamageLabel" Content="{Binding Path=Secondary.DamageDisplay}" HorizontalAlignment="Left" Margin="67,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Firerate:" HorizontalAlignment="Left" Margin="14,625,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryRateOfFireLabel" Content="0" HorizontalAlignment="Left" Margin="67,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryRateOfFireLabel" Content="{Binding Path=Secondary.RateOfFireDisplay}" HorizontalAlignment="Left" Margin="67,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Ammo:" HorizontalAlignment="Left" Margin="19,651,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryAmmoLabel" Content="0/0" HorizontalAlignment="Left" Margin="67,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryAmmoLabel" Content="{Binding Path=Secondary.AmmoDisplay}" HorizontalAlignment="Left" Margin="67,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Reload:" HorizontalAlignment="Left" Margin="18,677,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryReloadLabel" Content="0s" HorizontalAlignment="Left" Margin="67,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryReloadLabel" Content="{Binding Path=Secondary.ReloadTimeDisplay}" HorizontalAlignment="Left" Margin="67,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Swap:" HorizontalAlignment="Left" Margin="26,703,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondarySwapLabel" Content="0" HorizontalAlignment="Left" Margin="67,703,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondarySwapLabel" Content="{Binding Path=Secondary.SwapDisplay}" HorizontalAlignment="Left" Margin="67,703,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Aim:" HorizontalAlignment="Left" Margin="138,599,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryAimLabel" Content="0°" HorizontalAlignment="Left" Margin="172,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryAimLabel" Content="{Binding Path=Secondary.AimSpreadDisplay}" HorizontalAlignment="Left" Margin="172,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Hip:" HorizontalAlignment="Left" Margin="142,625,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryHipLabel" Content="0°" HorizontalAlignment="Left" Margin="172,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryHipLabel" Content="{Binding Path=Secondary.HipSpreadDisplay}" HorizontalAlignment="Left" Margin="172,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Move:" HorizontalAlignment="Left" Margin="131,651,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryMoveLabel" Content="0°" HorizontalAlignment="Left" Margin="172,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryMoveLabel" Content="{Binding Path=Secondary.AimSpreadDisplay}" HorizontalAlignment="Left" Margin="172,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Recoil Hip:" HorizontalAlignment="Left" Margin="108,677,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Content="Recoil Aim:" HorizontalAlignment="Left" Margin="106,703,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryRecoilLabel" Content="0°" HorizontalAlignment="Left" Margin="172,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Name="SecondaryZoomRecoilLabel" Content="0°" HorizontalAlignment="Left" Margin="172,702,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryRecoilLabel" Content="{Binding Path=Secondary.HipRecoilDisplay}" HorizontalAlignment="Left" Margin="172,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryZoomRecoilLabel" Content="{Binding Path=Secondary.AimRecoilDisplay}" HorizontalAlignment="Left" Margin="172,702,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Zoom:" HorizontalAlignment="Left" Margin="224,599,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryZoomLabel" Content="0" HorizontalAlignment="Left" Margin="271,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryZoomLabel" Content="{Binding Path=Secondary.ZoomDisplay}" HorizontalAlignment="Left" Margin="271,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Scope In:" HorizontalAlignment="Left" Margin="210,625,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryScopeInLabel" Content="0s" HorizontalAlignment="Left" Margin="268,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryScopeInLabel" Content="{Binding Path=Secondary.ScopeInTimeDisplay}" HorizontalAlignment="Left" Margin="268,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Range:" HorizontalAlignment="Left" Margin="222,651,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryRangeLabel" Content="0/0" HorizontalAlignment="Left" Margin="265,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryRangeLabel" Content="{Binding Path=Secondary.RangeDisplay}" HorizontalAlignment="Left" Margin="265,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Run:" HorizontalAlignment="Left" Margin="235,677,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryRunLabel" Content="0" HorizontalAlignment="Left" Margin="271,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="SecondaryRunLabel" Content="{Binding Path=Secondary.RunDisplay}" HorizontalAlignment="Left" Margin="271,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    
+                    
                     <ComboBox Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="ProfileComboBox_SelectionChanged"/>
                     <Button Name="Loadout1Button" Content="Loadout 1" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout1Button_Click"/>
                     <Button Name="Loadout2Button" Content="Loadout 2" HorizontalAlignment="Left" Margin="120,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout2Button_Click"/>
@@ -429,7 +431,7 @@
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear1.SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear1.Tooltip}" x:FieldModifier="public"/>
                             <Rectangle Width="64" Height="64" Name="Gear1Rect">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#77000000"/>
@@ -439,7 +441,7 @@
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear2.SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear2.Tooltip}" x:FieldModifier="public"/>
                             <Rectangle Width="64" Height="64" Name="Gear2Rect">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#77000000"/>
@@ -449,7 +451,7 @@
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear3.SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear3.Tooltip}" x:FieldModifier="public"/>
                             <Rectangle Width="64" Height="64" Name="Gear3Rect">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#77000000"/>
@@ -459,7 +461,7 @@
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear4.SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear4.Tooltip}" x:FieldModifier="public"/>
                             <Rectangle Width="64" Height="64" Name="Gear4Rect">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#77000000"/>
@@ -468,53 +470,55 @@
                         </Grid>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" x:Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Tactical.SmallSquareImage}" Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tactical.Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="HelmetImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Helmet.SmallSquareImage}" Name="HelmetImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Helmet.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="UpperBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=UpperBody.SmallSquareImage}" Name="UpperBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=UpperBody.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="LowerBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=LowerBody.SmallSquareImage}" Name="LowerBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=LowerBody.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="PlayerCamoBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Camo.SmallSquareImage}" Name="PlayerCamoBodyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Camo.Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="290,834,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="AvatarImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Avatar.SmallSquareImage}" Name="AvatarImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Avatar.Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="290,900,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding SmallSquareImage}" Name="TrophyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Tooltip}" x:FieldModifier="public"/>
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Trophy.SmallSquareImage}" Name="TrophyImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Trophy.Tooltip}" x:FieldModifier="public"/>
                     </Border>
 
-                    <Label Name="PrimaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="SecondaryDescriptorLabel" Content="Here goes the Weapon Name" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <CheckBox Name="IsFemaleCheckBox" Foreground="White" Content="Female" IsChecked="{Binding IsFemale}" HorizontalAlignment="Left" Margin="10,808,0,0" VerticalAlignment="Top" Checked="IsFemaleCheckBox_Checked" Unchecked="IsFemaleCheckBox_Unchecked"/>
+                    <Label Name="PrimaryDescriptorLabel" Content="{Binding Path=Primary.WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Name="SecondaryDescriptorLabel" Content="{Binding Path=Secondary.WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <CheckBox Name="IsFemaleCheckBox" Foreground="White" Content="Female" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,808,0,0" VerticalAlignment="Top" Checked="IsFemaleCheckBox_Checked" Unchecked="IsFemaleCheckBox_Unchecked"/>
 
 
                     <Label Content="Health:" HorizontalAlignment="Left" Margin="10,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorHealthLabel" Content="0" HorizontalAlignment="Left" Margin="54,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorHealthLabel" Content="{Binding Path=HealthDisplay}" HorizontalAlignment="Left" Margin="54,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Head Armor:" HorizontalAlignment="Left" Margin="85,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorHeadProtectionLabel" Content="0%" HorizontalAlignment="Left" Margin="158,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorHeadProtectionLabel" Content="{Binding Path=HeadArmorDisplay}" HorizontalAlignment="Left" Margin="158,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Run:" HorizontalAlignment="Left" Margin="235,905,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorRunLabel" Content="0" HorizontalAlignment="Left" Margin="262,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorRunLabel" Content="{Binding Path=RunDisplay}" HorizontalAlignment="Left" Margin="262,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
 
                     <Label Content="HRV:" HorizontalAlignment="Left" Margin="22,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorHRVLabel" Content="0" HorizontalAlignment="Left" Margin="54,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorHRVLabel" Content="{Binding Path=HRVDurationDisplay}" HorizontalAlignment="Left" Margin="54,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Recharge:" HorizontalAlignment="Left" Margin="101,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorHRVRechargeLabel" Content="0u/s" HorizontalAlignment="Left" Margin="158,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorHRVRechargeLabel" Content="{Binding Path=HRVRechargeDisplay}" HorizontalAlignment="Left" Margin="158,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="202,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <Label Name="ArmorGearLabel" Content="0" HorizontalAlignment="Left" Margin="262,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    <Label Name="ArmorGearLabel" Content="{Binding Path=GearSlotsDsiplay}" HorizontalAlignment="Left" Margin="262,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
+                    
+                    
                     <Button Name="RandomLoadout" Content="RandomLoadout" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
 
                 </Grid>

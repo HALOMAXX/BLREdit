@@ -3,10 +3,12 @@ using System.Windows.Media.Imaging;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using System.Drawing;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace BLREdit;
 
-public class BLRItem
+public class BLRItem : INotifyPropertyChanged
 {
     public string Category { get; set; }
     public string Class { get; set; }
@@ -23,33 +25,33 @@ public class BLRItem
     public BLRWeaponStats WeaponStats { get; set; }
     public BLRWikiStats WikiStats { get; set; }
 
-    [JsonIgnore]
-    public BitmapSource WideImage { get { return GetWideImage(); } }
-    [JsonIgnore]
-    public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(); } }
-    [JsonIgnore]
-    public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(); } }
-    [JsonIgnore]
-    public BitmapSource wideImageMale = null;
-    [JsonIgnore]
-    public BitmapSource largeSquareImageMale = null;
-    [JsonIgnore]
-    public BitmapSource smallSquareImageMale = null;
-    [JsonIgnore]
-    public BitmapSource wideImageFemale = null;
-    [JsonIgnore]
-    public BitmapSource largeSquareImageFemale = null;
-    [JsonIgnore]
-    public BitmapSource smallSquareImageFemale = null;
+    [JsonIgnore] public BitmapSource WideImage { get { return GetWideImage(); } set { OnPropertyChanged(); } }
+    [JsonIgnore] public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(); } set { OnPropertyChanged(); } }
+    [JsonIgnore] public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(); } set {  OnPropertyChanged(); } }
+
+    [JsonIgnore] public BitmapSource wideImageMale = null;
+    [JsonIgnore] public BitmapSource largeSquareImageMale = null;
+    [JsonIgnore] public BitmapSource smallSquareImageMale = null;
+    [JsonIgnore] public BitmapSource wideImageFemale = null;
+    [JsonIgnore] public BitmapSource largeSquareImageFemale = null;
+    [JsonIgnore] public BitmapSource smallSquareImageFemale = null;
 
 
-    [JsonIgnore]
-    public BitmapSource Crosshair { get; private set; }
-    [JsonIgnore]
-    public BitmapSource MiniPrimaryCrosshair { get { return GetBitmapCrosshair(Name); } }
-    [JsonIgnore]
-    public BitmapSource MiniSecondaryCrosshair { get { return GetBitmapCrosshair(GetSecondaryScope()); } }
+    [JsonIgnore] public BitmapSource Crosshair { get; private set; }
+    [JsonIgnore] public BitmapSource MiniPrimaryCrosshair { get { return GetBitmapCrosshair(Name); } }
+    [JsonIgnore] public BitmapSource MiniSecondaryCrosshair { get { return GetBitmapCrosshair(GetSecondaryScope()); } }
 
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    public void TriggerImageUpdate()
+    {
+        WideImage = null;
+        LargeSquareImage = null;
+        SmallSquareImage = null;
+    }
 
     public BLRItem() { }
     public BLRItem(ImportItem item)
@@ -307,6 +309,11 @@ public class BLRItem
     public void RemoveCrosshair()
     {
         Crosshair = null;
+    }
+
+    public int GetMagicCowsID()
+    {
+        return ImportSystem.GetIDOfItem(this);
     }
 
     public static BitmapSource GetBitmapCrosshair(string name)
