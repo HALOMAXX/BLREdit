@@ -66,7 +66,8 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             if (IsPistol() && (Barrel?.Name ?? MagiCowsWeapon.NoBarrel) == MagiCowsWeapon.NoBarrel)
             {
                 allow = false;
-                stock = null;
+                stock = ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, MagiCowsWeapon.NoStock);
+                OnPropertyChanged(nameof(Stock));
             }
         }
         return allow;
@@ -573,6 +574,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         else
         {
             muzzle = null;
+            OnPropertyChanged(nameof(Muzzle));
         }
 
         if (Reciever.IsValidModType(ImportSystem.BARRELS_CATEGORY))
@@ -585,6 +587,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         else
         {
             barrel = null;
+            OnPropertyChanged(nameof(Barrel));
         }
 
         if (Reciever.IsValidModType(ImportSystem.STOCKS_CATEGORY))
@@ -597,6 +600,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         else
         {
             stock = null;
+            OnPropertyChanged(nameof(Stock));
         }
 
         if (Reciever.IsValidModType(ImportSystem.SCOPES_CATEGORY))
@@ -612,10 +616,12 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             {
                 //has to be lower case scope as it allows setting it with out compatability checks
                 scope = ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope);
+                OnPropertyChanged(nameof(Scope));
             }
             else
             {
                 scope = null;
+                OnPropertyChanged(nameof(Scope));
             }
         }
 
@@ -629,6 +635,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         else
         {
             magazine = null;
+            OnPropertyChanged(nameof(Magazine));
         }
 
         if (Reciever.IsValidModType(ImportSystem.GRIPS_CATEGORY))
@@ -641,6 +648,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         else
         {
             grip = null;
+            OnPropertyChanged(nameof(Grip));
         }
 
         if (Reciever.IsValidModType(ImportSystem.CAMOS_WEAPONS_CATEGORY))
@@ -653,6 +661,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         else
         {
             camo = null;
+            OnPropertyChanged(nameof(camo));
         }
 
         if (Tag is null || Reciever.IsValidModType(ImportSystem.HANGERS_CATEGORY))
@@ -665,7 +674,10 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         else
         {
             tag = null;
+            OnPropertyChanged(nameof(tag));
         }
+
+        AllowStock();
     }
 
     private void CalculateStats()
