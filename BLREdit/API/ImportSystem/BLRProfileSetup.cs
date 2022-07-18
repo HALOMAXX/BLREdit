@@ -330,22 +330,53 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
 
     #region DisplayProperties
     private string healthDisplay;
-    public string HealthDisplay { get { return healthDisplay; } set { healthDisplay = value; OnPropertyChanged(); } }
+    public string HealthDisplay { get { return healthDisplay; } private set { healthDisplay = value; OnPropertyChanged(); } }
 
-    private string headArmor;
-    public string HeadArmorDisplay { get { return headArmor; } set { headArmor = value; OnPropertyChanged(); } }
+    private string headArmorDisplay;
+    public string HeadArmorDisplay { get { return headArmorDisplay; } private set { headArmorDisplay = value; OnPropertyChanged(); } }
 
     private string runDisplay;
-    public string RunDisplay { get { return runDisplay; } set { runDisplay = value; OnPropertyChanged(); } }
+    public string RunDisplay { get { return runDisplay; } private set { runDisplay = value; OnPropertyChanged(); } }
 
     private string hrvDurationDisplay;
-    public string HRVDurationDisplay { get { return hrvDurationDisplay; } set { hrvDurationDisplay = value; OnPropertyChanged(); } }
+    public string HRVDurationDisplay { get { return hrvDurationDisplay; } private set { hrvDurationDisplay = value; OnPropertyChanged(); } }
 
     private string hrvRechargeDisplay;
-    public string HRVRechargeDisplay { get { return hrvRechargeDisplay; } set { hrvRechargeDisplay = value; OnPropertyChanged(); } }
+    public string HRVRechargeDisplay { get { return hrvRechargeDisplay; } private set { hrvRechargeDisplay = value; OnPropertyChanged(); } }
 
     private string gearSlotsDsiplay;
-    public string GearSlotsDsiplay { get { return gearSlotsDsiplay; } set { gearSlotsDsiplay = value; OnPropertyChanged(); } }
+    public string GearSlotsDsiplay { get { return gearSlotsDsiplay; } private  set { gearSlotsDsiplay = value; OnPropertyChanged(); } }
+
+
+    private string electroProtectionDisplay;
+    public string ElectroProtectionDisplay { get { return electroProtectionDisplay; } private set { electroProtectionDisplay = value; OnPropertyChanged(); } }
+
+    private string explosionProtectionDisplay;
+    public string ExplosionProtectionDisplay { get { return explosionProtectionDisplay; } private set { explosionProtectionDisplay = value; OnPropertyChanged(); } }
+
+    private string incendiaryProtectionDisplay;
+    public string IncendiaryProtectionDisplay { get { return incendiaryProtectionDisplay; } private set { incendiaryProtectionDisplay = value; OnPropertyChanged(); } }
+    private string infraredProtectionDisplay;
+    public string InfraredProtectionDisplay { get { return infraredProtectionDisplay; } private set { infraredProtectionDisplay = value; OnPropertyChanged(); } }
+
+    private string meleeProtectionDisplay;
+    public string MeleeProtectionDisplay { get { return meleeProtectionDisplay; } private set { meleeProtectionDisplay = value; OnPropertyChanged(); } }
+    private string toxicProtectionDisplay;
+    public string ToxicProtectionDisplay { get { return toxicProtectionDisplay; } private set { toxicProtectionDisplay = value; OnPropertyChanged(); } }
+    private string healthPercentageDisplay;
+    public string HealthPercentageDisplay { get { return healthPercentageDisplay; } private set { healthPercentageDisplay = value; OnPropertyChanged(); } }
+    private string headArmorPercentageDisplay;
+    public string HeadArmorPercentageDisplay { get { return headArmorPercentageDisplay; } private set { headArmorPercentageDisplay = value; OnPropertyChanged(); } }
+    private string runPercentageDisplay;
+    public string RunPercentageDisplay { get { return runPercentageDisplay; } private set { runPercentageDisplay = value; OnPropertyChanged(); } }
+    private string hrvDurationPercentageDisplay;
+    public string HRVDurationPercentageDisplay { get { return hrvDurationPercentageDisplay; } private set { hrvDurationPercentageDisplay = value; OnPropertyChanged(); } }
+    
+    private string hrvRechargePercentageDisplay;
+    public string HRVRechargePercentageDisplay { get { return hrvRechargePercentageDisplay; } private set { hrvRechargePercentageDisplay = value; OnPropertyChanged(); } }
+    private string gearSlotsPercentageDisplay;
+    public string GearSlotsPercentageDisplay { get { return gearSlotsPercentageDisplay; } private set { gearSlotsPercentageDisplay = value; OnPropertyChanged(); } }
+
     #endregion DisplayProperties
 
     private void UpdateImages()
@@ -372,6 +403,20 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         HRVDurationDisplay = HRVDuration.ToString("0.0") + 's';
         HRVRechargeDisplay = HRVRechargeRate.ToString("0.0") + "U/s";
         GearSlotsDsiplay = GearSlots.ToString("0");
+
+
+        ElectroProtectionDisplay = RawElectroProtection.ToString("0") + '%';
+        ExplosionProtectionDisplay = RawExplosiveProtection.ToString("0") + '%';
+        IncendiaryProtectionDisplay = RawIncendiaryProtection.ToString("0") + '%';
+        InfraredProtectionDisplay = RawInfraredProtection.ToString("0") + '%';
+        MeleeProtectionDisplay = RawMeleeProtection.ToString("0") + '%';
+        ToxicProtectionDisplay = RawToxicProtection.ToString("0") + '%';
+        HealthPercentageDisplay = RawHealth.ToString("0") + '%';
+        HeadArmorPercentageDisplay = HeadProtection.ToString("0") + '%';
+        RunPercentageDisplay = RawMoveSpeed.ToString("0") + '%';
+        HRVDurationPercentageDisplay = HRVDuration.ToString("0") + '%';
+        HRVRechargePercentageDisplay = HRVRechargeRate.ToString("0") + '%';
+        GearSlotsPercentageDisplay = GearSlots.ToString("0") + '%';
     }
 
     public void UpdateMagicCowsLoadout(MagiCowsLoadout loadout)

@@ -518,6 +518,47 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     private string zoomDisplay;
     public string ZoomDisplay { get { return zoomDisplay; } private set { zoomDisplay = value; OnPropertyChanged(); } }
 
+
+    private string fragmentsPerShellDisplay;
+    public string FragmentsPerShellDisplay { get { return fragmentsPerShellDisplay; } private set { fragmentsPerShellDisplay = value; OnPropertyChanged(); } }
+    
+    private string zoomFirerateDisplay;
+    public string ZoomFirerateDisplay { get { return zoomFirerateDisplay; } private set { zoomFirerateDisplay = value; OnPropertyChanged(); } }
+    
+    private string spreadCrouchMultiplierDisplay;
+    public string SpreadCrouchMultiplierDisplay { get { return spreadCrouchMultiplierDisplay; } private set { spreadCrouchMultiplierDisplay = value; OnPropertyChanged(); } }
+
+    private string spreadJumpMultiplierDisplay;
+    public string SpreadJumpMultiplierDisplay { get { return spreadJumpMultiplierDisplay; } private set { spreadJumpMultiplierDisplay = value; OnPropertyChanged(); } }
+
+    private string spreadCenterWeightDisplay;
+    public string SpreadCenterWeightDisplay { get { return spreadCenterWeightDisplay; } private set { spreadCenterWeightDisplay = value; OnPropertyChanged(); } }
+
+    private string spreadCenterDisplay;
+    public string SpreadCenterDisplay { get { return spreadCenterDisplay; } private set { spreadCenterDisplay = value; OnPropertyChanged(); } }
+
+    private string recoilVerticalRatioDisplay;
+    public string RecoilVerticalRatioDisplay { get { return recoilVerticalRatioDisplay; } private set { recoilVerticalRatioDisplay = value; OnPropertyChanged(); } }
+
+    private string recoilRecoveryTimeDisplay;
+    public string RecoilRecoveryTimeDisplay { get { return recoilRecoveryTimeDisplay; } private set { recoilRecoveryTimeDisplay = value; OnPropertyChanged(); } }
+
+
+    private string damagePercentDisplay;
+    public string DamagePercentageDisplay { get { return damagePercentDisplay; } private set { damagePercentDisplay = value; OnPropertyChanged(); } }
+    private string accuracyPercentageDisplay;
+    public string AccuracyPercentageDisplay { get { return accuracyPercentageDisplay; } private set { accuracyPercentageDisplay = value; OnPropertyChanged(); } }
+    private string rangePercentageDisplay;
+    public string RangePercentageDisplay { get { return rangePercentageDisplay; } private set { rangePercentageDisplay = value; OnPropertyChanged(); } }
+    private string reloadPercentageDisplay;
+    public string ReloadPercentageDisplay { get { return reloadPercentageDisplay; } private set { reloadPercentageDisplay = value; OnPropertyChanged(); } }
+    private string recoilPercentageDisplay;
+    public string RecoilPercentageDisplay { get { return recoilPercentageDisplay; } private set { recoilPercentageDisplay = value; OnPropertyChanged(); } }
+    private string runPercentageDisplay;
+    public string RunPercentageDisplay { get { return runPercentageDisplay; } private set { runPercentageDisplay = value; OnPropertyChanged(); } }
+
+
+
     #endregion DisplayStats
     private void RemoveIncompatibleMods()
     {
@@ -646,10 +687,10 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         WeaponDescriptorPart3 = Reciever.GetDescriptorName(TotalRatingPoints);
         WeaponDescriptor = WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3;
 
-        CreateDisplays();
+        CreateDisplayProperties();
     }
 
-    private void CreateDisplays()
+    private void CreateDisplayProperties()
     {
         DamageDisplay = DamageClose.ToString("0.0") + " / " + DamageFar.ToString("0.0");
         RateOfFireDisplay = ModifiedRateOfFire.ToString("0");
@@ -665,6 +706,22 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTracer.ToString("0");
         RunDisplay = ModifiedRunSpeed.ToString("0.00");
         ZoomDisplay = 'x' + ZoomMagnification.ToString("0.00");
+
+        FragmentsPerShellDisplay = FragmentsPerShell.ToString("0");
+        ZoomFirerateDisplay = ZoomRateOfFire.ToString("0");
+        SpreadCrouchMultiplierDisplay = SpreadCrouchMultiplier.ToString("0.0");
+        SpreadJumpMultiplierDisplay = SpreadJumpMultiplier.ToString("0.0");
+        SpreadCenterWeightDisplay = SpreadCenterWeight.ToString("0.0");
+        SpreadCenterDisplay = SpreadCenter.ToString("0.0");
+        RecoilVerticalRatioDisplay = VerticalRecoilRatio.ToString("0.0");
+        RecoilRecoveryTimeDisplay = RecoilRecoveryTime.ToString("0.00");
+
+        DamagePercentageDisplay = DamagePercentage.ToString("0") + '%';
+        AccuracyPercentageDisplay = AccuracyPercentage.ToString("0") + '%';
+        RangePercentageDisplay = RangePercentage.ToString("0") + '%';
+        ReloadPercentageDisplay = ReloadSpeedPercentage.ToString("0") + '%';
+        RecoilPercentageDisplay = RecoilPercentage.ToString("0") + '%';
+        RunPercentageDisplay = MovementSpeedPercentage.ToString("0") + '%';
     }
 
     private void ResetStats()

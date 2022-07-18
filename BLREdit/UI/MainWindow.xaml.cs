@@ -91,6 +91,7 @@ public partial class MainWindow : Window
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
 
         LoadoutGrid.DataContext = Loadout;
+        AdvancedInfo.DataContext = Loadout;
     }
 
     private void UpdateStats2()
