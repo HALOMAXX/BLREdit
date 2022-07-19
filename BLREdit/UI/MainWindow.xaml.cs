@@ -61,7 +61,7 @@ public partial class MainWindow : Window
         InitializeComponent();
         //CreateTags();
 
-        ItemListButton_Click(ItemListButton, new RoutedEventArgs());
+        
 
         ItemList.Items.Filter += new Predicate<object>(o =>
         {
@@ -92,6 +92,10 @@ public partial class MainWindow : Window
 
         LoadoutGrid.DataContext = Loadout;
         AdvancedInfo.DataContext = Loadout;
+        MenuGrid.DataContext = this;
+
+
+        ItemListButton_Click(ItemListButton, new RoutedEventArgs());
     }
 
     private void UpdateStats2()
@@ -975,15 +979,15 @@ public partial class MainWindow : Window
 
     #endregion OldCalcs
 
-    private static void CheckValidity(Image image, BLRItem item)
-    {
-        if (item.Tooltip == "Depot Item!") image.DataContext = null;
-        if(image.DataContext is BLRItem BLRItem)
-        {
-            if (!BLRItem.IsValidFor(item)) //|| !item.IsValidModType(BLRItem.Category)
-            { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(BLRItem.Name + " was not a Valid Mod for " + item.Name); image.DataContext = null; }
-        }
-    }
+    //private static void CheckValidity(Image image, BLRItem item)
+    //{
+    //    if (item.Tooltip == "Depot Item!") image.DataContext = null;
+    //    if(image.DataContext is BLRItem BLRItem)
+    //    {
+    //        if (!BLRItem.IsValidFor(item)) //|| !item.IsValidModType(BLRItem.Category)
+    //        { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(BLRItem.Name + " was not a Valid Mod for " + item.Name); image.DataContext = null; }
+    //    }
+    //}
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
@@ -1171,195 +1175,195 @@ public partial class MainWindow : Window
         Loadout.UpdateMagicCowsLoadout(ActiveLoadout);
     }
 
-    public void UpdateArmorStats()
-    {
-        var helmet = (HelmetImage.DataContext as BLRItem);
-        var upperBody = (UpperBodyImage.DataContext as BLRItem);
-        var lowerBody = (LowerBodyImage.DataContext as BLRItem);
-        var tactical = (TacticalImage.DataContext as BLRItem);
-        UpdateHealth(helmet, upperBody, lowerBody);
-        UpdateHeadProtection(helmet);
-        UpdateRun(helmet, upperBody, lowerBody);
-        UpdateHRV(helmet, tactical);
-        UpdateHRVRecharge(helmet, tactical);
-        UpdateGearSlots(upperBody, lowerBody);
-        UpdateProtections();
-    }
+    //public void UpdateArmorStats()
+    //{
+    //    var helmet = (HelmetImage.DataContext as BLRItem);
+    //    var upperBody = (UpperBodyImage.DataContext as BLRItem);
+    //    var lowerBody = (LowerBodyImage.DataContext as BLRItem);
+    //    var tactical = (TacticalImage.DataContext as BLRItem);
+    //    UpdateHealth(helmet, upperBody, lowerBody);
+    //    UpdateHeadProtection(helmet);
+    //    UpdateRun(helmet, upperBody, lowerBody);
+    //    UpdateHRV(helmet, tactical);
+    //    UpdateHRVRecharge(helmet, tactical);
+    //    UpdateGearSlots(upperBody, lowerBody);
+    //    UpdateProtections();
+    //}
 
 
-    public void UpdateProtections()
-    {
-        var helmet = (HelmetImage.DataContext as BLRItem);
-        var gear1 = (GearImage1.DataContext as BLRItem);
-        var gear2 = (GearImage2.DataContext as BLRItem);
-        var gear3 = (GearImage3.DataContext as BLRItem);
-        var gear4 = (GearImage4.DataContext as BLRItem);
+    //public void UpdateProtections()
+    //{
+    //    var helmet = (HelmetImage.DataContext as BLRItem);
+    //    var gear1 = (GearImage1.DataContext as BLRItem);
+    //    var gear2 = (GearImage2.DataContext as BLRItem);
+    //    var gear3 = (GearImage3.DataContext as BLRItem);
+    //    var gear4 = (GearImage4.DataContext as BLRItem);
 
-        double electroProt = helmet?.PawnModifiers?.ElectroProtection ?? 0;
-        electroProt += gear1?.PawnModifiers?.ElectroProtection ?? 0;
-        electroProt += gear2?.PawnModifiers?.ElectroProtection ?? 0;
-        electroProt += gear3?.PawnModifiers?.ElectroProtection ?? 0;
-        electroProt += gear4?.PawnModifiers?.ElectroProtection ?? 0;
-        electroProt = Math.Min(electroProt, 100.0);
+    //    double electroProt = helmet?.PawnModifiers?.ElectroProtection ?? 0;
+    //    electroProt += gear1?.PawnModifiers?.ElectroProtection ?? 0;
+    //    electroProt += gear2?.PawnModifiers?.ElectroProtection ?? 0;
+    //    electroProt += gear3?.PawnModifiers?.ElectroProtection ?? 0;
+    //    electroProt += gear4?.PawnModifiers?.ElectroProtection ?? 0;
+    //    electroProt = Math.Min(electroProt, 100.0);
 
-        double exploProt = helmet?.PawnModifiers?.ExplosiveProtection ?? 0;
-        exploProt += gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
-        exploProt += gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
-        exploProt += gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
-        exploProt += gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
-        exploProt = Math.Min(exploProt, 100.0);
+    //    double exploProt = helmet?.PawnModifiers?.ExplosiveProtection ?? 0;
+    //    exploProt += gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
+    //    exploProt += gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
+    //    exploProt += gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
+    //    exploProt += gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
+    //    exploProt = Math.Min(exploProt, 100.0);
 
-        double incendiaryProt = helmet?.PawnModifiers?.IncendiaryProtection ?? 0;
-        incendiaryProt += gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
-        incendiaryProt += gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
-        incendiaryProt += gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
-        incendiaryProt += gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
-        incendiaryProt = Math.Min(incendiaryProt, 100.0);
+    //    double incendiaryProt = helmet?.PawnModifiers?.IncendiaryProtection ?? 0;
+    //    incendiaryProt += gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
+    //    incendiaryProt += gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
+    //    incendiaryProt += gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
+    //    incendiaryProt += gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
+    //    incendiaryProt = Math.Min(incendiaryProt, 100.0);
 
-        double infraProt = helmet?.PawnModifiers?.InfraredProtection ?? 0;
-        infraProt += gear1?.PawnModifiers?.InfraredProtection ?? 0;
-        infraProt += gear2?.PawnModifiers?.InfraredProtection ?? 0;
-        infraProt += gear3?.PawnModifiers?.InfraredProtection ?? 0;
-        infraProt += gear4?.PawnModifiers?.InfraredProtection ?? 0;
-        infraProt = Math.Min(infraProt, 100.0);
+    //    double infraProt = helmet?.PawnModifiers?.InfraredProtection ?? 0;
+    //    infraProt += gear1?.PawnModifiers?.InfraredProtection ?? 0;
+    //    infraProt += gear2?.PawnModifiers?.InfraredProtection ?? 0;
+    //    infraProt += gear3?.PawnModifiers?.InfraredProtection ?? 0;
+    //    infraProt += gear4?.PawnModifiers?.InfraredProtection ?? 0;
+    //    infraProt = Math.Min(infraProt, 100.0);
 
-        double meleeProt = helmet?.PawnModifiers?.MeleeProtection ?? 0;
-        meleeProt += gear1?.PawnModifiers?.MeleeProtection ?? 0;
-        meleeProt += gear2?.PawnModifiers?.MeleeProtection ?? 0;
-        meleeProt += gear3?.PawnModifiers?.MeleeProtection ?? 0;
-        meleeProt += gear4?.PawnModifiers?.MeleeProtection ?? 0;
-        meleeProt = Math.Min(meleeProt, 100.0);
+    //    double meleeProt = helmet?.PawnModifiers?.MeleeProtection ?? 0;
+    //    meleeProt += gear1?.PawnModifiers?.MeleeProtection ?? 0;
+    //    meleeProt += gear2?.PawnModifiers?.MeleeProtection ?? 0;
+    //    meleeProt += gear3?.PawnModifiers?.MeleeProtection ?? 0;
+    //    meleeProt += gear4?.PawnModifiers?.MeleeProtection ?? 0;
+    //    meleeProt = Math.Min(meleeProt, 100.0);
 
-        double toxicProt = helmet?.PawnModifiers?.ToxicProtection ?? 0;
-        toxicProt += gear1?.PawnModifiers?.ToxicProtection ?? 0;
-        toxicProt += gear2?.PawnModifiers?.ToxicProtection ?? 0;
-        toxicProt += gear3?.PawnModifiers?.ToxicProtection ?? 0;
-        toxicProt += gear4?.PawnModifiers?.ToxicProtection ?? 0;
-        toxicProt = Math.Min(toxicProt, 100.0);
+    //    double toxicProt = helmet?.PawnModifiers?.ToxicProtection ?? 0;
+    //    toxicProt += gear1?.PawnModifiers?.ToxicProtection ?? 0;
+    //    toxicProt += gear2?.PawnModifiers?.ToxicProtection ?? 0;
+    //    toxicProt += gear3?.PawnModifiers?.ToxicProtection ?? 0;
+    //    toxicProt += gear4?.PawnModifiers?.ToxicProtection ?? 0;
+    //    toxicProt = Math.Min(toxicProt, 100.0);
 
-        ArmorGearElectroProtectionLabel.Content = electroProt.ToString("0") + '%';
-        ArmorGearExplosiveProtectionLabel.Content = exploProt.ToString("0") + '%';
-        ArmorGearIncendiaryLabel.Content = incendiaryProt.ToString("0") + '%';
-        ArmorGearInfraredProtectionLabel.Content = infraProt.ToString("0") + '%';
-        ArmorGearMeleeProtectionLabel.Content = meleeProt.ToString("0") + '%';
-        ArmorGearToxicProtectionLabel.Content = toxicProt.ToString("0") + '%';
-    }
+    //    ArmorGearElectroProtectionLabel.Content = electroProt.ToString("0") + '%';
+    //    ArmorGearExplosiveProtectionLabel.Content = exploProt.ToString("0") + '%';
+    //    ArmorGearIncendiaryLabel.Content = incendiaryProt.ToString("0") + '%';
+    //    ArmorGearInfraredProtectionLabel.Content = infraProt.ToString("0") + '%';
+    //    ArmorGearMeleeProtectionLabel.Content = meleeProt.ToString("0") + '%';
+    //    ArmorGearToxicProtectionLabel.Content = toxicProt.ToString("0") + '%';
+    //}
 
 
-    public void UpdateHealth(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
-    {
-        double allHealth = (helmet?.PawnModifiers.Health ?? 0);
-        allHealth += (upperBody?.PawnModifiers.Health ?? 0);
-        allHealth += (lowerBody?.PawnModifiers.Health ?? 0);
-        allHealth = Math.Min(Math.Max((int)allHealth, -100), 100);
+    //public void UpdateHealth(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
+    //{
+    //    double allHealth = (helmet?.PawnModifiers.Health ?? 0);
+    //    allHealth += (upperBody?.PawnModifiers.Health ?? 0);
+    //    allHealth += (lowerBody?.PawnModifiers.Health ?? 0);
+    //    allHealth = Math.Min(Math.Max((int)allHealth, -100), 100);
 
-        HealthGearModLabel.Content = allHealth.ToString("0") + '%';
+    //    HealthGearModLabel.Content = allHealth.ToString("0") + '%';
 
-        double health_alpha = Math.Abs(allHealth) / 100;
+    //    double health_alpha = Math.Abs(allHealth) / 100;
 
-        double basehealth = 200;
-        double currentHealth;
+    //    double basehealth = 200;
+    //    double currentHealth;
 
-        if (allHealth > 0)
-        {
-            currentHealth = Lerp(basehealth, 250, health_alpha);
-        }
-        else
-        {
-            currentHealth = Lerp(basehealth, 150, health_alpha);
-        }
+    //    if (allHealth > 0)
+    //    {
+    //        currentHealth = Lerp(basehealth, 250, health_alpha);
+    //    }
+    //    else
+    //    {
+    //        currentHealth = Lerp(basehealth, 150, health_alpha);
+    //    }
 
-        ArmorHealthLabel.Content = currentHealth.ToString("0");
-    }
-    public void UpdateHeadProtection(BLRItem helmet)
-    {
-        double currentHSProt = (helmet?.PawnModifiers.HelmetDamageReduction ?? 0);
-        ArmorHeadProtectionLabel.Content = currentHSProt.ToString("0.0") + '%';
-        HeadArmorGearModLabel.Content = currentHSProt.ToString("0.0") + '%';
+    //    ArmorHealthLabel.Content = currentHealth.ToString("0");
+    //}
+    //public void UpdateHeadProtection(BLRItem helmet)
+    //{
+    //    double currentHSProt = (helmet?.PawnModifiers.HelmetDamageReduction ?? 0);
+    //    ArmorHeadProtectionLabel.Content = currentHSProt.ToString("0.0") + '%';
+    //    HeadArmorGearModLabel.Content = currentHSProt.ToString("0.0") + '%';
 
-    }
-    public void UpdateRun(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
-    {
-        double finalRun = GetMoveSpeedArmor(helmet, upperBody, lowerBody) / 100.0;
-        ArmorRunLabel.Content = finalRun.ToString("0.00");
-    }
+    //}
+    //public void UpdateRun(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
+    //{
+    //    double finalRun = GetMoveSpeedArmor(helmet, upperBody, lowerBody) / 100.0;
+    //    ArmorRunLabel.Content = finalRun.ToString("0.00");
+    //}
 
-    public static double GetMoveSpeedArmor(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
-    {
-        double allRun = (helmet?.PawnModifiers.MovementSpeed ?? 0);
-        allRun += (upperBody?.PawnModifiers.MovementSpeed ?? 0);
-        allRun += (lowerBody?.PawnModifiers.MovementSpeed ?? 0);
-        allRun = Math.Min(Math.Max(allRun, -100), 100);
+    //public static double GetMoveSpeedArmor(BLRItem helmet, BLRItem upperBody, BLRItem lowerBody)
+    //{
+    //    double allRun = (helmet?.PawnModifiers.MovementSpeed ?? 0);
+    //    allRun += (upperBody?.PawnModifiers.MovementSpeed ?? 0);
+    //    allRun += (lowerBody?.PawnModifiers.MovementSpeed ?? 0);
+    //    allRun = Math.Min(Math.Max(allRun, -100), 100);
 
-        Self.RunGearModLabel.Content = allRun.ToString("0") + '%';
+    //    Self.RunGearModLabel.Content = allRun.ToString("0") + '%';
 
-        double run_alpha = Math.Abs(allRun) / 100;
+    //    double run_alpha = Math.Abs(allRun) / 100;
 
-        double baserun = 765;
-        double currentRun;
+    //    double baserun = 765;
+    //    double currentRun;
 
-        if (allRun > 0)
-        {
-            currentRun = Lerp(baserun, 900, run_alpha);
-        }
-        else
-        {
-            currentRun = Lerp(baserun, 630, run_alpha);
-        }
+    //    if (allRun > 0)
+    //    {
+    //        currentRun = Lerp(baserun, 900, run_alpha);
+    //    }
+    //    else
+    //    {
+    //        currentRun = Lerp(baserun, 630, run_alpha);
+    //    }
 
-        return currentRun;
-    }
-    public void UpdateHRV(BLRItem helmet, BLRItem tactical)
-    {
-        double allHRV = (helmet?.PawnModifiers.HRVDuration ?? 0) + (tactical?.PawnModifiers.HRVDuration ?? 0);
-        double currentHRV = Math.Min(Math.Max(allHRV, 40.0), 100.0);
-        ArmorHRVLabel.Content = currentHRV.ToString("0.0") + 'u';
-        HRVDurationGearModLabel.Content = currentHRV.ToString("0.0") + 'u';
-    }
-    public void UpdateHRVRecharge(BLRItem helmet, BLRItem tactical)
-    {
-        double currentHRVRecharge = Math.Min(Math.Max((helmet?.PawnModifiers.HRVRechargeRate ?? 0) + (tactical?.PawnModifiers.HRVRechargeRate ?? 0), 5.0), 10.0);
-        ArmorHRVRechargeLabel.Content = currentHRVRecharge.ToString("0.0") + "u/s";
-        HRVRechargeGearModLabel.Content = currentHRVRecharge.ToString("0.0") + "u/s";
-    }
-    public void UpdateGearSlots(BLRItem upperBody, BLRItem lowerBody)
-    { 
-        double currentGearSlots = (upperBody?.PawnModifiers?.GearSlots ?? 0) + (lowerBody?.PawnModifiers?.GearSlots ?? 0);
+    //    return currentRun;
+    //}
+    //public void UpdateHRV(BLRItem helmet, BLRItem tactical)
+    //{
+    //    double allHRV = (helmet?.PawnModifiers.HRVDuration ?? 0) + (tactical?.PawnModifiers.HRVDuration ?? 0);
+    //    double currentHRV = Math.Min(Math.Max(allHRV, 40.0), 100.0);
+    //    ArmorHRVLabel.Content = currentHRV.ToString("0.0") + 'u';
+    //    HRVDurationGearModLabel.Content = currentHRV.ToString("0.0") + 'u';
+    //}
+    //public void UpdateHRVRecharge(BLRItem helmet, BLRItem tactical)
+    //{
+    //    double currentHRVRecharge = Math.Min(Math.Max((helmet?.PawnModifiers.HRVRechargeRate ?? 0) + (tactical?.PawnModifiers.HRVRechargeRate ?? 0), 5.0), 10.0);
+    //    ArmorHRVRechargeLabel.Content = currentHRVRecharge.ToString("0.0") + "u/s";
+    //    HRVRechargeGearModLabel.Content = currentHRVRecharge.ToString("0.0") + "u/s";
+    //}
+    //public void UpdateGearSlots(BLRItem upperBody, BLRItem lowerBody)
+    //{ 
+    //    double currentGearSlots = (upperBody?.PawnModifiers?.GearSlots ?? 0) + (lowerBody?.PawnModifiers?.GearSlots ?? 0);
 
-        GearSlotsGearModLabel.Content = currentGearSlots.ToString("0");
+    //    GearSlotsGearModLabel.Content = currentGearSlots.ToString("0");
 
-        GearImage1.IsEnabled = false;
-        GearImage2.IsEnabled = false;
-        GearImage3.IsEnabled = false;
-        GearImage4.IsEnabled = false;
+    //    GearImage1.IsEnabled = false;
+    //    GearImage2.IsEnabled = false;
+    //    GearImage3.IsEnabled = false;
+    //    GearImage4.IsEnabled = false;
 
-        Gear1Rect.Visibility = Visibility.Visible;
-        Gear2Rect.Visibility = Visibility.Visible;
-        Gear3Rect.Visibility = Visibility.Visible;
-        Gear4Rect.Visibility = Visibility.Visible;
+    //    Gear1Rect.Visibility = Visibility.Visible;
+    //    Gear2Rect.Visibility = Visibility.Visible;
+    //    Gear3Rect.Visibility = Visibility.Visible;
+    //    Gear4Rect.Visibility = Visibility.Visible;
 
-        if (currentGearSlots > 0)
-        { 
-            GearImage1.IsEnabled = true;
-            Gear1Rect.Visibility = Visibility.Hidden;
-        }
-        if (currentGearSlots > 1)
-        {
-            GearImage2.IsEnabled = true;
-            Gear2Rect.Visibility = Visibility.Hidden;
-        }
-        if (currentGearSlots > 2)
-        {
-            GearImage3.IsEnabled = true;
-            Gear3Rect.Visibility = Visibility.Hidden;
-        }
-        if (currentGearSlots > 3)
-        {
-            GearImage4.IsEnabled = true;
-            Gear4Rect.Visibility = Visibility.Hidden;
-        }
-        ArmorGearLabel.Content = currentGearSlots.ToString("0");
-    }
+    //    if (currentGearSlots > 0)
+    //    { 
+    //        GearImage1.IsEnabled = true;
+    //        Gear1Rect.Visibility = Visibility.Hidden;
+    //    }
+    //    if (currentGearSlots > 1)
+    //    {
+    //        GearImage2.IsEnabled = true;
+    //        Gear2Rect.Visibility = Visibility.Hidden;
+    //    }
+    //    if (currentGearSlots > 2)
+    //    {
+    //        GearImage3.IsEnabled = true;
+    //        Gear3Rect.Visibility = Visibility.Hidden;
+    //    }
+    //    if (currentGearSlots > 3)
+    //    {
+    //        GearImage4.IsEnabled = true;
+    //        Gear4Rect.Visibility = Visibility.Hidden;
+    //    }
+    //    ArmorGearLabel.Content = currentGearSlots.ToString("0");
+    //}
 
     private static bool CheckForPistolAndBarrel(BLRItem item)
     {
@@ -1952,31 +1956,21 @@ public partial class MainWindow : Window
     private void ItemListButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button)
-        { 
-            ItemListButton.IsEnabled = true;
-            AdvancedInfoButton.IsEnabled = true;
+        {
+            foreach (FrameworkElement element in MenuGrid.Children)
+            {
+                if (element.Tag is UIElement otherElement)
+                { 
+                    otherElement.Visibility = Visibility.Collapsed;
+                    otherElement.IsEnabled = false;
+                }
+                element.IsEnabled = true;
+            }
             button.IsEnabled = false;
-
-            if (sender == ItemListButton)
-            {
-                ItemList.Visibility = Visibility.Visible;
-                ItemList.IsEnabled = true;
-            }
-            else
-            {
-                ItemList.Visibility = Visibility.Collapsed;
-                ItemList.IsEnabled = false;
-            }
-
-            if (sender == AdvancedInfoButton)
-            {
-                AdvancedInfo.Visibility = Visibility.Visible;
-                AdvancedInfo.IsEnabled = true;
-            }
-            else
-            {
-                AdvancedInfo.Visibility = Visibility.Collapsed;
-                AdvancedInfo.IsEnabled = false;
+            if (button.Tag is FrameworkElement element2)
+            { 
+                element2.Visibility = Visibility.Visible;
+                element2.IsEnabled = true;
             }
         }
     }

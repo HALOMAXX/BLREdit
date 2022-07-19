@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:utils="clr-namespace:BLREdit" d:DataContext="{d:DesignInstance Type=utils:BLRLoadoutSetup}"
+        xmlns:ui="clr-namespace:BLREdit.UI"
         mc:Ignorable="d"
-        Title="BLREdit" Height="1032" Width="1920" Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Red">
+        Title="BLREdit" Height="1032" Width="1920" MinWidth="480"  Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Red">
 
     <Window.Background>
         <ImageBrush ImageSource="Resources/Default_2016.png" />
     </Window.Background>
     <Grid AllowDrop="True">
-        <ListView x:Name="ItemList" Margin="374,22,0,0">
+        <ListView Name="ItemList" Margin="374,22,0,0" x:FieldModifier="public">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -141,7 +142,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ScrollViewer Name="AdvancedInfo" Margin="374,22,0,0" HorizontalScrollBarVisibility="Auto" Visibility="Visible">
+        <ScrollViewer Name="AdvancedInfo" Margin="374,22,0,0" HorizontalScrollBarVisibility="Auto" Visibility="Visible" x:FieldModifier="public">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Grid Width="Auto">
@@ -292,10 +293,13 @@
         <ComboBox Name="SortComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="379,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
         <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="500,0,0,0" Click="ChangeSortingDirection"/>
 
-        <Button Name="ItemListButton" Content="Item List" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="667,0,0,0" Click="ItemListButton_Click"/>
-        <Button Name="AdvancedInfoButton" Content="Advanced Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="793,0,0,0" Click="ItemListButton_Click"/>
+        <Grid Name="MenuGrid" d:DataContext="{d:DesignInstance Type=ui:MainWindow}">
+            <Button Name="ItemListButton" Content="Item List" Tag="{Binding ElementName=ItemList}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="667,0,0,0" Click="ItemListButton_Click"/>
+            <Button Name="AdvancedInfoButton" Content="Advanced Info" Tag="{Binding ElementName=AdvancedInfo}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="793,0,0,0" Click="ItemListButton_Click"/>
+            <Button Name="LauncherButton" Content="Launcher" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="918,0,0,0" Click="ItemListButton_Click"/>
+        </Grid>
 
-        <Grid Name="LoadoutGrid" HorizontalAlignment="Left" Width="374">
+        <Grid Name="LoadoutGrid" HorizontalAlignment="Left" Width="374" x:FieldModifier="public">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <Grid Name="ProfileGrid">
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
@@ -419,8 +423,8 @@
                     <Label Name="SecondaryRangeLabel" Content="{Binding Path=Secondary.RangeDisplay}" HorizontalAlignment="Left" Margin="265,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Run:" HorizontalAlignment="Left" Margin="235,677,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryRunLabel" Content="{Binding Path=Secondary.RunDisplay}" HorizontalAlignment="Left" Margin="271,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    
-                    
+
+
                     <ComboBox Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="ProfileComboBox_SelectionChanged"/>
                     <Button Name="Loadout1Button" Content="Loadout 1" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout1Button_Click"/>
                     <Button Name="Loadout2Button" Content="Loadout 2" HorizontalAlignment="Left" Margin="120,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout2Button_Click"/>
@@ -517,8 +521,8 @@
 
                     <Label Content="Gear Slots:" HorizontalAlignment="Left" Margin="202,928,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorGearLabel" Content="{Binding Path=GearSlotsDsiplay}" HorizontalAlignment="Left" Margin="262,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    
-                    
+
+
                     <Button Name="RandomLoadout" Content="RandomLoadout" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
 
                 </Grid>

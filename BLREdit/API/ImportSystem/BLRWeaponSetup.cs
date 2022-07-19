@@ -677,7 +677,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             OnPropertyChanged(nameof(tag));
         }
 
-        AllowStock();
+        //AllowStock();
     }
 
     private void CalculateStats()
