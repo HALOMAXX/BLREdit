@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:utils="clr-namespace:BLREdit" d:DataContext="{d:DesignInstance Type=utils:BLRLoadoutSetup}"
         xmlns:ui="clr-namespace:BLREdit.UI"
+        xmlns:game="clr-namespace:BLREdit.Game"
         mc:Ignorable="d"
         Title="BLREdit" Height="1032" Width="1920" MinWidth="480"  Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Red">
 
@@ -12,7 +13,7 @@
         <ImageBrush ImageSource="Resources/Default_2016.png" />
     </Window.Background>
     <Grid AllowDrop="True">
-        <ListView Name="ItemList" Margin="374,22,0,0" x:FieldModifier="public">
+        <ListView Name="ItemList" Margin="374,22,0,0" Visibility="Collapsed" x:FieldModifier="public">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -142,7 +143,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ScrollViewer Name="AdvancedInfo" Margin="374,22,0,0" HorizontalScrollBarVisibility="Auto" Visibility="Visible" x:FieldModifier="public">
+        <ScrollViewer Name="AdvancedInfo" Margin="374,22,0,0" HorizontalScrollBarVisibility="Auto" Visibility="Collapsed" x:FieldModifier="public">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Grid Width="Auto">
@@ -290,13 +291,278 @@
             </Grid>
         </ScrollViewer>
 
+        <Grid Margin="374,22,0,0" Name="LauncherMenu" d:DataContext="{d:DesignInstance Type=ui:MainWindow}">
+            <Button Name="ServerListButton" Content="Server List" Tag="{Binding ElementName=ServerGrid}" Click="LauncherMenuButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="24"/>
+            <Button Name="GameClientButton" Content="Client List" Tag="{Binding ElementName=ClientGrid}" Click="LauncherMenuButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="24" Margin="126,0,0,0"/>
+            <Grid Name="ClientGrid" Visibility="Collapsed" Margin="0,24,0,0">
+                <Button Content="       Add New Game Client" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="OpenNewGameClient_Click"/>
+                <ListView Name="GameClientList" x:FieldModifier="public" Margin="0,0,0,40">
+                    <Button/>
+                    <!--This is for Desing Purposes-->
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid>
+                                            <ContentPresenter   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="game:GameClient">
+                            <Grid HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="262" />
+                                    <ColumnDefinition Width="262" />
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="70" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="5,0" />
+                                        <Setter Property="Foreground" Value="White" />
+                                    </Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="BorderThickness" Value="1" />
+                                        <Setter Property="BorderBrush" Value="LightGray" />
+                                        <Setter Property="Background" Value="Transparent" />
+                                    </Style>
+                                </Grid.Resources>
+                                <Border Grid.Column="0" >
+                                    <Button Content="X" Click="RemoveGameClient_Click"/>
+                                </Border>
+                                <Border Grid.Column="1" >
+                                    <TextBox Text="{Binding Path=OriginalPath}" IsReadOnly="True" HorizontalAlignment="Stretch"/>
+                                </Border>
+                                <Border Grid.Column="2" >
+                                    <TextBox Text="{Binding Path=PatchedPath}" IsReadOnly="True" HorizontalAlignment="Stretch"/>
+                                </Border>
+                                <Border Grid.Column="3" >
+                                    <Button Content="{Binding Path=IsPatched}" IsEnabled="{Binding Path=IsNotPatched}" IsHitTestVisible="False"/>
+                                </Border>
+                                <Border Grid.Column="4" >
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border Grid.Column="5" >
+                                    <Button Content="Launch" IsEnabled="{Binding Path=IsPatched}" Command="{Binding Path=LaunchClientCommand}"/>
+                                </Border>
+                                <Border Grid.Column="6" >
+                                    <Button Content="Default" IsEnabled="{Binding Path=IsNotCurrentClient}" Click="ChangeCurrentGameClient_Click"/>
+                                </Border>
+                                <Border Grid.Column="7" >
+                                    <Button Content="Patch" IsEnabled="{Binding Path=IsNotPatched}" Command="{Binding Path=PatchClientCommand}"/>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <ListView.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Left">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="262" />
+                                        <ColumnDefinition Width="262" />
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="70" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="5,0" />
+                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                        </Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="BorderThickness" Value="1" />
+                                            <Setter Property="BorderBrush" Value="White" />
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Style>
+                                    </Grid.Resources>
+                                    <Border Grid.Column="0">
+                                        <TextBlock>Del</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="1">
+                                        <TextBlock>Orignal Path</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="2">
+                                        <TextBlock>Patched Path</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="3">
+                                        <TextBlock>Is Patched</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="4">
+                                        <TextBlock></TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="5">
+                                        <TextBlock>Launch</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="6">
+                                        <TextBlock>Default</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="7">
+                                        <TextBlock>Patch</TextBlock>
+                                    </Border>
+                                </Grid>
+                                <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                            </Grid>
+                        </ControlTemplate>
+                    </ListView.Template>
+                </ListView>
+            </Grid>
+            <Grid Name="ServerGrid" Visibility="Visible" Margin="0,24,0,0">
+                <Button Content="       Add New Server" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="AddNewServer_Click"/>
+                <ListView Name="ServerListView" x:FieldModifier="public" Margin="0,0,0,40">
+                    <Button/>
+                    <!--This is for Desing Purposes-->
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid>
+                                            <ContentPresenter   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="game:BLRServer">
+                            <Grid HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="262" />
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="80" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="5,0" />
+                                        <Setter Property="Foreground" Value="White" />
+                                    </Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="BorderThickness" Value="1" />
+                                        <Setter Property="BorderBrush" Value="LightGray" />
+                                        <Setter Property="Background" Value="Transparent" />
+                                    </Style>
+                                </Grid.Resources>
+                                <Border Grid.Column="0" >
+                                    <Button Content="X" Click="RemoveServer_Click"/>
+                                </Border>
+                                <Border Grid.Column="1" >
+                                    <TextBox Text="{Binding Path=ServerAddress}" HorizontalAlignment="Stretch"/>
+                                </Border>
+                                <Border Grid.Column="2" >
+                                    <TextBox Text="{Binding Path=Port}" PreviewTextInput="PortValidation" HorizontalAlignment="Stretch"/>
+                                </Border>
+                                <Border Grid.Column="3" >
+                                    <Button Content="{Binding Path=IsOnline}" IsEnabled="{Binding Path=IsNotOnline}" IsHitTestVisible="False"/>
+                                </Border>
+                                <Border Grid.Column="4" >
+                                    <TextBox Text="{Binding Path=PingDisplay, Mode=OneWay}" IsReadOnly="True"/>
+                                </Border>
+                                <Border Grid.Column="5" >
+                                    <Button Content="Launch" Command="{Binding Path=LaunchServerCommand}"/>
+                                </Border>
+                                <Border Grid.Column="6" >
+                                    <Button Content="Default" IsEnabled="{Binding Path=IsNotDefaultServer}" Click="ChangeCurrentServer_Click"/>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <ListView.Template>
+                        <ControlTemplate>
+                            <Grid HorizontalAlignment="Left">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="262" />
+                                        <ColumnDefinition Width="70" />
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="80" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="5,0" />
+                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                        </Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="BorderThickness" Value="1" />
+                                            <Setter Property="BorderBrush" Value="White" />
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Style>
+                                    </Grid.Resources>
+                                    <Border Grid.Column="0">
+                                        <TextBlock>Del</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="1">
+                                        <TextBlock>Server Address</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="2">
+                                        <TextBlock>Port</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="3">
+                                        <TextBlock>IsOnline</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="4">
+                                        <TextBlock>Ping</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="5">
+                                        <TextBlock>Launch</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="6">
+                                        <TextBlock>Default</TextBlock>
+                                    </Border>
+                                </Grid>
+                                <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                            </Grid>
+                        </ControlTemplate>
+                    </ListView.Template>
+                </ListView>
+            </Grid>
+        </Grid>
+
         <ComboBox Name="SortComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="379,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
         <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="500,0,0,0" Click="ChangeSortingDirection"/>
 
         <Grid Name="MenuGrid" d:DataContext="{d:DesignInstance Type=ui:MainWindow}">
             <Button Name="ItemListButton" Content="Item List" Tag="{Binding ElementName=ItemList}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="667,0,0,0" Click="ItemListButton_Click"/>
             <Button Name="AdvancedInfoButton" Content="Advanced Info" Tag="{Binding ElementName=AdvancedInfo}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="793,0,0,0" Click="ItemListButton_Click"/>
-            <Button Name="LauncherButton" Content="Launcher" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="918,0,0,0" Click="ItemListButton_Click"/>
+            <Button Name="LauncherButton" Content="Launcher" Tag="{Binding ElementName=LauncherMenu}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="918,0,0,0" Click="ItemListButton_Click"/>
         </Grid>
 
         <Grid Name="LoadoutGrid" HorizontalAlignment="Left" Width="374" x:FieldModifier="public">

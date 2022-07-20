@@ -1,5 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Gameloop.Vdf;
+using Gameloop.Vdf.Linq;
+
+using Microsoft.Win32;
+
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -17,10 +23,56 @@ public class IOResources
     public const string WEAPON_FILE = ASSET_DIR + JSON_DIR + "weapons.json";
     public const string ITEM_LIST_FILE = ASSET_DIR + JSON_DIR + "itemList.json";
     public const string SETTINGS_FILE = "settings.json";
+    public const string GAME_APPID = "209870";
+    public const string GAME_PATH_SUFFIX = "\\steamapps\\common\\blacklightretribution\\Binaries\\Win32\\";
+    public const string GAME_DEFAULT_EXE = "FoxGame-win32-Shipping.exe";
+    public static string Steam32InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string;
+    public static string Steam6432InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath", "") as string;
+    public static List<string> GameFolders = new List<string>();
 
     public static Encoding FILE_ENCODING { get; } = Encoding.UTF8;
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
+
+    public static void GetGameLocationsFromSteam()
+    {
+        string steampath;
+        if (string.IsNullOrEmpty(Steam32InstallFolder))
+        {
+            steampath = Steam6432InstallFolder;
+        }
+        else
+        {
+            steampath = Steam32InstallFolder;
+        }
+
+        steampath += "\\steamapps\\";
+
+        GetGamePathFromVDF(steampath + "libraryfolders.vdf", GAME_APPID);
+    }
+
+    private static void GetGamePathFromVDF(string vdfPath, string appID)
+    {
+        var libraryInfo = VdfConvert.Deserialize(File.ReadAllText(vdfPath)).Value;
+        foreach (VProperty library in libraryInfo.Children())
+        {
+            if (library.Key != "contentstatsid")
+            {
+                //0 = path /// 6=apps
+                var tokens = library.Value.Children();
+                if (tokens.Count() >= 7)
+                {
+                    foreach (VProperty app in ((VProperty)tokens.ElementAt(6)).Value.Children())
+                    {
+                        if (app.Key == appID)
+                        {
+                            GameFolders.Add(((VValue)((VProperty)tokens.ElementAt(0)).Value).Value + GAME_PATH_SUFFIX);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     public static void CopyToBackup(string file)
     {

@@ -1,4 +1,6 @@
 {
+  "DefaultClient": null,
+  "DefaultServer": null,
   "EnableDebugging": false,
   "ShowUpdateNotice": true,
   "DoRuntimeCheck": true,

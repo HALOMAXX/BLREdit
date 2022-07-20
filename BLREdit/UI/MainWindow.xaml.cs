@@ -8,6 +8,9 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.ComponentModel;
+using BLREdit.Game;
+using Microsoft.Win32;
+using System.Text.RegularExpressions;
 
 namespace BLREdit.UI;
 
@@ -50,6 +53,9 @@ public partial class MainWindow : Window
     /// </summary>
     public bool IsPlayerProfileChanging { get; private set; } = false;
 
+    public List<GameClient> GameClients { get; set; } = new();
+    public List<BLRServer> ServerList { get; set; } = new();
+
     public static MainWindow Self { get; private set; } = null;
 
     public MainWindow()
@@ -59,9 +65,6 @@ public partial class MainWindow : Window
         IsPlayerNameChanging = true;
 
         InitializeComponent();
-        //CreateTags();
-
-        
 
         ItemList.Items.Filter += new Predicate<object>(o =>
         {
@@ -93,140 +96,141 @@ public partial class MainWindow : Window
         LoadoutGrid.DataContext = Loadout;
         AdvancedInfo.DataContext = Loadout;
         MenuGrid.DataContext = this;
-
+        LauncherMenu.DataContext = this;
 
         ItemListButton_Click(ItemListButton, new RoutedEventArgs());
+        LauncherMenuButton_Click(ServerListButton, new RoutedEventArgs());
     }
 
-    private void UpdateStats2()
-    {
-        #region PrimaryStats
-        PrimaryDamageLabel.Content = Loadout.Primary.DamageClose.ToString("0.0") + " / " + Loadout.Primary.DamageFar.ToString("0.0");
-        PrimaryRateOfFireLabel.Content = Loadout.Primary.ModifiedRateOfFire.ToString("0");
-        PrimaryAmmoLabel.Content = Loadout.Primary.ModifiedAmmoMagazine.ToString("0") + " / " + Loadout.Primary.ModifiedAmmoReserve.ToString("0");
-        PrimaryReloadLabel.Content = Loadout.Primary.ModifiedReloadSpeed.ToString("0.00") + 's';
-        PrimarySwapLabel.Content = Loadout.Primary.RawSwapRate.ToString("0.00");
-        PrimaryAimLabel.Content = Loadout.Primary.SpreadWhileADS.ToString("0.00") + '°';
-        PrimaryHipLabel.Content = Loadout.Primary.SpreadWhileStanding.ToString("0.00") + '°';
-        PrimaryMoveLabel.Content = Loadout.Primary.SpreadWhileMoving.ToString("0.00") + '°';
-        PrimaryRecoilLabel.Content = Loadout.Primary.RecoilHip.ToString("0.00") + '°';
-        PrimaryZoomRecoilLabel.Content = Loadout.Primary.RecoilZoom.ToString("0.00") + '°';
-        PrimaryZoomLabel.Content = Loadout.Primary.ZoomMagnification.ToString("0.00");
-        PrimaryScopeInLabel.Content = Loadout.Primary.ModifiedScopeInTime.ToString("0.000") + 's';
-        PrimaryRangeLabel.Content = Loadout.Primary.RangeClose.ToString("0.0") + " / " + Loadout.Primary.RangeFar.ToString("0.0") + " / " + Loadout.Primary.RangeTracer.ToString("0");
-        PrimaryRunLabel.Content = Loadout.Primary.ModifiedRunSpeed.ToString("0.00");
-        PrimaryDescriptorLabel.Content = Loadout.Primary.WeaponDescriptor;
+    //private void UpdateStats2()
+    //{
+    //    #region PrimaryStats
+    //    PrimaryDamageLabel.Content = Loadout.Primary.DamageClose.ToString("0.0") + " / " + Loadout.Primary.DamageFar.ToString("0.0");
+    //    PrimaryRateOfFireLabel.Content = Loadout.Primary.ModifiedRateOfFire.ToString("0");
+    //    PrimaryAmmoLabel.Content = Loadout.Primary.ModifiedAmmoMagazine.ToString("0") + " / " + Loadout.Primary.ModifiedAmmoReserve.ToString("0");
+    //    PrimaryReloadLabel.Content = Loadout.Primary.ModifiedReloadSpeed.ToString("0.00") + 's';
+    //    PrimarySwapLabel.Content = Loadout.Primary.RawSwapRate.ToString("0.00");
+    //    PrimaryAimLabel.Content = Loadout.Primary.SpreadWhileADS.ToString("0.00") + '°';
+    //    PrimaryHipLabel.Content = Loadout.Primary.SpreadWhileStanding.ToString("0.00") + '°';
+    //    PrimaryMoveLabel.Content = Loadout.Primary.SpreadWhileMoving.ToString("0.00") + '°';
+    //    PrimaryRecoilLabel.Content = Loadout.Primary.RecoilHip.ToString("0.00") + '°';
+    //    PrimaryZoomRecoilLabel.Content = Loadout.Primary.RecoilZoom.ToString("0.00") + '°';
+    //    PrimaryZoomLabel.Content = Loadout.Primary.ZoomMagnification.ToString("0.00");
+    //    PrimaryScopeInLabel.Content = Loadout.Primary.ModifiedScopeInTime.ToString("0.000") + 's';
+    //    PrimaryRangeLabel.Content = Loadout.Primary.RangeClose.ToString("0.0") + " / " + Loadout.Primary.RangeFar.ToString("0.0") + " / " + Loadout.Primary.RangeTracer.ToString("0");
+    //    PrimaryRunLabel.Content = Loadout.Primary.ModifiedRunSpeed.ToString("0.00");
+    //    PrimaryDescriptorLabel.Content = Loadout.Primary.WeaponDescriptor;
 
-        PrimaryRecoilVerticalRatioLabel.Content = Loadout.Primary.VerticalRecoilRatio.ToString("0.00");
-        PrimarySpreadCenterWeightLabel.Content = Loadout.Primary.SpreadCenterWeight.ToString("0.00");
-        PrimarySpreadCenterLabel.Content = Loadout.Primary.SpreadCenter.ToString("0.00");
-        PrimaryFragmentsPerShellLabel.Content = Loadout.Primary.FragmentsPerShell.ToString("0");
-        PrimaryZoomFirerateLabel.Content = Loadout.Primary.ZoomRateOfFire.ToString("0");
-        PrimarySpreadCrouchMultiplierLabel.Content = Loadout.Primary.SpreadCrouchMultiplier.ToString("0.00");
-        PrimarySpreadJumpMultiplierLabel.Content = Loadout.Primary.SpreadJumpMultiplier.ToString("0.00");
-        PrimaryRecoilRecoveryTimeLabel.Content = Loadout.Primary.RecoilRecoveryTime.ToString("0.00");
-        PrimaryModReloadLabel.Content = Loadout.Primary.ModifiedReloadSpeed.ToString("0.00") + 's';
+    //    PrimaryRecoilVerticalRatioLabel.Content = Loadout.Primary.VerticalRecoilRatio.ToString("0.00");
+    //    PrimarySpreadCenterWeightLabel.Content = Loadout.Primary.SpreadCenterWeight.ToString("0.00");
+    //    PrimarySpreadCenterLabel.Content = Loadout.Primary.SpreadCenter.ToString("0.00");
+    //    PrimaryFragmentsPerShellLabel.Content = Loadout.Primary.FragmentsPerShell.ToString("0");
+    //    PrimaryZoomFirerateLabel.Content = Loadout.Primary.ZoomRateOfFire.ToString("0");
+    //    PrimarySpreadCrouchMultiplierLabel.Content = Loadout.Primary.SpreadCrouchMultiplier.ToString("0.00");
+    //    PrimarySpreadJumpMultiplierLabel.Content = Loadout.Primary.SpreadJumpMultiplier.ToString("0.00");
+    //    PrimaryRecoilRecoveryTimeLabel.Content = Loadout.Primary.RecoilRecoveryTime.ToString("0.00");
+    //    PrimaryModReloadLabel.Content = Loadout.Primary.ModifiedReloadSpeed.ToString("0.00") + 's';
 
-        PrimaryModAccuracyLabel.Content = Loadout.Primary.AccuracyPercentage.ToString("0") + '%';
-        PrimaryModDamageLabel.Content = Loadout.Primary.DamagePercentage.ToString("0") + '%';
-        PrimaryModRangeLabel.Content = Loadout.Primary.RangePercentage.ToString("0") + '%';
-        PrimaryModRecoilLabel.Content = Loadout.Primary.RecoilPercentage.ToString("0") + '%';
-        PrimaryModReloadLabel.Content = Loadout.Primary.ReloadSpeedPercentage.ToString("0") + '%';
-        PrimaryModRunLabel.Content = Loadout.Primary.MovementSpeedPercentage.ToString("0") + '%';
-        #endregion PrimaryStats
+    //    PrimaryModAccuracyLabel.Content = Loadout.Primary.AccuracyPercentage.ToString("0") + '%';
+    //    PrimaryModDamageLabel.Content = Loadout.Primary.DamagePercentage.ToString("0") + '%';
+    //    PrimaryModRangeLabel.Content = Loadout.Primary.RangePercentage.ToString("0") + '%';
+    //    PrimaryModRecoilLabel.Content = Loadout.Primary.RecoilPercentage.ToString("0") + '%';
+    //    PrimaryModReloadLabel.Content = Loadout.Primary.ReloadSpeedPercentage.ToString("0") + '%';
+    //    PrimaryModRunLabel.Content = Loadout.Primary.MovementSpeedPercentage.ToString("0") + '%';
+    //    #endregion PrimaryStats
 
-        #region SecondaryStats
-        SecondaryDamageLabel.Content = Loadout.Secondary.DamageClose.ToString("0.0") + " / " + Loadout.Secondary.DamageFar.ToString("0.0");
-        SecondaryRateOfFireLabel.Content = Loadout.Secondary.ModifiedRateOfFire.ToString("0");
-        SecondaryAmmoLabel.Content = Loadout.Secondary.ModifiedAmmoMagazine.ToString("0") + " / " + Loadout.Secondary.ModifiedAmmoReserve.ToString("0");
-        SecondaryReloadLabel.Content = Loadout.Secondary.ModifiedReloadSpeed.ToString("0.00") + 's';
-        SecondarySwapLabel.Content = Loadout.Secondary.RawSwapRate.ToString("0.00");
-        SecondaryAimLabel.Content = Loadout.Secondary.SpreadWhileADS.ToString("0.00") + '°';
-        SecondaryHipLabel.Content = Loadout.Secondary.SpreadWhileStanding.ToString("0.00") + '°';
-        SecondaryMoveLabel.Content = Loadout.Secondary.SpreadWhileMoving.ToString("0.00") + '°';
-        SecondaryRecoilLabel.Content = Loadout.Secondary.RecoilHip.ToString("0.00") + '°';
-        SecondaryZoomRecoilLabel.Content = Loadout.Secondary.RecoilZoom.ToString("0.00") + '°';
-        SecondaryZoomLabel.Content = Loadout.Secondary.ZoomMagnification.ToString("0.00");
-        SecondaryScopeInLabel.Content = Loadout.Secondary.ModifiedScopeInTime.ToString("0.000") + 's';
-        SecondaryRangeLabel.Content = Loadout.Secondary.RangeClose.ToString("0.0") + " / " + Loadout.Secondary.RangeFar.ToString("0.0") + " / " + Loadout.Secondary.RangeTracer.ToString("0");
-        SecondaryRunLabel.Content = Loadout.Secondary.ModifiedRunSpeed.ToString("0.00");
-        SecondaryDescriptorLabel.Content = Loadout.Secondary.WeaponDescriptor;
+    //    #region SecondaryStats
+    //    SecondaryDamageLabel.Content = Loadout.Secondary.DamageClose.ToString("0.0") + " / " + Loadout.Secondary.DamageFar.ToString("0.0");
+    //    SecondaryRateOfFireLabel.Content = Loadout.Secondary.ModifiedRateOfFire.ToString("0");
+    //    SecondaryAmmoLabel.Content = Loadout.Secondary.ModifiedAmmoMagazine.ToString("0") + " / " + Loadout.Secondary.ModifiedAmmoReserve.ToString("0");
+    //    SecondaryReloadLabel.Content = Loadout.Secondary.ModifiedReloadSpeed.ToString("0.00") + 's';
+    //    SecondarySwapLabel.Content = Loadout.Secondary.RawSwapRate.ToString("0.00");
+    //    SecondaryAimLabel.Content = Loadout.Secondary.SpreadWhileADS.ToString("0.00") + '°';
+    //    SecondaryHipLabel.Content = Loadout.Secondary.SpreadWhileStanding.ToString("0.00") + '°';
+    //    SecondaryMoveLabel.Content = Loadout.Secondary.SpreadWhileMoving.ToString("0.00") + '°';
+    //    SecondaryRecoilLabel.Content = Loadout.Secondary.RecoilHip.ToString("0.00") + '°';
+    //    SecondaryZoomRecoilLabel.Content = Loadout.Secondary.RecoilZoom.ToString("0.00") + '°';
+    //    SecondaryZoomLabel.Content = Loadout.Secondary.ZoomMagnification.ToString("0.00");
+    //    SecondaryScopeInLabel.Content = Loadout.Secondary.ModifiedScopeInTime.ToString("0.000") + 's';
+    //    SecondaryRangeLabel.Content = Loadout.Secondary.RangeClose.ToString("0.0") + " / " + Loadout.Secondary.RangeFar.ToString("0.0") + " / " + Loadout.Secondary.RangeTracer.ToString("0");
+    //    SecondaryRunLabel.Content = Loadout.Secondary.ModifiedRunSpeed.ToString("0.00");
+    //    SecondaryDescriptorLabel.Content = Loadout.Secondary.WeaponDescriptor;
 
-        SecondaryRecoilVerticalRatioLabel.Content = Loadout.Secondary.VerticalRecoilRatio.ToString("0.00");
-        SecondarySpreadCenterWeightLabel.Content = Loadout.Secondary.SpreadCenterWeight.ToString("0.00");
-        SecondarySpreadCenterLabel.Content = Loadout.Secondary.SpreadCenter.ToString("0.00");
-        SecondaryFragmentsPerShellLabel.Content = Loadout.Secondary.FragmentsPerShell.ToString("0");
-        SecondaryZoomFirerateLabel.Content = Loadout.Secondary.ZoomRateOfFire.ToString("0");
-        SecondarySpreadCrouchMultiplierLabel.Content = Loadout.Secondary.SpreadCrouchMultiplier.ToString("0.00");
-        SecondarySpreadJumpMultiplierLabel.Content = Loadout.Secondary.SpreadJumpMultiplier.ToString("0.00");
-        SecondaryRecoilRecoveryTimeLabel.Content = Loadout.Secondary.RecoilRecoveryTime.ToString("0.00");
-        SecondaryModReloadLabel.Content = Loadout.Secondary.ModifiedReloadSpeed.ToString("0.00") + 's';
+    //    SecondaryRecoilVerticalRatioLabel.Content = Loadout.Secondary.VerticalRecoilRatio.ToString("0.00");
+    //    SecondarySpreadCenterWeightLabel.Content = Loadout.Secondary.SpreadCenterWeight.ToString("0.00");
+    //    SecondarySpreadCenterLabel.Content = Loadout.Secondary.SpreadCenter.ToString("0.00");
+    //    SecondaryFragmentsPerShellLabel.Content = Loadout.Secondary.FragmentsPerShell.ToString("0");
+    //    SecondaryZoomFirerateLabel.Content = Loadout.Secondary.ZoomRateOfFire.ToString("0");
+    //    SecondarySpreadCrouchMultiplierLabel.Content = Loadout.Secondary.SpreadCrouchMultiplier.ToString("0.00");
+    //    SecondarySpreadJumpMultiplierLabel.Content = Loadout.Secondary.SpreadJumpMultiplier.ToString("0.00");
+    //    SecondaryRecoilRecoveryTimeLabel.Content = Loadout.Secondary.RecoilRecoveryTime.ToString("0.00");
+    //    SecondaryModReloadLabel.Content = Loadout.Secondary.ModifiedReloadSpeed.ToString("0.00") + 's';
 
-        SecondaryModAccuracyLabel.Content = Loadout.Secondary.AccuracyPercentage.ToString("0") + '%';
-        SecondaryModDamageLabel.Content = Loadout.Secondary.DamagePercentage.ToString("0") + '%';
-        SecondaryModRangeLabel.Content = Loadout.Secondary.RangePercentage.ToString("0") + '%';
-        SecondaryModRecoilLabel.Content = Loadout.Secondary.RecoilPercentage.ToString("0") + '%';
-        SecondaryModReloadLabel.Content = Loadout.Secondary.ReloadSpeedPercentage.ToString("0") + '%';
-        SecondaryModRunLabel.Content = Loadout.Secondary.MovementSpeedPercentage.ToString("0") + '%';
-        #endregion SecondaryStats
+    //    SecondaryModAccuracyLabel.Content = Loadout.Secondary.AccuracyPercentage.ToString("0") + '%';
+    //    SecondaryModDamageLabel.Content = Loadout.Secondary.DamagePercentage.ToString("0") + '%';
+    //    SecondaryModRangeLabel.Content = Loadout.Secondary.RangePercentage.ToString("0") + '%';
+    //    SecondaryModRecoilLabel.Content = Loadout.Secondary.RecoilPercentage.ToString("0") + '%';
+    //    SecondaryModReloadLabel.Content = Loadout.Secondary.ReloadSpeedPercentage.ToString("0") + '%';
+    //    SecondaryModRunLabel.Content = Loadout.Secondary.MovementSpeedPercentage.ToString("0") + '%';
+    //    #endregion SecondaryStats
 
 
 
-        GearImage1.IsEnabled = false;
-        GearImage2.IsEnabled = false;
-        GearImage3.IsEnabled = false;
-        GearImage4.IsEnabled = false;
+    //    GearImage1.IsEnabled = false;
+    //    GearImage2.IsEnabled = false;
+    //    GearImage3.IsEnabled = false;
+    //    GearImage4.IsEnabled = false;
 
-        Gear1Rect.Visibility = Visibility.Visible;
-        Gear2Rect.Visibility = Visibility.Visible;
-        Gear3Rect.Visibility = Visibility.Visible;
-        Gear4Rect.Visibility = Visibility.Visible;
+    //    Gear1Rect.Visibility = Visibility.Visible;
+    //    Gear2Rect.Visibility = Visibility.Visible;
+    //    Gear3Rect.Visibility = Visibility.Visible;
+    //    Gear4Rect.Visibility = Visibility.Visible;
 
-        if (Loadout.GearSlots > 0)
-        {
-            GearImage1.IsEnabled = true;
-            Gear1Rect.Visibility = Visibility.Hidden;
-        }
-        if (Loadout.GearSlots > 1)
-        {
-            GearImage2.IsEnabled = true;
-            Gear2Rect.Visibility = Visibility.Hidden;
-        }
-        if (Loadout.GearSlots > 2)
-        {
-            GearImage3.IsEnabled = true;
-            Gear3Rect.Visibility = Visibility.Hidden;
-        }
-        if (Loadout.GearSlots > 3)
-        {
-            GearImage4.IsEnabled = true;
-            Gear4Rect.Visibility = Visibility.Hidden;
-        }
-        ArmorGearLabel.Content = Loadout.GearSlots.ToString("0");
-        GearSlotsGearModLabel.Content = (Loadout.GearSlots - 2).ToString("0");
+    //    if (Loadout.GearSlots > 0)
+    //    {
+    //        GearImage1.IsEnabled = true;
+    //        Gear1Rect.Visibility = Visibility.Hidden;
+    //    }
+    //    if (Loadout.GearSlots > 1)
+    //    {
+    //        GearImage2.IsEnabled = true;
+    //        Gear2Rect.Visibility = Visibility.Hidden;
+    //    }
+    //    if (Loadout.GearSlots > 2)
+    //    {
+    //        GearImage3.IsEnabled = true;
+    //        Gear3Rect.Visibility = Visibility.Hidden;
+    //    }
+    //    if (Loadout.GearSlots > 3)
+    //    {
+    //        GearImage4.IsEnabled = true;
+    //        Gear4Rect.Visibility = Visibility.Hidden;
+    //    }
+    //    ArmorGearLabel.Content = Loadout.GearSlots.ToString("0");
+    //    GearSlotsGearModLabel.Content = (Loadout.GearSlots - 2).ToString("0");
 
-        ArmorHeadProtectionLabel.Content = Loadout.HeadProtection.ToString("0.0") + '%';
-        HeadArmorGearModLabel.Content = Loadout.HeadProtection.ToString("0.0") + '%';
+    //    ArmorHeadProtectionLabel.Content = Loadout.HeadProtection.ToString("0.0") + '%';
+    //    HeadArmorGearModLabel.Content = Loadout.HeadProtection.ToString("0.0") + '%';
 
-        ArmorHealthLabel.Content = Loadout.Health;
-        HealthGearModLabel.Content = Loadout.RawHealth.ToString("0") + '%';
+    //    ArmorHealthLabel.Content = Loadout.Health;
+    //    HealthGearModLabel.Content = Loadout.RawHealth.ToString("0") + '%';
 
-        ArmorRunLabel.Content = (Loadout.Run / 100.0D).ToString("0.00");
-        RunGearModLabel.Content = Loadout.RawMoveSpeed.ToString("0") + '%';
+    //    ArmorRunLabel.Content = (Loadout.Run / 100.0D).ToString("0.00");
+    //    RunGearModLabel.Content = Loadout.RawMoveSpeed.ToString("0") + '%';
 
-        ArmorHRVLabel.Content = Loadout.HRVDuration.ToString("0.0") + "u";
-        HRVDurationGearModLabel.Content = (Loadout.HRVDuration - 70).ToString("0.0") + "u";
+    //    ArmorHRVLabel.Content = Loadout.HRVDuration.ToString("0.0") + "u";
+    //    HRVDurationGearModLabel.Content = (Loadout.HRVDuration - 70).ToString("0.0") + "u";
 
-        ArmorHRVRechargeLabel.Content = Loadout.HRVRechargeRate.ToString("0.0") + "u/s";
-        HRVRechargeGearModLabel.Content = (Loadout.HRVRechargeRate - 6.6).ToString("0.0") + "u/s";
+    //    ArmorHRVRechargeLabel.Content = Loadout.HRVRechargeRate.ToString("0.0") + "u/s";
+    //    HRVRechargeGearModLabel.Content = (Loadout.HRVRechargeRate - 6.6).ToString("0.0") + "u/s";
 
-        ArmorGearElectroProtectionLabel.Content = Loadout.ElectroProtection.ToString("0") + '%';
-        ArmorGearExplosiveProtectionLabel.Content = Loadout.ExplosiveProtection.ToString("0") + '%';
-        ArmorGearIncendiaryLabel.Content = Loadout.IncendiaryProtection.ToString("0") + '%';
-        ArmorGearInfraredProtectionLabel.Content = Loadout.InfraredProtection.ToString("0") + '%';
-        ArmorGearMeleeProtectionLabel.Content = Loadout.MeleeProtection.ToString("0") + '%';
-        ArmorGearToxicProtectionLabel.Content = Loadout.ToxicProtection.ToString("0") + '%';
-    }
+    //    ArmorGearElectroProtectionLabel.Content = Loadout.ElectroProtection.ToString("0") + '%';
+    //    ArmorGearExplosiveProtectionLabel.Content = Loadout.ExplosiveProtection.ToString("0") + '%';
+    //    ArmorGearIncendiaryLabel.Content = Loadout.IncendiaryProtection.ToString("0") + '%';
+    //    ArmorGearInfraredProtectionLabel.Content = Loadout.InfraredProtection.ToString("0") + '%';
+    //    ArmorGearMeleeProtectionLabel.Content = Loadout.MeleeProtection.ToString("0") + '%';
+    //    ArmorGearToxicProtectionLabel.Content = Loadout.ToxicProtection.ToString("0") + '%';
+    //}
 
     #region OldCalcs
     private static double Lerp(double start, double target, double time)
@@ -1009,6 +1013,154 @@ public partial class MainWindow : Window
                 info.ShowDialog();
             }
         }
+
+        var clients = IOResources.DeserializeFile<List<GameClient>>("GameClients.json");
+        if (clients is not null) { GameClients = clients; }
+
+        var servers = IOResources.DeserializeFile<List<BLRServer>>("ServerList.json");
+        if (servers is not null) { ServerList = servers; }
+
+        GameClientList.ItemsSource = null;
+        GameClientList.Items.Clear();
+        GameClientList.ItemsSource = GameClients;
+
+        ServerListView.ItemsSource = null;
+        ServerListView.Items.Clear();
+        ServerListView.ItemsSource = ServerList;
+
+        IOResources.GetGameLocationsFromSteam();
+        foreach (string folder in IOResources.GameFolders)
+        {
+            AddGameClient(new GameClient() { OriginalPath = folder + IOResources.GAME_DEFAULT_EXE});
+        }
+
+        AddDefaultServers();
+
+        RefreshPing();
+
+        if (BLREditSettings.Settings.DefaultServer is null)
+        {
+            BLREditSettings.Settings.DefaultServer = ServerList[0];
+        }
+    }
+
+    public void RefreshPing()
+    {
+        foreach (BLRServer server in ServerList)
+        {
+            server.PingServer();
+        }
+    }
+
+    private void AddDefaultServers()
+    {
+        List<BLRServer> defaultServers = new() {
+        new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //mooserver.ddns.net : 7777
+        new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //blr.akoot.me : 7777
+        new() { ServerAddress = "blr.753z.net", Port = 7777 }, //blr.753z.net : 7777
+        //BLRServer subsonic = null;
+        new() { ServerAddress = "dozette.tplinkdns.com", Port = 7777 }, //dozette.tplinkdns.com : 7777
+        };
+
+        foreach (BLRServer defaultServer in defaultServers)
+        {
+            bool add = true;
+            foreach (BLRServer server in ServerList)
+            {
+                if (server.ServerAddress == defaultServer.ServerAddress && server.Port == defaultServer.Port)
+                {
+                    add = false;
+                }
+            }
+            if (add)
+            {
+                ServerList.Add(defaultServer);
+            }
+        }
+        ServerListView.ItemsSource = null;
+        ServerListView.ItemsSource = ServerList;
+    }
+
+    public void AddServer(BLRServer server, bool forceAdd = false)
+    {
+        bool add = true;
+        foreach (BLRServer s in ServerList)
+        {
+            if (!forceAdd && s.ServerAddress == server.ServerAddress && s.Port == server.Port)
+            {
+                add = false;
+            }
+        }
+        if (add)
+        {
+            ServerList.Add(server);
+            ServerListView.ItemsSource = null;
+            ServerListView.ItemsSource = ServerList;
+        }
+    }
+
+    public void AddGameClient(GameClient client)
+    {
+        bool add = true;
+        foreach (GameClient c in GameClients)
+        {
+            if (c.OriginalPath == client.OriginalPath)
+            {
+                add = false;
+            }
+        }
+        if (add)
+        {
+            GameClients.Add(client);
+            GameClientList.ItemsSource = null;
+            GameClientList.ItemsSource = GameClients;
+        }
+    }
+
+    private void ChangeCurrentGameClient_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            if (button.DataContext is GameClient client)
+            {
+                if (client.IsPatched)
+                {
+                    BLREditSettings.Settings.DefaultClient = client;
+                    foreach (GameClient c in GameClients)
+                    {
+                        c.IsCurrentClient = false;
+                    }
+                }
+            }
+        }
+    }
+
+    private void ChangeCurrentServer_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            if (button.DataContext is BLRServer server)
+            {
+                BLREditSettings.Settings.DefaultServer = server;
+                foreach (BLRServer s in ServerList)
+                {
+                    s.IsDefaultServer = false;
+                }
+            }
+        }
+    }
+
+    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+        ExportSystem.SaveProfiles();
+        IOResources.SerializeFile("GameClients.json", GameClients);
+        IOResources.SerializeFile("ServerList.json", ServerList);
+        IOResources.SerializeFile("settings.json", BLREditSettings.Settings);
+    }
+
+    private void ScanGameClients()
+    { 
+        
     }
 
     private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
@@ -1721,11 +1873,6 @@ public partial class MainWindow : Window
         //ExportSystem.CreateSEProfile(ExportSystem.ActiveProfile); //Not really in use currently only makes waste on the Hard Drive
     }
 
-    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-    {
-        ExportSystem.SaveProfiles();
-    }
-
     private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)
     {
         Loadout.IsFemale = true;
@@ -1972,6 +2119,95 @@ public partial class MainWindow : Window
                 element2.Visibility = Visibility.Visible;
                 element2.IsEnabled = true;
             }
+        }
+    }
+
+    private void LauncherMenuButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            foreach (FrameworkElement element in LauncherMenu.Children)
+            {
+                if (element.Tag is UIElement otherElement)
+                {
+                    otherElement.Visibility = Visibility.Collapsed;
+                    otherElement.IsEnabled = false;
+                }
+                element.IsEnabled = true;
+            }
+            button.IsEnabled = false;
+            if (button.Tag is FrameworkElement element2)
+            {
+                element2.Visibility = Visibility.Visible;
+                element2.IsEnabled = true;
+            }
+        }
+    }
+
+    private void OpenNewGameClient_Click(object sender, RoutedEventArgs e)
+    {
+        OpenFileDialog dialog = new()
+        {
+            Filter = "Game Client|FoxGame-win32-Shipping.exe",
+            InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}",
+            Multiselect = false
+        };
+        dialog.ShowDialog();
+        AddGameClient(new GameClient() { OriginalPath = dialog.FileName });
+    }
+
+    private void PortValidation(object sender, TextCompositionEventArgs e)
+    {
+        TextBox box = (sender as TextBox);
+        string selectedText = box.SelectedText;
+        bool ok = false;
+        Regex regex = new("[^0-9]");
+        if (regex.IsMatch(e.Text))
+        {
+            ok = true;
+        }
+        else
+        {
+            string text = box.Text.Remove(box.Text.IndexOf(selectedText), selectedText.Length);
+            long l = long.Parse(text + e.Text);
+            if (l > ushort.MaxValue)
+            {
+                ok = true;
+                box.Text = ushort.MaxValue.ToString();
+            }
+            if (l < ushort.MinValue)
+            {
+                ok = true;
+                box.Text = ushort.MinValue.ToString();
+            }
+        }
+        e.Handled = ok;
+    }
+
+    private void AddNewServer_Click(object sender, RoutedEventArgs e)
+    {
+        AddServer(new BLRServer(), true);
+    }
+
+    private void RemoveServer_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            ServerList.Remove(button.DataContext as BLRServer);
+
+            ServerListView.ItemsSource = null;
+            ServerListView.ItemsSource = ServerList;
+        }
+    }
+
+    private void RemoveGameClient_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            GameClients.Remove(button.DataContext as GameClient);
+
+            GameClientList.ItemsSource = null;
+            GameClientList.ItemsSource = GameClients;
         }
     }
 }
