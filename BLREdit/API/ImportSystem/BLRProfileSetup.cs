@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BLREdit;
 
@@ -65,22 +66,6 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
             double total = 0;
             total += UpperBody?.PawnModifiers?.GearSlots ?? 0;
             total += LowerBody?.PawnModifiers?.GearSlots ?? 0;
-            if (total < 4)
-            {
-                gear4 = null;
-            }
-            if (total < 3)
-            {
-                gear3 = null;
-            }
-            if (total < 2)
-            {
-                gear2 = null;
-            }
-            if (total < 1)
-            {
-                gear1 = null;
-            }
             return total;
         }
     }
@@ -379,6 +364,26 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
 
     #endregion DisplayProperties
 
+    private bool gearSlot1Enabled;
+    public bool GearSlot1Enabled { get { return gearSlot1Enabled; } private set { gearSlot1Enabled = value; GearSlot1Disabled = value; GearSlot1Visibility = Visibility.Visible; OnPropertyChanged(); } }
+    public bool GearSlot1Disabled { get { return !gearSlot1Enabled; } private set { OnPropertyChanged(); } }
+    public Visibility GearSlot1Visibility { get { if (gearSlot1Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
+
+    private bool gearSlot2Enabled;
+    public bool GearSlot2Enabled { get { return gearSlot2Enabled; } private set { gearSlot2Enabled = value; GearSlot2Disabled = value; GearSlot2Visibility = Visibility.Visible; OnPropertyChanged(); } }
+    public bool GearSlot2Disabled { get { return !gearSlot2Enabled; } private set { OnPropertyChanged(); } }
+    public Visibility GearSlot2Visibility { get { if (gearSlot2Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
+
+    private bool gearSlot3Enabled;
+    public bool GearSlot3Enabled { get { return gearSlot3Enabled; } private set { gearSlot3Enabled = value; GearSlot3Disabled = value; GearSlot3Visibility = Visibility.Visible; OnPropertyChanged(); } }
+    public bool GearSlot3Disabled { get { return !gearSlot3Enabled; } private set { OnPropertyChanged(); } }
+    public Visibility GearSlot3Visibility { get { if (gearSlot3Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
+
+    private bool gearSlot4Enabled;
+    public bool GearSlot4Enabled { get { return gearSlot4Enabled; } private set { gearSlot4Enabled = value; GearSlot4Disabled = value; GearSlot4Visibility = Visibility.Visible; OnPropertyChanged(); } }
+    public bool GearSlot4Disabled { get { return !gearSlot4Enabled; } private set { OnPropertyChanged(); } }
+    public Visibility GearSlot4Visibility { get { if (gearSlot4Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
+
     private void UpdateImages()
     {
         UpperBody?.TriggerImageUpdate();
@@ -387,15 +392,23 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
 
     private void CalculateStats()
     {
-
+        UpdateGearSlots();
 
 
 
         CreateDisplay();
     }
 
-    private void CreateDisplay()
+    private void UpdateGearSlots()
     {
+        GearSlot1Enabled = GearSlots > 0;
+        GearSlot2Enabled = GearSlots > 1;
+        GearSlot3Enabled = GearSlots > 2;
+        GearSlot4Enabled = GearSlots > 3;
+    }
+
+    private void CreateDisplay()
+    { 
         HealthDisplay = Health.ToString("0.0");
         HeadArmorDisplay = HeadProtection.ToString("0.0") + '%';
         RunDisplay = (Run / 100.0D).ToString("0.00");

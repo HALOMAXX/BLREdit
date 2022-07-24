@@ -9,7 +9,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
 {
     public bool IsPrimary { get; set; } = false;
     private BLRItem reciever = null;
-    public BLRItem Reciever { get { return reciever; } set { if (value != null && reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); CalculateStats(); OnPropertyChanged(); } } }
+    public BLRItem Reciever { get { return reciever; } set { if (value != null && reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); CalculateStats(); OnPropertyChanged(); UpdateScopeIcons(); } } }
     private BLRItem barrel = null;
     public BLRItem Barrel { get { return barrel; } set { if (value != null && barrel != value && value.IsValidFor(reciever) && value.Category == ImportSystem.BARRELS_CATEGORY) { barrel = value; AllowStock(); CalculateStats(); OnPropertyChanged(); } } }
     private BLRItem magazine = null;
@@ -71,6 +71,17 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             }
         }
         return allow;
+    }
+
+
+    private void UpdateScopeIcons()
+    {
+        Scope = scope;
+        if (Scope is not null)
+        {
+            scope.MiniPrimaryCrosshair = null;
+            scope.MiniSecondaryCrosshair = null;
+        }
     }
 
     public BLRWeaponSetup(bool isPrimary)
@@ -1180,8 +1191,8 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         weapon.Scope = Scope?.Name ?? "No Optic Mod";
         weapon.Stock = Stock?.Name ?? "No Stock";
         weapon.Grip = Grip?.Name ?? "";
-        weapon.Tag = Tag.GetMagicCowsID();
-        weapon.Camo = Camo.GetMagicCowsID();
+        weapon.Tag = Tag?.GetMagicCowsID() ?? 0;
+        weapon.Camo = Camo?.GetMagicCowsID() ?? 0;
     }
 
     public void LoadMagicCowsWeapon(MagiCowsWeapon weapon)

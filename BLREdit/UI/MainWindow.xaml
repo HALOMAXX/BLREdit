@@ -606,14 +606,14 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,532,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Magazine.SmallSquareImage}" Name="SecondaryMagazineImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Magazine.Tooltip}" x:FieldModifier="public"/>
                     </Border>
+                    <Border Height="64" Width="133" HorizontalAlignment="Left" Margin="148,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
+                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Reciever.WideImage}" Tag="{Binding Path=Secondary.Reciever}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Reciever.Tooltip}" x:FieldModifier="public"/>
+                    </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,400,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Scope.SmallSquareImage}" Tag="{Binding Path=Secondary.Scope}" Name="SecondaryScopeImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Scope.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,400,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Center" Source="{Binding Path=Secondary.Scope.MiniSecondaryCrosshair}" Tag="{Binding Path=Secondary.Scope}" Name="SecondaryCrosshairImage" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Secondary.Scope.Tooltip}" x:FieldModifier="public"/>
-                    </Border>
-                    <Border Height="64" Width="133" HorizontalAlignment="Left" Margin="148,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Reciever.WideImage}" Tag="{Binding Path=Secondary.Reciever}" Name="SecondaryRecieverImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Reciever.Tooltip}" x:FieldModifier="public"/>
                     </Border>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Stock.SmallSquareImage}" Name="SecondaryStockImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Stock.Tooltip}" x:FieldModifier="public"/>
@@ -702,9 +702,9 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
                             <Image HorizontalAlignment="Left" Source="{Binding Path=Gear1.SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear1.Tooltip}" x:FieldModifier="public"/>
-                            <Rectangle Width="64" Height="64" Name="Gear1Rect">
+                            <Rectangle Width="64" Height="64" Name="Gear1Rect" IsEnabled="{Binding Path=GearSlot1Disabled}" Visibility="{Binding Path=GearSlot1Visibility}">
                                 <Rectangle.Fill>
-                                    <SolidColorBrush Color="#77000000"/>
+                                    <SolidColorBrush Color="#88000000"/>
                                 </Rectangle.Fill>
                             </Rectangle>
                         </Grid>
@@ -712,9 +712,9 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
                             <Image HorizontalAlignment="Left" Source="{Binding Path=Gear2.SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear2.Tooltip}" x:FieldModifier="public"/>
-                            <Rectangle Width="64" Height="64" Name="Gear2Rect">
+                            <Rectangle Width="64" Height="64" Name="Gear2Rect" Visibility="{Binding Path=GearSlot2Visibility}">
                                 <Rectangle.Fill>
-                                    <SolidColorBrush Color="#77000000"/>
+                                    <SolidColorBrush Color="#88000000"/>
                                 </Rectangle.Fill>
                             </Rectangle>
                         </Grid>
@@ -722,9 +722,9 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
                             <Image HorizontalAlignment="Left" Source="{Binding Path=Gear3.SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear3.Tooltip}" x:FieldModifier="public"/>
-                            <Rectangle Width="64" Height="64" Name="Gear3Rect">
+                            <Rectangle Width="64" Height="64" Name="Gear3Rect" Visibility="{Binding Path=GearSlot3Visibility}">
                                 <Rectangle.Fill>
-                                    <SolidColorBrush Color="#77000000"/>
+                                    <SolidColorBrush Color="#88000000"/>
                                 </Rectangle.Fill>
                             </Rectangle>
                         </Grid>
@@ -732,9 +732,9 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
                             <Image HorizontalAlignment="Left" Source="{Binding Path=Gear4.SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear4.Tooltip}" x:FieldModifier="public"/>
-                            <Rectangle Width="64" Height="64" Name="Gear4Rect">
+                            <Rectangle Width="64" Height="64" Name="Gear4Rect" Visibility="{Binding Path=GearSlot4Visibility}">
                                 <Rectangle.Fill>
-                                    <SolidColorBrush Color="#77000000"/>
+                                    <SolidColorBrush Color="#88000000"/>
                                 </Rectangle.Fill>
                             </Rectangle>
                         </Grid>

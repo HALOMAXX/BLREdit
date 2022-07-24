@@ -38,8 +38,8 @@ public class BLRItem : INotifyPropertyChanged
 
 
     [JsonIgnore] public BitmapSource Crosshair { get; private set; }
-    [JsonIgnore] public BitmapSource MiniPrimaryCrosshair { get { return GetBitmapCrosshair(Name); } }
-    [JsonIgnore] public BitmapSource MiniSecondaryCrosshair { get { return GetBitmapCrosshair(GetSecondaryScope()); } }
+    [JsonIgnore] public BitmapSource MiniPrimaryCrosshair { get { return GetBitmapCrosshair(Name); } set { OnPropertyChanged(); } }
+    [JsonIgnore] public BitmapSource MiniSecondaryCrosshair { get { return GetBitmapCrosshair(GetSecondaryScope()); } set { OnPropertyChanged(); } }
 
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -240,7 +240,7 @@ public class BLRItem : INotifyPropertyChanged
 
     private string GetSecondaryScope()
     {
-        var name = (UI.MainWindow.Self.SecondaryRecieverImage.DataContext as BLRItem)?.Name ?? "";
+        var name = (UI.MainWindow.Self.SecondaryRecieverImage.Tag as BLRItem)?.Name ?? "";
         switch (Name)
         {
             case "No Optic Mod":

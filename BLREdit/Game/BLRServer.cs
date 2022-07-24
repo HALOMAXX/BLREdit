@@ -157,6 +157,13 @@ public class BLRServer : INotifyPropertyChanged
 
     public void LaunchClient()
     {
-        BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName=ExportSystem.ActiveProfile.PlayerName, Server=this });
+        if (BLREditSettings.Settings.DefaultClient is null)
+        {
+            //No Default Client selected
+        }
+        else
+        {
+            BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = ExportSystem.ActiveProfile.PlayerName, Server = this });
+        }
     }
 }

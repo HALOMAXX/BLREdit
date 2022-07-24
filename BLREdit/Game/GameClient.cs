@@ -92,8 +92,10 @@ public class GameClient : INotifyPropertyChanged
         };
         psi.FileName = PatchedPath;
         psi.Arguments = launchArgs;
-        Process game = new();
-        game.StartInfo = psi;
+        Process game = new()
+        {
+            StartInfo = psi
+        };
         game.Start();
     }
 
