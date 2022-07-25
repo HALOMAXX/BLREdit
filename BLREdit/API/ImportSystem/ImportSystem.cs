@@ -117,29 +117,8 @@ namespace BLREdit
                             FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, "0", "%");
                             //FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0", "%");
 
-                            bool isBullpup = false;
-                            switch (item.Name)
-                            {
-                                case "Briar Elite A4-BS":
-                                    isBullpup = true;
-                                    break;
-                                case "Hullbreach 89-BPFA":
-                                    isBullpup = true;
-                                    break;
-                                case "Silverwood z1200 BPFA":
-                                    isBullpup = true;
-                                    break;
-                                case "MMRS BP-SR Tactical":
-                                    isBullpup = true;
-                                    break;
-                                case "MMRS BP-XLi":
-                                    isBullpup = true;
-                                    break;
-                                case "MMRS BP-CQ + PCR":
-                                    isBullpup = true;
-                                    break;
-                            }
-                            if (isBullpup) FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0", "%");
+                            if(item.IsValidForItemIDS(40020))
+                            { FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0", "%"); }
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;

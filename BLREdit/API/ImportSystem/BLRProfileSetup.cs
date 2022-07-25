@@ -173,10 +173,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.ElectroProtection ?? 0;
-            total += Gear1?.PawnModifiers?.ElectroProtection ?? 0;
-            total += Gear2?.PawnModifiers?.ElectroProtection ?? 0;
-            total += Gear3?.PawnModifiers?.ElectroProtection ?? 0;
-            total += Gear4?.PawnModifiers?.ElectroProtection ?? 0;
+            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.ElectroProtection ?? 0;
+            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.ElectroProtection ?? 0;
+            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.ElectroProtection ?? 0;
+            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.ElectroProtection ?? 0;
             return total;
         }
     }
@@ -193,10 +193,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.ExplosiveProtection ?? 0;
-            total += Gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
-            total += Gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
-            total += Gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
-            total += Gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
+            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
+            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
+            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
+            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
             return total;
         }
     }
@@ -213,10 +213,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.IncendiaryProtection ?? 0;
-            total += Gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
-            total += Gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
-            total += Gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
-            total += Gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
+            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
+            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
+            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
+            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
             return total;
         }
     }
@@ -233,10 +233,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.InfraredProtection ?? 0;
-            total += Gear1?.PawnModifiers?.InfraredProtection ?? 0;
-            total += Gear2?.PawnModifiers?.InfraredProtection ?? 0;
-            total += Gear3?.PawnModifiers?.InfraredProtection ?? 0;
-            total += Gear4?.PawnModifiers?.InfraredProtection ?? 0;
+            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.InfraredProtection ?? 0;
+            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.InfraredProtection ?? 0;
+            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.InfraredProtection ?? 0;
+            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.InfraredProtection ?? 0;
             return total;
         }
     }
@@ -253,10 +253,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.MeleeProtection ?? 0;
-            total += Gear1?.PawnModifiers?.MeleeProtection ?? 0;
-            total += Gear2?.PawnModifiers?.MeleeProtection ?? 0;
-            total += Gear3?.PawnModifiers?.MeleeProtection ?? 0;
-            total += Gear4?.PawnModifiers?.MeleeProtection ?? 0;
+            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.MeleeProtection ?? 0;
+            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.MeleeProtection ?? 0;
+            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.MeleeProtection ?? 0;
+            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.MeleeProtection ?? 0;
             return total;
         }
     }
@@ -273,10 +273,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.PermanentHealthProtection ?? 0;
-            total += Gear1?.PawnModifiers?.PermanentHealthProtection ?? 0;
-            total += Gear2?.PawnModifiers?.PermanentHealthProtection ?? 0;
-            total += Gear3?.PawnModifiers?.PermanentHealthProtection ?? 0;
-            total += Gear4?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.PermanentHealthProtection ?? 0;
             return total;
         }
     }
@@ -293,10 +293,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.ToxicProtection ?? 0;
-            total += Gear1?.PawnModifiers?.ToxicProtection ?? 0;
-            total += Gear2?.PawnModifiers?.ToxicProtection ?? 0;
-            total += Gear3?.PawnModifiers?.ToxicProtection ?? 0;
-            total += Gear4?.PawnModifiers?.ToxicProtection ?? 0;
+            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.ToxicProtection ?? 0;
+            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.ToxicProtection ?? 0;
+            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.ToxicProtection ?? 0;
+            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.ToxicProtection ?? 0;
             return total;
         }
     }
