@@ -309,29 +309,11 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             total += Scope?.WikiStats?.reload ?? 0;
             total += Grip?.WikiStats?.reload ?? 0;
 
-            // Bullpup FA stocks reload time mods because I'm lazy and don't know how they get their reload times
-            if (Reciever?.UID == 40020)
+            // Corrected the reload rate multiplier calc and changed the ranges from zeros in the BPFA and BFR so they can now correctly use the reloadspeed percentage instead of flat wiki value add/sub
+            // Will eventually fix all guns but I am still uncertain about a few cases that don't go along with it for whatever reason
+            if (Reciever?.UID == 40020 || Reciever?.UID == 40009)
             {
-                if (Stock?.UID == 42018) // Hullbreach 89-BPFA
-                {
-                    total += 0.32;
-                }
-                else if (Stock?.UID == 42019) // Silverwood z1200 BPFA
-                {
-                    total += 0.15;
-                }
-            }
-            // Burstfire Rifle stocks reload time mods
-            if (Reciever?.UID == 40009)
-            {
-                if (Stock?.UID == 42018)
-                {
-                    total += 0.72;
-                }
-                else if (Stock?.UID == 42019)
-                {
-                    total += 0.33;
-                }
+                return (Reciever?.WikiStats?.reload ?? 0);
             }
 
             return total;
@@ -807,12 +789,13 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             rate_alpha = Math.Abs(allReloadSpeed);
             if (allReloadSpeed > 0)
             {
-                WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.X, rate_alpha);
+                WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.Y, rate_alpha);
             }
             else
             {
-                WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.Y, rate_alpha);
+                WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.X, rate_alpha);
             }
+            WeaponReloadRate = 1 / WeaponReloadRate;
         }
 
         if ((Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0 ) == 1)
@@ -828,6 +811,10 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             }
         }
         ReloadMultiplier = WeaponReloadRate;
+    }
+    private void CalculateReloadSpeed()
+    {
+        // Placeholder so I don't forget
     }
     private void CalculateMovementSpeed()
     {

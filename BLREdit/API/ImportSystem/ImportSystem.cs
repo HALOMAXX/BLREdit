@@ -94,6 +94,61 @@ namespace BLREdit
                         break;
                     case MUZZELS_CATEGORY:
                     case STOCKS_CATEGORY:
+                        foreach (var item in itemCategory.Value)
+                        {
+                            double damage = item?.WeaponModifiers?.damage ?? 0;
+                            double spread = item?.WeaponModifiers?.accuracy ?? 0;
+                            double recoil = item?.WeaponModifiers?.recoil ?? 0;
+                            double range = item?.WeaponModifiers?.range ?? 0;
+                            double run = item?.WeaponModifiers?.movementSpeed ?? 0;
+                            double reload = item?.WeaponModifiers?.reloadSpeed ?? 0;
+
+                            var desc1 = new DisplayStatDiscriptor();
+                            var desc2 = new DisplayStatDiscriptor();
+                            var desc3 = new DisplayStatDiscriptor();
+                            var desc4 = new DisplayStatDiscriptor();
+                            var desc5 = new DisplayStatDiscriptor();
+                            var desc6 = new DisplayStatDiscriptor();
+
+                            FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "%");
+                            FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, "0", "%");
+                            FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
+                            FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "%");
+                            FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, "0", "%");
+                            //FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0", "%");
+
+                            bool isBullpup = false;
+                            switch (item.Name)
+                            {
+                                case "Briar Elite A4-BS":
+                                    isBullpup = true;
+                                    break;
+                                case "Hullbreach 89-BPFA":
+                                    isBullpup = true;
+                                    break;
+                                case "Silverwood z1200 BPFA":
+                                    isBullpup = true;
+                                    break;
+                                case "MMRS BP-SR Tactical":
+                                    isBullpup = true;
+                                    break;
+                                case "MMRS BP-XLi":
+                                    isBullpup = true;
+                                    break;
+                                case "MMRS BP-CQ + PCR":
+                                    isBullpup = true;
+                                    break;
+                            }
+                            if (isBullpup) FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0", "%");
+
+                            item.DisplayStat1 = desc1;
+                            item.DisplayStat2 = desc2;
+                            item.DisplayStat3 = desc3;
+                            item.DisplayStat4 = desc4;
+                            item.DisplayStat5 = desc5;
+                            item.DisplayStat6 = desc6;
+                        }
+                        break;
                     case BARRELS_CATEGORY:
                         foreach (var item in itemCategory.Value)
                         {

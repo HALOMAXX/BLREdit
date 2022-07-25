@@ -48119,9 +48119,9 @@
           "Z": 1
         },
         "ModificationRangeReloadRate": {
-          "X": 0,
-          "Y": 0,
-          "Z": 0
+          "X": 0.9,
+          "Y": 1.3,
+          "Z": 1
         },
         "ModificationRangeRecoilReloadRate": {
           "X": 0,
@@ -49582,9 +49582,9 @@
           "Z": 1
         },
         "ModificationRangeReloadRate": {
-          "X": 0,
-          "Y": 0,
-          "Z": 0
+          "X": 0.8135,
+          "Y": 1.3,
+          "Z": 1
         },
         "ModificationRangeRecoilReloadRate": {
           "X": 0,
