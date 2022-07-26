@@ -857,6 +857,20 @@ public partial class MainWindow : Window
                     averageRecoil += newRecoil;
                 }
 
+                // Also doing it here until everything fully moves over as stat display seemingly still uses function
+                if (Reciever?.UID == 40011) // LMG
+                {
+                    averageRecoil.Y *= 1.1f;
+                }
+                else if (Reciever?.UID == 40014 || Reciever?.UID == 40007 || Reciever?.UID == 40008) // LMGR - BAR - CR
+                {
+                    averageRecoil.Y *= 1.3f;
+                }
+                else if (Reciever?.UID == 40021 || Reciever?.UID == 40019 || Reciever?.UID == 40015 || Reciever?.UID == 40005 || Reciever?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
+                {
+                    averageRecoil.Y *= 1.5f;
+                }
+
                 if (averageShotCount > 0)
                 {
                     averageRecoil /= (float)averageShotCount;

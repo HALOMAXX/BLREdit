@@ -867,7 +867,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             weight_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, weight_clampalpha);
         }
 
-        double move_alpha = Math.Abs(allMovementSpread); // Combied movement speed modifiers from only barrel and stock, divided by 100
+        double move_alpha = Math.Abs(allMovementSpread); // Combined movement speed modifiers from only barrel and stock, divided by 100
         double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
         if (allMovementSpread > 0)
         {
@@ -1041,6 +1041,21 @@ public class BLRWeaponSetup : INotifyPropertyChanged
                 averageRecoil += newRecoil;
             }
 
+            // Magic numbers because I can't yet figure out the weird and overcomplicated clamping system, these gun's set Min and MaxWeaponRecoil values cause more overall recoil than their other values suggest
+            // So it might be a bit messy here until I figure it out (luckily many guns use the default values so I can ignore them)
+            if (Reciever?.UID == 40011) // LMG
+            {
+                averageRecoil.Y *= 1.1f;
+            }
+            else if (Reciever?.UID == 40014 || Reciever?.UID == 40007 || Reciever?.UID == 40008) // LMGR - BAR - CR
+            {
+                averageRecoil.Y *= 1.3f;
+            }
+            else if (Reciever?.UID == 40021 || Reciever?.UID == 40019 || Reciever?.UID == 40015 || Reciever?.UID == 40005 || Reciever?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
+            {
+                averageRecoil.Y *= 1.5f;
+            }
+
             if (averageShotCount > 0)
             {
                 averageRecoil /= (float)averageShotCount;
@@ -1051,6 +1066,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             }
             double recoil = averageRecoil.Length() * recoilModifier;
             recoil *= (180 / Math.PI);
+
             RecoilHip = recoil;
             RecoilZoom = recoil * (Reciever?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8;
         }
