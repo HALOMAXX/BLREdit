@@ -384,7 +384,7 @@ public class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.SECONDARY_CATEGORY:
                 case ImportSystem.PRIMARY_CATEGORY:
-                    return UI.MainWindow.CalculateSpread(this, 0, 0)[0];
+                    return BLRWeaponSetup.CalculateSpread(this, 0, 0).ZoomSpread;
                 default:
                     return 0;
             }
@@ -416,7 +416,7 @@ public class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return UI.MainWindow.CalculateDamage(this, 0)[0];
+                    return BLRWeaponSetup.CalculateDamage(this, 0).DamageIdeal;
                 default:
                     return WeaponModifiers?.damage ?? 0;
             }
@@ -507,7 +507,7 @@ public class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return UI.MainWindow.CalculateSpread(this, 0, 0)[1];
+                    return BLRWeaponSetup.CalculateSpread(this, 0, 0).HipSpread;
                 default:
                     return 0;
             }
@@ -616,7 +616,7 @@ public class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return UI.MainWindow.CalculateSpread(this, 0, 0)[2];
+                    return BLRWeaponSetup.CalculateSpread(this, 0, 0).MovmentSpread;
                 default:
                     return 0;
             }
@@ -646,7 +646,7 @@ public class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return UI.MainWindow.CalculateRecoil(this, 0);
+                    return BLRWeaponSetup.CalculateRecoil(this, 0).RecoilHip;
                 default:
                     return WeaponModifiers?.recoil ?? 0;
             }

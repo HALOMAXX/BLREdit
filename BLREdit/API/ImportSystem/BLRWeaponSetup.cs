@@ -676,23 +676,25 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     private void CalculateStats()
     {
         //ResetStats();
-        //if (Reciever is null || Barrel is null || Muzzle is null || Magazine is null || Stock is null || Reciever.Tooltip == "Depot Item!") { if (LoggingSystem.IsDebuggingEnabled) { LoggingSystem.LogWarning("Missing Reciever:" + Reciever + " Barrel:" + Barrel + " Muzzle:" + Muzzle + " Magazine:" + Magazine + " Stock:" + Stock); } }
-        CalculateCockRate();
-        CalculateDamage();
-        CalculateMovementSpeed();
-        CalculateRange();
-        CalculateRecoil();
-        CalculateReloadRate();
-        double allMovementScopeIn = Barrel?.WeaponModifiers?.movementSpeed ?? 0;
-        allMovementScopeIn += Stock?.WeaponModifiers?.movementSpeed ?? 0;
-        ModifiedScopeInTime = CalculateScopeInTime(Clamp((allMovementScopeIn / 80.0D), -1.0D, 1.0D));
-        CalculateSpread(Clamp((allMovementScopeIn / 100.0D), -1.0D, 1.0D));
-        WeaponDescriptorPart1 = CompareItemDescriptor1(Barrel, Magazine);
-        WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
-        WeaponDescriptorPart3 = Reciever.GetDescriptorName(TotalRatingPoints);
-        WeaponDescriptor = WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3;
+        if (Reciever is not null)
+        {
+            CockRateMultiplier = CalculateCockRate(Reciever, RecoilPercentage);
+            (DamageClose, DamageFar) = CalculateDamage(Reciever, DamagePercentage);
+            ModifiedRunSpeed = CalculateMovementSpeed(Reciever, MovementSpeedPercentage);
+            (RangeClose, RangeFar, RangeTracer) = CalculateRange(Reciever, RangePercentage);
+            (RecoilHip, RecoilZoom) = CalculateRecoil(Reciever, RecoilPercentage);
+            ReloadMultiplier = CalculateReloadRate(Reciever, ReloadSpeedPercentage, RecoilPercentage);
+            double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.movementSpeed ?? 0;
+            BarrelStockMovementSpeed += Stock?.WeaponModifiers?.movementSpeed ?? 0;
+            ModifiedScopeInTime = CalculateScopeInTime(Reciever, Scope, BarrelStockMovementSpeed, RawScopeInTime);
+            (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Reciever, AccuracyPercentage, BarrelStockMovementSpeed);
+            WeaponDescriptorPart1 = CompareItemDescriptor1(Barrel, Magazine);
+            WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
+            WeaponDescriptorPart3 = Reciever.GetDescriptorName(TotalRatingPoints);
+            WeaponDescriptor = WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3;
 
-        CreateDisplayProperties();
+            CreateDisplayProperties();
+        }
     }
 
     private void CreateDisplayProperties()
@@ -751,7 +753,14 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         ModifiedScopeInTime = double.NaN;
         ModifiedRunSpeed = double.NaN;
     }
-    private void CalculateCockRate()
+
+    /// <summary>
+    /// Calculates the Cockrate Multiplier
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="RecoilPercentage">all raw Recoil modifiers</param>
+    /// <returns>CockRateMultiplier</returns>
+    public static double CalculateCockRate(BLRItem Reciever, double RecoilPercentage)
     {
         double allRecoil = Percentage(RecoilPercentage);
         double alpha = Math.Abs(allRecoil);
@@ -770,14 +779,22 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             {
                 cockrate = 1.0 / cockrate;
             }
-            CockRateMultiplier = cockrate;
+            return cockrate;
         }
         else
         {
-            CockRateMultiplier = 1.0;
+            return 1.0;
         }
     }
-    private void CalculateReloadRate()
+
+    /// <summary>
+    /// Calculates the Reload Multiplier
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="ReloadSpeedPercentage">all raw ReloadSpeed modifiers</param>
+    /// <param name="RecoilPercentage"> all raw Recoil modifiers</param>
+    /// <returns>calculated ReloadMultiplier</returns>
+    public static double CalculateReloadRate(BLRItem Reciever, double ReloadSpeedPercentage, double RecoilPercentage)
     {
         double allReloadSpeed = Percentage(ReloadSpeedPercentage);
         double allRecoil = Percentage(RecoilPercentage);
@@ -810,13 +827,25 @@ public class BLRWeaponSetup : INotifyPropertyChanged
                 WeaponReloadRate = Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Y ?? 0, rate_alpha);
             }
         }
-        ReloadMultiplier = WeaponReloadRate;
+        return WeaponReloadRate;
     }
-    private void CalculateReloadSpeed()
+
+    /// <summary>
+    /// Not yet Implemented
+    /// </summary>
+    /// <param name="Reciever"></param>
+    public static void CalculateReloadSpeed(BLRItem Reciever)
     {
         // Placeholder so I don't forget
     }
-    private void CalculateMovementSpeed()
+    
+    /// <summary>
+    /// Calculates the Movementspeed
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="MovementSpeedPercentage">all raw MovementSpeed modifiers</param>
+    /// <returns>calculated Movementspeed</returns>
+    public static double CalculateMovementSpeed(BLRItem Reciever, double MovementSpeedPercentage)
     {
         double allMovementSpeed = Percentage(MovementSpeedPercentage);
         double move_alpha = Math.Abs(allMovementSpeed);
@@ -829,10 +858,19 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         {
             move_modifier = Lerp(Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMoveSpeed.X ?? 0, move_alpha);
         }
-        ModifiedRunSpeed = (765 + (move_modifier * 0.9)) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
+        return (765 + (move_modifier * 0.9)) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
     }
-    private void CalculateSpread(double allMovementSpread)
+
+    /// <summary>
+    /// Calculates the Spread values for AimDownSight, Hip and Move firing.
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="AccuracyPercentage">all raw Accuracy modifiers</param>
+    /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovmentSpeed modifiers</param>
+    /// <returns></returns>
+    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLRItem Reciever, double AccuracyPercentage, double BarrelStockMovementSpeed)
     {
+        double allMoveSpeed = Percentage(BarrelStockMovementSpeed);
         double allAccuracy = Percentage(AccuracyPercentage);
         double accuracyBaseModifier;
         double accuracyTABaseModifier;
@@ -867,9 +905,9 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             weight_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, weight_clampalpha);
         }
 
-        double move_alpha = Math.Abs(allMovementSpread); // Combined movement speed modifiers from only barrel and stock, divided by 100
+        double move_alpha = Math.Abs(allMoveSpeed); // Combined movement speed modifiers from only barrel and stock, divided by 100
         double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
-        if (allMovementSpread > 0)
+        if (allMoveSpeed > 0)
         {
             move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Y ?? 0, move_alpha);
         }
@@ -913,17 +951,27 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             averageSpread[2] /= averageShotCount;
         }
 
-        SpreadWhileADS = averageSpread[0];
-        SpreadWhileStanding = averageSpread[1];
-        SpreadWhileMoving = averageSpread[2];
+        return (ZoomSpread : averageSpread[0],
+                HipSpread : averageSpread[1],
+                MovmentSpread : averageSpread[2]);
     }
-    private double CalculateScopeInTime(double allMovementScopeIn)
+    
+    /// <summary>
+    /// Calculates the ScopeInTime for Reciever and Scope
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="Scope">Scope</param>
+    /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovementSpeed modifier</param>
+    /// <param name="RawScopeInTime">all raw ScopeInTime modifiers</param>
+    /// <returns></returns>
+    public static double CalculateScopeInTime(BLRItem Reciever, BLRItem Scope, double BarrelStockMovementSpeed, double RawScopeInTime)
     {
-        double TTTA_alpha = Math.Abs(allMovementScopeIn);
+        double allMovementSpeed = Clamp((BarrelStockMovementSpeed / 80.0D), -1.0D, 1.0D);
+        double TTTA_alpha = Math.Abs(allMovementSpeed);
         double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMIACOGMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
 
         // giant cheat incoming, please lord forgive me for what i am about to do
-        if (allMovementScopeIn > 0)
+        if (allMovementSpeed > 0)
         {
             TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
             ComboScopeMod = Lerp(0.0, 0.032, TTTA_alpha);
@@ -981,7 +1029,14 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         }
         return 0.225;
     }
-    private void CalculateRange()
+    
+    /// <summary>
+    /// Calculates the three ranges
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="RangePercentage">all Range modifiers</param>
+    /// <returns>1:Ideal Range, 2:Max Range, 3:Tracer Range</returns>
+    public static (double IdealRange, double MaxRange, double TracerRange) CalculateRange(BLRItem Reciever, double RangePercentage)
     {
         double allRange = Percentage(RangePercentage);
         double idealRange;
@@ -998,11 +1053,18 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             maxRange = Lerp(Reciever?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMaxDistance.X ?? 0, alpha);
         }
 
-        RangeClose = idealRange / 100;
-        RangeFar = maxRange / 100;
-        RangeTracer = (Reciever?.WeaponStats?.MaxTraceDistance ?? 0) / 100 ;
+        return (IdealRange : idealRange / 100.0D,
+                MaxRange : maxRange / 100.0D,
+                TracerRange : (Reciever?.WeaponStats?.MaxTraceDistance ?? 0) / 100.0D);
     }
-    private void CalculateRecoil()
+
+    /// <summary>
+    /// Calculates the Hip and AimDownSight Recoil
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="RecoilPercentage">all Recoil modifiers</param>
+    /// <returns>1:HipRecoil 2:ZoomRecoil</returns>
+    public static (double RecoilHip, double RecoilZoom) CalculateRecoil(BLRItem Reciever, double RecoilPercentage)
     {
         double allRecoil = Percentage(RecoilPercentage);
         double recoilModifier;
@@ -1067,16 +1129,23 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             double recoil = averageRecoil.Length() * recoilModifier;
             recoil *= (180 / Math.PI);
 
-            RecoilHip = recoil;
-            RecoilZoom = recoil * (Reciever?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8;
+            return (RecoilHip : recoil,
+                    RecoilZoom : recoil * (Reciever?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8D);
         }
         else
         {
-            RecoilHip = 0;
-            RecoilZoom = 0;
+            return (RecoilHip : 0, 
+                    RecoilZoom : 0);
         }
     }
-    private void CalculateDamage()
+    
+    /// <summary>
+    /// Calculates the IdealRange and MaxRange Damage
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="DamagePercentage">all raw Damage modifiers</param>
+    /// <returns></returns>
+    public static (double DamageIdeal, double DamageMax) CalculateDamage(BLRItem Reciever, double DamagePercentage)
     {
         double allDamage = Percentage(DamagePercentage);
         double damageModifier;
@@ -1090,10 +1159,11 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             damageModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeDamage.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeDamage.X ?? 0, alpha);
         }
 
-        DamageClose = damageModifier;
-        DamageFar = damageModifier * (Reciever?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d);
+        return (DamageIdeal : damageModifier,
+                DamageMax : damageModifier * (Reciever?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d));
     }
-    private static string CompareItemDescriptor1(BLRItem itembarrel, BLRItem itemmag)
+    
+    public static string CompareItemDescriptor1(BLRItem itembarrel, BLRItem itemmag)
     {
         if (itembarrel == null && itemmag != null)
         {
@@ -1117,7 +1187,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             return itemmag.DescriptorName;
         }
     }
-    private static string CompareItemDescriptor2(BLRItem itemstock, BLRItem itemmuzzle, BLRItem itemscope)
+    public static string CompareItemDescriptor2(BLRItem itemstock, BLRItem itemmuzzle, BLRItem itemscope)
     {
         if (itemstock == null && itemmuzzle == null && itemscope == null)
         {
@@ -1174,7 +1244,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     
     public static double Percentage(double input)
     { 
-        return Clamp(input, -100.0D, 100.0D) / 100.0D;
+        return Clamp((input / 100.0D), -1.0D, 1.0D);
     }
     public static double Lerp(double start, double target, double time)
     {

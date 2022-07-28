@@ -233,355 +233,355 @@ public partial class MainWindow : Window
     //}
 
     #region OldCalcs
-    private static double Lerp(double start, double target, double time)
-    {
-        return start * (1.0d - time) + target * time;
-    }
+    //private static double Lerp(double start, double target, double time)
+    //{
+    //    return start * (1.0d - time) + target * time;
+    //}
 
-    private static bool CheckCalculationReady(BLRItem item)
-    {
-        return item != null && item.WeaponStats != null && item.WeaponStats != null;
-    }
+    //private static bool CheckCalculationReady(BLRItem item)
+    //{
+    //    return item != null && item.WeaponStats != null && item.WeaponStats != null;
+    //}
 
-    public static void AccumulateStatsOfWeaponParts(BLRItem[] items, ref double ROF, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
-    {
-        double DamagePercent = 0;
-        double AccuracyPercent = 0;
-        double RangePercent = 0;
-        double ReloadPercent = 0;
-        double RecoilPercent = 0;
-        double RunPercent = 0;
+    //public static void AccumulateStatsOfWeaponParts(BLRItem[] items, ref double ROF, ref double Reload, ref double Swap, ref double Zoom, ref double ScopeIn, ref double Run)
+    //{
+    //    double DamagePercent = 0;
+    //    double AccuracyPercent = 0;
+    //    double RangePercent = 0;
+    //    double ReloadPercent = 0;
+    //    double RecoilPercent = 0;
+    //    double RunPercent = 0;
 
-        foreach (BLRItem item in items)
-        {
-            ROF += item?.WeaponStats?.ROF ?? 0;
-            Reload += item?.WikiStats?.reload ?? 0;
-            Swap += item?.WikiStats?.swaprate ?? 0;
-            Zoom += item?.WikiStats?.zoom ?? 0;
-            ScopeIn += item?.WikiStats?.scopeInTime ?? 0;
-            Run += item?.WikiStats?.run ?? 0;
+    //    foreach (BLRItem item in items)
+    //    {
+    //        ROF += item?.WeaponStats?.ROF ?? 0;
+    //        Reload += item?.WikiStats?.reload ?? 0;
+    //        Swap += item?.WikiStats?.swaprate ?? 0;
+    //        Zoom += item?.WikiStats?.zoom ?? 0;
+    //        ScopeIn += item?.WikiStats?.scopeInTime ?? 0;
+    //        Run += item?.WikiStats?.run ?? 0;
 
-            DamagePercent += item?.WeaponModifiers?.damage ?? 0;
-            AccuracyPercent += item?.WeaponModifiers?.accuracy ?? 0;
-            RangePercent += item?.WeaponModifiers?.range ?? 0;
-            ReloadPercent += item?.WeaponModifiers?.reloadSpeed ?? 0;
-            RecoilPercent += item?.WeaponModifiers?.recoil ?? 0;
-            RunPercent += item?.WeaponModifiers?.movementSpeed ?? 0;
-        }
-        DamagePercent = Math.Min(Math.Max(DamagePercent, -100), 100);
-        AccuracyPercent = Math.Min(Math.Max(AccuracyPercent, -100), 100);
-        RangePercent = Math.Min(Math.Max(RangePercent, -100), 100);
-        RecoilPercent = Math.Min(Math.Max(RecoilPercent, -100), 100);
-        RunPercent = Math.Min(Math.Max(RunPercent, -100), 100);
+    //        DamagePercent += item?.WeaponModifiers?.damage ?? 0;
+    //        AccuracyPercent += item?.WeaponModifiers?.accuracy ?? 0;
+    //        RangePercent += item?.WeaponModifiers?.range ?? 0;
+    //        ReloadPercent += item?.WeaponModifiers?.reloadSpeed ?? 0;
+    //        RecoilPercent += item?.WeaponModifiers?.recoil ?? 0;
+    //        RunPercent += item?.WeaponModifiers?.movementSpeed ?? 0;
+    //    }
+    //    DamagePercent = Math.Min(Math.Max(DamagePercent, -100), 100);
+    //    AccuracyPercent = Math.Min(Math.Max(AccuracyPercent, -100), 100);
+    //    RangePercent = Math.Min(Math.Max(RangePercent, -100), 100);
+    //    RecoilPercent = Math.Min(Math.Max(RecoilPercent, -100), 100);
+    //    RunPercent = Math.Min(Math.Max(RunPercent, -100), 100);
 
-        if (items[0].Category == ImportSystem.PRIMARY_CATEGORY)
-        {
-            Self.PrimaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
-            Self.PrimaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
-            Self.PrimaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
-            Self.PrimaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
-            Self.PrimaryModRunLabel.Content = RunPercent.ToString("0") + '%';
-        }
+    //    if (items[0].Category == ImportSystem.PRIMARY_CATEGORY)
+    //    {
+    //        Self.PrimaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
+    //        Self.PrimaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
+    //        Self.PrimaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
+    //        Self.PrimaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
+    //        Self.PrimaryModRunLabel.Content = RunPercent.ToString("0") + '%';
+    //    }
 
-        if (items[0].Category == ImportSystem.SECONDARY_CATEGORY)
-        {
-            Self.SecondaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
-            Self.SecondaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
-            Self.SecondaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
-            Self.SecondaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
-            Self.SecondaryModRunLabel.Content = RunPercent.ToString("0") + '%';
-        }
-    }
+    //    if (items[0].Category == ImportSystem.SECONDARY_CATEGORY)
+    //    {
+    //        Self.SecondaryModDamageLabel.Content = DamagePercent.ToString("0") + '%';
+    //        Self.SecondaryModAccuracyLabel.Content = AccuracyPercent.ToString("0") + '%';
+    //        Self.SecondaryModRangeLabel.Content = RangePercent.ToString("0") + '%';
+    //        Self.SecondaryModRecoilLabel.Content = RecoilPercent.ToString("0") + '%';
+    //        Self.SecondaryModRunLabel.Content = RunPercent.ToString("0") + '%';
+    //    }
+    //}
 
-    private static void UpdateStats(BLRItem Reciever, BLRItem Barrel, BLRItem Magazine, BLRItem Muzzle, BLRItem Scope, BLRItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel, Label Descriptor)
-    {
-        System.Diagnostics.Stopwatch watch = null;
-        if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Updating Stats", "");
+    //private static void UpdateStats(BLRItem Reciever, BLRItem Barrel, BLRItem Magazine, BLRItem Muzzle, BLRItem Scope, BLRItem Stock, Label DamageLabel, Label ROFLabel, Label AmmoLabel, Label ReloadLabel, Label SwapLabel, Label AimLabel, Label HipLabel, Label MoveLabel, Label RecoilLabel, Label ZoomRecoilLabel, Label ZoomLabel, Label ScopeInLabel, Label RangeLabel, Label RunLabel, Label Descriptor)
+    //{
+    //    System.Diagnostics.Stopwatch watch = null;
+    //    if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Updating Stats", "");
 
-        double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0, MoveSpeed = 0, CockRateMultiplier = 0, ReloadRateMultiplier = 0;
-        double BaseScopeIn = 0;
+    //    double Damage = 0, DamageFar = 0, ROF = 0, AmmoMag = 0, AmmoRes = 0, Reload = 0, Swap = 0, Aim = 0, Hip = 0, Move = 0, Recoil = 0, RecoilZoom = 0, Zoom = 0, ScopeIn = 0, RangeClose = 0, RangeFar = 0, RangeMax = 0, Run = 0, MoveSpeed = 0, CockRateMultiplier = 0, ReloadRateMultiplier = 0;
+    //    double BaseScopeIn = 0;
 
-        string barrelVSmag = "", stockVSmuzzle = "", weaponDescriptor = "";
+    //    string barrelVSmag = "", stockVSmuzzle = "", weaponDescriptor = "";
 
-        if (CheckCalculationReady(Reciever))
-        {
-            List<BLRItem> items = new();
-            if (Reciever != null)
-                items.Add(Reciever);
-            if (Barrel != null)
-                items.Add(Barrel);
-            if (Magazine != null)
-                items.Add(Magazine);
-            if (Muzzle != null)
-                items.Add(Muzzle);
-            if (Scope != null)
-                items.Add(Scope);
-            if (Stock != null)
-                items.Add(Stock);
+    //    if (CheckCalculationReady(Reciever))
+    //    {
+    //        List<BLRItem> items = new();
+    //        if (Reciever != null)
+    //            items.Add(Reciever);
+    //        if (Barrel != null)
+    //            items.Add(Barrel);
+    //        if (Magazine != null)
+    //            items.Add(Magazine);
+    //        if (Muzzle != null)
+    //            items.Add(Muzzle);
+    //        if (Scope != null)
+    //            items.Add(Scope);
+    //        if (Stock != null)
+    //            items.Add(Stock);
 
-            AccumulateStatsOfWeaponParts(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
+    //        AccumulateStatsOfWeaponParts(items.ToArray(), ref ROF, ref Reload, ref Swap, ref Zoom, ref ScopeIn, ref Run);
 
-            if (Reciever.UID == 40019)
-            {
-                AmmoMag = 1; // cheat because for some reason it isn't reading AMR's currently, might be due to lack of mag but am not sure
-            }
-            else
-            {
-                AmmoMag = Reciever.WeaponStats.MagSize + Magazine?.WeaponModifiers?.ammo ?? 0;
-            }
-            AmmoRes = AmmoMag * Reciever.WeaponStats.InitialMagazines;
+    //        if (Reciever.UID == 40019)
+    //        {
+    //            AmmoMag = 1; // cheat because for some reason it isn't reading AMR's currently, might be due to lack of mag but am not sure
+    //        }
+    //        else
+    //        {
+    //            AmmoMag = Reciever.WeaponStats.MagSize + Magazine?.WeaponModifiers?.ammo ?? 0;
+    //        }
+    //        AmmoRes = AmmoMag * Reciever.WeaponStats.InitialMagazines;
 
-            double allRecoil = Barrel?.WeaponModifiers?.recoil ?? 0;
-            allRecoil += Muzzle?.WeaponModifiers?.recoil ?? 0;
-            allRecoil += Stock?.WeaponModifiers?.recoil ?? 0;
-            allRecoil += Scope?.WeaponModifiers?.recoil ?? 0;
-            allRecoil += Magazine?.WeaponModifiers?.recoil ?? 0;
-            allRecoil /= 100.0f;
-            allRecoil = Math.Min(Math.Max(allRecoil, -1.0f), 1.0f);
-            Recoil = CalculateRecoil(Reciever, allRecoil);
-            RecoilZoom = Recoil * Reciever.WeaponStats.RecoilZoomMultiplier * 0.8;
+    //        double allRecoil = Barrel?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil += Muzzle?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil += Stock?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil += Scope?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil += Magazine?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil /= 100.0f;
+    //        allRecoil = Math.Min(Math.Max(allRecoil, -1.0f), 1.0f);
+    //        Recoil = CalculateRecoil(Reciever, allRecoil);
+    //        RecoilZoom = Recoil * Reciever.WeaponStats.RecoilZoomMultiplier * 0.8;
 
 
-            double allDamage = Barrel?.WeaponModifiers?.damage ?? 0;
-            allDamage += Muzzle?.WeaponModifiers?.damage ?? 0;
-            allDamage += Stock?.WeaponModifiers?.damage ?? 0;
-            allDamage += Scope?.WeaponModifiers?.damage ?? 0;
-            allDamage += Magazine?.WeaponModifiers?.damage ?? 0;
-            allDamage /= 100.0f;
-            allDamage = Math.Min(Math.Max(allDamage, -1.0f), 1.0f);
-            var damages = CalculateDamage(Reciever, allDamage);
-            Damage = damages[0];
-            DamageFar = damages[1];
+    //        double allDamage = Barrel?.WeaponModifiers?.damage ?? 0;
+    //        allDamage += Muzzle?.WeaponModifiers?.damage ?? 0;
+    //        allDamage += Stock?.WeaponModifiers?.damage ?? 0;
+    //        allDamage += Scope?.WeaponModifiers?.damage ?? 0;
+    //        allDamage += Magazine?.WeaponModifiers?.damage ?? 0;
+    //        allDamage /= 100.0f;
+    //        allDamage = Math.Min(Math.Max(allDamage, -1.0f), 1.0f);
+    //        var damages = CalculateDamage(Reciever, allDamage);
+    //        Damage = damages[0];
+    //        DamageFar = damages[1];
 
-            double allRange = Barrel?.WeaponModifiers?.range ?? 0;
-            allRange += Muzzle?.WeaponModifiers?.range ?? 0;
-            allRange += Stock?.WeaponModifiers?.range ?? 0;
-            allRange += Scope?.WeaponModifiers?.range ?? 0;
-            allRange += Magazine?.WeaponModifiers?.range ?? 0;
-            allRange /= 100.0f;
-            allRange = Math.Min(Math.Max(allRange, -1.0f), 1.0f);
-            var ranges = CalculateRange(Reciever, allRange);
-            RangeClose = ranges[0];
-            RangeFar = ranges[1];
-            RangeMax = ranges[2];
+    //        double allRange = Barrel?.WeaponModifiers?.range ?? 0;
+    //        allRange += Muzzle?.WeaponModifiers?.range ?? 0;
+    //        allRange += Stock?.WeaponModifiers?.range ?? 0;
+    //        allRange += Scope?.WeaponModifiers?.range ?? 0;
+    //        allRange += Magazine?.WeaponModifiers?.range ?? 0;
+    //        allRange /= 100.0f;
+    //        allRange = Math.Min(Math.Max(allRange, -1.0f), 1.0f);
+    //        var ranges = CalculateRange(Reciever, allRange);
+    //        RangeClose = ranges[0];
+    //        RangeFar = ranges[1];
+    //        RangeMax = ranges[2];
 
-            double allMovementSpread = Barrel?.WeaponModifiers?.movementSpeed ?? 0;  // For specifically my move spread change, hence no mag/scope added.
-            allMovementSpread += Muzzle?.WeaponModifiers?.movementSpeed ?? 0; //muzzle is always zero
-            allMovementSpread += Stock?.WeaponModifiers?.movementSpeed ?? 0;
-            allMovementSpread /= 100.0f;
-            allMovementSpread = Math.Min(Math.Max(allMovementSpread, -1.0f), 1.0f);
+    //        double allMovementSpread = Barrel?.WeaponModifiers?.movementSpeed ?? 0;  // For specifically my move spread change, hence no mag/scope added.
+    //        allMovementSpread += Muzzle?.WeaponModifiers?.movementSpeed ?? 0; //muzzle is always zero
+    //        allMovementSpread += Stock?.WeaponModifiers?.movementSpeed ?? 0;
+    //        allMovementSpread /= 100.0f;
+    //        allMovementSpread = Math.Min(Math.Max(allMovementSpread, -1.0f), 1.0f);
 
-            double allMovementScopeIn = Barrel?.WeaponModifiers?.movementSpeed ?? 0;
-            allMovementScopeIn += Stock?.WeaponModifiers?.movementSpeed ?? 0;
-            allMovementScopeIn /= 80.0f;
-            allMovementScopeIn = Math.Min(Math.Max(allMovementScopeIn, -1.0f), 1.0f);
-            double WikiScopeIn = ScopeIn;
-            BaseScopeIn = CalculateBaseScopeIn(Reciever, allMovementScopeIn, WikiScopeIn, Scope);
+    //        double allMovementScopeIn = Barrel?.WeaponModifiers?.movementSpeed ?? 0;
+    //        allMovementScopeIn += Stock?.WeaponModifiers?.movementSpeed ?? 0;
+    //        allMovementScopeIn /= 80.0f;
+    //        allMovementScopeIn = Math.Min(Math.Max(allMovementScopeIn, -1.0f), 1.0f);
+    //        double WikiScopeIn = ScopeIn;
+    //        BaseScopeIn = CalculateBaseScopeIn(Reciever, allMovementScopeIn, WikiScopeIn, Scope);
 
-            double allAccuracy = Barrel?.WeaponModifiers?.accuracy ?? 0;
-            allAccuracy += Muzzle?.WeaponModifiers?.accuracy ?? 0;
-            allAccuracy += Stock?.WeaponModifiers?.accuracy ?? 0;
-            allAccuracy += Scope?.WeaponModifiers?.accuracy ?? 0;
-            allAccuracy += Magazine?.WeaponModifiers?.accuracy ?? 0;
-            allAccuracy /= 100.0f;
-            allAccuracy = Math.Min(Math.Max(allAccuracy, -1.0f), 1.0f);
-            var spreads = CalculateSpread(Reciever, allAccuracy, allMovementSpread);
-            Aim = spreads[0];
-            Hip = spreads[1];
-            Move = spreads[2];
+    //        double allAccuracy = Barrel?.WeaponModifiers?.accuracy ?? 0;
+    //        allAccuracy += Muzzle?.WeaponModifiers?.accuracy ?? 0;
+    //        allAccuracy += Stock?.WeaponModifiers?.accuracy ?? 0;
+    //        allAccuracy += Scope?.WeaponModifiers?.accuracy ?? 0;
+    //        allAccuracy += Magazine?.WeaponModifiers?.accuracy ?? 0;
+    //        allAccuracy /= 100.0f;
+    //        allAccuracy = Math.Min(Math.Max(allAccuracy, -1.0f), 1.0f);
+    //        var spreads = CalculateSpread(Reciever, allAccuracy, allMovementSpread);
+    //        Aim = spreads[0];
+    //        Hip = spreads[1];
+    //        Move = spreads[2];
 
-            double allMovementSpeed = Barrel?.WeaponModifiers?.movementSpeed ?? 0;
-            allMovementSpeed += Muzzle?.WeaponModifiers?.movementSpeed ?? 0;
-            allMovementSpeed += Stock?.WeaponModifiers?.movementSpeed ?? 0;
-            allMovementSpeed += Scope?.WeaponModifiers?.movementSpeed ?? 0;
-            allMovementSpeed += Magazine?.WeaponModifiers?.movementSpeed ?? 0;
-            allMovementSpeed /= 100.0f;
-            allMovementSpeed = Math.Min(Math.Max(allMovementSpeed, -1.0f), 1.0f);
-            MoveSpeed = CalculateSpeed(Reciever, allMovementSpeed);
+    //        double allMovementSpeed = Barrel?.WeaponModifiers?.movementSpeed ?? 0;
+    //        allMovementSpeed += Muzzle?.WeaponModifiers?.movementSpeed ?? 0;
+    //        allMovementSpeed += Stock?.WeaponModifiers?.movementSpeed ?? 0;
+    //        allMovementSpeed += Scope?.WeaponModifiers?.movementSpeed ?? 0;
+    //        allMovementSpeed += Magazine?.WeaponModifiers?.movementSpeed ?? 0;
+    //        allMovementSpeed /= 100.0f;
+    //        allMovementSpeed = Math.Min(Math.Max(allMovementSpeed, -1.0f), 1.0f);
+    //        MoveSpeed = CalculateSpeed(Reciever, allMovementSpeed);
 
-            double allReloadSpeed = Magazine?.WeaponModifiers?.reloadSpeed ?? 0;
-            allReloadSpeed /= 100.0f;
-            allReloadSpeed = Math.Min(Math.Max(allReloadSpeed, -1.0f), 1.0f);
+    //        double allReloadSpeed = Magazine?.WeaponModifiers?.reloadSpeed ?? 0;
+    //        allReloadSpeed /= 100.0f;
+    //        allReloadSpeed = Math.Min(Math.Max(allReloadSpeed, -1.0f), 1.0f);
 
-            CockRateMultiplier = CalculateCockRate(Reciever, allRecoil);
-            ReloadRateMultiplier = CalculateReloadRate(Reciever, allRecoil, allReloadSpeed);
+    //        CockRateMultiplier = CalculateCockRate(Reciever, allRecoil);
+    //        ReloadRateMultiplier = CalculateReloadRate(Reciever, allRecoil, allReloadSpeed);
 
-            CalculateZoomROF(Reciever, allRecoil);
+    //        CalculateZoomROF(Reciever, allRecoil);
 
-            List<BLRItem> mods = new();
-            if (Barrel != null)
-                mods.Add(Barrel);
-            if (Magazine != null)
-                mods.Add(Magazine);
-            if (Muzzle != null)
-                mods.Add(Muzzle);
-            if (Scope != null)
-                mods.Add(Scope);
-            if (Stock != null)
-                mods.Add(Stock);
-            if (Stock != null)
-                mods.Add(Stock);
+    //        List<BLRItem> mods = new();
+    //        if (Barrel != null)
+    //            mods.Add(Barrel);
+    //        if (Magazine != null)
+    //            mods.Add(Magazine);
+    //        if (Muzzle != null)
+    //            mods.Add(Muzzle);
+    //        if (Scope != null)
+    //            mods.Add(Scope);
+    //        if (Stock != null)
+    //            mods.Add(Stock);
+    //        if (Stock != null)
+    //            mods.Add(Stock);
 
-            barrelVSmag = CompareItemDescriptor1(Barrel, Magazine);
-            stockVSmuzzle = CompareItemDescriptor2(Stock, Muzzle, Scope);
-            weaponDescriptor = Reciever.GetDescriptorName(TotalPoints(mods));
+    //        barrelVSmag = CompareItemDescriptor1(Barrel, Magazine);
+    //        stockVSmuzzle = CompareItemDescriptor2(Stock, Muzzle, Scope);
+    //        weaponDescriptor = Reciever.GetDescriptorName(TotalPoints(mods));
 
-        }
+    //    }
 
-        DamageLabel.Content = Damage.ToString("0.0") + " / " + DamageFar.ToString("0.0");
-        ROFLabel.Content = (ROF * CockRateMultiplier).ToString("0");
-        AmmoLabel.Content = AmmoMag.ToString("0") + " / " + AmmoRes.ToString("0");
-        ReloadLabel.Content = (Reload * ReloadRateMultiplier).ToString("0.00") + "s";
-        SwapLabel.Content = Swap.ToString("0.00");
-        AimLabel.Content = Aim.ToString("0.00") + "°";
-        HipLabel.Content = Hip.ToString("0.00") + "°";
-        MoveLabel.Content = Move.ToString("0.00") + "°";
-        RecoilLabel.Content = Recoil.ToString("0.00") + "°";
-        ZoomRecoilLabel.Content = RecoilZoom.ToString("0.00") + "°";
-        ZoomLabel.Content = Zoom.ToString("0.00");
-        ScopeInLabel.Content = BaseScopeIn.ToString("0.000") + "s";
-        RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
-        RunLabel.Content = MoveSpeed.ToString("0.00");
-        Descriptor.Content = barrelVSmag + " " + stockVSmuzzle + " " + weaponDescriptor;
-        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch);
-    }
+    //    DamageLabel.Content = Damage.ToString("0.0") + " / " + DamageFar.ToString("0.0");
+    //    ROFLabel.Content = (ROF * CockRateMultiplier).ToString("0");
+    //    AmmoLabel.Content = AmmoMag.ToString("0") + " / " + AmmoRes.ToString("0");
+    //    ReloadLabel.Content = (Reload * ReloadRateMultiplier).ToString("0.00") + "s";
+    //    SwapLabel.Content = Swap.ToString("0.00");
+    //    AimLabel.Content = Aim.ToString("0.00") + "°";
+    //    HipLabel.Content = Hip.ToString("0.00") + "°";
+    //    MoveLabel.Content = Move.ToString("0.00") + "°";
+    //    RecoilLabel.Content = Recoil.ToString("0.00") + "°";
+    //    ZoomRecoilLabel.Content = RecoilZoom.ToString("0.00") + "°";
+    //    ZoomLabel.Content = Zoom.ToString("0.00");
+    //    ScopeInLabel.Content = BaseScopeIn.ToString("0.000") + "s";
+    //    RangeLabel.Content = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeMax.ToString("0");
+    //    RunLabel.Content = MoveSpeed.ToString("0.00");
+    //    Descriptor.Content = barrelVSmag + " " + stockVSmuzzle + " " + weaponDescriptor;
+    //    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch);
+    //}
 
-    private static void UpdateAdvancedStats(BLRItem Reciever, BLRItem Barrel, BLRItem Magazine, BLRItem Muzzle, BLRItem Stock, Label VerticalRatio, Label SpreadWeight, Label SpreadCenter, Label Fragments, Label ZoomROF, Label SpreadCrouch, Label SpreadJump, Label RecoilRecover, Label Reload)
-    {
-        if (CheckCalculationReady(Reciever))
-        {
-            double allRecoil = Barrel?.WeaponModifiers?.recoil ?? 0;
-            allRecoil += Muzzle?.WeaponModifiers?.recoil ?? 0;
-            allRecoil += Stock?.WeaponModifiers?.recoil ?? 0;
-            allRecoil += Magazine?.WeaponModifiers?.recoil ?? 0;
-            allRecoil /= 100.0f;
-            allRecoil = Math.Min(Math.Max(allRecoil, -1.0f), 1.0f);
+    //private static void UpdateAdvancedStats(BLRItem Reciever, BLRItem Barrel, BLRItem Magazine, BLRItem Muzzle, BLRItem Stock, Label VerticalRatio, Label SpreadWeight, Label SpreadCenter, Label Fragments, Label ZoomROF, Label SpreadCrouch, Label SpreadJump, Label RecoilRecover, Label Reload)
+    //{
+    //    if (CheckCalculationReady(Reciever))
+    //    {
+    //        double allRecoil = Barrel?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil += Muzzle?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil += Stock?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil += Magazine?.WeaponModifiers?.recoil ?? 0;
+    //        allRecoil /= 100.0f;
+    //        allRecoil = Math.Min(Math.Max(allRecoil, -1.0f), 1.0f);
 
-            VerticalRatio.Content = CalculateRecoilRatio(Reciever).ToString("0.00");
-            SpreadWeight.Content = Reciever.WeaponStats.SpreadCenterWeight.ToString("0.00");
-            SpreadCenter.Content = Reciever.WeaponStats.SpreadCenter.ToString("0.00");
-            Fragments.Content = Reciever.WeaponStats.FragmentsPerShell.ToString("0");
-            ZoomROF.Content = CalculateZoomROF(Reciever, allRecoil).ToString("0");
-            SpreadCrouch.Content = Reciever.WeaponStats.CrouchSpreadMultiplier.ToString("0.00");
-            SpreadJump.Content = Reciever.WeaponStats.JumpSpreadMultiplier.ToString("0.00");
-            RecoilRecover.Content = CalculateRecoilRecovery(Reciever).ToString("0.00");
+    //        VerticalRatio.Content = CalculateRecoilRatio(Reciever).ToString("0.00");
+    //        SpreadWeight.Content = Reciever.WeaponStats.SpreadCenterWeight.ToString("0.00");
+    //        SpreadCenter.Content = Reciever.WeaponStats.SpreadCenter.ToString("0.00");
+    //        Fragments.Content = Reciever.WeaponStats.FragmentsPerShell.ToString("0");
+    //        ZoomROF.Content = CalculateZoomROF(Reciever, allRecoil).ToString("0");
+    //        SpreadCrouch.Content = Reciever.WeaponStats.CrouchSpreadMultiplier.ToString("0.00");
+    //        SpreadJump.Content = Reciever.WeaponStats.JumpSpreadMultiplier.ToString("0.00");
+    //        RecoilRecover.Content = CalculateRecoilRecovery(Reciever).ToString("0.00");
 
-            // Reverted back to seconds for now because I found that elemental mags had reload percentages which means it likely doesn't do anything, in addition to LMG's quick mag previously having no percentage
-            // I'll probably go back to percentages if I end up manually curating/fixing all of the mag's reloadSpeed values
-            if (Magazine != null)
-            {
-                Reload.Content = Magazine.WikiStats.reload.ToString("0.00") + "s";
-                //double allReload = Magazine?.WeaponModifiers?.reloadSpeed ?? 0;
-                //Reload.Content = allReload.ToString("0") + "%";
-            }
-            else
-            {
-                Reload.Content = "0.00" + "s";
-                //Reload.Content = "0" + "%";
-            }
-        }
-    }
+    //        // Reverted back to seconds for now because I found that elemental mags had reload percentages which means it likely doesn't do anything, in addition to LMG's quick mag previously having no percentage
+    //        // I'll probably go back to percentages if I end up manually curating/fixing all of the mag's reloadSpeed values
+    //        if (Magazine != null)
+    //        {
+    //            Reload.Content = Magazine.WikiStats.reload.ToString("0.00") + "s";
+    //            //double allReload = Magazine?.WeaponModifiers?.reloadSpeed ?? 0;
+    //            //Reload.Content = allReload.ToString("0") + "%";
+    //        }
+    //        else
+    //        {
+    //            Reload.Content = "0.00" + "s";
+    //            //Reload.Content = "0" + "%";
+    //        }
+    //    }
+    //}
 
-    private static double TotalPoints(IEnumerable<BLRItem> items)
-    {
-        double points = 0;
-        foreach (BLRItem item in items)
-        {
-            points += item.WeaponModifiers.rating;
-        }
-        return points;
-    }
+    //private static double TotalPoints(IEnumerable<BLRItem> items)
+    //{
+    //    double points = 0;
+    //    foreach (BLRItem item in items)
+    //    {
+    //        points += item.WeaponModifiers.rating;
+    //    }
+    //    return points;
+    //}
 
-    private static string CompareItemDescriptor1(BLRItem item1, BLRItem item2)
-    {
-        if (item1 == null && item2 != null)
-        {
-            return item2.DescriptorName;
-        }
-        else if (item1 != null && item2 == null)
-        {
-            return item1.DescriptorName;
-        }
-        else if (item1 == null && item2 == null)
-        {
-            return "Standard";
-        }
+    //private static string CompareItemDescriptor1(BLRItem item1, BLRItem item2)
+    //{
+    //    if (item1 == null && item2 != null)
+    //    {
+    //        return item2.DescriptorName;
+    //    }
+    //    else if (item1 != null && item2 == null)
+    //    {
+    //        return item1.DescriptorName;
+    //    }
+    //    else if (item1 == null && item2 == null)
+    //    {
+    //        return "Standard";
+    //    }
 
-        if (item1.WeaponModifiers.rating > item2.WeaponModifiers.rating)
-        {
-            return item1.DescriptorName;
-        }
-        else
-        {
-            return item2.DescriptorName;
-        }
-    }
+    //    if (item1.WeaponModifiers.rating > item2.WeaponModifiers.rating)
+    //    {
+    //        return item1.DescriptorName;
+    //    }
+    //    else
+    //    {
+    //        return item2.DescriptorName;
+    //    }
+    //}
 
-    private static string CompareItemDescriptor2(BLRItem item1, BLRItem item2, BLRItem item3)
-    {
-        if (item1 == null && item2 == null && item3 == null)
-        {
-            return "Basic";
-        }
+    //private static string CompareItemDescriptor2(BLRItem item1, BLRItem item2, BLRItem item3)
+    //{
+    //    if (item1 == null && item2 == null && item3 == null)
+    //    {
+    //        return "Basic";
+    //    }
 
-        if (item1 == null && item2 != null)
-        {
-            return item2.DescriptorName;
-        }
-        else if (item1 != null && item2 == null)
-        {
-            return item1.DescriptorName;
-        }
-        else if (item1 == null && item2 == null && item3 != null)
-        {
-            return item3.DescriptorName;
-        }
+    //    if (item1 == null && item2 != null)
+    //    {
+    //        return item2.DescriptorName;
+    //    }
+    //    else if (item1 != null && item2 == null)
+    //    {
+    //        return item1.DescriptorName;
+    //    }
+    //    else if (item1 == null && item2 == null && item3 != null)
+    //    {
+    //        return item3.DescriptorName;
+    //    }
 
-        if ((item1.WeaponModifiers.rating >= item2.WeaponModifiers.rating) && (item1.WeaponModifiers.rating >= item3.WeaponModifiers.rating))
-        {
-            if (item1.WeaponModifiers.rating > 0)
-            {
-                return item1.DescriptorName;
-            }
-            return "Basic";
-        }
-        else if ((item2.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item2.WeaponModifiers.rating >= item3.WeaponModifiers.rating))
-        {
-            return item2.DescriptorName;
-        }
-        else if ((item3.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item3.WeaponModifiers.rating >= item2.WeaponModifiers.rating))
-        {
-            return item3.DescriptorName;
-        }
+    //    if ((item1.WeaponModifiers.rating >= item2.WeaponModifiers.rating) && (item1.WeaponModifiers.rating >= item3.WeaponModifiers.rating))
+    //    {
+    //        if (item1.WeaponModifiers.rating > 0)
+    //        {
+    //            return item1.DescriptorName;
+    //        }
+    //        return "Basic";
+    //    }
+    //    else if ((item2.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item2.WeaponModifiers.rating >= item3.WeaponModifiers.rating))
+    //    {
+    //        return item2.DescriptorName;
+    //    }
+    //    else if ((item3.WeaponModifiers.rating >= item1.WeaponModifiers.rating) && (item3.WeaponModifiers.rating >= item2.WeaponModifiers.rating))
+    //    {
+    //        return item3.DescriptorName;
+    //    }
 
-        return item1.DescriptorName;
-    }
+    //    return item1.DescriptorName;
+    //}
 
-    public static double[] CalculateRange(BLRItem Reciever, double allRange)
-    {
-        if (Reciever != null && Reciever.WeaponStats != null)
-        {
-            double idealRange;
-            double maxRange;
-            double alpha = Math.Abs(allRange);
-            if (allRange > 0)
-            {
-                idealRange = (int)Lerp(Reciever?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeIdealDistance.Y ?? 0, alpha);
-                maxRange = Lerp(Reciever?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMaxDistance.Y ?? 0, alpha);
-            }
-            else
-            {
-                idealRange = (int)Lerp(Reciever?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeIdealDistance.X ?? 0, alpha);
-                maxRange = Lerp(Reciever?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMaxDistance.X ?? 0, alpha);
-            }
+    //public static double[] CalculateRange(BLRItem Reciever, double allRange)
+    //{
+    //    if (Reciever != null && Reciever.WeaponStats != null)
+    //    {
+    //        double idealRange;
+    //        double maxRange;
+    //        double alpha = Math.Abs(allRange);
+    //        if (allRange > 0)
+    //        {
+    //            idealRange = (int)Lerp(Reciever?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeIdealDistance.Y ?? 0, alpha);
+    //            maxRange = Lerp(Reciever?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMaxDistance.Y ?? 0, alpha);
+    //        }
+    //        else
+    //        {
+    //            idealRange = (int)Lerp(Reciever?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeIdealDistance.X ?? 0, alpha);
+    //            maxRange = Lerp(Reciever?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMaxDistance.X ?? 0, alpha);
+    //        }
 
-            return new double[] { idealRange / 100, maxRange / 100, (Reciever?.WeaponStats?.MaxTraceDistance ?? 0) / 100 };
-        }
-        else
-        {
-            return new double[] { 0, 0, 0 };
-        }
-    }
+    //        return new double[] { idealRange / 100, maxRange / 100, (Reciever?.WeaponStats?.MaxTraceDistance ?? 0) / 100 };
+    //    }
+    //    else
+    //    {
+    //        return new double[] { 0, 0, 0 };
+    //    }
+    //}
 
     /// <summary>
     /// Calculates Spread of reciever with precentage modifiers for Aim, Hip, Move Spread
@@ -590,410 +590,410 @@ public partial class MainWindow : Window
     /// <param name="allAccuracy">the percentages of all parts that modify the general accuracy</param>
     /// <param name="allMovementSpread">the percentages of all parts that modify the accuracy multiplier when moving</param>
     /// <returns>[0]Aim, [1]Hip, [2]Move</returns>
-    public static double[] CalculateSpread(BLRItem Reciever, double allAccuracy, double allMovementSpread)
-    {
-        if (Reciever != null && Reciever.WeaponStats != null)
-        {
-            double accuracyBaseModifier;
-            double accuracyTABaseModifier;
-            double alpha = Math.Abs(allAccuracy);
-            if (allAccuracy > 0)
-            {
-                accuracyBaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeBaseSpread.Y ?? 0, alpha);
-                accuracyTABaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Y ?? 0, alpha);
-            }
-            else
-            {
-                accuracyBaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeBaseSpread.X ?? 0, alpha);
-                accuracyTABaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeTABaseSpread.X ?? 0, alpha);
-            }
+    //public static double[] CalculateSpread(BLRItem Reciever, double allAccuracy, double allMovementSpread)
+    //{
+    //    if (Reciever != null && Reciever.WeaponStats != null)
+    //    {
+    //        double accuracyBaseModifier;
+    //        double accuracyTABaseModifier;
+    //        double alpha = Math.Abs(allAccuracy);
+    //        if (allAccuracy > 0)
+    //        {
+    //            accuracyBaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeBaseSpread.Y ?? 0, alpha);
+    //            accuracyTABaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Y ?? 0, alpha);
+    //        }
+    //        else
+    //        {
+    //            accuracyBaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeBaseSpread.X ?? 0, alpha);
+    //            accuracyTABaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeTABaseSpread.X ?? 0, alpha);
+    //        }
 
-            double hip = accuracyBaseModifier * (180 / Math.PI);
-            double aim = (accuracyBaseModifier * Reciever.WeaponStats.ZoomSpreadMultiplier) * (180 / Math.PI);
-            if (Reciever.WeaponStats.UseTABaseSpread)
-            {
-                aim = accuracyTABaseModifier * (float)(180 / Math.PI);
-            }
+    //        double hip = accuracyBaseModifier * (180 / Math.PI);
+    //        double aim = (accuracyBaseModifier * Reciever.WeaponStats.ZoomSpreadMultiplier) * (180 / Math.PI);
+    //        if (Reciever.WeaponStats.UseTABaseSpread)
+    //        {
+    //            aim = accuracyTABaseModifier * (float)(180 / Math.PI);
+    //        }
 
-            double weight_alpha = Math.Abs(Reciever.WeaponStats.Weight / 80.0);
-            double weight_clampalpha = Math.Min(Math.Max(weight_alpha, -1.0), 1.0); // Don't ask me why they clamp the absolute value with a negative, I have no idea.
-            double weight_multiplier;
-            if (Reciever.WeaponStats.Weight > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
-            {
-                weight_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Y ?? 0, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
-            }
-            else
-            {
-                weight_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, weight_clampalpha);
-            }
+    //        double weight_alpha = Math.Abs(Reciever.WeaponStats.Weight / 80.0);
+    //        double weight_clampalpha = Math.Min(Math.Max(weight_alpha, -1.0), 1.0); // Don't ask me why they clamp the absolute value with a negative, I have no idea.
+    //        double weight_multiplier;
+    //        if (Reciever.WeaponStats.Weight > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
+    //        {
+    //            weight_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Y ?? 0, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
+    //        }
+    //        else
+    //        {
+    //            weight_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, weight_clampalpha);
+    //        }
 
-            double move_alpha = Math.Abs(allMovementSpread); // Combied movement speed modifiers from only barrel and stock, divided by 100
-            double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
-            if (allMovementSpread > 0)
-            {
-                move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Y ?? 0, move_alpha);
-            }
-            else
-            {
-                move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, move_alpha);
-            }
+    //        double move_alpha = Math.Abs(allMovementSpread); // Combied movement speed modifiers from only barrel and stock, divided by 100
+    //        double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
+    //        if (allMovementSpread > 0)
+    //        {
+    //            move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Y ?? 0, move_alpha);
+    //        }
+    //        else
+    //        {
+    //            move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, move_alpha);
+    //        }
 
-            double movemultiplier_current = 1.0 + ((Reciever.WeaponStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier));
-            double moveconstant_current = Reciever.WeaponStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
+    //        double movemultiplier_current = 1.0 + ((Reciever.WeaponStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier));
+    //        double moveconstant_current = Reciever.WeaponStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
 
-            double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
+    //        double move = ((accuracyBaseModifier + moveconstant_current) * (180 / Math.PI)) * movemultiplier_current;
 
-            // Average spread over multiple shots to account for random center weight multiplier
-            double[] averageSpread = { 0, 0, 0 };
-            double magsize = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
-            if (magsize <= 1)
-            {
-                magsize = Reciever.WeaponStats.InitialMagazines + 1.0;
-            }
-            if (magsize > 0)
-            {
-                double averageShotCount = Math.Max(magsize, 3.0f);
-                for (int shot = 1; shot <= averageShotCount; shot++)
-                {
-                    if (shot > (averageShotCount - (averageShotCount * Reciever.WeaponStats.SpreadCenterWeight)))
-                    {
-                        averageSpread[0] += (aim * Reciever.WeaponStats.SpreadCenter);
-                        averageSpread[1] += (hip * Reciever.WeaponStats.SpreadCenter);
-                        averageSpread[2] += (move * Reciever.WeaponStats.SpreadCenter);
-                    }
-                    else
-                    {
-                        averageSpread[0] += aim;
-                        averageSpread[1] += hip;
-                        averageSpread[2] += move;
-                    }
-                }
-                averageSpread[0] /= averageShotCount;
-                averageSpread[1] /= averageShotCount;
-                averageSpread[2] /= averageShotCount;
-            }
+    //        // Average spread over multiple shots to account for random center weight multiplier
+    //        double[] averageSpread = { 0, 0, 0 };
+    //        double magsize = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
+    //        if (magsize <= 1)
+    //        {
+    //            magsize = Reciever.WeaponStats.InitialMagazines + 1.0;
+    //        }
+    //        if (magsize > 0)
+    //        {
+    //            double averageShotCount = Math.Max(magsize, 3.0f);
+    //            for (int shot = 1; shot <= averageShotCount; shot++)
+    //            {
+    //                if (shot > (averageShotCount - (averageShotCount * Reciever.WeaponStats.SpreadCenterWeight)))
+    //                {
+    //                    averageSpread[0] += (aim * Reciever.WeaponStats.SpreadCenter);
+    //                    averageSpread[1] += (hip * Reciever.WeaponStats.SpreadCenter);
+    //                    averageSpread[2] += (move * Reciever.WeaponStats.SpreadCenter);
+    //                }
+    //                else
+    //                {
+    //                    averageSpread[0] += aim;
+    //                    averageSpread[1] += hip;
+    //                    averageSpread[2] += move;
+    //                }
+    //            }
+    //            averageSpread[0] /= averageShotCount;
+    //            averageSpread[1] /= averageShotCount;
+    //            averageSpread[2] /= averageShotCount;
+    //        }
 
-            return averageSpread;
-            //return new double[] { aim, hip, move };
-        }
-        else
-        {
-            return new double[] { 0, 0, 0 };
-        }
-    }
+    //        return averageSpread;
+    //        //return new double[] { aim, hip, move };
+    //    }
+    //    else
+    //    {
+    //        return new double[] { 0, 0, 0 };
+    //    }
+    //}
 
-    public static double CalculateBaseScopeIn(BLRItem Reciever, double allMovementScopeIn, double WikiScopeIn, BLRItem Scope)
-    {
-        double TTTA_alpha = Math.Abs(allMovementScopeIn);
-        double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
+    //public static double CalculateBaseScopeIn(BLRItem Reciever, double allMovementScopeIn, double WikiScopeIn, BLRItem Scope)
+    //{
+    //    double TTTA_alpha = Math.Abs(allMovementScopeIn);
+    //    double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
 
-        // giant cheat incoming, please lord forgive me for what i am about to do
-        if (allMovementScopeIn > 0)
-        {
-            TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
-            ComboScopeMod = Lerp(0.0, 0.03, TTTA_alpha);
-            FourXAmmoCounterMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
-            ArmComInfraredMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
-            EMITechScopeMod = Lerp(WikiScopeIn, 0.215, TTTA_alpha);
-            EMIInfraredMod = Lerp(WikiScopeIn, 0.215, TTTA_alpha);
-            EMIInfraredMK2Mod = Lerp(WikiScopeIn, 0.36, TTTA_alpha);
-            ArmComSniperMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
-            KraneSniperScopeMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
-            SilverwoodHeavyMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
-            FrontierSniperMod = Lerp(WikiScopeIn, 0.315, TTTA_alpha);
-        }
-        else
-        {
-            TightAimTime = Lerp(0.225, 0.30, TTTA_alpha);
-            ComboScopeMod = Lerp(0.0, -0.05, TTTA_alpha);
-            FourXAmmoCounterMod = Lerp(WikiScopeIn, 0.10, TTTA_alpha);
-            ArmComInfraredMod = Lerp(WikiScopeIn, 0.10, TTTA_alpha);
-            EMITechScopeMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
-            EMIInfraredMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
-            EMIInfraredMK2Mod = Lerp(WikiScopeIn, 0.30, TTTA_alpha);
-            ArmComSniperMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
-            KraneSniperScopeMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
-            SilverwoodHeavyMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
-            FrontierSniperMod = Lerp(WikiScopeIn, 0.235, TTTA_alpha);
-        }
+    //    // giant cheat incoming, please lord forgive me for what i am about to do
+    //    if (allMovementScopeIn > 0)
+    //    {
+    //        TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
+    //        ComboScopeMod = Lerp(0.0, 0.03, TTTA_alpha);
+    //        FourXAmmoCounterMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
+    //        ArmComInfraredMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
+    //        EMITechScopeMod = Lerp(WikiScopeIn, 0.215, TTTA_alpha);
+    //        EMIInfraredMod = Lerp(WikiScopeIn, 0.215, TTTA_alpha);
+    //        EMIInfraredMK2Mod = Lerp(WikiScopeIn, 0.36, TTTA_alpha);
+    //        ArmComSniperMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
+    //        KraneSniperScopeMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
+    //        SilverwoodHeavyMod = Lerp(WikiScopeIn, 0.275, TTTA_alpha);
+    //        FrontierSniperMod = Lerp(WikiScopeIn, 0.315, TTTA_alpha);
+    //    }
+    //    else
+    //    {
+    //        TightAimTime = Lerp(0.225, 0.30, TTTA_alpha);
+    //        ComboScopeMod = Lerp(0.0, -0.05, TTTA_alpha);
+    //        FourXAmmoCounterMod = Lerp(WikiScopeIn, 0.10, TTTA_alpha);
+    //        ArmComInfraredMod = Lerp(WikiScopeIn, 0.10, TTTA_alpha);
+    //        EMITechScopeMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
+    //        EMIInfraredMod = Lerp(WikiScopeIn, 0.16, TTTA_alpha);
+    //        EMIInfraredMK2Mod = Lerp(WikiScopeIn, 0.30, TTTA_alpha);
+    //        ArmComSniperMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
+    //        KraneSniperScopeMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
+    //        SilverwoodHeavyMod = Lerp(WikiScopeIn, 0.20, TTTA_alpha);
+    //        FrontierSniperMod = Lerp(WikiScopeIn, 0.235, TTTA_alpha);
+    //    }
 
-        if ((Reciever.WeaponStats?.TightAimTime ?? 0) > 0)
-        {
-            return Reciever.WeaponStats.TightAimTime;
-        }
-        else
-        {
-            if (TightAimTime > 0)
-            {
-                if (Scope.UID == 45005)
-                {
-                    return TightAimTime + ComboScopeMod + WikiScopeIn;
-                }
-                else if (Scope.UID == 45023)
-                {
-                    return TightAimTime + FourXAmmoCounterMod;
-                }
-                else if (Scope.UID == 45021)
-                {
-                    return TightAimTime + ArmComInfraredMod;
-                }
-                else if (Scope.UID == 45020)
-                {
-                    return TightAimTime + EMIInfraredMod;
-                }
-                else if (Scope.UID == 45019)
-                {
-                    return TightAimTime + EMIInfraredMK2Mod;
-                }
-                else if (Scope.UID == 45015)
-                {
-                    return TightAimTime + ArmComSniperMod;
-                }
-                else if (Scope.UID == 45008)
-                {
-                    return TightAimTime + SilverwoodHeavyMod;
-                }
-                else if (Scope.UID == 45007)
-                {
-                    return TightAimTime + KraneSniperScopeMod;
-                }
-                else if (Scope.UID == 45004)
-                {
-                    return TightAimTime + EMITechScopeMod;
-                }
-                else if (Scope.UID == 45001)
-                {
-                    return TightAimTime + FrontierSniperMod;
-                }
-                else
-                {
-                    return TightAimTime + WikiScopeIn;
-                }
-            }
-        }
-        return 0.225;
-    }
+    //    if ((Reciever.WeaponStats?.TightAimTime ?? 0) > 0)
+    //    {
+    //        return Reciever.WeaponStats.TightAimTime;
+    //    }
+    //    else
+    //    {
+    //        if (TightAimTime > 0)
+    //        {
+    //            if (Scope.UID == 45005)
+    //            {
+    //                return TightAimTime + ComboScopeMod + WikiScopeIn;
+    //            }
+    //            else if (Scope.UID == 45023)
+    //            {
+    //                return TightAimTime + FourXAmmoCounterMod;
+    //            }
+    //            else if (Scope.UID == 45021)
+    //            {
+    //                return TightAimTime + ArmComInfraredMod;
+    //            }
+    //            else if (Scope.UID == 45020)
+    //            {
+    //                return TightAimTime + EMIInfraredMod;
+    //            }
+    //            else if (Scope.UID == 45019)
+    //            {
+    //                return TightAimTime + EMIInfraredMK2Mod;
+    //            }
+    //            else if (Scope.UID == 45015)
+    //            {
+    //                return TightAimTime + ArmComSniperMod;
+    //            }
+    //            else if (Scope.UID == 45008)
+    //            {
+    //                return TightAimTime + SilverwoodHeavyMod;
+    //            }
+    //            else if (Scope.UID == 45007)
+    //            {
+    //                return TightAimTime + KraneSniperScopeMod;
+    //            }
+    //            else if (Scope.UID == 45004)
+    //            {
+    //                return TightAimTime + EMITechScopeMod;
+    //            }
+    //            else if (Scope.UID == 45001)
+    //            {
+    //                return TightAimTime + FrontierSniperMod;
+    //            }
+    //            else
+    //            {
+    //                return TightAimTime + WikiScopeIn;
+    //            }
+    //        }
+    //    }
+    //    return 0.225;
+    //}
 
-    public static double CalculateSpeed(BLRItem Reciever, double allMovementSpeed)
-    {
-        if (Reciever != null && Reciever.WeaponStats != null)
-        {
-            double move_alpha = Math.Abs(allMovementSpeed);
-            double move_modifier;
-            if (allMovementSpeed > 0)
-            {
-                move_modifier = Lerp(Reciever.WeaponStats.ModificationRangeMoveSpeed.Z, Reciever.WeaponStats.ModificationRangeMoveSpeed.Y, move_alpha);
-            }
-            else
-            {
-                move_modifier = Lerp(Reciever.WeaponStats.ModificationRangeMoveSpeed.Z, Reciever.WeaponStats.ModificationRangeMoveSpeed.X, move_alpha);
-            }
-            double speed = (765 + (move_modifier * 0.9)) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
-            return speed;
-        }
-        return 0;
-    }
+    //public static double CalculateSpeed(BLRItem Reciever, double allMovementSpeed)
+    //{
+    //    if (Reciever != null && Reciever.WeaponStats != null)
+    //    {
+    //        double move_alpha = Math.Abs(allMovementSpeed);
+    //        double move_modifier;
+    //        if (allMovementSpeed > 0)
+    //        {
+    //            move_modifier = Lerp(Reciever.WeaponStats.ModificationRangeMoveSpeed.Z, Reciever.WeaponStats.ModificationRangeMoveSpeed.Y, move_alpha);
+    //        }
+    //        else
+    //        {
+    //            move_modifier = Lerp(Reciever.WeaponStats.ModificationRangeMoveSpeed.Z, Reciever.WeaponStats.ModificationRangeMoveSpeed.X, move_alpha);
+    //        }
+    //        double speed = (765 + (move_modifier * 0.9)) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
+    //        return speed;
+    //    }
+    //    return 0;
+    //}
 
-    public static double[] CalculateDamage(BLRItem Reciever, double allDamage)
-    {
-        if (Reciever != null && Reciever.WeaponStats != null)
-        {
-            double damageModifier;
-            double alpha = Math.Abs(allDamage);
-            if (allDamage > 0)
-            {
-                damageModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeDamage.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeDamage.Y ?? 0, alpha);
-            }
-            else
-            {
-                damageModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeDamage.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeDamage.X ?? 0, alpha);
-            }
+    //public static double[] CalculateDamage(BLRItem Reciever, double allDamage)
+    //{
+    //    if (Reciever != null && Reciever.WeaponStats != null)
+    //    {
+    //        double damageModifier;
+    //        double alpha = Math.Abs(allDamage);
+    //        if (allDamage > 0)
+    //        {
+    //            damageModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeDamage.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeDamage.Y ?? 0, alpha);
+    //        }
+    //        else
+    //        {
+    //            damageModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeDamage.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeDamage.X ?? 0, alpha);
+    //        }
 
-            return new double[] { damageModifier, damageModifier * (Reciever?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d) };
-        }
-        else
-        {
-            return new double[] { 0, 0 };
-        }
-    }
+    //        return new double[] { damageModifier, damageModifier * (Reciever?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d) };
+    //    }
+    //    else
+    //    {
+    //        return new double[] { 0, 0 };
+    //    }
+    //}
 
-    public static double CalculateRecoil(BLRItem Reciever, double allRecoil)
-    {
-        if (Reciever != null && Reciever.WeaponStats != null)
-        {
-            double recoilModifier;
-            double alpha = Math.Abs(allRecoil);
-            if (allRecoil > 0)
-            {
-                recoilModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoil.Y ?? 0, alpha);
-            }
-            else
-            {
-                recoilModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoil.X ?? 0, alpha);
-            }
-            if (Reciever?.WeaponStats.MagSize > 0)
-            {
-                double averageShotCount = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
-                Vector3 averageRecoil = new(0, 0, 0);
+    //public static double CalculateRecoil(BLRItem Reciever, double allRecoil)
+    //{
+    //    if (Reciever != null && Reciever.WeaponStats != null)
+    //    {
+    //        double recoilModifier;
+    //        double alpha = Math.Abs(allRecoil);
+    //        if (allRecoil > 0)
+    //        {
+    //            recoilModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoil.Y ?? 0, alpha);
+    //        }
+    //        else
+    //        {
+    //            recoilModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoil.X ?? 0, alpha);
+    //        }
+    //        if (Reciever?.WeaponStats.MagSize > 0)
+    //        {
+    //            double averageShotCount = Math.Min(Reciever?.WeaponStats.MagSize ?? 0, 15.0f);
+    //            Vector3 averageRecoil = new(0, 0, 0);
 
-                for (int shot = 1; shot <= averageShotCount; shot++)
-                {
-                    Vector3 newRecoil = new(0, 0, 0)
-                    {
-                        X = (Reciever.WeaponStats.RecoilVector.X * Reciever.WeaponStats.RecoilVectorMultiplier.X * 0.5f) / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
-                        Y = (Reciever.WeaponStats.RecoilVector.Y * Reciever.WeaponStats.RecoilVectorMultiplier.Y * 0.3535f)
-                    };
+    //            for (int shot = 1; shot <= averageShotCount; shot++)
+    //            {
+    //                Vector3 newRecoil = new(0, 0, 0)
+    //                {
+    //                    X = (Reciever.WeaponStats.RecoilVector.X * Reciever.WeaponStats.RecoilVectorMultiplier.X * 0.5f) / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
+    //                    Y = (Reciever.WeaponStats.RecoilVector.Y * Reciever.WeaponStats.RecoilVectorMultiplier.Y * 0.3535f)
+    //                };
 
-                    double accumExponent = Reciever.WeaponStats.RecoilAccumulation;
-                    if (accumExponent > 1)
-                    {
-                        accumExponent = ((accumExponent - 1.0) * Reciever.WeaponStats.RecoilAccumulationMultiplier) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
-                    }
+    //                double accumExponent = Reciever.WeaponStats.RecoilAccumulation;
+    //                if (accumExponent > 1)
+    //                {
+    //                    accumExponent = ((accumExponent - 1.0) * Reciever.WeaponStats.RecoilAccumulationMultiplier) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
+    //                }
 
-                    double previousMultiplier = Reciever.WeaponStats.RecoilSize * Math.Pow(shot / Reciever.WeaponStats.Burst, accumExponent);
-                    double currentMultiplier = Reciever.WeaponStats.RecoilSize * Math.Pow(shot / Reciever.WeaponStats.Burst + 1.0f, accumExponent);
-                    double multiplier = currentMultiplier - previousMultiplier;
-                    newRecoil *= (float)multiplier;
-                    averageRecoil += newRecoil;
-                }
+    //                double previousMultiplier = Reciever.WeaponStats.RecoilSize * Math.Pow(shot / Reciever.WeaponStats.Burst, accumExponent);
+    //                double currentMultiplier = Reciever.WeaponStats.RecoilSize * Math.Pow(shot / Reciever.WeaponStats.Burst + 1.0f, accumExponent);
+    //                double multiplier = currentMultiplier - previousMultiplier;
+    //                newRecoil *= (float)multiplier;
+    //                averageRecoil += newRecoil;
+    //            }
 
-                // Also doing it here until everything fully moves over as stat display seemingly still uses function
-                if (Reciever?.UID == 40011) // LMG
-                {
-                    averageRecoil.Y *= 1.1f;
-                }
-                else if (Reciever?.UID == 40014 || Reciever?.UID == 40007 || Reciever?.UID == 40008) // LMGR - BAR - CR
-                {
-                    averageRecoil.Y *= 1.3f;
-                }
-                else if (Reciever?.UID == 40021 || Reciever?.UID == 40019 || Reciever?.UID == 40015 || Reciever?.UID == 40005 || Reciever?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
-                {
-                    averageRecoil.Y *= 1.5f;
-                }
+    //            // Also doing it here until everything fully moves over as stat display seemingly still uses function
+    //            if (Reciever?.UID == 40011) // LMG
+    //            {
+    //                averageRecoil.Y *= 1.1f;
+    //            }
+    //            else if (Reciever?.UID == 40014 || Reciever?.UID == 40007 || Reciever?.UID == 40008) // LMGR - BAR - CR
+    //            {
+    //                averageRecoil.Y *= 1.3f;
+    //            }
+    //            else if (Reciever?.UID == 40021 || Reciever?.UID == 40019 || Reciever?.UID == 40015 || Reciever?.UID == 40005 || Reciever?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
+    //            {
+    //                averageRecoil.Y *= 1.5f;
+    //            }
 
-                if (averageShotCount > 0)
-                {
-                    averageRecoil /= (float)averageShotCount;
-                }
-                if (Reciever.WeaponStats.ROF > 0 && Reciever.WeaponStats.ApplyTime > 60 / Reciever.WeaponStats.ROF)
-                {
-                    averageRecoil *= (float)(60 / (Reciever.WeaponStats.ROF * Reciever.WeaponStats.ApplyTime));
-                }
-                double recoil = averageRecoil.Length() * recoilModifier;
-                recoil *= (180 / Math.PI);
-                return recoil;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        else
-        {
-            return 0;
-        }
-    }
+    //            if (averageShotCount > 0)
+    //            {
+    //                averageRecoil /= (float)averageShotCount;
+    //            }
+    //            if (Reciever.WeaponStats.ROF > 0 && Reciever.WeaponStats.ApplyTime > 60 / Reciever.WeaponStats.ROF)
+    //            {
+    //                averageRecoil *= (float)(60 / (Reciever.WeaponStats.ROF * Reciever.WeaponStats.ApplyTime));
+    //            }
+    //            double recoil = averageRecoil.Length() * recoilModifier;
+    //            recoil *= (180 / Math.PI);
+    //            return recoil;
+    //        }
+    //        else
+    //        {
+    //            return 0;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        return 0;
+    //    }
+    //}
 
     // The ratio of vertical recoil
-    public static double CalculateRecoilRatio(BLRItem Reciever)
-    {
-        if (Reciever != null && Reciever.WeaponStats != null)
-        {
-            double vertical = Reciever.WeaponStats.RecoilVector.Y * Reciever.WeaponStats.RecoilVectorMultiplier.Y * 0.3535;
-            double horizontal = Reciever.WeaponStats.RecoilVector.X * Reciever.WeaponStats.RecoilVectorMultiplier.X * 0.5;
-            if ((vertical + horizontal) != 0)
-            {
-                return vertical / (vertical + horizontal);
-            }
-            return 1;
-        }
-        return 1;
-    }
+    //public static double CalculateRecoilRatio(BLRItem Reciever)
+    //{
+    //    if (Reciever != null && Reciever.WeaponStats != null)
+    //    {
+    //        double vertical = Reciever.WeaponStats.RecoilVector.Y * Reciever.WeaponStats.RecoilVectorMultiplier.Y * 0.3535;
+    //        double horizontal = Reciever.WeaponStats.RecoilVector.X * Reciever.WeaponStats.RecoilVectorMultiplier.X * 0.5;
+    //        if ((vertical + horizontal) != 0)
+    //        {
+    //            return vertical / (vertical + horizontal);
+    //        }
+    //        return 1;
+    //    }
+    //    return 1;
+    //}
 
     // Recoil recovery time
-    public static double CalculateRecoilRecovery(BLRItem Reciever)
-    {
-        if (Reciever != null && Reciever.WeaponStats != null)
-        {
-            if (Reciever.WeaponStats.RecoveryTime > 0)
-            {
-                return Reciever.WeaponStats.RecoveryTime;
-            }
-            return 60 / Reciever.WeaponStats.ROF;
-        }
-        return 0;
-    }
+    //public static double CalculateRecoilRecovery(BLRItem Reciever)
+    //{
+    //    if (Reciever != null && Reciever.WeaponStats != null)
+    //    {
+    //        if (Reciever.WeaponStats.RecoveryTime > 0)
+    //        {
+    //            return Reciever.WeaponStats.RecoveryTime;
+    //        }
+    //        return 60 / Reciever.WeaponStats.ROF;
+    //    }
+    //    return 0;
+    //}
 
     // Rate of fire when zoomed
-    public static double CalculateZoomROF(BLRItem Reciever, double allRecoil)
-    {
-        if (Reciever != null && Reciever.WeaponStats != null)
-        {
-            double cockrate = CalculateCockRate(Reciever, allRecoil);
-            if (Reciever.WeaponStats.ZoomRateOfFire > 0)
-            {
-                return Reciever.WeaponStats.ZoomRateOfFire * cockrate;
-            }
-            return Reciever.WeaponStats.ROF * cockrate;
-        }
-        return 0;
-    }
+    //public static double CalculateZoomROF(BLRItem Reciever, double allRecoil)
+    //{
+    //    if (Reciever != null && Reciever.WeaponStats != null)
+    //    {
+    //        double cockrate = CalculateCockRate(Reciever, allRecoil);
+    //        if (Reciever.WeaponStats.ZoomRateOfFire > 0)
+    //        {
+    //            return Reciever.WeaponStats.ZoomRateOfFire * cockrate;
+    //        }
+    //        return Reciever.WeaponStats.ROF * cockrate;
+    //    }
+    //    return 0;
+    //}
 
-    public static double CalculateCockRate(BLRItem Reciever, double allRecoil)
-    {
-        double alpha = Math.Abs(allRecoil);
-        double cockrate;
-        if (Reciever.WeaponStats.ModificationRangeCockRate.Z != 0)
-        {
-            if (allRecoil > 0)
-            {
-                cockrate = Lerp(Reciever.WeaponStats.ModificationRangeCockRate.Z, Reciever.WeaponStats.ModificationRangeCockRate.Y, alpha);
-            }
-            else
-            {
-                cockrate = Lerp(Reciever.WeaponStats.ModificationRangeCockRate.Z, Reciever.WeaponStats.ModificationRangeCockRate.X, alpha);
-            }
-            if (cockrate > 0)
-            {
-                cockrate = 1.0 / cockrate;
-            }
-            return cockrate;
-        }
-        return 1.0;
-    }
+    //public static double CalculateCockRate(BLRItem Reciever, double allRecoil)
+    //{
+    //    double alpha = Math.Abs(allRecoil);
+    //    double cockrate;
+    //    if (Reciever.WeaponStats.ModificationRangeCockRate.Z != 0)
+    //    {
+    //        if (allRecoil > 0)
+    //        {
+    //            cockrate = Lerp(Reciever.WeaponStats.ModificationRangeCockRate.Z, Reciever.WeaponStats.ModificationRangeCockRate.Y, alpha);
+    //        }
+    //        else
+    //        {
+    //            cockrate = Lerp(Reciever.WeaponStats.ModificationRangeCockRate.Z, Reciever.WeaponStats.ModificationRangeCockRate.X, alpha);
+    //        }
+    //        if (cockrate > 0)
+    //        {
+    //            cockrate = 1.0 / cockrate;
+    //        }
+    //        return cockrate;
+    //    }
+    //    return 1.0;
+    //}
 
-    public static double CalculateReloadRate(BLRItem Reciever, double allRecoil, double allReloadSpeed)
-    {
-        double WeaponReloadRate = 1.0;
-        double rate_alpha;
+    //public static double CalculateReloadRate(BLRItem Reciever, double allRecoil, double allReloadSpeed)
+    //{
+    //    double WeaponReloadRate = 1.0;
+    //    double rate_alpha;
 
-        if (Reciever.WeaponStats.ModificationRangeReloadRate.Z > 0)
-        {
-            rate_alpha = Math.Abs(allReloadSpeed);
-            if (allReloadSpeed > 0)
-            {
-                WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.X, rate_alpha);
-            }
-            else
-            {
-                WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.Y, rate_alpha);
-            }
-        }
+    //    if (Reciever.WeaponStats.ModificationRangeReloadRate.Z > 0)
+    //    {
+    //        rate_alpha = Math.Abs(allReloadSpeed);
+    //        if (allReloadSpeed > 0)
+    //        {
+    //            WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.X, rate_alpha);
+    //        }
+    //        else
+    //        {
+    //            WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.Y, rate_alpha);
+    //        }
+    //    }
 
-        if (Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z == 1)
-        {
-            rate_alpha = Math.Abs(allRecoil);
-            if (allRecoil > 0)
-            {
-                WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z, Reciever.WeaponStats.ModificationRangeRecoilReloadRate.X, rate_alpha);
-            }
-            else
-            {
-                WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z, Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Y, rate_alpha);
-            }
-        }
-        return WeaponReloadRate;
-    }
+    //    if (Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z == 1)
+    //    {
+    //        rate_alpha = Math.Abs(allRecoil);
+    //        if (allRecoil > 0)
+    //        {
+    //            WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z, Reciever.WeaponStats.ModificationRangeRecoilReloadRate.X, rate_alpha);
+    //        }
+    //        else
+    //        {
+    //            WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z, Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Y, rate_alpha);
+    //        }
+    //    }
+    //    return WeaponReloadRate;
+    //}
 
     #endregion OldCalcs
 

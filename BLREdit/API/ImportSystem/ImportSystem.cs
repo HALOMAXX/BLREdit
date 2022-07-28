@@ -65,10 +65,10 @@ namespace BLREdit
                     case SECONDARY_CATEGORY:
                         foreach (var item in itemCategory.Value)
                         {
-                            double[] damage = UI.MainWindow.CalculateDamage(item, 0);
-                            double[] spread = UI.MainWindow.CalculateSpread(item, 0, 0);
-                            double recoil = UI.MainWindow.CalculateRecoil(item, 0);
-                            double[] range = UI.MainWindow.CalculateRange(item, 0);
+                            var damage = BLRWeaponSetup.CalculateDamage(item, 0);
+                            var spread = BLRWeaponSetup.CalculateSpread(item, 0, 0);
+                            var recoil = BLRWeaponSetup.CalculateRecoil(item, 0);
+                            var range = BLRWeaponSetup.CalculateRange(item, 0);
 
                             var desc1 = new DisplayStatDiscriptor();
                             var desc2 = new DisplayStatDiscriptor();
@@ -77,12 +77,12 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "", "/");
-                            FormatDisplayStat(ref desc2, LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', spread[0], "0.00", "°");
-                            FormatDisplayStat(ref desc3, LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', spread[1], "0.00", "°");
-                            FormatDisplayStat(ref desc4, LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', spread[2], "0.00", "°");
-                            FormatDisplayStat(ref desc5, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0.00", "°");
-                            FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "", "/", 2);
+                            FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':',new double[]{ damage.DamageIdeal, damage.DamageMax}, "0", "", "/");
+                            FormatDisplayStat(ref desc2, LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', spread.ZoomSpread, "0.00", "°");
+                            FormatDisplayStat(ref desc3, LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', spread.HipSpread, "0.00", "°");
+                            FormatDisplayStat(ref desc4, LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', spread.MovmentSpread, "0.00", "°");
+                            FormatDisplayStat(ref desc5, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil.RecoilHip, "0.00", "°");
+                            FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range.IdealRange, "0", "", "/", 2);
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
