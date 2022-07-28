@@ -796,7 +796,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     /// <returns>calculated ReloadMultiplier</returns>
     public static double CalculateReloadRate(BLRItem Reciever, double ReloadSpeedPercentage, double RecoilPercentage)
     {
-        double allReloadSpeed = Percentage(ReloadSpeedPercentage);
+        double allReloadSpeed = ReloadSpeedPercentage / 100; // Reload speed is actually seemingly unclamped
         double allRecoil = Percentage(RecoilPercentage);
         double WeaponReloadRate = 1.0;
         double rate_alpha;
@@ -847,7 +847,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     /// <returns>calculated Movementspeed</returns>
     public static double CalculateMovementSpeed(BLRItem Reciever, double MovementSpeedPercentage)
     {
-        double allMovementSpeed = Percentage(MovementSpeedPercentage);
+        double allMovementSpeed = MovementSpeedPercentage / 100; // Movement speed is apparently also uncapped
         double move_alpha = Math.Abs(allMovementSpeed);
         double move_modifier;
         if (allMovementSpeed > 0)
