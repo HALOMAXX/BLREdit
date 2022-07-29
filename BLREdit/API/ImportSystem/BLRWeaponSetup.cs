@@ -951,9 +951,11 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             averageSpread[2] /= averageShotCount;
         }
 
-        return (ZoomSpread : averageSpread[0],
-                HipSpread : averageSpread[1],
-                MovmentSpread : averageSpread[2]);
+        // Going back to using original spread values for now, until I change my mind again
+        // (realized averaging it would have made the advanced info spread center stuff hard to understand, being baked into the results, for those not knowing the original values)
+        return (ZoomSpread : aim,
+                HipSpread : hip,
+                MovmentSpread : move);
     }
     
     /// <summary>
@@ -1116,6 +1118,10 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             else if (Reciever?.UID == 40021 || Reciever?.UID == 40019 || Reciever?.UID == 40015 || Reciever?.UID == 40005 || Reciever?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
             {
                 averageRecoil.Y *= 1.5f;
+            }
+            else
+            {
+                averageRecoil.Y *= 1.005f;
             }
 
             if (averageShotCount > 0)
