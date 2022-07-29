@@ -5,46 +5,61 @@ namespace BLREdit
 {
     public class MagiCowsWeapon : ICloneable
     {
-        [JsonIgnore]
-        private string reciever = "Assault Rifle";
+        [JsonIgnore] private string reciever = "Assault Rifle";
         public string Receiver { get { return reciever; } set { if (reciever != value) { reciever = value; isDirty = true; } } } 
 
-        [JsonIgnore]
-        private int muzzle = 8;
+        [JsonIgnore] private int muzzle = 8;
         public int Muzzle { get { return muzzle; } set { if (muzzle != value) { muzzle = value; isDirty = true; } } }
 
-        [JsonIgnore]
-        private string stock = "Silverwood Standard Stock";
+        [JsonIgnore] private string stock = "Silverwood Standard Stock";
         public string Stock { get { return stock; } set { if (stock != value) { stock = value; isDirty = true; } } }
 
-        [JsonIgnore]
-        private string barrel = "Frontier Standard Barrel";
-        public string Barrel { get { return barrel; } set { if (barrel != value) { barrel = value; isDirty = true; } } }
+        [JsonIgnore] private string barrel = "Frontier Standard Barrel";
+        public string Barrel { get { return barrel; } set { if (barrel != ConvertBarrel(value)) { barrel = ConvertBarrel(value); isDirty = true; } } }
 
-        [JsonIgnore]
-        private int magazine = 9;
+        [JsonIgnore] private int magazine = 9;
         public int Magazine { get { return magazine; } set { if (magazine != value) { magazine = value; isDirty = true; } } }
 
-        [JsonIgnore]
-        private string scope = "No Optic Mod";
+        [JsonIgnore] private string scope = "No Optic Mod";
         public string Scope { get { return scope; } set { if (scope != value) { scope = value; isDirty = true; } } }
 
-        [JsonIgnore]
-        private string grip = "";
+        [JsonIgnore] private string grip = "";
         public string Grip { get { return grip; } set { if (grip != value) { grip = value; isDirty = true; } } }
 
-        [JsonIgnore]
-        private int tag = -1;
+        [JsonIgnore] private int tag = -1;
         public int Tag { get { return tag; } set { if (tag != value) { tag = value; isDirty = true; } } }
 
-        [JsonIgnore]
-        private int camo = -1;
+        [JsonIgnore] private int camo = -1;
         public int Camo { get { return camo; } set { if (camo != value) { camo = value; isDirty = true; } } }
 
-        [JsonIgnore]
-        private bool isDirty = true;
-        [JsonIgnore]
-        public bool IsDirty { get { return (isDirty); } set { isDirty = value; } }
+        [JsonIgnore] private bool isDirty = true;
+        [JsonIgnore] public bool IsDirty { get { return (isDirty); } set { isDirty = value; } }
+
+        public static string ConvertBarrel(string Barrel)
+        {
+            switch (Barrel)
+            {
+                case "ArmCom BAR-01":
+                    return "Armcom BAR-01";
+                case "ArmCom BARl1":
+                    return "Armcom BARl1";
+                default:
+                    return Barrel;
+            }
+        }
+
+        public static string ConvertBarrelBack(string Barrel)
+        {
+            switch (Barrel)
+            {
+                case "Armcom BAR-01":
+                    return "ArmCom BAR-01";
+                case "Armcom BARl1":
+                    return "ArmCom BARl1";
+                default:
+                    return Barrel;
+            }
+        }
 
         public override string ToString()
         {
@@ -120,7 +135,7 @@ namespace BLREdit
         }
         public BLRItem GetBarrel()
         {
-            return ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, Barrel) ?? ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, NoBarrel);
+            return ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, ConvertBarrelBack(Barrel)) ?? ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, NoBarrel);
         }
         public BLRItem GetScope()
         {
