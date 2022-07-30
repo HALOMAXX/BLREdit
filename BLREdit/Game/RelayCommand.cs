@@ -29,10 +29,13 @@ class RelayCommand : ICommand
     /// </summary>
     /// <param name="execute">The execution logic.</param>
     /// <param name="canExecute">The execution status logic.</param>
-    public RelayCommand(Action<object> execute!!, Predicate<object> canExecute)
+    public RelayCommand(Action<object> execute, Predicate<object> canExecute)
     {
-        _execute = execute;
-        _canExecute = canExecute;
+        if (execute is not null)
+        {
+            _execute = execute;
+            _canExecute = canExecute;
+        }
     }
 
     #endregion // Constructors

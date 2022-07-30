@@ -1074,13 +1074,17 @@ public partial class MainWindow : Window
             {
                 bool anyClientPatched = false;
                 bool isClientStillExistent = false;
-                foreach (GameClient client in GameClients)
+                if(BLREditSettings.Settings.DefaultClient is not null)
                 {
-                    if (BLREditSettings.Settings.DefaultClient.OriginalPath.Equals(client))
-                    { isClientStillExistent = true; }
-                    if (client.IsPatched)
-                    { anyClientPatched = true; }
+                    foreach (GameClient client in GameClients)
+                    {
+                        if (BLREditSettings.Settings.DefaultClient.OriginalPath.Equals(client))
+                        { isClientStillExistent = true; }
+                        if (client.IsPatched)
+                        { anyClientPatched = true; }
+                    }
                 }
+
                 if (!isClientStillExistent) { BLREditSettings.Settings.DefaultClient = null; }
 
                 if (anyClientPatched)
