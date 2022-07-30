@@ -11,8 +11,7 @@ public class LanguageSet
 
     public static string GetWord(string word)
     {
-        string outWord;
-        if (currentLanguageSet.Words.TryGetValue(word, out outWord))
+        if (currentLanguageSet.Words.TryGetValue(word, out string outWord))
         {
             return outWord;
         }

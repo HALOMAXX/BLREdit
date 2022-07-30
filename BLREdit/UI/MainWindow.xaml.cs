@@ -53,6 +53,8 @@ public partial class MainWindow : Window
     /// </summary>
     public bool IsPlayerProfileChanging { get; private set; } = false;
 
+    public bool IsCheckingGameClient { get; private set; } = false;
+
     public List<GameClient> GameClients { get; set; } = new();
     public List<BLRServer> ServerList { get; set; } = new();
 
@@ -1056,6 +1058,45 @@ public partial class MainWindow : Window
         {
             BLREditSettings.Settings.DefaultServer = ServerList[0];
         }
+        CheckGameClientSetup();
+    }
+
+    public void CheckGameClientSetup()
+    {
+        if (!IsCheckingGameClient)
+        {
+            IsCheckingGameClient = true;
+            if (GameClients.Count <= 0)
+            {
+                //TODO: Inform the user that no gameclients where found
+            }
+            else
+            {
+                bool anyClientPatched = false;
+                bool isClientStillExistent = false;
+                foreach (GameClient client in GameClients)
+                {
+                    if (BLREditSettings.Settings.DefaultClient.OriginalPath.Equals(client))
+                    { isClientStillExistent = true; }
+                    if (client.IsPatched)
+                    { anyClientPatched = true; }
+                }
+                if (!isClientStillExistent) { BLREditSettings.Settings.DefaultClient = null; }
+
+                if (anyClientPatched)
+                {
+                    if (BLREditSettings.Settings.DefaultClient is null)
+                    {
+                        //TODO: Inform the user that no default GameClient was selected
+                    }
+                }
+                else
+                {
+                    //TODO: Inform the user that no client is patched and valid for being default client.
+                }
+            }
+            IsCheckingGameClient = false;
+        }
     }
 
     public void RefreshPing()
@@ -1330,13 +1371,13 @@ public partial class MainWindow : Window
 
         if (updateLoadout)
         {
-            UpdateActiveLoadout2();
+            UpdateActiveLoadout();
         }
 
 
     }
 
-    private void UpdateActiveLoadout2()
+    private static void UpdateActiveLoadout()
     {
         Loadout.UpdateMagicCowsLoadout(ActiveLoadout);
     }
@@ -1814,11 +1855,10 @@ public partial class MainWindow : Window
         }
     }
 
-    public void SetLoadout(MagiCowsLoadout loadout)
+    public static void SetLoadout(MagiCowsLoadout loadout)
     {
         ActiveLoadout = loadout;
         Loadout.LoadMagicCowsLoadout(loadout);
-        //UpdateStats2();
     }
     
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1890,7 +1930,7 @@ public partial class MainWindow : Window
     private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)
     {
         Loadout.IsFemale = true;
-        UpdateActiveLoadout2();
+        UpdateActiveLoadout();
         //reset item list
         var source = ItemList.ItemsSource;
         ItemList.ItemsSource = null;
@@ -1900,7 +1940,7 @@ public partial class MainWindow : Window
     private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
     {
         Loadout.IsFemale = false;
-        UpdateActiveLoadout2();
+        UpdateActiveLoadout();
 
         //reset item list
         var source = ItemList.ItemsSource;

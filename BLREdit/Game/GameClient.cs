@@ -71,6 +71,18 @@ public class GameClient : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    public override bool Equals(object obj)
+    {
+        if (obj is GameClient client)
+        {
+            return (client.OriginalPath == OriginalPath && client.ClientVersion == ClientVersion && client.IsPatched == IsPatched);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private ICommand patchClientCommand;
     [JsonIgnore]
     public ICommand PatchClientCommand
@@ -105,13 +117,9 @@ public class GameClient : INotifyPropertyChanged
 
     private static string CreateClientHash(string filePath)
     {
-        using (var crypto = SHA256.Create())
-        {
-            using (var stream = File.OpenRead(filePath))
-            { 
-                return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
-            }
-        }
+        using var crypto = SHA256.Create();
+        using var stream = File.OpenRead(filePath);
+        return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
     }
 
     public void LaunchClient()
@@ -123,13 +131,13 @@ public class GameClient : INotifyPropertyChanged
     {
         string launchArgs = options.Server.IPAddress + ':' + options.Server.Port;
         launchArgs += $"?Name={options.UserName}";
-        ProcessStartInfo psi = new ProcessStartInfo()
+        ProcessStartInfo psi = new()
         {
             CreateNoWindow = true,
             UseShellExecute = false,
+            FileName = PatchedPath,
+            Arguments = launchArgs
         };
-        psi.FileName = PatchedPath;
-        psi.Arguments = launchArgs;
         Process game = new()
         {
             StartInfo = psi

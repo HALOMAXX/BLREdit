@@ -29,11 +29,8 @@ class RelayCommand : ICommand
     /// </summary>
     /// <param name="execute">The execution logic.</param>
     /// <param name="canExecute">The execution status logic.</param>
-    public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+    public RelayCommand(Action<object> execute!!, Predicate<object> canExecute)
     {
-        if (execute == null)
-            throw new ArgumentNullException("execute");
-
         _execute = execute;
         _canExecute = canExecute;
     }
@@ -45,7 +42,7 @@ class RelayCommand : ICommand
     [DebuggerStepThrough]
     public bool CanExecute(object parameters)
     {
-        return _canExecute == null ? true : _canExecute(parameters);
+        return _canExecute == null || _canExecute(parameters);
     }
 
     public event EventHandler CanExecuteChanged
