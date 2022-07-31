@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:utils="clr-namespace:BLREdit" d:DataContext="{d:DesignInstance Type=utils:BLRLoadoutSetup}"
+        xmlns:utils="clr-namespace:BLREdit"
         xmlns:ui="clr-namespace:BLREdit.UI"
         xmlns:game="clr-namespace:BLREdit.Game"
         mc:Ignorable="d"
@@ -16,7 +16,7 @@
         <ListView Name="ItemList" Margin="374,22,0,0" Visibility="Collapsed" x:FieldModifier="public">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="{Binding Path=Columns, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ListView.ItemTemplate>
@@ -32,7 +32,7 @@
                         <Border BorderThickness="1,0,1,1">
                             <UniformGrid Columns="3">
                                 <UniformGrid Columns="2">
-                                    <Label Content="{Binding DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Label Content="{Binding Path=DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Label.Style>
                                             <Style>
                                                 <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.DescriptionColor}"/>

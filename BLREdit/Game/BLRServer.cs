@@ -21,6 +21,8 @@ public class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public bool IsOnline { get { return isOnline; } private set { isOnline = value; IsNotOnline = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotOnline { get { return !isOnline; } private set { OnPropertyChanged(); } }
 
+    [JsonIgnore] private string serverName;
+    public string ServerName { get { return serverName; } set { serverName = value; OnPropertyChanged(); } }
     public string ServerAddress { get; set; } = "127.0.0.1";
     public short Port { get; set; } = 7777;
     private string ipAddress;
@@ -60,8 +62,10 @@ public class BLRServer : INotifyPropertyChanged
 
     public override bool Equals(object obj)
     {
-        BLRServer server = obj as BLRServer;
-        return server?.ServerAddress == ServerAddress && server?.Port == Port;
+        if (obj is BLRServer server)
+        { return server.ServerAddress == ServerAddress && server.Port == Port; }
+        else
+        { return false; }
     }
 
     public void PingServer() 

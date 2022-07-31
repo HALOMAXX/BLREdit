@@ -11,13 +11,14 @@ using System.ComponentModel;
 using BLREdit.Game;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
+using System.Runtime.CompilerServices;
 
 namespace BLREdit.UI;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow : Window, INotifyPropertyChanged
 {
     private static readonly Random rng = new();
 
@@ -59,6 +60,15 @@ public partial class MainWindow : Window
     public List<BLRServer> ServerList { get; set; } = new();
 
     public static MainWindow Self { get; private set; } = null;
+
+    private int columns = 4;
+    public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
     public MainWindow()
     {
@@ -1114,11 +1124,11 @@ public partial class MainWindow : Window
     private void AddDefaultServers()
     {
         List<BLRServer> defaultServers = new() {
-        new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //mooserver.ddns.net : 7777
-        new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //blr.akoot.me : 7777
-        new() { ServerAddress = "blr.753z.net", Port = 7777 }, //blr.753z.net : 7777
+        new() { ServerAddress = "mooserver.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777
+        new() { ServerAddress = "blr.akoot.me", Port = 7777, ServerName = "Akoot's Server" }, //blr.akoot.me : 7777
+        new() { ServerAddress = "blr.753z.net", Port = 7777, ServerName = "IKE753Z's Server" }, //blr.753z.net : 7777
         //BLRServer subsonic = null;
-        new() { ServerAddress = "dozette.tplinkdns.com", Port = 7777 }, //dozette.tplinkdns.com : 7777
+        //new() { ServerAddress = "dozette.tplinkdns.com", Port = 7777, ServerName = "Dozette's Server" }, //dozette.tplinkdns.com : 7777
         };
 
         foreach (BLRServer defaultServer in defaultServers)
@@ -1703,19 +1713,23 @@ public partial class MainWindow : Window
             switch (list[0].Category)
             {
                 case ImportSystem.HELMETS_CATEGORY:
+                    Columns = 2;
                     SetSortingType(typeof(ImportHelmetSortingType));
                     break;
 
                 case ImportSystem.UPPER_BODIES_CATEGORY:
                 case ImportSystem.LOWER_BODIES_CATEGORY:
+                    Columns = 4;
                     SetSortingType(typeof(ImportArmorSortingType));
                     break;
 
                 case ImportSystem.ATTACHMENTS_CATEGORY:
+                    Columns = 4;
                     SetSortingType(typeof(ImportGearSortingType));
                     break;
 
                 case ImportSystem.SCOPES_CATEGORY:
+                    Columns = 4;
                     SetSortingType(typeof(ImportScopeSortingType));
                     break;
 
@@ -1723,21 +1737,29 @@ public partial class MainWindow : Window
                 case ImportSystem.CAMOS_BODIES_CATEGORY:
                 case ImportSystem.CAMOS_WEAPONS_CATEGORY:
                 case ImportSystem.HANGERS_CATEGORY:
-                case ImportSystem.TACTICAL_CATEGORY:
                 case ImportSystem.BADGES_CATEGORY:
+                    Columns = 5;
+                    SetSortingType(typeof(ImportNoStatsSortingType));
+                    break;
+
+                case ImportSystem.TACTICAL_CATEGORY:
+                    Columns = 4;
                     SetSortingType(typeof(ImportNoStatsSortingType));
                     break;
 
                 case ImportSystem.GRIPS_CATEGORY:
+                    Columns = 4;
                     SetSortingType(typeof(ImportGripSortingType));
                     break;
 
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
+                    Columns = 4;
                     SetSortingType(typeof(ImportWeaponSortingType));
                     break;
 
                 default:
+                    Columns = 4;
                     SetSortingType(typeof(ImportModificationSortingType));
                     break;
             }

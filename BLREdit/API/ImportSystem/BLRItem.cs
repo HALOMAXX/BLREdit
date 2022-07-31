@@ -27,7 +27,7 @@ public class BLRItem : INotifyPropertyChanged
 
     [JsonIgnore] public BitmapSource WideImage { get { return GetWideImage(); } set { OnPropertyChanged(); } }
     [JsonIgnore] public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(); } set { OnPropertyChanged(); } }
-    [JsonIgnore] public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(); } set {  OnPropertyChanged(); } }
+    [JsonIgnore] public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(); } set { OnPropertyChanged(); } }
 
     [JsonIgnore] public BitmapSource wideImageMale = null;
     [JsonIgnore] public BitmapSource largeSquareImageMale = null;
