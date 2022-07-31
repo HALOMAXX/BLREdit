@@ -61,6 +61,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     public static MainWindow Self { get; private set; } = null;
 
+    private int buttonIndex = 0;
+    private List<FrameworkElement> ItemButtons = new();
+
     private int columns = 4;
     public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
 
@@ -77,6 +80,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         IsPlayerNameChanging = true;
 
         InitializeComponent();
+
+        ItemButtons.Add(ItemListButton);
+        ItemButtons.Add(AdvancedInfoButton);
+        ItemButtons.Add(LauncherButton);
 
         ItemList.Items.Filter += new Predicate<object>(o =>
         {
@@ -2184,6 +2191,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         if (sender is Button button)
         {
+            buttonIndex = ItemButtons.IndexOf(button);
             foreach (FrameworkElement element in MenuGrid.Children)
             {
                 if (element.Tag is UIElement otherElement)
@@ -2288,6 +2296,59 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
             GameClientList.ItemsSource = null;
             GameClientList.ItemsSource = GameClients;
+        }
+    }
+
+
+    bool shiftDown = false;
+    bool altDown = false;
+    private void PreviewKeyDownMainWindow(object sender, KeyEventArgs e)
+    {
+        switch (e.Key)
+        { 
+            case Key.LeftShift:
+            case Key.RightShift:
+                shiftDown = true;
+                break;
+            case Key.LeftAlt:
+            case Key.RightAlt:
+                altDown = true;
+                break;
+        }
+    }
+
+    private void PreviewKeyUpMainWindow(object sender, KeyEventArgs e)
+    {
+        switch (e.Key)
+        {
+            case Key.LeftShift:
+            case Key.RightShift:
+                shiftDown = false;
+                break;
+            case Key.LeftAlt:
+            case Key.RightAlt:
+                altDown = false;
+                break;
+            case Key.Tab:
+                int index = buttonIndex;
+                if (shiftDown)
+                {
+                    index--;
+                }
+                else
+                {
+                    index++;
+                }
+                if (index < 0)
+                {
+                    index = ItemButtons.Count - 1;
+                }
+                if (index > ItemButtons.Count - 1)
+                {
+                    index = 0;
+                }
+                ItemListButton_Click(ItemButtons[index], new RoutedEventArgs());
+                break;
         }
     }
 }

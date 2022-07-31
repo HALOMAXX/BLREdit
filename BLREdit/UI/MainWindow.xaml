@@ -7,7 +7,7 @@
         xmlns:ui="clr-namespace:BLREdit.UI"
         xmlns:game="clr-namespace:BLREdit.Game"
         mc:Ignorable="d"
-        Title="BLREdit" Height="1032" Width="1920" MinWidth="480"  Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Red">
+        Title="BLREdit" Height="1032" Width="1920" MinWidth="480"  Loaded="Window_Loaded" Closing="Window_Closing" Foreground="Red" PreviewKeyDown="PreviewKeyDownMainWindow" PreviewKeyUp="PreviewKeyUpMainWindow">
 
     <Window.Background>
         <ImageBrush ImageSource="Resources/Default_2016.png" />
