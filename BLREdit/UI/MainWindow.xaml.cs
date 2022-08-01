@@ -1736,7 +1736,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     break;
 
                 case ImportSystem.SCOPES_CATEGORY:
-                    Columns = 4;
+                    Columns = 3;
                     SetSortingType(typeof(ImportScopeSortingType));
                     break;
 

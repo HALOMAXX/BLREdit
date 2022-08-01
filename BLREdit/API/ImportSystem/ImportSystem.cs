@@ -77,12 +77,12 @@ namespace BLREdit
                             var desc5 = new DisplayStatDiscriptor();
                             var desc6 = new DisplayStatDiscriptor();
 
-                            FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':',new double[]{ DamageIdeal, DamageMax}, "0", "", "/");
+                            FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':',new double[]{ DamageIdeal, DamageMax }, "0", "", "/");
                             FormatDisplayStat(ref desc2, LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', ZoomSpread, "0.00", "°");
                             FormatDisplayStat(ref desc3, LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', HipSpread, "0.00", "°");
                             FormatDisplayStat(ref desc4, LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', MovmentSpread, "0.00", "°");
                             FormatDisplayStat(ref desc5, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', RecoilHip, "0.00", "°");
-                            FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', IdealRange, "0", "", "/", 2);
+                            FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', new double[]{ IdealRange, MaxRange }, "0", "", "/", 2);
 
                             item.DisplayStat1 = desc1;
                             item.DisplayStat2 = desc2;
