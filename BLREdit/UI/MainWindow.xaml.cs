@@ -1134,6 +1134,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         new() { ServerAddress = "mooserver.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777
         new() { ServerAddress = "blr.akoot.me", Port = 7777, ServerName = "Akoot's Server" }, //blr.akoot.me : 7777
         new() { ServerAddress = "blr.753z.net", Port = 7777, ServerName = "IKE753Z's Server" }, //blr.753z.net : 7777
+        new() { ServerAddress = "localhost", Port = 7777, ServerName = "Local Host"}
         //BLRServer subsonic = null;
         //new() { ServerAddress = "dozette.tplinkdns.com", Port = 7777, ServerName = "Dozette's Server" }, //dozette.tplinkdns.com : 7777
         };

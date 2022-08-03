@@ -52,7 +52,7 @@ public class LanguageSet
                 { LanguageKeys.NONE, "None" },
                 { LanguageKeys.NAME, "Name" },
                 { LanguageKeys.ZOOM, "Zoom" },
-                { LanguageKeys.SCOPE_IN_TIME, "Scope In Time" },
+                { LanguageKeys.SCOPE_IN_TIME, "ADS Time" },
                 { LanguageKeys.INFRARED, "Infra" },
                 { LanguageKeys.INCENDIARY_PROTECTION, "Inc" },
                 { LanguageKeys.TOXIC_PROTECTION, "Tox" },
