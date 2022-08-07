@@ -11,7 +11,7 @@ public class BLREditSettings
 {
     public static BLREditSettings Settings { get; set; } = LoadSettings();
 
-    public GameClient DefaultClient { get; set; } = null;
+    public BLRClient DefaultClient { get; set; } = null;
     public BLRServer DefaultServer { get; set; } = null;
     public bool EnableDebugging { get; set; } = false;
     public bool ShowUpdateNotice { get; set; } = true;

@@ -56,7 +56,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     public bool IsCheckingGameClient { get; private set; } = false;
 
-    public List<GameClient> GameClients { get; set; } = new();
+    public List<BLRClient> GameClients { get; set; } = new();
     public List<BLRServer> ServerList { get; set; } = new();
 
     public static MainWindow Self { get; private set; } = null;
@@ -1047,7 +1047,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             }
         }
 
-        var clients = IOResources.DeserializeFile<List<GameClient>>("GameClients.json");
+        var clients = IOResources.DeserializeFile<List<BLRClient>>("GameClients.json");
         if (clients is not null) { GameClients = clients; }
 
         var servers = IOResources.DeserializeFile<List<BLRServer>>("ServerList.json");
@@ -1064,7 +1064,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         IOResources.GetGameLocationsFromSteam();
         foreach (string folder in IOResources.GameFolders)
         {
-            AddGameClient(new GameClient() { OriginalPath = folder + IOResources.GAME_DEFAULT_EXE});
+            AddGameClient(new BLRClient() { OriginalPath = folder + IOResources.GAME_DEFAULT_EXE});
         }
 
         AddDefaultServers();
@@ -1094,14 +1094,13 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         {
             ItemListButton_Click(LauncherButton, new RoutedEventArgs());
             LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
-            //TODO: Inform the user that no gameclients where found
             MessageBox.Show("You have to locate and add atleast one Client");
         }
         else
         {
-            List<GameClient> patchedClients = new();
+            List<BLRClient> patchedClients = new();
             bool isClientStillExistent = false;
-            foreach (GameClient client in GameClients)
+            foreach (BLRClient client in GameClients)
             {
                 if (client.Equals(BLREditSettings.Settings.DefaultClient))
                 { isClientStillExistent = true; }
@@ -1119,11 +1118,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     {
                         ItemListButton_Click(LauncherButton, new RoutedEventArgs());
                         LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
-                        //TODO: Inform the user that no default GameClient was selected because multiple clients are patched create prompt with all patched clients to select
                         MessageBox.Show("You have to select one of the Patched Clients as a Default Client");
                     }
                     else
-                    { BLREditSettings.Settings.DefaultClient = patchedClients[0]; }
+                    { BLREditSettings.Settings.DefaultClient = patchedClients[0]; patchedClients[0].IsCurrentClient = true; }
                 }
             }
             else if (GameClients.Count == 1)
@@ -1135,7 +1133,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             {
                 ItemListButton_Click(LauncherButton, new RoutedEventArgs());
                 LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
-                //TODO: Inform the user that no client is patched and valid for being a default client.
                 MessageBox.Show("You have to Patch one of the Available Clients");
             }
         }
@@ -1197,10 +1194,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    public void AddGameClient(GameClient client)
+    public void AddGameClient(BLRClient client)
     {
         bool add = true;
-        foreach (GameClient c in GameClients)
+        foreach (BLRClient c in GameClients)
         {
             if (c.OriginalPath == client.OriginalPath)
             {
@@ -1219,12 +1216,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         if (sender is Button button)
         {
-            if (button.DataContext is GameClient client)
+            if (button.DataContext is BLRClient client)
             {
                 if (client.IsPatched)
                 {
                     BLREditSettings.Settings.DefaultClient = client;
-                    foreach (GameClient c in GameClients)
+                    foreach (BLRClient c in GameClients)
                     {
                         c.IsCurrentClient = false;
                     }
@@ -2254,6 +2251,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
+    #region GameClient UI
     private void OpenNewGameClient_Click(object sender, RoutedEventArgs e)
     {
         OpenFileDialog dialog = new()
@@ -2263,8 +2261,46 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             Multiselect = false
         };
         dialog.ShowDialog();
-        AddGameClient(new GameClient() { OriginalPath = dialog.FileName });
+        AddGameClient(new BLRClient() { OriginalPath = dialog.FileName });
         CheckGameClientSetup();
+    }
+
+    private void RemoveGameClient_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            GameClients.Remove(button.DataContext as BLRClient);
+
+            GameClientList.ItemsSource = null;
+            GameClientList.ItemsSource = GameClients;
+        }
+    }
+    #endregion GameClient UI
+
+
+    #region Server UI
+    private void AddNewServer_Click(object sender, RoutedEventArgs e)
+    {
+        AddServer(new BLRServer(), true);
+    }
+
+    private void RemoveServer_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            ServerList.Remove(button.DataContext as BLRServer);
+
+            ServerListView.ItemsSource = null;
+            ServerListView.ItemsSource = ServerList;
+        }
+    }
+
+    private void PingServers_Click(object sender, RoutedEventArgs e)
+    {
+        foreach (BLRServer server in ServerList)
+        {
+            server.PingServer();
+        }
     }
 
     private void PortValidation(object sender, TextCompositionEventArgs e)
@@ -2294,33 +2330,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         }
         e.Handled = ok;
     }
-
-    private void AddNewServer_Click(object sender, RoutedEventArgs e)
-    {
-        AddServer(new BLRServer(), true);
-    }
-
-    private void RemoveServer_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            ServerList.Remove(button.DataContext as BLRServer);
-
-            ServerListView.ItemsSource = null;
-            ServerListView.ItemsSource = ServerList;
-        }
-    }
-
-    private void RemoveGameClient_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            GameClients.Remove(button.DataContext as GameClient);
-
-            GameClientList.ItemsSource = null;
-            GameClientList.ItemsSource = GameClients;
-        }
-    }
+    #endregion Server UI
 
 
     bool shiftDown = false;

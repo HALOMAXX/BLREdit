@@ -11,11 +11,13 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+using BLREdit.UI;
+
 using PeNet;
 
 namespace BLREdit.Game;
 
-public class GameClient : INotifyPropertyChanged
+public class BLRClient : INotifyPropertyChanged
 {
     [JsonIgnore] public bool IsPatched { get { return !string.IsNullOrEmpty(PatchedPath) && File.Exists(PatchedPath); } set { IsNotPatched = false; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotPatched { get { return !IsPatched; } private set { OnPropertyChanged(); } }
@@ -73,7 +75,7 @@ public class GameClient : INotifyPropertyChanged
 
     public override bool Equals(object obj)
     {
-        if (obj is GameClient client)
+        if (obj is BLRClient client)
         {
             return (client.OriginalPath == OriginalPath && client.ClientVersion == ClientVersion && client.IsPatched == IsPatched);
         }
@@ -167,7 +169,7 @@ public class GameClient : INotifyPropertyChanged
     /// </summary>
     public void PatchClient()
     {
-        //if (IsPatched) { return; }
+        if (IsPatched) { return; }
         string outFile = GetNewPatchedFile();
         File.Copy(OriginalPath, outFile, true);
         var PatchedFile = new FileStream(outFile, FileMode.Open);
@@ -187,6 +189,7 @@ public class GameClient : INotifyPropertyChanged
                 };
                 binaryWriter.Seek(11766694, SeekOrigin.Begin);
                 binaryWriter.Write(buffer);
+                this.IsEmblemPatched = true;
             }
             
             binaryWriter.Close();
@@ -197,5 +200,6 @@ public class GameClient : INotifyPropertyChanged
         }
         PatchedFile.Close();
         PatchedPath = outFile;
+        MainWindow.Self.CheckGameClientSetup();
     }
 }

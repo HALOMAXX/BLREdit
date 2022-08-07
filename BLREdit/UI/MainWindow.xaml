@@ -429,7 +429,8 @@
                 </ListView>
             </Grid>
             <Grid Name="ServerGrid" Visibility="Visible" Margin="0,24,0,0">
-                <Button Content="       Add New Server" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="AddNewServer_Click"/>
+                <Button Content="       Add New Server" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="-240,0,0,0" Click="AddNewServer_Click"/>
+                <Button Content="       Refresh Ping" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="240,0,0,0" Click="PingServers_Click"/>
                 <ListView Name="ServerListView" x:FieldModifier="public" Margin="0,0,0,40">
                     <Button/>
                     <!--This is for Desing Purposes-->

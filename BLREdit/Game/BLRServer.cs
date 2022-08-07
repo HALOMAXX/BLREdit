@@ -58,11 +58,6 @@ public class BLRServer : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public BLRServer()
-    {
-        //PingServer();
-    }
-
     public override bool Equals(object obj)
     {
         if (obj is BLRServer server)
