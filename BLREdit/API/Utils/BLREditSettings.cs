@@ -1,6 +1,7 @@
 ﻿using BLREdit.Game;
 using BLREdit.UI;
 
+using System;
 using System.IO;
 using System.Windows;
 
@@ -45,5 +46,20 @@ public class BLREditSettings
             IOResources.SerializeFile(IOResources.SETTINGS_FILE, tmp);
             return tmp;
         }
+    }
+
+    public static void Save()
+    {
+        bool client = false;
+        foreach (var c in MainWindow.Self.GameClients)
+        {
+            if (c.Equals(Settings.DefaultClient))
+            {
+                client = true;
+            }
+        }
+        if (!client) { Settings.DefaultClient = null; }
+
+        IOResources.SerializeFile(IOResources.SETTINGS_FILE, Settings);
     }
 }

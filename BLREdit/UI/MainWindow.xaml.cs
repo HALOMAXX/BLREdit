@@ -1083,40 +1083,61 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         if (!IsCheckingGameClient)
         {
             IsCheckingGameClient = true;
-            if (GameClients.Count <= 0)
+            CheckGameClients();
+            IsCheckingGameClient = false;
+        }
+    }
+
+    private void CheckGameClients()
+    {
+        if (GameClients.Count <= 0)
+        {
+            ItemListButton_Click(LauncherButton, new RoutedEventArgs());
+            LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
+            //TODO: Inform the user that no gameclients where found
+            MessageBox.Show("You have to locate and add atleast one Client");
+        }
+        else
+        {
+            List<GameClient> patchedClients = new();
+            bool isClientStillExistent = false;
+            foreach (GameClient client in GameClients)
             {
-                //TODO: Inform the user that no gameclients where found
+                if (client.Equals(BLREditSettings.Settings.DefaultClient))
+                { isClientStillExistent = true; }
+                if (client.IsPatched)
+                { patchedClients.Add(client); }
+            }
+
+            if (!isClientStillExistent) { BLREditSettings.Settings.DefaultClient = null; }
+
+            if (patchedClients.Count > 0)
+            {
+                if (BLREditSettings.Settings.DefaultClient is null)
+                {
+                    if (patchedClients.Count > 1)
+                    {
+                        ItemListButton_Click(LauncherButton, new RoutedEventArgs());
+                        LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
+                        //TODO: Inform the user that no default GameClient was selected because multiple clients are patched create prompt with all patched clients to select
+                        MessageBox.Show("You have to select one of the Patched Clients as a Default Client");
+                    }
+                    else
+                    { BLREditSettings.Settings.DefaultClient = patchedClients[0]; }
+                }
+            }
+            else if (GameClients.Count == 1)
+            {
+                GameClients[0].PatchClient();
+                BLREditSettings.Settings.DefaultClient = GameClients[0];
             }
             else
             {
-                bool anyClientPatched = false;
-                bool isClientStillExistent = false;
-                if(BLREditSettings.Settings.DefaultClient is not null)
-                {
-                    foreach (GameClient client in GameClients)
-                    {
-                        if (BLREditSettings.Settings.DefaultClient.OriginalPath.Equals(client))
-                        { isClientStillExistent = true; }
-                        if (client.IsPatched)
-                        { anyClientPatched = true; }
-                    }
-                }
-
-                if (!isClientStillExistent) { BLREditSettings.Settings.DefaultClient = null; }
-
-                if (anyClientPatched)
-                {
-                    if (BLREditSettings.Settings.DefaultClient is null)
-                    {
-                        //TODO: Inform the user that no default GameClient was selected
-                    }
-                }
-                else
-                {
-                    //TODO: Inform the user that no client is patched and valid for being default client.
-                }
+                ItemListButton_Click(LauncherButton, new RoutedEventArgs());
+                LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
+                //TODO: Inform the user that no client is patched and valid for being a default client.
+                MessageBox.Show("You have to Patch one of the Available Clients");
             }
-            IsCheckingGameClient = false;
         }
     }
 
@@ -1232,7 +1253,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         ExportSystem.SaveProfiles();
         IOResources.SerializeFile("GameClients.json", GameClients);
         IOResources.SerializeFile("ServerList.json", ServerList);
-        IOResources.SerializeFile("settings.json", BLREditSettings.Settings);
+        BLREditSettings.Save();
     }
 
     private void ScanGameClients()
@@ -2243,6 +2264,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         };
         dialog.ShowDialog();
         AddGameClient(new GameClient() { OriginalPath = dialog.FileName });
+        CheckGameClientSetup();
     }
 
     private void PortValidation(object sender, TextCompositionEventArgs e)
