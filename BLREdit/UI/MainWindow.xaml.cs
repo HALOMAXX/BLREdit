@@ -87,6 +87,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         ItemList.Items.Filter += new Predicate<object>(o =>
         {
+            if (FilterWeapon is null || o is null) { return true; }
             if (BLREditSettings.Settings.AdvancedModding)
             {
                 if (o is BLRItem item)
