@@ -439,6 +439,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     public void UpdateMagicCowsLoadout(MagiCowsLoadout loadout)
     {
         Primary.UpdateMagiCowsWeapon(loadout.Primary);
+        Primary.IsPrimary = true;
         Secondary.UpdateMagiCowsWeapon(loadout.Secondary);
 
         loadout.Tactical = Tactical?.GetMagicCowsID() ?? 0;

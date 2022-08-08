@@ -87,14 +87,24 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         ItemList.Items.Filter += new Predicate<object>(o =>
         {
-            if (BLREditSettings.Settings.AdvancedModding) { return true; }
-            if (o != null && FilterWeapon != null)
+            if (BLREditSettings.Settings.AdvancedModding)
             {
-                return ((BLRItem)o).IsValidFor(FilterWeapon);
+                if (o is BLRItem item)
+                {
+                    return AdvancedFilter(item, FilterWeapon);
+                }
+                return true;
             }
             else
             {
-                return false;
+                if (o != null && FilterWeapon != null)
+                {
+                    return ((BLRItem)o).IsValidFor(FilterWeapon);
+                }
+                else
+                {
+                    return false;
+                }
             }
         });
 
@@ -120,6 +130,21 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         ItemListButton_Click(ItemListButton, new RoutedEventArgs());
         LauncherMenuButton_Click(ServerListButton, new RoutedEventArgs());
+    }
+
+    private static bool AdvancedFilter(BLRItem item, BLRItem filter)
+    {
+        switch (item.Category)
+        {
+            case ImportSystem.MAGAZINES_CATEGORY:
+                if (item.Name.Contains("Standard") || item.Name.Contains("Light") || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
+                {
+                    return item.IsValidFor(filter);
+                }
+                return true;
+
+            default: return true;  
+        }
     }
 
     //private void UpdateStats2()
@@ -2335,6 +2360,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     bool shiftDown = false;
     bool altDown = false;
+
+    /// <summary>
+    /// Modifier Key Check
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void PreviewKeyDownMainWindow(object sender, KeyEventArgs e)
     {
         switch (e.Key)
@@ -2381,6 +2412,14 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     index = 0;
                 }
                 ItemListButton_Click(ItemButtons[index], new RoutedEventArgs());
+                break;
+            case Key.A:
+                if (shiftDown)
+                {
+                    BLREditSettings.Settings.AdvancedModding = !BLREditSettings.Settings.AdvancedModding;
+                    MessageBox.Show("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
+                    LoggingSystem.LogInfo("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
+                }
                 break;
         }
     }
