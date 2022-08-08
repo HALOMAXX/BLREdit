@@ -87,26 +87,19 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         ItemList.Items.Filter += new Predicate<object>(o =>
         {
-            if (FilterWeapon is null || o is null) { return true; }
-            if (BLREditSettings.Settings.AdvancedModding)
+            if (o is BLRItem item)
             {
-                if (o is BLRItem item)
+                if (FilterWeapon is null && (item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY)) { return true; }
+                if (BLREditSettings.Settings.AdvancedModding)
                 {
                     return AdvancedFilter(item, FilterWeapon);
                 }
-                return true;
-            }
-            else
-            {
-                if (o != null && FilterWeapon != null)
-                {
-                    return ((BLRItem)o).IsValidFor(FilterWeapon);
-                }
                 else
                 {
-                    return false;
+                    return item.IsValidFor(FilterWeapon);
                 }
             }
+            return false;
         });
 
         PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
@@ -138,7 +131,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         switch (item.Category)
         {
             case ImportSystem.MAGAZINES_CATEGORY:
-                if(filter.UID == 40019)
                 if (item.Name.Contains("Standard") || item.Name.Contains("Light") || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
                 {
                     return item.IsValidFor(filter);
