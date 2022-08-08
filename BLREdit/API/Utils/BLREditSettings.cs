@@ -18,6 +18,8 @@ public class BLREditSettings
     public bool DoRuntimeCheck { get; set; } = true;
     public bool ForceRuntimeCheck { get; set; } = false;
     public Visibility DebugVisibility { get; set; } = Visibility.Collapsed;
+    public bool AdvancedModding { get; set; } = false;
+
 
     public void ApplySettings()
     {
