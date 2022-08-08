@@ -14,27 +14,27 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     public BLRWeaponSetup Primary { get; set; } = new BLRWeaponSetup(true);
     public BLRWeaponSetup Secondary { get; set; } = new BLRWeaponSetup(false);
     private BLRItem helmet = null;
-    public BLRItem Helmet { get { return helmet; } set { if (BLREditSettings.Settings.AdvancedModding) { helmet = value; ItemChanged(); return; } if (helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { helmet = value; ItemChanged(); } } }
+    public BLRItem Helmet { get { return helmet; } set { if (BLREditSettings.Settings.AdvancedModding) { helmet = value; ItemChanged(); return; } if (value is null || helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { helmet = value; ItemChanged(); } } }
     private BLRItem upperBody = null;
-    public BLRItem UpperBody { get { return upperBody; } set { if (BLREditSettings.Settings.AdvancedModding ) { upperBody = value; ItemChanged(); return; } if (upperBody != value && value.Category == ImportSystem.UPPER_BODIES_CATEGORY) { upperBody = value; ItemChanged(); } } }
+    public BLRItem UpperBody { get { return upperBody; } set { if (BLREditSettings.Settings.AdvancedModding ) { upperBody = value; ItemChanged(); return; } if (value is null || upperBody != value && value.Category == ImportSystem.UPPER_BODIES_CATEGORY) { upperBody = value; ItemChanged(); } } }
     private BLRItem lowerBody = null;
-    public BLRItem LowerBody { get { return lowerBody; } set { if (BLREditSettings.Settings.AdvancedModding) { lowerBody = value; ItemChanged(); return; } if (lowerBody != value && value.Category == ImportSystem.LOWER_BODIES_CATEGORY) { lowerBody = value; ItemChanged(); } } }
+    public BLRItem LowerBody { get { return lowerBody; } set { if (BLREditSettings.Settings.AdvancedModding) { lowerBody = value; ItemChanged(); return; } if (value is null || lowerBody != value && value.Category == ImportSystem.LOWER_BODIES_CATEGORY) { lowerBody = value; ItemChanged(); } } }
     private BLRItem tactical = null;
-    public BLRItem Tactical { get { return tactical; } set { if (BLREditSettings.Settings.AdvancedModding) { tactical = value; ItemChanged(); return; } if (tactical != value && value.Category == ImportSystem.TACTICAL_CATEGORY) { tactical = value; ItemChanged(); } } }
+    public BLRItem Tactical { get { return tactical; } set { if (BLREditSettings.Settings.AdvancedModding) { tactical = value; ItemChanged(); return; } if (value is null || tactical != value && value.Category == ImportSystem.TACTICAL_CATEGORY) { tactical = value; ItemChanged(); } } }
     private BLRItem gear1 = null;
-    public BLRItem Gear1 { get { return gear1; } set { if (BLREditSettings.Settings.AdvancedModding) { gear1 = value; ItemChanged(); return; } if (gear1 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear1 = value; ItemChanged(); } } }
+    public BLRItem Gear1 { get { return gear1; } set { if (BLREditSettings.Settings.AdvancedModding) { gear1 = value; ItemChanged(); return; } if (value is null || gear1 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear1 = value; ItemChanged(); } } }
     private BLRItem gear2 = null;
-    public BLRItem Gear2 { get { return gear2; } set { if (BLREditSettings.Settings.AdvancedModding) { gear2 = value; ItemChanged(); return; } if (gear2 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear2 = value; ItemChanged(); } } }
+    public BLRItem Gear2 { get { return gear2; } set { if (BLREditSettings.Settings.AdvancedModding) { gear2 = value; ItemChanged(); return; } if (value is null || gear2 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear2 = value; ItemChanged(); } } }
     private BLRItem gear3 = null;
-    public BLRItem Gear3 { get { return gear3; } set { if (BLREditSettings.Settings.AdvancedModding) { gear3 = value; ItemChanged(); return; } if (gear3 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear3 = value; ItemChanged(); } } }
+    public BLRItem Gear3 { get { return gear3; } set { if (BLREditSettings.Settings.AdvancedModding) { gear3 = value; ItemChanged(); return; } if (value is null || gear3 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear3 = value; ItemChanged(); } } }
     private BLRItem gear4 = null;
-    public BLRItem Gear4 { get { return gear4; } set { if (BLREditSettings.Settings.AdvancedModding) { gear4 = value; ItemChanged(); return; } if (gear4 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear4 = value; ItemChanged(); } } }
+    public BLRItem Gear4 { get { return gear4; } set { if (BLREditSettings.Settings.AdvancedModding) { gear4 = value; ItemChanged(); return; } if (value is null || gear4 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { gear4 = value; ItemChanged(); } } }
     private BLRItem camo = null;
-    public BLRItem Camo { get { return camo; } set { if (BLREditSettings.Settings.AdvancedModding) { camo = value; ItemChanged(); return; } if (camo != value && value.Category == ImportSystem.CAMOS_BODIES_CATEGORY) { camo = value; ItemChanged(); } } }
+    public BLRItem Camo { get { return camo; } set { if (BLREditSettings.Settings.AdvancedModding) { camo = value; ItemChanged(); return; } if (value is null || camo != value && value.Category == ImportSystem.CAMOS_BODIES_CATEGORY) { camo = value; ItemChanged(); } } }
     private BLRItem avatar = null;
     public BLRItem Avatar { get { return avatar; } set { if (BLREditSettings.Settings.AdvancedModding) { avatar = value; ItemChanged(); return; } if (IsAvatarOK(value)) { avatar = value; ItemChanged(); } } }
     private BLRItem trophy = null;
-    public BLRItem Trophy { get { return trophy; } set { if (BLREditSettings.Settings.AdvancedModding) { trophy = value; ItemChanged(); return; } if (trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { trophy = value; ItemChanged(); } } }
+    public BLRItem Trophy { get { return trophy; } set { if (BLREditSettings.Settings.AdvancedModding) { trophy = value; ItemChanged(); return; } if (value is null || trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { trophy = value; ItemChanged(); } } }
     private bool isFemale;
     public bool IsFemale { get { return isFemale; } set { isFemale = value; UpdateImages(); OnPropertyChanged(); } }
 

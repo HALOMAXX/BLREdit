@@ -2003,6 +2003,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                 Loadout.Secondary.RemoveItem("Scope");
                 break;
 
+            case nameof(PrimaryGripImage):
+                Loadout.Primary.RemoveItem("Grip");
+                break;
             case nameof(SecondaryGripImage):
                 Loadout.Secondary.RemoveItem("Grip");
                 break;
