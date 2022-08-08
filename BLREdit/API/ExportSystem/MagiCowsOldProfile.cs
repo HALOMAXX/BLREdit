@@ -21,7 +21,6 @@ namespace BLREdit
         {
             ExportSystemProfile profile = new()
             {
-                ProfileName = PlayerName,
                 PlayerName = PlayerName,
                 Loadout1 = Loadout1,
                 Loadout2 = Loadout2,

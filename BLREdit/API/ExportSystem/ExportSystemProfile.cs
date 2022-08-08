@@ -9,10 +9,14 @@ namespace BLREdit
 {
     public class ExportSystemProfile : MagiCowsProfile
     {
-        public string ProfileName { get; set; } = "0";
-        public string Name { get { return '(' + ProfileName + ')' + PlayerName; } }
-        public int Index { get { return int.Parse(ProfileName); } }
-        [JsonIgnore]
-        public string OriginFileName { get; set; }
+        [JsonIgnore] public string Name { get { return '(' + Index.ToString() + ')' + PlayerName; } }
+        public int Index { get; set; }
+
+        public new ExportSystemProfile Clone()
+        {
+            ExportSystemProfile duplicate = base.Clone() as ExportSystemProfile;
+            duplicate.Index = ExportSystem.Profiles.Count;
+            return duplicate;
+        }
     }
 }

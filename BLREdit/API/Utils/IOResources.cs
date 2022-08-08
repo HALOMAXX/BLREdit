@@ -155,7 +155,6 @@ public class IOResources
         if (temp is ExportSystemProfile prof)
         {
             prof.IsDirty = false;
-            prof.OriginFileName = filePath;
         }
 
         return temp;

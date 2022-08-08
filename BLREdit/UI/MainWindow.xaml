@@ -791,6 +791,7 @@
 
 
                     <Button Name="RandomLoadout" Content="RandomLoadout" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
+                    <Button Name="DuplicateButton" Content="Duplicate" HorizontalAlignment="Left" Margin="134,35,0,0" VerticalAlignment="Top" Height="22" Width="80" Click="DuplicateProfile_Click"/>
 
                 </Grid>
             </ScrollViewer>

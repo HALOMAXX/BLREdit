@@ -2384,4 +2384,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                 break;
         }
     }
+
+    private void DuplicateProfile_Click(object sender, RoutedEventArgs e)
+    {
+        var profile = ExportSystem.ActiveProfile.Clone();
+        ExportSystem.Profiles.Add(profile);
+    }
 }

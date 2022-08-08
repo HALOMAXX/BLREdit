@@ -84,7 +84,7 @@ namespace BLREdit
                     if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Old Profile: " + file);
                     oldProfiles = true;
                     requestDelete = true;
-                    profile.ProfileName = i.ToString();
+                    profile.Index = i;
                 }
 
                 if (requestDelete)
@@ -180,7 +180,7 @@ namespace BLREdit
 
         public static ExportSystemProfile AddProfile(string Name)
         {
-            var prof = new ExportSystemProfile() { ProfileName = Profiles.Count.ToString(), PlayerName = Name };
+            var prof = new ExportSystemProfile() { Index = Profiles.Count, PlayerName = Name };
             Profiles.Add(prof);
             return prof;
         }
