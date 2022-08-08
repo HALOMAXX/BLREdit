@@ -287,6 +287,16 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     }
     public double ModifiedAmmoMagazine
     { get { return RawAmmoMagazine + AdditionalAmmo; } }
+    public double FinalAmmoMagazine // for eventual cases of advanced modding that i cant explain
+    {   get 
+        {
+            if (Reciever?.UID == 40019)
+            {
+                return 1; // Forcing AMR mag to 1 while trying not to change how its reserve ammo is modified, because oddly enough typical gun mags don't increase its base ammo but still treat reserve as if base was modified, which makes no sense
+            }
+            return ModifiedAmmoMagazine; 
+        } 
+    }
     public double RawAmmoReserve
     { get { return RawAmmoMagazine * (Reciever?.WeaponStats?.InitialMagazines ?? 0); } }
     public double ModifiedAmmoReserve
@@ -705,7 +715,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     {
         DamageDisplay = DamageClose.ToString("0.0") + " / " + DamageFar.ToString("0.0");
         RateOfFireDisplay = ModifiedRateOfFire.ToString("0");
-        AmmoDisplay = ModifiedAmmoMagazine.ToString("0") + " / " + ModifiedAmmoReserve.ToString("0");
+        AmmoDisplay = FinalAmmoMagazine.ToString("0") + " / " + ModifiedAmmoReserve.ToString("0");
         ReloadTimeDisplay = ModifiedReloadSpeed.ToString("0.00") + 's';
         SwapDisplay = RawSwapRate.ToString("0.00");
         AimSpreadDisplay = SpreadWhileADS.ToString("0.00") + '°';
