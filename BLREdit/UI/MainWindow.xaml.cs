@@ -67,6 +67,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private int columns = 4;
     public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
 
+    public BLREditSettings Settings { get; set; } = BLREditSettings.Settings;
+
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
@@ -1375,6 +1377,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                 Loadout.Secondary.Scope = item;
                 break;
 
+            case nameof(PrimaryGripImage):
+                Loadout.Primary.Grip = item;
+                break;
             case nameof(SecondaryGripImage):
                 Loadout.Secondary.Grip = item;
                 break;
@@ -1649,6 +1654,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         if (image.Name.Contains("Muzzle"))
         { 
             SetItemList(ImportSystem.MUZZELS_CATEGORY);
+            LastSelectedImage = image;
+            return;
+        }
+        if (image.Name.Contains("Grip"))
+        {
+            SetItemList(ImportSystem.GRIPS_CATEGORY);
             LastSelectedImage = image;
             return;
         }

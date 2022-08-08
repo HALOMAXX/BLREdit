@@ -2,12 +2,15 @@
 using BLREdit.UI;
 
 using System;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 using System.Windows;
 
 namespace BLREdit;
 
-public class BLREditSettings
+public class BLREditSettings : INotifyPropertyChanged
 {
     public static BLREditSettings Settings { get; set; } = LoadSettings();
 
@@ -18,8 +21,13 @@ public class BLREditSettings
     public bool DoRuntimeCheck { get; set; } = true;
     public bool ForceRuntimeCheck { get; set; } = false;
     public Visibility DebugVisibility { get; set; } = Visibility.Collapsed;
-    public bool AdvancedModding { get; set; } = false;
+    [JsonIgnore] private bool advancedModding = false;
+    public bool AdvancedModding { get { return advancedModding; } set { advancedModding = value; AdvancedModdingVisiblility = Visibility.Collapsed; OnPropertyChanged(); } }
+    [JsonIgnore] public Visibility AdvancedModdingVisiblility { get { if (AdvancedModding) { return Visibility.Visible; } else { return Visibility.Collapsed; } } set { OnPropertyChanged(); } }
 
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
     public void ApplySettings()
     {

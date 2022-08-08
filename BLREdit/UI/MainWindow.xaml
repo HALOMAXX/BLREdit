@@ -596,6 +596,9 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Camo.SmallSquareImage}" Name="PrimaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Camo.Tooltip}" x:FieldModifier="public"/>
                     </Border>
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp" Visibility="{Binding Path=Settings.AdvancedModdingVisiblility, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}">
+                        <Image HorizontalAlignment="Left" Source="{Binding Primary.Grip.SmallSquareImage}" Name="PrimaryGripImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Primary.Grip.Tooltip}" x:FieldModifier="public"/>
+                    </Border>
 
 
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,466,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
@@ -792,7 +795,6 @@
 
                     <Button Name="RandomLoadout" Content="RandomLoadout" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
                     <Button Name="DuplicateButton" Content="Duplicate" HorizontalAlignment="Left" Margin="134,35,0,0" VerticalAlignment="Top" Height="22" Width="80" Click="DuplicateProfile_Click"/>
-
                 </Grid>
             </ScrollViewer>
         </Grid>
