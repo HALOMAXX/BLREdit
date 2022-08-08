@@ -568,6 +568,59 @@ public class BLRWeaponSetup : INotifyPropertyChanged
 
 
     #endregion DisplayStats
+
+    public void RemoveItem(string mod)
+    {
+        switch (mod)
+        {
+            case nameof(Reciever): 
+            case nameof(reciever):
+                reciever = null;
+                ItemChanged(nameof(Reciever));
+                break;
+            case nameof(Barrel):
+            case nameof(barrel):
+                barrel = null;
+                ItemChanged(nameof(Barrel));
+                break;
+            case nameof(Magazine):
+            case nameof(magazine):
+                magazine = null;
+                ItemChanged(nameof(Magazine));
+                break;
+            case nameof(Muzzle):
+            case nameof(muzzle):
+                muzzle = null;
+                ItemChanged(nameof(Muzzle));
+                break;
+            case nameof(Stock):
+            case nameof(stock):
+                stock = null;
+                ItemChanged(nameof(Stock));
+                break;
+            case nameof(Scope):
+            case nameof(scope):
+                scope = null;
+                ItemChanged(nameof(Scope));
+                break;
+            case nameof(Grip):
+            case nameof(grip):
+                grip = null;
+                ItemChanged(nameof(Grip));
+                break;
+            case nameof(Tag):
+            case nameof(tag):
+                tag = null;
+                ItemChanged(nameof(Tag));
+                break;
+            case nameof(Camo):
+            case nameof(camo):
+                camo = null;
+                ItemChanged(nameof(Camo));
+                break;
+        }
+        //RemoveIncompatibleMods();
+    }
     private void RemoveIncompatibleMods()
     {
         MagiCowsWeapon wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);

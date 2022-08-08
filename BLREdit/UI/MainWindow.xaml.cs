@@ -137,6 +137,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         switch (item.Category)
         {
             case ImportSystem.MAGAZINES_CATEGORY:
+                if(filter.UID == 40019)
                 if (item.Name.Contains("Standard") || item.Name.Contains("Light") || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
                 {
                     return item.IsValidFor(filter);
@@ -1855,81 +1856,203 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void Image_MouseUp(object sender, MouseButtonEventArgs e)
     {
-        if (sender is Border border)
+        if (e.ChangedButton == MouseButton.Left)
         {
-            if (border.Child is Grid grid)
+            if (sender is Border border)
             {
-                if (grid.Children[0] is Image img)
+                if (border.Child is Grid grid)
                 {
-                    if (img.Name.Contains("Gear"))
+                    if (grid.Children[0] is Image img)
                     {
-                        SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
-                        LastSelectedImage = img;
-                        return;
+                        if (img.Name.Contains("Gear"))
+                        {
+                            SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
+                            LastSelectedImage = img;
+                            return;
+                        }
                     }
                 }
-            }
-            if (border.Child is Image image)
-            {
-                ItemList.ItemsSource = null;
-                if (image.Name.Contains("Primary"))
+                if (border.Child is Image image)
                 {
-                    UpdatePrimaryImages(image);
-                    return;
-                }
-                if (image.Name.Contains("Secondary"))
-                {
-                    UpdateSecondaryImages(image);
-                    return;
-                }
-                if (image.Name.Contains("Tactical"))
-                {
-                    SetItemList(ImportSystem.TACTICAL_CATEGORY);
-                    LastSelectedImage = image;
-                    return;
-                }
-                if (image.Name.Contains("CamoBody"))
-                {
-                    SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
-                    LastSelectedImage = image;
-                    return;
-                }
-                if (image.Name.Contains("Helmet"))
-                {
-                    SetItemList(ImportSystem.HELMETS_CATEGORY);
-                    LastSelectedImage = image;
-                    return;
-                }
-                if (image.Name.Contains("UpperBody"))
-                {
-                    SetItemList(ImportSystem.UPPER_BODIES_CATEGORY);
-                    LastSelectedImage = image;
-                    return;
-                }
+                    ItemList.ItemsSource = null;
+                    if (image.Name.Contains("Primary"))
+                    {
+                        UpdatePrimaryImages(image);
+                        return;
+                    }
+                    if (image.Name.Contains("Secondary"))
+                    {
+                        UpdateSecondaryImages(image);
+                        return;
+                    }
+                    if (image.Name.Contains("Tactical"))
+                    {
+                        SetItemList(ImportSystem.TACTICAL_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
+                    if (image.Name.Contains("CamoBody"))
+                    {
+                        SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
+                    if (image.Name.Contains("Helmet"))
+                    {
+                        SetItemList(ImportSystem.HELMETS_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
+                    if (image.Name.Contains("UpperBody"))
+                    {
+                        SetItemList(ImportSystem.UPPER_BODIES_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
 
-                if (image.Name.Contains("Avatar"))
-                {
-                    SetItemList(ImportSystem.AVATARS_CATEGORY);
-                    LastSelectedImage = image;
-                    return;
-                }
+                    if (image.Name.Contains("Avatar"))
+                    {
+                        SetItemList(ImportSystem.AVATARS_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
 
-                if (image.Name.Contains("LowerBody"))
-                {
-                    SetItemList(ImportSystem.LOWER_BODIES_CATEGORY);
-                    LastSelectedImage = image;
-                    return;
-                }
+                    if (image.Name.Contains("LowerBody"))
+                    {
+                        SetItemList(ImportSystem.LOWER_BODIES_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
 
-                if (image.Name.Contains("Trophy"))
-                {
-                    SetItemList(ImportSystem.BADGES_CATEGORY);
-                    LastSelectedImage = image;
-                    return;
+                    if (image.Name.Contains("Trophy"))
+                    {
+                        SetItemList(ImportSystem.BADGES_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
+                    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("ItemList Din't get set");
                 }
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("ItemList Din't get set");
             }
         }
+        else if (e.ChangedButton == MouseButton.Right)
+        {
+            if (sender is Border border)
+            {
+                if (border.Child is Grid grid)
+                {
+                    if (grid.Children[0] is Image img)
+                    {
+                        RemoveItemFromImage(img);
+                    }
+                }
+                if (border.Child is Image image)
+                {
+                    RemoveItemFromImage(image);
+                }
+            }
+        }
+    }
+
+    private void RemoveItemFromImage(Image image)
+    {
+        switch (image.Name)
+        {
+            case nameof(PrimaryRecieverImage):
+                Loadout.Primary.RemoveItem("Reciever");
+                break;
+            case nameof(SecondaryRecieverImage):
+                Loadout.Secondary.RemoveItem("Reciever");
+                break;
+
+            case nameof(PrimaryBarrelImage):
+                Loadout.Primary.RemoveItem("Barrel");
+                break;
+            case nameof(SecondaryBarrelImage):
+                Loadout.Secondary.RemoveItem("Barrel");
+                break;
+
+            case nameof(PrimaryMuzzleImage):
+                Loadout.Primary.RemoveItem("Muzzle");
+                break;
+            case nameof(SecondaryMuzzleImage):
+                Loadout.Secondary.RemoveItem("Muzzle");
+                break;
+
+            case nameof(PrimaryMagazineImage):
+                Loadout.Primary.RemoveItem("Magazine");
+                break;
+            case nameof(SecondaryMagazineImage):
+                Loadout.Secondary.RemoveItem("Magazine");
+                break;
+
+            case nameof(PrimaryStockImage):
+                Loadout.Primary.RemoveItem("Stock");
+                break;
+            case nameof(SecondaryStockImage):
+                Loadout.Secondary.RemoveItem("Stock");
+                break;
+
+            case nameof(PrimaryScopeImage):
+                Loadout.Primary.RemoveItem("Scope");
+                break;
+            case nameof(SecondaryScopeImage):
+                Loadout.Secondary.RemoveItem("Scope");
+                break;
+
+            case nameof(SecondaryGripImage):
+                Loadout.Secondary.RemoveItem("Grip");
+                break;
+
+            case nameof(PrimaryTagImage):
+                Loadout.Primary.RemoveItem("Tag");
+                break;
+            case nameof(SecondaryTagImage):
+                Loadout.Secondary.RemoveItem("Tag");
+                break;
+
+            case nameof(PrimaryCamoWeaponImage):
+                Loadout.Primary.RemoveItem("Camo");
+                break;
+            case nameof(SecondaryCamoWeaponImage):
+                Loadout.Secondary.RemoveItem("Camo");
+                break;
+
+
+            case nameof(HelmetImage):
+                Loadout.RemoveItem("Helmet");
+                break;
+            case nameof(UpperBodyImage):
+                Loadout.RemoveItem("UpperBody");
+                break;
+            case nameof(LowerBodyImage):
+                Loadout.RemoveItem("LowerBody");
+                break;
+            case nameof(TacticalImage):
+                Loadout.RemoveItem("Tactical");
+                break;
+            case nameof(GearImage1):
+                Loadout.RemoveItem("Gear1");
+                break;
+            case nameof(GearImage2):
+                Loadout.RemoveItem("Gear2");
+                break;
+            case nameof(GearImage3):
+                Loadout.RemoveItem("Gear3");
+                break;
+            case nameof(GearImage4):
+                Loadout.RemoveItem("Gear4");
+                break;
+            case nameof(PlayerCamoBodyImage):
+                Loadout.RemoveItem("Camo");
+                break;
+            case nameof(AvatarImage):
+                Loadout.RemoveItem("Avatar");
+                break;
+            case nameof(TrophyImage):
+                Loadout.RemoveItem("Trophy");
+                break;
+        }
+        UpdateActiveLoadout();
     }
 
     public static void SetLoadout(MagiCowsLoadout loadout)
@@ -2417,6 +2540,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                 if (shiftDown)
                 {
                     BLREditSettings.Settings.AdvancedModding = !BLREditSettings.Settings.AdvancedModding;
+                    BLREditSettings.Save();
                     MessageBox.Show("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
                     LoggingSystem.LogInfo("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
                 }

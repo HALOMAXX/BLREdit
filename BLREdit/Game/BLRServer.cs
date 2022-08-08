@@ -141,9 +141,25 @@ public class BLRServer : INotifyPropertyChanged
                 Ping = double.NaN;
             }
         }
-        catch (Exception error)
+        catch (ObjectDisposedException error)
         {
-            LoggingSystem.LogError(error.Message + "\n" + error.StackTrace);
+            LoggingSystem.LogError("{ObjectDisposedException}" + error.Message + "\n" + error.StackTrace);
+            IsOnline = false;
+            Ping = double.NaN;
+        }
+        catch (ArgumentOutOfRangeException error)
+        {
+            LoggingSystem.LogError("{ArgumentOutOfRangeException}" + error.Message + "\n" + error.StackTrace);
+            IsOnline = false;
+            Ping = double.NaN;
+        }
+        catch (AggregateException error)
+        {
+            LoggingSystem.LogError("{AggregateException}:");
+            foreach (var ex in error.InnerExceptions)
+            {
+                LoggingSystem.LogError(ex.Message + "\n" + ex.StackTrace + "\n");
+            }
             IsOnline = false;
             Ping = double.NaN;
         }

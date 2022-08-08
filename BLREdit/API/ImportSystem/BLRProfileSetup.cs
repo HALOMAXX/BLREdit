@@ -61,6 +61,68 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         CalculateStats();
         OnPropertyChanged(propertyName);
     }
+    public void RemoveItem(string mod)
+    {
+        switch (mod)
+        {
+            case nameof(Helmet):
+            case nameof(helmet):
+                helmet = null;
+                ItemChanged(nameof(Helmet));
+                break;
+            case nameof(UpperBody):
+            case nameof(upperBody):
+                upperBody = null;
+                ItemChanged(nameof(UpperBody));
+                break;
+            case nameof(LowerBody):
+            case nameof(lowerBody):
+                lowerBody = null;
+                ItemChanged(nameof(LowerBody));
+                break;
+            case nameof(Tactical):
+            case nameof(tactical):
+                tactical = null;
+                ItemChanged(nameof(Tactical));
+                break;
+            case nameof(Gear1):
+            case nameof(gear1):
+                gear1 = null;
+                ItemChanged(nameof(Gear1));
+                break;
+            case nameof(Gear2):
+            case nameof(gear2):
+                gear2 = null;
+                ItemChanged(nameof(Gear2));
+                break;
+            case nameof(Gear3):
+            case nameof(gear3):
+                gear3 = null;
+                ItemChanged(nameof(Gear3));
+                break;
+            case nameof(Gear4):
+            case nameof(gear4):
+                gear4 = null;
+                ItemChanged(nameof(Gear4));
+                break;
+            case nameof(Camo):
+            case nameof(camo):
+                camo = null;
+                ItemChanged(nameof(Camo));
+                break;
+            case nameof(Avatar):
+            case nameof(avatar):
+                avatar = null;
+                ItemChanged(nameof(Avatar));
+                break;
+            case nameof(Trophy):
+            case nameof(trophy):
+                trophy = null;
+                ItemChanged(nameof(Trophy));
+                break;
+        }
+        //RemoveIncompatibleMods();
+    }
 
     #region Properties
     public double GearSlots
@@ -461,6 +523,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     public void LoadMagicCowsLoadout(MagiCowsLoadout loadout)
     {
         Primary.LoadMagicCowsWeapon(loadout.Primary);
+        Primary.IsPrimary = true;
         Secondary.LoadMagicCowsWeapon(loadout.Secondary);
 
         IsFemale = loadout.IsFemale;
