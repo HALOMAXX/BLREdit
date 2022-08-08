@@ -1414,8 +1414,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         {
             UpdateActiveLoadout();
         }
-
-
     }
 
     private static void UpdateActiveLoadout()
@@ -1805,6 +1803,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             ApplySorting();
         }
         if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("ItemList Set for " + Type);
+        ItemListButton_Click(ItemListButton, new RoutedEventArgs());
     }
 
     public void ApplySorting()
