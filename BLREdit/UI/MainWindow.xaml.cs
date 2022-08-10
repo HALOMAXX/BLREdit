@@ -133,7 +133,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         switch (item.Category)
         {
             case ImportSystem.MAGAZINES_CATEGORY:
-                if (item.Name.Contains("Standard") || item.Name.Contains("Light") || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
+                if (item.Name.Contains("Standard") || (item.Name.Contains("Light") && !item.Name.Contains("Arrow")) || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
                 {
                     return item.IsValidFor(filter);
                 }
