@@ -133,9 +133,42 @@ public class BLRClient : INotifyPropertyChanged
         }
     }
 
+    private ICommand launchBotMatchCommand;
+    [JsonIgnore]
+    public ICommand LaunchBotMatchCommand
+    {
+        get
+        {
+            if (launchBotMatchCommand == null)
+            {
+                launchBotMatchCommand = new RelayCommand(
+                    param => this.LaunchBotMatch()
+                );
+            }
+            return launchBotMatchCommand;
+        }
+    }
+
+    private void LaunchBotMatch()
+    {
+        string launchArgs = "server HeloDeck?Game=FoxGame.FoxGameMP_DM?SingleMatch?NumBots=12";
+        ProcessStartInfo psi = new()
+        {
+            CreateNoWindow = true,
+            UseShellExecute = false,
+            FileName = PatchedPath,
+            Arguments = launchArgs
+        };
+        Process game = new()
+        {
+            StartInfo = psi
+        };
+        game.Start();
+    }
+
     private void LaunchServer()
     {
-        string launchArgs = "server ";
+        string launchArgs = "server HeloDeck?Game=FoxGame.FoxGameMP_DM?ServerName=BLREdit-DM-Server?Port=7777?NumBots=12?MaxPlayers=16?Playlist=DM";
         ProcessStartInfo psi = new()
         {
             CreateNoWindow = true,

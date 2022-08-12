@@ -294,10 +294,9 @@
         <Grid Margin="374,22,0,0" Name="LauncherMenu" d:DataContext="{d:DesignInstance Type=ui:MainWindow}">
             <Button Name="ServerListButton" Content="Server List" Tag="{Binding ElementName=ServerGrid}" Click="LauncherMenuButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="24"/>
             <Button Name="GameClientButton" Content="Client List" Tag="{Binding ElementName=ClientGrid}" Click="LauncherMenuButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="24" Margin="126,0,0,0"/>
-            <Grid Name="ClientGrid" Visibility="Visible" Margin="0,24,0,0">
+            <Grid Name="ClientGrid" Visibility="Collapsed" Margin="0,24,0,0">
                 <Button Content="       Add New Game Client" Margin="240,0,0,0" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="OpenNewGameClient_Click"/>
                 <ListView Name="GameClientList" x:FieldModifier="public" Margin="0,0,0,40">
-                    <Button/>
                     <!--This is for Desing Purposes-->
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -327,6 +326,7 @@
                                     <ColumnDefinition Width="80" />
                                     <ColumnDefinition Width="80" />
                                     <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="120" />
                                     <ColumnDefinition Width="120" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.Resources>
@@ -365,7 +365,10 @@
                                     <Button Content="Patch" IsEnabled="{Binding Path=IsNotPatched}" Command="{Binding Path=PatchClientCommand}"/>
                                 </Border>
                                 <Border Grid.Column="8" >
-                                    <Button Content="Server" IsEnabled="{Binding Path=IsNotPatched}" Command="{Binding Path=LaunchServerCommand}"/>
+                                    <Button Content="Bot Match" IsEnabled="{Binding Path=IsPatched}" Command="{Binding Path=LaunchBotMatchCommand}"/>
+                                </Border>
+                                <Border Grid.Column="9" >
+                                    <Button Content="Server" IsEnabled="{Binding Path=IsPatched}" Command="{Binding Path=LaunchServerCommand}"/>
                                 </Border>
                             </Grid>
                         </DataTemplate>
@@ -388,6 +391,7 @@
                                         <ColumnDefinition Width="80" />
                                         <ColumnDefinition Width="80" />
                                         <ColumnDefinition Width="70" />
+                                        <ColumnDefinition Width="120" />
                                         <ColumnDefinition Width="120" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.Resources>
@@ -427,6 +431,9 @@
                                         <TextBlock>Patch</TextBlock>
                                     </Border>
                                     <Border Grid.Column="8">
+                                        <TextBlock>Bot Match</TextBlock>
+                                    </Border>
+                                    <Border Grid.Column="9">
                                         <TextBlock>Server</TextBlock>
                                     </Border>
                                 </Grid>
@@ -436,7 +443,7 @@
                     </ListView.Template>
                 </ListView>
             </Grid>
-            <Grid Name="ServerGrid" Visibility="Collapsed" Margin="0,24,0,0">
+            <Grid Name="ServerGrid" Visibility="Visible" Margin="0,24,0,0">
                 <Button Content="       Add New Server" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="-240,0,0,0" Click="AddNewServer_Click"/>
                 <Button Content="       Refresh Ping" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="240,0,0,0" Click="PingServers_Click"/>
                 <ListView Name="ServerListView" x:FieldModifier="public" Margin="0,0,0,40">
