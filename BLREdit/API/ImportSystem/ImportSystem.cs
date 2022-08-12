@@ -430,6 +430,23 @@ namespace BLREdit
                 }
             }
         }
+
+        internal static void UpdateArmorImages()
+        {
+            foreach (var upper in ItemLists[UPPER_BODIES_CATEGORY])
+            {
+                upper.WideImage = null;
+                upper.LargeSquareImage = null;
+                upper.SmallSquareImage = null;
+            }
+            foreach (var lower in ItemLists[LOWER_BODIES_CATEGORY])
+            {
+                lower.WideImage = null;
+                lower.LargeSquareImage = null;
+                lower.SmallSquareImage = null;
+            }
+        }
+
         static readonly Brush grey = new SolidColorBrush(Color.FromArgb(136, 136, 136, 136));
         private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, string format, string suffix = "", string prefix = "", int count = -1)
         { 

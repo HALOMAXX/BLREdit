@@ -117,6 +117,39 @@ public class BLRClient : INotifyPropertyChanged
         }
     }
 
+    private ICommand launchServerCommand;
+    [JsonIgnore]
+    public ICommand LaunchServerCommand
+    {
+        get
+        {
+            if (launchServerCommand == null)
+            {
+                launchServerCommand = new RelayCommand(
+                    param => this.LaunchServer()
+                );
+            }
+            return launchServerCommand;
+        }
+    }
+
+    private void LaunchServer()
+    {
+        string launchArgs = "server ";
+        ProcessStartInfo psi = new()
+        {
+            CreateNoWindow = true,
+            UseShellExecute = false,
+            FileName = PatchedPath,
+            Arguments = launchArgs
+        };
+        Process game = new()
+        {
+            StartInfo = psi
+        };
+        game.Start();
+    }
+
     private static string CreateClientHash(string filePath)
     {
         using var crypto = SHA256.Create();

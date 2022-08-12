@@ -2139,9 +2139,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         Loadout.IsFemale = true;
         UpdateActiveLoadout();
         //reset item list
-        var source = ItemList.ItemsSource;
-        ItemList.ItemsSource = null;
-        ItemList.ItemsSource = source;
+        //var source = ItemList.ItemsSource;
+        //ItemList.ItemsSource = null;
+        //ItemList.ItemsSource = source;
     }
 
     private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -2150,9 +2150,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         UpdateActiveLoadout();
 
         //reset item list
-        var source = ItemList.ItemsSource;
-        ItemList.ItemsSource = null;
-        ItemList.ItemsSource = source;
+        //var source = ItemList.ItemsSource;
+        //ItemList.ItemsSource = null;
+        //ItemList.ItemsSource = source;
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -2429,6 +2429,11 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             GameClientList.ItemsSource = null;
             GameClientList.ItemsSource = GameClients;
         }
+    }
+
+    private void StartServer_Click(object sender, RoutedEventArgs e)
+    {
+
     }
     #endregion GameClient UI
 

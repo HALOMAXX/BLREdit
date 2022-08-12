@@ -36,7 +36,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     private BLRItem trophy = null;
     public BLRItem Trophy { get { return trophy; } set { if (BLREditSettings.Settings.AdvancedModding) { trophy = value; ItemChanged(); return; } if (value is null || trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { trophy = value; ItemChanged(); } } }
     private bool isFemale;
-    public bool IsFemale { get { return isFemale; } set { isFemale = value; UpdateImages(); OnPropertyChanged(); } }
+    public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(); ; OnPropertyChanged(); } }
 
 
     private bool IsAvatarOK(BLRItem inAvatar)
@@ -430,6 +430,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
 
     #endregion DisplayProperties
 
+    #region GerSlots
     private bool gearSlot1Enabled;
     public bool GearSlot1Enabled { get { return gearSlot1Enabled; } private set { gearSlot1Enabled = value; GearSlot1Disabled = value; GearSlot1Visibility = Visibility.Visible; OnPropertyChanged(); } }
     public bool GearSlot1Disabled { get { return !gearSlot1Enabled; } private set { OnPropertyChanged(); } }
@@ -449,12 +450,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     public bool GearSlot4Enabled { get { return gearSlot4Enabled; } private set { gearSlot4Enabled = value; GearSlot4Disabled = value; GearSlot4Visibility = Visibility.Visible; OnPropertyChanged(); } }
     public bool GearSlot4Disabled { get { return !gearSlot4Enabled; } private set { OnPropertyChanged(); } }
     public Visibility GearSlot4Visibility { get { if (gearSlot4Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
-
-    private void UpdateImages()
-    {
-        UpperBody?.TriggerImageUpdate();
-        LowerBody?.TriggerImageUpdate();
-    }
+    #endregion GearSlots
 
     private void CalculateStats()
     {
@@ -526,8 +522,6 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         Primary.IsPrimary = true;
         Secondary.LoadMagicCowsWeapon(loadout.Secondary);
 
-        IsFemale = loadout.IsFemale;
-
         Helmet = loadout.GetHelmet();
         UpperBody = loadout.GetUpperBody();
         LowerBody = loadout.GetLowerBody();
@@ -542,5 +536,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         Trophy = loadout.GetTrophy();
         Avatar = loadout.GetSkin();
         Camo = loadout.GetCamo();
+
+        IsFemale = loadout.IsFemale;
     }
 }
