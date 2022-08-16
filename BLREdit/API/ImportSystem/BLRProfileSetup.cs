@@ -195,6 +195,7 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
             double allRun = Math.Min(Math.Max(RawMoveSpeed, -100), 100);
 
             double run_alpha = Math.Abs(allRun) / 100;
+            run_alpha *= 0.9;
 
             double baserun = 765;
             double currentRun;
