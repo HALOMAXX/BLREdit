@@ -52333,7 +52333,195 @@
       "UID": 20006,
       "ValidFor": [],
       "WeaponModifiers": null,
-      "WeaponStats": null,
+      "WeaponStats": {
+        "accuracy": 0.04,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 16000,
+        "rateOfFire": 400,
+        "ZoomRateOfFire": 400,
+        "recoil": 1,
+        "reloadSpeed": 1,
+        "weaponWeight": 1,
+        "ApplyTime": 0.15,
+        "RecoveryTime": 0.0,
+        "BaseSpread": 0.04,
+        "Burst": 1,
+        "FragmentsPerShell": 1,
+        "CrouchSpreadMultiplier": 0.5,
+        "InitialMagazines": 2,
+        "IdealDistance": 16000,
+        "JumpSpreadMultiplier": 4.0,
+        "MagSize": 1,
+        "MaxDistance": 18000,
+        "MaxRangeDamageMultiplier": 0.1,
+        "MaxTraceDistance": 15000,
+        "ModificationRangeBaseSpread": {
+          "X": 0.04,
+          "Y": 0.04,
+          "Z": 0.04
+        },
+        "ModificationRangeCockRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeDamage": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeIdealDistance": {
+          "X": 16000,
+          "Y": 16000,
+          "Z": 16000
+        },
+        "ModificationRangeMaxDistance": {
+          "X": 18000,
+          "Y": 18000,
+          "Z": 18000
+        },
+        "ModificationRangeMoveSpeed": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeRecoil": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "ModificationRangeReloadRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeRecoilReloadRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeTABaseSpread": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeWeightMultiplier": {
+          "X": 2,
+          "Y": 0.5,
+          "Z": 1
+        },
+        "MovementSpreadConstant": 0,
+        "MovementSpreadMultiplier": 2.5,
+        "SpreadCenterWeight": 0.2,
+        "SpreadCenter": 0.4,
+        "RecoilAccumulation": 1.0,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.1,
+        "RecoilVector": {
+          "X": 0,
+          "Y": 1.2,
+          "Z": 0
+        },
+        "RecoilVectorMultiplier": {
+          "X": 0.5,
+          "Y": 1,
+          "Z": 0
+        },
+        "RecoilZoomMultiplier": 0.5,
+        "ROF": 400,
+        "StatDecriptors": [
+          {
+            "Name": "Classic",
+            "Points": 0
+          },
+          {
+            "Name": "Regular",
+            "Points": 5
+          },
+          {
+            "Name": "Spartan",
+            "Points": 10
+          },
+          {
+            "Name": "Firebrand",
+            "Points": 15
+          },
+          {
+            "Name": "Champion",
+            "Points": 20
+          },
+          {
+            "Name": "Slayer",
+            "Points": 25
+          },
+          {
+            "Name": "Hunter",
+            "Points": 30
+          },
+          {
+            "Name": "Vandal",
+            "Points": 35
+          },
+          {
+            "Name": "Mercenary",
+            "Points": 40
+          },
+          {
+            "Name": "Destroyer",
+            "Points": 45
+          },
+          {
+            "Name": "Nemesis",
+            "Points": 50
+          },
+          {
+            "Name": "Saint",
+            "Points": 55
+          },
+          {
+            "Name": "Nightmare",
+            "Points": 60
+          },
+          {
+            "Name": "Wrath",
+            "Points": 65
+          },
+          {
+            "Name": "Widowmaker",
+            "Points": 70
+          },
+          {
+            "Name": "Rebel",
+            "Points": 75
+          },
+          {
+            "Name": "Jackal",
+            "Points": 80
+          },
+          {
+            "Name": "Hammer",
+            "Points": 85
+          },
+          {
+            "Name": "Legend",
+            "Points": 90
+          },
+          {
+            "Name": "Persuader",
+            "Points": 95
+          },
+          {
+            "Name": "Prototype",
+            "Points": 100
+          }
+        ],
+        "TABaseSpread": 0,
+        "TightAimTime": 0,
+        "UseTABaseSpread": false,
+        "Weight": 0,
+        "ZoomSpreadMultiplier": 0.4
+      },
       "WikiStats": null
     },
     {
@@ -52401,7 +52589,195 @@
       "UID": 20007,
       "ValidFor": [],
       "WeaponModifiers": null,
-      "WeaponStats": null,
+      "WeaponStats": {
+        "accuracy": 0.05,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 10000,
+        "rateOfFire": 120,
+        "ZoomRateOfFire": 120,
+        "recoil": 1,
+        "reloadSpeed": 1,
+        "weaponWeight": 1,
+        "ApplyTime": 0.3,
+        "RecoveryTime": 0.0,
+        "BaseSpread": 0.05,
+        "Burst": 1,
+        "FragmentsPerShell": 1,
+        "CrouchSpreadMultiplier": 0.5,
+        "InitialMagazines": 1,
+        "IdealDistance": 3500,
+        "JumpSpreadMultiplier": 1.5,
+        "MagSize": 6,
+        "MaxDistance": 10000,
+        "MaxRangeDamageMultiplier": 0.25,
+        "MaxTraceDistance": 15000,
+        "ModificationRangeBaseSpread": {
+          "X": 0.05,
+          "Y": 0.05,
+          "Z": 0.05
+        },
+        "ModificationRangeCockRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeDamage": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeIdealDistance": {
+          "X": 10000,
+          "Y": 10000,
+          "Z": 10000
+        },
+        "ModificationRangeMaxDistance": {
+          "X": 10000,
+          "Y": 10000,
+          "Z": 10000
+        },
+        "ModificationRangeMoveSpeed": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeRecoil": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "ModificationRangeReloadRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeRecoilReloadRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeTABaseSpread": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeWeightMultiplier": {
+          "X": 2,
+          "Y": 0.5,
+          "Z": 1
+        },
+        "MovementSpreadConstant": 0,
+        "MovementSpreadMultiplier": 2.5,
+        "SpreadCenterWeight": 0.4,
+        "SpreadCenter": 0.75,
+        "RecoilAccumulation": 1.0,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.02,
+        "RecoilVector": {
+          "X": 0,
+          "Y": 1.2,
+          "Z": 0
+        },
+        "RecoilVectorMultiplier": {
+          "X": 0.5,
+          "Y": 1,
+          "Z": 0
+        },
+        "RecoilZoomMultiplier": 0.25,
+        "ROF": 120,
+        "StatDecriptors": [
+          {
+            "Name": "Classic",
+            "Points": 0
+          },
+          {
+            "Name": "Regular",
+            "Points": 5
+          },
+          {
+            "Name": "Spartan",
+            "Points": 10
+          },
+          {
+            "Name": "Firebrand",
+            "Points": 15
+          },
+          {
+            "Name": "Champion",
+            "Points": 20
+          },
+          {
+            "Name": "Slayer",
+            "Points": 25
+          },
+          {
+            "Name": "Hunter",
+            "Points": 30
+          },
+          {
+            "Name": "Vandal",
+            "Points": 35
+          },
+          {
+            "Name": "Mercenary",
+            "Points": 40
+          },
+          {
+            "Name": "Destroyer",
+            "Points": 45
+          },
+          {
+            "Name": "Nemesis",
+            "Points": 50
+          },
+          {
+            "Name": "Saint",
+            "Points": 55
+          },
+          {
+            "Name": "Nightmare",
+            "Points": 60
+          },
+          {
+            "Name": "Wrath",
+            "Points": 65
+          },
+          {
+            "Name": "Widowmaker",
+            "Points": 70
+          },
+          {
+            "Name": "Rebel",
+            "Points": 75
+          },
+          {
+            "Name": "Jackal",
+            "Points": 80
+          },
+          {
+            "Name": "Hammer",
+            "Points": 85
+          },
+          {
+            "Name": "Legend",
+            "Points": 90
+          },
+          {
+            "Name": "Persuader",
+            "Points": 95
+          },
+          {
+            "Name": "Prototype",
+            "Points": 100
+          }
+        ],
+        "TABaseSpread": 0,
+        "TightAimTime": 0,
+        "UseTABaseSpread": false,
+        "Weight": 0,
+        "ZoomSpreadMultiplier": 0.9
+      },
       "WikiStats": null
     },
     {
@@ -52466,7 +52842,195 @@
       "UID": 20008,
       "ValidFor": [],
       "WeaponModifiers": null,
-      "WeaponStats": null,
+      "WeaponStats": {
+        "accuracy": 0.03,
+        "damage": 50,
+        "movementSpeed": 0,
+        "range": 3500,
+        "rateOfFire": 850,
+        "ZoomRateOfFire": 850,
+        "recoil": 1,
+        "reloadSpeed": 1,
+        "weaponWeight": 1,
+        "ApplyTime": 0.0705,
+        "RecoveryTime": 0.0,
+        "BaseSpread": 0.03,
+        "Burst": 1,
+        "FragmentsPerShell": 1,
+        "CrouchSpreadMultiplier": 0.5,
+        "InitialMagazines": 0,
+        "IdealDistance": 3500,
+        "JumpSpreadMultiplier": 4.0,
+        "MagSize": 300,
+        "MaxDistance": 10000,
+        "MaxRangeDamageMultiplier": 0.25,
+        "MaxTraceDistance": 15000,
+        "ModificationRangeBaseSpread": {
+          "X": 0.03,
+          "Y": 0.03,
+          "Z": 0.03
+        },
+        "ModificationRangeCockRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeDamage": {
+          "X": 50,
+          "Y": 50,
+          "Z": 50
+        },
+        "ModificationRangeIdealDistance": {
+          "X": 3500,
+          "Y": 3500,
+          "Z": 3500
+        },
+        "ModificationRangeMaxDistance": {
+          "X": 10000,
+          "Y": 10000,
+          "Z": 10000
+        },
+        "ModificationRangeMoveSpeed": {
+          "X": -100,
+          "Y": -100,
+          "Z": -100
+        },
+        "ModificationRangeRecoil": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "ModificationRangeReloadRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeRecoilReloadRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeTABaseSpread": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeWeightMultiplier": {
+          "X": 2,
+          "Y": 0.5,
+          "Z": 1
+        },
+        "MovementSpreadConstant": 0,
+        "MovementSpreadMultiplier": 2.5,
+        "SpreadCenterWeight": 0.0,
+        "SpreadCenter": 0.0,
+        "RecoilAccumulation": 0.95,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.03,
+        "RecoilVector": {
+          "X": 0,
+          "Y": 1.2,
+          "Z": 0
+        },
+        "RecoilVectorMultiplier": {
+          "X": 0.5,
+          "Y": 1,
+          "Z": 0
+        },
+        "RecoilZoomMultiplier": 0.5,
+        "ROF": 850,
+        "StatDecriptors": [
+          {
+            "Name": "Classic",
+            "Points": 0
+          },
+          {
+            "Name": "Regular",
+            "Points": 5
+          },
+          {
+            "Name": "Spartan",
+            "Points": 10
+          },
+          {
+            "Name": "Firebrand",
+            "Points": 15
+          },
+          {
+            "Name": "Champion",
+            "Points": 20
+          },
+          {
+            "Name": "Slayer",
+            "Points": 25
+          },
+          {
+            "Name": "Hunter",
+            "Points": 30
+          },
+          {
+            "Name": "Vandal",
+            "Points": 35
+          },
+          {
+            "Name": "Mercenary",
+            "Points": 40
+          },
+          {
+            "Name": "Destroyer",
+            "Points": 45
+          },
+          {
+            "Name": "Nemesis",
+            "Points": 50
+          },
+          {
+            "Name": "Saint",
+            "Points": 55
+          },
+          {
+            "Name": "Nightmare",
+            "Points": 60
+          },
+          {
+            "Name": "Wrath",
+            "Points": 65
+          },
+          {
+            "Name": "Widowmaker",
+            "Points": 70
+          },
+          {
+            "Name": "Rebel",
+            "Points": 75
+          },
+          {
+            "Name": "Jackal",
+            "Points": 80
+          },
+          {
+            "Name": "Hammer",
+            "Points": 85
+          },
+          {
+            "Name": "Legend",
+            "Points": 90
+          },
+          {
+            "Name": "Persuader",
+            "Points": 95
+          },
+          {
+            "Name": "Prototype",
+            "Points": 100
+          }
+        ],
+        "TABaseSpread": 0,
+        "TightAimTime": 0,
+        "UseTABaseSpread": false,
+        "Weight": 0,
+        "ZoomSpreadMultiplier": 0.4
+      },
       "WikiStats": null
     },
     {
@@ -52486,7 +53050,195 @@
       "UID": 20005,
       "ValidFor": [],
       "WeaponModifiers": null,
-      "WeaponStats": null,
+      "WeaponStats": {
+        "accuracy": 0.01,
+        "damage": 1000,
+        "movementSpeed": 0,
+        "range": 16000,
+        "rateOfFire": 35,
+        "ZoomRateOfFire": 35,
+        "recoil": 1,
+        "reloadSpeed": 1,
+        "weaponWeight": 1,
+        "ApplyTime": 0.3,
+        "RecoveryTime": 0.0,
+        "BaseSpread": 0.01,
+        "Burst": 1,
+        "FragmentsPerShell": 1,
+        "CrouchSpreadMultiplier": 0.5,
+        "InitialMagazines": 0,
+        "IdealDistance": 16000,
+        "JumpSpreadMultiplier": 4.0,
+        "MagSize": 5,
+        "MaxDistance": 18000,
+        "MaxRangeDamageMultiplier": 0.5,
+        "MaxTraceDistance": 15000,
+        "ModificationRangeBaseSpread": {
+          "X": 0.01,
+          "Y": 0.01,
+          "Z": 0.01
+        },
+        "ModificationRangeCockRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeDamage": {
+          "X": 1000,
+          "Y": 1000,
+          "Z": 1000
+        },
+        "ModificationRangeIdealDistance": {
+          "X": 16000,
+          "Y": 16000,
+          "Z": 16000
+        },
+        "ModificationRangeMaxDistance": {
+          "X": 18000,
+          "Y": 18000,
+          "Z": 18000
+        },
+        "ModificationRangeMoveSpeed": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeRecoil": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "ModificationRangeReloadRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeRecoilReloadRate": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeTABaseSpread": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ModificationRangeWeightMultiplier": {
+          "X": 2,
+          "Y": 0.5,
+          "Z": 1
+        },
+        "MovementSpreadConstant": 0.15,
+        "MovementSpreadMultiplier": 2.0,
+        "SpreadCenterWeight": 0.2,
+        "SpreadCenter": 0.4,
+        "RecoilAccumulation": 1.0,
+        "RecoilAccumulationMultiplier": 0.95,
+        "RecoilSize": 0.1,
+        "RecoilVector": {
+          "X": 0,
+          "Y": 1.2,
+          "Z": 0
+        },
+        "RecoilVectorMultiplier": {
+          "X": 0.5,
+          "Y": 1,
+          "Z": 0
+        },
+        "RecoilZoomMultiplier": 0.5,
+        "ROF": 35,
+        "StatDecriptors": [
+          {
+            "Name": "Classic",
+            "Points": 0
+          },
+          {
+            "Name": "Regular",
+            "Points": 5
+          },
+          {
+            "Name": "Spartan",
+            "Points": 10
+          },
+          {
+            "Name": "Firebrand",
+            "Points": 15
+          },
+          {
+            "Name": "Champion",
+            "Points": 20
+          },
+          {
+            "Name": "Slayer",
+            "Points": 25
+          },
+          {
+            "Name": "Hunter",
+            "Points": 30
+          },
+          {
+            "Name": "Vandal",
+            "Points": 35
+          },
+          {
+            "Name": "Mercenary",
+            "Points": 40
+          },
+          {
+            "Name": "Destroyer",
+            "Points": 45
+          },
+          {
+            "Name": "Nemesis",
+            "Points": 50
+          },
+          {
+            "Name": "Saint",
+            "Points": 55
+          },
+          {
+            "Name": "Nightmare",
+            "Points": 60
+          },
+          {
+            "Name": "Wrath",
+            "Points": 65
+          },
+          {
+            "Name": "Widowmaker",
+            "Points": 70
+          },
+          {
+            "Name": "Rebel",
+            "Points": 75
+          },
+          {
+            "Name": "Jackal",
+            "Points": 80
+          },
+          {
+            "Name": "Hammer",
+            "Points": 85
+          },
+          {
+            "Name": "Legend",
+            "Points": 90
+          },
+          {
+            "Name": "Persuader",
+            "Points": 95
+          },
+          {
+            "Name": "Prototype",
+            "Points": 100
+          }
+        ],
+        "TABaseSpread": 0,
+        "TightAimTime": 0,
+        "UseTABaseSpread": false,
+        "Weight": 225,
+        "ZoomSpreadMultiplier": 0.0
+      },
       "WikiStats": null
     },
     {
