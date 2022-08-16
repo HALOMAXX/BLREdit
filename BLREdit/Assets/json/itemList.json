@@ -52337,7 +52337,7 @@
         "accuracy": 0.04,
         "damage": 0,
         "movementSpeed": 0,
-        "range": 16000,
+        "range": 8000,
         "rateOfFire": 400,
         "ZoomRateOfFire": 400,
         "recoil": 1,
@@ -52350,10 +52350,10 @@
         "FragmentsPerShell": 1,
         "CrouchSpreadMultiplier": 0.5,
         "InitialMagazines": 2,
-        "IdealDistance": 16000,
+        "IdealDistance": 8000,
         "JumpSpreadMultiplier": 4.0,
         "MagSize": 1,
-        "MaxDistance": 18000,
+        "MaxDistance": 16384,
         "MaxRangeDamageMultiplier": 0.1,
         "MaxTraceDistance": 15000,
         "ModificationRangeBaseSpread": {
@@ -52372,14 +52372,14 @@
           "Z": 0
         },
         "ModificationRangeIdealDistance": {
-          "X": 16000,
-          "Y": 16000,
-          "Z": 16000
+          "X": 8000,
+          "Y": 8000,
+          "Z": 8000
         },
         "ModificationRangeMaxDistance": {
-          "X": 18000,
-          "Y": 18000,
-          "Z": 18000
+          "X": 16384,
+          "Y": 16384,
+          "Z": 16384
         },
         "ModificationRangeMoveSpeed": {
           "X": 0,
@@ -52522,7 +52522,23 @@
         "Weight": 0,
         "ZoomSpreadMultiplier": 0.4
       },
-      "WikiStats": null
+      "WikiStats": {
+        "aimSpread": 0,
+        "ammoMag": 0,
+        "ammoReserve": 0,
+        "damage": 0,
+        "firerate": 0,
+        "hipSpread": 0,
+        "moveSpread": 0,
+        "rangeClose": 0,
+        "rangeFar": 0,
+        "recoil": 0,
+        "reload": 3.8,
+        "run": 0,
+        "scopeInTime": 0,
+        "swaprate": 20,
+        "zoom": 0
+      }
     },
     {
       "Category": "secondary",
@@ -52566,7 +52582,23 @@
       "ValidFor": [],
       "WeaponModifiers": null,
       "WeaponStats": null,
-      "WikiStats": null
+      "WikiStats": {
+        "aimSpread": 0,
+        "ammoMag": 0,
+        "ammoReserve": 0,
+        "damage": 0,
+        "firerate": 0,
+        "hipSpread": 0,
+        "moveSpread": 0,
+        "rangeClose": 0,
+        "rangeFar": 0,
+        "recoil": 0,
+        "reload": 2.0,
+        "run": 0,
+        "scopeInTime": 0,
+        "swaprate": 20,
+        "zoom": 0
+      }
     },
     {
       "Category": "secondary",
@@ -52778,7 +52810,23 @@
         "Weight": 0,
         "ZoomSpreadMultiplier": 0.9
       },
-      "WikiStats": null
+      "WikiStats": {
+        "aimSpread": 0,
+        "ammoMag": 0,
+        "ammoReserve": 0,
+        "damage": 0,
+        "firerate": 0,
+        "hipSpread": 0,
+        "moveSpread": 0,
+        "rangeClose": 0,
+        "rangeFar": 0,
+        "recoil": 0,
+        "reload": 5.6667,
+        "run": 0,
+        "scopeInTime": 0,
+        "swaprate": 20,
+        "zoom": 0
+      }
     },
     {
       "Category": "secondary",
@@ -53031,7 +53079,23 @@
         "Weight": 0,
         "ZoomSpreadMultiplier": 0.4
       },
-      "WikiStats": null
+      "WikiStats": {
+        "aimSpread": 0,
+        "ammoMag": 0,
+        "ammoReserve": 0,
+        "damage": 0,
+        "firerate": 0,
+        "hipSpread": 0,
+        "moveSpread": 0,
+        "rangeClose": 0,
+        "rangeFar": 0,
+        "recoil": 0,
+        "reload": 0.0,
+        "run": 0,
+        "scopeInTime": 0,
+        "swaprate": 20,
+        "zoom": 0
+      }
     },
     {
       "Category": "secondary",
@@ -53239,7 +53303,23 @@
         "Weight": 225,
         "ZoomSpreadMultiplier": 0.0
       },
-      "WikiStats": null
+      "WikiStats": {
+        "aimSpread": 0,
+        "ammoMag": 0,
+        "ammoReserve": 0,
+        "damage": 0,
+        "firerate": 0,
+        "hipSpread": 0,
+        "moveSpread": 0,
+        "rangeClose": 0,
+        "rangeFar": 0,
+        "recoil": 0,
+        "reload": 2.0,
+        "run": 0,
+        "scopeInTime": 0,
+        "swaprate": 20,
+        "zoom": 0
+      }
     },
     {
       "Category": "secondary",
@@ -53264,7 +53344,23 @@
       "ValidFor": [],
       "WeaponModifiers": null,
       "WeaponStats": null,
-      "WikiStats": null
+      "WikiStats": {
+        "aimSpread": 0,
+        "ammoMag": 0,
+        "ammoReserve": 0,
+        "damage": 0,
+        "firerate": 0,
+        "hipSpread": 0,
+        "moveSpread": 0,
+        "rangeClose": 0,
+        "rangeFar": 0,
+        "recoil": 0,
+        "reload": 2.5,
+        "run": 0,
+        "scopeInTime": 0,
+        "swaprate": 20,
+        "zoom": 0
+      }
     },
     {
       "Category": "secondary",
@@ -53289,7 +53385,23 @@
       "ValidFor": [],
       "WeaponModifiers": null,
       "WeaponStats": null,
-      "WikiStats": null
+      "WikiStats": {
+        "aimSpread": 0,
+        "ammoMag": 0,
+        "ammoReserve": 0,
+        "damage": 0,
+        "firerate": 0,
+        "hipSpread": 0,
+        "moveSpread": 0,
+        "rangeClose": 0,
+        "rangeFar": 0,
+        "recoil": 0,
+        "reload": 3.1667,
+        "run": 0,
+        "scopeInTime": 0,
+        "swaprate": 20,
+        "zoom": 0
+      }
     },
     {
       "Category": "secondary",
