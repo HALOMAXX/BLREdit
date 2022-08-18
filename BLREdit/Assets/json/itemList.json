@@ -35263,7 +35263,7 @@
       "WeaponModifiers": {
         "accuracy": 0,
         "ammo": 6,
-        "damage": -50,
+        "damage": 0,
         "movementSpeed": -50,
         "range": 0,
         "rateOfFire": 0,
@@ -35329,7 +35329,7 @@
       "WeaponModifiers": {
         "accuracy": 0,
         "ammo": 8,
-        "damage": -100,
+        "damage": 0,
         "movementSpeed": 50,
         "range": 0,
         "rateOfFire": 0,
@@ -35395,7 +35395,7 @@
       "WeaponModifiers": {
         "accuracy": 0,
         "ammo": 10,
-        "damage": 28.57,
+        "damage": 0,
         "movementSpeed": 0,
         "range": 0,
         "rateOfFire": 0,
@@ -35461,7 +35461,7 @@
       "WeaponModifiers": {
         "accuracy": 0,
         "ammo": 15,
-        "damage": -87.5,
+        "damage": 0,
         "movementSpeed": 100,
         "range": 0,
         "rateOfFire": 0,
@@ -35527,7 +35527,7 @@
       "WeaponModifiers": {
         "accuracy": 0,
         "ammo": 6,
-        "damage": 100,
+        "damage": 0,
         "movementSpeed": -100,
         "range": 0,
         "rateOfFire": 0,

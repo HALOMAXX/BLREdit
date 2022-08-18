@@ -136,6 +136,31 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             total += Stock?.WeaponModifiers?.damage ?? 0;
             total += Scope?.WeaponModifiers?.damage ?? 0;
             total += Grip?.WeaponModifiers?.damage ?? 0;
+
+            if (Reciever?.UID == 40024)
+            {
+                if (Magazine?.UID == 44211)
+                {
+                    total += -50;
+                }
+                else if (Magazine?.UID == 44212)
+                {
+                    total += -100;
+                }
+                else if (Magazine?.UID == 44213)
+                {
+                    total += 28.57;
+                }
+                else if (Magazine?.UID == 44214)
+                {
+                    total += -87.5;
+                }
+                else if (Magazine?.UID == 44215)
+                {
+                    total += 100;
+                }
+            }
+
             return total;
         }
     }
@@ -290,9 +315,9 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     public double FinalAmmoMagazine // for eventual cases of advanced modding that i cant explain
     {   get 
         {
-            if (Reciever?.UID == 40019)
+            if ((Reciever?.UID == 40019) || (Reciever?.UID == 40015))
             {
-                return 1; // Forcing AMR mag to 1 while trying not to change how its reserve ammo is modified, because oddly enough typical gun mags don't increase its base ammo but still treat reserve as if base was modified, which makes no sense
+                return 1; // Forcing AMR and BLP mag to 1 while trying not to change how its reserve ammo is modified, because oddly enough typical gun mags don't increase its base ammo but still treat reserve as if base was modified, which makes no sense
             }
             return ModifiedAmmoMagazine; 
         } 
