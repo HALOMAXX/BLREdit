@@ -20,6 +20,7 @@ namespace BLREdit
         public double RecoilAccumulation { get; set; } = 0;
         public double RecoilAccumulationMultiplier { get; set; } = 0.95f;
         public double RecoilZoomMultiplier { get; set; } = 0.5f;
+        public double ReloadShortMultiplier { get; set; } = 1.0f; // not actually a thing, but this is currently the easiest way with how we do the reload numbers
         public double BaseSpread { get; set; } = 0.04f;
         public double TABaseSpread { get; set; } = 0;
         public double CrouchSpreadMultiplier { get; set; } = 0.5f;

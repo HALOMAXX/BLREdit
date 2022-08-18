@@ -137,6 +137,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             total += Scope?.WeaponModifiers?.damage ?? 0;
             total += Grip?.WeaponModifiers?.damage ?? 0;
 
+            // arrows don't directly affect damage and were set by the projectile, my modifiers were causing misleading damage changes on other guns, so here's a hacky fix
             if (Reciever?.UID == 40024)
             {
                 if (Magazine?.UID == 44211)
@@ -470,6 +471,17 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     public double CockRateMultiplier { get { return cockRateMultiplier; } private set { cockRateMultiplier = value; OnPropertyChanged(); } } 
     public double RawSwapRate
     { get { return Reciever?.WikiStats?.swaprate ?? 0; } }
+    public double ShortReload
+    { 
+        get 
+        { 
+            if (Magazine?.UID == 44014 || Magazine?.UID == 44015)
+            {
+                return 1;
+            }
+            return Reciever?.WeaponStats?.ReloadShortMultiplier ?? 0; 
+        } 
+    }
 
     #region Damage
     private double damageClose;
@@ -794,8 +806,9 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         DamageDisplay = DamageClose.ToString("0.0") + " / " + DamageFar.ToString("0.0");
         RateOfFireDisplay = ModifiedRateOfFire.ToString("0");
         AmmoDisplay = FinalAmmoMagazine.ToString("0") + " / " + ModifiedAmmoReserve.ToString("0");
-        ReloadTimeDisplay = ModifiedReloadSpeed.ToString("0.00") + 's';
-        SwapDisplay = RawSwapRate.ToString("0.00");
+        ReloadTimeDisplay = (ModifiedReloadSpeed * ShortReload).ToString("0.00") + 's'; // changed reload to short reload
+        //SwapDisplay = RawSwapRate.ToString("0.00");
+        SwapDisplay = ModifiedReloadSpeed.ToString("0.00") + 's'; // moved normal reload time to here, since the normal stat is the empty reload
         AimSpreadDisplay = SpreadWhileADS.ToString("0.00") + '°';
         HipSpreadDisplay = SpreadWhileStanding.ToString("0.00") + '°';
         MoveSpreadDisplay = SpreadWhileMoving.ToString("0.00") + '°';

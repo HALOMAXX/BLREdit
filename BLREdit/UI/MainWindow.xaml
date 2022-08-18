@@ -654,9 +654,9 @@
                     <Label Name="PrimaryRateOfFireLabel" Content="{Binding Path=Primary.RateOfFireDisplay}" HorizontalAlignment="Left" Margin="67,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Ammo:" HorizontalAlignment="Left" Margin="19,348,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryAmmoLabel" Content="{Binding Path=Primary.AmmoDisplay}" HorizontalAlignment="Left" Margin="67,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="Reload:" HorizontalAlignment="Left" Margin="18,373,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="Reload:" HorizontalAlignment="Left" Margin="19,373,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryReloadLabel" Content="{Binding Path=Primary.ReloadTimeDisplay}" HorizontalAlignment="Left" Margin="67,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="Swap:" HorizontalAlignment="Left" Margin="26,399,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="Empty:" HorizontalAlignment="Left" Margin="22,399,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimarySwapLabel" Content="{Binding Path=Primary.SwapDisplay}" HorizontalAlignment="Left" Margin="67,399,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Aim:" HorizontalAlignment="Left" Margin="138,296,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
@@ -684,9 +684,9 @@
                     <Label Name="SecondaryRateOfFireLabel" Content="{Binding Path=Secondary.RateOfFireDisplay}" HorizontalAlignment="Left" Margin="67,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                     <Label Content="Ammo:" HorizontalAlignment="Left" Margin="19,651,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryAmmoLabel" Content="{Binding Path=Secondary.AmmoDisplay}" HorizontalAlignment="Left" Margin="67,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="Reload:" HorizontalAlignment="Left" Margin="18,677,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="Reload:" HorizontalAlignment="Left" Margin="19,677,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryReloadLabel" Content="{Binding Path=Secondary.ReloadTimeDisplay}" HorizontalAlignment="Left" Margin="67,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="Swap:" HorizontalAlignment="Left" Margin="26,703,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="Empty:" HorizontalAlignment="Left" Margin="22,703,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondarySwapLabel" Content="{Binding Path=Secondary.SwapDisplay}" HorizontalAlignment="Left" Margin="67,703,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
                     <Label Content="Aim:" HorizontalAlignment="Left" Margin="138,599,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>

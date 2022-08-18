@@ -47230,6 +47230,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.5,
+        "ReloadShortMultiplier": 0.5777,
         "ROF": 500,
         "StatDecriptors": [
           {
@@ -47417,6 +47418,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.25,
+        "ReloadShortMultiplier": 1.0,
         "ROF": 450,
         "StatDecriptors": [
           {
@@ -47601,6 +47603,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.4,
+        "ReloadShortMultiplier": 0.7,
         "ROF": 950,
         "StatDecriptors": [
           {
@@ -47786,6 +47789,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.6,
+        "ReloadShortMultiplier": 0.777,
         "ROF": 850,
         "StatDecriptors": [
           {
@@ -47969,6 +47973,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 1,
+        "ReloadShortMultiplier": 1,
         "ROF": 120,
         "StatDecriptors": [
           {
@@ -48156,6 +48161,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.425,
+        "ReloadShortMultiplier": 0.647,
         "ROF": 550,
         "StatDecriptors": [
           {
@@ -48342,6 +48348,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.425,
+        "ReloadShortMultiplier": 0.625,
         "ROF": 650,
         "StatDecriptors": [
           {
@@ -48512,6 +48519,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.5,
+        "ReloadShortMultiplier": 1,
         "ROF": 103.5,
         "StatDecriptors": [
           {
@@ -48698,6 +48706,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.5,
+        "ReloadShortMultiplier": 0.625,
         "ROF": 750,
         "StatDecriptors": [
           {
@@ -48872,6 +48881,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.425,
+        "ReloadShortMultiplier": 0.6667,
         "ROF": 450,
         "StatDecriptors": [
           {
@@ -49058,6 +49068,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.3,
+        "ReloadShortMultiplier": 0.6667,
         "ROF": 650,
         "StatDecriptors": [
           {
@@ -49245,6 +49256,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.7,
+        "ReloadShortMultiplier": 1,
         "ROF": 60,
         "StatDecriptors": [
           {
@@ -49432,6 +49444,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.4,
+        "ReloadShortMultiplier": 1,
         "ROF": 650,
         "StatDecriptors": [
           {
@@ -49619,6 +49632,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.5,
+        "ReloadShortMultiplier": 0.745,
         "ROF": 725,
         "StatDecriptors": [
           {
@@ -49805,6 +49819,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.3,
+        "ReloadShortMultiplier": 0.6667,
         "ROF": 650,
         "StatDecriptors": [
           {
@@ -49991,6 +50006,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.8,
+        "ReloadShortMultiplier": 0.753,
         "ROF": 900,
         "StatDecriptors": [
           {
@@ -50178,6 +50194,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.5,
+        "ReloadShortMultiplier": 0.786,
         "ROF": 300,
         "StatDecriptors": [
           {
@@ -50364,6 +50381,7 @@
           "Z": 0
         },
         "RecoilZoomMultiplier": 0.5,
+        "ReloadShortMultiplier": 0.786,
         "ROF": 600,
         "StatDecriptors": [
           {

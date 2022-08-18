@@ -848,6 +848,7 @@ public class BLRWeaponStats
     public Vector3 RecoilVector { get; set; } = Vector3.Zero;
     public Vector3 RecoilVectorMultiplier { get; set; } = Vector3.Zero;
     public double RecoilZoomMultiplier { get; set; } = 0.5f;
+    public double ReloadShortMultiplier { get; set; } = 1.0f; // not actually a thing, but this is currently the easiest way with how we do the reload numbers
     public double ROF { get; set; } = 0;
     public StatDecriptor[] StatDecriptors { get; set; } = new StatDecriptor[] { new StatDecriptor() };
     public double TABaseSpread { get; set; } = 0;
