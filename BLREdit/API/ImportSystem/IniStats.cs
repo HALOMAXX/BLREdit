@@ -1,4 +1,7 @@
-﻿using System.Numerics;
+﻿using BLREdit.API.ImportSystem;
+
+using System.Numerics;
+using System.Text.Json.Serialization;
 
 namespace BLREdit
 {
@@ -59,6 +62,7 @@ namespace BLREdit
     public class StatDecriptor
     {
         public string Name { get; set; } = "Classic";
+        [JsonIgnore] public string DisplayName { get { return LanguageSet.GetWord("WPN_Desc."+Name, Name); } }
         public int Points { get; set; } = 0;
     }
 }

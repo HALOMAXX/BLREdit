@@ -8,6 +8,8 @@ namespace BLREdit;
 public class BLRWeaponSetup : INotifyPropertyChanged
 {
     public bool IsPrimary { get; set; } = false;
+
+    #region Weapon Parts
     private BLRItem reciever = null;
     public BLRItem Reciever { get { return reciever; } set { if (BLREditSettings.Settings.AdvancedModding) { reciever = value; ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
     private BLRItem barrel = null;
@@ -26,6 +28,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     public BLRItem Tag { get { return tag; } set { if (BLREditSettings.Settings.AdvancedModding) { tag = value; ItemChanged(); return; } if (value is null || tag != value && value.IsValidFor(reciever) && value.Category == ImportSystem.HANGERS_CATEGORY) { tag = value; ItemChanged(); } } }
     private BLRItem camo = null;
     public BLRItem Camo { get { return camo; } set { if (BLREditSettings.Settings.AdvancedModding) { camo = value; ItemChanged(); return; } if (value is null || camo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.CAMOS_WEAPONS_CATEGORY) { camo = value; ItemChanged(); } } }
+    #endregion Weapon Parts
 
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -140,25 +143,23 @@ public class BLRWeaponSetup : INotifyPropertyChanged
             // arrows don't directly affect damage and were set by the projectile, my modifiers were causing misleading damage changes on other guns, so here's a hacky fix
             if (Reciever?.UID == 40024)
             {
-                if (Magazine?.UID == 44211)
+                switch (Magazine?.UID)
                 {
-                    total += -50;
-                }
-                else if (Magazine?.UID == 44212)
-                {
-                    total += -100;
-                }
-                else if (Magazine?.UID == 44213)
-                {
-                    total += 28.57;
-                }
-                else if (Magazine?.UID == 44214)
-                {
-                    total += -87.5;
-                }
-                else if (Magazine?.UID == 44215)
-                {
-                    total += 100;
+                    case 44211:
+                        total += -50;
+                        break;
+                    case 44212:
+                        total += -100;
+                        break;
+                    case 44213:
+                        total += 28.57D;
+                        break;
+                    case 44214:
+                        total += -87.5D;
+                        break;
+                    case 44215:
+                        total += 100;
+                        break;
                 }
             }
 
@@ -520,6 +521,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     private double modifiedRunSpeed;
     public double ModifiedRunSpeed { get { return modifiedRunSpeed; } private set { modifiedRunSpeed = value; OnPropertyChanged(); } }
 
+    #region Weapon Descriptor
     private string weaponDesc1;
     public string WeaponDescriptorPart1 { get { return weaponDesc1; } private set { weaponDesc1 = value; OnPropertyChanged(); } }
     private string weaponDesc2;
@@ -530,6 +532,8 @@ public class BLRWeaponSetup : INotifyPropertyChanged
 
     public string weaponDescriptor;
     public string WeaponDescriptor { get { return weaponDescriptor; } private set { weaponDescriptor = value; OnPropertyChanged(); } }
+    #endregion Weapon Descriptor
+
     #endregion CalculatedProperties
 
     #region DisplayStats

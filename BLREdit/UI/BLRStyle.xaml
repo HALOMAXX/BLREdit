@@ -167,7 +167,13 @@
                     <Grid>
                         <Image Name="Normal" Source="Resources/CleanedButton.png" Stretch="Fill" Width="{Binding (Button.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Height="{Binding (Button.ActualHeight), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
                         <Image Name="Hover" Visibility="Hidden" Source="Resources/CleanedButtonHover.png" Stretch="Fill" Width="{Binding (Button.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Height="{Binding (Button.ActualHeight), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
-                        <TextBlock Name="ButtonContent"  Foreground="#FF78AEBC" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Text="{Binding (Button.Content), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" Name="ButtonContent"  Foreground="#FF78AEBC" VerticalAlignment="Center" Text="{Binding (Button.Content), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                        </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="True">

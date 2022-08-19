@@ -55,12 +55,10 @@ namespace BLREdit
 
         public static void ApplyDisplayStats()
         {
-            
             foreach (var itemCategory in ItemLists)
             {
                 switch (itemCategory.Key)
                 {
-
                     case PRIMARY_CATEGORY:
                     case SECONDARY_CATEGORY:
                         foreach (var item in itemCategory.Value)
@@ -587,12 +585,21 @@ namespace BLREdit
 
         private static void UpdateImages()
         {
+            string Name = "";
+            string Tooltip = "";
+            string Desc = "";
             foreach (KeyValuePair<string, List<BLRItem>> entry in ItemLists)
             {
                 System.Diagnostics.Stopwatch watch = null;
                 if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Updating Images for " + entry.Key, "");
                 Parallel.ForEach(entry.Value, item =>
                 {
+                    Name = item.DisplayName;
+                    Tooltip = item.DisplayTooltip;
+                    foreach (var desc in item?.WeaponStats?.StatDecriptors ?? Array.Empty<StatDecriptor>())
+                    {
+                        Desc = desc.DisplayName;
+                    }
                     item.LoadImage();
                     item.wideImageMale.Freeze();
                     item.wideImageFemale?.Freeze();

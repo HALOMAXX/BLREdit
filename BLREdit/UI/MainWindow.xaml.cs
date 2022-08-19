@@ -12,6 +12,7 @@ using BLREdit.Game;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
 using System.Runtime.CompilerServices;
+using BLREdit.API.ImportSystem;
 
 namespace BLREdit.UI;
 
@@ -22,6 +23,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 {
     private static readonly Random rng = new();
 
+    public static UILanguageWrapper Lang { get; } = new UILanguageWrapper();
     /// <summary>
     /// Contains the last selected Image for setting the ItemList
     /// </summary>
@@ -82,6 +84,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         IsPlayerNameChanging = true;
 
         InitializeComponent();
+
+        ChangeSortingDirection(this, null);
+        ChangeSortingDirection(this, null);
 
         ItemButtons.Add(ItemListButton);
         ItemButtons.Add(AdvancedInfoButton);
@@ -1050,6 +1055,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
         {
@@ -1273,6 +1279,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         IOResources.SerializeFile("GameClients.json", GameClients);
         IOResources.SerializeFile("ServerList.json", ServerList);
         BLREditSettings.Save();
+        LanguageSet.Save();
     }
 
     private void ScanGameClients()
@@ -1774,7 +1781,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
                 case ImportSystem.UPPER_BODIES_CATEGORY:
                 case ImportSystem.LOWER_BODIES_CATEGORY:
-                    Columns = 4;
+                    Columns = 3;
                     SetSortingType(typeof(ImportArmorSortingType));
                     break;
 
@@ -2165,12 +2172,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         if (SortDirection == ListSortDirection.Ascending)
         {
             SortDirection = ListSortDirection.Descending;
-            SortDirectionButton.Content = "Descending";
+            SortDirectionButton.Content = LanguageSet.GetWord("Descending", "Descending");
         }
         else
         {
             SortDirection = ListSortDirection.Ascending;
-            SortDirectionButton.Content = "Ascending";
+            SortDirectionButton.Content = LanguageSet.GetWord("Ascending", "Ascending");
         }
         ApplySorting();
     }
@@ -2564,5 +2571,13 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         var profile = ExportSystem.ActiveProfile.Clone();
         ExportSystem.Profiles.Add(profile);
+    }
+
+    readonly private static char[] InvalidNameChars = System.IO.Path.GetInvalidPathChars().Concat(System.IO.Path.GetInvalidFileNameChars()).ToArray();
+    private void PlayerNameTextBox_PreviewInput(object sender, TextCompositionEventArgs e)
+    {
+        int index = e.Text.IndexOfAny(InvalidNameChars);
+        if (index >= 0)
+        { e.Handled = true; }
     }
 }

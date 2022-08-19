@@ -84,12 +84,12 @@ namespace BLREdit
             {
                 if (i <= 0)
                 {
-                    desc += st.Name;
+                    desc += st.DisplayName;
                     i++;
                 }
                 else
                 {
-                    desc += "/" + st.Name;
+                    desc += "/" + st.DisplayName;
                 }
             }
             return desc;
@@ -101,7 +101,7 @@ namespace BLREdit
             {
                 if (points >= st.Points)
                 {
-                    currentbest = st.Name;
+                    currentbest = st.DisplayName;
                 }
             }
             return currentbest;

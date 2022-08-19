@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using System.Drawing;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using BLREdit.API.ImportSystem;
 
 namespace BLREdit;
 
@@ -16,9 +17,12 @@ public class BLRItem : INotifyPropertyChanged
     public string Icon { get; set; }
     public string Name { get; set; }
 
+    [JsonIgnore] public string DisplayName { get { return LanguageSet.GetWord(UID.ToString()+".Name", Name); } }
+
     public BLRPawnModifiers PawnModifiers { get; set; }
     public List<string> SupportedMods { get; set; }
     public string Tooltip { get; set; }
+    [JsonIgnore] public string DisplayTooltip { get { return LanguageSet.GetWord(UID.ToString() + ".Tooltip", Tooltip); } }
     public int UID { get; set; }
     public List<int> ValidFor { get; set; }
     public BLRWeaponModifiers WeaponModifiers { get; set; }
@@ -123,7 +127,7 @@ public class BLRItem : INotifyPropertyChanged
             {
                 if (points >= st.Points)
                 {
-                    currentbest = st.Name;
+                    currentbest = st.DisplayName;
                 }
             }
         }

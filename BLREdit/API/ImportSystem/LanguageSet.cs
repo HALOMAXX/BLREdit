@@ -1,21 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace BLREdit.API.ImportSystem;
 
 public class LanguageSet
 {
-    private static LanguageSet currentLanguageSet = CreateDefaultSet();
+    private static LanguageSet CurrentLanguageSet { get; set; } = Load(CultureInfo.InstalledUICulture.Name);
     public string LanguageName { get; set; }
     public Dictionary<string, string> Words { get; set; }
+    private static bool MissingTranslation = false;
 
-    public static string GetWord(string word)
+    public static void Save()
     {
-        if (currentLanguageSet.Words.TryGetValue(word, out string outWord))
+        if (MissingTranslation)
+        {
+            CurrentLanguageSet.Words = new Dictionary<string, string>(new SortedDictionary<string, string>(CurrentLanguageSet.Words)); //wow
+            IOResources.SerializeFile(CurrentLanguageSet.LanguageName + ".json", CurrentLanguageSet);
+        }
+    }
+
+    public static LanguageSet Load(string name)
+    {
+        name = IOResources.ASSET_DIR + IOResources.LOCAL_DIR + name + ".json";
+        return IOResources.DeserializeFile<LanguageSet>(name) ?? CreateDefaultSet();   
+    }
+
+    public static string GetWordUI(string defWord, [CallerMemberName] string propertyName = null)
+    {
+        if (CurrentLanguageSet.Words.TryGetValue(propertyName, out string outWord))
         {
             return outWord;
         }
-        return "--" + word + "--";
+        MissingTranslation = true;
+        if (defWord is not null)
+        {
+            CurrentLanguageSet.Words.Add(propertyName, defWord);
+            return defWord;
+        }
+        else
+        {
+            CurrentLanguageSet.Words.Add(propertyName, propertyName);
+            return propertyName;
+        }
+    }
+
+    public static string GetWord(string word, string defWord = null)
+    {
+        if (CurrentLanguageSet.Words.TryGetValue(word, out string outWord))
+        {
+            return outWord;
+        }
+        MissingTranslation = true;
+        if (defWord is not null)
+        {
+            CurrentLanguageSet.Words.Add(word, defWord);
+            return defWord;
+        }
+        else
+        {
+            CurrentLanguageSet.Words.Add(word, word);
+            return word;
+        }
     }
 
     public static List<string> GetWords(Type type)
@@ -34,9 +81,10 @@ public class LanguageSet
 
     private static LanguageSet CreateDefaultSet()
     {
+        CultureInfo ci = CultureInfo.InstalledUICulture;
         LanguageSet languageSet = new()
         {
-            LanguageName = "Default",
+            LanguageName = ci.Name,
             Words = new Dictionary<string, string>()
             {
                 { LanguageKeys.AMMO, "Ammo" },
