@@ -791,7 +791,7 @@
 
                     <Label Name="PrimaryDescriptorLabel" Content="{Binding Path=Primary.WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryDescriptorLabel" Content="{Binding Path=Secondary.WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <CheckBox Name="IsFemaleCheckBox" Foreground="White" Content="{Binding Path=Lang.BtnLauncher, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,808,0,0" VerticalAlignment="Top" Checked="IsFemaleCheckBox_Checked" Unchecked="IsFemaleCheckBox_Unchecked"/>
+                    <CheckBox Name="IsFemaleCheckBox" Foreground="White" Content="{Binding Path=Lang.LblPSGenderToggle, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,808,0,0" VerticalAlignment="Top" Checked="IsFemaleCheckBox_Checked" Unchecked="IsFemaleCheckBox_Unchecked"/>
 
 
                     <Label Content="{Binding Path=Lang.LblPSHealth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,905,315,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
