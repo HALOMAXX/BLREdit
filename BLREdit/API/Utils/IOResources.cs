@@ -38,6 +38,11 @@ public class IOResources
     public static void GetGameLocationsFromSteam()
     {
         string steampath;
+        if (string.IsNullOrEmpty(Steam32InstallFolder) && string.IsNullOrEmpty(Steam6432InstallFolder))
+        {
+            LoggingSystem.LogWarning("not performing steam library probing because no steam install is found");
+            return;
+        }
         if (string.IsNullOrEmpty(Steam32InstallFolder))
         {
             steampath = Steam6432InstallFolder;
@@ -54,7 +59,17 @@ public class IOResources
 
     private static void GetGamePathFromVDF(string vdfPath, string appID)
     {
-        var libraryInfo = VdfConvert.Deserialize(File.ReadAllText(vdfPath)).Value;
+        VToken libraryInfo;
+        try
+        {
+            libraryInfo = VdfConvert.Deserialize(File.ReadAllText(vdfPath)).Value;
+        }
+        catch (System.Exception ex)
+        {
+            LoggingSystem.LogWarning("failed reading " + vdfPath + ", steam library parsing aborted");
+            LoggingSystem.LogWarning(ex.Message);
+            return;
+        }
         foreach (VProperty library in libraryInfo.Children())
         {
             if (library.Key != "contentstatsid")
