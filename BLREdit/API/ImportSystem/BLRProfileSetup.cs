@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.UI;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -240,10 +242,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.ElectroProtection ?? 0;
-            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.ElectroProtection ?? 0;
-            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.ElectroProtection ?? 0;
-            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.ElectroProtection ?? 0;
-            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.ElectroProtection ?? 0;
+            if (GearSlot1Bool.Is) total += Gear1?.PawnModifiers?.ElectroProtection ?? 0;
+            if (GearSlot2Bool.Is) total += Gear2?.PawnModifiers?.ElectroProtection ?? 0;
+            if (GearSlot3Bool.Is) total += Gear3?.PawnModifiers?.ElectroProtection ?? 0;
+            if (GearSlot4Bool.Is) total += Gear4?.PawnModifiers?.ElectroProtection ?? 0;
             return total;
         }
     }
@@ -260,10 +262,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.ExplosiveProtection ?? 0;
-            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
-            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
-            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
-            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
+            if (GearSlot1Bool.Is) total += Gear1?.PawnModifiers?.ExplosiveProtection ?? 0;
+            if (GearSlot2Bool.Is) total += Gear2?.PawnModifiers?.ExplosiveProtection ?? 0;
+            if (GearSlot3Bool.Is) total += Gear3?.PawnModifiers?.ExplosiveProtection ?? 0;
+            if (GearSlot4Bool.Is) total += Gear4?.PawnModifiers?.ExplosiveProtection ?? 0;
             return total;
         }
     }
@@ -280,10 +282,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.IncendiaryProtection ?? 0;
-            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
-            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
-            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
-            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
+            if (GearSlot1Bool.Is) total += Gear1?.PawnModifiers?.IncendiaryProtection ?? 0;
+            if (GearSlot2Bool.Is) total += Gear2?.PawnModifiers?.IncendiaryProtection ?? 0;
+            if (GearSlot3Bool.Is) total += Gear3?.PawnModifiers?.IncendiaryProtection ?? 0;
+            if (GearSlot4Bool.Is) total += Gear4?.PawnModifiers?.IncendiaryProtection ?? 0;
             return total;
         }
     }
@@ -300,10 +302,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.InfraredProtection ?? 0;
-            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.InfraredProtection ?? 0;
-            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.InfraredProtection ?? 0;
-            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.InfraredProtection ?? 0;
-            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.InfraredProtection ?? 0;
+            if (GearSlot1Bool.Is) total += Gear1?.PawnModifiers?.InfraredProtection ?? 0;
+            if (GearSlot2Bool.Is) total += Gear2?.PawnModifiers?.InfraredProtection ?? 0;
+            if (GearSlot3Bool.Is) total += Gear3?.PawnModifiers?.InfraredProtection ?? 0;
+            if (GearSlot4Bool.Is) total += Gear4?.PawnModifiers?.InfraredProtection ?? 0;
             return total;
         }
     }
@@ -320,10 +322,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.MeleeProtection ?? 0;
-            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.MeleeProtection ?? 0;
-            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.MeleeProtection ?? 0;
-            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.MeleeProtection ?? 0;
-            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.MeleeProtection ?? 0;
+            if (GearSlot1Bool.Is) total += Gear1?.PawnModifiers?.MeleeProtection ?? 0;
+            if (GearSlot2Bool.Is) total += Gear2?.PawnModifiers?.MeleeProtection ?? 0;
+            if (GearSlot3Bool.Is) total += Gear3?.PawnModifiers?.MeleeProtection ?? 0;
+            if (GearSlot4Bool.Is) total += Gear4?.PawnModifiers?.MeleeProtection ?? 0;
             return total;
         }
     }
@@ -340,10 +342,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.PermanentHealthProtection ?? 0;
-            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.PermanentHealthProtection ?? 0;
-            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.PermanentHealthProtection ?? 0;
-            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.PermanentHealthProtection ?? 0;
-            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            if (GearSlot1Bool.Is) total += Gear1?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            if (GearSlot2Bool.Is) total += Gear2?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            if (GearSlot3Bool.Is) total += Gear3?.PawnModifiers?.PermanentHealthProtection ?? 0;
+            if (GearSlot4Bool.Is) total += Gear4?.PawnModifiers?.PermanentHealthProtection ?? 0;
             return total;
         }
     }
@@ -360,10 +362,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
         get
         {
             double total = Helmet?.PawnModifiers?.ToxicProtection ?? 0;
-            if (GearSlot1Enabled) total += Gear1?.PawnModifiers?.ToxicProtection ?? 0;
-            if (GearSlot2Enabled) total += Gear2?.PawnModifiers?.ToxicProtection ?? 0;
-            if (GearSlot3Enabled) total += Gear3?.PawnModifiers?.ToxicProtection ?? 0;
-            if (GearSlot4Enabled) total += Gear4?.PawnModifiers?.ToxicProtection ?? 0;
+            if (GearSlot1Bool.Is) total += Gear1?.PawnModifiers?.ToxicProtection ?? 0;
+            if (GearSlot2Bool.Is) total += Gear2?.PawnModifiers?.ToxicProtection ?? 0;
+            if (GearSlot3Bool.Is) total += Gear3?.PawnModifiers?.ToxicProtection ?? 0;
+            if (GearSlot4Bool.Is) total += Gear4?.PawnModifiers?.ToxicProtection ?? 0;
             return total;
         }
     }
@@ -432,25 +434,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
     #endregion DisplayProperties
 
     #region GerSlots
-    private bool gearSlot1Enabled;
-    public bool GearSlot1Enabled { get { return gearSlot1Enabled; } private set { gearSlot1Enabled = value; GearSlot1Disabled = value; GearSlot1Visibility = Visibility.Visible; OnPropertyChanged(); } }
-    public bool GearSlot1Disabled { get { return !gearSlot1Enabled; } private set { OnPropertyChanged(); } }
-    public Visibility GearSlot1Visibility { get { if (gearSlot1Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
-
-    private bool gearSlot2Enabled;
-    public bool GearSlot2Enabled { get { return gearSlot2Enabled; } private set { gearSlot2Enabled = value; GearSlot2Disabled = value; GearSlot2Visibility = Visibility.Visible; OnPropertyChanged(); } }
-    public bool GearSlot2Disabled { get { return !gearSlot2Enabled; } private set { OnPropertyChanged(); } }
-    public Visibility GearSlot2Visibility { get { if (gearSlot2Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
-
-    private bool gearSlot3Enabled;
-    public bool GearSlot3Enabled { get { return gearSlot3Enabled; } private set { gearSlot3Enabled = value; GearSlot3Disabled = value; GearSlot3Visibility = Visibility.Visible; OnPropertyChanged(); } }
-    public bool GearSlot3Disabled { get { return !gearSlot3Enabled; } private set { OnPropertyChanged(); } }
-    public Visibility GearSlot3Visibility { get { if (gearSlot3Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
-
-    private bool gearSlot4Enabled;
-    public bool GearSlot4Enabled { get { return gearSlot4Enabled; } private set { gearSlot4Enabled = value; GearSlot4Disabled = value; GearSlot4Visibility = Visibility.Visible; OnPropertyChanged(); } }
-    public bool GearSlot4Disabled { get { return !gearSlot4Enabled; } private set { OnPropertyChanged(); } }
-    public Visibility GearSlot4Visibility { get { if (gearSlot4Enabled) { return Visibility.Collapsed; } else { return Visibility.Visible; } } private set { OnPropertyChanged(); } }
+    public UIBool GearSlot1Bool { get; private set; } = new UIBool();
+    public UIBool GearSlot2Bool { get; private set; } = new UIBool();
+    public UIBool GearSlot3Bool { get; private set; } = new UIBool();
+    public UIBool GearSlot4Bool { get; private set; } = new UIBool();
     #endregion GearSlots
 
     private void CalculateStats()
@@ -464,10 +451,10 @@ public class BLRLoadoutSetup : INotifyPropertyChanged
 
     private void UpdateGearSlots()
     {
-        GearSlot1Enabled = GearSlots > 0;
-        GearSlot2Enabled = GearSlots > 1;
-        GearSlot3Enabled = GearSlots > 2;
-        GearSlot4Enabled = GearSlots > 3;
+        GearSlot1Bool.SetBool(GearSlots > 0);
+        GearSlot2Bool.SetBool(GearSlots > 1);
+        GearSlot3Bool.SetBool(GearSlots > 2);
+        GearSlot4Bool.SetBool(GearSlots > 3);
     }
 
     private void CreateDisplay()

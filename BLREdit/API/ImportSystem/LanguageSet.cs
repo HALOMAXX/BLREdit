@@ -28,7 +28,6 @@ public class LanguageSet
         if (!File.Exists(name))
         {
             name = IOResources.ASSET_DIR + IOResources.LOCAL_DIR + "en-US.json";
-            
         }
         return IOResources.DeserializeFile<LanguageSet>(name) ?? CreateDefaultSet();
     }

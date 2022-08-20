@@ -727,7 +727,7 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
                             <Image HorizontalAlignment="Left" Source="{Binding Path=Gear1.SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear1.Tooltip}" x:FieldModifier="public"/>
-                            <Rectangle Width="64" Height="64" Name="Gear1Rect" IsEnabled="{Binding Path=GearSlot1Disabled}" Visibility="{Binding Path=GearSlot1Visibility}">
+                            <Rectangle Width="64" Height="64" Name="Gear1Rect" Visibility="{Binding Path=GearSlot1Bool.VisibilityInverted}">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#88000000"/>
                                 </Rectangle.Fill>
@@ -737,7 +737,7 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
                             <Image HorizontalAlignment="Left" Source="{Binding Path=Gear2.SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear2.Tooltip}" x:FieldModifier="public"/>
-                            <Rectangle Width="64" Height="64" Name="Gear2Rect" Visibility="{Binding Path=GearSlot2Visibility}">
+                            <Rectangle Width="64" Height="64" Name="Gear2Rect" Visibility="{Binding Path=GearSlot2Bool.VisibilityInverted}">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#88000000"/>
                                 </Rectangle.Fill>
@@ -747,7 +747,7 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
                             <Image HorizontalAlignment="Left" Source="{Binding Path=Gear3.SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear3.Tooltip}" x:FieldModifier="public"/>
-                            <Rectangle Width="64" Height="64" Name="Gear3Rect" Visibility="{Binding Path=GearSlot3Visibility}">
+                            <Rectangle Width="64" Height="64" Name="Gear3Rect" Visibility="{Binding Path=GearSlot3Bool.VisibilityInverted}">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#88000000"/>
                                 </Rectangle.Fill>
@@ -757,7 +757,7 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Grid>
                             <Image HorizontalAlignment="Left" Source="{Binding Path=Gear4.SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear4.Tooltip}" x:FieldModifier="public"/>
-                            <Rectangle Width="64" Height="64" Name="Gear4Rect" Visibility="{Binding Path=GearSlot4Visibility}">
+                            <Rectangle Width="64" Height="64" Name="Gear4Rect" Visibility="{Binding Path=GearSlot4Bool.VisibilityInverted}">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="#88000000"/>
                                 </Rectangle.Fill>
