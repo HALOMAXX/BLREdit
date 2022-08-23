@@ -208,7 +208,7 @@
 
 
     <Style x:Key="DebugElement" TargetType="{x:Type FrameworkElement}">
-        <Setter Property="Visibility" Value="{Binding Source={StaticResource Settings}, Path=Settings.DebugVisibility}"/>
+        <Setter Property="Visibility" Value="{Binding Source={StaticResource Settings}, Path=Settings.Debugging.Visibility}"/>
     </Style>
 
     <Style x:Key="DebugBorder" BasedOn="{StaticResource DebugElement}" TargetType="Border">

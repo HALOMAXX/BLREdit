@@ -13,6 +13,7 @@ using Microsoft.Win32;
 using System.Text.RegularExpressions;
 using System.Runtime.CompilerServices;
 using BLREdit.API.ImportSystem;
+using System.Windows.Media.Animation;
 
 namespace BLREdit.UI;
 
@@ -69,6 +70,15 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private int columns = 4;
     public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
 
+    private DoubleAnimation AlertAppearAnimation = new DoubleAnimation() { From = 0, To = 256, AutoReverse = false, Duration = new Duration(TimeSpan.FromSeconds(1)) };
+    private Storyboard AlertAppearStoryboard = new Storyboard();
+
+    private DoubleAnimation AlertWaitAnimation = new DoubleAnimation() { From = 256, To = 256, AutoReverse = false, Duration = new Duration(TimeSpan.FromSeconds(3)) };
+    private Storyboard AlertWaitStoryboard = new Storyboard();
+
+    private DoubleAnimation AlertDisappearAnimation = new DoubleAnimation() { From = 256, To = 0, AutoReverse = false, Duration = new Duration(TimeSpan.FromSeconds(1)) };
+    private Storyboard AlertDisappearStoryboard = new Storyboard();
+
     public BLREditSettings Settings { get; set; } = BLREditSettings.Settings;
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -84,6 +94,20 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         IsPlayerNameChanging = true;
 
         InitializeComponent();
+
+        AlertAppearStoryboard.Children.Add(AlertAppearAnimation);
+        Storyboard.SetTargetName(AlertAppearAnimation, AlertGrid.Name);
+        Storyboard.SetTargetProperty(AlertAppearAnimation, new PropertyPath(Grid.WidthProperty));
+        AlertAppearStoryboard.Completed += AlertFinishedAppearing;
+
+        AlertWaitStoryboard.Children.Add(AlertWaitAnimation);
+        Storyboard.SetTargetName(AlertWaitAnimation, AlertGrid.Name);
+        Storyboard.SetTargetProperty(AlertWaitAnimation, new PropertyPath(Grid.WidthProperty));
+        AlertWaitStoryboard.Completed += AlertWaitFinished;
+
+        AlertDisappearStoryboard.Children.Add(AlertDisappearAnimation);
+        Storyboard.SetTargetName(AlertDisappearAnimation, AlertGrid.Name);
+        Storyboard.SetTargetProperty(AlertDisappearAnimation, new PropertyPath(Grid.WidthProperty));
 
         ChangeSortingDirection(this, null);
         ChangeSortingDirection(this, null);
@@ -2568,11 +2592,33 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                 {
                     BLREditSettings.Settings.AdvancedModding.SetBool(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
-                    //MessageBox.Show("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
+                    AlertText.Text = $"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}";
+                    SetAlertSize(400);
+                    AlertAppearStoryboard.Begin(this);
                     LoggingSystem.LogInfo("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
                 }
                 break;
         }
+    }
+
+    private void SetAlertSize(double target)
+    {
+        AlertAppearAnimation.To = target;
+        
+        AlertWaitAnimation.From = target;
+        AlertWaitAnimation.To = target;
+
+        AlertDisappearAnimation.From = target;
+    }
+
+    public void AlertFinishedAppearing(object sender, EventArgs args)
+    {
+        AlertWaitStoryboard.Begin(this);
+    }
+
+    public void AlertWaitFinished(object sender, EventArgs args)
+    {
+        AlertDisappearStoryboard.Begin(this);
     }
 
     private void DuplicateProfile_Click(object sender, RoutedEventArgs e)

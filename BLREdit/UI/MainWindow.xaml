@@ -815,5 +815,9 @@
                 </Grid>
             </ScrollViewer>
         </Grid>
+
+        <Grid Name="AlertGrid" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="0" Height="128" Margin="0,0,0,256" Background="#9f000000" Focusable="False" IsHitTestVisible="False">
+            <TextBox Name="AlertText" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextAlignment="Center" Foreground="#ffff8800" IsReadOnly="True" Text="This is a Alert!" FontSize="26"/>
+        </Grid> 
     </Grid>
 </Window>
