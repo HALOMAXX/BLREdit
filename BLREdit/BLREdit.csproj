@@ -33,6 +33,7 @@
 	  <Resource Include="UI\Resources\**" />
 	</ItemGroup>
 
+
 	<ItemGroup>
 	  <Content Include="BLREdit Logo (DraagonLizzard).ico" />
 	</ItemGroup>

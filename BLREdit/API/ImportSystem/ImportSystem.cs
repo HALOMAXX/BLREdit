@@ -65,8 +65,8 @@ namespace BLREdit
                         {
                             var (DamageIdeal, DamageMax) = BLRWeaponSetup.CalculateDamage(item, 0);
                             var (ZoomSpread, HipSpread, MovmentSpread) = BLRWeaponSetup.CalculateSpread(item, 0, 0);
-                            var (RecoilHip, RecoilZoom) = BLRWeaponSetup.CalculateRecoil(item, 0);
-                            var (IdealRange, MaxRange, TracerRange) = BLRWeaponSetup.CalculateRange(item, 0);
+                            var (RecoilHip, _RecoilZoom) = BLRWeaponSetup.CalculateRecoil(item, 0);
+                            var (IdealRange, MaxRange, _TracerRange) = BLRWeaponSetup.CalculateRange(item, 0);
 
                             var desc1 = new DisplayStatDiscriptor();
                             var desc2 = new DisplayStatDiscriptor();
@@ -402,8 +402,8 @@ namespace BLREdit
                     case GRIPS_CATEGORY:
                         foreach (var item in itemCategory.Value)
                         {
-                            double damage = item?.WeaponModifiers?.damage ?? 0;
-                            double rof = item?.WeaponModifiers?.rateOfFire ?? 0;
+                            double _damage = item?.WeaponModifiers?.damage ?? 0;
+                            double _rof = item?.WeaponModifiers?.rateOfFire ?? 0;
                             double recoil = item?.WeaponModifiers?.recoil ?? 0;
 
                             var desc1 = new DisplayStatDiscriptor();

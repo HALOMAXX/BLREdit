@@ -97,7 +97,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             if (o is BLRItem item)
             {
                 if (FilterWeapon is null && (item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY)) { return true; }
-                if (BLREditSettings.Settings.AdvancedModding)
+                if (BLREditSettings.Settings.AdvancedModding.Is)
                 {
                     return AdvancedFilter(item, FilterWeapon);
                 }
@@ -129,6 +129,11 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         MenuGrid.DataContext = this;
         LauncherMenu.DataContext = this;
 
+        ItemListButton_Click(ItemListButton, new RoutedEventArgs());
+        ItemListButton_Click(AdvancedInfoButton, new RoutedEventArgs());
+        ItemListButton_Click(LauncherButton, new RoutedEventArgs());
+        LauncherMenuButton_Click(ServerListButton, new RoutedEventArgs());
+        LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
         ItemListButton_Click(ItemListButton, new RoutedEventArgs());
         LauncherMenuButton_Click(ServerListButton, new RoutedEventArgs());
     }
@@ -1132,7 +1137,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             {
                 if (client.Equals(BLREditSettings.Settings.DefaultClient))
                 { isClientStillExistent = true; }
-                if (client.IsPatched)
+                if (client.Patched.Is)
                 { patchedClients.Add(client); }
             }
 
@@ -1149,7 +1154,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                         MessageBox.Show("You have to select one of the Patched Clients as a Default Client");
                     }
                     else
-                    { BLREditSettings.Settings.DefaultClient = patchedClients[0]; patchedClients[0].IsCurrentClient = true; }
+                    { BLREditSettings.Settings.DefaultClient = patchedClients[0]; patchedClients[0].CurrentClient.SetBool(true); }
                 }
             }
             else if (GameClients.Count == 1)
@@ -1246,12 +1251,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         {
             if (button.DataContext is BLRClient client)
             {
-                if (client.IsPatched)
+                if (client.Patched.Is)
                 {
                     BLREditSettings.Settings.DefaultClient = client;
                     foreach (BLRClient c in GameClients)
                     {
-                        c.IsCurrentClient = false;
+                        c.CurrentClient.SetBool(false);
                     }
                 }
             }
@@ -2418,12 +2423,15 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         OpenFileDialog dialog = new()
         {
-            Filter = "Game Client|FoxGame-win32-Shipping.exe",
+            Filter = "Game Client|*.exe",
             InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}",
             Multiselect = false
         };
         dialog.ShowDialog();
-        AddGameClient(new BLRClient() { OriginalPath = dialog.FileName });
+        if (!string.IsNullOrEmpty(dialog.FileName))
+        {
+            AddGameClient(new BLRClient() { OriginalPath = dialog.FileName });
+        }
         CheckGameClientSetup();
     }
 
@@ -2558,9 +2566,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             case Key.A:
                 if (shiftDown)
                 {
-                    BLREditSettings.Settings.AdvancedModding = !BLREditSettings.Settings.AdvancedModding;
+                    BLREditSettings.Settings.AdvancedModding.SetBool(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
-                    MessageBox.Show("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
+                    //MessageBox.Show("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
                     LoggingSystem.LogInfo("AdvancedModding:" + BLREditSettings.Settings.AdvancedModding.ToString());
                 }
                 break;

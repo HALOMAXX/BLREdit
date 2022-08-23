@@ -11,6 +11,7 @@ public class LanguageSet
     private static LanguageSet CurrentLanguageSet { get; set; } = Load(CultureInfo.InstalledUICulture.Name);
     public string LanguageName { get; set; }
     public Dictionary<string, string> Words { get; set; }
+    public Dictionary<string, string> MissingWords { get; set; } = new Dictionary<string, string>();
     private static bool MissingTranslation = false;
 
     public static void Save()
@@ -42,11 +43,13 @@ public class LanguageSet
         if (defWord is not null)
         {
             CurrentLanguageSet.Words.Add(propertyName, defWord);
+            CurrentLanguageSet.MissingWords.Add(propertyName, defWord);
             return defWord;
         }
         else
         {
             CurrentLanguageSet.Words.Add(propertyName, propertyName);
+            CurrentLanguageSet.MissingWords.Add(propertyName, propertyName);
             return propertyName;
         }
     }
@@ -61,11 +64,13 @@ public class LanguageSet
         if (defWord is not null)
         {
             CurrentLanguageSet.Words.Add(word, defWord);
+            CurrentLanguageSet.MissingWords.Add(word, defWord);
             return defWord;
         }
         else
         {
             CurrentLanguageSet.Words.Add(word, word);
+            CurrentLanguageSet.MissingWords.Add(word, word);
             return word;
         }
     }

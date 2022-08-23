@@ -73,32 +73,6 @@ public class BLRServer : INotifyPropertyChanged
         pingThread.Name = ServerAddress + " Ping";
         pingThread.Priority = ThreadPriority.Highest;
         pingThread.Start();
-        //AutoResetEvent waiter = new(false);
-
-        //Ping pingSender = new();
-
-        //// When the PingCompleted event is raised,
-        //// the PingCompletedCallback method is called.
-        //pingSender.PingCompleted += new PingCompletedEventHandler(PingCompletedCallback);
-
-        //// Create a buffer of 32 bytes of data to be transmitted.
-        //string data = "BLREdit says Hello!!!!!!!!!!!!!!";
-        //byte[] buffer = Encoding.ASCII.GetBytes(data);
-
-        //// Wait 12 seconds for a reply.
-        //int timeout = 12000;
-
-        //// Set options for transmission:
-        //// The data can go through 64 gateways or routers
-        //// before it is destroyed, and the data packet
-        //// cannot be fragmented.
-        //PingOptions options = new(64, true);
-
-        //// Send the ping asynchronously.
-        //// Use the waiter as the user token.
-        //// When the callback completes, it can wake up this thread.
-        //pingSender.SendAsync(IPAddress, timeout, buffer, options, waiter);
-        //LoggingSystem.LogInfo("Sent Ping Request");
     }
 
     private static byte[] msg = new byte[1] { 1 };
@@ -238,5 +212,10 @@ public class BLRServer : INotifyPropertyChanged
         {
             BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = ExportSystem.ActiveProfile.PlayerName, Server = this });
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
 }

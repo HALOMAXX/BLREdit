@@ -1,10 +1,13 @@
 {
   "DefaultClient": null,
   "DefaultServer": null,
-  "EnableDebugging": false,
   "ShowUpdateNotice": true,
   "DoRuntimeCheck": true,
   "ForceRuntimeCheck": false,
-  "DebugVisibility": "Collapsed",
-  "AdvancedModding": false
+  "Debugging": {
+    "Is": false
+  },
+  "AdvancedModding": {
+    "Is": false
+  }
 }

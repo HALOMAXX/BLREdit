@@ -360,22 +360,22 @@
                                     <TextBox Text="{Binding Path=PatchedPath}" IsReadOnly="True" HorizontalAlignment="Stretch"/>
                                 </Border>
                                 <Border Grid.Column="3" >
-                                    <Button Content="{Binding Path=IsPatched}" IsEnabled="{Binding Path=IsNotPatched}" IsHitTestVisible="False"/>
+                                    <Button Content="{Binding Path=Patched.Is}" IsEnabled="{Binding Path=Patched.IsNot}" IsHitTestVisible="False"/>
                                 </Border>
                                 <Border Grid.Column="4" >
-                                    <Button Content="{Binding Path=Lang.LblLauClientConnectToDefaultServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=IsPatched}" Command="{Binding Path=LaunchClientCommand}"/>
+                                    <Button Content="{Binding Path=Lang.LblLauClientConnectToDefaultServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchClientCommand}"/>
                                 </Border>
                                 <Border Grid.Column="5" >
-                                    <Button Content="{Binding Path=Lang.LblLauIsClientDefault, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=IsNotCurrentClient}" Click="ChangeCurrentGameClient_Click"/>
+                                    <Button Content="{Binding Path=Lang.LblLauIsClientDefault, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=CurrentClient.IsNot}" Click="ChangeCurrentGameClient_Click"/>
                                 </Border>
                                 <Border Grid.Column="6" >
-                                    <Button Content="{Binding Path=Lang.LblLauPatchClient, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=IsNotPatched}" Command="{Binding Path=PatchClientCommand}"/>
+                                    <Button Content="{Binding Path=Lang.LblLauPatchClient, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=Patched.IsNot}" Command="{Binding Path=PatchClientCommand}"/>
                                 </Border>
                                 <Border Grid.Column="7" >
-                                    <Button Content="{Binding Path=Lang.LblLauLaunchBotServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=IsPatched}" Command="{Binding Path=LaunchBotMatchCommand}"/>
+                                    <Button Content="{Binding Path=Lang.LblLauLaunchBotServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchBotMatchCommand}"/>
                                 </Border>
                                 <Border Grid.Column="8" >
-                                    <Button Content="{Binding Path=Lang.LblLauLaunchServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=IsPatched}" Command="{Binding Path=LaunchServerCommand}"/>
+                                    <Button Content="{Binding Path=Lang.LblLauLaunchServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchServerCommand}"/>
                                 </Border>
                             </Grid>
                         </DataTemplate>
@@ -614,7 +614,7 @@
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding Path=Primary.Camo.SmallSquareImage}" Name="PrimaryCamoWeaponImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Primary.Camo.Tooltip}" x:FieldModifier="public"/>
                     </Border>
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp" Visibility="{Binding Path=Settings.AdvancedModdingVisiblility, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}">
+                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp" Visibility="{Binding Path=Settings.AdvancedModding.Visibility, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}">
                         <Image HorizontalAlignment="Left" Source="{Binding Primary.Grip.SmallSquareImage}" Name="PrimaryGripImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Primary.Grip.Tooltip}" x:FieldModifier="public"/>
                     </Border>
 

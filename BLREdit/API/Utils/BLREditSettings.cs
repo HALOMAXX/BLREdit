@@ -12,28 +12,29 @@ namespace BLREdit;
 
 public class BLREditSettings : INotifyPropertyChanged
 {
-    public static BLREditSettings Settings { get; set; } = LoadSettings();
-
-    public BLRClient DefaultClient { get; set; } = null;
-    public BLRServer DefaultServer { get; set; } = null;
-    public bool EnableDebugging { get; set; } = false;
-    public bool ShowUpdateNotice { get; set; } = true;
-    public bool DoRuntimeCheck { get; set; } = true;
-    public bool ForceRuntimeCheck { get; set; } = false;
-    public Visibility DebugVisibility { get; set; } = Visibility.Collapsed;
-    [JsonIgnore] private bool advancedModding = false;
-    public bool AdvancedModding { get { return advancedModding; } set { advancedModding = value; AdvancedModdingVisiblility = Visibility.Collapsed; OnPropertyChanged(); } }
-    [JsonIgnore] public Visibility AdvancedModdingVisiblility { get { if (AdvancedModding) { return Visibility.Visible; } else { return Visibility.Collapsed; } } set { OnPropertyChanged(); } }
-
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
-    public void ApplySettings()
-    {
-        if (EnableDebugging)
-        { LoggingSystem.IsDebuggingEnabled = true; }
-    }
+
+    private static BLREditSettings settings = LoadSettings();
+    public static BLREditSettings Settings { get { return settings; } private set { settings = value; } }
+
+    private BLRClient client = null;
+    public BLRClient DefaultClient { get { return client; } set { client = value; OnPropertyChanged(); } }
+    private BLRServer server = null;
+    public BLRServer DefaultServer { get { return server; } set { server = value; OnPropertyChanged(); } }
+
+    private bool showUpdateNotice = true;
+    public bool ShowUpdateNotice { get { return showUpdateNotice; } set { showUpdateNotice = value; OnPropertyChanged(); } }
+    private bool doRuntimeCheck = true;
+    public bool DoRuntimeCheck { get { return doRuntimeCheck; } set { doRuntimeCheck = value; OnPropertyChanged(); } }
+    private bool forceRuntimeCheck = false;
+    public bool ForceRuntimeCheck { get { return forceRuntimeCheck; } set { forceRuntimeCheck = value; OnPropertyChanged(); } }
+    private UIBool debugging = new UIBool(false);
+    public UIBool Debugging { get { return debugging; } set { debugging = value; OnPropertyChanged(); } }
+    private UIBool modding = new UIBool(false);
+    public UIBool AdvancedModding { get { return modding; } set { modding = value; OnPropertyChanged(); } }
 
     public static LaunchOptions GetLaunchOptions()
     {
@@ -45,14 +46,12 @@ public class BLREditSettings : INotifyPropertyChanged
         if (File.Exists(IOResources.SETTINGS_FILE))
         {
             BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>(IOResources.SETTINGS_FILE); //Load settings file
-            settings.ApplySettings();                                               //apply settings
             IOResources.SerializeFile(IOResources.SETTINGS_FILE, settings);                                     //write it back to disk to clean out settings that don't exist anymore from old builds/versions
             return settings;
         }
         else
         {
             var tmp = new BLREditSettings();
-            tmp.ApplySettings();
             IOResources.SerializeFile(IOResources.SETTINGS_FILE, tmp);
             return tmp;
         }
