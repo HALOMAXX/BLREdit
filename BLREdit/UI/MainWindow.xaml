@@ -816,8 +816,20 @@
             </ScrollViewer>
         </Grid>
 
-        <Grid Name="AlertGrid" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="0" Height="128" Margin="0,0,0,256" Background="#9f000000" Focusable="False" IsHitTestVisible="False">
-            <TextBox Name="AlertText" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextAlignment="Center" Foreground="#ffff8800" IsReadOnly="True" Text="This is a Alert!" FontSize="26"/>
-        </Grid> 
+        <Grid>
+            <ListBox HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="400" Background="Transparent" Name="AlertList" Focusable="False" IsHitTestVisible="False" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                        <Setter Property="DockPanel.Dock" Value="Bottom"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel LastChildFill="False"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
+         
     </Grid>
 </Window>

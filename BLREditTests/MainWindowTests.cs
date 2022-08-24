@@ -20,7 +20,7 @@ namespace BLREditTests
         {
             app = new App();
 
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(context.ToString());
+            LoggingSystem.LogInfo(context.ToString());
 
             app.InitializeComponent();
         }

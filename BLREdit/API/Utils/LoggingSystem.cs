@@ -7,15 +7,10 @@ namespace BLREdit;
 
 public static class LoggingSystem
 {
-#if DEBUG
-    public static bool IsDebuggingEnabled { get; set; } = true;
-#else
-    public static bool IsDebuggingEnabled { get; set; } = false;
-#endif
     public static Stopwatch LogInfo(string info, string newLine = "\n")
     {
         var now = DateTime.Now;
-        Trace.Write("[" + now + "]Info:" + info + newLine);
+        Trace.Write($"[{now}]Info:{info}{newLine}");
         return Stopwatch.StartNew();
     }
 
@@ -24,7 +19,7 @@ public static class LoggingSystem
     {
         if (watch is not null)
         {
-            Trace.WriteLine(finish + " Done! in " + watch.ElapsedMilliseconds + "ms");
+            Trace.WriteLine($"{finish} Done! in {watch.ElapsedMilliseconds}ms");
         }
     }
 #nullable disable
@@ -32,19 +27,19 @@ public static class LoggingSystem
     public static void LogWarning(string info)
     {
         var now = DateTime.Now;
-        Trace.WriteLine("[" + now + "]Warning:" + info);
+        Trace.WriteLine($"[{now}]Warning:{info}");
     }
 
     public static void LogError(string info)
     {
         var now = DateTime.Now;
-        Trace.WriteLine("[" + now + "]Error:" + info);
+        Trace.WriteLine($"[{now}]Error:{info}");
     }
 
     public static void LogStatus(string status)
     {
         var now = DateTime.Now;
-        Trace.WriteLine("[" + now + "]Status:" + status);
+        Trace.WriteLine($"[{now}]Status:{status}");
     }
 
     public static string ObjectToTextWall<T>(T obj)

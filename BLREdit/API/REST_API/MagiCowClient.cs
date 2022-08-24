@@ -22,15 +22,14 @@ public class MagiCowClient
     {
         try
         {
-            var response = await Client.GetAsync(
-                $"api/players/all");
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(response.RequestMessage.ToString());
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(response.ReasonPhrase);
+            var response = await Client.GetAsync($"api/players/all");
+            LoggingSystem.LogInfo(response.RequestMessage.ToString());
+            LoggingSystem.LogInfo(response.ReasonPhrase);
             return await ConvertMessageBodyToProfiles(response);
         }
         catch(Exception error)
         {
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("GetAllPlayers Failed:\n"+error.ToString());
+            LoggingSystem.LogError($"GetAllPlayers Failed:\n{error}");
             return null;
         }
     }
@@ -39,13 +38,12 @@ public class MagiCowClient
     {
         try
         {
-            var response = await Client.GetAsync(
-                $"api/players");
+            var response = await Client.GetAsync($"api/players");
             return await ConvertMessageBodyToProfiles(response);
         }
         catch (Exception error)
         {
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("GetOwnedPlayer Failed:\n" + error.ToString());
+            LoggingSystem.LogError($"GetOwnedPlayer Failed:\n{error}");
             return null;
         }
     }
@@ -53,8 +51,7 @@ public class MagiCowClient
     public static async Task<MagiCowsProfile> GetPlayer(string PlayerName)
     {
         try { 
-            var response = await Client.GetAsync(
-                $"api/players?playerName={PlayerName}");
+            var response = await Client.GetAsync($"api/players?playerName={PlayerName}");
             var players = await ConvertMessageBodyToProfiles(response);
             if (players.Length > 0)
             {
@@ -67,7 +64,7 @@ public class MagiCowClient
         }
         catch (Exception error)
         {
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("GetOwnedPlayer Failed:\n" + error.ToString());
+            LoggingSystem.LogError($"GetOwnedPlayer Failed:\n{error}");
             return null;
         }
     }
@@ -85,13 +82,13 @@ public class MagiCowClient
             }
             else
             {
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError(player.PlayerName + await response.Content.ReadAsStringAsync());
+                LoggingSystem.LogError($"{player.PlayerName}{await response.Content.ReadAsStringAsync()}");
                 return false;
             }
         }
         catch(Exception error)
         {
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError(player.PlayerName + " update failed Timeout or other Exception:\n" + error.ToString());
+            LoggingSystem.LogError($"{player.PlayerName} update failed Timeout or other Exception:\n{error}");
             return false;
         }
     }
@@ -107,7 +104,7 @@ public class MagiCowClient
         }
         catch (Exception error)
         {
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("GetOwnedPlayer Failed:\n" + error.ToString());
+            LoggingSystem.LogError($"GetOwnedPlayer Failed:\n{error}");
             return false;
         }
     }
@@ -121,7 +118,7 @@ public class MagiCowClient
         }
         else
         {
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError(response.Headers.ToString() +  "Request failed with code:" + response.StatusCode.ToString());
+            LoggingSystem.LogError($"{response.Headers} Request failed with code:{response.StatusCode}");
             return null;
         }
     }
@@ -135,7 +132,7 @@ public class MagiCowClient
         }
         else
         {
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError(response.Headers.ToString() + "Request failed with code:" + response.StatusCode.ToString());
+            LoggingSystem.LogError($"{response.Headers} Request failed with code: {response.StatusCode}");
             return null;
         }
     }

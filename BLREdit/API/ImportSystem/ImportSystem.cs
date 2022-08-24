@@ -40,8 +40,7 @@ namespace BLREdit
 
         public static void Initialize()
         {
-            System.Diagnostics.Stopwatch watch = null;
-            if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Initializing Import System");
+            System.Diagnostics.Stopwatch watch = LoggingSystem.LogInfo("Initializing Import System");
 
             ItemLists = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>(IOResources.ITEM_LIST_FILE);
             
@@ -50,7 +49,7 @@ namespace BLREdit
 
             //UnifyItemList();
 
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch, "Import System");
+            LoggingSystem.LogInfoAppend(watch, "Import System");
         }
 
         public static void ApplyDisplayStats()
@@ -554,8 +553,7 @@ namespace BLREdit
 
             foreach (var entry in ListItems)
             {
-                System.Diagnostics.Stopwatch watch = null;
-                if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Started Cleaning " + entry.Key, "");
+                System.Diagnostics.Stopwatch watch = LoggingSystem.LogInfo($"Started Cleaning {entry.Key}", "");
                 List<ImportItem> ToRemove = new();
                 foreach (ImportItem item in entry.Value)
                 {
@@ -579,7 +577,7 @@ namespace BLREdit
                 {
                     entry.Value.Add(new ImportItem() { name = "No Avatar", Category = AVATARS_CATEGORY });
                 }
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch, " " + ToRemove.Count + " have been Removed");
+                LoggingSystem.LogInfoAppend(watch, $" {ToRemove.Count} have been Removed");
             }
         }
 
@@ -590,8 +588,7 @@ namespace BLREdit
             string Desc = "";
             foreach (KeyValuePair<string, List<BLRItem>> entry in ItemLists)
             {
-                System.Diagnostics.Stopwatch watch = null;
-                if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Updating Images for " + entry.Key, "");
+                System.Diagnostics.Stopwatch watch = LoggingSystem.LogInfo($"Updating Images for {entry.Key}", "");
                 Parallel.ForEach(entry.Value, item =>
                 {
                     Name = item.DisplayName;
@@ -608,7 +605,7 @@ namespace BLREdit
                     item.smallSquareImageMale.Freeze();
                     item.smallSquareImageFemale?.Freeze();
                 });
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch);
+                LoggingSystem.LogInfoAppend(watch);
             }
         }
 
@@ -620,7 +617,7 @@ namespace BLREdit
         private static WikiStats[] LoadWikiStatsFromCSV()
         {
             List<WikiStats> stats = new();
-            StreamReader sr = new(IOResources.ASSET_DIR + "\\BLR Wiki Stats.csv");
+            StreamReader sr = new($"{IOResources.ASSET_DIR}\\BLR Wiki Stats.csv");
             string line;
             while ((line = sr.ReadLine()) != null)
             {
@@ -689,7 +686,7 @@ namespace BLREdit
 
         private static void LoadIniStats(Dictionary<string, List<ImportItem>> ListItems)
         {
-            var iniStats = IOResources.DeserializeFile<IniStats[]>(IOResources.ASSET_DIR + "\\filteredIniStats.json");
+            var iniStats = IOResources.DeserializeFile<IniStats[]>($"{IOResources.ASSET_DIR}\\filteredIniStats.json");
 
             ListItems.TryGetValue(PRIMARY_CATEGORY, out List<ImportItem> primary);
             ListItems.TryGetValue(SECONDARY_CATEGORY, out List<ImportItem> secondary);
@@ -713,7 +710,7 @@ namespace BLREdit
                 }
                 if (!found)
                 {
-                    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("No IniStats for " + item.name);
+                    LoggingSystem.LogInfo($"No IniStats for {item.name}");
                 }
             }
         }
@@ -820,8 +817,7 @@ namespace BLREdit
 
         private static FoxIcon[] LoadAllIcons()
         {
-            System.Diagnostics.Stopwatch watch = null;
-            if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Loading All Icons", "");
+            System.Diagnostics.Stopwatch watch = LoggingSystem.LogInfo("Loading All Icons", "");
             var icons = new List<FoxIcon>();
             foreach (var icon in Directory.GetFiles("Assets\\textures"))
             {
@@ -835,19 +831,18 @@ namespace BLREdit
                 }
             }
 
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch);
+            LoggingSystem.LogInfoAppend(watch);
             return icons.ToArray();
         }
         private static FoxIcon[] LoadAllScopePreviews()
         {
-            System.Diagnostics.Stopwatch watch = null;
-            if (LoggingSystem.IsDebuggingEnabled) watch = LoggingSystem.LogInfo("Loading All Crosshairs", "");
+            System.Diagnostics.Stopwatch watch = LoggingSystem.LogInfo("Loading All Crosshairs", "");
             var icons = new List<FoxIcon>();
             foreach (var icon in Directory.EnumerateFiles("Assets\\crosshairs"))
             {
                 icons.Add(new FoxIcon(icon));
             }
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfoAppend(watch);
+            LoggingSystem.LogInfoAppend(watch);
             return icons.ToArray();
         }
 

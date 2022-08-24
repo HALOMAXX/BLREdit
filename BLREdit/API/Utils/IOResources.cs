@@ -107,13 +107,13 @@ public class IOResources
         {
             if (prof.IsDirty)
             {
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(prof.Name + "❕");
+                LoggingSystem.LogInfo($"{prof.Name}❕");
                 deleteFile = File.Exists(filePath);
                 writeFile = true;
             }
             else
             {
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(prof.Name + "✔");
+                LoggingSystem.LogInfo($"{prof.Name}✔");
                 deleteFile = false;
                 writeFile = false;
             }
@@ -133,14 +133,14 @@ public class IOResources
             using var file = File.CreateText(filePath);
             file.Write(Serialize(obj, compact));
             file.Close();
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(typeof(T).Name + " serialize succes!");
+            LoggingSystem.LogInfo($"{typeof(T).Name} serialize succes!");
         }
     }
 
     public static string Serialize<T>(T obj, bool compact = false)
     {
         //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
-        if (obj == null) { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("object were empty!"); return ""; }
+        if (obj == null) { LoggingSystem.LogWarning("object were empty!"); return ""; }
         if (compact)
         {
             return JsonSerializer.Serialize<T>(obj, JSOCompacted);
@@ -158,7 +158,7 @@ public class IOResources
 
         //check if file exist's before we try to read it if it doesn't exist return and Write an error to log
         if (!File.Exists(filePath))
-        { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("File:(" + filePath + ") was not found for Deserialization!"); return temp; }
+        { LoggingSystem.LogError($"File:({filePath}) was not found for Deserialization!"); return temp; }
 
 
 

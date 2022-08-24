@@ -55,9 +55,9 @@ namespace BLREdit
         private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()
         {
             List<ExportSystemProfile> profiles = new();
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR);
+            Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.PROFILE_DIR}");
 
-            CurrentBackupFolder = Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\Backup\\" + System.DateTime.Now.ToString("dd-MM-yy") + "\\" + System.DateTime.Now.ToString("HH-mm") + "\\");
+            CurrentBackupFolder = Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}\\Backup\\{System.DateTime.Now.ToString("dd-MM-yy")}\\{System.DateTime.Now.ToString("HH-mm")}\\");
 
             Regex regex = new(@"\((.*)\)");
 
@@ -71,7 +71,7 @@ namespace BLREdit
                 bool requestDelete = false;
 
                 try { profile = IOResources.DeserializeFile<ExportSystemProfile>(file); }
-                catch { if(LoggingSystem.IsDebuggingEnabled)LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
+                catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
                 profiles.Add(profile);
 
                 if (!profile.IsHealthOkAndRepair())
@@ -81,7 +81,7 @@ namespace BLREdit
 
                 if (!regex.IsMatch(file))
                 {
-                    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Old Profile: " + file);
+                    LoggingSystem.LogInfo($"Old Profile: {file}");
                     oldProfiles = true;
                     requestDelete = true;
                     profile.Index = i;
@@ -90,7 +90,7 @@ namespace BLREdit
                 if (requestDelete)
                 {
                     try { File.Delete(file); }
-                    catch { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogError("Could not delete file:" + file); }
+                    catch { LoggingSystem.LogError($"Could not delete file: {file}"); }
                 }
 
                 i++;
@@ -117,26 +117,26 @@ namespace BLREdit
         public static void CreateSEProfile(ExportSystemProfile profile)
         { 
             SELoadout[] player = SELoadout.CreateFromMagiCowsProfile(profile);
-            IOResources.SerializeFile(IOResources.SEPROFILE_DIR + profile.PlayerName + ".json", player);
+            IOResources.SerializeFile($"{IOResources.SEPROFILE_DIR}{profile.PlayerName}.json", player);
         }
 
         public static void CopyToClipBoard(ExportSystemProfile profile)
         {
-            string clipboard = "register " + Environment.NewLine + IOResources.Serialize(profile as MagiCowsProfile, true);
+            string clipboard = $"register {Environment.NewLine}{IOResources.Serialize(profile as MagiCowsProfile, true)}";
             bool success = false;
 
             try
             {
                 SetClipboard(clipboard);
                 success = true;
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Copy Succes");
+                LoggingSystem.LogInfo("Copy Succes");
             }
             catch
             { }
 
             if (!success)
             {
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Failed CopyToClipboard too often!");
+                LoggingSystem.LogWarning("Failed CopyToClipboard too often!");
                 ClipboardFailed message = new(clipboard);
                 message.ShowDialog();
             }
@@ -169,13 +169,13 @@ namespace BLREdit
         {
             foreach (ExportSystemProfile profile in Profiles)
             {
-                IOResources.SerializeFile(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + profile.Name + ".json", profile);
+                IOResources.SerializeFile($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.PROFILE_DIR}{profile.Name}.json", profile);
             }
         }
 
         public static void RemoveActiveProfileFromDisk()
         {
-            File.Delete(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR + ActiveProfile.Name + ".json");
+            File.Delete($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.PROFILE_DIR}{ActiveProfile.Name}.json");
         }
 
         public static ExportSystemProfile AddProfile(string Name)

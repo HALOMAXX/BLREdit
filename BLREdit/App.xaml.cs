@@ -1,6 +1,7 @@
 ﻿using Octokit;
 
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace BLREdit
@@ -17,12 +18,13 @@ namespace BLREdit
 
         public App()
         {
+            File.Delete("log.txt");
             Trace.Listeners.Add(new TextWriterTraceListener("log.txt", "loggingListener"));
             Trace.AutoFlush = true;
 
             //TestREST().GetAwaiter().GetResult();
 
-            if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("BLREdit Starting!");
+            LoggingSystem.LogInfo("BLREdit Starting!");
             VersionCheck();
             RuntimeCheck();
             ImportSystem.Initialize();
@@ -33,7 +35,7 @@ namespace BLREdit
             MagiCowsProfile[] profiles = await MagiCowClient.GetAllPlayers();
             foreach (MagiCowsProfile profile in profiles)
             {
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo(profile.ToString());
+                LoggingSystem.LogInfo(profile.ToString());
             }
         }
 
@@ -49,7 +51,7 @@ namespace BLREdit
                 var releases = client.Repository.Release.GetAll(CurrentOwner, CurrentRepo);
                 releases.Wait();
                 var latest = releases.Result[0];
-                if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Newest Version: " + latest.TagName + " of " + latest.Name + " vs Current: " + CurrentVersion + " of " + CurrentVersionName);
+                LoggingSystem.LogInfo($"Newest Version: {latest.TagName} of {latest.Name} vs Current: {CurrentVersion} of {CurrentVersionName}");
 
                 string[] remoteVersionParts = latest.TagName.Split('v');
                 remoteVersionParts = remoteVersionParts[remoteVersionParts.Length - 1].Split('.');
@@ -68,7 +70,7 @@ namespace BLREdit
                     }
                     catch
                     {
-                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Can't determine version differences!");
+                        LoggingSystem.LogWarning("Can't determine version differences!");
                     }
                     if (remote != null && current != null)
                     {
@@ -84,13 +86,13 @@ namespace BLREdit
                     }
                     else
                     {
-                        if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Can't determine version differences!");
+                        LoggingSystem.LogWarning("Can't determine version differences!");
                     }
                 }
 
             }
             catch 
-            { if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
+            { LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
         }
 
         public static void RuntimeCheck()
@@ -104,7 +106,7 @@ namespace BLREdit
 
                 if (!IsBaseRuntimeMissing && !IsUpdateRuntimeMissing)
                 {
-                    if (LoggingSystem.IsDebuggingEnabled) LoggingSystem.LogInfo("Both VC++ 2012 Runtimes are installed for BLRevive!");
+                    LoggingSystem.LogInfo("Both VC++ 2012 Runtimes are installed for BLRevive!");
                 }
             }
         }
