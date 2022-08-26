@@ -29,7 +29,7 @@ public class IOResources
     public const string GAME_DEFAULT_EXE = "FoxGame-win32-Shipping.exe";
     public static string Steam32InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string;
     public static string Steam6432InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath", "") as string;
-    public static List<string> GameFolders = new();
+    public static readonly List<string> GameFolders = new();
 
     public static Encoding FILE_ENCODING { get; } = Encoding.UTF8;
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };

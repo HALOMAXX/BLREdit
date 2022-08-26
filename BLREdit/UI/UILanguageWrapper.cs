@@ -1,21 +1,9 @@
 ﻿using BLREdit.API.ImportSystem;
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace BLREdit.UI
 {
-    public class UILanguageWrapper : INotifyPropertyChanged
+    public static class UILanguageWrapper
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
-
         #region ProfileSetup
         public static string BtnPSAddProfile { get { return LanguageSet.GetWordUI("Add Profile"); } }
         public static string BtnPSCopyToClipboard { get { return LanguageSet.GetWordUI("CopyToClipboard"); } }
@@ -103,36 +91,36 @@ namespace BLREdit.UI
         #region Weapon
         public static string LblAdvFragmentsPerShell { get { return LanguageSet.GetWordUI("Fragments Per Shell:"); } }
         public static string LblAdvZoomFireRate { get { return LanguageSet.GetWordUI("Zoom Firerate:"); } }
-        public string LblAdvSpreadCrouchMultiplier { get { return LanguageSet.GetWordUI("Spread Crouch Multiplier:"); } }
-        public string LblAdvSpreadJumpMultiplier { get { return LanguageSet.GetWordUI("Spread Jump Multiplier:"); } }
-        public string LblAdvSpreadCenterWeight { get { return LanguageSet.GetWordUI("Spread Center Weight:"); } }
-        public string LblAdvSpreadCenter { get { return LanguageSet.GetWordUI("Spread Center:"); } }
-        public string LblAdvRecoilVerticalRatio { get { return LanguageSet.GetWordUI("Recoil Vertical Ratio:"); } }
-        public string LblAdvRecoilRecoveryTime { get { return LanguageSet.GetWordUI("Recoil Recovery Time:"); } }
-        public string LblAdvDamage { get { return LanguageSet.GetWordUI("Damage:"); } }
-        public string LblAdvAccuracy { get { return LanguageSet.GetWordUI("Accuracy:"); } }
-        public string LblAdvRange { get { return LanguageSet.GetWordUI("Range:"); } }
-        public string LblAdvReload { get { return LanguageSet.GetWordUI("Reload:"); } }
-        public string LblAdvRecoil { get { return LanguageSet.GetWordUI("Recoil:"); } }
-        public string LblAdvWeaponRun { get { return LanguageSet.GetWordUI("Run:"); } }
+        public static string LblAdvSpreadCrouchMultiplier { get { return LanguageSet.GetWordUI("Spread Crouch Multiplier:"); } }
+        public static string LblAdvSpreadJumpMultiplier { get { return LanguageSet.GetWordUI("Spread Jump Multiplier:"); } }
+        public static string LblAdvSpreadCenterWeight { get { return LanguageSet.GetWordUI("Spread Center Weight:"); } }
+        public static string LblAdvSpreadCenter { get { return LanguageSet.GetWordUI("Spread Center:"); } }
+        public static string LblAdvRecoilVerticalRatio { get { return LanguageSet.GetWordUI("Recoil Vertical Ratio:"); } }
+        public static string LblAdvRecoilRecoveryTime { get { return LanguageSet.GetWordUI("Recoil Recovery Time:"); } }
+        public static string LblAdvDamage { get { return LanguageSet.GetWordUI("Damage:"); } }
+        public static string LblAdvAccuracy { get { return LanguageSet.GetWordUI("Accuracy:"); } }
+        public static string LblAdvRange { get { return LanguageSet.GetWordUI("Range:"); } }
+        public static string LblAdvReload { get { return LanguageSet.GetWordUI("Reload:"); } }
+        public static string LblAdvRecoil { get { return LanguageSet.GetWordUI("Recoil:"); } }
+        public static string LblAdvWeaponRun { get { return LanguageSet.GetWordUI("Run:"); } }
         #endregion Weapon
 
-        public string LblAdvCurrentMods { get { return LanguageSet.GetWordUI("Current Mods:"); } }
+        public static string LblAdvCurrentMods { get { return LanguageSet.GetWordUI("Current Mods:"); } }
 
         #region Armor
-        public string LblAdvArmorGear { get { return LanguageSet.GetWordUI("Armor / Gear"); } }
-        public string LblAdvElectroProt { get { return LanguageSet.GetWordUI("Electro Protection:"); } }
-        public string LblAdvEplxosiveProt { get { return LanguageSet.GetWordUI("Explosive Protection:"); } }
-        public string LblAdvIncendiaryProt { get { return LanguageSet.GetWordUI("Incendiary Protection:"); } }
-        public string LblAdvInfraredProt { get { return LanguageSet.GetWordUI("Infrared Protection:"); } }
-        public string LblAdvMeleeProt { get { return LanguageSet.GetWordUI("Melee Protection:"); } }
-        public string LblAdvToxicProt { get { return LanguageSet.GetWordUI("Toxic Protection:"); } }
-        public string LblAdvHealth { get { return LanguageSet.GetWordUI("Health:"); } }
-        public string LblAdvHeadArmor { get { return LanguageSet.GetWordUI("Head Armor:"); } }
-        public string LblAdvArmorRun { get { return LanguageSet.GetWordUI("Run:"); } }
-        public string LblAdvHRV { get { return LanguageSet.GetWordUI("HRV:"); } }
-        public string LblAdvRecharge { get { return LanguageSet.GetWordUI("Recharge:"); } }
-        public string LblAdvGearSlots { get { return LanguageSet.GetWordUI("Gear:"); } }
+        public static string LblAdvArmorGear { get { return LanguageSet.GetWordUI("Armor / Gear"); } }
+        public static string LblAdvElectroProt { get { return LanguageSet.GetWordUI("Electro Protection:"); } }
+        public static string LblAdvEplxosiveProt { get { return LanguageSet.GetWordUI("Explosive Protection:"); } }
+        public static string LblAdvIncendiaryProt { get { return LanguageSet.GetWordUI("Incendiary Protection:"); } }
+        public static string LblAdvInfraredProt { get { return LanguageSet.GetWordUI("Infrared Protection:"); } }
+        public static string LblAdvMeleeProt { get { return LanguageSet.GetWordUI("Melee Protection:"); } }
+        public static string LblAdvToxicProt { get { return LanguageSet.GetWordUI("Toxic Protection:"); } }
+        public static string LblAdvHealth { get { return LanguageSet.GetWordUI("Health:"); } }
+        public static string LblAdvHeadArmor { get { return LanguageSet.GetWordUI("Head Armor:"); } }
+        public static string LblAdvArmorRun { get { return LanguageSet.GetWordUI("Run:"); } }
+        public static string LblAdvHRV { get { return LanguageSet.GetWordUI("HRV:"); } }
+        public static string LblAdvRecharge { get { return LanguageSet.GetWordUI("Recharge:"); } }
+        public static string LblAdvGearSlots { get { return LanguageSet.GetWordUI("Gear:"); } }
         #endregion Armor
 
         #endregion AdvancedInfo

@@ -57,7 +57,7 @@ namespace BLREdit
             List<ExportSystemProfile> profiles = new();
             Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.PROFILE_DIR}");
 
-            CurrentBackupFolder = Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}\\Backup\\{System.DateTime.Now.ToString("dd-MM-yy")}\\{System.DateTime.Now.ToString("HH-mm")}\\");
+            CurrentBackupFolder = Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}\\Backup\\{System.DateTime.Now:dd-MM-yy}\\{System.DateTime.Now:HH-mm}\\");
 
             Regex regex = new(@"\((.*)\)");
 

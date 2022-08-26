@@ -11,13 +11,10 @@ namespace BLREdit.UI
 {
     public class TripleAnimationDouble
     {
-        DoubleAnimation AppearAnimation = new DoubleAnimation();
-        DoubleAnimation StayAnimation = new DoubleAnimation();
-        DoubleAnimation DisappearAnimation = new DoubleAnimation();
-        Storyboard AnimationFlow = new Storyboard();
-
-        DoubleAnimation DelayAnim = new DoubleAnimation() { Duration=new Duration(TimeSpan.FromMilliseconds(200)) };
-        Storyboard delay = new Storyboard() { Duration = new Duration(TimeSpan.FromMilliseconds(200)) };
+        readonly DoubleAnimation AppearAnimation = new();
+        readonly DoubleAnimation StayAnimation = new();
+        readonly DoubleAnimation DisappearAnimation = new();
+        readonly Storyboard AnimationFlow = new();
 
         public TripleAnimationDouble(double from, double to, double appearTime, double stayTime, double disappearTime, DependencyObject target, DependencyProperty property)
         {
@@ -51,12 +48,6 @@ namespace BLREdit.UI
         public void Begin(FrameworkElement containingObject)
         {
             AnimationFlow.Begin(containingObject);
-            //delay.Completed += (o, args) =>
-            //{
-                
-            //    //delay.Completed -= this;
-            //};
-            //delay.Begin(containingObject);
         }
 
         public void SetSize(double from, double to)

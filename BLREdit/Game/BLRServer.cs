@@ -69,13 +69,13 @@ public class BLRServer : INotifyPropertyChanged
     public void PingServer() 
     {
         if (IPAddress is null) { return; }
-        Thread pingThread = new Thread(new ThreadStart(InternalPing));
+        Thread pingThread = new(new ThreadStart(InternalPing));
         pingThread.Name = ServerAddress + " Ping";
         pingThread.Priority = ThreadPriority.Highest;
         pingThread.Start();
     }
 
-    private static byte[] msg = new byte[1] { 1 };
+    private static readonly byte[] msg = new byte[1] { 1 };
     private void InternalPing()
     {
         Stopwatch watch = new();

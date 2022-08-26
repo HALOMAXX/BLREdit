@@ -20,7 +20,7 @@ namespace BLREdit.Game;
 
 public class BLRClient : INotifyPropertyChanged
 {
-    private static SHA256 crypto = SHA256.Create();
+    private static readonly SHA256 crypto = SHA256.Create();
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
 
@@ -72,9 +72,7 @@ public class BLRClient : INotifyPropertyChanged
             }
             else
             {
-                List<BLRClientPatch> patchesList = new();
-                patchesList.Add(loadedPatch);
-                sortedPatches.Add(loadedPatch.ClientHash, patchesList);
+                sortedPatches.Add(loadedPatch.ClientHash, new() { loadedPatch });
             }
         }
         return sortedPatches;

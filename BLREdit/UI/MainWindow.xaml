@@ -148,52 +148,52 @@
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Grid Width="Auto">
                         
-                        <Label Content="{Binding Path=Lang.LblAdvPrimary, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvPrimary}}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
                         <UniformGrid Columns="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,26,0,0">
-                            <Label Content="{Binding Path=Lang.LblAdvFragmentsPerShell, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvFragmentsPerShell}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.FragmentsPerShellDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryFragmentsPerShellLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvZoomFireRate, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvZoomFireRate}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.ZoomFirerateDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryZoomFirerateLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvSpreadCrouchMultiplier, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSpreadCrouchMultiplier}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.SpreadCrouchMultiplierDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimarySpreadCrouchMultiplierLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvSpreadJumpMultiplier, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSpreadJumpMultiplier}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.SpreadJumpMultiplierDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimarySpreadJumpMultiplierLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvSpreadCenterWeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSpreadCenterWeight}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.SpreadCenterWeightDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimarySpreadCenterWeightLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvSpreadCenter, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSpreadCenter}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.SpreadCenterDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimarySpreadCenterLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRecoilVerticalRatio, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilVerticalRatio}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RecoilVerticalRatioDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryRecoilVerticalRatioLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRecoilRecoveryTime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilRecoveryTime}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RecoilRecoveryTimeDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryRecoilRecoveryTimeLabel"/>
                         </UniformGrid>
 
-                        <Label Content="{Binding Path=Lang.LblAdvCurrentMods, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,230,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods}}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,230,0,0"/>
 
                         <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,260,0,0">
-                            <Label Content="{Binding Path=Lang.LblAdvDamage, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvDamage }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.DamagePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModDamageLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvAccuracy, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvAccuracy }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.AccuracyPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModAccuracyLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRange, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRange }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RangePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRangeLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvReload, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvReload }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.ReloadPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModReloadLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRecoil, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoil }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RecoilPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRecoilLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvWeaponRun, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvWeaponRun }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RunPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRunLabel"/>
                         </UniformGrid>
                     </Grid>
@@ -201,52 +201,52 @@
 
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,325,0,0">
                     <Grid Width="Auto">
-                        <Label Content="{Binding Path=Lang.LblAdvSecondary, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSecondary }}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
                         <UniformGrid Columns="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,26,0,0">
-                            <Label Content="{Binding Path=Lang.LblAdvFragmentsPerShell, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvFragmentsPerShell }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.FragmentsPerShellDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryFragmentsPerShellLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvZoomFireRate, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvZoomFireRate }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.ZoomFirerateDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryZoomFirerateLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvSpreadCrouchMultiplier, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSpreadCrouchMultiplier }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.SpreadCrouchMultiplierDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondarySpreadCrouchMultiplierLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvSpreadJumpMultiplier, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSpreadJumpMultiplier }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.SpreadJumpMultiplierDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondarySpreadJumpMultiplierLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvSpreadCenterWeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSpreadCenterWeight }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.SpreadCenterWeightDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondarySpreadCenterWeightLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvSpreadCenter, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSpreadCenter }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.SpreadCenterDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondarySpreadCenterLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRecoilVerticalRatio, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilVerticalRatio }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilVerticalRatioDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryRecoilVerticalRatioLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRecoilRecoveryTime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilRecoveryTime }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilRecoveryTimeDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryRecoilRecoveryTimeLabel"/>
                         </UniformGrid>
 
-                        <Label Content="{Binding Path=Lang.LblAdvCurrentMods, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,230,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods }}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,230,0,0"/>
 
                         <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,260,0,0">
-                            <Label Content="{Binding Path=Lang.LblAdvDamage, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvDamage }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.DamagePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModDamageLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvAccuracy, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvAccuracy }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.AccuracyPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModAccuracyLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRange, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRange }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RangePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModRangeLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvReload, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvReload }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.ReloadPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModReloadLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRecoil, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoil }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModRecoilLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvWeaponRun, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvWeaponRun }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RunPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModRunLabel"/>
                         </UniformGrid>
                     </Grid>
@@ -254,47 +254,47 @@
 
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,655,0,0">
                     <Grid Width="Auto">
-                        <Label Content="{Binding Path=Lang.LblAdvArmorGear, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvArmorGear }}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
 
                         <UniformGrid Columns="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,26,0,0">
-                            <Label Content="{Binding Path=Lang.LblAdvElectroProt, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvElectroProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=ElectroProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearElectroProtectionLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvEplxosiveProt, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvEplxosiveProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=ExplosionProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearExplosiveProtectionLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvIncendiaryProt, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvIncendiaryProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=IncendiaryProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearIncendiaryLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvInfraredProt, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvInfraredProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=InfraredProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearInfraredProtectionLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvMeleeProt, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvMeleeProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=MeleeProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearMeleeProtectionLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvToxicProt, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvToxicProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=ToxicProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearToxicProtectionLabel"/>
                         </UniformGrid>
                         
-                        <Label Content="{Binding Path=Lang.LblAdvCurrentMods, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,180,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods }}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,180,0,0"/>
 
                         <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,205,0,0">
-                            <Label Content="{Binding Path=Lang.LblAdvHealth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvHealth }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=HealthPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="HealthGearModLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvHeadArmor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvHeadArmor }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=HeadArmorPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="HeadArmorGearModLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvArmorRun, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvArmorRun }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=RunPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="RunGearModLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvHRV, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvHRV }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=HRVDurationPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="HRVDurationGearModLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvRecharge, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecharge }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=HRVRechargePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="HRVRechargeGearModLabel"/>
 
-                            <Label Content="{Binding Path=Lang.LblAdvGearSlots, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvGearSlots }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=GearSlotsPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="GearSlotsGearModLabel"/>
                         </UniformGrid>
                     </Grid>
@@ -303,10 +303,10 @@
         </ScrollViewer>
 
         <Grid Margin="374,22,0,0" Name="LauncherMenu" d:DataContext="{d:DesignInstance Type=ui:MainWindow}">
-            <Button Name="ServerListButton" Content="{Binding Path=Lang.BtnLauServerList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Tag="{Binding ElementName=ServerGrid}" Click="LauncherMenuButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="24"/>
-            <Button Name="GameClientButton" Content="{Binding Path=Lang.BtnLauClientList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Tag="{Binding ElementName=ClientGrid}" Click="LauncherMenuButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="24" Margin="126,0,0,0"/>
+            <Button Name="ServerListButton" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLauServerList }}" Tag="{Binding ElementName=ServerGrid}" Click="LauncherMenuButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="24"/>
+            <Button Name="GameClientButton" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLauClientList }}" Tag="{Binding ElementName=ClientGrid}" Click="LauncherMenuButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="24" Margin="126,0,0,0"/>
             <Grid Name="ClientGrid" Visibility="Collapsed" Margin="0,24,0,0">
-                <Button Content="{Binding Path=Lang.BtnLauAddClient, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Margin="240,0,0,0" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="OpenNewGameClient_Click"/>
+                <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLauAddClient }}" Margin="240,0,0,0" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="OpenNewGameClient_Click"/>
                 <ListView Name="GameClientList" Margin="0,0,0,40">
                     <!--This is for Desing Purposes-->
                     <ListView.ItemContainerStyle>
@@ -351,7 +351,7 @@
                                     </Style>
                                 </Grid.Resources>
                                 <Border Grid.Column="0" >
-                                    <Button Content="{Binding Path=Lang.LblLauRemove, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Click="RemoveGameClient_Click"/>
+                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauRemove}}" Click="RemoveGameClient_Click"/>
                                 </Border>
                                 <Border Grid.Column="1" >
                                     <TextBox Text="{Binding Path=OriginalPath}" IsReadOnly="True" HorizontalAlignment="Stretch"/>
@@ -363,19 +363,19 @@
                                     <Button Content="{Binding Path=Patched.Is}" IsEnabled="{Binding Path=Patched.IsNot}" IsHitTestVisible="False"/>
                                 </Border>
                                 <Border Grid.Column="4" >
-                                    <Button Content="{Binding Path=Lang.LblLauClientConnectToDefaultServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchClientCommand}"/>
+                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauClientConnectToDefaultServer }}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchClientCommand}"/>
                                 </Border>
                                 <Border Grid.Column="5" >
-                                    <Button Content="{Binding Path=Lang.LblLauIsClientDefault, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=CurrentClient.IsNot}" Click="ChangeCurrentGameClient_Click"/>
+                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauIsClientDefault }}" IsEnabled="{Binding Path=CurrentClient.IsNot}" Click="ChangeCurrentGameClient_Click"/>
                                 </Border>
                                 <Border Grid.Column="6" >
-                                    <Button Content="{Binding Path=Lang.LblLauPatchClient, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=Patched.IsNot}" Command="{Binding Path=PatchClientCommand}"/>
+                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauPatchClient }}" IsEnabled="{Binding Path=Patched.IsNot}" Command="{Binding Path=PatchClientCommand}"/>
                                 </Border>
                                 <Border Grid.Column="7" >
-                                    <Button Content="{Binding Path=Lang.LblLauLaunchBotServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchBotMatchCommand}"/>
+                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauLaunchBotServer }}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchBotMatchCommand}"/>
                                 </Border>
                                 <Border Grid.Column="8" >
-                                    <Button Content="{Binding Path=Lang.LblLauLaunchServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchServerCommand}"/>
+                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauLaunchServer }}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchServerCommand}"/>
                                 </Border>
                             </Grid>
                         </DataTemplate>
@@ -413,31 +413,31 @@
                                         </Style>
                                     </Grid.Resources>
                                     <Border Grid.Column="0">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauRemove, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauRemove }}"/>
                                     </Border>
                                     <Border Grid.Column="1">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauClientConnectToDefaultServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauClientConnectToDefaultServer }}"/>
                                     </Border>
                                     <Border Grid.Column="2">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauClientConnectToDefaultServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauClientConnectToDefaultServer }}"/>
                                     </Border>
                                     <Border Grid.Column="3">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauIsClientPatched, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauIsClientPatched }}"/>
                                     </Border>
                                     <Border Grid.Column="4">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauClientConnectToDefaultServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauClientConnectToDefaultServer }}"/>
                                     </Border>
                                     <Border Grid.Column="5">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauIsClientDefault, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauIsClientDefault }}"/>
                                     </Border>
                                     <Border Grid.Column="6">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauPatchClient, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauPatchClient }}"/>
                                     </Border>
                                     <Border Grid.Column="7">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauLaunchBotServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauLaunchBotServer }}"/>
                                     </Border>
                                     <Border Grid.Column="8">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauLaunchServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauLaunchServer }}"/>
                                     </Border>
                                 </Grid>
                                 <ItemsPresenter Grid.Row="1"></ItemsPresenter>
@@ -447,8 +447,8 @@
                 </ListView>
             </Grid>
             <Grid Name="ServerGrid" Visibility="Visible" Margin="0,24,0,0">
-                <Button Content="{Binding Path=Lang.BtnLauAddServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="-240,0,0,0" Click="AddNewServer_Click"/>
-                <Button Content="{Binding Path=Lang.BtnLauRefreshPing, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="240,0,0,0" Click="PingServers_Click"/>
+                <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLauAddServer }}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="-240,0,0,0" Click="AddNewServer_Click"/>
+                <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLauRefreshPing }}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="240,0,0,0" Click="PingServers_Click"/>
                 <ListView Name="ServerListView" Margin="0,0,0,40">
                     <Button/>
                     <!--This is for Desing Purposes-->
@@ -492,7 +492,7 @@
                                     </Style>
                                 </Grid.Resources>
                                 <Border Grid.Column="0" >
-                                    <Button Content="{Binding Path=Lang.LblLauRemove, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Click="RemoveServer_Click"/>
+                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauRemove }}" Click="RemoveServer_Click"/>
                                 </Border>
                                 <Border Grid.Column="1" >
                                     <TextBox Text="{Binding Path=ServerAddress}" HorizontalAlignment="Stretch"/>
@@ -546,25 +546,25 @@
                                         </Style>
                                     </Grid.Resources>
                                     <Border Grid.Column="0">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauRemove, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauRemove }}"/>
                                     </Border>
                                     <Border Grid.Column="1">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauServerAddress, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauServerAddress }}"/>
                                     </Border>
                                     <Border Grid.Column="2">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauServerPort, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauServerPort }}"/>
                                     </Border>
                                     <Border Grid.Column="3">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauIsServerOnline, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauIsServerOnline }}"/>
                                     </Border>
                                     <Border Grid.Column="4">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauServerPing, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauServerPing }}"/>
                                     </Border>
                                     <Border Grid.Column="5">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauConnectToServer, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauConnectToServer }}"/>
                                     </Border>
                                     <Border Grid.Column="6">
-                                        <TextBlock Text="{Binding Path=Lang.LblLauIsServerDefault, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}"/>
+                                        <TextBlock Text="{Binding Source={x:Static ui:UILanguageWrapper.LblLauIsServerDefault }}"/>
                                     </Border>
                                 </Grid>
                                 <ItemsPresenter Grid.Row="1"></ItemsPresenter>
@@ -579,9 +579,9 @@
         <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="500,0,0,0" Click="ChangeSortingDirection"/>
 
         <Grid Name="MenuGrid" d:DataContext="{d:DesignInstance Type=ui:MainWindow}">
-            <Button Name="ItemListButton" Content="{Binding Path=Lang.BtnItemList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Tag="{Binding ElementName=ItemList}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="667,0,0,0" Click="ItemListButton_Click"/>
-            <Button Name="AdvancedInfoButton" Content="{Binding Path=Lang.BtnAdvancedInfo, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Tag="{Binding ElementName=AdvancedInfo}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="793,0,0,0" Click="ItemListButton_Click"/>
-            <Button Name="LauncherButton" Content="{Binding Path=Lang.BtnLauncher, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" Tag="{Binding ElementName=LauncherMenu}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="918,0,0,0" Click="ItemListButton_Click"/>
+            <Button Name="ItemListButton" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnItemList }}" Tag="{Binding ElementName=ItemList}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="667,0,0,0" Click="ItemListButton_Click"/>
+            <Button Name="AdvancedInfoButton" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnAdvancedInfo }}" Tag="{Binding ElementName=AdvancedInfo}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="793,0,0,0" Click="ItemListButton_Click"/>
+            <Button Name="LauncherButton" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLauncher }}" Tag="{Binding ElementName=LauncherMenu}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="918,0,0,0" Click="ItemListButton_Click"/>
         </Grid>
 
         <Grid Name="LoadoutGrid" HorizontalAlignment="Left" Width="374">
@@ -650,120 +650,120 @@
                         <Image HorizontalAlignment="Left" Source="{Binding Path=Secondary.Grip.SmallSquareImage}" Name="SecondaryGripImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Secondary.Grip.Tooltip}"/>
                     </Border>
 
-                    <Label Content="{Binding Path=Lang.LblPSDamage, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,296,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSDamage }}" HorizontalAlignment="Right" Margin="0,296,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryDamageLabel" Content="{Binding Path=Primary.DamageDisplay}" HorizontalAlignment="Left" Margin="67,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSFirerate, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,322,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSFirerate }}" HorizontalAlignment="Right" Margin="0,322,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryRateOfFireLabel" Content="{Binding Path=Primary.RateOfFireDisplay}" HorizontalAlignment="Left" Margin="67,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSAmmo, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,348,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSAmmo }}" HorizontalAlignment="Right" Margin="0,348,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryAmmoLabel" Content="{Binding Path=Primary.AmmoDisplay}" HorizontalAlignment="Left" Margin="67,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSReloadPartial, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,373,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSReloadPartial }}" HorizontalAlignment="Right" Margin="0,373,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryReloadLabel" Content="{Binding Path=Primary.ReloadTimeDisplay}" HorizontalAlignment="Left" Margin="67,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSReloadEmpty, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,399,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSReloadEmpty }}" HorizontalAlignment="Right" Margin="0,399,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimarySwapLabel" Content="{Binding Path=Primary.SwapDisplay}" HorizontalAlignment="Left" Margin="67,399,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-                    <Label Content="{Binding Path=Lang.LblPSSpreadAim, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,296,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadAim }}" HorizontalAlignment="Right" Margin="0,296,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryAimLabel" Content="{Binding Path=Primary.AimSpreadDisplay}" HorizontalAlignment="Left" Margin="172,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSSpreadHip, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,322,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadHip }}" HorizontalAlignment="Right" Margin="0,322,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryHipLabel" Content="{Binding Path=Primary.HipSpreadDisplay}" HorizontalAlignment="Left" Margin="172,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSSpreadMove, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,348,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadMove }}" HorizontalAlignment="Right" Margin="0,348,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryMoveLabel" Content="{Binding Path=Primary.MoveSpreadDisplay}" HorizontalAlignment="Left" Margin="172,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSRecoilHip, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,373,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRecoilHip }}" HorizontalAlignment="Right" Margin="0,373,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryRecoilLabel" Content="{Binding Path=Primary.HipRecoilDisplay}" HorizontalAlignment="Left" Margin="172,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSRecoilAim, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,399,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRecoilAim }}" HorizontalAlignment="Right" Margin="0,399,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryZoomRecoilLabel" Content="{Binding Path=Primary.AimRecoilDisplay}" HorizontalAlignment="Left" Margin="172,399,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-                    <Label Content="{Binding Path=Lang.LblPSZoom, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,296,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSZoom }}" HorizontalAlignment="Right" Margin="0,296,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryZoomLabel" Content="{Binding Path=Primary.ZoomDisplay}" HorizontalAlignment="Left" Margin="268,296,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSScopeInTime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,322,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSScopeInTime }}" HorizontalAlignment="Right" Margin="0,322,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryScopeInLabel" Content="{Binding Path=Primary.ScopeInTimeDisplay}" HorizontalAlignment="Left" Margin="268,322,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSRange, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,348,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRange }}" HorizontalAlignment="Right" Margin="0,348,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryRangeLabel" Content="{Binding Path=Primary.RangeDisplay}" HorizontalAlignment="Left" Margin="268,348,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSRun, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,373,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRun }}" HorizontalAlignment="Right" Margin="0,373,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="PrimaryRunLabel" Content="{Binding Path=Primary.RunDisplay}" HorizontalAlignment="Left" Margin="268,373,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
 
-                    <Label Content="{Binding Path=Lang.LblPSDamage, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,599,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSDamage }}" HorizontalAlignment="Right" Margin="0,599,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryDamageLabel" Content="{Binding Path=Secondary.DamageDisplay}" HorizontalAlignment="Left" Margin="67,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSFirerate, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,625,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSFirerate }}" HorizontalAlignment="Right" Margin="0,625,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryRateOfFireLabel" Content="{Binding Path=Secondary.RateOfFireDisplay}" HorizontalAlignment="Left" Margin="67,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSAmmo, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,651,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSAmmo }}" HorizontalAlignment="Right" Margin="0,651,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryAmmoLabel" Content="{Binding Path=Secondary.AmmoDisplay}" HorizontalAlignment="Left" Margin="67,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSReloadPartial, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,677,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSReloadPartial }}" HorizontalAlignment="Right" Margin="0,677,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryReloadLabel" Content="{Binding Path=Secondary.ReloadTimeDisplay}" HorizontalAlignment="Left" Margin="67,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSReloadEmpty, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,703,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSReloadEmpty }}" HorizontalAlignment="Right" Margin="0,703,305,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondarySwapLabel" Content="{Binding Path=Secondary.SwapDisplay}" HorizontalAlignment="Left" Margin="67,703,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-                    <Label Content="{Binding Path=Lang.LblPSSpreadAim, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,599,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadAim }}" HorizontalAlignment="Right" Margin="0,599,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryAimLabel" Content="{Binding Path=Secondary.AimSpreadDisplay}" HorizontalAlignment="Left" Margin="172,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSSpreadHip, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,625,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadHip }}" HorizontalAlignment="Right" Margin="0,625,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryHipLabel" Content="{Binding Path=Secondary.HipSpreadDisplay}" HorizontalAlignment="Left" Margin="172,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSSpreadMove, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,651,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadMove }}" HorizontalAlignment="Right" Margin="0,651,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryMoveLabel" Content="{Binding Path=Secondary.MoveSpreadDisplay}" HorizontalAlignment="Left" Margin="172,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSRecoilHip, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,677,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRecoilHip }}" HorizontalAlignment="Right" Margin="0,677,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryRecoilLabel" Content="{Binding Path=Secondary.HipRecoilDisplay}" HorizontalAlignment="Left" Margin="172,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSRecoilAim, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,703,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRecoilAim }}" HorizontalAlignment="Right" Margin="0,703,200,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryZoomRecoilLabel" Content="{Binding Path=Secondary.AimRecoilDisplay}" HorizontalAlignment="Left" Margin="172,702,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-                    <Label Content="{Binding Path=Lang.LblPSZoom, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,599,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSZoom }}" HorizontalAlignment="Right" Margin="0,599,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryZoomLabel" Content="{Binding Path=Secondary.ZoomDisplay}" HorizontalAlignment="Left" Margin="268,599,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSScopeInTime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,625,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSScopeInTime }}" HorizontalAlignment="Right" Margin="0,625,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryScopeInLabel" Content="{Binding Path=Secondary.ScopeInTimeDisplay}" HorizontalAlignment="Left" Margin="268,625,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSRange, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,651,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRange }}" HorizontalAlignment="Right" Margin="0,651,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryRangeLabel" Content="{Binding Path=Secondary.RangeDisplay}" HorizontalAlignment="Left" Margin="268,651,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
-                    <Label Content="{Binding Path=Lang.LblPSRun, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,677,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRun }}" HorizontalAlignment="Right" Margin="0,677,100,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryRunLabel" Content="{Binding Path=Secondary.RunDisplay}" HorizontalAlignment="Left" Margin="268,677,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
 
                     <ComboBox Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="ProfileComboBox_SelectionChanged"/>
-                    <Button Name="Loadout1Button" Content="{Binding Path=Lang.BtnLoadout1, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout1Button_Click"/>
-                    <Button Name="Loadout2Button" Content="{Binding Path=Lang.BtnLoadout2, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Left" Margin="120,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout2Button_Click"/>
-                    <Button Name="Loadout3Button" Content="{Binding Path=Lang.BtnLoadout3, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Left" Margin="230,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout3Button_Click"/>
-                    <Button Name="CopyToClipboardButton" Content="{Binding Path=Lang.BtnPSCopyToClipboard, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="CopyToClipboardButton_Click"/>
-                    <Button Name="AddProfileButton" Content="{Binding Path=Lang.BtnPSAddProfile, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Left" Margin="241,0,0,0" VerticalAlignment="Top" Height="22" Width="100" Click="AddProfileButton_Click"/>
-                    <Button Name="RandomLoadout" Content="{Binding Path=Lang.BtnPSAddRandomLoadout, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
-                    <Button Name="DuplicateButton" Content="{Binding Path=Lang.BtnPSDuplicateProfile, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Left" Margin="134,35,0,0" VerticalAlignment="Top" Height="22" Width="80" Click="DuplicateProfile_Click"/>
+                    <Button Name="Loadout1Button" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLoadout1 }}" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout1Button_Click"/>
+                    <Button Name="Loadout2Button" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLoadout2 }}" HorizontalAlignment="Left" Margin="120,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout2Button_Click"/>
+                    <Button Name="Loadout3Button" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLoadout3 }}" HorizontalAlignment="Left" Margin="230,74,0,0" VerticalAlignment="Top" Width="105" Height="22" Click="Loadout3Button_Click"/>
+                    <Button Name="CopyToClipboardButton" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnPSCopyToClipboard }}" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="CopyToClipboardButton_Click"/>
+                    <Button Name="AddProfileButton" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnPSAddProfile }}" HorizontalAlignment="Left" Margin="241,0,0,0" VerticalAlignment="Top" Height="22" Width="100" Click="AddProfileButton_Click"/>
+                    <Button Name="RandomLoadout" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnPSAddRandomLoadout }}" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
+                    <Button Name="DuplicateButton" Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnPSDuplicateProfile }}" HorizontalAlignment="Left" Margin="134,35,0,0" VerticalAlignment="Top" Height="22" Width="80" Click="DuplicateProfile_Click"/>
                     <TextBox Name="PlayerNameTextBox"  HorizontalAlignment="Left" Margin="121,0,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="120" Height="22" PreviewTextInput="PlayerNameTextBox_PreviewInput" TextChanged="PlayerNameTextBox_TextChanged"/>
 
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="10,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear1.SmallSquareImage}" x:Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear1.Tooltip}"/>
-                            <Rectangle Width="64" Height="64" Name="Gear1Rect" Visibility="{Binding Path=GearSlot1Bool.VisibilityInverted}">
-                                <Rectangle.Fill>
-                                    <SolidColorBrush Color="#88000000"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </Grid>
-                    </Border>
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="79,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear2.SmallSquareImage}" x:Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear2.Tooltip}"/>
-                            <Rectangle Width="64" Height="64" Name="Gear2Rect" Visibility="{Binding Path=GearSlot2Bool.VisibilityInverted}">
-                                <Rectangle.Fill>
-                                    <SolidColorBrush Color="#88000000"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </Grid>
-                    </Border>
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="148,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear3.SmallSquareImage}" x:Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear3.Tooltip}"/>
-                            <Rectangle Width="64" Height="64" Name="Gear3Rect" Visibility="{Binding Path=GearSlot3Bool.VisibilityInverted}">
-                                <Rectangle.Fill>
-                                    <SolidColorBrush Color="#88000000"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </Grid>
-                    </Border>
-                    <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="217,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
-                        <Grid>
-                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear4.SmallSquareImage}" x:Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear4.Tooltip}"/>
-                            <Rectangle Width="64" Height="64" Name="Gear4Rect" Visibility="{Binding Path=GearSlot4Bool.VisibilityInverted}">
-                                <Rectangle.Fill>
-                                    <SolidColorBrush Color="#88000000"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </Grid>
-                    </Border>
+                    <Grid Height="64" Width="64" HorizontalAlignment="Left" Margin="10,734,0,0" VerticalAlignment="Top">
+                        <Border  AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp" IsHitTestVisible="{Binding Path=GearSlot1Bool.Is}">
+                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear1.SmallSquareImage}" Name="GearImage1" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear1.Tooltip}"/>
+                        </Border>
+                        <Rectangle Visibility="{Binding Path=GearSlot1Bool.VisibilityInverted}" IsHitTestVisible="False">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="#88000000"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                    <Grid Height="64" Width="64" HorizontalAlignment="Left" Margin="79,734,0,0" VerticalAlignment="Top">
+                        <Border AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp" IsHitTestVisible="{Binding Path=GearSlot2Bool.Is}">
+                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear2.SmallSquareImage}" Name="GearImage2" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear2.Tooltip}"/>
+                        </Border>
+                        <Rectangle Visibility="{Binding Path=GearSlot2Bool.VisibilityInverted}" IsHitTestVisible="False">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="#88000000"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                    <Grid Height="64" Width="64" HorizontalAlignment="Left" Margin="148,734,0,0" VerticalAlignment="Top">
+                        <Border AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp" IsHitTestVisible="{Binding Path=GearSlot3Bool.Is}">
+                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear3.SmallSquareImage}" Name="GearImage3" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear3.Tooltip}"/>
+                        </Border>
+                        <Rectangle Visibility="{Binding Path=GearSlot3Bool.VisibilityInverted}" IsHitTestVisible="False">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="#88000000"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                    <Grid Height="64" Width="64" HorizontalAlignment="Left" Margin="217,734,0,0" VerticalAlignment="Top">
+                        <Border AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp" IsHitTestVisible="{Binding Path=GearSlot4Bool.Is}">
+                            <Image HorizontalAlignment="Left" Source="{Binding Path=Gear4.SmallSquareImage}" Name="GearImage4" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Gear4.Tooltip}"/>
+                        </Border>
+                        <Rectangle Visibility="{Binding Path=GearSlot4Bool.VisibilityInverted}" IsHitTestVisible="False">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="#88000000"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
                     <Border Height="64" Width="64" HorizontalAlignment="Left" Margin="286,734,0,0" VerticalAlignment="Top" AllowDrop="True" DragEnter="Image_DragEnter" Drop="Image_Drop" MouseUp="Image_MouseUp">
                         <Image HorizontalAlignment="Left" Source="{Binding Path=Tactical.SmallSquareImage}" Name="TacticalImage" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tactical.Tooltip}"/>
                     </Border>
@@ -791,26 +791,26 @@
 
                     <Label Name="PrimaryDescriptorLabel" Content="{Binding Path=Primary.WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="SecondaryDescriptorLabel" Content="{Binding Path=Secondary.WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                    <CheckBox Name="IsFemaleCheckBox" Foreground="White" Content="{Binding Path=Lang.LblPSGenderToggle, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,808,0,0" VerticalAlignment="Top" Checked="IsFemaleCheckBox_Checked" Unchecked="IsFemaleCheckBox_Unchecked"/>
+                    <CheckBox Name="IsFemaleCheckBox" Foreground="White" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSGenderToggle }}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,808,0,0" VerticalAlignment="Top" Checked="IsFemaleCheckBox_Checked" Unchecked="IsFemaleCheckBox_Unchecked"/>
 
 
-                    <Label Content="{Binding Path=Lang.LblPSHealth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,905,315,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSHealth }}" HorizontalAlignment="Right" Margin="0,905,315,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorHealthLabel" Content="{Binding Path=HealthDisplay}" HorizontalAlignment="Left" Margin="54,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-                    <Label Content="{Binding Path=Lang.LblPSHeadArmor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,905,210,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSHeadArmor }}" HorizontalAlignment="Right" Margin="0,905,210,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorHeadProtectionLabel" Content="{Binding Path=HeadArmorDisplay}" HorizontalAlignment="Left" Margin="158,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-                    <Label Content="{Binding Path=Lang.LblPSRun, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,905,110,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRun }}" HorizontalAlignment="Right" Margin="0,905,110,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorRunLabel" Content="{Binding Path=RunDisplay}" HorizontalAlignment="Left" Margin="257,905,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
 
-                    <Label Content="{Binding Path=Lang.LblPSHRV, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,928,315,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSHRV }}" HorizontalAlignment="Right" Margin="0,928,315,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorHRVLabel" Content="{Binding Path=HRVDurationDisplay}" HorizontalAlignment="Left" Margin="54,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-                    <Label Content="{Binding Path=Lang.LblPSRecharge, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,928,210,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRecharge }}" HorizontalAlignment="Right" Margin="0,928,210,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorHRVRechargeLabel" Content="{Binding Path=HRVRechargeDisplay}" HorizontalAlignment="Left" Margin="158,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
 
-                    <Label Content="{Binding Path=Lang.LblPSGearSlots, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}}" HorizontalAlignment="Right" Margin="0,928,110,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSGearSlots }}" HorizontalAlignment="Right" Margin="0,928,110,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
                     <Label Name="ArmorGearLabel" Content="{Binding Path=GearSlotsDsiplay}" HorizontalAlignment="Left" Margin="257,928,0,0" VerticalAlignment="Top" Style="{StaticResource DisplayLabel}"/>
                 </Grid>
             </ScrollViewer>

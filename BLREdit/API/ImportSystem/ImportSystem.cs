@@ -467,7 +467,7 @@ namespace BLREdit
                     {
                         isGrey = db[0] == 0;
                         string vv = "";
-                        int indexes = 0;
+                        int indexes;
                         if (count < 0)
                         {
                             indexes = db.Length;

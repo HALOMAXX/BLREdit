@@ -24,11 +24,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 {
     private static readonly Random rng = new();
 
-    public static UILanguageWrapper Lang { get; } = new UILanguageWrapper();
     /// <summary>
     /// Contains the last selected Image for setting the ItemList
     /// </summary>
-    public static Image LastSelectedImage { get { return lastSelectedImage; } private set { if (lastSelectedImage is not null) { SetBorderColor(lastSelectedImage.Parent as Border, Color.FromArgb(14, 158, 158, 158)); } lastSelectedImage = value; if (value is not null) { SetBorderColor(lastSelectedImage.Parent as Border, Color.FromArgb(255, 255, 136, 0)); } } }
+    public static Image LastSelectedImage { get { return lastSelectedImage; } private set { if (lastSelectedImage is not null) { SetBorderColor(lastSelectedImage.Parent as Border, Color.FromArgb(14, 158, 158, 158)); } lastSelectedImage = value; if (lastSelectedImage is not null) { SetBorderColor(lastSelectedImage.Parent as Border, Color.FromArgb(255, 255, 136, 0)); } } }
     private static Image lastSelectedImage = null;
     /// <summary>
     /// Contains the weapon to filter out Items From the ItemList
@@ -65,7 +64,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     public static MainWindow Self { get; private set; } = null;
 
     private int buttonIndex = 0;
-    private List<FrameworkElement> ItemButtons = new();
+    private readonly List<FrameworkElement> ItemButtons = new();
 
     private int columns = 4;
     public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
@@ -140,8 +139,11 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     }
 
     private static void SetBorderColor(Border border, Color color)
-    { 
-        border.BorderBrush = new SolidColorBrush(color);
+    {
+        if (border is not null)
+        {
+            border.BorderBrush = new SolidColorBrush(color);
+        }
     }
 
     private static bool AdvancedFilter(BLRItem item, BLRItem filter)
@@ -854,6 +856,13 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     if (image.Name.Contains("Trophy"))
                     {
                         SetItemList(ImportSystem.BADGES_CATEGORY);
+                        LastSelectedImage = image;
+                        return;
+                    }
+
+                    if (image.Name.Contains("Gear"))
+                    {
+                        SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
                         LastSelectedImage = image;
                         return;
                     }
