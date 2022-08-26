@@ -28,8 +28,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     /// <summary>
     /// Contains the last selected Image for setting the ItemList
     /// </summary>
-    public static Image LastSelectedImage { get; private set; } = null;
-
+    public static Image LastSelectedImage { get { return lastSelectedImage; } private set { if (lastSelectedImage is not null) { SetBorderColor(lastSelectedImage.Parent as Border, Color.FromArgb(14, 158, 158, 158)); } lastSelectedImage = value; if (value is not null) { SetBorderColor(lastSelectedImage.Parent as Border, Color.FromArgb(255, 255, 136, 0)); } } }
+    private static Image lastSelectedImage = null;
     /// <summary>
     /// Contains the weapon to filter out Items From the ItemList
     /// </summary>
@@ -137,6 +137,11 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
         ItemListButton_Click(ItemListButton, new RoutedEventArgs());
         LauncherMenuButton_Click(ServerListButton, new RoutedEventArgs());
+    }
+
+    private static void SetBorderColor(Border border, Color color)
+    { 
+        border.BorderBrush = new SolidColorBrush(color);
     }
 
     private static bool AdvancedFilter(BLRItem item, BLRItem filter)
@@ -1466,8 +1471,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     BLREditSettings.Save();
                     var grid = CreateAlertGrid($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
                     AlertList.Items.Add(grid);
-                    var anim = new TripleAnimationDouble(0,400,1,3,1,grid,Grid.WidthProperty, AlertList.Items);
-                    anim.Begin(AlertList);
+                    new TripleAnimationDouble(0,400,1,3,1,grid,Grid.WidthProperty, AlertList.Items).Begin(AlertList);
                     LoggingSystem.LogInfo($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
                 }
                 break;
