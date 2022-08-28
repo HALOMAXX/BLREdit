@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.UI;
+
+using System;
 using System.ComponentModel;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -30,12 +32,15 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     public BLRItem Camo { get { return camo; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { camo = value; ItemChanged(); return; } if (value is null || camo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.CAMOS_WEAPONS_CATEGORY) { camo = value; ItemChanged(); } } }
     #endregion Weapon Parts
 
+    private MagiCowsWeapon weapon = null;
+
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
     private void ItemChanged([CallerMemberName] string propertyName = null)
     {
+        if(!UndoRedoSystem.BlockUpdate) UpdateMagiCowsWeapon();
         CalculateStats();
         OnPropertyChanged(propertyName);
     }
@@ -609,176 +614,87 @@ public class BLRWeaponSetup : INotifyPropertyChanged
 
 
     #endregion DisplayStats
-
-    public void RemoveItem(string mod)
-    {
-        switch (mod)
-        {
-            case nameof(Reciever): 
-            case nameof(reciever):
-                reciever = null;
-                ItemChanged(nameof(Reciever));
-                break;
-            case nameof(Barrel):
-            case nameof(barrel):
-                barrel = null;
-                ItemChanged(nameof(Barrel));
-                break;
-            case nameof(Magazine):
-            case nameof(magazine):
-                magazine = null;
-                ItemChanged(nameof(Magazine));
-                break;
-            case nameof(Muzzle):
-            case nameof(muzzle):
-                muzzle = null;
-                ItemChanged(nameof(Muzzle));
-                break;
-            case nameof(Stock):
-            case nameof(stock):
-                stock = null;
-                ItemChanged(nameof(Stock));
-                break;
-            case nameof(Scope):
-            case nameof(scope):
-                scope = null;
-                ItemChanged(nameof(Scope));
-                break;
-            case nameof(Grip):
-            case nameof(grip):
-                grip = null;
-                ItemChanged(nameof(Grip));
-                break;
-            case nameof(Tag):
-            case nameof(tag):
-                tag = null;
-                ItemChanged(nameof(Tag));
-                break;
-            case nameof(Camo):
-            case nameof(camo):
-                camo = null;
-                ItemChanged(nameof(Camo));
-                break;
-        }
-        //RemoveIncompatibleMods();
-    }
     private void RemoveIncompatibleMods()
     {
+        if (UndoRedoSystem.BlockEvent) return;
         MagiCowsWeapon wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
         if (Reciever.IsValidModType(ImportSystem.MUZZELS_CATEGORY))
         {
-            if (muzzle is null || !muzzle.IsValidFor(Reciever))
-            { 
-                Muzzle = wpn.GetMuzzle();
-            }
+            if (Muzzle is null || !Muzzle.IsValidFor(Reciever))
+            { UndoRedoSystem.DoAction(wpn.GetMuzzle(), this.GetType().GetProperty(nameof(Muzzle)), this); }
         }
         else
         {
-            muzzle = null;
-            OnPropertyChanged(nameof(Muzzle));
+            UndoRedoSystem.DoAction(null, this.GetType().GetProperty(nameof(Muzzle)), this);
         }
 
         if (Reciever.IsValidModType(ImportSystem.BARRELS_CATEGORY))
         {
-            if (barrel is null || !barrel.IsValidFor(Reciever))
-            {
-                Barrel = wpn.GetBarrel();
-            }
+            if (Barrel is null || !Barrel.IsValidFor(Reciever))
+            { UndoRedoSystem.DoAction(wpn.GetBarrel(), this.GetType().GetProperty(nameof(Barrel)), this); }
         }
         else
         {
-            barrel = null;
-            OnPropertyChanged(nameof(Barrel));
+            UndoRedoSystem.DoAction(null, this.GetType().GetProperty(nameof(Barrel)), this);
         }
 
         if (Reciever.IsValidModType(ImportSystem.STOCKS_CATEGORY))
         {
-            if (stock is null || !stock.IsValidFor(Reciever))
-            {
-                Stock = wpn.GetStock();
-            }
+            if (Stock is null || !Stock.IsValidFor(Reciever))
+            { UndoRedoSystem.DoAction(wpn.GetStock(), this.GetType().GetProperty(nameof(Stock)), this); }
         }
         else
         {
-            stock = null;
-            OnPropertyChanged(nameof(Stock));
+            UndoRedoSystem.DoAction(null, this.GetType().GetProperty(nameof(Stock)), this);
         }
 
         if (Reciever.IsValidModType(ImportSystem.SCOPES_CATEGORY))
         {
-            if (scope is null || !scope.IsValidFor(Reciever))
-            {
-                Scope = wpn.GetScope();
-            }
+            if (Scope is null || !Scope.IsValidFor(Reciever))
+            { UndoRedoSystem.DoAction(wpn.GetScope(), this.GetType().GetProperty(nameof(Scope)), this); }
         }
         else
         {
-            if ((Reciever?.Name ?? "") == "Snub 260")
-            {
+            if ((Reciever?.Name ?? "") == "Snub 260") {
                 //has to be lower case scope as it allows setting it with out compatability checks
-                scope = ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope);
-                OnPropertyChanged(nameof(Scope));
-            }
+                UndoRedoSystem.DoAction(ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope), this.GetType().GetProperty(nameof(Scope)), this); }
             else
-            {
-                scope = null;
-                OnPropertyChanged(nameof(Scope));
-            }
+            { UndoRedoSystem.DoAction(null, this.GetType().GetProperty(nameof(Scope)), this); }
         }
 
         if (Reciever.IsValidModType(ImportSystem.MAGAZINES_CATEGORY))
         {
-            if (magazine is null || !magazine.IsValidFor(Reciever))
-            {
-                Magazine = wpn.GetMagazine();
-            }
+            if (Magazine is null || !Magazine.IsValidFor(Reciever))
+            { UndoRedoSystem.DoAction(wpn.GetMagazine(), this.GetType().GetProperty(nameof(Magazine)), this); }
         }
         else
-        {
-            magazine = null;
-            OnPropertyChanged(nameof(Magazine));
-        }
+        { UndoRedoSystem.DoAction(null, this.GetType().GetProperty(nameof(Magazine)), this); }
 
         if (Reciever.IsValidModType(ImportSystem.GRIPS_CATEGORY))
         {
-            if (grip is null || !grip.IsValidFor(Reciever))
-            {
-                Grip = wpn.GetGrip();
-            }
+            if (Grip is null || !Grip.IsValidFor(Reciever))
+            { UndoRedoSystem.DoAction(wpn.GetGrip(), this.GetType().GetProperty(nameof(Grip)), this); }
         }
         else
-        {
-            grip = null;
-            OnPropertyChanged(nameof(Grip));
-        }
+        { UndoRedoSystem.DoAction(null, this.GetType().GetProperty(nameof(Grip)), this); }
 
         if (Reciever.IsValidModType(ImportSystem.CAMOS_WEAPONS_CATEGORY))
         {
             if (Camo is null || !Camo.IsValidFor(Reciever))
-            {
-                Camo = wpn.GetCamo();
-            }
+            { UndoRedoSystem.DoAction(wpn.GetCamo(), this.GetType().GetProperty(nameof(Camo)), this); }
         }
         else
-        {
-            camo = null;
-            OnPropertyChanged(nameof(camo));
-        }
+        { UndoRedoSystem.DoAction(null, this.GetType().GetProperty(nameof(Camo)), this); }
 
         if (Tag is null || Reciever.IsValidModType(ImportSystem.HANGERS_CATEGORY))
         {
             if (Tag is null || !Tag.IsValidFor(Reciever))
-            {
-                Tag = wpn.GetTag();
-            }
+            { UndoRedoSystem.DoAction(wpn.GetTag(), this.GetType().GetProperty(nameof(Tag)), this); }
         }
         else
-        {
-            tag = null;
-            OnPropertyChanged(nameof(tag));
-        }
+        { UndoRedoSystem.DoAction(null, this.GetType().GetProperty(nameof(Tag)), this); }
 
-        //AllowStock();
+        //UndoRedoSystem.EndAction();
     }
 
     private void CalculateStats()
@@ -1370,7 +1286,12 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         return Math.Min(Math.Max(input, min), max);
     }
 
-    public void UpdateMagiCowsWeapon(MagiCowsWeapon weapon)
+    public void SetMagiCowsWeapon(MagiCowsWeapon Weapon)
+    {
+        weapon = Weapon;
+    }
+
+    public void UpdateMagiCowsWeapon()
     {
         weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
         weapon.Muzzle = Muzzle?.GetMagicCowsID() ?? -1;
@@ -1383,8 +1304,10 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         weapon.Camo = Camo?.GetMagicCowsID() ?? 0;
     }
 
-    public void LoadMagicCowsWeapon(MagiCowsWeapon weapon)
-    { 
+    public void LoadMagicCowsWeapon()
+    {
+        UndoRedoSystem.BlockUpdate = true;
+        UndoRedoSystem.BlockEvent = true;
         var reciever = weapon.GetReciever();
         IsPrimary = (reciever.Category == ImportSystem.PRIMARY_CATEGORY);
         Reciever = reciever;
@@ -1397,5 +1320,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         Grip = weapon.GetGrip();
         Tag = weapon.GetTag();
         Camo = weapon.GetCamo();
+        UndoRedoSystem.BlockUpdate = false;
+        UndoRedoSystem.BlockEvent = false;
     }
 }

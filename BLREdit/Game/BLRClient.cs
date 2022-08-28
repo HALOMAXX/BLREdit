@@ -288,6 +288,10 @@ public class BLRClient : INotifyPropertyChanged
         MainWindow.Self.CheckGameClientSetup();
     }
 
+    public bool ClientHealth()
+    { 
+        return File.Exists(OriginalPath);
+    }
 
     public static string CreateClientHash(string path)
     {

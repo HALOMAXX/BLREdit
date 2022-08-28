@@ -18,5 +18,16 @@ namespace BLREdit
             duplicate.Index = ExportSystem.Profiles.Count;
             return duplicate;
         }
+
+        public MagiCowsLoadout GetLoadout(int id)
+        {
+            switch (id)
+            {
+                case 1: return Loadout1;
+                case 2: return Loadout2;
+                case 3: return Loadout3;
+                default: return Loadout1;
+            }
+        }
     }
 }

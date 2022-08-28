@@ -37,7 +37,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     /// <summary>
     /// Contains the current active loadout
     /// </summary>
-    public static MagiCowsLoadout ActiveLoadout { get; set; } = null;
+    public static MagiCowsLoadout ActiveLoadout { get { return activeLoadout; } set { activeLoadout = value; Loadout.LoadMagicCowsLoadout(value); } }
+    private static MagiCowsLoadout activeLoadout = null;
+
     public static BLRLoadoutSetup Loadout { get; } = new();
     /// <summary>
     /// Contains the Sorting Direction for the ItemList
@@ -113,9 +115,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         ProfileComboBox.ItemsSource = ExportSystem.Profiles;
         ProfileComboBox.SelectedIndex = 0;
 
-        SetLoadout(ExportSystem.ActiveProfile.Loadout1);
+        ActiveLoadout = ExportSystem.ActiveProfile.Loadout1;
 
-        Loadout1Button.IsEnabled = false;
+        EnabledLoadout = 1;
 
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
@@ -184,7 +186,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         }
 
         var clients = IOResources.DeserializeFile<List<BLRClient>>("GameClients.json");
-        if (clients is not null) { GameClients = clients; }
+        if (clients is not null) { GameClients = clients; for (int i = 0; i < GameClients.Count; i++) { if (!GameClients[i].ClientHealth()) { GameClients.RemoveAt(i); i--; } } }
 
         var servers = IOResources.DeserializeFile<List<BLRServer>>("ServerList.json");
         if (servers is not null) { ServerList = servers; }
@@ -444,115 +446,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             }
         }
         
-    }
-
-    public void SetItemToImage(Image image, BLRItem item, bool updateLoadout = true)
-    {
-        switch (image.Name)
-        {
-            case nameof(PrimaryRecieverImage):
-                Loadout.Primary.Reciever = item;
-                break;
-            case nameof(SecondaryRecieverImage):
-                Loadout.Secondary.Reciever = item;
-                break;
-
-            case nameof(PrimaryBarrelImage):
-                Loadout.Primary.Barrel = item;
-                break;
-            case nameof(SecondaryBarrelImage):
-                Loadout.Secondary.Barrel = item;
-                break;
-
-            case nameof(PrimaryMuzzleImage):
-                Loadout.Primary.Muzzle = item;
-                break;
-            case nameof(SecondaryMuzzleImage):
-                Loadout.Secondary.Muzzle = item;
-                break;
-
-            case nameof(PrimaryMagazineImage):
-                Loadout.Primary.Magazine = item;
-                break;
-            case nameof(SecondaryMagazineImage):
-                Loadout.Secondary.Magazine = item;
-                break;
-
-            case nameof(PrimaryStockImage):
-                Loadout.Primary.Stock = item;
-                break;
-            case nameof(SecondaryStockImage):
-                Loadout.Secondary.Stock = item;
-                break;
-
-            case nameof(PrimaryScopeImage):
-                Loadout.Primary.Scope = item;
-                break;
-            case nameof(SecondaryScopeImage):
-                Loadout.Secondary.Scope = item;
-                break;
-
-            case nameof(PrimaryGripImage):
-                Loadout.Primary.Grip = item;
-                break;
-            case nameof(SecondaryGripImage):
-                Loadout.Secondary.Grip = item;
-                break;
-
-            case nameof(PrimaryTagImage):
-                Loadout.Primary.Tag = item;
-                break;
-            case nameof(SecondaryTagImage):
-                Loadout.Secondary.Tag = item;
-                break;
-
-            case nameof(PrimaryCamoWeaponImage):
-                Loadout.Primary.Camo = item;
-                break;
-            case nameof(SecondaryCamoWeaponImage):
-                Loadout.Secondary.Camo = item;
-                break;
-
-
-            case nameof(HelmetImage):
-                Loadout.Helmet = item;
-                break;
-            case nameof(UpperBodyImage):
-                Loadout.UpperBody = item;
-                break;
-            case nameof(LowerBodyImage):
-                Loadout.LowerBody = item;
-                break;
-            case nameof(TacticalImage):
-                Loadout.Tactical = item;
-                break;
-            case nameof(GearImage1):
-                Loadout.Gear1 = item;
-                break;
-            case nameof(GearImage2):
-                Loadout.Gear2 = item;
-                break;
-            case nameof(GearImage3):
-                Loadout.Gear3 = item;
-                break;
-            case nameof(GearImage4):
-                Loadout.Gear4 = item;
-                break;
-            case nameof(PlayerCamoBodyImage):
-                Loadout.Camo = item;
-                break;
-            case nameof(AvatarImage):
-                Loadout.Avatar = item;
-                break;
-            case nameof(TrophyImage):
-                Loadout.Trophy = item;
-                break;
-        }
-
-        if (updateLoadout)
-        {
-            UpdateActiveLoadout();
-        }
     }
 
     private static void UpdateActiveLoadout()
@@ -866,7 +759,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                         LastSelectedImage = image;
                         return;
                     }
-                    LoggingSystem.LogInfo("ItemList Din't get set");
+                    LoggingSystem.LogInfo("ItemList Didn't get set");
                 }
             }
         }
@@ -891,140 +784,169 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void RemoveItemFromImage(Image image)
     {
+        SetItemToImage(image, null);
+    }
+
+    public void SetItemToImage(Image image, BLRItem item)
+    {
         switch (image.Name)
         {
+            #region Weapons
+            #region Primary
             case nameof(PrimaryRecieverImage):
-                Loadout.Primary.RemoveItem("Reciever");
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Reciever)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
                 break;
-            case nameof(SecondaryRecieverImage):
-                Loadout.Secondary.RemoveItem("Reciever");
-                break;
-
             case nameof(PrimaryBarrelImage):
-                Loadout.Primary.RemoveItem("Barrel");
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Barrel)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
+                break;
+            case nameof(PrimaryMuzzleImage):
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Muzzle)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
+                break;
+            case nameof(PrimaryMagazineImage):
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Magazine)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
+                break;
+            case nameof(PrimaryStockImage):
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Stock)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
+                break;
+            case nameof(PrimaryScopeImage):
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Scope)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
+                break;
+            case nameof(PrimaryGripImage):
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Grip)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
+                break;
+            case nameof(PrimaryTagImage):
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Tag)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
+                break;
+            case nameof(PrimaryCamoWeaponImage):
+                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Camo)), Loadout.Primary);
+                UndoRedoSystem.EndAction();
+                break;
+            #endregion Primary
+
+            #region Secondary
+            case nameof(SecondaryRecieverImage):
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Reciever)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(SecondaryBarrelImage):
-                Loadout.Secondary.RemoveItem("Barrel");
-                break;
-
-            case nameof(PrimaryMuzzleImage):
-                Loadout.Primary.RemoveItem("Muzzle");
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Barrel)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(SecondaryMuzzleImage):
-                Loadout.Secondary.RemoveItem("Muzzle");
-                break;
-
-            case nameof(PrimaryMagazineImage):
-                Loadout.Primary.RemoveItem("Magazine");
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Muzzle)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(SecondaryMagazineImage):
-                Loadout.Secondary.RemoveItem("Magazine");
-                break;
-
-            case nameof(PrimaryStockImage):
-                Loadout.Primary.RemoveItem("Stock");
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Magazine)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(SecondaryStockImage):
-                Loadout.Secondary.RemoveItem("Stock");
-                break;
-
-            case nameof(PrimaryScopeImage):
-                Loadout.Primary.RemoveItem("Scope");
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Stock)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(SecondaryScopeImage):
-                Loadout.Secondary.RemoveItem("Scope");
-                break;
-
-            case nameof(PrimaryGripImage):
-                Loadout.Primary.RemoveItem("Grip");
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Scope)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(SecondaryGripImage):
-                Loadout.Secondary.RemoveItem("Grip");
-                break;
-
-            case nameof(PrimaryTagImage):
-                Loadout.Primary.RemoveItem("Tag");
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Grip)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(SecondaryTagImage):
-                Loadout.Secondary.RemoveItem("Tag");
-                break;
-
-            case nameof(PrimaryCamoWeaponImage):
-                Loadout.Primary.RemoveItem("Camo");
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Tag)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(SecondaryCamoWeaponImage):
-                Loadout.Secondary.RemoveItem("Camo");
+                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Camo)), Loadout.Secondary);
+                UndoRedoSystem.EndAction();
                 break;
-
+            #endregion Seconday
+            #endregion Weapons
 
             case nameof(HelmetImage):
-                Loadout.RemoveItem("Helmet");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Helmet)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(UpperBodyImage):
-                Loadout.RemoveItem("UpperBody");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.UpperBody)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(LowerBodyImage):
-                Loadout.RemoveItem("LowerBody");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.LowerBody)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(TacticalImage):
-                Loadout.RemoveItem("Tactical");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Tactical)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(GearImage1):
-                Loadout.RemoveItem("Gear1");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Gear1)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(GearImage2):
-                Loadout.RemoveItem("Gear2");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Gear2)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(GearImage3):
-                Loadout.RemoveItem("Gear3");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Gear3)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(GearImage4):
-                Loadout.RemoveItem("Gear4");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Gear4)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(PlayerCamoBodyImage):
-                Loadout.RemoveItem("Camo");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Camo)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(AvatarImage):
-                Loadout.RemoveItem("Avatar");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Avatar)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
             case nameof(TrophyImage):
-                Loadout.RemoveItem("Trophy");
+                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Trophy)), Loadout);
+                UndoRedoSystem.EndAction();
                 break;
         }
-        UpdateActiveLoadout();
     }
 
-    public static void SetLoadout(MagiCowsLoadout loadout)
-    {
-        ActiveLoadout = loadout;
-        Loadout.LoadMagicCowsLoadout(loadout);
-    }
-    
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (!IsPlayerNameChanging)
+        if (!IsPlayerNameChanging && !UndoRedoSystem.BlockEvent)
         {
             IsPlayerProfileChanging = true;
             if (ProfileComboBox.SelectedValue is ExportSystemProfile profile)
             {
-                ExportSystem.ActiveProfile = profile;
-                PlayerNameTextBox.Text = profile.PlayerName;
-                SetLoadout(profile.Loadout1);
+                UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, true);
+                UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null);
+                UndoRedoSystem.DoAction(profile.PlayerName, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
+                UndoRedoSystem.DoAction(profile.GetLoadout(EnabledLoadout), typeof(MainWindow).GetProperty(nameof(ActiveLoadout)), null);
+                UndoRedoSystem.EndAction();
             }
             IsPlayerProfileChanging = false;
         }
     }
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (!IsPlayerProfileChanging)
+        if (!IsPlayerProfileChanging && !UndoRedoSystem.BlockEvent)
         {
             IsPlayerNameChanging = true;
+
             int index = ProfileComboBox.SelectedIndex;
             ProfileComboBox.ItemsSource = null;
             ExportSystem.RemoveActiveProfileFromDisk();
             ExportSystem.ActiveProfile.PlayerName = PlayerNameTextBox.Text;
             ProfileComboBox.ItemsSource = ExportSystem.Profiles;
             ProfileComboBox.SelectedIndex = index;
+
             IsPlayerNameChanging = false;
         }
     }
@@ -1035,28 +957,50 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         this.ProfileComboBox.DataContext = ExportSystem.Profiles;
     }
 
-    private void Loadout1Button_Click(object sender, RoutedEventArgs e)
+    public void EnableLoadoutButton()
     {
-        SetLoadout(ExportSystem.ActiveProfile.Loadout1);
-        Loadout1Button.IsEnabled = false;
+        Loadout1Button.IsEnabled = true;
         Loadout2Button.IsEnabled = true;
         Loadout3Button.IsEnabled = true;
+        switch (enabledLoadout)
+        {
+            case 1:
+                Loadout1Button.IsEnabled = false;
+                break;
+            case 2:
+                Loadout2Button.IsEnabled = false;
+                break;
+            case 3:
+                Loadout3Button.IsEnabled = false;
+                break;
+            default: 
+                Loadout1Button.IsEnabled = false;
+                break;
+        }
+    }
+
+    private int enabledLoadout = 1;
+    public int EnabledLoadout { get { return enabledLoadout; } set { enabledLoadout = value; EnableLoadoutButton(); } }
+
+    private void Loadout1Button_Click(object sender, RoutedEventArgs e)
+    {
+        UndoRedoSystem.DoAction(1, typeof(MainWindow).GetProperty(nameof(EnabledLoadout)), Self);
+        UndoRedoSystem.DoAction(ExportSystem.ActiveProfile.Loadout1, typeof(MainWindow).GetProperty(nameof(ActiveLoadout)), null);
+        UndoRedoSystem.EndAction();
     }
 
     private void Loadout2Button_Click(object sender, RoutedEventArgs e)
     {
-        SetLoadout(ExportSystem.ActiveProfile.Loadout2);
-        Loadout1Button.IsEnabled = true;
-        Loadout2Button.IsEnabled = false;
-        Loadout3Button.IsEnabled = true;
+        UndoRedoSystem.DoAction(2, typeof(MainWindow).GetProperty(nameof(EnabledLoadout)), Self);
+        UndoRedoSystem.DoAction(ExportSystem.ActiveProfile.Loadout2, typeof(MainWindow).GetProperty(nameof(ActiveLoadout)), null);
+        UndoRedoSystem.EndAction();
     }
 
     private void Loadout3Button_Click(object sender, RoutedEventArgs e)
     {
-        SetLoadout(ExportSystem.ActiveProfile.Loadout3);
-        Loadout1Button.IsEnabled = true;
-        Loadout2Button.IsEnabled = true;
-        Loadout3Button.IsEnabled = false;
+        UndoRedoSystem.DoAction(3, typeof(MainWindow).GetProperty(nameof(EnabledLoadout)), Self);
+        UndoRedoSystem.DoAction(ExportSystem.ActiveProfile.Loadout3, typeof(MainWindow).GetProperty(nameof(ActiveLoadout)), null);
+        UndoRedoSystem.EndAction();
     }
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
@@ -1067,14 +1011,16 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)
     {
-        Loadout.IsFemale = true;
-        UpdateActiveLoadout();
+        if (UndoRedoSystem.BlockEvent) return;
+        UndoRedoSystem.CreateAction(false, true, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
+        UndoRedoSystem.EndAction();
     }
 
     private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
     {
-        Loadout.IsFemale = false;
-        UpdateActiveLoadout();
+        if (UndoRedoSystem.BlockEvent) return;
+        UndoRedoSystem.CreateAction(true,false, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
+        UndoRedoSystem.EndAction();
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1114,7 +1060,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         ProfileComboBox.SelectedIndex = ExportSystem.Profiles.IndexOf(ExportSystem.ActiveProfile);
 
-        SetLoadout(ExportSystem.ActiveProfile.Loadout1);
+        ActiveLoadout = ExportSystem.ActiveProfile.Loadout1;
 
         Loadout1Button.IsEnabled = false;
         Loadout2Button.IsEnabled = true;
@@ -1420,6 +1366,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     bool shiftDown = false;
     bool altDown = false;
+    bool ctrlDown = false;
 
     /// <summary>
     /// Modifier Key Check
@@ -1438,6 +1385,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             case Key.RightAlt:
                 altDown = true;
                 break;
+            case Key.LeftCtrl:
+            case Key.RightCtrl:
+                ctrlDown = true;
+                break;
         }
     }
 
@@ -1452,6 +1403,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             case Key.LeftAlt:
             case Key.RightAlt:
                 altDown = false;
+                break;
+            case Key.LeftCtrl:
+            case Key.RightCtrl:
+                ctrlDown = false;
                 break;
             case Key.Tab:
                 int index = buttonIndex;
@@ -1483,6 +1438,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     new TripleAnimationDouble(0,400,1,3,1,grid,Grid.WidthProperty, AlertList.Items).Begin(AlertList);
                     LoggingSystem.LogInfo($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
                 }
+                break;
+            case Key.Z:
+                if(ctrlDown) UndoRedoSystem.Undo();
+                break;
+            case Key.Y:
+                if (ctrlDown) UndoRedoSystem.Redo();
                 break;
         }
     }

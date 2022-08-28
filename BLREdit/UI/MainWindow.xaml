@@ -357,7 +357,7 @@
                                     <TextBox Text="{Binding Path=OriginalPath}" IsReadOnly="True" HorizontalAlignment="Stretch"/>
                                 </Border>
                                 <Border Grid.Column="2" >
-                                    <TextBox Text="{Binding Path=PatchedPath}" IsReadOnly="True" HorizontalAlignment="Stretch"/>
+                                    <TextBox Text="{Binding Path=ClientVersion, Mode=OneWay}" IsReadOnly="True" HorizontalAlignment="Stretch"/>
                                 </Border>
                                 <Border Grid.Column="3" >
                                     <Button Content="{Binding Path=Patched.Is}" IsEnabled="{Binding Path=Patched.IsNot}" IsHitTestVisible="False"/>
@@ -369,7 +369,7 @@
                                     <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauIsClientDefault }}" IsEnabled="{Binding Path=CurrentClient.IsNot}" Click="ChangeCurrentGameClient_Click"/>
                                 </Border>
                                 <Border Grid.Column="6" >
-                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauPatchClient }}" IsEnabled="{Binding Path=Patched.IsNot}" Command="{Binding Path=PatchClientCommand}"/>
+                                    <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauPatchClient }}" Command="{Binding Path=PatchClientCommand}"/>
                                 </Border>
                                 <Border Grid.Column="7" >
                                     <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.LblLauLaunchBotServer }}" IsEnabled="{Binding Path=Patched.Is}" Command="{Binding Path=LaunchBotMatchCommand}"/>
