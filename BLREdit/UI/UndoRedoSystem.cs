@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace BLREdit.UI
         private static Stack<UndoRedoAction> UndoStack = new();
         private static Stack<UndoRedoAction> RedoStack = new();
         private static UndoRedoAction CurrentAction = new();
+        private static List<SubUndoRedoAction> AfterActions = new();
         public static bool BlockEvent { get; set; } = false;
         public static bool BlockUpdate { get; set; } = false;
 
@@ -25,9 +27,16 @@ namespace BLREdit.UI
             var action = UndoStack.Pop();
             foreach (var sub in action.actions)
             {
-                BlockEvent = sub.ShouldBlockEvent;
+                if (sub.PropertyInfo.Name == "Reciever")
+                {
+                    BlockEvent = true;
+                }
+                else
+                {
+                    BlockEvent = sub.ShouldBlockEvent;
+                }
                 BlockUpdate = sub.ShouldBlockUpdate;
-                sub.PropertyInfo.SetValue(sub.Target, sub.Before);
+                sub.PropertyInfo.SetValue(sub.Target, sub.Before, null);
                 BlockEvent = false;
                 BlockUpdate = false;
             }
@@ -60,6 +69,8 @@ namespace BLREdit.UI
         {
             if (CurrentAction.actions is not null)
             {
+                CurrentAction.actions.AddRange(AfterActions);
+                AfterActions.Clear();
                 RedoStack.Clear();
                 UndoStack.Push(CurrentAction);
             }
@@ -77,13 +88,24 @@ namespace BLREdit.UI
         /// <param name="propertyInfo">the property that is modified</param>
         /// <param name="target">the target object if the target is static type then just give it null</param>
         /// <param name="shouldBlockEvent">should it block possible UI Events</param>
-        public static void DoAction(object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false)
+        public static void DoAction(object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string callName = null)
         {
             BlockEvent = shouldBlockEvent;
             BlockUpdate = shouldBlockUpdate;
             if (CurrentAction.actions is null) { LoggingSystem.LogError("CurrentAction is null which should never happen!"); BlockEvent = false; BlockUpdate = false; return; }
             object before = propertyInfo.GetValue(target);
-            CurrentAction.actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, shouldBlockEvent, shouldBlockUpdate));
+            CurrentAction.actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, shouldBlockEvent, shouldBlockUpdate, callName));
+            propertyInfo.SetValue(target, after);
+            BlockEvent = false;
+            BlockUpdate = false;
+        }
+
+        public static void DoActionAfter(object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string callName = null)
+        {
+            BlockEvent = shouldBlockEvent;
+            BlockUpdate = shouldBlockUpdate;
+            object before = propertyInfo.GetValue(target);
+            AfterActions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, shouldBlockEvent, shouldBlockUpdate, callName));
             propertyInfo.SetValue(target, after);
             BlockEvent = false;
             BlockUpdate = false;
@@ -97,11 +119,11 @@ namespace BLREdit.UI
         /// <param name="propertyInfo">the property that is modified</param>
         /// <param name="target">the target object if the target is static type then just give it null</param>
         /// <param name="shouldBlockEvent">should it block possible UI Events</param>
-        public static void CreateAction(object before, object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false)
+        public static void CreateAction(object before, object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string callName = null)
         {
             BlockEvent= shouldBlockEvent;
             BlockUpdate = shouldBlockUpdate;
-            CurrentAction.actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, shouldBlockEvent, shouldBlockUpdate));
+            CurrentAction.actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, shouldBlockEvent, shouldBlockUpdate, callName));
             BlockEvent= false;
             BlockUpdate = false;
         }
@@ -121,8 +143,9 @@ namespace BLREdit.UI
         internal object Target { get; private set; }
         internal bool ShouldBlockEvent { get; private set; }
         internal bool ShouldBlockUpdate { get; private set; }
+        internal string CallName { get; private set; }
 
-        public SubUndoRedoAction(object before, object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent, bool shouldBlockUpdate)
+        public SubUndoRedoAction(object before, object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent, bool shouldBlockUpdate, string callName)
         {
             Before = before;
             After = after;
@@ -130,6 +153,7 @@ namespace BLREdit.UI
             Target = target;
             ShouldBlockEvent = shouldBlockEvent;
             ShouldBlockUpdate = shouldBlockUpdate;
+            CallName = callName;
         }
     }
 }

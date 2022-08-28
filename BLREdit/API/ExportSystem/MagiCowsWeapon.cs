@@ -210,10 +210,12 @@ namespace BLREdit
         public const int    NoMuzzle = 0;
         public const int    NoMagazine = -1;
         public const int    NoTag = 0;
+        public const int    NoCamo = 0;
         public const string NoBarrel = "No Barrel Mod";
         public const string NoGrip = "";
         public const string NoStock = "No Stock";
         public const string NoScope = "No Optic Mod";
+        
 
         public const string DefaultBarrel = "Frontier Standard Barrel";
         public const string DefaultStock = "Silverwood Standard Stock";
