@@ -97,6 +97,7 @@ namespace BLREdit.UI
         public static string LblAdvSpreadCenter { get { return LanguageSet.GetWordUI("Spread Center:"); } }
         public static string LblAdvRecoilVerticalRatio { get { return LanguageSet.GetWordUI("Recoil Vertical Ratio:"); } }
         public static string LblAdvRecoilRecoveryTime { get { return LanguageSet.GetWordUI("Recoil Recovery Time:"); } }
+        public static string LblAdvRecoilAccumulation { get { return LanguageSet.GetWordUI("Recoil Accumulation:"); } }
         public static string LblAdvDamage { get { return LanguageSet.GetWordUI("Damage:"); } }
         public static string LblAdvAccuracy { get { return LanguageSet.GetWordUI("Accuracy:"); } }
         public static string LblAdvRange { get { return LanguageSet.GetWordUI("Range:"); } }

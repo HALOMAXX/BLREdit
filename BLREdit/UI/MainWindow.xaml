@@ -173,11 +173,14 @@
 
                             <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilRecoveryTime}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RecoilRecoveryTimeDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryRecoilRecoveryTimeLabel"/>
+
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilAccumulation}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Path=Primary.RecoilAccumulationDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryRecoilAccumulationLabel"/>
                         </UniformGrid>
 
-                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods}}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,230,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods}}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,255,0,0"/>
 
-                        <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,260,0,0">
+                        <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,280,0,0">
                             <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvDamage }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.DamagePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModDamageLabel"/>
 
@@ -199,7 +202,7 @@
                     </Grid>
                 </Border>
 
-                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,325,0,0">
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,341,0,0">
                     <Grid Width="Auto">
                         <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvSecondary }}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
                         <UniformGrid Columns="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,26,0,0">
@@ -224,13 +227,16 @@
                             <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilVerticalRatio }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilVerticalRatioDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryRecoilVerticalRatioLabel"/>
 
-                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilRecoveryTime }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilRecoveryTime}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilRecoveryTimeDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryRecoilRecoveryTimeLabel"/>
+
+                            <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvRecoilAccumulation}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{Binding Path=Secondary.RecoilAccumulationDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryRecoilAccumulationLabel"/>
                         </UniformGrid>
 
-                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods }}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,230,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods }}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,255,0,0"/>
 
-                        <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,260,0,0">
+                        <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,281,0,0">
                             <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvDamage }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.DamagePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModDamageLabel"/>
 
@@ -252,7 +258,7 @@
                     </Grid>
                 </Border>
 
-                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,655,0,0">
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,684,0,0">
                     <Grid Width="Auto">
                         <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvArmorGear }}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
 
@@ -276,7 +282,7 @@
                             <Label Content="{Binding Path=ToxicProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearToxicProtectionLabel"/>
                         </UniformGrid>
                         
-                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods }}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,180,0,0"/>
+                        <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvCurrentMods }}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,178,0,0"/>
 
                         <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,205,0,0">
                             <Label Content="{Binding Source={x:Static ui:UILanguageWrapper.LblAdvHealth }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>

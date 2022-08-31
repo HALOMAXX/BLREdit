@@ -410,6 +410,23 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         }
     }
 
+    public double RecoilAccumulation
+    {
+        get
+        {
+            if (Reciever != null && Reciever.WeaponStats != null)
+            {
+                double accumExponent = Reciever?.WeaponStats?.RecoilAccumulation ?? 0;
+                if (accumExponent > 1)
+                {
+                    accumExponent = ((accumExponent - 1.0) * (Reciever?.WeaponStats?.RecoilAccumulationMultiplier ?? 0)) + 1.0;
+                }
+                return accumExponent;
+            }
+            return 1;
+        }
+    }
+
     public double ZoomRateOfFire
     {
         get
@@ -607,6 +624,9 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     private string recoilRecoveryTimeDisplay;
     public string RecoilRecoveryTimeDisplay { get { return recoilRecoveryTimeDisplay; } private set { recoilRecoveryTimeDisplay = value; OnPropertyChanged(); } }
 
+    private string recoilAccumulationDisplay;
+    public string RecoilAccumulationDisplay { get { return recoilAccumulationDisplay; } private set { recoilAccumulationDisplay = value; OnPropertyChanged(); } }
+
 
     private string damagePercentDisplay;
     public string DamagePercentageDisplay { get { return damagePercentDisplay; } private set { damagePercentDisplay = value; OnPropertyChanged(); } }
@@ -752,6 +772,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         SpreadCenterDisplay = SpreadCenter.ToString("0.00");
         RecoilVerticalRatioDisplay = VerticalRecoilRatio.ToString("0.00");
         RecoilRecoveryTimeDisplay = RecoilRecoveryTime.ToString("0.00");
+        RecoilAccumulationDisplay = RecoilAccumulation.ToString("0.00");
 
         DamagePercentageDisplay = DamagePercentage.ToString("0") + '%';
         AccuracyPercentageDisplay = AccuracyPercentage.ToString("0") + '%';
