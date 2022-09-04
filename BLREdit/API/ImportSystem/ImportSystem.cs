@@ -42,7 +42,7 @@ namespace BLREdit
         {
             System.Diagnostics.Stopwatch watch = LoggingSystem.LogInfo("Initializing Import System");
 
-            ItemLists = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>(IOResources.ITEM_LIST_FILE);
+            ItemLists = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}");
             
             UpdateImages();
             ApplyDisplayStats();
@@ -521,11 +521,12 @@ namespace BLREdit
             }
         }
 
+
         private static void UnifyItemList()
         {
-            ImportGear Gear = IOResources.DeserializeFile<ImportGear>(IOResources.GEAR_FILE);
-            ImportMods Mods = IOResources.DeserializeFile<ImportMods>(IOResources.MOD_FILE);
-            ImportWeapons Weapons = IOResources.DeserializeFile<ImportWeapons>(IOResources.WEAPON_FILE);
+            ImportGear Gear = IOResources.DeserializeFile<ImportGear>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.GEAR_FILE}");
+            ImportMods Mods = IOResources.DeserializeFile<ImportMods>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.MOD_FILE}");
+            ImportWeapons Weapons = IOResources.DeserializeFile<ImportWeapons>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.WEAPON_FILE}");
 
             Dictionary<string, List<ImportItem>> ListItems = new()
             {
@@ -572,7 +573,7 @@ namespace BLREdit
                 Items.Add(itemList.Key, items);
             }
 
-            IOResources.SerializeFile("itemList.json", Items);
+            IOResources.SerializeFile(IOResources.ITEM_LIST_FILE, Items);
         }
 
         private static void CleanItems(Dictionary<string, List<ImportItem>> ListItems)

@@ -1,7 +1,6 @@
 ﻿{
   "PatchName": "Emblem Patch(v302)",
   "ClientHash": "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
-  "Default": true,
   "PatchParts": {
     "11766694": [
       144,

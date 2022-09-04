@@ -3,6 +3,7 @@ using Gameloop.Vdf.Linq;
 
 using Microsoft.Win32;
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,19 +15,28 @@ namespace BLREdit;
 
 public class IOResources
 {
+    #region DIRECTORIES
     public const string PROFILE_DIR = "Profiles\\";
     public const string SEPROFILE_DIR = "SEProfiles\\";
     public const string ASSET_DIR = "Assets\\";
     public const string LOCAL_DIR = "localization\\";
     public const string JSON_DIR = "json\\";
-    public const string GEAR_FILE = ASSET_DIR + JSON_DIR + "gear.json";
-    public const string MOD_FILE = ASSET_DIR + JSON_DIR + "mods.json";
-    public const string WEAPON_FILE = ASSET_DIR + JSON_DIR + "weapons.json";
-    public const string ITEM_LIST_FILE = ASSET_DIR + JSON_DIR + "itemList.json";
-    public const string SETTINGS_FILE = "settings.json";
+    public const string GAME_PATH_SUFFIX = "steamapps\\common\\blacklightretribution\\Binaries\\Win32\\";
+    public const string PROXY_MODULES_DIR = "Modules\\";
+    #endregion DIRECTORIES
+
     public const string GAME_APPID = "209870";
-    public const string GAME_PATH_SUFFIX = "\\steamapps\\common\\blacklightretribution\\Binaries\\Win32\\";
+
+    #region FILES
+    public const string GEAR_FILE = "gear.json";
+    public const string MOD_FILE = "mods.json";
+    public const string WEAPON_FILE = "weapons.json";
+    public const string ITEM_LIST_FILE = "itemList.json";
+    public const string SETTINGS_FILE = "settings.json";
+    public const string PROXY_FILE = "Proxy.dll";
     public const string GAME_DEFAULT_EXE = "FoxGame-win32-Shipping.exe";
+    #endregion FILES
+
     public static string Steam32InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string;
     public static string Steam6432InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath", "") as string;
     public static readonly List<string> GameFolders = new();
@@ -66,7 +76,7 @@ public class IOResources
         }
         catch (System.Exception ex)
         {
-            LoggingSystem.LogWarning("failed reading " + vdfPath + ", steam library parsing aborted");
+            LoggingSystem.LogWarning($"failed reading {vdfPath}, steam library parsing aborted");
             LoggingSystem.LogWarning(ex.Message);
             return;
         }
@@ -82,7 +92,7 @@ public class IOResources
                     {
                         if (app.Key == appID)
                         {
-                            GameFolders.Add(((VValue)((VProperty)tokens.ElementAt(0)).Value).Value + GAME_PATH_SUFFIX);
+                            GameFolders.Add(((VValue)((VProperty)tokens.ElementAt(0)).Value).Value + "\\" + GAME_PATH_SUFFIX);
                         }
                     }
                 }
@@ -178,6 +188,14 @@ public class IOResources
 
     public static T Deserialize<T>(string json)
     {
-        return JsonSerializer.Deserialize<T>(json, JSOFields);
+        try
+        {
+            return JsonSerializer.Deserialize<T>(json, JSOFields);
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.LogError($"{error.Message}\n{error.StackTrace}");
+        }
+        return default;
     }
 }

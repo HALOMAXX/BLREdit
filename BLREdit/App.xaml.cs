@@ -1,4 +1,5 @@
-﻿using Octokit;
+﻿using BLREdit.API.REST_API.GitHub;
+using BLREdit.API.REST_API.Gitlab;
 
 using System.Diagnostics;
 using System.IO;
@@ -21,39 +22,34 @@ namespace BLREdit
             File.Delete("log.txt");
             Trace.Listeners.Add(new TextWriterTraceListener("log.txt", "loggingListener"));
             Trace.AutoFlush = true;
-
-            //TestREST().GetAwaiter().GetResult();
-
             LoggingSystem.LogInfo("BLREdit Starting!");
-            VersionCheck();
+
+            Initialize().Wait();
+            //var task = GitlabClient.GetReleases("modules/loadout-manager", "blrevive");
+            var task = GitHubClient.GetObjectFromFile<GitHubFile>(CurrentRepo, CurrentOwner, "master", "README.md");
+            task.Wait();
+            var release = task.Result;
             RuntimeCheck();
             ImportSystem.Initialize();
         }
 
-        public static async Task TestREST()
+        public async Task Initialize()
         {
-            MagiCowsProfile[] profiles = await MagiCowClient.GetAllPlayers();
-            foreach (MagiCowsProfile profile in profiles)
-            {
-                LoggingSystem.LogInfo(profile.ToString());
-            }
+            IsNewVersionAvailable = await VersionCheck();
         }
 
         public const string CurrentVersion = "v0.6.1";
         const string CurrentVersionName = "BLREdit Bug fix & Performance";
         public const string CurrentOwner = "HALOMAXX";
         public const string CurrentRepo = "BLREdit";
-        public static void VersionCheck()
+        public static async Task<bool> VersionCheck()
         {
             try
             {
-                GitHubClient client = new(new ProductHeaderValue("BLREdit"));
-                var releases = client.Repository.Release.GetAll(CurrentOwner, CurrentRepo);
-                releases.Wait();
-                var latest = releases.Result[0];
-                LoggingSystem.LogInfo($"Newest Version: {latest.TagName} of {latest.Name} vs Current: {CurrentVersion} of {CurrentVersionName}");
+                var release = await GitHubClient.GetLatestRelease(CurrentRepo, CurrentOwner);
+                LoggingSystem.LogInfo($"Newest Version: {release.tag_name} of {release.name} vs Current: {CurrentVersion} of {CurrentVersionName}");
 
-                string[] remoteVersionParts = latest.TagName.Split('v');
+                string[] remoteVersionParts = release.tag_name.Split('v');
                 remoteVersionParts = remoteVersionParts[remoteVersionParts.Length - 1].Split('.');
 
                 string[] currentVersionParts = CurrentVersion.Split('v');
@@ -76,12 +72,11 @@ namespace BLREdit
                     {
                         if (remote > current)
                         {
-                            IsNewVersionAvailable = true;
-                            return;
+                            return true;
                         }
                         if (current > remote)
                         {
-                            return;
+                            return false;
                         }
                     }
                     else
@@ -93,6 +88,7 @@ namespace BLREdit
             }
             catch 
             { LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
+            return false;
         }
 
         public static void RuntimeCheck()

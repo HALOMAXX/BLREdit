@@ -190,7 +190,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         }
 
         var clients = IOResources.DeserializeFile<List<BLRClient>>("GameClients.json");
-        if (clients is not null) { GameClients = clients; for (int i = 0; i < GameClients.Count; i++) { if (!GameClients[i].ClientHealth()) { GameClients.RemoveAt(i); i--; } } }
+        if (clients is not null) { GameClients = clients; for (int i = 0; i < GameClients.Count; i++) { if (!GameClients[i].ValidateClient()) { GameClients.RemoveAt(i); i--; } } }
 
         var servers = IOResources.DeserializeFile<List<BLRServer>>("ServerList.json");
         if (servers is not null) { ServerList = servers; }
@@ -206,7 +206,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         IOResources.GetGameLocationsFromSteam();
         foreach (string folder in IOResources.GameFolders)
         {
-            AddGameClient(new BLRClient() { OriginalPath = folder + IOResources.GAME_DEFAULT_EXE});
+            AddGameClient(new BLRClient() { OriginalPath = $"{folder}{IOResources.GAME_DEFAULT_EXE}" });
         }
 
         AddDefaultServers();
@@ -291,7 +291,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private void AddDefaultServers()
     {
         List<BLRServer> defaultServers = new() {
-        new() { ServerAddress = "mooserver.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777
+        new() { ServerAddress = "majikau.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777 //majikau.ddns.net
         new() { ServerAddress = "blr.akoot.me", Port = 7777, ServerName = "Akoot's Server" }, //blr.akoot.me : 7777
         new() { ServerAddress = "blr.753z.net", Port = 7777, ServerName = "IKE753Z's Server" }, //blr.753z.net : 7777
         new() { ServerAddress = "localhost", Port = 7777, ServerName = "Local Host"}
@@ -1010,6 +1010,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
         ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
+        var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} got Copied to Clipboard");
+        AlertList.Items.Add(grid);
+        new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
         //ExportSystem.CreateSEProfile(ExportSystem.ActiveProfile); //Not really in use currently only makes waste on the Hard Drive
     }
 
