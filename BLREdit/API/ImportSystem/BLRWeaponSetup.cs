@@ -98,11 +98,10 @@ public class BLRWeaponSetup : INotifyPropertyChanged
 
     private void UpdateScopeIcons()
     {
-        Scope = scope;
-        if (Scope is not null)
+        OnPropertyChanged(nameof(Scope));
+        if (scope is not null)
         {
-            scope.MiniPrimaryCrosshair = null;
-            scope.MiniSecondaryCrosshair = null;
+            scope.ExternalOnPropertyChanged(nameof(scope.MiniPrimaryCrosshair), nameof(scope.MiniSecondaryCrosshair));
         }
     }
 

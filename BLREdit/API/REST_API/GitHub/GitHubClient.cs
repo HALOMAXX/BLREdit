@@ -21,7 +21,7 @@ public static class GitHubClient
     private static async Task<HttpResponseMessage> GetAsync(string api)
     {
         var response = await Client.GetAsync(api);
-        LoggingSystem.LogInfo($"[GitHub]: GET {api} returned:{response.StatusCode}");
+        LoggingSystem.LogInfo($"[GitHub]({response.StatusCode}): GET {api}");
         return response;
     }
 

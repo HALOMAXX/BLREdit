@@ -1,6 +1,8 @@
 ﻿using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
+using BLREdit.Game;
 
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +19,8 @@ namespace BLREdit
         public static bool IsBaseRuntimeMissing { get; private set; } = true;
         public static bool IsUpdateRuntimeMissing { get; private set; } = true;
 
+        public static RepositoryProxyModule[] AvailableProxyModules { get; private set; }
+
         public App()
         {
             File.Delete("log.txt");
@@ -25,10 +29,6 @@ namespace BLREdit
             LoggingSystem.LogInfo("BLREdit Starting!");
 
             Initialize().Wait();
-            //var task = GitlabClient.GetReleases("modules/loadout-manager", "blrevive");
-            var task = GitHubClient.GetObjectFromFile<GitHubFile>(CurrentRepo, CurrentOwner, "master", "README.md");
-            task.Wait();
-            var release = task.Result;
             RuntimeCheck();
             ImportSystem.Initialize();
         }
@@ -36,6 +36,7 @@ namespace BLREdit
         public async Task Initialize()
         {
             IsNewVersionAvailable = await VersionCheck();
+            AvailableProxyModules = await GetAvailableProxyModules();
         }
 
         public const string CurrentVersion = "v0.6.1";
@@ -86,9 +87,24 @@ namespace BLREdit
                 }
 
             }
-            catch 
+            catch
             { LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
             return false;
+        }
+
+        public static async Task<RepositoryProxyModule[]> GetAvailableProxyModules()
+        {
+            try
+            {
+                var file = await GitHubClient.GetObjectFromFile<GitHubFile>(CurrentRepo, CurrentOwner, "master", "Resources/ProxyModules.json");
+                if (file is null) return Array.Empty<RepositoryProxyModule>();
+                return IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
+            }
+            catch
+            {
+                LoggingSystem.LogInfo("Can't connect to github");
+            }
+            return Array.Empty<RepositoryProxyModule>();
         }
 
         public static void RuntimeCheck()

@@ -50,11 +50,13 @@ public class BLRItem : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-    public void TriggerImageUpdate()
+
+    public void ExternalOnPropertyChanged(params string[] properties)
     {
-        WideImage = null;
-        LargeSquareImage = null;
-        SmallSquareImage = null;
+        foreach (var prop in properties)
+        {
+            OnPropertyChanged(prop);
+        }
     }
 
     public BLRItem() { }

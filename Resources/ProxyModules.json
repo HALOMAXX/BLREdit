@@ -1,0 +1,14 @@
+[
+    {
+        "RepositoryProvider": "Gitlab",
+        "Owner": "blrevive",
+        "Repository": "modules/loadout-manager",
+        "ModuleName": "LoadoutManager"
+      },
+      {
+        "RepositoryProvider": "GitHub",
+        "Owner": "Kethen",
+        "Repository": "BLRE-settings-manager",
+        "ModuleName": "settings-manager"
+      }
+]

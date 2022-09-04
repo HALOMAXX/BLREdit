@@ -19,7 +19,7 @@ public static class GitlabClient
     private static async Task<HttpResponseMessage> GetAsync(string api)
     {
         var response = await Client.GetAsync(api);
-        LoggingSystem.LogInfo($"[Gitlab]: GET {api} returned:{response.StatusCode}");
+        LoggingSystem.LogInfo($"[Gitlab]({response.StatusCode}): GET {api}");
         return response;
     }
 
