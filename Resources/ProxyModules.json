@@ -11,5 +11,12 @@
         "Repository": "BLRE-settings-manager",
         "ModuleName": "settings-manager",
         "Server": false
+      },
+      {
+        "RepositoryProvider": "GitHub",
+        "Owner": "Kethen",
+        "Repository": "BLRE-server-utils",
+        "ModuleName": "server-utils",
+        "Client": false
       }
 ]
