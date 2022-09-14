@@ -77,7 +77,7 @@ public class BLRServer : INotifyPropertyChanged
         pingThread.Start();
     }
 
-    private static readonly byte[] msg = "BLREdit"u8.ToArray();
+    private static readonly byte[] msg = Encoding.UTF8.GetBytes("BLREdit");
     private void InternalPing()
     {
         Stopwatch watch = new();
