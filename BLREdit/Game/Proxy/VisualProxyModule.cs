@@ -172,17 +172,21 @@ public class VisualProxyModule : INotifyPropertyChanged
             bool installed = false;
             if (BLRClientWindow.Client is not null)
             {
-                var task = Task.Run(GetLatestReleaseDate);
-                task.Wait();
-                DateTime latestRelease = task.Result;
-                foreach (var mod in BLRClientWindow.Client.InstalledModules)
+                try
                 {
-                    if (mod.ModuleName == RepositoryProxyModule.ModuleName && mod.Published >= latestRelease)
+                    var task = Task.Run(GetLatestReleaseDate);
+                    task.Wait();
+                    DateTime latestRelease = task.Result;
+                    foreach (var mod in BLRClientWindow.Client.InstalledModules)
                     {
-                        installed = true;
-                        break;
+                        if (mod.ModuleName == RepositoryProxyModule.ModuleName && mod.Published >= latestRelease)
+                        {
+                            installed = true;
+                            break;
+                        }
                     }
                 }
+                catch { }
             }
             return new UIBool(installed);
         }
@@ -193,27 +197,33 @@ public class VisualProxyModule : INotifyPropertyChanged
     {
         if (lockInstall) return;
         lockInstall = true;
-
-        LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.ModuleName}");
-
-        var releaseDate = await GetLatestReleaseDate();
-
-        ProxyModule module = null;
-        foreach (var cachedModule in ProxyModule.CachedModules)
+        try
         {
-            if (cachedModule.Published >= releaseDate)
+            LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.ModuleName}");
+
+            var releaseDate = await GetLatestReleaseDate();
+
+            ProxyModule module = null;
+            foreach (var cachedModule in ProxyModule.CachedModules)
             {
-                module = cachedModule;
-                break;
+                if (cachedModule.Published >= releaseDate)
+                {
+                    module = cachedModule;
+                    break;
+                }
+            }
+
+            module ??= await RepositoryProxyModule.DownloadLatest();
+            if (module is not null)
+            {
+                File.Copy($"downloads\\{module.ModuleName}.dll", $"{BLRClientWindow.Client.ModulesFolder}\\{module.ModuleName}.dll", true);
+                BLRClientWindow.Client.InstalledModules.Add(module);
             }
         }
-
-        module ??= await RepositoryProxyModule.DownloadLatest();
-
-        File.Copy($"downloads\\{module.ModuleName}.dll", $"{BLRClientWindow.Client.ModulesFolder}\\{module.ModuleName}.dll", true);
-
-        BLRClientWindow.Client.InstalledModules.Add(module);
-
+        catch (Exception error) 
+        {
+            LoggingSystem.Log($"failed to install module:{RepositoryProxyModule.ModuleName} reason:{error.Message}\n{error.StackTrace}");
+        }
         OnPropertyChanged(nameof(Installed));
         lockInstall = false;
     }
