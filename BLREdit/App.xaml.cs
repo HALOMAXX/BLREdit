@@ -1,8 +1,9 @@
 ﻿using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game;
-
+using BLREdit.Game.Proxy;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
@@ -15,94 +16,103 @@ namespace BLREdit
     /// </summary>
     public partial class App : System.Windows.Application
     {
+        public const string CurrentVersion = "v0.6.1";
+        public const string CurrentVersionTitle = "BLREdit Bug fix & Performance";
+        public const string CurrentOwner = "HALOMAXX";
+        public const string CurrentRepo = "BLREdit";
+
         public static bool IsNewVersionAvailable { get; private set; } = false;
         public static bool IsBaseRuntimeMissing { get; private set; } = true;
         public static bool IsUpdateRuntimeMissing { get; private set; } = true;
 
-        public static RepositoryProxyModule[] AvailableProxyModules { get; private set; }
+        public static VisualProxyModule[] AvailableProxyModules { get; private set; }
 
         public App()
         {
             File.Delete("log.txt");
             Trace.Listeners.Add(new TextWriterTraceListener("log.txt", "loggingListener"));
             Trace.AutoFlush = true;
-            LoggingSystem.LogInfo("BLREdit Starting!");
+            LoggingSystem.Log("BLREdit Starting!");
 
             Initialize().Wait();
+
             RuntimeCheck();
             ImportSystem.Initialize();
+
+            UI.MainWindow.GameClients = IOResources.DeserializeFile<List<BLRClient>>("GameClients.json") ?? new();
+            UI.MainWindow.ServerList = IOResources.DeserializeFile<List<BLRServer>>("ServerList.json") ?? new();
+
+            var validate = Task.Run(() => {
+                Parallel.For(0, UI.MainWindow.GameClients.Count, (i) => {
+                    if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
+                    { UI.MainWindow.GameClients.RemoveAt(i); i--; }
+                });
+            });
+
+            validate.Wait();
         }
 
         public async Task Initialize()
         {
             IsNewVersionAvailable = await VersionCheck();
-            AvailableProxyModules = await GetAvailableProxyModules();
+            var task = Task.Run(GetAvailableProxyModules);
+            task.Wait();
+            var modules = task.Result;
+            AvailableProxyModules = new VisualProxyModule[modules.Length];
+            for (int i = 0; i < modules.Length; i++)
+            {
+                AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
+            }
         }
 
-        public const string CurrentVersion = "v0.6.1";
-        const string CurrentVersionName = "BLREdit Bug fix & Performance";
-        public const string CurrentOwner = "HALOMAXX";
-        public const string CurrentRepo = "BLREdit";
         public static async Task<bool> VersionCheck()
         {
             try
             {
-                var release = await GitHubClient.GetLatestRelease(CurrentRepo, CurrentOwner);
-                LoggingSystem.LogInfo($"Newest Version: {release.tag_name} of {release.name} vs Current: {CurrentVersion} of {CurrentVersionName}");
+                var release = await GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
+                LoggingSystem.Log($"Newest Version: {release.tag_name} of {release.name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-                string[] remoteVersionParts = release.tag_name.Split('v');
-                remoteVersionParts = remoteVersionParts[remoteVersionParts.Length - 1].Split('.');
+                var remoteVersion = CreateVersion(release.tag_name);
+                var localVersion = CreateVersion(CurrentVersion);
 
-                string[] currentVersionParts = CurrentVersion.Split('v');
-                currentVersionParts = currentVersionParts[currentVersionParts.Length - 1].Split('.');
-
-                for (int i = 0; i < currentVersionParts.Length && i < remoteVersionParts.Length; i++)
-                {
-                    int? remote = null;
-                    int? current = null;
-                    try
-                    {
-                        remote = int.Parse(remoteVersionParts[i]);
-                        current = int.Parse(currentVersionParts[i]);
-                    }
-                    catch
-                    {
-                        LoggingSystem.LogWarning("Can't determine version differences!");
-                    }
-                    if (remote != null && current != null)
-                    {
-                        if (remote > current)
-                        {
-                            return true;
-                        }
-                        if (current > remote)
-                        {
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        LoggingSystem.LogWarning("Can't determine version differences!");
-                    }
-                }
+                if (localVersion >= remoteVersion)
+                { return false; }
+                else
+                { return true; }
 
             }
             catch
-            { LoggingSystem.LogWarning("Can't connect to github to check for new Version"); }
+            { LoggingSystem.Log("Can't connect to github to check for new Version"); }
             return false;
+        }
+
+        private static int CreateVersion(string versionTag)
+        { 
+            var splitTag = versionTag.Split('v');
+            var stringVersionParts = splitTag[splitTag.Length - 1].Split('.');
+            int version = 0;
+            int multiply = 1;
+            for (int i = stringVersionParts.Length-1; i > 0; i--)            {
+                if (int.TryParse(stringVersionParts[i], out int result))
+                {
+                    version += result * (multiply);
+                }
+                multiply *= 10;
+            }
+            return version;
         }
 
         public static async Task<RepositoryProxyModule[]> GetAvailableProxyModules()
         {
             try
             {
-                var file = await GitHubClient.GetObjectFromFile<GitHubFile>(CurrentRepo, CurrentOwner, "master", "Resources/ProxyModules.json");
+                var file = await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json");
                 if (file is null) return Array.Empty<RepositoryProxyModule>();
                 return IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
             }
             catch
             {
-                LoggingSystem.LogInfo("Can't connect to github");
+                LoggingSystem.Log("Can't connect to github");
             }
             return Array.Empty<RepositoryProxyModule>();
         }
@@ -118,7 +128,7 @@ namespace BLREdit
 
                 if (!IsBaseRuntimeMissing && !IsUpdateRuntimeMissing)
                 {
-                    LoggingSystem.LogInfo("Both VC++ 2012 Runtimes are installed for BLRevive!");
+                    LoggingSystem.Log("Both VC++ 2012 Runtimes are installed for BLRevive!");
                 }
             }
         }

@@ -14,6 +14,8 @@ using System.Text.RegularExpressions;
 using System.Runtime.CompilerServices;
 using BLREdit.API.ImportSystem;
 using System.Windows.Media.Animation;
+using System.Threading.Tasks;
+using BLREdit.Game.Proxy;
 
 namespace BLREdit.UI;
 
@@ -60,8 +62,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     public bool IsCheckingGameClient { get; private set; } = false;
 
-    public List<BLRClient> GameClients { get; set; } = new();
-    public List<BLRServer> ServerList { get; set; } = new();
+    public static List<BLRClient> GameClients { get; set; }
+    public static List<BLRServer> ServerList { get; set; }
 
     public static MainWindow Self { get; private set; } = null;
 
@@ -71,7 +73,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private int columns = 4;
     public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
 
-    public BLREditSettings Settings { get; set; } = BLREditSettings.Settings;
+    public BLREditSettings Settings { get { return BLREditSettings.Settings; } }
 
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -189,12 +191,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             }
         }
 
-        var clients = IOResources.DeserializeFile<List<BLRClient>>("GameClients.json");
-        if (clients is not null) { GameClients = clients; for (int i = 0; i < GameClients.Count; i++) { if (!GameClients[i].ValidateClient()) { GameClients.RemoveAt(i); i--; } } }
-
-        var servers = IOResources.DeserializeFile<List<BLRServer>>("ServerList.json");
-        if (servers is not null) { ServerList = servers; }
-
         GameClientList.ItemsSource = null;
         GameClientList.Items.Clear();
         GameClientList.ItemsSource = GameClients;
@@ -217,6 +213,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         {
             BLREditSettings.Settings.DefaultServer = ServerList[0];
         }
+
+
         CheckGameClientSetup();
     }
 
@@ -360,6 +358,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         {
             if (button.DataContext is BLRClient client)
             {
+                LoggingSystem.Log($"Setting Current Client:{client}");
                 if (client.Patched.Is)
                 {
                     BLREditSettings.Settings.DefaultClient = client;
@@ -367,6 +366,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     {
                         c.CurrentClient.SetBool(false);
                     }
+                    client.CurrentClient.SetBool(true);
                 }
             }
         }
@@ -394,6 +394,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         IOResources.SerializeFile("ServerList.json", ServerList);
         BLREditSettings.Save();
         LanguageSet.Save();
+        ProxyModule.Save();
     }
 
     private void ScanGameClients()
@@ -409,12 +410,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             {
                 if (e.ClickCount >= 2)
                 {
-                    LoggingSystem.LogInfo($"Double Clicking:{item.Name}");
+                    LoggingSystem.Log($"Double Clicking:{item.Name}");
                     SetItemToImage(LastSelectedImage, item);
                 }
                 else
                 {
-                    LoggingSystem.LogInfo($"Dragging:{item.Name}");
+                    LoggingSystem.Log($"Dragging:{item.Name}");
                     DragDrop.DoDragDrop(element, item, DragDropEffects.Copy);
                 }
             }
@@ -435,7 +436,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         {
             if (e.Data.GetData(typeof(BLRItem)) is BLRItem item)
             {
-                LoggingSystem.LogInfo($"Recieving:{item.Name}");
+                LoggingSystem.Log($"Recieving:{item.Name}");
                 if (border.Child is Grid grid)
                 {
                     if (grid.Children[0] is Image img)
@@ -654,7 +655,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             ItemList.ItemsSource = list;
             ApplySorting();
         }
-        LoggingSystem.LogInfo($"ItemList Set for {Type}");
+        LoggingSystem.Log($"ItemList Set for {Type}");
         ItemListButton_Click(ItemListButton, new RoutedEventArgs());
     }
 
@@ -763,7 +764,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                         LastSelectedImage = image;
                         return;
                     }
-                    LoggingSystem.LogInfo("ItemList Didn't get set");
+                    LoggingSystem.Log("ItemList Didn't get set");
                 }
             }
         }
@@ -1443,7 +1444,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     var grid = CreateAlertGrid($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
                     AlertList.Items.Add(grid);
                     new TripleAnimationDouble(0,400,1,3,1,grid,Grid.WidthProperty, AlertList.Items).Begin(AlertList);
-                    LoggingSystem.LogInfo($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
+                    LoggingSystem.Log($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
                 }
                 break;
             case Key.Z:
@@ -1457,8 +1458,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private Grid CreateAlertGrid(string Alert)
     {
-        TextBox alertText = new TextBox() { Text=Alert, TextAlignment=TextAlignment.Center, Foreground=new SolidColorBrush(Color.FromArgb(255,255,136,0)), IsReadOnly=true, FontSize=26};
-        Grid alertGrid = new Grid() { Background = new SolidColorBrush(Color.FromArgb(159,0,0,0)), HorizontalAlignment=HorizontalAlignment.Right, VerticalAlignment=VerticalAlignment.Center, Width=400 };
+        TextBox alertText = new() { Text=Alert, TextAlignment=TextAlignment.Center, Foreground=new SolidColorBrush(Color.FromArgb(255,255,136,0)), IsReadOnly=true, FontSize=26};
+        Grid alertGrid = new() { Background = new SolidColorBrush(Color.FromArgb(159,0,0,0)), HorizontalAlignment=HorizontalAlignment.Right, VerticalAlignment=VerticalAlignment.Center, Width=400 };
         alertGrid.Children.Add(alertText);
         return alertGrid;
     }
@@ -1475,5 +1476,14 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         int index = e.Text.IndexOfAny(InvalidNameChars);
         if (index >= 0)
         { e.Handled = true; }
+    }
+
+    private void ClientModifyButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            var clientWindow = new BLRClientWindow(button.DataContext);
+            clientWindow.ShowDialog();
+        }
     }
 }

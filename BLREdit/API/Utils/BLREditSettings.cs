@@ -17,8 +17,8 @@ public class BLREditSettings : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
 
-    private static BLREditSettings settings = LoadSettings();
-    public static BLREditSettings Settings { get { return settings; } private set { settings = value; } }
+    private static readonly BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>(IOResources.SETTINGS_FILE) ?? new();
+    public static BLREditSettings Settings { get { return settings; } }
 
     private BLRClient client = null;
     public BLRClient DefaultClient { get { return client; } set { client = value; OnPropertyChanged(); } }
@@ -31,9 +31,9 @@ public class BLREditSettings : INotifyPropertyChanged
     public bool DoRuntimeCheck { get { return doRuntimeCheck; } set { doRuntimeCheck = value; OnPropertyChanged(); } }
     private bool forceRuntimeCheck = false;
     public bool ForceRuntimeCheck { get { return forceRuntimeCheck; } set { forceRuntimeCheck = value; OnPropertyChanged(); } }
-    private UIBool debugging = new UIBool(false);
+    private UIBool debugging = new(false);
     public UIBool Debugging { get { return debugging; } set { debugging = value; OnPropertyChanged(); } }
-    private UIBool modding = new UIBool(false);
+    private UIBool modding = new(false);
     public UIBool AdvancedModding { get { return modding; } set { modding = value; OnPropertyChanged(); } }
 
     public static LaunchOptions GetLaunchOptions()
@@ -41,26 +41,10 @@ public class BLREditSettings : INotifyPropertyChanged
         return new LaunchOptions() { UserName = ExportSystem.ActiveProfile.PlayerName, Server=Settings.DefaultServer };
     }
 
-    public static BLREditSettings LoadSettings()
-    {
-        if (File.Exists(IOResources.SETTINGS_FILE))
-        {
-            BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>(IOResources.SETTINGS_FILE); //Load settings file
-            IOResources.SerializeFile(IOResources.SETTINGS_FILE, settings);                                     //write it back to disk to clean out settings that don't exist anymore from old builds/versions
-            return settings;
-        }
-        else
-        {
-            var tmp = new BLREditSettings();
-            IOResources.SerializeFile(IOResources.SETTINGS_FILE, tmp);
-            return tmp;
-        }
-    }
-
     public static void Save()
     {
         bool client = false;
-        foreach (var c in MainWindow.Self.GameClients)
+        foreach (var c in MainWindow.GameClients)
         {
             if (c.Equals(Settings.DefaultClient))
             {

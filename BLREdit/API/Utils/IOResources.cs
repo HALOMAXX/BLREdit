@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -45,12 +47,26 @@ public class IOResources
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
 
+    public static WebClient WebClient { get; } = new WebClient();
+    public static HttpClient HttpClient { get; } = new HttpClient() { Timeout = new TimeSpan(0,0,10) };
+    public static HttpClient HttpClientWeb { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
+
+    static IOResources()
+    {
+        
+        WebClient.Headers.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
+        HttpClient.DefaultRequestHeaders.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
+        HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+        HttpClientWeb.DefaultRequestHeaders.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
+        HttpClientWeb.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("text/html"));
+    }
+
     public static void GetGameLocationsFromSteam()
     {
         string steampath;
         if (string.IsNullOrEmpty(Steam32InstallFolder) && string.IsNullOrEmpty(Steam6432InstallFolder))
         {
-            LoggingSystem.LogWarning("not performing steam library probing because no steam install is found");
+            LoggingSystem.Log("not performing steam library probing because no steam install is found");
             return;
         }
         if (string.IsNullOrEmpty(Steam32InstallFolder))
@@ -76,11 +92,11 @@ public class IOResources
         }
         catch (System.Exception ex)
         {
-            LoggingSystem.LogWarning($"failed reading {vdfPath}, steam library parsing aborted");
-            LoggingSystem.LogWarning(ex.Message);
+            LoggingSystem.Log($"failed reading {vdfPath}, steam library parsing aborted");
+            LoggingSystem.Log(ex.Message);
             return;
         }
-        foreach (VProperty library in libraryInfo.Children())
+        foreach (VProperty library in libraryInfo.Children().Cast<VProperty>())
         {
             if (library.Key != "contentstatsid")
             {
@@ -88,7 +104,7 @@ public class IOResources
                 var tokens = library.Value.Children();
                 if (tokens.Count() >= 7)
                 {
-                    foreach (VProperty app in ((VProperty)tokens.ElementAt(6)).Value.Children())
+                    foreach (VProperty app in ((VProperty)tokens.ElementAt(6)).Value.Children().Cast<VProperty>())
                     {
                         if (app.Key == appID)
                         {
@@ -109,7 +125,7 @@ public class IOResources
     public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
     {
         //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
-        if (string.IsNullOrEmpty(filePath)) { LoggingSystem.LogWarning("filePath was empty!"); return; }
+        if (string.IsNullOrEmpty(filePath)) { LoggingSystem.Log("filePath was empty!"); return; }
 
         bool writeFile;
         bool deleteFile;
@@ -117,13 +133,13 @@ public class IOResources
         {
             if (prof.IsDirty)
             {
-                LoggingSystem.LogInfo($"{prof.Name}❕");
+                LoggingSystem.Log($"{prof.Name}❕");
                 deleteFile = File.Exists(filePath);
                 writeFile = true;
             }
             else
             {
-                LoggingSystem.LogInfo($"{prof.Name}✔");
+                LoggingSystem.Log($"{prof.Name}✔");
                 deleteFile = false;
                 writeFile = false;
             }
@@ -143,14 +159,14 @@ public class IOResources
             using var file = File.CreateText(filePath);
             file.Write(Serialize(obj, compact));
             file.Close();
-            LoggingSystem.LogInfo($"{typeof(T).Name} serialize succes!");
+            LoggingSystem.Log($"{typeof(T).Name} serialize succes!");
         }
     }
 
     public static string Serialize<T>(T obj, bool compact = false)
     {
         //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
-        if (obj == null) { LoggingSystem.LogWarning("object were empty!"); return ""; }
+        if (obj == null) { LoggingSystem.Log("object were empty!"); return ""; }
         if (compact)
         {
             return JsonSerializer.Serialize<T>(obj, JSOCompacted);
@@ -161,6 +177,12 @@ public class IOResources
         }
     }
 
+    /// <summary>
+    /// Deserializes the file and returns the object
+    /// </summary>
+    /// <typeparam name="T">Type that is contained within the file</typeparam>
+    /// <param name="filePath">the filepath</param>
+    /// <returns>will return object of type on success otherwise will return the default object of said type also if the file is not readable/existent will also return default</returns>
     public static T DeserializeFile<T>(string filePath)
     {
         T temp = default;
@@ -168,7 +190,7 @@ public class IOResources
 
         //check if file exist's before we try to read it if it doesn't exist return and Write an error to log
         if (!File.Exists(filePath))
-        { LoggingSystem.LogError($"File:({filePath}) was not found for Deserialization!"); return temp; }
+        { LoggingSystem.Log($"File:({filePath}) was not found for Deserialization!"); return temp; }
 
 
 
@@ -194,7 +216,7 @@ public class IOResources
         }
         catch (Exception error)
         {
-            LoggingSystem.LogError($"{error.Message}\n{error.StackTrace}");
+            LoggingSystem.Log($"{error.Message}\n{error.StackTrace}");
         }
         return default;
     }

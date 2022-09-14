@@ -49,7 +49,7 @@ public class BLRWeaponSetup : INotifyPropertyChanged
     private void ItemChanged([CallerMemberName] string propertyName = null)
     {
         var value = this.GetType().GetProperty(propertyName).GetValue(this);
-        LoggingSystem.LogInfo($"{propertyName} has been set to {(value as BLRItem)?.Name ?? value}");
+        LoggingSystem.Log($"{propertyName} has been set to {(value as BLRItem)?.Name ?? value}");
         if(!UndoRedoSystem.BlockUpdate) UpdateMagiCowsWeapon();
         CalculateStats();
         OnPropertyChanged(propertyName);
@@ -779,29 +779,6 @@ public class BLRWeaponSetup : INotifyPropertyChanged
         ReloadPercentageDisplay = ReloadSpeedPercentage.ToString("0") + '%';
         RecoilPercentageDisplay = RecoilPercentage.ToString("0") + '%';
         RunPercentageDisplay = MovementSpeedPercentage.ToString("0") + '%';
-    }
-
-    private void ResetStats()
-    {        
-        ReloadMultiplier = double.NaN;
-        CockRateMultiplier = double.NaN;
-        
-        DamageClose = double.NaN;
-        DamageFar = double.NaN;
-
-        RangeClose = double.NaN;
-        RangeFar = double.NaN;
-        RangeTracer = double.NaN;
-
-        RecoilHip = double.NaN;
-        RecoilZoom = double.NaN;
-
-        SpreadWhileADS = double.NaN;
-        SpreadWhileMoving = double.NaN;
-        SpreadWhileStanding = double.NaN;
-
-        ModifiedScopeInTime = double.NaN;
-        ModifiedRunSpeed = double.NaN;
     }
 
     /// <summary>

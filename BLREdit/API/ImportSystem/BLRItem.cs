@@ -17,7 +17,7 @@ public class BLRItem : INotifyPropertyChanged
     public string Icon { get; set; }
     public string Name { get; set; }
 
-    [JsonIgnore] public string DisplayName { get { return LanguageSet.GetWord(UID.ToString()+".Name", Name); } }
+    [JsonIgnore] public string DisplayName { get { return LanguageSet.GetWord(UID.ToString() + ".Name", Name); } }
 
     public BLRPawnModifiers PawnModifiers { get; set; }
     public List<string> SupportedMods { get; set; }

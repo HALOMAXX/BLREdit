@@ -59,6 +59,7 @@ namespace BLREdit
             else
             {
                 Icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + file, UriKind.Absolute);
+                
             }
         }
 

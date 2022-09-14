@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLREdit.Game.Proxy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -10,51 +11,20 @@ namespace BLREdit.API.REST_API.GitHub;
 
 public static class GitHubClient
 {
-    public static HttpClient Client { get; } = new HttpClient() { BaseAddress = new("https://api.github.com/"), Timeout = new(0, 0, 10) };
+    public static readonly RESTAPIClient Client = new RESTAPIClient(RepositoryProvider.GitHub, "https://api.github.com/");
 
-    static GitHubClient()
+    public static async Task<GitHubRelease> GetLatestRelease(string owner, string repo)
     {
-        Client.DefaultRequestHeaders.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
-        Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+        return await Client.GetLatestRelease<GitHubRelease>(owner, repo);
     }
 
-    private static async Task<HttpResponseMessage> GetAsync(string api)
+    public static async Task<GitHubRelease[]> GetReleases(string owner, string repo)
     {
-        var response = await Client.GetAsync(api);
-        LoggingSystem.LogInfo($"[GitHub]({response.StatusCode}): GET {api}");
-        return response;
+        return await Client.GetReleases<GitHubRelease>(owner, repo);
     }
 
-    public static async Task<GitHubRelease> GetLatestRelease(string repo, string owner)
+    public static async Task<GitHubFile> GetFile(string owner, string repo, string branch, string file)
     {
-        var response = await GetAsync($"repos/{owner}/{repo}/releases/latest");
-        if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            return IOResources.Deserialize<GitHubRelease>(content);
-        }
-        return null;
-    }
-
-    public static async Task<GitHubRelease[]> GetReleases(string repo, string owner, int per_page = 1, int page = 1)
-    {
-        var response = await GetAsync($"repos/{owner}/{repo}/releases?page={page}&per_page={per_page}");
-        if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            return IOResources.Deserialize<GitHubRelease[]>(content);
-        }
-        return null;
-    }
-
-    public static async Task<T> GetObjectFromFile<T>(string repo, string owner, string branch, string file)
-    {
-        var response = await GetAsync($"repos/{owner}/{repo}/contents/{file}?ref={branch}");
-        if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            return IOResources.Deserialize<T>(content);
-        }
-        return default;
+        return await Client.GetFile<GitHubFile>(owner, repo, branch, file);
     }
 }

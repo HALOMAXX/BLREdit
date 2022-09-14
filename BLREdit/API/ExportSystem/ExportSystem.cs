@@ -38,7 +38,7 @@ namespace BLREdit
         {
             if (profile == null)
             {
-                LoggingSystem.LogError("Profile was null when settings currentProfile");
+                LoggingSystem.Log("Profile was null when settings currentProfile");
                 throw new ArgumentNullException(nameof(profile), "target profile can't be null for currentProfile");
             }
             int tempProfileIndex = Profiles.IndexOf(profile);
@@ -71,7 +71,7 @@ namespace BLREdit
                 bool requestDelete = false;
 
                 try { profile = IOResources.DeserializeFile<ExportSystemProfile>(file); }
-                catch { LoggingSystem.LogInfo("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
+                catch { LoggingSystem.Log("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
                 profiles.Add(profile);
 
                 if (!profile.IsHealthOkAndRepair())
@@ -81,7 +81,7 @@ namespace BLREdit
 
                 if (!regex.IsMatch(file))
                 {
-                    LoggingSystem.LogInfo($"Old Profile: {file}");
+                    LoggingSystem.Log($"Old Profile: {file}");
                     oldProfiles = true;
                     requestDelete = true;
                     profile.Index = i;
@@ -90,7 +90,7 @@ namespace BLREdit
                 if (requestDelete)
                 {
                     try { File.Delete(file); }
-                    catch { LoggingSystem.LogError($"Could not delete file: {file}"); }
+                    catch { LoggingSystem.Log($"Could not delete file: {file}"); }
                 }
 
                 i++;
@@ -129,14 +129,14 @@ namespace BLREdit
             {
                 SetClipboard(clipboard);
                 success = true;
-                LoggingSystem.LogInfo("Copy Succes");
+                LoggingSystem.Log("Copy Succes");
             }
             catch
             { }
 
             if (!success)
             {
-                LoggingSystem.LogWarning("Failed CopyToClipboard too often!");
+                LoggingSystem.Log("Failed CopyToClipboard too often!");
                 ClipboardFailed message = new(clipboard);
                 message.ShowDialog();
             }

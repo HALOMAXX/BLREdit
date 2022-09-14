@@ -24,6 +24,7 @@
 	    <!--<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
 	  </PackageReference>
 	  <PackageReference Include="Gameloop.Vdf" Version="0.6.2" />
+	  <PackageReference Include="HtmlAgilityPack" Version="1.11.45" />
 	  <PackageReference Include="PeNet" Version="2.9.8" />
 	  <PackageReference Include="System.Text.Json" Version="6.0.5" />
 	</ItemGroup>
@@ -39,6 +40,10 @@
 
 	<ItemGroup>
 	  <Page Include="App.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="UI\Views\" />
 	</ItemGroup>
 	
 </Project>

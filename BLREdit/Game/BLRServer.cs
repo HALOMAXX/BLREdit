@@ -69,13 +69,15 @@ public class BLRServer : INotifyPropertyChanged
     public void PingServer() 
     {
         if (IPAddress is null) { return; }
-        Thread pingThread = new(new ThreadStart(InternalPing));
-        pingThread.Name = ServerAddress + " Ping";
-        pingThread.Priority = ThreadPriority.Highest;
+        Thread pingThread = new(new ThreadStart(InternalPing))
+        {
+            Name = ServerAddress + " Ping",
+            Priority = ThreadPriority.Highest
+        };
         pingThread.Start();
     }
 
-    private static readonly byte[] msg = new byte[1] { 1 };
+    private static readonly byte[] msg = "BLREdit"u8.ToArray();
     private void InternalPing()
     {
         Stopwatch watch = new();
@@ -117,27 +119,27 @@ public class BLRServer : INotifyPropertyChanged
         }
         catch (ObjectDisposedException error)
         {
-            LoggingSystem.LogError("{ObjectDisposedException}" + error.Message + "\n" + error.StackTrace);
+            LoggingSystem.Log("{ObjectDisposedException}" + error.Message + "\n" + error.StackTrace);
             IsOnline = false;
             Ping = double.NaN;
         }
         catch (ArgumentOutOfRangeException error)
         {
-            LoggingSystem.LogError("{ArgumentOutOfRangeException}" + error.Message + "\n" + error.StackTrace);
+            LoggingSystem.Log("{ArgumentOutOfRangeException}" + error.Message + "\n" + error.StackTrace);
             IsOnline = false;
             Ping = double.NaN;
         }
         catch (AggregateException error)
         {
-            LoggingSystem.LogError("{AggregateException}:");
+            LoggingSystem.Log("{AggregateException}:");
             foreach (var ex in error.InnerExceptions)
             {
-                LoggingSystem.LogError(ex.Message + "\n" + ex.StackTrace + "\n");
+                LoggingSystem.Log(ex.Message + "\n" + ex.StackTrace + "\n");
             }
             IsOnline = false;
             Ping = double.NaN;
         }
-        LoggingSystem.LogInfo("Finished Ping for [" + ServerAddress + "]:" + Ping + "ms");
+        LoggingSystem.Log("Finished Ping for [" + ServerAddress + "]:" + Ping + "ms");
         socket.Close();
         socket.Dispose();
     }
@@ -156,7 +158,7 @@ public class BLRServer : INotifyPropertyChanged
         // If an error occurred, display the exception to the user.
         if (e.Error != null)
         {
-            LoggingSystem.LogError(e.Error.Message);
+            LoggingSystem.Log(e.Error.Message);
             // Let the main thread resume.
             ((AutoResetEvent)e.UserState).Set();
         }
@@ -172,17 +174,17 @@ public class BLRServer : INotifyPropertyChanged
     public void DisplayReply(PingReply reply)
     {
         if (reply == null)
-        { LoggingSystem.LogInfo("No Reply Recieved"); return; } 
+        { LoggingSystem.Log("No Reply Recieved"); return; } 
         
         if (reply.Status == IPStatus.Success)
         {
             IsOnline = true;
             Ping = reply.RoundtripTime / 1000.0D;
-            LoggingSystem.LogInfo("[" + ServerAddress + "]:" + reply.Status + " (" + PingDisplay + ")");
+            LoggingSystem.Log("[" + ServerAddress + "]:" + reply.Status + " (" + PingDisplay + ")");
         }
         else
         {
-            LoggingSystem.LogInfo("[" + ServerAddress + "]:" + reply.Status);
+            LoggingSystem.Log("[" + ServerAddress + "]:" + reply.Status);
         }
     }
 
@@ -192,12 +194,9 @@ public class BLRServer : INotifyPropertyChanged
     {
         get
         {
-            if (launchServerCommand == null)
-            {
-                launchServerCommand = new RelayCommand(
+            launchServerCommand ??= new RelayCommand(
                     param => this.LaunchClient()
                 );
-            }
             return launchServerCommand;
         }
     }

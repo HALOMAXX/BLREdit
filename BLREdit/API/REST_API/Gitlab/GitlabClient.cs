@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using BLREdit.API.REST_API.GitHub;
+using BLREdit.Game.Proxy;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -8,36 +10,20 @@ namespace BLREdit.API.REST_API.Gitlab;
 
 public static class GitlabClient
 {
-    public static HttpClient Client { get; } = new HttpClient() { BaseAddress = new("https://gitlab.com/api/v4/"), Timeout = new(0, 0, 10) };
+    public static readonly RESTAPIClient Client = new RESTAPIClient(RepositoryProvider.Gitlab, "https://gitlab.com/api/v4/");
 
-    static GitlabClient()
+    public static async Task<GitlabRelease> GetLatestRelease(string owner, string repo)
     {
-        Client.DefaultRequestHeaders.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
-        Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+        return await Client.GetLatestRelease<GitlabRelease>(owner, repo);
     }
 
-    private static async Task<HttpResponseMessage> GetAsync(string api)
+    public static async Task<GitlabRelease[]> GetReleases(string owner, string repo)
     {
-        var response = await Client.GetAsync(api);
-        LoggingSystem.LogInfo($"[Gitlab]({response.StatusCode}): GET {api}");
-        return response;
+        return await Client.GetReleases<GitlabRelease>(owner, repo);
     }
 
-    public static async Task<GitlabRelease> GetLatestRelease(string repo, string owner)
+    public static async Task<GitlabFile> GetFile(string owner, string repo, string branch, string file)
     {
-        var releases = await GetReleases(owner, repo, 1, 1);
-        if (releases is null) return null;
-        return releases[0];
-    }
-
-    public static async Task<GitlabRelease[]> GetReleases(string repo, string owner, int per_page = 1, int page = 1)
-    {
-        var response = await GetAsync($"projects/{owner.Replace("/", "%2F")}%2F{repo.Replace("/", "%2F")}/releases?page={page}&per_page={per_page}");
-        if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            return IOResources.Deserialize<GitlabRelease[]>(content);
-        }
-        return null;
+        return await Client.GetFile<GitlabFile>(owner, repo, branch, file);
     }
 }

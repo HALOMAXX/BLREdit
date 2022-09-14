@@ -10,8 +10,8 @@ namespace BLREdit.UI
 {
     public static class UndoRedoSystem
     {
-        private static Stack<UndoRedoAction> UndoStack = new();
-        private static Stack<UndoRedoAction> RedoStack = new();
+        private static readonly Stack<UndoRedoAction> UndoStack = new();
+        private static readonly Stack<UndoRedoAction> RedoStack = new();
         private static UndoRedoAction CurrentAction = new();
         private static List<SubUndoRedoAction> AfterActions = new();
         public static bool BlockEvent { get; set; } = false;
@@ -76,7 +76,7 @@ namespace BLREdit.UI
             }
             else
             {
-                LoggingSystem.LogError("CurrentAction.actions is null which should not happen");
+                LoggingSystem.Log("CurrentAction.actions is null which should not happen");
             }
             CurrentAction = new();
         }
@@ -92,7 +92,7 @@ namespace BLREdit.UI
         {
             BlockEvent = shouldBlockEvent;
             BlockUpdate = shouldBlockUpdate;
-            if (CurrentAction.actions is null) { LoggingSystem.LogError("CurrentAction is null which should never happen!"); BlockEvent = false; BlockUpdate = false; return; }
+            if (CurrentAction.actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); BlockEvent = false; BlockUpdate = false; return; }
             object before = propertyInfo.GetValue(target);
             CurrentAction.actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, shouldBlockEvent, shouldBlockUpdate, callName));
             propertyInfo.SetValue(target, after);

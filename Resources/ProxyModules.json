@@ -9,6 +9,7 @@
         "RepositoryProvider": "GitHub",
         "Owner": "Kethen",
         "Repository": "BLRE-settings-manager",
-        "ModuleName": "settings-manager"
+        "ModuleName": "settings-manager",
+        "Server": false
       }
 ]

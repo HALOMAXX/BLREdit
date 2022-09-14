@@ -1,0 +1,53 @@
+﻿<Window x:Class="BLREdit.UI.BLRClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:utils="clr-namespace:BLREdit"
+        xmlns:ui="clr-namespace:BLREdit.UI"
+        xmlns:game="clr-namespace:BLREdit.Game" d:DataContext="{d:DesignInstance Type=game:BLRClient}"
+        mc:Ignorable="d"
+        Title="BLRClientWindow" Height="800" Width="1270" MinWidth="1270">
+
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/Default_2016.png" />
+    </Window.Background>
+
+    <Grid>
+        <TabControl Background="Transparent" BorderThickness="0,1,0,0" BorderBrush="#FF78AEBC">
+            <TabItem Header="Proxy Modules">
+                <Grid Background="Transparent">
+                    <ListView Name="ModuleList" ItemsSource="{Binding Path=AvailabeModules}" Background="Transparent" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="2"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Background="White">
+                                    <Grid Name="ImageGrid" VerticalAlignment="Top" Width="600" Height="300" Background="Transparent">
+                                        <Image Source="{Binding Path=Image}" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                                    </Grid>
+                                    <Border BorderThickness="0,1,0,0" Background="Transparent" Margin="0,300,0,0" Height="100">
+                                        <Grid Name="DescriptionGrid" Width="600">
+                                            <StackPanel Margin="8">
+                                                <TextBlock Text="{Binding Path=Title}" TextTrimming="CharacterEllipsis" FontSize="20" FontWeight="UltraBlack"/>
+                                                <TextBlock Text="{Binding Path=Description}" TextTrimming="CharacterEllipsis" FontSize="16"/>
+                                            </StackPanel>
+                                            <Button Content="Install" IsEnabled="{Binding Path=Installed.IsNot}" Command="{Binding Path=InstallCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Patches">
+                <Grid/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

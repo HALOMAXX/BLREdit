@@ -5,24 +5,36 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using BLREdit.Game.Proxy;
 using BLREdit.UI;
 using PeNet;
+using PeNet.Header.Net.MetaDataTables;
+
+using File = System.IO.File;
 
 namespace BLREdit.Game;
 
 public class BLRClient : INotifyPropertyChanged
 {
-    private static readonly SHA256 crypto = SHA256.Create();
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(ClientHash, out string version)) { return version; } else { return "Unknown"; } } }
     [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
+
+
+    [JsonIgnore] public BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/BLREdit;component/UI/Resources/V.png", UriKind.Absolute)); } }
+    [JsonIgnore] public BitmapImage ClientVersionPart1 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 2) { return new BitmapImage(new Uri($"pack://application:,,,/BLREdit;component/UI/Resources/{char.GetNumericValue(ClientVersion[1])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage ClientVersionPart2 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 3) { return new BitmapImage(new Uri($"pack://application:,,,/BLREdit;component/UI/Resources/{char.GetNumericValue(ClientVersion[2])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage ClientVersionPart3 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 4) { return new BitmapImage(new Uri($"pack://application:,,,/BLREdit;component/UI/Resources/{char.GetNumericValue(ClientVersion[3])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage ClientVersionPart4 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 5) { return new BitmapImage(new Uri($"pack://application:,,,/BLREdit;component/UI/Resources/{char.GetNumericValue(ClientVersion[4])}.png", UriKind.Absolute)); } return null; } }
 
     private string clientHash;
     public string ClientHash {
@@ -55,16 +67,18 @@ public class BLRClient : INotifyPropertyChanged
 
     public ObservableCollection<ProxyModule> InstalledModules { get; set; } = new();
 
+    [JsonIgnore] public static VisualProxyModule[] AvailabeModules { get { return App.AvailableProxyModules; } }
+
     public static Dictionary<string, string> VersionHashes => new()
     {
-        {"0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7", "v3.02"},
-        {"de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3", "v3.01"},
-        {"1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6", "v3.00"},
-        {"d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4", "v1.20"},
-        {"4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5", "v1.40"},
-        {"01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58", "v1.30"},
-        {"d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f", "v1.100"},
-        {"9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116", "v0.993"}
+        {"0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7", "v302"},
+        {"de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3", "v301"},
+        {"1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6", "v300"},
+        {"d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4", "v120"},
+        {"4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5", "v140"},
+        {"01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58", "v130"},
+        {"d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f", "v1100"},
+        {"9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116", "v0993"}
     };
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -88,44 +102,51 @@ public class BLRClient : INotifyPropertyChanged
     #region ClientValidation
     public bool ValidateClient()
     {
+        //TODO: Optimize Client Validation
+        /*
+            initial test should only make sure original file exist
+            test before launch should make sure patches are still upto date
+            and validate installed modules before launch
+         */
         bool isValid = true;
         bool NeedsPatching = false;
-        if (!string.IsNullOrEmpty(OriginalPath) && File.Exists(OriginalPath))
+        if (OriginalFileValidation())
         {
+            //this is super overkill
             if (!ValidateClientHash(ClientHash, OriginalPath, out string NewHash))
             {
-                LoggingSystem.LogInfo($"Client has changed was {ClientHash} is now {NewHash} needs patching!");
+                LoggingSystem.Log($"Client has changed was {ClientHash} is now {NewHash} needs patching!");
                 ClientHash = NewHash;
                 NeedsPatching = true;
             }
             else
             {
-                LoggingSystem.LogInfo($"Client is still the Same! {OriginalPath}");
+                LoggingSystem.Log($"Client is still the Same! {OriginalPath}");
             }
         }
         else
         {
-            LoggingSystem.LogError($"Client is not valid missing original file path or file is missing!");
+            LoggingSystem.Log($"Client is not valid missing original file path or file is missing!");
             isValid = false;
         }
 
-        if (!string.IsNullOrEmpty(PatchedPath) && File.Exists(PatchedPath))
+        if (PatchedFileValidation())
         {
             if (!ValidateClientHash(PatchedHash, PatchedPath, out string NewHash))
             {
-                LoggingSystem.LogInfo($"Patched client changed/corrupted was {PatchedHash} is now {NewHash} needs patching!");
+                LoggingSystem.Log($"Patched client changed/corrupted was {PatchedHash} is now {NewHash} needs patching!");
                 NeedsPatching = true;
             }
             else
             {
-                LoggingSystem.LogInfo($"Patched file is still the same!"); //We can check the installed Modules now!
+                LoggingSystem.Log($"Patched file is still the same!"); //We can check the installed Modules now!
                 if (ValidatePatches()) { NeedsPatching = true; }
-                ValidateModules();
+                //ValidateModules();
             }
         }
         else
         {
-            LoggingSystem.LogInfo($"Client hasn't been patched yet!");
+            LoggingSystem.Log($"Client hasn't been patched yet!");
             NeedsPatching=true;
         }
 
@@ -135,6 +156,16 @@ public class BLRClient : INotifyPropertyChanged
         }
 
         return isValid;
+    }
+
+    public bool OriginalFileValidation()
+    {
+        return !string.IsNullOrEmpty(OriginalPath) && File.Exists(OriginalPath);
+    }
+
+    public bool PatchedFileValidation()
+    {
+        return !string.IsNullOrEmpty(PatchedPath) && File.Exists(PatchedPath);
     }
 
     public bool ValidatePatches()
@@ -152,26 +183,69 @@ public class BLRClient : INotifyPropertyChanged
                     {
                         if (installedPatch.Equals(patch)) isValid = true;
                     }
-                    if (!isValid) { needUpdatedPatches = true; LoggingSystem.LogInfo($"found old patch {installedPatch.PatchName}"); }
+                    if (!isValid) { needUpdatedPatches = true; LoggingSystem.Log($"found old patch {installedPatch.PatchName}"); }
                 }
             }
             else
             {
-                LoggingSystem.LogInfo($"no installed patches for {ClientHash}");
+                LoggingSystem.Log($"no installed patches for {ClientHash}");
                 needUpdatedPatches = true;
             }
         }
         else
         {
-            LoggingSystem.LogWarning($"No patches found for {ClientHash}");
+            LoggingSystem.Log($"No patches found for {ClientHash}");
             needUpdatedPatches=true;
         }
         return needUpdatedPatches;
     }
 
     public void ValidateModules()
-    { 
+    {
         //TODO: Validate Installed Modules
+
+        ProxyConfig config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}\\default.json") ?? new();
+        foreach (var module in InstalledModules)
+        {
+            bool clientAlready = false;
+            bool serverAlready = false;
+            foreach (var mod in config.Proxy.Modules.Client)
+            {
+                if (mod == module.ModuleName)
+                { 
+                    clientAlready = true;
+                    break;
+                }
+            }
+            foreach (var mod in config.Proxy.Modules.Server)
+            {
+                if (mod == module.ModuleName)
+                {
+                    serverAlready = true;
+                    break;
+                }
+            }
+
+            if (module.Client && !clientAlready)
+            {
+                config.Proxy.Modules.Client.Add(module.ModuleName);
+            }
+            else if (!module.Client && clientAlready)
+            {
+                config.Proxy.Modules.Client.Remove(module.ModuleName);
+            }
+
+            if (module.Server && !serverAlready)
+            {
+                config.Proxy.Modules.Server.Add(module.ModuleName);
+            }
+            else if (!module.Server && serverAlready)
+            {
+                config.Proxy.Modules.Server.Remove(module.ModuleName);
+            }
+        }
+
+        IOResources.SerializeFile($"{ConfigFolder}\\default.json", config);
     }
 
     public static bool ValidateClientHash(string currentHash, string fileLocation, out string newHash)
@@ -189,12 +263,9 @@ public class BLRClient : INotifyPropertyChanged
     {
         get
         {
-            if (patchClientCommand == null)
-            {
-                patchClientCommand = new RelayCommand(
+            patchClientCommand ??= new RelayCommand(
                     param => this.PatchClient()
                 );
-            }
             return patchClientCommand;
         }
     }
@@ -205,12 +276,9 @@ public class BLRClient : INotifyPropertyChanged
     {
         get 
         {
-            if (launchClientCommand == null)
-            {
-                launchClientCommand = new RelayCommand(
+            launchClientCommand ??= new RelayCommand(
                     param => this.LaunchClient()
                 );
-            }
             return launchClientCommand;
         }
     }
@@ -221,12 +289,9 @@ public class BLRClient : INotifyPropertyChanged
     {
         get
         {
-            if (launchServerCommand == null)
-            {
-                launchServerCommand = new RelayCommand(
+            launchServerCommand ??= new RelayCommand(
                     param => this.LaunchServer()
                 );
-            }
             return launchServerCommand;
         }
     }
@@ -237,12 +302,9 @@ public class BLRClient : INotifyPropertyChanged
     {
         get
         {
-            if (launchBotMatchCommand == null)
-            {
-                launchBotMatchCommand = new RelayCommand(
+            launchBotMatchCommand ??= new RelayCommand(
                     param => this.LaunchBotMatch()
                 );
-            }
             return launchBotMatchCommand;
         }
     }
@@ -274,6 +336,10 @@ public class BLRClient : INotifyPropertyChanged
     }
     private void StartProcess(string launchArgs)
     {
+        ValidateClient();
+        ValidateModules();
+        //Write Proxy Config for installed modules
+
         ProcessStartInfo psi = new()
         {
             CreateNoWindow = true,
@@ -309,7 +375,7 @@ public class BLRClient : INotifyPropertyChanged
             newPath += pathParts[i];
             if (pathParts[i] == "blacklightretribution")
             {
-                LoggingSystem.LogInfo($"found root BLR Directory {newPath}");
+                LoggingSystem.Log($"found root BLR Directory {newPath}");
                 ConfigFolder = Directory.CreateDirectory($"{newPath}\\FoxGame\\Config\\BLRevive\\").FullName;
                 ModulesFolder = Directory.CreateDirectory($"{newPath}\\Binaries\\Win32\\Modules\\").FullName;
             }
@@ -340,7 +406,7 @@ public class BLRClient : INotifyPropertyChanged
             {
                 foreach (BLRClientPatch patch in patches)
                 {
-                    LoggingSystem.LogInfo($"Applying Patch:{patch.PatchName} to Client:{ClientHash}");
+                    LoggingSystem.Log($"Applying Patch:{patch.PatchName} to Client:{ClientHash}");
                     foreach (var part in patch.PatchParts)
                     {
                         binaryWriter.Seek(part.Key, SeekOrigin.Begin);
@@ -351,12 +417,12 @@ public class BLRClient : INotifyPropertyChanged
             }
             catch (Exception error)
             {
-                LoggingSystem.LogError(error.Message + '\n' + error.StackTrace);
+                LoggingSystem.Log(error.Message + '\n' + error.StackTrace);
             }
         }
         else
         {
-            LoggingSystem.LogWarning($"No patches found for {ClientHash}");
+            LoggingSystem.Log($"No patches found for {ClientHash}");
         }
 
         binaryWriter.Close();
@@ -368,7 +434,7 @@ public class BLRClient : INotifyPropertyChanged
 
         var peFile = new PeFile(outFile);
         peFile.AddImport("Proxy.dll", "InitializeThread");
-
+        File.WriteAllBytes(outFile, peFile.RawFile.ToArray());
         PatchedPath = outFile;
         PatchedHash = CreateClientHash(outFile);
     }
@@ -376,6 +442,7 @@ public class BLRClient : INotifyPropertyChanged
     public static string CreateClientHash(string path)
     {
         using var stream = File.OpenRead(path);
+        using var crypto = SHA256.Create();
         return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
     }
 

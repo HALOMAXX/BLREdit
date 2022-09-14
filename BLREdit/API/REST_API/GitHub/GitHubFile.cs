@@ -18,12 +18,12 @@ public class GitHubFile
     public string download_url { get; set; }
     public GitHubLink _links { get; set; }
     private string _decoded_content;
-    [JsonIgnore] public string decoded_content { 
-        get {
-            if (_decoded_content is null)
-            { 
-                _decoded_content = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(content));
-            }
+    [JsonIgnore] public string decoded_content 
+    { 
+        get
+        {
+            _decoded_content ??= System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(content));
             return _decoded_content;
-        } }
+        } 
+    }
 }

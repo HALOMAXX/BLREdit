@@ -52,7 +52,11 @@ namespace BLREdit.Game
             foreach (string file in patches)
             {
                 if (file.EndsWith(".json"))
-                    loadedPatches.Add(IOResources.DeserializeFile<BLRClientPatch>(file));
+                {
+                    var patch = IOResources.DeserializeFile<BLRClientPatch>(file);
+                    if (patch is not null) loadedPatches.Add(patch);
+                }
+                    
             }
             if (loadedPatches.Count <= 0)
             {

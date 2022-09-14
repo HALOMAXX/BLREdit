@@ -160,6 +160,42 @@
         </Setter>
     </Style>
 
+    <Style TargetType="TabItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid Name="Panel" Background="Transparent" Width="128">
+                        <Image Name="Normal" Source="Resources/CleanedButton.png" Stretch="Fill"/>
+                        <Image Name="Hover" Visibility="Collapsed" Source="Resources/CleanedButtonHover.png" Stretch="Fill"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Grid.Column="1" x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        ContentSource="Header"/>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Normal" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="Hover" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="ContentSite" Property="TextBlock.Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Normal" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="Hover" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="ContentSite" Property="TextBlock.Foreground" Value="#FF78AEBC"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -172,19 +208,27 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="10*"/>
                             </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="1" Name="ButtonContent"  Foreground="#FF78AEBC" VerticalAlignment="Center" Text="{Binding (Button.Content), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                            <ContentPresenter Grid.Column="1" Name="ButtonContent" VerticalAlignment="Center" Content="{Binding (Button.Content), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                <ContentPresenter.Style>
+                                    <Style>
+                                        <Setter Property="TextBlock.Foreground" Value="#FF78AEBC"/>
+                                    </Style>
+                                </ContentPresenter.Style>
+                            </ContentPresenter>
+                            
+                            <!--Foreground="#FF78AEBC"-->
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
                             <Setter TargetName="Hover" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="ButtonContent" Property="Foreground" Value="#FFFFFFFF"/>
+                            <Setter TargetName="ButtonContent" Property="TextBlock.Foreground" Value="#FFFFFFFF"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
                             <Setter TargetName="Hover" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="ButtonContent" Property="Foreground" Value="#FFFFFFFF"/>
+                            <Setter TargetName="ButtonContent" Property="TextBlock.Foreground" Value="#FFFFFFFF"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
