@@ -67,9 +67,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     public static MainWindow Self { get; private set; } = null;
 
-    private int buttonIndex = 0;
-    private readonly List<FrameworkElement> ItemButtons = new();
-
     private int columns = 4;
     public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
 
@@ -91,10 +88,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         ChangeSortingDirection(this, null);
         ChangeSortingDirection(this, null);
-
-        ItemButtons.Add(ItemListButton);
-        ItemButtons.Add(AdvancedInfoButton);
-        ItemButtons.Add(LauncherButton);
 
         ItemList.Items.Filter += new Predicate<object>(o =>
         {
@@ -134,16 +127,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         LoadoutGrid.DataContext = Loadout;
         AdvancedInfo.DataContext = Loadout;
-        MenuGrid.DataContext = this;
-        LauncherMenu.DataContext = this;
-
-        ItemListButton_Click(ItemListButton, new RoutedEventArgs());
-        ItemListButton_Click(AdvancedInfoButton, new RoutedEventArgs());
-        ItemListButton_Click(LauncherButton, new RoutedEventArgs());
-        LauncherMenuButton_Click(ServerListButton, new RoutedEventArgs());
-        LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
-        ItemListButton_Click(ItemListButton, new RoutedEventArgs());
-        LauncherMenuButton_Click(ServerListButton, new RoutedEventArgs());
     }
 
     private static void SetBorderColor(Border border, Color color)
@@ -214,66 +197,46 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             BLREditSettings.Settings.DefaultServer = ServerList[0];
         }
 
-
-        CheckGameClientSetup();
+        CheckGameClients();
     }
 
-    public void CheckGameClientSetup()
+    private static void CheckGameClients()
     {
-        if (!IsCheckingGameClient)
-        {
-            IsCheckingGameClient = true;
-            CheckGameClients();
-            IsCheckingGameClient = false;
-        }
-    }
-
-    private void CheckGameClients()
-    {
+        LoggingSystem.Log("Checking for patched clients");
         if (GameClients.Count <= 0)
         {
-            ItemListButton_Click(LauncherButton, new RoutedEventArgs());
-            LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
             MessageBox.Show("You have to locate and add atleast one Client");
         }
         else
         {
-            List<BLRClient> patchedClients = new();
             bool isClientStillExistent = false;
+            BLRClient patchedClient = null;
             foreach (BLRClient client in GameClients)
             {
                 if (client.Equals(BLREditSettings.Settings.DefaultClient))
-                { isClientStillExistent = true; }
-                if (client.Patched.Is)
-                { patchedClients.Add(client); }
-            }
-
-            if (!isClientStillExistent) { BLREditSettings.Settings.DefaultClient = null; }
-
-            if (patchedClients.Count > 0)
-            {
-                if (BLREditSettings.Settings.DefaultClient is null)
                 {
-                    if (patchedClients.Count > 1)
-                    {
-                        ItemListButton_Click(LauncherButton, new RoutedEventArgs());
-                        LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
-                        MessageBox.Show("You have to select one of the Patched Clients as a Default Client");
-                    }
-                    else
-                    { BLREditSettings.Settings.DefaultClient = patchedClients[0]; patchedClients[0].CurrentClient.SetBool(true); }
+                    isClientStillExistent = true;
+                    client.CurrentClient.SetBool(true);
+                }
+                else
+                {
+                    client.CurrentClient.SetBool(false);
+                    if (patchedClient is null && client.Patched.Is) patchedClient = client;
                 }
             }
-            else if (GameClients.Count == 1)
+
+            if (!isClientStillExistent)
             {
-                GameClients[0].PatchClient();
-                BLREditSettings.Settings.DefaultClient = GameClients[0];
-            }
-            else
-            {
-                ItemListButton_Click(LauncherButton, new RoutedEventArgs());
-                LauncherMenuButton_Click(GameClientButton, new RoutedEventArgs());
-                MessageBox.Show("You have to Patch one of the Available Clients");
+                if (patchedClient is null)
+                {
+                    BLREditSettings.Settings.DefaultClient = null;
+                    MessageBox.Show("You still have to patch atleast one Client");
+                }
+                else
+                {
+                    BLREditSettings.Settings.DefaultClient = patchedClient;
+                    patchedClient.CurrentClient.SetBool(true);
+                }
             }
         }
     }
@@ -397,11 +360,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         ProxyModule.Save();
     }
 
-    private void ScanGameClients()
-    { 
-        
-    }
-
     private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (sender is FrameworkElement element)
@@ -451,11 +409,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             }
         }
         
-    }
-
-    private static void UpdateActiveLoadout()
-    {
-        Loadout.UpdateMagicCowsLoadout(ActiveLoadout);
     }
 
     private static bool CheckForPistolAndBarrel(BLRItem item)
@@ -656,7 +609,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             ApplySorting();
         }
         LoggingSystem.Log($"ItemList Set for {Type}");
-        ItemListButton_Click(ItemListButton, new RoutedEventArgs());
+        if(!ItemListTab.IsFocused) ItemListTab.Focus();
     }
 
     public void ApplySorting()
@@ -1237,51 +1190,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         return weapon;
     }
 
-    private void ItemListButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            buttonIndex = ItemButtons.IndexOf(button);
-            foreach (FrameworkElement element in MenuGrid.Children)
-            {
-                if (element.Tag is UIElement otherElement)
-                { 
-                    otherElement.Visibility = Visibility.Collapsed;
-                    otherElement.IsEnabled = false;
-                }
-                element.IsEnabled = true;
-            }
-            button.IsEnabled = false;
-            if (button.Tag is FrameworkElement element2)
-            { 
-                element2.Visibility = Visibility.Visible;
-                element2.IsEnabled = true;
-            }
-        }
-    }
-
-    private void LauncherMenuButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            foreach (FrameworkElement element in LauncherMenu.Children)
-            {
-                if (element.Tag is UIElement otherElement)
-                {
-                    otherElement.Visibility = Visibility.Collapsed;
-                    otherElement.IsEnabled = false;
-                }
-                element.IsEnabled = true;
-            }
-            button.IsEnabled = false;
-            if (button.Tag is FrameworkElement element2)
-            {
-                element2.Visibility = Visibility.Visible;
-                element2.IsEnabled = true;
-            }
-        }
-    }
-
     #region GameClient UI
     private void OpenNewGameClient_Click(object sender, RoutedEventArgs e)
     {
@@ -1296,7 +1204,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         {
             AddGameClient(new BLRClient() { OriginalPath = dialog.FileName });
         }
-        CheckGameClientSetup();
+        CheckGameClients();
     }
 
     private void RemoveGameClient_Click(object sender, RoutedEventArgs e)
@@ -1400,6 +1308,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
+
+    private int buttonIndex = 0;
     private void PreviewKeyUpMainWindow(object sender, KeyEventArgs e)
     {
         switch (e.Key)
@@ -1417,24 +1327,23 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                 ctrlDown = false;
                 break;
             case Key.Tab:
-                int index = buttonIndex;
                 if (shiftDown)
                 {
-                    index--;
+                    buttonIndex--;
                 }
                 else
                 {
-                    index++;
+                    buttonIndex++;
                 }
-                if (index < 0)
+                if (buttonIndex < 0)
                 {
-                    index = ItemButtons.Count - 1;
+                    buttonIndex = MainWindowTabs.Items.Count - 1;
                 }
-                if (index > ItemButtons.Count - 1)
+                if (buttonIndex > MainWindowTabs.Items.Count - 1)
                 {
-                    index = 0;
+                    buttonIndex = 0;
                 }
-                ItemListButton_Click(ItemButtons[index], new RoutedEventArgs());
+                ((TabItem)MainWindowTabs.Items[buttonIndex]).Focus();
                 break;
             case Key.A:
                 if (shiftDown)

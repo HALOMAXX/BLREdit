@@ -10,7 +10,7 @@ namespace BLREdit.API.REST_API.Gitlab;
 
 public static class GitlabClient
 {
-    public static readonly RESTAPIClient Client = new RESTAPIClient(RepositoryProvider.Gitlab, "https://gitlab.com/api/v4/");
+    public static readonly RESTAPIClient Client = new(RepositoryProvider.Gitlab, "https://gitlab.com/api/v4/");
 
     public static async Task<GitlabRelease> GetLatestRelease(string owner, string repo)
     {

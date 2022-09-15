@@ -89,8 +89,6 @@ namespace BLREdit.Game.Proxy
             if (lockDownload) return null;
             lockDownload = true;
 
-            string author = "";
-            DateTime published;
             string dl = "";
             if (RepositoryProvider == RepositoryProvider.GitHub)
             {
@@ -103,8 +101,6 @@ namespace BLREdit.Game.Proxy
                         break;
                     }
                 }
-                author = hubRelease.author.login;
-                published = hubRelease.published_at;
             }
             else
             {
@@ -117,8 +113,6 @@ namespace BLREdit.Game.Proxy
                         break;
                     }
                 }
-                author = labRelease.author.name;
-                published = labRelease.released_at;
             }
 
             IOResources.WebClient.DownloadFile(dl, $"downloads\\{ModuleName}.dll");

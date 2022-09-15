@@ -51,7 +51,7 @@ public class BLRClient : INotifyPropertyChanged
     private string originalPath;
     public string OriginalPath { 
         get { return originalPath; } 
-        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash = CreateClientHash(value); OnPropertyChanged(); } } 
+        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash ??= CreateClientHash(value); OnPropertyChanged(); } } 
     }
 
     private string patchedPath;

@@ -7,17 +7,17 @@
         xmlns:ui="clr-namespace:BLREdit.UI"
         xmlns:game="clr-namespace:BLREdit.Game" d:DataContext="{d:DesignInstance Type=game:BLRClient}"
         mc:Ignorable="d"
-        Title="BLRClientWindow" Height="800" Width="1270" MinWidth="1270">
+        Title="BLRClientWindow" Height="800" Width="1270" MinWidth="1270" WindowStartupLocation="CenterScreen">
 
     <Window.Background>
         <ImageBrush ImageSource="Resources/Default_2016.png" />
     </Window.Background>
 
     <Grid>
-        <TabControl Background="Transparent" BorderThickness="0,1,0,0" BorderBrush="#FF78AEBC">
+        <TabControl BorderThickness="0,1,0,0" >
             <TabItem Header="Proxy Modules">
-                <Grid Background="Transparent">
-                    <ListView Name="ModuleList" ItemsSource="{Binding Path=AvailabeModules}" Background="Transparent" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <Grid>
+                    <ListView Name="ModuleList" ItemsSource="{Binding Path=AvailabeModules}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="2"/>

@@ -11,7 +11,7 @@ namespace BLREdit.API.REST_API.GitHub;
 
 public static class GitHubClient
 {
-    public static readonly RESTAPIClient Client = new RESTAPIClient(RepositoryProvider.GitHub, "https://api.github.com/");
+    public static readonly RESTAPIClient Client = new(RepositoryProvider.GitHub, "https://api.github.com/");
 
     public static async Task<GitHubRelease> GetLatestRelease(string owner, string repo)
     {

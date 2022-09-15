@@ -6,8 +6,11 @@
     <local:BLREditSettings x:Key="Settings"/>
 
     <Style TargetType="ListView">
-        <Setter Property="Background" Value="#4C000000"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="#0C9E9E9E"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"/>
     </Style>
 
     <Style TargetType="ListViewItem">
@@ -160,11 +163,16 @@
         </Setter>
     </Style>
 
+    <Style TargetType="TabControl">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#FF78AEBC"/>
+    </Style>
+
     <Style TargetType="TabItem">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Grid Name="Panel" Background="Transparent" Width="128">
+                    <Grid Name="Panel" Background="Transparent" Width="128" Height="22">
                         <Image Name="Normal" Source="Resources/CleanedButton.png" Stretch="Fill"/>
                         <Image Name="Hover" Visibility="Collapsed" Source="Resources/CleanedButtonHover.png" Stretch="Fill"/>
 

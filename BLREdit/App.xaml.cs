@@ -2,6 +2,7 @@
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,17 +40,16 @@ namespace BLREdit
             RuntimeCheck();
             ImportSystem.Initialize();
 
+            LoggingSystem.Log("Loading Client List");
             UI.MainWindow.GameClients = IOResources.DeserializeFile<List<BLRClient>>("GameClients.json") ?? new();
             UI.MainWindow.ServerList = IOResources.DeserializeFile<List<BLRServer>>("ServerList.json") ?? new();
 
-            var validate = Task.Run(() => {
-                Parallel.For(0, UI.MainWindow.GameClients.Count, (i) => {
-                    if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
-                    { UI.MainWindow.GameClients.RemoveAt(i); i--; }
-                });
-            });
-
-            validate.Wait();
+            LoggingSystem.Log("Validating Client List");
+            for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
+            {
+                if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
+                { UI.MainWindow.GameClients.RemoveAt(i); i--; }
+            }
         }
 
         public async Task Initialize()
@@ -87,12 +87,13 @@ namespace BLREdit
         }
 
         private static int CreateVersion(string versionTag)
-        { 
+        {
             var splitTag = versionTag.Split('v');
             var stringVersionParts = splitTag[splitTag.Length - 1].Split('.');
             int version = 0;
             int multiply = 1;
-            for (int i = stringVersionParts.Length-1; i > 0; i--)            {
+            for (int i = stringVersionParts.Length - 1; i > 0; i--)
+            {
                 if (int.TryParse(stringVersionParts[i], out int result))
                 {
                     version += result * (multiply);
