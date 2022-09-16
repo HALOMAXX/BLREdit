@@ -1,11 +1,7 @@
 ﻿using BLREdit.Game.Proxy;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace BLREdit.API.REST_API;
 
@@ -13,6 +9,8 @@ public class RESTAPIClient
 {
     RepositoryProvider API_Provider;
     string BaseAddress = "";
+
+    Dictionary<string, object> RequestCache = new();
 
     public RESTAPIClient(RepositoryProvider prov, string baseAddress)
     { 
@@ -23,7 +21,9 @@ public class RESTAPIClient
     private async Task<HttpResponseMessage> GetAsync(string api)
     {
         var response = await IOResources.HttpClient.GetAsync($"{BaseAddress}{api}");
-        LoggingSystem.Log($"[{API_Provider}]({response.StatusCode}): GET {api}");
+        string fail = "";
+        if (!response.IsSuccessStatusCode) { fail = $"\n {await response.Content.ReadAsStringAsync()}";}
+        LoggingSystem.Log($"[{API_Provider}]({response.StatusCode}): GET {api}{fail}");
         return response;
     }
 
@@ -41,11 +41,21 @@ public class RESTAPIClient
         else
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/releases?page={page}&per_page={per_page}"; }
 
-        var response = await GetAsync(api);
-        if (response.IsSuccessStatusCode)
-        { 
-            var content = await response.Content.ReadAsStringAsync();
-            return IOResources.Deserialize<T[]>(content);
+        if (RequestCache.TryGetValue(api, out object value))
+        {
+            LoggingSystem.Log($"[Cache]:({typeof(T).Name}) {api}");
+            return (T[])value;
+        }
+
+        using (var response = await GetAsync(api))
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var releases = IOResources.Deserialize<T[]>(content);
+                RequestCache.Add(api, releases);
+                return releases;
+            }
         }
         return default;
     }
@@ -58,11 +68,21 @@ public class RESTAPIClient
         else
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/repository/files/{file.Replace("/", "%2F").Replace(".", "%2E")}?ref={branch}"; }
 
-        var response = await GetAsync(api);
-        if (response.IsSuccessStatusCode)
+        if (RequestCache.TryGetValue(api, out object value))
         {
-            var content = await response.Content.ReadAsStringAsync();
-            return IOResources.Deserialize<T>(content);
+            LoggingSystem.Log($"[Cache]:({typeof(T).Name}) {api}");
+            return (T)value;
+        }
+
+        using (var response = await GetAsync(api))
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var fileData = IOResources.Deserialize<T>(content);
+                RequestCache.Add(api, fileData);
+                return fileData;
+            }
         }
         return default;
     }

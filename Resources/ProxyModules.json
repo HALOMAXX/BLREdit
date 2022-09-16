@@ -18,5 +18,13 @@
         "Repository": "BLRE-server-utils",
         "ModuleName": "server-utils",
         "Client": false
+      },
+      {
+        "RepositoryProvider": "GitHub",
+        "Owner": "HALOMAXX",
+        "Repository": "BLREdit",
+        "ModuleName": "No-Module",
+        "Client": false,
+        "Server": false
       }
 ]

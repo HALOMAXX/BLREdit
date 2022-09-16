@@ -114,8 +114,11 @@ namespace BLREdit.Game.Proxy
                     }
                 }
             }
-
-            IOResources.WebClient.DownloadFile(dl, $"downloads\\{ModuleName}.dll");
+            string dlTarget = $"downloads\\{ModuleName}.dll";
+            if (File.Exists(dlTarget)) { LoggingSystem.Log($"Deleting {dlTarget}"); File.Delete(dlTarget); }
+            LoggingSystem.Log($"Downloading {dl}");
+            IOResources.WebClient.DownloadFile(dl, dlTarget);
+            LoggingSystem.Log($"Finished Downloading {dl}");
 
             ProxyModule module;
 

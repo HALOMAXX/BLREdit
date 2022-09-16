@@ -201,7 +201,14 @@ public class VisualProxyModule : INotifyPropertyChanged
         {
             LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.ModuleName}");
 
+            if (BLRClientWindow.Client.Patched.IsNot) 
+            {
+                LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
+                BLRClientWindow.Client.PatchClient();
+            }
+
             var releaseDate = await GetLatestReleaseDate();
+            LoggingSystem.Log($"Got Latest Release Date:[{releaseDate}]");
 
             ProxyModule module = null;
             foreach (var cachedModule in ProxyModule.CachedModules)
@@ -213,17 +220,24 @@ public class VisualProxyModule : INotifyPropertyChanged
                 }
             }
 
+            if (module is not null) LoggingSystem.Log($"Found {module.ModuleName} in cache"); else LoggingSystem.Log($"{RepositoryProxyModule.ModuleName} is not in cache");
+
             module ??= await RepositoryProxyModule.DownloadLatest();
+
             if (module is not null)
             {
                 File.Copy($"downloads\\{module.ModuleName}.dll", $"{BLRClientWindow.Client.ModulesFolder}\\{module.ModuleName}.dll", true);
+                LoggingSystem.Log($"Copied {module.ModuleName} from Cache to client module location");
                 BLRClientWindow.Client.InstalledModules.Add(module);
+                LoggingSystem.Log($"Added {RepositoryProxyModule.ModuleName} to installed modules of {BLRClientWindow.Client}");
             }
         }
         catch (Exception error) 
         {
             LoggingSystem.Log($"failed to install module:{RepositoryProxyModule.ModuleName} reason:{error.Message}\n{error.StackTrace}");
         }
+
+        LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.ModuleName}");
         OnPropertyChanged(nameof(Installed));
         lockInstall = false;
     }
@@ -233,12 +247,12 @@ public class VisualProxyModule : INotifyPropertyChanged
         if (RepositoryProxyModule.RepositoryProvider == RepositoryProvider.GitHub)
         {
             var releaseInfo = await GitHubClient.GetLatestRelease(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository);
-            return releaseInfo.published_at;
+            return releaseInfo?.published_at ?? DateTime.MinValue;
         }
         else
         {
             var releaseInfo = await GitlabClient.GetLatestRelease(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository);
-            return releaseInfo.released_at;
+            return releaseInfo?.released_at ?? DateTime.MinValue;
         }
     }
 

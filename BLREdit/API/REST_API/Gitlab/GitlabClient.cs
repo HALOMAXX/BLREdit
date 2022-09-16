@@ -1,9 +1,4 @@
-﻿using BLREdit.API.REST_API.GitHub;
-using BLREdit.Game.Proxy;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using BLREdit.Game.Proxy;
 using System.Threading.Tasks;
 
 namespace BLREdit.API.REST_API.Gitlab;

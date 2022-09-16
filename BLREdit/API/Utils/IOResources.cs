@@ -55,9 +55,9 @@ public class IOResources
     {
         
         WebClient.Headers.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
-        HttpClient.DefaultRequestHeaders.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
+        HttpClient.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}");
         HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
-        HttpClientWeb.DefaultRequestHeaders.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
+        HttpClientWeb.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}");
         HttpClientWeb.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("text/html"));
     }
 

@@ -49,6 +49,8 @@ namespace BLREdit
             {
                 if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
                 { UI.MainWindow.GameClients.RemoveAt(i); i--; }
+                else
+                { LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules"); }
             }
         }
 
@@ -70,6 +72,7 @@ namespace BLREdit
             try
             {
                 var release = await GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
+                if (release is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
                 LoggingSystem.Log($"Newest Version: {release.tag_name} of {release.name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
                 var remoteVersion = CreateVersion(release.tag_name);

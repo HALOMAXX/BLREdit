@@ -99,6 +99,11 @@ public class BLRClient : INotifyPropertyChanged
         }
     }
 
+    public override string ToString()
+    {
+        return $"[{ClientVersion}]:{OriginalPath?.Substring(0, Math.Min(OriginalPath.Length, 24))}";
+    }
+
     #region ClientValidation
     public bool ValidateClient()
     {
@@ -120,9 +125,7 @@ public class BLRClient : INotifyPropertyChanged
                 NeedsPatching = true;
             }
             else
-            {
-                LoggingSystem.Log($"Client is still the Same! {OriginalPath}");
-            }
+            { LoggingSystem.Log($"Client is still the Same! {OriginalPath}"); }
         }
         else
         {
@@ -203,10 +206,11 @@ public class BLRClient : INotifyPropertyChanged
     public void ValidateModules()
     {
         //TODO: Validate Installed Modules
-
+        LoggingSystem.Log($"Validating Modules({InstalledModules.Count}) of {this}");
         ProxyConfig config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}\\default.json") ?? new();
         foreach (var module in InstalledModules)
         {
+            LoggingSystem.Log($"\t{module.ModuleName}:");
             bool clientAlready = false;
             bool serverAlready = false;
             foreach (var mod in config.Proxy.Modules.Client)
@@ -217,6 +221,8 @@ public class BLRClient : INotifyPropertyChanged
                     break;
                 }
             }
+            LoggingSystem.Log($"\t\tClient:{module.Client}");
+            LoggingSystem.Log($"\t\tIsClientInConfig:{clientAlready}");
             foreach (var mod in config.Proxy.Modules.Server)
             {
                 if (mod == module.ModuleName)
@@ -225,27 +231,33 @@ public class BLRClient : INotifyPropertyChanged
                     break;
                 }
             }
-
+            LoggingSystem.Log($"\t\tServer:{module.Server}");
+            LoggingSystem.Log($"\t\tIsServerInConfig:{serverAlready}");
             if (module.Client && !clientAlready)
             {
                 config.Proxy.Modules.Client.Add(module.ModuleName);
+                LoggingSystem.Log($"\t\tClientAddedToConfig");
             }
             else if (!module.Client && clientAlready)
             {
                 config.Proxy.Modules.Client.Remove(module.ModuleName);
+                LoggingSystem.Log($"\t\tClientRemovedFromConfig");
             }
 
             if (module.Server && !serverAlready)
             {
                 config.Proxy.Modules.Server.Add(module.ModuleName);
+                LoggingSystem.Log($"\t\tServerAddedToConfig");
             }
             else if (!module.Server && serverAlready)
             {
                 config.Proxy.Modules.Server.Remove(module.ModuleName);
+                LoggingSystem.Log($"\t\tServerRemovedFromConfig");
             }
         }
 
         IOResources.SerializeFile($"{ConfigFolder}\\default.json", config);
+        LoggingSystem.Log($"Finished Validating Modules of {this}");
     }
 
     public static bool ValidateClientHash(string currentHash, string fileLocation, out string newHash)

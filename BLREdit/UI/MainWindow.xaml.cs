@@ -230,7 +230,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                 if (patchedClient is null)
                 {
                     BLREditSettings.Settings.DefaultClient = null;
-                    MessageBox.Show("You still have to patch atleast one Client");
+                    GameClients[0].PatchClient();
+                    BLREditSettings.Settings.DefaultClient = GameClients[0];
+                    GameClients[0].CurrentClient.SetBool(true);
                 }
                 else
                 {
