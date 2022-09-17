@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace BLREdit.API.REST_API.GitHub;
 
-public class GitHubFile
+public sealed class GitHubFile
 {
     public string type { get; set; }
     public string encoding { get; set; }

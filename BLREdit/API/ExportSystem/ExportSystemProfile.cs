@@ -5,29 +5,28 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace BLREdit
+namespace BLREdit;
+
+public sealed class ExportSystemProfile : MagiCowsProfile
 {
-    public class ExportSystemProfile : MagiCowsProfile
+    [JsonIgnore] public string Name { get { return '(' + Index.ToString() + ')' + PlayerName; } }
+    public int Index { get; set; }
+
+    public new ExportSystemProfile Clone()
     {
-        [JsonIgnore] public string Name { get { return '(' + Index.ToString() + ')' + PlayerName; } }
-        public int Index { get; set; }
+        ExportSystemProfile duplicate = base.Clone() as ExportSystemProfile;
+        duplicate.Index = ExportSystem.Profiles.Count;
+        return duplicate;
+    }
 
-        public new ExportSystemProfile Clone()
+    public MagiCowsLoadout GetLoadout(int id)
+    {
+        switch (id)
         {
-            ExportSystemProfile duplicate = base.Clone() as ExportSystemProfile;
-            duplicate.Index = ExportSystem.Profiles.Count;
-            return duplicate;
-        }
-
-        public MagiCowsLoadout GetLoadout(int id)
-        {
-            switch (id)
-            {
-                case 1: return Loadout1;
-                case 2: return Loadout2;
-                case 3: return Loadout3;
-                default: return Loadout1;
-            }
+            case 1: return Loadout1;
+            case 2: return Loadout2;
+            case 3: return Loadout3;
+            default: return Loadout1;
         }
     }
 }

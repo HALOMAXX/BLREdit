@@ -14,20 +14,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BLREdit.UI
-{
-    /// <summary>
-    /// Interaction logic for BLRClientWindow.xaml
-    /// </summary>
-    public partial class BLRClientWindow : Window
-    {
-        public static BLRClient Client { get; private set; }
+namespace BLREdit.UI;
 
-        public BLRClientWindow(object dataContext)
-        {
-            Client = (BLRClient)dataContext;
-            this.DataContext = dataContext;
-            InitializeComponent();
-        }
+/// <summary>
+/// Interaction logic for BLRClientWindow.xaml
+/// </summary>
+public sealed partial class BLRClientWindow : Window
+{
+    public static BLRClient Client { get; private set; }
+
+    public BLRClientWindow(object dataContext)
+    {
+        Client = (BLRClient)dataContext;
+        this.DataContext = dataContext;
+        InitializeComponent();
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BLREdit.API.REST_API.GitHub;
 
-public class GitHubUploader
+public sealed class GitHubUploader
 {
     public string login { get; set; }
     public int id { get; set; }

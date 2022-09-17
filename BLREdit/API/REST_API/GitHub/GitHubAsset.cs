@@ -2,7 +2,7 @@
 
 namespace BLREdit.API.REST_API.GitHub;
 
-public class GitHubAsset
+public sealed class GitHubAsset
 {
     public string url { get; set; }
     public int id { get; set; }

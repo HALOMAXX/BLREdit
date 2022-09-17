@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLREdit.API.REST_API.GitHub;
 
-public class GitHubRelease
+public sealed class GitHubRelease
 {
     public string url { get; set; }
     public string assets_url { get; set; }

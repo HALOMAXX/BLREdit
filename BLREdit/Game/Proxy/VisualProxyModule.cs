@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 
 namespace BLREdit.Game.Proxy;
 
-public class VisualProxyModule : INotifyPropertyChanged
+public sealed class VisualProxyModule : INotifyPropertyChanged
 {
     #region Events
     public event PropertyChangedEventHandler PropertyChanged;

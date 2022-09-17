@@ -2,7 +2,7 @@
 
 namespace BLREdit.API.REST_API.Gitlab;
 
-public class GitlabRelease
+public sealed class GitlabRelease
 {
     public string tag_name { get; set; }
     public string description { get; set; }

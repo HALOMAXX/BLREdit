@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace BLREdit.Game;
 
-public class BLRServer : INotifyPropertyChanged
+public sealed class BLRServer : INotifyPropertyChanged
 {
     private double ping = double.NaN;
     private bool isOnline = false;

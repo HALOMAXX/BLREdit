@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace BLREdit.API.ImportSystem;
 
-public class LanguageSet
+public sealed class LanguageSet
 {
     private static LanguageSet CurrentLanguageSet { get; set; } = Load(CultureInfo.InstalledUICulture.Name);
     public string LanguageName { get; set; }

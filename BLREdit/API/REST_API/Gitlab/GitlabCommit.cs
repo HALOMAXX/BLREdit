@@ -2,7 +2,7 @@
 
 namespace BLREdit.API.REST_API.Gitlab;
 
-public class GitlabCommit
+public sealed class GitlabCommit
 {
     public string id { get; set; }
     public string short_id { get; set; }

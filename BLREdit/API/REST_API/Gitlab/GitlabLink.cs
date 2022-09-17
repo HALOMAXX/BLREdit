@@ -1,6 +1,6 @@
 ﻿namespace BLREdit.API.REST_API.Gitlab;
 
-public class GitlabLink
+public sealed class GitlabLink
 {
     public int id { get; set; }
     public string name { get; set; }

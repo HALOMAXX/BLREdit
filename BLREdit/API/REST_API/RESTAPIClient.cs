@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BLREdit.API.REST_API;
 
-public class RESTAPIClient
+public sealed class RESTAPIClient
 {
     RepositoryProvider API_Provider;
     string BaseAddress = "";

@@ -6,7 +6,7 @@ using System.Windows.Media.Imaging;
 
 namespace BLREdit
 {
-    public class FoxIcon
+    public sealed class FoxIcon
     {
         private static readonly bool AddFolderLine = AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\");
 

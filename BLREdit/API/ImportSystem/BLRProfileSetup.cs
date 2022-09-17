@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace BLREdit;
 
-public class BLRLoadoutSetup : INotifyPropertyChanged
+public sealed class BLRLoadoutSetup : INotifyPropertyChanged
 {
     public BLRWeaponSetup Primary { get; set; } = new BLRWeaponSetup(true);
     public BLRWeaponSetup Secondary { get; set; } = new BLRWeaponSetup(false);

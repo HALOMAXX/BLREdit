@@ -41,9 +41,5 @@
 	<ItemGroup>
 	  <Page Include="App.xaml" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="UI\Views\" />
-	</ItemGroup>
 	
 </Project>

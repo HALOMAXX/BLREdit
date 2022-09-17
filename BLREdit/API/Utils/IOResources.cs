@@ -15,7 +15,7 @@ using System.Text.Json.Serialization;
 
 namespace BLREdit;
 
-public class IOResources
+public sealed class IOResources
 {
     #region DIRECTORIES
     public const string PROFILE_DIR = "Profiles\\";

@@ -2,7 +2,7 @@
 
 namespace BLREdit.API.REST_API.Gitlab;
 
-public class GitlabMilestone
+public sealed class GitlabMilestone
 {
     public int id { get; set; }
     public int iid { get; set; }

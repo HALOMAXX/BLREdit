@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace BLREdit.API.REST_API.Gitlab;
 
-public class GitlabFile
+public sealed class GitlabFile
 {
     public string file_name { get; set; }
     public string file_path { get; set; }

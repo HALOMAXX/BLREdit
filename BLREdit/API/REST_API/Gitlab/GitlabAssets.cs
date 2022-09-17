@@ -1,6 +1,6 @@
 ﻿namespace BLREdit.API.REST_API.Gitlab;
 
-public class GitlabAssets
+public sealed class GitlabAssets
 {
     public int count { get; set; }
     public GitlabSource[] sources { get; set; }

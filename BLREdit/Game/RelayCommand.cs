@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace BLREdit.Game;
 
-class RelayCommand : ICommand
+sealed class RelayCommand : ICommand
 {
     #region Fields
 

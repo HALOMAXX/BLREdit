@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace BLREdit;
 
-public class BLRWeaponSetup : INotifyPropertyChanged
+public sealed class BLRWeaponSetup : INotifyPropertyChanged
 {
     public bool IsPrimary { get; set; } = false;
 

@@ -1,6 +1,6 @@
 ﻿namespace BLREdit.API.REST_API.Gitlab;
 
-public class GitlabAuthor
+public sealed class GitlabAuthor
 {
     public int id { get; set; }
     public string name { get; set; }

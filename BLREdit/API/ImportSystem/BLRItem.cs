@@ -9,7 +9,7 @@ using BLREdit.API.ImportSystem;
 
 namespace BLREdit;
 
-public class BLRItem : INotifyPropertyChanged
+public sealed class BLRItem : INotifyPropertyChanged
 {
     public string Category { get; set; }
     public string Class { get; set; }

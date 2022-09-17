@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace BLREdit;
 
-public class BLREditSettings : INotifyPropertyChanged
+public sealed class BLREditSettings : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLREdit.Game;
 
-public class LaunchOptions
+public sealed class LaunchOptions
 {
     public BLRServer Server { get; set; } = new BLRServer();
     public string UserName { get; set; } = "HKNI";

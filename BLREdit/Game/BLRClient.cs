@@ -22,7 +22,7 @@ using File = System.IO.File;
 
 namespace BLREdit.Game;
 
-public class BLRClient : INotifyPropertyChanged
+public sealed class BLRClient : INotifyPropertyChanged
 {
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);

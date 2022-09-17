@@ -1,8 +1,7 @@
-﻿namespace BLREdit.Game.Proxy
+﻿namespace BLREdit.Game.Proxy;
+
+public enum RepositoryProvider
 {
-    public enum RepositoryProvider
-    {
-        GitHub,
-        Gitlab
-    }
+    GitHub,
+    Gitlab
 }
