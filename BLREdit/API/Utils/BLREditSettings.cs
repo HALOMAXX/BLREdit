@@ -41,6 +41,18 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         return new LaunchOptions() { UserName = ExportSystem.ActiveProfile.PlayerName, Server=Settings.DefaultServer };
     }
 
+    public static void SyncDefaultClient()
+    {
+        foreach (var client in MainWindow.GameClients)
+        {
+            if (client.OriginalPath == Settings.DefaultClient.OriginalPath)
+            {
+                Settings.DefaultClient = client;
+                return;
+            }
+        }
+    }
+
     public static void Save()
     {
         bool client = false;

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BLREdit;
@@ -56,11 +57,18 @@ public partial class App : System.Windows.Application
             if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
             { UI.MainWindow.GameClients.RemoveAt(i); i--; }
             else
-            { LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules"); }
+            { 
+                LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
+                { 
+                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer())); 
+                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules"); 
+                }
+            }
         }
     }
 
-    public async Task<RepositoryProxyModule[]> Initialize()
+    public static async Task<RepositoryProxyModule[]> Initialize()
     {
         IsNewVersionAvailable = await VersionCheck();
         return await GetAvailableProxyModules();

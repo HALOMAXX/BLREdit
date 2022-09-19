@@ -200,6 +200,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
 
         CheckGameClients();
+        BLREditSettings.SyncDefaultClient();
     }
 
     private static void CheckGameClients()

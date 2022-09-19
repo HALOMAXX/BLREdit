@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -27,8 +28,6 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     #endregion Events
-
-    private bool isNew = true;
 
     public VisualProxyModule()
     { MainWindow.ClientWindow.PropertyChanged += ActiveClientChanged; }
@@ -112,7 +111,6 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 api = $"https://gitlab.com/{RepositoryProxyModule.Owner}/{RepositoryProxyModule.Repository}";
             }
 
-            LoggingSystem.Log(api);
             var site = await IOResources.HttpClientWeb.GetStringAsync(api);
             HtmlDocument doc = new();
             doc.LoadHtml(site);
@@ -190,7 +188,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             foreach (var mod in MainWindow.ClientWindow.Client.InstalledModules)
             {
-                if (mod.ModuleName == RepositoryProxyModule.ModuleName)
+                if (mod.InstallName == RepositoryProxyModule.InstallName)
                 {
                     installedModule = mod;
                     Installed.SetBool(true);
@@ -210,7 +208,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 var task = Task.Run(GetLatestReleaseDate);
                 task.Wait();
                 DateTime latestRelease = task.Result;
-                upToDate.SetBool(installedModule.Published >= latestRelease);
+                var isUpToDate = installedModule.Published >= latestRelease;
+                UpToDate.SetBool(isUpToDate);
             }
             catch (Exception error)
             {
@@ -227,9 +226,9 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         lockInstall = true;
         try
         {
-            LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.ModuleName}");
+            LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.InstallName}");
 
-            if (MainWindow.ClientWindow.Client.Patched.IsNot) 
+            if (MainWindow.ClientWindow.Client.Patched.IsNot)
             {
                 LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
                 MainWindow.ClientWindow.Client.PatchClient();
@@ -241,32 +240,41 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             ProxyModule module = null;
             foreach (var cachedModule in ProxyModule.CachedModules)
             {
-                if (cachedModule.Published >= releaseDate)
+                if (cachedModule.InstallName == RepositoryProxyModule.InstallName && cachedModule.Published >= releaseDate)
                 {
                     module = cachedModule;
                     break;
                 }
             }
 
-            if (module is not null) LoggingSystem.Log($"Found {module.ModuleName} in cache"); else LoggingSystem.Log($"{RepositoryProxyModule.ModuleName} is not in cache");
+            if (module is not null) LoggingSystem.Log($"Found {module.InstallName} in cache"); else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in cache");
 
             module ??= await RepositoryProxyModule.DownloadLatest();
 
             if (module is not null)
             {
-                File.Copy($"downloads\\{module.ModuleName}.dll", $"{MainWindow.ClientWindow.Client.ModulesFolder}\\{module.ModuleName}.dll", true);
-                LoggingSystem.Log($"Copied {module.ModuleName} from Cache to client module location");
+                File.Copy($"downloads\\{module.InstallName}.dll", $"{MainWindow.ClientWindow.Client.ModulesFolder}\\{module.InstallName}.dll", true);
+                LoggingSystem.Log($"Copied {module.InstallName} from Cache to client module location");
+                for (int i = 0; i < MainWindow.ClientWindow.Client.InstalledModules.Count; i++)
+                {
+                    if (MainWindow.ClientWindow.Client.InstalledModules[i].InstallName == module.InstallName)
+                    { LoggingSystem.Log($"Removing {MainWindow.ClientWindow.Client.InstalledModules[i]}"); MainWindow.ClientWindow.Client.InstalledModules.RemoveAt(i); i--; }
+                }
                 MainWindow.ClientWindow.Client.InstalledModules.Add(module);
-                LoggingSystem.Log($"Added {RepositoryProxyModule.ModuleName} to installed modules of {MainWindow.ClientWindow.Client}");
+                LoggingSystem.Log($"Added {RepositoryProxyModule.InstallName} to installed modules of {MainWindow.ClientWindow.Client}");
             }
         }
-        catch (Exception error) 
+        catch (Exception error)
         {
-            LoggingSystem.Log($"failed to install module:{RepositoryProxyModule.ModuleName} reason:{error.Message}\n{error.StackTrace}");
+            LoggingSystem.Log($"failed to install module:{RepositoryProxyModule.InstallName} reason:{error.Message}\n{error.StackTrace}");
         }
-
-        LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.ModuleName}");
+        
+        CheckForInstall();
+        CheckForUpdate();
+        OnPropertyChanged(nameof(InstalledModule));
         OnPropertyChanged(nameof(Installed));
+        OnPropertyChanged(nameof(UpToDate));
+        LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.InstallName}");
         lockInstall = false;
     }
 
@@ -277,7 +285,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         CheckForInstall();
         CheckForUpdate();
 
-        LoggingSystem.Log($"[{RepositoryProxyModule.ModuleName}]: Installed:{Installed.Is}, UpToDate:{UpToDate.Is}");
+        LoggingSystem.Log($"[{RepositoryProxyModule.InstallName}]: Installed:{Installed.Is}, UpToDate:{UpToDate.Is}");
 
         OnPropertyChanged(nameof(InstalledModule));
         OnPropertyChanged(nameof(Installed));

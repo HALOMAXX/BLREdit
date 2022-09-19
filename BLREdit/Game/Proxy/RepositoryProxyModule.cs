@@ -6,7 +6,9 @@ using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Media.Imaging;
@@ -16,6 +18,7 @@ namespace BLREdit.Game.Proxy;
 public sealed class RepositoryProxyModule
 {
     public RepositoryProvider RepositoryProvider { get; set; } = RepositoryProvider.Gitlab;
+    [JsonIgnore] public string InstallName { get { return $"{ModuleName}-{Owner}-{Repository}".Replace('/', '-'); } }
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
@@ -76,7 +79,7 @@ public sealed class RepositoryProxyModule
             }
             catch
             {
-                LoggingSystem.Log($"failed to get release info for {ModuleName}");
+                LoggingSystem.Log($"failed to get release info for {InstallName}");
             }
 
             lockLatestReleaseInfo = false;
@@ -113,24 +116,46 @@ public sealed class RepositoryProxyModule
                     break;
                 }
             }
+
+            if (string.IsNullOrEmpty(dl))
+            {
+                LoggingSystem.Log($"No file found in Asset links gonna go down the deep end!");
+                Regex regex = new Regex($@"(\/uploads\/\w+\/{ModuleName}.dll)");
+                if (regex.Match(labRelease.description) is Match match)
+                {
+                    LoggingSystem.Log($"Found {match.Captures.Count} matches");
+                    if (match.Captures.Count > 0)
+                    {
+                        foreach (var capture in match.Captures)
+                        {
+                            LoggingSystem.Log($"\t{capture}");
+                            if (string.IsNullOrEmpty(dl))
+                            {
+                                dl = $"https://gitlab.com/{Owner}/{Repository}{capture}";
+                            }
+                        }
+                    }
+                }
+            }
         }
-        string dlTarget = $"downloads\\{ModuleName}.dll";
+        string dlTarget = $"downloads\\{InstallName}.dll";
         if (File.Exists(dlTarget)) { LoggingSystem.Log($"Deleting {dlTarget}"); File.Delete(dlTarget); }
-        LoggingSystem.Log($"Downloading {dl}");
+        LoggingSystem.Log($"Downloading ({dl}) to ({dlTarget})");
+        if (!Directory.Exists("downloads\\")) { Directory.CreateDirectory("downloads\\"); }
         IOResources.WebClient.DownloadFile(dl, dlTarget);
         LoggingSystem.Log($"Finished Downloading {dl}");
 
         ProxyModule module;
 
         if (RepositoryProvider == RepositoryProvider.GitHub)
-        { module = new ProxyModule(hubRelease, ModuleName, Client, Server); }
+        { module = new ProxyModule(hubRelease, ModuleName, Owner, Repository, Client, Server); }
         else
-        { module = new ProxyModule(labRelease, ModuleName, Client, Server); }
+        { module = new ProxyModule(labRelease, ModuleName, Owner, Repository, Client, Server); }
 
         ProxyModule toRemoveModule = null;
         foreach (var mod in ProxyModule.CachedModules)
         {
-            if (mod.ModuleName == module.ModuleName)
+            if (mod.InstallName == module.InstallName)
             {
                 toRemoveModule = mod;
                 break;

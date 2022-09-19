@@ -107,12 +107,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     #region ClientValidation
     public bool ValidateClient()
     {
-        //TODO: Optimize Client Validation
-        /*
-            initial test should only make sure original file exist
-            test before launch should make sure patches are still upto date
-            and validate installed modules before launch
-         */
         bool isValid = true;
         bool NeedsPatching = false;
         if (OriginalFileValidation())
@@ -142,9 +136,8 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             else
             {
-                LoggingSystem.Log($"Patched file is still the same!"); //We can check the installed Modules now!
+                LoggingSystem.Log($"Patched file is still the same!");
                 if (ValidatePatches()) { NeedsPatching = true; }
-                //ValidateModules();
             }
         }
         else
@@ -205,55 +198,18 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ValidateModules()
     {
-        //TODO: Validate Installed Modules
         LoggingSystem.Log($"Validating Modules({InstalledModules.Count}) of {this}");
         ProxyConfig config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}\\default.json") ?? new();
+        config.Proxy.Modules.Server.Clear();
+        config.Proxy.Modules.Client.Clear();
         foreach (var module in InstalledModules)
         {
-            LoggingSystem.Log($"\t{module.ModuleName}:");
-            bool clientAlready = false;
-            bool serverAlready = false;
-            foreach (var mod in config.Proxy.Modules.Client)
-            {
-                if (mod == module.ModuleName)
-                { 
-                    clientAlready = true;
-                    break;
-                }
-            }
+            LoggingSystem.Log($"\t{module.InstallName}:");
             LoggingSystem.Log($"\t\tClient:{module.Client}");
-            LoggingSystem.Log($"\t\tIsClientInConfig:{clientAlready}");
-            foreach (var mod in config.Proxy.Modules.Server)
-            {
-                if (mod == module.ModuleName)
-                {
-                    serverAlready = true;
-                    break;
-                }
-            }
             LoggingSystem.Log($"\t\tServer:{module.Server}");
-            LoggingSystem.Log($"\t\tIsServerInConfig:{serverAlready}");
-            if (module.Client && !clientAlready)
-            {
-                config.Proxy.Modules.Client.Add(module.ModuleName);
-                LoggingSystem.Log($"\t\tClientAddedToConfig");
-            }
-            else if (!module.Client && clientAlready)
-            {
-                config.Proxy.Modules.Client.Remove(module.ModuleName);
-                LoggingSystem.Log($"\t\tClientRemovedFromConfig");
-            }
 
-            if (module.Server && !serverAlready)
-            {
-                config.Proxy.Modules.Server.Add(module.ModuleName);
-                LoggingSystem.Log($"\t\tServerAddedToConfig");
-            }
-            else if (!module.Server && serverAlready)
-            {
-                config.Proxy.Modules.Server.Remove(module.ModuleName);
-                LoggingSystem.Log($"\t\tServerRemovedFromConfig");
-            }
+            if(module.Client) config.Proxy.Modules.Client.Add(module.InstallName);
+            if(module.Server) config.Proxy.Modules.Server.Add(module.InstallName);
         }
 
         IOResources.SerializeFile($"{ConfigFolder}\\default.json", config);
@@ -262,6 +218,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public static bool ValidateClientHash(string currentHash, string fileLocation, out string newHash)
     {
+        if (string.IsNullOrEmpty(currentHash) || string.IsNullOrEmpty(fileLocation)) { newHash = null; return false; }
         newHash = CreateClientHash(fileLocation);
         return currentHash.Equals(newHash);
     }
@@ -372,6 +329,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         var process = (Process)sender;
         RunningClients.Remove(process);
+        LoggingSystem.Log($"[{this}]: has Exited with {process.ExitCode}");
         process.Dispose();
     }
     #endregion Launch/Exit
@@ -453,6 +411,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public static string CreateClientHash(string path)
     {
+        if (!File.Exists(path)) { LoggingSystem.Log($"[BLRClient]: Hashing failed reason: Can't find {path}"); return null; }
         using var stream = File.OpenRead(path);
         using var crypto = SHA256.Create();
         return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();

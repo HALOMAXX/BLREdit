@@ -43,7 +43,6 @@ public sealed class IOResources
     public static string Steam6432InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath", "") as string;
     public static readonly List<string> GameFolders = new();
 
-    public static Encoding FILE_ENCODING { get; } = Encoding.UTF8;
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
 
@@ -53,11 +52,10 @@ public sealed class IOResources
 
     static IOResources()
     {
-        
-        WebClient.Headers.Add("User-Agent", $"BLREdit-{App.CurrentVersion}");
-        HttpClient.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}");
+        WebClient.Headers.Add(HttpRequestHeader.UserAgent, $"BLREdit-{App.CurrentVersion}");
+        if (!HttpClient.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { LoggingSystem.Log($"Failed to add {HttpRequestHeader.UserAgent} to HttpClient"); };
         HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
-        HttpClientWeb.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}");
+        if (!HttpClientWeb.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { LoggingSystem.Log($"Failed to add {HttpRequestHeader.UserAgent} to HttpClientWeb"); };
         HttpClientWeb.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("text/html"));
     }
 
@@ -85,17 +83,21 @@ public sealed class IOResources
 
     private static void GetGamePathFromVDF(string vdfPath, string appID)
     {
-        VToken libraryInfo;
+        if (string.IsNullOrEmpty(vdfPath) || string.IsNullOrEmpty(appID)) { LoggingSystem.Log($"vdfPath or AppID is empty"); return; }
+        if (!File.Exists(vdfPath)) { LoggingSystem.Log($"vdfPath file doesn't exist"); return; }
+        string data;
         try
         {
-            libraryInfo = VdfConvert.Deserialize(File.ReadAllText(vdfPath)).Value;
+            data = File.ReadAllText(vdfPath);
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
-            LoggingSystem.Log($"failed reading {vdfPath}, steam library parsing aborted");
-            LoggingSystem.Log(ex.Message);
+            LoggingSystem.Log($"failed reading {vdfPath}, steam library parsing aborted reason:{ex.Message}\n{ex.StackTrace}");
             return;
         }
+
+        VToken libraryInfo = VdfConvert.Deserialize(data).Value;
+
         foreach (VProperty library in libraryInfo.Children().Cast<VProperty>())
         {
             if (library.Key != "contentstatsid")
@@ -118,55 +120,49 @@ public sealed class IOResources
 
     public static void CopyToBackup(string file)
     {
+        if (string.IsNullOrEmpty(file)) return;
         FileInfo info = new(file);
         File.Copy(file, ExportSystem.CurrentBackupFolder.FullName + info.Name, true);
     }
 
     public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
     {
-        //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
-        if (string.IsNullOrEmpty(filePath)) { LoggingSystem.Log("filePath was empty!"); return; }
+        if (string.IsNullOrEmpty(filePath)) { LoggingSystem.Log("[Serializer]: filePath was empty!"); return; }
+        if (obj is null) { LoggingSystem.Log("[Serializer]: obj was null!"); return; }
 
         bool writeFile;
-        bool deleteFile;
         if (obj is ExportSystemProfile prof)
         {
             if (prof.IsDirty)
             {
-                LoggingSystem.Log($"{prof.Name}❕");
-                deleteFile = File.Exists(filePath);
+                LoggingSystem.Log($"[Serializer]: {prof.Name}❕");
                 writeFile = true;
+                if (File.Exists(filePath)) { File.Delete(filePath); }
             }
             else
             {
-                LoggingSystem.Log($"{prof.Name}✔");
-                deleteFile = false;
+                LoggingSystem.Log($"[Serializer]: {prof.Name}✔");
                 writeFile = false;
             }
         }
         else
         {
-            deleteFile = File.Exists(filePath);
             writeFile = true;
+            if (File.Exists(filePath)) { File.Delete(filePath); }
         }
-
-        //remove file before we write to it to prevent resedue data
-        if (deleteFile)
-        { File.Delete(filePath); }
 
         if (writeFile)
         {
             using var file = File.CreateText(filePath);
             file.Write(Serialize(obj, compact));
             file.Close();
-            LoggingSystem.Log($"{typeof(T).Name} serialize succes!");
+            LoggingSystem.Log($"[Serializer]: {typeof(T).Name} serialize succes!");
         }
     }
 
     public static string Serialize<T>(T obj, bool compact = false)
     {
-        //if the object we want to serialize is null we can instantly exit this function as we dont have anything to do as well the filePath
-        if (obj == null) { LoggingSystem.Log("object were empty!"); return ""; }
+        if (obj == null) { LoggingSystem.Log("[Serializer]: object was null!"); return ""; }
         if (compact)
         {
             return JsonSerializer.Serialize<T>(obj, JSOCompacted);
@@ -187,12 +183,10 @@ public sealed class IOResources
     {
         T temp = default;
         if (string.IsNullOrEmpty(filePath)) { return temp; }
-
+        
         //check if file exist's before we try to read it if it doesn't exist return and Write an error to log
         if (!File.Exists(filePath))
-        { LoggingSystem.Log($"File:({filePath}) was not found for Deserialization!"); return temp; }
-
-
+        { LoggingSystem.Log($"[Serializer]: File({filePath}) was not found for Deserialization!"); return temp; }
 
         using (var file = File.OpenText(filePath))
         {
@@ -216,7 +210,7 @@ public sealed class IOResources
         }
         catch (Exception error)
         {
-            LoggingSystem.Log($"{error.Message}\n{error.StackTrace}");
+            LoggingSystem.Log($"[Serializer]: {error.Message}\n{error.StackTrace}");
         }
         return default;
     }

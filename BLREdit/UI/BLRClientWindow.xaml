@@ -35,8 +35,9 @@
                                                 <TextBlock Text="{Binding Path=Title}" TextTrimming="CharacterEllipsis" FontSize="20" FontWeight="UltraBlack"/>
                                                 <TextBlock Text="{Binding Path=Description}" TextTrimming="CharacterEllipsis" FontSize="16"/>
                                             </StackPanel>
-                                            <Button Content="Install" IsEnabled="{Binding Path=Installed.IsNot}" Visibility="{Binding Path=UpToDate.Visibility}" IsHitTestVisible="{Binding Path=UpToDate.Is}" Command="{Binding Path=InstallCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                            <Button Content="Installed" IsEnabled="False" Visibility="{Binding Path=UpToDate.Visibility}" IsHitTestVisible="False" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
                                             <Button Content="Update" IsEnabled="{Binding Path=UpToDate.IsNot}" Visibility="{Binding Path=UpToDate.VisibilityInverted}" IsHitTestVisible="{Binding Path=UpToDate.IsNot}" Command="{Binding Path=InstallCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                            <Button Content="Install" IsEnabled="{Binding Path=UpToDate.IsNot}" Visibility="{Binding Path=Installed.VisibilityInverted}" IsHitTestVisible="{Binding Path=UpToDate.IsNot}" Command="{Binding Path=InstallCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
                                         </Grid>
                                     </Border>
                                 </Grid>

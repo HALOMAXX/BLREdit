@@ -9,8 +9,7 @@ public static class LoggingSystem
 {
     public static void Log(string info)
     {
-        var now = DateTime.Now;
-        Trace.Write($"[{now}]: {info}\n");
+        Trace.Write($"[{DateTime.Now}]: {info}\n");
     }
 
     public static string ObjectToTextWall<T>(T obj)
