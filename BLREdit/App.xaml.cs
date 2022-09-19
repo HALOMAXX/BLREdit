@@ -34,7 +34,14 @@ public partial class App : System.Windows.Application
         Trace.AutoFlush = true;
         LoggingSystem.Log("BLREdit Starting!");
 
-        Initialize().Wait();
+        var task = Initialize();
+        task.Wait();
+        var modules = task.Result;
+        AvailableProxyModules = new VisualProxyModule[modules.Length];
+        for (int i = 0; i < modules.Length; i++)
+        {
+            AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
+        }
 
         RuntimeCheck();
         ImportSystem.Initialize();
@@ -53,17 +60,10 @@ public partial class App : System.Windows.Application
         }
     }
 
-    public async Task Initialize()
+    public async Task<RepositoryProxyModule[]> Initialize()
     {
         IsNewVersionAvailable = await VersionCheck();
-        var task = Task.Run(GetAvailableProxyModules);
-        task.Wait();
-        var modules = task.Result;
-        AvailableProxyModules = new VisualProxyModule[modules.Length];
-        for (int i = 0; i < modules.Length; i++)
-        {
-            AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
-        }
+        return await GetAvailableProxyModules();
     }
 
     public static async Task<bool> VersionCheck()

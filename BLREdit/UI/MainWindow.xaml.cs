@@ -25,6 +25,8 @@ namespace BLREdit.UI;
 public sealed partial class MainWindow : Window, INotifyPropertyChanged
 {
     private static readonly Random rng = new();
+    public static readonly BLRClientWindow ClientWindow = new();
+
 
     /// <summary>
     /// Contains the last selected Image for setting the ItemList
@@ -360,6 +362,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         BLREditSettings.Save();
         LanguageSet.Save();
         ProxyModule.Save();
+        ClientWindow.ForceClose();
     }
 
     private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
@@ -1391,10 +1394,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void ClientModifyButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button button)
+        if (sender is Button button && button.DataContext is BLRClient client)
         {
-            var clientWindow = new BLRClientWindow(button.DataContext);
-            clientWindow.ShowDialog();
+            ClientWindow.Client = client;
+            ClientWindow.ShowDialog();
         }
     }
 }

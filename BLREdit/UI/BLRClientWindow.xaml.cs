@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,14 +21,34 @@ namespace BLREdit.UI;
 /// <summary>
 /// Interaction logic for BLRClientWindow.xaml
 /// </summary>
-public sealed partial class BLRClientWindow : Window
+public sealed partial class BLRClientWindow : Window, INotifyPropertyChanged
 {
-    public static BLRClient Client { get; private set; }
-
-    public BLRClientWindow(object dataContext)
+    #region Events
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
-        Client = (BLRClient)dataContext;
-        this.DataContext = dataContext;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    #endregion Events
+
+    private bool ShouldCancelClose = true;
+
+    public BLRClient Client { get { return (BLRClient)DataContext; } set { DataContext = value; OnPropertyChanged(); } }
+
+    public BLRClientWindow()
+    {
         InitializeComponent();
+    }
+
+    public void ForceClose()
+    {
+        ShouldCancelClose = false;
+        this.Close();
+    }
+
+    private void Window_Closing(object sender, CancelEventArgs e)
+    {
+        e.Cancel = ShouldCancelClose;
+        this.Hide();
     }
 }
