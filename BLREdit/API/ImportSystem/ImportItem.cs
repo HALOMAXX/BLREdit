@@ -59,7 +59,7 @@ public sealed class ImportItem
 
     public static BitmapSource GetImage(BitmapSource male, BitmapSource female)
     {
-        if (UI.MainWindow.Loadout.IsFemale)
+        if (UI.MainWindow.Profile.Loadout1.IsFemale)
         {
             if (female == null)
             { return male; }

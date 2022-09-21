@@ -1,5 +1,5 @@
 ﻿using BLREdit.API.ImportSystem;
-
+using BLREdit.UI.Views;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -55,10 +55,10 @@ public static class ImportSystem
                 case SECONDARY_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        var (DamageIdeal, DamageMax) = BLRWeaponSetup.CalculateDamage(item, 0);
-                        var (ZoomSpread, HipSpread, MovmentSpread) = BLRWeaponSetup.CalculateSpread(item, 0, 0);
-                        var (RecoilHip, _RecoilZoom) = BLRWeaponSetup.CalculateRecoil(item, 0);
-                        var (IdealRange, MaxRange, _TracerRange) = BLRWeaponSetup.CalculateRange(item, 0);
+                        var (DamageIdeal, DamageMax) = BLRWeapon.CalculateDamage(item, 0);
+                        var (ZoomSpread, HipSpread, MovmentSpread) = BLRWeapon.CalculateSpread(item, 0, 0);
+                        var (RecoilHip, _RecoilZoom) = BLRWeapon.CalculateRecoil(item, 0);
+                        var (IdealRange, MaxRange, _TracerRange) = BLRWeapon.CalculateRange(item, 0);
 
                         var desc1 = new DisplayStatDiscriptor();
                         var desc2 = new DisplayStatDiscriptor();

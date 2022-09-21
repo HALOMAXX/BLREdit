@@ -2,7 +2,7 @@
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
-
+using BLREdit.UI.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="BLREdit.UI.WeaponControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:BLREdit="clr-namespace:BLREdit"
+             xmlns:ui="clr-namespace:BLREdit.UI"
+             xmlns:views="clr-namespace:BLREdit.UI.Views"
+             d:DataContext="{d:DesignInstance Type=views:BLRWeapon}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BLREdit:BLREditSettings x:Key="Settings"/>
+    </UserControl.Resources>
+    <Grid>
+        <Label Content="{Binding Path=WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
+        <Border DataContext="{Binding Path=Muzzle}" Height="64" Width="64" HorizontalAlignment="Left" Margin="0,64,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage }" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Barrel}" Height="64" Width="64" HorizontalAlignment="Left" Margin="64,64,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Magazine}" Height="64" Width="64" HorizontalAlignment="Left" Margin="128,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Scope}" Height="64" Width="64" HorizontalAlignment="Left" Margin="192,0,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Scope}" Height="64" Width="64" HorizontalAlignment="Left" Margin="256,0,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Center" Source="{Binding Path=MiniPrimaryCrosshair}" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border Name="Reciever" DataContext="{Binding Path=Reciever}" Height="64" Width="128" HorizontalAlignment="Left" Margin="128,64,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Stock}" Height="64" Width="64" HorizontalAlignment="Left" Margin="256,64,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Tag}" Height="64" Width="64" HorizontalAlignment="Left" Margin="192,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Camo}" Height="64" Width="64" HorizontalAlignment="Left" Margin="64,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=GripVisibility}" DataContext="{Binding Path=Grip}" Height="64" Width="64" HorizontalAlignment="Left" Margin="0,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+
+        <Grid Width="400" Height="128" Margin="0,192,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="52" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="68" />
+                <ColumnDefinition Width="36" />
+                <ColumnDefinition Width="58" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSDamage }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=DamageDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadAim }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="0" Content="{Binding Path=AimSpreadDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="4" Grid.Row="0" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSZoom }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="5" Grid.Row="0" Content="{Binding Path=ZoomDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+
+
+            <Label Grid.Column="0" Grid.Row="1" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSFirerate }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=RateOfFireDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="2" Grid.Row="1" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadHip }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="1" Content="{Binding Path=HipSpreadDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="4" Grid.Row="1" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSScopeInTime }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="5" Grid.Row="1" Content="{Binding Path=ScopeInTimeDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+
+
+            <Label Grid.Column="0" Grid.Row="2" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSAmmo }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=AmmoDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="2" Grid.Row="2" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSSpreadMove }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="2" Content="{Binding Path=MoveSpreadDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="4" Grid.Row="2" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRange }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="5" Grid.Row="2" Content="{Binding Path=RangeDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+
+
+            <Label Grid.Column="0" Grid.Row="3" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSReloadPartial }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=ReloadTimeDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="2" Grid.Row="3" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRecoilHip }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="3" Content="{Binding Path=HipRecoilDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="4" Grid.Row="3" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRun }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="5" Grid.Row="3" Content="{Binding Path=RunDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+
+
+            <Label Grid.Column="0" Grid.Row="4" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSReloadEmpty }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="4" Content="{Binding Path=SwapDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+            <Label Grid.Column="2" Grid.Row="4" Content="{Binding Source={x:Static ui:UILanguageWrapper.LblPSRecoilAim }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="4" Content="{Binding Path=AimRecoilDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}"/>
+        </Grid>
+    </Grid>
+</UserControl>

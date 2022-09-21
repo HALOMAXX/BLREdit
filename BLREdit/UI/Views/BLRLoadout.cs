@@ -1,42 +1,48 @@
-﻿using BLREdit.UI;
-
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
-namespace BLREdit;
+namespace BLREdit.UI.Views;
 
-public sealed class BLRLoadoutSetup : INotifyPropertyChanged
+public sealed class BLRLoadout : INotifyPropertyChanged
 {
-    public BLRWeaponSetup Primary { get; set; } = new BLRWeaponSetup(true);
-    public BLRWeaponSetup Secondary { get; set; } = new BLRWeaponSetup(false);
+    #region Event
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
+
+    private void ItemChanged([CallerMemberName] string propertyName = null)
+    {
+        if (!UndoRedoSystem.BlockUpdate) UpdateMagicCowsLoadout();
+        CalculateStats();
+        OnPropertyChanged(propertyName);
+    }
+    #endregion Event
+
+    public BLRWeapon Primary { get; set; } = new(true);
+    public BLRWeapon Secondary { get; set; } = new(false);
     private BLRItem helmet = null;
     public BLRItem Helmet { get { return helmet; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { helmet = value; ItemChanged(); return; } if (value is null || helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { if (value is null) { helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, 0); } else { helmet = value; } ItemChanged(); } } }
     private BLRItem upperBody = null;
-    public BLRItem UpperBody { get { return upperBody; } set { if (BLREditSettings.Settings.AdvancedModding.Is ) { upperBody = value; ItemChanged(); return; } if (value is null ||  upperBody != value && value.Category == ImportSystem.UPPER_BODIES_CATEGORY) { if (value is null) { upperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, 0); } else { upperBody = value; } ItemChanged(); } } }
+    public BLRItem UpperBody { get { return upperBody; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { upperBody = value; ItemChanged(); return; } if (value is null || upperBody != value && value.Category == ImportSystem.UPPER_BODIES_CATEGORY) { if (value is null) { upperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, 0); } else { upperBody = value; } ItemChanged(); } } }
     private BLRItem lowerBody = null;
-    public BLRItem LowerBody { get { return lowerBody; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { lowerBody = value; ItemChanged(); return; } if (value is null ||  lowerBody != value && value.Category == ImportSystem.LOWER_BODIES_CATEGORY) { if (value is null) { lowerBody = ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, 0); } else { lowerBody = value; } ItemChanged(); } } }
+    public BLRItem LowerBody { get { return lowerBody; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { lowerBody = value; ItemChanged(); return; } if (value is null || lowerBody != value && value.Category == ImportSystem.LOWER_BODIES_CATEGORY) { if (value is null) { lowerBody = ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, 0); } else { lowerBody = value; } ItemChanged(); } } }
     private BLRItem tactical = null;
-    public BLRItem Tactical { get { return tactical; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { tactical = value; ItemChanged(); return; } if (value is null ||  tactical != value && value.Category == ImportSystem.TACTICAL_CATEGORY) { if (value is null) { tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, 0); } else { tactical = value; } ItemChanged(); } } }
+    public BLRItem Tactical { get { return tactical; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { tactical = value; ItemChanged(); return; } if (value is null || tactical != value && value.Category == ImportSystem.TACTICAL_CATEGORY) { if (value is null) { tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, 0); } else { tactical = value; } ItemChanged(); } } }
     private BLRItem gear1 = null;
-    public BLRItem Gear1 { get { return gear1; } set { if (value is null ||  gear1 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear1 = value; } ItemChanged(); } } }
+    public BLRItem Gear1 { get { return gear1; } set { if (value is null || gear1 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear1 = value; } ItemChanged(); } } }
     private BLRItem gear2 = null;
-    public BLRItem Gear2 { get { return gear2; } set { if (value is null ||  gear2 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear2 = value; } ItemChanged(); } } }
+    public BLRItem Gear2 { get { return gear2; } set { if (value is null || gear2 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear2 = value; } ItemChanged(); } } }
     private BLRItem gear3 = null;
-    public BLRItem Gear3 { get { return gear3; } set { if (value is null ||  gear3 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear3 = value; } ItemChanged(); } } }
+    public BLRItem Gear3 { get { return gear3; } set { if (value is null || gear3 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear3 = value; } ItemChanged(); } } }
     private BLRItem gear4 = null;
-    public BLRItem Gear4 { get { return gear4; } set { if (value is null ||  gear4 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear4 = value; } ItemChanged(); } } }
+    public BLRItem Gear4 { get { return gear4; } set { if (value is null || gear4 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear4 = value; } ItemChanged(); } } }
     private BLRItem camo = null;
-    public BLRItem Camo { get { return camo; } set { if (value is null ||  camo != value && value.Category == ImportSystem.CAMOS_BODIES_CATEGORY) { if (value is null) { camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, 0); } else camo = value; ItemChanged(); } } }
+    public BLRItem BodyCamo { get { return camo; } set { if (value is null || camo != value && value.Category == ImportSystem.CAMOS_BODIES_CATEGORY) { if (value is null) { camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, 0); } else camo = value; ItemChanged(); } } }
     private BLRItem avatar = null;
     public BLRItem Avatar { get { return avatar; } set { if (IsAvatarOK(value)) { avatar = value; ItemChanged(); } } }
     private BLRItem trophy = null;
-    public BLRItem Trophy { get { return trophy; } set { if (value is null ||  trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { if (value is null) { trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, 0); } else { trophy = value; } ItemChanged(); } } }
+    public BLRItem Trophy { get { return trophy; } set { if (value is null || trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { if (value is null) { trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, 0); } else { trophy = value; } ItemChanged(); } } }
     private bool isFemale;
     public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(); ; ItemChanged(); } }
 
@@ -52,17 +58,6 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
         {
             return false;
         }
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
-
-    private void ItemChanged([CallerMemberName] string propertyName = null)
-    {
-        if(!UndoRedoSystem.BlockUpdate) UpdateMagicCowsLoadout(MainWindow.ActiveLoadout);
-        CalculateStats();
-        OnPropertyChanged(propertyName);
     }
 
     #region Properties
@@ -91,7 +86,7 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
 
     public double Health
     {
-        get 
+        get
         {
             double health_alpha = Math.Abs(RawHealth) / 100;
             double basehealth = 200;
@@ -99,11 +94,11 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
 
             if (RawHealth > 0)
             {
-                currentHealth = BLRWeaponSetup.Lerp(basehealth, 250, health_alpha);
+                currentHealth = BLRWeapon.Lerp(basehealth, 250, health_alpha);
             }
             else
             {
-                currentHealth = BLRWeaponSetup.Lerp(basehealth, 150, health_alpha);
+                currentHealth = BLRWeapon.Lerp(basehealth, 150, health_alpha);
             }
             return currentHealth;
         }
@@ -143,15 +138,15 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
 
             if (allRun > 0)
             {
-                currentRun = BLRWeaponSetup.Lerp(baserun, 900, run_alpha);
+                currentRun = BLRWeapon.Lerp(baserun, 900, run_alpha);
             }
             else
             {
-                currentRun = BLRWeaponSetup.Lerp(baserun, 630, run_alpha);
+                currentRun = BLRWeapon.Lerp(baserun, 630, run_alpha);
             }
 
             return currentRun;
-        }   
+        }
     }
 
     public double HRVRechargeRate
@@ -338,7 +333,7 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
     public string HRVRechargeDisplay { get { return hrvRechargeDisplay; } private set { hrvRechargeDisplay = value; OnPropertyChanged(); } }
 
     private string gearSlotsDsiplay;
-    public string GearSlotsDsiplay { get { return gearSlotsDsiplay; } private  set { gearSlotsDsiplay = value; OnPropertyChanged(); } }
+    public string GearSlotsDsiplay { get { return gearSlotsDsiplay; } private set { gearSlotsDsiplay = value; OnPropertyChanged(); } }
 
 
     private string electroProtectionDisplay;
@@ -364,7 +359,7 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
     public string RunPercentageDisplay { get { return runPercentageDisplay; } private set { runPercentageDisplay = value; OnPropertyChanged(); } }
     private string hrvDurationPercentageDisplay;
     public string HRVDurationPercentageDisplay { get { return hrvDurationPercentageDisplay; } private set { hrvDurationPercentageDisplay = value; OnPropertyChanged(); } }
-    
+
     private string hrvRechargePercentageDisplay;
     public string HRVRechargePercentageDisplay { get { return hrvRechargePercentageDisplay; } private set { hrvRechargePercentageDisplay = value; OnPropertyChanged(); } }
     private string gearSlotsPercentageDisplay;
@@ -397,7 +392,7 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
     }
 
     private void CreateDisplay()
-    { 
+    {
         HealthDisplay = Health.ToString("0.0");
         HeadArmorDisplay = HeadProtection.ToString("0.0") + '%';
         RunDisplay = (Run / 100.0D).ToString("0.00");
@@ -421,27 +416,29 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
         GearSlotsPercentageDisplay = (GearSlots - 2).ToString("0");
     }
 
-    public void UpdateMagicCowsLoadout(MagiCowsLoadout loadout)
+    public void UpdateMagicCowsLoadout()
     {
         if (UndoRedoSystem.BlockUpdate) return;
-        loadout.Tactical = Tactical?.GetMagicCowsID() ?? 0;
-        loadout.Helmet = Helmet?.GetMagicCowsID() ?? 0;
-        loadout.UpperBody = UpperBody?.GetMagicCowsID() ?? 0;
-        loadout.LowerBody = LowerBody?.GetMagicCowsID() ?? 0;
+        internalLoadout.Tactical = Tactical?.GetMagicCowsID() ?? 0;
+        internalLoadout.Helmet = Helmet?.GetMagicCowsID() ?? 0;
+        internalLoadout.UpperBody = UpperBody?.GetMagicCowsID() ?? 0;
+        internalLoadout.LowerBody = LowerBody?.GetMagicCowsID() ?? 0;
 
-        loadout.Camo = Camo?.GetMagicCowsID() ?? 0;
-        loadout.Skin = Avatar?.GetMagicCowsID() ?? 99;
-        loadout.Trophy = Trophy?.GetMagicCowsID() ?? 0;
+        internalLoadout.Camo = BodyCamo?.GetMagicCowsID() ?? 0;
+        internalLoadout.Skin = Avatar?.GetMagicCowsID() ?? 99;
+        internalLoadout.Trophy = Trophy?.GetMagicCowsID() ?? 0;
 
-        loadout.IsFemale = IsFemale;
+        internalLoadout.IsFemale = IsFemale;
 
-        if (GearSlots > 0) { loadout.Gear1 = Gear1?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 1) { loadout.Gear2 = Gear2?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 2) { loadout.Gear3 = Gear3?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 3) { loadout.Gear4 = Gear4?.GetMagicCowsID() ?? 0; }
+        if (GearSlots > 0) { internalLoadout.Gear1 = Gear1?.GetMagicCowsID() ?? 0; }
+        if (GearSlots > 1) { internalLoadout.Gear2 = Gear2?.GetMagicCowsID() ?? 0; }
+        if (GearSlots > 2) { internalLoadout.Gear3 = Gear3?.GetMagicCowsID() ?? 0; }
+        if (GearSlots > 3) { internalLoadout.Gear4 = Gear4?.GetMagicCowsID() ?? 0; }
     }
+    private MagiCowsLoadout internalLoadout;
     public void LoadMagicCowsLoadout(MagiCowsLoadout loadout)
     {
+        internalLoadout = loadout;
         Primary.SetMagiCowsWeapon(loadout.Primary);
         Primary.LoadMagicCowsWeapon();
         Primary.IsPrimary = true;
@@ -462,7 +459,7 @@ public sealed class BLRLoadoutSetup : INotifyPropertyChanged
 
         Trophy = loadout.GetTrophy();
         Avatar = loadout.GetSkin();
-        Camo = loadout.GetCamo();
+        BodyCamo = loadout.GetCamo();
 
         IsFemale = loadout.IsFemale;
     }

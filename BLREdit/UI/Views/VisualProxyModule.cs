@@ -1,5 +1,7 @@
 ﻿using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
+using BLREdit.Game;
+using BLREdit.Game.Proxy;
 using BLREdit.UI;
 
 using HtmlAgilityPack;
@@ -17,7 +19,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-namespace BLREdit.Game.Proxy;
+namespace BLREdit.UI.Views;
 
 public sealed class VisualProxyModule : INotifyPropertyChanged
 {
@@ -170,15 +172,15 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     }
 
     private ProxyModule installedModule;
-    public ProxyModule InstalledModule 
+    public ProxyModule InstalledModule
     { get { return installedModule; } }
 
     private UIBool installed = new(false);
-    public UIBool Installed 
+    public UIBool Installed
     { get { return installed; } }
 
     private UIBool upToDate = new(false);
-    public UIBool UpToDate 
+    public UIBool UpToDate
     { get { return upToDate; } }
 
     private void CheckForInstall()
@@ -268,7 +270,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             LoggingSystem.Log($"failed to install module:{RepositoryProxyModule.InstallName} reason:{error.Message}\n{error.StackTrace}");
         }
-        
+
         CheckForInstall();
         CheckForUpdate();
         OnPropertyChanged(nameof(InstalledModule));

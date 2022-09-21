@@ -16,6 +16,8 @@ using BLREdit.API.ImportSystem;
 using System.Windows.Media.Animation;
 using System.Threading.Tasks;
 using BLREdit.Game.Proxy;
+using BLREdit.UI.Views;
+using System.Reflection;
 
 namespace BLREdit.UI;
 
@@ -29,10 +31,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
 
     /// <summary>
-    /// Contains the last selected Image for setting the ItemList
+    /// Contains the last selected Border for setting the ItemList
     /// </summary>
-    public static Image LastSelectedImage { get { return lastSelectedImage; } private set { if (lastSelectedImage is not null) { SetBorderColor(lastSelectedImage.Parent as Border, Color.FromArgb(14, 158, 158, 158)); } lastSelectedImage = value; if (lastSelectedImage is not null) { SetBorderColor(lastSelectedImage.Parent as Border, Color.FromArgb(255, 255, 136, 0)); } } }
-    private static Image lastSelectedImage = null;
+    public static Border LastSelectedBorder { get { return lastSelectedBorder; } private set { if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(14, 158, 158, 158)); } lastSelectedBorder = value; if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(255, 255, 136, 0)); } } }
+    private static Border lastSelectedBorder = null;
     /// <summary>
     /// Contains the weapon to filter out Items From the ItemList
     /// </summary>
@@ -41,10 +43,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     /// <summary>
     /// Contains the current active loadout
     /// </summary>
-    public static MagiCowsLoadout ActiveLoadout { get { return activeLoadout; } set { activeLoadout = value; Loadout.LoadMagicCowsLoadout(value); } }
-    private static MagiCowsLoadout activeLoadout = null;
+    public static MagiCowsProfile ActiveProfile { get { return activeProfile; } set { activeProfile = value; Profile.LoadMagicCowsProfile(value); } }
+    private static MagiCowsProfile activeProfile = null;
 
-    public static BLRLoadoutSetup Loadout { get; } = new();
+    public static BLRProfile Profile { get; } = new();
     /// <summary>
     /// Contains the Sorting Direction for the ItemList
     /// </summary>
@@ -72,7 +74,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private int columns = 4;
     public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
 
-    public BLREditSettings Settings { get { return BLREditSettings.Settings; } }
+    //public static BLREditSettings Settings { get { return BLREditSettings.Settings; } }
 
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -114,21 +116,19 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         UndoRedoSystem.BlockUpdate = true;
         UndoRedoSystem.BlockEvent = true;
-        ActiveLoadout = ExportSystem.ActiveProfile.Loadout1;
+        ActiveProfile = ExportSystem.ActiveProfile;
         UndoRedoSystem.BlockUpdate = false;
         UndoRedoSystem.BlockEvent = false;
-
-        EnabledLoadout = 1;
 
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
 
-        LastSelectedImage = PrimaryRecieverImage;
-        FilterWeapon = Loadout.Primary.Reciever;
+        LastSelectedBorder = ((WeaponControl)((Grid)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Children[0]).Reciever;
+        FilterWeapon = Profile.Loadout1.Primary.Reciever;
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
 
-        LoadoutGrid.DataContext = Loadout;
-        AdvancedInfo.DataContext = Loadout;
+        LoadoutTabs.DataContext = Profile;
+        AdvancedInfo.DataContext = Profile;
     }
 
     private static void SetBorderColor(Border border, Color color)
@@ -246,7 +246,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    public void RefreshPing()
+    public static void RefreshPing()
     {
         foreach (BLRServer server in ServerList)
         {
@@ -375,7 +375,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 if (e.ClickCount >= 2)
                 {
                     LoggingSystem.Log($"Double Clicking:{item.Name}");
-                    SetItemToImage(LastSelectedImage, item);
+                    SetItemToBorder(LastSelectedBorder, item);
                 }
                 else
                 {
@@ -386,7 +386,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    private void Image_DragEnter(object sender, DragEventArgs e)
+    private void Border_DragEnter(object sender, DragEventArgs e)
     {
         if (e.Data.GetDataPresent(DataFormats.Serializable))
         { e.Effects = DragDropEffects.Copy; }
@@ -394,148 +394,159 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         { e.Effects = DragDropEffects.None; }
     }
 
-    private void Image_Drop(object sender, DragEventArgs e)
+    private void Border_Drop(object sender, DragEventArgs e)
     {
-        if (sender is Border border)
+        LoggingSystem.Log($"Recieved Drop {e.Data.GetDataPresent(typeof(BLRItem))}");
+        if (e.Data.GetData(typeof(BLRItem)) is BLRItem item)
         {
-            if (e.Data.GetData(typeof(BLRItem)) is BLRItem item)
+            Image image = null;
+            Border border = null;
+            if (e.OriginalSource is Image mage)
             {
-                LoggingSystem.Log($"Recieving:{item.Name}");
-                if (border.Child is Grid grid)
+                image = mage;
+                if (mage.Parent is Border order)
                 {
-                    if (grid.Children[0] is Image img)
-                    {
-                        SetItemToImage(img, item);
-                    }
-                }
-                if (border.Child is Image image)
-                {
-                    SetItemToImage(image, item);
+                    border = order;
                 }
             }
+            else if (e.OriginalSource is Border order)
+            {
+                border = order;
+                image = (Image)order.Child;
+            }
+
+            if (image is null || border is null) { LoggingSystem.Log("Image or Border is null"); }
+
+            if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
+            {
+                UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
+                UndoRedoSystem.EndAction();
+            }
+            else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
+            {
+                UndoRedoSystem.DoAction(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
+                UndoRedoSystem.EndAction();
+            }
         }
-        
+    }
+
+    private bool wasLastImageScopePreview = false;
+    private void Border_MouseUp(object sender, MouseButtonEventArgs e)
+    {
+        Image image = null;
+        Border border = null;
+        if (e.OriginalSource is Image mage)
+        {
+            image = mage;
+            if (mage.Parent is Border order)
+            {
+                border = order;
+            }
+        }
+        else if (e.OriginalSource is Border order)
+        {
+            border = order;
+            if (order.Child is Image mage2) { image = mage2; }
+        }
+
+        if (image is null || border is null) { LoggingSystem.Log("Image or Border is null"); return; }
+
+        if (e.ChangedButton == MouseButton.Left)
+        {
+            if (wasLastImageScopePreview) 
+            {
+                foreach (var item in ImportSystem.GetItemListOfType(ImportSystem.SCOPES_CATEGORY))
+                {
+                    item.RemoveCrosshair();
+                }
+            }
+            var weapon = ((FrameworkElement)border.Parent).DataContext as BLRWeapon;
+            if (weapon is not null) FilterWeapon = weapon.Reciever;
+            LastSelectedBorder = border;
+            switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
+            {
+                case "Reciever":
+                    if (weapon.IsPrimary) SetItemList(ImportSystem.PRIMARY_CATEGORY);
+                    if (!weapon.IsPrimary) SetItemList(ImportSystem.SECONDARY_CATEGORY);
+                    break;
+                case "Muzzle":
+                    SetItemList(ImportSystem.MUZZELS_CATEGORY);
+                    break;
+                case "Magazine":
+                    SetItemList(ImportSystem.MAGAZINES_CATEGORY);
+                    break;
+                case "Barrel":
+                    SetItemList(ImportSystem.BARRELS_CATEGORY);
+                    break;
+                case "Scope":
+                    if (image.GetBindingExpression(Image.SourceProperty).ResolvedSourcePropertyName == nameof(weapon.Scope.SmallSquareImage))
+                    {
+                        SetItemList(ImportSystem.SCOPES_CATEGORY);
+                    }
+                    else
+                    {
+                        weapon.Scope.LoadCrosshair(weapon.IsPrimary);
+                        ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
+                        wasLastImageScopePreview = true;
+                    }
+                    break;
+                case "Stock":
+                    SetItemList(ImportSystem.STOCKS_CATEGORY);
+                    break;
+                case "Grip":
+                    SetItemList(ImportSystem.GRIPS_CATEGORY);
+                    break;
+                case "Tag":
+                    SetItemList(ImportSystem.HANGERS_CATEGORY);
+                    break;
+                case "Camo":
+                    SetItemList(ImportSystem.CAMOS_WEAPONS_CATEGORY);
+                    break;
+
+                case "BodyCamo":
+                    SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
+                    break;
+                case "Helmet":
+                    SetItemList(ImportSystem.HELMETS_CATEGORY);
+                    break;
+                case "UpperBody":
+                    SetItemList(ImportSystem.UPPER_BODIES_CATEGORY);
+                    break;
+                case "LowerBody":
+                    SetItemList(ImportSystem.LOWER_BODIES_CATEGORY);
+                    break;
+                case "Tactical":
+                    SetItemList(ImportSystem.TACTICAL_CATEGORY);
+                    break;
+                case "Trophy":
+                    SetItemList(ImportSystem.BADGES_CATEGORY);
+                    break;
+                case "Avatar":
+                    SetItemList(ImportSystem.AVATARS_CATEGORY);
+                    break;
+
+                case "Gear1":
+                case "Gear2":
+                case "Gear3":
+                case "Gear4":
+                    SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
+                    break;
+            }
+            return;
+        }
+        else if (e.ChangedButton == MouseButton.Right)
+        {
+            if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
+            {
+                UndoRedoSystem.DoAction(null, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
+                UndoRedoSystem.EndAction();
+            }
+        }
     }
 
     private static bool CheckForPistolAndBarrel(BLRItem item)
     {
         return item.Name == "Light Pistol" || item.Name == "Heavy Pistol" || item.Name == "Prestige Light Pistol";
-    }
-
-    private void UpdatePrimaryImages(Image image)
-    {
-        FilterWeapon = PrimaryRecieverImage.Tag as BLRItem;
-
-        if (image.Name.Contains("Reciever"))
-        {
-            SetItemList(ImportSystem.PRIMARY_CATEGORY);
-            LastSelectedImage = PrimaryRecieverImage;
-            return;
-        }
-
-        if (image.Name.Contains("Muzzle"))
-        { 
-            SetItemList(ImportSystem.MUZZELS_CATEGORY);
-            LastSelectedImage = image;
-            return;
-        }
-        if (image.Name.Contains("Grip"))
-        {
-            SetItemList(ImportSystem.GRIPS_CATEGORY);
-            LastSelectedImage = image;
-            return;
-        }
-        if (image.Name.Contains("Crosshair"))
-        {
-            var item = (PrimaryScopeImage.Tag as BLRItem);
-            item.LoadCrosshair(true);
-            ItemList.ItemsSource = new BLRItem[] { item };
-            LastSelectedImage = PrimaryScopeImage;
-            return;
-        }
-        UpdateImages(image);
-    }
-
-    private void UpdateSecondaryImages(Image image)
-    {
-        FilterWeapon = SecondaryRecieverImage.Tag as BLRItem;
-        
-        if (image.Name.Contains("Reciever"))
-        {
-            SetItemList(ImportSystem.SECONDARY_CATEGORY);
-            LastSelectedImage = SecondaryRecieverImage;
-            return;
-        }
-        if (image.Name.Contains("Muzzle"))
-        { 
-            SetItemList(ImportSystem.MUZZELS_CATEGORY);
-            LastSelectedImage = image;
-            return;
-        }
-        if (image.Name.Contains("Grip"))
-        {
-            SetItemList(ImportSystem.GRIPS_CATEGORY);
-            LastSelectedImage = image;
-            return;
-        }
-        if (image.Name.Contains("Crosshair"))
-        {
-            var item = (SecondaryScopeImage.Tag as BLRItem);
-            if (item != null)
-            {
-                item.LoadCrosshair(false);
-                ItemList.ItemsSource = new BLRItem[] { item };
-                LastSelectedImage = SecondaryScopeImage;
-            }
-            return;
-        }
-        UpdateImages(image);
-    }
-
-    private void UpdateImages(Image image)
-    {
-        LastSelectedImage = image;
-        
-        if (image.Name.Contains("Reciever"))
-        {
-            SetItemList(ImportSystem.PRIMARY_CATEGORY);
-            
-            return;
-        }
-        if (image.Name.Contains("Magazine"))
-        {
-            SetItemList(ImportSystem.MAGAZINES_CATEGORY);
-            return;
-        }
-        if (image.Name.Contains("Stock"))
-        {
-            SetItemList(ImportSystem.STOCKS_CATEGORY);
-            return;
-        }
-        if (image.Name.Contains("Scope"))
-        {
-            foreach (var item in ImportSystem.GetItemListOfType(ImportSystem.SCOPES_CATEGORY))
-            {
-                item.RemoveCrosshair();
-            }
-            SetItemList(ImportSystem.SCOPES_CATEGORY);
-            return;
-        }
-        if (image.Name.Contains("Barrel"))
-        {
-            SetItemList(ImportSystem.BARRELS_CATEGORY);
-            return;
-        }
-        if (image.Name.Contains("Tag"))
-        {
-            SetItemList(ImportSystem.HANGERS_CATEGORY);
-            return;
-        }
-        if (image.Name.Contains("CamoWeapon"))
-        {
-            SetItemList(ImportSystem.CAMOS_WEAPONS_CATEGORY);
-            return;
-        }
     }
 
     public void SetItemList(string Type)
@@ -640,245 +651,18 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = API.ImportSystem.LanguageSet.GetWords(SortingEnumType) });
     }
 
-    private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+    public static void SetItemToBorder(Border border, BLRItem item, bool blockEvent = false, bool blockUpdate = false)
     {
-        if (e.ChangedButton == MouseButton.Left)
+        if (border is null) { LoggingSystem.Log($"Missing Border in SetItemToBorder()"); return; }
+        if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
         {
-            if (sender is Border border)
-            {
-                if (border.Child is Grid grid)
-                {
-                    if (grid.Children[0] is Image img)
-                    {
-                        if (img.Name.Contains("Gear"))
-                        {
-                            SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
-                            LastSelectedImage = img;
-                            return;
-                        }
-                    }
-                }
-                if (border.Child is Image image)
-                {
-                    ItemList.ItemsSource = null;
-                    if (image.Name.Contains("Primary"))
-                    {
-                        UpdatePrimaryImages(image);
-                        return;
-                    }
-                    if (image.Name.Contains("Secondary"))
-                    {
-                        UpdateSecondaryImages(image);
-                        return;
-                    }
-                    if (image.Name.Contains("Tactical"))
-                    {
-                        SetItemList(ImportSystem.TACTICAL_CATEGORY);
-                        LastSelectedImage = image;
-                        return;
-                    }
-                    if (image.Name.Contains("CamoBody"))
-                    {
-                        SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
-                        LastSelectedImage = image;
-                        return;
-                    }
-                    if (image.Name.Contains("Helmet"))
-                    {
-                        SetItemList(ImportSystem.HELMETS_CATEGORY);
-                        LastSelectedImage = image;
-                        return;
-                    }
-                    if (image.Name.Contains("UpperBody"))
-                    {
-                        SetItemList(ImportSystem.UPPER_BODIES_CATEGORY);
-                        LastSelectedImage = image;
-                        return;
-                    }
-
-                    if (image.Name.Contains("Avatar"))
-                    {
-                        SetItemList(ImportSystem.AVATARS_CATEGORY);
-                        LastSelectedImage = image;
-                        return;
-                    }
-
-                    if (image.Name.Contains("LowerBody"))
-                    {
-                        SetItemList(ImportSystem.LOWER_BODIES_CATEGORY);
-                        LastSelectedImage = image;
-                        return;
-                    }
-
-                    if (image.Name.Contains("Trophy"))
-                    {
-                        SetItemList(ImportSystem.BADGES_CATEGORY);
-                        LastSelectedImage = image;
-                        return;
-                    }
-
-                    if (image.Name.Contains("Gear"))
-                    {
-                        SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
-                        LastSelectedImage = image;
-                        return;
-                    }
-                    LoggingSystem.Log("ItemList Didn't get set");
-                }
-            }
+            UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon, blockEvent, blockUpdate);
+            UndoRedoSystem.EndAction();
         }
-        else if (e.ChangedButton == MouseButton.Right)
+        else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
         {
-            if (sender is Border border)
-            {
-                if (border.Child is Grid grid)
-                {
-                    if (grid.Children[0] is Image img)
-                    {
-                        RemoveItemFromImage(img);
-                    }
-                }
-                if (border.Child is Image image)
-                {
-                    RemoveItemFromImage(image);
-                }
-            }
-        }
-    }
-
-    private void RemoveItemFromImage(Image image)
-    {
-        SetItemToImage(image, null, true, false);
-    }
-
-    public void SetItemToImage(Image image, BLRItem item, bool blockEvent = false, bool blockUpdate = false)
-    {
-        switch (image.Name)
-        {
-            #region Weapons
-            #region Primary
-            case nameof(PrimaryRecieverImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Reciever)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PrimaryBarrelImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Barrel)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PrimaryMuzzleImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Muzzle)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PrimaryMagazineImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Magazine)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PrimaryStockImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Stock)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PrimaryScopeImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Scope)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PrimaryGripImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Grip)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PrimaryTagImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Tag)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PrimaryCamoWeaponImage):
-                UndoRedoSystem.DoAction(item, Loadout.Primary.GetType().GetProperty(nameof(Loadout.Primary.Camo)), Loadout.Primary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            #endregion Primary
-
-            #region Secondary
-            case nameof(SecondaryRecieverImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Reciever)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(SecondaryBarrelImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Barrel)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(SecondaryMuzzleImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Muzzle)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(SecondaryMagazineImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Magazine)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(SecondaryStockImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Stock)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(SecondaryScopeImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Scope)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(SecondaryGripImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Grip)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(SecondaryTagImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Tag)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(SecondaryCamoWeaponImage):
-                UndoRedoSystem.DoAction(item, Loadout.Secondary.GetType().GetProperty(nameof(Loadout.Secondary.Camo)), Loadout.Secondary, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            #endregion Seconday
-            #endregion Weapons
-
-            case nameof(HelmetImage):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Helmet)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(UpperBodyImage):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.UpperBody)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(LowerBodyImage):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.LowerBody)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(TacticalImage):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Tactical)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(GearImage1):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Gear1)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(GearImage2):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Gear2)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(GearImage3):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Gear3)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(GearImage4):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Gear4)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(PlayerCamoBodyImage):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Camo)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(AvatarImage):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Avatar)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
-            case nameof(TrophyImage):
-                UndoRedoSystem.DoAction(item, Loadout.GetType().GetProperty(nameof(Loadout.Trophy)), Loadout, blockEvent, blockUpdate);
-                UndoRedoSystem.EndAction();
-                break;
+            UndoRedoSystem.DoAction(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout, blockEvent, blockUpdate);
+            UndoRedoSystem.EndAction();
         }
     }
 
@@ -892,7 +676,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, true);
                 UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null);
                 UndoRedoSystem.DoAction(profile.PlayerName, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
-                UndoRedoSystem.DoAction(profile.GetLoadout(EnabledLoadout), typeof(MainWindow).GetProperty(nameof(ActiveLoadout)), null, true, true);
                 UndoRedoSystem.EndAction();
             }
             IsPlayerProfileChanging = false;
@@ -921,52 +704,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         this.ProfileComboBox.DataContext = ExportSystem.Profiles;
     }
 
-    public void EnableLoadoutButton()
-    {
-        Loadout1Button.IsEnabled = true;
-        Loadout2Button.IsEnabled = true;
-        Loadout3Button.IsEnabled = true;
-        switch (enabledLoadout)
-        {
-            case 1:
-                Loadout1Button.IsEnabled = false;
-                break;
-            case 2:
-                Loadout2Button.IsEnabled = false;
-                break;
-            case 3:
-                Loadout3Button.IsEnabled = false;
-                break;
-            default: 
-                Loadout1Button.IsEnabled = false;
-                break;
-        }
-    }
-
-    private int enabledLoadout = 1;
-    public int EnabledLoadout { get { return enabledLoadout; } set { enabledLoadout = value; EnableLoadoutButton(); } }
-
-    private void Loadout1Button_Click(object sender, RoutedEventArgs e)
-    {
-        UndoRedoSystem.DoAction(1, typeof(MainWindow).GetProperty(nameof(EnabledLoadout)), Self);
-        UndoRedoSystem.DoAction(ExportSystem.ActiveProfile.Loadout1, typeof(MainWindow).GetProperty(nameof(ActiveLoadout)), null, true, true);
-        UndoRedoSystem.EndAction();
-    }
-
-    private void Loadout2Button_Click(object sender, RoutedEventArgs e)
-    {
-        UndoRedoSystem.DoAction(2, typeof(MainWindow).GetProperty(nameof(EnabledLoadout)), Self);
-        UndoRedoSystem.DoAction(ExportSystem.ActiveProfile.Loadout2, typeof(MainWindow).GetProperty(nameof(ActiveLoadout)), null, true, true);
-        UndoRedoSystem.EndAction();
-    }
-
-    private void Loadout3Button_Click(object sender, RoutedEventArgs e)
-    {
-        UndoRedoSystem.DoAction(3, typeof(MainWindow).GetProperty(nameof(EnabledLoadout)), Self);
-        UndoRedoSystem.DoAction(ExportSystem.ActiveProfile.Loadout3, typeof(MainWindow).GetProperty(nameof(ActiveLoadout)), null, true, true);
-        UndoRedoSystem.EndAction();
-    }
-
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
         ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
@@ -978,16 +715,16 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)
     {
-        if (UndoRedoSystem.BlockEvent) return;
-        UndoRedoSystem.CreateAction(false, true, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
-        UndoRedoSystem.EndAction();
+        //if (UndoRedoSystem.BlockEvent) return;
+        //UndoRedoSystem.CreateAction(false, true, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
+        //UndoRedoSystem.EndAction();
     }
 
     private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
     {
-        if (UndoRedoSystem.BlockEvent) return;
-        UndoRedoSystem.CreateAction(true,false, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
-        UndoRedoSystem.EndAction();
+        //if (UndoRedoSystem.BlockEvent) return;
+        //UndoRedoSystem.CreateAction(true,false, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
+        //UndoRedoSystem.EndAction();
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1027,17 +764,17 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         ProfileComboBox.SelectedIndex = ExportSystem.Profiles.IndexOf(ExportSystem.ActiveProfile);
 
-        ActiveLoadout = ExportSystem.ActiveProfile.Loadout1;
+        ActiveProfile = ExportSystem.ActiveProfile;
 
-        Loadout1Button.IsEnabled = false;
-        Loadout2Button.IsEnabled = true;
-        Loadout3Button.IsEnabled = true;
+        //Loadout1Button.IsEnabled = false;
+        //Loadout2Button.IsEnabled = true;
+        //Loadout3Button.IsEnabled = true;
 
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
 
 
-        LastSelectedImage = PrimaryRecieverImage;
+        //LastSelectedImage = this.Loadout1.PrimaryControl.PrimaryRecieverImage;
     }
 
 

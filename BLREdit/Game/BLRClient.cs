@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using BLREdit.Game.Proxy;
 using BLREdit.UI;
+using BLREdit.UI.Views;
 using PeNet;
 using PeNet.Header.Net.MetaDataTables;
 

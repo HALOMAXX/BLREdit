@@ -6,6 +6,8 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using BLREdit.API.ImportSystem;
+using BLREdit.UI.Views;
+using BLREdit.UI;
 
 namespace BLREdit;
 
@@ -108,7 +110,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public static BitmapSource GetImage(BitmapSource male, BitmapSource female)
     {
-        if (UI.MainWindow.Loadout.IsFemale)
+        if (UI.MainWindow.Profile.Loadout1.IsFemale)
         {
             if (female == null)
             { return male; }
@@ -246,7 +248,8 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     private string GetSecondaryScope()
     {
-        var name = (UI.MainWindow.Self.SecondaryRecieverImage.Tag as BLRItem)?.Name ?? "";
+        //var name = (((LoadoutControl)UI.MainWindow.Self.LoadoutTabs.Items[0]).SecondaryControl.PrimaryRecieverImage.Tag as BLRItem)?.Name ?? "";
+        var name = "";
         switch (Name)
         {
             case "No Optic Mod":
@@ -390,7 +393,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.SECONDARY_CATEGORY:
                 case ImportSystem.PRIMARY_CATEGORY:
-                    return BLRWeaponSetup.CalculateSpread(this, 0, 0).ZoomSpread;
+                    return BLRWeapon.CalculateSpread(this, 0, 0).ZoomSpread;
                 default:
                     return 0;
             }
@@ -422,7 +425,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return BLRWeaponSetup.CalculateDamage(this, 0).DamageIdeal;
+                    return BLRWeapon.CalculateDamage(this, 0).DamageIdeal;
                 default:
                     return WeaponModifiers?.damage ?? 0;
             }
@@ -513,7 +516,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return BLRWeaponSetup.CalculateSpread(this, 0, 0).HipSpread;
+                    return BLRWeapon.CalculateSpread(this, 0, 0).HipSpread;
                 default:
                     return 0;
             }
@@ -622,7 +625,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return BLRWeaponSetup.CalculateSpread(this, 0, 0).MovmentSpread;
+                    return BLRWeapon.CalculateSpread(this, 0, 0).MovmentSpread;
                 default:
                     return 0;
             }
@@ -652,7 +655,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             {
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    return BLRWeaponSetup.CalculateRecoil(this, 0).RecoilHip;
+                    return BLRWeapon.CalculateRecoil(this, 0).RecoilHip;
                 default:
                     return WeaponModifiers?.recoil ?? 0;
             }
