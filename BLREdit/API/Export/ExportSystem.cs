@@ -1,3 +1,5 @@
+using BLREdit.UI;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,6 +52,7 @@ public sealed class ExportSystem
         {
             currentProfile = tempProfileIndex;
         }
+        MainWindow.ActiveProfile = profile;
     }
 
     private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()

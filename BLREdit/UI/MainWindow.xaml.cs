@@ -672,6 +672,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        LoggingSystem.Log("Changing Profile");
         if (!IsPlayerNameChanging && !UndoRedoSystem.BlockEvent)
         {
             IsPlayerProfileChanging = true;
@@ -704,8 +705,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void AddProfileButton_Click(object sender, RoutedEventArgs e)
     {
         ExportSystem.AddProfile();
-        this.ProfileComboBox.DataContext = null;
-        this.ProfileComboBox.DataContext = ExportSystem.Profiles;
     }
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
