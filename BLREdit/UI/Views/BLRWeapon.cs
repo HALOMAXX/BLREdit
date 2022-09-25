@@ -873,11 +873,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             rate_alpha = Math.Abs(allRecoil);
             if (allRecoil > 0)
             {
-                WeaponReloadRate = Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.X ?? 0, rate_alpha);
+                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.X ?? 0, rate_alpha)-1.0);
             }
             else
             {
-                WeaponReloadRate = Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Y ?? 0, rate_alpha);
+                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Y ?? 0, rate_alpha)-1.0);
             }
         }
         return WeaponReloadRate;
