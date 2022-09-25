@@ -1,4 +1,4 @@
-﻿namespace BLREdit;
+﻿namespace BLREdit.Import;
 
 public enum ImportWeaponSortingType
 {

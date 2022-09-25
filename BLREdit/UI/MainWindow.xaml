@@ -472,11 +472,6 @@
                         <Grid Name="ClientGrid">
                             <Button Content="{Binding Source={x:Static ui:UILanguageWrapper.BtnLauAddClient }}" Margin="240,0,0,0" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="OpenNewGameClient_Click"/>
                             <ListView Name="GameClientList" Margin="0,0,0,40">
-                                <Button/>
-                                <Button/>
-                                <Button/>
-                                <Button/>
-                                <Button/>
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="2"/>
@@ -500,7 +495,7 @@
                                                         <Image Source="Resources/settings.png"/>
                                                     </Button>
                                                     <Button Content="Standard" IsEnabled="{Binding Path=CurrentClient.IsNot}" Click="ChangeCurrentGameClient_Click" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                                                    <Button Content="Modules" Width="128" Height="32" Margin="0,0,174,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                                    <Button Content="Bot Match" Width="128" Height="32" Margin="0,0,174,10" Command="{Binding Path=LaunchBotMatchCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
                                                 </Grid>
                                             </Border>
                                         </Grid>

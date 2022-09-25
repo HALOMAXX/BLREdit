@@ -2,17 +2,16 @@
 using System.Windows.Media.Imaging;
 using System.Numerics;
 using System.Text.Json.Serialization;
-using System.Drawing;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using BLREdit.API.ImportSystem;
 using BLREdit.UI.Views;
 using BLREdit.UI;
 
-namespace BLREdit;
+namespace BLREdit.Import;
 
 public sealed class BLRItem : INotifyPropertyChanged
 {
+    public int LMID { get; set; } = -1;
     public string Category { get; set; }
     public string Class { get; set; }
     public string DescriptorName { get; set; } = "";

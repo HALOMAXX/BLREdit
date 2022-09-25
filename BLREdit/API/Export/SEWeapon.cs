@@ -1,31 +1,34 @@
-﻿namespace BLREdit;
+﻿using BLREdit.Import;
+using BLREdit.UI.Views;
+
+namespace BLREdit.Export;
 
 public sealed class SEWeapon
 {
     /// <summary>
     /// Contains the UnlockID(UID) of the Reciever
     /// </summary>
-    public int Receiver { get; set; } = 40022;
+    public int Receiver { get; set; } = 1;
 
     /// <summary>
     /// Contains the UnlockID(UID) of the Barrel
     /// </summary>
-    public int Barrel { get; set; } = 41031;
+    public int Barrel { get; set; } = 0;
 
     /// <summary>
     /// Contains the UnlockID(UID) of the Scope
     /// </summary>
-    public int Scope { get; set; } = 45019;
+    public int Scope { get; set; } = 0;
 
     /// <summary>
     /// Contains the UnlockID(UID) of the Grip
     /// </summary>
-    public int Grip { get; set; } = 62000;
+    public int Grip { get; set; } = 0;
 
     /// <summary>
     /// Contains the UnlockID(UID) of the Stock
     /// </summary>
-    public int Stock { get; set; } = 42005;
+    public int Stock { get; set; } = 0;
 
 
 
@@ -59,17 +62,22 @@ public sealed class SEWeapon
     /// </summary>
     public int Hanger { get; set; } = 0;
 
-    public static SEWeapon CreateFromMagiCowsWeapon(MagiCowsWeapon weapon)
+    public SEWeapon() { }
+
+    public SEWeapon(BLRWeapon weapon)
     {
-        return new SEWeapon { 
-            Receiver = weapon.GetReciever().UID,
-            Barrel = weapon.GetBarrel().UID,
-            Scope = weapon.GetScope().UID,
-            Grip = weapon.GetGrip()?.UID ?? 62000,
-            Muzzle = weapon.Muzzle,
-            Magazine = weapon.Magazine,
-            CamoIndex = weapon.Camo,
-            Hanger = weapon.Tag
-        };
+        Receiver = weapon?.Reciever?.LMID ?? -1;
+        Barrel = weapon?.Barrel?.LMID ?? -1;
+        Scope = weapon?.Scope?.LMID ?? -1;
+        Grip = weapon?.Grip?.LMID ?? -1;
+        Stock = weapon?.Stock?.LMID ?? -1;
+        Muzzle = ImportSystem.GetIDOfItem(weapon.Muzzle);
+        Magazine = ImportSystem.GetIDOfItem(weapon.Magazine);
+        CamoIndex = ImportSystem.GetIDOfItem(weapon.Camo);
+        Hanger = ImportSystem.GetIDOfItem(weapon.Tag);
+
+        Ammo = weapon?.Ammo?.LMID ?? 0;
+
+        //TODO (Weapon) Ammo Type according to magazine type (Arrows, Breech Loaded Pistol)
     }
 }

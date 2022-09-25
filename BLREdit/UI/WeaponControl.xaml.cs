@@ -52,6 +52,11 @@ namespace BLREdit.UI
                         gripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
                         OnPropertyChanged(nameof(GripVisibility));
                     }
+                    else
+                    {
+                        gripVisibility = Visibility.Visible;
+                        OnPropertyChanged(nameof(GripVisibility));
+                    }
                 }
             }
         }

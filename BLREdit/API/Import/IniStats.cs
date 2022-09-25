@@ -1,9 +1,9 @@
-﻿using BLREdit.API.ImportSystem;
+﻿using BLREdit.UI;
 
 using System.Numerics;
 using System.Text.Json.Serialization;
 
-namespace BLREdit;
+namespace BLREdit.Import;
 
 public sealed class IniStats
 {

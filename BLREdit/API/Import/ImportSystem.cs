@@ -1,4 +1,4 @@
-﻿using BLREdit.API.ImportSystem;
+﻿using BLREdit.UI;
 using BLREdit.UI.Views;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace BLREdit;
+namespace BLREdit.Import;
 
 public static class ImportSystem
 {
@@ -29,6 +29,9 @@ public static class ImportSystem
     public const string AVATARS_CATEGORY = "avatars";           //avatars
     public const string TACTICAL_CATEGORY = "tactical";         //tactical
     public const string BADGES_CATEGORY = "badges";
+    public const string AMMO_CATEGORY = "ammos";
+    public const string DEPOT_CATEGORY = "depot";
+    public const string EMOTES_CATEGORY = "emotes";
 
     //public static readonly Dictionary<float, float> DamagePercentToValue = new Dictionary<float, float>(); not in use
 
@@ -36,6 +39,7 @@ public static class ImportSystem
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
     private static Dictionary<string, List<BLRItem>> ItemLists { get; } = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
+    
 
     public static void Initialize()
     {

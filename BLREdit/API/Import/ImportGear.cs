@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BLREdit;
+namespace BLREdit.Import;
 
 public sealed class ImportGear
 {

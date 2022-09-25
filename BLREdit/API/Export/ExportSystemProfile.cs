@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace BLREdit;
+namespace BLREdit.Export;
 
 public sealed class ExportSystemProfile : MagiCowsProfile
 {
@@ -17,16 +17,5 @@ public sealed class ExportSystemProfile : MagiCowsProfile
         ExportSystemProfile duplicate = base.Clone() as ExportSystemProfile;
         duplicate.Index = ExportSystem.Profiles.Count;
         return duplicate;
-    }
-
-    public MagiCowsLoadout GetLoadout(int id)
-    {
-        switch (id)
-        {
-            case 1: return Loadout1;
-            case 2: return Loadout2;
-            case 3: return Loadout3;
-            default: return Loadout1;
-        }
     }
 }
