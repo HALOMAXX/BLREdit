@@ -50,9 +50,9 @@
         <Grid Width="400" Height="128" Margin="0,192,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="52" />
-                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="66" />
                 <ColumnDefinition Width="68" />
-                <ColumnDefinition Width="36" />
+                <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="58" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
