@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BLREdit.Import;
+
+using System;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
-namespace BLREdit;
+namespace BLREdit.Export;
 
 public sealed class MagiCowsWeapon
 {
@@ -20,6 +22,9 @@ public sealed class MagiCowsWeapon
 
     [JsonIgnore] private int magazine = 9;
     public int Magazine { get { return magazine; } set { if (magazine != value) { magazine = value; isDirty = true; } } }
+
+    [JsonIgnore] private int ammo = 9;
+    public int Ammo { get { return ammo; } set { if (ammo != value) { ammo = value; isDirty = true; } } }
 
     [JsonIgnore] private string scope = "No Optic Mod";
     public string Scope { get { return scope; } set { if (scope != value) { scope = value; isDirty = true; } } }
@@ -128,6 +133,10 @@ public sealed class MagiCowsWeapon
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MAGAZINES_CATEGORY, Magazine);
     }
+    public BLRItem GetAmmo()
+    {
+        return ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, Ammo);
+    }
     public BLRItem GetMuzzle()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);
@@ -144,6 +153,7 @@ public sealed class MagiCowsWeapon
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, Scope) ?? ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, NoScope);
     }
+
     public BLRItem GetGrip()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, Grip);

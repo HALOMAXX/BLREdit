@@ -1,10 +1,12 @@
-﻿using System;
+﻿using BLREdit.Import;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLREdit;
+namespace BLREdit.Export;
 
 public sealed class MagiCowsOldProfile
 {

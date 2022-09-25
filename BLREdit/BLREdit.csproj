@@ -41,5 +41,9 @@
 	<ItemGroup>
 	  <Page Include="App.xaml" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="API\ImportSystem\" />
+	</ItemGroup>
 	
 </Project>

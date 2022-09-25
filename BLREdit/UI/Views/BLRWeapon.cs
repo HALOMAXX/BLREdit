@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLREdit.Export;
+using BLREdit.Import;
+
+using System;
 using System.ComponentModel;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -75,9 +78,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         get { return camo; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { camo = value; ItemChanged(); return; } if (value is null || reciever is null || camo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.CAMOS_WEAPONS_CATEGORY) { if (value is null) { camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, MagiCowsWeapon.NoCamo); } else { camo = value; } ItemChanged(); } }
     }
+
+    private BLRItem ammo = null;
+    public BLRItem Ammo
+    {
+        get { return ammo; }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { camo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 0); } else { ammo = value; } ItemChanged(); } }
+    }
     #endregion Weapon Parts
 
-    private MagiCowsWeapon weapon = null;
+    private Export.MagiCowsWeapon weapon = null;
 
     private bool IsPistol()
     {
@@ -1330,6 +1340,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         weapon.Grip = Grip?.Name ?? "";
         weapon.Tag = Tag?.GetMagicCowsID() ?? 0;
         weapon.Camo = Camo?.GetMagicCowsID() ?? 0;
+
+        weapon.Ammo = Ammo?.GetMagicCowsID() ?? 0;
     }
 
     public void LoadMagicCowsWeapon()
@@ -1346,5 +1358,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         Grip = weapon.GetGrip();
         Tag = weapon.GetTag();
         Camo = weapon.GetCamo();
+
+        Ammo = weapon.GetAmmo();
     }
 }

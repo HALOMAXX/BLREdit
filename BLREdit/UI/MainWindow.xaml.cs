@@ -12,12 +12,13 @@ using BLREdit.Game;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
 using System.Runtime.CompilerServices;
-using BLREdit.API.ImportSystem;
 using System.Windows.Media.Animation;
 using System.Threading.Tasks;
 using BLREdit.Game.Proxy;
 using BLREdit.UI.Views;
-using System.Reflection;
+using System.IO;
+using BLREdit.Import;
+using BLREdit.Export;
 
 namespace BLREdit.UI;
 
@@ -502,6 +503,9 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 case "Camo":
                     SetItemList(ImportSystem.CAMOS_WEAPONS_CATEGORY);
                     break;
+                case "Ammo":
+                    SetItemList(ImportSystem.AMMO_CATEGORY);
+                    break;
 
                 case "BodyCamo":
                     SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
@@ -648,7 +652,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void SetSortingType(Type SortingEnumType)
     {
         CurrentSortingEnumType = SortingEnumType;
-        SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = API.ImportSystem.LanguageSet.GetWords(SortingEnumType) });
+        SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = LanguageSet.GetWords(SortingEnumType) });
     }
 
     public static void SetItemToBorder(Border border, BLRItem item, bool blockEvent = false, bool blockUpdate = false)
@@ -706,11 +710,16 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
+        if (shiftDown) 
+        {
+            var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
+            Directory.CreateDirectory(directory);
+            IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3)}); 
+        }
         ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
         var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} got Copied to Clipboard");
         AlertList.Items.Add(grid);
         new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
-        //ExportSystem.CreateSEProfile(ExportSystem.ActiveProfile); //Not really in use currently only makes waste on the Hard Drive
     }
 
     private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)

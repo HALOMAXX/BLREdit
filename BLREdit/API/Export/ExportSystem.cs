@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace BLREdit;
+namespace BLREdit.Export;
 
 public sealed class ExportSystem
 {
@@ -112,12 +112,6 @@ public sealed class ExportSystem
         }
 
         return new ObservableCollection<ExportSystemProfile>(profiles); ;
-    }
-
-    public static void CreateSEProfile(ExportSystemProfile profile)
-    { 
-        SELoadout[] player = SELoadout.CreateFromMagiCowsProfile(profile);
-        IOResources.SerializeFile($"{IOResources.SEPROFILE_DIR}{profile.PlayerName}.json", player);
     }
 
     public static void CopyToClipBoard(ExportSystemProfile profile)

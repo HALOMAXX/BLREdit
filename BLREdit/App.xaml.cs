@@ -2,6 +2,7 @@
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
+using BLREdit.Import;
 using BLREdit.UI.Views;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ public partial class App : System.Windows.Application
 
     public App()
     {
+        
         File.Delete("log.txt");
         Trace.Listeners.Add(new TextWriterTraceListener("log.txt", "loggingListener"));
         Trace.AutoFlush = true;

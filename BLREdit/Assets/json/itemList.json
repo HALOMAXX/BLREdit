@@ -2277,7 +2277,890 @@
       "WikiStats": null
     }
   ],
-  "emotes": [],
+  "emotes": [
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 350
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 351
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 352
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 353
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 354
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 355
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 356
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 357
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 358
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 359
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 360
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 361
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 364
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 365
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 366
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 367
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 368
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 375
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 376
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 377
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 378
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 379
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 380
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 381
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 382
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 383
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 384
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 385
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 388
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 390
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 391
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 392
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 393
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 394
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 395
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 396
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 397
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 398
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 399
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 400
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 401
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 402
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 403
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 404
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 405
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 406
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 407
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 408
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 409
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 410
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 411
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 412
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 413
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 414
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 420
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 415
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 416
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 417
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 418
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 419
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 422
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 300
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 301
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 302
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 303
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 304
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 305
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 306
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 307
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 308
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 309
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 310
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 311
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 312
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 313
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 314
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 315
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 316
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 317
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 318
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 319
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 320
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 322
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 323
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 324
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 325
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 326
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 327
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 328
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 329
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 330
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 331
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 332
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 333
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 334
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 335
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 336
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 337
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 338
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 339
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 340
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 341
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 342
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 343
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 344
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 345
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 346
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 347
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 348
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 349
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 423
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 424
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 425
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 426
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 427
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 428
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 429
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 430
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 389
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 421
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 371
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 372
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 386
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 387
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 321
+    },
+    {
+      "class": "FoxDataProvider_Emote",
+      "icon": "",
+      "name": "",
+      "tooltip": "",
+      "uid": 498
+    }
+  ],
   "hangers": [
     {
       "Category": "hangers",
@@ -13403,6 +14286,7 @@
   "ammo": [],
   "ammos": [
     {
+      "LMID": 6,
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
@@ -13479,6 +14363,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 17,
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
@@ -13555,6 +14440,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 0,
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
@@ -13631,6 +14517,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 1,
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
@@ -13707,6 +14594,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 2,
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
@@ -13783,6 +14671,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 18,
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
@@ -13859,6 +14748,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 3,
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
@@ -13935,6 +14825,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 4,
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
@@ -14009,10 +14900,858 @@
       },
       "WeaponStats": null,
       "WikiStats": null
+    },
+    {
+      "LMID": 5,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_MagSlug_Flare_128x128.png",
+      "Name": "Incendiary Flare",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 7,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_MagSlug_Flare_128x128.png",
+      "Name": "Explosive Flare",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 8,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_MagSlug_Flare_128x128.png",
+      "Name": "Canister",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 9,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_MagSlug_Flare_128x128.png",
+      "Name": "Thumper Flare",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 10,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_Bow_ArrowExplosive_128x128.png",
+      "Name": "Exploding Arrow",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 11,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_Bow_ArrowStun_128x128.png",
+      "Name": "Stun Arrow",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 12,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_Bow_ArrowToxic_128x128.png",
+      "Name": "Poison Arrow",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 13,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_Bow_ArrowLight_128x128.png",
+      "Name": "Light Arrow",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 14,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_Bow_ArrowHeavy_128x128.png",
+      "Name": "Heavy Arrow",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 15,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_Bow_ArrowStandard_128x128.png",
+      "Name": "Standard Arrow",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
+    },
+    {
+      "LMID": 16,
+      "Category": "ammos",
+      "Class": null,
+      "DescriptorName": "",
+      "Icon": "t_Bow_ArrowCupid_128x128.png",
+      "Name": "Cupid Arrow",
+      "PawnModifiers": {
+        "BodyDamageReduction": 0,
+        "ElectroProtection": 0,
+        "ExplosiveProtection": 0,
+        "GearSlots": 0,
+        "HRVDuration": 0,
+        "HRVRechargeRate": 0,
+        "Health": 0,
+        "HealthRecharge": 0,
+        "HelmetDamageReduction": 0,
+        "IncendiaryProtection": 0,
+        "InfraredProtection": 0,
+        "LegsDamageReduction": 0,
+        "MeleeProtection": 0,
+        "MeleeRange": 0,
+        "MovementSpeed": 0,
+        "PermanentHealthProtection": 0,
+        "SprintMultiplier": 1,
+        "Stamina": 0,
+        "SwitchWeaponSpeed": 0,
+        "ToxicProtection": 0
+      },
+      "SupportedMods": [],
+      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "UID": 90004,
+      "ValidFor": [
+        40010,
+        40003,
+        40008,
+        40010,
+        40011,
+        40009,
+        40007,
+        40001,
+        40000,
+        40006,
+        40002,
+        40004,
+        40005,
+        40002,
+        40017,
+        40014,
+        40013,
+        40018,
+        40016,
+        40020,
+        40022,
+        40023,
+        40025,
+        40026,
+        40021,
+        40028,
+        40027
+      ],
+      "WeaponModifiers": {
+        "accuracy": 0,
+        "ammo": 0,
+        "damage": 0,
+        "movementSpeed": 0,
+        "range": 0,
+        "rateOfFire": 0,
+        "rating": 0,
+        "recoil": 0,
+        "reloadSpeed": 0,
+        "switchWeaponSpeed": 0,
+        "weaponWeight": 0
+      },
+      "WeaponStats": null,
+      "WikiStats": null
     }
   ],
   "barrels": [
     {
+      "LMID": 21,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Cracking",
@@ -14091,6 +15830,7 @@
       }
     },
     {
+      "LMID": 22,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Smashing",
@@ -14157,6 +15897,7 @@
       }
     },
     {
+      "LMID": 23,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Biting",
@@ -14207,6 +15948,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 24,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Punching",
@@ -14257,6 +15999,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 25,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Busting",
@@ -14307,6 +16050,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 27,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Clamped",
@@ -14373,6 +16117,7 @@
       }
     },
     {
+      "LMID": 28,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Restrained",
@@ -14439,6 +16184,7 @@
       }
     },
     {
+      "LMID": 29,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Clutched",
@@ -14505,6 +16251,7 @@
       }
     },
     {
+      "LMID": 30,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Grasped",
@@ -14571,6 +16318,7 @@
       }
     },
     {
+      "LMID": 31,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Hooked",
@@ -14637,6 +16385,7 @@
       }
     },
     {
+      "LMID": 32,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Held",
@@ -14703,6 +16452,7 @@
       }
     },
     {
+      "LMID": 33,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Collared",
@@ -14769,6 +16519,7 @@
       }
     },
     {
+      "LMID": 26,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Unbound",
@@ -14819,6 +16570,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 34,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Enforced",
@@ -14897,6 +16649,7 @@
       }
     },
     {
+      "LMID": 35,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Stabilized",
@@ -14975,6 +16728,7 @@
       }
     },
     {
+      "LMID": 36,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Stabilized",
@@ -15053,6 +16807,7 @@
       }
     },
     {
+      "LMID": 37,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Stabilized",
@@ -15131,6 +16886,7 @@
       }
     },
     {
+      "LMID": 1,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Basic",
@@ -15209,6 +16965,7 @@
       }
     },
     {
+      "LMID": 2,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Cropped",
@@ -15275,6 +17032,7 @@
       }
     },
     {
+      "LMID": 11,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Tactical",
@@ -15353,6 +17111,7 @@
       }
     },
     {
+      "LMID": 12,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Violent",
@@ -15419,6 +17178,7 @@
       }
     },
     {
+      "LMID": 13,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Unstoppable",
@@ -15497,6 +17257,7 @@
       }
     },
     {
+      "LMID": 14,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Fearsome",
@@ -15575,6 +17336,7 @@
       }
     },
     {
+      "LMID": 15,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Brilliant",
@@ -15653,6 +17415,7 @@
       }
     },
     {
+      "LMID": 16,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Mean",
@@ -15731,6 +17494,7 @@
       }
     },
     {
+      "LMID": 17,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Agency",
@@ -15809,6 +17573,7 @@
       }
     },
     {
+      "LMID": 18,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Angry",
@@ -15887,6 +17652,7 @@
       }
     },
     {
+      "LMID": 19,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Wicked",
@@ -15955,6 +17721,7 @@
       }
     },
     {
+      "LMID": 20,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Piercing",
@@ -16023,6 +17790,7 @@
       }
     },
     {
+      "LMID": 3,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Roaring",
@@ -16101,6 +17869,7 @@
       }
     },
     {
+      "LMID": 4,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Long",
@@ -16179,6 +17948,7 @@
       }
     },
     {
+      "LMID": 5,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Ranged",
@@ -16257,6 +18027,7 @@
       }
     },
     {
+      "LMID": 6,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Rifled",
@@ -16335,6 +18106,7 @@
       }
     },
     {
+      "LMID": 7,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Hex",
@@ -16413,6 +18185,7 @@
       }
     },
     {
+      "LMID": 8,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Smoothbore",
@@ -16491,6 +18264,7 @@
       }
     },
     {
+      "LMID": 9,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Elite",
@@ -16569,6 +18343,7 @@
       }
     },
     {
+      "LMID": 10,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Advanced",
@@ -16647,6 +18422,7 @@
       }
     },
     {
+      "LMID": 38,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Long",
@@ -16709,6 +18485,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 0,
       "Category": "barrels",
       "Class": null,
       "DescriptorName": "Wicked",
@@ -21539,6 +23316,7 @@
   ],
   "grips": [
     {
+      "LMID": 0,
       "Category": "grips",
       "Class": null,
       "DescriptorName": "",
@@ -21589,6 +23367,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 1,
       "Category": "grips",
       "Class": null,
       "DescriptorName": "",
@@ -36683,6 +38462,7 @@
   ],
   "muzzles": [
     {
+      "LMID": 0,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Choked",
@@ -36739,6 +38519,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 1,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Shadow",
@@ -36825,6 +38606,7 @@
       }
     },
     {
+      "LMID": 2,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Hidden",
@@ -36911,6 +38693,7 @@
       }
     },
     {
+      "LMID": 3,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Silent",
@@ -36997,6 +38780,7 @@
       }
     },
     {
+      "LMID": 4,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Covert",
@@ -37083,6 +38867,7 @@
       }
     },
     {
+      "LMID": 5,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Repercussive",
@@ -37169,6 +38954,7 @@
       }
     },
     {
+      "LMID": 6,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Stealth",
@@ -37255,6 +39041,7 @@
       }
     },
     {
+      "LMID": 7,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Treacherous",
@@ -37341,6 +39128,7 @@
       }
     },
     {
+      "LMID": 8,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Obscured",
@@ -37427,6 +39215,7 @@
       }
     },
     {
+      "LMID": 9,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Tactical",
@@ -37513,6 +39302,7 @@
       }
     },
     {
+      "LMID": 10,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Suppressed",
@@ -37599,6 +39389,7 @@
       }
     },
     {
+      "LMID": 11,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Concealed",
@@ -37685,6 +39476,7 @@
       }
     },
     {
+      "LMID": 12,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Veiled",
@@ -37771,6 +39563,7 @@
       }
     },
     {
+      "LMID": 13,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Thundering",
@@ -37857,6 +39650,7 @@
       }
     },
     {
+      "LMID": 14,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Audible",
@@ -37943,6 +39737,7 @@
       }
     },
     {
+      "LMID": 15,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Tremoring",
@@ -38029,6 +39824,7 @@
       }
     },
     {
+      "LMID": 16,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Accented",
@@ -38115,6 +39911,7 @@
       }
     },
     {
+      "LMID": 17,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Shrill",
@@ -38201,6 +39998,7 @@
       }
     },
     {
+      "LMID": 18,
       "Category": "muzzles",
       "Class": null,
       "DescriptorName": "Tactical",
@@ -43025,6 +44823,7 @@
   ],
   "scopes": [
     {
+      "LMID": 18,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Infrared",
@@ -43097,6 +44896,7 @@
       }
     },
     {
+      "LMID": 19,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Infrared",
@@ -43169,6 +44969,7 @@
       }
     },
     {
+      "LMID": 21,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "AmmoCounter",
@@ -43243,6 +45044,7 @@
       }
     },
     {
+      "LMID": 22,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "AmmoCounter",
@@ -43315,6 +45117,7 @@
       }
     },
     {
+      "LMID": 20,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Infrared",
@@ -43387,6 +45190,7 @@
       }
     },
     {
+      "LMID": 0,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Basic",
@@ -43461,6 +45265,7 @@
       }
     },
     {
+      "LMID": 1,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Iron",
@@ -43533,6 +45338,7 @@
       }
     },
     {
+      "LMID": 10,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Farsight",
@@ -43605,6 +45411,7 @@
       }
     },
     {
+      "LMID": 12,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Flip-Up",
@@ -43735,6 +45542,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 13,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Fiber-optic",
@@ -43807,6 +45615,7 @@
       }
     },
     {
+      "LMID": 14,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Recon",
@@ -43881,6 +45690,7 @@
       }
     },
     {
+      "LMID": 15,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Auspex",
@@ -43953,6 +45763,7 @@
       }
     },
     {
+      "LMID": 16,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Prototype",
@@ -44027,6 +45838,7 @@
       }
     },
     {
+      "LMID": 17,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Tactical",
@@ -44101,6 +45913,7 @@
       }
     },
     {
+      "LMID": 2,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Rail",
@@ -44173,6 +45986,7 @@
       }
     },
     {
+      "LMID": 3,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Open",
@@ -44245,6 +46059,7 @@
       }
     },
     {
+      "LMID": 4,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Sighted",
@@ -44317,6 +46132,7 @@
       }
     },
     {
+      "LMID": 5,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Scoped",
@@ -44389,6 +46205,7 @@
       }
     },
     {
+      "LMID": 6,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Eagle-eye",
@@ -44463,6 +46280,7 @@
       }
     },
     {
+      "LMID": 7,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Spy",
@@ -44535,6 +46353,7 @@
       }
     },
     {
+      "LMID": 8,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Ghostly",
@@ -44589,6 +46408,7 @@
       }
     },
     {
+      "LMID": 9,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Spy",
@@ -44663,6 +46483,7 @@
       }
     },
     {
+      "LMID": 11,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Basic",
@@ -44700,6 +46521,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 23,
       "Category": "scopes",
       "Class": null,
       "DescriptorName": "Spy",
@@ -44760,6 +46582,7 @@
   ],
   "stocks": [
     {
+      "LMID": 17,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Merciless",
@@ -44827,6 +46650,7 @@
       }
     },
     {
+      "LMID": 18,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Dauntless",
@@ -44894,6 +46718,7 @@
       }
     },
     {
+      "LMID": 19,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Dominant",
@@ -44961,6 +46786,7 @@
       }
     },
     {
+      "LMID": 20,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Operator\u0027s",
@@ -45045,6 +46871,7 @@
       }
     },
     {
+      "LMID": 1,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Stable",
@@ -45129,6 +46956,7 @@
       }
     },
     {
+      "LMID": 10,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Technical",
@@ -45212,6 +47040,7 @@
       }
     },
     {
+      "LMID": 11,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Operator\u0027s",
@@ -45296,6 +47125,7 @@
       }
     },
     {
+      "LMID": 12,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Reinforced",
@@ -45380,6 +47210,7 @@
       }
     },
     {
+      "LMID": 13,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Collapsing",
@@ -45464,6 +47295,7 @@
       }
     },
     {
+      "LMID": 2,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Composite",
@@ -45548,6 +47380,7 @@
       }
     },
     {
+      "LMID": 3,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Stabilized",
@@ -45631,6 +47464,7 @@
       }
     },
     {
+      "LMID": 4,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Solid",
@@ -45715,6 +47549,7 @@
       }
     },
     {
+      "LMID": 5,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Galloping",
@@ -45799,6 +47634,7 @@
       }
     },
     {
+      "LMID": 6,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Combat",
@@ -45883,6 +47719,7 @@
       }
     },
     {
+      "LMID": 7,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Heavy",
@@ -45967,6 +47804,7 @@
       }
     },
     {
+      "LMID": 8,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Veteran",
@@ -46051,6 +47889,7 @@
       }
     },
     {
+      "LMID": 9,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Brutal",
@@ -46135,6 +47974,7 @@
       }
     },
     {
+      "LMID": 14,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Armored",
@@ -46202,6 +48042,7 @@
       }
     },
     {
+      "LMID": 15,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Wild",
@@ -46269,6 +48110,7 @@
       }
     },
     {
+      "LMID": 16,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Ironclad",
@@ -46336,6 +48178,7 @@
       }
     },
     {
+      "LMID": 21,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Heavy",
@@ -46404,6 +48247,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 0,
       "Category": "stocks",
       "Class": null,
       "DescriptorName": "Prototype",
@@ -47116,6 +48960,7 @@
   ],
   "primary": [
     {
+      "LMID" : 6,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -47303,6 +49148,7 @@
       }
     },
     {
+      "LMID": 8,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -47491,6 +49337,7 @@
       }
     },
     {
+      "LMID": 7,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -47676,6 +49523,7 @@
       }
     },
     {
+      "LMID": 9,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -47862,6 +49710,7 @@
       }
     },
     {
+      "LMID": 10,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -48046,6 +49895,7 @@
       }
     },
     {
+      "LMID": 11,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -48234,6 +50084,7 @@
       }
     },
     {
+      "LMID": 13,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -48409,6 +50260,7 @@
       }
     },
     {
+      "LMID": 14,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -48592,6 +50444,7 @@
       }
     },
     {
+      "LMID": 12,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -48767,6 +50620,7 @@
       }
     },
     {
+      "LMID": 15,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -48954,6 +50808,7 @@
       }
     },
     {
+      "LMID": 0,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -49141,6 +50996,7 @@
       }
     },
     {
+      "LMID": 5,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -49329,6 +51185,7 @@
       }
     },
     {
+      "LMID": 3,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -49517,6 +51374,7 @@
       }
     },
     {
+      "LMID": 4,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -49705,6 +51563,7 @@
       }
     },
     {
+      "LMID": 17,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -49892,6 +51751,7 @@
       }
     },
     {
+      "LMID": 2,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -50079,6 +51939,7 @@
       }
     },
     {
+      "LMID": 1,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -50267,6 +52128,7 @@
       }
     },
     {
+      "LMID": 16,
       "Category": "primary",
       "Class": null,
       "DescriptorName": "",
@@ -50456,6 +52318,7 @@
   ],
   "secondary": [
     {
+      "LMID": 6,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -50642,6 +52505,7 @@
       }
     },
     {
+      "LMID": 7,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -50826,6 +52690,7 @@
       }
     },
     {
+      "LMID": 8,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -51009,6 +52874,7 @@
       }
     },
     {
+      "LMID": 1,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -51195,6 +53061,7 @@
       }
     },
     {
+      "LMID": 0,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -51381,6 +53248,7 @@
       }
     },
     {
+      "LMID": 5,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -51605,6 +53473,7 @@
       }
     },
     {
+      "LMID": 9,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -51775,6 +53644,7 @@
       "WikiStats": null
     },
     {
+      "LMID": 3,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -51959,6 +53829,7 @@
       }
     },
     {
+      "LMID": 2,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",
@@ -52143,6 +54014,7 @@
       }
     },
     {
+      "LMID": 4,
       "Category": "secondary",
       "Class": null,
       "DescriptorName": "",

@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
-namespace BLREdit;
+namespace BLREdit.Export;
 
 public class MagiCowsProfile
 {

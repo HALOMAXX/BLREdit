@@ -1,6 +1,4 @@
-﻿using BLREdit.API.ImportSystem;
-
-namespace BLREdit.UI;
+﻿namespace BLREdit.UI;
 
 public static class UILanguageWrapper
 {

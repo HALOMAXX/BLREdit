@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace BLREdit.API.ImportSystem;
+namespace BLREdit.UI;
 
 public sealed class LanguageSet
 {
@@ -80,7 +80,7 @@ public sealed class LanguageSet
         List<string> words = new();
         if (type.IsEnum)
         {
-            foreach (var num in Enum.GetValues(type)) 
+            foreach (var num in Enum.GetValues(type))
             {
                 words.Add(GetWord(Enum.GetName(type, num)));
             }

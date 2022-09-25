@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLREdit.Export;
+using BLREdit.Import;
+
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -45,6 +48,41 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public BLRItem Trophy { get { return trophy; } set { if (value is null || trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { if (value is null) { trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, 0); } else { trophy = value; } ItemChanged(); } } }
     private bool isFemale;
     public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(); ; ItemChanged(); } }
+    private bool isBot;
+    public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
+
+    #region Depot
+    private BLRItem depot1;
+    public BLRItem Depot1 { get { return depot1; } set { if (value is null || depot1 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 0); } else { depot1 = value; } ItemChanged(); } } }
+    private BLRItem depot2;
+    public BLRItem Depot2 { get { return depot2; } set { if (value is null || depot2 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 1); } else { depot2 = value; } ItemChanged(); } } }
+    private BLRItem depot3;
+    public BLRItem Depot3 { get { return depot3; } set { if (value is null || depot3 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 2); } else { depot3 = value; } ItemChanged(); } } }
+    private BLRItem depot4;
+    public BLRItem Depot4 { get { return depot4; } set { if (value is null || depot4 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 3); } else { depot4 = value; } ItemChanged(); } } }
+    private BLRItem depot5;
+    public BLRItem Depot5 { get { return depot5; } set { if (value is null || depot5 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 4); } else { depot5 = value; } ItemChanged(); } } }
+    #endregion Depot
+
+    #region Taunts
+    private BLRItem taunt1;
+    public BLRItem Taunt1 { get { return taunt1; } set { if (value is null || taunt1 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 0); } else { taunt1 = value; } ItemChanged(); } } }
+    private BLRItem taunt2;
+    public BLRItem Taunt2 { get { return taunt2; } set { if (value is null || taunt2 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 1); } else { taunt2 = value; } ItemChanged(); } } }
+    private BLRItem taunt3;
+    public BLRItem Taunt3 { get { return taunt3; } set { if (value is null || taunt3 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 2); } else { taunt3 = value; } ItemChanged(); } } }
+    private BLRItem taunt4;
+    public BLRItem Taunt4 { get { return taunt4; } set { if (value is null || taunt4 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 3); } else { taunt4 = value; } ItemChanged(); } } }
+    private BLRItem taunt5;
+    public BLRItem Taunt5 { get { return taunt5; } set { if (value is null || taunt5 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 4); } else { taunt5 = value; } ItemChanged(); } } }
+    private BLRItem taunt6;
+    public BLRItem Taunt6 { get { return taunt6; } set { if (value is null || taunt6 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 5); } else { taunt6 = value; } ItemChanged(); } } }
+    private BLRItem taunt7;
+    public BLRItem Taunt7 { get { return taunt7; } set { if (value is null || taunt7 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 6); } else { taunt7 = value; } ItemChanged(); } } }
+    private BLRItem taunt8;
+    public BLRItem Taunt8 { get { return taunt8; } set { if (value is null || taunt8 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7); } else { taunt8 = value; } ItemChanged(); } } }
+    #endregion Taunts
+
 
 
     private bool IsAvatarOK(BLRItem inAvatar)
