@@ -1324,11 +1324,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         return Math.Min(Math.Max(input, min), max);
     }
 
-    public void SetMagiCowsWeapon(MagiCowsWeapon Weapon)
-    {
-        weapon = Weapon;
-    }
-
     public void UpdateMagiCowsWeapon()
     {
         weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
@@ -1344,21 +1339,30 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         weapon.Ammo = Ammo?.GetMagicCowsID() ?? 0;
     }
 
-    public void LoadMagicCowsWeapon()
+    public void LoadMagicCowsWeapon(MagiCowsWeapon Weapon)
     {
-        var reciever = weapon.GetReciever();
-        IsPrimary = reciever.Category == ImportSystem.PRIMARY_CATEGORY;
-        Reciever = reciever;
+        weapon = Weapon;
+        reciever = weapon.GetReciever();
 
-        Barrel = weapon.GetBarrel();
-        Magazine = weapon.GetMagazine();
-        Muzzle = weapon.GetMuzzle();
-        Stock = weapon.GetStock();
-        Scope = weapon.GetScope();
-        Grip = weapon.GetGrip();
-        Tag = weapon.GetTag();
-        Camo = weapon.GetCamo();
+        barrel = weapon.GetBarrel();
+        magazine = weapon.GetMagazine();
+        muzzle = weapon.GetMuzzle();
+        stock = weapon.GetStock();
+        scope = weapon.GetScope();
+        grip = weapon.GetGrip();
+        tag = weapon.GetTag();
+        camo = weapon.GetCamo();
 
-        Ammo = weapon.GetAmmo();
+        ammo = weapon.GetAmmo();
+
+        ItemChanged(nameof(Reciever));
+        ItemChanged(nameof(Barrel));
+        ItemChanged(nameof(Magazine));
+        ItemChanged(nameof(Muzzle));
+        ItemChanged(nameof(Stock));
+        ItemChanged(nameof(Scope));
+        ItemChanged(nameof(Grip));
+        ItemChanged(nameof(Tag));
+        ItemChanged(nameof(Ammo));
     }
 }
