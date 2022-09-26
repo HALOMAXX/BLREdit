@@ -15,7 +15,7 @@ public static class UILanguageWrapper
     #endregion Loadouts
 
     #region WeaponStats
-    public static string LblPSDamage { get { return LanguageSet.GetWordUI("Dmage:"); } }
+    public static string LblPSDamage { get { return LanguageSet.GetWordUI("Damage:"); } }
     public static string LblPSFirerate { get { return LanguageSet.GetWordUI("Firerate:"); } }
     public static string LblPSAmmo { get { return LanguageSet.GetWordUI("Ammo:"); } }
     public static string LblPSReloadPartial { get { return LanguageSet.GetWordUI("Reload:"); } }
