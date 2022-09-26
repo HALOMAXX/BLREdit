@@ -875,7 +875,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             {
                 WeaponReloadRate = Lerp(Reciever.WeaponStats.ModificationRangeReloadRate.Z, Reciever.WeaponStats.ModificationRangeReloadRate.X, rate_alpha);
             }
-            WeaponReloadRate = 1 / WeaponReloadRate;
         }
 
         if ((Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0) == 1)
@@ -883,13 +882,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             rate_alpha = Math.Abs(allRecoil);
             if (allRecoil > 0)
             {
-                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.X ?? 0, rate_alpha)-1.0);
+                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Y ?? 0, rate_alpha)-1.0);
             }
             else
             {
-                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Y ?? 0, rate_alpha)-1.0);
+                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.X ?? 0, rate_alpha)-1.0);
             }
         }
+
+        WeaponReloadRate = 1 / WeaponReloadRate;
+
         return WeaponReloadRate;
     }
 
