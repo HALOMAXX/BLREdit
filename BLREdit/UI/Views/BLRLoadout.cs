@@ -4,6 +4,8 @@ using BLREdit.Import;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Windows.Controls;
 
 namespace BLREdit.UI.Views;
 
@@ -477,28 +479,38 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public void LoadMagicCowsLoadout(MagiCowsLoadout loadout)
     {
         internalLoadout = loadout;
-        Primary.SetMagiCowsWeapon(loadout.Primary);
-        Primary.LoadMagicCowsWeapon();
+        Primary.LoadMagicCowsWeapon(loadout.Primary);
         Primary.IsPrimary = true;
 
-        Secondary.SetMagiCowsWeapon(loadout.Secondary);
-        Secondary.LoadMagicCowsWeapon();
+        Secondary.LoadMagicCowsWeapon(loadout.Secondary);
 
-        Helmet = loadout.GetHelmet();
-        UpperBody = loadout.GetUpperBody();
-        LowerBody = loadout.GetLowerBody();
+        helmet = loadout.GetHelmet();
+        upperBody = loadout.GetUpperBody();
+        lowerBody = loadout.GetLowerBody();
 
-        Tactical = loadout.GetTactical();
+        tactical = loadout.GetTactical();
 
-        Gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear1);
-        Gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear2);
-        Gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear3);
-        Gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear4);
+        gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear1);
+        gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear2);
+        gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear3);
+        gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear4);
 
-        Trophy = loadout.GetTrophy();
-        Avatar = loadout.GetSkin();
-        BodyCamo = loadout.GetCamo();
+        trophy = loadout.GetTrophy();
+        avatar = loadout.GetSkin();
+        camo = loadout.GetCamo();
 
         IsFemale = loadout.IsFemale;
+
+        ItemChanged(nameof(Helmet));
+        ItemChanged(nameof(UpperBody));
+        ItemChanged(nameof(LowerBody));
+        ItemChanged(nameof(Tactical));
+        ItemChanged(nameof(Gear1));
+        ItemChanged(nameof(Gear2));
+        ItemChanged(nameof(Gear3));
+        ItemChanged(nameof(Gear4));
+        ItemChanged(nameof(Trophy));
+        ItemChanged(nameof(Avatar));
+        ItemChanged(nameof(BodyCamo));
     }
 }

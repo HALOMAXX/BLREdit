@@ -14906,7 +14906,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_MagSlug_Flare_128x128.png",
+      "Icon": "t_MagSlug_Flare_128x128",
       "Name": "Incendiary Flare",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -14932,7 +14932,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90008,
       "ValidFor": [
         40010,
         40003,
@@ -14983,7 +14983,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_MagSlug_Flare_128x128.png",
+      "Icon": "t_MagSlug_Flare_128x128",
       "Name": "Explosive Flare",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15009,7 +15009,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90009,
       "ValidFor": [
         40010,
         40003,
@@ -15060,7 +15060,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_MagSlug_Flare_128x128.png",
+      "Icon": "t_MagSlug_Flare_128x128",
       "Name": "Canister",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15086,7 +15086,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90010,
       "ValidFor": [
         40010,
         40003,
@@ -15137,7 +15137,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_MagSlug_Flare_128x128.png",
+      "Icon": "t_MagSlug_Flare_128x128",
       "Name": "Thumper Flare",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15163,7 +15163,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90011,
       "ValidFor": [
         40010,
         40003,
@@ -15214,7 +15214,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_Bow_ArrowExplosive_128x128.png",
+      "Icon": "t_Bow_ArrowExplosive_128x128",
       "Name": "Exploding Arrow",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15240,7 +15240,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90012,
       "ValidFor": [
         40010,
         40003,
@@ -15291,7 +15291,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_Bow_ArrowStun_128x128.png",
+      "Icon": "t_Bow_ArrowStun_128x128",
       "Name": "Stun Arrow",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15317,7 +15317,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90013,
       "ValidFor": [
         40010,
         40003,
@@ -15368,7 +15368,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_Bow_ArrowToxic_128x128.png",
+      "Icon": "t_Bow_ArrowToxic_128x128",
       "Name": "Poison Arrow",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15394,7 +15394,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90014,
       "ValidFor": [
         40010,
         40003,
@@ -15445,7 +15445,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_Bow_ArrowLight_128x128.png",
+      "Icon": "t_Bow_ArrowLight_128x128",
       "Name": "Light Arrow",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15471,7 +15471,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90015,
       "ValidFor": [
         40010,
         40003,
@@ -15522,7 +15522,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_Bow_ArrowHeavy_128x128.png",
+      "Icon": "t_Bow_ArrowHeavy_128x128",
       "Name": "Heavy Arrow",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15548,7 +15548,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90016,
       "ValidFor": [
         40010,
         40003,
@@ -15599,7 +15599,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_Bow_ArrowStandard_128x128.png",
+      "Icon": "t_Bow_ArrowStandard_128x128",
       "Name": "Standard Arrow",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15625,7 +15625,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90017,
       "ValidFor": [
         40010,
         40003,
@@ -15676,7 +15676,7 @@
       "Category": "ammos",
       "Class": null,
       "DescriptorName": "",
-      "Icon": "t_Bow_ArrowCupid_128x128.png",
+      "Icon": "t_Bow_ArrowCupid_128x128",
       "Name": "Cupid Arrow",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -15702,7 +15702,7 @@
       },
       "SupportedMods": [],
       "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
-      "UID": 90004,
+      "UID": 90018,
       "ValidFor": [
         40010,
         40003,

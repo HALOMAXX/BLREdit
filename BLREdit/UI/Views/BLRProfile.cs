@@ -1,5 +1,4 @@
 ﻿using BLREdit.Export;
-
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -27,9 +26,9 @@ public sealed class BLRProfile : INotifyPropertyChanged
     public void LoadMagicCowsProfile(MagiCowsProfile profile)
     {
         internalProfile = profile;
-        loadout1.LoadMagicCowsLoadout(profile.Loadout1);
-        loadout2.LoadMagicCowsLoadout(profile.Loadout2);
-        loadout3.LoadMagicCowsLoadout(profile.Loadout3);
+        loadout1.LoadMagicCowsLoadout(internalProfile.Loadout1);
+        loadout2.LoadMagicCowsLoadout(internalProfile.Loadout2);
+        loadout3.LoadMagicCowsLoadout(internalProfile.Loadout3);
     }
 
     public void UpdateMagicCowsProfile()
