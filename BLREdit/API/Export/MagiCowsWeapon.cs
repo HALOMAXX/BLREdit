@@ -23,7 +23,7 @@ public sealed class MagiCowsWeapon
     [JsonIgnore] private int magazine = 9;
     public int Magazine { get { return magazine; } set { if (magazine != value) { magazine = value; isDirty = true; } } }
 
-    [JsonIgnore] private int ammo = 9;
+    [JsonIgnore] private int ammo = 2;
     public int Ammo { get { return ammo; } set { if (ammo != value) { ammo = value; isDirty = true; } } }
 
     [JsonIgnore] private string scope = "No Optic Mod";
