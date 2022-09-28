@@ -100,11 +100,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             if (o is BLRItem item)
             {
                 if (FilterWeapon is null && (item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY)) { return true; }
-                if (BLREditSettings.Settings.AdvancedModding.Is)
-                {
-                    return AdvancedFilter(item, FilterWeapon);
-                }
-                else
                 {
                     return item.IsValidFor(FilterWeapon);
                 }
@@ -129,8 +124,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         FilterWeapon = Profile.Loadout1.Primary.Reciever;
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
 
-        LoadoutTabs.DataContext = Profile;
-        AdvancedInfo.DataContext = Profile;
+        this.DataContext = Profile;
     }
 
     private static void SetBorderColor(Border border, Color color)
@@ -138,21 +132,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         if (border is not null)
         {
             border.BorderBrush = new SolidColorBrush(color);
-        }
-    }
-
-    private static bool AdvancedFilter(BLRItem item, BLRItem filter)
-    {
-        switch (item.Category)
-        {
-            case ImportSystem.MAGAZINES_CATEGORY:
-                if (item.Name.Contains("Standard") || (item.Name.Contains("Light") && !item.Name.Contains("Arrow")) || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
-                {
-                    return item.IsValidFor(filter);
-                }
-                return true;
-
-            default: return true;  
         }
     }
 
@@ -720,20 +699,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} got Copied to Clipboard");
         AlertList.Items.Add(grid);
         new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
-    }
-
-    private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)
-    {
-        //if (UndoRedoSystem.BlockEvent) return;
-        //UndoRedoSystem.CreateAction(false, true, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
-        //UndoRedoSystem.EndAction();
-    }
-
-    private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
-    {
-        //if (UndoRedoSystem.BlockEvent) return;
-        //UndoRedoSystem.CreateAction(true,false, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
-        //UndoRedoSystem.EndAction();
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)

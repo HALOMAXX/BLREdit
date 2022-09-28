@@ -42,8 +42,9 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public BLRItem Magazine
     {
         get { return magazine; }
-        set { if (BLREditSettings.Settings.AdvancedModding.Is) { magazine = value; ItemChanged(); return; } if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever).GetMagazine(); } else { magazine = value; } ItemChanged(); } }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { magazine = value; ItemChanged(); return; } if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever).GetMagazine(); } else { magazine = value; ApplyCorrectAmmo(); } ItemChanged(); } }
     }
+
     private BLRItem muzzle = null;
     public BLRItem Muzzle
     {
@@ -85,7 +86,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public BLRItem Ammo
     {
         get { return ammo; }
-        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { camo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 0); } else { ammo = value; } ItemChanged(); } }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 0); } else { ammo = value; } ItemChanged(); } }
     }
     #endregion Weapon Parts
 
@@ -114,6 +115,19 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             }
         }
         return allow;
+    }
+
+    private void ApplyCorrectAmmo()
+    {
+        if (Reciever.UID == 40024)
+        {
+            Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, Magazine.Name);
+        }
+
+        if (Reciever.UID == 40015)
+        {
+            // TODO get Proper Ammo to the Breech Loaded Pistol Magazine Types
+        }
     }
 
     private bool AllowStock()

@@ -156,7 +156,13 @@ public sealed class BLRItem : INotifyPropertyChanged
     public bool IsValidFor(BLRItem item)
     {
         if (item is null) return false;
-        if (Category != ImportSystem.MAGAZINES_CATEGORY && Category != ImportSystem.MUZZELS_CATEGORY && Category != ImportSystem.SCOPES_CATEGORY && Category != ImportSystem.STOCKS_CATEGORY && Category != ImportSystem.BARRELS_CATEGORY && Category != ImportSystem.GRIPS_CATEGORY) return true;
+
+        if (BLREditSettings.Settings.AdvancedModding.Is)
+        {
+            return AdvancedFilter(item, this);
+        }
+
+        if (Category != ImportSystem.AMMO_CATEGORY && Category != ImportSystem.MAGAZINES_CATEGORY && Category != ImportSystem.MUZZELS_CATEGORY && Category != ImportSystem.SCOPES_CATEGORY && Category != ImportSystem.STOCKS_CATEGORY && Category != ImportSystem.BARRELS_CATEGORY && Category != ImportSystem.GRIPS_CATEGORY) return true;
 
         if (ValidFor == null) { return true; }
 
@@ -168,6 +174,20 @@ public sealed class BLRItem : INotifyPropertyChanged
         return false;
     }
 
+    private static bool AdvancedFilter(BLRItem item, BLRItem filter)
+    {
+        switch (item.Category)
+        {
+            case ImportSystem.MAGAZINES_CATEGORY:
+                if (item.Name.Contains("Standard") || (item.Name.Contains("Light") && !item.Name.Contains("Arrow")) || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
+                {
+                    return item.IsValidFor(filter);
+                }
+                return true;
+
+            default: return true;
+        }
+    }
 
     internal bool IsValidModType(string modType)
     {
