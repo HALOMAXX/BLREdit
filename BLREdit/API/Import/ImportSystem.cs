@@ -470,8 +470,12 @@ public static class ImportSystem
     }
 
     static readonly Brush grey = new SolidColorBrush(Color.FromArgb(136, 136, 136, 136));
-    static readonly Brush green = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
-    static readonly Brush red = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+
+    static readonly Brush defaultGreen = new SolidColorBrush(Color.FromArgb(255,0,136,0));
+    static readonly Brush highlightGreen = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+
+    static readonly Brush defaultRed = new SolidColorBrush(Color.FromArgb(255, 136, 0, 0));
+    static readonly Brush highlightRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
     private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1)
     { 
         desc.PropertyName = propertyName;
@@ -526,13 +530,15 @@ public static class ImportSystem
             }
             if (isPositive)
             {
-                desc.DefaultValueColor = green;
-                desc.HighlightValueColor = green;
+                //Green
+                desc.DefaultValueColor = defaultGreen;
+                desc.HighlightValueColor = highlightGreen;
             }
             else
             {
-                desc.DefaultValueColor = red;
-                desc.HighlightValueColor = red;
+                //Red
+                desc.DefaultValueColor = defaultRed;
+                desc.HighlightValueColor = highlightRed;
             }
         }
 

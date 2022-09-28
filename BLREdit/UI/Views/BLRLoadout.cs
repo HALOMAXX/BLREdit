@@ -3,6 +3,8 @@ using BLREdit.Import;
 
 using System;
 using System.ComponentModel;
+using System.Linq;
+using System.Net.Mail;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Controls;
@@ -512,5 +514,59 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         ItemChanged(nameof(Trophy));
         ItemChanged(nameof(Avatar));
         ItemChanged(nameof(BodyCamo));
+    }
+    static readonly Random rng = new();
+    public void Randomize()
+    {
+        Primary.Randomize();
+        Secondary.Randomize();
+
+
+        var helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.HELMETS_CATEGORY)?.Length ?? 0));
+        var upperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.UPPER_BODIES_CATEGORY)?.Length ?? 0));
+        var lowerBody = ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.LOWER_BODIES_CATEGORY)?.Length ?? 0));
+        var avatar = ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.AVATARS_CATEGORY)?.Length ?? 0));
+        var trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY)?.Length ?? 0));
+        var camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_BODIES_CATEGORY)?.Length ?? 0));
+        var tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.TACTICAL_CATEGORY)?.Length ?? 0));
+
+        //UndoRedoSystem.DoAction(profile.PlayerName, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
+
+        UndoRedoSystem.DoAction(helmet, this.GetType().GetProperty(nameof(Helmet)), this);
+        UndoRedoSystem.DoAction(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this);
+        UndoRedoSystem.DoAction(lowerBody, this.GetType().GetProperty(nameof(LowerBody)), this);
+        UndoRedoSystem.DoAction(avatar, this.GetType().GetProperty(nameof(Avatar)), this);
+        UndoRedoSystem.DoAction(trophy, this.GetType().GetProperty(nameof(Trophy)), this);
+        UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(BodyCamo)), this);
+        UndoRedoSystem.DoAction(tactical, this.GetType().GetProperty(nameof(Tactical)), this);
+        UndoRedoSystem.DoAction(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
+
+        if (GearSlots > 0)
+        { 
+            var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
+            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear1)), this);
+        }
+        if (GearSlots > 1)
+        {
+            var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
+            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear2)), this);
+        }
+        if (GearSlots > 2)
+        {
+            var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
+            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear3)), this);
+        }
+        if (GearSlots > 3)
+        {
+            var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
+            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear4)), this);
+        }
+        UndoRedoSystem.EndAction();
+    }
+
+    public static bool NextBoolean()
+    {
+        return rng.Next() > (Int32.MaxValue / 2);
+        // Next() returns an int in the range [0..Int32.MaxValue]
     }
 }

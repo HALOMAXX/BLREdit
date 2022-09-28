@@ -19,7 +19,7 @@
         <ComboBox Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="ProfileComboBox_SelectionChanged"/>
         <Button Name="CopyToClipboardButton" Content="{x:Static res:Resources.btn_ExportProfile}" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="CopyToClipboardButton_Click"/>
         <Button Name="AddProfileButton" Content="{x:Static res:Resources.btn_AddProfile}" HorizontalAlignment="Left" Margin="241,0,0,0" VerticalAlignment="Top" Height="22" Width="100" Click="AddProfileButton_Click"/>
-        <Button Name="RandomLoadout" Content="{x:Static res:Resources.btn_CreateRandomProfile}" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
+        <Button Name="RandomLoadout" Content="{x:Static res:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left" Margin="220,35,0,0" VerticalAlignment="Top" Height="22" Width="116" Click="RandomLoadout_Click"/>
         <Button Name="DuplicateButton" Content="{x:Static res:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left" Margin="134,35,0,0" VerticalAlignment="Top" Height="22" Width="80" Click="DuplicateProfile_Click"/>
         <TextBox Name="PlayerNameTextBox"  HorizontalAlignment="Left" Margin="121,0,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="120" Height="22" PreviewTextInput="PlayerNameTextBox_PreviewInput" TextChanged="PlayerNameTextBox_TextChanged"/>
         <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="400" Margin="0,64,0,0">

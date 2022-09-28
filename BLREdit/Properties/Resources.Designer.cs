@@ -70,15 +70,6 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Random Profile.
-        /// </summary>
-        public static string btn_CreateRandomProfile {
-            get {
-                return ResourceManager.GetString("btn_CreateRandomProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Duplicate.
         /// </summary>
         public static string btn_DuplicateCurrentProfile {
@@ -102,6 +93,15 @@ namespace BLREdit.Properties {
         public static string btn_GenderToggle_Male {
             get {
                 return ResourceManager.GetString("btn_GenderToggle_Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Randomize.
+        /// </summary>
+        public static string btn_RandomizeLoadout {
+            get {
+                return ResourceManager.GetString("btn_RandomizeLoadout", resourceCulture);
             }
         }
         

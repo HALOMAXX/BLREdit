@@ -120,9 +120,6 @@
   <data name="btn_AddProfile" xml:space="preserve">
     <value>New Profile</value>
   </data>
-  <data name="btn_CreateRandomProfile" xml:space="preserve">
-    <value>Random Profile</value>
-  </data>
   <data name="btn_DuplicateCurrentProfile" xml:space="preserve">
     <value>Duplicate</value>
   </data>
@@ -131,6 +128,9 @@
   </data>
   <data name="btn_GenderToggle_Male" xml:space="preserve">
     <value>Male</value>
+  </data>
+  <data name="btn_RandomizeLoadout" xml:space="preserve">
+    <value>Randomize</value>
   </data>
   <data name="lbl_Ammo" xml:space="preserve">
     <value>Ammo:</value>
