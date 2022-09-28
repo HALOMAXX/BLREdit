@@ -18,19 +18,5 @@
     "Repository": "BLRE-server-utils",
     "ModuleName": "server-utils",
     "Client": false
-  },
-  {
-    "RepositoryProvider": "Gitlab",
-    "Owner": "blrevive",
-    "Repository": "modules/loadout-manager",
-    "ModuleName": "LoadoutManager"
-  },
-  {
-    "RepositoryProvider": "GitHub",
-    "Owner": "HALOMAXX",
-    "Repository": "BLREdit",
-    "ModuleName": "No-Module",
-    "Client": false,
-    "Server": false
   }
 ]
