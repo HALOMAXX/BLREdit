@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.GearControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:views="clr-namespace:BLREdit.UI.Views"
+             xmlns:res="clr-namespace:BLREdit.Properties"
+             d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
+             mc:Ignorable="d">
+    <Grid>
+        <Border DataContext="{Binding Path=Helmet}" Height="64" Width="64" Margin="64,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=UpperBody}" Height="64" Width="64" Margin="64,64,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=LowerBody}" Height="64" Width="64" Margin="64,128,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Tactical}" Height="64" Width="64" Margin="128,64,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+
+        <CheckBox Foreground="White" Content="{x:Static res:Resources.btn_GenderToggle_Male}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" HorizontalAlignment="Left" Margin="128,150,0,0" VerticalAlignment="Top"/>
+
+        <Border DataContext="{Binding Path=BodyCamo}" Height="64" Width="64" Margin="0,128,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Avatar}" Height="64" Width="64" Margin="0,64,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Trophy}" Height="64" Width="64" Margin="128,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+
+        <Grid Height="64" Width="64" Margin="0,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border DataContext="{Binding Path=Gear1}" AllowDrop="True">
+                <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+            </Border>
+            <Rectangle Visibility="{Binding Path=GearSlot1Bool.VisibilityInverted}" IsHitTestVisible="False">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#88000000"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <Grid Height="64" Width="64" Margin="64,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border DataContext="{Binding Path=Gear2}" AllowDrop="True">
+                <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+            </Border>
+            <Rectangle Visibility="{Binding Path=GearSlot2Bool.VisibilityInverted}" IsHitTestVisible="False">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#88000000"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <Grid Height="64" Width="64" Margin="128,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border DataContext="{Binding Path=Gear3}" AllowDrop="True">
+                <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+            </Border>
+            <Rectangle Visibility="{Binding Path=GearSlot3Bool.VisibilityInverted}" IsHitTestVisible="False">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#88000000"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <Grid Height="64" Width="64" Margin="192,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border DataContext="{Binding Path=Gear4}" AllowDrop="True">
+                <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+            </Border>
+            <Rectangle Visibility="{Binding Path=GearSlot4Bool.VisibilityInverted}" IsHitTestVisible="False">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#88000000"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid Width="400" Height="76" Margin="0,256,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="{x:Static res:Resources.lbl_Health}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=HealthDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
+
+            <Label Grid.Column="2" Grid.Row="0" Content="{x:Static res:Resources.lbl_HeadArmor}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="0" Content="{Binding Path=HeadArmorDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
+
+
+            <Label Grid.Column="0" Grid.Row="1" Content="{x:Static res:Resources.lbl_ArmorRun}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=RunDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
+
+            <Label Grid.Column="2" Grid.Row="1" Content="{x:Static res:Resources.lbl_HRVDuration}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="1" Content="{Binding Path=HRVDurationDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
+
+
+            <Label Grid.Column="0" Grid.Row="2" Content="{x:Static res:Resources.lbl_HRVRecharge}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=HRVRechargeDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
+
+            <Label Grid.Column="2" Grid.Row="2" Content="{x:Static res:Resources.lbl_GearSlots}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="2" Content="{Binding Path=GearSlotsDsiplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
+        </Grid>
+    </Grid>
+</UserControl>

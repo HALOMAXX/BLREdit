@@ -19,6 +19,7 @@ using BLREdit.UI.Views;
 using System.IO;
 using BLREdit.Import;
 using BLREdit.Export;
+using BLREdit.UI.Controls;
 
 namespace BLREdit.UI;
 

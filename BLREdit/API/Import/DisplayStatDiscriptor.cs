@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System;
+using System.Windows.Media;
 
 namespace BLREdit.Import;
 
@@ -40,4 +41,12 @@ public struct DisplayStatDiscriptor
 
     public DisplayStatDiscriptor()
     { }
+}
+
+[Flags]
+public enum StatsEnum
+{ 
+    None = 0,
+    Normal = 1,
+    Inverted = 2
 }

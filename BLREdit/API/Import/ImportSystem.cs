@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace BLREdit.Import;
@@ -71,12 +72,12 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':',new double[]{ DamageIdeal, DamageMax }, "0", "", "/");
-                        FormatDisplayStat(ref desc2, LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', ZoomSpread, "0.00", "°");
-                        FormatDisplayStat(ref desc3, LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', HipSpread, "0.00", "°");
-                        FormatDisplayStat(ref desc4, LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', MovmentSpread, "0.00", "°");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', RecoilHip, "0.00", "°");
-                        FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', new double[]{ IdealRange, MaxRange }, "0", "", "/", 2);
+                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':',new double[]{ DamageIdeal, DamageMax }, StatsEnum.None, "0", "", "/");
+                        FormatDisplayStat(ref desc2, LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', ZoomSpread, StatsEnum.None, "0.00", "°");
+                        FormatDisplayStat(ref desc3, LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', HipSpread, StatsEnum.None, "0.00", "°");
+                        FormatDisplayStat(ref desc4, LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', MovmentSpread, StatsEnum.None, "0.00", "°");
+                        FormatDisplayStat(ref desc5, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', RecoilHip, StatsEnum.None, "0.00", "°");
+                        FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', new double[]{ IdealRange, MaxRange }, StatsEnum.None, "0", "", "/", 2);
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -101,11 +102,11 @@ public static class ImportSystem
                         var desc4 = new DisplayStatDiscriptor();
                         var desc5 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "%");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, "0", "%");
+                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -131,15 +132,15 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "%");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, "0", "%");
-                        //FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0", "%");
+                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
+                        //FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Normal, "0", "%");
 
-                        if(item.IsValidForItemIDS(40020))
-                        { FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0", "%"); }
+                        if (item.IsValidForItemIDS(40020))
+                        { FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Normal, "0", "%"); }
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -165,11 +166,11 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "%");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, "0", "%");
+                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -189,9 +190,9 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.ZOOM, LanguageSet.GetWord(LanguageKeys.ZOOM) + ':', (1.3 + (item?.WikiStats?.zoom ?? 0)), "0.00", "x");
-                        FormatDisplayStat(ref desc2, LanguageKeys.SCOPE_IN_TIME, LanguageSet.GetWord(LanguageKeys.SCOPE_IN_TIME) + ':', (0.0 + (item?.WikiStats?.scopeInTime ?? 0)), "0.00", "s", "+");
-                        FormatDisplayStat(ref desc3, LanguageKeys.INFRARED, LanguageSet.GetWord(LanguageKeys.INFRARED) + ':', item.UID == 45019 || item.UID == 45020 || item.UID == 45021, "");
+                        FormatDisplayStat(ref desc1, LanguageKeys.ZOOM, LanguageSet.GetWord(LanguageKeys.ZOOM) + ':', (1.3 + (item?.WikiStats?.zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
+                        FormatDisplayStat(ref desc2, LanguageKeys.SCOPE_IN_TIME, LanguageSet.GetWord(LanguageKeys.SCOPE_IN_TIME) + ':', (0.0 + (item?.WikiStats?.scopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
+                        FormatDisplayStat(ref desc3, LanguageKeys.INFRARED, LanguageSet.GetWord(LanguageKeys.INFRARED) + ':', item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatsEnum.Normal, "");
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -219,19 +220,19 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.AMMO, LanguageSet.GetWord(LanguageKeys.AMMO) + ':', ammo, "0");
-                        FormatDisplayStat(ref desc2, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movementSpeed, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, "0", "%");
+                        FormatDisplayStat(ref desc1, LanguageKeys.AMMO, LanguageSet.GetWord(LanguageKeys.AMMO) + ':', ammo, StatsEnum.Normal, "0");
+                        FormatDisplayStat(ref desc2, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movementSpeed, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc4, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc5, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
 
                         if (item.IsValidForItemIDS(40021, 40002))
                         {
-                            FormatDisplayStat(ref desc6, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', accuracy, "0", "%");
+                            FormatDisplayStat(ref desc6, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', accuracy, StatsEnum.Normal, "0", "%");
                         }
                         else
                         {
-                            FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, "0.00", "s");
+                            FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Normal, "0.00", "s");
                         }
 
                         item.DisplayStat1 = desc1;
@@ -281,14 +282,14 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, "0.0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, "0.0");
-                        FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, "0.0", "u/s");
+                        FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc2, LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, StatsEnum.Normal, "0.0", "%");
+                        FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0");
+                        FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s");
                         if (value != 0)
                         {
-                            FormatDisplayStat(ref desc6, prop, desc, value, "0", "%");
+                            FormatDisplayStat(ref desc6, prop, desc, value, StatsEnum.Normal, "0", "%");
                         }
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -311,8 +312,8 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, "0.0");
-                        FormatDisplayStat(ref desc2, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, "0.0", "u/s");
+                        FormatDisplayStat(ref desc1, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0");
+                        FormatDisplayStat(ref desc2, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s");
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -338,9 +339,9 @@ public static class ImportSystem
                         var desc6 = new DisplayStatDiscriptor();
 
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.GEAR_SLOTS, LanguageSet.GetWord(LanguageKeys.GEAR_SLOTS) + ':', gear, "0");
+                        FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc2, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
+                        FormatDisplayStat(ref desc3, LanguageKeys.GEAR_SLOTS, LanguageSet.GetWord(LanguageKeys.GEAR_SLOTS) + ':', gear, StatsEnum.Normal, "0");
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -412,7 +413,7 @@ public static class ImportSystem
                                 isPatch = true;
                                 break;
                         }
-                        if(isPatch)FormatDisplayStat(ref desc1, prop, desc, value, "0", "%");
+                        if(isPatch)FormatDisplayStat(ref desc1, prop, desc, value, StatsEnum.Normal, "0", "%");
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -437,7 +438,7 @@ public static class ImportSystem
                         var desc6 = new DisplayStatDiscriptor();
 
                         //FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, "0", "%");
+                        FormatDisplayStat(ref desc2, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
                         //FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
 
                         item.DisplayStat1 = desc1;
@@ -469,27 +470,33 @@ public static class ImportSystem
     }
 
     static readonly Brush grey = new SolidColorBrush(Color.FromArgb(136, 136, 136, 136));
-    private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, string format, string suffix = "", string prefix = "", int count = -1)
+    static readonly Brush green = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+    static readonly Brush red = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+    private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1)
     { 
         desc.PropertyName = propertyName;
         desc.Description = description;
 
         bool isGrey = false;
+        bool isPositive = false;
 
         switch (value)
         {
             case double d:
                 desc.Value = prefix + d.ToString(format) + suffix;
                 isGrey = d == 0;
+                isPositive = d > 0;
                 break;
             case bool b:
                 desc.Value = b.ToString();
                 isGrey = !b;
+                isPositive = b;
                 break;
             case double[] db:
                 if (db.Length > 0)
                 {
                     isGrey = db[0] == 0;
+                    isPositive = db[0] > 0;
                     string vv = "";
                     int indexes;
                     if (count < 0)
@@ -509,6 +516,24 @@ public static class ImportSystem
                     desc.Value = vv;
                 }
                 break;
+        }
+
+        if (type != StatsEnum.None)
+        {
+            if (type == StatsEnum.Inverted)
+            { 
+                isPositive = !isPositive;
+            }
+            if (isPositive)
+            {
+                desc.DefaultValueColor = green;
+                desc.HighlightValueColor = green;
+            }
+            else
+            {
+                desc.DefaultValueColor = red;
+                desc.HighlightValueColor = red;
+            }
         }
 
         if (isGrey)
