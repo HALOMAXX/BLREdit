@@ -1,0 +1,107 @@
+﻿[
+  {
+    "Name": "CTDM",
+    "Description": "Competetive Team Deathmatch",
+    "PlaylistName": "",
+    "ModeName": "CTDM",
+    "IsAvailable": true
+  },
+  {
+    "Name": "CTF",
+    "Description": "Capture The Flag",
+    "PlaylistName": "CTF",
+    "ModeName": "CTF",
+    "IsAvailable": true
+  },
+  {
+    "Name": "DM",
+    "Description": "Deathmatch",
+    "PlaylistName": "DM",
+    "ModeName": "DM",
+    "IsAvailable": true
+  },
+  {
+    "Name": "DOM",
+    "Description": "Domination",
+    "PlaylistName": "DOM",
+    "ModeName": "CP",
+    "IsAvailable": true
+  },
+  {
+    "Name": "Netwar",
+    "Description": "Netwar",
+    "PlaylistName": "",
+    "ModeName": "EOTS",
+    "IsAvailable": true
+  },
+  {
+    "Name": "Siege",
+    "Description": "Siege",
+    "PlaylistName": "",
+    "ModeName": "PL",
+    "IsAvailable": true
+  },
+  {
+    "Name": "TDM?",
+    "Description": "Detonate",
+    "PlaylistName": "",
+    "ModeName": "Detonate",
+    "IsAvailable": true
+  },
+  {
+    "Name": "Train",
+    "Description": "Train",
+    "PlaylistName": "",
+    "ModeName": "BO",
+    "IsAvailable": true
+  },
+  {
+    "Name": "KOTH",
+    "Description": "King Of The Hill",
+    "PlaylistName": "KOTH",
+    "ModeName": "TKOTH",
+    "IsAvailable": true
+  },
+  {
+    "Name": "LMS",
+    "Description": "Last Man Standing",
+    "PlaylistName": "LMS",
+    "ModeName": "LMS",
+    "IsAvailable": true
+  },
+  {
+    "Name": "LTS",
+    "Description": "Last Team Standing",
+    "PlaylistName": "LTS",
+    "ModeName": "LTS",
+    "IsAvailable": true
+  },
+  {
+    "Name": "SND",
+    "Description": "Search And Destroy",
+    "PlaylistName": "SND",
+    "ModeName": "SND",
+    "IsAvailable": true
+  },
+  {
+    "Name": "OS Easy",
+    "Description": "Onslaught Easy",
+    "PlaylistName": "OS_Easy",
+    "ModeName": "OS",
+    "IsAvailable": true
+  },
+  {
+    "Name": "OS Medium",
+    "Description": "Onslaught Medium",
+    "PlaylistName": "OS_Medium",
+    "ModeName": "OS",
+    "IsAvailable": true
+  },
+  {
+    "Name": "OS Hard",
+    "Description": "Onslaught Hard",
+    "PlaylistName": "OS_Hard",
+    "ModeName": "OS",
+    "IsAvailable": true
+  }
+]

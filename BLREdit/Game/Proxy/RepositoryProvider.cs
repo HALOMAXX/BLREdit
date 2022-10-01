@@ -2,6 +2,7 @@
 
 public enum RepositoryProvider
 {
+    Web,
     GitHub,
     Gitlab
 }

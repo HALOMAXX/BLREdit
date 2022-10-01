@@ -20,6 +20,8 @@ using System.IO;
 using BLREdit.Import;
 using BLREdit.Export;
 using BLREdit.UI.Controls;
+using BLREdit.UI.Windows;
+using System.Collections.ObjectModel;
 
 namespace BLREdit.UI;
 
@@ -68,8 +70,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     public bool IsCheckingGameClient { get; private set; } = false;
 
-    public static List<BLRClient> GameClients { get; set; }
-    public static List<BLRServer> ServerList { get; set; }
+    public static ObservableCollection<BLRClient> GameClients { get; set; }
+    public static ObservableCollection<BLRServer> ServerList { get; set; }
 
     public static MainWindow Self { get; private set; } = null;
 
@@ -137,6 +139,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+
+        
 
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
@@ -238,7 +242,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void AddDefaultServers()
     {
         List<BLRServer> defaultServers = new() {
-        new() { ServerAddress = "majikau.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777 //majikau.ddns.net
+        new() { ServerAddress = "mooserver.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777 //majikau.ddns.net or mooserver.ddns.net
         new() { ServerAddress = "blr.akoot.me", Port = 7777, ServerName = "Akoot's Server" }, //blr.akoot.me : 7777
         new() { ServerAddress = "blr.753z.net", Port = 7777, ServerName = "IKE753Z's Server" }, //blr.753z.net : 7777
         new() { ServerAddress = "localhost", Port = 7777, ServerName = "Local Host"}
@@ -298,26 +302,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             GameClients.Add(client);
             GameClientList.ItemsSource = null;
             GameClientList.ItemsSource = GameClients;
-        }
-    }
-
-    private void ChangeCurrentGameClient_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            if (button.DataContext is BLRClient client)
-            {
-                LoggingSystem.Log($"Setting Current Client:{client}");
-                if (client.Patched.Is)
-                {
-                    BLREditSettings.Settings.DefaultClient = client;
-                    foreach (BLRClient c in GameClients)
-                    {
-                        c.CurrentClient.SetBool(false);
-                    }
-                    client.CurrentClient.SetBool(true);
-                }
-            }
         }
     }
 
@@ -751,22 +735,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
         CheckGameClients();
     }
-
-    private void RemoveGameClient_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            GameClients.Remove(button.DataContext as BLRClient);
-
-            GameClientList.ItemsSource = null;
-            GameClientList.ItemsSource = GameClients;
-        }
-    }
-
-    private void StartServer_Click(object sender, RoutedEventArgs e)
-    {
-
-    }
     #endregion GameClient UI
 
 
@@ -930,14 +898,5 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         int index = e.Text.IndexOfAny(InvalidNameChars);
         if (index >= 0)
         { e.Handled = true; }
-    }
-
-    private void ClientModifyButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button && button.DataContext is BLRClient client)
-        {
-            ClientWindow.Client = client;
-            ClientWindow.ShowDialog();
-        }
     }
 }

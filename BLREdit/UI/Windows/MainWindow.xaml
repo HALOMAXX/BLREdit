@@ -13,7 +13,7 @@
         Title="BLREdit" Height="1032" Width="1920" MinWidth="480" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Foreground="Red" PreviewKeyDown="PreviewKeyDownMainWindow" PreviewKeyUp="PreviewKeyUpMainWindow">
 
     <Window.Background>
-        <ImageBrush ImageSource="Resources/Default_2016.png" />
+        <ImageBrush ImageSource="../Resources/Default_2016.png" />
     </Window.Background>
     <Grid AllowDrop="True">
         <ComboBox Width="120" Height="22" Margin="10,5,0,0" Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0"  HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ProfileComboBox_SelectionChanged"/>
@@ -24,6 +24,8 @@
         <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static res:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
         <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static res:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
+        
+        
         <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="400" Margin="0,64,0,0">
             <TabItem Header="Loadout 1">
                 <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Loadout1}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
@@ -191,127 +193,17 @@
                             <Button Content="{Binding Source={x:Static old:UILanguageWrapper.BtnLauAddServer }}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="-240,0,0,0" Click="AddNewServer_Click"/>
                             <Button Content="{Binding Source={x:Static old:UILanguageWrapper.BtnLauRefreshPing }}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="240,0,0,0" Click="PingServers_Click"/>
                             <ListView Name="ServerListView" Margin="0,0,0,40" SelectionMode="Single">
-                                <Button/>
-                                <!--This is for Desing Purposes-->
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="ListViewItem">
-                                                    <Grid>
-                                                        <ContentPresenter   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                                    </Grid>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="2"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
 
                                 <ListView.ItemTemplate>
-                                    <DataTemplate DataType="game:BLRServer">
-                                        <Grid HorizontalAlignment="Left" VerticalAlignment="Center">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="40" />
-                                                <ColumnDefinition Width="262" />
-                                                <ColumnDefinition Width="70" />
-                                                <ColumnDefinition Width="60" />
-                                                <ColumnDefinition Width="60" />
-                                                <ColumnDefinition Width="80" />
-                                                <ColumnDefinition Width="80" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.Resources>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="Margin" Value="5,0" />
-                                                    <Setter Property="Foreground" Value="White" />
-                                                </Style>
-                                                <Style TargetType="Border">
-                                                    <Setter Property="BorderThickness" Value="1" />
-                                                    <Setter Property="BorderBrush" Value="LightGray" />
-                                                    <Setter Property="Background" Value="Transparent" />
-                                                </Style>
-                                            </Grid.Resources>
-                                            <Border Grid.Column="0" >
-                                                <Button Content="{Binding Source={x:Static old:UILanguageWrapper.LblLauRemove }}" Click="RemoveServer_Click"/>
-                                            </Border>
-                                            <Border Grid.Column="1" >
-                                                <TextBox Text="{Binding Path=ServerAddress}" HorizontalAlignment="Stretch"/>
-                                            </Border>
-                                            <Border Grid.Column="2" >
-                                                <TextBox Text="{Binding Path=Port}" PreviewTextInput="PortValidation" HorizontalAlignment="Stretch"/>
-                                            </Border>
-                                            <Border Grid.Column="3" >
-                                                <Button Content="{Binding Path=IsOnline}" IsEnabled="{Binding Path=IsNotOnline}" IsHitTestVisible="False"/>
-                                            </Border>
-                                            <Border Grid.Column="4" >
-                                                <TextBox Text="{Binding Path=PingDisplay, Mode=OneWay}" IsReadOnly="True"/>
-                                            </Border>
-                                            <Border Grid.Column="5" >
-                                                <Button Content="Launch" Command="{Binding Path=LaunchServerCommand}"/>
-                                            </Border>
-                                            <Border Grid.Column="6" >
-                                                <Button Content="Default" IsEnabled="{Binding Path=IsNotDefaultServer}" Click="ChangeCurrentServer_Click"/>
-                                            </Border>
-                                        </Grid>
+                                    <DataTemplate>
+                                        <ui:ServerControl/>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-
-                                <ListView.Template>
-                                    <ControlTemplate>
-                                        <Grid HorizontalAlignment="Left">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="40" />
-                                                    <ColumnDefinition Width="262" />
-                                                    <ColumnDefinition Width="70" />
-                                                    <ColumnDefinition Width="60" />
-                                                    <ColumnDefinition Width="60" />
-                                                    <ColumnDefinition Width="80" />
-                                                    <ColumnDefinition Width="80" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.Resources>
-                                                    <Style TargetType="TextBlock">
-                                                        <Setter Property="Margin" Value="5,0" />
-                                                        <Setter Property="Foreground" Value="White" />
-                                                        <Setter Property="FontWeight" Value="Bold" />
-                                                    </Style>
-                                                    <Style TargetType="Border">
-                                                        <Setter Property="BorderThickness" Value="1" />
-                                                        <Setter Property="BorderBrush" Value="White" />
-                                                        <Setter Property="Background" Value="Transparent" />
-                                                    </Style>
-                                                </Grid.Resources>
-                                                <Border Grid.Column="0">
-                                                    <TextBlock Text="{Binding Source={x:Static old:UILanguageWrapper.LblLauRemove }}"/>
-                                                </Border>
-                                                <Border Grid.Column="1">
-                                                    <TextBlock Text="{Binding Source={x:Static old:UILanguageWrapper.LblLauServerAddress }}"/>
-                                                </Border>
-                                                <Border Grid.Column="2">
-                                                    <TextBlock Text="{Binding Source={x:Static old:UILanguageWrapper.LblLauServerPort }}"/>
-                                                </Border>
-                                                <Border Grid.Column="3">
-                                                    <TextBlock Text="{Binding Source={x:Static old:UILanguageWrapper.LblLauIsServerOnline }}"/>
-                                                </Border>
-                                                <Border Grid.Column="4">
-                                                    <TextBlock Text="{Binding Source={x:Static old:UILanguageWrapper.LblLauServerPing }}"/>
-                                                </Border>
-                                                <Border Grid.Column="5">
-                                                    <TextBlock Text="{Binding Source={x:Static old:UILanguageWrapper.LblLauConnectToServer }}"/>
-                                                </Border>
-                                                <Border Grid.Column="6">
-                                                    <TextBlock Text="{Binding Source={x:Static old:UILanguageWrapper.LblLauIsServerDefault }}"/>
-                                                </Border>
-                                            </Grid>
-                                            <ItemsPresenter Grid.Row="1"></ItemsPresenter>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </ListView.Template>
                             </ListView>
                         </Grid>
                     </TabItem>
@@ -327,26 +219,7 @@
 
                                 <ListView.ItemTemplate>
                                     <DataTemplate DataType="game:BLRClient">
-                                        <Grid>
-                                            <Border BorderThickness="1,1,1,1">
-                                                <Grid>
-                                                    <Image Name="BackgroundImage" Source="Resources/ClientBackground.png" Margin="0,0,0,0"/>
-                                                    <Image Source="{Binding Path=ClientVersionPart0}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="0,0,0,0"/>
-                                                    <Image Source="{Binding Path=ClientVersionPart1}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="32,0,0,0"/>
-                                                    <Image Source="Resources/Dot.png" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="16" Margin="77,0,0,10"/>
-                                                    <Image Source="{Binding Path=ClientVersionPart2}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="74,0,0,0"/>
-                                                    <Image Source="{Binding Path=ClientVersionPart3}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="106,0,0,0"/>
-                                                    <Image Source="{Binding Path=ClientVersionPart4}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="138,0,0,0"/>
-                                                    <TextBlock Text="{Binding Path=OriginalPath}" TextWrapping="Wrap" Foreground="#FF78AEBC" Margin="10,10,0,0" Width="418" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                                                    <Button Width="64" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Modify the Blacklight:Retribution Game Client" Click="ClientModifyButton_Click">
-                                                        <Image Source="Resources/settings.png"/>
-                                                    </Button>
-                                                    <Button Content="Standard" IsEnabled="{Binding Path=CurrentClient.IsNot}" Click="ChangeCurrentGameClient_Click" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                                                    <Button Content="Bot Match" Width="128" Height="32" Margin="0,0,174,10" Command="{Binding Path=LaunchBotMatchCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                                                </Grid>
-                                            </Border>
-                                        </Grid>
-
+                                        <ui:ClientControl/>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
