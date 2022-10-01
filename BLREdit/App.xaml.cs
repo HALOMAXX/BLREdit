@@ -6,6 +6,7 @@ using BLREdit.Import;
 using BLREdit.UI.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -50,8 +51,8 @@ public partial class App : System.Windows.Application
         ImportSystem.Initialize();
 
         LoggingSystem.Log("Loading Client List");
-        UI.MainWindow.GameClients = IOResources.DeserializeFile<List<BLRClient>>("GameClients.json") ?? new();
-        UI.MainWindow.ServerList = IOResources.DeserializeFile<List<BLRServer>>("ServerList.json") ?? new();
+        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>("GameClients.json") ?? new();
+        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>("ServerList.json") ?? new();
 
         LoggingSystem.Log("Validating Client List");
         for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
