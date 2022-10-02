@@ -37,9 +37,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     private BLRItem tactical = null;
     public BLRItem Tactical { get { return tactical; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { tactical = value; ItemChanged(); return; } if (value is null || tactical != value && value.Category == ImportSystem.TACTICAL_CATEGORY) { if (value is null) { tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, 0); } else { tactical = value; } ItemChanged(); } } }
     private BLRItem gear1 = null;
-    public BLRItem Gear1 { get { return gear1; } set { if (value is null || gear1 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear1 = value; } ItemChanged(); } } }
+    public BLRItem Gear1 { get { return gear1; } set { if (value is null || gear1 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 1); } else { gear1 = value; } ItemChanged(); } } }
     private BLRItem gear2 = null;
-    public BLRItem Gear2 { get { return gear2; } set { if (value is null || gear2 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear2 = value; } ItemChanged(); } } }
+    public BLRItem Gear2 { get { return gear2; } set { if (value is null || gear2 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 2); } else { gear2 = value; } ItemChanged(); } } }
     private BLRItem gear3 = null;
     public BLRItem Gear3 { get { return gear3; } set { if (value is null || gear3 != value && value.Category == ImportSystem.ATTACHMENTS_CATEGORY) { if (value is null) { gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, 0); } else { gear3 = value; } ItemChanged(); } } }
     private BLRItem gear4 = null;
@@ -57,15 +57,15 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     #region Depot
     private BLRItem depot1;
-    public BLRItem Depot1 { get { return depot1; } set { if (value is null || depot1 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 0); } else { depot1 = value; } ItemChanged(); } } }
+    public BLRItem Depot1 { get { return depot1; } set { if (value is null || depot1 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0); } else { depot1 = value; } ItemChanged(); } } }
     private BLRItem depot2;
-    public BLRItem Depot2 { get { return depot2; } set { if (value is null || depot2 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 1); } else { depot2 = value; } ItemChanged(); } } }
+    public BLRItem Depot2 { get { return depot2; } set { if (value is null || depot2 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 1); } else { depot2 = value; } ItemChanged(); } } }
     private BLRItem depot3;
-    public BLRItem Depot3 { get { return depot3; } set { if (value is null || depot3 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 2); } else { depot3 = value; } ItemChanged(); } } }
+    public BLRItem Depot3 { get { return depot3; } set { if (value is null || depot3 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 2); } else { depot3 = value; } ItemChanged(); } } }
     private BLRItem depot4;
-    public BLRItem Depot4 { get { return depot4; } set { if (value is null || depot4 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 3); } else { depot4 = value; } ItemChanged(); } } }
+    public BLRItem Depot4 { get { return depot4; } set { if (value is null || depot4 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 3); } else { depot4 = value; } ItemChanged(); } } }
     private BLRItem depot5;
-    public BLRItem Depot5 { get { return depot5; } set { if (value is null || depot5 != value && value.Category == ImportSystem.DEPOT_CATEGORY) { if (value is null) { depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.DEPOT_CATEGORY, 4); } else { depot5 = value; } ItemChanged(); } } }
+    public BLRItem Depot5 { get { return depot5; } set { if (value is null || depot5 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 4); } else { depot5 = value; } ItemChanged(); } } }
     #endregion Depot
 
     #region Taunts
@@ -476,6 +476,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         if (GearSlots > 1) { internalLoadout.Gear2 = Gear2?.GetMagicCowsID() ?? 0; }
         if (GearSlots > 2) { internalLoadout.Gear3 = Gear3?.GetMagicCowsID() ?? 0; }
         if (GearSlots > 3) { internalLoadout.Gear4 = Gear4?.GetMagicCowsID() ?? 0; }
+
+        internalLoadout.Taunts = new int[] { Taunt1?.GetMagicCowsID() ?? 0, Taunt2?.GetMagicCowsID() ?? 1, Taunt3?.GetMagicCowsID() ?? 2, Taunt4?.GetMagicCowsID() ?? 3, Taunt5?.GetMagicCowsID() ?? 4, Taunt6?.GetMagicCowsID() ?? 5, Taunt7?.GetMagicCowsID() ?? 6, Taunt8?.GetMagicCowsID() ?? 7 };
+        internalLoadout.Depot = new int[] { Depot1?.GetMagicCowsID() ?? 0, Depot2?.GetMagicCowsID() ?? 1, Depot3?.GetMagicCowsID() ?? 2, Depot4?.GetMagicCowsID() ?? 3, Depot5?.GetMagicCowsID() ?? 3 };
     }
     private MagiCowsLoadout internalLoadout;
     public void LoadMagicCowsLoadout(MagiCowsLoadout loadout)
@@ -497,6 +500,21 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear3);
         gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear4);
 
+        if (loadout.Taunts.Length > 0) taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[0]); else taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 0);
+        if (loadout.Taunts.Length > 0) taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[1]); else taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 1);
+        if (loadout.Taunts.Length > 0) taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[2]); else taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 2);
+        if (loadout.Taunts.Length > 0) taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[3]); else taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 3);
+        if (loadout.Taunts.Length > 0) taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[4]); else taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 4);
+        if (loadout.Taunts.Length > 0) taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[5]); else taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 5);
+        if (loadout.Taunts.Length > 0) taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[6]); else taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 6);
+        if (loadout.Taunts.Length > 0) taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[7]); else taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7);
+
+        if (loadout.Depot.Length > 0) depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[0]); else depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0);
+        if (loadout.Depot.Length > 1) depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[1]); else depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 1);
+        if (loadout.Depot.Length > 2) depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[2]); else depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 2);
+        if (loadout.Depot.Length > 3) depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[3]); else depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 3);
+        if (loadout.Depot.Length > 4) depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[4]); else depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 4);
+
         trophy = loadout.GetTrophy();
         avatar = loadout.GetSkin();
         camo = loadout.GetCamo();
@@ -514,6 +532,21 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         ItemChanged(nameof(Trophy));
         ItemChanged(nameof(Avatar));
         ItemChanged(nameof(BodyCamo));
+
+        ItemChanged(nameof(Depot1));
+        ItemChanged(nameof(Depot2));
+        ItemChanged(nameof(Depot3));
+        ItemChanged(nameof(Depot4));
+        ItemChanged(nameof(Depot5));
+
+        ItemChanged(nameof(Taunt1));
+        ItemChanged(nameof(Taunt2));
+        ItemChanged(nameof(Taunt3));
+        ItemChanged(nameof(Taunt4));
+        ItemChanged(nameof(Taunt5));
+        ItemChanged(nameof(Taunt6));
+        ItemChanged(nameof(Taunt7));
+        ItemChanged(nameof(Taunt8));
     }
     static readonly Random rng = new();
     public void Randomize()

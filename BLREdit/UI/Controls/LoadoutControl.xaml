@@ -20,7 +20,7 @@
                 <ui:GearControl x:Name="GearControl" x:FieldModifier="public"/>
             </TabItem>
             <TabItem Header="Extra">
-
+                <ui:ExtraControl x:Name="ExtraControl" x:FieldModifier="public"/>
             </TabItem>
         </TabControl>
     </Grid>

@@ -33,6 +33,7 @@ public static class ImportSystem
     public const string AMMO_CATEGORY = "ammos";
     public const string DEPOT_CATEGORY = "depot";
     public const string EMOTES_CATEGORY = "emotes";
+    public const string SHOP_CATEGORY = "shop";
 
     //public static readonly Dictionary<float, float> DamagePercentToValue = new Dictionary<float, float>(); not in use
 

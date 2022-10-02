@@ -499,6 +499,20 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 case "Gear4":
                     SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
                     break;
+
+                case "Taunt1":
+                case "Taunt2":
+                case "Taunt3":
+                case "Taunt4":
+                    SetItemList(ImportSystem.EMOTES_CATEGORY);
+                    break;
+                case "Depot1":
+                case "Depot2":
+                case "Depot3":
+                case "Depot4":
+                case "Depot5":
+                    SetItemList(ImportSystem.SHOP_CATEGORY);
+                    break;
             }
             return;
         }
@@ -507,6 +521,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
             {
                 UndoRedoSystem.DoAction(null, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
+                UndoRedoSystem.EndAction();
+            } 
+            else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
+            {
+                UndoRedoSystem.DoAction(null, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
                 UndoRedoSystem.EndAction();
             }
         }

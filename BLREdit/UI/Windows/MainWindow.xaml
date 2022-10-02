@@ -57,7 +57,7 @@
                                     </Border>
                                     <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
                                     <Border BorderThickness="1,0,1,1">
-                                        <TextBlock Text="{Binding DisplayName}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
+                                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
                                     </Border>
                                     <Border BorderThickness="1,0,1,1">
                                         <UniformGrid Columns="3">
