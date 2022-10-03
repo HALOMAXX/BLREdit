@@ -9754,9 +9754,9 @@
         "SprintMultiplier": 1,
         "Stamina": 0,
         "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
+        "ToxicProtection": 10
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003E Greatly increases HRV recharge, slight health boost",
+      "Tooltip": "Standard helmet.\u003Cbr\u003E Greatly increases HRV recharge, slight health boost, and reduces toxic damage by 8%",
       "UID": 30355
     },
     {
