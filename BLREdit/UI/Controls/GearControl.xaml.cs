@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BLREdit.UI
+namespace BLREdit.UI.Controls
 {
     /// <summary>
-    /// Interaction logic for LoadoutControl.xaml
+    /// Interaction logic for GearControl.xaml
     /// </summary>
-    public partial class LoadoutControl : UserControl
+    public partial class GearControl : UserControl
     {
-        public LoadoutControl()
+        public GearControl()
         {
             InitializeComponent();
         }

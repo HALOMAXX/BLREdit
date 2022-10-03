@@ -1,4 +1,6 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.REST_API.MagiCow;
+using BLREdit.Export;
+using BLREdit.UI;
 
 using System;
 using System.ComponentModel;
@@ -26,31 +28,34 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public bool IsOnline { get { return isOnline; } private set { isOnline = value; IsNotOnline = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotOnline { get { return !isOnline; } private set { OnPropertyChanged(); } }
 
+    private UIBool isPinging = new(false);
+    [JsonIgnore] public UIBool IsPinging { get { return isPinging; } }
+
+    [JsonIgnore] public MagiCowServerInfo Info { get; private set; }
+
+
     [JsonIgnore] private string serverName;
     public string ServerName { get { return serverName; } set { serverName = value; OnPropertyChanged(); } }
     public string ServerAddress { get; set; } = "localhost";
     public short Port { get; set; } = 7777;
-    private string ipAddress;
     [JsonIgnore]
     public string IPAddress
     {
         get
         {
-            if (ipAddress is null)
+            try
             {
-                try
+                var ip = Dns.GetHostEntry(ServerAddress);
+                foreach (IPAddress address in ip.AddressList)
                 {
-                    var ip = Dns.GetHostEntry(ServerAddress);
-                    foreach (IPAddress address in ip.AddressList)
+                    if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                     {
-                        if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                        {
-                            ipAddress = address.ToString();
-                        }
+                        return address.ToString();
                     }
-                }catch { }
+                }
             }
-            return ipAddress;
+            catch { }
+            return null;
         }
     }
 
@@ -68,9 +73,10 @@ public sealed class BLRServer : INotifyPropertyChanged
         { return false; }
     }
 
-    public void PingServer() 
+    public void PingServer()
     {
         if (IPAddress is null) { return; }
+        isPinging.SetBool(true);
         Thread pingThread = new(new ThreadStart(InternalPing))
         {
             Name = ServerAddress + " Ping",
@@ -96,7 +102,7 @@ public sealed class BLRServer : INotifyPropertyChanged
             socket.ReceiveTimeout = 2000;
             socket.Connect(RemoteIpEndPoint);
             Task<SocketReceiveFromResult> recieve = socket.ReceiveFromAsync(buffer, SocketFlags.Partial, RemoteIpEndPoint);
-            
+
             sent = socket.SendTo(msg, msg.Length, SocketFlags.None, RemoteIpEndPoint);
             watch.Start();
             recieve.Wait(2000);
@@ -141,43 +147,25 @@ public sealed class BLRServer : INotifyPropertyChanged
             IsOnline = false;
             Ping = double.NaN;
         }
-        LoggingSystem.Log("Finished Ping for [" + ServerAddress + "]:" + Ping + "ms");
+        LoggingSystem.Log($"Finished Ping for [{ServerAddress}]:{Ping}ms");
         socket.Close();
         socket.Dispose();
-    }
 
-    private void PingCompletedCallback(object sender, PingCompletedEventArgs e)
-    {
-        // If the operation was canceled, display a message to the user.
-        if (e.Cancelled)
-        {
-            // Let the main thread resume.
-            // UserToken is the AutoResetEvent object that the main thread
-            // is waiting for.
-            ((AutoResetEvent)e.UserState).Set();
-        }
-
-        // If an error occurred, display the exception to the user.
-        if (e.Error != null)
-        {
-            LoggingSystem.Log(e.Error.Message);
-            // Let the main thread resume.
-            ((AutoResetEvent)e.UserState).Set();
-        }
-
-        PingReply reply = e.Reply;
-
-        DisplayReply(reply);
-
-        // Let the main thread resume.
-        ((AutoResetEvent)e.UserState).Set();
+        LoggingSystem.Log($"Getting Server Info for [{ServerAddress}]");
+        var task = MagiCowClient.GetServerInfo(ServerAddress);
+        task.Wait();
+        Info = task.Result;
+        if (Info is null) { Info = new(); }
+        OnPropertyChanged(nameof(Info));
+        isPinging.SetBool(false);
+        LoggingSystem.Log($"got Server Info for [{ServerAddress}]");
     }
 
     public void DisplayReply(PingReply reply)
     {
         if (reply == null)
-        { LoggingSystem.Log("No Reply Recieved"); return; } 
-        
+        { LoggingSystem.Log("No Reply Recieved"); return; }
+
         if (reply.Status == IPStatus.Success)
         {
             IsOnline = true;
@@ -187,6 +175,19 @@ public sealed class BLRServer : INotifyPropertyChanged
         else
         {
             LoggingSystem.Log("[" + ServerAddress + "]:" + reply.Status);
+        }
+    }
+
+    private ICommand refreshPingCommand;
+    [JsonIgnore]
+    public ICommand RefreshPingCommand
+    {
+        get
+        {
+            refreshPingCommand ??= new RelayCommand(
+                    param => this.PingServer()
+                );
+            return refreshPingCommand;
         }
     }
 

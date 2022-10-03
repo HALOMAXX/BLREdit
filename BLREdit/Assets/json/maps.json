@@ -1,0 +1,611 @@
+﻿[
+  {
+    "MapName": "Centre",
+    "MagiCowName": "Centre",
+    "MapDescription": "",
+    "LongImageName": "t_centre.png",
+    "SquareImageName": "t_Center_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "MapName": "Containment",
+    "MagiCowName": "Containment",
+    "MapDescription": "",
+    "LongImageName": "t_containment.png",
+    "SquareImageName": "t_Containment_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Convoy",
+    "MagiCowName": "Convoy",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_Convoy_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Crashsite",
+    "MagiCowName": "Crashsite",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_CrashSite_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Deadlock",
+    "MagiCowName": "Deadlock",
+    "MapDescription": "",
+    "LongImageName": "t_deadlock.png",
+    "SquareImageName": "t_DeadLock_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "DeathMetal",
+    "MagiCowName": "DeathMetal",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_DeathMetal_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "MapName": "Decay",
+    "MagiCowName": "Decay",
+    "MapDescription": "",
+    "LongImageName": "t_decay.png",
+    "SquareImageName": "t_Decay_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Dropzone",
+    "MagiCowName": "Dropzone",
+    "MapDescription": "",
+    "LongImageName": "t_dropzone2.png",
+    "SquareImageName": "t_DropZone_512x512.png",
+    "Available": [
+      "v140",
+      "v130",
+      "v120"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Evac",
+    "MagiCowName": "Evac",
+    "MapDescription": "",
+    "LongImageName": "t_evac.png",
+    "SquareImageName": "t_Evac_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "HeavyMetal",
+    "MagiCowName": "HeavyMetal",
+    "MapDescription": "",
+    "LongImageName": "t_heavyMetal.png",
+    "SquareImageName": "t_HeavyMetal_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "HeloDeck",
+    "MagiCowName": "Helodeck",
+    "MapDescription": "",
+    "LongImageName": "t_helodeck.png",
+    "SquareImageName": "t_HeloDeck_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Lockdown",
+    "MagiCowName": "Lockdown",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_LockDown_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "MapName": "Metro",
+    "MagiCowName": "Metro",
+    "MapDescription": "",
+    "LongImageName": "t_metro.png",
+    "SquareImageName": "t_Metro_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Nuken",
+    "MagiCowName": "Nuken",
+    "MapDescription": "",
+    "LongImageName": "t_nuken.png",
+    "SquareImageName": "",
+    "Available": [
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": []
+  },
+  {
+    "MapName": "Offshore",
+    "MagiCowName": "Offshore",
+    "MapDescription": "",
+    "LongImageName": "t_offshore.png",
+    "SquareImageName": "",
+    "Available": [
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Outpost",
+    "MagiCowName": "Outpost",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_Outpost_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Piledriver",
+    "MagiCowName": "Piledriver",
+    "MapDescription": "",
+    "LongImageName": "t_piledriver.png",
+    "SquareImageName": "t_PileDriver_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Rig",
+    "MagiCowName": "Rig",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_Rig_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Safehold",
+    "MagiCowName": "Safehold",
+    "MapDescription": "",
+    "LongImageName": "t_safehold.png",
+    "SquareImageName": "t_Safehold_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "SeaPort",
+    "MagiCowName": "SeaPort",
+    "MapDescription": "",
+    "LongImageName": "t_seaport.png",
+    "SquareImageName": "t_Seaport_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Shelter",
+    "MagiCowName": "Shelter",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_Shelter_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "MapName": "Slumlord",
+    "MagiCowName": "Slumlord",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_SlumLord_512x512.png",
+    "Available": [
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Terminus",
+    "MagiCowName": "Terminus",
+    "MapDescription": "",
+    "LongImageName": "",
+    "SquareImageName": "t_Terminus_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "MapName": "Trench",
+    "MagiCowName": "Trench",
+    "MapDescription": "",
+    "LongImageName": "t_trench.png",
+    "SquareImageName": "t_Trench_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Vertigo",
+    "MagiCowName": "Vertigo",
+    "MapDescription": "",
+    "LongImageName": "t_vertigo.png",
+    "SquareImageName": "t_Vertigo_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  },
+  {
+    "MapName": "Vortex",
+    "MagiCowName": "Vortex",
+    "MapDescription": "",
+    "LongImageName": "t_vortex.png",
+    "SquareImageName": "t_Vortex_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300",
+      "v140",
+      "v130",
+      "v120",
+      "v1100",
+      "v0993"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND"
+    ]
+  }
+]

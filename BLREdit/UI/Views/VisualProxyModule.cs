@@ -171,6 +171,18 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
+    private ICommand removeCommand;
+    public ICommand RemoveCommand
+    {
+        get
+        {
+            removeCommand ??= new RelayCommand(
+                    param => Task.Run(RemoveModule)
+                );
+            return removeCommand;
+        }
+    }
+
     private ProxyModule installedModule;
     public ProxyModule InstalledModule
     { get { return installedModule; } }
@@ -278,6 +290,38 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         OnPropertyChanged(nameof(UpToDate));
         LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.InstallName}");
         lockInstall = false;
+    }
+
+    private bool lockRemove = false;
+    public async void RemoveModule()
+    { 
+        if (lockRemove) return;
+        lockRemove = true;
+
+        if (MainWindow.ClientWindow.Client.Patched.IsNot)
+        {
+            LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
+            MainWindow.ClientWindow.Client.PatchClient();
+        }
+        LoggingSystem.Log($"removing {RepositoryProxyModule.InstallName}");
+
+        foreach (var module in MainWindow.ClientWindow.Client.InstalledModules)
+        {
+            if (module.InstallName == RepositoryProxyModule.InstallName)
+            {
+                MainWindow.ClientWindow.Client.InstalledModules.Remove(module);
+                File.Delete($"{MainWindow.ClientWindow.Client.ModulesFolder}\\{module.InstallName}.dll");
+                break;
+            }
+        }
+
+        CheckForInstall();
+        CheckForUpdate();
+        OnPropertyChanged(nameof(InstalledModule));
+        OnPropertyChanged(nameof(Installed));
+        OnPropertyChanged(nameof(UpToDate));
+        LoggingSystem.Log($"Finished removing {RepositoryProxyModule.InstallName}");
+        lockRemove = false;
     }
 
     public void ActiveClientChanged(object sender, EventArgs eventArgs)

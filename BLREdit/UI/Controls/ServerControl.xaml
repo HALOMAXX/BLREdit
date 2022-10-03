@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.ServerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:game="clr-namespace:BLREdit.Game"
+             d:DataContext="{d:DesignInstance Type=game:BLRServer}"
+             mc:Ignorable="d">
+    <Border BorderThickness="1,1,1,1">
+        <Grid>
+            <Image Name="BackgroundImage" Source="../Resources/ClientBackground.png" Margin="0,0,0,0"/>
+            <Grid Height="128" Width="512">
+                <Image Name="MapImage" Source="{Binding Path=Info.BLRMap.SquareImage}" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+            </Grid>
+            <Button Width="64" Height="32" Margin="0,10,10,0" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Ping Server" Command="{Binding Path=RefreshPingCommand}">
+                <Image Margin="0,0,0,3" Source="../Resources/refresh.png"/>
+            </Button>
+            <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
+                <StackPanel>
+                <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerAddress}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Margin="5,2,5,2" Text="{Binding Path=PingDisplay}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Border>
+            <Button Content="Connect" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding Path=LaunchServerCommand}"/>
+            <ComboBox ItemsSource="{Binding Path=Info.List}" Margin="0,0,148,10" Width="128" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged"/>
+            <Border Width="Auto" Height="Auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
+                <TextBlock Margin="5,2,5,2" Text="{Binding Path=Info.Map}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

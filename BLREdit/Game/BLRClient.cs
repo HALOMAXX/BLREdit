@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using BLREdit.Game.Proxy;
 using BLREdit.UI;
 using BLREdit.UI.Views;
+using BLREdit.UI.Windows;
+
 using PeNet;
 using PeNet.Header.Net.MetaDataTables;
 
@@ -31,11 +33,11 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
 
 
-    [JsonIgnore] public BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/BLREdit;component/UI/Resources/V.png", UriKind.Absolute)); } }
-    [JsonIgnore] public BitmapImage ClientVersionPart1 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 2) { return new BitmapImage(new Uri($"pack://application:,,,/BLREdit;component/UI/Resources/{char.GetNumericValue(ClientVersion[1])}.png", UriKind.Absolute)); } return null; } }
-    [JsonIgnore] public BitmapImage ClientVersionPart2 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 3) { return new BitmapImage(new Uri($"pack://application:,,,/BLREdit;component/UI/Resources/{char.GetNumericValue(ClientVersion[2])}.png", UriKind.Absolute)); } return null; } }
-    [JsonIgnore] public BitmapImage ClientVersionPart3 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 4) { return new BitmapImage(new Uri($"pack://application:,,,/BLREdit;component/UI/Resources/{char.GetNumericValue(ClientVersion[3])}.png", UriKind.Absolute)); } return null; } }
-    [JsonIgnore] public BitmapImage ClientVersionPart4 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 5) { return new BitmapImage(new Uri($"pack://application:,,,/BLREdit;component/UI/Resources/{char.GetNumericValue(ClientVersion[4])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/UI/Resources/V.png", UriKind.Absolute)); } }
+    [JsonIgnore] public BitmapImage ClientVersionPart1 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 2) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[1])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage ClientVersionPart2 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 3) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[2])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage ClientVersionPart3 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 4) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[3])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage ClientVersionPart4 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 5) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[4])}.png", UriKind.Absolute)); } return null; } }
 
     private string clientHash;
     public string ClientHash {
@@ -52,7 +54,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string originalPath;
     public string OriginalPath { 
         get { return originalPath; } 
-        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash ??= CreateClientHash(value); OnPropertyChanged(); } } 
+        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } } 
     }
 
     private string patchedPath;
@@ -75,9 +77,9 @@ public sealed class BLRClient : INotifyPropertyChanged
         {"0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7", "v302"},
         {"de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3", "v301"},
         {"1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6", "v300"},
-        {"d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4", "v120"},
         {"4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5", "v140"},
         {"01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58", "v130"},
+        {"d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4", "v120"},
         {"d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f", "v1100"},
         {"9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116", "v0993"}
     };
@@ -182,6 +184,18 @@ public sealed class BLRClient : INotifyPropertyChanged
                     }
                     if (!isValid) { needUpdatedPatches = true; LoggingSystem.Log($"found old patch {installedPatch.PatchName}"); }
                 }
+
+                var proxySource = $"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.dll";
+                var proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll";
+                if (File.Exists(proxySource) && File.Exists(proxyTarget))
+                {
+                    var sourceHash = IOResources.CreateFileHash(proxySource);
+                    var targetHash = IOResources.CreateFileHash(proxyTarget);
+                    if (sourceHash != targetHash)
+                    {
+                        File.Copy(proxySource, proxyTarget, true);
+                    }
+                }
             }
             else
             {
@@ -220,7 +234,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public static bool ValidateClientHash(string currentHash, string fileLocation, out string newHash)
     {
         if (string.IsNullOrEmpty(currentHash) || string.IsNullOrEmpty(fileLocation)) { newHash = null; return false; }
-        newHash = CreateClientHash(fileLocation);
+        newHash = IOResources.CreateFileHash(fileLocation);
         return currentHash.Equals(newHash);
     }
 
@@ -278,12 +292,41 @@ public sealed class BLRClient : INotifyPropertyChanged
             return launchBotMatchCommand;
         }
     }
+
+    private ICommand modifyClientCommand;
+    [JsonIgnore]
+    public ICommand ModifyClientCommand
+    {
+        get
+        {
+            modifyClientCommand ??= new RelayCommand(
+                    param => this.ModifyClient()
+                );
+            return modifyClientCommand;
+        }
+    }
+
+    private ICommand currentClientCommand;
+    [JsonIgnore]
+    public ICommand CurrentClientCommand
+    {
+        get
+        {
+            currentClientCommand ??= new RelayCommand(
+                    param => this.SetCurrentClient()
+                );
+            return currentClientCommand;
+        }
+    }
     #endregion Commands
 
     #region Launch/Exit
     private void LaunchBotMatch()
     {
-        string launchArgs = "server HeloDeck?Game=FoxGame.FoxGameMP_DM?SingleMatch?NumBots=12";
+        //TODO Map/Mode Select
+        (var mode, var map) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
+
+        string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?SingleMatch?NumBots=12";
         StartProcess(launchArgs);
     }
 
@@ -335,27 +378,41 @@ public sealed class BLRClient : INotifyPropertyChanged
     }
     #endregion Launch/Exit
 
+    private void ModifyClient()
+    {
+        MainWindow.ClientWindow.Client = this;
+        MainWindow.ClientWindow.ShowDialog();
+    }
+
+    private void SetCurrentClient()
+    {
+        LoggingSystem.Log($"Setting Current Client:{this}");
+        if (this.Patched.Is)
+        {
+            BLREditSettings.Settings.DefaultClient = this;
+            foreach (BLRClient c in MainWindow.GameClients)
+            {
+                c.CurrentClient.SetBool(false);
+            }
+            this.CurrentClient.SetBool(true);
+        }
+    }
+
     private string CreateFolderStructure()
     {
         string[] pathParts = OriginalPath.Split('\\');
         string[] fileParts = pathParts[pathParts.Length - 1].Split('.');
         pathParts[pathParts.Length - 1] = fileParts[0] + "-BLREdit-Patched." + fileParts[1];
-        string newPath = "";
-        for (int i = 0; i < pathParts.Length; i++)
+        string basePath = "";
+        for (int i = pathParts.Length-4; i >= 0; i--)
         { 
-            newPath += pathParts[i];
-            if (pathParts[i] == "blacklightretribution")
-            {
-                LoggingSystem.Log($"found root BLR Directory {newPath}");
-                ConfigFolder = Directory.CreateDirectory($"{newPath}\\FoxGame\\Config\\BLRevive\\").FullName;
-                ModulesFolder = Directory.CreateDirectory($"{newPath}\\Binaries\\Win32\\Modules\\").FullName;
-            }
-            if (i < pathParts.Length - 1)
-            {
-                newPath += '\\';
-            }
+            basePath = $"{pathParts[i]}\\{basePath}";
         }
-        return newPath;
+        LoggingSystem.Log($"found root BLR Directory {basePath}");
+        ConfigFolder = Directory.CreateDirectory($"{basePath}\\FoxGame\\Config\\BLRevive\\").FullName;
+        ModulesFolder = Directory.CreateDirectory($"{basePath}\\Binaries\\Win32\\Modules\\").FullName;
+
+        return $"{basePath}\\Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
     }
 
     /// <summary>
@@ -366,15 +423,14 @@ public sealed class BLRClient : INotifyPropertyChanged
         string outFile = CreateFolderStructure();
         File.Copy(OriginalPath, outFile, true);
 
-        //Clean Applied Patches
         AppliedPatches.Clear();
 
-        using var PatchedFile = File.Open(outFile, FileMode.Open);
-        using BinaryWriter binaryWriter = new((Stream)PatchedFile);
         if (BLRClientPatch.AvailablePatches.TryGetValue(this.ClientHash, out List<BLRClientPatch> patches))
         {
             try
             {
+                using var PatchedFile = File.Open(outFile, FileMode.Open);
+                using BinaryWriter binaryWriter = new((Stream)PatchedFile);
                 foreach (BLRClientPatch patch in patches)
                 {
                     LoggingSystem.Log($"Applying Patch:{patch.PatchName} to Client:{ClientHash}");
@@ -385,6 +441,16 @@ public sealed class BLRClient : INotifyPropertyChanged
                     }
                     this.AppliedPatches.Add(patch);
                 }
+                binaryWriter.Close();
+                binaryWriter.Dispose();
+                PatchedFile.Close();
+                PatchedFile.Dispose();
+
+                File.Copy($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(outFile)}\\Proxy.dll", true);
+
+                var peFile = new PeFile(outFile);
+                peFile.AddImport("Proxy.dll", "InitializeThread");
+                File.WriteAllBytes(outFile, peFile.RawFile.ToArray());
             }
             catch (Exception error)
             {
@@ -396,27 +462,11 @@ public sealed class BLRClient : INotifyPropertyChanged
             LoggingSystem.Log($"No patches found for {ClientHash}");
         }
 
-        binaryWriter.Close();
-        binaryWriter.Dispose();
-        PatchedFile.Close();
-        PatchedFile.Dispose();
-
-        File.Copy($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(outFile)}\\Proxy.dll", true);
-
-        var peFile = new PeFile(outFile);
-        peFile.AddImport("Proxy.dll", "InitializeThread");
-        File.WriteAllBytes(outFile, peFile.RawFile.ToArray());
         PatchedPath = outFile;
-        PatchedHash = CreateClientHash(outFile);
+        PatchedHash = IOResources.CreateFileHash(outFile);
     }
 
-    public static string CreateClientHash(string path)
-    {
-        if (!File.Exists(path)) { LoggingSystem.Log($"[BLRClient]: Hashing failed reason: Can't find {path}"); return null; }
-        using var stream = File.OpenRead(path);
-        using var crypto = SHA256.Create();
-        return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
-    }
+    
 
     public override int GetHashCode()
     {

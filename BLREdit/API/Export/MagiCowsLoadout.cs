@@ -49,8 +49,15 @@ public sealed class MagiCowsLoadout
     [JsonIgnore] private int trophy = 0;
     public int Trophy { get { return trophy; } set { if (trophy != value) { trophy = value; isDirty = true; } } }
 
+    [JsonIgnore] private int[] taunts = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
+    public int[] Taunts { get { return taunts; } set { if (taunts != value) { taunts = value; isDirty = true; } } }
+
+    [JsonIgnore] private int[] depot = new int[] { 0, 1, 2, 3, 4 };
+    public int[] Depot { get { return depot; } set { if (depot != value) { depot = value; isDirty = true; } } }
+
     [JsonIgnore] private bool isDirty = true;
     [JsonIgnore] public bool IsDirty { get { return (isDirty || primary.IsDirty || secondary.IsDirty); } set { isDirty = value; primary.IsDirty = value; secondary.IsDirty = value; } }
+
 
 
     public override string ToString()

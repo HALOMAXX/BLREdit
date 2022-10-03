@@ -3,8 +3,10 @@ using BLREdit.Import;
 
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 
 namespace BLREdit.UI.Views;
 
@@ -40,8 +42,9 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public BLRItem Magazine
     {
         get { return magazine; }
-        set { if (BLREditSettings.Settings.AdvancedModding.Is) { magazine = value; ItemChanged(); return; } if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever).GetMagazine(); } else { magazine = value; } ItemChanged(); } }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { magazine = value; ItemChanged(); return; } if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever).GetMagazine(); } else { magazine = value; ApplyCorrectAmmo(); } ItemChanged(); } }
     }
+
     private BLRItem muzzle = null;
     public BLRItem Muzzle
     {
@@ -83,7 +86,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public BLRItem Ammo
     {
         get { return ammo; }
-        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { camo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 0); } else { ammo = value; } ItemChanged(); } }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 0); } else { ammo = value; } ItemChanged(); } }
     }
     #endregion Weapon Parts
 
@@ -112,6 +115,19 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             }
         }
         return allow;
+    }
+
+    private void ApplyCorrectAmmo()
+    {
+        if (Reciever.UID == 40024)
+        {
+            Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, Magazine.Name);
+        }
+
+        if (Reciever.UID == 40015)
+        {
+            // TODO get Proper Ammo to the Breech Loaded Pistol Magazine Types
+        }
     }
 
     private bool AllowStock()
@@ -882,11 +898,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             rate_alpha = Math.Abs(allRecoil);
             if (allRecoil > 0)
             {
-                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Y ?? 0, rate_alpha)-1.0);
+                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Y ?? 0, rate_alpha) - 1.0);
             }
             else
             {
-                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.X ?? 0, rate_alpha)-1.0);
+                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.X ?? 0, rate_alpha) - 1.0);
             }
         }
 
@@ -1366,5 +1382,73 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         ItemChanged(nameof(Grip));
         ItemChanged(nameof(Tag));
         ItemChanged(nameof(Ammo));
+    }
+
+    static readonly Random rng = new();
+    public void Randomize()
+    {
+        BLRItem reciever;
+        if (IsPrimary)
+        { reciever = ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_CATEGORY)?.Length ?? 0)); }
+        else
+        { reciever = ImportSystem.GetItemByIDAndType(ImportSystem.SECONDARY_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.SECONDARY_CATEGORY)?.Length ?? 0)); }
+
+        var FilteredBarrels = ImportSystem.GetItemArrayOfType(ImportSystem.BARRELS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+        var FilteredScopes = ImportSystem.GetItemArrayOfType(ImportSystem.SCOPES_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+        var FilteredMagazines = ImportSystem.GetItemArrayOfType(ImportSystem.MAGAZINES_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+        //Dependant of Barrel on secondarioes
+        var FilteredMuzzles = ImportSystem.GetItemArrayOfType(ImportSystem.MUZZELS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+        var FilteredStocks = ImportSystem.GetItemArrayOfType(ImportSystem.STOCKS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+        var FilteredCamos = ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_WEAPONS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+        var FilteredHangers = ImportSystem.GetItemArrayOfType(ImportSystem.HANGERS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+
+
+        BLRItem barrel = null;
+        if (FilteredBarrels.Length > 0)
+        {
+            barrel = FilteredBarrels[rng.Next(0, FilteredBarrels.Length)];
+        }
+        BLRItem scope = null;
+        if (FilteredScopes.Length > 0)
+        {
+            scope = FilteredScopes[rng.Next(0, FilteredScopes.Length)];
+        }
+        BLRItem magazine = null;
+        if (FilteredMagazines.Length > 0)
+        {
+            magazine = FilteredMagazines[rng.Next(0, FilteredMagazines.Length)];
+        }
+
+        BLRItem stock = null;
+        if (FilteredStocks.Length > 0)
+        {
+            stock = FilteredStocks[rng.Next(0, FilteredStocks.Length)];
+        }
+        BLRItem muzzle = null;
+        if (FilteredMuzzles.Length > 0)
+        {
+            muzzle = FilteredMuzzles[rng.Next(0, FilteredMuzzles.Length)];
+        }
+        BLRItem hanger = null;
+        if (FilteredHangers.Length > 0)
+        {
+            hanger = FilteredHangers[rng.Next(0, FilteredHangers.Length)];
+        }
+        BLRItem camo = null;
+        if (FilteredCamos.Length > 0)
+        {
+            camo = FilteredCamos[rng.Next(0, FilteredCamos.Length)];
+        }
+
+        BLRItem grip = ImportSystem.GetItemByIDAndType(ImportSystem.GRIPS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY)?.Length ?? 0));
+
+        UndoRedoSystem.DoAction(reciever, this.GetType().GetProperty(nameof(Reciever)), this);
+        UndoRedoSystem.DoAction(barrel, this.GetType().GetProperty(nameof(Barrel)), this);
+        UndoRedoSystem.DoAction(scope, this.GetType().GetProperty(nameof(Scope)), this);
+        UndoRedoSystem.DoAction(stock, this.GetType().GetProperty(nameof(Stock)), this);
+        UndoRedoSystem.DoAction(muzzle, this.GetType().GetProperty(nameof(Muzzle)), this);
+        UndoRedoSystem.DoAction(magazine, this.GetType().GetProperty(nameof(Magazine)), this);
+        UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(Camo)), this);
+        UndoRedoSystem.DoAction(hanger, this.GetType().GetProperty(nameof(Tag)), this);
     }
 }

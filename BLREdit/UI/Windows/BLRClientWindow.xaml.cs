@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BLREdit.UI;
+namespace BLREdit.UI.Windows;
 
 /// <summary>
 /// Interaction logic for BLRClientWindow.xaml

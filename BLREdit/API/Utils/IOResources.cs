@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -118,6 +119,14 @@ public sealed class IOResources
                 }
             }
         }
+    }
+
+    public static string CreateFileHash(string path)
+    {
+        if (!File.Exists(path)) { LoggingSystem.Log($"[BLRClient]: Hashing failed reason: Can't find {path}"); return null; }
+        using var stream = File.OpenRead(path);
+        using var crypto = SHA256.Create();
+        return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
     }
 
     public static void CopyToBackup(string file)

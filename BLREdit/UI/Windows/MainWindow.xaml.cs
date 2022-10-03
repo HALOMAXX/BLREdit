@@ -19,6 +19,9 @@ using BLREdit.UI.Views;
 using System.IO;
 using BLREdit.Import;
 using BLREdit.Export;
+using BLREdit.UI.Controls;
+using BLREdit.UI.Windows;
+using System.Collections.ObjectModel;
 
 namespace BLREdit.UI;
 
@@ -67,8 +70,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     public bool IsCheckingGameClient { get; private set; } = false;
 
-    public static List<BLRClient> GameClients { get; set; }
-    public static List<BLRServer> ServerList { get; set; }
+    public static ObservableCollection<BLRClient> GameClients { get; set; }
+    public static ObservableCollection<BLRServer> ServerList { get; set; }
 
     public static MainWindow Self { get; private set; } = null;
 
@@ -99,11 +102,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             if (o is BLRItem item)
             {
                 if (FilterWeapon is null && (item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY)) { return true; }
-                if (BLREditSettings.Settings.AdvancedModding.Is)
-                {
-                    return AdvancedFilter(item, FilterWeapon);
-                }
-                else
                 {
                     return item.IsValidFor(FilterWeapon);
                 }
@@ -128,8 +126,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         FilterWeapon = Profile.Loadout1.Primary.Reciever;
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
 
-        LoadoutTabs.DataContext = Profile;
-        AdvancedInfo.DataContext = Profile;
+        this.DataContext = Profile;
     }
 
     private static void SetBorderColor(Border border, Color color)
@@ -140,23 +137,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    private static bool AdvancedFilter(BLRItem item, BLRItem filter)
-    {
-        switch (item.Category)
-        {
-            case ImportSystem.MAGAZINES_CATEGORY:
-                if (item.Name.Contains("Standard") || (item.Name.Contains("Light") && !item.Name.Contains("Arrow")) || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
-                {
-                    return item.IsValidFor(filter);
-                }
-                return true;
-
-            default: return true;  
-        }
-    }
-
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+
+        
 
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
@@ -258,7 +242,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void AddDefaultServers()
     {
         List<BLRServer> defaultServers = new() {
-        new() { ServerAddress = "majikau.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777 //majikau.ddns.net
+        new() { ServerAddress = "mooserver.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777 //majikau.ddns.net or mooserver.ddns.net
         new() { ServerAddress = "blr.akoot.me", Port = 7777, ServerName = "Akoot's Server" }, //blr.akoot.me : 7777
         new() { ServerAddress = "blr.753z.net", Port = 7777, ServerName = "IKE753Z's Server" }, //blr.753z.net : 7777
         new() { ServerAddress = "localhost", Port = 7777, ServerName = "Local Host"}
@@ -318,26 +302,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             GameClients.Add(client);
             GameClientList.ItemsSource = null;
             GameClientList.ItemsSource = GameClients;
-        }
-    }
-
-    private void ChangeCurrentGameClient_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            if (button.DataContext is BLRClient client)
-            {
-                LoggingSystem.Log($"Setting Current Client:{client}");
-                if (client.Patched.Is)
-                {
-                    BLREditSettings.Settings.DefaultClient = client;
-                    foreach (BLRClient c in GameClients)
-                    {
-                        c.CurrentClient.SetBool(false);
-                    }
-                    client.CurrentClient.SetBool(true);
-                }
-            }
         }
     }
 
@@ -535,6 +499,20 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 case "Gear4":
                     SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
                     break;
+
+                case "Taunt1":
+                case "Taunt2":
+                case "Taunt3":
+                case "Taunt4":
+                    SetItemList(ImportSystem.EMOTES_CATEGORY);
+                    break;
+                case "Depot1":
+                case "Depot2":
+                case "Depot3":
+                case "Depot4":
+                case "Depot5":
+                    SetItemList(ImportSystem.SHOP_CATEGORY);
+                    break;
             }
             return;
         }
@@ -543,6 +521,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
             {
                 UndoRedoSystem.DoAction(null, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
+                UndoRedoSystem.EndAction();
+            } 
+            else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
+            {
+                UndoRedoSystem.DoAction(null, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
                 UndoRedoSystem.EndAction();
             }
         }
@@ -721,20 +704,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
     }
 
-    private void IsFemaleCheckBox_Checked(object sender, RoutedEventArgs e)
-    {
-        //if (UndoRedoSystem.BlockEvent) return;
-        //UndoRedoSystem.CreateAction(false, true, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
-        //UndoRedoSystem.EndAction();
-    }
-
-    private void IsFemaleCheckBox_Unchecked(object sender, RoutedEventArgs e)
-    {
-        //if (UndoRedoSystem.BlockEvent) return;
-        //UndoRedoSystem.CreateAction(true,false, Loadout.GetType().GetProperty(nameof(Loadout.IsFemale)), Loadout, true, false);
-        //UndoRedoSystem.EndAction();
-    }
-
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         ApplySorting();
@@ -757,188 +726,16 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void RandomLoadout_Click(object sender, RoutedEventArgs e)
     {
-        ExportSystemProfile rngProfile = ExportSystem.AddProfile("Random");
-
-        rngProfile.Loadout1 = RandomizeLoadout();
-        rngProfile.Loadout2 = RandomizeLoadout();
-        rngProfile.Loadout3 = RandomizeLoadout();
-
-        IsPlayerProfileChanging = true;
-        IsPlayerNameChanging = true;
-
-        ExportSystem.ActiveProfile = rngProfile;
-
-        PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
-
-        ProfileComboBox.SelectedIndex = ExportSystem.Profiles.IndexOf(ExportSystem.ActiveProfile);
-
-        ActiveProfile = ExportSystem.ActiveProfile;
-
-        //Loadout1Button.IsEnabled = false;
-        //Loadout2Button.IsEnabled = true;
-        //Loadout3Button.IsEnabled = true;
-
-        IsPlayerProfileChanging = false;
-        IsPlayerNameChanging = false;
-
-
-        //LastSelectedImage = this.Loadout1.PrimaryControl.PrimaryRecieverImage;
-    }
-
-
-    static readonly List<BLRItem> Primaries = ImportSystem.GetItemListOfType(ImportSystem.PRIMARY_CATEGORY);
-    static readonly List<BLRItem> Secondaries = ImportSystem.GetItemListOfType(ImportSystem.SECONDARY_CATEGORY);
-
-    static readonly List<BLRItem> Barrels = ImportSystem.GetItemListOfType(ImportSystem.BARRELS_CATEGORY);
-    static readonly List<BLRItem> Scopes = ImportSystem.GetItemListOfType(ImportSystem.SCOPES_CATEGORY);
-    static readonly List<BLRItem> Magazines = ImportSystem.GetItemListOfType(ImportSystem.MAGAZINES_CATEGORY);
-    static readonly List<BLRItem> Muzzles = ImportSystem.GetItemListOfType(ImportSystem.MUZZELS_CATEGORY);
-    static readonly List<BLRItem> Stocks = ImportSystem.GetItemListOfType(ImportSystem.STOCKS_CATEGORY);
-    static readonly List<BLRItem> Hangers = ImportSystem.GetItemListOfType(ImportSystem.HANGERS_CATEGORY);
-    static readonly List<BLRItem> CamosWeapon = ImportSystem.GetItemListOfType(ImportSystem.CAMOS_WEAPONS_CATEGORY);
-    static readonly List<BLRItem> Grips = ImportSystem.GetItemListOfType(ImportSystem.GRIPS_CATEGORY);
-
-
-    static readonly List<BLRItem> Tacticals = ImportSystem.GetItemListOfType(ImportSystem.TACTICAL_CATEGORY);
-    static readonly List<BLRItem> Attachments = ImportSystem.GetItemListOfType(ImportSystem.ATTACHMENTS_CATEGORY);
-    static readonly List<BLRItem> CamosBody = ImportSystem.GetItemListOfType(ImportSystem.CAMOS_BODIES_CATEGORY);
-    static readonly List<BLRItem> Helmets = ImportSystem.GetItemListOfType(ImportSystem.HELMETS_CATEGORY);
-    static readonly List<BLRItem> UpperBodies = ImportSystem.GetItemListOfType(ImportSystem.UPPER_BODIES_CATEGORY);
-    static readonly List<BLRItem> LowerBodies = ImportSystem.GetItemListOfType(ImportSystem.LOWER_BODIES_CATEGORY);
-    static readonly List<BLRItem> Avatars = ImportSystem.GetItemListOfType(ImportSystem.AVATARS_CATEGORY);
-    static readonly List<BLRItem> Badges = ImportSystem.GetItemListOfType(ImportSystem.BADGES_CATEGORY);
-
-    private static MagiCowsLoadout RandomizeLoadout()
-    {
-        MagiCowsLoadout loadout = new()
+        if (LoadoutTabs.SelectedItem is TabItem item)
         {
-            Primary = RandomizeWeapon(Primaries[rng.Next(0, Primaries.Count)]),
-            Secondary = RandomizeWeapon(Secondaries[rng.Next(0, Secondaries.Count)], true),
-            Tactical = rng.Next(0, Tacticals.Count),
-
-            Gear1 = rng.Next(0, Attachments.Count),
-            Gear2 = rng.Next(0, Attachments.Count),
-            Gear3 = rng.Next(0, Attachments.Count),
-            Gear4 = rng.Next(0, Attachments.Count),
-
-            Camo = rng.Next(0, CamosBody.Count),
-
-            Helmet = rng.Next(0, Helmets.Count),
-            UpperBody = rng.Next(0, UpperBodies.Count),
-            LowerBody = rng.Next(0, LowerBodies.Count),
-            Skin = rng.Next(0, Avatars.Count),
-            Trophy = rng.Next(0, Badges.Count),
-
-            IsFemale = NextBoolean()
-        };
-
-
-        double gearSlots = 0;
-        gearSlots += UpperBodies[loadout.UpperBody].PawnModifiers.GearSlots;
-        gearSlots += LowerBodies[loadout.LowerBody].PawnModifiers.GearSlots;
-
-        if (gearSlots < 4)
-        {
-            loadout.Gear4 = 0;
-        }
-        if (gearSlots < 3)
-        {
-            loadout.Gear3 = 0;
-        }
-        if (gearSlots < 2)
-        {
-            loadout.Gear2 = 0;
-        }
-        if (gearSlots < 1)
-        {
-            loadout.Gear1 = 0;
-        }
-
-
-        return loadout;
-    }
-
-    public static bool NextBoolean()
-    {
-        return rng.Next() > (Int32.MaxValue / 2);
-        // Next() returns an int in the range [0..Int32.MaxValue]
-    }
-
-    private static MagiCowsWeapon RandomizeWeapon(BLRItem Weapon, bool IsSecondary = false)
-    {
-        MagiCowsWeapon weapon = MagiCowsWeapon.GetDefaultSetupOfReciever(Weapon);
-
-        if (weapon == null)
-        {
-            return new()
+            if (item.Content is LoadoutControl control)
             {
-                Receiver = Weapon.Name
-            };
-        }
-
-        var FilteredBarrels = Barrels.Where(o => o.IsValidFor(Weapon)).ToArray();
-        var FilteredScopes = Scopes.Where(o => o.IsValidFor(Weapon)).ToArray();
-        var FilteredMagazines = Magazines.Where(o => o.IsValidFor(Weapon)).ToArray();
-        //Dependant of Barrel on secondarioes
-        var FilteredMuzzles = Muzzles.Where(o => o.IsValidFor(Weapon)).ToArray();
-        var FilteredStocks = Stocks.Where(o => o.IsValidFor(Weapon)).ToArray();
-        var FilteredCamos = CamosWeapon.Where(o => o.IsValidFor(Weapon)).ToArray();
-        var FilteredHangers = Hangers.Where(o => o.IsValidFor(Weapon)).ToArray();
-
-        if (FilteredBarrels.Length > 0)
-        {
-            weapon.Barrel = FilteredBarrels[rng.Next(0, FilteredBarrels.Length)].Name;
-        }
-
-        if (FilteredScopes.Length > 0)
-        {
-            weapon.Scope = FilteredScopes[rng.Next(0, FilteredScopes.Length)].Name;
-        }
-
-        if (FilteredMagazines.Length > 0)
-        {
-            weapon.Magazine = ImportSystem.GetIDOfItem(FilteredMagazines[rng.Next(0, FilteredMagazines.Length)]);
-        }
-
-        if (CheckForPistolAndBarrel(Weapon) && weapon.Barrel != "" && weapon.Barrel != MagiCowsWeapon.NoBarrel || !IsSecondary)
-        {
-            if (FilteredStocks.Length > 0)
-            { 
-                weapon.Stock = FilteredStocks[rng.Next(0, FilteredStocks.Length)].Name;
+                if (control.DataContext is BLRLoadout loadout)
+                {
+                    loadout.Randomize();
+                }
             }
         }
-
-        if (FilteredMuzzles.Length > 0)
-        {
-            weapon.Muzzle = ImportSystem.GetIDOfItem(FilteredMuzzles[rng.Next(0, FilteredMuzzles.Length)]);
-        }
-
-        if (FilteredHangers.Length > 0)
-        { 
-            weapon.Tag = ImportSystem.GetIDOfItem(FilteredHangers[rng.Next(0, FilteredHangers.Length)]);
-        }
-
-        if (FilteredCamos.Length > 0 && Weapon.Tooltip != "Depot Item!")
-        {
-            weapon.Camo = ImportSystem.GetIDOfItem(FilteredCamos[rng.Next(0, FilteredCamos.Length)]);
-        }
-        else
-        {
-            weapon.Camo = -1;
-        }
-
-        if (Weapon.Name == "Shotgun")
-        {
-            weapon.Grip = Grips[rng.Next(0, Grips.Count)].Name;
-        }
-        else
-        {
-            weapon.Grip = "";
-        }
-
-        weapon.IsHealthOkAndRepair();
-
-        return weapon;
     }
 
     #region GameClient UI
@@ -956,22 +753,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             AddGameClient(new BLRClient() { OriginalPath = dialog.FileName });
         }
         CheckGameClients();
-    }
-
-    private void RemoveGameClient_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            GameClients.Remove(button.DataContext as BLRClient);
-
-            GameClientList.ItemsSource = null;
-            GameClientList.ItemsSource = GameClients;
-        }
-    }
-
-    private void StartServer_Click(object sender, RoutedEventArgs e)
-    {
-
     }
     #endregion GameClient UI
 
@@ -1136,14 +917,5 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         int index = e.Text.IndexOfAny(InvalidNameChars);
         if (index >= 0)
         { e.Handled = true; }
-    }
-
-    private void ClientModifyButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button && button.DataContext is BLRClient client)
-        {
-            ClientWindow.Client = client;
-            ClientWindow.ShowDialog();
-        }
     }
 }
