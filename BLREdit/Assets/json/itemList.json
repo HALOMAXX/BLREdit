@@ -13,7 +13,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_FragGrenade_128x128",
       "Name": "Frag Grenade Mk.1",
-      "Tooltip": "Thrown item.\u003Cbr\u003EAn explosive grenade.",
+      "Tooltip": "Thrown item.\nAn explosive grenade.",
       "UID": 12000
     },
     {
@@ -21,7 +21,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_CombatKnife_128x128",
       "Name": "Combat Knife Mk.1",
-      "Tooltip": "Melee item.\u003Cbr\u003EStab enemies that get too close.",
+      "Tooltip": "Melee item.\nStab enemies that get too close.",
       "UID": 12011
     },
     {
@@ -29,7 +29,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_ElectroGrenade_128x128",
       "Name": "Shock Grenade Mk.1",
-      "Tooltip": "Thrown item.\u003Cbr\u003EExplodes when thrown, dealing damage to and blinds surrounding players.",
+      "Tooltip": "Thrown item.\nExplodes when thrown, dealing damage to and blinds surrounding players.",
       "UID": 12004
     },
     {
@@ -37,7 +37,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_EMPGrenade_128x128",
       "Name": "EMP Grenade Mk.1",
-      "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into an EMP that temporarily blinds enemies and shuts down hardsuits.",
+      "Tooltip": "Thrown item.\nExplodes into an EMP that temporarily blinds enemies and shuts down hardsuits.",
       "UID": 12001
     },
     {
@@ -45,7 +45,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_SmokeGrenade_128x128",
       "Name": "Digi Grenade Mk.1",
-      "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into a cloud of interference that hinders visibility.",
+      "Tooltip": "Thrown item.\nExplodes into a cloud of interference that hinders visibility.",
       "UID": 12002
     },
     {
@@ -53,7 +53,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_ProxMine_128x128",
       "Name": "Proximity Mine Mk.1",
-      "Tooltip": "Dropped item.\u003Cbr\u003EViolently explodes when triggered by nearby enemies.",
+      "Tooltip": "Dropped item.\nViolently explodes when triggered by nearby enemies.",
       "UID": 12003
     },
     {
@@ -61,7 +61,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_HRVDecoy_128x128",
       "Name": "HRV Decoy Mk.1",
-      "Tooltip": "Dropped item.\u003Cbr\u003EGenerates a decoy that shows up on your enemies\u0027 HRV.",
+      "Tooltip": "Dropped item.\nGenerates a decoy that shows up on your enemies\u0027 HRV.",
       "UID": 12005
     },
     {
@@ -69,7 +69,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_StunMine_128x128",
       "Name": "Stun Mine Mk.1",
-      "Tooltip": "Dropped item.\u003Cbr\u003EStuns nearby enemies when triggered.",
+      "Tooltip": "Dropped item.\nStuns nearby enemies when triggered.",
       "UID": 12007
     },
     {
@@ -77,7 +77,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_ToxicGrenade_128x128",
       "Name": "Toxic Grenade Mk.1",
-      "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into a cloud of deadly gas that continuously damages and blinds your enemies.",
+      "Tooltip": "Thrown item.\nExplodes into a cloud of deadly gas that continuously damages and blinds your enemies.",
       "UID": 12006
     },
     {
@@ -85,7 +85,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_HighExplosiveGrenade_128x128",
       "Name": "HE Grenade Mk.1",
-      "Tooltip": "Thrown item.\u003Cbr\u003EAn extremely powerful explosive grenade.",
+      "Tooltip": "Thrown item.\nAn extremely powerful explosive grenade.",
       "UID": 12008
     },
     {
@@ -93,7 +93,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_HRVBlackout_128x128",
       "Name": "HRV Blackout Mk.1",
-      "Tooltip": "Dropped item.\u003Cbr\u003ECreates a field that hides friendly targets from HRV detection.",
+      "Tooltip": "Dropped item.\nCreates a field that hides friendly targets from HRV detection.",
       "UID": 12009
     },
     {
@@ -101,7 +101,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_SonicKnife_128x128",
       "Name": "Combat Knife Mk.2",
-      "Tooltip": "Melee item.\u003Cbr\u003ECan slay enemies in a single swipe.",
+      "Tooltip": "Melee item.\nCan slay enemies in a single swipe.",
       "UID": 12012
     },
     {
@@ -109,7 +109,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Machette_128x128",
       "Name": "Machete",
-      "Tooltip": "Melee item.\u003Cbr\u003EA long blade that can hit more distant targets.",
+      "Tooltip": "Melee item.\nA long blade that can hit more distant targets.",
       "UID": 12013
     },
     {
@@ -117,7 +117,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Hammer_128x128",
       "Name": "Breach Hammer",
-      "Tooltip": "Melee item.\u003Cbr\u003EInstantly kills the target, and prevents them from being revived.",
+      "Tooltip": "Melee item.\nInstantly kills the target, and prevents them from being revived.",
       "UID": 12014
     },
     {
@@ -125,7 +125,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_ThrowingKnife_128x128",
       "Name": "Throwing Knives Mk.1",
-      "Tooltip": "Thrown item.\u003Cbr\u003EHigh damage throwing knives. Can also be used in melee.",
+      "Tooltip": "Thrown item.\nHigh damage throwing knives. Can also be used in melee.",
       "UID": 12016
     },
     {
@@ -133,7 +133,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Crowbar_128x128",
       "Name": "Black Mesa Crowbar",
-      "Tooltip": "Melee item.\u003Cbr\u003EA familiar-looking weapon for bashing nearby opponents.",
+      "Tooltip": "Melee item.\nA familiar-looking weapon for bashing nearby opponents.",
       "UID": 12017
     },
     {
@@ -141,7 +141,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_GoldCrowbar_128x128",
       "Name": "Golden Crowbar",
-      "Tooltip": "Melee item.\u003Cbr\u003EA gilded weapon for bashing nearby opponents.",
+      "Tooltip": "Melee item.\nA gilded weapon for bashing nearby opponents.",
       "UID": 12018
     },
     {
@@ -149,7 +149,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_SilverCrowbar_128x128",
       "Name": "Silver Crowbar",
-      "Tooltip": "Melee item.\u003Cbr\u003EA silvered weapon for bashing nearby opponents.",
+      "Tooltip": "Melee item.\nA silvered weapon for bashing nearby opponents.",
       "UID": 12019
     },
     {
@@ -157,7 +157,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_ExplodingTomahawk_128x128",
       "Name": "Exploding Tomahawk",
-      "Tooltip": "Thrown item.\u003Cbr\u003EAttaches to the target, and explodes when triggered.",
+      "Tooltip": "Thrown item.\nAttaches to the target, and explodes when triggered.",
       "UID": 12020
     },
     {
@@ -187,7 +187,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces incendiary and flame damage by 20%",
+      "Tooltip": "Armor item.\nReduces incendiary and flame damage by 20%",
       "UID": 12021
     },
     {
@@ -217,7 +217,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 25
       },
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces all toxic damage by 20% and prevents max health reduction.",
+      "Tooltip": "Armor item.\nReduces all toxic damage by 20% and prevents max health reduction.",
       "UID": 12022
     },
     {
@@ -247,7 +247,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces all explosive damage by 20%",
+      "Tooltip": "Armor item.\nReduces all explosive damage by 20%",
       "UID": 12023
     },
     {
@@ -277,7 +277,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces Electro Ammo and Electronic Explosions by 20%",
+      "Tooltip": "Armor item.\nReduces Electro Ammo and Electronic Explosions by 20%",
       "UID": 12024
     },
     {
@@ -307,7 +307,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Armor item.\u003Cbr\u003EReduces Melee damage by 20%",
+      "Tooltip": "Armor item.\nReduces Melee damage by 20%",
       "UID": 12025
     },
     {
@@ -331,7 +331,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Tomahawk_128x128",
       "Name": "Sonic Tomahawk",
-      "Tooltip": "Thrown item.\u003Cbr\u003EThrowable melee weapon that can be retrieved",
+      "Tooltip": "Thrown item.\nThrowable melee weapon that can be retrieved",
       "UID": 12029
     },
     {
@@ -361,7 +361,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Armor item.\u003Cbr\u003EHides agent heat signature from IR scopes",
+      "Tooltip": "Armor item.\nHides agent heat signature from IR scopes",
       "UID": 12030
     },
     {
@@ -409,7 +409,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_LighteningC_128x128",
       "Name": "Frag Mk.1 - Lightning Trail Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12032
     },
     {
@@ -417,7 +417,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_LighteningB_128x128",
       "Name": "Frag Mk.1 - Lightning Trail and Strike Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12033
     },
     {
@@ -425,7 +425,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_FireB_128x128",
       "Name": "Frag Mk.1 - Flame Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12034
     },
     {
@@ -433,7 +433,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_FireA_128x128",
       "Name": "Frag Mk.1 - Fire Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12035
     },
     {
@@ -441,7 +441,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_LighteningA_128x128",
       "Name": "Frag Mk.1 - Lightning Strike Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12036
     },
     {
@@ -449,7 +449,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_Blue_128x128",
       "Name": "Frag Mk.1 - Blue Explosion Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12037
     },
     {
@@ -457,7 +457,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_Pink_128x128",
       "Name": "Frag Mk.1 - Pink Explosion Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12038
     },
     {
@@ -465,7 +465,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_Purple_128x128",
       "Name": "Frag Mk.1 - Purple Explosion Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12039
     },
     {
@@ -473,7 +473,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_Red_128x128",
       "Name": "Frag Mk.1 - Red Explosion Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12040
     },
     {
@@ -481,7 +481,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_BlueYellow_128x128",
       "Name": "Frag Mk.1 - Blue and Yellow Explosion Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12041
     },
     {
@@ -489,7 +489,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_BlueBoom_128x128",
       "Name": "Frag Mk.1 - Blue BOOM Explosion Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12042
     },
     {
@@ -497,7 +497,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_Butterflies_128x128",
       "Name": "Frag Mk.1 - Butterfly Mod",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12043
     },
     {
@@ -513,7 +513,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_IceAxe_128x128",
       "Name": "Tactical Ice Axe",
-      "Tooltip": "Melee item.\u003Cbr\u003EA long ice axe that has more reach in melee combat.",
+      "Tooltip": "Melee item.\nA long ice axe that has more reach in melee combat.",
       "UID": 12045
     },
     {
@@ -521,7 +521,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_IceAxe_Premium_128x128",
       "Name": "Nor\u0027Easter",
-      "Tooltip": "Melee item.\u003Cbr\u003EA long ice axe that has more reach in melee combat.",
+      "Tooltip": "Melee item.\nA long ice axe that has more reach in melee combat.",
       "UID": 12046
     },
     {
@@ -537,7 +537,7 @@
       "DescriptorName": "",
       "Icon": "t_Gold_Gear_CombatKnife_128x128",
       "Name": "Prestige Combat Knife Mk.1",
-      "Tooltip": "A prestigious combat knife.\u003Cbr\u003EStab enemies that get too close.",
+      "Tooltip": "A prestigious combat knife.\nStab enemies that get too close.",
       "UID": 12048
     },
     {
@@ -545,7 +545,7 @@
       "DescriptorName": "",
       "Icon": "t_Gear_Frag_Hearts_A_128x128",
       "Name": "I Heart U",
-      "Tooltip": "Thrown item.\u003Cbr\u003EA Modified Frag Grenade with custom Heart Candy HRV display modifications.\u003Cbr\u003E Just as effective as a normal Frag Grenade but way more stylish.",
+      "Tooltip": "Thrown item.\nA Modified Frag Grenade with custom Heart Candy HRV display modifications.\n Just as effective as a normal Frag Grenade but way more stylish.",
       "UID": 12049
     }
   ],
@@ -8106,7 +8106,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EStandard-issue helmet with no stat modifications.",
+      "Tooltip": "Standard helmet.\nStandard-issue helmet with no stat modifications.",
       "UID": 30300
     },
     {
@@ -8136,7 +8136,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003ESlightly increases speed and recharge rate.",
+      "Tooltip": "Light helmet.\nSlightly increases speed and recharge rate.",
       "UID": 30301
     },
     {
@@ -8166,7 +8166,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EGreatly increases health and armor.",
+      "Tooltip": "Heavy helmet.\nGreatly increases health and armor.",
       "UID": 30302
     },
     {
@@ -8196,7 +8196,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EIncreases speed and recharge rate.",
+      "Tooltip": "Standard helmet.\nIncreases speed and recharge rate.",
       "UID": 30303
     },
     {
@@ -8226,7 +8226,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EIncreases speed and recharge rate.",
+      "Tooltip": "Standard helmet.\nIncreases speed and recharge rate.",
       "UID": 30304
     },
     {
@@ -8256,7 +8256,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EGreatly increases health and recharge rate.",
+      "Tooltip": "Heavy helmet.\nGreatly increases health and recharge rate.",
       "UID": 30305
     },
     {
@@ -8286,7 +8286,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003ESlightly increases health and armor.",
+      "Tooltip": "Heavy helmet.\nSlightly increases health and armor.",
       "UID": 30306
     },
     {
@@ -8316,7 +8316,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EIncreases speed and recharge rate.",
+      "Tooltip": "Light helmet.\nIncreases speed and recharge rate.",
       "UID": 30307
     },
     {
@@ -8346,7 +8346,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA gold version of the Overmatch ArmetX.",
+      "Tooltip": "Standard helmet.\nA gold version of the Overmatch ArmetX.",
       "UID": 30308
     },
     {
@@ -8376,7 +8376,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EBattle-damaged version of the Allied RET-3 Astral.",
+      "Tooltip": "Standard helmet.\nBattle-damaged version of the Allied RET-3 Astral.",
       "UID": 30309
     },
     {
@@ -8406,7 +8406,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA red version of the Allied RET-3 Astral",
+      "Tooltip": "Standard helmet.\nA red version of the Allied RET-3 Astral",
       "UID": 30310
     },
     {
@@ -8436,7 +8436,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA gold version of the Allied RET-3 Astral.",
+      "Tooltip": "Standard helmet.\nA gold version of the Allied RET-3 Astral.",
       "UID": 30311
     },
     {
@@ -8466,7 +8466,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA black version of the Allied RET-3 Astral.",
+      "Tooltip": "Standard helmet.\nA black version of the Allied RET-3 Astral.",
       "UID": 30312
     },
     {
@@ -8496,7 +8496,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA version of the Overmatch Bonebreaker painted like a clown\u0027s face.",
+      "Tooltip": "Standard helmet.\nA version of the Overmatch Bonebreaker painted like a clown\u0027s face.",
       "UID": 30313
     },
     {
@@ -8526,7 +8526,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EStreaks of blood adorn this version of the Overmatch Bonebreaker.",
+      "Tooltip": "Standard helmet.\nStreaks of blood adorn this version of the Overmatch Bonebreaker.",
       "UID": 30314
     },
     {
@@ -8556,7 +8556,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA black version of the Overmatch Bonebreaker.",
+      "Tooltip": "Standard helmet.\nA black version of the Overmatch Bonebreaker.",
       "UID": 30315
     },
     {
@@ -8586,7 +8586,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA gold version of the Overmatch Bonebreaker.",
+      "Tooltip": "Standard helmet.\nA gold version of the Overmatch Bonebreaker.",
       "UID": 30316
     },
     {
@@ -8616,7 +8616,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EA special version of the Dataluxe Slant-X2 that uses your armor camo.",
+      "Tooltip": "Heavy helmet.\nA special version of the Dataluxe Slant-X2 that uses your armor camo.",
       "UID": 30317
     },
     {
@@ -8646,7 +8646,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EA stealth camo version of the Dataluxe Slant-X2.",
+      "Tooltip": "Heavy helmet.\nA stealth camo version of the Dataluxe Slant-X2.",
       "UID": 30318
     },
     {
@@ -8676,7 +8676,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EA bull\u0027s-eye adorns this version of the Dataluxe Slant-X2.",
+      "Tooltip": "Heavy helmet.\nA bull\u0027s-eye adorns this version of the Dataluxe Slant-X2.",
       "UID": 30319
     },
     {
@@ -8706,7 +8706,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EA row of large sharks\u0027 teeth adorns this version of the Dataluxe Slant-X2.",
+      "Tooltip": "Heavy helmet.\nA row of large sharks\u0027 teeth adorns this version of the Dataluxe Slant-X2.",
       "UID": 30320
     },
     {
@@ -8736,7 +8736,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EA large, yellow exclamation mark adorns this version of the Allied R21V HUNTER.",
+      "Tooltip": "Heavy helmet.\nA large, yellow exclamation mark adorns this version of the Allied R21V HUNTER.",
       "UID": 30321
     },
     {
@@ -8766,7 +8766,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA Jolly Roger adorns this version of the Overmatch ArmetX.",
+      "Tooltip": "Standard helmet.\nA Jolly Roger adorns this version of the Overmatch ArmetX.",
       "UID": 30322
     },
     {
@@ -8796,7 +8796,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA Jolly Roger adorns this version of the Overmatch ArmetX.",
+      "Tooltip": "Standard helmet.\nA Jolly Roger adorns this version of the Overmatch ArmetX.",
       "UID": 30323
     },
     {
@@ -8826,7 +8826,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA Tango Down version of the Overmatch ArmetX.",
+      "Tooltip": "Standard helmet.\nA Tango Down version of the Overmatch ArmetX.",
       "UID": 30324
     },
     {
@@ -8856,7 +8856,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA Retribution version of the Overmatch ArmetX",
+      "Tooltip": "Standard helmet.\nA Retribution version of the Overmatch ArmetX",
       "UID": 30325
     },
     {
@@ -8886,7 +8886,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EAn Illin\u0027 version of the Overmatch ArmetX.",
+      "Tooltip": "Standard helmet.\nAn Illin\u0027 version of the Overmatch ArmetX.",
       "UID": 30326
     },
     {
@@ -8916,7 +8916,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EThe Machinima logo adorns this version of the Overmatch ArmetX.",
+      "Tooltip": "Standard helmet.\nThe Machinima logo adorns this version of the Overmatch ArmetX.",
       "UID": 30327
     },
     {
@@ -8946,7 +8946,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA red racing strip adorns this version of the Overmatch ArmetX.",
+      "Tooltip": "Standard helmet.\nA red racing strip adorns this version of the Overmatch ArmetX.",
       "UID": 30328
     },
     {
@@ -8976,7 +8976,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EA large yin/yang adorns this version of the Overmatch ArmetX.",
+      "Tooltip": "Standard helmet.\nA large yin/yang adorns this version of the Overmatch ArmetX.",
       "UID": 30329
     },
     {
@@ -9006,7 +9006,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EA white hand print adorns this version of the Allied R5X GHOST.",
+      "Tooltip": "Light helmet.\nA white hand print adorns this version of the Allied R5X GHOST.",
       "UID": 30330
     },
     {
@@ -9036,7 +9036,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EA row of oversized yellow teeth adorns this version of the Allied R5X GHOST.",
+      "Tooltip": "Light helmet.\nA row of oversized yellow teeth adorns this version of the Allied R5X GHOST.",
       "UID": 30331
     },
     {
@@ -9066,7 +9066,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EA skull adorns this version of the Allied R5X GHOST.",
+      "Tooltip": "Light helmet.\nA skull adorns this version of the Allied R5X GHOST.",
       "UID": 30332
     },
     {
@@ -9096,7 +9096,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EA ghostly bear adorns this version of the Allied R5X GHOST.",
+      "Tooltip": "Light helmet.\nA ghostly bear adorns this version of the Allied R5X GHOST.",
       "UID": 30333
     },
     {
@@ -9126,7 +9126,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EA yellow face adorns this version of the Allied R5X GHOST",
+      "Tooltip": "Light helmet.\nA yellow face adorns this version of the Allied R5X GHOST",
       "UID": 30334
     },
     {
@@ -9156,7 +9156,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EA battle-damaged version of the Allied R5X GHOST.",
+      "Tooltip": "Light helmet.\nA battle-damaged version of the Allied R5X GHOST.",
       "UID": 30335
     },
     {
@@ -9186,7 +9186,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EAn Overmatch ArmetX, battle-damaged from fighting in the Beta.",
+      "Tooltip": "Standard helmet.\nAn Overmatch ArmetX, battle-damaged from fighting in the Beta.",
       "UID": 30336
     },
     {
@@ -9216,7 +9216,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EA battle-damaged version of the Allied R21V HUNTER.",
+      "Tooltip": "Heavy helmet.\nA battle-damaged version of the Allied R21V HUNTER.",
       "UID": 30337
     },
     {
@@ -9246,7 +9246,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EAn Allied R97 II with emergency head valve.",
+      "Tooltip": "Light helmet.\nAn Allied R97 II with emergency head valve.",
       "UID": 30338
     },
     {
@@ -9306,7 +9306,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy helmet.\u003Cbr\u003EIncreased health and armor, with improved HRV.",
+      "Tooltip": "Heavy helmet.\nIncreased health and armor, with improved HRV.",
       "UID": 30340
     },
     {
@@ -9336,7 +9336,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EA heavily-damaged version of the Allied R5X GHOST. Remember Balik!",
+      "Tooltip": "Light helmet.\nA heavily-damaged version of the Allied R5X GHOST. Remember Balik!",
       "UID": 30341
     },
     {
@@ -9366,7 +9366,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EStatement redacted",
+      "Tooltip": "Light helmet.\nStatement redacted",
       "UID": 30342
     },
     {
@@ -9396,7 +9396,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003EStatement redacted",
+      "Tooltip": "Standard helmet.\nStatement redacted",
       "UID": 30343
     },
     {
@@ -9426,7 +9426,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EAn Allied R5X GHOST adorned with mascot.",
+      "Tooltip": "Light helmet.\nAn Allied R5X GHOST adorned with mascot.",
       "UID": 30344
     },
     {
@@ -9456,7 +9456,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EReduces all explosive damage by 12.8%.",
+      "Tooltip": "Light helmet.\nReduces all explosive damage by 12.8%.",
       "UID": 30345
     },
     {
@@ -9486,7 +9486,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 20
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EA green version of the Prex Chemical/Hazmat Respirator. Reduces all toxic damage by 16%.",
+      "Tooltip": "Light helmet.\nA green version of the Prex Chemical/Hazmat Respirator. Reduces all toxic damage by 16%.",
       "UID": 30346
     },
     {
@@ -9516,7 +9516,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EAn orange version of the Prex Chemical/Hazmat Respirator. Reduces all incendiary and flame damage by 16%.",
+      "Tooltip": "Light helmet.\nAn orange version of the Prex Chemical/Hazmat Respirator. Reduces all incendiary and flame damage by 16%.",
       "UID": 30347
     },
     {
@@ -9546,7 +9546,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EGreatly increases HRV duration and recharge rate.",
+      "Tooltip": "Light helmet.\nGreatly increases HRV duration and recharge rate.",
       "UID": 30348
     },
     {
@@ -9576,7 +9576,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light helmet.\u003Cbr\u003EAn Allied R5X GHOST helmet.",
+      "Tooltip": "Light helmet.\nAn Allied R5X GHOST helmet.",
       "UID": 30349
     },
     {
@@ -9606,7 +9606,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy Helmet.\u003Cbr\u003EIncreases armor and headshot protection.",
+      "Tooltip": "Heavy Helmet.\nIncreases armor and headshot protection.",
       "UID": 30350
     },
     {
@@ -9756,7 +9756,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 10
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003E Greatly increases HRV recharge, slight health boost, and reduces toxic damage by 8%",
+      "Tooltip": "Standard helmet.\n Greatly increases HRV recharge, slight health boost, and reduces toxic damage by 8%",
       "UID": 30355
     },
     {
@@ -9786,7 +9786,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003E Armor and movement speed increased",
+      "Tooltip": "Standard helmet.\n Armor and movement speed increased",
       "UID": 30356
     },
     {
@@ -9816,7 +9816,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003E Movement speed and HRV recharge increased",
+      "Tooltip": "Standard helmet.\n Movement speed and HRV recharge increased",
       "UID": 30357
     },
     {
@@ -9846,7 +9846,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003E Increased HRV recharge and Movement",
+      "Tooltip": "Standard helmet.\n Increased HRV recharge and Movement",
       "UID": 30358
     },
     {
@@ -9876,7 +9876,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Happy Valentines Day!\u003Cbr\u003E",
+      "Tooltip": "Happy Valentines Day!\n",
       "UID": 30359
     },
     {
@@ -9906,7 +9906,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Happy Valentines Day!\u003Cbr\u003E",
+      "Tooltip": "Happy Valentines Day!\n",
       "UID": 30360
     },
     {
@@ -9936,7 +9936,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "\u003Cbr\u003E",
+      "Tooltip": "\n",
       "UID": 30361
     },
     {
@@ -9966,7 +9966,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\u003Cbr\u003E",
+      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\n",
       "UID": 30362
     },
     {
@@ -9996,7 +9996,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\u003Cbr\u003E",
+      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\n",
       "UID": 30363
     },
     {
@@ -10026,7 +10026,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\u003Cbr\u003E",
+      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\n",
       "UID": 30364
     },
     {
@@ -10056,7 +10056,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\u003Cbr\u003E",
+      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\n",
       "UID": 30365
     },
     {
@@ -10086,7 +10086,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\u003Cbr\u003E",
+      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\n",
       "UID": 30366
     },
     {
@@ -10116,7 +10116,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\u003Cbr\u003E",
+      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\n",
       "UID": 30367
     },
     {
@@ -10146,7 +10146,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\u003Cbr\u003E",
+      "Tooltip": "A helmet to help celebrate the dead...and those who soon will be. It\u0027s pretty sweet.\n",
       "UID": 30368
     },
     {
@@ -10236,7 +10236,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "A very prestigious helmet!\u003Cbr\u003E",
+      "Tooltip": "A very prestigious helmet!\n",
       "UID": 30371
     },
     {
@@ -10266,7 +10266,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "I lost items you never even knew existed.\u003Cbr\u003EEarned by those who lost significant items during the Parity Patch upgrade.",
+      "Tooltip": "I lost items you never even knew existed.\nEarned by those who lost significant items during the Parity Patch upgrade.",
       "UID": 30372
     },
     {
@@ -10296,7 +10296,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Elite version of the standard issue Volk 34r helmet\u003Cbr\u003E",
+      "Tooltip": "Elite version of the standard issue Volk 34r helmet\n",
       "UID": 30373
     },
     {
@@ -10356,7 +10356,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003E",
+      "Tooltip": "Standard helmet.\n",
       "UID": 30375
     },
     {
@@ -10386,7 +10386,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Holiday helmet.\u003Cbr\u003E",
+      "Tooltip": "Holiday helmet.\n",
       "UID": 30376
     },
     {
@@ -10416,7 +10416,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard helmet.\u003Cbr\u003E",
+      "Tooltip": "Standard helmet.\n",
       "UID": 30377
     },
     {
@@ -10778,7 +10778,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard leg armor. Provides one gear slot.\u003Cbr\u003EStandard-issue leg armor with no stat modifications.",
+      "Tooltip": "Standard leg armor. Provides one gear slot.\nStandard-issue leg armor with no stat modifications.",
       "UID": 30106
     },
     {
@@ -10808,7 +10808,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy leg armor. Provides two gear slots.\u003Cbr\u003EIncreases health but reduces speed.",
+      "Tooltip": "Heavy leg armor. Provides two gear slots.\nIncreases health but reduces speed.",
       "UID": 30100
     },
     {
@@ -10838,7 +10838,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light leg armor. Provides no gear slots.\u003Cbr\u003EGreatly increases health but reduces speed.",
+      "Tooltip": "Light leg armor. Provides no gear slots.\nGreatly increases health but reduces speed.",
       "UID": 30101
     },
     {
@@ -10868,7 +10868,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy leg armor. Provides two gear slots.\u003Cbr\u003EGreatly increases health but reduces speed.",
+      "Tooltip": "Heavy leg armor. Provides two gear slots.\nGreatly increases health but reduces speed.",
       "UID": 30102
     },
     {
@@ -10898,7 +10898,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy leg armor. Provides no gear slots.\u003Cbr\u003EGreatly increases speed but reduces health.",
+      "Tooltip": "Heavy leg armor. Provides no gear slots.\nGreatly increases speed but reduces health.",
       "UID": 30103
     },
     {
@@ -10928,7 +10928,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy leg armor. Provides two gear slots.\u003Cbr\u003EIncreases speed but reduces health.",
+      "Tooltip": "Heavy leg armor. Provides two gear slots.\nIncreases speed but reduces health.",
       "UID": 30104
     },
     {
@@ -10958,7 +10958,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard leg armor. Provides one gear slot.\u003Cbr\u003EIncreases speed but reduces health.",
+      "Tooltip": "Standard leg armor. Provides one gear slot.\nIncreases speed but reduces health.",
       "UID": 30105
     },
     {
@@ -10988,7 +10988,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light leg armor. Provides no gear slots.\u003Cbr\u003EGreatly increases speed but reduces health.",
+      "Tooltip": "Light leg armor. Provides no gear slots.\nGreatly increases speed but reduces health.",
       "UID": 30107
     },
     {
@@ -11018,7 +11018,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light leg armor. Provides no gear slots.\u003Cbr\u003ESignificantly increases health but reduces speed.",
+      "Tooltip": "Light leg armor. Provides no gear slots.\nSignificantly increases health but reduces speed.",
       "UID": 30108
     },
     {
@@ -11048,7 +11048,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy leg armor. Provides two gear slots.\u003Cbr\u003EIncreases health but reduces speed.",
+      "Tooltip": "Heavy leg armor. Provides two gear slots.\nIncreases health but reduces speed.",
       "UID": 30109
     },
     {
@@ -11078,7 +11078,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy leg armor. Provides two gear slots.\u003Cbr\u003EIncreases health slightly. Reduces speed slightly.",
+      "Tooltip": "Heavy leg armor. Provides two gear slots.\nIncreases health slightly. Reduces speed slightly.",
       "UID": 30110
     },
     {
@@ -11108,7 +11108,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Prestigious leg armor. Provides one gear slot.\u003Cbr\u003EStandard-issue leg armor with no stat modifications.",
+      "Tooltip": "Prestigious leg armor. Provides one gear slot.\nStandard-issue leg armor with no stat modifications.",
       "UID": 30111
     }
   ],
@@ -11170,7 +11170,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EUse to heal yourself or your allies, or poison your enemies.",
+      "Tooltip": "Tactical gear.\nUse to heal yourself or your allies, or poison your enemies.",
       "UID": 13001
     },
     {
@@ -11200,7 +11200,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EAllows you to repair and reinforce friendly mechanical targets.",
+      "Tooltip": "Tactical gear.\nAllows you to repair and reinforce friendly mechanical targets.",
       "UID": 13002
     },
     {
@@ -11230,7 +11230,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EUse to place ammo refill crates for your allies.",
+      "Tooltip": "Tactical gear.\nUse to place ammo refill crates for your allies.",
       "UID": 13003
     },
     {
@@ -11260,7 +11260,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EEquip to shield yourself from the front. Can be placed on the ground for stationary cover.",
+      "Tooltip": "Tactical gear.\nEquip to shield yourself from the front. Can be placed on the ground for stationary cover.",
       "UID": 13004
     },
     {
@@ -11290,7 +11290,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EUse to revive downed teammates.",
+      "Tooltip": "Tactical gear.\nUse to revive downed teammates.",
       "UID": 13005
     },
     {
@@ -11320,7 +11320,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003ERenders you nearly invisible until turned off.",
+      "Tooltip": "Tactical gear.\nRenders you nearly invisible until turned off.",
       "UID": 13006
     },
     {
@@ -11350,7 +11350,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EUse while inside a Hardsuit to generate a temporary HRV ping to locate your enemies.",
+      "Tooltip": "Tactical gear.\nUse while inside a Hardsuit to generate a temporary HRV ping to locate your enemies.",
       "UID": 13007
     },
     {
@@ -11380,7 +11380,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EUse while inside a Hardsuit for 10 seconds of reduced damage, protection from flames and protection for the suit\u0027s weak point.",
+      "Tooltip": "Tactical gear.\nUse while inside a Hardsuit for 10 seconds of reduced damage, protection from flames and protection for the suit\u0027s weak point.",
       "UID": 13008
     },
     {
@@ -11410,7 +11410,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Dropped item.\u003Cbr\u003EGives agents the option to respawn at beacon location",
+      "Tooltip": "Dropped item.\nGives agents the option to respawn at beacon location",
       "UID": 13009
     },
     {
@@ -11440,7 +11440,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003ENetwarfare suit with advanced hacking and HRV support.",
+      "Tooltip": "Tactical gear.\nNetwarfare suit with advanced hacking and HRV support.",
       "UID": 13010
     },
     {
@@ -11470,7 +11470,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EHides the user from HRV for 15 seconds. 10 second cool down.",
+      "Tooltip": "Tactical gear.\nHides the user from HRV for 15 seconds. 10 second cool down.",
       "UID": 13011
     },
     {
@@ -11500,7 +11500,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003ERenders you invisible for 10 seconds, invisible to infrared, and improves mobility while active.",
+      "Tooltip": "Tactical gear.\nRenders you invisible for 10 seconds, invisible to infrared, and improves mobility while active.",
       "UID": 13012
     },
     {
@@ -11530,7 +11530,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical gear.\u003Cbr\u003EEquip to shield yourself from the front.",
+      "Tooltip": "Tactical gear.\nEquip to shield yourself from the front.",
       "UID": 13013
     }
   ],
@@ -11562,7 +11562,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard chest armor. Provides one gear slot.\u003Cbr\u003EStandard-issue chest armor with no stat modifications.",
+      "Tooltip": "Standard chest armor. Provides one gear slot.\nStandard-issue chest armor with no stat modifications.",
       "UID": 30200
     },
     {
@@ -11592,7 +11592,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy chest armor. Provides no gear slots.\u003Cbr\u003EIncreases health but reduces speed.",
+      "Tooltip": "Heavy chest armor. Provides no gear slots.\nIncreases health but reduces speed.",
       "UID": 30201
     },
     {
@@ -11622,7 +11622,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy chest armor. Provides two gear slots.\u003Cbr\u003EGreatly increases health but reduces speed.",
+      "Tooltip": "Heavy chest armor. Provides two gear slots.\nGreatly increases health but reduces speed.",
       "UID": 30202
     },
     {
@@ -11652,7 +11652,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light chest armor. Provides no gear slots.\u003Cbr\u003EGreatly increases speed but reduces health.",
+      "Tooltip": "Light chest armor. Provides no gear slots.\nGreatly increases speed but reduces health.",
       "UID": 30203
     },
     {
@@ -11682,7 +11682,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy chest armor. Provides two gear slots.\u003Cbr\u003EGreatly increases health but reduces speed.",
+      "Tooltip": "Heavy chest armor. Provides two gear slots.\nGreatly increases health but reduces speed.",
       "UID": 30204
     },
     {
@@ -11712,7 +11712,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard chest armor. Provides one gear slot.\u003Cbr\u003EIncreases speed but reduces health.",
+      "Tooltip": "Standard chest armor. Provides one gear slot.\nIncreases speed but reduces health.",
       "UID": 30205
     },
     {
@@ -11742,7 +11742,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard chest armor. Provides no gear slots.\u003Cbr\u003EIncreases speed but reduces health.",
+      "Tooltip": "Standard chest armor. Provides no gear slots.\nIncreases speed but reduces health.",
       "UID": 30206
     },
     {
@@ -11772,7 +11772,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard chest armor. Provides one gear slot.\u003Cbr\u003EIncreases health but reduces speed.",
+      "Tooltip": "Standard chest armor. Provides one gear slot.\nIncreases health but reduces speed.",
       "UID": 30207
     },
     {
@@ -11802,7 +11802,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard chest armor. Provides one gear slot.\u003Cbr\u003EIncreases speed but reduces health.",
+      "Tooltip": "Standard chest armor. Provides one gear slot.\nIncreases speed but reduces health.",
       "UID": 30208
     },
     {
@@ -11832,7 +11832,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard chest armor. Provides two gear slots.\u003Cbr\u003EIncreases health slightly. Reduces speed slightly.",
+      "Tooltip": "Standard chest armor. Provides two gear slots.\nIncreases health slightly. Reduces speed slightly.",
       "UID": 30209
     },
     {
@@ -11862,7 +11862,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Prestigious chest armor. Provides one gear slot.\u003Cbr\u003EStandard-issue chest armor with no stat modifications.",
+      "Tooltip": "Prestigious chest armor. Provides one gear slot.\nStandard-issue chest armor with no stat modifications.",
       "UID": 30210
     }
   ],
@@ -12993,7 +12993,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy barrel.\u003Cbr\u003ESignificantly improves damage, but also impairs spread, range, and running speed.",
+      "Tooltip": "Heavy barrel.\nSignificantly improves damage, but also impairs spread, range, and running speed.",
       "UID": 41023,
       "ValidFor": [
         40010,
@@ -13069,7 +13069,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical shotgun barrel.\u003Cbr\u003ESignificantly increases damage, but greatly reduces range and increases spread.",
+      "Tooltip": "Tactical shotgun barrel.\nSignificantly increases damage, but greatly reduces range and increases spread.",
       "UID": 41024,
       "ValidFor": [
         40005
@@ -13133,7 +13133,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Short shotgun AR-k barrel.\u003Cbr\u003EStandard-issue barrel with no stat modifications.",
+      "Tooltip": "Short shotgun AR-k barrel.\nStandard-issue barrel with no stat modifications.",
       "UID": 41025,
       "ValidFor": [
         40016
@@ -13180,7 +13180,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Balanced shotgun AR-k barrel.\u003Cbr\u003EIncreases movement speed, but reduces range and accuracy.",
+      "Tooltip": "Balanced shotgun AR-k barrel.\nIncreases movement speed, but reduces range and accuracy.",
       "UID": 41021,
       "ValidFor": [
         40016
@@ -13227,7 +13227,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Assault shotgun AR-k barrel.\u003Cbr\u003EIncreases damage, but reduces accuracy, range, and running speed.",
+      "Tooltip": "Assault shotgun AR-k barrel.\nIncreases damage, but reduces accuracy, range, and running speed.",
       "UID": 41022,
       "ValidFor": [
         40016
@@ -13274,7 +13274,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel grip.\u003Cbr\u003EImproves recoil, but reduces movement speed.",
+      "Tooltip": "Barrel grip.\nImproves recoil, but reduces movement speed.",
       "UID": 41027,
       "ValidFor": [
         40020
@@ -13338,7 +13338,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel grip.\u003Cbr\u003EImproves spread and range, but reduces recoil and movement speed.",
+      "Tooltip": "Barrel grip.\nImproves spread and range, but reduces recoil and movement speed.",
       "UID": 41028,
       "ValidFor": [
         40020
@@ -13402,7 +13402,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel grip.\u003Cbr\u003EImproves spread and range, but reduces movement speed.",
+      "Tooltip": "Barrel grip.\nImproves spread and range, but reduces movement speed.",
       "UID": 41029,
       "ValidFor": [
         40020
@@ -13466,7 +13466,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel grip.\u003Cbr\u003EGreatly improves recoil, but reduces accuracy, range, and movement speed.",
+      "Tooltip": "Barrel grip.\nGreatly improves recoil, but reduces accuracy, range, and movement speed.",
       "UID": 41030,
       "ValidFor": [
         40020
@@ -13530,7 +13530,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel grip.\u003Cbr\u003EGreatly improves spread and range, but reduces movement speed.",
+      "Tooltip": "Barrel grip.\nGreatly improves spread and range, but reduces movement speed.",
       "UID": 41031,
       "ValidFor": [
         40020
@@ -13594,7 +13594,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel grip.\u003Cbr\u003EImproves spread, recoil, and range, but reduces movement speed.",
+      "Tooltip": "Barrel grip.\nImproves spread, recoil, and range, but reduces movement speed.",
       "UID": 41032,
       "ValidFor": [
         40020
@@ -13658,7 +13658,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel grip.\u003Cbr\u003EImproves recoil and movement speed, but reduces accuracy and range.",
+      "Tooltip": "Barrel grip.\nImproves recoil and movement speed, but reduces accuracy and range.",
       "UID": 41033,
       "ValidFor": [
         40020
@@ -13769,7 +13769,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Extended barrel.\u003Cbr\u003EImproves spread but impairs damage.",
+      "Tooltip": "Extended barrel.\nImproves spread but impairs damage.",
       "UID": 41034,
       "ValidFor": [
         40010,
@@ -13997,7 +13997,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Balanced barrel.\u003Cbr\u003EImproves damage, but impairs running speed.",
+      "Tooltip": "Balanced barrel.\nImproves damage, but impairs running speed.",
       "UID": 41037,
       "ValidFor": [
         40010,
@@ -14073,7 +14073,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Short barrel.\u003Cbr\u003EImproves damage, but also impairs range and spread.",
+      "Tooltip": "Short barrel.\nImproves damage, but also impairs range and spread.",
       "UID": 41000,
       "ValidFor": [
         40010,
@@ -14149,7 +14149,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical shotgun barrel.\u003Cbr\u003EStandard-issue barrel with no stat modifications.",
+      "Tooltip": "Tactical shotgun barrel.\nStandard-issue barrel with no stat modifications.",
       "UID": 41001,
       "ValidFor": [
         40005
@@ -14213,7 +14213,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light barrel.\u003Cbr\u003ESignificantly improves running speed, but impairs range and spread.",
+      "Tooltip": "Light barrel.\nSignificantly improves running speed, but impairs range and spread.",
       "UID": 41010,
       "ValidFor": [
         40010,
@@ -14289,7 +14289,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Short shotgun barrel.\u003Cbr\u003ESignificantly increases running speed, but reduces range and increases spread.",
+      "Tooltip": "Short shotgun barrel.\nSignificantly increases running speed, but reduces range and increases spread.",
       "UID": 41011,
       "ValidFor": [
         40005
@@ -14353,7 +14353,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Assault barrel.\u003Cbr\u003EImproves damage, range, but impairs running speed.",
+      "Tooltip": "Assault barrel.\nImproves damage, range, but impairs running speed.",
       "UID": 41012,
       "ValidFor": [
         40010,
@@ -14429,7 +14429,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Ranged barrel.\u003Cbr\u003ESignificantly improves range, spread, and running speed. impairs damage.",
+      "Tooltip": "Ranged barrel.\nSignificantly improves range, spread, and running speed. impairs damage.",
       "UID": 41013,
       "ValidFor": [
         40010,
@@ -14505,7 +14505,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Ranged barrel.\u003Cbr\u003ESignificantly improves range and spread, but impairs damage and running speed.",
+      "Tooltip": "Ranged barrel.\nSignificantly improves range and spread, but impairs damage and running speed.",
       "UID": 41014,
       "ValidFor": [
         40010,
@@ -14581,7 +14581,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Short barrel.\u003Cbr\u003EIncreases running speed and range while decreasing spread, but significantly reduces damage.",
+      "Tooltip": "Short barrel.\nIncreases running speed and range while decreasing spread, but significantly reduces damage.",
       "UID": 41015,
       "ValidFor": [
         40010,
@@ -14657,7 +14657,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Ranged barrel.\u003Cbr\u003ESignificantly improves range and spread, but impairs damage and running speed.",
+      "Tooltip": "Ranged barrel.\nSignificantly improves range and spread, but impairs damage and running speed.",
       "UID": 41016,
       "ValidFor": [
         40010,
@@ -14733,7 +14733,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Short barrel.\u003Cbr\u003ESignificantly improves running speed, but impairs range and spread.",
+      "Tooltip": "Short barrel.\nSignificantly improves running speed, but impairs range and spread.",
       "UID": 41017,
       "ValidFor": [
         40010,
@@ -14809,7 +14809,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical pistol barrel.\u003Cbr\u003EGreatly improves damage, range, and spread, but reduces running speed.",
+      "Tooltip": "Tactical pistol barrel.\nGreatly improves damage, range, and spread, but reduces running speed.",
       "UID": 41018,
       "ValidFor": [
         40001,
@@ -14875,7 +14875,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical pistol barrel.\u003Cbr\u003ESignificantly increases damage, and improves spread and range. Greatly reduces running speed.",
+      "Tooltip": "Tactical pistol barrel.\nSignificantly increases damage, and improves spread and range. Greatly reduces running speed.",
       "UID": 41019,
       "ValidFor": [
         40001,
@@ -14941,7 +14941,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Short barrel.\u003Cbr\u003EIncreases running speed, but impairs spread and range.",
+      "Tooltip": "Short barrel.\nIncreases running speed, but impairs spread and range.",
       "UID": 41002,
       "ValidFor": [
         40010,
@@ -15017,7 +15017,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Balanced barrel.\u003Cbr\u003ENo stat modifications. An all-around balanced barrel.",
+      "Tooltip": "Balanced barrel.\nNo stat modifications. An all-around balanced barrel.",
       "UID": 41003,
       "ValidFor": [
         40010,
@@ -15093,7 +15093,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Extended barrel.\u003Cbr\u003EImproves range and spread, but impairs running speed.",
+      "Tooltip": "Extended barrel.\nImproves range and spread, but impairs running speed.",
       "UID": 41004,
       "ValidFor": [
         40010,
@@ -15169,7 +15169,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Tactical barrel.\u003Cbr\u003EImproves damage and running speed, but reduces range.",
+      "Tooltip": "Tactical barrel.\nImproves damage and running speed, but reduces range.",
       "UID": 41005,
       "ValidFor": [
         40010,
@@ -15245,7 +15245,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Short barrel.\u003Cbr\u003EImproves damage, range and spread, but significantly impairs running speed.",
+      "Tooltip": "Short barrel.\nImproves damage, range and spread, but significantly impairs running speed.",
       "UID": 41006,
       "ValidFor": [
         40010,
@@ -15321,7 +15321,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Assault barrel.\u003Cbr\u003EImproves damage, but impairs spread, range, and running speed.",
+      "Tooltip": "Assault barrel.\nImproves damage, but impairs spread, range, and running speed.",
       "UID": 41007,
       "ValidFor": [
         40010,
@@ -15397,7 +15397,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Balanced barrel.\u003Cbr\u003EIncreases damage, but impairs spreads, range, and running speed.",
+      "Tooltip": "Balanced barrel.\nIncreases damage, but impairs spreads, range, and running speed.",
       "UID": 41008,
       "ValidFor": [
         40010,
@@ -15473,7 +15473,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Assault barrel.\u003Cbr\u003EImproves damage, but impairs spread, range, and running speed.",
+      "Tooltip": "Assault barrel.\nImproves damage, but impairs spread, range, and running speed.",
       "UID": 41009,
       "ValidFor": [
         40010,
@@ -15549,7 +15549,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Balanced barrel.\u003Cbr\u003ENo stat modifications. An all-around balanced barrel.",
+      "Tooltip": "Balanced barrel.\nNo stat modifications. An all-around balanced barrel.",
       "UID": 41038,
       "ValidFor": [
         40010,
@@ -18209,7 +18209,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel grip.\u003Cbr\u003EStandard-issue grip with no stat modifications.",
+      "Tooltip": "Barrel grip.\nStandard-issue grip with no stat modifications.",
       "UID": 62000,
       "ValidFor": [
         40005
@@ -18256,7 +18256,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Barrel post grip.\u003Cbr\u003EGreatly reduces recoil and increases fire rate.",
+      "Tooltip": "Barrel post grip.\nGreatly reduces recoil and increases fire rate.",
       "UID": 62001,
       "ValidFor": [
         40005
@@ -32714,7 +32714,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EImproves recoil but impairs damage.",
+      "Tooltip": "Flash brake muzzle.\nImproves recoil but impairs damage.",
       "UID": 43001,
       "ValidFor": [
         40000,
@@ -32798,7 +32798,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EImproves range, recoil and spread, but impairs damage.",
+      "Tooltip": "Flash brake muzzle.\nImproves range, recoil and spread, but impairs damage.",
       "UID": 43003,
       "ValidFor": [
         40000,
@@ -32882,7 +32882,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Suppressor muzzle.\u003Cbr\u003EImproves recoil, but impairs damage, range, and spread.",
+      "Tooltip": "Suppressor muzzle.\nImproves recoil, but impairs damage, range, and spread.",
       "UID": 43004,
       "ValidFor": [
         40000,
@@ -32966,7 +32966,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EImproves recoil, but impairs damage.",
+      "Tooltip": "Flash brake muzzle.\nImproves recoil, but impairs damage.",
       "UID": 43000,
       "ValidFor": [
         40000,
@@ -33050,7 +33050,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003ESignificantly improves recoil, but impairs damage.",
+      "Tooltip": "Flash brake muzzle.\nSignificantly improves recoil, but impairs damage.",
       "UID": 43009,
       "ValidFor": [
         40000,
@@ -33134,7 +33134,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Suppressor muzzle.\u003Cbr\u003ESignificantly improves recoil, but impairs damage.",
+      "Tooltip": "Suppressor muzzle.\nSignificantly improves recoil, but impairs damage.",
       "UID": 43013,
       "ValidFor": [
         40000,
@@ -33218,7 +33218,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EImproves recoil, but impairs damage.",
+      "Tooltip": "Flash brake muzzle.\nImproves recoil, but impairs damage.",
       "UID": 43010,
       "ValidFor": [
         40000,
@@ -33302,7 +33302,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EImproves range, spread, and recoil, but impairs damage.",
+      "Tooltip": "Flash brake muzzle.\nImproves range, spread, and recoil, but impairs damage.",
       "UID": 43006,
       "ValidFor": [
         40000,
@@ -33386,7 +33386,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EStandard issue muzzle with no enhancements.",
+      "Tooltip": "Flash brake muzzle.\nStandard issue muzzle with no enhancements.",
       "UID": 43014,
       "ValidFor": [
         40000,
@@ -33470,7 +33470,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Silencer muzzle.\u003Cbr\u003ESignificantly improves recoil, but impairs spread, damage, and range.",
+      "Tooltip": "Silencer muzzle.\nSignificantly improves recoil, but impairs spread, damage, and range.",
       "UID": 43005,
       "ValidFor": [
         40000,
@@ -33554,7 +33554,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EImproves damage, but impairs range, recoil, and spread.",
+      "Tooltip": "Flash brake muzzle.\nImproves damage, but impairs range, recoil, and spread.",
       "UID": 43012,
       "ValidFor": [
         40000,
@@ -33638,7 +33638,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flashbrake muzzle.\u003Cbr\u003EImproves damage, but impairs recoil.",
+      "Tooltip": "Flashbrake muzzle.\nImproves damage, but impairs recoil.",
       "UID": 43011,
       "ValidFor": [
         40000,
@@ -33722,7 +33722,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003ESignificantly improves damage, but impairs recoil.",
+      "Tooltip": "Flash brake muzzle.\nSignificantly improves damage, but impairs recoil.",
       "UID": 43002,
       "ValidFor": [
         40000,
@@ -33806,7 +33806,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003ESignificantly improves damage, but impairs range, spread, and recoil.",
+      "Tooltip": "Flash brake muzzle.\nSignificantly improves damage, but impairs range, spread, and recoil.",
       "UID": 43008,
       "ValidFor": [
         40000,
@@ -33890,7 +33890,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EImproves range, spread, and recoil, but impairs damage.",
+      "Tooltip": "Flash brake muzzle.\nImproves range, spread, and recoil, but impairs damage.",
       "UID": 43015,
       "ValidFor": [
         40000,
@@ -33974,7 +33974,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003ESignificantly improves damage, but impairs range, spread, and recoil.",
+      "Tooltip": "Flash brake muzzle.\nSignificantly improves damage, but impairs range, spread, and recoil.",
       "UID": 43016,
       "ValidFor": [
         40000,
@@ -34058,7 +34058,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flashbrake muzzle.\u003Cbr\u003EImproves damage, spread, and range, but impairs recoil.",
+      "Tooltip": "Flashbrake muzzle.\nImproves damage, spread, and range, but impairs recoil.",
       "UID": 43017,
       "ValidFor": [
         40000,
@@ -34142,7 +34142,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Flash brake muzzle.\u003Cbr\u003EStandard issue muzzle with no enhancements.",
+      "Tooltip": "Flash brake muzzle.\nStandard issue muzzle with no enhancements.",
       "UID": 43018,
       "ValidFor": [
         40000,
@@ -35498,7 +35498,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "The horrors of the drought ravaged my inventory.\u003Cbr\u003EEarned by those who lost the most items during the Parity Patch upgrade.",
+      "Tooltip": "The horrors of the drought ravaged my inventory.\nEarned by those who lost the most items during the Parity Patch upgrade.",
       "UID": 10029,
       "ValidFor": [
         40003
@@ -38561,7 +38561,7 @@
       "DescriptorName": "Infrared",
       "Icon": "t_Sight_18IR_128x128",
       "Name": "EMI Infrared Scope Mk. 2",
-      "Tooltip": "Infrared scope.\u003Cbr\u003EInfrared scope with 4x zoom, but significantly worsened scope-in time.",
+      "Tooltip": "Infrared scope.\nInfrared scope with 4x zoom, but significantly worsened scope-in time.",
       "UID": 45019,
       "ValidFor": [
         40010,
@@ -38630,7 +38630,7 @@
       "DescriptorName": "Infrared",
       "Icon": "t_Sight_19IR_128x128",
       "Name": "EMI Infrared Scope",
-      "Tooltip": "Infrared scope.\u003Cbr\u003ESmall infrared scope with 3x zoom, but slightly worsened scope-in time.",
+      "Tooltip": "Infrared scope.\nSmall infrared scope with 3x zoom, but slightly worsened scope-in time.",
       "UID": 45020,
       "ValidFor": [
         40010,
@@ -38839,7 +38839,7 @@
       "DescriptorName": "Infrared",
       "Icon": "t_Sight_16IR_128x128",
       "Name": "ArmCom Infrared Scope",
-      "Tooltip": "Infrared scope.\u003Cbr\u003EInfrared scope with 2x zoom, but worsened scope-in time.",
+      "Tooltip": "Infrared scope.\nInfrared scope with 2x zoom, but worsened scope-in time.",
       "UID": 45021,
       "ValidFor": [
         40010,
@@ -38908,7 +38908,7 @@
       "DescriptorName": "Basic",
       "Icon": "t_Sight_00_128x128",
       "Name": "Lightsky Red Dot Sight",
-      "Tooltip": "Open scope.\u003Cbr\u003ERed dot sight with 1.3x zoom.",
+      "Tooltip": "Open scope.\nRed dot sight with 1.3x zoom.",
       "UID": 45000,
       "ValidFor": [
         40010,
@@ -38979,7 +38979,7 @@
       "DescriptorName": "Iron",
       "Icon": "t_Sight_01_128x128",
       "Name": "Frontier Sniper Scope",
-      "Tooltip": "Closed scope.\u003Cbr\u003ELarger scope with a 3.9x zoom but significantly worsened scope-in time.",
+      "Tooltip": "Closed scope.\nLarger scope with a 3.9x zoom but significantly worsened scope-in time.",
       "UID": 45001,
       "ValidFor": [
         40010,
@@ -39048,7 +39048,7 @@
       "DescriptorName": "Farsight",
       "Icon": "t_Sight_10_128x128",
       "Name": "Krane Tactical Scope",
-      "Tooltip": "Open scope.\u003Cbr\u003ESimple scope with 3x zoom.",
+      "Tooltip": "Open scope.\nSimple scope with 3x zoom.",
       "UID": 45010,
       "ValidFor": [
         40010,
@@ -39117,7 +39117,7 @@
       "DescriptorName": "Flip-Up",
       "Icon": "t_Sight_11_128x128",
       "Name": "MMRS Flip-Up Rail Sight",
-      "Tooltip": "Rail sight.\u003Cbr\u003EFlip-Up sight with 1.3x zoom.",
+      "Tooltip": "Rail sight.\nFlip-Up sight with 1.3x zoom.",
       "UID": 45011,
       "ValidFor": [
         40010,
@@ -39187,7 +39187,7 @@
       "DescriptorName": "Holo",
       "Icon": "t_Sight_12_128x128",
       "Name": "invalid scope",
-      "Tooltip": "Open scope.\u003Cbr\u003Einvalid scope",
+      "Tooltip": "Open scope.\ninvalid scope",
       "UID": 45012,
       "ValidFor": [
         40010,
@@ -39308,7 +39308,7 @@
       "DescriptorName": "Recon",
       "Icon": "t_Sight_14_128x128",
       "Name": "Krane Holo Sight",
-      "Tooltip": "Open scope.\u003Cbr\u003EHolographic sight with 1.8x zoom.",
+      "Tooltip": "Open scope.\nHolographic sight with 1.8x zoom.",
       "UID": 45014,
       "ValidFor": [
         40010,
@@ -39379,7 +39379,7 @@
       "DescriptorName": "Auspex",
       "Icon": "t_Sight_15_128x128",
       "Name": "ArmCom Sniper Scope",
-      "Tooltip": "Zoom scope.\u003Cbr\u003ESniper scope with 6x zoom, but worsened scope-in time.",
+      "Tooltip": "Zoom scope.\nSniper scope with 6x zoom, but worsened scope-in time.",
       "UID": 45015,
       "ValidFor": [
         40010,
@@ -39448,7 +39448,7 @@
       "DescriptorName": "Prototype",
       "Icon": "t_Sight_16_128x128",
       "Name": "ArmCom CQC Scope",
-      "Tooltip": "Open scope.\u003Cbr\u003ESmaller scope with 1.3x zoom.",
+      "Tooltip": "Open scope.\nSmaller scope with 1.3x zoom.",
       "UID": 45016,
       "ValidFor": [
         40010,
@@ -39519,7 +39519,7 @@
       "DescriptorName": "Tactical",
       "Icon": "t_Sight_17_128x128",
       "Name": "OPRL Holo Sight",
-      "Tooltip": "Open scope.\u003Cbr\u003EHolographic sight with 2x zoom.",
+      "Tooltip": "Open scope.\nHolographic sight with 2x zoom.",
       "UID": 45017,
       "ValidFor": [
         40010,
@@ -39590,7 +39590,7 @@
       "DescriptorName": "Rail",
       "Icon": "t_Sight_02_128x128",
       "Name": "EMI ACOG Scope",
-      "Tooltip": "Closed scope.\u003Cbr\u003ESmall scope with 3x zoom and slightly worsened scope-in time.",
+      "Tooltip": "Closed scope.\nSmall scope with 3x zoom and slightly worsened scope-in time.",
       "UID": 45002,
       "ValidFor": [
         40010,
@@ -39659,7 +39659,7 @@
       "DescriptorName": "Open",
       "Icon": "t_Sight_03_128x128",
       "Name": "EON Electric Scope",
-      "Tooltip": "Open scope.\u003Cbr\u003ESmaller scope with 2.5x zoom.",
+      "Tooltip": "Open scope.\nSmaller scope with 2.5x zoom.",
       "UID": 45003,
       "ValidFor": [
         40010,
@@ -39728,7 +39728,7 @@
       "DescriptorName": "Sighted",
       "Icon": "t_Sight_04_128x128",
       "Name": "EMI Tech Scope",
-      "Tooltip": "Zoom scope.\u003Cbr\u003EHigh-powered scope with a 4x zoom, but worsened scope-in time.",
+      "Tooltip": "Zoom scope.\nHigh-powered scope with a 4x zoom, but worsened scope-in time.",
       "UID": 45004,
       "ValidFor": [
         40010,
@@ -39797,7 +39797,7 @@
       "DescriptorName": "Scoped",
       "Icon": "t_Sight_05_128x128",
       "Name": "Silverwood Combo Scope",
-      "Tooltip": "Closed scope.\u003Cbr\u003EScope and sight combo with 3x zoom.",
+      "Tooltip": "Closed scope.\nScope and sight combo with 3x zoom.",
       "UID": 45005,
       "ValidFor": [
         40010,
@@ -39866,7 +39866,7 @@
       "DescriptorName": "Eagle-eye",
       "Icon": "t_Sight_06_128x128",
       "Name": "Lightsky Reflex Sight",
-      "Tooltip": "Open scope.\u003Cbr\u003EReflex sight with 1.6x zoom.",
+      "Tooltip": "Open scope.\nReflex sight with 1.6x zoom.",
       "UID": 45006,
       "ValidFor": [
         40010,
@@ -39937,7 +39937,7 @@
       "DescriptorName": "Spy",
       "Icon": "t_Sight_07_128x128",
       "Name": "Krane Sniper Scope",
-      "Tooltip": "Zoom scope.\u003Cbr\u003E4.4x zoom scope, but impairs scope-in time.",
+      "Tooltip": "Zoom scope.\n4.4x zoom scope, but impairs scope-in time.",
       "UID": 45007,
       "ValidFor": [
         40010,
@@ -40006,7 +40006,7 @@
       "DescriptorName": "Ghostly",
       "Icon": "t_Sight_08_128x128",
       "Name": "Silverwood Heavy Scope",
-      "Tooltip": "Zoom scope.\u003Cbr\u003EScope with 4x zoom but worsened scope-in time.",
+      "Tooltip": "Zoom scope.\nScope with 4x zoom but worsened scope-in time.",
       "UID": 45008,
       "ValidFor": [
         40003,
@@ -40057,7 +40057,7 @@
       "DescriptorName": "Spy",
       "Icon": "t_Sight_09_128x128",
       "Name": "Titan Rail Sight",
-      "Tooltip": "Rail sight.\u003Cbr\u003EStandard sight with 1.3x zoom.",
+      "Tooltip": "Rail sight.\nStandard sight with 1.3x zoom.",
       "UID": 45009,
       "ValidFor": [
         40010,
@@ -40161,7 +40161,7 @@
       "DescriptorName": "Spy",
       "Icon": "t_Gold_Sight_09_128x128",
       "Name": "Prestige Titan Rail Sight",
-      "Tooltip": "Rail sight.\u003Cbr\u003EStandard sight with 1.3x zoom.",
+      "Tooltip": "Rail sight.\nStandard sight with 1.3x zoom.",
       "UID": 45024,
       "ValidFor": [
         40010,
@@ -40239,7 +40239,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy Burstfire Rifle stock.\u003Cbr\u003EGreatly improves spread and range while reducing recoil, but increases scope-in time and reduces running speed.",
+      "Tooltip": "Heavy Burstfire Rifle stock.\nGreatly improves spread and range while reducing recoil, but increases scope-in time and reduces running speed.",
       "UID": 42017,
       "ValidFor": [
         40009,
@@ -40304,7 +40304,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy Burstfire Rifle stock.\u003Cbr\u003EGreatly improves spread and range while reducing recoil. Increases scope-in and reload time, and reduces running speed.",
+      "Tooltip": "Heavy Burstfire Rifle stock.\nGreatly improves spread and range while reducing recoil. Increases scope-in and reload time, and reduces running speed.",
       "UID": 42018,
       "ValidFor": [
         40009,
@@ -40369,7 +40369,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy Burstfire Rifle stock.\u003Cbr\u003EGreatly improves spread and range, but increases recoil and reload time.",
+      "Tooltip": "Heavy Burstfire Rifle stock.\nGreatly improves spread and range, but increases recoil and reload time.",
       "UID": 42019,
       "ValidFor": [
         40009,
@@ -40516,7 +40516,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light stock.\u003Cbr\u003ESignificantly improves running speed, but impairs spread, recoil, and range.",
+      "Tooltip": "Light stock.\nSignificantly improves running speed, but impairs spread, recoil, and range.",
       "UID": 42001,
       "ValidFor": [
         40010,
@@ -40598,7 +40598,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light stock.\u003Cbr\u003EImproves running speed and scope-in time, but impairs spread and range.",
+      "Tooltip": "Light stock.\nImproves running speed and scope-in time, but impairs spread and range.",
       "UID": 42010,
       "ValidFor": [
         40010,
@@ -40679,7 +40679,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy stock.\u003Cbr\u003EImproves recoil, but impairs range, spread, running speed, and scope-in time.",
+      "Tooltip": "Heavy stock.\nImproves recoil, but impairs range, spread, running speed, and scope-in time.",
       "UID": 42011,
       "ValidFor": [
         40010,
@@ -40761,7 +40761,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard stock.\u003Cbr\u003EImproves range and spread, but impairs recoil.",
+      "Tooltip": "Standard stock.\nImproves range and spread, but impairs recoil.",
       "UID": 42012,
       "ValidFor": [
         40010,
@@ -40843,7 +40843,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard stock.\u003Cbr\u003EImproves spread and range, but impairs running speed and scope-in time.",
+      "Tooltip": "Standard stock.\nImproves spread and range, but impairs running speed and scope-in time.",
       "UID": 42013,
       "ValidFor": [
         40010,
@@ -40925,7 +40925,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light stock.\u003Cbr\u003EImproves running speed, range, and spread, but significantly increases recoil.",
+      "Tooltip": "Light stock.\nImproves running speed, range, and spread, but significantly increases recoil.",
       "UID": 42002,
       "ValidFor": [
         40010,
@@ -41007,7 +41007,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy stock.\u003Cbr\u003EImproves spread, recoil, and range, but impairs running speed and scope-in time.",
+      "Tooltip": "Heavy stock.\nImproves spread, recoil, and range, but impairs running speed and scope-in time.",
       "UID": 42003,
       "ValidFor": [
         40010,
@@ -41088,7 +41088,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy stock.\u003Cbr\u003EImproves spread, recoil, and range, but impairs running speed and scope-in time.",
+      "Tooltip": "Heavy stock.\nImproves spread, recoil, and range, but impairs running speed and scope-in time.",
       "UID": 42004,
       "ValidFor": [
         40010,
@@ -41170,7 +41170,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard stock.\u003Cbr\u003EImproves range, recoil, and spread, but impairs running speed.",
+      "Tooltip": "Standard stock.\nImproves range, recoil, and spread, but impairs running speed.",
       "UID": 42005,
       "ValidFor": [
         40010,
@@ -41252,7 +41252,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard stock.\u003Cbr\u003EImproves running speed and scope-in time, but impairs range, recoil, and spread.",
+      "Tooltip": "Standard stock.\nImproves running speed and scope-in time, but impairs range, recoil, and spread.",
       "UID": 42006,
       "ValidFor": [
         40010,
@@ -41334,7 +41334,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard stock.\u003Cbr\u003EStandard stock with no stat modifications.",
+      "Tooltip": "Standard stock.\nStandard stock with no stat modifications.",
       "UID": 42007,
       "ValidFor": [
         40010,
@@ -41416,7 +41416,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy stock.\u003Cbr\u003EImproves recoil, but impairs running speed, scope-in time, and spread.",
+      "Tooltip": "Heavy stock.\nImproves recoil, but impairs running speed, scope-in time, and spread.",
       "UID": 42008,
       "ValidFor": [
         40010,
@@ -41498,7 +41498,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light stock.\u003Cbr\u003EImproves running speed and scope-in time, but impairs range, spread, and recoil.",
+      "Tooltip": "Light stock.\nImproves running speed and scope-in time, but impairs range, spread, and recoil.",
       "UID": 42009,
       "ValidFor": [
         40010,
@@ -41580,7 +41580,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard stock.\u003Cbr\u003EStandard-issue stock with no stat modifications.",
+      "Tooltip": "Standard stock.\nStandard-issue stock with no stat modifications.",
       "UID": 42014,
       "ValidFor": [
         40009,
@@ -41645,7 +41645,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Light stock.\u003Cbr\u003EIncreases running speed, spread, and scope-in time, and reduces range.",
+      "Tooltip": "Light stock.\nIncreases running speed, spread, and scope-in time, and reduces range.",
       "UID": 42015,
       "ValidFor": [
         40009,
@@ -41710,7 +41710,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Heavy stock.\u003Cbr\u003EGreatly reduces recoil, range, and running speed, and increases spread and scope-in time.",
+      "Tooltip": "Heavy stock.\nGreatly reduces recoil, range, and running speed, and increases spread and scope-in time.",
       "UID": 42016,
       "ValidFor": [
         40009,
@@ -41775,7 +41775,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Standard stock.\u003Cbr\u003EStandard stock with no stat modifications.",
+      "Tooltip": "Standard stock.\nStandard stock with no stat modifications.",
       "UID": 42021,
       "ValidFor": [
         40010,
@@ -41873,7 +41873,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into a cloud of interference that hinders visibility.",
+      "Tooltip": "Thrown item.\nExplodes into a cloud of interference that hinders visibility.",
       "UID": 12002
     },
     {
@@ -41885,7 +41885,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Melee item.\u003Cbr\u003EA familiar-looking weapon for bashing nearby opponents.",
+      "Tooltip": "Melee item.\nA familiar-looking weapon for bashing nearby opponents.",
       "UID": 12016
     },
     {
@@ -41897,7 +41897,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Melee item.\u003Cbr\u003EA familiar-looking weapon for bashing nearby opponents.",
+      "Tooltip": "Melee item.\nA familiar-looking weapon for bashing nearby opponents.",
       "UID": 12016
     },
     {
@@ -41909,7 +41909,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Melee item.\u003Cbr\u003EA familiar-looking weapon for bashing nearby opponents.",
+      "Tooltip": "Melee item.\nA familiar-looking weapon for bashing nearby opponents.",
       "UID": 12016
     },
     {
@@ -41921,7 +41921,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Thrown item.\u003Cbr\u003EInstantly kills the target. Can also be used in melee.",
+      "Tooltip": "Thrown item.\nInstantly kills the target. Can also be used in melee.",
       "UID": 12016
     },
     {
@@ -41982,7 +41982,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into a cloud of deadly gas that continuously damages and blinds your enemies.",
+      "Tooltip": "Thrown item.\nExplodes into a cloud of deadly gas that continuously damages and blinds your enemies.",
       "UID": 12006
     },
     {
@@ -42055,7 +42055,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Tactical gear.\u003Cbr\u003EUse to place ammo refill crates for your allies.",
+      "Tooltip": "Tactical gear.\nUse to place ammo refill crates for your allies.",
       "UID": 13003
     },
     {
@@ -42068,7 +42068,7 @@
         "camosWeapon",
         "hangers"
       ],
-      "Tooltip": "Tactical gear.\u003Cbr\u003EEquip to shield yourself from the front. Can be placed on the ground for stationary cover.",
+      "Tooltip": "Tactical gear.\nEquip to shield yourself from the front. Can be placed on the ground for stationary cover.",
       "UID": 13004
     },
     {
@@ -42080,7 +42080,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Tactical gear.\u003Cbr\u003EEquip to shield yourself from the front.",
+      "Tooltip": "Tactical gear.\nEquip to shield yourself from the front.",
       "UID": 13013
     },
     {
@@ -42116,7 +42116,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Melee item.\u003Cbr\u003EStab enemies that get too close.",
+      "Tooltip": "Melee item.\nStab enemies that get too close.",
       "UID": 12011
     },
     {
@@ -42128,7 +42128,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Thrown item.\u003Cbr\u003EExplodes when thrown, dealing damage to and blinds surrounding players.",
+      "Tooltip": "Thrown item.\nExplodes when thrown, dealing damage to and blinds surrounding players.",
       "UID": 12004
     },
     {
@@ -42140,7 +42140,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Thrown item.\u003Cbr\u003EExplodes into an EMP that temporarily blinds enemies and shuts down hardsuits.",
+      "Tooltip": "Thrown item.\nExplodes into an EMP that temporarily blinds enemies and shuts down hardsuits.",
       "UID": 12001
     },
     {
@@ -42152,7 +42152,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Thrown item.\u003Cbr\u003EAn explosive grenade.",
+      "Tooltip": "Thrown item.\nAn explosive grenade.",
       "UID": 12000
     },
     {
@@ -42164,7 +42164,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Melee item.\u003Cbr\u003EStab enemies that get too close.",
+      "Tooltip": "Melee item.\nStab enemies that get too close.",
       "UID": 12011
     },
     {
@@ -42176,7 +42176,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Thrown item.\u003Cbr\u003EAn explosive grenade.",
+      "Tooltip": "Thrown item.\nAn explosive grenade.",
       "UID": 12000
     },
     {
@@ -42190,7 +42190,7 @@
         "hangers",
         "scopes"
       ],
-      "Tooltip": "Tactical gear.\u003Cbr\u003EUse to heal yourself or your allies, or poison your enemies.",
+      "Tooltip": "Tactical gear.\nUse to heal yourself or your allies, or poison your enemies.",
       "UID": 13001
     },
     {
@@ -42202,7 +42202,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Thrown item.\u003Cbr\u003EAn extremely powerful explosive grenade.",
+      "Tooltip": "Thrown item.\nAn extremely powerful explosive grenade.",
       "UID": 12008
     },
     {
@@ -42214,7 +42214,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Dropped item.\u003Cbr\u003EGenerates a decoy that shows up on your enemies\u0027 HRV.",
+      "Tooltip": "Dropped item.\nGenerates a decoy that shows up on your enemies\u0027 HRV.",
       "UID": 12005
     },
     {
@@ -42226,7 +42226,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Dropped item.\u003Cbr\u003ECreates a field that hides friendly targets from HRV detection.",
+      "Tooltip": "Dropped item.\nCreates a field that hides friendly targets from HRV detection.",
       "UID": 12009
     },
     {
@@ -42250,7 +42250,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Dropped item.\u003Cbr\u003EViolently explodes when triggered by nearby enemies.",
+      "Tooltip": "Dropped item.\nViolently explodes when triggered by nearby enemies.",
       "UID": 12003
     },
     {
@@ -42264,7 +42264,7 @@
         "hangers",
         "scopes"
       ],
-      "Tooltip": "Tactical gear.\u003Cbr\u003EAllows you to repair friendly mechanical targets.",
+      "Tooltip": "Tactical gear.\nAllows you to repair friendly mechanical targets.",
       "UID": 13002
     },
     {
@@ -42276,7 +42276,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Melee item.\u003Cbr\u003EMelee weapon with increased damage and a faster attack.",
+      "Tooltip": "Melee item.\nMelee weapon with increased damage and a faster attack.",
       "UID": 12012
     },
     {
@@ -42288,7 +42288,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Dropped item.\u003Cbr\u003EStuns nearby enemies when triggered.",
+      "Tooltip": "Dropped item.\nStuns nearby enemies when triggered.",
       "UID": 12007
     },
     {
@@ -42300,7 +42300,7 @@
         "ammo",
         "hangers"
       ],
-      "Tooltip": "Tactical gear.\u003Cbr\u003EUse to revive downed teammates.",
+      "Tooltip": "Tactical gear.\nUse to revive downed teammates.",
       "UID": 13005
     }
   ],
