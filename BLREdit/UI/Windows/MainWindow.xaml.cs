@@ -450,7 +450,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                     }
                     else
                     {
-                        weapon?.Scope?.LoadCrosshair(weapon.IsPrimary);
+                        weapon?.Scope?.LoadCrosshair(weapon);
                         ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
                         wasLastImageScopePreview = true;
                     }

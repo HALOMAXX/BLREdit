@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using BLREdit.UI.Views;
 using BLREdit.UI;
+using BLREdit.Export;
 
 namespace BLREdit.Import;
 
@@ -282,22 +283,14 @@ public sealed class BLRItem : INotifyPropertyChanged
         return female;
     }
 
-    public void LoadCrosshair(bool isPrimary)
+    public void LoadCrosshair(BLRWeapon weapon)
     {
-        if (isPrimary)
-        {
-            Crosshair = GetBitmapCrosshair(GetSecondaryScope());
-        }
-        else
-        {
-            Crosshair = GetBitmapCrosshair(GetSecondaryScope());
-        }
+        Crosshair = GetBitmapCrosshair(GetSecondaryScope(weapon));
     }
 
-    private string GetSecondaryScope()
+    private string GetSecondaryScope(BLRWeapon weapon)
     {
-        //var name = (((LoadoutControl)UI.MainWindow.Self.LoadoutTabs.Items[0]).SecondaryControl.PrimaryRecieverImage.Tag as BLRItem)?.Name ?? "";
-        var name = "";
+        var name = weapon?.Reciever?.Name ?? "";
         switch (Name)
         {
             case "No Optic Mod":
