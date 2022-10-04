@@ -11,6 +11,8 @@ public sealed class MagiCowServerInfo
     public int PlayerCount { get; set; } = 0;
     public string Map { get; set; } = "Lobby";
     public string[] PlayerList { get; set; } = System.Array.Empty<string>();
+    public string ServerName { get; set; } = "";
+    public string GameMode { get; set; } = "DM";
 
     private BLRMap map;
     [JsonIgnore]

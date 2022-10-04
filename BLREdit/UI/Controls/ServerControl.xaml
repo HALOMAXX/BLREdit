@@ -18,7 +18,7 @@
             </Button>
             <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
                 <StackPanel>
-                <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerAddress}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Margin="5,2,5,2" Text="{Binding Path=DisplayName}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 <TextBlock Margin="5,2,5,2" Text="{Binding Path=PingDisplay}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Border>

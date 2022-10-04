@@ -33,6 +33,8 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     [JsonIgnore] public MagiCowServerInfo Info { get; private set; }
 
+    [JsonIgnore] public string DisplayName { get { if (Info is null) { return ServerAddress; } else { return Info.ServerName; } } }
+
 
     [JsonIgnore] private string serverName;
     public string ServerName { get { return serverName; } set { serverName = value; OnPropertyChanged(); } }
