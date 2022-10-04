@@ -99,6 +99,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         ItemList.Items.Filter += new Predicate<object>(o =>
         {
+            if (wasLastImageScopePreview) { return true; }
             if (o is BLRItem item)
             {
                 if (FilterWeapon is null && (item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY)) { return true; }
@@ -428,6 +429,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             var weapon = ((FrameworkElement)border.Parent).DataContext as BLRWeapon;
             if (weapon is not null) FilterWeapon = weapon.Reciever;
             LastSelectedBorder = border;
+            wasLastImageScopePreview = false;
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
                 case "Reciever":
@@ -451,8 +453,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                     else
                     {
                         weapon?.Scope?.LoadCrosshair(weapon);
-                        ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
                         wasLastImageScopePreview = true;
+                        ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
                     }
                     break;
                 case "Stock":

@@ -89,7 +89,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public BLRItem Ammo
     {
         get { return ammo; }
-        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 0); } else { ammo = value; } ItemChanged(); } }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 2); } else { ammo = value; } ItemChanged(); } }
     }
     #endregion Weapon Parts
 
