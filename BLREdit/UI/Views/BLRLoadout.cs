@@ -51,7 +51,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     private BLRItem trophy = null;
     public BLRItem Trophy { get { return trophy; } set { if (value is null || trophy != value && value.Category == ImportSystem.BADGES_CATEGORY) { if (value is null) { trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, 0); } else { trophy = value; } ItemChanged(); } } }
     private bool isFemale;
-    public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(); ; ItemChanged(); } }
+    public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(value); ItemChanged(); } }
     private bool isBot;
     public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
 

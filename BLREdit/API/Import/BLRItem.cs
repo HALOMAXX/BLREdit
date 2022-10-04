@@ -30,16 +30,13 @@ public sealed class BLRItem : INotifyPropertyChanged
     public BLRWeaponStats WeaponStats { get; set; }
     public BLRWikiStats WikiStats { get; set; }
 
-    [JsonIgnore] public BitmapSource WideImage { get { return GetWideImage(); } set { OnPropertyChanged(); } }
-    [JsonIgnore] public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(); } set { OnPropertyChanged(); } }
-    [JsonIgnore] public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(); } set { OnPropertyChanged(); } }
+    private bool female = false;
+    [JsonIgnore] public BitmapSource WideImage { get { return GetWideImage(female); } }
+    [JsonIgnore] public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(female); } }
+    [JsonIgnore] public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(female); } }
 
-    [JsonIgnore] public BitmapSource wideImageMale = null;
-    [JsonIgnore] public BitmapSource largeSquareImageMale = null;
-    [JsonIgnore] public BitmapSource smallSquareImageMale = null;
-    [JsonIgnore] public BitmapSource wideImageFemale = null;
-    [JsonIgnore] public BitmapSource largeSquareImageFemale = null;
-    [JsonIgnore] public BitmapSource smallSquareImageFemale = null;
+    [JsonIgnore] public FoxIcon MaleIcon;
+    [JsonIgnore] public FoxIcon FemaleIcon;
 
     [JsonIgnore] public BitmapSource Crosshair { get; private set; }
 
@@ -91,17 +88,58 @@ public sealed class BLRItem : INotifyPropertyChanged
             WikiStats = new BLRWikiStats(item.WikiStats);
     }
 
-    public BitmapSource GetWideImage()
+    public void UpdateImage(bool female)
     {
-        return GetImage(wideImageMale, wideImageFemale);
+        this.female = female;
+        OnPropertyChanged(nameof(WideImage));
+        OnPropertyChanged(nameof(LargeSquareImage));
+        OnPropertyChanged(nameof(SmallSquareImage));
     }
-    public BitmapSource GetLargeSquareImage()
+
+    public BitmapSource GetWideImage(bool female)
     {
-        return GetImage(largeSquareImageMale, largeSquareImageFemale);
+        if (female)
+        {
+            if (FemaleIcon == null)
+            { return MaleIcon.WideImage.Value; }
+            return FemaleIcon.WideImage.Value;
+        }
+        else
+        {
+            if (MaleIcon is null)
+            { return FoxIcon.WideEmpty; }
+            return MaleIcon.WideImage.Value;
+        }
     }
-    public BitmapSource GetSmallSquareImage()
+    public BitmapSource GetLargeSquareImage(bool female)
     {
-        return GetImage(smallSquareImageMale, smallSquareImageFemale);
+        if (female)
+        {
+            if (FemaleIcon == null)
+            { return MaleIcon.LargeImage.Value; }
+            return FemaleIcon.LargeImage.Value;
+        }
+        else
+        {
+            if (MaleIcon is null)
+            { return FoxIcon.LargeEmpty; }
+            return MaleIcon.LargeImage.Value;
+        }
+    }
+    public BitmapSource GetSmallSquareImage(bool female)
+    {
+        if (female)
+        {
+            if (FemaleIcon == null)
+            { return MaleIcon.SmallImage.Value; }
+            return FemaleIcon.SmallImage.Value;
+        }
+        else
+        {
+            if (MaleIcon is null)
+            { return FoxIcon.SmallEmpty; }
+            return MaleIcon.SmallImage.Value;
+        }
     }
 
     public static BitmapSource GetImage(BitmapSource male, BitmapSource female)
@@ -205,31 +243,20 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public void LoadImage()
     {
-        bool male = false;
         if (!string.IsNullOrEmpty(Icon))
         {
+            var femaleIconName = GetFemaleIconName();
             foreach (FoxIcon foxicon in ImportSystem.Icons)
             {
-                if (foxicon.Name == Icon)
+                if (foxicon.IconName == Icon)
                 {
-                    wideImageMale = foxicon.GetWideImage();
-                    largeSquareImageMale = foxicon.GetLargeSquareImage();
-                    smallSquareImageMale = foxicon.GetSmallSquareImage();
-                    male = true;
+                    MaleIcon = foxicon;
                 }
-                if (foxicon.Name == GetFemaleIconName())
+                if (foxicon.IconName == femaleIconName)
                 {
-                    wideImageFemale = foxicon.GetWideImage();
-                    largeSquareImageFemale = foxicon.GetLargeSquareImage();
-                    smallSquareImageFemale = foxicon.GetSmallSquareImage();
+                    FemaleIcon = foxicon;
                 }
             }
-        }
-        if (!male)
-        {
-            wideImageMale = FoxIcon.CreateEmptyBitmap(256, 128);
-            largeSquareImageMale = FoxIcon.CreateEmptyBitmap(128, 128);
-            smallSquareImageMale = FoxIcon.CreateEmptyBitmap(64, 64);
         }
     }
 
@@ -352,9 +379,9 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             foreach (FoxIcon icon in ImportSystem.ScopePreviews)
             {
-                if (icon.Name.Equals(name))
+                if (icon.IconName.Equals(name))
                 {
-                    return new BitmapImage(icon.Icon);
+                    return new BitmapImage(new System.Uri(icon.IconFileInfo.FullName, System.UriKind.Absolute));
                 }
             }
         }
@@ -423,7 +450,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     [JsonIgnore]
     public double Ammo
     {
-        get 
+        get
         {
             switch (Category)
             {
@@ -469,7 +496,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         }
     }
     [JsonIgnore]
-    public double ExplosiveProtection 
+    public double ExplosiveProtection
     {
         get
         {
@@ -484,7 +511,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         }
     }
     [JsonIgnore]
-    public double GearSlots 
+    public double GearSlots
     {
         get
         {
@@ -499,7 +526,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         }
     }
     [JsonIgnore]
-    public double Health 
+    public double Health
     {
         get
         {
@@ -531,7 +558,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     [JsonIgnore]
     public double Hip
     {
-        get 
+        get
         {
             switch (Category)
             {
@@ -587,7 +614,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         }
     }
     [JsonIgnore]
-    public double InfraredProtection 
+    public double InfraredProtection
     {
         get
         {

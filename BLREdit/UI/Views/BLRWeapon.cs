@@ -103,9 +103,9 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             foreach (FoxIcon icon in ImportSystem.ScopePreviews)
             {
-                if (icon.Name.Equals(name))
+                if (icon.IconName.Equals(name))
                 {
-                    return new BitmapImage(icon.Icon);
+                    return new BitmapImage(new System.Uri(icon.IconFileInfo.FullName, System.UriKind.Absolute));
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using BLREdit.UI;
 using BLREdit.UI.Views;
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -37,16 +38,17 @@ public static class ImportSystem
 
     //public static readonly Dictionary<float, float> DamagePercentToValue = new Dictionary<float, float>(); not in use
 
-    public static readonly FoxIcon[] Icons = LoadAllIcons();
+    //public static readonly FoxIcon[] Icons = LoadAllIcons();
+    public static readonly FoxIcon[] Icons = LoadAllIcons2();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
     private static Dictionary<string, List<BLRItem>> ItemLists { get; } = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
-    
+
 
     public static void Initialize()
     {
         LoggingSystem.Log("Initializing Import System");
-        
+
         UpdateImages();
         ApplyDisplayStats();
     }
@@ -73,12 +75,12 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':',new double[]{ DamageIdeal, DamageMax }, StatsEnum.None, "0", "", "/");
+                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', new double[] { DamageIdeal, DamageMax }, StatsEnum.None, "0", "", "/");
                         FormatDisplayStat(ref desc2, LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', ZoomSpread, StatsEnum.None, "0.00", "°");
                         FormatDisplayStat(ref desc3, LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', HipSpread, StatsEnum.None, "0.00", "°");
                         FormatDisplayStat(ref desc4, LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', MovmentSpread, StatsEnum.None, "0.00", "°");
                         FormatDisplayStat(ref desc5, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', RecoilHip, StatsEnum.None, "0.00", "°");
-                        FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', new double[]{ IdealRange, MaxRange }, StatsEnum.None, "0", "", "/", 2);
+                        FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', new double[] { IdealRange, MaxRange }, StatsEnum.None, "0", "", "/", 2);
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -243,7 +245,7 @@ public static class ImportSystem
                         item.DisplayStat5 = desc5;
                         item.DisplayStat6 = desc6;
                     }
-                        break;
+                    break;
                 case HELMETS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
@@ -414,7 +416,7 @@ public static class ImportSystem
                                 isPatch = true;
                                 break;
                         }
-                        if(isPatch)FormatDisplayStat(ref desc1, prop, desc, value, StatsEnum.Normal, "0", "%");
+                        if (isPatch) FormatDisplayStat(ref desc1, prop, desc, value, StatsEnum.Normal, "0", "%");
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -454,31 +456,27 @@ public static class ImportSystem
         }
     }
 
-    internal static void UpdateArmorImages()
+    internal static void UpdateArmorImages(bool female)
     {
         foreach (var upper in ItemLists[UPPER_BODIES_CATEGORY])
         {
-            upper.WideImage = null;
-            upper.LargeSquareImage = null;
-            upper.SmallSquareImage = null;
+            upper.UpdateImage(female);
         }
         foreach (var lower in ItemLists[LOWER_BODIES_CATEGORY])
         {
-            lower.WideImage = null;
-            lower.LargeSquareImage = null;
-            lower.SmallSquareImage = null;
+            lower.UpdateImage(female);
         }
     }
 
     static readonly Brush grey = new SolidColorBrush(Color.FromArgb(136, 136, 136, 136));
 
-    static readonly Brush defaultGreen = new SolidColorBrush(Color.FromArgb(255,110,175,125));
+    static readonly Brush defaultGreen = new SolidColorBrush(Color.FromArgb(255, 110, 175, 125));
     static readonly Brush highlightGreen = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
 
     static readonly Brush defaultRed = new SolidColorBrush(Color.FromArgb(255, 200, 60, 50));
     static readonly Brush highlightRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
     private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1)
-    { 
+    {
         desc.PropertyName = propertyName;
         desc.Description = description;
 
@@ -526,7 +524,7 @@ public static class ImportSystem
         if (type != StatsEnum.None)
         {
             if (type == StatsEnum.Inverted)
-            { 
+            {
                 isPositive = !isPositive;
             }
             if (isPositive)
@@ -646,22 +644,11 @@ public static class ImportSystem
         foreach (KeyValuePair<string, List<BLRItem>> entry in ItemLists)
         {
             LoggingSystem.Log($"Updating Images for {entry.Key}");
-            Parallel.ForEach(entry.Value, item =>
+
+            foreach (var item in entry.Value)
             {
-                //Name = item.DisplayName;
-                //Tooltip = item.DisplayTooltip;
-                //foreach (var desc in item?.WeaponStats?.StatDecriptors ?? Array.Empty<StatDecriptor>())
-                //{
-                //    Desc = desc.DisplayName;
-                //}
                 item.LoadImage();
-                item.wideImageMale.Freeze();
-                item.wideImageFemale?.Freeze();
-                item.largeSquareImageMale.Freeze();
-                item.largeSquareImageFemale?.Freeze();
-                item.smallSquareImageMale.Freeze();
-                item.smallSquareImageFemale?.Freeze();
-            });
+            }
         }
     }
 
@@ -833,7 +820,7 @@ public static class ImportSystem
 
     public static int GetIDByNameAndType(string Type, string Name)
     {
-        if(string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;
+        if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;
         if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
         {
             foreach (BLRItem item in items)
@@ -841,7 +828,7 @@ public static class ImportSystem
                 if (item.Name == Name)
                 {
                     return items.IndexOf(item);
-                } 
+                }
             }
             return -1;
         }
@@ -888,7 +875,30 @@ public static class ImportSystem
         }
         return icons.ToArray();
     }
+
+    private static FoxIcon[] LoadAllIcons2()
+    {
+        LoggingSystem.Log("Loading All Icons");
+        var icons = new List<FoxIcon>();
+        foreach (var icon in Directory.GetFiles("Assets\\textures"))
+        {
+            icons.Add(new FoxIcon(icon));
+        }
+        return icons.ToArray();
+    }
+
     private static FoxIcon[] LoadAllScopePreviews()
+    {
+        LoggingSystem.Log("Loading All Crosshairs");
+        var icons = new List<FoxIcon>();
+        foreach (var icon in Directory.EnumerateFiles("Assets\\crosshairs"))
+        {
+            icons.Add(new FoxIcon(icon));
+        }
+        return icons.ToArray();
+    }
+
+    private static FoxIcon[] LoadAllScopePreviews2()
     {
         LoggingSystem.Log("Loading All Crosshairs");
         var icons = new List<FoxIcon>();

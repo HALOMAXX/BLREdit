@@ -157,14 +157,14 @@ public sealed class ImportItem
         {
             foreach (FoxIcon foxicon in ImportSystem.Icons)
             {
-                if (foxicon.Name == icon)
+                if (foxicon.IconName == icon)
                 {
                     wideImageMale = foxicon.GetWideImage();
                     largeSquareImageMale = foxicon.GetLargeSquareImage();
                     smallSquareImageMale = foxicon.GetSmallSquareImage();
                     male = true;
                 }
-                if (foxicon.Name == GetFemaleIconName())
+                if (foxicon.IconName == GetFemaleIconName())
                 {
                     wideImageFemale = foxicon.GetWideImage();
                     largeSquareImageFemale = foxicon.GetLargeSquareImage();
@@ -218,9 +218,9 @@ public sealed class ImportItem
         {
             foreach (FoxIcon icon in ImportSystem.ScopePreviews)
             {
-                if (icon.Name.Equals(name))
+                if (icon.IconName.Equals(name))
                 {
-                    return new BitmapImage(icon.Icon);
+                    return new BitmapImage(new System.Uri(icon.IconFileInfo.FullName, System.UriKind.Absolute));
                 }
             }
         }

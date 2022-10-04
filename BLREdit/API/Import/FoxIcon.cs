@@ -8,7 +8,16 @@ namespace BLREdit.Import;
 
 public sealed class FoxIcon
 {
-    private static readonly bool AddFolderLine = AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\");
+    public FileInfo IconFileInfo { get; private set; }
+    public string IconName { get; private set; }
+
+    public readonly Lazy<BitmapSource> WideImage;
+    public readonly Lazy<BitmapSource> LargeImage;
+    public readonly Lazy<BitmapSource> SmallImage;
+
+    public static readonly BitmapImage WideEmpty = CreateEmptyBitmap(WideImageWidth, WideImageHeight);
+    public static readonly BitmapImage LargeEmpty = CreateEmptyBitmap(LargeSquareImageWidth, LargeSquareImageWidth);
+    public static readonly BitmapImage SmallEmpty = CreateEmptyBitmap(SmallSquareImageWidth, SmallSquareImageWidth);
 
     private const int WideImageWidth = 256;
     private const int WideImageHeight = 128;
@@ -17,50 +26,20 @@ public sealed class FoxIcon
 
     private const int SmallSquareImageWidth = 64;
 
-    public string Name { get; set; } = "";
-    public Uri Icon { get; set; } = null;
-
-    public static readonly BitmapImage WideEmpty = CreateEmptyBitmap(WideImageWidth, WideImageHeight);
-    private static readonly BitmapImage LargeSquareEmpty = CreateEmptyBitmap(LargeSquareImageWidth, LargeSquareImageWidth);
-    private static readonly BitmapImage SmallSquareEmpty = CreateEmptyBitmap(SmallSquareImageWidth, SmallSquareImageWidth);
-
     static FoxIcon()
     {
         WideEmpty.Freeze();
-        LargeSquareEmpty.Freeze();
-        SmallSquareEmpty.Freeze();
+        LargeEmpty.Freeze();
+        SmallEmpty.Freeze();
     }
 
     public FoxIcon(string file)
     {
-        string[] fileparts = file.Split('\\');
-        string[] iconparts = fileparts[fileparts.Length - 1].Split('.');
-        string iconname = "";
-        if (iconparts.Length > 2)
-        {
-            for (int i = 0; i < iconparts.Length - 1; i++)
-            {
-                if (i != 0)
-                {
-                    iconname += ".";
-                }
-                iconname += iconparts[i];
-            }
-        }
-        else
-        {
-            iconname = iconparts[0];
-        }
-        Name = iconname;
-        if (!AddFolderLine)
-        {
-            Icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\" + file, UriKind.Absolute);
-        }
-        else
-        {
-            Icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + file, UriKind.Absolute);
-            
-        }
+        IconFileInfo = new FileInfo(file);
+        IconName = IconFileInfo.Name.Split('.')[0];
+        WideImage = new(() => { var img = GetWideImage(); img.Freeze(); return img; });
+        LargeImage = new(() => { var img = GetLargeSquareImage(); img.Freeze(); return img; });
+        SmallImage = new(() => { var img = GetSmallSquareImage(); img.Freeze(); return img; });
     }
 
     public BitmapSource GetWideImage()
@@ -70,12 +49,12 @@ public sealed class FoxIcon
 
     public BitmapSource GetLargeSquareImage()
     {
-        return GetSquareImage(LargeSquareImageWidth, LargeSquareEmpty.Clone());
+        return GetSquareImage(LargeSquareImageWidth, LargeEmpty.Clone());
     }
 
     public BitmapSource GetSmallSquareImage()
     {
-        return GetSquareImage(SmallSquareImageWidth, SmallSquareEmpty.Clone());
+        return GetSquareImage(SmallSquareImageWidth, SmallEmpty.Clone());
     }
 
     public BitmapSource GetSquareImage(int square, BitmapImage empty)
@@ -141,7 +120,7 @@ public sealed class FoxIcon
 
     private BitmapSource GetImage()
     {
-        return new BitmapImage(Icon);
+        return new BitmapImage(new Uri(IconFileInfo.FullName, UriKind.Absolute));
     }
 
     public static BitmapSource ToBitmapSource(DrawingImage source)
@@ -191,10 +170,5 @@ public sealed class FoxIcon
         stream.Close();
 
         return bitmapImage;
-    }
-
-    public override string ToString()
-    {
-        return LoggingSystem.ObjectToTextWall(this);
     }
 }
