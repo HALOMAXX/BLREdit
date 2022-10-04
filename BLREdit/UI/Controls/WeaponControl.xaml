@@ -8,6 +8,7 @@
              xmlns:views="clr-namespace:BLREdit.UI.Views"
              xmlns:res="clr-namespace:BLREdit.Properties"
              d:DataContext="{d:DesignInstance Type=views:BLRWeapon}"
+             DataContextChanged="UserControl_DataContextChanged"
              mc:Ignorable="d">
     <UserControl.Resources>
         <BLREdit:BLREditSettings x:Key="Settings"/>
@@ -27,7 +28,7 @@
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
         <Border DataContext="{Binding Path=Scope}" Height="64" Width="64" HorizontalAlignment="Left" Margin="256,0,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Center" Source="{Binding Path=MiniPrimaryCrosshair}" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Tooltip}"/>
+            <Image Name="ScopePreviewImage" HorizontalAlignment="Center" Source="{Binding Path=ScopePreview}" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
         <Border Name="Reciever" DataContext="{Binding Path=Reciever}" Height="64" Width="128" HorizontalAlignment="Left" Margin="128,64,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>

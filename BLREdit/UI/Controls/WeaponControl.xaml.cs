@@ -39,6 +39,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         InitializeComponent();
         BLREditSettings.Settings.AdvancedModding.PropertyChanged += SettingsChanged;
         gripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
+        
     }
 
     public void SettingsChanged(object sender, PropertyChangedEventArgs e)
@@ -60,5 +61,10 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
                 }
             }
         }
+    }
+
+    private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
+        ScopePreviewImage.DataContext = this.DataContext;
     }
 }

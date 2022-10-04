@@ -41,10 +41,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     [JsonIgnore] public BitmapSource largeSquareImageFemale = null;
     [JsonIgnore] public BitmapSource smallSquareImageFemale = null;
 
-
     [JsonIgnore] public BitmapSource Crosshair { get; private set; }
-    [JsonIgnore] public BitmapSource MiniPrimaryCrosshair { get { return GetBitmapCrosshair(Name); } set { OnPropertyChanged(); } }
-    [JsonIgnore] public BitmapSource MiniSecondaryCrosshair { get { return GetBitmapCrosshair(GetSecondaryScope()); } set { OnPropertyChanged(); } }
 
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -257,7 +254,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         if (isPrimary)
         {
-            Crosshair = GetBitmapCrosshair(Name);
+            Crosshair = GetBitmapCrosshair(GetSecondaryScope());
         }
         else
         {

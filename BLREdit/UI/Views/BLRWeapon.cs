@@ -6,7 +6,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 
 namespace BLREdit.UI.Views;
 
@@ -61,7 +64,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public BLRItem Scope
     {
         get { return scope; }
-        set { if (BLREditSettings.Settings.AdvancedModding.Is) { scope = value; ItemChanged(); return; } if (value is null || reciever is null || scope != value && value.IsValidFor(reciever) && value.Category == ImportSystem.SCOPES_CATEGORY) { if (value is null) { scope = ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope); } else { scope = value; } ItemChanged(); } }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { scope = value; ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever is null || scope != value && value.IsValidFor(reciever) && value.Category == ImportSystem.SCOPES_CATEGORY) { if (value is null) { scope = ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope); UpdateScopeIcons(); } else { scope = value; } ItemChanged(); UpdateScopeIcons(); } }
     }
     private BLRItem grip = null;
     public BLRItem Grip
@@ -90,7 +93,92 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
     #endregion Weapon Parts
 
+    [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(GetSecondaryScope()); } set { OnPropertyChanged(); } }
+
     private Export.MagiCowsWeapon weapon = null;
+
+    public static BitmapSource GetBitmapCrosshair(string name)
+    {
+        if (!string.IsNullOrEmpty(name))
+        {
+            foreach (FoxIcon icon in ImportSystem.ScopePreviews)
+            {
+                if (icon.Name.Equals(name))
+                {
+                    return new BitmapImage(icon.Icon);
+                }
+            }
+        }
+        return FoxIcon.CreateEmptyBitmap(1, 1);
+    }
+
+    private string GetSecondaryScope()
+    {
+        var name = Reciever?.Name ?? "";
+        switch (Scope?.Name ?? "")
+        {
+            case "No Optic Mod":
+
+                if (name.Contains("Prestige"))
+                {
+                    return Scope?.Name + " Light Pistol";
+                }
+                else
+                {
+                    return Scope?.Name + " " + name;
+                }
+
+            //Pistols Only
+            case "OPRL Holo Sight":
+            case "Lightsky Reflex Sight":
+            case "Krane Tactical Scope":
+            case "EON Electric Scope":
+            case "EMI Electric Scope":
+            case "ArmCom CQC Scope":
+            case "Aim Point Ammo Counter":
+                return Scope?.Name + GetSecondayScopePistol(name);
+
+            //Pistols and shotguns
+            case "Titan Rail Sight":
+            case "MMRS Flip-Up Rail Sight":
+            case "Lightsky Red Dot Sight":
+            case "Krane Holo Sight":
+                return Scope?.Name + GetSecondayScopePistol(name) + GetSecondayScopeShotgun(name);
+
+            default:
+                return Scope?.Name;
+        }
+    }
+
+    private static string GetSecondayScopeShotgun(string secondaryName)
+    {
+        switch (secondaryName)
+        {
+            case "Shotgun":
+            case "Shotgun AR-k":
+                return " Shotgun";
+            default:
+                return "";
+        }
+    }
+
+    private static string GetSecondayScopePistol(string secondaryName)
+    {
+        switch (secondaryName)
+        {
+            case "Breech Loaded Pistol":
+            case "Snub 260":
+            case "Heavy Pistol":
+            case "Light Pistol":
+            case "Burstfire Pistol":
+            case "Prestige Light Pistol":
+            case "Machine Pistol":
+            case "Revolver":
+                return " Pistol";
+            default:
+                return "";
+        }
+    }
 
     private bool IsPistol()
     {
@@ -148,11 +236,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     private void UpdateScopeIcons()
     {
-        OnPropertyChanged(nameof(Scope));
-        if (scope is not null)
-        {
-            scope.ExternalOnPropertyChanged(nameof(scope.MiniPrimaryCrosshair), nameof(scope.MiniSecondaryCrosshair));
-        }
+        OnPropertyChanged(nameof(ScopePreview));
+        //TODO Update Scope
     }
 
     public BLRWeapon(bool isPrimary)
