@@ -18,14 +18,17 @@
             </Button>
             <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
                 <StackPanel>
-                <TextBlock Margin="5,2,5,2" Text="{Binding Path=DisplayName}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBlock Margin="5,2,5,2" Text="{Binding Path=PingDisplay}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock Margin="5,2,5,2" Text="{Binding Path=DisplayName}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock Margin="5,2,5,2" Text="{Binding Path=PingDisplay}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Border>
             <Button Content="Connect" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding Path=LaunchServerCommand}"/>
             <ComboBox ItemsSource="{Binding Path=Info.List}" Margin="0,0,148,10" Width="128" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged"/>
-            <Border Width="Auto" Height="Auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
-                <TextBlock Margin="5,2,5,2" Text="{Binding Path=Info.Map}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Border Margin="0,0,1,1" Width="Auto" Height="Auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5,2,5,2" Text="{Binding Path=Info.Map}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock Margin="5,2,5,2" Text="{Binding Path=Info.GameMode}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </StackPanel>
             </Border>
         </Grid>
     </Border>
