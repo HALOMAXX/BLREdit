@@ -126,6 +126,9 @@
   <data name="btn_ExportProfile" xml:space="preserve">
     <value>Export Profile</value>
   </data>
+  <data name="btn_GenderToggle_Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
   <data name="btn_GenderToggle_Male" xml:space="preserve">
     <value>Male</value>
   </data>

@@ -22,7 +22,7 @@
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
 
-        <CheckBox Foreground="White" Content="{x:Static res:Resources.btn_GenderToggle_Male}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" HorizontalAlignment="Left" Margin="128,150,0,0" VerticalAlignment="Top"/>
+        <ToggleButton Width="120" Margin="128,150,0,0" Name="GenderButton" Content="{x:Static res:Resources.btn_GenderToggle_Male}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
 
         <Border DataContext="{Binding Path=BodyCamo}" Height="64" Width="64" Margin="0,128,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>

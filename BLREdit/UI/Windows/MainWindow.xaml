@@ -26,7 +26,7 @@
 
         
         
-        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="400" Margin="0,64,0,0">
+        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="400" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged">
             <TabItem Header="Loadout 1">
                 <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Loadout1}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
             </TabItem>

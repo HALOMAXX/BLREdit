@@ -88,6 +88,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        public static string btn_GenderToggle_Female {
+            get {
+                return ResourceManager.GetString("btn_GenderToggle_Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Male.
         /// </summary>
         public static string btn_GenderToggle_Male {

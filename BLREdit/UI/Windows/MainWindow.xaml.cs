@@ -102,10 +102,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             if (wasLastImageScopePreview) { return true; }
             if (o is BLRItem item)
             {
+                if (item.Category == ImportSystem.EMOTES_CATEGORY) { return !string.IsNullOrEmpty(item.Name); }
+
                 if (FilterWeapon is null && (item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY)) { return true; }
-                {
-                    return item.IsValidFor(FilterWeapon);
-                }
+
+                return item.IsValidFor(FilterWeapon);
             }
             return false;
         });
@@ -140,9 +141,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-
-        
-
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
         {
@@ -150,7 +148,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
         if (BLREditSettings.Settings.DoRuntimeCheck || BLREditSettings.Settings.ForceRuntimeCheck)
         {
-            if(App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || BLREditSettings.Settings.ForceRuntimeCheck)
+            if (App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || BLREditSettings.Settings.ForceRuntimeCheck)
             {
                 var info = new InfoPopups.DownloadRuntimes();
                 if (!App.IsUpdateRuntimeMissing)
@@ -187,6 +185,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         CheckGameClients();
         BLREditSettings.SyncDefaultClient();
+
+        Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;
     }
 
     private static void CheckGameClients()
@@ -336,7 +336,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     {
         if (sender is FrameworkElement element)
         {
-            if(element.DataContext is BLRItem item)
+            if (element.DataContext is BLRItem item)
             {
                 if (e.ClickCount >= 2)
                 {
@@ -419,7 +419,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         if (e.ChangedButton == MouseButton.Left)
         {
-            if (wasLastImageScopePreview) 
+            if (wasLastImageScopePreview)
             {
                 foreach (var item in ImportSystem.GetItemListOfType(ImportSystem.SCOPES_CATEGORY))
                 {
@@ -524,7 +524,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             {
                 UndoRedoSystem.DoAction(null, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
                 UndoRedoSystem.EndAction();
-            } 
+            }
             else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
             {
                 UndoRedoSystem.DoAction(null, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
@@ -615,7 +615,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             ApplySorting();
         }
         LoggingSystem.Log($"ItemList Set for {Type}");
-        if(!ItemListTab.IsFocused) ItemListTab.Focus();
+        if (!ItemListTab.IsFocused) ItemListTab.Focus();
     }
 
     public void ApplySorting()
@@ -694,11 +694,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
-        if (shiftDown) 
+        if (shiftDown)
         {
             var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
             Directory.CreateDirectory(directory);
-            IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3)}); 
+            IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3) });
         }
         ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
         var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} got Copied to Clipboard");
@@ -826,7 +826,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void PreviewKeyDownMainWindow(object sender, KeyEventArgs e)
     {
         switch (e.Key)
-        { 
+        {
             case Key.LeftShift:
             case Key.RightShift:
                 shiftDown = true;
@@ -886,12 +886,12 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                     BLREditSettings.Save();
                     var grid = CreateAlertGrid($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
                     AlertList.Items.Add(grid);
-                    new TripleAnimationDouble(0,400,1,3,1,grid,Grid.WidthProperty, AlertList.Items).Begin(AlertList);
+                    new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
                     LoggingSystem.Log($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
                 }
                 break;
             case Key.Z:
-                if(ctrlDown) UndoRedoSystem.Undo();
+                if (ctrlDown) UndoRedoSystem.Undo();
                 break;
             case Key.Y:
                 if (ctrlDown) UndoRedoSystem.Redo();
@@ -901,8 +901,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private Grid CreateAlertGrid(string Alert)
     {
-        TextBox alertText = new() { Text=Alert, TextAlignment=TextAlignment.Center, Foreground=new SolidColorBrush(Color.FromArgb(255,255,136,0)), IsReadOnly=true, FontSize=26};
-        Grid alertGrid = new() { Background = new SolidColorBrush(Color.FromArgb(159,0,0,0)), HorizontalAlignment=HorizontalAlignment.Right, VerticalAlignment=VerticalAlignment.Center, Width=400 };
+        TextBox alertText = new() { Text = Alert, TextAlignment = TextAlignment.Center, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0)), IsReadOnly = true, FontSize = 26 };
+        Grid alertGrid = new() { Background = new SolidColorBrush(Color.FromArgb(159, 0, 0, 0)), HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Center, Width = 400 };
         alertGrid.Children.Add(alertText);
         return alertGrid;
     }
@@ -919,5 +919,27 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         int index = e.Text.IndexOfAny(InvalidNameChars);
         if (index >= 0)
         { e.Handled = true; }
+    }
+
+    private void LoadoutTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        BLRLoadout loadoutOld = null;
+        BLRLoadout loadoutNew = null;
+        if (e.RemovedItems.Count > 0 && ((TabItem)e.RemovedItems[0]).Content is LoadoutControl loadoutRemoved)
+        {
+            loadoutOld = (BLRLoadout)loadoutRemoved.DataContext;
+        }
+        if (e.AddedItems.Count > 0 && ((TabItem)e.AddedItems[0]).Content is LoadoutControl loadoutAdded)
+        {
+            loadoutNew = (BLRLoadout)loadoutAdded.DataContext;
+        }
+
+        if (loadoutOld is not null)
+        {
+            if (loadoutOld.IsFemale == loadoutNew.IsFemale)
+            { return; }
+        }
+        if (loadoutNew is not null)
+        { loadoutNew.IsFemale = loadoutNew.IsFemale; }
     }
 }

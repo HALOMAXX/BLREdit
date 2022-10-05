@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.UI.Views;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,18 @@ namespace BLREdit.UI.Controls
         public GearControl()
         {
             InitializeComponent();
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (((BLRLoadout)this.DataContext).IsFemale)
+            {
+                GenderButton.Content = BLREdit.Properties.Resources.btn_GenderToggle_Female;
+            }
+            else
+            {
+                GenderButton.Content = BLREdit.Properties.Resources.btn_GenderToggle_Male;
+            }
         }
     }
 }
