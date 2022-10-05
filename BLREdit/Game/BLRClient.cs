@@ -214,6 +214,24 @@ public sealed class BLRClient : INotifyPropertyChanged
     public void ValidateModules()
     {
         LoggingSystem.Log($"Validating Modules({InstalledModules.Count}) of {this}");
+
+        // TODO Remove old / other modules
+        foreach (var file in Directory.EnumerateFiles(ModulesFolder))
+        { 
+            var info = new FileInfo(file);
+            if (info.Extension == ".dll")
+            {
+                var name = info.Name.Split('.')[0];
+                bool isInstalled = false;
+                foreach (var module in InstalledModules)
+                {
+                    if (name == module.InstallName)
+                    { isInstalled = true; break; }
+                }
+                if (!isInstalled) { info.Delete(); }
+            }
+        }
+
         ProxyConfig config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}\\default.json") ?? new();
         config.Proxy.Modules.Server.Clear();
         config.Proxy.Modules.Client.Clear();
