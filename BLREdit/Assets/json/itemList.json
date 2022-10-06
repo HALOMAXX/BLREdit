@@ -13315,7 +13315,7 @@
       "Category": "barrels",
       "DescriptorName": "Restrained",
       "Icon": "t_Barrel_BPGrip02_128x128",
-      "Name": "ArmCom BAR-01",
+      "Name": "Armcom BAR-01",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
@@ -13379,7 +13379,7 @@
       "Category": "barrels",
       "DescriptorName": "Clutched",
       "Icon": "t_Barrel_BPGrip03_128x128",
-      "Name": "ArmCom BARl1",
+      "Name": "Armcom BARl1",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
