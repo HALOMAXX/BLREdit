@@ -213,7 +213,11 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ValidateModules()
     {
-        LoggingSystem.Log($"Validating Modules({InstalledModules.Count}) of {this}");
+        var count = InstalledModules.Count;
+
+        InstalledModules = new (InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { isAvailable = true; } } return isAvailable; }));
+
+        LoggingSystem.Log($"Validating Modules({count}/{InstalledModules.Count}) of {this}");
 
         // TODO Remove old / other modules
         foreach (var file in Directory.EnumerateFiles(ModulesFolder))
