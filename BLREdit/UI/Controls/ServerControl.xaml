@@ -16,6 +16,9 @@
             <Button Width="64" Height="32" Margin="0,10,10,0" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Ping Server" Command="{Binding Path=RefreshPingCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/refresh.png"/>
             </Button>
+            <Button Width="64" Height="32" Margin="0,10,84,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Edit Server" Command="{Binding Path=EditServerCommand}">
+                <Image Margin="0,0,0,3" Source="../Resources/settings.png"/>
+            </Button>
             <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
                 <StackPanel>
                     <TextBlock Margin="5,2,5,2" Text="{Binding Path=DisplayName}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>

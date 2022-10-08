@@ -237,7 +237,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     private void UpdateScopeIcons()
     {
         OnPropertyChanged(nameof(ScopePreview));
-        //TODO Update Scope
     }
 
     public BLRWeapon(bool isPrimary)

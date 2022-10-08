@@ -27,7 +27,7 @@ public sealed partial class MapModeSelect : Window
 
     private BLRMap SelectedMap = null;
     private BLRMode SelectedMode = null;
-    private bool CanClose = true;
+    private bool IsCanceled = true;
 
     static MapModeSelect()
     {
@@ -59,11 +59,11 @@ public sealed partial class MapModeSelect : Window
         });
     }
 
-    public static (BLRMode Mode, BLRMap Map) SelectMapAndMode(string clientVersion)
+    public static (BLRMode Mode, BLRMap Map, bool Canceled) SelectMapAndMode(string clientVersion)
     {
         MapModeSelect window = new(clientVersion);
         window.ShowDialog();
-        return (window.SelectedMode, window.SelectedMap);
+        return (window.SelectedMode, window.SelectedMap, window.IsCanceled);
     }
 
     private void WindowLoaded(object sender, RoutedEventArgs e)
@@ -78,12 +78,7 @@ public sealed partial class MapModeSelect : Window
         var comboBox = (ComboBox)grid.Children[2];
         SelectedMode = (BLRMode)comboBox.SelectedItem;
         SelectedMap = (BLRMap)button.DataContext;
-        CanClose = false;
+        IsCanceled = false;
         this.Close();
-    }
-
-    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-    {
-        e.Cancel = CanClose;
     }
 }

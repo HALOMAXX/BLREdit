@@ -1,6 +1,7 @@
 ﻿using BLREdit.API.REST_API.MagiCow;
 using BLREdit.Export;
 using BLREdit.UI;
+using BLREdit.UI.Windows;
 
 using System;
 using System.ComponentModel;
@@ -23,17 +24,17 @@ public sealed class BLRServer : INotifyPropertyChanged
     private bool isOnline = false;
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
-    [JsonIgnore] public double Ping { get { return ping; } private set { ping = value; PingDisplay = ""; OnPropertyChanged(); } }
-    [JsonIgnore] public string PingDisplay { get { return ping.ToString() + "ms"; } private set { OnPropertyChanged(); } }
+    [JsonIgnore] public double Ping { get { return ping; } private set { ping = value; OnPropertyChanged(nameof(PingDisplay)); OnPropertyChanged(); } }
+    [JsonIgnore] public string PingDisplay { get { if (!double.IsNaN(ping)) { return "Online"; } else { return "Offline"; } } }
     [JsonIgnore] public bool IsOnline { get { return isOnline; } private set { isOnline = value; IsNotOnline = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotOnline { get { return !isOnline; } private set { OnPropertyChanged(); } }
 
-    private UIBool isPinging = new(false);
+    private readonly UIBool isPinging = new(false);
     [JsonIgnore] public UIBool IsPinging { get { return isPinging; } }
 
     [JsonIgnore] public MagiCowServerInfo Info { get; private set; }
 
-    [JsonIgnore] public string DisplayName { get { if (Info is null) { return ServerAddress; } else { return Info.ServerName; } } }
+    [JsonIgnore] public string DisplayName { get { if (!(Info?.IsOnline ?? false)) { return ServerAddress; } else { return Info.ServerName; } } }
 
 
     [JsonIgnore] private string serverName;
@@ -56,7 +57,14 @@ public sealed class BLRServer : INotifyPropertyChanged
                     }
                 }
             }
-            catch { }
+            catch
+            {
+                Info = new();
+                IsOnline = false;
+                Ping = double.NaN;
+                OnPropertyChanged(nameof(Info));
+                LoggingSystem.Log($"Failed to get IPAddress for {ServerAddress}");
+            }
             return null;
         }
     }
@@ -157,7 +165,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         var task = MagiCowClient.GetServerInfo(ServerAddress);
         task.Wait();
         Info = task.Result;
-        if (Info is null) { Info = new(); }
+        if (Info is null) { Info = new(); } else { Info.IsOnline = true; }
         OnPropertyChanged(nameof(Info));
         isPinging.SetBool(false);
         LoggingSystem.Log($"got Server Info for [{ServerAddress}]");
@@ -177,6 +185,26 @@ public sealed class BLRServer : INotifyPropertyChanged
         else
         {
             LoggingSystem.Log("[" + ServerAddress + "]:" + reply.Status);
+        }
+    }
+
+    private void EditServer()
+    {
+        var window = new BLRServerWindow(this);
+        window.ShowDialog();
+        OnPropertyChanged(nameof(DisplayName));
+    }
+
+    private ICommand editServerCommand;
+    [JsonIgnore]
+    public ICommand EditServerCommand
+    {
+        get
+        {
+            editServerCommand ??= new RelayCommand(
+                    param => this.EditServer()
+                );
+            return editServerCommand;
         }
     }
 
@@ -208,14 +236,8 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     public void LaunchClient()
     {
-        if (BLREditSettings.Settings.DefaultClient is null)
-        {
-            //No Default Client selected
-        }
-        else
-        {
-            BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = ExportSystem.ActiveProfile.PlayerName, Server = this });
-        }
+        if (BLREditSettings.Settings.DefaultClient is not null)
+        { BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = ExportSystem.ActiveProfile.PlayerName, Server = this }); }
     }
 
     public override int GetHashCode()

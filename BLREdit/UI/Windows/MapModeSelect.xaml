@@ -7,7 +7,7 @@
         xmlns:import="clr-namesepace:BLREdit.Import"
         mc:Ignorable="d"
         Title="MapModeSelect" Height="823" Width="833"
-        Loaded="WindowLoaded" Closing="Window_Closing">
+        Loaded="WindowLoaded">
 
     <Window.Background>
         <ImageBrush ImageSource="../Resources/Default_2016.png" />

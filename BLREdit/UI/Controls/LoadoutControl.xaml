@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
              mc:Ignorable="d">
     <Grid>
-        <TabControl BorderThickness="0,1,0,0">
+        <TabControl Name="LoadoutTabControl" BorderThickness="0,1,0,0" SelectionChanged="LoadoutTabControl_Selected">
             <TabItem Header="Weapons">
                 <Grid>
                     <ui:WeaponControl x:Name="PrimaryControl" DataContext="{Binding Path=Primary}" x:FieldModifier="public"/>

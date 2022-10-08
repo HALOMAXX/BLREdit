@@ -219,7 +219,6 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         LoggingSystem.Log($"Validating Modules({count}/{InstalledModules.Count}) of {this}");
 
-        // TODO Remove old / other modules
         foreach (var file in Directory.EnumerateFiles(ModulesFolder))
         { 
             var info = new FileInfo(file);
@@ -345,9 +344,8 @@ public sealed class BLRClient : INotifyPropertyChanged
     #region Launch/Exit
     private void LaunchBotMatch()
     {
-        //TODO Map/Mode Select
-        (var mode, var map) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
-
+        (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
+        if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
         string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?SingleMatch?NumBots=12";
         StartProcess(launchArgs);
     }
@@ -373,7 +371,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         ValidateClient();
         ValidateModules();
-        //Write Proxy Config for installed modules
 
         ProcessStartInfo psi = new()
         {

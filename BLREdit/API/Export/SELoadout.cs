@@ -35,6 +35,5 @@ public sealed class SELoadout
         Depot[2] = ImportSystem.GetIDOfItem(loadout.Depot3);
         Depot[3] = ImportSystem.GetIDOfItem(loadout.Depot4);
         Depot[4] = ImportSystem.GetIDOfItem(loadout.Depot5);
-        //TODO Depot, Taunts
     }
 }

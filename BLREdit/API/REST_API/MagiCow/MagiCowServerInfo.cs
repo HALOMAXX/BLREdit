@@ -14,6 +14,8 @@ public sealed class MagiCowServerInfo
     public string ServerName { get; set; } = "";
     public string GameMode { get; set; } = "DM";
 
+    public bool IsOnline { get; set; } = false;
+
     private BLRMap map;
     [JsonIgnore]
     public BLRMap BLRMap

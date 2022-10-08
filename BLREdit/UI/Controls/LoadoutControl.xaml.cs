@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +22,36 @@ namespace BLREdit.UI.Controls
     /// </summary>
     public partial class LoadoutControl : UserControl
     {
+        #region Event
+        public static event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion Event
+
+        public static int SelectedIndex { get; private set; } = 0;
         public LoadoutControl()
         {
             InitializeComponent();
+            LoadoutControl.PropertyChanged += GlobalTabIndexChanged;
+        }
+
+        ~LoadoutControl()
+        {
+            LoadoutControl.PropertyChanged -= GlobalTabIndexChanged;
+        }
+
+        public void GlobalTabIndexChanged(object sender, PropertyChangedEventArgs args)
+        {
+            if (args.PropertyName == nameof(SelectedIndex))
+            { this.LoadoutTabControl.SelectedIndex = SelectedIndex; }
+        }
+
+        private void LoadoutTabControl_Selected(object sender, RoutedEventArgs e)
+        {
+            SelectedIndex = this.LoadoutTabControl.SelectedIndex;
+            OnPropertyChanged(nameof(SelectedIndex));
         }
     }
 }
