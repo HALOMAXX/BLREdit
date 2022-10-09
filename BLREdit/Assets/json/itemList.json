@@ -48521,109 +48521,127 @@
       "Category": "shop",
       "Icon": "t_Depot_HealthRefill_128x128",
       "Name": "Health Refill",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 100
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_ExtraAmmo_128x128",
       "Name": "Ammo Refill",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 100
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_Flamethrower_128x128",
       "Name": "Flamethrower",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 350
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_RocketLauncherArmor_128x128",
       "Name": "Rocket Stinger",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 400
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_HardSuit_128x128",
       "Name": "Rhino Hardsuit",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 1300
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_RocketLauncherSwarm_128x128",
       "Name": "Rocket Swarm",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 1000
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_Airstrike_128x128",
       "Name": "Airstrike",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 600
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_Railgun_128x128",
       "Name": "Railgun",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 750
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_GrenadeLauncher_128x128",
       "Name": "Grenade Launcher",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 500
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_MiniGun_128x128",
       "Name": "Minigun",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 750
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_Turret_128x128",
       "Name": "Turret",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 600
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_HeavyAmmunition_128x128",
       "Name": "Heavy Weapon Refill",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 250
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_Katana_128x128",
       "Name": "Katana",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 350
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_HardsuitHRVDecoy_128x128",
       "Name": "Hardsuit HRV Decoy",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 200
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_AssaultBot_128x128",
       "Name": "MK1 Assault AI",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 500
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_LightHardSuit_128x128",
       "Name": "Gunman Hardsuit",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 975
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_EMPMine_128x128",
       "Name": "HRV Jammer",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 1000
     },
     {
       "Category": "shop",
       "Icon": "t_Depot_HealthRefill_128x128",
       "Name": "Toxic Antidote",
-      "Tooltip": ""
+      "Tooltip": "",
+      "CP": 200
     }
   ]
 }

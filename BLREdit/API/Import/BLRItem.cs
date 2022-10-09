@@ -18,6 +18,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     public string DescriptorName { get; set; } = "";
     public string Icon { get; set; }
     public string Name { get; set; }
+    public int CP { get; set; } = 0;
 
     [JsonIgnore] public string DisplayName { get { return LanguageSet.GetWord(UID.ToString() + ".Name", Name); } }
 
