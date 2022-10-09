@@ -694,12 +694,9 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
-        if (shiftDown)
-        {
-            var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
-            Directory.CreateDirectory(directory);
-            IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3) });
-        }
+        var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
+        Directory.CreateDirectory(directory);
+        IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3) });
         ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
         var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} got Copied to Clipboard");
         AlertList.Items.Add(grid);
