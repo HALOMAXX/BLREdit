@@ -9,32 +9,32 @@
              d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
              mc:Ignorable="d">
     <Grid>
-        <Border DataContext="{Binding Path=Helmet}" Height="64" Width="64" Margin="64,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Helmet}" Height="64" Width="64" Margin="69,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=UpperBody}" Height="64" Width="64" Margin="64,64,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=UpperBody}" Height="64" Width="64" Margin="69,69,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=LowerBody}" Height="64" Width="64" Margin="64,128,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=LowerBody}" Height="64" Width="64" Margin="69,138,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Tactical}" Height="64" Width="64" Margin="128,64,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
-        </Border>
-
-        <ToggleButton Width="120" Margin="128,150,0,0" Name="GenderButton" Content="{x:Static res:Resources.btn_GenderToggle_Male}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-
-        <Border DataContext="{Binding Path=BodyCamo}" Height="64" Width="64" Margin="0,128,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
-        </Border>
-        <Border DataContext="{Binding Path=Avatar}" Height="64" Width="64" Margin="0,64,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
-        </Border>
-        <Border DataContext="{Binding Path=Trophy}" Height="64" Width="64" Margin="128,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Tactical}" Height="64" Width="64" Margin="138,69,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
 
-        <Grid Height="64" Width="64" Margin="0,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <ToggleButton Width="120" Height="22" Margin="138,160,0,0" Name="GenderButton" Content="{x:Static res:Resources.btn_GenderToggle_Male}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+
+        <Border DataContext="{Binding Path=BodyCamo}" Height="64" Width="64" Margin="0,138,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Avatar}" Height="64" Width="64" Margin="0,69,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Trophy}" Height="64" Width="64" Margin="138,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+
+        <Grid Height="64" Width="64" Margin="0,207,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Border DataContext="{Binding Path=Gear1}" AllowDrop="True">
                 <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
             </Border>
@@ -44,7 +44,7 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Grid Height="64" Width="64" Margin="64,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid Height="64" Width="64" Margin="69,207,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Border DataContext="{Binding Path=Gear2}" AllowDrop="True">
                 <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
             </Border>
@@ -54,7 +54,7 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Grid Height="64" Width="64" Margin="128,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid Height="64" Width="64" Margin="138,207,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Border DataContext="{Binding Path=Gear3}" AllowDrop="True">
                 <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
             </Border>
@@ -64,7 +64,7 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Grid Height="64" Width="64" Margin="192,192,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid Height="64" Width="64" Margin="207,207,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Border DataContext="{Binding Path=Gear4}" AllowDrop="True">
                 <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
             </Border>
@@ -75,12 +75,12 @@
             </Rectangle>
         </Grid>
 
-        <Grid Width="400" Height="76" Margin="0,256,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid Height="76" Margin="0,270,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="62" />
+                <ColumnDefinition Width="44" />
+                <ColumnDefinition Width="125" />
+                <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

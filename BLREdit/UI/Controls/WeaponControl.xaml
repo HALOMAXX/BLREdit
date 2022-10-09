@@ -15,41 +15,41 @@
     </UserControl.Resources>
     <Grid>
         <Label Content="{Binding Path=WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Border DataContext="{Binding Path=Muzzle}" Height="64" Width="64" HorizontalAlignment="Left" Margin="0,64,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Muzzle}" Height="64" Width="64" HorizontalAlignment="Left" Margin="0,69,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage }" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Barrel}" Height="64" Width="64" HorizontalAlignment="Left" Margin="64,64,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Barrel}" Height="64" Width="64" HorizontalAlignment="Left" Margin="69,69,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Magazine}" Height="64" Width="64" HorizontalAlignment="Left" Margin="128,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Magazine}" Height="64" Width="64" HorizontalAlignment="Left" Margin="138,138,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Scope}" Height="64" Width="64" HorizontalAlignment="Left" Margin="192,0,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Scope}" Height="64" Width="64" HorizontalAlignment="Left" Margin="202,0,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Scope}" Height="64" Width="64" HorizontalAlignment="Left" Margin="256,0,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Scope}" Height="64" Width="64" HorizontalAlignment="Left" Margin="271,0,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image Name="ScopePreviewImage" HorizontalAlignment="Center" Source="{Binding Path=ScopePreview}" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Scope.Tooltip}" d:DataContext="{d:DesignInstance Type=views:BLRWeapon}"/>
         </Border>
-        <Border Name="Reciever" DataContext="{Binding Path=Reciever}" Height="64" Width="128" HorizontalAlignment="Left" Margin="128,64,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border Name="Reciever" DataContext="{Binding Path=Reciever}" Height="64" Width="128" HorizontalAlignment="Left" Margin="138,69,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Stock}" Height="64" Width="64" HorizontalAlignment="Left" Margin="256,64,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Stock}" Height="64" Width="64" HorizontalAlignment="Left" Margin="271,69,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Ammo}" Height="64" Width="64" HorizontalAlignment="Left" Margin="192,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Ammo}" Height="64" Width="64" HorizontalAlignment="Left" Margin="202,138,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Tag}" Height="64" Width="64" HorizontalAlignment="Left" Margin="256,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Tag}" Height="64" Width="64" HorizontalAlignment="Left" Margin="271,138,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Camo}" Height="64" Width="64" HorizontalAlignment="Left" Margin="64,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Camo}" Height="64" Width="64" HorizontalAlignment="Left" Margin="69,138,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=GripVisibility}" DataContext="{Binding Path=Grip}" Height="64" Width="64" HorizontalAlignment="Left" Margin="0,128,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=GripVisibility}" DataContext="{Binding Path=Grip}" Height="64" Width="64" HorizontalAlignment="Left" Margin="0,138,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=SmallSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
 
-        <Grid Width="400" Height="128" Margin="0,192,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid Width="400" Height="128" Margin="0,202,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="54" />
                 <ColumnDefinition Width="60" />

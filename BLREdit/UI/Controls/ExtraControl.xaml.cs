@@ -20,6 +20,9 @@ namespace BLREdit.UI.Controls
     /// </summary>
     public partial class ExtraControl : UserControl
     {
+
+        //TODO Change label colors
+
         public ExtraControl()
         {
             InitializeComponent();

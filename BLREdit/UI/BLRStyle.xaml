@@ -244,6 +244,46 @@
         </Setter>
     </Style>
 
+    <Style TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <Image Name="Normal" Source="Resources/CleanedButton.png" Stretch="Fill" Width="{Binding (ToggleButton.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}" Height="{Binding (ToggleButton.ActualHeight), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"/>
+                        <Image Name="Hover" Visibility="Hidden" Source="Resources/CleanedButtonHover.png" Stretch="Fill" Width="{Binding (ToggleButton.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}" Height="{Binding (ToggleButton.ActualHeight), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Grid.Column="1" Name="ButtonContent" VerticalAlignment="Center" Content="{Binding (ToggleButton.Content), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}">
+                                <ContentPresenter.Style>
+                                    <Style>
+                                        <Setter Property="TextBlock.Foreground" Value="#FF78AEBC"/>
+                                    </Style>
+                                </ContentPresenter.Style>
+                            </ContentPresenter>
+
+                            <!--Foreground="#FF78AEBC"-->
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="Hover" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="ButtonContent" Property="TextBlock.Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="Hover" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="ButtonContent" Property="TextBlock.Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="Label" x:Key="DescriptorLabel">
         <Setter Property="TextBlock.Foreground" Value="#FFD2D2D2"/>
     </Style>

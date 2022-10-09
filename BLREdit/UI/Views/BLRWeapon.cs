@@ -207,6 +207,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     private void ApplyCorrectAmmo()
     {
+        if (Reciever is null) return;
         if (Reciever.UID == 40024)
         {
             Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, Magazine.Name);

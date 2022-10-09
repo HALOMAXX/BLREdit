@@ -151,7 +151,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Head Protection.
+        ///   Looks up a localized string similar to Head Protection:.
         /// </summary>
         public static string lbl_HeadArmor {
             get {

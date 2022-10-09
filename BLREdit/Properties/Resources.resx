@@ -148,7 +148,7 @@
     <value>Gear Slots:</value>
   </data>
   <data name="lbl_HeadArmor" xml:space="preserve">
-    <value>Head Protection</value>
+    <value>Head Protection:</value>
   </data>
   <data name="lbl_Health" xml:space="preserve">
     <value>Health:</value>

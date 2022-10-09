@@ -9,34 +9,34 @@
              d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
              mc:Ignorable="d">
     <Grid>
-        <Label Content="Taunts:"/>
-        <Border DataContext="{Binding Path=Taunt1}" Height="64" Width="64" Margin="64,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Label Content="Taunts:" Style="{StaticResource DescriptorLabel}"/>
+        <Border DataContext="{Binding Path=Taunt1}" Height="64" Width="64" Margin="69,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Taunt2}" Height="64" Width="64" Margin="128,64,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Taunt2}" Height="64" Width="64" Margin="138,69,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Taunt3}" Height="64" Width="64" Margin="64,128,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Taunt3}" Height="64" Width="64" Margin="69,138,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Taunt4}" Height="64" Width="64" Margin="0,64,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Taunt4}" Height="64" Width="64" Margin="0,69,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
 
-        <Label Margin="0,230,0,0" Content="Depot:"/>
+        <Label Margin="0,230,0,0" Content="Depot:" Style="{StaticResource DescriptorLabel}"/>
         <Border DataContext="{Binding Path=Depot1}" Height="64" Width="64" Margin="0,256,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Depot2}" Height="64" Width="64" Margin="64,256,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Depot2}" Height="64" Width="64" Margin="69,256,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Depot3}" Height="64" Width="64" Margin="128,256,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Depot3}" Height="64" Width="64" Margin="138,256,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Depot4}" Height="64" Width="64" Margin="0,320,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Depot4}" Height="64" Width="64" Margin="0,325,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Depot5}" Height="64" Width="64" Margin="64,320,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Depot5}" Height="64" Width="64" Margin="69,325,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
     </Grid>
