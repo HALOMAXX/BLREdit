@@ -77,7 +77,5 @@ public sealed class SEWeapon
         Hanger = ImportSystem.GetIDOfItem(weapon.Tag);
 
         Ammo = weapon?.Ammo?.LMID ?? 0;
-
-        //TODO (Weapon) Ammo Type according to magazine type (Arrows, Breech Loaded Pistol)
     }
 }

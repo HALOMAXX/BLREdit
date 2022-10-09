@@ -12450,7 +12450,7 @@
       "LMID": 5,
       "Category": "ammos",
       "DescriptorName": "",
-      "Icon": "t_MagSlug_Flare_128x128",
+      "Icon": "t_MagSlug_Incendiary_128x128",
       "Name": "Incendiary Flare",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -12544,7 +12544,7 @@
       "LMID": 8,
       "Category": "ammos",
       "DescriptorName": "",
-      "Icon": "t_MagSlug_Flare_128x128",
+      "Icon": "t_MagSlug_DgnBth_128x128",
       "Name": "Canister",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
@@ -12591,7 +12591,7 @@
       "LMID": 9,
       "Category": "ammos",
       "DescriptorName": "",
-      "Icon": "t_MagSlug_Flare_128x128",
+      "Icon": "t_MagSlug_Slug_128x128",
       "Name": "Thumper Flare",
       "PawnModifiers": {
         "BodyDamageReduction": 0,

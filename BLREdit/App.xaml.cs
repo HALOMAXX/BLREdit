@@ -19,8 +19,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.6.1";
-    public const string CurrentVersionTitle = "BLREdit Bug fix & Performance";
+    public const string CurrentVersion = "v0.7.0";
+    public const string CurrentVersionTitle = "BLREdit Big Feature Update";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 

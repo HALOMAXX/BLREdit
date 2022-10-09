@@ -45,7 +45,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public BLRItem Magazine
     {
         get { return magazine; }
-        set { if (BLREditSettings.Settings.AdvancedModding.Is) { magazine = value; ItemChanged(); return; } if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever).GetMagazine(); } else { magazine = value; ApplyCorrectAmmo(); } ItemChanged(); } }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { magazine = value; ItemChanged(); return; } if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever).GetMagazine(); } else { magazine = value; } ApplyCorrectAmmo(); ItemChanged(); } }
     }
 
     private BLRItem muzzle = null;
@@ -89,7 +89,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public BLRItem Ammo
     {
         get { return ammo; }
-        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 2); } else { ammo = value; } ItemChanged(); } }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { ApplyCorrectAmmo(); } else { ammo = value; } ItemChanged(); } }
     }
     #endregion Weapon Parts
 
@@ -208,14 +208,51 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     private void ApplyCorrectAmmo()
     {
         if (Reciever is null) return;
-        if (Reciever.UID == 40024)
+        switch (Reciever.UID)
         {
+            case 40024:
             Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, Magazine.Name);
-        }
-
-        if (Reciever.UID == 40015)
-        {
-            // TODO get Proper Ammo to the Breech Loaded Pistol Magazine Types
+                break;
+            case 40015:
+                switch (Magazine.Name)
+                {
+                    case "Flechette Chamber Boring":
+                        Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Canister");
+                        break;
+                    case "High Explosive Round Bore":
+                        Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Explosive Flare");
+                        break;
+                    case "Incendiary Round Bore":
+                        Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Incendiary Flare");
+                        break;
+                }
+                break;
+            default:
+                if ((Magazine?.Name?.Contains("Magnum") ?? false))
+                {
+                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 0);
+                }
+                else if ((Magazine?.Name?.Contains("Electro") ?? false))
+                {
+                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 3);
+                }
+                else if ((Magazine?.Name?.Contains("Explosive") ?? false))
+                {
+                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 4);
+                }
+                else if ((Magazine?.Name?.Contains("Incendiary") ?? false))
+                {
+                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 6);
+                }
+                else if ((Magazine?.Name?.Contains("Toxic") ?? false))
+                {
+                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 7);
+                }
+                else
+                {
+                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 2);
+                }
+                break;
         }
     }
 
@@ -832,6 +869,14 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
         else
         { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Magazine)), this); }
+
+        if (Reciever.IsValidModType(ImportSystem.AMMO_CATEGORY))
+        {
+            if (Ammo is null || !Ammo.IsValidFor(Reciever))
+            { UndoRedoSystem.DoActionAfter(wpn.GetAmmo(), GetType().GetProperty(nameof(Ammo)), this); }
+        }
+        else
+        { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Ammo)), this); }
 
         if (Reciever.IsValidModType(ImportSystem.GRIPS_CATEGORY))
         {
