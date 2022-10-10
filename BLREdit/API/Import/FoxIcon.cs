@@ -36,7 +36,7 @@ public sealed class FoxIcon
     public FoxIcon(string file)
     {
         IconFileInfo = new FileInfo(file);
-        IconName = IconFileInfo.Name.Split('.')[0];
+        IconName = IconFileInfo.Name.Substring(0, IconFileInfo.Name.Length - IconFileInfo.Extension.Length);
         WideImage = new(() => { var img = GetWideImage(); img.Freeze(); return img; });
         LargeImage = new(() => { var img = GetLargeSquareImage(); img.Freeze(); return img; });
         SmallImage = new(() => { var img = GetSmallSquareImage(); img.Freeze(); return img; });
