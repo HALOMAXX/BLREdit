@@ -39,7 +39,12 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         InitializeComponent();
         BLREditSettings.Settings.AdvancedModding.PropertyChanged += SettingsChanged;
         gripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
-        
+    }
+
+    public void SetGripVisibility(Visibility visibility)
+    {
+        gripVisibility = visibility;
+        OnPropertyChanged(nameof(GripVisibility));
     }
 
     public void SettingsChanged(object sender, PropertyChangedEventArgs e)

@@ -34,7 +34,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     #region Weapon Parts
     private BLRItem reciever = null;
-    public BLRItem Reciever { get { return reciever; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { reciever = value; ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
+    public BLRItem Reciever { get { return reciever; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { reciever = value; AddMissingDefaultParts(); ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
+
     private BLRItem barrel = null;
     public BLRItem Barrel
     {
@@ -110,6 +111,40 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             }
         }
         return FoxIcon.CreateEmptyBitmap(1, 1);
+    }
+
+    private void AddMissingDefaultParts()
+    {
+        if (Reciever is null) { LoggingSystem.Log($"can't check for default setup of Weapons as Reciever is missing!"); return; }
+        var wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
+        if (wpn is null) { LoggingSystem.Log($"missing default setup for {Reciever?.Name}"); return; }
+
+        if (Barrel is null || Barrel.Name == MagiCowsWeapon.NoBarrel)
+        { 
+            Barrel = wpn.GetBarrel();
+        }
+        if (Scope is null || Scope.Name == MagiCowsWeapon.NoScope)
+        {
+            Scope = wpn.GetScope();
+        }
+        if (Stock is null || Stock.Name == MagiCowsWeapon.NoStock)
+        {
+            Stock = wpn.GetStock();
+        }
+        if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
+        {
+            Grip = wpn.GetGrip();
+        }
+
+        if (Muzzle is null || Muzzle.GetMagicCowsID() == MagiCowsWeapon.NoMuzzle)
+        { 
+            Muzzle = wpn.GetMuzzle();
+        }
+        if (Magazine is null || Magazine.GetMagicCowsID() == MagiCowsWeapon.NoMagazine)
+        {
+            Magazine = wpn.GetMagazine();
+            ApplyCorrectAmmo();
+        }
     }
 
     private string GetSecondaryScope()
