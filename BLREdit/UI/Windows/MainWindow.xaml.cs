@@ -171,7 +171,12 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         IOResources.GetGameLocationsFromSteam();
         foreach (string folder in IOResources.GameFolders)
         {
-            AddGameClient(new BLRClient() { OriginalPath = $"{folder}{IOResources.GAME_DEFAULT_EXE}" });
+            var GameInstance = $"{folder}{IOResources.GAME_DEFAULT_EXE}";
+            if (File.Exists(GameInstance))
+            {
+                LoggingSystem.Log($"Adding Steam Client: {GameInstance}");
+                AddGameClient(new BLRClient() { OriginalPath = GameInstance });
+            }
         }
 
         AddDefaultServers();

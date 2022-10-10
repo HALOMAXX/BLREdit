@@ -106,17 +106,7 @@ public sealed class IOResources
             if (library.Key != "contentstatsid")
             {
                 //0 = path /// 6=apps
-                var tokens = library.Value.Children();
-                if (tokens.Count() >= 7)
-                {
-                    foreach (VProperty app in ((VProperty)tokens.ElementAt(6)).Value.Children().Cast<VProperty>())
-                    {
-                        if (app.Key == appID)
-                        {
-                            GameFolders.Add(((VValue)((VProperty)tokens.ElementAt(0)).Value).Value + "\\" + GAME_PATH_SUFFIX);
-                        }
-                    }
-                }
+                GameFolders.Add($"{((VValue)((VProperty)library.Value.Children().First()).Value).Value}\\{GAME_PATH_SUFFIX}");
             }
         }
     }

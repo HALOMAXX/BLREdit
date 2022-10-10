@@ -1,0 +1,22 @@
+[
+  {
+    "ServerName": "MagiCow\u0027s Server",
+    "ServerAddress": "mooserver.ddns.net",
+    "Port": 7777
+  },
+  {
+    "ServerName": "Akoot\u0027s Server",
+    "ServerAddress": "blr.akoot.me",
+    "Port": 7777
+  },
+  {
+    "ServerName": "IKE753Z\u0027s Server",
+    "ServerAddress": "blr.753z.net",
+    "Port": 7777
+  },
+  {
+    "ServerName": "Local Host",
+    "ServerAddress": "localhost",
+    "Port": 7777
+  }
+]

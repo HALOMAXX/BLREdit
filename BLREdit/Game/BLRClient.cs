@@ -54,7 +54,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string originalPath;
     public string OriginalPath { 
         get { return originalPath; } 
-        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } } 
+        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"not a valid Client Path {value}"); } } 
     }
 
     private string patchedPath;

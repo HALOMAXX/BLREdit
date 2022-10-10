@@ -54,7 +54,7 @@ public partial class App : System.Windows.Application
         UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>("GameClients.json") ?? new();
         UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>("ServerList.json") ?? new();
 
-        LoggingSystem.Log("Validating Client List");
+        LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
         for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
         {
             if (!UI.MainWindow.GameClients[i].OriginalFileValidation())

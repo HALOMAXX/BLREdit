@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [{
+        "name": "MyLauncher",
+            "type":"clr",
+            "request": "launch",
+            "program": "BLREdit.exe",
+            "cwd": "${workspaceFolder}/bin/Debug/net48/",
+            "args":[],
+            "console": "externalTerminal",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"            
+    }]
+}

@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "mybuild",
+            "command":"dotnet",
+            "type":"shell",
+            "args":[
+                "<project>.csproj",
+                "/t:Build",
+                "/p:Configuration=Debug",
+                "/p:Platform=\"AnyCPU\""
+            ]
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "ClientHash": "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+    "PatchedHash": "02cce81e91fe6b98568892f7d921c3568212dd13a0a2b28c33157f1f9efed984",
+    "OriginalPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\blacklightretribution\\Binaries\\Win32\\FoxGame-win32-Shipping.exe",
+    "PatchedPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\blacklightretribution\\\\Binaries\\Win32\\FoxGame-win32-Shipping-BLREdit-Patched.exe",
+    "ConfigFolder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\blacklightretribution\\FoxGame\\Config\\BLRevive\\",
+    "ModulesFolder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\blacklightretribution\\Binaries\\Win32\\Modules\\",
+    "AppliedPatches": [
+      {
+        "PatchName": "ASLR Patch(v302)",
+        "ClientHash": "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+        "PatchParts": {
+          "510": [
+            0
+          ]
+        }
+      },
+      {
+        "PatchName": "Emblem Patch(v302)",
+        "ClientHash": "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+        "PatchParts": {
+          "11766694": [
+            144,
+            144,
+            144,
+            144
+          ]
+        }
+      }
+    ],
+    "InstalledModules": []
+  }
+]
