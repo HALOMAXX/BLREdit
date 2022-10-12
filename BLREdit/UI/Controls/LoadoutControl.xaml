@@ -13,7 +13,7 @@
             <TabItem Header="Weapons">
                 <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
                     <ui:WeaponControl x:Name="PrimaryControl" DataContext="{Binding Path=Primary}" x:FieldModifier="public"/>
-                    <ui:WeaponControl x:Name="SecondaryControl" DataContext="{Binding Path=Secondary}" x:FieldModifier="public" Margin="0,320,0,0"/>
+                    <ui:WeaponControl x:Name="SecondaryControl" DataContext="{Binding Path=Secondary}" x:FieldModifier="public" Margin="0,368,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Gear">

@@ -451,7 +451,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                     SetItemList(ImportSystem.BARRELS_CATEGORY);
                     break;
                 case "Scope":
-                    if (image.GetBindingExpression(Image.SourceProperty).ResolvedSourcePropertyName == nameof(weapon.Scope.SmallSquareImage))
+                    if (image.GetBindingExpression(Image.SourceProperty).ResolvedSourcePropertyName == nameof(weapon.Scope.LargeSquareImage))
                     {
                         SetItemList(ImportSystem.SCOPES_CATEGORY);
                     }
