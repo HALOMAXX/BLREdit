@@ -94,7 +94,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
     #endregion Weapon Parts
 
-    [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(GetSecondaryScope()); } set { OnPropertyChanged(); } }
+    [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
 
     private Export.MagiCowsWeapon weapon = null;
 
@@ -144,44 +144,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             Magazine = wpn.GetMagazine();
             ApplyCorrectAmmo();
-        }
-    }
-
-    private string GetSecondaryScope()
-    {
-        var name = Reciever?.Name ?? "";
-        switch (Scope?.Name ?? "")
-        {
-            case "No Optic Mod":
-
-                if (name.Contains("Prestige"))
-                {
-                    return Scope?.Name + " Light Pistol";
-                }
-                else
-                {
-                    return Scope?.Name + " " + name;
-                }
-
-            //Pistols Only
-            case "OPRL Holo Sight":
-            case "Lightsky Reflex Sight":
-            case "Krane Tactical Scope":
-            case "EON Electric Scope":
-            case "EMI Electric Scope":
-            case "ArmCom CQC Scope":
-            case "Aim Point Ammo Counter":
-                return Scope?.Name + GetSecondayScopePistol(name);
-
-            //Pistols and shotguns
-            case "Titan Rail Sight":
-            case "MMRS Flip-Up Rail Sight":
-            case "Lightsky Red Dot Sight":
-            case "Krane Holo Sight":
-                return Scope?.Name + GetSecondayScopePistol(name) + GetSecondayScopeShotgun(name);
-
-            default:
-                return Scope?.Name;
         }
     }
 

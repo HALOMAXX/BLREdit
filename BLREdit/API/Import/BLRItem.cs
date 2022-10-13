@@ -289,16 +289,20 @@ public sealed class BLRItem : INotifyPropertyChanged
         Crosshair = GetBitmapCrosshair(GetSecondaryScope(weapon));
     }
 
-    private string GetSecondaryScope(BLRWeapon weapon)
+    public string GetSecondaryScope(BLRWeapon weapon)
     {
         var name = weapon?.Reciever?.Name ?? "";
-        switch (Name)
+        switch (Name ?? "")
         {
             case "No Optic Mod":
 
                 if (name.Contains("Prestige"))
                 {
                     return Name + " Light Pistol";
+                }
+                else if (name.Contains("Rocket"))
+                {
+                    return "AV Rocket Launcher Scope";
                 }
                 else
                 {
