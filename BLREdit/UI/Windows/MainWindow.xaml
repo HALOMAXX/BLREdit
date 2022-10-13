@@ -24,8 +24,6 @@
         <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static res:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
         <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static res:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
-        
-        
         <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="400" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged">
             <TabItem Header="Loadout 1">
                 <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Loadout1}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
@@ -51,121 +49,7 @@
                         </ItemsControl.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDown="ItemList_MouseDown" ToolTip="{Binding DisplayTooltip}" >
-                                    <Border>
-                                        <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="None" />
-                                    </Border>
-                                    <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
-                                    <Border BorderThickness="1,0,1,1">
-                                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
-                                    </Border>
-                                    <Border BorderThickness="1,0,1,1">
-                                        <UniformGrid Columns="3">
-                                            <UniformGrid Columns="2">
-                                                <Label Content="{Binding Path=DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.DescriptionColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                                <Label Content="{Binding DisplayStat1.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.ValueColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                            </UniformGrid>
-
-                                            <UniformGrid Columns="2">
-                                                <Label Content="{Binding DisplayStat2.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.DescriptionColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                                <Label Content="{Binding DisplayStat2.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.ValueColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                            </UniformGrid>
-
-                                            <UniformGrid Columns="2">
-                                                <Label Content="{Binding DisplayStat3.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.DescriptionColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                                <Label Content="{Binding DisplayStat3.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.ValueColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                            </UniformGrid>
-
-                                            <UniformGrid Columns="2">
-                                                <Label Content="{Binding DisplayStat4.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.DescriptionColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                                <Label Content="{Binding DisplayStat4.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.ValueColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                            </UniformGrid>
-
-                                            <UniformGrid Columns="2">
-                                                <Label Content="{Binding DisplayStat5.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.DescriptionColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                                <Label Content="{Binding DisplayStat5.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.ValueColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                            </UniformGrid>
-
-                                            <UniformGrid Columns="2">
-                                                <Label Content="{Binding DisplayStat6.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.DescriptionColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                                <Label Content="{Binding DisplayStat6.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
-                                                    <Label.Style>
-                                                        <Style>
-                                                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.ValueColor}"/>
-                                                        </Style>
-                                                    </Label.Style>
-                                                </Label>
-                                            </UniformGrid>
-
-                                        </UniformGrid>
-                                    </Border>
-                                </VirtualizingStackPanel>
+                                <ui:ItemListControl/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -190,8 +74,7 @@
                 <TabControl BorderThickness="0,1,0,0">
                     <TabItem Header="Server List">
                         <Grid Name="ServerGrid">
-                            <Button Content="{Binding Source={x:Static old:UILanguageWrapper.BtnLauAddServer }}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="-240,0,0,0" Click="AddNewServer_Click"/>
-                            <Button Content="{Binding Source={x:Static old:UILanguageWrapper.BtnLauRefreshPing }}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="240,0,0,0" Click="PingServers_Click"/>
+                            <Button Content="{Binding Source={x:Static old:UILanguageWrapper.BtnLauAddServer }}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="AddNewServer_Click"/>
                             <ListView Name="ServerListView" Margin="0,0,0,40" SelectionMode="Single">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -209,7 +92,7 @@
                     </TabItem>
                     <TabItem Header="Client List">
                         <Grid Name="ClientGrid">
-                            <Button Content="{Binding Source={x:Static old:UILanguageWrapper.BtnLauAddClient }}" Margin="240,0,0,0" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="OpenNewGameClient_Click"/>
+                            <Button Content="{Binding Source={x:Static old:UILanguageWrapper.BtnLauAddClient }}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="OpenNewGameClient_Click"/>
                             <ListView Name="GameClientList" Margin="0,0,0,40">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>

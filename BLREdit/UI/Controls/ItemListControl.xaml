@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.ItemListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:import="clr-namespace:BLREdit.Import"
+             d:DataContext="{d:DesignInstance Type=import:BLRItem}"
+             mc:Ignorable="d" >
+    <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ToolTip="{Binding Tooltip}" MouseDown="ItemList_MouseDown">
+        <Border>
+            <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="None" />
+        </Border>
+        <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
+        <Border BorderThickness="1,0,1,1">
+            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
+        </Border>
+        <Border BorderThickness="1,0,1,1">
+            <UniformGrid Columns="3">
+                <UniformGrid Columns="2">
+                    <Label Content="{Binding Path=DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.DescriptionColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Content="{Binding DisplayStat1.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.ValueColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </UniformGrid>
+
+                <UniformGrid Columns="2">
+                    <Label Content="{Binding DisplayStat2.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.DescriptionColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Content="{Binding DisplayStat2.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.ValueColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </UniformGrid>
+
+                <UniformGrid Columns="2">
+                    <Label Content="{Binding DisplayStat3.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.DescriptionColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Content="{Binding DisplayStat3.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.ValueColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </UniformGrid>
+
+                <UniformGrid Columns="2">
+                    <Label Content="{Binding DisplayStat4.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.DescriptionColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Content="{Binding DisplayStat4.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.ValueColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </UniformGrid>
+
+                <UniformGrid Columns="2">
+                    <Label Content="{Binding DisplayStat5.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.DescriptionColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Content="{Binding DisplayStat5.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.ValueColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </UniformGrid>
+
+                <UniformGrid Columns="2">
+                    <Label Content="{Binding DisplayStat6.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.DescriptionColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Content="{Binding DisplayStat6.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="1,0,0,0">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.ValueColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </UniformGrid>
+
+            </UniformGrid>
+        </Border>
+    </VirtualizingStackPanel>
+</UserControl>

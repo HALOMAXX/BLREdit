@@ -337,26 +337,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         ClientWindow.ForceClose();
     }
 
-    private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
-    {
-        if (sender is FrameworkElement element)
-        {
-            if (element.DataContext is BLRItem item)
-            {
-                if (e.ClickCount >= 2)
-                {
-                    LoggingSystem.Log($"Double Clicking:{item.Name}");
-                    SetItemToBorder(LastSelectedBorder, item);
-                }
-                else
-                {
-                    LoggingSystem.Log($"Dragging:{item.Name}");
-                    DragDrop.DoDragDrop(element, item, DragDropEffects.Copy);
-                }
-            }
-        }
-    }
-
     private void Border_DragEnter(object sender, DragEventArgs e)
     {
         if (e.Data.GetDataPresent(DataFormats.Serializable))
