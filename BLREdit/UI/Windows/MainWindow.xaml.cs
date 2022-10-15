@@ -765,34 +765,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             server.PingServer();
         }
     }
-
-    private void PortValidation(object sender, TextCompositionEventArgs e)
-    {
-        TextBox box = (sender as TextBox);
-        string selectedText = box.SelectedText;
-        bool ok = false;
-        Regex regex = new("[^0-9]");
-        if (regex.IsMatch(e.Text))
-        {
-            ok = true;
-        }
-        else
-        {
-            string text = box.Text.Remove(box.Text.IndexOf(selectedText), selectedText.Length);
-            long l = long.Parse(text + e.Text);
-            if (l > ushort.MaxValue)
-            {
-                ok = true;
-                box.Text = ushort.MaxValue.ToString();
-            }
-            if (l < ushort.MinValue)
-            {
-                ok = true;
-                box.Text = ushort.MinValue.ToString();
-            }
-        }
-        e.Handled = ok;
-    }
     #endregion Server UI
 
 

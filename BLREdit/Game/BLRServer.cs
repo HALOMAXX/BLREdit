@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
+using System.Security;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -40,7 +41,8 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] private string serverName;
     public string ServerName { get { return serverName; } set { serverName = value; OnPropertyChanged(); } }
     public string ServerAddress { get; set; } = "localhost";
-    public short Port { get; set; } = 7777;
+    [JsonIgnore] private ushort port = 7777;
+    public ushort Port { get { return port; } set { port = value; OnPropertyChanged(); } }
     [JsonIgnore]
     public string IPAddress
     {
