@@ -1509,6 +1509,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         ItemChanged(nameof(Grip));
         ItemChanged(nameof(Tag));
         ItemChanged(nameof(Ammo));
+        ItemChanged(nameof(ScopePreview));
     }
 
     static readonly Random rng = new();
