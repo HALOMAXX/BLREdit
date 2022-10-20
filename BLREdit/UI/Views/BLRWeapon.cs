@@ -1514,6 +1514,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         ItemChanged(nameof(Grip));
         ItemChanged(nameof(Tag));
         ItemChanged(nameof(Ammo));
+        ItemChanged(nameof(Camo));
         ItemChanged(nameof(ScopePreview));
     }
 
