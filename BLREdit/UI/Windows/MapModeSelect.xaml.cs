@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,7 @@ public sealed partial class MapModeSelect : Window
 
     private void WindowLoaded(object sender, RoutedEventArgs e)
     {
+        this.DataContext = BLREditSettings.Settings;
         this.MapList.ItemsSource = Maps;
     }
 

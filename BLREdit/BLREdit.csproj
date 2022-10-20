@@ -42,10 +42,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="API\ImportSystem\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Reference Include="System.Windows.Forms" />
 	</ItemGroup>
 

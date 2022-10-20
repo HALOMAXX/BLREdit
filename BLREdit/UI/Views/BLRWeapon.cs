@@ -1469,6 +1469,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         return Math.Min(Math.Max(input, min), max);
     }
 
+    public static int Clamp(int input, int min, int max)
+    {
+        return Math.Min(Math.Max(input, min), max);
+    }
+
     public void UpdateMagiCowsWeapon()
     {
         weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
