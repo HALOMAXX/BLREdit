@@ -42,9 +42,9 @@
     "IsAvailable": true
   },
   {
-    "Name": "TDM?",
+    "Name": "TDM",
     "Description": "Detonate",
-    "PlaylistName": "",
+    "PlaylistName": "TDM",
     "ModeName": "Detonate",
     "IsAvailable": true
   },

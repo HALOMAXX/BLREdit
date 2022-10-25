@@ -38,6 +38,8 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public UIBool AdvancedModding { get { return modding; } set { modding = value; OnPropertyChanged(); } }
     private int botCount = 8;
     public int BotCount { get { return botCount; } set { botCount = value; OnPropertyChanged(); } }
+    private bool strictModuleChecks = true;
+    public bool StrictModuleChecks { get { return strictModuleChecks; } set { strictModuleChecks = value; OnPropertyChanged(); } }
 
     private int playerCount = 16;
     public int PlayerCount { get { return playerCount; } set { playerCount = value; OnPropertyChanged(); } }

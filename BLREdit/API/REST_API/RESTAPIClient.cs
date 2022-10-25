@@ -1,4 +1,6 @@
 ﻿using BLREdit.Game.Proxy;
+
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -10,7 +12,7 @@ public sealed class RESTAPIClient
     RepositoryProvider API_Provider;
     string BaseAddress = "";
 
-    Dictionary<string, object> RequestCache = new();
+    readonly Dictionary<string, object> RequestCache = new();
 
     public RESTAPIClient(RepositoryProvider prov, string baseAddress)
     { 
@@ -20,11 +22,19 @@ public sealed class RESTAPIClient
 
     private async Task<HttpResponseMessage> GetAsync(string api)
     {
-        var response = await IOResources.HttpClient.GetAsync($"{BaseAddress}{api}");
-        string fail = "";
-        if (!response.IsSuccessStatusCode) { fail = $"\n {await response.Content.ReadAsStringAsync()}";}
-        LoggingSystem.Log($"[{API_Provider}]({response.StatusCode}): GET {api}{fail}");
-        return response;
+        try
+        {
+            var response = await IOResources.HttpClient.GetAsync($"{BaseAddress}{api}");
+            string fail = "";
+            if (!response.IsSuccessStatusCode) { fail = $"\n {await response.Content.ReadAsStringAsync()}"; }
+            LoggingSystem.Log($"[{API_Provider}]({response.StatusCode}): GET {api}{fail}");
+            return response;
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.Log($"[{API_Provider}]({error.GetType().Name}): GET {api}\n{error.Message}\n{error.StackTrace}\n{error.InnerException.Message}\n{error.InnerException.StackTrace}");
+            return null;
+        }
     }
 
     public async Task<T> GetLatestRelease<T>(string owner, string repository)
@@ -49,7 +59,7 @@ public sealed class RESTAPIClient
 
         using (var response = await GetAsync(api))
         {
-            if (response.IsSuccessStatusCode)
+            if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var releases = IOResources.Deserialize<T[]>(content);
@@ -76,7 +86,7 @@ public sealed class RESTAPIClient
 
         using (var response = await GetAsync(api))
         {
-            if (response.IsSuccessStatusCode)
+            if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var fileData = IOResources.Deserialize<T>(content);
