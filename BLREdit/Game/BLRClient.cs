@@ -215,7 +215,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         var count = InstalledModules.Count;
 
-        LoggingSystem.Log($"Available0Modules:{App.AvailableProxyModules.Length} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}");
+        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Length} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}");
         if (App.AvailableProxyModules.Length > 0 && BLREditSettings.Settings.StrictModuleChecks)
         { InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { isAvailable = true; } } return isAvailable; })); }
         LoggingSystem.Log($"Validating Modules({count}/{InstalledModules.Count}) of {this}");
