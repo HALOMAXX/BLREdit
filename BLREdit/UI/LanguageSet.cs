@@ -19,16 +19,16 @@ public sealed class LanguageSet
         if (MissingTranslation)
         {
             CurrentLanguageSet.Words = new Dictionary<string, string>(new SortedDictionary<string, string>(CurrentLanguageSet.Words)); //wow
-            IOResources.SerializeFile(CurrentLanguageSet.LanguageName + ".json", CurrentLanguageSet);
+            IOResources.SerializeFile($"{CurrentLanguageSet.LanguageName}.json", CurrentLanguageSet);
         }
     }
 
     public static LanguageSet Load(string name)
     {
-        name = IOResources.ASSET_DIR + IOResources.LOCAL_DIR + name + ".json";
+        name = $"{IOResources.ASSET_DIR}{IOResources.LOCAL_DIR}{name}.json";
         if (!File.Exists(name))
         {
-            name = IOResources.ASSET_DIR + IOResources.LOCAL_DIR + "en-US.json";
+            name = $"{ App.BLREditLocation}{ IOResources.ASSET_DIR}{ IOResources.LOCAL_DIR}en -US.json";
         }
         return IOResources.DeserializeFile<LanguageSet>(name) ?? CreateDefaultSet();
     }

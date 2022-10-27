@@ -23,8 +23,8 @@ namespace BLREdit.UI.Windows;
 /// </summary>
 public sealed partial class MapModeSelect : Window
 {
-    public static List<BLRMap> Maps { get; } = IOResources.DeserializeFile<List<BLRMap>>("Assets\\json\\maps.json");
-    public static List<BLRMode> Modes { get; } = IOResources.DeserializeFile<List<BLRMode>>("Assets\\json\\modes.json");
+    public static List<BLRMap> Maps { get; } = IOResources.DeserializeFile<List<BLRMap>>($"Assets\\json\\maps.json");
+    public static List<BLRMode> Modes { get; } = IOResources.DeserializeFile<List<BLRMode>>($"Assets\\json\\modes.json");
 
     private BLRMap SelectedMap = null;
     private BLRMode SelectedMode = null;

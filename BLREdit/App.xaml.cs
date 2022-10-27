@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace BLREdit;
@@ -30,13 +31,17 @@ public partial class App : System.Windows.Application
 
     public static VisualProxyModule[] AvailableProxyModules { get; private set; }
 
+    private const string LogFile = "log.txt";
+    public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
+
     public App()
     {
-        
-        File.Delete("log.txt");
-        Trace.Listeners.Add(new TextWriterTraceListener("log.txt", "loggingListener"));
+        Directory.SetCurrentDirectory(BLREditLocation);
+
+        File.Delete(LogFile);
+        Trace.Listeners.Add(new TextWriterTraceListener(LogFile, "loggingListener"));
         Trace.AutoFlush = true;
-        LoggingSystem.Log("BLREdit Starting!");
+        LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
 
         var task = Initialize();
         task.Wait();
@@ -51,8 +56,8 @@ public partial class App : System.Windows.Application
         ImportSystem.Initialize();
 
         LoggingSystem.Log("Loading Client List");
-        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>("GameClients.json") ?? new();
-        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>("ServerList.json") ?? new();
+        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
+        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
 
         LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
         for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)

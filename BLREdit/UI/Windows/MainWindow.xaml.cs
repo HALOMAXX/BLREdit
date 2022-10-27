@@ -329,8 +329,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
     {
         ExportSystem.SaveProfiles();
-        IOResources.SerializeFile("GameClients.json", GameClients);
-        IOResources.SerializeFile("ServerList.json", ServerList);
+        IOResources.SerializeFile($"GameClients.json", GameClients);
+        IOResources.SerializeFile($"ServerList.json", ServerList);
         BLREditSettings.Save();
         LanguageSet.Save();
         ProxyModule.Save();

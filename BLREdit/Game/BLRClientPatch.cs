@@ -48,7 +48,7 @@ public sealed class BLRClientPatch
     {
         List<BLRClientPatch> loadedPatches = new();
         Dictionary<string, List<BLRClientPatch>> sortedPatches = new();
-        string[] patches = Directory.GetFiles(IOResources.ASSET_DIR + "patches\\");
+        string[] patches = Directory.GetFiles($"{IOResources.ASSET_DIR}patches\\");
         foreach (string file in patches)
         {
             if (file.EndsWith(".json"))
@@ -60,7 +60,7 @@ public sealed class BLRClientPatch
         }
         if (loadedPatches.Count <= 0)
         {
-            IOResources.SerializeFile("patch.json", new BLRClientPatch());
+            IOResources.SerializeFile($"patch.json", new BLRClientPatch());
             loadedPatches.Add(new BLRClientPatch());
         }
         foreach (var loadedPatch in loadedPatches)

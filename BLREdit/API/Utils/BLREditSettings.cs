@@ -18,7 +18,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
 
-    private static readonly BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>(IOResources.SETTINGS_FILE) ?? new();
+    private static readonly BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
     public static BLREditSettings Settings { get { return settings; } }
 
     private BLRClient client = null;
@@ -73,6 +73,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         }
         if (!client) { Settings.DefaultClient = null; }
 
-        IOResources.SerializeFile(IOResources.SETTINGS_FILE, Settings);
+        IOResources.SerializeFile($"{IOResources.SETTINGS_FILE}", Settings);
     }
 }

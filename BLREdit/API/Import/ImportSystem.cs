@@ -39,7 +39,7 @@ public static class ImportSystem
     //public static readonly Dictionary<float, float> DamagePercentToValue = new Dictionary<float, float>(); not in use
 
     //public static readonly FoxIcon[] Icons = LoadAllIcons();
-    public static readonly FoxIcon[] Icons = LoadAllIcons2();
+    public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
     private static Dictionary<string, List<BLRItem>> ItemLists { get; } = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
@@ -620,7 +620,7 @@ public static class ImportSystem
             Items.Add(itemList.Key, items);
         }
 
-        IOResources.SerializeFile(IOResources.ITEM_LIST_FILE, Items);
+        IOResources.SerializeFile($"{IOResources.ITEM_LIST_FILE}", Items);
     }
 
     private static void CleanItems(Dictionary<string, List<ImportItem>> ListItems)
@@ -882,25 +882,7 @@ public static class ImportSystem
     {
         LoggingSystem.Log("Loading All Icons");
         var icons = new List<FoxIcon>();
-        foreach (var icon in Directory.GetFiles("Assets\\textures"))
-        {
-            if (icon.StartsWith("\\"))
-            {
-                icons.Add(new FoxIcon(icon));
-            }
-            else
-            {
-                icons.Add(new FoxIcon("\\" + icon));
-            }
-        }
-        return icons.ToArray();
-    }
-
-    private static FoxIcon[] LoadAllIcons2()
-    {
-        LoggingSystem.Log("Loading All Icons");
-        var icons = new List<FoxIcon>();
-        foreach (var icon in Directory.GetFiles("Assets\\textures"))
+        foreach (var icon in Directory.GetFiles($"Assets\\textures"))
         {
             icons.Add(new FoxIcon(icon));
         }
@@ -911,18 +893,7 @@ public static class ImportSystem
     {
         LoggingSystem.Log("Loading All Crosshairs");
         var icons = new List<FoxIcon>();
-        foreach (var icon in Directory.EnumerateFiles("Assets\\crosshairs"))
-        {
-            icons.Add(new FoxIcon(icon));
-        }
-        return icons.ToArray();
-    }
-
-    private static FoxIcon[] LoadAllScopePreviews2()
-    {
-        LoggingSystem.Log("Loading All Crosshairs");
-        var icons = new List<FoxIcon>();
-        foreach (var icon in Directory.EnumerateFiles("Assets\\crosshairs"))
+        foreach (var icon in Directory.EnumerateFiles($"Assets\\crosshairs"))
         {
             icons.Add(new FoxIcon(icon));
         }

@@ -58,15 +58,15 @@ public sealed class ExportSystem
     private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()
     {
         List<ExportSystemProfile> profiles = new();
-        Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.PROFILE_DIR}");
+        Directory.CreateDirectory($"{IOResources.PROFILE_DIR}");
 
-        CurrentBackupFolder = Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}\\Backup\\{System.DateTime.Now:dd-MM-yy}\\{System.DateTime.Now:HH-mm}\\");
+        CurrentBackupFolder = Directory.CreateDirectory($"\\Backup\\{System.DateTime.Now:dd-MM-yy}\\{System.DateTime.Now:HH-mm}\\");
 
         Regex regex = new(@"\((.*)\)");
 
         bool oldProfiles = false;
         int i = 0;
-        foreach (string file in Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory + IOResources.PROFILE_DIR))
+        foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
         {
             IOResources.CopyToBackup(file);
             ExportSystemProfile profile;
@@ -166,13 +166,13 @@ public sealed class ExportSystem
     {
         foreach (ExportSystemProfile profile in Profiles)
         {
-            IOResources.SerializeFile($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.PROFILE_DIR}{profile.Name}.json", profile);
+            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}{profile.Name}.json", profile);
         }
     }
 
     public static void RemoveActiveProfileFromDisk()
     {
-        File.Delete($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.PROFILE_DIR}{ActiveProfile.Name}.json");
+        File.Delete($"{IOResources.PROFILE_DIR}{ActiveProfile.Name}.json");
     }
 
     public static ExportSystemProfile AddProfile(string Name)

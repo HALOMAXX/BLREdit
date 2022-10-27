@@ -466,7 +466,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                 PatchedFile.Close();
                 PatchedFile.Dispose();
 
-                File.Copy($"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(outFile)}\\Proxy.dll", true);
+                File.Copy($"{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(outFile)}\\Proxy.dll", true);
 
                 var peFile = new PeFile(outFile);
                 peFile.AddImport("Proxy.dll", "InitializeThread");
