@@ -94,9 +94,9 @@ public sealed class IOResources
         {
             data = File.ReadAllText(vdfPath);
         }
-        catch (Exception ex)
+        catch (Exception error)
         {
-            LoggingSystem.Log($"failed reading {vdfPath}, steam library parsing aborted reason:{ex.Message}\n{ex.StackTrace}");
+            LoggingSystem.Log($"failed reading {vdfPath}, steam library parsing aborted reason:\n{error}");
             return;
         }
 
@@ -212,7 +212,7 @@ public sealed class IOResources
         }
         catch (Exception error)
         {
-            LoggingSystem.Log($"[Serializer]: {error.Message}\n{error.StackTrace}");
+            LoggingSystem.Log($"[Serializer]: {error}");
         }
         return default;
     }

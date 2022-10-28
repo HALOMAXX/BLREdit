@@ -32,7 +32,7 @@ public sealed class RESTAPIClient
         }
         catch (Exception error)
         {
-            LoggingSystem.Log($"[{API_Provider}]({error.GetType().Name}): GET {api}\n{error.Message}\n{error.StackTrace}\n{error.InnerException.Message}\n{error.InnerException.StackTrace}");
+            LoggingSystem.Log($"[{API_Provider}]({error.GetType().Name}): GET {api}\n{error}");
             return null;
         }
     }

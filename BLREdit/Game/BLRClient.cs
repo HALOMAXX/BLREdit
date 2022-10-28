@@ -474,7 +474,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             catch (Exception error)
             {
-                LoggingSystem.Log(error.Message + '\n' + error.StackTrace);
+                LoggingSystem.Log($"{error}");
             }
         }
         else

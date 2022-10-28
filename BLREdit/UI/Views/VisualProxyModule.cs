@@ -227,7 +227,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             }
             catch (Exception error)
             {
-                LoggingSystem.Log($"Failed to get Updated Info Reason:\n{error.Message}");
+                LoggingSystem.Log($"Failed to get Updated Info Reason:\n{error}");
             }
         }
     }
@@ -280,7 +280,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
         catch (Exception error)
         {
-            LoggingSystem.Log($"failed to install module:{RepositoryProxyModule.InstallName} reason:{error.Message}\n{error.StackTrace}");
+            LoggingSystem.Log($"failed to install module:{RepositoryProxyModule.InstallName} reason:{error}");
         }
 
         CheckForInstall();
@@ -293,7 +293,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     }
 
     private bool lockRemove = false;
-    public async void RemoveModule()
+    public void RemoveModule()
     { 
         if (lockRemove) return;
         lockRemove = true;

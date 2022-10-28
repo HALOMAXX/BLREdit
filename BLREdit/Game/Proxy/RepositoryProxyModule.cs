@@ -77,9 +77,9 @@ public sealed class RepositoryProxyModule
                     labRelease ??= await GitlabClient.GetLatestRelease(Owner, Repository);
                 }
             }
-            catch
+            catch(Exception error)
             {
-                LoggingSystem.Log($"failed to get release info for {InstallName}");
+                LoggingSystem.Log($"failed to get release info for {InstallName}\n{error}");
             }
 
             lockLatestReleaseInfo = false;

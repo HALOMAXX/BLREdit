@@ -100,7 +100,7 @@ public partial class App : System.Windows.Application
 
         }
         catch (Exception error)
-        { LoggingSystem.Log($"Can't connect to github to check for new Version\n{error.Message}\n{error.StackTrace}"); }
+        { LoggingSystem.Log($"Can't connect to github to check for new Version\n{error}"); }
         return false;
     }
 
@@ -130,7 +130,7 @@ public partial class App : System.Windows.Application
             return IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
         }
         catch (Exception error)
-        { LoggingSystem.Log($"Can't connect to github\n{error.Message}\n{error.StackTrace}"); }
+        { LoggingSystem.Log($"Can't connect to github\n{error}"); }
         return Array.Empty<RepositoryProxyModule>();
     }
 
