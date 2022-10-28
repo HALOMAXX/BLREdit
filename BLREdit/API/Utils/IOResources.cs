@@ -96,7 +96,7 @@ public sealed class IOResources
         }
         catch (Exception error)
         {
-            LoggingSystem.Log($"failed reading {vdfPath}, steam library parsing aborted reason:\n{error}");
+            LoggingSystem.MessageLog($"failed reading {vdfPath}, steam library parsing aborted reason:\n{error}");
             return;
         }
 

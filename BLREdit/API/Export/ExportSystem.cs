@@ -93,7 +93,7 @@ public sealed class ExportSystem
             if (requestDelete)
             {
                 try { File.Delete(file); }
-                catch (Exception error) { LoggingSystem.Log($"Could not delete file: {file} {error}"); }
+                catch (Exception error) { LoggingSystem.MessageLog($"Could not delete file: {file} {error}"); }
             }
 
             i++;
@@ -129,7 +129,7 @@ public sealed class ExportSystem
             LoggingSystem.Log("Copy Succes");
         }
         catch (Exception error)
-        { LoggingSystem.Log($"failed CopyToClipboard {error}"); }
+        { LoggingSystem.MessageLog($"failed CopyToClipboard {error}"); }
 
         if (!success)
         {

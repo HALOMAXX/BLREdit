@@ -474,7 +474,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             catch (Exception error)
             {
-                LoggingSystem.Log($"{error}");
+                LoggingSystem.MessageLog($"[{ClientVersion}]Client Patch Failed: {error}");
             }
         }
         else

@@ -4,14 +4,18 @@ using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
 using BLREdit.UI.Views;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BLREdit;
 
@@ -28,7 +32,7 @@ public partial class App : System.Windows.Application
     public static bool IsNewVersionAvailable { get; private set; } = false;
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
-
+    public static GitHubRelease BLREditLatestRelease { get; private set; } = null;
     public static VisualProxyModule[] AvailableProxyModules { get; private set; }
 
     private const string LogFile = "log.txt";
@@ -65,12 +69,12 @@ public partial class App : System.Windows.Application
             if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
             { UI.MainWindow.GameClients.RemoveAt(i); i--; }
             else
-            { 
+            {
                 LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
                 if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
-                { 
-                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer())); 
-                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules"); 
+                {
+                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
+                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
                 }
             }
         }
@@ -82,25 +86,68 @@ public partial class App : System.Windows.Application
         return await GetAvailableProxyModules();
     }
 
+    //TODO Inform the User of Failure
+
     public static async Task<bool> VersionCheck()
     {
         try
         {
-            var release = await GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
-            if (release is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
-            LoggingSystem.Log($"Newest Version: {release.tag_name} of {release.name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
+            Directory.CreateDirectory("updates/");
+            if (File.Exists("updates/BLREdit.bak")) { File.Delete("updates/BLREdit.bak"); }
+            if (File.Exists("updates/BLREdit.exe")) { File.Delete("updates/BLREdit.exe"); }
+            if (File.Exists("updates/Assets.zip")) { File.Delete("updates/Assets.zip"); }
+            BLREditLatestRelease = await GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
+            if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
+            LoggingSystem.Log($"Newest Version: {BLREditLatestRelease.tag_name} of {BLREditLatestRelease.name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-            var remoteVersion = CreateVersion(release.tag_name);
+            var remoteVersion = CreateVersion(BLREditLatestRelease.tag_name);
             var localVersion = CreateVersion(CurrentVersion);
 
-            if (localVersion >= remoteVersion)
-            { return false; }
-            else
-            { return true; }
+            if (remoteVersion >= localVersion)
+            {
+                if (BLREditLatestRelease is not null)
+                {
+                    foreach (var asset in BLREditLatestRelease.assets)
+                    {
+                        if (asset.name.StartsWith("BLREdit") && asset.name.EndsWith(".exe"))
+                        {
+                            try
+                            {
+                                IOResources.WebClient.DownloadFile(asset.browser_download_url, "updates/BLREdit.exe");
+                            }
+                            catch (Exception error)
+                            { LoggingSystem.MessageLog($"Failed to download latest Update App: {error}"); }
+                        }
+                        if (asset.name.StartsWith("Assets") && asset.name.EndsWith(".zip"))
+                        {
+                            try
+                            {
+                                IOResources.WebClient.DownloadFile(asset.browser_download_url, "updates/Assets.zip");
+                            }
+                            catch (Exception error)
+                            { LoggingSystem.MessageLog($"Failed to download latest Update Assets: {error}"); }
+                        }
+                    }
 
+                    if (File.Exists("updates/Assets.zip"))
+                    {
+                        Directory.Delete("Assets", true);
+                        ZipFile.ExtractToDirectory("updates/Assets.zip", "Assets");
+                    }
+
+                    if (File.Exists("updates/BLREdit.exe")) 
+                    {
+                        //TODO Move  current exe to updates and copy new to current
+                        File.Move("BLREdit.exe", "updates/BLREdit.bak");
+                        File.Copy("updates/BLREdit.exe", "BLREdit.exe");
+                        Process.Start("BLREdit.exe");
+                        Current.Shutdown();
+                    }
+                }
+            }
         }
         catch (Exception error)
-        { LoggingSystem.Log($"Can't connect to github to check for new Version\n{error}"); }
+        { LoggingSystem.MessageLog($"Can't connect to github to check for new Version\n{error}"); }
         return false;
     }
 
@@ -130,7 +177,7 @@ public partial class App : System.Windows.Application
             return IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
         }
         catch (Exception error)
-        { LoggingSystem.Log($"Can't connect to github\n{error}"); }
+        { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}"); }
         return Array.Empty<RepositoryProxyModule>();
     }
 
