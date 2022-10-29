@@ -235,7 +235,7 @@ public static class ImportSystem
                         }
                         else
                         {
-                            FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Normal, "0.00", "s");
+                            FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Inverted, "0.00", "s");
                         }
 
                         item.DisplayStat1 = desc1;
@@ -288,8 +288,8 @@ public static class ImportSystem
                         FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
                         FormatDisplayStat(ref desc2, LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, StatsEnum.Normal, "0.0", "%");
                         FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u");
-                        FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s");
+                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 69.9);
+                        FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 6.59);
                         if (value != 0)
                         {
                             FormatDisplayStat(ref desc6, prop, desc, value, StatsEnum.Normal, "0", "%");
@@ -315,8 +315,8 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0");
-                        FormatDisplayStat(ref desc2, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s");
+                        FormatDisplayStat(ref desc1, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 0);
+                        FormatDisplayStat(ref desc2, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 0);
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -495,7 +495,7 @@ public static class ImportSystem
 
     static readonly Brush defaultRed = new SolidColorBrush(Color.FromArgb(255, 200, 60, 50));
     static readonly Brush highlightRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-    private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1)
+    private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
     {
         desc.PropertyName = propertyName;
         desc.Description = description;
@@ -508,19 +508,7 @@ public static class ImportSystem
             case double d:
                 desc.Value = prefix + d.ToString(format) + suffix;
                 isGrey = d == 0;
-                isPositive = d > 0;
-                // more dirty cheats
-                if (suffix == "s")
-                {
-                    isPositive = d < 0;
-                } else if (suffix == "u")
-                {
-                    isPositive = d >= 70;
-                }
-                else if (suffix == "u/s")
-                {
-                    isPositive = d >= 6.6;
-                }
+                isPositive = d > defaultval;
                 break;
             case bool b:
                 desc.Value = b.ToString();
