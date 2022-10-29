@@ -3,7 +3,8 @@
     "RepositoryProvider": "Gitlab",
     "Owner": "Kethen",
     "Repository": "loadout-manager",
-    "ModuleName": "LoadoutManager"
+    "ModuleName": "LoadoutManager",
+    "Server": false
   },
   {
     "RepositoryProvider": "GitHub",

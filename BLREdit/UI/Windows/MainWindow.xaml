@@ -42,6 +42,14 @@
                     <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22"  Click="ChangeSortingDirection"/>
                     <ComboBox Name="SortComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="120,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
                     <ListView Name="ItemList" Margin="0,22,0,0" Grid.ColumnSpan="2">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="MinHeight" Value="0"/>
+                                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                                <Setter Property="MinWidth" Value="0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="{Binding Path=Columns, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=old:MainWindow}}"/>

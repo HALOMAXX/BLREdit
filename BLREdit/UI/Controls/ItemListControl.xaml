@@ -7,8 +7,8 @@
              xmlns:import="clr-namespace:BLREdit.Import"
              d:DataContext="{d:DesignInstance Type=import:BLRItem}"
              mc:Ignorable="d" >
-    <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ToolTip="{Binding Tooltip}" MouseDown="ItemList_MouseDown">
-        <Border>
+    <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-4,-1,-4,-1" ToolTip="{Binding Tooltip}" MouseDown="ItemList_MouseDown">
+        <Border BorderThickness="1,1,1,1">
             <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="None" />
         </Border>
         <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />

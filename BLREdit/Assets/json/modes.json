@@ -43,8 +43,15 @@
   },
   {
     "Name": "TDM",
-    "Description": "Detonate",
+    "Description": "TDM",
     "PlaylistName": "TDM",
+    "ModeName": "TDM",
+    "IsAvailable": true
+  },
+  {
+    "Name": "TDM?",
+    "Description": "Detonate",
+    "PlaylistName": "",
     "ModeName": "Detonate",
     "IsAvailable": true
   },

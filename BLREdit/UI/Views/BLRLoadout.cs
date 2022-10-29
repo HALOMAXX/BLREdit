@@ -55,8 +55,6 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     private bool isBot;
     public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
 
-
-    // TODO SCP Cost for Depot Items
     #region Depot
     private BLRItem depot1;
     public BLRItem Depot1 { get { return depot1; } set { if (value is null || depot1 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0); } else { depot1 = value; } ItemChanged(); } } }

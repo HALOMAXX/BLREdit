@@ -30,9 +30,7 @@ namespace BLREdit.UI;
 /// </summary>
 public sealed partial class MainWindow : Window, INotifyPropertyChanged
 {
-    private static readonly Random rng = new();
     public static readonly BLRClientWindow ClientWindow = new();
-
 
     /// <summary>
     /// Contains the last selected Border for setting the ItemList
@@ -86,6 +84,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    //TODO Add Item Search
     public MainWindow()
     {
         Self = this;
@@ -518,11 +517,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    private static bool CheckForPistolAndBarrel(BLRItem item)
-    {
-        return item.Name == "Light Pistol" || item.Name == "Heavy Pistol" || item.Name == "Prestige Light Pistol";
-    }
-
     public void SetItemList(string Type)
     {
         var list = ImportSystem.GetItemListOfType(Type);
@@ -546,7 +540,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                     break;
 
                 case ImportSystem.ATTACHMENTS_CATEGORY:
-                    Columns = 4;
+                    Columns = 5;
                     SetSortingType(typeof(ImportGearSortingType));
                     break;
 
@@ -565,7 +559,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                     break;
 
                 case ImportSystem.TACTICAL_CATEGORY:
-                    Columns = 4;
+                    Columns = 2;
                     SetSortingType(typeof(ImportNoStatsSortingType));
                     break;
 
@@ -578,6 +572,16 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 case ImportSystem.SECONDARY_CATEGORY:
                     Columns = 4;
                     SetSortingType(typeof(ImportWeaponSortingType));
+                    break;
+                case ImportSystem.AMMO_CATEGORY:
+                    Columns = 5;
+                    SetSortingType(typeof(ImportModificationSortingType));
+                    break;
+
+                case ImportSystem.SHOP_CATEGORY:
+                case ImportSystem.EMOTES_CATEGORY:
+                    Columns = 5;
+                    SetSortingType(typeof(ImportModificationSortingType));
                     break;
 
                 default:

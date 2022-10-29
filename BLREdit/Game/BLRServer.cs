@@ -21,7 +21,6 @@ namespace BLREdit.Game;
 
 public sealed class BLRServer : INotifyPropertyChanged
 {
-    private bool isOnline = false;
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
     [JsonIgnore] public string PingDisplay { get { if (IsOnline) { return "Online"; } else { return "Offline"; } } }

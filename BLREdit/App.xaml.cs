@@ -86,8 +86,6 @@ public partial class App : System.Windows.Application
         return await GetAvailableProxyModules();
     }
 
-    //TODO Inform the User of Failure
-
     public static async Task<bool> VersionCheck()
     {
         try
@@ -103,46 +101,52 @@ public partial class App : System.Windows.Application
             var remoteVersion = CreateVersion(BLREditLatestRelease.tag_name);
             var localVersion = CreateVersion(CurrentVersion);
 
-            if (remoteVersion >= localVersion)
+            //TODO Download Asset pack when asstes are missing
+            //TODO more granularity for Assets json, dll, crosshairs, textures, patches
+            if (BLREditLatestRelease is not null)
             {
-                if (BLREditLatestRelease is not null)
+                foreach (var asset in BLREditLatestRelease.assets)
                 {
-                    foreach (var asset in BLREditLatestRelease.assets)
+                    if (remoteVersion >= localVersion && asset.name.StartsWith("BLREdit") && asset.name.EndsWith(".exe"))
                     {
-                        if (asset.name.StartsWith("BLREdit") && asset.name.EndsWith(".exe"))
+                        try
                         {
-                            try
-                            {
-                                IOResources.WebClient.DownloadFile(asset.browser_download_url, "updates/BLREdit.exe");
-                            }
-                            catch (Exception error)
-                            { LoggingSystem.MessageLog($"Failed to download latest Update App: {error}"); }
+                            IOResources.WebClient.DownloadFile(asset.browser_download_url, "updates/BLREdit.exe");
                         }
-                        if (asset.name.StartsWith("Assets") && asset.name.EndsWith(".zip"))
+                        catch (Exception error)
+                        { LoggingSystem.MessageLog($"Failed to download latest Update App: {error}"); }
+                    }
+                    if ((!Directory.Exists("Assets") || remoteVersion >= localVersion) && asset.name.StartsWith("Assets") && asset.name.EndsWith(".zip"))
+                    {
+                        try
                         {
-                            try
-                            {
-                                IOResources.WebClient.DownloadFile(asset.browser_download_url, "updates/Assets.zip");
-                            }
-                            catch (Exception error)
-                            { LoggingSystem.MessageLog($"Failed to download latest Update Assets: {error}"); }
+                            IOResources.WebClient.DownloadFile(asset.browser_download_url, "updates/Assets.zip");
                         }
+                        catch (Exception error)
+                        { LoggingSystem.MessageLog($"Failed to download latest Update Assets: {error}"); }
                     }
+                }
 
-                    if (File.Exists("updates/Assets.zip"))
-                    {
-                        Directory.Delete("Assets", true);
-                        ZipFile.ExtractToDirectory("updates/Assets.zip", "Assets");
-                    }
+                if (File.Exists("updates/Assets.zip"))
+                {
+                    Directory.Delete("Assets", true);
+                    ZipFile.ExtractToDirectory("updates/Assets.zip", "Assets");
+                }
+                else
+                {
+                    LoggingSystem.Log($"No Asset.zip AssetFolderExists:{Directory.Exists("Assets")} NewerVersion:{remoteVersion >= localVersion}");
+                }
 
-                    if (File.Exists("updates/BLREdit.exe")) 
-                    {
-                        //TODO Move  current exe to updates and copy new to current
-                        File.Move("BLREdit.exe", "updates/BLREdit.bak");
-                        File.Copy("updates/BLREdit.exe", "BLREdit.exe");
-                        Process.Start("BLREdit.exe");
-                        Current.Shutdown();
-                    }
+                if (File.Exists("updates/BLREdit.exe"))
+                {
+                    File.Move("BLREdit.exe", "updates/BLREdit.bak");
+                    File.Copy("updates/BLREdit.exe", "BLREdit.exe");
+                    Process.Start("BLREdit.exe");
+                    Current.Shutdown();
+                }
+                else
+                {
+                    LoggingSystem.Log($"No BLREdit.exe NewerVersion:{remoteVersion >= localVersion}");
                 }
             }
         }
