@@ -52,8 +52,7 @@ public partial class App : System.Windows.Application
 
         if (Environment.GetCommandLineArgs().Contains("-package"))
         {
-            //TODO Package Assets
-
+            PackageAssets();
             Application.Current.Shutdown();
         }
 
