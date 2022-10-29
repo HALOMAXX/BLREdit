@@ -288,7 +288,7 @@ public static class ImportSystem
                         FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
                         FormatDisplayStat(ref desc2, LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, StatsEnum.Normal, "0.0", "%");
                         FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0");
+                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u");
                         FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s");
                         if (value != 0)
                         {
@@ -509,6 +509,18 @@ public static class ImportSystem
                 desc.Value = prefix + d.ToString(format) + suffix;
                 isGrey = d == 0;
                 isPositive = d > 0;
+                // more dirty cheats
+                if (suffix == "s")
+                {
+                    isPositive = d < 0;
+                } else if (suffix == "u")
+                {
+                    isPositive = d >= 70;
+                }
+                else if (suffix == "u/s")
+                {
+                    isPositive = d >= 6.6;
+                }
                 break;
             case bool b:
                 desc.Value = b.ToString();

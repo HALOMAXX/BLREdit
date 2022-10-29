@@ -16444,7 +16444,7 @@
     {
       "Category": "camosBody",
       "DescriptorName": "",
-      "Icon": "t_CamoBLCTourNament_128x128",
+      "Icon": "t_CamoBLCTournament_128x128",
       "Name": "BCL TourNament",
       "Tooltip": "CamoDesc",
       "UID": 630201
@@ -17702,7 +17702,7 @@
     {
       "Category": "camosWeapon",
       "DescriptorName": "",
-      "Icon": "t_CamoBLCTourNament_128x128",
+      "Icon": "t_CamoBLCTournament_128x128",
       "Name": "BCL TourNament",
       "Tooltip": "CamoDesc",
       "UID": 630394
