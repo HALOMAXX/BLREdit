@@ -115,7 +115,14 @@ public partial class App : System.Windows.Application
     {
         Directory.CreateDirectory(IOResources.UPDATE_DIR);
 
-        currentExe.Info.CopyTo(newExe.Info.FullName);
+        currentExe.Info.CopyTo(newExe.Info.FullName, true);
+
+        if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
+        if (jsonZip.Info.Exists) { jsonZip.Info.Delete(); }
+        if (dllsZip.Info.Exists) { dllsZip.Info.Delete(); }
+        if (texturesZip.Info.Exists) { texturesZip.Info.Delete(); }
+        if (crosshairsZip.Info.Exists) { crosshairsZip.Info.Delete(); }
+        if (patchesZip.Info.Exists) { patchesZip.Info.Delete(); }
 
         ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName);
         ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName);
@@ -131,7 +138,7 @@ public partial class App : System.Windows.Application
         return await GetAvailableProxyModules();
     }
 
-    private static Dictionary<FileInfoExtension, string> DownloadLinks = new();
+    private readonly static Dictionary<FileInfoExtension, string> DownloadLinks = new();
 
     private static FileInfoExtension currentExe;
     private static FileInfoExtension backupExe;
