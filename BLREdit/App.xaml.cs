@@ -106,8 +106,6 @@ public partial class App : System.Windows.Application
         var crosshairsZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}crosshairs.zip");
         var patchesZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}patches.zip");
 
-        
-
         try
         {
             BLREditLatestRelease = await GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
@@ -117,7 +115,7 @@ public partial class App : System.Windows.Application
             var remoteVersion = CreateVersion(BLREditLatestRelease.tag_name);
             var localVersion = CreateVersion(CurrentVersion);
 
-            bool newVersionAvailable = remoteVersion >= localVersion;
+            bool newVersionAvailable = remoteVersion > localVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable}\nAssetFolderMissing:{assetFolderMissing}");
