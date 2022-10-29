@@ -45,6 +45,8 @@ public partial class App : System.Windows.Application
     {
         Directory.SetCurrentDirectory(BLREditLocation);
 
+        InitFiles();
+
         File.Delete(LogFile);
         Trace.Listeners.Add(new TextWriterTraceListener(LogFile, "loggingListener"));
         Trace.AutoFlush = true;
@@ -52,7 +54,11 @@ public partial class App : System.Windows.Application
 
         if (Environment.GetCommandLineArgs().Contains("-package"))
         {
-            PackageAssets();
+            try
+            {
+                PackageAssets();
+            }
+            catch (Exception error) { LoggingSystem.MessageLog($"failed to package release:\n{error}"); }
             Application.Current.Shutdown();
         }
 
@@ -91,9 +97,24 @@ public partial class App : System.Windows.Application
         }
     }
 
+    private static void InitFiles()
+    {
+        currentExe = new($"BLREdit.exe");
+        backupExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe.bak");
+        //Need to download 
+        newExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe");
+        assetZip = new($"{IOResources.UPDATE_DIR}Assets.zip");
+        jsonZip = new($"{IOResources.UPDATE_DIR}json.zip");
+        dllsZip = new($"{IOResources.UPDATE_DIR}dlls.zip");
+        texturesZip = new($"{IOResources.UPDATE_DIR}textures.zip");
+        crosshairsZip = new($"{IOResources.UPDATE_DIR}crosshairs.zip");
+        patchesZip = new($"{IOResources.UPDATE_DIR}patches.zip");
+    }
+
     public static void PackageAssets()
     {
         Directory.CreateDirectory(IOResources.UPDATE_DIR);
+
         currentExe.Info.CopyTo(newExe.Info.FullName);
 
         ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName);
@@ -112,16 +133,16 @@ public partial class App : System.Windows.Application
 
     private static Dictionary<FileInfoExtension, string> DownloadLinks = new();
 
-    private readonly static FileInfoExtension currentExe = new($"BLREdit.exe");
-    private readonly static FileInfoExtension backupExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe.bak");
+    private static FileInfoExtension currentExe;
+    private static FileInfoExtension backupExe;
     //Need to download 
-    private readonly static FileInfoExtension newExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe");
-    private readonly static FileInfoExtension assetZip = new($"{IOResources.UPDATE_DIR}Assets.zip");
-    private readonly static FileInfoExtension jsonZip = new($"{IOResources.UPDATE_DIR}json.zip");
-    private readonly static FileInfoExtension dllsZip = new($"{IOResources.UPDATE_DIR}dlls.zip");
-    private readonly static FileInfoExtension texturesZip = new($"{IOResources.UPDATE_DIR}textures.zip");
-    private readonly static FileInfoExtension crosshairsZip = new($"{IOResources.UPDATE_DIR}crosshairs.zip");
-    private readonly static FileInfoExtension patchesZip = new($"{IOResources.UPDATE_DIR}patches.zip");
+    private static FileInfoExtension newExe;
+    private static FileInfoExtension assetZip;
+    private static FileInfoExtension jsonZip;
+    private static FileInfoExtension dllsZip;
+    private static FileInfoExtension texturesZip;
+    private static FileInfoExtension crosshairsZip;
+    private static FileInfoExtension patchesZip;
 
     public static async Task<bool> VersionCheck()
     {
@@ -152,16 +173,16 @@ public partial class App : System.Windows.Application
 
                     if (asset.name.StartsWith(assetZip.Name) && asset.name.EndsWith(assetZip.Info.Extension))
                     { DownloadLinks.Add(assetZip, asset.browser_download_url); }
-                    
+
                     if (asset.name.StartsWith(jsonZip.Name) && asset.name.EndsWith(jsonZip.Info.Extension))
                     { DownloadLinks.Add(jsonZip, asset.browser_download_url); }
-                    
+
                     if (asset.name.StartsWith(dllsZip.Name) && asset.name.EndsWith(dllsZip.Info.Extension))
                     { DownloadLinks.Add(dllsZip, asset.browser_download_url); }
-                    
+
                     if (asset.name.StartsWith(texturesZip.Name) && asset.name.EndsWith(texturesZip.Info.Extension))
                     { DownloadLinks.Add(texturesZip, asset.browser_download_url); }
-                    
+
                     if (asset.name.StartsWith(crosshairsZip.Name) && asset.name.EndsWith(crosshairsZip.Info.Extension))
                     { DownloadLinks.Add(crosshairsZip, asset.browser_download_url); }
 
