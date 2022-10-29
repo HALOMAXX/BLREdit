@@ -50,6 +50,13 @@ public partial class App : System.Windows.Application
         Trace.AutoFlush = true;
         LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
 
+        if (Environment.GetCommandLineArgs().Contains("-package"))
+        {
+            //TODO Package Assets
+
+            Application.Current.Shutdown();
+        }
+
         var task = Initialize();
         task.Wait();
         var modules = task.Result;
@@ -58,6 +65,8 @@ public partial class App : System.Windows.Application
         {
             AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
         }
+
+
 
         RuntimeCheck();
         ImportSystem.Initialize();
@@ -83,6 +92,19 @@ public partial class App : System.Windows.Application
         }
     }
 
+    public static void PackageAssets()
+    {
+        Directory.CreateDirectory(IOResources.UPDATE_DIR);
+        currentExe.Info.CopyTo(newExe.Info.FullName);
+
+        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName);
+        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName);
+        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName);
+        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName);
+        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName);
+        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName);
+    }
+
     public static async Task<RepositoryProxyModule[]> Initialize()
     {
         IsNewVersionAvailable = await VersionCheck();
@@ -91,20 +113,20 @@ public partial class App : System.Windows.Application
 
     private static Dictionary<FileInfoExtension, string> DownloadLinks = new();
 
+    private readonly static FileInfoExtension currentExe = new($"BLREdit.exe");
+    private readonly static FileInfoExtension backupExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe.bak");
+    //Need to download 
+    private readonly static FileInfoExtension newExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe");
+    private readonly static FileInfoExtension assetZip = new($"{IOResources.UPDATE_DIR}Assets.zip");
+    private readonly static FileInfoExtension jsonZip = new($"{IOResources.UPDATE_DIR}json.zip");
+    private readonly static FileInfoExtension dllsZip = new($"{IOResources.UPDATE_DIR}dlls.zip");
+    private readonly static FileInfoExtension texturesZip = new($"{IOResources.UPDATE_DIR}textures.zip");
+    private readonly static FileInfoExtension crosshairsZip = new($"{IOResources.UPDATE_DIR}crosshairs.zip");
+    private readonly static FileInfoExtension patchesZip = new($"{IOResources.UPDATE_DIR}patches.zip");
+
     public static async Task<bool> VersionCheck()
     {
         Directory.CreateDirectory(IOResources.UPDATE_DIR);
-
-        var currentExe = new FileInfoExtension($"BLREdit.exe");
-        var backupExe = new FileInfoExtension($"{IOResources.UPDATE_DIR}BLREdit.exe.bak");
-        //Need to download 
-        var newExe = new FileInfoExtension($"{IOResources.UPDATE_DIR}BLREdit.exe");
-        var assetZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}Assets.zip");
-        var jsonZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}json.zip");
-        var dllsZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}dlls.zip");
-        var texturesZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}textures.zip");
-        var crosshairsZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}crosshairs.zip");
-        var patchesZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}patches.zip");
 
         try
         {
@@ -120,20 +142,7 @@ public partial class App : System.Windows.Application
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable}\nAssetFolderMissing:{assetFolderMissing}");
 
-            //TODO Download Asset pack when asstes are missing
-            //TODO more granularity for Assets json, dll, crosshairs, textures, patches
-
-            /*
-            1. Check for version
-            2. Check if Asset folder is existent
-            3. if new version && Asset Folder is missing
-                only download Asset Zip and EXE
-            4. if new version && Asset folder is not missing
-                don't download Assets.Zip but everything else (EXE, patches, dlls, textures, crosshairs, json)
-            5. if not new version but Asset folder is missing download Asset.zip
-
-            Replace the BLREdit.exe last to make sure if something goes wrong it can be repatched after correction by the user
-             */
+            //TODO Add function to Package Assets for upload
 
             if (BLREditLatestRelease is not null)
             {
@@ -163,9 +172,9 @@ public partial class App : System.Windows.Application
 
                 if (newVersionAvailable && assetFolderMissing)
                 {
-                    DownloadAssetFolder(assetZip);
+                    DownloadAssetFolder();
 
-                    UpdateEXE(newExe, backupExe, currentExe);
+                    UpdateEXE();
                 }
                 else if (newVersionAvailable && !assetFolderMissing)
                 {
@@ -175,11 +184,11 @@ public partial class App : System.Windows.Application
                     UpdateAssetPack(crosshairsZip, $"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}");
                     UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}");
 
-                    UpdateEXE(newExe, backupExe, currentExe);
+                    UpdateEXE();
                 }
                 else if (!newVersionAvailable && assetFolderMissing)
                 {
-                    DownloadAssetFolder(assetZip);
+                    DownloadAssetFolder();
                 }
             }
         }
@@ -188,7 +197,7 @@ public partial class App : System.Windows.Application
         return false;
     }
 
-    private static void UpdateEXE(FileInfoExtension newExe, FileInfoExtension backupExe, FileInfoExtension currentExe)
+    private static void UpdateEXE()
     {
         if (DownloadLinks.TryGetValue(newExe, out string exeDL))
         {
@@ -205,7 +214,7 @@ public partial class App : System.Windows.Application
         { LoggingSystem.Log("No new EXE Available!"); }
     }
 
-    private static void DownloadAssetFolder(FileInfoExtension assetZip)
+    private static void DownloadAssetFolder()
     {
         if (DownloadLinks.TryGetValue(assetZip, out string assetDL))
         {
