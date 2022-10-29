@@ -26,6 +26,11 @@ public sealed class IOResources
     public const string ASSET_DIR = "Assets\\";
     public const string LOCAL_DIR = "localization\\";
     public const string JSON_DIR = "json\\";
+    public const string TEXTURE_DIR = "textures\\";
+    public const string DLL_DIR = "dlls\\";
+    public const string PATCH_DIR = "patches\\";
+    public const string PREVIEW_DIR = "crosshairs\\";
+    public const string UPDATE_DIR = "updates\\";
     public const string GAME_PATH_SUFFIX = "steamapps\\common\\blacklightretribution\\Binaries\\Win32\\";
     public const string PROXY_MODULES_DIR = "Modules\\";
     #endregion DIRECTORIES

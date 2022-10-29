@@ -1,9 +1,12 @@
 ﻿using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
+using BLREdit.API.Utils;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
 using BLREdit.UI.Views;
+
+using PeNet.Asn1;
 
 using System;
 using System.Collections.Generic;
@@ -86,14 +89,27 @@ public partial class App : System.Windows.Application
         return await GetAvailableProxyModules();
     }
 
+    private static Dictionary<FileInfoExtension, string> DownloadLinks = new();
+
     public static async Task<bool> VersionCheck()
     {
+        Directory.CreateDirectory(IOResources.UPDATE_DIR);
+
+        var currentExe = new FileInfoExtension($"BLREdit.exe");
+        var backupExe = new FileInfoExtension($"{IOResources.UPDATE_DIR}BLREdit.exe.bak");
+        //Need to download 
+        var newExe = new FileInfoExtension($"{IOResources.UPDATE_DIR}BLREdit.exe");
+        var assetZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}Assets.zip");
+        var jsonZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}json.zip");
+        var dllsZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}dlls.zip");
+        var texturesZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}textures.zip");
+        var crosshairsZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}crosshairs.zip");
+        var patchesZip = new FileInfoExtension($"{IOResources.UPDATE_DIR}patches.zip");
+
+        
+
         try
         {
-            Directory.CreateDirectory("updates/");
-            if (File.Exists("updates/BLREdit.bak")) { File.Delete("updates/BLREdit.bak"); }
-            if (File.Exists("updates/BLREdit.exe")) { File.Delete("updates/BLREdit.exe"); }
-            if (File.Exists("updates/Assets.zip")) { File.Delete("updates/Assets.zip"); }
             BLREditLatestRelease = await GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
             if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
             LoggingSystem.Log($"Newest Version: {BLREditLatestRelease.tag_name} of {BLREditLatestRelease.name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
@@ -101,58 +117,119 @@ public partial class App : System.Windows.Application
             var remoteVersion = CreateVersion(BLREditLatestRelease.tag_name);
             var localVersion = CreateVersion(CurrentVersion);
 
+            bool newVersionAvailable = remoteVersion >= localVersion;
+            bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
+
+            LoggingSystem.Log($"New Version Available:{newVersionAvailable}\nAssetFolderMissing:{assetFolderMissing}");
+
             //TODO Download Asset pack when asstes are missing
             //TODO more granularity for Assets json, dll, crosshairs, textures, patches
+
+            /*
+            1. Check for version
+            2. Check if Asset folder is existent
+            3. if new version && Asset Folder is missing
+                only download Asset Zip and EXE
+            4. if new version && Asset folder is not missing
+                don't download Assets.Zip but everything else (EXE, patches, dlls, textures, crosshairs, json)
+            5. if not new version but Asset folder is missing download Asset.zip
+
+            Replace the BLREdit.exe last to make sure if something goes wrong it can be repatched after correction by the user
+             */
+
             if (BLREditLatestRelease is not null)
             {
                 foreach (var asset in BLREditLatestRelease.assets)
                 {
-                    if (remoteVersion >= localVersion && asset.name.StartsWith("BLREdit") && asset.name.EndsWith(".exe"))
-                    {
-                        try
-                        {
-                            IOResources.WebClient.DownloadFile(asset.browser_download_url, "updates/BLREdit.exe");
-                        }
-                        catch (Exception error)
-                        { LoggingSystem.MessageLog($"Failed to download latest Update App: {error}"); }
-                    }
-                    if ((!Directory.Exists("Assets") || remoteVersion >= localVersion) && asset.name.StartsWith("Assets") && asset.name.EndsWith(".zip"))
-                    {
-                        try
-                        {
-                            IOResources.WebClient.DownloadFile(asset.browser_download_url, "updates/Assets.zip");
-                        }
-                        catch (Exception error)
-                        { LoggingSystem.MessageLog($"Failed to download latest Update Assets: {error}"); }
-                    }
+                    if (asset.name.StartsWith(newExe.Name) && asset.name.EndsWith(newExe.Info.Extension))
+                    { DownloadLinks.Add(newExe, asset.browser_download_url); }
+
+                    if (asset.name.StartsWith(assetZip.Name) && asset.name.EndsWith(assetZip.Info.Extension))
+                    { DownloadLinks.Add(assetZip, asset.browser_download_url); }
+                    
+                    if (asset.name.StartsWith(jsonZip.Name) && asset.name.EndsWith(jsonZip.Info.Extension))
+                    { DownloadLinks.Add(jsonZip, asset.browser_download_url); }
+                    
+                    if (asset.name.StartsWith(dllsZip.Name) && asset.name.EndsWith(dllsZip.Info.Extension))
+                    { DownloadLinks.Add(dllsZip, asset.browser_download_url); }
+                    
+                    if (asset.name.StartsWith(texturesZip.Name) && asset.name.EndsWith(texturesZip.Info.Extension))
+                    { DownloadLinks.Add(texturesZip, asset.browser_download_url); }
+                    
+                    if (asset.name.StartsWith(crosshairsZip.Name) && asset.name.EndsWith(crosshairsZip.Info.Extension))
+                    { DownloadLinks.Add(crosshairsZip, asset.browser_download_url); }
+
+                    if (asset.name.StartsWith(patchesZip.Name) && asset.name.EndsWith(patchesZip.Info.Extension))
+                    { DownloadLinks.Add(patchesZip, asset.browser_download_url); }
                 }
 
-                if (File.Exists("updates/Assets.zip"))
+                if (newVersionAvailable && assetFolderMissing)
                 {
-                    Directory.Delete("Assets", true);
-                    ZipFile.ExtractToDirectory("updates/Assets.zip", "Assets");
-                }
-                else
-                {
-                    LoggingSystem.Log($"No Asset.zip AssetFolderExists:{Directory.Exists("Assets")} NewerVersion:{remoteVersion >= localVersion}");
-                }
+                    DownloadAssetFolder(assetZip);
 
-                if (File.Exists("updates/BLREdit.exe"))
-                {
-                    File.Move("BLREdit.exe", "updates/BLREdit.bak");
-                    File.Copy("updates/BLREdit.exe", "BLREdit.exe");
-                    Process.Start("BLREdit.exe");
-                    Current.Shutdown();
+                    UpdateEXE(newExe, backupExe, currentExe);
                 }
-                else
+                else if (newVersionAvailable && !assetFolderMissing)
                 {
-                    LoggingSystem.Log($"No BLREdit.exe NewerVersion:{remoteVersion >= localVersion}");
+                    UpdateAssetPack(jsonZip, $"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}");
+                    UpdateAssetPack(dllsZip, $"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}");
+                    UpdateAssetPack(texturesZip, $"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}");
+                    UpdateAssetPack(crosshairsZip, $"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}");
+                    UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}");
+
+                    UpdateEXE(newExe, backupExe, currentExe);
+                }
+                else if (!newVersionAvailable && assetFolderMissing)
+                {
+                    DownloadAssetFolder(assetZip);
                 }
             }
         }
         catch (Exception error)
-        { LoggingSystem.MessageLog($"Can't connect to github to check for new Version\n{error}"); }
+        { LoggingSystem.MessageLog($"Failed to Update to Newest Version\n{error}"); }
         return false;
+    }
+
+    private static void UpdateEXE(FileInfoExtension newExe, FileInfoExtension backupExe, FileInfoExtension currentExe)
+    {
+        if (DownloadLinks.TryGetValue(newExe, out string exeDL))
+        {
+            if (newExe.Info.Exists) { newExe.Info.Delete(); }
+            IOResources.WebClient.DownloadFile(exeDL, newExe.Info.FullName);
+            if (backupExe.Info.Exists) { backupExe.Info.Delete(); }
+            currentExe.Info.MoveTo(backupExe.Info.FullName);
+            newExe.Info.CopyTo(currentExe.Info.FullName);
+
+            Process.Start("BLREdit.exe");
+            Current.Shutdown();
+        }
+        else
+        { LoggingSystem.Log("No new EXE Available!"); }
+    }
+
+    private static void DownloadAssetFolder(FileInfoExtension assetZip)
+    {
+        if (DownloadLinks.TryGetValue(assetZip, out string assetDL))
+        {
+            if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
+            IOResources.WebClient.DownloadFile(assetDL, assetZip.Info.FullName);
+            ZipFile.ExtractToDirectory(assetZip.Info.FullName, IOResources.ASSET_DIR);
+        }
+        else
+        { LoggingSystem.MessageLog("No Asset folder for download available!"); }
+    }
+
+    private static void UpdateAssetPack(FileInfoExtension pack, string targetFolder)
+    {
+        if (DownloadLinks.TryGetValue(pack, out string dl))
+        {
+            if (pack.Info.Exists) { pack.Info.Delete(); }
+            IOResources.WebClient.DownloadFile(dl, pack.Info.FullName);
+            if (Directory.Exists(targetFolder)) { Directory.Delete(targetFolder, true); }
+            ZipFile.ExtractToDirectory(pack.Info.FullName, targetFolder);
+        }
+        else
+        { LoggingSystem.Log($"No {pack.Info.Name} for download available!"); }
     }
 
     private static int CreateVersion(string versionTag)
