@@ -17,6 +17,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -79,6 +80,7 @@ public partial class App : System.Windows.Application
 
 
         RuntimeCheck();
+        VersionCheck();
         ImportSystem.Initialize();
 
         LoggingSystem.Log("Loading Client List");
@@ -141,7 +143,6 @@ public partial class App : System.Windows.Application
 
     public static async Task<RepositoryProxyModule[]> Initialize()
     {
-        IsNewVersionAvailable = await VersionCheck();
         return await GetAvailableProxyModules();
     }
 
@@ -158,14 +159,16 @@ public partial class App : System.Windows.Application
     private static FileInfoExtension crosshairsZip;
     private static FileInfoExtension patchesZip;
 
-    public static async Task<bool> VersionCheck()
+    public static void VersionCheck()
     {
         Directory.CreateDirectory(IOResources.UPDATE_DIR);
 
         try
         {
-            BLREditLatestRelease = await GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
-            if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
+            var task = GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
+            task.Wait();
+            BLREditLatestRelease = task.Result;
+            if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return; }
             LoggingSystem.Log($"Newest Version: {BLREditLatestRelease.tag_name} of {BLREditLatestRelease.name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
             var remoteVersion = CreateVersion(BLREditLatestRelease.tag_name);
@@ -174,7 +177,7 @@ public partial class App : System.Windows.Application
             bool newVersionAvailable = remoteVersion > localVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
 
-            LoggingSystem.Log($"New Version Available:{newVersionAvailable}\nAssetFolderMissing:{assetFolderMissing}");
+            LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
 
             if (BLREditLatestRelease is not null)
             {
@@ -226,20 +229,23 @@ public partial class App : System.Windows.Application
         }
         catch (Exception error)
         { LoggingSystem.MessageLog($"Failed to Update to Newest Version\n{error}"); }
-        return false;
     }
 
     private static void UpdateEXE()
     {
         if (DownloadLinks.TryGetValue(newExe, out string exeDL))
         {
-            if (newExe.Info.Exists) { newExe.Info.Delete(); }
+            if (newExe.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {newExe.Info.FullName}"); newExe.Info.Delete(); }
+            LoggingSystem.Log($"[Update]: Downloading {exeDL}");
             IOResources.WebClient.DownloadFile(exeDL, newExe.Info.FullName);
-            if (backupExe.Info.Exists) { backupExe.Info.Delete(); }
+            if (backupExe.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {backupExe.Info.FullName}"); backupExe.Info.Delete(); }
+            LoggingSystem.Log($"[Update]: Moving {currentExe.Info.FullName} to {backupExe.Info.FullName}");
             currentExe.Info.MoveTo(backupExe.Info.FullName);
-            newExe.Info.CopyTo(currentExe.Info.FullName);
+            LoggingSystem.Log($"[Update]: Copy {newExe.Info.FullName} to BLREdit.exe");
+            newExe.Info.CopyTo("BLREdit.exe");
 
-            Process.Start("BLREdit.exe");
+            var newApp = Process.Start("BLREdit.exe");
+            Thread.Sleep(5);
             Current.Shutdown();
         }
         else
