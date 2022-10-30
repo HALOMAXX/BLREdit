@@ -881,6 +881,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     {
         var profile = ExportSystem.ActiveProfile.Clone();
         ExportSystem.Profiles.Add(profile);
+        ProfileComboBox.SelectedItem = profile;
     }
 
     readonly private static char[] InvalidNameChars = System.IO.Path.GetInvalidPathChars().Concat(System.IO.Path.GetInvalidFileNameChars()).ToArray();

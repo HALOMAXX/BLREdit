@@ -27,8 +27,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.7.3";
-    public const string CurrentVersionTitle = "BLREdit Removed UDP Ping";
+    public const string CurrentVersion = "v0.7.5";
+    public const string CurrentVersionTitle = "BLREdit Autoupdate and Bugfixes";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
