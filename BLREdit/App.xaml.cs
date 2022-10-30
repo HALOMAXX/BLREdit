@@ -213,11 +213,13 @@ public partial class App : System.Windows.Application
                 }
                 else if (newVersionAvailable && !assetFolderMissing)
                 {
-                    UpdateAssetPack(jsonZip, $"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}");
-                    UpdateAssetPack(dllsZip, $"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}");
-                    UpdateAssetPack(texturesZip, $"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}");
-                    UpdateAssetPack(crosshairsZip, $"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}");
-                    UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}");
+                    var jsonTask = Task.Run(() => { UpdateAssetPack(jsonZip, $"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}"); });
+                    var dllsTask = Task.Run(() => { UpdateAssetPack(dllsZip, $"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}"); });
+                    var textureTask = Task.Run(() => { UpdateAssetPack(texturesZip, $"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}"); });
+                    var crosshairTask = Task.Run(() => { UpdateAssetPack(crosshairsZip, $"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}"); });
+                    var patchesTask = Task.Run(() => { UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}"); });
+
+                    Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask);
 
                     UpdateEXE();
                 }
@@ -241,12 +243,26 @@ public partial class App : System.Windows.Application
             if (backupExe.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {backupExe.Info.FullName}"); backupExe.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Moving {currentExe.Info.FullName} to {backupExe.Info.FullName}");
             currentExe.Info.MoveTo(backupExe.Info.FullName);
+            currentExe = new("BLREdit.exe");
+            LoggingSystem.Log($"[Update]: Reset CurrentExe {currentExe}");
             LoggingSystem.Log($"[Update]: Copy {newExe.Info.FullName} to BLREdit.exe");
-            newExe.Info.CopyTo("BLREdit.exe");
+            var newnewExe = newExe.Info.CopyTo("BLREdit.exe");
 
-            var newApp = Process.Start("BLREdit.exe");
-            Thread.Sleep(5);
-            Current.Shutdown();
+            LoggingSystem.Log($"[Update]: Launching New EXE !!! {newnewExe.FullName} in {newnewExe.Directory.FullName}");
+
+            File.WriteAllText("launch.bat", "@echo off\nBLREdit.exe\nexit");
+
+            ProcessStartInfo psi = new()
+            {
+                WindowStyle = ProcessWindowStyle.Hidden,
+                FileName = "launch.bat",
+            };
+            Process newApp = new()
+            {
+                StartInfo = psi
+            };
+            newApp.Start();
+            Current.Shutdown(-69);
         }
         else
         { LoggingSystem.Log("No new EXE Available!"); }
