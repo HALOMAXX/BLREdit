@@ -22,7 +22,7 @@ namespace BLREdit.UI.Controls
         private int _scrollLength = 25;
         private Size _itemSize = new Size(0, 0);
 
-        public static readonly DependencyProperty OrientationProperty = DependencyProperty.RegisterAttached("Orientation", typeof(Orientation), typeof(UniformGridPanel),
+        public static readonly DependencyProperty OrientationProperty = DependencyProperty.RegisterAttached("Orientation", typeof(Orientation), typeof(VirtualizedUniformGrid),
             new FrameworkPropertyMetadata(Orientation.Vertical, FrameworkPropertyMetadataOptions.AffectsArrange | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         private int _rows;
