@@ -219,7 +219,7 @@ public partial class App : System.Windows.Application
                     var crosshairTask = Task.Run(() => { UpdateAssetPack(crosshairsZip, $"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}"); });
                     var patchesTask = Task.Run(() => { UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}"); });
 
-                    Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask);
+                    Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask).Wait();
 
                     UpdateEXE();
                 }
