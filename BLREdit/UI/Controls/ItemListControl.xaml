@@ -6,10 +6,11 @@
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:import="clr-namespace:BLREdit.Import"
              d:DataContext="{d:DesignInstance Type=import:BLRItem}"
-             mc:Ignorable="d" >
+             mc:Ignorable="d"
+             MinWidth="285">
     <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-4,-1,-4,-1" ToolTip="{Binding Tooltip}" MouseDown="ItemList_MouseDown">
         <Border BorderThickness="1,1,1,1">
-            <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="None" />
+            <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="None" Width="256" Height="128" />
         </Border>
         <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
         <Border BorderThickness="1,0,1,1">
@@ -17,7 +18,7 @@
         </Border>
         <Border BorderThickness="1,0,1,1">
             <UniformGrid Columns="3">
-                <UniformGrid Columns="2">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="{Binding Path=DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -32,9 +33,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </UniformGrid>
+                </StackPanel>
 
-                <UniformGrid Columns="2">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat2.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -49,9 +50,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </UniformGrid>
+                </StackPanel>
 
-                <UniformGrid Columns="2">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat3.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -66,9 +67,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </UniformGrid>
+                </StackPanel>
 
-                <UniformGrid Columns="2">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat4.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -83,9 +84,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </UniformGrid>
+                </StackPanel>
 
-                <UniformGrid Columns="2">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat5.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -100,9 +101,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </UniformGrid>
+                </StackPanel>
 
-                <UniformGrid Columns="2">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat6.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -117,7 +118,7 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </UniformGrid>
+                </StackPanel>
 
             </UniformGrid>
         </Border>
