@@ -41,6 +41,7 @@
                 <Grid>
                     <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22"  Click="ChangeSortingDirection"/>
                     <ComboBox Name="SortComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="120,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
+                    <TextBox Name="SearchBox" Text="{Binding Path=SearchFilter, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=old:MainWindow}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="240,0,0,0" TextChanged="SearchBox_TextChanged"/>
                     <ListView Name="ItemList" Margin="0,22,0,0" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">

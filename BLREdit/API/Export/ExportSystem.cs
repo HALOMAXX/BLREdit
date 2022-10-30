@@ -60,8 +60,8 @@ public sealed class ExportSystem
         List<ExportSystemProfile> profiles = new();
         Directory.CreateDirectory($"{IOResources.PROFILE_DIR}");
 
-        CurrentBackupFolder = Directory.CreateDirectory($"\\Backup\\{System.DateTime.Now:dd-MM-yy}\\{System.DateTime.Now:HH-mm}\\");
-
+        CurrentBackupFolder = Directory.CreateDirectory($"Backup\\{System.DateTime.Now:dd-MM-yy}\\{System.DateTime.Now:HH-mm}\\");
+        LoggingSystem.Log($"Backup folder:{CurrentBackupFolder.FullName}");
         Regex regex = new(@"\((.*)\)");
 
         bool oldProfiles = false;

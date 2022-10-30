@@ -9,6 +9,7 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <ApplicationIcon>BLREdit Logo (DraagonLizzard).ico</ApplicationIcon>
     <Nullable>disable</Nullable>
+    <Configurations>Debug;Release;Publish</Configurations>
   </PropertyGroup>
 	
 	<ItemGroup>
@@ -59,5 +60,9 @@
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="if &quot;$(Configuration)&quot; == &quot;Publish&quot; ($(OutDir)BLREdit.exe -package)" />
+	</Target>
 	
 </Project>

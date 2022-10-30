@@ -11,8 +11,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+
+using BLREdit.Export;
 using BLREdit.Game.Proxy;
 using BLREdit.UI;
 using BLREdit.UI.Views;
@@ -27,6 +30,9 @@ namespace BLREdit.Game;
 
 public sealed class BLRClient : INotifyPropertyChanged
 {
+    private bool hasBeenValidated = false;
+
+    [JsonIgnore] private BLRServer LocalHost = new BLRServer() { ServerAddress = "localhost", Port=7777, ServerName="LocalHost" };
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(ClientHash, out string version)) { return version; } else { return "Unknown"; } } }
@@ -104,7 +110,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public override string ToString()
     {
-        return $"[{ClientVersion}]:{OriginalPath?.Substring(0, Math.Min(OriginalPath.Length, 24))}";
+        return $"({ClientVersion}){OriginalPath?.Substring(0, Math.Min(OriginalPath.Length, 24))}";
     }
 
     #region ClientValidation
@@ -347,13 +353,16 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
-        string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?SingleMatch?NumBots=12";
+        string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?SingleMatch?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
         StartProcess(launchArgs);
+        LaunchClient(new LaunchOptions() { UserName=ExportSystem.ActiveProfile.PlayerName, Server=LocalHost });
     }
 
     private void LaunchServer()
     {
-        string launchArgs = "server HeloDeck?Game=FoxGame.FoxGameMP_DM?ServerName=BLREdit-DM-Server?Port=7777?NumBots=12?MaxPlayers=16?Playlist=DM";
+        (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
+        if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
+        string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?Playlist=DM?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
         StartProcess(launchArgs);
     }
 
@@ -370,8 +379,16 @@ public sealed class BLRClient : INotifyPropertyChanged
     }
     private void StartProcess(string launchArgs)
     {
-        ValidateClient();
-        ValidateModules();
+        if (!hasBeenValidated)
+        {
+            ValidateClient();
+            ValidateModules();
+            hasBeenValidated = true;
+        }
+        else
+        {
+            LoggingSystem.Log($"[{this}]: has already been validated!");
+        }
 
         ProcessStartInfo psi = new()
         {
@@ -474,7 +491,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             catch (Exception error)
             {
-                LoggingSystem.MessageLog($"[{ClientVersion}]Client Patch Failed: {error}");
+                LoggingSystem.MessageLog($"[{this}]Client Patch Failed: {error}");
             }
         }
         else

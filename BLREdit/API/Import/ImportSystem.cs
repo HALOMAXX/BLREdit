@@ -3,11 +3,15 @@ using BLREdit.UI.Views;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
+
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace BLREdit.Import;
 
@@ -42,7 +46,7 @@ public static class ImportSystem
     public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
-    private static Dictionary<string, List<BLRItem>> ItemLists { get; } = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
+    private static Dictionary<string, ObservableCollection<BLRItem>> ItemLists { get; } = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
 
 
     public static void Initialize()
@@ -235,7 +239,7 @@ public static class ImportSystem
                         }
                         else
                         {
-                            FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Normal, "0.00", "s");
+                            FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Inverted, "0.00", "s");
                         }
 
                         item.DisplayStat1 = desc1;
@@ -288,8 +292,8 @@ public static class ImportSystem
                         FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
                         FormatDisplayStat(ref desc2, LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, StatsEnum.Normal, "0.0", "%");
                         FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u");
-                        FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s");
+                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 69.9);
+                        FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 6.59);
                         if (value != 0)
                         {
                             FormatDisplayStat(ref desc6, prop, desc, value, StatsEnum.Normal, "0", "%");
@@ -315,8 +319,8 @@ public static class ImportSystem
                         var desc5 = new DisplayStatDiscriptor();
                         var desc6 = new DisplayStatDiscriptor();
 
-                        FormatDisplayStat(ref desc1, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0");
-                        FormatDisplayStat(ref desc2, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s");
+                        FormatDisplayStat(ref desc1, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 0);
+                        FormatDisplayStat(ref desc2, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 0);
 
                         item.DisplayStat1 = desc1;
                         item.DisplayStat2 = desc2;
@@ -473,6 +477,35 @@ public static class ImportSystem
                     }
                     break;
             }
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(itemCategory.Value);
+            if (view != null)
+            {
+                view.Filter += new Predicate<object>(o =>
+                {
+                    if (MainWindow.Self?.wasLastImageScopePreview ?? true) { return true; }
+                    if (o is BLRItem item)
+                    {
+                        if (MainWindow.Self.IsSearch(item))
+                        {
+                            switch (item.Category)
+                            {
+                                case ImportSystem.EMOTES_CATEGORY:
+                                    return !string.IsNullOrEmpty(item.Name);
+                                case ImportSystem.PRIMARY_CATEGORY:
+                                    return true;
+                                case ImportSystem.SECONDARY_CATEGORY:
+                                    return item.Tooltip != "Depot Item!";
+
+                                default:
+                                    return item.IsValidFor(MainWindow.Self.FilterWeapon);
+                            }                            
+                        }
+                    }
+                    return false;
+                });
+            }
+            
         }
     }
 
@@ -495,7 +528,7 @@ public static class ImportSystem
 
     static readonly Brush defaultRed = new SolidColorBrush(Color.FromArgb(255, 200, 60, 50));
     static readonly Brush highlightRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-    private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1)
+    private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
     {
         desc.PropertyName = propertyName;
         desc.Description = description;
@@ -508,19 +541,7 @@ public static class ImportSystem
             case double d:
                 desc.Value = prefix + d.ToString(format) + suffix;
                 isGrey = d == 0;
-                isPositive = d > 0;
-                // more dirty cheats
-                if (suffix == "s")
-                {
-                    isPositive = d < 0;
-                } else if (suffix == "u")
-                {
-                    isPositive = d >= 70;
-                }
-                else if (suffix == "u/s")
-                {
-                    isPositive = d >= 6.6;
-                }
+                isPositive = d > defaultval;
                 break;
             case bool b:
                 desc.Value = b.ToString();
@@ -673,7 +694,7 @@ public static class ImportSystem
         //string Name = "";
         //string Tooltip = "";
         //string Desc = "";
-        foreach (KeyValuePair<string, List<BLRItem>> entry in ItemLists)
+        foreach (var entry in ItemLists)
         {
             LoggingSystem.Log($"Updating Images for {entry.Key}");
 
@@ -790,10 +811,10 @@ public static class ImportSystem
         }
     }
 
-    public static List<BLRItem> GetItemListOfType(string Type)
+    public static ObservableCollection<BLRItem> GetItemListOfType(string Type)
     {
         if (string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             return items;
         }
@@ -806,9 +827,11 @@ public static class ImportSystem
     public static BLRItem[] GetItemArrayOfType(string Type)
     {
         if (string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
-            return items.ToArray();
+            BLRItem[] array = new BLRItem[items.Count];
+            items.CopyTo(array, 0);
+            return array;
         }
         else
         {
@@ -819,7 +842,7 @@ public static class ImportSystem
     public static int GetIDOfItem(BLRItem item)
     {
         if (item == null) return -1;
-        if (ItemLists.TryGetValue(item.Category, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(item.Category, out ObservableCollection<BLRItem> items))
         {
             return items.IndexOf(item);
         }
@@ -832,7 +855,7 @@ public static class ImportSystem
     public static BLRItem GetItemByIDAndType(string Type, int ID)
     {
         if (ID < 0 || string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             if (ID < items.Count)
             {
@@ -853,7 +876,7 @@ public static class ImportSystem
     public static int GetIDByNameAndType(string Type, string Name)
     {
         if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             foreach (BLRItem item in items)
             {
@@ -873,7 +896,7 @@ public static class ImportSystem
     public static BLRItem GetItemByNameAndType(string Type, string Name)
     {
         if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return null;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             foreach (BLRItem item in items)
             {

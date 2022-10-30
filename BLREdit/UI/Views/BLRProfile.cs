@@ -21,6 +21,10 @@ public sealed class BLRProfile : INotifyPropertyChanged
     private BLRLoadout loadout3 = new();
     public BLRLoadout Loadout3 { get { return loadout3; } }
 
+    public void UpdateSearchAndFilter()
+    {
+        MainWindow.Self.ApplySearchAndFilter();
+    }
 
     private MagiCowsProfile internalProfile;
     public void LoadMagicCowsProfile(MagiCowsProfile profile)
