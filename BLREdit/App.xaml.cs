@@ -59,6 +59,11 @@ public partial class App : System.Windows.Application
                 PackageAssets();
             }
             catch (Exception error) { LoggingSystem.MessageLog($"failed to package release:\n{error}"); }
+            var result = MessageBox.Show("Open Package folder?", "", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Process.Start("explorer.exe", newExe.Info.Directory.FullName);
+            }
             Application.Current.Shutdown();
         }
 
@@ -124,12 +129,14 @@ public partial class App : System.Windows.Application
         if (crosshairsZip.Info.Exists) { crosshairsZip.Info.Delete(); }
         if (patchesZip.Info.Exists) { patchesZip.Info.Delete(); }
 
-        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName);
-        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName);
-        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName);
-        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName);
-        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName);
-        ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName);
+        var taskAsset = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName); });
+        var taskJson = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName); });
+        var taskDlls = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName); });
+        var taskTexture = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName); });
+        var taskPreview = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
+        var taskPatches = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
+
+        Task.WhenAll(taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
     }
 
     public static async Task<RepositoryProxyModule[]> Initialize()
@@ -168,8 +175,6 @@ public partial class App : System.Windows.Application
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable}\nAssetFolderMissing:{assetFolderMissing}");
-
-            //TODO Add function to Package Assets for upload
 
             if (BLREditLatestRelease is not null)
             {

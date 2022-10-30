@@ -9,7 +9,7 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <ApplicationIcon>BLREdit Logo (DraagonLizzard).ico</ApplicationIcon>
     <Nullable>disable</Nullable>
-    <Configurations>Debug;Release</Configurations>
+    <Configurations>Debug;Release;Publish</Configurations>
   </PropertyGroup>
 	
 	<ItemGroup>
@@ -62,7 +62,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="if &quot;$(Configuration)&quot; == &quot;Release&quot; ($(OutDir)BLREdit.exe -package)" />
+	  <Exec Command="if &quot;$(Configuration)&quot; == &quot;Publish&quot; ($(OutDir)BLREdit.exe -package)" />
 	</Target>
 	
 </Project>
