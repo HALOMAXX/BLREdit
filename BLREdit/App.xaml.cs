@@ -28,7 +28,7 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.7.6";
+    public const string CurrentVersion = "v0.7.4";
     public const string CurrentVersionTitle = "BLREdit Autoupdate, Performance and Bugfixes";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
@@ -268,9 +268,11 @@ public partial class App : System.Windows.Application
     {
         if (DownloadLinks.TryGetValue(pack, out string dl))
         {
-            if (pack.Info.Exists) { pack.Info.Delete(); }
+            if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
+            LoggingSystem.Log($"[Update]: Downloading {dl}");
             IOResources.WebClient.DownloadFile(dl, pack.Info.FullName);
-            if (Directory.Exists(targetFolder)) { Directory.Delete(targetFolder, true); }
+            if (Directory.Exists(targetFolder)) { LoggingSystem.Log($"[Update]: Deleting {targetFolder}"); Directory.Delete(targetFolder, true); }
+            LoggingSystem.Log($"[Update]: Extracting {pack.Info.FullName} to {targetFolder}");
             ZipFile.ExtractToDirectory(pack.Info.FullName, targetFolder);
         }
         else
