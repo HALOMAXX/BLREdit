@@ -22,6 +22,7 @@ using BLREdit.Export;
 using BLREdit.UI.Controls;
 using BLREdit.UI.Windows;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace BLREdit.UI;
 
@@ -40,7 +41,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     /// <summary>
     /// Contains the weapon to filter out Items From the ItemList
     /// </summary>
-    private BLRItem FilterWeapon = null;
+    public BLRItem FilterWeapon = null;
 
     /// <summary>
     /// Contains the current active loadout
@@ -84,6 +85,17 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    public bool IsSearch(BLRItem item)
+    {
+        string searchText = SearchFilter.Trim().ToLower();
+        string itemName = item.Name.ToLower();
+        if (string.IsNullOrEmpty(searchText)) { return true; }
+        return itemName.Contains(searchText);
+    }
+
+    private string searchFilter = "";
+    public string SearchFilter { get { return searchFilter; } set { if (value != searchFilter) { searchFilter = value; ApplySearchAndFilter(); OnPropertyChanged(); } } }
+
     //TODO Add Item Search
     public MainWindow()
     {
@@ -93,22 +105,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         InitializeComponent();
 
+        ItemList.Items.IsLiveFiltering = true;
+        ItemList.Items.LiveFilteringProperties.Add("SearchFilter");
+
         ChangeSortingDirection(this, null);
         ChangeSortingDirection(this, null);
-
-        ItemList.Items.Filter += new Predicate<object>(o =>
-        {
-            if (wasLastImageScopePreview) { return true; }
-            if (o is BLRItem item)
-            {
-                if (item.Category == ImportSystem.EMOTES_CATEGORY) { return !string.IsNullOrEmpty(item.Name); }
-
-                if (FilterWeapon is null && (item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY)) { return true; }
-
-                return item.IsValidFor(FilterWeapon);
-            }
-            return false;
-        });
 
         PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
         ProfileComboBox.ItemsSource = ExportSystem.Profiles;
@@ -128,6 +129,15 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
 
         this.DataContext = Profile;
+    }
+
+    public void ApplySearchAndFilter()
+    {
+        CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ItemList.ItemsSource);
+        if (view != null)
+        {
+            view.Refresh();
+        }
     }
 
     private static void SetBorderColor(Border border, Color color)
@@ -380,7 +390,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    private bool wasLastImageScopePreview = false;
+    public bool wasLastImageScopePreview = false;
     private void Border_MouseUp(object sender, MouseButtonEventArgs e)
     {
         Image image = null;
@@ -517,8 +527,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
+    private string CurrentListType;
     public void SetItemList(string Type)
     {
+        CurrentListType = Type;
         var list = ImportSystem.GetItemListOfType(Type);
         if (list.Count > 0)
         {
@@ -899,5 +911,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
         if (loadoutNew is not null)
         { loadoutNew.IsFemale = loadoutNew.IsFemale; }
+    }
+
+    private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        SearchFilter = SearchBox.Text;
     }
 }

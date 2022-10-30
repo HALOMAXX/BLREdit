@@ -3,11 +3,15 @@ using BLREdit.UI.Views;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
+
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace BLREdit.Import;
 
@@ -42,7 +46,7 @@ public static class ImportSystem
     public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
-    private static Dictionary<string, List<BLRItem>> ItemLists { get; } = IOResources.DeserializeFile<Dictionary<string, List<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
+    private static Dictionary<string, ObservableCollection<BLRItem>> ItemLists { get; } = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
 
 
     public static void Initialize()
@@ -473,6 +477,35 @@ public static class ImportSystem
                     }
                     break;
             }
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(itemCategory.Value);
+            if (view != null)
+            {
+                view.Filter += new Predicate<object>(o =>
+                {
+                    if (MainWindow.Self?.wasLastImageScopePreview ?? true) { return true; }
+                    if (o is BLRItem item)
+                    {
+                        if (MainWindow.Self.IsSearch(item))
+                        {
+                            switch (item.Category)
+                            {
+                                case ImportSystem.EMOTES_CATEGORY:
+                                    return !string.IsNullOrEmpty(item.Name);
+                                case ImportSystem.PRIMARY_CATEGORY:
+                                    return true;
+                                case ImportSystem.SECONDARY_CATEGORY:
+                                    return item.Tooltip != "Depot Item!";
+
+                                default:
+                                    return item.IsValidFor(MainWindow.Self.FilterWeapon);
+                            }                            
+                        }
+                    }
+                    return false;
+                });
+            }
+            
         }
     }
 
@@ -661,7 +694,7 @@ public static class ImportSystem
         //string Name = "";
         //string Tooltip = "";
         //string Desc = "";
-        foreach (KeyValuePair<string, List<BLRItem>> entry in ItemLists)
+        foreach (var entry in ItemLists)
         {
             LoggingSystem.Log($"Updating Images for {entry.Key}");
 
@@ -778,10 +811,10 @@ public static class ImportSystem
         }
     }
 
-    public static List<BLRItem> GetItemListOfType(string Type)
+    public static ObservableCollection<BLRItem> GetItemListOfType(string Type)
     {
         if (string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             return items;
         }
@@ -794,9 +827,11 @@ public static class ImportSystem
     public static BLRItem[] GetItemArrayOfType(string Type)
     {
         if (string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
-            return items.ToArray();
+            BLRItem[] array = new BLRItem[items.Count];
+            items.CopyTo(array, 0);
+            return array;
         }
         else
         {
@@ -807,7 +842,7 @@ public static class ImportSystem
     public static int GetIDOfItem(BLRItem item)
     {
         if (item == null) return -1;
-        if (ItemLists.TryGetValue(item.Category, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(item.Category, out ObservableCollection<BLRItem> items))
         {
             return items.IndexOf(item);
         }
@@ -820,7 +855,7 @@ public static class ImportSystem
     public static BLRItem GetItemByIDAndType(string Type, int ID)
     {
         if (ID < 0 || string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             if (ID < items.Count)
             {
@@ -841,7 +876,7 @@ public static class ImportSystem
     public static int GetIDByNameAndType(string Type, string Name)
     {
         if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             foreach (BLRItem item in items)
             {
@@ -861,7 +896,7 @@ public static class ImportSystem
     public static BLRItem GetItemByNameAndType(string Type, string Name)
     {
         if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return null;
-        if (ItemLists.TryGetValue(Type, out List<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             foreach (BLRItem item in items)
             {
