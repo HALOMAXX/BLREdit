@@ -213,13 +213,7 @@ public partial class App : System.Windows.Application
                 }
                 else if (newVersionAvailable && !assetFolderMissing)
                 {
-                    var jsonTask = Task.Run(() => { UpdateAssetPack(jsonZip, $"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}"); });
-                    var dllsTask = Task.Run(() => { UpdateAssetPack(dllsZip, $"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}"); });
-                    var textureTask = Task.Run(() => { UpdateAssetPack(texturesZip, $"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}"); });
-                    var crosshairTask = Task.Run(() => { UpdateAssetPack(crosshairsZip, $"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}"); });
-                    var patchesTask = Task.Run(() => { UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}"); });
-
-                    Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask).Wait();
+                    UpdateAllAssetPacks();
 
                     UpdateEXE();
                 }
@@ -280,19 +274,44 @@ public partial class App : System.Windows.Application
         { LoggingSystem.MessageLog("No Asset folder for download available!"); }
     }
 
-    private static void UpdateAssetPack(FileInfoExtension pack, string targetFolder)
+    private static void UpdateAllAssetPacks()
+    {
+        //Sync DL
+        DownloadAssetPack(jsonZip);
+        DownloadAssetPack(dllsZip);
+        DownloadAssetPack(texturesZip);
+        DownloadAssetPack(crosshairsZip);
+        DownloadAssetPack(patchesZip);
+        //Extract them all
+        var jsonTask = Task.Run(() => { UpdateAssetPack(jsonZip, $"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}"); });
+        var dllsTask = Task.Run(() => { UpdateAssetPack(dllsZip, $"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}"); });
+        var textureTask = Task.Run(() => { UpdateAssetPack(texturesZip, $"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}"); });
+        var crosshairTask = Task.Run(() => { UpdateAssetPack(crosshairsZip, $"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}"); });
+        var patchesTask = Task.Run(() => { UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}"); });
+
+        Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask).Wait();
+    }
+    private static void DownloadAssetPack(FileInfoExtension pack)
     {
         if (DownloadLinks.TryGetValue(pack, out string dl))
         {
             if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Downloading {dl}");
             IOResources.WebClient.DownloadFile(dl, pack.Info.FullName);
+        }
+        else
+        { LoggingSystem.Log($"No {pack.Info.Name} for download available!"); }
+    }
+    private static void UpdateAssetPack(FileInfoExtension pack, string targetFolder)
+    {
+        if (DownloadLinks.TryGetValue(pack, out _))
+        {
             if (Directory.Exists(targetFolder)) { LoggingSystem.Log($"[Update]: Deleting {targetFolder}"); Directory.Delete(targetFolder, true); }
             LoggingSystem.Log($"[Update]: Extracting {pack.Info.FullName} to {targetFolder}");
             ZipFile.ExtractToDirectory(pack.Info.FullName, targetFolder);
         }
         else
-        { LoggingSystem.Log($"No {pack.Info.Name} for download available!"); }
+        { LoggingSystem.Log($"No {pack.Info.Name} to Unpack!"); }
     }
 
     private static int CreateVersion(string versionTag)
