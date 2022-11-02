@@ -150,6 +150,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+        this.Title = $"{App.CurrentRepo} - {App.CurrentVersion}";
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
         {
