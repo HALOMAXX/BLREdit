@@ -10,7 +10,7 @@
         xmlns:game="clr-namespace:BLREdit.Game"
         d:DataContext="{d:DesignInstance Type=views:BLRProfile}"
         mc:Ignorable="d"
-        Title="BLREdit" Height="1032" Width="1920" MinWidth="480" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Foreground="Red" PreviewKeyDown="PreviewKeyDownMainWindow" PreviewKeyUp="PreviewKeyUpMainWindow">
+        Title="BLREdit" Height="1032" Width="1920" MinWidth="830" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Foreground="Red" PreviewKeyDown="PreviewKeyDownMainWindow" PreviewKeyUp="PreviewKeyUpMainWindow">
 
     <Window.Background>
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
@@ -24,7 +24,7 @@
         <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static res:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
         <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static res:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
-        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="400" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged">
+        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="420" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged">
             <TabItem Header="Loadout 1">
                 <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Loadout1}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
             </TabItem>
@@ -36,7 +36,7 @@
             </TabItem>
         </TabControl>
 
-        <TabControl Name="MainWindowTabs"  BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="400,0,0,0">
+        <TabControl Name="MainWindowTabs"  BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="420,0,0,0">
             <TabItem Header="Item List" Name="ItemListTab">
                 <Grid>
                     <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22"  Click="ChangeSortingDirection"/>

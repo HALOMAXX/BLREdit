@@ -124,7 +124,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
 
-        LastSelectedBorder = ((WeaponControl)((Grid)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Children[0]).Reciever;
+        LastSelectedBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
         FilterWeapon = Profile.Loadout1.Primary.Reciever;
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
 
