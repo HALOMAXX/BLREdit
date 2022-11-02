@@ -11,20 +11,26 @@
     <Grid>
         <TabControl Name="LoadoutTabControl" BorderThickness="0,1,0,0" SelectionChanged="LoadoutTabControl_Selected">
             <TabItem Header="Weapons">
-                <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
-                    <ui:WeaponControl x:Name="PrimaryControl" DataContext="{Binding Path=Primary}" x:FieldModifier="public"/>
-                    <ui:WeaponControl x:Name="SecondaryControl" DataContext="{Binding Path=Secondary}" x:FieldModifier="public" Margin="0,368,0,0"/>
-                </Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <ui:WeaponControl x:Name="PrimaryControl" DataContext="{Binding Path=Primary}" x:FieldModifier="public"/>
+                        <ui:WeaponControl x:Name="SecondaryControl" DataContext="{Binding Path=Secondary}" x:FieldModifier="public" Margin="0,368,0,0"/>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Gear">
-                <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
-                    <ui:GearControl x:Name="GearControl" x:FieldModifier="public"/>
-                </Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <ui:GearControl x:Name="GearControl" x:FieldModifier="public"/>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Extra">
-                <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
-                    <ui:ExtraControl x:Name="ExtraControl" x:FieldModifier="public"/>
-                </Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <ui:ExtraControl x:Name="ExtraControl" x:FieldModifier="public"/>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </Grid>

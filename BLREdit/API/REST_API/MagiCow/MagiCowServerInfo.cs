@@ -2,6 +2,8 @@
 using BLREdit.UI.Windows;
 
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
 namespace BLREdit.API.REST_API.MagiCow;
@@ -17,8 +19,7 @@ public sealed class MagiCowServerInfo
     public bool IsOnline { get; set; } = false;
 
     private BLRMap map;
-    [JsonIgnore]
-    public BLRMap BLRMap
+    [JsonIgnore] public BLRMap BLRMap
     {
         get
         {
@@ -28,8 +29,7 @@ public sealed class MagiCowServerInfo
     }
 
     private ObservableCollection<string> list;
-    [JsonIgnore]
-    public ObservableCollection<string> List
+    [JsonIgnore] public ObservableCollection<string> List
     {
         get
         {

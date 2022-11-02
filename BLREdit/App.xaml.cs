@@ -28,8 +28,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.7.7";
-    public const string CurrentVersionTitle = "BLREdit Added Version Number to Window Title";
+    public const string CurrentVersion = "v0.7.8";
+    public const string CurrentVersionTitle = "BLREdit Updater Fix";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -63,7 +63,7 @@ public partial class App : System.Windows.Application
             var result = MessageBox.Show("Open Package folder?", "", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                Process.Start("explorer.exe", newExe.Info.Directory.FullName);
+                Process.Start("explorer.exe", exeZip.Info.Directory.FullName);
             }
             Application.Current.Shutdown();
         }
@@ -109,7 +109,7 @@ public partial class App : System.Windows.Application
         currentExe = new($"BLREdit.exe");
         backupExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe.bak");
         //Need to download 
-        newExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe");
+        exeZip = new($"{IOResources.UPDATE_DIR}BLREdit.zip");
         assetZip = new($"{IOResources.UPDATE_DIR}Assets.zip");
         jsonZip = new($"{IOResources.UPDATE_DIR}json.zip");
         dllsZip = new($"{IOResources.UPDATE_DIR}dlls.zip");
@@ -122,8 +122,7 @@ public partial class App : System.Windows.Application
     {
         Directory.CreateDirectory(IOResources.UPDATE_DIR);
 
-        currentExe.Info.CopyTo(newExe.Info.FullName, true);
-
+        if (exeZip.Info.Exists) { exeZip.Info.Delete(); }
         if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
         if (jsonZip.Info.Exists) { jsonZip.Info.Delete(); }
         if (dllsZip.Info.Exists) { dllsZip.Info.Delete(); }
@@ -131,6 +130,11 @@ public partial class App : System.Windows.Application
         if (crosshairsZip.Info.Exists) { crosshairsZip.Info.Delete(); }
         if (patchesZip.Info.Exists) { patchesZip.Info.Delete(); }
 
+        var taskExe = Task.Run(() => 
+        {
+            using var archive = ZipFile.Open(exeZip.Info.FullName, ZipArchiveMode.Create);
+            var entry = archive.CreateEntryFromFile("BLREdit.exe", "BLREdit.exe");
+        });
         var taskAsset = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName); });
         var taskJson = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName); });
         var taskDlls = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName); });
@@ -138,7 +142,7 @@ public partial class App : System.Windows.Application
         var taskPreview = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
         var taskPatches = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
 
-        Task.WhenAll(taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
+        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
     }
 
     public static async Task<RepositoryProxyModule[]> Initialize()
@@ -151,7 +155,7 @@ public partial class App : System.Windows.Application
     private static FileInfoExtension currentExe;
     private static FileInfoExtension backupExe;
     //Need to download 
-    private static FileInfoExtension newExe;
+    private static FileInfoExtension exeZip;
     private static FileInfoExtension assetZip;
     private static FileInfoExtension jsonZip;
     private static FileInfoExtension dllsZip;
@@ -183,8 +187,8 @@ public partial class App : System.Windows.Application
             {
                 foreach (var asset in BLREditLatestRelease.assets)
                 {
-                    if (asset.name.StartsWith(newExe.Name) && asset.name.EndsWith(newExe.Info.Extension))
-                    { DownloadLinks.Add(newExe, asset.browser_download_url); }
+                    if (asset.name.StartsWith(exeZip.Name) && asset.name.EndsWith(exeZip.Info.Extension))
+                    { DownloadLinks.Add(exeZip, asset.browser_download_url); }
 
                     if (asset.name.StartsWith(assetZip.Name) && asset.name.EndsWith(assetZip.Info.Extension))
                     { DownloadLinks.Add(assetZip, asset.browser_download_url); }
@@ -229,20 +233,19 @@ public partial class App : System.Windows.Application
 
     private static void UpdateEXE()
     {
-        if (DownloadLinks.TryGetValue(newExe, out string exeDL))
+        if (DownloadLinks.TryGetValue(exeZip, out string exeDL))
         {
-            if (newExe.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {newExe.Info.FullName}"); newExe.Info.Delete(); }
+            if (exeZip.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {exeZip.Info.FullName}"); exeZip.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Downloading {exeDL}");
-            IOResources.WebClient.DownloadFile(exeDL, newExe.Info.FullName);
+            IOResources.WebClient.DownloadFile(exeDL, exeZip.Info.FullName);
             if (backupExe.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {backupExe.Info.FullName}"); backupExe.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Moving {currentExe.Info.FullName} to {backupExe.Info.FullName}");
             currentExe.Info.MoveTo(backupExe.Info.FullName);
             currentExe = new("BLREdit.exe");
-            LoggingSystem.Log($"[Update]: Reset CurrentExe {currentExe}");
-            LoggingSystem.Log($"[Update]: Copy {newExe.Info.FullName} to BLREdit.exe");
-            var newnewExe = newExe.Info.CopyTo("BLREdit.exe");
+            LoggingSystem.Log($"[Update]: Unpacking {exeZip.Info.FullName} to BLREdit.exe");
+            ZipFile.ExtractToDirectory(exeZip.Info.FullName, ".\\");
 
-            LoggingSystem.Log($"[Update]: Launching New EXE !!! {newnewExe.FullName} in {newnewExe.Directory.FullName}");
+            LoggingSystem.Log($"[Update]: Launching New EXE !!!");
 
             File.WriteAllText("launch.bat", "@echo off\nBLREdit.exe\nexit");
 

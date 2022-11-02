@@ -13,6 +13,7 @@
     <UserControl.Resources>
         <BLREdit:BLREditSettings x:Key="Settings"/>
     </UserControl.Resources>
+
     <Grid>
         <Label Content="{Binding Path=WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
         <Border DataContext="{Binding Path=Muzzle}" Height="78" Width="78" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" AllowDrop="True">

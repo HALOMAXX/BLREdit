@@ -21,6 +21,14 @@ namespace BLREdit.Game;
 
 public sealed class BLRServer : INotifyPropertyChanged
 {
+    #region Events
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    #endregion Events
+
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
     [JsonIgnore] public string PingDisplay { get { if (IsOnline) { return "Online"; } else { return "Offline"; } } }
@@ -67,11 +75,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+
 
     public override bool Equals(object obj)
     {
@@ -100,6 +104,8 @@ public sealed class BLRServer : INotifyPropertyChanged
         Info = task.Result;
         if (Info is null) { Info = new(); } else { Info.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Server Info!"); }
         OnPropertyChanged(nameof(Info));
+        OnPropertyChanged(nameof(IsOnline));
+        OnPropertyChanged(nameof(PingDisplay));
         isPinging.SetBool(false);
     }
 
