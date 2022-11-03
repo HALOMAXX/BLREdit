@@ -11873,7 +11873,7 @@
       "Category": "ammos",
       "DescriptorName": "",
       "Icon": "t_AmmoBox_Magnum_128x128",
-      "Name": "Magnum Ammo",
+      "Name": "Magnum Rounds",
       "PawnModifiers": {
         "BodyDamageReduction": 0,
         "ElectroProtection": 0,
@@ -11896,7 +11896,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "",
+      "Tooltip": "No stat modifications",
       "UID": 90005,
       "ValidFor": [
         40010,
@@ -11969,7 +11969,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Increased damage to heavy builds, decreased damage to light builds",
+      "Tooltip": "Increased damage to heavy builds, decreased damage to light builds. Scales up to a 25% increase and decrease respectively",
       "UID": 90006,
       "ValidFor": [
         40010,
@@ -12258,7 +12258,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Increased damage to light builds, decreased damage to heavy builds",
+      "Tooltip": "Increased damage to light builds, decreased damage to heavy builds. Scales up to a 25% increase and decrease respectively",
       "UID": 90007,
       "ValidFor": [
         40000,
@@ -12402,7 +12402,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Medium direct damage and some damage over time that prevents targets from healing to full health.",
+      "Tooltip": "30% direct damage and 70% damage over time that prevents targets from healing to full health.",
       "UID": 90004,
       "ValidFor": [
         40000,
@@ -26766,7 +26766,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Explosive Cartridge",
+      "Tooltip": "Explosive Cartridge, a timed explosion dealing 250 damage",
       "UID": 44135,
       "ValidFor": [
         40015
@@ -26829,7 +26829,7 @@
         "SwitchWeaponSpeed": 0,
         "ToxicProtection": 0
       },
-      "Tooltip": "Incendiary Cartridge",
+      "Tooltip": "Incendiary Cartridge, burns up to 300 damage over 6 seconds",
       "UID": 44136,
       "ValidFor": [
         40015
@@ -42505,7 +42505,7 @@
         "scopes",
         "stocks"
       ],
-      "Tooltip": "The lightweight machine gun reconnaissance has a quick reload speed, but very low accuracy and low rate of fire.",
+      "Tooltip": "The lightweight machine gun reconnaissance has a quick reload speed and high damage, but very low accuracy and low rate of fire.",
       "UID": 40014,
       "WeaponStats": {
         "accuracy": 0.039999999105930328,
@@ -43237,7 +43237,7 @@
         "scopes",
         "stocks"
       ],
-      "Tooltip": "The Bullpup Full Auto is lightweight and has strong short to mid-range stopping power, but is slow to reload.",
+      "Tooltip": "The Bullpup Full Auto is lightweight and has strong short to mid-range stopping power, but is slow to reload and has very limited range.",
       "UID": 40020,
       "WeaponStats": {
         "accuracy": 0.041499998420476913,
@@ -45421,7 +45421,7 @@
         "scopes",
         "stocks"
       ],
-      "Tooltip": "The Light Recon Rifle is a short to medium range semi-automatic weapon with good stability and speed.",
+      "Tooltip": "The Light Recon Rifle is a short to medium range semi-automatic weapon with good damage, stability, and speed.",
       "UID": 40026,
       "WeaponStats": {
         "accuracy": 0.045000001788139343,
@@ -45786,7 +45786,7 @@
         "magazines",
         "scopes"
       ],
-      "Tooltip": "The Breech Loaded Pistol that can be bored to use exotic ammuniation.",
+      "Tooltip": "The Breech Loaded Pistol that can be bored to use exotic ammunition.",
       "UID": 40015,
       "WeaponStats": {
         "accuracy": 0.039999999105930328,
@@ -45967,7 +45967,7 @@
         "hangers",
         "magazines"
       ],
-      "Tooltip": "A compact snubnose revolver with a higher rate of fire but less punch than larger revolvers.",
+      "Tooltip": "A compact snubnose revolver with a higher rate of fire but less punch than larger revolvers and poor range.",
       "UID": 40021,
       "WeaponStats": {
         "accuracy": 0.05000000074505806,
@@ -46515,7 +46515,7 @@
         "muzzles",
         "scopes"
       ],
-      "Tooltip": "The Burstfire Pistol fires quick bursts of three bullets. It is extremely light and fast, but suffers from high recoil and poor accuracy.",
+      "Tooltip": "The Burstfire Pistol fires quick bursts of three bullets. It is extremely light and fast, but suffers from low damage and poor accuracy.",
       "UID": 40006,
       "WeaponStats": {
         "accuracy": 0.047499999403953552,
@@ -46902,7 +46902,7 @@
         "muzzles",
         "scopes"
       ],
-      "Tooltip": "The Machine Pistol fires a continuous stream of bullets, but has a high recoil and poor accuracy.",
+      "Tooltip": "The Machine Pistol fires a continuous stream of bullets, but has a high recoil and poor accuracy with a low range.",
       "UID": 40004,
       "WeaponStats": {
         "accuracy": 0.079999998211860657,
