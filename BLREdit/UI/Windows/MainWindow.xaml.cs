@@ -38,10 +38,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     /// </summary>
     public static Border LastSelectedBorder { get { return lastSelectedBorder; } private set { if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(14, 158, 158, 158)); } lastSelectedBorder = value; if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(255, 255, 136, 0)); } } }
     private static Border lastSelectedBorder = null;
-    /// <summary>
-    /// Contains the weapon to filter out Items From the ItemList
-    /// </summary>
-    public BLRItem FilterWeapon = null;
 
     /// <summary>
     /// Contains the current active loadout
@@ -85,17 +81,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public bool IsSearch(BLRItem item)
-    {
-        string searchText = SearchFilter.Trim().ToLower();
-        string itemName = item.Name.ToLower();
-        if (string.IsNullOrEmpty(searchText)) { return true; }
-        return itemName.Contains(searchText);
-    }
-
-    private string searchFilter = "";
-    public string SearchFilter { get { return searchFilter; } set { if (value != searchFilter) { searchFilter = value; ApplySearchAndFilter(); OnPropertyChanged(); } } }
-
     //TODO Add Item Search
     public MainWindow()
     {
@@ -104,12 +89,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         IsPlayerNameChanging = true;
 
         InitializeComponent();
-
-        ItemList.Items.IsLiveFiltering = true;
-        ItemList.Items.LiveFilteringProperties.Add("SearchFilter");
-
-        ChangeSortingDirection(this, null);
-        ChangeSortingDirection(this, null);
 
         PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
         ProfileComboBox.ItemsSource = ExportSystem.Profiles;
@@ -125,7 +104,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         IsPlayerNameChanging = false;
 
         LastSelectedBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
-        FilterWeapon = Profile.Loadout1.Primary.Reciever;
+        ItemFilters.Instance.WeaponFilter = Profile.Loadout1.Primary.Reciever;
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
 
         this.DataContext = Profile;
@@ -150,7 +129,17 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-        this.Title = $"{App.CurrentRepo} - {App.CurrentVersion}";
+        string BuildTag = "";
+
+#if DEBUG
+        BuildTag = "[Debug]:";
+#elif RELEASE
+        BuildTag = "[Release]:";
+#elif PUBLISH
+        BuildTag = "[Public]:";
+#endif
+
+        this.Title = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}";
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
         {
@@ -422,7 +411,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 }
             }
             var weapon = ((FrameworkElement)border.Parent).DataContext as BLRWeapon;
-            if (weapon is not null) FilterWeapon = weapon.Reciever;
+            if (weapon is not null) ItemFilters.Instance.WeaponFilter = weapon.Reciever;
             LastSelectedBorder = border;
             wasLastImageScopePreview = false;
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
@@ -739,7 +728,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    #region GameClient UI
+#region GameClient UI
     private void OpenNewGameClient_Click(object sender, RoutedEventArgs e)
     {
         OpenFileDialog dialog = new()
@@ -755,10 +744,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
         CheckGameClients();
     }
-    #endregion GameClient UI
+#endregion GameClient UI
 
 
-    #region Server UI
+#region Server UI
     private void AddNewServer_Click(object sender, RoutedEventArgs e)
     {
         AddServer(new BLRServer(), true);
@@ -782,7 +771,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             server.PingServer();
         }
     }
-    #endregion Server UI
+#endregion Server UI
 
 
     bool shiftDown = false;
@@ -917,6 +906,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        SearchFilter = SearchBox.Text;
+        ItemFilters.Instance.SearchFilter = SearchBox.Text;
     }
 }

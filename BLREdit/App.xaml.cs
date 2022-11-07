@@ -29,7 +29,7 @@ namespace BLREdit;
 public partial class App : System.Windows.Application
 {
     public const string CurrentVersion = "v0.7.9";
-    public const string CurrentVersionTitle = "BLREdit Scrollbars";
+    public const string CurrentVersionTitle = "More Scrollbars";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 

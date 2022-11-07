@@ -40,7 +40,7 @@
         <Border DataContext="{Binding Path=Ammo}" Height="78" Width="78" HorizontalAlignment="Left" Margin="234,156,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Tag}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,156,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=TagVisibility}" DataContext="{Binding Path=Tag}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,156,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
         <Border DataContext="{Binding Path=Camo}" Height="78" Width="78" HorizontalAlignment="Left" Margin="78,156,0,0" VerticalAlignment="Top" AllowDrop="True">

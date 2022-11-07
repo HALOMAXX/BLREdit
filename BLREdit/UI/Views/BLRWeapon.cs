@@ -1523,9 +1523,15 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         BLRItem reciever;
         if (IsPrimary)
-        { reciever = ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_CATEGORY)?.Length ?? 0)); }
+        { 
+            var filtered = ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_CATEGORY).Where(ItemFilters.PartialFilter).ToArray();
+            reciever = filtered[rng.Next(0, filtered.Length)];
+        }
         else
-        { reciever = ImportSystem.GetItemByIDAndType(ImportSystem.SECONDARY_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.SECONDARY_CATEGORY)?.Length ?? 0)); }
+        { 
+            var filtered = ImportSystem.GetItemArrayOfType(ImportSystem.SECONDARY_CATEGORY).Where(ItemFilters.PartialFilter).ToArray();
+            reciever = filtered[rng.Next(0, filtered.Length)];
+        }
 
         var FilteredBarrels = ImportSystem.GetItemArrayOfType(ImportSystem.BARRELS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredScopes = ImportSystem.GetItemArrayOfType(ImportSystem.SCOPES_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
@@ -1573,6 +1579,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             camo = FilteredCamos[rng.Next(0, FilteredCamos.Length)];
         }
+
+        //TODO Generate Ammo and Apply Grip incorporate text search to allow for themed generation
 
         BLRItem grip = ImportSystem.GetItemByIDAndType(ImportSystem.GRIPS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY)?.Length ?? 0));
 

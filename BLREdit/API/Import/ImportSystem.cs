@@ -481,29 +481,7 @@ public static class ImportSystem
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(itemCategory.Value);
             if (view != null)
             {
-                view.Filter += new Predicate<object>(o =>
-                {
-                    if (MainWindow.Self?.wasLastImageScopePreview ?? true) { return true; }
-                    if (o is BLRItem item)
-                    {
-                        if (MainWindow.Self.IsSearch(item))
-                        {
-                            switch (item.Category)
-                            {
-                                case ImportSystem.EMOTES_CATEGORY:
-                                    return !string.IsNullOrEmpty(item.Name);
-                                case ImportSystem.PRIMARY_CATEGORY:
-                                    return true;
-                                case ImportSystem.SECONDARY_CATEGORY:
-                                    return item.Tooltip != "Depot Item!";
-
-                                default:
-                                    return item.IsValidFor(MainWindow.Self.FilterWeapon);
-                            }                            
-                        }
-                    }
-                    return false;
-                });
+                view.Filter += new Predicate<object>(ItemFilters.FullFilter);
             }
             
         }
@@ -601,7 +579,7 @@ public static class ImportSystem
         }
     }
 
-
+#if DEBUG
     private static void UnifyItemList()
     {
         ImportGear Gear = IOResources.DeserializeFile<ImportGear>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.GEAR_FILE}");
@@ -655,6 +633,7 @@ public static class ImportSystem
 
         IOResources.SerializeFile($"{IOResources.ITEM_LIST_FILE}", Items);
     }
+#endif
 
     private static void CleanItems(Dictionary<string, List<ImportItem>> ListItems)
     {
