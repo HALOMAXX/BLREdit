@@ -56,40 +56,6 @@ public sealed class BLRItem : INotifyPropertyChanged
         }
     }
 
-    public BLRItem() { }
-    public BLRItem(ImportItem item)
-    {
-        Category = item.Category;
-        Class = item._class;
-        DescriptorName = item.descriptorName;
-        Icon = item.icon;
-        Name = item.name;
-
-        if (item.pawnModifiers != null)
-            PawnModifiers = new BLRPawnModifiers(item.pawnModifiers);
-
-        SupportedMods = new();
-        if (item.supportedMods != null)
-        {
-            SupportedMods.AddRange(item.supportedMods);
-        }
-        Tooltip = item.tooltip;
-        UID = item.uid;
-        ValidFor = new();
-        if (item.validFor != null)
-        {
-            ValidFor.AddRange(item.validFor);
-        }
-        if (item.weaponModifiers != null)
-            WeaponModifiers = new BLRWeaponModifiers(item.weaponModifiers);
-
-        if (item.stats != null && item.IniStats != null)
-            WeaponStats = new BLRWeaponStats(item.stats, item.IniStats);
-
-        if (item.WikiStats != null)
-            WikiStats = new BLRWikiStats(item.WikiStats);
-    }
-
     public void UpdateImage(bool female)
     {
         this.female = female;

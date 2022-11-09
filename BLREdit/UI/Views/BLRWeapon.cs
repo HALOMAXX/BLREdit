@@ -94,6 +94,9 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
     #endregion Weapon Parts
 
+    //TODO add Primary weapon skins
+    //TODO Maybe Setup Lists
+
     [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
 
     private Export.MagiCowsWeapon weapon = null;

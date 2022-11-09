@@ -40,9 +40,6 @@ public static class ImportSystem
     public const string EMOTES_CATEGORY = "emotes";
     public const string SHOP_CATEGORY = "shop";
 
-    //public static readonly Dictionary<float, float> DamagePercentToValue = new Dictionary<float, float>(); not in use
-
-    //public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
@@ -72,26 +69,12 @@ public static class ImportSystem
                         var (RecoilHip, _RecoilZoom) = BLRWeapon.CalculateRecoil(item, 0);
                         var (IdealRange, MaxRange, _TracerRange) = BLRWeapon.CalculateRange(item, 0);
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', new double[] { DamageIdeal, DamageMax }, StatsEnum.None, "0", "", "/");
-                        FormatDisplayStat(ref desc2, LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', ZoomSpread, StatsEnum.None, "0.00", "°");
-                        FormatDisplayStat(ref desc3, LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', HipSpread, StatsEnum.None, "0.00", "°");
-                        FormatDisplayStat(ref desc4, LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', MovmentSpread, StatsEnum.None, "0.00", "°");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', RecoilHip, StatsEnum.None, "0.00", "°");
-                        FormatDisplayStat(ref desc6, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', new double[] { IdealRange, MaxRange }, StatsEnum.None, "0", "", "/", 2);
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', new double[] { DamageIdeal, DamageMax }, StatsEnum.None, "0", "", "/");
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.AIM, LanguageSet.GetWord(LanguageKeys.AIM) + ':', ZoomSpread, StatsEnum.None, "0.00", "°");
+                        item.DisplayStat3 = FormatDisplayStat(LanguageKeys.HIP, LanguageSet.GetWord(LanguageKeys.HIP) + ':', HipSpread, StatsEnum.None, "0.00", "°");
+                        item.DisplayStat4 = FormatDisplayStat(LanguageKeys.MOVE, LanguageSet.GetWord(LanguageKeys.MOVE) + ':', MovmentSpread, StatsEnum.None, "0.00", "°");
+                        item.DisplayStat5 = FormatDisplayStat(LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', RecoilHip, StatsEnum.None, "0.00", "°");
+                        item.DisplayStat6 = FormatDisplayStat(LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', new double[] { IdealRange, MaxRange }, StatsEnum.None, "0", "", "/", 2);
                     }
                     break;
                 case MUZZELS_CATEGORY:
@@ -103,23 +86,11 @@ public static class ImportSystem
                         double range = item?.WeaponModifiers?.range ?? 0;
                         double run = item?.WeaponModifiers?.movementSpeed ?? 0;
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
                     }
                     break;
                 case STOCKS_CATEGORY:
@@ -132,29 +103,15 @@ public static class ImportSystem
                         double run = item?.WeaponModifiers?.movementSpeed ?? 0;
                         double reload = item?.WeaponModifiers?.reloadSpeed ?? 0;
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
                         //FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Normal, "0", "%");
 
                         if (item.IsValidForItemIDS(40020))
-                        { FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Normal, "0", "%"); }
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        { item.DisplayStat6 = FormatDisplayStat(LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Normal, "0", "%"); }
                     }
                     break;
                 case BARRELS_CATEGORY:
@@ -166,47 +123,19 @@ public static class ImportSystem
                         double range = item?.WeaponModifiers?.range ?? 0;
                         double run = item?.WeaponModifiers?.movementSpeed ?? 0;
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', spread, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', run, StatsEnum.Normal, "0", "%");
                     }
                     break;
                 case SCOPES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.ZOOM, LanguageSet.GetWord(LanguageKeys.ZOOM) + ':', (1.3 + (item?.WikiStats?.zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
-                        FormatDisplayStat(ref desc2, LanguageKeys.SCOPE_IN_TIME, LanguageSet.GetWord(LanguageKeys.SCOPE_IN_TIME) + ':', (0.0 + (item?.WikiStats?.scopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
-                        FormatDisplayStat(ref desc3, LanguageKeys.INFRARED, LanguageSet.GetWord(LanguageKeys.INFRARED) + ':', item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatsEnum.Normal, "");
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.ZOOM, LanguageSet.GetWord(LanguageKeys.ZOOM) + ':', (1.3 + (item?.WikiStats?.zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.SCOPE_IN_TIME, LanguageSet.GetWord(LanguageKeys.SCOPE_IN_TIME) + ':', (0.0 + (item?.WikiStats?.scopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
+                        item.DisplayStat3 = FormatDisplayStat(LanguageKeys.INFRARED, LanguageSet.GetWord(LanguageKeys.INFRARED) + ':', item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatsEnum.Normal, "");
                     }
                     break;
                 case MAGAZINES_CATEGORY:
@@ -220,34 +149,20 @@ public static class ImportSystem
                         double recoil = item?.WeaponModifiers?.recoil ?? 0;
                         double accuracy = item?.WeaponModifiers?.accuracy ?? 0;
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.AMMO, LanguageSet.GetWord(LanguageKeys.AMMO) + ':', ammo, StatsEnum.Normal, "0");
-                        FormatDisplayStat(ref desc2, LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movementSpeed, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc5, LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.AMMO, LanguageSet.GetWord(LanguageKeys.AMMO) + ':', ammo, StatsEnum.Normal, "0");
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.DAMAGE, LanguageSet.GetWord(LanguageKeys.DAMAGE) + ':', damage, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movementSpeed, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(LanguageKeys.RANGE, LanguageSet.GetWord(LanguageKeys.RANGE) + ':', range, StatsEnum.Normal, "0", "%");
 
                         if (item.IsValidForItemIDS(40021, 40002))
                         {
-                            FormatDisplayStat(ref desc6, LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', accuracy, StatsEnum.Normal, "0", "%");
+                            item.DisplayStat6 = FormatDisplayStat(LanguageKeys.ACCURACY, LanguageSet.GetWord(LanguageKeys.ACCURACY) + ':', accuracy, StatsEnum.Normal, "0", "%");
                         }
                         else
                         {
-                            FormatDisplayStat(ref desc6, LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Inverted, "0.00", "s");
+                            item.DisplayStat6 = FormatDisplayStat(LanguageKeys.RELOAD, LanguageSet.GetWord(LanguageKeys.RELOAD) + ':', reload, StatsEnum.Inverted, "0.00", "s");
                         }
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
                     }
                     break;
                 case HELMETS_CATEGORY:
@@ -282,28 +197,15 @@ public static class ImportSystem
                                 break;
                         }
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, StatsEnum.Normal, "0.0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc4, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 69.9);
-                        FormatDisplayStat(ref desc5, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 6.59);
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, StatsEnum.Normal, "0.0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 69.9);
+                        item.DisplayStat5 = FormatDisplayStat(LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 6.59);
                         if (value != 0)
                         {
-                            FormatDisplayStat(ref desc6, prop, desc, value, StatsEnum.Normal, "0", "%");
+                            item.DisplayStat6 = FormatDisplayStat(prop, desc, value, StatsEnum.Normal, "0", "%");
                         }
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
                     }
                     break;
                 case TACTICAL_CATEGORY:
@@ -312,22 +214,8 @@ public static class ImportSystem
                         double hrv = item?.PawnModifiers?.HRVDuration ?? 0;
                         double recharge = item?.PawnModifiers?.HRVRechargeRate ?? 0;
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 0);
-                        FormatDisplayStat(ref desc2, LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 0);
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 0);
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 0);
                     }
                     break;
                 case UPPER_BODIES_CATEGORY:
@@ -338,24 +226,9 @@ public static class ImportSystem
                         double movement = item?.PawnModifiers?.MovementSpeed ?? 0;
                         double gear = item?.PawnModifiers?.GearSlots ?? 0;
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-
-                        FormatDisplayStat(ref desc1, LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
-                        FormatDisplayStat(ref desc3, LanguageKeys.GEAR_SLOTS, LanguageSet.GetWord(LanguageKeys.GEAR_SLOTS) + ':', gear, StatsEnum.Normal, "0");
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(LanguageKeys.GEAR_SLOTS, LanguageSet.GetWord(LanguageKeys.GEAR_SLOTS) + ':', gear, StatsEnum.Normal, "0");
                     }
                     break;
                 case ATTACHMENTS_CATEGORY:
@@ -367,13 +240,6 @@ public static class ImportSystem
                         double MeleeProtection = item?.PawnModifiers?.MeleeProtection ?? 0;
                         double ToxicProtection = item?.PawnModifiers?.ToxicProtection ?? 0;
                         double InfraredProtection = item?.PawnModifiers?.InfraredProtection ?? 0;
-
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
 
                         string prop = "";
                         string desc = "";
@@ -420,14 +286,7 @@ public static class ImportSystem
                                 isPatch = true;
                                 break;
                         }
-                        if (isPatch) FormatDisplayStat(ref desc1, prop, desc, value, StatsEnum.Normal, "0", "%");
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        if (isPatch) item.DisplayStat1 = FormatDisplayStat(prop, desc, value, StatsEnum.Normal, "0", "%");
                     }
                     break;
                 case GRIPS_CATEGORY:
@@ -437,43 +296,16 @@ public static class ImportSystem
                         double _rof = item?.WeaponModifiers?.rateOfFire ?? 0;
                         double recoil = item?.WeaponModifiers?.recoil ?? 0;
 
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
                         //FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
-                        FormatDisplayStat(ref desc2, LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
                         //FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
 
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        item.DisplayStat1 = FormatDisplayStat(LanguageKeys.RECOIL, LanguageSet.GetWord(LanguageKeys.RECOIL) + ':', recoil, StatsEnum.Normal, "0", "%");
                     }
                     break;
                 case SHOP_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        var desc1 = new DisplayStatDiscriptor();
-                        var desc2 = new DisplayStatDiscriptor();
-                        var desc3 = new DisplayStatDiscriptor();
-                        var desc4 = new DisplayStatDiscriptor();
-                        var desc5 = new DisplayStatDiscriptor();
-                        var desc6 = new DisplayStatDiscriptor();
-
-                        FormatDisplayStat(ref desc1, "CP", LanguageSet.GetWord("CP") + ':', item.CP, StatsEnum.None, "0");
-
-                        item.DisplayStat1 = desc1;
-                        item.DisplayStat2 = desc2;
-                        item.DisplayStat3 = desc3;
-                        item.DisplayStat4 = desc4;
-                        item.DisplayStat5 = desc5;
-                        item.DisplayStat6 = desc6;
+                        item.DisplayStat1 = FormatDisplayStat("CP", LanguageSet.GetWord("CP") + ':', item.CP, StatsEnum.None, "0");
                     }
                     break;
             }
@@ -506,10 +338,13 @@ public static class ImportSystem
 
     static readonly Brush defaultRed = new SolidColorBrush(Color.FromArgb(255, 200, 60, 50));
     static readonly Brush highlightRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-    private static void FormatDisplayStat(ref DisplayStatDiscriptor desc, string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
+    private static DisplayStatDiscriptor FormatDisplayStat(string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
     {
-        desc.PropertyName = propertyName;
-        desc.Description = description;
+        DisplayStatDiscriptor desc = new()
+        {
+            PropertyName = propertyName,
+            Description = description
+        };
 
         bool isGrey = false;
         bool isPositive = false;
@@ -577,102 +412,12 @@ public static class ImportSystem
             desc.DefaultDescriptionColor = grey;
             desc.DefaultValueColor = grey;
         }
-    }
 
-#if DEBUG
-    private static void UnifyItemList()
-    {
-        ImportGear Gear = IOResources.DeserializeFile<ImportGear>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.GEAR_FILE}");
-        ImportMods Mods = IOResources.DeserializeFile<ImportMods>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.MOD_FILE}");
-        ImportWeapons Weapons = IOResources.DeserializeFile<ImportWeapons>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.WEAPON_FILE}");
-
-        Dictionary<string, List<ImportItem>> ListItems = new()
-        {
-            { nameof(Gear.attachments), Gear.attachments },
-            { nameof(Gear.avatars), Gear.avatars },
-            { nameof(Gear.badges), Gear.badges },
-            { nameof(Gear.emotes), Gear.emotes },
-            { nameof(Gear.hangers), Gear.hangers },
-            { nameof(Gear.helmets), Gear.helmets },
-            { nameof(Gear.lowerBodies), Gear.lowerBodies },
-            { nameof(Gear.tactical), Gear.tactical },
-            { nameof(Gear.upperBodies), Gear.upperBodies },
-
-            { nameof(Mods.ammo), Mods.ammo },
-            { nameof(Mods.ammos), Mods.ammos },
-            { nameof(Mods.barrels), Mods.barrels },
-            { nameof(Mods.camosBody), Mods.camosBody },
-            { nameof(Mods.camosWeapon), Mods.camosWeapon },
-            { nameof(Mods.grips), Mods.grips },
-            { nameof(Mods.magazines), Mods.magazines },
-            { nameof(Mods.muzzles), Mods.muzzles },
-            { nameof(Mods.primarySkins), Mods.primarySkins },
-            { nameof(Mods.scopes), Mods.scopes },
-            { nameof(Mods.stocks), Mods.stocks },
-
-            { nameof(Weapons.depot), Weapons.depot },
-            { nameof(Weapons.primary), Weapons.primary },
-            { nameof(Weapons.secondary), Weapons.secondary }
-        };
-
-        CleanItems(ListItems);
-        LoadWikiStats(ListItems);
-        LoadIniStats(ListItems);
-
-        Dictionary<string, List<BLRItem>> Items = new();
-
-        foreach (var itemList in ListItems)
-        {
-            List<BLRItem> items = new();
-            foreach (var item in itemList.Value)
-            {
-                items.Add(new BLRItem(item));
-            }
-            Items.Add(itemList.Key, items);
-        }
-
-        IOResources.SerializeFile($"{IOResources.ITEM_LIST_FILE}", Items);
-    }
-#endif
-
-    private static void CleanItems(Dictionary<string, List<ImportItem>> ListItems)
-    {
-
-        foreach (var entry in ListItems)
-        {
-            LoggingSystem.Log($"Started Cleaning {entry.Key}");
-            List<ImportItem> ToRemove = new();
-            foreach (ImportItem item in entry.Value)
-            {
-                if (IsValidItem(item))
-                {
-                    item.Category = entry.Key;
-                }
-                else
-                {
-                    ToRemove.Add(item);
-                }
-
-            }
-
-            foreach (ImportItem item in ToRemove)
-            {
-                entry.Value.Remove(item);
-            }
-
-            if (entry.Key == AVATARS_CATEGORY)
-            {
-                entry.Value.Add(new ImportItem() { name = "No Avatar", Category = AVATARS_CATEGORY });
-            }
-            LoggingSystem.Log($"{ToRemove.Count} have been Removed");
-        }
+        return desc;
     }
 
     private static void UpdateImages()
     {
-        //string Name = "";
-        //string Tooltip = "";
-        //string Desc = "";
         foreach (var entry in ItemLists)
         {
             LoggingSystem.Log($"Updating Images for {entry.Key}");
@@ -680,112 +425,6 @@ public static class ImportSystem
             foreach (var item in entry.Value)
             {
                 item.LoadImage();
-            }
-        }
-    }
-
-    private static void LoadWikiStats(Dictionary<string, List<ImportItem>> ListItems)
-    {
-        AssignWikiStats(LoadWikiStatsFromCSV(), ListItems);
-    }
-
-    private static WikiStats[] LoadWikiStatsFromCSV()
-    {
-        List<WikiStats> stats = new();
-        StreamReader sr = new($"{IOResources.ASSET_DIR}\\BLR Wiki Stats.csv");
-        string line;
-        while ((line = sr.ReadLine()) != null)
-        {
-            string[] parts = line.Split(',');
-            stats.Add(new WikiStats()
-            {
-                itemName = parts[0],
-                itemID = int.Parse(parts[1]),
-                damage = float.Parse(parts[2], CultureInfo.InvariantCulture),
-                firerate = float.Parse(parts[3], CultureInfo.InvariantCulture),
-                ammoMag = float.Parse(parts[4], CultureInfo.InvariantCulture),
-                ammoReserve = float.Parse(parts[5], CultureInfo.InvariantCulture),
-                reload = float.Parse(parts[6], CultureInfo.InvariantCulture),
-                swaprate = float.Parse(parts[7], CultureInfo.InvariantCulture),
-                aimSpread = float.Parse(parts[8], CultureInfo.InvariantCulture),
-                hipSpread = float.Parse(parts[9], CultureInfo.InvariantCulture),
-                moveSpread = float.Parse(parts[10], CultureInfo.InvariantCulture),
-                recoil = float.Parse(parts[11], CultureInfo.InvariantCulture),
-                zoom = float.Parse(parts[12], CultureInfo.InvariantCulture),
-                scopeInTime = float.Parse(parts[13], CultureInfo.InvariantCulture),
-                rangeClose = float.Parse(parts[14], CultureInfo.InvariantCulture),
-                rangeFar = float.Parse(parts[15], CultureInfo.InvariantCulture),
-                run = float.Parse(parts[16], CultureInfo.InvariantCulture)
-            });
-        }
-        sr.Close();
-        return stats.ToArray();
-    }
-    private static void AssignWikiStats(WikiStats[] stats, Dictionary<string, List<ImportItem>> ListItems)
-    {
-        foreach (var entry in ListItems)
-        {
-            foreach (ImportItem item in entry.Value)
-            {
-                bool found = false;
-                foreach (WikiStats stat in stats)
-                {
-                    if (!found && stat.itemID == item.uid)
-                    {
-                        item.WikiStats = new WikiStats()
-                        {
-                            itemID = item.uid,
-                            itemName = item.name,
-                            aimSpread = stat.aimSpread,
-                            ammoMag = stat.ammoMag,
-                            ammoReserve = stat.ammoReserve,
-                            damage = stat.damage,
-                            firerate = stat.firerate,
-                            hipSpread = stat.hipSpread,
-                            moveSpread = stat.moveSpread,
-                            rangeClose = stat.rangeClose,
-                            rangeFar = stat.rangeFar,
-                            recoil = stat.recoil,
-                            reload = stat.reload,
-                            run = stat.run,
-                            scopeInTime = stat.scopeInTime,
-                            swaprate = stat.swaprate,
-                            zoom = stat.zoom
-                        };
-                        found = true;
-                    }
-                }
-            }
-        }
-    }
-
-    private static void LoadIniStats(Dictionary<string, List<ImportItem>> ListItems)
-    {
-        var iniStats = IOResources.DeserializeFile<IniStats[]>($"{IOResources.ASSET_DIR}\\filteredIniStats.json");
-
-        ListItems.TryGetValue(PRIMARY_CATEGORY, out List<ImportItem> primary);
-        ListItems.TryGetValue(SECONDARY_CATEGORY, out List<ImportItem> secondary);
-
-        AssignIniStatsTo(primary, iniStats);
-        AssignIniStatsTo(secondary, iniStats);
-    }
-
-    internal static void AssignIniStatsTo(List<ImportItem> items, IniStats[] stats)
-    {
-        foreach (ImportItem item in items)
-        {
-            bool found = false;
-            foreach (IniStats stat in stats)
-            {
-                if (stat.ItemID == item.uid)
-                {
-                    item.IniStats = stat;
-                    found = true;
-                }
-            }
-            if (!found)
-            {
-                LoggingSystem.Log($"No IniStats for {item.name}");
             }
         }
     }
@@ -912,11 +551,5 @@ public static class ImportSystem
             icons.Add(new FoxIcon(icon));
         }
         return icons.ToArray();
-    }
-
-
-    public static bool IsValidItem(ImportItem item)
-    {
-        return item.tooltip != "SHOULDN'T BE USED" && !string.IsNullOrEmpty(item.name);
     }
 }

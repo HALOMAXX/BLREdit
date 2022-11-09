@@ -54,6 +54,9 @@ public sealed class BLRServer : INotifyPropertyChanged
         {
             try
             {
+#if NET6_0_OR_GREATER
+                return Dns.GetHostEntry(ServerAddress, System.Net.Sockets.AddressFamily.InterNetwork).ToString();
+#else
                 var ip = Dns.GetHostEntry(ServerAddress);
                 foreach (IPAddress address in ip.AddressList)
                 {
@@ -62,20 +65,24 @@ public sealed class BLRServer : INotifyPropertyChanged
                         return address.ToString();
                     }
                 }
+#endif
             }
             catch (Exception error)
             {
                 Info = new();
-                OnPropertyChanged(nameof(Info));
-                OnPropertyChanged(nameof(IsOnline));
-                OnPropertyChanged(nameof(PingDisplay));
+                RefreshInfo();
                 LoggingSystem.Log($"Failed to get IPAddress for {ServerAddress}\n{error}");
             }
             return null;
         }
     }
 
-
+    public void RefreshInfo()
+    {
+        OnPropertyChanged(nameof(Info));
+        OnPropertyChanged(nameof(IsOnline));
+        OnPropertyChanged(nameof(PingDisplay));
+    }
 
     public override bool Equals(object obj)
     {
@@ -103,9 +110,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         task.Wait();
         Info = task.Result;
         if (Info is null) { Info = new(); } else { Info.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Server Info!"); }
-        OnPropertyChanged(nameof(Info));
-        OnPropertyChanged(nameof(IsOnline));
-        OnPropertyChanged(nameof(PingDisplay));
+        RefreshInfo();
         isPinging.SetBool(false);
     }
 
