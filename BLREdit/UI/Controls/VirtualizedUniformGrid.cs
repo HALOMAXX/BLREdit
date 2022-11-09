@@ -92,7 +92,10 @@ namespace BLREdit.UI.Controls
                     }
                     else
                     {
-                        Debug.Assert(child == children[childIndex], "Wrong child was generated");
+                        if (children.Count > 0)
+                        {
+                            Debug.Assert(child == children[childIndex], "Wrong child was generated");
+                        }
                     }
                 }
             }

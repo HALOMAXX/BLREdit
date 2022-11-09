@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace BLREdit.Import;
 
-public struct DisplayStatDiscriptor
+public sealed class DisplayStatDiscriptor
 {
     public string PropertyName { get; set; } = "";
     public string Value { get; set; } = "";
