@@ -688,8 +688,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
         Directory.CreateDirectory(directory);
         IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3) });
-        ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
-        var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} got Copied to Clipboard");
+        var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} has been Exported to Game");
         AlertList.Items.Add(grid);
         new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
     }

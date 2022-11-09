@@ -118,10 +118,8 @@ public partial class App : System.Windows.Application
         patchesZip = new($"{IOResources.UPDATE_DIR}patches.zip");
     }
 
-    public static void PackageAssets()
+    private static void CleanUpdateDirectory()
     {
-        Directory.CreateDirectory(IOResources.UPDATE_DIR);
-
         if (exeZip.Info.Exists) { exeZip.Info.Delete(); }
         if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
         if (jsonZip.Info.Exists) { jsonZip.Info.Delete(); }
@@ -129,6 +127,13 @@ public partial class App : System.Windows.Application
         if (texturesZip.Info.Exists) { texturesZip.Info.Delete(); }
         if (crosshairsZip.Info.Exists) { crosshairsZip.Info.Delete(); }
         if (patchesZip.Info.Exists) { patchesZip.Info.Delete(); }
+    }
+
+    public static void PackageAssets()
+    {
+        Directory.CreateDirectory(IOResources.UPDATE_DIR);
+
+        CleanUpdateDirectory();
 
         var taskExe = Task.Run(() => 
         {

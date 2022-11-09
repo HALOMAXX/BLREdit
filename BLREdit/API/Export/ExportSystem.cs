@@ -117,51 +117,6 @@ public sealed class ExportSystem
         return new ObservableCollection<ExportSystemProfile>(profiles); ;
     }
 
-    public static void CopyToClipBoard(ExportSystemProfile profile)
-    {
-        string clipboard = $"register {Environment.NewLine}{IOResources.Serialize(profile as MagiCowsProfile, true)}";
-        bool success = false;
-
-        try
-        {
-            SetClipboard(clipboard);
-            success = true;
-            LoggingSystem.Log("Copy Succes");
-        }
-        catch (Exception error)
-        { LoggingSystem.MessageLog($"failed CopyToClipboard {error}"); }
-
-        if (!success)
-        {
-            LoggingSystem.Log("Failed CopyToClipboard too often!");
-            ClipboardFailed message = new(clipboard);
-            message.ShowDialog();
-        }
-    }
-
-    public static void SetClipboard(string value)
-    {
-        if (value == null)
-            throw new ArgumentNullException(nameof(value), "SetClipboard value was null shoul never happen");
-
-        Process clipboardExecutable = new()
-        {
-            StartInfo = new ProcessStartInfo // Creates the process
-            {
-                RedirectStandardInput = true,
-                FileName = @"clip",
-                UseShellExecute = false
-            }
-        };
-        clipboardExecutable.Start();
-
-        clipboardExecutable.StandardInput.Write(value); // CLIP uses STDIN as input.
-        // When we are done writing all the string, close it so clip doesn't wait and get stuck
-        clipboardExecutable.StandardInput.Close();
-
-        return;
-    }
-
     public static void SaveProfiles()
     {
         foreach (ExportSystemProfile profile in Profiles)
