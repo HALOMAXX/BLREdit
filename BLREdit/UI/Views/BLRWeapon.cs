@@ -11,7 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 
-namespace BLREdit.UI.Views;
+namespace BLREdit.UI.Views; 
 
 public sealed class BLRWeapon : INotifyPropertyChanged
 {
@@ -94,8 +94,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
     #endregion Weapon Parts
 
-    //TODO add Primary weapon skins
-    //TODO Maybe Setup Lists
+    //TODO Add Primary weapon skin's
+    //TODO Add Premade Weapon Setup's
 
     [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
 

@@ -59,7 +59,7 @@ public sealed class IniStats
     }
 }
 
-public class StatDecriptor
+public sealed class StatDecriptor
 {
     public string Name { get; set; } = "Classic";
     [JsonIgnore] public string DisplayName { get { return LanguageSet.GetWord("WPN_Desc."+Name, Name); } }

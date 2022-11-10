@@ -81,7 +81,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    //TODO Add Item Search
+    //TODO Add Missing Portal Gun(Orange) Icon Tag/Hanger
     public MainWindow()
     {
         Self = this;
