@@ -41,6 +41,45 @@ public partial class App : System.Windows.Application
 
     private const string LogFile = "log.txt";
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
+    private void Application_Startup(object sender, StartupEventArgs e)
+    {
+        string[] argList = e.Args;
+        Dictionary<string, string> argDict = new();
+
+        for(var i = 0; i < argList.Length; i++)
+        {
+            string name = argList[i];
+            string value = "";
+            if (!name.StartsWith("-")) continue;
+            if (i+1 < argList.Length && !argList[i + 1].StartsWith("-")) value = argList[i+1];
+            argDict.Add(name, value);
+        }
+
+        if (argDict.TryGetValue("-server", out string configFile))
+        {
+            try
+            {
+                var serverConfig = IOResources.DeserializeFile<ServerLaunchParameters>(configFile);
+
+                var client = UI.MainWindow.GameClients[serverConfig.ClientId];
+
+                var serverName = serverConfig.ServerName;
+                var port = serverConfig.Port;
+                var botCount = serverConfig.BotCount;
+                var maxPlayers = serverConfig.MaxPlayers;
+                var playlist = serverConfig.Playlist;
+
+                string launchArgs = $"server ?ServerName=\"{serverName}\"?Port={port}?NumBots={botCount}?MaxPlayers={maxPlayers}?Playlist={playlist}";
+                client.StartProcess(launchArgs);
+
+                Application.Current.Shutdown();
+            }
+            catch (Exception error)
+            { 
+                LoggingSystem.MessageLog($"failed to start server:\n{error}"); 
+            }
+        }
+    }
 
     public App()
     {

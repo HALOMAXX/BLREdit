@@ -377,7 +377,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         launchArgs += $"?Name={options.UserName}";
         StartProcess(launchArgs);
     }
-    private void StartProcess(string launchArgs)
+    public void StartProcess(string launchArgs)
     {
         if (!hasBeenValidated)
         {
