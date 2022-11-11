@@ -79,6 +79,22 @@ public partial class App : System.Windows.Application
                 LoggingSystem.MessageLog($"failed to start server:\n{error}"); 
             }
         }
+        if (argDict.TryGetValue("-package", out string _))
+        {
+            try
+            {
+                LoggingSystem.Log($"Started Packaging BLREdit Release");
+                PackageAssets();
+                LoggingSystem.Log($"Finished Packaging");
+            }
+            catch (Exception error) { LoggingSystem.MessageLog($"failed to package release:\n{error}"); }
+            var result = MessageBox.Show("Open Package folder?", "", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Process.Start("explorer.exe", exeZip.Info.Directory.FullName);
+            }
+            Application.Current.Shutdown();
+        }
     }
 
     public App()
@@ -92,21 +108,6 @@ public partial class App : System.Windows.Application
         Trace.AutoFlush = true;
         LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
 
-        if (Environment.GetCommandLineArgs().Contains("-package"))
-        {
-            try
-            {
-                PackageAssets();
-            }
-            catch (Exception error) { LoggingSystem.MessageLog($"failed to package release:\n{error}"); }
-            var result = MessageBox.Show("Open Package folder?", "", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                Process.Start("explorer.exe", exeZip.Info.Directory.FullName);
-            }
-            Application.Current.Shutdown();
-        }
-
         var task = Initialize();
         task.Wait();
         var modules = task.Result;
@@ -115,8 +116,6 @@ public partial class App : System.Windows.Application
         {
             AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
         }
-
-
 
         RuntimeCheck();
         VersionCheck();
