@@ -63,6 +63,18 @@ public partial class App : System.Windows.Application
 
                 var client = UI.MainWindow.GameClients[serverConfig.ClientId];
 
+                List<VisualProxyModule> RequiredModules = new();
+                foreach (var module in AvailableProxyModules)
+                {
+                    foreach (var required in serverConfig.RequiredModules)
+                    {
+                        if (module.RepositoryProxyModule.InstallName == required)
+                        {
+                            module.InstallModule(client);
+                        }
+                    }
+                }
+
                 var serverName = serverConfig.ServerName;
                 var port = serverConfig.Port;
                 var botCount = serverConfig.BotCount;

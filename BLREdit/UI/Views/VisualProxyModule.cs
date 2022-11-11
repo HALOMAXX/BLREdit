@@ -7,6 +7,7 @@ using BLREdit.UI;
 using HtmlAgilityPack;
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -165,7 +166,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         get
         {
             installCommand ??= new RelayCommand(
-                    param => Task.Run(InstallModule)
+                    param => Task.Run(() => InstallModule(MainWindow.ClientWindow.Client))
                 );
             return installCommand;
         }
@@ -177,7 +178,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         get
         {
             removeCommand ??= new RelayCommand(
-                    param => Task.Run(RemoveModule)
+                    param => Task.Run(() => RemoveModule(MainWindow.ClientWindow.Client))
                 );
             return removeCommand;
         }
@@ -195,12 +196,12 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     public UIBool UpToDate
     { get { return upToDate; } }
 
-    private void CheckForInstall()
+    private void CheckForInstall(BLRClient client)
     {
         Installed.SetBool(false);
-        if (MainWindow.ClientWindow.Client is not null)
+        if (client is not null)
         {
-            foreach (var mod in MainWindow.ClientWindow.Client.InstalledModules)
+            foreach (var mod in client.InstalledModules)
             {
                 if (mod.InstallName == RepositoryProxyModule.InstallName)
                 {
@@ -212,10 +213,10 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
-    private void CheckForUpdate()
+    private void CheckForUpdate(BLRClient client)
     {
         upToDate.SetBool(false);
-        if (MainWindow.ClientWindow.Client is not null && installed.Is && installedModule is not null)
+        if (client is not null && installed.Is && installedModule is not null)
         {
             try
             {
@@ -234,7 +235,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
 
     private bool lockInstall = false;
-    public async void InstallModule()
+    public async void InstallModule(BLRClient client)
     {
         if (lockInstall) return;
         lockInstall = true;
@@ -242,10 +243,10 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.InstallName}");
 
-            if (MainWindow.ClientWindow.Client.Patched.IsNot)
+            if (client.Patched.IsNot)
             {
                 LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
-                MainWindow.ClientWindow.Client.PatchClient();
+                client.PatchClient();
             }
 
             var releaseDate = await GetLatestReleaseDate();
@@ -267,15 +268,15 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
             if (module is not null)
             {
-                File.Copy($"downloads\\{module.InstallName}.dll", $"{MainWindow.ClientWindow.Client.ModulesFolder}\\{module.InstallName}.dll", true);
+                File.Copy($"downloads\\{module.InstallName}.dll", $"{client.ModulesFolder}\\{module.InstallName}.dll", true);
                 LoggingSystem.Log($"Copied {module.InstallName} from Cache to client module location");
-                for (int i = 0; i < MainWindow.ClientWindow.Client.InstalledModules.Count; i++)
+                for (int i = 0; i < client.InstalledModules.Count; i++)
                 {
-                    if (MainWindow.ClientWindow.Client.InstalledModules[i].InstallName == module.InstallName)
-                    { LoggingSystem.Log($"Removing {MainWindow.ClientWindow.Client.InstalledModules[i]}"); MainWindow.ClientWindow.Client.InstalledModules.RemoveAt(i); i--; }
+                    if (client.InstalledModules[i].InstallName == module.InstallName)
+                    { LoggingSystem.Log($"Removing {client.InstalledModules[i]}"); client.InstalledModules.RemoveAt(i); i--; }
                 }
-                MainWindow.ClientWindow.Client.InstalledModules.Add(module);
-                LoggingSystem.Log($"Added {RepositoryProxyModule.InstallName} to installed modules of {MainWindow.ClientWindow.Client}");
+                client.InstalledModules.Add(module);
+                LoggingSystem.Log($"Added {RepositoryProxyModule.InstallName} to installed modules of {client}");
             }
         }
         catch (Exception error)
@@ -283,8 +284,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             LoggingSystem.MessageLog($"failed to install module:{RepositoryProxyModule.InstallName} reason:{error}");
         }
 
-        CheckForInstall();
-        CheckForUpdate();
+        CheckForInstall(client);
+        CheckForUpdate(client);
         OnPropertyChanged(nameof(InstalledModule));
         OnPropertyChanged(nameof(Installed));
         OnPropertyChanged(nameof(UpToDate));
@@ -293,30 +294,30 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     }
 
     private bool lockRemove = false;
-    public void RemoveModule()
+    public void RemoveModule(BLRClient client)
     { 
         if (lockRemove) return;
         lockRemove = true;
 
-        if (MainWindow.ClientWindow.Client.Patched.IsNot)
+        if (client.Patched.IsNot)
         {
             LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
-            MainWindow.ClientWindow.Client.PatchClient();
+            client.PatchClient();
         }
         LoggingSystem.Log($"removing {RepositoryProxyModule.InstallName}");
 
-        foreach (var module in MainWindow.ClientWindow.Client.InstalledModules)
+        foreach (var module in client.InstalledModules)
         {
             if (module.InstallName == RepositoryProxyModule.InstallName)
             {
-                MainWindow.ClientWindow.Client.InstalledModules.Remove(module);
-                File.Delete($"{MainWindow.ClientWindow.Client.ModulesFolder}\\{module.InstallName}.dll");
+                client.InstalledModules.Remove(module);
+                File.Delete($"{client.ModulesFolder}\\{module.InstallName}.dll");
                 break;
             }
         }
 
-        CheckForInstall();
-        CheckForUpdate();
+        CheckForInstall(client);
+        CheckForUpdate(client);
         OnPropertyChanged(nameof(InstalledModule));
         OnPropertyChanged(nameof(Installed));
         OnPropertyChanged(nameof(UpToDate));
@@ -326,10 +327,11 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
     public void ActiveClientChanged(object sender, EventArgs eventArgs)
     {
-        LoggingSystem.Log($"New Client Got Set {MainWindow.ClientWindow.Client}");
+        var client = MainWindow.ClientWindow.Client;
+        LoggingSystem.Log($"New Client Got Set {client}");
 
-        CheckForInstall();
-        CheckForUpdate();
+        CheckForInstall(client);
+        CheckForUpdate(client);
 
         LoggingSystem.Log($"[{RepositoryProxyModule.InstallName}]: Installed:{Installed.Is}, UpToDate:{UpToDate.Is}");
 

@@ -1,12 +1,14 @@
-﻿namespace BLREdit.Game
+﻿using System;
+
+namespace BLREdit.Game;
+
+public sealed class ServerLaunchParameters
 {
-    internal class ServerLaunchParameters
-    {
-        public int ClientId = 0;
-        public string ServerName = "Custom Server";
-        public string Playlist = "DM";
-        public int Port = 7777;
-        public int BotCount = 2;
-        public int MaxPlayers = 16;
-    }
+    public int ClientId = 0;
+    public string ServerName = "Custom Server";
+    public string Playlist = "DM";
+    public int Port = 7777;
+    public int BotCount = 2;
+    public int MaxPlayers = 16;
+    public string[] RequiredModules = Array.Empty<string>();
 }
