@@ -1,0 +1,8 @@
+{
+    "ClientId": 0,
+    "ServerName": "My Server",
+    "Playlist": "CTF",
+    "Port": 7777,
+    "BotCount": 4,
+    "MaxPlayers": 16
+}
