@@ -109,11 +109,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             {
                 if (icon.IconName.Equals(name))
                 {
-                    return new BitmapImage(new System.Uri(icon.IconFileInfo.FullName, System.UriKind.Absolute));
+                    return new BitmapImage(new Uri(icon.IconFileInfo.FullName, UriKind.Absolute));
                 }
             }
         }
-        return FoxIcon.CreateEmptyBitmap(1, 1);
+        return FoxIcon.WideEmpty;
     }
 
     private void AddMissingDefaultParts()
@@ -1488,7 +1488,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         weapon.Grip = Grip?.Name ?? "";
         weapon.Tag = Tag?.GetMagicCowsID() ?? 0;
         weapon.Camo = Camo?.GetMagicCowsID() ?? 0;
-
         weapon.Ammo = Ammo?.GetMagicCowsID() ?? 0;
     }
 
@@ -1518,7 +1517,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         ItemChanged(nameof(Tag));
         ItemChanged(nameof(Ammo));
         ItemChanged(nameof(Camo));
-        ItemChanged(nameof(ScopePreview));
+        OnPropertyChanged(nameof(ScopePreview));
     }
 
     static readonly Random rng = new();
