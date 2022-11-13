@@ -5,6 +5,7 @@ using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
 using BLREdit.UI.Views;
+using BLREdit.UI.Windows;
 
 using PeNet.Asn1;
 
@@ -37,7 +38,7 @@ public partial class App : System.Windows.Application
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
     public static GitHubRelease BLREditLatestRelease { get; private set; } = null;
-    public static VisualProxyModule[] AvailableProxyModules { get; private set; }
+    public static VisualProxyModule[] AvailableProxyModules { get; set; }
 
     private const string LogFile = "log.txt";
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
@@ -119,22 +120,24 @@ public partial class App : System.Windows.Application
         Trace.AutoFlush = true;
         LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
 
-        var task = Initialize();
-        task.Wait();
-        var modules = task.Result;
-        AvailableProxyModules = new VisualProxyModule[modules.Length];
-        for (int i = 0; i < modules.Length; i++)
-        {
-            AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
-        }
-
-        RuntimeCheck();
-        VersionCheck();
-        ImportSystem.Initialize();
-
         LoggingSystem.Log("Loading Client List");
         UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
         UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
+
+        var task = App.Initialize();
+        task.Wait();
+        var modules = task.Result;
+        App.AvailableProxyModules = new VisualProxyModule[modules.Length];
+        for (int i = 0; i < modules.Length; i++)
+        {
+            App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
+        }
+
+        LoggingSystem.Log("Version Check!");
+        App.VersionCheck();
+        App.RuntimeCheck();
+
+        ImportSystem.Initialize();
 
         LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
         for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
@@ -151,6 +154,7 @@ public partial class App : System.Windows.Application
                 }
             }
         }
+
     }
 
     private static void InitFiles()
@@ -265,19 +269,25 @@ public partial class App : System.Windows.Application
 
                 if (newVersionAvailable && assetFolderMissing)
                 {
+                    MessageBox.Show("BLREdit will now Download Missing Files and Update!");
                     DownloadAssetFolder();
 
                     UpdateEXE();
+                    Restart();
                 }
                 else if (newVersionAvailable && !assetFolderMissing)
                 {
+                    MessageBox.Show("BLREdit will now Update!");
                     UpdateAllAssetPacks();
 
                     UpdateEXE();
+                    Restart();
                 }
                 else if (!newVersionAvailable && assetFolderMissing)
                 {
+                    MessageBox.Show("BLREdit will now Download Missing Files!");
                     DownloadAssetFolder();
+                    Restart();
                 }
             }
         }
@@ -298,25 +308,26 @@ public partial class App : System.Windows.Application
             currentExe = new("BLREdit.exe");
             LoggingSystem.Log($"[Update]: Unpacking {exeZip.Info.FullName} to BLREdit.exe");
             ZipFile.ExtractToDirectory(exeZip.Info.FullName, ".\\");
-
-            LoggingSystem.Log($"[Update]: Launching New EXE !!!");
-
-            File.WriteAllText("launch.bat", "@echo off\nBLREdit.exe\nexit");
-
-            ProcessStartInfo psi = new()
-            {
-                WindowStyle = ProcessWindowStyle.Hidden,
-                FileName = "launch.bat",
-            };
-            Process newApp = new()
-            {
-                StartInfo = psi
-            };
-            newApp.Start();
-            Current.Shutdown(-69);
         }
         else
         { LoggingSystem.Log("No new EXE Available!"); }
+    }
+
+    private static void Restart()
+    {
+        if (!File.Exists("launch.bat")) { File.WriteAllText("launch.bat", "@echo off\nBLREdit.exe\nexit"); }
+
+        ProcessStartInfo psi = new()
+        {
+            WindowStyle = ProcessWindowStyle.Hidden,
+            FileName = "launch.bat",
+        };
+        Process newApp = new()
+        {
+            StartInfo = psi
+        };
+        newApp.Start();
+        Current.Shutdown(-69);
     }
 
     private static void DownloadAssetFolder()
