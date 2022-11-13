@@ -1277,168 +1277,168 @@
       "Category": "emotes",
       "Icon": "t_Taunt_Bow_128x128",
       "Name": "Bow",
-      "Tooltip": "",
+      "Tooltip": "Bow",
       "UID": 350
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Caution_128x128",
       "Name": "Caution",
-      "Tooltip": "",
+      "Tooltip": "Caution",
       "UID": 351
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Clap_128x128",
       "Name": "Clap",
-      "Tooltip": "",
+      "Tooltip": "Clap",
       "UID": 352
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Crane_128x128",
       "Name": "Crane",
-      "Tooltip": "",
+      "Tooltip": "Crane",
       "UID": 353
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Salute_128x128",
       "Name": "Salute",
-      "Tooltip": "",
+      "Tooltip": "Salute",
       "UID": 354
     },
     {
       "Category": "emotes",
       "Icon": "",
       "Name": "Robot Dance",
-      "Tooltip": "",
+      "Tooltip": "Robot Dance",
       "UID": 355
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_TeaBag_128x128",
       "Name": "TeaBag",
-      "Tooltip": "",
+      "Tooltip": "TeaBag",
       "UID": 356
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Roar_128x128",
       "Name": "Roar",
-      "Tooltip": "",
+      "Tooltip": "Roar",
       "UID": 357
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunts_Flex_128x128",
       "Name": "Flex",
-      "Tooltip": "",
+      "Tooltip": "Flex",
       "UID": 358
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_TheKneeBow_128x128",
       "Name": "The Kneebow",
-      "Tooltip": "",
+      "Tooltip": "The Kneebow",
       "UID": 359
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_FancyBow_128x128",
       "Name": "Fancy Bow",
-      "Tooltip": "",
+      "Tooltip": "Fancy Bow",
       "UID": 360
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_BringIt_128x128",
       "Name": "Bring It",
-      "Tooltip": "",
+      "Tooltip": "Bring It",
       "UID": 361
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_GunWave_128x128",
       "Name": "Gun Wave",
-      "Tooltip": "",
+      "Tooltip": "Gun Wave",
       "UID": 364
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Muahaha_128x128",
       "Name": "Muahaha",
-      "Tooltip": "",
+      "Tooltip": "Muahaha",
       "UID": 365
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PolsedPoint_128x128",
       "Name": "Posed Point",
-      "Tooltip": "",
+      "Tooltip": "Posed Point",
       "UID": 366
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Kiss_128x128",
       "Name": "Kiss",
-      "Tooltip": "",
+      "Tooltip": "Kiss",
       "UID": 367
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_GroundPound_128x128",
       "Name": "Ground Pound",
-      "Tooltip": "",
+      "Tooltip": "Ground Pound",
       "UID": 368
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Rock_128x128",
       "Name": "Rock",
-      "Tooltip": "",
+      "Tooltip": "Rock",
       "UID": 375
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Paper_128x128",
       "Name": "Paper",
-      "Tooltip": "",
+      "Tooltip": "Paper",
       "UID": 376
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Scissors_128x128",
       "Name": "Scissors",
-      "Tooltip": "",
+      "Tooltip": "Scissors",
       "UID": 377
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_SuckIt_128x128",
       "Name": "Suck it",
-      "Tooltip": "",
+      "Tooltip": "Suck it",
       "UID": 378
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_RocketFist_128x128",
       "Name": "Rocket Fist",
-      "Tooltip": "",
+      "Tooltip": "Rocket Fist",
       "UID": 379
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_StepOff_128x128",
       "Name": "Step Off",
-      "Tooltip": "",
+      "Tooltip": "Step Off",
       "UID": 380
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Flight_128x128",
       "Name": "Flight",
-      "Tooltip": "",
+      "Tooltip": "Flight",
       "UID": 381
     },
     {
@@ -1452,154 +1452,154 @@
       "Category": "emotes",
       "Icon": "t_Taunt_DigitalBow_128x128",
       "Name": "Bow Digital",
-      "Tooltip": "",
+      "Tooltip": "Bow Digital",
       "UID": 383
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_CautionDigital_128x128",
       "Name": "Caution Digital",
-      "Tooltip": "",
+      "Tooltip": "Caution Digital",
       "UID": 384
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ClapDigital_128x128",
       "Name": "Clap Digital",
-      "Tooltip": "",
+      "Tooltip": "Clap Digital",
       "UID": 385
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_CraneDigital_128x128",
       "Name": "Crane Digital",
-      "Tooltip": "",
+      "Tooltip": "Crane Digital",
       "UID": 388
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_SaluteDigital_128x128",
       "Name": "Salute Digital",
-      "Tooltip": "",
+      "Tooltip": "Salute Digital",
       "UID": 390
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_TeaBagDigital_128x128",
       "Name": "TeaBag Digital",
-      "Tooltip": "",
+      "Tooltip": "TeaBag Digital",
       "UID": 391
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_DragonRoarl_128x128",
       "Name": "Roar Digital",
-      "Tooltip": "",
+      "Tooltip": "Roar Digital",
       "UID": 392
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_RobotDanceDigital_128x128",
       "Name": "Robot Dance Digital",
-      "Tooltip": "",
+      "Tooltip": "Robot Dance Digital",
       "UID": 393
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunts_FlexDigital_128x128",
       "Name": "Flex Digital",
-      "Tooltip": "",
+      "Tooltip": "Flex Digital",
       "UID": 394
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_KneeBowDigital_128x128",
       "Name": "The Kneebow Digital",
-      "Tooltip": "",
+      "Tooltip": "The Kneebow Digital",
       "UID": 395
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_FancyBowDigital_128x128",
       "Name": "Fancy Bow Digital",
-      "Tooltip": "",
+      "Tooltip": "Fancy Bow Digital",
       "UID": 396
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_BringItDigital_128x128",
       "Name": "Bring it Digital",
-      "Tooltip": "",
+      "Tooltip": "Bring it Digital",
       "UID": 397
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_GunWaveDigital_128x128",
       "Name": "Gun Wave Digital",
-      "Tooltip": "",
+      "Tooltip": "Gun Wave Digital",
       "UID": 398
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_MwahahaDigital_128x128",
       "Name": "Muahaha Digital",
-      "Tooltip": "",
+      "Tooltip": "Muahaha Digital",
       "UID": 399
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PosedPointDigital_128x128",
       "Name": "Posed Point Digital",
-      "Tooltip": "",
+      "Tooltip": "Posed Point Digital",
       "UID": 400
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_KissDigital_128x128",
       "Name": "Kiss Digital",
-      "Tooltip": "",
+      "Tooltip": "Kiss Digital",
       "UID": 401
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_GroundPound_128x128",
       "Name": "Ground Pound Digital",
-      "Tooltip": "",
+      "Tooltip": "Ground Pound Digital",
       "UID": 402
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_RockDigital_128x128",
       "Name": "Rock Digital",
-      "Tooltip": "",
+      "Tooltip": "Rock Digital",
       "UID": 403
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PaperDigital_128x128",
       "Name": "Paper Digital",
-      "Tooltip": "",
+      "Tooltip": "Paper Digital",
       "UID": 404
     },
     {
       "Category": "emotes",
       "Icon": "",
       "Name": "Scissors Digital",
-      "Tooltip": "",
+      "Tooltip": "Scissors Digital",
       "UID": 405
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_SuckItDigital_128x128",
       "Name": "Suck it Digital",
-      "Tooltip": "",
+      "Tooltip": "Suck it Digital",
       "UID": 406
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_RocketFistDigital_128x128",
       "Name": "Rocket Fist Digital",
-      "Tooltip": "",
+      "Tooltip": "Rocket Fist Digital",
       "UID": 407
     },
     {
@@ -1607,14 +1607,14 @@
       "class": "FoxDataProvider_Emote",
       "Icon": "",
       "Name": "Step Off Digital",
-      "Tooltip": "",
+      "Tooltip": "Step Off Digital",
       "UID": 408
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_AirplaneDigital_128x128",
       "Name": "Flight Digital",
-      "Tooltip": "",
+      "Tooltip": "Flight Digital",
       "UID": 409
     },
     {
@@ -1628,84 +1628,84 @@
       "Category": "emotes",
       "Icon": "t_Taunt_Go_128x128",
       "Name": "Go",
-      "Tooltip": "",
+      "Tooltip": "Go",
       "UID": 411
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Pump_128x128",
       "Name": "Pump",
-      "Tooltip": "",
+      "Tooltip": "Pump",
       "UID": 412
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_CutIt_128x128",
       "Name": "Cut It",
-      "Tooltip": "",
+      "Tooltip": "Cut It",
       "UID": 413
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThroatSlit_128x128",
       "Name": "Throat Slit",
-      "Tooltip": "",
+      "Tooltip": "Throat Slit",
       "UID": 414
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThumbsDown_128x128",
       "Name": "Thumbs Down",
-      "Tooltip": "",
+      "Tooltip": "Thumbs Down",
       "UID": 420
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThumbsUp_128x128",
       "Name": "Thumbs Up",
-      "Tooltip": "",
+      "Tooltip": "Thumbs Up",
       "UID": 415
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_AOKl_128x128",
       "Name": "A-OK",
-      "Tooltip": "",
+      "Tooltip": "A-OK",
       "UID": 416
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Metal_128x128",
       "Name": "Metal",
-      "Tooltip": "",
+      "Tooltip": "Metal",
       "UID": 417
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Point_128x128",
       "Name": "Point",
-      "Tooltip": "",
+      "Tooltip": "Point",
       "UID": 418
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Rainbow_128x128",
       "Name": "Rainbow",
-      "Tooltip": "",
+      "Tooltip": "Rainbow",
       "UID": 419
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Wag_128x128",
       "Name": "Wag",
-      "Tooltip": "",
+      "Tooltip": "Wag",
       "UID": 422
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Hush_128x128",
       "Name": "Hush",
-      "Tooltip": "",
+      "Tooltip": "Hush",
       "UID": 300
     },
     {
@@ -1726,35 +1726,35 @@
       "Category": "emotes",
       "Icon": "t_Taunt_AirPlane_128x128",
       "Name": "Airplane",
-      "Tooltip": "",
+      "Tooltip": "Airplane",
       "UID": 303
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_GunPumpl_128x128",
       "Name": "Gun Pump",
-      "Tooltip": "",
+      "Tooltip": "Gun Pump",
       "UID": 304
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_UpYours_128x128",
       "Name": "Up Yours",
-      "Tooltip": "",
+      "Tooltip": "Up Yours",
       "UID": 305
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Shh_128x128",
       "Name": "Shhh",
-      "Tooltip": "",
+      "Tooltip": "Shhh",
       "UID": 306
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Veteran_128x128",
       "Name": "Veteran War Mask",
-      "Tooltip": "",
+      "Tooltip": "Veteran War Mask",
       "UID": 307
     },
     {
@@ -1775,14 +1775,14 @@
       "Category": "emotes",
       "Icon": "t_Taunt_GiddyUpt_128x128",
       "Name": "Giddy Up",
-      "Tooltip": "",
+      "Tooltip": "Giddy Up",
       "UID": 310
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_HipShimmy_128x128",
       "Name": "Hip Shimmy",
-      "Tooltip": "",
+      "Tooltip": "Hip Shimmy",
       "UID": 311
     },
     {
@@ -1794,394 +1794,401 @@
     },
     {
       "Category": "emotes",
-      "Icon": "t_Taunt_GoDigital_128x128",
-      "Name": "Go Digital",
+      "Icon": "",
+      "Name": "",
       "Tooltip": "",
       "UID": 313
     },
     {
       "Category": "emotes",
+      "Icon": "t_Taunt_GoDigital_128x128",
+      "Name": "Go Digital",
+      "Tooltip": "Go Digital",
+      "UID": 314
+    },
+    {
+      "Category": "emotes",
       "Icon": "t_Taunt_PumpDigital_128x128",
       "Name": "Pump Digital",
-      "Tooltip": "",
+      "Tooltip": "Pump Digital",
       "UID": 314
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_CutItDigital_128x128",
       "Name": "Cut It Digital",
-      "Tooltip": "",
+      "Tooltip": "Cut It Digital",
       "UID": 315
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThroatSlitDigital_128x128",
       "Name": "Throat Slit Digital",
-      "Tooltip": "",
+      "Tooltip": "Throat Slit Digital",
       "UID": 316
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThumbsDownDigital_128x128",
       "Name": "Thumbs Down Digital",
-      "Tooltip": "",
+      "Tooltip": "Thumbs Down Digital",
       "UID": 317
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThumbsUpDigital_128x128",
       "Name": "Thumbs Up Digital",
-      "Tooltip": "",
+      "Tooltip": "Thumbs Up Digital",
       "UID": 318
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_AOKDigital_128x128",
       "Name": "A-OK Digital",
-      "Tooltip": "",
+      "Tooltip": "A-OK Digital",
       "UID": 319
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_MetalDigital_128x128",
       "Name": "Metal Digital",
-      "Tooltip": "",
+      "Tooltip": "Metal Digital",
       "UID": 320
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_DigitalPoint_128x128",
       "Name": "Point Digital",
-      "Tooltip": "",
+      "Tooltip": "Point Digital",
       "UID": 322
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_RainbowDigital_128x128",
       "Name": "Rainbow Digital",
-      "Tooltip": "",
+      "Tooltip": "Rainbow Digital",
       "UID": 323
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_WagDigital_128x128",
       "Name": "Wag Digital",
-      "Tooltip": "",
+      "Tooltip": "Wag Digital",
       "UID": 324
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_UppercutDigitall_128x128",
       "Name": "Uppercut Digital",
-      "Tooltip": "",
+      "Tooltip": "Uppercut Digital",
       "UID": 325
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_CraneKickDigitall_128x128",
       "Name": "Crane Kick Digital",
-      "Tooltip": "",
+      "Tooltip": "Crane Kick Digital",
       "UID": 326
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_CameraDigital_128x128",
       "Name": "Camera Digital",
-      "Tooltip": "",
+      "Tooltip": "Camera Digital",
       "UID": 327
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_HushDigital_128x128",
       "Name": "Hush Digital",
-      "Tooltip": "",
+      "Tooltip": "Hush Digital",
       "UID": 328
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ShrugTroll_128x128",
       "Name": "Troll Face",
-      "Tooltip": "",
+      "Tooltip": "Troll Face",
       "UID": 329
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_AirplaneDigital_128x128",
       "Name": "Airplane Digital",
-      "Tooltip": "",
+      "Tooltip": "Airplane Digital",
       "UID": 330
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_GunPumpDigital_128x128",
       "Name": "Gun Pump Digital",
-      "Tooltip": "",
+      "Tooltip": "Gun Pump Digital",
       "UID": 331
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_UpYoursDigital_128x128",
       "Name": "Up Yours Digital",
-      "Tooltip": "",
+      "Tooltip": "Up Yours Digital",
       "UID": 332
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ShhDigital_128x128",
       "Name": "Shhh Digital",
-      "Tooltip": "",
+      "Tooltip": "Shhh Digital",
       "UID": 333
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_WarDogs_128x128",
       "Name": "War Dog",
-      "Tooltip": "",
+      "Tooltip": "War Dog",
       "UID": 334
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Lasso_128x128",
       "Name": "Lasso",
-      "Tooltip": "",
+      "Tooltip": "Lasso",
       "UID": 335
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ClassySalute_128x128",
       "Name": "Classy Salute",
-      "Tooltip": "",
+      "Tooltip": "Classy Salute",
       "UID": 336
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_MetalSkull_128x128",
       "Name": "Metal Skull",
-      "Tooltip": "",
+      "Tooltip": "Metal Skull",
       "UID": 337
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_SadPanda_128x128",
       "Name": "Sad Panda",
-      "Tooltip": "",
+      "Tooltip": "Sad Panda",
       "UID": 338
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ShrugAndLaugh_128x128",
       "Name": "Shrug and Laugh",
-      "Tooltip": "",
+      "Tooltip": "Shrug and Laugh",
       "UID": 339
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_DieDieDie_128x128",
       "Name": "Die die die!",
-      "Tooltip": "",
+      "Tooltip": "Die die die!",
       "UID": 340
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThumbsDownLoser_128x128",
       "Name": "Loser",
-      "Tooltip": "",
+      "Tooltip": "Loser",
       "UID": 341
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_KeepItComing_128x128",
       "Name": "Broken Heart",
-      "Tooltip": "",
+      "Tooltip": "Broken Heart",
       "UID": 342
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Muahaha_128x128",
       "Name": "Hahaha",
-      "Tooltip": "",
+      "Tooltip": "Hahaha",
       "UID": 343
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PelvicThrust_128x128",
       "Name": "Pelvic Thrust",
-      "Tooltip": "",
+      "Tooltip": "Pelvic Thrust",
       "UID": 344
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerUp_128x128",
       "Name": "Super Charge",
-      "Tooltip": "",
+      "Tooltip": "Super Charge",
       "UID": 345
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_TeaTime_128x128",
       "Name": "Tea-time Digital",
-      "Tooltip": "",
+      "Tooltip": "Tea-time Digital",
       "UID": 346
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ExcalmationDigital_128x128",
       "Name": "Exclamation Digital",
-      "Tooltip": "",
+      "Tooltip": "Exclamation Digital",
       "UID": 347
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ChickenDance_128x128",
       "Name": "Chicken Dance",
-      "Tooltip": "",
+      "Tooltip": "Chicken Dance",
       "UID": 348
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_CaprainDigital_128x128",
       "Name": "Captain Digital",
-      "Tooltip": "",
+      "Tooltip": "Captain Digital",
       "UID": 349
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_BackFlip_128x128",
       "Name": "Backflip",
-      "Tooltip": "",
+      "Tooltip": "Backflip",
       "UID": 423
     },
     {
       "Category": "emotes",
       "Icon": "",
       "Name": "Party Thrust",
-      "Tooltip": "",
+      "Tooltip": "Party Thrust",
       "UID": 424
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Halloween_PumpkinHead_128x128",
       "Name": "Pumpkin Head Digital",
-      "Tooltip": "",
+      "Tooltip": "Pumpkin Head Digital",
       "UID": 425
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Halloween_PumpkinLaugh_128x128",
       "Name": "Pumpking Laugh Digital",
-      "Tooltip": "",
+      "Tooltip": "Pumpkin Laugh Digital",
       "UID": 426
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_Halloween_SkullMask_128x128",
       "Name": "Skull Mask Digital",
-      "Tooltip": "",
+      "Tooltip": "Skull Mask Digital",
       "UID": 427
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_DevilFace_128x128",
       "Name": "Devil Laugh Digital",
-      "Tooltip": "",
+      "Tooltip": "Devil Laugh Digital",
       "UID": 428
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_HeadBop_128x128",
       "Name": "Head Bop",
-      "Tooltip": "",
+      "Tooltip": "Head Bop",
       "UID": 429
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_DustOff_128x128",
       "Name": "Dust Off",
-      "Tooltip": "",
+      "Tooltip": "Dust Off",
       "UID": 430
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_FlashPoint_128x128",
       "Name": "Flash Point",
-      "Tooltip": "",
+      "Tooltip": "Flash Point",
       "UID": 389
     },
     {
       "Category": "emotes",
       "Icon": "",
       "Name": "Fireworks",
-      "Tooltip": "",
+      "Tooltip": "Fireworks",
       "UID": 421
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunts_SnowballDigital_128x128",
       "Name": "Snowball Juggle",
-      "Tooltip": "",
+      "Tooltip": "Snowball Juggle",
       "UID": 371
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunts_UnusualDance_128x128",
       "Name": "Unusal Dance",
-      "Tooltip": "",
+      "Tooltip": "Unusal Dance",
       "UID": 372
     },
     {
       "Category": "emotes",
       "Icon": "",
       "Name": "Creepy Thrust",
-      "Tooltip": "",
+      "Tooltip": "Creepy Thrust",
       "UID": 386
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_BellKick_128x128",
       "Name": "Bell Kick",
-      "Tooltip": "",
+      "Tooltip": "Bell Kick",
       "UID": 387
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_IrishJig_128x128",
       "Name": "Irish Jig",
-      "Tooltip": "",
+      "Tooltip": "Irish Jig",
       "UID": 321
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerPunch_Wind_128x128",
       "Name": "Punch Wind",
-      "Tooltip": "",
+      "Tooltip": "Punch Wind",
       "UID": 498
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerPunch_Earth_128x128",
       "Name": "Punch Earth",
-      "Tooltip": "",
+      "Tooltip": "Punch Earth",
       "UID": 498
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerPunch_Fire_128x128",
       "Name": "Punch Fire",
-      "Tooltip": "",
+      "Tooltip": "Punch Fire",
       "UID": 498
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerPunch_Water_128x128",
       "Name": "Punch Water",
-      "Tooltip": "",
+      "Tooltip": "Punch Water",
       "UID": 498
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerPunch_Heart_128x128",
       "Name": "Punch Heart",
-      "Tooltip": "",
+      "Tooltip": "Punch Heart",
       "UID": 498
     }
   ],

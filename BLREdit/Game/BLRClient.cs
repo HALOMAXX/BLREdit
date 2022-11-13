@@ -408,6 +408,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     }
     private void ClientExit(object sender, EventArgs args)
     {
+        //TODO Watchdog for server
         var process = (Process)sender;
         RunningClients.Remove(process);
         LoggingSystem.Log($"[{this}]: has Exited with {process.ExitCode}");

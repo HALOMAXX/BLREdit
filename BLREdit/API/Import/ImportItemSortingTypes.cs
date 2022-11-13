@@ -58,6 +58,12 @@ public enum ImportNoStatsSortingType
     None,
     Name,
 }
+public enum ImportShopSortingType
+{
+    None,
+    Name,
+    CP,
+}
 
 public enum ImportHelmetSortingType
 {

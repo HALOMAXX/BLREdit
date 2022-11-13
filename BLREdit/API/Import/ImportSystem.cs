@@ -286,7 +286,7 @@ public static class ImportSystem
                                 isPatch = true;
                                 break;
                         }
-                        if (isPatch) item.DisplayStat1 = FormatDisplayStat(prop, desc, value, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(prop, desc, value, StatsEnum.Normal, "0", "%");
                     }
                     break;
                 case GRIPS_CATEGORY:
@@ -315,7 +315,10 @@ public static class ImportSystem
             {
                 view.Filter += new Predicate<object>(ItemFilters.FullFilter);
             }
-            
+        }
+        if (ItemLists.TryGetValue(ImportSystem.EMOTES_CATEGORY, out ObservableCollection<BLRItem> list))
+        {
+            LoggingSystem.Log(list.Count.ToString());
         }
     }
 
@@ -349,42 +352,55 @@ public static class ImportSystem
         bool isGrey = false;
         bool isPositive = false;
 
-        switch (value)
+        if (!string.IsNullOrEmpty(description))
         {
-            case double d:
-                desc.Value = prefix + d.ToString(format) + suffix;
-                isGrey = d == 0;
-                isPositive = d > defaultval;
-                break;
-            case bool b:
-                desc.Value = b.ToString();
-                isGrey = !b;
-                isPositive = b;
-                break;
-            case double[] db:
-                if (db.Length > 0)
-                {
-                    isGrey = db[0] == 0;
-                    isPositive = db[0] > 0;
-                    string vv = "";
-                    int indexes;
-                    if (count < 0)
+            switch (value)
+            {
+                case double d:
+                    desc.Value = prefix + d.ToString(format) + suffix;
+                    isGrey = d == 0;
+                    isPositive = d > defaultval;
+                    break;
+                case long l:
+                    desc.Value = prefix + l.ToString(format) + suffix;
+                    isGrey = l == 0;
+                    isPositive = l > defaultval;
+                    break;
+                case int i:
+                    desc.Value = prefix + i.ToString(format) + suffix;
+                    isGrey = i == 0;
+                    isPositive = i > defaultval;
+                    break;
+                case bool b:
+                    desc.Value = b.ToString();
+                    isGrey = !b;
+                    isPositive = b;
+                    break;
+                case double[] db:
+                    if (db.Length > 0)
                     {
-                        indexes = db.Length;
+                        isGrey = db[0] == 0;
+                        isPositive = db[0] > 0;
+                        string vv = "";
+                        int indexes;
+                        if (count < 0)
+                        {
+                            indexes = db.Length;
+                        }
+                        else
+                        {
+                            indexes = count;
+                        }
+                        for (int i = 0; i < indexes; i++)
+                        {
+                            if (i > 0)
+                            { vv += prefix; }
+                            vv += db[i].ToString(format);
+                        }
+                        desc.Value = vv;
                     }
-                    else
-                    {
-                        indexes = count;
-                    }
-                    for (int i = 0; i < indexes; i++)
-                    {
-                        if (i > 0)
-                        { vv += prefix; }
-                        vv += db[i].ToString(format);
-                    }
-                    desc.Value = vv;
-                }
-                break;
+                    break;
+            }
         }
 
         if (type != StatsEnum.None)

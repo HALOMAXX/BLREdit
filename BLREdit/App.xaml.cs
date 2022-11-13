@@ -63,7 +63,6 @@ public partial class App : System.Windows.Application
 
                 var client = UI.MainWindow.GameClients[serverConfig.ClientId];
 
-                List<VisualProxyModule> RequiredModules = new();
                 foreach (var module in AvailableProxyModules)
                 {
                     foreach (var required in serverConfig.RequiredModules)

@@ -70,9 +70,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     public static MainWindow Self { get; private set; } = null;
 
-    private int columns = 4;
-    public int Columns { get { return columns; } set { columns = value; OnPropertyChanged(); } }
-
     //public static BLREditSettings Settings { get { return BLREditSettings.Settings; } }
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -531,23 +528,19 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             switch (list[0].Category)
             {
                 case ImportSystem.HELMETS_CATEGORY:
-                    Columns = 2;
                     SetSortingType(typeof(ImportHelmetSortingType));
                     break;
 
                 case ImportSystem.UPPER_BODIES_CATEGORY:
                 case ImportSystem.LOWER_BODIES_CATEGORY:
-                    Columns = 3;
                     SetSortingType(typeof(ImportArmorSortingType));
                     break;
 
                 case ImportSystem.ATTACHMENTS_CATEGORY:
-                    Columns = 5;
                     SetSortingType(typeof(ImportGearSortingType));
                     break;
 
                 case ImportSystem.SCOPES_CATEGORY:
-                    Columns = 3;
                     SetSortingType(typeof(ImportScopeSortingType));
                     break;
 
@@ -556,38 +549,26 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 case ImportSystem.CAMOS_WEAPONS_CATEGORY:
                 case ImportSystem.HANGERS_CATEGORY:
                 case ImportSystem.BADGES_CATEGORY:
-                    Columns = 5;
-                    SetSortingType(typeof(ImportNoStatsSortingType));
-                    break;
-
+                case ImportSystem.EMOTES_CATEGORY:
                 case ImportSystem.TACTICAL_CATEGORY:
-                    Columns = 2;
+                case ImportSystem.AMMO_CATEGORY:
                     SetSortingType(typeof(ImportNoStatsSortingType));
                     break;
 
                 case ImportSystem.GRIPS_CATEGORY:
-                    Columns = 4;
                     SetSortingType(typeof(ImportGripSortingType));
                     break;
 
                 case ImportSystem.PRIMARY_CATEGORY:
                 case ImportSystem.SECONDARY_CATEGORY:
-                    Columns = 4;
                     SetSortingType(typeof(ImportWeaponSortingType));
-                    break;
-                case ImportSystem.AMMO_CATEGORY:
-                    Columns = 5;
-                    SetSortingType(typeof(ImportModificationSortingType));
                     break;
 
                 case ImportSystem.SHOP_CATEGORY:
-                case ImportSystem.EMOTES_CATEGORY:
-                    Columns = 5;
-                    SetSortingType(typeof(ImportModificationSortingType));
+                    SetSortingType(typeof(ImportShopSortingType));
                     break;
 
                 default:
-                    Columns = 4;
                     SetSortingType(typeof(ImportModificationSortingType));
                     break;
             }
