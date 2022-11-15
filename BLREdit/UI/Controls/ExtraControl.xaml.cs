@@ -24,5 +24,26 @@ namespace BLREdit.UI.Controls
         {
             InitializeComponent();
         }
+
+        public static int SelectedBorder { get; private set; } = 1;
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.Source is Image image)
+            {
+                if (image.Parent is Border border)
+                {
+                    SelectedBorder = this.ControlGrid.Children.IndexOf(border);
+                    LoggingSystem.Log(SelectedBorder.ToString());
+                }
+            }
+        }
+
+        internal void ApplyBorder()
+        {
+            if (SelectedBorder > -1 && SelectedBorder < this.ControlGrid.Children.Count && this.ControlGrid.Children[SelectedBorder] is Border border)
+            {
+                MainWindow.LastSelectedBorder = border;
+            }
+        }
     }
 }

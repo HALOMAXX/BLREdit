@@ -1,4 +1,5 @@
 ﻿using BLREdit.API.REST_API.MagiCow;
+using BLREdit.API.REST_API.Server;
 using BLREdit.Export;
 using BLREdit.UI;
 using BLREdit.UI.Windows;
@@ -32,14 +33,15 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
     [JsonIgnore] public string PingDisplay { get { if (IsOnline) { return "Online"; } else { return "Offline"; } } }
-    [JsonIgnore] public bool IsOnline { get { return Info?.IsOnline ?? false; } }
+    [JsonIgnore] public bool IsOnline { get { return MagiInfo?.IsOnline ?? false; } }
 
     private readonly UIBool isPinging = new(false);
     [JsonIgnore] public UIBool IsPinging { get { return isPinging; } }
 
-    [JsonIgnore] public MagiCowServerInfo Info { get; private set; }
+    [JsonIgnore] public MagiCowServerInfo MagiInfo { get; private set; }
+    [JsonIgnore] public ServerUtilsInfo ServerInfo { get; private set; }
 
-    [JsonIgnore] public string DisplayName { get { if (!(Info?.IsOnline ?? false)) { return ServerAddress; } else { return Info.ServerName; } } }
+    [JsonIgnore] public string DisplayName { get { if (!(MagiInfo?.IsOnline ?? false)) { return ServerAddress; } else { return MagiInfo.ServerName; } } }
 
 
     [JsonIgnore] private string serverName;
@@ -69,7 +71,7 @@ public sealed class BLRServer : INotifyPropertyChanged
             }
             catch (Exception error)
             {
-                Info = new();
+                MagiInfo = new();
                 RefreshInfo();
                 LoggingSystem.Log($"Failed to get IPAddress for {ServerAddress}\n{error}");
             }
@@ -79,7 +81,10 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     public void RefreshInfo()
     {
-        OnPropertyChanged(nameof(Info));
+        OnPropertyChanged(nameof(MagiInfo));
+
+        OnPropertyChanged(nameof(ServerInfo));
+
         OnPropertyChanged(nameof(IsOnline));
         OnPropertyChanged(nameof(PingDisplay));
     }
@@ -106,10 +111,16 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     private void InternalPing()
     {
-        var task = MagiCowClient.GetServerInfo(ServerAddress);
-        task.Wait();
-        Info = task.Result;
-        if (Info is null) { Info = new(); } else { Info.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Server Info!"); }
+        var server = ServerUtilsClient.GetServerInfo(this);
+        server.Wait();
+        ServerInfo = server.Result;
+        if (ServerInfo is null) { ServerInfo = new(); } else { LoggingSystem.Log($"[Server]({ServerAddress}): got Server Info!"); }
+
+        var magi = MagiCowClient.GetServerInfo(ServerAddress);
+        magi.Wait();
+        MagiInfo = magi.Result;
+        if (MagiInfo is null) { MagiInfo = new(); } else { MagiInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Magi Info!"); }
+
         RefreshInfo();
         isPinging.SetBool(false);
     }

@@ -321,6 +321,8 @@ public partial class App : System.Windows.Application
         {
             WindowStyle = ProcessWindowStyle.Hidden,
             FileName = "launch.bat",
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
         };
         Process newApp = new()
         {

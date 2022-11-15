@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -36,6 +38,28 @@ namespace BLREdit.UI.Controls
             else
             {
                 GenderButton.Content = BLREdit.Properties.Resources.btn_GenderToggle_Male;
+            }
+        }
+
+        public static int SelectedBorder { get; private set; } = 1;
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            
+            if (e.Source is Image image)
+            {
+                if (image.Parent is Border border)
+                { 
+                    SelectedBorder = this.ControlGrid.Children.IndexOf(border);
+                    LoggingSystem.Log(SelectedBorder.ToString());
+                }
+            }
+        }
+
+        internal void ApplyBorder()
+        {
+            if (SelectedBorder > -1 && SelectedBorder < this.ControlGrid.Children.Count && this.ControlGrid.Children[SelectedBorder] is Border border)
+            {
+                MainWindow.LastSelectedBorder = border;
             }
         }
     }

@@ -31,6 +31,8 @@ namespace BLREdit.UI.Controls
         #endregion Event
 
         public static int SelectedIndex { get; private set; } = 0;
+
+
         public LoadoutControl()
         {
             InitializeComponent();
@@ -44,16 +46,44 @@ namespace BLREdit.UI.Controls
             LoadoutControl.PropertyChanged -= GlobalTabIndexChanged;
         }
 
+        public void ApplyBorder()
+        {
+            if (LoadoutTabControl.SelectedContent is ScrollViewer viewer && viewer.Content is Grid grid)
+            {
+                foreach (var element in grid.Children)
+                {
+                    if (element is GearControl gcontrol)
+                    {
+                        gcontrol.ApplyBorder();
+                    }
+                    else if (element is ExtraControl econtrol)
+                    {
+                        econtrol.ApplyBorder();
+                    }
+                    else if (element is WeaponControl wcontrol)
+                    {
+                        wcontrol.ApplyBorder();
+                    }
+                }
+            }
+        }
+
         public void GlobalTabIndexChanged(object sender, PropertyChangedEventArgs args)
         {
             if (args.PropertyName == nameof(SelectedIndex))
-            { this.LoadoutTabControl.SelectedIndex = SelectedIndex; }
+            {
+                this.LoadoutTabControl.SelectedIndex = SelectedIndex;
+            }
         }
 
         private void LoadoutTabControl_Selected(object sender, RoutedEventArgs e)
         {
-            SelectedIndex = this.LoadoutTabControl.SelectedIndex;
-            OnPropertyChanged(nameof(SelectedIndex));
+            if (SelectedIndex != this.LoadoutTabControl.SelectedIndex)
+            {
+                MainWindow.LastSelectedBorder = null;
+                SelectedIndex = this.LoadoutTabControl.SelectedIndex;
+                OnPropertyChanged(nameof(SelectedIndex));
+            }
         }
     }
 }

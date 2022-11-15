@@ -36,7 +36,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     /// <summary>
     /// Contains the last selected Border for setting the ItemList
     /// </summary>
-    public static Border LastSelectedBorder { get { return lastSelectedBorder; } private set { if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(14, 158, 158, 158)); } lastSelectedBorder = value; if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(255, 255, 136, 0)); } } }
+    public static Border LastSelectedBorder { get { return lastSelectedBorder; } set { if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(14, 158, 158, 158)); } lastSelectedBorder = value; if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(255, 255, 136, 0)); } } }
     private static Border lastSelectedBorder = null;
 
     /// <summary>
@@ -612,6 +612,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = LanguageSet.GetWords(SortingEnumType) });
     }
 
+    //TODO Switch selected bored when changing Loadout slot, and remove LastSelectedBorder when changing Sub Category(Weapon,Gear,Extra) to prevent miss adding of items
     public static void SetItemToBorder(Border border, BLRItem item, bool blockEvent = false, bool blockUpdate = false)
     {
         if (border is null) { LoggingSystem.Log($"Missing Border in SetItemToBorder()"); return; }
@@ -864,24 +865,13 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void LoadoutTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        BLRLoadout loadoutOld = null;
-        BLRLoadout loadoutNew = null;
-        if (e.RemovedItems.Count > 0 && ((TabItem)e.RemovedItems[0]).Content is LoadoutControl loadoutRemoved)
+        if (LoadoutTabs.SelectedItem is TabItem tab)
         {
-            loadoutOld = (BLRLoadout)loadoutRemoved.DataContext;
+            if (tab.Content is LoadoutControl lcontrol)
+            {
+                lcontrol.ApplyBorder();
+            }
         }
-        if (e.AddedItems.Count > 0 && ((TabItem)e.AddedItems[0]).Content is LoadoutControl loadoutAdded)
-        {
-            loadoutNew = (BLRLoadout)loadoutAdded.DataContext;
-        }
-
-        if (loadoutOld is not null)
-        {
-            if (loadoutOld.IsFemale == loadoutNew.IsFemale)
-            { return; }
-        }
-        if (loadoutNew is not null)
-        { loadoutNew.IsFemale = loadoutNew.IsFemale; }
     }
 
     private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
