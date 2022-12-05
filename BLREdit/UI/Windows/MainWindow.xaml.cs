@@ -92,10 +92,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     public void ApplySearchAndFilter()
     {
         CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ItemList.ItemsSource);
-        if (view != null)
-        {
-            view.Refresh();
-        }
+        view?.Refresh();
     }
 
     private static void SetBorderColor(Border border, Color color)
