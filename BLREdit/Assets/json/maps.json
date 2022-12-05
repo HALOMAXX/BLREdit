@@ -1,5 +1,15 @@
 ﻿[
   {
+    "MapDisplayName": "Lobby",
+    "MapName": "FoxEntry",
+    "MagiCowName": "Lobby",
+    "MapDescription": "Pre Match Lobby",
+    "LongImageName": "t_bluescreen2.png",
+    "SquareImageName": "t_bluescreen2.png",
+    "Available": [],
+    "SupportedPlaylists": []
+  },
+  {
     "MapName": "Centre",
     "MagiCowName": "Centre",
     "MapDescription": "",
@@ -20,6 +30,7 @@
       "OS_Easy"
     ]
   },
+
   {
     "MapName": "Containment",
     "MagiCowName": "Containment",

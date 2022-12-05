@@ -10,8 +10,8 @@ namespace BLREdit.Import;
 
 public sealed class BLRMap
 {
-    private static readonly bool AddFolderLine = AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\");
-
+    [JsonIgnore] public string DisplayName { get { if (string.IsNullOrEmpty(MapDisplayName)) { return MapName; } else { return MapDisplayName; } } }
+    public string MapDisplayName { get; set; }
     public string MapName { get; set; }
     public string MagiCowName { get; set; }
     public string MapDescription { get; set; }
@@ -22,14 +22,7 @@ public sealed class BLRMap
         get
         {
             if (string.IsNullOrEmpty(LongImageName)) { return ""; }
-            if (!AddFolderLine)
-            {
-                return AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\textures\\" + LongImageName;
-            }
-            else
-            {
-                return AppDomain.CurrentDomain.BaseDirectory + "Assets\\textures\\" + LongImageName;
-            }
+            return IOResources.BaseDirectory + "Assets\\textures\\" + LongImageName;
         }
     }
     public string SquareImageName { get; set; }
@@ -38,14 +31,7 @@ public sealed class BLRMap
         get 
         {
             if (string.IsNullOrEmpty(SquareImageName)) { return ""; }
-            if (!AddFolderLine)
-            {
-                return AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\textures\\" + SquareImageName;
-            }
-            else
-            {
-                return AppDomain.CurrentDomain.BaseDirectory + "Assets\\textures\\" + SquareImageName;
-            }
+            return IOResources.BaseDirectory + "Assets\\textures\\" + SquareImageName;
         }
     }
     public List<string> Available { get; set; } = new();

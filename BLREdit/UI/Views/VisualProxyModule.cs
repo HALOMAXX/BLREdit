@@ -262,7 +262,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 }
             }
 
-            if (module is not null) LoggingSystem.Log($"Found {module.InstallName} in cache"); else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in cache");
+            if (module is not null) { if (File.Exists($"downloads\\{module.InstallName}")) { LoggingSystem.Log($"Found {module.InstallName} in cache"); } else { module = null; ProxyModule.CachedModules.Clear(); } } else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in cache");
 
             module ??= await RepositoryProxyModule.DownloadLatest();
 

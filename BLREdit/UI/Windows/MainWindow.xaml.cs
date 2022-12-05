@@ -23,6 +23,7 @@ using BLREdit.UI.Controls;
 using BLREdit.UI.Windows;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using System.Threading;
 
 namespace BLREdit.UI;
 
@@ -81,30 +82,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     //TODO Add Missing Portal Gun(Orange) Icon Tag/Hanger
     public MainWindow()
     {
-        Self = this;
         IsPlayerProfileChanging = true;
         IsPlayerNameChanging = true;
-
         InitializeComponent();
-
-        PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
-        ProfileComboBox.ItemsSource = ExportSystem.Profiles;
-        ProfileComboBox.SelectedIndex = 0;
-
-        UndoRedoSystem.BlockUpdate = true;
-        UndoRedoSystem.BlockEvent = true;
-        ActiveProfile = ExportSystem.ActiveProfile;
-        UndoRedoSystem.BlockUpdate = false;
-        UndoRedoSystem.BlockEvent = false;
-
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
-
-        LastSelectedBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
-        ItemFilters.Instance.WeaponFilter = Profile.Loadout1.Primary.Reciever;
-        SetItemList(ImportSystem.PRIMARY_CATEGORY);
-
-        this.DataContext = Profile;
     }
 
     public void ApplySearchAndFilter()
@@ -124,8 +106,32 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
+    public static Task<T> StartSTATask<T>(Func<T> action)
+    {
+        var tcs = new TaskCompletionSource<T>();
+        Thread thread = new(() =>
+        {
+            try
+            {
+                tcs.SetResult(action());
+            }
+            catch (Exception e)
+            {
+                tcs.SetException(e);
+            }
+        });
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+        return tcs.Task;
+    }
+
+    bool shouldRestart = false;
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+#if DEBUG
+        MessageBox.Show("Waiting!");
+#endif
+
         string BuildTag = "";
 
 #if DEBUG
@@ -137,6 +143,82 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 #endif
 
         this.Title = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}";
+
+        #region Backend Init
+        var versionCheck = StartSTATask(App.VersionCheck);
+        versionCheck.Wait(); //wait for Version Check if it needed to download stuff it has to finish before we initialize the ImportSystem.
+        if (versionCheck.Result)
+        {
+            shouldRestart = true;
+            this.Close();
+            return;
+        }
+
+        LoggingSystem.Log("Loading Client List");
+        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
+        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
+        LoggingSystem.Log("Finished Loading Client List!");
+
+        var task = Task.Run(App.GetAvailableProxyModules);
+        task.Wait();
+        var modules = task.Result;
+        App.AvailableProxyModules = new VisualProxyModule[modules.Length];
+        for (int i = 0; i < modules.Length; i++)
+        {
+            App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
+        }
+
+        App.RuntimeCheck();
+
+        ImportSystem.Initialize();
+
+        LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
+        for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
+        {
+            if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
+            { UI.MainWindow.GameClients.RemoveAt(i); i--; }
+            else
+            {
+                LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
+                {
+                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
+                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                }
+            }
+        }
+
+        #region Folder Init
+        if (!Directory.Exists("downloads")) { Directory.CreateDirectory("downloads"); }
+        #endregion Folder Init
+
+        #endregion Backend Init
+
+        #region Frontend Init
+        Self = this;
+        IsPlayerProfileChanging = true;
+        IsPlayerNameChanging = true;
+
+
+        PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
+        ProfileComboBox.ItemsSource = ExportSystem.Profiles;
+        ProfileComboBox.SelectedIndex = 0;
+
+        UndoRedoSystem.BlockUpdate = true;
+        UndoRedoSystem.BlockEvent = true;
+        ActiveProfile = ExportSystem.ActiveProfile;
+        UndoRedoSystem.BlockUpdate = false;
+        UndoRedoSystem.BlockEvent = false;
+
+        IsPlayerProfileChanging = false;
+        IsPlayerNameChanging = false;
+
+        LastSelectedBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
+        ItemFilters.Instance.WeaponFilter = Profile.Loadout1.Primary.Reciever;
+
+        this.DataContext = Profile;
+        #endregion Frontend Init
+
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
         {
@@ -877,5 +959,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         ItemFilters.Instance.SearchFilter = SearchBox.Text;
+    }
+
+    private void Window_Closed(object sender, EventArgs e)
+    {
+        if (shouldRestart) { App.Restart(); }
     }
 }

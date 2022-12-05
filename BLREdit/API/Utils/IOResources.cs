@@ -1,4 +1,5 @@
 ﻿using BLREdit.Export;
+using BLREdit.UI.Windows;
 
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
@@ -17,6 +18,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BLREdit;
 
@@ -36,6 +39,9 @@ public sealed class IOResources
     public const string GAME_PATH_SUFFIX = "steamapps\\common\\blacklightretribution\\Binaries\\Win32\\";
     public const string PROXY_MODULES_DIR = "Modules\\";
     #endregion DIRECTORIES
+
+    private static string baseDirectory = null;
+    public static string BaseDirectory { get { if (baseDirectory is null) { if (AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\")) { baseDirectory = AppDomain.CurrentDomain.BaseDirectory; } else { baseDirectory = $"{AppDomain.CurrentDomain.BaseDirectory}\\"; } } return baseDirectory; } }
 
     public const string GAME_APPID = "209870";
 
@@ -57,8 +63,10 @@ public sealed class IOResources
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
 
     public static WebClient WebClient { get; } = new WebClient();
-    public static HttpClient HttpClient { get; } = new HttpClient() { Timeout = new TimeSpan(0,0,10) };
+    public static HttpClient HttpClient { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
     public static HttpClient HttpClientWeb { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
+
+    public static readonly List<Task> DownloadTasks = new();
 
     static IOResources()
     {
@@ -116,6 +124,12 @@ public sealed class IOResources
                 GameFolders.Add($"{((VValue)((VProperty)library.Value.Children().First()).Value).Value}\\{GAME_PATH_SUFFIX}");
             }
         }
+    }
+
+    public static void DownloadFile(string url, string filename)
+    {
+        var dlWindow = new DownloadInfoWindow(url, filename);
+        dlWindow.ShowDialog();
     }
 
     public static string CreateFileHash(string path)

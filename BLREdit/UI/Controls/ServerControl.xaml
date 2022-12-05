@@ -7,30 +7,25 @@
              xmlns:game="clr-namespace:BLREdit.Game"
              d:DataContext="{d:DesignInstance Type=game:BLRServer}"
              mc:Ignorable="d">
-    <Border BorderThickness="1,1,1,1">
-        <Grid>
-            <Image Name="BackgroundImage" Source="../Resources/ClientBackground.png" Margin="0,0,0,0"/>
-            <Grid Height="128" Width="512">
-                <Image Name="MapImage" Source="{Binding Path=ServerInfo.BLRMap.SquareImage}" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0"/>
-            </Grid>
-            <Button Width="64" Height="32" Margin="0,10,10,0" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Ping Server" Command="{Binding Path=RefreshPingCommand}">
+    <Border BorderThickness="1,1,1,1" Height="512" Width="512">
+        <Grid MouseDown="Grid_MouseDown">
+            <Image Name="MapImage" Source="{Binding Path=ServerInfo.BLRMap.SquareImage}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+            <Button Width="64" Height="32" Margin="10,10,10,10" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Ping Server" Command="{Binding Path=RefreshPingCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/refresh.png"/>
             </Button>
-            <Button Width="64" Height="32" Margin="0,10,84,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Edit Server" Command="{Binding Path=EditServerCommand}">
-                <Image Margin="0,0,0,3" Source="../Resources/settings.png"/>
-            </Button>
+
+            <ComboBox ItemsSource="{Binding Path=ServerInfo.List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
+
+            <Button Width="128" Height="32" Margin="10,10,10,10" Content="Connect" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Connect to the Server" Command="{Binding Path=LaunchServerCommand}"/>
+            
             <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
                 <StackPanel>
                     <TextBlock Margin="5,2,5,2" Text="{Binding Path=DisplayName}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    <TextBlock Margin="5,2,5,2" Text="{Binding Path=PingDisplay}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                </StackPanel>
-            </Border>
-            <Button Content="Connect" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding Path=LaunchServerCommand}"/>
-            <ComboBox ItemsSource="{Binding Path=ServerInfo.List}" Margin="0,0,148,10" Width="128" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged"/>
-            <Border Margin="0,0,1,1" Width="Auto" Height="Auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerInfo.BLRMap.MapName}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerInfo.GameMode}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerInfo.MatchStats}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerInfo.BLRMap.DisplayName}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerInfo.GameModeFullName}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
         </Grid>

@@ -43,13 +43,13 @@ public static class ImportSystem
     public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
-    private static Dictionary<string, ObservableCollection<BLRItem>> ItemLists { get; } = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
+    private static Dictionary<string, ObservableCollection<BLRItem>> ItemLists { get; set; } = new();
 
 
     public static void Initialize()
     {
         LoggingSystem.Log("Initializing Import System");
-
+        ItemLists = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}");
         UpdateImages();
         ApplyDisplayStats();
     }
