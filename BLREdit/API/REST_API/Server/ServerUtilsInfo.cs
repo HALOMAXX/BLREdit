@@ -1,4 +1,4 @@
-﻿using BLREdit.Import;
+using BLREdit.Import;
 using BLREdit.UI.Windows;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ namespace BLREdit.API.REST_API.Server;
 
 public sealed class ServerUtilsInfo
 {
-    [JsonIgnore] public bool IsOnline { get; set; } = false;
+    public bool IsOnline { get; set; } = false;
     public int BotCount { get; set; } = 0;
     public string GameMode { get; set; } = "";
     public string GameModeFullName { get; set; } = "";
