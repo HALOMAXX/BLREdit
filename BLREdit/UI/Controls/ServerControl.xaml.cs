@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.Game;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +30,17 @@ namespace BLREdit.UI.Controls
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ((ComboBox)sender).SelectedIndex = 0;
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount > 1)
+            {
+                if (this.DataContext is BLRServer server)
+                {
+                    server.LaunchServerCommand.Execute(null);
+                }
+            }
         }
     }
 }

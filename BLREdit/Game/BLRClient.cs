@@ -30,6 +30,12 @@ namespace BLREdit.Game;
 
 public sealed class BLRClient : INotifyPropertyChanged
 {
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
     private bool hasBeenValidated = false;
 
     [JsonIgnore] private BLRServer LocalHost = new BLRServer() { ServerAddress = "localhost", Port=7777, ServerName="LocalHost" };
@@ -78,6 +84,16 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     [JsonIgnore] public static VisualProxyModule[] AvailabeModules { get { return App.AvailableProxyModules; } }
 
+    public BLRClient()
+    {
+        InstalledModules.CollectionChanged += InstalledModules_CollectionChanged;
+    }
+
+    private void InstalledModules_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        hasBeenValidated = false;
+    }
+
     public static Dictionary<string, string> VersionHashes => new()
     {
         {"0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7", "v302"},
@@ -89,12 +105,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         {"d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f", "v1100"},
         {"9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116", "v0993"}
     };
-
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 
     public override bool Equals(object obj)
     {
@@ -191,7 +201,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     if (!isValid) { needUpdatedPatches = true; LoggingSystem.Log($"found old patch {installedPatch.PatchName}"); }
                 }
 
-                var proxySource = $"{AppDomain.CurrentDomain.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.dll";
+                var proxySource = $"{IOResources.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.dll";
                 var proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll";
                 if (File.Exists(proxySource) && File.Exists(proxyTarget))
                 {
@@ -377,6 +387,9 @@ public sealed class BLRClient : INotifyPropertyChanged
         launchArgs += $"?Name={options.UserName}";
         StartProcess(launchArgs);
     }
+
+    //Invalidate the Is Valid if new module was inatlled / removed to prevent error when installing a new module after starting the game once
+
     public void StartProcess(string launchArgs)
     {
         if (!hasBeenValidated)

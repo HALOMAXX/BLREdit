@@ -38,13 +38,13 @@ public sealed class ServerUtilsClient
             {
                 var content = await response.Content.ReadAsStringAsync();
                 if (content.StartsWith("{") || content.StartsWith("["))
-                { info = IOResources.Deserialize<ServerUtilsInfo>(content); }
+                { info = IOResources.Deserialize<ServerUtilsInfo>(content); info.IsOnline = true; }
                 else
                 { fail = "Not a valid Json!"; }
             }
         }
         catch (Exception error) { LoggingSystem.Log($"[Server]({server.ServerAddress}): {error}"); }
-        if (info is null) { LoggingSystem.Log($"[Server]({server.ServerAddress}): failed to get Server Info! {fail}"); }
+        if (info is null) { LoggingSystem.Log($"[Server]({server.ServerAddress}): failed to get Server Info! {fail}"); return new ServerUtilsInfo(); }
         return info;
     }
 }

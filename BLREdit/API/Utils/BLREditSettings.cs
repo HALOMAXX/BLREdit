@@ -63,16 +63,19 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     public static void Save()
     {
-        bool client = false;
-        foreach (var c in MainWindow.GameClients)
+        if (MainWindow.GameClients is not null && MainWindow.GameClients.Count > 0)
         {
-            if (c.Equals(Settings.DefaultClient))
+            bool client = false;
+            foreach (var c in MainWindow.GameClients)
             {
-                client = true;
+                if (c.Equals(Settings.DefaultClient))
+                {
+                    client = true;
+                }
             }
-        }
-        if (!client) { Settings.DefaultClient = null; }
+            if (!client) { Settings.DefaultClient = null; }
 
-        IOResources.SerializeFile($"{IOResources.SETTINGS_FILE}", Settings);
+            IOResources.SerializeFile($"{IOResources.SETTINGS_FILE}", Settings);
+        }
     }
 }

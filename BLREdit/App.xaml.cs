@@ -119,42 +119,6 @@ public partial class App : System.Windows.Application
         Trace.Listeners.Add(new TextWriterTraceListener(LogFile, "loggingListener"));
         Trace.AutoFlush = true;
         LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
-
-        LoggingSystem.Log("Loading Client List");
-        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
-        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
-
-        var task = App.Initialize();
-        task.Wait();
-        var modules = task.Result;
-        App.AvailableProxyModules = new VisualProxyModule[modules.Length];
-        for (int i = 0; i < modules.Length; i++)
-        {
-            App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
-        }
-
-        LoggingSystem.Log("Version Check!");
-        App.VersionCheck();
-        App.RuntimeCheck();
-
-        ImportSystem.Initialize();
-
-        LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
-        for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
-        {
-            if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
-            { UI.MainWindow.GameClients.RemoveAt(i); i--; }
-            else
-            {
-                LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
-                {
-                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
-                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                }
-            }
-        }
-
     }
 
     private static void InitFiles()
@@ -203,11 +167,6 @@ public partial class App : System.Windows.Application
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
     }
 
-    public static async Task<RepositoryProxyModule[]> Initialize()
-    {
-        return await GetAvailableProxyModules();
-    }
-
     private readonly static Dictionary<FileInfoExtension, string> DownloadLinks = new();
 
     private static FileInfoExtension currentExe;
@@ -221,8 +180,9 @@ public partial class App : System.Windows.Application
     private static FileInfoExtension crosshairsZip;
     private static FileInfoExtension patchesZip;
 
-    public static void VersionCheck()
+    public static bool VersionCheck()
     {
+        LoggingSystem.Log("Running Version Check!");
         Directory.CreateDirectory(IOResources.UPDATE_DIR);
 
         try
@@ -230,7 +190,7 @@ public partial class App : System.Windows.Application
             var task = GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
             task.Wait();
             BLREditLatestRelease = task.Result;
-            if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return; }
+            if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
             LoggingSystem.Log($"Newest Version: {BLREditLatestRelease.tag_name} of {BLREditLatestRelease.name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
             var remoteVersion = CreateVersion(BLREditLatestRelease.tag_name);
@@ -273,7 +233,7 @@ public partial class App : System.Windows.Application
                     DownloadAssetFolder();
 
                     UpdateEXE();
-                    Restart();
+                    return true;
                 }
                 else if (newVersionAvailable && !assetFolderMissing)
                 {
@@ -281,18 +241,19 @@ public partial class App : System.Windows.Application
                     UpdateAllAssetPacks();
 
                     UpdateEXE();
-                    Restart();
+                    return true;
                 }
                 else if (!newVersionAvailable && assetFolderMissing)
                 {
                     MessageBox.Show("BLREdit will now Download Missing Files!");
                     DownloadAssetFolder();
-                    Restart();
+                    return true;
                 }
             }
         }
         catch (Exception error)
-        { LoggingSystem.MessageLog($"Failed to Update to Newest Version\n{error}"); }
+        { LoggingSystem.MessageLog($"Failed to Update to Newest Version\n{error}"); return false; }
+        return false;
     }
 
     private static void UpdateEXE()
@@ -301,7 +262,7 @@ public partial class App : System.Windows.Application
         {
             if (exeZip.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {exeZip.Info.FullName}"); exeZip.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Downloading {exeDL}");
-            IOResources.WebClient.DownloadFile(exeDL, exeZip.Info.FullName);
+            IOResources.DownloadFile(exeDL, exeZip.Info.FullName);
             if (backupExe.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {backupExe.Info.FullName}"); backupExe.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Moving {currentExe.Info.FullName} to {backupExe.Info.FullName}");
             currentExe.Info.MoveTo(backupExe.Info.FullName);
@@ -313,23 +274,22 @@ public partial class App : System.Windows.Application
         { LoggingSystem.Log("No new EXE Available!"); }
     }
 
-    private static void Restart()
+    public static void Restart()
     {
-        if (!File.Exists("launch.bat")) { File.WriteAllText("launch.bat", "@echo off\nBLREdit.exe\nexit"); }
+        if (!File.Exists("launch.bat")) { File.WriteAllText("launch.bat", "@echo off\nstart BLREdit.exe\nexit"); }
 
         ProcessStartInfo psi = new()
         {
+            UseShellExecute= true,
             WindowStyle = ProcessWindowStyle.Hidden,
+            CreateNoWindow = true,
             FileName = "launch.bat",
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
         };
         Process newApp = new()
         {
             StartInfo = psi
         };
-        newApp.Start();
-        Current.Shutdown(-69);
+        LoggingSystem.Log($"Restart: {newApp.Start()}");
     }
 
     private static void DownloadAssetFolder()
@@ -337,7 +297,7 @@ public partial class App : System.Windows.Application
         if (DownloadLinks.TryGetValue(assetZip, out string assetDL))
         {
             if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
-            IOResources.WebClient.DownloadFile(assetDL, assetZip.Info.FullName);
+            IOResources.DownloadFile(assetDL, assetZip.Info.FullName);
             ZipFile.ExtractToDirectory(assetZip.Info.FullName, IOResources.ASSET_DIR);
         }
         else
@@ -367,7 +327,7 @@ public partial class App : System.Windows.Application
         {
             if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Downloading {dl}");
-            IOResources.WebClient.DownloadFile(dl, pack.Info.FullName);
+            IOResources.DownloadFile(dl, pack.Info.FullName);
         }
         else
         { LoggingSystem.Log($"No {pack.Info.Name} for download available!"); }
@@ -403,19 +363,23 @@ public partial class App : System.Windows.Application
 
     public static async Task<RepositoryProxyModule[]> GetAvailableProxyModules()
     {
+        LoggingSystem.Log("Downloading AvailableProxyModule List!");
+        var moduleList = Array.Empty<RepositoryProxyModule>();
         try
         {
             var file = await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json");
             if (file is null) return Array.Empty<RepositoryProxyModule>();
-            return IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
+            moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
+            LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
         }
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}"); }
-        return Array.Empty<RepositoryProxyModule>();
+        return moduleList;
     }
 
     public static void RuntimeCheck()
     {
+        LoggingSystem.Log("Checking for Runtime Libraries!");
         var x86 = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\{33d1fd90-4274-48a1-9bc1-97e33d9c2d6f}", "Version", "-1");
         var x86Update = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\Microsoft.VS.VC_RuntimeAdditional_x86,v11", "Version", "-1");
         if (x86 is string VC32Bit && x86Update is string VC32BitUpdate4)
