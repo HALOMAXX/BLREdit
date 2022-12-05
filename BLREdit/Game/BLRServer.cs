@@ -33,7 +33,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
     [JsonIgnore] public string PingDisplay { get { if (IsOnline) { return "Online"; } else { return "Offline"; } } }
-    [JsonIgnore] public bool IsOnline { get { return MagiInfo?.IsOnline ?? false; } }
+    [JsonIgnore] public bool IsOnline { get { return ((ServerInfo?.IsOnline ?? false) || (MagiInfo?.IsOnline ?? false)); } }
 
     private readonly UIBool isPinging = new(false);
     [JsonIgnore] public UIBool IsPinging { get { return isPinging; } }
@@ -114,7 +114,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         var server = ServerUtilsClient.GetServerInfo(this);
         server.Wait();
         ServerInfo = server.Result;
-        if (ServerInfo is null) { ServerInfo = new(); } else { LoggingSystem.Log($"[Server]({ServerAddress}): got Server Info!"); }
+        if (ServerInfo is null) { ServerInfo = new(); } else { ServerInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Server Info!"); }
 
         var magi = MagiCowClient.GetServerInfo(ServerAddress);
         magi.Wait();

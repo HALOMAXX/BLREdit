@@ -7,6 +7,7 @@ namespace BLREdit.API.REST_API.Server;
 
 public sealed class ServerUtilsInfo
 {
+    public bool IsOnline { get; set; } = false;
     public int BotCount { get; set; } = 0;
     public string GameMode { get; set; } = "DM";
     [JsonIgnore] public string ModeName { get { return GameMode.ToUpper(); } set { } }
