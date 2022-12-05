@@ -691,7 +691,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = LanguageSet.GetWords(SortingEnumType) });
     }
 
-    //TODO Switch selected bored when changing Loadout slot, and remove LastSelectedBorder when changing Sub Category(Weapon,Gear,Extra) to prevent miss adding of items
+    //TODO Switch selected border when changing Loadout slot, and remove LastSelectedBorder when changing Sub Category(Weapon,Gear,Extra) to prevent miss adding of items
     public static void SetItemToBorder(Border border, BLRItem item, bool blockEvent = false, bool blockUpdate = false)
     {
         if (border is null) { LoggingSystem.Log($"Missing Border in SetItemToBorder()"); return; }

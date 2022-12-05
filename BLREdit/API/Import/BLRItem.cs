@@ -267,7 +267,7 @@ public sealed class BLRItem : INotifyPropertyChanged
                 }
                 else if (name.Contains("Rocket"))
                 {
-                    //TODO differenciate between stinger and swarm and add Swarm preview image
+                    //TODO differenciate between stinger and swarm and add Swarm preview image not needed anymore as we can't select depot items as secondaries anymore
                     return "AV Rocket Launcher Scope";
                 }
                 else

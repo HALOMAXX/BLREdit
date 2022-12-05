@@ -1,4 +1,4 @@
-{
+﻿{
   "LanguageName": "en-US",
   "Words": {
     "0.Name": "No Avatar",
@@ -2343,7 +2343,7 @@
     "Health": "Health",
     "Hip": "Hip",
     "HRVDuration": "HRV Duration",
-    "HRVRecharge": "HRV Recharge",
+    "HRVRecharge": "HRV 🔁",
     "IncendiaryProtection": "Inc",
     "Infrared": "Infra",
     "InfraredProtection": "Infra",
