@@ -13,14 +13,14 @@ namespace BLREdit.UI.Controls
 {
     public class VirtualizedUniformGrid : VirtualizingPanel, IScrollInfo
     {
-        private Size _extent = new Size(0, 0);
-        private Size _viewport = new Size(0, 0);
-        private Point _offset = new Point(0, 0);
+        private Size _extent = new(0, 0);
+        private Size _viewport = new(0, 0);
+        private Point _offset = new(0, 0);
         private bool _canHorizontallyScroll = true;
         private bool _canVerticallyScroll = true;
         private ScrollViewer _owner;
         private int _scrollLength = 25;
-        private Size _itemSize = new Size(0, 0);
+        private Size _itemSize = new(0, 0);
 
         public static readonly DependencyProperty OrientationProperty = DependencyProperty.RegisterAttached("Orientation", typeof(Orientation), typeof(VirtualizedUniformGrid),
             new FrameworkPropertyMetadata(Orientation.Vertical, FrameworkPropertyMetadataOptions.AffectsArrange | FrameworkPropertyMetadataOptions.AffectsMeasure));
@@ -32,10 +32,6 @@ namespace BLREdit.UI.Controls
         {
             get { return (Orientation)GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
-        }
-
-        public VirtualizedUniformGrid()
-        {
         }
 
         private static bool ValidateFirstColumn(object o)
@@ -54,13 +50,13 @@ namespace BLREdit.UI.Controls
             ItemsControl itemsControl = ItemsControl.GetItemsOwner(this);
             int itemCount = itemsControl.HasItems ? itemsControl.Items.Count : 0;
 
-            int firstVisibleItemIndex, lastVisibleItemIndex;
-            GetVisibleRange(out firstVisibleItemIndex, out lastVisibleItemIndex);
+            GetVisibleRange(out int firstVisibleItemIndex, out int lastVisibleItemIndex);
 
             firstVisibleItemIndex = Math.Min(Math.Max(firstVisibleItemIndex, 0), itemCount - 1);
             lastVisibleItemIndex = Math.Min(Math.Max(lastVisibleItemIndex, 0), itemCount - 1);
 
             UIElementCollection children = InternalChildren;
+
             IItemContainerGenerator generator = ItemContainerGenerator;
 
             GeneratorPosition startPos = generator.GeneratorPositionFromIndex(firstVisibleItemIndex);
@@ -71,9 +67,7 @@ namespace BLREdit.UI.Controls
             {
                 for (int itemIndex = firstVisibleItemIndex; itemIndex <= lastVisibleItemIndex; ++itemIndex, ++childIndex)
                 {
-                    bool newlyRealized;
-
-                    UIElement child = generator.GenerateNext(out newlyRealized) as UIElement;
+                    UIElement child = generator.GenerateNext(out bool newlyRealized) as UIElement;
 
                     childIndex = Math.Max(0, childIndex);
 
@@ -92,21 +86,16 @@ namespace BLREdit.UI.Controls
                     }
                     else
                     {
-                        if (children.Count > 0)
+                        if (children.Count > childIndex)
                         {
                             Debug.Assert(child == children[childIndex], "Wrong child was generated");
                         }
                     }
                 }
             }
-
             foreach (UIElement element in base.InternalChildren)
             {
                 element.Measure(availableSize);
-                if (element != null)
-                {
-                    element.Measure(availableSize);
-                }
             }
 
             UpdateComputedValues();
@@ -136,34 +125,35 @@ namespace BLREdit.UI.Controls
             if (_rows == 0 || _columns == 0) return;
 
             double xPosition, yPosition;
-            Size childSize = child.DesiredSize;
 
             if (Orientation == Orientation.Horizontal)
             {
                 int row = index % _rows;
                 int column = index / _rows;
-                xPosition = column * childSize.Width - _offset.X;
-                yPosition = row * childSize.Height - _offset.Y;
+                xPosition = column * _itemSize.Width - _offset.X;
+                yPosition = row * _itemSize.Height - _offset.Y;
             }
             else
             {
                 int row = index / _columns;
                 int column = index % _columns;
-                xPosition = column * childSize.Width - _offset.X;
-                yPosition = row * childSize.Height - _offset.Y;
+                xPosition = column * _itemSize.Width - _offset.X;
+                yPosition = row * _itemSize.Height - _offset.Y;
             }
 
-            child.Arrange(new Rect(xPosition, yPosition, childSize.Width, childSize.Height));
+            child.Arrange(new Rect(xPosition, yPosition, _itemSize.Width, _itemSize.Height));
         }
 
         private void UpdateComputedValues()
         {
-            UIElement child;
-            Size childSize = new Size();
-            if (base.InternalChildren.Count != 0)
+            Size childSize = new Size(0,0);
+            if (base.InternalChildren.Count > 0)
             {
-                child = base.InternalChildren[0];
-                childSize = child.DesiredSize;
+                foreach (UIElement child in base.InternalChildren)
+                {
+                    childSize.Width = Math.Max(childSize.Width, child.DesiredSize.Width);
+                    childSize.Height = Math.Max(childSize.Height, child.DesiredSize.Height);
+                }
             }
 
             if (childSize.Width == 0 || childSize.Height == 0)

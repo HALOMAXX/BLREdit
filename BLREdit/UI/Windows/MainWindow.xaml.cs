@@ -125,7 +125,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     bool shouldRestart = false;
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-#if DEBUG
+#if DEBUGWAIT
         MessageBox.Show("Waiting!");
 #endif
 
@@ -323,10 +323,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void AddDefaultServers()
     {
         List<BLRServer> defaultServers = new() {
-        new() { ServerAddress = "mooserver.ddns.net", Port = 7777, ServerName = "MagiCow's Server" }, //mooserver.ddns.net : 7777 //majikau.ddns.net or mooserver.ddns.net
-        new() { ServerAddress = "blr.akoot.me", Port = 7777, ServerName = "Akoot's Server" }, //blr.akoot.me : 7777
-        new() { ServerAddress = "blr.753z.net", Port = 7777, ServerName = "IKE753Z's Server" }, //blr.753z.net : 7777
-        new() { ServerAddress = "localhost", Port = 7777, ServerName = "Local Host"}
+        new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //mooserver.ddns.net : 7777 majikau.ddns.net or mooserver.ddns.net MajiCow Server
+        new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //blr.akoot.me : 7777 Akkot's Server
+        new() { ServerAddress = "blr.753z.net", Port = 7777 }, //blr.753z.net : 7777 IKE753Z Server
+        new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
         //BLRServer subsonic = null;
         //new() { ServerAddress = "dozette.tplinkdns.com", Port = 7777, ServerName = "Dozette's Server" }, //dozette.tplinkdns.com : 7777
         };
@@ -749,7 +749,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
         Directory.CreateDirectory(directory);
         IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3) });
-        var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} has been Exported to Game");
+        var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} Exported!");
         AlertList.Items.Add(grid);
         new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
     }

@@ -6,18 +6,18 @@
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:import="clr-namespace:BLREdit.Import"
              d:DataContext="{d:DesignInstance Type=import:BLRItem}"
-             mc:Ignorable="d"
-             MinWidth="285">
-        <Border BorderThickness="1,1,1,1">
-            <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="None" Width="256" Height="128" />
+             mc:Ignorable="d">
+    <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-4,-1,-4,-1" ToolTip="{Binding Tooltip}" MouseDown="ItemList_MouseDown">
+        <Border BorderThickness="1,1,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" Width="256" Height="128"/>
         </Border>
-        <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
-        <Border BorderThickness="1,0,1,1">
-            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Style="{StaticResource TextBlock}" />
+        <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
+        <Border BorderThickness="1,0,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TextBlock}" />
         </Border>
-        <Border BorderThickness="1,0,1,1">
-            <UniformGrid Columns="3">
-                <StackPanel Orientation="Horizontal">
+        <Border BorderThickness="1,0,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <UniformGrid Columns="3" Rows="2">
+                <VirtualizingStackPanel Orientation="Horizontal">
                     <Label Content="{Binding Path=DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -32,9 +32,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </StackPanel>
+                </VirtualizingStackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <VirtualizingStackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat2.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -49,9 +49,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </StackPanel>
+                </VirtualizingStackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <VirtualizingStackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat3.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -66,9 +66,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </StackPanel>
+                </VirtualizingStackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <VirtualizingStackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat4.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -83,9 +83,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </StackPanel>
+                </VirtualizingStackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <VirtualizingStackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat5.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -100,9 +100,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </StackPanel>
+                </VirtualizingStackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <VirtualizingStackPanel Orientation="Horizontal">
                     <Label Content="{Binding DisplayStat6.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Label.Style>
                             <Style>
@@ -117,7 +117,7 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                </StackPanel>
+                </VirtualizingStackPanel>
 
             </UniformGrid>
         </Border>

@@ -53,7 +53,7 @@
                         </ListView.ItemContainerStyle>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ui:VirtualizedUniformGrid Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                <ui:VirtualizedUniformGrid Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsItemsHost="True"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ListView.ItemTemplate>

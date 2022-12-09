@@ -121,7 +121,7 @@ public sealed class LanguageSet
                 { LanguageKeys.HEALTH, "Health" },
                 { LanguageKeys.HEAD_PROTECTION, "Head Prot" },
                 { LanguageKeys.HRV_DURATION, "HRV Duration" },
-                { LanguageKeys.HRV_RECHARGE, "HRV 🔁" },
+                { LanguageKeys.HRV_RECHARGE, "HRV Recharge" },
                 { LanguageKeys.GEAR_SLOTS, "Gear Slots" },
 
             }

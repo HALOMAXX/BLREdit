@@ -198,10 +198,18 @@ public static class ImportSystem
                         }
 
                         item.DisplayStat1 = FormatDisplayStat(LanguageKeys.HEALTH, LanguageSet.GetWord(LanguageKeys.HEALTH) + ':', health, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat2 = FormatDisplayStat(LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, StatsEnum.Normal, "0.0", "%");
+                        if (recharge >= 10)
+                        {
+                            item.DisplayStat2 = FormatDisplayStat(LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0", " u/s", "", -1, 6.59);
+                        }
+                        else
+                        {
+                            item.DisplayStat2 = FormatDisplayStat(LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", " u/s", "", -1, 6.59);
+                        }
                         item.DisplayStat3 = FormatDisplayStat(LanguageKeys.RUN, LanguageSet.GetWord(LanguageKeys.RUN) + ':', movement, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat4 = FormatDisplayStat(LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 69.9);
-                        item.DisplayStat5 = FormatDisplayStat(LanguageKeys.HRV_RECHARGE, LanguageSet.GetWord(LanguageKeys.HRV_RECHARGE) + ':', recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 6.59);
+                        item.DisplayStat4 = FormatDisplayStat(LanguageKeys.HEAD_PROTECTION, LanguageSet.GetWord(LanguageKeys.HEAD_PROTECTION) + ':', dmgReduction, StatsEnum.Normal, "0.0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(LanguageKeys.HRV_DURATION, LanguageSet.GetWord(LanguageKeys.HRV_DURATION) + ':', hrv, StatsEnum.Normal, "0.0", "u", "", -1, 69.9);
+
                         if (value != 0)
                         {
                             item.DisplayStat6 = FormatDisplayStat(prop, desc, value, StatsEnum.Normal, "0", "%");
