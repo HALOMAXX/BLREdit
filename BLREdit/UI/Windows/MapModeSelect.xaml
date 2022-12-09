@@ -31,7 +31,7 @@
                     <Grid Width="256" Height="256">
                         <Image Source="{Binding Path=SquareImage}" Width="256" Height="256" Stretch="Fill"/>
                         <Border Width="74" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
-                            <TextBlock Text="{Binding Path=MapName}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{Binding Path=DisplayName}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </Border>
                         <ComboBox Width="120" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" ItemsSource="{Binding Path=SupportedGameModes}" SelectedIndex="0" DisplayMemberPath="Name"/>
                         <Button Width="120" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Start" Click="Button_Click"/>

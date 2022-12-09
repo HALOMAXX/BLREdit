@@ -36,7 +36,7 @@ public sealed partial class MapModeSelect : Window
         {
             foreach (var mode in Modes)
             {
-                if (map.SupportedPlaylists.Contains(mode.PlaylistName))
+                if (map.SupportedPlaylists.Contains(mode.PlaylistName) || map.SupportedPlaylists.Contains(mode.ModeName))
                 {
                     map.SupportedGameModes.Add(mode);
                     

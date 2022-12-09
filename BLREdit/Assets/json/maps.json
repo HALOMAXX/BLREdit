@@ -12,7 +12,6 @@
   {
     "MapName": "Centre",
     "MagiCowName": "Centre",
-    "MapDescription": "",
     "LongImageName": "t_centre.png",
     "SquareImageName": "t_Center_512x512.png",
     "Available": [
@@ -34,7 +33,6 @@
   {
     "MapName": "Containment",
     "MagiCowName": "Containment",
-    "MapDescription": "",
     "LongImageName": "t_containment.png",
     "SquareImageName": "t_Containment_512x512.png",
     "Available": [
@@ -61,8 +59,6 @@
   {
     "MapName": "Convoy",
     "MagiCowName": "Convoy",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_Convoy_512x512.png",
     "Available": [
       "v302",
@@ -82,8 +78,6 @@
   {
     "MapName": "Crashsite",
     "MagiCowName": "Crashsite",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_CrashSite_512x512.png",
     "Available": [
       "v302",
@@ -104,7 +98,6 @@
   {
     "MapName": "Deadlock",
     "MagiCowName": "Deadlock",
-    "MapDescription": "",
     "LongImageName": "t_deadlock.png",
     "SquareImageName": "t_DeadLock_512x512.png",
     "Available": [
@@ -131,8 +124,6 @@
   {
     "MapName": "DeathMetal",
     "MagiCowName": "DeathMetal",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_DeathMetal_512x512.png",
     "Available": [
       "v302",
@@ -152,7 +143,6 @@
   {
     "MapName": "Decay",
     "MagiCowName": "Decay",
-    "MapDescription": "",
     "LongImageName": "t_decay.png",
     "SquareImageName": "t_Decay_512x512.png",
     "Available": [
@@ -179,7 +169,6 @@
   {
     "MapName": "Dropzone",
     "MagiCowName": "Dropzone",
-    "MapDescription": "",
     "LongImageName": "t_dropzone2.png",
     "SquareImageName": "t_DropZone_512x512.png",
     "Available": [
@@ -201,7 +190,6 @@
   {
     "MapName": "Evac",
     "MagiCowName": "Evac",
-    "MapDescription": "",
     "LongImageName": "t_evac.png",
     "SquareImageName": "t_Evac_512x512.png",
     "Available": [
@@ -229,7 +217,6 @@
     "MapDisplayName": "Heavy Metal",
     "MapName": "HeavyMetal",
     "MagiCowName": "Heavy Metal",
-    "MapDescription": "",
     "LongImageName": "t_heavyMetal.png",
     "SquareImageName": "t_HeavyMetal_512x512.png",
     "Available": [
@@ -256,7 +243,6 @@
   {
     "MapName": "HeloDeck",
     "MagiCowName": "Helodeck",
-    "MapDescription": "",
     "LongImageName": "t_helodeck.png",
     "SquareImageName": "t_HeloDeck_512x512.png",
     "Available": [
@@ -283,8 +269,6 @@
   {
     "MapName": "Lockdown",
     "MagiCowName": "Lockdown",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_LockDown_512x512.png",
     "Available": [
       "v302",
@@ -304,7 +288,6 @@
   {
     "MapName": "Metro",
     "MagiCowName": "Metro",
-    "MapDescription": "",
     "LongImageName": "t_metro.png",
     "SquareImageName": "t_Metro_512x512.png",
     "Available": [
@@ -331,9 +314,7 @@
   {
     "MapName": "Nuken",
     "MagiCowName": "Nuken",
-    "MapDescription": "",
     "LongImageName": "t_nuken.png",
-    "SquareImageName": "",
     "Available": [
       "v140",
       "v130",
@@ -346,9 +327,7 @@
   {
     "MapName": "Offshore",
     "MagiCowName": "Offshore",
-    "MapDescription": "",
     "LongImageName": "t_offshore.png",
-    "SquareImageName": "",
     "Available": [
       "v140",
       "v130",
@@ -370,8 +349,6 @@
   {
     "MapName": "Outpost",
     "MagiCowName": "Outpost",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_Outpost_512x512.png",
     "Available": [
       "v302",
@@ -392,7 +369,6 @@
   {
     "MapName": "Piledriver",
     "MagiCowName": "Piledriver",
-    "MapDescription": "",
     "LongImageName": "t_piledriver.png",
     "SquareImageName": "t_PileDriver_512x512.png",
     "Available": [
@@ -419,8 +395,6 @@
   {
     "MapName": "Rig",
     "MagiCowName": "Rig",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_Rig_512x512.png",
     "Available": [
       "v302",
@@ -441,7 +415,6 @@
   {
     "MapName": "Safehold",
     "MagiCowName": "Safehold",
-    "MapDescription": "",
     "LongImageName": "t_safehold.png",
     "SquareImageName": "t_Safehold_512x512.png",
     "Available": [
@@ -468,7 +441,6 @@
   {
     "MapName": "SeaPort",
     "MagiCowName": "SeaPort",
-    "MapDescription": "",
     "LongImageName": "t_seaport.png",
     "SquareImageName": "t_Seaport_512x512.png",
     "Available": [
@@ -495,8 +467,6 @@
   {
     "MapName": "Shelter",
     "MagiCowName": "Shelter",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_Shelter_512x512.png",
     "Available": [
       "v302",
@@ -516,8 +486,6 @@
   {
     "MapName": "Slumlord",
     "MagiCowName": "Slumlord",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_SlumLord_512x512.png",
     "Available": [
       "v140",
@@ -540,8 +508,6 @@
   {
     "MapName": "Terminus",
     "MagiCowName": "Terminus",
-    "MapDescription": "",
-    "LongImageName": "",
     "SquareImageName": "t_Terminus_512x512.png",
     "Available": [
       "v302",
@@ -561,7 +527,6 @@
   {
     "MapName": "Trench",
     "MagiCowName": "Trench",
-    "MapDescription": "",
     "LongImageName": "t_trench.png",
     "SquareImageName": "t_Trench_512x512.png",
     "Available": [
@@ -588,7 +553,6 @@
   {
     "MapName": "Vertigo",
     "MagiCowName": "Vertigo",
-    "MapDescription": "",
     "LongImageName": "t_vertigo.png",
     "SquareImageName": "t_Vertigo_512x512.png",
     "Available": [
@@ -615,7 +579,6 @@
   {
     "MapName": "Vortex",
     "MagiCowName": "Vortex",
-    "MapDescription": "",
     "LongImageName": "t_vortex.png",
     "SquareImageName": "t_Vortex_512x512.png",
     "Available": [
@@ -637,6 +600,21 @@
       "LMS",
       "LTS",
       "SND"
+    ]
+  },
+  {
+    "MapDisplayName": "Gun Range",
+    "MapName": "GunRange_Persistent",
+    "MagiCowName": "Training",
+    "LongImageName": "t_helodeck.png",
+    "SquareImageName": "t_HeloDeck_512x512.png",
+    "Available": [
+      "v302",
+      "v301",
+      "v300"
+    ],
+    "SupportedPlaylists": [
+      "BO"
     ]
   }
 ]

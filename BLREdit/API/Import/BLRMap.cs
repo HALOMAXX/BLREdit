@@ -11,12 +11,12 @@ namespace BLREdit.Import;
 public sealed class BLRMap
 {
     [JsonIgnore] public string DisplayName { get { if (string.IsNullOrEmpty(MapDisplayName)) { return MapName; } else { return MapDisplayName; } } }
-    public string MapDisplayName { get; set; }
-    public string MapName { get; set; }
-    public string MagiCowName { get; set; }
-    public string MapDescription { get; set; }
+    public string MapDisplayName { get; set; } = "";
+    public string MapName { get; set; } = "";
+    public string MagiCowName { get; set; } = "";
+    public string MapDescription { get; set; } = "";
 
-    public string LongImageName { get; set; }
+    public string LongImageName { get; set; } = "";
     [JsonIgnore] public string LongImage 
     {
         get
@@ -25,7 +25,7 @@ public sealed class BLRMap
             return IOResources.BaseDirectory + "Assets\\textures\\" + LongImageName;
         }
     }
-    public string SquareImageName { get; set; }
+    public string SquareImageName { get; set; } = "";
     [JsonIgnore] public string SquareImage 
     { 
         get 

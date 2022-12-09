@@ -2,113 +2,92 @@
   {
     "Name": "CTDM",
     "Description": "Competetive Team Deathmatch",
-    "PlaylistName": "",
-    "ModeName": "CTDM",
-    "IsAvailable": true
+    "ModeName": "CTDM"
   },
   {
     "Name": "CTF",
     "Description": "Capture The Flag",
     "PlaylistName": "CTF",
-    "ModeName": "CTF",
-    "IsAvailable": true
+    "ModeName": "CTF"
   },
   {
     "Name": "DM",
     "Description": "Deathmatch",
     "PlaylistName": "DM",
-    "ModeName": "DM",
-    "IsAvailable": true
+    "ModeName": "DM"
   },
   {
     "Name": "DOM",
     "Description": "Domination",
     "PlaylistName": "DOM",
-    "ModeName": "CP",
-    "IsAvailable": true
+    "ModeName": "CP"
   },
   {
     "Name": "Netwar",
     "Description": "Netwar",
-    "PlaylistName": "",
-    "ModeName": "EOTS",
-    "IsAvailable": true
+    "ModeName": "EOTS"
   },
   {
     "Name": "Siege",
     "Description": "Siege",
-    "PlaylistName": "",
-    "ModeName": "PL",
-    "IsAvailable": true
+    "ModeName": "PL"
   },
   {
     "Name": "TDM",
-    "Description": "TDM",
+    "Description": "Team Deathmatch",
     "PlaylistName": "TDM",
-    "ModeName": "TDM",
-    "IsAvailable": true
+    "ModeName": "TDM"
   },
   {
     "Name": "TDM?",
     "Description": "Detonate",
-    "PlaylistName": "",
-    "ModeName": "Detonate",
-    "IsAvailable": true
+    "ModeName": "Detonate"
   },
   {
-    "Name": "Train",
-    "Description": "Train",
-    "PlaylistName": "",
-    "ModeName": "BO",
-    "IsAvailable": true
+    "Name": "Training",
+    "Description": "Training",
+    "ModeName": "BO"
   },
   {
     "Name": "KOTH",
     "Description": "King Of The Hill",
     "PlaylistName": "KOTH",
-    "ModeName": "TKOTH",
-    "IsAvailable": true
+    "ModeName": "TKOTH"
   },
   {
     "Name": "LMS",
     "Description": "Last Man Standing",
     "PlaylistName": "LMS",
-    "ModeName": "LMS",
-    "IsAvailable": true
+    "ModeName": "LMS"
   },
   {
     "Name": "LTS",
     "Description": "Last Team Standing",
     "PlaylistName": "LTS",
-    "ModeName": "LTS",
-    "IsAvailable": true
+    "ModeName": "LTS"
   },
   {
     "Name": "SND",
     "Description": "Search And Destroy",
     "PlaylistName": "SND",
-    "ModeName": "SND",
-    "IsAvailable": true
+    "ModeName": "SND"
   },
   {
     "Name": "OS Easy",
     "Description": "Onslaught Easy",
     "PlaylistName": "OS_Easy",
-    "ModeName": "OS",
-    "IsAvailable": true
+    "ModeName": "OS"
   },
   {
     "Name": "OS Medium",
     "Description": "Onslaught Medium",
     "PlaylistName": "OS_Medium",
-    "ModeName": "OS",
-    "IsAvailable": true
+    "ModeName": "OS"
   },
   {
     "Name": "OS Hard",
     "Description": "Onslaught Hard",
     "PlaylistName": "OS_Hard",
-    "ModeName": "OS",
-    "IsAvailable": true
+    "ModeName": "OS"
   }
 ]
