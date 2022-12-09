@@ -8,7 +8,6 @@
              d:DataContext="{d:DesignInstance Type=import:BLRItem}"
              mc:Ignorable="d"
              MinWidth="285">
-    <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" ToolTip="{Binding Tooltip}" MouseDown="ItemList_MouseDown">
         <Border BorderThickness="1,1,1,1">
             <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="None" Width="256" Height="128" />
         </Border>
