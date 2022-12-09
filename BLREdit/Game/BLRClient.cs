@@ -38,7 +38,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private bool hasBeenValidated = false;
 
-    [JsonIgnore] private BLRServer LocalHost = new BLRServer() { ServerAddress = "localhost", Port=7777, ServerName="LocalHost" };
+    [JsonIgnore] private BLRServer LocalHost = new BLRServer() { ServerAddress = "localhost", Port=7777 };
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(ClientHash, out string version)) { return version; } else { return "Unknown"; } } }

@@ -5,6 +5,7 @@ using BLREdit.UI;
 using BLREdit.UI.Windows;
 
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
@@ -32,8 +33,6 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
-    [JsonIgnore] public string PingDisplay { get { if (IsOnline) { return "Online"; } else { return "Offline"; } } }
-    [JsonIgnore] public bool IsOnline { get { return ((ServerInfo?.IsOnline ?? false) || (MagiInfo?.IsOnline ?? false)); } }
 
     private readonly UIBool isPinging = new(false);
     [JsonIgnore] public UIBool IsPinging { get { return isPinging; } }
@@ -41,11 +40,10 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public MagiCowServerInfo MagiInfo { get; private set; } = new();
     [JsonIgnore] public ServerUtilsInfo ServerInfo { get; private set; } = new();
 
-    [JsonIgnore] public string DisplayName { get { if (!(ServerInfo?.IsOnline ?? false)) { return ServerAddress; } else { if (!string.IsNullOrEmpty(ServerInfo.ServerName)) { return ServerInfo.ServerName; } else { return ServerAddress; } } } }
+    [JsonIgnore] public string ServerDescription { get { return GetServerDescription(); } }
+    [JsonIgnore] public string MapImage { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.BLRMap.SquareImage; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.BLRMap.SquareImage; } else { return $"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png"; } } }
+    [JsonIgnore] public ObservableCollection<string> PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
 
-
-    [JsonIgnore] private string serverName;
-    public string ServerName { get { return serverName; } set { serverName = value; OnPropertyChanged(); } }
     public string ServerAddress { get; set; } = "localhost";
     [JsonIgnore] private ushort port = 7777;
     public ushort Port { get { return port; } set { port = value; OnPropertyChanged(); } }
@@ -80,16 +78,29 @@ public sealed class BLRServer : INotifyPropertyChanged
         }
     }
 
+    private string GetServerDescription()
+    {
+        string desc;
+        if (ServerInfo?.IsOnline ?? false)
+        {
+            desc = $"{ServerInfo.ServerName}\n{ServerInfo.GetTimeDisplay()}\nMVP: {ServerInfo.GetScoreDisplay()}\n{ServerInfo.GameModeFullName}/{ServerInfo.Playlist}\n{ServerInfo.BLRMap.DisplayName}";
+        }
+        else if (MagiInfo?.IsOnline ?? false)
+        {
+            desc = $"{MagiInfo.ServerName}\n{MagiInfo.GameMode}\n{MagiInfo.BLRMap.DisplayName}";
+        }
+        else
+        {
+            desc = $"{ServerAddress}\n{ServerInfo.BLRMap.DisplayName}";
+        }
+        return desc;
+    }
+
     public void RefreshInfo()
     {
-        OnPropertyChanged(nameof(MagiInfo));
-
-        OnPropertyChanged(nameof(ServerInfo));
-        OnPropertyChanged(nameof(ServerInfo.TeamList));
-
-        OnPropertyChanged(nameof(IsOnline));
-        OnPropertyChanged(nameof(DisplayName));
-        OnPropertyChanged(nameof(PingDisplay));
+        OnPropertyChanged(nameof(ServerDescription));
+        OnPropertyChanged(nameof(MapImage));
+        OnPropertyChanged(nameof(PlayerList));
     }
 
     public override bool Equals(object obj)
@@ -134,7 +145,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     {
         var window = new BLRServerWindow(this);
         window.ShowDialog();
-        OnPropertyChanged(nameof(DisplayName));
+        RefreshInfo();
     }
 
     private ICommand editServerCommand;

@@ -43,8 +43,7 @@ public sealed class MagiCowClient
                 { fail = "Not a valid Json!"; }
             }
         }
-        catch(Exception error) { LoggingSystem.Log($"[Server]({server}): {error}"); }
-        if (info is null) { LoggingSystem.Log($"[Server]({server}): failed to get Server Info! {fail}"); }
+        catch(Exception error) { LoggingSystem.Log($"[Server]({server}): {error}\n{fail}"); }
         return info;
     }
 }

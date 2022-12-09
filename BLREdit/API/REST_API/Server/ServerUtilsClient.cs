@@ -43,8 +43,7 @@ public sealed class ServerUtilsClient
                 { fail = "Not a valid Json!"; }
             }
         }
-        catch (Exception error) { LoggingSystem.Log($"[Server]({server.ServerAddress}): {error}"); }
-        if (info is null) { LoggingSystem.Log($"[Server]({server.ServerAddress}): failed to get Server Info! {fail}"); return new ServerUtilsInfo(); }
+        catch (Exception error) { LoggingSystem.Log($"[Server]({server.ServerAddress}): {error}\n{fail}"); }
         return info;
     }
 }
