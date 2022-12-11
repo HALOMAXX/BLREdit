@@ -98,59 +98,37 @@ namespace BLREdit.UI.Windows
 
         private static int NumberKeys(System.Windows.Input.KeyEventArgs e)
         {
-            switch (e.Key)
+            return e.Key switch
             {
-                case Key.D0:
-                    return 0;
-                case Key.D1:
-                    return 1;
-                case Key.D2:
-                    return 2;
-                case Key.D3:
-                    return 3;
-                case Key.D4:
-                    return 4;
-                case Key.D5:
-                    return 5;
-                case Key.D6:
-                    return 6;
-                case Key.D7:
-                    return 7;
-                case Key.D8:
-                    return 8;
-                case Key.D9:
-                    return 9;
-                default:
-                    return -1;
-            }
+                Key.D0 => 0,
+                Key.D1 => 1,
+                Key.D2 => 2,
+                Key.D3 => 3,
+                Key.D4 => 4,
+                Key.D5 => 5,
+                Key.D6 => 6,
+                Key.D7 => 7,
+                Key.D8 => 8,
+                Key.D9 => 9,
+                _ => -1,
+            };
         }
         private static int NumPadKeys(System.Windows.Input.KeyEventArgs e)
         {
-            switch (e.Key)
+            return e.Key switch
             {
-                case Key.NumPad0:
-                    return 0;
-                case Key.NumPad1:
-                    return 1;
-                case Key.NumPad2:
-                    return 2;
-                case Key.NumPad3:
-                    return 3;
-                case Key.NumPad4:
-                    return 4;
-                case Key.NumPad5:
-                    return 5;
-                case Key.NumPad6:
-                    return 6;
-                case Key.NumPad7:
-                    return 7;
-                case Key.NumPad8:
-                    return 8;
-                case Key.NumPad9:
-                    return 9;
-                default:
-                    return -1;
-            }
+                Key.NumPad0 => 0,
+                Key.NumPad1 => 1,
+                Key.NumPad2 => 2,
+                Key.NumPad3 => 3,
+                Key.NumPad4 => 4,
+                Key.NumPad5 => 5,
+                Key.NumPad6 => 6,
+                Key.NumPad7 => 7,
+                Key.NumPad8 => 8,
+                Key.NumPad9 => 9,
+                _ => -1,
+            };
         }
     }
 }

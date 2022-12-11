@@ -38,14 +38,14 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private bool hasBeenValidated = false;
 
-    [JsonIgnore] private BLRServer LocalHost = new BLRServer() { ServerAddress = "localhost", Port=7777 };
+    [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port=7777 };
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(ClientHash, out string version)) { return version; } else { return "Unknown"; } } }
     [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
 
 
-    [JsonIgnore] public BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/UI/Resources/V.png", UriKind.Absolute)); } }
+    [JsonIgnore] public static BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/UI/Resources/V.png", UriKind.Absolute)); } }
     [JsonIgnore] public BitmapImage ClientVersionPart1 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 2) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[1])}.png", UriKind.Absolute)); } return null; } }
     [JsonIgnore] public BitmapImage ClientVersionPart2 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 3) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[2])}.png", UriKind.Absolute)); } return null; } }
     [JsonIgnore] public BitmapImage ClientVersionPart3 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 4) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[3])}.png", UriKind.Absolute)); } return null; } }
@@ -248,7 +248,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     if (name == module.InstallName)
                     { isInstalled = true; break; }
                 }
-                if (!isInstalled) { info.Delete(); }
+                if (!isInstalled && BLREditSettings.Settings.StrictModuleChecks) { info.Delete(); }
             }
         }
 

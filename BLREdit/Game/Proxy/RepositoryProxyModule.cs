@@ -120,7 +120,7 @@ public sealed class RepositoryProxyModule
             if (string.IsNullOrEmpty(dl))
             {
                 LoggingSystem.Log($"No file found in Asset links gonna go down the deep end!");
-                Regex regex = new Regex($@"(\/uploads\/\w+\/{ModuleName}.dll)");
+                Regex regex = new($@"(\/uploads\/\w+\/{ModuleName}.dll)");
                 if (regex.Match(labRelease.description) is Match match)
                 {
                     LoggingSystem.Log($"Found {match.Captures.Count} matches");

@@ -34,10 +34,10 @@ namespace BLREdit.UI.Controls
             set { SetValue(OrientationProperty, value); }
         }
 
-        private static bool ValidateFirstColumn(object o)
-        {
-            return (int)o >= 0;
-        }
+        //private static bool ValidateFirstColumn(object o)
+        //{
+        //    return (int)o >= 0;
+        //}
 
         #region VirtualizingPanel Overrides
 
@@ -146,7 +146,7 @@ namespace BLREdit.UI.Controls
 
         private void UpdateComputedValues()
         {
-            Size childSize = new Size(0,0);
+            Size childSize = new(0,0);
             if (base.InternalChildren.Count > 0)
             {
                 foreach (UIElement child in base.InternalChildren)
@@ -172,7 +172,7 @@ namespace BLREdit.UI.Controls
             return;
         }
 
-        private Size MeasureExtent(Size availableSize, int itemsCount)
+        private Size MeasureExtent(int itemsCount)
         {
             Size childSize = _itemSize;
 
@@ -183,7 +183,7 @@ namespace BLREdit.UI.Controls
                 var sizeWidth = rowWidth * Math.Ceiling(((double)itemsCount / _rows));
                 var sizeHeight = childSize.Height * _rows;
 
-                return new Size(sizeWidth, sizeHeight);
+                return new(sizeWidth, sizeHeight);
             }
             else
             {
@@ -192,7 +192,7 @@ namespace BLREdit.UI.Controls
                 var sizeWidth = childSize.Width * _columns;
                 var sizeHeight = rowHeight * Math.Ceiling(((double)itemsCount / _columns));
 
-                return new Size(sizeWidth, sizeHeight);
+                return new(sizeWidth, sizeHeight);
             }
         }
 
@@ -359,11 +359,8 @@ namespace BLREdit.UI.Controls
                 return;
 
             _offset.X = offset;
-
-            if (_owner != null)
-            {
-                _owner.InvalidateScrollInfo();
-            }
+            
+            _owner?.InvalidateScrollInfo();
 
             InvalidateMeasure();
         }
@@ -380,10 +377,9 @@ namespace BLREdit.UI.Controls
                 return;
 
             _offset.Y = offset;
-            if (_owner != null)
-            {
-                _owner.InvalidateScrollInfo();
-            }
+
+            _owner?.InvalidateScrollInfo();
+            
 
             InvalidateMeasure();
         }
@@ -393,20 +389,18 @@ namespace BLREdit.UI.Controls
             ItemsControl itemsControl = ItemsControl.GetItemsOwner(this);
             int itemCount = itemsControl.HasItems ? itemsControl.Items.Count : 0;
 
-            Size extent = MeasureExtent(availableSize, itemCount);
+            Size extent = MeasureExtent(itemCount);
             if (extent != _extent)
             {
                 _extent = extent;
                 _offset = new Point();
-                if (_owner != null)
-                    _owner.InvalidateScrollInfo();
+                _owner?.InvalidateScrollInfo();
             }
 
             if (availableSize != _viewport)
             {
                 _viewport = availableSize;
-                if (_owner != null)
-                    _owner.InvalidateScrollInfo();
+                _owner?.InvalidateScrollInfo();
             }
 
         }

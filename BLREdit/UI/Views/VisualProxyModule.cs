@@ -38,7 +38,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     public RepositoryProxyModule RepositoryProxyModule { get; set; }
 
     #region MetaData
-    private Dictionary<string, string> metaData = new();
+    private readonly Dictionary<string, string> metaData = new();
     public Dictionary<string, string> MetaData
     {
         get
@@ -188,13 +188,9 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     public ProxyModule InstalledModule
     { get { return installedModule; } }
 
-    private UIBool installed = new(false);
-    public UIBool Installed
-    { get { return installed; } }
+    public UIBool Installed { get; } = new(false);
 
-    private UIBool upToDate = new(false);
-    public UIBool UpToDate
-    { get { return upToDate; } }
+    public UIBool UpToDate { get; } = new(false);
 
     private void CheckForInstall(BLRClient client)
     {
@@ -215,8 +211,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
     private void CheckForUpdate(BLRClient client)
     {
-        upToDate.SetBool(false);
-        if (client is not null && installed.Is && installedModule is not null)
+        UpToDate.SetBool(false);
+        if (client is not null && Installed.Is && installedModule is not null)
         {
             try
             {

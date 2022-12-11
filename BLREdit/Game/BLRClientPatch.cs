@@ -76,4 +76,9 @@ public sealed class BLRClientPatch
         }
         return sortedPatches;
     }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }

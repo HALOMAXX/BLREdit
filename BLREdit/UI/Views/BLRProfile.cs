@@ -1,27 +1,14 @@
 ﻿using BLREdit.Export;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace BLREdit.UI.Views;
 
-public sealed class BLRProfile : INotifyPropertyChanged
+public sealed class BLRProfile
 {
-    #region Event
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
-    #endregion Event
+    public BLRLoadout Loadout1 { get; } = new();
+    public BLRLoadout Loadout2 { get; } = new();
+    public BLRLoadout Loadout3 { get; } = new();
 
-    private BLRLoadout loadout1 = new();
-    public BLRLoadout Loadout1 { get { return loadout1; } }
-
-    private BLRLoadout loadout2 = new();
-    public BLRLoadout Loadout2 { get { return loadout2; } }
-    
-    private BLRLoadout loadout3 = new();
-    public BLRLoadout Loadout3 { get { return loadout3; } }
-
-    public void UpdateSearchAndFilter()
+    public static void UpdateSearchAndFilter()
     {
         MainWindow.Self.ApplySearchAndFilter();
     }
@@ -30,15 +17,15 @@ public sealed class BLRProfile : INotifyPropertyChanged
     public void LoadMagicCowsProfile(MagiCowsProfile profile)
     {
         internalProfile = profile;
-        loadout1.LoadMagicCowsLoadout(internalProfile.Loadout1);
-        loadout2.LoadMagicCowsLoadout(internalProfile.Loadout2);
-        loadout3.LoadMagicCowsLoadout(internalProfile.Loadout3);
+        Loadout1.LoadMagicCowsLoadout(internalProfile.Loadout1);
+        Loadout2.LoadMagicCowsLoadout(internalProfile.Loadout2);
+        Loadout3.LoadMagicCowsLoadout(internalProfile.Loadout3);
     }
 
     public void UpdateMagicCowsProfile()
     {
-        loadout1.UpdateMagicCowsLoadout();
-        loadout2.UpdateMagicCowsLoadout();
-        loadout3.UpdateMagicCowsLoadout();
+        Loadout1.UpdateMagicCowsLoadout();
+        Loadout2.UpdateMagicCowsLoadout();
+        Loadout3.UpdateMagicCowsLoadout();
     }
 }

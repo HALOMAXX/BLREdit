@@ -9,8 +9,8 @@ namespace BLREdit.API.REST_API;
 
 public sealed class RESTAPIClient
 {
-    RepositoryProvider API_Provider;
-    string BaseAddress = "";
+    readonly RepositoryProvider API_Provider;
+    readonly string BaseAddress = "";
 
     readonly Dictionary<string, object> RequestCache = new();
 

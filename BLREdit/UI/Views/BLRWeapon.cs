@@ -150,35 +150,23 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
     }
 
-    private static string GetSecondayScopeShotgun(string secondaryName)
-    {
-        switch (secondaryName)
-        {
-            case "Shotgun":
-            case "Shotgun AR-k":
-                return " Shotgun";
-            default:
-                return "";
-        }
-    }
+    //private static string GetSecondayScopeShotgun(string secondaryName)
+    //{
+    //    return secondaryName switch
+    //    {
+    //        "Shotgun" or "Shotgun AR-k" => " Shotgun",
+    //        _ => "",
+    //    };
+    //}
 
-    private static string GetSecondayScopePistol(string secondaryName)
-    {
-        switch (secondaryName)
-        {
-            case "Breech Loaded Pistol":
-            case "Snub 260":
-            case "Heavy Pistol":
-            case "Light Pistol":
-            case "Burstfire Pistol":
-            case "Prestige Light Pistol":
-            case "Machine Pistol":
-            case "Revolver":
-                return " Pistol";
-            default:
-                return "";
-        }
-    }
+    //private static string GetSecondayScopePistol(string secondaryName)
+    //{
+    //    return secondaryName switch
+    //    {
+    //        "Breech Loaded Pistol" or "Snub 260" or "Heavy Pistol" or "Light Pistol" or "Burstfire Pistol" or "Prestige Light Pistol" or "Machine Pistol" or "Revolver" => " Pistol",
+    //        _ => "",
+    //    };
+    //}
 
     private bool IsPistol()
     {

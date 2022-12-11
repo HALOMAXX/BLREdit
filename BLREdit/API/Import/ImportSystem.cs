@@ -253,45 +253,37 @@ public static class ImportSystem
                         string desc = "";
                         double value = 0;
 
-                        bool isPatch = false;
-
                         switch (item.Name)
                         {
                             case "Incendiary Protection Gear":
                                 prop = LanguageKeys.INCENDIARY_PROTECTION;
                                 desc = LanguageSet.GetWord(LanguageKeys.INCENDIARY_PROTECTION) + ':';
                                 value = IncendiaryProtection;
-                                isPatch = true;
                                 break;
                             case "Toxic Protection Gear":
                                 prop = LanguageKeys.TOXIC_PROTECTION;
                                 desc = LanguageSet.GetWord(LanguageKeys.TOXIC_PROTECTION) + ':';
                                 value = ToxicProtection;
-                                isPatch = true;
                                 break;
                             case "Explosive Protection Gear":
                                 prop = LanguageKeys.EXPLOSIVE_PROTECTION;
                                 desc = LanguageSet.GetWord(LanguageKeys.EXPLOSIVE_PROTECTION) + ':';
                                 value = ExplosiveProtection;
-                                isPatch = true;
                                 break;
                             case "Electro Protection Gear":
                                 prop = LanguageKeys.ELECTRO_PROTECTION;
                                 desc = LanguageSet.GetWord(LanguageKeys.ELECTRO_PROTECTION) + ':';
                                 value = ElectroProtection;
-                                isPatch = true;
                                 break;
                             case "Melee Protection Gear":
                                 prop = LanguageKeys.MELEE_PROTECTION;
                                 desc = LanguageSet.GetWord(LanguageKeys.MELEE_PROTECTION) + ':';
                                 value = MeleeProtection;
-                                isPatch = true;
                                 break;
                             case "Infrared Protection Gear":
                                 prop = LanguageKeys.INFRARED_PROTECTION;
                                 desc = LanguageSet.GetWord(LanguageKeys.INFRARED_PROTECTION) + ':';
                                 value = InfraredProtection;
-                                isPatch = true;
                                 break;
                         }
                         item.DisplayStat1 = FormatDisplayStat(prop, desc, value, StatsEnum.Normal, "0", "%");

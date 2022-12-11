@@ -6,9 +6,6 @@ using BLREdit.Game.Proxy;
 using BLREdit.Import;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
-
-using PeNet.Asn1;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,13 +14,13 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace BLREdit;
-
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>

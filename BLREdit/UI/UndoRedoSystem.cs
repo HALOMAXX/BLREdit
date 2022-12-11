@@ -13,7 +13,7 @@ public static class UndoRedoSystem
     private static readonly Stack<UndoRedoAction> UndoStack = new();
     private static readonly Stack<UndoRedoAction> RedoStack = new();
     private static UndoRedoAction CurrentAction = new();
-    private static List<SubUndoRedoAction> AfterActions = new();
+    private static readonly List<SubUndoRedoAction> AfterActions = new();
     public static bool BlockEvent { get; set; } = false;
     public static bool BlockUpdate { get; set; } = false;
 

@@ -299,32 +299,20 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     private static string GetSecondayScopePistol(string secondaryName)
     {
-        switch (secondaryName)
+        return secondaryName switch
         {
-            case "Breech Loaded Pistol":
-            case "Snub 260":
-            case "Heavy Pistol":
-            case "Light Pistol":
-            case "Burstfire Pistol":
-            case "Prestige Light Pistol":
-            case "Machine Pistol":
-            case "Revolver":
-                return " Pistol";
-            default:
-                return "";
-        }
+            "Breech Loaded Pistol" or "Snub 260" or "Heavy Pistol" or "Light Pistol" or "Burstfire Pistol" or "Prestige Light Pistol" or "Machine Pistol" or "Revolver" => " Pistol",
+            _ => "",
+        };
     }
 
     private static string GetSecondayScopeShotgun(string secondaryName)
     {
-        switch (secondaryName)
+        return secondaryName switch
         {
-            case "Shotgun":
-            case "Shotgun AR-k":
-                return " Shotgun";
-            default:
-                return "";
-        }
+            "Shotgun" or "Shotgun AR-k" => " Shotgun",
+            _ => "",
+        };
     }
 
     public void RemoveCrosshair()
@@ -386,14 +374,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.SECONDARY_CATEGORY:
-                case ImportSystem.PRIMARY_CATEGORY:
-                    return WeaponStats.accuracy;
-                default:
-                    return WeaponModifiers?.accuracy ?? 0;
-            }
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WeaponStats.accuracy,
+                _ => WeaponModifiers?.accuracy ?? 0,
+            };
         }
     }
     [JsonIgnore]
@@ -401,14 +386,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.SECONDARY_CATEGORY:
-                case ImportSystem.PRIMARY_CATEGORY:
-                    return BLRWeapon.CalculateSpread(this, 0, 0).ZoomSpread;
-                default:
-                    return 0;
-            }
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0).ZoomSpread,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -416,16 +398,12 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.SECONDARY_CATEGORY:
-                case ImportSystem.PRIMARY_CATEGORY:
-                    return WikiStats?.ammoMag ?? 0;
-                case ImportSystem.MAGAZINES_CATEGORY:
-                    return WeaponModifiers.ammo;
-                default:
-                    return 0;
-            }
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WikiStats?.ammoMag ?? 0,
+                ImportSystem.MAGAZINES_CATEGORY => WeaponModifiers.ammo,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -433,14 +411,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.PRIMARY_CATEGORY:
-                case ImportSystem.SECONDARY_CATEGORY:
-                    return BLRWeapon.CalculateDamage(this, 0).DamageIdeal;
-                default:
-                    return WeaponModifiers?.damage ?? 0;
-            }
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateDamage(this, 0).DamageIdeal,
+                _ => WeaponModifiers?.damage ?? 0,
+            };
         }
     }
 
@@ -449,14 +424,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                case ImportSystem.ATTACHMENTS_CATEGORY:
-                    return PawnModifiers?.ElectroProtection ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY or ImportSystem.ATTACHMENTS_CATEGORY => PawnModifiers?.ElectroProtection ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -464,14 +436,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                case ImportSystem.ATTACHMENTS_CATEGORY:
-                    return PawnModifiers?.ExplosiveProtection ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY or ImportSystem.ATTACHMENTS_CATEGORY => PawnModifiers?.ExplosiveProtection ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -479,14 +448,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.UPPER_BODIES_CATEGORY:
-                case ImportSystem.LOWER_BODIES_CATEGORY:
-                    return PawnModifiers?.GearSlots ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.UPPER_BODIES_CATEGORY or ImportSystem.LOWER_BODIES_CATEGORY => PawnModifiers?.GearSlots ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -494,15 +460,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                case ImportSystem.UPPER_BODIES_CATEGORY:
-                case ImportSystem.LOWER_BODIES_CATEGORY:
-                    return PawnModifiers?.Health ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY or ImportSystem.UPPER_BODIES_CATEGORY or ImportSystem.LOWER_BODIES_CATEGORY => PawnModifiers?.Health ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -510,13 +472,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                    return PawnModifiers?.HelmetDamageReduction ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY => PawnModifiers?.HelmetDamageReduction ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -524,14 +484,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.PRIMARY_CATEGORY:
-                case ImportSystem.SECONDARY_CATEGORY:
-                    return BLRWeapon.CalculateSpread(this, 0, 0).HipSpread;
-                default:
-                    return 0;
-            }
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0).HipSpread,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -539,13 +496,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                    return PawnModifiers?.HRVDuration ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY => PawnModifiers?.HRVDuration ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -553,13 +508,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                    return PawnModifiers?.HRVRechargeRate ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY => PawnModifiers?.HRVRechargeRate ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -567,14 +520,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                case ImportSystem.ATTACHMENTS_CATEGORY:
-                    return PawnModifiers?.IncendiaryProtection ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY or ImportSystem.ATTACHMENTS_CATEGORY => PawnModifiers?.IncendiaryProtection ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -582,14 +532,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                case ImportSystem.ATTACHMENTS_CATEGORY:
-                    return PawnModifiers?.InfraredProtection ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY or ImportSystem.ATTACHMENTS_CATEGORY => PawnModifiers?.InfraredProtection ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -618,14 +565,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                case ImportSystem.ATTACHMENTS_CATEGORY:
-                    return PawnModifiers?.MeleeProtection ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY or ImportSystem.ATTACHMENTS_CATEGORY => PawnModifiers?.MeleeProtection ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -633,14 +577,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.PRIMARY_CATEGORY:
-                case ImportSystem.SECONDARY_CATEGORY:
-                    return BLRWeapon.CalculateSpread(this, 0, 0).MovmentSpread;
-                default:
-                    return 0;
-            }
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0).MovmentSpread,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -648,14 +589,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.PRIMARY_CATEGORY:
-                case ImportSystem.SECONDARY_CATEGORY:
-                    return WeaponStats?.range ?? 0;
-                default:
-                    return WeaponModifiers?.range ?? 0;
-            }
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => WeaponStats?.range ?? 0,
+                _ => WeaponModifiers?.range ?? 0,
+            };
         }
     }
     [JsonIgnore]
@@ -663,14 +601,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.PRIMARY_CATEGORY:
-                case ImportSystem.SECONDARY_CATEGORY:
-                    return BLRWeapon.CalculateRecoil(this, 0).RecoilHip;
-                default:
-                    return WeaponModifiers?.recoil ?? 0;
-            }
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateRecoil(this, 0).RecoilHip,
+                _ => WeaponModifiers?.recoil ?? 0,
+            };
         }
     }
     [JsonIgnore]
@@ -678,19 +613,12 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                case ImportSystem.UPPER_BODIES_CATEGORY:
-                case ImportSystem.LOWER_BODIES_CATEGORY:
-                    return PawnModifiers?.MovementSpeed ?? 0;
-                case ImportSystem.BARRELS_CATEGORY:
-                case ImportSystem.STOCKS_CATEGORY:
-                case ImportSystem.MUZZELS_CATEGORY:
-                    return WeaponModifiers?.movementSpeed ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY or ImportSystem.UPPER_BODIES_CATEGORY or ImportSystem.LOWER_BODIES_CATEGORY => PawnModifiers?.MovementSpeed ?? 0,
+                ImportSystem.BARRELS_CATEGORY or ImportSystem.STOCKS_CATEGORY or ImportSystem.MUZZELS_CATEGORY => WeaponModifiers?.movementSpeed ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -698,13 +626,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.SCOPES_CATEGORY:
-                    return WikiStats?.scopeInTime ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.SCOPES_CATEGORY => WikiStats?.scopeInTime ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -712,14 +638,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.HELMETS_CATEGORY:
-                case ImportSystem.ATTACHMENTS_CATEGORY:
-                    return PawnModifiers?.ToxicProtection ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.HELMETS_CATEGORY or ImportSystem.ATTACHMENTS_CATEGORY => PawnModifiers?.ToxicProtection ?? 0,
+                _ => 0,
+            };
         }
     }
     [JsonIgnore]
@@ -727,13 +650,11 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            switch (Category)
+            return Category switch
             {
-                case ImportSystem.SCOPES_CATEGORY:
-                    return WikiStats?.zoom ?? 0;
-                default:
-                    return 0;
-            }
+                ImportSystem.SCOPES_CATEGORY => WikiStats?.zoom ?? 0,
+                _ => 0,
+            };
         }
     }
 

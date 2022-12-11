@@ -30,7 +30,7 @@ namespace BLREdit.UI;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public sealed partial class MainWindow : Window, INotifyPropertyChanged
+public sealed partial class MainWindow : Window
 {
     public static readonly BLRClientWindow ClientWindow = new();
 
@@ -70,14 +70,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     public static ObservableCollection<BLRServer> ServerList { get; set; }
 
     public static MainWindow Self { get; private set; } = null;
-
-    //public static BLREditSettings Settings { get { return BLREditSettings.Settings; } }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 
     //TODO Add Missing Portal Gun(Orange) Icon Tag/Hanger
     public MainWindow()
@@ -593,10 +585,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    private string CurrentListType;
     public void SetItemList(string Type)
     {
-        CurrentListType = Type;
         var list = ImportSystem.GetItemListOfType(Type);
         if (list.Count > 0)
         {
@@ -919,7 +909,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
-    private Grid CreateAlertGrid(string Alert)
+    private static Grid CreateAlertGrid(string Alert)
     {
         TextBox alertText = new() { Text = Alert, TextAlignment = TextAlignment.Center, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0)), IsReadOnly = true, FontSize = 26 };
         Grid alertGrid = new() { Background = new SolidColorBrush(Color.FromArgb(159, 0, 0, 0)), HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Center, Width = 400 };
