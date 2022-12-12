@@ -13,7 +13,8 @@ public sealed class ProxyModule
     public static void Save() { IOResources.SerializeFile($"ModuleCache.json", CachedModules); }
     public static ObservableCollection<ProxyModule> CachedModules { get; set; } = IOResources.DeserializeFile<ObservableCollection<ProxyModule>>($"ModuleCache.json") ?? new();
 
-    [JsonIgnore] public string InstallName { get { return $"{ModuleName}-{RepoName}"; } }
+    private string installName = null;
+    public string InstallName { get { installName ??= $"{ModuleName}-{RepoName}"; return installName; } set { installName = value; } }
     public string RepoName { get; set; } = "";
     public string AuthorName { get; set; } = "SuperEwald";
     public string ModuleName { get; set; } = "LoadoutManager";
@@ -23,6 +24,7 @@ public sealed class ProxyModule
     public bool Server { get; set; } = true;
 
     public ProxyModule() { }
+    public ProxyModule(string customInstallName) { Client = true; Server = true; installName = customInstallName; }
     public ProxyModule(GitHubRelease release, string moduleName, string owner, string repo, bool client, bool server)
     {
         RepoName = $"{owner}/{repo}".Replace('/', '-');

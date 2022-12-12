@@ -82,6 +82,8 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public ObservableCollection<ProxyModule> InstalledModules { get; set; } = new();
 
+    public ObservableCollection<ProxyModule> CustomModules { get; set; } = new();
+
     [JsonIgnore] public static VisualProxyModule[] AvailabeModules { get { return App.AvailableProxyModules; } }
 
     public BLRClient()
@@ -230,11 +232,10 @@ public sealed class BLRClient : INotifyPropertyChanged
     public void ValidateModules()
     {
         var count = InstalledModules.Count;
-
-        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Length} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}");
+        var customCount = CustomModules.Count;
+        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Length} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}");
         if (App.AvailableProxyModules.Length > 0 && BLREditSettings.Settings.StrictModuleChecks)
         { InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); }
-        LoggingSystem.Log($"Validating Modules({count}/{InstalledModules.Count}) of {this}");
 
         foreach (var file in Directory.EnumerateFiles(ModulesFolder))
         { 
@@ -248,25 +249,53 @@ public sealed class BLRClient : INotifyPropertyChanged
                     if (name == module.InstallName)
                     { isInstalled = true; break; }
                 }
+                if (BLREditSettings.Settings.AllowCustomModules && !isInstalled)
+                {
+                    bool isNew = true;
+                    foreach (var module in CustomModules)
+                    {
+                        if (name == module.InstallName)
+                        { isInstalled = true; isNew = false; break; }
+                    }
+                    if (isNew)
+                    { CustomModules.Add(new(name)); isInstalled = true; }
+                }
                 if (!isInstalled && BLREditSettings.Settings.StrictModuleChecks) { info.Delete(); }
             }
         }
 
+        LoggingSystem.Log($"Validating Modules Installed({count}/{InstalledModules.Count}) and Custom({customCount}/{CustomModules.Count}) of {this}");
+
         ProxyConfig config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}\\default.json") ?? new();
         config.Proxy.Modules.Server.Clear();
         config.Proxy.Modules.Client.Clear();
+        LoggingSystem.Log($"Applying Installed Modules:");
         foreach (var module in InstalledModules)
         {
-            LoggingSystem.Log($"\t{module.InstallName}:");
-            LoggingSystem.Log($"\t\tClient:{module.Client}");
-            LoggingSystem.Log($"\t\tServer:{module.Server}");
+            SetModuleInProxyConfig(config, module);
+        }
 
-            if(module.Client) config.Proxy.Modules.Client.Add(module.InstallName);
-            if(module.Server) config.Proxy.Modules.Server.Add(module.InstallName);
+        if (BLREditSettings.Settings.AllowCustomModules)
+        {
+            LoggingSystem.Log($"Applying Custom Modules:");
+            foreach (var module in CustomModules)
+            {
+                SetModuleInProxyConfig(config, module);
+            }
         }
 
         IOResources.SerializeFile($"{ConfigFolder}\\default.json", config);
         LoggingSystem.Log($"Finished Validating Modules of {this}");
+    }
+
+    private static void SetModuleInProxyConfig(ProxyConfig config, ProxyModule module)
+    {
+        LoggingSystem.Log($"\t{module.InstallName}:");
+        LoggingSystem.Log($"\t\tClient:{module.Client}");
+        LoggingSystem.Log($"\t\tServer:{module.Server}");
+
+        if (module.Client) config.Proxy.Modules.Client.Add(module.InstallName);
+        if (module.Server) config.Proxy.Modules.Server.Add(module.InstallName);
     }
 
     public static bool ValidateClientHash(string currentHash, string fileLocation, out string newHash)

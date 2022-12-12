@@ -41,6 +41,9 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     private bool strictModuleChecks = true;
     public bool StrictModuleChecks { get { return strictModuleChecks; } set { strictModuleChecks = value; OnPropertyChanged(); } }
 
+    private bool allowCustomModules = false;
+    public bool AllowCustomModules { get { return allowCustomModules; } set { allowCustomModules = value; OnPropertyChanged(); } }
+
     private int playerCount = 16;
     public int PlayerCount { get { return playerCount; } set { playerCount = value; OnPropertyChanged(); } }
 
