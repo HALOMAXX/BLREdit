@@ -38,7 +38,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private bool hasBeenValidated = false;
 
-    [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port=7777 };
+    [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port = 7777 };
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(ClientHash, out string version)) { return version; } else { return "Unknown"; } } }
@@ -58,21 +58,21 @@ public sealed class BLRClient : INotifyPropertyChanged
     }
 
     private string patchedHash;
-    public string PatchedHash { 
-        get { return patchedHash; } 
+    public string PatchedHash {
+        get { return patchedHash; }
         set { if (patchedHash != value && !string.IsNullOrEmpty(value)) { patchedHash = value; OnPropertyChanged(); } }
     }
 
     private string originalPath;
-    public string OriginalPath { 
-        get { return originalPath; } 
-        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"not a valid Client Path {value}"); } } 
+    public string OriginalPath {
+        get { return originalPath; }
+        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"not a valid Client Path {value}"); } }
     }
 
     private string patchedPath;
-    public string PatchedPath { 
-        get { return patchedPath; } 
-        set { if (patchedPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { patchedPath = value; Patched.SetBool(true); OnPropertyChanged(); } } 
+    public string PatchedPath {
+        get { return patchedPath; }
+        set { if (patchedPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { patchedPath = value; Patched.SetBool(true); OnPropertyChanged(); } }
     }
 
     public string ConfigFolder { get; set; }
@@ -238,7 +238,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         { InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); }
 
         foreach (var file in Directory.EnumerateFiles(ModulesFolder))
-        { 
+        {
             var info = new FileInfo(file);
             if (info.Extension == ".dll")
             {
@@ -255,14 +255,20 @@ public sealed class BLRClient : INotifyPropertyChanged
                     foreach (var module in CustomModules)
                     {
                         if (name == module.InstallName)
-                        { isInstalled = true; isNew = false; break; }
+                        { isNew = false; module.FileAppearances++; break; }
                     }
                     if (isNew)
-                    { CustomModules.Add(new(name)); isInstalled = true; }
+                    { CustomModules.Add(new(name)); }
                 }
-                //if (!isInstalled && BLREditSettings.Settings.StrictModuleChecks) { info.Delete(); }
             }
         }
+
+        List<ProxyModule> toRemove= new();
+
+        foreach (var module in CustomModules) { if (module.FileAppearances <= 0) { toRemove.Add(module); } }
+
+        foreach (var module in toRemove)
+        { CustomModules.Remove(module); }
 
         LoggingSystem.Log($"Validating Modules Installed({count}/{InstalledModules.Count}) and Custom({customCount}/{CustomModules.Count}) of {this}");
 

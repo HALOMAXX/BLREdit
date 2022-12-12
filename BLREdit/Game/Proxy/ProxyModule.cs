@@ -22,9 +22,10 @@ public sealed class ProxyModule
     public string ReleaseID { get; set; } = string.Empty;
     public bool Client { get; set; } = true;
     public bool Server { get; set; } = true;
+    [JsonIgnore] public int FileAppearances { get; set; } = 0;
 
     public ProxyModule() { }
-    public ProxyModule(string customInstallName) { Client = true; Server = true; installName = customInstallName; }
+    public ProxyModule(string customInstallName) { Client = true; Server = true; FileAppearances = 1; installName = customInstallName; }
     public ProxyModule(GitHubRelease release, string moduleName, string owner, string repo, bool client, bool server)
     {
         RepoName = $"{owner}/{repo}".Replace('/', '-');
