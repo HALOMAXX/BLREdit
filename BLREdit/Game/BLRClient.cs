@@ -260,7 +260,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     if (isNew)
                     { CustomModules.Add(new(name)); isInstalled = true; }
                 }
-                if (!isInstalled && BLREditSettings.Settings.StrictModuleChecks) { info.Delete(); }
+                //if (!isInstalled && BLREditSettings.Settings.StrictModuleChecks) { info.Delete(); }
             }
         }
 
