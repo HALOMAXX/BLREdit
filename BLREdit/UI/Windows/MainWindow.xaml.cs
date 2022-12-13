@@ -143,19 +143,9 @@ public sealed partial class MainWindow : Window
             return;
         }
 
-        LoggingSystem.Log("Loading Client List");
-        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
+        LoggingSystem.Log("Loading Server List");
         UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
-        LoggingSystem.Log("Finished Loading Client List!");
-
-        var task = Task.Run(App.GetAvailableProxyModules);
-        task.Wait();
-        var modules = task.Result;
-        App.AvailableProxyModules = new VisualProxyModule[modules.Length];
-        for (int i = 0; i < modules.Length; i++)
-        {
-            App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
-        }
+        LoggingSystem.Log("Finished Loading Server List!");
 
         App.RuntimeCheck();
 

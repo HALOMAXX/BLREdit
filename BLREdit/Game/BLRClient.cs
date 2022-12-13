@@ -13,6 +13,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Media.Converters;
 using System.Windows.Media.Imaging;
 
 using BLREdit.Export;
@@ -399,7 +400,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
         string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}?SingleMatch";
-        StartProcess(launchArgs);
+        StartProcess(launchArgs, true);
         LaunchClient(new LaunchOptions() { UserName=ExportSystem.ActiveProfile.PlayerName, Server=LocalHost });
     }
 
@@ -408,7 +409,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
         string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
-        StartProcess(launchArgs);
+        StartProcess(launchArgs, true);
     }
 
     public void LaunchClient()
@@ -425,7 +426,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     //Invalidate the Is Valid if new module was inatlled / removed to prevent error when installing a new module after starting the game once
 
-    public void StartProcess(string launchArgs)
+    public void StartProcess(string launchArgs, bool isServer = false)
     {
         if (!hasBeenValidated)
         {
@@ -437,31 +438,9 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             LoggingSystem.Log($"[{this}]: has already been validated!");
         }
+        BLRProcess.CreateProcess(launchArgs, this, isServer);
+    }
 
-        ProcessStartInfo psi = new()
-        {
-            CreateNoWindow = true,
-            UseShellExecute = false,
-            FileName = PatchedPath,
-            Arguments = launchArgs
-        };
-        Process game = new()
-        {
-            EnableRaisingEvents = true,
-            StartInfo = psi
-        };
-        RunningClients.Add(game);
-        game.Exited += ClientExit;
-        game.Start();
-    }
-    private void ClientExit(object sender, EventArgs args)
-    {
-        //TODO Watchdog for server
-        var process = (Process)sender;
-        RunningClients.Remove(process);
-        LoggingSystem.Log($"[{this}]: has Exited with {process.ExitCode}");
-        process.Dispose();
-    }
     #endregion Launch/Exit
 
     private void ModifyClient()

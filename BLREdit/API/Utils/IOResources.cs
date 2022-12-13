@@ -9,11 +9,13 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -97,6 +99,17 @@ public sealed class IOResources
         steampath += "\\steamapps\\";
 
         GetGamePathFromVDF(steampath + "libraryfolders.vdf", GAME_APPID);
+    }
+
+    [DllImport("Kernel32")]
+    public static extern void AllocConsole();
+
+    [DllImport("Kernel32")]
+    public static extern void FreeConsole();
+    public static void SpawnConsole()
+    { 
+        AllocConsole();
+        Trace.Listeners.Add(new ConsoleTraceListener());
     }
 
     private static void GetGamePathFromVDF(string vdfPath, string appID)

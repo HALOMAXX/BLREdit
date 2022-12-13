@@ -4,6 +4,7 @@ using BLREdit.API.Utils;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
+using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
 using System;
@@ -57,6 +58,9 @@ public partial class App : System.Windows.Application
         {
             try
             {
+                IOResources.SpawnConsole();
+                Console.Title = $"[Watchdog(BLREdit:{CurrentVersion})]: Starting!";
+
                 var serverConfig = IOResources.DeserializeFile<ServerLaunchParameters>(configFile);
 
                 var client = UI.MainWindow.GameClients[serverConfig.ClientId];
@@ -79,14 +83,16 @@ public partial class App : System.Windows.Application
                 var playlist = serverConfig.Playlist;
 
                 string launchArgs = $"server ?ServerName=\"{serverName}\"?Port={port}?NumBots={botCount}?MaxPlayers={maxPlayers}?Playlist={playlist}";
-                client.StartProcess(launchArgs);
-
-                Application.Current.Shutdown();
+                client.StartProcess(launchArgs, true);
+                Console.WriteLine("Press Q to Exit");
+                while (Console.ReadKey().Key == ConsoleKey.Q) { }
             }
             catch (Exception error)
             { 
                 LoggingSystem.MessageLog($"failed to start server:\n{error}"); 
             }
+            Application.Current.Shutdown();
+            return;
         }
         if (argDict.TryGetValue("-package", out string _))
         {
@@ -104,6 +110,7 @@ public partial class App : System.Windows.Application
             }
             Application.Current.Shutdown();
         }
+        new MainWindow().Show();
     }
 
     public App()
@@ -116,6 +123,18 @@ public partial class App : System.Windows.Application
         Trace.Listeners.Add(new TextWriterTraceListener(LogFile, "loggingListener"));
         Trace.AutoFlush = true;
         LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+        LoggingSystem.Log("Loading Client List");
+        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
+        LoggingSystem.Log("Finished Loading Client List");
+
+        var task = Task.Run(App.GetAvailableProxyModules);
+        task.Wait();
+        var modules = task.Result;
+        App.AvailableProxyModules = new VisualProxyModule[modules.Length];
+        for (int i = 0; i < modules.Length; i++)
+        {
+            App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
+        }
     }
 
     private static void InitFiles()
