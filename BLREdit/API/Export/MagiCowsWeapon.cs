@@ -38,6 +38,9 @@ public sealed class MagiCowsWeapon
     [JsonIgnore] private int camo = -1;
     public int Camo { get { return camo; } set { if (camo != value) { camo = value; isDirty = true; } } }
 
+    [JsonIgnore] private int skin = -1;
+    public int Skin { get { return skin; } set { if (skin != value) { skin = value; isDirty = true; } } }
+
     [JsonIgnore] private bool isDirty = true;
     [JsonIgnore] public bool IsDirty { get { return (isDirty); } set { isDirty = value; } }
 
@@ -111,6 +114,11 @@ public sealed class MagiCowsWeapon
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, Ammo);
     }
+    public BLRItem GetSkin()
+    {
+        return ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, Skin);
+    }
+
     public BLRItem GetMuzzle()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);

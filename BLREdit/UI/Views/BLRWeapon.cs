@@ -92,6 +92,13 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         get { return ammo; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { ammo = value; ItemChanged(); return; } if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { ApplyCorrectAmmo(); } else { ammo = value; } ItemChanged(); } }
     }
+
+    private BLRItem skin = null;
+    public BLRItem Skin 
+    {
+        get { return skin; }
+        set { if (BLREditSettings.Settings.AdvancedModding.Is) { skin = value; ItemChanged(); return; } if (value is null || reciever is null || skin != value && value.IsValidFor(reciever) && value.Category == ImportSystem.PRIMARY_SKIN_CATEGORY) { skin = value; ItemChanged(); } }
+    }
     #endregion Weapon Parts
 
     //TODO Add Primary weapon skin's
@@ -1477,6 +1484,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         weapon.Tag = Tag?.GetMagicCowsID() ?? 0;
         weapon.Camo = Camo?.GetMagicCowsID() ?? 0;
         weapon.Ammo = Ammo?.GetMagicCowsID() ?? 0;
+        weapon.Skin = Skin?.GetMagicCowsID() ?? 0;
     }
 
     public void LoadMagicCowsWeapon(MagiCowsWeapon Weapon)
@@ -1495,6 +1503,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         ammo = weapon.GetAmmo();
 
+        skin = weapon.GetSkin();
+
         ItemChanged(nameof(Reciever));
         ItemChanged(nameof(Barrel));
         ItemChanged(nameof(Magazine));
@@ -1505,6 +1515,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         ItemChanged(nameof(Tag));
         ItemChanged(nameof(Ammo));
         ItemChanged(nameof(Camo));
+        ItemChanged(nameof(Skin));
         OnPropertyChanged(nameof(ScopePreview));
     }
 

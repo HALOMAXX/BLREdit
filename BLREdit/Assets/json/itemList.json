@@ -34192,4373 +34192,1771 @@
   "primarySkins": [
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "",
+      "Name": "No Weapon Skin",
+      "Tooltip": "",
+      "UID": 0,
+      "LMID": -1
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_AK47_BLRSkullHex_256x128",
       "Name": "AK470 - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10000,
+      "LMID": 0,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_America_256x128",
       "Name": "AK470 - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10001,
+      "LMID": 1,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_02_256x128",
-      "Name": "Test Skin Name 2",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
+      "Name": "AK470 - Green Hex Weapon Skin (Test Skin Name 2)",
       "Tooltip": "Test Skin Desc",
       "UID": 10002,
+      "LMID": 2,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_03_256x128",
-      "Name": "Test Skin Name 3",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
+      "Name": "AK470 - Australian Flag Weapon Skin",
       "Tooltip": "Test Skin Desc",
       "UID": 10003,
+      "LMID": 3,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_04_256x128",
-      "Name": "Test Skin Name 4",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
+      "Name": "AK470 - Malaysan Flag Weapon Skin",
       "Tooltip": "Test Skin Desc",
       "UID": 10004,
+      "LMID": 4,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_05_256x128",
-      "Name": "Test Skin Name 5",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
+      "Name": "AK470 - New Zealand Flag Weapon SKin",
       "Tooltip": "Test Skin Desc",
       "UID": 10005,
+      "LMID": 5,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_06_256x128",
-      "Name": "Test Skin Name 6",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
+      "Name": "AK470 - Singapore Flag Weapon Skin",
       "Tooltip": "Test Skin Desc",
       "UID": 10006,
+      "LMID": 6,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_07_256x128",
-      "Name": "Test Skin Name 7",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
+      "Name": "AK470 - Turkish Flag Weapon Skin",
       "Tooltip": "Test Skin Desc",
       "UID": 10007,
+      "LMID": 7,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_Tiger_01_256x128",
       "Name": "AK470 - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10012,
+      "LMID": 8,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_Tiger_02_256x128",
       "Name": "AK470 - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10072,
+      "LMID": 9,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AK47_Clover_01_256x128",
       "Name": "AK470 - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10073,
+      "LMID": 10,
       "ValidFor": [
         40023
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_AK47_Tiger_03_256x128",
+      "Name": "AK470 - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10072,
+      "LMID": 11,
+      "ValidFor": [
+        40023
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AK47_Tiger_04_256x128",
+      "Name": "AK470 - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10072,
+      "LMID": 12,
+      "ValidFor": [
+        40023
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AK47_Tiger_05_256x128",
+      "Name": "AK470 - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10072,
+      "LMID": 13,
+      "ValidFor": [
+        40023
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AK47_Tiger_06_256x128",
+      "Name": "AK470 - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10072,
+      "LMID": 14,
+      "ValidFor": [
+        40023
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_AR2_BLRSkullHex_256x128",
       "Name": "Heavy Assault Rifle - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10008,
+      "LMID": 15,
       "ValidFor": [
         40017
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR2_America_256x128",
       "Name": "Heavy Assault Rifle - Stars And Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10009,
+      "LMID": 16,
       "ValidFor": [
         40017
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR2_tiger_01_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10014,
+      "LMID": 17,
       "ValidFor": [
         40017
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR2_tiger_02_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10074,
+      "LMID": 18,
       "ValidFor": [
         40017
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR2_Clover_01_256x128",
       "Name": "Heavy Assault Rifle - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10075,
+      "LMID": 19,
       "ValidFor": [
         40017
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_AR2_tiger_03_256x128",
+      "Name": "Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10074,
+      "LMID": 20,
+      "ValidFor": [
+        40017
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR2_tiger_04_256x128",
+      "Name": "Heavy Assault Rifle - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10074,
+      "LMID": 21,
+      "ValidFor": [
+        40017
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR2_tiger_05_256x128",
+      "Name": "Heavy Assault Rifle - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10074,
+      "LMID": 22,
+      "ValidFor": [
+        40017
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR2_tiger_06_256x128",
+      "Name": "Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10074,
+      "LMID": 23,
+      "ValidFor": [
+        40017
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_AR3_BLRSkullHex_256x128",
       "Name": "Tactical Assault Rifle - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10017,
+      "LMID": 24,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_America_256x128",
       "Name": "Tactical Assault Rifle - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10018,
+      "LMID": 25,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_Japan_256x128",
       "Name": "Tactical Assault Rifle - Japanese Flag Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10019,
+      "LMID": 26,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_Australia_256x128",
       "Name": "Tactical Assault Rifle - Australian Flag Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10020,
+      "LMID": 27,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_Malaysia_256x128",
       "Name": "Tactical Assault Rifle - Malaysian Flag Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10021,
+      "LMID": 28,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_NewZealand_256x128",
       "Name": "Tactical Assault Rifle - New Zealand Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10022,
+      "LMID": 29,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_Singapore_256x128",
       "Name": "Tactical Assault Rifle - Singapore Flag Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10023,
+      "LMID": 30,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_Turkey_256x128",
       "Name": "Tactical Assault Rifle - Turkish Flag Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10024,
+      "LMID": 31,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_MLG_256x128",
       "Name": "Tactical Assault Rifle - MLG TourNament Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10025,
+      "LMID": 32,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_tiger_01_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10057,
+      "LMID": 36,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_tiger_02_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10076,
+      "LMID": 37,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR3_Clover_01_256x128",
       "Name": "Tactical Assault Rifle - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom receiver skin.",
       "UID": 10077,
+      "LMID": 38,
       "ValidFor": [
         40025
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_AR3_tiger_03_256x128",
+      "Name": "Tactical Assault Rifle - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom receiver skin.",
+      "UID": 10076,
+      "LMID": 39,
+      "ValidFor": [
+        40025
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR3_tiger_04_256x128",
+      "Name": "Tactical Assault Rifle - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom receiver skin.",
+      "UID": 10076,
+      "LMID": 40,
+      "ValidFor": [
+        40025
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR3_tiger_05_256x128",
+      "Name": "Tactical Assault Rifle - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom receiver skin.",
+      "UID": 10076,
+      "LMID": 41,
+      "ValidFor": [
+        40025
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR3_tiger_06_256x128",
+      "Name": "Tactical Assault Rifle - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom receiver skin.",
+      "UID": 10076,
+      "LMID": 42,
+      "ValidFor": [
+        40025
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_AssultRifle_Vet_256x128",
       "Name": "Assault Rifle - The Droughtbreaker Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "The horrors of the drought ravaged my inventory.\nEarned by those who lost the most items during the Parity Patch upgrade.",
       "UID": 10029,
+      "LMID": 43,
       "ValidFor": [
         40003
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR_BLRSkullHex_256x128",
       "Name": "Assault Rifle - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10056,
+      "LMID": 44,
       "ValidFor": [
         40003
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR_America_256x128",
       "Name": "Assault Rifle - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10030,
+      "LMID": 45,
       "ValidFor": [
         40003
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_AR_MLG_256x128",
+      "Name": "Assault Rifle - Broken MLG Tournament Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10030,
+      "LMID": 46,
+      "ValidFor": [
+        40003
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_AR_Tiger_01_256x128",
       "Name": "Assault Rifle - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10013,
+      "LMID": 47,
       "ValidFor": [
         40003
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR_Tiger_02_256x128",
       "Name": "Assault Rifle - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10078,
+      "LMID": 48,
       "ValidFor": [
         40003
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_AR_Clover_01_256x128",
       "Name": "Assault Rifle - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10079,
+      "LMID": 49,
       "ValidFor": [
         40003
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_AR_Tiger_03_256x128",
+      "Name": "Assault Rifle - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10078,
+      "LMID": 50,
+      "ValidFor": [
+        40003
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR_Tiger_04_256x128",
+      "Name": "Assault Rifle - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10078,
+      "LMID": 51,
+      "ValidFor": [
+        40003
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR_Tiger_05_256x128",
+      "Name": "Assault Rifle - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10078,
+      "LMID": 52,
+      "ValidFor": [
+        40003
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_AR_Tiger_06_256x128",
+      "Name": "Assault Rifle - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10078,
+      "LMID": 53,
+      "ValidFor": [
+        40003
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_BKT_BLRSkullHex_256x128",
       "Name": "Light Machine Gun - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10032,
+      "LMID": 54,
       "ValidFor": [
         40011
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BKT_America_256x128",
       "Name": "Light Machine Gun - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10033,
+      "LMID": 55,
       "ValidFor": [
         40011
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BKT_tiger_01_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10058,
+      "LMID": 56,
       "ValidFor": [
         40011
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BKT_tiger_02_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10080,
+      "LMID": 57,
       "ValidFor": [
         40011
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BKT_Clover_01_256x128",
       "Name": "Light Machine Gun - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10081,
+      "LMID": 58,
       "ValidFor": [
         40011
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_BKT_tiger_03_256x128",
+      "Name": "Light Machine Gun - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10080,
+      "LMID": 59,
+      "ValidFor": [
+        40011
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BKT_tiger_04_256x128",
+      "Name": "Light Machine Gun - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10080,
+      "LMID": 60,
+      "ValidFor": [
+        40011
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BKT_tiger_05_256x128",
+      "Name": "Light Machine Gun - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10080,
+      "LMID": 61,
+      "ValidFor": [
+        40011
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BKT_tiger_06_256x128",
+      "Name": "Light Machine Gun - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10080,
+      "LMID": 62,
+      "ValidFor": [
+        40011
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_BoltAction_BLRSkullHex_256x128",
       "Name": "Bolt-Action - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10034,
+      "LMID": 63,
       "ValidFor": [
         40007
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BoltAction_America_256x128",
       "Name": "Bolt-Action - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10035,
+      "LMID": 64,
       "ValidFor": [
         40007
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BoltAction_tiger_01_256x128",
       "Name": "Bolt-Action - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10059,
+      "LMID": 65,
       "ValidFor": [
         40007
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BoltAction_tiger_02_256x128",
       "Name": "Bolt-Action - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10082,
+      "LMID": 66,
       "ValidFor": [
         40007
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BoltAction_Clover_01_256x128",
       "Name": "Bolt-Action - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10083,
+      "LMID": 67,
       "ValidFor": [
         40007
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_BoltAction_tiger_03_256x128",
+      "Name": "Bolt-Action - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10082,
+      "LMID": 68,
+      "ValidFor": [
+        40007
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BoltAction_tiger_04_256x128",
+      "Name": "Bolt-Action - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10082,
+      "LMID": 69,
+      "ValidFor": [
+        40007
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BoltAction_tiger_05_256x128",
+      "Name": "Bolt-Action - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10082,
+      "LMID": 70,
+      "ValidFor": [
+        40007
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BoltAction_tiger_06_256x128",
+      "Name": "Bolt-Action - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10082,
+      "LMID": 71,
+      "ValidFor": [
+        40007
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_BP2_BLRSkullHex_256x128",
       "Name": "Bullpup Full Auto - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10036,
+      "LMID": 72,
       "ValidFor": [
         40020
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BP2_America_256x128",
       "Name": "Bullpup Full Auto - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10037,
+      "LMID": 73,
       "ValidFor": [
         40020
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BP2_tiger_01_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10060,
+      "LMID": 74,
       "ValidFor": [
         40020
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BP2_tiger_02_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10084,
+      "LMID": 75,
       "ValidFor": [
         40020
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_BP2_Clover_01_256x128",
       "Name": "Bullpup Full Auto - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10085,
+      "LMID": 76,
       "ValidFor": [
         40020
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_BP2_tiger_03_256x128",
+      "Name": "Bullpup Full Auto - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10084,
+      "LMID": 77,
+      "ValidFor": [
+        40020
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BP2_tiger_04_256x128",
+      "Name": "Bullpup Full Auto - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10084,
+      "LMID": 78,
+      "ValidFor": [
+        40020
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BP2_tiger_05_256x128",
+      "Name": "Bullpup Full Auto - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10084,
+      "LMID": 79,
+      "ValidFor": [
+        40020
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_BP2_tiger_06_256x128",
+      "Name": "Bullpup Full Auto - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10084,
+      "LMID": 80,
+      "ValidFor": [
+        40020
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_Bullpup_BLRSkullHex_256x128",
       "Name": "Burstfire Rifle - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10038,
+      "LMID": 81,
       "ValidFor": [
         40009
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_Bullpup_America_256x128",
       "Name": "Burstfire Rifle - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10039,
+      "LMID": 82,
       "ValidFor": [
         40009
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_Bullpup_tiger_01_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10061,
+      "LMID": 83,
       "ValidFor": [
         40009
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_Bullpup_tiger_02_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10086,
+      "LMID": 84,
       "ValidFor": [
         40009
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_Bullpup_Clover_01_256x128",
       "Name": "Burstfire Rifle - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10200,
+      "LMID": 85,
       "ValidFor": [
         40009
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_Bullpup_tiger_03_256x128",
+      "Name": "Burstfire Rifle - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10086,
+      "LMID": 86,
+      "ValidFor": [
+        40009
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_Bullpup_tiger_04_256x128",
+      "Name": "Burstfire Rifle - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10086,
+      "LMID": 87,
+      "ValidFor": [
+        40009
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_Bullpup_tiger_05_256x128",
+      "Name": "Burstfire Rifle - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10086,
+      "LMID": 88,
+      "ValidFor": [
+        40009
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_Bullpup_tiger_06_256x128",
+      "Name": "Burstfire Rifle - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10086,
+      "LMID": 89,
+      "ValidFor": [
+        40009
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_LMG2_BLRSkullHex_256x128",
       "Name": "LMG Recon - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10040,
+      "LMID": 90,
       "ValidFor": [
         40014
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_LMG2_America_256x128",
       "Name": "LMG Recon - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10041,
+      "LMID": 91,
       "ValidFor": [
         40014
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_LMG2_tiger_01_256x128",
       "Name": "LMG Recon - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10063,
+      "LMID": 92,
       "ValidFor": [
         40014
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_LMG2_tiger_02_256x128",
       "Name": "LMG Recon - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10087,
+      "LMID": 93,
       "ValidFor": [
         40014
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_LMG2_Clover_01_256x128",
       "Name": "LMG Recon - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10088,
+      "LMID": 94,
       "ValidFor": [
         40014
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_LMG2_tiger_03_256x128",
+      "Name": "LMG Recon - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10087,
+      "LMID": 95,
+      "ValidFor": [
+        40014
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_LMG2_tiger_04_256x128",
+      "Name": "LMG Recon - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10087,
+      "LMID": 96,
+      "ValidFor": [
+        40014
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_LMG2_tiger_05_256x128",
+      "Name": "LMG Recon - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10087,
+      "LMID": 97,
+      "ValidFor": [
+        40014
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_LMG2_tiger_06_256x128",
+      "Name": "LMG Recon - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10087,
+      "LMID": 98,
+      "ValidFor": [
+        40014
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_M4_BLRSkullHex_256x128",
       "Name": "M4X - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10042,
+      "LMID": 99,
       "ValidFor": [
         40022
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_M4_America_256x128",
       "Name": "M4X - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10043,
+      "LMID": 100,
       "ValidFor": [
         40022
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_M4_tiger_01_256x128",
       "Name": "M4X - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10064,
+      "LMID": 101,
       "ValidFor": [
         40022
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_M4_tiger_02_256x128",
       "Name": "M4X - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10089,
+      "LMID": 102,
       "ValidFor": [
         40022
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_M4_Clover_01_256x128",
       "Name": "M4X - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10090,
+      "LMID": 103,
       "ValidFor": [
         40022
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_M4_tiger_03_256x128",
+      "Name": "M4X - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10089,
+      "LMID": 104,
+      "ValidFor": [
+        40022
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_M4_tiger_04_256x128",
+      "Name": "M4X - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10089,
+      "LMID": 105,
+      "ValidFor": [
+        40022
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_M4_tiger_05_256x128",
+      "Name": "M4X - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10089,
+      "LMID": 106,
+      "ValidFor": [
+        40022
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_M4_tiger_06_256x128",
+      "Name": "M4X - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10089,
+      "LMID": 107,
+      "ValidFor": [
+        40022
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SMG_BLRSkullHex_256x128",
       "Name": "Submachine Gun - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10044,
+      "LMID": 108,
       "ValidFor": [
         40010
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMG_America_256x128",
       "Name": "Submachine Gun - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10045,
+      "LMID": 109,
       "ValidFor": [
         40010
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMG_tiger_01_256x128",
       "Name": "Submachine Gun - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10065,
+      "LMID": 110,
       "ValidFor": [
         40010
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMG_tiger_02_256x128",
       "Name": "Submachine Gun - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10091,
+      "LMID": 111,
       "ValidFor": [
         40010
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMG_Clover_01_256x128",
       "Name": "Submachine Gun - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10201,
+      "LMID": 112,
       "ValidFor": [
         40010
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_SMG_tiger_03_256x128",
+      "Name": "Submachine Gun - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10091,
+      "LMID": 113,
+      "ValidFor": [
+        40010
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMG_tiger_04_256x128",
+      "Name": "Submachine Gun - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10091,
+      "LMID": 114,
+      "ValidFor": [
+        40010
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMG_tiger_05_256x128",
+      "Name": "Submachine Gun - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10091,
+      "LMID": 115,
+      "ValidFor": [
+        40010
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMG_tiger_06_256x128",
+      "Name": "Submachine Gun - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10091,
+      "LMID": 116,
+      "ValidFor": [
+        40010
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SMG2_BLRSkullHex_256x128",
       "Name": "Tactical SMG - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10046,
+      "LMID": 117,
       "ValidFor": [
         40013
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMG2_America_256x128",
       "Name": "Tactical SMG - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10047,
+      "LMID": 118,
       "ValidFor": [
         40013
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMG2_tiger_01_256x128",
       "Name": "Tactical SMG - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10066,
+      "LMID": 119,
       "ValidFor": [
         40013
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMG2_tiger_02_256x128",
       "Name": "Tactical SMG - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10092,
+      "LMID": 120,
       "ValidFor": [
         40013
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMG2_Clover_01_256x128",
       "Name": "Tactical SMG - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10093,
+      "LMID": 121,
       "ValidFor": [
         40013
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_SMG2_tiger_03_256x128",
+      "Name": "Tactical SMG - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10092,
+      "LMID": 122,
+      "ValidFor": [
+        40013
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMG2_tiger_04_256x128",
+      "Name": "Tactical SMG - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10092,
+      "LMID": 123,
+      "ValidFor": [
+        40013
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMG2_tiger_05_256x128",
+      "Name": "Tactical SMG - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10092,
+      "LMID": 124,
+      "ValidFor": [
+        40013
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMG2_tiger_06_256x128",
+      "Name": "Tactical SMG - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10092,
+      "LMID": 125,
+      "ValidFor": [
+        40013
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SMGi_BLRSkullHex_256x128",
       "Name": "Burstfire SMG - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10048,
+      "LMID": 126,
       "ValidFor": [
         40018
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMGi_America_256x128",
       "Name": "Burstfire SMG - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10049,
+      "LMID": 127,
       "ValidFor": [
         40018
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMGi_tiger_01_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10067,
+      "LMID": 128,
       "ValidFor": [
         40018
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMGi_tiger_02_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10094,
+      "LMID": 129,
       "ValidFor": [
         40018
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SMGi_Clover_01_256x128",
       "Name": "Burstfire SMG - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10095,
+      "LMID": 130,
       "ValidFor": [
         40018
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_SMGi_tiger_03_256x128",
+      "Name": "Burstfire SMG - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10094,
+      "LMID": 131,
+      "ValidFor": [
+        40018
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMGi_tiger_04_256x128",
+      "Name": "Burstfire SMG - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10094,
+      "LMID": 132,
+      "ValidFor": [
+        40018
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMGi_tiger_05_256x128",
+      "Name": "Burstfire SMG - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10094,
+      "LMID": 133,
+      "ValidFor": [
+        40018
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SMGi_tiger_06_256x128",
+      "Name": "Burstfire SMG - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10094,
+      "LMID": 134,
+      "ValidFor": [
+        40018
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SniperRifle_BLRSkullHex_256x128",
       "Name": "Combat Rifle - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10050,
+      "LMID": 135,
       "ValidFor": [
         40008
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SniperRifle_America_256x128",
       "Name": "Combat Rifle - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10051,
+      "LMID": 136,
       "ValidFor": [
         40008
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SniperRifle_tiger_01_256x128",
       "Name": "Combat Rifle - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10068,
+      "LMID": 137,
       "ValidFor": [
         40008
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SniperRifle_tiger_02_256x128",
       "Name": "Combat Rifle - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10096,
+      "LMID": 138,
       "ValidFor": [
         40008
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SniperRifle_Clover_01_256x128",
       "Name": "Combat Rifle - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10097,
+      "LMID": 139,
       "ValidFor": [
         40008
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_SniperRifle_tiger_03_256x128",
+      "Name": "Combat Rifle - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10096,
+      "LMID": 140,
+      "ValidFor": [
+        40008
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SniperRifle_tiger_04_256x128",
+      "Name": "Combat Rifle - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10096,
+      "LMID": 141,
+      "ValidFor": [
+        40008
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SniperRifle_tiger_05_256x128",
+      "Name": "Combat Rifle - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10096,
+      "LMID": 142,
+      "ValidFor": [
+        40008
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SniperRifle_tiger_06_256x128",
+      "Name": "Combat Rifle - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10096,
+      "LMID": 143,
+      "ValidFor": [
+        40008
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SniperRifle2_BLRSkullHex_256x128",
       "Name": "Light Recon - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10052,
+      "LMID": 144,
       "ValidFor": [
         40026
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SniperRifle2_America_256x128",
       "Name": "Light Recon - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10053,
+      "LMID": 145,
       "ValidFor": [
         40026
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SniperRifle2_tiger_01_256x128",
       "Name": "Light Recon - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10069,
+      "LMID": 146,
       "ValidFor": [
         40026
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SniperRifle2_tiger_02_256x128",
       "Name": "Light Recon - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10098,
+      "LMID": 147,
       "ValidFor": [
         40026
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_SniperRifle2_Clover_01_256x128",
       "Name": "Light Recon - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10099,
+      "LMID": 148,
       "ValidFor": [
         40026
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_SniperRifle2_tiger_03_256x128",
+      "Name": "Light Recon - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10098,
+      "LMID": 149,
+      "ValidFor": [
+        40026
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SniperRifle2_tiger_04_256x128",
+      "Name": "Light Recon - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10098,
+      "LMID": 150,
+      "ValidFor": [
+        40026
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SniperRifle2_tiger_05_256x128",
+      "Name": "Light Recon - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10098,
+      "LMID": 151,
+      "ValidFor": [
+        40026
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_SniperRifle2_tiger_06_256x128",
+      "Name": "Light Recon - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10098,
+      "LMID": 152,
+      "ValidFor": [
+        40026
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_20mm_BLRSkullHex_256x128",
       "Name": "Anti-Materiel - Green Hex Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10054,
+      "LMID": 153,
       "ValidFor": [
         40019
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_20mm_America_256x128",
       "Name": "Anti-Materiel - Stars and Stripes Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10055,
+      "LMID": 154,
       "ValidFor": [
         40019
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_20mm_Tiger_01_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Orange Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10062,
+      "LMID": 155,
       "ValidFor": [
         40019
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_20mm_Tiger_02_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Blue Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10070,
+      "LMID": 156,
       "ValidFor": [
         40019
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
       "Icon": "t_SpecialtySkin_20mm_Clover_01_256x128",
       "Name": "Anti-Materiel - Clovers Weapon Skin",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "A custom look for your receiver!",
       "UID": 10071,
+      "LMID": 157,
       "ValidFor": [
         40019
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     },
     {
       "Category": "primarySkins",
-      "DescriptorName": "",
+      "Icon": "t_SpecialtySkin_20mm_Tiger_03_256x128",
+      "Name": "Anti-Materiel - Tiger Stripes Pink Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10070,
+      "LMID": 158,
+      "ValidFor": [
+        40019
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_20mm_Tiger_04_256x128",
+      "Name": "Anti-Materiel - Tiger Stripes Red Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10070,
+      "LMID": 159,
+      "ValidFor": [
+        40019
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_20mm_Tiger_05_256x128",
+      "Name": "Anti-Materiel - Tiger Stripes Green Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10070,
+      "LMID": 160,
+      "ValidFor": [
+        40019
+      ]
+    },
+    {
+      "Category": "primarySkins",
+      "Icon": "t_SpecialtySkin_20mm_Tiger_06_256x128",
+      "Name": "Anti-Materiel - Tiger Stripes Yellow Weapon Skin",
+      "Tooltip": "A custom look for your receiver!",
+      "UID": 10070,
+      "LMID": 161,
+      "ValidFor": [
+        40019
+      ]
+    },
+    {
+      "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_CompoundBow_Cupid_256x128",
       "Name": "Cupid\u0027s QT Pi Bow",
-      "PawnModifiers": {
-        "BodyDamageReduction": 0,
-        "ElectroProtection": 0,
-        "ExplosiveProtection": 0,
-        "GearSlots": 0,
-        "HRVDuration": 0,
-        "HRVRechargeRate": 0,
-        "Health": 0,
-        "HealthRecharge": 0,
-        "HelmetDamageReduction": 0,
-        "IncendiaryProtection": 0,
-        "InfraredProtection": 0,
-        "LegsDamageReduction": 0,
-        "MeleeProtection": 0,
-        "MeleeRange": 0,
-        "MovementSpeed": 0,
-        "PermanentHealthProtection": 0,
-        "SprintMultiplier": 1,
-        "Stamina": 0,
-        "SwitchWeaponSpeed": 0,
-        "ToxicProtection": 0
-      },
       "Tooltip": "Cupid\u0027s own QT Pi Bow skin. Happy Valentine\u0027s Day!",
       "UID": 10011,
+      "LMID": 163,
       "ValidFor": [
         40024
-      ],
-      "WeaponModifiers": {
-        "accuracy": 0,
-        "ammo": 0,
-        "damage": 0,
-        "movementSpeed": 0,
-        "range": 0,
-        "rateOfFire": 0,
-        "rating": 0,
-        "recoil": 0,
-        "reloadSpeed": 0,
-        "switchWeaponSpeed": 0,
-        "weaponWeight": 0
-      }
+      ]
     }
   ],
   "scopes": [

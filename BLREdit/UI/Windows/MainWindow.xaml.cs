@@ -514,6 +514,9 @@ public sealed partial class MainWindow : Window
                 case "Ammo":
                     SetItemList(ImportSystem.AMMO_CATEGORY);
                     break;
+                case "Skin":
+                    SetItemList(ImportSystem.PRIMARY_SKIN_CATEGORY);
+                    break;
 
                 case "BodyCamo":
                     SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);

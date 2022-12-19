@@ -25,35 +25,44 @@ namespace BLREdit.UI.Controls;
 /// </summary>
 public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 {
+    #region Events
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+    #endregion Events
 
     private Visibility gripVisibility = Visibility.Collapsed;
-    public Visibility GripVisibility { get { return gripVisibility; } }
+    public Visibility GripVisibility { get { return gripVisibility; } private set { gripVisibility = value; OnPropertyChanged(); } }
 
     private Visibility tagVisibility = Visibility.Visible;
-    public Visibility TagVisibility { get { return tagVisibility; } }
+    public Visibility TagVisibility { get { return tagVisibility; } private set { tagVisibility = value; OnPropertyChanged(); } }
+
+    private Visibility skinVisibility = Visibility.Visible;
+    public Visibility SkinVisibility { get { return skinVisibility; } private set { skinVisibility = value; OnPropertyChanged(); } }
 
     public WeaponControl()
     {
         InitializeComponent();
         BLREditSettings.Settings.AdvancedModding.PropertyChanged += SettingsChanged;
-        gripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
+        GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
     }
 
-    public void SetGripVisibility(Visibility visibility)
+    public void SetVisibility(bool isPrimary = true)
     {
-        gripVisibility = visibility;
-        OnPropertyChanged(nameof(GripVisibility));
-    }
-
-    public void SetTagVisibility(Visibility visibility)
-    {
-        tagVisibility = visibility;
-        OnPropertyChanged(nameof(TagVisibility));
+        if (isPrimary)
+        {
+            GripVisibility = Visibility.Collapsed;
+            TagVisibility = Visibility.Visible;
+            SkinVisibility = Visibility.Visible;
+        }
+        else 
+        {
+            GripVisibility = Visibility.Visible;
+            TagVisibility = Visibility.Collapsed;
+            SkinVisibility = Visibility.Collapsed;
+        }
     }
 
     public void SettingsChanged(object sender, PropertyChangedEventArgs e)
@@ -65,8 +74,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
             {
                 if (weapon.IsPrimary)
                 {
-                    gripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
-                    OnPropertyChanged(nameof(GripVisibility));
+                    GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
                 }
             }
         }

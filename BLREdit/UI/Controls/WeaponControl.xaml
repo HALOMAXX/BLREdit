@@ -50,6 +50,10 @@
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
 
+        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=SkinVisibility}" DataContext="{Binding Path=Skin}" Height="78" Width="156" HorizontalAlignment="Left" Margin="78,0,0,0" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+        </Border>
+
         <Grid Width="400" Height="128" Margin="0,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="54" />

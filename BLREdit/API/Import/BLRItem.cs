@@ -169,9 +169,9 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool ValidForTest(BLRItem filter)
     {
-        if (Category != ImportSystem.AMMO_CATEGORY && Category != ImportSystem.MAGAZINES_CATEGORY && Category != ImportSystem.MUZZELS_CATEGORY && Category != ImportSystem.SCOPES_CATEGORY && Category != ImportSystem.STOCKS_CATEGORY && Category != ImportSystem.BARRELS_CATEGORY && Category != ImportSystem.GRIPS_CATEGORY) return true;
+        //if (Category != ImportSystem.AMMO_CATEGORY && Category != ImportSystem.MAGAZINES_CATEGORY && Category != ImportSystem.MUZZELS_CATEGORY && Category != ImportSystem.SCOPES_CATEGORY && Category != ImportSystem.STOCKS_CATEGORY && Category != ImportSystem.BARRELS_CATEGORY && Category != ImportSystem.GRIPS_CATEGORY) return true;
 
-        if (ValidFor == null) { return true; }
+        if (ValidFor == null || ValidFor.Count <= 0) { return true; }
 
         foreach (int id in ValidFor)
         {

@@ -66,16 +66,24 @@ public sealed class SEWeapon
 
     public SEWeapon(BLRWeapon weapon)
     {
-        Receiver = weapon?.Reciever?.LMID ?? -1;
-        Barrel = weapon?.Barrel?.LMID ?? -1;
-        Scope = weapon?.Scope?.LMID ?? -1;
-        Grip = weapon?.Grip?.LMID ?? -1;
-        Stock = weapon?.Stock?.LMID ?? -1;
-        Muzzle = ImportSystem.GetIDOfItem(weapon.Muzzle);
-        Magazine = ImportSystem.GetIDOfItem(weapon.Magazine);
-        CamoIndex = ImportSystem.GetIDOfItem(weapon.Camo);
-        Hanger = ImportSystem.GetIDOfItem(weapon.Tag);
+        Receiver = GetLMID(weapon.Reciever);
+        Barrel = GetLMID(weapon.Barrel);
+        Scope = GetLMID(weapon.Scope);
+        Grip = GetLMID(weapon.Grip);
+        Stock = GetLMID(weapon.Stock);
+        Muzzle = GetLMID(weapon.Muzzle);
+        Magazine = GetLMID(weapon.Magazine);
+        CamoIndex = GetLMID(weapon.Camo);
+        Hanger = GetLMID(weapon.Tag);
 
-        Ammo = weapon?.Ammo?.LMID ?? 0;
+        Ammo = GetLMID(weapon.Ammo);
+        Skin = GetLMID(weapon.Skin);
+    }
+
+    public static int GetLMID(BLRItem item)
+    {
+        if (item is null) return -1;
+        if (item.LMID != -1) return item.LMID;
+        return ImportSystem.GetIDOfItem(item);
     }
 }

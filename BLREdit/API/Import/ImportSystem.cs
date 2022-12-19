@@ -39,6 +39,7 @@ public static class ImportSystem
     public const string DEPOT_CATEGORY = "depot";
     public const string EMOTES_CATEGORY = "emotes";
     public const string SHOP_CATEGORY = "shop";
+    public const string PRIMARY_SKIN_CATEGORY = "primarySkins";
 
     public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
