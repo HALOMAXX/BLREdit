@@ -30,8 +30,6 @@ public sealed class SEWeapon
     /// </summary>
     public int Stock { get; set; } = 0;
 
-
-
     /// <summary>
     /// Contains the Index of the Ammo
     /// </summary>
