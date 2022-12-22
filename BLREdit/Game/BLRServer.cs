@@ -47,6 +47,9 @@ public sealed class BLRServer : INotifyPropertyChanged
     public string ServerAddress { get; set; } = "localhost";
     [JsonIgnore] private ushort port = 7777;
     public ushort Port { get { return port; } set { port = value; OnPropertyChanged(); } }
+    [JsonIgnore] private ushort infoPort = 7778;
+    public ushort InfoPort { get { return infoPort; } set { infoPort = value; OnPropertyChanged(); } }
+
     [JsonIgnore]
     public string IPAddress
     {

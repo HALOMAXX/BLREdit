@@ -33,7 +33,7 @@ public sealed class ServerUtilsClient
         string fail = "";
         try
         {
-            using var response = await GetAsync($"http://{server.ServerAddress}:{server.Port+1}", "/server_info");
+            using var response = await GetAsync($"http://{server.ServerAddress}:{server.InfoPort}", "/server_info");
             if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();

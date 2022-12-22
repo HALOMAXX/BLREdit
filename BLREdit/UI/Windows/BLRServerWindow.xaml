@@ -27,5 +27,11 @@
                 <TextBox Text="{Binding Path=Port}" HorizontalAlignment="Stretch" PreviewKeyDown="TextBox_PreviewKeyDown"/>
             </StackPanel>
         </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                <Label Width="120" HorizontalContentAlignment="Right" Style="{StaticResource DescriptorLabel}">Server Info Port:</Label>
+                <TextBox Text="{Binding Path=InfoPort}" HorizontalAlignment="Stretch" PreviewKeyDown="TextBox_PreviewKeyDown"/>
+            </StackPanel>
+        </Border>
     </StackPanel>
 </Window>
