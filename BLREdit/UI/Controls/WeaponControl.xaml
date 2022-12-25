@@ -107,6 +107,8 @@
             <Label Grid.Column="1" Grid.Row="4" Content="{Binding Path=SwapDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
             <Label Grid.Column="2" Grid.Row="4" Content="{x:Static res:Resources.lbl_RecoilAim}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="3" Grid.Row="4" Content="{Binding Path=AimRecoilDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
+            <Label Grid.Column="4" Grid.Row="4" Content="{x:Static res:Resources.lbl_PawnRun}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="5" Grid.Row="4" Content="{Binding Path=PawnRunDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -31,6 +31,7 @@ public static class UILanguageWrapper
     #endregion WeaponStats
 
     public static string LblPSRun { get { return LanguageSet.GetWordUI("Run:"); } }
+    public static string LblPSPawnRun { get { return LanguageSet.GetWordUI("Run:"); } }
 
     #region ArmorStats
     public static string LblPSHealth { get { return LanguageSet.GetWordUI("Health:"); } }

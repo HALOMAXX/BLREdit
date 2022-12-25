@@ -187,6 +187,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run:.
+        /// </summary>
+        public static string lbl_PawnRun {
+            get {
+                return ResourceManager.GetString("lbl_PawnRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Primary.
         /// </summary>
         public static string lbl_Primary {
@@ -250,7 +259,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run:.
+        ///   Looks up a localized string similar to Speed:.
         /// </summary>
         public static string lbl_Run {
             get {

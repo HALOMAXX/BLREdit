@@ -722,6 +722,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public double ModifiedScopeInTime { get { return modifiedScopeInTime; } private set { modifiedScopeInTime = value; OnPropertyChanged(); } }
     private double modifiedRunSpeed;
     public double ModifiedRunSpeed { get { return modifiedRunSpeed; } private set { modifiedRunSpeed = value; OnPropertyChanged(); } }
+    private double modifiedPawnRunSpeed;
+    public double ModifiedPawnRunSpeed { get { return modifiedPawnRunSpeed; } private set { modifiedPawnRunSpeed = value; OnPropertyChanged(); } }
 
     #region Weapon Descriptor
     private string weaponDesc1;
@@ -765,6 +767,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public string RangeDisplay { get { return rangeDisaply; } private set { rangeDisaply = value; OnPropertyChanged(); } }
     private string runDisplay;
     public string RunDisplay { get { return runDisplay; } private set { runDisplay = value; OnPropertyChanged(); } }
+    private string pawnRunDisplay;
+    public string PawnRunDisplay { get { return pawnRunDisplay; } private set { pawnRunDisplay = value; OnPropertyChanged(); } }
 
     private string zoomDisplay;
     public string ZoomDisplay { get { return zoomDisplay; } private set { zoomDisplay = value; OnPropertyChanged(); } }
@@ -900,7 +904,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Tag)), this); }
     }
 
-    private void CalculateStats()
+    public void CalculateStats()
     {
         //ResetStats();
         if (Reciever is not null)
@@ -908,6 +912,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             CockRateMultiplier = CalculateCockRate(Reciever, RecoilPercentage);
             (DamageClose, DamageFar) = CalculateDamage(Reciever, DamagePercentage);
             ModifiedRunSpeed = CalculateMovementSpeed(Reciever, MovementSpeedPercentage);
+            ModifiedPawnRunSpeed = CalculatePawnMovementSpeed(Reciever, Loadout, MovementSpeedPercentage);
             (RangeClose, RangeFar, RangeTracer) = CalculateRange(Reciever, RangePercentage);
             (RecoilHip, RecoilZoom) = CalculateRecoil(Reciever, RecoilPercentage);
             ReloadMultiplier = CalculateReloadRate(Reciever, ReloadSpeedPercentage, RecoilPercentage);
@@ -940,6 +945,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         ScopeInTimeDisplay = ModifiedScopeInTime.ToString("0.000") + 's';
         RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTracer.ToString("0");
         RunDisplay = ModifiedRunSpeed.ToString("0.00");
+        PawnRunDisplay = ModifiedPawnRunSpeed.ToString("0.00");
         ZoomDisplay = ZoomMagnification.ToString("0.00") + 'x';
 
         FragmentsPerShellDisplay = FragmentsPerShell.ToString("0");
@@ -1066,7 +1072,43 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             move_modifier = Lerp(Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMoveSpeed.X ?? 0, move_alpha);
         }
-        return (765 + move_modifier * 0.9) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
+        return move_modifier;
+        //return (765 + move_modifier * 0.9) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
+    }
+
+    /// <summary>
+    /// Calculates the combined armor and weapon Movementspeed
+    /// </summary>
+    /// <param name="Reciever">Reciever</param>
+    /// <param name="Loadout">Reciever</param>
+    /// <param name="WeapSpeedPercentage">all raw weapon MovementSpeed modifiers</param>
+    /// <returns>calculated Movementspeed</returns>
+    public static double CalculatePawnMovementSpeed(BLRItem Reciever, BLRLoadout Loadout, double WeapSpeedPercentage)
+    {
+        double weap_alpha = Math.Abs(WeapSpeedPercentage) / 100;
+        double weap_modifier;
+        if (WeapSpeedPercentage > 0)
+        {
+            weap_modifier = Lerp(Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Y ?? 0, weap_alpha);
+        }
+        else
+        {
+            weap_modifier = Lerp(Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMoveSpeed.X ?? 0, weap_alpha);
+        }
+
+        double combined = (Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667);
+        double pawnalpha = Math.Min(Math.Abs(combined), 100) / 100;
+        double pawnspeed;
+        if (combined > 0)
+        {
+            pawnspeed = Lerp(765, 900, pawnalpha);
+        }
+        else
+        {
+            pawnspeed = Lerp(765, 630, pawnalpha);
+        }
+
+        return pawnspeed / 100;
     }
 
     /// <summary>

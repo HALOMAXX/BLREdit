@@ -18,16 +18,19 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
+    public BLRWeapon Primary { get; set; }
+    public BLRWeapon Secondary { get; set; }
+
     private void ItemChanged([CallerMemberName] string propertyName = null)
     {
         if (!UndoRedoSystem.BlockUpdate) UpdateMagicCowsLoadout();
         CalculateStats();
+        Primary.CalculateStats();
+        Secondary.CalculateStats();
         OnPropertyChanged(propertyName);
     }
     #endregion Event
 
-    public BLRWeapon Primary { get; set; }
-    public BLRWeapon Secondary { get; set; }
     private BLRItem helmet = null;
     public BLRItem Helmet { get { return helmet; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { helmet = value; ItemChanged(); return; } if (value is null || helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { if (value is null) { helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, 0); } else { helmet = value; } ItemChanged(); } } }
     private BLRItem upperBody = null;

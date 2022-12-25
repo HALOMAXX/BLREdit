@@ -159,6 +159,9 @@
   <data name="lbl_HRVRecharge" xml:space="preserve">
     <value>Recharge:</value>
   </data>
+  <data name="lbl_PawnRun" xml:space="preserve">
+    <value>Run:</value>
+  </data>
   <data name="lbl_Primary" xml:space="preserve">
     <value>Primary</value>
   </data>
@@ -181,7 +184,7 @@
     <value>Reload:</value>
   </data>
   <data name="lbl_Run" xml:space="preserve">
-    <value>Run:</value>
+    <value>Speed:</value>
   </data>
   <data name="lbl_ScopeInTime" xml:space="preserve">
     <value>ScopeIn:</value>
