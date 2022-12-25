@@ -26,8 +26,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
     #endregion Event
 
-    public BLRWeapon Primary { get; set; } = new(true, this);
-    public BLRWeapon Secondary { get; set; } = new(false, this);
+    public BLRWeapon Primary { get; set; }
+    public BLRWeapon Secondary { get; set; }
     private BLRItem helmet = null;
     public BLRItem Helmet { get { return helmet; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { helmet = value; ItemChanged(); return; } if (value is null || helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { if (value is null) { helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, 0); } else { helmet = value; } ItemChanged(); } } }
     private BLRItem upperBody = null;
@@ -54,6 +54,13 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(value); ItemChanged(); } }
     private bool isBot;
     public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
+
+    public BLRLoadout() 
+    {
+        Primary = new(true, this);
+        Secondary = new(false, this);
+    }
+
 
     #region Depot
     private BLRItem depot1;
