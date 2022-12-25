@@ -7,6 +7,7 @@ using Gameloop.Vdf.Linq;
 using Microsoft.Win32;
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -17,11 +18,13 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BLREdit;
 
@@ -68,7 +71,7 @@ public sealed class IOResources
     public static HttpClient HttpClient { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
     public static HttpClient HttpClientWeb { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
 
-    public static readonly List<Task> DownloadTasks = new();
+    private static Thread WebClientDownloadThread = new(DownLoadFiles);
 
     static IOResources()
     {
@@ -78,7 +81,54 @@ public sealed class IOResources
         HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
         if (!HttpClientWeb.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { LoggingSystem.Log($"Failed to add {HttpRequestHeader.UserAgent} to HttpClientWeb"); };
         HttpClientWeb.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("text/html"));
+        WebClientDownloadThread.Start();
     }
+
+    private static ConcurrentQueue<DownloadRequest> DownloadRequests { get; } = new();
+    public static void DownloadFile(string url, string filename)
+    {
+        DownloadRequest req = new(url, filename);
+        DownloadRequests.Enqueue(req);
+        while (!req.isDone)
+        { 
+            Thread.Sleep(100);
+        }
+    }
+
+    private static void DownLoadFiles()
+    {
+        while (App.IsRunning)
+        {
+            if (DownloadRequests.TryDequeue(out DownloadRequest Request))
+            {
+                try
+                {
+                    WebClient.DownloadFile(Request.url, Request.filename);
+                }
+                catch (Exception error)
+                {
+                    LoggingSystem.Log($"[WebClient]Failed to Download({Request.url})\nReason:{error}");
+                }
+                finally 
+                { Request.isDone = true; }
+            }
+            else
+            { Thread.Sleep(100); }
+        }
+    }
+
+    private class DownloadRequest
+    {
+        public string url, filename;
+        public bool isDone = false;
+
+        public DownloadRequest(string url, string filename)
+        {
+            this.url = url;
+            this.filename = filename;
+        }
+    }
+
     public static void GetGameLocationsFromSteam()
     {
         string steampath;
@@ -102,10 +152,10 @@ public sealed class IOResources
     }
 
     [DllImport("Kernel32")]
-    public static extern void AllocConsole();
+    private static extern void AllocConsole();
 
     [DllImport("Kernel32")]
-    public static extern void FreeConsole();
+    private static extern void FreeConsole();
     public static void SpawnConsole()
     { 
         AllocConsole();
@@ -139,7 +189,7 @@ public sealed class IOResources
         }
     }
 
-    public static void DownloadFile(string url, string filename)
+    public static void DownloadFileMessageBox(string url, string filename)
     {
         var dlWindow = new DownloadInfoWindow(url, filename);
         dlWindow.ShowDialog();

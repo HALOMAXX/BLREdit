@@ -81,7 +81,7 @@ public sealed class SEWeapon
     public static int GetLMID(BLRItem item)
     {
         if (item is null) return -1;
-        if (item.LMID != -1) return item.LMID;
+        if (item.LMID != -69) return item.LMID;
         return ImportSystem.GetIDOfItem(item);
     }
 }

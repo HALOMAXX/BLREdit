@@ -40,6 +40,9 @@ public partial class App : System.Windows.Application
 
     private const string LogFile = "log.txt";
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
+
+    public static bool IsRunning = true;
+
     private void Application_Startup(object sender, StartupEventArgs e)
     {
         string[] argList = e.Args;
@@ -111,6 +114,11 @@ public partial class App : System.Windows.Application
             Application.Current.Shutdown();
         }
         new MainWindow().Show();
+    }
+
+    private void Application_Exit(object sender, ExitEventArgs e)
+    {
+        IsRunning = false;
     }
 
     public App()
@@ -278,7 +286,7 @@ public partial class App : System.Windows.Application
         {
             if (exeZip.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {exeZip.Info.FullName}"); exeZip.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Downloading {exeDL}");
-            IOResources.DownloadFile(exeDL, exeZip.Info.FullName);
+            IOResources.DownloadFileMessageBox(exeDL, exeZip.Info.FullName);
             if (backupExe.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {backupExe.Info.FullName}"); backupExe.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Moving {currentExe.Info.FullName} to {backupExe.Info.FullName}");
             currentExe.Info.MoveTo(backupExe.Info.FullName);
@@ -313,7 +321,7 @@ public partial class App : System.Windows.Application
         if (DownloadLinks.TryGetValue(assetZip, out string assetDL))
         {
             if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
-            IOResources.DownloadFile(assetDL, assetZip.Info.FullName);
+            IOResources.DownloadFileMessageBox(assetDL, assetZip.Info.FullName);
             ZipFile.ExtractToDirectory(assetZip.Info.FullName, IOResources.ASSET_DIR);
         }
         else
@@ -343,7 +351,7 @@ public partial class App : System.Windows.Application
         {
             if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
             LoggingSystem.Log($"[Update]: Downloading {dl}");
-            IOResources.DownloadFile(dl, pack.Info.FullName);
+            IOResources.DownloadFileMessageBox(dl, pack.Info.FullName);
         }
         else
         { LoggingSystem.Log($"No {pack.Info.Name} for download available!"); }
@@ -409,4 +417,6 @@ public partial class App : System.Windows.Application
             }
         }
     }
+
+
 }

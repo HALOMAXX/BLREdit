@@ -142,7 +142,7 @@ public sealed class RepositoryProxyModule
         if (File.Exists(dlTarget)) { LoggingSystem.Log($"Deleting {dlTarget}"); File.Delete(dlTarget); }
         LoggingSystem.Log($"Downloading ({dl}) to ({dlTarget})");
         if (!Directory.Exists($"downloads\\")) { Directory.CreateDirectory($"downloads\\"); }
-        IOResources.WebClient.DownloadFile(dl, dlTarget);
+        IOResources.DownloadFile(dl, dlTarget);
         LoggingSystem.Log($"Finished Downloading {dl}");
 
         ProxyModule module;

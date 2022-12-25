@@ -12,7 +12,7 @@ namespace BLREdit.Import;
 
 public sealed class BLRItem : INotifyPropertyChanged
 {
-    public int LMID { get; set; } = -1;
+    public int LMID { get; set; } = -69;
     public string Category { get; set; }
     public string DescriptorName { get; set; } = "";
     public string Icon { get; set; }

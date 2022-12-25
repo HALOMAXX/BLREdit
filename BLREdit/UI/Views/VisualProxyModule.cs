@@ -230,11 +230,11 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     }
 
 
-    private bool lockInstall = false;
+    [JsonIgnore] public UIBool LockInstall { get; } = new(false);
     public async void InstallModule(BLRClient client)
     {
-        if (lockInstall) return;
-        lockInstall = true;
+        if (LockInstall.Is) return;
+        LockInstall.SetBool(true);
         try
         {
             LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.InstallName}");
@@ -279,46 +279,56 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             LoggingSystem.MessageLog($"failed to install module:{RepositoryProxyModule.InstallName} reason:{error}");
         }
-
-        CheckForInstall(client);
-        CheckForUpdate(client);
-        OnPropertyChanged(nameof(InstalledModule));
-        OnPropertyChanged(nameof(Installed));
-        OnPropertyChanged(nameof(UpToDate));
-        LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.InstallName}");
-        lockInstall = false;
+        finally
+        {
+            CheckForInstall(client);
+            CheckForUpdate(client);
+            OnPropertyChanged(nameof(InstalledModule));
+            OnPropertyChanged(nameof(Installed));
+            OnPropertyChanged(nameof(UpToDate));
+            LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.InstallName}");
+            LockInstall.SetBool(false);
+        }
     }
 
-    private bool lockRemove = false;
+    [JsonIgnore] public UIBool LockRemove { get; } = new(false);
     public void RemoveModule(BLRClient client)
     { 
-        if (lockRemove) return;
-        lockRemove = true;
-
-        if (client.Patched.IsNot)
+        if (LockRemove.Is) return;
+        LockRemove.SetBool(true);
+        try
         {
-            LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
-            client.PatchClient();
-        }
-        LoggingSystem.Log($"removing {RepositoryProxyModule.InstallName}");
-
-        foreach (var module in client.InstalledModules)
-        {
-            if (module.InstallName == RepositoryProxyModule.InstallName)
+            if (client.Patched.IsNot)
             {
-                client.InstalledModules.Remove(module);
-                File.Delete($"{client.ModulesFolder}\\{module.InstallName}.dll");
-                break;
+                LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
+                client.PatchClient();
+            }
+            LoggingSystem.Log($"removing {RepositoryProxyModule.InstallName}");
+
+            foreach (var module in client.InstalledModules)
+            {
+                if (module.InstallName == RepositoryProxyModule.InstallName)
+                {
+                    client.InstalledModules.Remove(module);
+                    File.Delete($"{client.ModulesFolder}\\{module.InstallName}.dll");
+                    break;
+                }
             }
         }
-
-        CheckForInstall(client);
-        CheckForUpdate(client);
-        OnPropertyChanged(nameof(InstalledModule));
-        OnPropertyChanged(nameof(Installed));
-        OnPropertyChanged(nameof(UpToDate));
-        LoggingSystem.Log($"Finished removing {RepositoryProxyModule.InstallName}");
-        lockRemove = false;
+        catch (Exception error)
+        {
+            LoggingSystem.Log($"Failed to remove Module({this.RepositoryProxyModule.InstallName})\nReason: {error}");
+        }
+        finally
+        {
+            CheckForInstall(client);
+            CheckForUpdate(client);
+            OnPropertyChanged(nameof(InstalledModule));
+            OnPropertyChanged(nameof(Installed));
+            OnPropertyChanged(nameof(UpToDate));
+            LoggingSystem.Log($"Finished removing {RepositoryProxyModule.InstallName}");
+            LockRemove.SetBool(false);
+        }
     }
 
     public void ActiveClientChanged(object sender, EventArgs eventArgs)
