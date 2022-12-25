@@ -32,6 +32,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public bool IsPrimary { get; set; } = false;
 
+    private BLRLoadout Loadout { get; set; }
+
     #region Weapon Parts
     private BLRItem reciever = null;
     public BLRItem Reciever { get { return reciever; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { reciever = value; AddMissingDefaultParts(); ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
@@ -101,7 +103,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
     #endregion Weapon Parts
 
-    //TODO Add Primary weapon skin's
     //TODO Add Premade Weapon Setup's
 
     [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
@@ -272,9 +273,10 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         OnPropertyChanged(nameof(ScopePreview));
     }
 
-    public BLRWeapon(bool isPrimary)
+    public BLRWeapon(bool isPrimary, BLRLoadout loadout)
     {
         IsPrimary = isPrimary;
+        Loadout = loadout;
     }
 
     #region Properties

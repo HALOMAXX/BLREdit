@@ -26,8 +26,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
     #endregion Event
 
-    public BLRWeapon Primary { get; set; } = new(true);
-    public BLRWeapon Secondary { get; set; } = new(false);
+    public BLRWeapon Primary { get; set; } = new(true, this);
+    public BLRWeapon Secondary { get; set; } = new(false, this);
     private BLRItem helmet = null;
     public BLRItem Helmet { get { return helmet; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { helmet = value; ItemChanged(); return; } if (value is null || helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { if (value is null) { helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, 0); } else { helmet = value; } ItemChanged(); } } }
     private BLRItem upperBody = null;
