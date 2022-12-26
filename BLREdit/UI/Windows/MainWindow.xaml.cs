@@ -815,9 +815,9 @@ public sealed partial class MainWindow : Window
             server.PingServer();
         }
     }
-#endregion Server UI
+    #endregion Server UI
 
-
+    #region Hotkeys
     bool shiftDown = false;
     bool altDown = false;
     bool ctrlDown = false;
@@ -884,7 +884,7 @@ public sealed partial class MainWindow : Window
                 ((TabItem)MainWindowTabs.Items[buttonIndex]).Focus();
                 break;
             case Key.A:
-                if (shiftDown)
+                if (ctrlDown && altDown)
                 {
                     BLREditSettings.Settings.AdvancedModding.SetBool(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
@@ -902,7 +902,7 @@ public sealed partial class MainWindow : Window
                 break;
         }
     }
-
+    #endregion Hotkeys
     private static Grid CreateAlertGrid(string Alert)
     {
         TextBox alertText = new() { Text = Alert, TextAlignment = TextAlignment.Center, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0)), IsReadOnly = true, FontSize = 26 };
