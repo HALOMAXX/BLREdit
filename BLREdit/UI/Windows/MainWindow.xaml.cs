@@ -884,7 +884,7 @@ public sealed partial class MainWindow : Window
                 ((TabItem)MainWindowTabs.Items[buttonIndex]).Focus();
                 break;
             case Key.A:
-                if (ctrlDown && altDown)
+                if (ctrlDown && altDown && !SearchBox.IsFocused)
                 {
                     BLREditSettings.Settings.AdvancedModding.SetBool(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
