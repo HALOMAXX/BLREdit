@@ -201,4 +201,7 @@
   <data name="lbl_Zoom" xml:space="preserve">
     <value>Zoom:</value>
   </data>
+  <data name="tbtn_AdvancedModding" xml:space="preserve">
+    <value>AdvancedModding</value>
+  </data>
 </root>

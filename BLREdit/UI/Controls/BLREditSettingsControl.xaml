@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.BLREditSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:blredit="clr-namespace:BLREdit"
+             xmlns:p="clr-namespace:BLREdit.Properties"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=blredit:BLREditSettings}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AdvancedModding}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_AdvancedModding }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

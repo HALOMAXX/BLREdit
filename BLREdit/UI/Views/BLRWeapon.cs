@@ -103,6 +103,44 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
     #endregion Weapon Parts
 
+    public BLRWeapon Copy()
+    {
+        BLRWeapon wpn = new(IsPrimary, null)
+        {
+            Reciever = Reciever,
+            Barrel = Barrel,
+            Muzzle = Muzzle,
+            Stock = Stock,
+            Scope = Scope,
+            Grip = Grip,
+            Magazine = Magazine,
+            Ammo = Ammo,
+            Camo = Camo,
+            Skin = Skin,
+            Tag = Tag
+        };
+
+        return wpn;
+    }
+
+    public void ApplyCopy(BLRWeapon weapon)
+    {
+        if (weapon is not null && this.IsPrimary == weapon.IsPrimary)
+        {
+            this.Reciever = weapon.Reciever;
+            this.Barrel = weapon.Barrel;
+            this.Muzzle = weapon.Muzzle;
+            this.Stock = weapon.Stock;
+            this.Scope = weapon.Scope;
+            this.Grip = weapon.Grip;
+            this.Magazine = weapon.Magazine;
+            this.Ammo = weapon.Ammo;
+            this.Camo = weapon.Camo;
+            this.Skin = weapon.Skin;
+            this.Tag = weapon.Tag;
+        }
+    }
+
     //TODO Add Premade Weapon Setup's
 
     [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
@@ -1085,6 +1123,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <returns>calculated Movementspeed</returns>
     public static double CalculatePawnMovementSpeed(BLRItem Reciever, BLRLoadout Loadout, double WeapSpeedPercentage)
     {
+        if (Loadout is null) return 0;
         double weap_alpha = Math.Abs(WeapSpeedPercentage) / 100;
         double weap_modifier;
         if (WeapSpeedPercentage > 0)
@@ -1518,17 +1557,20 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public void UpdateMagiCowsWeapon()
     {
-        weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
-        weapon.Muzzle = Muzzle?.GetMagicCowsID() ?? -1;
-        weapon.Barrel = Barrel?.Name ?? "No Barrel Mod";
-        weapon.Magazine = Magazine?.GetMagicCowsID() ?? -1;
-        weapon.Scope = Scope?.Name ?? "No Optic Mod";
-        weapon.Stock = Stock?.Name ?? "No Stock";
-        weapon.Grip = Grip?.Name ?? "";
-        weapon.Tag = Tag?.GetMagicCowsID() ?? 0;
-        weapon.Camo = Camo?.GetMagicCowsID() ?? 0;
-        weapon.Ammo = Ammo?.GetMagicCowsID() ?? 0;
-        weapon.Skin = Skin?.GetMagicCowsID() ?? 0;
+        if (weapon is not null)
+        {
+            weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
+            weapon.Muzzle = Muzzle?.GetMagicCowsID() ?? -1;
+            weapon.Barrel = Barrel?.Name ?? "No Barrel Mod";
+            weapon.Magazine = Magazine?.GetMagicCowsID() ?? -1;
+            weapon.Scope = Scope?.Name ?? "No Optic Mod";
+            weapon.Stock = Stock?.Name ?? "No Stock";
+            weapon.Grip = Grip?.Name ?? "";
+            weapon.Tag = Tag?.GetMagicCowsID() ?? 0;
+            weapon.Camo = Camo?.GetMagicCowsID() ?? 0;
+            weapon.Ammo = Ammo?.GetMagicCowsID() ?? 0;
+            weapon.Skin = Skin?.GetMagicCowsID() ?? 0;
+        }
     }
 
     public void LoadMagicCowsWeapon(MagiCowsWeapon Weapon)

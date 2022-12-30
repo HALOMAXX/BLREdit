@@ -69,6 +69,8 @@ public sealed partial class MainWindow : Window
     public static ObservableCollection<BLRClient> GameClients { get; set; }
     public static ObservableCollection<BLRServer> ServerList { get; set; }
 
+    public static BLRWeapon Copy { get; set; } = null;
+
     public static MainWindow Self { get; private set; } = null;
 
     //TODO Add Missing Portal Gun(Orange) Icon Tag/Hanger
@@ -124,11 +126,11 @@ public sealed partial class MainWindow : Window
         string BuildTag = "";
 
 #if DEBUG
-        BuildTag = "[Debug]:";
+        BuildTag = "[Debug Build]:";
 #elif RELEASE
-        BuildTag = "[Release]:";
+        BuildTag = "[Release Build]:";
 #elif PUBLISH
-        BuildTag = "[Public]:";
+        BuildTag = "[Release Build]:";
 #endif
 
         this.Title = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}";
@@ -899,6 +901,50 @@ public sealed partial class MainWindow : Window
                 break;
             case Key.Y:
                 if (ctrlDown) UndoRedoSystem.Redo();
+                break;
+            case Key.C:
+                if (ctrlDown)
+                { 
+                    Point p = Mouse.GetPosition(this);
+                    var hit = VisualTreeHelper.HitTest(this, p);
+                    if (hit.VisualHit is FrameworkElement element)
+                    {
+                        while (element is not null && element.GetType() != typeof(WeaponControl))
+                        {
+                            element = element.Parent as FrameworkElement;
+                        }
+                        if (element is WeaponControl control)
+                        {
+                            if (control.DataContext is BLRWeapon weapon)
+                            {
+                                Copy = weapon.Copy();
+                            }
+                        }
+                        
+                    }
+                }
+                break;
+            case Key.V:
+                if (ctrlDown)
+                {
+                    Point p = Mouse.GetPosition(this);
+                    var hit = VisualTreeHelper.HitTest(this, p);
+                    if (hit.VisualHit is FrameworkElement element)
+                    {
+                        while (element.GetType() != typeof(WeaponControl))
+                        {
+                            element = element.Parent as FrameworkElement;
+                        }
+                        if (element is WeaponControl control)
+                        {
+                            if (control.DataContext is BLRWeapon weapon)
+                            {
+                                weapon.ApplyCopy(Copy);
+                            }
+                        }
+                    }
+
+                }
                 break;
         }
     }

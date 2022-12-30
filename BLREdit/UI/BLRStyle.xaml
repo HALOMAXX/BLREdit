@@ -249,8 +249,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Grid>
-                        <Image Name="Normal" Source="Resources/CleanedButton.png" Stretch="Fill" Width="{Binding (ToggleButton.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}" Height="{Binding (ToggleButton.ActualHeight), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"/>
-                        <Image Name="Hover" Visibility="Hidden" Source="Resources/CleanedButtonHover.png" Stretch="Fill" Width="{Binding (ToggleButton.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}" Height="{Binding (ToggleButton.ActualHeight), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"/>
+                        <Image Name="off" Source="Resources/CleanedButton.png" Stretch="Fill" Width="{Binding (ToggleButton.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}" Height="{Binding (ToggleButton.ActualHeight), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"/>
+                        <Image Name="on" Visibility="Hidden" Source="Resources/CleanedButtonHover.png" Stretch="Fill" Width="{Binding (ToggleButton.Width), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}" Height="{Binding (ToggleButton.ActualHeight), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
@@ -268,15 +268,13 @@
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                            <Setter TargetName="Hover" Property="Visibility" Value="Visible"/>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="on" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="ButtonContent" Property="TextBlock.Foreground" Value="#FFFFFFFF"/>
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                            <Setter TargetName="Hover" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="ButtonContent" Property="TextBlock.Foreground" Value="#FFFFFFFF"/>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter TargetName="on" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="ButtonContent" Property="TextBlock.Foreground" Value="#FF78AEBC"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

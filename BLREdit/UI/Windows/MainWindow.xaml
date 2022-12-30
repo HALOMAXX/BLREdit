@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:res="clr-namespace:BLREdit.Properties"
+        xmlns:p="clr-namespace:BLREdit.Properties"
         xmlns:ui="clr-namespace:BLREdit.UI.Controls"
         xmlns:old="clr-namespace:BLREdit.UI"
         xmlns:views="clr-namespace:BLREdit.UI.Views"
@@ -18,11 +18,11 @@
     <Grid AllowDrop="True">
         <ComboBox Width="120" Height="22" Margin="10,5,0,0" Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0"  HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ProfileComboBox_SelectionChanged"/>
         <TextBox Width="120" Height="22" Margin="140,5,0,0" Name="PlayerNameTextBox"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" PreviewTextInput="PlayerNameTextBox_PreviewInput" TextChanged="PlayerNameTextBox_TextChanged"/>
-        <Button Width="120" Height="22" Margin="270,5,0,0" Name="AddProfileButton" Content="{x:Static res:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
+        <Button Width="120" Height="22" Margin="270,5,0,0" Name="AddProfileButton" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
 
-        <Button Width="120" Height="22" Margin="10,35,0,0" Name="CopyToClipboardButton" Content="{x:Static res:Resources.btn_ExportProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CopyToClipboardButton_Click"/>
-        <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static res:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
-        <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static res:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
+        <Button Width="120" Height="22" Margin="10,35,0,0" Name="CopyToClipboardButton" Content="{x:Static p:Resources.btn_ExportProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CopyToClipboardButton_Click"/>
+        <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static p:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
+        <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
         <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="420" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged">
             <TabItem Header="Loadout 1">
@@ -120,6 +120,9 @@
                 </TabControl>
             </TabItem>
 
+            <TabItem Header="Settings">
+                <ui:BLREditSettingsControl/>
+            </TabItem>
         </TabControl>
         <Grid HorizontalAlignment="Right" Width="400" Margin="400,0,0,0" IsHitTestVisible="False" Focusable="False">
             <ListBox HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="400" Background="Transparent" Name="AlertList" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">

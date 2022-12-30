@@ -311,5 +311,14 @@ namespace BLREdit.Properties {
                 return ResourceManager.GetString("lbl_Zoom", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AdvancedModding.
+        /// </summary>
+        public static string tbtn_AdvancedModding {
+            get {
+                return ResourceManager.GetString("tbtn_AdvancedModding", resourceCulture);
+            }
+        }
     }
 }

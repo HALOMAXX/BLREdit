@@ -64,7 +64,6 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         Secondary = new(false, this);
     }
 
-
     #region Depot
     private BLRItem depot1;
     public BLRItem Depot1 { get { return depot1; } set { if (value is null || depot1 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0); } else { depot1 = value; } ItemChanged(); } } }
