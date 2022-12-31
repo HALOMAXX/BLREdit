@@ -66,7 +66,7 @@ public static class ImportSystem
                     foreach (var item in itemCategory.Value)
                     {
                         var (DamageIdeal, DamageMax) = BLRWeapon.CalculateDamage(item, 0);
-                        var (ZoomSpread, HipSpread, MovmentSpread) = BLRWeapon.CalculateSpread(item, 0, 0);
+                        var (ZoomSpread, HipSpread, MovmentSpread) = BLRWeapon.CalculateSpread(item, 0, 0, item, item);
                         var (RecoilHip, _RecoilZoom) = BLRWeapon.CalculateRecoil(item, 0);
                         var (IdealRange, MaxRange, _TracerRange) = BLRWeapon.CalculateRange(item, 0);
 
