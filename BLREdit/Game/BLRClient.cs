@@ -235,7 +235,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         var count = InstalledModules.Count;
         var customCount = CustomModules.Count;
         LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Length} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}");
-        if (App.AvailableProxyModules.Length > 0 && BLREditSettings.Settings.StrictModuleChecks)
+        if (App.AvailableProxyModules.Length > 0 && BLREditSettings.Settings.StrictModuleChecks.Is)
         { InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); }
 
         foreach (var file in Directory.EnumerateFiles(ModulesFolder))
@@ -250,7 +250,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     if (name == module.InstallName)
                     { isInstalled = true; break; }
                 }
-                if (BLREditSettings.Settings.AllowCustomModules && !isInstalled)
+                if (BLREditSettings.Settings.AllowCustomModules.Is && !isInstalled)
                 {
                     bool isNew = true;
                     foreach (var module in CustomModules)
@@ -282,7 +282,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             SetModuleInProxyConfig(config, module);
         }
 
-        if (BLREditSettings.Settings.AllowCustomModules)
+        if (BLREditSettings.Settings.AllowCustomModules.Is)
         {
             LoggingSystem.Log($"Applying Custom Modules:");
             foreach (var module in CustomModules)

@@ -204,4 +204,43 @@
   <data name="tbtn_AdvancedModding" xml:space="preserve">
     <value>AdvancedModding</value>
   </data>
+  <data name="tbtn_AllowCustomModules" xml:space="preserve">
+    <value>CustomModules</value>
+  </data>
+  <data name="tbtn_Debugging" xml:space="preserve">
+    <value>Debugging</value>
+  </data>
+  <data name="tbtn_ForceRuntimeCheck" xml:space="preserve">
+    <value>ForceRuntimeCheck</value>
+  </data>
+  <data name="tbtn_RuntimeCheck" xml:space="preserve">
+    <value>RuntimeCheck</value>
+  </data>
+  <data name="tbtn_ShowUpdateNotice" xml:space="preserve">
+    <value>UpdateNotice</value>
+  </data>
+  <data name="tbtn_StrictModuleChecks" xml:space="preserve">
+    <value>StrictModuleChecks</value>
+  </data>
+  <data name="tbtn_TT_AdvancedModding" xml:space="preserve">
+    <value>Allows for Weapon Builds which are normaly not possible</value>
+  </data>
+  <data name="tbtn_TT_AllowCustomModules" xml:space="preserve">
+    <value>Allows BLREdit to Adopt Modules in the Module Folder into the Installed Module List Client and Server are both set as Default to be Loaded</value>
+  </data>
+  <data name="tbtn_TT_Debugging" xml:space="preserve">
+    <value>Doesn't have any effect currently</value>
+  </data>
+  <data name="tbtn_TT_ForceRuntimeCheck" xml:space="preserve">
+    <value>Forces the Runtime Check Dialog to display</value>
+  </data>
+  <data name="tbtn_TT_RuntimeCheck" xml:space="preserve">
+    <value>Checks if all necessary MVC++ RUntimes are installed to make the Gamework only needed when the game was not installed via Steam</value>
+  </data>
+  <data name="tbtn_TT_ShowUpdateNotice" xml:space="preserve">
+    <value>Opens the default Web browser to the Newest release when a new one is available</value>
+  </data>
+  <data name="tbtn_TT_StrictModuleChecks" xml:space="preserve">
+    <value>Only Allows Proxy Modules from the GitHub List</value>
+  </data>
 </root>

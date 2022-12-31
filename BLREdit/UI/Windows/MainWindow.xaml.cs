@@ -201,13 +201,13 @@ public sealed partial class MainWindow : Window
         #endregion Frontend Init
 
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
-        if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice)
+        if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice.Is)
         {
             System.Diagnostics.Process.Start($"https://github.com/{App.CurrentOwner}/{App.CurrentRepo}/releases");
         }
-        if (BLREditSettings.Settings.DoRuntimeCheck || BLREditSettings.Settings.ForceRuntimeCheck)
+        if (BLREditSettings.Settings.DoRuntimeCheck.Is || BLREditSettings.Settings.ForceRuntimeCheck.Is)
         {
-            if (App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || BLREditSettings.Settings.ForceRuntimeCheck)
+            if (App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || BLREditSettings.Settings.ForceRuntimeCheck.Is)
             {
                 var info = new InfoPopups.DownloadRuntimes();
                 if (!App.IsUpdateRuntimeMissing)
@@ -820,10 +820,6 @@ public sealed partial class MainWindow : Window
     #endregion Server UI
 
     #region Hotkeys
-    bool shiftDown = false;
-    bool altDown = false;
-    bool ctrlDown = false;
-
     /// <summary>
     /// Modifier Key Check
     /// </summary>
@@ -831,43 +827,18 @@ public sealed partial class MainWindow : Window
     /// <param name="e"></param>
     private void PreviewKeyDownMainWindow(object sender, KeyEventArgs e)
     {
-        switch (e.Key)
-        {
-            case Key.LeftShift:
-            case Key.RightShift:
-                shiftDown = true;
-                break;
-            case Key.LeftAlt:
-            case Key.RightAlt:
-                altDown = true;
-                break;
-            case Key.LeftCtrl:
-            case Key.RightCtrl:
-                ctrlDown = true;
-                break;
-        }
+        UIKeys.KeyDown(sender, e);
     }
 
 
     private int buttonIndex = 0;
     private void PreviewKeyUpMainWindow(object sender, KeyEventArgs e)
     {
+        UIKeys.KeyUp(sender, e);
         switch (e.Key)
         {
-            case Key.LeftShift:
-            case Key.RightShift:
-                shiftDown = false;
-                break;
-            case Key.LeftAlt:
-            case Key.RightAlt:
-                altDown = false;
-                break;
-            case Key.LeftCtrl:
-            case Key.RightCtrl:
-                ctrlDown = false;
-                break;
             case Key.Tab:
-                if (shiftDown)
+                if (UIKeys.Keys[Key.LeftShift].Is || UIKeys.Keys[Key.RightShift].Is)
                 {
                     buttonIndex--;
                 }
@@ -886,7 +857,7 @@ public sealed partial class MainWindow : Window
                 ((TabItem)MainWindowTabs.Items[buttonIndex]).Focus();
                 break;
             case Key.A:
-                if (ctrlDown && altDown && !SearchBox.IsFocused)
+                if ((UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is) && (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is) && !SearchBox.IsFocused)
                 {
                     BLREditSettings.Settings.AdvancedModding.SetBool(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
@@ -897,13 +868,13 @@ public sealed partial class MainWindow : Window
                 }
                 break;
             case Key.Z:
-                if (ctrlDown) UndoRedoSystem.Undo();
+                if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is) UndoRedoSystem.Undo();
                 break;
             case Key.Y:
-                if (ctrlDown) UndoRedoSystem.Redo();
+                if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is) UndoRedoSystem.Redo();
                 break;
             case Key.C:
-                if (ctrlDown)
+                if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
                 { 
                     Point p = Mouse.GetPosition(this);
                     var hit = VisualTreeHelper.HitTest(this, p);
@@ -925,7 +896,7 @@ public sealed partial class MainWindow : Window
                 }
                 break;
             case Key.V:
-                if (ctrlDown)
+                if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
                 {
                     Point p = Mouse.GetPosition(this);
                     var hit = VisualTreeHelper.HitTest(this, p);

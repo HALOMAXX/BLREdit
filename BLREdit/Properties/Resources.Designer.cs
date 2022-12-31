@@ -320,5 +320,122 @@ namespace BLREdit.Properties {
                 return ResourceManager.GetString("tbtn_AdvancedModding", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CustomModules.
+        /// </summary>
+        public static string tbtn_AllowCustomModules {
+            get {
+                return ResourceManager.GetString("tbtn_AllowCustomModules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debugging.
+        /// </summary>
+        public static string tbtn_Debugging {
+            get {
+                return ResourceManager.GetString("tbtn_Debugging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ForceRuntimeCheck.
+        /// </summary>
+        public static string tbtn_ForceRuntimeCheck {
+            get {
+                return ResourceManager.GetString("tbtn_ForceRuntimeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RuntimeCheck.
+        /// </summary>
+        public static string tbtn_RuntimeCheck {
+            get {
+                return ResourceManager.GetString("tbtn_RuntimeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UpdateNotice.
+        /// </summary>
+        public static string tbtn_ShowUpdateNotice {
+            get {
+                return ResourceManager.GetString("tbtn_ShowUpdateNotice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to StrictModuleChecks.
+        /// </summary>
+        public static string tbtn_StrictModuleChecks {
+            get {
+                return ResourceManager.GetString("tbtn_StrictModuleChecks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allows for Weapon Builds which are normaly not possible.
+        /// </summary>
+        public static string tbtn_TT_AdvancedModding {
+            get {
+                return ResourceManager.GetString("tbtn_TT_AdvancedModding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allows BLREdit to Adopt Modules in the Module Folder into the Installed Module List Client and Server are both set as Default to be Loaded.
+        /// </summary>
+        public static string tbtn_TT_AllowCustomModules {
+            get {
+                return ResourceManager.GetString("tbtn_TT_AllowCustomModules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doesn&apos;t have any effect currently.
+        /// </summary>
+        public static string tbtn_TT_Debugging {
+            get {
+                return ResourceManager.GetString("tbtn_TT_Debugging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forces the Runtime Check Dialog to display.
+        /// </summary>
+        public static string tbtn_TT_ForceRuntimeCheck {
+            get {
+                return ResourceManager.GetString("tbtn_TT_ForceRuntimeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checks if all necessary MVC++ Runtimes are installed to make the Gamework only needed when the game was not installed via Steam.
+        /// </summary>
+        public static string tbtn_TT_RuntimeCheck {
+            get {
+                return ResourceManager.GetString("tbtn_TT_RuntimeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens the default Web browser to the Newest release when a new one is available.
+        /// </summary>
+        public static string tbtn_TT_ShowUpdateNotice {
+            get {
+                return ResourceManager.GetString("tbtn_TT_ShowUpdateNotice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only Allows Proxy Modules from the GitHub List.
+        /// </summary>
+        public static string tbtn_TT_StrictModuleChecks {
+            get {
+                return ResourceManager.GetString("tbtn_TT_StrictModuleChecks", resourceCulture);
+            }
+        }
     }
 }

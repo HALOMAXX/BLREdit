@@ -71,7 +71,7 @@ public sealed class IOResources
     public static HttpClient HttpClient { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
     public static HttpClient HttpClientWeb { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
 
-    private static Thread WebClientDownloadThread = new(DownLoadFiles);
+    private readonly static Thread WebClientDownloadThread = new(DownloadFiles);
 
     static IOResources()
     {
@@ -95,7 +95,7 @@ public sealed class IOResources
         }
     }
 
-    private static void DownLoadFiles()
+    private static void DownloadFiles()
     {
         while (App.IsRunning)
         {

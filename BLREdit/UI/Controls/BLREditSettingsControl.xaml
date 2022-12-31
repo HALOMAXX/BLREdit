@@ -12,7 +12,37 @@
     <StackPanel>
         <Border>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AdvancedModding}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_AdvancedModding }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                <ToggleButton Content="{x:Static p:Resources.tbtn_AdvancedModding }" ToolTip="{x:Static p:Resources.tbtn_TT_AdvancedModding }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AllowCustomModules}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_AllowCustomModules }" ToolTip="{x:Static p:Resources.tbtn_TT_AllowCustomModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=Debugging}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_Debugging }" ToolTip="{x:Static p:Resources.tbtn_TT_Debugging }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=DoRuntimeCheck}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_RuntimeCheck }" ToolTip="{x:Static p:Resources.tbtn_TT_RuntimeCheck }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ForceRuntimeCheck}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_ForceRuntimeCheck }" ToolTip="{x:Static p:Resources.tbtn_TT_ForceRuntimeCheck }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ShowUpdateNotice}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_ShowUpdateNotice }" ToolTip="{x:Static p:Resources.tbtn_TT_ShowUpdateNotice }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=StrictModuleChecks}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_StrictModuleChecks }" ToolTip="{x:Static p:Resources.tbtn_TT_StrictModuleChecks }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
             </StackPanel>
         </Border>
     </StackPanel>

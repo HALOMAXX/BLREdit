@@ -31,9 +31,14 @@
         <Border DataContext="{Binding Path=Scope}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,0,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image Name="ScopePreviewImage" HorizontalAlignment="Center" Source="{Binding Path=ScopePreview}" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Scope.Tooltip}" d:DataContext="{d:DesignInstance Type=views:BLRWeapon}"/>
         </Border>
-        <Border Name="Reciever" DataContext="{Binding Path=Reciever}" Height="78" Width="156" HorizontalAlignment="Left" Margin="156,78,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
-        </Border>
+        <Grid Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border Name="Reciever" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=RecieverVisibility}" DataContext="{Binding Path=Reciever}" AllowDrop="True">
+                <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+            </Border>
+            <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=SkinVisibility}" DataContext="{Binding Path=Skin}" AllowDrop="True">
+                <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
+            </Border>
+        </Grid>
         <Border DataContext="{Binding Path=Stock}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,78,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
@@ -48,10 +53,6 @@
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=GripVisibility}" DataContext="{Binding Path=Grip}" Height="78" Width="78" HorizontalAlignment="Left" Margin="0,156,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
-        </Border>
-
-        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=SkinVisibility}" DataContext="{Binding Path=Skin}" Height="78" Width="156" HorizontalAlignment="Left" Margin="78,0,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
 
         <Grid Width="400" Height="128" Margin="0,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">

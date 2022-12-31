@@ -36,7 +36,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     #region Weapon Parts
     private BLRItem reciever = null;
-    public BLRItem Reciever { get { return reciever; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { reciever = value; AddMissingDefaultParts(); ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
+    public BLRItem Reciever { get { return reciever; } set { if (value.Category == ImportSystem.PRIMARY_SKIN_CATEGORY) { Skin = value; } if (BLREditSettings.Settings.AdvancedModding.Is) { reciever = value; AddMissingDefaultParts(); ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
 
     private BLRItem barrel = null;
     public BLRItem Barrel

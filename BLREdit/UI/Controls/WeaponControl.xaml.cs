@@ -33,13 +33,18 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     }
     #endregion Events
 
+    private bool IsPrimary = true;
+
+    private Visibility recieverVisibility = Visibility.Visible;
+    public Visibility RecieverVisibility { get { return recieverVisibility; } private set { recieverVisibility = value; OnPropertyChanged(); } }
+
     private Visibility gripVisibility = Visibility.Collapsed;
     public Visibility GripVisibility { get { return gripVisibility; } private set { gripVisibility = value; OnPropertyChanged(); } }
 
     private Visibility tagVisibility = Visibility.Visible;
     public Visibility TagVisibility { get { return tagVisibility; } private set { tagVisibility = value; OnPropertyChanged(); } }
 
-    private Visibility skinVisibility = Visibility.Visible;
+    private Visibility skinVisibility = Visibility.Collapsed;
     public Visibility SkinVisibility { get { return skinVisibility; } private set { skinVisibility = value; OnPropertyChanged(); } }
 
     public WeaponControl()
@@ -47,10 +52,29 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         InitializeComponent();
         BLREditSettings.Settings.AdvancedModding.PropertyChanged += SettingsChanged;
         GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
+        UIKeys.Keys[Key.LeftShift].PropertyChanged += SkinModifierChanged;
+    }
+
+    public void SkinModifierChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (IsPrimary)
+        {
+            if (UIKeys.Keys[Key.LeftShift].Is)
+            {
+                this.SkinVisibility = Visibility.Visible;
+                this.RecieverVisibility = Visibility.Collapsed;
+            }
+            else
+            {
+                this.SkinVisibility = Visibility.Collapsed;
+                this.RecieverVisibility = Visibility.Visible;
+            }
+        }
     }
 
     public void SetVisibility(bool isPrimary = true)
     {
+        IsPrimary = isPrimary;
         if (isPrimary)
         {
             GripVisibility = Visibility.Collapsed;
