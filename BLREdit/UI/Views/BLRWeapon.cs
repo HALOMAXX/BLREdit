@@ -969,7 +969,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.movementSpeed ?? 0;
             BarrelStockMovementSpeed += Stock?.WeaponModifiers?.movementSpeed ?? 0;
             ModifiedScopeInTime = CalculateScopeInTime(Reciever, Scope, BarrelStockMovementSpeed, RawScopeInTime);
-            (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Reciever, AccuracyPercentage, BarrelStockMovementSpeed);
+            (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Reciever, AccuracyPercentage, BarrelStockMovementSpeed, Magazine, Ammo);
             WeaponDescriptorPart1 = CompareItemDescriptor1(Barrel, Magazine);
             WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
             WeaponDescriptorPart3 = Reciever.GetDescriptorName(TotalRatingPoints);
@@ -1169,7 +1169,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="AccuracyPercentage">all raw Accuracy modifiers</param>
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovmentSpeed modifiers</param>
     /// <returns></returns>
-    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLRItem Reciever, double AccuracyPercentage, double BarrelStockMovementSpeed)
+    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLRItem Reciever, double AccuracyPercentage, double BarrelStockMovementSpeed, BLRItem Magazine, BLRItem Ammo)
     {
         double allMoveSpeed = Percentage(BarrelStockMovementSpeed);
         double allAccuracy = Percentage(AccuracyPercentage);
@@ -1221,6 +1221,25 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         double moveconstant_current = (Reciever?.WeaponStats?.MovementSpreadConstant ?? 0) * (weight_multiplier * move_multiplier);
 
         double move = (accuracyBaseModifier + moveconstant_current) * (180 / Math.PI) * movemultiplier_current;
+
+        if (Reciever?.UID == 40015) // BLP
+        {
+            if ((Magazine?.UID == 44177) || (Ammo?.UID == 90010)) {
+                aim += (0.2 * (180 / Math.PI));
+                hip += (0.2 * (180 / Math.PI));
+                move += (0.2 * (180 / Math.PI));
+            }
+        } else if (Reciever?.UID == 40005) // Shotgun
+        {
+            aim += (0.1 * (180 / Math.PI));
+            hip += (0.1 * (180 / Math.PI));
+            move += (0.1 * (180 / Math.PI));
+        } else if (Reciever?.UID == 40016) // Sark
+        {
+            aim += (0.05 * (180 / Math.PI));
+            hip += (0.05 * (180 / Math.PI));
+            move += (0.05 * (180 / Math.PI));
+        }
 
         // Average spread over multiple shots to account for random center weight multiplier
         double[] averageSpread = { 0, 0, 0 };

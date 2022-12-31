@@ -388,7 +388,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0).ZoomSpread,
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0, this, this).ZoomSpread,
                 _ => 0,
             };
         }
@@ -486,7 +486,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0).HipSpread,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0, this, this).HipSpread,
                 _ => 0,
             };
         }
@@ -579,7 +579,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0).MovmentSpread,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0, this, this).MovmentSpread,
                 _ => 0,
             };
         }
