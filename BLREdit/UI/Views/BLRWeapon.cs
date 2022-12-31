@@ -1215,6 +1215,23 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         double move = (accuracyBaseModifier + moveconstant_current) * (180 / Math.PI) * movemultiplier_current;
 
+        if (Reciever?.UID == 40015) // BLP
+        {
+            aim += (0.2 * (180 / Math.PI));
+            hip += (0.2 * (180 / Math.PI));
+            move += (0.2 * (180 / Math.PI));
+        } else if (Reciever?.UID == 40005) // Shotgun
+        {
+            aim += (0.1 * (180 / Math.PI));
+            hip += (0.1 * (180 / Math.PI));
+            move += (0.1 * (180 / Math.PI));
+        } else if (Reciever?.UID == 40016) // Sark
+        {
+            aim += (0.05 * (180 / Math.PI));
+            hip += (0.05 * (180 / Math.PI));
+            move += (0.05 * (180 / Math.PI));
+        }
+
         // Average spread over multiple shots to account for random center weight multiplier
         double[] averageSpread = { 0, 0, 0 };
         double magsize = Math.Min(Reciever?.WeaponStats?.MagSize ?? 0, 15.0f);
