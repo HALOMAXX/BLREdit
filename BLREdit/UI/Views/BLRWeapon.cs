@@ -940,6 +940,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
         else
         { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Tag)), this); }
+
+        if (!Skin.IsValidFor(Reciever))
+        {
+            UndoRedoSystem.DoActionAfter(ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0), GetType().GetProperty(nameof(Skin)), this);
+        }
     }
 
     public void CalculateStats()

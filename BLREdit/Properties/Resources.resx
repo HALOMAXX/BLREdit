@@ -235,7 +235,7 @@
     <value>Forces the Runtime Check Dialog to display</value>
   </data>
   <data name="tbtn_TT_RuntimeCheck" xml:space="preserve">
-    <value>Checks if all necessary MVC++ RUntimes are installed to make the Gamework only needed when the game was not installed via Steam</value>
+    <value>Checks if all necessary MVC++ Runtimes are installed to make the Gamework only needed when the game was not installed via Steam</value>
   </data>
   <data name="tbtn_TT_ShowUpdateNotice" xml:space="preserve">
     <value>Opens the default Web browser to the Newest release when a new one is available</value>
