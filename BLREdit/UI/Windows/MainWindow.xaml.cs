@@ -861,9 +861,7 @@ public sealed partial class MainWindow : Window
                 {
                     BLREditSettings.Settings.AdvancedModding.SetBool(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
-                    var grid = CreateAlertGrid($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
-                    AlertList.Items.Add(grid);
-                    new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
+                    ShowAlert($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}", 400);
                     LoggingSystem.Log($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
                 }
                 break;
@@ -920,6 +918,14 @@ public sealed partial class MainWindow : Window
         }
     }
     #endregion Hotkeys
+
+    public static void ShowAlert(string message, double displayTime = 400)
+    {
+        if (Self is null) return;
+        var grid = CreateAlertGrid(message);
+        Self.AlertList.Items.Add(grid);
+        new TripleAnimationDouble(0, displayTime, 1, 3, 1, grid, Grid.WidthProperty, Self.AlertList.Items).Begin(Self.AlertList);
+    }
     private static Grid CreateAlertGrid(string Alert)
     {
         TextBox alertText = new() { Text = Alert, TextAlignment = TextAlignment.Center, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0)), IsReadOnly = true, FontSize = 26 };

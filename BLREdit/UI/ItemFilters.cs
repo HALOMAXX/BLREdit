@@ -58,12 +58,19 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static bool FilterByValidity(BLRItem item)
     {
-        return item.Category switch
+        switch ( item.Category )
         {
-            ImportSystem.EMOTES_CATEGORY => !string.IsNullOrEmpty(item.Name),
-            ImportSystem.PRIMARY_CATEGORY => true,
-            ImportSystem.SECONDARY_CATEGORY => item.Tooltip != "Depot Item!",
-            _ => item.IsValidFor(Instance.WeaponFilter),
+            case ImportSystem.EMOTES_CATEGORY:
+                return !string.IsNullOrEmpty(item.Name);
+            case ImportSystem.PRIMARY_CATEGORY: 
+                return true;
+            case ImportSystem.SECONDARY_CATEGORY:
+                return item.Tooltip != "Depot Item!";
+            case ImportSystem.SHOP_CATEGORY:
+                if (BLREditSettings.Settings.AdvancedModding.Is) return true;
+                return item.Name != "HRV Jammer";
+            default:
+                return item.IsValidFor(Instance.WeaponFilter);
         };
     }
 
