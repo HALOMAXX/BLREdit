@@ -216,6 +216,9 @@
   <data name="tbtn_RuntimeCheck" xml:space="preserve">
     <value>RuntimeCheck</value>
   </data>
+  <data name="tbtn_ServerWatchDog" xml:space="preserve">
+    <value>Server WatchDog</value>
+  </data>
   <data name="tbtn_ShowUpdateNotice" xml:space="preserve">
     <value>UpdateNotice</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="tbtn_TT_RuntimeCheck" xml:space="preserve">
     <value>Checks if all necessary MVC++ Runtimes are installed to make the Gamework only needed when the game was not installed via Steam</value>
+  </data>
+  <data name="tbtn_TT_ServerWatchDog" xml:space="preserve">
+    <value>Enables the Server WatchDog which will Restart's the server instantly if it crashes or get's closed</value>
   </data>
   <data name="tbtn_TT_ShowUpdateNotice" xml:space="preserve">
     <value>Opens the default Web browser to the Newest release when a new one is available</value>

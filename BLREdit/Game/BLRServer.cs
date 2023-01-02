@@ -131,14 +131,12 @@ public sealed class BLRServer : INotifyPropertyChanged
         var server = ServerUtilsClient.GetServerInfo(this);
         server.Wait();
         ServerInfo = server.Result;
-        if (ServerInfo is null) { ServerInfo = new(); } else { ServerInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Server Info!"); }
-
-
+        if (ServerInfo is null) { ServerInfo = new(); } else { ServerInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Server-Utils Info!\n{ServerInfo}"); }
 
         var magi = MagiCowClient.GetServerInfo(ServerAddress);
         magi.Wait();
         MagiInfo = magi.Result;
-        if (MagiInfo is null) { MagiInfo = new(); } else { MagiInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Magi Info!"); }
+        if (MagiInfo is null) { MagiInfo = new(); } else { MagiInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Magi Info!\n{MagiInfo}"); }
 
         RefreshInfo();
         isPinging.SetBool(false);
@@ -177,16 +175,16 @@ public sealed class BLRServer : INotifyPropertyChanged
         }
     }
 
-    private ICommand launchServerCommand;
+    private ICommand connectToServerCommand;
     [JsonIgnore]
-    public ICommand LaunchServerCommand
+    public ICommand ConnectToServerCommand
     {
         get
         {
-            launchServerCommand ??= new RelayCommand(
+            connectToServerCommand ??= new RelayCommand(
                     param => this.LaunchClient()
                 );
-            return launchServerCommand;
+            return connectToServerCommand;
         }
     }
 

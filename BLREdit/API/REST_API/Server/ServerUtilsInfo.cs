@@ -26,6 +26,11 @@ public sealed class ServerUtilsInfo
 
     //TODO Add Team Id
 
+    public override string ToString()
+    {
+        return LoggingSystem.ObjectToTextWall(this);
+    }
+
     public string GetTimeDisplay()
     {
         var limit = new TimeSpan(0, 0, TimeLimit);
@@ -92,7 +97,6 @@ public sealed class ServerUtilsInfo
         get
         {
             if (map is null) { foreach (var m in MapModeSelect.Maps) { if (m.MapName.ToLower() == Map.ToLower()) { map = m; break; } } }
-            LoggingSystem.Log(Map);
             return map;
         }
     }

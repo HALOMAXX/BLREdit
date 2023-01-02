@@ -37,4 +37,9 @@ public sealed class MagiCowServerInfo
             return list;
         }
     }
+
+    public override string ToString()
+    {
+        return LoggingSystem.ObjectToTextWall(this);
+    }
 }

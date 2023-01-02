@@ -29,20 +29,29 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     private BLRServer server = null;
     public BLRServer DefaultServer { get { return server; } set { server = value; OnPropertyChanged(); } }
 
-    //Might not do anything anymore.
-    public UIBool ShowUpdateNotice { get; } = new(true);
-
-    //Toggle to Show if Important Runtime is missing
-    public UIBool DoRuntimeCheck { get; } = new(true);
-
-    //Forces Display of needed Runtimes
-    public UIBool ForceRuntimeCheck { get; } = new(false);
+    //Toggles Advanced Modding
+    public UIBool AdvancedModding { get; set; } = new(false);
 
     //Toggles Debugging (has no use currently)
-    public UIBool Debugging { get; } = new(false);
+    public UIBool Debugging { get; set; } = new(false);
+
+    //Toggle to Show if Important Runtime is missing
+    public UIBool DoRuntimeCheck { get; set; } = new(true);
+
+    //Forces Display of needed Runtimes
+    public UIBool ForceRuntimeCheck { get; set; } = new(false);
+
+    //Might not do anything anymore.
+    public UIBool ShowUpdateNotice { get; set; } = new(true);
 
     //Toggles Advanced Modding
-    public UIBool AdvancedModding { get; } = new(false);
+    public UIBool ServerWatchDog{ get; set; } = new(false);
+
+    //Filters Modules that are not in the GitHub AvailableModule List
+    public UIBool StrictModuleChecks { get; set; } = new(true);
+
+    //Adds modules that are in the Module Folder of the Client to the installed Module list and adds them to Proxy Load order
+    public UIBool AllowCustomModules { get; set; } = new(false);
 
     //BotCount for Server Start
     private int botCount = 8;
@@ -51,11 +60,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     private int playerCount = 16;
     public int PlayerCount { get { return playerCount; } set { playerCount = value; OnPropertyChanged(); } }
 
-    //Filters Modules that are not in the GitHub AvailableModule List
-    public UIBool StrictModuleChecks { get; } = new (true);
 
-    //Adds modules that are in the Module Folder of the Client to the installed Module list and adds them to Proxy Load order
-    public UIBool AllowCustomModules { get; } = new(false);
 
 
 

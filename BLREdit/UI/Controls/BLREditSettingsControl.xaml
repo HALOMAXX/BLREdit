@@ -45,5 +45,10 @@
                 <ToggleButton Content="{x:Static p:Resources.tbtn_StrictModuleChecks }" ToolTip="{x:Static p:Resources.tbtn_TT_StrictModuleChecks }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
             </StackPanel>
         </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ServerWatchDog}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_ServerWatchDog }" ToolTip="{x:Static p:Resources.tbtn_TT_ServerWatchDog }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
     </StackPanel>
 </UserControl>

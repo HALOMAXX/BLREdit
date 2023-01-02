@@ -358,6 +358,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Server WatchDog.
+        /// </summary>
+        public static string tbtn_ServerWatchDog {
+            get {
+                return ResourceManager.GetString("tbtn_ServerWatchDog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UpdateNotice.
         /// </summary>
         public static string tbtn_ShowUpdateNotice {
@@ -417,6 +426,15 @@ namespace BLREdit.Properties {
         public static string tbtn_TT_RuntimeCheck {
             get {
                 return ResourceManager.GetString("tbtn_TT_RuntimeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enables the Server WatchDog which will Restart&apos;s the server instantly if it crashes or get&apos;s closed.
+        /// </summary>
+        public static string tbtn_TT_ServerWatchDog {
+            get {
+                return ResourceManager.GetString("tbtn_TT_ServerWatchDog", resourceCulture);
             }
         }
         

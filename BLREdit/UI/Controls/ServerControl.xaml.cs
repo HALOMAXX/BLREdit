@@ -38,7 +38,7 @@ namespace BLREdit.UI.Controls
             {
                 if (this.DataContext is BLRServer server)
                 {
-                    server.LaunchServerCommand.Execute(null);
+                    server.ConnectToServerCommand.Execute(null);
                 }
             }
         }

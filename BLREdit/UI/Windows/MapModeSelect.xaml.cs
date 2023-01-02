@@ -51,7 +51,8 @@ public sealed partial class MapModeSelect : Window
         InitializeComponent();
         this.MapList.Items.Filter += new Predicate<object>(o =>
         {
-            if (clientVersion == "Unknown") { return true; }
+            if(BLREditSettings.Settings.AdvancedModding.Is) return true;
+            if (clientVersion == "Unknown") return true;
             if (o is BLRMap map)
             {
                 return map.Available.Contains(clientVersion);

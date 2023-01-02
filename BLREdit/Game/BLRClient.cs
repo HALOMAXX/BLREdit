@@ -400,7 +400,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
         string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}?SingleMatch";
-        StartProcess(launchArgs, true);
+        StartProcess(launchArgs, BLREditSettings.Settings.ServerWatchDog.Is);
         LaunchClient(new LaunchOptions() { UserName=ExportSystem.ActiveProfile.PlayerName, Server=LocalHost });
     }
 
@@ -408,8 +408,8 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
-        string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
-        StartProcess(launchArgs, true);
+        string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
+        StartProcess(launchArgs, BLREditSettings.Settings.ServerWatchDog.Is);
     }
 
     public void LaunchClient()
