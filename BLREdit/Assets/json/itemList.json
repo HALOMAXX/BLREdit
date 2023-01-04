@@ -1811,49 +1811,49 @@
       "Icon": "t_Taunt_PumpDigital_128x128",
       "Name": "Pump Digital",
       "Tooltip": "Pump Digital",
-      "UID": 314
+      "UID": 315
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_CutItDigital_128x128",
       "Name": "Cut It Digital",
       "Tooltip": "Cut It Digital",
-      "UID": 315
+      "UID": 316
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThroatSlitDigital_128x128",
       "Name": "Throat Slit Digital",
       "Tooltip": "Throat Slit Digital",
-      "UID": 316
+      "UID": 317
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThumbsDownDigital_128x128",
       "Name": "Thumbs Down Digital",
       "Tooltip": "Thumbs Down Digital",
-      "UID": 317
+      "UID": 318
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_ThumbsUpDigital_128x128",
       "Name": "Thumbs Up Digital",
       "Tooltip": "Thumbs Up Digital",
-      "UID": 318
+      "UID": 319
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_AOKDigital_128x128",
       "Name": "A-OK Digital",
       "Tooltip": "A-OK Digital",
-      "UID": 319
+      "UID": 320
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_MetalDigital_128x128",
       "Name": "Metal Digital",
       "Tooltip": "Metal Digital",
-      "UID": 320
+      "UID": 321
     },
     {
       "Category": "emotes",
@@ -2154,7 +2154,7 @@
       "Icon": "t_Taunt_IrishJig_128x128",
       "Name": "Irish Jig",
       "Tooltip": "Irish Jig",
-      "UID": 321
+      "UID": 497
     },
     {
       "Category": "emotes",
@@ -2168,28 +2168,28 @@
       "Icon": "t_Taunt_PowerPunch_Earth_128x128",
       "Name": "Punch Earth",
       "Tooltip": "Punch Earth",
-      "UID": 498
+      "UID": 499
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerPunch_Fire_128x128",
       "Name": "Punch Fire",
       "Tooltip": "Punch Fire",
-      "UID": 498
+      "UID": 500
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerPunch_Water_128x128",
       "Name": "Punch Water",
       "Tooltip": "Punch Water",
-      "UID": 498
+      "UID": 501
     },
     {
       "Category": "emotes",
       "Icon": "t_Taunt_PowerPunch_Heart_128x128",
       "Name": "Punch Heart",
       "Tooltip": "Punch Heart",
-      "UID": 498
+      "UID": 502
     }
   ],
   "hangers": [
@@ -16614,7 +16614,7 @@
       "Icon": "t_CamoKBMOD_new_128x128",
       "Name": "KBMOD.com New",
       "Tooltip": "CamoDesc",
-      "UID": 630411
+      "UID": 630221
     },
     {
       "Category": "camosBody",
@@ -16622,7 +16622,7 @@
       "Icon": "t_Camo_EBL_128x128",
       "Name": "EBL Tourney",
       "Tooltip": "CamoDesc",
-      "UID": 630412
+      "UID": 630222
     },
     {
       "Category": "camosBody",
@@ -16630,7 +16630,7 @@
       "Icon": "TX_Camo_Bloodmoney_128x128",
       "Name": "Bloodmoney",
       "Tooltip": "CamoDesc",
-      "UID": 630413
+      "UID": 630223
     },
     {
       "Category": "camosBody",
@@ -16638,7 +16638,7 @@
       "Icon": "TX_Camo_Bloodmoney2_128x128",
       "Name": "Bloodmoney 2",
       "Tooltip": "CamoDesc",
-      "UID": 630414
+      "UID": 630224
     },
     {
       "Category": "camosBody",
@@ -16646,7 +16646,7 @@
       "Icon": "TX_Camo_Cracked_Apple_128x128",
       "Name": "Cracked Apple",
       "Tooltip": "CamoDesc",
-      "UID": 630415
+      "UID": 630225
     },
     {
       "Category": "camosBody",
@@ -16654,7 +16654,7 @@
       "Icon": "TX_Camo_Cracked_Apple_Pink_128x128",
       "Name": "Cracked Apple Pink",
       "Tooltip": "CamoDesc",
-      "UID": 630416
+      "UID": 630226
     },
     {
       "Category": "camosBody",
@@ -16662,7 +16662,7 @@
       "Icon": "TX_Camo_Cracked_Apple_Red_128x128",
       "Name": "Cracked Apple Red",
       "Tooltip": "CamoDesc",
-      "UID": 630417
+      "UID": 630227
     },
     {
       "Category": "camosBody",
@@ -16670,7 +16670,7 @@
       "Icon": "TX_Camo_Digiplex_128x128",
       "Name": "Digiplex",
       "Tooltip": "CamoDesc",
-      "UID": 630418
+      "UID": 630228
     },
     {
       "Category": "camosBody",
@@ -16678,7 +16678,7 @@
       "Icon": "TX_Camo_Digiplex2_128x128",
       "Name": "Digiplex 2",
       "Tooltip": "CamoDesc",
-      "UID": 630419
+      "UID": 630229
     },
     {
       "Category": "camosBody",
@@ -16686,7 +16686,7 @@
       "Icon": "TX_Camo_Digital_Scatter_128x128",
       "Name": "Digital Scatter",
       "Tooltip": "CamoDesc",
-      "UID": 630420
+      "UID": 630230
     },
     {
       "Category": "camosBody",
@@ -16694,7 +16694,7 @@
       "Icon": "TX_Camo_Digital_Scatter_Green_128x128",
       "Name": "Digital Scatter Green",
       "Tooltip": "CamoDesc",
-      "UID": 630421
+      "UID": 630231
     },
     {
       "Category": "camosBody",
@@ -16702,7 +16702,7 @@
       "Icon": "TX_Camo_Digital_Scatter_Orange_128x128",
       "Name": "Digital Scatter Orange",
       "Tooltip": "CamoDesc",
-      "UID": 630422
+      "UID": 630232
     },
     {
       "Category": "camosBody",
@@ -16710,7 +16710,7 @@
       "Icon": "TX_Camo_Fluffy_Punk_128x128",
       "Name": "Fluffy Punk",
       "Tooltip": "CamoDesc",
-      "UID": 630423
+      "UID": 630233
     },
     {
       "Category": "camosBody",
@@ -16718,7 +16718,7 @@
       "Icon": "TX_Camo_GoFast_128x128",
       "Name": "GoFast",
       "Tooltip": "CamoDesc",
-      "UID": 630424
+      "UID": 630234
     },
     {
       "Category": "camosBody",
@@ -16726,7 +16726,7 @@
       "Icon": "TX_Camo_Jagged_Metallic_128x128",
       "Name": "Jagged Metallic",
       "Tooltip": "CamoDesc",
-      "UID": 630425
+      "UID": 630235
     },
     {
       "Category": "camosBody",
@@ -16734,7 +16734,7 @@
       "Icon": "TX_Camo_Jagged_Metallic_Green_128x128",
       "Name": "Jagged Metallic Green",
       "Tooltip": "CamoDesc",
-      "UID": 630426
+      "UID": 630236
     },
     {
       "Category": "camosBody",
@@ -16742,7 +16742,7 @@
       "Icon": "TX_Camo_Jagged_Metallic_Red_128x128",
       "Name": "Jagged Metallic Red",
       "Tooltip": "CamoDesc",
-      "UID": 630427
+      "UID": 630237
     },
     {
       "Category": "camosBody",
@@ -16750,7 +16750,7 @@
       "Icon": "TX_Camo_MolternShards_128x128",
       "Name": "Molten Shards",
       "Tooltip": "CamoDesc",
-      "UID": 630428
+      "UID": 630238
     },
     {
       "Category": "camosBody",
@@ -16758,7 +16758,7 @@
       "Icon": "TX_Camo_Mud_Rough_128x128",
       "Name": "Mud Rough",
       "Tooltip": "CamoDesc",
-      "UID": 630429
+      "UID": 630239
     },
     {
       "Category": "camosBody",
@@ -16766,7 +16766,7 @@
       "Icon": "TX_Camo_Mud_Rough_Pink_128x128",
       "Name": "Mud Rough Pink",
       "Tooltip": "CamoDesc",
-      "UID": 630430
+      "UID": 630240
     },
     {
       "Category": "camosBody",
@@ -16774,7 +16774,7 @@
       "Icon": "TX_Camo_Mud_Rough_Red_128x128",
       "Name": "Mud Rough Red",
       "Tooltip": "CamoDesc",
-      "UID": 630431
+      "UID": 630241
     },
     {
       "Category": "camosBody",
@@ -16782,7 +16782,7 @@
       "Icon": "TX_Camo_Quiet_Sand_128x128",
       "Name": "Quiet Sand",
       "Tooltip": "CamoDesc",
-      "UID": 630432
+      "UID": 630242
     },
     {
       "Category": "camosBody",
@@ -16790,7 +16790,7 @@
       "Icon": "TX_Camo_Quiet_Sand_Blue_128x128",
       "Name": "Quiet Sand Blue",
       "Tooltip": "CamoDesc",
-      "UID": 630433
+      "UID": 630243
     },
     {
       "Category": "camosBody",
@@ -16798,7 +16798,7 @@
       "Icon": "TX_Camo_Quiet_Sand_Green_128x128",
       "Name": "Quiet Sand Green",
       "Tooltip": "CamoDesc",
-      "UID": 630434
+      "UID": 630244
     },
     {
       "Category": "camosBody",
@@ -16806,7 +16806,7 @@
       "Icon": "TX_Camo_Rock_Metal_128x128",
       "Name": "Rock Matal",
       "Tooltip": "CamoDesc",
-      "UID": 630435
+      "UID": 630245
     },
     {
       "Category": "camosBody",
@@ -16814,7 +16814,7 @@
       "Icon": "TX_Camo_Rock_Metal_Blue_128x128",
       "Name": "Rock Metal Blue",
       "Tooltip": "CamoDesc",
-      "UID": 630436
+      "UID": 630246
     },
     {
       "Category": "camosBody",
@@ -16822,7 +16822,7 @@
       "Icon": "TX_Camo_Rock_Metal_Orange_128x128",
       "Name": "Rock Metal Orange",
       "Tooltip": "CamoDesc",
-      "UID": 630437
+      "UID": 630247
     },
     {
       "Category": "camosBody",
@@ -16830,7 +16830,7 @@
       "Icon": "TX_Camo_Rocked_Scuff_128x128",
       "Name": "Rocked Scuff",
       "Tooltip": "CamoDesc",
-      "UID": 630438
+      "UID": 630248
     },
     {
       "Category": "camosBody",
@@ -16838,7 +16838,7 @@
       "Icon": "TX_Camo_Rocked_Scuff_Blue_128x128",
       "Name": "Rocked Scuff Blue",
       "Tooltip": "CamoDesc",
-      "UID": 630439
+      "UID": 630249
     },
     {
       "Category": "camosBody",
@@ -16846,7 +16846,7 @@
       "Icon": "TX_Camo_Rocked_Scuff_Yellow_128x128",
       "Name": "Rocked Scuff Yellow",
       "Tooltip": "CamoDesc",
-      "UID": 630440
+      "UID": 630250
     },
     {
       "Category": "camosBody",
@@ -16854,7 +16854,7 @@
       "Icon": "TX_Camo_Scarred_Stone_128x128",
       "Name": "Scarred Stone",
       "Tooltip": "CamoDesc",
-      "UID": 630441
+      "UID": 630251
     },
     {
       "Category": "camosBody",
@@ -16862,7 +16862,7 @@
       "Icon": "TX_Camo_Scarred_Stone_Orange_128x128",
       "Name": "Scarred Stone Orange",
       "Tooltip": "CamoDesc",
-      "UID": 630442
+      "UID": 630252
     },
     {
       "Category": "camosBody",
@@ -16870,7 +16870,7 @@
       "Icon": "TX_Camo_Scarred_Stone_Pink_128x128",
       "Name": "Scarred Stone Pink",
       "Tooltip": "CamoDesc",
-      "UID": 630443
+      "UID": 630253
     },
     {
       "Category": "camosBody",
@@ -16878,7 +16878,7 @@
       "Icon": "TX_Camo_Scarred_Stone_Teal_128x128",
       "Name": "Scarred Stone Teal",
       "Tooltip": "CamoDesc",
-      "UID": 630444
+      "UID": 630254
     },
     {
       "Category": "camosBody",
@@ -16886,7 +16886,7 @@
       "Icon": "TX_Camo_Splatter_Smudge_128x128",
       "Name": "Splatter Smudge",
       "Tooltip": "CamoDesc",
-      "UID": 630445
+      "UID": 630255
     },
     {
       "Category": "camosBody",
@@ -16894,7 +16894,7 @@
       "Icon": "TX_Camo_Splatter_Smudge_Blue_128x128",
       "Name": "Splatter Smudge Blue",
       "Tooltip": "CamoDesc",
-      "UID": 630446
+      "UID": 630256
     },
     {
       "Category": "camosBody",
@@ -16902,7 +16902,7 @@
       "Icon": "TX_Camo_Splatter_Smudge_Red_128x128",
       "Name": "Splatter Smudge Red",
       "Tooltip": "CamoDesc",
-      "UID": 630447
+      "UID": 630257
     },
     {
       "Category": "camosBody",
@@ -16910,7 +16910,7 @@
       "Icon": "TX_Camo_Splinter_Bark_128x128",
       "Name": "Splinter Bark",
       "Tooltip": "CamoDesc",
-      "UID": 630448
+      "UID": 630258
     },
     {
       "Category": "camosBody",
@@ -16918,7 +16918,7 @@
       "Icon": "TX_Camo_Splinter_Bark_Blue_128x128",
       "Name": "Splinter Bark Blue",
       "Tooltip": "CamoDesc",
-      "UID": 630449
+      "UID": 630259
     },
     {
       "Category": "camosBody",
@@ -16926,7 +16926,7 @@
       "Icon": "TX_Camo_Splinter_Bark_Green_128x128",
       "Name": "Splinter Bark Green",
       "Tooltip": "CamoDesc",
-      "UID": 630450
+      "UID": 630260
     },
     {
       "Category": "camosBody",
@@ -16934,7 +16934,7 @@
       "Icon": "TX_Camo_Splinter_Bark_Red_128x128",
       "Name": "Splinter Bark Red",
       "Tooltip": "CamoDesc",
-      "UID": 630451
+      "UID": 630261
     },
     {
       "Category": "camosBody",
@@ -16942,7 +16942,7 @@
       "Icon": "TX_Camo_Surfer_Panic_128x128",
       "Name": "Surfer Panic",
       "Tooltip": "CamoDesc",
-      "UID": 630452
+      "UID": 630262
     },
     {
       "Category": "camosBody",
@@ -16950,7 +16950,7 @@
       "Icon": "TX_Camo_Arc_128x128",
       "Name": "Arc",
       "Tooltip": "CamoDesc",
-      "UID": 630453
+      "UID": 630263
     }
   ],
   "camosWeapon": [
@@ -34195,7 +34195,7 @@
       "Icon": "",
       "Name": "No Weapon Skin",
       "Tooltip": "No Fancy Pants Weapon Skin",
-      "UID": 0,
+      "UID": 9999,
       "LMID": -1
     },
     {
@@ -34291,7 +34291,7 @@
       "Icon": "t_SpecialtySkin_AK47_Tiger_01_256x128",
       "Name": "AK470 - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10012,
+      "UID": 10008,
       "LMID": 8,
       "ValidFor": [
         40023
@@ -34302,7 +34302,7 @@
       "Icon": "t_SpecialtySkin_AK47_Tiger_02_256x128",
       "Name": "AK470 - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10072,
+      "UID": 10009,
       "LMID": 9,
       "ValidFor": [
         40023
@@ -34313,7 +34313,7 @@
       "Icon": "t_SpecialtySkin_AK47_Clover_01_256x128",
       "Name": "AK470 - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10073,
+      "UID": 10010,
       "LMID": 10,
       "ValidFor": [
         40023
@@ -34324,7 +34324,7 @@
       "Icon": "t_SpecialtySkin_AK47_Tiger_03_256x128",
       "Name": "AK470 - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10072,
+      "UID": 10011,
       "LMID": 11,
       "ValidFor": [
         40023
@@ -34335,7 +34335,7 @@
       "Icon": "t_SpecialtySkin_AK47_Tiger_04_256x128",
       "Name": "AK470 - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10072,
+      "UID": 10012,
       "LMID": 12,
       "ValidFor": [
         40023
@@ -34346,7 +34346,7 @@
       "Icon": "t_SpecialtySkin_AK47_Tiger_05_256x128",
       "Name": "AK470 - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10072,
+      "UID": 10013,
       "LMID": 13,
       "ValidFor": [
         40023
@@ -34357,7 +34357,7 @@
       "Icon": "t_SpecialtySkin_AK47_Tiger_06_256x128",
       "Name": "AK470 - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10072,
+      "UID": 10014,
       "LMID": 14,
       "ValidFor": [
         40023
@@ -34368,7 +34368,7 @@
       "Icon": "t_SpecialtySkin_AR2_BLRSkullHex_256x128",
       "Name": "Heavy Assault Rifle - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10008,
+      "UID": 10015,
       "LMID": 15,
       "ValidFor": [
         40017
@@ -34379,7 +34379,7 @@
       "Icon": "t_SpecialtySkin_AR2_America_256x128",
       "Name": "Heavy Assault Rifle - Stars And Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10009,
+      "UID": 10016,
       "LMID": 16,
       "ValidFor": [
         40017
@@ -34390,7 +34390,7 @@
       "Icon": "t_SpecialtySkin_AR2_Tiger_01_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10014,
+      "UID": 10017,
       "LMID": 17,
       "ValidFor": [
         40017
@@ -34401,7 +34401,7 @@
       "Icon": "t_SpecialtySkin_AR2_Tiger_02_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10074,
+      "UID": 10018,
       "LMID": 18,
       "ValidFor": [
         40017
@@ -34412,7 +34412,7 @@
       "Icon": "t_SpecialtySkin_AR2_Clover_01_256x128",
       "Name": "Heavy Assault Rifle - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10075,
+      "UID": 10019,
       "LMID": 19,
       "ValidFor": [
         40017
@@ -34423,7 +34423,7 @@
       "Icon": "t_SpecialtySkin_AR2_Tiger_03_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10074,
+      "UID": 10020,
       "LMID": 20,
       "ValidFor": [
         40017
@@ -34434,7 +34434,7 @@
       "Icon": "t_SpecialtySkin_AR2_Tiger_04_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10074,
+      "UID": 10021,
       "LMID": 21,
       "ValidFor": [
         40017
@@ -34445,7 +34445,7 @@
       "Icon": "t_SpecialtySkin_AR2_Tiger_05_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10074,
+      "UID": 10022,
       "LMID": 22,
       "ValidFor": [
         40017
@@ -34456,7 +34456,7 @@
       "Icon": "t_SpecialtySkin_AR2_Tiger_06_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10074,
+      "UID": 10023,
       "LMID": 23,
       "ValidFor": [
         40017
@@ -34467,7 +34467,7 @@
       "Icon": "t_SpecialtySkin_AR3_BLRSkullHex_256x128",
       "Name": "Tactical Assault Rifle - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10017,
+      "UID": 10024,
       "LMID": 24,
       "ValidFor": [
         40025
@@ -34478,7 +34478,7 @@
       "Icon": "t_SpecialtySkin_AR3_America_256x128",
       "Name": "Tactical Assault Rifle - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10018,
+      "UID": 10025,
       "LMID": 25,
       "ValidFor": [
         40025
@@ -34489,7 +34489,7 @@
       "Icon": "t_SpecialtySkin_AR3_Japan_256x128",
       "Name": "Tactical Assault Rifle - Japanese Flag Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10019,
+      "UID": 10026,
       "LMID": 26,
       "ValidFor": [
         40025
@@ -34500,7 +34500,7 @@
       "Icon": "t_SpecialtySkin_AR3_Australia_256x128",
       "Name": "Tactical Assault Rifle - Australian Flag Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10020,
+      "UID": 10027,
       "LMID": 27,
       "ValidFor": [
         40025
@@ -34511,7 +34511,7 @@
       "Icon": "t_SpecialtySkin_AR3_Malaysia_256x128",
       "Name": "Tactical Assault Rifle - Malaysian Flag Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10021,
+      "UID": 10028,
       "LMID": 28,
       "ValidFor": [
         40025
@@ -34522,7 +34522,7 @@
       "Icon": "t_SpecialtySkin_AR3_NewZealand_256x128",
       "Name": "Tactical Assault Rifle - New Zealand Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10022,
+      "UID": 10029,
       "LMID": 29,
       "ValidFor": [
         40025
@@ -34533,7 +34533,7 @@
       "Icon": "t_SpecialtySkin_AR3_Singapore_256x128",
       "Name": "Tactical Assault Rifle - Singapore Flag Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10023,
+      "UID": 10030,
       "LMID": 30,
       "ValidFor": [
         40025
@@ -34544,7 +34544,7 @@
       "Icon": "t_SpecialtySkin_AR3_Turkey_256x128",
       "Name": "Tactical Assault Rifle - Turkish Flag Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10024,
+      "UID": 10031,
       "LMID": 31,
       "ValidFor": [
         40025
@@ -34555,7 +34555,7 @@
       "Icon": "t_SpecialtySkin_AR3_MLG_256x128",
       "Name": "Tactical Assault Rifle - MLG TourNament Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10025,
+      "UID": 10032,
       "LMID": 32,
       "ValidFor": [
         40025
@@ -34566,7 +34566,7 @@
       "Icon": "t_SpecialtySkin_AR3_Tiger_01_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10057,
+      "UID": 10033,
       "LMID": 36,
       "ValidFor": [
         40025
@@ -34577,7 +34577,7 @@
       "Icon": "t_SpecialtySkin_AR3_Tiger_02_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10076,
+      "UID": 10034,
       "LMID": 37,
       "ValidFor": [
         40025
@@ -34588,7 +34588,7 @@
       "Icon": "t_SpecialtySkin_AR3_Clover_01_256x128",
       "Name": "Tactical Assault Rifle - Clovers Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10077,
+      "UID": 10035,
       "LMID": 38,
       "ValidFor": [
         40025
@@ -34599,7 +34599,7 @@
       "Icon": "t_SpecialtySkin_AR3_Tiger_03_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10076,
+      "UID": 10036,
       "LMID": 39,
       "ValidFor": [
         40025
@@ -34610,7 +34610,7 @@
       "Icon": "t_SpecialtySkin_AR3_Tiger_04_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10076,
+      "UID": 10037,
       "LMID": 40,
       "ValidFor": [
         40025
@@ -34621,7 +34621,7 @@
       "Icon": "t_SpecialtySkin_AR3_Tiger_05_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10076,
+      "UID": 10038,
       "LMID": 41,
       "ValidFor": [
         40025
@@ -34632,7 +34632,7 @@
       "Icon": "t_SpecialtySkin_AR3_Tiger_06_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom receiver skin.",
-      "UID": 10076,
+      "UID": 10039,
       "LMID": 42,
       "ValidFor": [
         40025
@@ -34643,7 +34643,7 @@
       "Icon": "t_AssultRifle_Vet_256x128",
       "Name": "Assault Rifle - The Droughtbreaker Weapon Skin",
       "Tooltip": "The horrors of the drought ravaged my inventory.\nEarned by those who lost the most items during the Parity Patch upgrade.",
-      "UID": 10029,
+      "UID": 10040,
       "LMID": 43,
       "ValidFor": [
         40003
@@ -34654,7 +34654,7 @@
       "Icon": "t_SpecialtySkin_AR_BLRSkullHex_256x128",
       "Name": "Assault Rifle - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10056,
+      "UID": 10041,
       "LMID": 44,
       "ValidFor": [
         40003
@@ -34665,7 +34665,7 @@
       "Icon": "t_SpecialtySkin_AR_America_256x128",
       "Name": "Assault Rifle - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10030,
+      "UID": 10042,
       "LMID": 45,
       "ValidFor": [
         40003
@@ -34676,7 +34676,7 @@
       "Icon": "t_SpecialtySkin_AR_MLG_256x128",
       "Name": "Assault Rifle - Broken MLG Tournament Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10030,
+      "UID": 10043,
       "LMID": 46,
       "ValidFor": [
         40003
@@ -34687,7 +34687,7 @@
       "Icon": "t_SpecialtySkin_AR_Tiger_01_256x128",
       "Name": "Assault Rifle - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10013,
+      "UID": 10044,
       "LMID": 47,
       "ValidFor": [
         40003
@@ -34698,7 +34698,7 @@
       "Icon": "t_SpecialtySkin_AR_Tiger_02_256x128",
       "Name": "Assault Rifle - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10078,
+      "UID": 10045,
       "LMID": 48,
       "ValidFor": [
         40003
@@ -34709,7 +34709,7 @@
       "Icon": "t_SpecialtySkin_AR_Clover_01_256x128",
       "Name": "Assault Rifle - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10079,
+      "UID": 10046,
       "LMID": 49,
       "ValidFor": [
         40003
@@ -34720,7 +34720,7 @@
       "Icon": "t_SpecialtySkin_AR_Tiger_03_256x128",
       "Name": "Assault Rifle - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10078,
+      "UID": 10047,
       "LMID": 50,
       "ValidFor": [
         40003
@@ -34731,7 +34731,7 @@
       "Icon": "t_SpecialtySkin_AR_Tiger_04_256x128",
       "Name": "Assault Rifle - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10078,
+      "UID": 10048,
       "LMID": 51,
       "ValidFor": [
         40003
@@ -34742,7 +34742,7 @@
       "Icon": "t_SpecialtySkin_AR_Tiger_05_256x128",
       "Name": "Assault Rifle - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10078,
+      "UID": 10049,
       "LMID": 52,
       "ValidFor": [
         40003
@@ -34753,7 +34753,7 @@
       "Icon": "t_SpecialtySkin_AR_Tiger_06_256x128",
       "Name": "Assault Rifle - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10078,
+      "UID": 10050,
       "LMID": 53,
       "ValidFor": [
         40003
@@ -34764,7 +34764,7 @@
       "Icon": "t_SpecialtySkin_BKT_BLRSkullHex_256x128",
       "Name": "Light Machine Gun - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10032,
+      "UID": 10051,
       "LMID": 54,
       "ValidFor": [
         40011
@@ -34775,7 +34775,7 @@
       "Icon": "t_SpecialtySkin_BKT_America_256x128",
       "Name": "Light Machine Gun - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10033,
+      "UID": 10052,
       "LMID": 55,
       "ValidFor": [
         40011
@@ -34786,7 +34786,7 @@
       "Icon": "t_SpecialtySkin_BKT_Tiger_01_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10058,
+      "UID": 10053,
       "LMID": 56,
       "ValidFor": [
         40011
@@ -34797,7 +34797,7 @@
       "Icon": "t_SpecialtySkin_BKT_Tiger_02_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10080,
+      "UID": 10054,
       "LMID": 57,
       "ValidFor": [
         40011
@@ -34808,7 +34808,7 @@
       "Icon": "t_SpecialtySkin_BKT_Clover_01_256x128",
       "Name": "Light Machine Gun - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10081,
+      "UID": 10055,
       "LMID": 58,
       "ValidFor": [
         40011
@@ -34819,7 +34819,7 @@
       "Icon": "t_SpecialtySkin_BKT_Tiger_03_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10080,
+      "UID": 10056,
       "LMID": 59,
       "ValidFor": [
         40011
@@ -34830,7 +34830,7 @@
       "Icon": "t_SpecialtySkin_BKT_Tiger_04_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10080,
+      "UID": 10057,
       "LMID": 60,
       "ValidFor": [
         40011
@@ -34841,7 +34841,7 @@
       "Icon": "t_SpecialtySkin_BKT_Tiger_05_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10080,
+      "UID": 10058,
       "LMID": 61,
       "ValidFor": [
         40011
@@ -34852,7 +34852,7 @@
       "Icon": "t_SpecialtySkin_BKT_Tiger_06_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10080,
+      "UID": 10059,
       "LMID": 62,
       "ValidFor": [
         40011
@@ -34863,7 +34863,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_BLRSkullHex_256x128",
       "Name": "Bolt-Action - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10034,
+      "UID": 10060,
       "LMID": 63,
       "ValidFor": [
         40007
@@ -34874,7 +34874,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_America_256x128",
       "Name": "Bolt-Action - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10035,
+      "UID": 10061,
       "LMID": 64,
       "ValidFor": [
         40007
@@ -34885,7 +34885,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_01_256x128",
       "Name": "Bolt-Action - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10059,
+      "UID": 10062,
       "LMID": 65,
       "ValidFor": [
         40007
@@ -34896,7 +34896,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_02_256x128",
       "Name": "Bolt-Action - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10082,
+      "UID": 10063,
       "LMID": 66,
       "ValidFor": [
         40007
@@ -34907,7 +34907,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_Clover_01_256x128",
       "Name": "Bolt-Action - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10083,
+      "UID": 10064,
       "LMID": 67,
       "ValidFor": [
         40007
@@ -34918,7 +34918,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_03_256x128",
       "Name": "Bolt-Action - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10082,
+      "UID": 10065,
       "LMID": 68,
       "ValidFor": [
         40007
@@ -34929,7 +34929,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_04_256x128",
       "Name": "Bolt-Action - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10082,
+      "UID": 10066,
       "LMID": 69,
       "ValidFor": [
         40007
@@ -34940,7 +34940,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_05_256x128",
       "Name": "Bolt-Action - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10082,
+      "UID": 10067,
       "LMID": 70,
       "ValidFor": [
         40007
@@ -34951,7 +34951,7 @@
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_06_256x128",
       "Name": "Bolt-Action - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10082,
+      "UID": 10068,
       "LMID": 71,
       "ValidFor": [
         40007
@@ -34962,7 +34962,7 @@
       "Icon": "t_SpecialtySkin_BP2_BLRSkullHex_256x128",
       "Name": "Bullpup Full Auto - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10036,
+      "UID": 10069,
       "LMID": 72,
       "ValidFor": [
         40020
@@ -34973,7 +34973,7 @@
       "Icon": "t_SpecialtySkin_BP2_America_256x128",
       "Name": "Bullpup Full Auto - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10037,
+      "UID": 10070,
       "LMID": 73,
       "ValidFor": [
         40020
@@ -34984,7 +34984,7 @@
       "Icon": "t_SpecialtySkin_BP2_Tiger_01_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10060,
+      "UID": 10071,
       "LMID": 74,
       "ValidFor": [
         40020
@@ -34995,7 +34995,7 @@
       "Icon": "t_SpecialtySkin_BP2_Tiger_02_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10084,
+      "UID": 10072,
       "LMID": 75,
       "ValidFor": [
         40020
@@ -35006,7 +35006,7 @@
       "Icon": "t_SpecialtySkin_BP2_Clover_01_256x128",
       "Name": "Bullpup Full Auto - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10085,
+      "UID": 10073,
       "LMID": 76,
       "ValidFor": [
         40020
@@ -35017,7 +35017,7 @@
       "Icon": "t_SpecialtySkin_BP2_Tiger_03_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10084,
+      "UID": 10074,
       "LMID": 77,
       "ValidFor": [
         40020
@@ -35028,7 +35028,7 @@
       "Icon": "t_SpecialtySkin_BP2_Tiger_04_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10084,
+      "UID": 10075,
       "LMID": 78,
       "ValidFor": [
         40020
@@ -35039,7 +35039,7 @@
       "Icon": "t_SpecialtySkin_BP2_Tiger_05_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10084,
+      "UID": 10076,
       "LMID": 79,
       "ValidFor": [
         40020
@@ -35050,7 +35050,7 @@
       "Icon": "t_SpecialtySkin_BP2_Tiger_06_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10084,
+      "UID": 10077,
       "LMID": 80,
       "ValidFor": [
         40020
@@ -35061,7 +35061,7 @@
       "Icon": "t_SpecialtySkin_Bullpup_BLRSkullHex_256x128",
       "Name": "Burstfire Rifle - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10038,
+      "UID": 10078,
       "LMID": 81,
       "ValidFor": [
         40009
@@ -35072,7 +35072,7 @@
       "Icon": "t_SpecialtySkin_Bullpup_America_256x128",
       "Name": "Burstfire Rifle - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10039,
+      "UID": 10079,
       "LMID": 82,
       "ValidFor": [
         40009
@@ -35083,7 +35083,7 @@
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_01_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10061,
+      "UID": 10080,
       "LMID": 83,
       "ValidFor": [
         40009
@@ -35094,7 +35094,7 @@
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_02_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10086,
+      "UID": 10081,
       "LMID": 84,
       "ValidFor": [
         40009
@@ -35105,7 +35105,7 @@
       "Icon": "t_SpecialtySkin_Bullpup_CLover_01_256x128",
       "Name": "Burstfire Rifle - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10200,
+      "UID": 10082,
       "LMID": 85,
       "ValidFor": [
         40009
@@ -35116,7 +35116,7 @@
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_03_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10086,
+      "UID": 10083,
       "LMID": 86,
       "ValidFor": [
         40009
@@ -35127,7 +35127,7 @@
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_04_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10086,
+      "UID": 10084,
       "LMID": 87,
       "ValidFor": [
         40009
@@ -35138,7 +35138,7 @@
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_05_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10086,
+      "UID": 10085,
       "LMID": 88,
       "ValidFor": [
         40009
@@ -35160,7 +35160,7 @@
       "Icon": "t_SpecialtySkin_LMG2_BLRSkullHex_256x128",
       "Name": "LMG Recon - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10040,
+      "UID": 10087,
       "LMID": 90,
       "ValidFor": [
         40014
@@ -35171,7 +35171,7 @@
       "Icon": "t_SpecialtySkin_LMG2_America_256x128",
       "Name": "LMG Recon - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10041,
+      "UID": 10088,
       "LMID": 91,
       "ValidFor": [
         40014
@@ -35182,7 +35182,7 @@
       "Icon": "t_SpecialtySkin_LMG2_Tiger_01_256x128",
       "Name": "LMG Recon - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10063,
+      "UID": 10089,
       "LMID": 92,
       "ValidFor": [
         40014
@@ -35193,7 +35193,7 @@
       "Icon": "t_SpecialtySkin_LMG2_Tiger_02_256x128",
       "Name": "LMG Recon - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10087,
+      "UID": 10090,
       "LMID": 93,
       "ValidFor": [
         40014
@@ -35204,7 +35204,7 @@
       "Icon": "t_SpecialtySkin_LMG2_Clover_01_256x128",
       "Name": "LMG Recon - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10088,
+      "UID": 10091,
       "LMID": 94,
       "ValidFor": [
         40014
@@ -35215,7 +35215,7 @@
       "Icon": "t_SpecialtySkin_LMG2_Tiger_03_256x128",
       "Name": "LMG Recon - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10087,
+      "UID": 10092,
       "LMID": 95,
       "ValidFor": [
         40014
@@ -35226,7 +35226,7 @@
       "Icon": "t_SpecialtySkin_LMG2_Tiger_04_256x128",
       "Name": "LMG Recon - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10087,
+      "UID": 10093,
       "LMID": 96,
       "ValidFor": [
         40014
@@ -35237,7 +35237,7 @@
       "Icon": "t_SpecialtySkin_LMG2_Tiger_05_256x128",
       "Name": "LMG Recon - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10087,
+      "UID": 10094,
       "LMID": 97,
       "ValidFor": [
         40014
@@ -35248,7 +35248,7 @@
       "Icon": "t_SpecialtySkin_LMG2_Tiger_06_256x128",
       "Name": "LMG Recon - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10087,
+      "UID": 10095,
       "LMID": 98,
       "ValidFor": [
         40014
@@ -35259,7 +35259,7 @@
       "Icon": "t_SpecialtySkin_M4_BLRSkullHex_256x128",
       "Name": "M4X - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10042,
+      "UID": 10096,
       "LMID": 99,
       "ValidFor": [
         40022
@@ -35270,7 +35270,7 @@
       "Icon": "t_SpecialtySkin_M4_America_256x128",
       "Name": "M4X - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10043,
+      "UID": 10097,
       "LMID": 100,
       "ValidFor": [
         40022
@@ -35281,7 +35281,7 @@
       "Icon": "t_SpecialtySkin_M4_Tiger_01_256x128",
       "Name": "M4X - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10064,
+      "UID": 10098,
       "LMID": 101,
       "ValidFor": [
         40022
@@ -35292,7 +35292,7 @@
       "Icon": "t_SpecialtySkin_M4_Tiger_02_256x128",
       "Name": "M4X - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10089,
+      "UID": 10099,
       "LMID": 102,
       "ValidFor": [
         40022
@@ -35303,7 +35303,7 @@
       "Icon": "t_SpecialtySkin_M4_Clover_01_256x128",
       "Name": "M4X - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10090,
+      "UID": 10100,
       "LMID": 103,
       "ValidFor": [
         40022
@@ -35314,7 +35314,7 @@
       "Icon": "t_SpecialtySkin_M4_Tiger_03_256x128",
       "Name": "M4X - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10089,
+      "UID": 10101,
       "LMID": 104,
       "ValidFor": [
         40022
@@ -35325,7 +35325,7 @@
       "Icon": "t_SpecialtySkin_M4_Tiger_04_256x128",
       "Name": "M4X - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10089,
+      "UID": 10102,
       "LMID": 105,
       "ValidFor": [
         40022
@@ -35336,7 +35336,7 @@
       "Icon": "t_SpecialtySkin_M4_Tiger_05_256x128",
       "Name": "M4X - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10089,
+      "UID": 10103,
       "LMID": 106,
       "ValidFor": [
         40022
@@ -35347,7 +35347,7 @@
       "Icon": "t_SpecialtySkin_M4_Tiger_06_256x128",
       "Name": "M4X - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10089,
+      "UID": 10104,
       "LMID": 107,
       "ValidFor": [
         40022
@@ -35358,7 +35358,7 @@
       "Icon": "t_SpecialtySkin_SMG_BLRSkullHex_256x128",
       "Name": "Submachine Gun - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10044,
+      "UID": 10105,
       "LMID": 108,
       "ValidFor": [
         40010
@@ -35369,7 +35369,7 @@
       "Icon": "t_SpecialtySkin_SMG_America_256x128",
       "Name": "Submachine Gun - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10045,
+      "UID": 10106,
       "LMID": 109,
       "ValidFor": [
         40010
@@ -35380,7 +35380,7 @@
       "Icon": "t_SpecialtySkin_SMG_Tiger_01_256x128",
       "Name": "Submachine Gun - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10065,
+      "UID": 10107,
       "LMID": 110,
       "ValidFor": [
         40010
@@ -35391,7 +35391,7 @@
       "Icon": "t_SpecialtySkin_SMG_Tiger_02_256x128",
       "Name": "Submachine Gun - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10091,
+      "UID": 10108,
       "LMID": 111,
       "ValidFor": [
         40010
@@ -35402,7 +35402,7 @@
       "Icon": "t_SpecialtySkin_SMG_Clover_01_256x128",
       "Name": "Submachine Gun - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10201,
+      "UID": 10109,
       "LMID": 112,
       "ValidFor": [
         40010
@@ -35413,7 +35413,7 @@
       "Icon": "t_SpecialtySkin_SMG_Tiger_03_256x128",
       "Name": "Submachine Gun - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10091,
+      "UID": 10110,
       "LMID": 113,
       "ValidFor": [
         40010
@@ -35424,7 +35424,7 @@
       "Icon": "t_SpecialtySkin_SMG_Tiger_04_256x128",
       "Name": "Submachine Gun - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10091,
+      "UID": 10111,
       "LMID": 114,
       "ValidFor": [
         40010
@@ -35435,7 +35435,7 @@
       "Icon": "t_SpecialtySkin_SMG_Tiger_05_256x128",
       "Name": "Submachine Gun - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10091,
+      "UID": 10112,
       "LMID": 115,
       "ValidFor": [
         40010
@@ -35446,7 +35446,7 @@
       "Icon": "t_SpecialtySkin_SMG_Tiger_06_256x128",
       "Name": "Submachine Gun - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10091,
+      "UID": 10113,
       "LMID": 116,
       "ValidFor": [
         40010
@@ -35457,7 +35457,7 @@
       "Icon": "t_SpecialtySkin_SMG2_BLRSkullHex_256x128",
       "Name": "Tactical SMG - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10046,
+      "UID": 10114,
       "LMID": 117,
       "ValidFor": [
         40013
@@ -35468,7 +35468,7 @@
       "Icon": "t_SpecialtySkin_SMG2_America_256x128",
       "Name": "Tactical SMG - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10047,
+      "UID": 10115,
       "LMID": 118,
       "ValidFor": [
         40013
@@ -35479,7 +35479,7 @@
       "Icon": "t_SpecialtySkin_SMG2_Tiger_01_256x128",
       "Name": "Tactical SMG - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10066,
+      "UID": 10116,
       "LMID": 119,
       "ValidFor": [
         40013
@@ -35490,7 +35490,7 @@
       "Icon": "t_SpecialtySkin_SMG2_Tiger_02_256x128",
       "Name": "Tactical SMG - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10092,
+      "UID": 10117,
       "LMID": 120,
       "ValidFor": [
         40013
@@ -35501,7 +35501,7 @@
       "Icon": "t_SpecialtySkin_SMG2_Clover_01_256x128",
       "Name": "Tactical SMG - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10093,
+      "UID": 10118,
       "LMID": 121,
       "ValidFor": [
         40013
@@ -35512,7 +35512,7 @@
       "Icon": "t_SpecialtySkin_SMG2_Tiger_03_256x128",
       "Name": "Tactical SMG - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10092,
+      "UID": 10119,
       "LMID": 122,
       "ValidFor": [
         40013
@@ -35523,7 +35523,7 @@
       "Icon": "t_SpecialtySkin_SMG2_Tiger_04_256x128",
       "Name": "Tactical SMG - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10092,
+      "UID": 10120,
       "LMID": 123,
       "ValidFor": [
         40013
@@ -35534,7 +35534,7 @@
       "Icon": "t_SpecialtySkin_SMG2_Tiger_05_256x128",
       "Name": "Tactical SMG - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10092,
+      "UID": 10121,
       "LMID": 124,
       "ValidFor": [
         40013
@@ -35545,7 +35545,7 @@
       "Icon": "t_SpecialtySkin_SMG2_Tiger_06_256x128",
       "Name": "Tactical SMG - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10092,
+      "UID": 10122,
       "LMID": 125,
       "ValidFor": [
         40013
@@ -35556,7 +35556,7 @@
       "Icon": "t_SpecialtySkin_SMGi_BLRSkullHex_256x128",
       "Name": "Burstfire SMG - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10048,
+      "UID": 10123,
       "LMID": 126,
       "ValidFor": [
         40018
@@ -35567,7 +35567,7 @@
       "Icon": "t_SpecialtySkin_SMGi_America_256x128",
       "Name": "Burstfire SMG - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10049,
+      "UID": 10124,
       "LMID": 127,
       "ValidFor": [
         40018
@@ -35578,7 +35578,7 @@
       "Icon": "t_SpecialtySkin_SMGi_Tiger_01_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10067,
+      "UID": 10125,
       "LMID": 128,
       "ValidFor": [
         40018
@@ -35589,7 +35589,7 @@
       "Icon": "t_SpecialtySkin_SMGi_Tiger_02_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10094,
+      "UID": 10126,
       "LMID": 129,
       "ValidFor": [
         40018
@@ -35600,7 +35600,7 @@
       "Icon": "t_SpecialtySkin_SMGi_Clover_01_256x128",
       "Name": "Burstfire SMG - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10095,
+      "UID": 10127,
       "LMID": 130,
       "ValidFor": [
         40018
@@ -35611,7 +35611,7 @@
       "Icon": "t_SpecialtySkin_SMGi_Tiger_03_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10094,
+      "UID": 10128,
       "LMID": 131,
       "ValidFor": [
         40018
@@ -35622,7 +35622,7 @@
       "Icon": "t_SpecialtySkin_SMGi_Tiger_04_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10094,
+      "UID": 10129,
       "LMID": 132,
       "ValidFor": [
         40018
@@ -35633,7 +35633,7 @@
       "Icon": "t_SpecialtySkin_SMGi_Tiger_05_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10094,
+      "UID": 10130,
       "LMID": 133,
       "ValidFor": [
         40018
@@ -35644,7 +35644,7 @@
       "Icon": "t_SpecialtySkin_SMGi_Tiger_06_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10094,
+      "UID": 10131,
       "LMID": 134,
       "ValidFor": [
         40018
@@ -35655,7 +35655,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_BLRSkullHex_256x128",
       "Name": "Combat Rifle - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10050,
+      "UID": 10132,
       "LMID": 135,
       "ValidFor": [
         40008
@@ -35666,7 +35666,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_America_256x128",
       "Name": "Combat Rifle - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10051,
+      "UID": 10133,
       "LMID": 136,
       "ValidFor": [
         40008
@@ -35677,7 +35677,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_01_256x128",
       "Name": "Combat Rifle - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10068,
+      "UID": 10134,
       "LMID": 137,
       "ValidFor": [
         40008
@@ -35688,7 +35688,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_02_256x128",
       "Name": "Combat Rifle - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10096,
+      "UID": 10135,
       "LMID": 138,
       "ValidFor": [
         40008
@@ -35699,7 +35699,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_Clover_01_256x128",
       "Name": "Combat Rifle - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10097,
+      "UID": 10136,
       "LMID": 139,
       "ValidFor": [
         40008
@@ -35710,7 +35710,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_03_256x128",
       "Name": "Combat Rifle - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10096,
+      "UID": 10137,
       "LMID": 140,
       "ValidFor": [
         40008
@@ -35721,7 +35721,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_04_256x128",
       "Name": "Combat Rifle - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10096,
+      "UID": 10138,
       "LMID": 141,
       "ValidFor": [
         40008
@@ -35732,7 +35732,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_05_256x128",
       "Name": "Combat Rifle - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10096,
+      "UID": 10139,
       "LMID": 142,
       "ValidFor": [
         40008
@@ -35743,7 +35743,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_06_256x128",
       "Name": "Combat Rifle - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10096,
+      "UID": 10140,
       "LMID": 143,
       "ValidFor": [
         40008
@@ -35754,7 +35754,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_BLRSkullHex_256x128",
       "Name": "Light Recon - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10052,
+      "UID": 10141,
       "LMID": 144,
       "ValidFor": [
         40026
@@ -35765,7 +35765,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_America_256x128",
       "Name": "Light Recon - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10053,
+      "UID": 10142,
       "LMID": 145,
       "ValidFor": [
         40026
@@ -35776,7 +35776,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_01_256x128",
       "Name": "Light Recon - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10069,
+      "UID": 10143,
       "LMID": 146,
       "ValidFor": [
         40026
@@ -35787,7 +35787,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_02_256x128",
       "Name": "Light Recon - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10098,
+      "UID": 10144,
       "LMID": 147,
       "ValidFor": [
         40026
@@ -35798,7 +35798,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_Clover_01_256x128",
       "Name": "Light Recon - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10099,
+      "UID": 10145,
       "LMID": 148,
       "ValidFor": [
         40026
@@ -35809,7 +35809,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_03_256x128",
       "Name": "Light Recon - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10098,
+      "UID": 10146,
       "LMID": 149,
       "ValidFor": [
         40026
@@ -35820,7 +35820,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_04_256x128",
       "Name": "Light Recon - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10098,
+      "UID": 10147,
       "LMID": 150,
       "ValidFor": [
         40026
@@ -35831,7 +35831,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_05_256x128",
       "Name": "Light Recon - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10098,
+      "UID": 10148,
       "LMID": 151,
       "ValidFor": [
         40026
@@ -35842,7 +35842,7 @@
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_06_256x128",
       "Name": "Light Recon - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10098,
+      "UID": 10149,
       "LMID": 152,
       "ValidFor": [
         40026
@@ -35853,7 +35853,7 @@
       "Icon": "t_SpecialtySkin_20mm_BLRSkullHex_256x128",
       "Name": "Anti-Materiel - Green Hex Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10054,
+      "UID": 10150,
       "LMID": 153,
       "ValidFor": [
         40019
@@ -35864,7 +35864,7 @@
       "Icon": "t_SpecialtySkin_20mm_America_256x128",
       "Name": "Anti-Materiel - Stars and Stripes Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10055,
+      "UID": 10151,
       "LMID": 154,
       "ValidFor": [
         40019
@@ -35875,7 +35875,7 @@
       "Icon": "t_SpecialtySkin_20mm_Tiger_01_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Orange Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10062,
+      "UID": 10152,
       "LMID": 155,
       "ValidFor": [
         40019
@@ -35886,7 +35886,7 @@
       "Icon": "t_SpecialtySkin_20mm_Tiger_02_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Blue Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10070,
+      "UID": 10153,
       "LMID": 156,
       "ValidFor": [
         40019
@@ -35897,7 +35897,7 @@
       "Icon": "t_SpecialtySkin_20mm_Clover_01_256x128",
       "Name": "Anti-Materiel - Clovers Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10071,
+      "UID": 10154,
       "LMID": 157,
       "ValidFor": [
         40019
@@ -35908,7 +35908,7 @@
       "Icon": "t_SpecialtySkin_20mm_Tiger_03_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Pink Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10070,
+      "UID": 10155,
       "LMID": 158,
       "ValidFor": [
         40019
@@ -35919,7 +35919,7 @@
       "Icon": "t_SpecialtySkin_20mm_Tiger_04_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Red Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10070,
+      "UID": 10156,
       "LMID": 159,
       "ValidFor": [
         40019
@@ -35930,7 +35930,7 @@
       "Icon": "t_SpecialtySkin_20mm_Tiger_05_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Green Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10070,
+      "UID": 10157,
       "LMID": 160,
       "ValidFor": [
         40019
@@ -35941,7 +35941,7 @@
       "Icon": "t_SpecialtySkin_20mm_Tiger_06_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Yellow Weapon Skin",
       "Tooltip": "A custom look for your receiver!",
-      "UID": 10070,
+      "UID": 10158,
       "LMID": 161,
       "ValidFor": [
         40019
@@ -35952,7 +35952,7 @@
       "Icon": "t_SpecialtySkin_CompoundBow_Cupid_256x128",
       "Name": "Cupid\u0027s QT Pi Bow",
       "Tooltip": "Cupid\u0027s own QT Pi Bow skin. Happy Valentine\u0027s Day!",
-      "UID": 10011,
+      "UID": 10159,
       "LMID": 163,
       "ValidFor": [
         40024
@@ -39266,447 +39266,6 @@
         "switchWeaponSpeed": 0,
         "weaponWeight": 0
       }
-    }
-  ],
-  "depot": [
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_digi",
-      "Name": "Digi Grenade Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Thrown item.\nExplodes into a cloud of interference that hinders visibility.",
-      "UID": 12002
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Crowbar",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Melee item.\nA familiar-looking weapon for bashing nearby opponents.",
-      "UID": 12016
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Crowbar",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Melee item.\nA familiar-looking weapon for bashing nearby opponents.",
-      "UID": 12016
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Crowbar",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Melee item.\nA familiar-looking weapon for bashing nearby opponents.",
-      "UID": 12016
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_throwingKnife",
-      "Name": "Throwing Knives Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Thrown item.\nInstantly kills the target. Can also be used in melee.",
-      "UID": 12016
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_explosiveAxe",
-      "Name": "Exploding Tomahawk",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 12016
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_explosiveAxe",
-      "Name": "Sonic Tomahawk",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 12028
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_hologram",
-      "Name": "Personal Holo-decoy",
-      "SupportedMods": [
-        "ammo",
-        "camosWeapon",
-        "hangers"
-      ],
-      "Tooltip": "Makes a copy of you. Decoy is visible in normal view, not visible in HRV.",
-      "UID": 12028
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_explosiveStars",
-      "Name": "Stun Shuriken",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 12027
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_toxicGrenade",
-      "Name": "Toxic Grenade Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Thrown item.\nExplodes into a cloud of deadly gas that continuously damages and blinds your enemies.",
-      "UID": 12006
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Improvised Shield",
-      "SupportedMods": [
-        "ammo",
-        "camosWeapon",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 13004
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Overgrown Infected Finger Nails",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 12013
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Dog Claw",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 12013
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Burning Man",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 12013
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Overgrown Infected Finger Nails",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 12013
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_ammoPack",
-      "Name": "Ammunition Pod Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Tactical gear.\nUse to place ammo refill crates for your allies.",
-      "UID": 13003
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Barricade Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "camosWeapon",
-        "hangers"
-      ],
-      "Tooltip": "Tactical gear.\nEquip to shield yourself from the front. Can be placed on the ground for stationary cover.",
-      "UID": 13004
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Riot Shield",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Tactical gear.\nEquip to shield yourself from the front.",
-      "UID": 13013
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_stealthCamo",
-      "Name": "Cloak",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 13006
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_stealthCamo",
-      "Name": "Cloak Mk.2",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 13012
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Combat Knife Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Melee item.\nStab enemies that get too close.",
-      "UID": 12011
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_electroGrenade",
-      "Name": "Shock Grenade Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Thrown item.\nExplodes when thrown, dealing damage to and blinds surrounding players.",
-      "UID": 12004
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_EMP",
-      "Name": "EMP Grenade Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Thrown item.\nExplodes into an EMP that temporarily blinds enemies and shuts down hardsuits.",
-      "UID": 12001
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_frag",
-      "Name": "Frag Grenade Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Thrown item.\nAn explosive grenade.",
-      "UID": 12000
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Combat Knife Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Melee item.\nStab enemies that get too close.",
-      "UID": 12011
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_frag",
-      "Name": "Frag Grenade Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Thrown item.\nAn explosive grenade.",
-      "UID": 12000
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_healGun",
-      "Name": "Heal Injector Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "camosWeapon",
-        "hangers",
-        "scopes"
-      ],
-      "Tooltip": "Tactical gear.\nUse to heal yourself or your allies, or poison your enemies.",
-      "UID": 13001
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_HEGrenade",
-      "Name": "HE Grenade Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Thrown item.\nAn extremely powerful explosive grenade.",
-      "UID": 12008
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_decoy",
-      "Name": "HRV Decoy Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Dropped item.\nGenerates a decoy that shows up on your enemies\u0027 HRV.",
-      "UID": 12005
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_HRVJammer",
-      "Name": "HRV Blackout Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Dropped item.\nCreates a field that hides friendly targets from HRV detection.",
-      "UID": 12009
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Machete",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "",
-      "UID": 12013
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_proxMine",
-      "Name": "Proximity Mine Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Dropped item.\nViolently explodes when triggered by nearby enemies.",
-      "UID": 12003
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_repairGun",
-      "Name": "Repair Tool",
-      "SupportedMods": [
-        "ammo",
-        "camosWeapon",
-        "hangers",
-        "scopes"
-      ],
-      "Tooltip": "Tactical gear.\nAllows you to repair friendly mechanical targets.",
-      "UID": 13002
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "",
-      "Name": "Combat Knife Mk.2",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Melee item.\nMelee weapon with increased damage and a faster attack.",
-      "UID": 12012
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_shockMine",
-      "Name": "Stun Mine Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Dropped item.\nStuns nearby enemies when triggered.",
-      "UID": 12007
-    },
-    {
-      "Category": "depot",
-      "DescriptorName": "",
-      "Icon": "t_healGun",
-      "Name": "Revival Injector Mk.1",
-      "SupportedMods": [
-        "ammo",
-        "hangers"
-      ],
-      "Tooltip": "Tactical gear.\nUse to revive downed teammates.",
-      "UID": 13005
     }
   ],
   "primary": [
@@ -45363,7 +44922,7 @@
         "scopes"
       ],
       "Tooltip": "Depot Item!",
-      "UID": 20004
+      "UID": 20014
     },
     {
       "Category": "secondary",
@@ -45904,7 +45463,7 @@
         "hangers"
       ],
       "Tooltip": "Depot Item!",
-      "UID": 20011
+      "UID": 20010
     },
     {
       "Category": "secondary",
@@ -45923,6 +45482,7 @@
   ],
   "shop": [
     {
+      "UID": 20000,
       "Category": "shop",
       "Icon": "t_Depot_HealthRefill_128x128",
       "Name": "Health Refill",
@@ -45930,6 +45490,7 @@
       "CP": 100
     },
     {
+      "UID": 20001,
       "Category": "shop",
       "Icon": "t_Depot_ExtraAmmo_128x128",
       "Name": "Ammo Refill",
@@ -45937,6 +45498,7 @@
       "CP": 100
     },
     {
+      "UID": 20003,
       "Category": "shop",
       "Icon": "t_Depot_Flamethrower_128x128",
       "Name": "Flamethrower",
@@ -45944,6 +45506,7 @@
       "CP": 350
     },
     {
+      "UID": 20011,
       "Category": "shop",
       "Icon": "t_Depot_RocketLauncherArmor_128x128",
       "Name": "Rocket Stinger",
@@ -45951,6 +45514,7 @@
       "CP": 400
     },
     {
+      "UID": 20004,
       "Category": "shop",
       "Icon": "t_Depot_HardSuit_128x128",
       "Name": "Rhino Hardsuit",
@@ -45958,6 +45522,7 @@
       "CP": 1300
     },
     {
+      "UID": 20002,
       "Category": "shop",
       "Icon": "t_Depot_RocketLauncherSwarm_128x128",
       "Name": "Rocket Swarm",
@@ -45965,6 +45530,7 @@
       "CP": 1000
     },
     {
+      "UID": 20006,
       "Category": "shop",
       "Icon": "t_Depot_Airstrike_128x128",
       "Name": "Airstrike",
@@ -45972,6 +45538,7 @@
       "CP": 600
     },
     {
+      "UID": 20005,
       "Category": "shop",
       "Icon": "t_Depot_Railgun_128x128",
       "Name": "Railgun",
@@ -45979,6 +45546,7 @@
       "CP": 750
     },
     {
+      "UID": 20007,
       "Category": "shop",
       "Icon": "t_Depot_GrenadeLauncher_128x128",
       "Name": "Grenade Launcher",
@@ -45986,6 +45554,7 @@
       "CP": 500
     },
     {
+      "UID": 20008,
       "Category": "shop",
       "Icon": "t_Depot_MiniGun_128x128",
       "Name": "Minigun",
@@ -45993,6 +45562,7 @@
       "CP": 750
     },
     {
+      "UID": 20009,
       "Category": "shop",
       "Icon": "t_Depot_Turret_128x128",
       "Name": "Turret",
@@ -46000,6 +45570,7 @@
       "CP": 600
     },
     {
+      "UID": 20012,
       "Category": "shop",
       "Icon": "t_Depot_HeavyAmmunition_128x128",
       "Name": "Heavy Weapon Refill",
@@ -46007,6 +45578,7 @@
       "CP": 250
     },
     {
+      "UID": 20010,
       "Category": "shop",
       "Icon": "t_Depot_Katana_128x128",
       "Name": "Katana",
@@ -46014,6 +45586,7 @@
       "CP": 350
     },
     {
+      "UID": 20013,
       "Category": "shop",
       "Icon": "t_Depot_HardsuitHRVDecoy_128x128",
       "Name": "Hardsuit HRV Decoy",
@@ -46021,6 +45594,7 @@
       "CP": 200
     },
     {
+      "UID": 200013,
       "Category": "shop",
       "Icon": "t_Depot_AssaultBot_128x128",
       "Name": "MK1 Assault AI",
@@ -46028,6 +45602,7 @@
       "CP": 500
     },
     {
+      "UID": 20014,
       "Category": "shop",
       "Icon": "t_Depot_LightHardSuit_128x128",
       "Name": "Gunman Hardsuit",
@@ -46035,6 +45610,7 @@
       "CP": 975
     },
     {
+      "UID": 20015,
       "Category": "shop",
       "Icon": "t_Depot_EMPMine_128x128",
       "Name": "HRV Jammer",
@@ -46042,6 +45618,7 @@
       "CP": 1000
     },
     {
+      "UID": 20016,
       "Category": "shop",
       "Icon": "t_Depot_HealthRefill_128x128",
       "Name": "Toxic Antidote",

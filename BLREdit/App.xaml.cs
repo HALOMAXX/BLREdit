@@ -41,7 +41,7 @@ public partial class App : System.Windows.Application
     private const string LogFile = "log.txt";
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
 
-    public static bool IsRunning = true;
+    public static bool IsRunning { get; private set; } = true;
 
     private void Application_Startup(object sender, StartupEventArgs e)
     {

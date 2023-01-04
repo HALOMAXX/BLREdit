@@ -19,7 +19,7 @@ public static class LoggingSystem
         MessageBox.Show(info);
     }
 
-    public static string ObjectToTextWall<T>(T obj, int layer = 0)
+    public static string ObjectToTextWall<T>(T obj)
     {
         return IOResources.Serialize(obj);
     }

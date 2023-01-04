@@ -36,7 +36,6 @@ public static class ImportSystem
     public const string TACTICAL_CATEGORY = "tactical";         //tactical
     public const string BADGES_CATEGORY = "badges";
     public const string AMMO_CATEGORY = "ammos";
-    public const string DEPOT_CATEGORY = "depot";
     public const string EMOTES_CATEGORY = "emotes";
     public const string SHOP_CATEGORY = "shop";
     public const string PRIMARY_SKIN_CATEGORY = "primarySkins";
@@ -51,6 +50,43 @@ public static class ImportSystem
     {
         LoggingSystem.Log("Initializing Import System");
         ItemLists = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}");
+#if DEBUG
+        Dictionary<int, string> UIDList = new();
+
+        foreach (var cat in ItemLists)
+        {
+            LoggingSystem.Log($"Testing {cat.Key} for duplicate UID,s");
+            foreach (var item in cat.Value)
+            {
+                foreach (var name in UIDList)
+                {
+                    if (!string.IsNullOrEmpty(name.Value))
+                    {
+                        if (name.Value.ToLower() == item.Name.ToLower())
+                        {
+                            LoggingSystem.Log($"\t[✖]({item.UID} / {name.Key}):{item.Name} / {name.Value}");
+                        }
+                    }
+                }
+                if (!UIDList.ContainsKey(item.UID))
+                {
+                    UIDList.Add(item.UID, item.Name);
+                }
+                else
+                {
+                    if (item.Name.ToLower() == UIDList[item.UID].ToLower())
+                    {
+                        LoggingSystem.Log($"\t[✔]({item.UID}):{item.Name} / {UIDList[item.UID]}");
+                    }
+                    else
+                    {
+                        LoggingSystem.Log($"\t[✖]({item.UID}):{item.Name} / {UIDList[item.UID]}");
+                    }
+                }
+            }
+        }
+#endif
+        LoggingSystem.Log("Done testing for duplicate UID's");
         UpdateImages();
         ApplyDisplayStats();
     }

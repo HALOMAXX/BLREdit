@@ -19,7 +19,7 @@
 
             <ComboBox ItemsSource="{Binding Path=PlayerList}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
 
-            <Button Width="128" Height="32" Margin="10,10,10,10" Content="Connect" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Connect to the Server" Command="{Binding Path=LaunchServerCommand}"/>
+            <Button Width="128" Height="32" Margin="10,10,10,10" Content="Connect" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Connect to the Server" Command="{Binding Path=ConnectToServerCommand}"/>
             
             <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
                 <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
