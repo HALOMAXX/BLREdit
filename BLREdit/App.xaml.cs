@@ -48,8 +48,6 @@ public partial class App : System.Windows.Application
         string[] argList = e.Args;
         Dictionary<string, string> argDict = new();
 
-        LoggingSystem.Log($"Getting Startup Args[{argList.Length}]");
-
         for (var i = 0; i < argList.Length; i++)
         {
             string name = argList[i];

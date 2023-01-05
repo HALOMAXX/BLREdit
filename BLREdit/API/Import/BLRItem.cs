@@ -666,6 +666,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
 }
 
+[JsonConverter(typeof(JsonBLRPawnModifiersConverter))]
 public sealed class BLRPawnModifiers
 {
     public double BodyDamageReduction { get; set; } = 0;
@@ -690,6 +691,7 @@ public sealed class BLRPawnModifiers
     public double ToxicProtection { get; set; } = 0;
 }
 
+[JsonConverter(typeof(JsonBLRWeaponModifiersConverter))]
 public sealed class BLRWeaponModifiers
 {
     public double accuracy { get; set; } = 0;
@@ -705,6 +707,7 @@ public sealed class BLRWeaponModifiers
     public double weaponWeight { get; set; } = 0;
 }
 
+[JsonConverter(typeof(JsonBLRWeaponStatsConverter))]
 public sealed class BLRWeaponStats
 {
     public double accuracy { get; set; }
@@ -761,6 +764,7 @@ public sealed class BLRWeaponStats
     public double ZoomSpreadMultiplier { get; set; } = 0.4f;
 }
 
+[JsonConverter(typeof(JsonBLRWikiStatsConverter))]
 public sealed class BLRWikiStats
 {
     public double aimSpread { get; set; }

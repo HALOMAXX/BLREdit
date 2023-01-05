@@ -5,6 +5,10 @@ using System.Text.Json;
 using BLREdit.UI;
 using BLREdit.Import;
 using System.Collections.Generic;
+using System.CodeDom;
+using PeNet.Header.Net.MetaDataTables;
+using System.Reflection;
+using System.Linq;
 
 namespace BLREdit;
 
@@ -101,11 +105,17 @@ public class JsonUIBoolConverter : JsonConverter<UIBool>
     }
 }
 
-public sealed class JsonBLRItemConverter : JsonConverter<BLRItem>
+public class JsonGenericConverter<T> : JsonConverter<T>
 {
-    public override BLRItem Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    static PropertyInfo[] properties { get; } = typeof(T).GetProperties();
+    static FieldInfo[] fields { get; } = typeof(T).GetFields();
+    static T Default { get; } = Activator.CreateInstance<T>();
+
+
+    public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        var item = new BLRItem();
+        var item = Activator.CreateInstance<T>();
+
         while (reader.Read())
         {
             switch (reader.TokenType)
@@ -114,68 +124,60 @@ public sealed class JsonBLRItemConverter : JsonConverter<BLRItem>
                     string propertyName = reader.GetString();
                     if (reader.TokenType != JsonTokenType.Null)
                     {
-                        switch (propertyName)
+                        foreach (var prop in properties)
                         {
-                            case nameof(BLRItem.Category):
-                                reader.Read();
-                                item.Category = reader.GetString();
-                                break;
-                            case nameof(BLRItem.CP):
-                                reader.Read();
-                                item.CP = reader.GetDouble();
-                                break;
-                            case nameof(BLRItem.DescriptorName):
-                                reader.Read();
-                                item.DescriptorName = reader.GetString();
-                                break;
-                            case nameof(BLRItem.Icon):
-                                reader.Read();
-                                item.Icon = reader.GetString();
-                                break;
-                            case nameof(BLRItem.LMID):
-                                reader.Read();
-                                item.LMID = reader.GetInt32();
-                                break;
-                            case nameof(BLRItem.Name):
-                                reader.Read();
-                                item.Name = reader.GetString();
-                                break;
-                            case nameof(BLRItem.NameID):
-                                reader.Read();
-                                item.NameID = reader.GetInt32();
-                                break;
-                            case nameof(BLRItem.PawnModifiers):
-                                //reader.Read();
-                                item.PawnModifiers = JsonSerializer.Deserialize<BLRPawnModifiers>(ref reader, options);
-                                break;
-                            case nameof(BLRItem.SupportedMods):
-                                //reader.Read();
-                                item.SupportedMods = JsonSerializer.Deserialize<List<string>>(ref reader, options);
-                                break;
-                            case nameof(BLRItem.Tooltip):
-                                reader.Read();
-                                item.Tooltip = reader.GetString();
-                                break;
-                            case nameof(BLRItem.UID):
-                                reader.Read();
-                                item.UID = reader.GetInt32();
-                                break;
-                            case nameof(BLRItem.ValidFor):
-                                //reader.Read();
-                                item.ValidFor = JsonSerializer.Deserialize<List<int>>(ref reader, options);
-                                break;
-                            case nameof(BLRItem.WeaponModifiers):
-                                //reader.Read();
-                                item.WeaponModifiers = JsonSerializer.Deserialize<BLRWeaponModifiers>(ref reader, options);
-                                break;
-                            case nameof(BLRItem.WeaponStats):
-                                //reader.Read();
-                                item.WeaponStats = JsonSerializer.Deserialize<BLRWeaponStats>(ref reader, options);
-                                break;
-                            case nameof(BLRItem.WikiStats):
-                                //reader.Read();
-                                item.WikiStats = JsonSerializer.Deserialize<BLRWikiStats>(ref reader, options);
-                                break;
+                            if (prop.Name == propertyName)
+                            {
+                                if (prop.CanWrite && prop.CanRead && !Attribute.IsDefined(prop, typeof(JsonIgnoreAttribute)))
+                                {
+                                    switch (prop.PropertyType.Name)
+                                    {
+                                        case "double":
+                                            reader.Read();
+                                            prop.SetValue(item, reader.GetDouble());
+                                            break;
+                                        case "float":
+                                            reader.Read();
+                                            prop.SetValue(item, (float)reader.GetDouble());
+                                            break;
+                                        case "string":
+                                            reader.Read();
+                                            prop.SetValue(item, reader.GetString());
+                                            break;
+                                        default:
+                                            prop.SetValue(item, JsonSerializer.Deserialize(ref reader, prop.PropertyType, options));
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+
+                        foreach (var field in fields)
+                        {
+                            if (field.Name == propertyName)
+                            {
+                                if (field.IsPublic && !Attribute.IsDefined(field, typeof(JsonIgnoreAttribute)))
+                                {
+                                    switch (field.FieldType.Name)
+                                    {
+                                        case "double":
+                                            reader.Read();
+                                            field.SetValue(item, reader.GetDouble());
+                                            break;
+                                        case "float":
+                                            reader.Read();
+                                            field.SetValue(item, (float)reader.GetDouble());
+                                            break;
+                                        case "string":
+                                            reader.Read();
+                                            field.SetValue(item, reader.GetString());
+                                            break;
+                                        default:
+                                            field.SetValue(item, JsonSerializer.Deserialize(ref reader, field.FieldType, options));
+                                            break;
+                                    }
+                                }
+                            }
                         }
                     }
                     break;
@@ -185,67 +187,100 @@ public sealed class JsonBLRItemConverter : JsonConverter<BLRItem>
         return item;
     }
 
-    public override void Write(Utf8JsonWriter writer, BLRItem value, JsonSerializerOptions options)
+    public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
     {
         writer.WriteStartObject();
         if (value != null)
         {
-            writer.WriteString(nameof(value.Category), value.Category);
-
-            if (value.CP > 0)
-            { writer.WriteNumber(nameof(value.CP), value.CP); }
-
-            writer.WriteString(nameof(value.DescriptorName), value.DescriptorName);
-
-            writer.WriteString(nameof(value.Icon), value.Icon);
-
-            if (value.LMID >= 0)
-            { writer.WriteNumber(nameof(value.LMID), value.LMID); }
-
-            writer.WriteString(nameof(value.Name), value.Name);
-
-            writer.WriteNumber(nameof(value.NameID), value.NameID);
-
-            if (value.PawnModifiers != null)
+            foreach (var prop in properties)
             {
-                writer.WritePropertyName(nameof(value.PawnModifiers));
-                JsonSerializer.Serialize(writer, value.PawnModifiers, options);
+                if (prop.CanWrite && prop.CanRead && !Attribute.IsDefined(prop, typeof(JsonIgnoreAttribute)))
+                {
+                    switch (prop.PropertyType.Name)
+                    {
+                        case "decimal":
+                        case "double":
+                        case "float":
+                        case "int":
+                        case "long":
+                        case "uint":
+                        case "ulong":
+                            var num = prop.GetValue(value);
+                            if (num != null && !num.Equals(prop.GetValue(Default)))
+                            {
+                                writer.WriteNumber(prop.Name, (decimal)num);
+                            }
+                            break;
+                        case "string":
+                            if (prop.GetValue(value) is string str && !string.IsNullOrEmpty(str) && str.Equals(prop.GetValue(Default)))
+                            {
+                                writer.WriteString(prop.Name, str);
+                            }
+                            break;
+                        default:
+                            var val = prop.GetValue(value);
+                            if (val != null && !val.Equals(prop.GetValue(Default)))
+                            {
+                                writer.WritePropertyName(prop.Name);
+                                JsonSerializer.Serialize(writer, val, options);
+                            }
+                            break;
+                    }
+                }
             }
 
-            if (value.SupportedMods != null && value.SupportedMods.Count > 0)
+            foreach (var field in fields)
             {
-                writer.WritePropertyName(nameof(value.SupportedMods));
-                JsonSerializer.Serialize(writer, value.SupportedMods, options);
-            }
-
-            writer.WriteString(nameof(value.Tooltip), value.Tooltip);
-
-            writer.WriteNumber(nameof(value.UID), value.UID);
-
-            if (value.ValidFor != null && value.ValidFor.Count > 0)
-            {
-                writer.WritePropertyName(nameof(value.ValidFor));
-                JsonSerializer.Serialize(writer, value.ValidFor, options);
-            }
-
-            if (value.WeaponModifiers != null)
-            {
-                writer.WritePropertyName(nameof(value.WeaponModifiers));
-                JsonSerializer.Serialize(writer, value.WeaponModifiers, options);
-            }
-
-            if (value.WeaponStats != null)
-            {
-                writer.WritePropertyName(nameof(value.WeaponStats));
-                JsonSerializer.Serialize(writer, value.WeaponStats, options);
-            }
-
-            if (value.WikiStats != null)
-            {
-                writer.WritePropertyName(nameof(value.WikiStats));
-                JsonSerializer.Serialize(writer, value.WikiStats, options);
+                if (field.IsPublic && !Attribute.IsDefined(field, typeof(JsonIgnoreAttribute)))
+                {
+                    switch (field.FieldType.Name)
+                    {
+                        case "decimal":
+                        case "double":
+                        case "float":
+                        case "int":
+                        case "long":
+                        case "uint":
+                        case "ulong":
+                            var num = field.GetValue(value);
+                            if (num != null && !num.Equals(field.GetValue(Default)))
+                            {
+                                writer.WriteNumber(field.Name, (decimal)num);
+                            }
+                            break;
+                        case "string":
+                            if (field.GetValue(value) is string str && !string.IsNullOrEmpty(str) && str.Equals(field.GetValue(Default)))
+                            {
+                                writer.WriteString(field.Name, str);
+                            }
+                            break;
+                        default:
+                            var val = field.GetValue(value);
+                            if (val != null && !val.Equals(field.GetValue(Default)))
+                            {
+                                writer.WritePropertyName(field.Name);
+                                JsonSerializer.Serialize(writer, val, options);
+                            }
+                            break;
+                    }
+                }
             }
         }
         writer.WriteEndObject();
     }
 }
+
+public sealed class JsonBLRItemConverter : JsonGenericConverter<BLRItem>
+{}
+
+public sealed class JsonBLRPawnModifiersConverter : JsonGenericConverter<BLRPawnModifiers>
+{}
+
+public sealed class JsonBLRWeaponModifiersConverter : JsonGenericConverter<BLRWeaponModifiers>
+{}
+
+public sealed class JsonBLRWeaponStatsConverter : JsonGenericConverter<BLRWeaponStats>
+{}
+
+public sealed class JsonBLRWikiStatsConverter : JsonGenericConverter<BLRWikiStats>
+{}
