@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace BLREdit.UI;
 
-[JsonConverter(typeof(UIBoolConverter))]
+[JsonConverter(typeof(JsonUIBoolConverter))]
 public sealed class UIBool : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
@@ -38,18 +38,5 @@ public sealed class UIBool : INotifyPropertyChanged
     public override string ToString()
     {
         return Is.ToString();
-    }
-}
-
-public class UIBoolConverter : JsonConverter<UIBool>
-{
-    public override UIBool Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-    {
-        return new UIBool(reader.GetBoolean());
-    }
-
-    public override void Write(Utf8JsonWriter writer, UIBool value, JsonSerializerOptions options)
-    {
-        writer.WriteBooleanValue(value.Is);
     }
 }

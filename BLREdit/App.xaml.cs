@@ -48,7 +48,9 @@ public partial class App : System.Windows.Application
         string[] argList = e.Args;
         Dictionary<string, string> argDict = new();
 
-        for(var i = 0; i < argList.Length; i++)
+        LoggingSystem.Log($"Getting Startup Args[{argList.Length}]");
+
+        for (var i = 0; i < argList.Length; i++)
         {
             string name = argList[i];
             string value = "";
@@ -88,7 +90,7 @@ public partial class App : System.Windows.Application
                 string launchArgs = $"server ?ServerName=\"{serverName}\"?Port={port}?NumBots={botCount}?MaxPlayers={maxPlayers}?Playlist={playlist}";
                 client.StartProcess(launchArgs, true);
                 Console.WriteLine("Press Q to Exit");
-                while (Console.ReadKey().Key == ConsoleKey.Q) { }
+                while (Console.ReadKey().Key != ConsoleKey.Q) { }
             }
             catch (Exception error)
             { 
@@ -97,6 +99,91 @@ public partial class App : System.Windows.Application
             Application.Current.Shutdown();
             return;
         }
+
+        if (argDict.TryGetValue("-localize", out string _))
+        {
+            ImportSystem.Initialize();
+
+            int categoryOffset = 100000;
+
+            int categoryIndex = categoryOffset;
+
+            foreach (var category in ImportSystem.ItemLists)
+            {
+                int itemIndex = 0;
+                foreach (var item in category.Value)
+                {
+                    item.NameID = categoryIndex + itemIndex;
+                    itemIndex++;
+                }
+                categoryIndex += categoryOffset;
+            }
+
+
+            Dictionary<int, List<BLRItem>> NameIDList = new();
+            Dictionary<string, List<BLRItem>> NameList = new();
+
+            foreach (var cat in ImportSystem.ItemLists)
+            {
+                foreach (var item in cat.Value)
+                {
+                    if (!NameIDList.ContainsKey(item.NameID))
+                    {
+                        NameIDList.Add(item.NameID, new() { item });
+                    }
+                    else
+                    {
+                        NameIDList[item.NameID].Add(item);
+                    }
+
+                    if (!NameList.ContainsKey(item.Name))
+                    {
+                        NameList.Add(item.Name, new() { item });
+                    }
+                    else
+                    {
+                        NameList[item.Name].Add(item);
+                    }
+
+                }
+            }
+
+            LoggingSystem.Log("Testing NameID Duplicates");
+            foreach (var itemList in NameIDList)
+            {
+                if (itemList.Value.Count > 1)
+                {
+                    string items = $"[{itemList.Key}]:";
+                    foreach (var item in itemList.Value)
+                    {
+                        items += $" {item.Name},";
+                    }
+                    LoggingSystem.Log(items);
+                }
+            }
+
+            LoggingSystem.Log("Testing Name Duplicates");
+            foreach (var itemList in NameList)
+            {
+                if (itemList.Value.Count > 1)
+                {
+                    string items = $"[{itemList.Key}]:";
+                    foreach (var item in itemList.Value)
+                    {
+                        items += $" {item.NameID},";
+                        item.NameID = itemList.Value[0].NameID;
+                    }
+                    LoggingSystem.Log(items);
+                }
+            }
+
+            IOResources.SerializeFile("namedItemList.json", ImportSystem.ItemLists);
+
+            LoggingSystem.Log("Done testing ItemList's");
+            Application.Current.Shutdown();
+            return;
+        }
+
         if (argDict.TryGetValue("-package", out string _))
         {
             try
@@ -112,7 +199,13 @@ public partial class App : System.Windows.Application
                 Process.Start("explorer.exe", exeZip.Info.Directory.FullName);
             }
             Application.Current.Shutdown();
+            return;
         }
+
+
+
+
+
         new MainWindow().Show();
     }
 

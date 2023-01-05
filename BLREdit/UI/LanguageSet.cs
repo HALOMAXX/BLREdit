@@ -28,7 +28,7 @@ public sealed class LanguageSet
         name = $"{IOResources.ASSET_DIR}{IOResources.LOCAL_DIR}{name}.json";
         if (!File.Exists(name))
         {
-            name = $"{ App.BLREditLocation}{ IOResources.ASSET_DIR}{ IOResources.LOCAL_DIR}en -US.json";
+            name = $"{App.BLREditLocation}{IOResources.ASSET_DIR}{IOResources.LOCAL_DIR}en -US.json";
         }
         return IOResources.DeserializeFile<LanguageSet>(name) ?? CreateDefaultSet();
     }

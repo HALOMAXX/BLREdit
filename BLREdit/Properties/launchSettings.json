@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Publish": {
+      "commandName": "Project",
+      "commandLineArgs": "-publish"
+    },
+    "Localize": {
+      "commandName": "Project",
+      "commandLineArgs": "-localize"
+    },
+    "Debug": {
+      "commandName": "Project"
+    }
+  }
+}

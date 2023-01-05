@@ -7,12 +7,18 @@ using System.Runtime.CompilerServices;
 using BLREdit.UI.Views;
 using BLREdit.UI;
 using BLREdit.Export;
+using System.Text.Json;
+using System;
+using Gameloop.Vdf.Linq;
+using System.Buffers.Text;
 
 namespace BLREdit.Import;
 
+[JsonConverter(typeof(JsonBLRItemConverter))]
 public sealed class BLRItem : INotifyPropertyChanged
 {
     public int LMID { get; set; } = -69;
+    public int NameID { get; set; } = -1;
     public string Category { get; set; }
     public string DescriptorName { get; set; } = "";
     public string Icon { get; set; }

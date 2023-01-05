@@ -64,8 +64,8 @@ public sealed class IOResources
     public static string Steam6432InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath", "") as string;
     public static readonly List<string> GameFolders = new();
 
-    public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
-    public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
+    public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
+    public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
 
     public static WebClient WebClient { get; } = new WebClient();
     public static HttpClient HttpClient { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
