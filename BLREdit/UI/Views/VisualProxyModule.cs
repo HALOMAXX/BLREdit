@@ -269,9 +269,10 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 for (int i = 0; i < client.InstalledModules.Count; i++)
                 {
                     if (client.InstalledModules[i].InstallName == module.InstallName)
-                    { LoggingSystem.Log($"Removing {client.InstalledModules[i]}"); client.InstalledModules.RemoveAt(i); i--; }
+                    { LoggingSystem.Log($"Removing {client.InstalledModules[i]}"); client.InstalledModules.RemoveAt(i); client.Invalidate(); i--; }
                 }
                 client.InstalledModules.Add(module);
+                client.Invalidate();
                 LoggingSystem.Log($"Added {RepositoryProxyModule.InstallName} to installed modules of {client}");
             }
         }
@@ -310,6 +311,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 if (module.InstallName == RepositoryProxyModule.InstallName)
                 {
                     client.InstalledModules.Remove(module);
+                    client.Invalidate();
                     File.Delete($"{client.ModulesFolder}\\{module.InstallName}.dll");
                     break;
                 }

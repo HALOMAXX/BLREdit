@@ -89,12 +89,19 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public BLRClient()
     {
+        LoggingSystem.Log($"[Client Event Handler]: has been invalidated!");
         InstalledModules.CollectionChanged += InstalledModules_CollectionChanged;
     }
 
     private void InstalledModules_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
+        Invalidate();
+    }
+
+    public void Invalidate()
+    {
         hasBeenValidated = false;
+        LoggingSystem.Log($"[{this}]: has been invalidated!");
     }
 
     public static Dictionary<string, string> VersionHashes => new()
