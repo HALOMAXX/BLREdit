@@ -1,4 +1,5 @@
-﻿using BLREdit.API.REST_API.GitHub;
+﻿using BLREdit.API.InterProcess;
+using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.API.Utils;
 using BLREdit.Game;
@@ -38,7 +39,6 @@ public partial class App : System.Windows.Application
     public static GitHubRelease BLREditLatestRelease { get; private set; } = null;
     public static VisualProxyModule[] AvailableProxyModules { get; set; }
 
-    private const string LogFile = "log.txt";
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
 
     public static bool IsRunning { get; private set; } = true;
@@ -57,12 +57,27 @@ public partial class App : System.Windows.Application
             argDict.Add(name, value);
         }
 
+        if (BLREditPipe.ForwardLaunchArgs(argList))
+        {
+            Application.Current.Shutdown();
+            return;
+        }
+
         if (argDict.TryGetValue("-server", out string configFile))
         {
             try
             {
                 IOResources.SpawnConsole();
                 Console.Title = $"[Watchdog(BLREdit:{CurrentVersion})]: Starting!";
+
+                var task = Task.Run(App.GetAvailableProxyModules);
+                task.Wait();
+                var modules = task.Result;
+                App.AvailableProxyModules = new VisualProxyModule[modules.Length];
+                for (int i = 0; i < modules.Length; i++)
+                {
+                    App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
+                }
 
                 var serverConfig = IOResources.DeserializeFile<ServerLaunchParameters>(configFile);
 
@@ -200,16 +215,13 @@ public partial class App : System.Windows.Application
             return;
         }
 
-
-
-
-
-        new MainWindow().Show();
+        new MainWindow(argList).Show();
     }
 
     private void Application_Exit(object sender, ExitEventArgs e)
     {
         IsRunning = false;
+        BLREditPipe.StopServerThreads();
     }
 
     public App()
@@ -218,22 +230,27 @@ public partial class App : System.Windows.Application
 
         InitFiles();
 
-        File.Delete(LogFile);
-        Trace.Listeners.Add(new TextWriterTraceListener(LogFile, "loggingListener"));
-        Trace.AutoFlush = true;
-        LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
-        LoggingSystem.Log("Loading Client List");
-        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
-        LoggingSystem.Log("Finished Loading Client List");
+        Directory.CreateDirectory("logs");
+        Directory.CreateDirectory("logs\\BLREdit");
+        Directory.CreateDirectory("logs\\Client");
+        Directory.CreateDirectory("logs\\Proxy");
 
-        var task = Task.Run(App.GetAvailableProxyModules);
-        task.Wait();
-        var modules = task.Result;
-        App.AvailableProxyModules = new VisualProxyModule[modules.Length];
-        for (int i = 0; i < modules.Length; i++)
-        {
-            App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
-        }
+        Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));
+        
+        Trace.AutoFlush = true;
+
+        AppDomain.CurrentDomain.UnhandledException += UnhandledException;
+        LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+        LoggingSystem.Log("Loading Server and Client List");
+        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
+        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
+        LoggingSystem.Log("Finished Loading Server and Client List");
+    }
+
+    void UnhandledException(object sender, UnhandledExceptionEventArgs e)
+    {
+        LoggingSystem.Log($"[Unhandled]: {e.ExceptionObject}");
+        Environment.Exit(666);
     }
 
     private static void InitFiles()

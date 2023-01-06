@@ -24,6 +24,7 @@ using BLREdit.UI.Windows;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using System.Threading;
+using BLREdit.API.InterProcess;
 
 namespace BLREdit.UI;
 
@@ -73,14 +74,17 @@ public sealed partial class MainWindow : Window
 
     public static MainWindow Self { get; private set; } = null;
 
+    private string[] Args;
+
     //TODO Add Missing Portal Gun(Orange) Icon Tag/Hanger
-    public MainWindow()
+    public MainWindow(string[] args)
     {
         IsPlayerProfileChanging = true;
         IsPlayerNameChanging = true;
         InitializeComponent();
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
+        Args= args;
     }
 
     public void ApplySearchAndFilter()
@@ -136,6 +140,16 @@ public sealed partial class MainWindow : Window
         this.Title = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}";
 
         #region Backend Init
+
+        var availableModuleCheck = Task.Run(App.GetAvailableProxyModules);
+        availableModuleCheck.Wait();
+        var modules = availableModuleCheck.Result;
+        App.AvailableProxyModules = new VisualProxyModule[modules.Length];
+        for (int i = 0; i < modules.Length; i++)
+        {
+            App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
+        }
+
         var versionCheck = StartSTATask(App.VersionCheck);
         versionCheck.Wait(); //wait for Version Check if it needed to download stuff it has to finish before we initialize the ImportSystem.
         if (versionCheck.Result)
@@ -144,10 +158,6 @@ public sealed partial class MainWindow : Window
             this.Close();
             return;
         }
-
-        LoggingSystem.Log("Loading Server List");
-        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
-        LoggingSystem.Log("Finished Loading Server List!");
 
         App.RuntimeCheck();
 
@@ -251,7 +261,11 @@ public sealed partial class MainWindow : Window
         BLREditSettings.SyncDefaultClient();
 
         Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;
+
+        BLREditPipe.ProcessArgs(Args);
     }
+
+
 
     private static void CheckGameClients()
     {
@@ -340,9 +354,11 @@ public sealed partial class MainWindow : Window
         bool add = true;
         foreach (BLRServer s in ServerList)
         {
-            if (!forceAdd && s.ServerAddress == server.ServerAddress && s.Port == server.Port)
+            if (!forceAdd && s.ServerAddress == server.ServerAddress)
             {
                 add = false;
+                s.Port = server.Port;
+                s.InfoPort = server.InfoPort;
             }
         }
         if (add)
