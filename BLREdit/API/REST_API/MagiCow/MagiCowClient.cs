@@ -12,28 +12,15 @@ using System.Threading.Tasks;
 namespace BLREdit.API.REST_API.MagiCow;
 public sealed class MagiCowClient
 {
-    private static async Task<HttpResponseMessage> GetAsync(string server, string api)
-    {
-        try
-        {
-            Uri uri = new($"{server}{api}");
-            var response = await IOResources.HttpClient.GetAsync(uri);
-            string fail = "";
-            if (!response.IsSuccessStatusCode) { fail = $"\n {await response.Content.ReadAsStringAsync()}"; }
-            LoggingSystem.Log($"[Server]({response.StatusCode}): GET {server}{api}{fail}");
-            return response;
-        }
-        catch(Exception error) { LoggingSystem.Log($"[Server]({server}{api}): {error}"); }
-        return null;
-    }
-
     public static async Task<MagiCowServerInfo> GetServerInfo(string server)
     {
+        string serverAddress = $"http://{server}";
+        string api = "/api/server";
         MagiCowServerInfo info = null;
         string fail = "";
         try
         {
-            using var response = await GetAsync($"http://{server}", "/api/server");
+            using var response = await HttpGetClient.GetAsync(serverAddress, api);
             if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -43,7 +30,7 @@ public sealed class MagiCowClient
                 { fail = "Not a valid Json!"; }
             }
         }
-        catch(Exception error) { LoggingSystem.Log($"[Server]({server}): {error}\n{fail}"); }
+        catch(Exception error) { LoggingSystem.Log($"[Http]({serverAddress}{api}): {error}\n{fail}"); }
         return info;
     }
 }

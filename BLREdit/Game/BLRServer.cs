@@ -151,12 +151,12 @@ public sealed class BLRServer : INotifyPropertyChanged
         var magi = MagiCowClient.GetServerInfo(ServerAddress);
 
         Task.WaitAll(server, magi);
+        
+        var serverInfo = server.Result;
+        var magiInfo = magi.Result;
 
-        ServerInfo = server.Result;
-        if (ServerInfo is null) { ServerInfo = new(); } else { ServerInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Server-Utils Info!\n{ServerInfo}"); }
-
-        MagiInfo = magi.Result;
-        if (MagiInfo is null) { MagiInfo = new(); } else { MagiInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Magi Info!\n{MagiInfo}"); }
+        if (serverInfo is null) { ServerInfo = new(); } else { serverInfo.IsOnline = true; ServerInfo = serverInfo; }
+        if (magiInfo is null) { MagiInfo = new(); } else { magiInfo.IsOnline = true; MagiInfo = magiInfo; }
 
         RefreshInfo();
     }
