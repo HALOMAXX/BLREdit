@@ -37,11 +37,13 @@ public partial class App : System.Windows.Application
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
     public static GitHubRelease BLREditLatestRelease { get; private set; } = null;
-    public static VisualProxyModule[] AvailableProxyModules { get; set; }
+    public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
 
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
 
     public static bool IsRunning { get; private set; } = true;
+
+    public static List<Thread> AppThreads { get; private set; } = new();
 
     private void Application_Startup(object sender, StartupEventArgs e)
     {
@@ -70,14 +72,7 @@ public partial class App : System.Windows.Application
                 IOResources.SpawnConsole();
                 Console.Title = $"[Watchdog(BLREdit:{CurrentVersion})]: Starting!";
 
-                var task = Task.Run(App.GetAvailableProxyModules);
-                task.Wait();
-                var modules = task.Result;
-                App.AvailableProxyModules = new VisualProxyModule[modules.Length];
-                for (int i = 0; i < modules.Length; i++)
-                {
-                    App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
-                }
+                App.AvailableProxyModuleCheck();
 
                 var serverConfig = IOResources.DeserializeFile<ServerLaunchParameters>(configFile);
 
@@ -221,7 +216,17 @@ public partial class App : System.Windows.Application
     private void Application_Exit(object sender, ExitEventArgs e)
     {
         IsRunning = false;
-        BLREditPipe.StopServerThreads();
+        foreach (var t in AppThreads)
+        {
+            try
+            {
+                if (t?.IsAlive ?? false)
+                {
+                    t?.Abort();
+                }
+            }
+            catch { }
+        }
     }
 
     public App()
@@ -234,6 +239,16 @@ public partial class App : System.Windows.Application
         Directory.CreateDirectory("logs\\BLREdit");
         Directory.CreateDirectory("logs\\Client");
         Directory.CreateDirectory("logs\\Proxy");
+
+        foreach (var file in Directory.EnumerateFiles("logs\\BLREdit"))
+        { 
+            var fileInfo = new FileInfo(file);
+            var creationDelta = DateTime.Now - fileInfo.CreationTime;
+            if (creationDelta.Days >= 1)
+            { 
+                fileInfo.Delete();
+            }
+        }
 
         Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));
         
@@ -493,7 +508,7 @@ public partial class App : System.Windows.Application
         return version;
     }
 
-    public static async Task<RepositoryProxyModule[]> GetAvailableProxyModules()
+    private static async Task<RepositoryProxyModule[]> GetAvailableProxyModules()
     {
         LoggingSystem.Log("Downloading AvailableProxyModule List!");
         var moduleList = Array.Empty<RepositoryProxyModule>();
@@ -507,6 +522,25 @@ public partial class App : System.Windows.Application
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}"); }
         return moduleList;
+    }
+
+    private static Task<T> StartSTATask<T>(Func<T> action)
+    {
+        var tcs = new TaskCompletionSource<T>();
+        Thread thread = new(() =>
+        {
+            try
+            {
+                tcs.SetResult(action());
+            }
+            catch (Exception e)
+            {
+                tcs.SetException(e);
+            }
+        });
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+        return tcs.Task;
     }
 
     public static void RuntimeCheck()
@@ -526,5 +560,28 @@ public partial class App : System.Windows.Application
         }
     }
 
+    static bool checkedForModules = false;
+    public static void AvailableProxyModuleCheck()
+    {
+        if (checkedForModules) return;
+        checkedForModules = true;
+        var availableModuleCheck = Task.Run(GetAvailableProxyModules);
+        availableModuleCheck.Wait();
+        var modules = availableModuleCheck.Result;
+        for (int i = 0; i < modules.Length; i++)
+        {
+            AvailableProxyModules.Add(new VisualProxyModule() { RepositoryProxyModule = modules[i] });
+        }
+    }
 
+    public static void CheckAppUpdate()
+    {
+        var versionCheck = StartSTATask(VersionCheck);
+        versionCheck.Wait(); //wait for Version Check if it needed to download stuff it has to finish before we initialize the ImportSystem.
+        if (versionCheck.Result)
+        {
+            Restart();
+            Environment.Exit(0);
+        }
+    }
 }

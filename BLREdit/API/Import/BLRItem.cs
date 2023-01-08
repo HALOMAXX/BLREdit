@@ -219,17 +219,9 @@ public sealed class BLRItem : INotifyPropertyChanged
         if (!string.IsNullOrEmpty(Icon))
         {
             var femaleIconName = GetFemaleIconName();
-            foreach (FoxIcon foxicon in ImportSystem.Icons)
-            {
-                if (foxicon.IconName == Icon)
-                {
-                    MaleIcon = foxicon;
-                }
-                if (foxicon.IconName == femaleIconName)
-                {
-                    FemaleIcon = foxicon;
-                }
-            }
+
+            MaleIcon = new FoxIcon($"Assets\\textures\\{Icon}.png");
+            FemaleIcon = new FoxIcon($"Assets\\textures\\{femaleIconName}.png");
         }
     }
 
@@ -343,7 +335,7 @@ public sealed class BLRItem : INotifyPropertyChanged
                 }
             }
         }
-        return FoxIcon.CreateEmptyBitmap(1, 1);
+        return FoxIcon.WideEmpty;
     }
 
     [JsonIgnore]

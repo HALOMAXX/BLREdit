@@ -120,8 +120,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         isPinging.SetBool(true);
         Thread pingThread = new(new ThreadStart(InternalPing))
         {
-            Name = ServerAddress + " Ping",
-            Priority = ThreadPriority.Highest
+            Name = ServerAddress + " Ping"
         };
         pingThread.Start();
     }
@@ -129,12 +128,13 @@ public sealed class BLRServer : INotifyPropertyChanged
     private void InternalPing()
     {
         var server = ServerUtilsClient.GetServerInfo(this);
-        server.Wait();
+        var magi = MagiCowClient.GetServerInfo(ServerAddress);
+
+        Task.WaitAll(server, magi);
+
         ServerInfo = server.Result;
         if (ServerInfo is null) { ServerInfo = new(); } else { ServerInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Server-Utils Info!\n{ServerInfo}"); }
 
-        var magi = MagiCowClient.GetServerInfo(ServerAddress);
-        magi.Wait();
         MagiInfo = magi.Result;
         if (MagiInfo is null) { MagiInfo = new(); } else { MagiInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Magi Info!\n{MagiInfo}"); }
 

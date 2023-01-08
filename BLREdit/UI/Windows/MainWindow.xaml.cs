@@ -25,6 +25,7 @@ using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using System.Threading;
 using BLREdit.API.InterProcess;
+using System.Diagnostics;
 
 namespace BLREdit.UI;
 
@@ -101,26 +102,6 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public static Task<T> StartSTATask<T>(Func<T> action)
-    {
-        var tcs = new TaskCompletionSource<T>();
-        Thread thread = new(() =>
-        {
-            try
-            {
-                tcs.SetResult(action());
-            }
-            catch (Exception e)
-            {
-                tcs.SetException(e);
-            }
-        });
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Start();
-        return tcs.Task;
-    }
-
-    bool shouldRestart = false;
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
 #if DEBUGWAIT
@@ -140,44 +121,18 @@ public sealed partial class MainWindow : Window
         this.Title = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}";
 
         #region Backend Init
+        var watch = Stopwatch.StartNew();
+        App.CheckAppUpdate();
+        LoggingSystem.Log($"[MainWindow]: Update Check took {watch.ElapsedMilliseconds}ms");
 
-        var availableModuleCheck = Task.Run(App.GetAvailableProxyModules);
-        availableModuleCheck.Wait();
-        var modules = availableModuleCheck.Result;
-        App.AvailableProxyModules = new VisualProxyModule[modules.Length];
-        for (int i = 0; i < modules.Length; i++)
-        {
-            App.AvailableProxyModules[i] = new VisualProxyModule() { RepositoryProxyModule = modules[i] };
-        }
-
-        var versionCheck = StartSTATask(App.VersionCheck);
-        versionCheck.Wait(); //wait for Version Check if it needed to download stuff it has to finish before we initialize the ImportSystem.
-        if (versionCheck.Result)
-        {
-            shouldRestart = true;
-            this.Close();
-            return;
-        }
-
+        watch.Restart();
         App.RuntimeCheck();
+        LoggingSystem.Log($"[MainWindow]: Runtime Check took {watch.ElapsedMilliseconds}ms");
 
+        watch.Restart();
         ImportSystem.Initialize();
-
-        LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
-        for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
-        {
-            if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
-            { UI.MainWindow.GameClients.RemoveAt(i); i--; }
-            else
-            {
-                LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
-                {
-                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
-                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                }
-            }
-        }
+        LoggingSystem.Log($"[MainWindow]: ImportSystem took {watch.ElapsedMilliseconds}ms");
+        watch.Restart();
 
         #region Folder Init
         if (!Directory.Exists("downloads")) { Directory.CreateDirectory("downloads"); }
@@ -248,9 +203,25 @@ public sealed partial class MainWindow : Window
             }
         }
 
+        LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
+        for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
+        {
+            if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
+            { UI.MainWindow.GameClients.RemoveAt(i); i--; }
+            else
+            {
+                LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
+                {
+                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
+                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                }
+            }
+        }
+
         AddDefaultServers();
 
-        RefreshPing();
+        
 
         if (BLREditSettings.Settings.DefaultServer is null)
         {
@@ -263,6 +234,10 @@ public sealed partial class MainWindow : Window
         Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;
 
         BLREditPipe.ProcessArgs(Args);
+
+        LoggingSystem.Log($"---Finished Loading MainWindow {watch.ElapsedMilliseconds}ms---");
+
+        //RefreshPing();
     }
 
 
@@ -983,6 +958,6 @@ public sealed partial class MainWindow : Window
 
     private void Window_Closed(object sender, EventArgs e)
     {
-        if (shouldRestart) { App.Restart(); }
+        
     }
 }

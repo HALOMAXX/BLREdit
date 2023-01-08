@@ -4,6 +4,7 @@ using BLREdit.UI.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ public static class ImportSystem
     public const string SHOP_CATEGORY = "shop";
     public const string PRIMARY_SKIN_CATEGORY = "primarySkins";
 
-    public static readonly FoxIcon[] Icons = LoadAllIcons();
+    //public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
     public static Dictionary<string, ObservableCollection<BLRItem>> ItemLists { get; private set; } = new();
@@ -50,11 +51,26 @@ public static class ImportSystem
     {
         if (IsInitialized) return;
         IsInitialized = true;
-        LoggingSystem.Log("Initializing Import System");
-        ItemLists = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}");
         
+        
+        LoggingSystem.Log("Initializing Import System");
+
+
+        var watch = Stopwatch.StartNew();
+        LoadItems();
+        LoggingSystem.Log($"[ImportSystem]:Finished loading items in {watch.ElapsedMilliseconds}ms");
+        watch.Restart();
         UpdateImages();
+        LoggingSystem.Log($"[ImportSystem]:Finished loading images in {watch.ElapsedMilliseconds}ms");
+        watch.Restart();
         ApplyDisplayStats();
+        LoggingSystem.Log($"[ImportSystem]:Finished loading stats in {watch.ElapsedMilliseconds}ms");
+        watch.Stop();
+    }
+
+    private static void LoadItems()
+    {
+        ItemLists = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}");
     }
 
     public static void ApplyDisplayStats()
@@ -319,10 +335,6 @@ public static class ImportSystem
                 view.Filter += new Predicate<object>(ItemFilters.FullFilter);
             }
         }
-        if (ItemLists.TryGetValue(ImportSystem.EMOTES_CATEGORY, out ObservableCollection<BLRItem> list))
-        {
-            LoggingSystem.Log(list.Count.ToString());
-        }
     }
 
     internal static void UpdateArmorImages(bool female)
@@ -437,15 +449,13 @@ public static class ImportSystem
 
     private static void UpdateImages()
     {
-        foreach (var entry in ItemLists)
+        Parallel.ForEach(ItemLists, (entry) =>
         {
-            LoggingSystem.Log($"Updating Images for {entry.Key}");
-
             foreach (var item in entry.Value)
             {
                 item.LoadImage();
             }
-        }
+        });
     }
 
     public static ObservableCollection<BLRItem> GetItemListOfType(string Type)

@@ -44,20 +44,32 @@ public sealed class FoxIcon
 
     public BitmapSource GetWideImage()
     {
+        if (!IconFileInfo.Exists)
+        {
+            return WideEmpty;
+        }
         return GetImage(WideImageWidth, WideImageHeight, WideEmpty.Clone(), true);
     }
 
     public BitmapSource GetLargeSquareImage()
     {
+        if (!IconFileInfo.Exists)
+        {
+            return LargeEmpty;
+        }
         return GetSquareImage(LargeSquareImageWidth, LargeEmpty.Clone());
     }
 
     public BitmapSource GetSmallSquareImage()
     {
+        if (!IconFileInfo.Exists)
+        {
+            return SmallEmpty;
+        }
         return GetSquareImage(SmallSquareImageWidth, SmallEmpty.Clone());
     }
 
-    public BitmapSource GetSquareImage(int square, BitmapImage empty)
+    private BitmapSource GetSquareImage(int square, BitmapImage empty)
     {
         return GetImage(square, square, empty, true);
     }
@@ -123,7 +135,7 @@ public sealed class FoxIcon
         return new BitmapImage(new Uri(IconFileInfo.FullName, UriKind.Absolute));
     }
 
-    public static BitmapSource ToBitmapSource(DrawingImage source)
+    private static BitmapSource ToBitmapSource(DrawingImage source)
     {
         DrawingVisual drawingVisual = new();
         DrawingContext drawingContext = drawingVisual.RenderOpen();
@@ -135,7 +147,7 @@ public sealed class FoxIcon
         return bmp;
     }
 
-    public static BitmapImage CreateEmptyBitmap(int width, int height)
+    private static BitmapImage CreateEmptyBitmap(int width, int height)
     {
         // Define parameters used to create the BitmapSource.
         PixelFormat pf = PixelFormats.Bgra32;

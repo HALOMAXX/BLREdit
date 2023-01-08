@@ -71,8 +71,6 @@ public sealed class IOResources
     public static HttpClient HttpClient { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
     public static HttpClient HttpClientWeb { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
 
-    private readonly static Thread WebClientDownloadThread = new(DownloadFiles);
-
     static IOResources()
     {
         System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
@@ -81,51 +79,47 @@ public sealed class IOResources
         HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
         if (!HttpClientWeb.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { LoggingSystem.Log($"Failed to add {HttpRequestHeader.UserAgent} to HttpClientWeb"); };
         HttpClientWeb.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("text/html"));
-        WebClientDownloadThread.Start();
+        Thread downloadClient = new(DownloadFiles);
+        App.AppThreads.Add(downloadClient);
+        downloadClient.Start();
     }
 
-    private static ConcurrentQueue<DownloadRequest> DownloadRequests { get; } = new();
+    private static BlockingCollection<DownloadRequest> DownloadRequests { get; } = new();
     public static void DownloadFile(string url, string filename)
     {
         DownloadRequest req = new(url, filename);
-        DownloadRequests.Enqueue(req);
-        while (!req.isDone)
-        { 
-            Thread.Sleep(100);
-        }
+        DownloadRequests.Add(req);
+        WaitHandle.WaitAll(new WaitHandle[] { req.locked });
     }
 
     private static void DownloadFiles()
     {
         while (App.IsRunning)
         {
-            if (DownloadRequests.TryDequeue(out DownloadRequest Request))
+            var request = DownloadRequests.Take();
+            try
             {
-                try
-                {
-                    WebClient.DownloadFile(Request.url, Request.filename);
-                }
-                catch (Exception error)
-                {
-                    LoggingSystem.Log($"[WebClient]Failed to Download({Request.url})\nReason:{error}");
-                }
-                finally 
-                { Request.isDone = true; }
+                WebClient.DownloadFile(request.url, request.filename);
             }
-            else
-            { Thread.Sleep(100); }
+            catch (Exception error)
+            {
+                LoggingSystem.Log($"[WebClient]Failed to Download({request.url})\nReason:{error}");
+            }
+            finally 
+            { request.locked.Set(); }
         }
     }
 
     private class DownloadRequest
     {
         public string url, filename;
-        public bool isDone = false;
+        public AutoResetEvent locked;
 
         public DownloadRequest(string url, string filename)
         {
             this.url = url;
             this.filename = filename;
+            locked = new AutoResetEvent(false);
         }
     }
 

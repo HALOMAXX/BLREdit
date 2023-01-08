@@ -24,9 +24,6 @@ public sealed class BLREditPipe
 {
     public const string PIPE_NAME = "BLREdit";
     public static bool IsServer { get; private set; } = true;
-
-    private static List<Thread> ServerThreads { get; } = new List<Thread>();
-
     private static Process Self { get; } = Process.GetCurrentProcess();
 
     static BLREditPipe()
@@ -50,7 +47,7 @@ public sealed class BLREditPipe
             for (int i = Environment.ProcessorCount; i > 0; i--)
             {
                 var thread = new Thread(PipeServer) { IsBackground = true, Name = $"Pipe Server[{i}]" };
-                ServerThreads.Add(thread);
+                App.AppThreads.Add(thread);
                 thread.Start();
             }
         }
@@ -225,6 +222,7 @@ public sealed class BLREditPipe
     const string API = "blredit://";
     public static void ProcessArgs(string[] args)
     {
+        if (args.Length <= 0) { return; }
         Dictionary<string, string> argDict = new();
 
         for (var i = 0; i < args.Length; i++)
@@ -271,17 +269,6 @@ public sealed class BLREditPipe
             {
                 //MainWindow.Self.AddServer(server);
                 server.ConnectToServerCommand.Execute(null);
-            }
-        }
-    }
-
-    public static void StopServerThreads()
-    {
-        foreach (var thread in ServerThreads)
-        {
-            if (thread.IsAlive)
-            { 
-                thread.Abort();
             }
         }
     }

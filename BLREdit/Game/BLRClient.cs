@@ -85,7 +85,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public ObservableCollection<ProxyModule> CustomModules { get; set; } = new();
 
-    [JsonIgnore] public static VisualProxyModule[] AvailabeModules { get { return App.AvailableProxyModules; } }
+    [JsonIgnore] public static ObservableCollection<VisualProxyModule> AvailabeModules { get { return App.AvailableProxyModules; } }
 
     public BLRClient()
     {
@@ -241,8 +241,8 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         var count = InstalledModules.Count;
         var customCount = CustomModules.Count;
-        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Length} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}");
-        if (App.AvailableProxyModules.Length > 0 && BLREditSettings.Settings.StrictModuleChecks.Is)
+        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}");
+        if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.StrictModuleChecks.Is)
         { InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); }
 
         foreach (var file in Directory.EnumerateFiles(ModulesFolder))
@@ -452,6 +452,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private void ModifyClient()
     {
+        App.AvailableProxyModuleCheck();
         MainWindow.ClientWindow.Client = this;
         MainWindow.ClientWindow.ShowDialog();
     }
