@@ -91,7 +91,6 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
     public void SettingsChanged(object sender, PropertyChangedEventArgs e)
     {
-        LoggingSystem.Log($"Recieved Event Property:{e.PropertyName}");
         if (e.PropertyName == nameof(BLREditSettings.Settings.AdvancedModding.Visibility))
         {
             if (DataContext is BLRWeapon weapon)

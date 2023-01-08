@@ -80,12 +80,12 @@ public sealed partial class MainWindow : Window
     //TODO Add Missing Portal Gun(Orange) Icon Tag/Hanger
     public MainWindow(string[] args)
     {
+        Args = args;
         IsPlayerProfileChanging = true;
         IsPlayerNameChanging = true;
         InitializeComponent();
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
-        Args= args;
     }
 
     public void ApplySearchAndFilter()
@@ -104,139 +104,7 @@ public sealed partial class MainWindow : Window
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-#if DEBUGWAIT
-        MessageBox.Show("Waiting!");
-#endif
-
-        string BuildTag = "";
-
-#if DEBUG
-        BuildTag = "[Debug Build]:";
-#elif RELEASE
-        BuildTag = "[Release Build]:";
-#elif PUBLISH
-        BuildTag = "[Release Build]:";
-#endif
-
-        this.Title = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}";
-
-        #region Backend Init
-        var watch = Stopwatch.StartNew();
-        App.CheckAppUpdate();
-        LoggingSystem.Log($"[MainWindow]: Update Check took {watch.ElapsedMilliseconds}ms");
-
-        watch.Restart();
-        App.RuntimeCheck();
-        LoggingSystem.Log($"[MainWindow]: Runtime Check took {watch.ElapsedMilliseconds}ms");
-
-        watch.Restart();
-        ImportSystem.Initialize();
-        LoggingSystem.Log($"[MainWindow]: ImportSystem took {watch.ElapsedMilliseconds}ms");
-        watch.Restart();
-
-        #region Folder Init
-        if (!Directory.Exists("downloads")) { Directory.CreateDirectory("downloads"); }
-        #endregion Folder Init
-
-        #endregion Backend Init
-
-        #region Frontend Init
-        Self = this;
-        IsPlayerProfileChanging = true;
-        IsPlayerNameChanging = true;
-
-
-        PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
-        ProfileComboBox.ItemsSource = ExportSystem.Profiles;
-        ProfileComboBox.SelectedIndex = 0;
-
-        UndoRedoSystem.BlockUpdate = true;
-        UndoRedoSystem.BlockEvent = true;
-        ActiveProfile = ExportSystem.ActiveProfile;
-        UndoRedoSystem.BlockUpdate = false;
-        UndoRedoSystem.BlockEvent = false;
-
-        IsPlayerProfileChanging = false;
-        IsPlayerNameChanging = false;
-
-        LastSelectedBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
-        ItemFilters.Instance.WeaponFilter = Profile.Loadout1.Primary.Reciever;
-
-        this.DataContext = Profile;
-        #endregion Frontend Init
-
-        SetItemList(ImportSystem.PRIMARY_CATEGORY);
-        if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice.Is)
-        {
-            System.Diagnostics.Process.Start($"https://github.com/{App.CurrentOwner}/{App.CurrentRepo}/releases");
-        }
-        if (BLREditSettings.Settings.DoRuntimeCheck.Is || BLREditSettings.Settings.ForceRuntimeCheck.Is)
-        {
-            if (App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || BLREditSettings.Settings.ForceRuntimeCheck.Is)
-            {
-                var info = new InfoPopups.DownloadRuntimes();
-                if (!App.IsUpdateRuntimeMissing)
-                {
-                    info.Link2012Update4.IsEnabled = false;
-                    info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!";
-                }
-                info.ShowDialog();
-            }
-        }
-
-        GameClientList.ItemsSource = null;
-        GameClientList.Items.Clear();
-        GameClientList.ItemsSource = GameClients;
-
-        ServerListView.ItemsSource = null;
-        ServerListView.Items.Clear();
-        ServerListView.ItemsSource = ServerList;
-
-        IOResources.GetGameLocationsFromSteam();
-        foreach (string folder in IOResources.GameFolders)
-        {
-            var GameInstance = $"{folder}{IOResources.GAME_DEFAULT_EXE}";
-            if (File.Exists(GameInstance))
-            {
-                LoggingSystem.Log($"Adding Steam Client: {GameInstance}");
-                AddGameClient(new BLRClient() { OriginalPath = GameInstance });
-            }
-        }
-
-        LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
-        for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
-        {
-            if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
-            { UI.MainWindow.GameClients.RemoveAt(i); i--; }
-            else
-            {
-                LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
-                {
-                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
-                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                }
-            }
-        }
-
-        AddDefaultServers();
-
-        
-
-        if (BLREditSettings.Settings.DefaultServer is null)
-        {
-            BLREditSettings.Settings.DefaultServer = ServerList[0];
-        }
-
-        CheckGameClients();
-        BLREditSettings.SyncDefaultClient();
-
-        Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;
-
-        BLREditPipe.ProcessArgs(Args);
-
-        LoggingSystem.Log($"---Finished Loading MainWindow {watch.ElapsedMilliseconds}ms---");
-
+        LoggingSystem.Log($"---Finished Loading MainWindow---");
         //RefreshPing();
     }
 
@@ -285,11 +153,18 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    static readonly Stopwatch PingWatch = Stopwatch.StartNew();
+    static bool firstStart = true;
     public static void RefreshPing()
     {
-        foreach (BLRServer server in ServerList)
+        if (firstStart || PingWatch.ElapsedMilliseconds > 30000)
         {
-            server.PingServer();
+            firstStart= false;
+            foreach (BLRServer server in ServerList)
+            {
+                server.PingServer();
+            }
+            PingWatch.Restart();
         }
     }
 
@@ -310,7 +185,7 @@ public sealed partial class MainWindow : Window
             bool add = true;
             foreach (BLRServer server in ServerList)
             {
-                if (server.ServerAddress == defaultServer.ServerAddress && server.Port == defaultServer.Port)
+                if (server.ServerAddress == defaultServer.ServerAddress)
                 {
                     add = false;
                 }
@@ -327,13 +202,16 @@ public sealed partial class MainWindow : Window
     public void AddServer(BLRServer server, bool forceAdd = false)
     {
         bool add = true;
-        foreach (BLRServer s in ServerList)
+        if (!forceAdd)
         {
-            if (!forceAdd && s.ServerAddress == server.ServerAddress)
+            foreach (BLRServer s in ServerList)
             {
-                add = false;
-                s.Port = server.Port;
-                s.InfoPort = server.InfoPort;
+                if (s.ServerAddress == server.ServerAddress)
+                {
+                    add = false;
+                    s.Port = server.Port;
+                    s.InfoPort = server.InfoPort;
+                }
             }
         }
         if (add)
@@ -803,10 +681,7 @@ public sealed partial class MainWindow : Window
 
     private void PingServers_Click(object sender, RoutedEventArgs e)
     {
-        foreach (BLRServer server in ServerList)
-        {
-            server.PingServer();
-        }
+        RefreshPing();
     }
     #endregion Server UI
 
@@ -959,5 +834,150 @@ public sealed partial class MainWindow : Window
     private void Window_Closed(object sender, EventArgs e)
     {
         
+    }
+
+    private void Window_Initialized(object sender, EventArgs e)
+    {
+#if DEBUGWAIT
+        MessageBox.Show("Waiting!");
+#endif
+
+        string BuildTag = "";
+
+#if DEBUG
+        BuildTag = "[Debug Build]:";
+#elif RELEASE
+        BuildTag = "[Release Build]:";
+#elif PUBLISH
+        BuildTag = "[Release Build]:";
+#endif
+
+        this.Title = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}";
+
+        #region Backend Init
+        var watch = Stopwatch.StartNew();
+        App.CheckAppUpdate();
+        LoggingSystem.Log($"[MainWindow]: Update Check took {watch.ElapsedMilliseconds}ms");
+
+        watch.Restart();
+        App.RuntimeCheck();
+        LoggingSystem.Log($"[MainWindow]: Runtime Check took {watch.ElapsedMilliseconds}ms");
+
+        watch.Restart();
+        ImportSystem.Initialize();
+        LoggingSystem.Log($"[MainWindow]: ImportSystem took {watch.ElapsedMilliseconds}ms");
+        watch.Restart();
+
+        #region Folder Init
+        if (!Directory.Exists("downloads")) { Directory.CreateDirectory("downloads"); }
+        #endregion Folder Init
+
+        #endregion Backend Init
+
+        #region Frontend Init
+        Self = this;
+        IsPlayerProfileChanging = true;
+        IsPlayerNameChanging = true;
+
+
+        PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
+        ProfileComboBox.ItemsSource = ExportSystem.Profiles;
+        ProfileComboBox.SelectedIndex = 0;
+
+        UndoRedoSystem.BlockUpdate = true;
+        UndoRedoSystem.BlockEvent = true;
+        ActiveProfile = ExportSystem.ActiveProfile;
+        UndoRedoSystem.BlockUpdate = false;
+        UndoRedoSystem.BlockEvent = false;
+
+        IsPlayerProfileChanging = false;
+        IsPlayerNameChanging = false;
+
+        LastSelectedBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
+        ItemFilters.Instance.WeaponFilter = Profile.Loadout1.Primary.Reciever;
+
+        this.DataContext = Profile;
+        #endregion Frontend Init
+
+        SetItemList(ImportSystem.PRIMARY_CATEGORY);
+        if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice.Is)
+        {
+            System.Diagnostics.Process.Start($"https://github.com/{App.CurrentOwner}/{App.CurrentRepo}/releases");
+        }
+        if (BLREditSettings.Settings.DoRuntimeCheck.Is || BLREditSettings.Settings.ForceRuntimeCheck.Is)
+        {
+            if (App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || BLREditSettings.Settings.ForceRuntimeCheck.Is)
+            {
+                var info = new InfoPopups.DownloadRuntimes();
+                if (!App.IsUpdateRuntimeMissing)
+                {
+                    info.Link2012Update4.IsEnabled = false;
+                    info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!";
+                }
+                info.ShowDialog();
+            }
+        }
+
+        GameClientList.ItemsSource = null;
+        GameClientList.Items.Clear();
+        GameClientList.ItemsSource = GameClients;
+
+        ServerListView.ItemsSource = null;
+        ServerListView.Items.Clear();
+        ServerListView.ItemsSource = ServerList;
+
+        IOResources.GetGameLocationsFromSteam();
+        foreach (string folder in IOResources.GameFolders)
+        {
+            var GameInstance = $"{folder}{IOResources.GAME_DEFAULT_EXE}";
+            if (File.Exists(GameInstance))
+            {
+                LoggingSystem.Log($"Adding Steam Client: {GameInstance}");
+                AddGameClient(new BLRClient() { OriginalPath = GameInstance });
+            }
+        }
+
+        LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
+        for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
+        {
+            if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
+            { UI.MainWindow.GameClients.RemoveAt(i); i--; }
+            else
+            {
+                LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
+                {
+                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
+                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                }
+            }
+        }
+
+        AddDefaultServers();
+
+
+
+        if (BLREditSettings.Settings.DefaultServer is null)
+        {
+            BLREditSettings.Settings.DefaultServer = ServerList[0];
+        }
+
+        CheckGameClients();
+        BLREditSettings.SyncDefaultClient();
+
+        Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;
+
+        BLREditPipe.ProcessArgs(Args);
+
+        LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
+    }
+
+    
+    private void MainWindowTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.AddedItems.Contains(LauncherHeader))
+        {
+            RefreshPing();
+        }
     }
 }

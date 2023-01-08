@@ -5,6 +5,7 @@ using BLREdit.UI;
 using BLREdit.UI.Windows;
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -49,6 +50,31 @@ public sealed class BLRServer : INotifyPropertyChanged
     public ushort Port { get { return port; } set { port = value; OnPropertyChanged(); } }
     [JsonIgnore] private ushort infoPort = 7778;
     public ushort InfoPort { get { return infoPort; } set { infoPort = value; OnPropertyChanged(); } }
+
+    private static BlockingCollection<BLRServer> ServersToPing { get; } = new();
+
+    static BLRServer()
+    {
+        for (int i = Environment.ProcessorCount; i > 0; i--)
+        {
+            var thread = new Thread(PingWorker)
+            { Name = $"Ping Thread[{i}]", IsBackground = true };
+            App.AppThreads.Add(thread);
+            thread.Start();
+        }
+    }
+
+    static void PingWorker()
+    {
+        while (App.IsRunning)
+        {
+            var server = ServersToPing.Take();
+            if (server is null || string.IsNullOrEmpty(server.ServerAddress) || string.IsNullOrEmpty(server.IPAddress)) continue;
+            server.IsPinging.SetBool(true);
+            server.InternalPing();
+            server.IsPinging.SetBool(false);
+        }
+    }
 
     [JsonIgnore]
     public string IPAddress
@@ -116,13 +142,7 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     public void PingServer()
     {
-        if (IPAddress is null) { return; }
-        isPinging.SetBool(true);
-        Thread pingThread = new(new ThreadStart(InternalPing))
-        {
-            Name = ServerAddress + " Ping"
-        };
-        pingThread.Start();
+        ServersToPing.Add(this);
     }
 
     private void InternalPing()
@@ -139,7 +159,6 @@ public sealed class BLRServer : INotifyPropertyChanged
         if (MagiInfo is null) { MagiInfo = new(); } else { MagiInfo.IsOnline = true; LoggingSystem.Log($"[Server]({ServerAddress}): got Magi Info!\n{MagiInfo}"); }
 
         RefreshInfo();
-        isPinging.SetBool(false);
     }
 
     private void EditServer()

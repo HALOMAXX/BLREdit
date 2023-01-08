@@ -10,7 +10,7 @@
         xmlns:game="clr-namespace:BLREdit.Game"
         d:DataContext="{d:DesignInstance Type=views:BLRProfile}"
         mc:Ignorable="d"
-        Title="BLREdit" Height="1032" Width="1920" MinWidth="830" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closed="Window_Closed" Closing="Window_Closing" Foreground="Red" PreviewKeyDown="PreviewKeyDownMainWindow" PreviewKeyUp="PreviewKeyUpMainWindow">
+        Title="BLREdit" Height="1032" Width="1920" MinWidth="830" Initialized="Window_Initialized" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closed="Window_Closed" Closing="Window_Closing" Foreground="Red" PreviewKeyDown="PreviewKeyDownMainWindow" PreviewKeyUp="PreviewKeyUpMainWindow">
 
     <Window.Background>
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
@@ -36,7 +36,7 @@
             </TabItem>
         </TabControl>
 
-        <TabControl Name="MainWindowTabs"  BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="420,0,0,0">
+        <TabControl Name="MainWindowTabs" SelectionChanged="MainWindowTabs_SelectionChanged" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="420,0,0,0">
             <TabItem Header="Item List" Name="ItemListTab">
                 <Grid>
                     <Button Name="SortDirectionButton" Content="Descending" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22"  Click="ChangeSortingDirection"/>
@@ -79,7 +79,7 @@
                 </TabControl>
             </TabItem>
 
-            <TabItem Header="Launcher">
+            <TabItem Name="LauncherHeader" Header="Launcher">
                 <TabControl BorderThickness="0,1,0,0">
                     <TabItem Header="Server List">
                         <Grid Name="ServerGrid">
