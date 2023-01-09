@@ -61,11 +61,29 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Client.
+        /// </summary>
+        public static string btn_AddClient {
+            get {
+                return ResourceManager.GetString("btn_AddClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Profile.
         /// </summary>
         public static string btn_AddProfile {
             get {
                 return ResourceManager.GetString("btn_AddProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Server.
+        /// </summary>
+        public static string btn_AddServer {
+            get {
+                return ResourceManager.GetString("btn_AddServer", resourceCulture);
             }
         }
         

@@ -33,5 +33,10 @@
                 <TextBox Text="{Binding Path=InfoPort}" HorizontalAlignment="Stretch" PreviewKeyDown="TextBox_PreviewKeyDown"/>
             </StackPanel>
         </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                <Button Name="RemoveServerButton" Content="Remove Server" Command="{Binding Path=RemoveServerCommand}" Click="RemoveServerButton_Click"/>
+            </StackPanel>
+        </Border>
     </StackPanel>
 </Window>

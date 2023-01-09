@@ -76,7 +76,11 @@ public partial class App : System.Windows.Application
 
                 var serverConfig = IOResources.DeserializeFile<ServerLaunchParameters>(configFile);
 
-                var client = UI.MainWindow.GameClients[serverConfig.ClientId];
+                BLRClient client;
+                if(serverConfig.ClientId < 0)
+                { client = BLREditSettings.Settings.DefaultClient; }
+                else 
+                { client = UI.MainWindow.GameClients[serverConfig.ClientId]; }
 
                 foreach (var module in AvailableProxyModules)
                 {
@@ -96,7 +100,7 @@ public partial class App : System.Windows.Application
                 var playlist = serverConfig.Playlist;
 
                 string launchArgs = $"server ?ServerName=\"{serverName}\"?Port={port}?NumBots={botCount}?MaxPlayers={maxPlayers}?Playlist={playlist}";
-                client.StartProcess(launchArgs, true);
+                client.StartProcess(launchArgs, serverConfig.WatchDog);
                 Console.WriteLine("Press Q to Exit");
                 while (Console.ReadKey().Key != ConsoleKey.Q) { }
             }

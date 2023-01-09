@@ -4,7 +4,8 @@ namespace BLREdit.Game;
 
 public sealed class ServerLaunchParameters
 {
-    public int ClientId = 0;
+    public int ClientId = -1;
+    public bool WatchDog = true;
     public string ServerName = "Custom Server";
     public string Playlist = "DM";
     public int Port = 7777;

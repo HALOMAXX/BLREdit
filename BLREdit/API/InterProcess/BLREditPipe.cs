@@ -1,4 +1,5 @@
 ﻿using BLREdit.Game;
+using BLREdit.Game.Proxy;
 using BLREdit.UI;
 
 using Microsoft.Win32;
@@ -23,12 +24,13 @@ namespace BLREdit.API.InterProcess;
 public sealed class BLREditPipe
 {
     public const string PIPE_NAME = "BLREdit";
+    public const string API = "blredit://";
     public static bool IsServer { get; private set; } = true;
     private static Process Self { get; } = Process.GetCurrentProcess();
+    public static Dictionary<string, Action<string>> ApiEndPoints { get; } = new();
 
     static BLREditPipe()
     {
-        //Test if BLRedit is already running if not we can prepare a PipeServer
         ValidateServerState();
 
         if (IsServer || IsElevated())
@@ -43,6 +45,7 @@ public sealed class BLREditPipe
     {
         if (IsServer)
         {
+            AddApiEndpoints();
             LoggingSystem.Log($"[PipeServer]: Starting {Environment.ProcessorCount} PipeThreads");
             for (int i = Environment.ProcessorCount; i > 0; i--)
             {
@@ -167,6 +170,86 @@ public sealed class BLREditPipe
         root?.Close();
     }
 
+    static void AddApiEndpoints()
+    {
+        ApiEndPoints.Add("add-server", (json) => {
+            if (json.StartsWith("{"))
+            {
+                LoggingSystem.Log($"[BLREdit API](add-server): Adding Server ({json})");
+                var server = IOResources.Deserialize<BLRServer>(json);
+                if (server != null && MainWindow.Self != null)
+                {
+                    MainWindow.AddServer(server);
+                }
+            }
+            else
+            {
+                LoggingSystem.Log($"[BLREdit API](add-server): Recieved malformed json!\n{json}");
+            }
+        });
+        ApiEndPoints.Add("connect-server", (json) => {
+            if (json.StartsWith("{"))
+            {
+                LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to Server ({json})");
+                var server = IOResources.Deserialize<BLRServer>(json);
+                MainWindow.AddServer(server);
+                if (server != null && MainWindow.Self != null)
+                {
+                    server.ConnectToServerCommand.Execute(null);
+                }
+            }
+            else
+            {
+                LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to ServerAddress ({json})");
+                foreach (var server in MainWindow.ServerList)
+                {
+                    if (server.ServerAddress == json)
+                    { 
+                        server.ConnectToServerCommand.Execute(null);
+                    }
+                }
+            }
+        });
+        ApiEndPoints.Add("start-server", (json) => {
+
+            if (json.StartsWith("{"))
+            {
+                LoggingSystem.Log($"[BLREdit API](start-server): Starting Server ({json})");
+                var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json);
+                BLRClient client;
+                if (serverConfig.ClientId < 0)
+                { client = BLREditSettings.Settings.DefaultClient; }
+                else
+                { client = UI.MainWindow.GameClients[serverConfig.ClientId]; }
+
+                foreach (var module in App.AvailableProxyModules)
+                {
+                    foreach (var required in serverConfig.RequiredModules)
+                    {
+                        if (module.RepositoryProxyModule.InstallName == required)
+                        {
+                            module.InstallModule(client);
+                        }
+                    }
+                }
+
+                var serverName = serverConfig.ServerName;
+                var port = serverConfig.Port;
+                var botCount = serverConfig.BotCount;
+                var maxPlayers = serverConfig.MaxPlayers;
+                var playlist = serverConfig.Playlist;
+
+                string launchArgs = $"server ?ServerName=\"{serverName}\"?Port={port}?NumBots={botCount}?MaxPlayers={maxPlayers}?Playlist={playlist}";
+                client.StartProcess(launchArgs, serverConfig.WatchDog);
+            }
+            else
+            {
+                LoggingSystem.Log($"[BLREdit API](start-server): Recieved malformed json!\n{json}");
+            }
+        });
+        //TODO: Add more api endpoints like start-server, export-loadout, select-loadout and more
+    }
+
     static void RunAsAdmin()
     {
         ProcessStartInfo info = new(App.BLREditLocation + "BLREdit.exe") { Verb = "runas" };
@@ -219,56 +302,38 @@ public sealed class BLREditPipe
         }
     }
 
-    const string API = "blredit://";
     public static void ProcessArgs(string[] args)
     {
         if (args.Length <= 0) { return; }
         Dictionary<string, string> argDict = new();
 
-        for (var i = 0; i < args.Length; i++)
+        foreach (var arg in args)
         {
-            LoggingSystem.Log($"{args[i]}");
+            if (!arg.StartsWith(API)) { continue; }
 
-            if (!args[i].StartsWith(API)) continue;
-
-            int index = args[i].IndexOf('/', API.Length);
-
+            int index = arg.IndexOf('/', API.Length);
             int offset = 1;
-            if (args[i].EndsWith("/"))
+            if (arg.EndsWith("/"))
             {
                 offset++;
             }
 
-            int end = args[i].Length - (index + offset);
+            int end = arg.Length - (index + offset);
 
-            if (end <= 0) { LoggingSystem.Log($"Failed to Parse Arg:(E:{end} / O:{offset} / A:{args[i].Length} / L:{API.Length}): {args[i]}"); continue; }
-            string name = args[i].Substring(API.Length, index - API.Length);
-            string value = Uri.UnescapeDataString(args[i].Substring(index + 1, end));
+            if (end <= 0) { LoggingSystem.Log($"Failed to Parse Arg:(E:{end} / O:{offset} / A:{arg.Length} / L:{API.Length}): {arg}"); continue; }
+            string name = arg.Substring(API.Length, index - API.Length);
+            string value = Uri.UnescapeDataString(arg.Substring(index + 1, end));
 
-            LoggingSystem.Log($"{name}[{index}]: {value}");
-
-            argDict.Add(name, value);
-        }
-
-        if (argDict.ContainsKey("add-server"))
-        {
-            var json = argDict["add-server"];
-            LoggingSystem.Log($"[{Thread.CurrentThread.Name}]: Adding Server ({json})");
-            var server = IOResources.Deserialize<BLRServer>(json);
-            if (server != null && MainWindow.Self != null)
+            if (ApiEndPoints.TryGetValue(name, out Action<string> action))
             {
-                MainWindow.Self.AddServer(server);
-            }
-        }
-        if (argDict.ContainsKey("connect-server"))
-        {
-            var json = argDict["connect-server"];
-            LoggingSystem.Log($"[{Thread.CurrentThread.Name}]: Adding Server ({json})");
-            var server = IOResources.Deserialize<BLRServer>(json);
-            if (server != null && MainWindow.Self != null)
-            {
-                //MainWindow.Self.AddServer(server);
-                server.ConnectToServerCommand.Execute(null);
+                try
+                {
+                    action(value);
+                }
+                catch (Exception error)
+                {
+                    LoggingSystem.Log($"[API]({name}): {error}");
+                }
             }
         }
     }

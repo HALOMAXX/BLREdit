@@ -130,5 +130,10 @@ namespace BLREdit.UI.Windows
                 _ => -1,
             };
         }
+
+        private void RemoveServerButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

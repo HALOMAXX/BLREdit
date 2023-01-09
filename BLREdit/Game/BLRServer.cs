@@ -151,7 +151,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         var magi = MagiCowClient.GetServerInfo(ServerAddress);
 
         Task.WaitAll(server, magi);
-        
+
         var serverInfo = server.Result;
         var magiInfo = magi.Result;
 
@@ -205,6 +205,24 @@ public sealed class BLRServer : INotifyPropertyChanged
                 );
             return connectToServerCommand;
         }
+    }
+
+    private ICommand removeServer;
+    [JsonIgnore]
+    public ICommand RemoveServerCommand
+    {
+        get
+        {
+            removeServer ??= new RelayCommand(
+                    param => this.RemoveServer()
+                );
+            return removeServer;
+        }
+    }
+
+    public void RemoveServer()
+    { 
+        MainWindow.ServerList.Remove(this);
     }
 
     public void LaunchClient()

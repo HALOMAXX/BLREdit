@@ -69,7 +69,9 @@ public sealed partial class MainWindow : Window
     public bool IsCheckingGameClient { get; private set; } = false;
 
     public static ObservableCollection<BLRClient> GameClients { get; set; }
+    public ObservableCollection<BLRClient> Clients { get { return GameClients; } }    
     public static ObservableCollection<BLRServer> ServerList { get; set; }
+    public ObservableCollection<BLRServer> Servers { get { return ServerList; } }
 
     public static BLRWeapon Copy { get; set; } = null;
 
@@ -110,7 +112,7 @@ public sealed partial class MainWindow : Window
 
 
 
-    private static void CheckGameClients()
+    public static void CheckGameClients()
     {
         LoggingSystem.Log("Checking for patched clients");
         if (GameClients.Count <= 0)
@@ -168,7 +170,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void AddDefaultServers()
+    private static void AddDefaultServers()
     {
         List<BLRServer> defaultServers = new() {
         new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //mooserver.ddns.net : 7777 majikau.ddns.net or mooserver.ddns.net MajiCow Server
@@ -195,11 +197,9 @@ public sealed partial class MainWindow : Window
                 ServerList.Add(defaultServer);
             }
         }
-        ServerListView.ItemsSource = null;
-        ServerListView.ItemsSource = ServerList;
     }
 
-    public void AddServer(BLRServer server, bool forceAdd = false)
+    public static void AddServer(BLRServer server, bool forceAdd = false)
     {
         bool add = true;
         if (!forceAdd)
@@ -217,12 +217,10 @@ public sealed partial class MainWindow : Window
         if (add)
         {
             ServerList.Add(server);
-            ServerListView.ItemsSource = null;
-            ServerListView.ItemsSource = ServerList;
         }
     }
 
-    public void AddGameClient(BLRClient client)
+    public static void AddGameClient(BLRClient client)
     {
         bool add = true;
         foreach (BLRClient c in GameClients)
@@ -235,8 +233,6 @@ public sealed partial class MainWindow : Window
         if (add)
         {
             GameClients.Add(client);
-            GameClientList.ItemsSource = null;
-            GameClientList.ItemsSource = GameClients;
         }
     }
 
@@ -643,41 +639,8 @@ public sealed partial class MainWindow : Window
         }
     }
 
-#region GameClient UI
-    private void OpenNewGameClient_Click(object sender, RoutedEventArgs e)
-    {
-        OpenFileDialog dialog = new()
-        {
-            Filter = "Game Client|*.exe",
-            InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}",
-            Multiselect = false
-        };
-        dialog.ShowDialog();
-        if (!string.IsNullOrEmpty(dialog.FileName))
-        {
-            AddGameClient(new BLRClient() { OriginalPath = dialog.FileName });
-        }
-        CheckGameClients();
-    }
-#endregion GameClient UI
-
 
 #region Server UI
-    private void AddNewServer_Click(object sender, RoutedEventArgs e)
-    {
-        AddServer(new BLRServer(), true);
-    }
-
-    private void RemoveServer_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            ServerList.Remove(button.DataContext as BLRServer);
-
-            ServerListView.ItemsSource = null;
-            ServerListView.ItemsSource = ServerList;
-        }
-    }
 
     private void PingServers_Click(object sender, RoutedEventArgs e)
     {
@@ -918,14 +881,6 @@ public sealed partial class MainWindow : Window
             }
         }
 
-        GameClientList.ItemsSource = null;
-        GameClientList.Items.Clear();
-        GameClientList.ItemsSource = GameClients;
-
-        ServerListView.ItemsSource = null;
-        ServerListView.Items.Clear();
-        ServerListView.ItemsSource = ServerList;
-
         IOResources.GetGameLocationsFromSteam();
         foreach (string folder in IOResources.GameFolders)
         {
@@ -955,8 +910,6 @@ public sealed partial class MainWindow : Window
 
         AddDefaultServers();
 
-
-
         if (BLREditSettings.Settings.DefaultServer is null)
         {
             BLREditSettings.Settings.DefaultServer = ServerList[0];
@@ -968,6 +921,9 @@ public sealed partial class MainWindow : Window
         Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;
 
         BLREditPipe.ProcessArgs(Args);
+
+        ClientListView.DataContext = GameClients;
+        ServerListView.DataContext = ServerList;
 
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
     }
