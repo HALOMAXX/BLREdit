@@ -39,6 +39,12 @@
     "ModeName": "TDM"
   },
   {
+    "Name": "KC",
+    "Description": "Kill Confirmed",
+    "PlaylistName": "KC",
+    "ModeName": "KC"
+  },
+  {
     "Name": "TDM?",
     "Description": "Detonate",
     "ModeName": "Detonate"
