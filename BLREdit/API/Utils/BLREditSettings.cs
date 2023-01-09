@@ -29,6 +29,8 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     private BLRServer server = null;
     public BLRServer DefaultServer { get { return server; } set { server = value; OnPropertyChanged(); } }
 
+    //Allows for App-Web-Protocol needs Admin rights will be set to false if it fails to Start BLREdit as Admin
+    public UIBool EnableAPI { get; set; } = new(true);
     //Toggles Advanced Modding
     public UIBool AdvancedModding { get; set; } = new(false);
 
@@ -59,10 +61,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     //PlayerCount for Server Start
     private int playerCount = 16;
     public int PlayerCount { get { return playerCount; } set { playerCount = value; OnPropertyChanged(); } }
-
-
-
-
 
     public static LaunchOptions GetLaunchOptions()
     {

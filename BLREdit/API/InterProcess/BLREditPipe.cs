@@ -33,9 +33,12 @@ public sealed class BLREditPipe
     {
         ValidateServerState();
 
-        if (IsServer || IsElevated())
+        if (BLREditSettings.Settings.EnableAPI.Is)
         {
-            AddOrUpdateProtocol();
+            if (IsServer || IsElevated())
+            {
+                AddOrUpdateProtocol();
+            }
         }
 
         SpawnPipes();
@@ -252,9 +255,18 @@ public sealed class BLREditPipe
 
     static void RunAsAdmin()
     {
-        ProcessStartInfo info = new(App.BLREditLocation + "BLREdit.exe") { Verb = "runas" };
-        var p = Process.Start(info);
-        p.WaitForExit();
+        try
+        {
+            ProcessStartInfo info = new(App.BLREditLocation + "BLREdit.exe") { Verb = "runas" };
+            var p = Process.Start(info);
+            p.WaitForExit();
+        }
+        catch 
+        {
+            LoggingSystem.Log("Failed to Launch BLREdit as Admin will have to do without the API");
+            BLREditSettings.Settings.EnableAPI.SetBool(false);
+            BLREditSettings.Save();
+        }
     }
 
     static bool IsElevated()

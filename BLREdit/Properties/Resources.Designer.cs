@@ -358,6 +358,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable BLREdit API.
+        /// </summary>
+        public static string tbtn_EnableAPI {
+            get {
+                return ResourceManager.GetString("tbtn_EnableAPI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ForceRuntimeCheck.
         /// </summary>
         public static string tbtn_ForceRuntimeCheck {
@@ -430,6 +439,17 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enables the App-Web-Protocol API.
+        ///Important needs Admin priviliges to install the Protocol into the Windows Registry. 
+        ///Needs a Restart to Install Protocol!.
+        /// </summary>
+        public static string tbtn_TT_EnableAPI {
+            get {
+                return ResourceManager.GetString("tbtn_TT_EnableAPI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forces the Runtime Check Dialog to display.
         /// </summary>
         public static string tbtn_TT_ForceRuntimeCheck {
@@ -448,7 +468,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enables the Server WatchDog which will Restart&apos;s the server instantly if it crashes or get&apos;s closed.
+        ///   Looks up a localized string similar to Enables the Server WatchDog which will Restart&apos;s the server instantly if it crashes or get&apos;s closed while BLRedit is Runnning!.
         /// </summary>
         public static string tbtn_TT_ServerWatchDog {
             get {

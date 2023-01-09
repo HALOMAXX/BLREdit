@@ -216,6 +216,9 @@
   <data name="tbtn_Debugging" xml:space="preserve">
     <value>Debugging</value>
   </data>
+  <data name="tbtn_EnableAPI" xml:space="preserve">
+    <value>Enable BLREdit API</value>
+  </data>
   <data name="tbtn_ForceRuntimeCheck" xml:space="preserve">
     <value>ForceRuntimeCheck</value>
   </data>
@@ -240,6 +243,11 @@
   <data name="tbtn_TT_Debugging" xml:space="preserve">
     <value>Doesn't have any effect currently</value>
   </data>
+  <data name="tbtn_TT_EnableAPI" xml:space="preserve">
+    <value>Enables the App-Web-Protocol API.
+Important needs Admin priviliges to install the Protocol into the Windows Registry. 
+Needs a Restart to Install Protocol!</value>
+  </data>
   <data name="tbtn_TT_ForceRuntimeCheck" xml:space="preserve">
     <value>Forces the Runtime Check Dialog to display</value>
   </data>
@@ -247,7 +255,7 @@
     <value>Checks if all necessary MVC++ Runtimes are installed to make the Gamework only needed when the game was not installed via Steam</value>
   </data>
   <data name="tbtn_TT_ServerWatchDog" xml:space="preserve">
-    <value>Enables the Server WatchDog which will Restart's the server instantly if it crashes or get's closed</value>
+    <value>Enables the Server WatchDog which will Restart's the server instantly if it crashes or get's closed while BLRedit is Runnning!</value>
   </data>
   <data name="tbtn_TT_ShowUpdateNotice" xml:space="preserve">
     <value>Opens the default Web browser to the Newest release when a new one is available</value>
