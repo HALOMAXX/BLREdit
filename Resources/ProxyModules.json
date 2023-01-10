@@ -4,20 +4,23 @@
     "Owner": "Kethen",
     "Repository": "loadout-manager",
     "ModuleName": "LoadoutManager",
-    "Server": false
+    "Server": false,
+    "Required": true
   },
   {
     "RepositoryProvider": "GitHub",
     "Owner": "Kethen",
     "Repository": "BLRE-settings-manager",
     "ModuleName": "settings-manager",
-    "Server": false
+    "Server": false,
+    "Required": true
   },
   {
     "RepositoryProvider": "GitHub",
     "Owner": "Kethen",
     "Repository": "BLRE-server-utils",
     "ModuleName": "server-utils",
-    "Client": false
+    "Client": false,
+    "Required": true
   }
 ]

@@ -84,6 +84,7 @@ public partial class App : System.Windows.Application
 
                 foreach (var module in AvailableProxyModules)
                 {
+                    module.RepositoryProxyModule.Required= false;
                     foreach (var required in serverConfig.RequiredModules)
                     {
                         if (module.RepositoryProxyModule.InstallName == required)

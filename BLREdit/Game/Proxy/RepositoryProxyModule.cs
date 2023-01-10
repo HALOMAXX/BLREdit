@@ -24,6 +24,7 @@ public sealed class RepositoryProxyModule
     public string ModuleName { get; set; } = "LoadoutManager";
     public bool Client { get; set; } = true;
     public bool Server { get; set; } = true;
+    public bool Required { get; set; } = false;
 
     private GitHubRelease hubRelease = null;
     [JsonIgnore]

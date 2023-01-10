@@ -31,6 +31,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     //Allows for App-Web-Protocol needs Admin rights will be set to false if it fails to Start BLREdit as Admin
     public UIBool EnableAPI { get; set; } = new(true);
+
     //Toggles Advanced Modding
     public UIBool AdvancedModding { get; set; } = new(false);
 
@@ -54,6 +55,9 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     //Adds modules that are in the Module Folder of the Client to the installed Module list and adds them to Proxy Load order
     public UIBool AllowCustomModules { get; set; } = new(false);
+
+    //Always Installs Required Modules
+    public UIBool InstallRequiredModules { get; set; } = new(true);
 
     //BotCount for Server Start
     private int botCount = 8;

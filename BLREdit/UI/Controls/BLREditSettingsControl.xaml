@@ -55,5 +55,10 @@
                 <ToggleButton Content="{x:Static p:Resources.tbtn_EnableAPI }" ToolTip="{x:Static p:Resources.tbtn_TT_EnableAPI }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
             </StackPanel>
         </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=InstallRequiredModules}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_InstallRequiredModules }" ToolTip="{x:Static p:Resources.tbtn_TT_InstallRequiredModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
     </StackPanel>
 </UserControl>

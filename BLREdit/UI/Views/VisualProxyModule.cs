@@ -333,19 +333,22 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
-    public void ActiveClientChanged(object sender, EventArgs eventArgs)
+    public void ActiveClientChanged(object sender, PropertyChangedEventArgs e)
     {
-        var client = MainWindow.ClientWindow.Client;
-        LoggingSystem.Log($"New Client Got Set {client}");
+        if (e.PropertyName == "Client")
+        {
+            var client = MainWindow.ClientWindow.Client;
+            LoggingSystem.Log($"New Client Got Set {client}");
 
-        CheckForInstall(client);
-        CheckForUpdate(client);
+            CheckForInstall(client);
+            CheckForUpdate(client);
 
-        LoggingSystem.Log($"[{RepositoryProxyModule.InstallName}]: Installed:{Installed.Is}, UpToDate:{UpToDate.Is}");
+            LoggingSystem.Log($"[{RepositoryProxyModule.InstallName}]: Installed:{Installed.Is}, UpToDate:{UpToDate.Is}");
 
-        OnPropertyChanged(nameof(InstalledModule));
-        OnPropertyChanged(nameof(Installed));
-        OnPropertyChanged(nameof(UpToDate));
+            OnPropertyChanged(nameof(InstalledModule));
+            OnPropertyChanged(nameof(Installed));
+            OnPropertyChanged(nameof(UpToDate));
+        }
     }
 
     private async Task<DateTime> GetLatestReleaseDate()

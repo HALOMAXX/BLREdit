@@ -222,6 +222,9 @@
   <data name="tbtn_ForceRuntimeCheck" xml:space="preserve">
     <value>ForceRuntimeCheck</value>
   </data>
+  <data name="tbtn_InstallRequiredModules" xml:space="preserve">
+    <value>Install Required Modules</value>
+  </data>
   <data name="tbtn_RuntimeCheck" xml:space="preserve">
     <value>RuntimeCheck</value>
   </data>
@@ -250,6 +253,9 @@ Needs a Restart to Install Protocol!</value>
   </data>
   <data name="tbtn_TT_ForceRuntimeCheck" xml:space="preserve">
     <value>Forces the Runtime Check Dialog to display</value>
+  </data>
+  <data name="tbtn_TT_InstallRequiredModules" xml:space="preserve">
+    <value>Installs all Required Modules just before launch</value>
   </data>
   <data name="tbtn_TT_RuntimeCheck" xml:space="preserve">
     <value>Checks if all necessary MVC++ Runtimes are installed to make the Gamework only needed when the game was not installed via Steam</value>

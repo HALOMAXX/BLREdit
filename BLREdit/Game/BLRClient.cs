@@ -241,7 +241,21 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         var count = InstalledModules.Count;
         var customCount = CustomModules.Count;
-        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}");
+        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}, ForceRequiredModules:{BLREditSettings.Settings.InstallRequiredModules}");
+
+        if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.InstallRequiredModules.Is)
+        {
+            var client = MainWindow.ClientWindow.Client ;
+            MainWindow.ClientWindow.Client = this;
+            foreach (var availableModule in App.AvailableProxyModules)
+            {
+                if ((availableModule.Installed.IsNot || availableModule.UpToDate.IsNot) && availableModule.RepositoryProxyModule.Required)
+                { 
+                    availableModule.InstallCommand.Execute(null);
+                }
+            }
+        }
+
         if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.StrictModuleChecks.Is)
         { InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); }
 

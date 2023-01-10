@@ -376,6 +376,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Install Required Modules.
+        /// </summary>
+        public static string tbtn_InstallRequiredModules {
+            get {
+                return ResourceManager.GetString("tbtn_InstallRequiredModules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RuntimeCheck.
         /// </summary>
         public static string tbtn_RuntimeCheck {
@@ -455,6 +464,15 @@ namespace BLREdit.Properties {
         public static string tbtn_TT_ForceRuntimeCheck {
             get {
                 return ResourceManager.GetString("tbtn_TT_ForceRuntimeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installs all Required Modules just before launch.
+        /// </summary>
+        public static string tbtn_TT_InstallRequiredModules {
+            get {
+                return ResourceManager.GetString("tbtn_TT_InstallRequiredModules", resourceCulture);
             }
         }
         
