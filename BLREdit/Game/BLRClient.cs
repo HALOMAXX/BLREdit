@@ -237,11 +237,11 @@ public sealed class BLRClient : INotifyPropertyChanged
         return needUpdatedPatches;
     }
 
-    public void ValidateModules()
+    public void ValidateModules(List<ProxyModule> enabledModules = null)
     {
         var count = InstalledModules.Count;
         var customCount = CustomModules.Count;
-        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count} and StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}, ForceRequiredModules:{BLREditSettings.Settings.InstallRequiredModules}");
+        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count}, StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}, InstallRequiredModules:{BLREditSettings.Settings.InstallRequiredModules}");
 
         if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.InstallRequiredModules.Is)
         {
@@ -298,18 +298,19 @@ public sealed class BLRClient : INotifyPropertyChanged
         config.Proxy.Modules.Server.Clear();
         config.Proxy.Modules.Client.Clear();
         LoggingSystem.Log($"Applying Installed Modules:");
-        foreach (var module in InstalledModules)
+
+        if (enabledModules is null)
         {
-            SetModuleInProxyConfig(config, module);
+            enabledModules = InstalledModules.ToList();
+            if (BLREditSettings.Settings.AllowCustomModules.Is)
+            {
+                enabledModules.AddRange(CustomModules.ToList());
+            }
         }
 
-        if (BLREditSettings.Settings.AllowCustomModules.Is)
+        foreach (var module in enabledModules)
         {
-            LoggingSystem.Log($"Applying Custom Modules:");
-            foreach (var module in CustomModules)
-            {
-                SetModuleInProxyConfig(config, module);
-            }
+            SetModuleInProxyConfig(config, module);
         }
 
         IOResources.SerializeFile($"{ConfigFolder}\\default.json", config);
@@ -447,12 +448,12 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     //Invalidate the Is Valid if new module was inatlled / removed to prevent error when installing a new module after starting the game once
 
-    public void StartProcess(string launchArgs, bool isServer = false)
+    public void StartProcess(string launchArgs, bool isServer = false, List<ProxyModule> enabledModules = null)
     {
         if (!hasBeenValidated)
         {
             ValidateClient();
-            ValidateModules();
+            ValidateModules(enabledModules);
             hasBeenValidated = true;
         }
         else
