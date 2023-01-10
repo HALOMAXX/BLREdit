@@ -13,6 +13,13 @@ public sealed class BLRProfile
         MainWindow.Self.ApplySearchAndFilter();
     }
 
+    public void CalculateStats()
+    {
+        Loadout1.CalculateStats();
+        Loadout2.CalculateStats();
+        Loadout3.CalculateStats();
+    }
+
     private MagiCowsProfile internalProfile;
     public void LoadMagicCowsProfile(MagiCowsProfile profile)
     {

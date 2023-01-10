@@ -425,13 +425,14 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public UIBool GearSlot4Bool { get; private set; } = new UIBool();
     #endregion GearSlots
 
-    private void CalculateStats()
+    public void CalculateStats()
     {
         UpdateGearSlots();
 
-
-
         CreateDisplay();
+
+        Primary.CalculateStats();
+        Secondary.CalculateStats();
     }
 
     private void UpdateGearSlots()

@@ -250,7 +250,7 @@ public sealed class BLREditPipe
                 LoggingSystem.Log($"[BLREdit API](start-server): Recieved malformed json!\n{json}");
             }
         });
-        //TODO: Add more api endpoints like start-server, export-loadout, select-loadout and more
+        //TODO: Add more api endpoints like add-weapon, import-loadout, select-loadout(for tournaments) and more
     }
 
     static void RunAsAdmin()

@@ -19,7 +19,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
-    private static readonly BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
+    private static readonly BLREditSettings settings = LoadSettings();
     public static BLREditSettings Settings { get { return settings; } }
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
@@ -76,6 +76,21 @@ public sealed class BLREditSettings : INotifyPropertyChanged
                 Settings.DefaultClient = client;
                 return;
             }
+        }
+    }
+
+    private static BLREditSettings LoadSettings()
+    { 
+        var settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
+        settings.AdvancedModding.PropertyChanged += settings.AdvancedModdingChanged;
+        return settings;
+    }
+
+    private void AdvancedModdingChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == "Is")
+        {
+            MainWindow.Profile.CalculateStats();
         }
     }
 
