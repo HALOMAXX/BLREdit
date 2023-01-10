@@ -113,6 +113,7 @@ public partial class App : System.Windows.Application
             return;
         }
 
+
         if (argDict.TryGetValue("-localize", out string _))
         {
             ImportSystem.Initialize();
@@ -238,7 +239,7 @@ public partial class App : System.Windows.Application
     {
         Directory.SetCurrentDirectory(BLREditLocation);
 
-        InitFiles();
+        SetUpdateFilePath();
 
         Directory.CreateDirectory("logs");
         Directory.CreateDirectory("logs\\BLREdit");
@@ -273,7 +274,7 @@ public partial class App : System.Windows.Application
         Environment.Exit(666);
     }
 
-    private static void InitFiles()
+    private static void SetUpdateFilePath()
     {
         currentExe = new($"BLREdit.exe");
         backupExe = new($"{IOResources.UPDATE_DIR}BLREdit.exe.bak");
@@ -287,7 +288,21 @@ public partial class App : System.Windows.Application
         patchesZip = new($"{IOResources.UPDATE_DIR}patches.zip");
     }
 
-    private static void CleanUpdateDirectory()
+    private static void SetPackageFilePath()
+    {
+        currentExe = new($"BLREdit.exe");
+        backupExe = new($"{IOResources.PACKAGE_DIR}BLREdit.exe.bak");
+        //Need to download 
+        exeZip = new($"{IOResources.PACKAGE_DIR}BLREdit.zip");
+        assetZip = new($"{IOResources.PACKAGE_DIR}Assets.zip");
+        jsonZip = new($"{IOResources.PACKAGE_DIR}json.zip");
+        dllsZip = new($"{IOResources.PACKAGE_DIR}dlls.zip");
+        texturesZip = new($"{IOResources.PACKAGE_DIR}textures.zip");
+        crosshairsZip = new($"{IOResources.PACKAGE_DIR}crosshairs.zip");
+        patchesZip = new($"{IOResources.PACKAGE_DIR}patches.zip");
+    }
+
+    private static void CleanPackageOrUpdateDirectory()
     {
         if (exeZip.Info.Exists) { exeZip.Info.Delete(); }
         if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
@@ -300,9 +315,11 @@ public partial class App : System.Windows.Application
 
     public static void PackageAssets()
     {
-        Directory.CreateDirectory(IOResources.UPDATE_DIR);
+        Directory.CreateDirectory(IOResources.PACKAGE_DIR);
 
-        CleanUpdateDirectory();
+        SetPackageFilePath();
+
+        CleanPackageOrUpdateDirectory();
 
         var taskExe = Task.Run(() => 
         {
@@ -317,6 +334,8 @@ public partial class App : System.Windows.Application
         var taskPatches = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
 
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
+
+        SetUpdateFilePath();
     }
 
     private readonly static Dictionary<FileInfoExtension, string> DownloadLinks = new();

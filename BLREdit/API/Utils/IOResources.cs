@@ -41,6 +41,7 @@ public sealed class IOResources
     public const string PATCH_DIR = "patches\\";
     public const string PREVIEW_DIR = "crosshairs\\";
     public const string UPDATE_DIR = "updates\\";
+    public const string PACKAGE_DIR = "packaged\\";
     public const string GAME_PATH_SUFFIX = "steamapps\\common\\blacklightretribution\\Binaries\\Win32\\";
     public const string PROXY_MODULES_DIR = "Modules\\";
     #endregion DIRECTORIES
