@@ -1,4 +1,5 @@
 using BLREdit.Import;
+using BLREdit.UI;
 using BLREdit.UI.Windows;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ public sealed class ServerUtilsInfo
     public string Playlist { get; set; } = "";
     public int RemainingTime { get; set; } = 0;
     public string ServerName { get; set; } = "";
+    [JsonIgnore] public UIBool IsTeammode { get; } = new(false);
     public ObservableCollection<ServerUtilsTeam> TeamList { get; set; } = new ObservableCollection<ServerUtilsTeam>();
     public int TimeLimit { get; set; } = 0;
 
@@ -40,6 +42,7 @@ public sealed class ServerUtilsInfo
 
     public string GetScoreDisplay()
     {
+        IsTeammode.SetBool(BLRMode.IsTeammode);
         var player = new ServerUtilsAgent() { Name = "", Score = int.MinValue, Deaths = int.MinValue, Kills = int.MinValue };
         var team = new ServerUtilsTeam() { TeamScore = int.MinValue };
         switch (GameModeFullName)
@@ -101,6 +104,17 @@ public sealed class ServerUtilsInfo
         }
     }
 
+    private BLRMode mode;
+    [JsonIgnore]
+    public BLRMode BLRMode
+    {
+        get 
+        {
+            if (mode is null) { foreach (var m in MapModeSelect.Modes) { if (m.ModeName.ToLower() == GameMode.ToLower()) { mode = m; break; } } }
+            return mode;
+        }
+    }
+
     private ObservableCollection<string> list;
     [JsonIgnore]
     public ObservableCollection<string> List
@@ -109,6 +123,28 @@ public sealed class ServerUtilsInfo
         {
             if (list is null) { list = new() { $"{PlayerCount}/{MaxPlayers} Players" }; foreach (var team in TeamList) { foreach (var player in team.PlayerList) { list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } } }
             return list;
+        }
+    }
+
+    private ObservableCollection<string> team1list;
+    [JsonIgnore]
+    public ObservableCollection<string> Team1List
+    {
+        get
+        {
+            if (team1list is null && TeamList.Count > 0) { team1list = new() { $"{TeamList[0].PlayerCount}/{MaxPlayers/2} Team 1" };  foreach (var player in TeamList[0].PlayerList) { team1list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
+            return team1list;
+        }
+    }
+
+    private ObservableCollection<string> team2list;
+    [JsonIgnore]
+    public ObservableCollection<string> Team2List
+    {
+        get
+        {
+            if (team2list is null && TeamList.Count > 1) { team2list = new() { $"{TeamList[1].PlayerCount}/{MaxPlayers/2} Team 2" }; foreach (var player in TeamList[1].PlayerList) { team2list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
+            return team2list;
         }
     }
 

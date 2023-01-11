@@ -17,7 +17,13 @@
                 <Image Margin="0,0,0,3" Source="../Resources/settings.png"/>
             </Button>
 
-            <ComboBox ItemsSource="{Binding Path=PlayerList}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
+
+            <ComboBox ItemsSource="{Binding Path=PlayerList}" Visibility="{Binding Path=ServerInfo.IsTeammode.VisibilityInverted}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
+
+            <StackPanel HorizontalAlignment="Right" Visibility="{Binding Path=ServerInfo.IsTeammode.Visibility}" Orientation="Horizontal">
+                <ComboBox ItemsSource="{Binding Path=Team1List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
+                <ComboBox ItemsSource="{Binding Path=Team2List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
+            </StackPanel>
 
             <Button Width="128" Height="32" Margin="10,10,10,10" Content="Connect" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Connect to the Server" Command="{Binding Path=ConnectToServerCommand}"/>
             

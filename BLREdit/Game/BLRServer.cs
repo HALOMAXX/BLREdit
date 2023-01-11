@@ -34,16 +34,16 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
-
-    private readonly UIBool isPinging = new(false);
-    [JsonIgnore] public UIBool IsPinging { get { return isPinging; } }
-
+    [JsonIgnore] public UIBool IsPinging { get; } = new(false);
     [JsonIgnore] public MagiCowServerInfo MagiInfo { get; private set; } = new();
     [JsonIgnore] public ServerUtilsInfo ServerInfo { get; private set; } = new();
 
     [JsonIgnore] public string ServerDescription { get { return GetServerDescription(); } }
     [JsonIgnore] public string MapImage { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.BLRMap.SquareImage; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.BLRMap.SquareImage; } else { return $"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png"; } } }
     [JsonIgnore] public ObservableCollection<string> PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
+
+    [JsonIgnore] public ObservableCollection<string> Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.Team1List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
+    [JsonIgnore] public ObservableCollection<string> Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.Team2List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
 
     public string ServerAddress { get; set; } = "localhost";
     [JsonIgnore] private ushort port = 7777;
@@ -130,6 +130,8 @@ public sealed class BLRServer : INotifyPropertyChanged
         OnPropertyChanged(nameof(ServerDescription));
         OnPropertyChanged(nameof(MapImage));
         OnPropertyChanged(nameof(PlayerList));
+        OnPropertyChanged(nameof(Team1List));
+        OnPropertyChanged(nameof(Team2List));
     }
 
     public override bool Equals(object obj)
