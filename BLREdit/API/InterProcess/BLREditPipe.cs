@@ -1,7 +1,9 @@
-﻿using BLREdit.Game;
+﻿using BLREdit.Export;
+using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.UI;
 
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Win32;
 
 using PeNet.Header.Net.MetaDataTables;
@@ -249,6 +251,14 @@ public sealed class BLREditPipe
             {
                 LoggingSystem.Log($"[BLREdit API](start-server): Recieved malformed json!\n{json}");
             }
+        });
+        ApiEndPoints.Add("import-profile", (compressedBase64) => {
+            LoggingSystem.Log($"[BLREdit API](import-profile): Importing Profile");
+            var profile = IOResources.Deserialize<ExportSystemProfile>(IOResources.Base64ToJson(compressedBase64));
+            var newProfile = ExportSystem.AddProfile("Imported-Profile");
+            newProfile.Loadout1 = profile.Loadout1;
+            newProfile.Loadout2 = profile.Loadout2;
+            newProfile.Loadout3 = profile.Loadout3;
         });
         //TODO: Add more api endpoints like add-weapon, import-loadout, select-loadout(for tournaments) and more
     }

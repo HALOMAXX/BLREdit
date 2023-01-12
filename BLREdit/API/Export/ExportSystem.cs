@@ -55,6 +55,41 @@ public sealed class ExportSystem
         MainWindow.ActiveProfile = profile;
     }
 
+    public static void CopyToClipBoard(ExportSystemProfile profile)
+    {
+        string clipboard = $"register {Environment.NewLine}{IOResources.Serialize(profile as MagiCowsProfile, true)}";
+
+        try
+        {
+            SetClipboard(clipboard);
+            LoggingSystem.Log("Clipboard copy succes!");
+        }
+        catch (Exception error)
+        { LoggingSystem.Log($"failed CopyToClipboard {error}"); }
+    }
+
+    public static void SetClipboard(string value)
+    {
+        if (value == null)
+            throw new ArgumentNullException(nameof(value), "SetClipboard value was null should never happen");
+
+        Process clipboardExecutable = new()
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                RedirectStandardInput = true,
+                FileName = @"clip",
+                UseShellExecute = false
+            }
+        };
+        clipboardExecutable.Start();
+
+        clipboardExecutable.StandardInput.Write(value);
+        clipboardExecutable.StandardInput.Close();
+
+        return;
+    }
+
     private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()
     {
         List<ExportSystemProfile> profiles = new();

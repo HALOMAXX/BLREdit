@@ -26,6 +26,14 @@ using System.Text.Json.Serialization;
 using System.Threading;
 using BLREdit.API.InterProcess;
 using System.Diagnostics;
+using PeNet;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Markup;
+using System.Text.Json;
+using System.Text;
+using System.IO.Compression;
+using System.Buffers.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BLREdit.UI;
 
@@ -597,12 +605,26 @@ public sealed partial class MainWindow : Window
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
-        var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
-        Directory.CreateDirectory(directory);
-        IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3) });
-        var grid = CreateAlertGrid($"{ExportSystem.ActiveProfile.Name} Exported!");
-        AlertList.Items.Add(grid);
-        new TripleAnimationDouble(0, 400, 1, 3, 1, grid, Grid.WidthProperty, AlertList.Items).Begin(AlertList);
+        if (UIKeys.Keys[Key.LeftShift].Is || UIKeys.Keys[Key.RightShift].Is)
+        {
+            ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
+            ShowAlert($"MagiCow Profile: {ExportSystem.ActiveProfile.Name} Copied!");
+        }
+        else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
+        {
+            string json = IOResources.Serialize(ExportSystem.ActiveProfile as MagiCowsProfile, true);
+            string link = $"<blredit://import-profile/{IOResources.JsonToBase64(json)}>";
+            ExportSystem.SetClipboard(link);
+            ShowAlert($"{ExportSystem.ActiveProfile.Name} Share Link Created!");
+        }
+        else
+        {
+            var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
+            Directory.CreateDirectory(directory);
+            IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3) });
+            ShowAlert($"{ExportSystem.ActiveProfile.Name} Exported!");
+        }
+
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)

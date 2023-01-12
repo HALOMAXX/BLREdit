@@ -4,6 +4,7 @@ using BLREdit.UI.Windows;
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
 
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Win32;
 
 using System;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -203,6 +205,58 @@ public sealed class IOResources
         if (string.IsNullOrEmpty(file)) return;
         FileInfo info = new(file);
         File.Copy(file, ExportSystem.CurrentBackupFolder.FullName + info.Name, true);
+    }
+
+    public static string JsonToBase64(string json)
+    {
+        return Base64UrlEncoder.Encode(IOResources.Zip(json));
+    }
+
+    public static string Base64ToJson(string base64)
+    {
+        return IOResources.Unzip(Base64UrlEncoder.DecodeBytes(base64));
+    }
+
+    public static byte[] Zip(string str)
+    {
+        var bytes = Encoding.UTF8.GetBytes(str);
+
+        using (var msi = new MemoryStream(bytes))
+        using (var mso = new MemoryStream())
+        {
+            using (var gs = new GZipStream(mso, CompressionMode.Compress))
+            {
+                CopyStreamToStream(msi, gs);
+            }
+
+            return mso.ToArray();
+        }
+    }
+
+    public static string Unzip(byte[] bytes)
+    {
+        using (var msi = new MemoryStream(bytes))
+        using (var mso = new MemoryStream())
+        {
+            using (var gs = new GZipStream(msi, CompressionMode.Decompress))
+            {
+                CopyStreamToStream(gs, mso);
+            }
+
+            return Encoding.UTF8.GetString(mso.ToArray());
+        }
+    }
+
+    public static void CopyStreamToStream(Stream src, Stream dest)
+    {
+        byte[] bytes = new byte[4096];
+
+        int cnt;
+
+        while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
+        {
+            dest.Write(bytes, 0, cnt);
+        }
     }
 
     public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
