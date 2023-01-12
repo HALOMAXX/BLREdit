@@ -4,9 +4,9 @@ namespace BLREdit.UI.Views;
 
 public sealed class BLRProfile
 {
-    public BLRLoadout Loadout1 { get; } = new();
-    public BLRLoadout Loadout2 { get; } = new();
-    public BLRLoadout Loadout3 { get; } = new();
+    public BLRLoadout Loadout1 { get; set; } = new();
+    public BLRLoadout Loadout2 { get; set; } = new();
+    public BLRLoadout Loadout3 { get; set; } = new();
 
     public static void UpdateSearchAndFilter()
     {
@@ -21,7 +21,7 @@ public sealed class BLRProfile
     }
 
     private MagiCowsProfile internalProfile;
-    public void LoadMagicCowsProfile(MagiCowsProfile profile)
+    public void LoadMagiCowsProfile(MagiCowsProfile profile)
     {
         internalProfile = profile;
         Loadout1.LoadMagicCowsLoadout(internalProfile.Loadout1);
@@ -29,7 +29,14 @@ public sealed class BLRProfile
         Loadout3.LoadMagicCowsLoadout(internalProfile.Loadout3);
     }
 
-    public void UpdateMagicCowsProfile()
+    public void WriteMagiCowsProfile(MagiCowsProfile profile)
+    {
+        Loadout1.WriteMagiCowsLoadout(profile.Loadout1);
+        Loadout2.WriteMagiCowsLoadout(profile.Loadout2);
+        Loadout3.WriteMagiCowsLoadout(profile.Loadout3);
+    }
+
+    public void UpdateMagiCowsProfile()
     {
         Loadout1.UpdateMagicCowsLoadout();
         Loadout2.UpdateMagicCowsLoadout();

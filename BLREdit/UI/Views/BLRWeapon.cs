@@ -1,4 +1,5 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.Export;
+using BLREdit.Export;
 using BLREdit.Import;
 
 using System;
@@ -110,7 +111,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
     #endregion Weapon Parts
 
-    public PropertyInfo[] WeaponParts { get; } = ((from property in typeof(BLRWeapon).GetProperties() where Attribute.IsDefined(property, typeof(WeaponPartAttribute)) orderby ((WeaponPartAttribute)property.GetCustomAttributes(typeof(WeaponPartAttribute), false).Single()).WeaponPartOrder select property).ToArray());
+    public static PropertyInfo[] WeaponParts { get; } = ((from property in typeof(BLRWeapon).GetProperties() where Attribute.IsDefined(property, typeof(WeaponPartAttribute)) orderby ((WeaponPartAttribute)property.GetCustomAttributes(typeof(WeaponPartAttribute), false).Single()).WeaponPartOrder select property).ToArray());
 
     public BLRWeapon Copy()
     {
@@ -150,7 +151,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
 
-    private Export.MagiCowsWeapon weapon = null;
+    private Export.MagiCowsWeapon internalWeapon = null;
 
     public static BitmapSource GetBitmapCrosshair(string name)
     {
@@ -318,10 +319,30 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         OnPropertyChanged(nameof(ScopePreview));
     }
 
-    public BLRWeapon(bool isPrimary, BLRLoadout loadout)
+    public BLRWeapon(bool isPrimary, BLRLoadout loadout, ShareableWeapon weapon = null)
     {
         IsPrimary = isPrimary;
         Loadout = loadout;
+        if (weapon is null) return;
+        if (isPrimary)
+        {
+            reciever = ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_CATEGORY, weapon.Reciever);
+        }
+        else
+        {
+            reciever = ImportSystem.GetItemByIDAndType(ImportSystem.SECONDARY_CATEGORY, weapon.Reciever);
+        }
+
+        barrel = ImportSystem.GetItemByIDAndType(ImportSystem.BARRELS_CATEGORY, weapon.Barrel);
+        muzzle = ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, weapon.Muzzle);
+        magazine = ImportSystem.GetItemByIDAndType(ImportSystem.MAGAZINES_CATEGORY, weapon.Magazine);
+        ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, weapon.Ammo);
+        camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, weapon.Camo);
+        skin = ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, weapon.Skin);
+        stock = ImportSystem.GetItemByIDAndType(ImportSystem.STOCKS_CATEGORY, weapon.Stock);
+        scope = ImportSystem.GetItemByIDAndType(ImportSystem.SCOPES_CATEGORY, weapon.Scope);
+        tag = ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, weapon.Tag);
+        grip = ImportSystem.GetItemByIDAndType(ImportSystem.GRIPS_CATEGORY, weapon.Grip);
     }
 
     #region Properties
@@ -1588,6 +1609,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public void UpdateMagiCowsWeapon()
     {
+        WriteMagiCowsWeapon(internalWeapon);
+    }
+
+    public void WriteMagiCowsWeapon(MagiCowsWeapon weapon)
+    {
         if (weapon is not null)
         {
             weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
@@ -1606,21 +1632,21 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public void LoadMagicCowsWeapon(MagiCowsWeapon Weapon)
     {
-        weapon = Weapon;
-        reciever = weapon.GetReciever();
+        internalWeapon = Weapon;
+        reciever = internalWeapon.GetReciever();
 
-        barrel = weapon.GetBarrel();
-        magazine = weapon.GetMagazine();
-        muzzle = weapon.GetMuzzle();
-        stock = weapon.GetStock();
-        scope = weapon.GetScope();
-        grip = weapon.GetGrip();
-        tag = weapon.GetTag();
-        camo = weapon.GetCamo();
+        barrel = internalWeapon.GetBarrel();
+        magazine = internalWeapon.GetMagazine();
+        muzzle = internalWeapon.GetMuzzle();
+        stock = internalWeapon.GetStock();
+        scope = internalWeapon.GetScope();
+        grip = internalWeapon.GetGrip();
+        tag = internalWeapon.GetTag();
+        camo = internalWeapon.GetCamo();
 
-        ammo = weapon.GetAmmo();
+        ammo = internalWeapon.GetAmmo();
 
-        skin = weapon.GetSkin();
+        skin = internalWeapon.GetSkin();
 
         ItemChanged(nameof(Reciever));
         ItemChanged(nameof(Barrel));

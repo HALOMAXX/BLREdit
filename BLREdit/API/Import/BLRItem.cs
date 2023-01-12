@@ -17,6 +17,21 @@ namespace BLREdit.Import;
 [JsonConverter(typeof(JsonBLRItemConverter))]
 public sealed class BLRItem : INotifyPropertyChanged
 {
+    #region Events
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    public void ExternalOnPropertyChanged(params string[] properties)
+    {
+        foreach (var prop in properties)
+        {
+            OnPropertyChanged(prop);
+        }
+    }
+    #endregion Events
+
     public int LMID { get; set; } = -69;
     public int NameID { get; set; } = -1;
     public string Category { get; set; }
@@ -47,18 +62,24 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     [JsonIgnore] public BitmapSource Crosshair { get; private set; }
 
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    /// <summary>
+    /// Gets the Loadout-Manager ID for the item.
+    /// </summary>
+    /// <param name="item">The item to get the Loadout-Manager ID from</param>
+    /// <returns>ID for Loadout-Manager</returns>
+    public static int GetLMID(BLRItem item)
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        return item?.GetLMID() ?? -1;
     }
 
-    public void ExternalOnPropertyChanged(params string[] properties)
+    /// <summary>
+    /// Gets the Loadout-Manager ID for the item.
+    /// </summary>
+    /// <returns>ID for Loadout-Manager</returns>
+    public int GetLMID()
     {
-        foreach (var prop in properties)
-        {
-            OnPropertyChanged(prop);
-        }
+        if (this.LMID != -69) return this.LMID;
+        return ImportSystem.GetIDOfItem(this);
     }
 
     public void UpdateImage(bool female)

@@ -13,6 +13,8 @@ namespace BLREdit.UI.Views;
 
 public sealed class BLRLoadout : INotifyPropertyChanged
 {
+    private MagiCowsLoadout internalLoadout;
+
     #region Event
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -470,27 +472,36 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public void UpdateMagicCowsLoadout()
     {
-        if (UndoRedoSystem.BlockUpdate) return;
-        internalLoadout.Tactical = Tactical?.GetMagicCowsID() ?? 0;
-        internalLoadout.Helmet = Helmet?.GetMagicCowsID() ?? 0;
-        internalLoadout.UpperBody = UpperBody?.GetMagicCowsID() ?? 0;
-        internalLoadout.LowerBody = LowerBody?.GetMagicCowsID() ?? 0;
-
-        internalLoadout.Camo = BodyCamo?.GetMagicCowsID() ?? 0;
-        internalLoadout.Skin = Avatar?.GetMagicCowsID() ?? 99;
-        internalLoadout.Trophy = Trophy?.GetMagicCowsID() ?? 0;
-
-        internalLoadout.IsFemale = IsFemale;
-
-        if (GearSlots > 0) { internalLoadout.Gear1 = Gear1?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 1) { internalLoadout.Gear2 = Gear2?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 2) { internalLoadout.Gear3 = Gear3?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 3) { internalLoadout.Gear4 = Gear4?.GetMagicCowsID() ?? 0; }
-
-        internalLoadout.Taunts = new int[] { Taunt1?.GetMagicCowsID() ?? 0, Taunt2?.GetMagicCowsID() ?? 1, Taunt3?.GetMagicCowsID() ?? 2, Taunt4?.GetMagicCowsID() ?? 3, Taunt5?.GetMagicCowsID() ?? 4, Taunt6?.GetMagicCowsID() ?? 5, Taunt7?.GetMagicCowsID() ?? 6, Taunt8?.GetMagicCowsID() ?? 7 };
-        internalLoadout.Depot = new int[] { Depot1?.GetMagicCowsID() ?? 0, Depot2?.GetMagicCowsID() ?? 1, Depot3?.GetMagicCowsID() ?? 2, Depot4?.GetMagicCowsID() ?? 3, Depot5?.GetMagicCowsID() ?? 3 };
+        if(internalLoadout is not null)
+        WriteMagiCowsLoadout(internalLoadout);
     }
-    private MagiCowsLoadout internalLoadout;
+
+    public void WriteMagiCowsLoadout(MagiCowsLoadout loadout)
+    {
+        if (UndoRedoSystem.BlockUpdate) return;
+
+        Primary.WriteMagiCowsWeapon(loadout.Primary);
+        Secondary.WriteMagiCowsWeapon(loadout.Secondary);
+
+        loadout.Tactical = Tactical?.GetMagicCowsID() ?? 0;
+        loadout.Helmet = Helmet?.GetMagicCowsID() ?? 0;
+        loadout.UpperBody = UpperBody?.GetMagicCowsID() ?? 0;
+        loadout.LowerBody = LowerBody?.GetMagicCowsID() ?? 0;
+
+        loadout.Camo = BodyCamo?.GetMagicCowsID() ?? 0;
+        loadout.Skin = Avatar?.GetMagicCowsID() ?? 99;
+        loadout.Trophy = Trophy?.GetMagicCowsID() ?? 0;
+
+        loadout.IsFemale = IsFemale;
+
+        if (GearSlots > 0) { loadout.Gear1 = Gear1?.GetMagicCowsID() ?? 0; }
+        if (GearSlots > 1) { loadout.Gear2 = Gear2?.GetMagicCowsID() ?? 0; }
+        if (GearSlots > 2) { loadout.Gear3 = Gear3?.GetMagicCowsID() ?? 0; }
+        if (GearSlots > 3) { loadout.Gear4 = Gear4?.GetMagicCowsID() ?? 0; }
+
+        loadout.Taunts = new int[] { Taunt1?.GetMagicCowsID() ?? 0, Taunt2?.GetMagicCowsID() ?? 1, Taunt3?.GetMagicCowsID() ?? 2, Taunt4?.GetMagicCowsID() ?? 3, Taunt5?.GetMagicCowsID() ?? 4, Taunt6?.GetMagicCowsID() ?? 5, Taunt7?.GetMagicCowsID() ?? 6, Taunt8?.GetMagicCowsID() ?? 7 };
+        loadout.Depot = new int[] { Depot1?.GetMagicCowsID() ?? 0, Depot2?.GetMagicCowsID() ?? 1, Depot3?.GetMagicCowsID() ?? 2, Depot4?.GetMagicCowsID() ?? 3, Depot5?.GetMagicCowsID() ?? 3 };
+    }
     public void LoadMagicCowsLoadout(MagiCowsLoadout loadout)
     {
         internalLoadout = loadout;

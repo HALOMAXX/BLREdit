@@ -1,4 +1,5 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.Export;
+using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.UI;
@@ -254,11 +255,9 @@ public sealed class BLREditPipe
         });
         ApiEndPoints.Add("import-profile", (compressedBase64) => {
             LoggingSystem.Log($"[BLREdit API](import-profile): Importing Profile");
-            var profile = IOResources.Deserialize<ExportSystemProfile>(IOResources.Base64ToJson(compressedBase64));
+            var profile = IOResources.Deserialize<ShareableProfile>(IOResources.Base64ToJson(compressedBase64)).ToBLRProfile();
             var newProfile = ExportSystem.AddProfile("Imported-Profile");
-            newProfile.Loadout1 = profile.Loadout1;
-            newProfile.Loadout2 = profile.Loadout2;
-            newProfile.Loadout3 = profile.Loadout3;
+            profile.WriteMagiCowsProfile(newProfile);
         });
         //TODO: Add more api endpoints like add-weapon, import-loadout, select-loadout(for tournaments) and more
     }

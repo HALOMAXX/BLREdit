@@ -34,6 +34,7 @@ using System.Text;
 using System.IO.Compression;
 using System.Buffers.Text;
 using Microsoft.IdentityModel.Tokens;
+using BLREdit.API.Export;
 
 namespace BLREdit.UI;
 
@@ -53,7 +54,7 @@ public sealed partial class MainWindow : Window
     /// <summary>
     /// Contains the current active loadout
     /// </summary>
-    public static MagiCowsProfile ActiveProfile { get { return activeProfile; } set { activeProfile = value; Profile.LoadMagicCowsProfile(value); } }
+    public static MagiCowsProfile ActiveProfile { get { return activeProfile; } set { activeProfile = value; Profile.LoadMagiCowsProfile(value); } }
     private static MagiCowsProfile activeProfile = null;
 
     public static BLRProfile Profile { get; } = new();
@@ -612,7 +613,8 @@ public sealed partial class MainWindow : Window
         }
         else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
         {
-            string json = IOResources.Serialize(ExportSystem.ActiveProfile as MagiCowsProfile, true);
+            var profile = new ShareableProfile(Profile);
+            string json = IOResources.Serialize(profile, true);
             string link = $"<blredit://import-profile/{IOResources.JsonToBase64(json)}>";
             ExportSystem.SetClipboard(link);
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Share Link Created!");
@@ -621,7 +623,7 @@ public sealed partial class MainWindow : Window
         {
             var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
             Directory.CreateDirectory(directory);
-            IOResources.SerializeFile<SELoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new SELoadout(Profile.Loadout1), new SELoadout(Profile.Loadout2), new SELoadout(Profile.Loadout3) });
+            IOResources.SerializeFile<LoadoutManagerLoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Exported!");
         }
 
