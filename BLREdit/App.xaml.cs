@@ -28,8 +28,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.9.1";
-    public const string CurrentVersionTitle = "Oh boy big oopsie!";
+    public const string CurrentVersion = "v0.9.2";
+    public const string CurrentVersionTitle = "Oh boy big oopsie still!";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -59,8 +59,20 @@ public partial class App : System.Windows.Application
             argDict.Add(name, value);
         }
 
-        if (BLREditPipe.ForwardLaunchArgs(argList))
+        if (argDict.TryGetValue("-package", out string _))
         {
+            try
+            {
+                LoggingSystem.Log($"Started Packaging BLREdit Release");
+                PackageAssets();
+                LoggingSystem.Log($"Finished Packaging");
+            }
+            catch (Exception error) { LoggingSystem.MessageLog($"failed to package release:\n{error}"); }
+            var result = MessageBox.Show("Open Package folder?", "", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\packaged");
+            }
             Application.Current.Shutdown();
             return;
         }
@@ -112,7 +124,6 @@ public partial class App : System.Windows.Application
             Application.Current.Shutdown();
             return;
         }
-
 
         if (argDict.TryGetValue("-localize", out string _))
         {
@@ -198,20 +209,8 @@ public partial class App : System.Windows.Application
             return;
         }
 
-        if (argDict.TryGetValue("-package", out string _))
+        if (BLREditPipe.ForwardLaunchArgs(argList))
         {
-            try
-            {
-                LoggingSystem.Log($"Started Packaging BLREdit Release");
-                PackageAssets();
-                LoggingSystem.Log($"Finished Packaging");
-            }
-            catch (Exception error) { LoggingSystem.MessageLog($"failed to package release:\n{error}"); }
-            var result = MessageBox.Show("Open Package folder?", "", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\packaged");
-            }
             Application.Current.Shutdown();
             return;
         }
