@@ -38,7 +38,7 @@ public sealed class LoadoutManagerGear
         Tactical = loadout.Tactical.GetLMID();
         Badge = loadout.Trophy.GetLMID();
 
-        int avatar = loadout.Avatar.GetLMID();
+        int avatar = loadout.Avatar?.GetLMID() ?? -1;
 
         if (avatar > 34) 
         { Avatar = -1; } 

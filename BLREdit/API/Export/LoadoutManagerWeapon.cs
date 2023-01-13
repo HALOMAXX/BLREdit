@@ -92,8 +92,12 @@ public sealed class LoadoutManagerWeapon
                 case "Camo":
                     Properties["CamoIndex"].SetValue(this, ((BLRItem)part.GetValue(weapon)).GetLMID());
                     break;
+                case "Reciever":
+                    Properties["Receiver"].SetValue(this, ((BLRItem)part.GetValue(weapon)).GetLMID());
+                    break;
                 default:
-                    Properties[part.Name].SetValue(this, ((BLRItem)part.GetValue(weapon)).GetLMID());
+                    LoggingSystem.Log(part.Name);
+                    Properties[part.Name].SetValue(this, ((BLRItem)part.GetValue(weapon))?.GetLMID() ?? -1);
                     break;
             }
         }

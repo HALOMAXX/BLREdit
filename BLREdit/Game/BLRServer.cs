@@ -37,7 +37,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public UIBool IsPinging { get; } = new(false);
     [JsonIgnore] public MagiCowServerInfo MagiInfo { get; private set; } = new();
     [JsonIgnore] public ServerUtilsInfo ServerInfo { get; private set; } = new();
-
+    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo.BLRMode.IsTeammode); } else { return new(false); } } }
     [JsonIgnore] public string ServerDescription { get { return GetServerDescription(); } }
     [JsonIgnore] public string MapImage { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.BLRMap.SquareImage; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.BLRMap.SquareImage; } else { return $"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png"; } } }
     [JsonIgnore] public ObservableCollection<string> PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
@@ -127,6 +127,7 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     public void RefreshInfo()
     {
+        OnPropertyChanged(nameof(IsTeammode));
         OnPropertyChanged(nameof(ServerDescription));
         OnPropertyChanged(nameof(MapImage));
         OnPropertyChanged(nameof(PlayerList));

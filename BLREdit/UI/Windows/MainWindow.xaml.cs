@@ -623,7 +623,7 @@ public sealed partial class MainWindow : Window
         {
             var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
             Directory.CreateDirectory(directory);
-            IOResources.SerializeFile<LoadoutManagerLoadout[]>($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
+            IOResources.SerializeFile($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Exported!");
         }
 

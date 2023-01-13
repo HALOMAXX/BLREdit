@@ -20,7 +20,6 @@ public sealed class ServerUtilsInfo
     public string Playlist { get; set; } = "";
     public int RemainingTime { get; set; } = 0;
     public string ServerName { get; set; } = "";
-    [JsonIgnore] public UIBool IsTeammode { get; } = new(false);
     public ObservableCollection<ServerUtilsTeam> TeamList { get; set; } = new ObservableCollection<ServerUtilsTeam>();
     public int TimeLimit { get; set; } = 0;
 
@@ -42,7 +41,6 @@ public sealed class ServerUtilsInfo
 
     public string GetScoreDisplay()
     {
-        IsTeammode.SetBool(BLRMode.IsTeammode);
         var player = new ServerUtilsAgent() { Name = "", Score = int.MinValue, Deaths = int.MinValue, Kills = int.MinValue };
         var team = new ServerUtilsTeam() { TeamScore = int.MinValue };
         switch (GameModeFullName)
