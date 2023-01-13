@@ -447,7 +447,7 @@ public partial class App : System.Windows.Application
 
     public static void Restart()
     {
-        if (!File.Exists("launch.bat")) { File.WriteAllText("launch.bat", "@echo off\nstart BLREdit.exe\nexit"); }
+        File.WriteAllText("launch.bat", "@echo off\nTIMEOUT 1\nstart BLREdit.exe\nexit");
 
         ProcessStartInfo psi = new()
         {
