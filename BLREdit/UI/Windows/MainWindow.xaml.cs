@@ -952,6 +952,28 @@ public sealed partial class MainWindow : Window
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
     }
 
+    public void BringWindowIntoBounds()
+    {
+        if (this.Top < SystemParameters.VirtualScreenTop)
+        {
+            this.Top = SystemParameters.VirtualScreenTop;
+        }
+
+        if (this.Left < SystemParameters.VirtualScreenLeft)
+        {
+            this.Left = SystemParameters.VirtualScreenLeft;
+        }
+
+        if (this.Top > SystemParameters.VirtualScreenHeight)
+        {
+            this.Top = SystemParameters.VirtualScreenHeight/2.0D;
+        }
+
+        if (this.Left > SystemParameters.VirtualScreenWidth)
+        {
+            this.Left = SystemParameters.VirtualScreenWidth/2.0D;
+        }
+    }
     
     private void MainWindowTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -959,5 +981,10 @@ public sealed partial class MainWindow : Window
         {
             RefreshPing();
         }
+    }
+
+    private void Window_ContentRendered(object sender, EventArgs e)
+    {
+        BringWindowIntoBounds();
     }
 }
