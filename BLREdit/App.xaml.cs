@@ -28,8 +28,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.7.9";
-    public const string CurrentVersionTitle = "More Scrollbars";
+    public const string CurrentVersion = "v0.9.0";
+    public const string CurrentVersionTitle = "Oh boy so many new features!";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -210,7 +210,7 @@ public partial class App : System.Windows.Application
             var result = MessageBox.Show("Open Package folder?", "", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                Process.Start("explorer.exe", exeZip.Info.Directory.FullName);
+                Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\packaged");
             }
             Application.Current.Shutdown();
             return;

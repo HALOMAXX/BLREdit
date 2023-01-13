@@ -6,21 +6,13 @@ using BLREdit.UI;
 
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Win32;
-
-using PeNet.Header.Net.MetaDataTables;
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
-using System.Linq;
 using System.Security.Principal;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace BLREdit.API.InterProcess;
 
