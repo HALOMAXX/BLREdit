@@ -756,7 +756,7 @@ public sealed partial class MainWindow : Window
                     var hit = VisualTreeHelper.HitTest(this, p);
                     if (hit.VisualHit is FrameworkElement element)
                     {
-                        while (element.GetType() != typeof(WeaponControl))
+                        while (element is not null && element.GetType() != typeof(WeaponControl))
                         {
                             element = element.Parent as FrameworkElement;
                         }

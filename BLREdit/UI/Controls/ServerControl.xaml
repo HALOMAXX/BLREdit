@@ -7,9 +7,28 @@
              xmlns:game="clr-namespace:BLREdit.Game"
              d:DataContext="{d:DesignInstance Type=game:BLRServer}"
              mc:Ignorable="d">
-    <Border BorderThickness="1,1,1,1" Height="512" Width="512">
+    <Border BorderThickness="1,1,1,1" Height="256" Width="512">
         <Grid MouseDown="Grid_MouseDown">
-            <Image Name="MapImage" Source="{Binding Path=MapImage}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+            <Canvas ClipToBounds="True" >
+            <Image Name="MapImage" Source="{Binding Path=MapImage}" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0" >
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="Image.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="MapImage" Storyboard.TargetProperty="(Canvas.Top)" RepeatBehavior="Forever" AutoReverse="True">
+                                        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="-256" />
+                                        <SplineDoubleKeyFrame KeyTime="00:00:00.5" Value="-256" />
+                                        <SplineDoubleKeyFrame KeyTime="00:00:05.5" Value="0" />
+                                        <SplineDoubleKeyFrame KeyTime="00:00:06" Value="0" />
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
+            </Canvas>
             <Button Width="64" Height="32" Margin="10,10,10,10" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Ping Server" Command="{Binding Path=RefreshPingCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/refresh.png"/>
             </Button>

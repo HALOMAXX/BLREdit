@@ -58,7 +58,7 @@ public partial class ServerListControl : UserControl
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if(targetData != null) MainWindow.ServerList.Move(MainWindow.ServerList.IndexOf(droppedData),MainWindow.ServerList.IndexOf(((ServerControl)targetData).DataContext as BLRServer));
+        if (targetData != null) { MainWindow.ServerList.Move(MainWindow.ServerList.IndexOf(droppedData), MainWindow.ServerList.IndexOf(((ServerControl)targetData).DataContext as BLRServer)); }
     }
 
     private void AddNewServer_Click(object sender, RoutedEventArgs e)
