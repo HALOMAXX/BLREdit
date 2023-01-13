@@ -1,4 +1,5 @@
-﻿using BLREdit.UI.Views;
+﻿using BLREdit.Import;
+using BLREdit.UI.Views;
 
 namespace BLREdit.Export;
 
@@ -20,19 +21,19 @@ public sealed class LoadoutManagerLoadout
         Secondary = new(loadout.Secondary);
         Gear = new(loadout);
 
-        Taunts[0] = loadout.Taunt1.GetLMID();
-        Taunts[1] = loadout.Taunt2.GetLMID();
-        Taunts[2] = loadout.Taunt3.GetLMID();
-        Taunts[3] = loadout.Taunt4.GetLMID();
-        Taunts[4] = loadout.Taunt5.GetLMID();
-        Taunts[5] = loadout.Taunt6.GetLMID();
-        Taunts[6] = loadout.Taunt7.GetLMID();
-        Taunts[7] = loadout.Taunt8.GetLMID();
+        Taunts[0] = BLRItem.GetLMID(loadout.Taunt1);
+        Taunts[1] = BLRItem.GetLMID(loadout.Taunt2);
+        Taunts[2] = BLRItem.GetLMID(loadout.Taunt3);
+        Taunts[3] = BLRItem.GetLMID(loadout.Taunt4);
+        Taunts[4] = BLRItem.GetLMID(loadout.Taunt5);
+        Taunts[5] = BLRItem.GetLMID(loadout.Taunt6);
+        Taunts[6] = BLRItem.GetLMID(loadout.Taunt7);
+        Taunts[7] = BLRItem.GetLMID(loadout.Taunt8);
 
-        Depot[0] = loadout.Depot1.GetLMID();
-        Depot[1] = loadout.Depot2.GetLMID();
-        Depot[2] = loadout.Depot3.GetLMID();
-        Depot[3] = loadout.Depot4.GetLMID();
-        Depot[4] = loadout.Depot5.GetLMID();
+        Depot[0] = BLRItem.GetLMID(loadout.Depot1);
+        Depot[1] = BLRItem.GetLMID(loadout.Depot2);
+        Depot[2] = BLRItem.GetLMID(loadout.Depot3);
+        Depot[3] = BLRItem.GetLMID(loadout.Depot4);
+        Depot[4] = BLRItem.GetLMID(loadout.Depot5);
     }
 }

@@ -71,34 +71,34 @@ public sealed class ShareableLoadout
     public ShareableLoadout(BLRLoadout loadout)
     {
         Female = loadout.IsFemale;
-        BodyCamo = loadout.BodyCamo.GetMagicCowsID();
-        UpperBody = loadout.UpperBody.GetMagicCowsID();
-        LowerBody = loadout.LowerBody.GetMagicCowsID();
-        Helmet = loadout.Helmet.GetMagicCowsID();
-        Tactical = loadout.Tactical.GetMagicCowsID();
-        Badge = loadout.Trophy.GetMagicCowsID();
+        BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
+        UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
+        LowerBody = BLRItem.GetMagicCowsID(loadout.LowerBody);
+        Helmet = BLRItem.GetMagicCowsID(loadout.Helmet);
+        Tactical = BLRItem.GetMagicCowsID(loadout.Tactical);
+        Badge = BLRItem.GetMagicCowsID(loadout.Trophy);
 
-        Avatar = loadout.Avatar?.GetMagicCowsID() ?? -1;
+        Avatar = BLRItem.GetMagicCowsID(loadout.Avatar, -1);
 
-        Gear_R1 = loadout.Gear1.GetMagicCowsID();
-        Gear_R2 = loadout.Gear2.GetMagicCowsID();
-        Gear_L1 = loadout.Gear3.GetMagicCowsID();
-        Gear_L2 = loadout.Gear4.GetMagicCowsID();
+        Gear_R1 = BLRItem.GetMagicCowsID(loadout.Gear1);
+        Gear_R2 = BLRItem.GetMagicCowsID(loadout.Gear2);
+        Gear_L1 = BLRItem.GetMagicCowsID(loadout.Gear3);
+        Gear_L2 = BLRItem.GetMagicCowsID(loadout.Gear4);
 
-        Taunts[0] = loadout.Taunt1.GetMagicCowsID();
-        Taunts[1] = loadout.Taunt2.GetMagicCowsID();
-        Taunts[2] = loadout.Taunt3.GetMagicCowsID();
-        Taunts[3] = loadout.Taunt4.GetMagicCowsID();
-        Taunts[4] = loadout.Taunt5.GetMagicCowsID();
-        Taunts[5] = loadout.Taunt6.GetMagicCowsID();
-        Taunts[6] = loadout.Taunt7.GetMagicCowsID();
-        Taunts[7] = loadout.Taunt8.GetMagicCowsID();
+        Taunts[0] = BLRItem.GetMagicCowsID(loadout.Taunt1);
+        Taunts[1] = BLRItem.GetMagicCowsID(loadout.Taunt2);
+        Taunts[2] = BLRItem.GetMagicCowsID(loadout.Taunt3);
+        Taunts[3] = BLRItem.GetMagicCowsID(loadout.Taunt4);
+        Taunts[4] = BLRItem.GetMagicCowsID(loadout.Taunt5);
+        Taunts[5] = BLRItem.GetMagicCowsID(loadout.Taunt6);
+        Taunts[6] = BLRItem.GetMagicCowsID(loadout.Taunt7);
+        Taunts[7] = BLRItem.GetMagicCowsID(loadout.Taunt8);
 
-        Depot[0] = loadout.Depot1.GetMagicCowsID();
-        Depot[1] = loadout.Depot2.GetMagicCowsID();
-        Depot[2] = loadout.Depot3.GetMagicCowsID();
-        Depot[3] = loadout.Depot4.GetMagicCowsID();
-        Depot[4] = loadout.Depot5.GetMagicCowsID();
+        Depot[0] = BLRItem.GetMagicCowsID(loadout.Depot1);
+        Depot[1] = BLRItem.GetMagicCowsID(loadout.Depot2);
+        Depot[2] = BLRItem.GetMagicCowsID(loadout.Depot3);
+        Depot[3] = BLRItem.GetMagicCowsID(loadout.Depot4);
+        Depot[4] = BLRItem.GetMagicCowsID(loadout.Depot5);
 
         Primary = new(loadout.Primary);
         Secondary = new(loadout.Secondary);
@@ -188,7 +188,7 @@ public sealed class ShareableWeapon
         {
             if (Properties.TryGetValue(part.Name, out PropertyInfo info))
             {
-                info.SetValue(this, ((BLRItem)part.GetValue(weapon))?.GetMagicCowsID() ?? -1);
+                info.SetValue(this, BLRItem.GetMagicCowsID((BLRItem)part.GetValue(weapon)));
             }
         }
     }

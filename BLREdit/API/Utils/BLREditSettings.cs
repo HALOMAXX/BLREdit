@@ -95,6 +95,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         if (e.PropertyName == "Is")
         {
             MainWindow.Profile.CalculateStats();
+            MainWindow.Self.SetItemList();
         }
     }
 

@@ -87,17 +87,17 @@ public sealed class LoadoutManagerWeapon
             switch (part.Name)
             {
                 case "Tag":
-                    Properties["Hanger"].SetValue(this, ((BLRItem)part.GetValue(weapon)).GetLMID());
+                    Properties["Hanger"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
                     break;
                 case "Camo":
-                    Properties["CamoIndex"].SetValue(this, ((BLRItem)part.GetValue(weapon)).GetLMID());
+                    Properties["CamoIndex"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
                     break;
                 case "Reciever":
-                    Properties["Receiver"].SetValue(this, ((BLRItem)part.GetValue(weapon)).GetLMID());
+                    Properties["Receiver"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
                     break;
                 default:
                     LoggingSystem.Log(part.Name);
-                    Properties[part.Name].SetValue(this, ((BLRItem)part.GetValue(weapon))?.GetLMID() ?? -1);
+                    Properties[part.Name].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
                     break;
             }
         }

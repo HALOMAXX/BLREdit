@@ -41,7 +41,6 @@ public static class ImportSystem
     public const string SHOP_CATEGORY = "shop";
     public const string PRIMARY_SKIN_CATEGORY = "primarySkins";
 
-    //public static readonly FoxIcon[] Icons = LoadAllIcons();
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
     public static Dictionary<string, ObservableCollection<BLRItem>> ItemLists { get; private set; } = new();
@@ -52,9 +51,7 @@ public static class ImportSystem
         if (IsInitialized) return;
         IsInitialized = true;
         
-        
         LoggingSystem.Log("Initializing Import System");
-
 
         var watch = Stopwatch.StartNew();
         LoadItems();
@@ -558,17 +555,6 @@ public static class ImportSystem
         {
             return null;
         }
-    }
-
-    private static FoxIcon[] LoadAllIcons()
-    {
-        LoggingSystem.Log("Loading All Icons");
-        var icons = new List<FoxIcon>();
-        foreach (var icon in Directory.GetFiles($"Assets\\textures"))
-        {
-            icons.Add(new FoxIcon(icon));
-        }
-        return icons.ToArray();
     }
 
     private static FoxIcon[] LoadAllScopePreviews()

@@ -72,11 +72,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         return item?.GetLMID() ?? -1;
     }
 
-    /// <summary>
-    /// Gets the Loadout-Manager ID for the item.
-    /// </summary>
-    /// <returns>ID for Loadout-Manager</returns>
-    public int GetLMID()
+    private int GetLMID()
     {
         if (this.LMID != -69) return this.LMID;
         return ImportSystem.GetIDOfItem(this);
@@ -339,9 +335,10 @@ public sealed class BLRItem : INotifyPropertyChanged
         Crosshair = null;
     }
 
-    public int GetMagicCowsID()
+    public static int GetMagicCowsID(BLRItem item, int defaultID = 0)
     {
-        return ImportSystem.GetIDOfItem(this);
+        if(item is null) return defaultID;
+        return ImportSystem.GetIDOfItem(item);
     }
 
     public static BitmapSource GetBitmapCrosshair(string name)

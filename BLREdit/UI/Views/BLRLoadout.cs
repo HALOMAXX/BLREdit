@@ -483,24 +483,24 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         Primary.WriteMagiCowsWeapon(loadout.Primary);
         Secondary.WriteMagiCowsWeapon(loadout.Secondary);
 
-        loadout.Tactical = Tactical?.GetMagicCowsID() ?? 0;
-        loadout.Helmet = Helmet?.GetMagicCowsID() ?? 0;
-        loadout.UpperBody = UpperBody?.GetMagicCowsID() ?? 0;
-        loadout.LowerBody = LowerBody?.GetMagicCowsID() ?? 0;
+        loadout.Tactical = BLRItem.GetMagicCowsID(Tactical);
+        loadout.Helmet = BLRItem.GetMagicCowsID(Helmet);
+        loadout.UpperBody = BLRItem.GetMagicCowsID(UpperBody);
+        loadout.LowerBody = BLRItem.GetMagicCowsID(LowerBody);
 
-        loadout.Camo = BodyCamo?.GetMagicCowsID() ?? 0;
-        loadout.Skin = Avatar?.GetMagicCowsID() ?? 99;
-        loadout.Trophy = Trophy?.GetMagicCowsID() ?? 0;
+        loadout.Camo = BLRItem.GetMagicCowsID(BodyCamo);
+        loadout.Skin = BLRItem.GetMagicCowsID(Avatar, 99);
+        loadout.Trophy = BLRItem.GetMagicCowsID(Trophy);
 
         loadout.IsFemale = IsFemale;
 
-        if (GearSlots > 0) { loadout.Gear1 = Gear1?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 1) { loadout.Gear2 = Gear2?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 2) { loadout.Gear3 = Gear3?.GetMagicCowsID() ?? 0; }
-        if (GearSlots > 3) { loadout.Gear4 = Gear4?.GetMagicCowsID() ?? 0; }
+        if (GearSlots > 0) { loadout.Gear1 = BLRItem.GetMagicCowsID(Gear1); }
+        if (GearSlots > 1) { loadout.Gear2 = BLRItem.GetMagicCowsID(Gear2); }
+        if (GearSlots > 2) { loadout.Gear3 = BLRItem.GetMagicCowsID(Gear3); }
+        if (GearSlots > 3) { loadout.Gear4 = BLRItem.GetMagicCowsID(Gear4); }
 
-        loadout.Taunts = new int[] { Taunt1?.GetMagicCowsID() ?? 0, Taunt2?.GetMagicCowsID() ?? 1, Taunt3?.GetMagicCowsID() ?? 2, Taunt4?.GetMagicCowsID() ?? 3, Taunt5?.GetMagicCowsID() ?? 4, Taunt6?.GetMagicCowsID() ?? 5, Taunt7?.GetMagicCowsID() ?? 6, Taunt8?.GetMagicCowsID() ?? 7 };
-        loadout.Depot = new int[] { Depot1?.GetMagicCowsID() ?? 0, Depot2?.GetMagicCowsID() ?? 1, Depot3?.GetMagicCowsID() ?? 2, Depot4?.GetMagicCowsID() ?? 3, Depot5?.GetMagicCowsID() ?? 3 };
+        loadout.Taunts = new int[] { BLRItem.GetMagicCowsID(Taunt1,0), BLRItem.GetMagicCowsID(Taunt2,1), BLRItem.GetMagicCowsID(Taunt3, 2), BLRItem.GetMagicCowsID(Taunt4, 3), BLRItem.GetMagicCowsID(Taunt5, 4), BLRItem.GetMagicCowsID(Taunt6, 5), BLRItem.GetMagicCowsID(Taunt7, 6), BLRItem.GetMagicCowsID(Taunt8, 7) };
+        loadout.Depot = new int[] { BLRItem.GetMagicCowsID(Depot1), BLRItem.GetMagicCowsID(Depot2, 1), BLRItem.GetMagicCowsID(Depot3, 2), BLRItem.GetMagicCowsID(Depot4,3), BLRItem.GetMagicCowsID(Depot5, 3) };
     }
     public void LoadMagicCowsLoadout(MagiCowsLoadout loadout)
     {

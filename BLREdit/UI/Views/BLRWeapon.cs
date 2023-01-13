@@ -38,7 +38,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     #region Weapon Parts
     private BLRItem reciever = null;
-    [WeaponPart] public BLRItem Reciever { get { return reciever; } set { if (value.Category == ImportSystem.PRIMARY_SKIN_CATEGORY) { Skin = value; } if (BLREditSettings.Settings.AdvancedModding.Is) { reciever = value; AddMissingDefaultParts(); ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
+    [WeaponPart] public BLRItem Reciever { get { return reciever; } set { if (value?.Category == ImportSystem.PRIMARY_SKIN_CATEGORY) { Skin = value; } if (BLREditSettings.Settings.AdvancedModding.Is) { reciever = value; AddMissingDefaultParts(); ItemChanged(); UpdateScopeIcons(); return; } if (value is null || reciever != value && AllowReciever(value)) { reciever = value; RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
 
     private BLRItem barrel = null;
     [WeaponPart] public BLRItem Barrel
@@ -191,11 +191,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             Grip = wpn.GetGrip();
         }
 
-        if (Muzzle is null || Muzzle.GetMagicCowsID() == MagiCowsWeapon.NoMuzzle)
+        if (Muzzle is null || BLRItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
         { 
             Muzzle = wpn.GetMuzzle();
         }
-        if (Magazine is null || Magazine.GetMagicCowsID() == MagiCowsWeapon.NoMagazine)
+        if (Magazine is null || BLRItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
         {
             Magazine = wpn.GetMagazine();
             ApplyCorrectAmmo();
@@ -1617,16 +1617,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (weapon is not null)
         {
             weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
-            weapon.Muzzle = Muzzle?.GetMagicCowsID() ?? -1;
+            weapon.Muzzle = BLRItem.GetMagicCowsID(Muzzle, -1);
             weapon.Barrel = Barrel?.Name ?? "No Barrel Mod";
-            weapon.Magazine = Magazine?.GetMagicCowsID() ?? -1;
+            weapon.Magazine = BLRItem.GetMagicCowsID(Magazine, -1);
             weapon.Scope = Scope?.Name ?? "No Optic Mod";
             weapon.Stock = Stock?.Name ?? "No Stock";
             weapon.Grip = Grip?.Name ?? "";
-            weapon.Tag = Tag?.GetMagicCowsID() ?? 0;
-            weapon.Camo = Camo?.GetMagicCowsID() ?? 0;
-            weapon.Ammo = Ammo?.GetMagicCowsID() ?? 0;
-            weapon.Skin = Skin?.GetMagicCowsID() ?? 0;
+            weapon.Tag = BLRItem.GetMagicCowsID(Tag);
+            weapon.Camo = BLRItem.GetMagicCowsID(Camo);
+            weapon.Ammo = BLRItem.GetMagicCowsID(Ammo);
+            weapon.Skin = BLRItem.GetMagicCowsID(Skin);
         }
     }
 

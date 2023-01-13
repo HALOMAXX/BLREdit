@@ -31,24 +31,24 @@ public sealed class LoadoutManagerGear
     public LoadoutManagerGear(BLRLoadout loadout)
     {
         Female = loadout.IsFemale;
-        BodyCamo = loadout.BodyCamo.GetLMID();
-        UpperBody = loadout.UpperBody.GetLMID();
-        LowerBody = loadout.LowerBody.GetLMID();
-        Helmet = loadout.Helmet.GetLMID();
-        Tactical = loadout.Tactical.GetLMID();
-        Badge = loadout.Trophy.GetLMID();
+        BodyCamo = BLRItem.GetLMID(loadout.BodyCamo);
+        UpperBody = BLRItem.GetLMID(loadout.UpperBody);
+        LowerBody = BLRItem.GetLMID(loadout.LowerBody);
+        Helmet = BLRItem.GetLMID(loadout.Helmet);
+        Tactical = BLRItem.GetLMID(loadout.Tactical);
+        Badge = BLRItem.GetLMID(loadout.Trophy);
 
-        int avatar = loadout.Avatar?.GetLMID() ?? -1;
+        int avatar = BLRItem.GetLMID(loadout.Avatar);
 
         if (avatar > 34) 
         { Avatar = -1; } 
         else 
         { Avatar = avatar; }
 
-        if (loadout.GearSlot1Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_R1 = loadout.Gear1.GetLMID();
-        if (loadout.GearSlot2Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_R2 = loadout.Gear2.GetLMID();
-        if (loadout.GearSlot3Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_L1 = loadout.Gear3.GetLMID();
-        if (loadout.GearSlot4Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_L2 = loadout.Gear4.GetLMID();
+        if (loadout.GearSlot1Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_R1 = BLRItem.GetLMID(loadout.Gear1);
+        if (loadout.GearSlot2Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_R2 = BLRItem.GetLMID(loadout.Gear2);
+        if (loadout.GearSlot3Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_L1 = BLRItem.GetLMID(loadout.Gear3);
+        if (loadout.GearSlot4Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_L2 = BLRItem.GetLMID(loadout.Gear4);
 
         //TODO Hanger, Icon, IconColor, PatchShape, PatchColor, ButtPack   
     }

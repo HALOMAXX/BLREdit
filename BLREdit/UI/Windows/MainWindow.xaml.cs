@@ -455,8 +455,11 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public void SetItemList(string Type)
+    private string lastSelectedType = "";
+    public void SetItemList(string Type = null)
     {
+        if (Type is null) Type = lastSelectedType;
+        else lastSelectedType = Type;
         var list = ImportSystem.GetItemListOfType(Type);
         if (list.Count > 0)
         {
