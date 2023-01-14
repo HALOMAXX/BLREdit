@@ -23,14 +23,11 @@ namespace BLREdit.UI.Controls
     /// </summary>
     public partial class NumberUpDown : UserControl
     {
-
-
         public int Number
         {
             get { return (int)GetValue(NumberProperty); }
             set { SetValue(NumberProperty, value); }
         }
-
 
         private int minNumber = 0;
         public int MinNumber
@@ -46,14 +43,9 @@ namespace BLREdit.UI.Controls
             set { SetValue(MaxNumberProperty, value); }
         }
 
-        public static readonly DependencyProperty NumberProperty =
-            DependencyProperty.Register("Number", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { BindsTwoWayByDefault = true });
-        public static readonly DependencyProperty MinNumberProperty =
-    DependencyProperty.Register("MinNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { PropertyChangedCallback = new PropertyChangedCallback(OnMinNumberChanged) });
-        public static readonly DependencyProperty MaxNumberProperty =
-    DependencyProperty.Register("MaxNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { PropertyChangedCallback = new PropertyChangedCallback(OnMaxNumberChanged) });
-
-
+        public static readonly DependencyProperty NumberProperty = DependencyProperty.Register("Number", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { BindsTwoWayByDefault = true });
+        public static readonly DependencyProperty MinNumberProperty = DependencyProperty.Register("MinNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { PropertyChangedCallback = new PropertyChangedCallback(OnMinNumberChanged) });
+        public static readonly DependencyProperty MaxNumberProperty = DependencyProperty.Register("MaxNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { PropertyChangedCallback = new PropertyChangedCallback(OnMaxNumberChanged) });
 
         public NumberUpDown()
         {
@@ -99,7 +91,10 @@ namespace BLREdit.UI.Controls
 
         private void NumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Number = int.Parse(((TextBox)sender).Text);
+            if (int.TryParse(((TextBox)sender).Text, out int result))
+            {
+                Number = result;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
