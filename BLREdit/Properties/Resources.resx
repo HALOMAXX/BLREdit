@@ -141,6 +141,9 @@
   <data name="btn_RandomizeLoadout" xml:space="preserve">
     <value>Randomize</value>
   </data>
+  <data name="img_TT_AdvancedModeWarning" xml:space="preserve">
+    <value>This item might not work properly on this weapon</value>
+  </data>
   <data name="lbl_Ammo" xml:space="preserve">
     <value>Ammo:</value>
   </data>

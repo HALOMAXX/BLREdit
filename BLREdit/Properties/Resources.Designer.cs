@@ -133,6 +133,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This item might not work properly on this weapon.
+        /// </summary>
+        public static string img_TT_AdvancedModeWarning {
+            get {
+                return ResourceManager.GetString("img_TT_AdvancedModeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ammo:.
         /// </summary>
         public static string lbl_Ammo {

@@ -58,6 +58,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static bool FilterByValidity(BLRItem item)
     {
+        item.IsValid.SetBool(item.ValidForTest(Instance.WeaponFilter));
         switch ( item.Category )
         {
             case ImportSystem.EMOTES_CATEGORY:

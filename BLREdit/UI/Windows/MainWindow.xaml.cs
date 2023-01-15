@@ -119,8 +119,6 @@ public sealed partial class MainWindow : Window
         //RefreshPing();
     }
 
-
-
     public static void CheckGameClients()
     {
         LoggingSystem.Log("Checking for patched clients");

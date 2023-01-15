@@ -41,6 +41,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     public double CP { get; set; } = 0;
 
     [JsonIgnore] public string DisplayName { get { return LanguageSet.GetWord(UID.ToString() + ".Name", Name); } }
+    [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 
     public BLRPawnModifiers PawnModifiers { get; set; }
     public List<string> SupportedMods { get; set; }
