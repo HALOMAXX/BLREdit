@@ -32,7 +32,7 @@
             <Image Name="ScopePreviewImage" HorizontalAlignment="Center" Source="{Binding Path=ScopePreview}" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Scope.Tooltip}" d:DataContext="{d:DesignInstance Type=views:BLRWeapon}"/>
         </Border>
 
-        <Border Name="Reciever" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=RecieverVisibility}" DataContext="{Binding Path=Reciever}" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Border Name="Reciever" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=RecieverVisibility}" DataContext="{Binding Path=Reciever}" DataContextChanged="Reciever_DataContextChanged" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=Tooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=SkinVisibility}" DataContext="{Binding Path=Skin}" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">

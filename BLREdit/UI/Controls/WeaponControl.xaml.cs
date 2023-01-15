@@ -93,13 +93,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     {
         if (e.PropertyName == nameof(BLREditSettings.Settings.AdvancedModding.Visibility))
         {
-            if (DataContext is BLRWeapon weapon)
-            {
-                if (weapon.IsPrimary)
-                {
-                    GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
-                }
-            }
+            GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
         }
     }
 
@@ -162,5 +156,22 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
             }
         }
 
+    }
+
+    private void Reciever_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
+        if (DataContext is BLRWeapon weapon && BLREditSettings.Settings.AdvancedModding.IsNot)
+        {
+            switch (weapon?.Reciever?.UID ?? -1)
+            {
+                case 40005:
+                    GripVisibility = Visibility.Visible;
+                    return;
+                default:
+                    GripVisibility = Visibility.Collapsed;
+                    return;
+            }
+        }
+        GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
     }
 }
