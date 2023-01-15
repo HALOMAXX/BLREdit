@@ -81,6 +81,7 @@ namespace BLREdit.UI.Controls
             {
                 MainWindow.LastSelectedBorder = null;
                 SelectedIndex = this.LoadoutTabControl.SelectedIndex;
+
                 OnPropertyChanged(nameof(SelectedIndex));
             }
         }

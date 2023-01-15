@@ -812,6 +812,20 @@ public sealed partial class MainWindow : Window
                 lcontrol.ApplyBorder();
             }
         }
+        switch (LoadoutTabs.SelectedIndex)
+        {
+            case 0:
+                MainWindow.Profile.Loadout1.IsFemale = MainWindow.Profile.Loadout1.IsFemale;
+                break;
+            case 1:
+                MainWindow.Profile.Loadout2.IsFemale = MainWindow.Profile.Loadout2.IsFemale;
+                break;
+            case 2:
+                MainWindow.Profile.Loadout3.IsFemale = MainWindow.Profile.Loadout3.IsFemale;
+                break;
+        }
+
+
     }
 
     private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)

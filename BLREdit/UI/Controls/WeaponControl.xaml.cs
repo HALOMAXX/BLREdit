@@ -112,22 +112,29 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     public static int SecondarySelectedBorder { get; private set; } = -1;
     private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
     {
+        Border border = null;
         if (e.Source is Image image)
         {
-            if (image.Parent is Border border)
+            if (image.Parent is Border newBorder)
             {
-                if (DataContext is BLRWeapon weapon)
-                {
-                    if (weapon.IsPrimary)
-                    {
-                        PrimarySelectedBorder = this.ControlGrid.Children.IndexOf(border);
-                        LoggingSystem.Log(PrimarySelectedBorder.ToString());
-                    }
-                    else
-                    {
-                        SecondarySelectedBorder = this.ControlGrid.Children.IndexOf(border);
-                    }
-                }
+                border = newBorder;
+            }
+        }
+        if (e.Source is Border newBorder2)
+        {
+            border = newBorder2;
+        }
+        if (DataContext is BLRWeapon weapon)
+        {
+            if (weapon.IsPrimary)
+            {
+                PrimarySelectedBorder = this.ControlGrid.Children.IndexOf(border);
+                SecondarySelectedBorder = -1;
+            }
+            else
+            {
+                SecondarySelectedBorder = this.ControlGrid.Children.IndexOf(border);
+                PrimarySelectedBorder = -1;
             }
         }
     }
@@ -149,7 +156,9 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
             if (index > -1 && index < this.ControlGrid.Children.Count && this.ControlGrid.Children[index] is Border border)
             {
-                MainWindow.LastSelectedBorder = border;
+                var mouse = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left);
+                mouse.RoutedEvent = Mouse.MouseUpEvent;
+                border.RaiseEvent(mouse);
             }
         }
 

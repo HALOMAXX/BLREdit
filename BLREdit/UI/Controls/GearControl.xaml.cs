@@ -50,7 +50,6 @@ namespace BLREdit.UI.Controls
                 if (image.Parent is Border border)
                 { 
                     SelectedBorder = this.ControlGrid.Children.IndexOf(border);
-                    LoggingSystem.Log(SelectedBorder.ToString());
                 }
             }
         }
