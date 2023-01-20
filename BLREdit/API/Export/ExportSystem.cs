@@ -1,4 +1,5 @@
 using BLREdit.UI;
+using BLREdit.UI.Views;
 
 using System;
 using System.Collections.Generic;
@@ -55,9 +56,13 @@ public sealed class ExportSystem
         MainWindow.ActiveProfile = profile;
     }
 
-    public static void CopyToClipBoard(ExportSystemProfile profile)
+    public static void CopyToClipBoard(BLRProfile profile)
     {
-        string clipboard = $"register {Environment.NewLine}{IOResources.Serialize(profile as MagiCowsProfile, true)}";
+        var magiProfile = new MagiCowsProfile();
+        magiProfile.PlayerName = ExportSystem.ActiveProfile.PlayerName;
+        profile.WriteMagiCowsProfile(magiProfile);
+
+        string clipboard = $"register {Environment.NewLine}{IOResources.Serialize(profile, true)}";
 
         try
         {
@@ -71,7 +76,7 @@ public sealed class ExportSystem
     public static void SetClipboard(string value)
     {
         if (value == null)
-            throw new ArgumentNullException(nameof(value), "SetClipboard value was null should never happen");
+            throw new ArgumentNullException(nameof(value), "value to beinserted into clipboard was null");
 
         Process clipboardExecutable = new()
         {

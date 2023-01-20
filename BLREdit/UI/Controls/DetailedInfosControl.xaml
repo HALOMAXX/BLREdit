@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:res="clr-namespace:BLREdit.Properties"
+             xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:ui="clr-namespace:BLREdit.UI.Controls"
              xmlns:old="clr-namespace:BLREdit.UI"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
@@ -16,55 +16,55 @@
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Grid Width="Auto">
 
-                        <Label Content="{x:Static res:Resources.lbl_Primary}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+                        <Label Content="{x:Static p:Resources.lbl_Primary}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
                         <UniformGrid Columns="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,26,0,0">
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvFragmentsPerShell}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_FragmentsPerShell}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.FragmentsPerShellDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryFragmentsPerShellLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvZoomFireRate}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_ZoomFirerate}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.ZoomFirerateDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryZoomFirerateLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSpreadCrouchMultiplier}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_SpreadCrouchMultiplier}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.SpreadCrouchMultiplierDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimarySpreadCrouchMultiplierLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSpreadJumpMultiplier}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_SpreadJumpMultiplier}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.SpreadJumpMultiplierDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimarySpreadJumpMultiplierLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSpreadCenterWeight}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_SpreadCenterWeight}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.SpreadCenterWeightDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimarySpreadCenterWeightLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSpreadCenter}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_SpreadCenter}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.SpreadCenterDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimarySpreadCenterLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecoilVerticalRatio}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_RecoilVerticalRatio}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RecoilVerticalRatioDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryRecoilVerticalRatioLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecoilRecoveryTime}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_RecoilRecoveryTime}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RecoilRecoveryTimeDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryRecoilRecoveryTimeLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecoilAccumulation}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_RecoilAccumulation}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RecoilAccumulationDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryRecoilAccumulationLabel"/>
                         </UniformGrid>
 
-                        <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvCurrentMods}}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,255,0,0"/>
+                        <Label Content="{x:Static p:Resources.lbl_CurrentModPercentages}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,255,0,0"/>
 
                         <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,280,0,0">
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvDamage }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Damage}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.DamagePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModDamageLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvAccuracy }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Accuracy}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.AccuracyPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModAccuracyLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRange }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Range}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RangePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRangeLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvReload }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_ReloadEmpty}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.ReloadPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModReloadLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecoil }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Recoil}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RecoilPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRecoilLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvWeaponRun }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Run}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Primary.RunPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRunLabel"/>
                         </UniformGrid>
                     </Grid>
@@ -72,55 +72,55 @@
 
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,341,0,0">
                     <Grid Width="Auto">
-                        <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSecondary }}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+                        <Label Content="{x:Static p:Resources.lbl_Secondary}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
                         <UniformGrid Columns="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,26,0,0">
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvFragmentsPerShell }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_FragmentsPerShell}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.FragmentsPerShellDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryFragmentsPerShellLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvZoomFireRate }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_ZoomFirerate}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.ZoomFirerateDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryZoomFirerateLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSpreadCrouchMultiplier }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_SpreadCrouchMultiplier}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.SpreadCrouchMultiplierDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondarySpreadCrouchMultiplierLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSpreadJumpMultiplier }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_SpreadJumpMultiplier}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.SpreadJumpMultiplierDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondarySpreadJumpMultiplierLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSpreadCenterWeight }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_SpreadCenterWeight}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.SpreadCenterWeightDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondarySpreadCenterWeightLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvSpreadCenter }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_SpreadCenter}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.SpreadCenterDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondarySpreadCenterLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecoilVerticalRatio }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_RecoilVerticalRatio}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilVerticalRatioDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryRecoilVerticalRatioLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecoilRecoveryTime}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_RecoilRecoveryTime}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilRecoveryTimeDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryRecoilRecoveryTimeLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecoilAccumulation}}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_RecoilAccumulation}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilAccumulationDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryRecoilAccumulationLabel"/>
                         </UniformGrid>
 
-                        <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvCurrentMods }}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,255,0,0"/>
+                        <Label Content="{x:Static p:Resources.lbl_CurrentModPercentages}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,255,0,0"/>
 
                         <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,281,0,0">
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvDamage }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Damage}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.DamagePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModDamageLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvAccuracy }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Accuracy}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.AccuracyPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModAccuracyLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRange }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Range}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RangePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModRangeLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvReload }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_ReloadEmpty}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.ReloadPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModReloadLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecoil }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Recoil}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RecoilPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModRecoilLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvWeaponRun }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Run}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=Secondary.RunPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="SecondaryModRunLabel"/>
                         </UniformGrid>
                     </Grid>
@@ -128,47 +128,47 @@
 
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,684,0,0">
                     <Grid Width="Auto">
-                        <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvArmorGear }}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
+                        <Label Content="{x:Static p:Resources.lbl_ArmorAndGear}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,-5,0,0"/>
 
                         <UniformGrid Columns="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,26,0,0">
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvElectroProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_ElectroProtection}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=ElectroProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearElectroProtectionLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvEplxosiveProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_ExplosiveProtection}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=ExplosionProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearExplosiveProtectionLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvIncendiaryProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_IncendiaryProtection}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=IncendiaryProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearIncendiaryLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvInfraredProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_InfraredProtection}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=InfraredProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearInfraredProtectionLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvMeleeProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_MeleeProtection}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=MeleeProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearMeleeProtectionLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvToxicProt }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_ToxicProtection}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=ToxicProtectionDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="ArmorGearToxicProtectionLabel"/>
                         </UniformGrid>
 
-                        <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvCurrentMods }}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,178,0,0"/>
+                        <Label Content="{x:Static p:Resources.lbl_CurrentModPercentages}" HorizontalAlignment="Center" FontSize="14" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}" Margin="0,178,0,0"/>
 
                         <UniformGrid Columns="6" Rows="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,205,0,0">
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvHealth }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Health}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=HealthPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="HealthGearModLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvHeadArmor }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_HeadArmor}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=HeadArmorPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="HeadArmorGearModLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvArmorRun }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_Run}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=RunPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="RunGearModLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvHRV }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_HRVDuration}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=HRVDurationPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="HRVDurationGearModLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvRecharge }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_HRVRecharge}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=HRVRechargePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="HRVRechargeGearModLabel"/>
 
-                            <Label Content="{Binding Source={x:Static old:UILanguageWrapper.LblAdvGearSlots }}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                            <Label Content="{x:Static p:Resources.lbl_GearSlots}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                             <Label Content="{Binding Path=GearSlotsPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="GearSlotsGearModLabel"/>
                         </UniformGrid>
                     </Grid>

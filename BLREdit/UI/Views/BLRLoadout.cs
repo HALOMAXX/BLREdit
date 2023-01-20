@@ -455,7 +455,6 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         HRVRechargeDisplay = HRVRechargeRate.ToString("0.0") + "u/s";
         GearSlotsDsiplay = GearSlots.ToString("0");
 
-
         ElectroProtectionDisplay = RawElectroProtection.ToString("0") + '%';
         ExplosionProtectionDisplay = RawExplosiveProtection.ToString("0") + '%';
         IncendiaryProtectionDisplay = RawIncendiaryProtection.ToString("0") + '%';
@@ -473,15 +472,15 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public void UpdateMagicCowsLoadout()
     {
         if(internalLoadout is not null)
-        WriteMagiCowsLoadout(internalLoadout);
+        WriteMagiCowsLoadout(internalLoadout, true);
     }
 
-    public void WriteMagiCowsLoadout(MagiCowsLoadout loadout)
+    public void WriteMagiCowsLoadout(MagiCowsLoadout loadout, bool overwriteLimits = false)
     {
         if (UndoRedoSystem.BlockUpdate) return;
 
-        Primary.WriteMagiCowsWeapon(loadout.Primary);
-        Secondary.WriteMagiCowsWeapon(loadout.Secondary);
+        Primary.WriteMagiCowsWeapon(loadout.Primary, overwriteLimits);
+        Secondary.WriteMagiCowsWeapon(loadout.Secondary, overwriteLimits);
 
         loadout.Tactical = BLRItem.GetMagicCowsID(Tactical);
         loadout.Helmet = BLRItem.GetMagicCowsID(Helmet);
@@ -494,10 +493,10 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
         loadout.IsFemale = IsFemale;
 
-        if (GearSlots > 0) { loadout.Gear1 = BLRItem.GetMagicCowsID(Gear1); }
-        if (GearSlots > 1) { loadout.Gear2 = BLRItem.GetMagicCowsID(Gear2); }
-        if (GearSlots > 2) { loadout.Gear3 = BLRItem.GetMagicCowsID(Gear3); }
-        if (GearSlots > 3) { loadout.Gear4 = BLRItem.GetMagicCowsID(Gear4); }
+        if (GearSlots > 0 || overwriteLimits) loadout.Gear1 = BLRItem.GetMagicCowsID(Gear1);
+        if (GearSlots > 1 || overwriteLimits) loadout.Gear2 = BLRItem.GetMagicCowsID(Gear2);
+        if (GearSlots > 2 || overwriteLimits) loadout.Gear3 = BLRItem.GetMagicCowsID(Gear3);
+        if (GearSlots > 3 || overwriteLimits) loadout.Gear4 = BLRItem.GetMagicCowsID(Gear4); 
 
         loadout.Taunts = new int[] { BLRItem.GetMagicCowsID(Taunt1,0), BLRItem.GetMagicCowsID(Taunt2,1), BLRItem.GetMagicCowsID(Taunt3, 2), BLRItem.GetMagicCowsID(Taunt4, 3), BLRItem.GetMagicCowsID(Taunt5, 4), BLRItem.GetMagicCowsID(Taunt6, 5), BLRItem.GetMagicCowsID(Taunt7, 6), BLRItem.GetMagicCowsID(Taunt8, 7) };
         loadout.Depot = new int[] { BLRItem.GetMagicCowsID(Depot1), BLRItem.GetMagicCowsID(Depot2, 1), BLRItem.GetMagicCowsID(Depot3, 2), BLRItem.GetMagicCowsID(Depot4,3), BLRItem.GetMagicCowsID(Depot5, 3) };

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:game="clr-namespace:BLREdit.Game"
              d:DataContext="{d:DesignInstance Type=game:BLRClient}"
@@ -17,12 +18,12 @@
             <Image Source="{Binding Path=ClientVersionPart3}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="106,0,0,0"/>
             <Image Source="{Binding Path=ClientVersionPart4}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="138,0,0,0"/>
             <TextBlock Text="{Binding Path=OriginalPath}" TextWrapping="Wrap" Foreground="#FF78AEBC" Margin="10,10,0,0" Width="418" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <Button Width="64" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Modify the Blacklight:Retribution Game Client" Command="{Binding Path=ModifyClientCommand}">
+            <Button Width="64" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_ConfigureClient}" Command="{Binding Path=ModifyClientCommand}">
                 <Image Source="../Resources/settings.png"/>
             </Button>
-            <Button Content="Default Client" IsEnabled="{Binding Path=CurrentClient.IsNot}" Width="128" Height="32" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right" Command="{Binding Path=CurrentClientCommand}"/>
-            <Button Content="Start Bot Match" Width="128" Height="32" Margin="0,0,10,10" Command="{Binding Path=LaunchBotMatchCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-            <Button Content="Start Server" Width="128" Height="32" Margin="0,0,148,10" Command="{Binding Path=LaunchServerCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Button Content="{x:Static p:Resources.btn_DefaultClient}" IsEnabled="{Binding Path=CurrentClient.IsNot}" Width="128" Height="32" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right" Command="{Binding Path=CurrentClientCommand}"/>
+            <Button Content="{x:Static p:Resources.btn_StartBotMatch}" Width="128" Height="32" Margin="0,0,10,10" Command="{Binding Path=LaunchBotMatchCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Button Content="{x:Static p:Resources.btn_StartServer}" Width="128" Height="32" Margin="0,0,148,10" Command="{Binding Path=LaunchServerCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         </Grid>
     </Border>
 </UserControl>

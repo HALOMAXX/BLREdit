@@ -66,7 +66,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
             case ImportSystem.PRIMARY_CATEGORY: 
                 return true;
             case ImportSystem.SECONDARY_CATEGORY:
-                return item.Tooltip != "Depot Item!";
+                return !item.Icon.Contains("Depot");
             case ImportSystem.SHOP_CATEGORY:
                 if (BLREditSettings.Settings.AdvancedModding.Is) return true;
                 return item.Name != "HRV Jammer";

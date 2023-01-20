@@ -3,11 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:BLREdit.Properties"
         xmlns:local="clr-namespace:BLREdit.UI.Windows"
         xmlns:import="clr-namesepace:BLREdit.Import" xmlns:controls="clr-namespace:BLREdit.UI.Controls"
         mc:Ignorable="d"
-        Title="MapModeSelect" Height="823" Width="833"
-        Loaded="WindowLoaded">
+        Title="{x:Static p:Resources.winT_MapAndModeSelect}" 
+        Height="823" Width="833"
+        Initialized="Window_Initialized">
 
     <Window.Background>
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
@@ -15,9 +17,9 @@
 
     <Grid>
         <StackPanel Orientation="Horizontal" Height="32" VerticalAlignment="Top">
-            <Label Content="BotCount" Style="{StaticResource DescriptorLabel}"/>
+            <Label Content="{x:Static p:Resources.lbl_BotCount}" Style="{StaticResource DescriptorLabel}"/>
             <controls:NumberUpDown Width="64" Number="{Binding Path=BotCount}" MinNumber="0" MaxNumber="{Binding Path=PlayerCount}"/>
-            <Label Content="MaxPlayerCount" Style="{StaticResource DescriptorLabel}"/>
+            <Label Content="{x:Static p:Resources.lbl_PlayerCount}" Style="{StaticResource DescriptorLabel}"/>
             <controls:NumberUpDown x:Name="PlayerCount" Width="64" Number="{Binding Path=PlayerCount}" MinNumber="0" MaxNumber="16"/>
         </StackPanel>
         <ListView Name="MapList" Margin="0,32,0,0" Grid.ColumnSpan="2">

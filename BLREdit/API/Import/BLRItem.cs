@@ -11,6 +11,8 @@ using System.Text.Json;
 using System;
 using Gameloop.Vdf.Linq;
 using System.Buffers.Text;
+using BLREdit.Properties;
+using System.Globalization;
 
 namespace BLREdit.Import;
 
@@ -40,13 +42,12 @@ public sealed class BLRItem : INotifyPropertyChanged
     public string Name { get; set; }
     public double CP { get; set; } = 0;
 
-    [JsonIgnore] public string DisplayName { get { return LanguageSet.GetWord(UID.ToString() + ".Name", Name); } }
+    [JsonIgnore] public string DisplayName { get { return Resources.ResourceManager.GetString($"{NameID}.Name"); } }
     [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 
     public BLRPawnModifiers PawnModifiers { get; set; }
     public List<string> SupportedMods { get; set; }
-    public string Tooltip { get; set; }
-    [JsonIgnore] public string DisplayTooltip { get { return LanguageSet.GetWord(UID.ToString() + ".Tooltip", Tooltip); } }
+    [JsonIgnore] public string DisplayTooltip { get { return Resources.ResourceManager.GetString($"{NameID}.Tooltip"); } }
     public int UID { get; set; }
     public List<int> ValidFor { get; set; }
     public BLRWeaponModifiers WeaponModifiers { get; set; }
@@ -156,7 +157,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             {
                 if (points >= st.Points)
                 {
-                    currentbest = st.DisplayName;
+                    currentbest = st.Name;
                 }
             }
         }
@@ -375,7 +376,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            if (Tooltip == "Depot Item!")
+            if (Icon.Contains("Depot")) // TODO Cache the result for faster look ups
             {
                 return -1;
             }
@@ -613,6 +614,19 @@ public sealed class BLRItem : INotifyPropertyChanged
             };
         }
     }
+    [JsonIgnore]
+    public double Reload
+    {
+        get
+        {
+            return Category switch
+            {
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateReloadRate(this, 0, 0),
+                _ => WeaponModifiers?.reloadSpeed ?? 0,
+            };
+        }
+    }
+
     [JsonIgnore]
     public double Recoil
     {

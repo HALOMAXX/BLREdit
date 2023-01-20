@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -40,6 +41,8 @@ public partial class App : System.Windows.Application
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
 
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
+
+    public static CultureInfo DefaultCulture { get; } = CultureInfo.CreateSpecificCulture("en-US");
 
     public static bool IsRunning { get; private set; } = true;
 
@@ -129,7 +132,7 @@ public partial class App : System.Windows.Application
         {
             ImportSystem.Initialize();
 
-            int categoryOffset = 100000;
+            int categoryOffset = 1000;
 
             int categoryIndex = categoryOffset;
 
@@ -260,7 +263,12 @@ public partial class App : System.Windows.Application
         Trace.AutoFlush = true;
 
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
-        LoggingSystem.Log($"BLREdit Starting! @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+
+        System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentCulture;
+        // TODO: Check for Resource file if nonexistant try to download for language if not available go back to default other wise download new language pack. (Update mechanic with manifest)
+
+
+        LoggingSystem.Log($"BLREdit Starting! {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
         LoggingSystem.Log("Loading Server and Client List");
         UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
         UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();

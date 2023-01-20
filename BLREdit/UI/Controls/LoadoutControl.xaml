@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:res="clr-namespace:BLREdit.Properties"
+             xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:ui="clr-namespace:BLREdit.UI.Controls"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
              d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
              mc:Ignorable="d">
     <Grid>
         <TabControl Name="LoadoutTabControl" BorderThickness="0,1,0,0" SelectionChanged="LoadoutTabControl_Selected">
-            <TabItem Header="Weapons">
+            <TabItem Header="{x:Static p:Resources.ti_Weapons}" Name="Weapons">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                     <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
                         <ui:WeaponControl x:Name="PrimaryControl" DataContext="{Binding Path=Primary}" x:FieldModifier="public"/>
@@ -18,14 +18,14 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Gear">
+            <TabItem Header="{x:Static p:Resources.ti_Gear}" Name="Gear">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                     <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
                         <ui:GearControl x:Name="GearControl" x:FieldModifier="public"/>
                     </Grid>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Extra">
+            <TabItem Header="{x:Static p:Resources.ti_Extra}" Name="Extra">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                     <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
                         <ui:ExtraControl x:Name="ExtraControl" x:FieldModifier="public"/>

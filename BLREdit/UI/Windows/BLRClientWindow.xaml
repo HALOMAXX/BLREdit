@@ -3,11 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:BLREdit.Properties"
         xmlns:utils="clr-namespace:BLREdit"
         xmlns:ui="clr-namespace:BLREdit.UI"
-        xmlns:game="clr-namespace:BLREdit.Game" d:DataContext="{d:DesignInstance Type=game:BLRClient}"
+        xmlns:game="clr-namespace:BLREdit.Game" 
+        d:DataContext="{d:DesignInstance Type=game:BLRClient}"
         mc:Ignorable="d"
-        Title="BLRClientWindow" Height="800" Width="1270" MinWidth="1270" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+        Title="{x:Static p:Resources.winT_ClientConfigWindow}" Height="800" Width="1270" MinWidth="1270" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
 
     <Window.Background>
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
@@ -15,7 +17,7 @@
 
     <Grid>
         <TabControl BorderThickness="0,1,0,0" >
-            <TabItem Header="Proxy Modules">
+            <TabItem Header="{x:Static p:Resources.ti_ProxyModuleList}">
                 <Grid>
                     <ListView Name="ModuleList" ItemsSource="{Binding Path=AvailabeModules}">
                         <ItemsControl.ItemsPanel>
@@ -47,7 +49,7 @@
                     </ListView>
                 </Grid>
             </TabItem>
-            <TabItem Header="Patches">
+            <TabItem Header="{x:Static p:Resources.ti_ClientPatchList}">
                 <Grid/>
             </TabItem>
         </TabControl>

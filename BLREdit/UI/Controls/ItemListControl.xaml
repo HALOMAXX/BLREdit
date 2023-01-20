@@ -8,7 +8,7 @@
              xmlns:p="clr-namespace:BLREdit.Properties"
              d:DataContext="{d:DesignInstance Type=import:BLRItem}"
              mc:Ignorable="d">
-    <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-4,-1,-4,-1" ToolTip="{Binding Tooltip}" MouseDown="ItemList_MouseDown">
+    <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-4,-1,-4,-1" ToolTip="{Binding DisplayTooltip}" MouseDown="ItemList_MouseDown">
         <Border BorderThickness="1,1,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid>
                 <Image Source="{Binding WideImage, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" Width="256" Height="128"/>
@@ -17,7 +17,7 @@
         </Border>
         <Image Source="{Binding Crosshair, IsAsync=True}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
         <Border BorderThickness="1,0,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TextBlock}" />
+            <TextBlock Text="{Binding DisplayName}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TextBlock}" />
         </Border>
         <Border BorderThickness="1,0,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <UniformGrid Columns="3" Rows="2">

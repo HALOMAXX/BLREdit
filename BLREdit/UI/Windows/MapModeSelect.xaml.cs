@@ -70,8 +70,7 @@ public sealed partial class MapModeSelect : Window
 
     private void WindowLoaded(object sender, RoutedEventArgs e)
     {
-        this.DataContext = BLREditSettings.Settings;
-        this.MapList.ItemsSource = Maps;
+
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
@@ -83,5 +82,11 @@ public sealed partial class MapModeSelect : Window
         SelectedMap = (BLRMap)button.DataContext;
         IsCanceled = false;
         this.Close();
+    }
+
+    private void Window_Initialized(object sender, EventArgs e)
+    {
+        this.DataContext = BLREditSettings.Settings;
+        this.MapList.ItemsSource = Maps;
     }
 }

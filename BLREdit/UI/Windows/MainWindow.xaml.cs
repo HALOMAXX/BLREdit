@@ -35,6 +35,7 @@ using System.IO.Compression;
 using System.Buffers.Text;
 using Microsoft.IdentityModel.Tokens;
 using BLREdit.API.Export;
+using BLREdit.API.Utils;
 
 namespace BLREdit.UI;
 
@@ -101,22 +102,12 @@ public sealed partial class MainWindow : Window
 
     public void ApplySearchAndFilter()
     {
-        CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ItemList.ItemsSource);
-        view?.Refresh();
+        if (CollectionViewSource.GetDefaultView(ItemList.ItemsSource) is CollectionView view) view.Refresh();
     }
 
     private static void SetBorderColor(Border border, Color color)
     {
-        if (border is not null)
-        {
-            border.BorderBrush = new SolidColorBrush(color);
-        }
-    }
-
-    private void Window_Loaded(object sender, RoutedEventArgs e)
-    {
-        LoggingSystem.Log($"---Finished Loading MainWindow---");
-        //RefreshPing();
+        if (border is not null) border.BorderBrush = new SolidColorBrush(color);
     }
 
     public static void CheckGameClients()
@@ -185,8 +176,6 @@ public sealed partial class MainWindow : Window
         new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //blr.akoot.me : 7777 Akkot's Server
         new() { ServerAddress = "blr.753z.net", Port = 7777 }, //blr.753z.net : 7777 IKE753Z Server
         new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
-        //BLRServer subsonic = null;
-        //new() { ServerAddress = "dozette.tplinkdns.com", Port = 7777, ServerName = "Dozette's Server" }, //dozette.tplinkdns.com : 7777
         };
 
         foreach (BLRServer defaultServer in defaultServers)
@@ -199,10 +188,7 @@ public sealed partial class MainWindow : Window
                     add = false;
                 }
             }
-            if (add)
-            {
-                ServerList.Add(defaultServer);
-            }
+            if (add) ServerList.Add(defaultServer);
         }
     }
 
@@ -221,10 +207,7 @@ public sealed partial class MainWindow : Window
                 }
             }
         }
-        if (add)
-        {
-            ServerList.Add(server);
-        }
+        if (add) ServerList.Add(server);
     }
 
     public static void AddGameClient(BLRClient client)
@@ -237,10 +220,7 @@ public sealed partial class MainWindow : Window
                 add = false;
             }
         }
-        if (add)
-        {
-            GameClients.Add(client);
-        }
+        if (add) GameClients.Add(client);
     }
 
     private void ChangeCurrentServer_Click(object sender, RoutedEventArgs e)
@@ -264,17 +244,14 @@ public sealed partial class MainWindow : Window
         IOResources.SerializeFile($"GameClients.json", GameClients);
         IOResources.SerializeFile($"ServerList.json", ServerList);
         BLREditSettings.Save();
-        LanguageSet.Save();
         ProxyModule.Save();
         ClientWindow.ForceClose();
     }
 
     private void Border_DragEnter(object sender, DragEventArgs e)
     {
-        if (e.Data.GetDataPresent(DataFormats.Serializable))
-        { e.Effects = DragDropEffects.Copy; }
-        else
-        { e.Effects = DragDropEffects.None; }
+        if (e.Data.GetDataPresent(DataFormats.Serializable)) e.Effects = DragDropEffects.Copy;
+        else e.Effects = DragDropEffects.None;
     }
 
     private void Border_Drop(object sender, DragEventArgs e)
@@ -287,10 +264,7 @@ public sealed partial class MainWindow : Window
             if (e.OriginalSource is Image mage)
             {
                 image = mage;
-                if (mage.Parent is Border order)
-                {
-                    border = order;
-                }
+                if (mage.Parent is Border order) border = order;
             }
             else if (e.OriginalSource is Border order)
             {
@@ -298,7 +272,7 @@ public sealed partial class MainWindow : Window
                 image = (Image)order.Child;
             }
 
-            if (image is null || border is null) { LoggingSystem.Log("Image or Border is null"); }
+            if (image is null || border is null) LoggingSystem.Log("Image or Border is null");
 
             if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
             {
@@ -321,15 +295,12 @@ public sealed partial class MainWindow : Window
         if (e.OriginalSource is Image mage)
         {
             image = mage;
-            if (mage.Parent is Border order)
-            {
-                border = order;
-            }
+            if (mage.Parent is Border order) border = order;
         }
         else if (e.OriginalSource is Border order)
         {
             border = order;
-            if (order.Child is Image mage2) { image = mage2; }
+            if (order.Child is Image mage2) image = mage2;
         }
 
         if (image is null || border is null) { LoggingSystem.Log("Image or Border is null"); return; }
@@ -461,10 +432,6 @@ public sealed partial class MainWindow : Window
         var list = ImportSystem.GetItemListOfType(Type);
         if (list.Count > 0)
         {
-            int index = SortComboBox1.SelectedIndex;
-            SortComboBox1.ItemsSource = null;
-            SortComboBox1.Items.Clear();
-
             switch (list[0].Category)
             {
                 case ImportSystem.HELMETS_CATEGORY:
@@ -513,16 +480,6 @@ public sealed partial class MainWindow : Window
                     break;
             }
 
-            if (index > SortComboBox1.Items.Count)
-            {
-                index = SortComboBox1.Items.Count - 1;
-            }
-            if (index < 0)
-            {
-                index = 0;
-            }
-            SortComboBox1.SelectedIndex = index;
-
             ItemList.ItemsSource = list;
             ApplySorting();
         }
@@ -532,10 +489,8 @@ public sealed partial class MainWindow : Window
 
     public void ApplySorting()
     {
-        CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ItemList.ItemsSource);
-        if (view != null)
+        if (CollectionViewSource.GetDefaultView(ItemList.ItemsSource) is CollectionView view)
         {
-            //Clear old sorting descriptions
             view.SortDescriptions.Clear();
 
             if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
@@ -546,10 +501,27 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private Type lastSelectedSortingType = null;
     private void SetSortingType(Type SortingEnumType)
     {
-        CurrentSortingEnumType = SortingEnumType;
-        SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = LanguageSet.GetWords(SortingEnumType) });
+        if (lastSelectedSortingType != SortingEnumType)
+        {
+            lastSelectedSortingType = SortingEnumType;
+            int index = SortComboBox1.SelectedIndex;
+
+            CurrentSortingEnumType = SortingEnumType;
+            SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = LanguageResources.GetWordsOfEnum(SortingEnumType) });
+
+            if (index > SortComboBox1.Items.Count)
+            {
+                index = SortComboBox1.Items.Count - 1;
+            }
+            if (index < 0)
+            {
+                index = 0;
+            }
+            SortComboBox1.SelectedIndex = index;
+        }
     }
 
     //TODO Switch selected border when changing Loadout slot, and remove LastSelectedBorder when changing Sub Category(Weapon,Gear,Extra) to prevent miss adding of items
@@ -570,35 +542,32 @@ public sealed partial class MainWindow : Window
 
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        if (IsPlayerNameChanging || UndoRedoSystem.BlockEvent) return;
+        IsPlayerProfileChanging = true;
+
         LoggingSystem.Log("Changing Profile");
-        if (!IsPlayerNameChanging && !UndoRedoSystem.BlockEvent)
+        
+        if (ProfileComboBox.SelectedValue is ExportSystemProfile profile)
         {
-            IsPlayerProfileChanging = true;
-            if (ProfileComboBox.SelectedValue is ExportSystemProfile profile)
-            {
-                UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, true);
-                UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null);
-                UndoRedoSystem.DoAction(profile.PlayerName, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
-                UndoRedoSystem.EndAction();
-            }
-            IsPlayerProfileChanging = false;
+            UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, true);
+            UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null);
+            UndoRedoSystem.DoAction(profile.PlayerName, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
+            UndoRedoSystem.EndAction();
         }
+        IsPlayerProfileChanging = false;
     }
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (!IsPlayerProfileChanging && !UndoRedoSystem.BlockEvent)
-        {
-            IsPlayerNameChanging = true;
+        if (IsPlayerProfileChanging || UndoRedoSystem.BlockEvent) return;
+        
+        IsPlayerNameChanging = true;
 
-            int index = ProfileComboBox.SelectedIndex;
-            ProfileComboBox.ItemsSource = null;
-            ExportSystem.RemoveActiveProfileFromDisk();
-            ExportSystem.ActiveProfile.PlayerName = PlayerNameTextBox.Text;
-            ProfileComboBox.ItemsSource = ExportSystem.Profiles;
-            ProfileComboBox.SelectedIndex = index;
+        int index = ProfileComboBox.SelectedIndex;
+        ExportSystem.RemoveActiveProfileFromDisk();
+        ExportSystem.ActiveProfile.PlayerName = PlayerNameTextBox.Text;
+        ProfileComboBox.SelectedIndex = index;
 
-            IsPlayerNameChanging = false;
-        }
+        IsPlayerNameChanging = false;
     }
     private void AddProfileButton_Click(object sender, RoutedEventArgs e)
     {
@@ -609,14 +578,12 @@ public sealed partial class MainWindow : Window
     {
         if (UIKeys.Keys[Key.LeftShift].Is || UIKeys.Keys[Key.RightShift].Is)
         {
-            ExportSystem.CopyToClipBoard(ExportSystem.ActiveProfile);
+            ExportSystem.CopyToClipBoard(Profile);
             ShowAlert($"MagiCow Profile: {ExportSystem.ActiveProfile.Name} Copied!");
         }
         else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
         {
-            var profile = new ShareableProfile(Profile);
-            string json = IOResources.Serialize(profile, true);
-            string link = $"<blredit://import-profile/{IOResources.JsonToBase64(json)}>";
+            string link = $"<blredit://import-profile/{IOResources.JsonToBase64(IOResources.Serialize(new ShareableProfile(Profile), true))}>";
             ExportSystem.SetClipboard(link);
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Share Link Created!");
         }
@@ -640,12 +607,12 @@ public sealed partial class MainWindow : Window
         if (SortDirection == ListSortDirection.Ascending)
         {
             SortDirection = ListSortDirection.Descending;
-            SortDirectionButton.Content = LanguageSet.GetWord("Descending", "Descending");
+            SortDirectionButton.Content = Properties.Resources.btn_Descending;
         }
         else
         {
             SortDirection = ListSortDirection.Ascending;
-            SortDirectionButton.Content = LanguageSet.GetWord("Ascending", "Ascending");
+            SortDirectionButton.Content = Properties.Resources.btn_Ascending;
         }
         ApplySorting();
     }
@@ -775,6 +742,7 @@ public sealed partial class MainWindow : Window
 
     public static void ShowAlert(string message, double displayTime = 400)
     {
+        // TODO: Add Localization for alerts
         if (Self is null) return;
         var grid = CreateAlertGrid(message);
         Self.AlertList.Items.Add(grid);

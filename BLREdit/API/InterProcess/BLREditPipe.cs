@@ -249,7 +249,7 @@ public sealed class BLREditPipe
             LoggingSystem.Log($"[BLREdit API](import-profile): Importing Profile");
             var profile = IOResources.Deserialize<ShareableProfile>(IOResources.Base64ToJson(compressedBase64)).ToBLRProfile();
             var newProfile = ExportSystem.AddProfile("Imported-Profile");
-            profile.WriteMagiCowsProfile(newProfile);
+            profile.WriteMagiCowsProfile(newProfile, true);
             MainWindow.ShowAlert($"Import-Profile({newProfile.Index}) has been Imported!");
         });
         //TODO: Add more api endpoints like add-weapon, import-loadout, select-loadout(for tournaments) and more

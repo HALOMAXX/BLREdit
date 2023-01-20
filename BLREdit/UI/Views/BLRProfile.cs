@@ -29,11 +29,11 @@ public sealed class BLRProfile
         Loadout3.LoadMagicCowsLoadout(internalProfile.Loadout3);
     }
 
-    public void WriteMagiCowsProfile(MagiCowsProfile profile)
+    public void WriteMagiCowsProfile(MagiCowsProfile profile, bool overwriteLimits = false)
     {
-        Loadout1.WriteMagiCowsLoadout(profile.Loadout1);
-        Loadout2.WriteMagiCowsLoadout(profile.Loadout2);
-        Loadout3.WriteMagiCowsLoadout(profile.Loadout3);
+        Loadout1.WriteMagiCowsLoadout(profile.Loadout1, overwriteLimits);
+        Loadout2.WriteMagiCowsLoadout(profile.Loadout2, overwriteLimits);
+        Loadout3.WriteMagiCowsLoadout(profile.Loadout3, overwriteLimits);
     }
 
     public void UpdateMagiCowsProfile()

@@ -3,16 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:BLREdit.Properties"
         xmlns:local="clr-namespace:BLREdit.InfoPopups"
         mc:Ignorable="d"
-        Title="DownloadRuntimes" Height="150" Width="600">
+        Title="{x:Static p:Resources.winT_DownloadMissingRuntimes}" Height="150" Width="600">
     <Grid>
         <FlowDocumentReader ViewingMode="Scroll" IsFindEnabled="False" IsPageViewEnabled="False" IsTwoPageViewEnabled="False" IsScrollViewEnabled="True" >
             <FlowDocument >
                 <Section>
                     <Paragraph>
                         <Hyperlink Name="Link2012Update4" NavigateUri="https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe" Click="Link_Click">
-                            <TextBlock Name="Link2012Updatet4Content" Text="Microsoft Visual C++ 2012 Update 4(x86/32bit) is missing!" ToolTip="this runtime is an essential piece for [BlackLight Retribution] and [BLRevive]"/> 
+                            <TextBlock Name="Link2012Updatet4Content" Text="Microsoft Visual C++ 2012 Update 4(x86/32bit) is missing!" ToolTip="this runtime is an essential piece for [BlackLight Retribution] and [BLRevive]"/> <!-- TODO: Add translation -->
                         </Hyperlink>
                     </Paragraph>
                 </Section>

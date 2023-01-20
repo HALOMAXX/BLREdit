@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:game="clr-namespace:BLREdit.Game"
              d:DataContext="{d:DesignInstance Type=game:BLRServer}"
@@ -29,10 +30,10 @@
                 </Image.Triggers>
             </Image>
             </Canvas>
-            <Button Width="64" Height="32" Margin="10,10,10,10" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Ping Server" Command="{Binding Path=RefreshPingCommand}">
+            <Button Width="64" Height="32" Margin="10,10,10,10" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_PingServer}" Command="{Binding Path=RefreshPingCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/refresh.png"/>
             </Button>
-            <Button Width="64" Height="32" Margin="10,10,84,10" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Edit Server Settings" Command="{Binding Path=EditServerCommand}">
+            <Button Width="64" Height="32" Margin="10,10,84,10" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_OpenServerConfigWindow}" Command="{Binding Path=EditServerCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/settings.png"/>
             </Button>
 
@@ -44,7 +45,7 @@
                 <ComboBox ItemsSource="{Binding Path=Team2List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
             </StackPanel>
 
-            <Button Width="128" Height="32" Margin="10,10,10,10" Content="Connect" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Connect to the Server" Command="{Binding Path=ConnectToServerCommand}"/>
+            <Button Width="128" Height="32" Margin="10,10,10,10" Content="{x:Static p:Resources.btn_ConnectToServer}" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_ConnectToServer}" Command="{Binding Path=ConnectToServerCommand}"/>
             
             <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
                 <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
