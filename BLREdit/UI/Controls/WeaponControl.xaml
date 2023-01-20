@@ -16,10 +16,10 @@
 
     <Grid x:Name="ControlGrid" Border.MouseUp="Grid_MouseUp">
         <Label Content="{Binding Path=WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-        <Border DataContext="{Binding Path=Muzzle}" Height="78" Width="78" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=MuzzleVisibility}" DataContext="{Binding Path=Muzzle}" Height="78" Width="78" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage }" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Barrel}" Height="78" Width="78" HorizontalAlignment="Left" Margin="78,78,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=BarrelVisibility}" DataContext="{Binding Path=Barrel}" Height="78" Width="78" HorizontalAlignment="Left" Margin="78,78,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border DataContext="{Binding Path=Magazine}" Height="78" Width="78" HorizontalAlignment="Left" Margin="156,156,0,0" VerticalAlignment="Top" AllowDrop="True">
@@ -39,7 +39,7 @@
             <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
 
-        <Border DataContext="{Binding Path=Stock}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,78,0,0" VerticalAlignment="Top" AllowDrop="True">
+        <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=StockVisibility}" DataContext="{Binding Path=Stock}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,78,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border DataContext="{Binding Path=Ammo}" Height="78" Width="78" HorizontalAlignment="Left" Margin="234,156,0,0" VerticalAlignment="Top" AllowDrop="True">
@@ -72,43 +72,43 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Content="{x:Static p:Resources.lbl_Damage}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}" Margin="-2,0,0,0"/>
+            <Label Grid.Column="0" Grid.Row="0" Content="{x:Static p:Resources.lbl_Damage}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}" Margin="-2,0,0,0"/>
             <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=DamageDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="2" Grid.Row="0" Content="{x:Static p:Resources.lbl_SpreadAim}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="{x:Static p:Resources.lbl_SpreadAim}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="3" Grid.Row="0" Content="{Binding Path=AimSpreadDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="4" Grid.Row="0" Content="{x:Static p:Resources.lbl_Zoom}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="4" Grid.Row="0" Content="{x:Static p:Resources.lbl_Zoom}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="5" Grid.Row="0" Content="{Binding Path=ZoomDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
 
 
-            <Label Grid.Column="0" Grid.Row="1" Content="{x:Static p:Resources.lbl_RateOfFire}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="0" Grid.Row="1" Content="{x:Static p:Resources.lbl_RateOfFire}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=RateOfFireDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="2" Grid.Row="1" Content="{x:Static p:Resources.lbl_SpreadHipfire}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="2" Grid.Row="1" Content="{x:Static p:Resources.lbl_SpreadHipfire}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="3" Grid.Row="1" Content="{Binding Path=HipSpreadDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="4" Grid.Row="1" Content="{x:Static p:Resources.lbl_ScopeInTime}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="4" Grid.Row="1" Content="{x:Static p:Resources.lbl_ScopeInTime}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="5" Grid.Row="1" Content="{Binding Path=ScopeInTimeDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
 
 
-            <Label Grid.Column="0" Grid.Row="2" Content="{x:Static p:Resources.lbl_Ammo}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="0" Grid.Row="2" Content="{x:Static p:Resources.lbl_Ammo}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=AmmoDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="2" Grid.Row="2" Content="{x:Static p:Resources.lbl_SpreadMove}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="2" Grid.Row="2" Content="{x:Static p:Resources.lbl_SpreadMove}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="3" Grid.Row="2" Content="{Binding Path=MoveSpreadDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="4" Grid.Row="2" Content="{x:Static p:Resources.lbl_Range}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="4" Grid.Row="2" Content="{x:Static p:Resources.lbl_Range}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="5" Grid.Row="2" Content="{Binding Path=RangeDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
 
 
-            <Label Grid.Column="0" Grid.Row="3" Content="{x:Static p:Resources.lbl_ReloadPartial}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="0" Grid.Row="3" Content="{x:Static p:Resources.lbl_ReloadPartial}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=ReloadTimeDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="2" Grid.Row="3" Content="{x:Static p:Resources.lbl_RecoilHip}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="2" Grid.Row="3" Content="{x:Static p:Resources.lbl_RecoilHip}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="3" Grid.Row="3" Content="{Binding Path=HipRecoilDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="4" Grid.Row="3" Content="{x:Static p:Resources.lbl_Run}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="4" Grid.Row="3" Content="{x:Static p:Resources.lbl_Run}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="5" Grid.Row="3" Content="{Binding Path=RunDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
 
 
-            <Label Grid.Column="0" Grid.Row="4" Content="{x:Static p:Resources.lbl_ReloadEmpty}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="0" Grid.Row="4" Content="{x:Static p:Resources.lbl_ReloadEmpty}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="1" Grid.Row="4" Content="{Binding Path=SwapDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="2" Grid.Row="4" Content="{x:Static p:Resources.lbl_RecoilAim}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="2" Grid.Row="4" Content="{x:Static p:Resources.lbl_RecoilAim}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="3" Grid.Row="4" Content="{Binding Path=AimRecoilDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
-            <Label Grid.Column="4" Grid.Row="4" Content="{x:Static p:Resources.lbl_PawnRun}" HorizontalAlignment="Left" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="4" Grid.Row="4" Content="{x:Static p:Resources.lbl_PawnRun}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="5" Grid.Row="4" Content="{Binding Path=PawnRunDisplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
         </Grid>
     </Grid>

@@ -194,22 +194,22 @@ public static class ImportSystem
                         string desc = "";
                         double value = 0;
 
-                        switch (item.Name)
+                        switch (item.UID)
                         {
-                            case "Prex Chem/Hazmat Respirator-TOX":
+                            case 30345:
+                                prop = nameof(item.ExplosiveProtection);
+                                desc = Resources.lbl_ExplosiveProtection;
+                                value = item.PawnModifiers.ExplosiveProtection;
+                                break;
+                            case 30346:
                                 prop = nameof(item.ToxicProtection);
                                 desc = Resources.lbl_ToxicProtection;
                                 value = item.PawnModifiers.ToxicProtection;
                                 break;
-                            case "Prex Chem/Hazmat Respirator-INC":
+                            case 30347:
                                 prop = nameof(item.IncendiaryProtection);
                                 desc = Resources.lbl_IncendiaryProtection;
                                 value = item.PawnModifiers.IncendiaryProtection;
-                                break;
-                            case "Prex Chem/Hazmat Respirator-XPL":
-                                prop = nameof(item.ExplosiveProtection);
-                                desc = Resources.lbl_ExplosiveProtection;
-                                value = item.PawnModifiers.ExplosiveProtection;
                                 break;
                         }
 
@@ -269,34 +269,34 @@ public static class ImportSystem
                         string desc = "";
                         double value = 0;
 
-                        switch (item.Name)
+                        switch (item.UID)
                         {
-                            case "Incendiary Protection Gear":
+                            case 12021:
                                 prop = nameof(item.IncendiaryProtection);
                                 desc = Resources.lbl_IncendiaryProtection;
                                 value = IncendiaryProtection;
                                 break;
-                            case "Toxic Protection Gear":
+                            case 12022:
                                 prop = nameof(item.ToxicProtection);
                                 desc = Resources.lbl_ToxicProtection;
                                 value = ToxicProtection;
                                 break;
-                            case "Explosive Protection Gear":
+                            case 12023:
                                 prop = nameof(item.ExplosiveProtection);
                                 desc = Resources.lbl_ExplosiveProtection;
                                 value = ExplosiveProtection;
                                 break;
-                            case "Electro Protection Gear":
+                            case 12024:
                                 prop = nameof(item.ElectroProtection);
                                 desc = Resources.lbl_ElectroProtection;
                                 value = ElectroProtection;
                                 break;
-                            case "Melee Protection Gear":
+                            case 12025:
                                 prop = nameof(item.MeleeProtection);
                                 desc = Resources.lbl_MeleeProtection;
                                 value = MeleeProtection;
                                 break;
-                            case "Infrared Protection Gear":
+                            case 12030:
                                 prop = nameof(item.InfraredProtection);
                                 desc = Resources.lbl_InfraredProtection;
                                 value = InfraredProtection;
@@ -354,6 +354,8 @@ public static class ImportSystem
     static readonly Brush highlightRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
     private static DisplayStatDiscriptor FormatDisplayStat(string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
     {
+        if (string.IsNullOrEmpty(description)) return null;
+        
         DisplayStatDiscriptor desc = new()
         {
             PropertyName = propertyName,
@@ -363,55 +365,52 @@ public static class ImportSystem
         bool isGrey = false;
         bool isPositive = false;
 
-        if (!string.IsNullOrEmpty(description))
+        switch (value)
         {
-            switch (value)
-            {
-                case double d:
-                    desc.Value = prefix + d.ToString(format) + suffix;
-                    isGrey = d == 0;
-                    isPositive = d > defaultval;
-                    break;
-                case long l:
-                    desc.Value = prefix + l.ToString(format) + suffix;
-                    isGrey = l == 0;
-                    isPositive = l > defaultval;
-                    break;
-                case int i:
-                    desc.Value = prefix + i.ToString(format) + suffix;
-                    isGrey = i == 0;
-                    isPositive = i > defaultval;
-                    break;
-                case bool b:
-                    desc.Value = b.ToString();
-                    isGrey = !b;
-                    isPositive = b;
-                    break;
-                case double[] db:
-                    if (db.Length > 0)
+            case double d:
+                desc.Value = prefix + d.ToString(format) + suffix;
+                isGrey = d == 0;
+                isPositive = d > defaultval;
+                break;
+            case long l:
+                desc.Value = prefix + l.ToString(format) + suffix;
+                isGrey = l == 0;
+                isPositive = l > defaultval;
+                break;
+            case int i:
+                desc.Value = prefix + i.ToString(format) + suffix;
+                isGrey = i == 0;
+                isPositive = i > defaultval;
+                break;
+            case bool b:
+                desc.Value = b.ToString();
+                isGrey = !b;
+                isPositive = b;
+                break;
+            case double[] db:
+                if (db.Length > 0)
+                {
+                    isGrey = db[0] == 0;
+                    isPositive = db[0] > 0;
+                    string vv = "";
+                    int indexes;
+                    if (count < 0)
                     {
-                        isGrey = db[0] == 0;
-                        isPositive = db[0] > 0;
-                        string vv = "";
-                        int indexes;
-                        if (count < 0)
-                        {
-                            indexes = db.Length;
-                        }
-                        else
-                        {
-                            indexes = count;
-                        }
-                        for (int i = 0; i < indexes; i++)
-                        {
-                            if (i > 0)
-                            { vv += prefix; }
-                            vv += db[i].ToString(format);
-                        }
-                        desc.Value = vv;
+                        indexes = db.Length;
                     }
-                    break;
-            }
+                    else
+                    {
+                        indexes = count;
+                    }
+                    for (int i = 0; i < indexes; i++)
+                    {
+                        if (i > 0)
+                        { vv += prefix; }
+                        vv += db[i].ToString(format);
+                    }
+                    desc.Value = vv;
+                }
+                break;
         }
 
         if (type != StatsEnum.None)

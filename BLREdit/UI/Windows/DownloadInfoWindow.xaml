@@ -6,7 +6,7 @@
         xmlns:p="clr-namespace:BLREdit.Properties"
         xmlns:local="clr-namespace:BLREdit.UI.Windows"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.winT_DownloadInfoWindow}" Height="128" Width="512" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Loaded="Window_Loaded" Topmost="True">
+        Title="{x:Static p:Resources.winT_DownloadInfoWindow}" Height="128" Width="512" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Loaded="Window_Loaded" Topmost="True">
     <Grid>
         <ProgressBar Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:DownloadInfoWindow}, Path=DownloadProgress}" Name="ProgressBar"/>
         <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:DownloadInfoWindow}, Path=InfoText}" VerticalAlignment="Center" HorizontalAlignment="Center"/>

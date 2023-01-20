@@ -47,6 +47,15 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     private Visibility skinVisibility = Visibility.Collapsed;
     public Visibility SkinVisibility { get { return skinVisibility; } private set { skinVisibility = value; OnPropertyChanged(); } }
 
+    private Visibility barrelVisibility = Visibility.Visible;
+    public Visibility BarrelVisibility { get { return barrelVisibility; } private set { barrelVisibility = value; OnPropertyChanged(); } }
+
+    private Visibility muzzleVisibility = Visibility.Visible;
+    public Visibility MuzzleVisibility { get { return muzzleVisibility; } private set { muzzleVisibility = value; OnPropertyChanged(); } }
+
+    private Visibility stockVisibility = Visibility.Visible;
+    public Visibility StockVisibility { get { return stockVisibility; } private set { stockVisibility = value; OnPropertyChanged(); } }
+
     public WeaponControl()
     {
         InitializeComponent();
@@ -94,6 +103,9 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         if (e.PropertyName == nameof(BLREditSettings.Settings.AdvancedModding.Visibility))
         {
             GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
+            MuzzleVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
+            BarrelVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
+            StockVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
         }
     }
 
@@ -164,14 +176,101 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         {
             switch (weapon?.Reciever?.UID ?? -1)
             {
-                case 40005:
+                case 40002: //Revolver
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Collapsed;
+                    MuzzleVisibility = Visibility.Collapsed;
+                    TagVisibility = Visibility.Collapsed;
+                    return;
+                case 40004: //Machine Pistol
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Collapsed;
+                    MuzzleVisibility = Visibility.Visible;
+                    TagVisibility = Visibility.Collapsed;
+                    return;
+                case 40005: //Shotgun
                     GripVisibility = Visibility.Visible;
+                    BarrelVisibility = Visibility.Visible;
+                    StockVisibility = Visibility.Visible;
+                    MuzzleVisibility = Visibility.Collapsed;
+                    TagVisibility = Visibility.Collapsed;
+                    return;
+                case 40006: //Burstfire Psitol
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Collapsed;
+                    MuzzleVisibility = Visibility.Visible;
+                    TagVisibility = Visibility.Collapsed;
+                    return;
+                case 40013: //TSMG
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Collapsed;
+                    MuzzleVisibility = Visibility.Visible;
+                    TagVisibility = Visibility.Visible;
+                    return;
+                case 40015: //Breech Loaded Pistol
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Collapsed;
+                    MuzzleVisibility = Visibility.Collapsed;
+                    TagVisibility = Visibility.Collapsed;
+                    return;
+                case 40016: //S-Ark
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Visible;
+                    StockVisibility = Visibility.Visible;
+                    MuzzleVisibility = Visibility.Collapsed;
+                    TagVisibility = Visibility.Collapsed;
+                    return;
+                case 40018: //BSMG
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Collapsed;
+                    MuzzleVisibility = Visibility.Visible;
+                    TagVisibility = Visibility.Visible;
+                    return;
+                case 40019: //AMR
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Visible;
+                    StockVisibility = Visibility.Visible;
+                    MuzzleVisibility = Visibility.Visible;
+                    TagVisibility = Visibility.Visible;
+                    return;
+                case 40020: //BPFA
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Visible;
+                    MuzzleVisibility = Visibility.Visible;
+                    TagVisibility = Visibility.Visible;
+                    return;
+                case 40021: //Snub 260
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Collapsed;
+                    MuzzleVisibility = Visibility.Collapsed;
+                    TagVisibility = Visibility.Collapsed;
+                    return;
+                case 40024: //Compund Bow
+                    GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Collapsed;
+                    StockVisibility = Visibility.Collapsed;
+                    MuzzleVisibility = Visibility.Collapsed;
+                    TagVisibility = Visibility.Visible;
                     return;
                 default:
                     GripVisibility = Visibility.Collapsed;
+                    BarrelVisibility = Visibility.Visible;
+                    StockVisibility = Visibility.Visible;
+                    MuzzleVisibility = Visibility.Visible;
+                    if (weapon.IsPrimary)
+                    { TagVisibility= Visibility.Visible; }
+                    else 
+                    { TagVisibility= Visibility.Collapsed; }
                     return;
             }
         }
-        GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
     }
 }

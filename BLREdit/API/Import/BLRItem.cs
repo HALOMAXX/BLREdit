@@ -235,35 +235,9 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public void LoadImage()
     {
-        if (!string.IsNullOrEmpty(Icon))
-        {
-            var femaleIconName = GetFemaleIconName();
-
-            MaleIcon = new FoxIcon($"Assets\\textures\\{Icon}.png");
-            FemaleIcon = new FoxIcon($"Assets\\textures\\{femaleIconName}.png");
-        }
-    }
-
-    private string GetFemaleIconName()
-    {
-        string[] parts = Icon.Split('_');
-        string female = "";
-        for (int i = 0; i < parts.Length; i++)
-        {
-            if (i == parts.Length - 1)
-            {
-                female += "_Female";
-            }
-            if (i == 0)
-            {
-                female += parts[i];
-            }
-            else
-            {
-                female += "_" + parts[i];
-            }
-        }
-        return female;
+        if (string.IsNullOrEmpty(Icon)) { return; }
+        MaleIcon = new FoxIcon($"Assets\\textures\\{Icon}.png");
+        if(Icon.Length > 8) FemaleIcon = new FoxIcon($"Assets\\textures\\{Icon.Insert(Icon.Length - 8, "_Female")}.png");
     }
 
     public void LoadCrosshair(BLRWeapon weapon)

@@ -37,7 +37,6 @@ namespace BLREdit.UI.Controls
         {
             InitializeComponent();
             LoadoutControl.PropertyChanged += GlobalTabIndexChanged;
-            SecondaryControl.SetVisibility(false);
         }
 
         ~LoadoutControl()
