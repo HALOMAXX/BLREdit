@@ -18163,6 +18163,7 @@
       "Icon": "t_AntiMaterialRifle_256x128",
       "Name": "Anti-Materiel Rifle",
       "SupportedMods": [
+        "ammo",
         "camosWeapon",
         "hangers",
         "scopes",
@@ -18649,6 +18650,7 @@
       "Icon": "t_CompoundBow_256x128",
       "Name": "Compound Bow",
       "SupportedMods": [
+        "ammo",
         "camosWeapon",
         "hangers",
         "magazines",
@@ -20398,7 +20400,6 @@
         "ammo",
         "barrels",
         "camosWeapon",
-        "hangers",
         "magazines",
         "scopes",
         "stocks"
@@ -20552,8 +20553,8 @@
       "Icon": "t_BreachLoadedPistol_128x128",
       "Name": "Breech Loaded Pistol",
       "SupportedMods": [
+        "ammo",
         "camosWeapon",
-        "hangers",
         "magazines",
         "scopes"
       ],
@@ -20704,7 +20705,6 @@
       "SupportedMods": [
         "ammo",
         "camosWeapon",
-        "hangers",
         "magazines"
       ],
       "UID": 40021,
@@ -20855,7 +20855,6 @@
         "ammo",
         "barrels",
         "camosWeapon",
-        "hangers",
         "magazines",
         "muzzles",
         "scopes",
@@ -21009,7 +21008,6 @@
         "ammo",
         "barrels",
         "camosWeapon",
-        "hangers",
         "magazines",
         "muzzles",
         "scopes",
@@ -21161,7 +21159,6 @@
       "SupportedMods": [
         "ammo",
         "camosWeapon",
-        "hangers",
         "magazines",
         "muzzles",
         "scopes"
@@ -21355,7 +21352,6 @@
         "ammo",
         "barrels",
         "camosWeapon",
-        "hangers",
         "magazines",
         "muzzles",
         "scopes",
@@ -21491,7 +21487,6 @@
       "SupportedMods": [
         "ammo",
         "camosWeapon",
-        "hangers",
         "magazines",
         "muzzles",
         "scopes"
@@ -21645,7 +21640,6 @@
       "SupportedMods": [
         "ammo",
         "camosWeapon",
-        "hangers",
         "magazines",
         "scopes"
       ],
@@ -21799,7 +21793,6 @@
         "barrels",
         "camosWeapon",
         "grips",
-        "hangers",
         "magazines",
         "scopes",
         "stocks"
@@ -21954,7 +21947,6 @@
         "ammo",
         "camosWeapon",
         "grips",
-        "hangers",
         "magazines",
         "muzzles",
         "scopes",

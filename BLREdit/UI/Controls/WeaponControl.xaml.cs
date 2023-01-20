@@ -38,29 +38,44 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     private Visibility recieverVisibility = Visibility.Visible;
     public Visibility RecieverVisibility { get { return recieverVisibility; } private set { recieverVisibility = value; OnPropertyChanged(); } }
 
-    private Visibility gripVisibility = Visibility.Collapsed;
-    public Visibility GripVisibility { get { return gripVisibility; } private set { gripVisibility = value; OnPropertyChanged(); } }
-
-    private Visibility tagVisibility = Visibility.Visible;
-    public Visibility TagVisibility { get { return tagVisibility; } private set { tagVisibility = value; OnPropertyChanged(); } }
-
     private Visibility skinVisibility = Visibility.Collapsed;
     public Visibility SkinVisibility { get { return skinVisibility; } private set { skinVisibility = value; OnPropertyChanged(); } }
+
+
+
+    private Visibility ammoVisibility = Visibility.Visible;
+    public Visibility AmmoVisibility { get { return ammoVisibility; } private set { ammoVisibility = value; OnPropertyChanged(); } }
 
     private Visibility barrelVisibility = Visibility.Visible;
     public Visibility BarrelVisibility { get { return barrelVisibility; } private set { barrelVisibility = value; OnPropertyChanged(); } }
 
+    private Visibility cammoVisibility = Visibility.Visible;
+    public Visibility CamoVisibility { get { return cammoVisibility; } private set { cammoVisibility = value; OnPropertyChanged(); } }
+
+    private Visibility tagVisibility = Visibility.Visible;
+    public Visibility TagVisibility { get { return tagVisibility; } private set { tagVisibility = value; OnPropertyChanged(); } }
+
+    private Visibility magazineVisibility = Visibility.Visible;
+    public Visibility MagazineVisibility { get { return magazineVisibility; } private set { magazineVisibility = value; OnPropertyChanged(); } }
+
     private Visibility muzzleVisibility = Visibility.Visible;
     public Visibility MuzzleVisibility { get { return muzzleVisibility; } private set { muzzleVisibility = value; OnPropertyChanged(); } }
 
+    private Visibility scopeVisibility = Visibility.Visible;
+    public Visibility ScopeVisibility { get { return scopeVisibility; } private set { scopeVisibility = value; OnPropertyChanged(); } }
+
     private Visibility stockVisibility = Visibility.Visible;
     public Visibility StockVisibility { get { return stockVisibility; } private set { stockVisibility = value; OnPropertyChanged(); } }
+
+
+    private Visibility gripVisibility = Visibility.Collapsed;
+    public Visibility GripVisibility { get { return gripVisibility; } private set { gripVisibility = value; OnPropertyChanged(); } }
+
 
     public WeaponControl()
     {
         InitializeComponent();
         BLREditSettings.Settings.AdvancedModding.PropertyChanged += SettingsChanged;
-        GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
         UIKeys.Keys[Key.LeftShift].PropertyChanged += SkinModifierChanged;
     }
 
@@ -81,32 +96,9 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         }
     }
 
-    public void SetVisibility(bool isPrimary = true)
-    {
-        IsPrimary = isPrimary;
-        if (isPrimary)
-        {
-            GripVisibility = Visibility.Collapsed;
-            TagVisibility = Visibility.Visible;
-            SkinVisibility = Visibility.Visible;
-        }
-        else 
-        {
-            GripVisibility = Visibility.Visible;
-            TagVisibility = Visibility.Collapsed;
-            SkinVisibility = Visibility.Collapsed;
-        }
-    }
-
     public void SettingsChanged(object sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(BLREditSettings.Settings.AdvancedModding.Visibility))
-        {
-            GripVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
-            MuzzleVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
-            BarrelVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
-            StockVisibility = BLREditSettings.Settings.AdvancedModding.Visibility;
-        }
+        Reciever_DataContextChanged(null, new DependencyPropertyChangedEventArgs());
     }
 
     private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -172,105 +164,47 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
     private void Reciever_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
-        if (DataContext is BLRWeapon weapon && BLREditSettings.Settings.AdvancedModding.IsNot)
+        if (DataContext is BLRWeapon weapon)
         {
-            switch (weapon?.Reciever?.UID ?? -1)
-            {
-                case 40002: //Revolver
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Collapsed;
-                    MuzzleVisibility = Visibility.Collapsed;
-                    TagVisibility = Visibility.Collapsed;
-                    return;
-                case 40004: //Machine Pistol
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Collapsed;
-                    MuzzleVisibility = Visibility.Visible;
-                    TagVisibility = Visibility.Collapsed;
-                    return;
-                case 40005: //Shotgun
-                    GripVisibility = Visibility.Visible;
-                    BarrelVisibility = Visibility.Visible;
-                    StockVisibility = Visibility.Visible;
-                    MuzzleVisibility = Visibility.Collapsed;
-                    TagVisibility = Visibility.Collapsed;
-                    return;
-                case 40006: //Burstfire Psitol
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Collapsed;
-                    MuzzleVisibility = Visibility.Visible;
-                    TagVisibility = Visibility.Collapsed;
-                    return;
-                case 40013: //TSMG
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Collapsed;
-                    MuzzleVisibility = Visibility.Visible;
-                    TagVisibility = Visibility.Visible;
-                    return;
-                case 40015: //Breech Loaded Pistol
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Collapsed;
-                    MuzzleVisibility = Visibility.Collapsed;
-                    TagVisibility = Visibility.Collapsed;
-                    return;
-                case 40016: //S-Ark
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Visible;
-                    StockVisibility = Visibility.Visible;
-                    MuzzleVisibility = Visibility.Collapsed;
-                    TagVisibility = Visibility.Collapsed;
-                    return;
-                case 40018: //BSMG
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Collapsed;
-                    MuzzleVisibility = Visibility.Visible;
-                    TagVisibility = Visibility.Visible;
-                    return;
-                case 40019: //AMR
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Visible;
-                    StockVisibility = Visibility.Visible;
-                    MuzzleVisibility = Visibility.Visible;
-                    TagVisibility = Visibility.Visible;
-                    return;
-                case 40020: //BPFA
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Visible;
-                    MuzzleVisibility = Visibility.Visible;
-                    TagVisibility = Visibility.Visible;
-                    return;
-                case 40021: //Snub 260
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Collapsed;
-                    MuzzleVisibility = Visibility.Collapsed;
-                    TagVisibility = Visibility.Collapsed;
-                    return;
-                case 40024: //Compund Bow
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Collapsed;
-                    StockVisibility = Visibility.Collapsed;
-                    MuzzleVisibility = Visibility.Collapsed;
-                    TagVisibility = Visibility.Visible;
-                    return;
-                default:
-                    GripVisibility = Visibility.Collapsed;
-                    BarrelVisibility = Visibility.Visible;
-                    StockVisibility = Visibility.Visible;
-                    MuzzleVisibility = Visibility.Visible;
-                    if (weapon.IsPrimary)
-                    { TagVisibility= Visibility.Visible; }
-                    else 
-                    { TagVisibility= Visibility.Collapsed; }
-                    return;
-            }
+            if (weapon.Reciever.SupportedMods.Contains("ammo") || BLREditSettings.Settings.AdvancedModding.Is)
+            { AmmoVisibility = Visibility.Visible; }
+            else
+            { AmmoVisibility = Visibility.Collapsed; }
+
+            if (weapon.Reciever.SupportedMods.Contains("barrels") || BLREditSettings.Settings.AdvancedModding.Is)
+            { BarrelVisibility = Visibility.Visible; }
+            else
+            { BarrelVisibility = Visibility.Collapsed; }
+
+            if (weapon.Reciever.SupportedMods.Contains("camosWeapon") || BLREditSettings.Settings.AdvancedModding.Is)
+            { CamoVisibility = Visibility.Visible; }
+            else
+            { CamoVisibility = Visibility.Collapsed; }
+
+            if (weapon.Reciever.SupportedMods.Contains("hangers") || BLREditSettings.Settings.AdvancedModding.Is)
+            { TagVisibility = Visibility.Visible; }
+            else
+            { TagVisibility = Visibility.Collapsed; }
+
+            if (weapon.Reciever.SupportedMods.Contains("magazines") || BLREditSettings.Settings.AdvancedModding.Is)
+            { MagazineVisibility = Visibility.Visible; }
+            else
+            { MagazineVisibility = Visibility.Collapsed; }
+
+            if (weapon.Reciever.SupportedMods.Contains("muzzles") || BLREditSettings.Settings.AdvancedModding.Is)
+            { MuzzleVisibility = Visibility.Visible; }
+            else
+            { MuzzleVisibility = Visibility.Collapsed; }
+
+            if (weapon.Reciever.SupportedMods.Contains("scopes") || BLREditSettings.Settings.AdvancedModding.Is)
+            { ScopeVisibility = Visibility.Visible; }
+            else
+            { ScopeVisibility = Visibility.Collapsed; }
+
+            if (weapon.Reciever.SupportedMods.Contains("stocks") || BLREditSettings.Settings.AdvancedModding.Is)
+            { StockVisibility = Visibility.Visible; }
+            else
+            { StockVisibility = Visibility.Collapsed; }
         }
     }
 }
