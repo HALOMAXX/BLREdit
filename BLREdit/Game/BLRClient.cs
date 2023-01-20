@@ -239,13 +239,15 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ValidateModules(List<ProxyModule> enabledModules = null)
     {
+        App.AvailableProxyModuleCheck(); // Get Available Modules just in case
+
         var count = InstalledModules.Count;
         var customCount = CustomModules.Count;
         LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count}, StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}, InstallRequiredModules:{BLREditSettings.Settings.InstallRequiredModules}");
 
         if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.InstallRequiredModules.Is)
         {
-            var client = MainWindow.ClientWindow.Client ;
+            var oldClient = MainWindow.ClientWindow.Client ;
             MainWindow.ClientWindow.Client = this;
             foreach (var availableModule in App.AvailableProxyModules)
             {
@@ -254,6 +256,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     availableModule.InstallCommand.Execute(null);
                 }
             }
+            MainWindow.ClientWindow.Client = oldClient;
         }
 
         if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.StrictModuleChecks.Is)

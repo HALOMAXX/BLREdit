@@ -128,6 +128,7 @@ public partial class App : System.Windows.Application
             return;
         }
 
+        #if DEBUG
         if (argDict.TryGetValue("-localize", out string _))
         {
             ImportSystem.Initialize();
@@ -211,6 +212,7 @@ public partial class App : System.Windows.Application
             Application.Current.Shutdown();
             return;
         }
+        #endif
 
         if (BLREditPipe.ForwardLaunchArgs(argList))
         {
