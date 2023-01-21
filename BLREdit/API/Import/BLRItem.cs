@@ -37,7 +37,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     public int LMID { get; set; } = -69;
     public int NameID { get; set; } = -1;
     public string Category { get; set; }
-    public string DescriptorName { get; set; } = "";
+    public string DescriptorName { get; set; }
     public string Icon { get; set; }
     public string Name { get; set; }
     public double CP { get; set; } = 0;
@@ -59,8 +59,8 @@ public sealed class BLRItem : INotifyPropertyChanged
     [JsonIgnore] public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(female); } }
     [JsonIgnore] public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(female); } }
 
-    [JsonIgnore] public FoxIcon MaleIcon;
-    [JsonIgnore] public FoxIcon FemaleIcon;
+    [JsonIgnore] public FoxIcon MaleIcon { get; private set; }
+    [JsonIgnore] public FoxIcon FemaleIcon { get; private set; }
 
     [JsonIgnore] public BitmapSource Crosshair { get; private set; }
 
@@ -136,7 +136,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public static BitmapSource GetImage(BitmapSource male, BitmapSource female)
     {
-        if (UI.MainWindow.Profile.Loadout1.IsFemale)
+        if (MainWindow.Profile?.Loadout1?.IsFemale ?? false)
         {
             if (female == null)
             { return male; }
@@ -194,8 +194,6 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool ValidForTest(BLRItem filter)
     {
-        //if (Category != ImportSystem.AMMO_CATEGORY && Category != ImportSystem.MAGAZINES_CATEGORY && Category != ImportSystem.MUZZELS_CATEGORY && Category != ImportSystem.SCOPES_CATEGORY && Category != ImportSystem.STOCKS_CATEGORY && Category != ImportSystem.BARRELS_CATEGORY && Category != ImportSystem.GRIPS_CATEGORY) return true;
-
         if (ValidFor == null || ValidFor.Count <= 0) { return true; }
 
         foreach (int id in ValidFor)
@@ -208,6 +206,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     private static bool AdvancedFilter(BLRItem item, BLRItem filter)
     {
+        if(item is null) return false;
         switch (item.Category)
         {
             case ImportSystem.MAGAZINES_CATEGORY:
@@ -761,6 +760,12 @@ public sealed class BLRWeaponStats
     public bool UseTABaseSpread { get; set; } = false;
     public double Weight { get; set; } = 150.0f;
     public double ZoomSpreadMultiplier { get; set; } = 0.4f;
+}
+
+public sealed class StatDecriptor
+{
+    public string Name { get; set; } = "Classic";
+    public int Points { get; set; } = 0;
 }
 
 [JsonConverter(typeof(JsonBLRWikiStatsConverter))]

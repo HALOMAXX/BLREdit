@@ -29,20 +29,17 @@ namespace BLREdit.UI.Controls
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is FrameworkElement element)
+            if (sender is FrameworkElement element && element.DataContext is BLRItem item)
             {
-                if (element.DataContext is BLRItem item)
+                if (e.ClickCount >= 2)
                 {
-                    if (e.ClickCount >= 2)
-                    {
-                        LoggingSystem.Log($"Double Clicking:{item.Name}");
-                        MainWindow.SetItemToBorder(MainWindow.LastSelectedBorder, item);
-                    }
-                    else
-                    {
-                        LoggingSystem.Log($"Dragging:{item.Name}");
-                        DragDrop.DoDragDrop(element, item, DragDropEffects.Copy);
-                    }
+                    LoggingSystem.Log($"Double Clicking:{item.Name}");
+                    MainWindow.SetItemToBorder(MainWindow.LastSelectedBorder, item);
+                }
+                else
+                {
+                    LoggingSystem.Log($"Dragging:{item.Name}");
+                    DragDrop.DoDragDrop(element, item, DragDropEffects.Copy);
                 }
             }
         }

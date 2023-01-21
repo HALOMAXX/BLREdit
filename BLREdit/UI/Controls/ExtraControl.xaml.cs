@@ -28,12 +28,9 @@ namespace BLREdit.UI.Controls
         public static int SelectedBorder { get; private set; } = 1;
         private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (e.Source is Image image)
+            if (e.Source is Image image && image.Parent is Border border)
             {
-                if (image.Parent is Border border)
-                {
-                    SelectedBorder = this.ControlGrid.Children.IndexOf(border);
-                }
+                SelectedBorder = this.ControlGrid.Children.IndexOf(border);
             }
         }
 

@@ -35,15 +35,12 @@ public sealed class BLREditPipe
                 AddOrUpdateProtocol();
             }
         }
-
-        SpawnPipes();
     }
 
     static void SpawnPipes()
     {
         if (IsServer)
         {
-            AddApiEndpoints();
             LoggingSystem.Log($"[PipeServer]: Starting {Environment.ProcessorCount} PipeThreads");
             for (int i = Environment.ProcessorCount; i > 0; i--)
             {
@@ -54,6 +51,7 @@ public sealed class BLREditPipe
         }
     }
 
+    static DateTime LastTriedTime = Self.StartTime;
     static void ValidateServerState()
     {
         var running = Process.GetProcessesByName("BLREdit");
@@ -62,114 +60,123 @@ public sealed class BLREditPipe
         IsServer = true;
         foreach (var run in running)
         {
-            if (run.StartTime < Self.StartTime)
+            if (run.StartTime < LastTriedTime)
             {
+                LastTriedTime = run.StartTime;
                 IsServer = false;
+                return;
             }
         }
     }
 
     static void AddOrUpdateProtocol()
     {
-        var root = Registry.ClassesRoot.OpenSubKey("blredit");
-        RegistryKey command = null;
-        if (root is not null)
+        if (Registry.ClassesRoot.OpenSubKey("blredit") is RegistryKey root)
         {
-            command = root.OpenSubKey(@"shell\open\command");
-        }
-
-        if (root is null && IsElevated())
-        {
-            LoggingSystem.Log("Installing App Protocol");
-
-            root = Registry.ClassesRoot.CreateSubKey("blredit");
-            root.SetValue(string.Empty, "URL: BLREdit Protocol");
-            root.SetValue("URL Protocol", string.Empty);
-
-            command = root.CreateSubKey(@"shell\open\command");
-            command.SetValue(string.Empty, $"\"{App.BLREditLocation}BLREdit.exe\" \"%1\"");
-
-            LoggingSystem.Log("Finished installing App Protocol");
-
-            command.Close();
-            root.Close();
-            Environment.Exit(0);
-        }
-        else if (root is null && !IsElevated())
-        {
-            LoggingSystem.Log("Protocol is not installed");
-            RunAsAdmin();
-        }
-        else if (command is null && IsElevated())
-        {
-            LoggingSystem.Log("Creating Missing App path");
-
-            command = root.CreateSubKey(@"shell\open\command");
-            command.SetValue(string.Empty, $"\"{App.BLREditLocation}BLREdit.exe\" \"%1\"");
-
-            LoggingSystem.Log("Created App path");
-
-            command.Close();
-            root.Close();
-            Environment.Exit(0);
-        }
-        else if (command is null && !IsElevated())
-        {
-            LoggingSystem.Log("Command Key is missing");
-            RunAsAdmin();
-        }
-        else if (command is not null && IsElevated())
-        {
-            LoggingSystem.Log("Updating App path");
-
-            //run clean up and recreate total
-            command?.Close();
-            root?.Close();
-
-
-            System.IO.File.WriteAllText("clean.reg", 
-                @"[-HKEY_CLASSES_ROOT\blredit\shell\open\command]" +
-                @"[-HKEY_CLASSES_ROOT\blredit\shell\open]" +
-                @"[-HKEY_CLASSES_ROOT\blredit\shell]" +
-                @"[-HKEY_CLASSES_ROOT\blredit]");
-
-            var p = Process.Start("regedit.exe", "/s clean.reg");
-            p.WaitForExit();
-
-            System.IO.File.Delete("clean.reg");
-
-            root = Registry.ClassesRoot.CreateSubKey("blredit");
-            root.SetValue(string.Empty, "URL: BLREdit Protocol");
-            root.SetValue("URL Protocol", string.Empty);
-
-            command = root.CreateSubKey(@"shell\open\command");
-            command.SetValue(string.Empty, $"\"{App.BLREditLocation}BLREdit.exe\" \"%1\"");
-
-            LoggingSystem.Log("Updated App path");
-
-            command?.Close();
-            root?.Close();
-            Environment.Exit(0);
-        }
-        else if (command is not null && !IsElevated())
-        {
-            var tokens = (command.GetValue(string.Empty, string.Empty) as string).Split('"');
-            if (tokens.Length >= 2)
+            if (root.OpenSubKey(@"shell\open\command") is RegistryKey command)
             {
-                if (tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
+                if (IsElevated())
                 {
-                    LoggingSystem.Log("Protocol Path is wrong");
+                    LoggingSystem.Log("Updating App path");
+
+                    //run clean up and recreate total
+                    command.Close();
+                    root.Close();
+
+                    File.WriteAllText("clean.reg",
+                        @"[-HKEY_CLASSES_ROOT\blredit\shell\open\command]" +
+                        @"[-HKEY_CLASSES_ROOT\blredit\shell\open]" +
+                        @"[-HKEY_CLASSES_ROOT\blredit\shell]" +
+                        @"[-HKEY_CLASSES_ROOT\blredit]");
+
+                    var p = Process.Start("regedit.exe", "/s clean.reg");
+                    p.WaitForExit();
+
+                    File.Delete("clean.reg");
+
+                    root = Registry.ClassesRoot.CreateSubKey("blredit");
+                    root.SetValue(string.Empty, "URL: BLREdit Protocol");
+                    root.SetValue("URL Protocol", string.Empty);
+
+                    command = root.CreateSubKey(@"shell\open\command");
+                    command.SetValue(string.Empty, $"\"{App.BLREditLocation}BLREdit.exe\" \"%1\"");
+
+                    LoggingSystem.Log("Updated App path");
+
+                    command.Close();
+                    root.Close();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    var tokens = (command.GetValue(string.Empty, string.Empty) as string).Split('"');
+                    if (tokens.Length >= 2)
+                    {
+                        if (tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
+                        {
+                            LoggingSystem.Log("Protocol Path is wrong");
+                            command.Close();
+                            root.Close();
+                            RunAsAdmin();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (IsElevated())
+                {
+                    LoggingSystem.Log("Creating Missing App path");
+
+                    command = root.CreateSubKey(@"shell\open\command");
+                    command.SetValue(string.Empty, $"\"{App.BLREditLocation}BLREdit.exe\" \"%1\"");
+
+                    LoggingSystem.Log("Created App path");
+
+                    command.Close();
+                    root.Close();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    LoggingSystem.Log("Command Key is missing");
+                    root.Close();
                     RunAsAdmin();
                 }
             }
         }
+        else
+        {
+            if (IsElevated())
+            {
+                LoggingSystem.Log("Installing App Protocol");
 
-        command?.Close();
-        root?.Close();
+                root = Registry.ClassesRoot.CreateSubKey("blredit");
+                root.SetValue(string.Empty, "URL: BLREdit Protocol");
+                root.SetValue("URL Protocol", string.Empty);
+
+                var command = root.CreateSubKey(@"shell\open\command");
+                command.SetValue(string.Empty, $"\"{App.BLREditLocation}BLREdit.exe\" \"%1\"");
+
+                LoggingSystem.Log("Finished installing App Protocol");
+
+                command.Close();
+                root.Close();
+                Environment.Exit(0);
+            }
+            else
+            {
+                LoggingSystem.Log("Protocol is not installed");
+                RunAsAdmin();
+            }
+        }
     }
 
+    private static bool AddedApiEndpoints = false;
     static void AddApiEndpoints()
     {
+        if (AddedApiEndpoints) { return; }
+        AddedApiEndpoints = true;
         ApiEndPoints.Add("add-server", (json) => {
             if (json.StartsWith("{"))
             {
@@ -218,10 +225,11 @@ public sealed class BLREditPipe
                 if (serverConfig.ClientId < 0)
                 { client = BLREditSettings.Settings.DefaultClient; }
                 else
-                { client = UI.MainWindow.GameClients[serverConfig.ClientId]; }
+                { client = MainWindow.GameClients[serverConfig.ClientId]; }
 
                 foreach (var module in App.AvailableProxyModules)
                 {
+                    module.RepositoryProxyModule.Required = false;
                     foreach (var required in serverConfig.RequiredModules)
                     {
                         if (module.RepositoryProxyModule.InstallName == required)
@@ -231,13 +239,7 @@ public sealed class BLREditPipe
                     }
                 }
 
-                var serverName = serverConfig.ServerName;
-                var port = serverConfig.Port;
-                var botCount = serverConfig.BotCount;
-                var maxPlayers = serverConfig.MaxPlayers;
-                var playlist = serverConfig.Playlist;
-
-                string launchArgs = $"server ?ServerName=\"{serverName}\"?Port={port}?NumBots={botCount}?MaxPlayers={maxPlayers}?Playlist={playlist}";
+                string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}";
                 client.StartProcess(launchArgs, serverConfig.WatchDog);
             }
             else
@@ -318,6 +320,7 @@ public sealed class BLREditPipe
 
     public static void ProcessArgs(string[] args)
     {
+        AddApiEndpoints();
         if (args.Length <= 0) { return; }
         Dictionary<string, string> argDict = new();
 
@@ -354,23 +357,21 @@ public sealed class BLREditPipe
 
     public static bool ForwardLaunchArgs(string[] args)
     {
-        if (IsServer) { return false; }
-        int linesWritten = 0;
-        while (linesWritten < args.Length)
+        if (IsServer) { SpawnPipes(); return false; }
+        while (true)
         {
             using (var client = new NamedPipeClientStream(".", PIPE_NAME, PipeDirection.Out))
             {
                 try
                 {
                     LoggingSystem.Log("trying to forward launch args over Pipe");
-                    client.Connect(1000);
+                    client.Connect(100);
                     LoggingSystem.Log($"Connected to Pipe. Started to transfer launch args:");
                     using (var writer = new StreamWriter(client))
                     {
                         foreach (var line in args)
                         {
                             writer.WriteLine(line);
-                            linesWritten++;
                         }
                     }
                     LoggingSystem.Log("Finished transfering launch args");
@@ -379,8 +380,6 @@ public sealed class BLREditPipe
                 catch (Exception error)
                 {
                     LoggingSystem.Log(error.ToString());
-
-                    linesWritten = 0;
 
                     ValidateServerState();
 

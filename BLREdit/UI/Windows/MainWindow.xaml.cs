@@ -46,10 +46,13 @@ public sealed partial class MainWindow : Window
 {
     public static readonly BLRClientWindow ClientWindow = new();
 
+    private static readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
+    private static readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
+
     /// <summary>
     /// Contains the last selected Border for setting the ItemList
     /// </summary>
-    public static Border LastSelectedBorder { get { return lastSelectedBorder; } set { if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(14, 158, 158, 158)); } lastSelectedBorder = value; if (lastSelectedBorder is not null) { SetBorderColor(lastSelectedBorder, Color.FromArgb(255, 255, 136, 0)); } } }
+    public static Border LastSelectedBorder { get { return lastSelectedBorder; } set { SetBorderColor(lastSelectedBorder, DefaultBorderColor); lastSelectedBorder = value; SetBorderColor(lastSelectedBorder, ActiveBorderColor); } }
     private static Border lastSelectedBorder = null;
 
     /// <summary>

@@ -33,7 +33,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     }
     #endregion Events
 
-    private bool IsPrimary = true;
+    private BLRWeapon CurrentWeapon { get; set; } = null;
 
     private Visibility recieverVisibility = Visibility.Visible;
     public Visibility RecieverVisibility { get { return recieverVisibility; } private set { recieverVisibility = value; OnPropertyChanged(); } }
@@ -67,8 +67,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     private Visibility stockVisibility = Visibility.Visible;
     public Visibility StockVisibility { get { return stockVisibility; } private set { stockVisibility = value; OnPropertyChanged(); } }
 
-
-    private Visibility gripVisibility = Visibility.Collapsed;
+    private Visibility gripVisibility = Visibility.Visible;
     public Visibility GripVisibility { get { return gripVisibility; } private set { gripVisibility = value; OnPropertyChanged(); } }
 
 
@@ -81,7 +80,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
     public void SkinModifierChanged(object sender, PropertyChangedEventArgs e)
     {
-        if (IsPrimary)
+        if (CurrentWeapon?.IsPrimary ?? false)
         {
             if (UIKeys.Keys[Key.LeftShift].Is)
             {
@@ -111,100 +110,96 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
     {
         Border border = null;
-        if (e.Source is Image image)
+        if (e.Source is Image image && image.Parent is Border newBorder)
         {
-            if (image.Parent is Border newBorder)
-            {
-                border = newBorder;
-            }
-        }
-        if (e.Source is Border newBorder2)
+            border = newBorder;
+        } 
+        else if (e.Source is Border newBorder2)
         {
             border = newBorder2;
         }
-        if (DataContext is BLRWeapon weapon)
+
+        if (CurrentWeapon?.IsPrimary ?? false)
         {
-            if (weapon.IsPrimary)
-            {
-                PrimarySelectedBorder = this.ControlGrid.Children.IndexOf(border);
-                SecondarySelectedBorder = -1;
-            }
-            else
-            {
-                SecondarySelectedBorder = this.ControlGrid.Children.IndexOf(border);
-                PrimarySelectedBorder = -1;
-            }
+            PrimarySelectedBorder = this.ControlGrid.Children.IndexOf(border);
+            SecondarySelectedBorder = -1;
+        }
+        else
+        {
+            SecondarySelectedBorder = this.ControlGrid.Children.IndexOf(border);
+            PrimarySelectedBorder = -1;
         }
     }
 
     internal void ApplyBorder()
     {
-        if (DataContext is BLRWeapon weapon)
+        int index;
+
+        if (CurrentWeapon?.IsPrimary ?? false)
         {
-            int index;
-
-            if (weapon.IsPrimary)
-            {
-                index = PrimarySelectedBorder;
-            }
-            else
-            {
-                index = SecondarySelectedBorder;
-            }
-
-            if (index > -1 && index < this.ControlGrid.Children.Count && this.ControlGrid.Children[index] is Border border)
-            {
-                var mouse = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left);
-                mouse.RoutedEvent = Mouse.MouseUpEvent;
-                border.RaiseEvent(mouse);
-            }
+            index = PrimarySelectedBorder;
+        }
+        else
+        {
+            index = SecondarySelectedBorder;
         }
 
+        if (index > -1 && index < this.ControlGrid.Children.Count && this.ControlGrid.Children[index] is Border border)
+        {
+            border.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left) { RoutedEvent = Mouse.MouseUpEvent });
+        }
     }
 
     private void Reciever_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         if (DataContext is BLRWeapon weapon)
         {
-            if (weapon.Reciever.SupportedMods.Contains("ammo") || BLREditSettings.Settings.AdvancedModding.Is)
+            CurrentWeapon = weapon;
+
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("ammo") || BLREditSettings.Settings.AdvancedModding.Is)
             { AmmoVisibility = Visibility.Visible; }
             else
             { AmmoVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains("barrels") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("barrels") || BLREditSettings.Settings.AdvancedModding.Is)
             { BarrelVisibility = Visibility.Visible; }
             else
             { BarrelVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains("camosWeapon") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("camosWeapon") || BLREditSettings.Settings.AdvancedModding.Is)
             { CamoVisibility = Visibility.Visible; }
             else
             { CamoVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains("hangers") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("hangers") || BLREditSettings.Settings.AdvancedModding.Is)
             { TagVisibility = Visibility.Visible; }
             else
             { TagVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains("magazines") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("magazines") || BLREditSettings.Settings.AdvancedModding.Is)
             { MagazineVisibility = Visibility.Visible; }
             else
             { MagazineVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains("muzzles") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("muzzles") || BLREditSettings.Settings.AdvancedModding.Is)
             { MuzzleVisibility = Visibility.Visible; }
             else
             { MuzzleVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains("scopes") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("scopes") || BLREditSettings.Settings.AdvancedModding.Is)
             { ScopeVisibility = Visibility.Visible; }
             else
             { ScopeVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains("stocks") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("stocks") || BLREditSettings.Settings.AdvancedModding.Is)
             { StockVisibility = Visibility.Visible; }
             else
             { StockVisibility = Visibility.Collapsed; }
+
+            if (CurrentWeapon.Reciever.SupportedMods.Contains("grips") || BLREditSettings.Settings.AdvancedModding.Is)
+            { GripVisibility = Visibility.Visible; }
+            else
+            { GripVisibility = Visibility.Collapsed; }
         }
     }
 }

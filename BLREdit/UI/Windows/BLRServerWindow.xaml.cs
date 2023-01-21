@@ -10,7 +10,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -29,21 +28,23 @@ namespace BLREdit.UI.Windows
             InitializeComponent();
         }
 
-        private void TextBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var textBox = ((System.Windows.Controls.TextBox)sender);
-            var binding = textBox.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty);
-            switch (binding.ResolvedSourcePropertyName)
+            if (sender is TextBox textBox)
             {
-                case "Port":
-                    ValidatePortInput(e, textBox, binding);
-                    break;
-                default:
-                    break;
+                var binding = textBox.GetBindingExpression(TextBox.TextProperty);
+                switch (binding.ResolvedSourcePropertyName)
+                {
+                    case "Port":
+                        ValidatePortInput(e, textBox, binding);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
-        private static void ValidatePortInput(System.Windows.Input.KeyEventArgs e, System.Windows.Controls.TextBox box, BindingExpression binding)
+        private static void ValidatePortInput(KeyEventArgs e, TextBox box, BindingExpression binding)
         {
             string selectedText = box.SelectedText;
             string text = box.Text.Remove(box.Text.IndexOf(selectedText), selectedText.Length);

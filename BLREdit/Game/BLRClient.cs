@@ -222,6 +222,10 @@ public sealed class BLRClient : INotifyPropertyChanged
                         File.Copy(proxySource, proxyTarget, true);
                     }
                 }
+                else if (File.Exists(proxySource) && !File.Exists(proxyTarget))
+                {
+                    File.Copy(proxySource, proxyTarget);
+                }
             }
             else
             {
@@ -232,7 +236,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         else
         {
             LoggingSystem.Log($"No patches found for {ClientHash}");
-            needUpdatedPatches=true;
+            needUpdatedPatches = true;
         }
         return needUpdatedPatches;
     }
@@ -556,8 +560,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         PatchedPath = outFile;
         PatchedHash = IOResources.CreateFileHash(outFile);
     }
-
-    
 
     public override int GetHashCode()
     {

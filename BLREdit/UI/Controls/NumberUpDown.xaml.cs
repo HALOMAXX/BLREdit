@@ -54,16 +54,20 @@ namespace BLREdit.UI.Controls
 
         public static void OnMinNumberChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) 
         {
-            var control = ((NumberUpDown)sender);
-            control.minNumber = (int)args.NewValue;
-            control.ClampNumber();
+            if (sender is NumberUpDown number)
+            {
+                number.minNumber = (int)args.NewValue;
+                number.ClampNumber();
+            }
         }
 
         public static void OnMaxNumberChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) 
         {
-            var control = ((NumberUpDown)sender);
-            control.maxNumber = (int)args.NewValue;
-            control.ClampNumber();
+            if (sender is NumberUpDown number)
+            {
+                number.maxNumber = (int)args.NewValue;
+                number.ClampNumber();
+            }
         }
 
         public void ClampNumber()
@@ -73,40 +77,47 @@ namespace BLREdit.UI.Controls
 
         private void NumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            var textBox = ((TextBox)sender);
-            var text = textBox.Text;
-            text = text.Remove(textBox.SelectionStart, textBox.SelectionLength);
-            text = text.Insert(textBox.CaretIndex, e.Text);
-            e.Handled = !int.TryParse(text, System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture, out int count);
+            if (sender is TextBox textBox)
+            {
+                var text = textBox.Text;
+                text = text.Remove(textBox.SelectionStart, textBox.SelectionLength);
+                text = text.Insert(textBox.CaretIndex, e.Text);
+                e.Handled = !int.TryParse(text, System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture, out int count);
 
-            if (count > maxNumber)
-            {
-                e.Handled = true;
-            }
-            if (count < minNumber)
-            {
-                e.Handled = true;
+                if (count > maxNumber)
+                {
+                    e.Handled = true;
+                }
+                if (count < minNumber)
+                {
+                    e.Handled = true;
+                }
             }
         }
 
         private void NumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (int.TryParse(((TextBox)sender).Text, out int result))
+            if (sender is TextBox textBox)
             {
-                Number = result;
+                if (int.TryParse(textBox.Text, out int result))
+                {
+                    Number = result;
+                }
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var button = (Button)sender;
-            int num = Number;
-            if (button.Name == "Add")
-            { num++; }
-            else
-            { num--; }
+            if (sender is Button button)
+            {
+                int num = Number;
+                if (button.Name == "Add")
+                { num++; }
+                else
+                { num--; }
 
-            Number = BLRWeapon.Clamp(num, minNumber, maxNumber);
+                Number = BLRWeapon.Clamp(num, minNumber, maxNumber);
+            }
         }
     }
 }

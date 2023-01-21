@@ -29,7 +29,10 @@ namespace BLREdit.UI.Controls
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((ComboBox)sender).SelectedIndex = 0;
+            if (sender is ComboBox comboBox)
+            {
+                comboBox.SelectedIndex = 0;
+            }
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)

@@ -89,41 +89,20 @@ public partial class App : System.Windows.Application
 
                 App.AvailableProxyModuleCheck();
 
-                var serverConfig = IOResources.DeserializeFile<ServerLaunchParameters>(configFile);
+                string command = "blredit://start-server/" + Uri.EscapeDataString(File.ReadAllText(configFile));
 
-                BLRClient client;
-                if(serverConfig.ClientId < 0)
-                { client = BLREditSettings.Settings.DefaultClient; }
-                else 
-                { client = UI.MainWindow.GameClients[serverConfig.ClientId]; }
+                BLREditPipe.ProcessArgs(new string[] { command });
 
-                foreach (var module in AvailableProxyModules)
-                {
-                    module.RepositoryProxyModule.Required= false;
-                    foreach (var required in serverConfig.RequiredModules)
-                    {
-                        if (module.RepositoryProxyModule.InstallName == required)
-                        {
-                            module.InstallModule(client);
-                        }
-                    }
-                }
-
-                var serverName = serverConfig.ServerName;
-                var port = serverConfig.Port;
-                var botCount = serverConfig.BotCount;
-                var maxPlayers = serverConfig.MaxPlayers;
-                var playlist = serverConfig.Playlist;
-
-                string launchArgs = $"server ?ServerName=\"{serverName}\"?Port={port}?NumBots={botCount}?MaxPlayers={maxPlayers}?Playlist={playlist}";
-                client.StartProcess(launchArgs, serverConfig.WatchDog);
-                Console.WriteLine("Press Q to Exit");
+                Console.WriteLine("Press Q to Exit and Kill all Server Processes");
                 while (Console.ReadKey().Key != ConsoleKey.Q) { }
             }
             catch (Exception error)
             { 
                 LoggingSystem.MessageLog($"failed to start server:\n{error}"); 
             }
+
+            BLRProcess.KillAll();
+
             Application.Current.Shutdown();
             return;
         }

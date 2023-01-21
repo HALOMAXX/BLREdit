@@ -34,11 +34,6 @@ namespace BLREdit.UI.Controls
             set { SetValue(OrientationProperty, value); }
         }
 
-        //private static bool ValidateFirstColumn(object o)
-        //{
-        //    return (int)o >= 0;
-        //}
-
         #region VirtualizingPanel Overrides
 
         protected override Size MeasureOverride(Size constraint)

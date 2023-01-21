@@ -40,6 +40,19 @@ public sealed class BLRProcess : IDisposable
         RunningGames.Add(new BLRProcess(launchArgs, client, watchdog));
     }
 
+    public static void KillAll()
+    {
+        foreach (var running in RunningGames)
+        {
+            try
+            {
+                running.Watchdog = false;
+                running.GameProcess.Kill();
+            }
+            catch { }
+        }
+    }
+
     private void ProcessExit(object sender, EventArgs args)
     {
         LoggingSystem.Log($"[{this.Client}]: has Exited with {GameProcess.ExitCode}");

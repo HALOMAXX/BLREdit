@@ -221,30 +221,26 @@ public sealed class IOResources
     {
         var bytes = Encoding.UTF8.GetBytes(str);
 
-        using (var msi = new MemoryStream(bytes))
-        using (var mso = new MemoryStream())
+        using var msi = new MemoryStream(bytes);
+        using var mso = new MemoryStream();
+        using (var gs = new GZipStream(mso, CompressionMode.Compress))
         {
-            using (var gs = new GZipStream(mso, CompressionMode.Compress))
-            {
-                CopyStreamToStream(msi, gs);
-            }
-
-            return mso.ToArray();
+            CopyStreamToStream(msi, gs);
         }
+
+        return mso.ToArray();
     }
 
     public static string Unzip(byte[] bytes)
     {
-        using (var msi = new MemoryStream(bytes))
-        using (var mso = new MemoryStream())
+        using var msi = new MemoryStream(bytes);
+        using var mso = new MemoryStream();
+        using (var gs = new GZipStream(msi, CompressionMode.Decompress))
         {
-            using (var gs = new GZipStream(msi, CompressionMode.Decompress))
-            {
-                CopyStreamToStream(gs, mso);
-            }
-
-            return Encoding.UTF8.GetString(mso.ToArray());
+            CopyStreamToStream(gs, mso);
         }
+
+        return Encoding.UTF8.GetString(mso.ToArray());
     }
 
     public static void CopyStreamToStream(Stream src, Stream dest)

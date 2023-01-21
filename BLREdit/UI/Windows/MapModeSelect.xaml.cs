@@ -68,20 +68,15 @@ public sealed partial class MapModeSelect : Window
         return (window.SelectedMode, window.SelectedMap, window.IsCanceled);
     }
 
-    private void WindowLoaded(object sender, RoutedEventArgs e)
-    {
-
-    }
-
     private void Button_Click(object sender, RoutedEventArgs e)
     {
-        var button = (Button)e.Source;
-        var grid = (Grid)button.Parent;
-        var comboBox = (ComboBox)grid.Children[2];
-        SelectedMode = (BLRMode)comboBox.SelectedItem;
-        SelectedMap = (BLRMap)button.DataContext;
-        IsCanceled = false;
-        this.Close();
+        if (e.Source is Button button && button.Parent is Grid grid && grid.Children[2] is ComboBox comboBox && comboBox.SelectedItem is BLRMode mode && button.DataContext is BLRMap map)
+        {
+            SelectedMode = mode;
+            SelectedMap = map;
+            IsCanceled = false;
+            this.Close();
+        }
     }
 
     private void Window_Initialized(object sender, EventArgs e)

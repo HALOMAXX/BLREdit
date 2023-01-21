@@ -31,7 +31,7 @@ namespace BLREdit.UI.Controls
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (((BLRLoadout)this.DataContext).IsFemale)
+            if (DataContext is BLRLoadout loadout && loadout.IsFemale)
             {
                 GenderButton.Content = BLREdit.Properties.Resources.btn_GenderToggle_Female;
             }
@@ -45,12 +45,9 @@ namespace BLREdit.UI.Controls
         private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             
-            if (e.Source is Image image)
+            if (e.Source is Image image && image.Parent is Border border)
             {
-                if (image.Parent is Border border)
-                { 
-                    SelectedBorder = this.ControlGrid.Children.IndexOf(border);
-                }
+                SelectedBorder = this.ControlGrid.Children.IndexOf(border);
             }
         }
 

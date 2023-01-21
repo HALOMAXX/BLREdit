@@ -32,7 +32,6 @@ namespace BLREdit.UI.Controls
 
         public static int SelectedIndex { get; private set; } = 0;
 
-
         public LoadoutControl()
         {
             InitializeComponent();
@@ -78,7 +77,6 @@ namespace BLREdit.UI.Controls
         {
             if (SelectedIndex != this.LoadoutTabControl.SelectedIndex)
             {
-                MainWindow.LastSelectedBorder = null;
                 SelectedIndex = this.LoadoutTabControl.SelectedIndex;
 
                 OnPropertyChanged(nameof(SelectedIndex));

@@ -23,8 +23,6 @@ namespace BLREdit.UI.Controls;
 /// </summary>
 public partial class ServerListControl : UserControl
 {
-
-
     public ServerListControl()
     {
         InitializeComponent();
