@@ -39,6 +39,7 @@ public partial class App : System.Windows.Application
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
     public static GitHubRelease BLREditLatestRelease { get; private set; } = null;
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
+    public static Dictionary<string, string> AvailableLocalizations { get; set; } = new();
 
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
 
@@ -218,16 +219,27 @@ public partial class App : System.Windows.Application
         }
     }
 
+    private static void CreateAllDirectories()
+    {
+        Directory.CreateDirectory("logs");
+        Directory.CreateDirectory("logs\\BLREdit");
+        Directory.CreateDirectory("logs\\Client");
+        Directory.CreateDirectory("logs\\Proxy");
+
+        Directory.CreateDirectory("Profiles");
+
+        Directory.CreateDirectory(IOResources.UPDATE_DIR);
+        Directory.CreateDirectory("downloads");
+        Directory.CreateDirectory("downloads\\localizations");
+    }
+
     public App()
     {
         Directory.SetCurrentDirectory(BLREditLocation);
 
         SetUpdateFilePath();
 
-        Directory.CreateDirectory("logs");
-        Directory.CreateDirectory("logs\\BLREdit");
-        Directory.CreateDirectory("logs\\Client");
-        Directory.CreateDirectory("logs\\Proxy");
+        CreateAllDirectories();
 
         foreach (var file in Directory.EnumerateFiles("logs\\BLREdit"))
         { 
@@ -246,8 +258,6 @@ public partial class App : System.Windows.Application
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
 
         System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentCulture;
-        // TODO: Check for Resource file if nonexistant try to download for language if not available go back to default other wise download new language pack. (Update mechanic with manifest)
-
 
         LoggingSystem.Log($"BLREdit Starting! {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
         LoggingSystem.Log("Loading Server and Client List");
@@ -304,10 +314,33 @@ public partial class App : System.Windows.Application
     public static void PackageAssets()
     {
         Directory.CreateDirectory(IOResources.PACKAGE_DIR);
+        Directory.CreateDirectory($"{IOResources.PACKAGE_DIR}\\locale\\Localizations");
 
         SetPackageFilePath();
 
         CleanPackageOrUpdateDirectory();
+
+        var taskLocalize = Task.Run(() => {
+            Dictionary<string, string> LocalePairs = new();
+            var dirs = Directory.EnumerateDirectories(BLREditLocation);
+            foreach (var dir in dirs)
+            {
+                string resourceFile = $"{dir}\\BLREdit.resources.dll";
+                if (File.Exists(resourceFile))
+                { 
+                    string hash = IOResources.CreateFileHash(resourceFile);
+                    string locale = dir.Substring(dir.Length - 5, 5);
+                    string targetZip = $"{IOResources.PACKAGE_DIR}\\locale\\Localizations\\{locale}.zip";
+                    LocalePairs.Add(locale, hash);
+                    File.WriteAllText($"{dir}\\manifest.hash", hash);
+                    if (File.Exists(targetZip)) { File.Delete(targetZip); }
+                    ZipFile.CreateFromDirectory(dir, targetZip);
+                }
+            }
+
+            IOResources.SerializeFile($"{IOResources.PACKAGE_DIR}\\locale\\Localizations.json", LocalePairs);
+        });
+
 
         var taskExe = Task.Run(() => 
         {
@@ -321,7 +354,15 @@ public partial class App : System.Windows.Application
         var taskPreview = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
         var taskPatches = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
 
-        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
+
+
+        //TODO: Move to packaging process
+        //else 
+        //{
+        //    if (File.Exists($"{current.Name}\\BLREdit.resources.dll")) { File.WriteAllText(manifestFileName, IOResources.CreateFileHash($"{current.Name}\\BLREdit.resources.dll")); }
+        //}
+
+        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches, taskLocalize).Wait();
 
         SetUpdateFilePath();
     }
@@ -342,7 +383,6 @@ public partial class App : System.Windows.Application
     public static bool VersionCheck()
     {
         LoggingSystem.Log("Running Version Check!");
-        Directory.CreateDirectory(IOResources.UPDATE_DIR);
 
         try
         {
@@ -523,17 +563,35 @@ public partial class App : System.Windows.Application
     private static async Task<RepositoryProxyModule[]> GetAvailableProxyModules()
     {
         LoggingSystem.Log("Downloading AvailableProxyModule List!");
-        var moduleList = Array.Empty<RepositoryProxyModule>();
         try
         {
-            var file = await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json");
-            if (file is null) return Array.Empty<RepositoryProxyModule>();
-            moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
-            LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json") is GitHubFile file)
+            {
+                var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
+                LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
+                return moduleList;
+            }
         }
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}"); }
-        return moduleList;
+        return Array.Empty<RepositoryProxyModule>();
+    }
+
+    private static async Task<Dictionary<string, string>> GetAvailableLocalizations()
+    {
+        LoggingSystem.Log("Downloading AvailableLocalization List!");
+        try
+        {
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/Localizations.json") is GitHubFile file)
+            {
+                var localizations = IOResources.Deserialize<Dictionary<string, string>>(file.decoded_content);
+                LoggingSystem.Log("Finished Downloading AvailableLocalization List!");
+                return localizations;
+            }
+        }
+        catch (Exception error)
+        { LoggingSystem.MessageLog($"Can't get Localization list from Github\n{error}"); }
+        return new();
     }
 
     private static Task<T> StartSTATask<T>(Func<T> action)
@@ -578,12 +636,53 @@ public partial class App : System.Windows.Application
         if (checkedForModules) return;
         checkedForModules = true;
         var availableModuleCheck = Task.Run(GetAvailableProxyModules);
-        availableModuleCheck.Wait();
+        var availableLocalizations = Task.Run(GetAvailableLocalizations);
+        Task.WaitAll(availableModuleCheck, availableLocalizations);
+        AvailableLocalizations = availableLocalizations.Result;
         var modules = availableModuleCheck.Result;
         for (int i = 0; i < modules.Length; i++)
         {
             AvailableProxyModules.Add(new VisualProxyModule() { RepositoryProxyModule = modules[i] });
         }
+    }
+
+    public static void DownloadLocalization()
+    {
+        AvailableProxyModuleCheck();
+        var current = CultureInfo.CurrentCulture;
+        if (current != DefaultCulture)
+        {
+            if (Directory.Exists(current.Name))
+            {
+                var manifestFileName = $"{current.Name}\\manifest.hash";
+                if (File.Exists(manifestFileName))
+                {
+                    string hash = File.ReadAllText(manifestFileName);
+                    if (AvailableLocalizations.TryGetValue(current.Name, out string availableHash))
+                    {
+                        if (!hash.Equals(availableHash))
+                        {
+                            DownloadLocale(current.Name);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (AvailableLocalizations.TryGetValue(current.Name, out string availableHash))
+                {
+                    DownloadLocale(current.Name);
+                }
+            }
+        }
+    }
+
+    private static void DownloadLocale(string locale)
+    {
+        string targetZip = $"downloads\\localizations\\{locale}.zip";
+        IOResources.DownloadFile($"https://github.com/{CurrentOwner}/{CurrentRepo}/raw/master/Resources/Localizations/{locale}.zip", targetZip);
+        if (Directory.Exists(locale)) { Directory.Delete(locale, true); Directory.CreateDirectory(locale); }
+        ZipFile.ExtractToDirectory(targetZip, $"{locale}");
     }
 
     public static void CheckAppUpdate()

@@ -142,7 +142,6 @@ public sealed class RepositoryProxyModule
         string dlTarget = $"downloads\\{InstallName}.dll";
         if (File.Exists(dlTarget)) { LoggingSystem.Log($"Deleting {dlTarget}"); File.Delete(dlTarget); }
         LoggingSystem.Log($"Downloading ({dl}) to ({dlTarget})");
-        if (!Directory.Exists($"downloads\\")) { Directory.CreateDirectory($"downloads\\"); }
         IOResources.DownloadFile(dl, dlTarget);
         LoggingSystem.Log($"Finished Downloading {dl}");
 

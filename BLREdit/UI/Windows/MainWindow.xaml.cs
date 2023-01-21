@@ -833,6 +833,10 @@ public sealed partial class MainWindow : Window
         LoggingSystem.Log($"[MainWindow]: Update Check took {watch.ElapsedMilliseconds}ms");
 
         watch.Restart();
+        App.DownloadLocalization();
+        LoggingSystem.Log($"[MainWindow]: Localization took {watch.ElapsedMilliseconds}ms");
+
+        watch.Restart();
         App.RuntimeCheck();
         LoggingSystem.Log($"[MainWindow]: Runtime Check took {watch.ElapsedMilliseconds}ms");
 
@@ -840,10 +844,6 @@ public sealed partial class MainWindow : Window
         ImportSystem.Initialize();
         LoggingSystem.Log($"[MainWindow]: ImportSystem took {watch.ElapsedMilliseconds}ms");
         watch.Restart();
-
-        #region Folder Init
-        if (!Directory.Exists("downloads")) { Directory.CreateDirectory("downloads"); }
-        #endregion Folder Init
 
         #endregion Backend Init
 
