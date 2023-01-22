@@ -233,7 +233,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     [JsonIgnore] public UIBool LockInstall { get; } = new(false);
     public async void InstallModule(BLRClient client)
     {
-        if (LockInstall.Is) return;
+        if (client is null || LockInstall.Is) return;
         LockInstall.SetBool(true);
         try
         {

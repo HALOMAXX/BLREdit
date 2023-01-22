@@ -91,8 +91,6 @@ public sealed partial class MainWindow : Window
     public static MainWindow Self { get; private set; } = null;
 
     private string[] Args;
-
-    //TODO Add Missing Portal Gun(Orange) Icon Tag/Hanger
     public MainWindow(string[] args)
     {
         Args = args;
@@ -527,7 +525,6 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    //TODO Switch selected border when changing Loadout slot, and remove LastSelectedBorder when changing Sub Category(Weapon,Gear,Extra) to prevent miss adding of items
     public static void SetItemToBorder(Border border, BLRItem item, bool blockEvent = false, bool blockUpdate = false)
     {
         if (border is null) { LoggingSystem.Log($"Missing Border in SetItemToBorder()"); return; }

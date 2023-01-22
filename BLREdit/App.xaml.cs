@@ -30,8 +30,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.9.6";
-    public const string CurrentVersionTitle = "Settings defined Player Name and Localization";
+    public const string CurrentVersion = "v0.9.7";
+    public const string CurrentVersionTitle = "Bugfix for Required Module Installer";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -359,14 +359,6 @@ public partial class App : System.Windows.Application
         var taskTexture = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName); });
         var taskPreview = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
         var taskPatches = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
-
-
-
-        //TODO: Move to packaging process
-        //else 
-        //{
-        //    if (File.Exists($"{current.Name}\\BLREdit.resources.dll")) { File.WriteAllText(manifestFileName, IOResources.CreateFileHash($"{current.Name}\\BLREdit.resources.dll")); }
-        //}
 
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches, taskLocalize).Wait();
 

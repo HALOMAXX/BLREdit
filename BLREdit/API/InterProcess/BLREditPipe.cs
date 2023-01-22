@@ -227,17 +227,7 @@ public sealed class BLREditPipe
                 else
                 { client = MainWindow.GameClients[serverConfig.ClientId]; }
 
-                foreach (var module in App.AvailableProxyModules)
-                {
-                    module.RepositoryProxyModule.Required = false;
-                    foreach (var required in serverConfig.RequiredModules)
-                    {
-                        if (module.RepositoryProxyModule.InstallName == required)
-                        {
-                            module.InstallModule(client);
-                        }
-                    }
-                }
+                //TODO: Transform Required Modules of ServerConfig to Modules to send to StartProcess as Enabled Modules list
 
                 string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}";
                 client.StartProcess(launchArgs, serverConfig.WatchDog);

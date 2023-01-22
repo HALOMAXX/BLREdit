@@ -460,9 +460,12 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         if (!hasBeenValidated)
         {
+            var oldClient = MainWindow.ClientWindow.Client;
+            MainWindow.ClientWindow.Client = this;
             ValidateClient();
             ValidateModules(enabledModules);
             hasBeenValidated = true;
+            MainWindow.ClientWindow.Client = oldClient;
         }
         else
         {
