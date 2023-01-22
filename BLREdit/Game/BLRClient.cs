@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -430,7 +431,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
         string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}?SingleMatch";
         StartProcess(launchArgs, BLREditSettings.Settings.ServerWatchDog.Is);
-        LaunchClient(new LaunchOptions() { UserName=ExportSystem.ActiveProfile.PlayerName, Server=LocalHost });
+        LaunchClient(new LaunchOptions() { UserName= BLREditSettings.Settings.PlayerName, Server=LocalHost });
     }
 
     private void LaunchServer()

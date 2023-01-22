@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Runtime;
 using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
@@ -231,7 +232,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     public void LaunchClient()
     {
         if (BLREditSettings.Settings.DefaultClient is not null)
-        { BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = ExportSystem.ActiveProfile.PlayerName, Server = this }); }
+        { BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = BLREditSettings.Settings.PlayerName, Server = this }); }
     }
 
     public override int GetHashCode()

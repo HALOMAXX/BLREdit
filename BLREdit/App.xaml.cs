@@ -5,6 +5,7 @@ using BLREdit.API.Utils;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
+using BLREdit.Properties;
 using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
@@ -29,8 +30,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.9.5";
-    public const string CurrentVersionTitle = "More Bug fixes!";
+    public const string CurrentVersion = "v0.9.6";
+    public const string CurrentVersionTitle = "Settings defined Player Name and Localization";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -257,7 +258,12 @@ public partial class App : System.Windows.Application
 
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
 
-        System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentCulture;
+        if (BLREditSettings.Settings.SelectedCulture is null)
+        {
+            BLREditSettings.Settings.SelectedCulture = CultureInfo.CurrentCulture;
+        }
+
+        System.Threading.Thread.CurrentThread.CurrentUICulture = BLREditSettings.Settings.SelectedCulture;
 
         LoggingSystem.Log($"BLREdit Starting! {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
         LoggingSystem.Log("Loading Server and Client List");
@@ -428,7 +434,7 @@ public partial class App : System.Windows.Application
 
                 if (newVersionAvailable && assetFolderMissing)
                 {
-                    MessageBox.Show("BLREdit will now Download Missing Files and Update!");
+                    MessageBox.Show(BLREdit.Properties.Resources.msg_UpdateMissingFiles);
                     DownloadAssetFolder();
 
                     UpdateEXE();
@@ -436,7 +442,7 @@ public partial class App : System.Windows.Application
                 }
                 else if (newVersionAvailable && !assetFolderMissing)
                 {
-                    MessageBox.Show("BLREdit will now Update!");
+                    MessageBox.Show(BLREdit.Properties.Resources.msg_Update);
                     UpdateAllAssetPacks();
 
                     UpdateEXE();
@@ -444,7 +450,7 @@ public partial class App : System.Windows.Application
                 }
                 else if (!newVersionAvailable && assetFolderMissing)
                 {
-                    MessageBox.Show("BLREdit will now Download Missing Files!");
+                    MessageBox.Show(BLREdit.Properties.Resources.msg_MisingFiles);
                     DownloadAssetFolder();
                     return true;
                 }
@@ -489,6 +495,7 @@ public partial class App : System.Windows.Application
             StartInfo = psi
         };
         LoggingSystem.Log($"Restart: {newApp.Start()}");
+        Environment.Exit(0);
     }
 
     private static void DownloadAssetFolder()
@@ -683,6 +690,7 @@ public partial class App : System.Windows.Application
         IOResources.DownloadFile($"https://github.com/{CurrentOwner}/{CurrentRepo}/raw/master/Resources/Localizations/{locale}.zip", targetZip);
         if (Directory.Exists(locale)) { Directory.Delete(locale, true); Directory.CreateDirectory(locale); }
         ZipFile.ExtractToDirectory(targetZip, $"{locale}");
+        Restart();
     }
 
     public static void CheckAppUpdate()
@@ -692,7 +700,6 @@ public partial class App : System.Windows.Application
         if (versionCheck.Result)
         {
             Restart();
-            Environment.Exit(0);
         }
     }
 }

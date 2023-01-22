@@ -117,7 +117,431 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btn_AddClient" xml:space="preserve">
+    <value>Neuer Client</value>
+  </data>
   <data name="btn_AddProfile" xml:space="preserve">
     <value>Neues Profil</value>
+  </data>
+  <data name="btn_AddServer" xml:space="preserve">
+    <value>Neuer Server</value>
+  </data>
+  <data name="btn_Ascending" xml:space="preserve">
+    <value>Aufsteigend</value>
+  </data>
+  <data name="btn_ConnectToServer" xml:space="preserve">
+    <value>Verbinde</value>
+  </data>
+  <data name="btn_DefaultClient" xml:space="preserve">
+    <value>Standard Client</value>
+  </data>
+  <data name="btn_Descending" xml:space="preserve">
+    <value>Absteigend</value>
+  </data>
+  <data name="btn_DuplicateCurrentProfile" xml:space="preserve">
+    <value>Dupliziere Profil</value>
+  </data>
+  <data name="btn_ExportProfile" xml:space="preserve">
+    <value>Export Profile</value>
+  </data>
+  <data name="btn_GenderToggle_Female" xml:space="preserve">
+    <value>Frau</value>
+  </data>
+  <data name="btn_GenderToggle_Male" xml:space="preserve">
+    <value>Man</value>
+  </data>
+  <data name="btn_RandomizeLoadout" xml:space="preserve">
+    <value>Randomize</value>
+  </data>
+  <data name="btn_RemoveServer" xml:space="preserve">
+    <value>Server entfernen</value>
+  </data>
+  <data name="btn_StartBotMatch" xml:space="preserve">
+    <value>Starte Bot Partie</value>
+  </data>
+  <data name="btn_StartServer" xml:space="preserve">
+    <value>Starte Server</value>
+  </data>
+  <data name="btn_TT_ConfigureClient" xml:space="preserve">
+    <value>Modifiziere den Blacklight:Retribution Client</value>
+  </data>
+  <data name="btn_TT_ConnectToServer" xml:space="preserve">
+    <value>Verbinde dich mit dem Server.</value>
+  </data>
+  <data name="btn_TT_OpenServerConfigWindow" xml:space="preserve">
+    <value>Serverkonfiguration bearbeiten</value>
+  </data>
+  <data name="btn_TT_PingServer" xml:space="preserve">
+    <value>Ping Server</value>
+  </data>
+  <data name="enum_Accuracy" xml:space="preserve">
+    <value>Accuracy</value>
+  </data>
+  <data name="enum_Aim" xml:space="preserve">
+    <value>Aim</value>
+  </data>
+  <data name="enum_Ammo" xml:space="preserve">
+    <value>Ammo</value>
+  </data>
+  <data name="enum_CP" xml:space="preserve">
+    <value>CP</value>
+  </data>
+  <data name="enum_Damage" xml:space="preserve">
+    <value>Damage</value>
+  </data>
+  <data name="enum_ElectroProtection" xml:space="preserve">
+    <value>Electro Prot</value>
+  </data>
+  <data name="enum_ExplosiveProtection" xml:space="preserve">
+    <value>Explosive Prot</value>
+  </data>
+  <data name="enum_GearSlots" xml:space="preserve">
+    <value>Gear Slots</value>
+  </data>
+  <data name="enum_HeadProtection" xml:space="preserve">
+    <value>Head Prot</value>
+  </data>
+  <data name="enum_Health" xml:space="preserve">
+    <value>Health</value>
+  </data>
+  <data name="enum_Hip" xml:space="preserve">
+    <value>Hip</value>
+  </data>
+  <data name="enum_HRVDuration" xml:space="preserve">
+    <value>HRV Duration</value>
+  </data>
+  <data name="enum_HRVRecharge" xml:space="preserve">
+    <value>HRV Recharge</value>
+  </data>
+  <data name="enum_IncendiaryProtection" xml:space="preserve">
+    <value>Incendiary Prot</value>
+  </data>
+  <data name="enum_Infrared" xml:space="preserve">
+    <value>Infrared</value>
+  </data>
+  <data name="enum_InfraredProtection" xml:space="preserve">
+    <value>Infrared Prot</value>
+  </data>
+  <data name="enum_MeleeProtection" xml:space="preserve">
+    <value>Melee Prot</value>
+  </data>
+  <data name="enum_Move" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="enum_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="enum_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="enum_Range" xml:space="preserve">
+    <value>Range</value>
+  </data>
+  <data name="enum_Recoil" xml:space="preserve">
+    <value>Recoil</value>
+  </data>
+  <data name="enum_Reload" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+  <data name="enum_Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="enum_ScopeInTime" xml:space="preserve">
+    <value>ScopeInTime</value>
+  </data>
+  <data name="enum_ToxicProtection" xml:space="preserve">
+    <value>Toxic Prot</value>
+  </data>
+  <data name="enum_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="img_TT_AdvancedModeWarning" xml:space="preserve">
+    <value>dieses item kann spiel fehler in kombination mit der aktuellen Waffe verursachen.</value>
+  </data>
+  <data name="lbl_Accuracy" xml:space="preserve">
+    <value>Accuracy:</value>
+  </data>
+  <data name="lbl_Ammo" xml:space="preserve">
+    <value>Ammo:</value>
+  </data>
+  <data name="lbl_ArmorAndGear" xml:space="preserve">
+    <value>Armor &amp; Gear:</value>
+  </data>
+  <data name="lbl_ArmorRun" xml:space="preserve">
+    <value>Run:</value>
+  </data>
+  <data name="lbl_BotCount" xml:space="preserve">
+    <value>BotCount:</value>
+  </data>
+  <data name="lbl_CP" xml:space="preserve">
+    <value>CP:</value>
+  </data>
+  <data name="lbl_CurrentModPercentages" xml:space="preserve">
+    <value>Aktuelle Mod Prozente:</value>
+  </data>
+  <data name="lbl_Damage" xml:space="preserve">
+    <value>Damage:</value>
+  </data>
+  <data name="lbl_Depot" xml:space="preserve">
+    <value>Depot:</value>
+  </data>
+  <data name="lbl_ElectroProtection" xml:space="preserve">
+    <value>Electro Protection:</value>
+  </data>
+  <data name="lbl_ExplosiveProtection" xml:space="preserve">
+    <value>Explosive Protection:</value>
+  </data>
+  <data name="lbl_FragmentsPerShell" xml:space="preserve">
+    <value>Fragments Per Shell:</value>
+  </data>
+  <data name="lbl_GearSlots" xml:space="preserve">
+    <value>Gear Slots:</value>
+  </data>
+  <data name="lbl_HeadArmor" xml:space="preserve">
+    <value>Head Protection:</value>
+  </data>
+  <data name="lbl_Health" xml:space="preserve">
+    <value>Health:</value>
+  </data>
+  <data name="lbl_HRVDuration" xml:space="preserve">
+    <value>HRV:</value>
+  </data>
+  <data name="lbl_HRVRecharge" xml:space="preserve">
+    <value>Recharge:</value>
+  </data>
+  <data name="lbl_IncendiaryProtection" xml:space="preserve">
+    <value>Incendiary Protection:</value>
+  </data>
+  <data name="lbl_Infrared" xml:space="preserve">
+    <value>Infrared:</value>
+  </data>
+  <data name="lbl_InfraredProtection" xml:space="preserve">
+    <value>Infrared Protection:</value>
+  </data>
+  <data name="lbl_MeleeProtection" xml:space="preserve">
+    <value>Melee Protection:</value>
+  </data>
+  <data name="lbl_PawnRun" xml:space="preserve">
+    <value>Run:</value>
+  </data>
+  <data name="lbl_PlayerCount" xml:space="preserve">
+    <value>Spieleranzahl:</value>
+  </data>
+  <data name="lbl_PlayerName" xml:space="preserve">
+    <value>Spieler Name:</value>
+  </data>
+  <data name="lbl_Primary" xml:space="preserve">
+    <value>Primary</value>
+  </data>
+  <data name="lbl_Range" xml:space="preserve">
+    <value>Range:</value>
+  </data>
+  <data name="lbl_RateOfFire" xml:space="preserve">
+    <value>Firerate:</value>
+  </data>
+  <data name="lbl_Recoil" xml:space="preserve">
+    <value>Recoil:</value>
+  </data>
+  <data name="lbl_RecoilAccumulation" xml:space="preserve">
+    <value>Recoil Accumulation:</value>
+  </data>
+  <data name="lbl_RecoilAim" xml:space="preserve">
+    <value>Recoil Aim:</value>
+  </data>
+  <data name="lbl_RecoilHip" xml:space="preserve">
+    <value>Recoil Hip:</value>
+  </data>
+  <data name="lbl_RecoilRecoveryTime" xml:space="preserve">
+    <value>Recoil Recovery:</value>
+  </data>
+  <data name="lbl_RecoilVerticalRatio" xml:space="preserve">
+    <value>Vertical Recoil Ratio:</value>
+  </data>
+  <data name="lbl_ReloadEmpty" xml:space="preserve">
+    <value>Reload:</value>
+  </data>
+  <data name="lbl_ReloadPartial" xml:space="preserve">
+    <value>Reload:</value>
+  </data>
+  <data name="lbl_Run" xml:space="preserve">
+    <value>Speed:</value>
+  </data>
+  <data name="lbl_ScopeInTime" xml:space="preserve">
+    <value>ScopeIn:</value>
+  </data>
+  <data name="lbl_Secondary" xml:space="preserve">
+    <value>Secondary:</value>
+  </data>
+  <data name="lbl_ServerAddress" xml:space="preserve">
+    <value>Serveradresse:</value>
+  </data>
+  <data name="lbl_ServerInfoPort" xml:space="preserve">
+    <value>Info Port:</value>
+  </data>
+  <data name="lbl_ServerPort" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="lbl_SpreadAim" xml:space="preserve">
+    <value>Aim:</value>
+  </data>
+  <data name="lbl_SpreadCenter" xml:space="preserve">
+    <value>Spread Center:</value>
+  </data>
+  <data name="lbl_SpreadCenterWeight" xml:space="preserve">
+    <value>Spread Center Weight:</value>
+  </data>
+  <data name="lbl_SpreadCrouchMultiplier" xml:space="preserve">
+    <value>Crouch Spread Multiplier:</value>
+  </data>
+  <data name="lbl_SpreadHipfire" xml:space="preserve">
+    <value>Hip:</value>
+  </data>
+  <data name="lbl_SpreadJumpMultiplier" xml:space="preserve">
+    <value>Jump Spread Multiplier:</value>
+  </data>
+  <data name="lbl_SpreadMove" xml:space="preserve">
+    <value>Move:</value>
+  </data>
+  <data name="lbl_Taunt" xml:space="preserve">
+    <value>Taunts:</value>
+  </data>
+  <data name="lbl_ToxicProtection" xml:space="preserve">
+    <value>Toxic Protection:</value>
+  </data>
+  <data name="lbl_Zoom" xml:space="preserve">
+    <value>Zoom:</value>
+  </data>
+  <data name="lbl_ZoomFirerate" xml:space="preserve">
+    <value>Zoomfirerate:</value>
+  </data>
+  <data name="msg_AdvancedModding" xml:space="preserve">
+    <value>Erweitertes Waffen Bauen:</value>
+  </data>
+  <data name="msg_ChangePlayerName" xml:space="preserve">
+    <value>Bitte ändere deinen Spieler Namen!</value>
+  </data>
+  <data name="msg_MisingFiles" xml:space="preserve">
+    <value>BLREdit lädt jetzt fehlende dateien herunter!</value>
+  </data>
+  <data name="msg_Update" xml:space="preserve">
+    <value>BLREdit lädt jetzt Updates herunter!</value>
+  </data>
+  <data name="msg_UpdateMissingFiles" xml:space="preserve">
+    <value>BLREdit lädt jetzt Updates und fehlende dateien herunter!</value>
+  </data>
+  <data name="tbtn_AdvancedModding" xml:space="preserve">
+    <value>Erweitertes Waffen bauen</value>
+  </data>
+  <data name="tbtn_AllowCustomModules" xml:space="preserve">
+    <value>Aktiviere benuzereigene Module.</value>
+  </data>
+  <data name="tbtn_Debugging" xml:space="preserve">
+    <value>Debugging</value>
+  </data>
+  <data name="tbtn_EnableAPI" xml:space="preserve">
+    <value>BLREdit API aktivieren</value>
+  </data>
+  <data name="tbtn_ForceRuntimeCheck" xml:space="preserve">
+    <value>Erzwinge Runtime test</value>
+  </data>
+  <data name="tbtn_InstallRequiredModules" xml:space="preserve">
+    <value>Instaliere Erforderliche Module</value>
+  </data>
+  <data name="tbtn_RuntimeCheck" xml:space="preserve">
+    <value>Runtime test</value>
+  </data>
+  <data name="tbtn_ServerWatchDog" xml:space="preserve">
+    <value>Server Watchdog</value>
+  </data>
+  <data name="tbtn_ShowUpdateNotice" xml:space="preserve">
+    <value>Update Notiz</value>
+  </data>
+  <data name="tbtn_StrictModuleChecks" xml:space="preserve">
+    <value>Strikte Modul tests</value>
+  </data>
+  <data name="tbtn_TT_AdvancedModding" xml:space="preserve">
+    <value>Erlaubt es Waffen zu bauen die im normalen Spiel nicht möglich sind zu bauen.</value>
+  </data>
+  <data name="tbtn_TT_AllowCustomModules" xml:space="preserve">
+    <value>Erlaubt es BLREdit benuzereigene module zu laden.</value>
+  </data>
+  <data name="tbtn_TT_Debugging" xml:space="preserve">
+    <value>Macht nichts aktuell.</value>
+  </data>
+  <data name="tbtn_TT_EnableAPI" xml:space="preserve">
+    <value>Aktiviert die App-Web-Protocol API.
+braucht Administrator Rechte um das Protocol in der Windows Registry hinzuzufügen.
+BLREdit muss neu gestartet werden um die änderungen zu übernhemen.</value>
+  </data>
+  <data name="tbtn_TT_ForceRuntimeCheck" xml:space="preserve">
+    <value>Zeigt bei jedem start den Runtime test dialog.</value>
+  </data>
+  <data name="tbtn_TT_InstallRequiredModules" xml:space="preserve">
+    <value>Instaliert alle notwendigen module bevor der BLR Client gestartet wird</value>
+  </data>
+  <data name="tbtn_TT_RuntimeCheck" xml:space="preserve">
+    <value>Testet ob alle notwendingen Runtimes für das spiel instaliert sind.
+Wichtig für nicht über steam erhaltene clients.</value>
+  </data>
+  <data name="tbtn_TT_ServerWatchDog" xml:space="preserve">
+    <value>Aktiviert den Server Watchdog.
+Der Watchdog startet den Server bei einem crash neu.</value>
+  </data>
+  <data name="tbtn_TT_ShowUpdateNotice" xml:space="preserve">
+    <value>Oeffnet den Standard Webbrowser und oeffnet den link zur aktuellsten BLREdit veroefentlichung.</value>
+  </data>
+  <data name="tbtn_TT_StrictModuleChecks" xml:space="preserve">
+    <value>Erlaubt nur Entwickler empfohlene Module.</value>
+  </data>
+  <data name="ti_ClientPatchList" xml:space="preserve">
+    <value>Patches</value>
+  </data>
+  <data name="ti_DetailedInfo" xml:space="preserve">
+    <value>Erweiterte Infos</value>
+  </data>
+  <data name="ti_Extra" xml:space="preserve">
+    <value>Extras</value>
+  </data>
+  <data name="ti_Gear" xml:space="preserve">
+    <value>Ausrüstung</value>
+  </data>
+  <data name="ti_ItemList" xml:space="preserve">
+    <value>Item Liste</value>
+  </data>
+  <data name="ti_Launcher" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="ti_Loadout1" xml:space="preserve">
+    <value>Austattung 1</value>
+  </data>
+  <data name="ti_Loadout2" xml:space="preserve">
+    <value>Austattung 2</value>
+  </data>
+  <data name="ti_Loadout3" xml:space="preserve">
+    <value>Austattung 3</value>
+  </data>
+  <data name="ti_ProxyModuleList" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="ti_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="ti_Weapons" xml:space="preserve">
+    <value>Waffen</value>
+  </data>
+  <data name="winT_ClientConfigWindow" xml:space="preserve">
+    <value>Client Einstellungen</value>
+  </data>
+  <data name="winT_DownloadInfoWindow" xml:space="preserve">
+    <value>Download Fortschritt</value>
+  </data>
+  <data name="winT_DownloadMissingRuntimes" xml:space="preserve">
+    <value>Lade fehlende Runtimes herunter!</value>
+  </data>
+  <data name="winT_MapAndModeSelect" xml:space="preserve">
+    <value>Map &amp; Mode Auswahl</value>
+  </data>
+  <data name="winT_ServerConfigWindow" xml:space="preserve">
+    <value>Server Einstellungen</value>
   </data>
 </root>

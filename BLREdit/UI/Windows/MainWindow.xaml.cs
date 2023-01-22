@@ -594,7 +594,7 @@ public sealed partial class MainWindow : Window
         {
             var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
             Directory.CreateDirectory(directory);
-            IOResources.SerializeFile($"{directory}{ExportSystem.ActiveProfile.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
+            IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Exported!");
         }
 
@@ -685,8 +685,8 @@ public sealed partial class MainWindow : Window
                 {
                     BLREditSettings.Settings.AdvancedModding.SetBool(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
-                    ShowAlert($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}", 400);
-                    LoggingSystem.Log($"AdvancedModding:{BLREditSettings.Settings.AdvancedModding.Is}");
+                    ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{BLREditSettings.Settings.AdvancedModding.Is}", 400);
+                    LoggingSystem.Log($"{Properties.Resources.msg_AdvancedModding}:{BLREditSettings.Settings.AdvancedModding.Is}");
                 }
                 break;
             case Key.Z:
@@ -963,7 +963,7 @@ public sealed partial class MainWindow : Window
     
     private void MainWindowTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (e.AddedItems.Contains(LauncherHeader))
+        if (e.AddedItems.Contains(LauncherTab))
         {
             RefreshPing();
         }
@@ -972,5 +972,10 @@ public sealed partial class MainWindow : Window
     private void Window_ContentRendered(object sender, EventArgs e)
     {
         BringWindowIntoBounds();
+        if (BLREditSettings.Settings.PlayerName == "BLREdit-Player")
+        {
+            SettingsTab.IsSelected= true;
+            MessageBox.Show(Properties.Resources.msg_ChangePlayerName);
+        }
     }
 }

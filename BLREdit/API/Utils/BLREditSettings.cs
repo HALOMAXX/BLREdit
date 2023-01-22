@@ -4,6 +4,7 @@ using BLREdit.UI;
 
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
@@ -48,7 +49,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public UIBool ShowUpdateNotice { get; set; } = new(true);
 
     //Toggles Advanced Modding
-    public UIBool ServerWatchDog{ get; set; } = new(false);
+    public UIBool ServerWatchDog { get; set; } = new(false);
 
     //Filters Modules that are not in the GitHub AvailableModule List
     public UIBool StrictModuleChecks { get; set; } = new(true);
@@ -59,6 +60,12 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     //Always Installs Required Modules
     public UIBool InstallRequiredModules { get; set; } = new(true);
 
+    public string SelectedLanguage { get; set; } = null;
+    [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return null; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
+
+    private string playerName = "BLREdit-Player";
+    public string PlayerName { get { return playerName; } set { playerName = value; OnPropertyChanged(); } }
+
     //BotCount for Server Start
     private int botCount = 8;
     public int BotCount { get { return botCount; } set { botCount = value; OnPropertyChanged(); } }
@@ -68,7 +75,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     public static LaunchOptions GetLaunchOptions()
     {
-        return new LaunchOptions() { UserName = ExportSystem.ActiveProfile.PlayerName, Server=Settings.DefaultServer };
+        return new LaunchOptions() { UserName = Settings.PlayerName, Server=Settings.DefaultServer };
     }
 
     public static void SyncDefaultClient()

@@ -64,7 +64,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="{x:Static p:Resources.ti_DetailedInfo}">
+            <TabItem Name="DetailedInfoTab" Header="{x:Static p:Resources.ti_DetailedInfo}">
                 <TabControl>
                     <TabItem Header="{x:Static p:Resources.ti_Loadout1}">
                         <ui:DetailedInfosControl DataContext="{Binding Path=Loadout1}"/>
@@ -78,7 +78,7 @@
                 </TabControl>
             </TabItem>
 
-            <TabItem Name="LauncherHeader" Header="{x:Static p:Resources.ti_Launcher}">
+            <TabItem Name="LauncherTab" Header="{x:Static p:Resources.ti_Launcher}">
                 <TabControl BorderThickness="0,1,0,0">
                     <TabItem Header="Server List">
                         <ui:ServerListControl x:Name="ServerListView"/>
@@ -89,7 +89,7 @@
                 </TabControl>
             </TabItem>
 
-            <TabItem Header="{x:Static p:Resources.ti_Settings}">
+            <TabItem Name="SettingsTab" Header="{x:Static p:Resources.ti_Settings}">
                 <ui:BLREditSettingsControl/>
             </TabItem>
         </TabControl>

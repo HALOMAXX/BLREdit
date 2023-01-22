@@ -20290,6 +20290,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player Name:.
+        /// </summary>
+        public static string lbl_PlayerName {
+            get {
+                return ResourceManager.GetString("lbl_PlayerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Primary.
         /// </summary>
         public static string lbl_Primary {
@@ -20538,6 +20547,51 @@ namespace BLREdit.Properties {
         public static string lbl_ZoomFirerate {
             get {
                 return ResourceManager.GetString("lbl_ZoomFirerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AdvancedModding:.
+        /// </summary>
+        public static string msg_AdvancedModding {
+            get {
+                return ResourceManager.GetString("msg_AdvancedModding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please change your player name!.
+        /// </summary>
+        public static string msg_ChangePlayerName {
+            get {
+                return ResourceManager.GetString("msg_ChangePlayerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BLREdit will now Download Missing Files!.
+        /// </summary>
+        public static string msg_MisingFiles {
+            get {
+                return ResourceManager.GetString("msg_MisingFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BLREdit will now Update!.
+        /// </summary>
+        public static string msg_Update {
+            get {
+                return ResourceManager.GetString("msg_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BLREdit will now Download Missing Files and Update!.
+        /// </summary>
+        public static string msg_UpdateMissingFiles {
+            get {
+                return ResourceManager.GetString("msg_UpdateMissingFiles", resourceCulture);
             }
         }
         
@@ -20796,7 +20850,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loadout3.
+        ///   Looks up a localized string similar to Loadout 3.
         /// </summary>
         public static string ti_Loadout3 {
             get {

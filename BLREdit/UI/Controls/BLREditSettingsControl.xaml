@@ -11,6 +11,18 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
         <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                <Label Content="{x:Static p:Resources.lbl_PlayerName}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                <TextBox Text="{Binding Path=PlayerName}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                <Label Content="Language:" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                <ComboBox Height="32" Name="LanguageComboBox" DisplayMemberPath="DisplayName" SelectionChanged="LanguageComboBox_SelectionChanged" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:BLREditSettingsControl}, Path=Cultures}"/>
+            </StackPanel>
+        </Border>
+        <Border>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AdvancedModding}">
                 <ToggleButton Content="{x:Static p:Resources.tbtn_AdvancedModding }" ToolTip="{x:Static p:Resources.tbtn_TT_AdvancedModding }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
             </StackPanel>
