@@ -13,6 +13,14 @@ public sealed class UIKeys
 {
     public static Dictionary<Key, UIBool> Keys { get; }
 
+    public static void SetAll(bool pressed)
+    {
+        foreach (var key in Keys)
+        {
+            key.Value.SetBool(pressed);
+        }
+    }
+
     static UIKeys() 
     {
         Keys = new Dictionary<Key, UIBool>();

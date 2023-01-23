@@ -32,12 +32,13 @@ namespace BLREdit.Game;
 
 public sealed class BLRClient : INotifyPropertyChanged
 {
+    #region Events
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-
+    #endregion Events
     private bool hasBeenValidated = false;
 
     [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port = 7777 };

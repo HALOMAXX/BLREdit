@@ -566,6 +566,7 @@ public sealed partial class MainWindow : Window
         ExportSystem.RemoveActiveProfileFromDisk();
         ExportSystem.ActiveProfile.PlayerName = PlayerNameTextBox.Text;
         ProfileComboBox.SelectedIndex = index;
+        ExportSystem.ActiveProfile.RefreshInfo();
 
         IsPlayerNameChanging = false;
     }
@@ -974,5 +975,10 @@ public sealed partial class MainWindow : Window
             SettingsTab.IsSelected= true;
             MessageBox.Show(Properties.Resources.msg_ChangePlayerName);
         }
+    }
+
+    private void Window_LostFocus(object sender, RoutedEventArgs e)
+    {
+        UIKeys.SetAll(false);
     }
 }

@@ -518,6 +518,30 @@ public partial class App : System.Windows.Application
         var patchesTask = Task.Run(() => { UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}"); });
 
         Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask).Wait();
+
+        if (UpdatePanic) 
+        {
+            LoggingSystem.Log("Update failed cleaning BLREdit folder and restarting!");
+            var dirs = Directory.EnumerateDirectories(BLREditLocation);
+            foreach (var dir in dirs)
+            {
+                if (!dir.EndsWith("Profile") && !dir.EndsWith("logs") && !dir.EndsWith("ServerConfigs"))
+                { 
+                    Directory.Delete(dir, true);
+                }
+            }
+
+            var files = Directory.EnumerateFiles(BLREditLocation);
+            foreach (var file in files)
+            {
+                if (!file.EndsWith("BLREdit.exe") && !file.EndsWith("settings.json") && !file.EndsWith("GameClients.json") && !file.EndsWith("ServerList.json"))
+                {
+                    File.Delete(file);
+                }
+            }
+
+            Restart();
+        }
     }
     private static void DownloadAssetPack(FileInfoExtension pack)
     {
@@ -530,13 +554,43 @@ public partial class App : System.Windows.Application
         else
         { LoggingSystem.Log($"No {pack.Info.Name} for download available!"); }
     }
+
+    static bool UpdatePanic = false;
+
     private static void UpdateAssetPack(FileInfoExtension pack, string targetFolder)
     {
-        if (DownloadLinks.TryGetValue(pack, out _))
+        if (DownloadLinks.TryGetValue(pack, out string dl))
         {
-            if (Directory.Exists(targetFolder)) { LoggingSystem.Log($"[Update]: Deleting {targetFolder}"); Directory.Delete(targetFolder, true); }
-            LoggingSystem.Log($"[Update]: Extracting {pack.Info.FullName} to {targetFolder}");
-            ZipFile.ExtractToDirectory(pack.Info.FullName, targetFolder);
+            try
+            {
+                if (Directory.Exists(targetFolder)) { LoggingSystem.Log($"[Update]: Deleting {targetFolder}"); Directory.Delete(targetFolder, true); }
+                LoggingSystem.Log($"[Update]: Extracting {pack.Info.FullName} to {targetFolder}");
+                ZipFile.ExtractToDirectory(pack.Info.FullName, targetFolder);
+            }
+            catch (Exception error) 
+            { 
+                LoggingSystem.Log($"Failed to Unpack {pack.Name} reason:{error}");
+                bool tryagain = true;
+                int tries = 0;
+                while (tryagain)
+                {
+                    if (tries >= 3) { UpdatePanic = true; return; }
+                    tries++;
+                    try
+                    { 
+                        if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
+                        LoggingSystem.Log($"[Update]: Downloading {dl}");
+                        IOResources.DownloadFile(dl, pack.Info.FullName);
+
+                        if (Directory.Exists(targetFolder)) { LoggingSystem.Log($"[Update]: Deleting {targetFolder}"); Directory.Delete(targetFolder, true); }
+                        LoggingSystem.Log($"[Update]: Extracting {pack.Info.FullName} to {targetFolder}");
+                        ZipFile.ExtractToDirectory(pack.Info.FullName, targetFolder);
+
+                        tryagain = false;
+                    }
+                    catch { }
+                }
+            }
         }
         else
         { LoggingSystem.Log($"No {pack.Info.Name} to Unpack!"); }
