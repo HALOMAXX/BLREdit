@@ -20164,7 +20164,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Electro Protection:.
+        ///   Looks up a localized string similar to Electro Prot:.
         /// </summary>
         public static string lbl_ElectroProtection {
             get {
@@ -20173,7 +20173,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explosive Protection:.
+        ///   Looks up a localized string similar to Explosive Prot:.
         /// </summary>
         public static string lbl_ExplosiveProtection {
             get {
@@ -20200,7 +20200,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Head Protection:.
+        ///   Looks up a localized string similar to Head Prot:.
         /// </summary>
         public static string lbl_HeadArmor {
             get {
@@ -20236,7 +20236,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incendiary Protection:.
+        ///   Looks up a localized string similar to Incendiary Prot:.
         /// </summary>
         public static string lbl_IncendiaryProtection {
             get {
@@ -20254,7 +20254,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Infrared Protection:.
+        ///   Looks up a localized string similar to Infrared Prot:.
         /// </summary>
         public static string lbl_InfraredProtection {
             get {
@@ -20263,7 +20263,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Melee Protection:.
+        ///   Looks up a localized string similar to Melee Prot:.
         /// </summary>
         public static string lbl_MeleeProtection {
             get {
@@ -20524,7 +20524,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toxic Protection:.
+        ///   Looks up a localized string similar to Toxic Prot:.
         /// </summary>
         public static string lbl_ToxicProtection {
             get {

@@ -19,16 +19,136 @@
         <Border BorderThickness="1,0,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TextBlock Text="{Binding DisplayName}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TextBlock}" />
         </Border>
-        <Border BorderThickness="1,0,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <UniformGrid Columns="6" Rows="2">
-                <Label Content="{Binding Path=DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <Border BorderThickness="1,0,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0">
+            <!--<UniformGrid Columns="3" Rows="2">
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <Label Content="{Binding Path=DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
                         <Label.Style>
                             <Style>
                                 <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.DescriptionColor}"/>
                             </Style>
                         </Label.Style>
                     </Label>
-                <Label Content="{Binding DisplayStat1.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0,0,0,0">
+                    <Label Content="{Binding DisplayStat1.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Label.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.ValueColor}"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <Label Content="{Binding DisplayStat2.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Content="{Binding DisplayStat2.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.ValueColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <Label Content="{Binding DisplayStat3.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Content="{Binding DisplayStat3.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.ValueColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <Label Content="{Binding DisplayStat4.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Content="{Binding DisplayStat4.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.ValueColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <Label Content="{Binding DisplayStat5.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Content="{Binding DisplayStat5.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.ValueColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <Label Content="{Binding DisplayStat6.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Content="{Binding DisplayStat6.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.ValueColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                </StackPanel>
+
+            </UniformGrid>-->
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+
+                <Label Grid.Column="0" Content="{Binding Path=DisplayStat1.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Grid.Column="1" Content="{Binding DisplayStat1.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label.Style>
                         <Style>
                             <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat1.ValueColor}"/>
@@ -36,14 +156,14 @@
                     </Label.Style>
                 </Label>
 
-                    <Label Content="{Binding DisplayStat2.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Label.Style>
-                            <Style>
-                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.DescriptionColor}"/>
-                            </Style>
-                        </Label.Style>
-                    </Label>
-                <Label Content="{Binding DisplayStat2.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0,0,0,0">
+                <Label Grid.Column="2" Content="{Binding DisplayStat2.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Grid.Column="3" Content="{Binding DisplayStat2.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label.Style>
                         <Style>
                             <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat2.ValueColor}"/>
@@ -51,14 +171,14 @@
                     </Label.Style>
                 </Label>
 
-                    <Label Content="{Binding DisplayStat3.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Label.Style>
-                            <Style>
-                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.DescriptionColor}"/>
-                            </Style>
-                        </Label.Style>
-                    </Label>
-                <Label Content="{Binding DisplayStat3.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0,0,0,0">
+                <Label Grid.Column="4" Content="{Binding DisplayStat3.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Grid.Column="5" Content="{Binding DisplayStat3.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label.Style>
                         <Style>
                             <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat3.ValueColor}"/>
@@ -66,14 +186,14 @@
                     </Label.Style>
                 </Label>
 
-                    <Label Content="{Binding DisplayStat4.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Label.Style>
-                            <Style>
-                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.DescriptionColor}"/>
-                            </Style>
-                        </Label.Style>
-                    </Label>
-                <Label Content="{Binding DisplayStat4.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0,0,0,0">
+                <Label Grid.Column="0" Grid.Row="2" Content="{Binding DisplayStat4.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Grid.Column="1" Grid.Row="2" Content="{Binding DisplayStat4.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label.Style>
                         <Style>
                             <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat4.ValueColor}"/>
@@ -81,14 +201,14 @@
                     </Label.Style>
                 </Label>
 
-                    <Label Content="{Binding DisplayStat5.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Label.Style>
-                            <Style>
-                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.DescriptionColor}"/>
-                            </Style>
-                        </Label.Style>
-                    </Label>
-                <Label Content="{Binding DisplayStat5.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0,0,0,0">
+                <Label Grid.Column="2" Grid.Row="2" Content="{Binding DisplayStat5.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Grid.Column="3" Grid.Row="2" Content="{Binding DisplayStat5.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label.Style>
                         <Style>
                             <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat5.ValueColor}"/>
@@ -96,14 +216,14 @@
                     </Label.Style>
                 </Label>
 
-                    <Label Content="{Binding DisplayStat6.Description}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Label.Style>
-                            <Style>
-                                <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.DescriptionColor}"/>
-                            </Style>
-                        </Label.Style>
-                    </Label>
-                <Label Content="{Binding DisplayStat6.Value}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0,0,0,0">
+                <Label Grid.Column="4" Grid.Row="2" Content="{Binding DisplayStat6.Description}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0">
+                    <Label.Style>
+                        <Style>
+                            <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.DescriptionColor}"/>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label Grid.Column="5" Grid.Row="2" Content="{Binding DisplayStat6.Value}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label.Style>
                         <Style>
                             <Setter Property="TextBlock.Foreground" Value="{Binding DisplayStat6.ValueColor}"/>
@@ -111,7 +231,7 @@
                     </Label.Style>
                 </Label>
 
-            </UniformGrid>
+            </Grid>
         </Border>
     </VirtualizingStackPanel>
 </UserControl>

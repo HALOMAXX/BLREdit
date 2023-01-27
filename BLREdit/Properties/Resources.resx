@@ -6991,10 +6991,10 @@ Standard-issue chest armor with no stat modifications.</value>
     <value>Depot:</value>
   </data>
   <data name="lbl_ElectroProtection" xml:space="preserve">
-    <value>Electro Protection:</value>
+    <value>Electro Prot:</value>
   </data>
   <data name="lbl_ExplosiveProtection" xml:space="preserve">
-    <value>Explosive Protection:</value>
+    <value>Explosive Prot:</value>
   </data>
   <data name="lbl_FragmentsPerShell" xml:space="preserve">
     <value>Fragments Per Shell:</value>
@@ -7003,7 +7003,7 @@ Standard-issue chest armor with no stat modifications.</value>
     <value>Gear Slots:</value>
   </data>
   <data name="lbl_HeadArmor" xml:space="preserve">
-    <value>Head Protection:</value>
+    <value>Head Prot:</value>
   </data>
   <data name="lbl_Health" xml:space="preserve">
     <value>Health:</value>
@@ -7015,16 +7015,16 @@ Standard-issue chest armor with no stat modifications.</value>
     <value>Recharge:</value>
   </data>
   <data name="lbl_IncendiaryProtection" xml:space="preserve">
-    <value>Incendiary Protection:</value>
+    <value>Incendiary Prot:</value>
   </data>
   <data name="lbl_Infrared" xml:space="preserve">
     <value>Infrared:</value>
   </data>
   <data name="lbl_InfraredProtection" xml:space="preserve">
-    <value>Infrared Protection:</value>
+    <value>Infrared Prot:</value>
   </data>
   <data name="lbl_MeleeProtection" xml:space="preserve">
-    <value>Melee Protection:</value>
+    <value>Melee Prot:</value>
   </data>
   <data name="lbl_PawnRun" xml:space="preserve">
     <value>Run:</value>
@@ -7111,7 +7111,7 @@ Standard-issue chest armor with no stat modifications.</value>
     <value>Taunts:</value>
   </data>
   <data name="lbl_ToxicProtection" xml:space="preserve">
-    <value>Toxic Protection:</value>
+    <value>Toxic Prot:</value>
   </data>
   <data name="lbl_Zoom" xml:space="preserve">
     <value>Zoom:</value>

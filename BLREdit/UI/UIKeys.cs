@@ -11,7 +11,8 @@ namespace BLREdit.UI;
 
 public sealed class UIKeys
 {
-    public static Dictionary<Key, UIBool> Keys { get; }
+    public static Dictionary<Key, UIBool> Keys { get; } = new Dictionary<Key, UIBool>();
+    public static UIKeys Instance { get; } = new();
 
     public static void SetAll(bool pressed)
     {
@@ -23,7 +24,6 @@ public sealed class UIKeys
 
     static UIKeys() 
     {
-        Keys = new Dictionary<Key, UIBool>();
         foreach (Key k in (Key[])Enum.GetValues(typeof(Key)))
         {
             if (!Keys.TryGetValue(k, out _))
@@ -33,7 +33,9 @@ public sealed class UIKeys
         }
     }
 
-    public static void KeyDown(object sender, KeyEventArgs e)
+    private UIKeys() { }
+
+    public void KeyDown(object sender, KeyEventArgs e)
     {
         if (Keys.TryGetValue(e.Key, out UIBool b))
         {
@@ -41,7 +43,7 @@ public sealed class UIKeys
         }
     }
 
-    public static void KeyUp(object sender, KeyEventArgs e)
+    public void KeyUp(object sender, KeyEventArgs e)
     {
         if (Keys.TryGetValue(e.Key, out UIBool b))
         {

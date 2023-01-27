@@ -58,6 +58,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static bool FilterByValidity(BLRItem item)
     {
+        if (item is null) { return false; }
         item.IsValid.SetBool(item.ValidForTest(Instance.WeaponFilter));
         switch ( item.Category )
         {
@@ -66,7 +67,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
             case ImportSystem.PRIMARY_CATEGORY: 
                 return true;
             case ImportSystem.SECONDARY_CATEGORY:
-                return !item.Icon.Contains("Depot");
+                return !(item.Icon?.Contains("Depot") ?? false);
             case ImportSystem.SHOP_CATEGORY:
                 if (BLREditSettings.Settings.AdvancedModding.Is) return true;
                 return item.Name != "HRV Jammer";

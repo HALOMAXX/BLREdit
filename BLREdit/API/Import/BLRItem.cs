@@ -194,7 +194,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool ValidForTest(BLRItem filter)
     {
-        if (ValidFor == null || ValidFor.Count <= 0) { return true; }
+        if (filter is null || ValidFor == null || ValidFor.Count <= 0) { return true; }
 
         foreach (int id in ValidFor)
         {
@@ -349,7 +349,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            if (Icon.Contains("Depot")) // TODO Cache the result for faster look ups
+            if (Icon?.Contains("Depot") ?? false) // TODO Cache the result for faster look ups
             {
                 return -1;
             }

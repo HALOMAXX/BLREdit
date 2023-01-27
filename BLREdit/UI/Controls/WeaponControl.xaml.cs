@@ -152,7 +152,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
     private void Reciever_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
-        if (DataContext is BLRWeapon weapon)
+        if (DataContext is BLRWeapon weapon && weapon.Reciever is not null)
         {
             CurrentWeapon = weapon;
 
@@ -200,6 +200,18 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
             { GripVisibility = Visibility.Visible; }
             else
             { GripVisibility = Visibility.Collapsed; }
+        }
+        else
+        {
+            AmmoVisibility = Visibility.Visible;
+            BarrelVisibility = Visibility.Visible;
+            CamoVisibility = Visibility.Visible;
+            TagVisibility = Visibility.Visible;
+            MagazineVisibility = Visibility.Visible;
+            MuzzleVisibility = Visibility.Visible;
+            ScopeVisibility = Visibility.Visible;
+            StockVisibility = Visibility.Visible;
+            GripVisibility = Visibility.Visible;
         }
     }
 }

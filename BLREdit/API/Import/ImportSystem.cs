@@ -183,7 +183,7 @@ public static class ImportSystem
                     break;
                 case HELMETS_CATEGORY:
                     foreach (var item in itemCategory.Value)
-                    {
+                    { 
                         double health = item?.PawnModifiers?.Health ?? 0;
                         double dmgReduction = item?.PawnModifiers?.HelmetDamageReduction ?? 0;
                         double movement = item?.PawnModifiers?.MovementSpeed ?? 0;
@@ -222,8 +222,9 @@ public static class ImportSystem
                         {
                             item.DisplayStat2 = FormatDisplayStat(nameof(item.HRVRecharge), Resources.lbl_HRVRecharge, recharge, StatsEnum.Normal, "0.0", " u/s", "", -1, 6.59);
                         }
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movement, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat4 = FormatDisplayStat(nameof(item.HeadProtection), Resources.lbl_HeadArmor, dmgReduction, StatsEnum.Normal, "0.0", "%");
+                        
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.HeadProtection), Resources.lbl_HeadArmor, dmgReduction, StatsEnum.Normal, "0.0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movement, StatsEnum.Normal, "0", "%");
                         item.DisplayStat5 = FormatDisplayStat(nameof(item.HRVDuration), Resources.lbl_HRVDuration, hrv, StatsEnum.Normal, "0.0", "u", "", -1, 69.9);
 
                         if (value != 0)

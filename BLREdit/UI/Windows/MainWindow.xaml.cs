@@ -36,6 +36,7 @@ using System.Buffers.Text;
 using Microsoft.IdentityModel.Tokens;
 using BLREdit.API.Export;
 using BLREdit.API.Utils;
+using Gameloop.Vdf.Linq;
 
 namespace BLREdit.UI;
 
@@ -96,6 +97,10 @@ public sealed partial class MainWindow : Window
         Args = args;
         IsPlayerProfileChanging = true;
         IsPlayerNameChanging = true;
+
+        PreviewKeyDown += UIKeys.Instance.KeyDown;
+        PreviewKeyUp += UIKeys.Instance.KeyUp;
+
         InitializeComponent();
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
@@ -642,21 +647,11 @@ public sealed partial class MainWindow : Window
     #endregion Server UI
 
     #region Hotkeys
-    /// <summary>
-    /// Modifier Key Check
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void PreviewKeyDownMainWindow(object sender, KeyEventArgs e)
-    {
-        UIKeys.KeyDown(sender, e);
-    }
 
 
     private int buttonIndex = 0;
     private void PreviewKeyUpMainWindow(object sender, KeyEventArgs e)
     {
-        UIKeys.KeyUp(sender, e);
         switch (e.Key)
         {
             case Key.Tab:
@@ -772,29 +767,37 @@ public sealed partial class MainWindow : Window
         { e.Handled = true; }
     }
 
+    private Border lastLoadoutBorder= null;
     private void LoadoutTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (LoadoutTabs.SelectedItem is TabItem tab)
+        if (sender is TabControl control)
         {
-            if (tab.Content is LoadoutControl lcontrol)
+            if (control.SelectedItem is TabItem tab)
             {
-                lcontrol.ApplyBorder();
+                if (tab.Content is LoadoutControl lcontrol)
+                {
+                    lcontrol.ApplyBorder();
+                }
             }
-        }
-        switch (LoadoutTabs.SelectedIndex)
-        {
-            case 0:
-                MainWindow.Profile.Loadout1.IsFemale = MainWindow.Profile.Loadout1.IsFemale;
-                break;
-            case 1:
-                MainWindow.Profile.Loadout2.IsFemale = MainWindow.Profile.Loadout2.IsFemale;
-                break;
-            case 2:
-                MainWindow.Profile.Loadout3.IsFemale = MainWindow.Profile.Loadout3.IsFemale;
-                break;
-        }
 
-
+            SetBorderColor(lastLoadoutBorder, DefaultBorderColor);
+            switch (control.SelectedIndex)
+            {
+                case 0:
+                    MainWindow.Profile.Loadout1.IsFemale = MainWindow.Profile.Loadout1.IsFemale;
+                    lastLoadoutBorder = DetailsBorderLoadout1; 
+                    break;
+                case 1:
+                    MainWindow.Profile.Loadout2.IsFemale = MainWindow.Profile.Loadout2.IsFemale;
+                    lastLoadoutBorder = DetailsBorderLoadout2;
+                    break;
+                case 2:
+                    MainWindow.Profile.Loadout3.IsFemale = MainWindow.Profile.Loadout3.IsFemale;
+                    lastLoadoutBorder = DetailsBorderLoadout3;
+                    break;
+            }
+            SetBorderColor(lastLoadoutBorder, ActiveBorderColor);
+        }
     }
 
     private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
