@@ -75,50 +75,63 @@ public sealed class BLREditPipe
         {
             if (root.OpenSubKey(@"shell\open\command") is RegistryKey command)
             {
+                var tokens = (command.GetValue(string.Empty, string.Empty) as string).Split('"');
+
                 if (IsElevated())
                 {
-                    LoggingSystem.Log("Updating App path");
+                    if (tokens.Length >= 2 && tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
+                    {
+                        LoggingSystem.Log("Updating App path");
 
-                    //run clean up and recreate total
+                        //run clean up and recreate total
+                        command.Close();
+                        root.Close();
+
+                        command.Dispose();
+                        root.Dispose();
+
+                        File.WriteAllText("clean.reg",
+                            @"[-HKEY_CLASSES_ROOT\blredit\shell\open\command]" +
+                            @"[-HKEY_CLASSES_ROOT\blredit\shell\open]" +
+                            @"[-HKEY_CLASSES_ROOT\blredit\shell]" +
+                            @"[-HKEY_CLASSES_ROOT\blredit]");
+
+                        var p = Process.Start("regedit.exe", "/s clean.reg");
+                        p.WaitForExit();
+
+                        File.Delete("clean.reg");
+
+                        root = Registry.ClassesRoot.CreateSubKey("blredit");
+                        root.SetValue(string.Empty, "URL: BLREdit Protocol");
+                        root.SetValue("URL Protocol", string.Empty);
+
+                        command = root.CreateSubKey(@"shell\open\command");
+                        command.SetValue(string.Empty, $"\"{App.BLREditLocation}BLREdit.exe\" \"%1\"");
+
+                        LoggingSystem.Log("Updated App path");
+
+                        command.Close();
+                        root.Close();
+
+                        if (!IsServer) { Environment.Exit(0); }
+                    }
                     command.Close();
                     root.Close();
 
-                    File.WriteAllText("clean.reg",
-                        @"[-HKEY_CLASSES_ROOT\blredit\shell\open\command]" +
-                        @"[-HKEY_CLASSES_ROOT\blredit\shell\open]" +
-                        @"[-HKEY_CLASSES_ROOT\blredit\shell]" +
-                        @"[-HKEY_CLASSES_ROOT\blredit]");
+                    command.Dispose();
+                    root.Dispose();
 
-                    var p = Process.Start("regedit.exe", "/s clean.reg");
-                    p.WaitForExit();
-
-                    File.Delete("clean.reg");
-
-                    root = Registry.ClassesRoot.CreateSubKey("blredit");
-                    root.SetValue(string.Empty, "URL: BLREdit Protocol");
-                    root.SetValue("URL Protocol", string.Empty);
-
-                    command = root.CreateSubKey(@"shell\open\command");
-                    command.SetValue(string.Empty, $"\"{App.BLREditLocation}BLREdit.exe\" \"%1\"");
-
-                    LoggingSystem.Log("Updated App path");
-
-                    command.Close();
-                    root.Close();
-                    Environment.Exit(0);
+                    LoggingSystem.Log("Running BLREdit with Admin privileges!"); 
+                    return;
                 }
                 else
                 {
-                    var tokens = (command.GetValue(string.Empty, string.Empty) as string).Split('"');
-                    if (tokens.Length >= 2)
+                    if (tokens.Length >= 2 && tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
                     {
-                        if (tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
-                        {
-                            LoggingSystem.Log("Protocol Path is wrong");
-                            command.Close();
-                            root.Close();
-                            RunAsAdmin();
-                        }
+                        LoggingSystem.Log("Protocol Path is wrong");
+                        command.Close();
+                        root.Close();
+                        RunAsAdmin();
                     }
                 }
             }

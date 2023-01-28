@@ -30,8 +30,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.9.8";
-    public const string CurrentVersionTitle = "Crash fix for item slots";
+    public const string CurrentVersion = "v0.9.9";
+    public const string CurrentVersionTitle = "Fixed startup lock when always running with admin";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -218,6 +218,7 @@ public partial class App : System.Windows.Application
             }
             catch { }
         }
+        LoggingSystem.Log("BLREdit Closed!");
     }
 
     private static void CreateAllDirectories()
@@ -238,25 +239,25 @@ public partial class App : System.Windows.Application
     {
         Directory.SetCurrentDirectory(BLREditLocation);
 
-        SetUpdateFilePath();
-
-        CreateAllDirectories();
-
-        foreach (var file in Directory.EnumerateFiles("logs\\BLREdit"))
-        { 
-            var fileInfo = new FileInfo(file);
-            var creationDelta = DateTime.Now - fileInfo.CreationTime;
-            if (creationDelta.Days >= 1)
-            { 
-                fileInfo.Delete();
-            }
-        }
-
         Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));
         
         Trace.AutoFlush = true;
 
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
+
+        SetUpdateFilePath();
+
+        CreateAllDirectories();
+
+        foreach (var file in Directory.EnumerateFiles("logs\\BLREdit"))
+        {
+            var fileInfo = new FileInfo(file);
+            var creationDelta = DateTime.Now - fileInfo.CreationTime;
+            if (creationDelta.Days >= 1)
+            {
+                fileInfo.Delete();
+            }
+        }
 
         if (BLREditSettings.Settings.SelectedCulture is null)
         {
@@ -265,7 +266,7 @@ public partial class App : System.Windows.Application
 
         System.Threading.Thread.CurrentThread.CurrentUICulture = BLREditSettings.Settings.SelectedCulture;
 
-        LoggingSystem.Log($"BLREdit Starting! {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+        LoggingSystem.Log($"BLREdit {CurrentVersion} Starting! {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
         LoggingSystem.Log("Loading Server and Client List");
         UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
         UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
