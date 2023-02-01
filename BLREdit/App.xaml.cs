@@ -30,8 +30,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.9.9";
-    public const string CurrentVersionTitle = "Fixed startup lock when always running with admin";
+    public const string CurrentVersion = "v0.10.1";
+    public const string CurrentVersionTitle = "Offline Servers are getting Grey";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 

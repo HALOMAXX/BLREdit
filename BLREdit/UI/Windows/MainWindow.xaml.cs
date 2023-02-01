@@ -102,6 +102,7 @@ public sealed partial class MainWindow : Window
         PreviewKeyUp += UIKeys.Instance.KeyUp;
 
         InitializeComponent();
+
         IsPlayerProfileChanging = false;
         IsPlayerNameChanging = false;
     }
@@ -980,7 +981,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void Window_LostFocus(object sender, RoutedEventArgs e)
+    private void Window_Deactivated(object sender, EventArgs e)
     {
         UIKeys.SetAll(false);
     }

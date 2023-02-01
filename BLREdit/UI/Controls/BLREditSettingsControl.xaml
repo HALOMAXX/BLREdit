@@ -10,10 +10,10 @@
              d:DataContext="{d:DesignInstance Type=blredit:BLREditSettings}"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <Border>
+        <Border Name="PlayerNameBorder">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                 <Label Content="{x:Static p:Resources.lbl_PlayerName}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
-                <TextBox Text="{Binding Path=PlayerName}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
+                <TextBox Name="PlayerNameTextBox" Text="{Binding Path=PlayerName}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" TextChanged="PlayerNameTextBox_TextChanged"/>
             </StackPanel>
         </Border>
         <Border>

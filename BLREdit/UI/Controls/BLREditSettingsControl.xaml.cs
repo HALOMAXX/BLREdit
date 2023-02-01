@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -30,6 +31,7 @@ public sealed partial class BLREditSettingsControl : UserControl
     public BLREditSettingsControl()
     {
         InitializeComponent();
+        PlayerNameBorder.Background = solidColorBrush;
         DataContext = BLREditSettings.Settings;
         App.AvailableProxyModuleCheck();
         AvailableCultures.Add(App.DefaultCulture);
@@ -45,6 +47,38 @@ public sealed partial class BLREditSettingsControl : UserControl
         if (LanguageComboBox.SelectedItem is CultureInfo culture && DataContext is BLREditSettings settings)
         {
             settings.SelectedCulture = culture;
+        }
+    }
+
+    SolidColorBrush solidColorBrush = new(Colors.Blue);
+    ColorAnimation alertAnim = new()
+    {
+        From = Color.FromArgb(32, 0, 0, 0),
+        To = Color.FromArgb(255, 255, 0, 0),
+        Duration = new Duration(TimeSpan.FromSeconds(2)),
+        AutoReverse= true,
+        RepeatBehavior = RepeatBehavior.Forever
+    };
+
+    ColorAnimation calmAnim = new()
+    {
+        From = Color.FromArgb(255, 255, 0, 0),
+        To = Color.FromArgb(32, 0, 0, 0),
+        Duration = new Duration(TimeSpan.FromSeconds(2))
+    };
+
+    ColorAnimation lastAnim = null;
+    private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (PlayerNameTextBox.Text == "BLREdit-Player" && lastAnim != alertAnim)
+        {
+            solidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, alertAnim, HandoffBehavior.Compose);
+            lastAnim = alertAnim;
+        }
+        else if (PlayerNameTextBox.Text != "BLREdit-Player" && lastAnim != calmAnim)
+        {
+            solidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, calmAnim, HandoffBehavior.Compose);
+            lastAnim = calmAnim;
         }
     }
 }

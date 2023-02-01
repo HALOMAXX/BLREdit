@@ -15,7 +15,7 @@
     "Description": "Deathmatch",
     "PlaylistName": "DM",
     "ModeName": "DM",
-    "Teammode": false
+    "IsTeammode": false
   },
   {
     "Name": "DOM",
@@ -54,7 +54,7 @@
     "Name": "Training",
     "Description": "Training",
     "ModeName": "BO",
-    "Teammode": false
+    "IsTeammode": false
   },
   {
     "Name": "KOTH",
@@ -67,7 +67,7 @@
     "Description": "Last Man Standing",
     "PlaylistName": "LMS",
     "ModeName": "LMS",
-    "Teammode": false
+    "IsTeammode": false
   },
   {
     "Name": "LTS",
@@ -86,20 +86,20 @@
     "Description": "Onslaught Easy",
     "PlaylistName": "OS_Easy",
     "ModeName": "OS",
-    "Teammode": false
+    "IsTeammode": false
   },
   {
     "Name": "OS Medium",
     "Description": "Onslaught Medium",
     "PlaylistName": "OS_Medium",
     "ModeName": "OS",
-    "Teammode": false
+    "IsTeammode": false
   },
   {
     "Name": "OS Hard",
     "Description": "Onslaught Hard",
     "PlaylistName": "OS_Hard",
     "ModeName": "OS",
-    "Teammode": false
+    "IsTeammode": false
   }
 ]

@@ -13848,7 +13848,7 @@
       "Name": "AK470 - Green Hex Weapon Skin (Test Skin Name 2)",
       "UID": 10002,
       "ValidFor": [
-        40023
+        -1
       ]
     },
     {
@@ -13859,7 +13859,7 @@
       "Name": "AK470 - Australian Flag Weapon Skin",
       "UID": 10003,
       "ValidFor": [
-        40023
+        -1
       ]
     },
     {
@@ -13870,7 +13870,7 @@
       "Name": "AK470 - Malaysan Flag Weapon Skin",
       "UID": 10004,
       "ValidFor": [
-        40023
+        -1
       ]
     },
     {
@@ -13881,7 +13881,7 @@
       "Name": "AK470 - New Zealand Flag Weapon SKin",
       "UID": 10005,
       "ValidFor": [
-        40023
+        -1
       ]
     },
     {
@@ -13892,7 +13892,7 @@
       "Name": "AK470 - Singapore Flag Weapon Skin",
       "UID": 10006,
       "ValidFor": [
-        40023
+        -1
       ]
     },
     {
