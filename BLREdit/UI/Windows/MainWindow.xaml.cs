@@ -37,6 +37,7 @@ using Microsoft.IdentityModel.Tokens;
 using BLREdit.API.Export;
 using BLREdit.API.Utils;
 using Gameloop.Vdf.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BLREdit.UI;
 
@@ -82,16 +83,14 @@ public sealed partial class MainWindow : Window
 
     public bool IsCheckingGameClient { get; private set; } = false;
 
-    public static ObservableCollection<BLRClient> GameClients { get; set; }
-    public ObservableCollection<BLRClient> Clients { get { return GameClients; } }    
+    public static ObservableCollection<BLRClient> GameClients { get; set; }  
     public static ObservableCollection<BLRServer> ServerList { get; set; }
-    public ObservableCollection<BLRServer> Servers { get { return ServerList; } }
 
     public static BLRWeapon Copy { get; set; } = null;
 
     public static MainWindow Self { get; private set; } = null;
 
-    private string[] Args;
+    private readonly string[] Args;
     public MainWindow(string[] args)
     {
         Args = args;

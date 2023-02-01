@@ -97,11 +97,11 @@ public static class ImportSystem
                 case MUZZELS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        double damage = item?.WeaponModifiers?.damage ?? 0;
-                        double spread = item?.WeaponModifiers?.accuracy ?? 0;
-                        double recoil = item?.WeaponModifiers?.recoil ?? 0;
-                        double range = item?.WeaponModifiers?.range ?? 0;
-                        double run = item?.WeaponModifiers?.movementSpeed ?? 0;
+                        double damage = item?.WeaponModifiers?.Damage ?? 0;
+                        double spread = item?.WeaponModifiers?.Accuracy ?? 0;
+                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
+                        double range = item?.WeaponModifiers?.Range ?? 0;
+                        double run = item?.WeaponModifiers?.MovementSpeed ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
@@ -113,12 +113,12 @@ public static class ImportSystem
                 case STOCKS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        double damage = item?.WeaponModifiers?.damage ?? 0;
-                        double spread = item?.WeaponModifiers?.accuracy ?? 0;
-                        double recoil = item?.WeaponModifiers?.recoil ?? 0;
-                        double range = item?.WeaponModifiers?.range ?? 0;
-                        double run = item?.WeaponModifiers?.movementSpeed ?? 0;
-                        double reload = item?.WeaponModifiers?.reloadSpeed ?? 0;
+                        double damage = item?.WeaponModifiers?.Damage ?? 0;
+                        double spread = item?.WeaponModifiers?.Accuracy ?? 0;
+                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
+                        double range = item?.WeaponModifiers?.Range ?? 0;
+                        double run = item?.WeaponModifiers?.MovementSpeed ?? 0;
+                        double reload = item?.WeaponModifiers?.ReloadSpeed ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
@@ -133,11 +133,11 @@ public static class ImportSystem
                 case BARRELS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        double damage = item?.WeaponModifiers?.damage ?? 0;
-                        double spread = item?.WeaponModifiers?.accuracy ?? 0;
-                        double recoil = item?.WeaponModifiers?.recoil ?? 0;
-                        double range = item?.WeaponModifiers?.range ?? 0;
-                        double run = item?.WeaponModifiers?.movementSpeed ?? 0;
+                        double damage = item?.WeaponModifiers?.Damage ?? 0;
+                        double spread = item?.WeaponModifiers?.Accuracy ?? 0;
+                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
+                        double range = item?.WeaponModifiers?.Range ?? 0;
+                        double run = item?.WeaponModifiers?.MovementSpeed ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
@@ -149,21 +149,21 @@ public static class ImportSystem
                 case SCOPES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item?.WikiStats?.zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.ScopeInTime), Resources.lbl_ScopeInTime, (0.0 + (item?.WikiStats?.scopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item?.WikiStats?.Zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.ScopeInTime), Resources.lbl_ScopeInTime, (0.0 + (item?.WikiStats?.ScopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
                         item.DisplayStat3 = FormatDisplayStat(nameof(item.Infrared), Resources.lbl_Infrared, item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatsEnum.Normal, "");
                     }
                     break;
                 case MAGAZINES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        double ammo = item?.WeaponModifiers?.ammo ?? 0;
-                        double range = item?.WeaponModifiers?.range ?? 0;
-                        double reload = item?.WikiStats?.reload ?? 0;
-                        double movementSpeed = item?.WeaponModifiers?.movementSpeed ?? 0;
-                        double damage = item?.WeaponModifiers?.damage ?? 0;
-                        double recoil = item?.WeaponModifiers?.recoil ?? 0;
-                        double accuracy = item?.WeaponModifiers?.accuracy ?? 0;
+                        double ammo = item?.WeaponModifiers?.Ammo ?? 0;
+                        double range = item?.WeaponModifiers?.Range ?? 0;
+                        double reload = item?.WikiStats?.Reload ?? 0;
+                        double movementSpeed = item?.WeaponModifiers?.MovementSpeed ?? 0;
+                        double damage = item?.WeaponModifiers?.Damage ?? 0;
+                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
+                        double accuracy = item?.WeaponModifiers?.Accuracy ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Ammo), Resources.lbl_Ammo, ammo, StatsEnum.Normal, "0");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
@@ -309,9 +309,9 @@ public static class ImportSystem
                 case GRIPS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
-                        double _damage = item?.WeaponModifiers?.damage ?? 0;
-                        double _rof = item?.WeaponModifiers?.rateOfFire ?? 0;
-                        double recoil = item?.WeaponModifiers?.recoil ?? 0;
+                        double _damage = item?.WeaponModifiers?.Damage ?? 0;
+                        double _rof = item?.WeaponModifiers?.RateOfFire ?? 0;
+                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
 
                         //FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
                         //FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");

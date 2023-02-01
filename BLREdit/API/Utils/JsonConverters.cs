@@ -107,8 +107,8 @@ public class JsonUIBoolConverter : JsonConverter<UIBool>
 
 public class JsonGenericConverter<T> : JsonConverter<T>
 {
-    static PropertyInfo[] properties { get; } = typeof(T).GetProperties();
-    static FieldInfo[] fields { get; } = typeof(T).GetFields();
+    static PropertyInfo[] Properties { get; } = typeof(T).GetProperties();
+    static FieldInfo[] Fields { get; } = typeof(T).GetFields();
     static T Default { get; } = Activator.CreateInstance<T>();
 
 
@@ -124,7 +124,7 @@ public class JsonGenericConverter<T> : JsonConverter<T>
                     string propertyName = reader.GetString();
                     if (reader.TokenType != JsonTokenType.Null)
                     {
-                        foreach (var prop in properties)
+                        foreach (var prop in Properties)
                         {
                             if (prop.Name == propertyName)
                             {
@@ -152,7 +152,7 @@ public class JsonGenericConverter<T> : JsonConverter<T>
                             }
                         }
 
-                        foreach (var field in fields)
+                        foreach (var field in Fields)
                         {
                             if (field.Name == propertyName)
                             {
@@ -192,7 +192,7 @@ public class JsonGenericConverter<T> : JsonConverter<T>
         writer.WriteStartObject();
         if (value != null)
         {
-            foreach (var prop in properties)
+            foreach (var prop in Properties)
             {
                 if (prop.CanWrite && prop.CanRead && !Attribute.IsDefined(prop, typeof(JsonIgnoreAttribute)))
                 {
@@ -229,7 +229,7 @@ public class JsonGenericConverter<T> : JsonConverter<T>
                 }
             }
 
-            foreach (var field in fields)
+            foreach (var field in Fields)
             {
                 if (field.IsPublic && !Attribute.IsDefined(field, typeof(JsonIgnoreAttribute)))
                 {

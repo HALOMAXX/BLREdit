@@ -367,8 +367,8 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WeaponStats.accuracy,
-                _ => WeaponModifiers?.accuracy ?? 0,
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WeaponStats.Accuracy,
+                _ => WeaponModifiers?.Accuracy ?? 0,
             };
         }
     }
@@ -391,8 +391,8 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WikiStats?.ammoMag ?? 0,
-                ImportSystem.MAGAZINES_CATEGORY => WeaponModifiers.ammo,
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WikiStats?.AmmoMag ?? 0,
+                ImportSystem.MAGAZINES_CATEGORY => WeaponModifiers.Ammo,
                 _ => 0,
             };
         }
@@ -405,7 +405,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             return Category switch
             {
                 ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateDamage(this, 0).DamageIdeal,
-                _ => WeaponModifiers?.damage ?? 0,
+                _ => WeaponModifiers?.Damage ?? 0,
             };
         }
     }
@@ -540,11 +540,11 @@ public sealed class BLRItem : INotifyPropertyChanged
                 case ImportSystem.SCOPES_CATEGORY:
                     if (UID != 45019 && UID != 45020 && UID != 45021)
                     {
-                        return WikiStats?.zoom ?? 0;
+                        return WikiStats?.Zoom ?? 0;
                     }
                     else
                     {
-                        return (WikiStats?.zoom ?? 0) + 10;
+                        return (WikiStats?.Zoom ?? 0) + 10;
                     }
                 default:
                     return 0;
@@ -582,8 +582,8 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => WeaponStats?.range ?? 0,
-                _ => WeaponModifiers?.range ?? 0,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => WeaponStats?.Range ?? 0,
+                _ => WeaponModifiers?.Range ?? 0,
             };
         }
     }
@@ -595,7 +595,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             return Category switch
             {
                 ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateReloadRate(this, 0, 0),
-                _ => WeaponModifiers?.reloadSpeed ?? 0,
+                _ => WeaponModifiers?.ReloadSpeed ?? 0,
             };
         }
     }
@@ -608,7 +608,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             return Category switch
             {
                 ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateRecoil(this, 0).RecoilHip,
-                _ => WeaponModifiers?.recoil ?? 0,
+                _ => WeaponModifiers?.Recoil ?? 0,
             };
         }
     }
@@ -620,7 +620,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             return Category switch
             {
                 ImportSystem.HELMETS_CATEGORY or ImportSystem.UPPER_BODIES_CATEGORY or ImportSystem.LOWER_BODIES_CATEGORY => PawnModifiers?.MovementSpeed ?? 0,
-                ImportSystem.BARRELS_CATEGORY or ImportSystem.STOCKS_CATEGORY or ImportSystem.MUZZELS_CATEGORY => WeaponModifiers?.movementSpeed ?? 0,
+                ImportSystem.BARRELS_CATEGORY or ImportSystem.STOCKS_CATEGORY or ImportSystem.MUZZELS_CATEGORY => WeaponModifiers?.MovementSpeed ?? 0,
                 _ => 0,
             };
         }
@@ -632,7 +632,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SCOPES_CATEGORY => WikiStats?.scopeInTime ?? 0,
+                ImportSystem.SCOPES_CATEGORY => WikiStats?.ScopeInTime ?? 0,
                 _ => 0,
             };
         }
@@ -656,7 +656,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SCOPES_CATEGORY => WikiStats?.zoom ?? 0,
+                ImportSystem.SCOPES_CATEGORY => WikiStats?.Zoom ?? 0,
                 _ => 0,
             };
         }
@@ -692,30 +692,30 @@ public sealed class BLRPawnModifiers
 [JsonConverter(typeof(JsonBLRWeaponModifiersConverter))]
 public sealed class BLRWeaponModifiers
 {
-    public double accuracy { get; set; } = 0;
-    public double ammo { get; set; } = 0;
-    public double damage { get; set; } = 0;
-    public double movementSpeed { get; set; } = 0;
-    public double range { get; set; } = 0;
-    public double rateOfFire { get; set; } = 0;
-    public double rating { get; set; } = 0;
-    public double recoil { get; set; } = 0;
-    public double reloadSpeed { get; set; } = 0;
-    public double switchWeaponSpeed { get; set; } = 0;
-    public double weaponWeight { get; set; } = 0;
+    public double Accuracy { get; set; } = 0;
+    public double Ammo { get; set; } = 0;
+    public double Damage { get; set; } = 0;
+    public double MovementSpeed { get; set; } = 0;
+    public double Range { get; set; } = 0;
+    public double RateOfFire { get; set; } = 0;
+    public double Rating { get; set; } = 0;
+    public double Recoil { get; set; } = 0;
+    public double ReloadSpeed { get; set; } = 0;
+    public double SwitchWeaponSpeed { get; set; } = 0;
+    public double WeaponWeight { get; set; } = 0;
 }
 
 [JsonConverter(typeof(JsonBLRWeaponStatsConverter))]
 public sealed class BLRWeaponStats
 {
-    public double accuracy { get; set; }
-    public double damage { get; set; }
-    public double movementSpeed { get; set; }
-    public double range { get; set; }
-    public double rateOfFire { get; set; }
-    public double recoil { get; set; }
-    public double reloadSpeed { get; set; }
-    public double weaponWeight { get; set; }
+    public double Accuracy { get; set; }
+    public double Damage { get; set; }
+    public double MovementSpeed { get; set; }
+    public double Range { get; set; }
+    public double RateOfFire { get; set; }
+    public double Recoil { get; set; }
+    public double ReloadSpeed { get; set; }
+    public double WeaponWeight { get; set; }
 
     public double ApplyTime { get; set; } = 0;
     public double RecoveryTime { get; set; } = 0;
@@ -771,19 +771,19 @@ public sealed class StatDecriptor
 [JsonConverter(typeof(JsonBLRWikiStatsConverter))]
 public sealed class BLRWikiStats
 {
-    public double aimSpread { get; set; }
-    public double ammoMag { get; set; }
-    public double ammoReserve { get; set; }
-    public double damage { get; set; }
-    public double firerate { get; set; }
-    public double hipSpread { get; set; }
-    public double moveSpread { get; set; }
-    public double rangeClose { get; set; }
-    public double rangeFar { get; set; }
-    public double recoil { get; set; }
-    public double reload { get; set; }
-    public double run { get; set; }
-    public double scopeInTime { get; set; }
-    public double swaprate { get; set; }
-    public double zoom { get; set; }
+    public double AimSpread { get; set; }
+    public double AmmoMag { get; set; }
+    public double AmmoReserve { get; set; }
+    public double Damage { get; set; }
+    public double Firerate { get; set; }
+    public double HipSpread { get; set; }
+    public double MoveSpread { get; set; }
+    public double RangeClose { get; set; }
+    public double RangeFar { get; set; }
+    public double Recoil { get; set; }
+    public double Reload { get; set; }
+    public double Run { get; set; }
+    public double ScopeInTime { get; set; }
+    public double Swaprate { get; set; }
+    public double Zoom { get; set; }
 }

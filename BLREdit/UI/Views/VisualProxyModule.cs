@@ -356,12 +356,12 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         if (RepositoryProxyModule.RepositoryProvider == RepositoryProvider.GitHub)
         {
             var releaseInfo = await GitHubClient.GetLatestRelease(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository);
-            return releaseInfo?.published_at ?? DateTime.MinValue;
+            return releaseInfo?.PublishedAt ?? DateTime.MinValue;
         }
         else
         {
             var releaseInfo = await GitlabClient.GetLatestRelease(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository);
-            return releaseInfo?.released_at ?? DateTime.MinValue;
+            return releaseInfo?.ReleasedAt ?? DateTime.MinValue;
         }
     }
 

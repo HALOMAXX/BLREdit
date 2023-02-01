@@ -19,7 +19,7 @@
         <Border>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                 <Label Content="Language:" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
-                <ComboBox Height="32" Name="LanguageComboBox" DisplayMemberPath="DisplayName" SelectionChanged="LanguageComboBox_SelectionChanged" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:BLREditSettingsControl}, Path=Cultures}"/>
+                <ComboBox Height="32" Name="LanguageComboBox" DisplayMemberPath="DisplayName" SelectionChanged="LanguageComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.AvailableCultures)}"/>
             </StackPanel>
         </Border>
         <Border>

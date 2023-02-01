@@ -389,9 +389,9 @@ public partial class App : System.Windows.Application
             task.Wait();
             BLREditLatestRelease = task.Result;
             if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
-            LoggingSystem.Log($"Newest Version: {BLREditLatestRelease.tag_name} of {BLREditLatestRelease.name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
+            LoggingSystem.Log($"Newest Version: {BLREditLatestRelease.TagName} of {BLREditLatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-            var remoteVersion = CreateVersion(BLREditLatestRelease.tag_name);
+            var remoteVersion = CreateVersion(BLREditLatestRelease.TagName);
             var localVersion = CreateVersion(CurrentVersion);
 
             bool newVersionAvailable = remoteVersion > localVersion;
@@ -401,28 +401,28 @@ public partial class App : System.Windows.Application
 
             if (BLREditLatestRelease is not null)
             {
-                foreach (var asset in BLREditLatestRelease.assets)
+                foreach (var asset in BLREditLatestRelease.Assets)
                 {
-                    if (asset.name.StartsWith(exeZip.Name) && asset.name.EndsWith(exeZip.Info.Extension))
-                    { DownloadLinks.Add(exeZip, asset.browser_download_url); }
+                    if (asset.Name.StartsWith(exeZip.Name) && asset.Name.EndsWith(exeZip.Info.Extension))
+                    { DownloadLinks.Add(exeZip, asset.BrowserDownloadURL); }
 
-                    if (asset.name.StartsWith(assetZip.Name) && asset.name.EndsWith(assetZip.Info.Extension))
-                    { DownloadLinks.Add(assetZip, asset.browser_download_url); }
+                    if (asset.Name.StartsWith(assetZip.Name) && asset.Name.EndsWith(assetZip.Info.Extension))
+                    { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
 
-                    if (asset.name.StartsWith(jsonZip.Name) && asset.name.EndsWith(jsonZip.Info.Extension))
-                    { DownloadLinks.Add(jsonZip, asset.browser_download_url); }
+                    if (asset.Name.StartsWith(jsonZip.Name) && asset.Name.EndsWith(jsonZip.Info.Extension))
+                    { DownloadLinks.Add(jsonZip, asset.BrowserDownloadURL); }
 
-                    if (asset.name.StartsWith(dllsZip.Name) && asset.name.EndsWith(dllsZip.Info.Extension))
-                    { DownloadLinks.Add(dllsZip, asset.browser_download_url); }
+                    if (asset.Name.StartsWith(dllsZip.Name) && asset.Name.EndsWith(dllsZip.Info.Extension))
+                    { DownloadLinks.Add(dllsZip, asset.BrowserDownloadURL); }
 
-                    if (asset.name.StartsWith(texturesZip.Name) && asset.name.EndsWith(texturesZip.Info.Extension))
-                    { DownloadLinks.Add(texturesZip, asset.browser_download_url); }
+                    if (asset.Name.StartsWith(texturesZip.Name) && asset.Name.EndsWith(texturesZip.Info.Extension))
+                    { DownloadLinks.Add(texturesZip, asset.BrowserDownloadURL); }
 
-                    if (asset.name.StartsWith(crosshairsZip.Name) && asset.name.EndsWith(crosshairsZip.Info.Extension))
-                    { DownloadLinks.Add(crosshairsZip, asset.browser_download_url); }
+                    if (asset.Name.StartsWith(crosshairsZip.Name) && asset.Name.EndsWith(crosshairsZip.Info.Extension))
+                    { DownloadLinks.Add(crosshairsZip, asset.BrowserDownloadURL); }
 
-                    if (asset.name.StartsWith(patchesZip.Name) && asset.name.EndsWith(patchesZip.Info.Extension))
-                    { DownloadLinks.Add(patchesZip, asset.browser_download_url); }
+                    if (asset.Name.StartsWith(patchesZip.Name) && asset.Name.EndsWith(patchesZip.Info.Extension))
+                    { DownloadLinks.Add(patchesZip, asset.BrowserDownloadURL); }
                 }
 
                 if (newVersionAvailable && assetFolderMissing)
@@ -621,7 +621,7 @@ public partial class App : System.Windows.Application
         {
             if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json") is GitHubFile file)
             {
-                var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.decoded_content);
+                var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
                 return moduleList;
             }
@@ -638,7 +638,7 @@ public partial class App : System.Windows.Application
         {
             if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/Localizations.json") is GitHubFile file)
             {
-                var localizations = IOResources.Deserialize<Dictionary<string, string>>(file.decoded_content);
+                var localizations = IOResources.Deserialize<Dictionary<string, string>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableLocalization List!");
                 return localizations;
             }
@@ -723,7 +723,7 @@ public partial class App : System.Windows.Application
             }
             else
             {
-                if (AvailableLocalizations.TryGetValue(current.Name, out string availableHash))
+                if (AvailableLocalizations.TryGetValue(current.Name, out string _))
                 {
                     DownloadLocale(current.Name);
                 }

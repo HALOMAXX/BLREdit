@@ -26,12 +26,11 @@ namespace BLREdit.UI.Controls;
 public sealed partial class BLREditSettingsControl : UserControl
 {
     public static ObservableCollection<CultureInfo> AvailableCultures { get; } = new();
-    public ObservableCollection<CultureInfo> Cultures { get { return AvailableCultures; } }
 
     public BLREditSettingsControl()
     {
         InitializeComponent();
-        PlayerNameBorder.Background = solidColorBrush;
+        PlayerNameBorder.Background = SolidColorBrush;
         DataContext = BLREditSettings.Settings;
         App.AvailableProxyModuleCheck();
         AvailableCultures.Add(App.DefaultCulture);
@@ -50,17 +49,17 @@ public sealed partial class BLREditSettingsControl : UserControl
         }
     }
 
-    SolidColorBrush solidColorBrush = new(Colors.Blue);
-    ColorAnimation alertAnim = new()
+    private SolidColorBrush SolidColorBrush { get; } = new(Colors.Blue);
+    private ColorAnimation AlertAnim { get; } = new()
     {
         From = Color.FromArgb(32, 0, 0, 0),
         To = Color.FromArgb(255, 255, 0, 0),
         Duration = new Duration(TimeSpan.FromSeconds(2)),
-        AutoReverse= true,
+        AutoReverse = true,
         RepeatBehavior = RepeatBehavior.Forever
     };
 
-    ColorAnimation calmAnim = new()
+    private ColorAnimation CalmAnim { get; } = new()
     {
         From = Color.FromArgb(255, 255, 0, 0),
         To = Color.FromArgb(32, 0, 0, 0),
@@ -70,15 +69,15 @@ public sealed partial class BLREditSettingsControl : UserControl
     ColorAnimation lastAnim = null;
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (PlayerNameTextBox.Text == "BLREdit-Player" && lastAnim != alertAnim)
+        if (PlayerNameTextBox.Text == "BLREdit-Player" && lastAnim != AlertAnim)
         {
-            solidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, alertAnim, HandoffBehavior.Compose);
-            lastAnim = alertAnim;
+            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, AlertAnim, HandoffBehavior.Compose);
+            lastAnim = AlertAnim;
         }
-        else if (PlayerNameTextBox.Text != "BLREdit-Player" && lastAnim != calmAnim)
+        else if (PlayerNameTextBox.Text != "BLREdit-Player" && lastAnim != CalmAnim)
         {
-            solidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, calmAnim, HandoffBehavior.Compose);
-            lastAnim = calmAnim;
+            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+            lastAnim = CalmAnim;
         }
     }
 }

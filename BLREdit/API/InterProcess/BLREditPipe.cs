@@ -278,45 +278,39 @@ public sealed class BLREditPipe
 
     static bool IsElevated()
     {
-        using (var identity = WindowsIdentity.GetCurrent())
-        { 
-            var principal = new WindowsPrincipal(identity);
-            return principal.IsInRole(WindowsBuiltInRole.Administrator);
-        }
+        using var identity = WindowsIdentity.GetCurrent();
+        var principal = new WindowsPrincipal(identity);
+        return principal.IsInRole(WindowsBuiltInRole.Administrator);
     }
 
     static void PipeServer()
     {
-        using (var server = new NamedPipeServerStream(PIPE_NAME, PipeDirection.In, Environment.ProcessorCount))
+        using var server = new NamedPipeServerStream(PIPE_NAME, PipeDirection.In, Environment.ProcessorCount);
+        using var reader = new StreamReader(server);
+        while (App.IsRunning)
         {
-            using (var reader = new StreamReader(server))
+            server.WaitForConnection();
+            LoggingSystem.Log($"[{Thread.CurrentThread.Name}]: Recieved Connection");
+            try
             {
-                while (App.IsRunning)
+                var args = new List<string>();
+                while (!reader.EndOfStream)
                 {
-                    server.WaitForConnection();
-                    LoggingSystem.Log($"[{Thread.CurrentThread.Name}]: Recieved Connection");
-                    try
-                    {
-                        var args = new List<string>();
-                        while (!reader.EndOfStream)
-                        {
-                            args.Add(reader.ReadLine());
-                        }
-                        foreach (var line in args)
-                        {
-                            LoggingSystem.Log($"[{Thread.CurrentThread.Name}]:{line}");
-                        }
-                        App.Current.Dispatcher.Invoke(() => { ProcessArgs(args.ToArray()); } );
-                    }
-                    catch(Exception error)
-                    {
-                        LoggingSystem.Log($"[{Thread.CurrentThread.Name}](Error): {error}");
-                    }
-                    finally 
-                    {
-                        server.Disconnect();
-                    }
+                    args.Add(reader.ReadLine());
                 }
+                foreach (var line in args)
+                {
+                    LoggingSystem.Log($"[{Thread.CurrentThread.Name}]:{line}");
+                }
+                App.Current.Dispatcher.Invoke(() => { ProcessArgs(args.ToArray()); });
+            }
+            catch (Exception error)
+            {
+                LoggingSystem.Log($"[{Thread.CurrentThread.Name}](Error): {error}");
+            }
+            finally
+            {
+                server.Disconnect();
             }
         }
     }
@@ -363,37 +357,34 @@ public sealed class BLREditPipe
         if (IsServer) { SpawnPipes(); return false; }
         while (true)
         {
-            using (var client = new NamedPipeClientStream(".", PIPE_NAME, PipeDirection.Out))
+            using var client = new NamedPipeClientStream(".", PIPE_NAME, PipeDirection.Out);
+            try
             {
-                try
+                LoggingSystem.Log("trying to forward launch args over Pipe");
+                client.Connect(100);
+                LoggingSystem.Log($"Connected to Pipe. Started to transfer launch args:");
+                using (var writer = new StreamWriter(client))
                 {
-                    LoggingSystem.Log("trying to forward launch args over Pipe");
-                    client.Connect(100);
-                    LoggingSystem.Log($"Connected to Pipe. Started to transfer launch args:");
-                    using (var writer = new StreamWriter(client))
+                    foreach (var line in args)
                     {
-                        foreach (var line in args)
-                        {
-                            writer.WriteLine(line);
-                        }
+                        writer.WriteLine(line);
                     }
-                    LoggingSystem.Log("Finished transfering launch args");
-                    return true;
                 }
-                catch (Exception error)
+                LoggingSystem.Log("Finished transfering launch args");
+                return true;
+            }
+            catch (Exception error)
+            {
+                LoggingSystem.Log(error.ToString());
+
+                ValidateServerState();
+
+                if (IsServer)
                 {
-                    LoggingSystem.Log(error.ToString());
-
-                    ValidateServerState();
-
-                    if (IsServer)
-                    {
-                        SpawnPipes();
-                        return false;
-                    }
+                    SpawnPipes();
+                    return false;
                 }
             }
         }
-        return true;
     }
 }

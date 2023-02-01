@@ -97,11 +97,11 @@ public sealed class RepositoryProxyModule
         if (RepositoryProvider == RepositoryProvider.GitHub)
         {
             if (hubRelease is null) { lockLatestReleaseInfo = true; hubRelease = await GitHubClient.GetLatestRelease(Owner, Repository); lockLatestReleaseInfo = false; }
-            foreach (var asset in hubRelease.assets)
+            foreach (var asset in hubRelease.Assets)
             {
-                if (asset.name.StartsWith(ModuleName) && asset.name.EndsWith(".dll"))
+                if (asset.Name.StartsWith(ModuleName) && asset.Name.EndsWith(".dll"))
                 {
-                    dl = asset.browser_download_url;
+                    dl = asset.BrowserDownloadURL;
                     break;
                 }
             }
@@ -109,11 +109,11 @@ public sealed class RepositoryProxyModule
         else
         {
             if (labRelease is null) { lockLatestReleaseInfo = true; labRelease = await GitlabClient.GetLatestRelease(Owner, Repository); lockLatestReleaseInfo = false; }
-            foreach (var asset in labRelease.assets.links)
+            foreach (var asset in labRelease.Assets.Links)
             {
-                if (asset.name.StartsWith(ModuleName) && asset.name.EndsWith(".dll"))
+                if (asset.Name.StartsWith(ModuleName) && asset.Name.EndsWith(".dll"))
                 {
-                    dl = asset.url;
+                    dl = asset.URL;
                     break;
                 }
             }
@@ -122,7 +122,7 @@ public sealed class RepositoryProxyModule
             {
                 LoggingSystem.Log($"No file found in Asset links gonna go down the deep end!");
                 Regex regex = new($@"(\/uploads\/\w+\/{ModuleName}.dll)");
-                if (regex.Match(labRelease.description) is Match match)
+                if (regex.Match(labRelease.Description) is Match match)
                 {
                     LoggingSystem.Log($"Found {match.Captures.Count} matches");
                     if (match.Captures.Count > 0)

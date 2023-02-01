@@ -5,25 +5,38 @@ namespace BLREdit.API.REST_API.GitHub;
 
 public sealed class GitHubFile
 {
-    public string type { get; set; }
-    public string encoding { get; set; }
-    public int size { get; set; }
-    public string name { get; set; }
-    public string path { get; set; }
-    public string content { get; set; }
-    public string sha { get; set; }
-    public string url { get; set; }
-    public string git_url { get; set; }
-    public string html_url { get; set; }
-    public string download_url { get; set; }
-    public GitHubLink _links { get; set; }
-    private string _decoded_content;
-    [JsonIgnore] public string decoded_content 
+    [JsonPropertyName("type")]
+    public string Type { get; set; }
+    [JsonPropertyName("encoding")]
+    public string Encoding { get; set; }
+    [JsonPropertyName("size")]
+    public int Size { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+    [JsonPropertyName("path")]
+    public string Path { get; set; }
+    [JsonPropertyName("content")]
+    public string Content { get; set; }
+    [JsonPropertyName("sha")] 
+    public string SHA { get; set; }
+    [JsonPropertyName("url")] 
+    public string URL { get; set; }
+    [JsonPropertyName("git_url")] 
+    public string GitURL { get; set; }
+    [JsonPropertyName("html_url")] 
+    public string HtmlURL { get; set; }
+    [JsonPropertyName("download_url")] 
+    public string DownloadURL { get; set; }
+    [JsonPropertyName("_links")] 
+    public GitHubLink Links { get; set; }
+
+    private string decodedContent;
+    [JsonIgnore] public string DecodedContent 
     { 
         get
         {
-            _decoded_content ??= System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(content));
-            return _decoded_content;
+            decodedContent ??= System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(Content));
+            return decodedContent;
         } 
     }
 }

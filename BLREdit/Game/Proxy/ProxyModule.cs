@@ -29,9 +29,9 @@ public sealed class ProxyModule
     public ProxyModule(GitHubRelease release, string moduleName, string owner, string repo, bool client, bool server)
     {
         RepoName = $"{owner}/{repo}".Replace('/', '-');
-        AuthorName = release.author.url;
+        AuthorName = release.Author.URL;
         ModuleName = moduleName;
-        Published = release.published_at;
+        Published = release.PublishedAt;
         Client = client;
         Server = server;
     }
@@ -39,9 +39,9 @@ public sealed class ProxyModule
     public ProxyModule(GitlabRelease release, string moduleName, string owner, string repo, bool client, bool server)
     {
         RepoName = $"{owner}/{repo}".Replace('/', '-');
-        AuthorName = release.author.web_url;
+        AuthorName = release.Author.WebURL;
         ModuleName = moduleName;
-        Published = release.released_at;
+        Published = release.ReleasedAt;
         Client = client;
         Server = server;
     }

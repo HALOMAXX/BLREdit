@@ -58,8 +58,7 @@ public sealed class ExportSystem
 
     public static void CopyToClipBoard(BLRProfile profile)
     {
-        var magiProfile = new MagiCowsProfile();
-        magiProfile.PlayerName = ExportSystem.ActiveProfile.PlayerName;
+        var magiProfile = new MagiCowsProfile { PlayerName = ExportSystem.ActiveProfile.PlayerName };
         profile.WriteMagiCowsProfile(magiProfile);
 
         string clipboard = $"register {Environment.NewLine}{IOResources.Serialize(profile, true)}";

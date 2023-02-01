@@ -1,21 +1,35 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace BLREdit.API.REST_API.GitHub;
 
 public sealed class GitHubAsset
 {
-    public string url { get; set; }
-    public int id { get; set; }
-    public string node_id { get; set; }
-    public string name { get; set; }
-    public object label { get; set; }
-    public GitHubUploader uploader { get; set; }
-    public string content_type { get; set; }
-    public string state { get; set; }
-    public int size { get; set; }
-    public int download_count { get; set; }
-    public DateTime created_at { get; set; }
-    public DateTime updated_at { get; set; }
-    public string browser_download_url { get; set; }
+    [JsonPropertyName("url")]
+    public string URL { get; set; }
+    [JsonPropertyName("id")]
+    public int ID { get; set; }
+    [JsonPropertyName("node_id")]
+    public string NodeId { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+    [JsonPropertyName("label")]
+    public object Label { get; set; }
+    [JsonPropertyName("uploader")]
+    public GitHubUser Uploader { get; set; }
+    [JsonPropertyName("content_type")]
+    public string ContentType { get; set; }
+    [JsonPropertyName("state")]
+    public string State { get; set; }
+    [JsonPropertyName("size")]
+    public int Size { get; set; }
+    [JsonPropertyName("download_count")]
+    public int DownloadCount { get; set; }
+    [JsonPropertyName("created_at")]
+    public DateTime CreatedAt { get; set; }
+    [JsonPropertyName("updated_at")]
+    public DateTime UpdatedAt { get; set; }
+    [JsonPropertyName("browser_download_url")]
+    public string BrowserDownloadURL { get; set; }
 }
 

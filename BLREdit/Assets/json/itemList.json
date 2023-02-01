@@ -667,8 +667,8 @@
     {
       "NameID": 3004,
       "Category": "badges",
-      "Icon": "t_ShrunkenHeadTrophy_128x128",
-      "Name": "Shrunken Head Trophy",
+      "Icon": "t_ShRunkenHeadTrophy_128x128",
+      "Name": "ShRunken Head Trophy",
       "UID": 46006
     },
     {
@@ -723,8 +723,8 @@
     {
       "NameID": 3012,
       "Category": "badges",
-      "Icon": "T_BattleScarf_Orange_1x1",
-      "Name": "Orange Battle Scarf",
+      "Icon": "T_BattleScarf_ORange_1x1",
+      "Name": "ORange Battle Scarf",
       "UID": 46016
     },
     {
@@ -919,8 +919,8 @@
     {
       "NameID": 3040,
       "Category": "badges",
-      "Icon": "t_HolobdageBunnyEars_Orange_128x128",
-      "Name": "Bunny Ears Orange",
+      "Icon": "t_HolobdageBunnyEars_ORange_128x128",
+      "Name": "Bunny Ears ORange",
       "UID": 46044
     },
     {
@@ -961,8 +961,8 @@
     {
       "NameID": 3046,
       "Category": "badges",
-      "Icon": "t_Holobdage_Fire_Orange_128x128",
-      "Name": "Orange Fire Trail",
+      "Icon": "t_Holobdage_Fire_ORange_128x128",
+      "Name": "ORange Fire Trail",
       "UID": 46050
     },
     {
@@ -989,8 +989,8 @@
     {
       "NameID": 3050,
       "Category": "badges",
-      "Icon": "t_Holobdage_Lightning_Orange_128x128",
-      "Name": "Orange Lightning Trail",
+      "Icon": "t_Holobdage_Lightning_ORange_128x128",
+      "Name": "ORange Lightning Trail",
       "UID": 46054
     },
     {
@@ -2758,7 +2758,7 @@
       "NameID": 5091,
       "Category": "hangers",
       "Icon": "Tag",
-      "Name": "Portal Gun (Orange)",
+      "Name": "Portal Gun (ORange)",
       "PawnModifiers": {},
       "UID": 5091,
       "WeaponModifiers": {}
@@ -3807,7 +3807,7 @@
     {
       "NameID": 6047,
       "Category": "helmets",
-      "Icon": "t_PrexChemHazmatOrange_128x128",
+      "Icon": "t_PrexChemHazmatORange_128x128",
       "Name": "Prex Chem/Hazmat Respirator-INC",
       "PawnModifiers": {
         "HRVDuration": 70.0,
@@ -4013,8 +4013,8 @@
     {
       "NameID": 6062,
       "Category": "helmets",
-      "Icon": "t_Sugared_BoneBreaker_Orange_128x128",
-      "Name": "Orange Sugared Bone Breaker",
+      "Icon": "t_Sugared_BoneBreaker_ORange_128x128",
+      "Name": "ORange Sugared Bone Breaker",
       "PawnModifiers": {
         "HRVDuration": 70.0,
         "HRVRechargeRate": 7.1,
@@ -4766,12 +4766,11 @@
       "UID": 30210
     }
   ],
-  "ammo": [],
   "ammos": [
     {
       "LMID": 6,
       "NameID": 11000,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_AmmoBox_Magnum_128x128",
       "Name": "Magnum Rounds",
       "PawnModifiers": {},
@@ -4810,7 +4809,7 @@
     {
       "LMID": 17,
       "NameID": 11001,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_AmmoBox_Standard_128x128",
       "Name": "Armor Piercing Rounds",
       "PawnModifiers": {},
@@ -4849,7 +4848,7 @@
     {
       "LMID": 0,
       "NameID": 11002,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_AmmoBox_Standard_128x128",
       "Name": "Standard Rounds",
       "PawnModifiers": {},
@@ -4887,7 +4886,7 @@
     {
       "LMID": 1,
       "NameID": 11003,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_AmmoBox_Electro_128x128",
       "Name": "Electro Rounds",
       "PawnModifiers": {},
@@ -4925,7 +4924,7 @@
     {
       "LMID": 2,
       "NameID": 11004,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_AmmoBox_Explosive_128x128",
       "Name": "Explosive Rounds",
       "PawnModifiers": {},
@@ -4963,7 +4962,7 @@
     {
       "LMID": 18,
       "NameID": 11005,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_AmmoBox_Standard_128x128",
       "Name": "Hollow Point Rounds",
       "PawnModifiers": {},
@@ -5001,7 +5000,7 @@
     {
       "LMID": 3,
       "NameID": 11006,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_AmmoBox_Incendiary_128x128",
       "Name": "Incendiary Rounds",
       "PawnModifiers": {},
@@ -5039,7 +5038,7 @@
     {
       "LMID": 4,
       "NameID": 11007,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_AmmoBox_Toxic_128x128",
       "Name": "Toxic Rounds",
       "PawnModifiers": {},
@@ -5077,7 +5076,7 @@
     {
       "LMID": 5,
       "NameID": 11008,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_MagSlug_Incendiary_128x128",
       "Name": "Incendiary Flare",
       "PawnModifiers": {},
@@ -5090,7 +5089,7 @@
     {
       "LMID": 7,
       "NameID": 11009,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_MagSlug_Flare_128x128",
       "Name": "Explosive Flare",
       "PawnModifiers": {},
@@ -5103,7 +5102,7 @@
     {
       "LMID": 8,
       "NameID": 11010,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_MagSlug_DgnBth_128x128",
       "Name": "Canister",
       "PawnModifiers": {},
@@ -5116,7 +5115,7 @@
     {
       "LMID": 9,
       "NameID": 11011,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_MagSlug_Slug_128x128",
       "Name": "Thumper Flare",
       "PawnModifiers": {},
@@ -5129,7 +5128,7 @@
     {
       "LMID": 10,
       "NameID": 11012,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_Bow_ArrowExplosive_128x128",
       "Name": "Exploding Arrow",
       "PawnModifiers": {},
@@ -5142,7 +5141,7 @@
     {
       "LMID": 11,
       "NameID": 11013,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_Bow_ArrowStun_128x128",
       "Name": "Stun Arrow",
       "PawnModifiers": {},
@@ -5155,7 +5154,7 @@
     {
       "LMID": 12,
       "NameID": 11014,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_Bow_ArrowToxic_128x128",
       "Name": "Poison Arrow",
       "PawnModifiers": {},
@@ -5168,7 +5167,7 @@
     {
       "LMID": 13,
       "NameID": 11015,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_Bow_ArrowLight_128x128",
       "Name": "Light Arrow",
       "PawnModifiers": {},
@@ -5181,7 +5180,7 @@
     {
       "LMID": 14,
       "NameID": 11016,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_Bow_ArrowHeavy_128x128",
       "Name": "Heavy Arrow",
       "PawnModifiers": {},
@@ -5194,7 +5193,7 @@
     {
       "LMID": 15,
       "NameID": 11017,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_Bow_ArrowStandard_128x128",
       "Name": "Standard Arrow",
       "PawnModifiers": {},
@@ -5207,7 +5206,7 @@
     {
       "LMID": 16,
       "NameID": 11018,
-      "Category": "ammos",
+      "Category": "Ammos",
       "Icon": "t_Bow_ArrowCupid_128x128",
       "Name": "Cupid\u0027s Arrow",
       "PawnModifiers": {},
@@ -5244,20 +5243,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -30.0,
-        "damage": 70.0,
-        "movementSpeed": -40.0,
-        "range": -30.0,
-        "rating": 8.0
+        "Accuracy": -30.0,
+        "Damage": 70.0,
+        "MovementSpeed": -40.0,
+        "Range": -30.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "aimSpread": 0.0900000035762787,
-        "damage": 4.0,
-        "hipSpread": 0.170000001788139,
-        "moveSpread": 1.14999997615814,
-        "rangeClose": -3.0,
-        "rangeFar": -3.0,
-        "run": -0.0799999982118607
+        "AimSpread": 0.0900000035762787,
+        "Damage": 4.0,
+        "HipSpread": 0.170000001788139,
+        "MoveSpread": 1.14999997615814,
+        "RangeClose": -3.0,
+        "RangeFar": -3.0,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -5273,20 +5272,20 @@
         40005
       ],
       "WeaponModifiers": {
-        "accuracy": -60.0,
-        "damage": 70.0,
-        "movementSpeed": -10.0,
-        "range": -60.0,
-        "rating": 7.0
+        "Accuracy": -60.0,
+        "Damage": 70.0,
+        "MovementSpeed": -10.0,
+        "Range": -60.0,
+        "Rating": 7.0
       },
       "WikiStats": {
-        "aimSpread": 0.100000001490116,
-        "damage": 2.0,
-        "hipSpread": 0.340000003576279,
-        "moveSpread": 0.540000021457672,
-        "rangeClose": -3.0,
-        "rangeFar": -3.0,
-        "run": -0.0399999991059303
+        "AimSpread": 0.100000001490116,
+        "Damage": 2.0,
+        "HipSpread": 0.340000003576279,
+        "MoveSpread": 0.540000021457672,
+        "RangeClose": -3.0,
+        "RangeFar": -3.0,
+        "Run": -0.0399999991059303
       }
     },
     {
@@ -5316,10 +5315,10 @@
         40016
       ],
       "WeaponModifiers": {
-        "accuracy": -40.0,
-        "movementSpeed": 40.0,
-        "range": -40.0,
-        "rating": 5.0
+        "Accuracy": -40.0,
+        "MovementSpeed": 40.0,
+        "Range": -40.0,
+        "Rating": 5.0
       }
     },
     {
@@ -5335,11 +5334,11 @@
         40016
       ],
       "WeaponModifiers": {
-        "accuracy": -60.0,
-        "damage": 70.0,
-        "movementSpeed": -10.0,
-        "range": -60.0,
-        "rating": 8.0
+        "Accuracy": -60.0,
+        "Damage": 70.0,
+        "MovementSpeed": -10.0,
+        "Range": -60.0,
+        "Rating": 8.0
       }
     },
     {
@@ -5355,12 +5354,12 @@
         40020
       ],
       "WeaponModifiers": {
-        "rating": 1.0
+        "Rating": 1.0
       },
       "WikiStats": {
-        "moveSpread": 0.0900000035762787,
-        "recoil": -0.200000002980232,
-        "run": -0.180000007152557
+        "MoveSpread": 0.0900000035762787,
+        "Recoil": -0.200000002980232,
+        "Run": -0.180000007152557
       }
     },
     {
@@ -5376,20 +5375,20 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": 50.0,
-        "movementSpeed": 10.0,
-        "range": 50.0,
-        "rating": 2.0,
-        "recoil": -60.0
+        "Accuracy": 50.0,
+        "MovementSpeed": 10.0,
+        "Range": 50.0,
+        "Rating": 2.0,
+        "Recoil": -60.0
       },
       "WikiStats": {
-        "aimSpread": -0.379999995231628,
-        "hipSpread": -0.330000013113022,
-        "moveSpread": -0.330000013113022,
-        "rangeClose": 7.0,
-        "rangeFar": 10.0,
-        "recoil": 0.189999997615814,
-        "run": -0.129999995231628
+        "AimSpread": -0.379999995231628,
+        "HipSpread": -0.330000013113022,
+        "MoveSpread": -0.330000013113022,
+        "RangeClose": 7.0,
+        "RangeFar": 10.0,
+        "Recoil": 0.189999997615814,
+        "Run": -0.129999995231628
       }
     },
     {
@@ -5405,19 +5404,19 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": 50.0,
-        "movementSpeed": -20.0,
-        "range": 50.0,
-        "rating": 3.0,
-        "recoil": -30.0
+        "Accuracy": 50.0,
+        "MovementSpeed": -20.0,
+        "Range": 50.0,
+        "Rating": 3.0,
+        "Recoil": -30.0
       },
       "WikiStats": {
-        "aimSpread": -0.379999995231628,
-        "hipSpread": -0.330000013113022,
-        "moveSpread": -0.200000002980232,
-        "rangeClose": 7.0,
-        "rangeFar": 10.0,
-        "run": -0.300000011920929
+        "AimSpread": -0.379999995231628,
+        "HipSpread": -0.330000013113022,
+        "MoveSpread": -0.200000002980232,
+        "RangeClose": 7.0,
+        "RangeFar": 10.0,
+        "Run": -0.300000011920929
       }
     },
     {
@@ -5433,19 +5432,19 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": -20.0,
-        "movementSpeed": 20.0,
-        "range": -20.0,
-        "rating": 4.0
+        "Accuracy": -20.0,
+        "MovementSpeed": 20.0,
+        "Range": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "aimSpread": 0.189999997615814,
-        "hipSpread": 0.129999995231628,
-        "moveSpread": 0.189999997615814,
-        "rangeClose": -3.0,
-        "rangeFar": -4.0,
-        "recoil": -0.200000002980232,
-        "run": -0.0599999986588955
+        "AimSpread": 0.189999997615814,
+        "HipSpread": 0.129999995231628,
+        "MoveSpread": 0.189999997615814,
+        "RangeClose": -3.0,
+        "RangeFar": -4.0,
+        "Recoil": -0.200000002980232,
+        "Run": -0.0599999986588955
       }
     },
     {
@@ -5461,19 +5460,19 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": 60.0,
-        "movementSpeed": -30.0,
-        "range": 60.0,
-        "rating": 5.0,
-        "recoil": -30.0
+        "Accuracy": 60.0,
+        "MovementSpeed": -30.0,
+        "Range": 60.0,
+        "Rating": 5.0,
+        "Recoil": -30.0
       },
       "WikiStats": {
-        "aimSpread": -0.449999988079071,
-        "hipSpread": -0.400000005960464,
-        "moveSpread": -0.239999994635582,
-        "rangeClose": 9.0,
-        "rangeFar": 12.0,
-        "run": -0.360000014305115
+        "AimSpread": -0.449999988079071,
+        "HipSpread": -0.400000005960464,
+        "MoveSpread": -0.239999994635582,
+        "RangeClose": 9.0,
+        "RangeFar": 12.0,
+        "Run": -0.360000014305115
       }
     },
     {
@@ -5489,20 +5488,20 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": 30.0,
-        "movementSpeed": -40.0,
-        "range": 30.0,
-        "rating": 6.0,
-        "recoil": 10.0
+        "Accuracy": 30.0,
+        "MovementSpeed": -40.0,
+        "Range": 30.0,
+        "Rating": 6.0,
+        "Recoil": 10.0
       },
       "WikiStats": {
-        "aimSpread": -0.230000004172325,
-        "hipSpread": -0.200000002980232,
-        "moveSpread": 0.0700000002980232,
-        "rangeClose": 4.0,
-        "rangeFar": 6.0,
-        "recoil": -0.25,
-        "run": -0.409999996423721
+        "AimSpread": -0.230000004172325,
+        "HipSpread": -0.200000002980232,
+        "MoveSpread": 0.0700000002980232,
+        "RangeClose": 4.0,
+        "RangeFar": 6.0,
+        "Recoil": -0.25,
+        "Run": -0.409999996423721
       }
     },
     {
@@ -5518,19 +5517,19 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": -40.0,
-        "movementSpeed": 40.0,
-        "range": -40.0,
-        "rating": 7.0
+        "Accuracy": -40.0,
+        "MovementSpeed": 40.0,
+        "Range": -40.0,
+        "Rating": 7.0
       },
       "WikiStats": {
-        "aimSpread": 0.389999985694885,
-        "hipSpread": 0.259999990463257,
-        "moveSpread": 0.280000001192093,
-        "rangeClose": -6.0,
-        "rangeFar": -8.0,
-        "recoil": -0.200000002980232,
-        "run": 0.0500000007450581
+        "AimSpread": 0.389999985694885,
+        "HipSpread": 0.259999990463257,
+        "MoveSpread": 0.280000001192093,
+        "RangeClose": -6.0,
+        "RangeFar": -8.0,
+        "Recoil": -0.200000002980232,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -5546,8 +5545,8 @@
         40020
       ],
       "WeaponModifiers": {
-        "movementSpeed": 30.0,
-        "recoil": -30.0
+        "MovementSpeed": 30.0,
+        "Recoil": -30.0
       }
     },
     {
@@ -5575,17 +5574,17 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": 60.0,
-        "damage": -30.0,
-        "movementSpeed": -20.0,
-        "rating": 8.0
+        "Accuracy": 60.0,
+        "Damage": -30.0,
+        "MovementSpeed": -20.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "aimSpread": -0.180000007152557,
-        "damage": -1.0,
-        "hipSpread": -0.340000003576279,
-        "moveSpread": 0.0599999986588955,
-        "run": -0.0399999991059303
+        "AimSpread": -0.180000007152557,
+        "Damage": -1.0,
+        "HipSpread": -0.340000003576279,
+        "MoveSpread": 0.0599999986588955,
+        "Run": -0.0399999991059303
       }
     },
     {
@@ -5613,20 +5612,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -60.0,
-        "damage": 20.0,
-        "movementSpeed": 40.0,
-        "range": -60.0,
-        "rating": 8.0
+        "Accuracy": -60.0,
+        "Damage": 20.0,
+        "MovementSpeed": 40.0,
+        "Range": -60.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "aimSpread": 0.180000007152557,
-        "damage": 1.0,
-        "hipSpread": 0.349999994039536,
-        "moveSpread": -0.0799999982118607,
-        "rangeClose": -6.0,
-        "rangeFar": -6.0,
-        "run": 0.0799999982118607
+        "AimSpread": 0.180000007152557,
+        "Damage": 1.0,
+        "HipSpread": 0.349999994039536,
+        "MoveSpread": -0.0799999982118607,
+        "RangeClose": -6.0,
+        "RangeFar": -6.0,
+        "Run": 0.0799999982118607
       }
     },
     {
@@ -5654,20 +5653,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -60.0,
-        "damage": 70.0,
-        "movementSpeed": -10.0,
-        "range": -60.0,
-        "rating": 8.0
+        "Accuracy": -60.0,
+        "Damage": 70.0,
+        "MovementSpeed": -10.0,
+        "Range": -60.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "aimSpread": 0.180000007152557,
-        "damage": 4.0,
-        "hipSpread": 0.349999994039536,
-        "moveSpread": 0.639999985694885,
-        "rangeClose": -6.0,
-        "rangeFar": 6.0,
-        "run": -0.0199999995529652
+        "AimSpread": 0.180000007152557,
+        "Damage": 4.0,
+        "HipSpread": 0.349999994039536,
+        "MoveSpread": 0.639999985694885,
+        "RangeClose": -6.0,
+        "RangeFar": 6.0,
+        "Run": -0.0199999995529652
       }
     },
     {
@@ -5695,14 +5694,14 @@
         40027
       ],
       "WeaponModifiers": {
-        "damage": 40.0,
-        "movementSpeed": -40.0,
-        "rating": 8.0
+        "Damage": 40.0,
+        "MovementSpeed": -40.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "damage": 2.0,
-        "moveSpread": 0.939999997615814,
-        "run": -0.0799999982118607
+        "Damage": 2.0,
+        "MoveSpread": 0.939999997615814,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -5730,18 +5729,18 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -20.0,
-        "damage": 20.0,
-        "range": -20.0,
-        "rating": 3.0
+        "Accuracy": -20.0,
+        "Damage": 20.0,
+        "Range": -20.0,
+        "Rating": 3.0
       },
       "WikiStats": {
-        "aimSpread": 0.0599999986588955,
-        "damage": 1.0,
-        "hipSpread": 0.119999997317791,
-        "moveSpread": 0.140000000596046,
-        "rangeClose": -2.0,
-        "rangeFar": -2.0
+        "AimSpread": 0.0599999986588955,
+        "Damage": 1.0,
+        "HipSpread": 0.119999997317791,
+        "MoveSpread": 0.140000000596046,
+        "RangeClose": -2.0,
+        "RangeFar": -2.0
       }
     },
     {
@@ -5757,7 +5756,7 @@
         40005
       ],
       "WeaponModifiers": {
-        "rating": 5.0
+        "Rating": 5.0
       },
       "WikiStats": {}
     },
@@ -5786,18 +5785,18 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -40.0,
-        "movementSpeed": 40.0,
-        "range": -40.0,
-        "rating": 4.0
+        "Accuracy": -40.0,
+        "MovementSpeed": 40.0,
+        "Range": -40.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "aimSpread": 0.119999997317791,
-        "hipSpread": 0.230000004172325,
-        "moveSpread": -0.200000002980232,
-        "rangeClose": -4.0,
-        "rangeFar": -4.0,
-        "run": 0.0799999982118607
+        "AimSpread": 0.119999997317791,
+        "HipSpread": 0.230000004172325,
+        "MoveSpread": -0.200000002980232,
+        "RangeClose": -4.0,
+        "RangeFar": -4.0,
+        "Run": 0.0799999982118607
       }
     },
     {
@@ -5813,18 +5812,18 @@
         40005
       ],
       "WeaponModifiers": {
-        "accuracy": -40.0,
-        "movementSpeed": 40.0,
-        "range": -40.0,
-        "rating": 8.0
+        "Accuracy": -40.0,
+        "MovementSpeed": 40.0,
+        "Range": -40.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "aimSpread": 0.0599999986588955,
-        "hipSpread": 0.230000004172325,
-        "moveSpread": 0.140000000596046,
-        "rangeClose": -2.0,
-        "rangeFar": -2.0,
-        "run": 0.180000007152557
+        "AimSpread": 0.0599999986588955,
+        "HipSpread": 0.230000004172325,
+        "MoveSpread": 0.140000000596046,
+        "RangeClose": -2.0,
+        "RangeFar": -2.0,
+        "Run": 0.180000007152557
       }
     },
     {
@@ -5852,20 +5851,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "damage": 20.0,
-        "movementSpeed": -30.0,
-        "range": 10.0,
-        "rating": 4.0
+        "Accuracy": 10.0,
+        "Damage": 20.0,
+        "MovementSpeed": -30.0,
+        "Range": 10.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "aimSpread": -0.0299999993294477,
-        "damage": 1.0,
-        "hipSpread": -0.0599999986588955,
-        "moveSpread": 0.629999995231628,
-        "rangeClose": 1.0,
-        "rangeFar": 1.0,
-        "run": -0.0599999986588955
+        "AimSpread": -0.0299999993294477,
+        "Damage": 1.0,
+        "HipSpread": -0.0599999986588955,
+        "MoveSpread": 0.629999995231628,
+        "RangeClose": 1.0,
+        "RangeFar": 1.0,
+        "Run": -0.0599999986588955
       }
     },
     {
@@ -5893,20 +5892,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": 50.0,
-        "damage": -70.0,
-        "movementSpeed": 20.0,
-        "range": 50.0,
-        "rating": 6.0
+        "Accuracy": 50.0,
+        "Damage": -70.0,
+        "MovementSpeed": 20.0,
+        "Range": 50.0,
+        "Rating": 6.0
       },
       "WikiStats": {
-        "aimSpread": -0.150000005960464,
-        "damage": -3.0,
-        "hipSpread": -0.280000001192093,
-        "moveSpread": -0.560000002384186,
-        "rangeClose": 5.0,
-        "rangeFar": 5.0,
-        "run": 0.0399999991059303
+        "AimSpread": -0.150000005960464,
+        "Damage": -3.0,
+        "HipSpread": -0.280000001192093,
+        "MoveSpread": -0.560000002384186,
+        "RangeClose": 5.0,
+        "RangeFar": 5.0,
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -5934,20 +5933,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": 40.0,
-        "damage": -20.0,
-        "movementSpeed": -20.0,
-        "range": 40.0,
-        "rating": 9.0
+        "Accuracy": 40.0,
+        "Damage": -20.0,
+        "MovementSpeed": -20.0,
+        "Range": 40.0,
+        "Rating": 9.0
       },
       "WikiStats": {
-        "aimSpread": -0.119999997317791,
-        "damage": -1.0,
-        "hipSpread": -0.230000004172325,
-        "moveSpread": 0.189999997615814,
-        "rangeClose": 4.0,
-        "rangeFar": 4.0,
-        "run": -0.0399999991059303
+        "AimSpread": -0.119999997317791,
+        "Damage": -1.0,
+        "HipSpread": -0.230000004172325,
+        "MoveSpread": 0.189999997615814,
+        "RangeClose": 4.0,
+        "RangeFar": 4.0,
+        "Run": -0.0399999991059303
       }
     },
     {
@@ -5975,20 +5974,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": 20.0,
-        "damage": -60.0,
-        "movementSpeed": 40.0,
-        "range": 20.0,
-        "rating": 9.0
+        "Accuracy": 20.0,
+        "Damage": -60.0,
+        "MovementSpeed": 40.0,
+        "Range": 20.0,
+        "Rating": 9.0
       },
       "WikiStats": {
-        "aimSpread": -0.0599999986588955,
-        "damage": -3.0,
-        "hipSpread": -0.109999999403954,
-        "moveSpread": -0.589999973773956,
-        "rangeClose": 2.0,
-        "rangeFar": 2.0,
-        "run": 0.0799999982118607
+        "AimSpread": -0.0599999986588955,
+        "Damage": -3.0,
+        "HipSpread": -0.109999999403954,
+        "MoveSpread": -0.589999973773956,
+        "RangeClose": 2.0,
+        "RangeFar": 2.0,
+        "Run": 0.0799999982118607
       }
     },
     {
@@ -6016,20 +6015,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": 60.0,
-        "damage": -20.0,
-        "movementSpeed": -40.0,
-        "range": 60.0,
-        "rating": 10.0
+        "Accuracy": 60.0,
+        "Damage": -20.0,
+        "MovementSpeed": -40.0,
+        "Range": 60.0,
+        "Rating": 10.0
       },
       "WikiStats": {
-        "aimSpread": -0.180000007152557,
-        "damage": -1.0,
-        "hipSpread": -0.340000003576279,
-        "moveSpread": 0.509999990463257,
-        "rangeClose": 6.0,
-        "rangeFar": 6.0,
-        "run": -0.0799999982118607
+        "AimSpread": -0.180000007152557,
+        "Damage": -1.0,
+        "HipSpread": -0.340000003576279,
+        "MoveSpread": 0.509999990463257,
+        "RangeClose": 6.0,
+        "RangeFar": 6.0,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -6057,20 +6056,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -20.0,
-        "damage": -20.0,
-        "movementSpeed": 40.0,
-        "range": -20.0,
-        "rating": 9.0
+        "Accuracy": -20.0,
+        "Damage": -20.0,
+        "MovementSpeed": 40.0,
+        "Range": -20.0,
+        "Rating": 9.0
       },
       "WikiStats": {
-        "aimSpread": 0.0599999986588955,
-        "damage": -1.0,
-        "hipSpread": 0.119999997317791,
-        "moveSpread": -0.330000013113022,
-        "rangeClose": -2.0,
-        "rangeFar": -2.0,
-        "run": 0.0799999982118607
+        "AimSpread": 0.0599999986588955,
+        "Damage": -1.0,
+        "HipSpread": 0.119999997317791,
+        "MoveSpread": -0.330000013113022,
+        "RangeClose": -2.0,
+        "RangeFar": -2.0,
+        "Run": 0.0799999982118607
       }
     },
     {
@@ -6088,20 +6087,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 40.0,
-        "damage": 40.0,
-        "movementSpeed": -100.0,
-        "range": 40.0,
-        "rating": 5.0
+        "Accuracy": 40.0,
+        "Damage": 40.0,
+        "MovementSpeed": -100.0,
+        "Range": 40.0,
+        "Rating": 5.0
       },
       "WikiStats": {
-        "aimSpread": -0.180000007152557,
-        "damage": 4.0,
-        "hipSpread": -0.46000000834465,
-        "moveSpread": 0.25,
-        "rangeClose": 2.0,
-        "rangeFar": 4.0,
-        "run": -0.449999988079071
+        "AimSpread": -0.180000007152557,
+        "Damage": 4.0,
+        "HipSpread": -0.46000000834465,
+        "MoveSpread": 0.25,
+        "RangeClose": 2.0,
+        "RangeFar": 4.0,
+        "Run": -0.449999988079071
       }
     },
     {
@@ -6119,19 +6118,19 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "damage": 70.0,
-        "movementSpeed": -100.0,
-        "range": 10.0,
-        "rating": 5.0
+        "Accuracy": 10.0,
+        "Damage": 70.0,
+        "MovementSpeed": -100.0,
+        "Range": 10.0,
+        "Rating": 5.0
       },
       "WikiStats": {
-        "aimSpread": -0.0399999991059303,
-        "damage": 7.0,
-        "hipSpread": -0.119999997317791,
-        "moveSpread": 0.850000023841858,
-        "rangeFar": 1.0,
-        "run": -0.449999988079071
+        "AimSpread": -0.0399999991059303,
+        "Damage": 7.0,
+        "HipSpread": -0.119999997317791,
+        "MoveSpread": 0.850000023841858,
+        "RangeFar": 1.0,
+        "Run": -0.449999988079071
       }
     },
     {
@@ -6159,18 +6158,18 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -20.0,
-        "movementSpeed": 20.0,
-        "range": -20.0,
-        "rating": 1.0
+        "Accuracy": -20.0,
+        "MovementSpeed": 20.0,
+        "Range": -20.0,
+        "Rating": 1.0
       },
       "WikiStats": {
-        "aimSpread": 0.0599999986588955,
-        "hipSpread": 0.119999997317791,
-        "moveSpread": -0.100000001490116,
-        "rangeClose": -2.0,
-        "rangeFar": -2.0,
-        "run": 0.0399999991059303
+        "AimSpread": 0.0599999986588955,
+        "HipSpread": 0.119999997317791,
+        "MoveSpread": -0.100000001490116,
+        "RangeClose": -2.0,
+        "RangeFar": -2.0,
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -6225,18 +6224,18 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": 20.0,
-        "movementSpeed": -20.0,
-        "range": 20.0,
-        "rating": 2.0
+        "Accuracy": 20.0,
+        "MovementSpeed": -20.0,
+        "Range": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "aimSpread": -0.0599999986588955,
-        "hipSpread": -0.109999999403954,
-        "moveSpread": 0.330000013113022,
-        "rangeClose": 2.0,
-        "rangeFar": 2.0,
-        "run": -0.0399999991059303
+        "AimSpread": -0.0599999986588955,
+        "HipSpread": -0.109999999403954,
+        "MoveSpread": 0.330000013113022,
+        "RangeClose": 2.0,
+        "RangeFar": 2.0,
+        "Run": -0.0399999991059303
       }
     },
     {
@@ -6264,20 +6263,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -40.0,
-        "damage": 20.0,
-        "movementSpeed": 20.0,
-        "range": -40.0,
-        "rating": 2.0
+        "Accuracy": -40.0,
+        "Damage": 20.0,
+        "MovementSpeed": 20.0,
+        "Range": -40.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "aimSpread": 0.119999997317791,
-        "damage": 1.0,
-        "hipSpread": 0.230000004172325,
-        "moveSpread": 0.0299999993294477,
-        "rangeClose": -4.0,
-        "rangeFar": -4.0,
-        "run": 0.0399999991059303
+        "AimSpread": 0.119999997317791,
+        "Damage": 1.0,
+        "HipSpread": 0.230000004172325,
+        "MoveSpread": 0.0299999993294477,
+        "RangeClose": -4.0,
+        "RangeFar": -4.0,
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -6305,20 +6304,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": 20.0,
-        "damage": 20.0,
-        "movementSpeed": -40.0,
-        "range": 20.0,
-        "rating": 8.0
+        "Accuracy": 20.0,
+        "Damage": 20.0,
+        "MovementSpeed": -40.0,
+        "Range": 20.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "aimSpread": -0.0599999986588955,
-        "damage": 1.0,
-        "hipSpread": -0.109999999403954,
-        "moveSpread": 0.790000021457672,
-        "rangeClose": 2.0,
-        "rangeFar": 2.0,
-        "run": -0.0799999982118607
+        "AimSpread": -0.0599999986588955,
+        "Damage": 1.0,
+        "HipSpread": -0.109999999403954,
+        "MoveSpread": 0.790000021457672,
+        "RangeClose": 2.0,
+        "RangeFar": 2.0,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -6346,20 +6345,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "damage": 40.0,
-        "movementSpeed": -30.0,
-        "range": -10.0,
-        "rating": 6.0
+        "Accuracy": -10.0,
+        "Damage": 40.0,
+        "MovementSpeed": -30.0,
+        "Range": -10.0,
+        "Rating": 6.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "damage": 2.0,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": 0.769999980926514,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "run": -0.0599999986588955
+        "AimSpread": 0.0299999993294477,
+        "Damage": 2.0,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": 0.769999980926514,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Run": -0.0599999986588955
       }
     },
     {
@@ -6387,20 +6386,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "damage": 20.0,
-        "movementSpeed": -10.0,
-        "range": -10.0,
-        "rating": 3.0
+        "Accuracy": -10.0,
+        "Damage": 20.0,
+        "MovementSpeed": -10.0,
+        "Range": -10.0,
+        "Rating": 3.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "damage": 1.0,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": 0.300000011920929,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "run": -0.0199999995529652
+        "AimSpread": 0.0299999993294477,
+        "Damage": 1.0,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": 0.300000011920929,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Run": -0.0199999995529652
       }
     },
     {
@@ -6428,20 +6427,20 @@
         40027
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "damage": 50.0,
-        "movementSpeed": -40.0,
-        "range": -10.0,
-        "rating": 7.0
+        "Accuracy": -10.0,
+        "Damage": 50.0,
+        "MovementSpeed": -40.0,
+        "Range": -10.0,
+        "Rating": 7.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "damage": 3.0,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": 1.00999999046326,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "run": -0.0799999982118607
+        "AimSpread": 0.0299999993294477,
+        "Damage": 3.0,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": 1.00999999046326,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -6469,7 +6468,7 @@
         40027
       ],
       "WeaponModifiers": {
-        "rating": 1.0
+        "Rating": 1.0
       }
     },
     {
@@ -6622,7 +6621,7 @@
       "NameID": 13018,
       "Category": "camosBody",
       "Icon": "t_Camo18_128x128",
-      "Name": "Orange Tiger",
+      "Name": "ORange Tiger",
       "UID": 630118
     },
     {
@@ -6880,8 +6879,8 @@
     {
       "NameID": 13055,
       "Category": "camosBody",
-      "Icon": "t_CamoMetalicOrange_128x128",
-      "Name": "Metallic Orange",
+      "Icon": "t_CamoMetalicORange_128x128",
+      "Name": "Metallic ORange",
       "UID": 630155
     },
     {
@@ -6908,8 +6907,8 @@
     {
       "NameID": 13059,
       "Category": "camosBody",
-      "Icon": "t_CamoMatteOrange_128x128",
-      "Name": "Matte Orange",
+      "Icon": "t_CamoMatteORange_128x128",
+      "Name": "Matte ORange",
       "UID": 630159
     },
     {
@@ -7077,7 +7076,7 @@
       "NameID": 13083,
       "Category": "camosBody",
       "Icon": "t_CamoHex1_128x128",
-      "Name": "Hardsuit Pilot Orange",
+      "Name": "Hardsuit Pilot ORange",
       "UID": 630183
     },
     {
@@ -7419,8 +7418,8 @@
     {
       "NameID": 13132,
       "Category": "camosBody",
-      "Icon": "TX_Camo_Digital_Scatter_Orange_128x128",
-      "Name": "Digital Scatter Orange",
+      "Icon": "TX_Camo_Digital_Scatter_ORange_128x128",
+      "Name": "Digital Scatter ORange",
       "UID": 630232
     },
     {
@@ -7524,8 +7523,8 @@
     {
       "NameID": 13147,
       "Category": "camosBody",
-      "Icon": "TX_Camo_Rock_Metal_Orange_128x128",
-      "Name": "Rock Metal Orange",
+      "Icon": "TX_Camo_Rock_Metal_ORange_128x128",
+      "Name": "Rock Metal ORange",
       "UID": 630247
     },
     {
@@ -7559,8 +7558,8 @@
     {
       "NameID": 13152,
       "Category": "camosBody",
-      "Icon": "TX_Camo_Scarred_Stone_Orange_128x128",
-      "Name": "Scarred Stone Orange",
+      "Icon": "TX_Camo_Scarred_Stone_ORange_128x128",
+      "Name": "Scarred Stone ORange",
       "UID": 630252
     },
     {
@@ -7772,7 +7771,7 @@
       "NameID": 13018,
       "Category": "camosWeapon",
       "Icon": "t_Camo18_128x128",
-      "Name": "Orange Tiger",
+      "Name": "ORange Tiger",
       "UID": 630318
     },
     {
@@ -8030,8 +8029,8 @@
     {
       "NameID": 13055,
       "Category": "camosWeapon",
-      "Icon": "t_CamoMetalicOrange_128x128",
-      "Name": "Metallic Orange",
+      "Icon": "t_CamoMetalicORange_128x128",
+      "Name": "Metallic ORange",
       "UID": 630355
     },
     {
@@ -8058,8 +8057,8 @@
     {
       "NameID": 13059,
       "Category": "camosWeapon",
-      "Icon": "t_CamoMatteOrange_128x128",
-      "Name": "Matte Orange",
+      "Icon": "t_CamoMatteORange_128x128",
+      "Name": "Matte ORange",
       "UID": 630359
     },
     {
@@ -8499,8 +8498,8 @@
     {
       "NameID": 13132,
       "Category": "camosWeapon",
-      "Icon": "TX_Camo_Digital_Scatter_Orange_128x128",
-      "Name": "Digital Scatter Orange",
+      "Icon": "TX_Camo_Digital_Scatter_ORange_128x128",
+      "Name": "Digital Scatter ORange",
       "UID": 630422
     },
     {
@@ -8604,8 +8603,8 @@
     {
       "NameID": 13147,
       "Category": "camosWeapon",
-      "Icon": "TX_Camo_Rock_Metal_Orange_128x128",
-      "Name": "Rock Metal Orange",
+      "Icon": "TX_Camo_Rock_Metal_ORange_128x128",
+      "Name": "Rock Metal ORange",
       "UID": 630437
     },
     {
@@ -8639,8 +8638,8 @@
     {
       "NameID": 13152,
       "Category": "camosWeapon",
-      "Icon": "TX_Camo_Scarred_Stone_Orange_128x128",
-      "Name": "Scarred Stone Orange",
+      "Icon": "TX_Camo_Scarred_Stone_ORange_128x128",
+      "Name": "Scarred Stone ORange",
       "UID": 630442
     },
     {
@@ -8734,7 +8733,7 @@
         40005
       ],
       "WeaponModifiers": {
-        "rating": 1.0
+        "Rating": 1.0
       }
     },
     {
@@ -8749,8 +8748,8 @@
         40005
       ],
       "WeaponModifiers": {
-        "rating": 5.0,
-        "recoil": 40.0
+        "Rating": 5.0,
+        "Recoil": 40.0
       }
     }
   ],
@@ -8781,11 +8780,11 @@
         40010
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -8800,11 +8799,11 @@
         40010
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.620000004768372
+        "Reload": -0.620000004768372
       }
     },
     {
@@ -8819,14 +8818,14 @@
         40010
       ],
       "WeaponModifiers": {
-        "ammo": 15.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 15.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 15.0,
-        "ammoReserve": 60.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 15.0,
+        "AmmoReserve": 60.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -8841,13 +8840,13 @@
         40010
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.349999994039536,
-        "run": 0.0500000007450581
+        "Reload": -0.349999994039536,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -8862,8 +8861,8 @@
         40010
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -8879,8 +8878,8 @@
         40010
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -8896,8 +8895,8 @@
         40010
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -8913,8 +8912,8 @@
         40010
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -8946,11 +8945,11 @@
         40027
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0399999991059303
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -8966,11 +8965,11 @@
         40027
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.550000011920929
+        "Reload": -0.550000011920929
       }
     },
     {
@@ -8986,14 +8985,14 @@
         40027
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 10.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 10.0,
-        "ammoReserve": 40.0,
-        "run": -0.0399999991059303
+        "AmmoMag": 10.0,
+        "AmmoReserve": 40.0,
+        "Run": -0.0399999991059303
       }
     },
     {
@@ -9009,13 +9008,13 @@
         40027
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.310000002384186,
-        "run": 0.0199999995529652
+        "Reload": -0.310000002384186,
+        "Run": 0.0199999995529652
       }
     },
     {
@@ -9031,16 +9030,16 @@
         40027
       ],
       "WeaponModifiers": {
-        "ammo": 20.0,
-        "movementSpeed": -70.0,
-        "rating": 6.0,
-        "reloadSpeed": -80.0
+        "Ammo": 20.0,
+        "MovementSpeed": -70.0,
+        "Rating": 6.0,
+        "ReloadSpeed": -80.0
       },
       "WikiStats": {
-        "ammoMag": 20.0,
-        "ammoReserve": 80.0,
-        "reload": 0.409999996423721,
-        "run": -0.159999996423721
+        "AmmoMag": 20.0,
+        "AmmoReserve": 80.0,
+        "Reload": 0.409999996423721,
+        "Run": -0.159999996423721
       }
     },
     {
@@ -9056,16 +9055,16 @@
         40027
       ],
       "WeaponModifiers": {
-        "ammo": 40.0,
-        "movementSpeed": -120.0,
-        "rating": 9.0,
-        "reloadSpeed": -120.0
+        "Ammo": 40.0,
+        "MovementSpeed": -120.0,
+        "Rating": 9.0,
+        "ReloadSpeed": -120.0
       },
       "WikiStats": {
-        "ammoMag": 40.0,
-        "ammoReserve": 160.0,
-        "reload": 0.560000002384186,
-        "run": -0.280000001192093
+        "AmmoMag": 40.0,
+        "AmmoReserve": 160.0,
+        "Reload": 0.560000002384186,
+        "Run": -0.280000001192093
       }
     },
     {
@@ -9081,8 +9080,8 @@
         40027
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9099,8 +9098,8 @@
         40027
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9117,8 +9116,8 @@
         40027
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9135,8 +9134,8 @@
         40027
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9166,11 +9165,11 @@
         40008
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -9185,11 +9184,11 @@
         40008
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.540000021457672
+        "Reload": -0.540000021457672
       }
     },
     {
@@ -9204,14 +9203,14 @@
         40008
       ],
       "WeaponModifiers": {
-        "ammo": 3.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 3.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 3.0,
-        "ammoReserve": 12.0,
-        "run": -0.109999999403954
+        "AmmoMag": 3.0,
+        "AmmoReserve": 12.0,
+        "Run": -0.109999999403954
       }
     },
     {
@@ -9226,13 +9225,13 @@
         40008
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.300000011920929,
-        "run": 0.0500000007450581
+        "Reload": -0.300000011920929,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -9247,8 +9246,8 @@
         40008
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9264,8 +9263,8 @@
         40008
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9281,8 +9280,8 @@
         40008
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9298,8 +9297,8 @@
         40008
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9315,7 +9314,7 @@
         40005
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0
+        "MovementSpeed": 20.0
       },
       "WikiStats": {}
     },
@@ -9331,12 +9330,12 @@
         40005
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 50.0
+        "Rating": 2.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -1.33000004291534,
-        "run": -0.0799999982118607
+        "Reload": -1.33000004291534,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -9351,13 +9350,13 @@
         40005
       ],
       "WeaponModifiers": {
-        "movementSpeed": -10.0,
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "MovementSpeed": -10.0,
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -1.87999999523163,
-        "run": -0.119999997317791
+        "Reload": -1.87999999523163,
+        "Run": -0.119999997317791
       }
     },
     {
@@ -9372,16 +9371,16 @@
         40005
       ],
       "WeaponModifiers": {
-        "ammo": 4.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0,
-        "reloadSpeed": 50.0
+        "Ammo": 4.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "ammoMag": 4.0,
-        "ammoReserve": 16.0,
-        "reload": -1.33000004291534,
-        "run": -0.159999996423721
+        "AmmoMag": 4.0,
+        "AmmoReserve": 16.0,
+        "Reload": -1.33000004291534,
+        "Run": -0.159999996423721
       }
     },
     {
@@ -9396,12 +9395,12 @@
         40005
       ],
       "WeaponModifiers": {
-        "rating": 6.0,
-        "reloadSpeed": 80.0
+        "Rating": 6.0,
+        "ReloadSpeed": 80.0
       },
       "WikiStats": {
-        "reload": -1.63999998569489,
-        "run": -0.0799999982118607
+        "Reload": -1.63999998569489,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -9416,16 +9415,16 @@
         40005
       ],
       "WeaponModifiers": {
-        "ammo": 8.0,
-        "movementSpeed": -70.0,
-        "rating": 8.0,
-        "reloadSpeed": 60.0
+        "Ammo": 8.0,
+        "MovementSpeed": -70.0,
+        "Rating": 8.0,
+        "ReloadSpeed": 60.0
       },
       "WikiStats": {
-        "ammoMag": 8.0,
-        "ammoReserve": 32.0,
-        "reload": -1.42999994754791,
-        "run": -0.400000005960464
+        "AmmoMag": 8.0,
+        "AmmoReserve": 32.0,
+        "Reload": -1.42999994754791,
+        "Run": -0.400000005960464
       }
     },
     {
@@ -9440,8 +9439,8 @@
         40005
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9457,8 +9456,8 @@
         40005
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9474,8 +9473,8 @@
         40005
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9491,8 +9490,8 @@
         40005
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9522,13 +9521,13 @@
         40011
       ],
       "WeaponModifiers": {
-        "movementSpeed": -20.0,
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "MovementSpeed": -20.0,
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -3.33999991416931,
-        "run": -0.100000001490116
+        "Reload": -3.33999991416931,
+        "Run": -0.100000001490116
       }
     },
     {
@@ -9543,8 +9542,8 @@
         40011
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 4.0
+        "MovementSpeed": -5.0,
+        "Rating": 4.0
       },
       "WikiStats": {}
     },
@@ -9560,8 +9559,8 @@
         40011
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9577,8 +9576,8 @@
         40011
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9594,8 +9593,8 @@
         40011
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9625,11 +9624,11 @@
         40000
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -9644,11 +9643,11 @@
         40000
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.419999986886978
+        "Reload": -0.419999986886978
       }
     },
     {
@@ -9663,14 +9662,14 @@
         40000
       ],
       "WeaponModifiers": {
-        "ammo": 4.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 4.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 4.0,
-        "ammoReserve": 16.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 4.0,
+        "AmmoReserve": 16.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -9685,13 +9684,13 @@
         40000
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.230000004172325,
-        "run": 0.0500000007450581
+        "Reload": -0.230000004172325,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -9706,8 +9705,8 @@
         40000
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9723,8 +9722,8 @@
         40000
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9740,8 +9739,8 @@
         40000
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9757,8 +9756,8 @@
         40000
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9790,11 +9789,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -9810,11 +9809,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.389999985694885
+        "Reload": -0.389999985694885
       }
     },
     {
@@ -9830,14 +9829,14 @@
         40028
       ],
       "WeaponModifiers": {
-        "ammo": 6.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 6.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 6.0,
-        "ammoReserve": 24.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 6.0,
+        "AmmoReserve": 24.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -9853,13 +9852,13 @@
         40028
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.219999998807907,
-        "run": 0.0500000007450581
+        "Reload": -0.219999998807907,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -9875,8 +9874,8 @@
         40028
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9893,8 +9892,8 @@
         40028
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9911,8 +9910,8 @@
         40028
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9929,8 +9928,8 @@
         40028
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -9960,11 +9959,11 @@
         40004
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -9979,11 +9978,11 @@
         40004
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.419999986886978
+        "Reload": -0.419999986886978
       }
     },
     {
@@ -9998,14 +9997,14 @@
         40004
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 10.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 10.0,
-        "ammoReserve": 40.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 10.0,
+        "AmmoReserve": 40.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -10020,13 +10019,13 @@
         40004
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.239999994635582,
-        "run": 0.0500000007450581
+        "Reload": -0.239999994635582,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -10041,8 +10040,8 @@
         40004
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10058,8 +10057,8 @@
         40004
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10075,8 +10074,8 @@
         40004
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10092,8 +10091,8 @@
         40004
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10123,11 +10122,11 @@
         40006
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -10142,11 +10141,11 @@
         40006
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.360000014305115
+        "Reload": -0.360000014305115
       }
     },
     {
@@ -10161,14 +10160,14 @@
         40006
       ],
       "WeaponModifiers": {
-        "ammo": 6.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 6.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 6.0,
-        "ammoReserve": 24.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 6.0,
+        "AmmoReserve": 24.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -10183,13 +10182,13 @@
         40006
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.209999993443489,
-        "run": 0.0500000007450581
+        "Reload": -0.209999993443489,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -10204,8 +10203,8 @@
         40006
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10221,8 +10220,8 @@
         40006
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10238,8 +10237,8 @@
         40006
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10255,8 +10254,8 @@
         40006
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10286,11 +10285,11 @@
         40009
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -10305,11 +10304,11 @@
         40009
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.720000028610229
+        "Reload": -0.720000028610229
       }
     },
     {
@@ -10324,14 +10323,14 @@
         40009
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "movementSpeed": -15.0,
-        "rating": 4.0
+        "Ammo": 10.0,
+        "MovementSpeed": -15.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 10.0,
-        "ammoReserve": 40.0,
-        "run": -0.0599999986588955
+        "AmmoMag": 10.0,
+        "AmmoReserve": 40.0,
+        "Run": -0.0599999986588955
       }
     },
     {
@@ -10346,13 +10345,13 @@
         40009
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.409999996423721,
-        "run": 0.0599999986588955
+        "Reload": -0.409999996423721,
+        "Run": 0.0599999986588955
       }
     },
     {
@@ -10367,8 +10366,8 @@
         40009
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10384,8 +10383,8 @@
         40009
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10401,8 +10400,8 @@
         40009
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10418,8 +10417,8 @@
         40009
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10449,11 +10448,11 @@
         40007
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.100000001490116
+        "Run": 0.100000001490116
       }
     },
     {
@@ -10468,11 +10467,11 @@
         40007
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.610000014305115
+        "Reload": -0.610000014305115
       }
     },
     {
@@ -10487,14 +10486,14 @@
         40007
       ],
       "WeaponModifiers": {
-        "ammo": 3.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 3.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 3.0,
-        "ammoReserve": 12.0,
-        "run": -0.100000001490116
+        "AmmoMag": 3.0,
+        "AmmoReserve": 12.0,
+        "Run": -0.100000001490116
       }
     },
     {
@@ -10509,13 +10508,13 @@
         40007
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.569999992847443,
-        "run": 0.0500000007450581
+        "Reload": -0.569999992847443,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -10530,8 +10529,8 @@
         40007
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10547,8 +10546,8 @@
         40007
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10564,8 +10563,8 @@
         40007
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10581,8 +10580,8 @@
         40007
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10612,8 +10611,8 @@
         40002
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10629,8 +10628,8 @@
         40002
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10646,8 +10645,8 @@
         40002
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10663,8 +10662,8 @@
         40002
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10680,7 +10679,7 @@
         40014
       ],
       "WeaponModifiers": {
-        "rating": 1.0
+        "Rating": 1.0
       },
       "WikiStats": {}
     },
@@ -10696,15 +10695,15 @@
         40014
       ],
       "WeaponModifiers": {
-        "ammo": -20.0,
-        "movementSpeed": 20.0,
-        "rating": 5.0
+        "Ammo": -20.0,
+        "MovementSpeed": 20.0,
+        "Rating": 5.0
       },
       "WikiStats": {
-        "ammoMag": -20.0,
-        "ammoReserve": -60.0,
-        "reload": -1.0,
-        "run": 0.0900000035762787
+        "AmmoMag": -20.0,
+        "AmmoReserve": -60.0,
+        "Reload": -1.0,
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -10719,15 +10718,15 @@
         40014
       ],
       "WeaponModifiers": {
-        "ammo": 20.0,
-        "movementSpeed": -20.0,
-        "rating": 10.0
+        "Ammo": 20.0,
+        "MovementSpeed": -20.0,
+        "Rating": 10.0
       },
       "WikiStats": {
-        "ammoMag": 20.0,
-        "ammoReserve": 60.0,
-        "reload": 0.829999983310699,
-        "run": -0.0900000035762787
+        "AmmoMag": 20.0,
+        "AmmoReserve": 60.0,
+        "Reload": 0.829999983310699,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -10756,11 +10755,11 @@
         40013
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -10775,14 +10774,14 @@
         40013
       ],
       "WeaponModifiers": {
-        "ammo": -5.0,
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Ammo": -5.0,
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "ammoMag": -5.0,
-        "ammoReserve": -20.0,
-        "reload": -0.620000004768372
+        "AmmoMag": -5.0,
+        "AmmoReserve": -20.0,
+        "Reload": -0.620000004768372
       }
     },
     {
@@ -10797,15 +10796,15 @@
         40013
       ],
       "WeaponModifiers": {
-        "ammo": 15.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 15.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 15.0,
-        "ammoReserve": 60.0,
-        "reload": 0.620000004768372,
-        "run": -0.0900000035762787
+        "AmmoMag": 15.0,
+        "AmmoReserve": 60.0,
+        "Reload": 0.620000004768372,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -10820,8 +10819,8 @@
         40013
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10837,8 +10836,8 @@
         40013
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10854,8 +10853,8 @@
         40013
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10871,8 +10870,8 @@
         40013
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -10902,11 +10901,11 @@
         40017
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0500000007450581
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -10921,11 +10920,11 @@
         40017
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.69
+        "Reload": -0.69
       }
     },
     {
@@ -10940,14 +10939,14 @@
         40017
       ],
       "WeaponModifiers": {
-        "ammo": 8.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 8.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 8.0,
-        "ammoReserve": 40.0,
-        "run": -0.0399999991059303
+        "AmmoMag": 8.0,
+        "AmmoReserve": 40.0,
+        "Run": -0.0399999991059303
       }
     },
     {
@@ -10962,13 +10961,13 @@
         40017
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.39,
-        "run": 0.0199999995529652
+        "Reload": -0.39,
+        "Run": 0.0199999995529652
       }
     },
     {
@@ -10983,8 +10982,8 @@
         40017
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11000,8 +10999,8 @@
         40017
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11017,8 +11016,8 @@
         40017
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11034,8 +11033,8 @@
         40017
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11051,7 +11050,7 @@
         40016
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0
+        "MovementSpeed": 20.0
       },
       "WikiStats": {}
     },
@@ -11067,12 +11066,12 @@
         40016
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 50.0
+        "Rating": 2.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -4.84000015258789,
-        "run": -0.0900000035762787
+        "Reload": -4.84000015258789,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -11087,13 +11086,13 @@
         40016
       ],
       "WeaponModifiers": {
-        "movementSpeed": -10.0,
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "MovementSpeed": -10.0,
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -5.48999977111816,
-        "run": -0.140000000596046
+        "Reload": -5.48999977111816,
+        "Run": -0.140000000596046
       }
     },
     {
@@ -11108,16 +11107,16 @@
         40016
       ],
       "WeaponModifiers": {
-        "ammo": 5.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0,
-        "reloadSpeed": 50.0
+        "Ammo": 5.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "ammoMag": 5.0,
-        "ammoReserve": 10.0,
-        "reload": -4.84000015258789,
-        "run": -0.180000007152557
+        "AmmoMag": 5.0,
+        "AmmoReserve": 10.0,
+        "Reload": -4.84000015258789,
+        "Run": -0.180000007152557
       }
     },
     {
@@ -11132,16 +11131,16 @@
         40016
       ],
       "WeaponModifiers": {
-        "ammo": 3.0,
-        "movementSpeed": -20.0,
-        "rating": 6.0,
-        "reloadSpeed": 80.0
+        "Ammo": 3.0,
+        "MovementSpeed": -20.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 80.0
       },
       "WikiStats": {
-        "ammoMag": 3.0,
-        "ammoReserve": 6.0,
-        "reload": -5.21000003814697,
-        "run": -0.180000007152557
+        "AmmoMag": 3.0,
+        "AmmoReserve": 6.0,
+        "Reload": -5.21000003814697,
+        "Run": -0.180000007152557
       }
     },
     {
@@ -11156,8 +11155,8 @@
         40016
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11173,8 +11172,8 @@
         40016
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11190,8 +11189,8 @@
         40016
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11207,8 +11206,8 @@
         40016
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11224,16 +11223,16 @@
         40016
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "movementSpeed": -100.0,
-        "rating": 8.0,
-        "reloadSpeed": 50.0
+        "Ammo": 10.0,
+        "MovementSpeed": -100.0,
+        "Rating": 8.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "ammoMag": 10.0,
-        "ammoReserve": 20.0,
-        "reload": -4.84000015258789,
-        "run": -0.180000007152557
+        "AmmoMag": 10.0,
+        "AmmoReserve": 20.0,
+        "Reload": -4.84000015258789,
+        "Run": -0.180000007152557
       }
     },
     {
@@ -11248,7 +11247,7 @@
         40015
       ],
       "WeaponModifiers": {
-        "rating": 8.0
+        "Rating": 8.0
       },
       "WikiStats": {}
     },
@@ -11264,7 +11263,7 @@
         40015
       ],
       "WeaponModifiers": {
-        "rating": 8.0
+        "Rating": 8.0
       },
       "WikiStats": {}
     },
@@ -11350,11 +11349,11 @@
         40018
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -11369,11 +11368,11 @@
         40018
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.550000011920929
+        "Reload": -0.550000011920929
       }
     },
     {
@@ -11388,14 +11387,14 @@
         40018
       ],
       "WeaponModifiers": {
-        "ammo": 12.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 12.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 12.0,
-        "ammoReserve": 48.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 12.0,
+        "AmmoReserve": 48.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -11410,13 +11409,13 @@
         40018
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.310000002384186,
-        "run": 0.0399999991059303
+        "Reload": -0.310000002384186,
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -11431,8 +11430,8 @@
         40018
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11448,8 +11447,8 @@
         40018
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11465,8 +11464,8 @@
         40018
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11482,8 +11481,8 @@
         40018
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11513,11 +11512,11 @@
         40020
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.109999999403954
+        "Run": 0.109999999403954
       }
     },
     {
@@ -11532,11 +11531,11 @@
         40020
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.649999976158142
+        "Reload": -0.649999976158142
       }
     },
     {
@@ -11551,14 +11550,14 @@
         40020
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "movementSpeed": -15.0,
-        "rating": 4.0
+        "Ammo": 10.0,
+        "MovementSpeed": -15.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 10.0,
-        "ammoReserve": 40.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 10.0,
+        "AmmoReserve": 40.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -11573,13 +11572,13 @@
         40020
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.370000004768372,
-        "run": 0.0500000007450581
+        "Reload": -0.370000004768372,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -11594,8 +11593,8 @@
         40020
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11611,8 +11610,8 @@
         40020
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11628,8 +11627,8 @@
         40020
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11645,8 +11644,8 @@
         40020
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -11662,11 +11661,11 @@
         40010
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11682,11 +11681,11 @@
         40018
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11703,11 +11702,11 @@
         40027
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11723,11 +11722,11 @@
         40009
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11743,11 +11742,11 @@
         40017
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11763,11 +11762,11 @@
         40020
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11783,11 +11782,11 @@
         40008
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11803,12 +11802,12 @@
         40007
       ],
       "WeaponModifiers": {
-        "ammo": -2.0,
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Ammo": -2.0,
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11824,11 +11823,11 @@
         40005
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11844,11 +11843,11 @@
         40016
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11864,11 +11863,11 @@
         40011
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11884,11 +11883,11 @@
         40000
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11905,11 +11904,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11925,11 +11924,11 @@
         40004
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11945,11 +11944,11 @@
         40006
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11965,11 +11964,11 @@
         40002
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -11985,11 +11984,11 @@
         40013
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -12005,11 +12004,11 @@
         40014
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -12025,9 +12024,9 @@
         40015
       ],
       "WeaponModifiers": {
-        "range": -100.0,
-        "rating": 8.0,
-        "recoil": -100.0
+        "Range": -100.0,
+        "Rating": 8.0,
+        "Recoil": -100.0
       },
       "WikiStats": {}
     },
@@ -12043,8 +12042,8 @@
         40021
       ],
       "WeaponModifiers": {
-        "damage": -30.0,
-        "rating": 1.0
+        "Damage": -30.0,
+        "Rating": 1.0
       },
       "WikiStats": {}
     },
@@ -12060,22 +12059,22 @@
         40021
       ],
       "WeaponModifiers": {
-        "accuracy": 100.0,
-        "ammo": -2.0,
-        "damage": -30.0,
-        "range": 100.0,
-        "rating": 5.0,
-        "recoil": -50.0
+        "Accuracy": 100.0,
+        "Ammo": -2.0,
+        "Damage": -30.0,
+        "Range": 100.0,
+        "Rating": 5.0,
+        "Recoil": -50.0
       },
       "WikiStats": {
-        "aimSpread": -0.349999994039536,
-        "ammoMag": -2.0,
-        "ammoReserve": -8.0,
-        "hipSpread": -0.850000023841858,
-        "moveSpread": -1.70000004768372,
-        "rangeClose": 20.0,
-        "rangeFar": 20.0,
-        "recoil": 1.21000003814697
+        "AimSpread": -0.349999994039536,
+        "AmmoMag": -2.0,
+        "AmmoReserve": -8.0,
+        "HipSpread": -0.850000023841858,
+        "MoveSpread": -1.70000004768372,
+        "RangeClose": 20.0,
+        "RangeFar": 20.0,
+        "Recoil": 1.21000003814697
       }
     },
     {
@@ -12090,20 +12089,20 @@
         40021
       ],
       "WeaponModifiers": {
-        "accuracy": -100.0,
-        "ammo": -3.0,
-        "damage": 100.0,
-        "rating": 8.0,
-        "recoil": -100.0
+        "Accuracy": -100.0,
+        "Ammo": -3.0,
+        "Damage": 100.0,
+        "Rating": 8.0,
+        "Recoil": -100.0
       },
       "WikiStats": {
-        "aimSpread": 0.230000004172325,
-        "ammoMag": -3.0,
-        "ammoReserve": -12.0,
-        "damage": 32.0,
-        "hipSpread": 0.579999983310699,
-        "moveSpread": 1.23000001907349,
-        "recoil": 2.42000007629395
+        "AimSpread": 0.230000004172325,
+        "AmmoMag": -3.0,
+        "AmmoReserve": -12.0,
+        "Damage": 32.0,
+        "HipSpread": 0.579999983310699,
+        "MoveSpread": 1.23000001907349,
+        "Recoil": 2.42000007629395
       }
     },
     {
@@ -12118,8 +12117,8 @@
         40021
       ],
       "WeaponModifiers": {
-        "damage": -30.0,
-        "rating": 6.0
+        "Damage": -30.0,
+        "Rating": 6.0
       },
       "WikiStats": {}
     },
@@ -12135,8 +12134,8 @@
         40021
       ],
       "WeaponModifiers": {
-        "damage": -30.0,
-        "rating": 2.0
+        "Damage": -30.0,
+        "Rating": 2.0
       },
       "WikiStats": {}
     },
@@ -12152,8 +12151,8 @@
         40021
       ],
       "WeaponModifiers": {
-        "damage": -30.0,
-        "rating": 3.0
+        "Damage": -30.0,
+        "Rating": 3.0
       },
       "WikiStats": {}
     },
@@ -12169,8 +12168,8 @@
         40021
       ],
       "WeaponModifiers": {
-        "damage": -30.0,
-        "rating": 4.0
+        "Damage": -30.0,
+        "Rating": 4.0
       }
     },
     {
@@ -12185,10 +12184,10 @@
         40021
       ],
       "WeaponModifiers": {
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 7.0,
-        "recoil": -30.0
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 7.0,
+        "Recoil": -30.0
       }
     },
     {
@@ -12217,11 +12216,11 @@
         40022
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -12236,11 +12235,11 @@
         40022
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.620000004768372
+        "Reload": -0.620000004768372
       }
     },
     {
@@ -12255,14 +12254,14 @@
         40022
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 10.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 10.0,
-        "ammoReserve": 40.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 10.0,
+        "AmmoReserve": 40.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -12277,13 +12276,13 @@
         40022
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.349999994039536,
-        "run": 0.0399999991059303
+        "Reload": -0.349999994039536,
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -12298,8 +12297,8 @@
         40022
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12315,8 +12314,8 @@
         40022
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12332,8 +12331,8 @@
         40022
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12349,8 +12348,8 @@
         40022
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12366,11 +12365,11 @@
         40022
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -12400,11 +12399,11 @@
         40023
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0799999982118607
+        "Run": 0.0799999982118607
       }
     },
     {
@@ -12419,11 +12418,11 @@
         40023
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.620000004768372
+        "Reload": -0.620000004768372
       }
     },
     {
@@ -12438,14 +12437,14 @@
         40023
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 10.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 10.0,
-        "ammoReserve": 40.0,
-        "run": -0.0799999982118607
+        "AmmoMag": 10.0,
+        "AmmoReserve": 40.0,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -12460,13 +12459,13 @@
         40023
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.349999994039536,
-        "run": 0.0399999991059303
+        "Reload": -0.349999994039536,
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -12481,8 +12480,8 @@
         40023
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12498,8 +12497,8 @@
         40023
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12515,8 +12514,8 @@
         40023
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12532,8 +12531,8 @@
         40023
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12549,11 +12548,11 @@
         40023
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "movementSpeed": -20.0,
-        "range": 30.0,
-        "rating": 8.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "MovementSpeed": -20.0,
+        "Range": 30.0,
+        "Rating": 8.0,
+        "Recoil": -30.0
       },
       "WikiStats": {}
     },
@@ -12569,11 +12568,11 @@
         40024
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "rating": 1.0
+        "Ammo": 10.0,
+        "Rating": 1.0
       },
       "WikiStats": {
-        "damage": 240.0
+        "Damage": 240.0
       }
     },
     {
@@ -12588,11 +12587,11 @@
         40024
       ],
       "WeaponModifiers": {
-        "ammo": 6.0,
-        "movementSpeed": -50.0,
-        "rating": 9.0,
-        "recoil": -50.0,
-        "reloadSpeed": -50.0
+        "Ammo": 6.0,
+        "MovementSpeed": -50.0,
+        "Rating": 9.0,
+        "Recoil": -50.0,
+        "ReloadSpeed": -50.0
       },
       "WikiStats": {}
     },
@@ -12608,11 +12607,11 @@
         40024
       ],
       "WeaponModifiers": {
-        "ammo": 8.0,
-        "movementSpeed": 50.0,
-        "rating": 6.0,
-        "recoil": 50.0,
-        "reloadSpeed": 50.0
+        "Ammo": 8.0,
+        "MovementSpeed": 50.0,
+        "Rating": 6.0,
+        "Recoil": 50.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {}
     },
@@ -12628,8 +12627,8 @@
         40024
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "rating": 5.0
+        "Ammo": 10.0,
+        "Rating": 5.0
       },
       "WikiStats": {}
     },
@@ -12645,11 +12644,11 @@
         40024
       ],
       "WeaponModifiers": {
-        "ammo": 15.0,
-        "movementSpeed": 100.0,
-        "rating": 3.0,
-        "recoil": 100.0,
-        "reloadSpeed": 100.0
+        "Ammo": 15.0,
+        "MovementSpeed": 100.0,
+        "Rating": 3.0,
+        "Recoil": 100.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {}
     },
@@ -12665,11 +12664,11 @@
         40024
       ],
       "WeaponModifiers": {
-        "ammo": 6.0,
-        "movementSpeed": -100.0,
-        "rating": 8.0,
-        "recoil": -100.0,
-        "reloadSpeed": -100.0
+        "Ammo": 6.0,
+        "MovementSpeed": -100.0,
+        "Rating": 8.0,
+        "Recoil": -100.0,
+        "ReloadSpeed": -100.0
       },
       "WikiStats": {}
     },
@@ -12685,11 +12684,11 @@
         40024
       ],
       "WeaponModifiers": {
-        "ammo": 10.0,
-        "rating": 1.0
+        "Ammo": 10.0,
+        "Rating": 1.0
       },
       "WikiStats": {
-        "damage": 240.0
+        "Damage": 240.0
       }
     },
     {
@@ -12718,11 +12717,11 @@
         40025
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0399999991059303
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -12737,11 +12736,11 @@
         40025
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.550000011920929
+        "Reload": -0.550000011920929
       }
     },
     {
@@ -12756,14 +12755,14 @@
         40025
       ],
       "WeaponModifiers": {
-        "ammo": 8.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 8.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 8.0,
-        "ammoReserve": 32.0,
-        "run": -0.0399999991059303
+        "AmmoMag": 8.0,
+        "AmmoReserve": 32.0,
+        "Run": -0.0399999991059303
       }
     },
     {
@@ -12778,13 +12777,13 @@
         40025
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.310000002384186,
-        "run": 0.0199999995529652
+        "Reload": -0.310000002384186,
+        "Run": 0.0199999995529652
       }
     },
     {
@@ -12799,8 +12798,8 @@
         40025
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12816,8 +12815,8 @@
         40025
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12833,8 +12832,8 @@
         40025
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12850,8 +12849,8 @@
         40025
       ],
       "WeaponModifiers": {
-        "movementSpeed": -5.0,
-        "rating": 7.0
+        "MovementSpeed": -5.0,
+        "Rating": 7.0
       },
       "WikiStats": {}
     },
@@ -12881,11 +12880,11 @@
         40026
       ],
       "WeaponModifiers": {
-        "movementSpeed": 20.0,
-        "rating": 2.0
+        "MovementSpeed": 20.0,
+        "Rating": 2.0
       },
       "WikiStats": {
-        "run": 0.0900000035762787
+        "Run": 0.0900000035762787
       }
     },
     {
@@ -12900,11 +12899,11 @@
         40026
       ],
       "WeaponModifiers": {
-        "rating": 2.0,
-        "reloadSpeed": 100.0
+        "Rating": 2.0,
+        "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "reload": -0.540000021457672
+        "Reload": -0.540000021457672
       }
     },
     {
@@ -12919,14 +12918,14 @@
         40026
       ],
       "WeaponModifiers": {
-        "ammo": 3.0,
-        "movementSpeed": -20.0,
-        "rating": 4.0
+        "Ammo": 3.0,
+        "MovementSpeed": -20.0,
+        "Rating": 4.0
       },
       "WikiStats": {
-        "ammoMag": 3.0,
-        "ammoReserve": 12.0,
-        "run": -0.0900000035762787
+        "AmmoMag": 3.0,
+        "AmmoReserve": 12.0,
+        "Run": -0.0900000035762787
       }
     },
     {
@@ -12941,13 +12940,13 @@
         40026
       ],
       "WeaponModifiers": {
-        "movementSpeed": 10.0,
-        "rating": 6.0,
-        "reloadSpeed": 50.0
+        "MovementSpeed": 10.0,
+        "Rating": 6.0,
+        "ReloadSpeed": 50.0
       },
       "WikiStats": {
-        "reload": -0.300000011920929,
-        "run": 0.0500000007450581
+        "Reload": -0.300000011920929,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -13035,12 +13034,12 @@
         40028
       ],
       "WeaponModifiers": {
-        "damage": -10.0,
-        "rating": 2.0,
-        "recoil": 10.0
+        "Damage": -10.0,
+        "Rating": 2.0,
+        "Recoil": 10.0
       },
       "WikiStats": {
-        "recoil": -0.0399999991059303
+        "Recoil": -0.0399999991059303
       }
     },
     {
@@ -13076,20 +13075,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "damage": -20.0,
-        "range": 10.0,
-        "rating": 3.0,
-        "recoil": 10.0
+        "Accuracy": 10.0,
+        "Damage": -20.0,
+        "Range": 10.0,
+        "Rating": 3.0,
+        "Recoil": 10.0
       },
       "WikiStats": {
-        "aimSpread": -0.0299999993294477,
-        "damage": -1.0,
-        "hipSpread": -0.0599999986588955,
-        "moveSpread": -0.0599999986588955,
-        "rangeClose": 1.0,
-        "rangeFar": 1.0,
-        "recoil": -0.0399999991059303
+        "AimSpread": -0.0299999993294477,
+        "Damage": -1.0,
+        "HipSpread": -0.0599999986588955,
+        "MoveSpread": -0.0599999986588955,
+        "RangeClose": 1.0,
+        "RangeFar": 1.0,
+        "Recoil": -0.0399999991059303
       }
     },
     {
@@ -13125,20 +13124,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "damage": -20.0,
-        "range": -10.0,
-        "rating": 4.0,
-        "recoil": 30.0
+        "Accuracy": -10.0,
+        "Damage": -20.0,
+        "Range": -10.0,
+        "Rating": 4.0,
+        "Recoil": 30.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "damage": -1.0,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": 0.0700000002980232,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "recoil": -0.119999997317791
+        "AimSpread": 0.0299999993294477,
+        "Damage": -1.0,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": 0.0700000002980232,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Recoil": -0.119999997317791
       }
     },
     {
@@ -13174,12 +13173,12 @@
         40028
       ],
       "WeaponModifiers": {
-        "damage": -10.0,
-        "rating": 5.0,
-        "recoil": 10.0
+        "Damage": -10.0,
+        "Rating": 5.0,
+        "Recoil": 10.0
       },
       "WikiStats": {
-        "recoil": -0.0399999991059303
+        "Recoil": -0.0399999991059303
       }
     },
     {
@@ -13215,13 +13214,13 @@
         40028
       ],
       "WeaponModifiers": {
-        "damage": -40.0,
-        "rating": 6.0,
-        "recoil": 40.0
+        "Damage": -40.0,
+        "Rating": 6.0,
+        "Recoil": 40.0
       },
       "WikiStats": {
-        "damage": -2.0,
-        "recoil": -0.150000005960464
+        "Damage": -2.0,
+        "Recoil": -0.150000005960464
       }
     },
     {
@@ -13257,13 +13256,13 @@
         40028
       ],
       "WeaponModifiers": {
-        "damage": -30.0,
-        "rating": 1.0,
-        "recoil": 30.0
+        "Damage": -30.0,
+        "Rating": 1.0,
+        "Recoil": 30.0
       },
       "WikiStats": {
-        "damage": -1.0,
-        "recoil": -0.119999997317791
+        "Damage": -1.0,
+        "Recoil": -0.119999997317791
       }
     },
     {
@@ -13299,13 +13298,13 @@
         40028
       ],
       "WeaponModifiers": {
-        "damage": -20.0,
-        "rating": 7.0,
-        "recoil": 20.0
+        "Damage": -20.0,
+        "Rating": 7.0,
+        "Recoil": 20.0
       },
       "WikiStats": {
-        "damage": -1.0,
-        "recoil": -0.0700000002980232
+        "Damage": -1.0,
+        "Recoil": -0.0700000002980232
       }
     },
     {
@@ -13341,20 +13340,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "damage": -30.0,
-        "range": 10.0,
-        "rating": 8.0,
-        "recoil": 20.0
+        "Accuracy": 10.0,
+        "Damage": -30.0,
+        "Range": 10.0,
+        "Rating": 8.0,
+        "Recoil": 20.0
       },
       "WikiStats": {
-        "aimSpread": -0.0299999993294477,
-        "damage": -1.0,
-        "hipSpread": -0.0599999986588955,
-        "moveSpread": -0.0599999986588955,
-        "rangeClose": 1.0,
-        "rangeFar": 1.0,
-        "recoil": -0.0700000002980232
+        "AimSpread": -0.0299999993294477,
+        "Damage": -1.0,
+        "HipSpread": -0.0599999986588955,
+        "MoveSpread": -0.0599999986588955,
+        "RangeClose": 1.0,
+        "RangeFar": 1.0,
+        "Recoil": -0.0700000002980232
       }
     },
     {
@@ -13390,7 +13389,7 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 9.0
+        "Rating": 9.0
       },
       "WikiStats": {}
     },
@@ -13427,20 +13426,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "damage": -30.0,
-        "range": -10.0,
-        "rating": 10.0,
-        "recoil": 40.0
+        "Accuracy": -10.0,
+        "Damage": -30.0,
+        "Range": -10.0,
+        "Rating": 10.0,
+        "Recoil": 40.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "damage": -1.0,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": 0.0700000002980232,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "recoil": -0.150000005960464
+        "AimSpread": 0.0299999993294477,
+        "Damage": -1.0,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": 0.0700000002980232,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Recoil": -0.150000005960464
       }
     },
     {
@@ -13476,20 +13475,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "damage": 20.0,
-        "range": -10.0,
-        "rating": 11.0,
-        "recoil": -10.0
+        "Accuracy": -10.0,
+        "Damage": 20.0,
+        "Range": -10.0,
+        "Rating": 11.0,
+        "Recoil": -10.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "damage": 1.0,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": 0.0700000002980232,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "recoil": 0.0399999991059303
+        "AimSpread": 0.0299999993294477,
+        "Damage": 1.0,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": 0.0700000002980232,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Recoil": 0.0399999991059303
       }
     },
     {
@@ -13525,13 +13524,13 @@
         40028
       ],
       "WeaponModifiers": {
-        "damage": 20.0,
-        "rating": 12.0,
-        "recoil": -20.0
+        "Damage": 20.0,
+        "Rating": 12.0,
+        "Recoil": -20.0
       },
       "WikiStats": {
-        "damage": 1.0,
-        "recoil": 0.0799999982118607
+        "Damage": 1.0,
+        "Recoil": 0.0799999982118607
       }
     },
     {
@@ -13567,13 +13566,13 @@
         40028
       ],
       "WeaponModifiers": {
-        "damage": 30.0,
-        "rating": 13.0,
-        "recoil": -30.0
+        "Damage": 30.0,
+        "Rating": 13.0,
+        "Recoil": -30.0
       },
       "WikiStats": {
-        "damage": 2.0,
-        "recoil": 0.129999995231628
+        "Damage": 2.0,
+        "Recoil": 0.129999995231628
       }
     },
     {
@@ -13609,20 +13608,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "damage": 30.0,
-        "range": -10.0,
-        "rating": 14.0,
-        "recoil": -20.0
+        "Accuracy": -10.0,
+        "Damage": 30.0,
+        "Range": -10.0,
+        "Rating": 14.0,
+        "Recoil": -20.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "damage": 2.0,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": 0.0700000002980232,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "recoil": 0.0799999982118607
+        "AimSpread": 0.0299999993294477,
+        "Damage": 2.0,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": 0.0700000002980232,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Recoil": 0.0799999982118607
       }
     },
     {
@@ -13658,20 +13657,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "damage": -30.0,
-        "range": 10.0,
-        "rating": 14.0,
-        "recoil": 20.0
+        "Accuracy": 10.0,
+        "Damage": -30.0,
+        "Range": 10.0,
+        "Rating": 14.0,
+        "Recoil": 20.0
       },
       "WikiStats": {
-        "aimSpread": -0.0299999993294477,
-        "damage": -1.0,
-        "hipSpread": -0.0599999986588955,
-        "moveSpread": -0.0599999986588955,
-        "rangeClose": 1.0,
-        "rangeFar": 1.0,
-        "recoil": -0.0799999982118607
+        "AimSpread": -0.0299999993294477,
+        "Damage": -1.0,
+        "HipSpread": -0.0599999986588955,
+        "MoveSpread": -0.0599999986588955,
+        "RangeClose": 1.0,
+        "RangeFar": 1.0,
+        "Recoil": -0.0799999982118607
       }
     },
     {
@@ -13707,20 +13706,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -20.0,
-        "damage": 30.0,
-        "range": -20.0,
-        "rating": 14.0,
-        "recoil": -10.0
+        "Accuracy": -20.0,
+        "Damage": 30.0,
+        "Range": -20.0,
+        "Rating": 14.0,
+        "Recoil": -10.0
       },
       "WikiStats": {
-        "aimSpread": 0.0599999986588955,
-        "damage": 2.0,
-        "hipSpread": 0.119999997317791,
-        "moveSpread": 0.140000000596046,
-        "rangeClose": -2.0,
-        "rangeFar": -2.0,
-        "recoil": 0.0399999991059303
+        "AimSpread": 0.0599999986588955,
+        "Damage": 2.0,
+        "HipSpread": 0.119999997317791,
+        "MoveSpread": 0.140000000596046,
+        "RangeClose": -2.0,
+        "RangeFar": -2.0,
+        "Recoil": 0.0399999991059303
       }
     },
     {
@@ -13756,20 +13755,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "damage": 20.0,
-        "range": 10.0,
-        "rating": 14.0,
-        "recoil": -30.0
+        "Accuracy": 10.0,
+        "Damage": 20.0,
+        "Range": 10.0,
+        "Rating": 14.0,
+        "Recoil": -30.0
       },
       "WikiStats": {
-        "aimSpread": -0.0299999993294477,
-        "damage": 1.0,
-        "hipSpread": -0.0599999986588955,
-        "moveSpread": -0.0599999986588955,
-        "rangeClose": 1.0,
-        "rangeFar": 1.0,
-        "recoil": 0.129999995231628
+        "AimSpread": -0.0299999993294477,
+        "Damage": 1.0,
+        "HipSpread": -0.0599999986588955,
+        "MoveSpread": -0.0599999986588955,
+        "RangeClose": 1.0,
+        "RangeFar": 1.0,
+        "Recoil": 0.129999995231628
       }
     },
     {
@@ -13805,7 +13804,7 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 9.0
+        "Rating": 9.0
       }
     }
   ],
@@ -13911,7 +13910,7 @@
       "NameID": 18009,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_AK47_Tiger_01_256x128",
-      "Name": "AK470 - Tiger Stripes Orange Weapon Skin",
+      "Name": "AK470 - Tiger Stripes ORange Weapon Skin",
       "UID": 10008,
       "ValidFor": [
         40023
@@ -14010,7 +14009,7 @@
       "NameID": 18018,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_AR2_Tiger_01_256x128",
-      "Name": "Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin",
+      "Name": "Heavy Assault Rifle - Tiger Stripes ORange Weapon Skin",
       "UID": 10017,
       "ValidFor": [
         40017
@@ -14186,7 +14185,7 @@
       "NameID": 18034,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_AR3_Tiger_01_256x128",
-      "Name": "Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin",
+      "Name": "Tactical Assault Rifle - Tiger Stripes ORange Weapon Skin",
       "UID": 10033,
       "ValidFor": [
         40025
@@ -14307,7 +14306,7 @@
       "NameID": 18045,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_AR_Tiger_01_256x128",
-      "Name": "Assault Rifle - Tiger Stripes Orange Weapon Skin",
+      "Name": "Assault Rifle - Tiger Stripes ORange Weapon Skin",
       "UID": 10044,
       "ValidFor": [
         40003
@@ -14406,7 +14405,7 @@
       "NameID": 18054,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_BKT_Tiger_01_256x128",
-      "Name": "Light Machine Gun - Tiger Stripes Orange Weapon Skin",
+      "Name": "Light Machine Gun - Tiger Stripes ORange Weapon Skin",
       "UID": 10053,
       "ValidFor": [
         40011
@@ -14505,7 +14504,7 @@
       "NameID": 18063,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_01_256x128",
-      "Name": "Bolt-Action - Tiger Stripes Orange Weapon Skin",
+      "Name": "Bolt-Action - Tiger Stripes ORange Weapon Skin",
       "UID": 10062,
       "ValidFor": [
         40007
@@ -14604,7 +14603,7 @@
       "NameID": 18072,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_BP2_Tiger_01_256x128",
-      "Name": "Bullpup Full Auto - Tiger Stripes Orange Weapon Skin",
+      "Name": "Bullpup Full Auto - Tiger Stripes ORange Weapon Skin",
       "UID": 10071,
       "ValidFor": [
         40020
@@ -14703,7 +14702,7 @@
       "NameID": 18081,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_01_256x128",
-      "Name": "Burstfire Rifle - Tiger Stripes Orange Weapon Skin",
+      "Name": "Burstfire Rifle - Tiger Stripes ORange Weapon Skin",
       "UID": 10080,
       "ValidFor": [
         40009
@@ -14802,7 +14801,7 @@
       "NameID": 18090,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_LMG2_Tiger_01_256x128",
-      "Name": "LMG Recon - Tiger Stripes Orange Weapon Skin",
+      "Name": "LMG Recon - Tiger Stripes ORange Weapon Skin",
       "UID": 10089,
       "ValidFor": [
         40014
@@ -14901,7 +14900,7 @@
       "NameID": 18099,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_M4_Tiger_01_256x128",
-      "Name": "M4X - Tiger Stripes Orange Weapon Skin",
+      "Name": "M4X - Tiger Stripes ORange Weapon Skin",
       "UID": 10098,
       "ValidFor": [
         40022
@@ -15000,7 +14999,7 @@
       "NameID": 18108,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SMG_Tiger_01_256x128",
-      "Name": "Submachine Gun - Tiger Stripes Orange Weapon Skin",
+      "Name": "Submachine Gun - Tiger Stripes ORange Weapon Skin",
       "UID": 10107,
       "ValidFor": [
         40010
@@ -15099,7 +15098,7 @@
       "NameID": 18117,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SMG2_Tiger_01_256x128",
-      "Name": "Tactical SMG - Tiger Stripes Orange Weapon Skin",
+      "Name": "Tactical SMG - Tiger Stripes ORange Weapon Skin",
       "UID": 10116,
       "ValidFor": [
         40013
@@ -15198,7 +15197,7 @@
       "NameID": 18126,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SMGi_Tiger_01_256x128",
-      "Name": "Burstfire SMG - Tiger Stripes Orange Weapon Skin",
+      "Name": "Burstfire SMG - Tiger Stripes ORange Weapon Skin",
       "UID": 10125,
       "ValidFor": [
         40018
@@ -15297,7 +15296,7 @@
       "NameID": 18135,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_01_256x128",
-      "Name": "Combat Rifle - Tiger Stripes Orange Weapon Skin",
+      "Name": "Combat Rifle - Tiger Stripes ORange Weapon Skin",
       "UID": 10134,
       "ValidFor": [
         40008
@@ -15396,7 +15395,7 @@
       "NameID": 18144,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_01_256x128",
-      "Name": "Light Recon - Tiger Stripes Orange Weapon Skin",
+      "Name": "Light Recon - Tiger Stripes ORange Weapon Skin",
       "UID": 10143,
       "ValidFor": [
         40026
@@ -15495,7 +15494,7 @@
       "NameID": 18153,
       "Category": "primarySkins",
       "Icon": "t_SpecialtySkin_20mm_Tiger_01_256x128",
-      "Name": "Anti-Materiel - Tiger Stripes Orange Weapon Skin",
+      "Name": "Anti-Materiel - Tiger Stripes ORange Weapon Skin",
       "UID": 10152,
       "ValidFor": [
         40019
@@ -15619,11 +15618,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 11.0
+        "Rating": 11.0
       },
       "WikiStats": {
-        "scopeInTime": 0.340000003576279,
-        "zoom": 2.70000004768372
+        "ScopeInTime": 0.340000003576279,
+        "Zoom": 2.70000004768372
       }
     },
     {
@@ -15665,11 +15664,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 9.0
+        "Rating": 9.0
       },
       "WikiStats": {
-        "scopeInTime": 0.189999997615814,
-        "zoom": 1.70000004768372
+        "ScopeInTime": 0.189999997615814,
+        "Zoom": 1.70000004768372
       }
     },
     {
@@ -15713,10 +15712,10 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 11.0
+        "Rating": 11.0
       },
       "WikiStats": {
-        "zoom": 0.699999988079071
+        "Zoom": 0.699999988079071
       }
     },
     {
@@ -15758,11 +15757,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 11.0
+        "Rating": 11.0
       },
       "WikiStats": {
-        "scopeInTime": 0.140000000596046,
-        "zoom": 2.70000004768372
+        "ScopeInTime": 0.140000000596046,
+        "Zoom": 2.70000004768372
       }
     },
     {
@@ -15804,11 +15803,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 11.0
+        "Rating": 11.0
       },
       "WikiStats": {
-        "scopeInTime": 0.140000000596046,
-        "zoom": 0.699999988079071
+        "ScopeInTime": 0.140000000596046,
+        "Zoom": 0.699999988079071
       }
     },
     {
@@ -15852,7 +15851,7 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 2.0
+        "Rating": 2.0
       },
       "WikiStats": {}
     },
@@ -15895,11 +15894,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 10.0
+        "Rating": 10.0
       },
       "WikiStats": {
-        "scopeInTime": 0.280000001192093,
-        "zoom": 2.59999990463257
+        "ScopeInTime": 0.280000001192093,
+        "Zoom": 2.59999990463257
       }
     },
     {
@@ -15941,10 +15940,10 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 6.0
+        "Rating": 6.0
       },
       "WikiStats": {
-        "zoom": 1.70000004768372
+        "Zoom": 1.70000004768372
       }
     },
     {
@@ -15988,7 +15987,7 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 3.0
+        "Rating": 3.0
       },
       "WikiStats": {}
     },
@@ -16070,10 +16069,10 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 4.0
+        "Rating": 4.0
       },
       "WikiStats": {
-        "zoom": 2.59999990463257
+        "Zoom": 2.59999990463257
       }
     },
     {
@@ -16117,10 +16116,10 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 9.0
+        "Rating": 9.0
       },
       "WikiStats": {
-        "zoom": 0.5
+        "Zoom": 0.5
       }
     },
     {
@@ -16162,11 +16161,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 6.0
+        "Rating": 6.0
       },
       "WikiStats": {
-        "scopeInTime": 0.239999994635582,
-        "zoom": 4.69999980926514
+        "ScopeInTime": 0.239999994635582,
+        "Zoom": 4.69999980926514
       }
     },
     {
@@ -16210,7 +16209,7 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 9.0
+        "Rating": 9.0
       },
       "WikiStats": {}
     },
@@ -16255,10 +16254,10 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 7.0
+        "Rating": 7.0
       },
       "WikiStats": {
-        "zoom": 0.699999988079071
+        "Zoom": 0.699999988079071
       }
     },
     {
@@ -16300,11 +16299,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 8.0
+        "Rating": 8.0
       },
       "WikiStats": {
-        "scopeInTime": 0.170000001788139,
-        "zoom": 1.70000004768372
+        "ScopeInTime": 0.170000001788139,
+        "Zoom": 1.70000004768372
       }
     },
     {
@@ -16346,10 +16345,10 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 5.0
+        "Rating": 5.0
       },
       "WikiStats": {
-        "zoom": 1.20000004768372
+        "Zoom": 1.20000004768372
       }
     },
     {
@@ -16391,11 +16390,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 9.0
+        "Rating": 9.0
       },
       "WikiStats": {
-        "scopeInTime": 0.189999997615814,
-        "zoom": 2.70000004768372
+        "ScopeInTime": 0.189999997615814,
+        "Zoom": 2.70000004768372
       }
     },
     {
@@ -16437,10 +16436,10 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 7.0
+        "Rating": 7.0
       },
       "WikiStats": {
-        "zoom": 1.70000004768372
+        "Zoom": 1.70000004768372
       }
     },
     {
@@ -16484,10 +16483,10 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 8.0
+        "Rating": 8.0
       },
       "WikiStats": {
-        "zoom": 0.300000011920929
+        "Zoom": 0.300000011920929
       }
     },
     {
@@ -16529,11 +16528,11 @@
         40028
       ],
       "WeaponModifiers": {
-        "rating": 6.0
+        "Rating": 6.0
       },
       "WikiStats": {
-        "scopeInTime": 0.239999994635582,
-        "zoom": 3.09999990463257
+        "ScopeInTime": 0.239999994635582,
+        "Zoom": 3.09999990463257
       }
     },
     {
@@ -16557,11 +16556,11 @@
         40027
       ],
       "WeaponModifiers": {
-        "rating": 10.0
+        "Rating": 10.0
       },
       "WikiStats": {
-        "scopeInTime": 0.239999994635582,
-        "zoom": 2.70000004768372
+        "ScopeInTime": 0.239999994635582,
+        "Zoom": 2.70000004768372
       }
     },
     {
@@ -16605,7 +16604,7 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 1.0
+        "Rating": 1.0
       },
       "WikiStats": {}
     },
@@ -16671,7 +16670,7 @@
         40024
       ],
       "WeaponModifiers": {
-        "rating": 1.0
+        "Rating": 1.0
       }
     }
   ],
@@ -16690,20 +16689,20 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": 30.0,
-        "movementSpeed": -40.0,
-        "range": 30.0,
-        "rating": 9.0,
-        "recoil": 10.0
+        "Accuracy": 30.0,
+        "MovementSpeed": -40.0,
+        "Range": 30.0,
+        "Rating": 9.0,
+        "Recoil": 10.0
       },
       "WikiStats": {
-        "aimSpread": -0.0399999991059303,
-        "hipSpread": -0.0799999982118607,
-        "moveSpread": 1.12999999523163,
-        "rangeClose": 6.0,
-        "rangeFar": 6.0,
-        "recoil": -0.00999999977648258,
-        "run": -0.180000007152557
+        "AimSpread": -0.0399999991059303,
+        "HipSpread": -0.0799999982118607,
+        "MoveSpread": 1.12999999523163,
+        "RangeClose": 6.0,
+        "RangeFar": 6.0,
+        "Recoil": -0.00999999977648258,
+        "Run": -0.180000007152557
       }
     },
     {
@@ -16720,21 +16719,21 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": 20.0,
-        "movementSpeed": -40.0,
-        "range": 20.0,
-        "rating": 10.0,
-        "recoil": 40.0,
-        "reloadSpeed": -100.0
+        "Accuracy": 20.0,
+        "MovementSpeed": -40.0,
+        "Range": 20.0,
+        "Rating": 10.0,
+        "Recoil": 40.0,
+        "ReloadSpeed": -100.0
       },
       "WikiStats": {
-        "aimSpread": -0.0199999995529652,
-        "hipSpread": -0.0500000007450581,
-        "moveSpread": 1.19000005722046,
-        "rangeClose": 4.0,
-        "rangeFar": 4.0,
-        "recoil": -0.0599999986588955,
-        "run": -0.180000007152557
+        "AimSpread": -0.0199999995529652,
+        "HipSpread": -0.0500000007450581,
+        "MoveSpread": 1.19000005722046,
+        "RangeClose": 4.0,
+        "RangeFar": 4.0,
+        "Recoil": -0.0599999986588955,
+        "Run": -0.180000007152557
       }
     },
     {
@@ -16751,21 +16750,21 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "movementSpeed": 10.0,
-        "range": 10.0,
-        "rating": 6.0,
-        "recoil": -10.0,
-        "reloadSpeed": -50.0
+        "Accuracy": 10.0,
+        "MovementSpeed": 10.0,
+        "Range": 10.0,
+        "Rating": 6.0,
+        "Recoil": -10.0,
+        "ReloadSpeed": -50.0
       },
       "WikiStats": {
-        "aimSpread": -0.00999999977648258,
-        "hipSpread": -0.0299999993294477,
-        "moveSpread": -0.209999993443489,
-        "rangeClose": 2.0,
-        "rangeFar": 2.0,
-        "recoil": 0.0399999991059303,
-        "run": 0.0500000007450581
+        "AimSpread": -0.00999999977648258,
+        "HipSpread": -0.0299999993294477,
+        "MoveSpread": -0.209999993443489,
+        "RangeClose": 2.0,
+        "RangeFar": 2.0,
+        "Recoil": 0.0399999991059303,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -16799,14 +16798,14 @@
         40028
       ],
       "WeaponModifiers": {
-        "movementSpeed": -40.0,
-        "rating": 9.0,
-        "recoil": 40.0
+        "MovementSpeed": -40.0,
+        "Rating": 9.0,
+        "Recoil": 40.0
       },
       "WikiStats": {
-        "moveSpread": 0.939999997615814,
-        "recoil": -0.150000005960464,
-        "run": -0.0799999982118607
+        "MoveSpread": 0.939999997615814,
+        "Recoil": -0.150000005960464,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -16840,20 +16839,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -25.0,
-        "movementSpeed": 40.0,
-        "range": -15.0,
-        "rating": 1.0,
-        "recoil": -15.0
+        "Accuracy": -25.0,
+        "MovementSpeed": 40.0,
+        "Range": -15.0,
+        "Rating": 1.0,
+        "Recoil": -15.0
       },
       "WikiStats": {
-        "aimSpread": 0.0799999982118607,
-        "hipSpread": 0.150000005960464,
-        "moveSpread": -0.300000011920929,
-        "rangeClose": -2.0,
-        "rangeFar": -2.0,
-        "recoil": 0.0599999986588955,
-        "run": 0.0799999982118607
+        "AimSpread": 0.0799999982118607,
+        "HipSpread": 0.150000005960464,
+        "MoveSpread": -0.300000011920929,
+        "RangeClose": -2.0,
+        "RangeFar": -2.0,
+        "Recoil": 0.0599999986588955,
+        "Run": 0.0799999982118607
       }
     },
     {
@@ -16886,18 +16885,18 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -25.0,
-        "movementSpeed": 25.0,
-        "range": -25.0,
-        "rating": 8.0
+        "Accuracy": -25.0,
+        "MovementSpeed": 25.0,
+        "Range": -25.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "aimSpread": 0.0799999982118607,
-        "hipSpread": 0.150000005960464,
-        "moveSpread": -0.119999997317791,
-        "rangeClose": -3.0,
-        "rangeFar": -3.0,
-        "run": 0.0500000007450581
+        "AimSpread": 0.0799999982118607,
+        "HipSpread": 0.150000005960464,
+        "MoveSpread": -0.119999997317791,
+        "RangeClose": -3.0,
+        "RangeFar": -3.0,
+        "Run": 0.0500000007450581
       }
     },
     {
@@ -16931,20 +16930,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -20.0,
-        "movementSpeed": -40.0,
-        "range": -20.0,
-        "rating": 9.0,
-        "recoil": 60.0
+        "Accuracy": -20.0,
+        "MovementSpeed": -40.0,
+        "Range": -20.0,
+        "Rating": 9.0,
+        "Recoil": 60.0
       },
       "WikiStats": {
-        "aimSpread": 0.0599999986588955,
-        "hipSpread": 0.119999997317791,
-        "moveSpread": 1.08000004291534,
-        "rangeClose": -2.0,
-        "rangeFar": -2.0,
-        "recoil": -0.230000004172325,
-        "run": -0.0799999982118607
+        "AimSpread": 0.0599999986588955,
+        "HipSpread": 0.119999997317791,
+        "MoveSpread": 1.08000004291534,
+        "RangeClose": -2.0,
+        "RangeFar": -2.0,
+        "Recoil": -0.230000004172325,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -16978,18 +16977,18 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 25.0,
-        "range": 25.0,
-        "rating": 10.0,
-        "recoil": -25.0
+        "Accuracy": 25.0,
+        "Range": 25.0,
+        "Rating": 10.0,
+        "Recoil": -25.0
       },
       "WikiStats": {
-        "aimSpread": -0.0700000002980232,
-        "hipSpread": -0.140000000596046,
-        "moveSpread": 0.159999996423721,
-        "rangeClose": 2.0,
-        "rangeFar": 2.0,
-        "recoil": 0.109999999403954
+        "AimSpread": -0.0700000002980232,
+        "HipSpread": -0.140000000596046,
+        "MoveSpread": 0.159999996423721,
+        "RangeClose": 2.0,
+        "RangeFar": 2.0,
+        "Recoil": 0.109999999403954
       }
     },
     {
@@ -17023,18 +17022,18 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 30.0,
-        "movementSpeed": -30.0,
-        "range": 30.0,
-        "rating": 8.0
+        "Accuracy": 30.0,
+        "MovementSpeed": -30.0,
+        "Range": 30.0,
+        "Rating": 8.0
       },
       "WikiStats": {
-        "aimSpread": -0.0900000035762787,
-        "hipSpread": -0.170000001788139,
-        "moveSpread": 0.490000009536743,
-        "rangeClose": 3.0,
-        "rangeFar": 3.0,
-        "run": 0.0599999986588955
+        "AimSpread": -0.0900000035762787,
+        "HipSpread": -0.170000001788139,
+        "MoveSpread": 0.490000009536743,
+        "RangeClose": 3.0,
+        "RangeFar": 3.0,
+        "Run": 0.0599999986588955
       }
     },
     {
@@ -17068,20 +17067,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 30.0,
-        "movementSpeed": 20.0,
-        "range": 30.0,
-        "rating": 6.0,
-        "recoil": -60.0
+        "Accuracy": 30.0,
+        "MovementSpeed": 20.0,
+        "Range": 30.0,
+        "Rating": 6.0,
+        "Recoil": -60.0
       },
       "WikiStats": {
-        "aimSpread": -0.0900000035762787,
-        "hipSpread": -0.170000001788139,
-        "moveSpread": -0.430000007152557,
-        "rangeClose": 3.0,
-        "rangeFar": 3.0,
-        "recoil": 0.25,
-        "run": 0.0399999991059303
+        "AimSpread": -0.0900000035762787,
+        "HipSpread": -0.170000001788139,
+        "MoveSpread": -0.430000007152557,
+        "RangeClose": 3.0,
+        "RangeFar": 3.0,
+        "Recoil": 0.25,
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -17114,20 +17113,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "movementSpeed": -40.0,
-        "range": 10.0,
-        "rating": 3.0,
-        "recoil": 30.0
+        "Accuracy": 10.0,
+        "MovementSpeed": -40.0,
+        "Range": 10.0,
+        "Rating": 3.0,
+        "Recoil": 30.0
       },
       "WikiStats": {
-        "aimSpread": -0.0299999993294477,
-        "hipSpread": -0.0599999986588955,
-        "moveSpread": 0.860000014305115,
-        "rangeClose": 1.0,
-        "rangeFar": 1.0,
-        "recoil": -0.119999997317791,
-        "run": -0.0799999982118607
+        "AimSpread": -0.0299999993294477,
+        "HipSpread": -0.0599999986588955,
+        "MoveSpread": 0.860000014305115,
+        "RangeClose": 1.0,
+        "RangeFar": 1.0,
+        "Recoil": -0.119999997317791,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -17161,20 +17160,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 20.0,
-        "movementSpeed": -40.0,
-        "range": 20.0,
-        "rating": 9.0,
-        "recoil": 20.0
+        "Accuracy": 20.0,
+        "MovementSpeed": -40.0,
+        "Range": 20.0,
+        "Rating": 9.0,
+        "Recoil": 20.0
       },
       "WikiStats": {
-        "aimSpread": -0.0599999986588955,
-        "hipSpread": -0.0900000035762787,
-        "moveSpread": 0.790000021457672,
-        "rangeClose": 2.0,
-        "rangeFar": 2.0,
-        "recoil": -0.0799999982118607,
-        "run": -0.0799999982118607
+        "AimSpread": -0.0599999986588955,
+        "HipSpread": -0.0900000035762787,
+        "MoveSpread": 0.790000021457672,
+        "RangeClose": 2.0,
+        "RangeFar": 2.0,
+        "Recoil": -0.0799999982118607,
+        "Run": -0.0799999982118607
       }
     },
     {
@@ -17208,20 +17207,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": 10.0,
-        "movementSpeed": -20.0,
-        "range": 10.0,
-        "rating": 2.0,
-        "recoil": 10.0
+        "Accuracy": 10.0,
+        "MovementSpeed": -20.0,
+        "Range": 10.0,
+        "Rating": 2.0,
+        "Recoil": 10.0
       },
       "WikiStats": {
-        "aimSpread": -0.0299999993294477,
-        "hipSpread": -0.0599999986588955,
-        "moveSpread": 0.400000005960464,
-        "rangeClose": 1.0,
-        "rangeFar": 1.0,
-        "recoil": -0.0399999991059303,
-        "run": -0.0399999991059303
+        "AimSpread": -0.0299999993294477,
+        "HipSpread": -0.0599999986588955,
+        "MoveSpread": 0.400000005960464,
+        "RangeClose": 1.0,
+        "RangeFar": 1.0,
+        "Recoil": -0.0399999991059303,
+        "Run": -0.0399999991059303
       }
     },
     {
@@ -17255,20 +17254,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "movementSpeed": 20.0,
-        "range": -10.0,
-        "rating": 7.0,
-        "recoil": -10.0
+        "Accuracy": -10.0,
+        "MovementSpeed": 20.0,
+        "Range": -10.0,
+        "Rating": 7.0,
+        "Recoil": -10.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": -0.159999996423721,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "recoil": 0.0399999991059303,
-        "run": 0.0399999991059303
+        "AimSpread": 0.0299999993294477,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": -0.159999996423721,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Recoil": 0.0399999991059303,
+        "Run": 0.0399999991059303
       }
     },
     {
@@ -17335,14 +17334,14 @@
         40028
       ],
       "WeaponModifiers": {
-        "movementSpeed": -30.0,
-        "rating": 9.0,
-        "recoil": 30.0
+        "MovementSpeed": -30.0,
+        "Rating": 9.0,
+        "Recoil": 30.0
       },
       "WikiStats": {
-        "moveSpread": 0.699999988079071,
-        "recoil": -0.119999997317791,
-        "run": -0.0599999986588955
+        "MoveSpread": 0.699999988079071,
+        "Recoil": -0.119999997317791,
+        "Run": -0.0599999986588955
       }
     },
     {
@@ -17376,20 +17375,20 @@
         40028
       ],
       "WeaponModifiers": {
-        "accuracy": -10.0,
-        "movementSpeed": 40.0,
-        "range": -10.0,
-        "rating": 5.0,
-        "recoil": -30.0
+        "Accuracy": -10.0,
+        "MovementSpeed": 40.0,
+        "Range": -10.0,
+        "Rating": 5.0,
+        "Recoil": -30.0
       },
       "WikiStats": {
-        "aimSpread": 0.0299999993294477,
-        "hipSpread": 0.0599999986588955,
-        "moveSpread": -0.400000005960464,
-        "rangeClose": -1.0,
-        "rangeFar": -1.0,
-        "recoil": 0.129999995231628,
-        "run": 0.0799999982118607
+        "AimSpread": 0.0299999993294477,
+        "HipSpread": 0.0599999986588955,
+        "MoveSpread": -0.400000005960464,
+        "RangeClose": -1.0,
+        "RangeFar": -1.0,
+        "Recoil": 0.129999995231628,
+        "Run": 0.0799999982118607
       }
     },
     {
@@ -17406,7 +17405,7 @@
         40020
       ],
       "WeaponModifiers": {
-        "rating": 5.0
+        "Rating": 5.0
       },
       "WikiStats": {}
     },
@@ -17424,18 +17423,18 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": -30.0,
-        "movementSpeed": 30.0,
-        "range": -30.0,
-        "rating": 7.0
+        "Accuracy": -30.0,
+        "MovementSpeed": 30.0,
+        "Range": -30.0,
+        "Rating": 7.0
       },
       "WikiStats": {
-        "aimSpread": 0.150000005960464,
-        "hipSpread": 0.349999994039536,
-        "moveSpread": 0.0399999991059303,
-        "rangeClose": -6.0,
-        "rangeFar": -6.0,
-        "run": 0.140000000596046
+        "AimSpread": 0.150000005960464,
+        "HipSpread": 0.349999994039536,
+        "MoveSpread": 0.0399999991059303,
+        "RangeClose": -6.0,
+        "RangeFar": -6.0,
+        "Run": 0.140000000596046
       }
     },
     {
@@ -17452,20 +17451,20 @@
         40020
       ],
       "WeaponModifiers": {
-        "accuracy": -20.0,
-        "movementSpeed": -30.0,
-        "range": -20.0,
-        "rating": 8.0,
-        "recoil": 50.0
+        "Accuracy": -20.0,
+        "MovementSpeed": -30.0,
+        "Range": -20.0,
+        "Rating": 8.0,
+        "Recoil": 50.0
       },
       "WikiStats": {
-        "aimSpread": 0.100000001490116,
-        "hipSpread": 0.230000004172325,
-        "moveSpread": 1.4099999666214,
-        "rangeClose": -4.0,
-        "rangeFar": -4.0,
-        "recoil": -0.0799999982118607,
-        "run": -0.129999995231628
+        "AimSpread": 0.100000001490116,
+        "HipSpread": 0.230000004172325,
+        "MoveSpread": 1.4099999666214,
+        "RangeClose": -4.0,
+        "RangeFar": -4.0,
+        "Recoil": -0.0799999982118607,
+        "Run": -0.129999995231628
       }
     },
     {
@@ -17526,7 +17525,7 @@
       "Icon": "t_HeavyAssultRifle_256x128",
       "Name": "Heavy Assault Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -17537,14 +17536,14 @@
       ],
       "UID": 40017,
       "WeaponStats": {
-        "accuracy": 0.041,
-        "damage": 60.0,
-        "movementSpeed": -30.0,
-        "range": 6000.0,
-        "rateOfFire": 500.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.041,
+        "Damage": 60.0,
+        "MovementSpeed": -30.0,
+        "Range": 6000.0,
+        "RateOfFire": 500.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.12,
         "BaseSpread": 0.1,
         "Burst": 1.0,
@@ -17665,20 +17664,20 @@
         "ZoomSpreadMultiplier": 0.475
       },
       "WikiStats": {
-        "aimSpread": 0.400000005960464,
-        "ammoMag": 22.0,
-        "ammoReserve": 88.0,
-        "damage": 60.0,
-        "firerate": 500.0,
-        "hipSpread": 2.34999990463257,
-        "moveSpread": 7.32999992370605,
-        "rangeClose": 60.0,
-        "rangeFar": 90.0,
-        "recoil": 125.360000610352,
-        "reload": 3.0,
-        "run": 7.38000011444092,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.400000005960464,
+        "AmmoMag": 22.0,
+        "AmmoReserve": 88.0,
+        "Damage": 60.0,
+        "Firerate": 500.0,
+        "HipSpread": 2.34999990463257,
+        "MoveSpread": 7.32999992370605,
+        "RangeClose": 60.0,
+        "RangeFar": 90.0,
+        "Recoil": 125.360000610352,
+        "Reload": 3.0,
+        "Run": 7.38000011444092,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -17688,7 +17687,7 @@
       "Icon": "t_LMGRecon_256x128",
       "Name": "LMG Recon",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -17699,14 +17698,14 @@
       ],
       "UID": 40014,
       "WeaponStats": {
-        "accuracy": 0.0399999991059303,
-        "damage": 68.0,
-        "movementSpeed": -40.0,
-        "range": 4500.0,
-        "rateOfFire": 450.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0399999991059303,
+        "Damage": 68.0,
+        "MovementSpeed": -40.0,
+        "Range": 4500.0,
+        "RateOfFire": 450.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.133333333333,
         "RecoveryTime": 0.05,
         "BaseSpread": 0.05,
@@ -17829,20 +17828,20 @@
         "ZoomSpreadMultiplier": 0.45
       },
       "WikiStats": {
-        "aimSpread": 1.25999999046326,
-        "ammoMag": 65.0,
-        "ammoReserve": 195.0,
-        "damage": 68.0,
-        "firerate": 450.0,
-        "hipSpread": 2.28999996185303,
-        "moveSpread": 3.77999997138977,
-        "rangeClose": 45.0,
-        "rangeFar": 65.0,
-        "recoil": 77.6800003051758,
-        "reload": 4.0,
-        "run": 7.28999996185303,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.25999999046326,
+        "AmmoMag": 65.0,
+        "AmmoReserve": 195.0,
+        "Damage": 68.0,
+        "Firerate": 450.0,
+        "HipSpread": 2.28999996185303,
+        "MoveSpread": 3.77999997138977,
+        "RangeClose": 45.0,
+        "RangeFar": 65.0,
+        "Recoil": 77.6800003051758,
+        "Reload": 4.0,
+        "Run": 7.28999996185303,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -17852,7 +17851,7 @@
       "Icon": "t_TacticalSMG_256x128",
       "Name": "Tactical SMG",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "magazines",
@@ -17861,14 +17860,14 @@
       ],
       "UID": 40013,
       "WeaponStats": {
-        "accuracy": 0.0350000001490116,
-        "damage": 36.0,
-        "movementSpeed": 50.0,
-        "range": 1700.0,
-        "rateOfFire": 950.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0350000001490116,
+        "Damage": 36.0,
+        "MovementSpeed": 50.0,
+        "Range": 1700.0,
+        "RateOfFire": 950.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.0631578937,
         "BaseSpread": 0.05,
         "Burst": 1.0,
@@ -17985,20 +17984,20 @@
         "ZoomSpreadMultiplier": 0.5
       },
       "WikiStats": {
-        "aimSpread": 1.0,
-        "ammoMag": 35.0,
-        "ammoReserve": 140.0,
-        "damage": 36.0,
-        "firerate": 950.0,
-        "hipSpread": 2.00999999046326,
-        "moveSpread": 2.14000010490417,
-        "rangeClose": 35.0,
-        "rangeFar": 60.0,
-        "recoil": 3.98000001907349,
-        "reload": 2.67000007629395,
-        "run": 8.10000038146973,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.0,
+        "AmmoMag": 35.0,
+        "AmmoReserve": 140.0,
+        "Damage": 36.0,
+        "Firerate": 950.0,
+        "HipSpread": 2.00999999046326,
+        "MoveSpread": 2.14000010490417,
+        "RangeClose": 35.0,
+        "RangeFar": 60.0,
+        "Recoil": 3.98000001907349,
+        "Reload": 2.67000007629395,
+        "Run": 8.10000038146973,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -18008,7 +18007,7 @@
       "Icon": "t_BurstFireSMG_256x128",
       "Name": "Burstfire SMG",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "magazines",
@@ -18017,14 +18016,14 @@
       ],
       "UID": 40018,
       "WeaponStats": {
-        "accuracy": 0.0299999993294477,
-        "damage": 30.0,
-        "movementSpeed": 25.0,
-        "range": 1000.0,
-        "rateOfFire": 850.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0299999993294477,
+        "Damage": 30.0,
+        "MovementSpeed": 25.0,
+        "Range": 1000.0,
+        "RateOfFire": 850.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.16,
         "RecoveryTime": 0.08,
         "BaseSpread": 0.0,
@@ -18140,20 +18139,20 @@
         "ZoomSpreadMultiplier": 0.5
       },
       "WikiStats": {
-        "aimSpread": 0.860000014305115,
-        "ammoMag": 33.0,
-        "ammoReserve": 132.0,
-        "damage": 30.0,
-        "firerate": 850.0,
-        "hipSpread": 1.72000002861023,
-        "moveSpread": 2.83999991416931,
-        "rangeClose": 10.0,
-        "rangeFar": 50.0,
-        "recoil": 2.11999988555908,
-        "reload": 2.40000009536743,
-        "run": 7.88000011444092,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.860000014305115,
+        "AmmoMag": 33.0,
+        "AmmoReserve": 132.0,
+        "Damage": 30.0,
+        "Firerate": 850.0,
+        "HipSpread": 1.72000002861023,
+        "MoveSpread": 2.83999991416931,
+        "RangeClose": 10.0,
+        "RangeFar": 50.0,
+        "Recoil": 2.11999988555908,
+        "Reload": 2.40000009536743,
+        "Run": 7.88000011444092,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -18163,7 +18162,7 @@
       "Icon": "t_AntiMaterialRifle_256x128",
       "Name": "Anti-Materiel Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "scopes",
@@ -18171,14 +18170,14 @@
       ],
       "UID": 40019,
       "WeaponStats": {
-        "accuracy": 0.5,
-        "damage": 300.0,
-        "movementSpeed": -100.0,
-        "range": 18000.0,
-        "rateOfFire": 120.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.5,
+        "Damage": 300.0,
+        "MovementSpeed": -100.0,
+        "Range": 18000.0,
+        "RateOfFire": 120.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "RecoveryTime": 0.5,
         "BaseSpread": 0.3,
@@ -18311,20 +18310,20 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 0.200000002980232,
-        "ammoMag": 1.0,
-        "ammoReserve": 9.0,
-        "damage": 300.0,
-        "firerate": 120.0,
-        "hipSpread": 28.6499996185303,
-        "moveSpread": 127.75,
-        "rangeClose": 180.0,
-        "rangeFar": 200.0,
-        "recoil": 36.0999984741211,
-        "reload": 4.69999980926514,
-        "run": 6.75,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.200000002980232,
+        "AmmoMag": 1.0,
+        "AmmoReserve": 9.0,
+        "Damage": 300.0,
+        "Firerate": 120.0,
+        "HipSpread": 28.6499996185303,
+        "MoveSpread": 127.75,
+        "RangeClose": 180.0,
+        "RangeFar": 200.0,
+        "Recoil": 36.0999984741211,
+        "Reload": 4.69999980926514,
+        "Run": 6.75,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -18334,7 +18333,7 @@
       "Icon": "t_BullpupFullAuto_256x128",
       "Name": "Bullpup Full Auto",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrelgrip",
         "barrels",
         "camosWeapon",
@@ -18346,14 +18345,14 @@
       ],
       "UID": 40020,
       "WeaponStats": {
-        "accuracy": 0.0414999984204769,
-        "damage": 56.0,
-        "movementSpeed": 20.0,
-        "range": 3000.0,
-        "rateOfFire": 550.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0414999984204769,
+        "Damage": 56.0,
+        "MovementSpeed": 20.0,
+        "Range": 3000.0,
+        "RateOfFire": 550.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.109090909,
         "BaseSpread": 0.05,
         "Burst": 1.0,
@@ -18479,20 +18478,20 @@
         "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
-        "aimSpread": 1.14999997615814,
-        "ammoMag": 25.0,
-        "ammoReserve": 100.0,
-        "damage": 56.0,
-        "firerate": 550.0,
-        "hipSpread": 2.38000011444092,
-        "moveSpread": 2.75,
-        "rangeClose": 30.0,
-        "rangeFar": 35.0,
-        "recoil": 21.8400001525879,
-        "reload": 2.82999992370605,
-        "run": 7.96000003814697,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.14999997615814,
+        "AmmoMag": 25.0,
+        "AmmoReserve": 100.0,
+        "Damage": 56.0,
+        "Firerate": 550.0,
+        "HipSpread": 2.38000011444092,
+        "MoveSpread": 2.75,
+        "RangeClose": 30.0,
+        "RangeFar": 35.0,
+        "Recoil": 21.8400001525879,
+        "Reload": 2.82999992370605,
+        "Run": 7.96000003814697,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -18502,7 +18501,7 @@
       "Icon": "t_AK47_256x128",
       "Name": "AK470 Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -18513,13 +18512,13 @@
       ],
       "UID": 40023,
       "WeaponStats": {
-        "accuracy": 0.0425000004470348,
-        "damage": 48.0,
-        "range": 4500.0,
-        "rateOfFire": 650.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0425000004470348,
+        "Damage": 48.0,
+        "Range": 4500.0,
+        "RateOfFire": 650.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.0923076943,
         "BaseSpread": 0.08,
         "Burst": 1.0,
@@ -18627,20 +18626,20 @@
         "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
-        "aimSpread": 0.769999980926514,
-        "ammoMag": 30.0,
-        "ammoReserve": 120.0,
-        "damage": 48.0,
-        "firerate": 650.0,
-        "hipSpread": 2.44000005722046,
-        "moveSpread": 4.69000005722046,
-        "rangeClose": 45.0,
-        "rangeFar": 70.0,
-        "recoil": 50.1100006103516,
-        "reload": 2.67000007629395,
-        "run": 7.65000009536743,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.769999980926514,
+        "AmmoMag": 30.0,
+        "AmmoReserve": 120.0,
+        "Damage": 48.0,
+        "Firerate": 650.0,
+        "HipSpread": 2.44000005722046,
+        "MoveSpread": 4.69000005722046,
+        "RangeClose": 45.0,
+        "RangeFar": 70.0,
+        "Recoil": 50.1100006103516,
+        "Reload": 2.67000007629395,
+        "Run": 7.65000009536743,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -18650,7 +18649,7 @@
       "Icon": "t_CompoundBow_256x128",
       "Name": "Compound Bow",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "magazines",
@@ -18658,11 +18657,11 @@
       ],
       "UID": 40024,
       "WeaponStats": {
-        "accuracy": 0.0199999995529652,
-        "range": 8000.0,
-        "rateOfFire": 360.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0199999995529652,
+        "Range": 8000.0,
+        "RateOfFire": 360.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.166666666667,
         "BaseSpread": 0.02,
         "Burst": 1.0,
@@ -18778,18 +18777,18 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 1.14999997615814,
-        "ammoMag": 1.0,
-        "ammoReserve": 10.0,
-        "firerate": 69.0,
-        "hipSpread": 1.14999997615814,
-        "moveSpread": 5.98999977111816,
-        "rangeClose": 80.0,
-        "rangeFar": 100.0,
-        "reload": 0.699999988079071,
-        "run": 7.65000009536743,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.14999997615814,
+        "AmmoMag": 1.0,
+        "AmmoReserve": 10.0,
+        "Firerate": 69.0,
+        "HipSpread": 1.14999997615814,
+        "MoveSpread": 5.98999977111816,
+        "RangeClose": 80.0,
+        "RangeFar": 100.0,
+        "Reload": 0.699999988079071,
+        "Run": 7.65000009536743,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -18799,7 +18798,7 @@
       "Icon": "t_M4X_256x128",
       "Name": "M4X Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -18810,14 +18809,14 @@
       ],
       "UID": 40022,
       "WeaponStats": {
-        "accuracy": 0.0399999991059303,
-        "damage": 39.0,
-        "movementSpeed": 15.0,
-        "range": 2500.0,
-        "rateOfFire": 750.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0399999991059303,
+        "Damage": 39.0,
+        "MovementSpeed": 15.0,
+        "Range": 2500.0,
+        "RateOfFire": 750.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.08,
         "BaseSpread": 0.04,
         "Burst": 1.0,
@@ -18924,20 +18923,20 @@
         "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
-        "aimSpread": 0.800000011920929,
-        "ammoMag": 30.0,
-        "ammoReserve": 120.0,
-        "damage": 39.0,
-        "firerate": 750.0,
-        "hipSpread": 2.28999996185303,
-        "moveSpread": 4.23000001907349,
-        "rangeClose": 25.0,
-        "rangeFar": 40.0,
-        "recoil": 37.7599983215332,
-        "reload": 2.67000007629395,
-        "run": 7.78999996185303,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.800000011920929,
+        "AmmoMag": 30.0,
+        "AmmoReserve": 120.0,
+        "Damage": 39.0,
+        "Firerate": 750.0,
+        "HipSpread": 2.28999996185303,
+        "MoveSpread": 4.23000001907349,
+        "RangeClose": 25.0,
+        "RangeFar": 40.0,
+        "Recoil": 37.7599983215332,
+        "Reload": 2.67000007629395,
+        "Run": 7.78999996185303,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -18947,7 +18946,7 @@
       "Icon": "t_AssultRifle_03_256x128",
       "Name": "Tactical Assault Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -18958,13 +18957,13 @@
       ],
       "UID": 40025,
       "WeaponStats": {
-        "accuracy": 0.0399999991059303,
-        "damage": 55.0,
-        "range": 5000.0,
-        "rateOfFire": 450.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0399999991059303,
+        "Damage": 55.0,
+        "Range": 5000.0,
+        "RateOfFire": 450.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1333333333334,
         "BaseSpread": 0.05,
         "Burst": 1.0,
@@ -19085,20 +19084,20 @@
         "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
-        "aimSpread": 0.800000011920929,
-        "ammoMag": 20.0,
-        "ammoReserve": 80.0,
-        "damage": 55.0,
-        "firerate": 450.0,
-        "hipSpread": 2.28999996185303,
-        "moveSpread": 4.90000009536743,
-        "rangeClose": 50.0,
-        "rangeFar": 80.0,
-        "recoil": 40.5299987792969,
-        "reload": 2.40000009536743,
-        "run": 7.65000009536743,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.800000011920929,
+        "AmmoMag": 20.0,
+        "AmmoReserve": 80.0,
+        "Damage": 55.0,
+        "Firerate": 450.0,
+        "HipSpread": 2.28999996185303,
+        "MoveSpread": 4.90000009536743,
+        "RangeClose": 50.0,
+        "RangeFar": 80.0,
+        "Recoil": 40.5299987792969,
+        "Reload": 2.40000009536743,
+        "Run": 7.65000009536743,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -19108,7 +19107,7 @@
       "Icon": "t_AssultRifle_256x128",
       "Name": "Assault Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -19119,13 +19118,13 @@
       ],
       "UID": 40003,
       "WeaponStats": {
-        "accuracy": 0.0399999991059303,
-        "damage": 45.0,
-        "range": 4000.0,
-        "rateOfFire": 650.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0399999991059303,
+        "Damage": 45.0,
+        "Range": 4000.0,
+        "RateOfFire": 650.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.0923076943,
         "BaseSpread": 0.02,
         "Burst": 1.0,
@@ -19245,20 +19244,20 @@
         "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
-        "aimSpread": 0.800000011920929,
-        "ammoMag": 30.0,
-        "ammoReserve": 120.0,
-        "damage": 45.0,
-        "firerate": 650.0,
-        "hipSpread": 2.28999996185303,
-        "moveSpread": 4.15000009536743,
-        "rangeClose": 40.0,
-        "rangeFar": 70.0,
-        "recoil": 26.8999996185303,
-        "reload": 2.40000009536743,
-        "run": 7.65000009536743,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.800000011920929,
+        "AmmoMag": 30.0,
+        "AmmoReserve": 120.0,
+        "Damage": 45.0,
+        "Firerate": 650.0,
+        "HipSpread": 2.28999996185303,
+        "MoveSpread": 4.15000009536743,
+        "RangeClose": 40.0,
+        "RangeFar": 70.0,
+        "Recoil": 26.8999996185303,
+        "Reload": 2.40000009536743,
+        "Run": 7.65000009536743,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -19268,7 +19267,7 @@
       "Icon": "t_BoltActionRifle_256x128",
       "Name": "Bolt-Action Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -19279,14 +19278,14 @@
       ],
       "UID": 40007,
       "WeaponStats": {
-        "accuracy": 0.119999997317791,
-        "damage": 175.0,
-        "movementSpeed": -50.0,
-        "range": 8000.0,
-        "rateOfFire": 60.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.119999997317791,
+        "Damage": 175.0,
+        "MovementSpeed": -50.0,
+        "Range": 8000.0,
+        "RateOfFire": 60.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "RecoveryTime": 0.6,
         "BaseSpread": 0.3,
@@ -19407,19 +19406,19 @@
         "ZoomSpreadMultiplier": 0.2
       },
       "WikiStats": {
-        "ammoMag": 5.0,
-        "ammoReserve": 20.0,
-        "damage": 175.0,
-        "firerate": 60.0,
-        "hipSpread": 6.88000011444092,
-        "moveSpread": 13.210000038147,
-        "rangeClose": 80.0,
-        "rangeFar": 130.0,
-        "recoil": 18.0599994659424,
-        "reload": 4.36999988555908,
-        "run": 7.19999980926514,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AmmoMag": 5.0,
+        "AmmoReserve": 20.0,
+        "Damage": 175.0,
+        "Firerate": 60.0,
+        "HipSpread": 6.88000011444092,
+        "MoveSpread": 13.210000038147,
+        "RangeClose": 80.0,
+        "RangeFar": 130.0,
+        "Recoil": 18.0599994659424,
+        "Reload": 4.36999988555908,
+        "Run": 7.19999980926514,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -19429,7 +19428,7 @@
       "Icon": "t_LightMachineGun_256x128",
       "Name": "Light Machine Gun",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -19440,14 +19439,14 @@
       ],
       "UID": 40011,
       "WeaponStats": {
-        "accuracy": 0.0500000007450581,
-        "damage": 55.0,
-        "movementSpeed": -50.0,
-        "range": 4500.0,
-        "rateOfFire": 650.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0500000007450581,
+        "Damage": 55.0,
+        "MovementSpeed": -50.0,
+        "Range": 4500.0,
+        "RateOfFire": 650.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.0923076943,
         "RecoveryTime": 0.1,
         "BaseSpread": 0.08,
@@ -19570,20 +19569,20 @@
         "ZoomSpreadMultiplier": 0.6
       },
       "WikiStats": {
-        "aimSpread": 1.72000002861023,
-        "ammoMag": 150.0,
-        "ammoReserve": 450.0,
-        "damage": 55.0,
-        "firerate": 650.0,
-        "hipSpread": 2.85999989509583,
-        "moveSpread": 8.64000034332275,
-        "rangeClose": 45.0,
-        "rangeFar": 65.0,
-        "recoil": 26.0200004577637,
-        "reload": 6.67000007629395,
-        "run": 7.19999980926514,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.72000002861023,
+        "AmmoMag": 150.0,
+        "AmmoReserve": 450.0,
+        "Damage": 55.0,
+        "Firerate": 650.0,
+        "HipSpread": 2.85999989509583,
+        "MoveSpread": 8.64000034332275,
+        "RangeClose": 45.0,
+        "RangeFar": 65.0,
+        "Recoil": 26.0200004577637,
+        "Reload": 6.67000007629395,
+        "Run": 7.19999980926514,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -19593,7 +19592,7 @@
       "Icon": "t_BurstFireRifle_256x128",
       "Name": "Burstfire Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -19604,14 +19603,14 @@
       ],
       "UID": 40009,
       "WeaponStats": {
-        "accuracy": 0.0299999993294477,
-        "damage": 54.0,
-        "movementSpeed": -15.0,
-        "range": 6000.0,
-        "rateOfFire": 725.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0299999993294477,
+        "Damage": 54.0,
+        "MovementSpeed": -15.0,
+        "Range": 6000.0,
+        "RateOfFire": 725.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.24,
         "RecoveryTime": 0.08,
         "BaseSpread": 0.01,
@@ -19738,20 +19737,20 @@
         "ZoomSpreadMultiplier": 0.4375
       },
       "WikiStats": {
-        "aimSpread": 0.200000002980232,
-        "ammoMag": 15.0,
-        "ammoReserve": 60.0,
-        "damage": 54.0,
-        "firerate": 725.0,
-        "hipSpread": 1.72000002861023,
-        "moveSpread": 5.07000017166138,
-        "rangeClose": 60.0,
-        "rangeFar": 100.0,
-        "recoil": 32.3600006103516,
-        "reload": 3.13000011444092,
-        "run": 7.51000022888184,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.200000002980232,
+        "AmmoMag": 15.0,
+        "AmmoReserve": 60.0,
+        "Damage": 54.0,
+        "Firerate": 725.0,
+        "HipSpread": 1.72000002861023,
+        "MoveSpread": 5.07000017166138,
+        "RangeClose": 60.0,
+        "RangeFar": 100.0,
+        "Recoil": 32.3600006103516,
+        "Reload": 3.13000011444092,
+        "Run": 7.51000022888184,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -19761,7 +19760,7 @@
       "Icon": "t_Gold_AR_256x128",
       "Name": "Prestige Assault Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -19772,13 +19771,13 @@
       ],
       "UID": 40027,
       "WeaponStats": {
-        "accuracy": 0.0399999991059303,
-        "damage": 45.0,
-        "range": 4000.0,
-        "rateOfFire": 650.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0399999991059303,
+        "Damage": 45.0,
+        "Range": 4000.0,
+        "RateOfFire": 650.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.0923076943,
         "BaseSpread": 0.02,
         "Burst": 1.0,
@@ -19898,20 +19897,20 @@
         "ZoomSpreadMultiplier": 0.425
       },
       "WikiStats": {
-        "aimSpread": 0.800000011920929,
-        "ammoMag": 30.0,
-        "ammoReserve": 120.0,
-        "damage": 45.0,
-        "firerate": 650.0,
-        "hipSpread": 2.28999996185303,
-        "moveSpread": 4.15000009536743,
-        "rangeClose": 40.0,
-        "rangeFar": 70.0,
-        "recoil": 26.8999996185303,
-        "reload": 2.40000009536743,
-        "run": 7.65000009536743,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.800000011920929,
+        "AmmoMag": 30.0,
+        "AmmoReserve": 120.0,
+        "Damage": 45.0,
+        "Firerate": 650.0,
+        "HipSpread": 2.28999996185303,
+        "MoveSpread": 4.15000009536743,
+        "RangeClose": 40.0,
+        "RangeFar": 70.0,
+        "Recoil": 26.8999996185303,
+        "Reload": 2.40000009536743,
+        "Run": 7.65000009536743,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -19921,7 +19920,7 @@
       "Icon": "t_SubMachineGun_256x128",
       "Name": "Submachine Gun",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -19932,14 +19931,14 @@
       ],
       "UID": 40010,
       "WeaponStats": {
-        "accuracy": 0.0649999976158142,
-        "damage": 33.0,
-        "movementSpeed": 30.0,
-        "range": 1200.0,
-        "rateOfFire": 900.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0649999976158142,
+        "Damage": 33.0,
+        "MovementSpeed": 30.0,
+        "Range": 1200.0,
+        "RateOfFire": 900.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.06666666666667,
         "BaseSpread": 0.02,
         "Burst": 1.0,
@@ -20060,20 +20059,20 @@
         "ZoomSpreadMultiplier": 0.5
       },
       "WikiStats": {
-        "aimSpread": 1.14999997615814,
-        "ammoMag": 45.0,
-        "ammoReserve": 180.0,
-        "damage": 33.0,
-        "firerate": 900.0,
-        "hipSpread": 3.72000002861023,
-        "moveSpread": 3.97000002861023,
-        "rangeClose": 12.0,
-        "rangeFar": 45.0,
-        "recoil": 13.210000038147,
-        "reload": 2.70000004768372,
-        "run": 7.92000007629395,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.14999997615814,
+        "AmmoMag": 45.0,
+        "AmmoReserve": 180.0,
+        "Damage": 33.0,
+        "Firerate": 900.0,
+        "HipSpread": 3.72000002861023,
+        "MoveSpread": 3.97000002861023,
+        "RangeClose": 12.0,
+        "RangeFar": 45.0,
+        "Recoil": 13.210000038147,
+        "Reload": 2.70000004768372,
+        "Run": 7.92000007629395,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -20083,7 +20082,7 @@
       "Icon": "t_CombatRifle_256x128",
       "Name": "Combat Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -20094,14 +20093,14 @@
       ],
       "UID": 40008,
       "WeaponStats": {
-        "accuracy": 0.0450000017881393,
-        "damage": 92.0,
-        "movementSpeed": -25.0,
-        "range": 10000.0,
-        "rateOfFire": 300.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0450000017881393,
+        "Damage": 92.0,
+        "MovementSpeed": -25.0,
+        "Range": 10000.0,
+        "RateOfFire": 300.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.2,
         "RecoveryTime": 0.5,
         "BaseSpread": 0.25,
@@ -20218,19 +20217,19 @@
         "ZoomSpreadMultiplier": 0.01
       },
       "WikiStats": {
-        "ammoMag": 9.0,
-        "ammoReserve": 36.0,
-        "damage": 92.0,
-        "firerate": 300.0,
-        "hipSpread": 2.57999992370605,
-        "moveSpread": 3.66000008583069,
-        "rangeClose": 100.0,
-        "rangeFar": 120.0,
-        "recoil": 30.2800006866455,
-        "reload": 2.32999992370605,
-        "run": 7.42000007629395,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AmmoMag": 9.0,
+        "AmmoReserve": 36.0,
+        "Damage": 92.0,
+        "Firerate": 300.0,
+        "HipSpread": 2.57999992370605,
+        "MoveSpread": 3.66000008583069,
+        "RangeClose": 100.0,
+        "RangeFar": 120.0,
+        "Recoil": 30.2800006866455,
+        "Reload": 2.32999992370605,
+        "Run": 7.42000007629395,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -20240,7 +20239,7 @@
       "Icon": "t_CombatRifle_02_256x128",
       "Name": "Light Recon Rifle",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -20251,14 +20250,14 @@
       ],
       "UID": 40026,
       "WeaponStats": {
-        "accuracy": 0.0450000017881393,
-        "damage": 76.0,
-        "movementSpeed": 50.0,
-        "range": 4500.0,
-        "rateOfFire": 600.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0450000017881393,
+        "Damage": 76.0,
+        "MovementSpeed": 50.0,
+        "Range": 4500.0,
+        "RateOfFire": 600.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "BaseSpread": 0.06,
         "Burst": 1.0,
@@ -20372,20 +20371,20 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 1.02999997138977,
-        "ammoMag": 12.0,
-        "ammoReserve": 48.0,
-        "damage": 76.0,
-        "firerate": 600.0,
-        "hipSpread": 2.57999992370605,
-        "moveSpread": 3.42000007629395,
-        "rangeClose": 45.0,
-        "rangeFar": 80.0,
-        "recoil": 8.07999992370605,
-        "reload": 2.32999992370605,
-        "run": 8.10000038146973,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.02999997138977,
+        "AmmoMag": 12.0,
+        "AmmoReserve": 48.0,
+        "Damage": 76.0,
+        "Firerate": 600.0,
+        "HipSpread": 2.57999992370605,
+        "MoveSpread": 3.42000007629395,
+        "RangeClose": 45.0,
+        "RangeFar": 80.0,
+        "Recoil": 8.07999992370605,
+        "Reload": 2.32999992370605,
+        "Run": 8.10000038146973,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     }
   ],
@@ -20397,7 +20396,7 @@
       "Icon": "t_ShotgunARK_256x128",
       "Name": "Shotgun AR-k",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "magazines",
@@ -20406,14 +20405,14 @@
       ],
       "UID": 40016,
       "WeaponStats": {
-        "accuracy": 0.025000000372529,
-        "damage": 20.0,
-        "movementSpeed": -10.0,
-        "range": 1200.0,
-        "rateOfFire": 250.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.025000000372529,
+        "Damage": 20.0,
+        "MovementSpeed": -10.0,
+        "Range": 1200.0,
+        "RateOfFire": 250.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "BaseSpread": 0.04,
         "Burst": 1.0,
@@ -20530,20 +20529,20 @@
         "ZoomSpreadMultiplier": 0.3
       },
       "WikiStats": {
-        "aimSpread": 0.430000007152557,
-        "ammoMag": 10.0,
-        "ammoReserve": 20.0,
-        "damage": 20.0,
-        "firerate": 250.0,
-        "hipSpread": 1.42999994754791,
-        "moveSpread": 1.89999997615814,
-        "rangeClose": 12.0,
-        "rangeFar": 25.0,
-        "recoil": 5.75,
-        "reload": 7.67000007629395,
-        "run": 7.65000009536743,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.430000007152557,
+        "AmmoMag": 10.0,
+        "AmmoReserve": 20.0,
+        "Damage": 20.0,
+        "Firerate": 250.0,
+        "HipSpread": 1.42999994754791,
+        "MoveSpread": 1.89999997615814,
+        "RangeClose": 12.0,
+        "RangeFar": 25.0,
+        "Recoil": 5.75,
+        "Reload": 7.67000007629395,
+        "Run": 7.65000009536743,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -20553,21 +20552,21 @@
       "Icon": "t_BreachLoadedPistol_128x128",
       "Name": "Breech Loaded Pistol",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "magazines",
         "scopes"
       ],
       "UID": 40015,
       "WeaponStats": {
-        "accuracy": 0.0399999991059303,
-        "damage": 20.0,
-        "movementSpeed": 25.0,
-        "range": 2500.0,
-        "rateOfFire": 400.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0399999991059303,
+        "Damage": 20.0,
+        "MovementSpeed": 25.0,
+        "Range": 2500.0,
+        "RateOfFire": 400.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "RecoveryTime": 0.4,
         "BaseSpread": 0.04,
@@ -20680,20 +20679,20 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 0.920000016689301,
-        "ammoMag": 1.0,
-        "ammoReserve": 2.0,
-        "damage": 250.0,
-        "firerate": 400.0,
-        "hipSpread": 2.28999996185303,
-        "moveSpread": 4.53000020980835,
-        "rangeClose": 999.0,
-        "rangeFar": 999.0,
-        "recoil": 7.17000007629395,
-        "reload": 2.40000009536743,
-        "run": 7.88000011444092,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.920000016689301,
+        "AmmoMag": 1.0,
+        "AmmoReserve": 2.0,
+        "Damage": 250.0,
+        "Firerate": 400.0,
+        "HipSpread": 2.28999996185303,
+        "MoveSpread": 4.53000020980835,
+        "RangeClose": 999.0,
+        "RangeFar": 999.0,
+        "Recoil": 7.17000007629395,
+        "Reload": 2.40000009536743,
+        "Run": 7.88000011444092,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -20703,20 +20702,20 @@
       "Icon": "t_Snub260_128x128",
       "Name": "Snub 260",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "magazines"
       ],
       "UID": 40021,
       "WeaponStats": {
-        "accuracy": 0.0500000007450581,
-        "damage": 62.0,
-        "movementSpeed": 15.0,
-        "range": 1000.0,
-        "rateOfFire": 600.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0500000007450581,
+        "Damage": 62.0,
+        "MovementSpeed": 15.0,
+        "Range": 1000.0,
+        "RateOfFire": 600.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.12,
         "RecoveryTime": 0.5,
         "BaseSpread": 0.0,
@@ -20829,20 +20828,20 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 1.14999997615814,
-        "ammoMag": 8.0,
-        "ammoReserve": 16.0,
-        "damage": 60.0,
-        "firerate": 600.0,
-        "hipSpread": 2.85999989509583,
-        "moveSpread": 5.65999984741211,
-        "rangeClose": 10.0,
-        "rangeFar": 15.0,
-        "recoil": 32.2799987792969,
-        "reload": 2.67000007629395,
-        "run": 7.78999996185303,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.14999997615814,
+        "AmmoMag": 8.0,
+        "AmmoReserve": 16.0,
+        "Damage": 60.0,
+        "Firerate": 600.0,
+        "HipSpread": 2.85999989509583,
+        "MoveSpread": 5.65999984741211,
+        "RangeClose": 10.0,
+        "RangeFar": 15.0,
+        "Recoil": 32.2799987792969,
+        "Reload": 2.67000007629395,
+        "Run": 7.78999996185303,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -20852,7 +20851,7 @@
       "Icon": "t_HeavyPistol_128x128",
       "Name": "Heavy Pistol",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "magazines",
@@ -20862,14 +20861,14 @@
       ],
       "UID": 40000,
       "WeaponStats": {
-        "accuracy": 0.0450000017881393,
-        "damage": 55.0,
-        "movementSpeed": 50.0,
-        "range": 1500.0,
-        "rateOfFire": 600.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0450000017881393,
+        "Damage": 55.0,
+        "MovementSpeed": 50.0,
+        "Range": 1500.0,
+        "RateOfFire": 600.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "BaseSpread": 0.0,
         "Burst": 1.0,
@@ -20982,20 +20981,20 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 1.02999997138977,
-        "ammoMag": 8.0,
-        "ammoReserve": 24.0,
-        "damage": 55.0,
-        "firerate": 600.0,
-        "hipSpread": 2.57999992370605,
-        "moveSpread": 3.42000007629395,
-        "rangeClose": 15.0,
-        "rangeFar": 50.0,
-        "recoil": 5.76999998092651,
-        "reload": 1.79999995231628,
-        "run": 8.10000038146973,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.02999997138977,
+        "AmmoMag": 8.0,
+        "AmmoReserve": 24.0,
+        "Damage": 55.0,
+        "Firerate": 600.0,
+        "HipSpread": 2.57999992370605,
+        "MoveSpread": 3.42000007629395,
+        "RangeClose": 15.0,
+        "RangeFar": 50.0,
+        "Recoil": 5.76999998092651,
+        "Reload": 1.79999995231628,
+        "Run": 8.10000038146973,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -21005,7 +21004,7 @@
       "Icon": "t_LightPistol_128x128",
       "Name": "Light Pistol",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "magazines",
@@ -21015,14 +21014,14 @@
       ],
       "UID": 40001,
       "WeaponStats": {
-        "accuracy": 0.0462500005960464,
-        "damage": 50.0,
-        "movementSpeed": 50.0,
-        "range": 1000.0,
-        "rateOfFire": 600.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0462500005960464,
+        "Damage": 50.0,
+        "MovementSpeed": 50.0,
+        "Range": 1000.0,
+        "RateOfFire": 600.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "BaseSpread": 0.0,
         "Burst": 1.0,
@@ -21134,20 +21133,20 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 1.05999994277954,
-        "ammoMag": 10.0,
-        "ammoReserve": 40.0,
-        "damage": 50.0,
-        "firerate": 600.0,
-        "hipSpread": 2.65000009536743,
-        "moveSpread": 3.50999999046326,
-        "rangeClose": 10.0,
-        "rangeFar": 50.0,
-        "recoil": 2.89000010490417,
-        "reload": 1.66999995708466,
-        "run": 8.10000038146973,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.05999994277954,
+        "AmmoMag": 10.0,
+        "AmmoReserve": 40.0,
+        "Damage": 50.0,
+        "Firerate": 600.0,
+        "HipSpread": 2.65000009536743,
+        "MoveSpread": 3.50999999046326,
+        "RangeClose": 10.0,
+        "RangeFar": 50.0,
+        "Recoil": 2.89000010490417,
+        "Reload": 1.66999995708466,
+        "Run": 8.10000038146973,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -21157,7 +21156,7 @@
       "Icon": "t_BurstPistol_128x128",
       "Name": "Burstfire Pistol",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "magazines",
         "muzzles",
@@ -21165,14 +21164,14 @@
       ],
       "UID": 40006,
       "WeaponStats": {
-        "accuracy": 0.0474999994039536,
-        "damage": 48.0,
-        "movementSpeed": 50.0,
-        "range": 1000.0,
-        "rateOfFire": 600.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0474999994039536,
+        "Damage": 48.0,
+        "MovementSpeed": 50.0,
+        "Range": 1000.0,
+        "RateOfFire": 600.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "BaseSpread": 0.0,
         "Burst": 3.0,
@@ -21326,20 +21325,20 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 1.0900000333786,
-        "ammoMag": 12.0,
-        "ammoReserve": 36.0,
-        "damage": 48.0,
-        "firerate": 600.0,
-        "hipSpread": 2.72000002861023,
-        "moveSpread": 3.60999989509583,
-        "rangeClose": 10.0,
-        "rangeFar": 50.0,
-        "recoil": 4.61999988555908,
-        "reload": 1.57000005245209,
-        "run": 8.10000038146973,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 1.0900000333786,
+        "AmmoMag": 12.0,
+        "AmmoReserve": 36.0,
+        "Damage": 48.0,
+        "Firerate": 600.0,
+        "HipSpread": 2.72000002861023,
+        "MoveSpread": 3.60999989509583,
+        "RangeClose": 10.0,
+        "RangeFar": 50.0,
+        "Recoil": 4.61999988555908,
+        "Reload": 1.57000005245209,
+        "Run": 8.10000038146973,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -21349,7 +21348,7 @@
       "Icon": "t_Gold_LightPistol_128x128",
       "Name": "Prestige Light Pistol",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "magazines",
@@ -21359,14 +21358,14 @@
       ],
       "UID": 40028,
       "WeaponStats": {
-        "accuracy": 0.0462500005960464,
-        "damage": 50.0,
-        "movementSpeed": 50.0,
-        "range": 1000.0,
-        "rateOfFire": 600.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0462500005960464,
+        "Damage": 50.0,
+        "MovementSpeed": 50.0,
+        "Range": 1000.0,
+        "RateOfFire": 600.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.1,
         "BaseSpread": 0.0,
         "Burst": 1.0,
@@ -21485,7 +21484,7 @@
       "Icon": "t_MachinePistol_128x128",
       "Name": "Machine Pistol",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "magazines",
         "muzzles",
@@ -21493,14 +21492,14 @@
       ],
       "UID": 40004,
       "WeaponStats": {
-        "accuracy": 0.0799999982118607,
-        "damage": 30.0,
-        "movementSpeed": 30.0,
-        "range": 1000.0,
-        "rateOfFire": 850.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0799999982118607,
+        "Damage": 30.0,
+        "MovementSpeed": 30.0,
+        "Range": 1000.0,
+        "RateOfFire": 850.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.0705882385,
         "BaseSpread": 0.15,
         "Burst": 1.0,
@@ -21615,20 +21614,20 @@
         "ZoomSpreadMultiplier": 0.5
       },
       "WikiStats": {
-        "aimSpread": 2.28999996185303,
-        "ammoMag": 25.0,
-        "ammoReserve": 50.0,
-        "damage": 30.0,
-        "firerate": 850.0,
-        "hipSpread": 4.57999992370605,
-        "moveSpread": 4.73000001907349,
-        "rangeClose": 10.0,
-        "rangeFar": 20.0,
-        "recoil": 8.5,
-        "reload": 1.83000004291534,
-        "run": 7.92000007629395,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 2.28999996185303,
+        "AmmoMag": 25.0,
+        "AmmoReserve": 50.0,
+        "Damage": 30.0,
+        "Firerate": 850.0,
+        "HipSpread": 4.57999992370605,
+        "MoveSpread": 4.73000001907349,
+        "RangeClose": 10.0,
+        "RangeFar": 20.0,
+        "Recoil": 8.5,
+        "Reload": 1.83000004291534,
+        "Run": 7.92000007629395,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -21638,21 +21637,21 @@
       "Icon": "t_Revolver_128x128",
       "Name": "Revolver",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "magazines",
         "scopes"
       ],
       "UID": 40002,
       "WeaponStats": {
-        "accuracy": 0.0399999991059303,
-        "damage": 97.0,
-        "movementSpeed": 15.0,
-        "range": 2500.0,
-        "rateOfFire": 200.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0399999991059303,
+        "Damage": 97.0,
+        "MovementSpeed": 15.0,
+        "Range": 2500.0,
+        "RateOfFire": 200.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.2,
         "RecoveryTime": 0.5,
         "BaseSpread": 0.04,
@@ -21766,20 +21765,20 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "aimSpread": 0.920000016689301,
-        "ammoMag": 6.0,
-        "ammoReserve": 12.0,
-        "damage": 97.0,
-        "firerate": 200.0,
-        "hipSpread": 2.28999996185303,
-        "moveSpread": 4.53000020980835,
-        "rangeClose": 25.0,
-        "rangeFar": 30.0,
-        "recoil": 90.379997253418,
-        "reload": 2.36999988555908,
-        "run": 7.78999996185303,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.920000016689301,
+        "AmmoMag": 6.0,
+        "AmmoReserve": 12.0,
+        "Damage": 97.0,
+        "Firerate": 200.0,
+        "HipSpread": 2.28999996185303,
+        "MoveSpread": 4.53000020980835,
+        "RangeClose": 25.0,
+        "RangeFar": 30.0,
+        "Recoil": 90.379997253418,
+        "Reload": 2.36999988555908,
+        "Run": 7.78999996185303,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -21789,7 +21788,7 @@
       "Icon": "t_Shotgun_256x128",
       "Name": "Shotgun",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "grips",
@@ -21799,13 +21798,13 @@
       ],
       "UID": 40005,
       "WeaponStats": {
-        "accuracy": 0.0299999993294477,
-        "damage": 23.0,
-        "range": 750.0,
-        "rateOfFire": 100.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.0299999993294477,
+        "Damage": 23.0,
+        "Range": 750.0,
+        "RateOfFire": 100.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.15,
         "RecoveryTime": 0.7,
         "BaseSpread": 0.04,
@@ -21922,20 +21921,20 @@
         "ZoomSpreadMultiplier": 0.3
       },
       "WikiStats": {
-        "aimSpread": 0.519999980926514,
-        "ammoMag": 8.0,
-        "ammoReserve": 32.0,
-        "damage": 23.0,
-        "firerate": 100.0,
-        "hipSpread": 1.72000002861023,
-        "moveSpread": 2.27999997138977,
-        "rangeClose": 7.0,
-        "rangeFar": 20.0,
-        "recoil": 59.2900009155273,
-        "reload": 3.73000001907349,
-        "run": 7.73000001907349,
-        "swaprate": 20.0,
-        "zoom": 1.29999995231628
+        "AimSpread": 0.519999980926514,
+        "AmmoMag": 8.0,
+        "AmmoReserve": 32.0,
+        "Damage": 23.0,
+        "Firerate": 100.0,
+        "HipSpread": 1.72000002861023,
+        "MoveSpread": 2.27999997138977,
+        "RangeClose": 7.0,
+        "RangeFar": 20.0,
+        "Recoil": 59.2900009155273,
+        "Reload": 3.73000001907349,
+        "Run": 7.73000001907349,
+        "Swaprate": 20.0,
+        "Zoom": 1.29999995231628
       }
     },
     {
@@ -21944,7 +21943,7 @@
       "Icon": "t_Depot_Airstrike_128x128",
       "Name": "Airstrike",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "grips",
         "magazines",
@@ -21954,12 +21953,12 @@
       ],
       "UID": 20006,
       "WeaponStats": {
-        "accuracy": 0.04,
-        "range": 8000.0,
-        "rateOfFire": 400.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.04,
+        "Range": 8000.0,
+        "RateOfFire": 400.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.15,
         "BaseSpread": 0.04,
         "Burst": 1.0,
@@ -22098,8 +22097,8 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "reload": 3.8,
-        "swaprate": 20.0
+        "Reload": 3.8,
+        "Swaprate": 20.0
       }
     },
     {
@@ -22108,7 +22107,7 @@
       "Icon": "t_Depot_Turret_128x128",
       "Name": "Turret",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "scopes"
@@ -22121,7 +22120,7 @@
       "Icon": "t_Depot_Flamethrower_128x128",
       "Name": "Flamethrower",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "grips",
@@ -22132,8 +22131,8 @@
       ],
       "UID": 20003,
       "WikiStats": {
-        "reload": 2.0,
-        "swaprate": 20.0
+        "Reload": 2.0,
+        "Swaprate": 20.0
       }
     },
     {
@@ -22142,7 +22141,7 @@
       "Icon": "t_Depot_GrenadeLauncher_128x128",
       "Name": "Grenade Launcher",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "hangers",
@@ -22153,12 +22152,12 @@
       ],
       "UID": 20007,
       "WeaponStats": {
-        "accuracy": 0.05,
-        "range": 10000.0,
-        "rateOfFire": 120.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.05,
+        "Range": 10000.0,
+        "RateOfFire": 120.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.3,
         "BaseSpread": 0.05,
         "Burst": 1.0,
@@ -22301,8 +22300,8 @@
         "ZoomSpreadMultiplier": 0.9
       },
       "WikiStats": {
-        "reload": 5.6667,
-        "swaprate": 20.0
+        "Reload": 5.6667,
+        "Swaprate": 20.0
       }
     },
     {
@@ -22311,7 +22310,7 @@
       "Icon": "t_Depot_HardSuit_128x128",
       "Name": "Rhino Hardsuit",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "scopes"
@@ -22324,7 +22323,7 @@
       "Icon": "t_Depot_LightHardSuit_128x128",
       "Name": "Gunman Hardsuit",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "scopes"
@@ -22337,7 +22336,7 @@
       "Icon": "t_Depot_MiniGun_128x128",
       "Name": "Minigun",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "grips",
@@ -22349,13 +22348,13 @@
       ],
       "UID": 20008,
       "WeaponStats": {
-        "accuracy": 0.03,
-        "damage": 50.0,
-        "range": 3500.0,
-        "rateOfFire": 850.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.03,
+        "Damage": 50.0,
+        "Range": 3500.0,
+        "RateOfFire": 850.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.0705,
         "BaseSpread": 0.03,
         "Burst": 1.0,
@@ -22506,7 +22505,7 @@
         "ZoomSpreadMultiplier": 0.4
       },
       "WikiStats": {
-        "swaprate": 20.0
+        "Swaprate": 20.0
       }
     },
     {
@@ -22515,20 +22514,20 @@
       "Icon": "t_Depot_Railgun_128x128",
       "Name": "Railgun",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "scopes"
       ],
       "UID": 20005,
       "WeaponStats": {
-        "accuracy": 0.01,
-        "damage": 1000.0,
-        "range": 16000.0,
-        "rateOfFire": 35.0,
-        "recoil": 1.0,
-        "reloadSpeed": 1.0,
-        "weaponWeight": 1.0,
+        "Accuracy": 0.01,
+        "Damage": 1000.0,
+        "Range": 16000.0,
+        "RateOfFire": 35.0,
+        "Recoil": 1.0,
+        "ReloadSpeed": 1.0,
+        "WeaponWeight": 1.0,
         "ApplyTime": 0.3,
         "BaseSpread": 0.01,
         "Burst": 1.0,
@@ -22676,8 +22675,8 @@
         "ZoomSpreadMultiplier": 0.0
       },
       "WikiStats": {
-        "reload": 2.0,
-        "swaprate": 20.0
+        "Reload": 2.0,
+        "Swaprate": 20.0
       }
     },
     {
@@ -22686,7 +22685,7 @@
       "Icon": "t_Depot_RocketLauncherSwarm_128x128",
       "Name": "Rocket Swarm",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "grips",
@@ -22698,8 +22697,8 @@
       ],
       "UID": 20002,
       "WikiStats": {
-        "reload": 2.5,
-        "swaprate": 20.0
+        "Reload": 2.5,
+        "Swaprate": 20.0
       }
     },
     {
@@ -22708,7 +22707,7 @@
       "Icon": "t_Depot_RocketLauncherArmor_128x128",
       "Name": "Rocket Stinger",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "barrels",
         "camosWeapon",
         "grips",
@@ -22720,8 +22719,8 @@
       ],
       "UID": 20011,
       "WikiStats": {
-        "reload": 3.1667,
-        "swaprate": 20.0
+        "Reload": 3.1667,
+        "Swaprate": 20.0
       }
     },
     {
@@ -22730,7 +22729,7 @@
       "Icon": "t_Depot_HardsuitHRVDecoy_128x128",
       "Name": "Hardsuit HRV Decoy",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "hangers"
       ],
       "UID": 20013
@@ -22741,7 +22740,7 @@
       "Icon": "t_Depot_Katana_128x128",
       "Name": "Katana",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "hangers"
       ],
       "UID": 20010
@@ -22752,7 +22751,7 @@
       "Icon": "t_Depot_AssaultBot_128x128",
       "Name": "MK1 Assault AI",
       "SupportedMods": [
-        "ammo",
+        "Ammo",
         "camosWeapon",
         "hangers",
         "scopes"

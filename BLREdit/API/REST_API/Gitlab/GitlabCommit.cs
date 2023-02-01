@@ -1,19 +1,32 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace BLREdit.API.REST_API.Gitlab;
 
 public sealed class GitlabCommit
 {
-    public string id { get; set; }
-    public string short_id { get; set; }
-    public string title { get; set; }
-    public DateTime created_at { get; set; }
-    public string[] parent_ids { get; set; }
-    public string message { get; set; }
-    public string author_name { get; set; }
-    public string author_email { get; set; }
-    public DateTime authored_date { get; set; }
-    public string committer_name { get; set; }
-    public string committer_email { get; set; }
-    public DateTime committed_date { get; set; }
+    [JsonPropertyName("id")]
+    public string ID { get; set; }
+    [JsonPropertyName("short_id")]
+    public string ShortID { get; set; }
+    [JsonPropertyName("title")]
+    public string Title { get; set; }
+    [JsonPropertyName("created_at")]
+    public DateTime CreateAt { get; set; }
+    [JsonPropertyName("parent_ids")]
+    public string[] ParentIDs { get; set; }
+    [JsonPropertyName("message")]
+    public string Message { get; set; }
+    [JsonPropertyName("author_name")]
+    public string AuthorName { get; set; }
+    [JsonPropertyName("author_email")]
+    public string AuthorEmail { get; set; }
+    [JsonPropertyName("authored_date")]
+    public DateTime AuthoredDate { get; set; }
+    [JsonPropertyName("committer_name")]
+    public string CommitterName { get; set; }
+    [JsonPropertyName("committer_email")]
+    public string CommitterEmail { get; set; }
+    [JsonPropertyName("committed_date")]
+    public DateTime CommittedDate { get; set; }
 }

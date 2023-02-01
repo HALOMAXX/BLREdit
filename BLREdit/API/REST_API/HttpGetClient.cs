@@ -29,7 +29,7 @@ public sealed class HttpGetClient
             }
             
         }
-        catch (TaskCanceledException _) { LoggingSystem.Log($"[Http]({server}{api}): GET Request canceled / timedout !"); }
+        catch (TaskCanceledException) { LoggingSystem.Log($"[Http]({server}{api}): GET Request canceled / timedout !"); }
         catch (Exception error) { LoggingSystem.Log($"[Http]({server}{api}): {error}"); }
         return null;
     }

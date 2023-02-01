@@ -5,26 +5,37 @@ namespace BLREdit.API.REST_API.Gitlab;
 
 public sealed class GitlabFile
 {
-    public string file_name { get; set; }
-    public string file_path { get; set; }
-    public int size { get; set; }
-    public string encoding { get; set; }
-    public string content { get; set; }
-    public string content_sha256 { get; set; }
-    public string _ref { get; set; }
-    public string blob_id { get; set; }
-    public string commit_id { get; set; }
-    public string last_commit_id { get; set; }
-    public bool execute_filemode { get; set; }
+    [JsonPropertyName("file_name")]
+    public string FileName { get; set; }
+    [JsonPropertyName("file_path")]
+    public string FilePath { get; set; }
+    [JsonPropertyName("size")]
+    public int Size { get; set; }
+    [JsonPropertyName("encoding")]
+    public string Encoding { get; set; }
+    [JsonPropertyName("content")]
+    public string Content { get; set; }
+    [JsonPropertyName("content_sha256")]
+    public string ContentSHA256 { get; set; }
+    [JsonPropertyName("_ref")]
+    public string Ref { get; set; }
+    [JsonPropertyName("blob_id")]
+    public string BlobID { get; set; }
+    [JsonPropertyName("commit_id")]
+    public string CommitID { get; set; }
+    [JsonPropertyName("last_commit_id")]
+    public string LastCommitID { get; set; }
+    [JsonPropertyName("execute_filemode")]
+    public bool ExecuteFilemode { get; set; }
 
-    private string _decoded_content;
+    private string decodedContent;
     [JsonIgnore]
-    public string decoded_content
+    public string DecodedContent
     {
         get
         {
-            _decoded_content ??= System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(content));
-            return _decoded_content;
+            decodedContent ??= System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(Content));
+            return decodedContent;
         }
     }
 }

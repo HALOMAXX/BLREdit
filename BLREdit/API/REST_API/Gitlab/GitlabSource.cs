@@ -1,7 +1,11 @@
-﻿namespace BLREdit.API.REST_API.Gitlab;
+﻿using System.Text.Json.Serialization;
+
+namespace BLREdit.API.REST_API.Gitlab;
 
 public sealed class GitlabSource
 {
-    public string format { get; set; }
-    public string url { get; set; }
+    [JsonPropertyName("format")]
+    public string Format { get; set; }
+    [JsonPropertyName("url")]
+    public string URL { get; set; }
 }
