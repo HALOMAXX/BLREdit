@@ -14,6 +14,10 @@
     "CLI Server": {
       "commandName": "Project",
       "commandLineArgs": "-server example_server_config.json"
+    },
+    "Export Item List": {
+      "commandName": "Project",
+      "commandLineArgs": "-exportItemList"
     }
   }
 }

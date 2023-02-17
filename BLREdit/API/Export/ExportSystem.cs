@@ -1,3 +1,4 @@
+using BLREdit.Game;
 using BLREdit.UI;
 using BLREdit.UI.Views;
 
@@ -18,6 +19,7 @@ public sealed class ExportSystem
 
     private static int currentProfile = 0;
     public static ExportSystemProfile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
+    static Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get; set; } = LoadSettingProfiles();
 
     private static ExportSystemProfile GetCurrentProfile()
     {
@@ -94,6 +96,62 @@ public sealed class ExportSystem
         return;
     }
 
+    private static Dictionary<string, BLRProfileSettingsWrapper> LoadSettingProfiles()
+    {
+        var dict = new Dictionary<string, BLRProfileSettingsWrapper>();
+        var dirs = Directory.EnumerateDirectories($"{IOResources.PROFILE_DIR}");
+        foreach (var dir in dirs)
+        {
+            var data = dir.Split('\\');
+            var name = data[data.Length - 1];
+
+            var onlineProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{dir}\\UE3_online_profile.json");
+            var keyBinds = IOResources.DeserializeFile<BLRKeyBindings>($"{dir}\\keybinding.json");
+
+            var profile = new BLRProfileSettingsWrapper(name, onlineProfile, keyBinds);
+            dict.Add(name, profile);
+        }
+        return dict;
+    }
+
+    public static void UpdateOrAddProfileSettings(string profileName, BLRProfileSettingsWrapper settings)
+    {
+        if (settings is null) return;
+
+        if (ProfileSettings.TryGetValue(profileName, out var _))
+        {
+            ProfileSettings[profileName] = settings;
+        }
+        else
+        {
+            ProfileSettings.Add(profileName, settings);
+        }
+    }
+
+    public static BLRProfileSettingsWrapper GetOrAddProfileSettings(string profileName)
+    {
+        if (ProfileSettings.TryGetValue(profileName, out var value))
+        {
+            return value;
+        }
+        else
+        {
+            foreach (var profile in BLREditSettings.Settings.DefaultClient.ProfileSettings)
+            {
+                if (profile.Value.ProfileName == profileName)
+                {
+                    LoggingSystem.Log($"[ProfileSettings]({profileName}): found existing settings in default client");
+                    ProfileSettings.Add(profileName, profile.Value);
+                    return profile.Value;
+                }
+            }
+            LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");
+            var newProfile = new BLRProfileSettingsWrapper(profileName, null, null);
+            ProfileSettings.Add(profileName, newProfile);
+            return newProfile;
+        }
+    }
+
     private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()
     {
         List<ExportSystemProfile> profiles = new();
@@ -157,9 +215,17 @@ public sealed class ExportSystem
 
     public static void SaveProfiles()
     {
-        foreach (ExportSystemProfile profile in Profiles)
+        foreach (var profile in Profiles)
         {
             IOResources.SerializeFile($"{IOResources.PROFILE_DIR}{profile.Name}.json", profile);
+        }
+
+        foreach (var profileSettings in ProfileSettings)
+        {
+            Directory.CreateDirectory($"{IOResources.PROFILE_DIR}{profileSettings.Value.ProfileName}");
+
+            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}{profileSettings.Value.ProfileName}\\UE3_online_profile.json", profileSettings.Value.Settings.Values.ToArray());
+            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}{profileSettings.Value.ProfileName}\\keybinding.json", profileSettings.Value.KeyBindings);
         }
     }
 

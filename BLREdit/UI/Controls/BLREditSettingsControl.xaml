@@ -9,6 +9,7 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=blredit:BLREditSettings}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
     <StackPanel>
         <Border Name="PlayerNameBorder">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
@@ -18,7 +19,7 @@
         </Border>
         <Border>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
-                <Label Content="Language:" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                <Label Content="{x:Static p:Resources.lbl_Language}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
                 <ComboBox Height="32" Name="LanguageComboBox" DisplayMemberPath="DisplayName" SelectionChanged="LanguageComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.AvailableCultures)}"/>
             </StackPanel>
         </Border>
@@ -73,4 +74,5 @@
             </StackPanel>
         </Border>
     </StackPanel>
+    </ScrollViewer>
 </UserControl>

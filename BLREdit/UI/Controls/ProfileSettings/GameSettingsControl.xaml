@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.GameSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:BLREdit.Properties"
+             xmlns:game="clr-namespace:BLREdit.Game"
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             d:DataContext="{d:DesignInstance Type=game:BLRProfileSettingsWrapper}"
+             mc:Ignorable="d" 
+             d:DesignHeight="960" d:DesignWidth="1400">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+            </Grid.RowDefinitions>
+
+            <ToggleButton Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" IsChecked="{Binding Path=AutoReload}" Content="Auto Reload"/>
+            <ToggleButton Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" IsChecked="{Binding Path=AutoWeaponSwitch}" Content="Auto Weapon Switch"/>
+            <ToggleButton Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" IsChecked="{Binding Path=DepotPing}" Content="Depot Ping"/>
+
+            <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label Content="All Notifications" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+                <local:NumberUpDown Number="{Binding Path=AllNotifications}" NumberChange="1" MinNumber="0" MaxNumber="4" Overflow="True"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label Content="Friend and Clan Status" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+                <local:NumberUpDown Number="{Binding Path=FriendClanStatus}" NumberChange="1" MinNumber="4" MaxNumber="7" Overflow="True"/>
+            </StackPanel>
+
+            <ToggleButton Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" IsChecked="{Binding Path=SpawnEffects}" Content="Spawn Effects"/>
+            <ToggleButton Grid.Column="1" Grid.Row="6" HorizontalAlignment="Right" IsChecked="{Binding Path=HideHUD}" Content="Hide HUD"/>
+            <ToggleButton Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" IsChecked="{Binding Path=ThirdPersonTaunts}" Content="Third-Person Taunts"/>
+
+            <StackPanel Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label Content="FOV (Y-Axis)" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+                <local:NumberUpDown Number="{Binding Path=FieldOfView}" NumberChange="1" MinNumber="30" MaxNumber="100" Overflow="False"/>
+            </StackPanel>
+
+            <ToggleButton Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" IsChecked="{Binding Path=ScoreboardToggle}" Content="Scoreboard Toggle"/>
+            
+            <StackPanel Grid.Column="1" Grid.Row="11" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label Content="Gore" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+                <local:NumberUpDown Number="{Binding Path=Gore}" NumberChange="1" MinNumber="0" MaxNumber="3" Overflow="True"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

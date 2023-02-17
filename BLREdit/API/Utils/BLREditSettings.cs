@@ -24,11 +24,11 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public static BLREditSettings Settings { get { return settings; } }
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
-    private BLRClient client = null;
-    public BLRClient DefaultClient { get { return client; } set { client = value; OnPropertyChanged(); } }
+    public int SelectedClient { get; set; } = 0;
+    [JsonIgnore] public BLRClient DefaultClient { get { if (SelectedClient > MainWindow.GameClients.Count || SelectedClient < 0) { return null; } else { return MainWindow.GameClients[SelectedClient]; } } set { SelectedClient = MainWindow.GameClients.IndexOf(value); OnPropertyChanged(); } }
     //Saves the Default Server (not in use anymore)
-    private BLRServer server = null;
-    public BLRServer DefaultServer { get { return server; } set { server = value; OnPropertyChanged(); } }
+    public int SelectedServer { get; set; } = 0;
+    [JsonIgnore] public BLRServer DefaultServer { get { if (SelectedServer > MainWindow.ServerList.Count || SelectedServer < 0) { return null; } else { return MainWindow.ServerList[SelectedServer]; } } set { SelectedServer = MainWindow.ServerList.IndexOf(value); OnPropertyChanged(); } }
 
     //Allows for App-Web-Protocol needs Admin rights will be set to false if it fails to Start BLREdit as Admin
     public UIBool EnableAPI { get; set; } = new(true);

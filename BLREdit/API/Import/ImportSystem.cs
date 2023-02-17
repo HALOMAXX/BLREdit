@@ -81,6 +81,7 @@ public static class ImportSystem
                 case SECONDARY_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         var (DamageIdeal, DamageMax) = BLRWeapon.CalculateDamage(item, 0);
                         var (ZoomSpread, HipSpread, MovmentSpread) = BLRWeapon.CalculateSpread(item, 0, 0, item, item);
                         var (RecoilHip, _RecoilZoom) = BLRWeapon.CalculateRecoil(item, 0);
@@ -97,6 +98,7 @@ public static class ImportSystem
                 case MUZZELS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         double damage = item?.WeaponModifiers?.Damage ?? 0;
                         double spread = item?.WeaponModifiers?.Accuracy ?? 0;
                         double recoil = item?.WeaponModifiers?.Recoil ?? 0;
@@ -113,6 +115,7 @@ public static class ImportSystem
                 case STOCKS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         double damage = item?.WeaponModifiers?.Damage ?? 0;
                         double spread = item?.WeaponModifiers?.Accuracy ?? 0;
                         double recoil = item?.WeaponModifiers?.Recoil ?? 0;
@@ -133,6 +136,7 @@ public static class ImportSystem
                 case BARRELS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         double damage = item?.WeaponModifiers?.Damage ?? 0;
                         double spread = item?.WeaponModifiers?.Accuracy ?? 0;
                         double recoil = item?.WeaponModifiers?.Recoil ?? 0;
@@ -149,6 +153,7 @@ public static class ImportSystem
                 case SCOPES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item?.WikiStats?.Zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.ScopeInTime), Resources.lbl_ScopeInTime, (0.0 + (item?.WikiStats?.ScopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
                         item.DisplayStat3 = FormatDisplayStat(nameof(item.Infrared), Resources.lbl_Infrared, item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatsEnum.Normal, "");
@@ -157,6 +162,7 @@ public static class ImportSystem
                 case MAGAZINES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         double ammo = item?.WeaponModifiers?.Ammo ?? 0;
                         double range = item?.WeaponModifiers?.Range ?? 0;
                         double reload = item?.WikiStats?.Reload ?? 0;
@@ -183,7 +189,8 @@ public static class ImportSystem
                     break;
                 case HELMETS_CATEGORY:
                     foreach (var item in itemCategory.Value)
-                    { 
+                    {
+                        item.Category = itemCategory.Key;
                         double health = item?.PawnModifiers?.Health ?? 0;
                         double dmgReduction = item?.PawnModifiers?.HelmetDamageReduction ?? 0;
                         double movement = item?.PawnModifiers?.MovementSpeed ?? 0;
@@ -236,6 +243,7 @@ public static class ImportSystem
                 case TACTICAL_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         double hrv = item?.PawnModifiers?.HRVDuration ?? 0;
                         double recharge = item?.PawnModifiers?.HRVRechargeRate ?? 0;
 
@@ -247,6 +255,7 @@ public static class ImportSystem
                 case LOWER_BODIES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         double health = item?.PawnModifiers?.Health ?? 0;
                         double movement = item?.PawnModifiers?.MovementSpeed ?? 0;
                         double gear = item?.PawnModifiers?.GearSlots ?? 0;
@@ -259,6 +268,7 @@ public static class ImportSystem
                 case ATTACHMENTS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         double ElectroProtection = item?.PawnModifiers?.ElectroProtection ?? 0;
                         double ExplosiveProtection = item?.PawnModifiers?.ExplosiveProtection ?? 0;
                         double IncendiaryProtection = item?.PawnModifiers?.IncendiaryProtection ?? 0;
@@ -309,6 +319,7 @@ public static class ImportSystem
                 case GRIPS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         double _damage = item?.WeaponModifiers?.Damage ?? 0;
                         double _rof = item?.WeaponModifiers?.RateOfFire ?? 0;
                         double recoil = item?.WeaponModifiers?.Recoil ?? 0;
@@ -322,7 +333,14 @@ public static class ImportSystem
                 case SHOP_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        item.Category = itemCategory.Key;
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.CP), Resources.lbl_CP, item.CP, StatsEnum.None, "0");
+                    }
+                    break;
+                default:
+                    foreach (var item in itemCategory.Value)
+                    {
+                        item.Category = itemCategory.Key;
                     }
                     break;
             }

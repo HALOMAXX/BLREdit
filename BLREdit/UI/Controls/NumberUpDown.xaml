@@ -8,17 +8,27 @@
              Name="NumberUpDownControl"
              mc:Ignorable="d" 
              d:DesignHeight="32" d:DesignWidth="128">
-    <Grid>
+    <Grid HorizontalAlignment="Stretch" MinWidth="128" MinHeight="64" Height="64" Width="128">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBox x:Name="NumberTextBox" Text="{Binding Number, ElementName=NumberUpDownControl, Mode=TwoWay}" TextChanged="NumberTextBox_TextChanged" PreviewTextInput="NumberTextBox_PreviewTextInput" Grid.RowSpan="2"/>
-        <Button x:Name="Add" Content="+" Grid.Row="0" Grid.Column="1" Click="Button_Click"/>
-        <Button x:Name="Sub" Content="-" Grid.Row="1" Grid.Column="1" Click="Button_Click"/>
+        <TextBox x:Name="NumberTextBox" Grid.Column="0" Text="{Binding Number, ElementName=NumberUpDownControl, Mode=TwoWay}" LostFocus="NumberTextBox_LostFocus" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" TextChanged="NumberTextBox_TextChanged" PreviewTextInput="NumberTextBox_PreviewTextInput" />
+        <Grid x:Name="HorizontalGrid" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Tag="Add" Content="+" Click="Button_Click"/>
+            <Button Grid.Column="0" Tag="Sub" Content="-" Click="Button_Click"/>
+        </Grid>
+        <Grid x:Name="VerticalGrid" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Tag="Add" Content="+" Click="Button_Click"/>
+            <Button Grid.Row="1" Tag="Sub" Content="-" Click="Button_Click"/>
+        </Grid>
     </Grid>
 </UserControl>

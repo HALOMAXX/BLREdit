@@ -50,6 +50,6 @@ public sealed class LoadoutManagerGear
         if (loadout.GearSlot3Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_L1 = BLRItem.GetLMID(loadout.Gear3);
         if (loadout.GearSlot4Bool.Is || BLREditSettings.Settings.AdvancedModding.Is) Gear_L2 = BLRItem.GetLMID(loadout.Gear4);
 
-        //TODO Hanger, Icon, IconColor, PatchShape, PatchColor, ButtPack   
+        //TODO: Hanger, Icon, IconColor, PatchShape, PatchColor, ButtPack   
     }
 }

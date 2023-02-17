@@ -194,7 +194,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
     private void CheckForInstall(BLRClient client)
     {
-        Installed.SetBool(false);
+        Installed.Set(false);
         if (client is not null)
         {
             foreach (var mod in client.InstalledModules)
@@ -202,7 +202,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 if (mod.InstallName == RepositoryProxyModule.InstallName)
                 {
                     installedModule = mod;
-                    Installed.SetBool(true);
+                    Installed.Set(true);
                     break;
                 }
             }
@@ -211,7 +211,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
     private void CheckForUpdate(BLRClient client)
     {
-        UpToDate.SetBool(false);
+        UpToDate.Set(false);
         if (client is not null && Installed.Is && installedModule is not null)
         {
             try
@@ -220,7 +220,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 task.Wait();
                 DateTime latestRelease = task.Result;
                 var isUpToDate = installedModule.Published >= latestRelease;
-                UpToDate.SetBool(isUpToDate);
+                UpToDate.Set(isUpToDate);
             }
             catch (Exception error)
             {
@@ -234,7 +234,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     public async void InstallModule(BLRClient client)
     {
         if (client is null || LockInstall.Is) return;
-        LockInstall.SetBool(true);
+        LockInstall.Set(true);
         try
         {
             LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.InstallName}");
@@ -288,7 +288,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             OnPropertyChanged(nameof(Installed));
             OnPropertyChanged(nameof(UpToDate));
             LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.InstallName}");
-            LockInstall.SetBool(false);
+            LockInstall.Set(false);
         }
     }
 
@@ -296,7 +296,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     public void RemoveModule(BLRClient client)
     { 
         if (LockRemove.Is) return;
-        LockRemove.SetBool(true);
+        LockRemove.Set(true);
         try
         {
             if (client.Patched.IsNot)
@@ -329,7 +329,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             OnPropertyChanged(nameof(Installed));
             OnPropertyChanged(nameof(UpToDate));
             LoggingSystem.Log($"Finished removing {RepositoryProxyModule.InstallName}");
-            LockRemove.SetBool(false);
+            LockRemove.Set(false);
         }
     }
 

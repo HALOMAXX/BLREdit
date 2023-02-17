@@ -36,18 +36,18 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public int LMID { get; set; } = -69;
     public int NameID { get; set; } = -1;
-    public string Category { get; set; }
+    [JsonIgnore] public string Category { get; set; }
     public string DescriptorName { get; set; }
     public string Icon { get; set; }
     public string Name { get; set; }
     public double CP { get; set; } = 0;
 
-    [JsonIgnore] public string DisplayName { get { return Resources.ResourceManager.GetString($"{NameID}.Name"); } }
+    [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(NameID.ToString()); } }
     [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 
     public BLRPawnModifiers PawnModifiers { get; set; }
     public List<string> SupportedMods { get; set; }
-    [JsonIgnore] public string DisplayTooltip { get { return Resources.ResourceManager.GetString($"{NameID}.Tooltip"); } }
+    [JsonIgnore] public string DisplayTooltip { get { return ItemTooltips.ResourceManager.GetString(NameID.ToString()); } }
     public int UID { get; set; }
     public List<int> ValidFor { get; set; }
     public BLRWeaponModifiers WeaponModifiers { get; set; }
@@ -257,8 +257,7 @@ public sealed class BLRItem : INotifyPropertyChanged
                 }
                 else if (name.Contains("Rocket"))
                 {
-                    //TODO differenciate between stinger and swarm and add Swarm preview image not needed anymore as we can't select depot items as secondaries anymore
-                    return "AV Rocket Launcher Scope";
+                    return "AV Rocket Launcher Scope"; //Not in use anymore as Rocketlaunchers are not selectable anymore
                 }
                 else
                 {
@@ -349,14 +348,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         get
         {
-            if (Icon?.Contains("Depot") ?? false) // TODO Cache the result for faster look ups
-            {
-                return -1;
-            }
-            else
-            {
-                return 1;
-            }
+            return UID;
         }
     }
 

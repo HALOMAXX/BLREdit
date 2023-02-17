@@ -59,7 +59,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
     public static bool FilterByValidity(BLRItem item)
     {
         if (item is null) { return false; }
-        item.IsValid.SetBool(item.ValidForTest(Instance.WeaponFilter));
+        item.IsValid.Set(item.ValidForTest(Instance.WeaponFilter));
         switch ( item.Category )
         {
             case ImportSystem.EMOTES_CATEGORY:

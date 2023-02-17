@@ -53,6 +53,26 @@ public sealed class IOResources
 
     public const string GAME_APPID = "209870";
 
+    static string wineVersion;
+    public static string WineVersion { get { wineVersion ??= GetWineVersionString(); return wineVersion; } }
+
+    public static bool IsWine { get { return !(WineVersion == "Not running under wine!"); } }
+
+    private static string GetWineVersionString()
+    {
+        try
+        {
+            return GetWineVersion();
+        }
+        catch 
+        {
+            return "Not running under wine!";
+        }
+    }
+
+    [DllImport("ntdll.dll", EntryPoint="wine_get_version", CallingConvention=CallingConvention.Cdecl, CharSet=CharSet.Ansi)]
+    private static extern string GetWineVersion();
+
     #region FILES
     public const string GEAR_FILE = "gear.json";
     public const string MOD_FILE = "mods.json";
@@ -86,6 +106,8 @@ public sealed class IOResources
         App.AppThreads.Add(downloadClient);
         downloadClient.Start();
     }
+
+
 
     private static BlockingCollection<DownloadRequest> DownloadRequests { get; } = new();
     public static void DownloadFile(string url, string filename)
@@ -196,26 +218,27 @@ public sealed class IOResources
     {
         if (string.IsNullOrEmpty(vdfPath) || string.IsNullOrEmpty(appID)) { LoggingSystem.Log($"vdfPath or AppID is empty"); return; }
         if (!File.Exists(vdfPath)) { LoggingSystem.Log($"vdfPath file doesn't exist"); return; }
-        string data;
+        
         try
         {
+            string data;
             data = File.ReadAllText(vdfPath);
+            VToken libraryInfo = VdfConvert.Deserialize(data).Value;
+
+            foreach (VProperty library in libraryInfo.Children().Cast<VProperty>())
+            {
+                if (library.Key != "contentstatsid")
+                {
+                    //0 = path /// 6=apps
+                    GameFolders.Add($"{((VValue)((VProperty)library.Value.Children().First()).Value).Value}\\{GAME_PATH_SUFFIX}");
+                }
+            }
         }
         catch (Exception error)
         {
-            LoggingSystem.MessageLog($"failed reading {vdfPath}, steam library parsing aborted reason:\n{error}");
+            LoggingSystem.MessageLog($"failed reading {vdfPath}, found Folders:{GameFolders.Count}, steam library parsing aborted reason:\n{error}");
+            GameFolders.Clear();
             return;
-        }
-
-        VToken libraryInfo = VdfConvert.Deserialize(data).Value;
-
-        foreach (VProperty library in libraryInfo.Children().Cast<VProperty>())
-        {
-            if (library.Key != "contentstatsid")
-            {
-                //0 = path /// 6=apps
-                GameFolders.Add($"{((VValue)((VProperty)library.Value.Children().First()).Value).Value}\\{GAME_PATH_SUFFIX}");
-            }
         }
     }
 

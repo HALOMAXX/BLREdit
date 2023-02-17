@@ -110,6 +110,27 @@
             <TabItem Name="SettingsTab" Header="{x:Static p:Resources.ti_Settings}">
                 <ui:BLREditSettingsControl/>
             </TabItem>
+
+            <TabItem Name="ProfileSettingsTab" Header="Game Settings">
+                <TabControl BorderThickness="0,1,0,0">
+                    <TabItem Header="Key Binds">
+                        <ui:KeyBindControl/>
+                    </TabItem>
+                    <TabItem Header="Audio">
+                        <ui:AudioSettingsControl/>
+                    </TabItem>
+                    <TabItem Header="Control">
+                        <ui:ControlSettingsControl/>
+                    </TabItem>
+                    <TabItem Header="Crosshair">
+                        <ui:CrosshairSettingsControl/>
+                    </TabItem>
+                    <TabItem Header="Game">
+                        <ui:GameSettingsControl/>
+                    </TabItem>
+                </TabControl>
+                
+            </TabItem>
         </TabControl>
         <Grid HorizontalAlignment="Right" Width="400" Margin="400,0,0,0" IsHitTestVisible="False" Focusable="False">
             <ListBox HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="400" Background="Transparent" Name="AlertList" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">

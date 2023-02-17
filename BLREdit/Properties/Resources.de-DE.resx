@@ -273,6 +273,9 @@
   <data name="lbl_BotCount" xml:space="preserve">
     <value>BotCount:</value>
   </data>
+  <data name="lbl_ChatKeyBind" xml:space="preserve">
+    <value>Chat:</value>
+  </data>
   <data name="lbl_CP" xml:space="preserve">
     <value>CP:</value>
   </data>
@@ -317,6 +320,9 @@
   </data>
   <data name="lbl_InfraredProtection" xml:space="preserve">
     <value>Infrared Protection:</value>
+  </data>
+  <data name="lbl_Language" xml:space="preserve">
+    <value>Sprache:</value>
   </data>
   <data name="lbl_MeleeProtection" xml:space="preserve">
     <value>Melee Protection:</value>

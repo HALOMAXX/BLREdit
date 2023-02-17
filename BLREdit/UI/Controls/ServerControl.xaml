@@ -51,7 +51,7 @@
                 <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             </Border>
 
-            <Border BorderThickness="0" Background="#9f000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding Path=IsOnline.VisibilityInverted}"/>
+            <Border BorderThickness="0" Background="#9f000000" HorizontalAlignment="Stretch" IsHitTestVisible="False" VerticalAlignment="Stretch" Visibility="{Binding Path=IsOnline.VisibilityInverted}"/>
         </Grid>
     </Border>
 </UserControl>

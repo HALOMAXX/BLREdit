@@ -16,19 +16,35 @@ public sealed class UIBool : INotifyPropertyChanged
 
     private bool isBool = false;
 
-    public bool Is { get { return isBool; } set { SetBool(value); } }
-    public bool IsNot { get { return !isBool; } set { SetBool(!value); } }
+    public bool Is { get { return isBool; } set { Set(value); } }
+    public bool IsNot { get { return !isBool; } set { Set(!value); } }
 
     public Visibility Visibility { get { if (isBool) { return Visibility.Visible; } else { return Visibility.Collapsed; } } }
     public Visibility VisibilityInverted { get { if (isBool) { return Visibility.Collapsed; } else { return Visibility.Visible; } } }
 
     public UIBool() { }
     public UIBool(bool Bool)
-    { this.SetBool(Bool); }
+    { this.Set(Bool); }
+    public UIBool(int Bool)
+    { this.Set(Bool); }
 
-    public void SetBool(bool target)
+    public void Set(bool target)
     {
         isBool = target;
+        NotifyChange();
+    }
+
+    public void Set(int target)
+    {
+        if (target > 0)
+            isBool = true;
+        else
+            isBool = false;
+        NotifyChange();
+    }
+
+    private void NotifyChange()
+    {
         OnPropertyChanged(nameof(Is));
         OnPropertyChanged(nameof(IsNot));
         OnPropertyChanged(nameof(Visibility));

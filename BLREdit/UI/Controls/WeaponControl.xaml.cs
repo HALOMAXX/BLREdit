@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BLREdit.Import;
 
 namespace BLREdit.UI.Controls;
 
@@ -156,47 +157,47 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         {
             CurrentWeapon = weapon;
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("ammo") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.AMMO_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { AmmoVisibility = Visibility.Visible; }
             else
             { AmmoVisibility = Visibility.Collapsed; }
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("barrels") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.BARRELS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { BarrelVisibility = Visibility.Visible; }
             else
             { BarrelVisibility = Visibility.Collapsed; }
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("camosWeapon") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.CAMOS_WEAPONS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { CamoVisibility = Visibility.Visible; }
             else
             { CamoVisibility = Visibility.Collapsed; }
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("hangers") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.HANGERS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { TagVisibility = Visibility.Visible; }
             else
             { TagVisibility = Visibility.Collapsed; }
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("magazines") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.MAGAZINES_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { MagazineVisibility = Visibility.Visible; }
             else
             { MagazineVisibility = Visibility.Collapsed; }
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("muzzles") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.MUZZELS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { MuzzleVisibility = Visibility.Visible; }
             else
             { MuzzleVisibility = Visibility.Collapsed; }
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("scopes") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.SCOPES_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { ScopeVisibility = Visibility.Visible; }
             else
             { ScopeVisibility = Visibility.Collapsed; }
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("stocks") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.STOCKS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { StockVisibility = Visibility.Visible; }
             else
             { StockVisibility = Visibility.Collapsed; }
 
-            if (CurrentWeapon.Reciever.SupportedMods.Contains("grips") || BLREditSettings.Settings.AdvancedModding.Is)
+            if (CurrentWeapon.Reciever.SupportedMods.Contains(ImportSystem.GRIPS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
             { GripVisibility = Visibility.Visible; }
             else
             { GripVisibility = Visibility.Collapsed; }

@@ -243,7 +243,7 @@ public sealed class BLREditPipe
                 //TODO: Transform Required Modules of ServerConfig to Modules to send to StartProcess as Enabled Modules list
 
                 string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}";
-                client.StartProcess(launchArgs, serverConfig.WatchDog);
+                client.StartProcess(launchArgs, true, serverConfig.WatchDog);
             }
             else
             {
@@ -271,7 +271,7 @@ public sealed class BLREditPipe
         catch 
         {
             LoggingSystem.Log("Failed to Launch BLREdit as Admin will have to do without the API");
-            BLREditSettings.Settings.EnableAPI.SetBool(false);
+            BLREditSettings.Settings.EnableAPI.Set(false);
             BLREditSettings.Save();
         }
     }

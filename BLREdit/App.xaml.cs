@@ -64,6 +64,16 @@ public partial class App : System.Windows.Application
             argDict.Add(name, value);
         }
 
+        if (argDict.TryGetValue("-exportItemList", out var _))
+        {
+            ImportSystem.Initialize();
+
+            IOResources.SerializeFile("itemList.json", ImportSystem.ItemLists);
+
+            Application.Current.Shutdown();
+            return;
+        }
+
         if (argDict.TryGetValue("-package", out string _))
         {
             try
@@ -243,6 +253,8 @@ public partial class App : System.Windows.Application
         
         Trace.AutoFlush = true;
 
+        LoggingSystem.Log($"BLREdit {CurrentVersion} {IOResources.WineVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
 
         SetUpdateFilePath();
@@ -266,7 +278,7 @@ public partial class App : System.Windows.Application
 
         System.Threading.Thread.CurrentThread.CurrentUICulture = BLREditSettings.Settings.SelectedCulture;
 
-        LoggingSystem.Log($"BLREdit {CurrentVersion} Starting! {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+        
         LoggingSystem.Log("Loading Server and Client List");
         UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
         UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();

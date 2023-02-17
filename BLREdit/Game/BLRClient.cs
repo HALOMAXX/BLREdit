@@ -23,11 +23,6 @@ using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
 
-using PeNet;
-using PeNet.Header.Net.MetaDataTables;
-
-using File = System.IO.File;
-
 namespace BLREdit.Game;
 
 public sealed class BLRClient : INotifyPropertyChanged
@@ -46,8 +41,8 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(ClientHash, out string version)) { return version; } else { return "Unknown"; } } }
     [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
-
-
+    private Dictionary<string, BLRProfileSettingsWrapper> profileSettings;
+    [JsonIgnore] public Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get { profileSettings ??= LoadProfiles(); return profileSettings; } }
     [JsonIgnore] public static BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/UI/Resources/V.png", UriKind.Absolute)); } }
     [JsonIgnore] public BitmapImage ClientVersionPart1 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 2) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[1])}.png", UriKind.Absolute)); } return null; } }
     [JsonIgnore] public BitmapImage ClientVersionPart2 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 3) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[2])}.png", UriKind.Absolute)); } return null; } }
@@ -69,13 +64,13 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string originalPath;
     public string OriginalPath {
         get { return originalPath; }
-        set { if (originalPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { originalPath = value; ClientHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"not a valid Client Path {value}"); } }
+        set { if (File.Exists(value)) { originalPath = value; ClientHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Origin Client Path {value}"); } }
     }
 
     private string patchedPath;
     public string PatchedPath {
         get { return patchedPath; }
-        set { if (patchedPath != value && !string.IsNullOrEmpty(value) && File.Exists(value)) { patchedPath = value; Patched.SetBool(true); OnPropertyChanged(); } }
+        set { if (File.Exists(value)) { patchedPath = value; Patched.Set(true); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
     }
 
     public string ConfigFolder { get; set; }
@@ -135,11 +130,60 @@ public sealed class BLRClient : INotifyPropertyChanged
         return $"({ClientVersion}){OriginalPath?.Substring(0, Math.Min(OriginalPath.Length, 24))}";
     }
 
+    #region ProfileSettings
+    private Dictionary<string, BLRProfileSettingsWrapper> LoadProfiles()
+    {
+        var dict = new Dictionary<string, BLRProfileSettingsWrapper>();
+        var dirs = Directory.EnumerateDirectories($"{ConfigFolder}");
+        foreach (var dir in dirs)
+        {
+            if (dir.Contains("settings_manager_"))
+            {
+                var data = dir.Split('\\');
+                var name = data[data.Length - 1].Substring(17);
+
+                var onlineProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{dir}\\UE3_online_profile.json");
+                var keyBinds = IOResources.DeserializeFile<BLRKeyBindings>($"{dir}\\keybinding.json");
+
+                var profile = new BLRProfileSettingsWrapper(name, onlineProfile, keyBinds);
+                dict.Add(name, profile);
+            }
+        }
+        return dict;
+    }
+
+    public void UpdateProfileSettings()
+    {
+        profileSettings = LoadProfiles();
+        foreach (var profile in profileSettings)
+        {
+            ExportSystem.UpdateOrAddProfileSettings(profile.Value.ProfileName, profile.Value);
+        }
+    }
+
+    public void ApplyProfileSetting(BLRProfileSettingsWrapper profileSettings)
+    {
+        if (ProfileSettings.TryGetValue(profileSettings.ProfileName, out var _))
+        {
+            ProfileSettings.Remove(profileSettings.ProfileName);
+            ProfileSettings.Add(profileSettings.ProfileName, profileSettings);
+        }
+        else
+        {
+            Directory.CreateDirectory($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}");
+            ProfileSettings.Add(profileSettings.ProfileName, profileSettings);
+        }
+        IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\UE3_online_profile.json", profileSettings.Settings.Values.ToArray());
+        IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\keybinding.json", profileSettings.KeyBindings);
+    }
+    #endregion ProfileSettings
+
     #region ClientValidation
     public bool ValidateClient()
     {
         bool isValid = true;
         bool NeedsPatching = false;
+
         if (OriginalFileValidation())
         {
             //this is super overkill
@@ -303,7 +347,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         LoggingSystem.Log($"Validating Modules Installed({count}/{InstalledModules.Count}) and Custom({customCount}/{CustomModules.Count}) of {this}");
 
-        ProxyConfig config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}\\default.json") ?? new();
+        ProxyConfig config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}default.json") ?? new();
         config.Proxy.Modules.Server.Clear();
         config.Proxy.Modules.Client.Clear();
         LoggingSystem.Log($"Applying Installed Modules:");
@@ -322,7 +366,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             SetModuleInProxyConfig(config, module);
         }
 
-        IOResources.SerializeFile($"{ConfigFolder}\\default.json", config);
+        IOResources.SerializeFile($"{ConfigFolder}default.json", config);
         LoggingSystem.Log($"Finished Validating Modules of {this}");
     }
 
@@ -431,7 +475,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
         string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}?SingleMatch";
-        StartProcess(launchArgs, BLREditSettings.Settings.ServerWatchDog.Is);
+        StartProcess(launchArgs, true, BLREditSettings.Settings.ServerWatchDog.Is);
         LaunchClient(new LaunchOptions() { UserName= BLREditSettings.Settings.PlayerName, Server=LocalHost });
     }
 
@@ -440,7 +484,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
         string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
-        StartProcess(launchArgs, BLREditSettings.Settings.ServerWatchDog.Is);
+        StartProcess(launchArgs, true, BLREditSettings.Settings.ServerWatchDog.Is);
     }
 
     public void LaunchClient()
@@ -450,14 +494,14 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchClient(LaunchOptions options)
     {
+        ApplyProfileSetting(ExportSystem.GetOrAddProfileSettings(options.UserName));
+
         string launchArgs = options.Server.IPAddress + ':' + options.Server.Port;
         launchArgs += $"?Name={options.UserName}";
         StartProcess(launchArgs);
     }
 
-    //Invalidate the Is Valid if new module was inatlled / removed to prevent error when installing a new module after starting the game once
-
-    public void StartProcess(string launchArgs, bool isServer = false, List<ProxyModule> enabledModules = null)
+    public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule> enabledModules = null)
     {
         if (!hasBeenValidated)
         {
@@ -472,7 +516,11 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             LoggingSystem.Log($"[{this}]: has already been validated!");
         }
-        BLRProcess.CreateProcess(launchArgs, this, isServer);
+
+
+
+        //TODO: Fix this, done??
+        BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog);
     }
 
     #endregion Launch/Exit
@@ -492,9 +540,9 @@ public sealed class BLRClient : INotifyPropertyChanged
             BLREditSettings.Settings.DefaultClient = this;
             foreach (BLRClient c in MainWindow.GameClients)
             {
-                c.CurrentClient.SetBool(false);
+                c.CurrentClient.Set(false);
             }
-            this.CurrentClient.SetBool(true);
+            this.CurrentClient.Set(true);
         }
     }
 
@@ -548,7 +596,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
                 File.Copy($"{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(outFile)}\\Proxy.dll", true);
 
-                var peFile = new PeFile(outFile);
+                var peFile = new PeNet.PeFile(outFile);
                 peFile.AddImport("Proxy.dll", "InitializeThread");
                 File.WriteAllBytes(outFile, peFile.RawFile.ToArray());
             }

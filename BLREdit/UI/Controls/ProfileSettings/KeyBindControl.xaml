@@ -1,0 +1,353 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.KeyBindControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:p="clr-namespace:BLREdit.Properties"
+             xmlns:game="clr-namespace:BLREdit.Game"
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=game:BLRProfileSettingsWrapper}"
+             d:DesignHeight="450" d:DesignWidth="800" PreviewKeyUp="UserControl_PreviewKeyUp" PreviewMouseUp="UserControl_PreviewMouseUp" PreviewMouseWheel="UserControl_PreviewMouseWheel">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" DataContext="{Binding Path=KeyBindings}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Column="0">
+                <Border>
+                    <Grid DataContext="{Binding Path=Fire}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_FireKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=ToggleZoom}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_ToggleZoomKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=MoveForward}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_MoveForwardKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=MoveBackward}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_MoveBackwardKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=StrafeLeft}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_StrafeLeftKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=StrafeRight}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_StrafeRightKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=Sprint}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_SprintKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=ToggleVisor}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_ToggleVisorKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=Melee}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_MeleeKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=PickupWeapon}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_PickupWeaponKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=Reload}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_ReloadKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=HoldCrouch}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_HoldCrouchKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=Jump}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_JumpKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=UseObject}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_UseObjectKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+
+            </StackPanel>
+
+
+
+
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                <Border>
+                    <Grid DataContext="{Binding Path=SelectPrimaryWeapon}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_SelectPrimaryWeaponKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=SelectSecondaryWeapon}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_SelectSecondaryWeaponKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=SelectTactical}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_SelectTacticalKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=LastWeapon}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_LastWeaponKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=NextWeapon}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_NextWeaponKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=PrevWeapon}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_PrevWeaponKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=SwitchGear1}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_SwitchGear1KeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=SwitchGear2}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_SwitchGear2KeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=SwitchGear3}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_SwitchGear3KeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=SwitchGear4}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_SwitchGear4KeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=Taunt}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_TauntKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=Chat}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_ChatKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+                <Border>
+                    <Grid DataContext="{Binding Path=QuickGear}" HorizontalAlignment="Stretch" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{x:Static p:Resources.lbl_QuickGearKeyBind}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <Button Grid.Column="1" Content="{Binding Path=Primary}" Click="Button_Click"/>
+                        <Button Grid.Column="2" Content="{Binding Path=Alternate}" Click="Button_Click"/>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

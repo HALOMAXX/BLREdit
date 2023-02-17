@@ -46,6 +46,7 @@ public sealed partial class BLREditSettingsControl : UserControl
         if (LanguageComboBox.SelectedItem is CultureInfo culture && DataContext is BLREditSettings settings)
         {
             settings.SelectedCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
         }
     }
 

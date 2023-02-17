@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.ControlSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:BLREdit.Properties"
+             xmlns:game="clr-namespace:BLREdit.Game"
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             d:DataContext="{d:DesignInstance Type=game:BLRProfileSettingsWrapper}"
+             mc:Ignorable="d" 
+             d:DesignHeight="960" d:DesignWidth="1400">
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="256"/>
+                <ColumnDefinition Width="128"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
+            </Grid.RowDefinitions>
+            
+            
+            <ToggleButton Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" IsChecked="{Binding Path=HRVToggle}" Content="HRV Toggle"/>
+            <ToggleButton Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" IsChecked="{Binding Path=InvertLook}" Content="Invert Look"/>
+            <ToggleButton Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" IsChecked="{Binding Path=SwapSticks}" Content="Swap Sticks"/>
+            <ToggleButton Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" IsChecked="{Binding Path=SwapLoadoutWithMovementKeys}" Content="Swap Loadout With Movement Keys"/>
+            <ToggleButton Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" IsChecked="{Binding Path=CrouchToggle}" Content="Crouch Toggle"/>
+            <ToggleButton Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" IsChecked="{Binding Path=MouseAcceleration}" Content="Mouse Acceleration"/>
+            <ToggleButton Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" IsChecked="{Binding Path=TightAimToggle}" Content="Tight Aim Toggle"/>
+            <ToggleButton Grid.Column="0" Grid.Row="7" HorizontalAlignment="Right" IsChecked="{Binding Path=TightAimBlur}" Content="Tight Aim Blur"/>
+            <ToggleButton Grid.Column="0" Grid.Row="8" HorizontalAlignment="Right" IsChecked="{Binding Path=SprintToggle}" Content="Sprint Toggle"/>
+
+            <Label              Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Content="Mouse Sensitivity:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" MinNumber="1000" NumberChange="1000" MaxNumber="105000" Number="{Binding Path=MouseSensitivity}"/>
+
+            <Label              Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Content="Mouse Tight Aim Sensitivity:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" MinNumber="5000" NumberChange="1000" MaxNumber="151000" Number="{Binding Path=MouseTightAimSensitivity}"/>
+
+            <Label              Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Content="Gamepad Sensitivity:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" MinNumber="17000" NumberChange="1000" MaxNumber="159500" Number="{Binding Path=GamepadSensitivity}"/>
+
+            <Label              Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Content="Gamepad Tight Aim Sensitivity:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" MinNumber="1000" NumberChange="1000" MaxNumber="216000" Number="{Binding Path=GamepadTightAimSensitivity}"/>
+
+            <Label              Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Content="LeftStick Deadzone:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" MinNumber="1500" NumberChange="1000" MaxNumber="55000" Number="{Binding Path=LeftStickDeadzone}"/>
+
+            <Label              Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Content="RightStick Deadzone:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" MinNumber="1500" NumberChange="1000" MaxNumber="55000" Number="{Binding Path=RightStickDeadzone}"/>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

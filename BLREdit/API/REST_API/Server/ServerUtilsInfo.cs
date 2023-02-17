@@ -21,8 +21,6 @@ public sealed class ServerUtilsInfo : ServerInfo
 
     public string MatchStats { get { return $"Time: {GetTimeDisplay()}\nLeader: {GetScoreDisplay()}"; } }
 
-    //TODO Add Team Id
-
     public override string ToString()
     {
         return LoggingSystem.ObjectToTextWall(this);

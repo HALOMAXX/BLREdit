@@ -18,7 +18,7 @@ public sealed class UIKeys
     {
         foreach (var key in Keys)
         {
-            key.Value.SetBool(pressed);
+            key.Value.Set(pressed);
         }
     }
 
@@ -39,7 +39,7 @@ public sealed class UIKeys
     {
         if (Keys.TryGetValue(e.Key, out UIBool b))
         {
-            b.SetBool(true);
+            b.Set(true);
         }
     }
 
@@ -47,7 +47,7 @@ public sealed class UIKeys
     {
         if (Keys.TryGetValue(e.Key, out UIBool b))
         {
-            b.SetBool(false);
+            b.Set(false);
         }
     }
 }

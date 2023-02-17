@@ -1,0 +1,1762 @@
+[
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 48
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 91
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 92
+        }
+    },
+    {
+        "Owner": 1,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 2
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 120
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 70
+            },
+            "PropertyId": 121
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 70
+            },
+            "PropertyId": 122
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 70
+            },
+            "PropertyId": 123
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 132
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 133
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 70
+            },
+            "PropertyId": 129
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 70
+            },
+            "PropertyId": 130
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 131
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 60
+            },
+            "PropertyId": 150
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 33
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 34
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 46070
+            },
+            "PropertyId": 35
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 93
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 87000
+            },
+            "PropertyId": 94
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 97
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 15
+            },
+            "PropertyId": 98
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 38
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 63
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 66
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 67
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 27
+            },
+            "PropertyId": 68
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -1
+            },
+            "PropertyId": 69
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 70
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 31
+            },
+            "PropertyId": 80
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 12
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 151
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 152
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 153
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 154
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -1
+            },
+            "PropertyId": 39
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 40
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 40
+            },
+            "PropertyId": 102
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 3
+            },
+            "PropertyId": 103
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 104
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 40
+            },
+            "PropertyId": 105
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 20
+            },
+            "PropertyId": 106
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 3
+            },
+            "PropertyId": 107
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 15
+            },
+            "PropertyId": 108
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 21
+            },
+            "PropertyId": 109
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 18
+            },
+            "PropertyId": 110
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 65
+            },
+            "PropertyId": 111
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 65
+            },
+            "PropertyId": 1203
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 112
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 113
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 114
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 115
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 117
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 118
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 119
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 1200
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 1202
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 7
+            },
+            "PropertyId": 1201
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 100
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 401
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 402
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 403
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 404
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 405
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 406
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 407
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 408
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 409214419
+            },
+            "PropertyId": 600
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 801125888
+            },
+            "PropertyId": 601
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 180224
+            },
+            "PropertyId": 602
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -268435384
+            },
+            "PropertyId": 603
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -65536
+            },
+            "PropertyId": 604
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 143720457
+            },
+            "PropertyId": 605
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 532690432
+            },
+            "PropertyId": 606
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 180224
+            },
+            "PropertyId": 607
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -268435456
+            },
+            "PropertyId": 608
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -65536
+            },
+            "PropertyId": 609
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 345052809
+            },
+            "PropertyId": 610
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 532690432
+            },
+            "PropertyId": 611
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 180224
+            },
+            "PropertyId": 612
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -268435456
+            },
+            "PropertyId": 613
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -65536
+            },
+            "PropertyId": 614
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 9503305
+            },
+            "PropertyId": 615
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 532690432
+            },
+            "PropertyId": 616
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 180224
+            },
+            "PropertyId": 617
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -268435456
+            },
+            "PropertyId": 618
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -65536
+            },
+            "PropertyId": 619
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 9503305
+            },
+            "PropertyId": 620
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 532690432
+            },
+            "PropertyId": 621
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 180224
+            },
+            "PropertyId": 622
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -268435456
+            },
+            "PropertyId": 623
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -65536
+            },
+            "PropertyId": 624
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1085200
+            },
+            "PropertyId": 650
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 545425024
+            },
+            "PropertyId": 660
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 16384
+            },
+            "PropertyId": 661
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 127180800
+            },
+            "PropertyId": 662
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 50462976
+            },
+            "PropertyId": 670
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 117835012
+            },
+            "PropertyId": 671
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 672
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 680
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 700
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 701
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 702
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -1
+            },
+            "PropertyId": 710
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 711
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 712
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": -1
+            },
+            "PropertyId": 713
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 714
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 60
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 61
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 500
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 501
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 502
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 503
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 504
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 505
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 506
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 507
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 508
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 509
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 84
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 85
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 86
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 200
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 201
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 716
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 55000
+            },
+            "PropertyId": 717
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 19000
+            },
+            "PropertyId": 718
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 15000
+            },
+            "PropertyId": 1300
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 15000
+            },
+            "PropertyId": 1301
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 721
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 722
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 99
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 900
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 5,
+                "Value1": 0
+            },
+            "PropertyId": 901
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 124
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 5
+            },
+            "PropertyId": 125
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 5
+            },
+            "PropertyId": 126
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 127
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 128
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 95
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 0
+            },
+            "PropertyId": 90
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 101
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1
+            },
+            "PropertyId": 96
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 606155575
+            },
+            "PropertyId": 10000
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 138025754
+            },
+            "PropertyId": 10001
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 911737609
+            },
+            "PropertyId": 10002
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1513238822
+            },
+            "PropertyId": 10003
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 271630
+            },
+            "PropertyId": 10004
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 472062232
+            },
+            "PropertyId": 10005
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1664352285
+            },
+            "PropertyId": 10006
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 39
+            },
+            "PropertyId": 10007
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 336729363
+            },
+            "PropertyId": 10008
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1194934078
+            },
+            "PropertyId": 10009
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 576284742
+            },
+            "PropertyId": 10010
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 974532613
+            },
+            "PropertyId": 10011
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 5966379
+            },
+            "PropertyId": 10012
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 1076706620
+            },
+            "PropertyId": 10013
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 188416065
+            },
+            "PropertyId": 10014
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 44
+            },
+            "PropertyId": 10015
+        }
+    },
+    {
+        "Owner": 2,
+        "ProfileSetting": {
+            "AdvertisementType": 0,
+            "Data": {
+                "Type": 1,
+                "Value1": 45
+            },
+            "PropertyId": 26
+        }
+    }
+]

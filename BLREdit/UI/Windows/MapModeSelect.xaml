@@ -16,13 +16,17 @@
     </Window.Background>
 
     <Grid>
-        <StackPanel Orientation="Horizontal" Height="32" VerticalAlignment="Top">
-            <Label Content="{x:Static p:Resources.lbl_BotCount}" Style="{StaticResource DescriptorLabel}"/>
-            <controls:NumberUpDown Width="64" Number="{Binding Path=BotCount}" MinNumber="0" MaxNumber="{Binding Path=PlayerCount}"/>
-            <Label Content="{x:Static p:Resources.lbl_PlayerCount}" Style="{StaticResource DescriptorLabel}"/>
-            <controls:NumberUpDown x:Name="PlayerCount" Width="64" Number="{Binding Path=PlayerCount}" MinNumber="0" MaxNumber="16"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Label Content="{x:Static p:Resources.lbl_BotCount}" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+            <controls:NumberUpDown x:Name="BotCount" Number="{Binding Path=BotCount}" Orientation="Vertical" MinNumber="0" MaxNumber="{Binding Path=PlayerCount}"/>
+            <Label Content="{x:Static p:Resources.lbl_PlayerCount}" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+            <controls:NumberUpDown x:Name="PlayerCount" Number="{Binding Path=PlayerCount}" Orientation="Horizontal" MinNumber="0" MaxNumber="16"/>
         </StackPanel>
-        <ListView Name="MapList" Margin="0,32,0,0" Grid.ColumnSpan="2">
+        <ListView Name="MapList" Grid.Row="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="3"/>

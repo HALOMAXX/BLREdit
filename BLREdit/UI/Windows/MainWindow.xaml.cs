@@ -132,11 +132,11 @@ public sealed partial class MainWindow : Window
                 if (client.Equals(BLREditSettings.Settings.DefaultClient))
                 {
                     isClientStillExistent = true;
-                    client.CurrentClient.SetBool(true);
+                    client.CurrentClient.Set(true);
                 }
                 else
                 {
-                    client.CurrentClient.SetBool(false);
+                    client.CurrentClient.Set(false);
                     if (patchedClient is null && client.Patched.Is) patchedClient = client;
                 }
             }
@@ -148,12 +148,12 @@ public sealed partial class MainWindow : Window
                     BLREditSettings.Settings.DefaultClient = null;
                     GameClients[0].PatchClient();
                     BLREditSettings.Settings.DefaultClient = GameClients[0];
-                    GameClients[0].CurrentClient.SetBool(true);
+                    GameClients[0].CurrentClient.Set(true);
                 }
                 else
                 {
                     BLREditSettings.Settings.DefaultClient = patchedClient;
-                    patchedClient.CurrentClient.SetBool(true);
+                    patchedClient.CurrentClient.Set(true);
                 }
             }
         }
@@ -226,7 +226,11 @@ public sealed partial class MainWindow : Window
                 add = false;
             }
         }
-        if (add) GameClients.Add(client);
+        if (add)
+        {
+            LoggingSystem.Log($"Adding New Client: {client}");
+            GameClients.Add(client);
+        }
     }
 
     private void ChangeCurrentServer_Click(object sender, RoutedEventArgs e)
@@ -595,7 +599,7 @@ public sealed partial class MainWindow : Window
         }
         else
         {
-            var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}\\profiles\\";
+            var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
             IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Exported!");
@@ -676,7 +680,7 @@ public sealed partial class MainWindow : Window
             case Key.A:
                 if ((UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is) && (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is) && !SearchBox.IsFocused)
                 {
-                    BLREditSettings.Settings.AdvancedModding.SetBool(!BLREditSettings.Settings.AdvancedModding.Is);
+                    BLREditSettings.Settings.AdvancedModding.Set(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
                     ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{BLREditSettings.Settings.AdvancedModding.Is}", 400);
                     LoggingSystem.Log($"{Properties.Resources.msg_AdvancedModding}:{BLREditSettings.Settings.AdvancedModding.Is}");
@@ -738,7 +742,7 @@ public sealed partial class MainWindow : Window
 
     public static void ShowAlert(string message, double displayTime = 400)
     {
-        // TODO: Add Localization for alerts
+        //TODO: Add Localization for alerts
         if (Self is null) return;
         var grid = CreateAlertGrid(message);
         Self.AlertList.Items.Add(grid);
@@ -898,8 +902,15 @@ public sealed partial class MainWindow : Window
             var GameInstance = $"{folder}{IOResources.GAME_DEFAULT_EXE}";
             if (File.Exists(GameInstance))
             {
-                LoggingSystem.Log($"Adding Steam Client: {GameInstance}");
-                AddGameClient(new BLRClient() { OriginalPath = GameInstance });
+                bool alreadyRegistered = false;
+                foreach (var client in GameClients)
+                {
+                    if (client.OriginalPath == GameInstance) { alreadyRegistered = true; continue; }
+                }
+                if (!alreadyRegistered)
+                {
+                    AddGameClient(new BLRClient() { OriginalPath = GameInstance });
+                }
             }
         }
 
@@ -936,6 +947,8 @@ public sealed partial class MainWindow : Window
         ClientListView.DataContext = GameClients;
         ServerListView.DataContext = ServerList;
 
+        SetProfileSettings();
+
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
     }
 
@@ -967,6 +980,21 @@ public sealed partial class MainWindow : Window
         if (e.AddedItems.Contains(LauncherTab))
         {
             RefreshPing();
+        }
+        if (e.RemovedItems.Contains(SettingsTab))
+        {
+            SetProfileSettings();
+        }
+    }
+
+    public void SetProfileSettings()
+    {
+        foreach (var item in ((TabControl)ProfileSettingsTab.Content).Items)
+        {
+            if (item is FrameworkElement element)
+            {
+                element.DataContext = ExportSystem.GetOrAddProfileSettings(BLREditSettings.Settings.PlayerName);
+            }
         }
     }
 

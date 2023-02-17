@@ -439,10 +439,10 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     private void UpdateGearSlots()
     {
-        GearSlot1Bool.SetBool(GearSlots > 0);
-        GearSlot2Bool.SetBool(GearSlots > 1);
-        GearSlot3Bool.SetBool(GearSlots > 2);
-        GearSlot4Bool.SetBool(GearSlots > 3);
+        GearSlot1Bool.Set(GearSlots > 0);
+        GearSlot2Bool.Set(GearSlots > 1);
+        GearSlot3Bool.Set(GearSlots > 2);
+        GearSlot4Bool.Set(GearSlots > 3);
     }
 
     private void CreateDisplay()

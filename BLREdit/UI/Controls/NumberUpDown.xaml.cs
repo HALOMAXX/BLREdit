@@ -43,13 +43,46 @@ namespace BLREdit.UI.Controls
             set { SetValue(MaxNumberProperty, value); }
         }
 
+        private int numberChange = 1;
+        public int NumberChange
+        {
+            get { return (int)GetValue(NumberChangeProperty); }
+            set { SetValue(NumberChangeProperty, value); }
+        }
+
+        private bool overflow = false;
+        public bool Overflow 
+        { 
+            get { return (bool)GetValue(OverflowProperty); }
+            set { SetValue(OverflowProperty, value); }
+        }
+
+        public Orientation orientation = Orientation.Vertical;
+        public Orientation Orientation
+        {
+            get { return (Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
         public static readonly DependencyProperty NumberProperty = DependencyProperty.Register("Number", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { BindsTwoWayByDefault = true });
         public static readonly DependencyProperty MinNumberProperty = DependencyProperty.Register("MinNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { PropertyChangedCallback = new PropertyChangedCallback(OnMinNumberChanged) });
         public static readonly DependencyProperty MaxNumberProperty = DependencyProperty.Register("MaxNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { PropertyChangedCallback = new PropertyChangedCallback(OnMaxNumberChanged) });
+        public static readonly DependencyProperty NumberChangeProperty = DependencyProperty.Register("NumberChange", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(1) { PropertyChangedCallback = new PropertyChangedCallback(OnNumberChangeChanged) });
+        public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register("Orientation", typeof(Orientation), typeof(NumberUpDown), new FrameworkPropertyMetadata(Orientation.Vertical) { PropertyChangedCallback = new PropertyChangedCallback(OnOrientationChanged) });
+        public static readonly DependencyProperty OverflowProperty = DependencyProperty.Register("Overflow", typeof(bool), typeof(NumberUpDown), new FrameworkPropertyMetadata(false) { PropertyChangedCallback = new PropertyChangedCallback(OnOverflowChanged) });
 
         public NumberUpDown()
         {
             InitializeComponent();
+            ApplyOrientation();
+        }
+
+        public static void OnOverflowChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+            if (sender is NumberUpDown number)
+            {
+                number.overflow = (bool)args.NewValue;
+            }
         }
 
         public static void OnMinNumberChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) 
@@ -70,6 +103,37 @@ namespace BLREdit.UI.Controls
             }
         }
 
+        public static void OnNumberChangeChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+            if (sender is NumberUpDown number)
+            {
+                number.numberChange = (int)args.NewValue;
+            }
+        }
+
+        public static void OnOrientationChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+            if (sender is NumberUpDown number)
+            {
+                number.orientation= (Orientation)args.NewValue;
+                number.ApplyOrientation();
+            }
+        }
+
+        public void ApplyOrientation()
+        {
+            if (Orientation == Orientation.Horizontal)
+            {
+                HorizontalGrid.Visibility = Visibility.Visible;
+                VerticalGrid.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                HorizontalGrid.Visibility = Visibility.Collapsed;
+                VerticalGrid.Visibility = Visibility.Visible;
+            }
+        }
+
         public void ClampNumber()
         {
             Number = BLRWeapon.Clamp(Number, MinNumber, MaxNumber);
@@ -84,14 +148,14 @@ namespace BLREdit.UI.Controls
                 text = text.Insert(textBox.CaretIndex, e.Text);
                 e.Handled = !int.TryParse(text, System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture, out int count);
 
-                if (count > maxNumber)
-                {
-                    e.Handled = true;
-                }
-                if (count < minNumber)
-                {
-                    e.Handled = true;
-                }
+                //if (count > maxNumber)
+                //{
+                //    e.Handled = true;
+                //}
+                //if (count < minNumber)
+                //{
+                //    e.Handled = true;
+                //}
             }
         }
 
@@ -111,13 +175,30 @@ namespace BLREdit.UI.Controls
             if (sender is Button button)
             {
                 int num = Number;
-                if (button.Name == "Add")
-                { num++; }
-                else
-                { num--; }
+                if ((string)button.Tag == "Add")
+                { num += NumberChange; }
+                else if ((string)button.Tag == "Sub")
+                { num -= NumberChange; }
+
+                if (Overflow)
+                {
+                    if (num < MinNumber)
+                    {
+                        num = MaxNumber;
+                    }
+                    else if (num > MaxNumber)
+                    {
+                        num = MinNumber;
+                    }
+                }
 
                 Number = BLRWeapon.Clamp(num, minNumber, maxNumber);
             }
+        }
+
+        private void NumberTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ClampNumber();
         }
     }
 }
