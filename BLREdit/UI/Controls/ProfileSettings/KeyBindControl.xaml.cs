@@ -181,11 +181,11 @@ public sealed partial class KeyBindControl : UserControl
     }
 }
 
-class BLREButtonInfo
+public sealed class BLREButtonInfo
 {
-    private PropertyInfo PropertyInfo;
-    private object DataItem;
-    private Button Button;
+    private readonly PropertyInfo PropertyInfo;
+    private readonly object DataItem;
+    private readonly Button Button;
 
     public BLREButtonInfo(PropertyInfo info, object dataItem, Button button)
     { 

@@ -344,7 +344,7 @@ public sealed partial class MainWindow : Window
                     SetItemList(ImportSystem.BARRELS_CATEGORY);
                     break;
                 case "Scope":
-                    if (image.GetBindingExpression(Image.SourceProperty).ResolvedSourcePropertyName == nameof(weapon.Scope.LargeSquareImage))
+                    if (image.DataContext is not BLRWeapon)
                     {
                         SetItemList(ImportSystem.SCOPES_CATEGORY);
                     }
@@ -984,6 +984,10 @@ public sealed partial class MainWindow : Window
         if (e.RemovedItems.Contains(SettingsTab))
         {
             SetProfileSettings();
+        }
+        if (e.AddedItems.Contains(SettingsTab))
+        {
+            BLREditSettings.Settings.LastPlayerName = BLREditSettings.Settings.PlayerName;
         }
     }
 

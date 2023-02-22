@@ -38,7 +38,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     public int NameID { get; set; } = -1;
     [JsonIgnore] public string Category { get; set; }
     public string DescriptorName { get; set; }
-    public string Icon { get; set; }
+    public string Icon { get; set; } = "";
     public string Name { get; set; }
     public double CP { get; set; } = 0;
 
@@ -55,14 +55,13 @@ public sealed class BLRItem : INotifyPropertyChanged
     public BLRWikiStats WikiStats { get; set; }
 
     private bool female = false;
-    [JsonIgnore] public BitmapSource WideImage { get { return GetWideImage(female); } }
-    [JsonIgnore] public BitmapSource LargeSquareImage { get { return GetLargeSquareImage(female); } }
-    [JsonIgnore] public BitmapSource SmallSquareImage { get { return GetSmallSquareImage(female); } }
+
+    [JsonIgnore] public FoxIcon Image { get { if (this.female) { return FemaleIcon; } else { return MaleIcon; } } }
 
     [JsonIgnore] public FoxIcon MaleIcon { get; private set; }
     [JsonIgnore] public FoxIcon FemaleIcon { get; private set; }
 
-    [JsonIgnore] public BitmapSource Crosshair { get; private set; }
+    [JsonIgnore] public FoxIcon Crosshair { get; private set; }
 
     /// <summary>
     /// Gets the Loadout-Manager ID for the item.
@@ -83,69 +82,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     public void UpdateImage(bool female)
     {
         this.female = female;
-        OnPropertyChanged(nameof(WideImage));
-        OnPropertyChanged(nameof(LargeSquareImage));
-        OnPropertyChanged(nameof(SmallSquareImage));
-    }
-
-    public BitmapSource GetWideImage(bool female)
-    {
-        if (female)
-        {
-            if (FemaleIcon == null)
-            { return MaleIcon.WideImage.Value; }
-            return FemaleIcon.WideImage.Value;
-        }
-        else
-        {
-            if (MaleIcon is null)
-            { return FoxIcon.WideEmpty; }
-            return MaleIcon.WideImage.Value;
-        }
-    }
-    public BitmapSource GetLargeSquareImage(bool female)
-    {
-        if (female)
-        {
-            if (FemaleIcon == null)
-            { return MaleIcon.LargeImage.Value; }
-            return FemaleIcon.LargeImage.Value;
-        }
-        else
-        {
-            if (MaleIcon is null)
-            { return FoxIcon.LargeEmpty; }
-            return MaleIcon.LargeImage.Value;
-        }
-    }
-    public BitmapSource GetSmallSquareImage(bool female)
-    {
-        if (female)
-        {
-            if (FemaleIcon == null)
-            { return MaleIcon.SmallImage.Value; }
-            return FemaleIcon.SmallImage.Value;
-        }
-        else
-        {
-            if (MaleIcon is null)
-            { return FoxIcon.SmallEmpty; }
-            return MaleIcon.SmallImage.Value;
-        }
-    }
-
-    public static BitmapSource GetImage(BitmapSource male, BitmapSource female)
-    {
-        if (MainWindow.Profile?.Loadout1?.IsFemale ?? false)
-        {
-            if (female == null)
-            { return male; }
-            return female;
-        }
-        else
-        {
-            return male;
-        }
+        OnPropertyChanged(nameof(Image));
     }
 
     public string GetDescriptorName(double points)
@@ -315,7 +252,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         return ImportSystem.GetIDOfItem(item);
     }
 
-    public static BitmapSource GetBitmapCrosshair(string name)
+    public static FoxIcon GetBitmapCrosshair(string name)
     {
         if (!string.IsNullOrEmpty(name))
         {
@@ -323,11 +260,11 @@ public sealed class BLRItem : INotifyPropertyChanged
             {
                 if (icon.IconName.Equals(name))
                 {
-                    return new BitmapImage(new System.Uri(icon.IconFileInfo.FullName, System.UriKind.Absolute));
+                    return icon;
                 }
             }
         }
-        return FoxIcon.WideEmpty;
+        return new FoxIcon(string.Empty);
     }
 
     [JsonIgnore]

@@ -22,7 +22,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
-    static BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json");
+    static readonly BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json");
 
     public Dictionary<int, BLRProfileSettings> Settings { get; } = new();
     public BLRKeyBindings KeyBindings { get; private set; }
@@ -84,7 +84,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 
     public BLRProfileSettings[] GetSettings()
     {
-        List<BLRProfileSettings> settings = new List<BLRProfileSettings>();
+        List<BLRProfileSettings> settings = new();
         foreach (var setting in Settings)
         {
             settings.Add(setting.Value);

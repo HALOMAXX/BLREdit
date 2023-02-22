@@ -2,7 +2,6 @@
   "attachments": [
     {
       "NameID": 1000,
-      "Icon": "",
       "Name": "No Gear",
       "UID": 12015
     },
@@ -550,7 +549,6 @@
   "badges": [
     {
       "NameID": 3000,
-      "Icon": "",
       "Name": "No Trophy",
       "UID": 46000
     },
@@ -906,7 +904,7 @@
     },
     {
       "NameID": 4005,
-      "Icon": "",
+      "Icon": "t_Taunt_RobotDance_128x128",
       "Name": "Robot Dance",
       "UID": 355
     },
@@ -1020,7 +1018,6 @@
     },
     {
       "NameID": 4024,
-      "Icon": "",
       "Name": "",
       "UID": 382
     },
@@ -1068,7 +1065,7 @@
     },
     {
       "NameID": 4032,
-      "Icon": "t_Taunt_RobotDanceDigital_128x128",
+      "Icon": "t_Taunt_RobotDance_128x128",
       "Name": "Robot Dance Digital",
       "UID": 393
     },
@@ -1140,7 +1137,7 @@
     },
     {
       "NameID": 4044,
-      "Icon": "",
+      "Icon": "t_Taunt_SissorsDigital_128x128",
       "Name": "Scissors Digital",
       "UID": 405
     },
@@ -1158,7 +1155,7 @@
     },
     {
       "NameID": 4047,
-      "Icon": "",
+      "Icon": "t_Taunt_StepOff_128x128",
       "Name": "Step Off Digital",
       "UID": 408
     },
@@ -1170,7 +1167,6 @@
     },
     {
       "NameID": 4024,
-      "Icon": "",
       "Name": "",
       "UID": 410
     },
@@ -1248,13 +1244,11 @@
     },
     {
       "NameID": 4024,
-      "Icon": "",
       "Name": "",
       "UID": 301
     },
     {
       "NameID": 4024,
-      "Icon": "",
       "Name": "",
       "UID": 302
     },
@@ -1290,13 +1284,11 @@
     },
     {
       "NameID": 4024,
-      "Icon": "",
       "Name": "",
       "UID": 308
     },
     {
       "NameID": 4024,
-      "Icon": "",
       "Name": "",
       "UID": 309
     },
@@ -1314,13 +1306,11 @@
     },
     {
       "NameID": 4024,
-      "Icon": "",
       "Name": "",
       "UID": 312
     },
     {
       "NameID": 4024,
-      "Icon": "",
       "Name": "",
       "UID": 313
     },
@@ -1470,7 +1460,7 @@
     },
     {
       "NameID": 4099,
-      "Icon": "t_Taunt_SadPanda_128x128",
+      "Icon": "t_Taunt_SaltyPanda_128x128",
       "Name": "Sad Panda",
       "UID": 338
     },
@@ -1548,13 +1538,13 @@
     },
     {
       "NameID": 4112,
-      "Icon": "",
+      "Icon": "t_Taunt_PelvicThrust_128x128",
       "Name": "Party Thrust",
       "UID": 424
     },
     {
       "NameID": 4113,
-      "Icon": "t_Taunt_Halloween_PumpkinHead_128x128",
+      "Icon": "t_Taunt_Hallowen_PumpkinHead_128x128",
       "Name": "Pumpkin Head Digital",
       "UID": 425
     },
@@ -1596,7 +1586,7 @@
     },
     {
       "NameID": 4120,
-      "Icon": "",
+      "Icon": "t_tauntPack",
       "Name": "Fireworks",
       "UID": 421
     },
@@ -1614,7 +1604,7 @@
     },
     {
       "NameID": 4123,
-      "Icon": "",
+      "Icon": "t_Taunt_PelvicThrust_128x128",
       "Name": "Creepy Thrust",
       "UID": 386
     },
@@ -1664,1099 +1654,824 @@
   "hangers": [
     {
       "NameID": 5000,
-      "Icon": "",
       "Name": "No Weapon Tag",
-      "PawnModifiers": {},
-      "UID": 5000,
-      "WeaponModifiers": {}
+      "UID": 5000
     },
     {
       "NameID": 5001,
       "Icon": "t_Hanger_ZombieDeviLGirl_128x128",
       "Name": "Devil Girl",
-      "PawnModifiers": {},
-      "UID": 5001,
-      "WeaponModifiers": {}
+      "UID": 5001
     },
     {
       "NameID": 5002,
       "Icon": "t_Hanger_3OfaKind_128x128",
       "Name": "Three of a Kind",
-      "PawnModifiers": {},
-      "UID": 5002,
-      "WeaponModifiers": {}
+      "UID": 5002
     },
     {
       "NameID": 5003,
       "Icon": "t_Hanger_Alienware_128x128",
       "Name": "Alienware Tag",
-      "PawnModifiers": {},
-      "UID": 5003,
-      "WeaponModifiers": {}
+      "UID": 5003
     },
     {
       "NameID": 5004,
       "Icon": "t_Hanger_AstroHeadPhones_128x128",
       "Name": "Astro A30 Headset",
-      "PawnModifiers": {},
-      "UID": 5004,
-      "WeaponModifiers": {}
+      "UID": 5004
     },
     {
       "NameID": 5005,
       "Icon": "t_Hanger_BLHelm_128x128",
       "Name": "Blacklight Helmet",
-      "PawnModifiers": {},
-      "UID": 5005,
-      "WeaponModifiers": {}
+      "UID": 5005
     },
     {
       "NameID": 5006,
       "Icon": "t_Hanger_ODRHelm_128x128",
       "Name": "Order Helmet",
-      "PawnModifiers": {},
-      "UID": 5006,
-      "WeaponModifiers": {}
+      "UID": 5006
     },
     {
       "NameID": 5007,
       "Icon": "t_Hanger_PokerChip_128x128",
       "Name": "Poker Chip",
-      "PawnModifiers": {},
-      "UID": 5007,
-      "WeaponModifiers": {}
+      "UID": 5007
     },
     {
       "NameID": 5008,
       "Icon": "t_Hanger_Clover_128x128",
       "Name": "4 Leaf Clover",
-      "PawnModifiers": {},
-      "UID": 5008,
-      "WeaponModifiers": {}
+      "UID": 5008
     },
     {
       "NameID": 5009,
       "Icon": "t_Hanger_CoffeeCup_128x128",
       "Name": "Coffee Cup",
-      "PawnModifiers": {},
-      "UID": 5009,
-      "WeaponModifiers": {}
+      "UID": 5009
     },
     {
       "NameID": 5010,
       "Icon": "t_Hanger_BullDoser_128x128",
       "Name": "Bulldozer",
-      "PawnModifiers": {},
-      "UID": 5010,
-      "WeaponModifiers": {}
+      "UID": 5010
     },
     {
       "NameID": 5011,
       "Icon": "t_Hanger_EndlessAmmo_128x128",
       "Name": "Endless Ammo Tag",
-      "PawnModifiers": {},
-      "UID": 5011,
-      "WeaponModifiers": {}
+      "UID": 5011
     },
     {
       "NameID": 5012,
       "Icon": "t_Hanger_FortyFive_128x128",
       "Name": "45 Caliber",
-      "PawnModifiers": {},
-      "UID": 5012,
-      "WeaponModifiers": {}
+      "UID": 5012
     },
     {
       "NameID": 5013,
       "Icon": "t_Hanger_GoldPot_128x128",
       "Name": "Pot o\u0027 Gold",
-      "PawnModifiers": {},
-      "UID": 5013,
-      "WeaponModifiers": {}
+      "UID": 5013
     },
     {
       "NameID": 5014,
       "Icon": "t_Hanger_SonicKnife_128x128",
       "Name": "Sonic Knife",
-      "PawnModifiers": {},
-      "UID": 5014,
-      "WeaponModifiers": {}
+      "UID": 5014
     },
     {
       "NameID": 5015,
       "Icon": "t_Hanger_BlockHead_Angry_128x128",
       "Name": "Angry Blockhead",
-      "PawnModifiers": {},
-      "UID": 5015,
-      "WeaponModifiers": {}
+      "UID": 5015
     },
     {
       "NameID": 5016,
       "Icon": "t_Hanger_BlockHead_Confused_128x128",
       "Name": "Confused Blockhead",
-      "PawnModifiers": {},
-      "UID": 5016,
-      "WeaponModifiers": {}
+      "UID": 5016
     },
     {
       "NameID": 5017,
       "Icon": "t_Hanger_BlockHead_Happy_128x128",
       "Name": "Happy Blockhead",
-      "PawnModifiers": {},
-      "UID": 5017,
-      "WeaponModifiers": {}
+      "UID": 5017
     },
     {
       "NameID": 5018,
       "Icon": "t_Hanger_BlockHead_Sad_128x128",
       "Name": "Sad Blockhead",
-      "PawnModifiers": {},
-      "UID": 5018,
-      "WeaponModifiers": {}
+      "UID": 5018
     },
     {
       "NameID": 5019,
       "Icon": "t_Hanger_BlockHead_Surprised_128x128",
       "Name": "Surprised Blockhead",
-      "PawnModifiers": {},
-      "UID": 5019,
-      "WeaponModifiers": {}
+      "UID": 5019
     },
     {
       "NameID": 5020,
       "Icon": "t_Hanger_BoxingGloves_128x128",
       "Name": "Boxing Gloves",
-      "PawnModifiers": {},
-      "UID": 5020,
-      "WeaponModifiers": {}
+      "UID": 5020
     },
     {
       "NameID": 5021,
       "Icon": "t_Hanger_Dice_128x128",
       "Name": "Hanging Dice",
-      "PawnModifiers": {},
-      "UID": 5021,
-      "WeaponModifiers": {}
+      "UID": 5021
     },
     {
       "NameID": 5022,
       "Icon": "t_Hanger_DigiMan_BL_128x128",
       "Name": "Blacklight Pixel Art",
-      "PawnModifiers": {},
-      "UID": 5022,
-      "WeaponModifiers": {}
+      "UID": 5022
     },
     {
       "NameID": 5023,
       "Icon": "t_Hanger_DigiMan_128x128",
       "Name": "Order Pixel Art",
-      "PawnModifiers": {},
-      "UID": 5023,
-      "WeaponModifiers": {}
+      "UID": 5023
     },
     {
       "NameID": 5024,
       "Icon": "t_Hanger_FuseBomb_128x128",
       "Name": "Fused Bomb",
-      "PawnModifiers": {},
-      "UID": 5024,
-      "WeaponModifiers": {}
+      "UID": 5024
     },
     {
       "NameID": 5025,
       "Icon": "t_Hanger_FuseBomb_Face_128x128",
       "Name": "Angry Fused Bomb",
-      "PawnModifiers": {},
-      "UID": 5025,
-      "WeaponModifiers": {}
+      "UID": 5025
     },
     {
       "NameID": 5026,
       "Icon": "t_Hanger_APC_128x128",
       "Name": "Panda APC",
-      "PawnModifiers": {},
-      "UID": 5026,
-      "WeaponModifiers": {}
+      "UID": 5026
     },
     {
       "NameID": 5027,
       "Icon": "t_Hanger_ZombieHeadl_128x128",
       "Name": "Zombie Head",
-      "PawnModifiers": {},
-      "UID": 5027,
-      "WeaponModifiers": {}
+      "UID": 5027
     },
     {
       "NameID": 5028,
       "Icon": "t_Hanger_ZombieHeadHRVl_128x128",
       "Name": "Zombie Head with HRV",
-      "PawnModifiers": {},
-      "UID": 5028,
-      "WeaponModifiers": {}
+      "UID": 5028
     },
     {
       "NameID": 5029,
       "Icon": "t_Hanger_AirBomb_Smile_128x128",
       "Name": "Have a Nice Day Bomb",
-      "PawnModifiers": {},
-      "UID": 5029,
-      "WeaponModifiers": {}
+      "UID": 5029
     },
     {
       "NameID": 5030,
       "Icon": "t_Hanger_AirBombNuke_128x128",
       "Name": "Nuclear Bomb",
-      "PawnModifiers": {},
-      "UID": 5030,
-      "WeaponModifiers": {}
+      "UID": 5030
     },
     {
       "NameID": 5031,
       "Icon": "t_Hanger_HoloSign_128x128",
       "Name": "Holographic Sign",
-      "PawnModifiers": {},
-      "UID": 5031,
-      "WeaponModifiers": {}
+      "UID": 5031
     },
     {
       "NameID": 5032,
       "Icon": "t_Hanger_PaperCraftBL_128x128",
       "Name": "Blacklight Papercraft",
-      "PawnModifiers": {},
-      "UID": 5032,
-      "WeaponModifiers": {}
+      "UID": 5032
     },
     {
       "NameID": 5033,
       "Icon": "t_Hanger_PaperCraft_Order_128x128",
       "Name": "Order Papercraft",
-      "PawnModifiers": {},
-      "UID": 5033,
-      "WeaponModifiers": {}
+      "UID": 5033
     },
     {
       "NameID": 5034,
       "Icon": "t_Hanger_HealthHang_128x128",
       "Name": "Health Pack",
-      "PawnModifiers": {},
-      "UID": 5034,
-      "WeaponModifiers": {}
+      "UID": 5034
     },
     {
       "NameID": 5035,
       "Icon": "t_Hanger_SkullWings_128x128",
       "Name": "Winged Skull",
-      "PawnModifiers": {},
-      "UID": 5035,
-      "WeaponModifiers": {}
+      "UID": 5035
     },
     {
       "NameID": 5036,
       "Icon": "t_Hanger_SkullHex_128x128",
       "Name": "Hexed Skull",
-      "PawnModifiers": {},
-      "UID": 5036,
-      "WeaponModifiers": {}
+      "UID": 5036
     },
     {
       "NameID": 5037,
       "Icon": "t_Hanger_Mug_128x128",
       "Name": "Beer Mug",
-      "PawnModifiers": {},
-      "UID": 5037,
-      "WeaponModifiers": {}
+      "UID": 5037
     },
     {
       "NameID": 5038,
       "Icon": "t_Hanger_SkateBoard_128x128",
       "Name": "Skateboard",
-      "PawnModifiers": {},
-      "UID": 5038,
-      "WeaponModifiers": {}
+      "UID": 5038
     },
     {
       "NameID": 5039,
       "Icon": "t_Hanger_Shovel_128x128",
       "Name": "Shovel",
-      "PawnModifiers": {},
-      "UID": 5039,
-      "WeaponModifiers": {}
+      "UID": 5039
     },
     {
       "NameID": 5040,
       "Icon": "t_Hanger_Sphere_8Ball_128x128",
       "Name": "8 Ball",
-      "PawnModifiers": {},
-      "UID": 5040,
-      "WeaponModifiers": {}
+      "UID": 5040
     },
     {
       "NameID": 5041,
       "Icon": "t_Hanger_Sphere_128x128",
       "Name": "Smiley Face",
-      "PawnModifiers": {},
-      "UID": 5041,
-      "WeaponModifiers": {}
+      "UID": 5041
     },
     {
       "NameID": 5042,
       "Icon": "t_Hanger_Sphere_World_128x128",
       "Name": "The World",
-      "PawnModifiers": {},
-      "UID": 5042,
-      "WeaponModifiers": {}
+      "UID": 5042
     },
     {
       "NameID": 5043,
       "Icon": "t_Hanger_HRVDecoy_128x128",
       "Name": "HRV Decoy",
-      "PawnModifiers": {},
-      "UID": 5043,
-      "WeaponModifiers": {}
+      "UID": 5043
     },
     {
       "NameID": 5044,
       "Icon": "t_Hanger_MMRS_128x128",
       "Name": "MMRS Logo",
-      "PawnModifiers": {},
-      "UID": 5044,
-      "WeaponModifiers": {}
+      "UID": 5044
     },
     {
       "NameID": 5045,
       "Icon": "t_Hanger_TeaBag_128x128",
       "Name": "Tea Bag",
-      "PawnModifiers": {},
-      "UID": 5045,
-      "WeaponModifiers": {}
+      "UID": 5045
     },
     {
       "NameID": 5046,
       "Icon": "t_Hanger_StinkTree_128x128",
       "Name": "Stink Tree",
-      "PawnModifiers": {},
-      "UID": 5046,
-      "WeaponModifiers": {}
+      "UID": 5046
     },
     {
       "NameID": 5047,
       "Icon": "t_Hanger_HeartKnuckle_128x128",
       "Name": "Heart Knuckles",
-      "PawnModifiers": {},
-      "UID": 5047,
-      "WeaponModifiers": {}
+      "UID": 5047
     },
     {
       "NameID": 5048,
       "Icon": "t_Hanger_Lightining_128x128",
       "Name": "Lightning Bolt",
-      "PawnModifiers": {},
-      "UID": 5048,
-      "WeaponModifiers": {}
+      "UID": 5048
     },
     {
       "NameID": 5049,
       "Icon": "t_Hanger_Cupcake_128x128",
       "Name": "Cupcake",
-      "PawnModifiers": {},
-      "UID": 5049,
-      "WeaponModifiers": {}
+      "UID": 5049
     },
     {
       "NameID": 5050,
       "Icon": "t_Hanger_Rhino_128x128",
       "Name": "Rhino Head",
-      "PawnModifiers": {},
-      "UID": 5050,
-      "WeaponModifiers": {}
+      "UID": 5050
     },
     {
       "NameID": 5051,
       "Icon": "t_Hanger_Curse_128x128",
       "Name": "Curse Tag",
-      "PawnModifiers": {},
-      "UID": 5051,
-      "WeaponModifiers": {}
+      "UID": 5051
     },
     {
       "NameID": 5052,
       "Icon": "t_Hanger_Destructoid_128x128",
       "Name": "Destructoid Tag",
-      "PawnModifiers": {},
-      "UID": 5052,
-      "WeaponModifiers": {}
+      "UID": 5052
     },
     {
       "NameID": 5053,
       "Icon": "t_Hanger_GameInformer_128x128",
       "Name": "Game Informer Tag",
-      "PawnModifiers": {},
-      "UID": 5053,
-      "WeaponModifiers": {}
+      "UID": 5053
     },
     {
       "NameID": 5054,
       "Icon": "t_Hanger_GameSpot_128x128",
       "Name": "GameSpot Tag",
-      "PawnModifiers": {},
-      "UID": 5054,
-      "WeaponModifiers": {}
+      "UID": 5054
     },
     {
       "NameID": 5055,
       "Icon": "t_Hanger_IGN_128x128",
       "Name": "IGN Tag",
-      "PawnModifiers": {},
-      "UID": 5055,
-      "WeaponModifiers": {}
+      "UID": 5055
     },
     {
       "NameID": 5056,
       "Icon": "t_Hanger_Machinima_128x128",
       "Name": "Machinima Tag",
-      "PawnModifiers": {},
-      "UID": 5056,
-      "WeaponModifiers": {}
+      "UID": 5056
     },
     {
       "NameID": 5057,
       "Icon": "t_Hanger_MMOBomb_128x128",
       "Name": "MMOBomb Tag",
-      "PawnModifiers": {},
-      "UID": 5057,
-      "WeaponModifiers": {}
+      "UID": 5057
     },
     {
       "NameID": 5058,
       "Icon": "t_Hanger_PCGamer_128x128",
       "Name": "PC Gamer Tag",
-      "PawnModifiers": {},
-      "UID": 5058,
-      "WeaponModifiers": {}
+      "UID": 5058
     },
     {
       "NameID": 5059,
       "Icon": "t_Hanger_FPSGuru_128x128",
       "Name": "FPS Guru Tag",
-      "PawnModifiers": {},
-      "UID": 5059,
-      "WeaponModifiers": {}
+      "UID": 5059
     },
     {
       "NameID": 5060,
       "Icon": "t_Hanger_Mushroom_128x128",
       "Name": "Mushroom",
-      "PawnModifiers": {},
-      "UID": 5060,
-      "WeaponModifiers": {}
+      "UID": 5060
     },
     {
       "NameID": 5061,
       "Icon": "t_Hanger_RabbitsFoot_128x128",
       "Name": "Rabbit\u0027s Foot",
-      "PawnModifiers": {},
-      "UID": 5061,
-      "WeaponModifiers": {}
+      "UID": 5061
     },
     {
       "NameID": 5062,
       "Icon": "t_Hanger_YingYang_128x128",
       "Name": "Yin \u0026 Yang",
-      "PawnModifiers": {},
-      "UID": 5062,
-      "WeaponModifiers": {}
+      "UID": 5062
     },
     {
       "NameID": 5063,
       "Icon": "t_Hanger_DollarSign_128x128",
       "Name": "Dollar Sign",
-      "PawnModifiers": {},
-      "UID": 5063,
-      "WeaponModifiers": {}
+      "UID": 5063
     },
     {
       "NameID": 5064,
       "Icon": "t_Hanger_GoodFortuneCat_128x128",
       "Name": "Good Fortune Cat",
-      "PawnModifiers": {},
-      "UID": 5064,
-      "WeaponModifiers": {}
+      "UID": 5064
     },
     {
       "NameID": 5065,
       "Icon": "t_Hanger_RainbowPterodactyl_128x128",
       "Name": "Rainbow Pterodactyl",
-      "PawnModifiers": {},
-      "UID": 5065,
-      "WeaponModifiers": {}
+      "UID": 5065
     },
     {
       "NameID": 5066,
       "Icon": "t_Hanger_MeatShield_128x128",
       "Name": "Health Max",
-      "PawnModifiers": {},
-      "UID": 5066,
-      "WeaponModifiers": {}
+      "UID": 5066
     },
     {
       "NameID": 5067,
       "Icon": "t_Hanger_Football_128x128",
       "Name": "Football",
-      "PawnModifiers": {},
-      "UID": 5067,
-      "WeaponModifiers": {}
+      "UID": 5067
     },
     {
       "NameID": 5068,
       "Icon": "t_Hanger_Horseshoe_128x128",
       "Name": "Horseshoe",
-      "PawnModifiers": {},
-      "UID": 5068,
-      "WeaponModifiers": {}
+      "UID": 5068
     },
     {
       "NameID": 5069,
       "Icon": "t_Hanger_RubberDuck_128x128",
       "Name": "Rubber Duck",
-      "PawnModifiers": {},
-      "UID": 5069,
-      "WeaponModifiers": {}
+      "UID": 5069
     },
     {
       "NameID": 5070,
       "Icon": "t_Hanger_DogBone_128x128",
       "Name": "Dog Bone",
-      "PawnModifiers": {},
-      "UID": 5070,
-      "WeaponModifiers": {}
+      "UID": 5070
     },
     {
       "NameID": 5071,
       "Icon": "t_Hanger_Heart_128x128",
       "Name": "Heart",
-      "PawnModifiers": {},
-      "UID": 5071,
-      "WeaponModifiers": {}
+      "UID": 5071
     },
     {
       "NameID": 5072,
       "Icon": "t_Hanger_KBMOD_128x128",
       "Name": "Vintage KBMOD USB Drive",
-      "PawnModifiers": {},
-      "UID": 5072,
-      "WeaponModifiers": {}
+      "UID": 5072
     },
     {
       "NameID": 5073,
       "Icon": "t_Hanger_AngryPanda_128x128",
       "Name": "Angry Red Panda",
-      "PawnModifiers": {},
-      "UID": 5073,
-      "WeaponModifiers": {}
+      "UID": 5073
     },
     {
       "NameID": 5074,
       "Icon": "t_Hanger_PizzaBelly_128x128",
       "Name": "Pizza Belly",
-      "PawnModifiers": {},
-      "UID": 5074,
-      "WeaponModifiers": {}
+      "UID": 5074
     },
     {
       "NameID": 5075,
       "Icon": "t_Hanger_Terry_128x128",
       "Name": "Terry the Penguin",
-      "PawnModifiers": {},
-      "UID": 5075,
-      "WeaponModifiers": {}
+      "UID": 5075
     },
     {
       "NameID": 5076,
       "Icon": "t_Hanger_XPlay_128x128",
       "Name": "XPlay Tag",
-      "PawnModifiers": {},
-      "UID": 5076,
-      "WeaponModifiers": {}
+      "UID": 5076
     },
     {
       "NameID": 5077,
       "Icon": "t_Hanger_MARS_128x128",
       "Name": "M.A.R.S. Chibi",
-      "PawnModifiers": {},
-      "UID": 5077,
-      "WeaponModifiers": {}
+      "UID": 5077
     },
     {
       "NameID": 5078,
       "Icon": "t_Hanger_MARSArmy_128x128",
       "Name": "Army M.A.R.S. Chibi",
-      "PawnModifiers": {},
-      "UID": 5078,
-      "WeaponModifiers": {}
+      "UID": 5078
     },
     {
       "NameID": 5079,
       "Icon": "t_Hanger_MARSUrban_128x128",
       "Name": "Urban M.A.R.S. Chibi",
-      "PawnModifiers": {},
-      "UID": 5079,
-      "WeaponModifiers": {}
+      "UID": 5079
     },
     {
       "NameID": 5080,
       "Icon": "t_Hanger_MARSBlack_128x128",
       "Name": "Spec Ops M.A.R.S. Chibi",
-      "PawnModifiers": {},
-      "UID": 5080,
-      "WeaponModifiers": {}
+      "UID": 5080
     },
     {
       "NameID": 5081,
       "Icon": "t_Hanger_Egg01_128x128",
       "Name": "Easter Egg Tag 1",
-      "PawnModifiers": {},
-      "UID": 5081,
-      "WeaponModifiers": {}
+      "UID": 5081
     },
     {
       "NameID": 5082,
       "Icon": "t_Hanger_Egg02_128x128",
       "Name": "Easter Egg Tag 2",
-      "PawnModifiers": {},
-      "UID": 5082,
-      "WeaponModifiers": {}
+      "UID": 5082
     },
     {
       "NameID": 5083,
       "Icon": "t_Hanger_Egg03_128x128",
       "Name": "Easter Egg Tag 3",
-      "PawnModifiers": {},
-      "UID": 5083,
-      "WeaponModifiers": {}
+      "UID": 5083
     },
     {
       "NameID": 5084,
       "Icon": "t_Hanger_Egg04_128x128",
       "Name": "Easter Egg Tag 4",
-      "PawnModifiers": {},
-      "UID": 5084,
-      "WeaponModifiers": {}
+      "UID": 5084
     },
     {
       "NameID": 5085,
       "Icon": "t_Hanger_Egg05_128x128",
       "Name": "Easter Egg Tag 5",
-      "PawnModifiers": {},
-      "UID": 5085,
-      "WeaponModifiers": {}
+      "UID": 5085
     },
     {
       "NameID": 5086,
       "Icon": "t_Hanger_Egg06_128x128",
       "Name": "Easter Egg Tag 6",
-      "PawnModifiers": {},
-      "UID": 5086,
-      "WeaponModifiers": {}
+      "UID": 5086
     },
     {
       "NameID": 5087,
       "Icon": "t_Hanger_Egg07_128x128",
       "Name": "Easter Egg Tag 7",
-      "PawnModifiers": {},
-      "UID": 5087,
-      "WeaponModifiers": {}
+      "UID": 5087
     },
     {
       "NameID": 5088,
       "Icon": "t_Hanger_Egg08_128x128",
       "Name": "Easter Egg Tag 8",
-      "PawnModifiers": {},
-      "UID": 5088,
-      "WeaponModifiers": {}
+      "UID": 5088
     },
     {
       "NameID": 5089,
       "Icon": "t_Hanger_BroTeamPill_128x128",
       "Name": "Bro Team Pill",
-      "PawnModifiers": {},
-      "UID": 5089,
-      "WeaponModifiers": {}
+      "UID": 5089
     },
     {
       "NameID": 5090,
       "Icon": "t_Hanger_Raptr_128x128",
       "Name": "Raptr Tag",
-      "PawnModifiers": {},
-      "UID": 5090,
-      "WeaponModifiers": {}
+      "UID": 5090
     },
     {
       "NameID": 5091,
-      "Icon": "Tag",
+      "Icon": "t_Hanger_PortalGun2_128x128",
       "Name": "Portal Gun (ORange)",
-      "PawnModifiers": {},
-      "UID": 5091,
-      "WeaponModifiers": {}
+      "UID": 5091
     },
     {
       "NameID": 5092,
       "Icon": "t_Hanger_PortalGun_128x128",
       "Name": "Portal Gun (Blue)",
-      "PawnModifiers": {},
-      "UID": 5092,
-      "WeaponModifiers": {}
+      "UID": 5092
     },
     {
       "NameID": 5093,
       "Icon": "t_Hanger_HeadCrab_128x128",
       "Name": "Headcrab",
-      "PawnModifiers": {},
-      "UID": 5093,
-      "WeaponModifiers": {}
+      "UID": 5093
     },
     {
       "NameID": 5094,
       "Icon": "t_Hanger_GoldFortuneCat_128x128",
       "Name": "Gold Fortune Cat",
-      "PawnModifiers": {},
-      "UID": 5094,
-      "WeaponModifiers": {}
+      "UID": 5094
     },
     {
       "NameID": 5095,
       "Icon": "t_Hanger_AustraliaContinent_128x128",
       "Name": "Australia",
-      "PawnModifiers": {},
-      "UID": 5095,
-      "WeaponModifiers": {}
+      "UID": 5095
     },
     {
       "NameID": 5096,
       "Icon": "t_Hanger_AUSFlag_128x128",
       "Name": "Australian Flag",
-      "PawnModifiers": {},
-      "UID": 5096,
-      "WeaponModifiers": {}
+      "UID": 5096
     },
     {
       "NameID": 5097,
       "Icon": "t_Hanger_NZFlag_128x128",
       "Name": "New Zealand Flag",
-      "PawnModifiers": {},
-      "UID": 5097,
-      "WeaponModifiers": {}
+      "UID": 5097
     },
     {
       "NameID": 5098,
       "Icon": "t_Hanger_Kangaroo_128x128",
       "Name": "Kangaroo",
-      "PawnModifiers": {},
-      "UID": 5098,
-      "WeaponModifiers": {}
+      "UID": 5098
     },
     {
       "NameID": 5099,
       "Icon": "t_Hanger_AstroA50_128x128",
       "Name": "Astro A50 Headphones",
-      "PawnModifiers": {},
-      "UID": 5099,
-      "WeaponModifiers": {}
+      "UID": 5099
     },
     {
       "NameID": 5100,
       "Icon": "t_Hanger_AstroA40BL_128x128",
       "Name": "Astro Blacklight Retribution Headphones",
-      "PawnModifiers": {},
-      "UID": 5100,
-      "WeaponModifiers": {}
+      "UID": 5100
     },
     {
       "NameID": 5101,
       "Icon": "t_Hanger_GamesCom_128x128",
       "Name": "GamesCom",
-      "PawnModifiers": {},
-      "UID": 5101,
-      "WeaponModifiers": {}
+      "UID": 5101
     },
     {
       "NameID": 5102,
       "Icon": "t_Hanger_SpaceNeedle_128x128",
       "Name": "Space Needle",
-      "PawnModifiers": {},
-      "UID": 5102,
-      "WeaponModifiers": {}
+      "UID": 5102
     },
     {
       "NameID": 5103,
       "Icon": "t_Hanger_PAX_128x128",
       "Name": "PAX Prime 2012",
-      "PawnModifiers": {},
-      "UID": 5103,
-      "WeaponModifiers": {}
+      "UID": 5103
     },
     {
       "NameID": 5104,
       "Icon": "t_Hanger_GameSpy_128x128",
       "Name": "GameSpy",
-      "PawnModifiers": {},
-      "UID": 5104,
-      "WeaponModifiers": {}
+      "UID": 5104
     },
     {
       "NameID": 5105,
       "Icon": "t_Hanger_MMOHut_128x128",
       "Name": "MMO Hut",
-      "PawnModifiers": {},
-      "UID": 5105,
-      "WeaponModifiers": {}
+      "UID": 5105
     },
     {
       "NameID": 5106,
       "Icon": "t_Hanger_Yeousch_128x128",
       "Name": "Yeousch",
-      "PawnModifiers": {},
-      "UID": 5106,
-      "WeaponModifiers": {}
+      "UID": 5106
     },
     {
       "NameID": 5107,
       "Icon": "t_Hanger_AstroA_128x128",
       "Name": "Astro Logo",
-      "PawnModifiers": {},
-      "UID": 5107,
-      "WeaponModifiers": {}
+      "UID": 5107
     },
     {
       "NameID": 5108,
       "Icon": "t_Hanger_ExtraLife_128x128",
       "Name": "Extra Life Charity Tag",
-      "PawnModifiers": {},
-      "UID": 5108,
-      "WeaponModifiers": {}
+      "UID": 5108
     },
     {
       "NameID": 5109,
       "Icon": "t_Hanger_ZombieVet_128x128",
       "Name": "Golden Zombie Girl",
-      "PawnModifiers": {},
-      "UID": 5109,
-      "WeaponModifiers": {}
+      "UID": 5109
     },
     {
       "NameID": 5110,
       "Icon": "t_Hanger_Ultrabook_128x128",
       "Name": "Ultrabook",
-      "PawnModifiers": {},
-      "UID": 5110,
-      "WeaponModifiers": {}
+      "UID": 5110
     },
     {
       "NameID": 5111,
       "Icon": "t_Hanger_TurkeyFlag_128x128",
       "Name": "Turkish Flag",
-      "PawnModifiers": {},
-      "UID": 5111,
-      "WeaponModifiers": {}
+      "UID": 5111
     },
     {
       "NameID": 5112,
       "Icon": "t_Hanger_MalayFlag_128x128",
       "Name": "Malaysian Flag",
-      "PawnModifiers": {},
-      "UID": 5114,
-      "WeaponModifiers": {}
+      "UID": 5114
     },
     {
       "NameID": 5113,
       "Icon": "t_Hanger_SingaporeFlag_128x128",
       "Name": "Singapore Flag",
-      "PawnModifiers": {},
-      "UID": 5115,
-      "WeaponModifiers": {}
+      "UID": 5115
     },
     {
       "NameID": 5114,
       "Icon": "t_Hanger_Daylight_128x128",
       "Name": "Daylight Tag",
-      "PawnModifiers": {},
-      "UID": 5112,
-      "WeaponModifiers": {}
+      "UID": 5112
     },
     {
       "NameID": 5115,
       "Icon": "t_Hanger_BCL_128x128",
       "Name": "BCL Tag",
-      "PawnModifiers": {},
-      "UID": 5113,
-      "WeaponModifiers": {}
+      "UID": 5113
     },
     {
       "NameID": 5116,
       "Icon": "t_Hanger_InsideGaming_128x128",
       "Name": "Inside Gaming",
-      "PawnModifiers": {},
-      "UID": 5120,
-      "WeaponModifiers": {}
+      "UID": 5120
     },
     {
       "NameID": 5117,
       "Icon": "t_Hanger_HalloweenSkull_128x128",
       "Name": "Halloween Skull",
-      "PawnModifiers": {},
-      "UID": 5121,
-      "WeaponModifiers": {}
+      "UID": 5121
     },
     {
       "NameID": 5118,
       "Icon": "t_Hanger_HalloweenJackOLantern_128x128",
       "Name": "Jack O\u0027Lantern",
-      "PawnModifiers": {},
-      "UID": 5122,
-      "WeaponModifiers": {}
+      "UID": 5122
     },
     {
       "NameID": 5119,
       "Icon": "t_Hanger_SugarSkull_BLR_128x128",
       "Name": "BLR Sugar Skull",
-      "PawnModifiers": {},
-      "UID": 5123,
-      "WeaponModifiers": {}
+      "UID": 5123
     },
     {
       "NameID": 5120,
       "Icon": "t_Hanger_SugarSkull_Red_128x128",
       "Name": "Red Sugar Skull",
-      "PawnModifiers": {},
-      "UID": 5124,
-      "WeaponModifiers": {}
+      "UID": 5124
     },
     {
       "NameID": 5121,
       "Icon": "t_Hanger_SugarSkull_Blue_128x128",
       "Name": "Blue Sugar Skull",
-      "PawnModifiers": {},
-      "UID": 5125,
-      "WeaponModifiers": {}
+      "UID": 5125
     },
     {
       "NameID": 5122,
       "Icon": "t_Hanger_ThanksgivingTurkey_128x128",
       "Name": "Thanksgiving Turkey",
-      "PawnModifiers": {},
-      "UID": 5126,
-      "WeaponModifiers": {}
+      "UID": 5126
     },
     {
       "NameID": 5123,
       "Icon": "t_Hanger_SteelSeries_128x128",
       "Name": "Steel Series",
-      "PawnModifiers": {},
-      "UID": 5127,
-      "WeaponModifiers": {}
+      "UID": 5127
     },
     {
       "NameID": 5124,
       "Icon": "t_Hanger_PumpkinPie_128x128",
       "Name": "Pumpkin Pie",
-      "PawnModifiers": {},
-      "UID": 5128,
-      "WeaponModifiers": {}
+      "UID": 5128
     },
     {
       "NameID": 5125,
       "Icon": "t_Hanger_TurkeyLeg_128x128",
       "Name": "Turkey Leg",
-      "PawnModifiers": {},
-      "UID": 5129,
-      "WeaponModifiers": {}
+      "UID": 5129
     },
     {
       "NameID": 5126,
       "Icon": "t_Hanger_SnowFlake_128x128",
       "Name": "Snowflake",
-      "PawnModifiers": {},
-      "UID": 5130,
-      "WeaponModifiers": {}
+      "UID": 5130
     },
     {
       "NameID": 5127,
       "Icon": "t_Hanger_BLR_SnowFlake_128x128",
       "Name": "BLR Snowflake",
-      "PawnModifiers": {},
-      "UID": 5131,
-      "WeaponModifiers": {}
+      "UID": 5131
     },
     {
       "NameID": 5128,
       "Icon": "t_Hanger_MLG_Gold_Fall2014_128x128",
       "Name": "MLG Gold - Fall 2014.",
-      "PawnModifiers": {},
-      "UID": 5132,
-      "WeaponModifiers": {}
+      "UID": 5132
     },
     {
       "NameID": 5129,
       "Icon": "t_Hanger_MLG_Silver_Fall2014_128x128",
       "Name": "MLG Silver - Fall 2014.",
-      "PawnModifiers": {},
-      "UID": 5133,
-      "WeaponModifiers": {}
+      "UID": 5133
     },
     {
       "NameID": 5130,
       "Icon": "t_Hanger_MLG_Bronze_Fall2014_128x128",
       "Name": "MLG Bronze - Fall 2014.",
-      "PawnModifiers": {},
-      "UID": 5134,
-      "WeaponModifiers": {}
+      "UID": 5134
     },
     {
       "NameID": 5131,
       "Icon": "t_Psyonix_Hanger_128x128",
       "Name": "Rocket League",
-      "PawnModifiers": {},
-      "UID": 5137,
-      "WeaponModifiers": {}
+      "UID": 5137
     },
     {
       "NameID": 3045,
       "Icon": "t_Hanger_Antlers_Premium_128x128",
       "Name": "Premium Reindeer Antlers",
-      "PawnModifiers": {},
-      "UID": 5138,
-      "WeaponModifiers": {}
+      "UID": 5138
     },
     {
       "NameID": 3044,
       "Icon": "t_Hanger_Antlers_Basic_128x128",
       "Name": "Reindeer Antlers",
-      "PawnModifiers": {},
-      "UID": 5139,
-      "WeaponModifiers": {}
+      "UID": 5139
     },
     {
       "NameID": 3031,
       "Icon": "t_Hanger_HeartTrail_128",
       "Name": "My Bleeding Heart",
-      "PawnModifiers": {},
-      "UID": 5141,
-      "WeaponModifiers": {}
+      "UID": 5141
     },
     {
       "NameID": 3032,
       "Icon": "t_Hanger_RoseTrail_128",
       "Name": "War of the Roses",
-      "PawnModifiers": {},
-      "UID": 5142,
-      "WeaponModifiers": {}
+      "UID": 5142
     },
     {
       "NameID": 5136,
       "Icon": "t_Hanger_KBMOD_New_128x128",
       "Name": "KBMOD USB Drive",
-      "PawnModifiers": {},
-      "UID": 5143,
-      "WeaponModifiers": {}
+      "UID": 5143
     }
   ],
   "helmets": [
@@ -4014,72 +3729,61 @@
   "tactical": [
     {
       "NameID": 8000,
-      "Icon": "",
       "Name": "No Tactical Gear",
-      "PawnModifiers": {},
       "UID": 13000
     },
     {
       "NameID": 8001,
       "Icon": "t_Gear_HealPack_128x128",
       "Name": "Heal Injector Mk.1",
-      "PawnModifiers": {},
       "UID": 13001
     },
     {
       "NameID": 8002,
       "Icon": "t_Gear_RepairPack_128x128",
       "Name": "Repair Tool",
-      "PawnModifiers": {},
       "UID": 13002
     },
     {
       "NameID": 8003,
       "Icon": "t_Gear_AmmoPack_128x128",
       "Name": "Ammunition Pod Mk.1",
-      "PawnModifiers": {},
       "UID": 13003
     },
     {
       "NameID": 8004,
       "Icon": "t_Gear_BarricadePack_128x128",
       "Name": "Barricade Mk.1",
-      "PawnModifiers": {},
       "UID": 13004
     },
     {
       "NameID": 8005,
       "Icon": "t_Gear_RevivalPack_128x128",
       "Name": "Revival Injector Mk.1",
-      "PawnModifiers": {},
       "UID": 13005
     },
     {
       "NameID": 8006,
       "Icon": "t_Gear_StealthPack_128x128",
       "Name": "Cloak",
-      "PawnModifiers": {},
       "UID": 13006
     },
     {
       "NameID": 8007,
       "Icon": "t_Gear_HS_HRVPing_128x128",
       "Name": "Hardsuit HRV Ping",
-      "PawnModifiers": {},
       "UID": 13007
     },
     {
       "NameID": 8008,
       "Icon": "t_Gear_HSBattlePack_128x128",
       "Name": "Hardsuit Battle Mode",
-      "PawnModifiers": {},
       "UID": 13008
     },
     {
       "NameID": 8009,
       "Icon": "t_Gear_RespawnPack_128x128",
       "Name": "Respawn Beacon",
-      "PawnModifiers": {},
       "UID": 13009
     },
     {
@@ -4096,21 +3800,18 @@
       "NameID": 8011,
       "Icon": "t_Gear_HRVCloakPack_128x128",
       "Name": "HRV Cloak",
-      "PawnModifiers": {},
       "UID": 13011
     },
     {
       "NameID": 8012,
       "Icon": "t_Gear_StealthPack2_128x128",
       "Name": "Cloak Mk.2",
-      "PawnModifiers": {},
       "UID": 13012
     },
     {
       "NameID": 8013,
       "Icon": "t_Gear_RiotShield_128x128",
       "Name": "Barricade Mk.2",
-      "PawnModifiers": {},
       "UID": 13013
     }
   ],
@@ -4236,7 +3937,6 @@
       "NameID": 11000,
       "Icon": "t_AmmoBox_Magnum_128x128",
       "Name": "Magnum Rounds",
-      "PawnModifiers": {},
       "UID": 90005,
       "ValidFor": [
         40010,
@@ -4266,15 +3966,13 @@
         40021,
         40028,
         40027
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 17,
       "NameID": 11001,
       "Icon": "t_AmmoBox_Standard_128x128",
       "Name": "Armor Piercing Rounds",
-      "PawnModifiers": {},
       "UID": 90006,
       "ValidFor": [
         40010,
@@ -4304,15 +4002,13 @@
         40021,
         40028,
         40027
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 0,
       "NameID": 11002,
       "Icon": "t_AmmoBox_Standard_128x128",
       "Name": "Standard Rounds",
-      "PawnModifiers": {},
       "UID": 90000,
       "ValidFor": [
         40000,
@@ -4341,15 +4037,13 @@
         40026,
         40027,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 1,
       "NameID": 11003,
       "Icon": "t_AmmoBox_Electro_128x128",
       "Name": "Electro Rounds",
-      "PawnModifiers": {},
       "UID": 90001,
       "ValidFor": [
         40000,
@@ -4378,15 +4072,13 @@
         40026,
         40027,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 2,
       "NameID": 11004,
       "Icon": "t_AmmoBox_Explosive_128x128",
       "Name": "Explosive Rounds",
-      "PawnModifiers": {},
       "UID": 90002,
       "ValidFor": [
         40000,
@@ -4415,15 +4107,13 @@
         40026,
         40027,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 18,
       "NameID": 11005,
       "Icon": "t_AmmoBox_Standard_128x128",
       "Name": "Hollow Point Rounds",
-      "PawnModifiers": {},
       "UID": 90007,
       "ValidFor": [
         40000,
@@ -4452,15 +4142,13 @@
         40026,
         40027,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 3,
       "NameID": 11006,
       "Icon": "t_AmmoBox_Incendiary_128x128",
       "Name": "Incendiary Rounds",
-      "PawnModifiers": {},
       "UID": 90003,
       "ValidFor": [
         40000,
@@ -4489,15 +4177,13 @@
         40026,
         40027,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 4,
       "NameID": 11007,
       "Icon": "t_AmmoBox_Toxic_128x128",
       "Name": "Toxic Rounds",
-      "PawnModifiers": {},
       "UID": 90004,
       "ValidFor": [
         40000,
@@ -4526,140 +4212,117 @@
         40026,
         40027,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 5,
       "NameID": 11008,
       "Icon": "t_MagSlug_Incendiary_128x128",
       "Name": "Incendiary Flare",
-      "PawnModifiers": {},
       "UID": 90008,
       "ValidFor": [
         40015
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 7,
       "NameID": 11009,
       "Icon": "t_MagSlug_Flare_128x128",
       "Name": "Explosive Flare",
-      "PawnModifiers": {},
       "UID": 90009,
       "ValidFor": [
         40015
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 8,
       "NameID": 11010,
       "Icon": "t_MagSlug_DgnBth_128x128",
       "Name": "Canister",
-      "PawnModifiers": {},
       "UID": 90010,
       "ValidFor": [
         40015
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 9,
       "NameID": 11011,
       "Icon": "t_MagSlug_Slug_128x128",
       "Name": "Thumper Flare",
-      "PawnModifiers": {},
       "UID": 90011,
       "ValidFor": [
         40015
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 10,
       "NameID": 11012,
       "Icon": "t_Bow_ArrowExplosive_128x128",
       "Name": "Exploding Arrow",
-      "PawnModifiers": {},
       "UID": 90012,
       "ValidFor": [
         40024
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 11,
       "NameID": 11013,
       "Icon": "t_Bow_ArrowStun_128x128",
       "Name": "Stun Arrow",
-      "PawnModifiers": {},
       "UID": 90013,
       "ValidFor": [
         40024
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 12,
       "NameID": 11014,
       "Icon": "t_Bow_ArrowToxic_128x128",
       "Name": "Poison Arrow",
-      "PawnModifiers": {},
       "UID": 90014,
       "ValidFor": [
         40024
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 13,
       "NameID": 11015,
       "Icon": "t_Bow_ArrowLight_128x128",
       "Name": "Light Arrow",
-      "PawnModifiers": {},
       "UID": 90015,
       "ValidFor": [
         40024
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 14,
       "NameID": 11016,
       "Icon": "t_Bow_ArrowHeavy_128x128",
       "Name": "Heavy Arrow",
-      "PawnModifiers": {},
       "UID": 90016,
       "ValidFor": [
         40024
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 15,
       "NameID": 11017,
       "Icon": "t_Bow_ArrowStandard_128x128",
       "Name": "Standard Arrow",
-      "PawnModifiers": {},
       "UID": 90017,
       "ValidFor": [
         40024
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 16,
       "NameID": 11018,
       "Icon": "t_Bow_ArrowCupid_128x128",
       "Name": "Cupid\u0027s Arrow",
-      "PawnModifiers": {},
       "UID": 90018,
       "ValidFor": [
         40024
-      ],
-      "WeaponModifiers": {}
+      ]
     }
   ],
   "barrels": [
@@ -4669,7 +4332,6 @@
       "DescriptorName": "Cracking",
       "Icon": "t_Barrel_21_128x128",
       "Name": "Krane Heavy Assault Barrel",
-      "PawnModifiers": {},
       "UID": 41023,
       "ValidFor": [
         40010,
@@ -4709,7 +4371,6 @@
       "DescriptorName": "Smashing",
       "Icon": "t_Barrel_22_128x128",
       "Name": "Krane SG Bar-20",
-      "PawnModifiers": {},
       "UID": 41024,
       "ValidFor": [
         40005
@@ -4737,12 +4398,10 @@
       "DescriptorName": "Biting",
       "Icon": "t_Barrel_18_128x128",
       "Name": "Overmatch A-12 Blast",
-      "PawnModifiers": {},
       "UID": 41025,
       "ValidFor": [
         40016
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 24,
@@ -4750,7 +4409,6 @@
       "DescriptorName": "Punching",
       "Icon": "t_Barrel_BPGrip01_128x128",
       "Name": "Overmatch CRC-7 Post",
-      "PawnModifiers": {},
       "UID": 41021,
       "ValidFor": [
         40016
@@ -4768,7 +4426,6 @@
       "DescriptorName": "Busting",
       "Icon": "t_Barrel_20_128x128",
       "Name": "Overmatch Heavy X3",
-      "PawnModifiers": {},
       "UID": 41022,
       "ValidFor": [
         40016
@@ -4787,7 +4444,6 @@
       "DescriptorName": "Clamped",
       "Icon": "t_Barrel_BPGrip01_128x128",
       "Name": "Briar BAR Grip",
-      "PawnModifiers": {},
       "UID": 41027,
       "ValidFor": [
         40020
@@ -4807,7 +4463,6 @@
       "DescriptorName": "Restrained",
       "Icon": "t_Barrel_BPGrip02_128x128",
       "Name": "Armcom BAR-01",
-      "PawnModifiers": {},
       "UID": 41028,
       "ValidFor": [
         40020
@@ -4835,7 +4490,6 @@
       "DescriptorName": "Clutched",
       "Icon": "t_Barrel_BPGrip03_128x128",
       "Name": "Armcom BARl1",
-      "PawnModifiers": {},
       "UID": 41029,
       "ValidFor": [
         40020
@@ -4862,7 +4516,6 @@
       "DescriptorName": "Grasped",
       "Icon": "t_Barrel_BPGrip04_128x128",
       "Name": "Hullbreach 047BAR",
-      "PawnModifiers": {},
       "UID": 41030,
       "ValidFor": [
         40020
@@ -4889,7 +4542,6 @@
       "DescriptorName": "Hooked",
       "Icon": "t_Barrel_BPGrop05_128x128",
       "Name": "Silverwood TechBAR",
-      "PawnModifiers": {},
       "UID": 41031,
       "ValidFor": [
         40020
@@ -4916,7 +4568,6 @@
       "DescriptorName": "Held",
       "Icon": "t_Barrel_BPGrip06_128x128",
       "Name": "Briar BAR-02",
-      "PawnModifiers": {},
       "UID": 41032,
       "ValidFor": [
         40020
@@ -4944,7 +4595,6 @@
       "DescriptorName": "Collared",
       "Icon": "t_Barrel_BPGrip07_128x128",
       "Name": "Hullbreach 057BAR",
-      "PawnModifiers": {},
       "UID": 41033,
       "ValidFor": [
         40020
@@ -4969,9 +4619,7 @@
       "LMID": 26,
       "NameID": 12012,
       "DescriptorName": "Unbound",
-      "Icon": "",
       "Name": "No Grip",
-      "PawnModifiers": {},
       "UID": 41026,
       "ValidFor": [
         40020
@@ -4987,7 +4635,6 @@
       "DescriptorName": "Enforced",
       "Icon": "t_Barrel_23_128x128",
       "Name": "Frontier Compensator Barrel",
-      "PawnModifiers": {},
       "UID": 41034,
       "ValidFor": [
         40010,
@@ -5024,7 +4671,6 @@
       "DescriptorName": "Stabilized",
       "Icon": "t_Barrel_24_128x128",
       "Name": "Redsand CQC Barrel",
-      "PawnModifiers": {},
       "UID": 41035,
       "ValidFor": [
         40010,
@@ -5064,7 +4710,6 @@
       "DescriptorName": "Stabilized",
       "Icon": "t_Barrel_25_128x128",
       "Name": "Briar CQC Barrel",
-      "PawnModifiers": {},
       "UID": 41036,
       "ValidFor": [
         40010,
@@ -5104,7 +4749,6 @@
       "DescriptorName": "Stabilized",
       "Icon": "t_Barrel_26_128x128",
       "Name": "Briar Balanced Barrel",
-      "PawnModifiers": {},
       "UID": 41037,
       "ValidFor": [
         40010,
@@ -5138,7 +4782,6 @@
       "DescriptorName": "Basic",
       "Icon": "t_Barrel_00_128x128",
       "Name": "Ogre CQC Barrel",
-      "PawnModifiers": {},
       "UID": 41000,
       "ValidFor": [
         40010,
@@ -5176,7 +4819,6 @@
       "DescriptorName": "Cropped",
       "Icon": "t_Barrel_01_128x128",
       "Name": "Titan FFB",
-      "PawnModifiers": {},
       "UID": 41001,
       "ValidFor": [
         40005
@@ -5192,7 +4834,6 @@
       "DescriptorName": "Tactical",
       "Icon": "t_Barrel_10_128x128",
       "Name": "Briar Lightweight Barrel",
-      "PawnModifiers": {},
       "UID": 41010,
       "ValidFor": [
         40010,
@@ -5230,7 +4871,6 @@
       "DescriptorName": "Violent",
       "Icon": "t_Barrel_11_128x128",
       "Name": "Overmatch M-CV Breach",
-      "PawnModifiers": {},
       "UID": 41011,
       "ValidFor": [
         40005
@@ -5256,7 +4896,6 @@
       "DescriptorName": "Unstoppable",
       "Icon": "t_Barrel_12_128x128",
       "Name": "Titan Assault Barrel",
-      "PawnModifiers": {},
       "UID": 41012,
       "ValidFor": [
         40010,
@@ -5296,7 +4935,6 @@
       "DescriptorName": "Fearsome",
       "Icon": "t_Barrel_13_128x128",
       "Name": "Silverwood Light Accuracy Barrel",
-      "PawnModifiers": {},
       "UID": 41013,
       "ValidFor": [
         40010,
@@ -5336,7 +4974,6 @@
       "DescriptorName": "Brilliant",
       "Icon": "t_Barrel_14_128x128",
       "Name": "Briar Accuracy Barrel",
-      "PawnModifiers": {},
       "UID": 41014,
       "ValidFor": [
         40010,
@@ -5376,7 +5013,6 @@
       "DescriptorName": "Mean",
       "Icon": "t_Barrel_15_128x128",
       "Name": "Silverwood SW-09",
-      "PawnModifiers": {},
       "UID": 41015,
       "ValidFor": [
         40010,
@@ -5416,7 +5052,6 @@
       "DescriptorName": "Agency",
       "Icon": "t_Barrel_16_128x128",
       "Name": "Leatherneck Accuracy Barrel",
-      "PawnModifiers": {},
       "UID": 41016,
       "ValidFor": [
         40010,
@@ -5456,7 +5091,6 @@
       "DescriptorName": "Angry",
       "Icon": "t_Barrel_17_128x128",
       "Name": "Vulcan Lightweight Barrel",
-      "PawnModifiers": {},
       "UID": 41017,
       "ValidFor": [
         40010,
@@ -5496,7 +5130,6 @@
       "DescriptorName": "Wicked",
       "Icon": "t_Barrel_PistolLong_128x128",
       "Name": "V2 X200 Mod",
-      "PawnModifiers": {},
       "UID": 41018,
       "ValidFor": [
         40001,
@@ -5526,7 +5159,6 @@
       "DescriptorName": "Piercing",
       "Icon": "t_Barrel_PistolShort_128x128",
       "Name": "V2 Z900 Mod",
-      "PawnModifiers": {},
       "UID": 41019,
       "ValidFor": [
         40001,
@@ -5555,7 +5187,6 @@
       "DescriptorName": "Roaring",
       "Icon": "t_Barrel_02_128x128",
       "Name": "Silverwood CQC Barrel",
-      "PawnModifiers": {},
       "UID": 41002,
       "ValidFor": [
         40010,
@@ -5593,7 +5224,6 @@
       "DescriptorName": "Long",
       "Icon": "t_Barrel_03_128x128",
       "Name": "Frontier Standard Barrel",
-      "PawnModifiers": {},
       "UID": 41003,
       "ValidFor": [
         40010,
@@ -5610,7 +5240,6 @@
         40026,
         40027
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -5619,7 +5248,6 @@
       "DescriptorName": "Ranged",
       "Icon": "t_Barrel_04_128x128",
       "Name": "Titan Extended Barrel",
-      "PawnModifiers": {},
       "UID": 41004,
       "ValidFor": [
         40010,
@@ -5657,7 +5285,6 @@
       "DescriptorName": "Rifled",
       "Icon": "t_Barrel_05_128x128",
       "Name": "Raider Snub Barrel",
-      "PawnModifiers": {},
       "UID": 41005,
       "ValidFor": [
         40010,
@@ -5697,7 +5324,6 @@
       "DescriptorName": "Hex",
       "Icon": "t_Barrel_06_128x128",
       "Name": "Vulcan Tactical Barrel",
-      "PawnModifiers": {},
       "UID": 41006,
       "ValidFor": [
         40010,
@@ -5737,7 +5363,6 @@
       "DescriptorName": "Smoothbore",
       "Icon": "t_Barrel_07_128x128",
       "Name": "Briar Assault Barrel",
-      "PawnModifiers": {},
       "UID": 41007,
       "ValidFor": [
         40010,
@@ -5777,7 +5402,6 @@
       "DescriptorName": "Elite",
       "Icon": "t_Barrel_08_128x128",
       "Name": "Krane Assault Barrel",
-      "PawnModifiers": {},
       "UID": 41008,
       "ValidFor": [
         40010,
@@ -5817,7 +5441,6 @@
       "DescriptorName": "Advanced",
       "Icon": "t_Barrel_09_128x128",
       "Name": "ArmCom Assault Barrel",
-      "PawnModifiers": {},
       "UID": 41009,
       "ValidFor": [
         40010,
@@ -5857,7 +5480,6 @@
       "DescriptorName": "Long",
       "Icon": "t_Gold_Barrel_03_128x128",
       "Name": "Prestige Frontier Standard Barrel",
-      "PawnModifiers": {},
       "UID": 41038,
       "ValidFor": [
         40010,
@@ -5882,9 +5504,7 @@
       "LMID": 0,
       "NameID": 12038,
       "DescriptorName": "Wicked",
-      "Icon": "",
       "Name": "No Barrel Mod",
-      "PawnModifiers": {},
       "UID": 41020,
       "ValidFor": [
         40001,
@@ -5892,8 +5512,7 @@
         40006,
         40013,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     }
   ],
   "camosBody": [
@@ -7814,7 +7433,6 @@
       "NameID": 15000,
       "Icon": "t_Barrel_GripSG01_128x128",
       "Name": "Briar BrGR1",
-      "PawnModifiers": {},
       "UID": 62000,
       "ValidFor": [
         40005
@@ -7828,7 +7446,6 @@
       "NameID": 15001,
       "Icon": "t_Barrel_GripSG02_128x128",
       "Name": "Briar BrSGP1",
-      "PawnModifiers": {},
       "UID": 62001,
       "ValidFor": [
         40005
@@ -7845,12 +7462,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagSMG_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44000,
       "ValidFor": [
         40010
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -7858,7 +7473,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagSMG_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44001,
       "ValidFor": [
         40010
@@ -7876,7 +7490,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagSMG_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44002,
       "ValidFor": [
         40010
@@ -7894,7 +7507,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagSMG_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44003,
       "ValidFor": [
         40010
@@ -7915,7 +7527,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagSMG_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44004,
       "ValidFor": [
         40010
@@ -7935,7 +7546,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSMG_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44005,
       "ValidFor": [
         40010
@@ -7951,7 +7561,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSMG_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44006,
       "ValidFor": [
         40010
@@ -7967,7 +7576,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSMG_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44007,
       "ValidFor": [
         40010
@@ -7983,7 +7591,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSMG_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44008,
       "ValidFor": [
         40010
@@ -7999,13 +7606,11 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44009,
       "ValidFor": [
         40003,
         40027
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -8013,7 +7618,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44010,
       "ValidFor": [
         40003,
@@ -8032,7 +7636,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44011,
       "ValidFor": [
         40003,
@@ -8051,7 +7654,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44012,
       "ValidFor": [
         40003,
@@ -8073,7 +7675,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44013,
       "ValidFor": [
         40003,
@@ -8094,7 +7695,6 @@
       "DescriptorName": "Drummed",
       "Icon": "t_Mag_Drum_128x128",
       "Name": "Drum Mag",
-      "PawnModifiers": {},
       "UID": 44014,
       "ValidFor": [
         40003,
@@ -8118,7 +7718,6 @@
       "DescriptorName": "Relentless",
       "Icon": "t_Mag_DBLDrum_128x128",
       "Name": "Large Drum Mag",
-      "PawnModifiers": {},
       "UID": 44015,
       "ValidFor": [
         40003,
@@ -8142,7 +7741,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44016,
       "ValidFor": [
         40003,
@@ -8159,7 +7757,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44017,
       "ValidFor": [
         40003,
@@ -8176,7 +7773,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44018,
       "ValidFor": [
         40003,
@@ -8193,7 +7789,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44019,
       "ValidFor": [
         40003,
@@ -8210,12 +7805,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagSniper_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44020,
       "ValidFor": [
         40008
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -8223,7 +7816,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagSR_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44021,
       "ValidFor": [
         40008
@@ -8241,7 +7833,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagSniper_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44022,
       "ValidFor": [
         40008
@@ -8259,7 +7850,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagSniper_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44023,
       "ValidFor": [
         40008
@@ -8280,7 +7870,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagSR_LightQuick_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44024,
       "ValidFor": [
         40008
@@ -8300,7 +7889,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSniper_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44025,
       "ValidFor": [
         40008
@@ -8316,7 +7904,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSniper_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44026,
       "ValidFor": [
         40008
@@ -8332,7 +7919,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSniper_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44027,
       "ValidFor": [
         40008
@@ -8348,7 +7934,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSniper_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44028,
       "ValidFor": [
         40008
@@ -8364,7 +7949,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagShell_Standard_128x128",
       "Name": "Standard Tube Magazine",
-      "PawnModifiers": {},
       "UID": 44029,
       "ValidFor": [
         40005
@@ -8379,7 +7963,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Tube Magazine",
-      "PawnModifiers": {},
       "UID": 44030,
       "ValidFor": [
         40005
@@ -8398,7 +7981,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Tube Magazine",
-      "PawnModifiers": {},
       "UID": 44031,
       "ValidFor": [
         40005
@@ -8418,7 +8000,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Tube Magazine",
-      "PawnModifiers": {},
       "UID": 44032,
       "ValidFor": [
         40005
@@ -8441,7 +8022,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Tube Magazine",
-      "PawnModifiers": {},
       "UID": 44033,
       "ValidFor": [
         40005
@@ -8460,7 +8040,6 @@
       "DescriptorName": "Drummed",
       "Icon": "t_Mag_Drum_128x128",
       "Name": "Drum Magazine",
-      "PawnModifiers": {},
       "UID": 44034,
       "ValidFor": [
         40005
@@ -8483,7 +8062,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagShell_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44035,
       "ValidFor": [
         40005
@@ -8499,7 +8077,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagShell_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44036,
       "ValidFor": [
         40005
@@ -8515,7 +8092,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagShell_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44037,
       "ValidFor": [
         40005
@@ -8531,7 +8107,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagShell_Corrosive_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44038,
       "ValidFor": [
         40005
@@ -8547,12 +8122,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagBKT_Standard_128x128",
       "Name": "Standard Ammo Belt",
-      "PawnModifiers": {},
       "UID": 44039,
       "ValidFor": [
         40011
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -8560,7 +8133,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagBKT_Quick_128x128",
       "Name": "Quick Ammo Belt",
-      "PawnModifiers": {},
       "UID": 44040,
       "ValidFor": [
         40011
@@ -8580,7 +8152,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagBKT_Electro_128x128",
       "Name": "Electro Ammo Belt",
-      "PawnModifiers": {},
       "UID": 44041,
       "ValidFor": [
         40011
@@ -8596,7 +8167,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagBKT_Explosive_128x128",
       "Name": "Explosive Ammo Belt",
-      "PawnModifiers": {},
       "UID": 44042,
       "ValidFor": [
         40011
@@ -8612,7 +8182,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagBKT_Incendiary_128x128",
       "Name": "Incendiary Ammo Belt",
-      "PawnModifiers": {},
       "UID": 44043,
       "ValidFor": [
         40011
@@ -8628,7 +8197,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagBKT_Toxic_128x128",
       "Name": "Toxic Ammo Belt",
-      "PawnModifiers": {},
       "UID": 44044,
       "ValidFor": [
         40011
@@ -8644,12 +8212,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_Mag45_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44045,
       "ValidFor": [
         40000
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -8657,7 +8223,6 @@
       "DescriptorName": "Light",
       "Icon": "t_Mag45_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44046,
       "ValidFor": [
         40000
@@ -8675,7 +8240,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_Mag45_LightQuick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44047,
       "ValidFor": [
         40000
@@ -8693,7 +8257,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_Mag45_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44048,
       "ValidFor": [
         40000
@@ -8714,7 +8277,6 @@
       "DescriptorName": "Express",
       "Icon": "t_Mag45_ExtendedQuick_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44049,
       "ValidFor": [
         40000
@@ -8734,7 +8296,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_Mag45_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44050,
       "ValidFor": [
         40000
@@ -8750,7 +8311,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_Mag45_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44051,
       "ValidFor": [
         40000
@@ -8766,7 +8326,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag45_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44052,
       "ValidFor": [
         40000
@@ -8782,7 +8341,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_Mag45_Corrosive_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44053,
       "ValidFor": [
         40000
@@ -8798,13 +8356,11 @@
       "DescriptorName": "Standard",
       "Icon": "t_Mag45_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44054,
       "ValidFor": [
         40001,
         40028
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -8812,7 +8368,6 @@
       "DescriptorName": "Light",
       "Icon": "t_Mag45_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44055,
       "ValidFor": [
         40001,
@@ -8831,7 +8386,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_Mag45_LightQuick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44056,
       "ValidFor": [
         40001,
@@ -8850,7 +8404,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_Mag45_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44057,
       "ValidFor": [
         40001,
@@ -8872,7 +8425,6 @@
       "DescriptorName": "Express",
       "Icon": "t_Mag9mm_ExtendedQuick_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44058,
       "ValidFor": [
         40001,
@@ -8893,7 +8445,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44059,
       "ValidFor": [
         40001,
@@ -8910,7 +8461,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44060,
       "ValidFor": [
         40001,
@@ -8927,7 +8477,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44061,
       "ValidFor": [
         40001,
@@ -8944,7 +8493,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44062,
       "ValidFor": [
         40001,
@@ -8961,12 +8509,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_Mag9mm_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44063,
       "ValidFor": [
         40004
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -8974,7 +8520,6 @@
       "DescriptorName": "Light",
       "Icon": "t_Mag9mm_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44064,
       "ValidFor": [
         40004
@@ -8992,7 +8537,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_Mag9mm_LightQuick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44065,
       "ValidFor": [
         40004
@@ -9010,7 +8554,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_Mag9mm_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44066,
       "ValidFor": [
         40004
@@ -9031,7 +8574,6 @@
       "DescriptorName": "Express",
       "Icon": "t_Mag9mm_ExtendedQuick_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44067,
       "ValidFor": [
         40004
@@ -9051,7 +8593,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44068,
       "ValidFor": [
         40004
@@ -9067,7 +8608,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44069,
       "ValidFor": [
         40004
@@ -9083,7 +8623,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44070,
       "ValidFor": [
         40004
@@ -9099,7 +8638,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44071,
       "ValidFor": [
         40004
@@ -9115,12 +8653,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_Mag9mm_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44072,
       "ValidFor": [
         40006
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -9128,7 +8664,6 @@
       "DescriptorName": "Light",
       "Icon": "t_Mag9mm_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44073,
       "ValidFor": [
         40006
@@ -9146,7 +8681,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_Mag9mm_LightQuick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44074,
       "ValidFor": [
         40006
@@ -9164,7 +8698,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_Mag9mm_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44075,
       "ValidFor": [
         40006
@@ -9185,7 +8718,6 @@
       "DescriptorName": "Express",
       "Icon": "t_Mag9mm_ExtendedQuick_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44076,
       "ValidFor": [
         40006
@@ -9205,7 +8737,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44077,
       "ValidFor": [
         40006
@@ -9221,7 +8752,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44078,
       "ValidFor": [
         40006
@@ -9237,7 +8767,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44079,
       "ValidFor": [
         40006
@@ -9253,7 +8782,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44080,
       "ValidFor": [
         40006
@@ -9269,12 +8797,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44081,
       "ValidFor": [
         40009
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -9282,7 +8808,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44082,
       "ValidFor": [
         40009
@@ -9300,7 +8825,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44083,
       "ValidFor": [
         40009
@@ -9318,7 +8842,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44084,
       "ValidFor": [
         40009
@@ -9339,7 +8862,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44085,
       "ValidFor": [
         40009
@@ -9359,7 +8881,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44086,
       "ValidFor": [
         40009
@@ -9375,7 +8896,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44087,
       "ValidFor": [
         40009
@@ -9391,7 +8911,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44088,
       "ValidFor": [
         40009
@@ -9407,7 +8926,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44089,
       "ValidFor": [
         40009
@@ -9423,12 +8941,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagSniper_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44090,
       "ValidFor": [
         40007
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -9436,7 +8952,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagSR_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44091,
       "ValidFor": [
         40007
@@ -9454,7 +8969,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagSniper_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44092,
       "ValidFor": [
         40007
@@ -9472,7 +8986,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagSniper_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44093,
       "ValidFor": [
         40007
@@ -9493,7 +9006,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagSR_LightQuick_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44094,
       "ValidFor": [
         40007
@@ -9513,7 +9025,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSniper_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44095,
       "ValidFor": [
         40007
@@ -9529,7 +9040,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSniper_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44096,
       "ValidFor": [
         40007
@@ -9545,7 +9055,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSniper_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44097,
       "ValidFor": [
         40007
@@ -9561,7 +9070,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSniper_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44098,
       "ValidFor": [
         40007
@@ -9577,12 +9085,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagRevolver_Standard_128x128",
       "Name": "Standard Cylinder",
-      "PawnModifiers": {},
       "UID": 44103,
       "ValidFor": [
         40002
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -9590,7 +9096,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRevolver_Electro_128x128",
       "Name": "Electro Cylinder",
-      "PawnModifiers": {},
       "UID": 44099,
       "ValidFor": [
         40002
@@ -9606,7 +9111,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRevolver_Explosive_128x128",
       "Name": "Explosive Cylinder",
-      "PawnModifiers": {},
       "UID": 44100,
       "ValidFor": [
         40002
@@ -9622,7 +9126,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRevolver_Incendiary_128x128",
       "Name": "Incendiary Cylinder",
-      "PawnModifiers": {},
       "UID": 44101,
       "ValidFor": [
         40002
@@ -9638,7 +9141,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRevolver_Toxic_128x128",
       "Name": "Toxic Cylinder",
-      "PawnModifiers": {},
       "UID": 44102,
       "ValidFor": [
         40002
@@ -9654,7 +9156,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagLMG2_Standard_128x128",
       "Name": "Standard Ammo Box",
-      "PawnModifiers": {},
       "UID": 44104,
       "ValidFor": [
         40014
@@ -9669,7 +9170,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagLMG2_Light_128x128",
       "Name": "Light Ammo Box",
-      "PawnModifiers": {},
       "UID": 44105,
       "ValidFor": [
         40014
@@ -9691,7 +9191,6 @@
       "DescriptorName": "Heavy",
       "Icon": "t_MagLMG2_Heavy_128x128",
       "Name": "Large Capacity Ammo Box",
-      "PawnModifiers": {},
       "UID": 44106,
       "ValidFor": [
         40014
@@ -9713,12 +9212,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagSMG2_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44107,
       "ValidFor": [
         40013
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -9726,7 +9223,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagSMG2_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44108,
       "ValidFor": [
         40013
@@ -9744,7 +9240,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagSMG2_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44109,
       "ValidFor": [
         40013
@@ -9765,7 +9260,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagSMG2_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44110,
       "ValidFor": [
         40013
@@ -9787,7 +9281,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSMG2_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44112,
       "ValidFor": [
         40013
@@ -9803,7 +9296,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSMG2_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44113,
       "ValidFor": [
         40013
@@ -9819,7 +9311,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSMG2_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44114,
       "ValidFor": [
         40013
@@ -9835,7 +9326,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSMG2_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44115,
       "ValidFor": [
         40013
@@ -9851,12 +9341,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44116,
       "ValidFor": [
         40017
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -9864,7 +9352,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44117,
       "ValidFor": [
         40017
@@ -9882,7 +9369,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44118,
       "ValidFor": [
         40017
@@ -9900,7 +9386,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44119,
       "ValidFor": [
         40017
@@ -9921,7 +9406,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44120,
       "ValidFor": [
         40017
@@ -9941,7 +9425,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44121,
       "ValidFor": [
         40017
@@ -9957,7 +9440,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44122,
       "ValidFor": [
         40017
@@ -9973,7 +9455,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44123,
       "ValidFor": [
         40017
@@ -9989,7 +9470,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44124,
       "ValidFor": [
         40017
@@ -10005,7 +9485,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagShell_Standard_128x128",
       "Name": "Standard Tube Magazine",
-      "PawnModifiers": {},
       "UID": 44125,
       "ValidFor": [
         40016
@@ -10020,7 +9499,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44126,
       "ValidFor": [
         40016
@@ -10039,7 +9517,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44127,
       "ValidFor": [
         40016
@@ -10059,7 +9536,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44128,
       "ValidFor": [
         40016
@@ -10082,7 +9558,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44129,
       "ValidFor": [
         40016
@@ -10105,7 +9580,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagShell_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44130,
       "ValidFor": [
         40016
@@ -10121,7 +9595,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagShell_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44131,
       "ValidFor": [
         40016
@@ -10137,7 +9610,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagShell_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44132,
       "ValidFor": [
         40016
@@ -10153,7 +9625,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagShell_Corrosive_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44133,
       "ValidFor": [
         40016
@@ -10169,7 +9640,6 @@
       "DescriptorName": "Drummed",
       "Icon": "t_Mag_Drum_128x128",
       "Name": "Drum Mag",
-      "PawnModifiers": {},
       "UID": 44134,
       "ValidFor": [
         40016
@@ -10192,7 +9662,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSlug_Flare_128x128",
       "Name": "High Explosive Round Bore",
-      "PawnModifiers": {},
       "UID": 44135,
       "ValidFor": [
         40015
@@ -10207,7 +9676,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSlug_Incendiary_128x128",
       "Name": "Incendiary Round Bore",
-      "PawnModifiers": {},
       "UID": 44136,
       "ValidFor": [
         40015
@@ -10222,12 +9690,10 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagLMG2_Electro_128x128",
       "Name": "Electro Ammo Box",
-      "PawnModifiers": {},
       "UID": 44137,
       "ValidFor": [
         40014
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -10235,12 +9701,10 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagLMG2_Explosive_128x128",
       "Name": "Explosive Ammo Box",
-      "PawnModifiers": {},
       "UID": 44138,
       "ValidFor": [
         40014
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -10248,12 +9712,10 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagLMG2_Incendiary_128x128",
       "Name": "Incendiary Ammo Box",
-      "PawnModifiers": {},
       "UID": 44139,
       "ValidFor": [
         40014
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -10261,12 +9723,10 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagLMG2_Toxic_128x128",
       "Name": "Toxic Ammo Box",
-      "PawnModifiers": {},
       "UID": 44140,
       "ValidFor": [
         40014
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -10274,12 +9734,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagSMG_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44141,
       "ValidFor": [
         40018
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -10287,7 +9745,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagSMG_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44142,
       "ValidFor": [
         40018
@@ -10305,7 +9762,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagSMG_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44143,
       "ValidFor": [
         40018
@@ -10323,7 +9779,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagSMG_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44144,
       "ValidFor": [
         40018
@@ -10344,7 +9799,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagSMG_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44145,
       "ValidFor": [
         40018
@@ -10364,7 +9818,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSMG_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44146,
       "ValidFor": [
         40018
@@ -10380,7 +9833,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSMG_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44147,
       "ValidFor": [
         40018
@@ -10396,7 +9848,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSMG_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44148,
       "ValidFor": [
         40018
@@ -10412,7 +9863,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSMG_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44149,
       "ValidFor": [
         40018
@@ -10428,12 +9878,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44150,
       "ValidFor": [
         40020
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -10441,7 +9889,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44151,
       "ValidFor": [
         40020
@@ -10459,7 +9906,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44152,
       "ValidFor": [
         40020
@@ -10477,7 +9923,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44153,
       "ValidFor": [
         40020
@@ -10498,7 +9943,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44154,
       "ValidFor": [
         40020
@@ -10518,7 +9962,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44155,
       "ValidFor": [
         40020
@@ -10534,7 +9977,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44156,
       "ValidFor": [
         40020
@@ -10550,7 +9992,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44157,
       "ValidFor": [
         40020
@@ -10566,7 +10007,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44158,
       "ValidFor": [
         40020
@@ -10582,7 +10022,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSMG_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44159,
       "ValidFor": [
         40010
@@ -10601,7 +10040,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSMG_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44160,
       "ValidFor": [
         40018
@@ -10620,7 +10058,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44161,
       "ValidFor": [
         40003,
@@ -10640,7 +10077,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44162,
       "ValidFor": [
         40009
@@ -10659,7 +10095,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44163,
       "ValidFor": [
         40017
@@ -10678,7 +10113,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44164,
       "ValidFor": [
         40020
@@ -10697,7 +10131,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSniper_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44165,
       "ValidFor": [
         40008
@@ -10716,7 +10149,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSniper_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44166,
       "ValidFor": [
         40007
@@ -10736,7 +10168,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagShell_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44167,
       "ValidFor": [
         40005
@@ -10755,7 +10186,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagShell_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44168,
       "ValidFor": [
         40016
@@ -10774,7 +10204,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagBKT_Magnum_128x128",
       "Name": "Magnum Ammo Belt",
-      "PawnModifiers": {},
       "UID": 44169,
       "ValidFor": [
         40011
@@ -10793,7 +10222,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44170,
       "ValidFor": [
         40000
@@ -10812,7 +10240,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44171,
       "ValidFor": [
         40001,
@@ -10832,7 +10259,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44172,
       "ValidFor": [
         40004
@@ -10851,7 +10277,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44173,
       "ValidFor": [
         40006
@@ -10870,7 +10295,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRevolver_Magnum_128x128",
       "Name": "Magnum Cylinder",
-      "PawnModifiers": {},
       "UID": 44174,
       "ValidFor": [
         40002
@@ -10889,7 +10313,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSMG2_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44175,
       "ValidFor": [
         40013
@@ -10908,7 +10331,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagLMG2_Magnum_128x128",
       "Name": "Magnum Ammo Box",
-      "PawnModifiers": {},
       "UID": 44176,
       "ValidFor": [
         40014
@@ -10927,7 +10349,6 @@
       "DescriptorName": "Scattershot",
       "Icon": "t_MagSlug_DgnBth_128x128",
       "Name": "Flechette Chamber Boring",
-      "PawnModifiers": {},
       "UID": 44177,
       "ValidFor": [
         40015
@@ -10944,7 +10365,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagCylinder_08_128x128",
       "Name": "Standard Cylinder",
-      "PawnModifiers": {},
       "UID": 44179,
       "ValidFor": [
         40021
@@ -10960,7 +10380,6 @@
       "DescriptorName": "Precision",
       "Icon": "t_MagCylinder_06_128x128",
       "Name": "Precision Cylinder",
-      "PawnModifiers": {},
       "UID": 44180,
       "ValidFor": [
         40021
@@ -10989,7 +10408,6 @@
       "DescriptorName": "High Caliber",
       "Icon": "t_MagCylinder_05_128x128",
       "Name": "High Caliber Cylinder",
-      "PawnModifiers": {},
       "UID": 44181,
       "ValidFor": [
         40021
@@ -11016,7 +10434,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagCylinder_08Incendiary_128x128",
       "Name": "Incendiary Cylinder",
-      "PawnModifiers": {},
       "UID": 44182,
       "ValidFor": [
         40021
@@ -11032,7 +10449,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagCylinder_08Electro_128x128",
       "Name": "Electro Cylinder",
-      "PawnModifiers": {},
       "UID": 44183,
       "ValidFor": [
         40021
@@ -11048,7 +10464,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagCylinder_08Explosive_128x128",
       "Name": "Explosive Cylinder",
-      "PawnModifiers": {},
       "UID": 44184,
       "ValidFor": [
         40021
@@ -11064,7 +10479,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagCylinder_08Toxic_128x128",
       "Name": "Toxic Cylinder",
-      "PawnModifiers": {},
       "UID": 44185,
       "ValidFor": [
         40021
@@ -11079,7 +10493,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagCylinger_08Magnum_128x128",
       "Name": "Magnum Cylinder",
-      "PawnModifiers": {},
       "UID": 44186,
       "ValidFor": [
         40021
@@ -11096,12 +10509,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44187,
       "ValidFor": [
         40022
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -11109,7 +10520,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44188,
       "ValidFor": [
         40022
@@ -11127,7 +10537,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44189,
       "ValidFor": [
         40022
@@ -11145,7 +10554,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44190,
       "ValidFor": [
         40022
@@ -11166,7 +10574,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44191,
       "ValidFor": [
         40022
@@ -11186,7 +10593,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44192,
       "ValidFor": [
         40022
@@ -11202,7 +10608,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44193,
       "ValidFor": [
         40022
@@ -11218,7 +10623,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44194,
       "ValidFor": [
         40022
@@ -11234,7 +10638,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44195,
       "ValidFor": [
         40022
@@ -11250,7 +10653,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44196,
       "ValidFor": [
         40022
@@ -11269,12 +10671,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44197,
       "ValidFor": [
         40023
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -11282,7 +10682,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44198,
       "ValidFor": [
         40023
@@ -11300,7 +10699,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44199,
       "ValidFor": [
         40023
@@ -11318,7 +10716,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44200,
       "ValidFor": [
         40023
@@ -11339,7 +10736,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44201,
       "ValidFor": [
         40023
@@ -11359,7 +10755,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44202,
       "ValidFor": [
         40023
@@ -11375,7 +10770,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44203,
       "ValidFor": [
         40023
@@ -11391,7 +10785,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44204,
       "ValidFor": [
         40023
@@ -11407,7 +10800,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44205,
       "ValidFor": [
         40023
@@ -11423,7 +10815,6 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
-      "PawnModifiers": {},
       "UID": 44206,
       "ValidFor": [
         40023
@@ -11442,7 +10833,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowStandard_128x128",
       "Name": "Standard Arrow",
-      "PawnModifiers": {},
       "UID": 44210,
       "ValidFor": [
         40024
@@ -11460,7 +10850,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowExplosive_128x128",
       "Name": "Exploding Arrow",
-      "PawnModifiers": {},
       "UID": 44211,
       "ValidFor": [
         40024
@@ -11479,7 +10868,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowStun_128x128",
       "Name": "Stun Arrow",
-      "PawnModifiers": {},
       "UID": 44212,
       "ValidFor": [
         40024
@@ -11498,7 +10886,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowToxic_128x128",
       "Name": "Poison Arrow",
-      "PawnModifiers": {},
       "UID": 44213,
       "ValidFor": [
         40024
@@ -11514,7 +10901,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowLight_128x128",
       "Name": "Light Arrow",
-      "PawnModifiers": {},
       "UID": 44214,
       "ValidFor": [
         40024
@@ -11533,7 +10919,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowHeavy_128x128",
       "Name": "Heavy Arrow",
-      "PawnModifiers": {},
       "UID": 44215,
       "ValidFor": [
         40024
@@ -11552,7 +10937,6 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowCupid_128x128",
       "Name": "Cupid\u0027s Arrow",
-      "PawnModifiers": {},
       "UID": 44230,
       "ValidFor": [
         40024
@@ -11570,12 +10954,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44216,
       "ValidFor": [
         40025
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -11583,7 +10965,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44217,
       "ValidFor": [
         40025
@@ -11601,7 +10982,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44218,
       "ValidFor": [
         40025
@@ -11619,7 +10999,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44219,
       "ValidFor": [
         40025
@@ -11640,7 +11019,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44220,
       "ValidFor": [
         40025
@@ -11660,7 +11038,6 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
-      "PawnModifiers": {},
       "UID": 44221,
       "ValidFor": [
         40025
@@ -11676,7 +11053,6 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
-      "PawnModifiers": {},
       "UID": 44222,
       "ValidFor": [
         40025
@@ -11692,7 +11068,6 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
-      "PawnModifiers": {},
       "UID": 44223,
       "ValidFor": [
         40025
@@ -11708,7 +11083,6 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
-      "PawnModifiers": {},
       "UID": 44224,
       "ValidFor": [
         40025
@@ -11724,12 +11098,10 @@
       "DescriptorName": "Standard",
       "Icon": "t_MagSniper_Standard_128x128",
       "Name": "Standard Mag",
-      "PawnModifiers": {},
       "UID": 44225,
       "ValidFor": [
         40026
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -11737,7 +11109,6 @@
       "DescriptorName": "Light",
       "Icon": "t_MagSR_Light_128x128",
       "Name": "Light Mag",
-      "PawnModifiers": {},
       "UID": 44226,
       "ValidFor": [
         40026
@@ -11755,7 +11126,6 @@
       "DescriptorName": "Quick",
       "Icon": "t_MagSniper_Quick_128x128",
       "Name": "Quick Mag",
-      "PawnModifiers": {},
       "UID": 44227,
       "ValidFor": [
         40026
@@ -11773,7 +11143,6 @@
       "DescriptorName": "Extended",
       "Icon": "t_MagSniper_Extended_128x128",
       "Name": "Extended Mag",
-      "PawnModifiers": {},
       "UID": 44228,
       "ValidFor": [
         40026
@@ -11794,7 +11163,6 @@
       "DescriptorName": "Express",
       "Icon": "t_MagSR_LightQuick_128x128",
       "Name": "Express Mag",
-      "PawnModifiers": {},
       "UID": 44229,
       "ValidFor": [
         40026
@@ -11814,13 +11182,11 @@
       "DescriptorName": "Standard",
       "Icon": "t_Gold_MagRifle_Standard_128x128",
       "Name": "Prestige Standard Mag",
-      "PawnModifiers": {},
       "UID": 44231,
       "ValidFor": [
         40003,
         40027
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -11828,13 +11194,11 @@
       "DescriptorName": "Standard",
       "Icon": "t_Gold_MagMP_Default_128x128",
       "Name": "Prestige Standard Mag",
-      "PawnModifiers": {},
       "UID": 44232,
       "ValidFor": [
         40001,
         40028
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     }
   ],
@@ -11843,9 +11207,7 @@
       "LMID": 0,
       "NameID": 17000,
       "DescriptorName": "Choked",
-      "Icon": "",
       "Name": "No Muzzle Mod",
-      "PawnModifiers": {},
       "UID": 43007,
       "ValidFor": [
         40001,
@@ -11855,8 +11217,7 @@
         40005,
         40006,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 1,
@@ -11864,7 +11225,6 @@
       "DescriptorName": "Shadow",
       "Icon": "t_Muzzle_01_128x128",
       "Name": "ArmCom Slit Flash breaker",
-      "PawnModifiers": {},
       "UID": 43001,
       "ValidFor": [
         40000,
@@ -11904,7 +11264,6 @@
       "DescriptorName": "Hidden",
       "Icon": "t_Muzzle_03_128x128",
       "Name": "Nexus Extended Range Muzzle",
-      "PawnModifiers": {},
       "UID": 43003,
       "ValidFor": [
         40000,
@@ -11952,7 +11311,6 @@
       "DescriptorName": "Silent",
       "Icon": "t_Muzzle_04_128x128",
       "Name": "Frontier Standard Suppressor",
-      "PawnModifiers": {},
       "UID": 43004,
       "ValidFor": [
         40000,
@@ -12000,7 +11358,6 @@
       "DescriptorName": "Covert",
       "Icon": "t_Muzzle_00_128x128",
       "Name": "Briar Dampening Muzzle",
-      "PawnModifiers": {},
       "UID": 43000,
       "ValidFor": [
         40000,
@@ -12040,7 +11397,6 @@
       "DescriptorName": "Repercussive",
       "Icon": "t_Muzzle_09_128x128",
       "Name": "Vulcan Notched Flash breaker",
-      "PawnModifiers": {},
       "UID": 43009,
       "ValidFor": [
         40000,
@@ -12081,7 +11437,6 @@
       "DescriptorName": "Stealth",
       "Icon": "t_Muzzle_13_128x128",
       "Name": "Briar Enhanced Suppressor",
-      "PawnModifiers": {},
       "UID": 43013,
       "ValidFor": [
         40000,
@@ -12122,7 +11477,6 @@
       "DescriptorName": "Treacherous",
       "Icon": "t_Muzzle_10_128x128",
       "Name": "Vulcan Compensator",
-      "PawnModifiers": {},
       "UID": 43010,
       "ValidFor": [
         40000,
@@ -12163,7 +11517,6 @@
       "DescriptorName": "Obscured",
       "Icon": "t_Muzzle_06_128x128",
       "Name": "Vulcan Longreach Flash breaker",
-      "PawnModifiers": {},
       "UID": 43006,
       "ValidFor": [
         40000,
@@ -12211,7 +11564,6 @@
       "DescriptorName": "Tactical",
       "Icon": "t_Muzzle_14_128x128",
       "Name": "Overmatch Muzzle Shroud",
-      "PawnModifiers": {},
       "UID": 43014,
       "ValidFor": [
         40000,
@@ -12247,7 +11599,6 @@
       "DescriptorName": "Suppressed",
       "Icon": "t_Muzzle_05_128x128",
       "Name": "ArmCom Enhanced Suppressor",
-      "PawnModifiers": {},
       "UID": 43005,
       "ValidFor": [
         40000,
@@ -12295,7 +11646,6 @@
       "DescriptorName": "Concealed",
       "Icon": "t_Muzzle_12_128x128",
       "Name": "Frontier Power Muzzle",
-      "PawnModifiers": {},
       "UID": 43012,
       "ValidFor": [
         40000,
@@ -12343,7 +11693,6 @@
       "DescriptorName": "Veiled",
       "Icon": "t_Muzzle_11_128x128",
       "Name": "Silverwood Flash breaker",
-      "PawnModifiers": {},
       "UID": 43011,
       "ValidFor": [
         40000,
@@ -12384,7 +11733,6 @@
       "DescriptorName": "Thundering",
       "Icon": "t_Muzzle_02_128x128",
       "Name": "Vulcan Power Brake",
-      "PawnModifiers": {},
       "UID": 43002,
       "ValidFor": [
         40000,
@@ -12425,7 +11773,6 @@
       "DescriptorName": "Audible",
       "Icon": "t_Muzzle_08_128x128",
       "Name": "Krane Power Muzzle",
-      "PawnModifiers": {},
       "UID": 43008,
       "ValidFor": [
         40000,
@@ -12473,7 +11820,6 @@
       "DescriptorName": "Tremoring",
       "Icon": "t_Muzzle_15_128x128",
       "Name": "Briar Extender Muzzle",
-      "PawnModifiers": {},
       "UID": 43015,
       "ValidFor": [
         40000,
@@ -12521,7 +11867,6 @@
       "DescriptorName": "Accented",
       "Icon": "t_Muzzle_16_128x128",
       "Name": "ArmCom Power Muzzle",
-      "PawnModifiers": {},
       "UID": 43016,
       "ValidFor": [
         40000,
@@ -12569,7 +11914,6 @@
       "DescriptorName": "Shrill",
       "Icon": "t_Muzzle_17_128x128",
       "Name": "ArmCom Balanced Muzzle",
-      "PawnModifiers": {},
       "UID": 43017,
       "ValidFor": [
         40000,
@@ -12617,7 +11961,6 @@
       "DescriptorName": "Tactical",
       "Icon": "t_Gold_Muzzle_14_128x128",
       "Name": "Prestige Overmatch Muzzle Shroud",
-      "PawnModifiers": {},
       "UID": 43018,
       "ValidFor": [
         40000,
@@ -12651,7 +11994,6 @@
     {
       "LMID": -1,
       "NameID": 18000,
-      "Icon": "",
       "Name": "No Weapon Skin",
       "UID": 9999
     },
@@ -14695,8 +14037,7 @@
         40026,
         40027,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 13,
@@ -15267,7 +14608,6 @@
       "LMID": 11,
       "NameID": 19023,
       "DescriptorName": "Basic",
-      "Icon": "",
       "Name": "No Optic Mod",
       "UID": 45018,
       "ValidFor": [
@@ -15280,8 +14620,7 @@
         40015,
         40021,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 23,
@@ -15334,7 +14673,6 @@
       "DescriptorName": "Merciless",
       "Icon": "t_BPStock_04_128x128",
       "Name": "Briar Elite A4-BS",
-      "PawnModifiers": {},
       "UID": 42017,
       "ValidFor": [
         40009,
@@ -15363,7 +14701,6 @@
       "DescriptorName": "Dauntless",
       "Icon": "t_BP2Stock_01_128x128",
       "Name": "Hullbreach 89-BPFA",
-      "PawnModifiers": {},
       "UID": 42018,
       "ValidFor": [
         40009,
@@ -15393,7 +14730,6 @@
       "DescriptorName": "Dominant",
       "Icon": "t_BP2Stock_02_128x128",
       "Name": "Silverwood z1200 BPFA",
-      "PawnModifiers": {},
       "UID": 42019,
       "ValidFor": [
         40009,
@@ -15423,7 +14759,6 @@
       "DescriptorName": "Operator\u0027s",
       "Icon": "t_Stock_AK_128x128",
       "Name": "Redsand Compensator Stock",
-      "PawnModifiers": {},
       "UID": 42020,
       "ValidFor": [
         40010,
@@ -15463,7 +14798,6 @@
       "DescriptorName": "Stable",
       "Icon": "t_Stock_01_128x128",
       "Name": "Frontier Ultralight Stock",
-      "PawnModifiers": {},
       "UID": 42001,
       "ValidFor": [
         40010,
@@ -15509,7 +14843,6 @@
       "DescriptorName": "Technical",
       "Icon": "t_Stock_10_128x128",
       "Name": "Krane Ultralight Stock",
-      "PawnModifiers": {},
       "UID": 42010,
       "ValidFor": [
         40010,
@@ -15552,7 +14885,6 @@
       "DescriptorName": "Operator\u0027s",
       "Icon": "t_Stock_11_128x128",
       "Name": "ArmCom Compensator Stock",
-      "PawnModifiers": {},
       "UID": 42011,
       "ValidFor": [
         40010,
@@ -15598,7 +14930,6 @@
       "DescriptorName": "Reinforced",
       "Icon": "t_Stock_12_128x128",
       "Name": "Krane Extender Stock",
-      "PawnModifiers": {},
       "UID": 42012,
       "ValidFor": [
         40010,
@@ -15642,7 +14973,6 @@
       "DescriptorName": "Collapsing",
       "Icon": "t_Stock_13_128x128",
       "Name": "Vulcan Extender Stock",
-      "PawnModifiers": {},
       "UID": 42013,
       "ValidFor": [
         40010,
@@ -15686,7 +15016,6 @@
       "DescriptorName": "Composite",
       "Icon": "t_Stock_02_128x128",
       "Name": "V2 Folding Stock",
-      "PawnModifiers": {},
       "UID": 42002,
       "ValidFor": [
         40010,
@@ -15732,7 +15061,6 @@
       "DescriptorName": "Stabilized",
       "Icon": "t_Stock_03_128x128",
       "Name": "Silverwood Compensator Stock",
-      "PawnModifiers": {},
       "UID": 42003,
       "ValidFor": [
         40010,
@@ -15777,7 +15105,6 @@
       "DescriptorName": "Solid",
       "Icon": "t_Stock_04_128x128",
       "Name": "Taurex Stabilizing Stock",
-      "PawnModifiers": {},
       "UID": 42004,
       "ValidFor": [
         40010,
@@ -15823,7 +15150,6 @@
       "DescriptorName": "Galloping",
       "Icon": "t_Stock_05_128x128",
       "Name": "Krane Tactical Stock",
-      "PawnModifiers": {},
       "UID": 42005,
       "ValidFor": [
         40010,
@@ -15869,7 +15195,6 @@
       "DescriptorName": "Combat",
       "Icon": "t_Stock_06_128x128",
       "Name": "Hullbreach CQC Stock",
-      "PawnModifiers": {},
       "UID": 42006,
       "ValidFor": [
         40010,
@@ -15915,7 +15240,6 @@
       "DescriptorName": "Heavy",
       "Icon": "t_Stock_07_128x128",
       "Name": "Silverwood Standard Stock",
-      "PawnModifiers": {},
       "UID": 42007,
       "ValidFor": [
         40010,
@@ -15938,7 +15262,6 @@
         40027,
         40028
       ],
-      "WeaponModifiers": {},
       "WikiStats": {}
     },
     {
@@ -15947,7 +15270,6 @@
       "DescriptorName": "Veteran",
       "Icon": "t_Stock_08_128x128",
       "Name": "Overmatch Compensator Stock",
-      "PawnModifiers": {},
       "UID": 42008,
       "ValidFor": [
         40010,
@@ -15987,7 +15309,6 @@
       "DescriptorName": "Brutal",
       "Icon": "t_Stock_09_128x128",
       "Name": "ArmCom Folding Stock",
-      "PawnModifiers": {},
       "UID": 42009,
       "ValidFor": [
         40010,
@@ -16033,7 +15354,6 @@
       "DescriptorName": "Armored",
       "Icon": "t_BPStock_01_128x128",
       "Name": "MMRS BP-SR Tactical",
-      "PawnModifiers": {},
       "UID": 42014,
       "ValidFor": [
         40009,
@@ -16050,7 +15370,6 @@
       "DescriptorName": "Wild",
       "Icon": "t_BPStock_02_128x128",
       "Name": "MMRS BP-XLi",
-      "PawnModifiers": {},
       "UID": 42015,
       "ValidFor": [
         40009,
@@ -16077,7 +15396,6 @@
       "DescriptorName": "Ironclad",
       "Icon": "t_BPStock_03_128x128",
       "Name": "MMRS BP-CQ \u002B PCR",
-      "PawnModifiers": {},
       "UID": 42016,
       "ValidFor": [
         40009,
@@ -16106,7 +15424,6 @@
       "DescriptorName": "Heavy",
       "Icon": "t_Gold_Stock_01_128x128",
       "Name": "Prestige Silverwood Standard Stock",
-      "PawnModifiers": {},
       "UID": 42021,
       "ValidFor": [
         40010,
@@ -16128,24 +15445,20 @@
         40026,
         40027,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     },
     {
       "LMID": 0,
       "NameID": 20021,
       "DescriptorName": "Prototype",
-      "Icon": "",
       "Name": "No Stock",
-      "PawnModifiers": {},
       "UID": 42000,
       "ValidFor": [
         40001,
         40000,
         40006,
         40028
-      ],
-      "WeaponModifiers": {}
+      ]
     }
   ],
   "primary": [

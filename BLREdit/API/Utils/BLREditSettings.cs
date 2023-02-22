@@ -64,7 +64,9 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return null; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
 
     private string playerName = "BLREdit-Player";
+    private string lastplayerName = "BLREdit-Player";
     public string PlayerName { get { return playerName; } set { playerName = value; OnPropertyChanged(); } }
+    [JsonIgnore] public string LastPlayerName { get { return lastplayerName; } set { lastplayerName = value; OnPropertyChanged(); } }
 
     //BotCount for Server Start
     private int botCount = 8;

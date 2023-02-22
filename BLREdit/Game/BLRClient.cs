@@ -159,6 +159,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             ExportSystem.UpdateOrAddProfileSettings(profile.Value.ProfileName, profile.Value);
         }
+        App.Current.Dispatcher.Invoke(() => { MainWindow.Self.SetProfileSettings(); }); 
     }
 
     public void ApplyProfileSetting(BLRProfileSettingsWrapper profileSettings)

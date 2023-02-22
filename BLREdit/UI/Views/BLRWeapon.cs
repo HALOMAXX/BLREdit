@@ -173,11 +173,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     //TODO: Add Premade Weapon Setup's
 
-    [JsonIgnore] public BitmapSource ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
+    [JsonIgnore] public FoxIcon ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
 
     private Export.MagiCowsWeapon internalWeapon = null;
 
-    public static BitmapSource GetBitmapCrosshair(string name)
+    public static FoxIcon GetBitmapCrosshair(string name)
     {
         if (!string.IsNullOrEmpty(name))
         {
@@ -185,11 +185,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             {
                 if (icon.IconName.Equals(name))
                 {
-                    return new BitmapImage(new Uri(icon.IconFileInfo.FullName, UriKind.Absolute));
+                    return icon;
                 }
             }
         }
-        return FoxIcon.WideEmpty;
+        return new FoxIcon(string.Empty);
     }
 
     private void AddMissingDefaultParts()

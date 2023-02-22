@@ -43,10 +43,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="bin\Debug\net48\ItemNamesResources.resx" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Page Include="App.xaml" />
 	</ItemGroup>
 
@@ -65,7 +61,7 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>ItemTooltips.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Properties\Resources - Copy.de-DE.Designer.cs">
+	  <Compile Update="Properties\Resources.de-DE.Designer.cs">
 	    <DependentUpon>Resources.de-DE.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>

@@ -17,42 +17,42 @@
     <Grid x:Name="ControlGrid" Border.MouseUp="Grid_MouseUp">
         <Label Content="{Binding Path=WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=MuzzleVisibility}" DataContext="{Binding Path=Muzzle}" Height="78" Width="78" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage }" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=BarrelVisibility}" DataContext="{Binding Path=Barrel}" Height="78" Width="78" HorizontalAlignment="Left" Margin="78,78,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=MagazineVisibility}" DataContext="{Binding Path=Magazine}" Height="78" Width="78" HorizontalAlignment="Left" Margin="156,156,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=ScopeVisibility}" DataContext="{Binding Path=Scope}" Height="78" Width="78" HorizontalAlignment="Left" Margin="234,0,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border DataContext="{Binding Path=Scope}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,0,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image Name="ScopePreviewImage" HorizontalAlignment="Center" Source="{Binding Path=ScopePreview}" VerticalAlignment="Top" Stretch="UniformToFill" ToolTip="{Binding Path=Scope.DisplayTooltip}" d:DataContext="{d:DesignInstance Type=views:BLRWeapon}"/>
+            <Image Name="ScopePreviewImage" Source="{Binding Path=ScopePreview.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" ToolTip="{Binding Path=Scope.DisplayTooltip}" d:DataContext="{d:DesignInstance Type=views:BLRWeapon}" />
         </Border>
 
         <Border Name="Reciever" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=RecieverVisibility}" DataContext="{Binding Path=Reciever}" DataContextChanged="Reciever_DataContextChanged" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=SkinVisibility}" DataContext="{Binding Path=Skin}" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=WideImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
 
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=StockVisibility}" DataContext="{Binding Path=Stock}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,78,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=AmmoVisibility}" DataContext="{Binding Path=Ammo}" Height="78" Width="78" HorizontalAlignment="Left" Margin="234,156,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=TagVisibility}" DataContext="{Binding Path=Tag}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,156,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=CamoVisibility}" DataContext="{Binding Path=Camo}" Height="78" Width="78" HorizontalAlignment="Left" Margin="78,156,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=GripVisibility}" DataContext="{Binding Path=Grip}" Height="78" Width="78" HorizontalAlignment="Left" Margin="0,156,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=LargeSquareImage}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+            <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
 
         <Grid Width="400" Height="128" Margin="0,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
