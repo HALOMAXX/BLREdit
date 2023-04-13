@@ -210,7 +210,7 @@ public sealed class BLREditPipe
             {
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to Server ({json})");
                 var server = IOResources.Deserialize<BLRServer>(json);
-                MainWindow.AddServer(server);
+                //MainWindow.AddServer(server);
                 if (server != null && MainWindow.Self != null)
                 {
                     server.ConnectToServerCommand.Execute(null);

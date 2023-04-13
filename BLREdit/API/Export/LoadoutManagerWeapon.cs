@@ -96,7 +96,6 @@ public sealed class LoadoutManagerWeapon
                     Properties["Receiver"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
                     break;
                 default:
-                    LoggingSystem.Log(part.Name);
                     Properties[part.Name].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
                     break;
             }

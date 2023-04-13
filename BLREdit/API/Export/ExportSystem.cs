@@ -136,13 +136,16 @@ public sealed class ExportSystem
         }
         else
         {
-            foreach (var profile in BLREditSettings.Settings.DefaultClient.ProfileSettings)
+            if (BLREditSettings.Settings.DefaultClient is BLRClient client)
             {
-                if (profile.Value.ProfileName == profileName)
+                foreach (var profile in client.ProfileSettings)
                 {
-                    LoggingSystem.Log($"[ProfileSettings]({profileName}): found existing settings in default client");
-                    ProfileSettings.Add(profileName, profile.Value);
-                    return profile.Value;
+                    if (profile.Value.ProfileName == profileName)
+                    {
+                        LoggingSystem.Log($"[ProfileSettings]({profileName}): found existing settings in default client");
+                        ProfileSettings.Add(profileName, profile.Value);
+                        return profile.Value;
+                    }
                 }
             }
             LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");

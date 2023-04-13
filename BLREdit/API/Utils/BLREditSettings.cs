@@ -25,10 +25,10 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
     public int SelectedClient { get; set; } = 0;
-    [JsonIgnore] public BLRClient DefaultClient { get { if (SelectedClient > MainWindow.GameClients.Count || SelectedClient < 0) { return null; } else { return MainWindow.GameClients[SelectedClient]; } } set { SelectedClient = MainWindow.GameClients.IndexOf(value); OnPropertyChanged(); } }
+    [JsonIgnore] public BLRClient DefaultClient { get { if (SelectedClient >= MainWindow.GameClients.Count || SelectedClient < 0) { return null; } else { return MainWindow.GameClients[SelectedClient]; } } set { SelectedClient = MainWindow.GameClients.IndexOf(value); OnPropertyChanged(); } }
     //Saves the Default Server (not in use anymore)
     public int SelectedServer { get; set; } = 0;
-    [JsonIgnore] public BLRServer DefaultServer { get { if (SelectedServer > MainWindow.ServerList.Count || SelectedServer < 0) { return null; } else { return MainWindow.ServerList[SelectedServer]; } } set { SelectedServer = MainWindow.ServerList.IndexOf(value); OnPropertyChanged(); } }
+    [JsonIgnore] public BLRServer DefaultServer { get { if (SelectedServer >= MainWindow.ServerList.Count || SelectedServer < 0) { return null; } else { return MainWindow.ServerList[SelectedServer]; } } set { SelectedServer = MainWindow.ServerList.IndexOf(value); OnPropertyChanged(); } }
 
     //Allows for App-Web-Protocol needs Admin rights will be set to false if it fails to Start BLREdit as Admin
     public UIBool EnableAPI { get; set; } = new(true);
@@ -121,8 +121,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
                 }
             }
             if (!client) { Settings.DefaultClient = null; }
-
-            IOResources.SerializeFile($"{IOResources.SETTINGS_FILE}", Settings);
         }
+        IOResources.SerializeFile($"{IOResources.SETTINGS_FILE}", Settings);
     }
 }

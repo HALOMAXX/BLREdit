@@ -89,6 +89,10 @@ public sealed class BLRServer : INotifyPropertyChanged
                 return Dns.GetHostEntry(ServerAddress, System.Net.Sockets.AddressFamily.InterNetwork).ToString();
 #else
                 var ip = Dns.GetHostEntry(ServerAddress);
+                if (ip.AddressList.Length <= 0)
+                {
+                    return ServerAddress;
+                }
                 foreach (IPAddress address in ip.AddressList)
                 {
                     if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
