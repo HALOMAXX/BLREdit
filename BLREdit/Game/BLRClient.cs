@@ -39,7 +39,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port = 7777 };
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
-    [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(ClientHash, out string version)) { return version; } else { return "Unknown"; } } }
+    [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
     [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
     private Dictionary<string, BLRProfileSettingsWrapper> profileSettings;
     [JsonIgnore] public Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get { profileSettings ??= LoadProfiles(); return profileSettings; } }
@@ -49,32 +49,38 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore] public BitmapImage ClientVersionPart3 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 4) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[3])}.png", UriKind.Absolute)); } return null; } }
     [JsonIgnore] public BitmapImage ClientVersionPart4 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 5) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[4])}.png", UriKind.Absolute)); } return null; } }
 
-    private string clientHash;
-    public string ClientHash {
-        get { return clientHash; }
-        set { if (clientHash != value && !string.IsNullOrEmpty(value)) { clientHash = value; OnPropertyChanged(nameof(ClientVersion)); OnPropertyChanged(); } }
+    private string _originalHash;
+    public string OriginalHash {
+        get { return _originalHash; }
+        set { if (_originalHash != value && !string.IsNullOrEmpty(value)) { _originalHash = value; OnPropertyChanged(nameof(ClientVersion)); OnPropertyChanged(); } }
     }
 
-    private string patchedHash;
+    private string _patchedHash;
     public string PatchedHash {
-        get { return patchedHash; }
-        set { if (patchedHash != value && !string.IsNullOrEmpty(value)) { patchedHash = value; OnPropertyChanged(); } }
+        get { return _patchedHash; }
+        set { if (_patchedHash != value && !string.IsNullOrEmpty(value)) { _patchedHash = value; OnPropertyChanged(); } }
     }
 
-    private string originalPath;
+    private string _originalPath;
     public string OriginalPath {
-        get { return originalPath; }
-        set { if (File.Exists(value)) { originalPath = value; ClientHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Origin Client Path {value}"); } }
+        get { return _originalPath; }
+        set { if (File.Exists(value)) { _originalPath = value; OriginalHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Origin Client Path {value}"); } }
     }
 
-    private string patchedPath;
+    private string _patchedPath;
     public string PatchedPath {
-        get { return patchedPath; }
-        set { if (File.Exists(value)) { patchedPath = value; Patched.Set(true); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
+        get { if (_patchedPath is null) { GetBasePath(); } return _patchedPath; }
+        set { if (File.Exists(value)) { _patchedPath = value; Patched.Set(true); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
     }
 
-    public string ConfigFolder { get; set; }
-    public string ModulesFolder { get; set; }
+    private string _basePath;
+    public string BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
+
+    //TODO: Make sure there is always a value inside by lazy loading instead of filling it while patching as it could fail (do this everywhere)
+    private string _configFolder;
+    public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}\\FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if(Directory.Exists(value)) _configFolder = value; } }
+    private string _modulesFolder;
+    public string ModulesFolder { get { _modulesFolder ??= Directory.CreateDirectory($"{BasePath}\\Binaries\\Win32\\Modules\\").FullName; return _modulesFolder; } set { if (Directory.Exists(value)) _modulesFolder = value; } }
 
     public ObservableCollection<BLRClientPatch> AppliedPatches { get; set; } = new();
 
@@ -188,10 +194,10 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (OriginalFileValidation())
         {
             //this is super overkill
-            if (!ValidateClientHash(ClientHash, OriginalPath, out string NewHash))
+            if (!ValidateClientHash(OriginalHash, OriginalPath, out string NewHash))
             {
-                LoggingSystem.Log($"Client has changed was {ClientHash} is now {NewHash} needs patching!");
-                ClientHash = NewHash;
+                LoggingSystem.Log($"Client has changed was {OriginalHash} is now {NewHash} needs patching!");
+                OriginalHash = NewHash;
                 NeedsPatching = true;
             }
             else
@@ -244,7 +250,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         bool needUpdatedPatches = false;
 
-        if (BLRClientPatch.AvailablePatches.TryGetValue(this.ClientHash, out List<BLRClientPatch> patches))
+        if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
         {
             if (AppliedPatches.Count > 0)
             {
@@ -276,13 +282,13 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             else
             {
-                LoggingSystem.Log($"no installed patches for {ClientHash}");
+                LoggingSystem.Log($"no installed patches for {OriginalHash}");
                 needUpdatedPatches = true;
             }
         }
         else
         {
-            LoggingSystem.Log($"No patches found for {ClientHash}");
+            LoggingSystem.Log($"No patches found for {OriginalHash}");
             needUpdatedPatches = true;
         }
         return needUpdatedPatches;
@@ -547,21 +553,20 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    private string CreateFolderStructure()
+    private string GetBasePath()
     {
         string[] pathParts = OriginalPath.Split('\\');
         string[] fileParts = pathParts[pathParts.Length - 1].Split('.');
         pathParts[pathParts.Length - 1] = fileParts[0] + "-BLREdit-Patched." + fileParts[1];
         string basePath = "";
-        for (int i = pathParts.Length-4; i >= 0; i--)
-        { 
+        for (int i = pathParts.Length - 4; i >= 0; i--)
+        {
             basePath = $"{pathParts[i]}\\{basePath}";
         }
-        LoggingSystem.Log($"found root BLR Directory {basePath}");
-        ConfigFolder = Directory.CreateDirectory($"{basePath}\\FoxGame\\Config\\BLRevive\\").FullName;
-        ModulesFolder = Directory.CreateDirectory($"{basePath}\\Binaries\\Win32\\Modules\\").FullName;
 
-        return $"{basePath}\\Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
+        _patchedPath = $"{basePath}\\Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
+
+        return basePath;
     }
 
     /// <summary>
@@ -569,20 +574,19 @@ public sealed class BLRClient : INotifyPropertyChanged
     /// </summary>
     public void PatchClient()
     {
-        string outFile = CreateFolderStructure();
-        File.Copy(OriginalPath, outFile, true);
+        File.Copy(OriginalPath, PatchedPath, true);
 
         AppliedPatches.Clear();
 
-        if (BLRClientPatch.AvailablePatches.TryGetValue(this.ClientHash, out List<BLRClientPatch> patches))
+        if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
         {
             try
             {
-                using var PatchedFile = File.Open(outFile, FileMode.Open);
+                using var PatchedFile = File.Open(PatchedPath, FileMode.Open);
                 using BinaryWriter binaryWriter = new((Stream)PatchedFile);
                 foreach (BLRClientPatch patch in patches)
                 {
-                    LoggingSystem.Log($"Applying Patch:{patch.PatchName} to Client:{ClientHash}");
+                    LoggingSystem.Log($"Applying Patch:{patch.PatchName} to Client:{OriginalHash}");
                     foreach (var part in patch.PatchParts)
                     {
                         binaryWriter.Seek(part.Key, SeekOrigin.Begin);
@@ -595,11 +599,11 @@ public sealed class BLRClient : INotifyPropertyChanged
                 PatchedFile.Close();
                 PatchedFile.Dispose();
 
-                File.Copy($"{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(outFile)}\\Proxy.dll", true);
+                File.Copy($"{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll", true);
 
-                var peFile = new PeNet.PeFile(outFile);
+                var peFile = new PeNet.PeFile(PatchedPath);
                 peFile.AddImport("Proxy.dll", "InitializeThread");
-                File.WriteAllBytes(outFile, peFile.RawFile.ToArray());
+                File.WriteAllBytes(PatchedPath, peFile.RawFile.ToArray());
             }
             catch (Exception error)
             {
@@ -608,11 +612,10 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         else
         {
-            LoggingSystem.Log($"No patches found for {ClientHash}");
+            LoggingSystem.Log($"No patches found for {OriginalHash}");
         }
 
-        PatchedPath = outFile;
-        PatchedHash = IOResources.CreateFileHash(outFile);
+        PatchedHash = IOResources.CreateFileHash(PatchedPath);
     }
 
     public override int GetHashCode()
