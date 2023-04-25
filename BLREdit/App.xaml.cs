@@ -30,8 +30,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.10.1";
-    public const string CurrentVersionTitle = "Offline Servers are getting Grey";
+    public const string CurrentVersion = "v0.11.0";
+    public const string CurrentVersionTitle = "GameSettings UI and Fixes";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 

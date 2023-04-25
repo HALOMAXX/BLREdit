@@ -177,10 +177,11 @@ public sealed partial class MainWindow : Window
     private static void AddDefaultServers()
     {
         List<BLRServer> defaultServers = new() {
-        new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //mooserver.ddns.net : 7777 majikau.ddns.net or mooserver.ddns.net MajiCow Server
-        new() { ServerAddress = "blrevive.northamp.fr", Port = 7777, InfoPort = 80}, //ALT (alt4) Server
-        new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //blr.akoot.me : 7777 Akkot's Server
-        new() { ServerAddress = "blr.753z.net", Port = 7777 }, //blr.753z.net : 7777 IKE753Z Server
+        new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //MagiCow | Moo Server
+        new() { ServerAddress = "blrevive.northamp.fr", Port = 7777, InfoPort = 80}, //ALT Server
+        new() { ServerAddress = "aegiworks.com", Port = 7777, InfoPort = 7778}, //VIVIGAR Server
+        new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //Akoot Server
+        new() { ServerAddress = "blr.753z.net", Port = 7777 }, //IKE753Z Server (not active anymore)
         new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
         };
 
