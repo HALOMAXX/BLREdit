@@ -1,5 +1,6 @@
 ﻿using BLREdit.Export;
 using BLREdit.Game;
+using BLREdit.Game.Proxy;
 using BLREdit.UI;
 
 using System;
@@ -9,6 +10,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using System.Windows;
+using System.Windows.Input;
 
 namespace BLREdit;
 
@@ -20,7 +22,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
-    private static readonly BLREditSettings settings = LoadSettings();
+    private static BLREditSettings settings = LoadSettings();
     public static BLREditSettings Settings { get { return settings; } }
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
@@ -59,7 +61,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     //Always Installs Required Modules
     public UIBool InstallRequiredModules { get; set; } = new(true);
-
     public string SelectedLanguage { get; set; } = null;
     [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return null; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
 
@@ -74,6 +75,36 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     //PlayerCount for Server Start
     private int playerCount = 16;
     public int PlayerCount { get { return playerCount; } set { playerCount = value; OnPropertyChanged(); } }
+
+
+
+    #region Commands
+    private ICommand resetConfigCommand;
+    [JsonIgnore]
+    public ICommand ResetConfigCommand
+    {
+        get
+        {
+            resetConfigCommand ??= new RelayCommand(
+                    param => this.ResetSettings()
+                );
+            return resetConfigCommand;
+        }
+    }
+    #endregion Commands
+
+    public void ResetSettings()
+    {
+        if (MessageBox.Show("Are you sure you want to reset all BLREdit Config", "this is a caption", MessageBoxButton.YesNo) != MessageBoxResult.Yes) { return; }
+        LoggingSystem.MessageLog("Now Returning to Defaults. this will close BLREdit!");
+        settings = new BLREditSettings();
+
+        MainWindow.GameClients.Clear();
+        MainWindow.ServerList.Clear();
+        ProxyModule.CachedModules.Clear();
+
+        MainWindow.Self.Close();
+    }
 
     public static LaunchOptions GetLaunchOptions()
     {

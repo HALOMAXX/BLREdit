@@ -42,6 +42,8 @@ public partial class App : System.Windows.Application
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = new();
 
+    public static List<BLRServer> DefaultServers { get; set; } = new();
+
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
 
     public static CultureInfo DefaultCulture { get; } = CultureInfo.CreateSpecificCulture("en-US");
@@ -660,6 +662,32 @@ public partial class App : System.Windows.Application
         return new();
     }
 
+    private static async Task<List<BLRServer>> GetDefaultServers()
+    {
+        LoggingSystem.Log($"Downloading Default Server List!");
+        try
+        {
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ServerList.json") is GitHubFile file)
+            {
+                var serverList = IOResources.Deserialize<List<BLRServer>>(file.DecodedContent);
+                LoggingSystem.Log("Finished Downloading Server List!");
+                return serverList;
+            }
+        }
+        catch (Exception error)
+        { LoggingSystem.MessageLog($"Can't get server list from Github\n{error}"); }
+        return new() 
+        {
+            //TODO: Here you can Add new Default servers which should be intigrated into the EXE
+        new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //MagiCow | Moo Server
+        new() { ServerAddress = "blrevive.northamp.fr", Port = 7777, InfoPort = 80}, //ALT Server
+        new() { ServerAddress = "aegiworks.com", Port = 7777, InfoPort = 7778}, //VIVIGAR Server
+        new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //Akoot Server
+        new() { ServerAddress = "blr.753z.net", Port = 7777 }, //IKE753Z Server (not active anymore)
+        new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
+        };
+    }
+
     private static Task<T> StartSTATask<T>(Func<T> action)
     {
         var tcs = new TaskCompletionSource<T>();
@@ -703,7 +731,9 @@ public partial class App : System.Windows.Application
         checkedForModules = true;
         var availableModuleCheck = Task.Run(GetAvailableProxyModules);
         var availableLocalizations = Task.Run(GetAvailableLocalizations);
-        Task.WaitAll(availableModuleCheck, availableLocalizations);
+        var defaultServers = Task.Run(GetDefaultServers);
+        Task.WaitAll(availableModuleCheck, availableLocalizations, defaultServers);
+        DefaultServers = defaultServers.Result;
         AvailableLocalizations = availableLocalizations.Result;
         var modules = availableModuleCheck.Result;
         for (int i = 0; i < modules.Length; i++)

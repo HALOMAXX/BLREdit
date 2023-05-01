@@ -123,40 +123,6 @@ public sealed partial class MainWindow : Window
         {
             MessageBox.Show("You have to locate and add atleast one Client");
         }
-        else
-        {
-            bool isClientStillExistent = false;
-            BLRClient patchedClient = null;
-            foreach (BLRClient client in GameClients)
-            {
-                if (client.Equals(BLREditSettings.Settings.DefaultClient))
-                {
-                    isClientStillExistent = true;
-                    client.CurrentClient.Set(true);
-                }
-                else
-                {
-                    client.CurrentClient.Set(false);
-                    if (patchedClient is null && client.Patched.Is) patchedClient = client;
-                }
-            }
-
-            if (!isClientStillExistent)
-            {
-                if (patchedClient is null)
-                {
-                    BLREditSettings.Settings.DefaultClient = null;
-                    GameClients[0].PatchClient();
-                    BLREditSettings.Settings.DefaultClient = GameClients[0];
-                    GameClients[0].CurrentClient.Set(true);
-                }
-                else
-                {
-                    BLREditSettings.Settings.DefaultClient = patchedClient;
-                    patchedClient.CurrentClient.Set(true);
-                }
-            }
-        }
     }
 
     static readonly Stopwatch PingWatch = Stopwatch.StartNew();
@@ -176,16 +142,7 @@ public sealed partial class MainWindow : Window
 
     private static void AddDefaultServers()
     {
-        List<BLRServer> defaultServers = new() {
-        new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //MagiCow | Moo Server
-        new() { ServerAddress = "blrevive.northamp.fr", Port = 7777, InfoPort = 80}, //ALT Server
-        new() { ServerAddress = "aegiworks.com", Port = 7777, InfoPort = 7778}, //VIVIGAR Server
-        new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //Akoot Server
-        new() { ServerAddress = "blr.753z.net", Port = 7777 }, //IKE753Z Server (not active anymore)
-        new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
-        };
-
-        foreach (BLRServer defaultServer in defaultServers)
+        foreach (BLRServer defaultServer in App.DefaultServers)
         {
             bool add = true;
             foreach (BLRServer server in ServerList)
@@ -915,18 +872,25 @@ public sealed partial class MainWindow : Window
             }
         }
 
-        LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
-        for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
+        if (MainWindow.GameClients.Count <= 0)
         {
-            if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
-            { UI.MainWindow.GameClients.RemoveAt(i); i--; }
-            else
+            MessageBox.Show("You have to locate and add atleast one Client");
+        }
+        else
+        {
+            LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
+            for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
             {
-                LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
+                if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
+                { UI.MainWindow.GameClients.RemoveAt(i); i--; }
+                else
                 {
-                    UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
                     LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                    if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
+                    {
+                        UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
+                        LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                    }
                 }
             }
         }
@@ -937,8 +901,6 @@ public sealed partial class MainWindow : Window
         {
             BLREditSettings.Settings.DefaultServer = ServerList[0];
         }
-
-        CheckGameClients();
         BLREditSettings.SyncDefaultClient();
 
         Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;

@@ -156,6 +156,9 @@
   <data name="btn_RemoveServer" xml:space="preserve">
     <value>Remove Server</value>
   </data>
+  <data name="btn_ResetToDefaults" xml:space="preserve">
+    <value>Revert To Default</value>
+  </data>
   <data name="btn_StartBotMatch" xml:space="preserve">
     <value>Start Bot Match</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="btn_TT_PingServer" xml:space="preserve">
     <value>Ping Server</value>
+  </data>
+  <data name="btn_TT_ResetToDefaults" xml:space="preserve">
+    <value>Resets BLREdit Config(Settings, ServerList, ClientList), but will keep your loadouts, in-game settings, backups and log files.</value>
   </data>
   <data name="enum_Accuracy" xml:space="preserve">
     <value>Accuracy</value>

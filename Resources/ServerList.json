@@ -1,0 +1,22 @@
+[
+  {
+    "ServerAddress": "mooserver.ddns.net",
+    "Port": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "blrevive.northamp.fr",
+    "Port": 7777,
+    "InfoPort": 80
+  },
+  {
+    "ServerAddress": "aegiworks.com",
+    "Port": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "localhost",
+    "Port": 7777,
+    "InfoPort": 7778
+  }
+]

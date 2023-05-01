@@ -192,6 +192,19 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
     public UIBool UpToDate { get; } = new(false);
 
+    private DateTime? releaseDate;
+    public DateTime ReleaseDate 
+    { 
+        get 
+        {
+            if (releaseDate is null)
+            {
+                Task.Run(async () => { releaseDate = await GetLatestReleaseDate(); }).Wait();
+            }
+            return (DateTime)releaseDate; 
+        }
+    }
+
     private void CheckForInstall(BLRClient client)
     {
         Installed.Set(false);
@@ -216,10 +229,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             try
             {
-                var task = Task.Run(GetLatestReleaseDate);
-                task.Wait();
-                DateTime latestRelease = task.Result;
-                var isUpToDate = installedModule.Published >= latestRelease;
+                var isUpToDate = installedModule.Published >= ReleaseDate;
                 UpToDate.Set(isUpToDate);
             }
             catch (Exception error)
@@ -231,7 +241,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
 
     [JsonIgnore] public UIBool LockInstall { get; } = new(false);
-    public async void InstallModule(BLRClient client)
+    public async Task InstallModule(BLRClient client)
     {
         if (client is null || LockInstall.Is) return;
         LockInstall.Set(true);
@@ -239,26 +249,30 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.InstallName}");
 
-            if (client.Patched.IsNot)
-            {
-                LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
-                client.PatchClient();
-            }
-
-            var releaseDate = await GetLatestReleaseDate();
-            LoggingSystem.Log($"Got Latest Release Date:[{releaseDate}]");
+            LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}]");
 
             ProxyModule module = null;
             foreach (var cachedModule in ProxyModule.CachedModules)
             {
-                if (cachedModule.InstallName == RepositoryProxyModule.InstallName && cachedModule.Published >= releaseDate)
+                if (cachedModule.InstallName == RepositoryProxyModule.InstallName && cachedModule.Published >= ReleaseDate)
                 {
                     module = cachedModule;
                     break;
                 }
             }
 
-            if (module is not null) { if (File.Exists($"downloads\\{module.InstallName}")) { LoggingSystem.Log($"Found {module.InstallName} in cache"); } else { module = null; ProxyModule.CachedModules.Clear(); } } else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in cache");
+            if (module is not null) 
+            { 
+                if (File.Exists($"downloads\\{module.InstallName}")) 
+                { 
+                    LoggingSystem.Log($"Found {module.InstallName} in cache");
+                } 
+                else 
+                { 
+                    module = null; ProxyModule.CachedModules.Clear();
+                } 
+            } 
+            else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in cache");
 
             module ??= await RepositoryProxyModule.DownloadLatest();
 
@@ -299,12 +313,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         LockRemove.Set(true);
         try
         {
-            if (client.Patched.IsNot)
-            {
-                LoggingSystem.Log($"We have to patch the client before installing any modules or installing will fail");
-                client.PatchClient();
-            }
-            LoggingSystem.Log($"removing {RepositoryProxyModule.InstallName}");
+            LoggingSystem.Log($"Removing {RepositoryProxyModule.InstallName}");
 
             foreach (var module in client.InstalledModules)
             {

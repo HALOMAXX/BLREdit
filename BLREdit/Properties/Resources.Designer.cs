@@ -178,6 +178,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Revert To Default.
+        /// </summary>
+        public static string btn_ResetToDefaults {
+            get {
+                return ResourceManager.GetString("btn_ResetToDefaults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Bot Match.
         /// </summary>
         public static string btn_StartBotMatch {
@@ -228,6 +237,15 @@ namespace BLREdit.Properties {
         public static string btn_TT_PingServer {
             get {
                 return ResourceManager.GetString("btn_TT_PingServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resets BLREdit Config(Settings, ServerList, ClientList), but will keep your loadouts, in-game settings, backups and log files..
+        /// </summary>
+        public static string btn_TT_ResetToDefaults {
+            get {
+                return ResourceManager.GetString("btn_TT_ResetToDefaults", resourceCulture);
             }
         }
         

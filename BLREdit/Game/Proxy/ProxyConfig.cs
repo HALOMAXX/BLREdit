@@ -25,6 +25,6 @@ public sealed class ModulesConfig
 
 public sealed class ServerConfig
 {
-    public string Host { get; set; } = "127.0.0.1";
+    public string Host { get; set; } = "0.0.0.0";
     public string Port { get; set; } = "+1";
 }

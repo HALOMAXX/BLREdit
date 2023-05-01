@@ -23,6 +23,8 @@ using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
 
+using PeNet;
+
 namespace BLREdit.Game;
 
 public sealed class BLRClient : INotifyPropertyChanged
@@ -186,54 +188,47 @@ public sealed class BLRClient : INotifyPropertyChanged
     #endregion ProfileSettings
 
     #region ClientValidation
+
+    /// <summary>
+    /// Validates the client
+    /// </summary>
+    /// <returns>Will return true if patching was succesful or is ready to use, false if patching failed or can't be used</returns>
     public bool ValidateClient()
     {
-        bool isValid = true;
-        bool NeedsPatching = false;
-
-        if (OriginalFileValidation())
+        if (!OriginalFileValidation())
         {
-            //this is super overkill
-            if (!ValidateClientHash(OriginalHash, OriginalPath, out string NewHash))
-            {
-                LoggingSystem.Log($"Client has changed was {OriginalHash} is now {NewHash} needs patching!");
-                OriginalHash = NewHash;
-                NeedsPatching = true;
-            }
-            else
-            { LoggingSystem.Log($"Client is still the Same! {OriginalPath}"); }
-        }
-        else
-        {
-            LoggingSystem.Log($"Client is not valid missing original file path or file is missing!");
-            isValid = false;
+            LoggingSystem.MessageLog($"Client is not valid, original file is missing!\nMaybe client got moved or deleted\nCLient can't be patched!");
+            return false;
         }
 
-        if (PatchedFileValidation())
+        if (!ValidateClientHash(OriginalHash, OriginalPath, out string NewOriginalHash))
         {
-            if (!ValidateClientHash(PatchedHash, PatchedPath, out string NewHash))
-            {
-                LoggingSystem.Log($"Patched client changed/corrupted was {PatchedHash} is now {NewHash} needs patching!");
-                NeedsPatching = true;
-            }
-            else
-            {
-                LoggingSystem.Log($"Patched file is still the same!");
-                if (ValidatePatches()) { NeedsPatching = true; }
-            }
+            LoggingSystem.Log($"Original Client has changed was {OriginalHash} is now {NewOriginalHash}.");
+            OriginalHash = NewOriginalHash;
+            return PatchClient();
         }
-        else
+
+
+        if (!PatchedFileValidation())
         {
             LoggingSystem.Log($"Client hasn't been patched yet!");
-            NeedsPatching=true;
+            return PatchClient();
         }
 
-        if (NeedsPatching)
+        if (!ValidateClientHash(PatchedHash, PatchedPath, out string NewPatchedHash))
         {
-            PatchClient();
+            LoggingSystem.Log($"Client hasn't been patched yet or is corrupted/changed. [{PatchedHash}]/[{NewPatchedHash}]");
+            return PatchClient();
         }
 
-        return isValid;
+        if (ValidatePatches())
+        {
+            LoggingSystem.Log($"Available Patches has changed Repatching Client to update to new Patches!");
+            return PatchClient();
+        }
+
+        LoggingSystem.Log($"Client is in Good Health!");
+        return true;
     }
 
     public bool OriginalFileValidation()
@@ -294,6 +289,31 @@ public sealed class BLRClient : INotifyPropertyChanged
         return needUpdatedPatches;
     }
 
+    private void InstallRequiredModules()
+    {
+        List<Task> moduleInstallTasks = new List<Task>();
+        foreach (var availableModule in App.AvailableProxyModules)
+        {
+            if (availableModule.RepositoryProxyModule.Required && !IsModuleInstalledAndUpToDate(availableModule))
+            {
+                moduleInstallTasks.Add(Task.Run(async () => { await availableModule.InstallModule(this); }));
+            }
+        }
+        if(moduleInstallTasks.Count > 0) Task.WaitAll(moduleInstallTasks.ToArray());
+    }
+
+    public bool IsModuleInstalledAndUpToDate(VisualProxyModule module)
+    {
+        foreach (var installedModule in InstalledModules)
+        {
+            if (installedModule.InstallName == module.RepositoryProxyModule.InstallName && installedModule.Published >= module.ReleaseDate)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void ValidateModules(List<ProxyModule> enabledModules = null)
     {
         App.AvailableProxyModuleCheck(); // Get Available Modules just in case
@@ -304,20 +324,16 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.InstallRequiredModules.Is)
         {
-            var oldClient = MainWindow.ClientWindow.Client ;
-            MainWindow.ClientWindow.Client = this;
-            foreach (var availableModule in App.AvailableProxyModules)
-            {
-                if ((availableModule.Installed.IsNot || availableModule.UpToDate.IsNot) && availableModule.RepositoryProxyModule.Required)
-                { 
-                    availableModule.InstallCommand.Execute(null);
-                }
-            }
-            MainWindow.ClientWindow.Client = oldClient;
+            LoggingSystem.Log($"Started Installing Required Modules");
+            InstallRequiredModules();
+            LoggingSystem.Log($"Finished Installing Required Modules!");
         }
 
         if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.StrictModuleChecks.Is)
-        { InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); }
+        {
+            LoggingSystem.Log($"Filtering Installed Modules");
+            InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); 
+        }
 
         foreach (var file in Directory.EnumerateFiles(ModulesFolder))
         {
@@ -512,12 +528,9 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         if (!hasBeenValidated)
         {
-            var oldClient = MainWindow.ClientWindow.Client;
-            MainWindow.ClientWindow.Client = this;
-            ValidateClient();
+            if (!ValidateClient()) { return; }
             ValidateModules(enabledModules);
             hasBeenValidated = true;
-            MainWindow.ClientWindow.Client = oldClient;
         }
         else
         {
@@ -572,50 +585,75 @@ public sealed class BLRClient : INotifyPropertyChanged
     /// <summary>
     /// Patch this GameClient
     /// </summary>
-    public void PatchClient()
+    public bool PatchClient()
     {
-        File.Copy(OriginalPath, PatchedPath, true);
-
-        AppliedPatches.Clear();
-
-        if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
+        try
         {
-            try
+            List<BLRClientPatch> toAppliedPatches = new List<BLRClientPatch>();
+            File.Copy(OriginalPath, PatchedPath, true);
+            if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
             {
-                using var PatchedFile = File.Open(PatchedPath, FileMode.Open);
-                using BinaryWriter binaryWriter = new((Stream)PatchedFile);
-                foreach (BLRClientPatch patch in patches)
+                
+                using (var stream = File.Open(PatchedPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
-                    LoggingSystem.Log($"Applying Patch:{patch.PatchName} to Client:{OriginalHash}");
-                    foreach (var part in patch.PatchParts)
+                    List<byte> rawFile = new List<byte>();
+                    using var reader = new BinaryReader(stream);
+                    rawFile.AddRange(reader.ReadBytes((int)stream.Length));
+
+                    foreach (BLRClientPatch patch in patches)
                     {
-                        binaryWriter.Seek(part.Key, SeekOrigin.Begin);
-                        binaryWriter.Write(part.Value.ToArray());
+                        LoggingSystem.Log($"Applying Patch:{patch.PatchName} to Client:{OriginalHash}");
+                        foreach (var part in patch.PatchParts)
+                        {
+                            OverwriteBytes(rawFile, part.Key, part.Value.ToArray());
+                        }
+                        toAppliedPatches.Add(patch);
                     }
-                    this.AppliedPatches.Add(patch);
+
+                    PeFile peFile = new PeFile(rawFile.ToArray());
+                    peFile.AddImport("Proxy.dll", "InitializeThread");
+                    stream.Position = 0;
+                    stream.SetLength(peFile.RawFile.Length);
+                    using var writer = new BinaryWriter(stream);
+
+                    writer.Write(peFile.RawFile.ToArray());
+
+                    reader.Close();
+                    writer.Close();
+                    stream.Close();
+                    reader.Dispose();
+                    writer.Dispose();
+                    stream.Dispose();
                 }
-                binaryWriter.Close();
-                binaryWriter.Dispose();
-                PatchedFile.Close();
-                PatchedFile.Dispose();
-
+                AppliedPatches.Clear();
+                foreach (var patch in toAppliedPatches)
+                {
+                    AppliedPatches.Add(patch);
+                }
+                PatchedHash = IOResources.CreateFileHash(PatchedPath);
                 File.Copy($"{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll", true);
-
-                var peFile = new PeNet.PeFile(PatchedPath);
-                peFile.AddImport("Proxy.dll", "InitializeThread");
-                File.WriteAllBytes(PatchedPath, peFile.RawFile.ToArray());
             }
-            catch (Exception error)
+            else
             {
-                LoggingSystem.MessageLog($"[{this}]Client Patch Failed: {error}");
+                LoggingSystem.Log($"No patches found for {OriginalHash}");
             }
         }
-        else
+        catch (Exception error)
         {
-            LoggingSystem.Log($"No patches found for {OriginalHash}");
+            LoggingSystem.MessageLog($"[{this}]Client Patch Failed: {error}");
+            return false;
         }
+        return true;
+    }
 
-        PatchedHash = IOResources.CreateFileHash(PatchedPath);
+    private void OverwriteBytes(List<byte> bytes, int offsetFromBegining, byte[] bytesToWrite)
+    {
+        int i2 = 0;
+        for (int i = offsetFromBegining; i < bytes.Count && i2 < bytesToWrite.Length; i++)
+        {
+            bytes[i] = bytesToWrite[i2];
+            i2++;
+        }
     }
 
     public override int GetHashCode()

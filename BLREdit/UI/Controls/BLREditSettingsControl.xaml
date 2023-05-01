@@ -73,6 +73,12 @@
                 <ToggleButton Content="{x:Static p:Resources.tbtn_InstallRequiredModules }" ToolTip="{x:Static p:Resources.tbtn_TT_InstallRequiredModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
             </StackPanel>
         </Border>
-    </StackPanel>
+
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                    <Button Content="{x:Static p:Resources.btn_ResetToDefaults }" ToolTip="{x:Static p:Resources.btn_TT_ResetToDefaults }" Command="{Binding Path=ResetConfigCommand}"/>
+            </StackPanel>
+        </Border>
+        </StackPanel>
     </ScrollViewer>
 </UserControl>
