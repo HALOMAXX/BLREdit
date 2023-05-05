@@ -17,8 +17,8 @@ namespace BLREdit.Game;
 public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
@@ -51,24 +51,15 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         return dict;
     }
 
-    public BLRProfileSettingsWrapper(string profileName ,BLRProfileSettings[] settings, BLRKeyBindings keyBindings)
+    public BLRProfileSettingsWrapper(string profileName ,BLRProfileSettings[]? settings, BLRKeyBindings? keyBindings)
     {
-        IOrderedEnumerable<BLRProfileSettings> sortedDict;
-        if (settings == null)
-        {
-            sortedDict = from entry in defaultProfile orderby entry.ProfileSetting.PropertyId descending select entry;
-        }
-        else
-        {
-            sortedDict = from entry in settings orderby entry.ProfileSetting.PropertyId descending select entry;
-        }
+        settings ??= defaultProfile;
+        keyBindings ??= new();
 
-        foreach (var setting in sortedDict)
+        foreach (var setting in settings)
         {
             Settings.Add(setting.ProfileSetting.PropertyId, setting);
         }
-
-        keyBindings ??= new();
 
         ProfileName = profileName;
         KeyBindings= keyBindings;

@@ -157,7 +157,9 @@ public sealed class IOResources
             var request = DownloadRequests.Take();
             try
             {
-                WebClient.DownloadFile(request.url, request.filename);
+                if(!request.file.Directory.Exists) request.file.Directory.Create();
+                if (!request.file.Exists) request.file.Delete();
+                WebClient.DownloadFile(request.url, request.file.FullName);
             }
             catch (Exception error)
             {
@@ -170,13 +172,21 @@ public sealed class IOResources
 
     private class DownloadRequest
     {
-        public string url, filename;
+        public string url;
+        public FileInfo file;
         public AutoResetEvent locked;
 
         public DownloadRequest(string url, string filename)
         {
             this.url = url;
-            this.filename = filename;
+            this.file = new FileInfo(filename);
+            locked = new AutoResetEvent(false);
+        }
+
+        public DownloadRequest(string url, FileInfo file)
+        {
+            this.url = url;
+            this.file = file;
             locked = new AutoResetEvent(false);
         }
     }

@@ -29,28 +29,24 @@ public sealed partial class NumberUpDown : UserControl
         set { SetValue(NumberProperty, value); }
     }
 
-    private int minNumber = 0;
     public int MinNumber
     {
         get { return (int)GetValue(MinNumberProperty); }
         set { SetValue(MinNumberProperty, value); }
     }
 
-    private int maxNumber = 0;
     public int MaxNumber
     {
         get { return (int)GetValue(MaxNumberProperty); }
         set { SetValue(MaxNumberProperty, value); }
     }
 
-    private int numberChange = 1;
     public int NumberChange
     {
         get { return (int)GetValue(NumberChangeProperty); }
         set { SetValue(NumberChangeProperty, value); }
     }
 
-    private bool overflow = false;
     public bool Overflow 
     { 
         get { return (bool)GetValue(OverflowProperty); }
@@ -65,11 +61,11 @@ public sealed partial class NumberUpDown : UserControl
     }
 
     public static readonly DependencyProperty NumberProperty = DependencyProperty.Register("Number", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { BindsTwoWayByDefault = true });
-    public static readonly DependencyProperty MinNumberProperty = DependencyProperty.Register("MinNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { PropertyChangedCallback = new PropertyChangedCallback(OnMinNumberChanged) });
-    public static readonly DependencyProperty MaxNumberProperty = DependencyProperty.Register("MaxNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0) { PropertyChangedCallback = new PropertyChangedCallback(OnMaxNumberChanged) });
-    public static readonly DependencyProperty NumberChangeProperty = DependencyProperty.Register("NumberChange", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(1) { PropertyChangedCallback = new PropertyChangedCallback(OnNumberChangeChanged) });
+    public static readonly DependencyProperty MinNumberProperty = DependencyProperty.Register("MinNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0));
+    public static readonly DependencyProperty MaxNumberProperty = DependencyProperty.Register("MaxNumber", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(0));
+    public static readonly DependencyProperty NumberChangeProperty = DependencyProperty.Register("NumberChange", typeof(int), typeof(NumberUpDown), new FrameworkPropertyMetadata(1));
     public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register("Orientation", typeof(Orientation), typeof(NumberUpDown), new FrameworkPropertyMetadata(Orientation.Vertical) { PropertyChangedCallback = new PropertyChangedCallback(OnOrientationChanged) });
-    public static readonly DependencyProperty OverflowProperty = DependencyProperty.Register("Overflow", typeof(bool), typeof(NumberUpDown), new FrameworkPropertyMetadata(false) { PropertyChangedCallback = new PropertyChangedCallback(OnOverflowChanged) });
+    public static readonly DependencyProperty OverflowProperty = DependencyProperty.Register("Overflow", typeof(bool), typeof(NumberUpDown), new FrameworkPropertyMetadata(false));
 
     public NumberUpDown()
     {
@@ -77,45 +73,10 @@ public sealed partial class NumberUpDown : UserControl
         ApplyOrientation();
     }
 
-    public static void OnOverflowChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
-    {
-        if (sender is NumberUpDown number)
-        {
-            number.overflow = (bool)args.NewValue;
-        }
-    }
-
-    public static void OnMinNumberChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) 
-    {
-        if (sender is NumberUpDown number)
-        {
-            number.minNumber = (int)args.NewValue;
-            number.ClampNumber();
-        }
-    }
-
-    public static void OnMaxNumberChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) 
-    {
-        if (sender is NumberUpDown number)
-        {
-            number.maxNumber = (int)args.NewValue;
-            number.ClampNumber();
-        }
-    }
-
-    public static void OnNumberChangeChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
-    {
-        if (sender is NumberUpDown number)
-        {
-            number.numberChange = (int)args.NewValue;
-        }
-    }
-
     public static void OnOrientationChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
     {
         if (sender is NumberUpDown number)
         {
-            number.orientation= (Orientation)args.NewValue;
             number.ApplyOrientation();
         }
     }
@@ -146,7 +107,7 @@ public sealed partial class NumberUpDown : UserControl
             var text = textBox.Text;
             text = text.Remove(textBox.SelectionStart, textBox.SelectionLength);
             text = text.Insert(textBox.CaretIndex, e.Text);
-            e.Handled = !int.TryParse(text, System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture, out int _);
+            e.Handled = !int.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int _);
         }
     }
 
@@ -183,7 +144,7 @@ public sealed partial class NumberUpDown : UserControl
                 }
             }
 
-            Number = BLRWeapon.Clamp(num, minNumber, maxNumber);
+            Number = BLRWeapon.Clamp(num, MinNumber, MaxNumber);
         }
     }
 

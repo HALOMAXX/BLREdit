@@ -1,4 +1,5 @@
 ﻿using BLREdit.Game;
+using BLREdit.Model.BLR;
 
 using System;
 using System.Collections.Generic;
@@ -33,8 +34,8 @@ public sealed partial class BLRClientWindow : Window, INotifyPropertyChanged
 
     private bool ShouldCancelClose = true;
 
-    private BLRClient client;
-    public BLRClient Client { get { return client; } set { client = value; DataContext = value; OnPropertyChanged(); } }
+    private BLRClientModel client;
+    public BLRClientModel Client { get { return client; } set { client = value; DataContext = value; OnPropertyChanged(); } }
 
     public BLRClientWindow()
     {

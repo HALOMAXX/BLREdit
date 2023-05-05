@@ -38,6 +38,9 @@ using BLREdit.API.Export;
 using BLREdit.API.Utils;
 using Gameloop.Vdf.Linq;
 using System.Diagnostics.CodeAnalysis;
+using BLREdit.Model.Proxy;
+using BLREdit.API.REST_API;
+using BLREdit.Model.BLR;
 
 namespace BLREdit.UI;
 
@@ -83,8 +86,8 @@ public sealed partial class MainWindow : Window
 
     public bool IsCheckingGameClient { get; private set; } = false;
 
-    public static ObservableCollection<BLRClient> GameClients { get; set; }  
-    public static ObservableCollection<BLRServer> ServerList { get; set; }
+    public static RangeObservableCollection<BLRClientModel> GameClients { get; set; }  
+    public static RangeObservableCollection<BLRServer> ServerList { get; set; }
 
     public static BLRWeapon Copy { get; set; } = null;
 
@@ -174,10 +177,10 @@ public sealed partial class MainWindow : Window
         if (add) ServerList.Add(server);
     }
 
-    public static void AddGameClient(BLRClient client)
+    public static void AddGameClient(BLRClientModel client)
     {
         bool add = true;
-        foreach (BLRClient c in GameClients)
+        foreach (BLRClientModel c in GameClients)
         {
             if (c.OriginalPath == client.OriginalPath)
             {
@@ -212,7 +215,7 @@ public sealed partial class MainWindow : Window
         IOResources.SerializeFile($"GameClients.json", GameClients);
         IOResources.SerializeFile($"ServerList.json", ServerList);
         BLREditSettings.Save();
-        ProxyModule.Save();
+        IOResources.SerializeFile($"ModuleCache.json", ProxyModuleRepository.CachedModules);
         ClientWindow.ForceClose();
     }
 
@@ -557,7 +560,7 @@ public sealed partial class MainWindow : Window
         }
         else
         {
-            var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}profiles\\";
+            var directory = $"{BLREditSettings.Settings.DefaultClient.ProxyConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
             IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Exported!");
@@ -774,10 +777,6 @@ public sealed partial class MainWindow : Window
 
     private void Window_Initialized(object sender, EventArgs e)
     {
-#if DEBUGWAIT
-        MessageBox.Show("Waiting!");
-#endif
-
         string BuildTag = "";
 
 #if DEBUG
@@ -867,7 +866,7 @@ public sealed partial class MainWindow : Window
                 }
                 if (!alreadyRegistered)
                 {
-                    AddGameClient(new BLRClient() { OriginalPath = GameInstance });
+                    AddGameClient(new BLRClientModel() { OriginalPath = GameInstance });
                 }
             }
         }
@@ -878,20 +877,11 @@ public sealed partial class MainWindow : Window
         }
         else
         {
-            LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
-            for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
+            LoggingSystem.Log($"Validating Client List {GameClients.Count}");
+            for (int i = 0; i < GameClients.Count; i++)
             {
-                if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
-                { UI.MainWindow.GameClients.RemoveAt(i); i--; }
-                else
-                {
-                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                    if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
-                    {
-                        UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
-                        LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                    }
-                }
+                if (!BLRClientModel.ValidateOriginalPath(GameClients[i]))
+                { GameClients.RemoveAt(i); i--; }
             }
         }
 
@@ -944,7 +934,7 @@ public sealed partial class MainWindow : Window
         {
             RefreshPing();
         }
-        if (e.RemovedItems.Contains(SettingsTab))
+        if (e.AddedItems.Contains(ProfileSettingsTab))
         {
             SetProfileSettings();
         }

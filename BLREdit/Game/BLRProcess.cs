@@ -1,4 +1,9 @@
-﻿using System;
+﻿using BLREdit.Export;
+using BLREdit.Model.BLR;
+
+using PeNet;
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -25,8 +30,8 @@ public sealed class BLRProcess : INotifyPropertyChanged
 
     private Process gameProcess;
     private Process GameProcess { get { return gameProcess; }  set { gameProcess = value; OnPropertyChanged(); } }
-    private BLRClient client;
-    private BLRClient Client { get { return client; } set { client = value; OnPropertyChanged(); } }
+    private BLRClientModel client;
+    private BLRClientModel Client { get { return client; } set { client = value; OnPropertyChanged(); } }
     private bool isServer = false;
     private bool IsServer { get { return isServer; } set { isServer = value; OnPropertyChanged(); } }
     private bool watchdog = false;
@@ -35,6 +40,15 @@ public sealed class BLRProcess : INotifyPropertyChanged
     static BLRProcess()
     {
         RunningGames.CollectionChanged += RunningGamesChanged;
+    }
+
+    public static bool IsServerRunning()
+    {
+        foreach (var process in RunningGames)
+        {
+            if (process.IsServer) { return true; }
+        }
+        return false;
     }
 
     private static void RunningGamesChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -56,7 +70,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         }
     }
 
-    private BLRProcess(string launchArgs, BLRClient client,bool isServer, bool watchdog = false)
+    private BLRProcess(string launchArgs, BLRClientModel client,bool isServer, bool watchdog = false)
     {
         IsServer= isServer;
         Client = client;
@@ -76,7 +90,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         GameProcess.Exited += ProcessExit;
     }
 
-    public static void CreateProcess(string launchArgs, BLRClient client, bool isServer, bool watchdog = false)
+    public static void CreateProcess(string launchArgs, BLRClientModel client, bool isServer, bool watchdog = false)
     {
         RunningGames.Add(new BLRProcess(launchArgs, client, isServer, watchdog));
     }
@@ -94,7 +108,11 @@ public sealed class BLRProcess : INotifyPropertyChanged
         LoggingSystem.Log($"[{this.Client}]: has Exited with {GameProcess.ExitCode}");
         if (!IsServer)
         {
-            this.Client.UpdateProfileSettings();
+            BLRClientModel.LoadOrUpdateProfileSettings(Client);
+            foreach (var profile in Client.ProfileSettings)
+            {
+                ExportSystem.UpdateOrAddProfileSettings(profile.Value.ProfileName, profile.Value);
+            }
         }
 
         if (!Watchdog) { this.Remove(); }
@@ -120,9 +138,5 @@ public sealed class BLRProcess : INotifyPropertyChanged
             GameProcess.Kill();
         }
         GameProcess.Dispose();
-        if (!IsServer)
-        {
-            Client.UpdateProfileSettings();
-        }
     }
 }

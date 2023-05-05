@@ -1,6 +1,8 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.REST_API;
+using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
+using BLREdit.Model.BLR;
 using BLREdit.UI;
 
 using System;
@@ -27,7 +29,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
     public int SelectedClient { get; set; } = 0;
-    [JsonIgnore] public BLRClient DefaultClient { get { if (SelectedClient >= MainWindow.GameClients.Count || SelectedClient < 0) { return null; } else { return MainWindow.GameClients[SelectedClient]; } } set { SelectedClient = MainWindow.GameClients.IndexOf(value); OnPropertyChanged(); } }
+    [JsonIgnore] public BLRClientModel DefaultClient { get { if (SelectedClient >= MainWindow.GameClients.Count || SelectedClient < 0) { return null; } else { return MainWindow.GameClients[SelectedClient]; } } set { SelectedClient = MainWindow.GameClients.IndexOf(value); OnPropertyChanged(); } }
     //Saves the Default Server (not in use anymore)
     public int SelectedServer { get; set; } = 0;
     [JsonIgnore] public BLRServer DefaultServer { get { if (SelectedServer >= MainWindow.ServerList.Count || SelectedServer < 0) { return null; } else { return MainWindow.ServerList[SelectedServer]; } } set { SelectedServer = MainWindow.ServerList.IndexOf(value); OnPropertyChanged(); } }
@@ -86,14 +88,14 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         get
         {
             resetConfigCommand ??= new RelayCommand(
-                    param => this.ResetSettings()
+                    param => ResetSettings()
                 );
             return resetConfigCommand;
         }
     }
     #endregion Commands
 
-    public void ResetSettings()
+    public static void ResetSettings()
     {
         if (MessageBox.Show("Are you sure you want to reset all BLREdit Config", "this is a caption", MessageBoxButton.YesNo) != MessageBoxResult.Yes) { return; }
         LoggingSystem.MessageLog("Now Returning to Defaults. this will close BLREdit!");
@@ -101,14 +103,9 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
         MainWindow.GameClients.Clear();
         MainWindow.ServerList.Clear();
-        ProxyModule.CachedModules.Clear();
+        ProxyModuleRepository.CachedModules.Clear();
 
         MainWindow.Self.Close();
-    }
-
-    public static LaunchOptions GetLaunchOptions()
-    {
-        return new LaunchOptions() { UserName = Settings.PlayerName, Server=Settings.DefaultServer };
     }
 
     public static void SyncDefaultClient()

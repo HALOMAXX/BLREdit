@@ -1615,10 +1615,10 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public void UpdateMagiCowsWeapon()
     {
-        WriteMagiCowsWeapon(internalWeapon, true);
+        WriteMagiCowsWeapon(internalWeapon);
     }
 
-    public void WriteMagiCowsWeapon(MagiCowsWeapon weapon, bool overwriteLimits = false)
+    public void WriteMagiCowsWeapon(MagiCowsWeapon weapon)
     {
         if (weapon is not null)
         {

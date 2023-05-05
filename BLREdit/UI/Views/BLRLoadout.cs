@@ -479,8 +479,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     {
         if (UndoRedoSystem.BlockUpdate) return;
 
-        Primary.WriteMagiCowsWeapon(loadout.Primary, overwriteLimits);
-        Secondary.WriteMagiCowsWeapon(loadout.Secondary, overwriteLimits);
+        Primary.WriteMagiCowsWeapon(loadout.Primary);
+        Secondary.WriteMagiCowsWeapon(loadout.Secondary);
 
         loadout.Tactical = BLRItem.GetMagicCowsID(Tactical);
         loadout.Helmet = BLRItem.GetMagicCowsID(Helmet);

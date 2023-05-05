@@ -2,6 +2,7 @@
 using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
+using BLREdit.Model.BLR;
 using BLREdit.UI;
 
 using Microsoft.IdentityModel.Tokens;
@@ -234,7 +235,7 @@ public sealed class BLREditPipe
             {
                 LoggingSystem.Log($"[BLREdit API](start-server): Starting Server ({json})");
                 var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json);
-                BLRClient client;
+                BLRClientModel client;
                 if (serverConfig.ClientId < 0)
                 { client = BLREditSettings.Settings.DefaultClient; }
                 else
@@ -243,7 +244,7 @@ public sealed class BLREditPipe
                 //TODO: Transform Required Modules of ServerConfig to Modules to send to StartProcess as Enabled Modules list
 
                 string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}";
-                client.StartProcess(launchArgs, true, serverConfig.WatchDog);
+                BLRClientModel.StartClientWithArgs(client, launchArgs, true, serverConfig.WatchDog);
             }
             else
             {

@@ -1,4 +1,5 @@
 using BLREdit.Game;
+using BLREdit.Model.BLR;
 using BLREdit.UI;
 using BLREdit.UI.Views;
 
@@ -136,7 +137,7 @@ public sealed class ExportSystem
         }
         else
         {
-            if (BLREditSettings.Settings.DefaultClient is BLRClient client)
+            if (BLREditSettings.Settings.DefaultClient is BLRClientModel client)
             {
                 foreach (var profile in client.ProfileSettings)
                 {

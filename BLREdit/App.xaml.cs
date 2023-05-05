@@ -5,6 +5,8 @@ using BLREdit.API.Utils;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
+using BLREdit.Model.BLR;
+using BLREdit.Model.Proxy;
 using BLREdit.Properties;
 using BLREdit.UI;
 using BLREdit.UI.Views;
@@ -28,10 +30,10 @@ namespace BLREdit;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : System.Windows.Application
+public partial class App : Application
 {
-    public const string CurrentVersion = "v0.11.0";
-    public const string CurrentVersionTitle = "GameSettings UI and Fixes";
+    public const string CurrentVersion = "v0.11.1";
+    public const string CurrentVersionTitle = "Crash fix when patching";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -39,7 +41,7 @@ public partial class App : System.Windows.Application
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
     public static GitHubRelease BLREditLatestRelease { get; private set; } = null;
-    public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
+    public static RangeObservableCollection<ProxyModuleModel> AvailableProxyModules { get; } = new();
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = new();
 
     public static List<BLRServer> DefaultServers { get; set; } = new();
@@ -282,8 +284,8 @@ public partial class App : System.Windows.Application
 
         
         LoggingSystem.Log("Loading Server and Client List");
-        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
-        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
+        UI.MainWindow.GameClients = IOResources.DeserializeFile<RangeObservableCollection<BLRClientModel>>($"GameClients.json") ?? new();
+        UI.MainWindow.ServerList = IOResources.DeserializeFile<RangeObservableCollection<BLRServer>>($"ServerList.json") ?? new();
         LoggingSystem.Log("Finished Loading Server and Client List");
     }
 
@@ -628,21 +630,21 @@ public partial class App : System.Windows.Application
         return version;
     }
 
-    private static async Task<RepositoryProxyModule[]> GetAvailableProxyModules()
+    private static async Task<ProxyModuleModel[]> GetAvailableProxyModules()
     {
         LoggingSystem.Log("Downloading AvailableProxyModule List!");
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/v2/ProxyModuleList.json") is GitHubFile file)
             {
-                var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.DecodedContent);
+                var moduleList = IOResources.Deserialize<ProxyModuleModel[]>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
                 return moduleList;
             }
         }
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}"); }
-        return Array.Empty<RepositoryProxyModule>();
+        return Array.Empty<ProxyModuleModel>();
     }
 
     private static async Task<Dictionary<string, string>> GetAvailableLocalizations()
@@ -675,7 +677,7 @@ public partial class App : System.Windows.Application
             }
         }
         catch (Exception error)
-        { LoggingSystem.MessageLog($"Can't get server list from Github\n{error}"); }
+        { LoggingSystem.MessageLog($"Can't get server list from Github using internal defaults\n{error}"); }
         return new() 
         {
             //TODO: Here you can Add new Default servers which should be intigrated into the EXE
@@ -736,9 +738,20 @@ public partial class App : System.Windows.Application
         DefaultServers = defaultServers.Result;
         AvailableLocalizations = availableLocalizations.Result;
         var modules = availableModuleCheck.Result;
+        modules ??= Array.Empty<ProxyModuleModel>();
         for (int i = 0; i < modules.Length; i++)
         {
-            AvailableProxyModules.Add(new VisualProxyModule() { RepositoryProxyModule = modules[i] });
+            AvailableProxyModules.AddRange(modules);
+        }
+
+        bool isAvailableLocale = false;
+        foreach (var locale in AvailableLocalizations)
+        {
+            if (locale.Key == BLREditSettings.Settings.SelectedCulture.Name) isAvailableLocale = true;
+        }
+        if (!isAvailableLocale)
+        { 
+            BLREditSettings.Settings.SelectedCulture = CultureInfo.GetCultureInfo("en-US");
         }
     }
 

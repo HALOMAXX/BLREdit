@@ -1,6 +1,7 @@
 using BLREdit.API.REST_API.MagiCow;
 using BLREdit.API.REST_API.Server;
 using BLREdit.Export;
+using BLREdit.Model.BLR;
 using BLREdit.UI;
 using BLREdit.UI.Windows;
 
@@ -238,7 +239,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     public void LaunchClient()
     {
         if (BLREditSettings.Settings.DefaultClient is not null)
-        { BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = BLREditSettings.Settings.PlayerName, Server = this }); }
+        { BLRClientModel.StartClientWithArgs(BLREditSettings.Settings.DefaultClient, $"{this.IPAddress}:{this.Port}?Name={BLREditSettings.Settings.PlayerName}"); }
     }
 
     public override int GetHashCode()

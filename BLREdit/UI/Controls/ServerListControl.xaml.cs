@@ -32,7 +32,7 @@ public partial class ServerListControl : UserControl
     bool isDragging= false;
     private void ServerListView_PreviewMouseMove(object sender, MouseEventArgs e)
     {
-        if (e.LeftButton == MouseButtonState.Pressed && !isDragging && StartPoint != null)
+        if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
         {
             Point position = e.GetPosition(null);
             if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||

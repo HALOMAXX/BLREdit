@@ -1,0 +1,38 @@
+[
+  {
+    "IsClientModule": true,
+    "IsServerModule": false,
+    "IsRequiredModule": true,
+    "Repository": {
+      "$type": "GitHub",
+      "Owner": "Kethen",
+      "Repository": "BLRE-settings-manager",
+      "Name": "settings-manager",
+      "FullName": "settings-manager-Kethen-BLRE-settings-manager"
+    }
+  },
+  {
+    "IsClientModule": true,
+    "IsServerModule": false,
+    "IsRequiredModule": true,
+    "Repository": {
+      "$type": "Gitlab",
+      "Owner": "Kethen",
+      "Repository": "loadout-manager",
+      "Name": "LoadoutManager",
+      "FullName": "LoadoutManager-Kethen-loadout-manager"
+    }
+  },
+  {
+    "IsClientModule": false,
+    "IsServerModule": true,
+    "IsRequiredModule": true,
+    "Repository": {
+      "$type": "GitHub",
+      "Owner": "Kethen",
+      "Repository": "BLRE-server-utils",
+      "Name": "server-utils",
+      "FullName": "server-utils-Kethen-BLRE-server-utils"
+    }
+  }
+]
