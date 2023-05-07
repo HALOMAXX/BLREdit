@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace BLREdit.Game;
+namespace BLREdit;
 
 sealed class RelayCommand : ICommand
 {

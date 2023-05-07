@@ -195,10 +195,10 @@ public sealed class BLREditPipe
             if (json.StartsWith("{"))
             {
                 LoggingSystem.Log($"[BLREdit API](add-server): Adding Server ({json})");
-                var server = IOResources.Deserialize<BLRServer>(json);
+                var server = IOResources.Deserialize<BLRServerModel>(json);
                 if (server != null && MainWindow.Self != null)
                 {
-                    MainWindow.AddServer(server);
+                    //MainWindow.AddServer(server);
                 }
             }
             else
@@ -210,7 +210,7 @@ public sealed class BLREditPipe
             if (json.StartsWith("{"))
             {
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to Server ({json})");
-                var server = IOResources.Deserialize<BLRServer>(json);
+                var server = IOResources.Deserialize<BLRServerModel>(json);
                 //MainWindow.AddServer(server);
                 if (server != null && MainWindow.Self != null)
                 {
@@ -220,13 +220,13 @@ public sealed class BLREditPipe
             else
             {
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to ServerAddress ({json})");
-                foreach (var server in MainWindow.ServerList)
-                {
-                    if (server.ServerAddress == json)
-                    { 
-                        server.ConnectToServerCommand.Execute(null);
-                    }
-                }
+                //foreach (var server in MainWindow.ServerList)
+                //{
+                //    if (server.ServerAddress == json)
+                //    { 
+                //        server.ConnectToServerCommand.Execute(null);
+                //    }
+                //}
             }
         });
         ApiEndPoints.Add("start-server", (json) => {
@@ -239,12 +239,14 @@ public sealed class BLREditPipe
                 if (serverConfig.ClientId < 0)
                 { client = BLREditSettings.Settings.DefaultClient; }
                 else
-                { client = MainWindow.GameClients[serverConfig.ClientId]; }
+                { 
+                    //client = MainWindow.GameClients[serverConfig.ClientId];
+                }
 
                 //TODO: Transform Required Modules of ServerConfig to Modules to send to StartProcess as Enabled Modules list
 
                 string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}";
-                BLRClientModel.StartClientWithArgs(client, launchArgs, true, serverConfig.WatchDog);
+                //BLRClientModel.StartClientWithArgs(client, launchArgs, true, serverConfig.WatchDog);
             }
             else
             {

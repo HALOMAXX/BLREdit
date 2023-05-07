@@ -41,6 +41,7 @@ using System.Diagnostics.CodeAnalysis;
 using BLREdit.Model.Proxy;
 using BLREdit.API.REST_API;
 using BLREdit.Model.BLR;
+using System.Collections.Specialized;
 
 namespace BLREdit.UI;
 
@@ -49,7 +50,7 @@ namespace BLREdit.UI;
 /// </summary>
 public sealed partial class MainWindow : Window
 {
-    public static readonly BLRClientWindow ClientWindow = new();
+    //public static readonly BLRClientWindow ClientWindow = new();
 
     private static readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
     private static readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
@@ -86,8 +87,8 @@ public sealed partial class MainWindow : Window
 
     public bool IsCheckingGameClient { get; private set; } = false;
 
-    public static RangeObservableCollection<BLRClientModel> GameClients { get; set; }  
-    public static RangeObservableCollection<BLRServer> ServerList { get; set; }
+    //public static RangeObservableCollection<BLRClientModel> GameClients { get; set; }  
+    //public static RangeObservableCollection<BLRServer> ServerList { get; set; }
 
     public static BLRWeapon Copy { get; set; } = null;
 
@@ -119,104 +120,13 @@ public sealed partial class MainWindow : Window
         if (border is not null) border.BorderBrush = new SolidColorBrush(color);
     }
 
-    public static void CheckGameClients()
-    {
-        LoggingSystem.Log("Checking for patched clients");
-        if (GameClients.Count <= 0)
-        {
-            MessageBox.Show("You have to locate and add atleast one Client");
-        }
-    }
-
-    static readonly Stopwatch PingWatch = Stopwatch.StartNew();
-    static bool firstStart = true;
-    public static void RefreshPing()
-    {
-        if (firstStart || PingWatch.ElapsedMilliseconds > 30000)
-        {
-            firstStart= false;
-            foreach (BLRServer server in ServerList)
-            {
-                server.PingServer();
-            }
-            PingWatch.Restart();
-        }
-    }
-
-    private static void AddDefaultServers()
-    {
-        foreach (BLRServer defaultServer in App.DefaultServers)
-        {
-            bool add = true;
-            foreach (BLRServer server in ServerList)
-            {
-                if (server.ServerAddress == defaultServer.ServerAddress)
-                {
-                    add = false;
-                }
-            }
-            if (add) ServerList.Add(defaultServer);
-        }
-    }
-
-    public static void AddServer(BLRServer server, bool forceAdd = false)
-    {
-        bool add = true;
-        if (!forceAdd)
-        {
-            foreach (BLRServer s in ServerList)
-            {
-                if (s.ServerAddress == server.ServerAddress)
-                {
-                    add = false;
-                    s.Port = server.Port;
-                    s.InfoPort = server.InfoPort;
-                }
-            }
-        }
-        if (add) ServerList.Add(server);
-    }
-
-    public static void AddGameClient(BLRClientModel client)
-    {
-        bool add = true;
-        foreach (BLRClientModel c in GameClients)
-        {
-            if (c.OriginalPath == client.OriginalPath)
-            {
-                add = false;
-            }
-        }
-        if (add)
-        {
-            LoggingSystem.Log($"Adding New Client: {client}");
-            GameClients.Add(client);
-        }
-    }
-
-    private void ChangeCurrentServer_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button)
-        {
-            if (button.DataContext is BLRServer server)
-            {
-                BLREditSettings.Settings.DefaultServer = server;
-                foreach (BLRServer s in ServerList)
-                {
-                    s.IsDefaultServer = false;
-                }
-            }
-        }
-    }
-
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
     {
-        ExportSystem.SaveProfiles();
-        IOResources.SerializeFile($"GameClients.json", GameClients);
-        IOResources.SerializeFile($"ServerList.json", ServerList);
-        BLREditSettings.Save();
-        IOResources.SerializeFile($"ModuleCache.json", ProxyModuleRepository.CachedModules);
-        ClientWindow.ForceClose();
+        ////ExportSystem.SaveProfiles();
+        ////IOResources.SerializeFile($"GameClients.json", GameClients);
+        ////IOResources.SerializeFile($"ServerList.json", ServerList);
+        ////BLREditSettings.Save();
+        ////IOResources.SerializeFile($"ModuleCache.json", ProxyModuleModel.CachedModules);
     }
 
     private void Border_DragEnter(object sender, DragEventArgs e)
@@ -602,18 +512,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-
-#region Server UI
-
-    private void PingServers_Click(object sender, RoutedEventArgs e)
-    {
-        RefreshPing();
-    }
-    #endregion Server UI
-
     #region Hotkeys
-
-
     private int buttonIndex = 0;
     private void PreviewKeyUpMainWindow(object sender, KeyEventArgs e)
     {
@@ -853,54 +752,14 @@ public sealed partial class MainWindow : Window
             }
         }
 
-        IOResources.GetGameLocationsFromSteam();
-        foreach (string folder in IOResources.GameFolders)
-        {
-            var GameInstance = $"{folder}{IOResources.GAME_DEFAULT_EXE}";
-            if (File.Exists(GameInstance))
-            {
-                bool alreadyRegistered = false;
-                foreach (var client in GameClients)
-                {
-                    if (client.OriginalPath == GameInstance) { alreadyRegistered = true; continue; }
-                }
-                if (!alreadyRegistered)
-                {
-                    AddGameClient(new BLRClientModel() { OriginalPath = GameInstance });
-                }
-            }
-        }
-
-        if (MainWindow.GameClients.Count <= 0)
-        {
-            MessageBox.Show("You have to locate and add atleast one Client");
-        }
-        else
-        {
-            LoggingSystem.Log($"Validating Client List {GameClients.Count}");
-            for (int i = 0; i < GameClients.Count; i++)
-            {
-                if (!BLRClientModel.ValidateOriginalPath(GameClients[i]))
-                { GameClients.RemoveAt(i); i--; }
-            }
-        }
-
-        AddDefaultServers();
-
-        if (BLREditSettings.Settings.DefaultServer is null)
-        {
-            BLREditSettings.Settings.DefaultServer = ServerList[0];
-        }
-        BLREditSettings.SyncDefaultClient();
-
         Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;
 
         BLREditPipe.ProcessArgs(Args);
 
-        ClientListView.DataContext = GameClients;
-        ServerListView.DataContext = ServerList;
-
         SetProfileSettings();
+
+        ClientListView.DataContext = BLRClientModel.Clients;
+        ServerListView.DataContext = BLRServerModel.Servers;
 
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
     }
@@ -930,10 +789,6 @@ public sealed partial class MainWindow : Window
     
     private void MainWindowTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (e.AddedItems.Contains(LauncherTab))
-        {
-            RefreshPing();
-        }
         if (e.AddedItems.Contains(ProfileSettingsTab))
         {
             SetProfileSettings();

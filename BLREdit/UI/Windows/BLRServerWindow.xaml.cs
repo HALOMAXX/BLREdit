@@ -1,4 +1,5 @@
 ﻿using BLREdit.Game;
+using BLREdit.Model.BLR;
 
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace BLREdit.UI.Windows
     /// </summary>
     public partial class BLRServerWindow : Window
     {
-        public BLRServerWindow(BLRServer server)
+        public BLRServerWindow(BLRServerModel server)
         {
             this.DataContext = server;
             InitializeComponent();

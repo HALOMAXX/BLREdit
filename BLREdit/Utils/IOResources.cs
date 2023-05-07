@@ -136,7 +136,7 @@ public sealed class IOResources
         foreach (FileInfo file in dir.GetFiles())
         {
             string targetFilePath = Path.Combine(destinationDir, file.Name);
-            file.CopyTo(targetFilePath);
+            file.CopyTo(targetFilePath, true);
         }
 
         // If recursive and copying subdirectories, recursively call this method
@@ -321,7 +321,7 @@ public sealed class IOResources
         }
     }
 
-    public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
+    public static void SerializeFile<T>(string filePath, T? obj, bool compact = false)
     {
         if (string.IsNullOrEmpty(filePath)) { LoggingSystem.Log("[Serializer]: filePath was empty!"); return; }
         if (obj is null) { LoggingSystem.Log("[Serializer]: obj was null!"); return; }
@@ -356,16 +356,16 @@ public sealed class IOResources
         }
     }
 
-    public static string Serialize<T>(T obj, bool compact = false)
+    public static string Serialize<T>(T? obj, bool compact = false)
     {
-        if (obj == null) { LoggingSystem.Log("[Serializer]: object was null!"); return ""; }
+        if (obj is null) { LoggingSystem.Log("[Serializer]: object was null!"); return ""; }
         if (compact)
         {
-            return JsonSerializer.Serialize<T>(obj, JSOCompacted);
+            return JsonSerializer.Serialize<T?>(obj, JSOCompacted);
         }
         else
         {
-            return JsonSerializer.Serialize<T>(obj, JSOFields);
+            return JsonSerializer.Serialize<T?>(obj, JSOFields);
         }
     }
 
@@ -375,9 +375,9 @@ public sealed class IOResources
     /// <typeparam name="T">Type that is contained within the file</typeparam>
     /// <param name="filePath">the filepath</param>
     /// <returns>will return object of type on success otherwise will return the default object of said type also if the file is not readable/existent will also return default</returns>
-    public static T DeserializeFile<T>(string filePath)
+    public static T? DeserializeFile<T>(string filePath)
     {
-        T temp = default;
+        T? temp = default;
         if (string.IsNullOrEmpty(filePath)) { return temp; }
         
         //check if file exist's before we try to read it if it doesn't exist return and Write an error to log
@@ -398,7 +398,7 @@ public sealed class IOResources
         return temp;
     }
 
-    public static T Deserialize<T>(string json)
+    public static T? Deserialize<T>(string json)
     {
         try
         {

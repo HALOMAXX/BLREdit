@@ -1,4 +1,5 @@
 ﻿using BLREdit.Game;
+using BLREdit.Model.BLR;
 
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace BLREdit.UI.Controls
         {
             if (e.ClickCount > 1)
             {
-                if (this.DataContext is BLRServer server)
+                if (this.DataContext is BLRServerModel server)
                 {
                     server.ConnectToServerCommand.Execute(null);
                 }

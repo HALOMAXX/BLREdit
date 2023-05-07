@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
-             xmlns:game="clr-namespace:BLREdit.Game"
-             d:DataContext="{d:DesignInstance Type=game:BLRServer}"
+             xmlns:game="clr-namespace:BLREdit.Model.BLR"
+             d:DataContext="{d:DesignInstance Type=game:BLRServerModel}"
              mc:Ignorable="d">
     <Border BorderThickness="1,1,1,1" Height="256" Width="512">
         <Grid MouseDown="Grid_MouseDown">
             <Canvas ClipToBounds="True" >
-            <Image Name="MapImage" Source="{Binding Path=MapImage}" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0" >
+            <Image Name="MapImage" Source="{Binding Path=ServerStatus.MapImage}" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0" >
                 <Image.Triggers>
                     <EventTrigger RoutedEvent="Image.Loaded">
                         <EventTrigger.Actions>
@@ -30,28 +30,28 @@
                 </Image.Triggers>
             </Image>
             </Canvas>
-            <Button Width="64" Height="32" Margin="10,10,10,10" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_PingServer}" Command="{Binding Path=RefreshPingCommand}">
+            <Button Width="64" Height="32" Margin="10,10,10,10" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_PingServer}" Command="{Binding Path=PingServerCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/refresh.png"/>
             </Button>
-            <Button Width="64" Height="32" Margin="10,10,84,10" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_OpenServerConfigWindow}" Command="{Binding Path=EditServerCommand}">
+            <Button Width="64" Height="32" Margin="10,10,84,10" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_OpenServerConfigWindow}" Command="{Binding Path=ModifyServerCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/settings.png"/>
             </Button>
 
 
-            <ComboBox ItemsSource="{Binding Path=PlayerList}" Visibility="{Binding Path=IsTeammode.VisibilityInverted}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
+            <ComboBox ItemsSource="{Binding Path=ServerStatus.PlayerList}" Visibility="{Binding Path=ServerStatus.IsTeammode.VisibilityInverted}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
 
-            <StackPanel HorizontalAlignment="Right" Visibility="{Binding Path=IsTeammode.Visibility}" Orientation="Horizontal">
-                <ComboBox ItemsSource="{Binding Path=Team1List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
-                <ComboBox ItemsSource="{Binding Path=Team2List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
+            <StackPanel HorizontalAlignment="Right" Visibility="{Binding Path=ServerStatus.IsTeammode.Visibility}" Orientation="Horizontal">
+                <ComboBox ItemsSource="{Binding Path=ServerStatus.Team1List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
+                <ComboBox ItemsSource="{Binding Path=ServerStatus.Team2List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
             </StackPanel>
 
             <Button Width="128" Height="32" Margin="10,10,10,10" Content="{x:Static p:Resources.btn_ConnectToServer}" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_ConnectToServer}" Command="{Binding Path=ConnectToServerCommand}"/>
             
             <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
-                <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerStatus.ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             </Border>
 
-            <Border BorderThickness="0" Background="#9f000000" HorizontalAlignment="Stretch" IsHitTestVisible="False" VerticalAlignment="Stretch" Visibility="{Binding Path=IsOnline.VisibilityInverted}"/>
+            <Border BorderThickness="0" Background="#9f000000" HorizontalAlignment="Stretch" IsHitTestVisible="False" VerticalAlignment="Stretch" Visibility="{Binding Path=ServerStatus.IsOnline.VisibilityInverted}"/>
         </Grid>
     </Border>
 </UserControl>

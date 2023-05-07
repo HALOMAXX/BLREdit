@@ -13,48 +13,39 @@ public sealed class GitlabModuleRepository : ProxyModuleRepository
     {
         if (IsDownloadingModuleToCache.Is) return;
         IsDownloadingModuleToCache.Set(true);
-        int index = CachedModules.IndexOf(this);
-        DateTime latestReleaseDate = this.GetLatestReleaseDateTime();
         string? dl = null;
-        if (index >= 0 || index == -1)
+
+        foreach (var asset in LatestReleaseInfo.Assets.Links)
         {
-            if (index == -1 || CachedModules[index].ReleaseTime < latestReleaseDate)
+            if (asset.Name.StartsWith(Name) && asset.Name.EndsWith(".dll"))
             {
-                foreach (var asset in LatestReleaseInfo.Assets.Links)
+                dl = asset.URL;
+                break;
+            }
+        }
+        if (string.IsNullOrEmpty(dl))
+        {
+            LoggingSystem.Log($"No file found in Asset links gonna go down the deep end!");
+            Regex regex = new($@"(\/uploads\/\w+\/{Name}.dll)");
+            if (regex.Match(LatestReleaseInfo.Description) is Match match)
+            {
+                LoggingSystem.Log($"Found {match.Captures.Count} matches");
+                if (match.Captures.Count > 0)
                 {
-                    if (asset.Name.StartsWith(Name) && asset.Name.EndsWith(".dll"))
+                    foreach (var capture in match.Captures)
                     {
-                        dl = asset.URL;
-                        break;
-                    }
-                }
-                if (string.IsNullOrEmpty(dl))
-                {
-                    LoggingSystem.Log($"No file found in Asset links gonna go down the deep end!");
-                    Regex regex = new($@"(\/uploads\/\w+\/{Name}.dll)");
-                    if (regex.Match(LatestReleaseInfo.Description) is Match match)
-                    {
-                        LoggingSystem.Log($"Found {match.Captures.Count} matches");
-                        if (match.Captures.Count > 0)
+                        LoggingSystem.Log($"\t{capture}");
+                        if (string.IsNullOrEmpty(dl))
                         {
-                            foreach (var capture in match.Captures)
-                            {
-                                LoggingSystem.Log($"\t{capture}");
-                                if (string.IsNullOrEmpty(dl))
-                                {
-                                    dl = $"https://gitlab.com/{Owner}/{Repository}{capture}";
-                                }
-                            }
+                            dl = $"https://gitlab.com/{Owner}/{Repository}{capture}";
                         }
                     }
                 }
-                this.ReleaseTime = latestReleaseDate;
-                IOResources.DownloadFile(dl, $"downloads\\moduleCache\\{FullName}.dll");
-
-                if (index >= 0) { CachedModules.RemoveAt(index); }
-                CachedModules.Add(this);
             }
         }
+        this.ReleaseTime = LatestReleaseInfo.ReleasedAt;
+        IOResources.DownloadFile(dl, $"downloads\\moduleCache\\{FullName}.dll");
+
         IsDownloadingModuleToCache.Set(false);
     }
 
@@ -66,7 +57,7 @@ public sealed class GitlabModuleRepository : ProxyModuleRepository
             task.Wait();
             LatestReleaseInfo = task.Result;
         }
-        return LatestReleaseInfo.ReleasedAt;
+        return LatestReleaseInfo?.ReleasedAt ?? DateTime.MinValue;
     }
 
     public override async void GetMetaData()

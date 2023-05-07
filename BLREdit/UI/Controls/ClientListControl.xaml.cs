@@ -58,7 +58,7 @@ public partial class ClientListControl : UserControl
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if (targetData != null) MainWindow.GameClients.Move(MainWindow.GameClients.IndexOf(droppedData), MainWindow.GameClients.IndexOf(((ClientControl)targetData).DataContext as BLRClientModel));
+        if (targetData != null) BLRClientModel.Clients.Move(BLRClientModel.Clients.IndexOf(droppedData), BLRClientModel.Clients.IndexOf(((ClientControl)targetData).DataContext as BLRClientModel));
     }
 
     private void OpenNewGameClient_Click(object sender, RoutedEventArgs e)
@@ -72,9 +72,9 @@ public partial class ClientListControl : UserControl
         dialog.ShowDialog();
         if (!string.IsNullOrEmpty(dialog.FileName))
         {
-            MainWindow.AddGameClient(new BLRClientModel() { OriginalPath = dialog.FileName });
+            BLRClientModel.Clients.Add(new BLRClientModel() { OriginalPath = dialog.FileName });
         }
-        MainWindow.CheckGameClients();
+        //MainWindow.CheckGameClients();
     }
 
     private void ClientListView_PreviewMouseDown(object sender, MouseButtonEventArgs e)

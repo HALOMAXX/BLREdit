@@ -22,8 +22,6 @@ namespace BLREdit.API.REST_API;
 [JsonDerivedType(typeof(GitlabModuleRepository), typeDiscriminator: "Gitlab")]
 public abstract class ProxyModuleRepository : INotifyPropertyChanged
 {
-    public static RangeObservableCollection<ProxyModuleRepository> CachedModules { get; } = IOResources.DeserializeFile<RangeObservableCollection<ProxyModuleRepository>>($"ModuleCache.json") ?? new();
-
     #region Events
     public event PropertyChangedEventHandler? PropertyChanged;
     protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
@@ -69,26 +67,31 @@ public abstract class ProxyModuleRepository : INotifyPropertyChanged
         OnPropertyChanged(nameof(OGDescription));
     }
 
-    public override bool Equals(object obj)
-    {
-        if (obj is ProxyModuleRepository repo)
-        { 
-            return repo.GetHashCode() == this.GetHashCode();
-        }
-        else
-        { return false; }
-    }
-
     [JsonIgnore] public UIBool IsGettingMetaData { get; set; } = new(false);
     public abstract void GetMetaData();
     public abstract DateTime GetLatestReleaseDateTime();
     [JsonIgnore] public UIBool IsDownloadingModuleToCache { get; set; } = new(false);
     public abstract void DownloadModuleToCache();
 
+    #region Overrides
+    public override string ToString()
+    {
+        return FullName;
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj is ProxyModuleRepository repo)
+        {
+            return repo.GetHashCode() == this.GetHashCode();
+        }
+        else
+        { return false; }
+    }
     public override int GetHashCode()
     {
         return FullName.GetHashCode();
     }
+    #endregion Overrides
 }
 
 public sealed class CustomModuleRepository : ProxyModuleRepository

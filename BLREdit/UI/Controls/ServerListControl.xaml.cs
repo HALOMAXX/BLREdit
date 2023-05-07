@@ -1,4 +1,5 @@
 ﻿using BLREdit.Game;
+using BLREdit.Model.BLR;
 
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ public partial class ServerListControl : UserControl
             if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
                Math.Abs(position.Y - StartPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
             {
-                if (sender is ListView listView && listView.SelectedItem is BLRServer server)
+                if (sender is ListView listView && listView.SelectedItem is BLRServerModel server)
                 {
                     isDragging = true;
                     DragDrop.DoDragDrop(listView, server, DragDropEffects.Move);
@@ -50,18 +51,18 @@ public partial class ServerListControl : UserControl
 
     private void ServerListView_Drop(object sender, DragEventArgs e)
     {
-        BLRServer droppedData = e.Data.GetData(typeof(BLRServer)) as BLRServer;
+        BLRServerModel droppedData = e.Data.GetData(typeof(BLRServerModel)) as BLRServerModel;
         object targetData = e.OriginalSource;
         while (targetData != null && targetData.GetType() != typeof(ServerControl))
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if (targetData != null) { MainWindow.ServerList.Move(MainWindow.ServerList.IndexOf(droppedData), MainWindow.ServerList.IndexOf(((ServerControl)targetData).DataContext as BLRServer)); }
+        if (targetData != null) { BLRServerModel.Servers.Move(BLRServerModel.Servers.IndexOf(droppedData), BLRServerModel.Servers.IndexOf(((ServerControl)targetData).DataContext as BLRServerModel)); }
     }
 
     private void AddNewServer_Click(object sender, RoutedEventArgs e)
     {
-        MainWindow.AddServer(new BLRServer(), true);
+        BLRServerModel.Servers.Add(new BLRServerModel());
     }
 
     private void ServerListView_PreviewMouseDown(object sender, MouseButtonEventArgs e)

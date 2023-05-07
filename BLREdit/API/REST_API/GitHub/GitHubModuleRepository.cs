@@ -12,29 +12,18 @@ public sealed class GitHubModuleRepository : ProxyModuleRepository
     {
         if (IsDownloadingModuleToCache.Is) return;
         IsDownloadingModuleToCache.Set(true);
-        int index = CachedModules.IndexOf(this);
-        DateTime latestReleaseDate = this.GetLatestReleaseDateTime();
-        if (index >= 0 || index == -1)
+        foreach (var asset in LatestReleaseInfo.Assets)
         {
-            if(index == -1 || CachedModules[index].ReleaseTime < latestReleaseDate) 
+            if (asset.Name.StartsWith(Name) && asset.Name.EndsWith(".dll"))
             {
-                foreach (var asset in LatestReleaseInfo.Assets)
-                {
-                    if (asset.Name.StartsWith(Name) && asset.Name.EndsWith(".dll"))
-                    {
-                        IOResources.DownloadFile(asset.BrowserDownloadURL, $"downloads\\moduleCache\\{FullName}.dll");
-                        this.ReleaseTime = LatestReleaseInfo.PublishedAt;
-                        break;
-                    }
-                }
-                if (index >= 0) { CachedModules.RemoveAt(index); }
-                CachedModules.Add(this);
+                IOResources.DownloadFile(asset.BrowserDownloadURL, $"downloads\\moduleCache\\{FullName}.dll");
+                this.ReleaseTime = LatestReleaseInfo.PublishedAt;
+                break;
             }
         }
         IsDownloadingModuleToCache.Set(false);
     }
 
-    
     public override DateTime GetLatestReleaseDateTime()
     {
         if (LatestReleaseInfo is null)
@@ -43,7 +32,7 @@ public sealed class GitHubModuleRepository : ProxyModuleRepository
             task.Wait();
             LatestReleaseInfo = task.Result;
         }
-        return LatestReleaseInfo.PublishedAt;
+        return LatestReleaseInfo?.PublishedAt ?? DateTime.MinValue;
     }
 
     public override async void GetMetaData()

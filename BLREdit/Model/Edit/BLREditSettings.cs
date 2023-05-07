@@ -3,6 +3,7 @@ using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Model.BLR;
+using BLREdit.Model.Proxy;
 using BLREdit.UI;
 
 using System;
@@ -19,8 +20,8 @@ namespace BLREdit;
 public sealed class BLREditSettings : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
@@ -29,10 +30,10 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
     public int SelectedClient { get; set; } = 0;
-    [JsonIgnore] public BLRClientModel DefaultClient { get { if (SelectedClient >= MainWindow.GameClients.Count || SelectedClient < 0) { return null; } else { return MainWindow.GameClients[SelectedClient]; } } set { SelectedClient = MainWindow.GameClients.IndexOf(value); OnPropertyChanged(); } }
+    [JsonIgnore] public BLRClientModel DefaultClient { get { if (SelectedClient >= BLRClientModel.Clients.Count || SelectedClient < 0) { return new(); } else { return BLRClientModel.Clients[SelectedClient]; } } set { SelectedClient = BLRClientModel.Clients.IndexOf(value); OnPropertyChanged(); } }
     //Saves the Default Server (not in use anymore)
     public int SelectedServer { get; set; } = 0;
-    [JsonIgnore] public BLRServer DefaultServer { get { if (SelectedServer >= MainWindow.ServerList.Count || SelectedServer < 0) { return null; } else { return MainWindow.ServerList[SelectedServer]; } } set { SelectedServer = MainWindow.ServerList.IndexOf(value); OnPropertyChanged(); } }
+    [JsonIgnore] public BLRServerModel DefaultServer { get { if (SelectedServer >= BLRServerModel.Servers.Count || SelectedServer < 0) { return new(); } else { return BLRServerModel.Servers[SelectedServer]; } } set { SelectedServer = BLRServerModel.Servers.IndexOf(value); OnPropertyChanged(); } }
 
     //Allows for App-Web-Protocol needs Admin rights will be set to false if it fails to Start BLREdit as Admin
     public UIBool EnableAPI { get; set; } = new(true);
@@ -81,7 +82,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
 
     #region Commands
-    private ICommand resetConfigCommand;
+    private ICommand? resetConfigCommand;
     [JsonIgnore]
     public ICommand ResetConfigCommand
     {
@@ -101,16 +102,16 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         LoggingSystem.MessageLog("Now Returning to Defaults. this will close BLREdit!");
         settings = new BLREditSettings();
 
-        MainWindow.GameClients.Clear();
-        MainWindow.ServerList.Clear();
-        ProxyModuleRepository.CachedModules.Clear();
+        BLRClientModel.Clients.Clear();
+        BLRServerModel.Servers.Clear();
+        ProxyModuleModel.CachedModules.Clear();
 
         MainWindow.Self.Close();
     }
 
     public static void SyncDefaultClient()
     {
-        foreach (var client in MainWindow.GameClients)
+        foreach (var client in BLRClientModel.Clients)
         {
             if (client.OriginalPath == Settings.DefaultClient.OriginalPath)
             {
@@ -138,10 +139,10 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     public static void Save()
     {
-        if (MainWindow.GameClients is not null && MainWindow.GameClients.Count > 0)
+        if (BLRClientModel.Clients.Count > 0)
         {
             bool client = false;
-            foreach (var c in MainWindow.GameClients)
+            foreach (var c in BLRClientModel.Clients)
             {
                 if (c.Equals(Settings.DefaultClient))
                 {

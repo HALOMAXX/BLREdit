@@ -4,6 +4,7 @@ using BLREdit.UI;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BLREdit.Model.Proxy;
 
@@ -24,6 +26,8 @@ public sealed class ProxyModuleModel : INotifyPropertyChanged
     }
     #endregion Event
 
+    public static RangeObservableCollection<ProxyModuleModel> CachedModules { get; } = IOResources.DeserializeFile<RangeObservableCollection<ProxyModuleModel>>($"ModuleCache.json") ?? new();
+
     private UIBool _isClientModule = new(true);
     private UIBool _isServerModule = new(true);
     private UIBool _isRequiredModule = new(false);
@@ -36,34 +40,85 @@ public sealed class ProxyModuleModel : INotifyPropertyChanged
 
     public ProxyModuleRepository Repository { get { return _repository; } set { _repository = value; OnPropertyChanged(); } }
 
-    [JsonIgnore] public UIBool IsInstalling { get; set; } = new(false);
+    [JsonIgnore] public UIBool IsChanging { get; set; } = new(false);
     public void InstallToClient(BLRClientModel client)
     {
-        if (IsInstalling.Is) return;
-        IsInstalling.Set(true);
-
-        Repository.DownloadModuleToCache();
-
-        var info = new FileInfo($"downloads\\moduleCache\\{Repository.FullName}.dll");
-        if (info.Exists)
+        if (IsChanging.Is) return;
+        IsChanging.Set(true);
+        try
         {
-            info.CopyTo($"{client.ProxyModuleFolder}{Repository.FullName}.dll");
-        }
+            DownloadModuleToCache();
 
-        IsInstalling.Set(false);
+            var info = new FileInfo($"downloads\\moduleCache\\{Repository.FullName}.dll");
+            if (info.Exists)
+            {
+                info.CopyTo($"{client.ProxyModuleFolder}{Repository.FullName}.dll", true);
+                client.InstalledModules.Add(this);
+            }
+        }
+        catch { throw; }
+        finally 
+        { 
+            IsChanging.Set(false);
+            LoggingSystem.Log($"[{this}]: Finished Installing to [{client}]");
+        }
     }
 
-    [JsonIgnore] public UIBool IsRemoving { get; set; } = new(false);
+    public override bool Equals(object obj)
+    {
+        if (obj is ProxyModuleModel model)
+        { 
+            return model.GetHashCode() == GetHashCode();
+        }
+        return false;
+    }
+
+    public override string ToString()
+    {
+        return Repository.ToString();
+    }
+
+    public override int GetHashCode()
+    {
+        return Repository.GetHashCode();
+    }
+
+    private bool downloading = false;
+    public void DownloadModuleToCache()
+    {
+        if (downloading) return;
+        downloading = true;
+        int index = CachedModules.IndexOf(this);
+        DateTime latestReleaseDate = this.Repository.GetLatestReleaseDateTime();
+        if (index >= 0 || index == -1)
+        {
+            if (index == -1 || CachedModules[index].Repository.ReleaseTime < latestReleaseDate)
+            {
+                this.Repository.DownloadModuleToCache();
+                if (index >= 0) { CachedModules.RemoveAt(index); }
+                CachedModules.Add(this);
+            }
+        }
+        downloading = false;
+    }
     public void RemoveFromClient(BLRClientModel client)
     {
-        if (IsRemoving.Is) return;
-        IsRemoving.Set(true);
-        if (client.InstalledModules.Contains(this))
-        {
-            var info = new FileInfo($"{client.ProxyModuleFolder}{this.Repository.FullName}.dll");
-            if (info.Exists) { info.Delete(); }
-            client.InstalledModules.Remove(this);
+        if (IsChanging.Is) return;
+        IsChanging.Set(true);
+        try
+        { 
+            if (client.InstalledModules.Contains(this))
+            {
+                var info = new FileInfo($"{client.ProxyModuleFolder}{this.Repository.FullName}.dll");
+                if (info.Exists) { info.Delete(); }
+                client.InstalledModules.Remove(this);
+            }
         }
-        IsRemoving.Set(false);
+        catch { throw; }
+        finally 
+        { 
+            IsChanging.Set(false);
+            LoggingSystem.Log($"[{this}]: Finished Removing from [{client}]");
+        }
     }
 }

@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:BLREdit.UI.Windows"
         xmlns:utils="clr-namespace:BLREdit"
         xmlns:ui="clr-namespace:BLREdit.UI"
-        xmlns:game="clr-namespace:BLREdit.Game" 
-        d:DataContext="{d:DesignInstance Type=game:BLRServer}"
+        xmlns:game="clr-namespace:BLREdit.Model.BLR" 
+        d:DataContext="{d:DesignInstance Type=game:BLRServerModel}"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.winT_ServerConfigWindow}" Height="450" Width="800">
 
@@ -26,7 +26,7 @@
         <Border>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                 <Label Content="{x:Static p:Resources.lbl_ServerPort}" Width="120" HorizontalContentAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
-                <TextBox Text="{Binding Path=Port}" HorizontalAlignment="Stretch" PreviewKeyDown="TextBox_PreviewKeyDown"/>
+                <TextBox Text="{Binding Path=ServerPort}" HorizontalAlignment="Stretch" PreviewKeyDown="TextBox_PreviewKeyDown"/>
             </StackPanel>
         </Border>
         <Border>

@@ -5,6 +5,13 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLREdit", "BLREdit\BLREdit.csproj", "{217D8BBE-54ED-4E31-87CF-B7CB558B35E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREditUnitTests", "BLREditUnitTests\BLREditUnitTests.csproj", "{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREditPackagingTool", "BLREditPackagingTool\BLREditPackagingTool.csproj", "{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5} = {217D8BBE-54ED-4E31-87CF-B7CB558B35E5}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,14 @@ Global
 		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

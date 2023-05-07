@@ -83,7 +83,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         return settings.ToArray();
     }
 
-    private int GetValueOf([CallerMemberName] string name = null)
+    private int GetValueOf([CallerMemberName] string? name = null)
     {
         if (string.IsNullOrEmpty(name)) return 0;
 
@@ -94,7 +94,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         return setting.ProfileSetting.Data.Value1;
     }
 
-    private void SetValueOf(int Value, [CallerMemberName] string name = null)
+    private void SetValueOf(int Value, [CallerMemberName] string? name = null)
     {
 
         if (string.IsNullOrEmpty(name)) return;
