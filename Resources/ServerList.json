@@ -15,6 +15,11 @@
     "InfoPort": 7778
   },
   {
+    "ServerAddress": "kameron.cloud",
+    "Port": 7777,
+    "InfoPort": 7778
+  },
+  {
     "ServerAddress": "localhost",
     "Port": 7777,
     "InfoPort": 7778
