@@ -4,10 +4,10 @@
     "Port": 7777,
     "InfoPort": 7778
   },
-  { 
-     "ServerAddress": "mooserver.ddns.net", 
-     "Port": 7779, 
-     "InfoPort": 7780
+  {
+    "ServerAddress": "mooserver.ddns.net",
+    "Port": 7779,
+    "InfoPort": 7780
   },
   {
     "ServerAddress": "blrevive.northamp.fr",
