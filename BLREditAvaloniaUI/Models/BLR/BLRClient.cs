@@ -1,7 +1,11 @@
 ﻿using DynamicData;
 
+using PeNet;
+
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json.Serialization;
+using System.Threading;
 
 namespace BLREdit.Models.BLR;
 
@@ -21,20 +25,98 @@ public sealed class BLRClient
     };
 
     public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalFileHash ?? "", out string? version)) { return version; } else { return "Unknown"; } } }
-    public string? OriginalFile { get; set; }
-    public string? PatchedFile { get; set; }
-    public string? OriginalFileHash { get; set; }
-    public string? PatchedFileHash { get; set; }
+    public string OriginalFile { get; set; }
+    public string PatchedFile { get; set; }
+    public string OriginalFileHash { get; set; }
+    public string PatchedFileHash { get; set; }
 
-    private string? _basePath;
+    private FileInfo? _orignalFileInfo;
+    private FileInfo? _patchedFileInfo;
+    [JsonIgnore] public FileInfo OriginalFileInfo { get { _orignalFileInfo ??= new FileInfo(OriginalFile); return _orignalFileInfo; } }
+    [JsonIgnore] public FileInfo PatchedFileInfo { get { _patchedFileInfo ??= new FileInfo(PatchedFile); return _patchedFileInfo; } }
+
     private string? _proxyConfigFolder;
     private string? _gameConfigFolder;
     private string? _proxyModuleFolder;
     private string? _proxyLogFolder;
 
-    public string BasePath { get { _basePath ??= CreateBasePath(this); return _basePath; } set { _basePath = value; } }
-    public string ProxyConfigFolder { get { _proxyConfigFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\BLRevive\\").FullName; return _proxyConfigFolder; } }
-    public string GameConfigFolder { get { _gameConfigFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\PCConsole\\Cooked\\").FullName; return _gameConfigFolder; } }
-    public string ProxyModuleFolder { get { _proxyModuleFolder ??= Directory.CreateDirectory($"{BasePath}Binaries\\Win32\\Modules\\").FullName; return _proxyModuleFolder; } }
-    public string ProxyLogFolder { get { _proxyLogFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Logs\\").FullName; return _proxyLogFolder; } }
+    public string BasePath { get; }
+    [JsonIgnore] public string ProxyConfigFolder { get { _proxyConfigFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\BLRevive\\").FullName; return _proxyConfigFolder; } }
+    [JsonIgnore] public string GameConfigFolder { get { _gameConfigFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\PCConsole\\Cooked\\").FullName; return _gameConfigFolder; } }
+    [JsonIgnore] public string ProxyModuleFolder { get { _proxyModuleFolder ??= Directory.CreateDirectory($"{BasePath}Binaries\\Win32\\Modules\\").FullName; return _proxyModuleFolder; } }
+    [JsonIgnore] public string ProxyLogFolder { get { _proxyLogFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Logs\\").FullName; return _proxyLogFolder; } }
+
+    public List<BLRClientPatch> InstalledPatches { get; set; } = new();
+    public List<object> InstalledModules { get; set; } = new();
+
+    [JsonConstructor]
+    public BLRClient(string originalFile, string? originalFileHash = null, string? patchedFileHash = null)
+    {
+        OriginalFile = originalFile;
+        var dirInfo = OriginalFileInfo.Directory?.FullName.Split('\\');
+        string basePath = "";
+        for (int i = dirInfo?.Length-4 ?? 0; i >= 0; i--)
+        {
+            basePath = $"{dirInfo?[i]}\\{basePath}";
+        }
+        BasePath = basePath;
+        PatchedFile = $"{BasePath}\\Binaries\\Win32\\{OriginalFileInfo.Name}-BLREdit-Patched.{OriginalFileInfo.Extension}";
+
+        if (originalFileHash is null)
+        {
+            OriginalFileHash = IOResources.CreateFileHash(originalFile);
+        }
+        else
+        {
+            OriginalFileHash = originalFileHash;
+        }
+
+        if (patchedFileHash is null)
+        {
+            PatchedFileHash = "";
+        }
+        else
+        { 
+            PatchedFileHash = patchedFileHash;
+        }
+    }
+
+    public void BinaryPatchClient(List<BLRClientPatch>? patches = null)
+    {
+        patches ??= BLRClientPatch.ClientBinaryPatches[OriginalFileHash] ?? new();
+        File.Copy(OriginalFile, PatchedFile, true);
+        using var stream = File.Open(PatchedFile, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+        byte[] rawFile = new byte[stream.Length];
+        stream.Read(rawFile ,0,(int)stream.Length);
+        stream.Position = 0;
+
+        foreach (var patch in patches)
+        {
+            foreach (var part in patch.PatchParts)
+            {
+                OverwriteBytes(rawFile, part.Key, part.Value.ToArray());
+            }
+        }
+
+        PeFile peFile = new(rawFile);
+        peFile.AddImport("Proxy.dll", "InitializeThread");
+        stream.SetLength(peFile.RawFile.Length);
+        stream.Write(peFile.RawFile.ToArray());
+        stream.Flush();
+        stream.Close();
+        InstalledPatches.Clear();
+        InstalledPatches.AddRange(patches);
+        PatchedFileHash = IOResources.CreateFileHash(PatchedFile);
+    }
+
+    private static void OverwriteBytes(byte[] bytes, int offsetFromBegining, byte[] bytesToWrite)
+    {
+        int i2 = 0;
+        for (int i = offsetFromBegining; i < bytes.Length && i2 < bytesToWrite.Length; i++)
+        {
+            bytes[i] = bytesToWrite[i2];
+            i2++;
+        }
+    }
+
 }
