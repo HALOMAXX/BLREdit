@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREditPackagingTool", "BLR
 		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5} = {217D8BBE-54ED-4E31-87CF-B7CB558B35E5}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREditAvaloniaUI", "BLREditAvaloniaUI\BLREditAvaloniaUI.csproj", "{4B457471-230B-4A3E-9BFC-988AD75400D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B457471-230B-4A3E-9BFC-988AD75400D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B457471-230B-4A3E-9BFC-988AD75400D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B457471-230B-4A3E-9BFC-988AD75400D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B457471-230B-4A3E-9BFC-988AD75400D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
