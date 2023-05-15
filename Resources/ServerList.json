@@ -5,12 +5,22 @@
     "InfoPort": 7778
   },
   {
+    "ServerAddress": "mooserver.ddns.net",
+    "Port": 7779,
+    "InfoPort": 7780
+  },
+  {
     "ServerAddress": "blrevive.northamp.fr",
     "Port": 7777,
     "InfoPort": 80
   },
   {
     "ServerAddress": "aegiworks.com",
+    "Port": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "kameron.cloud",
     "Port": 7777,
     "InfoPort": 7778
   },
