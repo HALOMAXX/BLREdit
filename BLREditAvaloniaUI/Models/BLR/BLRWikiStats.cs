@@ -1,6 +1,6 @@
 ﻿namespace BLREdit.Models;
 
-public sealed class BLRWikiStats
+public sealed class BLRWikiStats : ModelBase
 {
     public double AimSpread { get; set; }
     public double AmmoMag { get; set; }

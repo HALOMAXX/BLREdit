@@ -1,0 +1,14 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <UniformGrid>
+        <TextBox Text="Test123"/>
+      </UniformGrid>
+    </Border>
+  </Design.PreviewWith>
+
+  <StyleInclude Source="avares://BLREdit/Styles/ParityStyle/TextBoxStyle.axaml"/>
+  <!-- TODO: Add all Parity Style Files here-->
+  
+</Styles>

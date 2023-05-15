@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Numerics;
 
 namespace BLREdit.Models;
 
-public sealed class BLRWeaponStats
+public sealed class BLRWeaponStats : ModelBase
 {
     public double Accuracy { get; set; }
     public double Damage { get; set; }
@@ -51,7 +52,7 @@ public sealed class BLRWeaponStats
     public double RecoilZoomMultiplier { get; set; } = 0.5f;
     public double ReloadShortMultiplier { get; set; } = 1.0f; // not actually a thing, but this is currently the easiest way with how we do the reload numbers
     public double ROF { get; set; } = 0;
-    public BLRWeaponStatDecriptor[] StatDecriptors { get; set; } = Array.Empty<BLRWeaponStatDecriptor>();
+    public RangeObservableCollection<BLRWeaponStatDecriptor> StatDecriptors { get; set; } = new();
     public double TABaseSpread { get; set; } = 0;
     public double TightAimTime { get; set; } = 0.0f;
     public bool UseTABaseSpread { get; set; } = false;

@@ -1,6 +1,6 @@
 ﻿namespace BLREdit.Models;
 
-public sealed class BLRPawnModifiers
+public sealed class BLRPawnModifiers : ModelBase
 {
     public double BodyDamageReduction { get; set; } = 0;
     public double ElectroProtection { get; set; } = 0;

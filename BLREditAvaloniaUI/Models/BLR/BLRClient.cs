@@ -1,17 +1,20 @@
-﻿using DynamicData;
+﻿using BLREdit.Models.BLReviveSDK;
 
 using PeNet;
 
+using PropertyChanged;
+
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading;
 
 namespace BLREdit.Models.BLR;
 
-public sealed class BLRClient
+public sealed class BLRClient : ModelBase
 {
-    public static SourceList<BLRClient> Clients { get; } = new();
+    public static RangeObservableCollection<BLRClient> Clients { get; } = IOResources.DeserializeFile<RangeObservableCollection<BLRClient>>("Data\\ClientList.json") ?? new();
     public static Dictionary<string, string> VersionHashes => new()
     {
         {"0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7", "v302"},
@@ -24,68 +27,44 @@ public sealed class BLRClient
         {"9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116", "v0993"}
     };
 
-    public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalFileHash ?? "", out string? version)) { return version; } else { return "Unknown"; } } }
-    public string OriginalFile { get; set; }
-    public string PatchedFile { get; set; }
-    public string OriginalFileHash { get; set; }
-    public string PatchedFileHash { get; set; }
-
-    private FileInfo? _orignalFileInfo;
-    private FileInfo? _patchedFileInfo;
-    [JsonIgnore] public FileInfo OriginalFileInfo { get { _orignalFileInfo ??= new FileInfo(OriginalFile); return _orignalFileInfo; } }
-    [JsonIgnore] public FileInfo PatchedFileInfo { get { _patchedFileInfo ??= new FileInfo(PatchedFile); return _patchedFileInfo; } }
+    [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalFile?.FileHash ?? "", out var version)) { return version; } else { return "Unknown"; } } }
+    public FileInfoBLR OriginalFile { get; set; }
+    public FileInfoBLR PatchedFile { get; set; }
 
     private string? _proxyConfigFolder;
     private string? _gameConfigFolder;
     private string? _proxyModuleFolder;
     private string? _proxyLogFolder;
 
-    public string BasePath { get; }
+    [JsonIgnore] public string BasePath { get; }
     [JsonIgnore] public string ProxyConfigFolder { get { _proxyConfigFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\BLRevive\\").FullName; return _proxyConfigFolder; } }
     [JsonIgnore] public string GameConfigFolder { get { _gameConfigFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\PCConsole\\Cooked\\").FullName; return _gameConfigFolder; } }
     [JsonIgnore] public string ProxyModuleFolder { get { _proxyModuleFolder ??= Directory.CreateDirectory($"{BasePath}Binaries\\Win32\\Modules\\").FullName; return _proxyModuleFolder; } }
     [JsonIgnore] public string ProxyLogFolder { get { _proxyLogFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Logs\\").FullName; return _proxyLogFolder; } }
 
-    public List<BLRClientPatch> InstalledPatches { get; set; } = new();
-    public List<object> InstalledModules { get; set; } = new();
+    public RangeObservableCollection<BLRClientPatch> InstalledPatches { get; set; } = new();
+    public RangeObservableCollection<BLReviveSDKPlugin> InstalledPlugins { get; set; } = new();
 
     [JsonConstructor]
-    public BLRClient(string originalFile, string? originalFileHash = null, string? patchedFileHash = null)
+    public BLRClient(FileInfoBLR originalFile)
     {
         OriginalFile = originalFile;
-        var dirInfo = OriginalFileInfo.Directory?.FullName.Split('\\');
+        if (string.IsNullOrEmpty(OriginalFile.FileHash)) { OriginalFile.UpdateFileHash(); }
+        var dirInfo = OriginalFile.Info?.FullName.Split('\\');
         string basePath = "";
         for (int i = dirInfo?.Length-4 ?? 0; i >= 0; i--)
         {
             basePath = $"{dirInfo?[i]}\\{basePath}";
         }
         BasePath = basePath;
-        PatchedFile = $"{BasePath}\\Binaries\\Win32\\{OriginalFileInfo.Name}-BLREdit-Patched.{OriginalFileInfo.Extension}";
-
-        if (originalFileHash is null)
-        {
-            OriginalFileHash = IOResources.CreateFileHash(originalFile);
-        }
-        else
-        {
-            OriginalFileHash = originalFileHash;
-        }
-
-        if (patchedFileHash is null)
-        {
-            PatchedFileHash = "";
-        }
-        else
-        { 
-            PatchedFileHash = patchedFileHash;
-        }
+        PatchedFile = new($"{BasePath}Binaries\\Win32\\{OriginalFile.Name}-BLREdit-Patched{OriginalFile.Extension}");
     }
 
-    public void BinaryPatchClient(List<BLRClientPatch>? patches = null)
+    public void BinaryPatchClient(RangeObservableCollection<BLRClientPatch>? patches = null)
     {
-        patches ??= BLRClientPatch.ClientBinaryPatches[OriginalFileHash] ?? new();
-        File.Copy(OriginalFile, PatchedFile, true);
-        using var stream = File.Open(PatchedFile, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+        patches ??= BLRClientPatch.ClientPatches[OriginalFile.FileHash] ?? new();
+        OriginalFile.Info.CopyTo(PatchedFile.FullName, true);
+        using var stream = PatchedFile.Info.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
         byte[] rawFile = new byte[stream.Length];
         stream.Read(rawFile ,0,(int)stream.Length);
         stream.Position = 0;
@@ -94,7 +73,7 @@ public sealed class BLRClient
         {
             foreach (var part in patch.PatchParts)
             {
-                OverwriteBytes(rawFile, part.Key, part.Value.ToArray());
+                OverwriteBytes(rawFile, part.Position, part.BytesToOverwrite);
             }
         }
 
@@ -106,15 +85,15 @@ public sealed class BLRClient
         stream.Close();
         InstalledPatches.Clear();
         InstalledPatches.AddRange(patches);
-        PatchedFileHash = IOResources.CreateFileHash(PatchedFile);
+        PatchedFile.UpdateFileHash();
     }
 
-    private static void OverwriteBytes(byte[] bytes, int offsetFromBegining, byte[] bytesToWrite)
+    private static void OverwriteBytes(byte[] bytes, int offsetFromBegining, IEnumerable<byte> bytesToWrite)
     {
         int i2 = 0;
-        for (int i = offsetFromBegining; i < bytes.Length && i2 < bytesToWrite.Length; i++)
+        for (int i = offsetFromBegining; i < bytes.Length && i2 < bytesToWrite.Count(); i++)
         {
-            bytes[i] = bytesToWrite[i2];
+            bytes[i] = bytesToWrite.ElementAt(i2);
             i2++;
         }
     }

@@ -9,6 +9,8 @@
     </Application.DataTemplates>
 
     <Application.Styles>
+      
         <FluentTheme />
+      <StyleInclude Source="avares://BLREdit/Styles/ParityStyles.axaml"/>
     </Application.Styles>
 </Application>

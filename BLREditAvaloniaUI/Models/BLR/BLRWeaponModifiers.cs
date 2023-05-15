@@ -1,6 +1,6 @@
 ﻿namespace BLREdit.Models;
 
-public sealed class BLRWeaponModifiers
+public sealed class BLRWeaponModifiers : ModelBase
 {
     public double Accuracy { get; set; } = 0;
     public double Ammo { get; set; } = 0;

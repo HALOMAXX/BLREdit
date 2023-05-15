@@ -1,13 +1,12 @@
 using Avalonia.Controls;
-
 using PropertyChanged;
 
 namespace BLREdit.Views;
 
 [DoNotNotify]
-public partial class MainWindow : Window
+public partial class BLRClientView : UserControl
 {
-    public MainWindow()
+    public BLRClientView()
     {
         InitializeComponent();
     }
