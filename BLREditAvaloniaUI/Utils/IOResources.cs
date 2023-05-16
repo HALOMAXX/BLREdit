@@ -2,18 +2,39 @@
 using System;
 using System.Text.Json.Serialization;
 using System.IO;
-using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
-using BLREdit.Models;
-using System.Collections.ObjectModel;
+using System.Security.Cryptography;
+using System.Net.Http;
+using System.Net;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace BLREdit;
 
-public sealed class IOResources
+public sealed partial class IOResources
 {
-    public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
-    public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
+    static IOResources()
+    {
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
+        JsonHttpClient = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
+        TextHttpClient = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
+
+        JsonHttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+        TextHttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("text/html"));
+        
+        if (!JsonHttpClient.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { Debug.WriteLine($"Failed to add {HttpRequestHeader.UserAgent} to JsonHttpClient"); };
+        if (!TextHttpClient.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { Debug.WriteLine($"Failed to add {HttpRequestHeader.UserAgent} to TextHttpClient"); };
+    }
+
+    #region Network
+    public static HttpClient JsonHttpClient { get; } 
+    public static HttpClient TextHttpClient { get; } 
+    #endregion Network
+    #region Serialization
+    public static JsonSerializerOptions JSODeserialization { get; } = new JsonSerializerOptions() { IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
+    public static JsonSerializerOptions JSOSerialization { get; } = new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull, WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
+    public static JsonSerializerOptions JSOSerializationCompact { get; } = new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull, WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
     public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
     {
         var info = new FileInfo(filePath);
@@ -29,11 +50,11 @@ public sealed class IOResources
     {
         if (compact)
         {
-            return JsonSerializer.Serialize<T>(obj, JSOCompacted);
+            return RemoveWhiteSpacesFromJson().Replace(JsonSerializer.Serialize(obj, JSOSerializationCompact), "$1");
         }
         else
         {
-            return JsonSerializer.Serialize<T>(obj, JSOFields);
+            return JsonSerializer.Serialize(obj, JSOSerialization);
         }
     }
 
@@ -78,14 +99,23 @@ public sealed class IOResources
 
     public static T? Deserialize<T>(string json)
     {
-        try { return JsonSerializer.Deserialize<T>(json, JSOFields); } catch { }
+        try { return JsonSerializer.Deserialize<T>(json, JSODeserialization); } 
+        catch (Exception error) 
+        { Debug.WriteLine(error); }
         return default;
     }
-
-    public static string CreateFileHash(string path)
+    #endregion Serialization
+    #region Hashing
+    public static string GetFileHash(string path)
     {
-        using var stream = File.OpenRead(path);
-        using var crypto = System.Security.Cryptography.SHA256.Create();
-        return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
+        return GetHash(File.ReadAllBytes(path));
     }
+    public static string GetHash(byte[] data)
+    {
+        return BitConverter.ToString(SHA256.HashData(data)).Replace("-", string.Empty).ToLower();
+    }
+
+    [GeneratedRegex("(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+")]
+    private static partial Regex RemoveWhiteSpacesFromJson();
+    #endregion Hashing
 }

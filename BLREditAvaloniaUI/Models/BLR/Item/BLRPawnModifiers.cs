@@ -1,4 +1,6 @@
-﻿namespace BLREdit.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace BLREdit.Models.BLR;
 
 public sealed class BLRPawnModifiers : ModelBase
 {

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Numerics;
 
-namespace BLREdit.Models;
+namespace BLREdit.Models.BLR;
 
 public sealed class BLRWeaponStats : ModelBase
 {
@@ -14,7 +14,6 @@ public sealed class BLRWeaponStats : ModelBase
     public double Recoil { get; set; }
     public double ReloadSpeed { get; set; }
     public double WeaponWeight { get; set; }
-
     public double ApplyTime { get; set; } = 0;
     public double RecoveryTime { get; set; } = 0;
     public double BaseSpread { get; set; } = 0.04f;

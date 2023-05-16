@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 
-namespace BLREdit.Models;
+namespace BLREdit.Models.BLR;
 
 public sealed class BLRMap : ModelBase
 {
@@ -22,7 +22,7 @@ public sealed class BLRMap : ModelBase
         MapInfoLocation = new DirectoryInfo("Data\\MapInfos");
         Maps = new(IOResources.DeserializeDirectory<BLRMap>(MapInfoLocation));
         MapsForVersion = SortMapsByVersion(Maps);
-        
+
     }
 
     public static BLRMap GetMapForVersion(string versionHash, string mapName)

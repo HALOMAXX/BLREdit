@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="using:BLREdit.ViewModels"
-        xmlns:temp="using:BLREdit.DataTemplates"
+        xmlns:temp="using:BLREdit.DataTemplates.BLR"
         mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1040"
         x:Class="BLREdit.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -16,9 +16,9 @@
 
   <Grid>
     <Button Command="{Binding ButtonCommand}">RNG Window Title</Button>
-    <ItemsControl Items="{Binding Clients}">
+    <ItemsControl Items="{Binding Servers}">
       <ItemsControl.ItemTemplate>
-        <temp:BLRClientDataTemplate/>
+        <temp:BLRDataTemplate/>
       </ItemsControl.ItemTemplate>
     </ItemsControl>
   </Grid>

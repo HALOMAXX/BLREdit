@@ -51,6 +51,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\BLRItemNames.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BLRItemNames.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\MainWindow.axaml.cs">
       <DependentUpon>MainWindow.axaml</DependentUpon>
     </Compile>
@@ -58,6 +63,13 @@
 
   <ItemGroup>
     <Folder Include="Styles\PreParityStyle\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\BLRItemNames.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BLRItemNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

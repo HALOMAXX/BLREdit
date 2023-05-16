@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace BLREdit.Models.BLR;
 
@@ -36,10 +37,11 @@ public sealed class BLRServer : ModelBase
     public string ServerAddress { get; set; }
     public ushort ServerPort { get; set; } = 7777;
     public ushort InfoPort { get; set; } = 7778;
+    [JsonIgnore] public ServerInfo ServerInfo { get; set; } = new();
 
     [JsonConstructor]
     public BLRServer(string serverAddress)
-    { 
+    {
         ServerAddress = serverAddress;
     }
 
@@ -47,9 +49,14 @@ public sealed class BLRServer : ModelBase
     {
         var hostEntry = Dns.GetHostEntry(address, System.Net.Sockets.AddressFamily.InterNetwork);
         if (hostEntry.AddressList.Length > 0)
-        { 
+        {
             return hostEntry.AddressList[0].ToString();
         }
         return address;
+    }
+
+    public ServerInfo QueryServerInfo()
+    {
+        return new();
     }
 }

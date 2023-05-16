@@ -1,4 +1,4 @@
-﻿namespace BLREdit.Models;
+﻿namespace BLREdit.Models.BLR;
 
 public sealed class BLRWeaponModifiers : ModelBase
 {

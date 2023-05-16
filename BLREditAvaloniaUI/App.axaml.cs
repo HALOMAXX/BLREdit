@@ -15,6 +15,8 @@ namespace BLREdit;
 [DoNotNotify]
 public partial class App : Application
 {
+    public const string CurrentVersion = "v1.0.0";
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -41,6 +43,7 @@ public partial class App : Application
     {
         //TODO do stuff on startup once we enter base.OnFrameworkInit after MainWindow ctor
         Debug.WriteLine("BLREdit Startup!");
+        PropertyChangedNotificationInterceptor.PauseNotify = false;
     }
     void OnAppShutdownRequested(object? sender, ShutdownRequestedEventArgs e)
     {
@@ -50,14 +53,17 @@ public partial class App : Application
     void OnAppExit(object? sender, ControlledApplicationLifetimeExitEventArgs e)
     {
         //TODO do stuff on app exit after shutdown request and also triggers even when getting killed from task manager
+        
+        SaveData();
         Debug.WriteLine("BLREdit Exit!");
-        SaveData();        
     }
 
     void SaveData()
     {
         if (Avalonia.Controls.Design.IsDesignMode) return;
-        IOResources.SerializeFile("Data\\ClientList.json", BLRClient.Clients);
+        Debug.WriteLine("Saving Data!");
+        IOResources.SerializeFile("Data\\ClientList.json", BLRClient.Clients, true);
+        IOResources.SerializeFile("Data\\ServerList.json", BLRServer.Servers, true);
         //TODO Add all files for saving purposes here
     }
 }

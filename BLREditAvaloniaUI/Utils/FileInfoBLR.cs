@@ -26,6 +26,6 @@ public sealed class FileInfoBLR : ModelBase
 
     public void UpdateFileHash()
     { 
-        FileHash = IOResources.CreateFileHash(Info.FullName);
+        FileHash = IOResources.GetFileHash(Info.FullName);
     }
 }

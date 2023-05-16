@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
 
-namespace BLREdit.Models;
+namespace BLREdit.Models.BLR;
 
 public sealed class BLRGameMode : ModelBase
 {
