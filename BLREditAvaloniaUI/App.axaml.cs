@@ -2,7 +2,10 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
-using BLREdit.Models.BLR;
+using BLREdit.Core;
+using BLREdit.Core.Models.BLR.Client;
+using BLREdit.Core.Models.BLR.Server;
+using BLREdit.Core.Utils;
 using BLREdit.ViewModels;
 using BLREdit.Views;
 
@@ -43,7 +46,7 @@ public partial class App : Application
     {
         //TODO do stuff on startup once we enter base.OnFrameworkInit after MainWindow ctor
         Debug.WriteLine("BLREdit Startup!");
-        PropertyChangedNotificationInterceptor.PauseNotify = false;
+        PropertyChangedNotificationInterceptor.InitializationFinished();
     }
     void OnAppShutdownRequested(object? sender, ShutdownRequestedEventArgs e)
     {

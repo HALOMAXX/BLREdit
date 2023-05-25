@@ -1,0 +1,47 @@
+﻿[
+  {
+    "ServerAddress": "mooserver.ddns.net",
+    "ServerPort": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "mooserver.ddns.net",
+    "ServerPort": 7779,
+    "InfoPort": 7780
+  },
+  {
+    "ServerAddress": "blrevive.northamp.fr",
+    "ServerPort": 7777,
+    "InfoPort": 80
+  },
+  {
+    "ServerAddress": "aegiworks.com",
+    "ServerPort": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "kameron.cloud",
+    "ServerPort": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "blr.akoot.me",
+    "ServerPort": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "blr.753z.net",
+    "ServerPort": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "localhost",
+    "ServerPort": 7777,
+    "InfoPort": 7778
+  },
+  {
+    "ServerAddress": "127.0.0.1",
+    "ServerPort": 7777,
+    "InfoPort": 7778
+  }
+]

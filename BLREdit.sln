@@ -5,14 +5,30 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLREdit", "BLREdit\BLREdit.csproj", "{217D8BBE-54ED-4E31-87CF-B7CB558B35E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREditUnitTests", "BLREditUnitTests\BLREditUnitTests.csproj", "{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREditPackagingTool", "BLREditPackagingTool\BLREditPackagingTool.csproj", "{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}"
 	ProjectSection(ProjectDependencies) = postProject
-		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5} = {217D8BBE-54ED-4E31-87CF-B7CB558B35E5}
+		{1E585B50-1126-4A78-9A97-5FBAB70467E4} = {1E585B50-1126-4A78-9A97-5FBAB70467E4}
+		{4A269DAD-8B2D-4982-B143-4A70B6554518} = {4A269DAD-8B2D-4982-B143-4A70B6554518}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREditAvaloniaUI", "BLREditAvaloniaUI\BLREditAvaloniaUI.csproj", "{4B457471-230B-4A3E-9BFC-988AD75400D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLREditAvaloniaUI", "BLREditAvaloniaUI\BLREditAvaloniaUI.csproj", "{4B457471-230B-4A3E-9BFC-988AD75400D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1E585B50-1126-4A78-9A97-5FBAB70467E4} = {1E585B50-1126-4A78-9A97-5FBAB70467E4}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLREditResourceCreator", "BLREditResourceCreator\BLREditResourceCreator.csproj", "{6D5119A6-0630-4730-9AFC-F2E08A971646}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1E585B50-1126-4A78-9A97-5FBAB70467E4} = {1E585B50-1126-4A78-9A97-5FBAB70467E4}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREdit.Core", "BLREdit.Core\BLREdit.Core.csproj", "{4A269DAD-8B2D-4982-B143-4A70B6554518}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E433C51-1B68-4128-86DA-17F3162B4BAB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLREdit.Core.Test", "BLREdit.Core.Test\BLREdit.Core.Test.csproj", "{1E585B50-1126-4A78-9A97-5FBAB70467E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +40,6 @@ Global
 		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{217D8BBE-54ED-4E31-87CF-B7CB558B35E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{28EF2337-8BEE-4D7D-9CDB-35EEE9CD9275}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D3DB398-9DB6-492A-BF04-E20029F4EBE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,6 +48,18 @@ Global
 		{4B457471-230B-4A3E-9BFC-988AD75400D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B457471-230B-4A3E-9BFC-988AD75400D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B457471-230B-4A3E-9BFC-988AD75400D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D5119A6-0630-4730-9AFC-F2E08A971646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D5119A6-0630-4730-9AFC-F2E08A971646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D5119A6-0630-4730-9AFC-F2E08A971646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D5119A6-0630-4730-9AFC-F2E08A971646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A269DAD-8B2D-4982-B143-4A70B6554518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A269DAD-8B2D-4982-B143-4A70B6554518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A269DAD-8B2D-4982-B143-4A70B6554518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A269DAD-8B2D-4982-B143-4A70B6554518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E585B50-1126-4A78-9A97-5FBAB70467E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E585B50-1126-4A78-9A97-5FBAB70467E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E585B50-1126-4A78-9A97-5FBAB70467E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E585B50-1126-4A78-9A97-5FBAB70467E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

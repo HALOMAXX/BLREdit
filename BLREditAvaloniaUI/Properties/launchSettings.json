@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "BLREditAvaloniaUI": {
+      "commandName": "Project"
+    },
+    "WSL-Debian": {
+      "commandName": "WSL2",
+      "distributionName": "Debian"
+    }
+  }
+}

@@ -3,8 +3,10 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Resources;
 
 namespace BLREdit;
 
@@ -17,6 +19,7 @@ internal class Program
     public static void Main(string[] args) 
     {
         CreateAllDirectories();
+
         Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:yyyy.MM.dd(HH-mm-ss)}.log", "logFileListener"));
         Trace.AutoFlush = true;
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
@@ -37,4 +40,6 @@ internal class Program
         Directory.CreateDirectory("logs\\Client");
         Directory.CreateDirectory("logs\\Proxy");
     }
+
+
 }

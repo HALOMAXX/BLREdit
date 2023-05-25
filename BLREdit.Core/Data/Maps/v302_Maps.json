@@ -1,0 +1,616 @@
+[
+  {
+    "DisplayName": "Lobby",
+    "MapFilename": "FoxEntry",
+    "MagiCowName": "Lobby"
+  },
+  {
+    "DisplayName": "Centre",
+    "MapFilename": "centre",
+    "MagiCowName": "Centre",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+
+  {
+    "DisplayName": "Containment",
+    "MapFilename": "containment",
+    "MagiCowName": "Containment",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Convoy",
+    "MapFilename": "convoy",
+    "MagiCowName": "Convoy",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Crashsite",
+    "MapFilename": "crashsite",
+    "MagiCowName": "Crashsite",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6"
+    ],
+    "SupportedPlaylists": [
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Deadlock",
+    "MapFilename": "deadlock",
+    "MagiCowName": "Deadlock",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "DeathMetal",
+    "MapFilename": "deathmetal",
+    "MagiCowName": "DeathMetal",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "DisplayName": "Decay",
+    "MapFilename": "decay",
+    "MagiCowName": "Decay",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Dropzone",
+    "MapFilename": "dropzone",
+    "MagiCowName": "Dropzone",
+    "SupportedGameHashes": [
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Evac",
+    "MapFilename": "evac",
+    "MagiCowName": "Evac",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Heavy Metal",
+    "MapFilename": "heavymetal",
+    "MagiCowName": "Heavy Metal",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "HeloDeck",
+    "MapFilename": "helodeck",
+    "MagiCowName": "Helodeck",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Lockdown",
+    "MapFilename": "lockdown",
+    "MagiCowName": "Lockdown",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "DisplayName": "Metro",
+    "MapFilename": "metro",
+    "MagiCowName": "Metro",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Nuken",
+    "MapFilename": "nuken",
+    "MagiCowName": "Nuken",
+    "SupportedGameHashes": [
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": []
+  },
+  {
+    "DisplayName": "Offshore",
+    "MapFilename": "offshore",
+    "MagiCowName": "Offshore",
+    "SupportedGameHashes": [
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Outpost",
+    "MapFilename": "Outpost",
+    "MagiCowName": "Outpost",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Piledriver",
+    "MapFilename": "piledriver1",
+    "MagiCowName": "Piledriver",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Rig",
+    "MapFilename": "rig",
+    "MagiCowName": "Rig",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Safehold",
+    "MapFilename": "safehold",
+    "MagiCowName": "Safehold",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "SeaPort",
+    "MapFilename": "seaport",
+    "MagiCowName": "SeaPort",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Shelter",
+    "MapFilename": "shelter",
+    "MagiCowName": "Shelter",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "DisplayName": "Slumlord",
+    "MapFilename": "slumlord",
+    "MagiCowName": "Slumlord",
+    "SupportedGameHashes": [
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Terminus",
+    "MapFilename": "Terminus",
+    "MagiCowName": "Terminus",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f"
+    ],
+    "SupportedPlaylists": [
+      "OS_Medium",
+      "OS_Hard",
+      "OS_Easy"
+    ]
+  },
+  {
+    "DisplayName": "Trench",
+    "MapFilename": "trench",
+    "MagiCowName": "Trench",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Vertigo",
+    "MapFilename": "vertigo",
+    "MagiCowName": "Vertigo",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Vortex",
+    "MapFilename": "vortex",
+    "MagiCowName": "Vortex",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6",
+      "4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5",
+      "01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58",
+      "d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4",
+      "d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f",
+      "9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116"
+    ],
+    "SupportedPlaylists": [
+      "CTF",
+      "DM",
+      "TDM",
+      "DOM",
+      "KOTH",
+      "LMS",
+      "LTS",
+      "SND",
+      "KC"
+    ]
+  },
+  {
+    "DisplayName": "Gun Range",
+    "MapFilename": "gunrange_persistent",
+    "MagiCowName": "Training",
+    "SupportedGameHashes": [
+      "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7",
+      "de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3",
+      "1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6"
+    ],
+    "SupportedPlaylists": [
+      "BO"
+    ]
+  }
+]

@@ -1,12 +1,12 @@
-﻿using BLREdit.Models;
-using BLREdit.Models.BLR;
+﻿using BLREdit.Core.Models.BLR.Client;
+using BLREdit.Core.Models.BLR.Item;
+using BLREdit.Core.Models.BLR.Server;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Reactive;
 
 namespace BLREdit.ViewModels;

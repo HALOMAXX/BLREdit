@@ -1,0 +1,105 @@
+[
+    {
+        "GameModeName":"CTDM",
+        "Description":"Competetive Team Deathmatch",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_CTDM"
+    },
+    {
+        "GameModeName":"CTF",
+        "Description":"Capture The Flag",
+        "PlaylistLaunchArg":"Playlist=CTF",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_CTF"
+    },
+    {
+        "GameModeName":"DM",
+        "Description":"Deathmatch",
+        "PlaylistLaunchArg":"Playlist=DM",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_DM",
+        "IsTeammode":false
+    },
+    {
+        "GameModeName":"DOM",
+        "Description":"Domination",
+        "PlaylistLaunchArg":"Playlist=DOM",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_CP"
+    },
+    {
+        "GameModeName":"Netwar",
+        "Description":"Netwar",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_EOTS"
+    },
+    {
+        "GameModeName":"Siege",
+        "Description":"Siege",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_PL"
+    },
+    {
+        "GameModeName":"TDM",
+        "Description":"Team Deathmatch",
+        "PlaylistLaunchArg":"Playlist=TDM",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_TDM"
+    },
+    {
+        "GameModeName":"KC",
+        "Description":"Kill Confirmed",
+        "PlaylistLaunchArg":"Playlist=KC",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_KC"
+    },
+    {
+        "GameModeName":"TDM?",
+        "Description":"Detonate",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_Detonate"
+    },
+    {
+        "GameModeName":"Training",
+        "Description":"Training",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_BO",
+        "IsTeammode":false
+    },
+    {
+        "GameModeName":"KOTH",
+        "Description":"King Of The Hill",
+        "PlaylistLaunchArg":"Playlist=KOTH",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_TKOTH"
+    },
+    {
+        "GameModeName":"LMS",
+        "Description":"Last Man Standing",
+        "PlaylistLaunchArg":"Playlist=LMS",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_LMS",
+        "IsTeammode":false
+    },
+    {
+        "GameModeName":"LTS",
+        "Description":"Last Team Standing",
+        "PlaylistLaunchArg":"Playlist=LTS",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_LTS"
+    },
+    {
+        "GameModeName":"SND",
+        "Description":"Search And Destroy",
+        "PlaylistLaunchArg":"Playlist=SND",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_SND"
+    },
+    {
+        "GameModeName":"OS Easy",
+        "Description":"Onslaught Easy",
+        "PlaylistLaunchArg":"Playlist=OS_Easy",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_OS",
+        "IsTeammode":false
+    },
+    {
+        "GameModeName":"OS Medium",
+        "Description":"Onslaught Medium",
+        "PlaylistLaunchArg":"Playlist=OS_Medium",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_OS",
+        "IsTeammode":false
+    },
+    {
+        "GameModeName":"OS Hard",
+        "Description":"Onslaught Hard",
+        "PlaylistLaunchArg":"Playlist=OS_Hard",
+        "GameModeLaunchArg":"Game=FoxGame.FoxGameMP_OS",
+        "IsTeammode":false
+    }
+]

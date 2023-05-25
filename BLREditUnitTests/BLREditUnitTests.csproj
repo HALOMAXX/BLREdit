@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLREdit\BLREdit.csproj">
-      <Project>{217d8bbe-54ed-4e31-87cf-b7cb558b35e5}</Project>
-      <Name>BLREdit</Name>
+    <ProjectReference Include="..\BLREdit.Core\BLREdit.Core.csproj">
+      <Project>{4a269dad-8b2d-4982-b143-4a70b6554518}</Project>
+      <Name>BLREdit.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
