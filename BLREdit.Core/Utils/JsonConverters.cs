@@ -2,19 +2,27 @@
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Collections;
+using System.Text.Json.Nodes;
 
 namespace BLREdit.Core.Utils;
 
-public class JsonGenericConverter<T> : JsonConverter<T>
+public abstract class JsonGenericConverter<T> : JsonConverter<T>
 {
-    static PropertyInfo[] Properties { get; } = typeof(T).GetProperties();
-    static FieldInfo[] Fields { get; } = typeof(T).GetFields();
-    static T Default { get; } = Activator.CreateInstance<T>();
+    static PropertyInfo[] Properties { get; }
+    static FieldInfo[] Fields { get; }
+    protected static T? Default { get; set; }
 
+    static JsonGenericConverter()
+    { 
+        var type = typeof(T);
+        Properties = type.GetProperties();
+        Fields = type.GetFields();
+        //Default = Activator.CreateInstance<T>();
+    }
 
-    public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override T? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        var item = Activator.CreateInstance<T>();
+        T item = Activator.CreateInstance<T>();
 
         while (reader.Read())
         {

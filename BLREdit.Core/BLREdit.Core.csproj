@@ -63,18 +63,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ContentWithTargetPath Remove="Data\Clients\List\ClientList.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Data\Clients\List\ClientList.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Data\Clients\List\ClientList.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Data\PluginCache\" />
     <Folder Include="Data\Plugins\v302\" />
   </ItemGroup>

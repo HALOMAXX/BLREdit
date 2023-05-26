@@ -1,21 +1,14 @@
-﻿using BLREdit.Core.Models.BLR.Item;
-using BLREdit.Core.Utils;
+﻿using BLREdit.Core.Utils;
 using BLREdit.Models.BLReviveSDK;
 
 using PeNet;
 
-using PropertyChanged;
-
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace BLREdit.Core.Models.BLR.Client;
 
-[JsonConverter(typeof(JsonBLRClientConverter))]
 public sealed class BLRClient : ModelBase
 {
     public static DirectoryInfo ClientInfoLocation { get; }
@@ -23,8 +16,14 @@ public sealed class BLRClient : ModelBase
 
     static BLRClient()
     {
-        ClientInfoLocation = new DirectoryInfo("Data\\Clients");
+        ClientInfoLocation = new DirectoryInfo("Data\\Clients\\List");
         IOResources.DeserializeDirectoryInto(Clients, ClientInfoLocation);
+    }
+
+    public static void Save()
+    {
+        Debug.WriteLine($"Saving Clients:{Clients.Count}");
+        IOResources.SerializeFile($"{ClientInfoLocation.FullName}\\List.json", Clients);
     }
 
     public static Dictionary<string, string> VersionHashes => new()
@@ -112,4 +111,12 @@ public sealed class BLRClient : ModelBase
 
 }
 
-public class JsonBLRClientConverter : JsonGenericConverter<BLRClient> { }
+public class JsonBLRClientConverter : JsonGenericConverter<BLRClient> 
+{
+    static JsonBLRClientConverter()
+    {
+        Default = new BLRClient(new FileInfoBLR(""));
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRClientConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRClientConverter());
+    }
+}

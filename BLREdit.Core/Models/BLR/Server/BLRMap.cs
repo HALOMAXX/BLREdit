@@ -1,7 +1,5 @@
-﻿using BLREdit.Core;
-using BLREdit.Core.Utils;
+﻿using BLREdit.Core.Utils;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace BLREdit.Core.Models.BLR.Server;
 
@@ -73,5 +71,15 @@ public sealed class BLRMap : ModelBase
             }
         }
         return sortedMaps;
+    }
+}
+
+public class JsonBLRMapConverter : JsonGenericConverter<BLRMap>
+{
+    static JsonBLRMapConverter()
+    {
+        Default = new BLRMap() { DisplayName = "", MagiCowInfoName = "", MapFilename = "" };
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRMapConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRMapConverter());
     }
 }

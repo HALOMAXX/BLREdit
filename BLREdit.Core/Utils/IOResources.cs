@@ -21,6 +21,7 @@ namespace BLREdit.Core.Utils;
 
 public sealed partial class IOResources
 {
+
     static IOResources()
     {
         //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls | SecurityProtocolType.SystemDefault;
@@ -56,14 +57,14 @@ public sealed partial class IOResources
 
     public static void DeserializeDirectoryInto<T>(RangeObservableCollection<T> collection, DirectoryInfo info)
     {
-        var result = IOResources.DeserializeDirectory<T>(info);
+        var result = DeserializeDirectory<T>(info);
         if (result is not null && result.Count > 0 && collection is not null)
         { collection.AddRange(result); }
         else
         { Debug.WriteLine($"failed to deserialize {nameof(T)}:{info.Name}"); }
     }
 
-    public static Result<string> Serialize<T>(T obj, bool compact = false)
+    public static string Serialize<T>(T obj, bool compact = false)
     {
         if (compact)
         {

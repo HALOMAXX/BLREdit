@@ -16,10 +16,6 @@ public sealed class BLReviveSDKPlugin : ModelBase
     {
         PluginInfoLocation = new DirectoryInfo("Data\\Plugins");
         PluginCacheLocation = new DirectoryInfo("Data\\PluginCache");
-        var result = IOResources.DeserializeDirectory<BLReviveSDKPlugin>(PluginInfoLocation);
-        if (result is not null && result.Count > 0)
-        { Plugins.AddRange(result); }
-        else
-        { Debug.WriteLine("failed to deserialize plugins"); }
+        IOResources.DeserializeDirectoryInto(Plugins, PluginInfoLocation);
     }
 }

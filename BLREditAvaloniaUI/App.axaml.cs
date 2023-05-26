@@ -65,8 +65,8 @@ public partial class App : Application
     {
         if (Avalonia.Controls.Design.IsDesignMode) return;
         Debug.WriteLine("Saving Data!");
-        IOResources.SerializeFile("Data\\ClientList.json", BLRClient.Clients, true);
-        IOResources.SerializeFile("Data\\ServerList.json", BLRServer.Servers, true);
+        BLRClient.Save();
+        BLRServer.Save();
         //TODO Add all files for saving purposes here
     }
 }

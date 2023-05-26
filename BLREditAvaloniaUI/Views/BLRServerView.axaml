@@ -9,5 +9,5 @@
     <m:BLRServer/>
   </Design.DataContext>
   
-  Welcome to Avalonia!
+  ServerView
 </UserControl>

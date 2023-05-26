@@ -37,3 +37,13 @@ public sealed class BLRGameMode : ModelBase
         return new();
     }
 }
+
+public class JsonBLRGameModeConverter : JsonGenericConverter<BLRGameMode>
+{
+    static JsonBLRGameModeConverter()
+    {
+        Default = new BLRGameMode() { GameModeName = "", Description = "", PlaylistLaunchArg = "", GameModeLaunchArg = "" };
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRGameModeConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRGameModeConverter());
+    }
+}

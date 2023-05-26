@@ -1,6 +1,5 @@
 ﻿using BLREdit.Core.API.REST.ServerUtils;
 using BLREdit.Core.Models.BLR.Client;
-using BLREdit.Core.Models.BLR.Item;
 using BLREdit.Core.Utils;
 
 using System.Collections.ObjectModel;
@@ -10,7 +9,6 @@ using System.Text.Json.Serialization;
 
 namespace BLREdit.Core.Models.BLR.Server;
 
-[JsonConverter(typeof(JsonBLRServerConverter))]
 public sealed class BLRServer : ModelBase
 {
     public static DirectoryInfo ServerListLocation { get; }
@@ -20,6 +18,12 @@ public sealed class BLRServer : ModelBase
     {
         ServerListLocation = new DirectoryInfo("Data\\Servers\\List");
         IOResources.DeserializeDirectoryInto(Servers, ServerListLocation);
+    }
+
+    public static void Save()
+    {
+        Debug.WriteLine($"Saving Clients:{Servers.Count}");
+        IOResources.SerializeFile($"{ServerListLocation.FullName}\\List.json", Servers);
     }
 
     #region Overrides
@@ -78,4 +82,12 @@ public sealed class BLRServer : ModelBase
     }
 }
 
-public class JsonBLRServerConverter : JsonGenericConverter<BLRServer> { }
+public class JsonBLRServerConverter : JsonGenericConverter<BLRServer>
+{
+    static JsonBLRServerConverter()
+    {
+        Default = new BLRServer("");
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRServerConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRServerConverter());
+    }
+}

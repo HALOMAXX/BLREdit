@@ -1,10 +1,7 @@
-﻿using BLREdit.Core;
-using BLREdit.Core.Utils;
+﻿using BLREdit.Core.Utils;
 
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace BLREdit.Core.Models.BLR.Item;
 
