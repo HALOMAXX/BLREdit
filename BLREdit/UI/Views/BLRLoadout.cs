@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Mail;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Windows.Controls;
 
@@ -23,6 +24,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public BLRWeapon Primary { get; set; }
     public BLRWeapon Secondary { get; set; }
 
+    private bool isChanged = false;
+    [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
+
     private void ItemChanged([CallerMemberName] string propertyName = null)
     {
         if (!UndoRedoSystem.BlockUpdate) UpdateMagicCowsLoadout();
@@ -30,6 +34,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         Primary.CalculateStats();
         Secondary.CalculateStats();
         OnPropertyChanged(propertyName);
+        IsChanged = true;
     }
     #endregion Event
 
@@ -97,8 +102,6 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     private BLRItem taunt8;
     public BLRItem Taunt8 { get { return taunt8; } set { if (value is null || taunt8 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7); } else { taunt8 = value; } ItemChanged(); } } }
     #endregion Taunts
-
-
 
     private bool IsAvatarOK(BLRItem inAvatar)
     {

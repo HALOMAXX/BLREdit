@@ -144,50 +144,33 @@ public sealed partial class MainWindow : Window
     {
         foreach (BLRServer defaultServer in App.DefaultServers)
         {
-            bool add = true;
-            foreach (BLRServer server in ServerList)
-            {
-                if (server.ServerAddress == defaultServer.ServerAddress)
-                {
-                    add = false;
-                }
-            }
-            if (add) ServerList.Add(defaultServer);
+            AddServer(defaultServer);
         }
     }
 
     public static void AddServer(BLRServer server, bool forceAdd = false)
     {
-        bool add = true;
-        if (!forceAdd)
+        if (forceAdd || !IsInCollection(ServerList, server))
         {
-            foreach (BLRServer s in ServerList)
-            {
-                if (s.ServerAddress == server.ServerAddress)
-                {
-                    add = false;
-                    s.Port = server.Port;
-                    s.InfoPort = server.InfoPort;
-                }
-            }
+            ServerList.Add(server);
         }
-        if (add) ServerList.Add(server);
+    }
+
+    public static bool IsInCollection<T>(ObservableCollection<T> collection, T item)
+    {
+        foreach (T item2 in collection) 
+        { 
+            if(item.Equals(item2)) return true;
+        }
+        return false;
     }
 
     public static void AddGameClient(BLRClient client)
     {
-        bool add = true;
-        foreach (BLRClient c in GameClients)
+        if(!IsInCollection(GameClients, client))
         {
-            if (c.OriginalPath == client.OriginalPath)
-            {
-                add = false;
-            }
-        }
-        if (add)
-        {
-            LoggingSystem.Log($"Adding New Client: {client}");
             GameClients.Add(client);
+            LoggingSystem.Log($"Adding New Client: {client}");
         }
     }
 
@@ -511,6 +494,7 @@ public sealed partial class MainWindow : Window
     {
         if (IsPlayerNameChanging || UndoRedoSystem.BlockEvent) return;
         IsPlayerProfileChanging = true;
+        BlockChangeNotif = true;
 
         LoggingSystem.Log("Changing Profile");
         
@@ -522,6 +506,8 @@ public sealed partial class MainWindow : Window
             UndoRedoSystem.EndAction();
         }
         IsPlayerProfileChanging = false;
+        BlockChangeNotif = false;
+        Profile.IsChanged = true;
     }
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
@@ -560,9 +546,9 @@ public sealed partial class MainWindow : Window
             var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
             IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
-            ShowAlert($"{ExportSystem.ActiveProfile.Name} Exported!");
+            ShowAlert($"Applied Loadouts!\nScroll trought your loadouts\nto Refresh ingame Loadouts!");
+            Profile.IsChanged = false;
         }
-
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -600,7 +586,7 @@ public sealed partial class MainWindow : Window
     }
 
 
-#region Server UI
+    #region Server UI
 
     private void PingServers_Click(object sender, RoutedEventArgs e)
     {
@@ -732,6 +718,7 @@ public sealed partial class MainWindow : Window
     private Border lastLoadoutBorder= null;
     private void LoadoutTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        BlockChangeNotif = true;
         if (sender is TabControl control)
         {
             if (control.SelectedItem is TabItem tab)
@@ -760,6 +747,7 @@ public sealed partial class MainWindow : Window
             }
             SetBorderColor(lastLoadoutBorder, ActiveBorderColor);
         }
+        BlockChangeNotif = false;
     }
 
     private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -878,18 +866,18 @@ public sealed partial class MainWindow : Window
         }
         else
         {
-            LoggingSystem.Log($"Validating Client List {UI.MainWindow.GameClients.Count}");
-            for (int i = 0; i < UI.MainWindow.GameClients.Count; i++)
+            LoggingSystem.Log($"Validating Client List {GameClients.Count}");
+            for (int i = 0; i < GameClients.Count; i++)
             {
-                if (!UI.MainWindow.GameClients[i].OriginalFileValidation())
-                { UI.MainWindow.GameClients.RemoveAt(i); i--; }
+                if (!GameClients[i].OriginalFileValidation())
+                { GameClients.RemoveAt(i); i--; }
                 else
                 {
-                    LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
-                    if (UI.MainWindow.GameClients[i].InstalledModules.Count > 0)
+                    LoggingSystem.Log($"{GameClients[i]} has {GameClients[i].InstalledModules.Count} installed modules");
+                    if (GameClients[i].InstalledModules.Count > 0)
                     {
-                        UI.MainWindow.GameClients[i].InstalledModules = new System.Collections.ObjectModel.ObservableCollection<ProxyModule>(UI.MainWindow.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
-                        LoggingSystem.Log($"{UI.MainWindow.GameClients[i]} has {UI.MainWindow.GameClients[i].InstalledModules.Count} installed modules");
+                        GameClients[i].InstalledModules = new ObservableCollection<ProxyModule>(GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
+                        LoggingSystem.Log($"{GameClients[i]} has {GameClients[i].InstalledModules.Count} installed modules");
                     }
                 }
             }
@@ -912,7 +900,48 @@ public sealed partial class MainWindow : Window
 
         SetProfileSettings();
 
+        ApplyLoadoutBorder.Background = SolidColorBrush;
+        SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+        lastAnim = CalmAnim;
+        Profile.PropertyChanged += LoadoutChanged;
+
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
+    }
+
+    private SolidColorBrush SolidColorBrush { get; } = new(Colors.Blue);
+    private ColorAnimation AlertAnim { get; } = new()
+    {
+        From = Color.FromArgb(32, 0, 0, 0),
+        To = Color.FromArgb(255, 255, 0, 0),
+        Duration = new Duration(TimeSpan.FromSeconds(2)),
+        AutoReverse = true,
+        RepeatBehavior = RepeatBehavior.Forever
+    };
+
+    private ColorAnimation CalmAnim { get; } = new()
+    {
+        From = Color.FromArgb(255, 255, 0, 0),
+        To = Color.FromArgb(32, 0, 0, 0),
+        Duration = new Duration(TimeSpan.FromSeconds(2))
+    };
+
+    ColorAnimation lastAnim = null;
+
+    public bool BlockChangeNotif { get; set; } = false;
+
+    void LoadoutChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (BlockChangeNotif) return;
+        if (Profile.IsChanged && lastAnim != AlertAnim)
+        {
+            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, AlertAnim, HandoffBehavior.Compose);
+            lastAnim = AlertAnim;
+        }
+        else if (!Profile.IsChanged && lastAnim != CalmAnim)
+        {
+            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+            lastAnim = CalmAnim;
+        }
     }
 
     public void BringWindowIntoBounds()

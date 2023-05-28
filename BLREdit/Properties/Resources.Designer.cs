@@ -133,7 +133,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export Profile.
+        ///   Looks up a localized string similar to Apply Loadouts.
         /// </summary>
         public static string btn_ExportProfile {
             get {

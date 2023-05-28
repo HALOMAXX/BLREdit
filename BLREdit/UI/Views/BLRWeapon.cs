@@ -13,7 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 
-namespace BLREdit.UI.Views; 
+namespace BLREdit.UI.Views;
 
 public sealed class BLRWeapon : INotifyPropertyChanged
 {
@@ -29,12 +29,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (!UndoRedoSystem.BlockUpdate) UpdateMagiCowsWeapon();
         CalculateStats();
         OnPropertyChanged(propertyName);
+        IsChanged = true;
     }
     #endregion Event
 
     public bool IsPrimary { get; set; } = false;
 
     private BLRLoadout Loadout { get; set; }
+
+    private bool isChanged = false;
+    [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
 
     #region Weapon Parts
     private BLRItem reciever = null;

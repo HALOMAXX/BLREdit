@@ -33,6 +33,25 @@ public sealed class BLRServer : INotifyPropertyChanged
     }
     #endregion Events
 
+    #region Overrides
+    public override bool Equals(object obj)
+    {
+        if (obj is BLRServer server)
+        { return 
+                ServerAddress.Equals(server.ServerAddress) && 
+                Port.Equals(server.Port) &&
+                InfoPort.Equals(server.InfoPort);
+        }
+        else
+        { return false; }
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+    #endregion Overrides
+
     [JsonIgnore] public UIBool IsOnline { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo.IsOnline); } else { return new(MagiInfo.IsOnline); } } }
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
@@ -142,14 +161,6 @@ public sealed class BLRServer : INotifyPropertyChanged
         OnPropertyChanged(nameof(Team2List));
     }
 
-    public override bool Equals(object obj)
-    {
-        if (obj is BLRServer server)
-        { return server.ServerAddress == ServerAddress && server.Port == Port; }
-        else
-        { return false; }
-    }
-
     public void PingServer()
     {
         ServersToPing.Add(this);
@@ -239,10 +250,5 @@ public sealed class BLRServer : INotifyPropertyChanged
     {
         if (BLREditSettings.Settings.DefaultClient is not null)
         { BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = BLREditSettings.Settings.PlayerName, Server = this }); }
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
     }
 }

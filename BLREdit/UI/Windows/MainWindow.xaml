@@ -21,7 +21,10 @@
         <TextBox Width="120" Height="22" Margin="140,5,0,0" Name="PlayerNameTextBox"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" PreviewTextInput="PlayerNameTextBox_PreviewInput" TextChanged="PlayerNameTextBox_TextChanged"/>
         <Button Width="120" Height="22" Margin="270,5,0,0" Name="AddProfileButton" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
 
-        <Button Width="120" Height="22" Margin="10,35,0,0" Name="CopyToClipboardButton" Content="{x:Static p:Resources.btn_ExportProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="CopyToClipboardButton_Click"/>
+        <Border Name="ApplyLoadoutBorder" Width="130" Height="32" Margin="5,30,0,0" HorizontalAlignment="Left" BorderThickness="0"  VerticalAlignment="Top" CornerRadius="5">
+            <Button Height="22" Width="120" Name="CopyToClipboardButton" Content="{x:Static p:Resources.btn_ExportProfile}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CopyToClipboardButton_Click"/>
+        </Border>
+        
         <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static p:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
         <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
