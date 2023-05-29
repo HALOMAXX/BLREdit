@@ -546,7 +546,7 @@ public sealed partial class MainWindow : Window
             var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
             IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
-            ShowAlert($"Applied Loadouts!\nScroll trought your loadouts\nto Refresh ingame Loadouts!");
+            ShowAlert($"Applied Loadouts!\nScroll trough your loadouts to\nrefresh ingame Loadouts!", 8);
             Profile.IsChanged = false;
         }
     }
@@ -684,13 +684,13 @@ public sealed partial class MainWindow : Window
     }
     #endregion Hotkeys
 
-    public static void ShowAlert(string message, double displayTime = 400)
+    public static void ShowAlert(string message, double displayTime = 4, double displayWidth = 400)
     {
         //TODO: Add Localization for alerts
         if (Self is null) return;
         var grid = CreateAlertGrid(message);
         Self.AlertList.Items.Add(grid);
-        new TripleAnimationDouble(0, displayTime, 1, 3, 1, grid, Grid.WidthProperty, Self.AlertList.Items).Begin(Self.AlertList);
+        new TripleAnimationDouble(0, displayWidth, 1, displayTime, 1, grid, Grid.WidthProperty, Self.AlertList.Items).Begin(Self.AlertList);
     }
     private static Grid CreateAlertGrid(string Alert)
     {
