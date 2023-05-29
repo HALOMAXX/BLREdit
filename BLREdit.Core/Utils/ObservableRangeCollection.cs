@@ -481,6 +481,15 @@
             }
         }
 
+        public bool ContentsAreEqual(RangeObservableCollection<T> collection)
+        {
+            if (collection is null || collection.Count != Count) return false;
+            for (int i = 0; i < Count; i++)
+            {
+                if (!collection[i]?.Equals(this[i]) ?? true) return false;
+            }
+            return true;
+        }
         #endregion Public Methods
 
 

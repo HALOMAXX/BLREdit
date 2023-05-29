@@ -1,13 +1,10 @@
 ﻿using BLREdit.Core.Utils;
 
-using System;
 using System.Collections.ObjectModel;
 using System.Numerics;
-using System.Text.Json.Serialization;
 
 namespace BLREdit.Core.Models.BLR.Item;
 
-[JsonConverter(typeof(JsonBLRWeaponStatsConverter))]
 public sealed class BLRWeaponStats : ModelBase
 {
     public double Accuracy { get; set; }
@@ -187,4 +184,12 @@ public sealed class BLRWeaponStats : ModelBase
     }
 }
 
-public class JsonBLRWeaponStatsConverter : JsonGenericConverter<BLRWeaponStats> { }
+public class JsonBLRWeaponStatsConverter : JsonGenericConverter<BLRWeaponStats>
+{
+    static JsonBLRWeaponStatsConverter()
+    {
+        Default = new();
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRWeaponStatsConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRWeaponStatsConverter());
+    }
+}

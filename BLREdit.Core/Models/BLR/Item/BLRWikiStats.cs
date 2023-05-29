@@ -1,10 +1,7 @@
 ﻿using BLREdit.Core.Utils;
 
-using System.Text.Json.Serialization;
-
 namespace BLREdit.Core.Models.BLR.Item;
 
-[JsonConverter(typeof(JsonBLRWikiStatsConverter))]
 public sealed class BLRWikiStats : ModelBase
 {
     public double AimSpread { get; set; }
@@ -70,4 +67,12 @@ public sealed class BLRWikiStats : ModelBase
     }
 }
 
-public class JsonBLRWikiStatsConverter : JsonGenericConverter<BLRWikiStats> { }
+public class JsonBLRWikiStatsConverter : JsonGenericConverter<BLRWikiStats>
+{
+    static JsonBLRWikiStatsConverter()
+    {
+        Default = new();
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRWikiStatsConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRWikiStatsConverter());
+    }
+}

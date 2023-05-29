@@ -1,10 +1,7 @@
 ﻿using BLREdit.Core.Utils;
 
-using System.Text.Json.Serialization;
-
 namespace BLREdit.Core.Models.BLR.Item;
 
-[JsonConverter(typeof(JsonBLRPawnModifiersConverter))]
 public sealed class BLRPawnModifiers : ModelBase
 {
     public double BodyDamageReduction { get; set; }
@@ -86,4 +83,12 @@ public sealed class BLRPawnModifiers : ModelBase
     }
 }
 
-public class JsonBLRPawnModifiersConverter : JsonGenericConverter<BLRPawnModifiers> { }
+public class JsonBLRPawnModifiersConverter : JsonGenericConverter<BLRPawnModifiers>
+{
+    static JsonBLRPawnModifiersConverter()
+    {
+        Default = new();
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRPawnModifiersConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRPawnModifiersConverter());
+    }
+}

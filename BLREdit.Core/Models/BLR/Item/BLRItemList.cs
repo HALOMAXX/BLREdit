@@ -7,18 +7,25 @@ namespace BLREdit.Core.Models.BLR.Item;
 
 public sealed class BLRItemList : ModelBase
 {
+    //TODO Implement overrides(Hash and Equals)
     public static DirectoryInfo ItemDataLocation { get; }
     public static Dictionary<string, BLRItemList> ItemLists { get; }
 
     static BLRItemList()
     {
-        ItemDataLocation = new("Data\\Items");
-        ItemLists = LoadItemLists();
+        ItemDataLocation = new("Data\\Items\\List");
+        ItemLists = LoadItemLists(ItemDataLocation);
     }
 
-    static Dictionary<string, BLRItemList> LoadItemLists()
+    public static void SaveItemLists(string file, bool compact = true)
     {
-        var all = IOResources.DeserializeDirectory<BLRItemList>(ItemDataLocation);
+        if (file is null) return;
+        IOResources.SerializeFile(file, ItemLists.Values, compact);
+    }
+
+    public static Dictionary<string, BLRItemList> LoadItemLists(DirectoryInfo location)
+    {
+        var all = IOResources.DeserializeDirectory<BLRItemList>(location);
         Dictionary<string, BLRItemList> dict = new();
         foreach (var list in all)
         {
@@ -40,6 +47,6 @@ public sealed class BLRItemList : ModelBase
         ClientHash = clientHash;
         CategoryNames = categoryNames;
         Categories = categories;
-        Parallel.For(0, Categories.Count, (index) => { foreach (var item in Categories[index]) { item.CategoryID = index; } });
+        if(!string.IsNullOrEmpty(clientHash) && categoryNames is not null && categories is not null) Parallel.For(0, Categories.Count, (index) => { foreach (var item in Categories[index]) { item.CategoryID = index; } });
     }
 }

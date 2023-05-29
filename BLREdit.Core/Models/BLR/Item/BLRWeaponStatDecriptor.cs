@@ -1,10 +1,7 @@
 ﻿using BLREdit.Core.Utils;
 
-using System.Text.Json.Serialization;
-
 namespace BLREdit.Core.Models.BLR.Item;
 
-[JsonConverter(typeof(JsonBLRWeaponStatDescriptorConverter))]
 public sealed class BLRWeaponStatDecriptor : ModelBase
 {
     public string Name { get; set; } = "Classic";
@@ -32,4 +29,12 @@ public sealed class BLRWeaponStatDecriptor : ModelBase
     }
 }
 
-public class JsonBLRWeaponStatDescriptorConverter : JsonGenericConverter<BLRWeaponStatDecriptor> { }
+public class JsonBLRWeaponStatDescriptorConverter : JsonGenericConverter<BLRWeaponStatDecriptor>
+{
+    static JsonBLRWeaponStatDescriptorConverter()
+    {
+        Default = new();
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRWeaponStatDescriptorConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRWeaponStatDescriptorConverter());
+    }
+}

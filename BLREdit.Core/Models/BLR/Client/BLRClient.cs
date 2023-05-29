@@ -38,6 +38,33 @@ public sealed class BLRClient : ModelBase
         {"9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116", "v0993"}
     };
 
+    #region Overrides
+    public override bool Equals(object? obj)
+    {
+        if (obj is BLRClient client)
+        {
+            return
+                OriginalFile.Equals(client.OriginalFile) &&
+                PatchedFile.Equals(client.PatchedFile) &&
+                InstalledPatches.ContentsAreEqual(client.InstalledPatches) &&
+                InstalledPlugins.ContentsAreEqual(client.InstalledPlugins);
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+
+        hash.Add(OriginalFile);
+        hash.Add(PatchedFile);
+        hash.Add(InstalledPatches);
+        hash.Add(InstalledPlugins);
+
+        return hash.ToHashCode();
+    }
+    #endregion Overrides
+
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalFile?.FileHash ?? "", out var version)) { return version; } else { return "Unknown"; } } }
     public FileInfoBLR OriginalFile { get; set; }
     public FileInfoBLR PatchedFile { get; set; }
@@ -115,7 +142,7 @@ public class JsonBLRClientConverter : JsonGenericConverter<BLRClient>
 {
     static JsonBLRClientConverter()
     {
-        Default = new BLRClient(new FileInfoBLR(""));
+        Default = new BLRClient(new FileInfoBLR("test.test"));
         IOResources.JSOSerialization.Converters.Add(new JsonBLRClientConverter());
         IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRClientConverter());
     }

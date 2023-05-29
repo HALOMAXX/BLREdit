@@ -22,19 +22,18 @@ public sealed class BLRClientPatch : ModelBase
         hash.Add(ClientHash);
         foreach (var patch in PatchParts)
         {
-            hash.Add(patch.Position);
-            foreach (var byt in patch.BytesToOverwrite)
-            { 
-                hash.Add(byt);
-            }
+            hash.Add(patch);
         }
         return hash.ToHashCode();
     }
     public override bool Equals(object? obj)
     {
         if (obj is BLRClientPatch patch)
-        { 
-            return patch.GetHashCode() == GetHashCode();
+        {
+            return
+                PatchName.Equals(patch.PatchName, StringComparison.Ordinal) &&
+                ClientHash.Equals(patch.ClientHash, StringComparison.Ordinal) &&
+                PatchParts.ContentsAreEqual(patch.PatchParts);
         }
         return false;
     }
@@ -78,4 +77,28 @@ public sealed class BLRClientPatchPart : ModelBase
 {
     public int Position { get; set; }
     public RangeObservableCollection<byte> BytesToOverwrite { get; set; } = new();
+
+    #region Overrides
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+
+        hash.Add(Position);
+        foreach (var patch in BytesToOverwrite)
+        {
+            hash.Add(patch);
+        }
+        return hash.ToHashCode();
+    }
+    public override bool Equals(object? obj)
+    {
+        if (obj is BLRClientPatchPart patch)
+        {
+            return
+                Position.Equals(patch.Position) &&
+                BytesToOverwrite.ContentsAreEqual(patch.BytesToOverwrite);
+        }
+        return false;
+    }
+    #endregion Overrides
 }

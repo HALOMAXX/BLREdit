@@ -7,7 +7,6 @@ using System.Text.Json.Serialization;
 
 namespace BLREdit.Core.Models.BLR.Item;
 
-[JsonConverter(typeof(JsonBLRItemConverter))]
 public sealed class BLRItem : ModelBase
 {
     [JsonIgnore] public string DisplayName => ItemNames.ResourceManager.GetString(NameID.ToString(CultureInfo.InvariantCulture), CultureInfo.CurrentCulture) ?? Name;
@@ -31,4 +30,11 @@ public sealed class BLRItem : ModelBase
     public BLRWikiStats WikiStats { get; set; } = new();
 }
 
-public class JsonBLRItemConverter : JsonGenericConverter<BLRItem> { }
+public class JsonBLRItemConverter : JsonGenericConverter<BLRItem> {
+    static JsonBLRItemConverter()
+    {
+        Default = new();
+        IOResources.JSOSerialization.Converters.Add(new JsonBLRItemConverter());
+        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRItemConverter());
+    }
+}
