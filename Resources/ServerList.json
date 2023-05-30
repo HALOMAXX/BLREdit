@@ -14,6 +14,21 @@
     "Port": 7777,
     "InfoPort": 80
   },
+    {
+    "ServerAddress": "violence.ddns.net",
+    "Port": 7777,
+    "InfoPort": 7778
+  },
+    {
+    "ServerAddress": "violence.ddns.net",
+    "Port": 7778,
+    "InfoPort": 7779
+  },
+    {
+    "ServerAddress": "violence.ddns.net",
+    "Port": 7779,
+    "InfoPort": 7780
+  },
   {
     "ServerAddress": "aegiworks.com",
     "Port": 7777,
