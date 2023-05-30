@@ -1,8 +1,6 @@
 [
   {
-    "ServerAddress": "mooserver.ddns.net",
-    "Port": 7777,
-    "InfoPort": 7778
+    "ServerAddress": "mooserver.ddns.net"
   },
   {
     "ServerAddress": "mooserver.ddns.net",
@@ -11,37 +9,28 @@
   },
   {
     "ServerAddress": "blrevive.northamp.fr",
-    "Port": 7777,
     "InfoPort": 80
   },
-    {
-    "ServerAddress": "violence.ddns.net",
-    "Port": 7777,
-    "InfoPort": 7778
+  {
+    "ServerAddress": "violence.ddns.net"
   },
-    {
+  {
     "ServerAddress": "violence.ddns.net",
     "Port": 7778,
     "InfoPort": 7779
   },
-    {
+  {
     "ServerAddress": "violence.ddns.net",
     "Port": 7779,
     "InfoPort": 7780
   },
   {
-    "ServerAddress": "aegiworks.com",
-    "Port": 7777,
-    "InfoPort": 7778
+    "ServerAddress": "aegiworks.com"
   },
   {
-    "ServerAddress": "kameron.cloud",
-    "Port": 7777,
-    "InfoPort": 7778
+    "ServerAddress": "kameron.cloud"
   },
   {
-    "ServerAddress": "localhost",
-    "Port": 7777,
-    "InfoPort": 7778
+    "ServerAddress": "localhost"
   }
 ]
