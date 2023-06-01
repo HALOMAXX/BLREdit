@@ -8,15 +8,15 @@
         xmlns:old="clr-namespace:BLREdit.UI"
         xmlns:views="clr-namespace:BLREdit.UI.Views"
         xmlns:game="clr-namespace:BLREdit.Game"
-        d:DataContext="{d:DesignInstance Type=views:BLRProfile}"
         mc:Ignorable="d"
-        Height="1032" Width="1920" MinWidth="830" Initialized="Window_Initialized" Deactivated="Window_Deactivated" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered" Closed="Window_Closed" Closing="Window_Closing" Foreground="Red" PreviewKeyUp="PreviewKeyUpMainWindow">
+        d:DataContext="{d:DesignInstance Type=views:MainWindowView}"
+        Height="1032" Width="1920" MinWidth="830" Title="{Binding Path=WindowTitle}" Initialized="Window_Initialized" Deactivated="Window_Deactivated" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered" Closed="Window_Closed" Closing="Window_Closing" Foreground="Red" PreviewKeyUp="PreviewKeyUpMainWindow">
 
 
     <Window.Background>
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
     </Window.Background>
-    <Grid AllowDrop="True">
+    <Grid Name="BLREditMainGrid" AllowDrop="True" d:DataContext="{d:DesignInstance Type=views:BLRProfile}">
         <ComboBox Width="120" Height="22" Margin="10,5,0,0" Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0"  HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ProfileComboBox_SelectionChanged"/>
         <TextBox Width="120" Height="22" Margin="140,5,0,0" Name="PlayerNameTextBox"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" PreviewTextInput="PlayerNameTextBox_PreviewInput" TextChanged="PlayerNameTextBox_TextChanged"/>
         <Button Width="120" Height="22" Margin="270,5,0,0" Name="AddProfileButton" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.UI;
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -8,6 +10,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLREdit.Game;
 
@@ -94,7 +97,8 @@ public sealed class BLRProcess : INotifyPropertyChanged
         LoggingSystem.Log($"[{this.Client}]: has Exited with {GameProcess.ExitCode}");
         if (!IsServer)
         {
-            this.Client.UpdateProfileSettings();
+            Client.UpdateProfileSettings();
+            MainWindow.View.UpdateWindowTitle();
         }
 
         if (!Watchdog) { this.Remove(); }
@@ -123,6 +127,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         if (!IsServer)
         {
             Client.UpdateProfileSettings();
+            MainWindow.View.UpdateWindowTitle();
         }
     }
 }

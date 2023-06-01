@@ -242,7 +242,7 @@ public sealed class BLREditPipe
 
                 //TODO: Transform Required Modules of ServerConfig to Modules to send to StartProcess as Enabled Modules list
 
-                string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}";
+                string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}?SCP={serverConfig.SCP}?TimeLimit={serverConfig.TimeLimit}";
                 client.StartProcess(launchArgs, true, serverConfig.WatchDog);
             }
             else

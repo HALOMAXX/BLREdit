@@ -64,6 +64,8 @@ public sealed partial class MainWindow : Window
     private static MagiCowsProfile activeProfile = null;
 
     public static BLRProfile Profile { get; } = new();
+    public static MainWindowView View { get; } = new();
+
     /// <summary>
     /// Contains the Sorting Direction for the ItemList
     /// </summary>
@@ -766,18 +768,6 @@ public sealed partial class MainWindow : Window
         MessageBox.Show("Waiting!");
 #endif
 
-        string BuildTag = "";
-
-#if DEBUG
-        BuildTag = "[Debug Build]:";
-#elif RELEASE
-        BuildTag = "[Release Build]:";
-#elif PUBLISH
-        BuildTag = "[Release Build]:";
-#endif
-
-        this.Title = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}";
-
         #region Backend Init
         var watch = Stopwatch.StartNew();
         App.CheckAppUpdate();
@@ -820,7 +810,8 @@ public sealed partial class MainWindow : Window
         LastSelectedBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
         ItemFilters.Instance.WeaponFilter = Profile.Loadout1.Primary.Reciever;
 
-        this.DataContext = Profile;
+        this.DataContext = MainWindow.View;
+        this.BLREditMainGrid.DataContext = Profile;
         #endregion Frontend Init
 
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
@@ -904,6 +895,8 @@ public sealed partial class MainWindow : Window
         SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
         lastAnim = CalmAnim;
         Profile.PropertyChanged += LoadoutChanged;
+
+        View.UpdateWindowTitle();
 
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
     }
