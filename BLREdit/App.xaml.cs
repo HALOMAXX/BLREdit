@@ -269,7 +269,11 @@ public partial class App : System.Windows.Application
             var creationDelta = DateTime.Now - fileInfo.CreationTime;
             if (creationDelta.Days >= 1)
             {
-                fileInfo.Delete();
+                try {
+                    fileInfo.Delete();
+                } catch(Exception e) {
+                    LoggingSystem.Log($"[ERROR] Failed to delete old log file {fileInfo.Name}:\n {e}");
+                }
             }
         }
 
