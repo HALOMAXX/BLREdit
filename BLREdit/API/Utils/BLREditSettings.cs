@@ -66,7 +66,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     private string playerName = "BLREdit-Player";
     private string lastplayerName = "BLREdit-Player";
-    public string PlayerName { get { return playerName; } set { playerName = value; OnPropertyChanged(); MainWindow.View.UpdateWindowTitle(); } }
+    public string PlayerName { get { return playerName; } set { if (playerName != value) { MainWindow.Profile.IsChanged = true; } playerName = value; OnPropertyChanged(); MainWindow.View.UpdateWindowTitle(); } }
     [JsonIgnore] public string LastPlayerName { get { return lastplayerName; } set { lastplayerName = value; OnPropertyChanged(); } }
 
     //BotCount for Server Start

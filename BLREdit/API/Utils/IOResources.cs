@@ -256,11 +256,13 @@ public sealed class IOResources
         return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
     }
 
-    public static void CopyToBackup(string file)
+    public static void CopyToBackup(string file, string subfolder = "")
     {
         if (string.IsNullOrEmpty(file)) return;
+        var targetDir = new DirectoryInfo(ExportSystem.CurrentBackupFolder.FullName + subfolder);
+        if (!targetDir.Exists) targetDir.Create();
         FileInfo info = new(file);
-        File.Copy(file, ExportSystem.CurrentBackupFolder.FullName + info.Name, true);
+        File.Copy(file, targetDir.FullName + info.Name, true);
     }
 
     public static string JsonToBase64(string json)

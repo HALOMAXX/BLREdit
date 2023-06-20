@@ -30,8 +30,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.11.3";
-    public const string CurrentVersionTitle = "Improved Server Launch Args";
+    public const string CurrentVersion = "v0.11.4";
+    public const string CurrentVersionTitle = "Added Backup for Profile Settings";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -283,12 +283,6 @@ public partial class App : System.Windows.Application
         }
 
         System.Threading.Thread.CurrentThread.CurrentUICulture = BLREditSettings.Settings.SelectedCulture;
-
-        
-        LoggingSystem.Log("Loading Server and Client List");
-        UI.MainWindow.GameClients = IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new();
-        UI.MainWindow.ServerList = IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new();
-        LoggingSystem.Log("Finished Loading Server and Client List");
     }
 
     void UnhandledException(object sender, UnhandledExceptionEventArgs e)

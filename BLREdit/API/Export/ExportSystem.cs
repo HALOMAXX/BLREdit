@@ -110,10 +110,15 @@ public sealed class ExportSystem
                 var keyBinds = IOResources.DeserializeFile<BLRKeyBindings>($"{dir}\\keybinding.json");
 
                 var profile = new BLRProfileSettingsWrapper(name, onlineProfile, keyBinds);
+
+                if(File.Exists($"{dir}\\UE3_online_profile.json")) IOResources.CopyToBackup($"{dir}\\UE3_online_profile.json", $"GameSettings\\{name}\\");
+                if(File.Exists($"{dir}\\keybinding.json")) IOResources.CopyToBackup($"{dir}\\keybinding.json", $"GameSettings\\{name}\\");
+
                 dict.Add(name, profile);
             }
         }
         catch { }
+
         return dict;
     }
 
@@ -121,9 +126,12 @@ public sealed class ExportSystem
     {
         if (settings is null) return;
 
-        if (ProfileSettings.TryGetValue(profileName, out var _))
+        if (ProfileSettings.TryGetValue(profileName, out var oldProfile))
         {
-            ProfileSettings[profileName] = settings;
+            if (settings.PlayTime >= oldProfile.PlayTime)
+            {
+                ProfileSettings[profileName] = settings;
+            }  
         }
         else
         {
@@ -139,22 +147,30 @@ public sealed class ExportSystem
         }
         else
         {
-            if (BLREditSettings.Settings?.DefaultClient is BLRClient client)
+            List<BLRProfileSettingsWrapper> settingsWrappers = new();
+            foreach (var client in MainWindow.GameClients)
             {
-                foreach (var profile in client.ProfileSettings)
+                client.UpdateProfileSettings();
+            }
+            if (settingsWrappers.Count > 0)
+            {
+                foreach (var filteredSetting in settingsWrappers)
                 {
-                    if (profile.Value.ProfileName == profileName)
-                    {
-                        LoggingSystem.Log($"[ProfileSettings]({profileName}): found existing settings in default client");
-                        ProfileSettings.Add(profileName, profile.Value);
-                        return profile.Value;
-                    }
+                    ProfileSettings.Add(filteredSetting.ProfileName, filteredSetting);
                 }
             }
-            LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");
-            var newProfile = new BLRProfileSettingsWrapper(profileName, null, null);
-            ProfileSettings.Add(profileName, newProfile);
-            return newProfile;
+
+            if (ProfileSettings.TryGetValue(profileName, out var valu))
+            {
+                return valu;
+            }
+            else
+            {
+                LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");
+                var newProfile = new BLRProfileSettingsWrapper(profileName, null, null);
+                ProfileSettings.Add(profileName, newProfile);
+                return newProfile;
+            }
         }
     }
 

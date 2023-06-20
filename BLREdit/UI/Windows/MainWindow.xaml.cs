@@ -85,8 +85,10 @@ public sealed partial class MainWindow : Window
 
     public bool IsCheckingGameClient { get; private set; } = false;
 
-    public static ObservableCollection<BLRClient> GameClients { get; set; }  
-    public static ObservableCollection<BLRServer> ServerList { get; set; }
+    private static ObservableCollection<BLRClient>? _gameClients;
+    private static ObservableCollection<BLRServer>? _servers;
+    public static ObservableCollection<BLRClient> GameClients { get { _gameClients ??= IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new(); return _gameClients; } }  
+    public static ObservableCollection<BLRServer> ServerList { get { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new(); return _servers; } }
 
     public static BLRWeapon Copy { get; set; } = null;
 
@@ -548,7 +550,7 @@ public sealed partial class MainWindow : Window
             var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
             IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
-            ShowAlert($"Applied Loadouts!\nScroll trough your loadouts to\nrefresh ingame Loadouts!", 8);
+            ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8);
             Profile.IsChanged = false;
         }
     }
@@ -628,7 +630,7 @@ public sealed partial class MainWindow : Window
                 {
                     BLREditSettings.Settings.AdvancedModding.Set(!BLREditSettings.Settings.AdvancedModding.Is);
                     BLREditSettings.Save();
-                    ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{BLREditSettings.Settings.AdvancedModding.Is}", 400);
+                    ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{BLREditSettings.Settings.AdvancedModding.Is}");
                     LoggingSystem.Log($"{Properties.Resources.msg_AdvancedModding}:{BLREditSettings.Settings.AdvancedModding.Is}");
                 }
                 break;

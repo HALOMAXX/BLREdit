@@ -153,7 +153,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                 property.SetValue(wpn, item);
             }
         }
-        MainWindow.ShowAlert($"Copied {WeaponCategoryName} Weapon!", 400);
+        MainWindow.ShowAlert($"Copied {WeaponCategoryName} Weapon!");
         return wpn;
     }
 
@@ -171,7 +171,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                 }
             }
             UndoRedoSystem.EndAction();
-            MainWindow.ShowAlert($"Pasted {WeaponCategoryName} Weapon!", 400);
+            MainWindow.ShowAlert($"Pasted {WeaponCategoryName} Weapon!");
         }
     }
 
