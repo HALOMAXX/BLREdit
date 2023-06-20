@@ -371,7 +371,9 @@ public sealed class IOResources
     {
         T temp = default;
         if (string.IsNullOrEmpty(filePath)) { return temp; }
-        
+
+        if (!File.Exists("BLREdit.exe")) { Directory.SetCurrentDirectory(App.BLREditLocation); }
+
         //check if file exist's before we try to read it if it doesn't exist return and Write an error to log
         if (!File.Exists(filePath))
         { LoggingSystem.Log($"[Serializer]: File({filePath}) was not found for Deserialization!"); return temp; }

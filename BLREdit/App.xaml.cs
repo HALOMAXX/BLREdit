@@ -249,6 +249,7 @@ public partial class App : System.Windows.Application
 
     public App()
     {
+
         Directory.SetCurrentDirectory(BLREditLocation);
 
         Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));

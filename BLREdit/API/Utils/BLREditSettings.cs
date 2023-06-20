@@ -22,8 +22,8 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
-    private static BLREditSettings settings = LoadSettings();
-    public static BLREditSettings Settings { get { return settings; } }
+    private static BLREditSettings settings;
+    public static BLREditSettings Settings { get { return settings; } private set { settings = value; ApplyEvent(); } }
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
     public int SelectedClient { get; set; } = 0;
@@ -76,7 +76,10 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     private int playerCount = 16;
     public int PlayerCount { get { return playerCount; } set { playerCount = value; OnPropertyChanged(); } }
 
-
+    static BLREditSettings()
+    {
+        Settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
+    }
 
     #region Commands
     private ICommand resetConfigCommand;
@@ -93,11 +96,17 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     }
     #endregion Commands
 
+    private static void ApplyEvent()
+    {
+        Settings.AdvancedModding.PropertyChanged += Settings.AdvancedModdingChanged;
+    }
+
     public void ResetSettings()
     {
         if (MessageBox.Show("Are you sure you want to reset all BLREdit Config", "this is a caption", MessageBoxButton.YesNo) != MessageBoxResult.Yes) { return; }
         LoggingSystem.MessageLog("Now Returning to Defaults. this will close BLREdit!");
-        settings = new BLREditSettings();
+        Settings = new BLREditSettings();
+        Settings.AdvancedModding.PropertyChanged += Settings.AdvancedModdingChanged;
 
         MainWindow.GameClients.Clear();
         MainWindow.ServerList.Clear();
@@ -121,13 +130,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
                 return;
             }
         }
-    }
-
-    private static BLREditSettings LoadSettings()
-    { 
-        var settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
-        settings.AdvancedModding.PropertyChanged += settings.AdvancedModdingChanged;
-        return settings;
     }
 
     private void AdvancedModdingChanged(object sender, PropertyChangedEventArgs e)
