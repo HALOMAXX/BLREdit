@@ -102,6 +102,31 @@
 
         #region Public Methods
 
+        public override bool Equals(object? obj)
+        {
+            if (obj is RangeObservableCollection<T> collection)
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                    if (!collection[i]?.Equals(this[i]) ?? true) 
+                        return false;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            var hash = new HashCode();
+            foreach (var item in this)
+            {
+                hash.Add(item);
+            }
+            return hash.ToHashCode();
+        }
+
+
         /// <summary>
         /// Adds the elements of the specified collection to the end of the <see cref="ObservableCollection{T}"/>.
         /// </summary>
@@ -480,17 +505,9 @@
                 }
             }
         }
-
-        public bool ContentsAreEqual(RangeObservableCollection<T> collection)
-        {
-            if (collection is null || collection.Count != Count) return false;
-            for (int i = 0; i < Count; i++)
-            {
-                if (!collection[i]?.Equals(this[i]) ?? true) return false;
-            }
-            return true;
-        }
         #endregion Public Methods
+
+
 
 
         //------------------------------------------------------
@@ -567,6 +584,8 @@
         protected virtual IDisposable DeferEvents() => new DeferredEventsCollection(this);
 
         #endregion Protected Methods
+
+
 
 
         //------------------------------------------------------

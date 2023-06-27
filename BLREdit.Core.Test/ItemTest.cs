@@ -16,6 +16,7 @@ public class ItemTest
     public void SerializeItemList()
     {
         Assert.IsTrue(BLRItemList.ItemLists.Any(), "No ItemLists got Deserialized");
+        Assert.IsTrue(BLRItemList.ItemLists.ContainsKey("v302"), "ItemList is not for v302!");
 
         BLRItemList.SaveItemLists($"{OutputListFolder.FullName}\\List.json", false);
         BLRItemList.SaveItemLists($"{OutputListFolder.FullName}\\ListCompact.json");

@@ -22,7 +22,6 @@ namespace BLREdit.Core.Utils;
 
 public sealed partial class IOResources
 {
-
     static IOResources()
     {
         //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls | SecurityProtocolType.SystemDefault;

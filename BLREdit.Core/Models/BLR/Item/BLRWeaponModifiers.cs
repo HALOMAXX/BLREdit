@@ -56,12 +56,10 @@ public sealed class BLRWeaponModifiers : ModelBase
     }
 }
 
-public class JsonBLRWeaponModifiersConverter : JsonGenericConverter<BLRWeaponModifiers>
+public sealed class JsonBLRWeaponModifiersConverter : JsonGenericConverter<BLRWeaponModifiers>
 {
     static JsonBLRWeaponModifiersConverter()
     {
         Default = new();
-        IOResources.JSOSerialization.Converters.Add(new JsonBLRWeaponModifiersConverter());
-        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRWeaponModifiersConverter());
     }
 }

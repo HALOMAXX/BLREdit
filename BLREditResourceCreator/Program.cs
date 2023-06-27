@@ -21,7 +21,7 @@ public static class Program
         AddItems(weapons ?? new(), AllOldItems);
 
 
-        var current = BLREdit.Core.Models.BLR.Item.BLRItemList.ItemLists["0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7"];
+        var current = BLREdit.Core.Models.BLR.Item.BLRItemList.ItemLists["v302"];
 
         using var nameWriter = new ResXResourceWriter("Data\\out\\resx\\ItemNames.resx");
         using var tooltipWriter = new ResXResourceWriter("Data\\out\\resx\\ItemTooltips.resx");

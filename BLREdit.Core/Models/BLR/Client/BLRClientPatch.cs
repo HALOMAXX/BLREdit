@@ -11,6 +11,7 @@ public sealed class BLRClientPatch : ModelBase
 
     public string PatchName { get; set; } = "ASLR Patch(v302)";
     public string ClientHash { get; set; } = "0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7";
+    public bool ShouldBeInstalled { get; set; } = true;
     public RangeObservableCollection<BLRClientPatchPart> PatchParts { get; set; } = new() { new() { Position = 510, BytesToOverwrite = new() { 0 } } };
 
     #region Overrides
@@ -33,7 +34,7 @@ public sealed class BLRClientPatch : ModelBase
             return
                 PatchName.Equals(patch.PatchName, StringComparison.Ordinal) &&
                 ClientHash.Equals(patch.ClientHash, StringComparison.Ordinal) &&
-                PatchParts.ContentsAreEqual(patch.PatchParts);
+                PatchParts.Equals(patch.PatchParts);
         }
         return false;
     }
@@ -96,7 +97,7 @@ public sealed class BLRClientPatchPart : ModelBase
         {
             return
                 Position.Equals(patch.Position) &&
-                BytesToOverwrite.ContentsAreEqual(patch.BytesToOverwrite);
+                BytesToOverwrite.Equals(patch.BytesToOverwrite);
         }
         return false;
     }

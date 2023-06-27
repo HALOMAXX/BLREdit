@@ -1,10 +1,17 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace BLREdit.Core;
 
 public abstract class ModelBase : INotifyPropertyChanged
 {
-#pragma warning disable CS0067 // The event 'ModelBase.PropertyChanged' is never used
     public event PropertyChangedEventHandler? PropertyChanged;
-#pragma warning restore CS0067 // The event 'ModelBase.PropertyChanged' is never used
+    public void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+    }
+    public virtual void OnPropertyChanged(PropertyChangedEventArgs eventArgs)
+    {
+        PropertyChanged?.Invoke(this, eventArgs);
+    }
 }

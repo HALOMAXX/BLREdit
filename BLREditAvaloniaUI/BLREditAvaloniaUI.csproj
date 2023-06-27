@@ -46,7 +46,6 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="PeNet" Version="3.0.0" />
     <PackageReference Include="PeNet.Asn1" Version="2.0.1" />
-    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageReference Include="ReactiveUI.Fody" Version="18.4.44" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
   </ItemGroup>

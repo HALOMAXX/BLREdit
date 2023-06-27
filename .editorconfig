@@ -47,6 +47,9 @@ dotnet_diagnostic.CA1054.severity = none
 # CA1822: Mark members as static
 dotnet_diagnostic.CA1822.severity = suggestion
 
+# CA1707: Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = none
+
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 tab_width = 4

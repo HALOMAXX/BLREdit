@@ -29,12 +29,10 @@ public sealed class BLRWeaponStatDecriptor : ModelBase
     }
 }
 
-public class JsonBLRWeaponStatDescriptorConverter : JsonGenericConverter<BLRWeaponStatDecriptor>
+public sealed class JsonBLRWeaponStatDescriptorConverter : JsonGenericConverter<BLRWeaponStatDecriptor>
 {
     static JsonBLRWeaponStatDescriptorConverter()
     {
         Default = new();
-        IOResources.JSOSerialization.Converters.Add(new JsonBLRWeaponStatDescriptorConverter());
-        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRWeaponStatDescriptorConverter());
     }
 }

@@ -83,12 +83,10 @@ public sealed class BLRPawnModifiers : ModelBase
     }
 }
 
-public class JsonBLRPawnModifiersConverter : JsonGenericConverter<BLRPawnModifiers>
+public sealed class JsonBLRPawnModifiersConverter : JsonGenericConverter<BLRPawnModifiers>
 {
     static JsonBLRPawnModifiersConverter()
     {
         Default = new();
-        IOResources.JSOSerialization.Converters.Add(new JsonBLRPawnModifiersConverter());
-        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRPawnModifiersConverter());
     }
 }

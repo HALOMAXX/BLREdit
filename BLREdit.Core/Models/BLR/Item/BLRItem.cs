@@ -1,4 +1,5 @@
-﻿using BLREdit.Core.Properties;
+﻿using BLREdit.Core.Models.BLR.Client;
+using BLREdit.Core.Properties;
 using BLREdit.Core.Utils;
 
 using System.Collections.ObjectModel;
@@ -9,8 +10,61 @@ namespace BLREdit.Core.Models.BLR.Item;
 
 public sealed class BLRItem : ModelBase
 {
-    [JsonIgnore] public string DisplayName => ItemNames.ResourceManager.GetString(NameID.ToString(CultureInfo.InvariantCulture), CultureInfo.CurrentCulture) ?? Name;
-    [JsonIgnore] public string DisplayTooltip => ItemTooltips.ResourceManager.GetString(NameID.ToString(CultureInfo.InvariantCulture), CultureInfo.CurrentCulture) ?? Tooltip;
+    #region Overrides
+    public override bool Equals(object? obj)
+    {
+        if (obj is BLRItem item)
+        {
+            return
+                LoadoutManagerID.Equals(item.LoadoutManagerID) &&
+                UnlockID.Equals(item.UnlockID) &&
+                CategoryID.Equals(item.CategoryID) &&
+                CategoryName.Equals(item.CategoryName, StringComparison.Ordinal) &&
+                Type.Equals(item.Type) &&
+                CP.Equals(item.CP) &&
+                Name.Equals(item.Name, StringComparison.Ordinal) &&
+                Tooltip.Equals(item.Tooltip, StringComparison.Ordinal) &&
+                NameID.Equals(item.NameID) &&
+                IconName.Equals(item.IconName, StringComparison.Ordinal) &&
+                SupportedModCategories.Equals(item.SupportedModCategories) &&
+                SupportedModCategorieNames.Equals(item.SupportedModCategorieNames) &&
+                ValidForUnlockID.Equals(item.ValidForUnlockID) &&
+                PawnModifiers.Equals(item.PawnModifiers) &&
+                WeaponModifiers.Equals(item.WeaponModifiers) &&
+                WeaponStats.Equals(item.WeaponStats) &&
+                WikiStats.Equals(item.WikiStats);
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+
+        hash.Add(LoadoutManagerID);
+        hash.Add(UnlockID);
+        hash.Add(CategoryID);
+        hash.Add(CategoryName);
+        hash.Add(Type);
+        hash.Add(CP);
+        hash.Add(Name);
+        hash.Add(Tooltip);
+        hash.Add(NameID);
+        hash.Add(IconName);
+        hash.Add(SupportedModCategories);
+        hash.Add(SupportedModCategorieNames);
+        hash.Add(ValidForUnlockID);
+        hash.Add(PawnModifiers);
+        hash.Add(WeaponModifiers);
+        hash.Add(WeaponStats);
+        hash.Add(WikiStats);
+
+        return hash.ToHashCode();
+    }
+    #endregion Overrides
+
+    [JsonIgnore] public string DisplayName => ItemNames.ResourceManager.GetString(UnlockID.ToString(CultureInfo.InvariantCulture), CultureInfo.CurrentCulture) ?? Name;
+    [JsonIgnore] public string DisplayTooltip => ItemTooltips.ResourceManager.GetString(UnlockID.ToString(CultureInfo.InvariantCulture), CultureInfo.CurrentCulture) ?? Tooltip;
     public int LoadoutManagerID { get; set; } = -69;
     public int UnlockID { get; set; } = -1;
     public int CategoryID { get; set; } = -1;
@@ -30,11 +84,10 @@ public sealed class BLRItem : ModelBase
     public BLRWikiStats WikiStats { get; set; } = new();
 }
 
-public class JsonBLRItemConverter : JsonGenericConverter<BLRItem> {
-    static JsonBLRItemConverter()
-    {
+public sealed class JsonBLRItemConverter : JsonGenericConverter<BLRItem> 
+{
+    static JsonBLRItemConverter() 
+    { 
         Default = new();
-        IOResources.JSOSerialization.Converters.Add(new JsonBLRItemConverter());
-        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRItemConverter());
     }
 }

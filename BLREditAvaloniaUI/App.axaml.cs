@@ -12,6 +12,7 @@ using BLREdit.Views;
 using PropertyChanged;
 
 using System.Diagnostics;
+using System.Globalization;
 
 namespace BLREdit;
 
@@ -27,6 +28,8 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.Startup += OnAppStartup;

@@ -61,646 +61,1456 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Gear.
+        ///   Looks up a localized string similar to No Avatar.
         /// </summary>
-        public static string _1000 {
+        public static string _1 {
             get {
-                return ResourceManager.GetString("1000", resourceCulture);
+                return ResourceManager.GetString("-1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10000 {
+            get {
+                return ResourceManager.GetString("10000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10001 {
+            get {
+                return ResourceManager.GetString("10001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Green Hex Weapon Skin (Test Skin Name 2).
+        /// </summary>
+        public static string _10002 {
+            get {
+                return ResourceManager.GetString("10002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Australian Flag Weapon Skin.
+        /// </summary>
+        public static string _10003 {
+            get {
+                return ResourceManager.GetString("10003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Malaysan Flag Weapon Skin.
+        /// </summary>
+        public static string _10004 {
+            get {
+                return ResourceManager.GetString("10004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - New Zealand Flag Weapon SKin.
+        /// </summary>
+        public static string _10005 {
+            get {
+                return ResourceManager.GetString("10005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Singapore Flag Weapon Skin.
+        /// </summary>
+        public static string _10006 {
+            get {
+                return ResourceManager.GetString("10006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Turkish Flag Weapon Skin.
+        /// </summary>
+        public static string _10007 {
+            get {
+                return ResourceManager.GetString("10007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10008 {
+            get {
+                return ResourceManager.GetString("10008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10009 {
+            get {
+                return ResourceManager.GetString("10009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10010 {
+            get {
+                return ResourceManager.GetString("10010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10011 {
+            get {
+                return ResourceManager.GetString("10011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10012 {
+            get {
+                return ResourceManager.GetString("10012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10013 {
+            get {
+                return ResourceManager.GetString("10013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10014 {
+            get {
+                return ResourceManager.GetString("10014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10015 {
+            get {
+                return ResourceManager.GetString("10015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Stars And Stripes Weapon Skin.
+        /// </summary>
+        public static string _10016 {
+            get {
+                return ResourceManager.GetString("10016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10017 {
+            get {
+                return ResourceManager.GetString("10017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10018 {
+            get {
+                return ResourceManager.GetString("10018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10019 {
+            get {
+                return ResourceManager.GetString("10019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10020 {
+            get {
+                return ResourceManager.GetString("10020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10021 {
+            get {
+                return ResourceManager.GetString("10021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10022 {
+            get {
+                return ResourceManager.GetString("10022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10023 {
+            get {
+                return ResourceManager.GetString("10023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10024 {
+            get {
+                return ResourceManager.GetString("10024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10025 {
+            get {
+                return ResourceManager.GetString("10025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Japanese Flag Weapon Skin.
+        /// </summary>
+        public static string _10026 {
+            get {
+                return ResourceManager.GetString("10026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Australian Flag Weapon Skin.
+        /// </summary>
+        public static string _10027 {
+            get {
+                return ResourceManager.GetString("10027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Malaysian Flag Weapon Skin.
+        /// </summary>
+        public static string _10028 {
+            get {
+                return ResourceManager.GetString("10028", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - New Zealand Weapon Skin.
+        /// </summary>
+        public static string _10029 {
+            get {
+                return ResourceManager.GetString("10029", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Singapore Flag Weapon Skin.
+        /// </summary>
+        public static string _10030 {
+            get {
+                return ResourceManager.GetString("10030", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Turkish Flag Weapon Skin.
+        /// </summary>
+        public static string _10031 {
+            get {
+                return ResourceManager.GetString("10031", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - MLG TourNament Weapon Skin.
+        /// </summary>
+        public static string _10032 {
+            get {
+                return ResourceManager.GetString("10032", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10033 {
+            get {
+                return ResourceManager.GetString("10033", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10034 {
+            get {
+                return ResourceManager.GetString("10034", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10035 {
+            get {
+                return ResourceManager.GetString("10035", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10036 {
+            get {
+                return ResourceManager.GetString("10036", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10037 {
+            get {
+                return ResourceManager.GetString("10037", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10038 {
+            get {
+                return ResourceManager.GetString("10038", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10039 {
+            get {
+                return ResourceManager.GetString("10039", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - The Droughtbreaker Weapon Skin.
+        /// </summary>
+        public static string _10040 {
+            get {
+                return ResourceManager.GetString("10040", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10041 {
+            get {
+                return ResourceManager.GetString("10041", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10042 {
+            get {
+                return ResourceManager.GetString("10042", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Broken MLG Tournament Weapon Skin.
+        /// </summary>
+        public static string _10043 {
+            get {
+                return ResourceManager.GetString("10043", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10044 {
+            get {
+                return ResourceManager.GetString("10044", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10045 {
+            get {
+                return ResourceManager.GetString("10045", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10046 {
+            get {
+                return ResourceManager.GetString("10046", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10047 {
+            get {
+                return ResourceManager.GetString("10047", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10048 {
+            get {
+                return ResourceManager.GetString("10048", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10049 {
+            get {
+                return ResourceManager.GetString("10049", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10050 {
+            get {
+                return ResourceManager.GetString("10050", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10051 {
+            get {
+                return ResourceManager.GetString("10051", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10052 {
+            get {
+                return ResourceManager.GetString("10052", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10053 {
+            get {
+                return ResourceManager.GetString("10053", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10054 {
+            get {
+                return ResourceManager.GetString("10054", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10055 {
+            get {
+                return ResourceManager.GetString("10055", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10056 {
+            get {
+                return ResourceManager.GetString("10056", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10057 {
+            get {
+                return ResourceManager.GetString("10057", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10058 {
+            get {
+                return ResourceManager.GetString("10058", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10059 {
+            get {
+                return ResourceManager.GetString("10059", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10060 {
+            get {
+                return ResourceManager.GetString("10060", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10061 {
+            get {
+                return ResourceManager.GetString("10061", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10062 {
+            get {
+                return ResourceManager.GetString("10062", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10063 {
+            get {
+                return ResourceManager.GetString("10063", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10064 {
+            get {
+                return ResourceManager.GetString("10064", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10065 {
+            get {
+                return ResourceManager.GetString("10065", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10066 {
+            get {
+                return ResourceManager.GetString("10066", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10067 {
+            get {
+                return ResourceManager.GetString("10067", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10068 {
+            get {
+                return ResourceManager.GetString("10068", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10069 {
+            get {
+                return ResourceManager.GetString("10069", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10070 {
+            get {
+                return ResourceManager.GetString("10070", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10071 {
+            get {
+                return ResourceManager.GetString("10071", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10072 {
+            get {
+                return ResourceManager.GetString("10072", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10073 {
+            get {
+                return ResourceManager.GetString("10073", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10074 {
+            get {
+                return ResourceManager.GetString("10074", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10075 {
+            get {
+                return ResourceManager.GetString("10075", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10076 {
+            get {
+                return ResourceManager.GetString("10076", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10077 {
+            get {
+                return ResourceManager.GetString("10077", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10078 {
+            get {
+                return ResourceManager.GetString("10078", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10079 {
+            get {
+                return ResourceManager.GetString("10079", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10080 {
+            get {
+                return ResourceManager.GetString("10080", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10081 {
+            get {
+                return ResourceManager.GetString("10081", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10082 {
+            get {
+                return ResourceManager.GetString("10082", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10083 {
+            get {
+                return ResourceManager.GetString("10083", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10084 {
+            get {
+                return ResourceManager.GetString("10084", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10085 {
+            get {
+                return ResourceManager.GetString("10085", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10086 {
+            get {
+                return ResourceManager.GetString("10086", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10087 {
+            get {
+                return ResourceManager.GetString("10087", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10088 {
+            get {
+                return ResourceManager.GetString("10088", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10089 {
+            get {
+                return ResourceManager.GetString("10089", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10090 {
+            get {
+                return ResourceManager.GetString("10090", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10091 {
+            get {
+                return ResourceManager.GetString("10091", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10092 {
+            get {
+                return ResourceManager.GetString("10092", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10093 {
+            get {
+                return ResourceManager.GetString("10093", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10094 {
+            get {
+                return ResourceManager.GetString("10094", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10095 {
+            get {
+                return ResourceManager.GetString("10095", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10096 {
+            get {
+                return ResourceManager.GetString("10096", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10097 {
+            get {
+                return ResourceManager.GetString("10097", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10098 {
+            get {
+                return ResourceManager.GetString("10098", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10099 {
+            get {
+                return ResourceManager.GetString("10099", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10100 {
+            get {
+                return ResourceManager.GetString("10100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10101 {
+            get {
+                return ResourceManager.GetString("10101", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10102 {
+            get {
+                return ResourceManager.GetString("10102", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10103 {
+            get {
+                return ResourceManager.GetString("10103", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10104 {
+            get {
+                return ResourceManager.GetString("10104", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10105 {
+            get {
+                return ResourceManager.GetString("10105", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10106 {
+            get {
+                return ResourceManager.GetString("10106", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10107 {
+            get {
+                return ResourceManager.GetString("10107", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10108 {
+            get {
+                return ResourceManager.GetString("10108", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10109 {
+            get {
+                return ResourceManager.GetString("10109", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10110 {
+            get {
+                return ResourceManager.GetString("10110", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10111 {
+            get {
+                return ResourceManager.GetString("10111", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10112 {
+            get {
+                return ResourceManager.GetString("10112", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10113 {
+            get {
+                return ResourceManager.GetString("10113", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10114 {
+            get {
+                return ResourceManager.GetString("10114", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10115 {
+            get {
+                return ResourceManager.GetString("10115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10116 {
+            get {
+                return ResourceManager.GetString("10116", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10117 {
+            get {
+                return ResourceManager.GetString("10117", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10118 {
+            get {
+                return ResourceManager.GetString("10118", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10119 {
+            get {
+                return ResourceManager.GetString("10119", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10120 {
+            get {
+                return ResourceManager.GetString("10120", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10121 {
+            get {
+                return ResourceManager.GetString("10121", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10122 {
+            get {
+                return ResourceManager.GetString("10122", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10123 {
+            get {
+                return ResourceManager.GetString("10123", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10124 {
+            get {
+                return ResourceManager.GetString("10124", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10125 {
+            get {
+                return ResourceManager.GetString("10125", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10126 {
+            get {
+                return ResourceManager.GetString("10126", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10127 {
+            get {
+                return ResourceManager.GetString("10127", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10128 {
+            get {
+                return ResourceManager.GetString("10128", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10129 {
+            get {
+                return ResourceManager.GetString("10129", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10130 {
+            get {
+                return ResourceManager.GetString("10130", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10131 {
+            get {
+                return ResourceManager.GetString("10131", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10132 {
+            get {
+                return ResourceManager.GetString("10132", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10133 {
+            get {
+                return ResourceManager.GetString("10133", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10134 {
+            get {
+                return ResourceManager.GetString("10134", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10135 {
+            get {
+                return ResourceManager.GetString("10135", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10136 {
+            get {
+                return ResourceManager.GetString("10136", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10137 {
+            get {
+                return ResourceManager.GetString("10137", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10138 {
+            get {
+                return ResourceManager.GetString("10138", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10139 {
+            get {
+                return ResourceManager.GetString("10139", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10140 {
+            get {
+                return ResourceManager.GetString("10140", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10141 {
+            get {
+                return ResourceManager.GetString("10141", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10142 {
+            get {
+                return ResourceManager.GetString("10142", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10143 {
+            get {
+                return ResourceManager.GetString("10143", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10144 {
+            get {
+                return ResourceManager.GetString("10144", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10145 {
+            get {
+                return ResourceManager.GetString("10145", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10146 {
+            get {
+                return ResourceManager.GetString("10146", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10147 {
+            get {
+                return ResourceManager.GetString("10147", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10148 {
+            get {
+                return ResourceManager.GetString("10148", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10149 {
+            get {
+                return ResourceManager.GetString("10149", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Green Hex Weapon Skin.
+        /// </summary>
+        public static string _10150 {
+            get {
+                return ResourceManager.GetString("10150", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Stars and Stripes Weapon Skin.
+        /// </summary>
+        public static string _10151 {
+            get {
+                return ResourceManager.GetString("10151", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Orange Weapon Skin.
+        /// </summary>
+        public static string _10152 {
+            get {
+                return ResourceManager.GetString("10152", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Blue Weapon Skin.
+        /// </summary>
+        public static string _10153 {
+            get {
+                return ResourceManager.GetString("10153", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Clovers Weapon Skin.
+        /// </summary>
+        public static string _10154 {
+            get {
+                return ResourceManager.GetString("10154", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Pink Weapon Skin.
+        /// </summary>
+        public static string _10155 {
+            get {
+                return ResourceManager.GetString("10155", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Red Weapon Skin.
+        /// </summary>
+        public static string _10156 {
+            get {
+                return ResourceManager.GetString("10156", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Green Weapon Skin.
+        /// </summary>
+        public static string _10157 {
+            get {
+                return ResourceManager.GetString("10157", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Yellow Weapon Skin.
+        /// </summary>
+        public static string _10158 {
+            get {
+                return ResourceManager.GetString("10158", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cupid&apos;s QT Pi Bow.
+        /// </summary>
+        public static string _10159 {
+            get {
+                return ResourceManager.GetString("10159", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Frag Grenade Mk.1.
-        /// </summary>
-        public static string _1001 {
-            get {
-                return ResourceManager.GetString("1001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Knife Mk.1.
-        /// </summary>
-        public static string _1002 {
-            get {
-                return ResourceManager.GetString("1002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shock Grenade Mk.1.
-        /// </summary>
-        public static string _1003 {
-            get {
-                return ResourceManager.GetString("1003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EMP Grenade Mk.1.
-        /// </summary>
-        public static string _1004 {
-            get {
-                return ResourceManager.GetString("1004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digi Grenade Mk.1.
-        /// </summary>
-        public static string _1005 {
-            get {
-                return ResourceManager.GetString("1005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Proximity Mine Mk.1.
-        /// </summary>
-        public static string _1006 {
-            get {
-                return ResourceManager.GetString("1006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HRV Decoy Mk.1.
-        /// </summary>
-        public static string _1007 {
-            get {
-                return ResourceManager.GetString("1007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stun Mine Mk.1.
-        /// </summary>
-        public static string _1008 {
-            get {
-                return ResourceManager.GetString("1008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Grenade Mk.1.
-        /// </summary>
-        public static string _1009 {
-            get {
-                return ResourceManager.GetString("1009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HE Grenade Mk.1.
-        /// </summary>
-        public static string _1010 {
-            get {
-                return ResourceManager.GetString("1010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HRV Blackout Mk.1.
-        /// </summary>
-        public static string _1011 {
-            get {
-                return ResourceManager.GetString("1011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Knife Mk.2.
-        /// </summary>
-        public static string _1012 {
-            get {
-                return ResourceManager.GetString("1012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Machete.
-        /// </summary>
-        public static string _1013 {
-            get {
-                return ResourceManager.GetString("1013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Breach Hammer.
-        /// </summary>
-        public static string _1014 {
-            get {
-                return ResourceManager.GetString("1014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Throwing Knives Mk.1.
-        /// </summary>
-        public static string _1015 {
-            get {
-                return ResourceManager.GetString("1015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Black Mesa Crowbar.
-        /// </summary>
-        public static string _1016 {
-            get {
-                return ResourceManager.GetString("1016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Golden Crowbar.
-        /// </summary>
-        public static string _1017 {
-            get {
-                return ResourceManager.GetString("1017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Silver Crowbar.
-        /// </summary>
-        public static string _1018 {
-            get {
-                return ResourceManager.GetString("1018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Exploding Tomahawk.
-        /// </summary>
-        public static string _1019 {
-            get {
-                return ResourceManager.GetString("1019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incendiary Protection Gear.
-        /// </summary>
-        public static string _1020 {
-            get {
-                return ResourceManager.GetString("1020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Protection Gear.
-        /// </summary>
-        public static string _1021 {
-            get {
-                return ResourceManager.GetString("1021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Explosive Protection Gear.
-        /// </summary>
-        public static string _1022 {
-            get {
-                return ResourceManager.GetString("1022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Electro Protection Gear.
-        /// </summary>
-        public static string _1023 {
-            get {
-                return ResourceManager.GetString("1023", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Melee Protection Gear.
-        /// </summary>
-        public static string _1024 {
-            get {
-                return ResourceManager.GetString("1024", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Personal Holo-decoy.
-        /// </summary>
-        public static string _1025 {
-            get {
-                return ResourceManager.GetString("1025", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stun Shuriken.
-        /// </summary>
-        public static string _1026 {
-            get {
-                return ResourceManager.GetString("1026", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sonic Tomahawk.
-        /// </summary>
-        public static string _1027 {
-            get {
-                return ResourceManager.GetString("1027", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Infrared Protection Gear.
-        /// </summary>
-        public static string _1028 {
-            get {
-                return ResourceManager.GetString("1028", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CivClaw / Overgrown Fingernails.
-        /// </summary>
-        public static string _1029 {
-            get {
-                return ResourceManager.GetString("1029", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DogClaw / Overgrown Fingernails.
-        /// </summary>
-        public static string _1030 {
-            get {
-                return ResourceManager.GetString("1030", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to FlamingClaw / Overgrown Fingernails.
-        /// </summary>
-        public static string _1031 {
-            get {
-                return ResourceManager.GetString("1031", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HulkClaw / Overgrown Fingernails.
-        /// </summary>
-        public static string _1032 {
-            get {
-                return ResourceManager.GetString("1032", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Breach Hammer.
-        /// </summary>
-        public static string _1033 {
-            get {
-                return ResourceManager.GetString("1033", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Lightning Trail Mod.
-        /// </summary>
-        public static string _1034 {
-            get {
-                return ResourceManager.GetString("1034", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Lightning Trail and Strike Mod.
-        /// </summary>
-        public static string _1035 {
-            get {
-                return ResourceManager.GetString("1035", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Flame Mod.
-        /// </summary>
-        public static string _1036 {
-            get {
-                return ResourceManager.GetString("1036", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Fire Mod.
-        /// </summary>
-        public static string _1037 {
-            get {
-                return ResourceManager.GetString("1037", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Lightning Strike Mod.
-        /// </summary>
-        public static string _1038 {
-            get {
-                return ResourceManager.GetString("1038", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Blue Explosion Mod.
-        /// </summary>
-        public static string _1039 {
-            get {
-                return ResourceManager.GetString("1039", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Pink Explosion Mod.
-        /// </summary>
-        public static string _1040 {
-            get {
-                return ResourceManager.GetString("1040", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Purple Explosion Mod.
-        /// </summary>
-        public static string _1041 {
-            get {
-                return ResourceManager.GetString("1041", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Red Explosion Mod.
-        /// </summary>
-        public static string _1042 {
-            get {
-                return ResourceManager.GetString("1042", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Blue and Yellow Explosion Mod.
-        /// </summary>
-        public static string _1043 {
-            get {
-                return ResourceManager.GetString("1043", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Blue BOOM Explosion Mod.
-        /// </summary>
-        public static string _1044 {
-            get {
-                return ResourceManager.GetString("1044", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frag Mk.1 - Butterfly Mod.
-        /// </summary>
-        public static string _1045 {
-            get {
-                return ResourceManager.GetString("1045", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Snowpocalypse.
-        /// </summary>
-        public static string _1046 {
-            get {
-                return ResourceManager.GetString("1046", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Ice Axe.
-        /// </summary>
-        public static string _1047 {
-            get {
-                return ResourceManager.GetString("1047", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nor&apos;Easter.
-        /// </summary>
-        public static string _1048 {
-            get {
-                return ResourceManager.GetString("1048", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Frag Grenade Mk.1.
-        /// </summary>
-        public static string _1049 {
-            get {
-                return ResourceManager.GetString("1049", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Combat Knife Mk.1.
-        /// </summary>
-        public static string _1050 {
-            get {
-                return ResourceManager.GetString("1050", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to I Heart U.
-        /// </summary>
-        public static string _1051 {
-            get {
-                return ResourceManager.GetString("1051", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Magnum Rounds.
-        /// </summary>
-        public static string _11000 {
-            get {
-                return ResourceManager.GetString("11000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Armor Piercing Rounds.
-        /// </summary>
-        public static string _11001 {
-            get {
-                return ResourceManager.GetString("11001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standard Rounds.
-        /// </summary>
-        public static string _11002 {
-            get {
-                return ResourceManager.GetString("11002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Electro Rounds.
-        /// </summary>
-        public static string _11003 {
-            get {
-                return ResourceManager.GetString("11003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Explosive Rounds.
-        /// </summary>
-        public static string _11004 {
-            get {
-                return ResourceManager.GetString("11004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hollow Point Rounds.
-        /// </summary>
-        public static string _11005 {
-            get {
-                return ResourceManager.GetString("11005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incendiary Rounds.
-        /// </summary>
-        public static string _11006 {
-            get {
-                return ResourceManager.GetString("11006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Rounds.
-        /// </summary>
-        public static string _11007 {
-            get {
-                return ResourceManager.GetString("11007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incendiary Flare.
-        /// </summary>
-        public static string _11008 {
-            get {
-                return ResourceManager.GetString("11008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Explosive Flare.
-        /// </summary>
-        public static string _11009 {
-            get {
-                return ResourceManager.GetString("11009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Canister.
-        /// </summary>
-        public static string _11010 {
-            get {
-                return ResourceManager.GetString("11010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Thumper Flare.
-        /// </summary>
-        public static string _11011 {
-            get {
-                return ResourceManager.GetString("11011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Exploding Arrow.
-        /// </summary>
-        public static string _11012 {
-            get {
-                return ResourceManager.GetString("11012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stun Arrow.
-        /// </summary>
-        public static string _11013 {
-            get {
-                return ResourceManager.GetString("11013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Poison Arrow.
-        /// </summary>
-        public static string _11014 {
-            get {
-                return ResourceManager.GetString("11014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Arrow.
-        /// </summary>
-        public static string _11015 {
-            get {
-                return ResourceManager.GetString("11015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Arrow.
-        /// </summary>
-        public static string _11016 {
-            get {
-                return ResourceManager.GetString("11016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standard Arrow.
-        /// </summary>
-        public static string _11017 {
-            get {
-                return ResourceManager.GetString("11017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cupid&apos;s Arrow.
-        /// </summary>
-        public static string _11018 {
-            get {
-                return ResourceManager.GetString("11018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Krane Heavy Assault Barrel.
         /// </summary>
         public static string _12000 {
             get {
@@ -709,7 +1519,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Krane SG Bar-20.
+        ///   Looks up a localized string similar to EMP Grenade Mk.1.
         /// </summary>
         public static string _12001 {
             get {
@@ -718,7 +1528,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch A-12 Blast.
+        ///   Looks up a localized string similar to Digi Grenade Mk.1.
         /// </summary>
         public static string _12002 {
             get {
@@ -727,7 +1537,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch CRC-7 Post.
+        ///   Looks up a localized string similar to Proximity Mine Mk.1.
         /// </summary>
         public static string _12003 {
             get {
@@ -736,7 +1546,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch Heavy X3.
+        ///   Looks up a localized string similar to Shock Grenade Mk.1.
         /// </summary>
         public static string _12004 {
             get {
@@ -745,7 +1555,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Briar BAR Grip.
+        ///   Looks up a localized string similar to HRV Decoy Mk.1.
         /// </summary>
         public static string _12005 {
             get {
@@ -754,7 +1564,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Armcom BAR-01.
+        ///   Looks up a localized string similar to Toxic Grenade Mk.1.
         /// </summary>
         public static string _12006 {
             get {
@@ -763,7 +1573,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Armcom BARl1.
+        ///   Looks up a localized string similar to Stun Mine Mk.1.
         /// </summary>
         public static string _12007 {
             get {
@@ -772,7 +1582,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hullbreach 047BAR.
+        ///   Looks up a localized string similar to HE Grenade Mk.1.
         /// </summary>
         public static string _12008 {
             get {
@@ -781,7 +1591,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Silverwood TechBAR.
+        ///   Looks up a localized string similar to HRV Blackout Mk.1.
         /// </summary>
         public static string _12009 {
             get {
@@ -790,16 +1600,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Briar BAR-02.
-        /// </summary>
-        public static string _12010 {
-            get {
-                return ResourceManager.GetString("12010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hullbreach 057BAR.
+        ///   Looks up a localized string similar to Combat Knife Mk.1.
         /// </summary>
         public static string _12011 {
             get {
@@ -808,7 +1609,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Grip.
+        ///   Looks up a localized string similar to Combat Knife Mk.2.
         /// </summary>
         public static string _12012 {
             get {
@@ -817,7 +1618,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Frontier Compensator Barrel.
+        ///   Looks up a localized string similar to Machete.
         /// </summary>
         public static string _12013 {
             get {
@@ -826,7 +1627,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Redsand CQC Barrel.
+        ///   Looks up a localized string similar to Breach Hammer.
         /// </summary>
         public static string _12014 {
             get {
@@ -835,7 +1636,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Briar CQC Barrel.
+        ///   Looks up a localized string similar to No Gear.
         /// </summary>
         public static string _12015 {
             get {
@@ -844,7 +1645,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Briar Balanced Barrel.
+        ///   Looks up a localized string similar to Throwing Knives Mk.1.
         /// </summary>
         public static string _12016 {
             get {
@@ -853,7 +1654,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ogre CQC Barrel.
+        ///   Looks up a localized string similar to Black Mesa Crowbar.
         /// </summary>
         public static string _12017 {
             get {
@@ -862,7 +1663,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Titan FFB.
+        ///   Looks up a localized string similar to Golden Crowbar.
         /// </summary>
         public static string _12018 {
             get {
@@ -871,7 +1672,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Briar Lightweight Barrel.
+        ///   Looks up a localized string similar to Silver Crowbar.
         /// </summary>
         public static string _12019 {
             get {
@@ -880,7 +1681,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch M-CV Breach.
+        ///   Looks up a localized string similar to Exploding Tomahawk.
         /// </summary>
         public static string _12020 {
             get {
@@ -889,7 +1690,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Titan Assault Barrel.
+        ///   Looks up a localized string similar to Incendiary Protection Gear.
         /// </summary>
         public static string _12021 {
             get {
@@ -898,7 +1699,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Silverwood Light Accuracy Barrel.
+        ///   Looks up a localized string similar to Toxic Protection Gear.
         /// </summary>
         public static string _12022 {
             get {
@@ -907,7 +1708,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Briar Accuracy Barrel.
+        ///   Looks up a localized string similar to Explosive Protection Gear.
         /// </summary>
         public static string _12023 {
             get {
@@ -916,7 +1717,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Silverwood SW-09.
+        ///   Looks up a localized string similar to Electro Protection Gear.
         /// </summary>
         public static string _12024 {
             get {
@@ -925,7 +1726,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Leatherneck Accuracy Barrel.
+        ///   Looks up a localized string similar to Melee Protection Gear.
         /// </summary>
         public static string _12025 {
             get {
@@ -934,16 +1735,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulcan Lightweight Barrel.
-        /// </summary>
-        public static string _12026 {
-            get {
-                return ResourceManager.GetString("12026", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to V2 X200 Mod.
+        ///   Looks up a localized string similar to Stun Shuriken.
         /// </summary>
         public static string _12027 {
             get {
@@ -952,7 +1744,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V2 Z900 Mod.
+        ///   Looks up a localized string similar to Personal Holo-decoy.
         /// </summary>
         public static string _12028 {
             get {
@@ -961,7 +1753,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Silverwood CQC Barrel.
+        ///   Looks up a localized string similar to Sonic Tomahawk.
         /// </summary>
         public static string _12029 {
             get {
@@ -970,7 +1762,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Frontier Standard Barrel.
+        ///   Looks up a localized string similar to Infrared Protection Gear.
         /// </summary>
         public static string _12030 {
             get {
@@ -979,7 +1771,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Titan Extended Barrel.
+        ///   Looks up a localized string similar to Toxic Breach Hammer.
         /// </summary>
         public static string _12031 {
             get {
@@ -988,7 +1780,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Raider Snub Barrel.
+        ///   Looks up a localized string similar to Frag Mk.1 - Lightning Trail Mod.
         /// </summary>
         public static string _12032 {
             get {
@@ -997,7 +1789,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulcan Tactical Barrel.
+        ///   Looks up a localized string similar to Frag Mk.1 - Lightning Trail and Strike Mod.
         /// </summary>
         public static string _12033 {
             get {
@@ -1006,7 +1798,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Briar Assault Barrel.
+        ///   Looks up a localized string similar to Frag Mk.1 - Flame Mod.
         /// </summary>
         public static string _12034 {
             get {
@@ -1015,7 +1807,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Krane Assault Barrel.
+        ///   Looks up a localized string similar to Frag Mk.1 - Fire Mod.
         /// </summary>
         public static string _12035 {
             get {
@@ -1024,7 +1816,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmCom Assault Barrel.
+        ///   Looks up a localized string similar to Frag Mk.1 - Lightning Strike Mod.
         /// </summary>
         public static string _12036 {
             get {
@@ -1033,7 +1825,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prestige Frontier Standard Barrel.
+        ///   Looks up a localized string similar to Frag Mk.1 - Blue Explosion Mod.
         /// </summary>
         public static string _12037 {
             get {
@@ -1042,7 +1834,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Barrel Mod.
+        ///   Looks up a localized string similar to Frag Mk.1 - Pink Explosion Mod.
         /// </summary>
         public static string _12038 {
             get {
@@ -1051,7 +1843,142 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Standard Issue.
+        ///   Looks up a localized string similar to Frag Mk.1 - Purple Explosion Mod.
+        /// </summary>
+        public static string _12039 {
+            get {
+                return ResourceManager.GetString("12039", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frag Mk.1 - Red Explosion Mod.
+        /// </summary>
+        public static string _12040 {
+            get {
+                return ResourceManager.GetString("12040", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frag Mk.1 - Blue and Yellow Explosion Mod.
+        /// </summary>
+        public static string _12041 {
+            get {
+                return ResourceManager.GetString("12041", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frag Mk.1 - Blue BOOM Explosion Mod.
+        /// </summary>
+        public static string _12042 {
+            get {
+                return ResourceManager.GetString("12042", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frag Mk.1 - Butterfly Mod.
+        /// </summary>
+        public static string _12043 {
+            get {
+                return ResourceManager.GetString("12043", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snowpocalypse.
+        /// </summary>
+        public static string _12044 {
+            get {
+                return ResourceManager.GetString("12044", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Ice Axe.
+        /// </summary>
+        public static string _12045 {
+            get {
+                return ResourceManager.GetString("12045", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nor&apos;Easter.
+        /// </summary>
+        public static string _12046 {
+            get {
+                return ResourceManager.GetString("12046", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Frag Grenade Mk.1.
+        /// </summary>
+        public static string _12047 {
+            get {
+                return ResourceManager.GetString("12047", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Combat Knife Mk.1.
+        /// </summary>
+        public static string _12048 {
+            get {
+                return ResourceManager.GetString("12048", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I Heart U.
+        /// </summary>
+        public static string _12049 {
+            get {
+                return ResourceManager.GetString("12049", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HulkClaw / Overgrown Fingernails.
+        /// </summary>
+        public static string _12096 {
+            get {
+                return ResourceManager.GetString("12096", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FlamingClaw / Overgrown Fingernails.
+        /// </summary>
+        public static string _12097 {
+            get {
+                return ResourceManager.GetString("12097", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DogClaw / Overgrown Fingernails.
+        /// </summary>
+        public static string _12098 {
+            get {
+                return ResourceManager.GetString("12098", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CivClaw / Overgrown Fingernails.
+        /// </summary>
+        public static string _12099 {
+            get {
+                return ResourceManager.GetString("12099", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Tactical Gear.
         /// </summary>
         public static string _13000 {
             get {
@@ -1060,7 +1987,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dust Digital.
+        ///   Looks up a localized string similar to Heal Injector Mk.1.
         /// </summary>
         public static string _13001 {
             get {
@@ -1069,7 +1996,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rockwall.
+        ///   Looks up a localized string similar to Repair Tool.
         /// </summary>
         public static string _13002 {
             get {
@@ -1078,7 +2005,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sandstorm.
+        ///   Looks up a localized string similar to Ammunition Pod Mk.1.
         /// </summary>
         public static string _13003 {
             get {
@@ -1087,7 +2014,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Digital Red.
+        ///   Looks up a localized string similar to Barricade Mk.1.
         /// </summary>
         public static string _13004 {
             get {
@@ -1096,7 +2023,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Urban Digital.
+        ///   Looks up a localized string similar to Revival Injector Mk.1.
         /// </summary>
         public static string _13005 {
             get {
@@ -1105,7 +2032,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dust Gray.
+        ///   Looks up a localized string similar to Cloak.
         /// </summary>
         public static string _13006 {
             get {
@@ -1114,7 +2041,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hillside Brown.
+        ///   Looks up a localized string similar to Hardsuit HRV Ping.
         /// </summary>
         public static string _13007 {
             get {
@@ -1123,7 +2050,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brown Tiger.
+        ///   Looks up a localized string similar to Hardsuit Battle Mode.
         /// </summary>
         public static string _13008 {
             get {
@@ -1132,7 +2059,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ragnarok.
+        ///   Looks up a localized string similar to Respawn Beacon.
         /// </summary>
         public static string _13009 {
             get {
@@ -1141,7 +2068,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mud Flare.
+        ///   Looks up a localized string similar to Firewall Breach Kit.
         /// </summary>
         public static string _13010 {
             get {
@@ -1150,7 +2077,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Urban Dust.
+        ///   Looks up a localized string similar to HRV Cloak.
         /// </summary>
         public static string _13011 {
             get {
@@ -1159,7 +2086,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Red Leopard.
+        ///   Looks up a localized string similar to Cloak Mk.2.
         /// </summary>
         public static string _13012 {
             get {
@@ -1168,7 +2095,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Winter Rock.
+        ///   Looks up a localized string similar to Barricade Mk.2.
         /// </summary>
         public static string _13013 {
             get {
@@ -1177,3706 +2104,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Digi Tundra.
-        /// </summary>
-        public static string _13014 {
-            get {
-                return ResourceManager.GetString("13014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Spotted Ground.
-        /// </summary>
-        public static string _13015 {
-            get {
-                return ResourceManager.GetString("13015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dark Brown.
-        /// </summary>
-        public static string _13016 {
-            get {
-                return ResourceManager.GetString("13016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gray Operation.
-        /// </summary>
-        public static string _13017 {
-            get {
-                return ResourceManager.GetString("13017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Orange Tiger.
-        /// </summary>
-        public static string _13018 {
-            get {
-                return ResourceManager.GetString("13018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hillside Operation.
-        /// </summary>
-        public static string _13019 {
-            get {
-                return ResourceManager.GetString("13019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Broken Rock.
-        /// </summary>
-        public static string _13020 {
-            get {
-                return ResourceManager.GetString("13020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shadow.
-        /// </summary>
-        public static string _13021 {
-            get {
-                return ResourceManager.GetString("13021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bloodsport.
-        /// </summary>
-        public static string _13022 {
-            get {
-                return ResourceManager.GetString("13022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sahara.
-        /// </summary>
-        public static string _13023 {
-            get {
-                return ResourceManager.GetString("13023", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Forest.
-        /// </summary>
-        public static string _13024 {
-            get {
-                return ResourceManager.GetString("13024", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mountain Lion.
-        /// </summary>
-        public static string _13025 {
-            get {
-                return ResourceManager.GetString("13025", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ice Hex.
-        /// </summary>
-        public static string _13026 {
-            get {
-                return ResourceManager.GetString("13026", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Urban Winter.
-        /// </summary>
-        public static string _13027 {
-            get {
-                return ResourceManager.GetString("13027", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Urban Nest.
-        /// </summary>
-        public static string _13028 {
-            get {
-                return ResourceManager.GetString("13028", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Infil.
-        /// </summary>
-        public static string _13029 {
-            get {
-                return ResourceManager.GetString("13029", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Avalanche.
-        /// </summary>
-        public static string _13030 {
-            get {
-                return ResourceManager.GetString("13030", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Olive.
-        /// </summary>
-        public static string _13031 {
-            get {
-                return ResourceManager.GetString("13031", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Winter.
-        /// </summary>
-        public static string _13032 {
-            get {
-                return ResourceManager.GetString("13032", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wrath.
-        /// </summary>
-        public static string _13033 {
-            get {
-                return ResourceManager.GetString("13033", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Drifter.
-        /// </summary>
-        public static string _13034 {
-            get {
-                return ResourceManager.GetString("13034", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ocean Fury.
-        /// </summary>
-        public static string _13035 {
-            get {
-                return ResourceManager.GetString("13035", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gray.
-        /// </summary>
-        public static string _13036 {
-            get {
-                return ResourceManager.GetString("13036", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Marked Hunter.
-        /// </summary>
-        public static string _13037 {
-            get {
-                return ResourceManager.GetString("13037", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Snow Leopard.
-        /// </summary>
-        public static string _13038 {
-            get {
-                return ResourceManager.GetString("13038", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Forest Combat.
-        /// </summary>
-        public static string _13039 {
-            get {
-                return ResourceManager.GetString("13039", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Seized.
-        /// </summary>
-        public static string _13040 {
-            get {
-                return ResourceManager.GetString("13040", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Concrete Gray.
-        /// </summary>
-        public static string _13041 {
-            get {
-                return ResourceManager.GetString("13041", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Green Plankton.
-        /// </summary>
-        public static string _13042 {
-            get {
-                return ResourceManager.GetString("13042", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mountain Peak.
-        /// </summary>
-        public static string _13043 {
-            get {
-                return ResourceManager.GetString("13043", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gray Leaf.
-        /// </summary>
-        public static string _13044 {
-            get {
-                return ResourceManager.GetString("13044", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Snowstorm.
-        /// </summary>
-        public static string _13045 {
-            get {
-                return ResourceManager.GetString("13045", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dark Gray.
-        /// </summary>
-        public static string _13046 {
-            get {
-                return ResourceManager.GetString("13046", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Snowdrift.
-        /// </summary>
-        public static string _13047 {
-            get {
-                return ResourceManager.GetString("13047", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Grassland Hex.
-        /// </summary>
-        public static string _13048 {
-            get {
-                return ResourceManager.GetString("13048", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Urban Hex.
-        /// </summary>
-        public static string _13049 {
-            get {
-                return ResourceManager.GetString("13049", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shattered Poles.
-        /// </summary>
-        public static string _13050 {
-            get {
-                return ResourceManager.GetString("13050", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Bronze.
-        /// </summary>
-        public static string _13051 {
-            get {
-                return ResourceManager.GetString("13051", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Silver.
-        /// </summary>
-        public static string _13052 {
-            get {
-                return ResourceManager.GetString("13052", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Gold.
-        /// </summary>
-        public static string _13053 {
-            get {
-                return ResourceManager.GetString("13053", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Pink.
-        /// </summary>
-        public static string _13054 {
-            get {
-                return ResourceManager.GetString("13054", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Orange.
-        /// </summary>
-        public static string _13055 {
-            get {
-                return ResourceManager.GetString("13055", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Cobalt Blue.
-        /// </summary>
-        public static string _13056 {
-            get {
-                return ResourceManager.GetString("13056", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Toxic Green.
-        /// </summary>
-        public static string _13057 {
-            get {
-                return ResourceManager.GetString("13057", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Pink.
-        /// </summary>
-        public static string _13058 {
-            get {
-                return ResourceManager.GetString("13058", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Orange.
-        /// </summary>
-        public static string _13059 {
-            get {
-                return ResourceManager.GetString("13059", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Red.
-        /// </summary>
-        public static string _13060 {
-            get {
-                return ResourceManager.GetString("13060", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Dark Red.
-        /// </summary>
-        public static string _13061 {
-            get {
-                return ResourceManager.GetString("13061", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Baby Blue.
-        /// </summary>
-        public static string _13062 {
-            get {
-                return ResourceManager.GetString("13062", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Dark Blue.
-        /// </summary>
-        public static string _13063 {
-            get {
-                return ResourceManager.GetString("13063", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Black.
-        /// </summary>
-        public static string _13064 {
-            get {
-                return ResourceManager.GetString("13064", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to White.
-        /// </summary>
-        public static string _13065 {
-            get {
-                return ResourceManager.GetString("13065", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Dark Purple.
-        /// </summary>
-        public static string _13066 {
-            get {
-                return ResourceManager.GetString("13066", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Green.
-        /// </summary>
-        public static string _13067 {
-            get {
-                return ResourceManager.GetString("13067", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matte Yellow.
-        /// </summary>
-        public static string _13068 {
-            get {
-                return ResourceManager.GetString("13068", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Super Secret.
-        /// </summary>
-        public static string _13069 {
-            get {
-                return ResourceManager.GetString("13069", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to FPSGuru.com Partner Camo.
-        /// </summary>
-        public static string _13070 {
-            get {
-                return ResourceManager.GetString("13070", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to IGN.com Partner Camo.
-        /// </summary>
-        public static string _13071 {
-            get {
-                return ResourceManager.GetString("13071", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MMOBomb.com Partner Camo.
-        /// </summary>
-        public static string _13072 {
-            get {
-                return ResourceManager.GetString("13072", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Secret Silver.
-        /// </summary>
-        public static string _13073 {
-            get {
-                return ResourceManager.GetString("13073", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cash.
-        /// </summary>
-        public static string _13074 {
-            get {
-                return ResourceManager.GetString("13074", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Benjamins.
-        /// </summary>
-        public static string _13075 {
-            get {
-                return ResourceManager.GetString("13075", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Extra Life Charity.
-        /// </summary>
-        public static string _13076 {
-            get {
-                return ResourceManager.GetString("13076", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to KBMOD.com Vintage.
-        /// </summary>
-        public static string _13077 {
-            get {
-                return ResourceManager.GetString("13077", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Astro Graffiti Autumn.
-        /// </summary>
-        public static string _13078 {
-            get {
-                return ResourceManager.GetString("13078", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Astro Graffiti.
-        /// </summary>
-        public static string _13079 {
-            get {
-                return ResourceManager.GetString("13079", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Astro Graffiti Black.
-        /// </summary>
-        public static string _13080 {
-            get {
-                return ResourceManager.GetString("13080", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hardsuit Pilot White.
-        /// </summary>
-        public static string _13081 {
-            get {
-                return ResourceManager.GetString("13081", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hardsuit Pilot Red.
-        /// </summary>
-        public static string _13082 {
-            get {
-                return ResourceManager.GetString("13082", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hardsuit Pilot Orange.
-        /// </summary>
-        public static string _13083 {
-            get {
-                return ResourceManager.GetString("13083", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hardsuit Pilot Yellow.
-        /// </summary>
-        public static string _13084 {
-            get {
-                return ResourceManager.GetString("13084", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hardsuit Pilot Green.
-        /// </summary>
-        public static string _13085 {
-            get {
-                return ResourceManager.GetString("13085", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hardsuit Pilot Blue.
-        /// </summary>
-        public static string _13086 {
-            get {
-                return ResourceManager.GetString("13086", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Purple.
-        /// </summary>
-        public static string _13087 {
-            get {
-                return ResourceManager.GetString("13087", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic White.
-        /// </summary>
-        public static string _13089 {
-            get {
-                return ResourceManager.GetString("13089", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digital Blue.
-        /// </summary>
-        public static string _13090 {
-            get {
-                return ResourceManager.GetString("13090", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digital Yellow.
-        /// </summary>
-        public static string _13091 {
-            get {
-                return ResourceManager.GetString("13091", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Science.
-        /// </summary>
-        public static string _13092 {
-            get {
-                return ResourceManager.GetString("13092", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Medic 2.
-        /// </summary>
-        public static string _13093 {
-            get {
-                return ResourceManager.GetString("13093", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vector.
-        /// </summary>
-        public static string _13094 {
-            get {
-                return ResourceManager.GetString("13094", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Veteran.
-        /// </summary>
-        public static string _13095 {
-            get {
-                return ResourceManager.GetString("13095", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Retribution Elite.
-        /// </summary>
-        public static string _13096 {
-            get {
-                return ResourceManager.GetString("13096", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tiger Elite.
-        /// </summary>
-        public static string _13097 {
-            get {
-                return ResourceManager.GetString("13097", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Daylight.
-        /// </summary>
-        public static string _13098 {
-            get {
-                return ResourceManager.GetString("13098", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Winter Operations.
-        /// </summary>
-        public static string _13099 {
-            get {
-                return ResourceManager.GetString("13099", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bearded Operations.
-        /// </summary>
-        public static string _13100 {
-            get {
-                return ResourceManager.GetString("13100", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to BCL TourNament.
-        /// </summary>
-        public static string _13101 {
-            get {
-                return ResourceManager.GetString("13101", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to XXOO.
-        /// </summary>
-        public static string _13102 {
-            get {
-                return ResourceManager.GetString("13102", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Beta.
-        /// </summary>
-        public static string _13103 {
-            get {
-                return ResourceManager.GetString("13103", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Class of 2012.
-        /// </summary>
-        public static string _13104 {
-            get {
-                return ResourceManager.GetString("13104", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Class of 2013.
-        /// </summary>
-        public static string _13105 {
-            get {
-                return ResourceManager.GetString("13105", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Class of 2014.
-        /// </summary>
-        public static string _13106 {
-            get {
-                return ResourceManager.GetString("13106", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Class of 2015.
-        /// </summary>
-        public static string _13107 {
-            get {
-                return ResourceManager.GetString("13107", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Class of 2016.
-        /// </summary>
-        public static string _13108 {
-            get {
-                return ResourceManager.GetString("13108", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Class of 2017.
-        /// </summary>
-        public static string _13109 {
-            get {
-                return ResourceManager.GetString("13109", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Candy Cane.
-        /// </summary>
-        public static string _13110 {
-            get {
-                return ResourceManager.GetString("13110", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gingerbread.
-        /// </summary>
-        public static string _13111 {
-            get {
-                return ResourceManager.GetString("13111", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Green Wrapping Paper.
-        /// </summary>
-        public static string _13112 {
-            get {
-                return ResourceManager.GetString("13112", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Red Wrapping Paper.
-        /// </summary>
-        public static string _13113 {
-            get {
-                return ResourceManager.GetString("13113", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Love Fool.
-        /// </summary>
-        public static string _13115 {
-            get {
-                return ResourceManager.GetString("13115", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Easter Blue.
-        /// </summary>
-        public static string _13116 {
-            get {
-                return ResourceManager.GetString("13116", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Easter Green.
-        /// </summary>
-        public static string _13117 {
-            get {
-                return ResourceManager.GetString("13117", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Easter Pink.
-        /// </summary>
-        public static string _13118 {
-            get {
-                return ResourceManager.GetString("13118", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Easter Purple.
-        /// </summary>
-        public static string _13119 {
-            get {
-                return ResourceManager.GetString("13119", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Easter Yellow.
-        /// </summary>
-        public static string _13120 {
-            get {
-                return ResourceManager.GetString("13120", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to KBMOD.com New.
-        /// </summary>
-        public static string _13121 {
-            get {
-                return ResourceManager.GetString("13121", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EBL Tourney.
-        /// </summary>
-        public static string _13122 {
-            get {
-                return ResourceManager.GetString("13122", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bloodmoney.
-        /// </summary>
-        public static string _13123 {
-            get {
-                return ResourceManager.GetString("13123", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bloodmoney 2.
-        /// </summary>
-        public static string _13124 {
-            get {
-                return ResourceManager.GetString("13124", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cracked Apple.
-        /// </summary>
-        public static string _13125 {
-            get {
-                return ResourceManager.GetString("13125", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cracked Apple Pink.
-        /// </summary>
-        public static string _13126 {
-            get {
-                return ResourceManager.GetString("13126", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cracked Apple Red.
-        /// </summary>
-        public static string _13127 {
-            get {
-                return ResourceManager.GetString("13127", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digiplex.
-        /// </summary>
-        public static string _13128 {
-            get {
-                return ResourceManager.GetString("13128", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digiplex 2.
-        /// </summary>
-        public static string _13129 {
-            get {
-                return ResourceManager.GetString("13129", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digital Scatter.
-        /// </summary>
-        public static string _13130 {
-            get {
-                return ResourceManager.GetString("13130", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digital Scatter Green.
-        /// </summary>
-        public static string _13131 {
-            get {
-                return ResourceManager.GetString("13131", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digital Scatter Orange.
-        /// </summary>
-        public static string _13132 {
-            get {
-                return ResourceManager.GetString("13132", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fluffy Punk.
-        /// </summary>
-        public static string _13133 {
-            get {
-                return ResourceManager.GetString("13133", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to GoFast.
-        /// </summary>
-        public static string _13134 {
-            get {
-                return ResourceManager.GetString("13134", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Jagged Metallic.
-        /// </summary>
-        public static string _13135 {
-            get {
-                return ResourceManager.GetString("13135", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Jagged Metallic Green.
-        /// </summary>
-        public static string _13136 {
-            get {
-                return ResourceManager.GetString("13136", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Jagged Metallic Red.
-        /// </summary>
-        public static string _13137 {
-            get {
-                return ResourceManager.GetString("13137", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Molten Shards.
-        /// </summary>
-        public static string _13138 {
-            get {
-                return ResourceManager.GetString("13138", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mud Rough.
-        /// </summary>
-        public static string _13139 {
-            get {
-                return ResourceManager.GetString("13139", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mud Rough Pink.
-        /// </summary>
-        public static string _13140 {
-            get {
-                return ResourceManager.GetString("13140", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mud Rough Red.
-        /// </summary>
-        public static string _13141 {
-            get {
-                return ResourceManager.GetString("13141", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quiet Sand.
-        /// </summary>
-        public static string _13142 {
-            get {
-                return ResourceManager.GetString("13142", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quiet Sand Blue.
-        /// </summary>
-        public static string _13143 {
-            get {
-                return ResourceManager.GetString("13143", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quiet Sand Green.
-        /// </summary>
-        public static string _13144 {
-            get {
-                return ResourceManager.GetString("13144", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rock Matal.
-        /// </summary>
-        public static string _13145 {
-            get {
-                return ResourceManager.GetString("13145", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rock Metal Blue.
-        /// </summary>
-        public static string _13146 {
-            get {
-                return ResourceManager.GetString("13146", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rock Metal Orange.
-        /// </summary>
-        public static string _13147 {
-            get {
-                return ResourceManager.GetString("13147", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rocked Scuff.
-        /// </summary>
-        public static string _13148 {
-            get {
-                return ResourceManager.GetString("13148", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rocked Scuff Blue.
-        /// </summary>
-        public static string _13149 {
-            get {
-                return ResourceManager.GetString("13149", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rocked Scuff Yellow.
-        /// </summary>
-        public static string _13150 {
-            get {
-                return ResourceManager.GetString("13150", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scarred Stone.
-        /// </summary>
-        public static string _13151 {
-            get {
-                return ResourceManager.GetString("13151", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scarred Stone Orange.
-        /// </summary>
-        public static string _13152 {
-            get {
-                return ResourceManager.GetString("13152", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scarred Stone Pink.
-        /// </summary>
-        public static string _13153 {
-            get {
-                return ResourceManager.GetString("13153", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scarred Stone Teal.
-        /// </summary>
-        public static string _13154 {
-            get {
-                return ResourceManager.GetString("13154", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Splatter Smudge.
-        /// </summary>
-        public static string _13155 {
-            get {
-                return ResourceManager.GetString("13155", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Splatter Smudge Blue.
-        /// </summary>
-        public static string _13156 {
-            get {
-                return ResourceManager.GetString("13156", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Splatter Smudge Red.
-        /// </summary>
-        public static string _13157 {
-            get {
-                return ResourceManager.GetString("13157", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Splinter Bark.
-        /// </summary>
-        public static string _13158 {
-            get {
-                return ResourceManager.GetString("13158", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Splinter Bark Blue.
-        /// </summary>
-        public static string _13159 {
-            get {
-                return ResourceManager.GetString("13159", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Splinter Bark Green.
-        /// </summary>
-        public static string _13160 {
-            get {
-                return ResourceManager.GetString("13160", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Splinter Bark Red.
-        /// </summary>
-        public static string _13161 {
-            get {
-                return ResourceManager.GetString("13161", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Surfer Panic.
-        /// </summary>
-        public static string _13162 {
-            get {
-                return ResourceManager.GetString("13162", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arc.
-        /// </summary>
-        public static string _13163 {
-            get {
-                return ResourceManager.GetString("13163", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Red.
-        /// </summary>
-        public static string _14072 {
-            get {
-                return ResourceManager.GetString("14072", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Maroon.
-        /// </summary>
-        public static string _14073 {
-            get {
-                return ResourceManager.GetString("14073", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Blue.
-        /// </summary>
-        public static string _14074 {
-            get {
-                return ResourceManager.GetString("14074", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Black.
-        /// </summary>
-        public static string _14075 {
-            get {
-                return ResourceManager.GetString("14075", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Dark Purple.
-        /// </summary>
-        public static string _14077 {
-            get {
-                return ResourceManager.GetString("14077", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Green.
-        /// </summary>
-        public static string _14078 {
-            get {
-                return ResourceManager.GetString("14078", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metallic Yellow.
-        /// </summary>
-        public static string _14079 {
-            get {
-                return ResourceManager.GetString("14079", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cash Flow.
-        /// </summary>
-        public static string _14081 {
-            get {
-                return ResourceManager.GetString("14081", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bearded Ops.
-        /// </summary>
-        public static string _14093 {
-            get {
-                return ResourceManager.GetString("14093", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Malaysia Flag.
-        /// </summary>
-        public static string _14096 {
-            get {
-                return ResourceManager.GetString("14096", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Briar BrGR1.
-        /// </summary>
-        public static string _15000 {
-            get {
-                return ResourceManager.GetString("15000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Briar BrSGP1.
-        /// </summary>
-        public static string _15001 {
-            get {
-                return ResourceManager.GetString("15001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standard Mag.
-        /// </summary>
-        public static string _16000 {
-            get {
-                return ResourceManager.GetString("16000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Mag.
-        /// </summary>
-        public static string _16001 {
-            get {
-                return ResourceManager.GetString("16001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quick Mag.
-        /// </summary>
-        public static string _16002 {
-            get {
-                return ResourceManager.GetString("16002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Extended Mag.
-        /// </summary>
-        public static string _16003 {
-            get {
-                return ResourceManager.GetString("16003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Express Mag.
-        /// </summary>
-        public static string _16004 {
-            get {
-                return ResourceManager.GetString("16004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Electro Mag.
-        /// </summary>
-        public static string _16005 {
-            get {
-                return ResourceManager.GetString("16005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Explosive Mag.
-        /// </summary>
-        public static string _16006 {
-            get {
-                return ResourceManager.GetString("16006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incendiary Mag.
-        /// </summary>
-        public static string _16007 {
-            get {
-                return ResourceManager.GetString("16007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Mag.
-        /// </summary>
-        public static string _16008 {
-            get {
-                return ResourceManager.GetString("16008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Drum Mag.
-        /// </summary>
-        public static string _16014 {
-            get {
-                return ResourceManager.GetString("16014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Large Drum Mag.
-        /// </summary>
-        public static string _16015 {
-            get {
-                return ResourceManager.GetString("16015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standard Tube Magazine.
-        /// </summary>
-        public static string _16029 {
-            get {
-                return ResourceManager.GetString("16029", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Tube Magazine.
-        /// </summary>
-        public static string _16030 {
-            get {
-                return ResourceManager.GetString("16030", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quick Tube Magazine.
-        /// </summary>
-        public static string _16031 {
-            get {
-                return ResourceManager.GetString("16031", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Extended Tube Magazine.
-        /// </summary>
-        public static string _16032 {
-            get {
-                return ResourceManager.GetString("16032", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Express Tube Magazine.
-        /// </summary>
-        public static string _16033 {
-            get {
-                return ResourceManager.GetString("16033", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Drum Magazine.
-        /// </summary>
-        public static string _16034 {
-            get {
-                return ResourceManager.GetString("16034", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standard Ammo Belt.
-        /// </summary>
-        public static string _16039 {
-            get {
-                return ResourceManager.GetString("16039", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quick Ammo Belt.
-        /// </summary>
-        public static string _16040 {
-            get {
-                return ResourceManager.GetString("16040", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Electro Ammo Belt.
-        /// </summary>
-        public static string _16041 {
-            get {
-                return ResourceManager.GetString("16041", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Explosive Ammo Belt.
-        /// </summary>
-        public static string _16042 {
-            get {
-                return ResourceManager.GetString("16042", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incendiary Ammo Belt.
-        /// </summary>
-        public static string _16043 {
-            get {
-                return ResourceManager.GetString("16043", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Ammo Belt.
-        /// </summary>
-        public static string _16044 {
-            get {
-                return ResourceManager.GetString("16044", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standard Cylinder.
-        /// </summary>
-        public static string _16099 {
-            get {
-                return ResourceManager.GetString("16099", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Electro Cylinder.
-        /// </summary>
-        public static string _16100 {
-            get {
-                return ResourceManager.GetString("16100", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Explosive Cylinder.
-        /// </summary>
-        public static string _16101 {
-            get {
-                return ResourceManager.GetString("16101", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incendiary Cylinder.
-        /// </summary>
-        public static string _16102 {
-            get {
-                return ResourceManager.GetString("16102", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Cylinder.
-        /// </summary>
-        public static string _16103 {
-            get {
-                return ResourceManager.GetString("16103", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standard Ammo Box.
-        /// </summary>
-        public static string _16104 {
-            get {
-                return ResourceManager.GetString("16104", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Ammo Box.
-        /// </summary>
-        public static string _16105 {
-            get {
-                return ResourceManager.GetString("16105", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Large Capacity Ammo Box.
-        /// </summary>
-        public static string _16106 {
-            get {
-                return ResourceManager.GetString("16106", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to High Explosive Round Bore.
-        /// </summary>
-        public static string _16134 {
-            get {
-                return ResourceManager.GetString("16134", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incendiary Round Bore.
-        /// </summary>
-        public static string _16135 {
-            get {
-                return ResourceManager.GetString("16135", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Electro Ammo Box.
-        /// </summary>
-        public static string _16136 {
-            get {
-                return ResourceManager.GetString("16136", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Explosive Ammo Box.
-        /// </summary>
-        public static string _16137 {
-            get {
-                return ResourceManager.GetString("16137", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incendiary Ammo Box.
-        /// </summary>
-        public static string _16138 {
-            get {
-                return ResourceManager.GetString("16138", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Ammo Box.
-        /// </summary>
-        public static string _16139 {
-            get {
-                return ResourceManager.GetString("16139", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Magnum Mag.
-        /// </summary>
-        public static string _16158 {
-            get {
-                return ResourceManager.GetString("16158", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Magnum Ammo Belt.
-        /// </summary>
-        public static string _16168 {
-            get {
-                return ResourceManager.GetString("16168", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Magnum Cylinder.
-        /// </summary>
-        public static string _16173 {
-            get {
-                return ResourceManager.GetString("16173", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Magnum Ammo Box.
-        /// </summary>
-        public static string _16175 {
-            get {
-                return ResourceManager.GetString("16175", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Flechette Chamber Boring.
-        /// </summary>
-        public static string _16176 {
-            get {
-                return ResourceManager.GetString("16176", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Precision Cylinder.
-        /// </summary>
-        public static string _16178 {
-            get {
-                return ResourceManager.GetString("16178", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to High Caliber Cylinder.
-        /// </summary>
-        public static string _16179 {
-            get {
-                return ResourceManager.GetString("16179", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Standard Mag.
-        /// </summary>
-        public static string _16226 {
-            get {
-                return ResourceManager.GetString("16226", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Muzzle Mod.
-        /// </summary>
-        public static string _17000 {
-            get {
-                return ResourceManager.GetString("17000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ArmCom Slit Flash breaker.
-        /// </summary>
-        public static string _17001 {
-            get {
-                return ResourceManager.GetString("17001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nexus Extended Range Muzzle.
-        /// </summary>
-        public static string _17002 {
-            get {
-                return ResourceManager.GetString("17002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frontier Standard Suppressor.
-        /// </summary>
-        public static string _17003 {
-            get {
-                return ResourceManager.GetString("17003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Briar Dampening Muzzle.
-        /// </summary>
-        public static string _17004 {
-            get {
-                return ResourceManager.GetString("17004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vulcan Notched Flash breaker.
-        /// </summary>
-        public static string _17005 {
-            get {
-                return ResourceManager.GetString("17005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Briar Enhanced Suppressor.
-        /// </summary>
-        public static string _17006 {
-            get {
-                return ResourceManager.GetString("17006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vulcan Compensator.
-        /// </summary>
-        public static string _17007 {
-            get {
-                return ResourceManager.GetString("17007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vulcan Longreach Flash breaker.
-        /// </summary>
-        public static string _17008 {
-            get {
-                return ResourceManager.GetString("17008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Overmatch Muzzle Shroud.
-        /// </summary>
-        public static string _17009 {
-            get {
-                return ResourceManager.GetString("17009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ArmCom Enhanced Suppressor.
-        /// </summary>
-        public static string _17010 {
-            get {
-                return ResourceManager.GetString("17010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frontier Power Muzzle.
-        /// </summary>
-        public static string _17011 {
-            get {
-                return ResourceManager.GetString("17011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Silverwood Flash breaker.
-        /// </summary>
-        public static string _17012 {
-            get {
-                return ResourceManager.GetString("17012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vulcan Power Brake.
-        /// </summary>
-        public static string _17013 {
-            get {
-                return ResourceManager.GetString("17013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Krane Power Muzzle.
-        /// </summary>
-        public static string _17014 {
-            get {
-                return ResourceManager.GetString("17014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Briar Extender Muzzle.
-        /// </summary>
-        public static string _17015 {
-            get {
-                return ResourceManager.GetString("17015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ArmCom Power Muzzle.
-        /// </summary>
-        public static string _17016 {
-            get {
-                return ResourceManager.GetString("17016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ArmCom Balanced Muzzle.
-        /// </summary>
-        public static string _17017 {
-            get {
-                return ResourceManager.GetString("17017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Overmatch Muzzle Shroud.
-        /// </summary>
-        public static string _17018 {
-            get {
-                return ResourceManager.GetString("17018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Weapon Skin.
-        /// </summary>
-        public static string _18000 {
-            get {
-                return ResourceManager.GetString("18000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18001 {
-            get {
-                return ResourceManager.GetString("18001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18002 {
-            get {
-                return ResourceManager.GetString("18002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Green Hex Weapon Skin (Test Skin Name 2).
-        /// </summary>
-        public static string _18003 {
-            get {
-                return ResourceManager.GetString("18003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Australian Flag Weapon Skin.
-        /// </summary>
-        public static string _18004 {
-            get {
-                return ResourceManager.GetString("18004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Malaysan Flag Weapon Skin.
-        /// </summary>
-        public static string _18005 {
-            get {
-                return ResourceManager.GetString("18005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - New Zealand Flag Weapon SKin.
-        /// </summary>
-        public static string _18006 {
-            get {
-                return ResourceManager.GetString("18006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Singapore Flag Weapon Skin.
-        /// </summary>
-        public static string _18007 {
-            get {
-                return ResourceManager.GetString("18007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Turkish Flag Weapon Skin.
-        /// </summary>
-        public static string _18008 {
-            get {
-                return ResourceManager.GetString("18008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18009 {
-            get {
-                return ResourceManager.GetString("18009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18010 {
-            get {
-                return ResourceManager.GetString("18010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18011 {
-            get {
-                return ResourceManager.GetString("18011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18012 {
-            get {
-                return ResourceManager.GetString("18012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18013 {
-            get {
-                return ResourceManager.GetString("18013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18014 {
-            get {
-                return ResourceManager.GetString("18014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18015 {
-            get {
-                return ResourceManager.GetString("18015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18016 {
-            get {
-                return ResourceManager.GetString("18016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Stars And Stripes Weapon Skin.
-        /// </summary>
-        public static string _18017 {
-            get {
-                return ResourceManager.GetString("18017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18018 {
-            get {
-                return ResourceManager.GetString("18018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18019 {
-            get {
-                return ResourceManager.GetString("18019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18020 {
-            get {
-                return ResourceManager.GetString("18020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18021 {
-            get {
-                return ResourceManager.GetString("18021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18022 {
-            get {
-                return ResourceManager.GetString("18022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18023 {
-            get {
-                return ResourceManager.GetString("18023", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18024 {
-            get {
-                return ResourceManager.GetString("18024", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18025 {
-            get {
-                return ResourceManager.GetString("18025", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18026 {
-            get {
-                return ResourceManager.GetString("18026", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Japanese Flag Weapon Skin.
-        /// </summary>
-        public static string _18027 {
-            get {
-                return ResourceManager.GetString("18027", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Australian Flag Weapon Skin.
-        /// </summary>
-        public static string _18028 {
-            get {
-                return ResourceManager.GetString("18028", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Malaysian Flag Weapon Skin.
-        /// </summary>
-        public static string _18029 {
-            get {
-                return ResourceManager.GetString("18029", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - New Zealand Weapon Skin.
-        /// </summary>
-        public static string _18030 {
-            get {
-                return ResourceManager.GetString("18030", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Singapore Flag Weapon Skin.
-        /// </summary>
-        public static string _18031 {
-            get {
-                return ResourceManager.GetString("18031", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Turkish Flag Weapon Skin.
-        /// </summary>
-        public static string _18032 {
-            get {
-                return ResourceManager.GetString("18032", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - MLG TourNament Weapon Skin.
-        /// </summary>
-        public static string _18033 {
-            get {
-                return ResourceManager.GetString("18033", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18034 {
-            get {
-                return ResourceManager.GetString("18034", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18035 {
-            get {
-                return ResourceManager.GetString("18035", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18036 {
-            get {
-                return ResourceManager.GetString("18036", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18037 {
-            get {
-                return ResourceManager.GetString("18037", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18038 {
-            get {
-                return ResourceManager.GetString("18038", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18039 {
-            get {
-                return ResourceManager.GetString("18039", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18040 {
-            get {
-                return ResourceManager.GetString("18040", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - The Droughtbreaker Weapon Skin.
-        /// </summary>
-        public static string _18041 {
-            get {
-                return ResourceManager.GetString("18041", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18042 {
-            get {
-                return ResourceManager.GetString("18042", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18043 {
-            get {
-                return ResourceManager.GetString("18043", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Broken MLG Tournament Weapon Skin.
-        /// </summary>
-        public static string _18044 {
-            get {
-                return ResourceManager.GetString("18044", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18045 {
-            get {
-                return ResourceManager.GetString("18045", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18046 {
-            get {
-                return ResourceManager.GetString("18046", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18047 {
-            get {
-                return ResourceManager.GetString("18047", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18048 {
-            get {
-                return ResourceManager.GetString("18048", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18049 {
-            get {
-                return ResourceManager.GetString("18049", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18050 {
-            get {
-                return ResourceManager.GetString("18050", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18051 {
-            get {
-                return ResourceManager.GetString("18051", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18052 {
-            get {
-                return ResourceManager.GetString("18052", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18053 {
-            get {
-                return ResourceManager.GetString("18053", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18054 {
-            get {
-                return ResourceManager.GetString("18054", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18055 {
-            get {
-                return ResourceManager.GetString("18055", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18056 {
-            get {
-                return ResourceManager.GetString("18056", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18057 {
-            get {
-                return ResourceManager.GetString("18057", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18058 {
-            get {
-                return ResourceManager.GetString("18058", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18059 {
-            get {
-                return ResourceManager.GetString("18059", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18060 {
-            get {
-                return ResourceManager.GetString("18060", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18061 {
-            get {
-                return ResourceManager.GetString("18061", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18062 {
-            get {
-                return ResourceManager.GetString("18062", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18063 {
-            get {
-                return ResourceManager.GetString("18063", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18064 {
-            get {
-                return ResourceManager.GetString("18064", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18065 {
-            get {
-                return ResourceManager.GetString("18065", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18066 {
-            get {
-                return ResourceManager.GetString("18066", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18067 {
-            get {
-                return ResourceManager.GetString("18067", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18068 {
-            get {
-                return ResourceManager.GetString("18068", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18069 {
-            get {
-                return ResourceManager.GetString("18069", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18070 {
-            get {
-                return ResourceManager.GetString("18070", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18071 {
-            get {
-                return ResourceManager.GetString("18071", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18072 {
-            get {
-                return ResourceManager.GetString("18072", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18073 {
-            get {
-                return ResourceManager.GetString("18073", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18074 {
-            get {
-                return ResourceManager.GetString("18074", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18075 {
-            get {
-                return ResourceManager.GetString("18075", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18076 {
-            get {
-                return ResourceManager.GetString("18076", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18077 {
-            get {
-                return ResourceManager.GetString("18077", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18078 {
-            get {
-                return ResourceManager.GetString("18078", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18079 {
-            get {
-                return ResourceManager.GetString("18079", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18080 {
-            get {
-                return ResourceManager.GetString("18080", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18081 {
-            get {
-                return ResourceManager.GetString("18081", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18082 {
-            get {
-                return ResourceManager.GetString("18082", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18083 {
-            get {
-                return ResourceManager.GetString("18083", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18084 {
-            get {
-                return ResourceManager.GetString("18084", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18085 {
-            get {
-                return ResourceManager.GetString("18085", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18086 {
-            get {
-                return ResourceManager.GetString("18086", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18087 {
-            get {
-                return ResourceManager.GetString("18087", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18088 {
-            get {
-                return ResourceManager.GetString("18088", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18089 {
-            get {
-                return ResourceManager.GetString("18089", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18090 {
-            get {
-                return ResourceManager.GetString("18090", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18091 {
-            get {
-                return ResourceManager.GetString("18091", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18092 {
-            get {
-                return ResourceManager.GetString("18092", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18093 {
-            get {
-                return ResourceManager.GetString("18093", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18094 {
-            get {
-                return ResourceManager.GetString("18094", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18095 {
-            get {
-                return ResourceManager.GetString("18095", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18096 {
-            get {
-                return ResourceManager.GetString("18096", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18097 {
-            get {
-                return ResourceManager.GetString("18097", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18098 {
-            get {
-                return ResourceManager.GetString("18098", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18099 {
-            get {
-                return ResourceManager.GetString("18099", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18100 {
-            get {
-                return ResourceManager.GetString("18100", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18101 {
-            get {
-                return ResourceManager.GetString("18101", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18102 {
-            get {
-                return ResourceManager.GetString("18102", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18103 {
-            get {
-                return ResourceManager.GetString("18103", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18104 {
-            get {
-                return ResourceManager.GetString("18104", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18105 {
-            get {
-                return ResourceManager.GetString("18105", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18106 {
-            get {
-                return ResourceManager.GetString("18106", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18107 {
-            get {
-                return ResourceManager.GetString("18107", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18108 {
-            get {
-                return ResourceManager.GetString("18108", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18109 {
-            get {
-                return ResourceManager.GetString("18109", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18110 {
-            get {
-                return ResourceManager.GetString("18110", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18111 {
-            get {
-                return ResourceManager.GetString("18111", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18112 {
-            get {
-                return ResourceManager.GetString("18112", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18113 {
-            get {
-                return ResourceManager.GetString("18113", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18114 {
-            get {
-                return ResourceManager.GetString("18114", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18115 {
-            get {
-                return ResourceManager.GetString("18115", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18116 {
-            get {
-                return ResourceManager.GetString("18116", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18117 {
-            get {
-                return ResourceManager.GetString("18117", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18118 {
-            get {
-                return ResourceManager.GetString("18118", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18119 {
-            get {
-                return ResourceManager.GetString("18119", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18120 {
-            get {
-                return ResourceManager.GetString("18120", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18121 {
-            get {
-                return ResourceManager.GetString("18121", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18122 {
-            get {
-                return ResourceManager.GetString("18122", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18123 {
-            get {
-                return ResourceManager.GetString("18123", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18124 {
-            get {
-                return ResourceManager.GetString("18124", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18125 {
-            get {
-                return ResourceManager.GetString("18125", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18126 {
-            get {
-                return ResourceManager.GetString("18126", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18127 {
-            get {
-                return ResourceManager.GetString("18127", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18128 {
-            get {
-                return ResourceManager.GetString("18128", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18129 {
-            get {
-                return ResourceManager.GetString("18129", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18130 {
-            get {
-                return ResourceManager.GetString("18130", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18131 {
-            get {
-                return ResourceManager.GetString("18131", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18132 {
-            get {
-                return ResourceManager.GetString("18132", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18133 {
-            get {
-                return ResourceManager.GetString("18133", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18134 {
-            get {
-                return ResourceManager.GetString("18134", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18135 {
-            get {
-                return ResourceManager.GetString("18135", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18136 {
-            get {
-                return ResourceManager.GetString("18136", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18137 {
-            get {
-                return ResourceManager.GetString("18137", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18138 {
-            get {
-                return ResourceManager.GetString("18138", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18139 {
-            get {
-                return ResourceManager.GetString("18139", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18140 {
-            get {
-                return ResourceManager.GetString("18140", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18141 {
-            get {
-                return ResourceManager.GetString("18141", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18142 {
-            get {
-                return ResourceManager.GetString("18142", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18143 {
-            get {
-                return ResourceManager.GetString("18143", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18144 {
-            get {
-                return ResourceManager.GetString("18144", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18145 {
-            get {
-                return ResourceManager.GetString("18145", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18146 {
-            get {
-                return ResourceManager.GetString("18146", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18147 {
-            get {
-                return ResourceManager.GetString("18147", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18148 {
-            get {
-                return ResourceManager.GetString("18148", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18149 {
-            get {
-                return ResourceManager.GetString("18149", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18150 {
-            get {
-                return ResourceManager.GetString("18150", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Green Hex Weapon Skin.
-        /// </summary>
-        public static string _18151 {
-            get {
-                return ResourceManager.GetString("18151", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Stars and Stripes Weapon Skin.
-        /// </summary>
-        public static string _18152 {
-            get {
-                return ResourceManager.GetString("18152", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Orange Weapon Skin.
-        /// </summary>
-        public static string _18153 {
-            get {
-                return ResourceManager.GetString("18153", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Blue Weapon Skin.
-        /// </summary>
-        public static string _18154 {
-            get {
-                return ResourceManager.GetString("18154", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Clovers Weapon Skin.
-        /// </summary>
-        public static string _18155 {
-            get {
-                return ResourceManager.GetString("18155", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Pink Weapon Skin.
-        /// </summary>
-        public static string _18156 {
-            get {
-                return ResourceManager.GetString("18156", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Red Weapon Skin.
-        /// </summary>
-        public static string _18157 {
-            get {
-                return ResourceManager.GetString("18157", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Green Weapon Skin.
-        /// </summary>
-        public static string _18158 {
-            get {
-                return ResourceManager.GetString("18158", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel - Tiger Stripes Yellow Weapon Skin.
-        /// </summary>
-        public static string _18159 {
-            get {
-                return ResourceManager.GetString("18159", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cupid&apos;s QT Pi Bow.
-        /// </summary>
-        public static string _18160 {
-            get {
-                return ResourceManager.GetString("18160", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EMI Infrared Scope Mk. 2.
-        /// </summary>
-        public static string _19000 {
-            get {
-                return ResourceManager.GetString("19000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EMI Infrared Scope.
-        /// </summary>
-        public static string _19001 {
-            get {
-                return ResourceManager.GetString("19001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Aim Point Ammo Counter.
-        /// </summary>
-        public static string _19002 {
-            get {
-                return ResourceManager.GetString("19002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 4X Ammo Counter Scope.
-        /// </summary>
-        public static string _19003 {
-            get {
-                return ResourceManager.GetString("19003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ArmCom Infrared Scope.
-        /// </summary>
-        public static string _19004 {
-            get {
-                return ResourceManager.GetString("19004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lightsky Red Dot Sight.
-        /// </summary>
-        public static string _19005 {
-            get {
-                return ResourceManager.GetString("19005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frontier Sniper Scope.
-        /// </summary>
-        public static string _19006 {
-            get {
-                return ResourceManager.GetString("19006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Krane Tactical Scope.
-        /// </summary>
-        public static string _19007 {
-            get {
-                return ResourceManager.GetString("19007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MMRS Flip-Up Rail Sight.
-        /// </summary>
-        public static string _19008 {
-            get {
-                return ResourceManager.GetString("19008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to invalid scope.
-        /// </summary>
-        public static string _19009 {
-            get {
-                return ResourceManager.GetString("19009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EMI Electric Scope.
-        /// </summary>
-        public static string _19010 {
-            get {
-                return ResourceManager.GetString("19010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Krane Holo Sight.
-        /// </summary>
-        public static string _19011 {
-            get {
-                return ResourceManager.GetString("19011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ArmCom Sniper Scope.
-        /// </summary>
-        public static string _19012 {
-            get {
-                return ResourceManager.GetString("19012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ArmCom CQC Scope.
-        /// </summary>
-        public static string _19013 {
-            get {
-                return ResourceManager.GetString("19013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OPRL Holo Sight.
-        /// </summary>
-        public static string _19014 {
-            get {
-                return ResourceManager.GetString("19014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EMI ACOG Scope.
-        /// </summary>
-        public static string _19015 {
-            get {
-                return ResourceManager.GetString("19015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EON Electric Scope.
-        /// </summary>
-        public static string _19016 {
-            get {
-                return ResourceManager.GetString("19016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EMI Tech Scope.
-        /// </summary>
-        public static string _19017 {
-            get {
-                return ResourceManager.GetString("19017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Silverwood Combo Scope.
-        /// </summary>
-        public static string _19018 {
-            get {
-                return ResourceManager.GetString("19018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lightsky Reflex Sight.
-        /// </summary>
-        public static string _19019 {
-            get {
-                return ResourceManager.GetString("19019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Krane Sniper Scope.
-        /// </summary>
-        public static string _19020 {
-            get {
-                return ResourceManager.GetString("19020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Silverwood Heavy Scope.
-        /// </summary>
-        public static string _19021 {
-            get {
-                return ResourceManager.GetString("19021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Titan Rail Sight.
-        /// </summary>
-        public static string _19022 {
-            get {
-                return ResourceManager.GetString("19022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Optic Mod.
-        /// </summary>
-        public static string _19023 {
-            get {
-                return ResourceManager.GetString("19023", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Titan Rail Sight.
-        /// </summary>
-        public static string _19024 {
-            get {
-                return ResourceManager.GetString("19024", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Grendel - K. Moreau.
-        /// </summary>
-        public static string _2000 {
-            get {
-                return ResourceManager.GetString("2000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Briar Elite A4-BS.
+        ///   Looks up a localized string similar to Health Refill.
         /// </summary>
         public static string _20000 {
             get {
@@ -4885,7 +2113,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hullbreach 89-BPFA.
+        ///   Looks up a localized string similar to Ammo Refill.
         /// </summary>
         public static string _20001 {
             get {
@@ -4894,7 +2122,16 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Silverwood z1200 BPFA.
+        ///   Looks up a localized string similar to MK1 Assault AI.
+        /// </summary>
+        public static string _200013 {
+            get {
+                return ResourceManager.GetString("200013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocket Swarm.
         /// </summary>
         public static string _20002 {
             get {
@@ -4903,7 +2140,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Redsand Compensator Stock.
+        ///   Looks up a localized string similar to Flamethrower.
         /// </summary>
         public static string _20003 {
             get {
@@ -4912,7 +2149,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Frontier Ultralight Stock.
+        ///   Looks up a localized string similar to Rhino Hardsuit.
         /// </summary>
         public static string _20004 {
             get {
@@ -4921,7 +2158,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Krane Ultralight Stock.
+        ///   Looks up a localized string similar to Railgun.
         /// </summary>
         public static string _20005 {
             get {
@@ -4930,7 +2167,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmCom Compensator Stock.
+        ///   Looks up a localized string similar to Airstrike.
         /// </summary>
         public static string _20006 {
             get {
@@ -4939,7 +2176,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Krane Extender Stock.
+        ///   Looks up a localized string similar to Grenade Launcher.
         /// </summary>
         public static string _20007 {
             get {
@@ -4948,7 +2185,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulcan Extender Stock.
+        ///   Looks up a localized string similar to Minigun.
         /// </summary>
         public static string _20008 {
             get {
@@ -4957,7 +2194,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V2 Folding Stock.
+        ///   Looks up a localized string similar to Turret.
         /// </summary>
         public static string _20009 {
             get {
@@ -4966,16 +2203,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Viper - J. Vansaint.
-        /// </summary>
-        public static string _2001 {
-            get {
-                return ResourceManager.GetString("2001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Silverwood Compensator Stock.
+        ///   Looks up a localized string similar to Katana.
         /// </summary>
         public static string _20010 {
             get {
@@ -4984,7 +2212,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taurex Stabilizing Stock.
+        ///   Looks up a localized string similar to Rocket Stinger.
         /// </summary>
         public static string _20011 {
             get {
@@ -4993,7 +2221,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Krane Tactical Stock.
+        ///   Looks up a localized string similar to Heavy Weapon Refill.
         /// </summary>
         public static string _20012 {
             get {
@@ -5002,7 +2230,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hullbreach CQC Stock.
+        ///   Looks up a localized string similar to Hardsuit HRV Decoy.
         /// </summary>
         public static string _20013 {
             get {
@@ -5011,7 +2239,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Silverwood Standard Stock.
+        ///   Looks up a localized string similar to Gunman Hardsuit.
         /// </summary>
         public static string _20014 {
             get {
@@ -5020,7 +2248,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch Compensator Stock.
+        ///   Looks up a localized string similar to HRV Jammer.
         /// </summary>
         public static string _20015 {
             get {
@@ -5029,7 +2257,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmCom Folding Stock.
+        ///   Looks up a localized string similar to Toxic Antidote.
         /// </summary>
         public static string _20016 {
             get {
@@ -5038,2369 +2266,5906 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MMRS BP-SR Tactical.
+        ///   Looks up a localized string similar to Hush.
         /// </summary>
-        public static string _20017 {
+        public static string _300 {
             get {
-                return ResourceManager.GetString("20017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MMRS BP-XLi.
-        /// </summary>
-        public static string _20018 {
-            get {
-                return ResourceManager.GetString("20018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MMRS BP-CQ + PCR.
-        /// </summary>
-        public static string _20019 {
-            get {
-                return ResourceManager.GetString("20019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Duchess - S. Bertolette.
-        /// </summary>
-        public static string _2002 {
-            get {
-                return ResourceManager.GetString("2002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Silverwood Standard Stock.
-        /// </summary>
-        public static string _20020 {
-            get {
-                return ResourceManager.GetString("20020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Stock.
-        /// </summary>
-        public static string _20021 {
-            get {
-                return ResourceManager.GetString("20021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deacon - T. Halsey.
-        /// </summary>
-        public static string _2003 {
-            get {
-                return ResourceManager.GetString("2003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MARS - ARK M.A.R.S..
-        /// </summary>
-        public static string _2004 {
-            get {
-                return ResourceManager.GetString("2004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chronos - R. O&apos;Conner.
-        /// </summary>
-        public static string _2005 {
-            get {
-                return ResourceManager.GetString("2005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lazarus - B. Hinds.
-        /// </summary>
-        public static string _2006 {
-            get {
-                return ResourceManager.GetString("2006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Artemis - M. Akimoto.
-        /// </summary>
-        public static string _2007 {
-            get {
-                return ResourceManager.GetString("2007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Crusher - A. Hernandez.
-        /// </summary>
-        public static string _2008 {
-            get {
-                return ResourceManager.GetString("2008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Urban Combat Viper.
-        /// </summary>
-        public static string _2009 {
-            get {
-                return ResourceManager.GetString("2009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mercenary Grendel.
-        /// </summary>
-        public static string _2010 {
-            get {
-                return ResourceManager.GetString("2010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Peacekeeper MARS.
-        /// </summary>
-        public static string _2011 {
-            get {
-                return ResourceManager.GetString("2011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lilith - S. Karalis.
-        /// </summary>
-        public static string _2012 {
-            get {
-                return ResourceManager.GetString("2012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Royal Duchess.
-        /// </summary>
-        public static string _2013 {
-            get {
-                return ResourceManager.GetString("2013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Patient Zero Viper.
-        /// </summary>
-        public static string _2014 {
-            get {
-                return ResourceManager.GetString("2014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ranger Duchess.
-        /// </summary>
-        public static string _2015 {
-            get {
-                return ResourceManager.GetString("2015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Engineer Deacon.
-        /// </summary>
-        public static string _2016 {
-            get {
-                return ResourceManager.GetString("2016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Civil Defense MARS.
-        /// </summary>
-        public static string _2017 {
-            get {
-                return ResourceManager.GetString("2017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Platoon Grendel.
-        /// </summary>
-        public static string _2018 {
-            get {
-                return ResourceManager.GetString("2018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to White Knight.
-        /// </summary>
-        public static string _2019 {
-            get {
-                return ResourceManager.GetString("2019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Full Exoframe Deacon.
-        /// </summary>
-        public static string _2020 {
-            get {
-                return ResourceManager.GetString("2020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Battle Triage Lazarus.
-        /// </summary>
-        public static string _2021 {
-            get {
-                return ResourceManager.GetString("2021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rural Operations Lazarus.
-        /// </summary>
-        public static string _2022 {
-            get {
-                return ResourceManager.GetString("2022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cyber Assault Chronos.
-        /// </summary>
-        public static string _2023 {
-            get {
-                return ResourceManager.GetString("2023", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Electronic Warfare Chronos.
-        /// </summary>
-        public static string _2024 {
-            get {
-                return ResourceManager.GetString("2024", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Urban MARS.
-        /// </summary>
-        public static string _2025 {
-            get {
-                return ResourceManager.GetString("2025", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Battle Mode Suit Lilith.
-        /// </summary>
-        public static string _2026 {
-            get {
-                return ResourceManager.GetString("2026", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Forest Dark Lilith.
-        /// </summary>
-        public static string _2027 {
-            get {
-                return ResourceManager.GetString("2027", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to High Altitude System Artemis.
-        /// </summary>
-        public static string _2028 {
-            get {
-                return ResourceManager.GetString("2028", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Glacial Grendel.
-        /// </summary>
-        public static string _2029 {
-            get {
-                return ResourceManager.GetString("2029", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arid Light Viper.
-        /// </summary>
-        public static string _2030 {
-            get {
-                return ResourceManager.GetString("2030", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Temperate Camo Duchess.
-        /// </summary>
-        public static string _2031 {
-            get {
-                return ResourceManager.GetString("2031", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ghost - J. Haussen.
-        /// </summary>
-        public static string _2032 {
-            get {
-                return ResourceManager.GetString("2032", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Desert C.S.A.R. Crusher.
-        /// </summary>
-        public static string _2033 {
-            get {
-                return ResourceManager.GetString("2033", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Survival Suit Ghost.
-        /// </summary>
-        public static string _2034 {
-            get {
-                return ResourceManager.GetString("2034", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Avatar.
-        /// </summary>
-        public static string _2035 {
-            get {
-                return ResourceManager.GetString("2035", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Assault Rifle.
-        /// </summary>
-        public static string _21000 {
-            get {
-                return ResourceManager.GetString("21000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LMG Recon.
-        /// </summary>
-        public static string _21001 {
-            get {
-                return ResourceManager.GetString("21001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical SMG.
-        /// </summary>
-        public static string _21002 {
-            get {
-                return ResourceManager.GetString("21002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire SMG.
-        /// </summary>
-        public static string _21003 {
-            get {
-                return ResourceManager.GetString("21003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Anti-Materiel Rifle.
-        /// </summary>
-        public static string _21004 {
-            get {
-                return ResourceManager.GetString("21004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bullpup Full Auto.
-        /// </summary>
-        public static string _21005 {
-            get {
-                return ResourceManager.GetString("21005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AK470 Rifle.
-        /// </summary>
-        public static string _21006 {
-            get {
-                return ResourceManager.GetString("21006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Compound Bow.
-        /// </summary>
-        public static string _21007 {
-            get {
-                return ResourceManager.GetString("21007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M4X Rifle.
-        /// </summary>
-        public static string _21008 {
-            get {
-                return ResourceManager.GetString("21008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tactical Assault Rifle.
-        /// </summary>
-        public static string _21009 {
-            get {
-                return ResourceManager.GetString("21009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assault Rifle.
-        /// </summary>
-        public static string _21010 {
-            get {
-                return ResourceManager.GetString("21010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bolt-Action Rifle.
-        /// </summary>
-        public static string _21011 {
-            get {
-                return ResourceManager.GetString("21011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Machine Gun.
-        /// </summary>
-        public static string _21012 {
-            get {
-                return ResourceManager.GetString("21012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Rifle.
-        /// </summary>
-        public static string _21013 {
-            get {
-                return ResourceManager.GetString("21013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Assault Rifle.
-        /// </summary>
-        public static string _21014 {
-            get {
-                return ResourceManager.GetString("21014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Submachine Gun.
-        /// </summary>
-        public static string _21015 {
-            get {
-                return ResourceManager.GetString("21015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Combat Rifle.
-        /// </summary>
-        public static string _21016 {
-            get {
-                return ResourceManager.GetString("21016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Recon Rifle.
-        /// </summary>
-        public static string _21017 {
-            get {
-                return ResourceManager.GetString("21017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shotgun AR-k.
-        /// </summary>
-        public static string _22000 {
-            get {
-                return ResourceManager.GetString("22000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Breech Loaded Pistol.
-        /// </summary>
-        public static string _22001 {
-            get {
-                return ResourceManager.GetString("22001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Snub 260.
-        /// </summary>
-        public static string _22002 {
-            get {
-                return ResourceManager.GetString("22002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Pistol.
-        /// </summary>
-        public static string _22003 {
-            get {
-                return ResourceManager.GetString("22003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light Pistol.
-        /// </summary>
-        public static string _22004 {
-            get {
-                return ResourceManager.GetString("22004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Burstfire Pistol.
-        /// </summary>
-        public static string _22005 {
-            get {
-                return ResourceManager.GetString("22005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Light Pistol.
-        /// </summary>
-        public static string _22006 {
-            get {
-                return ResourceManager.GetString("22006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Machine Pistol.
-        /// </summary>
-        public static string _22007 {
-            get {
-                return ResourceManager.GetString("22007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Revolver.
-        /// </summary>
-        public static string _22008 {
-            get {
-                return ResourceManager.GetString("22008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shotgun.
-        /// </summary>
-        public static string _22009 {
-            get {
-                return ResourceManager.GetString("22009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Airstrike.
-        /// </summary>
-        public static string _22010 {
-            get {
-                return ResourceManager.GetString("22010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Turret.
-        /// </summary>
-        public static string _22011 {
-            get {
-                return ResourceManager.GetString("22011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Flamethrower.
-        /// </summary>
-        public static string _22012 {
-            get {
-                return ResourceManager.GetString("22012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Grenade Launcher.
-        /// </summary>
-        public static string _22013 {
-            get {
-                return ResourceManager.GetString("22013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rhino Hardsuit.
-        /// </summary>
-        public static string _22014 {
-            get {
-                return ResourceManager.GetString("22014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gunman Hardsuit.
-        /// </summary>
-        public static string _22015 {
-            get {
-                return ResourceManager.GetString("22015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Minigun.
-        /// </summary>
-        public static string _22016 {
-            get {
-                return ResourceManager.GetString("22016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Railgun.
-        /// </summary>
-        public static string _22017 {
-            get {
-                return ResourceManager.GetString("22017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rocket Swarm.
-        /// </summary>
-        public static string _22018 {
-            get {
-                return ResourceManager.GetString("22018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rocket Stinger.
-        /// </summary>
-        public static string _22019 {
-            get {
-                return ResourceManager.GetString("22019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hardsuit HRV Decoy.
-        /// </summary>
-        public static string _22020 {
-            get {
-                return ResourceManager.GetString("22020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Katana.
-        /// </summary>
-        public static string _22021 {
-            get {
-                return ResourceManager.GetString("22021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MK1 Assault AI.
-        /// </summary>
-        public static string _22022 {
-            get {
-                return ResourceManager.GetString("22022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Health Refill.
-        /// </summary>
-        public static string _23000 {
-            get {
-                return ResourceManager.GetString("23000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ammo Refill.
-        /// </summary>
-        public static string _23001 {
-            get {
-                return ResourceManager.GetString("23001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Heavy Weapon Refill.
-        /// </summary>
-        public static string _23011 {
-            get {
-                return ResourceManager.GetString("23011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HRV Jammer.
-        /// </summary>
-        public static string _23016 {
-            get {
-                return ResourceManager.GetString("23016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toxic Antidote.
-        /// </summary>
-        public static string _23017 {
-            get {
-                return ResourceManager.GetString("23017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Trophy.
-        /// </summary>
-        public static string _3000 {
-            get {
-                return ResourceManager.GetString("3000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Golden Knife Trophy.
-        /// </summary>
-        public static string _3001 {
-            get {
-                return ResourceManager.GetString("3001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Flashlight Trophy.
-        /// </summary>
-        public static string _3002 {
-            get {
-                return ResourceManager.GetString("3002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blacklight Trophy.
-        /// </summary>
-        public static string _3003 {
-            get {
-                return ResourceManager.GetString("3003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shrunken Head Trophy.
-        /// </summary>
-        public static string _3004 {
-            get {
-                return ResourceManager.GetString("3004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Golden Grenades Trophy.
-        /// </summary>
-        public static string _3005 {
-            get {
-                return ResourceManager.GetString("3005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Golden Beta Head.
-        /// </summary>
-        public static string _3006 {
-            get {
-                return ResourceManager.GetString("3006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Purple Heart Trophy.
-        /// </summary>
-        public static string _3007 {
-            get {
-                return ResourceManager.GetString("3007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 30 Days of Fight Trophy.
-        /// </summary>
-        public static string _3008 {
-            get {
-                return ResourceManager.GetString("3008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Level 40 Trophy.
-        /// </summary>
-        public static string _3009 {
-            get {
-                return ResourceManager.GetString("3009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Red Battle Scarf.
-        /// </summary>
-        public static string _3010 {
-            get {
-                return ResourceManager.GetString("3010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to White Battle Scarf.
-        /// </summary>
-        public static string _3011 {
-            get {
-                return ResourceManager.GetString("3011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Orange Battle Scarf.
-        /// </summary>
-        public static string _3012 {
-            get {
-                return ResourceManager.GetString("3012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blue Battle Scarf.
-        /// </summary>
-        public static string _3013 {
-            get {
-                return ResourceManager.GetString("3013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Purple Battle Scarf.
-        /// </summary>
-        public static string _3014 {
-            get {
-                return ResourceManager.GetString("3014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dual Red Battle Scarf.
-        /// </summary>
-        public static string _3015 {
-            get {
-                return ResourceManager.GetString("3015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dual Red &amp; White Battle Scarf.
-        /// </summary>
-        public static string _3016 {
-            get {
-                return ResourceManager.GetString("3016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dual Black &amp; White Battle Scarf.
-        /// </summary>
-        public static string _3017 {
-            get {
-                return ResourceManager.GetString("3017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lightning Trail.
-        /// </summary>
-        public static string _3018 {
-            get {
-                return ResourceManager.GetString("3018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Small Lightning Trail.
-        /// </summary>
-        public static string _3019 {
-            get {
-                return ResourceManager.GetString("3019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Red Lightning Trail.
-        /// </summary>
-        public static string _3020 {
-            get {
-                return ResourceManager.GetString("3020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Small Red Lightning Trail.
-        /// </summary>
-        public static string _3021 {
-            get {
-                return ResourceManager.GetString("3021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dollar Bill Trail.
-        /// </summary>
-        public static string _3022 {
-            get {
-                return ResourceManager.GetString("3022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Coin Trail.
-        /// </summary>
-        public static string _3023 {
-            get {
-                return ResourceManager.GetString("3023", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Flame Trail.
-        /// </summary>
-        public static string _3024 {
-            get {
-                return ResourceManager.GetString("3024", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fire Trail.
-        /// </summary>
-        public static string _3025 {
-            get {
-                return ResourceManager.GetString("3025", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pink Ribbon.
-        /// </summary>
-        public static string _3026 {
-            get {
-                return ResourceManager.GetString("3026", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MLG Fall 2014 GOLD Medal.
-        /// </summary>
-        public static string _3027 {
-            get {
-                return ResourceManager.GetString("3027", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MLG Fall 2014 SILVER Medal.
-        /// </summary>
-        public static string _3028 {
-            get {
-                return ResourceManager.GetString("3028", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MLG Fall 2014 BRONZE Medal.
-        /// </summary>
-        public static string _3029 {
-            get {
-                return ResourceManager.GetString("3029", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Snow Trail.
-        /// </summary>
-        public static string _3030 {
-            get {
-                return ResourceManager.GetString("3030", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Bleeding Heart.
-        /// </summary>
-        public static string _3031 {
-            get {
-                return ResourceManager.GetString("3031", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to War of the Roses.
-        /// </summary>
-        public static string _3032 {
-            get {
-                return ResourceManager.GetString("3032", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Good Luck.
-        /// </summary>
-        public static string _3033 {
-            get {
-                return ResourceManager.GetString("3033", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Pink.
-        /// </summary>
-        public static string _3034 {
-            get {
-                return ResourceManager.GetString("3034", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Purple.
-        /// </summary>
-        public static string _3035 {
-            get {
-                return ResourceManager.GetString("3035", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Yellow.
-        /// </summary>
-        public static string _3036 {
-            get {
-                return ResourceManager.GetString("3036", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Green.
-        /// </summary>
-        public static string _3037 {
-            get {
-                return ResourceManager.GetString("3037", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Blue.
-        /// </summary>
-        public static string _3038 {
-            get {
-                return ResourceManager.GetString("3038", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Cyan.
-        /// </summary>
-        public static string _3039 {
-            get {
-                return ResourceManager.GetString("3039", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Orange.
-        /// </summary>
-        public static string _3040 {
-            get {
-                return ResourceManager.GetString("3040", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Magenta.
-        /// </summary>
-        public static string _3041 {
-            get {
-                return ResourceManager.GetString("3041", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears White.
-        /// </summary>
-        public static string _3042 {
-            get {
-                return ResourceManager.GetString("3042", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bunny Ears Red.
-        /// </summary>
-        public static string _3043 {
-            get {
-                return ResourceManager.GetString("3043", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reindeer Antlers.
-        /// </summary>
-        public static string _3044 {
-            get {
-                return ResourceManager.GetString("3044", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Premium Reindeer Antlers.
-        /// </summary>
-        public static string _3045 {
-            get {
-                return ResourceManager.GetString("3045", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Orange Fire Trail.
-        /// </summary>
-        public static string _3046 {
-            get {
-                return ResourceManager.GetString("3046", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blue Fire Trail.
-        /// </summary>
-        public static string _3047 {
-            get {
-                return ResourceManager.GetString("3047", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Green Fire Trail.
-        /// </summary>
-        public static string _3048 {
-            get {
-                return ResourceManager.GetString("3048", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blue Lightning Trail.
-        /// </summary>
-        public static string _3049 {
-            get {
-                return ResourceManager.GetString("3049", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Orange Lightning Trail.
-        /// </summary>
-        public static string _3050 {
-            get {
-                return ResourceManager.GetString("3050", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Green Lightning Trail.
-        /// </summary>
-        public static string _3051 {
-            get {
-                return ResourceManager.GetString("3051", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Trophy.
-        /// </summary>
-        public static string _3052 {
-            get {
-                return ResourceManager.GetString("3052", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Golden Crown of Prestige.
-        /// </summary>
-        public static string _3053 {
-            get {
-                return ResourceManager.GetString("3053", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bow.
-        /// </summary>
-        public static string _4000 {
-            get {
-                return ResourceManager.GetString("4000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Caution.
-        /// </summary>
-        public static string _4001 {
-            get {
-                return ResourceManager.GetString("4001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Clap.
-        /// </summary>
-        public static string _4002 {
-            get {
-                return ResourceManager.GetString("4002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Crane.
-        /// </summary>
-        public static string _4003 {
-            get {
-                return ResourceManager.GetString("4003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Salute.
-        /// </summary>
-        public static string _4004 {
-            get {
-                return ResourceManager.GetString("4004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Robot Dance.
-        /// </summary>
-        public static string _4005 {
-            get {
-                return ResourceManager.GetString("4005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TeaBag.
-        /// </summary>
-        public static string _4006 {
-            get {
-                return ResourceManager.GetString("4006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Roar.
-        /// </summary>
-        public static string _4007 {
-            get {
-                return ResourceManager.GetString("4007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Flex.
-        /// </summary>
-        public static string _4008 {
-            get {
-                return ResourceManager.GetString("4008", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Kneebow.
-        /// </summary>
-        public static string _4009 {
-            get {
-                return ResourceManager.GetString("4009", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fancy Bow.
-        /// </summary>
-        public static string _4010 {
-            get {
-                return ResourceManager.GetString("4010", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bring It.
-        /// </summary>
-        public static string _4011 {
-            get {
-                return ResourceManager.GetString("4011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gun Wave.
-        /// </summary>
-        public static string _4012 {
-            get {
-                return ResourceManager.GetString("4012", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Muahaha.
-        /// </summary>
-        public static string _4013 {
-            get {
-                return ResourceManager.GetString("4013", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Posed Point.
-        /// </summary>
-        public static string _4014 {
-            get {
-                return ResourceManager.GetString("4014", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Kiss.
-        /// </summary>
-        public static string _4015 {
-            get {
-                return ResourceManager.GetString("4015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ground Pound.
-        /// </summary>
-        public static string _4016 {
-            get {
-                return ResourceManager.GetString("4016", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rock.
-        /// </summary>
-        public static string _4017 {
-            get {
-                return ResourceManager.GetString("4017", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paper.
-        /// </summary>
-        public static string _4018 {
-            get {
-                return ResourceManager.GetString("4018", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scissors.
-        /// </summary>
-        public static string _4019 {
-            get {
-                return ResourceManager.GetString("4019", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Suck it.
-        /// </summary>
-        public static string _4020 {
-            get {
-                return ResourceManager.GetString("4020", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rocket Fist.
-        /// </summary>
-        public static string _4021 {
-            get {
-                return ResourceManager.GetString("4021", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Step Off.
-        /// </summary>
-        public static string _4022 {
-            get {
-                return ResourceManager.GetString("4022", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Flight.
-        /// </summary>
-        public static string _4023 {
-            get {
-                return ResourceManager.GetString("4023", resourceCulture);
+                return ResourceManager.GetString("300", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string _4024 {
+        public static string _301 {
             get {
-                return ResourceManager.GetString("4024", resourceCulture);
+                return ResourceManager.GetString("301", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bow Digital.
+        ///   Looks up a localized string similar to ArmCom Piranha Z700.
         /// </summary>
-        public static string _4025 {
+        public static string _30100 {
             get {
-                return ResourceManager.GetString("4025", resourceCulture);
+                return ResourceManager.GetString("30100", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Caution Digital.
+        ///   Looks up a localized string similar to Guardian WarmongerRC2.
         /// </summary>
-        public static string _4026 {
+        public static string _30101 {
             get {
-                return ResourceManager.GetString("4026", resourceCulture);
+                return ResourceManager.GetString("30101", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clap Digital.
+        ///   Looks up a localized string similar to Overmatch Diamondback.2.
         /// </summary>
-        public static string _4027 {
+        public static string _30102 {
             get {
-                return ResourceManager.GetString("4027", resourceCulture);
+                return ResourceManager.GetString("30102", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Crane Digital.
+        ///   Looks up a localized string similar to Dataluxe R2 Skirmisher.
         /// </summary>
-        public static string _4028 {
+        public static string _30103 {
             get {
-                return ResourceManager.GetString("4028", resourceCulture);
+                return ResourceManager.GetString("30103", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salute Digital.
+        ///   Looks up a localized string similar to Dataluxe R7 Skirmisher.
         /// </summary>
-        public static string _4029 {
+        public static string _30104 {
             get {
-                return ResourceManager.GetString("4029", resourceCulture);
+                return ResourceManager.GetString("30104", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TeaBag Digital.
+        ///   Looks up a localized string similar to Allied LS Viper.
         /// </summary>
-        public static string _4030 {
+        public static string _30105 {
             get {
-                return ResourceManager.GetString("4030", resourceCulture);
+                return ResourceManager.GetString("30105", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Roar Digital.
+        ///   Looks up a localized string similar to Allied LZ Viper.
         /// </summary>
-        public static string _4031 {
+        public static string _30106 {
             get {
-                return ResourceManager.GetString("4031", resourceCulture);
+                return ResourceManager.GetString("30106", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Robot Dance Digital.
+        ///   Looks up a localized string similar to The SpeedDemon.
         /// </summary>
-        public static string _4032 {
+        public static string _30107 {
             get {
-                return ResourceManager.GetString("4032", resourceCulture);
+                return ResourceManager.GetString("30107", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Flex Digital.
+        ///   Looks up a localized string similar to Allied APC L9-Raven.
         /// </summary>
-        public static string _4033 {
+        public static string _30108 {
             get {
-                return ResourceManager.GetString("4033", resourceCulture);
+                return ResourceManager.GetString("30108", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Kneebow Digital.
+        ///   Looks up a localized string similar to Guardian ColossusRC6.
         /// </summary>
-        public static string _4034 {
+        public static string _30109 {
             get {
-                return ResourceManager.GetString("4034", resourceCulture);
+                return ResourceManager.GetString("30109", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fancy Bow Digital.
+        ///   Looks up a localized string similar to ArmCom Break Guard Legplates.
         /// </summary>
-        public static string _4035 {
+        public static string _30110 {
             get {
-                return ResourceManager.GetString("4035", resourceCulture);
+                return ResourceManager.GetString("30110", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bring it Digital.
+        ///   Looks up a localized string similar to Prestige Allied LZ Viper.
         /// </summary>
-        public static string _4036 {
+        public static string _30111 {
             get {
-                return ResourceManager.GetString("4036", resourceCulture);
+                return ResourceManager.GetString("30111", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gun Wave Digital.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string _4037 {
+        public static string _302 {
             get {
-                return ResourceManager.GetString("4037", resourceCulture);
+                return ResourceManager.GetString("302", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Muahaha Digital.
+        ///   Looks up a localized string similar to Overmatch Anaconda KX7.
         /// </summary>
-        public static string _4038 {
+        public static string _30200 {
             get {
-                return ResourceManager.GetString("4038", resourceCulture);
+                return ResourceManager.GetString("30200", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Posed Point Digital.
+        ///   Looks up a localized string similar to Guardian WarmongerL1.
         /// </summary>
-        public static string _4039 {
+        public static string _30201 {
             get {
-                return ResourceManager.GetString("4039", resourceCulture);
+                return ResourceManager.GetString("30201", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kiss Digital.
+        ///   Looks up a localized string similar to Overmatch Impact CQT.
         /// </summary>
-        public static string _4040 {
+        public static string _30202 {
             get {
-                return ResourceManager.GetString("4040", resourceCulture);
+                return ResourceManager.GetString("30202", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ground Pound Digital.
+        ///   Looks up a localized string similar to Dataluxe BattleVest OS.
         /// </summary>
-        public static string _4041 {
+        public static string _30203 {
             get {
-                return ResourceManager.GetString("4041", resourceCulture);
+                return ResourceManager.GetString("30203", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rock Digital.
+        ///   Looks up a localized string similar to Allied Warzone oX9.
         /// </summary>
-        public static string _4042 {
+        public static string _30204 {
             get {
-                return ResourceManager.GetString("4042", resourceCulture);
+                return ResourceManager.GetString("30204", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paper Digital.
+        ///   Looks up a localized string similar to Overmatch BattleFront XsI.
         /// </summary>
-        public static string _4043 {
+        public static string _30205 {
             get {
-                return ResourceManager.GetString("4043", resourceCulture);
+                return ResourceManager.GetString("30205", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scissors Digital.
+        ///   Looks up a localized string similar to Allied Ranger LT.
         /// </summary>
-        public static string _4044 {
+        public static string _30206 {
             get {
-                return ResourceManager.GetString("4044", resourceCulture);
+                return ResourceManager.GetString("30206", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suck it Digital.
+        ///   Looks up a localized string similar to Dataluxe X2 Tactical.
         /// </summary>
-        public static string _4045 {
+        public static string _30207 {
             get {
-                return ResourceManager.GetString("4045", resourceCulture);
+                return ResourceManager.GetString("30207", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rocket Fist Digital.
+        ///   Looks up a localized string similar to Overmatch Delta i6.
         /// </summary>
-        public static string _4046 {
+        public static string _30208 {
             get {
-                return ResourceManager.GetString("4046", resourceCulture);
+                return ResourceManager.GetString("30208", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step Off Digital.
+        ///   Looks up a localized string similar to ArmCom Break Guard Chest plate.
         /// </summary>
-        public static string _4047 {
+        public static string _30209 {
             get {
-                return ResourceManager.GetString("4047", resourceCulture);
+                return ResourceManager.GetString("30209", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Flight Digital.
+        ///   Looks up a localized string similar to Prestige Overmatch Anaconda KX7.
         /// </summary>
-        public static string _4048 {
+        public static string _30210 {
             get {
-                return ResourceManager.GetString("4048", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Go.
-        /// </summary>
-        public static string _4050 {
-            get {
-                return ResourceManager.GetString("4050", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pump.
-        /// </summary>
-        public static string _4051 {
-            get {
-                return ResourceManager.GetString("4051", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cut It.
-        /// </summary>
-        public static string _4052 {
-            get {
-                return ResourceManager.GetString("4052", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Throat Slit.
-        /// </summary>
-        public static string _4053 {
-            get {
-                return ResourceManager.GetString("4053", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Thumbs Down.
-        /// </summary>
-        public static string _4054 {
-            get {
-                return ResourceManager.GetString("4054", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Thumbs Up.
-        /// </summary>
-        public static string _4055 {
-            get {
-                return ResourceManager.GetString("4055", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A-OK.
-        /// </summary>
-        public static string _4056 {
-            get {
-                return ResourceManager.GetString("4056", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Metal.
-        /// </summary>
-        public static string _4057 {
-            get {
-                return ResourceManager.GetString("4057", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Point.
-        /// </summary>
-        public static string _4058 {
-            get {
-                return ResourceManager.GetString("4058", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rainbow.
-        /// </summary>
-        public static string _4059 {
-            get {
-                return ResourceManager.GetString("4059", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wag.
-        /// </summary>
-        public static string _4060 {
-            get {
-                return ResourceManager.GetString("4060", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hush.
-        /// </summary>
-        public static string _4061 {
-            get {
-                return ResourceManager.GetString("4061", resourceCulture);
+                return ResourceManager.GetString("30210", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Airplane.
         /// </summary>
-        public static string _4064 {
+        public static string _303 {
             get {
-                return ResourceManager.GetString("4064", resourceCulture);
+                return ResourceManager.GetString("303", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch Armet X.
+        /// </summary>
+        public static string _30300 {
+            get {
+                return ResourceManager.GetString("30300", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allied R5X GHOST.
+        /// </summary>
+        public static string _30301 {
+            get {
+                return ResourceManager.GetString("30301", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dataluxe Slant-X2.
+        /// </summary>
+        public static string _30302 {
+            get {
+                return ResourceManager.GetString("30302", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allied RET-3 Astral.
+        /// </summary>
+        public static string _30303 {
+            get {
+                return ResourceManager.GetString("30303", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch Bonebreaker BKR.a.
+        /// </summary>
+        public static string _30304 {
+            get {
+                return ResourceManager.GetString("30304", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allied R21V Hunter.
+        /// </summary>
+        public static string _30305 {
+            get {
+                return ResourceManager.GetString("30305", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dataluxe Breach-X7.
+        /// </summary>
+        public static string _30306 {
+            get {
+                return ResourceManager.GetString("30306", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allied R97 II.
+        /// </summary>
+        public static string _30307 {
+            get {
+                return ResourceManager.GetString("30307", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Gold.
+        /// </summary>
+        public static string _30308 {
+            get {
+                return ResourceManager.GetString("30308", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RET-3 Astral - Damaged.
+        /// </summary>
+        public static string _30309 {
+            get {
+                return ResourceManager.GetString("30309", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RET-3 Astral - Red.
+        /// </summary>
+        public static string _30310 {
+            get {
+                return ResourceManager.GetString("30310", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RET-3 Astral - Gold.
+        /// </summary>
+        public static string _30311 {
+            get {
+                return ResourceManager.GetString("30311", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RET-3 Astral - Black.
+        /// </summary>
+        public static string _30312 {
+            get {
+                return ResourceManager.GetString("30312", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonebreaker - Clown.
+        /// </summary>
+        public static string _30313 {
+            get {
+                return ResourceManager.GetString("30313", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonebreaker - Bloody.
+        /// </summary>
+        public static string _30314 {
+            get {
+                return ResourceManager.GetString("30314", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonebreaker - Black.
+        /// </summary>
+        public static string _30315 {
+            get {
+                return ResourceManager.GetString("30315", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonebreaker - Gold.
+        /// </summary>
+        public static string _30316 {
+            get {
+                return ResourceManager.GetString("30316", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slant-X2 - Camo.
+        /// </summary>
+        public static string _30317 {
+            get {
+                return ResourceManager.GetString("30317", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slant-X2 - Stealth.
+        /// </summary>
+        public static string _30318 {
+            get {
+                return ResourceManager.GetString("30318", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slant-X2 - Target.
+        /// </summary>
+        public static string _30319 {
+            get {
+                return ResourceManager.GetString("30319", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slant-X2 - Bomber.
+        /// </summary>
+        public static string _30320 {
+            get {
+                return ResourceManager.GetString("30320", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R21V HUNTER - &apos;BUUURINK&apos;.
+        /// </summary>
+        public static string _30321 {
+            get {
+                return ResourceManager.GetString("30321", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Jolly Jack.
+        /// </summary>
+        public static string _30322 {
+            get {
+                return ResourceManager.GetString("30322", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Jolly Jack Dark.
+        /// </summary>
+        public static string _30323 {
+            get {
+                return ResourceManager.GetString("30323", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Tango.
+        /// </summary>
+        public static string _30324 {
+            get {
+                return ResourceManager.GetString("30324", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Retribution.
+        /// </summary>
+        public static string _30325 {
+            get {
+                return ResourceManager.GetString("30325", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Illin&apos;.
+        /// </summary>
+        public static string _30326 {
+            get {
+                return ResourceManager.GetString("30326", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Machinima.
+        /// </summary>
+        public static string _30327 {
+            get {
+                return ResourceManager.GetString("30327", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Race Stripe.
+        /// </summary>
+        public static string _30328 {
+            get {
+                return ResourceManager.GetString("30328", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Yin and Yang.
+        /// </summary>
+        public static string _30329 {
+            get {
+                return ResourceManager.GetString("30329", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - The Mark.
+        /// </summary>
+        public static string _30330 {
+            get {
+                return ResourceManager.GetString("30330", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - Smoker.
+        /// </summary>
+        public static string _30331 {
+            get {
+                return ResourceManager.GetString("30331", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - Skull Knuckle.
+        /// </summary>
+        public static string _30332 {
+            get {
+                return ResourceManager.GetString("30332", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - Bear Spirit.
+        /// </summary>
+        public static string _30333 {
+            get {
+                return ResourceManager.GetString("30333", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - The Stangman.
+        /// </summary>
+        public static string _30334 {
+            get {
+                return ResourceManager.GetString("30334", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - The Veteran.
+        /// </summary>
+        public static string _30335 {
+            get {
+                return ResourceManager.GetString("30335", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - Beta Veteran.
+        /// </summary>
+        public static string _30336 {
+            get {
+                return ResourceManager.GetString("30336", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle Damaged Hunter.
+        /// </summary>
+        public static string _30337 {
+            get {
+                return ResourceManager.GetString("30337", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R97 II - Valve.
+        /// </summary>
+        public static string _30338 {
+            get {
+                return ResourceManager.GetString("30338", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TEMP!.
+        /// </summary>
+        public static string _30339 {
+            get {
+                return ResourceManager.GetString("30339", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fox+Cat SR-7.
+        /// </summary>
+        public static string _30340 {
+            get {
+                return ResourceManager.GetString("30340", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Damaged Allied R5X.
+        /// </summary>
+        public static string _30341 {
+            get {
+                return ResourceManager.GetString("30341", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - Bright.
+        /// </summary>
+        public static string _30342 {
+            get {
+                return ResourceManager.GetString("30342", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmetX - KW-aII.
+        /// </summary>
+        public static string _30343 {
+            get {
+                return ResourceManager.GetString("30343", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - B4T.
+        /// </summary>
+        public static string _30344 {
+            get {
+                return ResourceManager.GetString("30344", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prex Chem/Hazmat Respirator-XPL.
+        /// </summary>
+        public static string _30345 {
+            get {
+                return ResourceManager.GetString("30345", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prex Chem/Hazmat Respirator-TOX.
+        /// </summary>
+        public static string _30346 {
+            get {
+                return ResourceManager.GetString("30346", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prex Chem/Hazmat Respirator-INC.
+        /// </summary>
+        public static string _30347 {
+            get {
+                return ResourceManager.GetString("30347", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allied R7S Sniper.
+        /// </summary>
+        public static string _30348 {
+            get {
+                return ResourceManager.GetString("30348", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R5X GHOST - Vision.
+        /// </summary>
+        public static string _30349 {
+            get {
+                return ResourceManager.GetString("30349", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch R-12 Battleaxe.
+        /// </summary>
+        public static string _30350 {
+            get {
+                return ResourceManager.GetString("30350", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch R-12 Hatchet.
+        /// </summary>
+        public static string _30351 {
+            get {
+                return ResourceManager.GetString("30351", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allied APC Ranger.
+        /// </summary>
+        public static string _30352 {
+            get {
+                return ResourceManager.GetString("30352", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Ta.UX001 Prototype.
+        /// </summary>
+        public static string _30353 {
+            get {
+                return ResourceManager.GetString("30353", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carcharodon R-3x.
+        /// </summary>
+        public static string _30354 {
+            get {
+                return ResourceManager.GetString("30354", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recluse B-1t3.
+        /// </summary>
+        public static string _30355 {
+            get {
+                return ResourceManager.GetString("30355", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polaris.
+        /// </summary>
+        public static string _30356 {
+            get {
+                return ResourceManager.GetString("30356", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Atago 9.
+        /// </summary>
+        public static string _30357 {
+            get {
+                return ResourceManager.GetString("30357", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volk 34r.
+        /// </summary>
+        public static string _30358 {
+            get {
+                return ResourceManager.GetString("30358", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cupid.
+        /// </summary>
+        public static string _30359 {
+            get {
+                return ResourceManager.GetString("30359", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hugs and Kisses.
+        /// </summary>
+        public static string _30360 {
+            get {
+                return ResourceManager.GetString("30360", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tartarus.
+        /// </summary>
+        public static string _30361 {
+            get {
+                return ResourceManager.GetString("30361", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orange Sugared Bone Breaker.
+        /// </summary>
+        public static string _30362 {
+            get {
+                return ResourceManager.GetString("30362", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue Sugared Bone Breaker.
+        /// </summary>
+        public static string _30363 {
+            get {
+                return ResourceManager.GetString("30363", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Green Sugared Bone Breaker.
+        /// </summary>
+        public static string _30364 {
+            get {
+                return ResourceManager.GetString("30364", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pink Sugared Bone Breaker.
+        /// </summary>
+        public static string _30365 {
+            get {
+                return ResourceManager.GetString("30365", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red Sugared Bone Breaker.
+        /// </summary>
+        public static string _30366 {
+            get {
+                return ResourceManager.GetString("30366", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White Sugared Bone Breaker.
+        /// </summary>
+        public static string _30367 {
+            get {
+                return ResourceManager.GetString("30367", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yellow Sugared Bone Breaker.
+        /// </summary>
+        public static string _30368 {
+            get {
+                return ResourceManager.GetString("30368", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MLG Championship Helmet.
+        /// </summary>
+        public static string _30369 {
+            get {
+                return ResourceManager.GetString("30369", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Psyonix Rocket League Helmet.
+        /// </summary>
+        public static string _30370 {
+            get {
+                return ResourceManager.GetString("30370", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Overmatch Armet.
+        /// </summary>
+        public static string _30371 {
+            get {
+                return ResourceManager.GetString("30371", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helmet of the Drought.
+        /// </summary>
+        public static string _30372 {
+            get {
+                return ResourceManager.GetString("30372", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volk 34r Elite.
+        /// </summary>
+        public static string _30373 {
+            get {
+                return ResourceManager.GetString("30373", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BCL Championship Helmet.
+        /// </summary>
+        public static string _30374 {
+            get {
+                return ResourceManager.GetString("30374", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helmet of Champions.
+        /// </summary>
+        public static string _30375 {
+            get {
+                return ResourceManager.GetString("30375", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Santago.
+        /// </summary>
+        public static string _30376 {
+            get {
+                return ResourceManager.GetString("30376", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1R-3 Clogad.
+        /// </summary>
+        public static string _30377 {
+            get {
+                return ResourceManager.GetString("30377", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helm of Caerbannog.
+        /// </summary>
+        public static string _30378 {
+            get {
+                return ResourceManager.GetString("30378", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grimalkin Mk.I.
+        /// </summary>
+        public static string _30379 {
+            get {
+                return ResourceManager.GetString("30379", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grimalkin Mk.II.
+        /// </summary>
+        public static string _30380 {
+            get {
+                return ResourceManager.GetString("30380", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grimalkin Mk.III.
+        /// </summary>
+        public static string _30381 {
+            get {
+                return ResourceManager.GetString("30381", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grimalkin Mk.IV.
+        /// </summary>
+        public static string _30382 {
+            get {
+                return ResourceManager.GetString("30382", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grimalkin Mk.V.
+        /// </summary>
+        public static string _30383 {
+            get {
+                return ResourceManager.GetString("30383", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouser.
+        /// </summary>
+        public static string _30384 {
+            get {
+                return ResourceManager.GetString("30384", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabby.
+        /// </summary>
+        public static string _30385 {
+            get {
+                return ResourceManager.GetString("30385", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calico.
+        /// </summary>
+        public static string _30386 {
+            get {
+                return ResourceManager.GetString("30386", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nine Lives.
+        /// </summary>
+        public static string _30387 {
+            get {
+                return ResourceManager.GetString("30387", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logitech.
+        /// </summary>
+        public static string _30388 {
+            get {
+                return ResourceManager.GetString("30388", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Gun Pump.
         /// </summary>
-        public static string _4065 {
+        public static string _304 {
             get {
-                return ResourceManager.GetString("4065", resourceCulture);
+                return ResourceManager.GetString("304", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Up Yours.
         /// </summary>
-        public static string _4066 {
+        public static string _305 {
             get {
-                return ResourceManager.GetString("4066", resourceCulture);
+                return ResourceManager.GetString("305", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Shhh.
         /// </summary>
-        public static string _4067 {
+        public static string _306 {
             get {
-                return ResourceManager.GetString("4067", resourceCulture);
+                return ResourceManager.GetString("306", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Veteran War Mask.
         /// </summary>
-        public static string _4068 {
+        public static string _307 {
             get {
-                return ResourceManager.GetString("4068", resourceCulture);
+                return ResourceManager.GetString("307", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _308 {
+            get {
+                return ResourceManager.GetString("308", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _309 {
+            get {
+                return ResourceManager.GetString("309", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Giddy Up.
         /// </summary>
-        public static string _4071 {
+        public static string _310 {
             get {
-                return ResourceManager.GetString("4071", resourceCulture);
+                return ResourceManager.GetString("310", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Hip Shimmy.
         /// </summary>
-        public static string _4072 {
+        public static string _311 {
             get {
-                return ResourceManager.GetString("4072", resourceCulture);
+                return ResourceManager.GetString("311", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _312 {
+            get {
+                return ResourceManager.GetString("312", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _313 {
+            get {
+                return ResourceManager.GetString("313", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Go Digital.
         /// </summary>
-        public static string _4075 {
+        public static string _314 {
             get {
-                return ResourceManager.GetString("4075", resourceCulture);
+                return ResourceManager.GetString("314", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Pump Digital.
         /// </summary>
-        public static string _4076 {
+        public static string _315 {
             get {
-                return ResourceManager.GetString("4076", resourceCulture);
+                return ResourceManager.GetString("315", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Cut It Digital.
         /// </summary>
-        public static string _4077 {
+        public static string _316 {
             get {
-                return ResourceManager.GetString("4077", resourceCulture);
+                return ResourceManager.GetString("316", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Throat Slit Digital.
         /// </summary>
-        public static string _4078 {
+        public static string _317 {
             get {
-                return ResourceManager.GetString("4078", resourceCulture);
+                return ResourceManager.GetString("317", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Thumbs Down Digital.
         /// </summary>
-        public static string _4079 {
+        public static string _318 {
             get {
-                return ResourceManager.GetString("4079", resourceCulture);
+                return ResourceManager.GetString("318", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Thumbs Up Digital.
         /// </summary>
-        public static string _4080 {
+        public static string _319 {
             get {
-                return ResourceManager.GetString("4080", resourceCulture);
+                return ResourceManager.GetString("319", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to A-OK Digital.
         /// </summary>
-        public static string _4081 {
+        public static string _320 {
             get {
-                return ResourceManager.GetString("4081", resourceCulture);
+                return ResourceManager.GetString("320", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Metal Digital.
         /// </summary>
-        public static string _4082 {
+        public static string _321 {
             get {
-                return ResourceManager.GetString("4082", resourceCulture);
+                return ResourceManager.GetString("321", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Point Digital.
         /// </summary>
-        public static string _4083 {
+        public static string _322 {
             get {
-                return ResourceManager.GetString("4083", resourceCulture);
+                return ResourceManager.GetString("322", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Rainbow Digital.
         /// </summary>
-        public static string _4084 {
+        public static string _323 {
             get {
-                return ResourceManager.GetString("4084", resourceCulture);
+                return ResourceManager.GetString("323", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Wag Digital.
         /// </summary>
-        public static string _4085 {
+        public static string _324 {
             get {
-                return ResourceManager.GetString("4085", resourceCulture);
+                return ResourceManager.GetString("324", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Uppercut Digital.
         /// </summary>
-        public static string _4086 {
+        public static string _325 {
             get {
-                return ResourceManager.GetString("4086", resourceCulture);
+                return ResourceManager.GetString("325", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Crane Kick Digital.
         /// </summary>
-        public static string _4087 {
+        public static string _326 {
             get {
-                return ResourceManager.GetString("4087", resourceCulture);
+                return ResourceManager.GetString("326", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Camera Digital.
         /// </summary>
-        public static string _4088 {
+        public static string _327 {
             get {
-                return ResourceManager.GetString("4088", resourceCulture);
+                return ResourceManager.GetString("327", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Hush Digital.
         /// </summary>
-        public static string _4089 {
+        public static string _328 {
             get {
-                return ResourceManager.GetString("4089", resourceCulture);
+                return ResourceManager.GetString("328", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Troll Face.
         /// </summary>
-        public static string _4090 {
+        public static string _329 {
             get {
-                return ResourceManager.GetString("4090", resourceCulture);
+                return ResourceManager.GetString("329", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Airplane Digital.
         /// </summary>
-        public static string _4091 {
+        public static string _330 {
             get {
-                return ResourceManager.GetString("4091", resourceCulture);
+                return ResourceManager.GetString("330", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Gun Pump Digital.
         /// </summary>
-        public static string _4092 {
+        public static string _331 {
             get {
-                return ResourceManager.GetString("4092", resourceCulture);
+                return ResourceManager.GetString("331", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Up Yours Digital.
         /// </summary>
-        public static string _4093 {
+        public static string _332 {
             get {
-                return ResourceManager.GetString("4093", resourceCulture);
+                return ResourceManager.GetString("332", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Shhh Digital.
         /// </summary>
-        public static string _4094 {
+        public static string _333 {
             get {
-                return ResourceManager.GetString("4094", resourceCulture);
+                return ResourceManager.GetString("333", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to War Dog.
         /// </summary>
-        public static string _4095 {
+        public static string _334 {
             get {
-                return ResourceManager.GetString("4095", resourceCulture);
+                return ResourceManager.GetString("334", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Lasso.
         /// </summary>
-        public static string _4096 {
+        public static string _335 {
             get {
-                return ResourceManager.GetString("4096", resourceCulture);
+                return ResourceManager.GetString("335", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Classy Salute.
         /// </summary>
-        public static string _4097 {
+        public static string _336 {
             get {
-                return ResourceManager.GetString("4097", resourceCulture);
+                return ResourceManager.GetString("336", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Metal Skull.
         /// </summary>
-        public static string _4098 {
+        public static string _337 {
             get {
-                return ResourceManager.GetString("4098", resourceCulture);
+                return ResourceManager.GetString("337", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Sad Panda.
         /// </summary>
-        public static string _4099 {
+        public static string _338 {
             get {
-                return ResourceManager.GetString("4099", resourceCulture);
+                return ResourceManager.GetString("338", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Shrug and Laugh.
         /// </summary>
-        public static string _4100 {
+        public static string _339 {
             get {
-                return ResourceManager.GetString("4100", resourceCulture);
+                return ResourceManager.GetString("339", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Die die die!.
         /// </summary>
-        public static string _4101 {
+        public static string _340 {
             get {
-                return ResourceManager.GetString("4101", resourceCulture);
+                return ResourceManager.GetString("340", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Loser.
         /// </summary>
-        public static string _4102 {
+        public static string _341 {
             get {
-                return ResourceManager.GetString("4102", resourceCulture);
+                return ResourceManager.GetString("341", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Broken Heart.
         /// </summary>
-        public static string _4103 {
+        public static string _342 {
             get {
-                return ResourceManager.GetString("4103", resourceCulture);
+                return ResourceManager.GetString("342", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Hahaha.
         /// </summary>
-        public static string _4104 {
+        public static string _343 {
             get {
-                return ResourceManager.GetString("4104", resourceCulture);
+                return ResourceManager.GetString("343", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Pelvic Thrust.
         /// </summary>
-        public static string _4105 {
+        public static string _344 {
             get {
-                return ResourceManager.GetString("4105", resourceCulture);
+                return ResourceManager.GetString("344", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Super Charge.
         /// </summary>
-        public static string _4106 {
+        public static string _345 {
             get {
-                return ResourceManager.GetString("4106", resourceCulture);
+                return ResourceManager.GetString("345", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Tea-time Digital.
         /// </summary>
-        public static string _4107 {
+        public static string _346 {
             get {
-                return ResourceManager.GetString("4107", resourceCulture);
+                return ResourceManager.GetString("346", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Exclamation Digital.
         /// </summary>
-        public static string _4108 {
+        public static string _347 {
             get {
-                return ResourceManager.GetString("4108", resourceCulture);
+                return ResourceManager.GetString("347", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Chicken Dance.
         /// </summary>
-        public static string _4109 {
+        public static string _348 {
             get {
-                return ResourceManager.GetString("4109", resourceCulture);
+                return ResourceManager.GetString("348", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Captain Digital.
         /// </summary>
-        public static string _4110 {
+        public static string _349 {
             get {
-                return ResourceManager.GetString("4110", resourceCulture);
+                return ResourceManager.GetString("349", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backflip.
+        ///   Looks up a localized string similar to Bow.
         /// </summary>
-        public static string _4111 {
+        public static string _350 {
             get {
-                return ResourceManager.GetString("4111", resourceCulture);
+                return ResourceManager.GetString("350", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Party Thrust.
+        ///   Looks up a localized string similar to Caution.
         /// </summary>
-        public static string _4112 {
+        public static string _351 {
             get {
-                return ResourceManager.GetString("4112", resourceCulture);
+                return ResourceManager.GetString("351", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pumpkin Head Digital.
+        ///   Looks up a localized string similar to Clap.
         /// </summary>
-        public static string _4113 {
+        public static string _352 {
             get {
-                return ResourceManager.GetString("4113", resourceCulture);
+                return ResourceManager.GetString("352", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pumpking Laugh Digital.
+        ///   Looks up a localized string similar to Crane.
         /// </summary>
-        public static string _4114 {
+        public static string _353 {
             get {
-                return ResourceManager.GetString("4114", resourceCulture);
+                return ResourceManager.GetString("353", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skull Mask Digital.
+        ///   Looks up a localized string similar to Salute.
         /// </summary>
-        public static string _4115 {
+        public static string _354 {
             get {
-                return ResourceManager.GetString("4115", resourceCulture);
+                return ResourceManager.GetString("354", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Devil Laugh Digital.
+        ///   Looks up a localized string similar to Robot Dance.
         /// </summary>
-        public static string _4116 {
+        public static string _355 {
             get {
-                return ResourceManager.GetString("4116", resourceCulture);
+                return ResourceManager.GetString("355", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Head Bop.
+        ///   Looks up a localized string similar to TeaBag.
         /// </summary>
-        public static string _4117 {
+        public static string _356 {
             get {
-                return ResourceManager.GetString("4117", resourceCulture);
+                return ResourceManager.GetString("356", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dust Off.
+        ///   Looks up a localized string similar to Roar.
         /// </summary>
-        public static string _4118 {
+        public static string _357 {
             get {
-                return ResourceManager.GetString("4118", resourceCulture);
+                return ResourceManager.GetString("357", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Flash Point.
+        ///   Looks up a localized string similar to Flex.
         /// </summary>
-        public static string _4119 {
+        public static string _358 {
             get {
-                return ResourceManager.GetString("4119", resourceCulture);
+                return ResourceManager.GetString("358", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fireworks.
+        ///   Looks up a localized string similar to The Kneebow.
         /// </summary>
-        public static string _4120 {
+        public static string _359 {
             get {
-                return ResourceManager.GetString("4120", resourceCulture);
+                return ResourceManager.GetString("359", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fancy Bow.
+        /// </summary>
+        public static string _360 {
+            get {
+                return ResourceManager.GetString("360", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bring It.
+        /// </summary>
+        public static string _361 {
+            get {
+                return ResourceManager.GetString("361", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gun Wave.
+        /// </summary>
+        public static string _364 {
+            get {
+                return ResourceManager.GetString("364", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muahaha.
+        /// </summary>
+        public static string _365 {
+            get {
+                return ResourceManager.GetString("365", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posed Point.
+        /// </summary>
+        public static string _366 {
+            get {
+                return ResourceManager.GetString("366", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kiss.
+        /// </summary>
+        public static string _367 {
+            get {
+                return ResourceManager.GetString("367", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ground Pound.
+        /// </summary>
+        public static string _368 {
+            get {
+                return ResourceManager.GetString("368", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Snowball Juggle.
         /// </summary>
-        public static string _4121 {
+        public static string _371 {
             get {
-                return ResourceManager.GetString("4121", resourceCulture);
+                return ResourceManager.GetString("371", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Unusal Dance.
         /// </summary>
-        public static string _4122 {
+        public static string _372 {
             get {
-                return ResourceManager.GetString("4122", resourceCulture);
+                return ResourceManager.GetString("372", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock.
+        /// </summary>
+        public static string _375 {
+            get {
+                return ResourceManager.GetString("375", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paper.
+        /// </summary>
+        public static string _376 {
+            get {
+                return ResourceManager.GetString("376", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scissors.
+        /// </summary>
+        public static string _377 {
+            get {
+                return ResourceManager.GetString("377", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suck it.
+        /// </summary>
+        public static string _378 {
+            get {
+                return ResourceManager.GetString("378", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocket Fist.
+        /// </summary>
+        public static string _379 {
+            get {
+                return ResourceManager.GetString("379", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step Off.
+        /// </summary>
+        public static string _380 {
+            get {
+                return ResourceManager.GetString("380", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flight.
+        /// </summary>
+        public static string _381 {
+            get {
+                return ResourceManager.GetString("381", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _382 {
+            get {
+                return ResourceManager.GetString("382", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bow Digital.
+        /// </summary>
+        public static string _383 {
+            get {
+                return ResourceManager.GetString("383", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Caution Digital.
+        /// </summary>
+        public static string _384 {
+            get {
+                return ResourceManager.GetString("384", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clap Digital.
+        /// </summary>
+        public static string _385 {
+            get {
+                return ResourceManager.GetString("385", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Creepy Thrust.
         /// </summary>
-        public static string _4123 {
+        public static string _386 {
             get {
-                return ResourceManager.GetString("4123", resourceCulture);
+                return ResourceManager.GetString("386", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Bell Kick.
         /// </summary>
-        public static string _4124 {
+        public static string _387 {
             get {
-                return ResourceManager.GetString("4124", resourceCulture);
+                return ResourceManager.GetString("387", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crane Digital.
+        /// </summary>
+        public static string _388 {
+            get {
+                return ResourceManager.GetString("388", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flash Point.
+        /// </summary>
+        public static string _389 {
+            get {
+                return ResourceManager.GetString("389", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salute Digital.
+        /// </summary>
+        public static string _390 {
+            get {
+                return ResourceManager.GetString("390", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TeaBag Digital.
+        /// </summary>
+        public static string _391 {
+            get {
+                return ResourceManager.GetString("391", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roar Digital.
+        /// </summary>
+        public static string _392 {
+            get {
+                return ResourceManager.GetString("392", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Robot Dance Digital.
+        /// </summary>
+        public static string _393 {
+            get {
+                return ResourceManager.GetString("393", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flex Digital.
+        /// </summary>
+        public static string _394 {
+            get {
+                return ResourceManager.GetString("394", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Kneebow Digital.
+        /// </summary>
+        public static string _395 {
+            get {
+                return ResourceManager.GetString("395", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fancy Bow Digital.
+        /// </summary>
+        public static string _396 {
+            get {
+                return ResourceManager.GetString("396", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bring it Digital.
+        /// </summary>
+        public static string _397 {
+            get {
+                return ResourceManager.GetString("397", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gun Wave Digital.
+        /// </summary>
+        public static string _398 {
+            get {
+                return ResourceManager.GetString("398", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muahaha Digital.
+        /// </summary>
+        public static string _399 {
+            get {
+                return ResourceManager.GetString("399", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posed Point Digital.
+        /// </summary>
+        public static string _400 {
+            get {
+                return ResourceManager.GetString("400", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Pistol.
+        /// </summary>
+        public static string _40000 {
+            get {
+                return ResourceManager.GetString("40000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Pistol.
+        /// </summary>
+        public static string _40001 {
+            get {
+                return ResourceManager.GetString("40001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revolver.
+        /// </summary>
+        public static string _40002 {
+            get {
+                return ResourceManager.GetString("40002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assault Rifle.
+        /// </summary>
+        public static string _40003 {
+            get {
+                return ResourceManager.GetString("40003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Machine Pistol.
+        /// </summary>
+        public static string _40004 {
+            get {
+                return ResourceManager.GetString("40004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shotgun.
+        /// </summary>
+        public static string _40005 {
+            get {
+                return ResourceManager.GetString("40005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Pistol.
+        /// </summary>
+        public static string _40006 {
+            get {
+                return ResourceManager.GetString("40006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bolt-Action Rifle.
+        /// </summary>
+        public static string _40007 {
+            get {
+                return ResourceManager.GetString("40007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combat Rifle.
+        /// </summary>
+        public static string _40008 {
+            get {
+                return ResourceManager.GetString("40008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire Rifle.
+        /// </summary>
+        public static string _40009 {
+            get {
+                return ResourceManager.GetString("40009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submachine Gun.
+        /// </summary>
+        public static string _40010 {
+            get {
+                return ResourceManager.GetString("40010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Machine Gun.
+        /// </summary>
+        public static string _40011 {
+            get {
+                return ResourceManager.GetString("40011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical SMG.
+        /// </summary>
+        public static string _40013 {
+            get {
+                return ResourceManager.GetString("40013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LMG Recon.
+        /// </summary>
+        public static string _40014 {
+            get {
+                return ResourceManager.GetString("40014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breech Loaded Pistol.
+        /// </summary>
+        public static string _40015 {
+            get {
+                return ResourceManager.GetString("40015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shotgun AR-k.
+        /// </summary>
+        public static string _40016 {
+            get {
+                return ResourceManager.GetString("40016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Assault Rifle.
+        /// </summary>
+        public static string _40017 {
+            get {
+                return ResourceManager.GetString("40017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Burstfire SMG.
+        /// </summary>
+        public static string _40018 {
+            get {
+                return ResourceManager.GetString("40018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anti-Materiel Rifle.
+        /// </summary>
+        public static string _40019 {
+            get {
+                return ResourceManager.GetString("40019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bullpup Full Auto.
+        /// </summary>
+        public static string _40020 {
+            get {
+                return ResourceManager.GetString("40020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snub 260.
+        /// </summary>
+        public static string _40021 {
+            get {
+                return ResourceManager.GetString("40021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M4X Rifle.
+        /// </summary>
+        public static string _40022 {
+            get {
+                return ResourceManager.GetString("40022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AK470 Rifle.
+        /// </summary>
+        public static string _40023 {
+            get {
+                return ResourceManager.GetString("40023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compound Bow.
+        /// </summary>
+        public static string _40024 {
+            get {
+                return ResourceManager.GetString("40024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Assault Rifle.
+        /// </summary>
+        public static string _40025 {
+            get {
+                return ResourceManager.GetString("40025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Recon Rifle.
+        /// </summary>
+        public static string _40026 {
+            get {
+                return ResourceManager.GetString("40026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Assault Rifle.
+        /// </summary>
+        public static string _40027 {
+            get {
+                return ResourceManager.GetString("40027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Light Pistol.
+        /// </summary>
+        public static string _40028 {
+            get {
+                return ResourceManager.GetString("40028", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kiss Digital.
+        /// </summary>
+        public static string _401 {
+            get {
+                return ResourceManager.GetString("401", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ground Pound Digital.
+        /// </summary>
+        public static string _402 {
+            get {
+                return ResourceManager.GetString("402", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock Digital.
+        /// </summary>
+        public static string _403 {
+            get {
+                return ResourceManager.GetString("403", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paper Digital.
+        /// </summary>
+        public static string _404 {
+            get {
+                return ResourceManager.GetString("404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scissors Digital.
+        /// </summary>
+        public static string _405 {
+            get {
+                return ResourceManager.GetString("405", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suck it Digital.
+        /// </summary>
+        public static string _406 {
+            get {
+                return ResourceManager.GetString("406", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocket Fist Digital.
+        /// </summary>
+        public static string _407 {
+            get {
+                return ResourceManager.GetString("407", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step Off Digital.
+        /// </summary>
+        public static string _408 {
+            get {
+                return ResourceManager.GetString("408", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flight Digital.
+        /// </summary>
+        public static string _409 {
+            get {
+                return ResourceManager.GetString("409", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _410 {
+            get {
+                return ResourceManager.GetString("410", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ogre CQC Barrel.
+        /// </summary>
+        public static string _41000 {
+            get {
+                return ResourceManager.GetString("41000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titan FFB.
+        /// </summary>
+        public static string _41001 {
+            get {
+                return ResourceManager.GetString("41001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood CQC Barrel.
+        /// </summary>
+        public static string _41002 {
+            get {
+                return ResourceManager.GetString("41002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frontier Standard Barrel.
+        /// </summary>
+        public static string _41003 {
+            get {
+                return ResourceManager.GetString("41003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titan Extended Barrel.
+        /// </summary>
+        public static string _41004 {
+            get {
+                return ResourceManager.GetString("41004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Raider Snub Barrel.
+        /// </summary>
+        public static string _41005 {
+            get {
+                return ResourceManager.GetString("41005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulcan Tactical Barrel.
+        /// </summary>
+        public static string _41006 {
+            get {
+                return ResourceManager.GetString("41006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar Assault Barrel.
+        /// </summary>
+        public static string _41007 {
+            get {
+                return ResourceManager.GetString("41007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Assault Barrel.
+        /// </summary>
+        public static string _41008 {
+            get {
+                return ResourceManager.GetString("41008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Assault Barrel.
+        /// </summary>
+        public static string _41009 {
+            get {
+                return ResourceManager.GetString("41009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar Lightweight Barrel.
+        /// </summary>
+        public static string _41010 {
+            get {
+                return ResourceManager.GetString("41010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch M-CV Breach.
+        /// </summary>
+        public static string _41011 {
+            get {
+                return ResourceManager.GetString("41011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titan Assault Barrel.
+        /// </summary>
+        public static string _41012 {
+            get {
+                return ResourceManager.GetString("41012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood Light Accuracy Barrel.
+        /// </summary>
+        public static string _41013 {
+            get {
+                return ResourceManager.GetString("41013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar Accuracy Barrel.
+        /// </summary>
+        public static string _41014 {
+            get {
+                return ResourceManager.GetString("41014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood SW-09.
+        /// </summary>
+        public static string _41015 {
+            get {
+                return ResourceManager.GetString("41015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leatherneck Accuracy Barrel.
+        /// </summary>
+        public static string _41016 {
+            get {
+                return ResourceManager.GetString("41016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulcan Lightweight Barrel.
+        /// </summary>
+        public static string _41017 {
+            get {
+                return ResourceManager.GetString("41017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V2 X200 Mod.
+        /// </summary>
+        public static string _41018 {
+            get {
+                return ResourceManager.GetString("41018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V2 Z900 Mod.
+        /// </summary>
+        public static string _41019 {
+            get {
+                return ResourceManager.GetString("41019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Barrel Mod.
+        /// </summary>
+        public static string _41020 {
+            get {
+                return ResourceManager.GetString("41020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch CRC-7 Post.
+        /// </summary>
+        public static string _41021 {
+            get {
+                return ResourceManager.GetString("41021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch Heavy X3.
+        /// </summary>
+        public static string _41022 {
+            get {
+                return ResourceManager.GetString("41022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Heavy Assault Barrel.
+        /// </summary>
+        public static string _41023 {
+            get {
+                return ResourceManager.GetString("41023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane SG Bar-20.
+        /// </summary>
+        public static string _41024 {
+            get {
+                return ResourceManager.GetString("41024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch A-12 Blast.
+        /// </summary>
+        public static string _41025 {
+            get {
+                return ResourceManager.GetString("41025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Grip.
+        /// </summary>
+        public static string _41026 {
+            get {
+                return ResourceManager.GetString("41026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar BAR Grip.
+        /// </summary>
+        public static string _41027 {
+            get {
+                return ResourceManager.GetString("41027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Armcom BAR-01.
+        /// </summary>
+        public static string _41028 {
+            get {
+                return ResourceManager.GetString("41028", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Armcom BARl1.
+        /// </summary>
+        public static string _41029 {
+            get {
+                return ResourceManager.GetString("41029", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hullbreach 047BAR.
+        /// </summary>
+        public static string _41030 {
+            get {
+                return ResourceManager.GetString("41030", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood TechBAR.
+        /// </summary>
+        public static string _41031 {
+            get {
+                return ResourceManager.GetString("41031", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar BAR-02.
+        /// </summary>
+        public static string _41032 {
+            get {
+                return ResourceManager.GetString("41032", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hullbreach 057BAR.
+        /// </summary>
+        public static string _41033 {
+            get {
+                return ResourceManager.GetString("41033", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frontier Compensator Barrel.
+        /// </summary>
+        public static string _41034 {
+            get {
+                return ResourceManager.GetString("41034", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redsand CQC Barrel.
+        /// </summary>
+        public static string _41035 {
+            get {
+                return ResourceManager.GetString("41035", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar CQC Barrel.
+        /// </summary>
+        public static string _41036 {
+            get {
+                return ResourceManager.GetString("41036", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar Balanced Barrel.
+        /// </summary>
+        public static string _41037 {
+            get {
+                return ResourceManager.GetString("41037", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Frontier Standard Barrel.
+        /// </summary>
+        public static string _41038 {
+            get {
+                return ResourceManager.GetString("41038", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go.
+        /// </summary>
+        public static string _411 {
+            get {
+                return ResourceManager.GetString("411", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pump.
+        /// </summary>
+        public static string _412 {
+            get {
+                return ResourceManager.GetString("412", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cut It.
+        /// </summary>
+        public static string _413 {
+            get {
+                return ResourceManager.GetString("413", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Throat Slit.
+        /// </summary>
+        public static string _414 {
+            get {
+                return ResourceManager.GetString("414", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumbs Up.
+        /// </summary>
+        public static string _415 {
+            get {
+                return ResourceManager.GetString("415", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A-OK.
+        /// </summary>
+        public static string _416 {
+            get {
+                return ResourceManager.GetString("416", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metal.
+        /// </summary>
+        public static string _417 {
+            get {
+                return ResourceManager.GetString("417", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point.
+        /// </summary>
+        public static string _418 {
+            get {
+                return ResourceManager.GetString("418", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rainbow.
+        /// </summary>
+        public static string _419 {
+            get {
+                return ResourceManager.GetString("419", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumbs Down.
+        /// </summary>
+        public static string _420 {
+            get {
+                return ResourceManager.GetString("420", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Stock.
+        /// </summary>
+        public static string _42000 {
+            get {
+                return ResourceManager.GetString("42000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frontier Ultralight Stock.
+        /// </summary>
+        public static string _42001 {
+            get {
+                return ResourceManager.GetString("42001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V2 Folding Stock.
+        /// </summary>
+        public static string _42002 {
+            get {
+                return ResourceManager.GetString("42002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood Compensator Stock.
+        /// </summary>
+        public static string _42003 {
+            get {
+                return ResourceManager.GetString("42003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taurex Stabilizing Stock.
+        /// </summary>
+        public static string _42004 {
+            get {
+                return ResourceManager.GetString("42004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Tactical Stock.
+        /// </summary>
+        public static string _42005 {
+            get {
+                return ResourceManager.GetString("42005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hullbreach CQC Stock.
+        /// </summary>
+        public static string _42006 {
+            get {
+                return ResourceManager.GetString("42006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood Standard Stock.
+        /// </summary>
+        public static string _42007 {
+            get {
+                return ResourceManager.GetString("42007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch Compensator Stock.
+        /// </summary>
+        public static string _42008 {
+            get {
+                return ResourceManager.GetString("42008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Folding Stock.
+        /// </summary>
+        public static string _42009 {
+            get {
+                return ResourceManager.GetString("42009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Ultralight Stock.
+        /// </summary>
+        public static string _42010 {
+            get {
+                return ResourceManager.GetString("42010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Compensator Stock.
+        /// </summary>
+        public static string _42011 {
+            get {
+                return ResourceManager.GetString("42011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Extender Stock.
+        /// </summary>
+        public static string _42012 {
+            get {
+                return ResourceManager.GetString("42012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulcan Extender Stock.
+        /// </summary>
+        public static string _42013 {
+            get {
+                return ResourceManager.GetString("42013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMRS BP-SR Tactical.
+        /// </summary>
+        public static string _42014 {
+            get {
+                return ResourceManager.GetString("42014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMRS BP-XLi.
+        /// </summary>
+        public static string _42015 {
+            get {
+                return ResourceManager.GetString("42015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMRS BP-CQ + PCR.
+        /// </summary>
+        public static string _42016 {
+            get {
+                return ResourceManager.GetString("42016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar Elite A4-BS.
+        /// </summary>
+        public static string _42017 {
+            get {
+                return ResourceManager.GetString("42017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hullbreach 89-BPFA.
+        /// </summary>
+        public static string _42018 {
+            get {
+                return ResourceManager.GetString("42018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood z1200 BPFA.
+        /// </summary>
+        public static string _42019 {
+            get {
+                return ResourceManager.GetString("42019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redsand Compensator Stock.
+        /// </summary>
+        public static string _42020 {
+            get {
+                return ResourceManager.GetString("42020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Silverwood Standard Stock.
+        /// </summary>
+        public static string _42021 {
+            get {
+                return ResourceManager.GetString("42021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fireworks.
+        /// </summary>
+        public static string _421 {
+            get {
+                return ResourceManager.GetString("421", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wag.
+        /// </summary>
+        public static string _422 {
+            get {
+                return ResourceManager.GetString("422", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backflip.
+        /// </summary>
+        public static string _423 {
+            get {
+                return ResourceManager.GetString("423", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Party Thrust.
+        /// </summary>
+        public static string _424 {
+            get {
+                return ResourceManager.GetString("424", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pumpkin Head Digital.
+        /// </summary>
+        public static string _425 {
+            get {
+                return ResourceManager.GetString("425", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pumpking Laugh Digital.
+        /// </summary>
+        public static string _426 {
+            get {
+                return ResourceManager.GetString("426", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skull Mask Digital.
+        /// </summary>
+        public static string _427 {
+            get {
+                return ResourceManager.GetString("427", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devil Laugh Digital.
+        /// </summary>
+        public static string _428 {
+            get {
+                return ResourceManager.GetString("428", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Head Bop.
+        /// </summary>
+        public static string _429 {
+            get {
+                return ResourceManager.GetString("429", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dust Off.
+        /// </summary>
+        public static string _430 {
+            get {
+                return ResourceManager.GetString("430", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar Dampening Muzzle.
+        /// </summary>
+        public static string _43000 {
+            get {
+                return ResourceManager.GetString("43000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Slit Flash breaker.
+        /// </summary>
+        public static string _43001 {
+            get {
+                return ResourceManager.GetString("43001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulcan Power Brake.
+        /// </summary>
+        public static string _43002 {
+            get {
+                return ResourceManager.GetString("43002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nexus Extended Range Muzzle.
+        /// </summary>
+        public static string _43003 {
+            get {
+                return ResourceManager.GetString("43003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frontier Standard Suppressor.
+        /// </summary>
+        public static string _43004 {
+            get {
+                return ResourceManager.GetString("43004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Enhanced Suppressor.
+        /// </summary>
+        public static string _43005 {
+            get {
+                return ResourceManager.GetString("43005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulcan Longreach Flash breaker.
+        /// </summary>
+        public static string _43006 {
+            get {
+                return ResourceManager.GetString("43006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Muzzle Mod.
+        /// </summary>
+        public static string _43007 {
+            get {
+                return ResourceManager.GetString("43007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Power Muzzle.
+        /// </summary>
+        public static string _43008 {
+            get {
+                return ResourceManager.GetString("43008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulcan Notched Flash breaker.
+        /// </summary>
+        public static string _43009 {
+            get {
+                return ResourceManager.GetString("43009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulcan Compensator.
+        /// </summary>
+        public static string _43010 {
+            get {
+                return ResourceManager.GetString("43010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood Flash breaker.
+        /// </summary>
+        public static string _43011 {
+            get {
+                return ResourceManager.GetString("43011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frontier Power Muzzle.
+        /// </summary>
+        public static string _43012 {
+            get {
+                return ResourceManager.GetString("43012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar Enhanced Suppressor.
+        /// </summary>
+        public static string _43013 {
+            get {
+                return ResourceManager.GetString("43013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overmatch Muzzle Shroud.
+        /// </summary>
+        public static string _43014 {
+            get {
+                return ResourceManager.GetString("43014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Briar Extender Muzzle.
+        /// </summary>
+        public static string _43015 {
+            get {
+                return ResourceManager.GetString("43015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Power Muzzle.
+        /// </summary>
+        public static string _43016 {
+            get {
+                return ResourceManager.GetString("43016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Balanced Muzzle.
+        /// </summary>
+        public static string _43017 {
+            get {
+                return ResourceManager.GetString("43017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Overmatch Muzzle Shroud.
+        /// </summary>
+        public static string _43018 {
+            get {
+                return ResourceManager.GetString("43018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44000 {
+            get {
+                return ResourceManager.GetString("44000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44001 {
+            get {
+                return ResourceManager.GetString("44001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44002 {
+            get {
+                return ResourceManager.GetString("44002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44003 {
+            get {
+                return ResourceManager.GetString("44003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44004 {
+            get {
+                return ResourceManager.GetString("44004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44005 {
+            get {
+                return ResourceManager.GetString("44005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44006 {
+            get {
+                return ResourceManager.GetString("44006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44007 {
+            get {
+                return ResourceManager.GetString("44007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44008 {
+            get {
+                return ResourceManager.GetString("44008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44009 {
+            get {
+                return ResourceManager.GetString("44009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44010 {
+            get {
+                return ResourceManager.GetString("44010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44011 {
+            get {
+                return ResourceManager.GetString("44011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44012 {
+            get {
+                return ResourceManager.GetString("44012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44013 {
+            get {
+                return ResourceManager.GetString("44013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drum Mag.
+        /// </summary>
+        public static string _44014 {
+            get {
+                return ResourceManager.GetString("44014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Large Drum Mag.
+        /// </summary>
+        public static string _44015 {
+            get {
+                return ResourceManager.GetString("44015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44016 {
+            get {
+                return ResourceManager.GetString("44016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44017 {
+            get {
+                return ResourceManager.GetString("44017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44018 {
+            get {
+                return ResourceManager.GetString("44018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44019 {
+            get {
+                return ResourceManager.GetString("44019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44020 {
+            get {
+                return ResourceManager.GetString("44020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44021 {
+            get {
+                return ResourceManager.GetString("44021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44022 {
+            get {
+                return ResourceManager.GetString("44022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44023 {
+            get {
+                return ResourceManager.GetString("44023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44024 {
+            get {
+                return ResourceManager.GetString("44024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44025 {
+            get {
+                return ResourceManager.GetString("44025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44026 {
+            get {
+                return ResourceManager.GetString("44026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44027 {
+            get {
+                return ResourceManager.GetString("44027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44028 {
+            get {
+                return ResourceManager.GetString("44028", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Tube Magazine.
+        /// </summary>
+        public static string _44029 {
+            get {
+                return ResourceManager.GetString("44029", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Tube Magazine.
+        /// </summary>
+        public static string _44030 {
+            get {
+                return ResourceManager.GetString("44030", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Tube Magazine.
+        /// </summary>
+        public static string _44031 {
+            get {
+                return ResourceManager.GetString("44031", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Tube Magazine.
+        /// </summary>
+        public static string _44032 {
+            get {
+                return ResourceManager.GetString("44032", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Tube Magazine.
+        /// </summary>
+        public static string _44033 {
+            get {
+                return ResourceManager.GetString("44033", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drum Magazine.
+        /// </summary>
+        public static string _44034 {
+            get {
+                return ResourceManager.GetString("44034", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44035 {
+            get {
+                return ResourceManager.GetString("44035", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44036 {
+            get {
+                return ResourceManager.GetString("44036", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44037 {
+            get {
+                return ResourceManager.GetString("44037", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44038 {
+            get {
+                return ResourceManager.GetString("44038", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Ammo Belt.
+        /// </summary>
+        public static string _44039 {
+            get {
+                return ResourceManager.GetString("44039", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Ammo Belt.
+        /// </summary>
+        public static string _44040 {
+            get {
+                return ResourceManager.GetString("44040", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Ammo Belt.
+        /// </summary>
+        public static string _44041 {
+            get {
+                return ResourceManager.GetString("44041", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Ammo Belt.
+        /// </summary>
+        public static string _44042 {
+            get {
+                return ResourceManager.GetString("44042", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Ammo Belt.
+        /// </summary>
+        public static string _44043 {
+            get {
+                return ResourceManager.GetString("44043", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Ammo Belt.
+        /// </summary>
+        public static string _44044 {
+            get {
+                return ResourceManager.GetString("44044", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44045 {
+            get {
+                return ResourceManager.GetString("44045", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44046 {
+            get {
+                return ResourceManager.GetString("44046", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44047 {
+            get {
+                return ResourceManager.GetString("44047", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44048 {
+            get {
+                return ResourceManager.GetString("44048", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44049 {
+            get {
+                return ResourceManager.GetString("44049", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44050 {
+            get {
+                return ResourceManager.GetString("44050", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44051 {
+            get {
+                return ResourceManager.GetString("44051", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44052 {
+            get {
+                return ResourceManager.GetString("44052", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44053 {
+            get {
+                return ResourceManager.GetString("44053", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44054 {
+            get {
+                return ResourceManager.GetString("44054", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44055 {
+            get {
+                return ResourceManager.GetString("44055", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44056 {
+            get {
+                return ResourceManager.GetString("44056", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44057 {
+            get {
+                return ResourceManager.GetString("44057", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44058 {
+            get {
+                return ResourceManager.GetString("44058", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44059 {
+            get {
+                return ResourceManager.GetString("44059", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44060 {
+            get {
+                return ResourceManager.GetString("44060", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44061 {
+            get {
+                return ResourceManager.GetString("44061", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44062 {
+            get {
+                return ResourceManager.GetString("44062", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44063 {
+            get {
+                return ResourceManager.GetString("44063", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44064 {
+            get {
+                return ResourceManager.GetString("44064", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44065 {
+            get {
+                return ResourceManager.GetString("44065", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44066 {
+            get {
+                return ResourceManager.GetString("44066", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44067 {
+            get {
+                return ResourceManager.GetString("44067", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44068 {
+            get {
+                return ResourceManager.GetString("44068", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44069 {
+            get {
+                return ResourceManager.GetString("44069", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44070 {
+            get {
+                return ResourceManager.GetString("44070", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44071 {
+            get {
+                return ResourceManager.GetString("44071", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44072 {
+            get {
+                return ResourceManager.GetString("44072", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44073 {
+            get {
+                return ResourceManager.GetString("44073", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44074 {
+            get {
+                return ResourceManager.GetString("44074", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44075 {
+            get {
+                return ResourceManager.GetString("44075", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44076 {
+            get {
+                return ResourceManager.GetString("44076", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44077 {
+            get {
+                return ResourceManager.GetString("44077", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44078 {
+            get {
+                return ResourceManager.GetString("44078", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44079 {
+            get {
+                return ResourceManager.GetString("44079", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44080 {
+            get {
+                return ResourceManager.GetString("44080", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44081 {
+            get {
+                return ResourceManager.GetString("44081", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44082 {
+            get {
+                return ResourceManager.GetString("44082", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44083 {
+            get {
+                return ResourceManager.GetString("44083", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44084 {
+            get {
+                return ResourceManager.GetString("44084", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44085 {
+            get {
+                return ResourceManager.GetString("44085", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44086 {
+            get {
+                return ResourceManager.GetString("44086", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44087 {
+            get {
+                return ResourceManager.GetString("44087", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44088 {
+            get {
+                return ResourceManager.GetString("44088", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44089 {
+            get {
+                return ResourceManager.GetString("44089", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44090 {
+            get {
+                return ResourceManager.GetString("44090", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44091 {
+            get {
+                return ResourceManager.GetString("44091", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44092 {
+            get {
+                return ResourceManager.GetString("44092", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44093 {
+            get {
+                return ResourceManager.GetString("44093", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44094 {
+            get {
+                return ResourceManager.GetString("44094", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44095 {
+            get {
+                return ResourceManager.GetString("44095", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44096 {
+            get {
+                return ResourceManager.GetString("44096", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44097 {
+            get {
+                return ResourceManager.GetString("44097", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44098 {
+            get {
+                return ResourceManager.GetString("44098", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Cylinder.
+        /// </summary>
+        public static string _44099 {
+            get {
+                return ResourceManager.GetString("44099", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Cylinder.
+        /// </summary>
+        public static string _44100 {
+            get {
+                return ResourceManager.GetString("44100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Cylinder.
+        /// </summary>
+        public static string _44101 {
+            get {
+                return ResourceManager.GetString("44101", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Cylinder.
+        /// </summary>
+        public static string _44102 {
+            get {
+                return ResourceManager.GetString("44102", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Cylinder.
+        /// </summary>
+        public static string _44103 {
+            get {
+                return ResourceManager.GetString("44103", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Ammo Box.
+        /// </summary>
+        public static string _44104 {
+            get {
+                return ResourceManager.GetString("44104", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Ammo Box.
+        /// </summary>
+        public static string _44105 {
+            get {
+                return ResourceManager.GetString("44105", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Large Capacity Ammo Box.
+        /// </summary>
+        public static string _44106 {
+            get {
+                return ResourceManager.GetString("44106", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44107 {
+            get {
+                return ResourceManager.GetString("44107", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44108 {
+            get {
+                return ResourceManager.GetString("44108", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44109 {
+            get {
+                return ResourceManager.GetString("44109", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44110 {
+            get {
+                return ResourceManager.GetString("44110", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44112 {
+            get {
+                return ResourceManager.GetString("44112", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44113 {
+            get {
+                return ResourceManager.GetString("44113", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44114 {
+            get {
+                return ResourceManager.GetString("44114", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44115 {
+            get {
+                return ResourceManager.GetString("44115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44116 {
+            get {
+                return ResourceManager.GetString("44116", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44117 {
+            get {
+                return ResourceManager.GetString("44117", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44118 {
+            get {
+                return ResourceManager.GetString("44118", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44119 {
+            get {
+                return ResourceManager.GetString("44119", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44120 {
+            get {
+                return ResourceManager.GetString("44120", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44121 {
+            get {
+                return ResourceManager.GetString("44121", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44122 {
+            get {
+                return ResourceManager.GetString("44122", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44123 {
+            get {
+                return ResourceManager.GetString("44123", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44124 {
+            get {
+                return ResourceManager.GetString("44124", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Tube Magazine.
+        /// </summary>
+        public static string _44125 {
+            get {
+                return ResourceManager.GetString("44125", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44126 {
+            get {
+                return ResourceManager.GetString("44126", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44127 {
+            get {
+                return ResourceManager.GetString("44127", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44128 {
+            get {
+                return ResourceManager.GetString("44128", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44129 {
+            get {
+                return ResourceManager.GetString("44129", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44130 {
+            get {
+                return ResourceManager.GetString("44130", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44131 {
+            get {
+                return ResourceManager.GetString("44131", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44132 {
+            get {
+                return ResourceManager.GetString("44132", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44133 {
+            get {
+                return ResourceManager.GetString("44133", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drum Mag.
+        /// </summary>
+        public static string _44134 {
+            get {
+                return ResourceManager.GetString("44134", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High Explosive Round Bore.
+        /// </summary>
+        public static string _44135 {
+            get {
+                return ResourceManager.GetString("44135", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Round Bore.
+        /// </summary>
+        public static string _44136 {
+            get {
+                return ResourceManager.GetString("44136", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Ammo Box.
+        /// </summary>
+        public static string _44137 {
+            get {
+                return ResourceManager.GetString("44137", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Ammo Box.
+        /// </summary>
+        public static string _44138 {
+            get {
+                return ResourceManager.GetString("44138", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Ammo Box.
+        /// </summary>
+        public static string _44139 {
+            get {
+                return ResourceManager.GetString("44139", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Ammo Box.
+        /// </summary>
+        public static string _44140 {
+            get {
+                return ResourceManager.GetString("44140", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44141 {
+            get {
+                return ResourceManager.GetString("44141", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44142 {
+            get {
+                return ResourceManager.GetString("44142", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44143 {
+            get {
+                return ResourceManager.GetString("44143", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44144 {
+            get {
+                return ResourceManager.GetString("44144", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44145 {
+            get {
+                return ResourceManager.GetString("44145", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44146 {
+            get {
+                return ResourceManager.GetString("44146", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44147 {
+            get {
+                return ResourceManager.GetString("44147", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44148 {
+            get {
+                return ResourceManager.GetString("44148", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44149 {
+            get {
+                return ResourceManager.GetString("44149", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44150 {
+            get {
+                return ResourceManager.GetString("44150", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44151 {
+            get {
+                return ResourceManager.GetString("44151", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44152 {
+            get {
+                return ResourceManager.GetString("44152", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44153 {
+            get {
+                return ResourceManager.GetString("44153", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44154 {
+            get {
+                return ResourceManager.GetString("44154", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44155 {
+            get {
+                return ResourceManager.GetString("44155", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44156 {
+            get {
+                return ResourceManager.GetString("44156", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44157 {
+            get {
+                return ResourceManager.GetString("44157", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44158 {
+            get {
+                return ResourceManager.GetString("44158", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44159 {
+            get {
+                return ResourceManager.GetString("44159", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44160 {
+            get {
+                return ResourceManager.GetString("44160", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44161 {
+            get {
+                return ResourceManager.GetString("44161", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44162 {
+            get {
+                return ResourceManager.GetString("44162", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44163 {
+            get {
+                return ResourceManager.GetString("44163", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44164 {
+            get {
+                return ResourceManager.GetString("44164", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44165 {
+            get {
+                return ResourceManager.GetString("44165", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44166 {
+            get {
+                return ResourceManager.GetString("44166", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44167 {
+            get {
+                return ResourceManager.GetString("44167", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44168 {
+            get {
+                return ResourceManager.GetString("44168", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Ammo Belt.
+        /// </summary>
+        public static string _44169 {
+            get {
+                return ResourceManager.GetString("44169", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44170 {
+            get {
+                return ResourceManager.GetString("44170", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44171 {
+            get {
+                return ResourceManager.GetString("44171", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44172 {
+            get {
+                return ResourceManager.GetString("44172", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44173 {
+            get {
+                return ResourceManager.GetString("44173", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Cylinder.
+        /// </summary>
+        public static string _44174 {
+            get {
+                return ResourceManager.GetString("44174", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44175 {
+            get {
+                return ResourceManager.GetString("44175", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Ammo Box.
+        /// </summary>
+        public static string _44176 {
+            get {
+                return ResourceManager.GetString("44176", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flechette Chamber Boring.
+        /// </summary>
+        public static string _44177 {
+            get {
+                return ResourceManager.GetString("44177", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Cylinder.
+        /// </summary>
+        public static string _44179 {
+            get {
+                return ResourceManager.GetString("44179", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precision Cylinder.
+        /// </summary>
+        public static string _44180 {
+            get {
+                return ResourceManager.GetString("44180", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High Caliber Cylinder.
+        /// </summary>
+        public static string _44181 {
+            get {
+                return ResourceManager.GetString("44181", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Cylinder.
+        /// </summary>
+        public static string _44182 {
+            get {
+                return ResourceManager.GetString("44182", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Cylinder.
+        /// </summary>
+        public static string _44183 {
+            get {
+                return ResourceManager.GetString("44183", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Cylinder.
+        /// </summary>
+        public static string _44184 {
+            get {
+                return ResourceManager.GetString("44184", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Cylinder.
+        /// </summary>
+        public static string _44185 {
+            get {
+                return ResourceManager.GetString("44185", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Cylinder.
+        /// </summary>
+        public static string _44186 {
+            get {
+                return ResourceManager.GetString("44186", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44187 {
+            get {
+                return ResourceManager.GetString("44187", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44188 {
+            get {
+                return ResourceManager.GetString("44188", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44189 {
+            get {
+                return ResourceManager.GetString("44189", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44190 {
+            get {
+                return ResourceManager.GetString("44190", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44191 {
+            get {
+                return ResourceManager.GetString("44191", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44192 {
+            get {
+                return ResourceManager.GetString("44192", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44193 {
+            get {
+                return ResourceManager.GetString("44193", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44194 {
+            get {
+                return ResourceManager.GetString("44194", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44195 {
+            get {
+                return ResourceManager.GetString("44195", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44196 {
+            get {
+                return ResourceManager.GetString("44196", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44197 {
+            get {
+                return ResourceManager.GetString("44197", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44198 {
+            get {
+                return ResourceManager.GetString("44198", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44199 {
+            get {
+                return ResourceManager.GetString("44199", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44200 {
+            get {
+                return ResourceManager.GetString("44200", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44201 {
+            get {
+                return ResourceManager.GetString("44201", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44202 {
+            get {
+                return ResourceManager.GetString("44202", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44203 {
+            get {
+                return ResourceManager.GetString("44203", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44204 {
+            get {
+                return ResourceManager.GetString("44204", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44205 {
+            get {
+                return ResourceManager.GetString("44205", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Mag.
+        /// </summary>
+        public static string _44206 {
+            get {
+                return ResourceManager.GetString("44206", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Arrow.
+        /// </summary>
+        public static string _44210 {
+            get {
+                return ResourceManager.GetString("44210", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exploding Arrow.
+        /// </summary>
+        public static string _44211 {
+            get {
+                return ResourceManager.GetString("44211", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stun Arrow.
+        /// </summary>
+        public static string _44212 {
+            get {
+                return ResourceManager.GetString("44212", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poison Arrow.
+        /// </summary>
+        public static string _44213 {
+            get {
+                return ResourceManager.GetString("44213", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Arrow.
+        /// </summary>
+        public static string _44214 {
+            get {
+                return ResourceManager.GetString("44214", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Arrow.
+        /// </summary>
+        public static string _44215 {
+            get {
+                return ResourceManager.GetString("44215", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44216 {
+            get {
+                return ResourceManager.GetString("44216", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44217 {
+            get {
+                return ResourceManager.GetString("44217", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44218 {
+            get {
+                return ResourceManager.GetString("44218", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44219 {
+            get {
+                return ResourceManager.GetString("44219", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44220 {
+            get {
+                return ResourceManager.GetString("44220", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Mag.
+        /// </summary>
+        public static string _44221 {
+            get {
+                return ResourceManager.GetString("44221", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Mag.
+        /// </summary>
+        public static string _44222 {
+            get {
+                return ResourceManager.GetString("44222", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Mag.
+        /// </summary>
+        public static string _44223 {
+            get {
+                return ResourceManager.GetString("44223", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Mag.
+        /// </summary>
+        public static string _44224 {
+            get {
+                return ResourceManager.GetString("44224", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Mag.
+        /// </summary>
+        public static string _44225 {
+            get {
+                return ResourceManager.GetString("44225", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mag.
+        /// </summary>
+        public static string _44226 {
+            get {
+                return ResourceManager.GetString("44226", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Mag.
+        /// </summary>
+        public static string _44227 {
+            get {
+                return ResourceManager.GetString("44227", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Mag.
+        /// </summary>
+        public static string _44228 {
+            get {
+                return ResourceManager.GetString("44228", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Express Mag.
+        /// </summary>
+        public static string _44229 {
+            get {
+                return ResourceManager.GetString("44229", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cupid&apos;s Arrow.
+        /// </summary>
+        public static string _44230 {
+            get {
+                return ResourceManager.GetString("44230", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Standard Mag.
+        /// </summary>
+        public static string _44231 {
+            get {
+                return ResourceManager.GetString("44231", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Standard Mag.
+        /// </summary>
+        public static string _44232 {
+            get {
+                return ResourceManager.GetString("44232", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lightsky Red Dot Sight.
+        /// </summary>
+        public static string _45000 {
+            get {
+                return ResourceManager.GetString("45000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frontier Sniper Scope.
+        /// </summary>
+        public static string _45001 {
+            get {
+                return ResourceManager.GetString("45001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMI ACOG Scope.
+        /// </summary>
+        public static string _45002 {
+            get {
+                return ResourceManager.GetString("45002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EON Electric Scope.
+        /// </summary>
+        public static string _45003 {
+            get {
+                return ResourceManager.GetString("45003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMI Tech Scope.
+        /// </summary>
+        public static string _45004 {
+            get {
+                return ResourceManager.GetString("45004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood Combo Scope.
+        /// </summary>
+        public static string _45005 {
+            get {
+                return ResourceManager.GetString("45005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lightsky Reflex Sight.
+        /// </summary>
+        public static string _45006 {
+            get {
+                return ResourceManager.GetString("45006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Sniper Scope.
+        /// </summary>
+        public static string _45007 {
+            get {
+                return ResourceManager.GetString("45007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silverwood Heavy Scope.
+        /// </summary>
+        public static string _45008 {
+            get {
+                return ResourceManager.GetString("45008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titan Rail Sight.
+        /// </summary>
+        public static string _45009 {
+            get {
+                return ResourceManager.GetString("45009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Tactical Scope.
+        /// </summary>
+        public static string _45010 {
+            get {
+                return ResourceManager.GetString("45010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMRS Flip-Up Rail Sight.
+        /// </summary>
+        public static string _45011 {
+            get {
+                return ResourceManager.GetString("45011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid scope.
+        /// </summary>
+        public static string _45012 {
+            get {
+                return ResourceManager.GetString("45012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMI Electric Scope.
+        /// </summary>
+        public static string _45013 {
+            get {
+                return ResourceManager.GetString("45013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krane Holo Sight.
+        /// </summary>
+        public static string _45014 {
+            get {
+                return ResourceManager.GetString("45014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Sniper Scope.
+        /// </summary>
+        public static string _45015 {
+            get {
+                return ResourceManager.GetString("45015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom CQC Scope.
+        /// </summary>
+        public static string _45016 {
+            get {
+                return ResourceManager.GetString("45016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OPRL Holo Sight.
+        /// </summary>
+        public static string _45017 {
+            get {
+                return ResourceManager.GetString("45017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Optic Mod.
+        /// </summary>
+        public static string _45018 {
+            get {
+                return ResourceManager.GetString("45018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMI Infrared Scope Mk. 2.
+        /// </summary>
+        public static string _45019 {
+            get {
+                return ResourceManager.GetString("45019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMI Infrared Scope.
+        /// </summary>
+        public static string _45020 {
+            get {
+                return ResourceManager.GetString("45020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArmCom Infrared Scope.
+        /// </summary>
+        public static string _45021 {
+            get {
+                return ResourceManager.GetString("45021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aim Point Ammo Counter.
+        /// </summary>
+        public static string _45022 {
+            get {
+                return ResourceManager.GetString("45022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4X Ammo Counter Scope.
+        /// </summary>
+        public static string _45023 {
+            get {
+                return ResourceManager.GetString("45023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Titan Rail Sight.
+        /// </summary>
+        public static string _45024 {
+            get {
+                return ResourceManager.GetString("45024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Trophy.
+        /// </summary>
+        public static string _46000 {
+            get {
+                return ResourceManager.GetString("46000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Golden Knife Trophy.
+        /// </summary>
+        public static string _46001 {
+            get {
+                return ResourceManager.GetString("46001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flashlight Trophy.
+        /// </summary>
+        public static string _46004 {
+            get {
+                return ResourceManager.GetString("46004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blacklight Trophy.
+        /// </summary>
+        public static string _46005 {
+            get {
+                return ResourceManager.GetString("46005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shrunken Head Trophy.
+        /// </summary>
+        public static string _46006 {
+            get {
+                return ResourceManager.GetString("46006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Golden Grenades Trophy.
+        /// </summary>
+        public static string _46007 {
+            get {
+                return ResourceManager.GetString("46007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Golden Beta Head.
+        /// </summary>
+        public static string _46008 {
+            get {
+                return ResourceManager.GetString("46008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purple Heart Trophy.
+        /// </summary>
+        public static string _46009 {
+            get {
+                return ResourceManager.GetString("46009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 30 Days of Fight Trophy.
+        /// </summary>
+        public static string _46010 {
+            get {
+                return ResourceManager.GetString("46010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level 40 Trophy.
+        /// </summary>
+        public static string _46011 {
+            get {
+                return ResourceManager.GetString("46011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red Battle Scarf.
+        /// </summary>
+        public static string _46014 {
+            get {
+                return ResourceManager.GetString("46014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White Battle Scarf.
+        /// </summary>
+        public static string _46015 {
+            get {
+                return ResourceManager.GetString("46015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orange Battle Scarf.
+        /// </summary>
+        public static string _46016 {
+            get {
+                return ResourceManager.GetString("46016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue Battle Scarf.
+        /// </summary>
+        public static string _46017 {
+            get {
+                return ResourceManager.GetString("46017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purple Battle Scarf.
+        /// </summary>
+        public static string _46018 {
+            get {
+                return ResourceManager.GetString("46018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dual Red Battle Scarf.
+        /// </summary>
+        public static string _46019 {
+            get {
+                return ResourceManager.GetString("46019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dual Red &amp; White Battle Scarf.
+        /// </summary>
+        public static string _46020 {
+            get {
+                return ResourceManager.GetString("46020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dual Black &amp; White Battle Scarf.
+        /// </summary>
+        public static string _46021 {
+            get {
+                return ResourceManager.GetString("46021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lightning Trail.
+        /// </summary>
+        public static string _46022 {
+            get {
+                return ResourceManager.GetString("46022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Small Lightning Trail.
+        /// </summary>
+        public static string _46023 {
+            get {
+                return ResourceManager.GetString("46023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red Lightning Trail.
+        /// </summary>
+        public static string _46024 {
+            get {
+                return ResourceManager.GetString("46024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Small Red Lightning Trail.
+        /// </summary>
+        public static string _46025 {
+            get {
+                return ResourceManager.GetString("46025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dollar Bill Trail.
+        /// </summary>
+        public static string _46026 {
+            get {
+                return ResourceManager.GetString("46026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coin Trail.
+        /// </summary>
+        public static string _46027 {
+            get {
+                return ResourceManager.GetString("46027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flame Trail.
+        /// </summary>
+        public static string _46028 {
+            get {
+                return ResourceManager.GetString("46028", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fire Trail.
+        /// </summary>
+        public static string _46029 {
+            get {
+                return ResourceManager.GetString("46029", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pink Ribbon.
+        /// </summary>
+        public static string _46030 {
+            get {
+                return ResourceManager.GetString("46030", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MLG Fall 2014 GOLD Medal.
+        /// </summary>
+        public static string _46031 {
+            get {
+                return ResourceManager.GetString("46031", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MLG Fall 2014 SILVER Medal.
+        /// </summary>
+        public static string _46032 {
+            get {
+                return ResourceManager.GetString("46032", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MLG Fall 2014 BRONZE Medal.
+        /// </summary>
+        public static string _46033 {
+            get {
+                return ResourceManager.GetString("46033", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snow Trail.
+        /// </summary>
+        public static string _46034 {
+            get {
+                return ResourceManager.GetString("46034", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Bleeding Heart.
+        /// </summary>
+        public static string _46035 {
+            get {
+                return ResourceManager.GetString("46035", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to War of the Roses.
+        /// </summary>
+        public static string _46036 {
+            get {
+                return ResourceManager.GetString("46036", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Good Luck.
+        /// </summary>
+        public static string _46037 {
+            get {
+                return ResourceManager.GetString("46037", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Pink.
+        /// </summary>
+        public static string _46038 {
+            get {
+                return ResourceManager.GetString("46038", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Purple.
+        /// </summary>
+        public static string _46039 {
+            get {
+                return ResourceManager.GetString("46039", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Yellow.
+        /// </summary>
+        public static string _46040 {
+            get {
+                return ResourceManager.GetString("46040", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Green.
+        /// </summary>
+        public static string _46041 {
+            get {
+                return ResourceManager.GetString("46041", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Blue.
+        /// </summary>
+        public static string _46042 {
+            get {
+                return ResourceManager.GetString("46042", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Cyan.
+        /// </summary>
+        public static string _46043 {
+            get {
+                return ResourceManager.GetString("46043", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Orange.
+        /// </summary>
+        public static string _46044 {
+            get {
+                return ResourceManager.GetString("46044", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Magenta.
+        /// </summary>
+        public static string _46045 {
+            get {
+                return ResourceManager.GetString("46045", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears White.
+        /// </summary>
+        public static string _46046 {
+            get {
+                return ResourceManager.GetString("46046", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bunny Ears Red.
+        /// </summary>
+        public static string _46047 {
+            get {
+                return ResourceManager.GetString("46047", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reindeer Antlers.
+        /// </summary>
+        public static string _46048 {
+            get {
+                return ResourceManager.GetString("46048", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Premium Reindeer Antlers.
+        /// </summary>
+        public static string _46049 {
+            get {
+                return ResourceManager.GetString("46049", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orange Fire Trail.
+        /// </summary>
+        public static string _46050 {
+            get {
+                return ResourceManager.GetString("46050", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue Fire Trail.
+        /// </summary>
+        public static string _46051 {
+            get {
+                return ResourceManager.GetString("46051", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Green Fire Trail.
+        /// </summary>
+        public static string _46052 {
+            get {
+                return ResourceManager.GetString("46052", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue Lightning Trail.
+        /// </summary>
+        public static string _46053 {
+            get {
+                return ResourceManager.GetString("46053", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orange Lightning Trail.
+        /// </summary>
+        public static string _46054 {
+            get {
+                return ResourceManager.GetString("46054", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Green Lightning Trail.
+        /// </summary>
+        public static string _46055 {
+            get {
+                return ResourceManager.GetString("46055", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestige Trophy.
+        /// </summary>
+        public static string _46056 {
+            get {
+                return ResourceManager.GetString("46056", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Golden Crown of Prestige.
+        /// </summary>
+        public static string _46057 {
+            get {
+                return ResourceManager.GetString("46057", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Irish Jig.
         /// </summary>
-        public static string _4125 {
+        public static string _497 {
             get {
-                return ResourceManager.GetString("4125", resourceCulture);
+                return ResourceManager.GetString("497", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Punch Wind.
         /// </summary>
-        public static string _4126 {
+        public static string _498 {
             get {
-                return ResourceManager.GetString("4126", resourceCulture);
+                return ResourceManager.GetString("498", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Punch Earth.
         /// </summary>
-        public static string _4127 {
+        public static string _499 {
             get {
-                return ResourceManager.GetString("4127", resourceCulture);
+                return ResourceManager.GetString("499", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Punch Fire.
         /// </summary>
-        public static string _4128 {
+        public static string _500 {
             get {
-                return ResourceManager.GetString("4128", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Punch Water.
-        /// </summary>
-        public static string _4129 {
-            get {
-                return ResourceManager.GetString("4129", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Punch Heart.
-        /// </summary>
-        public static string _4130 {
-            get {
-                return ResourceManager.GetString("4130", resourceCulture);
+                return ResourceManager.GetString("500", resourceCulture);
             }
         }
         
@@ -7414,11 +8179,128 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grendel - K. Moreau.
+        /// </summary>
+        public static string _50000 {
+            get {
+                return ResourceManager.GetString("50000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viper - J. Vansaint.
+        /// </summary>
+        public static string _50001 {
+            get {
+                return ResourceManager.GetString("50001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duchess - S. Bertolette.
+        /// </summary>
+        public static string _50002 {
+            get {
+                return ResourceManager.GetString("50002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deacon - T. Halsey.
+        /// </summary>
+        public static string _50003 {
+            get {
+                return ResourceManager.GetString("50003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MARS - ARK M.A.R.S..
+        /// </summary>
+        public static string _50004 {
+            get {
+                return ResourceManager.GetString("50004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chronos - R. O&apos;Conner.
+        /// </summary>
+        public static string _50005 {
+            get {
+                return ResourceManager.GetString("50005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lazarus - B. Hinds.
+        /// </summary>
+        public static string _50006 {
+            get {
+                return ResourceManager.GetString("50006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artemis - M. Akimoto.
+        /// </summary>
+        public static string _50007 {
+            get {
+                return ResourceManager.GetString("50007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crusher - A. Hernandez.
+        /// </summary>
+        public static string _50008 {
+            get {
+                return ResourceManager.GetString("50008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lilith - S. Karalis.
+        /// </summary>
+        public static string _50009 {
+            get {
+                return ResourceManager.GetString("50009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Devil Girl.
         /// </summary>
         public static string _5001 {
             get {
                 return ResourceManager.GetString("5001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White Knight.
+        /// </summary>
+        public static string _50010 {
+            get {
+                return ResourceManager.GetString("50010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urban MARS.
+        /// </summary>
+        public static string _50015 {
+            get {
+                return ResourceManager.GetString("50015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ghost - J. Haussen.
+        /// </summary>
+        public static string _50018 {
+            get {
+                return ResourceManager.GetString("50018", resourceCulture);
             }
         }
         
@@ -7491,6 +8373,15 @@ namespace BLREdit.Core.Properties {
         public static string _5009 {
             get {
                 return ResourceManager.GetString("5009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Punch Water.
+        /// </summary>
+        public static string _501 {
+            get {
+                return ResourceManager.GetString("501", resourceCulture);
             }
         }
         
@@ -7581,6 +8472,15 @@ namespace BLREdit.Core.Properties {
         public static string _5019 {
             get {
                 return ResourceManager.GetString("5019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Punch Heart.
+        /// </summary>
+        public static string _502 {
+            get {
+                return ResourceManager.GetString("502", resourceCulture);
             }
         }
         
@@ -8413,7 +9313,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Malaysian Flag.
+        ///   Looks up a localized string similar to Daylight Tag.
         /// </summary>
         public static string _5112 {
             get {
@@ -8422,7 +9322,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Singapore Flag.
+        ///   Looks up a localized string similar to BCL Tag.
         /// </summary>
         public static string _5113 {
             get {
@@ -8431,7 +9331,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Daylight Tag.
+        ///   Looks up a localized string similar to Malaysian Flag.
         /// </summary>
         public static string _5114 {
             get {
@@ -8440,7 +9340,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BCL Tag.
+        ///   Looks up a localized string similar to Singapore Flag.
         /// </summary>
         public static string _5115 {
             get {
@@ -8451,42 +9351,6 @@ namespace BLREdit.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Inside Gaming.
         /// </summary>
-        public static string _5116 {
-            get {
-                return ResourceManager.GetString("5116", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Halloween Skull.
-        /// </summary>
-        public static string _5117 {
-            get {
-                return ResourceManager.GetString("5117", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Jack O&apos;Lantern.
-        /// </summary>
-        public static string _5118 {
-            get {
-                return ResourceManager.GetString("5118", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to BLR Sugar Skull.
-        /// </summary>
-        public static string _5119 {
-            get {
-                return ResourceManager.GetString("5119", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Red Sugar Skull.
-        /// </summary>
         public static string _5120 {
             get {
                 return ResourceManager.GetString("5120", resourceCulture);
@@ -8494,7 +9358,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blue Sugar Skull.
+        ///   Looks up a localized string similar to Halloween Skull.
         /// </summary>
         public static string _5121 {
             get {
@@ -8503,7 +9367,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thanksgiving Turkey.
+        ///   Looks up a localized string similar to Jack O&apos;Lantern.
         /// </summary>
         public static string _5122 {
             get {
@@ -8512,7 +9376,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Steel Series.
+        ///   Looks up a localized string similar to BLR Sugar Skull.
         /// </summary>
         public static string _5123 {
             get {
@@ -8521,7 +9385,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pumpkin Pie.
+        ///   Looks up a localized string similar to Red Sugar Skull.
         /// </summary>
         public static string _5124 {
             get {
@@ -8530,7 +9394,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Turkey Leg.
+        ///   Looks up a localized string similar to Blue Sugar Skull.
         /// </summary>
         public static string _5125 {
             get {
@@ -8539,7 +9403,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snowflake.
+        ///   Looks up a localized string similar to Thanksgiving Turkey.
         /// </summary>
         public static string _5126 {
             get {
@@ -8548,7 +9412,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BLR Snowflake.
+        ///   Looks up a localized string similar to Steel Series.
         /// </summary>
         public static string _5127 {
             get {
@@ -8557,7 +9421,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MLG Gold - Fall 2014..
+        ///   Looks up a localized string similar to Pumpkin Pie.
         /// </summary>
         public static string _5128 {
             get {
@@ -8566,7 +9430,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MLG Silver - Fall 2014..
+        ///   Looks up a localized string similar to Turkey Leg.
         /// </summary>
         public static string _5129 {
             get {
@@ -8575,7 +9439,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MLG Bronze - Fall 2014..
+        ///   Looks up a localized string similar to Snowflake.
         /// </summary>
         public static string _5130 {
             get {
@@ -8584,7 +9448,7 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rocket League.
+        ///   Looks up a localized string similar to BLR Snowflake.
         /// </summary>
         public static string _5131 {
             get {
@@ -8593,1145 +9457,3341 @@ namespace BLREdit.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MLG Gold - Fall 2014..
+        /// </summary>
+        public static string _5132 {
+            get {
+                return ResourceManager.GetString("5132", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MLG Silver - Fall 2014..
+        /// </summary>
+        public static string _5133 {
+            get {
+                return ResourceManager.GetString("5133", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MLG Bronze - Fall 2014..
+        /// </summary>
+        public static string _5134 {
+            get {
+                return ResourceManager.GetString("5134", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocket League.
+        /// </summary>
+        public static string _5137 {
+            get {
+                return ResourceManager.GetString("5137", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Premium Reindeer Antlers.
+        /// </summary>
+        public static string _5138 {
+            get {
+                return ResourceManager.GetString("5138", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reindeer Antlers.
+        /// </summary>
+        public static string _5139 {
+            get {
+                return ResourceManager.GetString("5139", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Bleeding Heart.
+        /// </summary>
+        public static string _5141 {
+            get {
+                return ResourceManager.GetString("5141", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to War of the Roses.
+        /// </summary>
+        public static string _5142 {
+            get {
+                return ResourceManager.GetString("5142", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to KBMOD USB Drive.
         /// </summary>
-        public static string _5136 {
+        public static string _5143 {
             get {
-                return ResourceManager.GetString("5136", resourceCulture);
+                return ResourceManager.GetString("5143", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch Armet X.
+        ///   Looks up a localized string similar to Briar BrGR1.
         /// </summary>
-        public static string _6000 {
+        public static string _62000 {
             get {
-                return ResourceManager.GetString("6000", resourceCulture);
+                return ResourceManager.GetString("62000", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied R5X GHOST.
+        ///   Looks up a localized string similar to Briar BrSGP1.
         /// </summary>
-        public static string _6001 {
+        public static string _62001 {
             get {
-                return ResourceManager.GetString("6001", resourceCulture);
+                return ResourceManager.GetString("62001", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dataluxe Slant-X2.
+        ///   Looks up a localized string similar to Standard Issue.
         /// </summary>
-        public static string _6002 {
+        public static string _630100 {
             get {
-                return ResourceManager.GetString("6002", resourceCulture);
+                return ResourceManager.GetString("630100", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied RET-3 Astral.
+        ///   Looks up a localized string similar to Dust Digital.
         /// </summary>
-        public static string _6003 {
+        public static string _630101 {
             get {
-                return ResourceManager.GetString("6003", resourceCulture);
+                return ResourceManager.GetString("630101", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch Bonebreaker BKR.a.
+        ///   Looks up a localized string similar to Rockwall.
         /// </summary>
-        public static string _6004 {
+        public static string _630102 {
             get {
-                return ResourceManager.GetString("6004", resourceCulture);
+                return ResourceManager.GetString("630102", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied R21V Hunter.
+        ///   Looks up a localized string similar to Sandstorm.
         /// </summary>
-        public static string _6005 {
+        public static string _630103 {
             get {
-                return ResourceManager.GetString("6005", resourceCulture);
+                return ResourceManager.GetString("630103", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dataluxe Breach-X7.
+        ///   Looks up a localized string similar to Digital Red.
         /// </summary>
-        public static string _6006 {
+        public static string _630104 {
             get {
-                return ResourceManager.GetString("6006", resourceCulture);
+                return ResourceManager.GetString("630104", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied R97 II.
+        ///   Looks up a localized string similar to Urban Digital.
         /// </summary>
-        public static string _6007 {
+        public static string _630105 {
             get {
-                return ResourceManager.GetString("6007", resourceCulture);
+                return ResourceManager.GetString("630105", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Gold.
+        ///   Looks up a localized string similar to Dust Gray.
         /// </summary>
-        public static string _6008 {
+        public static string _630106 {
             get {
-                return ResourceManager.GetString("6008", resourceCulture);
+                return ResourceManager.GetString("630106", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RET-3 Astral - Damaged.
+        ///   Looks up a localized string similar to Hillside Brown.
         /// </summary>
-        public static string _6009 {
+        public static string _630107 {
             get {
-                return ResourceManager.GetString("6009", resourceCulture);
+                return ResourceManager.GetString("630107", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RET-3 Astral - Red.
+        ///   Looks up a localized string similar to Brown Tiger.
         /// </summary>
-        public static string _6010 {
+        public static string _630108 {
             get {
-                return ResourceManager.GetString("6010", resourceCulture);
+                return ResourceManager.GetString("630108", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RET-3 Astral - Gold.
+        ///   Looks up a localized string similar to Ragnarok.
         /// </summary>
-        public static string _6011 {
+        public static string _630109 {
             get {
-                return ResourceManager.GetString("6011", resourceCulture);
+                return ResourceManager.GetString("630109", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RET-3 Astral - Black.
+        ///   Looks up a localized string similar to Mud Flare.
         /// </summary>
-        public static string _6012 {
+        public static string _630110 {
             get {
-                return ResourceManager.GetString("6012", resourceCulture);
+                return ResourceManager.GetString("630110", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bonebreaker - Clown.
+        ///   Looks up a localized string similar to Urban Dust.
         /// </summary>
-        public static string _6013 {
+        public static string _630111 {
             get {
-                return ResourceManager.GetString("6013", resourceCulture);
+                return ResourceManager.GetString("630111", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bonebreaker - Bloody.
+        ///   Looks up a localized string similar to Red Leopard.
         /// </summary>
-        public static string _6014 {
+        public static string _630112 {
             get {
-                return ResourceManager.GetString("6014", resourceCulture);
+                return ResourceManager.GetString("630112", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bonebreaker - Black.
+        ///   Looks up a localized string similar to Winter Rock.
         /// </summary>
-        public static string _6015 {
+        public static string _630113 {
             get {
-                return ResourceManager.GetString("6015", resourceCulture);
+                return ResourceManager.GetString("630113", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bonebreaker - Gold.
+        ///   Looks up a localized string similar to Digi Tundra.
         /// </summary>
-        public static string _6016 {
+        public static string _630114 {
             get {
-                return ResourceManager.GetString("6016", resourceCulture);
+                return ResourceManager.GetString("630114", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slant-X2 - Camo.
+        ///   Looks up a localized string similar to Spotted Ground.
         /// </summary>
-        public static string _6017 {
+        public static string _630115 {
             get {
-                return ResourceManager.GetString("6017", resourceCulture);
+                return ResourceManager.GetString("630115", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slant-X2 - Stealth.
+        ///   Looks up a localized string similar to Dark Brown.
         /// </summary>
-        public static string _6018 {
+        public static string _630116 {
             get {
-                return ResourceManager.GetString("6018", resourceCulture);
+                return ResourceManager.GetString("630116", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slant-X2 - Target.
+        ///   Looks up a localized string similar to Gray Operation.
         /// </summary>
-        public static string _6019 {
+        public static string _630117 {
             get {
-                return ResourceManager.GetString("6019", resourceCulture);
+                return ResourceManager.GetString("630117", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slant-X2 - Bomber.
+        ///   Looks up a localized string similar to Orange Tiger.
         /// </summary>
-        public static string _6020 {
+        public static string _630118 {
             get {
-                return ResourceManager.GetString("6020", resourceCulture);
+                return ResourceManager.GetString("630118", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R21V HUNTER - &apos;BUUURINK&apos;.
+        ///   Looks up a localized string similar to Hillside Operation.
         /// </summary>
-        public static string _6021 {
+        public static string _630119 {
             get {
-                return ResourceManager.GetString("6021", resourceCulture);
+                return ResourceManager.GetString("630119", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Jolly Jack.
+        ///   Looks up a localized string similar to Broken Rock.
         /// </summary>
-        public static string _6022 {
+        public static string _630120 {
             get {
-                return ResourceManager.GetString("6022", resourceCulture);
+                return ResourceManager.GetString("630120", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Jolly Jack Dark.
+        ///   Looks up a localized string similar to Shadow.
         /// </summary>
-        public static string _6023 {
+        public static string _630121 {
             get {
-                return ResourceManager.GetString("6023", resourceCulture);
+                return ResourceManager.GetString("630121", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Tango.
+        ///   Looks up a localized string similar to Bloodsport.
         /// </summary>
-        public static string _6024 {
+        public static string _630122 {
             get {
-                return ResourceManager.GetString("6024", resourceCulture);
+                return ResourceManager.GetString("630122", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Retribution.
+        ///   Looks up a localized string similar to Sahara.
         /// </summary>
-        public static string _6025 {
+        public static string _630123 {
             get {
-                return ResourceManager.GetString("6025", resourceCulture);
+                return ResourceManager.GetString("630123", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Illin&apos;.
+        ///   Looks up a localized string similar to Forest.
         /// </summary>
-        public static string _6026 {
+        public static string _630124 {
             get {
-                return ResourceManager.GetString("6026", resourceCulture);
+                return ResourceManager.GetString("630124", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Machinima.
+        ///   Looks up a localized string similar to Mountain Lion.
         /// </summary>
-        public static string _6027 {
+        public static string _630125 {
             get {
-                return ResourceManager.GetString("6027", resourceCulture);
+                return ResourceManager.GetString("630125", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Race Stripe.
+        ///   Looks up a localized string similar to Ice Hex.
         /// </summary>
-        public static string _6028 {
+        public static string _630126 {
             get {
-                return ResourceManager.GetString("6028", resourceCulture);
+                return ResourceManager.GetString("630126", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Yin and Yang.
+        ///   Looks up a localized string similar to Urban Winter.
         /// </summary>
-        public static string _6029 {
+        public static string _630127 {
             get {
-                return ResourceManager.GetString("6029", resourceCulture);
+                return ResourceManager.GetString("630127", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - The Mark.
+        ///   Looks up a localized string similar to Urban Nest.
         /// </summary>
-        public static string _6030 {
+        public static string _630128 {
             get {
-                return ResourceManager.GetString("6030", resourceCulture);
+                return ResourceManager.GetString("630128", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - Smoker.
+        ///   Looks up a localized string similar to Tactical Infil.
         /// </summary>
-        public static string _6031 {
+        public static string _630129 {
             get {
-                return ResourceManager.GetString("6031", resourceCulture);
+                return ResourceManager.GetString("630129", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - Skull Knuckle.
+        ///   Looks up a localized string similar to Avalanche.
         /// </summary>
-        public static string _6032 {
+        public static string _630130 {
             get {
-                return ResourceManager.GetString("6032", resourceCulture);
+                return ResourceManager.GetString("630130", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - Bear Spirit.
+        ///   Looks up a localized string similar to Olive.
         /// </summary>
-        public static string _6033 {
+        public static string _630131 {
             get {
-                return ResourceManager.GetString("6033", resourceCulture);
+                return ResourceManager.GetString("630131", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - The Stangman.
+        ///   Looks up a localized string similar to Tactical Winter.
         /// </summary>
-        public static string _6034 {
+        public static string _630132 {
             get {
-                return ResourceManager.GetString("6034", resourceCulture);
+                return ResourceManager.GetString("630132", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - The Veteran.
+        ///   Looks up a localized string similar to Wrath.
         /// </summary>
-        public static string _6035 {
+        public static string _630133 {
             get {
-                return ResourceManager.GetString("6035", resourceCulture);
+                return ResourceManager.GetString("630133", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - Beta Veteran.
+        ///   Looks up a localized string similar to Drifter.
         /// </summary>
-        public static string _6036 {
+        public static string _630134 {
             get {
-                return ResourceManager.GetString("6036", resourceCulture);
+                return ResourceManager.GetString("630134", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Battle Damaged Hunter.
+        ///   Looks up a localized string similar to Ocean Fury.
         /// </summary>
-        public static string _6037 {
+        public static string _630135 {
             get {
-                return ResourceManager.GetString("6037", resourceCulture);
+                return ResourceManager.GetString("630135", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R97 II - Valve.
+        ///   Looks up a localized string similar to Gray.
         /// </summary>
-        public static string _6038 {
+        public static string _630136 {
             get {
-                return ResourceManager.GetString("6038", resourceCulture);
+                return ResourceManager.GetString("630136", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TEMP!.
+        ///   Looks up a localized string similar to Marked Hunter.
         /// </summary>
-        public static string _6039 {
+        public static string _630137 {
             get {
-                return ResourceManager.GetString("6039", resourceCulture);
+                return ResourceManager.GetString("630137", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fox+Cat SR-7.
+        ///   Looks up a localized string similar to Snow Leopard.
         /// </summary>
-        public static string _6040 {
+        public static string _630138 {
             get {
-                return ResourceManager.GetString("6040", resourceCulture);
+                return ResourceManager.GetString("630138", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Damaged Allied R5X.
+        ///   Looks up a localized string similar to Forest Combat.
         /// </summary>
-        public static string _6041 {
+        public static string _630139 {
             get {
-                return ResourceManager.GetString("6041", resourceCulture);
+                return ResourceManager.GetString("630139", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - Bright.
+        ///   Looks up a localized string similar to Seized.
         /// </summary>
-        public static string _6042 {
+        public static string _630140 {
             get {
-                return ResourceManager.GetString("6042", resourceCulture);
+                return ResourceManager.GetString("630140", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmetX - KW-aII.
+        ///   Looks up a localized string similar to Concrete Gray.
         /// </summary>
-        public static string _6043 {
+        public static string _630141 {
             get {
-                return ResourceManager.GetString("6043", resourceCulture);
+                return ResourceManager.GetString("630141", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - B4T.
+        ///   Looks up a localized string similar to Green Plankton.
         /// </summary>
-        public static string _6044 {
+        public static string _630142 {
             get {
-                return ResourceManager.GetString("6044", resourceCulture);
+                return ResourceManager.GetString("630142", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prex Chem/Hazmat Respirator-XPL.
+        ///   Looks up a localized string similar to Mountain Peak.
         /// </summary>
-        public static string _6045 {
+        public static string _630143 {
             get {
-                return ResourceManager.GetString("6045", resourceCulture);
+                return ResourceManager.GetString("630143", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prex Chem/Hazmat Respirator-TOX.
+        ///   Looks up a localized string similar to Gray Leaf.
         /// </summary>
-        public static string _6046 {
+        public static string _630144 {
             get {
-                return ResourceManager.GetString("6046", resourceCulture);
+                return ResourceManager.GetString("630144", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prex Chem/Hazmat Respirator-INC.
+        ///   Looks up a localized string similar to Snowstorm.
         /// </summary>
-        public static string _6047 {
+        public static string _630145 {
             get {
-                return ResourceManager.GetString("6047", resourceCulture);
+                return ResourceManager.GetString("630145", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied R7S Sniper.
+        ///   Looks up a localized string similar to Dark Gray.
         /// </summary>
-        public static string _6048 {
+        public static string _630146 {
             get {
-                return ResourceManager.GetString("6048", resourceCulture);
+                return ResourceManager.GetString("630146", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R5X GHOST - Vision.
+        ///   Looks up a localized string similar to Snowdrift.
         /// </summary>
-        public static string _6049 {
+        public static string _630147 {
             get {
-                return ResourceManager.GetString("6049", resourceCulture);
+                return ResourceManager.GetString("630147", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch R-12 Battleaxe.
+        ///   Looks up a localized string similar to Grassland Hex.
         /// </summary>
-        public static string _6050 {
+        public static string _630148 {
             get {
-                return ResourceManager.GetString("6050", resourceCulture);
+                return ResourceManager.GetString("630148", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch R-12 Hatchet.
+        ///   Looks up a localized string similar to Urban Hex.
         /// </summary>
-        public static string _6051 {
+        public static string _630149 {
             get {
-                return ResourceManager.GetString("6051", resourceCulture);
+                return ResourceManager.GetString("630149", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied APC Ranger.
+        ///   Looks up a localized string similar to Shattered Poles.
         /// </summary>
-        public static string _6052 {
+        public static string _630150 {
             get {
-                return ResourceManager.GetString("6052", resourceCulture);
+                return ResourceManager.GetString("630150", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmCom Ta.UX001 Prototype.
+        ///   Looks up a localized string similar to Metallic Bronze.
         /// </summary>
-        public static string _6053 {
+        public static string _630151 {
             get {
-                return ResourceManager.GetString("6053", resourceCulture);
+                return ResourceManager.GetString("630151", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Carcharodon R-3x.
+        ///   Looks up a localized string similar to Metallic Silver.
         /// </summary>
-        public static string _6054 {
+        public static string _630152 {
             get {
-                return ResourceManager.GetString("6054", resourceCulture);
+                return ResourceManager.GetString("630152", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recluse B-1t3.
+        ///   Looks up a localized string similar to Metallic Gold.
         /// </summary>
-        public static string _6055 {
+        public static string _630153 {
             get {
-                return ResourceManager.GetString("6055", resourceCulture);
+                return ResourceManager.GetString("630153", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Polaris.
+        ///   Looks up a localized string similar to Metallic Pink.
         /// </summary>
-        public static string _6056 {
+        public static string _630154 {
             get {
-                return ResourceManager.GetString("6056", resourceCulture);
+                return ResourceManager.GetString("630154", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atago 9.
+        ///   Looks up a localized string similar to Metallic Orange.
         /// </summary>
-        public static string _6057 {
+        public static string _630155 {
             get {
-                return ResourceManager.GetString("6057", resourceCulture);
+                return ResourceManager.GetString("630155", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volk 34r.
+        ///   Looks up a localized string similar to Metallic Cobalt Blue.
         /// </summary>
-        public static string _6058 {
+        public static string _630156 {
             get {
-                return ResourceManager.GetString("6058", resourceCulture);
+                return ResourceManager.GetString("630156", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cupid.
+        ///   Looks up a localized string similar to Metallic Toxic Green.
         /// </summary>
-        public static string _6059 {
+        public static string _630157 {
             get {
-                return ResourceManager.GetString("6059", resourceCulture);
+                return ResourceManager.GetString("630157", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hugs and Kisses.
+        ///   Looks up a localized string similar to Matte Pink.
         /// </summary>
-        public static string _6060 {
+        public static string _630158 {
             get {
-                return ResourceManager.GetString("6060", resourceCulture);
+                return ResourceManager.GetString("630158", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tartarus.
+        ///   Looks up a localized string similar to Matte Orange.
         /// </summary>
-        public static string _6061 {
+        public static string _630159 {
             get {
-                return ResourceManager.GetString("6061", resourceCulture);
+                return ResourceManager.GetString("630159", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Orange Sugared Bone Breaker.
+        ///   Looks up a localized string similar to Matte Red.
         /// </summary>
-        public static string _6062 {
+        public static string _630160 {
             get {
-                return ResourceManager.GetString("6062", resourceCulture);
+                return ResourceManager.GetString("630160", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blue Sugared Bone Breaker.
+        ///   Looks up a localized string similar to Matte Dark Red.
         /// </summary>
-        public static string _6063 {
+        public static string _630161 {
             get {
-                return ResourceManager.GetString("6063", resourceCulture);
+                return ResourceManager.GetString("630161", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Green Sugared Bone Breaker.
+        ///   Looks up a localized string similar to Matte Baby Blue.
         /// </summary>
-        public static string _6064 {
+        public static string _630162 {
             get {
-                return ResourceManager.GetString("6064", resourceCulture);
+                return ResourceManager.GetString("630162", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pink Sugared Bone Breaker.
+        ///   Looks up a localized string similar to Matte Dark Blue.
         /// </summary>
-        public static string _6065 {
+        public static string _630163 {
             get {
-                return ResourceManager.GetString("6065", resourceCulture);
+                return ResourceManager.GetString("630163", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Red Sugared Bone Breaker.
+        ///   Looks up a localized string similar to Matte Black.
         /// </summary>
-        public static string _6066 {
+        public static string _630164 {
             get {
-                return ResourceManager.GetString("6066", resourceCulture);
+                return ResourceManager.GetString("630164", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to White Sugared Bone Breaker.
+        ///   Looks up a localized string similar to White.
         /// </summary>
-        public static string _6067 {
+        public static string _630165 {
             get {
-                return ResourceManager.GetString("6067", resourceCulture);
+                return ResourceManager.GetString("630165", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yellow Sugared Bone Breaker.
+        ///   Looks up a localized string similar to Matte Dark Purple.
         /// </summary>
-        public static string _6068 {
+        public static string _630166 {
             get {
-                return ResourceManager.GetString("6068", resourceCulture);
+                return ResourceManager.GetString("630166", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MLG Championship Helmet.
+        ///   Looks up a localized string similar to Matte Green.
         /// </summary>
-        public static string _6069 {
+        public static string _630167 {
             get {
-                return ResourceManager.GetString("6069", resourceCulture);
+                return ResourceManager.GetString("630167", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Psyonix Rocket League Helmet.
+        ///   Looks up a localized string similar to Matte Yellow.
         /// </summary>
-        public static string _6070 {
+        public static string _630168 {
             get {
-                return ResourceManager.GetString("6070", resourceCulture);
+                return ResourceManager.GetString("630168", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prestige Overmatch Armet.
+        ///   Looks up a localized string similar to Super Secret.
         /// </summary>
-        public static string _6071 {
+        public static string _630169 {
             get {
-                return ResourceManager.GetString("6071", resourceCulture);
+                return ResourceManager.GetString("630169", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Helmet of the Drought.
+        ///   Looks up a localized string similar to FPSGuru.com Partner Camo.
         /// </summary>
-        public static string _6072 {
+        public static string _630170 {
             get {
-                return ResourceManager.GetString("6072", resourceCulture);
+                return ResourceManager.GetString("630170", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volk 34r Elite.
+        ///   Looks up a localized string similar to IGN.com Partner Camo.
         /// </summary>
-        public static string _6073 {
+        public static string _630171 {
             get {
-                return ResourceManager.GetString("6073", resourceCulture);
+                return ResourceManager.GetString("630171", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BCL Championship Helmet.
+        ///   Looks up a localized string similar to MMOBomb.com Partner Camo.
         /// </summary>
-        public static string _6074 {
+        public static string _630172 {
             get {
-                return ResourceManager.GetString("6074", resourceCulture);
+                return ResourceManager.GetString("630172", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Helmet of Champions.
+        ///   Looks up a localized string similar to Secret Silver.
         /// </summary>
-        public static string _6075 {
+        public static string _630173 {
             get {
-                return ResourceManager.GetString("6075", resourceCulture);
+                return ResourceManager.GetString("630173", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Santago.
+        ///   Looks up a localized string similar to Cash.
         /// </summary>
-        public static string _6076 {
+        public static string _630174 {
             get {
-                return ResourceManager.GetString("6076", resourceCulture);
+                return ResourceManager.GetString("630174", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1R-3 Clogad.
+        ///   Looks up a localized string similar to The Benjamins.
         /// </summary>
-        public static string _6077 {
+        public static string _630175 {
             get {
-                return ResourceManager.GetString("6077", resourceCulture);
+                return ResourceManager.GetString("630175", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Helm of Caerbannog.
+        ///   Looks up a localized string similar to Extra Life Charity.
         /// </summary>
-        public static string _6078 {
+        public static string _630176 {
             get {
-                return ResourceManager.GetString("6078", resourceCulture);
+                return ResourceManager.GetString("630176", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grimalkin Mk.I.
+        ///   Looks up a localized string similar to KBMOD.com Vintage.
         /// </summary>
-        public static string _6079 {
+        public static string _630177 {
             get {
-                return ResourceManager.GetString("6079", resourceCulture);
+                return ResourceManager.GetString("630177", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grimalkin Mk.II.
+        ///   Looks up a localized string similar to Astro Graffiti Autumn.
         /// </summary>
-        public static string _6080 {
+        public static string _630178 {
             get {
-                return ResourceManager.GetString("6080", resourceCulture);
+                return ResourceManager.GetString("630178", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grimalkin Mk.III.
+        ///   Looks up a localized string similar to Astro Graffiti.
         /// </summary>
-        public static string _6081 {
+        public static string _630179 {
             get {
-                return ResourceManager.GetString("6081", resourceCulture);
+                return ResourceManager.GetString("630179", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grimalkin Mk.IV.
+        ///   Looks up a localized string similar to Astro Graffiti Black.
         /// </summary>
-        public static string _6082 {
+        public static string _630180 {
             get {
-                return ResourceManager.GetString("6082", resourceCulture);
+                return ResourceManager.GetString("630180", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grimalkin Mk.V.
+        ///   Looks up a localized string similar to Science.
         /// </summary>
-        public static string _6083 {
+        public static string _630181 {
             get {
-                return ResourceManager.GetString("6083", resourceCulture);
+                return ResourceManager.GetString("630181", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mouser.
+        ///   Looks up a localized string similar to Hardsuit Pilot Red.
         /// </summary>
-        public static string _6084 {
+        public static string _630182 {
             get {
-                return ResourceManager.GetString("6084", resourceCulture);
+                return ResourceManager.GetString("630182", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tabby.
+        ///   Looks up a localized string similar to Hardsuit Pilot Orange.
         /// </summary>
-        public static string _6085 {
+        public static string _630183 {
             get {
-                return ResourceManager.GetString("6085", resourceCulture);
+                return ResourceManager.GetString("630183", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calico.
+        ///   Looks up a localized string similar to Hardsuit Pilot Yellow.
         /// </summary>
-        public static string _6086 {
+        public static string _630184 {
             get {
-                return ResourceManager.GetString("6086", resourceCulture);
+                return ResourceManager.GetString("630184", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nine Lives.
+        ///   Looks up a localized string similar to Hardsuit Pilot Green.
         /// </summary>
-        public static string _6087 {
+        public static string _630185 {
             get {
-                return ResourceManager.GetString("6087", resourceCulture);
+                return ResourceManager.GetString("630185", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logitech.
+        ///   Looks up a localized string similar to Hardsuit Pilot Blue.
         /// </summary>
-        public static string _6088 {
+        public static string _630186 {
             get {
-                return ResourceManager.GetString("6088", resourceCulture);
+                return ResourceManager.GetString("630186", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied LZ Viper.
+        ///   Looks up a localized string similar to Hardsuit Pilot Purple.
         /// </summary>
-        public static string _7000 {
+        public static string _630187 {
             get {
-                return ResourceManager.GetString("7000", resourceCulture);
+                return ResourceManager.GetString("630187", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmCom Piranha Z700.
+        ///   Looks up a localized string similar to Hardsuit Pilot Pink.
         /// </summary>
-        public static string _7001 {
+        public static string _630188 {
             get {
-                return ResourceManager.GetString("7001", resourceCulture);
+                return ResourceManager.GetString("630188", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guardian WarmongerRC2.
+        ///   Looks up a localized string similar to Hardsuit Pilot White.
         /// </summary>
-        public static string _7002 {
+        public static string _630189 {
             get {
-                return ResourceManager.GetString("7002", resourceCulture);
+                return ResourceManager.GetString("630189", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch Diamondback.2.
+        ///   Looks up a localized string similar to Digital Blue.
         /// </summary>
-        public static string _7003 {
+        public static string _630190 {
             get {
-                return ResourceManager.GetString("7003", resourceCulture);
+                return ResourceManager.GetString("630190", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dataluxe R2 Skirmisher.
+        ///   Looks up a localized string similar to Digital Yellow.
         /// </summary>
-        public static string _7004 {
+        public static string _630191 {
             get {
-                return ResourceManager.GetString("7004", resourceCulture);
+                return ResourceManager.GetString("630191", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dataluxe R7 Skirmisher.
+        ///   Looks up a localized string similar to Emergency Relief.
         /// </summary>
-        public static string _7005 {
+        public static string _630192 {
             get {
-                return ResourceManager.GetString("7005", resourceCulture);
+                return ResourceManager.GetString("630192", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied LS Viper.
+        ///   Looks up a localized string similar to Medic 2.
         /// </summary>
-        public static string _7006 {
+        public static string _630193 {
             get {
-                return ResourceManager.GetString("7006", resourceCulture);
+                return ResourceManager.GetString("630193", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The SpeedDemon.
+        ///   Looks up a localized string similar to Vector.
         /// </summary>
-        public static string _7007 {
+        public static string _630194 {
             get {
-                return ResourceManager.GetString("7007", resourceCulture);
+                return ResourceManager.GetString("630194", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied APC L9-Raven.
+        ///   Looks up a localized string similar to Veteran.
         /// </summary>
-        public static string _7008 {
+        public static string _630195 {
             get {
-                return ResourceManager.GetString("7008", resourceCulture);
+                return ResourceManager.GetString("630195", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guardian ColossusRC6.
+        ///   Looks up a localized string similar to Retribution Elite.
         /// </summary>
-        public static string _7009 {
+        public static string _630196 {
             get {
-                return ResourceManager.GetString("7009", resourceCulture);
+                return ResourceManager.GetString("630196", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmCom Break Guard Legplates.
+        ///   Looks up a localized string similar to Tiger Elite.
         /// </summary>
-        public static string _7010 {
+        public static string _630197 {
             get {
-                return ResourceManager.GetString("7010", resourceCulture);
+                return ResourceManager.GetString("630197", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prestige Allied LZ Viper.
+        ///   Looks up a localized string similar to Daylight.
         /// </summary>
-        public static string _7011 {
+        public static string _630198 {
             get {
-                return ResourceManager.GetString("7011", resourceCulture);
+                return ResourceManager.GetString("630198", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Tactical Gear.
+        ///   Looks up a localized string similar to Winter Operations.
         /// </summary>
-        public static string _8000 {
+        public static string _630199 {
             get {
-                return ResourceManager.GetString("8000", resourceCulture);
+                return ResourceManager.GetString("630199", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Heal Injector Mk.1.
+        ///   Looks up a localized string similar to Bearded Operations.
         /// </summary>
-        public static string _8001 {
+        public static string _630200 {
             get {
-                return ResourceManager.GetString("8001", resourceCulture);
+                return ResourceManager.GetString("630200", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Repair Tool.
+        ///   Looks up a localized string similar to BCL TourNament.
         /// </summary>
-        public static string _8002 {
+        public static string _630201 {
             get {
-                return ResourceManager.GetString("8002", resourceCulture);
+                return ResourceManager.GetString("630201", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ammunition Pod Mk.1.
+        ///   Looks up a localized string similar to XXOO.
         /// </summary>
-        public static string _8003 {
+        public static string _630202 {
             get {
-                return ResourceManager.GetString("8003", resourceCulture);
+                return ResourceManager.GetString("630202", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barricade Mk.1.
+        ///   Looks up a localized string similar to Beta.
         /// </summary>
-        public static string _8004 {
+        public static string _630203 {
             get {
-                return ResourceManager.GetString("8004", resourceCulture);
+                return ResourceManager.GetString("630203", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Revival Injector Mk.1.
+        ///   Looks up a localized string similar to Class of 2012.
         /// </summary>
-        public static string _8005 {
+        public static string _630204 {
             get {
-                return ResourceManager.GetString("8005", resourceCulture);
+                return ResourceManager.GetString("630204", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cloak.
+        ///   Looks up a localized string similar to Class of 2013.
         /// </summary>
-        public static string _8006 {
+        public static string _630205 {
             get {
-                return ResourceManager.GetString("8006", resourceCulture);
+                return ResourceManager.GetString("630205", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hardsuit HRV Ping.
+        ///   Looks up a localized string similar to Class of 2014.
         /// </summary>
-        public static string _8007 {
+        public static string _630206 {
             get {
-                return ResourceManager.GetString("8007", resourceCulture);
+                return ResourceManager.GetString("630206", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hardsuit Battle Mode.
+        ///   Looks up a localized string similar to Class of 2015.
         /// </summary>
-        public static string _8008 {
+        public static string _630207 {
             get {
-                return ResourceManager.GetString("8008", resourceCulture);
+                return ResourceManager.GetString("630207", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Respawn Beacon.
+        ///   Looks up a localized string similar to Class of 2016.
         /// </summary>
-        public static string _8009 {
+        public static string _630208 {
             get {
-                return ResourceManager.GetString("8009", resourceCulture);
+                return ResourceManager.GetString("630208", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Firewall Breach Kit.
+        ///   Looks up a localized string similar to Class of 2017.
         /// </summary>
-        public static string _8010 {
+        public static string _630209 {
             get {
-                return ResourceManager.GetString("8010", resourceCulture);
+                return ResourceManager.GetString("630209", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HRV Cloak.
+        ///   Looks up a localized string similar to Candy Cane.
         /// </summary>
-        public static string _8011 {
+        public static string _630210 {
             get {
-                return ResourceManager.GetString("8011", resourceCulture);
+                return ResourceManager.GetString("630210", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cloak Mk.2.
+        ///   Looks up a localized string similar to Gingerbread.
         /// </summary>
-        public static string _8012 {
+        public static string _630211 {
             get {
-                return ResourceManager.GetString("8012", resourceCulture);
+                return ResourceManager.GetString("630211", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barricade Mk.2.
+        ///   Looks up a localized string similar to Green Wrapping Paper.
         /// </summary>
-        public static string _8013 {
+        public static string _630212 {
             get {
-                return ResourceManager.GetString("8013", resourceCulture);
+                return ResourceManager.GetString("630212", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch Anaconda KX7.
+        ///   Looks up a localized string similar to Red Wrapping Paper.
         /// </summary>
-        public static string _9000 {
+        public static string _630213 {
             get {
-                return ResourceManager.GetString("9000", resourceCulture);
+                return ResourceManager.GetString("630213", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guardian WarmongerL1.
+        ///   Looks up a localized string similar to Snowflake.
         /// </summary>
-        public static string _9001 {
+        public static string _630214 {
             get {
-                return ResourceManager.GetString("9001", resourceCulture);
+                return ResourceManager.GetString("630214", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch Impact CQT.
+        ///   Looks up a localized string similar to Love Fool.
         /// </summary>
-        public static string _9002 {
+        public static string _630215 {
             get {
-                return ResourceManager.GetString("9002", resourceCulture);
+                return ResourceManager.GetString("630215", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dataluxe BattleVest OS.
+        ///   Looks up a localized string similar to Easter Blue.
         /// </summary>
-        public static string _9003 {
+        public static string _630216 {
             get {
-                return ResourceManager.GetString("9003", resourceCulture);
+                return ResourceManager.GetString("630216", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied Warzone oX9.
+        ///   Looks up a localized string similar to Easter Green.
         /// </summary>
-        public static string _9004 {
+        public static string _630217 {
             get {
-                return ResourceManager.GetString("9004", resourceCulture);
+                return ResourceManager.GetString("630217", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch BattleFront XsI.
+        ///   Looks up a localized string similar to Easter Pink.
         /// </summary>
-        public static string _9005 {
+        public static string _630218 {
             get {
-                return ResourceManager.GetString("9005", resourceCulture);
+                return ResourceManager.GetString("630218", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allied Ranger LT.
+        ///   Looks up a localized string similar to Easter Purple.
         /// </summary>
-        public static string _9006 {
+        public static string _630219 {
             get {
-                return ResourceManager.GetString("9006", resourceCulture);
+                return ResourceManager.GetString("630219", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dataluxe X2 Tactical.
+        ///   Looks up a localized string similar to Easter Yellow.
         /// </summary>
-        public static string _9007 {
+        public static string _630220 {
             get {
-                return ResourceManager.GetString("9007", resourceCulture);
+                return ResourceManager.GetString("630220", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overmatch Delta i6.
+        ///   Looks up a localized string similar to KBMOD.com New.
         /// </summary>
-        public static string _9008 {
+        public static string _630221 {
             get {
-                return ResourceManager.GetString("9008", resourceCulture);
+                return ResourceManager.GetString("630221", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmCom Break Guard Chest plate.
+        ///   Looks up a localized string similar to EBL Tourney.
         /// </summary>
-        public static string _9009 {
+        public static string _630222 {
             get {
-                return ResourceManager.GetString("9009", resourceCulture);
+                return ResourceManager.GetString("630222", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prestige Overmatch Anaconda KX7.
+        ///   Looks up a localized string similar to Bloodmoney.
         /// </summary>
-        public static string _9010 {
+        public static string _630223 {
             get {
-                return ResourceManager.GetString("9010", resourceCulture);
+                return ResourceManager.GetString("630223", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bloodmoney 2.
+        /// </summary>
+        public static string _630224 {
+            get {
+                return ResourceManager.GetString("630224", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cracked Apple.
+        /// </summary>
+        public static string _630225 {
+            get {
+                return ResourceManager.GetString("630225", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cracked Apple Pink.
+        /// </summary>
+        public static string _630226 {
+            get {
+                return ResourceManager.GetString("630226", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cracked Apple Red.
+        /// </summary>
+        public static string _630227 {
+            get {
+                return ResourceManager.GetString("630227", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digiplex.
+        /// </summary>
+        public static string _630228 {
+            get {
+                return ResourceManager.GetString("630228", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digiplex 2.
+        /// </summary>
+        public static string _630229 {
+            get {
+                return ResourceManager.GetString("630229", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Scatter.
+        /// </summary>
+        public static string _630230 {
+            get {
+                return ResourceManager.GetString("630230", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Scatter Green.
+        /// </summary>
+        public static string _630231 {
+            get {
+                return ResourceManager.GetString("630231", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Scatter Orange.
+        /// </summary>
+        public static string _630232 {
+            get {
+                return ResourceManager.GetString("630232", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fluffy Punk.
+        /// </summary>
+        public static string _630233 {
+            get {
+                return ResourceManager.GetString("630233", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GoFast.
+        /// </summary>
+        public static string _630234 {
+            get {
+                return ResourceManager.GetString("630234", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jagged Metallic.
+        /// </summary>
+        public static string _630235 {
+            get {
+                return ResourceManager.GetString("630235", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jagged Metallic Green.
+        /// </summary>
+        public static string _630236 {
+            get {
+                return ResourceManager.GetString("630236", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jagged Metallic Red.
+        /// </summary>
+        public static string _630237 {
+            get {
+                return ResourceManager.GetString("630237", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Molten Shards.
+        /// </summary>
+        public static string _630238 {
+            get {
+                return ResourceManager.GetString("630238", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mud Rough.
+        /// </summary>
+        public static string _630239 {
+            get {
+                return ResourceManager.GetString("630239", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mud Rough Pink.
+        /// </summary>
+        public static string _630240 {
+            get {
+                return ResourceManager.GetString("630240", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mud Rough Red.
+        /// </summary>
+        public static string _630241 {
+            get {
+                return ResourceManager.GetString("630241", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quiet Sand.
+        /// </summary>
+        public static string _630242 {
+            get {
+                return ResourceManager.GetString("630242", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quiet Sand Blue.
+        /// </summary>
+        public static string _630243 {
+            get {
+                return ResourceManager.GetString("630243", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quiet Sand Green.
+        /// </summary>
+        public static string _630244 {
+            get {
+                return ResourceManager.GetString("630244", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock Matal.
+        /// </summary>
+        public static string _630245 {
+            get {
+                return ResourceManager.GetString("630245", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock Metal Blue.
+        /// </summary>
+        public static string _630246 {
+            get {
+                return ResourceManager.GetString("630246", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock Metal Orange.
+        /// </summary>
+        public static string _630247 {
+            get {
+                return ResourceManager.GetString("630247", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocked Scuff.
+        /// </summary>
+        public static string _630248 {
+            get {
+                return ResourceManager.GetString("630248", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocked Scuff Blue.
+        /// </summary>
+        public static string _630249 {
+            get {
+                return ResourceManager.GetString("630249", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocked Scuff Yellow.
+        /// </summary>
+        public static string _630250 {
+            get {
+                return ResourceManager.GetString("630250", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scarred Stone.
+        /// </summary>
+        public static string _630251 {
+            get {
+                return ResourceManager.GetString("630251", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scarred Stone Orange.
+        /// </summary>
+        public static string _630252 {
+            get {
+                return ResourceManager.GetString("630252", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scarred Stone Pink.
+        /// </summary>
+        public static string _630253 {
+            get {
+                return ResourceManager.GetString("630253", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scarred Stone Teal.
+        /// </summary>
+        public static string _630254 {
+            get {
+                return ResourceManager.GetString("630254", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splatter Smudge.
+        /// </summary>
+        public static string _630255 {
+            get {
+                return ResourceManager.GetString("630255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splatter Smudge Blue.
+        /// </summary>
+        public static string _630256 {
+            get {
+                return ResourceManager.GetString("630256", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splatter Smudge Red.
+        /// </summary>
+        public static string _630257 {
+            get {
+                return ResourceManager.GetString("630257", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splinter Bark.
+        /// </summary>
+        public static string _630258 {
+            get {
+                return ResourceManager.GetString("630258", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splinter Bark Blue.
+        /// </summary>
+        public static string _630259 {
+            get {
+                return ResourceManager.GetString("630259", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splinter Bark Green.
+        /// </summary>
+        public static string _630260 {
+            get {
+                return ResourceManager.GetString("630260", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splinter Bark Red.
+        /// </summary>
+        public static string _630261 {
+            get {
+                return ResourceManager.GetString("630261", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surfer Panic.
+        /// </summary>
+        public static string _630262 {
+            get {
+                return ResourceManager.GetString("630262", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arc.
+        /// </summary>
+        public static string _630263 {
+            get {
+                return ResourceManager.GetString("630263", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Issue.
+        /// </summary>
+        public static string _630300 {
+            get {
+                return ResourceManager.GetString("630300", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dust Digital.
+        /// </summary>
+        public static string _630301 {
+            get {
+                return ResourceManager.GetString("630301", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rockwall.
+        /// </summary>
+        public static string _630302 {
+            get {
+                return ResourceManager.GetString("630302", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sandstorm.
+        /// </summary>
+        public static string _630303 {
+            get {
+                return ResourceManager.GetString("630303", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Red.
+        /// </summary>
+        public static string _630304 {
+            get {
+                return ResourceManager.GetString("630304", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urban Digital.
+        /// </summary>
+        public static string _630305 {
+            get {
+                return ResourceManager.GetString("630305", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dust Gray.
+        /// </summary>
+        public static string _630306 {
+            get {
+                return ResourceManager.GetString("630306", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hillside Brown.
+        /// </summary>
+        public static string _630307 {
+            get {
+                return ResourceManager.GetString("630307", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brown Tiger.
+        /// </summary>
+        public static string _630308 {
+            get {
+                return ResourceManager.GetString("630308", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ragnarok.
+        /// </summary>
+        public static string _630309 {
+            get {
+                return ResourceManager.GetString("630309", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mud Flare.
+        /// </summary>
+        public static string _630310 {
+            get {
+                return ResourceManager.GetString("630310", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urban Dust.
+        /// </summary>
+        public static string _630311 {
+            get {
+                return ResourceManager.GetString("630311", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red Leopard.
+        /// </summary>
+        public static string _630312 {
+            get {
+                return ResourceManager.GetString("630312", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Winter Rock.
+        /// </summary>
+        public static string _630313 {
+            get {
+                return ResourceManager.GetString("630313", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digi Tundra.
+        /// </summary>
+        public static string _630314 {
+            get {
+                return ResourceManager.GetString("630314", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spotted Ground.
+        /// </summary>
+        public static string _630315 {
+            get {
+                return ResourceManager.GetString("630315", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Brown.
+        /// </summary>
+        public static string _630316 {
+            get {
+                return ResourceManager.GetString("630316", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gray Operation.
+        /// </summary>
+        public static string _630317 {
+            get {
+                return ResourceManager.GetString("630317", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orange Tiger.
+        /// </summary>
+        public static string _630318 {
+            get {
+                return ResourceManager.GetString("630318", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hillside Operation.
+        /// </summary>
+        public static string _630319 {
+            get {
+                return ResourceManager.GetString("630319", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broken Rock.
+        /// </summary>
+        public static string _630320 {
+            get {
+                return ResourceManager.GetString("630320", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shadow.
+        /// </summary>
+        public static string _630321 {
+            get {
+                return ResourceManager.GetString("630321", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bloodsport.
+        /// </summary>
+        public static string _630322 {
+            get {
+                return ResourceManager.GetString("630322", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sahara.
+        /// </summary>
+        public static string _630323 {
+            get {
+                return ResourceManager.GetString("630323", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forest.
+        /// </summary>
+        public static string _630324 {
+            get {
+                return ResourceManager.GetString("630324", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mountain Lion.
+        /// </summary>
+        public static string _630325 {
+            get {
+                return ResourceManager.GetString("630325", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ice Hex.
+        /// </summary>
+        public static string _630326 {
+            get {
+                return ResourceManager.GetString("630326", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urban Winter.
+        /// </summary>
+        public static string _630327 {
+            get {
+                return ResourceManager.GetString("630327", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urban Nest.
+        /// </summary>
+        public static string _630328 {
+            get {
+                return ResourceManager.GetString("630328", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Infil.
+        /// </summary>
+        public static string _630329 {
+            get {
+                return ResourceManager.GetString("630329", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avalanche.
+        /// </summary>
+        public static string _630330 {
+            get {
+                return ResourceManager.GetString("630330", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Olive.
+        /// </summary>
+        public static string _630331 {
+            get {
+                return ResourceManager.GetString("630331", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tactical Winter.
+        /// </summary>
+        public static string _630332 {
+            get {
+                return ResourceManager.GetString("630332", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrath.
+        /// </summary>
+        public static string _630333 {
+            get {
+                return ResourceManager.GetString("630333", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drifter.
+        /// </summary>
+        public static string _630334 {
+            get {
+                return ResourceManager.GetString("630334", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocean Fury.
+        /// </summary>
+        public static string _630335 {
+            get {
+                return ResourceManager.GetString("630335", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gray.
+        /// </summary>
+        public static string _630336 {
+            get {
+                return ResourceManager.GetString("630336", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marked Hunter.
+        /// </summary>
+        public static string _630337 {
+            get {
+                return ResourceManager.GetString("630337", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snow Leopard.
+        /// </summary>
+        public static string _630338 {
+            get {
+                return ResourceManager.GetString("630338", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forest Combat.
+        /// </summary>
+        public static string _630339 {
+            get {
+                return ResourceManager.GetString("630339", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seized.
+        /// </summary>
+        public static string _630340 {
+            get {
+                return ResourceManager.GetString("630340", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Concrete Gray.
+        /// </summary>
+        public static string _630341 {
+            get {
+                return ResourceManager.GetString("630341", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Green Plankton.
+        /// </summary>
+        public static string _630342 {
+            get {
+                return ResourceManager.GetString("630342", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mountain Peak.
+        /// </summary>
+        public static string _630343 {
+            get {
+                return ResourceManager.GetString("630343", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gray Leaf.
+        /// </summary>
+        public static string _630344 {
+            get {
+                return ResourceManager.GetString("630344", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snowstorm.
+        /// </summary>
+        public static string _630345 {
+            get {
+                return ResourceManager.GetString("630345", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Gray.
+        /// </summary>
+        public static string _630346 {
+            get {
+                return ResourceManager.GetString("630346", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snowdrift.
+        /// </summary>
+        public static string _630347 {
+            get {
+                return ResourceManager.GetString("630347", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grassland Hex.
+        /// </summary>
+        public static string _630348 {
+            get {
+                return ResourceManager.GetString("630348", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urban Hex.
+        /// </summary>
+        public static string _630349 {
+            get {
+                return ResourceManager.GetString("630349", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shattered Poles.
+        /// </summary>
+        public static string _630350 {
+            get {
+                return ResourceManager.GetString("630350", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Bronze.
+        /// </summary>
+        public static string _630351 {
+            get {
+                return ResourceManager.GetString("630351", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Silver.
+        /// </summary>
+        public static string _630352 {
+            get {
+                return ResourceManager.GetString("630352", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Gold.
+        /// </summary>
+        public static string _630353 {
+            get {
+                return ResourceManager.GetString("630353", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Pink.
+        /// </summary>
+        public static string _630354 {
+            get {
+                return ResourceManager.GetString("630354", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Orange.
+        /// </summary>
+        public static string _630355 {
+            get {
+                return ResourceManager.GetString("630355", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Cobalt Blue.
+        /// </summary>
+        public static string _630356 {
+            get {
+                return ResourceManager.GetString("630356", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Toxic Green.
+        /// </summary>
+        public static string _630357 {
+            get {
+                return ResourceManager.GetString("630357", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Pink.
+        /// </summary>
+        public static string _630358 {
+            get {
+                return ResourceManager.GetString("630358", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Orange.
+        /// </summary>
+        public static string _630359 {
+            get {
+                return ResourceManager.GetString("630359", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Red.
+        /// </summary>
+        public static string _630360 {
+            get {
+                return ResourceManager.GetString("630360", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Dark Red.
+        /// </summary>
+        public static string _630361 {
+            get {
+                return ResourceManager.GetString("630361", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Baby Blue.
+        /// </summary>
+        public static string _630362 {
+            get {
+                return ResourceManager.GetString("630362", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Dark Blue.
+        /// </summary>
+        public static string _630363 {
+            get {
+                return ResourceManager.GetString("630363", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Black.
+        /// </summary>
+        public static string _630364 {
+            get {
+                return ResourceManager.GetString("630364", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        public static string _630365 {
+            get {
+                return ResourceManager.GetString("630365", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Dark Purple.
+        /// </summary>
+        public static string _630366 {
+            get {
+                return ResourceManager.GetString("630366", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Green.
+        /// </summary>
+        public static string _630367 {
+            get {
+                return ResourceManager.GetString("630367", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matte Yellow.
+        /// </summary>
+        public static string _630368 {
+            get {
+                return ResourceManager.GetString("630368", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSGuru.com Partner Camo.
+        /// </summary>
+        public static string _630369 {
+            get {
+                return ResourceManager.GetString("630369", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IGN.com Partner Camo.
+        /// </summary>
+        public static string _630370 {
+            get {
+                return ResourceManager.GetString("630370", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMOBomb.com Partner Camo.
+        /// </summary>
+        public static string _630371 {
+            get {
+                return ResourceManager.GetString("630371", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Red.
+        /// </summary>
+        public static string _630372 {
+            get {
+                return ResourceManager.GetString("630372", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Maroon.
+        /// </summary>
+        public static string _630373 {
+            get {
+                return ResourceManager.GetString("630373", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Blue.
+        /// </summary>
+        public static string _630374 {
+            get {
+                return ResourceManager.GetString("630374", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Black.
+        /// </summary>
+        public static string _630375 {
+            get {
+                return ResourceManager.GetString("630375", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic White.
+        /// </summary>
+        public static string _630376 {
+            get {
+                return ResourceManager.GetString("630376", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Dark Purple.
+        /// </summary>
+        public static string _630377 {
+            get {
+                return ResourceManager.GetString("630377", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Green.
+        /// </summary>
+        public static string _630378 {
+            get {
+                return ResourceManager.GetString("630378", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metallic Yellow.
+        /// </summary>
+        public static string _630379 {
+            get {
+                return ResourceManager.GetString("630379", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret Silver.
+        /// </summary>
+        public static string _630380 {
+            get {
+                return ResourceManager.GetString("630380", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash Flow.
+        /// </summary>
+        public static string _630381 {
+            get {
+                return ResourceManager.GetString("630381", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Benjamins.
+        /// </summary>
+        public static string _630382 {
+            get {
+                return ResourceManager.GetString("630382", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra Life Charity.
+        /// </summary>
+        public static string _630383 {
+            get {
+                return ResourceManager.GetString("630383", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KBMOD.com Vintage.
+        /// </summary>
+        public static string _630384 {
+            get {
+                return ResourceManager.GetString("630384", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Astro Graffiti Autumn.
+        /// </summary>
+        public static string _630385 {
+            get {
+                return ResourceManager.GetString("630385", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Astro Graffiti.
+        /// </summary>
+        public static string _630386 {
+            get {
+                return ResourceManager.GetString("630386", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Astro Graffiti Black.
+        /// </summary>
+        public static string _630387 {
+            get {
+                return ResourceManager.GetString("630387", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Veteran.
+        /// </summary>
+        public static string _630388 {
+            get {
+                return ResourceManager.GetString("630388", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retribution Elite.
+        /// </summary>
+        public static string _630389 {
+            get {
+                return ResourceManager.GetString("630389", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiger Elite.
+        /// </summary>
+        public static string _630390 {
+            get {
+                return ResourceManager.GetString("630390", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daylight.
+        /// </summary>
+        public static string _630391 {
+            get {
+                return ResourceManager.GetString("630391", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Winter Operations.
+        /// </summary>
+        public static string _630392 {
+            get {
+                return ResourceManager.GetString("630392", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bearded Ops.
+        /// </summary>
+        public static string _630393 {
+            get {
+                return ResourceManager.GetString("630393", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BCL TourNament.
+        /// </summary>
+        public static string _630394 {
+            get {
+                return ResourceManager.GetString("630394", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XXOO.
+        /// </summary>
+        public static string _630395 {
+            get {
+                return ResourceManager.GetString("630395", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Malaysia Flag.
+        /// </summary>
+        public static string _630396 {
+            get {
+                return ResourceManager.GetString("630396", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Singapore Flag.
+        /// </summary>
+        public static string _630397 {
+            get {
+                return ResourceManager.GetString("630397", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beta.
+        /// </summary>
+        public static string _630398 {
+            get {
+                return ResourceManager.GetString("630398", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class of 2012.
+        /// </summary>
+        public static string _630399 {
+            get {
+                return ResourceManager.GetString("630399", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class of 2013.
+        /// </summary>
+        public static string _630400 {
+            get {
+                return ResourceManager.GetString("630400", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class of 2014.
+        /// </summary>
+        public static string _630401 {
+            get {
+                return ResourceManager.GetString("630401", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class of 2015.
+        /// </summary>
+        public static string _630402 {
+            get {
+                return ResourceManager.GetString("630402", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class of 2016.
+        /// </summary>
+        public static string _630403 {
+            get {
+                return ResourceManager.GetString("630403", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class of 2017.
+        /// </summary>
+        public static string _630404 {
+            get {
+                return ResourceManager.GetString("630404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Love Fool.
+        /// </summary>
+        public static string _630405 {
+            get {
+                return ResourceManager.GetString("630405", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easter Blue.
+        /// </summary>
+        public static string _630406 {
+            get {
+                return ResourceManager.GetString("630406", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easter Green.
+        /// </summary>
+        public static string _630407 {
+            get {
+                return ResourceManager.GetString("630407", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easter Pink.
+        /// </summary>
+        public static string _630408 {
+            get {
+                return ResourceManager.GetString("630408", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easter Purple.
+        /// </summary>
+        public static string _630409 {
+            get {
+                return ResourceManager.GetString("630409", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easter Yellow.
+        /// </summary>
+        public static string _630410 {
+            get {
+                return ResourceManager.GetString("630410", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KBMOD.com New.
+        /// </summary>
+        public static string _630411 {
+            get {
+                return ResourceManager.GetString("630411", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EBL Tourney.
+        /// </summary>
+        public static string _630412 {
+            get {
+                return ResourceManager.GetString("630412", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bloodmoney.
+        /// </summary>
+        public static string _630413 {
+            get {
+                return ResourceManager.GetString("630413", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bloodmoney 2.
+        /// </summary>
+        public static string _630414 {
+            get {
+                return ResourceManager.GetString("630414", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cracked Apple.
+        /// </summary>
+        public static string _630415 {
+            get {
+                return ResourceManager.GetString("630415", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cracked Apple Pink.
+        /// </summary>
+        public static string _630416 {
+            get {
+                return ResourceManager.GetString("630416", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cracked Apple Red.
+        /// </summary>
+        public static string _630417 {
+            get {
+                return ResourceManager.GetString("630417", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digiplex.
+        /// </summary>
+        public static string _630418 {
+            get {
+                return ResourceManager.GetString("630418", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digiplex 2.
+        /// </summary>
+        public static string _630419 {
+            get {
+                return ResourceManager.GetString("630419", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Scatter.
+        /// </summary>
+        public static string _630420 {
+            get {
+                return ResourceManager.GetString("630420", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Scatter Green.
+        /// </summary>
+        public static string _630421 {
+            get {
+                return ResourceManager.GetString("630421", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Scatter Orange.
+        /// </summary>
+        public static string _630422 {
+            get {
+                return ResourceManager.GetString("630422", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fluffy Punk.
+        /// </summary>
+        public static string _630423 {
+            get {
+                return ResourceManager.GetString("630423", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GoFast.
+        /// </summary>
+        public static string _630424 {
+            get {
+                return ResourceManager.GetString("630424", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jagged Metallic.
+        /// </summary>
+        public static string _630425 {
+            get {
+                return ResourceManager.GetString("630425", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jagged Metallic Green.
+        /// </summary>
+        public static string _630426 {
+            get {
+                return ResourceManager.GetString("630426", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jagged Metallic Red.
+        /// </summary>
+        public static string _630427 {
+            get {
+                return ResourceManager.GetString("630427", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Molten Shards.
+        /// </summary>
+        public static string _630428 {
+            get {
+                return ResourceManager.GetString("630428", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mud Rough.
+        /// </summary>
+        public static string _630429 {
+            get {
+                return ResourceManager.GetString("630429", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mud Rough Pink.
+        /// </summary>
+        public static string _630430 {
+            get {
+                return ResourceManager.GetString("630430", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mud Rough Red.
+        /// </summary>
+        public static string _630431 {
+            get {
+                return ResourceManager.GetString("630431", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quiet Sand.
+        /// </summary>
+        public static string _630432 {
+            get {
+                return ResourceManager.GetString("630432", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quiet Sand Blue.
+        /// </summary>
+        public static string _630433 {
+            get {
+                return ResourceManager.GetString("630433", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quiet Sand Green.
+        /// </summary>
+        public static string _630434 {
+            get {
+                return ResourceManager.GetString("630434", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock Matal.
+        /// </summary>
+        public static string _630435 {
+            get {
+                return ResourceManager.GetString("630435", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock Metal Blue.
+        /// </summary>
+        public static string _630436 {
+            get {
+                return ResourceManager.GetString("630436", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock Metal Orange.
+        /// </summary>
+        public static string _630437 {
+            get {
+                return ResourceManager.GetString("630437", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocked Scuff.
+        /// </summary>
+        public static string _630438 {
+            get {
+                return ResourceManager.GetString("630438", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocked Scuff Blue.
+        /// </summary>
+        public static string _630439 {
+            get {
+                return ResourceManager.GetString("630439", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocked Scuff Yellow.
+        /// </summary>
+        public static string _630440 {
+            get {
+                return ResourceManager.GetString("630440", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scarred Stone.
+        /// </summary>
+        public static string _630441 {
+            get {
+                return ResourceManager.GetString("630441", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scarred Stone Orange.
+        /// </summary>
+        public static string _630442 {
+            get {
+                return ResourceManager.GetString("630442", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scarred Stone Pink.
+        /// </summary>
+        public static string _630443 {
+            get {
+                return ResourceManager.GetString("630443", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scarred Stone Teal.
+        /// </summary>
+        public static string _630444 {
+            get {
+                return ResourceManager.GetString("630444", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splatter Smudge.
+        /// </summary>
+        public static string _630445 {
+            get {
+                return ResourceManager.GetString("630445", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splatter Smudge Blue.
+        /// </summary>
+        public static string _630446 {
+            get {
+                return ResourceManager.GetString("630446", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splatter Smudge Red.
+        /// </summary>
+        public static string _630447 {
+            get {
+                return ResourceManager.GetString("630447", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splinter Bark.
+        /// </summary>
+        public static string _630448 {
+            get {
+                return ResourceManager.GetString("630448", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splinter Bark Blue.
+        /// </summary>
+        public static string _630449 {
+            get {
+                return ResourceManager.GetString("630449", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splinter Bark Green.
+        /// </summary>
+        public static string _630450 {
+            get {
+                return ResourceManager.GetString("630450", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splinter Bark Red.
+        /// </summary>
+        public static string _630451 {
+            get {
+                return ResourceManager.GetString("630451", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surfer Panic.
+        /// </summary>
+        public static string _630452 {
+            get {
+                return ResourceManager.GetString("630452", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arc.
+        /// </summary>
+        public static string _630453 {
+            get {
+                return ResourceManager.GetString("630453", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urban Combat Viper.
+        /// </summary>
+        public static string _65006 {
+            get {
+                return ResourceManager.GetString("65006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mercenary Grendel.
+        /// </summary>
+        public static string _65007 {
+            get {
+                return ResourceManager.GetString("65007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peacekeeper MARS.
+        /// </summary>
+        public static string _65008 {
+            get {
+                return ResourceManager.GetString("65008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ranger Duchess.
+        /// </summary>
+        public static string _65009 {
+            get {
+                return ResourceManager.GetString("65009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patient Zero Viper.
+        /// </summary>
+        public static string _65010 {
+            get {
+                return ResourceManager.GetString("65010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Royal Duchess.
+        /// </summary>
+        public static string _65011 {
+            get {
+                return ResourceManager.GetString("65011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Engineer Deacon.
+        /// </summary>
+        public static string _65012 {
+            get {
+                return ResourceManager.GetString("65012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Civil Defense MARS.
+        /// </summary>
+        public static string _65013 {
+            get {
+                return ResourceManager.GetString("65013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Platoon Grendel.
+        /// </summary>
+        public static string _65014 {
+            get {
+                return ResourceManager.GetString("65014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full Exoframe Deacon.
+        /// </summary>
+        public static string _65015 {
+            get {
+                return ResourceManager.GetString("65015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle Triage Lazarus.
+        /// </summary>
+        public static string _65016 {
+            get {
+                return ResourceManager.GetString("65016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rural Operations Lazarus.
+        /// </summary>
+        public static string _65017 {
+            get {
+                return ResourceManager.GetString("65017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cyber Assault Chronos.
+        /// </summary>
+        public static string _65018 {
+            get {
+                return ResourceManager.GetString("65018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electronic Warfare Chronos.
+        /// </summary>
+        public static string _65019 {
+            get {
+                return ResourceManager.GetString("65019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle Mode Suit Lilith.
+        /// </summary>
+        public static string _65020 {
+            get {
+                return ResourceManager.GetString("65020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forest Dark Lilith.
+        /// </summary>
+        public static string _65021 {
+            get {
+                return ResourceManager.GetString("65021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High Altitude System Artemis.
+        /// </summary>
+        public static string _65022 {
+            get {
+                return ResourceManager.GetString("65022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Glacial Grendel.
+        /// </summary>
+        public static string _65023 {
+            get {
+                return ResourceManager.GetString("65023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arid Light Viper.
+        /// </summary>
+        public static string _65024 {
+            get {
+                return ResourceManager.GetString("65024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperate Camo Duchess.
+        /// </summary>
+        public static string _65025 {
+            get {
+                return ResourceManager.GetString("65025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desert C.S.A.R. Crusher.
+        /// </summary>
+        public static string _65026 {
+            get {
+                return ResourceManager.GetString("65026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Survival Suit Ghost.
+        /// </summary>
+        public static string _65027 {
+            get {
+                return ResourceManager.GetString("65027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Rounds.
+        /// </summary>
+        public static string _90000 {
+            get {
+                return ResourceManager.GetString("90000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electro Rounds.
+        /// </summary>
+        public static string _90001 {
+            get {
+                return ResourceManager.GetString("90001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Rounds.
+        /// </summary>
+        public static string _90002 {
+            get {
+                return ResourceManager.GetString("90002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Rounds.
+        /// </summary>
+        public static string _90003 {
+            get {
+                return ResourceManager.GetString("90003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toxic Rounds.
+        /// </summary>
+        public static string _90004 {
+            get {
+                return ResourceManager.GetString("90004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnum Rounds.
+        /// </summary>
+        public static string _90005 {
+            get {
+                return ResourceManager.GetString("90005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Armor Piercing Rounds.
+        /// </summary>
+        public static string _90006 {
+            get {
+                return ResourceManager.GetString("90006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hollow Point Rounds.
+        /// </summary>
+        public static string _90007 {
+            get {
+                return ResourceManager.GetString("90007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incendiary Flare.
+        /// </summary>
+        public static string _90008 {
+            get {
+                return ResourceManager.GetString("90008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explosive Flare.
+        /// </summary>
+        public static string _90009 {
+            get {
+                return ResourceManager.GetString("90009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canister.
+        /// </summary>
+        public static string _90010 {
+            get {
+                return ResourceManager.GetString("90010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumper Flare.
+        /// </summary>
+        public static string _90011 {
+            get {
+                return ResourceManager.GetString("90011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exploding Arrow.
+        /// </summary>
+        public static string _90012 {
+            get {
+                return ResourceManager.GetString("90012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stun Arrow.
+        /// </summary>
+        public static string _90013 {
+            get {
+                return ResourceManager.GetString("90013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poison Arrow.
+        /// </summary>
+        public static string _90014 {
+            get {
+                return ResourceManager.GetString("90014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Arrow.
+        /// </summary>
+        public static string _90015 {
+            get {
+                return ResourceManager.GetString("90015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heavy Arrow.
+        /// </summary>
+        public static string _90016 {
+            get {
+                return ResourceManager.GetString("90016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Arrow.
+        /// </summary>
+        public static string _90017 {
+            get {
+                return ResourceManager.GetString("90017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cupid&apos;s Arrow.
+        /// </summary>
+        public static string _90018 {
+            get {
+                return ResourceManager.GetString("90018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Weapon Skin.
+        /// </summary>
+        public static string _9999 {
+            get {
+                return ResourceManager.GetString("9999", resourceCulture);
             }
         }
     }

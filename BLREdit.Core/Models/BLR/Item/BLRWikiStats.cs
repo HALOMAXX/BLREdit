@@ -67,12 +67,10 @@ public sealed class BLRWikiStats : ModelBase
     }
 }
 
-public class JsonBLRWikiStatsConverter : JsonGenericConverter<BLRWikiStats>
+public sealed class JsonBLRWikiStatsConverter : JsonGenericConverter<BLRWikiStats>
 {
     static JsonBLRWikiStatsConverter()
     {
         Default = new();
-        IOResources.JSOSerialization.Converters.Add(new JsonBLRWikiStatsConverter());
-        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRWikiStatsConverter());
     }
 }

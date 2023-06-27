@@ -184,12 +184,10 @@ public sealed class BLRWeaponStats : ModelBase
     }
 }
 
-public class JsonBLRWeaponStatsConverter : JsonGenericConverter<BLRWeaponStats>
+public sealed class JsonBLRWeaponStatsConverter : JsonGenericConverter<BLRWeaponStats>
 {
     static JsonBLRWeaponStatsConverter()
     {
         Default = new();
-        IOResources.JSOSerialization.Converters.Add(new JsonBLRWeaponStatsConverter());
-        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRWeaponStatsConverter());
     }
 }

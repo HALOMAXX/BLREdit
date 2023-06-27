@@ -12,7 +12,7 @@ public sealed class BLRMap : ModelBase
     public string DisplayName { get; set; } = "Lobby";
     public string MapFilename { get; set; } = "FoxEntry";
     public string MagiCowInfoName { get; set; } = "Lobby";
-    public RangeObservableCollection<string> SupportedGameHashes { get; set; } = new();
+    public RangeObservableCollection<string> SupportedGameVersions { get; set; } = new();
     public RangeObservableCollection<string> SupportedPlaylists { get; set; } = new();
 
     static BLRMap()
@@ -24,10 +24,10 @@ public sealed class BLRMap : ModelBase
         MapsForVersion = SortMapsByVersion(Maps);
     }
 
-    public static BLRMap GetMapForVersion(string versionHash, string mapName)
+    public static BLRMap GetMapForVersion(string version, string mapName)
     {
-        if (versionHash is null || mapName is null) return new();
-        if (MapsForVersion.TryGetValue(versionHash, out var maps))
+        if (version is null || mapName is null) return new();
+        if (MapsForVersion.TryGetValue(version, out var maps))
         {
             foreach (var map in maps)
             {
@@ -58,15 +58,15 @@ public sealed class BLRMap : ModelBase
         Dictionary<string, RangeObservableCollection<BLRMap>> sortedMaps = new();
         foreach (var map in allMaps)
         {
-            foreach (var hash in map.SupportedGameHashes)
+            foreach (var version in map.SupportedGameVersions)
             {
-                if (sortedMaps.TryGetValue(hash, out var mapList))
+                if (sortedMaps.TryGetValue(version, out var mapList))
                 {
                     mapList.Add(map);
                 }
                 else
                 {
-                    sortedMaps.Add(hash, new() { map });
+                    sortedMaps.Add(version, new() { map });
                 }
             }
         }
@@ -74,12 +74,10 @@ public sealed class BLRMap : ModelBase
     }
 }
 
-public class JsonBLRMapConverter : JsonGenericConverter<BLRMap>
+public sealed class JsonBLRMapConverter : JsonGenericConverter<BLRMap>
 {
     static JsonBLRMapConverter()
     {
         Default = new BLRMap() { DisplayName = "", MagiCowInfoName = "", MapFilename = "" };
-        IOResources.JSOSerialization.Converters.Add(new JsonBLRMapConverter());
-        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRMapConverter());
     }
 }

@@ -82,12 +82,10 @@ public sealed class BLRServer : ModelBase
     }
 }
 
-public class JsonBLRServerConverter : JsonGenericConverter<BLRServer>
+public sealed class JsonBLRServerConverter : JsonGenericConverter<BLRServer>
 {
     static JsonBLRServerConverter()
     {
         Default = new BLRServer("");
-        IOResources.JSOSerialization.Converters.Add(new JsonBLRServerConverter());
-        IOResources.JSOSerializationCompact.Converters.Add(new JsonBLRServerConverter());
     }
 }

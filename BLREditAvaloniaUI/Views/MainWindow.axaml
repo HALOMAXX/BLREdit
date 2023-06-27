@@ -16,7 +16,7 @@
 
   <Grid>
     <Button Command="{Binding ButtonCommand}">RNG Window Title</Button>
-    <ItemsControl Items="{Binding Clients}">
+    <ItemsControl Items="{Binding Primaries}">
       <ItemsControl.ItemTemplate>
         <temp:BLRDataTemplate/>
       </ItemsControl.ItemTemplate>

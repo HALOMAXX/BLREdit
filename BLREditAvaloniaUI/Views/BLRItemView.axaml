@@ -10,7 +10,7 @@
   </Design.DataContext>
 
   <Grid>
-    <TextBox Text="{Binding Name}"/>
+    <TextBox Text="{Binding DisplayName}"/>
   </Grid>
   
 </UserControl>
