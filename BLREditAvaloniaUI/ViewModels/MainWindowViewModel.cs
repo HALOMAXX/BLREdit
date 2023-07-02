@@ -14,9 +14,9 @@ namespace BLREdit.ViewModels;
 public class MainWindowViewModel : ViewModelBase
 {
     [Reactive] public string WindowTitle { get; set; } = "BLREdit";
-    public RangeObservableCollection<BLRClient> Clients { get { return BLRClient.Clients; } }
-    public RangeObservableCollection<BLRServer> Servers { get { return BLRServer.Servers; } }
-    public RangeObservableCollection<BLRItem> Primaries { get { return BLRItemList.ItemLists["v302"].Categories[19]; } }
+    public static RangeObservableCollection<BLRClient> Clients { get { return BLRClient.Clients; } }
+    public static RangeObservableCollection<BLRServer> Servers { get { return BLRServer.Servers; } }
+    public static RangeObservableCollection<BLRItem> Primaries { get { return BLRItemList.ItemLists["v302"].Categories[19]; } }
     public ReactiveCommand<Unit, Unit> ButtonCommand { get; set; }
 
     public MainWindowViewModel() 

@@ -40,28 +40,5 @@ public sealed class GitHubUser
     public string Type { get; set; }
     [JsonPropertyName("site_admin")]
     public bool SiteAdmin { get; set; }
-
-    [JsonConstructor]
-    public GitHubUser(string login, int iD, string nodeID, string avatarURL, string gravatarID, string uRL, string htmlURL, string followersURL, string followingURL, string gistsURL, string starredURL, string subscriptionsURL, string organizationsURL, string reposURL, string eventsURL, string recievedEventsURL, string type, bool siteAdmin)
-    {
-        Login = login;
-        ID = iD;
-        NodeID = nodeID;
-        AvatarURL = avatarURL;
-        GravatarID = gravatarID;
-        URL = uRL;
-        HtmlURL = htmlURL;
-        FollowersURL = followersURL;
-        FollowingURL = followingURL;
-        GistsURL = gistsURL;
-        StarredURL = starredURL;
-        SubscriptionsURL = subscriptionsURL;
-        OrganizationsURL = organizationsURL;
-        ReposURL = reposURL;
-        EventsURL = eventsURL;
-        RecievedEventsURL = recievedEventsURL;
-        Type = type;
-        SiteAdmin = siteAdmin;
-    }
 }
 

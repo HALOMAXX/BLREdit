@@ -1,9 +1,10 @@
 ﻿using BLREdit.Game;
-using BLREdit.Model.BLR;
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,11 +21,35 @@ namespace BLREdit.UI.Windows;
 /// <summary>
 /// Interaction logic for BLRClientWindow.xaml
 /// </summary>
-public sealed partial class BLRClientWindow : Window
+public sealed partial class BLRClientWindow : Window, INotifyPropertyChanged
 {
-    public BLRClientWindow(BLRClientModel client)
+    #region Events
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
-        this.DataContext = new BLRClientModifyView(client);
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    #endregion Events
+
+    private bool ShouldCancelClose = true;
+
+    private BLRClient client;
+    public BLRClient Client { get { return client; } set { client = value; DataContext = value; OnPropertyChanged(); } }
+
+    public BLRClientWindow()
+    {
         InitializeComponent();
+    }
+
+    public void ForceClose()
+    {
+        ShouldCancelClose = false;
+        this.Close();
+    }
+
+    private void Window_Closing(object sender, CancelEventArgs e)
+    {
+        e.Cancel = ShouldCancelClose;
+        this.Hide();
     }
 }

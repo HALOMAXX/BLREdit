@@ -6,11 +6,10 @@
         xmlns:p="clr-namespace:BLREdit.Properties"
         xmlns:utils="clr-namespace:BLREdit"
         xmlns:ui="clr-namespace:BLREdit.UI"
-        xmlns:window="clr-namespace:BLREdit.UI.Windows"
-        xmlns:game="clr-namespace:BLREdit.Model.Proxy" 
-        d:DataContext="{d:DesignInstance Type=window:BLRClientModifyView}"
+        xmlns:game="clr-namespace:BLREdit.Game" 
+        d:DataContext="{d:DesignInstance Type=game:BLRClient}"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.winT_ClientConfigWindow}" Height="800" Width="1270" MinWidth="1270" WindowStartupLocation="CenterScreen">
+        Title="{x:Static p:Resources.winT_ClientConfigWindow}" Height="800" Width="1270" MinWidth="1270" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
 
     <Window.Background>
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
@@ -20,27 +19,28 @@
         <TabControl BorderThickness="0,1,0,0" >
             <TabItem Header="{x:Static p:Resources.ti_ProxyModuleList}">
                 <Grid>
-                    <ListView Name="ModuleList" ItemsSource="{Binding Path=ProxyModuleList}">
+                    <ListView Name="ModuleList" ItemsSource="{Binding Path=AvailabeModules}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="2"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
-                        <ListView.ItemTemplate d:DataContext="{d:DesignInstance Type=game:ProxyModuleViewModel}">
+                        <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Background="White">
                                     <Grid Name="ImageGrid" VerticalAlignment="Top" Width="600" Height="300" Background="Transparent">
-                                        <Image Source="{Binding Path=Module.Repository.OGImage}" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                                        <Image Source="{Binding Path=Image}" VerticalAlignment="Center" Stretch="UniformToFill"/>
                                     </Grid>
                                     <Border BorderThickness="0,1,0,0" Background="Transparent" Margin="0,300,0,0" Height="100">
                                         <Grid Name="DescriptionGrid" Width="600">
                                             <StackPanel Margin="8">
-                                                <TextBlock Text="{Binding Path=Module.Repository.OGTitle}" TextTrimming="CharacterEllipsis" FontSize="20" FontWeight="UltraBlack"/>
-                                                <TextBlock Text="{Binding Path=Module.Repository.OGDescription}" TextTrimming="CharacterEllipsis" FontSize="16"/>
+                                                <TextBlock Text="{Binding Path=Title}" TextTrimming="CharacterEllipsis" FontSize="20" FontWeight="UltraBlack"/>
+                                                <TextBlock Text="{Binding Path=Description}" TextTrimming="CharacterEllipsis" FontSize="16"/>
                                             </StackPanel>
-                                            <Button Content="Install" IsEnabled="{Binding Path=IsInstalled.IsNot}" Visibility="{Binding Path=IsInstalled.VisibilityInverted}" IsHitTestVisible="{Binding Path=Module.IsChanging.IsNot}" Command="{Binding Path=InstallOrUpdateCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                                            <Button Content="Installed" IsEnabled="False" Visibility="{Binding Path=IsInstalled.Visibility}" IsHitTestVisible="{Binding Path=IsInstalled.Is}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                                            <Button Content="Remove" IsEnabled="{Binding Path=IsInstalled.Is}" Visibility="{Binding Path=IsInstalled.Visibility}" IsHitTestVisible="{Binding Path=IsInstalled.Is}" Command="{Binding Path=RemoveCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                                            <Button Content="Installed" IsEnabled="False" Visibility="{Binding Path=UpToDate.Visibility}" IsHitTestVisible="False" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                            <Button Content="Update" IsEnabled="{Binding Path=UpToDate.IsNot}" Visibility="{Binding Path=UpToDate.VisibilityInverted}" IsHitTestVisible="{Binding Path=UpToDate.IsNot}" Command="{Binding Path=InstallCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                            <Button Content="Install" IsEnabled="{Binding Path=LockInstall.IsNot}" Visibility="{Binding Path=Installed.VisibilityInverted}" IsHitTestVisible="{Binding Path=LockInstall.IsNot}" Command="{Binding Path=InstallCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                            <Button Content="Remove" IsEnabled="{Binding Path=LockRemove.IsNot}" Visibility="{Binding Path=Installed.Visibility}" IsHitTestVisible="{Binding Path=LockRemove.IsNot}" Command="{Binding Path=RemoveCommand}" Width="128" Height="32" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                                         </Grid>
                                     </Border>
                                 </Grid>

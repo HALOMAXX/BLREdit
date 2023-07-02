@@ -5,18 +5,14 @@ using Avalonia.Markup.Xaml;
 using BLREdit.Core;
 using BLREdit.Core.Models.BLR.Client;
 using BLREdit.Core.Models.BLR.Server;
-using BLREdit.Core.Utils;
 using BLREdit.ViewModels;
 using BLREdit.Views;
-
-using PropertyChanged;
 
 using System.Diagnostics;
 using System.Globalization;
 
 namespace BLREdit;
 
-[DoNotNotify]
 public partial class App : Application
 {
     public const string CurrentVersion = "v1.0.0";
@@ -64,7 +60,7 @@ public partial class App : Application
         Debug.WriteLine("BLREdit Exit!");
     }
 
-    void SaveData()
+    static void SaveData()
     {
         if (Avalonia.Controls.Design.IsDesignMode) return;
         Debug.WriteLine("Saving Data!");

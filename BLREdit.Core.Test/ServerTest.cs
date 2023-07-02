@@ -8,9 +8,8 @@ namespace BLREdit.Core.Test;
 public class ServerTest
 {
     const string FOLDER_NAME = "Servers";
-    static string InputFolder = $"Data\\{FOLDER_NAME}";
-    static string OutputFolder = $"Data\\{FOLDER_NAME}\\out";
-    static readonly DirectoryInfo InputListFolder = new($"{InputFolder}\\List");
+    static readonly string InputFolder = $"Data\\{FOLDER_NAME}";
+    static readonly string OutputFolder = $"Data\\{FOLDER_NAME}\\out";
     static readonly DirectoryInfo OutputListFolder = new($"{OutputFolder}\\List");
     static readonly DirectoryInfo InputInfoFolder = new($"{InputFolder}\\Info");
     static readonly DirectoryInfo OutputInfoFolder = new($"{OutputFolder}\\Info");

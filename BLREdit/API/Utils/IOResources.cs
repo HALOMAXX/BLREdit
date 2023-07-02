@@ -136,7 +136,7 @@ public sealed class IOResources
         foreach (FileInfo file in dir.GetFiles())
         {
             string targetFilePath = Path.Combine(destinationDir, file.Name);
-            file.CopyTo(targetFilePath, true);
+            file.CopyTo(targetFilePath);
         }
 
         // If recursive and copying subdirectories, recursively call this method
@@ -157,9 +157,7 @@ public sealed class IOResources
             var request = DownloadRequests.Take();
             try
             {
-                if(!request.file.Directory.Exists) request.file.Directory.Create();
-                if (!request.file.Exists) request.file.Delete();
-                WebClient.DownloadFile(request.url, request.file.FullName);
+                WebClient.DownloadFile(request.url, request.filename);
             }
             catch (Exception error)
             {
@@ -172,21 +170,13 @@ public sealed class IOResources
 
     private class DownloadRequest
     {
-        public string url;
-        public FileInfo file;
+        public string url, filename;
         public AutoResetEvent locked;
 
         public DownloadRequest(string url, string filename)
         {
             this.url = url;
-            this.file = new FileInfo(filename);
-            locked = new AutoResetEvent(false);
-        }
-
-        public DownloadRequest(string url, FileInfo file)
-        {
-            this.url = url;
-            this.file = file;
+            this.filename = filename;
             locked = new AutoResetEvent(false);
         }
     }
@@ -266,11 +256,13 @@ public sealed class IOResources
         return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
     }
 
-    public static void CopyToBackup(string file)
+    public static void CopyToBackup(string file, string subfolder = "")
     {
         if (string.IsNullOrEmpty(file)) return;
+        var targetDir = new DirectoryInfo(ExportSystem.CurrentBackupFolder.FullName + subfolder);
+        if (!targetDir.Exists) targetDir.Create();
         FileInfo info = new(file);
-        File.Copy(file, ExportSystem.CurrentBackupFolder.FullName + info.Name, true);
+        File.Copy(file, targetDir.FullName + info.Name, true);
     }
 
     public static string JsonToBase64(string json)
@@ -321,7 +313,7 @@ public sealed class IOResources
         }
     }
 
-    public static void SerializeFile<T>(string filePath, T? obj, bool compact = false)
+    public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
     {
         if (string.IsNullOrEmpty(filePath)) { LoggingSystem.Log("[Serializer]: filePath was empty!"); return; }
         if (obj is null) { LoggingSystem.Log("[Serializer]: obj was null!"); return; }
@@ -356,16 +348,16 @@ public sealed class IOResources
         }
     }
 
-    public static string Serialize<T>(T? obj, bool compact = false)
+    public static string Serialize<T>(T obj, bool compact = false)
     {
-        if (obj is null) { LoggingSystem.Log("[Serializer]: object was null!"); return ""; }
+        if (obj == null) { LoggingSystem.Log("[Serializer]: object was null!"); return ""; }
         if (compact)
         {
-            return JsonSerializer.Serialize<T?>(obj, JSOCompacted);
+            return JsonSerializer.Serialize<T>(obj, JSOCompacted);
         }
         else
         {
-            return JsonSerializer.Serialize<T?>(obj, JSOFields);
+            return JsonSerializer.Serialize<T>(obj, JSOFields);
         }
     }
 
@@ -375,11 +367,13 @@ public sealed class IOResources
     /// <typeparam name="T">Type that is contained within the file</typeparam>
     /// <param name="filePath">the filepath</param>
     /// <returns>will return object of type on success otherwise will return the default object of said type also if the file is not readable/existent will also return default</returns>
-    public static T? DeserializeFile<T>(string filePath)
+    public static T DeserializeFile<T>(string filePath)
     {
-        T? temp = default;
+        T temp = default;
         if (string.IsNullOrEmpty(filePath)) { return temp; }
-        
+
+        if (!File.Exists("BLREdit.exe")) { Directory.SetCurrentDirectory(App.BLREditLocation); }
+
         //check if file exist's before we try to read it if it doesn't exist return and Write an error to log
         if (!File.Exists(filePath))
         { LoggingSystem.Log($"[Serializer]: File({filePath}) was not found for Deserialization!"); return temp; }
@@ -398,7 +392,7 @@ public sealed class IOResources
         return temp;
     }
 
-    public static T? Deserialize<T>(string json)
+    public static T Deserialize<T>(string json)
     {
         try
         {

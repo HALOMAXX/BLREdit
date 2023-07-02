@@ -28,13 +28,13 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 {
     #region Events
     public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     #endregion Events
 
-    private BLRWeapon? CurrentWeapon { get; set; } = null;
+    private BLRWeapon CurrentWeapon { get; set; } = null;
 
     private Visibility recieverVisibility = Visibility.Visible;
     public Visibility RecieverVisibility { get { return recieverVisibility; } private set { recieverVisibility = value; OnPropertyChanged(); } }

@@ -1,5 +1,4 @@
 ﻿using BLREdit.Game;
-using BLREdit.Model.BLR;
 
 using Microsoft.Win32;
 
@@ -34,13 +33,13 @@ public partial class ClientListControl : UserControl
     bool isDragging = false;
     private void ClientListView_PreviewMouseMove(object sender, MouseEventArgs e)
     {
-        if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
+        if (e.LeftButton == MouseButtonState.Pressed && !isDragging && StartPoint != null)
         {
             Point position = e.GetPosition(null);
             if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
                Math.Abs(position.Y - StartPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
             {
-                if (sender is ListView listView && listView.SelectedItem is BLRClientModel client)
+                if (sender is ListView listView && listView.SelectedItem is BLRClient client)
                 {
                     isDragging = true;
                     DragDrop.DoDragDrop(listView, client, DragDropEffects.Move);
@@ -52,13 +51,13 @@ public partial class ClientListControl : UserControl
 
     private void ClientListView_Drop(object sender, DragEventArgs e)
     {
-        BLRClientModel droppedData = e.Data.GetData(typeof(BLRClientModel)) as BLRClientModel;
+        BLRClient droppedData = e.Data.GetData(typeof(BLRClient)) as BLRClient;
         object targetData = e.OriginalSource;
         while (targetData != null && targetData.GetType() != typeof(ClientControl))
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if (targetData != null) BLRClientModel.Clients.Move(BLRClientModel.Clients.IndexOf(droppedData), BLRClientModel.Clients.IndexOf(((ClientControl)targetData).DataContext as BLRClientModel));
+        if (targetData != null) MainWindow.GameClients.Move(MainWindow.GameClients.IndexOf(droppedData), MainWindow.GameClients.IndexOf(((ClientControl)targetData).DataContext as BLRClient));
     }
 
     private void OpenNewGameClient_Click(object sender, RoutedEventArgs e)
@@ -72,9 +71,9 @@ public partial class ClientListControl : UserControl
         dialog.ShowDialog();
         if (!string.IsNullOrEmpty(dialog.FileName))
         {
-            BLRClientModel.Clients.Add(new BLRClientModel() { OriginalPath = dialog.FileName });
+            MainWindow.AddGameClient(new BLRClient() { OriginalPath = dialog.FileName });
         }
-        //MainWindow.CheckGameClients();
+        MainWindow.CheckGameClients();
     }
 
     private void ClientListView_PreviewMouseDown(object sender, MouseButtonEventArgs e)

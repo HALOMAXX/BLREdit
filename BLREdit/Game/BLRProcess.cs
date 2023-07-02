@@ -1,7 +1,4 @@
-﻿using BLREdit.Export;
-using BLREdit.Model.BLR;
-
-using PeNet;
+﻿using BLREdit.UI;
 
 using System;
 using System.Collections.Generic;
@@ -13,14 +10,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLREdit.Game;
 
 public sealed class BLRProcess : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler? PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -30,8 +28,8 @@ public sealed class BLRProcess : INotifyPropertyChanged
 
     private Process gameProcess;
     private Process GameProcess { get { return gameProcess; }  set { gameProcess = value; OnPropertyChanged(); } }
-    private BLRClientModel client;
-    private BLRClientModel Client { get { return client; } set { client = value; OnPropertyChanged(); } }
+    private BLRClient client;
+    private BLRClient Client { get { return client; } set { client = value; OnPropertyChanged(); } }
     private bool isServer = false;
     private bool IsServer { get { return isServer; } set { isServer = value; OnPropertyChanged(); } }
     private bool watchdog = false;
@@ -40,15 +38,6 @@ public sealed class BLRProcess : INotifyPropertyChanged
     static BLRProcess()
     {
         RunningGames.CollectionChanged += RunningGamesChanged;
-    }
-
-    public static bool IsServerRunning()
-    {
-        foreach (var process in RunningGames)
-        {
-            if (process.IsServer) { return true; }
-        }
-        return false;
     }
 
     private static void RunningGamesChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -70,7 +59,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         }
     }
 
-    private BLRProcess(string launchArgs, BLRClientModel client,bool isServer, bool watchdog = false)
+    private BLRProcess(string launchArgs, BLRClient client,bool isServer, bool watchdog = false)
     {
         IsServer= isServer;
         Client = client;
@@ -90,7 +79,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         GameProcess.Exited += ProcessExit;
     }
 
-    public static void CreateProcess(string launchArgs, BLRClientModel client, bool isServer, bool watchdog = false)
+    public static void CreateProcess(string launchArgs, BLRClient client, bool isServer, bool watchdog = false)
     {
         RunningGames.Add(new BLRProcess(launchArgs, client, isServer, watchdog));
     }
@@ -108,11 +97,8 @@ public sealed class BLRProcess : INotifyPropertyChanged
         LoggingSystem.Log($"[{this.Client}]: has Exited with {GameProcess.ExitCode}");
         if (!IsServer)
         {
-            BLRClientModel.LoadOrUpdateProfileSettings(Client);
-            foreach (var profile in Client.ProfileSettings)
-            {
-                ExportSystem.UpdateOrAddProfileSettings(profile.Value.ProfileName, profile.Value);
-            }
+            Client.UpdateProfileSettings();
+            MainWindow.View.UpdateWindowTitle();
         }
 
         if (!Watchdog) { this.Remove(); }
@@ -138,5 +124,10 @@ public sealed class BLRProcess : INotifyPropertyChanged
             GameProcess.Kill();
         }
         GameProcess.Dispose();
+        if (!IsServer)
+        {
+            Client.UpdateProfileSettings();
+            MainWindow.View.UpdateWindowTitle();
+        }
     }
 }

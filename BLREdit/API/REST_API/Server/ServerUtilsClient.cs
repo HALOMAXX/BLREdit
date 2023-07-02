@@ -12,11 +12,13 @@ namespace BLREdit.API.REST_API.Server;
 
 public sealed class ServerUtilsClient
 {
-    public static async Task<ServerUtilsInfo?> GetServerInfo(string address)
+
+
+    public static async Task<ServerUtilsInfo> GetServerInfo(BLRServer server)
     {
-        string serverAddress = $"http://{address}";
+        string serverAddress = $"http://{server.ServerAddress}:{server.InfoPort}";
         string api = "/server_info";
-        ServerUtilsInfo? info = null;
+        ServerUtilsInfo info = null;
         string fail = "";
         try
         {

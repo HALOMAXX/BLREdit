@@ -2,7 +2,6 @@
 using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
-using BLREdit.Model.BLR;
 using BLREdit.UI;
 
 using Microsoft.IdentityModel.Tokens;
@@ -195,10 +194,10 @@ public sealed class BLREditPipe
             if (json.StartsWith("{"))
             {
                 LoggingSystem.Log($"[BLREdit API](add-server): Adding Server ({json})");
-                var server = IOResources.Deserialize<BLRServerModel>(json);
+                var server = IOResources.Deserialize<BLRServer>(json);
                 if (server != null && MainWindow.Self != null)
                 {
-                    //MainWindow.AddServer(server);
+                    MainWindow.AddServer(server);
                 }
             }
             else
@@ -210,7 +209,7 @@ public sealed class BLREditPipe
             if (json.StartsWith("{"))
             {
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to Server ({json})");
-                var server = IOResources.Deserialize<BLRServerModel>(json);
+                var server = IOResources.Deserialize<BLRServer>(json);
                 //MainWindow.AddServer(server);
                 if (server != null && MainWindow.Self != null)
                 {
@@ -220,13 +219,13 @@ public sealed class BLREditPipe
             else
             {
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to ServerAddress ({json})");
-                //foreach (var server in MainWindow.ServerList)
-                //{
-                //    if (server.ServerAddress == json)
-                //    { 
-                //        server.ConnectToServerCommand.Execute(null);
-                //    }
-                //}
+                foreach (var server in MainWindow.ServerList)
+                {
+                    if (server.ServerAddress == json)
+                    { 
+                        server.ConnectToServerCommand.Execute(null);
+                    }
+                }
             }
         });
         ApiEndPoints.Add("start-server", (json) => {
@@ -235,18 +234,16 @@ public sealed class BLREditPipe
             {
                 LoggingSystem.Log($"[BLREdit API](start-server): Starting Server ({json})");
                 var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json);
-                BLRClientModel client;
+                BLRClient client;
                 if (serverConfig.ClientId < 0)
                 { client = BLREditSettings.Settings.DefaultClient; }
                 else
-                { 
-                    //client = MainWindow.GameClients[serverConfig.ClientId];
-                }
+                { client = MainWindow.GameClients[serverConfig.ClientId]; }
 
                 //TODO: Transform Required Modules of ServerConfig to Modules to send to StartProcess as Enabled Modules list
 
-                string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}";
-                //BLRClientModel.StartClientWithArgs(client, launchArgs, true, serverConfig.WatchDog);
+                string launchArgs = $"server {serverConfig.Map}?ServerName=\"{serverConfig.ServerName}\"?Port={serverConfig.Port}?NumBots={serverConfig.BotCount}?MaxPlayers={serverConfig.MaxPlayers}?Playlist={serverConfig.Playlist}?SCP={serverConfig.SCP}?TimeLimit={serverConfig.TimeLimit}";
+                client.StartProcess(launchArgs, true, serverConfig.WatchDog);
             }
             else
             {

@@ -2,6 +2,7 @@
 
 public sealed class BLRItem
 {
+#pragma warning disable IDE1006 // Naming Styles
     public string? _class { get; set; }
     public string? icon { get; set; }
     public string? name { get; set; }
@@ -13,6 +14,7 @@ public sealed class BLRItem
     public Weaponmodifiers? weaponModifiers { get; set; }
     public Pawnmodifiers? pawnModifiers { get; set; }
     public WeaponStats? stats { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 }
 
 public sealed class Pawnmodifiers
@@ -41,6 +43,7 @@ public sealed class Pawnmodifiers
 
 public sealed class Weaponmodifiers
 {
+#pragma warning disable IDE1006 // Naming Styles
     public int accuracy { get; set; }
     public int ammo { get; set; }
     public int damage { get; set; }
@@ -52,10 +55,12 @@ public sealed class Weaponmodifiers
     public int reloadSpeed { get; set; }
     public int switchWeaponSpeed { get; set; }
     public int weaponWeight { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 }
 
 public sealed class WeaponStats
 {
+#pragma warning disable IDE1006 // Naming Styles
     public float accuracy { get; set; }
     public float damage { get; set; }
     public float movementSpeed { get; set; }
@@ -64,4 +69,5 @@ public sealed class WeaponStats
     public float recoil { get; set; }
     public float reloadSpeed { get; set; }
     public float weaponWeight { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 }

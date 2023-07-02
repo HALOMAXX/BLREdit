@@ -22,7 +22,7 @@ public static class UndoRedoSystem
     /// </summary>
     public static void Undo()
     {
-        if (UndoStack.Count <= 0) { MainWindow.ShowAlert($"No Undo's left", 400); return; }
+        if (UndoStack.Count <= 0) { MainWindow.ShowAlert($"No Undo's left"); return; }
 
         var action = UndoStack.Pop();
         foreach (var sub in action.actions)
@@ -41,7 +41,7 @@ public static class UndoRedoSystem
             BlockUpdate = false;
         }
         RedoStack.Push(action);
-        MainWindow.ShowAlert($"Undone! ({UndoStack.Count}/{RedoStack.Count})", 400);
+        MainWindow.ShowAlert($"Undone! ({UndoStack.Count}/{RedoStack.Count})");
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public static class UndoRedoSystem
     /// </summary>
     public static void Redo()
     {
-        if (RedoStack.Count <= 0) { MainWindow.ShowAlert($"No Redo's left", 400); return; }
+        if (RedoStack.Count <= 0) { MainWindow.ShowAlert($"No Redo's left"); return; }
         var action = RedoStack.Pop();
         foreach (var sub in action.actions)
         {
@@ -60,7 +60,7 @@ public static class UndoRedoSystem
             BlockUpdate = false;
         }
         UndoStack.Push(action);
-        MainWindow.ShowAlert($"Redone! ({UndoStack.Count}/{RedoStack.Count})", 400);
+        MainWindow.ShowAlert($"Redone! ({UndoStack.Count}/{RedoStack.Count})");
     }
 
     /// <summary>

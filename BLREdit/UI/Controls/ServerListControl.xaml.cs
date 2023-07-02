@@ -1,5 +1,4 @@
 ﻿using BLREdit.Game;
-using BLREdit.Model.BLR;
 
 using System;
 using System.Collections.Generic;
@@ -33,13 +32,13 @@ public partial class ServerListControl : UserControl
     bool isDragging= false;
     private void ServerListView_PreviewMouseMove(object sender, MouseEventArgs e)
     {
-        if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
+        if (e.LeftButton == MouseButtonState.Pressed && !isDragging && StartPoint != null)
         {
             Point position = e.GetPosition(null);
             if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
                Math.Abs(position.Y - StartPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
             {
-                if (sender is ListView listView && listView.SelectedItem is BLRServerModel server)
+                if (sender is ListView listView && listView.SelectedItem is BLRServer server)
                 {
                     isDragging = true;
                     DragDrop.DoDragDrop(listView, server, DragDropEffects.Move);
@@ -51,18 +50,18 @@ public partial class ServerListControl : UserControl
 
     private void ServerListView_Drop(object sender, DragEventArgs e)
     {
-        BLRServerModel droppedData = e.Data.GetData(typeof(BLRServerModel)) as BLRServerModel;
+        BLRServer droppedData = e.Data.GetData(typeof(BLRServer)) as BLRServer;
         object targetData = e.OriginalSource;
         while (targetData != null && targetData.GetType() != typeof(ServerControl))
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if (targetData != null) { BLRServerModel.Servers.Move(BLRServerModel.Servers.IndexOf(droppedData), BLRServerModel.Servers.IndexOf(((ServerControl)targetData).DataContext as BLRServerModel)); }
+        if (targetData != null) { MainWindow.ServerList.Move(MainWindow.ServerList.IndexOf(droppedData), MainWindow.ServerList.IndexOf(((ServerControl)targetData).DataContext as BLRServer)); }
     }
 
     private void AddNewServer_Click(object sender, RoutedEventArgs e)
     {
-        BLRServerModel.Servers.Add(new BLRServerModel());
+        MainWindow.AddServer(new BLRServer(), true);
     }
 
     private void ServerListView_PreviewMouseDown(object sender, MouseButtonEventArgs e)

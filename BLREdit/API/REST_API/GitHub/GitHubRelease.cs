@@ -43,28 +43,4 @@ public sealed class GitHubRelease
     public string Body { get; set; }
     [JsonPropertyName("mentions_count")]
     public int MentionsCount { get; set; }
-
-    [JsonConstructor]
-    public GitHubRelease(string uRL, string assetsURL, string uploadURL, string htmlURL, int iD, GitHubUser author, string nodeID, string tagName, string targetCommitish, string name, bool draft, bool preRelease, DateTime createdAt, DateTime publishedAt, GitHubAsset[] assets, string tarballURL, string zipballURL, string body, int mentionsCount)
-    {
-        URL = uRL;
-        AssetsURL = assetsURL;
-        UploadURL = uploadURL;
-        HtmlURL = htmlURL;
-        ID = iD;
-        Author = author;
-        NodeID = nodeID;
-        TagName = tagName;
-        TargetCommitish = targetCommitish;
-        Name = name;
-        Draft = draft;
-        PreRelease = preRelease;
-        CreatedAt = createdAt;
-        PublishedAt = publishedAt;
-        Assets = assets;
-        TarballURL = tarballURL;
-        ZipballURL = zipballURL;
-        Body = body;
-        MentionsCount = mentionsCount;
-    }
 }

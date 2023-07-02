@@ -142,7 +142,7 @@
     <value>Duplicate</value>
   </data>
   <data name="btn_ExportProfile" xml:space="preserve">
-    <value>Export Profile</value>
+    <value>Apply Loadouts</value>
   </data>
   <data name="btn_GenderToggle_Female" xml:space="preserve">
     <value>Female</value>

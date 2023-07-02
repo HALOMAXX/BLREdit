@@ -7,9 +7,7 @@ namespace BLREdit.Core.Test;
 public class ItemTest
 {
     const string FOLDER_NAME = "Items";
-    static string InputFolder = $"Data\\{FOLDER_NAME}";
-    static string OutputFolder = $"Data\\{FOLDER_NAME}\\out";
-    static readonly DirectoryInfo InputListFolder = new($"{InputFolder}\\List");
+    static readonly string OutputFolder = $"Data\\{FOLDER_NAME}\\out";
     static readonly DirectoryInfo OutputListFolder = new($"{OutputFolder}\\List");
 
     [TestMethod]

@@ -1,5 +1,4 @@
 using BLREdit.Game;
-using BLREdit.Model.BLR;
 using BLREdit.UI;
 using BLREdit.UI.Views;
 
@@ -9,7 +8,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace BLREdit.Export;
 
@@ -100,18 +98,27 @@ public sealed class ExportSystem
     private static Dictionary<string, BLRProfileSettingsWrapper> LoadSettingProfiles()
     {
         var dict = new Dictionary<string, BLRProfileSettingsWrapper>();
-        var dirs = Directory.EnumerateDirectories($"{IOResources.PROFILE_DIR}");
-        foreach (var dir in dirs)
+        try
         {
-            var data = dir.Split('\\');
-            var name = data[data.Length - 1];
+            var dirs = Directory.EnumerateDirectories($"{IOResources.PROFILE_DIR}GameSettings\\");
+            foreach (var dir in dirs)
+            {
+                var data = dir.Split('\\');
+                var name = data[data.Length - 1];
 
-            var onlineProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{dir}\\UE3_online_profile.json");
-            var keyBinds = IOResources.DeserializeFile<BLRKeyBindings>($"{dir}\\keybinding.json");
+                var onlineProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{dir}\\UE3_online_profile.json");
+                var keyBinds = IOResources.DeserializeFile<BLRKeyBindings>($"{dir}\\keybinding.json");
 
-            var profile = new BLRProfileSettingsWrapper(name, onlineProfile, keyBinds);
-            dict.Add(name, profile);
+                var profile = new BLRProfileSettingsWrapper(name, onlineProfile, keyBinds);
+
+                if(File.Exists($"{dir}\\UE3_online_profile.json")) IOResources.CopyToBackup($"{dir}\\UE3_online_profile.json", $"GameSettings\\{name}\\");
+                if(File.Exists($"{dir}\\keybinding.json")) IOResources.CopyToBackup($"{dir}\\keybinding.json", $"GameSettings\\{name}\\");
+
+                dict.Add(name, profile);
+            }
         }
+        catch { }
+
         return dict;
     }
 
@@ -119,9 +126,12 @@ public sealed class ExportSystem
     {
         if (settings is null) return;
 
-        if (ProfileSettings.TryGetValue(profileName, out var _))
+        if (ProfileSettings.TryGetValue(profileName, out var oldProfile))
         {
-            ProfileSettings[profileName] = settings;
+            if (settings.PlayTime >= oldProfile.PlayTime)
+            {
+                ProfileSettings[profileName] = settings;
+            }  
         }
         else
         {
@@ -137,22 +147,30 @@ public sealed class ExportSystem
         }
         else
         {
-            if (BLREditSettings.Settings.DefaultClient is BLRClientModel client)
+            List<BLRProfileSettingsWrapper> settingsWrappers = new();
+            foreach (var client in MainWindow.GameClients)
             {
-                foreach (var profile in client.ProfileSettings)
+                client.UpdateProfileSettings();
+            }
+            if (settingsWrappers.Count > 0)
+            {
+                foreach (var filteredSetting in settingsWrappers)
                 {
-                    if (profile.Value.ProfileName == profileName)
-                    {
-                        LoggingSystem.Log($"[ProfileSettings]({profileName}): found existing settings in default client");
-                        ProfileSettings.Add(profileName, profile.Value);
-                        return profile.Value;
-                    }
+                    ProfileSettings.Add(filteredSetting.ProfileName, filteredSetting);
                 }
             }
-            LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");
-            var newProfile = new BLRProfileSettingsWrapper(profileName, null, null);
-            ProfileSettings.Add(profileName, newProfile);
-            return newProfile;
+
+            if (ProfileSettings.TryGetValue(profileName, out var valu))
+            {
+                return valu;
+            }
+            else
+            {
+                LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");
+                var newProfile = new BLRProfileSettingsWrapper(profileName, null, null);
+                ProfileSettings.Add(profileName, newProfile);
+                return newProfile;
+            }
         }
     }
 
@@ -160,43 +178,33 @@ public sealed class ExportSystem
     {
         List<ExportSystemProfile> profiles = new();
 
-        CurrentBackupFolder = Directory.CreateDirectory($"Backup\\{System.DateTime.Now:dd-MM-yy}\\{System.DateTime.Now:HH-mm}\\");
+        CurrentBackupFolder = Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\");
         LoggingSystem.Log($"Backup folder:{CurrentBackupFolder.FullName}");
-        Regex regex = new(@"\((.*)\)");
 
         bool oldProfiles = false;
-        int i = 0;
+
         foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
         {
             IOResources.CopyToBackup(file);
-            ExportSystemProfile profile;
-
-            bool requestDelete = false;
+            ExportSystemProfile profile = null;
 
             try { profile = IOResources.DeserializeFile<ExportSystemProfile>(file); }
-            catch { LoggingSystem.Log("Found an old profile converting it to new profile format"); profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew(); }
-            profiles.Add(profile);
-
-            if (!profile.IsHealthOkAndRepair())
+            catch 
             {
-                requestDelete = true;
+                try
+                {
+                    profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew();
+                    LoggingSystem.Log("Found an old profile converting it to new profile format");
+                    oldProfiles = true;
+                }
+                catch { }
+                finally { File.Delete(file); }
             }
 
-            if (!regex.IsMatch(file))
+            if (profile?.IsHealthOkAndRepair() ?? false)
             {
-                LoggingSystem.Log($"Old Profile: {file}");
-                oldProfiles = true;
-                requestDelete = true;
-                profile.Index = i;
+                profiles.Add(profile);
             }
-
-            if (requestDelete)
-            {
-                try { File.Delete(file); }
-                catch (Exception error) { LoggingSystem.MessageLog($"Could not delete file: {file} {error}"); }
-            }
-
-            i++;
         }
 
         //initialize profiles with atleast one profile
@@ -226,10 +234,10 @@ public sealed class ExportSystem
 
         foreach (var profileSettings in ProfileSettings)
         {
-            Directory.CreateDirectory($"{IOResources.PROFILE_DIR}{profileSettings.Value.ProfileName}");
+            Directory.CreateDirectory($"{IOResources.PROFILE_DIR}GameSettings\\{profileSettings.Value.ProfileName}");
 
-            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}{profileSettings.Value.ProfileName}\\UE3_online_profile.json", profileSettings.Value.Settings.Values.ToArray());
-            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}{profileSettings.Value.ProfileName}\\keybinding.json", profileSettings.Value.KeyBindings);
+            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}GameSettings\\{profileSettings.Value.ProfileName}\\UE3_online_profile.json", profileSettings.Value.Settings.Values.ToArray());
+            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}GameSettings\\{profileSettings.Value.ProfileName}\\keybinding.json", profileSettings.Value.KeyBindings);
         }
     }
 
