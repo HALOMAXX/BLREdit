@@ -43,7 +43,7 @@ public sealed partial class IOResources
 
     public static IEnumerable<Type> GetAllDescendantsOf(Assembly assembly,Type genericTypeDefinition)
     {
-        IEnumerable<Type> GetAllAscendants(Type t)
+        static IEnumerable<Type> GetAllAscendants(Type t)
         {
             var current = t;
 

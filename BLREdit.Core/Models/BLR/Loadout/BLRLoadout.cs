@@ -13,7 +13,7 @@ public sealed class BLRLoadout : ModelBase
 
     private BLRGear? _gear;
 
-    public string ClientVersion { get; set; } = "v302";
+    public RangeObservableCollection<string> MetaData { get; } = new() { "v302" };
 
     [DoNotNotify] public BLRWeapon? Primary { get { return _primary; } set { if (IsValidPrimary(value)) { _primary = value; OnPropertyChanged(); } } }
     [DoNotNotify] public BLRWeapon? Secondary { get { return _secondary; } set { if (IsValidSecondary(value)) { _secondary = value; OnPropertyChanged(); } } }
@@ -25,61 +25,64 @@ public sealed class BLRLoadout : ModelBase
     {
         Depot = new();
         Taunt = new();
-        Depot.CollectionChanged += DepotChanged;
-        Taunt.CollectionChanged += TauntChanged;
+        AddChangedEventsAndDefaultItems();
     }
 
-    public BLRLoadout(IList<BLRItem> depotItems, IList<BLRItem> taunts)
+    void AddChangedEventsAndDefaultItems()
     {
-        Depot = new(depotItems);
-        Taunt = new(taunts);
         Depot.CollectionChanged += DepotChanged;
         Taunt.CollectionChanged += TauntChanged;
+        Depot.AddRange(BLRItemList.ItemLists[MetaData[0]].Categories[21]);
+        Taunt.AddRange(BLRItemList.ItemLists[MetaData[0]].Categories[3]);
     }
 
     void DepotChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
+        ListChanged(Depot, e, 5);
+    }
+
+    void TauntChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        ListChanged(Taunt, e, 8);
+    }
+
+    static void ListChanged(RangeObservableCollection<BLRItem?> list, NotifyCollectionChangedEventArgs e, int max)
+    {
         switch (e.Action)
         {
             case NotifyCollectionChangedAction.Add:
-                e.NewStartingIndex
-                break;
             case NotifyCollectionChangedAction.Replace:
+                if (list.Count > max)
+                {
+                    list.RemoveRange(max, list.Count - max);
+                }
                 break;
         }
     }
 
-    void TauntChanged(object? sender, NotifyCollectionChangedEventArgs e)
-    { 
-        
-    }
-
-
-
-
     #region ItemValidation
-    public bool IsValidPrimary(BLRWeapon? weapon)
+    public static bool IsValidPrimary(BLRWeapon? weapon)
     {
         if (weapon is null || weapon.Reciever is null || weapon.Reciever.CategoryName is "Primaries") return true;
         return false;
     }
-    public bool IsValidSecondary(BLRWeapon? weapon)
+    public static bool IsValidSecondary(BLRWeapon? weapon)
     {
         if (weapon is null || weapon.Reciever is null || weapon.Reciever.CategoryName is "Secondaries") return true;
         return false;
     }
 
-    public bool IsValidGear(BLRGear? gear)
+    public static bool IsValidGear(BLRGear? gear)
     {
         return true;
     }
 
-    public bool IsValidDepot(BLRItem? item)
+    public static bool IsValidDepot(BLRItem? item)
     {
         if (item is null || item.CategoryName is "Shop") return true;
         return false;
     }
-    public bool IsValidTaunt(BLRItem? item)
+    public static bool IsValidTaunt(BLRItem? item)
     {
         if (item is null || item.CategoryName is "Emotes") return true;
         return false;

@@ -104,7 +104,7 @@
 
         public override bool Equals(object? obj)
         {
-            if (obj is RangeObservableCollection<T> collection)
+            if (obj is RangeObservableCollection<T> collection && collection.Count == Count)
             {
                 for (int i = 0; i < Count; i++)
                 {

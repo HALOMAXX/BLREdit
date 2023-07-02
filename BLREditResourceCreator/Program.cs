@@ -1,5 +1,6 @@
 using BLREdit.Core.Utils;
 
+using System.ComponentModel.Design;
 using System.Resources;
 
 namespace BLREditResourceCreator;
@@ -25,6 +26,9 @@ public static class Program
 
         using var nameWriter = new ResXResourceWriter("Data\\out\\resx\\ItemNames.resx");
         using var tooltipWriter = new ResXResourceWriter("Data\\out\\resx\\ItemTooltips.resx");
+
+        Dictionary<string, ResXDataNode> nameNodes = new();
+        Dictionary<string, ResXDataNode> tooltipNodes = new();
 
         foreach (var category in current.Categories)
         {
@@ -72,15 +76,59 @@ public static class Program
                     Comment = $"{newItem.CategoryName}-{ID:0000}"
                 };
 
-                nameWriter.AddResource(nameNode);
-                tooltipWriter.AddResource(tooltipNode);
+                if (nameNodes.TryGetValue(nameNode.Name, out var nNode))
+                {
+                    if (nNode.GetValue(null as ITypeResolutionService) is string s && !string.IsNullOrEmpty(s))
+                    {
+
+                    }
+                    else
+                    {
+                        nameNodes.Remove(nameNode.Name);
+                        nameNodes.Add(nameNode.Name, nameNode);
+                    }
+                }
+                else
+                {
+                    nameNodes.Add(nameNode.Name, nameNode);
+                }
+
+                if (tooltipNodes.TryGetValue(tooltipNode.Name, out var tNode))
+                {
+                    if (tNode.GetValue(null as ITypeResolutionService) is string s && !string.IsNullOrEmpty(s))
+                    {
+
+                    }
+                    else
+                    { 
+                        tooltipNodes.Remove(tooltipNode.Name);
+                        tooltipNodes.Add(tooltipNode.Name, tooltipNode);
+                    }
+                }
+                else
+                {
+                    tooltipNodes.Add(tooltipNode.Name, nameNode);
+                }
 
                 ID++;
             }
         }
 
+        foreach (var pair in nameNodes)
+        {
+            nameWriter.AddResource(pair.Value);
+        }
         nameWriter.Close();
+
+        foreach (var pair in tooltipNodes)
+        {
+            tooltipWriter.AddResource(pair.Value);
+        }
         tooltipWriter.Close();
+        
+
+        
+        
 
 
 
