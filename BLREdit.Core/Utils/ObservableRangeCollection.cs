@@ -629,8 +629,6 @@
         /// <param name="followingItemIndex">The index of the item following the replacement block.</param>
         /// <param name="newCluster"></param>
         /// <param name="oldCluster"></param>
-        //TODO should have really been a local method inside ReplaceRange(int index, int count, IEnumerable<T> collection, IEqualityComparer<T> comparer),
-        //move when supported language version updated.
         void OnRangeReplaced(int followingItemIndex, ICollection<T> newCluster, ICollection<T> oldCluster)
         {
             if (oldCluster == null || oldCluster.Count == 0)

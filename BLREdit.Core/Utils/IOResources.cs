@@ -41,6 +41,17 @@ public sealed partial class IOResources
         AddAllJsonConverters();
     }
 
+    public static string MakePathCompatible(string path)
+    {
+        return path?.Replace('\\', Path.DirectorySeparatorChar).Replace('/', Path.DirectorySeparatorChar) ?? "";
+    }
+
+    public static void CreateDirectory(string path)
+    { 
+        Directory.CreateDirectory(MakePathCompatible(path));
+    }
+
+    #region JsonConverters
     public static IEnumerable<Type> GetAllDescendantsOf(Assembly assembly,Type genericTypeDefinition)
     {
         static IEnumerable<Type> GetAllAscendants(Type t)
@@ -118,7 +129,7 @@ public sealed partial class IOResources
             foreach (var t in a.GetTypes())
                 if (t.IsSubclassOf(parent)) yield return t;
     }
-
+    #endregion JsonConverters
     #region Network
     public static HttpClient JsonHttpClient { get; } 
     public static HttpClient TextHttpClient { get; } 
@@ -129,7 +140,8 @@ public sealed partial class IOResources
     public static JsonSerializerOptions JSOSerializationCompact { get; } = new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull, WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter() } };
     public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
     {
-        var info = new FileInfo(filePath);
+
+        var info = new FileInfo(MakePathCompatible(filePath));
         if (info.Directory is null) { Directory.CreateDirectory(info.FullName.AsSpan(0, info.FullName.Length - info.Name.Length).ToString()); }
         else if (!info.Directory.Exists) { info.Directory.Create(); };
         if (info.Exists) { info.Delete(); }
@@ -138,13 +150,18 @@ public sealed partial class IOResources
         file.Close();
     }
 
+    public static void DeserializeDirectoryInto<T>(RangeObservableCollection<T> collection, string directory)
+    {
+        DeserializeDirectoryInto(collection, new DirectoryInfo(MakePathCompatible(directory)));
+    }
+
     public static void DeserializeDirectoryInto<T>(RangeObservableCollection<T> collection, DirectoryInfo info)
     {
         var result = DeserializeDirectory<T>(info);
         if (result is not null && result.Count > 0 && collection is not null)
         { collection.AddRange(result); }
         else
-        { Debug.WriteLine($"failed to deserialize {nameof(T)}:{info.Name}"); }
+        { Debug.WriteLine($"failed to deserialize {nameof(T)}:{info?.Name ?? "null"}"); }
     }
 
     public static string Serialize<T>(T obj, bool compact = false)
@@ -159,9 +176,16 @@ public sealed partial class IOResources
         }
     }
 
-    public static List<T> DeserializeDirectory<T>(DirectoryInfo dirInfo)
+    public static List<T> DeserializeDirectory<T>(string directory)
     {
-        if (!(dirInfo?.Exists ?? false)) return new();
+        return DeserializeDirectory<T>(new DirectoryInfo(MakePathCompatible(directory)), false);
+    }
+
+    public static List<T> DeserializeDirectory<T>(DirectoryInfo dirInfo, bool makeCompatible = true)
+    {
+        if (dirInfo is null) return new();
+        if (makeCompatible) { dirInfo = new DirectoryInfo(MakePathCompatible(dirInfo.FullName)); }
+        if (!dirInfo.Exists) return new();
         List<T> all = new();
         var files = dirInfo.GetFiles("*.json", SearchOption.AllDirectories);
         foreach (var file in files)
@@ -191,12 +215,18 @@ public sealed partial class IOResources
         return all;
     }
 
-    public static T? DeserializeFile<T>(string filePath)
+    public static T? DeserializeFile<T>(string file)
+    { 
+        return DeserializeFile<T>(new FileInfo(MakePathCompatible(file)), false);
+    }
+
+    public static T? DeserializeFile<T>(FileInfo fileInfo, bool makeCompatible = true)
     {
-            var info = new FileInfo(filePath);
-            if (!info.Exists) { return default; }
-            using var file = info.OpenText();
-            return Deserialize<T>(file.ReadToEnd());
+        if (fileInfo is null) return default;
+        if (makeCompatible) { fileInfo = new FileInfo(MakePathCompatible(fileInfo.FullName)); }
+        if (!fileInfo.Exists) return default;
+        using var file = fileInfo.OpenText();
+        return Deserialize<T>(file.ReadToEnd());
     }
 
     public static T? Deserialize<T>(string json)
@@ -211,7 +241,7 @@ public sealed partial class IOResources
     #region Hashing
     public static string GetFileHash(string path)
     {
-        return GetHash(File.ReadAllBytes(path));
+        return GetHash(File.ReadAllBytes(MakePathCompatible(path)));
     }
     public static string GetHash(byte[] data)
     {
