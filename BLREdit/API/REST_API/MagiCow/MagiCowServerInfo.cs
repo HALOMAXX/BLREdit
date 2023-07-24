@@ -3,6 +3,7 @@ using BLREdit.Import;
 using BLREdit.UI.Windows;
 
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -45,9 +46,9 @@ public sealed class MagiCowServerInfo : ServerInfo
         }
     }
 
-    private ObservableCollection<string> list;
+    private StringCollection list;
 
-    [JsonIgnore] public ObservableCollection<string> List
+    [JsonIgnore] public StringCollection List
     {
         get
         {
@@ -56,8 +57,8 @@ public sealed class MagiCowServerInfo : ServerInfo
         }
     }
 
-    private ObservableCollection<string> team1list;
-    [JsonIgnore] public ObservableCollection<string> Team1List
+    private StringCollection team1list;
+    [JsonIgnore] public StringCollection Team1List
     {
         get
         {
@@ -66,8 +67,8 @@ public sealed class MagiCowServerInfo : ServerInfo
         }
     }
 
-    private ObservableCollection<string> team2list;
-    [JsonIgnore] public ObservableCollection<string> Team2List
+    private StringCollection team2list;
+    [JsonIgnore] public StringCollection Team2List
     {
         get
         {

@@ -4,6 +4,7 @@ using BLREdit.UI.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Text.Json.Serialization;
 namespace BLREdit.API.REST_API.Server;
 
@@ -50,9 +51,9 @@ public sealed class ServerUtilsInfo : ServerInfo
         }
     }
 
-    private ObservableCollection<string> list;
+    private StringCollection list;
     [JsonIgnore]
-    public ObservableCollection<string> List
+    public StringCollection List
     {
         get
         {
@@ -61,9 +62,9 @@ public sealed class ServerUtilsInfo : ServerInfo
         }
     }
 
-    private ObservableCollection<string> team1list;
+    private StringCollection team1list;
     [JsonIgnore]
-    public ObservableCollection<string> Team1List
+    public StringCollection Team1List
     {
         get
         {
@@ -72,9 +73,9 @@ public sealed class ServerUtilsInfo : ServerInfo
         }
     }
 
-    private ObservableCollection<string> team2list;
+    private StringCollection team2list;
     [JsonIgnore]
-    public ObservableCollection<string> Team2List
+    public StringCollection Team2List
     {
         get
         {
