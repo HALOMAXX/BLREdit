@@ -68,7 +68,7 @@ public static class ImportSystem
 
     private static void LoadItems()
     {
-        ItemLists = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}");
+        ItemLists = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
     }
 
     public static void ApplyDisplayStats()
@@ -81,6 +81,7 @@ public static class ImportSystem
                 case SECONDARY_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
                         var (DamageIdeal, DamageMax) = BLRWeapon.CalculateDamage(item, 0);
                         var (ZoomSpread, HipSpread, MovmentSpread) = BLRWeapon.CalculateSpread(item, 0, 0, item, item);
@@ -98,12 +99,13 @@ public static class ImportSystem
                 case MUZZELS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if(item is null) continue;
                         item.Category = itemCategory.Key;
-                        double damage = item?.WeaponModifiers?.Damage ?? 0;
-                        double spread = item?.WeaponModifiers?.Accuracy ?? 0;
-                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
-                        double range = item?.WeaponModifiers?.Range ?? 0;
-                        double run = item?.WeaponModifiers?.MovementSpeed ?? 0;
+                        double damage = item.WeaponModifiers?.Damage ?? 0;
+                        double spread = item.WeaponModifiers?.Accuracy ?? 0;
+                        double recoil = item.WeaponModifiers?.Recoil ?? 0;
+                        double range = item.WeaponModifiers?.Range ?? 0;
+                        double run = item.WeaponModifiers?.MovementSpeed ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
@@ -115,13 +117,14 @@ public static class ImportSystem
                 case STOCKS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        double damage = item?.WeaponModifiers?.Damage ?? 0;
-                        double spread = item?.WeaponModifiers?.Accuracy ?? 0;
-                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
-                        double range = item?.WeaponModifiers?.Range ?? 0;
-                        double run = item?.WeaponModifiers?.MovementSpeed ?? 0;
-                        double reload = item?.WeaponModifiers?.ReloadSpeed ?? 0;
+                        double damage = item.WeaponModifiers?.Damage ?? 0;
+                        double spread = item.WeaponModifiers?.Accuracy ?? 0;
+                        double recoil = item.WeaponModifiers?.Recoil ?? 0;
+                        double range = item.WeaponModifiers?.Range ?? 0;
+                        double run = item.WeaponModifiers?.MovementSpeed ?? 0;
+                        double reload = item.WeaponModifiers?.ReloadSpeed ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
@@ -136,12 +139,13 @@ public static class ImportSystem
                 case BARRELS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        double damage = item?.WeaponModifiers?.Damage ?? 0;
-                        double spread = item?.WeaponModifiers?.Accuracy ?? 0;
-                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
-                        double range = item?.WeaponModifiers?.Range ?? 0;
-                        double run = item?.WeaponModifiers?.MovementSpeed ?? 0;
+                        double damage = item.WeaponModifiers?.Damage ?? 0;
+                        double spread = item.WeaponModifiers?.Accuracy ?? 0;
+                        double recoil = item.WeaponModifiers?.Recoil ?? 0;
+                        double range = item.WeaponModifiers?.Range ?? 0;
+                        double run = item.WeaponModifiers?.MovementSpeed ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
@@ -153,23 +157,25 @@ public static class ImportSystem
                 case SCOPES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item?.WikiStats?.Zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.ScopeInTime), Resources.lbl_ScopeInTime, (0.0 + (item?.WikiStats?.ScopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item.WikiStats?.Zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.ScopeInTime), Resources.lbl_ScopeInTime, (0.0 + (item.WikiStats?.ScopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
                         item.DisplayStat3 = FormatDisplayStat(nameof(item.Infrared), Resources.lbl_Infrared, item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatsEnum.Normal, "");
                     }
                     break;
                 case MAGAZINES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        double ammo = item?.WeaponModifiers?.Ammo ?? 0;
-                        double range = item?.WeaponModifiers?.Range ?? 0;
-                        double reload = item?.WikiStats?.Reload ?? 0;
-                        double movementSpeed = item?.WeaponModifiers?.MovementSpeed ?? 0;
-                        double damage = item?.WeaponModifiers?.Damage ?? 0;
-                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
-                        double accuracy = item?.WeaponModifiers?.Accuracy ?? 0;
+                        double ammo = item.WeaponModifiers?.Ammo ?? 0;
+                        double range = item.WeaponModifiers?.Range ?? 0;
+                        double reload = item.WikiStats?.Reload ?? 0;
+                        double movementSpeed = item.WeaponModifiers?.MovementSpeed ?? 0;
+                        double damage = item.WeaponModifiers?.Damage ?? 0;
+                        double recoil = item.WeaponModifiers?.Recoil ?? 0;
+                        double accuracy = item.WeaponModifiers?.Accuracy ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Ammo), Resources.lbl_Ammo, ammo, StatsEnum.Normal, "0");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
@@ -190,12 +196,13 @@ public static class ImportSystem
                 case HELMETS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        double health = item?.PawnModifiers?.Health ?? 0;
-                        double dmgReduction = item?.PawnModifiers?.HelmetDamageReduction ?? 0;
-                        double movement = item?.PawnModifiers?.MovementSpeed ?? 0;
-                        double hrv = item?.PawnModifiers?.HRVDuration ?? 0;
-                        double recharge = item?.PawnModifiers?.HRVRechargeRate ?? 0;
+                        double health = item.PawnModifiers?.Health ?? 0;
+                        double dmgReduction = item.PawnModifiers?.HelmetDamageReduction ?? 0;
+                        double movement = item.PawnModifiers?.MovementSpeed ?? 0;
+                        double hrv = item.PawnModifiers?.HRVDuration ?? 0;
+                        double recharge = item.PawnModifiers?.HRVRechargeRate ?? 0;
 
                         string prop = "";
                         string desc = "";
@@ -206,17 +213,17 @@ public static class ImportSystem
                             case 30345:
                                 prop = nameof(item.ExplosiveProtection);
                                 desc = Resources.lbl_ExplosiveProtection;
-                                value = item.PawnModifiers.ExplosiveProtection;
+                                value = item.PawnModifiers?.ExplosiveProtection ?? 0;
                                 break;
                             case 30346:
                                 prop = nameof(item.ToxicProtection);
                                 desc = Resources.lbl_ToxicProtection;
-                                value = item.PawnModifiers.ToxicProtection;
+                                value = item.PawnModifiers?.ToxicProtection ?? 0;
                                 break;
                             case 30347:
                                 prop = nameof(item.IncendiaryProtection);
                                 desc = Resources.lbl_IncendiaryProtection;
-                                value = item.PawnModifiers.IncendiaryProtection;
+                                value = item.PawnModifiers?.IncendiaryProtection ?? 0;
                                 break;
                         }
 
@@ -243,9 +250,10 @@ public static class ImportSystem
                 case TACTICAL_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        double hrv = item?.PawnModifiers?.HRVDuration ?? 0;
-                        double recharge = item?.PawnModifiers?.HRVRechargeRate ?? 0;
+                        double hrv = item.PawnModifiers?.HRVDuration ?? 0;
+                        double recharge = item.PawnModifiers?.HRVRechargeRate ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.HRVDuration), Resources.lbl_HRVDuration, hrv, StatsEnum.Normal, "0.0", "u", "", -1, 0);
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.HRVRecharge), Resources.lbl_HRVRecharge, recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 0);
@@ -255,10 +263,11 @@ public static class ImportSystem
                 case LOWER_BODIES_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        double health = item?.PawnModifiers?.Health ?? 0;
-                        double movement = item?.PawnModifiers?.MovementSpeed ?? 0;
-                        double gear = item?.PawnModifiers?.GearSlots ?? 0;
+                        double health = item.PawnModifiers?.Health ?? 0;
+                        double movement = item.PawnModifiers?.MovementSpeed ?? 0;
+                        double gear = item.PawnModifiers?.GearSlots ?? 0;
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Health), Resources.lbl_Health, health, StatsEnum.Normal, "0", "%");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movement, StatsEnum.Normal, "0", "%");
@@ -268,13 +277,14 @@ public static class ImportSystem
                 case ATTACHMENTS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        double ElectroProtection = item?.PawnModifiers?.ElectroProtection ?? 0;
-                        double ExplosiveProtection = item?.PawnModifiers?.ExplosiveProtection ?? 0;
-                        double IncendiaryProtection = item?.PawnModifiers?.IncendiaryProtection ?? 0;
-                        double MeleeProtection = item?.PawnModifiers?.MeleeProtection ?? 0;
-                        double ToxicProtection = item?.PawnModifiers?.ToxicProtection ?? 0;
-                        double InfraredProtection = item?.PawnModifiers?.InfraredProtection ?? 0;
+                        double ElectroProtection = item.PawnModifiers?.ElectroProtection ?? 0;
+                        double ExplosiveProtection = item.PawnModifiers?.ExplosiveProtection ?? 0;
+                        double IncendiaryProtection = item.PawnModifiers?.IncendiaryProtection ?? 0;
+                        double MeleeProtection = item.PawnModifiers?.MeleeProtection ?? 0;
+                        double ToxicProtection = item.PawnModifiers?.ToxicProtection ?? 0;
+                        double InfraredProtection = item.PawnModifiers?.InfraredProtection ?? 0;
 
                         string prop = "";
                         string desc = "";
@@ -319,10 +329,11 @@ public static class ImportSystem
                 case GRIPS_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        double _damage = item?.WeaponModifiers?.Damage ?? 0;
-                        double _rof = item?.WeaponModifiers?.RateOfFire ?? 0;
-                        double recoil = item?.WeaponModifiers?.Recoil ?? 0;
+                        double _damage = item.WeaponModifiers?.Damage ?? 0;
+                        double _rof = item.WeaponModifiers?.RateOfFire ?? 0;
+                        double recoil = item.WeaponModifiers?.Recoil ?? 0;
 
                         //FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
                         //FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
@@ -333,6 +344,7 @@ public static class ImportSystem
                 case SHOP_CATEGORY:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.CP), Resources.lbl_CP, item.CP, StatsEnum.None, "0");
                     }
@@ -340,6 +352,7 @@ public static class ImportSystem
                 default:
                     foreach (var item in itemCategory.Value)
                     {
+                        if (item is null) continue;
                         item.Category = itemCategory.Key;
                     }
                     break;

@@ -55,7 +55,7 @@ namespace BLREdit.UI.Controls
         {
             if (SelectedBorder > -1 && SelectedBorder < this.ControlGrid.Children.Count && this.ControlGrid.Children[SelectedBorder] is Border border)
             {
-                MainWindow.LastSelectedBorder = border;
+                MainWindow.View.LastSelectedItemBorder = border;
             }
         }
     }

@@ -31,7 +31,7 @@ public sealed partial class BLREditSettingsControl : UserControl
     {
         InitializeComponent();
         PlayerNameBorder.Background = SolidColorBrush;
-        DataContext = BLREditSettings.Settings;
+        //DataContext = BLREditSettings.Settings;
         App.AvailableProxyModuleCheck();
         AvailableCultures.Add(App.DefaultCulture);
         foreach (var locale in App.AvailableLocalizations)
@@ -67,7 +67,7 @@ public sealed partial class BLREditSettingsControl : UserControl
         Duration = new Duration(TimeSpan.FromSeconds(2))
     };
 
-    ColorAnimation lastAnim = null;
+    ColorAnimation? lastAnim = null;
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (PlayerNameTextBox.Text == "BLREdit-Player" && lastAnim != AlertAnim)

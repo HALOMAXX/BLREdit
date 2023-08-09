@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 namespace BLREdit.API.REST_API.MagiCow;
 public sealed class MagiCowClient
 {
-    public static async Task<MagiCowServerInfo> GetServerInfo(string server)
+    public static async Task<MagiCowServerInfo?> GetServerInfo(string server)
     {
         string serverAddress = $"http://{server}";
         string api = "/api/server";
-        MagiCowServerInfo info = null;
+        MagiCowServerInfo? info = null;
         string fail = "";
         try
         {

@@ -17,12 +17,12 @@ namespace BLREdit.Game;
 public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
-    static readonly BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json");
+    static readonly BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json") ?? Array.Empty<BLRProfileSettings>();
 
     public Dictionary<int, BLRProfileSettings> Settings { get; } = new();
     public BLRKeyBindings KeyBindings { get; private set; }
@@ -51,19 +51,9 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         return dict;
     }
 
-    public BLRProfileSettingsWrapper(string profileName ,BLRProfileSettings[] settings, BLRKeyBindings keyBindings)
+    public BLRProfileSettingsWrapper(string profileName ,BLRProfileSettings[]? settings, BLRKeyBindings? keyBindings)
     {
-        IOrderedEnumerable<BLRProfileSettings> sortedDict;
-        if (settings == null)
-        {
-            sortedDict = from entry in defaultProfile orderby entry.ProfileSetting.PropertyId descending select entry;
-        }
-        else
-        {
-            sortedDict = from entry in settings orderby entry.ProfileSetting.PropertyId descending select entry;
-        }
-
-        foreach (var setting in sortedDict)
+        foreach (var setting in settings ?? defaultProfile)
         {
             Settings.Add(setting.ProfileSetting.PropertyId, setting);
         }
@@ -92,7 +82,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         return settings.ToArray();
     }
 
-    private int GetValueOf([CallerMemberName] string name = null)
+    private int GetValueOf([CallerMemberName] string? name = null)
     {
         if (string.IsNullOrEmpty(name)) return 0;
 
@@ -103,9 +93,8 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         return setting.ProfileSetting.Data.Value1;
     }
 
-    private void SetValueOf(int Value, [CallerMemberName] string name = null)
+    private void SetValueOf(int Value, [CallerMemberName] string? name = null)
     {
-
         if (string.IsNullOrEmpty(name)) return;
         var property = SettingPropertiesString[name];
         var attribute = property.GetCustomAttribute<ProfileSettingAttribute>();

@@ -30,8 +30,8 @@ namespace BLREdit.Game;
 public sealed class BLRClient : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -291,7 +291,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private void InstallRequiredModules()
     {
-        List<Task> moduleInstallTasks = new List<Task>();
+        List<Task> moduleInstallTasks = new();
         foreach (var availableModule in App.AvailableProxyModules)
         {
             if (availableModule.RepositoryProxyModule.Required && !IsModuleInstalledAndUpToDate(availableModule))
@@ -314,7 +314,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         return false;
     }
 
-    public void ValidateModules(List<ProxyModule> enabledModules = null)
+    public void ValidateModules(List<ProxyModule>? enabledModules = null)
     {
         App.AvailableProxyModuleCheck(); // Get Available Modules just in case
 
@@ -403,7 +403,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (module.Server) config.Proxy.Modules.Server.Add(module.InstallName);
     }
 
-    public static bool ValidateClientHash(string currentHash, string fileLocation, out string newHash)
+    public static bool ValidateClientHash(string currentHash, string fileLocation, out string? newHash)
     {
         if (string.IsNullOrEmpty(currentHash) || string.IsNullOrEmpty(fileLocation)) { newHash = null; return false; }
         newHash = IOResources.CreateFileHash(fileLocation);
@@ -524,7 +524,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         StartProcess(launchArgs);
     }
 
-    public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule> enabledModules = null)
+    public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null)
     {
         if (!hasBeenValidated)
         {
@@ -558,7 +558,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (this.Patched.Is)
         {
             BLREditSettings.Settings.DefaultClient = this;
-            foreach (BLRClient c in MainWindow.GameClients)
+            foreach (BLRClient c in MainWindow.View.GameClients)
             {
                 c.CurrentClient.Set(false);
             }
@@ -589,14 +589,14 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         try
         {
-            List<BLRClientPatch> toAppliedPatches = new List<BLRClientPatch>();
+            List<BLRClientPatch> toAppliedPatches = new();
             File.Copy(OriginalPath, PatchedPath, true);
             if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
             {
                 
                 using (var stream = File.Open(PatchedPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
-                    List<byte> rawFile = new List<byte>();
+                    List<byte> rawFile = new();
                     using var reader = new BinaryReader(stream);
                     rawFile.AddRange(reader.ReadBytes((int)stream.Length));
 
@@ -610,7 +610,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                         toAppliedPatches.Add(patch);
                     }
 
-                    PeFile peFile = new PeFile(rawFile.ToArray());
+                    PeFile peFile = new(rawFile.ToArray());
                     peFile.AddImport("Proxy.dll", "InitializeThread");
                     stream.Position = 0;
                     stream.SetLength(peFile.RawFile.Length);
@@ -646,7 +646,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         return true;
     }
 
-    private void OverwriteBytes(List<byte> bytes, int offsetFromBegining, byte[] bytesToWrite)
+    private static void OverwriteBytes(List<byte> bytes, int offsetFromBegining, byte[] bytesToWrite)
     {
         int i2 = 0;
         for (int i = offsetFromBegining; i < bytes.Count && i2 < bytesToWrite.Length; i++)

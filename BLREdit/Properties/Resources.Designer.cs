@@ -1321,6 +1321,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ping Hidden Servers.
+        /// </summary>
+        public static string tbtn_PingHiddenServers {
+            get {
+                return ResourceManager.GetString("tbtn_PingHiddenServers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RuntimeCheck.
         /// </summary>
         public static string tbtn_RuntimeCheck {
@@ -1409,6 +1418,15 @@ namespace BLREdit.Properties {
         public static string tbtn_TT_InstallRequiredModules {
             get {
                 return ResourceManager.GetString("tbtn_TT_InstallRequiredModules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ping Hidden Servers and Show them if online..
+        /// </summary>
+        public static string tbtn_TT_PingHiddenServers {
+            get {
+                return ResourceManager.GetString("tbtn_TT_PingHiddenServers", resourceCulture);
             }
         }
         

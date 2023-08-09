@@ -28,8 +28,8 @@ namespace BLREdit.Game;
 public sealed class BLRServer : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -72,7 +72,8 @@ public sealed class BLRServer : INotifyPropertyChanged
     public ushort Port { get { return port; } set { port = value; OnPropertyChanged(); } }
     [JsonIgnore] private ushort infoPort = 7778;
     public ushort InfoPort { get { return infoPort; } set { infoPort = value; OnPropertyChanged(); } }
-
+    [JsonIgnore] private bool hidden = false;
+    public bool Hidden { get { return hidden; } set { hidden = value; OnPropertyChanged(); } }
     private static BlockingCollection<BLRServer> ServersToPing { get; } = new();
 
     static BLRServer()
@@ -92,6 +93,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         {
             var server = ServersToPing.Take();
             if (server is null || string.IsNullOrEmpty(server.ServerAddress) || string.IsNullOrEmpty(server.IPAddress)) continue;
+            if (BLREditSettings.Settings.PingHiddenServers.IsNot) { if (server.Hidden) { LoggingSystem.Log($"Skipping Hidden Server:{server}"); continue; } }
             server.IsPinging.Set(true);
             server.InternalPing();
             server.IsPinging.Set(false);
@@ -146,7 +148,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         }
         else
         {
-            desc = $"{ServerAddress}\n{ServerInfo.BLRMap.DisplayName}";
+            desc = $"{ServerAddress}\n{ServerInfo?.BLRMap?.DisplayName}";
         }
         return desc;
     }
@@ -160,6 +162,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         OnPropertyChanged(nameof(PlayerList));
         OnPropertyChanged(nameof(Team1List));
         OnPropertyChanged(nameof(Team2List));
+        MainWindow.Instance.Dispatcher.Invoke(MainWindow.Instance.RefreshServerList);
     }
 
     public void PingServer()
@@ -244,7 +247,7 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     public void RemoveServer()
     { 
-        MainWindow.ServerList.Remove(this);
+        MainWindow.View.ServerList.Remove(this);
     }
 
     public void LaunchClient()

@@ -17,8 +17,8 @@ namespace BLREdit;
 public sealed class BLREditSettings : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
@@ -27,10 +27,10 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
     public int SelectedClient { get; set; } = 0;
-    [JsonIgnore] public BLRClient DefaultClient { get { if (SelectedClient >= MainWindow.GameClients.Count || SelectedClient < 0) { return null; } else { return MainWindow.GameClients[SelectedClient]; } } set { SelectedClient = MainWindow.GameClients.IndexOf(value); OnPropertyChanged(); } }
+    [JsonIgnore] public BLRClient? DefaultClient { get { if (SelectedClient >= MainWindow.View.GameClients.Count || SelectedClient < 0) { return null; } else { return MainWindow.View.GameClients[SelectedClient]; } } set { if (value is not null) { SelectedClient = MainWindow.View.GameClients.IndexOf(value); } else { SelectedClient = 0; } OnPropertyChanged(); } }
     //Saves the Default Server (not in use anymore)
     public int SelectedServer { get; set; } = 0;
-    [JsonIgnore] public BLRServer DefaultServer { get { if (SelectedServer >= MainWindow.ServerList.Count || SelectedServer < 0) { return null; } else { return MainWindow.ServerList[SelectedServer]; } } set { SelectedServer = MainWindow.ServerList.IndexOf(value); OnPropertyChanged(); } }
+    [JsonIgnore] public BLRServer? DefaultServer { get { if (SelectedServer >= MainWindow.View.ServerList.Count || SelectedServer < 0) { return null; } else { return MainWindow.View.ServerList[SelectedServer]; } } set { if (value is not null) { SelectedServer = MainWindow.View.ServerList.IndexOf(value); } else { SelectedServer = 0; } OnPropertyChanged(); } }
 
     //Allows for App-Web-Protocol needs Admin rights will be set to false if it fails to Start BLREdit as Admin
     public UIBool EnableAPI { get; set; } = new(true);
@@ -61,13 +61,19 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     //Always Installs Required Modules
     public UIBool InstallRequiredModules { get; set; } = new(true);
-    public string SelectedLanguage { get; set; } = null;
-    [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return null; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
+
+    //Ping Hidden Servers
+    public UIBool PingHiddenServers { get; set; } = new(true);
+
+    public string? SelectedLanguage { get; set; } = null;
+    [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return CultureInfo.InvariantCulture; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
 
     private string playerName = "BLREdit-Player";
     private string lastplayerName = "BLREdit-Player";
-    public string PlayerName { get { return playerName; } set { if (playerName != value) { MainWindow.Profile.IsChanged = true; } playerName = value; OnPropertyChanged(); MainWindow.View.UpdateWindowTitle(); } }
+    public string PlayerName { get { return playerName; } set { if (playerName != value) { MainWindow.View.Profile.IsChanged = true; } playerName = value; OnPropertyChanged(); OnPropertyChanged(nameof(ProfileSettings)); MainWindow.View.UpdateWindowTitle(); } }
     [JsonIgnore] public string LastPlayerName { get { return lastplayerName; } set { lastplayerName = value; OnPropertyChanged(); } }
+
+    [JsonIgnore] public BLRProfileSettingsWrapper ProfileSettings { get { return ExportSystem.GetOrAddProfileSettings(PlayerName); } }
 
     //BotCount for Server Start
     private int botCount = 8;
@@ -89,7 +95,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         get
         {
             resetConfigCommand ??= new RelayCommand(
-                    param => this.ResetSettings()
+                    param => ResetSettings()
                 );
             return resetConfigCommand;
         }
@@ -101,18 +107,18 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         Settings.AdvancedModding.PropertyChanged += Settings.AdvancedModdingChanged;
     }
 
-    public void ResetSettings()
+    public static void ResetSettings()
     {
         if (MessageBox.Show("Are you sure you want to reset all BLREdit Config", "this is a caption", MessageBoxButton.YesNo) != MessageBoxResult.Yes) { return; }
         LoggingSystem.MessageLog("Now Returning to Defaults. this will close BLREdit!");
         Settings = new BLREditSettings();
         Settings.AdvancedModding.PropertyChanged += Settings.AdvancedModdingChanged;
 
-        MainWindow.GameClients.Clear();
-        MainWindow.ServerList.Clear();
+        MainWindow.View.GameClients.Clear();
+        MainWindow.View.ServerList.Clear();
         ProxyModule.CachedModules.Clear();
 
-        MainWindow.Self.Close();
+        MainWindow.Instance.Close();
     }
 
     public static LaunchOptions GetLaunchOptions()
@@ -122,7 +128,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     public static void SyncDefaultClient()
     {
-        foreach (var client in MainWindow.GameClients)
+        foreach (var client in MainWindow.View.GameClients)
         {
             if (client.OriginalPath == Settings.DefaultClient.OriginalPath)
             {
@@ -136,17 +142,17 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     {
         if (e.PropertyName == "Is")
         {
-            MainWindow.Profile.CalculateStats();
-            MainWindow.Self.SetItemList();
+            MainWindow.View.Profile.CalculateStats();
+            MainWindow.Instance.SetItemList();
         }
     }
 
     public static void Save()
     {
-        if (MainWindow.GameClients is not null && MainWindow.GameClients.Count > 0)
+        if (MainWindow.View.GameClients is not null && MainWindow.View.GameClients.Count > 0)
         {
             bool client = false;
-            foreach (var c in MainWindow.GameClients)
+            foreach (var c in MainWindow.View.GameClients)
             {
                 if (c.Equals(Settings.DefaultClient))
                 {

@@ -8,8 +8,8 @@ sealed class RelayCommand : ICommand
 {
     #region Fields
 
-    readonly Action<object> _execute;
-    readonly Predicate<object> _canExecute;
+    readonly Action<object>? _execute;
+    readonly Predicate<object>? _canExecute;
 
     #endregion // Fields
 
@@ -29,7 +29,7 @@ sealed class RelayCommand : ICommand
     /// </summary>
     /// <param name="execute">The execution logic.</param>
     /// <param name="canExecute">The execution status logic.</param>
-    public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+    public RelayCommand(Action<object> execute, Predicate<object>? canExecute)
     {
         if (execute is not null)
         {

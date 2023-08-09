@@ -12,25 +12,37 @@
     "InfoPort": 80
   },
   {
-    "ServerAddress": "violence.ddns.net"
-  },
-  {
-    "ServerAddress": "violence.ddns.net",
-    "Port": 7778,
-    "InfoPort": 7779
-  },
-  {
-    "ServerAddress": "violence.ddns.net",
-    "Port": 7779,
-    "InfoPort": 7780
-  },
-  {
-    "ServerAddress": "aegiworks.com"
-  },
-  {
     "ServerAddress": "kameron.cloud"
   },
   {
     "ServerAddress": "localhost"
+  },
+  {
+    "ServerAddress": "violence.ddns.net",
+    "Hidden": true
+  },
+  {
+    "ServerAddress": "violence.ddns.net",
+    "Port": 7778,
+    "InfoPort": 7779,
+    "Hidden": true
+  },
+  {
+    "ServerAddress": "violence.ddns.net",
+    "Port": 7779,
+    "InfoPort": 7780,
+    "Hidden": true
+  },
+  {
+    "ServerAddress": "aegiworks.com",
+    "Hidden": true
+  },
+  {
+    "ServerAddress": "blr.akoot.me",
+    "Hidden": true
+  },
+  {
+    "ServerAddress": "blr.753z.net",
+    "Hidden": true
   }
 ]

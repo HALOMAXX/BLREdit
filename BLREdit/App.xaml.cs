@@ -30,15 +30,15 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.11.5";
-    public const string CurrentVersionTitle = "Linux Support";
+    public const string CurrentVersion = "v0.11.6";
+    public const string CurrentVersionTitle = "Added Mechanic to hide servers";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
     public static bool IsNewVersionAvailable { get; private set; } = false;
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
-    public static GitHubRelease BLREditLatestRelease { get; private set; } = null;
+    public static GitHubRelease? BLREditLatestRelease { get; private set; } = null;
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = new();
 
@@ -52,6 +52,8 @@ public partial class App : System.Windows.Application
 
     public static List<Thread> AppThreads { get; private set; } = new();
 
+    public static bool ForceStart { get; private set; }
+
     private void Application_Startup(object sender, StartupEventArgs e)
     {
         string[] argList = e.Args;
@@ -64,6 +66,11 @@ public partial class App : System.Windows.Application
             if (!name.StartsWith("-")) continue;
             if (i+1 < argList.Length && !argList[i + 1].StartsWith("-")) value = argList[i+1];
             argDict.Add(name, value);
+        }
+
+        if (argDict.TryGetValue("-forceStart", out var _))
+        { 
+            ForceStart = true;
         }
 
         if (argDict.TryGetValue("-exportItemList", out var _))
@@ -256,7 +263,7 @@ public partial class App : System.Windows.Application
         
         Trace.AutoFlush = true;
 
-        LoggingSystem.Log($"BLREdit {CurrentVersion} {IOResources.WineVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+        LoggingSystem.Log($"BLREdit {CurrentVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
 
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
 
@@ -283,7 +290,7 @@ public partial class App : System.Windows.Application
             BLREditSettings.Settings.SelectedCulture = CultureInfo.CurrentCulture;
         }
 
-        System.Threading.Thread.CurrentThread.CurrentUICulture = BLREditSettings.Settings.SelectedCulture;
+        Thread.CurrentThread.CurrentUICulture = BLREditSettings.Settings.SelectedCulture;
     }
 
     void UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -487,20 +494,19 @@ public partial class App : System.Windows.Application
 
     public static void Restart()
     {
-        File.WriteAllText("launch.bat", "@echo off\nTIMEOUT 1\nstart BLREdit.exe\nexit");
+        LoggingSystem.Log($"Restarting BLREdit!");
 
-        ProcessStartInfo psi = new()
-        {
-            UseShellExecute= true,
-            WindowStyle = ProcessWindowStyle.Hidden,
-            CreateNoWindow = true,
-            FileName = "launch.bat",
-        };
         Process newApp = new()
         {
-            StartInfo = psi
+            StartInfo = new()
+            {
+                FileName = "BLREdit.exe",
+                Arguments = "-forceStart"
+            }
         };
-        LoggingSystem.Log($"Restart: {newApp.Start()}");
+
+        newApp.Start();
+
         Environment.Exit(0);
     }
 
@@ -745,6 +751,11 @@ public partial class App : System.Windows.Application
     {
         AvailableProxyModuleCheck();
         var current = CultureInfo.CurrentCulture;
+        if (!AvailableLocalizations.TryGetValue(current.Name, out var _))
+        {
+            BLREditSettings.Settings.SelectedCulture = DefaultCulture;
+            return;
+        }
         if (current != DefaultCulture)
         {
             if (Directory.Exists(current.Name))

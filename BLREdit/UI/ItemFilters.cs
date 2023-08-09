@@ -14,8 +14,8 @@ namespace BLREdit.UI;
 public sealed class ItemFilters : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
@@ -24,7 +24,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
     private BLRItem weaponFilter;
     public BLRItem WeaponFilter { get { return weaponFilter; } set { weaponFilter = value; OnPropertyChanged(); } }
     private string searchFilter = "";
-    public string SearchFilter { get { return searchFilter; } set { searchFilter = value; MainWindow.Self.ApplySearchAndFilter(); OnPropertyChanged(); } }
+    public string SearchFilter { get { return searchFilter; } set { searchFilter = value; MainWindow.Instance.ApplySearchAndFilter(); OnPropertyChanged(); } }
 
     public static bool FilterBySearch(BLRItem item)
     {
@@ -36,7 +36,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static bool FullFilter(object o)
     {
-        if (MainWindow.Self?.wasLastImageScopePreview ?? true) { return true; }
+        if (MainWindow.Instance?.wasLastImageScopePreview ?? true) { return true; }
         if (o is BLRItem item)
         {
             if (FilterBySearch(item))

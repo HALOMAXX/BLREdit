@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
+
 namespace BLREdit.UI.Controls;
 
 /// <summary>
@@ -32,7 +34,7 @@ public partial class ServerListControl : UserControl
     bool isDragging= false;
     private void ServerListView_PreviewMouseMove(object sender, MouseEventArgs e)
     {
-        if (e.LeftButton == MouseButtonState.Pressed && !isDragging && StartPoint != null)
+        if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
         {
             Point position = e.GetPosition(null);
             if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
@@ -50,13 +52,17 @@ public partial class ServerListControl : UserControl
 
     private void ServerListView_Drop(object sender, DragEventArgs e)
     {
-        BLRServer droppedData = e.Data.GetData(typeof(BLRServer)) as BLRServer;
+        BLRServer? droppedData = e.Data.GetData(typeof(BLRServer)) as BLRServer;
         object targetData = e.OriginalSource;
         while (targetData != null && targetData.GetType() != typeof(ServerControl))
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if (targetData != null) { MainWindow.ServerList.Move(MainWindow.ServerList.IndexOf(droppedData), MainWindow.ServerList.IndexOf(((ServerControl)targetData).DataContext as BLRServer)); }
+        if (targetData is not null && droppedData is not null && targetData is ServerControl sControl && sControl.DataContext is BLRServer targetServer) { MainWindow.View.ServerList.Move(MainWindow.View.ServerList.IndexOf(droppedData), MainWindow.View.ServerList.IndexOf(targetServer)); }
+        else
+        {
+            LoggingSystem.Log("failed to reorder ServerListView!");
+        }
     }
 
     private void AddNewServer_Click(object sender, RoutedEventArgs e)
@@ -69,6 +75,21 @@ public partial class ServerListControl : UserControl
         if (e.LeftButton == MouseButtonState.Pressed)
         { 
             StartPoint = e.GetPosition(null);
+        }
+    }
+
+    private void ServerListView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
+        if (CollectionViewSource.GetDefaultView(ServerListView.Items) is CollectionView view)
+        {
+            view.Filter += new Predicate<object>((o) => 
+                { 
+                    if (o is BLRServer server && (!server.Hidden || server.IsOnline.Is)) 
+                    { return true; } 
+                    else 
+                    { return false; } 
+                }
+                );
         }
     }
 }

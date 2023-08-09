@@ -25,14 +25,15 @@ namespace BLREdit.UI.Controls
     /// </summary>
     public partial class ServerControl : UserControl
     {
-        static EventTrigger trigger;
+        static readonly EventTrigger trigger;
 
         static ServerControl()
         {
-            var animation = new DoubleAnimationUsingKeyFrames();
-
-            animation.RepeatBehavior = RepeatBehavior.Forever;
-            animation.AutoReverse = true;
+            var animation = new DoubleAnimationUsingKeyFrames()
+            {
+                RepeatBehavior = RepeatBehavior.Forever,
+                AutoReverse = true,
+            };
 
             animation.KeyFrames.Add(new SplineDoubleKeyFrame(-256, KeyTime.FromTimeSpan(new(0, 0, 0, 0, 0))));
             animation.KeyFrames.Add(new SplineDoubleKeyFrame(-256, KeyTime.FromTimeSpan(new(0, 0, 0, 0, 500))));
@@ -43,11 +44,9 @@ namespace BLREdit.UI.Controls
             storyboard.Children.Add(animation);
 
             Storyboard.SetTargetName(animation, "MapImage");
-
             Storyboard.SetTargetProperty(animation, new(Canvas.TopProperty));
 
-            var beginStoryboard = new BeginStoryboard();
-            beginStoryboard.Storyboard = storyboard;
+            var beginStoryboard = new BeginStoryboard() { Storyboard = storyboard };
 
             trigger = new EventTrigger() { RoutedEvent = Image.LoadedEvent };
             trigger.Actions.Add(beginStoryboard);

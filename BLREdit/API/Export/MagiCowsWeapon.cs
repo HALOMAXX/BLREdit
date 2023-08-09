@@ -52,7 +52,7 @@ public sealed class MagiCowsWeapon
     //Clones the string variables
     public MagiCowsWeapon Clone()
     {
-        MagiCowsWeapon clone = this.MemberwiseClone() as MagiCowsWeapon;
+        MagiCowsWeapon clone = this.MemberwiseClone() as MagiCowsWeapon ?? new();
         clone.Receiver = string.Copy(this.Receiver);
         clone.Stock = string.Copy(this.Stock);
         clone.Barrel = string.Copy(this.Barrel);
@@ -141,12 +141,12 @@ public sealed class MagiCowsWeapon
         return ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, Grip);
     }
 
-    public static MagiCowsWeapon GetDefaultSetupOfReciever(BLRItem item)
+    public static MagiCowsWeapon? GetDefaultSetupOfReciever(BLRItem item)
     {
         var tuple = DefaultWeapons as ITuple;
         for (int i = 0; i < tuple.Length; i++)
         {
-            MagiCowsWeapon wpn = (tuple[i] as MagiCowsWeapon);
+            MagiCowsWeapon wpn = (tuple[i] as MagiCowsWeapon ?? new());
             if (wpn.Receiver == item.Name)
             {
                 return wpn.Clone();

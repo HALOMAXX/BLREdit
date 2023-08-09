@@ -67,7 +67,7 @@ public sealed class MagiCowsLoadout
 
     public MagiCowsLoadout Clone()
     {
-        MagiCowsLoadout clone = this.MemberwiseClone() as MagiCowsLoadout;
+        MagiCowsLoadout clone = this.MemberwiseClone() as MagiCowsLoadout ?? new();
         clone.Primary = this.Primary.Clone();
         clone.Secondary = this.Secondary.Clone();
         clone.isDirty = true;

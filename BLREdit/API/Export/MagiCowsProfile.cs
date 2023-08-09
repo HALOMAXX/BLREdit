@@ -22,7 +22,7 @@ public class MagiCowsProfile
 
     public MagiCowsProfile Clone()
     {
-        MagiCowsProfile clone = this.MemberwiseClone() as MagiCowsProfile;
+        MagiCowsProfile clone = this.MemberwiseClone() as MagiCowsProfile ?? new();
         clone.PlayerName = string.Copy(this.PlayerName);
         clone.Loadout1 = this.Loadout1.Clone();
         clone.Loadout2 = this.Loadout2.Clone();

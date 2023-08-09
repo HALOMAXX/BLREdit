@@ -89,7 +89,7 @@ public static class UndoRedoSystem
     /// <param name="propertyInfo">the property that is modified</param>
     /// <param name="target">the target object if the target is static type then just give it null</param>
     /// <param name="shouldBlockEvent">should it block possible UI Events</param>
-    public static void DoAction(object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string callName = null)
+    public static void DoAction(object? after, PropertyInfo propertyInfo, object? target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string? callName = null)
     {
         BlockEvent = shouldBlockEvent;
         BlockUpdate = shouldBlockUpdate;
@@ -101,7 +101,7 @@ public static class UndoRedoSystem
         BlockUpdate = false;
     }
 
-    public static void DoActionAfter(object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string callName = null)
+    public static void DoActionAfter(object? after, PropertyInfo propertyInfo, object? target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string? callName = null)
     {
         BlockEvent = shouldBlockEvent;
         BlockUpdate = shouldBlockUpdate;
@@ -120,7 +120,7 @@ public static class UndoRedoSystem
     /// <param name="propertyInfo">the property that is modified</param>
     /// <param name="target">the target object if the target is static type then just give it null</param>
     /// <param name="shouldBlockEvent">should it block possible UI Events</param>
-    public static void CreateAction(object before, object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string callName = null)
+    public static void CreateAction(object? before, object? after, PropertyInfo propertyInfo, object? target, bool shouldBlockEvent = false, bool shouldBlockUpdate = false, [CallerMemberName] string? callName = null)
     {
         BlockEvent= shouldBlockEvent;
         BlockUpdate = shouldBlockUpdate;
@@ -138,15 +138,15 @@ public struct UndoRedoAction
 
 public struct SubUndoRedoAction
 {
-    internal object Before { get; private set; }
-    internal object After { get; private set; }
+    internal object? Before { get; private set; }
+    internal object? After { get; private set; }
     internal PropertyInfo PropertyInfo { get; private set; }
-    internal object Target { get; private set; }
+    internal object? Target { get; private set; }
     internal bool ShouldBlockEvent { get; private set; }
     internal bool ShouldBlockUpdate { get; private set; }
-    internal string CallName { get; private set; }
+    internal string? CallName { get; private set; }
 
-    public SubUndoRedoAction(object before, object after, PropertyInfo propertyInfo, object target, bool shouldBlockEvent, bool shouldBlockUpdate, string callName)
+    public SubUndoRedoAction(object? before, object? after, PropertyInfo propertyInfo, object? target, bool shouldBlockEvent, bool shouldBlockUpdate, string? callName)
     {
         Before = before;
         After = after;

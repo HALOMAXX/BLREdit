@@ -20,8 +20,8 @@ namespace BLREdit.Import;
 public sealed class BLRItem : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -56,12 +56,12 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     private bool female = false;
 
-    [JsonIgnore] public FoxIcon Image { get { if (this.female) { return FemaleIcon; } else { return MaleIcon; } } }
+    [JsonIgnore] public FoxIcon? Image { get { if (this.female) { return FemaleIcon; } else { return MaleIcon; } } }
 
-    [JsonIgnore] public FoxIcon MaleIcon { get; private set; }
-    [JsonIgnore] public FoxIcon FemaleIcon { get; private set; }
+    [JsonIgnore] public FoxIcon? MaleIcon { get; private set; }
+    [JsonIgnore] public FoxIcon? FemaleIcon { get; private set; }
 
-    [JsonIgnore] public FoxIcon Crosshair { get; private set; }
+    [JsonIgnore] public FoxIcon? ScopePreview { get; private set; }
 
     /// <summary>
     /// Gets the Loadout-Manager ID for the item.
@@ -178,7 +178,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public void LoadCrosshair(BLRWeapon weapon)
     {
-        Crosshair = GetBitmapCrosshair(GetSecondaryScope(weapon));
+        ScopePreview = GetBitmapCrosshair(GetSecondaryScope(weapon));
     }
 
     public string GetSecondaryScope(BLRWeapon weapon)
@@ -243,7 +243,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public void RemoveCrosshair()
     {
-        Crosshair = null;
+        ScopePreview = null;
     }
 
     public static int GetMagicCowsID(BLRItem item, int defaultID = 0)

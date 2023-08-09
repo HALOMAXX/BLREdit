@@ -48,30 +48,10 @@ public sealed class IOResources
     public const string PROXY_MODULES_DIR = "Modules\\";
     #endregion DIRECTORIES
 
-    private static string baseDirectory = null;
+    private static string? baseDirectory = null;
     public static string BaseDirectory { get { if (baseDirectory is null) { if (AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\")) { baseDirectory = AppDomain.CurrentDomain.BaseDirectory; } else { baseDirectory = $"{AppDomain.CurrentDomain.BaseDirectory}\\"; } } return baseDirectory; } }
 
     public const string GAME_APPID = "209870";
-
-    static string wineVersion;
-    public static string WineVersion { get { wineVersion ??= GetWineVersionString(); return wineVersion; } }
-
-    public static bool IsWine { get { return !(WineVersion == "Not running under wine!"); } }
-
-    private static string GetWineVersionString()
-    {
-        try
-        {
-            return GetWineVersion();
-        }
-        catch 
-        {
-            return "Not running under wine!";
-        }
-    }
-
-    [DllImport("ntdll.dll", EntryPoint="wine_get_version", CallingConvention=CallingConvention.Cdecl, CharSet=CharSet.Ansi)]
-    private static extern string GetWineVersion();
 
     #region FILES
     public const string GEAR_FILE = "gear.json";
@@ -83,8 +63,8 @@ public sealed class IOResources
     public const string GAME_DEFAULT_EXE = "FoxGame-win32-Shipping.exe";
     #endregion FILES
 
-    public static string Steam32InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string;
-    public static string Steam6432InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath", "") as string;
+    public static string Steam32InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string ?? string.Empty;
+    public static string Steam6432InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath", "") as string ?? string.Empty;
     public static readonly List<string> GameFolders = new();
 
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
@@ -341,7 +321,7 @@ public sealed class IOResources
 
         if (writeFile)
         {
-            using var file = File.CreateText(filePath);
+            using var file = new StreamWriter(File.Open(filePath, FileMode.Create), Encoding.UTF8);
             file.Write(Serialize(obj, compact));
             file.Close();
             LoggingSystem.Log($"[Serializer]: {typeof(T).Name} serialize succes!");
@@ -367,9 +347,9 @@ public sealed class IOResources
     /// <typeparam name="T">Type that is contained within the file</typeparam>
     /// <param name="filePath">the filepath</param>
     /// <returns>will return object of type on success otherwise will return the default object of said type also if the file is not readable/existent will also return default</returns>
-    public static T DeserializeFile<T>(string filePath)
+    public static T? DeserializeFile<T>(string filePath)
     {
-        T temp = default;
+        T? temp = default;
         if (string.IsNullOrEmpty(filePath)) { return temp; }
 
         if (!File.Exists("BLREdit.exe")) { Directory.SetCurrentDirectory(App.BLREditLocation); }
@@ -392,7 +372,7 @@ public sealed class IOResources
         return temp;
     }
 
-    public static T Deserialize<T>(string json)
+    public static T? Deserialize<T>(string json)
     {
         try
         {

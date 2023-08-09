@@ -16,7 +16,7 @@
     <Window.Background>
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
     </Window.Background>
-    <Grid Name="BLREditMainGrid" AllowDrop="True" d:DataContext="{d:DesignInstance Type=views:BLRProfile}">
+    <Grid Name="BLREditMainGrid" AllowDrop="True">
         <ComboBox Width="120" Height="22" Margin="10,5,0,0" Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0"  HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ProfileComboBox_SelectionChanged"/>
         <TextBox Width="120" Height="22" Margin="140,5,0,0" Name="PlayerNameTextBox"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" PreviewTextInput="PlayerNameTextBox_PreviewInput" TextChanged="PlayerNameTextBox_TextChanged"/>
         <Button Width="120" Height="22" Margin="270,5,0,0" Name="AddProfileButton" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
@@ -28,7 +28,7 @@
         <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static p:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
         <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
-        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="420" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged">
+        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="420" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged" DataContext="{Binding Path=Profile}">
             <TabItem Header="{x:Static p:Resources.ti_Loadout1}" Name="Loadout1Tab">
                 <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Loadout1}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
             </TabItem>
@@ -67,7 +67,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Name="DetailedInfoTab" Header="{x:Static p:Resources.ti_DetailedInfo}">
+            <TabItem Name="DetailedInfoTab" Header="{x:Static p:Resources.ti_DetailedInfo}" DataContext="{Binding Path=Profile}">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <Grid MinWidth="1400">
                         <Grid.ColumnDefinitions>
@@ -101,20 +101,20 @@
 
             <TabItem Name="LauncherTab" Header="{x:Static p:Resources.ti_Launcher}">
                 <TabControl BorderThickness="0,1,0,0">
-                    <TabItem Header="Server List">
+                    <TabItem Header="Server List" DataContext="{Binding Path=ServerList}">
                         <ui:ServerListControl x:Name="ServerListView"/>
                     </TabItem>
-                    <TabItem Header="Client List">
+                    <TabItem Header="Client List" DataContext="{Binding Path=GameClients}">
                         <ui:ClientListControl x:Name="ClientListView"/>
                     </TabItem>
                 </TabControl>
             </TabItem>
 
-            <TabItem Name="SettingsTab" Header="{x:Static p:Resources.ti_Settings}">
+            <TabItem Name="SettingsTab" Header="{x:Static p:Resources.ti_Settings}" DataContext="{Binding Path=BLRESettings}">
                 <ui:BLREditSettingsControl/>
             </TabItem>
 
-            <TabItem Name="ProfileSettingsTab" Header="Game Settings">
+            <TabItem Name="ProfileSettingsTab" Header="Game Settings" DataContext="{Binding Path=BLRESettings.ProfileSettings}">
                 <TabControl BorderThickness="0,1,0,0">
                     <TabItem Header="Key Binds">
                         <ui:KeyBindControl/>

@@ -8,8 +8,8 @@ namespace BLREdit.UI.Views;
 public sealed class BLRProfile
 {
     #region Event
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Event
 
@@ -41,7 +41,7 @@ public sealed class BLRProfile
 
     public static void UpdateSearchAndFilter()
     {
-        MainWindow.Self.ApplySearchAndFilter();
+        MainWindow.Instance.ApplySearchAndFilter();
     }
 
     public void CalculateStats()

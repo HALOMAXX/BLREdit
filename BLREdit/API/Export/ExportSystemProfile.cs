@@ -12,8 +12,8 @@ namespace BLREdit.Export;
 public sealed class ExportSystemProfile : MagiCowsProfile, INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -23,14 +23,15 @@ public sealed class ExportSystemProfile : MagiCowsProfile, INotifyPropertyChange
     public int Index { get; set; }
 
     public void RefreshInfo()
-    { 
+    {
         OnPropertyChanged(nameof(Name));
     }
 
-    public new ExportSystemProfile Clone()
+    public ExportSystemProfile Duplicate()
     {
-        ExportSystemProfile duplicate = base.Clone() as ExportSystemProfile;
-        duplicate.Index = ExportSystem.Profiles.Count;
-        return duplicate;
+        var dup = base.Clone() as ExportSystemProfile ?? new();
+        dup.Index = ExportSystem.Profiles.Count;
+        ExportSystem.Profiles.Add(dup);
+        return dup;
     }
 }

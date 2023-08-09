@@ -27,14 +27,14 @@ namespace BLREdit.UI.Controls;
 public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     #endregion Events
 
-    private BLRWeapon CurrentWeapon { get; set; } = null;
+    private BLRWeapon? CurrentWeapon { get; set; } = null;
 
     private Visibility recieverVisibility = Visibility.Visible;
     public Visibility RecieverVisibility { get { return recieverVisibility; } private set { recieverVisibility = value; OnPropertyChanged(); } }
@@ -96,12 +96,12 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         }
     }
 
-    public void SettingsChanged(object sender, PropertyChangedEventArgs e)
+    public void SettingsChanged(object? sender, PropertyChangedEventArgs e)
     {
-        Reciever_DataContextChanged(null, new DependencyPropertyChangedEventArgs());
+        Reciever_DataContextChanged(sender, new DependencyPropertyChangedEventArgs());
     }
 
-    private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    private void UserControl_DataContextChanged(object? sender, DependencyPropertyChangedEventArgs e)
     {
         ScopePreviewImage.DataContext = this.DataContext;
     }
@@ -110,7 +110,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     public static int SecondarySelectedBorder { get; private set; } = -1;
     private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
     {
-        Border border = null;
+        Border? border = null;
         if (e.Source is Image image && image.Parent is Border newBorder)
         {
             border = newBorder;
@@ -151,7 +151,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         }
     }
 
-    private void Reciever_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    private void Reciever_DataContextChanged(object? sender, DependencyPropertyChangedEventArgs e)
     {
         if (DataContext is BLRWeapon weapon && weapon.Reciever is not null)
         {

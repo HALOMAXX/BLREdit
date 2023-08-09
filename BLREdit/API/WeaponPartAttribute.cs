@@ -21,12 +21,12 @@ public sealed class WeaponPartAttribute : Attribute
 [AttributeUsage(AttributeTargets.Property)]
 public sealed class ProfileSettingAttribute : Attribute
 {
-    private readonly string _memberName;
-    public string MemberName { get { return _memberName; } }
+    private readonly string? _memberName;
+    public string MemberName { get { return _memberName ?? string.Empty; } }
 
     private readonly int _id;
     public int ID { get { return _id; } }
-    public ProfileSettingAttribute(int id, [CallerMemberName] string name = null)
+    public ProfileSettingAttribute(int id, [CallerMemberName] string? name = null)
     {
         _memberName = name;
         _id = id;

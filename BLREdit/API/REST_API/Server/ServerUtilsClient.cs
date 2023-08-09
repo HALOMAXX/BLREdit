@@ -14,11 +14,11 @@ public sealed class ServerUtilsClient
 {
 
 
-    public static async Task<ServerUtilsInfo> GetServerInfo(BLRServer server)
+    public static async Task<ServerUtilsInfo?> GetServerInfo(BLRServer server)
     {
         string serverAddress = $"http://{server.ServerAddress}:{server.InfoPort}";
         string api = "/server_info";
-        ServerUtilsInfo info = null;
+        ServerUtilsInfo? info = null;
         string fail = "";
         try
         {
@@ -26,13 +26,24 @@ public sealed class ServerUtilsClient
             if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                if (content.StartsWith("{") || content.StartsWith("["))
-                { info = IOResources.Deserialize<ServerUtilsInfo>(content); info.IsOnline = true; }
+                if (content.StartsWith("{"))
+                {
+                    info = IOResources.Deserialize<ServerUtilsInfo>(content);
+                }
+                else if (content.StartsWith("["))
+                {
+                    var infos = IOResources.Deserialize<ServerUtilsInfo[]>(content);
+                    if (infos is not null && infos.Length > 0)
+                    {
+                        info = infos[0];
+                    }
+                }
                 else
-                { fail = "Not a valid Json!"; }
+                { fail = "Invalid Json!"; }
             }
         }
         catch (Exception error) { LoggingSystem.Log($"[Http]({serverAddress}{api}): {error}\n{fail}"); }
+        if (info is not null) { info.IsOnline = true; }
         return info;
     }
 }

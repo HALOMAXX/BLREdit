@@ -47,67 +47,23 @@ namespace BLREdit.UI;
 public sealed partial class MainWindow : Window
 {
     public static readonly BLRClientWindow ClientWindow = new();
-
-    private static readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
-    private static readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
-
-    /// <summary>
-    /// Contains the last selected Border for setting the ItemList
-    /// </summary>
-    public static Border LastSelectedBorder { get { return lastSelectedBorder; } set { SetBorderColor(lastSelectedBorder, DefaultBorderColor); lastSelectedBorder = value; SetBorderColor(lastSelectedBorder, ActiveBorderColor); } }
-    private static Border lastSelectedBorder = null;
-
-    /// <summary>
-    /// Contains the current active loadout
-    /// </summary>
-    public static MagiCowsProfile ActiveProfile { get { return activeProfile; } set { activeProfile = value; Profile.LoadMagiCowsProfile(value); } }
-    private static MagiCowsProfile activeProfile = null;
-
-    public static BLRProfile Profile { get; } = new();
     public static MainWindowView View { get; } = new();
-
-    /// <summary>
-    /// Contains the Sorting Direction for the ItemList
-    /// </summary>
-    public ListSortDirection SortDirection { get; set; } = ListSortDirection.Descending;
-
-    public Type CurrentSortingEnumType { get; private set; }
-    public string CurrentSortingPropertyName { get; private set; } = "None";
-
-    /// <summary>
-    /// Prevents Profile Changes
-    /// </summary>
-    public bool IsPlayerNameChanging { get; private set; } = false;
-    /// <summary>
-    /// Prevents Profile Name Changes
-    /// </summary>
-    public bool IsPlayerProfileChanging { get; private set; } = false;
-
-    public bool IsCheckingGameClient { get; private set; } = false;
-
-    private static ObservableCollection<BLRClient>? _gameClients;
-    private static ObservableCollection<BLRServer>? _servers;
-    public static ObservableCollection<BLRClient> GameClients { get { _gameClients ??= IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new(); return _gameClients; } }  
-    public static ObservableCollection<BLRServer> ServerList { get { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new(); return _servers; } }
-
-    public static BLRWeapon Copy { get; set; } = null;
-
-    public static MainWindow Self { get; private set; } = null;
+    public static MainWindow? Instance { get; private set; } = null;
 
     private readonly string[] Args;
     public MainWindow(string[] args)
     {
         Args = args;
-        IsPlayerProfileChanging = true;
-        IsPlayerNameChanging = true;
+        View.IsPlayerProfileChanging = true;
+        View.IsPlayerNameChanging = true;
 
         PreviewKeyDown += UIKeys.Instance.KeyDown;
         PreviewKeyUp += UIKeys.Instance.KeyUp;
 
         InitializeComponent();
 
-        IsPlayerProfileChanging = false;
-        IsPlayerNameChanging = false;
+        View.IsPlayerProfileChanging = false;
+        View.IsPlayerNameChanging = false;
     }
 
     public void ApplySearchAndFilter()
@@ -115,15 +71,12 @@ public sealed partial class MainWindow : Window
         if (CollectionViewSource.GetDefaultView(ItemList.ItemsSource) is CollectionView view) view.Refresh();
     }
 
-    private static void SetBorderColor(Border border, Color color)
-    {
-        if (border is not null) border.BorderBrush = new SolidColorBrush(color);
-    }
+
 
     public static void CheckGameClients()
     {
         LoggingSystem.Log("Checking for patched clients");
-        if (GameClients.Count <= 0)
+        if (View.GameClients.Count <= 0)
         {
             MessageBox.Show("You have to locate and add atleast one Client");
         }
@@ -136,7 +89,7 @@ public sealed partial class MainWindow : Window
         if (firstStart || PingWatch.ElapsedMilliseconds > 30000)
         {
             firstStart= false;
-            foreach (BLRServer server in ServerList)
+            foreach (BLRServer server in View.ServerList)
             {
                 server.PingServer();
             }
@@ -154,9 +107,9 @@ public sealed partial class MainWindow : Window
 
     public static void AddServer(BLRServer server, bool forceAdd = false)
     {
-        if (forceAdd || !IsInCollection(ServerList, server))
+        if (forceAdd || !IsInCollection(View.ServerList, server))
         {
-            ServerList.Add(server);
+            View.ServerList.Add(server);
         }
     }
 
@@ -171,9 +124,9 @@ public sealed partial class MainWindow : Window
 
     public static void AddGameClient(BLRClient client)
     {
-        if(!IsInCollection(GameClients, client))
+        if(!IsInCollection(View.GameClients, client))
         {
-            GameClients.Add(client);
+            View.GameClients.Add(client);
             LoggingSystem.Log($"Adding New Client: {client}");
         }
     }
@@ -185,7 +138,7 @@ public sealed partial class MainWindow : Window
             if (button.DataContext is BLRServer server)
             {
                 BLREditSettings.Settings.DefaultServer = server;
-                foreach (BLRServer s in ServerList)
+                foreach (BLRServer s in View.ServerList)
                 {
                     s.IsDefaultServer = false;
                 }
@@ -196,8 +149,8 @@ public sealed partial class MainWindow : Window
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
     {
         ExportSystem.SaveProfiles();
-        IOResources.SerializeFile($"GameClients.json", GameClients);
-        IOResources.SerializeFile($"ServerList.json", ServerList);
+        IOResources.SerializeFile($"GameClients.json", View.GameClients);
+        IOResources.SerializeFile($"ServerList.json", View.ServerList);
         BLREditSettings.Save();
         ProxyModule.Save();
         ClientWindow.ForceClose();
@@ -214,8 +167,8 @@ public sealed partial class MainWindow : Window
         LoggingSystem.Log($"Recieved Drop {e.Data.GetDataPresent(typeof(BLRItem))}");
         if (e.Data.GetData(typeof(BLRItem)) is BLRItem item)
         {
-            Image image = null;
-            Border border = null;
+            Image? image = null;
+            Border? border = null;
             if (e.OriginalSource is Image mage)
             {
                 image = mage;
@@ -245,8 +198,8 @@ public sealed partial class MainWindow : Window
     public bool wasLastImageScopePreview = false;
     private void Border_MouseUp(object sender, MouseButtonEventArgs e)
     {
-        Image image = null;
-        Border border = null;
+        Image? image = null;
+        Border? border = null;
         if (e.OriginalSource is Image mage)
         {
             image = mage;
@@ -271,7 +224,7 @@ public sealed partial class MainWindow : Window
             }
             var weapon = ((FrameworkElement)border.Parent).DataContext as BLRWeapon;
             if (weapon is not null) ItemFilters.Instance.WeaponFilter = weapon.Reciever;
-            LastSelectedBorder = border;
+            View.LastSelectedItemBorder = border;
             wasLastImageScopePreview = false;
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
@@ -380,7 +333,7 @@ public sealed partial class MainWindow : Window
     }
 
     private string lastSelectedType = "";
-    public void SetItemList(string Type = null)
+    public void SetItemList(string? Type = null)
     {
         if (Type is null) Type = lastSelectedType;
         else lastSelectedType = Type;
@@ -450,13 +403,13 @@ public sealed partial class MainWindow : Window
 
             if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
             {
-                CurrentSortingPropertyName = Enum.GetName(CurrentSortingEnumType, Enum.GetValues(CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
-                view.SortDescriptions.Add(new SortDescription(CurrentSortingPropertyName, SortDirection));
+                View.CurrentSortingPropertyName = Enum.GetName(View.CurrentSortingEnumType, Enum.GetValues(View.CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
+                view.SortDescriptions.Add(new SortDescription(View.CurrentSortingPropertyName, View.ItemListSortingDirection));
             }
         }
     }
 
-    private Type lastSelectedSortingType = null;
+    private Type? lastSelectedSortingType = null;
     private void SetSortingType(Type SortingEnumType)
     {
         if (lastSelectedSortingType != SortingEnumType)
@@ -464,7 +417,7 @@ public sealed partial class MainWindow : Window
             lastSelectedSortingType = SortingEnumType;
             int index = SortComboBox1.SelectedIndex;
 
-            CurrentSortingEnumType = SortingEnumType;
+            View.CurrentSortingEnumType = SortingEnumType;
             SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = LanguageResources.GetWordsOfEnum(SortingEnumType) });
 
             if (index > SortComboBox1.Items.Count)
@@ -496,8 +449,8 @@ public sealed partial class MainWindow : Window
 
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (IsPlayerNameChanging || UndoRedoSystem.BlockEvent) return;
-        IsPlayerProfileChanging = true;
+        if (View.IsPlayerNameChanging || UndoRedoSystem.BlockEvent) return;
+        View.IsPlayerProfileChanging = true;
         BlockChangeNotif = true;
 
         LoggingSystem.Log("Changing Profile");
@@ -509,15 +462,15 @@ public sealed partial class MainWindow : Window
             UndoRedoSystem.DoAction(profile.PlayerName, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
             UndoRedoSystem.EndAction();
         }
-        IsPlayerProfileChanging = false;
+        View.IsPlayerProfileChanging = false;
         BlockChangeNotif = false;
-        Profile.IsChanged = true;
+        View.Profile.IsChanged = true;
     }
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (IsPlayerProfileChanging || UndoRedoSystem.BlockEvent) return;
-        
-        IsPlayerNameChanging = true;
+        if (View.IsPlayerProfileChanging || UndoRedoSystem.BlockEvent) return;
+
+        View.IsPlayerNameChanging = true;
 
         int index = ProfileComboBox.SelectedIndex;
         ExportSystem.RemoveActiveProfileFromDisk();
@@ -525,7 +478,7 @@ public sealed partial class MainWindow : Window
         ProfileComboBox.SelectedIndex = index;
         ExportSystem.ActiveProfile.RefreshInfo();
 
-        IsPlayerNameChanging = false;
+        View.IsPlayerNameChanging = false;
     }
     private void AddProfileButton_Click(object sender, RoutedEventArgs e)
     {
@@ -536,12 +489,12 @@ public sealed partial class MainWindow : Window
     {
         if (UIKeys.Keys[Key.LeftShift].Is || UIKeys.Keys[Key.RightShift].Is)
         {
-            ExportSystem.CopyToClipBoard(Profile);
+            ExportSystem.CopyToClipBoard(View.Profile);
             ShowAlert($"MagiCow Profile: {ExportSystem.ActiveProfile.Name} Copied!");
         }
         else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
         {
-            string link = $"<blredit://import-profile/{IOResources.JsonToBase64(IOResources.Serialize(new ShareableProfile(Profile), true))}>";
+            string link = $"<blredit://import-profile/{IOResources.JsonToBase64(IOResources.Serialize(new ShareableProfile(View.Profile), true))}>";
             ExportSystem.SetClipboard(link);
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Share Link Created!");
         }
@@ -549,9 +502,9 @@ public sealed partial class MainWindow : Window
         {
             var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
-            IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(Profile.Loadout1), new LoadoutManagerLoadout(Profile.Loadout2), new LoadoutManagerLoadout(Profile.Loadout3) });
+            IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(View.Profile.Loadout1), new LoadoutManagerLoadout(View.Profile.Loadout2), new LoadoutManagerLoadout(View.Profile.Loadout3) });
             ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8);
-            Profile.IsChanged = false;
+            View.Profile.IsChanged = false;
         }
     }
 
@@ -562,14 +515,14 @@ public sealed partial class MainWindow : Window
 
     private void ChangeSortingDirection(object sender, RoutedEventArgs e)
     {
-        if (SortDirection == ListSortDirection.Ascending)
+        if (View.ItemListSortingDirection == ListSortDirection.Ascending)
         {
-            SortDirection = ListSortDirection.Descending;
+            View.ItemListSortingDirection = ListSortDirection.Descending;
             SortDirectionButton.Content = Properties.Resources.btn_Descending;
         }
         else
         {
-            SortDirection = ListSortDirection.Ascending;
+            View.ItemListSortingDirection = ListSortDirection.Ascending;
             SortDirectionButton.Content = Properties.Resources.btn_Ascending;
         }
         ApplySorting();
@@ -647,7 +600,7 @@ public sealed partial class MainWindow : Window
                     var hit = VisualTreeHelper.HitTest(this, p);
                     if (hit.VisualHit is FrameworkElement element)
                     {
-                        while (element is not null && element.GetType() != typeof(WeaponControl))
+                        while (element is not null && element.Parent is not null && element.GetType() != typeof(WeaponControl))
                         {
                             element = element.Parent as FrameworkElement;
                         }
@@ -655,7 +608,7 @@ public sealed partial class MainWindow : Window
                         {
                             if (control.DataContext is BLRWeapon weapon)
                             {
-                                Copy = weapon.Copy();
+                                View.Copy = weapon.Copy();
                             }
                         }
                         
@@ -669,7 +622,7 @@ public sealed partial class MainWindow : Window
                     var hit = VisualTreeHelper.HitTest(this, p);
                     if (hit.VisualHit is FrameworkElement element)
                     {
-                        while (element is not null && element.GetType() != typeof(WeaponControl))
+                        while (element is not null && element.Parent is not null && element.GetType() != typeof(WeaponControl))
                         {
                             element = element.Parent as FrameworkElement;
                         }
@@ -677,7 +630,7 @@ public sealed partial class MainWindow : Window
                         {
                             if (control.DataContext is BLRWeapon weapon)
                             {
-                                weapon.ApplyCopy(Copy);
+                                weapon.ApplyCopy(View.Copy);
                             }
                         }
                     }
@@ -691,10 +644,10 @@ public sealed partial class MainWindow : Window
     public static void ShowAlert(string message, double displayTime = 4, double displayWidth = 400)
     {
         //TODO: Add Localization for alerts
-        if (Self is null) return;
+        if (Instance is null) return;
         var grid = CreateAlertGrid(message);
-        Self.AlertList.Items.Add(grid);
-        new TripleAnimationDouble(0, displayWidth, 1, displayTime, 1, grid, Grid.WidthProperty, Self.AlertList.Items).Begin(Self.AlertList);
+        Instance.AlertList.Items.Add(grid);
+        new TripleAnimationDouble(0, displayWidth, 1, displayTime, 1, grid, Grid.WidthProperty, Instance.AlertList.Items).Begin(Instance.AlertList);
     }
     private static Grid CreateAlertGrid(string Alert)
     {
@@ -706,9 +659,8 @@ public sealed partial class MainWindow : Window
 
     private void DuplicateProfile_Click(object sender, RoutedEventArgs e)
     {
-        var profile = ExportSystem.ActiveProfile.Clone();
-        ExportSystem.Profiles.Add(profile);
-        ProfileComboBox.SelectedItem = profile;
+
+        ProfileComboBox.SelectedItem = ExportSystem.ActiveProfile.Duplicate();
     }
 
     readonly private static char[] InvalidNameChars = System.IO.Path.GetInvalidPathChars().Concat(System.IO.Path.GetInvalidFileNameChars()).ToArray();
@@ -719,7 +671,7 @@ public sealed partial class MainWindow : Window
         { e.Handled = true; }
     }
 
-    private Border lastLoadoutBorder= null;
+    private Border lastLoadoutBorder;
     private void LoadoutTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         BlockChangeNotif = true;
@@ -733,23 +685,23 @@ public sealed partial class MainWindow : Window
                 }
             }
 
-            SetBorderColor(lastLoadoutBorder, DefaultBorderColor);
+            MainWindowView.SetBorderColor(lastLoadoutBorder, View.DefaultBorderColor);
             switch (control.SelectedIndex)
             {
                 case 0:
-                    MainWindow.Profile.Loadout1.IsFemale = MainWindow.Profile.Loadout1.IsFemale;
+                    View.Profile.Loadout1.IsFemale = View.Profile.Loadout1.IsFemale;
                     lastLoadoutBorder = DetailsBorderLoadout1; 
                     break;
                 case 1:
-                    MainWindow.Profile.Loadout2.IsFemale = MainWindow.Profile.Loadout2.IsFemale;
+                    View.Profile.Loadout2.IsFemale = View.Profile.Loadout2.IsFemale;
                     lastLoadoutBorder = DetailsBorderLoadout2;
                     break;
                 case 2:
-                    MainWindow.Profile.Loadout3.IsFemale = MainWindow.Profile.Loadout3.IsFemale;
+                    View.Profile.Loadout3.IsFemale = View.Profile.Loadout3.IsFemale;
                     lastLoadoutBorder = DetailsBorderLoadout3;
                     break;
             }
-            SetBorderColor(lastLoadoutBorder, ActiveBorderColor);
+            MainWindowView.SetBorderColor(lastLoadoutBorder, View.ActiveBorderColor);
         }
         BlockChangeNotif = false;
     }
@@ -791,9 +743,9 @@ public sealed partial class MainWindow : Window
         #endregion Backend Init
 
         #region Frontend Init
-        Self = this;
-        IsPlayerProfileChanging = true;
-        IsPlayerNameChanging = true;
+        Instance = this;
+        View.IsPlayerProfileChanging = true;
+        View.IsPlayerNameChanging = true;
 
 
         PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
@@ -802,24 +754,23 @@ public sealed partial class MainWindow : Window
 
         UndoRedoSystem.BlockUpdate = true;
         UndoRedoSystem.BlockEvent = true;
-        ActiveProfile = ExportSystem.ActiveProfile;
+        View.ActiveLoadoutSet = ExportSystem.ActiveProfile;
         UndoRedoSystem.BlockUpdate = false;
         UndoRedoSystem.BlockEvent = false;
 
-        IsPlayerProfileChanging = false;
-        IsPlayerNameChanging = false;
+        View.IsPlayerProfileChanging = false;
+        View.IsPlayerNameChanging = false;
 
-        LastSelectedBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
-        ItemFilters.Instance.WeaponFilter = Profile.Loadout1.Primary.Reciever;
+        View.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
+        ItemFilters.Instance.WeaponFilter = View.Profile.Loadout1.Primary.Reciever;
 
-        this.DataContext = MainWindow.View;
-        this.BLREditMainGrid.DataContext = Profile;
+        this.DataContext = View;
         #endregion Frontend Init
 
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && BLREditSettings.Settings.ShowUpdateNotice.Is)
         {
-            System.Diagnostics.Process.Start($"https://github.com/{App.CurrentOwner}/{App.CurrentRepo}/releases");
+            Process.Start($"https://github.com/{App.CurrentOwner}/{App.CurrentRepo}/releases");
         }
         if (BLREditSettings.Settings.DoRuntimeCheck.Is || BLREditSettings.Settings.ForceRuntimeCheck.Is)
         {
@@ -842,7 +793,7 @@ public sealed partial class MainWindow : Window
             if (File.Exists(GameInstance))
             {
                 bool alreadyRegistered = false;
-                foreach (var client in GameClients)
+                foreach (var client in View.GameClients)
                 {
                     if (client.OriginalPath == GameInstance) { alreadyRegistered = true; continue; }
                 }
@@ -853,24 +804,24 @@ public sealed partial class MainWindow : Window
             }
         }
 
-        if (MainWindow.GameClients.Count <= 0)
+        if (MainWindow.View.GameClients.Count <= 0)
         {
             MessageBox.Show("You have to locate and add atleast one Client");
         }
         else
         {
-            LoggingSystem.Log($"Validating Client List {GameClients.Count}");
-            for (int i = 0; i < GameClients.Count; i++)
+            LoggingSystem.Log($"Validating Client List {View.GameClients.Count}");
+            for (int i = 0; i < View.GameClients.Count; i++)
             {
-                if (!GameClients[i].OriginalFileValidation())
-                { GameClients.RemoveAt(i); i--; }
+                if (!View.GameClients[i].OriginalFileValidation())
+                { View.GameClients.RemoveAt(i); i--; }
                 else
                 {
-                    LoggingSystem.Log($"{GameClients[i]} has {GameClients[i].InstalledModules.Count} installed modules");
-                    if (GameClients[i].InstalledModules.Count > 0)
+                    LoggingSystem.Log($"{View.GameClients[i]} has {View.GameClients[i].InstalledModules.Count} installed modules");
+                    if (View.GameClients[i].InstalledModules.Count > 0)
                     {
-                        GameClients[i].InstalledModules = new ObservableCollection<ProxyModule>(GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
-                        LoggingSystem.Log($"{GameClients[i]} has {GameClients[i].InstalledModules.Count} installed modules");
+                        View.GameClients[i].InstalledModules = new ObservableCollection<ProxyModule>(View.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
+                        LoggingSystem.Log($"{View.GameClients[i]} has {View.GameClients[i].InstalledModules.Count} installed modules");
                     }
                 }
             }
@@ -880,23 +831,20 @@ public sealed partial class MainWindow : Window
 
         if (BLREditSettings.Settings.DefaultServer is null)
         {
-            BLREditSettings.Settings.DefaultServer = ServerList[0];
+            BLREditSettings.Settings.DefaultServer = View.ServerList[0];
         }
         BLREditSettings.SyncDefaultClient();
 
-        Profile.Loadout1.IsFemale = Profile.Loadout1.IsFemale;
+        View.Profile.Loadout1.IsFemale = View.Profile.Loadout1.IsFemale;
 
         BLREditPipe.ProcessArgs(Args);
-
-        ClientListView.DataContext = GameClients;
-        ServerListView.DataContext = ServerList;
 
         SetProfileSettings();
 
         ApplyLoadoutBorder.Background = SolidColorBrush;
         SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
         lastAnim = CalmAnim;
-        Profile.PropertyChanged += LoadoutChanged;
+        View.Profile.PropertyChanged += LoadoutChanged;
 
         View.UpdateWindowTitle();
 
@@ -920,19 +868,19 @@ public sealed partial class MainWindow : Window
         Duration = new Duration(TimeSpan.FromSeconds(2))
     };
 
-    ColorAnimation lastAnim = null;
+    ColorAnimation lastAnim;
 
     public bool BlockChangeNotif { get; set; } = false;
 
     void LoadoutChanged(object sender, PropertyChangedEventArgs e)
     {
         if (BlockChangeNotif) return;
-        if (Profile.IsChanged && lastAnim != AlertAnim)
+        if (View.Profile.IsChanged && lastAnim != AlertAnim)
         {
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, AlertAnim, HandoffBehavior.Compose);
             lastAnim = AlertAnim;
         }
-        else if (!Profile.IsChanged && lastAnim != CalmAnim)
+        else if (!View.Profile.IsChanged && lastAnim != CalmAnim)
         {
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
             lastAnim = CalmAnim;
@@ -1002,5 +950,13 @@ public sealed partial class MainWindow : Window
     private void Window_Deactivated(object sender, EventArgs e)
     {
         UIKeys.SetAll(false);
+    }
+
+    internal void RefreshServerList()
+    {
+        if (ServerListView is ServerListControl serverControl && serverControl.ServerListView is ListView listView && CollectionViewSource.GetDefaultView(listView.ItemsSource) is CollectionView view)
+        {
+            view.Refresh();
+        }
     }
 }

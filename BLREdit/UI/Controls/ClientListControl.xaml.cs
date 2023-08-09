@@ -33,7 +33,7 @@ public partial class ClientListControl : UserControl
     bool isDragging = false;
     private void ClientListView_PreviewMouseMove(object sender, MouseEventArgs e)
     {
-        if (e.LeftButton == MouseButtonState.Pressed && !isDragging && StartPoint != null)
+        if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
         {
             Point position = e.GetPosition(null);
             if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
@@ -51,13 +51,17 @@ public partial class ClientListControl : UserControl
 
     private void ClientListView_Drop(object sender, DragEventArgs e)
     {
-        BLRClient droppedData = e.Data.GetData(typeof(BLRClient)) as BLRClient;
+        BLRClient? droppedData = e.Data.GetData(typeof(BLRClient)) as BLRClient;
         object targetData = e.OriginalSource;
         while (targetData != null && targetData.GetType() != typeof(ClientControl))
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if (targetData != null) MainWindow.GameClients.Move(MainWindow.GameClients.IndexOf(droppedData), MainWindow.GameClients.IndexOf(((ClientControl)targetData).DataContext as BLRClient));
+        if (targetData is not null && droppedData is not null && targetData is ClientControl cControl && cControl.DataContext is BLRClient targetClient) { MainWindow.View.GameClients.Move(MainWindow.View.GameClients.IndexOf(droppedData), MainWindow.View.GameClients.IndexOf(targetClient)); }
+        else
+        {
+            LoggingSystem.Log("failed to reorder ClientListView!");
+        }
     }
 
     private void OpenNewGameClient_Click(object sender, RoutedEventArgs e)

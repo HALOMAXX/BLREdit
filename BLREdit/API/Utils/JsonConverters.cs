@@ -121,7 +121,7 @@ public class JsonGenericConverter<T> : JsonConverter<T>
             switch (reader.TokenType)
             {
                 case JsonTokenType.PropertyName:
-                    string propertyName = reader.GetString();
+                    var propertyName = reader.GetString();
                     if (reader.TokenType != JsonTokenType.Null)
                     {
                         foreach (var prop in Properties)

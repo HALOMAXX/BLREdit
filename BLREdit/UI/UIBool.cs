@@ -10,8 +10,8 @@ namespace BLREdit.UI;
 [JsonConverter(typeof(JsonUIBoolConverter))]
 public sealed class UIBool : INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
     private bool isBool = false;

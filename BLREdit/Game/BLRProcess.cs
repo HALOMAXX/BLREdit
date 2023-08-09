@@ -17,8 +17,8 @@ namespace BLREdit.Game;
 public sealed class BLRProcess : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -99,6 +99,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         {
             Client.UpdateProfileSettings();
             MainWindow.View.UpdateWindowTitle();
+            LoggingSystem.Log($"[{this.Client}]: Grabbing Settings from client!");
         }
 
         if (!Watchdog) { this.Remove(); }

@@ -26,9 +26,9 @@ public sealed class RepositoryProxyModule
     public bool Server { get; set; } = true;
     public bool Required { get; set; } = false;
 
-    private GitHubRelease hubRelease = null;
+    private GitHubRelease? hubRelease = null;
     [JsonIgnore]
-    public GitHubRelease GitHubRelease
+    public GitHubRelease? GitHubRelease
     {
         get
         {
@@ -43,9 +43,9 @@ public sealed class RepositoryProxyModule
             }
         }
     }
-    private GitlabRelease labRelease = null;
+    private GitlabRelease? labRelease = null;
     [JsonIgnore]
-    public GitlabRelease GitlabRelease
+    public GitlabRelease? GitlabRelease
     {
         get
         {
@@ -152,7 +152,7 @@ public sealed class RepositoryProxyModule
         else
         { module = new ProxyModule(labRelease, ModuleName, Owner, Repository, Client, Server); }
 
-        ProxyModule toRemoveModule = null;
+        ProxyModule? toRemoveModule = null;
         foreach (var mod in ProxyModule.CachedModules)
         {
             if (mod.InstallName == module.InstallName)

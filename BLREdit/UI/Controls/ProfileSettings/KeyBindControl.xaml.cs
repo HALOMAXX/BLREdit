@@ -28,8 +28,8 @@ public sealed partial class KeyBindControl : UserControl
     static readonly PropertyInfo primaryInfo = typeof(BLRKeyBind).GetProperty("Primary");
     static readonly PropertyInfo alternateInfo = typeof(BLRKeyBind).GetProperty("Alternate");
 
-    BLREButtonInfo lastButton = null;
-    BLREButtonInfo LastButton { get { return lastButton; } set { lastButton?.Reset(); lastButton = value; } }
+    BLREButtonInfo? lastButton = null;
+    BLREButtonInfo? LastButton { get { return lastButton; } set { lastButton?.Reset(); lastButton = value; } }
 
     public KeyBindControl()
     {

@@ -57,15 +57,13 @@ public sealed class RESTAPIClient
             return (T[])value;
         }
 
-        using (var response = await GetAsync(api))
+        using var response = await GetAsync(api);
+        if (response is not null && response.IsSuccessStatusCode)
         {
-            if (response is not null && response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                var releases = IOResources.Deserialize<T[]>(content);
-                RequestCache.Add(api, releases);
-                return releases;
-            }
+            var content = await response.Content.ReadAsStringAsync();
+            var releases = IOResources.Deserialize<T[]>(content);
+            RequestCache.Add(api, releases);
+            return releases;
         }
         return default;
     }

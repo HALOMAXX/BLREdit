@@ -25,8 +25,8 @@ namespace BLREdit.UI.Views;
 public sealed class VisualProxyModule : INotifyPropertyChanged
 {
     #region Events
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -193,7 +193,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     public UIBool UpToDate { get; } = new(false);
 
     private DateTime? releaseDate;
-    public DateTime ReleaseDate 
+    public DateTime? ReleaseDate 
     { 
         get 
         {
@@ -201,7 +201,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             {
                 Task.Run(async () => { releaseDate = await GetLatestReleaseDate(); }).Wait();
             }
-            return (DateTime)releaseDate; 
+            return releaseDate; 
         }
     }
 
@@ -251,7 +251,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
             LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}]");
 
-            ProxyModule module = null;
+            ProxyModule? module = null;
             foreach (var cachedModule in ProxyModule.CachedModules)
             {
                 if (cachedModule.InstallName == RepositoryProxyModule.InstallName && cachedModule.Published >= ReleaseDate)

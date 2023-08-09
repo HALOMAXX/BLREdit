@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Button Content="{Binding Source={x:Static p:Resources.btn_AddServer}}" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Click="AddNewServer_Click"/>
-        <ListView Name="ServerListView" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ServerListControl}}, Path=DataContext}" Margin="0,0,0,40" SelectionMode="Single" PreviewMouseDown="ServerListView_PreviewMouseDown" PreviewMouseMove="ServerListView_PreviewMouseMove" AllowDrop="True" Drop="ServerListView_Drop">
+        <ListView Name="ServerListView" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ServerListControl}}, Path=DataContext}" DataContextChanged="ServerListView_DataContextChanged" Margin="0,0,0,40" SelectionMode="Single" PreviewMouseDown="ServerListView_PreviewMouseDown" PreviewMouseMove="ServerListView_PreviewMouseMove" AllowDrop="True" Drop="ServerListView_Drop">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="2"/>

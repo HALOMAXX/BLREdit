@@ -18,11 +18,11 @@ namespace BLREdit.UI.Views;
 public sealed class BLRWeapon : INotifyPropertyChanged
 {
     #region Event
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
-    private void ItemChanged([CallerMemberName] string propertyName = null)
+    private void ItemChanged([CallerMemberName] string? propertyName = null)
     {
         var value = GetType().GetProperty(propertyName).GetValue(this);
         LoggingSystem.Log($"{propertyName} has been set to {(value as BLRItem)?.Name ?? value}");
@@ -35,14 +35,14 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public bool IsPrimary { get; set; } = false;
 
-    private BLRLoadout Loadout { get; set; }
+    private BLRLoadout? Loadout { get; set; }
 
     private bool isChanged = false;
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
 
     #region Weapon Parts
-    private BLRItem reciever = null;
-    [WeaponPart] public BLRItem Reciever { 
+    private BLRItem? reciever = null;
+    [WeaponPart] public BLRItem? Reciever { 
         get { return reciever; } 
         set { 
             if (value?.Category == ImportSystem.PRIMARY_SKIN_CATEGORY) 
@@ -59,71 +59,71 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                 else
                 { reciever = value; } RemoveIncompatibleMods(); ItemChanged(); UpdateScopeIcons(); } } }
 
-    private BLRItem barrel = null;
-    [WeaponPart] public BLRItem Barrel
+    private BLRItem? barrel = null;
+    [WeaponPart] public BLRItem? Barrel
     {
         get { return barrel; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { barrel = value; ItemChanged(); return; } 
             if (value is null || reciever is null || barrel != value && value.IsValidFor(reciever) && value.Category == ImportSystem.BARRELS_CATEGORY) { if (value is null) { barrel = ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, MagiCowsWeapon.NoBarrel); } else { barrel = value; } AllowStock(); ItemChanged(); } }
     }
     
-    private BLRItem magazine = null;
-    [WeaponPart] public BLRItem Magazine
+    private BLRItem? magazine = null;
+    [WeaponPart] public BLRItem? Magazine
     {
         get { return magazine; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { magazine = value; ItemChanged(); return; } 
             if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever).GetMagazine(); } else { magazine = value; } ApplyCorrectAmmo(); ItemChanged(); } }
     }
 
-    private BLRItem muzzle = null;
-    [WeaponPart] public BLRItem Muzzle
+    private BLRItem? muzzle = null;
+    [WeaponPart] public BLRItem? Muzzle
     {
         get { return muzzle; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { muzzle = value; ItemChanged(); return; } 
             if (value is null || reciever is null || muzzle != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MUZZELS_CATEGORY) { if (value is null) { muzzle = ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, MagiCowsWeapon.NoMuzzle); } else { muzzle = value; } ItemChanged(); } }
     }
     
-    private BLRItem stock = null;
-    [WeaponPart] public BLRItem Stock
+    private BLRItem? stock = null;
+    [WeaponPart] public BLRItem? Stock
     {
         get { return stock; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { stock = value; ItemChanged(); return; } 
             if (value is null || reciever is null || stock != value && AllowStock() && value.IsValidFor(reciever) && value.Category == ImportSystem.STOCKS_CATEGORY) { if (value is null) { stock = ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, MagiCowsWeapon.NoStock); } else { stock = value; } ItemChanged(); } }
     }
 
-    private BLRItem scope = null;
-    [WeaponPart] public BLRItem Scope
+    private BLRItem? scope = null;
+    [WeaponPart] public BLRItem? Scope
     {
         get { return scope; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { if (value is null) { scope = ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope); UpdateScopeIcons(); } else { scope = value; } ItemChanged(); UpdateScopeIcons(); } if (value is null || reciever is null || scope != value && value.IsValidFor(reciever) && value.Category == ImportSystem.SCOPES_CATEGORY) { if (value is null) { scope = ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope); UpdateScopeIcons(); } else { scope = value; } ItemChanged(); UpdateScopeIcons(); } }
     }
     
-    private BLRItem grip = null;
-    [WeaponPart] public BLRItem Grip
+    private BLRItem? grip = null;
+    [WeaponPart] public BLRItem? Grip
     {
         get { return grip; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { grip = value; ItemChanged(); return; } 
             if (value is null || reciever is null || grip != value && value.IsValidFor(reciever) && value.Category == ImportSystem.GRIPS_CATEGORY) { grip = value; ItemChanged(); } }
     }
     
-    private BLRItem tag = null;
-    [WeaponPart] public BLRItem Tag
+    private BLRItem? tag = null;
+    [WeaponPart] public BLRItem? Tag
     {
         get { return tag; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { tag = value; ItemChanged(); return; } 
             if (value is null || reciever is null || tag != value && value.IsValidFor(reciever) && value.Category == ImportSystem.HANGERS_CATEGORY) { if (value is null) { tag = ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, MagiCowsWeapon.NoTag); } else { tag = value; } ItemChanged(); } }
     }
     
-    private BLRItem camo = null;
-    [WeaponPart] public BLRItem Camo
+    private BLRItem? camo = null;
+    [WeaponPart] public BLRItem? Camo
     {
         get { return camo; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { camo = value; ItemChanged(); return; } 
             if (value is null || reciever is null || camo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.CAMOS_WEAPONS_CATEGORY) { if (value is null) { camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, MagiCowsWeapon.NoCamo); } else { camo = value; } ItemChanged(); } }
     }
 
-    private BLRItem ammo = null;
-    [WeaponPart] public BLRItem Ammo
+    private BLRItem? ammo = null;
+    [WeaponPart] public BLRItem? Ammo
     {
         get { return ammo; }
         set { 
@@ -131,8 +131,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             if (value is null || reciever is null || ammo != value && value.IsValidFor(reciever) && value.Category == ImportSystem.AMMO_CATEGORY) { if (value is null) { ApplyCorrectAmmo(); } else { ammo = value; } ItemChanged(); } }
     }
 
-    private BLRItem skin = null;
-    [WeaponPart] public BLRItem Skin 
+    private BLRItem? skin = null;
+    [WeaponPart] public BLRItem? Skin 
     {
         get { return skin; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { skin = value; ItemChanged(); return; } if (value is null || reciever is null || skin != value && value.IsValidFor(reciever) && value.Category == ImportSystem.PRIMARY_SKIN_CATEGORY) { skin = value; ItemChanged(); } }
@@ -179,7 +179,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     [JsonIgnore] public FoxIcon ScopePreview { get { return GetBitmapCrosshair(Scope?.GetSecondaryScope(this) ?? ""); } }
 
-    private Export.MagiCowsWeapon internalWeapon = null;
+    private MagiCowsWeapon? internalWeapon = null;
 
     public static FoxIcon GetBitmapCrosshair(string name)
     {
@@ -263,10 +263,10 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         switch (Reciever.UID)
         {
             case 40024:
-            Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, Magazine.Name);
+                Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, Magazine?.Name ?? string.Empty);
                 break;
             case 40015:
-                switch (Magazine.Name)
+                switch (Magazine?.Name ?? string.Empty)
                 {
                     case "Flechette Chamber Boring":
                         Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Canister");
@@ -329,11 +329,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         OnPropertyChanged(nameof(ScopePreview));
     }
 
-    public BLRWeapon(bool isPrimary, BLRLoadout loadout, ShareableWeapon weapon = null)
+    public BLRWeapon(bool isPrimary, BLRLoadout? loadout, ShareableWeapon? weapon = null)
     {
+        if (weapon is null) return;
         IsPrimary = isPrimary;
         Loadout = loadout;
-        if (weapon is null) return;
         if (isPrimary)
         {
             reciever = ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_CATEGORY, weapon.Reciever);
@@ -898,11 +898,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         if (UndoRedoSystem.BlockEvent) return;
         if (Reciever is null) return;
-        MagiCowsWeapon wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
+        MagiCowsWeapon? wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
         if (Reciever.IsValidModType(ImportSystem.MUZZELS_CATEGORY))
         {
             if (Muzzle is null || !Muzzle.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetMuzzle(), GetType().GetProperty(nameof(Muzzle)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetMuzzle(), GetType().GetProperty(nameof(Muzzle)), this); }
         }
         else
         {
@@ -912,7 +912,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Reciever.IsValidModType(ImportSystem.BARRELS_CATEGORY))
         {
             if (Barrel is null || !Barrel.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetBarrel(), GetType().GetProperty(nameof(Barrel)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetBarrel(), GetType().GetProperty(nameof(Barrel)), this); }
         }
         else
         {
@@ -922,7 +922,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Reciever.IsValidModType(ImportSystem.STOCKS_CATEGORY))
         {
             if (Stock is null || !Stock.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetStock(), GetType().GetProperty(nameof(Stock)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetStock(), GetType().GetProperty(nameof(Stock)), this); }
         }
         else
         {
@@ -932,7 +932,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Reciever.IsValidModType(ImportSystem.SCOPES_CATEGORY))
         {
             if (Scope is null || !Scope.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetScope(), GetType().GetProperty(nameof(Scope)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetScope(), GetType().GetProperty(nameof(Scope)), this); }
         }
         else
         {
@@ -942,7 +942,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Reciever.IsValidModType(ImportSystem.MAGAZINES_CATEGORY))
         {
             if (Magazine is null || !Magazine.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetMagazine(), GetType().GetProperty(nameof(Magazine)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetMagazine(), GetType().GetProperty(nameof(Magazine)), this); }
         }
         else
         { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Magazine)), this); }
@@ -950,7 +950,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Reciever.IsValidModType(ImportSystem.AMMO_CATEGORY))
         {
             if (Ammo is null || !Ammo.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetAmmo(), GetType().GetProperty(nameof(Ammo)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetAmmo(), GetType().GetProperty(nameof(Ammo)), this); }
         }
         else
         { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Ammo)), this); }
@@ -958,7 +958,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Reciever.IsValidModType(ImportSystem.GRIPS_CATEGORY))
         {
             if (Grip is null || !Grip.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetGrip(), GetType().GetProperty(nameof(Grip)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetGrip(), GetType().GetProperty(nameof(Grip)), this); }
         }
         else
         { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Grip)), this); }
@@ -966,7 +966,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Reciever.IsValidModType(ImportSystem.CAMOS_WEAPONS_CATEGORY))
         {
             if (Camo is null || !Camo.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetCamo(), GetType().GetProperty(nameof(Camo)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetCamo(), GetType().GetProperty(nameof(Camo)), this); }
         }
         else
         { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Camo)), this); }
@@ -974,7 +974,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Tag is null || Reciever.IsValidModType(ImportSystem.HANGERS_CATEGORY))
         {
             if (Tag is null || !Tag.IsValidFor(Reciever))
-            { UndoRedoSystem.DoActionAfter(wpn.GetTag(), GetType().GetProperty(nameof(Tag)), this); }
+            { UndoRedoSystem.DoActionAfter(wpn?.GetTag(), GetType().GetProperty(nameof(Tag)), this); }
         }
         else
         { UndoRedoSystem.DoActionAfter(null, GetType().GetProperty(nameof(Tag)), this); }
@@ -1164,18 +1164,18 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="Loadout">Reciever</param>
     /// <param name="WeapSpeedPercentage">all raw weapon MovementSpeed modifiers</param>
     /// <returns>calculated Movementspeed</returns>
-    public static double CalculatePawnMovementSpeed(BLRItem Reciever, BLRLoadout Loadout, double WeapSpeedPercentage)
+    public static double CalculatePawnMovementSpeed(BLRItem Reciever, BLRLoadout? Loadout, double WeapSpeedPercentage)
     {
-        if (Loadout is null) return 0;
+        if (Loadout is null || Reciever is null) return 0;
         double weap_alpha = Math.Abs(WeapSpeedPercentage) / 100;
         double weap_modifier;
         if (WeapSpeedPercentage > 0)
         {
-            weap_modifier = Lerp(Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Y ?? 0, weap_alpha);
+            weap_modifier = Lerp(Reciever.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever.WeaponStats?.ModificationRangeMoveSpeed.Y ?? 0, weap_alpha);
         }
         else
         {
-            weap_modifier = Lerp(Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMoveSpeed.X ?? 0, weap_alpha);
+            weap_modifier = Lerp(Reciever.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever.WeaponStats?.ModificationRangeMoveSpeed.X ?? 0, weap_alpha);
         }
 
         double combined = (Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667);
@@ -1619,10 +1619,10 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public void UpdateMagiCowsWeapon()
     {
-        WriteMagiCowsWeapon(internalWeapon, true);
+        WriteMagiCowsWeapon(internalWeapon);
     }
 
-    public void WriteMagiCowsWeapon(MagiCowsWeapon weapon, bool overwriteLimits = false)
+    public void WriteMagiCowsWeapon(MagiCowsWeapon weapon)
     {
         if (weapon is not null)
         {
@@ -1697,38 +1697,38 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         var FilteredHangers = ImportSystem.GetItemArrayOfType(ImportSystem.HANGERS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
 
 
-        BLRItem barrel = null;
+        BLRItem? barrel = null;
         if (FilteredBarrels.Length > 0)
         {
             barrel = FilteredBarrels[rng.Next(0, FilteredBarrels.Length)];
         }
-        BLRItem scope = null;
+        BLRItem? scope = null;
         if (FilteredScopes.Length > 0)
         {
             scope = FilteredScopes[rng.Next(0, FilteredScopes.Length)];
         }
-        BLRItem magazine = null;
+        BLRItem? magazine = null;
         if (FilteredMagazines.Length > 0)
         {
             magazine = FilteredMagazines[rng.Next(0, FilteredMagazines.Length)];
         }
 
-        BLRItem stock = null;
+        BLRItem? stock = null;
         if (FilteredStocks.Length > 0)
         {
             stock = FilteredStocks[rng.Next(0, FilteredStocks.Length)];
         }
-        BLRItem muzzle = null;
+        BLRItem? muzzle = null;
         if (FilteredMuzzles.Length > 0)
         {
             muzzle = FilteredMuzzles[rng.Next(0, FilteredMuzzles.Length)];
         }
-        BLRItem hanger = null;
+        BLRItem? hanger = null;
         if (FilteredHangers.Length > 0)
         {
             hanger = FilteredHangers[rng.Next(0, FilteredHangers.Length)];
         }
-        BLRItem camo = null;
+        BLRItem? camo = null;
         if (FilteredCamos.Length > 0)
         {
             camo = FilteredCamos[rng.Next(0, FilteredCamos.Length)];

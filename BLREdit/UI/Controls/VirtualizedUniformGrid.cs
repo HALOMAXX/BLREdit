@@ -62,7 +62,7 @@ namespace BLREdit.UI.Controls
             {
                 for (int itemIndex = firstVisibleItemIndex; itemIndex <= lastVisibleItemIndex; ++itemIndex, ++childIndex)
                 {
-                    UIElement child = generator.GenerateNext(out bool newlyRealized) as UIElement;
+                    UIElement? child = generator.GenerateNext(out bool newlyRealized) as UIElement;
 
                     childIndex = Math.Max(0, childIndex);
 

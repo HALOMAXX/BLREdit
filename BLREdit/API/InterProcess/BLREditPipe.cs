@@ -75,11 +75,11 @@ public sealed class BLREditPipe
         {
             if (root.OpenSubKey(@"shell\open\command") is RegistryKey command)
             {
-                var tokens = (command.GetValue(string.Empty, string.Empty) as string).Split('"');
+                var tokens = (command.GetValue(string.Empty, string.Empty) as string)?.Split('"');
 
                 if (IsElevated())
                 {
-                    if (tokens.Length >= 2 && tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
+                    if (tokens is not null && tokens.Length >= 2 && tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
                     {
                         LoggingSystem.Log("Updating App path");
 
@@ -126,7 +126,7 @@ public sealed class BLREditPipe
                 }
                 else
                 {
-                    if (tokens.Length >= 2 && tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
+                    if (tokens is not null && tokens.Length >= 2 && tokens[1] != $"{App.BLREditLocation}BLREdit.exe")
                     {
                         LoggingSystem.Log("Protocol Path is wrong");
                         command.Close();
@@ -195,7 +195,7 @@ public sealed class BLREditPipe
             {
                 LoggingSystem.Log($"[BLREdit API](add-server): Adding Server ({json})");
                 var server = IOResources.Deserialize<BLRServer>(json);
-                if (server != null && MainWindow.Self != null)
+                if (server != null && MainWindow.Instance != null)
                 {
                     MainWindow.AddServer(server);
                 }
@@ -211,7 +211,7 @@ public sealed class BLREditPipe
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to Server ({json})");
                 var server = IOResources.Deserialize<BLRServer>(json);
                 //MainWindow.AddServer(server);
-                if (server != null && MainWindow.Self != null)
+                if (server != null && MainWindow.Instance != null)
                 {
                     server.ConnectToServerCommand.Execute(null);
                 }
@@ -219,7 +219,7 @@ public sealed class BLREditPipe
             else
             {
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to ServerAddress ({json})");
-                foreach (var server in MainWindow.ServerList)
+                foreach (var server in MainWindow.View.ServerList)
                 {
                     if (server.ServerAddress == json)
                     { 
@@ -233,12 +233,12 @@ public sealed class BLREditPipe
             if (json.StartsWith("{"))
             {
                 LoggingSystem.Log($"[BLREdit API](start-server): Starting Server ({json})");
-                var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json);
+                var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json) ?? new();
                 BLRClient client;
                 if (serverConfig.ClientId < 0)
                 { client = BLREditSettings.Settings.DefaultClient; }
                 else
-                { client = MainWindow.GameClients[serverConfig.ClientId]; }
+                { client = MainWindow.View.GameClients[serverConfig.ClientId]; }
 
                 //TODO: Transform Required Modules of ServerConfig to Modules to send to StartProcess as Enabled Modules list
 
@@ -354,7 +354,7 @@ public sealed class BLREditPipe
 
     public static bool ForwardLaunchArgs(string[] args)
     {
-        if (IsServer) { SpawnPipes(); return false; }
+        if (IsServer || App.ForceStart) { SpawnPipes(); return false; }
         while (true)
         {
             using var client = new NamedPipeClientStream(".", PIPE_NAME, PipeDirection.Out);

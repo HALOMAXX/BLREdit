@@ -13,7 +13,8 @@ namespace BLREdit.Export;
 
 public sealed class ExportSystem
 {
-    public static DirectoryInfo CurrentBackupFolder { get; private set; }
+    private static DirectoryInfo? _currentBackupFolder = null;
+    public static DirectoryInfo CurrentBackupFolder { get { _currentBackupFolder ??= Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\"); return _currentBackupFolder; } }
     public static ObservableCollection<ExportSystemProfile> Profiles { get; private set; } = LoadAllProfiles();
 
     private static int currentProfile = 0;
@@ -54,7 +55,7 @@ public sealed class ExportSystem
         {
             currentProfile = tempProfileIndex;
         }
-        MainWindow.ActiveProfile = profile;
+        MainWindow.View.ActiveLoadoutSet = profile;
     }
 
     public static void CopyToClipBoard(BLRProfile profile)
@@ -148,7 +149,7 @@ public sealed class ExportSystem
         else
         {
             List<BLRProfileSettingsWrapper> settingsWrappers = new();
-            foreach (var client in MainWindow.GameClients)
+            foreach (var client in MainWindow.View.GameClients)
             {
                 client.UpdateProfileSettings();
             }
@@ -178,27 +179,24 @@ public sealed class ExportSystem
     {
         List<ExportSystemProfile> profiles = new();
 
-        CurrentBackupFolder = Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\");
         LoggingSystem.Log($"Backup folder:{CurrentBackupFolder.FullName}");
 
-        bool oldProfiles = false;
+        bool needToSafe = false;
 
         foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
         {
             IOResources.CopyToBackup(file);
-            ExportSystemProfile profile = null;
-
-            try { profile = IOResources.DeserializeFile<ExportSystemProfile>(file); }
-            catch 
+            ExportSystemProfile? profile = IOResources.DeserializeFile<ExportSystemProfile>(file);
+            if (profile is null)
             {
-                try
+                var oldProfile = IOResources.DeserializeFile<MagiCowsOldProfile>(file);
+                if (oldProfile is not null) 
                 {
-                    profile = IOResources.DeserializeFile<MagiCowsOldProfile>(file).ConvertToNew();
                     LoggingSystem.Log("Found an old profile converting it to new profile format");
-                    oldProfiles = true;
+                    profile = oldProfile.ConvertToNew();
+                    needToSafe = true;
+                    File.Delete(file);
                 }
-                catch { }
-                finally { File.Delete(file); }
             }
 
             if (profile?.IsHealthOkAndRepair() ?? false)
@@ -215,9 +213,8 @@ public sealed class ExportSystem
 
         profiles.Sort((x,y) => x.Index.CompareTo(y.Index));
 
-        if (oldProfiles)
+        if (needToSafe)
         {
-            //Not Good!
             Profiles = new ObservableCollection<ExportSystemProfile>(profiles);
             SaveProfiles();
         }

@@ -10,7 +10,7 @@ public sealed class DisplayStatDiscriptor
     public string Description { get; set; } = "";
     public Brush ValueColor { 
         get {
-            if ((UI.MainWindow.Self?.CurrentSortingPropertyName?.Equals(PropertyName) ?? false))
+            if ((UI.MainWindow.View.CurrentSortingPropertyName?.Equals(PropertyName) ?? false))
             {
                 return HighlightValueColor;
             }
@@ -24,7 +24,7 @@ public sealed class DisplayStatDiscriptor
     {
         get
         {
-            if ((UI.MainWindow.Self?.CurrentSortingPropertyName?.Equals(PropertyName) ?? false))
+            if ((UI.MainWindow.View.CurrentSortingPropertyName?.Equals(PropertyName) ?? false))
             {
                 return HighlightDescriptorColor;
             }
