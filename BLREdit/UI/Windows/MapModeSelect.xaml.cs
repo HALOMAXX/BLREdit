@@ -61,7 +61,7 @@ public sealed partial class MapModeSelect : Window
         });
     }
 
-    public static (BLRMode Mode, BLRMap Map, bool Canceled) SelectMapAndMode(string clientVersion)
+    public static (BLRMode? Mode, BLRMap? Map, bool Canceled) SelectMapAndMode(string clientVersion)
     {
         MapModeSelect window = new(clientVersion);
         window.ShowDialog();

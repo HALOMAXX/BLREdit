@@ -85,58 +85,58 @@ public sealed class MagiCowsWeapon
         return true;
     }
 
-    public BLRItem GetReciever()
+    public BLRItem? GetReciever()
     {
-        BLRItem primary = ImportSystem.GetItemByNameAndType(ImportSystem.PRIMARY_CATEGORY, Receiver);
-        if (primary != null)
+        var primary = ImportSystem.GetItemByNameAndType(ImportSystem.PRIMARY_CATEGORY, Receiver);
+        if (primary is not null)
             return primary;
 
-        BLRItem secondary = ImportSystem.GetItemByNameAndType(ImportSystem.SECONDARY_CATEGORY, Receiver);
-        if (secondary != null)
+        var secondary = ImportSystem.GetItemByNameAndType(ImportSystem.SECONDARY_CATEGORY, Receiver);
+        if (secondary is not null)
             return secondary;
 
         return null;
     }
 
-    public BLRItem GetCamo()
+    public BLRItem? GetCamo()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, Camo);
     }
-    public BLRItem GetTag()
+    public BLRItem? GetTag()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, Tag);
     }
-    public BLRItem GetMagazine()
+    public BLRItem? GetMagazine()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MAGAZINES_CATEGORY, Magazine);
     }
-    public BLRItem GetAmmo()
+    public BLRItem? GetAmmo()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, Ammo);
     }
-    public BLRItem GetSkin()
+    public BLRItem? GetSkin()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, Skin);
     }
 
-    public BLRItem GetMuzzle()
+    public BLRItem? GetMuzzle()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);
     }
-    public BLRItem GetStock()
+    public BLRItem? GetStock()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, Stock) ?? ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, NoStock);
     }
-    public BLRItem GetBarrel()
+    public BLRItem? GetBarrel()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, Barrel) ?? ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, NoBarrel);
     }
-    public BLRItem GetScope()
+    public BLRItem? GetScope()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, Scope) ?? ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, NoScope);
     }
 
-    public BLRItem GetGrip()
+    public BLRItem? GetGrip()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, Grip);
     }

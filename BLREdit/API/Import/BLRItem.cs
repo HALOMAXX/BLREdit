@@ -36,23 +36,23 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public int LMID { get; set; } = -69;
     public int NameID { get; set; } = -1;
-    [JsonIgnore] public string Category { get; set; }
-    public string DescriptorName { get; set; }
+    [JsonIgnore] public string? Category { get; set; }
+    public string? DescriptorName { get; set; }
     public string Icon { get; set; } = "";
-    public string Name { get; set; }
+    public string? Name { get; set; }
     public double CP { get; set; } = 0;
 
     [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(NameID.ToString()); } }
     [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 
-    public BLRPawnModifiers PawnModifiers { get; set; }
-    public List<string> SupportedMods { get; set; }
+    public BLRPawnModifiers? PawnModifiers { get; set; }
+    public List<string>? SupportedMods { get; set; }
     [JsonIgnore] public string DisplayTooltip { get { return ItemTooltips.ResourceManager.GetString(NameID.ToString()); } }
     public int UID { get; set; }
-    public List<int> ValidFor { get; set; }
-    public BLRWeaponModifiers WeaponModifiers { get; set; }
-    public BLRWeaponStats WeaponStats { get; set; }
-    public BLRWikiStats WikiStats { get; set; }
+    public List<int>? ValidFor { get; set; }
+    public BLRWeaponModifiers? WeaponModifiers { get; set; }
+    public BLRWeaponStats? WeaponStats { get; set; }
+    public BLRWikiStats? WikiStats { get; set; }
 
     private bool female = false;
 
@@ -68,9 +68,9 @@ public sealed class BLRItem : INotifyPropertyChanged
     /// </summary>
     /// <param name="item">The item to get the Loadout-Manager ID from</param>
     /// <returns>ID for Loadout-Manager</returns>
-    public static int GetLMID(BLRItem item)
+    public static int GetLMID(BLRItem? item, int defaultLMID = -1)
     {
-        return item?.GetLMID() ?? -1;
+        return item?.GetLMID() ?? defaultLMID;
     }
 
     private int GetLMID()
@@ -104,6 +104,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool IsValidForItemIDS(params int[] uids)
     {
+        if (ValidFor is null) return true;
         foreach (int valid in ValidFor)
         {
             foreach (int uid in uids)
@@ -117,7 +118,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         return false;
     }
 
-    public bool IsValidFor(BLRItem item)
+    public bool IsValidFor(BLRItem? item)
     {
         if (item is null) return false;
 
@@ -129,7 +130,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         return ValidForTest(item);
     }
 
-    public bool ValidForTest(BLRItem filter)
+    public bool ValidForTest(BLRItem? filter)
     {
         if (filter is null || ValidFor == null || ValidFor.Count <= 0) { return true; }
 
@@ -147,6 +148,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         switch (item.Category)
         {
             case ImportSystem.MAGAZINES_CATEGORY:
+                if(item.Name is null) return true;
                 if (item.Name.Contains("Standard") || (item.Name.Contains("Light") && !item.Name.Contains("Arrow")) || item.Name.Contains("Quick") || item.Name.Contains("Extended") || item.Name.Contains("Express") || item.Name.Contains("Quick") || item.Name.Contains("Electro") || item.Name.Contains("Explosive") || item.Name.Contains("Incendiary") || item.Name.Contains("Toxic") || item.Name.Contains("Magnum"))
                 {
                     return item.ValidForTest(filter);
@@ -159,6 +161,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     internal bool IsValidModType(string modType)
     {
+        if (SupportedMods is null) return false;
         foreach (string supportedModType in SupportedMods)
         {
             if (modType == supportedModType)
@@ -183,22 +186,22 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public string GetSecondaryScope(BLRWeapon weapon)
     {
-        var name = weapon?.Reciever?.Name ?? "";
-        switch (Name ?? "")
+        var recieverName = weapon?.Reciever?.Name ?? "";
+        switch (Name)
         {
             case "No Optic Mod":
 
-                if (name.Contains("Prestige"))
+                if (recieverName.Contains("Prestige"))
                 {
                     return Name + " Light Pistol";
                 }
-                else if (name.Contains("Rocket"))
+                else if (recieverName.Contains("Rocket"))
                 {
                     return "AV Rocket Launcher Scope"; //Not in use anymore as Rocketlaunchers are not selectable anymore
                 }
                 else
                 {
-                    return Name + " " + name;
+                    return Name + " " + recieverName;
                 }
 
             //Pistols Only
@@ -209,17 +212,17 @@ public sealed class BLRItem : INotifyPropertyChanged
             case "EMI Electric Scope":
             case "ArmCom CQC Scope":
             case "Aim Point Ammo Counter":
-                return Name + GetSecondayScopePistol(name);
+                return Name + GetSecondayScopePistol(recieverName);
 
             //Pistols and shotguns
             case "Titan Rail Sight":
             case "MMRS Flip-Up Rail Sight":
             case "Lightsky Red Dot Sight":
             case "Krane Holo Sight":
-                return Name + GetSecondayScopePistol(name) + GetSecondayScopeShotgun(name);
+                return Name + GetSecondayScopePistol(recieverName) + GetSecondayScopeShotgun(recieverName);
 
             default:
-                return Name;
+                return Name ?? string.Empty;
         }
     }
 
@@ -246,7 +249,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         ScopePreview = null;
     }
 
-    public static int GetMagicCowsID(BLRItem item, int defaultID = 0)
+    public static int GetMagicCowsID(BLRItem? item, int defaultID = 0)
     {
         if(item is null) return defaultID;
         return ImportSystem.GetIDOfItem(item);
@@ -268,17 +271,17 @@ public sealed class BLRItem : INotifyPropertyChanged
     }
 
     [JsonIgnore]
-    public DisplayStatDiscriptor DisplayStat1 { get; set; }
+    public DisplayStatDiscriptor? DisplayStat1 { get; set; }
     [JsonIgnore]
-    public DisplayStatDiscriptor DisplayStat2 { get; set; }
+    public DisplayStatDiscriptor? DisplayStat2 { get; set; }
     [JsonIgnore]
-    public DisplayStatDiscriptor DisplayStat3 { get; set; }
+    public DisplayStatDiscriptor? DisplayStat3 { get; set; }
     [JsonIgnore]
-    public DisplayStatDiscriptor DisplayStat4 { get; set; }
+    public DisplayStatDiscriptor? DisplayStat4 { get; set; }
     [JsonIgnore]
-    public DisplayStatDiscriptor DisplayStat5 { get; set; }
+    public DisplayStatDiscriptor? DisplayStat5 { get; set; }
     [JsonIgnore]
-    public DisplayStatDiscriptor DisplayStat6 { get; set; }
+    public DisplayStatDiscriptor? DisplayStat6 { get; set; }
 
     [JsonIgnore]
     public double None
@@ -296,7 +299,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WeaponStats.Accuracy,
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WeaponStats?.Accuracy ?? 0,
                 _ => WeaponModifiers?.Accuracy ?? 0,
             };
         }
@@ -321,7 +324,7 @@ public sealed class BLRItem : INotifyPropertyChanged
             return Category switch
             {
                 ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => WikiStats?.AmmoMag ?? 0,
-                ImportSystem.MAGAZINES_CATEGORY => WeaponModifiers.Ammo,
+                ImportSystem.MAGAZINES_CATEGORY => WeaponModifiers?.Ammo ?? 0,
                 _ => 0,
             };
         }

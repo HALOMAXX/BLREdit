@@ -15,7 +15,7 @@ public sealed class FileInfoExtension
         Info = new(file);
     }
 
-    private string name;
+    private string? name;
     public string Name
     {
         get

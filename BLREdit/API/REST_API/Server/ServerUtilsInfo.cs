@@ -29,9 +29,9 @@ public sealed class ServerUtilsInfo : ServerInfo
 
     
 
-    private BLRMap map;
+    private BLRMap? map;
     [JsonIgnore]
-    public BLRMap BLRMap
+    public BLRMap? BLRMap
     {
         get
         {
@@ -40,9 +40,9 @@ public sealed class ServerUtilsInfo : ServerInfo
         }
     }
 
-    private BLRMode mode;
+    private BLRMode? mode;
     [JsonIgnore]
-    public BLRMode BLRMode
+    public BLRMode? BLRMode
     {
         get 
         {
@@ -51,35 +51,35 @@ public sealed class ServerUtilsInfo : ServerInfo
         }
     }
 
-    private StringCollection list;
+    private StringCollection? list;
     [JsonIgnore]
     public StringCollection List
     {
         get
         {
-            if (list is null) { list = new() { $"{PlayerCount}/{MaxPlayers} Players" }; foreach (var team in TeamList) { foreach (var player in team.PlayerList) { list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } } }
+            if (list is null) { list = new() { $"{PlayerCount}/{MaxPlayers} Players" }; foreach (var team in TeamsList) { foreach (var player in team.PlayerList) { list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } } }
             return list;
         }
     }
 
-    private StringCollection team1list;
+    private StringCollection? team1list;
     [JsonIgnore]
-    public StringCollection Team1List
+    public StringCollection? Team1List
     {
         get
         {
-            if (team1list is null && TeamList.Count > 0) { team1list = new() { $"{TeamList[0].PlayerCount}/{MaxPlayers/2} Team 1" };  foreach (var player in TeamList[0].PlayerList) { team1list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
+            if (team1list is null && TeamsList.Count > 0) { team1list = new() { $"{TeamsList[0].PlayerCount}/{MaxPlayers/2} Team 1" };  foreach (var player in TeamsList[0].PlayerList) { team1list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
             return team1list;
         }
     }
 
-    private StringCollection team2list;
+    private StringCollection? team2list;
     [JsonIgnore]
-    public StringCollection Team2List
+    public StringCollection? Team2List
     {
         get
         {
-            if (team2list is null && TeamList.Count > 1) { team2list = new() { $"{TeamList[1].PlayerCount}/{MaxPlayers/2} Team 2" }; foreach (var player in TeamList[1].PlayerList) { team2list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
+            if (team2list is null && TeamsList.Count > 1) { team2list = new() { $"{TeamsList[1].PlayerCount}/{MaxPlayers/2} Team 2" }; foreach (var player in TeamsList[1].PlayerList) { team2list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
             return team2list;
         }
     }

@@ -26,22 +26,22 @@ public sealed class ProxyModule
 
     public ProxyModule() { }
     public ProxyModule(string customInstallName) { Client = true; Server = true; FileAppearances = 1; installName = customInstallName; }
-    public ProxyModule(GitHubRelease release, string moduleName, string owner, string repo, bool client, bool server)
+    public ProxyModule(GitHubRelease? release, string moduleName, string owner, string repo, bool client, bool server)
     {
         RepoName = $"{owner}/{repo}".Replace('/', '-');
-        AuthorName = release.Author.URL;
+        AuthorName = release?.Author?.URL ?? string.Empty;
         ModuleName = moduleName;
-        Published = release.PublishedAt;
+        Published = release?.PublishedAt ?? DateTime.MinValue;
         Client = client;
         Server = server;
     }
 
-    public ProxyModule(GitlabRelease release, string moduleName, string owner, string repo, bool client, bool server)
+    public ProxyModule(GitlabRelease? release, string moduleName, string owner, string repo, bool client, bool server)
     {
         RepoName = $"{owner}/{repo}".Replace('/', '-');
-        AuthorName = release.Author.WebURL;
+        AuthorName = release?.Author?.WebURL ?? string.Empty;
         ModuleName = moduleName;
-        Published = release.ReleasedAt;
+        Published = release?.ReleasedAt ?? DateTime.MinValue;
         Client = client;
         Server = server;
     }

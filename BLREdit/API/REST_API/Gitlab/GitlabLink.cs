@@ -7,11 +7,11 @@ public sealed class GitlabLink
     [JsonPropertyName("id")]
     public int ID { get; set; }
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
     [JsonPropertyName("url")]
-    public string URL { get; set; }
+    public string? URL { get; set; }
     [JsonPropertyName("external")]
     public bool External { get; set; }
     [JsonPropertyName("link_type")]
-    public string LinkType { get; set; }
+    public string? LinkType { get; set; }
 }

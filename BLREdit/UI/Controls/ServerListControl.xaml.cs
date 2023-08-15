@@ -1,4 +1,5 @@
-﻿using BLREdit.Game;
+﻿using BLREdit.API.Utils;
+using BLREdit.Game;
 
 using System;
 using System.Collections.Generic;
@@ -91,5 +92,13 @@ public partial class ServerListControl : UserControl
                 }
                 );
         }
+    }
+
+    private void QuickMatch_Click(object sender, RoutedEventArgs e)
+    {
+        MainWindow.RefreshPing();
+        BLRServer.ServersFinishedPinging.WaitOne();
+
+        var regionSortedServers = MainWindow.View.ServerList.OrderByDescending(x => x.Region, RegionComparer.Instance).ThenByDescending(x => x.PlayerCount);
     }
 }

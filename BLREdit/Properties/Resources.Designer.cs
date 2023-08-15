@@ -160,6 +160,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quick Match.
+        /// </summary>
+        public static string btn_QuickMatch {
+            get {
+                return ResourceManager.GetString("btn_QuickMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Randomize.
         /// </summary>
         public static string btn_RandomizeLoadout {
@@ -916,6 +925,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Region:.
+        /// </summary>
+        public static string lbl_Region {
+            get {
+                return ResourceManager.GetString("lbl_Region", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reload:.
         /// </summary>
         public static string lbl_ReloadEmpty {
@@ -1348,6 +1366,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Hidden Servers.
+        /// </summary>
+        public static string tbtn_ShowHiddenServers {
+            get {
+                return ResourceManager.GetString("tbtn_ShowHiddenServers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UpdateNotice.
         /// </summary>
         public static string tbtn_ShowUpdateNotice {
@@ -1445,6 +1472,15 @@ namespace BLREdit.Properties {
         public static string tbtn_TT_ServerWatchDog {
             get {
                 return ResourceManager.GetString("tbtn_TT_ServerWatchDog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Hidden Servers even when they are offline.
+        /// </summary>
+        public static string tbtn_TT_ShowHiddenServers {
+            get {
+                return ResourceManager.GetString("tbtn_TT_ShowHiddenServers", resourceCulture);
             }
         }
         
@@ -1571,6 +1607,15 @@ namespace BLREdit.Properties {
         public static string ti_Weapons {
             get {
                 return ResourceManager.GetString("ti_Weapons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Region examples (EU-West, US-West, AU, OCE).
+        /// </summary>
+        public static string txt_TT_Region {
+            get {
+                return ResourceManager.GetString("txt_TT_Region", resourceCulture);
             }
         }
         

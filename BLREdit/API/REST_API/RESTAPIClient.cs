@@ -20,7 +20,7 @@ public sealed class RESTAPIClient
         API_Provider = prov;
     }
 
-    private async Task<HttpResponseMessage> GetAsync(string api)
+    private async Task<HttpResponseMessage?> GetAsync(string api)
     {
         try
         {
@@ -37,13 +37,13 @@ public sealed class RESTAPIClient
         }
     }
 
-    public async Task<T> GetLatestRelease<T>(string owner, string repository)
+    public async Task<T?> GetLatestRelease<T>(string owner, string repository)
     {
         var releases = await GetReleases<T>(owner, repository, 1, 1);
         if (releases is null || releases.Length <= 0) return default;
         return releases[0];
     }
-    public async Task<T[]> GetReleases<T>(string owner, string repository, int per_page = 10, int page = 1)
+    public async Task<T[]?> GetReleases<T>(string owner, string repository, int per_page = 10, int page = 1)
     {
         string api;
         if (API_Provider == RepositoryProvider.GitHub)
@@ -62,13 +62,13 @@ public sealed class RESTAPIClient
         {
             var content = await response.Content.ReadAsStringAsync();
             var releases = IOResources.Deserialize<T[]>(content);
-            RequestCache.Add(api, releases);
+            if(releases is not null) RequestCache.Add(api, releases);
             return releases;
         }
         return default;
     }
 
-    public async Task<T> GetFile<T>(string owner, string repository, string branch, string file)
+    public async Task<T?> GetFile<T>(string owner, string repository, string branch, string file)
     {
         string api;
         if (API_Provider == RepositoryProvider.GitHub)
@@ -88,7 +88,7 @@ public sealed class RESTAPIClient
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var fileData = IOResources.Deserialize<T>(content);
-                RequestCache.Add(api, fileData);
+                if(fileData is not null) RequestCache.Add(api, fileData);
                 return fileData;
             }
         }

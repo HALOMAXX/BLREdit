@@ -1,22 +1,14 @@
 using BLREdit.API.REST_API.MagiCow;
 using BLREdit.API.REST_API.Server;
-using BLREdit.Export;
 using BLREdit.UI;
 using BLREdit.UI.Windows;
 
 using System;
 using System.Collections.Concurrent;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Runtime;
 using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,7 +28,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     #endregion Events
 
     #region Overrides
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj is BLRServer server)
         { return 
@@ -60,12 +52,13 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public UIBool IsPinging { get; } = new(false);
     [JsonIgnore] public MagiCowServerInfo MagiInfo { get; private set; } = new();
     [JsonIgnore] public ServerUtilsInfo ServerInfo { get; private set; } = new();
-    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.TeamList.Count >= 2); } else if (MagiInfo?.IsOnline ?? false) { return new(MagiInfo?.TeamList?.Count >= 2); } else { return new(false); } } }
+    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.TeamsList.Count >= 2); } else if (MagiInfo?.IsOnline ?? false) { return new(MagiInfo?.TeamsList?.Count >= 2); } else { return new(false); } } }
     [JsonIgnore] public string ServerDescription { get { return GetServerDescription(); } }
-    [JsonIgnore] public BitmapImage MapImage { get { if (ServerInfo?.IsOnline ?? false) { return new(new Uri(ServerInfo?.BLRMap?.SquareImage)); } else if (MagiInfo?.IsOnline ?? false) { return new(new Uri(MagiInfo.BLRMap.SquareImage)); } else { return new(new Uri($"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png")); } } }
+    [JsonIgnore] public BitmapImage MapImage { get { if (ServerInfo?.IsOnline ?? false) { return new(new Uri(ServerInfo?.BLRMap?.SquareImage)); } else if (MagiInfo?.IsOnline ?? false) { return new(new Uri(MagiInfo?.BLRMap?.SquareImage)); } else { return new(new Uri($"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png")); } } }
     [JsonIgnore] public StringCollection PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
-    [JsonIgnore] public StringCollection Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.Team1List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team1List; } else { return new() { $"?/? Players" }; } } }
-    [JsonIgnore] public StringCollection Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.Team2List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team2List; } else { return new() { $"?/? Players" }; } } }
+    [JsonIgnore] public StringCollection Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team1List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team1List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
+    [JsonIgnore] public StringCollection Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team2List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team2List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
+    [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.PlayerCount; } else { return 0; } } }
 
     public string ServerAddress { get; set; } = "localhost";
     [JsonIgnore] private ushort port = 7777;
@@ -74,7 +67,10 @@ public sealed class BLRServer : INotifyPropertyChanged
     public ushort InfoPort { get { return infoPort; } set { infoPort = value; OnPropertyChanged(); } }
     [JsonIgnore] private bool hidden = false;
     public bool Hidden { get { return hidden; } set { hidden = value; OnPropertyChanged(); } }
+    [JsonIgnore] private string region = "EU-North";
+    public string Region { get { return region; } set { region = value; OnPropertyChanged(); } }
     private static BlockingCollection<BLRServer> ServersToPing { get; } = new();
+    public static ManualResetEvent ServersFinishedPinging { get; } = new(false);
 
     static BLRServer()
     {
@@ -91,7 +87,9 @@ public sealed class BLRServer : INotifyPropertyChanged
     {
         while (App.IsRunning)
         {
+            if(ServersToPing.Count <= 0) ServersFinishedPinging.Set();
             var server = ServersToPing.Take();
+            ServersFinishedPinging.Reset();
             if (server is null || string.IsNullOrEmpty(server.ServerAddress) || string.IsNullOrEmpty(server.IPAddress)) continue;
             if (BLREditSettings.Settings.PingHiddenServers.IsNot) { if (server.Hidden) { LoggingSystem.Log($"Skipping Hidden Server:{server}"); continue; } }
             server.IsPinging.Set(true);
@@ -101,7 +99,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     }
 
     [JsonIgnore]
-    public string IPAddress
+    public string? IPAddress
     {
         get
         {
@@ -140,11 +138,11 @@ public sealed class BLRServer : INotifyPropertyChanged
         string desc;
         if (ServerInfo?.IsOnline ?? false)
         {
-            desc = $"{ServerInfo.ServerName}\n{ServerInfo.GetTimeDisplay()}\nMVP: {ServerInfo.GetScoreDisplay()}\n{ServerInfo.GameModeFullName}/{ServerInfo.Playlist}\n{ServerInfo.BLRMap.DisplayName}";
+            desc = $"{ServerInfo.ServerName}\n{ServerInfo.GetTimeDisplay()}\nMVP: {ServerInfo.GetScoreDisplay()}\n{ServerInfo.GameModeFullName}/{ServerInfo.Playlist}\n{ServerInfo?.BLRMap?.DisplayName ?? string.Empty}";
         }
         else if (MagiInfo?.IsOnline ?? false)
         {
-            desc = $"{MagiInfo.ServerName}\n{MagiInfo.GetTimeDisplay()}\nMVP: {MagiInfo.GetScoreDisplay()}\n{MagiInfo.GameModeFullName}/{MagiInfo.Playlist}\n{MagiInfo.BLRMap.DisplayName}";
+            desc = $"{MagiInfo.ServerName}\n{MagiInfo.GetTimeDisplay()}\nMVP: {MagiInfo.GetScoreDisplay()}\n{MagiInfo.GameModeFullName}/{MagiInfo.Playlist}\n{MagiInfo?.BLRMap?.DisplayName ?? string.Empty}";
         }
         else
         {
@@ -162,7 +160,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         OnPropertyChanged(nameof(PlayerList));
         OnPropertyChanged(nameof(Team1List));
         OnPropertyChanged(nameof(Team2List));
-        MainWindow.Instance.Dispatcher.Invoke(MainWindow.Instance.RefreshServerList);
+        MainWindow.Instance?.Dispatcher.Invoke(MainWindow.Instance.RefreshServerList);
     }
 
     public void PingServer()
@@ -193,7 +191,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         RefreshInfo();
     }
 
-    private ICommand editServerCommand;
+    private ICommand? editServerCommand;
     [JsonIgnore]
     public ICommand EditServerCommand
     {
@@ -206,7 +204,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         }
     }
 
-    private ICommand refreshPingCommand;
+    private ICommand? refreshPingCommand;
     [JsonIgnore]
     public ICommand RefreshPingCommand
     {
@@ -219,7 +217,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         }
     }
 
-    private ICommand connectToServerCommand;
+    private ICommand? connectToServerCommand;
     [JsonIgnore]
     public ICommand ConnectToServerCommand
     {
@@ -232,7 +230,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         }
     }
 
-    private ICommand removeServer;
+    private ICommand? removeServer;
     [JsonIgnore]
     public ICommand RemoveServerCommand
     {

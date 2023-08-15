@@ -1,21 +1,32 @@
 [
   {
-    "ServerAddress": "mooserver.ddns.net"
+    "ServerAddress": "localhost",
+    "Hidden": true
+  },
+  {
+    "ServerAddress": "mooserver.ddns.net",
+    "Region": "EU-North"
   },
   {
     "ServerAddress": "mooserver.ddns.net",
     "Port": 7779,
-    "InfoPort": 7780
+    "InfoPort": 7780,
+    "Region": "EU-North"
   },
   {
     "ServerAddress": "blrevive.northamp.fr",
-    "InfoPort": 80
+    "InfoPort": 80,
+    "Region": "EU-West"
   },
   {
-    "ServerAddress": "kameron.cloud"
+    "ServerAddress": "blrevive-staging.northamp.fr",
+    "InfoPort": 80,
+    "Hidden": true,
+    "Region": "EU-West"
   },
   {
-    "ServerAddress": "localhost"
+    "ServerAddress": "kameron.cloud",
+    "Region": "US-West"
   },
   {
     "ServerAddress": "violence.ddns.net",

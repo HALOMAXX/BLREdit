@@ -6,21 +6,21 @@ namespace BLREdit.API.REST_API.GitHub;
 public sealed class GitHubAsset
 {
     [JsonPropertyName("url")]
-    public string URL { get; set; }
+    public string? URL { get; set; }
     [JsonPropertyName("id")]
     public int ID { get; set; }
     [JsonPropertyName("node_id")]
-    public string NodeId { get; set; }
+    public string? NodeId { get; set; }
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
     [JsonPropertyName("label")]
-    public object Label { get; set; }
+    public object? Label { get; set; }
     [JsonPropertyName("uploader")]
-    public GitHubUser Uploader { get; set; }
+    public GitHubUser? Uploader { get; set; }
     [JsonPropertyName("content_type")]
-    public string ContentType { get; set; }
+    public string? ContentType { get; set; }
     [JsonPropertyName("state")]
-    public string State { get; set; }
+    public string? State { get; set; }
     [JsonPropertyName("size")]
     public int Size { get; set; }
     [JsonPropertyName("download_count")]
@@ -30,6 +30,6 @@ public sealed class GitHubAsset
     [JsonPropertyName("updated_at")]
     public DateTime UpdatedAt { get; set; }
     [JsonPropertyName("browser_download_url")]
-    public string BrowserDownloadURL { get; set; }
+    public string? BrowserDownloadURL { get; set; }
 }
 

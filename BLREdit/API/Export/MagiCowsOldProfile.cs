@@ -14,9 +14,9 @@ public sealed class MagiCowsOldProfile
     public MagiCowsLoadout Loadout1 { get; set; } = MagiCowsLoadout.DefaultLoadout1;
     public MagiCowsLoadout Loadout2 { get; set; } = MagiCowsLoadout.DefaultLoadout2;
     public MagiCowsLoadout Loadout3 { get; set; } = MagiCowsLoadout.DefaultLoadout3;
-    public string Helmet { get; set; }
-    public string UpperBody { get; set; }
-    public string LowerBody { get; set; }
+    public string? Helmet { get; set; }
+    public string? UpperBody { get; set; }
+    public string? LowerBody { get; set; }
     public int Camo { get; set; }
 
     public ExportSystemProfile ConvertToNew()

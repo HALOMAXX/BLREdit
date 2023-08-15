@@ -92,35 +92,35 @@ public sealed class MagiCowsLoadout
     public static MagiCowsLoadout DefaultLoadout2 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.SubmachineGun.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
     public static MagiCowsLoadout DefaultLoadout3 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.BoltActionRifle.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
 
-    public static BLRItem GetGear(int GearID)
+    public static BLRItem? GetGear(int GearID)
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, GearID);
     }
-    public BLRItem GetTactical()
+    public BLRItem? GetTactical()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, Tactical);
     }
-    public BLRItem GetHelmet()
+    public BLRItem? GetHelmet()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
     }
-    public BLRItem GetUpperBody()
+    public BLRItem? GetUpperBody()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
     }
-    public BLRItem GetLowerBody()
+    public BLRItem? GetLowerBody()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody);
     }
-    public BLRItem GetCamo()
+    public BLRItem? GetCamo()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Camo);
     }
-    public BLRItem GetSkin()
+    public BLRItem? GetSkin()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, Skin);
     }
-    public BLRItem GetTrophy()
+    public BLRItem? GetTrophy()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Trophy);
     }

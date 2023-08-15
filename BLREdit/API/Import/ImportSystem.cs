@@ -44,7 +44,7 @@ public static class ImportSystem
 
     public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
 
-    public static Dictionary<string, ObservableCollection<BLRItem>> ItemLists { get; private set; } = new();
+    public static Dictionary<string?, ObservableCollection<BLRItem>> ItemLists { get; private set; } = new();
 
     static bool IsInitialized = false;
     public static void Initialize()
@@ -68,7 +68,7 @@ public static class ImportSystem
 
     private static void LoadItems()
     {
-        ItemLists = IOResources.DeserializeFile<Dictionary<string, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
+        ItemLists = IOResources.DeserializeFile<Dictionary<string?, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
     }
 
     public static void ApplyDisplayStats()
@@ -384,7 +384,7 @@ public static class ImportSystem
 
     static readonly Brush defaultRed = new SolidColorBrush(Color.FromArgb(255, 200, 60, 50));
     static readonly Brush highlightRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-    private static DisplayStatDiscriptor FormatDisplayStat(string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
+    private static DisplayStatDiscriptor? FormatDisplayStat(string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
     {
         if (string.IsNullOrEmpty(description)) return null;
         
@@ -485,7 +485,7 @@ public static class ImportSystem
         });
     }
 
-    public static ObservableCollection<BLRItem> GetItemListOfType(string Type)
+    public static ObservableCollection<BLRItem>? GetItemListOfType(string Type)
     {
         if (string.IsNullOrEmpty(Type)) return null;
         if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
@@ -498,7 +498,7 @@ public static class ImportSystem
         }
     }
 
-    public static BLRItem[] GetItemArrayOfType(string Type)
+    public static BLRItem[]? GetItemArrayOfType(string Type)
     {
         if (string.IsNullOrEmpty(Type)) return null;
         if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
@@ -513,9 +513,9 @@ public static class ImportSystem
         }
     }
 
-    public static int GetIDOfItem(BLRItem item)
+    public static int GetIDOfItem(BLRItem? item)
     {
-        if (item == null) return -1;
+        if (item is null) return -1;
         if (ItemLists.TryGetValue(item.Category, out ObservableCollection<BLRItem> items))
         {
             return items.IndexOf(item);
@@ -526,7 +526,7 @@ public static class ImportSystem
         }
     }
 
-    public static BLRItem GetItemByIDAndType(string Type, int ID)
+    public static BLRItem? GetItemByIDAndType(string Type, int ID)
     {
         if (ID < 0 || string.IsNullOrEmpty(Type)) return null;
         if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
@@ -547,9 +547,9 @@ public static class ImportSystem
         }
     }
 
-    public static int GetIDByNameAndType(string Type, string Name)
+    public static int GetIDByNameAndType(string? Type, string? Name)
     {
-        if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;
+        if (Type is null || Name is null || string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;
         if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             foreach (BLRItem item in items)
@@ -567,9 +567,9 @@ public static class ImportSystem
         }
     }
 
-    public static BLRItem GetItemByNameAndType(string Type, string Name)
+    public static BLRItem? GetItemByNameAndType(string? Type, string? Name)
     {
-        if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return null;
+        if (Type is null || Name is null || string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return null;
         if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
         {
             foreach (BLRItem item in items)

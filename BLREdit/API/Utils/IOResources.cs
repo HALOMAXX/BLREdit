@@ -10,23 +10,18 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace BLREdit;
 
@@ -228,9 +223,9 @@ public sealed class IOResources
         dlWindow.ShowDialog();
     }
 
-    public static string CreateFileHash(string path)
+    public static string? CreateFileHash(string? path)
     {
-        if (!File.Exists(path)) { LoggingSystem.Log($"[BLRClient]: Hashing failed reason: Can't find {path}"); return null; }
+        if (string.IsNullOrEmpty(path) || !File.Exists(path)) { LoggingSystem.Log($"[BLRClient]: Hashing failed reason: Can't find {path}"); return null; }
         using var stream = File.OpenRead(path);
         using var crypto = SHA256.Create();
         return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();

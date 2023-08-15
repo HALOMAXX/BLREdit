@@ -72,7 +72,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         get { return magazine; }
         set { if (BLREditSettings.Settings.AdvancedModding.Is) { magazine = value; ItemChanged(); return; } 
-            if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever).GetMagazine(); } else { magazine = value; } ApplyCorrectAmmo(); ItemChanged(); } }
+            if (value is null || reciever is null || magazine != value && value.IsValidFor(reciever) && value.Category == ImportSystem.MAGAZINES_CATEGORY) { if (value is null && Reciever is not null) { magazine = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever)?.GetMagazine(); } else { magazine = value; } ApplyCorrectAmmo(); ItemChanged(); } }
     }
 
     private BLRItem? muzzle = null;
@@ -157,7 +157,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         return wpn;
     }
 
-    public void ApplyCopy(BLRWeapon weapon)
+    public void ApplyCopy(BLRWeapon? weapon)
     {
         if (weapon is not null && this.IsPrimary == weapon.IsPrimary)
         {
@@ -744,11 +744,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     #region CalculatedProperties
     public double ModifiedReloadSpeed { get { return RawReloadSpeed * ReloadMultiplier; } }
-    private double reloadMultiplier;
-    public double ReloadMultiplier { get { return reloadMultiplier; } private set { reloadMultiplier = value; OnPropertyChanged(); } }
-    private double cockRateMultiplier;
-    public double CockRateMultiplier { get { return cockRateMultiplier; } private set { cockRateMultiplier = value; OnPropertyChanged(); } }
-    public double RawSwapRate
+    private double? reloadMultiplier;
+    public double ReloadMultiplier { get { return reloadMultiplier ?? 1; } private set { reloadMultiplier = value; OnPropertyChanged(); } }
+    private double? cockRateMultiplier;
+    public double CockRateMultiplier { get { return cockRateMultiplier ?? 1; } private set { cockRateMultiplier = value; OnPropertyChanged(); } }
+    public double? RawSwapRate
     { get { return Reciever?.WikiStats?.Swaprate ?? 0; } }
     public double ShortReload
     {
@@ -763,133 +763,133 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
 
     #region Damage
-    private double damageClose;
-    public double DamageClose { get { return damageClose; } private set { damageClose = value; OnPropertyChanged(); } }
-    private double damageFar;
-    public double DamageFar { get { return damageFar; } private set { damageFar = value; OnPropertyChanged(); } }
+    private double? damageClose;
+    public double DamageClose { get { return damageClose ?? 0; } private set { damageClose = value; OnPropertyChanged(); } }
+    private double? damageFar;
+    public double DamageFar { get { return damageFar ?? 0; } private set { damageFar = value; OnPropertyChanged(); } }
     #endregion Damage
 
     #region Range
-    private double rangeClose;
-    public double RangeClose { get { return rangeClose; } private set { rangeClose = value; OnPropertyChanged(); } }
-    private double rangeFar;
-    public double RangeFar { get { return rangeFar; } private set { rangeFar = value; OnPropertyChanged(); } }
-    private double rangeTracer;
-    public double RangeTracer { get { return rangeTracer; } private set { rangeTracer = value; OnPropertyChanged(); } }
+    private double? rangeClose;
+    public double RangeClose { get { return rangeClose ?? 0; } private set { rangeClose = value; OnPropertyChanged(); } }
+    private double? rangeFar;
+    public double RangeFar { get { return rangeFar ?? 0; } private set { rangeFar = value; OnPropertyChanged(); } }
+    private double? rangeTracer;
+    public double RangeTracer { get { return rangeTracer ?? 0; } private set { rangeTracer = value; OnPropertyChanged(); } }
     #endregion Range
 
     #region Recoil
-    private double recoilHip;
-    public double RecoilHip { get { return recoilHip; } private set { recoilHip = value; OnPropertyChanged(); } }
-    private double recoilZoom;
-    public double RecoilZoom { get { return recoilZoom; } private set { recoilZoom = value; OnPropertyChanged(); } }
+    private double? recoilHip;
+    public double RecoilHip { get { return recoilHip ?? 0; } private set { recoilHip = value; OnPropertyChanged(); } }
+    private double? recoilZoom;
+    public double RecoilZoom { get { return recoilZoom ?? 0; } private set { recoilZoom = value; OnPropertyChanged(); } }
     #endregion Recoil
 
     #region Spread
-    private double spreadWhileMoving;
-    public double SpreadWhileMoving { get { return spreadWhileMoving; } private set { spreadWhileMoving = value; OnPropertyChanged(); } }
-    private double spreadWhileStanding;
-    public double SpreadWhileStanding { get { return spreadWhileStanding; } private set { spreadWhileStanding = value; OnPropertyChanged(); } }
-    private double spreadWhileADS;
-    public double SpreadWhileADS { get { return spreadWhileADS; } private set { spreadWhileADS = value; } }
+    private double? spreadWhileMoving;
+    public double SpreadWhileMoving { get { return spreadWhileMoving ?? 0; } private set { spreadWhileMoving = value; OnPropertyChanged(); } }
+    private double? spreadWhileStanding;
+    public double SpreadWhileStanding { get { return spreadWhileStanding ?? 0; } private set { spreadWhileStanding = value; OnPropertyChanged(); } }
+    private double? spreadWhileADS;
+    public double SpreadWhileADS { get { return spreadWhileADS ?? 0; } private set { spreadWhileADS = value; } }
     #endregion Spread
 
-    private double modifiedScopeInTime;
-    public double ModifiedScopeInTime { get { return modifiedScopeInTime; } private set { modifiedScopeInTime = value; OnPropertyChanged(); } }
-    private double modifiedRunSpeed;
-    public double ModifiedRunSpeed { get { return modifiedRunSpeed; } private set { modifiedRunSpeed = value; OnPropertyChanged(); } }
-    private double modifiedPawnRunSpeed;
-    public double ModifiedPawnRunSpeed { get { return modifiedPawnRunSpeed; } private set { modifiedPawnRunSpeed = value; OnPropertyChanged(); } }
+    private double? modifiedScopeInTime;
+    public double ModifiedScopeInTime { get { return modifiedScopeInTime ?? 0; } private set { modifiedScopeInTime = value; OnPropertyChanged(); } }
+    private double? modifiedRunSpeed;
+    public double ModifiedRunSpeed { get { return modifiedRunSpeed ?? 0; } private set { modifiedRunSpeed = value; OnPropertyChanged(); } }
+    private double? modifiedPawnRunSpeed;
+    public double ModifiedPawnRunSpeed { get { return modifiedPawnRunSpeed ?? 0; } private set { modifiedPawnRunSpeed = value; OnPropertyChanged(); } }
 
     #region Weapon Descriptor
-    private string weaponDesc1;
-    public string WeaponDescriptorPart1 { get { return weaponDesc1; } private set { weaponDesc1 = value; OnPropertyChanged(); } }
-    private string weaponDesc2;
-    public string WeaponDescriptorPart2 { get { return weaponDesc2; } private set { weaponDesc2 = value; OnPropertyChanged(); } }
-    private string weaponDesc3;
+    private string? weaponDesc1;
+    public string WeaponDescriptorPart1 { get { return weaponDesc1 ?? string.Empty; } private set { weaponDesc1 = value; OnPropertyChanged(); } }
+    private string? weaponDesc2;
+    public string WeaponDescriptorPart2 { get { return weaponDesc2 ?? string.Empty; } private set { weaponDesc2 = value; OnPropertyChanged(); } }
+    private string? weaponDesc3;
 
-    public string WeaponDescriptorPart3 { get { return weaponDesc3; } private set { weaponDesc3 = value; OnPropertyChanged(); } }
+    public string WeaponDescriptorPart3 { get { return weaponDesc3 ?? string.Empty; } private set { weaponDesc3 = value; OnPropertyChanged(); } }
 
-    public string weaponDescriptor;
-    public string WeaponDescriptor { get { return weaponDescriptor; } private set { weaponDescriptor = value; OnPropertyChanged(); } }
+    public string? weaponDescriptor;
+    public string WeaponDescriptor { get { return weaponDescriptor ?? string.Empty; } private set { weaponDescriptor = value; OnPropertyChanged(); } }
     #endregion Weapon Descriptor
 
     #endregion CalculatedProperties
 
     #region DisplayStats
-    private string damageDisplay;
-    public string DamageDisplay { get { return damageDisplay; } private set { damageDisplay = value; OnPropertyChanged(); } }
-    private string rateOfFireDsiplay;
-    public string RateOfFireDisplay { get { return rateOfFireDsiplay; } private set { rateOfFireDsiplay = value; OnPropertyChanged(); } }
-    private string ammoDisplay;
-    public string AmmoDisplay { get { return ammoDisplay; } private set { ammoDisplay = value; OnPropertyChanged(); } }
-    private string reloadTimeDisplay;
-    public string ReloadTimeDisplay { get { return reloadTimeDisplay; } private set { reloadTimeDisplay = value; OnPropertyChanged(); } }
-    private string swapDsiplay;
-    public string SwapDisplay { get { return swapDsiplay; } private set { swapDsiplay = value; OnPropertyChanged(); } }
-    private string aimSpreadDisplay;
-    public string AimSpreadDisplay { get { return aimSpreadDisplay; } private set { aimSpreadDisplay = value; OnPropertyChanged(); } }
-    private string hipSpreadDisplay;
-    public string HipSpreadDisplay { get { return hipSpreadDisplay; } private set { hipSpreadDisplay = value; OnPropertyChanged(); } }
-    private string moveSpreadDisplay;
-    public string MoveSpreadDisplay { get { return moveSpreadDisplay; } private set { moveSpreadDisplay = value; OnPropertyChanged(); } }
-    private string hipRecoilDisplay;
-    public string HipRecoilDisplay { get { return hipRecoilDisplay; } private set { hipRecoilDisplay = value; OnPropertyChanged(); } }
-    private string aimRecoilDisplay;
-    public string AimRecoilDisplay { get { return aimRecoilDisplay; } private set { aimRecoilDisplay = value; OnPropertyChanged(); } }
-    private string scopeInTimeDisplay;
-    public string ScopeInTimeDisplay { get { return scopeInTimeDisplay; } private set { scopeInTimeDisplay = value; OnPropertyChanged(); } }
-    private string rangeDisaply;
-    public string RangeDisplay { get { return rangeDisaply; } private set { rangeDisaply = value; OnPropertyChanged(); } }
-    private string runDisplay;
-    public string RunDisplay { get { return runDisplay; } private set { runDisplay = value; OnPropertyChanged(); } }
-    private string pawnRunDisplay;
-    public string PawnRunDisplay { get { return pawnRunDisplay; } private set { pawnRunDisplay = value; OnPropertyChanged(); } }
+    private string? damageDisplay;
+    public string DamageDisplay { get { return damageDisplay ?? string.Empty; } private set { damageDisplay = value; OnPropertyChanged(); } }
+    private string? rateOfFireDsiplay;
+    public string RateOfFireDisplay { get { return rateOfFireDsiplay ?? string.Empty; } private set { rateOfFireDsiplay = value; OnPropertyChanged(); } }
+    private string? ammoDisplay;
+    public string AmmoDisplay { get { return ammoDisplay ?? string.Empty; } private set { ammoDisplay = value; OnPropertyChanged(); } }
+    private string? reloadTimeDisplay;
+    public string ReloadTimeDisplay { get { return reloadTimeDisplay ?? string.Empty; } private set { reloadTimeDisplay = value; OnPropertyChanged(); } }
+    private string? swapDsiplay;
+    public string SwapDisplay { get { return swapDsiplay ?? string.Empty; } private set { swapDsiplay = value; OnPropertyChanged(); } }
+    private string? aimSpreadDisplay;
+    public string AimSpreadDisplay { get { return aimSpreadDisplay ?? string.Empty; } private set { aimSpreadDisplay = value; OnPropertyChanged(); } }
+    private string? hipSpreadDisplay;
+    public string HipSpreadDisplay { get { return hipSpreadDisplay ?? string.Empty; } private set { hipSpreadDisplay = value; OnPropertyChanged(); } }
+    private string? moveSpreadDisplay;
+    public string MoveSpreadDisplay { get { return moveSpreadDisplay ?? string.Empty; } private set { moveSpreadDisplay = value; OnPropertyChanged(); } }
+    private string? hipRecoilDisplay;
+    public string HipRecoilDisplay { get { return hipRecoilDisplay ?? string.Empty; } private set { hipRecoilDisplay = value; OnPropertyChanged(); } }
+    private string? aimRecoilDisplay;
+    public string AimRecoilDisplay { get { return aimRecoilDisplay ?? string.Empty; } private set { aimRecoilDisplay = value; OnPropertyChanged(); } }
+    private string? scopeInTimeDisplay;
+    public string ScopeInTimeDisplay { get { return scopeInTimeDisplay ?? string.Empty; } private set { scopeInTimeDisplay = value; OnPropertyChanged(); } }
+    private string? rangeDisaply;
+    public string RangeDisplay { get { return rangeDisaply ?? string.Empty; } private set { rangeDisaply = value; OnPropertyChanged(); } }
+    private string? runDisplay;
+    public string RunDisplay { get { return runDisplay ?? string.Empty; } private set { runDisplay = value; OnPropertyChanged(); } }
+    private string? pawnRunDisplay;
+    public string PawnRunDisplay { get { return pawnRunDisplay ?? string.Empty; } private set { pawnRunDisplay = value; OnPropertyChanged(); } }
 
-    private string zoomDisplay;
-    public string ZoomDisplay { get { return zoomDisplay; } private set { zoomDisplay = value; OnPropertyChanged(); } }
-
-
-    private string fragmentsPerShellDisplay;
-    public string FragmentsPerShellDisplay { get { return fragmentsPerShellDisplay; } private set { fragmentsPerShellDisplay = value; OnPropertyChanged(); } }
-
-    private string zoomFirerateDisplay;
-    public string ZoomFirerateDisplay { get { return zoomFirerateDisplay; } private set { zoomFirerateDisplay = value; OnPropertyChanged(); } }
-
-    private string spreadCrouchMultiplierDisplay;
-    public string SpreadCrouchMultiplierDisplay { get { return spreadCrouchMultiplierDisplay; } private set { spreadCrouchMultiplierDisplay = value; OnPropertyChanged(); } }
-
-    private string spreadJumpMultiplierDisplay;
-    public string SpreadJumpMultiplierDisplay { get { return spreadJumpMultiplierDisplay; } private set { spreadJumpMultiplierDisplay = value; OnPropertyChanged(); } }
-
-    private string spreadCenterWeightDisplay;
-    public string SpreadCenterWeightDisplay { get { return spreadCenterWeightDisplay; } private set { spreadCenterWeightDisplay = value; OnPropertyChanged(); } }
-
-    private string spreadCenterDisplay;
-    public string SpreadCenterDisplay { get { return spreadCenterDisplay; } private set { spreadCenterDisplay = value; OnPropertyChanged(); } }
-
-    private string recoilVerticalRatioDisplay;
-    public string RecoilVerticalRatioDisplay { get { return recoilVerticalRatioDisplay; } private set { recoilVerticalRatioDisplay = value; OnPropertyChanged(); } }
-
-    private string recoilRecoveryTimeDisplay;
-    public string RecoilRecoveryTimeDisplay { get { return recoilRecoveryTimeDisplay; } private set { recoilRecoveryTimeDisplay = value; OnPropertyChanged(); } }
-
-    private string recoilAccumulationDisplay;
-    public string RecoilAccumulationDisplay { get { return recoilAccumulationDisplay; } private set { recoilAccumulationDisplay = value; OnPropertyChanged(); } }
+    private string? zoomDisplay;
+    public string ZoomDisplay { get { return zoomDisplay ?? string.Empty; } private set { zoomDisplay = value; OnPropertyChanged(); } }
 
 
-    private string damagePercentDisplay;
-    public string DamagePercentageDisplay { get { return damagePercentDisplay; } private set { damagePercentDisplay = value; OnPropertyChanged(); } }
-    private string accuracyPercentageDisplay;
-    public string AccuracyPercentageDisplay { get { return accuracyPercentageDisplay; } private set { accuracyPercentageDisplay = value; OnPropertyChanged(); } }
-    private string rangePercentageDisplay;
-    public string RangePercentageDisplay { get { return rangePercentageDisplay; } private set { rangePercentageDisplay = value; OnPropertyChanged(); } }
-    private string reloadPercentageDisplay;
-    public string ReloadPercentageDisplay { get { return reloadPercentageDisplay; } private set { reloadPercentageDisplay = value; OnPropertyChanged(); } }
-    private string recoilPercentageDisplay;
-    public string RecoilPercentageDisplay { get { return recoilPercentageDisplay; } private set { recoilPercentageDisplay = value; OnPropertyChanged(); } }
-    private string runPercentageDisplay;
-    public string RunPercentageDisplay { get { return runPercentageDisplay; } private set { runPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? fragmentsPerShellDisplay;
+    public string FragmentsPerShellDisplay { get { return fragmentsPerShellDisplay ?? string.Empty; } private set { fragmentsPerShellDisplay = value; OnPropertyChanged(); } }
+
+    private string? zoomFirerateDisplay;
+    public string ZoomFirerateDisplay { get { return zoomFirerateDisplay ?? string.Empty; } private set { zoomFirerateDisplay = value; OnPropertyChanged(); } }
+
+    private string? spreadCrouchMultiplierDisplay;
+    public string SpreadCrouchMultiplierDisplay { get { return spreadCrouchMultiplierDisplay ?? string.Empty; } private set { spreadCrouchMultiplierDisplay = value; OnPropertyChanged(); } }
+
+    private string? spreadJumpMultiplierDisplay;
+    public string SpreadJumpMultiplierDisplay { get { return spreadJumpMultiplierDisplay ?? string.Empty; } private set { spreadJumpMultiplierDisplay = value; OnPropertyChanged(); } }
+
+    private string? spreadCenterWeightDisplay;
+    public string SpreadCenterWeightDisplay { get { return spreadCenterWeightDisplay ?? string.Empty; } private set { spreadCenterWeightDisplay = value; OnPropertyChanged(); } }
+
+    private string? spreadCenterDisplay;
+    public string SpreadCenterDisplay { get { return spreadCenterDisplay ?? string.Empty; } private set { spreadCenterDisplay = value; OnPropertyChanged(); } }
+
+    private string? recoilVerticalRatioDisplay;
+    public string RecoilVerticalRatioDisplay { get { return recoilVerticalRatioDisplay ?? string.Empty; } private set { recoilVerticalRatioDisplay = value; OnPropertyChanged(); } }
+
+    private string? recoilRecoveryTimeDisplay;
+    public string RecoilRecoveryTimeDisplay { get { return recoilRecoveryTimeDisplay ?? string.Empty; } private set { recoilRecoveryTimeDisplay = value; OnPropertyChanged(); } }
+
+    private string? recoilAccumulationDisplay;
+    public string RecoilAccumulationDisplay { get { return recoilAccumulationDisplay ?? string.Empty; } private set { recoilAccumulationDisplay = value; OnPropertyChanged(); } }
+
+
+    private string? damagePercentDisplay;
+    public string DamagePercentageDisplay { get { return damagePercentDisplay ?? string.Empty; } private set { damagePercentDisplay = value; OnPropertyChanged(); } }
+    private string? accuracyPercentageDisplay;
+    public string AccuracyPercentageDisplay { get { return accuracyPercentageDisplay ?? string.Empty; } private set { accuracyPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? rangePercentageDisplay;
+    public string RangePercentageDisplay { get { return rangePercentageDisplay ?? string.Empty; } private set { rangePercentageDisplay = value; OnPropertyChanged(); } }
+    private string? reloadPercentageDisplay;
+    public string ReloadPercentageDisplay { get { return reloadPercentageDisplay ?? string.Empty; } private set { reloadPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? recoilPercentageDisplay;
+    public string RecoilPercentageDisplay { get { return recoilPercentageDisplay ?? string.Empty; } private set { recoilPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? runPercentageDisplay;
+    public string RunPercentageDisplay { get { return runPercentageDisplay ?? string.Empty; } private set { runPercentageDisplay = value; OnPropertyChanged(); } }
 
 
 
@@ -987,27 +987,24 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public void CalculateStats()
     {
-        //ResetStats();
-        if (Reciever is not null)
-        {
-            CockRateMultiplier = CalculateCockRate(Reciever, RecoilPercentage);
-            (DamageClose, DamageFar) = CalculateDamage(Reciever, DamagePercentage);
-            ModifiedRunSpeed = CalculateMovementSpeed(Reciever, MovementSpeedPercentage);
-            ModifiedPawnRunSpeed = CalculatePawnMovementSpeed(Reciever, Loadout, MovementSpeedPercentage);
-            (RangeClose, RangeFar, RangeTracer) = CalculateRange(Reciever, RangePercentage);
-            (RecoilHip, RecoilZoom) = CalculateRecoil(Reciever, RecoilPercentage);
-            ReloadMultiplier = CalculateReloadRate(Reciever, ReloadSpeedPercentage, RecoilPercentage);
-            double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
-            BarrelStockMovementSpeed += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
-            ModifiedScopeInTime = CalculateScopeInTime(Reciever, Scope, BarrelStockMovementSpeed, RawScopeInTime);
-            (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Reciever, AccuracyPercentage, BarrelStockMovementSpeed, Magazine, Ammo);
-            WeaponDescriptorPart1 = CompareItemDescriptor1(Barrel, Magazine);
-            WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
-            WeaponDescriptorPart3 = Reciever.GetDescriptorName(TotalRatingPoints);
-            WeaponDescriptor = WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3;
+        if (Reciever is null) return;
+        CockRateMultiplier = CalculateCockRate(Reciever, RecoilPercentage);
+        (DamageClose, DamageFar) = CalculateDamage(Reciever, DamagePercentage);
+        ModifiedRunSpeed = CalculateMovementSpeed(Reciever, MovementSpeedPercentage);
+        ModifiedPawnRunSpeed = CalculatePawnMovementSpeed(Reciever, Loadout, MovementSpeedPercentage);
+        (RangeClose, RangeFar, RangeTracer) = CalculateRange(Reciever, RangePercentage);
+        (RecoilHip, RecoilZoom) = CalculateRecoil(Reciever, RecoilPercentage);
+        ReloadMultiplier = CalculateReloadRate(Reciever, ReloadSpeedPercentage, RecoilPercentage);
+        double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
+        BarrelStockMovementSpeed += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
+        ModifiedScopeInTime = CalculateScopeInTime(Reciever, Scope, BarrelStockMovementSpeed, RawScopeInTime);
+        (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Reciever, AccuracyPercentage, BarrelStockMovementSpeed, Magazine, Ammo);
+        WeaponDescriptorPart1 = CompareItemDescriptor1(Barrel, Magazine);
+        WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
+        WeaponDescriptorPart3 = Reciever.GetDescriptorName(TotalRatingPoints);
+        WeaponDescriptor = WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3;
 
-            CreateDisplayProperties();
-        }
+        CreateDisplayProperties();
     }
 
     private void CreateDisplayProperties()
@@ -1055,10 +1052,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <returns>CockRateMultiplier</returns>
     public static double CalculateCockRate(BLRItem Reciever, double RecoilPercentage)
     {
+        if (Reciever is null || Reciever.WeaponStats is null) return 0;
         double allRecoil = Percentage(RecoilPercentage);
         double alpha = Math.Abs(allRecoil);
         double cockrate;
-        if ((Reciever?.WeaponStats?.ModificationRangeCockRate.Z ?? 0) != 0)
+        if (Reciever.WeaponStats.ModificationRangeCockRate.Z != 0)
         {
             if (allRecoil > 0)
             {
@@ -1089,12 +1087,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <returns>calculated ReloadMultiplier</returns>
     public static double CalculateReloadRate(BLRItem Reciever, double ReloadSpeedPercentage, double RecoilPercentage)
     {
+        if (Reciever is null || Reciever.WeaponStats is null) return 0;
         double allReloadSpeed = ReloadSpeedPercentage / 100; // Reload speed is actually seemingly unclamped
         double allRecoil = Percentage(RecoilPercentage);
         double WeaponReloadRate = 1.0;
         double rate_alpha;
-
-        if ((Reciever?.WeaponStats?.ModificationRangeReloadRate.Z ?? 0) > 0)
+        if (Reciever.WeaponStats.ModificationRangeReloadRate.Z > 0)
         {
             rate_alpha = Math.Abs(allReloadSpeed);
             if (allReloadSpeed > 0)
@@ -1107,16 +1105,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             }
         }
 
-        if ((Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0) == 1)
+        if (Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z == 1)
         {
             rate_alpha = Math.Abs(allRecoil);
             if (allRecoil > 0)
             {
-                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Y ?? 0, rate_alpha) - 1.0);
+                WeaponReloadRate += (Lerp(Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z, Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Y, rate_alpha) - 1.0);
             }
             else
             {
-                WeaponReloadRate += (Lerp(Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeRecoilReloadRate.X ?? 0, rate_alpha) - 1.0);
+                WeaponReloadRate += (Lerp(Reciever.WeaponStats.ModificationRangeRecoilReloadRate.Z, Reciever.WeaponStats.ModificationRangeRecoilReloadRate.X, rate_alpha) - 1.0);
             }
         }
 
@@ -1142,16 +1140,17 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <returns>calculated Movementspeed</returns>
     public static double CalculateMovementSpeed(BLRItem Reciever, double MovementSpeedPercentage)
     {
+        if (Reciever is null || Reciever.WeaponStats is null) return 0;
         double allMovementSpeed = MovementSpeedPercentage / 100; // Movement speed is apparently also uncapped
         double move_alpha = Math.Abs(allMovementSpeed);
         double move_modifier;
         if (allMovementSpeed > 0)
         {
-            move_modifier = Lerp(Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Y ?? 0, move_alpha);
+            move_modifier = Lerp(Reciever.WeaponStats.ModificationRangeMoveSpeed.Z, Reciever.WeaponStats.ModificationRangeMoveSpeed.Y, move_alpha);
         }
         else
         {
-            move_modifier = Lerp(Reciever?.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeMoveSpeed.X ?? 0, move_alpha);
+            move_modifier = Lerp(Reciever.WeaponStats.ModificationRangeMoveSpeed.Z, Reciever.WeaponStats.ModificationRangeMoveSpeed.X, move_alpha);
         }
         return move_modifier;
         //return (765 + move_modifier * 0.9) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
@@ -1166,16 +1165,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <returns>calculated Movementspeed</returns>
     public static double CalculatePawnMovementSpeed(BLRItem Reciever, BLRLoadout? Loadout, double WeapSpeedPercentage)
     {
-        if (Loadout is null || Reciever is null) return 0;
+        if (Loadout is null || Reciever is null || Reciever.WeaponStats is null) return 0;
         double weap_alpha = Math.Abs(WeapSpeedPercentage) / 100;
         double weap_modifier;
         if (WeapSpeedPercentage > 0)
         {
-            weap_modifier = Lerp(Reciever.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever.WeaponStats?.ModificationRangeMoveSpeed.Y ?? 0, weap_alpha);
+            weap_modifier = Lerp(Reciever.WeaponStats.ModificationRangeMoveSpeed.Z, Reciever.WeaponStats.ModificationRangeMoveSpeed.Y, weap_alpha);
         }
         else
         {
-            weap_modifier = Lerp(Reciever.WeaponStats?.ModificationRangeMoveSpeed.Z ?? 0, Reciever.WeaponStats?.ModificationRangeMoveSpeed.X ?? 0, weap_alpha);
+            weap_modifier = Lerp(Reciever.WeaponStats.ModificationRangeMoveSpeed.Z, Reciever.WeaponStats.ModificationRangeMoveSpeed.X, weap_alpha);
         }
 
         double combined = (Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667);
@@ -1200,8 +1199,9 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="AccuracyPercentage">all raw Accuracy modifiers</param>
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovmentSpeed modifiers</param>
     /// <returns></returns>
-    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLRItem Reciever, double AccuracyPercentage, double BarrelStockMovementSpeed, BLRItem Magazine, BLRItem Ammo)
+    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLRItem Reciever, double AccuracyPercentage, double BarrelStockMovementSpeed, BLRItem? Magazine, BLRItem? Ammo)
     {
+        if (Reciever is null || Reciever.WeaponStats is null) return (0, 0 ,0);
         double allMoveSpeed = Percentage(BarrelStockMovementSpeed);
         double allAccuracy = Percentage(AccuracyPercentage);
         double accuracyBaseModifier;
@@ -1209,63 +1209,63 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         double alpha = Math.Abs(allAccuracy);
         if (allAccuracy > 0)
         {
-            accuracyBaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeBaseSpread.Y ?? 0, alpha);
-            accuracyTABaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Y ?? 0, alpha);
+            accuracyBaseModifier = Lerp(Reciever.WeaponStats.ModificationRangeBaseSpread.Z, Reciever.WeaponStats.ModificationRangeBaseSpread.Y, alpha);
+            accuracyTABaseModifier = Lerp(Reciever.WeaponStats.ModificationRangeTABaseSpread.Z, Reciever.WeaponStats.ModificationRangeTABaseSpread.Y, alpha);
         }
         else
         {
-            accuracyBaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeBaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeBaseSpread.X ?? 0, alpha);
-            accuracyTABaseModifier = Lerp(Reciever?.WeaponStats?.ModificationRangeTABaseSpread.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeTABaseSpread.X ?? 0, alpha);
+            accuracyBaseModifier = Lerp(Reciever.WeaponStats.ModificationRangeBaseSpread.Z, Reciever.WeaponStats.ModificationRangeBaseSpread.X, alpha);
+            accuracyTABaseModifier = Lerp(Reciever.WeaponStats.ModificationRangeTABaseSpread.Z, Reciever.WeaponStats.ModificationRangeTABaseSpread.X, alpha);
         }
 
         double hip = accuracyBaseModifier * (180 / Math.PI);
-        double aim = accuracyBaseModifier * (Reciever?.WeaponStats?.ZoomSpreadMultiplier ?? 0) * (180 / Math.PI);
-        if (Reciever?.WeaponStats?.UseTABaseSpread ?? false)
+        double aim = accuracyBaseModifier * Reciever.WeaponStats.ZoomSpreadMultiplier * (180 / Math.PI);
+        if (Reciever.WeaponStats.UseTABaseSpread)
         {
             aim = accuracyTABaseModifier * (float)(180 / Math.PI);
         }
 
-        double weight_alpha = Math.Abs((Reciever?.WeaponStats?.Weight ?? 0) / 80.0);
+        double weight_alpha = Math.Abs(Reciever.WeaponStats.Weight / 80.0);
         double weight_clampalpha = Math.Min(Math.Max(weight_alpha, -1.0), 1.0); // Don't ask me why they clamp the absolute value with a negative, I have no idea.
         double weight_multiplier;
-        if ((Reciever?.WeaponStats?.Weight ?? 0) > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
+        if (Reciever.WeaponStats.Weight > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
         {
-            weight_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Y ?? 0, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
+            weight_multiplier = Lerp(Reciever.WeaponStats.ModificationRangeWeightMultiplier.Z, Reciever.WeaponStats.ModificationRangeWeightMultiplier.Y, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
         }
         else
         {
-            weight_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, weight_clampalpha);
+            weight_multiplier = Lerp(Reciever.WeaponStats.ModificationRangeWeightMultiplier.Z, Reciever.WeaponStats.ModificationRangeWeightMultiplier.X, weight_clampalpha);
         }
 
         double move_alpha = Math.Abs(allMoveSpeed); // Combined movement speed modifiers from only barrel and stock, divided by 100
         double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
         if (allMoveSpeed > 0)
         {
-            move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Y ?? 0, move_alpha);
+            move_multiplier = Lerp(Reciever.WeaponStats.ModificationRangeWeightMultiplier.Z, Reciever.WeaponStats.ModificationRangeWeightMultiplier.Y, move_alpha);
         }
         else
         {
-            move_multiplier = Lerp(Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.Z ?? 0, Reciever?.WeaponStats?.ModificationRangeWeightMultiplier.X ?? 0, move_alpha);
+            move_multiplier = Lerp(Reciever.WeaponStats.ModificationRangeWeightMultiplier.Z, Reciever.WeaponStats.ModificationRangeWeightMultiplier.X, move_alpha);
         }
 
-        double movemultiplier_current = 1.0 + ((Reciever?.WeaponStats?.MovementSpreadMultiplier ?? 0) - 1.0) * (weight_multiplier * move_multiplier);
-        double moveconstant_current = (Reciever?.WeaponStats?.MovementSpreadConstant ?? 0) * (weight_multiplier * move_multiplier);
+        double movemultiplier_current = 1.0 + (Reciever.WeaponStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier);
+        double moveconstant_current = Reciever.WeaponStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
 
         double move = (accuracyBaseModifier + moveconstant_current) * (180 / Math.PI) * movemultiplier_current;
 
-        if (Reciever?.UID == 40015) // BLP
+        if (Reciever.UID == 40015) // BLP
         {
             if ((Magazine?.UID == 44177) || (Ammo?.UID == 90010)) {
                 aim += (0.2 * (180 / Math.PI));
                 hip += (0.2 * (180 / Math.PI));
                 move += (0.2 * (180 / Math.PI));
             }
-        } else if (Reciever?.UID == 40005) // Shotgun
+        } else if (Reciever.UID == 40005) // Shotgun
         {
             aim += (0.1 * (180 / Math.PI));
             hip += (0.1 * (180 / Math.PI));
             move += (0.1 * (180 / Math.PI));
-        } else if (Reciever?.UID == 40016) // Sark
+        } else if (Reciever.UID == 40016) // Sark
         {
             aim += (0.05 * (180 / Math.PI));
             hip += (0.05 * (180 / Math.PI));
@@ -1274,21 +1274,21 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         // Average spread over multiple shots to account for random center weight multiplier
         double[] averageSpread = { 0, 0, 0 };
-        double magsize = Math.Min(Reciever?.WeaponStats?.MagSize ?? 0, 15.0f);
+        double magsize = Math.Min(Reciever.WeaponStats.MagSize, 15.0f);
         if (magsize <= 1)
         {
-            magsize = (Reciever?.WeaponStats?.InitialMagazines ?? 0) + 1.0;
+            magsize = Reciever.WeaponStats.InitialMagazines + 1.0;
         }
         if (magsize > 0)
         {
             double averageShotCount = Math.Max(magsize, 5.0f);
             for (int shot = 1; shot <= averageShotCount; shot++)
             {
-                if (shot > averageShotCount - averageShotCount * (Reciever?.WeaponStats?.SpreadCenterWeight ?? 0))
+                if (shot > averageShotCount - averageShotCount * Reciever.WeaponStats.SpreadCenterWeight)
                 {
-                    averageSpread[0] += aim * (Reciever?.WeaponStats?.SpreadCenter ?? 0);
-                    averageSpread[1] += hip * (Reciever?.WeaponStats?.SpreadCenter ?? 0);
-                    averageSpread[2] += move * (Reciever?.WeaponStats?.SpreadCenter ?? 0);
+                    averageSpread[0] += aim * Reciever.WeaponStats.SpreadCenter;
+                    averageSpread[1] += hip * Reciever.WeaponStats.SpreadCenter;
+                    averageSpread[2] += move * Reciever.WeaponStats.SpreadCenter;
                 }
                 else
                 {
@@ -1317,7 +1317,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovementSpeed modifier</param>
     /// <param name="RawScopeInTime">all raw ScopeInTime modifiers</param>
     /// <returns></returns>
-    public static double CalculateScopeInTime(BLRItem Reciever, BLRItem Scope, double BarrelStockMovementSpeed, double RawScopeInTime)
+    public static double CalculateScopeInTime(BLRItem Reciever, BLRItem? Scope, double BarrelStockMovementSpeed, double RawScopeInTime)
     {
         double allMovementSpeed = Clamp(BarrelStockMovementSpeed / 80.0D, -1.0D, 1.0D);
         double TTTA_alpha = Math.Abs(allMovementSpeed);
@@ -1520,83 +1520,34 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                 DamageMax: damageModifier * (Reciever?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d));
     }
 
-    public static string CompareItemDescriptor1(BLRItem itembarrel, BLRItem itemmag)
+    public static BLRItem? CompareItemRating(BLRItem? item1, BLRItem? item2)
     {
-        if (itembarrel == null && itemmag != null)
+        if ((item1?.WeaponModifiers?.Rating ?? -1) >= (item2?.WeaponModifiers?.Rating ?? -1))
         {
-            return itemmag.DescriptorName;
-        }
-        else if (itembarrel != null && itemmag == null)
-        {
-            return itembarrel.DescriptorName;
-        }
-        else if (itembarrel == null && itemmag == null)
-        {
-            return "Standard";
-        }
-
-        if ((itembarrel?.WeaponModifiers?.Rating ?? 0) > (itemmag?.WeaponModifiers?.Rating ?? 0))
-        {
-            return itembarrel.DescriptorName;
+            return item1;
         }
         else
         {
-            return itemmag.DescriptorName;
+            return item2;
         }
     }
-    public static string CompareItemDescriptor2(BLRItem itemstock, BLRItem itemmuzzle, BLRItem itemscope)
+
+    public static string CompareItemDescriptor1(BLRItem? itembarrel, BLRItem? itemmag)
     {
-        if (itemstock == null && itemmuzzle == null && itemscope == null)
+        return CompareItemRating(itemmag, itembarrel)?.DescriptorName ?? "Standard";
+    }
+    public static string CompareItemDescriptor2(BLRItem? itemstock, BLRItem? itemmuzzle, BLRItem? itemscope)
+    {
+        var item = CompareItemRating(itemscope, itemstock);
+        item = CompareItemRating(item, itemmuzzle);
+        if (item?.WeaponModifiers?.Rating <= 0)
         {
             return "Basic";
         }
-
-        if (itemstock == null && itemmuzzle == null && itemscope != null)
+        else
         {
-            return itemscope.DescriptorName;
+            return item?.DescriptorName ?? "Basic";
         }
-        else if (itemstock == null && itemmuzzle != null && itemscope != null)
-        {
-            if (itemmuzzle.WeaponModifiers.Rating >= itemscope.WeaponModifiers.Rating)
-            {
-                if (itemmuzzle.WeaponModifiers.Rating + itemscope?.WeaponModifiers.Rating == 0)
-                {
-                    return "Basic";
-                }
-                return itemmuzzle.DescriptorName;
-            }
-            else
-            {
-                return itemscope.DescriptorName;
-            }
-        }
-        else if (itemstock == null && itemmuzzle != null)
-        {
-            return itemmuzzle.DescriptorName;
-        }
-        else if (itemstock != null && itemmuzzle == null)
-        {
-            return itemstock.DescriptorName;
-        }
-
-        if ((itemstock?.WeaponModifiers?.Rating ?? 0) >= (itemmuzzle?.WeaponModifiers?.Rating ?? 0) && (itemstock?.WeaponModifiers?.Rating ?? 0) >= (itemscope?.WeaponModifiers?.Rating ?? 0))
-        {
-            if ((itemstock?.WeaponModifiers?.Rating ?? 0) > 0)
-            {
-                return itemstock.DescriptorName;
-            }
-            return "Basic";
-        }
-        else if ((itemmuzzle?.WeaponModifiers?.Rating ?? 0) >= (itemstock?.WeaponModifiers?.Rating ?? 0) && (itemmuzzle?.WeaponModifiers?.Rating ?? 0) >= (itemscope?.WeaponModifiers?.Rating ?? 0))
-        {
-            return itemmuzzle.DescriptorName;
-        }
-        else if ((itemscope?.WeaponModifiers?.Rating ?? 0) >= (itemstock?.WeaponModifiers?.Rating ?? 0) && (itemscope?.WeaponModifiers?.Rating ?? 0) >= (itemmuzzle?.WeaponModifiers?.Rating ?? 0))
-        {
-            return itemscope?.DescriptorName;
-        }
-
-        return itemstock.DescriptorName;
     }
 
     public static double Percentage(double input)
@@ -1622,41 +1573,53 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         WriteMagiCowsWeapon(internalWeapon);
     }
 
-    public void WriteMagiCowsWeapon(MagiCowsWeapon weapon)
+    public void WriteMagiCowsWeapon(MagiCowsWeapon? weapon)
     {
-        if (weapon is not null)
-        {
-            weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
-            weapon.Muzzle = BLRItem.GetMagicCowsID(Muzzle, -1);
-            weapon.Barrel = Barrel?.Name ?? "No Barrel Mod";
-            weapon.Magazine = BLRItem.GetMagicCowsID(Magazine, -1);
-            weapon.Scope = Scope?.Name ?? "No Optic Mod";
-            weapon.Stock = Stock?.Name ?? "No Stock";
-            weapon.Grip = Grip?.Name ?? "";
-            weapon.Tag = BLRItem.GetMagicCowsID(Tag);
-            weapon.Camo = BLRItem.GetMagicCowsID(Camo);
-            weapon.Ammo = BLRItem.GetMagicCowsID(Ammo);
-            weapon.Skin = BLRItem.GetMagicCowsID(Skin);
-        }
+        if (weapon is null) return;
+        weapon.Receiver = Reciever?.Name ?? "Assault Rifle";
+        weapon.Muzzle = BLRItem.GetMagicCowsID(Muzzle, -1);
+        weapon.Barrel = Barrel?.Name ?? "No Barrel Mod";
+        weapon.Magazine = BLRItem.GetMagicCowsID(Magazine, -1);
+        weapon.Scope = Scope?.Name ?? "No Optic Mod";
+        weapon.Stock = Stock?.Name ?? "No Stock";
+        weapon.Grip = Grip?.Name ?? "";
+        weapon.Tag = BLRItem.GetMagicCowsID(Tag);
+        weapon.Camo = BLRItem.GetMagicCowsID(Camo);
+        weapon.Ammo = BLRItem.GetMagicCowsID(Ammo);
+        weapon.Skin = BLRItem.GetMagicCowsID(Skin);
     }
 
-    public void LoadMagicCowsWeapon(MagiCowsWeapon Weapon)
+    public void LoadMagicCowsWeapon(MagiCowsWeapon? Weapon)
     {
         internalWeapon = Weapon;
-        reciever = internalWeapon.GetReciever();
-
-        barrel = internalWeapon.GetBarrel();
-        magazine = internalWeapon.GetMagazine();
-        muzzle = internalWeapon.GetMuzzle();
-        stock = internalWeapon.GetStock();
-        scope = internalWeapon.GetScope();
-        grip = internalWeapon.GetGrip();
-        tag = internalWeapon.GetTag();
-        camo = internalWeapon.GetCamo();
-
-        ammo = internalWeapon.GetAmmo();
-
-        skin = internalWeapon.GetSkin();
+        if (internalWeapon is null)
+        {
+            reciever = null;
+            barrel = null;
+            magazine = null;
+            muzzle = null;
+            stock = null;
+            scope = null;
+            grip = null;
+            tag = null;
+            camo = null;
+            ammo = null;
+            skin = null;
+        }
+        else
+        {
+            reciever = internalWeapon.GetReciever();
+            barrel = internalWeapon.GetBarrel();
+            magazine = internalWeapon.GetMagazine();
+            muzzle = internalWeapon.GetMuzzle();
+            stock = internalWeapon.GetStock();
+            scope = internalWeapon.GetScope();
+            grip = internalWeapon.GetGrip();
+            tag = internalWeapon.GetTag();
+            camo = internalWeapon.GetCamo();
+            ammo = internalWeapon.GetAmmo();
+            skin = internalWeapon.GetSkin();
+        }
 
         ItemChanged(nameof(Reciever));
         ItemChanged(nameof(Barrel));
@@ -1736,7 +1699,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         //TODO: Generate Ammo and Apply Grip incorporate text search to allow for themed generation
 
-        BLRItem grip = ImportSystem.GetItemByIDAndType(ImportSystem.GRIPS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY)?.Length ?? 0));
+        var grip = ImportSystem.GetItemByIDAndType(ImportSystem.GRIPS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY)?.Length ?? 0));
 
         UndoRedoSystem.DoAction(reciever, this.GetType().GetProperty(nameof(Reciever)), this);
         UndoRedoSystem.DoAction(barrel, this.GetType().GetProperty(nameof(Barrel)), this);

@@ -9,7 +9,7 @@ namespace BLREdit.API.REST_API;
 
 public sealed class HttpGetClient
 {
-    public static async Task<HttpResponseMessage> GetAsync(string server, string api)
+    public static async Task<HttpResponseMessage?> GetAsync(string server, string api)
     {
         try
         {

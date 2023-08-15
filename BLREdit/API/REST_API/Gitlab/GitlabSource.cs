@@ -5,7 +5,7 @@ namespace BLREdit.API.REST_API.Gitlab;
 public sealed class GitlabSource
 {
     [JsonPropertyName("format")]
-    public string Format { get; set; }
+    public string? Format { get; set; }
     [JsonPropertyName("url")]
-    public string URL { get; set; }
+    public string? URL { get; set; }
 }

@@ -7,13 +7,13 @@ public sealed class GitlabAuthor
     [JsonPropertyName("id")]
     public int ID { get; set; }
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
     [JsonPropertyName("username")]
-    public string Username { get; set; }
+    public string? Username { get; set; }
     [JsonPropertyName("state")]
-    public string State { get; set; }
+    public string? State { get; set; }
     [JsonPropertyName("avatar_url")]
-    public string AvatarURL { get; set; }
+    public string? AvatarURL { get; set; }
     [JsonPropertyName("web_url")]
-    public string WebURL { get; set; }
+    public string? WebURL { get; set; }
 }

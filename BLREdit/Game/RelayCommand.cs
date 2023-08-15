@@ -55,8 +55,9 @@ sealed class RelayCommand : ICommand
     }
 
     public void Execute(object parameters)
-    {
-        _execute(parameters);
+    {   
+        if(_execute is not null)
+            _execute(parameters);
     }
 
     #endregion // ICommand Members

@@ -33,8 +33,8 @@ public sealed partial class BLRClientWindow : Window, INotifyPropertyChanged
 
     private bool ShouldCancelClose = true;
 
-    private BLRClient client;
-    public BLRClient Client { get { return client; } set { client = value; DataContext = value; OnPropertyChanged(); } }
+    private BLRClient? client;
+    public BLRClient? Client { get { return client; } set { client = value; DataContext = value; OnPropertyChanged(); } }
 
     public BLRClientWindow()
     {

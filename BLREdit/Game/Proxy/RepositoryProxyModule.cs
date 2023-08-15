@@ -34,7 +34,7 @@ public sealed class RepositoryProxyModule
         {
             if (RepositoryProvider == RepositoryProvider.GitHub)
             {
-                if (hubRelease is null) { Task.Run(GetLatestReleaseInfo); }
+                if (hubRelease is null) { Task.Run(GetLatestReleaseInfo).Wait(); }
                 return hubRelease;
             }
             else
@@ -51,7 +51,7 @@ public sealed class RepositoryProxyModule
         {
             if (RepositoryProvider == RepositoryProvider.Gitlab)
             {
-                if (labRelease is null) { Task.Run(GetLatestReleaseInfo); }
+                if (labRelease is null) { Task.Run(GetLatestReleaseInfo).Wait(); }
                 return labRelease;
             }
             else
@@ -88,7 +88,7 @@ public sealed class RepositoryProxyModule
     }
 
     private bool lockDownload = false;
-    public async Task<ProxyModule> DownloadLatest()
+    public ProxyModule? DownloadLatest()
     {
         if (lockDownload) return null;
         lockDownload = true;
@@ -96,24 +96,24 @@ public sealed class RepositoryProxyModule
         string dl = "";
         if (RepositoryProvider == RepositoryProvider.GitHub)
         {
-            if (hubRelease is null) { lockLatestReleaseInfo = true; hubRelease = await GitHubClient.GetLatestRelease(Owner, Repository); lockLatestReleaseInfo = false; }
-            foreach (var asset in hubRelease.Assets)
+            if (GitHubRelease is null || GitHubRelease.Assets is null) return null;
+            foreach (var asset in GitHubRelease.Assets)
             {
-                if (asset.Name.StartsWith(ModuleName) && asset.Name.EndsWith(".dll"))
+                if (asset.Name is not null && asset.Name.StartsWith(ModuleName) && asset.Name.EndsWith(".dll"))
                 {
-                    dl = asset.BrowserDownloadURL;
+                    dl = asset.BrowserDownloadURL ?? string.Empty;
                     break;
                 }
             }
         }
         else
         {
-            if (labRelease is null) { lockLatestReleaseInfo = true; labRelease = await GitlabClient.GetLatestRelease(Owner, Repository); lockLatestReleaseInfo = false; }
-            foreach (var asset in labRelease.Assets.Links)
+            if (GitlabRelease is null || GitlabRelease.Assets?.Links is null) return null;
+            foreach (var asset in GitlabRelease.Assets.Links)
             {
-                if (asset.Name.StartsWith(ModuleName) && asset.Name.EndsWith(".dll"))
+                if (asset.Name is not null && asset.Name.StartsWith(ModuleName) && asset.Name.EndsWith(".dll"))
                 {
-                    dl = asset.URL;
+                    dl = asset.URL ?? string.Empty;
                     break;
                 }
             }
@@ -122,7 +122,7 @@ public sealed class RepositoryProxyModule
             {
                 LoggingSystem.Log($"No file found in Asset links gonna go down the deep end!");
                 Regex regex = new($@"(\/uploads\/\w+\/{ModuleName}.dll)");
-                if (regex.Match(labRelease.Description) is Match match)
+                if (regex.Match(GitlabRelease.Description) is Match match)
                 {
                     LoggingSystem.Log($"Found {match.Captures.Count} matches");
                     if (match.Captures.Count > 0)
@@ -145,12 +145,13 @@ public sealed class RepositoryProxyModule
         IOResources.DownloadFile(dl, dlTarget);
         LoggingSystem.Log($"Finished Downloading {dl}");
 
-        ProxyModule module;
+        ProxyModule? module = null;
+        if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
+        { module = new ProxyModule(GitHubRelease, ModuleName, Owner, Repository, Client, Server); }
+        else if(GitlabRelease is not null)
+        { module = new ProxyModule(GitlabRelease, ModuleName, Owner, Repository, Client, Server); }
 
-        if (RepositoryProvider == RepositoryProvider.GitHub)
-        { module = new ProxyModule(hubRelease, ModuleName, Owner, Repository, Client, Server); }
-        else
-        { module = new ProxyModule(labRelease, ModuleName, Owner, Repository, Client, Server); }
+        if (module is null) return module;
 
         ProxyModule? toRemoveModule = null;
         foreach (var mod in ProxyModule.CachedModules)

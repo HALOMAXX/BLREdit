@@ -47,12 +47,12 @@ public sealed class BLRClientPatch
         }
     }
 
-    public static Dictionary<string, List<BLRClientPatch>> AvailablePatches { get; private set; } = LoadPatches();
-    private static Dictionary<string, List<BLRClientPatch>> LoadPatches()
+    public static Dictionary<string?, List<BLRClientPatch>> AvailablePatches { get; private set; } = LoadPatches();
+    private static Dictionary<string?, List<BLRClientPatch>> LoadPatches()
     {
         Stopwatch sw = Stopwatch.StartNew();
         List<BLRClientPatch> loadedPatches = new();
-        Dictionary<string, List<BLRClientPatch>> sortedPatches = new();
+        Dictionary<string?, List<BLRClientPatch>> sortedPatches = new();
         string[] patches = Directory.GetFiles($"{IOResources.ASSET_DIR}patches\\");
         foreach (string file in patches)
         {

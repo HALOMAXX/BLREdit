@@ -72,38 +72,38 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
 
     #region Depot
-    private BLRItem depot1;
-    public BLRItem Depot1 { get { return depot1; } set { if (value is null || depot1 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0); } else { depot1 = value; } ItemChanged(); } } }
-    private BLRItem depot2;
-    public BLRItem Depot2 { get { return depot2; } set { if (value is null || depot2 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 1); } else { depot2 = value; } ItemChanged(); } } }
-    private BLRItem depot3;
-    public BLRItem Depot3 { get { return depot3; } set { if (value is null || depot3 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 2); } else { depot3 = value; } ItemChanged(); } } }
-    private BLRItem depot4;
-    public BLRItem Depot4 { get { return depot4; } set { if (value is null || depot4 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 3); } else { depot4 = value; } ItemChanged(); } } }
-    private BLRItem depot5;
-    public BLRItem Depot5 { get { return depot5; } set { if (value is null || depot5 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 4); } else { depot5 = value; } ItemChanged(); } } }
+    private BLRItem? depot1;
+    public BLRItem? Depot1 { get { return depot1; } set { if (value is null || depot1 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0); } else { depot1 = value; } ItemChanged(); } } }
+    private BLRItem? depot2;
+    public BLRItem? Depot2 { get { return depot2; } set { if (value is null || depot2 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 1); } else { depot2 = value; } ItemChanged(); } } }
+    private BLRItem? depot3;
+    public BLRItem? Depot3 { get { return depot3; } set { if (value is null || depot3 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 2); } else { depot3 = value; } ItemChanged(); } } }
+    private BLRItem? depot4;
+    public BLRItem? Depot4 { get { return depot4; } set { if (value is null || depot4 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 3); } else { depot4 = value; } ItemChanged(); } } }
+    private BLRItem? depot5;
+    public BLRItem? Depot5 { get { return depot5; } set { if (value is null || depot5 != value && value.Category == ImportSystem.SHOP_CATEGORY) { if (value is null) { depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 4); } else { depot5 = value; } ItemChanged(); } } }
     #endregion Depot
 
     #region Taunts
-    private BLRItem taunt1;
-    public BLRItem Taunt1 { get { return taunt1; } set { if (value is null || taunt1 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 0); } else { taunt1 = value; } ItemChanged(); } } }
-    private BLRItem taunt2;
-    public BLRItem Taunt2 { get { return taunt2; } set { if (value is null || taunt2 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 1); } else { taunt2 = value; } ItemChanged(); } } }
-    private BLRItem taunt3;
-    public BLRItem Taunt3 { get { return taunt3; } set { if (value is null || taunt3 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 2); } else { taunt3 = value; } ItemChanged(); } } }
-    private BLRItem taunt4;
-    public BLRItem Taunt4 { get { return taunt4; } set { if (value is null || taunt4 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 3); } else { taunt4 = value; } ItemChanged(); } } }
-    private BLRItem taunt5;
-    public BLRItem Taunt5 { get { return taunt5; } set { if (value is null || taunt5 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 4); } else { taunt5 = value; } ItemChanged(); } } }
-    private BLRItem taunt6;
-    public BLRItem Taunt6 { get { return taunt6; } set { if (value is null || taunt6 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 5); } else { taunt6 = value; } ItemChanged(); } } }
-    private BLRItem taunt7;
-    public BLRItem Taunt7 { get { return taunt7; } set { if (value is null || taunt7 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 6); } else { taunt7 = value; } ItemChanged(); } } }
-    private BLRItem taunt8;
-    public BLRItem Taunt8 { get { return taunt8; } set { if (value is null || taunt8 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7); } else { taunt8 = value; } ItemChanged(); } } }
+    private BLRItem? taunt1;
+    public BLRItem? Taunt1 { get { return taunt1; } set { if (value is null || taunt1 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 0); } else { taunt1 = value; } ItemChanged(); } } }
+    private BLRItem? taunt2;
+    public BLRItem? Taunt2 { get { return taunt2; } set { if (value is null || taunt2 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 1); } else { taunt2 = value; } ItemChanged(); } } }
+    private BLRItem? taunt3;
+    public BLRItem? Taunt3 { get { return taunt3; } set { if (value is null || taunt3 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 2); } else { taunt3 = value; } ItemChanged(); } } }
+    private BLRItem? taunt4;
+    public BLRItem? Taunt4 { get { return taunt4; } set { if (value is null || taunt4 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 3); } else { taunt4 = value; } ItemChanged(); } } }
+    private BLRItem? taunt5;
+    public BLRItem? Taunt5 { get { return taunt5; } set { if (value is null || taunt5 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 4); } else { taunt5 = value; } ItemChanged(); } } }
+    private BLRItem? taunt6;
+    public BLRItem? Taunt6 { get { return taunt6; } set { if (value is null || taunt6 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 5); } else { taunt6 = value; } ItemChanged(); } } }
+    private BLRItem? taunt7;
+    public BLRItem? Taunt7 { get { return taunt7; } set { if (value is null || taunt7 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 6); } else { taunt7 = value; } ItemChanged(); } } }
+    private BLRItem? taunt8;
+    public BLRItem? Taunt8 { get { return taunt8; } set { if (value is null || taunt8 != value && value.Category == ImportSystem.EMOTES_CATEGORY) { if (value is null) { taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7); } else { taunt8 = value; } ItemChanged(); } } }
     #endregion Taunts
 
-    private bool IsAvatarOK(BLRItem inAvatar)
+    private bool IsAvatarOK(BLRItem? inAvatar)
     {
         if (inAvatar is null) { return true; }
         if (inAvatar != avatar && inAvatar.Category == ImportSystem.AVATARS_CATEGORY)
@@ -373,53 +373,53 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     #endregion CalculatedProperties
 
     #region DisplayProperties
-    private string healthDisplay;
-    public string HealthDisplay { get { return healthDisplay; } private set { healthDisplay = value; OnPropertyChanged(); } }
+    private string? healthDisplay;
+    public string HealthDisplay { get { return healthDisplay ?? string.Empty; } private set { healthDisplay = value; OnPropertyChanged(); } }
 
-    private string headArmorDisplay;
-    public string HeadArmorDisplay { get { return headArmorDisplay; } private set { headArmorDisplay = value; OnPropertyChanged(); } }
+    private string? headArmorDisplay;
+    public string HeadArmorDisplay { get { return headArmorDisplay ?? string.Empty; } private set { headArmorDisplay = value; OnPropertyChanged(); } }
 
-    private string runDisplay;
-    public string RunDisplay { get { return runDisplay; } private set { runDisplay = value; OnPropertyChanged(); } }
+    private string? runDisplay;
+    public string RunDisplay { get { return runDisplay ?? string.Empty; } private set { runDisplay = value; OnPropertyChanged(); } }
 
-    private string hrvDurationDisplay;
-    public string HRVDurationDisplay { get { return hrvDurationDisplay; } private set { hrvDurationDisplay = value; OnPropertyChanged(); } }
+    private string? hrvDurationDisplay;
+    public string HRVDurationDisplay { get { return hrvDurationDisplay ?? string.Empty; } private set { hrvDurationDisplay = value; OnPropertyChanged(); } }
 
-    private string hrvRechargeDisplay;
-    public string HRVRechargeDisplay { get { return hrvRechargeDisplay; } private set { hrvRechargeDisplay = value; OnPropertyChanged(); } }
+    private string? hrvRechargeDisplay;
+    public string HRVRechargeDisplay { get { return hrvRechargeDisplay ?? string.Empty; } private set { hrvRechargeDisplay = value; OnPropertyChanged(); } }
 
-    private string gearSlotsDsiplay;
-    public string GearSlotsDsiplay { get { return gearSlotsDsiplay; } private set { gearSlotsDsiplay = value; OnPropertyChanged(); } }
+    private string? gearSlotsDsiplay;
+    public string GearSlotsDsiplay { get { return gearSlotsDsiplay ?? string.Empty; } private set { gearSlotsDsiplay = value; OnPropertyChanged(); } }
 
 
-    private string electroProtectionDisplay;
-    public string ElectroProtectionDisplay { get { return electroProtectionDisplay; } private set { electroProtectionDisplay = value; OnPropertyChanged(); } }
+    private string? electroProtectionDisplay;
+    public string ElectroProtectionDisplay { get { return electroProtectionDisplay ?? string.Empty; } private set { electroProtectionDisplay = value; OnPropertyChanged(); } }
 
-    private string explosionProtectionDisplay;
-    public string ExplosionProtectionDisplay { get { return explosionProtectionDisplay; } private set { explosionProtectionDisplay = value; OnPropertyChanged(); } }
+    private string? explosionProtectionDisplay;
+    public string ExplosionProtectionDisplay { get { return explosionProtectionDisplay ?? string.Empty; } private set { explosionProtectionDisplay = value; OnPropertyChanged(); } }
 
-    private string incendiaryProtectionDisplay;
-    public string IncendiaryProtectionDisplay { get { return incendiaryProtectionDisplay; } private set { incendiaryProtectionDisplay = value; OnPropertyChanged(); } }
-    private string infraredProtectionDisplay;
-    public string InfraredProtectionDisplay { get { return infraredProtectionDisplay; } private set { infraredProtectionDisplay = value; OnPropertyChanged(); } }
+    private string? incendiaryProtectionDisplay;
+    public string IncendiaryProtectionDisplay { get { return incendiaryProtectionDisplay ?? string.Empty; } private set { incendiaryProtectionDisplay = value; OnPropertyChanged(); } }
+    private string? infraredProtectionDisplay;
+    public string InfraredProtectionDisplay { get { return infraredProtectionDisplay ?? string.Empty; } private set { infraredProtectionDisplay = value; OnPropertyChanged(); } }
 
-    private string meleeProtectionDisplay;
-    public string MeleeProtectionDisplay { get { return meleeProtectionDisplay; } private set { meleeProtectionDisplay = value; OnPropertyChanged(); } }
-    private string toxicProtectionDisplay;
-    public string ToxicProtectionDisplay { get { return toxicProtectionDisplay; } private set { toxicProtectionDisplay = value; OnPropertyChanged(); } }
-    private string healthPercentageDisplay;
-    public string HealthPercentageDisplay { get { return healthPercentageDisplay; } private set { healthPercentageDisplay = value; OnPropertyChanged(); } }
-    private string headArmorPercentageDisplay;
-    public string HeadArmorPercentageDisplay { get { return headArmorPercentageDisplay; } private set { headArmorPercentageDisplay = value; OnPropertyChanged(); } }
-    private string runPercentageDisplay;
-    public string RunPercentageDisplay { get { return runPercentageDisplay; } private set { runPercentageDisplay = value; OnPropertyChanged(); } }
-    private string hrvDurationPercentageDisplay;
-    public string HRVDurationPercentageDisplay { get { return hrvDurationPercentageDisplay; } private set { hrvDurationPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? meleeProtectionDisplay;
+    public string MeleeProtectionDisplay { get { return meleeProtectionDisplay ?? string.Empty; } private set { meleeProtectionDisplay = value; OnPropertyChanged(); } }
+    private string? toxicProtectionDisplay;
+    public string ToxicProtectionDisplay { get { return toxicProtectionDisplay ?? string.Empty; } private set { toxicProtectionDisplay = value; OnPropertyChanged(); } }
+    private string? healthPercentageDisplay;
+    public string HealthPercentageDisplay { get { return healthPercentageDisplay ?? string.Empty; } private set { healthPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? headArmorPercentageDisplay;
+    public string HeadArmorPercentageDisplay { get { return headArmorPercentageDisplay ?? string.Empty; } private set { headArmorPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? runPercentageDisplay;
+    public string RunPercentageDisplay { get { return runPercentageDisplay ?? string.Empty; } private set { runPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? hrvDurationPercentageDisplay;
+    public string HRVDurationPercentageDisplay { get { return hrvDurationPercentageDisplay ?? string.Empty; } private set { hrvDurationPercentageDisplay = value; OnPropertyChanged(); } }
 
-    private string hrvRechargePercentageDisplay;
-    public string HRVRechargePercentageDisplay { get { return hrvRechargePercentageDisplay; } private set { hrvRechargePercentageDisplay = value; OnPropertyChanged(); } }
-    private string gearSlotsPercentageDisplay;
-    public string GearSlotsPercentageDisplay { get { return gearSlotsPercentageDisplay; } private set { gearSlotsPercentageDisplay = value; OnPropertyChanged(); } }
+    private string? hrvRechargePercentageDisplay;
+    public string HRVRechargePercentageDisplay { get { return hrvRechargePercentageDisplay ?? string.Empty; } private set { hrvRechargePercentageDisplay = value; OnPropertyChanged(); } }
+    private string? gearSlotsPercentageDisplay;
+    public string GearSlotsPercentageDisplay { get { return gearSlotsPercentageDisplay ?? string.Empty; } private set { gearSlotsPercentageDisplay = value; OnPropertyChanged(); } }
 
     #endregion DisplayProperties
 

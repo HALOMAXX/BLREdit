@@ -32,8 +32,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     }
     #endregion Events
 
-    public VisualProxyModule()
-    { MainWindow.ClientWindow.PropertyChanged += ActiveClientChanged; }
+    public VisualProxyModule(RepositoryProxyModule module)
+    { RepositoryProxyModule = module; MainWindow.ClientWindow.PropertyChanged += ActiveClientChanged; }
 
     public RepositoryProxyModule RepositoryProxyModule { get; set; }
 
@@ -61,8 +61,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
-    private BitmapImage image;
-    public BitmapImage Image
+    private BitmapImage? image;
+    public BitmapImage? Image
     {
         get
         {
@@ -160,7 +160,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     #endregion MetaData
 
 
-    private ICommand installCommand;
+    private ICommand? installCommand;
     public ICommand InstallCommand
     {
         get
@@ -172,7 +172,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
-    private ICommand removeCommand;
+    private ICommand? removeCommand;
     public ICommand RemoveCommand
     {
         get
@@ -184,8 +184,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
-    private ProxyModule installedModule;
-    public ProxyModule InstalledModule
+    private ProxyModule? installedModule;
+    public ProxyModule? InstalledModule
     { get { return installedModule; } }
 
     public UIBool Installed { get; } = new(false);
@@ -205,43 +205,40 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
-    private void CheckForInstall(BLRClient client)
+    private void CheckForInstall(BLRClient? client)
     {
         Installed.Set(false);
-        if (client is not null)
+        if (client is null) return;
+
+        foreach (var mod in client.InstalledModules)
         {
-            foreach (var mod in client.InstalledModules)
+            if (mod.InstallName == RepositoryProxyModule.InstallName)
             {
-                if (mod.InstallName == RepositoryProxyModule.InstallName)
-                {
-                    installedModule = mod;
-                    Installed.Set(true);
-                    break;
-                }
+                installedModule = mod;
+                Installed.Set(true);
+                break;
             }
         }
     }
 
-    private void CheckForUpdate(BLRClient client)
+    private void CheckForUpdate(BLRClient? client)
     {
         UpToDate.Set(false);
-        if (client is not null && Installed.Is && installedModule is not null)
+        if (client is null || Installed.IsNot || installedModule is null) return;
+        try
         {
-            try
-            {
-                var isUpToDate = installedModule.Published >= ReleaseDate;
-                UpToDate.Set(isUpToDate);
-            }
-            catch (Exception error)
-            {
-                LoggingSystem.Log($"Failed to get Updated Info Reason:\n{error}");
-            }
+            var isUpToDate = installedModule.Published >= ReleaseDate;
+            UpToDate.Set(isUpToDate);
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.Log($"Failed to get Updated Info Reason:\n{error}");
         }
     }
 
 
     [JsonIgnore] public UIBool LockInstall { get; } = new(false);
-    public async Task InstallModule(BLRClient client)
+    public void InstallModule(BLRClient? client)
     {
         if (client is null || LockInstall.Is) return;
         LockInstall.Set(true);
@@ -274,7 +271,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             } 
             else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in cache");
 
-            module ??= await RepositoryProxyModule.DownloadLatest();
+            module ??= RepositoryProxyModule.DownloadLatest();
 
             if (module is not null)
             {
@@ -307,9 +304,9 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     }
 
     [JsonIgnore] public UIBool LockRemove { get; } = new(false);
-    public void RemoveModule(BLRClient client)
+    public void RemoveModule(BLRClient? client)
     { 
-        if (LockRemove.Is) return;
+        if (client is null || LockRemove.Is) return;
         LockRemove.Set(true);
         try
         {

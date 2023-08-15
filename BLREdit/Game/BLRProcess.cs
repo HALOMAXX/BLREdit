@@ -62,7 +62,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
     private BLRProcess(string launchArgs, BLRClient client,bool isServer, bool watchdog = false)
     {
         IsServer= isServer;
-        Client = client;
+        this.client = client;
         Watchdog = watchdog;
         ProcessStartInfo psi = new()
         {
@@ -71,7 +71,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
             FileName = Client.PatchedPath,
             Arguments = launchArgs
         };
-        GameProcess = new()
+        this.gameProcess = new()
         {
             EnableRaisingEvents = true,
             StartInfo = psi

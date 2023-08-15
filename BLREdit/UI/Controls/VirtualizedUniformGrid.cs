@@ -18,7 +18,7 @@ namespace BLREdit.UI.Controls
         private Point _offset = new(0, 0);
         private bool _canHorizontallyScroll = true;
         private bool _canVerticallyScroll = true;
-        private ScrollViewer _owner;
+        private ScrollViewer? _owner;
         private int _scrollLength = 25;
         private Size _itemSize = new(0, 0);
 
@@ -247,7 +247,7 @@ namespace BLREdit.UI.Controls
             get { return _offset.Y; }
         }
 
-        public ScrollViewer ScrollOwner
+        public ScrollViewer? ScrollOwner
         {
             get { return _owner; }
             set { _owner = value; }

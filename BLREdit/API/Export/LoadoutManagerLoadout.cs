@@ -5,9 +5,9 @@ namespace BLREdit.Export;
 
 public sealed class LoadoutManagerLoadout
 {
-    public LoadoutManagerWeapon Primary { get; set; }
-    public LoadoutManagerWeapon Secondary { get; set; }
-    public LoadoutManagerGear Gear { get; set; }
+    public LoadoutManagerWeapon? Primary { get; set; }
+    public LoadoutManagerWeapon? Secondary { get; set; }
+    public LoadoutManagerGear? Gear { get; set; }
 
     public int[] Depot { get; set; } = new int[5];
     public int[] Taunts { get; set; } = new int[8];

@@ -31,6 +31,8 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private ObservableCollection<BLRServer>? _servers;
     public ObservableCollection<BLRClient> GameClients { get { _gameClients ??= IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new(); return _gameClients; } }
     public ObservableCollection<BLRServer> ServerList { get { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new(); return _servers; } }
+    //TODO: Split Server List Default(Github) and Custom(User Created)
+
 
     public readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
     public readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
@@ -40,7 +42,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private MagiCowsProfile? activeLoadoutSet = null;
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
-    public Type CurrentSortingEnumType { get; set; }
+    public Type? CurrentSortingEnumType { get; set; }
     public string CurrentSortingPropertyName { get; set; } = "None";
     public bool IsPlayerNameChanging { get; set; } = false;
     public bool IsPlayerProfileChanging { get; set; } = false;

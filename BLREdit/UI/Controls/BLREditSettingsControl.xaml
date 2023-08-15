@@ -13,11 +13,17 @@
     <StackPanel>
         <Border Name="PlayerNameBorder">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
-                <Label Content="{x:Static p:Resources.lbl_PlayerName}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
-                <TextBox Name="PlayerNameTextBox" Text="{Binding Path=PlayerName, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" TextChanged="PlayerNameTextBox_TextChanged"/>
+                <Label Content="{x:Static p:Resources.lbl_Region}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                <TextBox Name="PlayerNameTextBox" Text="{Binding Path=Region, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" TextChanged="PlayerNameTextBox_TextChanged"/>
             </StackPanel>
         </Border>
-        <Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                    <Label Content="{x:Static p:Resources.lbl_Region}" ToolTip="{x:Static p:Resources.txt_TT_Region }" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                    <TextBox Text="{Binding Path=PlayerName, Mode=TwoWay}" ToolTip="{x:Static p:Resources.txt_TT_Region }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
+                </StackPanel>
+            </Border>
+            <Border>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                 <Label Content="{x:Static p:Resources.lbl_Language}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
                 <ComboBox Height="32" Name="LanguageComboBox" DisplayMemberPath="DisplayName" SelectionChanged="LanguageComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.AvailableCultures)}"/>
@@ -73,13 +79,18 @@
                 <ToggleButton Content="{x:Static p:Resources.tbtn_InstallRequiredModules }" ToolTip="{x:Static p:Resources.tbtn_TT_InstallRequiredModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
             </StackPanel>
         </Border>
-            <Border>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=PingHiddenServers}">
-                    <ToggleButton Content="{x:Static p:Resources.tbtn_PingHiddenServers }" ToolTip="{x:Static p:Resources.tbtn_TT_PingHiddenServers }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-                </StackPanel>
-            </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=PingHiddenServers}">
+                <ToggleButton Content="{x:Static p:Resources.tbtn_PingHiddenServers }" ToolTip="{x:Static p:Resources.tbtn_TT_PingHiddenServers }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ShowHiddenServers}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_ShowHiddenServers }" ToolTip="{x:Static p:Resources.tbtn_TT_ShowHiddenServers }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+            </StackPanel>
+        </Border>
 
-            <Border>
+        <Border>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                     <Button Content="{x:Static p:Resources.btn_ResetToDefaults }" ToolTip="{x:Static p:Resources.btn_TT_ResetToDefaults }" Command="{Binding Path=ResetConfigCommand}"/>
             </StackPanel>

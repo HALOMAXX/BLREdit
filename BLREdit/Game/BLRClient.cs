@@ -43,45 +43,45 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
     [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
-    private Dictionary<string, BLRProfileSettingsWrapper> profileSettings;
-    [JsonIgnore] public Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get { profileSettings ??= LoadProfiles(); return profileSettings; } }
+    [JsonIgnore] private Dictionary<string?, BLRProfileSettingsWrapper>? profileSettings;
+    [JsonIgnore] public Dictionary<string?, BLRProfileSettingsWrapper> ProfileSettings { get { profileSettings ??= LoadProfiles(); return profileSettings; } }
     [JsonIgnore] public static BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/UI/Resources/V.png", UriKind.Absolute)); } }
-    [JsonIgnore] public BitmapImage ClientVersionPart1 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 2) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[1])}.png", UriKind.Absolute)); } return null; } }
-    [JsonIgnore] public BitmapImage ClientVersionPart2 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 3) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[2])}.png", UriKind.Absolute)); } return null; } }
-    [JsonIgnore] public BitmapImage ClientVersionPart3 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 4) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[3])}.png", UriKind.Absolute)); } return null; } }
-    [JsonIgnore] public BitmapImage ClientVersionPart4 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 5) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[4])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage? ClientVersionPart1 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 2) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[1])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage? ClientVersionPart2 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 3) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[2])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage? ClientVersionPart3 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 4) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[3])}.png", UriKind.Absolute)); } return null; } }
+    [JsonIgnore] public BitmapImage? ClientVersionPart4 { get { if (ClientVersion != "Unknown" && ClientVersion.Length >= 5) { return new BitmapImage(new Uri($"pack://application:,,,/UI/Resources/{char.GetNumericValue(ClientVersion[4])}.png", UriKind.Absolute)); } return null; } }
 
-    private string _originalHash;
-    public string OriginalHash {
+    private string? _originalHash;
+    public string? OriginalHash {
         get { return _originalHash; }
-        set { if (_originalHash != value && !string.IsNullOrEmpty(value)) { _originalHash = value; OnPropertyChanged(nameof(ClientVersion)); OnPropertyChanged(); } }
+        set { if (_originalHash != value) { _originalHash = value; OnPropertyChanged(nameof(ClientVersion)); OnPropertyChanged(); } }
     }
 
-    private string _patchedHash;
-    public string PatchedHash {
+    private string? _patchedHash;
+    public string? PatchedHash {
         get { return _patchedHash; }
-        set { if (_patchedHash != value && !string.IsNullOrEmpty(value)) { _patchedHash = value; OnPropertyChanged(); } }
+        set { if (_patchedHash != value) { _patchedHash = value; OnPropertyChanged(); } }
     }
 
-    private string _originalPath;
-    public string OriginalPath {
+    private string? _originalPath;
+    public string? OriginalPath {
         get { return _originalPath; }
         set { if (File.Exists(value)) { _originalPath = value; OriginalHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Origin Client Path {value}"); } }
     }
 
-    private string _patchedPath;
-    public string PatchedPath {
-        get { if (_patchedPath is null) { GetBasePath(); } return _patchedPath; }
+    private string? _patchedPath;
+    public string? PatchedPath {
+        get { if (_patchedPath is null) { _basePath = GetBasePath(); } return _patchedPath; }
         set { if (File.Exists(value)) { _patchedPath = value; Patched.Set(true); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
     }
 
-    private string _basePath;
-    public string BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
+    private string? _basePath;
+    public string? BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
 
     //TODO: Make sure there is always a value inside by lazy loading instead of filling it while patching as it could fail (do this everywhere)
-    private string _configFolder;
+    private string? _configFolder;
     public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}\\FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if(Directory.Exists(value)) _configFolder = value; } }
-    private string _modulesFolder;
+    private string? _modulesFolder;
     public string ModulesFolder { get { _modulesFolder ??= Directory.CreateDirectory($"{BasePath}\\Binaries\\Win32\\Modules\\").FullName; return _modulesFolder; } set { if (Directory.Exists(value)) _modulesFolder = value; } }
 
     public ObservableCollection<BLRClientPatch> AppliedPatches { get; set; } = new();
@@ -109,7 +109,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         LoggingSystem.Log($"[{this}]: has been invalidated!");
     }
 
-    public static Dictionary<string, string> VersionHashes => new()
+    public static Dictionary<string?, string> VersionHashes => new()
     {
         {"0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7", "v302"},
         {"de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3", "v301"},
@@ -121,7 +121,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         {"9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116", "v0993"}
     };
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj is BLRClient client)
         {
@@ -139,9 +139,9 @@ public sealed class BLRClient : INotifyPropertyChanged
     }
 
     #region ProfileSettings
-    private Dictionary<string, BLRProfileSettingsWrapper> LoadProfiles()
+    private Dictionary<string?, BLRProfileSettingsWrapper> LoadProfiles()
     {
-        var dict = new Dictionary<string, BLRProfileSettingsWrapper>();
+        var dict = new Dictionary<string?, BLRProfileSettingsWrapper>();
         var dirs = Directory.EnumerateDirectories($"{ConfigFolder}");
         foreach (var dir in dirs)
         {
@@ -167,7 +167,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             ExportSystem.UpdateOrAddProfileSettings(profile.Value.ProfileName, profile.Value);
         }
-        //App.Current?.Dispatcher?.Invoke(() => { MainWindow.Self?.SetProfileSettings(); });
     }
 
     public void ApplyProfileSetting(BLRProfileSettingsWrapper profileSettings)
@@ -201,7 +200,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             return false;
         }
 
-        if (!ValidateClientHash(OriginalHash, OriginalPath, out string NewOriginalHash))
+        if (!ValidateClientHash(OriginalHash, OriginalPath, out string? NewOriginalHash))
         {
             LoggingSystem.Log($"Original Client has changed was {OriginalHash} is now {NewOriginalHash}.");
             OriginalHash = NewOriginalHash;
@@ -215,7 +214,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             return PatchClient();
         }
 
-        if (!ValidateClientHash(PatchedHash, PatchedPath, out string NewPatchedHash))
+        if (!ValidateClientHash(PatchedHash, PatchedPath, out string? NewPatchedHash))
         {
             LoggingSystem.Log($"Client hasn't been patched yet or is corrupted/changed. [{PatchedHash}]/[{NewPatchedHash}]");
             return PatchClient();
@@ -296,7 +295,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             if (availableModule.RepositoryProxyModule.Required && !IsModuleInstalledAndUpToDate(availableModule))
             {
-                moduleInstallTasks.Add(Task.Run(async () => { await availableModule.InstallModule(this); }));
+                moduleInstallTasks.Add(Task.Run(() => { availableModule.InstallModule(this); }));
             }
         }
         if(moduleInstallTasks.Count > 0) Task.WaitAll(moduleInstallTasks.ToArray());
@@ -403,17 +402,17 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (module.Server) config.Proxy.Modules.Server.Add(module.InstallName);
     }
 
-    public static bool ValidateClientHash(string currentHash, string fileLocation, out string? newHash)
+    public static bool ValidateClientHash(string? currentHash, string? fileLocation, out string? newHash)
     {
         if (string.IsNullOrEmpty(currentHash) || string.IsNullOrEmpty(fileLocation)) { newHash = null; return false; }
         newHash = IOResources.CreateFileHash(fileLocation);
-        return currentHash.Equals(newHash);
+        return currentHash?.Equals(newHash) ?? false;
     }
 
     #endregion ClientValidation
 
     #region Commands
-    private ICommand patchClientCommand;
+    private ICommand? patchClientCommand;
     [JsonIgnore]
     public ICommand PatchClientCommand
     {
@@ -426,7 +425,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    private ICommand launchClientCommand;
+    private ICommand? launchClientCommand;
     [JsonIgnore]
     public ICommand LaunchClientCommand
     {
@@ -439,7 +438,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    private ICommand launchServerCommand;
+    private ICommand? launchServerCommand;
     [JsonIgnore]
     public ICommand LaunchServerCommand
     {
@@ -452,7 +451,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    private ICommand launchBotMatchCommand;
+    private ICommand? launchBotMatchCommand;
     [JsonIgnore]
     public ICommand LaunchBotMatchCommand
     {
@@ -465,7 +464,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    private ICommand modifyClientCommand;
+    private ICommand? modifyClientCommand;
     [JsonIgnore]
     public ICommand ModifyClientCommand
     {
@@ -478,7 +477,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    private ICommand currentClientCommand;
+    private ICommand? currentClientCommand;
     [JsonIgnore]
     public ICommand CurrentClientCommand
     {
@@ -497,7 +496,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
-        string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode.ModeName}?ServerName=BLREdit-{mode.ModeName}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}?SingleMatch";
+        string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}?SingleMatch";
         StartProcess(launchArgs, true, BLREditSettings.Settings.ServerWatchDog.Is);
         LaunchClient(new LaunchOptions() { UserName= BLREditSettings.Settings.PlayerName, Server=LocalHost });
     }
@@ -506,7 +505,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
-        string launchArgs = $"server {map.MapName}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
+        string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
         StartProcess(launchArgs, true, BLREditSettings.Settings.ServerWatchDog.Is);
     }
 
@@ -566,8 +565,9 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    private string GetBasePath()
+    private string? GetBasePath()
     {
+        if (OriginalPath is null || string.IsNullOrEmpty(OriginalPath)) { return null; }
         string[] pathParts = OriginalPath.Split('\\');
         string[] fileParts = pathParts[pathParts.Length - 1].Split('.');
         pathParts[pathParts.Length - 1] = fileParts[0] + "-BLREdit-Patched." + fileParts[1];

@@ -17,6 +17,7 @@ public sealed class BLRProfile
     public BLRLoadout Loadout1 { get; set; } = new();
     public BLRLoadout Loadout2 { get; set; } = new();
     public BLRLoadout Loadout3 { get; set; } = new();
+    private MagiCowsProfile? internalProfile;
 
     private bool isChanged = false;
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
@@ -41,7 +42,7 @@ public sealed class BLRProfile
 
     public static void UpdateSearchAndFilter()
     {
-        MainWindow.Instance.ApplySearchAndFilter();
+        MainWindow.Instance?.ApplySearchAndFilter();
     }
 
     public void CalculateStats()
@@ -51,9 +52,10 @@ public sealed class BLRProfile
         Loadout3.CalculateStats();
     }
 
-    private MagiCowsProfile internalProfile;
-    public void LoadMagiCowsProfile(MagiCowsProfile profile)
+    
+    public void LoadMagiCowsProfile(MagiCowsProfile? profile)
     {
+        if (profile is null) return;
         internalProfile = profile;
         Loadout1.LoadMagicCowsLoadout(internalProfile.Loadout1);
         Loadout2.LoadMagicCowsLoadout(internalProfile.Loadout2);

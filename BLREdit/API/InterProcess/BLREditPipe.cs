@@ -234,11 +234,13 @@ public sealed class BLREditPipe
             {
                 LoggingSystem.Log($"[BLREdit API](start-server): Starting Server ({json})");
                 var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json) ?? new();
-                BLRClient client;
+                BLRClient? client;
                 if (serverConfig.ClientId < 0)
                 { client = BLREditSettings.Settings.DefaultClient; }
                 else
                 { client = MainWindow.View.GameClients[serverConfig.ClientId]; }
+                if (client is null)
+                { LoggingSystem.Log("No client Available to launch server!"); return; }
 
                 //TODO: Transform Required Modules of ServerConfig to Modules to send to StartProcess as Enabled Modules list
 
@@ -252,7 +254,12 @@ public sealed class BLREditPipe
         });
         ApiEndPoints.Add("import-profile", (compressedBase64) => {
             LoggingSystem.Log($"[BLREdit API](import-profile): Importing Profile");
-            var profile = IOResources.Deserialize<ShareableProfile>(IOResources.Base64ToJson(compressedBase64)).ToBLRProfile();
+            if (string.IsNullOrEmpty(compressedBase64)) { LoggingSystem.Log($"[BLREdit API](import-profile): Recieved Empty string!"); return; }
+            var json = IOResources.Base64ToJson(compressedBase64);
+            if (string.IsNullOrEmpty(json) || (!json.StartsWith("{") && !json.StartsWith("["))) { LoggingSystem.Log("[BLREdit API](import-profile): Recieved invalid json"); return; }
+            var sharedProfile = IOResources.Deserialize<ShareableProfile>(json);
+            if (sharedProfile is null) { LoggingSystem.Log("[BLREdit API](import-profile): failed to deserialize shareable profile!"); return; }
+            var profile = sharedProfile.ToBLRProfile();
             var newProfile = ExportSystem.AddProfile("Imported-Profile");
             profile.WriteMagiCowsProfile(newProfile, true);
             MainWindow.ShowAlert($"Import-Profile({newProfile.Index}) has been Imported!");

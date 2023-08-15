@@ -72,7 +72,6 @@ public sealed partial class MainWindow : Window
     }
 
 
-
     public static void CheckGameClients()
     {
         LoggingSystem.Log("Checking for patched clients");
@@ -84,11 +83,11 @@ public sealed partial class MainWindow : Window
 
     static readonly Stopwatch PingWatch = Stopwatch.StartNew();
     static bool firstStart = true;
-    public static void RefreshPing()
+    public static void RefreshPing(bool force = false)
     {
-        if (firstStart || PingWatch.ElapsedMilliseconds > 30000)
+        if (force || firstStart || PingWatch.ElapsedMilliseconds > 30000)
         {
-            firstStart= false;
+            firstStart = false;
             foreach (BLRServer server in View.ServerList)
             {
                 server.PingServer();
@@ -97,34 +96,43 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private static void AddDefaultServers()
+    private static void AddOrUpdateDefaultServers()
     {
         foreach (BLRServer defaultServer in App.DefaultServers)
         {
-            AddServer(defaultServer);
+            AddOrUpdateDefaultServer(defaultServer);
         }
+    }
+
+    public static void AddOrUpdateDefaultServer(BLRServer server)
+    {
+        var index = IsInCollection(View.ServerList, server);
+        if (index == -1) { View.ServerList.Add(server); return; } 
+        View.ServerList[index].Hidden = server.Hidden;
+        View.ServerList[index].Region = server.Region;
     }
 
     public static void AddServer(BLRServer server, bool forceAdd = false)
     {
-        if (forceAdd || !IsInCollection(View.ServerList, server))
+        if (forceAdd || IsInCollection(View.ServerList, server) == -1)
         {
             View.ServerList.Add(server);
         }
     }
 
-    public static bool IsInCollection<T>(ObservableCollection<T> collection, T item)
+    public static int IsInCollection<T>(ObservableCollection<T> collection, T item)
     {
-        foreach (T item2 in collection) 
-        { 
-            if(item.Equals(item2)) return true;
+        if (item is null) return -1;
+        for (int i = 0; i < collection.Count; i++)
+        {
+            if (item.Equals(collection[i])) return i;
         }
-        return false;
+        return -1;
     }
 
     public static void AddGameClient(BLRClient client)
     {
-        if(!IsInCollection(View.GameClients, client))
+        if(IsInCollection(View.GameClients, client) == -1)
         {
             View.GameClients.Add(client);
             LoggingSystem.Log($"Adding New Client: {client}");
@@ -180,17 +188,20 @@ public sealed partial class MainWindow : Window
                 image = (Image)order.Child;
             }
 
-            if (image is null || border is null) LoggingSystem.Log("Image or Border is null");
+            if (image is null || border is null) { LoggingSystem.Log("Image or Border is null"); return; }
 
-            if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
+            if (border.Parent is FrameworkElement parent)
             {
-                UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
-                UndoRedoSystem.EndAction();
-            }
-            else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
-            {
-                UndoRedoSystem.DoAction(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
-                UndoRedoSystem.EndAction();
+                if (parent.DataContext is BLRWeapon weapon)
+                {
+                    UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
+                    UndoRedoSystem.EndAction();
+                }
+                else if(parent.DataContext is BLRLoadout loadout)
+                {
+                    UndoRedoSystem.DoAction(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
+                    UndoRedoSystem.EndAction();
+                }
             }
         }
     }
@@ -217,103 +228,115 @@ public sealed partial class MainWindow : Window
         {
             if (wasLastImageScopePreview)
             {
-                foreach (var item in ImportSystem.GetItemListOfType(ImportSystem.SCOPES_CATEGORY))
+                var itemlist = ImportSystem.GetItemListOfType(ImportSystem.SCOPES_CATEGORY);
+                if (itemlist is not null)
                 {
-                    item.RemoveCrosshair();
+                    foreach (var item in itemlist)
+                    {
+                        item.RemoveCrosshair();
+                    }
                 }
             }
-            var weapon = ((FrameworkElement)border.Parent).DataContext as BLRWeapon;
-            if (weapon is not null) ItemFilters.Instance.WeaponFilter = weapon.Reciever;
-            View.LastSelectedItemBorder = border;
-            wasLastImageScopePreview = false;
-            switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
+
+            if(border.Parent is FrameworkElement parent && parent.DataContext is BLRWeapon weapon)
             {
-                case "Reciever":
-                    if (weapon.IsPrimary) SetItemList(ImportSystem.PRIMARY_CATEGORY);
-                    if (!weapon.IsPrimary) SetItemList(ImportSystem.SECONDARY_CATEGORY);
-                    break;
-                case "Muzzle":
-                    SetItemList(ImportSystem.MUZZELS_CATEGORY);
-                    break;
-                case "Magazine":
-                    SetItemList(ImportSystem.MAGAZINES_CATEGORY);
-                    break;
-                case "Barrel":
-                    SetItemList(ImportSystem.BARRELS_CATEGORY);
-                    break;
-                case "Scope":
-                    if (image.DataContext is not BLRWeapon)
-                    {
-                        SetItemList(ImportSystem.SCOPES_CATEGORY);
-                    }
-                    else
-                    {
-                        weapon?.Scope?.LoadCrosshair(weapon);
-                        wasLastImageScopePreview = true;
-                        ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
-                    }
-                    break;
-                case "Stock":
-                    SetItemList(ImportSystem.STOCKS_CATEGORY);
-                    break;
-                case "Grip":
-                    SetItemList(ImportSystem.GRIPS_CATEGORY);
-                    break;
-                case "Tag":
-                    SetItemList(ImportSystem.HANGERS_CATEGORY);
-                    break;
-                case "Camo":
-                    SetItemList(ImportSystem.CAMOS_WEAPONS_CATEGORY);
-                    break;
-                case "Ammo":
-                    SetItemList(ImportSystem.AMMO_CATEGORY);
-                    break;
-                case "Skin":
-                    SetItemList(ImportSystem.PRIMARY_SKIN_CATEGORY);
-                    break;
+                ItemFilters.Instance.WeaponFilter = weapon.Reciever;
+                View.LastSelectedItemBorder = border;
+                wasLastImageScopePreview = false;
+                switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
+                {
+                    case "Reciever":
+                        if (weapon.IsPrimary)
+                        { SetItemList(ImportSystem.PRIMARY_CATEGORY); }
+                        else
+                        { SetItemList(ImportSystem.SECONDARY_CATEGORY); }
+                        break;
+                    case "Muzzle":
+                        SetItemList(ImportSystem.MUZZELS_CATEGORY);
+                        break;
+                    case "Magazine":
+                        SetItemList(ImportSystem.MAGAZINES_CATEGORY);
+                        break;
+                    case "Barrel":
+                        SetItemList(ImportSystem.BARRELS_CATEGORY);
+                        break;
+                    case "Scope":
+                        if (image.DataContext is not BLRWeapon)
+                        {
+                            SetItemList(ImportSystem.SCOPES_CATEGORY);
+                        }
+                        else
+                        {
+                            if (weapon.Scope is not null)
+                            {
+                                weapon.Scope.LoadCrosshair(weapon);
+                                wasLastImageScopePreview = true;
+                                ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
+                            }
+                        }
+                        break;
+                    case "Stock":
+                        SetItemList(ImportSystem.STOCKS_CATEGORY);
+                        break;
+                    case "Grip":
+                        SetItemList(ImportSystem.GRIPS_CATEGORY);
+                        break;
+                    case "Tag":
+                        SetItemList(ImportSystem.HANGERS_CATEGORY);
+                        break;
+                    case "Camo":
+                        SetItemList(ImportSystem.CAMOS_WEAPONS_CATEGORY);
+                        break;
+                    case "Ammo":
+                        SetItemList(ImportSystem.AMMO_CATEGORY);
+                        break;
+                    case "Skin":
+                        SetItemList(ImportSystem.PRIMARY_SKIN_CATEGORY);
+                        break;
 
-                case "BodyCamo":
-                    SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
-                    break;
-                case "Helmet":
-                    SetItemList(ImportSystem.HELMETS_CATEGORY);
-                    break;
-                case "UpperBody":
-                    SetItemList(ImportSystem.UPPER_BODIES_CATEGORY);
-                    break;
-                case "LowerBody":
-                    SetItemList(ImportSystem.LOWER_BODIES_CATEGORY);
-                    break;
-                case "Tactical":
-                    SetItemList(ImportSystem.TACTICAL_CATEGORY);
-                    break;
-                case "Trophy":
-                    SetItemList(ImportSystem.BADGES_CATEGORY);
-                    break;
-                case "Avatar":
-                    SetItemList(ImportSystem.AVATARS_CATEGORY);
-                    break;
+                    case "BodyCamo":
+                        SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
+                        break;
+                    case "Helmet":
+                        SetItemList(ImportSystem.HELMETS_CATEGORY);
+                        break;
+                    case "UpperBody":
+                        SetItemList(ImportSystem.UPPER_BODIES_CATEGORY);
+                        break;
+                    case "LowerBody":
+                        SetItemList(ImportSystem.LOWER_BODIES_CATEGORY);
+                        break;
+                    case "Tactical":
+                        SetItemList(ImportSystem.TACTICAL_CATEGORY);
+                        break;
+                    case "Trophy":
+                        SetItemList(ImportSystem.BADGES_CATEGORY);
+                        break;
+                    case "Avatar":
+                        SetItemList(ImportSystem.AVATARS_CATEGORY);
+                        break;
 
-                case "Gear1":
-                case "Gear2":
-                case "Gear3":
-                case "Gear4":
-                    SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
-                    break;
+                    case "Gear1":
+                    case "Gear2":
+                    case "Gear3":
+                    case "Gear4":
+                        SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
+                        break;
 
-                case "Taunt1":
-                case "Taunt2":
-                case "Taunt3":
-                case "Taunt4":
-                    SetItemList(ImportSystem.EMOTES_CATEGORY);
-                    break;
-                case "Depot1":
-                case "Depot2":
-                case "Depot3":
-                case "Depot4":
-                case "Depot5":
-                    SetItemList(ImportSystem.SHOP_CATEGORY);
-                    break;
+                    case "Taunt1":
+                    case "Taunt2":
+                    case "Taunt3":
+                    case "Taunt4":
+                        SetItemList(ImportSystem.EMOTES_CATEGORY);
+                        break;
+                    case "Depot1":
+                    case "Depot2":
+                    case "Depot3":
+                    case "Depot4":
+                    case "Depot5":
+                        SetItemList(ImportSystem.SHOP_CATEGORY);
+                        break;
+                }
             }
             return;
         }
@@ -335,10 +358,10 @@ public sealed partial class MainWindow : Window
     private string lastSelectedType = "";
     public void SetItemList(string? Type = null)
     {
-        if (Type is null) Type = lastSelectedType;
-        else lastSelectedType = Type;
+        if (Type is null) { Type = lastSelectedType; }
+        else { lastSelectedType = Type; }
         var list = ImportSystem.GetItemListOfType(Type);
-        if (list.Count > 0)
+        if (list is not null && list.Count > 0)
         {
             switch (list[0].Category)
             {
@@ -390,9 +413,13 @@ public sealed partial class MainWindow : Window
 
             ItemList.ItemsSource = list;
             ApplySorting();
+            LoggingSystem.Log($"ItemList Set for {Type}");
+            if (!ItemListTab.IsFocused) ItemListTab.Focus();
         }
-        LoggingSystem.Log($"ItemList Set for {Type}");
-        if (!ItemListTab.IsFocused) ItemListTab.Focus();
+        else
+        {
+            LoggingSystem.Log($"Failed to Set ItemList to {Type}");
+        }
     }
 
     public void ApplySorting()
@@ -432,9 +459,9 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public static void SetItemToBorder(Border border, BLRItem item, bool blockEvent = false, bool blockUpdate = false)
+    public static void SetItemToBorder(Border? border, BLRItem item, bool blockEvent = false, bool blockUpdate = false)
     {
-        if (border is null) { LoggingSystem.Log($"Missing Border in SetItemToBorder()"); return; }
+        if (border is null) { LoggingSystem.Log($"Missing Border in MainWindow.SetItemToBorder"); return; }
         if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
         {
             UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon, blockEvent, blockUpdate);
@@ -500,11 +527,14 @@ public sealed partial class MainWindow : Window
         }
         else
         {
-            var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}profiles\\";
-            Directory.CreateDirectory(directory);
-            IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(View.Profile.Loadout1), new LoadoutManagerLoadout(View.Profile.Loadout2), new LoadoutManagerLoadout(View.Profile.Loadout3) });
-            ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8);
-            View.Profile.IsChanged = false;
+            if(BLREditSettings.Settings.DefaultClient is not null)
+            {
+                var directory = $"{BLREditSettings.Settings.DefaultClient.ConfigFolder}profiles\\";
+                Directory.CreateDirectory(directory);
+                IOResources.SerializeFile($"{directory}{BLREditSettings.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(View.Profile.Loadout1), new LoadoutManagerLoadout(View.Profile.Loadout2), new LoadoutManagerLoadout(View.Profile.Loadout3) });
+                ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8);
+                View.Profile.IsChanged = false;
+            }
         }
     }
 
@@ -600,9 +630,9 @@ public sealed partial class MainWindow : Window
                     var hit = VisualTreeHelper.HitTest(this, p);
                     if (hit.VisualHit is FrameworkElement element)
                     {
-                        while (element is not null && element.Parent is not null && element.GetType() != typeof(WeaponControl))
+                        while (element is not null && element.GetType() != typeof(WeaponControl) && element.Parent is FrameworkElement parentElement)
                         {
-                            element = element.Parent as FrameworkElement;
+                            element = parentElement;
                         }
                         if (element is WeaponControl control)
                         {
@@ -622,9 +652,9 @@ public sealed partial class MainWindow : Window
                     var hit = VisualTreeHelper.HitTest(this, p);
                     if (hit.VisualHit is FrameworkElement element)
                     {
-                        while (element is not null && element.Parent is not null && element.GetType() != typeof(WeaponControl))
+                        while (element is not null && element.GetType() != typeof(WeaponControl) && element.Parent is FrameworkElement parentElement)
                         {
-                            element = element.Parent as FrameworkElement;
+                            element = parentElement;
                         }
                         if (element is WeaponControl control)
                         {
@@ -671,7 +701,7 @@ public sealed partial class MainWindow : Window
         { e.Handled = true; }
     }
 
-    private Border lastLoadoutBorder;
+    private Border? lastLoadoutBorder;
     private void LoadoutTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         BlockChangeNotif = true;
@@ -827,7 +857,7 @@ public sealed partial class MainWindow : Window
             }
         }
 
-        AddDefaultServers();
+        AddOrUpdateDefaultServers();
 
         if (BLREditSettings.Settings.DefaultServer is null)
         {
@@ -868,7 +898,7 @@ public sealed partial class MainWindow : Window
         Duration = new Duration(TimeSpan.FromSeconds(2))
     };
 
-    ColorAnimation lastAnim;
+    ColorAnimation? lastAnim;
 
     public bool BlockChangeNotif { get; set; } = false;
 

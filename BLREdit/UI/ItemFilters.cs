@@ -21,15 +21,15 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static ItemFilters Instance { get; private set; } = new ItemFilters();
 
-    private BLRItem weaponFilter;
-    public BLRItem WeaponFilter { get { return weaponFilter; } set { weaponFilter = value; OnPropertyChanged(); } }
+    private BLRItem? weaponFilter;
+    public BLRItem? WeaponFilter { get { return weaponFilter; } set { weaponFilter = value; OnPropertyChanged(); } }
     private string searchFilter = "";
-    public string SearchFilter { get { return searchFilter; } set { searchFilter = value; MainWindow.Instance.ApplySearchAndFilter(); OnPropertyChanged(); } }
+    public string SearchFilter { get { return searchFilter; } set { searchFilter = value; MainWindow.Instance?.ApplySearchAndFilter(); OnPropertyChanged(); } }
 
     public static bool FilterBySearch(BLRItem item)
     {
         string searchText = Instance.SearchFilter.Trim().ToLower();
-        string itemName = item.Name.ToLower();
+        string itemName = item.Name?.ToLower() ?? string.Empty;
         if (string.IsNullOrEmpty(searchText)) { return true; }
         return itemName.Contains(searchText);
     }

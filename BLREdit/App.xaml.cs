@@ -150,7 +150,7 @@ public partial class App : System.Windows.Application
 
 
             Dictionary<int, List<BLRItem>> NameIDList = new();
-            Dictionary<string, List<BLRItem>> NameList = new();
+            Dictionary<string?, List<BLRItem>> NameList = new();
 
             foreach (var cat in ImportSystem.ItemLists)
             {
@@ -329,13 +329,13 @@ public partial class App : System.Windows.Application
 
     private static void CleanPackageOrUpdateDirectory()
     {
-        if (exeZip.Info.Exists) { exeZip.Info.Delete(); }
-        if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
-        if (jsonZip.Info.Exists) { jsonZip.Info.Delete(); }
-        if (dllsZip.Info.Exists) { dllsZip.Info.Delete(); }
-        if (texturesZip.Info.Exists) { texturesZip.Info.Delete(); }
-        if (crosshairsZip.Info.Exists) { crosshairsZip.Info.Delete(); }
-        if (patchesZip.Info.Exists) { patchesZip.Info.Delete(); }
+        if (exeZip is not null && exeZip.Info.Exists) { exeZip.Info.Delete(); }
+        if (assetZip is not null && assetZip.Info.Exists) { assetZip.Info.Delete(); }
+        if (jsonZip is not null && jsonZip.Info.Exists) { jsonZip.Info.Delete(); }
+        if (dllsZip is not null && dllsZip.Info.Exists) { dllsZip.Info.Delete(); }
+        if (texturesZip is not null && texturesZip.Info.Exists) { texturesZip.Info.Delete(); }
+        if (crosshairsZip is not null && crosshairsZip.Info.Exists) { crosshairsZip.Info.Delete(); }
+        if (patchesZip is not null && patchesZip.Info.Exists) { patchesZip.Info.Delete(); }
     }
 
     public static void PackageAssets()
@@ -347,15 +347,23 @@ public partial class App : System.Windows.Application
 
         CleanPackageOrUpdateDirectory();
 
+        if (exeZip is null) { LoggingSystem.Log("[PackageAssets]: exeZip was null"); return; }
+        if (assetZip is null) { LoggingSystem.Log("[PackageAssets]: assetZip was null"); return; }
+        if (jsonZip is null) { LoggingSystem.Log("[PackageAssets]: jsonZip was null"); return; }
+        if (dllsZip is null) { LoggingSystem.Log("[PackageAssets]: dllsZip was null"); return; }
+        if (texturesZip is null) { LoggingSystem.Log("[PackageAssets]: texturesZip was null"); return; }
+        if (crosshairsZip is null) { LoggingSystem.Log("[PackageAssets]: crosshairsZip was null"); return; }
+        if (patchesZip is null) { LoggingSystem.Log("[PackageAssets]: patchesZip was null"); return; }
+
         var taskLocalize = Task.Run(() => {
-            Dictionary<string, string> LocalePairs = new();
+            Dictionary<string, string?> LocalePairs = new();
             var dirs = Directory.EnumerateDirectories(BLREditLocation);
             foreach (var dir in dirs)
             {
                 string resourceFile = $"{dir}\\BLREdit.resources.dll";
                 if (File.Exists(resourceFile))
                 { 
-                    string hash = IOResources.CreateFileHash(resourceFile);
+                    var hash = IOResources.CreateFileHash(resourceFile);
                     string locale = dir.Substring(dir.Length - 5, 5);
                     string targetZip = $"{IOResources.PACKAGE_DIR}\\locale\\Localizations\\{locale}.zip";
                     LocalePairs.Add(locale, hash);
@@ -386,18 +394,18 @@ public partial class App : System.Windows.Application
         SetUpdateFilePath();
     }
 
-    private readonly static Dictionary<FileInfoExtension, string> DownloadLinks = new();
+    private readonly static Dictionary<FileInfoExtension?, string> DownloadLinks = new();
 
-    private static FileInfoExtension currentExe;
-    private static FileInfoExtension backupExe;
+    private static FileInfoExtension? currentExe;
+    private static FileInfoExtension? backupExe;
     //Need to download 
-    private static FileInfoExtension exeZip;
-    private static FileInfoExtension assetZip;
-    private static FileInfoExtension jsonZip;
-    private static FileInfoExtension dllsZip;
-    private static FileInfoExtension texturesZip;
-    private static FileInfoExtension crosshairsZip;
-    private static FileInfoExtension patchesZip;
+    private static FileInfoExtension? exeZip;
+    private static FileInfoExtension? assetZip;
+    private static FileInfoExtension? jsonZip;
+    private static FileInfoExtension? dllsZip;
+    private static FileInfoExtension? texturesZip;
+    private static FileInfoExtension? crosshairsZip;
+    private static FileInfoExtension? patchesZip;
 
     public static bool VersionCheck()
     {
@@ -411,7 +419,7 @@ public partial class App : System.Windows.Application
             if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
             LoggingSystem.Log($"Newest Version: {BLREditLatestRelease.TagName} of {BLREditLatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-            var remoteVersion = CreateVersion(BLREditLatestRelease.TagName);
+            var remoteVersion = CreateVersion(BLREditLatestRelease?.TagName ?? string.Empty);
             var localVersion = CreateVersion(CurrentVersion);
 
             bool newVersionAvailable = remoteVersion > localVersion;
@@ -419,29 +427,29 @@ public partial class App : System.Windows.Application
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
 
-            if (BLREditLatestRelease is not null)
+            if (BLREditLatestRelease is not null && BLREditLatestRelease.Assets is not null)
             {
                 foreach (var asset in BLREditLatestRelease.Assets)
                 {
-                    if (asset.Name.StartsWith(exeZip.Name) && asset.Name.EndsWith(exeZip.Info.Extension))
+                    if (exeZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(exeZip.Name) && asset.Name.EndsWith(exeZip.Info.Extension))
                     { DownloadLinks.Add(exeZip, asset.BrowserDownloadURL); }
 
-                    if (asset.Name.StartsWith(assetZip.Name) && asset.Name.EndsWith(assetZip.Info.Extension))
+                    if (assetZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(assetZip.Name) && asset.Name.EndsWith(assetZip.Info.Extension))
                     { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
 
-                    if (asset.Name.StartsWith(jsonZip.Name) && asset.Name.EndsWith(jsonZip.Info.Extension))
+                    if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(jsonZip.Name) && asset.Name.EndsWith(jsonZip.Info.Extension))
                     { DownloadLinks.Add(jsonZip, asset.BrowserDownloadURL); }
 
-                    if (asset.Name.StartsWith(dllsZip.Name) && asset.Name.EndsWith(dllsZip.Info.Extension))
+                    if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(dllsZip.Name) && asset.Name.EndsWith(dllsZip.Info.Extension))
                     { DownloadLinks.Add(dllsZip, asset.BrowserDownloadURL); }
 
-                    if (asset.Name.StartsWith(texturesZip.Name) && asset.Name.EndsWith(texturesZip.Info.Extension))
+                    if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(texturesZip.Name) && asset.Name.EndsWith(texturesZip.Info.Extension))
                     { DownloadLinks.Add(texturesZip, asset.BrowserDownloadURL); }
 
-                    if (asset.Name.StartsWith(crosshairsZip.Name) && asset.Name.EndsWith(crosshairsZip.Info.Extension))
+                    if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(crosshairsZip.Name) && asset.Name.EndsWith(crosshairsZip.Info.Extension))
                     { DownloadLinks.Add(crosshairsZip, asset.BrowserDownloadURL); }
 
-                    if (asset.Name.StartsWith(patchesZip.Name) && asset.Name.EndsWith(patchesZip.Info.Extension))
+                    if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(patchesZip.Name) && asset.Name.EndsWith(patchesZip.Info.Extension))
                     { DownloadLinks.Add(patchesZip, asset.BrowserDownloadURL); }
                 }
 
@@ -476,6 +484,10 @@ public partial class App : System.Windows.Application
 
     private static void UpdateEXE()
     {
+        if (exeZip is null) { LoggingSystem.Log("[UpdateEXE]: exeZip was null"); return; }
+        if (backupExe is null) { LoggingSystem.Log("[UpdateEXE]: backupExe was null"); return; }
+        if (currentExe is null) { LoggingSystem.Log("[UpdateEXE]: currentExe was null"); return; }
+
         if (DownloadLinks.TryGetValue(exeZip, out string exeDL))
         {
             if (exeZip.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {exeZip.Info.FullName}"); exeZip.Info.Delete(); }
@@ -512,6 +524,7 @@ public partial class App : System.Windows.Application
 
     private static void DownloadAssetFolder()
     {
+        if (assetZip is null) { LoggingSystem.Log("[DownloadAssetFolder] failed assetZip was null!"); return; }
         if (DownloadLinks.TryGetValue(assetZip, out string assetDL))
         {
             if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
@@ -524,6 +537,13 @@ public partial class App : System.Windows.Application
 
     private static void UpdateAllAssetPacks()
     {
+        if (exeZip is null) { LoggingSystem.Log("[UpdateAllAssetPacks]: exeZip was null"); return; }
+        if (assetZip is null) { LoggingSystem.Log("[UpdateAllAssetPacks]: assetZip was null"); return; }
+        if (jsonZip is null) { LoggingSystem.Log("[UpdateAllAssetPacks]: jsonZip was null"); return; }
+        if (dllsZip is null) { LoggingSystem.Log("[UpdateAllAssetPacks]: dllsZip was null"); return; }
+        if (texturesZip is null) { LoggingSystem.Log("[UpdateAllAssetPacks]: texturesZip was null"); return; }
+        if (crosshairsZip is null) { LoggingSystem.Log("[UpdateAllAssetPacks]: crosshairsZip was null"); return; }
+        if (patchesZip is null) { LoggingSystem.Log("[UpdateAllAssetPacks]: patchesZip was null"); return; }
         //Sync DL
         DownloadAssetPack(jsonZip);
         DownloadAssetPack(dllsZip);
@@ -563,8 +583,9 @@ public partial class App : System.Windows.Application
             Restart();
         }
     }
-    private static void DownloadAssetPack(FileInfoExtension pack)
+    private static void DownloadAssetPack(FileInfoExtension? pack)
     {
+        if (pack is null) { LoggingSystem.Log("[DownloadAssetPack] failed pack was null!"); return; }
         if (DownloadLinks.TryGetValue(pack, out string dl))
         {
             if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
@@ -633,7 +654,7 @@ public partial class App : System.Windows.Application
         return version;
     }
 
-    private static async Task<RepositoryProxyModule[]> GetAvailableProxyModules()
+    private static async Task<RepositoryProxyModule[]?> GetAvailableProxyModules()
     {
         LoggingSystem.Log("Downloading AvailableProxyModule List!");
         try
@@ -650,7 +671,7 @@ public partial class App : System.Windows.Application
         return Array.Empty<RepositoryProxyModule>();
     }
 
-    private static async Task<Dictionary<string, string>> GetAvailableLocalizations()
+    private static async Task<Dictionary<string, string>?> GetAvailableLocalizations()
     {
         LoggingSystem.Log("Downloading AvailableLocalization List!");
         try
@@ -667,7 +688,7 @@ public partial class App : System.Windows.Application
         return new();
     }
 
-    private static async Task<List<BLRServer>> GetDefaultServers()
+    private static async Task<List<BLRServer>?> GetDefaultServers()
     {
         LoggingSystem.Log($"Downloading Default Server List!");
         try
@@ -734,16 +755,30 @@ public partial class App : System.Windows.Application
     {
         if (checkedForModules) return;
         checkedForModules = true;
+        
         var availableModuleCheck = Task.Run(GetAvailableProxyModules);
         var availableLocalizations = Task.Run(GetAvailableLocalizations);
         var defaultServers = Task.Run(GetDefaultServers);
+        
         Task.WaitAll(availableModuleCheck, availableLocalizations, defaultServers);
-        DefaultServers = defaultServers.Result;
-        AvailableLocalizations = availableLocalizations.Result;
+        
+        var serverList = defaultServers.Result;
+        var localizationList = availableLocalizations.Result;
         var modules = availableModuleCheck.Result;
+
+        if (serverList is not null) { DefaultServers = serverList; }
+        else
+        { LoggingSystem.Log("[AvailableProxyModuleCheck] returned Server List was null!"); }
+
+        if (localizationList is not null) { AvailableLocalizations = localizationList; }
+        else
+        { LoggingSystem.Log("[AvailableProxyModuleCheck] returned Localization List was null!"); }
+        
+        if (modules is null) { LoggingSystem.Log("[AvailableProxyModuleCheck] returned Module List was null!"); return; }
+        
         for (int i = 0; i < modules.Length; i++)
         {
-            AvailableProxyModules.Add(new VisualProxyModule() { RepositoryProxyModule = modules[i] });
+            AvailableProxyModules.Add(new VisualProxyModule(modules[i]));
         }
     }
 

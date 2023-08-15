@@ -150,6 +150,9 @@
   <data name="btn_GenderToggle_Male" xml:space="preserve">
     <value>Male</value>
   </data>
+  <data name="btn_QuickMatch" xml:space="preserve">
+    <value>Quick Match</value>
+  </data>
   <data name="btn_RandomizeLoadout" xml:space="preserve">
     <value>Randomize</value>
   </data>
@@ -402,6 +405,9 @@
   <data name="lbl_RecoilVerticalRatio" xml:space="preserve">
     <value>Vertical Recoil Ratio:</value>
   </data>
+  <data name="lbl_Region" xml:space="preserve">
+    <value>Region:</value>
+  </data>
   <data name="lbl_ReloadEmpty" xml:space="preserve">
     <value>Reload:</value>
   </data>
@@ -546,6 +552,9 @@
   <data name="tbtn_ServerWatchDog" xml:space="preserve">
     <value>Server WatchDog</value>
   </data>
+  <data name="tbtn_ShowHiddenServers" xml:space="preserve">
+    <value>Show Hidden Servers</value>
+  </data>
   <data name="tbtn_ShowUpdateNotice" xml:space="preserve">
     <value>UpdateNotice</value>
   </data>
@@ -580,6 +589,9 @@ Needs a Restart to Install Protocol!</value>
   </data>
   <data name="tbtn_TT_ServerWatchDog" xml:space="preserve">
     <value>Enables the Server WatchDog which will Restart's the server instantly if it crashes or get's closed while BLRedit is Runnning!</value>
+  </data>
+  <data name="tbtn_TT_ShowHiddenServers" xml:space="preserve">
+    <value>Show Hidden Servers even when they are offline</value>
   </data>
   <data name="tbtn_TT_ShowUpdateNotice" xml:space="preserve">
     <value>Opens the default Web browser to the Newest release when a new one is available</value>
@@ -622,6 +634,9 @@ Needs a Restart to Install Protocol!</value>
   </data>
   <data name="ti_Weapons" xml:space="preserve">
     <value>Weapons</value>
+  </data>
+  <data name="txt_TT_Region" xml:space="preserve">
+    <value>Region examples (EU-West, US-West, AU, OCE)</value>
   </data>
   <data name="winT_ClientConfigWindow" xml:space="preserve">
     <value>Client Configuration</value>
