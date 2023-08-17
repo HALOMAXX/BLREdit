@@ -1,5 +1,6 @@
 using BLREdit.API.REST_API.MagiCow;
 using BLREdit.API.REST_API.Server;
+using BLREdit.API.Utils;
 using BLREdit.UI;
 using BLREdit.UI.Windows;
 
@@ -52,13 +53,13 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public UIBool IsPinging { get; } = new(false);
     [JsonIgnore] public MagiCowServerInfo MagiInfo { get; private set; } = new();
     [JsonIgnore] public ServerUtilsInfo ServerInfo { get; private set; } = new();
-    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.TeamsList.Count >= 2); } else if (MagiInfo?.IsOnline ?? false) { return new(MagiInfo?.TeamsList?.Count >= 2); } else { return new(false); } } }
+    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.TeamList.Count >= 2); } else if (MagiInfo?.IsOnline ?? false) { return new(MagiInfo?.TeamList?.Count >= 2); } else { return new(false); } } }
     [JsonIgnore] public string ServerDescription { get { return GetServerDescription(); } }
     [JsonIgnore] public BitmapImage MapImage { get { if (ServerInfo?.IsOnline ?? false) { return new(new Uri(ServerInfo?.BLRMap?.SquareImage)); } else if (MagiInfo?.IsOnline ?? false) { return new(new Uri(MagiInfo?.BLRMap?.SquareImage)); } else { return new(new Uri($"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png")); } } }
     [JsonIgnore] public StringCollection PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
     [JsonIgnore] public StringCollection Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team1List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team1List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
     [JsonIgnore] public StringCollection Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team2List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team2List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
-    [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.PlayerCount; } else { return 0; } } }
+    [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.PlayerCount; } else { return -1; } } }
 
     public string ServerAddress { get; set; } = "localhost";
     [JsonIgnore] private ushort port = 7777;
@@ -69,8 +70,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     public bool Hidden { get { return hidden; } set { hidden = value; OnPropertyChanged(); } }
     [JsonIgnore] private string region = "EU-North";
     public string Region { get { return region; } set { region = value; OnPropertyChanged(); } }
-    private static BlockingCollection<BLRServer> ServersToPing { get; } = new();
-    public static ManualResetEvent ServersFinishedPinging { get; } = new(false);
+    public static AwaitableCollection<BLRServer> ServersToPing { get; } = new();
 
     static BLRServer()
     {
@@ -87,9 +87,8 @@ public sealed class BLRServer : INotifyPropertyChanged
     {
         while (App.IsRunning)
         {
-            if(ServersToPing.Count <= 0) ServersFinishedPinging.Set();
+            ServersToPing.WaitForFill();
             var server = ServersToPing.Take();
-            ServersFinishedPinging.Reset();
             if (server is null || string.IsNullOrEmpty(server.ServerAddress) || string.IsNullOrEmpty(server.IPAddress)) continue;
             if (BLREditSettings.Settings.PingHiddenServers.IsNot) { if (server.Hidden) { LoggingSystem.Log($"Skipping Hidden Server:{server}"); continue; } }
             server.IsPinging.Set(true);

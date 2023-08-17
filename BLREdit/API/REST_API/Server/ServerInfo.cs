@@ -12,7 +12,7 @@ namespace BLREdit;
 public class ServerInfo
 {
     public string? GameModeFullName { get; set; }
-    public ObservableCollection<ServerTeam> TeamsList { get; set; } = new();
+    public ObservableCollection<ServerTeam> TeamList { get; set; } = new();
     public int TimeLimit { get; set; }
     public int RemainingTime { get; set; }
 
@@ -31,7 +31,7 @@ public class ServerInfo
         {
             case "Team Deathmatch":
 
-                foreach (var serverTeam in TeamsList)
+                foreach (var serverTeam in TeamList)
                 {
                     if (serverTeam.TeamScore > team.TeamScore)
                     {
@@ -53,7 +53,7 @@ public class ServerInfo
                 return $"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}";
             case "Deathmatch":
 
-                foreach (var serverTeam in TeamsList)
+                foreach (var serverTeam in TeamList)
                 {
                     foreach (var agent in serverTeam.BotList)
                     {

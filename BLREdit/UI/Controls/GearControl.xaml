@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="BLREdit.UI.Controls.GearControl"
+﻿<local:EquipmentControl x:Class="BLREdit.UI.Controls.GearControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -102,4 +102,4 @@
             <Label Grid.Column="1" Grid.Row="5" Content="{Binding Path=GearSlotsDsiplay}" HorizontalAlignment="Left" Style="{StaticResource DisplayLabel}" Margin="-5,0,0,0"/>
         </Grid>
     </Grid>
-</UserControl>
+</local:EquipmentControl>

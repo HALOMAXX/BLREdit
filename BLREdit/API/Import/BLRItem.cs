@@ -120,7 +120,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool IsValidFor(BLRItem? item)
     {
-        if (item is null) return false;
+        if (item is null) return true;
 
         if (BLREditSettings.Settings.AdvancedModding.Is)
         {

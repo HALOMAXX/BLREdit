@@ -18,28 +18,14 @@ namespace BLREdit.UI.Controls
     /// <summary>
     /// Interaction logic for ExtraControl.xaml
     /// </summary>
-    public partial class ExtraControl : UserControl
+    public partial class ExtraControl : EquipmentControl
     {
         public ExtraControl()
         {
             InitializeComponent();
+            EquipmentControlGrid = ExtraControlGrid;
         }
 
-        public static int SelectedBorder { get; private set; } = 1;
-        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            if (e.Source is Image image && image.Parent is Border border)
-            {
-                SelectedBorder = this.ControlGrid.Children.IndexOf(border);
-            }
-        }
 
-        internal void ApplyBorder()
-        {
-            if (SelectedBorder > -1 && SelectedBorder < this.ControlGrid.Children.Count && this.ControlGrid.Children[SelectedBorder] is Border border)
-            {
-                border.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left) { RoutedEvent = Mouse.MouseUpEvent });
-            }
-        }
     }
 }

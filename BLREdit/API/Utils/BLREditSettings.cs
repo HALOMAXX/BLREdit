@@ -74,7 +74,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public string PlayerName { get { return playerName; } set { if (playerName != value) { MainWindow.View.Profile.IsChanged = true; } playerName = value; OnPropertyChanged(); OnPropertyChanged(nameof(ProfileSettings)); MainWindow.View.UpdateWindowTitle(); } }
 
     [JsonIgnore] private string region = string.Empty;
-    public string Region { get { return region; } set { playerName = value; OnPropertyChanged(); MainWindow.View.UpdateWindowTitle(); } }
+    public string Region { get { return region; } set { region = value; OnPropertyChanged(); MainWindow.View.UpdateWindowTitle(); } }
     [JsonIgnore] public string LastPlayerName { get { return lastplayerName; } set { lastplayerName = value; OnPropertyChanged(); } }
 
     [JsonIgnore] public BLRProfileSettingsWrapper ProfileSettings { get { return ExportSystem.GetOrAddProfileSettings(PlayerName); } }
@@ -109,6 +109,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     private static void ApplyEvent()
     {
         Settings.AdvancedModding.PropertyChanged += Settings.AdvancedModdingChanged;
+        Settings.ShowHiddenServers.PropertyChanged += Settings.ShowHiddenServersChanged;
     }
 
     public static void ResetSettings()
@@ -149,6 +150,11 @@ public sealed class BLREditSettings : INotifyPropertyChanged
             MainWindow.View.Profile.CalculateStats();
             MainWindow.Instance?.SetItemList();
         }
+    }
+
+    private void ShowHiddenServersChanged(object sender, PropertyChangedEventArgs e)
+    {
+        MainWindow.Instance?.RefreshServerList();
     }
 
     public static void Save()

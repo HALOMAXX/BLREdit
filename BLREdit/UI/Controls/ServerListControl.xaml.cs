@@ -85,7 +85,7 @@ public partial class ServerListControl : UserControl
         {
             view.Filter += new Predicate<object>((o) => 
                 { 
-                    if (o is BLRServer server && (!server.Hidden || server.IsOnline.Is)) 
+                    if (o is BLRServer server && (BLREditSettings.Settings.ShowHiddenServers.Is || !server.Hidden || server.IsOnline.Is)) 
                     { return true; } 
                     else 
                     { return false; } 
@@ -96,9 +96,30 @@ public partial class ServerListControl : UserControl
 
     private void QuickMatch_Click(object sender, RoutedEventArgs e)
     {
+        LoggingSystem.Log($"Started Matchmaking with Region:{BLREditSettings.Settings.Region}, Pinging:{MainWindow.View.ServerList.Count}");
         MainWindow.RefreshPing();
-        BLRServer.ServersFinishedPinging.WaitOne();
+        BLRServer.ServersToPing.WaitForEmpty();
+        LoggingSystem.Log("Finished Pinging Servers!");
 
-        var regionSortedServers = MainWindow.View.ServerList.OrderByDescending(x => x.Region, RegionComparer.Instance).ThenByDescending(x => x.PlayerCount);
+        var playerCountSortedServers = MainWindow.View.ServerList.OrderByDescending(x => x.PlayerCount);
+        var first = playerCountSortedServers.First();
+        var regionParts = BLREditSettings.Settings.Region.Split('-');
+        if (first.PlayerCount > 0 || regionParts.Length <= 0)
+        {
+            first.ConnectToServerCommand.Execute(null);
+            return;
+        }
+        else
+        {
+            foreach (var server in playerCountSortedServers)
+            {
+                if (server.Region.Contains(regionParts[0]))
+                {
+                    server.ConnectToServerCommand.Execute(null);
+                    return;
+                }
+            }
+        }
+        LoggingSystem.MessageLog($"Couldn't find a Matching Server for Region:{BLREditSettings.Settings.Region} or Highest PlayerCount:{first.PlayerCount}");
     }
 }

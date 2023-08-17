@@ -48,8 +48,10 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public bool IsPlayerProfileChanging { get; set; } = false;
     public bool IsCheckingGameClient { get; set; } = false;
 
-    public BLRWeapon? Copy { get; set; } = null;
-
+    public BLRWeapon? PrimaryWeaponCopy { get; set; } = null;
+    public BLRWeapon? SecondaryWeaponCopy { get; set; } = null;
+    public BLRGear? GearCopy { get; set; } = null;
+    public BLRExtra? ExtraCopy { get; set; } = null;
 
     public void UpdateWindowTitle()
     {

@@ -10,91 +10,91 @@
              d:DataContext="{d:DesignInstance Type=blredit:BLREditSettings}"
              d:DesignHeight="450" d:DesignWidth="800">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-    <StackPanel>
-        <Border Name="PlayerNameBorder">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
-                <Label Content="{x:Static p:Resources.lbl_Region}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
-                <TextBox Name="PlayerNameTextBox" Text="{Binding Path=Region, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" TextChanged="PlayerNameTextBox_TextChanged"/>
-            </StackPanel>
-        </Border>
+        <StackPanel>
+            <Border Name="PlayerNameBorder">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                    <Label Content="{x:Static p:Resources.lbl_PlayerName}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                    <TextBox Name="PlayerNameTextBox" Text="{Binding Path=PlayerName, Mode=TwoWay}" MinWidth="128" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" TextChanged="PlayerNameTextBox_TextChanged"/>
+                </StackPanel>
+            </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                        <Label Content="{x:Static p:Resources.lbl_Region}" ToolTip="{x:Static p:Resources.txt_TT_Region }" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                        <TextBox Text="{Binding Path=Region, Mode=TwoWay}" ToolTip="{x:Static p:Resources.txt_TT_Region }" MinWidth="128" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                </Border>
             <Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
-                    <Label Content="{x:Static p:Resources.lbl_Region}" ToolTip="{x:Static p:Resources.txt_TT_Region }" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
-                    <TextBox Text="{Binding Path=PlayerName, Mode=TwoWay}" ToolTip="{x:Static p:Resources.txt_TT_Region }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
+                    <Label Content="{x:Static p:Resources.lbl_Language}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                    <ComboBox Height="32" Name="LanguageComboBox" DisplayMemberPath="DisplayName" SelectionChanged="LanguageComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.AvailableCultures)}"/>
                 </StackPanel>
             </Border>
             <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
-                <Label Content="{x:Static p:Resources.lbl_Language}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
-                <ComboBox Height="32" Name="LanguageComboBox" DisplayMemberPath="DisplayName" SelectionChanged="LanguageComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.AvailableCultures)}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AdvancedModding}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_AdvancedModding }" ToolTip="{x:Static p:Resources.tbtn_TT_AdvancedModding }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AllowCustomModules}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_AllowCustomModules }" ToolTip="{x:Static p:Resources.tbtn_TT_AllowCustomModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=Debugging}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_Debugging }" ToolTip="{x:Static p:Resources.tbtn_TT_Debugging }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=DoRuntimeCheck}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_RuntimeCheck }" ToolTip="{x:Static p:Resources.tbtn_TT_RuntimeCheck }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ForceRuntimeCheck}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_ForceRuntimeCheck }" ToolTip="{x:Static p:Resources.tbtn_TT_ForceRuntimeCheck }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ShowUpdateNotice}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_ShowUpdateNotice }" ToolTip="{x:Static p:Resources.tbtn_TT_ShowUpdateNotice }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=StrictModuleChecks}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_StrictModuleChecks }" ToolTip="{x:Static p:Resources.tbtn_TT_StrictModuleChecks }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ServerWatchDog}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_ServerWatchDog }" ToolTip="{x:Static p:Resources.tbtn_TT_ServerWatchDog }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=EnableAPI}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_EnableAPI }" ToolTip="{x:Static p:Resources.tbtn_TT_EnableAPI }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=InstallRequiredModules}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_InstallRequiredModules }" ToolTip="{x:Static p:Resources.tbtn_TT_InstallRequiredModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=PingHiddenServers}">
-                <ToggleButton Content="{x:Static p:Resources.tbtn_PingHiddenServers }" ToolTip="{x:Static p:Resources.tbtn_TT_PingHiddenServers }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ShowHiddenServers}">
-                    <ToggleButton Content="{x:Static p:Resources.tbtn_ShowHiddenServers }" ToolTip="{x:Static p:Resources.tbtn_TT_ShowHiddenServers }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
-            </StackPanel>
-        </Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AdvancedModding}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_AdvancedModding }" ToolTip="{x:Static p:Resources.tbtn_TT_AdvancedModding }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AllowCustomModules}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_AllowCustomModules }" ToolTip="{x:Static p:Resources.tbtn_TT_AllowCustomModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=Debugging}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_Debugging }" ToolTip="{x:Static p:Resources.tbtn_TT_Debugging }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=DoRuntimeCheck}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_RuntimeCheck }" ToolTip="{x:Static p:Resources.tbtn_TT_RuntimeCheck }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ForceRuntimeCheck}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_ForceRuntimeCheck }" ToolTip="{x:Static p:Resources.tbtn_TT_ForceRuntimeCheck }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ShowUpdateNotice}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_ShowUpdateNotice }" ToolTip="{x:Static p:Resources.tbtn_TT_ShowUpdateNotice }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=StrictModuleChecks}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_StrictModuleChecks }" ToolTip="{x:Static p:Resources.tbtn_TT_StrictModuleChecks }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ServerWatchDog}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_ServerWatchDog }" ToolTip="{x:Static p:Resources.tbtn_TT_ServerWatchDog }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=EnableAPI}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_EnableAPI }" ToolTip="{x:Static p:Resources.tbtn_TT_EnableAPI }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=InstallRequiredModules}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_InstallRequiredModules }" ToolTip="{x:Static p:Resources.tbtn_TT_InstallRequiredModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=PingHiddenServers}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_PingHiddenServers }" ToolTip="{x:Static p:Resources.tbtn_TT_PingHiddenServers }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ShowHiddenServers}">
+                        <ToggleButton Content="{x:Static p:Resources.tbtn_ShowHiddenServers }" ToolTip="{x:Static p:Resources.tbtn_TT_ShowHiddenServers }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
 
-        <Border>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                     <Button Content="{x:Static p:Resources.btn_ResetToDefaults }" ToolTip="{x:Static p:Resources.btn_TT_ResetToDefaults }" Command="{Binding Path=ResetConfigCommand}"/>
-            </StackPanel>
-        </Border>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

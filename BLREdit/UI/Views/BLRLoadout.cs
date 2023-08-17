@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Mail;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -38,6 +39,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
     #endregion Event
 
+    static readonly Type loadoutType = typeof(BLRLoadout);
+
     private BLRItem? helmet = null;
     public BLRItem? Helmet { get { return helmet; } set { if (BLREditSettings.Settings.AdvancedModding.Is) { helmet = value; ItemChanged(); return; } if (value is null || helmet != value && value.Category == ImportSystem.HELMETS_CATEGORY) { if (value is null) { helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, 0); } else { helmet = value; } ItemChanged(); } } }
     private BLRItem? upperBody = null;
@@ -64,6 +67,90 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(value); ItemChanged(); } }
     private bool isBot;
     public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
+    
+    public BLRGear CopyGear()
+    {
+        return new BLRGear
+        {
+            Helmet = this.Helmet,
+            UpperBody = this.UpperBody,
+            LowerBody = this.LowerBody,
+            Tactical = this.Tactical,
+            Gear1 = this.Gear1,
+            Gear2 = this.Gear2,
+            Gear3 = this.Gear3,
+            Gear4 = this.Gear4,
+            BodyCamo = this.BodyCamo,
+            Avatar = this.Avatar,
+            Trophy = this.Trophy,
+            IsFemale = this.IsFemale,
+            IsBot = this.IsBot,
+        };
+    }
+    public void ApplyGearCopy(BLRGear? gear)
+    {
+        if (gear is null) return;
+
+        UndoRedoSystem.DoAction(gear.Helmet, loadoutType.GetProperty(nameof(Helmet)), this);
+        UndoRedoSystem.DoAction(gear.UpperBody, loadoutType.GetProperty(nameof(UpperBody)), this);
+        UndoRedoSystem.DoAction(gear.LowerBody, loadoutType.GetProperty(nameof(LowerBody)), this);
+        UndoRedoSystem.DoAction(gear.Tactical, loadoutType.GetProperty(nameof(Tactical)), this);
+        UndoRedoSystem.DoAction(gear.Gear1, loadoutType.GetProperty(nameof(Gear1)), this);
+        UndoRedoSystem.DoAction(gear.Gear2, loadoutType.GetProperty(nameof(Gear2)), this);
+        UndoRedoSystem.DoAction(gear.Gear3, loadoutType.GetProperty(nameof(Gear3)), this);
+        UndoRedoSystem.DoAction(gear.Gear4, loadoutType.GetProperty(nameof(Gear4)), this);
+        UndoRedoSystem.DoAction(gear.BodyCamo, loadoutType.GetProperty(nameof(BodyCamo)), this);
+        UndoRedoSystem.DoAction(gear.Avatar, loadoutType.GetProperty(nameof(Avatar)), this);
+        UndoRedoSystem.DoAction(gear.Trophy, loadoutType.GetProperty(nameof(Trophy)), this);
+        UndoRedoSystem.DoAction(gear.IsFemale, loadoutType.GetProperty(nameof(IsFemale)), this);
+        UndoRedoSystem.DoAction(gear.IsBot, loadoutType.GetProperty(nameof(IsBot)), this);
+
+        UndoRedoSystem.EndAction();
+        MainWindow.ShowAlert($"Pasted Gear!");
+    }
+
+    public BLRExtra CopyExtra()
+    {
+        return new BLRExtra
+        {
+            Depot1 = this.Depot1,
+            Depot2 = this.Depot2,
+            Depot3 = this.Depot3,
+            Depot4 = this.Depot4,
+            Depot5 = this.Depot5,
+
+            Taunt1 = this.Taunt1,
+            Taunt2 = this.Taunt2,
+            Taunt3 = this.Taunt3,
+            Taunt4 = this.Taunt4,
+            Taunt5 = this.Taunt5,
+            Taunt6 = this.Taunt6,
+            Taunt7 = this.Taunt7,
+            Taunt8 = this.Taunt8,
+        };
+    }
+    public void ApplyExtraCopy(BLRExtra? extra)
+    {
+        if (extra is null) return;
+
+        UndoRedoSystem.DoAction(extra.Depot1, loadoutType.GetProperty(nameof(Depot1)), this);
+        UndoRedoSystem.DoAction(extra.Depot2, loadoutType.GetProperty(nameof(Depot2)), this);
+        UndoRedoSystem.DoAction(extra.Depot3, loadoutType.GetProperty(nameof(Depot3)), this);
+        UndoRedoSystem.DoAction(extra.Depot4, loadoutType.GetProperty(nameof(Depot4)), this);
+        UndoRedoSystem.DoAction(extra.Depot5, loadoutType.GetProperty(nameof(Depot5)), this);
+
+        UndoRedoSystem.DoAction(extra.Taunt1, loadoutType.GetProperty(nameof(Taunt1)), this);
+        UndoRedoSystem.DoAction(extra.Taunt2, loadoutType.GetProperty(nameof(Taunt2)), this);
+        UndoRedoSystem.DoAction(extra.Taunt3, loadoutType.GetProperty(nameof(Taunt3)), this);
+        UndoRedoSystem.DoAction(extra.Taunt4, loadoutType.GetProperty(nameof(Taunt4)), this);
+        UndoRedoSystem.DoAction(extra.Taunt5, loadoutType.GetProperty(nameof(Taunt5)), this);
+        UndoRedoSystem.DoAction(extra.Taunt6, loadoutType.GetProperty(nameof(Taunt6)), this);
+        UndoRedoSystem.DoAction(extra.Taunt7, loadoutType.GetProperty(nameof(Taunt7)), this);
+        UndoRedoSystem.DoAction(extra.Taunt8, loadoutType.GetProperty(nameof(Taunt8)), this);
+
+        UndoRedoSystem.EndAction();
+        MainWindow.ShowAlert($"Pasted Extra!");
+    }
 
     public BLRLoadout() 
     {

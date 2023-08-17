@@ -331,9 +331,9 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public BLRWeapon(bool isPrimary, BLRLoadout? loadout, ShareableWeapon? weapon = null)
     {
-        if (weapon is null) return;
         IsPrimary = isPrimary;
         Loadout = loadout;
+        if (weapon is null) return;
         if (isPrimary)
         {
             reciever = ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_CATEGORY, weapon.Reciever);

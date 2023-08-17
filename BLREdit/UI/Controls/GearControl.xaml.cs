@@ -22,11 +22,12 @@ namespace BLREdit.UI.Controls
     /// <summary>
     /// Interaction logic for GearControl.xaml
     /// </summary>
-    public partial class GearControl : UserControl
+    public partial class GearControl : EquipmentControl
     {
         public GearControl()
         {
             InitializeComponent();
+            EquipmentControlGrid = ControlGrid;
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -38,24 +39,6 @@ namespace BLREdit.UI.Controls
             else
             {
                 GenderButton.Content = BLREdit.Properties.Resources.btn_GenderToggle_Male;
-            }
-        }
-
-        public static int SelectedBorder { get; private set; } = 1;
-        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            
-            if (e.Source is Image image && image.Parent is Border border)
-            {
-                SelectedBorder = this.ControlGrid.Children.IndexOf(border);
-            }
-        }
-
-        internal void ApplyBorder()
-        {
-            if (SelectedBorder > -1 && SelectedBorder < this.ControlGrid.Children.Count && this.ControlGrid.Children[SelectedBorder] is Border border)
-            {
-                MainWindow.View.LastSelectedItemBorder = border;
             }
         }
     }

@@ -38,6 +38,7 @@ using BLREdit.API.Export;
 using BLREdit.API.Utils;
 using Gameloop.Vdf.Linq;
 using System.Diagnostics.CodeAnalysis;
+using System.Xml.Linq;
 
 namespace BLREdit.UI;
 
@@ -238,105 +239,104 @@ public sealed partial class MainWindow : Window
                 }
             }
 
-            if(border.Parent is FrameworkElement parent && parent.DataContext is BLRWeapon weapon)
+            var weapon = ((FrameworkElement)border.Parent)?.DataContext as BLRWeapon;
+
+            ItemFilters.Instance.WeaponFilter = weapon?.Reciever;
+            View.LastSelectedItemBorder = border;
+            wasLastImageScopePreview = false;
+            switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
-                ItemFilters.Instance.WeaponFilter = weapon.Reciever;
-                View.LastSelectedItemBorder = border;
-                wasLastImageScopePreview = false;
-                switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
-                {
-                    case "Reciever":
-                        if (weapon.IsPrimary)
-                        { SetItemList(ImportSystem.PRIMARY_CATEGORY); }
-                        else
-                        { SetItemList(ImportSystem.SECONDARY_CATEGORY); }
-                        break;
-                    case "Muzzle":
-                        SetItemList(ImportSystem.MUZZELS_CATEGORY);
-                        break;
-                    case "Magazine":
-                        SetItemList(ImportSystem.MAGAZINES_CATEGORY);
-                        break;
-                    case "Barrel":
-                        SetItemList(ImportSystem.BARRELS_CATEGORY);
-                        break;
-                    case "Scope":
-                        if (image.DataContext is not BLRWeapon)
+                case "Reciever":
+                    if (weapon?.IsPrimary ?? true)
+                    { SetItemList(ImportSystem.PRIMARY_CATEGORY); }
+                    else
+                    { SetItemList(ImportSystem.SECONDARY_CATEGORY); }
+                    break;
+                case "Muzzle":
+                    SetItemList(ImportSystem.MUZZELS_CATEGORY);
+                    break;
+                case "Magazine":
+                    SetItemList(ImportSystem.MAGAZINES_CATEGORY);
+                    break;
+                case "Barrel":
+                    SetItemList(ImportSystem.BARRELS_CATEGORY);
+                    break;
+                case "Scope":
+                    if (image.DataContext is not BLRWeapon)
+                    {
+                        SetItemList(ImportSystem.SCOPES_CATEGORY);
+                    }
+                    else
+                    {
+                        if (weapon.Scope is not null)
                         {
-                            SetItemList(ImportSystem.SCOPES_CATEGORY);
+                            weapon.Scope.LoadCrosshair(weapon);
+                            wasLastImageScopePreview = true;
+                            ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
                         }
-                        else
-                        {
-                            if (weapon.Scope is not null)
-                            {
-                                weapon.Scope.LoadCrosshair(weapon);
-                                wasLastImageScopePreview = true;
-                                ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
-                            }
-                        }
-                        break;
-                    case "Stock":
-                        SetItemList(ImportSystem.STOCKS_CATEGORY);
-                        break;
-                    case "Grip":
-                        SetItemList(ImportSystem.GRIPS_CATEGORY);
-                        break;
-                    case "Tag":
-                        SetItemList(ImportSystem.HANGERS_CATEGORY);
-                        break;
-                    case "Camo":
-                        SetItemList(ImportSystem.CAMOS_WEAPONS_CATEGORY);
-                        break;
-                    case "Ammo":
-                        SetItemList(ImportSystem.AMMO_CATEGORY);
-                        break;
-                    case "Skin":
-                        SetItemList(ImportSystem.PRIMARY_SKIN_CATEGORY);
-                        break;
+                    }
+                    break;
+                case "Stock":
+                    SetItemList(ImportSystem.STOCKS_CATEGORY);
+                    break;
+                case "Grip":
+                    SetItemList(ImportSystem.GRIPS_CATEGORY);
+                    break;
+                case "Tag":
+                    SetItemList(ImportSystem.HANGERS_CATEGORY);
+                    break;
+                case "Camo":
+                    SetItemList(ImportSystem.CAMOS_WEAPONS_CATEGORY);
+                    break;
+                case "Ammo":
+                    SetItemList(ImportSystem.AMMO_CATEGORY);
+                    break;
+                case "Skin":
+                    SetItemList(ImportSystem.PRIMARY_SKIN_CATEGORY);
+                    break;
 
-                    case "BodyCamo":
-                        SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
-                        break;
-                    case "Helmet":
-                        SetItemList(ImportSystem.HELMETS_CATEGORY);
-                        break;
-                    case "UpperBody":
-                        SetItemList(ImportSystem.UPPER_BODIES_CATEGORY);
-                        break;
-                    case "LowerBody":
-                        SetItemList(ImportSystem.LOWER_BODIES_CATEGORY);
-                        break;
-                    case "Tactical":
-                        SetItemList(ImportSystem.TACTICAL_CATEGORY);
-                        break;
-                    case "Trophy":
-                        SetItemList(ImportSystem.BADGES_CATEGORY);
-                        break;
-                    case "Avatar":
-                        SetItemList(ImportSystem.AVATARS_CATEGORY);
-                        break;
+                case "BodyCamo":
+                    SetItemList(ImportSystem.CAMOS_BODIES_CATEGORY);
+                    break;
+                case "Helmet":
+                    SetItemList(ImportSystem.HELMETS_CATEGORY);
+                    break;
+                case "UpperBody":
+                    SetItemList(ImportSystem.UPPER_BODIES_CATEGORY);
+                    break;
+                case "LowerBody":
+                    SetItemList(ImportSystem.LOWER_BODIES_CATEGORY);
+                    break;
+                case "Tactical":
+                    SetItemList(ImportSystem.TACTICAL_CATEGORY);
+                    break;
+                case "Trophy":
+                    SetItemList(ImportSystem.BADGES_CATEGORY);
+                    break;
+                case "Avatar":
+                    SetItemList(ImportSystem.AVATARS_CATEGORY);
+                    break;
 
-                    case "Gear1":
-                    case "Gear2":
-                    case "Gear3":
-                    case "Gear4":
-                        SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
-                        break;
+                case "Gear1":
+                case "Gear2":
+                case "Gear3":
+                case "Gear4":
+                    SetItemList(ImportSystem.ATTACHMENTS_CATEGORY);
+                    break;
 
-                    case "Taunt1":
-                    case "Taunt2":
-                    case "Taunt3":
-                    case "Taunt4":
-                        SetItemList(ImportSystem.EMOTES_CATEGORY);
-                        break;
-                    case "Depot1":
-                    case "Depot2":
-                    case "Depot3":
-                    case "Depot4":
-                    case "Depot5":
-                        SetItemList(ImportSystem.SHOP_CATEGORY);
-                        break;
-                }
+                case "Taunt1":
+                case "Taunt2":
+                case "Taunt3":
+                case "Taunt4":
+                    SetItemList(ImportSystem.EMOTES_CATEGORY);
+                    break;
+                case "Depot1":
+                case "Depot2":
+                case "Depot3":
+                case "Depot4":
+                case "Depot5":
+                    SetItemList(ImportSystem.SHOP_CATEGORY);
+                    break;
             }
             return;
         }
@@ -628,20 +628,43 @@ public sealed partial class MainWindow : Window
                 { 
                     Point p = Mouse.GetPosition(this);
                     var hit = VisualTreeHelper.HitTest(this, p);
-                    if (hit.VisualHit is FrameworkElement element)
+                    if (hit.VisualHit is FrameworkElement target)
                     {
-                        while (element is not null && element.GetType() != typeof(WeaponControl) && element.Parent is FrameworkElement parentElement)
+                        var element = target;
+                        while (element is not null && (element.GetType() != typeof(WeaponControl) && element.GetType() != typeof(GearControl) && element.GetType() != typeof(ExtraControl)) && element.Parent is FrameworkElement parentElement)
                         {
                             element = parentElement;
                         }
-                        if (element is WeaponControl control)
+                        switch (element)
                         {
-                            if (control.DataContext is BLRWeapon weapon)
-                            {
-                                View.Copy = weapon.Copy();
-                            }
-                        }
-                        
+                            case WeaponControl weaponControl:
+                                if (weaponControl.DataContext is BLRWeapon weapon)
+                                {
+                                    if (weapon.IsPrimary)
+                                    {
+                                        View.PrimaryWeaponCopy = weapon.Copy();
+                                    }
+                                    else
+                                    {
+                                        View.SecondaryWeaponCopy = weapon.Copy();
+                                    }
+                                }
+                                break;
+                            case GearControl gearControl:
+                                if (gearControl.DataContext is BLRLoadout gearLoadout)
+                                { 
+                                    View.GearCopy = gearLoadout.CopyGear();
+                                    MainWindow.ShowAlert($"Copied Gear!");
+                                }
+                                break;
+                            case ExtraControl extraControl:
+                                if (extraControl.DataContext is BLRLoadout extraLoadout)
+                                {
+                                    View.ExtraCopy = extraLoadout.CopyExtra();
+                                    MainWindow.ShowAlert($"Copied Extra!");
+                                }
+                                break;
+                        }                        
                     }
                 }
                 break;
@@ -650,26 +673,78 @@ public sealed partial class MainWindow : Window
                 {
                     Point p = Mouse.GetPosition(this);
                     var hit = VisualTreeHelper.HitTest(this, p);
-                    if (hit.VisualHit is FrameworkElement element)
+                    if (hit.VisualHit is FrameworkElement target)
                     {
-                        while (element is not null && element.GetType() != typeof(WeaponControl) && element.Parent is FrameworkElement parentElement)
+                        var element = target;
+
+
+                        switch (element)
                         {
-                            element = parentElement;
-                        }
-                        if (element is WeaponControl control)
-                        {
-                            if (control.DataContext is BLRWeapon weapon)
-                            {
-                                weapon.ApplyCopy(View.Copy);
-                            }
+                            case WeaponControl weaponControl:
+                                if (weaponControl.DataContext is BLRWeapon weapon)
+                                {
+                                    if (weapon.IsPrimary)
+                                    {
+                                        weapon.ApplyCopy(View.PrimaryWeaponCopy);
+                                    }
+                                    else
+                                    {
+                                        weapon.ApplyCopy(View.SecondaryWeaponCopy);
+                                    }
+                                }
+                                break;
+                            case GearControl gearControl:
+                                if (gearControl.DataContext is BLRLoadout gearLoadout)
+                                {
+                                    gearLoadout.ApplyGearCopy(View.GearCopy);
+                                }
+                                break;
+                            case ExtraControl extraControl:
+                                if (extraControl.DataContext is BLRLoadout extraLoadout)
+                                {
+                                    extraLoadout.ApplyExtraCopy(View.ExtraCopy);
+                                }
+                                break;
                         }
                     }
-
                 }
                 break;
         }
     }
     #endregion Hotkeys
+
+    public static FrameworkElement? SearchUp(FrameworkElement start, Type[] targets)
+    {
+        var element = start;
+        while (element is not null && !targets.Contains(element.GetType()) && element.Parent is FrameworkElement parentElement)
+        {
+            element = parentElement;
+        }
+        return element;
+    }
+
+    public static FrameworkElement? SearchDown(FrameworkElement? start, Type[] targets)
+    {
+        if(start is null) return null;
+        var element = start;
+        while (element is not null && !targets.Contains(element.GetType()) && element is Grid grid)
+        {
+            foreach (var child in grid.Children)
+            {
+                if (targets.Contains(child.GetType())) { return child as FrameworkElement; }
+                else
+                {
+                    var result = SearchDown(child as FrameworkElement, targets);
+                    if (result is not null)
+                    {
+                        if (targets.Contains(result.GetType())) return result;
+
+                    }
+                }
+            }
+        }
+        return element;
+    }
 
     public static void ShowAlert(string message, double displayTime = 4, double displayWidth = 400)
     {
