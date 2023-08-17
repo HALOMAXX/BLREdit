@@ -8,25 +8,18 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.ComponentModel;
-using BLREdit.Game;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
 using System.Runtime.CompilerServices;
 using System.Windows.Media.Animation;
 using System.Threading.Tasks;
-using BLREdit.Game.Proxy;
-using BLREdit.UI.Views;
 using System.IO;
-using BLREdit.Import;
-using BLREdit.Export;
-using BLREdit.UI.Controls;
-using BLREdit.UI.Windows;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using System.Threading;
-using BLREdit.API.InterProcess;
+
 using System.Diagnostics;
-using PeNet;
+
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Markup;
 using System.Text.Json;
@@ -34,11 +27,22 @@ using System.Text;
 using System.IO.Compression;
 using System.Buffers.Text;
 using Microsoft.IdentityModel.Tokens;
-using BLREdit.API.Export;
-using BLREdit.API.Utils;
-using Gameloop.Vdf.Linq;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Linq;
+
+using Gameloop.Vdf.Linq;
+using PeNet;
+
+using BLREdit.Game.Proxy;
+using BLREdit.UI.Views;
+using BLREdit.Import;
+using BLREdit.Export;
+using BLREdit.UI.Controls;
+using BLREdit.UI.Windows;
+using BLREdit.API.InterProcess;
+using BLREdit.API.Export;
+using BLREdit.API.Utils;
+using BLREdit.Game;
 
 namespace BLREdit.UI;
 
@@ -585,6 +589,7 @@ public sealed partial class MainWindow : Window
 
 
     private int buttonIndex = 0;
+    private static readonly Type[] TargetControls = new Type[] { typeof(WeaponControl), typeof(GearControl), typeof(ExtraControl) };
     private void PreviewKeyUpMainWindow(object sender, KeyEventArgs e)
     {
         switch (e.Key)
@@ -625,17 +630,12 @@ public sealed partial class MainWindow : Window
                 break;
             case Key.C:
                 if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
-                { 
+                {
                     Point p = Mouse.GetPosition(this);
-                    var hit = VisualTreeHelper.HitTest(this, p);
-                    if (hit.VisualHit is FrameworkElement target)
+
+                    if (HitTestLoadoutControls(this, p) is FrameworkElement target)
                     {
-                        var element = target;
-                        while (element is not null && (element.GetType() != typeof(WeaponControl) && element.GetType() != typeof(GearControl) && element.GetType() != typeof(ExtraControl)) && element.Parent is FrameworkElement parentElement)
-                        {
-                            element = parentElement;
-                        }
-                        switch (element)
+                        switch (target)
                         {
                             case WeaponControl weaponControl:
                                 if (weaponControl.DataContext is BLRWeapon weapon)
@@ -672,13 +672,10 @@ public sealed partial class MainWindow : Window
                 if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
                 {
                     Point p = Mouse.GetPosition(this);
-                    var hit = VisualTreeHelper.HitTest(this, p);
-                    if (hit.VisualHit is FrameworkElement target)
+
+                    if (HitTestLoadoutControls(this, p) is FrameworkElement target)
                     {
-                        var element = target;
-
-
-                        switch (element)
+                        switch (target)
                         {
                             case WeaponControl weaponControl:
                                 if (weaponControl.DataContext is BLRWeapon weapon)
@@ -713,37 +710,61 @@ public sealed partial class MainWindow : Window
     }
     #endregion Hotkeys
 
-    public static FrameworkElement? SearchUp(FrameworkElement start, Type[] targets)
+    public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
     {
-        var element = start;
-        while (element is not null && !targets.Contains(element.GetType()) && element.Parent is FrameworkElement parentElement)
+        if (depObj == null) yield return (T)Enumerable.Empty<T>();
+        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
         {
-            element = parentElement;
+            DependencyObject ithChild = VisualTreeHelper.GetChild(depObj, i);
+            if (ithChild == null) continue;
+            if (ithChild is T t) yield return t;
+            foreach (T childOfChild in FindVisualChildren<T>(ithChild)) yield return childOfChild;
         }
-        return element;
     }
 
-    public static FrameworkElement? SearchDown(FrameworkElement? start, Type[] targets)
+    public FrameworkElement? HitTestLoadoutControls(DependencyObject depObj, Point p)
     {
-        if(start is null) return null;
-        var element = start;
-        while (element is not null && !targets.Contains(element.GetType()) && element is Grid grid)
-        {
-            foreach (var child in grid.Children)
-            {
-                if (targets.Contains(child.GetType())) { return child as FrameworkElement; }
-                else
-                {
-                    var result = SearchDown(child as FrameworkElement, targets);
-                    if (result is not null)
-                    {
-                        if (targets.Contains(result.GetType())) return result;
+        var AllExtras = FindVisualChildren<ExtraControl>(depObj).ToList();
+        var AllGears = FindVisualChildren<GearControl>(depObj).ToList();
+        var AllWeapons = FindVisualChildren<WeaponControl>(depObj).ToList();
 
-                    }
+        if (AllExtras.Count > 0)
+        {
+            foreach (var extra in AllExtras)
+            {
+                var pos = this.TranslatePoint(p, extra);
+                if (VisualTreeHelper.GetDescendantBounds(extra).Contains(pos))
+                { 
+                    return extra;
                 }
             }
         }
-        return element;
+
+        if (AllGears.Count > 0)
+        {
+            foreach (var gear in AllGears)
+            {
+                var pos = this.TranslatePoint(p, gear);
+                if (VisualTreeHelper.GetDescendantBounds(gear).Contains(pos))
+                {
+                    return gear;
+                }
+            }
+        }
+
+        if (AllWeapons.Count > 0)
+        {
+            foreach (var weapon in AllWeapons)
+            {
+                var pos = this.TranslatePoint(p, weapon);
+                if (VisualTreeHelper.GetDescendantBounds(weapon).Contains(pos))
+                {
+                    return weapon;
+                }
+            }
+        }
+
+        return null;
     }
 
     public static void ShowAlert(string message, double displayTime = 4, double displayWidth = 400)

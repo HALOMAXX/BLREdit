@@ -25,7 +25,5 @@ namespace BLREdit.UI.Controls
             InitializeComponent();
             EquipmentControlGrid = ExtraControlGrid;
         }
-
-
     }
 }
