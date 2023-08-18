@@ -4,9 +4,11 @@ using BLREdit.Game.Proxy;
 using BLREdit.UI;
 
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using System.Windows;
@@ -24,6 +26,8 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     private static BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
     public static BLREditSettings Settings { get { return settings; } private set { settings = value; ApplyEvent(); } }
+
+    public static ObservableCollection<string?> AvailableProxyVersions { get; } = new() { "v1.0.0-beta.3", "v1.0.0-beta.2" };
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
     public int SelectedClient { get; set; } = 0;
@@ -65,6 +69,9 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     //Ping Hidden Servers
     public UIBool PingHiddenServers { get; set; } = new(true);
     public UIBool ShowHiddenServers { get; set; } = new(false);
+
+    private string? selectedProxyVersion;
+    public string? SelectedProxyVersion { get { selectedProxyVersion ??= AvailableProxyVersions.First(); return selectedProxyVersion; } set { if (AvailableProxyVersions.Contains(value)) { selectedProxyVersion = value; } } }
 
     public string? SelectedLanguage { get; set; } = null;
     [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return CultureInfo.InvariantCulture; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }

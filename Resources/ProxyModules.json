@@ -1,11 +1,43 @@
 [
   {
     "RepositoryProvider": "Gitlab",
+    "Owner": "blrevive/modules",
+    "Repository": "loadout-manager",
+    "ModuleName": "LoadoutManager",
+    "Server": false,
+    "Required": false,
+    "ProxyVersion": "v1.0.0-beta.3"
+  },
+  {
+    "RepositoryProvider": "Gitlab",
+    "Owner": "blrevive/modules",
+    "Repository": "settings-manager",
+    "ModuleName": "settings-manager",
+    "Server": false,
+    "Required": false,
+    "ProxyVersion": "v1.0.0-beta.3"
+  },
+  {
+    "RepositoryProvider": "Gitlab",
+    "Owner": "blrevive/modules",
+    "Repository": "server-utils",
+    "ModuleName": "server-utils",
+    "Client": false,
+    "Required": false,
+    "ProxyVersion": "v1.0.0-beta.3"
+  },
+
+
+
+
+  {
+    "RepositoryProvider": "Gitlab",
     "Owner": "Kethen",
     "Repository": "loadout-manager",
     "ModuleName": "LoadoutManager",
     "Server": false,
-    "Required": true
+    "Required": true,
+    "ProxyVersion": "v1.0.0-beta.2"
   },
   {
     "RepositoryProvider": "GitHub",
@@ -13,7 +45,8 @@
     "Repository": "BLRE-settings-manager",
     "ModuleName": "settings-manager",
     "Server": false,
-    "Required": true
+    "Required": true,
+    "ProxyVersion": "v1.0.0-beta.2"
   },
   {
     "RepositoryProvider": "GitHub",
@@ -21,6 +54,7 @@
     "Repository": "BLRE-server-utils",
     "ModuleName": "server-utils",
     "Client": false,
-    "Required": true
+    "Required": true,
+    "ProxyVersion": "v1.0.0-beta.2"
   }
 ]

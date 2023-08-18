@@ -310,22 +310,11 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         LockRemove.Set(true);
         try
         {
-            LoggingSystem.Log($"Removing {RepositoryProxyModule.InstallName}");
-
-            foreach (var module in client.InstalledModules)
-            {
-                if (module.InstallName == RepositoryProxyModule.InstallName)
-                {
-                    client.InstalledModules.Remove(module);
-                    client.Invalidate();
-                    File.Delete($"{client.ModulesFolder}\\{module.InstallName}.dll");
-                    break;
-                }
-            }
+            client.RemoveModule(RepositoryProxyModule.InstallName);
         }
         catch (Exception error)
         {
-            LoggingSystem.Log($"Failed to remove Module({this.RepositoryProxyModule.InstallName})\nReason: {error}");
+            LoggingSystem.Log($"Failed to remove Module({RepositoryProxyModule.InstallName})\nReason: {error}");
         }
         finally
         {

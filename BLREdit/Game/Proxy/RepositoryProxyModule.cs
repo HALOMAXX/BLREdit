@@ -25,6 +25,7 @@ public sealed class RepositoryProxyModule
     public bool Client { get; set; } = true;
     public bool Server { get; set; } = true;
     public bool Required { get; set; } = false;
+    public string ProxyVersion { get; set; } = "v1.0.0-beta.2";
 
     private GitHubRelease? hubRelease = null;
     [JsonIgnore]
