@@ -31,7 +31,7 @@ namespace BLREdit;
 public partial class App : System.Windows.Application
 {
     public const string CurrentVersion = "v0.11.6";
-    public const string CurrentVersionTitle = "Added Mechanic to hide servers";
+    public const string CurrentVersionTitle = "QoL";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
