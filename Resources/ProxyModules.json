@@ -5,7 +5,7 @@
     "Repository": "loadout-manager",
     "ModuleName": "LoadoutManager",
     "Server": false,
-    "Required": false,
+    "Required": true,
     "ProxyVersion": "v1.0.0-beta.3"
   },
   {
@@ -14,7 +14,7 @@
     "Repository": "settings-manager",
     "ModuleName": "settings-manager",
     "Server": false,
-    "Required": false,
+    "Required": true,
     "ProxyVersion": "v1.0.0-beta.3"
   },
   {
@@ -23,7 +23,7 @@
     "Repository": "server-utils",
     "ModuleName": "server-utils",
     "Client": false,
-    "Required": false,
+    "Required": true,
     "ProxyVersion": "v1.0.0-beta.3"
   },
 

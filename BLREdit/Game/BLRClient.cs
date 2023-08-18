@@ -588,8 +588,6 @@ public sealed class BLRClient : INotifyPropertyChanged
             LoggingSystem.Log($"[{this}]: has already been validated!");
         }
 
-
-
         //TODO: Fix this, done??
         BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog);
     }
