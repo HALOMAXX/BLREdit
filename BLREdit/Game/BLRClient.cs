@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Converters;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 
 using BLREdit.Export;
 using BLREdit.Game.Proxy;
@@ -229,8 +230,6 @@ public sealed class BLRClient : INotifyPropertyChanged
             return PatchClient();
         }
 
-        ValidateProxy();
-
         LoggingSystem.Log($"Client is in Good Health!");
         return true;
     }
@@ -272,39 +271,23 @@ public sealed class BLRClient : INotifyPropertyChanged
     public void RemoveAllModules()
     {
         LoggingSystem.Log($"Removing All Modules from client:[{this}]");
-        for (int i = CustomModules.Count; i > 0; i--)
-        {
-            var name = CustomModules[i].InstallName;
-            try
-            {
-                File.Delete($"{ModulesFolder}\\{name}");
-                CustomModules.RemoveAt(i);
-            }catch(Exception error)
-            {
-                LoggingSystem.Log($"Failed to remove {name} reason:\n{error.Message}\n{error.StackTrace}");
-            }
-        }
+        CustomModules.Clear();
+        InstalledModules.Clear();
 
-        for (int i = InstalledModules.Count; i > 0; i--)
-        {
-            var name = InstalledModules[i].InstallName;
-            try
-            {
-                File.Delete($"{ModulesFolder}\\{name}");
-                InstalledModules.RemoveAt(i);
-            }
-            catch (Exception error)
-            {
-                LoggingSystem.Log($"Failed to remove {name} reason:\n{error.Message}\n{error.StackTrace}");
-            }
-        }
+        //var dirInfo = new DirectoryInfo(ModulesFolder);
+        //var files = dirInfo.GetFiles();
+        //foreach (var file in files)
+        //{ 
+        //    file.Delete();
+        //}
+
         Invalidate();
         LoggingSystem.Log("Finished Removing all modules and invalidating client");
     }
 
     public void ValidateProxy()
     {
-        if (BLREditSettings.Settings.SelectedProxyVersion == ProxyVersion) return;
+        if (BLREditSettings.Settings.SelectedProxyVersion.Equals(ProxyVersion)) return;
         RemoveAllModules();
         var proxySource = $"{IOResources.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.{BLREditSettings.Settings.SelectedProxyVersion}.dll";
         var proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll";
@@ -321,6 +304,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             File.Copy(proxySource, proxyTarget);
         }
+        ProxyVersion = BLREditSettings.Settings.SelectedProxyVersion;
     }
 
     public bool ValidatePatches()
@@ -340,7 +324,6 @@ public sealed class BLRClient : INotifyPropertyChanged
                     }
                     if (!isValid) { needUpdatedPatches = true; LoggingSystem.Log($"found old patch {installedPatch.PatchName}"); }
                 }
-                ProxyVersion = null;
             }
             else
             {
@@ -358,11 +341,10 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private void InstallRequiredModules()
     {
-        //TODO: Install only Modules compatible with proxy version
         List<Task> moduleInstallTasks = new();
         foreach (var availableModule in App.AvailableProxyModules)
         {
-            if (availableModule.RepositoryProxyModule.Required && !IsModuleInstalledAndUpToDate(availableModule))
+            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(BLREditSettings.Settings.SelectedProxyVersion) && !IsModuleInstalledAndUpToDate(availableModule))
             {
                 moduleInstallTasks.Add(Task.Run(() => { availableModule.InstallModule(this); }));
             }
@@ -594,6 +576,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null)
     {
+        ValidateProxy();
         if (!hasBeenValidated)
         {
             if (!ValidateClient()) { return; }
@@ -700,7 +683,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     AppliedPatches.Add(patch);
                 }
                 PatchedHash = IOResources.CreateFileHash(PatchedPath);
-                File.Copy($"{IOResources.ASSET_DIR}\\dlls\\Proxy.dll", $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll", true);
+                ProxyVersion = null;
             }
             else
             {

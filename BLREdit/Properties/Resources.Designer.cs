@@ -988,6 +988,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ProxyVersion:.
+        /// </summary>
+        public static string lbl_SelectedProxyVersion {
+            get {
+                return ResourceManager.GetString("lbl_SelectedProxyVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Equip Primary:.
         /// </summary>
         public static string lbl_SelectPrimaryWeaponKeyBind {
@@ -1616,6 +1625,19 @@ namespace BLREdit.Properties {
         public static string txt_TT_Region {
             get {
                 return ResourceManager.GetString("txt_TT_Region", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available ProxyVersions: 
+        ///    v1.0.0-beta.2, v1.0.0-beta.3
+        ///Info:
+        ///beta3 will only start in windowed mode but you can ALT+Enter to go to fullscreen
+        ///and might also be still very buggy.
+        /// </summary>
+        public static string txt_TT_SelectedProxyVersion {
+            get {
+                return ResourceManager.GetString("txt_TT_SelectedProxyVersion", resourceCulture);
             }
         }
         

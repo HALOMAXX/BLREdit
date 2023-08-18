@@ -426,6 +426,9 @@
   <data name="lbl_Secondary" xml:space="preserve">
     <value>Secondary:</value>
   </data>
+  <data name="lbl_SelectedProxyVersion" xml:space="preserve">
+    <value>ProxyVersion:</value>
+  </data>
   <data name="lbl_SelectPrimaryWeaponKeyBind" xml:space="preserve">
     <value>Equip Primary:</value>
   </data>
@@ -637,6 +640,13 @@ Needs a Restart to Install Protocol!</value>
   </data>
   <data name="txt_TT_Region" xml:space="preserve">
     <value>Region examples (EU-West, US-West, AU, OCE)</value>
+  </data>
+  <data name="txt_TT_SelectedProxyVersion" xml:space="preserve">
+    <value>Available ProxyVersions: 
+    v1.0.0-beta.2, v1.0.0-beta.3
+Info:
+beta3 will only start in windowed mode but you can ALT+Enter to go to fullscreen
+and might also be still very buggy</value>
   </data>
   <data name="winT_ClientConfigWindow" xml:space="preserve">
     <value>Client Configuration</value>

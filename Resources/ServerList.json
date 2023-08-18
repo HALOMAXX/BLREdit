@@ -1,7 +1,6 @@
 [
   {
-    "ServerAddress": "localhost",
-    "Hidden": true
+    "ServerAddress": "localhost"
   },
   {
     "ServerAddress": "mooserver.ddns.net",

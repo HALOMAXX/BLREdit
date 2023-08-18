@@ -24,10 +24,10 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
+    public static ObservableCollection<string?> AvailableProxyVersions { get; } = new() { "v1.0.0-beta.2", "v1.0.0-beta.3" };
+
     private static BLREditSettings settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
     public static BLREditSettings Settings { get { return settings; } private set { settings = value; ApplyEvent(); } }
-
-    public static ObservableCollection<string?> AvailableProxyVersions { get; } = new() { "v1.0.0-beta.3", "v1.0.0-beta.2" };
 
     //Saves The Default Client will get validatet after GameClients have been loaded to make sure it's still a valid client
     public int SelectedClient { get; set; } = 0;
