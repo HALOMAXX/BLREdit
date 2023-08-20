@@ -328,1623 +328,14 @@ Stab enemies that get too close.</value>
 A Modified Frag Grenade with custom Heart Candy HRV display modifications.
  Just as effective as a normal Frag Grenade but way more stylish.</value>
   </data>
-  <data name="11000" xml:space="preserve">
-    <value>No stat modifications</value>
-  </data>
-  <data name="11001" xml:space="preserve">
-    <value>Increased damage to heavy builds, decreased damage to light builds. Scales up to a 25% increase and decrease respectively</value>
-  </data>
-  <data name="11002" xml:space="preserve">
-    <value>The classics are classic for a reason. Delivers full direct damage to the target. Limited against heavily armored targets like hardsuits.</value>
-  </data>
-  <data name="11003" xml:space="preserve">
-    <value>Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.</value>
-  </data>
-  <data name="11004" xml:space="preserve">
-    <value>Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.</value>
-  </data>
-  <data name="11005" xml:space="preserve">
-    <value>Increased damage to light builds, decreased damage to heavy builds. Scales up to a 25% increase and decrease respectively</value>
-  </data>
-  <data name="11006" xml:space="preserve">
-    <value>Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.</value>
-  </data>
-  <data name="11007" xml:space="preserve">
-    <value>30% direct damage and 70% damage over time that prevents targets from healing to full health.</value>
-  </data>
-  <data name="11008" xml:space="preserve">
-    <value>Medium direct damage and some damage over time that prevents targets from healing to full health.</value>
-  </data>
-  <data name="11009" xml:space="preserve">
-    <value>Medium direct damage and some damage over time that prevents targets from healing to full health.</value>
-  </data>
-  <data name="11010" xml:space="preserve">
-    <value>Flechette Ammo for the Breech Loaded Pistol.</value>
-  </data>
-  <data name="11011" xml:space="preserve">
-    <value>Medium direct damage and some damage over time that prevents targets from healing to full health.</value>
-  </data>
-  <data name="11012" xml:space="preserve">
-    <value>An arrow with an exploding tip</value>
-  </data>
-  <data name="11013" xml:space="preserve">
-    <value>An arrow equipped with a stun prong, slows target movement speed</value>
-  </data>
-  <data name="11014" xml:space="preserve">
-    <value>A arrow with a poisoned tip, continues to deliver damage after impact.</value>
-  </data>
-  <data name="11015" xml:space="preserve">
-    <value>A light weight fast loading arrow.</value>
-  </data>
-  <data name="11016" xml:space="preserve">
-    <value>A heavier slow loading arrow.  Fully charged arrow will pass through multiple targets</value>
-  </data>
-  <data name="11017" xml:space="preserve">
-    <value>A standard issue arrow.</value>
-  </data>
-  <data name="11018" xml:space="preserve">
-    <value>A cupid arrow, show your friends you love them!</value>
-  </data>
-  <data name="12000" xml:space="preserve">
-    <value>Heavy barrel.
-Significantly improves damage, but also impairs spread, range, and running speed.</value>
-  </data>
-  <data name="12001" xml:space="preserve">
-    <value>Tactical shotgun barrel.
-Significantly increases damage, but greatly reduces range and increases spread.</value>
-  </data>
-  <data name="12002" xml:space="preserve">
-    <value>Short shotgun AR-k barrel.
-Standard-issue barrel with no stat modifications.</value>
-  </data>
-  <data name="12003" xml:space="preserve">
-    <value>Balanced shotgun AR-k barrel.
-Increases movement speed, but reduces range and accuracy.</value>
-  </data>
-  <data name="12004" xml:space="preserve">
-    <value>Assault shotgun AR-k barrel.
-Increases damage, but reduces accuracy, range, and running speed.</value>
-  </data>
-  <data name="12005" xml:space="preserve">
-    <value>Barrel grip.
-Improves recoil, but reduces movement speed.</value>
-  </data>
-  <data name="12006" xml:space="preserve">
-    <value>Barrel grip.
-Improves spread and range, but reduces recoil and movement speed.</value>
-  </data>
-  <data name="12007" xml:space="preserve">
-    <value>Barrel grip.
-Improves spread and range, but reduces movement speed.</value>
-  </data>
-  <data name="12008" xml:space="preserve">
-    <value>Barrel grip.
-Greatly improves recoil, but reduces accuracy, range, and movement speed.</value>
-  </data>
-  <data name="12009" xml:space="preserve">
-    <value>Barrel grip.
-Greatly improves spread and range, but reduces movement speed.</value>
-  </data>
-  <data name="12010" xml:space="preserve">
-    <value>Barrel grip.
-Improves spread, recoil, and range, but reduces movement speed.</value>
-  </data>
-  <data name="12011" xml:space="preserve">
-    <value>Barrel grip.
-Improves recoil and movement speed, but reduces accuracy and range.</value>
-  </data>
-  <data name="12012" xml:space="preserve">
-    <value>No grip mod.</value>
-  </data>
-  <data name="12013" xml:space="preserve">
-    <value>Extended barrel.
-Improves spread but impairs damage.</value>
-  </data>
-  <data name="12014" xml:space="preserve">
-    <value>Improves running speed and damage, but impairs spread and range.</value>
-  </data>
-  <data name="12015" xml:space="preserve">
-    <value>Significantly improves damage, but also impairs spread, range, and running speed.</value>
-  </data>
-  <data name="12016" xml:space="preserve">
-    <value>Balanced barrel.
-Improves damage, but impairs running speed.</value>
-  </data>
-  <data name="12017" xml:space="preserve">
-    <value>Short barrel.
-Improves damage, but also impairs range and spread.</value>
-  </data>
-  <data name="12018" xml:space="preserve">
-    <value>Tactical shotgun barrel.
-Standard-issue barrel with no stat modifications.</value>
-  </data>
-  <data name="12019" xml:space="preserve">
-    <value>Light barrel.
-Significantly improves running speed, but impairs range and spread.</value>
-  </data>
-  <data name="12020" xml:space="preserve">
-    <value>Short shotgun barrel.
-Significantly increases running speed, but reduces range and increases spread.</value>
-  </data>
-  <data name="12021" xml:space="preserve">
-    <value>Assault barrel.
-Improves damage, range, but impairs running speed.</value>
-  </data>
-  <data name="12022" xml:space="preserve">
-    <value>Ranged barrel.
-Significantly improves range, spread, and running speed. impairs damage.</value>
-  </data>
-  <data name="12023" xml:space="preserve">
-    <value>Ranged barrel.
-Significantly improves range and spread, but impairs damage and running speed.</value>
-  </data>
-  <data name="12024" xml:space="preserve">
-    <value>Short barrel.
-Increases running speed and range while decreasing spread, but significantly reduces damage.</value>
-  </data>
-  <data name="12025" xml:space="preserve">
-    <value>Ranged barrel.
-Significantly improves range and spread, but impairs damage and running speed.</value>
-  </data>
-  <data name="12026" xml:space="preserve">
-    <value>Short barrel.
-Significantly improves running speed, but impairs range and spread.</value>
-  </data>
-  <data name="12027" xml:space="preserve">
-    <value>Tactical pistol barrel.
-Greatly improves damage, range, and spread, but reduces running speed.</value>
-  </data>
-  <data name="12028" xml:space="preserve">
-    <value>Tactical pistol barrel.
-Significantly increases damage, and improves spread and range. Greatly reduces running speed.</value>
-  </data>
-  <data name="12029" xml:space="preserve">
-    <value>Short barrel.
-Increases running speed, but impairs spread and range.</value>
-  </data>
-  <data name="12030" xml:space="preserve">
-    <value>Balanced barrel.
-No stat modifications. An all-around balanced barrel.</value>
-  </data>
-  <data name="12031" xml:space="preserve">
-    <value>Extended barrel.
-Improves range and spread, but impairs running speed.</value>
-  </data>
-  <data name="12032" xml:space="preserve">
-    <value>Tactical barrel.
-Improves damage and running speed, but reduces range.</value>
-  </data>
-  <data name="12033" xml:space="preserve">
-    <value>Short barrel.
-Improves damage, range and spread, but significantly impairs running speed.</value>
-  </data>
-  <data name="12034" xml:space="preserve">
-    <value>Assault barrel.
-Improves damage, but impairs spread, range, and running speed.</value>
-  </data>
-  <data name="12035" xml:space="preserve">
-    <value>Balanced barrel.
-Increases damage, but impairs spreads, range, and running speed.</value>
-  </data>
-  <data name="12036" xml:space="preserve">
-    <value>Assault barrel.
-Improves damage, but impairs spread, range, and running speed.</value>
-  </data>
-  <data name="12037" xml:space="preserve">
-    <value>Balanced barrel.
-No stat modifications. An all-around balanced barrel.</value>
-  </data>
-  <data name="12038" xml:space="preserve">
-    <value>No barrel mod.</value>
-  </data>
-  <data name="13000" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13001" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13002" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13003" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13004" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13005" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13006" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13007" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13008" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13009" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13010" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13011" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13012" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13013" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13014" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13015" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13016" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13017" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13018" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13019" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13020" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13021" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13022" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13023" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13024" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13025" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13026" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13027" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13028" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13029" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13030" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13031" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13032" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13033" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13034" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13035" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13036" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13037" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13038" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13039" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13040" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13041" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13042" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13043" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13044" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13045" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13046" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13047" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13048" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13049" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13050" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13051" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13052" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13053" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13054" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13055" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13056" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13057" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13058" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13059" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13060" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13061" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13062" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13063" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13064" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13065" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13066" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13067" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13068" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13069" xml:space="preserve">
-    <value>Zombie Studio Dev Camo</value>
-  </data>
-  <data name="13070" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13071" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13072" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13073" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13074" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13075" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13076" xml:space="preserve">
-    <value>Extra Life Charity is a weapon and armor camo that was available on October 25th, 2014 and obtained by donating $50 for charity to help sick kids. Free 7 day versions of them were given away prior that date.</value>
-  </data>
-  <data name="13077" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13078" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
-  </data>
-  <data name="13079" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
-  </data>
-  <data name="13080" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
-  </data>
-  <data name="13081" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13082" xml:space="preserve">
-    <value />
-  </data>
-  <data name="13083" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13084" xml:space="preserve">
-    <value>?</value>
-  </data>
-  <data name="13085" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13086" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13087" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13089" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13090" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13091" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13092" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13093" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13094" xml:space="preserve">
-    <value>?</value>
-  </data>
-  <data name="13095" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13096" xml:space="preserve">
-    <value>Originally, this camo could only be obtained as an extra reward for buying the Blacklight T-Shirt.</value>
-  </data>
-  <data name="13097" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13098" xml:space="preserve">
-    <value>Daylight is a promotional Camo Zombie Studios Released In 2014 For The Release Of The Game Daylight. Daylight was given to all players during this previous time.</value>
-  </data>
-  <data name="13099" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13100" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13101" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13102" xml:space="preserve">
-    <value>This camo can be won from the Valentines Day Lotto Box, available during the month of February.</value>
-  </data>
-  <data name="13103" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13104" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13105" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13106" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13107" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13108" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13109" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13110" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13111" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13112" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13113" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13115" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13116" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13117" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13118" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13119" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13120" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13121" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13122" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13123" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13124" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13125" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13126" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13127" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13128" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13129" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13130" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13131" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13132" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13133" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13134" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13135" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13136" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13137" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13138" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13139" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13140" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13141" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13142" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13143" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13144" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13145" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13146" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13147" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13148" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13149" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13150" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13151" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13152" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13153" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13154" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13155" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13156" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13157" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13158" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13159" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13160" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13161" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13162" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="13163" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14072" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14073" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14074" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14075" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14077" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14078" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14079" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14081" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14093" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="14096" xml:space="preserve">
-    <value>CamoDesc</value>
-  </data>
-  <data name="15000" xml:space="preserve">
-    <value>Barrel grip.
-Standard-issue grip with no stat modifications.</value>
-  </data>
-  <data name="15001" xml:space="preserve">
-    <value>Barrel post grip.
-Greatly reduces recoil and increases fire rate.</value>
-  </data>
-  <data name="16000" xml:space="preserve">
-    <value>Standard-issue magazines provide no stat modifications.</value>
-  </data>
-  <data name="16001" xml:space="preserve">
-    <value>Light magazines increase run speed.</value>
-  </data>
-  <data name="16002" xml:space="preserve">
-    <value>Quick magazines greatly increase reload speed.</value>
-  </data>
-  <data name="16003" xml:space="preserve">
-    <value>Extended magazines increase ammo capacity, but decrease run speed.</value>
-  </data>
-  <data name="16004" xml:space="preserve">
-    <value>Express magazines increase reload and run speed.</value>
-  </data>
-  <data name="16005" xml:space="preserve">
-    <value>Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.</value>
-  </data>
-  <data name="16006" xml:space="preserve">
-    <value>Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.</value>
-  </data>
-  <data name="16007" xml:space="preserve">
-    <value>Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.</value>
-  </data>
-  <data name="16008" xml:space="preserve">
-    <value>Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.</value>
-  </data>
-  <data name="16014" xml:space="preserve">
-    <value>Drummed shotgun magazines significantly increase ammo capacity and reload speed, but greatly decrease run speed.</value>
-  </data>
-  <data name="16015" xml:space="preserve">
-    <value>Massive improvement to ammo count, but significantly impairs reload and running speeds.</value>
-  </data>
-  <data name="16029" xml:space="preserve">
-    <value>Standard-issue magazines provide no stat modifications.</value>
-  </data>
-  <data name="16030" xml:space="preserve">
-    <value>Light shotgun magazines increase reload speed, but greatly decrease run speed.</value>
-  </data>
-  <data name="16031" xml:space="preserve">
-    <value>Quick shotgun magazines greatly increase reload speed, but decrease run speed.</value>
-  </data>
-  <data name="16032" xml:space="preserve">
-    <value>Extended shotgun magazines increase ammo capacity and reload speed, but decrease run speed.</value>
-  </data>
-  <data name="16033" xml:space="preserve">
-    <value>Express shotgun magazines increase reload speed, but decrease run speed.</value>
-  </data>
-  <data name="16034" xml:space="preserve">
-    <value>Drummed shotgun magazines significantly increase ammo capacity and reload speed, but greatly decrease run speed.</value>
-  </data>
-  <data name="16039" xml:space="preserve">
-    <value>Standard-issue magazines provide no stat modifications.</value>
-  </data>
-  <data name="16040" xml:space="preserve">
-    <value>Quick magazines greatly increase reload speed.</value>
-  </data>
-  <data name="16041" xml:space="preserve">
-    <value>Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.</value>
-  </data>
-  <data name="16042" xml:space="preserve">
-    <value>Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.</value>
-  </data>
-  <data name="16043" xml:space="preserve">
-    <value>Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.</value>
-  </data>
-  <data name="16044" xml:space="preserve">
-    <value>Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.</value>
-  </data>
-  <data name="16099" xml:space="preserve">
-    <value>Standard Cylinder</value>
-  </data>
-  <data name="16100" xml:space="preserve">
-    <value>Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.</value>
-  </data>
-  <data name="16101" xml:space="preserve">
-    <value>Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.</value>
-  </data>
-  <data name="16102" xml:space="preserve">
-    <value>Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.</value>
-  </data>
-  <data name="16103" xml:space="preserve">
-    <value>Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.</value>
-  </data>
-  <data name="16104" xml:space="preserve">
-    <value>Standard-issue magazines provide no stat modifications.</value>
-  </data>
-  <data name="16105" xml:space="preserve">
-    <value>Light magazines increase run speed.</value>
-  </data>
-  <data name="16106" xml:space="preserve">
-    <value>Extended magazines increase ammo capacity, but decrease run speed.</value>
-  </data>
-  <data name="16134" xml:space="preserve">
-    <value>Explosive Cartridge, a timed explosion dealing 250 damage</value>
-  </data>
-  <data name="16135" xml:space="preserve">
-    <value>Incendiary Cartridge, burns up to 300 damage over 6 seconds</value>
-  </data>
-  <data name="16136" xml:space="preserve">
-    <value>Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.</value>
-  </data>
-  <data name="16137" xml:space="preserve">
-    <value>Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.</value>
-  </data>
-  <data name="16138" xml:space="preserve">
-    <value>Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.</value>
-  </data>
-  <data name="16139" xml:space="preserve">
-    <value>Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.</value>
-  </data>
-  <data name="16158" xml:space="preserve">
-    <value>Improves damage and range at the cost of stability and movement speed.</value>
-  </data>
-  <data name="16168" xml:space="preserve">
-    <value>Improves damage and range at the cost of stability and movement speed.</value>
-  </data>
-  <data name="16173" xml:space="preserve">
-    <value>Improves damage and range at the cost of stability and movement speed.</value>
-  </data>
-  <data name="16175" xml:space="preserve">
-    <value>Improves damage and range at the cost of stability and movement speed.</value>
-  </data>
-  <data name="16176" xml:space="preserve">
-    <value>Scatter Cartridge</value>
-  </data>
-  <data name="16178" xml:space="preserve">
-    <value>Precision Cylinder</value>
-  </data>
-  <data name="16179" xml:space="preserve">
-    <value>High Caliber Cylinder</value>
-  </data>
-  <data name="16226" xml:space="preserve">
-    <value>Standard-issue magazines provide no stat modifications.</value>
-  </data>
-  <data name="17000" xml:space="preserve">
-    <value>No muzzle mod.</value>
-  </data>
-  <data name="17001" xml:space="preserve">
-    <value>Flash brake muzzle.
-Improves recoil but impairs damage.</value>
-  </data>
-  <data name="17002" xml:space="preserve">
-    <value>Flash brake muzzle.
-Improves range, recoil and spread, but impairs damage.</value>
-  </data>
-  <data name="17003" xml:space="preserve">
-    <value>Suppressor muzzle.
-Improves recoil, but impairs damage, range, and spread.</value>
-  </data>
-  <data name="17004" xml:space="preserve">
-    <value>Flash brake muzzle.
-Improves recoil, but impairs damage.</value>
-  </data>
-  <data name="17005" xml:space="preserve">
-    <value>Flash brake muzzle.
-Significantly improves recoil, but impairs damage.</value>
-  </data>
-  <data name="17006" xml:space="preserve">
-    <value>Suppressor muzzle.
-Significantly improves recoil, but impairs damage.</value>
-  </data>
-  <data name="17007" xml:space="preserve">
-    <value>Flash brake muzzle.
-Improves recoil, but impairs damage.</value>
-  </data>
-  <data name="17008" xml:space="preserve">
-    <value>Flash brake muzzle.
-Improves range, spread, and recoil, but impairs damage.</value>
-  </data>
-  <data name="17009" xml:space="preserve">
-    <value>Flash brake muzzle.
-Standard issue muzzle with no enhancements.</value>
-  </data>
-  <data name="17010" xml:space="preserve">
-    <value>Silencer muzzle.
-Significantly improves recoil, but impairs spread, damage, and range.</value>
-  </data>
-  <data name="17011" xml:space="preserve">
-    <value>Flash brake muzzle.
-Improves damage, but impairs range, recoil, and spread.</value>
-  </data>
-  <data name="17012" xml:space="preserve">
-    <value>Flashbrake muzzle.
-Improves damage, but impairs recoil.</value>
-  </data>
-  <data name="17013" xml:space="preserve">
-    <value>Flash brake muzzle.
-Significantly improves damage, but impairs recoil.</value>
-  </data>
-  <data name="17014" xml:space="preserve">
-    <value>Flash brake muzzle.
-Significantly improves damage, but impairs range, spread, and recoil.</value>
-  </data>
-  <data name="17015" xml:space="preserve">
-    <value>Flash brake muzzle.
-Improves range, spread, and recoil, but impairs damage.</value>
-  </data>
-  <data name="17016" xml:space="preserve">
-    <value>Flash brake muzzle.
-Significantly improves damage, but impairs range, spread, and recoil.</value>
-  </data>
-  <data name="17017" xml:space="preserve">
-    <value>Flashbrake muzzle.
-Improves damage, spread, and range, but impairs recoil.</value>
-  </data>
-  <data name="17018" xml:space="preserve">
-    <value>Flash brake muzzle.
-Standard issue muzzle with no enhancements.</value>
-  </data>
-  <data name="18000" xml:space="preserve">
-    <value>No Fancy Pants Weapon Skin</value>
-  </data>
-  <data name="18001" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18002" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18003" xml:space="preserve">
-    <value>Test Skin Desc</value>
-  </data>
-  <data name="18004" xml:space="preserve">
-    <value>Test Skin Desc</value>
-  </data>
-  <data name="18005" xml:space="preserve">
-    <value>Test Skin Desc</value>
-  </data>
-  <data name="18006" xml:space="preserve">
-    <value>Test Skin Desc</value>
-  </data>
-  <data name="18007" xml:space="preserve">
-    <value>Test Skin Desc</value>
-  </data>
-  <data name="18008" xml:space="preserve">
-    <value>Test Skin Desc</value>
-  </data>
-  <data name="18009" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18010" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18011" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18012" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18013" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18014" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18015" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18016" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18017" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18018" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18019" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18020" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18021" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18022" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18023" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18024" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18025" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18026" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18027" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18028" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18029" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18030" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18031" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18032" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18033" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18034" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18035" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18036" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18037" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18038" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18039" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18040" xml:space="preserve">
-    <value>A custom receiver skin.</value>
-  </data>
-  <data name="18041" xml:space="preserve">
-    <value>The horrors of the drought ravaged my inventory.
-Earned by those who lost the most items during the Parity Patch upgrade.</value>
-  </data>
-  <data name="18042" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18043" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18044" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18045" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18046" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18047" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18048" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18049" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18050" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18051" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18052" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18053" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18054" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18055" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18056" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18057" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18058" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18059" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18060" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18061" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18062" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18063" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18064" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18065" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18066" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18067" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18068" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18069" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18070" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18071" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18072" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18073" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18074" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18075" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18076" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18077" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18078" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18079" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18080" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18081" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18082" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18083" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18084" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18085" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18086" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18087" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18088" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18089" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18090" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18091" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18092" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18093" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18094" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18095" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18096" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18097" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18098" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18099" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18100" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18101" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18102" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18103" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18104" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18105" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18106" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18107" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18108" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18109" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18110" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18111" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18112" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18113" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18114" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18115" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18116" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18117" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18118" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18119" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18120" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18121" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18122" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18123" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18124" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18125" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18126" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18127" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18128" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18129" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18130" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18131" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18132" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18133" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18134" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18135" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18136" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18137" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18138" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18139" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18140" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18141" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18142" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18143" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18144" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18145" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18146" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18147" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18148" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18149" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18150" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18151" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18152" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18153" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18154" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18155" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18156" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18157" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18158" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18159" xml:space="preserve">
-    <value>A custom look for your receiver!</value>
-  </data>
-  <data name="18160" xml:space="preserve">
-    <value>Cupid's own QT Pi Bow skin. Happy Valentine's Day!</value>
-  </data>
-  <data name="19000" xml:space="preserve">
-    <value>Infrared scope.
-Infrared scope with 4x zoom, but significantly worsened scope-in time.</value>
-  </data>
-  <data name="19001" xml:space="preserve">
-    <value>Infrared scope.
-Small infrared scope with 3x zoom, but slightly worsened scope-in time.</value>
-  </data>
-  <data name="19002" xml:space="preserve">
-    <value>An aim point with a ammo count HUD</value>
-  </data>
-  <data name="19003" xml:space="preserve">
-    <value>A 4x Scope with a ammo count HUD</value>
-  </data>
-  <data name="19004" xml:space="preserve">
-    <value>Infrared scope.
-Infrared scope with 2x zoom, but worsened scope-in time.</value>
-  </data>
-  <data name="19005" xml:space="preserve">
-    <value>Open scope.
-Red dot sight with 1.3x zoom.</value>
-  </data>
-  <data name="19006" xml:space="preserve">
-    <value>Closed scope.
-Larger scope with a 3.9x zoom but significantly worsened scope-in time.</value>
-  </data>
-  <data name="19007" xml:space="preserve">
-    <value>Open scope.
-Simple scope with 3x zoom.</value>
-  </data>
-  <data name="19008" xml:space="preserve">
-    <value>Rail sight.
-Flip-Up sight with 1.3x zoom.</value>
-  </data>
-  <data name="19009" xml:space="preserve">
-    <value>Open scope.
-invalid scope</value>
-  </data>
-  <data name="19010" xml:space="preserve">
-    <value>Electronic scope with 3.9x zoom.</value>
-  </data>
-  <data name="19011" xml:space="preserve">
-    <value>Open scope.
-Holographic sight with 1.8x zoom.</value>
-  </data>
-  <data name="19012" xml:space="preserve">
-    <value>Zoom scope.
-Sniper scope with 6x zoom, but worsened scope-in time.</value>
-  </data>
-  <data name="19013" xml:space="preserve">
-    <value>Open scope.
-Smaller scope with 1.3x zoom.</value>
-  </data>
-  <data name="19014" xml:space="preserve">
-    <value>Open scope.
-Holographic sight with 2x zoom.</value>
-  </data>
-  <data name="19015" xml:space="preserve">
-    <value>Closed scope.
-Small scope with 3x zoom and slightly worsened scope-in time.</value>
-  </data>
-  <data name="19016" xml:space="preserve">
-    <value>Open scope.
-Smaller scope with 2.5x zoom.</value>
-  </data>
-  <data name="19017" xml:space="preserve">
-    <value>Zoom scope.
-High-powered scope with a 4x zoom, but worsened scope-in time.</value>
-  </data>
-  <data name="19018" xml:space="preserve">
-    <value>Closed scope.
-Scope and sight combo with 3x zoom.</value>
-  </data>
-  <data name="19019" xml:space="preserve">
-    <value>Open scope.
-Reflex sight with 1.6x zoom.</value>
-  </data>
-  <data name="19020" xml:space="preserve">
-    <value>Zoom scope.
-4.4x zoom scope, but impairs scope-in time.</value>
-  </data>
-  <data name="19021" xml:space="preserve">
-    <value>Zoom scope.
-Scope with 4x zoom but worsened scope-in time.</value>
-  </data>
-  <data name="19022" xml:space="preserve">
-    <value>Rail sight.
-Standard sight with 1.3x zoom.</value>
-  </data>
-  <data name="19023" xml:space="preserve">
-    <value>No optic mod</value>
-  </data>
-  <data name="19024" xml:space="preserve">
-    <value>Rail sight.
-Standard sight with 1.3x zoom.</value>
-  </data>
   <data name="2000" xml:space="preserve">
     <value>Equip this character skin to customize the look of your character. Your armor will still provide protection so make sure to equip it.</value>
-  </data>
-  <data name="20000" xml:space="preserve">
-    <value>Heavy Burstfire Rifle stock.
-Greatly improves spread and range while reducing recoil, but increases scope-in time and reduces running speed.</value>
-  </data>
-  <data name="20001" xml:space="preserve">
-    <value>Heavy Burstfire Rifle stock.
-Greatly improves spread and range while reducing recoil. Increases scope-in and reload time, and reduces running speed.</value>
-  </data>
-  <data name="20002" xml:space="preserve">
-    <value>Heavy Burstfire Rifle stock.
-Greatly improves spread and range, but increases recoil and reload time.</value>
-  </data>
-  <data name="20003" xml:space="preserve">
-    <value>Improves recoil, but impairs running speed, scope-in time, and spread.</value>
-  </data>
-  <data name="20004" xml:space="preserve">
-    <value>Light stock.
-Significantly improves running speed, but impairs spread, recoil, and range.</value>
-  </data>
-  <data name="20005" xml:space="preserve">
-    <value>Light stock.
-Improves running speed and scope-in time, but impairs spread and range.</value>
-  </data>
-  <data name="20006" xml:space="preserve">
-    <value>Heavy stock.
-Improves recoil, but impairs range, spread, running speed, and scope-in time.</value>
-  </data>
-  <data name="20007" xml:space="preserve">
-    <value>Standard stock.
-Improves range and spread, but impairs recoil.</value>
-  </data>
-  <data name="20008" xml:space="preserve">
-    <value>Standard stock.
-Improves spread and range, but impairs running speed and scope-in time.</value>
-  </data>
-  <data name="20009" xml:space="preserve">
-    <value>Light stock.
-Improves running speed, range, and spread, but significantly increases recoil.</value>
   </data>
   <data name="2001" xml:space="preserve">
     <value>Equip this character skin to customize the look of your character. Your armor will still provide protection so make sure to equip it.</value>
   </data>
-  <data name="20010" xml:space="preserve">
-    <value>Heavy stock.
-Improves spread, recoil, and range, but impairs running speed and scope-in time.</value>
-  </data>
-  <data name="20011" xml:space="preserve">
-    <value>Heavy stock.
-Improves spread, recoil, and range, but impairs running speed and scope-in time.</value>
-  </data>
-  <data name="20012" xml:space="preserve">
-    <value>Standard stock.
-Improves range, recoil, and spread, but impairs running speed.</value>
-  </data>
-  <data name="20013" xml:space="preserve">
-    <value>Standard stock.
-Improves running speed and scope-in time, but impairs range, recoil, and spread.</value>
-  </data>
-  <data name="20014" xml:space="preserve">
-    <value>Standard stock.
-Standard stock with no stat modifications.</value>
-  </data>
-  <data name="20015" xml:space="preserve">
-    <value>Heavy stock.
-Improves recoil, but impairs running speed, scope-in time, and spread.</value>
-  </data>
-  <data name="20016" xml:space="preserve">
-    <value>Light stock.
-Improves running speed and scope-in time, but impairs range, spread, and recoil.</value>
-  </data>
-  <data name="20017" xml:space="preserve">
-    <value>Standard stock.
-Standard-issue stock with no stat modifications.</value>
-  </data>
-  <data name="20018" xml:space="preserve">
-    <value>Light stock.
-Increases running speed, spread, and scope-in time, and reduces range.</value>
-  </data>
-  <data name="20019" xml:space="preserve">
-    <value>Heavy stock.
-Greatly reduces recoil, range, and running speed, and increases spread and scope-in time.</value>
-  </data>
   <data name="2002" xml:space="preserve">
     <value>Equip this character skin to customize the look of your character. Your armor will still provide protection so make sure to equip it.</value>
-  </data>
-  <data name="20020" xml:space="preserve">
-    <value>Standard stock.
-Standard stock with no stat modifications.</value>
-  </data>
-  <data name="20021" xml:space="preserve">
-    <value>No stock.</value>
   </data>
   <data name="2003" xml:space="preserve">
     <value>Equip this character skin to customize the look of your character. Your armor will still provide protection so make sure to equip it.</value>
@@ -2042,142 +433,7 @@ Standard stock with no stat modifications.</value>
   <data name="2034" xml:space="preserve">
     <value>Equip this character skin to customize the look of your character. Your armor will still provide protection so make sure to equip it.</value>
   </data>
-  <data name="21000" xml:space="preserve">
-    <value>The Heavy Assault Rifle may not be fast, but it makes up for it in sheer stopping power and range.</value>
-  </data>
-  <data name="21001" xml:space="preserve">
-    <value>The lightweight machine gun reconnaissance has a quick reload speed and high damage, but very low accuracy and low rate of fire.</value>
-  </data>
-  <data name="21002" xml:space="preserve">
-    <value>The Tactical SMG offers an extremely high rate of fire and mobility, but with a high spread and recoil.</value>
-  </data>
-  <data name="21003" xml:space="preserve">
-    <value>The Burstfire SMG fires a 4 round burst with good accuracy and low recoil, but has low damage and range.</value>
-  </data>
-  <data name="21004" xml:space="preserve">
-    <value>The Anti-Materiel Rifle is instantly lethal at any range, but has a long reload time after every shot. No one man should have all this power!</value>
-  </data>
-  <data name="21005" xml:space="preserve">
-    <value>The Bullpup Full Auto is lightweight and has strong short to mid-range stopping power, but is slow to reload and has very limited range.</value>
-  </data>
-  <data name="21006" xml:space="preserve">
-    <value>The AK470 Rifle is a balanced weapon overall, offering moderate rate of fire with high stopping power.</value>
-  </data>
-  <data name="21007" xml:space="preserve">
-    <value>A modernized classic compound bow made using that latest technology. Stealthy and effective for those that can master it.</value>
-  </data>
-  <data name="21008" xml:space="preserve">
-    <value>The M4X Rifle is a balanced weapon overall, offering high rate of fire with moderate stopping power.</value>
-  </data>
-  <data name="21009" xml:space="preserve">
-    <value>The Tactical Assault Rifle is a very stable weapon, with a lower rate of fire, increased accuracy, and improved stopping power.</value>
-  </data>
-  <data name="21010" xml:space="preserve">
-    <value>The Assault Rifle is a balanced weapon overall, offering a high rate of fire with moderate stopping power.</value>
-  </data>
-  <data name="21011" xml:space="preserve">
-    <value>The Bolt-Action Rifle is an extremely long-range, extremely powerful weapon, but a new bullet must be loaded into the chamber after each shot.</value>
-  </data>
-  <data name="21012" xml:space="preserve">
-    <value>The Light Machine Gun has a high ammo capacity, but sacrifices accuracy for the sheer volume of bullets.</value>
-  </data>
-  <data name="21013" xml:space="preserve">
-    <value>The Burstfire Rifle fires quick bursts of three bullets, with a tight spread.</value>
-  </data>
-  <data name="21014" xml:space="preserve">
-    <value>The Assault Rifle is a balanced weapon overall, offering a high rate of fire with moderate stopping power.</value>
-  </data>
-  <data name="21015" xml:space="preserve">
-    <value>The SMG is an extremely fast automatic weapon, though the individual bullets don't pack much punch.</value>
-  </data>
-  <data name="21016" xml:space="preserve">
-    <value>The Combat Rifle is an extremely long-range semi-automatic weapon with moderate stopping power.</value>
-  </data>
-  <data name="21017" xml:space="preserve">
-    <value>The Light Recon Rifle is a short to medium range semi-automatic weapon with good damage, stability, and speed.</value>
-  </data>
-  <data name="22000" xml:space="preserve">
-    <value>The Shotgun Assault Rifle-k fires 5 pellets and offers a high rate of fire but is highly inaccurate at a distance.</value>
-  </data>
-  <data name="22001" xml:space="preserve">
-    <value>The Breech Loaded Pistol that can be bored to use exotic ammunition.</value>
-  </data>
-  <data name="22002" xml:space="preserve">
-    <value>A compact snubnose revolver with a higher rate of fire but less punch than larger revolvers and poor range.</value>
-  </data>
-  <data name="22003" xml:space="preserve">
-    <value>The Heavy Pistol is surprisingly powerful for a weapon of its size, but has a high recoil.</value>
-  </data>
-  <data name="22004" xml:space="preserve">
-    <value>The Light Pistol is a standard-issue firearm, with high firerate and accuracy but low damage.</value>
-  </data>
-  <data name="22005" xml:space="preserve">
-    <value>The Burstfire Pistol fires quick bursts of three bullets. It is extremely light and fast, but suffers from low damage and poor accuracy.</value>
-  </data>
-  <data name="22006" xml:space="preserve">
-    <value>The Light Pistol is a standard-issue firearm, with high firerate and accuracy but low damage.</value>
-  </data>
-  <data name="22007" xml:space="preserve">
-    <value>The Machine Pistol fires a continuous stream of bullets, but has a high recoil and poor accuracy with a low range.</value>
-  </data>
-  <data name="22008" xml:space="preserve">
-    <value>The Revolver is exceptionally powerful with a decent range, but is very slow and holds only six bullets at a time.</value>
-  </data>
-  <data name="22009" xml:space="preserve">
-    <value>The Shotgun sprays 10 damaging pellets at nearby targets. It's very slow, but extremely effective at close range.</value>
-  </data>
-  <data name="22010" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22011" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22012" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22013" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22014" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22015" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22016" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22017" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22018" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22019" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22020" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22021" xml:space="preserve">
-    <value />
-  </data>
-  <data name="22022" xml:space="preserve">
-    <value />
-  </data>
-  <data name="23000" xml:space="preserve">
-    <value />
-  </data>
-  <data name="23001" xml:space="preserve">
-    <value />
-  </data>
-  <data name="23011" xml:space="preserve">
-    <value />
-  </data>
-  <data name="23016" xml:space="preserve">
-    <value />
-  </data>
-  <data name="23017" xml:space="preserve">
+  <data name="2035" xml:space="preserve">
     <value />
   </data>
   <data name="3000" xml:space="preserve">
@@ -2489,6 +745,9 @@ Standard stock with no stat modifications.</value>
   <data name="4048" xml:space="preserve">
     <value>Flight Digital</value>
   </data>
+  <data name="4024" xml:space="preserve">
+    <value />
+  </data>
   <data name="4050" xml:space="preserve">
     <value>Go</value>
   </data>
@@ -2525,6 +784,12 @@ Standard stock with no stat modifications.</value>
   <data name="4061" xml:space="preserve">
     <value>Hush</value>
   </data>
+  <data name="4024" xml:space="preserve">
+    <value />
+  </data>
+  <data name="4024" xml:space="preserve">
+    <value />
+  </data>
   <data name="4064" xml:space="preserve">
     <value>Airplane</value>
   </data>
@@ -2540,11 +805,23 @@ Standard stock with no stat modifications.</value>
   <data name="4068" xml:space="preserve">
     <value>Veteran War Mask</value>
   </data>
+  <data name="4024" xml:space="preserve">
+    <value />
+  </data>
+  <data name="4024" xml:space="preserve">
+    <value />
+  </data>
   <data name="4071" xml:space="preserve">
     <value>Giddy Up</value>
   </data>
   <data name="4072" xml:space="preserve">
     <value>Hip Shimmy</value>
+  </data>
+  <data name="4024" xml:space="preserve">
+    <value />
+  </data>
+  <data name="4024" xml:space="preserve">
+    <value />
   </data>
   <data name="4075" xml:space="preserve">
     <value>Go Digital</value>
@@ -3110,6 +1387,18 @@ Standard stock with no stat modifications.</value>
   <data name="5131" xml:space="preserve">
     <value>Rocket League Check out the game on PSN !!!</value>
   </data>
+  <data name="3045" xml:space="preserve">
+    <value>This Premium Reindeer Antler trinket will give your helmet hologram antlers and a red nose. As an added bonus, as long as you use this tag, you'll be forever trapped in a snowstorm!</value>
+  </data>
+  <data name="3044" xml:space="preserve">
+    <value>This will give you hologram antlers on any helmet. Happy Holidays from HSL!</value>
+  </data>
+  <data name="3031" xml:space="preserve">
+    <value>A trinket that leaves behind a trail of hearts. Happy Valentine's Day from HSL!</value>
+  </data>
+  <data name="3032" xml:space="preserve">
+    <value>A trinket that will leave roses in your footsteps. Happy Valentine's Day from HSL!</value>
+  </data>
   <data name="5136" xml:space="preserve">
     <value>A fun trinket, brought to you by the folks at KBMOD.com!</value>
   </data>
@@ -3596,5 +1885,2840 @@ Increases health slightly. Reduces speed slightly.</value>
   <data name="9010" xml:space="preserve">
     <value>Prestigious chest armor. Provides one gear slot.
 Standard-issue chest armor with no stat modifications.</value>
+  </data>
+  <data name="10000" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10001" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10009" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10010" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10011" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10012" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10013" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10014" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10015" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10016" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10017" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10018" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11000" xml:space="preserve">
+    <value>No stat modifications</value>
+  </data>
+  <data name="11001" xml:space="preserve">
+    <value>Increased damage to heavy builds, decreased damage to light builds. Scales up to a 25% increase and decrease respectively</value>
+  </data>
+  <data name="11002" xml:space="preserve">
+    <value>The classics are classic for a reason. Delivers full direct damage to the target. Limited against heavily armored targets like hardsuits.</value>
+  </data>
+  <data name="11003" xml:space="preserve">
+    <value>Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.</value>
+  </data>
+  <data name="11004" xml:space="preserve">
+    <value>Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.</value>
+  </data>
+  <data name="11005" xml:space="preserve">
+    <value>Increased damage to light builds, decreased damage to heavy builds. Scales up to a 25% increase and decrease respectively</value>
+  </data>
+  <data name="11006" xml:space="preserve">
+    <value>Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.</value>
+  </data>
+  <data name="11007" xml:space="preserve">
+    <value>30% direct damage and 70% damage over time that prevents targets from healing to full health.</value>
+  </data>
+  <data name="11008" xml:space="preserve">
+    <value>Medium direct damage and some damage over time that prevents targets from healing to full health.</value>
+  </data>
+  <data name="11009" xml:space="preserve">
+    <value>Medium direct damage and some damage over time that prevents targets from healing to full health.</value>
+  </data>
+  <data name="11010" xml:space="preserve">
+    <value>Flechette Ammo for the Breech Loaded Pistol.</value>
+  </data>
+  <data name="11011" xml:space="preserve">
+    <value>Medium direct damage and some damage over time that prevents targets from healing to full health.</value>
+  </data>
+  <data name="11012" xml:space="preserve">
+    <value>An arrow with an exploding tip</value>
+  </data>
+  <data name="11013" xml:space="preserve">
+    <value>An arrow equipped with a stun prong, slows target movement speed</value>
+  </data>
+  <data name="11014" xml:space="preserve">
+    <value>A arrow with a poisoned tip, continues to deliver damage after impact.</value>
+  </data>
+  <data name="11015" xml:space="preserve">
+    <value>A light weight fast loading arrow.</value>
+  </data>
+  <data name="11016" xml:space="preserve">
+    <value>A heavier slow loading arrow.  Fully charged arrow will pass through multiple targets</value>
+  </data>
+  <data name="11017" xml:space="preserve">
+    <value>A standard issue arrow.</value>
+  </data>
+  <data name="11018" xml:space="preserve">
+    <value>A cupid arrow, show your friends you love them!</value>
+  </data>
+  <data name="11019" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11020" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11021" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11022" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11023" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11024" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11025" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11026" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11027" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11028" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11029" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11030" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11031" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11032" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11033" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11034" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11035" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11036" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11037" xml:space="preserve">
+    <value />
+  </data>
+  <data name="11038" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12000" xml:space="preserve">
+    <value>Heavy barrel.
+Significantly improves damage, but also impairs spread, range, and running speed.</value>
+  </data>
+  <data name="12001" xml:space="preserve">
+    <value>Tactical shotgun barrel.
+Significantly increases damage, but greatly reduces range and increases spread.</value>
+  </data>
+  <data name="12002" xml:space="preserve">
+    <value>Short shotgun AR-k barrel.
+Standard-issue barrel with no stat modifications.</value>
+  </data>
+  <data name="12003" xml:space="preserve">
+    <value>Balanced shotgun AR-k barrel.
+Increases movement speed, but reduces range and accuracy.</value>
+  </data>
+  <data name="12004" xml:space="preserve">
+    <value>Assault shotgun AR-k barrel.
+Increases damage, but reduces accuracy, range, and running speed.</value>
+  </data>
+  <data name="12005" xml:space="preserve">
+    <value>Barrel grip.
+Improves recoil, but reduces movement speed.</value>
+  </data>
+  <data name="12006" xml:space="preserve">
+    <value>Barrel grip.
+Improves spread and range, but reduces recoil and movement speed.</value>
+  </data>
+  <data name="12007" xml:space="preserve">
+    <value>Barrel grip.
+Improves spread and range, but reduces movement speed.</value>
+  </data>
+  <data name="12008" xml:space="preserve">
+    <value>Barrel grip.
+Greatly improves recoil, but reduces accuracy, range, and movement speed.</value>
+  </data>
+  <data name="12009" xml:space="preserve">
+    <value>Barrel grip.
+Greatly improves spread and range, but reduces movement speed.</value>
+  </data>
+  <data name="12010" xml:space="preserve">
+    <value>Barrel grip.
+Improves spread, recoil, and range, but reduces movement speed.</value>
+  </data>
+  <data name="12011" xml:space="preserve">
+    <value>Barrel grip.
+Improves recoil and movement speed, but reduces accuracy and range.</value>
+  </data>
+  <data name="12012" xml:space="preserve">
+    <value>No grip mod.</value>
+  </data>
+  <data name="12013" xml:space="preserve">
+    <value>Extended barrel.
+Improves spread but impairs damage.</value>
+  </data>
+  <data name="12014" xml:space="preserve">
+    <value>Improves running speed and damage, but impairs spread and range.</value>
+  </data>
+  <data name="12015" xml:space="preserve">
+    <value>Significantly improves damage, but also impairs spread, range, and running speed.</value>
+  </data>
+  <data name="12016" xml:space="preserve">
+    <value>Balanced barrel.
+Improves damage, but impairs running speed.</value>
+  </data>
+  <data name="12017" xml:space="preserve">
+    <value>Short barrel.
+Improves damage, but also impairs range and spread.</value>
+  </data>
+  <data name="12018" xml:space="preserve">
+    <value>Tactical shotgun barrel.
+Standard-issue barrel with no stat modifications.</value>
+  </data>
+  <data name="12019" xml:space="preserve">
+    <value>Light barrel.
+Significantly improves running speed, but impairs range and spread.</value>
+  </data>
+  <data name="12020" xml:space="preserve">
+    <value>Short shotgun barrel.
+Significantly increases running speed, but reduces range and increases spread.</value>
+  </data>
+  <data name="12021" xml:space="preserve">
+    <value>Assault barrel.
+Improves damage, range, but impairs running speed.</value>
+  </data>
+  <data name="12022" xml:space="preserve">
+    <value>Ranged barrel.
+Significantly improves range, spread, and running speed. impairs damage.</value>
+  </data>
+  <data name="12023" xml:space="preserve">
+    <value>Ranged barrel.
+Significantly improves range and spread, but impairs damage and running speed.</value>
+  </data>
+  <data name="12024" xml:space="preserve">
+    <value>Short barrel.
+Increases running speed and range while decreasing spread, but significantly reduces damage.</value>
+  </data>
+  <data name="12025" xml:space="preserve">
+    <value>Ranged barrel.
+Significantly improves range and spread, but impairs damage and running speed.</value>
+  </data>
+  <data name="12026" xml:space="preserve">
+    <value>Short barrel.
+Significantly improves running speed, but impairs range and spread.</value>
+  </data>
+  <data name="12027" xml:space="preserve">
+    <value>Tactical pistol barrel.
+Greatly improves damage, range, and spread, but reduces running speed.</value>
+  </data>
+  <data name="12028" xml:space="preserve">
+    <value>Tactical pistol barrel.
+Significantly increases damage, and improves spread and range. Greatly reduces running speed.</value>
+  </data>
+  <data name="12029" xml:space="preserve">
+    <value>Short barrel.
+Increases running speed, but impairs spread and range.</value>
+  </data>
+  <data name="12030" xml:space="preserve">
+    <value>Balanced barrel.
+No stat modifications. An all-around balanced barrel.</value>
+  </data>
+  <data name="12031" xml:space="preserve">
+    <value>Extended barrel.
+Improves range and spread, but impairs running speed.</value>
+  </data>
+  <data name="12032" xml:space="preserve">
+    <value>Tactical barrel.
+Improves damage and running speed, but reduces range.</value>
+  </data>
+  <data name="12033" xml:space="preserve">
+    <value>Short barrel.
+Improves damage, range and spread, but significantly impairs running speed.</value>
+  </data>
+  <data name="12034" xml:space="preserve">
+    <value>Assault barrel.
+Improves damage, but impairs spread, range, and running speed.</value>
+  </data>
+  <data name="12035" xml:space="preserve">
+    <value>Balanced barrel.
+Increases damage, but impairs spreads, range, and running speed.</value>
+  </data>
+  <data name="12036" xml:space="preserve">
+    <value>Assault barrel.
+Improves damage, but impairs spread, range, and running speed.</value>
+  </data>
+  <data name="12037" xml:space="preserve">
+    <value>Balanced barrel.
+No stat modifications. An all-around balanced barrel.</value>
+  </data>
+  <data name="12038" xml:space="preserve">
+    <value>No barrel mod.</value>
+  </data>
+  <data name="12039" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12040" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12041" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12042" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12043" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12044" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12045" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12046" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12047" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12048" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12049" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12050" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12051" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12052" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12053" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12054" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12055" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12056" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12057" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12058" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12059" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12060" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12061" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12062" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12063" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12064" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12065" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12066" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12067" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12068" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12069" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12070" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12071" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12072" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12073" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12074" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12075" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12076" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12077" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12078" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12079" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12080" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12081" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12082" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12083" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12084" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12085" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12086" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12087" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12088" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12089" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12090" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12091" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12092" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12093" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12094" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12095" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12096" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12097" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12098" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12099" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12100" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12101" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12102" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12103" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12104" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12105" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12106" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12107" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12108" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12109" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12110" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12111" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12112" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12113" xml:space="preserve">
+    <value />
+  </data>
+  <data name="5126" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="12115" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12116" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12117" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12118" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12119" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12120" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12121" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12122" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12123" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12124" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12125" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12126" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12127" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12128" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12129" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12130" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12131" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12132" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12133" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12134" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12135" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12136" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12137" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12138" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12139" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12140" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12141" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12142" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12143" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12144" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12145" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12146" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12147" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12148" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12149" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12150" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12151" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12152" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12153" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12154" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12155" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12156" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12157" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12159" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12160" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12161" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12162" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12163" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12000" xml:space="preserve">
+    <value>Heavy barrel.
+Significantly improves damage, but also impairs spread, range, and running speed.</value>
+  </data>
+  <data name="12001" xml:space="preserve">
+    <value>Tactical shotgun barrel.
+Significantly increases damage, but greatly reduces range and increases spread.</value>
+  </data>
+  <data name="12002" xml:space="preserve">
+    <value>Short shotgun AR-k barrel.
+Standard-issue barrel with no stat modifications.</value>
+  </data>
+  <data name="12003" xml:space="preserve">
+    <value>Balanced shotgun AR-k barrel.
+Increases movement speed, but reduces range and accuracy.</value>
+  </data>
+  <data name="12004" xml:space="preserve">
+    <value>Assault shotgun AR-k barrel.
+Increases damage, but reduces accuracy, range, and running speed.</value>
+  </data>
+  <data name="12005" xml:space="preserve">
+    <value>Barrel grip.
+Improves recoil, but reduces movement speed.</value>
+  </data>
+  <data name="12006" xml:space="preserve">
+    <value>Barrel grip.
+Improves spread and range, but reduces recoil and movement speed.</value>
+  </data>
+  <data name="12007" xml:space="preserve">
+    <value>Barrel grip.
+Improves spread and range, but reduces movement speed.</value>
+  </data>
+  <data name="12008" xml:space="preserve">
+    <value>Barrel grip.
+Greatly improves recoil, but reduces accuracy, range, and movement speed.</value>
+  </data>
+  <data name="12009" xml:space="preserve">
+    <value>Barrel grip.
+Greatly improves spread and range, but reduces movement speed.</value>
+  </data>
+  <data name="12010" xml:space="preserve">
+    <value>Barrel grip.
+Improves spread, recoil, and range, but reduces movement speed.</value>
+  </data>
+  <data name="12011" xml:space="preserve">
+    <value>Barrel grip.
+Improves recoil and movement speed, but reduces accuracy and range.</value>
+  </data>
+  <data name="12012" xml:space="preserve">
+    <value>No grip mod.</value>
+  </data>
+  <data name="12013" xml:space="preserve">
+    <value>Extended barrel.
+Improves spread but impairs damage.</value>
+  </data>
+  <data name="12014" xml:space="preserve">
+    <value>Improves running speed and damage, but impairs spread and range.</value>
+  </data>
+  <data name="12015" xml:space="preserve">
+    <value>Significantly improves damage, but also impairs spread, range, and running speed.</value>
+  </data>
+  <data name="12016" xml:space="preserve">
+    <value>Balanced barrel.
+Improves damage, but impairs running speed.</value>
+  </data>
+  <data name="12017" xml:space="preserve">
+    <value>Short barrel.
+Improves damage, but also impairs range and spread.</value>
+  </data>
+  <data name="12018" xml:space="preserve">
+    <value>Tactical shotgun barrel.
+Standard-issue barrel with no stat modifications.</value>
+  </data>
+  <data name="12019" xml:space="preserve">
+    <value>Light barrel.
+Significantly improves running speed, but impairs range and spread.</value>
+  </data>
+  <data name="12020" xml:space="preserve">
+    <value>Short shotgun barrel.
+Significantly increases running speed, but reduces range and increases spread.</value>
+  </data>
+  <data name="12021" xml:space="preserve">
+    <value>Assault barrel.
+Improves damage, range, but impairs running speed.</value>
+  </data>
+  <data name="12022" xml:space="preserve">
+    <value>Ranged barrel.
+Significantly improves range, spread, and running speed. impairs damage.</value>
+  </data>
+  <data name="12023" xml:space="preserve">
+    <value>Ranged barrel.
+Significantly improves range and spread, but impairs damage and running speed.</value>
+  </data>
+  <data name="12024" xml:space="preserve">
+    <value>Short barrel.
+Increases running speed and range while decreasing spread, but significantly reduces damage.</value>
+  </data>
+  <data name="12025" xml:space="preserve">
+    <value>Ranged barrel.
+Significantly improves range and spread, but impairs damage and running speed.</value>
+  </data>
+  <data name="12026" xml:space="preserve">
+    <value>Short barrel.
+Significantly improves running speed, but impairs range and spread.</value>
+  </data>
+  <data name="12027" xml:space="preserve">
+    <value>Tactical pistol barrel.
+Greatly improves damage, range, and spread, but reduces running speed.</value>
+  </data>
+  <data name="12028" xml:space="preserve">
+    <value>Tactical pistol barrel.
+Significantly increases damage, and improves spread and range. Greatly reduces running speed.</value>
+  </data>
+  <data name="12029" xml:space="preserve">
+    <value>Short barrel.
+Increases running speed, but impairs spread and range.</value>
+  </data>
+  <data name="12030" xml:space="preserve">
+    <value>Balanced barrel.
+No stat modifications. An all-around balanced barrel.</value>
+  </data>
+  <data name="12031" xml:space="preserve">
+    <value>Extended barrel.
+Improves range and spread, but impairs running speed.</value>
+  </data>
+  <data name="12032" xml:space="preserve">
+    <value>Tactical barrel.
+Improves damage and running speed, but reduces range.</value>
+  </data>
+  <data name="12033" xml:space="preserve">
+    <value>Short barrel.
+Improves damage, range and spread, but significantly impairs running speed.</value>
+  </data>
+  <data name="12034" xml:space="preserve">
+    <value>Assault barrel.
+Improves damage, but impairs spread, range, and running speed.</value>
+  </data>
+  <data name="12035" xml:space="preserve">
+    <value>Balanced barrel.
+Increases damage, but impairs spreads, range, and running speed.</value>
+  </data>
+  <data name="12036" xml:space="preserve">
+    <value>Assault barrel.
+Improves damage, but impairs spread, range, and running speed.</value>
+  </data>
+  <data name="12037" xml:space="preserve">
+    <value>Balanced barrel.
+No stat modifications. An all-around balanced barrel.</value>
+  </data>
+  <data name="12038" xml:space="preserve">
+    <value>No barrel mod.</value>
+  </data>
+  <data name="12039" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12040" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12041" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12042" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12043" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12044" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12045" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12046" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12047" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12048" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12049" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12050" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12051" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12052" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12053" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12088" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12055" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12056" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12057" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12058" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12059" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12060" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12061" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12062" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12063" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12064" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12065" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12066" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12067" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12068" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12070" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12071" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12072" xml:space="preserve">
+    <value />
+  </data>
+  <data name="13072" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="13073" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="13074" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="13075" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="13076" xml:space="preserve">
+    <value>Extra Life Charity is a weapon and armor camo that was available on October 25th, 2014 and obtained by donating $50 for charity to help sick kids. Free 7 day versions of them were given away prior that date.</value>
+  </data>
+  <data name="13077" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="13078" xml:space="preserve">
+    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
+  </data>
+  <data name="13079" xml:space="preserve">
+    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
+  </data>
+  <data name="12073" xml:space="preserve">
+    <value />
+  </data>
+  <data name="13081" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="12075" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12076" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12077" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12078" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12079" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12080" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12095" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12096" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12097" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12098" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12099" xml:space="preserve">
+    <value />
+  </data>
+  <data name="13093" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="12101" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12102" xml:space="preserve">
+    <value />
+  </data>
+  <data name="13096" xml:space="preserve">
+    <value>Originally, this camo could only be obtained as an extra reward for buying the Blacklight T-Shirt.</value>
+  </data>
+  <data name="5113" xml:space="preserve">
+    <value>CamoDesc</value>
+  </data>
+  <data name="12103" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12104" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12105" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12106" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12107" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12108" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12109" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12115" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12116" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12117" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12118" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12119" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12120" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12121" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12122" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12123" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12124" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12125" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12126" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12127" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12128" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12129" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12130" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12131" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12132" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12133" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12134" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12135" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12136" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12137" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12138" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12139" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12140" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12141" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12142" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12143" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12144" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12145" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12146" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12147" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12148" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12149" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12150" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12151" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12152" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12153" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12154" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12155" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12156" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12157" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12159" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12160" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12161" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12162" xml:space="preserve">
+    <value />
+  </data>
+  <data name="12163" xml:space="preserve">
+    <value />
+  </data>
+  <data name="14000" xml:space="preserve">
+    <value />
+  </data>
+  <data name="14001" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15014" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15015" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15029" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15030" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15031" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15032" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15033" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15034" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15039" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15040" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15041" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15042" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15043" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15044" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15099" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15100" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15101" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15102" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15103" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15104" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15105" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15106" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15029" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15014" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15134" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15135" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15136" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15137" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15138" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15139" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15168" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15173" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15175" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15176" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15099" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15178" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15179" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15102" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15100" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15101" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15103" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15173" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10017" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10012" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10013" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10014" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10015" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10016" xml:space="preserve">
+    <value />
+  </data>
+  <data name="10018" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Barrel grip.
+Standard-issue grip with no stat modifications.</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Barrel post grip.
+Greatly reduces recoil and increases fire rate.</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15226" xml:space="preserve">
+    <value />
+  </data>
+  <data name="15226" xml:space="preserve">
+    <value />
+  </data>
+  <data name="16000" xml:space="preserve">
+    <value>Standard-issue magazines provide no stat modifications.</value>
+  </data>
+  <data name="16001" xml:space="preserve">
+    <value>Light magazines increase run speed.</value>
+  </data>
+  <data name="16002" xml:space="preserve">
+    <value>Quick magazines greatly increase reload speed.</value>
+  </data>
+  <data name="16003" xml:space="preserve">
+    <value>Extended magazines increase ammo capacity, but decrease run speed.</value>
+  </data>
+  <data name="16004" xml:space="preserve">
+    <value>Express magazines increase reload and run speed.</value>
+  </data>
+  <data name="16005" xml:space="preserve">
+    <value>Deals 120.6% damage against hardsuits, turrets and agents who are stunned, blinded, or in digi-grenade fields. Does 90% damage otherwise.</value>
+  </data>
+  <data name="16006" xml:space="preserve">
+    <value>Deals 80% damage, but causes a loud ear-ringing explosion and prevents revives.</value>
+  </data>
+  <data name="16007" xml:space="preserve">
+    <value>Deals full damage up front, and an extra 10% damage overtime. Burn does not stack.</value>
+  </data>
+  <data name="16008" xml:space="preserve">
+    <value>Deals 30% damage up front, and 70% overtime, while capping health and obscuring the target's vision.</value>
+  </data>
+  <data name="16009" xml:space="preserve">
+    <value />
+  </data>
+  <data name="16010" xml:space="preserve">
+    <value />
+  </data>
+  <data name="16011" xml:space="preserve">
+    <value />
+  </data>
+  <data name="16012" xml:space="preserve">
+    <value />
+  </data>
+  <data name="16013" xml:space="preserve">
+    <value />
+  </data>
+  <data name="16014" xml:space="preserve">
+    <value>Drummed shotgun magazines significantly increase ammo capacity and reload speed, but greatly decrease run speed.</value>
+  </data>
+  <data name="16015" xml:space="preserve">
+    <value>Massive improvement to ammo count, but significantly impairs reload and running speeds.</value>
+  </data>
+  <data name="16016" xml:space="preserve">
+    <value />
+  </data>
+  <data name="16017" xml:space="preserve">
+    <value />
+  </data>
+  <data name="16018" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17000" xml:space="preserve">
+    <value>No muzzle mod.</value>
+  </data>
+  <data name="17001" xml:space="preserve">
+    <value>Flash brake muzzle.
+Improves recoil but impairs damage.</value>
+  </data>
+  <data name="17002" xml:space="preserve">
+    <value>Flash brake muzzle.
+Improves range, recoil and spread, but impairs damage.</value>
+  </data>
+  <data name="17003" xml:space="preserve">
+    <value>Suppressor muzzle.
+Improves recoil, but impairs damage, range, and spread.</value>
+  </data>
+  <data name="17004" xml:space="preserve">
+    <value>Flash brake muzzle.
+Improves recoil, but impairs damage.</value>
+  </data>
+  <data name="17005" xml:space="preserve">
+    <value>Flash brake muzzle.
+Significantly improves recoil, but impairs damage.</value>
+  </data>
+  <data name="17006" xml:space="preserve">
+    <value>Suppressor muzzle.
+Significantly improves recoil, but impairs damage.</value>
+  </data>
+  <data name="17007" xml:space="preserve">
+    <value>Flash brake muzzle.
+Improves recoil, but impairs damage.</value>
+  </data>
+  <data name="17008" xml:space="preserve">
+    <value>Flash brake muzzle.
+Improves range, spread, and recoil, but impairs damage.</value>
+  </data>
+  <data name="17009" xml:space="preserve">
+    <value>Flash brake muzzle.
+Standard issue muzzle with no enhancements.</value>
+  </data>
+  <data name="17010" xml:space="preserve">
+    <value>Silencer muzzle.
+Significantly improves recoil, but impairs spread, damage, and range.</value>
+  </data>
+  <data name="17011" xml:space="preserve">
+    <value>Flash brake muzzle.
+Improves damage, but impairs range, recoil, and spread.</value>
+  </data>
+  <data name="17012" xml:space="preserve">
+    <value>Flashbrake muzzle.
+Improves damage, but impairs recoil.</value>
+  </data>
+  <data name="17013" xml:space="preserve">
+    <value>Flash brake muzzle.
+Significantly improves damage, but impairs recoil.</value>
+  </data>
+  <data name="17014" xml:space="preserve">
+    <value>Flash brake muzzle.
+Significantly improves damage, but impairs range, spread, and recoil.</value>
+  </data>
+  <data name="17015" xml:space="preserve">
+    <value>Flash brake muzzle.
+Improves range, spread, and recoil, but impairs damage.</value>
+  </data>
+  <data name="17016" xml:space="preserve">
+    <value>Flash brake muzzle.
+Significantly improves damage, but impairs range, spread, and recoil.</value>
+  </data>
+  <data name="17017" xml:space="preserve">
+    <value>Flashbrake muzzle.
+Improves damage, spread, and range, but impairs recoil.</value>
+  </data>
+  <data name="17018" xml:space="preserve">
+    <value>Flash brake muzzle.
+Standard issue muzzle with no enhancements.</value>
+  </data>
+  <data name="17019" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17020" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17021" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17022" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17023" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17024" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17025" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17026" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17027" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17028" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17029" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17030" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17031" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17032" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17033" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17034" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17035" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17036" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17037" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17038" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17039" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17040" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17041" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17042" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17043" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17044" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17045" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17046" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17047" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17048" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17049" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17050" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17051" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17052" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17053" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17054" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17055" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17056" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17057" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17058" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17059" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17060" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17061" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17062" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17063" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17064" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17065" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17066" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17067" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17068" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17069" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17070" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17071" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17072" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17073" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17074" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17075" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17076" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17077" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17078" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17079" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17080" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17081" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17082" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17083" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17084" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17085" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17086" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17087" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17088" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17089" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17090" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17091" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17092" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17093" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17094" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17095" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17096" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17097" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17098" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17099" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17100" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17101" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17102" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17103" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17104" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17105" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17106" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17107" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17108" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17109" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17110" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17111" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17112" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17113" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17114" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17115" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17116" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17117" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17118" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17119" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17120" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17121" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17122" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17123" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17124" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17125" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17126" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17127" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17128" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17129" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17130" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17131" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17132" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17133" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17134" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17135" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17136" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17137" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17138" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17139" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17140" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17141" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17142" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17143" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17144" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17145" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17146" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17147" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17148" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17149" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17150" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17151" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17152" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17153" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17154" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17155" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17156" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17157" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17158" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17159" xml:space="preserve">
+    <value />
+  </data>
+  <data name="17160" xml:space="preserve">
+    <value />
+  </data>
+  <data name="18000" xml:space="preserve">
+    <value>No Fancy Pants Weapon Skin</value>
+  </data>
+  <data name="18001" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18002" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18003" xml:space="preserve">
+    <value>Test Skin Desc</value>
+  </data>
+  <data name="18004" xml:space="preserve">
+    <value>Test Skin Desc</value>
+  </data>
+  <data name="18005" xml:space="preserve">
+    <value>Test Skin Desc</value>
+  </data>
+  <data name="18006" xml:space="preserve">
+    <value>Test Skin Desc</value>
+  </data>
+  <data name="18007" xml:space="preserve">
+    <value>Test Skin Desc</value>
+  </data>
+  <data name="18008" xml:space="preserve">
+    <value>Test Skin Desc</value>
+  </data>
+  <data name="18009" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18010" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18011" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18012" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18013" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18014" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18015" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18016" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18017" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18018" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18019" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18020" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18021" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18022" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18023" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="18024" xml:space="preserve">
+    <value>A custom look for your receiver!</value>
+  </data>
+  <data name="19000" xml:space="preserve">
+    <value>Infrared scope.
+Infrared scope with 4x zoom, but significantly worsened scope-in time.</value>
+  </data>
+  <data name="19001" xml:space="preserve">
+    <value>Infrared scope.
+Small infrared scope with 3x zoom, but slightly worsened scope-in time.</value>
+  </data>
+  <data name="19002" xml:space="preserve">
+    <value>An aim point with a ammo count HUD</value>
+  </data>
+  <data name="19003" xml:space="preserve">
+    <value>A 4x Scope with a ammo count HUD</value>
+  </data>
+  <data name="19004" xml:space="preserve">
+    <value>Infrared scope.
+Infrared scope with 2x zoom, but worsened scope-in time.</value>
+  </data>
+  <data name="19005" xml:space="preserve">
+    <value>Open scope.
+Red dot sight with 1.3x zoom.</value>
+  </data>
+  <data name="19006" xml:space="preserve">
+    <value>Closed scope.
+Larger scope with a 3.9x zoom but significantly worsened scope-in time.</value>
+  </data>
+  <data name="19007" xml:space="preserve">
+    <value>Open scope.
+Simple scope with 3x zoom.</value>
+  </data>
+  <data name="19008" xml:space="preserve">
+    <value>Rail sight.
+Flip-Up sight with 1.3x zoom.</value>
+  </data>
+  <data name="19009" xml:space="preserve">
+    <value>Open scope.
+invalid scope</value>
+  </data>
+  <data name="19010" xml:space="preserve">
+    <value>Electronic scope with 3.9x zoom.</value>
+  </data>
+  <data name="19011" xml:space="preserve">
+    <value>Open scope.
+Holographic sight with 1.8x zoom.</value>
+  </data>
+  <data name="19012" xml:space="preserve">
+    <value>Zoom scope.
+Sniper scope with 6x zoom, but worsened scope-in time.</value>
+  </data>
+  <data name="19013" xml:space="preserve">
+    <value>Open scope.
+Smaller scope with 1.3x zoom.</value>
+  </data>
+  <data name="19014" xml:space="preserve">
+    <value>Open scope.
+Holographic sight with 2x zoom.</value>
+  </data>
+  <data name="19015" xml:space="preserve">
+    <value>Closed scope.
+Small scope with 3x zoom and slightly worsened scope-in time.</value>
+  </data>
+  <data name="19016" xml:space="preserve">
+    <value>Open scope.
+Smaller scope with 2.5x zoom.</value>
+  </data>
+  <data name="19017" xml:space="preserve">
+    <value>Zoom scope.
+High-powered scope with a 4x zoom, but worsened scope-in time.</value>
+  </data>
+  <data name="19018" xml:space="preserve">
+    <value>Closed scope.
+Scope and sight combo with 3x zoom.</value>
+  </data>
+  <data name="19019" xml:space="preserve">
+    <value>Open scope.
+Reflex sight with 1.6x zoom.</value>
+  </data>
+  <data name="19020" xml:space="preserve">
+    <value>Zoom scope.
+4.4x zoom scope, but impairs scope-in time.</value>
+  </data>
+  <data name="19021" xml:space="preserve">
+    <value>Zoom scope.
+Scope with 4x zoom but worsened scope-in time.</value>
+  </data>
+  <data name="20000" xml:space="preserve">
+    <value>Heavy Burstfire Rifle stock.
+Greatly improves spread and range while reducing recoil, but increases scope-in time and reduces running speed.</value>
+  </data>
+  <data name="20001" xml:space="preserve">
+    <value>Heavy Burstfire Rifle stock.
+Greatly improves spread and range while reducing recoil. Increases scope-in and reload time, and reduces running speed.</value>
+  </data>
+  <data name="20002" xml:space="preserve">
+    <value>Heavy Burstfire Rifle stock.
+Greatly improves spread and range, but increases recoil and reload time.</value>
+  </data>
+  <data name="20003" xml:space="preserve">
+    <value>Improves recoil, but impairs running speed, scope-in time, and spread.</value>
+  </data>
+  <data name="20004" xml:space="preserve">
+    <value>Light stock.
+Significantly improves running speed, but impairs spread, recoil, and range.</value>
+  </data>
+  <data name="20005" xml:space="preserve">
+    <value>Light stock.
+Improves running speed and scope-in time, but impairs spread and range.</value>
+  </data>
+  <data name="20006" xml:space="preserve">
+    <value>Heavy stock.
+Improves recoil, but impairs range, spread, running speed, and scope-in time.</value>
+  </data>
+  <data name="20007" xml:space="preserve">
+    <value>Standard stock.
+Improves range and spread, but impairs recoil.</value>
+  </data>
+  <data name="20008" xml:space="preserve">
+    <value>Standard stock.
+Improves spread and range, but impairs running speed and scope-in time.</value>
+  </data>
+  <data name="20009" xml:space="preserve">
+    <value>Light stock.
+Improves running speed, range, and spread, but significantly increases recoil.</value>
+  </data>
+  <data name="20010" xml:space="preserve">
+    <value>Heavy stock.
+Improves spread, recoil, and range, but impairs running speed and scope-in time.</value>
+  </data>
+  <data name="20011" xml:space="preserve">
+    <value>Heavy stock.
+Improves spread, recoil, and range, but impairs running speed and scope-in time.</value>
+  </data>
+  <data name="20012" xml:space="preserve">
+    <value>Standard stock.
+Improves range, recoil, and spread, but impairs running speed.</value>
+  </data>
+  <data name="20013" xml:space="preserve">
+    <value>Standard stock.
+Improves running speed and scope-in time, but impairs range, recoil, and spread.</value>
+  </data>
+  <data name="20014" xml:space="preserve">
+    <value>Standard stock.
+Standard stock with no stat modifications.</value>
+  </data>
+  <data name="20015" xml:space="preserve">
+    <value>Heavy stock.
+Improves recoil, but impairs running speed, scope-in time, and spread.</value>
+  </data>
+  <data name="20016" xml:space="preserve">
+    <value>Light stock.
+Improves running speed and scope-in time, but impairs range, spread, and recoil.</value>
+  </data>
+  <data name="20017" xml:space="preserve">
+    <value>Standard stock.
+Standard-issue stock with no stat modifications.</value>
+  </data>
+  <data name="21000" xml:space="preserve">
+    <value>The Heavy Assault Rifle may not be fast, but it makes up for it in sheer stopping power and range.</value>
+  </data>
+  <data name="21001" xml:space="preserve">
+    <value>The lightweight machine gun reconnaissance has a quick reload speed and high damage, but very low accuracy and low rate of fire.</value>
+  </data>
+  <data name="21002" xml:space="preserve">
+    <value>The Tactical SMG offers an extremely high rate of fire and mobility, but with a high spread and recoil.</value>
+  </data>
+  <data name="21003" xml:space="preserve">
+    <value>The Burstfire SMG fires a 4 round burst with good accuracy and low recoil, but has low damage and range.</value>
+  </data>
+  <data name="21004" xml:space="preserve">
+    <value>The Anti-Materiel Rifle is instantly lethal at any range, but has a long reload time after every shot. No one man should have all this power!</value>
+  </data>
+  <data name="21005" xml:space="preserve">
+    <value>The Bullpup Full Auto is lightweight and has strong short to mid-range stopping power, but is slow to reload and has very limited range.</value>
+  </data>
+  <data name="21006" xml:space="preserve">
+    <value>The AK470 Rifle is a balanced weapon overall, offering moderate rate of fire with high stopping power.</value>
+  </data>
+  <data name="21007" xml:space="preserve">
+    <value>A modernized classic compound bow made using that latest technology. Stealthy and effective for those that can master it.</value>
+  </data>
+  <data name="21008" xml:space="preserve">
+    <value>The M4X Rifle is a balanced weapon overall, offering high rate of fire with moderate stopping power.</value>
+  </data>
+  <data name="21009" xml:space="preserve">
+    <value>The Tactical Assault Rifle is a very stable weapon, with a lower rate of fire, increased accuracy, and improved stopping power.</value>
+  </data>
+  <data name="21010" xml:space="preserve">
+    <value>The Assault Rifle is a balanced weapon overall, offering a high rate of fire with moderate stopping power.</value>
+  </data>
+  <data name="21011" xml:space="preserve">
+    <value>The Bolt-Action Rifle is an extremely long-range, extremely powerful weapon, but a new bullet must be loaded into the chamber after each shot.</value>
+  </data>
+  <data name="21012" xml:space="preserve">
+    <value>The Light Machine Gun has a high ammo capacity, but sacrifices accuracy for the sheer volume of bullets.</value>
+  </data>
+  <data name="21013" xml:space="preserve">
+    <value>The Burstfire Rifle fires quick bursts of three bullets, with a tight spread.</value>
+  </data>
+  <data name="21014" xml:space="preserve">
+    <value>The Assault Rifle is a balanced weapon overall, offering a high rate of fire with moderate stopping power.</value>
+  </data>
+  <data name="21015" xml:space="preserve">
+    <value>The SMG is an extremely fast automatic weapon, though the individual bullets don't pack much punch.</value>
+  </data>
+  <data name="21016" xml:space="preserve">
+    <value>The Combat Rifle is an extremely long-range semi-automatic weapon with moderate stopping power.</value>
+  </data>
+  <data name="21017" xml:space="preserve">
+    <value>The Light Recon Rifle is a short to medium range semi-automatic weapon with good damage, stability, and speed.</value>
+  </data>
+  <data name="21018" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21019" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21020" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21021" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21022" xml:space="preserve">
+    <value />
+  </data>
+  <data name="22000" xml:space="preserve">
+    <value>The Shotgun Assault Rifle-k fires 5 pellets and offers a high rate of fire but is highly inaccurate at a distance.</value>
+  </data>
+  <data name="22001" xml:space="preserve">
+    <value>The Breech Loaded Pistol that can be bored to use exotic ammunition.</value>
+  </data>
+  <data name="21012" xml:space="preserve">
+    <value>The Light Machine Gun has a high ammo capacity, but sacrifices accuracy for the sheer volume of bullets.</value>
+  </data>
+  <data name="21019" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21014" xml:space="preserve">
+    <value>The Assault Rifle is a balanced weapon overall, offering a high rate of fire with moderate stopping power.</value>
+  </data>
+  <data name="21018" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21010" xml:space="preserve">
+    <value>The Assault Rifle is a balanced weapon overall, offering a high rate of fire with moderate stopping power.</value>
+  </data>
+  <data name="21017" xml:space="preserve">
+    <value>The Light Recon Rifle is a short to medium range semi-automatic weapon with good damage, stability, and speed.</value>
+  </data>
+  <data name="21013" xml:space="preserve">
+    <value>The Burstfire Rifle fires quick bursts of three bullets, with a tight spread.</value>
+  </data>
+  <data name="21016" xml:space="preserve">
+    <value>The Combat Rifle is an extremely long-range semi-automatic weapon with moderate stopping power.</value>
+  </data>
+  <data name="21011" xml:space="preserve">
+    <value>The Bolt-Action Rifle is an extremely long-range, extremely powerful weapon, but a new bullet must be loaded into the chamber after each shot.</value>
+  </data>
+  <data name="22011" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21021" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21020" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21022" xml:space="preserve">
+    <value />
+  </data>
+  <data name="21015" xml:space="preserve">
+    <value>The SMG is an extremely fast automatic weapon, though the individual bullets don't pack much punch.</value>
+  </data>
+  <data name="22016" xml:space="preserve">
+    <value />
+  </data>
+  <data name="22017" xml:space="preserve">
+    <value />
   </data>
 </root>

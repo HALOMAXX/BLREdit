@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
@@ -30,8 +31,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.11.6";
-    public const string CurrentVersionTitle = "QoL";
+    public const string CurrentVersion = "v0.11.7";
+    public const string CurrentVersionTitle = "Better Loadout Management";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 
@@ -64,12 +65,12 @@ public partial class App : System.Windows.Application
             string name = argList[i];
             string value = "";
             if (!name.StartsWith("-")) continue;
-            if (i+1 < argList.Length && !argList[i + 1].StartsWith("-")) value = argList[i+1];
+            if (i + 1 < argList.Length && !argList[i + 1].StartsWith("-")) value = argList[i + 1];
             argDict.Add(name, value);
         }
 
         if (argDict.TryGetValue("-forceStart", out var _))
-        { 
+        {
             ForceStart = true;
         }
 
@@ -118,8 +119,8 @@ public partial class App : System.Windows.Application
                 while (Console.ReadKey().Key != ConsoleKey.Q) { }
             }
             catch (Exception error)
-            { 
-                LoggingSystem.MessageLog($"failed to start server:\n{error}"); 
+            {
+                LoggingSystem.MessageLog($"failed to start server:\n{error}");
             }
 
             BLRProcess.KillAll();
@@ -128,85 +129,59 @@ public partial class App : System.Windows.Application
             return;
         }
 
-        #if DEBUG
+#if DEBUG
+
         if (argDict.TryGetValue("-localize", out string _))
         {
             ImportSystem.Initialize();
 
-            int categoryOffset = 1000;
-
-            int categoryIndex = categoryOffset;
+            var NameList = new Dictionary<BLRItem, string>();
+            var TooltipList = new Dictionary<BLRItem, string>();
 
             foreach (var category in ImportSystem.ItemLists)
             {
-                int itemIndex = 0;
                 foreach (var item in category.Value)
-                {
-                    item.NameID = categoryIndex + itemIndex;
-                    itemIndex++;
-                }
-                categoryIndex += categoryOffset;
-            }
-
-
-            Dictionary<int, List<BLRItem>> NameIDList = new();
-            Dictionary<string?, List<BLRItem>> NameList = new();
-
-            foreach (var cat in ImportSystem.ItemLists)
-            {
-                foreach (var item in cat.Value)
-                {
-                    if (!NameIDList.ContainsKey(item.NameID))
+                { 
+                    if (!string.IsNullOrEmpty(item.DisplayName))
                     {
-                        NameIDList.Add(item.NameID, new() { item });
+                        NameList.Add(item, item.DisplayName);
                     }
                     else
                     {
-                        NameIDList[item.NameID].Add(item);
+                        NameList.Add(item, item.Name ?? string.Empty);
                     }
 
-                    if (!NameList.ContainsKey(item.Name))
+                    if (!string.IsNullOrEmpty(item.DisplayTooltip))
                     {
-                        NameList.Add(item.Name, new() { item });
+                        TooltipList.Add(item, item.DisplayTooltip);
                     }
                     else
                     {
-                        NameList[item.Name].Add(item);
+                        TooltipList.Add(item, string.Empty);
                     }
-
                 }
             }
 
-            LoggingSystem.Log("Testing NameID Duplicates");
-            foreach (var itemList in NameIDList)
+            GenerateNameIDs();
+
+            TestNameDuplication();
+
+            using (ResXResourceWriter resx = new ResXResourceWriter("newItemNames.resx"))
             {
-                if (itemList.Value.Count > 1)
+                foreach (var item in NameList)
                 {
-                    string items = $"[{itemList.Key}]:";
-                    foreach (var item in itemList.Value)
-                    {
-                        items += $" {item.Name},";
-                    }
-                    LoggingSystem.Log(items);
+                    resx.AddResource(item.Key.NameID.ToString(), item.Value);
                 }
             }
-
-            LoggingSystem.Log("Testing Name Duplicates");
-            foreach (var itemList in NameList)
+            using (ResXResourceWriter resx = new ResXResourceWriter("newItemTooltips.resx"))
             {
-                if (itemList.Value.Count > 1)
+                foreach (var item in TooltipList)
                 {
-                    string items = $"[{itemList.Key}]:";
-                    foreach (var item in itemList.Value)
-                    {
-                        items += $" {item.NameID},";
-                        item.NameID = itemList.Value[0].NameID;
-                    }
-                    LoggingSystem.Log(items);
+                    resx.AddResource(item.Key.NameID.ToString(), item.Value);
                 }
             }
 
-            IOResources.SerializeFile("namedItemList.json", ImportSystem.ItemLists);
+            IOResources.SerializeFile("localizedItemList.json", ImportSystem.ItemLists);
 
             LoggingSystem.Log("Done testing ItemList's");
             Application.Current.Shutdown();
@@ -221,6 +196,83 @@ public partial class App : System.Windows.Application
         }
 
         new MainWindow(argList).Show();
+    }
+
+    private void GenerateNameIDs(int categoryOffset = 1000)
+    {
+        int categoryIndex = categoryOffset;
+
+        foreach (var category in ImportSystem.ItemLists)
+        {
+            int itemIndex = 0;
+            foreach (var item in category.Value)
+            {
+                item.NameID = categoryIndex + itemIndex;
+                itemIndex++;
+            }
+            categoryIndex += categoryOffset;
+        }
+    }
+
+    private void TestNameDuplication()
+    {
+        LoggingSystem.Log("Preparing Name Duplication Lists");
+        Dictionary<int, List<BLRItem>> NameIDList = new();
+        Dictionary<string?, List<BLRItem>> NameList = new();
+
+        foreach (var cat in ImportSystem.ItemLists)
+        {
+            foreach (var item in cat.Value)
+            {
+                if (!NameIDList.ContainsKey(item.NameID))
+                {
+                    NameIDList.Add(item.NameID, new() { item });
+                }
+                else
+                {
+                    NameIDList[item.NameID].Add(item);
+                }
+
+                if (!NameList.ContainsKey(item.Name))
+                {
+                    NameList.Add(item.Name, new() { item });
+                }
+                else
+                {
+                    NameList[item.Name].Add(item);
+                }
+
+            }
+        }
+
+        LoggingSystem.Log("Testing NameID Duplicates");
+        foreach (var itemList in NameIDList)
+        {
+            if (itemList.Value.Count > 1)
+            {
+                string items = $"[{itemList.Key}]:";
+                foreach (var item in itemList.Value)
+                {
+                    items += $" {item.Name},";
+                }
+                LoggingSystem.Log(items);
+            }
+        }
+
+        LoggingSystem.Log("Testing Name Duplicates");
+        foreach (var itemList in NameList)
+        {
+            if (itemList.Value.Count > 1)
+            {
+                string items = $"[{itemList.Key}]:";
+                foreach (var item in itemList.Value)
+                {
+                    items += $" {item.NameID},";
+                    item.NameID = itemList.Value[0].NameID;
+                }
+                LoggingSystem.Log(items);
+            }
+        }
     }
 
     private void Application_Exit(object sender, ExitEventArgs e)

@@ -273,1526 +273,14 @@
   <data name="1051" xml:space="preserve">
     <value>I Heart U</value>
   </data>
-  <data name="11000" xml:space="preserve">
-    <value>Magnum Rounds</value>
-  </data>
-  <data name="11001" xml:space="preserve">
-    <value>Armor Piercing Rounds</value>
-  </data>
-  <data name="11002" xml:space="preserve">
-    <value>Standard Rounds</value>
-  </data>
-  <data name="11003" xml:space="preserve">
-    <value>Electro Rounds</value>
-  </data>
-  <data name="11004" xml:space="preserve">
-    <value>Explosive Rounds</value>
-  </data>
-  <data name="11005" xml:space="preserve">
-    <value>Hollow Point Rounds</value>
-  </data>
-  <data name="11006" xml:space="preserve">
-    <value>Incendiary Rounds</value>
-  </data>
-  <data name="11007" xml:space="preserve">
-    <value>Toxic Rounds</value>
-  </data>
-  <data name="11008" xml:space="preserve">
-    <value>Incendiary Flare</value>
-  </data>
-  <data name="11009" xml:space="preserve">
-    <value>Explosive Flare</value>
-  </data>
-  <data name="11010" xml:space="preserve">
-    <value>Canister</value>
-  </data>
-  <data name="11011" xml:space="preserve">
-    <value>Thumper Flare</value>
-  </data>
-  <data name="11012" xml:space="preserve">
-    <value>Exploding Arrow</value>
-  </data>
-  <data name="11013" xml:space="preserve">
-    <value>Stun Arrow</value>
-  </data>
-  <data name="11014" xml:space="preserve">
-    <value>Poison Arrow</value>
-  </data>
-  <data name="11015" xml:space="preserve">
-    <value>Light Arrow</value>
-  </data>
-  <data name="11016" xml:space="preserve">
-    <value>Heavy Arrow</value>
-  </data>
-  <data name="11017" xml:space="preserve">
-    <value>Standard Arrow</value>
-  </data>
-  <data name="11018" xml:space="preserve">
-    <value>Cupid's Arrow</value>
-  </data>
-  <data name="12000" xml:space="preserve">
-    <value>Krane Heavy Assault Barrel</value>
-  </data>
-  <data name="12001" xml:space="preserve">
-    <value>Krane SG Bar-20</value>
-  </data>
-  <data name="12002" xml:space="preserve">
-    <value>Overmatch A-12 Blast</value>
-  </data>
-  <data name="12003" xml:space="preserve">
-    <value>Overmatch CRC-7 Post</value>
-  </data>
-  <data name="12004" xml:space="preserve">
-    <value>Overmatch Heavy X3</value>
-  </data>
-  <data name="12005" xml:space="preserve">
-    <value>Briar BAR Grip</value>
-  </data>
-  <data name="12006" xml:space="preserve">
-    <value>Armcom BAR-01</value>
-  </data>
-  <data name="12007" xml:space="preserve">
-    <value>Armcom BARl1</value>
-  </data>
-  <data name="12008" xml:space="preserve">
-    <value>Hullbreach 047BAR</value>
-  </data>
-  <data name="12009" xml:space="preserve">
-    <value>Silverwood TechBAR</value>
-  </data>
-  <data name="12010" xml:space="preserve">
-    <value>Briar BAR-02</value>
-  </data>
-  <data name="12011" xml:space="preserve">
-    <value>Hullbreach 057BAR</value>
-  </data>
-  <data name="12012" xml:space="preserve">
-    <value>No Grip</value>
-  </data>
-  <data name="12013" xml:space="preserve">
-    <value>Frontier Compensator Barrel</value>
-  </data>
-  <data name="12014" xml:space="preserve">
-    <value>Redsand CQC Barrel</value>
-  </data>
-  <data name="12015" xml:space="preserve">
-    <value>Briar CQC Barrel</value>
-  </data>
-  <data name="12016" xml:space="preserve">
-    <value>Briar Balanced Barrel</value>
-  </data>
-  <data name="12017" xml:space="preserve">
-    <value>Ogre CQC Barrel</value>
-  </data>
-  <data name="12018" xml:space="preserve">
-    <value>Titan FFB</value>
-  </data>
-  <data name="12019" xml:space="preserve">
-    <value>Briar Lightweight Barrel</value>
-  </data>
-  <data name="12020" xml:space="preserve">
-    <value>Overmatch M-CV Breach</value>
-  </data>
-  <data name="12021" xml:space="preserve">
-    <value>Titan Assault Barrel</value>
-  </data>
-  <data name="12022" xml:space="preserve">
-    <value>Silverwood Light Accuracy Barrel</value>
-  </data>
-  <data name="12023" xml:space="preserve">
-    <value>Briar Accuracy Barrel</value>
-  </data>
-  <data name="12024" xml:space="preserve">
-    <value>Silverwood SW-09</value>
-  </data>
-  <data name="12025" xml:space="preserve">
-    <value>Leatherneck Accuracy Barrel</value>
-  </data>
-  <data name="12026" xml:space="preserve">
-    <value>Vulcan Lightweight Barrel</value>
-  </data>
-  <data name="12027" xml:space="preserve">
-    <value>V2 X200 Mod</value>
-  </data>
-  <data name="12028" xml:space="preserve">
-    <value>V2 Z900 Mod</value>
-  </data>
-  <data name="12029" xml:space="preserve">
-    <value>Silverwood CQC Barrel</value>
-  </data>
-  <data name="12030" xml:space="preserve">
-    <value>Frontier Standard Barrel</value>
-  </data>
-  <data name="12031" xml:space="preserve">
-    <value>Titan Extended Barrel</value>
-  </data>
-  <data name="12032" xml:space="preserve">
-    <value>Raider Snub Barrel</value>
-  </data>
-  <data name="12033" xml:space="preserve">
-    <value>Vulcan Tactical Barrel</value>
-  </data>
-  <data name="12034" xml:space="preserve">
-    <value>Briar Assault Barrel</value>
-  </data>
-  <data name="12035" xml:space="preserve">
-    <value>Krane Assault Barrel</value>
-  </data>
-  <data name="12036" xml:space="preserve">
-    <value>ArmCom Assault Barrel</value>
-  </data>
-  <data name="12037" xml:space="preserve">
-    <value>Prestige Frontier Standard Barrel</value>
-  </data>
-  <data name="12038" xml:space="preserve">
-    <value>No Barrel Mod</value>
-  </data>
-  <data name="13000" xml:space="preserve">
-    <value>Standard Issue</value>
-  </data>
-  <data name="13001" xml:space="preserve">
-    <value>Dust Digital</value>
-  </data>
-  <data name="13002" xml:space="preserve">
-    <value>Rockwall</value>
-  </data>
-  <data name="13003" xml:space="preserve">
-    <value>Sandstorm</value>
-  </data>
-  <data name="13004" xml:space="preserve">
-    <value>Digital Red</value>
-  </data>
-  <data name="13005" xml:space="preserve">
-    <value>Urban Digital</value>
-  </data>
-  <data name="13006" xml:space="preserve">
-    <value>Dust Gray</value>
-  </data>
-  <data name="13007" xml:space="preserve">
-    <value>Hillside Brown</value>
-  </data>
-  <data name="13008" xml:space="preserve">
-    <value>Brown Tiger</value>
-  </data>
-  <data name="13009" xml:space="preserve">
-    <value>Ragnarok</value>
-  </data>
-  <data name="13010" xml:space="preserve">
-    <value>Mud Flare</value>
-  </data>
-  <data name="13011" xml:space="preserve">
-    <value>Urban Dust</value>
-  </data>
-  <data name="13012" xml:space="preserve">
-    <value>Red Leopard</value>
-  </data>
-  <data name="13013" xml:space="preserve">
-    <value>Winter Rock</value>
-  </data>
-  <data name="13014" xml:space="preserve">
-    <value>Digi Tundra</value>
-  </data>
-  <data name="13015" xml:space="preserve">
-    <value>Spotted Ground</value>
-  </data>
-  <data name="13016" xml:space="preserve">
-    <value>Dark Brown</value>
-  </data>
-  <data name="13017" xml:space="preserve">
-    <value>Gray Operation</value>
-  </data>
-  <data name="13018" xml:space="preserve">
-    <value>Orange Tiger</value>
-  </data>
-  <data name="13019" xml:space="preserve">
-    <value>Hillside Operation</value>
-  </data>
-  <data name="13020" xml:space="preserve">
-    <value>Broken Rock</value>
-  </data>
-  <data name="13021" xml:space="preserve">
-    <value>Shadow</value>
-  </data>
-  <data name="13022" xml:space="preserve">
-    <value>Bloodsport</value>
-  </data>
-  <data name="13023" xml:space="preserve">
-    <value>Sahara</value>
-  </data>
-  <data name="13024" xml:space="preserve">
-    <value>Forest</value>
-  </data>
-  <data name="13025" xml:space="preserve">
-    <value>Mountain Lion</value>
-  </data>
-  <data name="13026" xml:space="preserve">
-    <value>Ice Hex</value>
-  </data>
-  <data name="13027" xml:space="preserve">
-    <value>Urban Winter</value>
-  </data>
-  <data name="13028" xml:space="preserve">
-    <value>Urban Nest</value>
-  </data>
-  <data name="13029" xml:space="preserve">
-    <value>Tactical Infil</value>
-  </data>
-  <data name="13030" xml:space="preserve">
-    <value>Avalanche</value>
-  </data>
-  <data name="13031" xml:space="preserve">
-    <value>Olive</value>
-  </data>
-  <data name="13032" xml:space="preserve">
-    <value>Tactical Winter</value>
-  </data>
-  <data name="13033" xml:space="preserve">
-    <value>Wrath</value>
-  </data>
-  <data name="13034" xml:space="preserve">
-    <value>Drifter</value>
-  </data>
-  <data name="13035" xml:space="preserve">
-    <value>Ocean Fury</value>
-  </data>
-  <data name="13036" xml:space="preserve">
-    <value>Gray</value>
-  </data>
-  <data name="13037" xml:space="preserve">
-    <value>Marked Hunter</value>
-  </data>
-  <data name="13038" xml:space="preserve">
-    <value>Snow Leopard</value>
-  </data>
-  <data name="13039" xml:space="preserve">
-    <value>Forest Combat</value>
-  </data>
-  <data name="13040" xml:space="preserve">
-    <value>Seized</value>
-  </data>
-  <data name="13041" xml:space="preserve">
-    <value>Concrete Gray</value>
-  </data>
-  <data name="13042" xml:space="preserve">
-    <value>Green Plankton</value>
-  </data>
-  <data name="13043" xml:space="preserve">
-    <value>Mountain Peak</value>
-  </data>
-  <data name="13044" xml:space="preserve">
-    <value>Gray Leaf</value>
-  </data>
-  <data name="13045" xml:space="preserve">
-    <value>Snowstorm</value>
-  </data>
-  <data name="13046" xml:space="preserve">
-    <value>Dark Gray</value>
-  </data>
-  <data name="13047" xml:space="preserve">
-    <value>Snowdrift</value>
-  </data>
-  <data name="13048" xml:space="preserve">
-    <value>Grassland Hex</value>
-  </data>
-  <data name="13049" xml:space="preserve">
-    <value>Urban Hex</value>
-  </data>
-  <data name="13050" xml:space="preserve">
-    <value>Shattered Poles</value>
-  </data>
-  <data name="13051" xml:space="preserve">
-    <value>Metallic Bronze</value>
-  </data>
-  <data name="13052" xml:space="preserve">
-    <value>Metallic Silver</value>
-  </data>
-  <data name="13053" xml:space="preserve">
-    <value>Metallic Gold</value>
-  </data>
-  <data name="13054" xml:space="preserve">
-    <value>Metallic Pink</value>
-  </data>
-  <data name="13055" xml:space="preserve">
-    <value>Metallic Orange</value>
-  </data>
-  <data name="13056" xml:space="preserve">
-    <value>Metallic Cobalt Blue</value>
-  </data>
-  <data name="13057" xml:space="preserve">
-    <value>Metallic Toxic Green</value>
-  </data>
-  <data name="13058" xml:space="preserve">
-    <value>Matte Pink</value>
-  </data>
-  <data name="13059" xml:space="preserve">
-    <value>Matte Orange</value>
-  </data>
-  <data name="13060" xml:space="preserve">
-    <value>Matte Red</value>
-  </data>
-  <data name="13061" xml:space="preserve">
-    <value>Matte Dark Red</value>
-  </data>
-  <data name="13062" xml:space="preserve">
-    <value>Matte Baby Blue</value>
-  </data>
-  <data name="13063" xml:space="preserve">
-    <value>Matte Dark Blue</value>
-  </data>
-  <data name="13064" xml:space="preserve">
-    <value>Matte Black</value>
-  </data>
-  <data name="13065" xml:space="preserve">
-    <value>White</value>
-  </data>
-  <data name="13066" xml:space="preserve">
-    <value>Matte Dark Purple</value>
-  </data>
-  <data name="13067" xml:space="preserve">
-    <value>Matte Green</value>
-  </data>
-  <data name="13068" xml:space="preserve">
-    <value>Matte Yellow</value>
-  </data>
-  <data name="13069" xml:space="preserve">
-    <value>Super Secret</value>
-  </data>
-  <data name="13070" xml:space="preserve">
-    <value>FPSGuru.com Partner Camo</value>
-  </data>
-  <data name="13071" xml:space="preserve">
-    <value>IGN.com Partner Camo</value>
-  </data>
-  <data name="13072" xml:space="preserve">
-    <value>MMOBomb.com Partner Camo</value>
-  </data>
-  <data name="13073" xml:space="preserve">
-    <value>Secret Silver</value>
-  </data>
-  <data name="13074" xml:space="preserve">
-    <value>Cash</value>
-  </data>
-  <data name="13075" xml:space="preserve">
-    <value>The Benjamins</value>
-  </data>
-  <data name="13076" xml:space="preserve">
-    <value>Extra Life Charity</value>
-  </data>
-  <data name="13077" xml:space="preserve">
-    <value>KBMOD.com Vintage</value>
-  </data>
-  <data name="13078" xml:space="preserve">
-    <value>Astro Graffiti Autumn</value>
-  </data>
-  <data name="13079" xml:space="preserve">
-    <value>Astro Graffiti</value>
-  </data>
-  <data name="13080" xml:space="preserve">
-    <value>Astro Graffiti Black</value>
-  </data>
-  <data name="13081" xml:space="preserve">
-    <value>Hardsuit Pilot White</value>
-  </data>
-  <data name="13082" xml:space="preserve">
-    <value>Hardsuit Pilot Red</value>
-  </data>
-  <data name="13083" xml:space="preserve">
-    <value>Hardsuit Pilot Orange</value>
-  </data>
-  <data name="13084" xml:space="preserve">
-    <value>Hardsuit Pilot Yellow</value>
-  </data>
-  <data name="13085" xml:space="preserve">
-    <value>Hardsuit Pilot Green</value>
-  </data>
-  <data name="13086" xml:space="preserve">
-    <value>Hardsuit Pilot Blue</value>
-  </data>
-  <data name="13087" xml:space="preserve">
-    <value>Metallic Purple</value>
-  </data>
-  <data name="13089" xml:space="preserve">
-    <value>Metallic White</value>
-  </data>
-  <data name="13090" xml:space="preserve">
-    <value>Digital Blue</value>
-  </data>
-  <data name="13091" xml:space="preserve">
-    <value>Digital Yellow</value>
-  </data>
-  <data name="13092" xml:space="preserve">
-    <value>Science</value>
-  </data>
-  <data name="13093" xml:space="preserve">
-    <value>Medic 2</value>
-  </data>
-  <data name="13094" xml:space="preserve">
-    <value>Vector</value>
-  </data>
-  <data name="13095" xml:space="preserve">
-    <value>Veteran</value>
-  </data>
-  <data name="13096" xml:space="preserve">
-    <value>Retribution Elite</value>
-  </data>
-  <data name="13097" xml:space="preserve">
-    <value>Tiger Elite</value>
-  </data>
-  <data name="13098" xml:space="preserve">
-    <value>Daylight</value>
-  </data>
-  <data name="13099" xml:space="preserve">
-    <value>Winter Operations</value>
-  </data>
-  <data name="13100" xml:space="preserve">
-    <value>Bearded Operations</value>
-  </data>
-  <data name="13101" xml:space="preserve">
-    <value>BCL TourNament</value>
-  </data>
-  <data name="13102" xml:space="preserve">
-    <value>XXOO</value>
-  </data>
-  <data name="13103" xml:space="preserve">
-    <value>Beta</value>
-  </data>
-  <data name="13104" xml:space="preserve">
-    <value>Class of 2012</value>
-  </data>
-  <data name="13105" xml:space="preserve">
-    <value>Class of 2013</value>
-  </data>
-  <data name="13106" xml:space="preserve">
-    <value>Class of 2014</value>
-  </data>
-  <data name="13107" xml:space="preserve">
-    <value>Class of 2015</value>
-  </data>
-  <data name="13108" xml:space="preserve">
-    <value>Class of 2016</value>
-  </data>
-  <data name="13109" xml:space="preserve">
-    <value>Class of 2017</value>
-  </data>
-  <data name="13110" xml:space="preserve">
-    <value>Candy Cane</value>
-  </data>
-  <data name="13111" xml:space="preserve">
-    <value>Gingerbread</value>
-  </data>
-  <data name="13112" xml:space="preserve">
-    <value>Green Wrapping Paper</value>
-  </data>
-  <data name="13113" xml:space="preserve">
-    <value>Red Wrapping Paper</value>
-  </data>
-  <data name="13115" xml:space="preserve">
-    <value>Love Fool</value>
-  </data>
-  <data name="13116" xml:space="preserve">
-    <value>Easter Blue</value>
-  </data>
-  <data name="13117" xml:space="preserve">
-    <value>Easter Green</value>
-  </data>
-  <data name="13118" xml:space="preserve">
-    <value>Easter Pink</value>
-  </data>
-  <data name="13119" xml:space="preserve">
-    <value>Easter Purple</value>
-  </data>
-  <data name="13120" xml:space="preserve">
-    <value>Easter Yellow</value>
-  </data>
-  <data name="13121" xml:space="preserve">
-    <value>KBMOD.com New</value>
-  </data>
-  <data name="13122" xml:space="preserve">
-    <value>EBL Tourney</value>
-  </data>
-  <data name="13123" xml:space="preserve">
-    <value>Bloodmoney</value>
-  </data>
-  <data name="13124" xml:space="preserve">
-    <value>Bloodmoney 2</value>
-  </data>
-  <data name="13125" xml:space="preserve">
-    <value>Cracked Apple</value>
-  </data>
-  <data name="13126" xml:space="preserve">
-    <value>Cracked Apple Pink</value>
-  </data>
-  <data name="13127" xml:space="preserve">
-    <value>Cracked Apple Red</value>
-  </data>
-  <data name="13128" xml:space="preserve">
-    <value>Digiplex</value>
-  </data>
-  <data name="13129" xml:space="preserve">
-    <value>Digiplex 2</value>
-  </data>
-  <data name="13130" xml:space="preserve">
-    <value>Digital Scatter</value>
-  </data>
-  <data name="13131" xml:space="preserve">
-    <value>Digital Scatter Green</value>
-  </data>
-  <data name="13132" xml:space="preserve">
-    <value>Digital Scatter Orange</value>
-  </data>
-  <data name="13133" xml:space="preserve">
-    <value>Fluffy Punk</value>
-  </data>
-  <data name="13134" xml:space="preserve">
-    <value>GoFast</value>
-  </data>
-  <data name="13135" xml:space="preserve">
-    <value>Jagged Metallic</value>
-  </data>
-  <data name="13136" xml:space="preserve">
-    <value>Jagged Metallic Green</value>
-  </data>
-  <data name="13137" xml:space="preserve">
-    <value>Jagged Metallic Red</value>
-  </data>
-  <data name="13138" xml:space="preserve">
-    <value>Molten Shards</value>
-  </data>
-  <data name="13139" xml:space="preserve">
-    <value>Mud Rough</value>
-  </data>
-  <data name="13140" xml:space="preserve">
-    <value>Mud Rough Pink</value>
-  </data>
-  <data name="13141" xml:space="preserve">
-    <value>Mud Rough Red</value>
-  </data>
-  <data name="13142" xml:space="preserve">
-    <value>Quiet Sand</value>
-  </data>
-  <data name="13143" xml:space="preserve">
-    <value>Quiet Sand Blue</value>
-  </data>
-  <data name="13144" xml:space="preserve">
-    <value>Quiet Sand Green</value>
-  </data>
-  <data name="13145" xml:space="preserve">
-    <value>Rock Matal</value>
-  </data>
-  <data name="13146" xml:space="preserve">
-    <value>Rock Metal Blue</value>
-  </data>
-  <data name="13147" xml:space="preserve">
-    <value>Rock Metal Orange</value>
-  </data>
-  <data name="13148" xml:space="preserve">
-    <value>Rocked Scuff</value>
-  </data>
-  <data name="13149" xml:space="preserve">
-    <value>Rocked Scuff Blue</value>
-  </data>
-  <data name="13150" xml:space="preserve">
-    <value>Rocked Scuff Yellow</value>
-  </data>
-  <data name="13151" xml:space="preserve">
-    <value>Scarred Stone</value>
-  </data>
-  <data name="13152" xml:space="preserve">
-    <value>Scarred Stone Orange</value>
-  </data>
-  <data name="13153" xml:space="preserve">
-    <value>Scarred Stone Pink</value>
-  </data>
-  <data name="13154" xml:space="preserve">
-    <value>Scarred Stone Teal</value>
-  </data>
-  <data name="13155" xml:space="preserve">
-    <value>Splatter Smudge</value>
-  </data>
-  <data name="13156" xml:space="preserve">
-    <value>Splatter Smudge Blue</value>
-  </data>
-  <data name="13157" xml:space="preserve">
-    <value>Splatter Smudge Red</value>
-  </data>
-  <data name="13158" xml:space="preserve">
-    <value>Splinter Bark</value>
-  </data>
-  <data name="13159" xml:space="preserve">
-    <value>Splinter Bark Blue</value>
-  </data>
-  <data name="13160" xml:space="preserve">
-    <value>Splinter Bark Green</value>
-  </data>
-  <data name="13161" xml:space="preserve">
-    <value>Splinter Bark Red</value>
-  </data>
-  <data name="13162" xml:space="preserve">
-    <value>Surfer Panic</value>
-  </data>
-  <data name="13163" xml:space="preserve">
-    <value>Arc</value>
-  </data>
-  <data name="14072" xml:space="preserve">
-    <value>Metallic Red</value>
-  </data>
-  <data name="14073" xml:space="preserve">
-    <value>Metallic Maroon</value>
-  </data>
-  <data name="14074" xml:space="preserve">
-    <value>Metallic Blue</value>
-  </data>
-  <data name="14075" xml:space="preserve">
-    <value>Metallic Black</value>
-  </data>
-  <data name="14077" xml:space="preserve">
-    <value>Metallic Dark Purple</value>
-  </data>
-  <data name="14078" xml:space="preserve">
-    <value>Metallic Green</value>
-  </data>
-  <data name="14079" xml:space="preserve">
-    <value>Metallic Yellow</value>
-  </data>
-  <data name="14081" xml:space="preserve">
-    <value>Cash Flow</value>
-  </data>
-  <data name="14093" xml:space="preserve">
-    <value>Bearded Ops</value>
-  </data>
-  <data name="14096" xml:space="preserve">
-    <value>Malaysia Flag</value>
-  </data>
-  <data name="15000" xml:space="preserve">
-    <value>Briar BrGR1</value>
-  </data>
-  <data name="15001" xml:space="preserve">
-    <value>Briar BrSGP1</value>
-  </data>
-  <data name="16000" xml:space="preserve">
-    <value>Standard Mag</value>
-  </data>
-  <data name="16001" xml:space="preserve">
-    <value>Light Mag</value>
-  </data>
-  <data name="16002" xml:space="preserve">
-    <value>Quick Mag</value>
-  </data>
-  <data name="16003" xml:space="preserve">
-    <value>Extended Mag</value>
-  </data>
-  <data name="16004" xml:space="preserve">
-    <value>Express Mag</value>
-  </data>
-  <data name="16005" xml:space="preserve">
-    <value>Electro Mag</value>
-  </data>
-  <data name="16006" xml:space="preserve">
-    <value>Explosive Mag</value>
-  </data>
-  <data name="16007" xml:space="preserve">
-    <value>Incendiary Mag</value>
-  </data>
-  <data name="16008" xml:space="preserve">
-    <value>Toxic Mag</value>
-  </data>
-  <data name="16014" xml:space="preserve">
-    <value>Drum Mag</value>
-  </data>
-  <data name="16015" xml:space="preserve">
-    <value>Large Drum Mag</value>
-  </data>
-  <data name="16029" xml:space="preserve">
-    <value>Standard Tube Magazine</value>
-  </data>
-  <data name="16030" xml:space="preserve">
-    <value>Light Tube Magazine</value>
-  </data>
-  <data name="16031" xml:space="preserve">
-    <value>Quick Tube Magazine</value>
-  </data>
-  <data name="16032" xml:space="preserve">
-    <value>Extended Tube Magazine</value>
-  </data>
-  <data name="16033" xml:space="preserve">
-    <value>Express Tube Magazine</value>
-  </data>
-  <data name="16034" xml:space="preserve">
-    <value>Drum Magazine</value>
-  </data>
-  <data name="16039" xml:space="preserve">
-    <value>Standard Ammo Belt</value>
-  </data>
-  <data name="16040" xml:space="preserve">
-    <value>Quick Ammo Belt</value>
-  </data>
-  <data name="16041" xml:space="preserve">
-    <value>Electro Ammo Belt</value>
-  </data>
-  <data name="16042" xml:space="preserve">
-    <value>Explosive Ammo Belt</value>
-  </data>
-  <data name="16043" xml:space="preserve">
-    <value>Incendiary Ammo Belt</value>
-  </data>
-  <data name="16044" xml:space="preserve">
-    <value>Toxic Ammo Belt</value>
-  </data>
-  <data name="16099" xml:space="preserve">
-    <value>Standard Cylinder</value>
-  </data>
-  <data name="16100" xml:space="preserve">
-    <value>Electro Cylinder</value>
-  </data>
-  <data name="16101" xml:space="preserve">
-    <value>Explosive Cylinder</value>
-  </data>
-  <data name="16102" xml:space="preserve">
-    <value>Incendiary Cylinder</value>
-  </data>
-  <data name="16103" xml:space="preserve">
-    <value>Toxic Cylinder</value>
-  </data>
-  <data name="16104" xml:space="preserve">
-    <value>Standard Ammo Box</value>
-  </data>
-  <data name="16105" xml:space="preserve">
-    <value>Light Ammo Box</value>
-  </data>
-  <data name="16106" xml:space="preserve">
-    <value>Large Capacity Ammo Box</value>
-  </data>
-  <data name="16134" xml:space="preserve">
-    <value>High Explosive Round Bore</value>
-  </data>
-  <data name="16135" xml:space="preserve">
-    <value>Incendiary Round Bore</value>
-  </data>
-  <data name="16136" xml:space="preserve">
-    <value>Electro Ammo Box</value>
-  </data>
-  <data name="16137" xml:space="preserve">
-    <value>Explosive Ammo Box</value>
-  </data>
-  <data name="16138" xml:space="preserve">
-    <value>Incendiary Ammo Box</value>
-  </data>
-  <data name="16139" xml:space="preserve">
-    <value>Toxic Ammo Box</value>
-  </data>
-  <data name="16158" xml:space="preserve">
-    <value>Magnum Mag</value>
-  </data>
-  <data name="16168" xml:space="preserve">
-    <value>Magnum Ammo Belt</value>
-  </data>
-  <data name="16173" xml:space="preserve">
-    <value>Magnum Cylinder</value>
-  </data>
-  <data name="16175" xml:space="preserve">
-    <value>Magnum Ammo Box</value>
-  </data>
-  <data name="16176" xml:space="preserve">
-    <value>Flechette Chamber Boring</value>
-  </data>
-  <data name="16178" xml:space="preserve">
-    <value>Precision Cylinder</value>
-  </data>
-  <data name="16179" xml:space="preserve">
-    <value>High Caliber Cylinder</value>
-  </data>
-  <data name="16226" xml:space="preserve">
-    <value>Prestige Standard Mag</value>
-  </data>
-  <data name="17000" xml:space="preserve">
-    <value>No Muzzle Mod</value>
-  </data>
-  <data name="17001" xml:space="preserve">
-    <value>ArmCom Slit Flash breaker</value>
-  </data>
-  <data name="17002" xml:space="preserve">
-    <value>Nexus Extended Range Muzzle</value>
-  </data>
-  <data name="17003" xml:space="preserve">
-    <value>Frontier Standard Suppressor</value>
-  </data>
-  <data name="17004" xml:space="preserve">
-    <value>Briar Dampening Muzzle</value>
-  </data>
-  <data name="17005" xml:space="preserve">
-    <value>Vulcan Notched Flash breaker</value>
-  </data>
-  <data name="17006" xml:space="preserve">
-    <value>Briar Enhanced Suppressor</value>
-  </data>
-  <data name="17007" xml:space="preserve">
-    <value>Vulcan Compensator</value>
-  </data>
-  <data name="17008" xml:space="preserve">
-    <value>Vulcan Longreach Flash breaker</value>
-  </data>
-  <data name="17009" xml:space="preserve">
-    <value>Overmatch Muzzle Shroud</value>
-  </data>
-  <data name="17010" xml:space="preserve">
-    <value>ArmCom Enhanced Suppressor</value>
-  </data>
-  <data name="17011" xml:space="preserve">
-    <value>Frontier Power Muzzle</value>
-  </data>
-  <data name="17012" xml:space="preserve">
-    <value>Silverwood Flash breaker</value>
-  </data>
-  <data name="17013" xml:space="preserve">
-    <value>Vulcan Power Brake</value>
-  </data>
-  <data name="17014" xml:space="preserve">
-    <value>Krane Power Muzzle</value>
-  </data>
-  <data name="17015" xml:space="preserve">
-    <value>Briar Extender Muzzle</value>
-  </data>
-  <data name="17016" xml:space="preserve">
-    <value>ArmCom Power Muzzle</value>
-  </data>
-  <data name="17017" xml:space="preserve">
-    <value>ArmCom Balanced Muzzle</value>
-  </data>
-  <data name="17018" xml:space="preserve">
-    <value>Prestige Overmatch Muzzle Shroud</value>
-  </data>
-  <data name="18000" xml:space="preserve">
-    <value>No Weapon Skin</value>
-  </data>
-  <data name="18001" xml:space="preserve">
-    <value>AK470 - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18002" xml:space="preserve">
-    <value>AK470 - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18003" xml:space="preserve">
-    <value>AK470 - Green Hex Weapon Skin (Test Skin Name 2)</value>
-  </data>
-  <data name="18004" xml:space="preserve">
-    <value>AK470 - Australian Flag Weapon Skin</value>
-  </data>
-  <data name="18005" xml:space="preserve">
-    <value>AK470 - Malaysan Flag Weapon Skin</value>
-  </data>
-  <data name="18006" xml:space="preserve">
-    <value>AK470 - New Zealand Flag Weapon SKin</value>
-  </data>
-  <data name="18007" xml:space="preserve">
-    <value>AK470 - Singapore Flag Weapon Skin</value>
-  </data>
-  <data name="18008" xml:space="preserve">
-    <value>AK470 - Turkish Flag Weapon Skin</value>
-  </data>
-  <data name="18009" xml:space="preserve">
-    <value>AK470 - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18010" xml:space="preserve">
-    <value>AK470 - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18011" xml:space="preserve">
-    <value>AK470 - Clovers Weapon Skin</value>
-  </data>
-  <data name="18012" xml:space="preserve">
-    <value>AK470 - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18013" xml:space="preserve">
-    <value>AK470 - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18014" xml:space="preserve">
-    <value>AK470 - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18015" xml:space="preserve">
-    <value>AK470 - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18016" xml:space="preserve">
-    <value>Heavy Assault Rifle - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18017" xml:space="preserve">
-    <value>Heavy Assault Rifle - Stars And Stripes Weapon Skin</value>
-  </data>
-  <data name="18018" xml:space="preserve">
-    <value>Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18019" xml:space="preserve">
-    <value>Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18020" xml:space="preserve">
-    <value>Heavy Assault Rifle - Clovers Weapon Skin</value>
-  </data>
-  <data name="18021" xml:space="preserve">
-    <value>Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18022" xml:space="preserve">
-    <value>Heavy Assault Rifle - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18023" xml:space="preserve">
-    <value>Heavy Assault Rifle - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18024" xml:space="preserve">
-    <value>Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18025" xml:space="preserve">
-    <value>Tactical Assault Rifle - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18026" xml:space="preserve">
-    <value>Tactical Assault Rifle - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18027" xml:space="preserve">
-    <value>Tactical Assault Rifle - Japanese Flag Weapon Skin</value>
-  </data>
-  <data name="18028" xml:space="preserve">
-    <value>Tactical Assault Rifle - Australian Flag Weapon Skin</value>
-  </data>
-  <data name="18029" xml:space="preserve">
-    <value>Tactical Assault Rifle - Malaysian Flag Weapon Skin</value>
-  </data>
-  <data name="18030" xml:space="preserve">
-    <value>Tactical Assault Rifle - New Zealand Weapon Skin</value>
-  </data>
-  <data name="18031" xml:space="preserve">
-    <value>Tactical Assault Rifle - Singapore Flag Weapon Skin</value>
-  </data>
-  <data name="18032" xml:space="preserve">
-    <value>Tactical Assault Rifle - Turkish Flag Weapon Skin</value>
-  </data>
-  <data name="18033" xml:space="preserve">
-    <value>Tactical Assault Rifle - MLG TourNament Weapon Skin</value>
-  </data>
-  <data name="18034" xml:space="preserve">
-    <value>Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18035" xml:space="preserve">
-    <value>Tactical Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18036" xml:space="preserve">
-    <value>Tactical Assault Rifle - Clovers Weapon Skin</value>
-  </data>
-  <data name="18037" xml:space="preserve">
-    <value>Tactical Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18038" xml:space="preserve">
-    <value>Tactical Assault Rifle - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18039" xml:space="preserve">
-    <value>Tactical Assault Rifle - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18040" xml:space="preserve">
-    <value>Tactical Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18041" xml:space="preserve">
-    <value>Assault Rifle - The Droughtbreaker Weapon Skin</value>
-  </data>
-  <data name="18042" xml:space="preserve">
-    <value>Assault Rifle - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18043" xml:space="preserve">
-    <value>Assault Rifle - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18044" xml:space="preserve">
-    <value>Assault Rifle - Broken MLG Tournament Weapon Skin</value>
-  </data>
-  <data name="18045" xml:space="preserve">
-    <value>Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18046" xml:space="preserve">
-    <value>Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18047" xml:space="preserve">
-    <value>Assault Rifle - Clovers Weapon Skin</value>
-  </data>
-  <data name="18048" xml:space="preserve">
-    <value>Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18049" xml:space="preserve">
-    <value>Assault Rifle - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18050" xml:space="preserve">
-    <value>Assault Rifle - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18051" xml:space="preserve">
-    <value>Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18052" xml:space="preserve">
-    <value>Light Machine Gun - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18053" xml:space="preserve">
-    <value>Light Machine Gun - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18054" xml:space="preserve">
-    <value>Light Machine Gun - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18055" xml:space="preserve">
-    <value>Light Machine Gun - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18056" xml:space="preserve">
-    <value>Light Machine Gun - Clovers Weapon Skin</value>
-  </data>
-  <data name="18057" xml:space="preserve">
-    <value>Light Machine Gun - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18058" xml:space="preserve">
-    <value>Light Machine Gun - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18059" xml:space="preserve">
-    <value>Light Machine Gun - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18060" xml:space="preserve">
-    <value>Light Machine Gun - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18061" xml:space="preserve">
-    <value>Bolt-Action - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18062" xml:space="preserve">
-    <value>Bolt-Action - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18063" xml:space="preserve">
-    <value>Bolt-Action - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18064" xml:space="preserve">
-    <value>Bolt-Action - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18065" xml:space="preserve">
-    <value>Bolt-Action - Clovers Weapon Skin</value>
-  </data>
-  <data name="18066" xml:space="preserve">
-    <value>Bolt-Action - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18067" xml:space="preserve">
-    <value>Bolt-Action - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18068" xml:space="preserve">
-    <value>Bolt-Action - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18069" xml:space="preserve">
-    <value>Bolt-Action - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18070" xml:space="preserve">
-    <value>Bullpup Full Auto - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18071" xml:space="preserve">
-    <value>Bullpup Full Auto - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18072" xml:space="preserve">
-    <value>Bullpup Full Auto - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18073" xml:space="preserve">
-    <value>Bullpup Full Auto - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18074" xml:space="preserve">
-    <value>Bullpup Full Auto - Clovers Weapon Skin</value>
-  </data>
-  <data name="18075" xml:space="preserve">
-    <value>Bullpup Full Auto - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18076" xml:space="preserve">
-    <value>Bullpup Full Auto - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18077" xml:space="preserve">
-    <value>Bullpup Full Auto - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18078" xml:space="preserve">
-    <value>Bullpup Full Auto - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18079" xml:space="preserve">
-    <value>Burstfire Rifle - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18080" xml:space="preserve">
-    <value>Burstfire Rifle - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18081" xml:space="preserve">
-    <value>Burstfire Rifle - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18082" xml:space="preserve">
-    <value>Burstfire Rifle - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18083" xml:space="preserve">
-    <value>Burstfire Rifle - Clovers Weapon Skin</value>
-  </data>
-  <data name="18084" xml:space="preserve">
-    <value>Burstfire Rifle - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18085" xml:space="preserve">
-    <value>Burstfire Rifle - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18086" xml:space="preserve">
-    <value>Burstfire Rifle - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18087" xml:space="preserve">
-    <value>Burstfire Rifle - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18088" xml:space="preserve">
-    <value>LMG Recon - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18089" xml:space="preserve">
-    <value>LMG Recon - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18090" xml:space="preserve">
-    <value>LMG Recon - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18091" xml:space="preserve">
-    <value>LMG Recon - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18092" xml:space="preserve">
-    <value>LMG Recon - Clovers Weapon Skin</value>
-  </data>
-  <data name="18093" xml:space="preserve">
-    <value>LMG Recon - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18094" xml:space="preserve">
-    <value>LMG Recon - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18095" xml:space="preserve">
-    <value>LMG Recon - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18096" xml:space="preserve">
-    <value>LMG Recon - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18097" xml:space="preserve">
-    <value>M4X - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18098" xml:space="preserve">
-    <value>M4X - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18099" xml:space="preserve">
-    <value>M4X - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18100" xml:space="preserve">
-    <value>M4X - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18101" xml:space="preserve">
-    <value>M4X - Clovers Weapon Skin</value>
-  </data>
-  <data name="18102" xml:space="preserve">
-    <value>M4X - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18103" xml:space="preserve">
-    <value>M4X - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18104" xml:space="preserve">
-    <value>M4X - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18105" xml:space="preserve">
-    <value>M4X - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18106" xml:space="preserve">
-    <value>Submachine Gun - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18107" xml:space="preserve">
-    <value>Submachine Gun - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18108" xml:space="preserve">
-    <value>Submachine Gun - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18109" xml:space="preserve">
-    <value>Submachine Gun - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18110" xml:space="preserve">
-    <value>Submachine Gun - Clovers Weapon Skin</value>
-  </data>
-  <data name="18111" xml:space="preserve">
-    <value>Submachine Gun - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18112" xml:space="preserve">
-    <value>Submachine Gun - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18113" xml:space="preserve">
-    <value>Submachine Gun - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18114" xml:space="preserve">
-    <value>Submachine Gun - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18115" xml:space="preserve">
-    <value>Tactical SMG - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18116" xml:space="preserve">
-    <value>Tactical SMG - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18117" xml:space="preserve">
-    <value>Tactical SMG - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18118" xml:space="preserve">
-    <value>Tactical SMG - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18119" xml:space="preserve">
-    <value>Tactical SMG - Clovers Weapon Skin</value>
-  </data>
-  <data name="18120" xml:space="preserve">
-    <value>Tactical SMG - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18121" xml:space="preserve">
-    <value>Tactical SMG - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18122" xml:space="preserve">
-    <value>Tactical SMG - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18123" xml:space="preserve">
-    <value>Tactical SMG - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18124" xml:space="preserve">
-    <value>Burstfire SMG - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18125" xml:space="preserve">
-    <value>Burstfire SMG - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18126" xml:space="preserve">
-    <value>Burstfire SMG - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18127" xml:space="preserve">
-    <value>Burstfire SMG - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18128" xml:space="preserve">
-    <value>Burstfire SMG - Clovers Weapon Skin</value>
-  </data>
-  <data name="18129" xml:space="preserve">
-    <value>Burstfire SMG - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18130" xml:space="preserve">
-    <value>Burstfire SMG - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18131" xml:space="preserve">
-    <value>Burstfire SMG - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18132" xml:space="preserve">
-    <value>Burstfire SMG - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18133" xml:space="preserve">
-    <value>Combat Rifle - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18134" xml:space="preserve">
-    <value>Combat Rifle - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18135" xml:space="preserve">
-    <value>Combat Rifle - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18136" xml:space="preserve">
-    <value>Combat Rifle - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18137" xml:space="preserve">
-    <value>Combat Rifle - Clovers Weapon Skin</value>
-  </data>
-  <data name="18138" xml:space="preserve">
-    <value>Combat Rifle - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18139" xml:space="preserve">
-    <value>Combat Rifle - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18140" xml:space="preserve">
-    <value>Combat Rifle - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18141" xml:space="preserve">
-    <value>Combat Rifle - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18142" xml:space="preserve">
-    <value>Light Recon - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18143" xml:space="preserve">
-    <value>Light Recon - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18144" xml:space="preserve">
-    <value>Light Recon - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18145" xml:space="preserve">
-    <value>Light Recon - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18146" xml:space="preserve">
-    <value>Light Recon - Clovers Weapon Skin</value>
-  </data>
-  <data name="18147" xml:space="preserve">
-    <value>Light Recon - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18148" xml:space="preserve">
-    <value>Light Recon - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18149" xml:space="preserve">
-    <value>Light Recon - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18150" xml:space="preserve">
-    <value>Light Recon - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18151" xml:space="preserve">
-    <value>Anti-Materiel - Green Hex Weapon Skin</value>
-  </data>
-  <data name="18152" xml:space="preserve">
-    <value>Anti-Materiel - Stars and Stripes Weapon Skin</value>
-  </data>
-  <data name="18153" xml:space="preserve">
-    <value>Anti-Materiel - Tiger Stripes Orange Weapon Skin</value>
-  </data>
-  <data name="18154" xml:space="preserve">
-    <value>Anti-Materiel - Tiger Stripes Blue Weapon Skin</value>
-  </data>
-  <data name="18155" xml:space="preserve">
-    <value>Anti-Materiel - Clovers Weapon Skin</value>
-  </data>
-  <data name="18156" xml:space="preserve">
-    <value>Anti-Materiel - Tiger Stripes Pink Weapon Skin</value>
-  </data>
-  <data name="18157" xml:space="preserve">
-    <value>Anti-Materiel - Tiger Stripes Red Weapon Skin</value>
-  </data>
-  <data name="18158" xml:space="preserve">
-    <value>Anti-Materiel - Tiger Stripes Green Weapon Skin</value>
-  </data>
-  <data name="18159" xml:space="preserve">
-    <value>Anti-Materiel - Tiger Stripes Yellow Weapon Skin</value>
-  </data>
-  <data name="18160" xml:space="preserve">
-    <value>Cupid's QT Pi Bow</value>
-  </data>
-  <data name="19000" xml:space="preserve">
-    <value>EMI Infrared Scope Mk. 2</value>
-  </data>
-  <data name="19001" xml:space="preserve">
-    <value>EMI Infrared Scope</value>
-  </data>
-  <data name="19002" xml:space="preserve">
-    <value>Aim Point Ammo Counter</value>
-  </data>
-  <data name="19003" xml:space="preserve">
-    <value>4X Ammo Counter Scope</value>
-  </data>
-  <data name="19004" xml:space="preserve">
-    <value>ArmCom Infrared Scope</value>
-  </data>
-  <data name="19005" xml:space="preserve">
-    <value>Lightsky Red Dot Sight</value>
-  </data>
-  <data name="19006" xml:space="preserve">
-    <value>Frontier Sniper Scope</value>
-  </data>
-  <data name="19007" xml:space="preserve">
-    <value>Krane Tactical Scope</value>
-  </data>
-  <data name="19008" xml:space="preserve">
-    <value>MMRS Flip-Up Rail Sight</value>
-  </data>
-  <data name="19009" xml:space="preserve">
-    <value>invalid scope</value>
-  </data>
-  <data name="19010" xml:space="preserve">
-    <value>EMI Electric Scope</value>
-  </data>
-  <data name="19011" xml:space="preserve">
-    <value>Krane Holo Sight</value>
-  </data>
-  <data name="19012" xml:space="preserve">
-    <value>ArmCom Sniper Scope</value>
-  </data>
-  <data name="19013" xml:space="preserve">
-    <value>ArmCom CQC Scope</value>
-  </data>
-  <data name="19014" xml:space="preserve">
-    <value>OPRL Holo Sight</value>
-  </data>
-  <data name="19015" xml:space="preserve">
-    <value>EMI ACOG Scope</value>
-  </data>
-  <data name="19016" xml:space="preserve">
-    <value>EON Electric Scope</value>
-  </data>
-  <data name="19017" xml:space="preserve">
-    <value>EMI Tech Scope</value>
-  </data>
-  <data name="19018" xml:space="preserve">
-    <value>Silverwood Combo Scope</value>
-  </data>
-  <data name="19019" xml:space="preserve">
-    <value>Lightsky Reflex Sight</value>
-  </data>
-  <data name="19020" xml:space="preserve">
-    <value>Krane Sniper Scope</value>
-  </data>
-  <data name="19021" xml:space="preserve">
-    <value>Silverwood Heavy Scope</value>
-  </data>
-  <data name="19022" xml:space="preserve">
-    <value>Titan Rail Sight</value>
-  </data>
-  <data name="19023" xml:space="preserve">
-    <value>No Optic Mod</value>
-  </data>
-  <data name="19024" xml:space="preserve">
-    <value>Prestige Titan Rail Sight</value>
-  </data>
   <data name="2000" xml:space="preserve">
     <value>Grendel - K. Moreau</value>
-  </data>
-  <data name="20000" xml:space="preserve">
-    <value>Briar Elite A4-BS</value>
-  </data>
-  <data name="20001" xml:space="preserve">
-    <value>Hullbreach 89-BPFA</value>
-  </data>
-  <data name="20002" xml:space="preserve">
-    <value>Silverwood z1200 BPFA</value>
-  </data>
-  <data name="20003" xml:space="preserve">
-    <value>Redsand Compensator Stock</value>
-  </data>
-  <data name="20004" xml:space="preserve">
-    <value>Frontier Ultralight Stock</value>
-  </data>
-  <data name="20005" xml:space="preserve">
-    <value>Krane Ultralight Stock</value>
-  </data>
-  <data name="20006" xml:space="preserve">
-    <value>ArmCom Compensator Stock</value>
-  </data>
-  <data name="20007" xml:space="preserve">
-    <value>Krane Extender Stock</value>
-  </data>
-  <data name="20008" xml:space="preserve">
-    <value>Vulcan Extender Stock</value>
-  </data>
-  <data name="20009" xml:space="preserve">
-    <value>V2 Folding Stock</value>
   </data>
   <data name="2001" xml:space="preserve">
     <value>Viper - J. Vansaint</value>
   </data>
-  <data name="20010" xml:space="preserve">
-    <value>Silverwood Compensator Stock</value>
-  </data>
-  <data name="20011" xml:space="preserve">
-    <value>Taurex Stabilizing Stock</value>
-  </data>
-  <data name="20012" xml:space="preserve">
-    <value>Krane Tactical Stock</value>
-  </data>
-  <data name="20013" xml:space="preserve">
-    <value>Hullbreach CQC Stock</value>
-  </data>
-  <data name="20014" xml:space="preserve">
-    <value>Silverwood Standard Stock</value>
-  </data>
-  <data name="20015" xml:space="preserve">
-    <value>Overmatch Compensator Stock</value>
-  </data>
-  <data name="20016" xml:space="preserve">
-    <value>ArmCom Folding Stock</value>
-  </data>
-  <data name="20017" xml:space="preserve">
-    <value>MMRS BP-SR Tactical</value>
-  </data>
-  <data name="20018" xml:space="preserve">
-    <value>MMRS BP-XLi</value>
-  </data>
-  <data name="20019" xml:space="preserve">
-    <value>MMRS BP-CQ + PCR</value>
-  </data>
   <data name="2002" xml:space="preserve">
     <value>Duchess - S. Bertolette</value>
-  </data>
-  <data name="20020" xml:space="preserve">
-    <value>Prestige Silverwood Standard Stock</value>
-  </data>
-  <data name="20021" xml:space="preserve">
-    <value>No Stock</value>
   </data>
   <data name="2003" xml:space="preserve">
     <value>Deacon - T. Halsey</value>
@@ -1892,144 +380,6 @@
   </data>
   <data name="2035" xml:space="preserve">
     <value>No Avatar</value>
-  </data>
-  <data name="21000" xml:space="preserve">
-    <value>Heavy Assault Rifle</value>
-  </data>
-  <data name="21001" xml:space="preserve">
-    <value>LMG Recon</value>
-  </data>
-  <data name="21002" xml:space="preserve">
-    <value>Tactical SMG</value>
-  </data>
-  <data name="21003" xml:space="preserve">
-    <value>Burstfire SMG</value>
-  </data>
-  <data name="21004" xml:space="preserve">
-    <value>Anti-Materiel Rifle</value>
-  </data>
-  <data name="21005" xml:space="preserve">
-    <value>Bullpup Full Auto</value>
-  </data>
-  <data name="21006" xml:space="preserve">
-    <value>AK470 Rifle</value>
-  </data>
-  <data name="21007" xml:space="preserve">
-    <value>Compound Bow</value>
-  </data>
-  <data name="21008" xml:space="preserve">
-    <value>M4X Rifle</value>
-  </data>
-  <data name="21009" xml:space="preserve">
-    <value>Tactical Assault Rifle</value>
-  </data>
-  <data name="21010" xml:space="preserve">
-    <value>Assault Rifle</value>
-  </data>
-  <data name="21011" xml:space="preserve">
-    <value>Bolt-Action Rifle</value>
-  </data>
-  <data name="21012" xml:space="preserve">
-    <value>Light Machine Gun</value>
-  </data>
-  <data name="21013" xml:space="preserve">
-    <value>Burstfire Rifle</value>
-  </data>
-  <data name="21014" xml:space="preserve">
-    <value>Prestige Assault Rifle</value>
-  </data>
-  <data name="21015" xml:space="preserve">
-    <value>Submachine Gun</value>
-  </data>
-  <data name="21016" xml:space="preserve">
-    <value>Combat Rifle</value>
-  </data>
-  <data name="21017" xml:space="preserve">
-    <value>Light Recon Rifle</value>
-  </data>
-  <data name="22000" xml:space="preserve">
-    <value>Shotgun AR-k</value>
-  </data>
-  <data name="22001" xml:space="preserve">
-    <value>Breech Loaded Pistol</value>
-  </data>
-  <data name="22002" xml:space="preserve">
-    <value>Snub 260</value>
-  </data>
-  <data name="22003" xml:space="preserve">
-    <value>Heavy Pistol</value>
-  </data>
-  <data name="22004" xml:space="preserve">
-    <value>Light Pistol</value>
-  </data>
-  <data name="22005" xml:space="preserve">
-    <value>Burstfire Pistol</value>
-  </data>
-  <data name="22006" xml:space="preserve">
-    <value>Prestige Light Pistol</value>
-  </data>
-  <data name="22007" xml:space="preserve">
-    <value>Machine Pistol</value>
-  </data>
-  <data name="22008" xml:space="preserve">
-    <value>Revolver</value>
-  </data>
-  <data name="22009" xml:space="preserve">
-    <value>Shotgun</value>
-  </data>
-  <data name="22010" xml:space="preserve">
-    <value>Airstrike</value>
-  </data>
-  <data name="22011" xml:space="preserve">
-    <value>Turret</value>
-  </data>
-  <data name="22012" xml:space="preserve">
-    <value>Flamethrower</value>
-  </data>
-  <data name="22013" xml:space="preserve">
-    <value>Grenade Launcher</value>
-  </data>
-  <data name="22014" xml:space="preserve">
-    <value>Rhino Hardsuit</value>
-  </data>
-  <data name="22015" xml:space="preserve">
-    <value>Gunman Hardsuit</value>
-  </data>
-  <data name="22016" xml:space="preserve">
-    <value>Minigun</value>
-  </data>
-  <data name="22017" xml:space="preserve">
-    <value>Railgun</value>
-  </data>
-  <data name="22018" xml:space="preserve">
-    <value>Rocket Swarm</value>
-  </data>
-  <data name="22019" xml:space="preserve">
-    <value>Rocket Stinger</value>
-  </data>
-  <data name="22020" xml:space="preserve">
-    <value>Hardsuit HRV Decoy</value>
-  </data>
-  <data name="22021" xml:space="preserve">
-    <value>Katana</value>
-  </data>
-  <data name="22022" xml:space="preserve">
-    <value>MK1 Assault AI</value>
-  </data>
-  <data name="23000" xml:space="preserve">
-    <value>Health Refill</value>
-  </data>
-  <data name="23001" xml:space="preserve">
-    <value>Ammo Refill</value>
-  </data>
-  <data name="23011" xml:space="preserve">
-    <value>Heavy Weapon Refill</value>
-  </data>
-  <data name="23016" xml:space="preserve">
-    <value>HRV Jammer</value>
-  </data>
-  <data name="23017" xml:space="preserve">
-    <value>Toxic Antidote</value>
   </data>
   <data name="3000" xml:space="preserve">
     <value>No Trophy</value>
@@ -3341,5 +1691,1661 @@
   </data>
   <data name="9010" xml:space="preserve">
     <value>Prestige Overmatch Anaconda KX7</value>
+  </data>
+  <data name="10000" xml:space="preserve">
+    <value>Magnum Rounds</value>
+  </data>
+  <data name="10001" xml:space="preserve">
+    <value>Armor Piercing Rounds</value>
+  </data>
+  <data name="10002" xml:space="preserve">
+    <value>Standard Rounds</value>
+  </data>
+  <data name="10003" xml:space="preserve">
+    <value>Electro Rounds</value>
+  </data>
+  <data name="10004" xml:space="preserve">
+    <value>Explosive Rounds</value>
+  </data>
+  <data name="10005" xml:space="preserve">
+    <value>Hollow Point Rounds</value>
+  </data>
+  <data name="10006" xml:space="preserve">
+    <value>Incendiary Rounds</value>
+  </data>
+  <data name="10007" xml:space="preserve">
+    <value>Toxic Rounds</value>
+  </data>
+  <data name="10008" xml:space="preserve">
+    <value>Incendiary Flare</value>
+  </data>
+  <data name="10009" xml:space="preserve">
+    <value>Explosive Flare</value>
+  </data>
+  <data name="10010" xml:space="preserve">
+    <value>Canister</value>
+  </data>
+  <data name="10011" xml:space="preserve">
+    <value>Thumper Flare</value>
+  </data>
+  <data name="10012" xml:space="preserve">
+    <value>Exploding Arrow</value>
+  </data>
+  <data name="10013" xml:space="preserve">
+    <value>Stun Arrow</value>
+  </data>
+  <data name="10014" xml:space="preserve">
+    <value>Poison Arrow</value>
+  </data>
+  <data name="10015" xml:space="preserve">
+    <value>Light Arrow</value>
+  </data>
+  <data name="10016" xml:space="preserve">
+    <value>Heavy Arrow</value>
+  </data>
+  <data name="10017" xml:space="preserve">
+    <value>Standard Arrow</value>
+  </data>
+  <data name="10018" xml:space="preserve">
+    <value>Cupid's Arrow</value>
+  </data>
+  <data name="11000" xml:space="preserve">
+    <value>Magnum Rounds</value>
+  </data>
+  <data name="11001" xml:space="preserve">
+    <value>Armor Piercing Rounds</value>
+  </data>
+  <data name="11002" xml:space="preserve">
+    <value>Standard Rounds</value>
+  </data>
+  <data name="11003" xml:space="preserve">
+    <value>Electro Rounds</value>
+  </data>
+  <data name="11004" xml:space="preserve">
+    <value>Explosive Rounds</value>
+  </data>
+  <data name="11005" xml:space="preserve">
+    <value>Hollow Point Rounds</value>
+  </data>
+  <data name="11006" xml:space="preserve">
+    <value>Incendiary Rounds</value>
+  </data>
+  <data name="11007" xml:space="preserve">
+    <value>Toxic Rounds</value>
+  </data>
+  <data name="11008" xml:space="preserve">
+    <value>Incendiary Flare</value>
+  </data>
+  <data name="11009" xml:space="preserve">
+    <value>Explosive Flare</value>
+  </data>
+  <data name="11010" xml:space="preserve">
+    <value>Canister</value>
+  </data>
+  <data name="11011" xml:space="preserve">
+    <value>Thumper Flare</value>
+  </data>
+  <data name="11012" xml:space="preserve">
+    <value>Exploding Arrow</value>
+  </data>
+  <data name="11013" xml:space="preserve">
+    <value>Stun Arrow</value>
+  </data>
+  <data name="11014" xml:space="preserve">
+    <value>Poison Arrow</value>
+  </data>
+  <data name="11015" xml:space="preserve">
+    <value>Light Arrow</value>
+  </data>
+  <data name="11016" xml:space="preserve">
+    <value>Heavy Arrow</value>
+  </data>
+  <data name="11017" xml:space="preserve">
+    <value>Standard Arrow</value>
+  </data>
+  <data name="11018" xml:space="preserve">
+    <value>Cupid's Arrow</value>
+  </data>
+  <data name="11019" xml:space="preserve">
+    <value>Briar Lightweight Barrel</value>
+  </data>
+  <data name="11020" xml:space="preserve">
+    <value>Overmatch M-CV Breach</value>
+  </data>
+  <data name="11021" xml:space="preserve">
+    <value>Titan Assault Barrel</value>
+  </data>
+  <data name="11022" xml:space="preserve">
+    <value>Silverwood Light Accuracy Barrel</value>
+  </data>
+  <data name="11023" xml:space="preserve">
+    <value>Briar Accuracy Barrel</value>
+  </data>
+  <data name="11024" xml:space="preserve">
+    <value>Silverwood SW-09</value>
+  </data>
+  <data name="11025" xml:space="preserve">
+    <value>Leatherneck Accuracy Barrel</value>
+  </data>
+  <data name="11026" xml:space="preserve">
+    <value>Vulcan Lightweight Barrel</value>
+  </data>
+  <data name="11027" xml:space="preserve">
+    <value>V2 X200 Mod</value>
+  </data>
+  <data name="11028" xml:space="preserve">
+    <value>V2 Z900 Mod</value>
+  </data>
+  <data name="11029" xml:space="preserve">
+    <value>Silverwood CQC Barrel</value>
+  </data>
+  <data name="11030" xml:space="preserve">
+    <value>Frontier Standard Barrel</value>
+  </data>
+  <data name="11031" xml:space="preserve">
+    <value>Titan Extended Barrel</value>
+  </data>
+  <data name="11032" xml:space="preserve">
+    <value>Raider Snub Barrel</value>
+  </data>
+  <data name="11033" xml:space="preserve">
+    <value>Vulcan Tactical Barrel</value>
+  </data>
+  <data name="11034" xml:space="preserve">
+    <value>Briar Assault Barrel</value>
+  </data>
+  <data name="11035" xml:space="preserve">
+    <value>Krane Assault Barrel</value>
+  </data>
+  <data name="11036" xml:space="preserve">
+    <value>ArmCom Assault Barrel</value>
+  </data>
+  <data name="11037" xml:space="preserve">
+    <value>Prestige Frontier Standard Barrel</value>
+  </data>
+  <data name="11038" xml:space="preserve">
+    <value>No Barrel Mod</value>
+  </data>
+  <data name="12000" xml:space="preserve">
+    <value>Krane Heavy Assault Barrel</value>
+  </data>
+  <data name="12001" xml:space="preserve">
+    <value>Krane SG Bar-20</value>
+  </data>
+  <data name="12002" xml:space="preserve">
+    <value>Overmatch A-12 Blast</value>
+  </data>
+  <data name="12003" xml:space="preserve">
+    <value>Overmatch CRC-7 Post</value>
+  </data>
+  <data name="12004" xml:space="preserve">
+    <value>Overmatch Heavy X3</value>
+  </data>
+  <data name="12005" xml:space="preserve">
+    <value>Briar BAR Grip</value>
+  </data>
+  <data name="12006" xml:space="preserve">
+    <value>Armcom BAR-01</value>
+  </data>
+  <data name="12007" xml:space="preserve">
+    <value>Armcom BARl1</value>
+  </data>
+  <data name="12008" xml:space="preserve">
+    <value>Hullbreach 047BAR</value>
+  </data>
+  <data name="12009" xml:space="preserve">
+    <value>Silverwood TechBAR</value>
+  </data>
+  <data name="12010" xml:space="preserve">
+    <value>Briar BAR-02</value>
+  </data>
+  <data name="12011" xml:space="preserve">
+    <value>Hullbreach 057BAR</value>
+  </data>
+  <data name="12012" xml:space="preserve">
+    <value>No Grip</value>
+  </data>
+  <data name="12013" xml:space="preserve">
+    <value>Frontier Compensator Barrel</value>
+  </data>
+  <data name="12014" xml:space="preserve">
+    <value>Redsand CQC Barrel</value>
+  </data>
+  <data name="12015" xml:space="preserve">
+    <value>Briar CQC Barrel</value>
+  </data>
+  <data name="12016" xml:space="preserve">
+    <value>Briar Balanced Barrel</value>
+  </data>
+  <data name="12017" xml:space="preserve">
+    <value>Ogre CQC Barrel</value>
+  </data>
+  <data name="12018" xml:space="preserve">
+    <value>Titan FFB</value>
+  </data>
+  <data name="12019" xml:space="preserve">
+    <value>Briar Lightweight Barrel</value>
+  </data>
+  <data name="12020" xml:space="preserve">
+    <value>Overmatch M-CV Breach</value>
+  </data>
+  <data name="12021" xml:space="preserve">
+    <value>Titan Assault Barrel</value>
+  </data>
+  <data name="12022" xml:space="preserve">
+    <value>Silverwood Light Accuracy Barrel</value>
+  </data>
+  <data name="12023" xml:space="preserve">
+    <value>Briar Accuracy Barrel</value>
+  </data>
+  <data name="12024" xml:space="preserve">
+    <value>Silverwood SW-09</value>
+  </data>
+  <data name="12025" xml:space="preserve">
+    <value>Leatherneck Accuracy Barrel</value>
+  </data>
+  <data name="12026" xml:space="preserve">
+    <value>Vulcan Lightweight Barrel</value>
+  </data>
+  <data name="12027" xml:space="preserve">
+    <value>V2 X200 Mod</value>
+  </data>
+  <data name="12028" xml:space="preserve">
+    <value>V2 Z900 Mod</value>
+  </data>
+  <data name="12029" xml:space="preserve">
+    <value>Silverwood CQC Barrel</value>
+  </data>
+  <data name="12030" xml:space="preserve">
+    <value>Frontier Standard Barrel</value>
+  </data>
+  <data name="12031" xml:space="preserve">
+    <value>Titan Extended Barrel</value>
+  </data>
+  <data name="12032" xml:space="preserve">
+    <value>Raider Snub Barrel</value>
+  </data>
+  <data name="12033" xml:space="preserve">
+    <value>Vulcan Tactical Barrel</value>
+  </data>
+  <data name="12034" xml:space="preserve">
+    <value>Briar Assault Barrel</value>
+  </data>
+  <data name="12035" xml:space="preserve">
+    <value>Krane Assault Barrel</value>
+  </data>
+  <data name="12036" xml:space="preserve">
+    <value>ArmCom Assault Barrel</value>
+  </data>
+  <data name="12037" xml:space="preserve">
+    <value>Prestige Frontier Standard Barrel</value>
+  </data>
+  <data name="12038" xml:space="preserve">
+    <value>No Barrel Mod</value>
+  </data>
+  <data name="12039" xml:space="preserve">
+    <value>Forest Combat</value>
+  </data>
+  <data name="12040" xml:space="preserve">
+    <value>Seized</value>
+  </data>
+  <data name="12041" xml:space="preserve">
+    <value>Concrete Gray</value>
+  </data>
+  <data name="12042" xml:space="preserve">
+    <value>Green Plankton</value>
+  </data>
+  <data name="12043" xml:space="preserve">
+    <value>Mountain Peak</value>
+  </data>
+  <data name="12044" xml:space="preserve">
+    <value>Gray Leaf</value>
+  </data>
+  <data name="12045" xml:space="preserve">
+    <value>Snowstorm</value>
+  </data>
+  <data name="12046" xml:space="preserve">
+    <value>Dark Gray</value>
+  </data>
+  <data name="12047" xml:space="preserve">
+    <value>Snowdrift</value>
+  </data>
+  <data name="12048" xml:space="preserve">
+    <value>Grassland Hex</value>
+  </data>
+  <data name="12049" xml:space="preserve">
+    <value>Urban Hex</value>
+  </data>
+  <data name="12050" xml:space="preserve">
+    <value>Shattered Poles</value>
+  </data>
+  <data name="12051" xml:space="preserve">
+    <value>Metallic Bronze</value>
+  </data>
+  <data name="12052" xml:space="preserve">
+    <value>Metallic Silver</value>
+  </data>
+  <data name="12053" xml:space="preserve">
+    <value>Metallic Gold</value>
+  </data>
+  <data name="12054" xml:space="preserve">
+    <value>Hardsuit Pilot Pink</value>
+  </data>
+  <data name="12055" xml:space="preserve">
+    <value>Metallic Orange</value>
+  </data>
+  <data name="12056" xml:space="preserve">
+    <value>Metallic Cobalt Blue</value>
+  </data>
+  <data name="12057" xml:space="preserve">
+    <value>Metallic Toxic Green</value>
+  </data>
+  <data name="12058" xml:space="preserve">
+    <value>Matte Pink</value>
+  </data>
+  <data name="12059" xml:space="preserve">
+    <value>Matte Orange</value>
+  </data>
+  <data name="12060" xml:space="preserve">
+    <value>Matte Red</value>
+  </data>
+  <data name="12061" xml:space="preserve">
+    <value>Matte Dark Red</value>
+  </data>
+  <data name="12062" xml:space="preserve">
+    <value>Matte Baby Blue</value>
+  </data>
+  <data name="12063" xml:space="preserve">
+    <value>Matte Dark Blue</value>
+  </data>
+  <data name="12064" xml:space="preserve">
+    <value>Matte Black</value>
+  </data>
+  <data name="12065" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="12066" xml:space="preserve">
+    <value>Matte Dark Purple</value>
+  </data>
+  <data name="12067" xml:space="preserve">
+    <value>Matte Green</value>
+  </data>
+  <data name="12068" xml:space="preserve">
+    <value>Matte Yellow</value>
+  </data>
+  <data name="12069" xml:space="preserve">
+    <value>Super Secret</value>
+  </data>
+  <data name="12070" xml:space="preserve">
+    <value>FPSGuru.com Partner Camo</value>
+  </data>
+  <data name="12071" xml:space="preserve">
+    <value>IGN.com Partner Camo</value>
+  </data>
+  <data name="12072" xml:space="preserve">
+    <value>MMOBomb.com Partner Camo</value>
+  </data>
+  <data name="12073" xml:space="preserve">
+    <value>Secret Silver</value>
+  </data>
+  <data name="12074" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="12075" xml:space="preserve">
+    <value>The Benjamins</value>
+  </data>
+  <data name="12076" xml:space="preserve">
+    <value>Extra Life Charity</value>
+  </data>
+  <data name="12077" xml:space="preserve">
+    <value>KBMOD.com Vintage</value>
+  </data>
+  <data name="12078" xml:space="preserve">
+    <value>Astro Graffiti Autumn</value>
+  </data>
+  <data name="12079" xml:space="preserve">
+    <value>Astro Graffiti</value>
+  </data>
+  <data name="12080" xml:space="preserve">
+    <value>Astro Graffiti Black</value>
+  </data>
+  <data name="12081" xml:space="preserve">
+    <value>Science</value>
+  </data>
+  <data name="12082" xml:space="preserve">
+    <value>Hardsuit Pilot Red</value>
+  </data>
+  <data name="12083" xml:space="preserve">
+    <value>Hardsuit Pilot Orange</value>
+  </data>
+  <data name="12084" xml:space="preserve">
+    <value>Hardsuit Pilot Yellow</value>
+  </data>
+  <data name="12085" xml:space="preserve">
+    <value>Hardsuit Pilot Green</value>
+  </data>
+  <data name="12086" xml:space="preserve">
+    <value>Hardsuit Pilot Blue</value>
+  </data>
+  <data name="12087" xml:space="preserve">
+    <value>Hardsuit Pilot Purple</value>
+  </data>
+  <data name="12088" xml:space="preserve">
+    <value>Metallic Pink</value>
+  </data>
+  <data name="12089" xml:space="preserve">
+    <value>Hardsuit Pilot White</value>
+  </data>
+  <data name="12090" xml:space="preserve">
+    <value>Digital Blue</value>
+  </data>
+  <data name="12091" xml:space="preserve">
+    <value>Digital Yellow</value>
+  </data>
+  <data name="12092" xml:space="preserve">
+    <value>Emergency Relief</value>
+  </data>
+  <data name="12093" xml:space="preserve">
+    <value>Medic 2</value>
+  </data>
+  <data name="12094" xml:space="preserve">
+    <value>Vector</value>
+  </data>
+  <data name="12095" xml:space="preserve">
+    <value>Veteran</value>
+  </data>
+  <data name="12096" xml:space="preserve">
+    <value>Retribution Elite</value>
+  </data>
+  <data name="12097" xml:space="preserve">
+    <value>Tiger Elite</value>
+  </data>
+  <data name="12098" xml:space="preserve">
+    <value>Daylight</value>
+  </data>
+  <data name="12099" xml:space="preserve">
+    <value>Winter Operations</value>
+  </data>
+  <data name="12100" xml:space="preserve">
+    <value>Bearded Operations</value>
+  </data>
+  <data name="12101" xml:space="preserve">
+    <value>BCL TourNament</value>
+  </data>
+  <data name="12102" xml:space="preserve">
+    <value>XXOO</value>
+  </data>
+  <data name="12103" xml:space="preserve">
+    <value>Beta</value>
+  </data>
+  <data name="12104" xml:space="preserve">
+    <value>Class of 2012</value>
+  </data>
+  <data name="12105" xml:space="preserve">
+    <value>Class of 2013</value>
+  </data>
+  <data name="12106" xml:space="preserve">
+    <value>Class of 2014</value>
+  </data>
+  <data name="12107" xml:space="preserve">
+    <value>Class of 2015</value>
+  </data>
+  <data name="12108" xml:space="preserve">
+    <value>Class of 2016</value>
+  </data>
+  <data name="12109" xml:space="preserve">
+    <value>Class of 2017</value>
+  </data>
+  <data name="12110" xml:space="preserve">
+    <value>Candy Cane</value>
+  </data>
+  <data name="12111" xml:space="preserve">
+    <value>Gingerbread</value>
+  </data>
+  <data name="12112" xml:space="preserve">
+    <value>Green Wrapping Paper</value>
+  </data>
+  <data name="12113" xml:space="preserve">
+    <value>Red Wrapping Paper</value>
+  </data>
+  <data name="12115" xml:space="preserve">
+    <value>Love Fool</value>
+  </data>
+  <data name="12116" xml:space="preserve">
+    <value>Easter Blue</value>
+  </data>
+  <data name="12117" xml:space="preserve">
+    <value>Easter Green</value>
+  </data>
+  <data name="12118" xml:space="preserve">
+    <value>Easter Pink</value>
+  </data>
+  <data name="12119" xml:space="preserve">
+    <value>Easter Purple</value>
+  </data>
+  <data name="12120" xml:space="preserve">
+    <value>Easter Yellow</value>
+  </data>
+  <data name="12121" xml:space="preserve">
+    <value>KBMOD.com New</value>
+  </data>
+  <data name="12122" xml:space="preserve">
+    <value>EBL Tourney</value>
+  </data>
+  <data name="12123" xml:space="preserve">
+    <value>Bloodmoney</value>
+  </data>
+  <data name="12124" xml:space="preserve">
+    <value>Bloodmoney 2</value>
+  </data>
+  <data name="12125" xml:space="preserve">
+    <value>Cracked Apple</value>
+  </data>
+  <data name="12126" xml:space="preserve">
+    <value>Cracked Apple Pink</value>
+  </data>
+  <data name="12127" xml:space="preserve">
+    <value>Cracked Apple Red</value>
+  </data>
+  <data name="12128" xml:space="preserve">
+    <value>Digiplex</value>
+  </data>
+  <data name="12129" xml:space="preserve">
+    <value>Digiplex 2</value>
+  </data>
+  <data name="12130" xml:space="preserve">
+    <value>Digital Scatter</value>
+  </data>
+  <data name="12131" xml:space="preserve">
+    <value>Digital Scatter Green</value>
+  </data>
+  <data name="12132" xml:space="preserve">
+    <value>Digital Scatter Orange</value>
+  </data>
+  <data name="12133" xml:space="preserve">
+    <value>Fluffy Punk</value>
+  </data>
+  <data name="12134" xml:space="preserve">
+    <value>GoFast</value>
+  </data>
+  <data name="12135" xml:space="preserve">
+    <value>Jagged Metallic</value>
+  </data>
+  <data name="12136" xml:space="preserve">
+    <value>Jagged Metallic Green</value>
+  </data>
+  <data name="12137" xml:space="preserve">
+    <value>Jagged Metallic Red</value>
+  </data>
+  <data name="12138" xml:space="preserve">
+    <value>Molten Shards</value>
+  </data>
+  <data name="12139" xml:space="preserve">
+    <value>Mud Rough</value>
+  </data>
+  <data name="12140" xml:space="preserve">
+    <value>Mud Rough Pink</value>
+  </data>
+  <data name="12141" xml:space="preserve">
+    <value>Mud Rough Red</value>
+  </data>
+  <data name="12142" xml:space="preserve">
+    <value>Quiet Sand</value>
+  </data>
+  <data name="12143" xml:space="preserve">
+    <value>Quiet Sand Blue</value>
+  </data>
+  <data name="12144" xml:space="preserve">
+    <value>Quiet Sand Green</value>
+  </data>
+  <data name="12145" xml:space="preserve">
+    <value>Rock Matal</value>
+  </data>
+  <data name="12146" xml:space="preserve">
+    <value>Rock Metal Blue</value>
+  </data>
+  <data name="12147" xml:space="preserve">
+    <value>Rock Metal Orange</value>
+  </data>
+  <data name="12148" xml:space="preserve">
+    <value>Rocked Scuff</value>
+  </data>
+  <data name="12149" xml:space="preserve">
+    <value>Rocked Scuff Blue</value>
+  </data>
+  <data name="12150" xml:space="preserve">
+    <value>Rocked Scuff Yellow</value>
+  </data>
+  <data name="12151" xml:space="preserve">
+    <value>Scarred Stone</value>
+  </data>
+  <data name="12152" xml:space="preserve">
+    <value>Scarred Stone Orange</value>
+  </data>
+  <data name="12153" xml:space="preserve">
+    <value>Scarred Stone Pink</value>
+  </data>
+  <data name="12154" xml:space="preserve">
+    <value>Scarred Stone Teal</value>
+  </data>
+  <data name="12155" xml:space="preserve">
+    <value>Splatter Smudge</value>
+  </data>
+  <data name="12156" xml:space="preserve">
+    <value>Splatter Smudge Blue</value>
+  </data>
+  <data name="12157" xml:space="preserve">
+    <value>Splatter Smudge Red</value>
+  </data>
+  <data name="12158" xml:space="preserve">
+    <value>Splinter Bark</value>
+  </data>
+  <data name="12159" xml:space="preserve">
+    <value>Splinter Bark Blue</value>
+  </data>
+  <data name="12160" xml:space="preserve">
+    <value>Splinter Bark Green</value>
+  </data>
+  <data name="12161" xml:space="preserve">
+    <value>Splinter Bark Red</value>
+  </data>
+  <data name="12162" xml:space="preserve">
+    <value>Surfer Panic</value>
+  </data>
+  <data name="12163" xml:space="preserve">
+    <value>Arc</value>
+  </data>
+  <data name="13072" xml:space="preserve">
+    <value>MMOBomb.com Partner Camo</value>
+  </data>
+  <data name="13073" xml:space="preserve">
+    <value>Secret Silver</value>
+  </data>
+  <data name="13074" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="13075" xml:space="preserve">
+    <value>The Benjamins</value>
+  </data>
+  <data name="13076" xml:space="preserve">
+    <value>Extra Life Charity</value>
+  </data>
+  <data name="13077" xml:space="preserve">
+    <value>KBMOD.com Vintage</value>
+  </data>
+  <data name="13078" xml:space="preserve">
+    <value>Astro Graffiti Autumn</value>
+  </data>
+  <data name="13079" xml:space="preserve">
+    <value>Astro Graffiti</value>
+  </data>
+  <data name="13081" xml:space="preserve">
+    <value>Hardsuit Pilot White</value>
+  </data>
+  <data name="13093" xml:space="preserve">
+    <value>Medic 2</value>
+  </data>
+  <data name="13096" xml:space="preserve">
+    <value>Retribution Elite</value>
+  </data>
+  <data name="14000" xml:space="preserve">
+    <value>Briar BrGR1</value>
+  </data>
+  <data name="14001" xml:space="preserve">
+    <value>Briar BrSGP1</value>
+  </data>
+  <data name="15000" xml:space="preserve">
+    <value>Briar BrGR1</value>
+  </data>
+  <data name="15001" xml:space="preserve">
+    <value>Briar BrSGP1</value>
+  </data>
+  <data name="15002" xml:space="preserve">
+    <value>Quick Mag</value>
+  </data>
+  <data name="15003" xml:space="preserve">
+    <value>Extended Mag</value>
+  </data>
+  <data name="15004" xml:space="preserve">
+    <value>Express Mag</value>
+  </data>
+  <data name="15005" xml:space="preserve">
+    <value>Electro Mag</value>
+  </data>
+  <data name="15006" xml:space="preserve">
+    <value>Explosive Mag</value>
+  </data>
+  <data name="15007" xml:space="preserve">
+    <value>Incendiary Mag</value>
+  </data>
+  <data name="15008" xml:space="preserve">
+    <value>Toxic Mag</value>
+  </data>
+  <data name="15014" xml:space="preserve">
+    <value>Drum Mag</value>
+  </data>
+  <data name="15015" xml:space="preserve">
+    <value>Large Drum Mag</value>
+  </data>
+  <data name="15029" xml:space="preserve">
+    <value>Standard Tube Magazine</value>
+  </data>
+  <data name="15030" xml:space="preserve">
+    <value>Light Tube Magazine</value>
+  </data>
+  <data name="15031" xml:space="preserve">
+    <value>Quick Tube Magazine</value>
+  </data>
+  <data name="15032" xml:space="preserve">
+    <value>Extended Tube Magazine</value>
+  </data>
+  <data name="15033" xml:space="preserve">
+    <value>Express Tube Magazine</value>
+  </data>
+  <data name="15034" xml:space="preserve">
+    <value>Drum Magazine</value>
+  </data>
+  <data name="15039" xml:space="preserve">
+    <value>Standard Ammo Belt</value>
+  </data>
+  <data name="15040" xml:space="preserve">
+    <value>Quick Ammo Belt</value>
+  </data>
+  <data name="15041" xml:space="preserve">
+    <value>Electro Ammo Belt</value>
+  </data>
+  <data name="15042" xml:space="preserve">
+    <value>Explosive Ammo Belt</value>
+  </data>
+  <data name="15043" xml:space="preserve">
+    <value>Incendiary Ammo Belt</value>
+  </data>
+  <data name="15044" xml:space="preserve">
+    <value>Toxic Ammo Belt</value>
+  </data>
+  <data name="15099" xml:space="preserve">
+    <value>Standard Cylinder</value>
+  </data>
+  <data name="15100" xml:space="preserve">
+    <value>Electro Cylinder</value>
+  </data>
+  <data name="15101" xml:space="preserve">
+    <value>Explosive Cylinder</value>
+  </data>
+  <data name="15102" xml:space="preserve">
+    <value>Incendiary Cylinder</value>
+  </data>
+  <data name="15103" xml:space="preserve">
+    <value>Toxic Cylinder</value>
+  </data>
+  <data name="15104" xml:space="preserve">
+    <value>Standard Ammo Box</value>
+  </data>
+  <data name="15105" xml:space="preserve">
+    <value>Light Ammo Box</value>
+  </data>
+  <data name="15106" xml:space="preserve">
+    <value>Large Capacity Ammo Box</value>
+  </data>
+  <data name="15134" xml:space="preserve">
+    <value>High Explosive Round Bore</value>
+  </data>
+  <data name="15135" xml:space="preserve">
+    <value>Incendiary Round Bore</value>
+  </data>
+  <data name="15136" xml:space="preserve">
+    <value>Electro Ammo Box</value>
+  </data>
+  <data name="15137" xml:space="preserve">
+    <value>Explosive Ammo Box</value>
+  </data>
+  <data name="15138" xml:space="preserve">
+    <value>Incendiary Ammo Box</value>
+  </data>
+  <data name="15139" xml:space="preserve">
+    <value>Toxic Ammo Box</value>
+  </data>
+  <data name="15158" xml:space="preserve">
+    <value>Magnum Mag</value>
+  </data>
+  <data name="15168" xml:space="preserve">
+    <value>Magnum Ammo Belt</value>
+  </data>
+  <data name="15173" xml:space="preserve">
+    <value>Magnum Cylinder</value>
+  </data>
+  <data name="15175" xml:space="preserve">
+    <value>Magnum Ammo Box</value>
+  </data>
+  <data name="15176" xml:space="preserve">
+    <value>Flechette Chamber Boring</value>
+  </data>
+  <data name="15178" xml:space="preserve">
+    <value>Precision Cylinder</value>
+  </data>
+  <data name="15179" xml:space="preserve">
+    <value>High Caliber Cylinder</value>
+  </data>
+  <data name="15226" xml:space="preserve">
+    <value>Prestige Standard Mag</value>
+  </data>
+  <data name="16000" xml:space="preserve">
+    <value>Standard Mag</value>
+  </data>
+  <data name="16001" xml:space="preserve">
+    <value>Light Mag</value>
+  </data>
+  <data name="16002" xml:space="preserve">
+    <value>Quick Mag</value>
+  </data>
+  <data name="16003" xml:space="preserve">
+    <value>Extended Mag</value>
+  </data>
+  <data name="16004" xml:space="preserve">
+    <value>Express Mag</value>
+  </data>
+  <data name="16005" xml:space="preserve">
+    <value>Electro Mag</value>
+  </data>
+  <data name="16006" xml:space="preserve">
+    <value>Explosive Mag</value>
+  </data>
+  <data name="16007" xml:space="preserve">
+    <value>Incendiary Mag</value>
+  </data>
+  <data name="16008" xml:space="preserve">
+    <value>Toxic Mag</value>
+  </data>
+  <data name="16009" xml:space="preserve">
+    <value>Overmatch Muzzle Shroud</value>
+  </data>
+  <data name="16010" xml:space="preserve">
+    <value>ArmCom Enhanced Suppressor</value>
+  </data>
+  <data name="16011" xml:space="preserve">
+    <value>Frontier Power Muzzle</value>
+  </data>
+  <data name="16012" xml:space="preserve">
+    <value>Silverwood Flash breaker</value>
+  </data>
+  <data name="16013" xml:space="preserve">
+    <value>Vulcan Power Brake</value>
+  </data>
+  <data name="16014" xml:space="preserve">
+    <value>Drum Mag</value>
+  </data>
+  <data name="16015" xml:space="preserve">
+    <value>Large Drum Mag</value>
+  </data>
+  <data name="16016" xml:space="preserve">
+    <value>ArmCom Power Muzzle</value>
+  </data>
+  <data name="16017" xml:space="preserve">
+    <value>ArmCom Balanced Muzzle</value>
+  </data>
+  <data name="16018" xml:space="preserve">
+    <value>Prestige Overmatch Muzzle Shroud</value>
+  </data>
+  <data name="17000" xml:space="preserve">
+    <value>No Muzzle Mod</value>
+  </data>
+  <data name="17001" xml:space="preserve">
+    <value>ArmCom Slit Flash breaker</value>
+  </data>
+  <data name="17002" xml:space="preserve">
+    <value>Nexus Extended Range Muzzle</value>
+  </data>
+  <data name="17003" xml:space="preserve">
+    <value>Frontier Standard Suppressor</value>
+  </data>
+  <data name="17004" xml:space="preserve">
+    <value>Briar Dampening Muzzle</value>
+  </data>
+  <data name="17005" xml:space="preserve">
+    <value>Vulcan Notched Flash breaker</value>
+  </data>
+  <data name="17006" xml:space="preserve">
+    <value>Briar Enhanced Suppressor</value>
+  </data>
+  <data name="17007" xml:space="preserve">
+    <value>Vulcan Compensator</value>
+  </data>
+  <data name="17008" xml:space="preserve">
+    <value>Vulcan Longreach Flash breaker</value>
+  </data>
+  <data name="17009" xml:space="preserve">
+    <value>Overmatch Muzzle Shroud</value>
+  </data>
+  <data name="17010" xml:space="preserve">
+    <value>ArmCom Enhanced Suppressor</value>
+  </data>
+  <data name="17011" xml:space="preserve">
+    <value>Frontier Power Muzzle</value>
+  </data>
+  <data name="17012" xml:space="preserve">
+    <value>Silverwood Flash breaker</value>
+  </data>
+  <data name="17013" xml:space="preserve">
+    <value>Vulcan Power Brake</value>
+  </data>
+  <data name="17014" xml:space="preserve">
+    <value>Krane Power Muzzle</value>
+  </data>
+  <data name="17015" xml:space="preserve">
+    <value>Briar Extender Muzzle</value>
+  </data>
+  <data name="17016" xml:space="preserve">
+    <value>ArmCom Power Muzzle</value>
+  </data>
+  <data name="17017" xml:space="preserve">
+    <value>ArmCom Balanced Muzzle</value>
+  </data>
+  <data name="17018" xml:space="preserve">
+    <value>Prestige Overmatch Muzzle Shroud</value>
+  </data>
+  <data name="17019" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17020" xml:space="preserve">
+    <value>Heavy Assault Rifle - Clovers Weapon Skin</value>
+  </data>
+  <data name="17021" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17022" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17023" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17024" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17025" xml:space="preserve">
+    <value>Tactical Assault Rifle - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17026" xml:space="preserve">
+    <value>Tactical Assault Rifle - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17027" xml:space="preserve">
+    <value>Tactical Assault Rifle - Japanese Flag Weapon Skin</value>
+  </data>
+  <data name="17028" xml:space="preserve">
+    <value>Tactical Assault Rifle - Australian Flag Weapon Skin</value>
+  </data>
+  <data name="17029" xml:space="preserve">
+    <value>Tactical Assault Rifle - Malaysian Flag Weapon Skin</value>
+  </data>
+  <data name="17030" xml:space="preserve">
+    <value>Tactical Assault Rifle - New Zealand Weapon Skin</value>
+  </data>
+  <data name="17031" xml:space="preserve">
+    <value>Tactical Assault Rifle - Singapore Flag Weapon Skin</value>
+  </data>
+  <data name="17032" xml:space="preserve">
+    <value>Tactical Assault Rifle - Turkish Flag Weapon Skin</value>
+  </data>
+  <data name="17033" xml:space="preserve">
+    <value>Tactical Assault Rifle - MLG TourNament Weapon Skin</value>
+  </data>
+  <data name="17034" xml:space="preserve">
+    <value>Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17035" xml:space="preserve">
+    <value>Tactical Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17036" xml:space="preserve">
+    <value>Tactical Assault Rifle - Clovers Weapon Skin</value>
+  </data>
+  <data name="17037" xml:space="preserve">
+    <value>Tactical Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17038" xml:space="preserve">
+    <value>Tactical Assault Rifle - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17039" xml:space="preserve">
+    <value>Tactical Assault Rifle - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17040" xml:space="preserve">
+    <value>Tactical Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17041" xml:space="preserve">
+    <value>Assault Rifle - The Droughtbreaker Weapon Skin</value>
+  </data>
+  <data name="17042" xml:space="preserve">
+    <value>Assault Rifle - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17043" xml:space="preserve">
+    <value>Assault Rifle - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17044" xml:space="preserve">
+    <value>Assault Rifle - Broken MLG Tournament Weapon Skin</value>
+  </data>
+  <data name="17045" xml:space="preserve">
+    <value>Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17046" xml:space="preserve">
+    <value>Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17047" xml:space="preserve">
+    <value>Assault Rifle - Clovers Weapon Skin</value>
+  </data>
+  <data name="17048" xml:space="preserve">
+    <value>Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17049" xml:space="preserve">
+    <value>Assault Rifle - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17050" xml:space="preserve">
+    <value>Assault Rifle - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17051" xml:space="preserve">
+    <value>Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17052" xml:space="preserve">
+    <value>Light Machine Gun - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17053" xml:space="preserve">
+    <value>Light Machine Gun - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17054" xml:space="preserve">
+    <value>Light Machine Gun - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17055" xml:space="preserve">
+    <value>Light Machine Gun - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17056" xml:space="preserve">
+    <value>Light Machine Gun - Clovers Weapon Skin</value>
+  </data>
+  <data name="17057" xml:space="preserve">
+    <value>Light Machine Gun - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17058" xml:space="preserve">
+    <value>Light Machine Gun - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17059" xml:space="preserve">
+    <value>Light Machine Gun - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17060" xml:space="preserve">
+    <value>Light Machine Gun - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17061" xml:space="preserve">
+    <value>Bolt-Action - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17062" xml:space="preserve">
+    <value>Bolt-Action - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17063" xml:space="preserve">
+    <value>Bolt-Action - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17064" xml:space="preserve">
+    <value>Bolt-Action - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17065" xml:space="preserve">
+    <value>Bolt-Action - Clovers Weapon Skin</value>
+  </data>
+  <data name="17066" xml:space="preserve">
+    <value>Bolt-Action - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17067" xml:space="preserve">
+    <value>Bolt-Action - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17068" xml:space="preserve">
+    <value>Bolt-Action - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17069" xml:space="preserve">
+    <value>Bolt-Action - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17070" xml:space="preserve">
+    <value>Bullpup Full Auto - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17071" xml:space="preserve">
+    <value>Bullpup Full Auto - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17072" xml:space="preserve">
+    <value>Bullpup Full Auto - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17073" xml:space="preserve">
+    <value>Bullpup Full Auto - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17074" xml:space="preserve">
+    <value>Bullpup Full Auto - Clovers Weapon Skin</value>
+  </data>
+  <data name="17075" xml:space="preserve">
+    <value>Bullpup Full Auto - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17076" xml:space="preserve">
+    <value>Bullpup Full Auto - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17077" xml:space="preserve">
+    <value>Bullpup Full Auto - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17078" xml:space="preserve">
+    <value>Bullpup Full Auto - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17079" xml:space="preserve">
+    <value>Burstfire Rifle - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17080" xml:space="preserve">
+    <value>Burstfire Rifle - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17081" xml:space="preserve">
+    <value>Burstfire Rifle - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17082" xml:space="preserve">
+    <value>Burstfire Rifle - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17083" xml:space="preserve">
+    <value>Burstfire Rifle - Clovers Weapon Skin</value>
+  </data>
+  <data name="17084" xml:space="preserve">
+    <value>Burstfire Rifle - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17085" xml:space="preserve">
+    <value>Burstfire Rifle - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17086" xml:space="preserve">
+    <value>Burstfire Rifle - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17087" xml:space="preserve">
+    <value>Burstfire Rifle - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17088" xml:space="preserve">
+    <value>LMG Recon - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17089" xml:space="preserve">
+    <value>LMG Recon - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17090" xml:space="preserve">
+    <value>LMG Recon - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17091" xml:space="preserve">
+    <value>LMG Recon - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17092" xml:space="preserve">
+    <value>LMG Recon - Clovers Weapon Skin</value>
+  </data>
+  <data name="17093" xml:space="preserve">
+    <value>LMG Recon - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17094" xml:space="preserve">
+    <value>LMG Recon - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17095" xml:space="preserve">
+    <value>LMG Recon - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17096" xml:space="preserve">
+    <value>LMG Recon - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17097" xml:space="preserve">
+    <value>M4X - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17098" xml:space="preserve">
+    <value>M4X - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17099" xml:space="preserve">
+    <value>M4X - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17100" xml:space="preserve">
+    <value>M4X - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17101" xml:space="preserve">
+    <value>M4X - Clovers Weapon Skin</value>
+  </data>
+  <data name="17102" xml:space="preserve">
+    <value>M4X - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17103" xml:space="preserve">
+    <value>M4X - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17104" xml:space="preserve">
+    <value>M4X - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17105" xml:space="preserve">
+    <value>M4X - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17106" xml:space="preserve">
+    <value>Submachine Gun - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17107" xml:space="preserve">
+    <value>Submachine Gun - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17108" xml:space="preserve">
+    <value>Submachine Gun - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17109" xml:space="preserve">
+    <value>Submachine Gun - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17110" xml:space="preserve">
+    <value>Submachine Gun - Clovers Weapon Skin</value>
+  </data>
+  <data name="17111" xml:space="preserve">
+    <value>Submachine Gun - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17112" xml:space="preserve">
+    <value>Submachine Gun - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17113" xml:space="preserve">
+    <value>Submachine Gun - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17114" xml:space="preserve">
+    <value>Submachine Gun - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17115" xml:space="preserve">
+    <value>Tactical SMG - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17116" xml:space="preserve">
+    <value>Tactical SMG - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17117" xml:space="preserve">
+    <value>Tactical SMG - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17118" xml:space="preserve">
+    <value>Tactical SMG - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17119" xml:space="preserve">
+    <value>Tactical SMG - Clovers Weapon Skin</value>
+  </data>
+  <data name="17120" xml:space="preserve">
+    <value>Tactical SMG - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17121" xml:space="preserve">
+    <value>Tactical SMG - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17122" xml:space="preserve">
+    <value>Tactical SMG - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17123" xml:space="preserve">
+    <value>Tactical SMG - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17124" xml:space="preserve">
+    <value>Burstfire SMG - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17125" xml:space="preserve">
+    <value>Burstfire SMG - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17126" xml:space="preserve">
+    <value>Burstfire SMG - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17127" xml:space="preserve">
+    <value>Burstfire SMG - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17128" xml:space="preserve">
+    <value>Burstfire SMG - Clovers Weapon Skin</value>
+  </data>
+  <data name="17129" xml:space="preserve">
+    <value>Burstfire SMG - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17130" xml:space="preserve">
+    <value>Burstfire SMG - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17131" xml:space="preserve">
+    <value>Burstfire SMG - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17132" xml:space="preserve">
+    <value>Burstfire SMG - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17133" xml:space="preserve">
+    <value>Combat Rifle - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17134" xml:space="preserve">
+    <value>Combat Rifle - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17135" xml:space="preserve">
+    <value>Combat Rifle - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17136" xml:space="preserve">
+    <value>Combat Rifle - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17137" xml:space="preserve">
+    <value>Combat Rifle - Clovers Weapon Skin</value>
+  </data>
+  <data name="17138" xml:space="preserve">
+    <value>Combat Rifle - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17139" xml:space="preserve">
+    <value>Combat Rifle - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17140" xml:space="preserve">
+    <value>Combat Rifle - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17141" xml:space="preserve">
+    <value>Combat Rifle - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17142" xml:space="preserve">
+    <value>Light Recon - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17143" xml:space="preserve">
+    <value>Light Recon - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17144" xml:space="preserve">
+    <value>Light Recon - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17145" xml:space="preserve">
+    <value>Light Recon - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17146" xml:space="preserve">
+    <value>Light Recon - Clovers Weapon Skin</value>
+  </data>
+  <data name="17147" xml:space="preserve">
+    <value>Light Recon - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17148" xml:space="preserve">
+    <value>Light Recon - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17149" xml:space="preserve">
+    <value>Light Recon - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17150" xml:space="preserve">
+    <value>Light Recon - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17151" xml:space="preserve">
+    <value>Anti-Materiel - Green Hex Weapon Skin</value>
+  </data>
+  <data name="17152" xml:space="preserve">
+    <value>Anti-Materiel - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="17153" xml:space="preserve">
+    <value>Anti-Materiel - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="17154" xml:space="preserve">
+    <value>Anti-Materiel - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="17155" xml:space="preserve">
+    <value>Anti-Materiel - Clovers Weapon Skin</value>
+  </data>
+  <data name="17156" xml:space="preserve">
+    <value>Anti-Materiel - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="17157" xml:space="preserve">
+    <value>Anti-Materiel - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="17158" xml:space="preserve">
+    <value>Anti-Materiel - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="17159" xml:space="preserve">
+    <value>Anti-Materiel - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="17160" xml:space="preserve">
+    <value>Cupid's QT Pi Bow</value>
+  </data>
+  <data name="18000" xml:space="preserve">
+    <value>No Weapon Skin</value>
+  </data>
+  <data name="18001" xml:space="preserve">
+    <value>AK470 - Green Hex Weapon Skin</value>
+  </data>
+  <data name="18002" xml:space="preserve">
+    <value>AK470 - Stars and Stripes Weapon Skin</value>
+  </data>
+  <data name="18003" xml:space="preserve">
+    <value>AK470 - Green Hex Weapon Skin (Test Skin Name 2)</value>
+  </data>
+  <data name="18004" xml:space="preserve">
+    <value>AK470 - Australian Flag Weapon Skin</value>
+  </data>
+  <data name="18005" xml:space="preserve">
+    <value>AK470 - Malaysan Flag Weapon Skin</value>
+  </data>
+  <data name="18006" xml:space="preserve">
+    <value>AK470 - New Zealand Flag Weapon SKin</value>
+  </data>
+  <data name="18007" xml:space="preserve">
+    <value>AK470 - Singapore Flag Weapon Skin</value>
+  </data>
+  <data name="18008" xml:space="preserve">
+    <value>AK470 - Turkish Flag Weapon Skin</value>
+  </data>
+  <data name="18009" xml:space="preserve">
+    <value>AK470 - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="18010" xml:space="preserve">
+    <value>AK470 - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="18011" xml:space="preserve">
+    <value>AK470 - Clovers Weapon Skin</value>
+  </data>
+  <data name="18012" xml:space="preserve">
+    <value>AK470 - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="18013" xml:space="preserve">
+    <value>AK470 - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="18014" xml:space="preserve">
+    <value>AK470 - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="18015" xml:space="preserve">
+    <value>AK470 - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="18016" xml:space="preserve">
+    <value>Heavy Assault Rifle - Green Hex Weapon Skin</value>
+  </data>
+  <data name="18017" xml:space="preserve">
+    <value>Heavy Assault Rifle - Stars And Stripes Weapon Skin</value>
+  </data>
+  <data name="18018" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
+  </data>
+  <data name="18019" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
+  </data>
+  <data name="18020" xml:space="preserve">
+    <value>Heavy Assault Rifle - Clovers Weapon Skin</value>
+  </data>
+  <data name="18021" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
+  </data>
+  <data name="18022" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Red Weapon Skin</value>
+  </data>
+  <data name="18023" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Green Weapon Skin</value>
+  </data>
+  <data name="18024" xml:space="preserve">
+    <value>Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
+  </data>
+  <data name="19000" xml:space="preserve">
+    <value>EMI Infrared Scope Mk. 2</value>
+  </data>
+  <data name="19001" xml:space="preserve">
+    <value>EMI Infrared Scope</value>
+  </data>
+  <data name="19002" xml:space="preserve">
+    <value>Aim Point Ammo Counter</value>
+  </data>
+  <data name="19003" xml:space="preserve">
+    <value>4X Ammo Counter Scope</value>
+  </data>
+  <data name="19004" xml:space="preserve">
+    <value>ArmCom Infrared Scope</value>
+  </data>
+  <data name="19005" xml:space="preserve">
+    <value>Lightsky Red Dot Sight</value>
+  </data>
+  <data name="19006" xml:space="preserve">
+    <value>Frontier Sniper Scope</value>
+  </data>
+  <data name="19007" xml:space="preserve">
+    <value>Krane Tactical Scope</value>
+  </data>
+  <data name="19008" xml:space="preserve">
+    <value>MMRS Flip-Up Rail Sight</value>
+  </data>
+  <data name="19009" xml:space="preserve">
+    <value>invalid scope</value>
+  </data>
+  <data name="19010" xml:space="preserve">
+    <value>EMI Electric Scope</value>
+  </data>
+  <data name="19011" xml:space="preserve">
+    <value>Krane Holo Sight</value>
+  </data>
+  <data name="19012" xml:space="preserve">
+    <value>ArmCom Sniper Scope</value>
+  </data>
+  <data name="19013" xml:space="preserve">
+    <value>ArmCom CQC Scope</value>
+  </data>
+  <data name="19014" xml:space="preserve">
+    <value>OPRL Holo Sight</value>
+  </data>
+  <data name="19015" xml:space="preserve">
+    <value>EMI ACOG Scope</value>
+  </data>
+  <data name="19016" xml:space="preserve">
+    <value>EON Electric Scope</value>
+  </data>
+  <data name="19017" xml:space="preserve">
+    <value>EMI Tech Scope</value>
+  </data>
+  <data name="19018" xml:space="preserve">
+    <value>Silverwood Combo Scope</value>
+  </data>
+  <data name="19019" xml:space="preserve">
+    <value>Lightsky Reflex Sight</value>
+  </data>
+  <data name="19020" xml:space="preserve">
+    <value>Krane Sniper Scope</value>
+  </data>
+  <data name="19021" xml:space="preserve">
+    <value>Silverwood Heavy Scope</value>
+  </data>
+  <data name="20000" xml:space="preserve">
+    <value>Briar Elite A4-BS</value>
+  </data>
+  <data name="20001" xml:space="preserve">
+    <value>Hullbreach 89-BPFA</value>
+  </data>
+  <data name="20002" xml:space="preserve">
+    <value>Silverwood z1200 BPFA</value>
+  </data>
+  <data name="20003" xml:space="preserve">
+    <value>Redsand Compensator Stock</value>
+  </data>
+  <data name="20004" xml:space="preserve">
+    <value>Frontier Ultralight Stock</value>
+  </data>
+  <data name="20005" xml:space="preserve">
+    <value>Krane Ultralight Stock</value>
+  </data>
+  <data name="20006" xml:space="preserve">
+    <value>ArmCom Compensator Stock</value>
+  </data>
+  <data name="20007" xml:space="preserve">
+    <value>Krane Extender Stock</value>
+  </data>
+  <data name="20008" xml:space="preserve">
+    <value>Vulcan Extender Stock</value>
+  </data>
+  <data name="20009" xml:space="preserve">
+    <value>V2 Folding Stock</value>
+  </data>
+  <data name="20010" xml:space="preserve">
+    <value>Silverwood Compensator Stock</value>
+  </data>
+  <data name="20011" xml:space="preserve">
+    <value>Taurex Stabilizing Stock</value>
+  </data>
+  <data name="20012" xml:space="preserve">
+    <value>Krane Tactical Stock</value>
+  </data>
+  <data name="20013" xml:space="preserve">
+    <value>Hullbreach CQC Stock</value>
+  </data>
+  <data name="20014" xml:space="preserve">
+    <value>Silverwood Standard Stock</value>
+  </data>
+  <data name="20015" xml:space="preserve">
+    <value>Overmatch Compensator Stock</value>
+  </data>
+  <data name="20016" xml:space="preserve">
+    <value>ArmCom Folding Stock</value>
+  </data>
+  <data name="20017" xml:space="preserve">
+    <value>MMRS BP-SR Tactical</value>
+  </data>
+  <data name="21000" xml:space="preserve">
+    <value>Heavy Assault Rifle</value>
+  </data>
+  <data name="21001" xml:space="preserve">
+    <value>LMG Recon</value>
+  </data>
+  <data name="21002" xml:space="preserve">
+    <value>Tactical SMG</value>
+  </data>
+  <data name="21003" xml:space="preserve">
+    <value>Burstfire SMG</value>
+  </data>
+  <data name="21004" xml:space="preserve">
+    <value>Anti-Materiel Rifle</value>
+  </data>
+  <data name="21005" xml:space="preserve">
+    <value>Bullpup Full Auto</value>
+  </data>
+  <data name="21006" xml:space="preserve">
+    <value>AK470 Rifle</value>
+  </data>
+  <data name="21007" xml:space="preserve">
+    <value>Compound Bow</value>
+  </data>
+  <data name="21008" xml:space="preserve">
+    <value>M4X Rifle</value>
+  </data>
+  <data name="21009" xml:space="preserve">
+    <value>Tactical Assault Rifle</value>
+  </data>
+  <data name="21010" xml:space="preserve">
+    <value>Assault Rifle</value>
+  </data>
+  <data name="21011" xml:space="preserve">
+    <value>Bolt-Action Rifle</value>
+  </data>
+  <data name="21012" xml:space="preserve">
+    <value>Light Machine Gun</value>
+  </data>
+  <data name="21013" xml:space="preserve">
+    <value>Burstfire Rifle</value>
+  </data>
+  <data name="21014" xml:space="preserve">
+    <value>Prestige Assault Rifle</value>
+  </data>
+  <data name="21015" xml:space="preserve">
+    <value>Submachine Gun</value>
+  </data>
+  <data name="21016" xml:space="preserve">
+    <value>Combat Rifle</value>
+  </data>
+  <data name="21017" xml:space="preserve">
+    <value>Light Recon Rifle</value>
+  </data>
+  <data name="21018" xml:space="preserve">
+    <value>Rocket Swarm</value>
+  </data>
+  <data name="21019" xml:space="preserve">
+    <value>Rocket Stinger</value>
+  </data>
+  <data name="21020" xml:space="preserve">
+    <value>Hardsuit HRV Decoy</value>
+  </data>
+  <data name="21021" xml:space="preserve">
+    <value>Katana</value>
+  </data>
+  <data name="21022" xml:space="preserve">
+    <value>MK1 Assault AI</value>
+  </data>
+  <data name="22000" xml:space="preserve">
+    <value>Shotgun AR-k</value>
+  </data>
+  <data name="22001" xml:space="preserve">
+    <value>Breech Loaded Pistol</value>
+  </data>
+  <data name="22011" xml:space="preserve">
+    <value>Turret</value>
+  </data>
+  <data name="22016" xml:space="preserve">
+    <value>Minigun</value>
+  </data>
+  <data name="22017" xml:space="preserve">
+    <value>Railgun</value>
   </data>
 </root>
