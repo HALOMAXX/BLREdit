@@ -28,6 +28,10 @@
     "Region": "US-West"
   },
   {
+    "ServerAddress": "lasandia.serveminecraft.net",
+    "Region": "LATAM"
+  },
+  {
     "ServerAddress": "violence.ddns.net",
     "Hidden": true
   },
