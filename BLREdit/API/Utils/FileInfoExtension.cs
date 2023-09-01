@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace BLREdit.API.Utils;
 
-public sealed class FileInfoExtension
+public sealed class FileInfoExtension(string file)
 {
-    public readonly FileInfo Info;
-    public FileInfoExtension(string file)
-    {
-        Info = new(file);
-    }
-
+    public readonly FileInfo Info = new(file);
     private string? name;
     public string Name
     {

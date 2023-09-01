@@ -638,6 +638,10 @@ Needs a Restart to Install Protocol!</value>
   <data name="ti_Weapons" xml:space="preserve">
     <value>Weapons</value>
   </data>
+  <data name="txt_TT_PlayerName" xml:space="preserve">
+    <value>Player Name can't contain any of the following characters:
+\ / : * ? " &lt; &gt; |</value>
+  </data>
   <data name="txt_TT_Region" xml:space="preserve">
     <value>Region examples (EU-West, US-West, AU, OCE)</value>
   </data>

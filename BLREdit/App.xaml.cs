@@ -166,14 +166,14 @@ public partial class App : System.Windows.Application
 
             TestNameDuplication();
 
-            using (ResXResourceWriter resx = new ResXResourceWriter("newItemNames.resx"))
+            using (ResXResourceWriter resx = new("newItemNames.resx"))
             {
                 foreach (var item in NameList)
                 {
                     resx.AddResource(item.Key.NameID.ToString(), item.Value);
                 }
             }
-            using (ResXResourceWriter resx = new ResXResourceWriter("newItemTooltips.resx"))
+            using (ResXResourceWriter resx = new("newItemTooltips.resx"))
             {
                 foreach (var item in TooltipList)
                 {
@@ -198,7 +198,7 @@ public partial class App : System.Windows.Application
         new MainWindow(argList).Show();
     }
 
-    private void GenerateNameIDs(int categoryOffset = 1000)
+    private static void GenerateNameIDs(int categoryOffset = 1000)
     {
         int categoryIndex = categoryOffset;
 
@@ -214,7 +214,7 @@ public partial class App : System.Windows.Application
         }
     }
 
-    private void TestNameDuplication()
+    private static void TestNameDuplication()
     {
         LoggingSystem.Log("Preparing Name Duplication Lists");
         Dictionary<int, List<BLRItem>> NameIDList = new();
@@ -755,14 +755,8 @@ public partial class App : System.Windows.Application
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get server list from Github\n{error}"); }
         return new() 
-        {
-            //TODO: Here you can Add new Default servers which should be intigrated into the EXE
-        new() { ServerAddress = "mooserver.ddns.net", Port = 7777 }, //MagiCow | Moo Server
-        new() { ServerAddress = "blrevive.northamp.fr", Port = 7777, InfoPort = 80}, //ALT Server
-        new() { ServerAddress = "aegiworks.com", Port = 7777, InfoPort = 7778}, //VIVIGAR Server
-        new() { ServerAddress = "blr.akoot.me", Port = 7777 }, //Akoot Server
-        new() { ServerAddress = "blr.753z.net", Port = 7777 }, //IKE753Z Server (not active anymore)
-        new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
+        { //Only localhost is needed as most likely we are offline so there is no need to add anyother default servers
+            new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
         };
     }
 

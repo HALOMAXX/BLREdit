@@ -8,27 +8,16 @@ using System.Threading.Tasks;
 namespace BLREdit;
 
 [AttributeUsage(AttributeTargets.Property)]
-public sealed class WeaponPartAttribute : Attribute
+public sealed class WeaponPartAttribute([CallerLineNumber] int order = 0) : Attribute
 {
-    private readonly int _weaponPartOrder;
-    public int WeaponPartOrder { get { return _weaponPartOrder; } }
-    public WeaponPartAttribute([CallerLineNumber] int order = 0)
-    { 
-        _weaponPartOrder = order;
-    }
+#pragma warning disable CA1822 // Mark members as static
+    public int WeaponPartOrder => order;
 }
 
 [AttributeUsage(AttributeTargets.Property)]
-public sealed class ProfileSettingAttribute : Attribute
+public sealed class ProfileSettingAttribute(int id, [CallerMemberName] string? name = null) : Attribute
 {
-    private readonly string? _memberName;
-    public string MemberName { get { return _memberName ?? string.Empty; } }
-
-    private readonly int _id;
-    public int ID { get { return _id; } }
-    public ProfileSettingAttribute(int id, [CallerMemberName] string? name = null)
-    {
-        _memberName = name;
-        _id = id;
-    }
+    public string MemberName => name ?? string.Empty;
+    public int ID => id;
+#pragma warning restore CA1822 // Mark members as static
 }

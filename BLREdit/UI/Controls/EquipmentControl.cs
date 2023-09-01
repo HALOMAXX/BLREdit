@@ -10,25 +10,39 @@ namespace BLREdit.UI.Controls;
 
 public class EquipmentControl : UserControl
 {
-    protected Grid EquipmentControlGrid;
+    protected Grid? EquipmentControlGrid;
     public static int SelectedBorder { get; private set; } = 1;
     protected void Grid_MouseUp(object sender, MouseButtonEventArgs e)
     {
-        if (e.Source is Image image && image.Parent is Border border)
+        if (EquipmentControlGrid is not null)
         {
-            SelectedBorder = EquipmentControlGrid.Children.IndexOf(border);
+            if (e.Source is Image image && image.Parent is Border border)
+            {
+                SelectedBorder = EquipmentControlGrid.Children.IndexOf(border);
+            }
+            else if (e.Source is Border border2)
+            {
+                SelectedBorder = EquipmentControlGrid.Children.IndexOf(border2);
+            }
         }
-        else if (e.Source is Border border2)
+        else
         {
-            SelectedBorder = EquipmentControlGrid.Children.IndexOf(border2);
+            LoggingSystem.Log($"EquipmentControlGrid on {GetType()} is null this should not happen");
         }
     }
 
     internal void ApplyBorder()
     {
-        if (SelectedBorder > -1 && SelectedBorder < EquipmentControlGrid.Children.Count && EquipmentControlGrid.Children[SelectedBorder] is Border border)
+        if (EquipmentControlGrid is not null)
         {
-            border.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left) { RoutedEvent = Mouse.MouseUpEvent });
+            if (SelectedBorder > -1 && SelectedBorder < EquipmentControlGrid.Children.Count && EquipmentControlGrid.Children[SelectedBorder] is Border border)
+            {
+                border.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left) { RoutedEvent = Mouse.MouseUpEvent });
+            }
+        }
+        else
+        {
+            LoggingSystem.Log($"EquipmentControlGrid on {GetType()} is null this should not happen");
         }
     }
 }

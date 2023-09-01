@@ -1,6 +1,8 @@
 ﻿using BLREdit.API.Utils;
 using BLREdit.Game;
 
+using PeNet.Header.Resource;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,30 +98,66 @@ public partial class ServerListControl : UserControl
 
     private void QuickMatch_Click(object sender, RoutedEventArgs e)
     {
-        LoggingSystem.Log($"Started Matchmaking with Region:{BLREditSettings.Settings.Region}, Pinging:{MainWindow.View.ServerList.Count}");
+        LoggingSystem.Log($"Started Matchmaking with Region:{BLREditSettings.Settings.Region}, Pinging {MainWindow.View.ServerList.Count} Servers");
         MainWindow.RefreshPing();
         BLRServer.ServersToPing.WaitForEmpty();
         LoggingSystem.Log("Finished Pinging Servers!");
 
         var playerCountSortedServers = MainWindow.View.ServerList.OrderByDescending(x => x.PlayerCount);
-        var first = playerCountSortedServers.First();
-        var regionParts = BLREditSettings.Settings.Region.Split('-');
-        if (first.PlayerCount > 0 || regionParts.Length <= 0)
+
+        Dictionary<string, List<BLRServer>> RegionServers = new();
+
+        foreach (var server in playerCountSortedServers)
         {
-            first.ConnectToServerCommand.Execute(null);
-            return;
-        }
-        else
-        {
-            foreach (var server in playerCountSortedServers)
+            if (RegionServers.TryGetValue(server.Region, out var serverlist))
             {
-                if (server.Region.Contains(regionParts[0]))
+                serverlist.Add(server);
+            }
+            else
+            {
+                List<BLRServer> regionlist = new()
+                {
+                    server
+                };
+                RegionServers.Add(server.Region, regionlist);
+            }
+        }
+
+        if (RegionServers.TryGetValue(BLREditSettings.Settings.Region, out var list))
+        {
+            foreach (var server in list)
+            {
+                if (server.PlayerCount < server.MaxPlayers)
                 {
                     server.ConnectToServerCommand.Execute(null);
                     return;
                 }
             }
         }
-        LoggingSystem.MessageLog($"Couldn't find a Matching Server for Region:{BLREditSettings.Settings.Region} or Highest PlayerCount:{first.PlayerCount}");
+
+        LoggingSystem.Log($"No Server Available for Region:{BLREditSettings.Settings.Region}, now trying to find the highest populated server available to connect to!");
+
+        BLRServer? highestPop = null;
+
+        foreach (var regionList in RegionServers)
+        {
+            foreach (var server in regionList.Value)
+            {
+                if (server.PlayerCount < server.MaxPlayers)
+                {
+                    if (highestPop is null) { highestPop = server; }
+                    else if (highestPop.PlayerCount < server.PlayerCount) { highestPop = server; }
+                }
+            }
+        }
+
+        if (highestPop is not null)
+        {
+            highestPop.ConnectToServerCommand.Execute(null);
+        }
+        else
+        {
+            LoggingSystem.MessageLog($"Unable to find suitable server!\ntry again later or manually connect to one from the server list!");
+        }
     }
 }

@@ -143,17 +143,10 @@ public sealed class IOResources
         }
     }
 
-    private class DownloadRequest
+    private class DownloadRequest(string url, string filename)
     {
-        public string url, filename;
-        public AutoResetEvent locked;
-
-        public DownloadRequest(string url, string filename)
-        {
-            this.url = url;
-            this.filename = filename;
-            locked = new AutoResetEvent(false);
-        }
+        public string url = url, filename = filename;
+        public AutoResetEvent locked = new(false);
     }
 
     public static void GetGameLocationsFromSteam()

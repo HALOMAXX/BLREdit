@@ -272,7 +272,7 @@ public sealed partial class MainWindow : Window
                     }
                     else
                     {
-                        if (weapon.Scope is not null)
+                        if (weapon?.Scope is not null)
                         {
                             weapon.Scope.LoadCrosshair(weapon);
                             wasLastImageScopePreview = true;
@@ -589,7 +589,6 @@ public sealed partial class MainWindow : Window
 
 
     private int buttonIndex = 0;
-    private static readonly Type[] TargetControls = new Type[] { typeof(WeaponControl), typeof(GearControl), typeof(ExtraControl) };
     private void PreviewKeyUpMainWindow(object sender, KeyEventArgs e)
     {
         switch (e.Key)

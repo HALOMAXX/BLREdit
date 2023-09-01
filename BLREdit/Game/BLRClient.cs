@@ -82,7 +82,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? _proxyVersion = "v1.0.0-beta.2";
     public string? ProxyVersion { get { return _proxyVersion; } set { _proxyVersion = value; OnPropertyChanged(); } }
 
-    //TODO: Make sure there is always a value inside by lazy loading instead of filling it while patching as it could fail (do this everywhere)
     private string? _configFolder;
     public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}\\FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if(Directory.Exists(value)) _configFolder = value; } }
     private string? _modulesFolder;
@@ -287,7 +286,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ValidateProxy()
     {
-        if (BLREditSettings.Settings.SelectedProxyVersion.Equals(ProxyVersion)) return;
+        if (BLREditSettings.Settings?.SelectedProxyVersion?.Equals(ProxyVersion) ?? true) return;
         RemoveAllModules();
         var proxySource = $"{IOResources.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.{BLREditSettings.Settings.SelectedProxyVersion}.dll";
         var proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll";
@@ -588,7 +587,6 @@ public sealed class BLRClient : INotifyPropertyChanged
             LoggingSystem.Log($"[{this}]: has already been validated!");
         }
 
-        //TODO: Fix this, done??
         BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog);
     }
 

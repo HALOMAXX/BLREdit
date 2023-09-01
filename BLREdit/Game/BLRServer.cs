@@ -60,6 +60,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public StringCollection Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team1List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team1List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
     [JsonIgnore] public StringCollection Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team2List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team2List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
     [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.PlayerCount; } else { return -1; } } }
+    [JsonIgnore] public int MaxPlayers { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.MaxPlayers; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.MaxPlayers; } else { return -1; } } }
 
     public string ServerAddress { get; set; } = "localhost";
     [JsonIgnore] private ushort port = 7777;

@@ -85,6 +85,16 @@ public sealed class BLRItem : INotifyPropertyChanged
         OnPropertyChanged(nameof(Image));
     }
 
+    public bool ItemNameContains(params string[] names)
+    {
+        if (Name is null) return false;
+        foreach (var name in names)
+        {
+            if (Name.Contains(name)) return true;
+        }
+        return false;
+    }
+
     public string GetDescriptorName(double points)
     {
         string currentbest = "";

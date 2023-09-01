@@ -1640,12 +1640,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         BLRItem reciever;
         if (IsPrimary)
-        { 
+        {
             var filtered = ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_CATEGORY).Where(ItemFilters.PartialFilter).ToArray();
             reciever = filtered[rng.Next(0, filtered.Length)];
         }
         else
-        { 
+        {
             var filtered = ImportSystem.GetItemArrayOfType(ImportSystem.SECONDARY_CATEGORY).Where(ItemFilters.PartialFilter).ToArray();
             reciever = filtered[rng.Next(0, filtered.Length)];
         }
@@ -1658,6 +1658,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         var FilteredStocks = ImportSystem.GetItemArrayOfType(ImportSystem.STOCKS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredCamos = ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_WEAPONS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredHangers = ImportSystem.GetItemArrayOfType(ImportSystem.HANGERS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+        var FilteredAmmo = ImportSystem.GetItemArrayOfType(ImportSystem.AMMO_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
 
 
         BLRItem? barrel = null;
@@ -1697,7 +1698,18 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             camo = FilteredCamos[rng.Next(0, FilteredCamos.Length)];
         }
 
-        //TODO: Generate Ammo and Apply Grip incorporate text search to allow for themed generation
+        BLRItem? ammo = null;
+        if (FilteredAmmo.Length > 0)
+        {
+            if ((magazine is not null && !magazine.ItemNameContains("Toxic", "Incendiary", "Electro", "Explosive", "Magnum")) || magazine is null)
+            {
+                ammo = FilteredAmmo[rng.Next(0, FilteredAmmo.Length)];
+            }
+        }
+
+        //TODO: Randomize Ammo(we first need to generate the weapon then we can properly randomize the Ammo according to the reciever and magazine we also need to be carefull of Element mags as they have the elemental effect priority eg it doesn't mater what ammo type is equipped)
+        //TODO: Randomize Grip(we need to generate the grip for weapons that have a Grip slot)
+        //TODO: Use the text filter to theme Randomization where possible(when the list is not empty after filtering).
 
         var grip = ImportSystem.GetItemByIDAndType(ImportSystem.GRIPS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY)?.Length ?? 0));
 
@@ -1709,5 +1721,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         UndoRedoSystem.DoAction(magazine, this.GetType().GetProperty(nameof(Magazine)), this);
         UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(Camo)), this);
         UndoRedoSystem.DoAction(hanger, this.GetType().GetProperty(nameof(Tag)), this);
+        if(ammo is not null) UndoRedoSystem.DoAction(ammo, this.GetType().GetProperty(nameof(Ammo)), this);
     }
 }

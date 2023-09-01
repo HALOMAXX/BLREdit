@@ -1620,6 +1620,16 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player Name can&apos;t contain any of the following characters:
+        ///\ / : * ? &quot; &lt; &gt; |.
+        /// </summary>
+        public static string txt_TT_PlayerName {
+            get {
+                return ResourceManager.GetString("txt_TT_PlayerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Region examples (EU-West, US-West, AU, OCE).
         /// </summary>
         public static string txt_TT_Region {

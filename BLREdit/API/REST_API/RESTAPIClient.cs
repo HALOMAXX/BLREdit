@@ -7,32 +7,25 @@ using System.Threading.Tasks;
 
 namespace BLREdit.API.REST_API;
 
-public sealed class RESTAPIClient
+public sealed class RESTAPIClient(RepositoryProvider APIProvider, string baseAddress)
 {
-    readonly RepositoryProvider API_Provider;
-    readonly string BaseAddress = "";
-
     readonly Dictionary<string, object> RequestCache = new();
 
-    public RESTAPIClient(RepositoryProvider prov, string baseAddress)
-    { 
-        BaseAddress = baseAddress;
-        API_Provider = prov;
-    }
-
+#pragma warning disable CA1822 // Mark members as static
     private async Task<HttpResponseMessage?> GetAsync(string api)
+#pragma warning restore CA1822 // Mark members as static
     {
         try
         {
-            var response = await IOResources.HttpClient.GetAsync($"{BaseAddress}{api}");
+            var response = await IOResources.HttpClient.GetAsync($"{baseAddress}{api}");
             string fail = "";
             if (!response.IsSuccessStatusCode) { fail = $"\n {await response.Content.ReadAsStringAsync()}"; }
-            LoggingSystem.Log($"[{API_Provider}]({response.StatusCode}): GET {api}{fail}");
+            LoggingSystem.Log($"[{APIProvider}]({response.StatusCode}): GET {api}{fail}");
             return response;
         }
         catch (Exception error)
         {
-            LoggingSystem.Log($"[{API_Provider}]({error.GetType().Name}): GET {api}\n{error}");
+            LoggingSystem.Log($"[{APIProvider}]({error.GetType().Name}): GET {api}\n{error}");
             return null;
         }
     }
@@ -46,7 +39,7 @@ public sealed class RESTAPIClient
     public async Task<T[]?> GetReleases<T>(string owner, string repository, int per_page = 10, int page = 1)
     {
         string api;
-        if (API_Provider == RepositoryProvider.GitHub)
+        if (APIProvider == RepositoryProvider.GitHub)
         { api = $"repos/{owner}/{repository}/releases?per_page={per_page}&page={page}"; }
         else
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/releases?page={page}&per_page={per_page}"; }
@@ -71,7 +64,7 @@ public sealed class RESTAPIClient
     public async Task<T?> GetFile<T>(string owner, string repository, string branch, string file)
     {
         string api;
-        if (API_Provider == RepositoryProvider.GitHub)
+        if (APIProvider == RepositoryProvider.GitHub)
         { api = $"repos/{owner}/{repository}/contents/{file}?ref={branch}"; }
         else
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/repository/files/{file.Replace("/", "%2F").Replace(".", "%2E")}?ref={branch}"; }

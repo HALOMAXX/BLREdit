@@ -136,24 +136,13 @@ public struct UndoRedoAction
     public UndoRedoAction() { actions = new(); }
 }
 
-public struct SubUndoRedoAction
+public struct SubUndoRedoAction(object? before, object? after, PropertyInfo propertyInfo, object? target, bool shouldBlockEvent, bool shouldBlockUpdate, string? callName)
 {
-    internal object? Before { get; private set; }
-    internal object? After { get; private set; }
-    internal PropertyInfo PropertyInfo { get; private set; }
-    internal object? Target { get; private set; }
-    internal bool ShouldBlockEvent { get; private set; }
-    internal bool ShouldBlockUpdate { get; private set; }
-    internal string? CallName { get; private set; }
-
-    public SubUndoRedoAction(object? before, object? after, PropertyInfo propertyInfo, object? target, bool shouldBlockEvent, bool shouldBlockUpdate, string? callName)
-    {
-        Before = before;
-        After = after;
-        PropertyInfo = propertyInfo;
-        Target = target;
-        ShouldBlockEvent = shouldBlockEvent;
-        ShouldBlockUpdate = shouldBlockUpdate;
-        CallName = callName;
-    }
+    internal object? Before { get; private set; } = before;
+    internal object? After { get; private set; } = after;
+    internal PropertyInfo PropertyInfo { get; private set; } = propertyInfo;
+    internal object? Target { get; private set; } = target;
+    internal bool ShouldBlockEvent { get; private set; } = shouldBlockEvent;
+    internal bool ShouldBlockUpdate { get; private set; } = shouldBlockUpdate;
+    internal string? CallName { get; private set; } = callName;
 }

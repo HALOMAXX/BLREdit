@@ -25,14 +25,14 @@ public sealed class MainWindowView : INotifyPropertyChanged
 
     public BLRProfile Profile { get; } = new();
 
-    public BLREditSettings BLRESettings { get { return BLREditSettings.Settings; } }
+#pragma warning disable CA1822 // Mark members as static
+    public BLREditSettings BLRESettings => BLREditSettings.Settings;
+#pragma warning restore CA1822 // Mark members as static
 
     private ObservableCollection<BLRClient>? _gameClients;
     private ObservableCollection<BLRServer>? _servers;
     public ObservableCollection<BLRClient> GameClients { get { _gameClients ??= IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new(); return _gameClients; } }
     public ObservableCollection<BLRServer> ServerList { get { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new(); return _servers; } }
-    //TODO: Split Server List Default(Github) and Custom(User Created)
-
 
     public readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
     public readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);

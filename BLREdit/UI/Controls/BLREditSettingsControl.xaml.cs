@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -50,19 +51,24 @@ public sealed partial class BLREditSettingsControl : UserControl
         }
     }
 
-    private SolidColorBrush SolidColorBrush { get; } = new(Colors.Blue);
+    private SolidColorBrush SolidColorBrush { get; } = new(Color.FromArgb(32,0,0,0));
     private ColorAnimation AlertAnim { get; } = new()
     {
-        From = Color.FromArgb(32, 0, 0, 0),
         To = Color.FromArgb(255, 255, 0, 0),
         Duration = new Duration(TimeSpan.FromSeconds(2)),
         AutoReverse = true,
         RepeatBehavior = RepeatBehavior.Forever
     };
+    private ColorAnimation WrongAnim { get; } = new()
+    {
+        From = Color.FromArgb(32, 0, 0, 0),
+        To = Color.FromArgb(255, 255, 0, 0),
+        Duration = new Duration(TimeSpan.FromSeconds(0.333)),
+        AutoReverse = true
+    };
 
     private ColorAnimation CalmAnim { get; } = new()
     {
-        From = Color.FromArgb(255, 255, 0, 0),
         To = Color.FromArgb(32, 0, 0, 0),
         Duration = new Duration(TimeSpan.FromSeconds(2))
     };
@@ -75,10 +81,48 @@ public sealed partial class BLREditSettingsControl : UserControl
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, AlertAnim, HandoffBehavior.Compose);
             lastAnim = AlertAnim;
         }
-        else if (PlayerNameTextBox.Text != "BLREdit-Player" && lastAnim != CalmAnim)
+        else if (PlayerNameTextBox.Text != "BLREdit-Player" && lastAnim == AlertAnim)
         {
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
             lastAnim = CalmAnim;
         }
+    }
+
+    private void PlayerNameTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+    {
+        if (sender is TextBox textBox)
+        {
+            var text = textBox.Text;
+            text = text.Remove(textBox.SelectionStart, textBox.SelectionLength);
+            text = text.Insert(textBox.CaretIndex, e.Text);
+            e.Handled = !text.Equals(SimpleTextFilter(text));
+            if (e.Handled)
+            {
+                if (PlayerNameTextBox.Text != "BLREdit-Player")
+                {
+                    SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, WrongAnim, HandoffBehavior.Compose);
+                    lastAnim = WrongAnim;
+                }
+                if (textBox.ToolTip is System.Windows.Controls.ToolTip toolTip)
+                {
+                    toolTip.IsOpen = true;
+                }
+                else
+                {
+                    textBox.ToolTip = new ToolTip()
+                    {
+                        Content = textBox.ToolTip,
+                        IsOpen = true
+                    };
+                }
+            }
+        }
+    }
+
+
+    private static readonly char[] invalidChars = (new string(System.IO.Path.GetInvalidPathChars()) + new string(System.IO.Path.GetInvalidFileNameChars())).ToArray();
+    public static string SimpleTextFilter(string input)
+    { 
+        return new string(input.Where(x => !invalidChars.Contains(x)).ToArray());
     }
 }

@@ -3,11 +3,9 @@ using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.UI;
 
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
@@ -122,7 +120,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public static void ResetSettings()
     {
         if (MessageBox.Show("Are you sure you want to reset all BLREdit Config", "this is a caption", MessageBoxButton.YesNo) != MessageBoxResult.Yes) { return; }
-        LoggingSystem.MessageLog("Now Returning to Defaults. this will restart BLREdit!");
+        LoggingSystem.MessageLog("Now Returning to Defaults. this will also restart BLREdit!");
         Settings = new BLREditSettings();
 
         MainWindow.View.GameClients.Clear();

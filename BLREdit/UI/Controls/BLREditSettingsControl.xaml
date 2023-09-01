@@ -13,8 +13,8 @@
         <StackPanel>
             <Border Name="PlayerNameBorder">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
-                    <Label Content="{x:Static p:Resources.lbl_PlayerName}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
-                    <TextBox Name="PlayerNameTextBox" Text="{Binding Path=PlayerName, Mode=TwoWay}" MinWidth="128" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" TextChanged="PlayerNameTextBox_TextChanged"/>
+                    <Label Content="{x:Static p:Resources.lbl_PlayerName}" HorizontalAlignment="Left" ToolTip="{x:Static p:Resources.txt_TT_PlayerName }" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                    <TextBox Name="PlayerNameTextBox" Text="{Binding Path=PlayerName, Mode=TwoWay}" ToolTip="{x:Static p:Resources.txt_TT_PlayerName }" MinWidth="128" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" PreviewTextInput="PlayerNameTextBox_PreviewTextInput" TextChanged="PlayerNameTextBox_TextChanged"/>
                 </StackPanel>
             </Border>
             <Border>
