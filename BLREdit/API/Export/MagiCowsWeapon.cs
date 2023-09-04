@@ -1,4 +1,6 @@
-﻿using BLREdit.Import;
+﻿using BLREdit.API.Export;
+using BLREdit.Import;
+using BLREdit.UI.Views;
 
 using System;
 using System.Runtime.CompilerServices;
@@ -6,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace BLREdit.Export;
 
-public sealed class MagiCowsWeapon
+public sealed class MagiCowsWeapon : IBLRWeapon
 {
     [JsonIgnore] private string reciever = "Assault Rifle";
     public string Receiver { get { return reciever; } set { if (reciever != value) { reciever = value; isDirty = true; } } }
@@ -153,6 +155,54 @@ public sealed class MagiCowsWeapon
             }
         }
         return null;
+    }
+
+    public void Read(BLRWeapon weapon)
+    {
+        weapon.Reciever = GetReciever();
+        weapon.Barrel = GetBarrel();
+        weapon.Magazine = GetMagazine();
+        weapon.Muzzle = GetMuzzle();
+        weapon.Stock = GetStock();
+        weapon.Scope = GetScope();
+        weapon.Grip = GetGrip();
+        weapon.Tag = GetTag();
+        weapon.Camo = GetCamo();
+        weapon.Ammo = GetAmmo();
+        weapon.Skin = GetSkin();
+    }
+
+    public void Write(BLRWeapon weapon)
+    {
+        Receiver = weapon.Reciever?.Name ?? "Assault Rifle";
+        Barrel = weapon.Barrel?.Name ?? "No Barrel Mod";
+        Scope = weapon.Scope?.Name ?? "No Optic Mod";
+        Stock = weapon.Stock?.Name ?? "No Stock";
+        Grip = weapon.Grip?.Name ?? "";
+        Muzzle = BLRItem.GetMagicCowsID(weapon.Muzzle, -1);
+        Magazine = BLRItem.GetMagicCowsID(weapon.Magazine, -1);
+        Tag = BLRItem.GetMagicCowsID(weapon.Tag);
+        Camo = BLRItem.GetMagicCowsID(weapon.Camo);
+        Ammo = BLRItem.GetMagicCowsID(weapon.Ammo);
+        Skin = BLRItem.GetMagicCowsID(weapon.Skin);
+    }
+
+    public ShareableWeapon ConvertToShareable()
+    {
+        return new ShareableWeapon()
+        {
+            Reciever = BLRItem.GetMagicCowsID(GetReciever()),
+            Barrel = BLRItem.GetMagicCowsID(GetBarrel()),
+            Scope = BLRItem.GetMagicCowsID(GetScope()),
+            Stock = BLRItem.GetMagicCowsID(GetStock()),
+            Grip = BLRItem.GetMagicCowsID(GetGrip()),
+            Muzzle = Muzzle,
+            Magazine = Magazine,
+            Tag = Tag,
+            Camo = Camo,
+            Ammo = Ammo,
+            Skin = Skin,
+        };
     }
 
     public static readonly (MagiCowsWeapon HeavyAssaultRifle, MagiCowsWeapon LMGReacon, MagiCowsWeapon TacticalSMG, MagiCowsWeapon BurstfireSMG, MagiCowsWeapon AntiMaterielRifle, MagiCowsWeapon BullpupFullAuto, MagiCowsWeapon AK470Rifle, MagiCowsWeapon CompoundBow, MagiCowsWeapon M4XRifle, MagiCowsWeapon TacticalAssaultRifle, MagiCowsWeapon AssaultRifle, MagiCowsWeapon BoltActionRifle, MagiCowsWeapon LightMachineGun, MagiCowsWeapon BurstfireRifle, MagiCowsWeapon PrestigeAssaultRifle, MagiCowsWeapon SubmachineGun, MagiCowsWeapon CombatRifle, MagiCowsWeapon LightReconRifle, MagiCowsWeapon Shotgun_ARk, MagiCowsWeapon BreechLoadedPistol, MagiCowsWeapon Snub260, MagiCowsWeapon HeavyPistol, MagiCowsWeapon LightPistol, MagiCowsWeapon BurstfirePistol, MagiCowsWeapon PrestigeLightPistol, MagiCowsWeapon MachinePistol, MagiCowsWeapon Revolver, MagiCowsWeapon Shotgun, MagiCowsWeapon HardsuitHRVDecoy, MagiCowsWeapon RocketStinger, MagiCowsWeapon RocketSwarm, MagiCowsWeapon Railgun, MagiCowsWeapon Minigun, MagiCowsWeapon Turret, MagiCowsWeapon RhinoHardsuit, MagiCowsWeapon GrenadeLauncher, MagiCowsWeapon Flamethrower, MagiCowsWeapon Katana, MagiCowsWeapon Airstrike, MagiCowsWeapon GunmanHardsuit, MagiCowsWeapon MK1AssaultAI) DefaultWeapons = (

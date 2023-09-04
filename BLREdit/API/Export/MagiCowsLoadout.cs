@@ -1,11 +1,13 @@
-﻿using BLREdit.Import;
+﻿using BLREdit.API.Export;
+using BLREdit.Import;
+using BLREdit.UI.Views;
 
 using System;
 using System.Text.Json.Serialization;
 
 namespace BLREdit.Export;
 
-public sealed class MagiCowsLoadout
+public sealed class MagiCowsLoadout : IBLRLoadout
 {
     [JsonIgnore] private MagiCowsWeapon primary = MagiCowsWeapon.DefaultWeapons.AssaultRifle.Clone();
     public MagiCowsWeapon Primary { get { return primary; } set { if (primary != value) { primary = value; isDirty = true; } } }
@@ -91,11 +93,6 @@ public sealed class MagiCowsLoadout
     public static MagiCowsLoadout DefaultLoadout1 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.AssaultRifle.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
     public static MagiCowsLoadout DefaultLoadout2 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.SubmachineGun.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
     public static MagiCowsLoadout DefaultLoadout3 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.BoltActionRifle.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
-
-    public static BLRItem? GetGear(int GearID)
-    {
-        return ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, GearID);
-    }
     public BLRItem? GetTactical()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, Tactical);
@@ -123,5 +120,114 @@ public sealed class MagiCowsLoadout
     public BLRItem? GetTrophy()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Trophy);
+    }
+
+    public IBLRWeapon GetPrimary()
+    {
+        return Primary;
+    }
+
+    public IBLRWeapon GetSecondary()
+    {
+        return Secondary;
+    }
+
+    public void Read(BLRLoadout loadout)
+    {
+        Primary.Read(loadout.Primary);
+        Secondary.Read(loadout.Secondary);
+
+        loadout.IsFemale = IsFemale;
+
+        loadout.Helmet = GetHelmet();
+        loadout.UpperBody = GetUpperBody();
+        loadout.LowerBody = GetLowerBody();
+
+        loadout.Tactical = GetTactical();
+
+        loadout.Gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear1);
+        loadout.Gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear2);
+        loadout.Gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear3);
+        loadout.Gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear4);
+
+        loadout.Taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[0]);
+        loadout.Taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[1]);
+        loadout.Taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[2]);
+        loadout.Taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[3]);
+        loadout.Taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[4]);
+        loadout.Taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[5]);
+        loadout.Taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[6]);
+        loadout.Taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[7]);
+
+        loadout.Depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[0]);
+        loadout.Depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[1]);
+        loadout.Depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[2]);
+        loadout.Depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[3]);
+        loadout.Depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[4]);
+
+        loadout.Trophy = GetTrophy();
+        loadout.Avatar = GetSkin();
+        loadout.BodyCamo = GetCamo();
+    }
+
+    public void Write(BLRLoadout loadout)
+    {
+        Primary.Write(loadout.Primary);
+        Secondary.Write(loadout.Secondary);
+
+        IsFemale = loadout.IsFemale;
+
+        Tactical = BLRItem.GetMagicCowsID(loadout.Tactical);
+        Helmet = BLRItem.GetMagicCowsID(loadout.Helmet);
+        UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
+        LowerBody = BLRItem.GetMagicCowsID(loadout.LowerBody);
+
+        Camo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
+        Skin = BLRItem.GetMagicCowsID(loadout.Avatar, 99);
+        Trophy = BLRItem.GetMagicCowsID(loadout.Trophy);
+
+
+        Gear1 = BLRItem.GetMagicCowsID(loadout.Gear1);
+        Gear2 = BLRItem.GetMagicCowsID(loadout.Gear2);
+        Gear3 = BLRItem.GetMagicCowsID(loadout.Gear3);
+        Gear4 = BLRItem.GetMagicCowsID(loadout.Gear4);
+
+        Taunts = new int[] { BLRItem.GetMagicCowsID(loadout.Taunt1, 0), BLRItem.GetMagicCowsID(loadout.Taunt2, 1), BLRItem.GetMagicCowsID(loadout.Taunt3, 2), BLRItem.GetMagicCowsID(loadout.Taunt4, 3), BLRItem.GetMagicCowsID(loadout.Taunt5, 4), BLRItem.GetMagicCowsID(loadout.Taunt6, 5), BLRItem.GetMagicCowsID(loadout.Taunt7, 6), BLRItem.GetMagicCowsID(loadout.Taunt8, 7) };
+        Depot = new int[] { BLRItem.GetMagicCowsID(loadout.Depot1), BLRItem.GetMagicCowsID(loadout.Depot2, 1), BLRItem.GetMagicCowsID(loadout.Depot3, 2), BLRItem.GetMagicCowsID(loadout.Depot4, 3), BLRItem.GetMagicCowsID(loadout.Depot5, 3) };
+    }
+
+    public ShareableLoadout ConvertToShareable()
+    {
+        int[] taunts = new int[Taunts.Length];
+        int[] depot = new int[Depot.Length];
+
+        Array.Copy(Taunts, taunts, Taunts.Length);
+        Array.Copy(Depot, depot, Depot.Length);
+
+        return new ShareableLoadout() 
+        {
+            Primary = Primary.ConvertToShareable(),
+            Secondary = Secondary.ConvertToShareable(),
+
+            Avatar = Skin,
+            Badge = Trophy,
+            BodyCamo = Camo,
+            
+            Female = IsFemale,
+
+            Helmet = Helmet,
+            UpperBody = UpperBody,
+            LowerBody = LowerBody,
+
+            Tactical = Tactical,
+
+            Gear_L1 = Gear1,
+            Gear_L2 = Gear2,
+            Gear_R1 = Gear3,
+            Gear_R2 = Gear4,
+
+            Taunts = taunts,
+            Depot = depot,
+        };
     }
 }

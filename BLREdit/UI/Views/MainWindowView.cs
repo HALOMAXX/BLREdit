@@ -38,8 +38,8 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
     public  Border? LastSelectedItemBorder { get { return lastSelectedItemBorder; } set { SetBorderColor(lastSelectedItemBorder, DefaultBorderColor); lastSelectedItemBorder = value; SetBorderColor(lastSelectedItemBorder, ActiveBorderColor); } }
     private Border? lastSelectedItemBorder = null;
-    public  MagiCowsProfile? ActiveLoadoutSet { get { return activeLoadoutSet; } set { activeLoadoutSet = value; Profile.LoadMagiCowsProfile(value); } }
-    private MagiCowsProfile? activeLoadoutSet = null;
+    public  IBLRProfile? ActiveLoadoutSet { get { return activeLoadoutSet; } set { activeLoadoutSet = value; Profile.SetProfile(value); Profile.Read(); } }
+    private IBLRProfile? activeLoadoutSet = null;
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
     public Type? CurrentSortingEnumType { get; set; }

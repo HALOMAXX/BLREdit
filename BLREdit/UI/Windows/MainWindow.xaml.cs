@@ -486,11 +486,11 @@ public sealed partial class MainWindow : Window
 
         LoggingSystem.Log("Changing Profile");
         
-        if (ProfileComboBox.SelectedValue is ExportSystemProfile profile)
+        if (ProfileComboBox.SelectedValue is ShareableProfile profile)
         {
             UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, true);
             UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null);
-            UndoRedoSystem.DoAction(profile.PlayerName, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
+            UndoRedoSystem.DoAction(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
             UndoRedoSystem.EndAction();
         }
         View.IsPlayerProfileChanging = false;
@@ -505,7 +505,7 @@ public sealed partial class MainWindow : Window
 
         int index = ProfileComboBox.SelectedIndex;
         ExportSystem.RemoveActiveProfileFromDisk();
-        ExportSystem.ActiveProfile.PlayerName = PlayerNameTextBox.Text;
+        ExportSystem.ActiveProfile.Name = PlayerNameTextBox.Text;
         ProfileComboBox.SelectedIndex = index;
         ExportSystem.ActiveProfile.RefreshInfo();
 
@@ -520,12 +520,12 @@ public sealed partial class MainWindow : Window
     {
         if (UIKeys.Keys[Key.LeftShift].Is || UIKeys.Keys[Key.RightShift].Is)
         {
-            ExportSystem.CopyToClipBoard(View.Profile);
+            ExportSystem.CopyMagiCowToClipboard(View.Profile);
             ShowAlert($"MagiCow Profile: {ExportSystem.ActiveProfile.Name} Copied!");
         }
         else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
         {
-            string link = $"<blredit://import-profile/{IOResources.JsonToBase64(IOResources.Serialize(new ShareableProfile(View.Profile), true))}>";
+            string link = $"<blredit://import-profile/{IOResources.JsonToBase64(IOResources.Serialize(new Shareable3LoadoutSet(View.Profile), true))}>";
             ExportSystem.SetClipboard(link);
             ShowAlert($"{ExportSystem.ActiveProfile.Name} Share Link Created!");
         }
@@ -784,7 +784,6 @@ public sealed partial class MainWindow : Window
 
     private void DuplicateProfile_Click(object sender, RoutedEventArgs e)
     {
-
         ProfileComboBox.SelectedItem = ExportSystem.ActiveProfile.Duplicate();
     }
 
@@ -873,7 +872,7 @@ public sealed partial class MainWindow : Window
         View.IsPlayerNameChanging = true;
 
 
-        PlayerNameTextBox.Text = ExportSystem.ActiveProfile.PlayerName;
+        PlayerNameTextBox.Text = ExportSystem.ActiveProfile.Name;
         ProfileComboBox.ItemsSource = ExportSystem.Profiles;
         ProfileComboBox.SelectedIndex = 0;
 

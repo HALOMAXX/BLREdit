@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BLREdit.API.Export;
+
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace BLREdit.Export;
 
@@ -27,11 +26,20 @@ public sealed class ExportSystemProfile : MagiCowsProfile, INotifyPropertyChange
         OnPropertyChanged(nameof(Name));
     }
 
-    public ExportSystemProfile Duplicate()
+    public ShareableProfile ConvertToShareable()
     {
-        var dup = base.Clone() as ExportSystemProfile ?? new();
-        dup.Index = ExportSystem.Profiles.Count;
-        ExportSystem.Profiles.Add(dup);
-        return dup;
+        var loadouts = new ObservableCollection<ShareableLoadout>
+        {
+            Loadout1.ConvertToShareable(),
+            Loadout2.ConvertToShareable(),
+            Loadout3.ConvertToShareable()
+        };
+
+        var profile = new ShareableProfile()
+        {
+            Name = Name,
+            Loadouts = loadouts
+        };
+        return profile;
     }
 }

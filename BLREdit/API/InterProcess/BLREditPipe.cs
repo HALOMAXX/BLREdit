@@ -257,12 +257,12 @@ public sealed class BLREditPipe
             if (string.IsNullOrEmpty(compressedBase64)) { LoggingSystem.Log($"[BLREdit API](import-profile): Recieved Empty string!"); return; }
             var json = IOResources.Base64ToJson(compressedBase64);
             if (string.IsNullOrEmpty(json) || (!json.StartsWith("{") && !json.StartsWith("["))) { LoggingSystem.Log("[BLREdit API](import-profile): Recieved invalid json"); return; }
-            var sharedProfile = IOResources.Deserialize<ShareableProfile>(json);
+            var sharedProfile = IOResources.Deserialize<Shareable3LoadoutSet>(json);
             if (sharedProfile is null) { LoggingSystem.Log("[BLREdit API](import-profile): failed to deserialize shareable profile!"); return; }
             var profile = sharedProfile.ToBLRProfile();
             var newProfile = ExportSystem.AddProfile("Imported-Profile");
-            profile.WriteMagiCowsProfile(newProfile, true);
-            MainWindow.ShowAlert($"Import-Profile({newProfile.Index}) has been Imported!");
+            profile.Write(newProfile);
+            //MainWindow.ShowAlert($"Import-Profile({newProfile}) has been Imported!");
         });
         //TODO: Add more api endpoints like add-weapon, import-loadout, select-loadout(for tournaments) and more
     }

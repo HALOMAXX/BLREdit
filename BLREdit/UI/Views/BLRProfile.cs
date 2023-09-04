@@ -7,17 +7,18 @@ namespace BLREdit.UI.Views;
 
 public sealed class BLRProfile
 {
+    private IBLRProfile? _profile;
+
     #region Event
     public event PropertyChangedEventHandler? PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Event
 
-
     public BLRLoadout Loadout1 { get; set; } = new();
     public BLRLoadout Loadout2 { get; set; } = new();
     public BLRLoadout Loadout3 { get; set; } = new();
-    private MagiCowsProfile? internalProfile;
+
 
     private bool isChanged = false;
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
@@ -29,7 +30,7 @@ public sealed class BLRProfile
 
         Loadout1.Primary.PropertyChanged += LoadoutChanged;
         Loadout1.Secondary.PropertyChanged += LoadoutChanged;
-        Loadout2.Primary.PropertyChanged += LoadoutChanged; 
+        Loadout2.Primary.PropertyChanged += LoadoutChanged;
         Loadout2.Secondary.PropertyChanged += LoadoutChanged;
         Loadout3.Primary.PropertyChanged += LoadoutChanged;
         Loadout3.Secondary.PropertyChanged += LoadoutChanged;
@@ -37,7 +38,7 @@ public sealed class BLRProfile
 
     void LoadoutChanged(object sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName == nameof(IsChanged)) IsChanged = true;
+        if (e.PropertyName == nameof(IsChanged)) IsChanged = true;
     }
 
     public static void UpdateSearchAndFilter()
@@ -52,28 +53,52 @@ public sealed class BLRProfile
         Loadout3.CalculateStats();
     }
 
-    
-    public void LoadMagiCowsProfile(MagiCowsProfile? profile)
-    {
-        if (profile is null) return;
-        internalProfile = profile;
-        Loadout1.LoadMagicCowsLoadout(internalProfile.Loadout1);
-        Loadout2.LoadMagicCowsLoadout(internalProfile.Loadout2);
-        Loadout3.LoadMagicCowsLoadout(internalProfile.Loadout3);
-        IsChanged = false;
+    public void SetProfile(IBLRProfile profile)
+    { 
+        _profile = profile;
+        Loadout1.SetLoadout(profile.GetLoadout(0));
+        Loadout2.SetLoadout(profile.GetLoadout(1));
+        Loadout3.SetLoadout(profile.GetLoadout(2));
     }
 
-    public void WriteMagiCowsProfile(MagiCowsProfile profile, bool overwriteLimits = false)
+    public void Write()
     {
-        Loadout1.WriteMagiCowsLoadout(profile.Loadout1, overwriteLimits);
-        Loadout2.WriteMagiCowsLoadout(profile.Loadout2, overwriteLimits);
-        Loadout3.WriteMagiCowsLoadout(profile.Loadout3, overwriteLimits);
+        _profile?.Write(this);
     }
 
-    public void UpdateMagiCowsProfile()
+    public void Write(IBLRProfile profile)
     {
-        Loadout1.UpdateMagicCowsLoadout();
-        Loadout2.UpdateMagicCowsLoadout();
-        Loadout3.UpdateMagicCowsLoadout();
+        profile.Write(this);
     }
+
+    public void Read()
+    {
+        _profile?.Read(this);
+    }
+
+    public void Read(IBLRProfile profile)
+    {
+        profile.Read(this);
+    }
+}
+
+public interface IBLRProfile
+{
+    public IBLRLoadout GetLoadout(int index);
+    public void Read(BLRProfile profile);
+    public void Write(BLRProfile profile);
+}
+
+public interface IBLRLoadout
+{
+    public IBLRWeapon GetPrimary();
+    public IBLRWeapon GetSecondary();
+    public void Read(BLRLoadout loadout);
+    public void Write(BLRLoadout loadout);
+}
+
+public interface IBLRWeapon
+{
+    public void Read(BLRWeapon weapon);
+    public void Write(BLRWeapon weapon);
 }

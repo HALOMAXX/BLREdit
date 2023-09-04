@@ -1,6 +1,10 @@
+using BLREdit.API.Export;
 using BLREdit.Game;
+using BLREdit.Import;
 using BLREdit.UI;
 using BLREdit.UI.Views;
+
+using PeNet;
 
 using System;
 using System.Collections.Generic;
@@ -15,13 +19,13 @@ public sealed class ExportSystem
 {
     private static DirectoryInfo? _currentBackupFolder = null;
     public static DirectoryInfo CurrentBackupFolder { get { _currentBackupFolder ??= Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\"); return _currentBackupFolder; } }
-    public static ObservableCollection<ExportSystemProfile> Profiles { get; private set; } = LoadAllProfiles();
+    public static ObservableCollection<ShareableProfile> Profiles { get; private set; } = LoadAllProfiles();
 
     private static int currentProfile = 0;
-    public static ExportSystemProfile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
+    public static ShareableProfile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
     static Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get; set; } = LoadSettingProfiles();
 
-    private static ExportSystemProfile GetCurrentProfile()
+    private static ShareableProfile GetCurrentProfile()
     {
         if (currentProfile <= 0 && currentProfile >= Profiles.Count)
         {
@@ -39,7 +43,7 @@ public sealed class ExportSystem
         return Profiles[currentProfile];
     }
 
-    private static void SetCurrentProfile(ExportSystemProfile profile)
+    private static void SetCurrentProfile(ShareableProfile profile)
     {
         if (profile == null)
         {
@@ -58,10 +62,10 @@ public sealed class ExportSystem
         MainWindow.View.ActiveLoadoutSet = profile;
     }
 
-    public static void CopyToClipBoard(BLRProfile profile)
+    public static void CopyMagiCowToClipboard(BLRProfile profile)
     {
-        var magiProfile = new MagiCowsProfile { PlayerName = ExportSystem.ActiveProfile.PlayerName };
-        profile.WriteMagiCowsProfile(magiProfile);
+        var magiProfile = new MagiCowsProfile { PlayerName = ActiveProfile.Name };
+        profile.Write(magiProfile);
 
         string clipboard = $"register {Environment.NewLine}{IOResources.Serialize(profile, true)}";
 
@@ -175,59 +179,47 @@ public sealed class ExportSystem
         }
     }
 
-    private static ObservableCollection<ExportSystemProfile> LoadAllProfiles()
+    private static ObservableCollection<ShareableProfile> LoadAllProfiles()
     {
-        List<ExportSystemProfile> profiles = new();
+        ImportSystem.Initialize();
 
         LoggingSystem.Log($"Backup folder:{CurrentBackupFolder.FullName}");
 
-        bool needToSafe = false;
+        var profiles = IOResources.DeserializeFile<ObservableCollection<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();        
 
+        LoggingSystem.Log("Copying all Profiles to Backup folder!");
         foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
         {
             IOResources.CopyToBackup(file);
-            ExportSystemProfile? profile = IOResources.DeserializeFile<ExportSystemProfile>(file);
-            if (profile is null)
+        }
+        LoggingSystem.Log("Finished Copying!");
+
+        foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
+        {
+            var esProfile = IOResources.DeserializeFile<ExportSystemProfile>(file);
+            if (esProfile is null)
             {
-                var oldProfile = IOResources.DeserializeFile<MagiCowsOldProfile>(file);
-                if (oldProfile is not null) 
+                var mcProfile = IOResources.DeserializeFile<MagiCowsOldProfile>(file);
+                if (mcProfile is not null)
                 {
                     LoggingSystem.Log("Found an old profile converting it to new profile format");
-                    profile = oldProfile.ConvertToNew();
-                    needToSafe = true;
-                    File.Delete(file);
+                    esProfile = mcProfile.ConvertToNew();
                 }
             }
 
-            if (profile?.IsHealthOkAndRepair() ?? false)
+            if (esProfile is not null && esProfile.IsHealthOkAndRepair())
             {
-                profiles.Add(profile);
+                profiles.Add(esProfile.ConvertToShareable());
+                File.Delete(file);
             }
         }
 
-        //initialize profiles with atleast one profile
-        if (profiles.Count <= 0)
-        {
-            profiles.Add(new ExportSystemProfile());
-        }
-
-        profiles.Sort((x,y) => x.Index.CompareTo(y.Index));
-
-        if (needToSafe)
-        {
-            Profiles = new ObservableCollection<ExportSystemProfile>(profiles);
-            SaveProfiles();
-        }
-
-        return new ObservableCollection<ExportSystemProfile>(profiles); ;
+        return profiles;
     }
 
     public static void SaveProfiles()
     {
-        foreach (var profile in Profiles)
-        {
-            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}{profile.Name}.json", profile);
-        }
+        IOResources.SerializeFile($"{IOResources.PROFILE_DIR}profileList.json", Profiles);
 
         foreach (var profileSettings in ProfileSettings)
         {
@@ -243,15 +235,15 @@ public sealed class ExportSystem
         File.Delete($"{IOResources.PROFILE_DIR}{ActiveProfile.Name}.json");
     }
 
-    public static ExportSystemProfile AddProfile(string Name)
+    public static ShareableProfile AddProfile(string Name)
     {
-        var prof = new ExportSystemProfile() { Index = Profiles.Count, PlayerName = Name };
+        var prof = new ShareableProfile() { Name = Name };
         Profiles.Add(prof);
         return prof;
     }
 
-    public static ExportSystemProfile AddProfile()
+    public static ShareableProfile AddProfile()
     {
-        return AddProfile(ActiveProfile.PlayerName);
+        return AddProfile("New Profile!");
     }
 }

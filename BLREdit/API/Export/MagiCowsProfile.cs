@@ -1,11 +1,13 @@
-﻿using System;
+﻿using BLREdit.UI.Views;
+
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
 namespace BLREdit.Export;
 
-public class MagiCowsProfile
+public class MagiCowsProfile : IBLRProfile
 {
     [JsonIgnore] private string playerName = "Player";
     public string PlayerName { get { return playerName; } set { if (playerName != value) { playerName = value; isDirty = true; } } }
@@ -47,5 +49,29 @@ public class MagiCowsProfile
             isHealthy = false;
         }
         return isHealthy;
+    }
+
+    public IBLRLoadout GetLoadout(int index)
+    {
+        return index switch
+        {
+            1 => Loadout2,
+            2 => Loadout3,
+            _ => Loadout1,
+        };
+    }
+
+    public void Read(BLRProfile profile)
+    {
+        Loadout1.Read(profile.Loadout1);
+        Loadout2.Read(profile.Loadout2);
+        Loadout3.Read(profile.Loadout3);
+    }
+
+    public void Write(BLRProfile profile)
+    {
+        Loadout1.Write(profile.Loadout1);
+        Loadout2.Write(profile.Loadout2);
+        Loadout3.Write(profile.Loadout3);
     }
 }
