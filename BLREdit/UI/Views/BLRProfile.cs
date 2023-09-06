@@ -53,12 +53,12 @@ public sealed class BLRProfile
         Loadout3.CalculateStats();
     }
 
-    public void SetProfile(IBLRProfile profile)
+    public void SetProfile(IBLRProfile profile, bool registerReadBackEvent = false)
     { 
         _profile = profile;
-        Loadout1.SetLoadout(profile.GetLoadout(0));
-        Loadout2.SetLoadout(profile.GetLoadout(1));
-        Loadout3.SetLoadout(profile.GetLoadout(2));
+        Loadout1.SetLoadout(profile.GetLoadout(0), registerReadBackEvent);
+        Loadout2.SetLoadout(profile.GetLoadout(1), registerReadBackEvent);
+        Loadout3.SetLoadout(profile.GetLoadout(2), registerReadBackEvent);
     }
 
     public void Write()

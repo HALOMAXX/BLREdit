@@ -1,4 +1,5 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.Export;
+using BLREdit.Export;
 using BLREdit.Game;
 
 using System;
@@ -40,6 +41,8 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private Border? lastSelectedItemBorder = null;
     public  IBLRProfile? ActiveLoadoutSet { get { return activeLoadoutSet; } set { activeLoadoutSet = value; Profile.SetProfile(value); Profile.Read(); } }
     private IBLRProfile? activeLoadoutSet = null;
+
+    public ObservableCollection<ShareableProfile> Profiles { get { return ExportSystem.Profiles; } }
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
     public Type? CurrentSortingEnumType { get; set; }

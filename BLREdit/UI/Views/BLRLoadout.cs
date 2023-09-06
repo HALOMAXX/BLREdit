@@ -553,11 +553,11 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         GearSlotsPercentageDisplay = (GearSlots - 2).ToString("0");
     }
 
-    public void SetLoadout(IBLRLoadout loadout)
+    public void SetLoadout(IBLRLoadout loadout, bool registerReadBackEvent = false)
     { 
         _loadout = loadout;
-        Primary.SetWeapon(loadout.GetPrimary());
-        Secondary.SetWeapon(loadout.GetSecondary());
+        Primary.SetWeapon(loadout.GetPrimary(), registerReadBackEvent);
+        Secondary.SetWeapon(loadout.GetSecondary(), registerReadBackEvent);
     }
 
     public void Read()

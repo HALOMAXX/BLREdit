@@ -1568,7 +1568,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         return Math.Min(Math.Max(input, min), max);
     }
 
-    public void SetWeapon(IBLRWeapon weapon)
+    public void SetWeapon(IBLRWeapon weapon, bool registerReadBackEvent = false)
     {
         _weapon = weapon;
     }

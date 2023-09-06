@@ -621,7 +621,7 @@
     {
       "NameID": 3012,
       "Icon": "T_BattleScarf_ORange_1x1",
-      "Name": "ORange Battle Scarf",
+      "Name": "Orange Battle Scarf",
       "UID": 46016
     },
     {
@@ -789,7 +789,7 @@
     {
       "NameID": 3040,
       "Icon": "t_HolobdageBunnyEars_ORange_128x128",
-      "Name": "Bunny Ears ORange",
+      "Name": "Bunny Ears Orange",
       "UID": 46044
     },
     {
@@ -825,7 +825,7 @@
     {
       "NameID": 3046,
       "Icon": "t_Holobdage_Fire_ORange_128x128",
-      "Name": "ORange Fire Trail",
+      "Name": "Orange Fire Trail",
       "UID": 46050
     },
     {
@@ -849,7 +849,7 @@
     {
       "NameID": 3050,
       "Icon": "t_Holobdage_Lightning_ORange_128x128",
-      "Name": "ORange Lightning Trail",
+      "Name": "Orange Lightning Trail",
       "UID": 46054
     },
     {
@@ -1166,7 +1166,7 @@
       "UID": 409
     },
     {
-      "NameID": 4024,
+      "NameID": 4049,
       "Name": "",
       "UID": 410
     },
@@ -1243,12 +1243,12 @@
       "UID": 300
     },
     {
-      "NameID": 4024,
+      "NameID": 4062,
       "Name": "",
       "UID": 301
     },
     {
-      "NameID": 4024,
+      "NameID": 4063,
       "Name": "",
       "UID": 302
     },
@@ -1283,12 +1283,12 @@
       "UID": 307
     },
     {
-      "NameID": 4024,
+      "NameID": 4069,
       "Name": "",
       "UID": 308
     },
     {
-      "NameID": 4024,
+      "NameID": 4070,
       "Name": "",
       "UID": 309
     },
@@ -1305,12 +1305,12 @@
       "UID": 311
     },
     {
-      "NameID": 4024,
+      "NameID": 4073,
       "Name": "",
       "UID": 312
     },
     {
-      "NameID": 4024,
+      "NameID": 4074,
       "Name": "",
       "UID": 313
     },
@@ -2200,7 +2200,7 @@
     {
       "NameID": 5091,
       "Icon": "t_Hanger_PortalGun2_128x128",
-      "Name": "Portal Gun (ORange)",
+      "Name": "Portal Gun (Orange)",
       "UID": 5091
     },
     {
@@ -2444,25 +2444,25 @@
       "UID": 5137
     },
     {
-      "NameID": 3045,
+      "NameID": 5132,
       "Icon": "t_Hanger_Antlers_Premium_128x128",
       "Name": "Premium Reindeer Antlers",
       "UID": 5138
     },
     {
-      "NameID": 3044,
+      "NameID": 5133,
       "Icon": "t_Hanger_Antlers_Basic_128x128",
       "Name": "Reindeer Antlers",
       "UID": 5139
     },
     {
-      "NameID": 3031,
+      "NameID": 5134,
       "Icon": "t_Hanger_HeartTrail_128",
       "Name": "My Bleeding Heart",
       "UID": 5141
     },
     {
-      "NameID": 3032,
+      "NameID": 5135,
       "Icon": "t_Hanger_RoseTrail_128",
       "Name": "War of the Roses",
       "UID": 5142
@@ -3256,7 +3256,7 @@
     {
       "NameID": 6062,
       "Icon": "t_Sugared_BoneBreaker_ORange_128x128",
-      "Name": "ORange Sugared Bone Breaker",
+      "Name": "Orange Sugared Bone Breaker",
       "PawnModifiers": {
         "HRVDuration": 70.0,
         "HRVRechargeRate": 7.1,
@@ -5627,7 +5627,7 @@
     {
       "NameID": 12018,
       "Icon": "t_Camo18_128x128",
-      "Name": "ORange Tiger",
+      "Name": "Orange Tiger",
       "UID": 630118
     },
     {
@@ -5849,7 +5849,7 @@
     {
       "NameID": 12055,
       "Icon": "t_CamoMetalicORange_128x128",
-      "Name": "Metallic ORange",
+      "Name": "Metallic Orange",
       "UID": 630155
     },
     {
@@ -5873,7 +5873,7 @@
     {
       "NameID": 12059,
       "Icon": "t_CamoMatteORange_128x128",
-      "Name": "Matte ORange",
+      "Name": "Matte Orange",
       "UID": 630159
     },
     {
@@ -6017,7 +6017,7 @@
     {
       "NameID": 12083,
       "Icon": "t_CamoHex1_128x128",
-      "Name": "Hardsuit Pilot ORange",
+      "Name": "Hardsuit Pilot Orange",
       "UID": 630183
     },
     {
@@ -6201,7 +6201,7 @@
       "UID": 630213
     },
     {
-      "NameID": 5126,
+      "NameID": 12114,
       "Icon": "t_Camo_Holiday_Snowflake_128x128",
       "Name": "Snowflake",
       "UID": 630214
@@ -6311,7 +6311,7 @@
     {
       "NameID": 12132,
       "Icon": "TX_Camo_Digital_Scatter_ORange_128x128",
-      "Name": "Digital Scatter ORange",
+      "Name": "Digital Scatter Orange",
       "UID": 630232
     },
     {
@@ -6401,7 +6401,7 @@
     {
       "NameID": 12147,
       "Icon": "TX_Camo_Rock_Metal_ORange_128x128",
-      "Name": "Rock Metal ORange",
+      "Name": "Rock Metal Orange",
       "UID": 630247
     },
     {
@@ -6431,7 +6431,7 @@
     {
       "NameID": 12152,
       "Icon": "TX_Camo_Scarred_Stone_ORange_128x128",
-      "Name": "Scarred Stone ORange",
+      "Name": "Scarred Stone Orange",
       "UID": 630252
     },
     {
@@ -6503,433 +6503,433 @@
   ],
   "camosWeapon": [
     {
-      "NameID": 12000,
+      "NameID": 13000,
       "Icon": "t_Camo00_128x128",
       "Name": "Standard Issue",
       "UID": 630300
     },
     {
-      "NameID": 12001,
+      "NameID": 13001,
       "Icon": "t_Camo01_128x128",
       "Name": "Dust Digital",
       "UID": 630301
     },
     {
-      "NameID": 12002,
+      "NameID": 13002,
       "Icon": "t_Camo02_128x128",
       "Name": "Rockwall",
       "UID": 630302
     },
     {
-      "NameID": 12003,
+      "NameID": 13003,
       "Icon": "t_Camo03_128x128",
       "Name": "Sandstorm",
       "UID": 630303
     },
     {
-      "NameID": 12004,
+      "NameID": 13004,
       "Icon": "t_Camo04_128x128",
       "Name": "Digital Red",
       "UID": 630304
     },
     {
-      "NameID": 12005,
+      "NameID": 13005,
       "Icon": "t_Camo05_128x128",
       "Name": "Urban Digital",
       "UID": 630305
     },
     {
-      "NameID": 12006,
+      "NameID": 13006,
       "Icon": "t_Camo06_128x128",
       "Name": "Dust Gray",
       "UID": 630306
     },
     {
-      "NameID": 12007,
+      "NameID": 13007,
       "Icon": "t_Camo07_128x128",
       "Name": "Hillside Brown",
       "UID": 630307
     },
     {
-      "NameID": 12008,
+      "NameID": 13008,
       "Icon": "t_Camo08_128x128",
       "Name": "Brown Tiger",
       "UID": 630308
     },
     {
-      "NameID": 12009,
+      "NameID": 13009,
       "Icon": "t_Camo09_128x128",
       "Name": "Ragnarok",
       "UID": 630309
     },
     {
-      "NameID": 12010,
+      "NameID": 13010,
       "Icon": "t_Camo10_128x128",
       "Name": "Mud Flare",
       "UID": 630310
     },
     {
-      "NameID": 12011,
+      "NameID": 13011,
       "Icon": "t_Camo11_128x128",
       "Name": "Urban Dust",
       "UID": 630311
     },
     {
-      "NameID": 12012,
+      "NameID": 13012,
       "Icon": "t_Camo12_128x128",
       "Name": "Red Leopard",
       "UID": 630312
     },
     {
-      "NameID": 12013,
+      "NameID": 13013,
       "Icon": "t_Camo13_128x128",
       "Name": "Winter Rock",
       "UID": 630313
     },
     {
-      "NameID": 12014,
+      "NameID": 13014,
       "Icon": "t_Camo14_128x128",
       "Name": "Digi Tundra",
       "UID": 630314
     },
     {
-      "NameID": 12015,
+      "NameID": 13015,
       "Icon": "t_Camo15_128x128",
       "Name": "Spotted Ground",
       "UID": 630315
     },
     {
-      "NameID": 12016,
+      "NameID": 13016,
       "Icon": "t_Camo16_128x128",
       "Name": "Dark Brown",
       "UID": 630316
     },
     {
-      "NameID": 12017,
+      "NameID": 13017,
       "Icon": "t_Camo17_128x128",
       "Name": "Gray Operation",
       "UID": 630317
     },
     {
-      "NameID": 12018,
+      "NameID": 13018,
       "Icon": "t_Camo18_128x128",
-      "Name": "ORange Tiger",
+      "Name": "Orange Tiger",
       "UID": 630318
     },
     {
-      "NameID": 12019,
+      "NameID": 13019,
       "Icon": "t_Camo19_128x128",
       "Name": "Hillside Operation",
       "UID": 630319
     },
     {
-      "NameID": 12020,
+      "NameID": 13020,
       "Icon": "t_Camo20_128x128",
       "Name": "Broken Rock",
       "UID": 630320
     },
     {
-      "NameID": 12021,
+      "NameID": 13021,
       "Icon": "t_Camo21_128x128",
       "Name": "Shadow",
       "UID": 630321
     },
     {
-      "NameID": 12022,
+      "NameID": 13022,
       "Icon": "t_Camo22_128x128",
       "Name": "Bloodsport",
       "UID": 630322
     },
     {
-      "NameID": 12023,
+      "NameID": 13023,
       "Icon": "t_Camo23_128x128",
       "Name": "Sahara",
       "UID": 630323
     },
     {
-      "NameID": 12024,
+      "NameID": 13024,
       "Icon": "t_Camo24_128x128",
       "Name": "Forest",
       "UID": 630324
     },
     {
-      "NameID": 12025,
+      "NameID": 13025,
       "Icon": "t_Camo25_128x128",
       "Name": "Mountain Lion",
       "UID": 630325
     },
     {
-      "NameID": 12026,
+      "NameID": 13026,
       "Icon": "t_Camo26_128x128",
       "Name": "Ice Hex",
       "UID": 630326
     },
     {
-      "NameID": 12027,
+      "NameID": 13027,
       "Icon": "t_Camo27_128x128",
       "Name": "Urban Winter",
       "UID": 630327
     },
     {
-      "NameID": 12028,
+      "NameID": 13028,
       "Icon": "t_Camo28_128x128",
       "Name": "Urban Nest",
       "UID": 630328
     },
     {
-      "NameID": 12029,
+      "NameID": 13029,
       "Icon": "t_Camo29_128x128",
       "Name": "Tactical Infil",
       "UID": 630329
     },
     {
-      "NameID": 12030,
+      "NameID": 13030,
       "Icon": "t_Camo30_128x128",
       "Name": "Avalanche",
       "UID": 630330
     },
     {
-      "NameID": 12031,
+      "NameID": 13031,
       "Icon": "t_Camo31_128x128",
       "Name": "Olive",
       "UID": 630331
     },
     {
-      "NameID": 12032,
+      "NameID": 13032,
       "Icon": "t_Camo32_128x128",
       "Name": "Tactical Winter",
       "UID": 630332
     },
     {
-      "NameID": 12033,
+      "NameID": 13033,
       "Icon": "t_Camo33_128x128",
       "Name": "Wrath",
       "UID": 630333
     },
     {
-      "NameID": 12034,
+      "NameID": 13034,
       "Icon": "t_Camo34_128x128",
       "Name": "Drifter",
       "UID": 630334
     },
     {
-      "NameID": 12035,
+      "NameID": 13035,
       "Icon": "t_Camo35_128x128",
       "Name": "Ocean Fury",
       "UID": 630335
     },
     {
-      "NameID": 12036,
+      "NameID": 13036,
       "Icon": "t_Camo36_128x128",
       "Name": "Gray",
       "UID": 630336
     },
     {
-      "NameID": 12037,
+      "NameID": 13037,
       "Icon": "t_Camo37_128x128",
       "Name": "Marked Hunter",
       "UID": 630337
     },
     {
-      "NameID": 12038,
+      "NameID": 13038,
       "Icon": "t_Camo38_128x128",
       "Name": "Snow Leopard",
       "UID": 630338
     },
     {
-      "NameID": 12039,
+      "NameID": 13039,
       "Icon": "t_Camo39_128x128",
       "Name": "Forest Combat",
       "UID": 630339
     },
     {
-      "NameID": 12040,
+      "NameID": 13040,
       "Icon": "t_Camo40_128x128",
       "Name": "Seized",
       "UID": 630340
     },
     {
-      "NameID": 12041,
+      "NameID": 13041,
       "Icon": "t_Camo41_128x128",
       "Name": "Concrete Gray",
       "UID": 630341
     },
     {
-      "NameID": 12042,
+      "NameID": 13042,
       "Icon": "t_Camo42_128x128",
       "Name": "Green Plankton",
       "UID": 630342
     },
     {
-      "NameID": 12043,
+      "NameID": 13043,
       "Icon": "t_Camo43_128x128",
       "Name": "Mountain Peak",
       "UID": 630343
     },
     {
-      "NameID": 12044,
+      "NameID": 13044,
       "Icon": "t_Camo44_128x128",
       "Name": "Gray Leaf",
       "UID": 630344
     },
     {
-      "NameID": 12045,
+      "NameID": 13045,
       "Icon": "t_Camo45_128x128",
       "Name": "Snowstorm",
       "UID": 630345
     },
     {
-      "NameID": 12046,
+      "NameID": 13046,
       "Icon": "t_Camo46_128x128",
       "Name": "Dark Gray",
       "UID": 630346
     },
     {
-      "NameID": 12047,
+      "NameID": 13047,
       "Icon": "t_Camo47_128x128",
       "Name": "Snowdrift",
       "UID": 630347
     },
     {
-      "NameID": 12048,
+      "NameID": 13048,
       "Icon": "t_Camo48_128x128",
       "Name": "Grassland Hex",
       "UID": 630348
     },
     {
-      "NameID": 12049,
+      "NameID": 13049,
       "Icon": "t_Camo49_128x128",
       "Name": "Urban Hex",
       "UID": 630349
     },
     {
-      "NameID": 12050,
+      "NameID": 13050,
       "Icon": "t_Camo50_128x128",
       "Name": "Shattered Poles",
       "UID": 630350
     },
     {
-      "NameID": 12051,
+      "NameID": 13051,
       "Icon": "t_CamoMetalicBronze_128x128",
       "Name": "Metallic Bronze",
       "UID": 630351
     },
     {
-      "NameID": 12052,
+      "NameID": 13052,
       "Icon": "t_CamoMetalicSilver_128x128",
       "Name": "Metallic Silver",
       "UID": 630352
     },
     {
-      "NameID": 12053,
+      "NameID": 13053,
       "Icon": "t_CamoMetalicGold_128x128",
       "Name": "Metallic Gold",
       "UID": 630353
     },
     {
-      "NameID": 12088,
+      "NameID": 13054,
       "Icon": "t_CamoMetalicPink_128x128",
       "Name": "Metallic Pink",
       "UID": 630354
     },
     {
-      "NameID": 12055,
+      "NameID": 13055,
       "Icon": "t_CamoMetalicORange_128x128",
-      "Name": "Metallic ORange",
+      "Name": "Metallic Orange",
       "UID": 630355
     },
     {
-      "NameID": 12056,
+      "NameID": 13056,
       "Icon": "t_CamoMetalicCobalt_128x128",
       "Name": "Metallic Cobalt Blue",
       "UID": 630356
     },
     {
-      "NameID": 12057,
+      "NameID": 13057,
       "Icon": "t_CamoMetalicToxicGreen_128x128",
       "Name": "Metallic Toxic Green",
       "UID": 630357
     },
     {
-      "NameID": 12058,
+      "NameID": 13058,
       "Icon": "t_CamoMattePink_128x128",
       "Name": "Matte Pink",
       "UID": 630358
     },
     {
-      "NameID": 12059,
+      "NameID": 13059,
       "Icon": "t_CamoMatteORange_128x128",
-      "Name": "Matte ORange",
+      "Name": "Matte Orange",
       "UID": 630359
     },
     {
-      "NameID": 12060,
+      "NameID": 13060,
       "Icon": "t_CamoMatteRed_128x128",
       "Name": "Matte Red",
       "UID": 630360
     },
     {
-      "NameID": 12061,
+      "NameID": 13061,
       "Icon": "t_CamoMatteDarkRed_128x128",
       "Name": "Matte Dark Red",
       "UID": 630361
     },
     {
-      "NameID": 12062,
+      "NameID": 13062,
       "Icon": "t_CamoMatteBabyBlue_128x128",
       "Name": "Matte Baby Blue",
       "UID": 630362
     },
     {
-      "NameID": 12063,
+      "NameID": 13063,
       "Icon": "t_CamoMatteDarkBlue_128x128",
       "Name": "Matte Dark Blue",
       "UID": 630363
     },
     {
-      "NameID": 12064,
+      "NameID": 13064,
       "Icon": "t_Camo00_128x128",
       "Name": "Matte Black",
       "UID": 630364
     },
     {
-      "NameID": 12065,
+      "NameID": 13065,
       "Icon": "t_CamoMatteWhite_128x128",
       "Name": "White",
       "UID": 630365
     },
     {
-      "NameID": 12066,
+      "NameID": 13066,
       "Icon": "t_camoMatteDarkPurple_128x128",
       "Name": "Matte Dark Purple",
       "UID": 630366
     },
     {
-      "NameID": 12067,
+      "NameID": 13067,
       "Icon": "t_CamoMatteGreen_128x128",
       "Name": "Matte Green",
       "UID": 630367
     },
     {
-      "NameID": 12068,
+      "NameID": 13068,
       "Icon": "t_CamoMatteYellow_128x128",
       "Name": "Matte Yellow",
       "UID": 630368
     },
     {
-      "NameID": 12070,
+      "NameID": 13069,
       "Icon": "t_CamoFPSGuru_128x128",
       "Name": "FPSGuru.com Partner Camo",
       "UID": 630369
     },
     {
-      "NameID": 12071,
+      "NameID": 13070,
       "Icon": "t_CamoIGN_128x128",
       "Name": "IGN.com Partner Camo",
       "UID": 630370
     },
     {
-      "NameID": 12072,
+      "NameID": 13071,
       "Icon": "t_CamoMMOBomb_128x128",
       "Name": "MMOBomb.com Partner Camo",
       "UID": 630371
@@ -6983,7 +6983,7 @@
       "UID": 630379
     },
     {
-      "NameID": 12073,
+      "NameID": 13080,
       "Icon": "t_CamoMetalicSilver_128x128",
       "Name": "Secret Silver",
       "UID": 630380
@@ -6995,67 +6995,67 @@
       "UID": 630381
     },
     {
-      "NameID": 12075,
+      "NameID": 13082,
       "Icon": "t_CamoBenjamins_128x128",
       "Name": "The Benjamins",
       "UID": 630382
     },
     {
-      "NameID": 12076,
+      "NameID": 13083,
       "Icon": "t_CamoExtraLife_128x128",
       "Name": "Extra Life Charity",
       "UID": 630383
     },
     {
-      "NameID": 12077,
+      "NameID": 13084,
       "Icon": "t_CamoKBMOD_128x128",
       "Name": "KBMOD.com Vintage",
       "UID": 630384
     },
     {
-      "NameID": 12078,
+      "NameID": 13085,
       "Icon": "t_CamoAstro2_128x128",
       "Name": "Astro Graffiti Autumn",
       "UID": 630385
     },
     {
-      "NameID": 12079,
+      "NameID": 13086,
       "Icon": "t_CamoAstro3_128x128",
       "Name": "Astro Graffiti",
       "UID": 630386
     },
     {
-      "NameID": 12080,
+      "NameID": 13087,
       "Icon": "t_CamoAstro4_128x128",
       "Name": "Astro Graffiti Black",
       "UID": 630387
     },
     {
-      "NameID": 12095,
+      "NameID": 13088,
       "Icon": "t_CamoMetalicGold_128x128",
       "Name": "Veteran",
       "UID": 630388
     },
     {
-      "NameID": 12096,
+      "NameID": 13089,
       "Icon": "t_CamoRetributionElite_128x128",
       "Name": "Retribution Elite",
       "UID": 630389
     },
     {
-      "NameID": 12097,
+      "NameID": 13090,
       "Icon": "t_CamoTiger_128x128",
       "Name": "Tiger Elite",
       "UID": 630390
     },
     {
-      "NameID": 12098,
+      "NameID": 13091,
       "Icon": "t_CamoDaylight_128x128",
       "Name": "Daylight",
       "UID": 630391
     },
     {
-      "NameID": 12099,
+      "NameID": 13092,
       "Icon": "t_CamoLvl50WinterOps_128x128",
       "Name": "Winter Operations",
       "UID": 630392
@@ -7067,13 +7067,13 @@
       "UID": 630393
     },
     {
-      "NameID": 12101,
+      "NameID": 13094,
       "Icon": "t_CamoBLCTournament_128x128",
       "Name": "BCL TourNament",
       "UID": 630394
     },
     {
-      "NameID": 12102,
+      "NameID": 13095,
       "Icon": "t_CamoXXOOHearts_128x128",
       "Name": "XXOO",
       "UID": 630395
@@ -7085,343 +7085,343 @@
       "UID": 630396
     },
     {
-      "NameID": 5113,
+      "NameID": 13097,
       "Icon": "t_CamoSingaporeFlag_128x128",
       "Name": "Singapore Flag",
       "UID": 630397
     },
     {
-      "NameID": 12103,
+      "NameID": 13098,
       "Icon": "TX_Camo_Anniversary_Beta_128x128",
       "Name": "Beta",
       "UID": 630398
     },
     {
-      "NameID": 12104,
+      "NameID": 13099,
       "Icon": "TX_Camo_Anniversary_2012_128x128",
       "Name": "Class of 2012",
       "UID": 630399
     },
     {
-      "NameID": 12105,
+      "NameID": 13100,
       "Icon": "TX_Camo_Anniversary_2013_128x128",
       "Name": "Class of 2013",
       "UID": 630400
     },
     {
-      "NameID": 12106,
+      "NameID": 13101,
       "Icon": "TX_Camo_Anniversary_2014_128x128",
       "Name": "Class of 2014",
       "UID": 630401
     },
     {
-      "NameID": 12107,
+      "NameID": 13102,
       "Icon": "TX_Camo_Anniversary_2015_128x128",
       "Name": "Class of 2015",
       "UID": 630402
     },
     {
-      "NameID": 12108,
+      "NameID": 13103,
       "Icon": "TX_Camo_Anniversary_2016_128x128",
       "Name": "Class of 2016",
       "UID": 630403
     },
     {
-      "NameID": 12109,
+      "NameID": 13104,
       "Icon": "TX_Camo_Anniversary_2017_128x128",
       "Name": "Class of 2017",
       "UID": 630404
     },
     {
-      "NameID": 12115,
+      "NameID": 13105,
       "Icon": "t_Camo_Holiday_ValentineHearts_2016_128x128",
       "Name": "Love Fool",
       "UID": 630405
     },
     {
-      "NameID": 12116,
+      "NameID": 13106,
       "Icon": "TX_Camo_Easter_Blue_128x128",
       "Name": "Easter Blue",
       "UID": 630406
     },
     {
-      "NameID": 12117,
+      "NameID": 13107,
       "Icon": "TX_Camo_Easter_Green_128x128",
       "Name": "Easter Green",
       "UID": 630407
     },
     {
-      "NameID": 12118,
+      "NameID": 13108,
       "Icon": "TX_Camo_Easter_Pink_128x128",
       "Name": "Easter Pink",
       "UID": 630408
     },
     {
-      "NameID": 12119,
+      "NameID": 13109,
       "Icon": "TX_Camo_Easter_Purple_128x128",
       "Name": "Easter Purple",
       "UID": 630409
     },
     {
-      "NameID": 12120,
+      "NameID": 13110,
       "Icon": "TX_Camo_Easter_Yellow_128x128",
       "Name": "Easter Yellow",
       "UID": 630410
     },
     {
-      "NameID": 12121,
+      "NameID": 13111,
       "Icon": "t_CamoKBMOD_new_128x128",
       "Name": "KBMOD.com New",
       "UID": 630411
     },
     {
-      "NameID": 12122,
+      "NameID": 13112,
       "Icon": "t_Camo_EBL_128x128",
       "Name": "EBL Tourney",
       "UID": 630412
     },
     {
-      "NameID": 12123,
+      "NameID": 13113,
       "Icon": "TX_Camo_Bloodmoney_128x128",
       "Name": "Bloodmoney",
       "UID": 630413
     },
     {
-      "NameID": 12124,
+      "NameID": 13114,
       "Icon": "TX_Camo_Bloodmoney2_128x128",
       "Name": "Bloodmoney 2",
       "UID": 630414
     },
     {
-      "NameID": 12125,
+      "NameID": 13115,
       "Icon": "TX_Camo_Cracked_Apple_128x128",
       "Name": "Cracked Apple",
       "UID": 630415
     },
     {
-      "NameID": 12126,
+      "NameID": 13116,
       "Icon": "TX_Camo_Cracked_Apple_Pink_128x128",
       "Name": "Cracked Apple Pink",
       "UID": 630416
     },
     {
-      "NameID": 12127,
+      "NameID": 13117,
       "Icon": "TX_Camo_Cracked_Apple_Red_128x128",
       "Name": "Cracked Apple Red",
       "UID": 630417
     },
     {
-      "NameID": 12128,
+      "NameID": 13118,
       "Icon": "TX_Camo_Digiplex_128x128",
       "Name": "Digiplex",
       "UID": 630418
     },
     {
-      "NameID": 12129,
+      "NameID": 13119,
       "Icon": "TX_Camo_Digiplex2_128x128",
       "Name": "Digiplex 2",
       "UID": 630419
     },
     {
-      "NameID": 12130,
+      "NameID": 13120,
       "Icon": "TX_Camo_Digital_Scatter_128x128",
       "Name": "Digital Scatter",
       "UID": 630420
     },
     {
-      "NameID": 12131,
+      "NameID": 13121,
       "Icon": "TX_Camo_Digital_Scatter_Green_128x128",
       "Name": "Digital Scatter Green",
       "UID": 630421
     },
     {
-      "NameID": 12132,
+      "NameID": 13122,
       "Icon": "TX_Camo_Digital_Scatter_ORange_128x128",
-      "Name": "Digital Scatter ORange",
+      "Name": "Digital Scatter Orange",
       "UID": 630422
     },
     {
-      "NameID": 12133,
+      "NameID": 13123,
       "Icon": "TX_Camo_Fluffy_Punk_128x128",
       "Name": "Fluffy Punk",
       "UID": 630423
     },
     {
-      "NameID": 12134,
+      "NameID": 13124,
       "Icon": "TX_Camo_GoFast_128x128",
       "Name": "GoFast",
       "UID": 630424
     },
     {
-      "NameID": 12135,
+      "NameID": 13125,
       "Icon": "TX_Camo_Jagged_Metallic_128x128",
       "Name": "Jagged Metallic",
       "UID": 630425
     },
     {
-      "NameID": 12136,
+      "NameID": 13126,
       "Icon": "TX_Camo_Jagged_Metallic_Green_128x128",
       "Name": "Jagged Metallic Green",
       "UID": 630426
     },
     {
-      "NameID": 12137,
+      "NameID": 13127,
       "Icon": "TX_Camo_Jagged_Metallic_Red_128x128",
       "Name": "Jagged Metallic Red",
       "UID": 630427
     },
     {
-      "NameID": 12138,
+      "NameID": 13128,
       "Icon": "TX_Camo_MolternShards_128x128",
       "Name": "Molten Shards",
       "UID": 630428
     },
     {
-      "NameID": 12139,
+      "NameID": 13129,
       "Icon": "TX_Camo_Mud_Rough_128x128",
       "Name": "Mud Rough",
       "UID": 630429
     },
     {
-      "NameID": 12140,
+      "NameID": 13130,
       "Icon": "TX_Camo_Mud_Rough_Pink_128x128",
       "Name": "Mud Rough Pink",
       "UID": 630430
     },
     {
-      "NameID": 12141,
+      "NameID": 13131,
       "Icon": "TX_Camo_Mud_Rough_Red_128x128",
       "Name": "Mud Rough Red",
       "UID": 630431
     },
     {
-      "NameID": 12142,
+      "NameID": 13132,
       "Icon": "TX_Camo_Quiet_Sand_128x128",
       "Name": "Quiet Sand",
       "UID": 630432
     },
     {
-      "NameID": 12143,
+      "NameID": 13133,
       "Icon": "TX_Camo_Quiet_Sand_Blue_128x128",
       "Name": "Quiet Sand Blue",
       "UID": 630433
     },
     {
-      "NameID": 12144,
+      "NameID": 13134,
       "Icon": "TX_Camo_Quiet_Sand_Green_128x128",
       "Name": "Quiet Sand Green",
       "UID": 630434
     },
     {
-      "NameID": 12145,
+      "NameID": 13135,
       "Icon": "TX_Camo_Rock_Metal_128x128",
       "Name": "Rock Matal",
       "UID": 630435
     },
     {
-      "NameID": 12146,
+      "NameID": 13136,
       "Icon": "TX_Camo_Rock_Metal_Blue_128x128",
       "Name": "Rock Metal Blue",
       "UID": 630436
     },
     {
-      "NameID": 12147,
+      "NameID": 13137,
       "Icon": "TX_Camo_Rock_Metal_ORange_128x128",
-      "Name": "Rock Metal ORange",
+      "Name": "Rock Metal Orange",
       "UID": 630437
     },
     {
-      "NameID": 12148,
+      "NameID": 13138,
       "Icon": "TX_Camo_Rocked_Scuff_128x128",
       "Name": "Rocked Scuff",
       "UID": 630438
     },
     {
-      "NameID": 12149,
+      "NameID": 13139,
       "Icon": "TX_Camo_Rocked_Scuff_Blue_128x128",
       "Name": "Rocked Scuff Blue",
       "UID": 630439
     },
     {
-      "NameID": 12150,
+      "NameID": 13140,
       "Icon": "TX_Camo_Rocked_Scuff_Yellow_128x128",
       "Name": "Rocked Scuff Yellow",
       "UID": 630440
     },
     {
-      "NameID": 12151,
+      "NameID": 13141,
       "Icon": "TX_Camo_Scarred_Stone_128x128",
       "Name": "Scarred Stone",
       "UID": 630441
     },
     {
-      "NameID": 12152,
+      "NameID": 13142,
       "Icon": "TX_Camo_Scarred_Stone_ORange_128x128",
-      "Name": "Scarred Stone ORange",
+      "Name": "Scarred Stone Orange",
       "UID": 630442
     },
     {
-      "NameID": 12153,
+      "NameID": 13143,
       "Icon": "TX_Camo_Scarred_Stone_Pink_128x128",
       "Name": "Scarred Stone Pink",
       "UID": 630443
     },
     {
-      "NameID": 12154,
+      "NameID": 13144,
       "Icon": "TX_Camo_Scarred_Stone_Teal_128x128",
       "Name": "Scarred Stone Teal",
       "UID": 630444
     },
     {
-      "NameID": 12155,
+      "NameID": 13145,
       "Icon": "TX_Camo_Splatter_Smudge_128x128",
       "Name": "Splatter Smudge",
       "UID": 630445
     },
     {
-      "NameID": 12156,
+      "NameID": 13146,
       "Icon": "TX_Camo_Splatter_Smudge_Blue_128x128",
       "Name": "Splatter Smudge Blue",
       "UID": 630446
     },
     {
-      "NameID": 12157,
+      "NameID": 13147,
       "Icon": "TX_Camo_Splatter_Smudge_Red_128x128",
       "Name": "Splatter Smudge Red",
       "UID": 630447
     },
     {
-      "NameID": 12158,
+      "NameID": 13148,
       "Icon": "TX_Camo_Splinter_Bark_128x128",
       "Name": "Splinter Bark",
       "UID": 630448
     },
     {
-      "NameID": 12159,
+      "NameID": 13149,
       "Icon": "TX_Camo_Splinter_Bark_Blue_128x128",
       "Name": "Splinter Bark Blue",
       "UID": 630449
     },
     {
-      "NameID": 12160,
+      "NameID": 13150,
       "Icon": "TX_Camo_Splinter_Bark_Green_128x128",
       "Name": "Splinter Bark Green",
       "UID": 630450
     },
     {
-      "NameID": 12161,
+      "NameID": 13151,
       "Icon": "TX_Camo_Splinter_Bark_Red_128x128",
       "Name": "Splinter Bark Red",
       "UID": 630451
     },
     {
-      "NameID": 12162,
+      "NameID": 13152,
       "Icon": "TX_Camo_Surfer_Panic_128x128",
       "Name": "Surfer Panic",
       "UID": 630452
     },
     {
-      "NameID": 12163,
+      "NameID": 13153,
       "Icon": "TX_Camo_Arc_128x128",
       "Name": "Arc",
       "UID": 630453
@@ -7602,7 +7602,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15009,
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
@@ -7614,7 +7614,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15010,
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
@@ -7632,7 +7632,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15011,
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
@@ -7650,7 +7650,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15012,
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
@@ -7671,7 +7671,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15013,
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
@@ -7737,7 +7737,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15016,
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
@@ -7753,7 +7753,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15017,
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -7769,7 +7769,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15018,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -7785,7 +7785,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15019,
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -7801,7 +7801,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15020,
       "DescriptorName": "Standard",
       "Icon": "t_MagSniper_Standard_128x128",
       "Name": "Standard Mag",
@@ -7812,7 +7812,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15021,
       "DescriptorName": "Light",
       "Icon": "t_MagSR_Light_128x128",
       "Name": "Light Mag",
@@ -7829,7 +7829,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15022,
       "DescriptorName": "Quick",
       "Icon": "t_MagSniper_Quick_128x128",
       "Name": "Quick Mag",
@@ -7846,7 +7846,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15023,
       "DescriptorName": "Extended",
       "Icon": "t_MagSniper_Extended_128x128",
       "Name": "Extended Mag",
@@ -7866,7 +7866,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15024,
       "DescriptorName": "Express",
       "Icon": "t_MagSR_LightQuick_128x128",
       "Name": "Express Mag",
@@ -7885,7 +7885,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15025,
       "DescriptorName": "Electro",
       "Icon": "t_MagSniper_Electro_128x128",
       "Name": "Electro Mag",
@@ -7900,7 +7900,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15026,
       "DescriptorName": "Explosive",
       "Icon": "t_MagSniper_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -7915,7 +7915,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15027,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSniper_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -7930,7 +7930,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15028,
       "DescriptorName": "Toxic",
       "Icon": "t_MagSniper_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -8058,7 +8058,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15035,
       "DescriptorName": "Electro",
       "Icon": "t_MagShell_Electro_128x128",
       "Name": "Electro Mag",
@@ -8073,7 +8073,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15036,
       "DescriptorName": "Explosive",
       "Icon": "t_MagShell_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -8088,7 +8088,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15037,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagShell_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -8103,7 +8103,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15038,
       "DescriptorName": "Toxic",
       "Icon": "t_MagShell_Corrosive_128x128",
       "Name": "Toxic Mag",
@@ -8208,7 +8208,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15045,
       "DescriptorName": "Standard",
       "Icon": "t_Mag45_Standard_128x128",
       "Name": "Standard Mag",
@@ -8219,7 +8219,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15046,
       "DescriptorName": "Light",
       "Icon": "t_Mag45_Light_128x128",
       "Name": "Light Mag",
@@ -8236,7 +8236,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15047,
       "DescriptorName": "Quick",
       "Icon": "t_Mag45_LightQuick_128x128",
       "Name": "Quick Mag",
@@ -8253,7 +8253,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15048,
       "DescriptorName": "Extended",
       "Icon": "t_Mag45_Extended_128x128",
       "Name": "Extended Mag",
@@ -8273,7 +8273,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15049,
       "DescriptorName": "Express",
       "Icon": "t_Mag45_ExtendedQuick_128x128",
       "Name": "Express Mag",
@@ -8292,7 +8292,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15050,
       "DescriptorName": "Electro",
       "Icon": "t_Mag45_Electro_128x128",
       "Name": "Electro Mag",
@@ -8307,7 +8307,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15051,
       "DescriptorName": "Explosive",
       "Icon": "t_Mag45_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -8322,7 +8322,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15052,
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag45_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -8337,7 +8337,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15053,
       "DescriptorName": "Toxic",
       "Icon": "t_Mag45_Corrosive_128x128",
       "Name": "Toxic Mag",
@@ -8352,7 +8352,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15054,
       "DescriptorName": "Standard",
       "Icon": "t_Mag45_Standard_128x128",
       "Name": "Standard Mag",
@@ -8364,7 +8364,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15055,
       "DescriptorName": "Light",
       "Icon": "t_Mag45_Light_128x128",
       "Name": "Light Mag",
@@ -8382,7 +8382,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15056,
       "DescriptorName": "Quick",
       "Icon": "t_Mag45_LightQuick_128x128",
       "Name": "Quick Mag",
@@ -8400,7 +8400,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15057,
       "DescriptorName": "Extended",
       "Icon": "t_Mag45_Extended_128x128",
       "Name": "Extended Mag",
@@ -8421,7 +8421,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15058,
       "DescriptorName": "Express",
       "Icon": "t_Mag9mm_ExtendedQuick_128x128",
       "Name": "Express Mag",
@@ -8441,7 +8441,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15059,
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
@@ -8457,7 +8457,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15060,
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -8473,7 +8473,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15061,
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -8489,7 +8489,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15062,
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
@@ -8505,7 +8505,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15063,
       "DescriptorName": "Standard",
       "Icon": "t_Mag9mm_Standard_128x128",
       "Name": "Standard Mag",
@@ -8516,7 +8516,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15064,
       "DescriptorName": "Light",
       "Icon": "t_Mag9mm_Light_128x128",
       "Name": "Light Mag",
@@ -8533,7 +8533,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15065,
       "DescriptorName": "Quick",
       "Icon": "t_Mag9mm_LightQuick_128x128",
       "Name": "Quick Mag",
@@ -8550,7 +8550,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15066,
       "DescriptorName": "Extended",
       "Icon": "t_Mag9mm_Extended_128x128",
       "Name": "Extended Mag",
@@ -8570,7 +8570,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15067,
       "DescriptorName": "Express",
       "Icon": "t_Mag9mm_ExtendedQuick_128x128",
       "Name": "Express Mag",
@@ -8589,7 +8589,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15068,
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
@@ -8604,7 +8604,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15069,
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -8619,7 +8619,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15070,
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -8634,7 +8634,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15071,
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
@@ -8649,7 +8649,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15072,
       "DescriptorName": "Standard",
       "Icon": "t_Mag9mm_Standard_128x128",
       "Name": "Standard Mag",
@@ -8660,7 +8660,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15073,
       "DescriptorName": "Light",
       "Icon": "t_Mag9mm_Light_128x128",
       "Name": "Light Mag",
@@ -8677,7 +8677,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15074,
       "DescriptorName": "Quick",
       "Icon": "t_Mag9mm_LightQuick_128x128",
       "Name": "Quick Mag",
@@ -8694,7 +8694,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15075,
       "DescriptorName": "Extended",
       "Icon": "t_Mag9mm_Extended_128x128",
       "Name": "Extended Mag",
@@ -8714,7 +8714,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15076,
       "DescriptorName": "Express",
       "Icon": "t_Mag9mm_ExtendedQuick_128x128",
       "Name": "Express Mag",
@@ -8733,7 +8733,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15077,
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
@@ -8748,7 +8748,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15078,
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -8763,7 +8763,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15079,
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -8778,7 +8778,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15080,
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
@@ -8793,7 +8793,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15081,
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
@@ -8804,7 +8804,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15082,
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
@@ -8821,7 +8821,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15083,
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
@@ -8838,7 +8838,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15084,
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
@@ -8858,7 +8858,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15085,
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
@@ -8877,7 +8877,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15086,
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
@@ -8892,7 +8892,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15087,
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -8907,7 +8907,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15088,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -8922,7 +8922,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15089,
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -8937,7 +8937,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15090,
       "DescriptorName": "Standard",
       "Icon": "t_MagSniper_Standard_128x128",
       "Name": "Standard Mag",
@@ -8948,7 +8948,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15091,
       "DescriptorName": "Light",
       "Icon": "t_MagSR_Light_128x128",
       "Name": "Light Mag",
@@ -8965,7 +8965,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15092,
       "DescriptorName": "Quick",
       "Icon": "t_MagSniper_Quick_128x128",
       "Name": "Quick Mag",
@@ -8982,7 +8982,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15093,
       "DescriptorName": "Extended",
       "Icon": "t_MagSniper_Extended_128x128",
       "Name": "Extended Mag",
@@ -9002,7 +9002,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15094,
       "DescriptorName": "Express",
       "Icon": "t_MagSR_LightQuick_128x128",
       "Name": "Express Mag",
@@ -9021,7 +9021,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15095,
       "DescriptorName": "Electro",
       "Icon": "t_MagSniper_Electro_128x128",
       "Name": "Electro Mag",
@@ -9036,7 +9036,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15096,
       "DescriptorName": "Explosive",
       "Icon": "t_MagSniper_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -9051,7 +9051,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15097,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSniper_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -9066,7 +9066,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15098,
       "DescriptorName": "Toxic",
       "Icon": "t_MagSniper_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -9208,7 +9208,7 @@
       }
     },
     {
-      "NameID": 15000,
+      "NameID": 15107,
       "DescriptorName": "Standard",
       "Icon": "t_MagSMG2_Standard_128x128",
       "Name": "Standard Mag",
@@ -9219,7 +9219,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15108,
       "DescriptorName": "Light",
       "Icon": "t_MagSMG2_Light_128x128",
       "Name": "Light Mag",
@@ -9236,7 +9236,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15109,
       "DescriptorName": "Quick",
       "Icon": "t_MagSMG2_Quick_128x128",
       "Name": "Quick Mag",
@@ -9256,7 +9256,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15110,
       "DescriptorName": "Extended",
       "Icon": "t_MagSMG2_Extended_128x128",
       "Name": "Extended Mag",
@@ -9277,7 +9277,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15111,
       "DescriptorName": "Electro",
       "Icon": "t_MagSMG2_Electro_128x128",
       "Name": "Electro Mag",
@@ -9292,7 +9292,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15112,
       "DescriptorName": "Explosive",
       "Icon": "t_MagSMG2_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -9307,7 +9307,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15113,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSMG2_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -9322,7 +9322,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15114,
       "DescriptorName": "Toxic",
       "Icon": "t_MagSMG2_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -9337,7 +9337,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15115,
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
@@ -9348,7 +9348,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15116,
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
@@ -9365,7 +9365,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15117,
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
@@ -9382,7 +9382,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15118,
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
@@ -9402,7 +9402,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15119,
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
@@ -9421,7 +9421,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15120,
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
@@ -9436,7 +9436,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15121,
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -9451,7 +9451,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15122,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -9466,7 +9466,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15123,
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -9481,7 +9481,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15029,
+      "NameID": 15124,
       "DescriptorName": "Standard",
       "Icon": "t_MagShell_Standard_128x128",
       "Name": "Standard Tube Magazine",
@@ -9495,7 +9495,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15125,
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
@@ -9513,7 +9513,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15126,
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
@@ -9532,7 +9532,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15127,
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
@@ -9554,7 +9554,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15128,
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
@@ -9576,7 +9576,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15129,
       "DescriptorName": "Electro",
       "Icon": "t_MagShell_Electro_128x128",
       "Name": "Electro Mag",
@@ -9591,7 +9591,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15130,
       "DescriptorName": "Explosive",
       "Icon": "t_MagShell_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -9606,7 +9606,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15131,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagShell_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -9621,7 +9621,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15132,
       "DescriptorName": "Toxic",
       "Icon": "t_MagShell_Corrosive_128x128",
       "Name": "Toxic Mag",
@@ -9636,7 +9636,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15014,
+      "NameID": 15133,
       "DescriptorName": "Drummed",
       "Icon": "t_Mag_Drum_128x128",
       "Name": "Drum Mag",
@@ -9730,7 +9730,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15140,
       "DescriptorName": "Standard",
       "Icon": "t_MagSMG_Standard_128x128",
       "Name": "Standard Mag",
@@ -9741,7 +9741,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15141,
       "DescriptorName": "Light",
       "Icon": "t_MagSMG_Light_128x128",
       "Name": "Light Mag",
@@ -9758,7 +9758,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15142,
       "DescriptorName": "Quick",
       "Icon": "t_MagSMG_Quick_128x128",
       "Name": "Quick Mag",
@@ -9775,7 +9775,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15143,
       "DescriptorName": "Extended",
       "Icon": "t_MagSMG_Extended_128x128",
       "Name": "Extended Mag",
@@ -9795,7 +9795,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15144,
       "DescriptorName": "Express",
       "Icon": "t_MagSMG_Express_128x128",
       "Name": "Express Mag",
@@ -9814,7 +9814,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15145,
       "DescriptorName": "Electro",
       "Icon": "t_MagSMG_Electro_128x128",
       "Name": "Electro Mag",
@@ -9829,7 +9829,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15146,
       "DescriptorName": "Explosive",
       "Icon": "t_MagSMG_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -9844,7 +9844,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15147,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSMG_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -9859,7 +9859,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15148,
       "DescriptorName": "Toxic",
       "Icon": "t_MagSMG_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -9874,7 +9874,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15149,
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
@@ -9885,7 +9885,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15150,
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
@@ -9902,7 +9902,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15151,
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
@@ -9919,7 +9919,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15152,
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
@@ -9939,7 +9939,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15153,
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
@@ -9958,7 +9958,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15154,
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
@@ -9973,7 +9973,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15155,
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -9988,7 +9988,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15156,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -10003,7 +10003,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15157,
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -10036,7 +10036,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15159,
       "DescriptorName": "Magnum",
       "Icon": "t_MagSMG_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10054,7 +10054,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15160,
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10073,7 +10073,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15161,
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10091,7 +10091,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15162,
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10109,7 +10109,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15163,
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10127,7 +10127,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15164,
       "DescriptorName": "Magnum",
       "Icon": "t_MagSniper_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10145,7 +10145,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15165,
       "DescriptorName": "Magnum",
       "Icon": "t_MagSniper_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10164,7 +10164,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15166,
       "DescriptorName": "Magnum",
       "Icon": "t_MagShell_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10182,7 +10182,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15167,
       "DescriptorName": "Magnum",
       "Icon": "t_MagShell_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10218,7 +10218,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15169,
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10236,7 +10236,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15170,
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10255,7 +10255,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15171,
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10273,7 +10273,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15172,
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10309,7 +10309,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15174,
       "DescriptorName": "Magnum",
       "Icon": "t_MagSMG2_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10361,7 +10361,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15099,
+      "NameID": 15177,
       "DescriptorName": "Standard",
       "Icon": "t_MagCylinder_08_128x128",
       "Name": "Standard Cylinder",
@@ -10430,7 +10430,7 @@
       }
     },
     {
-      "NameID": 15102,
+      "NameID": 15180,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagCylinder_08Incendiary_128x128",
       "Name": "Incendiary Cylinder",
@@ -10445,7 +10445,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15100,
+      "NameID": 15181,
       "DescriptorName": "Electro",
       "Icon": "t_MagCylinder_08Electro_128x128",
       "Name": "Electro Cylinder",
@@ -10460,7 +10460,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15101,
+      "NameID": 15182,
       "DescriptorName": "Explosive",
       "Icon": "t_MagCylinder_08Explosive_128x128",
       "Name": "Explosive Cylinder",
@@ -10475,7 +10475,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15103,
+      "NameID": 15183,
       "DescriptorName": "Toxic",
       "Icon": "t_MagCylinder_08Toxic_128x128",
       "Name": "Toxic Cylinder",
@@ -10489,7 +10489,7 @@
       }
     },
     {
-      "NameID": 15173,
+      "NameID": 15184,
       "DescriptorName": "Magnum",
       "Icon": "t_MagCylinger_08Magnum_128x128",
       "Name": "Magnum Cylinder",
@@ -10505,7 +10505,7 @@
       }
     },
     {
-      "NameID": 15000,
+      "NameID": 15185,
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
@@ -10516,7 +10516,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15186,
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
@@ -10533,7 +10533,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15187,
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
@@ -10550,7 +10550,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15188,
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
@@ -10570,7 +10570,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15189,
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
@@ -10589,7 +10589,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15190,
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
@@ -10604,7 +10604,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15191,
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -10619,7 +10619,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15192,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -10634,7 +10634,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15193,
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -10649,7 +10649,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15194,
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10667,7 +10667,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15195,
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
@@ -10678,7 +10678,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15196,
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
@@ -10695,7 +10695,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15197,
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
@@ -10712,7 +10712,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15198,
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
@@ -10732,7 +10732,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15199,
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
@@ -10751,7 +10751,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15200,
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
@@ -10766,7 +10766,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15201,
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -10781,7 +10781,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15202,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -10796,7 +10796,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15203,
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -10811,7 +10811,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15158,
+      "NameID": 15204,
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
@@ -10829,7 +10829,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 10017,
+      "NameID": 15205,
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowStandard_128x128",
       "Name": "Standard Arrow",
@@ -10846,7 +10846,7 @@
       }
     },
     {
-      "NameID": 10012,
+      "NameID": 15206,
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowExplosive_128x128",
       "Name": "Exploding Arrow",
@@ -10864,7 +10864,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 10013,
+      "NameID": 15207,
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowStun_128x128",
       "Name": "Stun Arrow",
@@ -10882,7 +10882,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 10014,
+      "NameID": 15208,
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowToxic_128x128",
       "Name": "Poison Arrow",
@@ -10897,7 +10897,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 10015,
+      "NameID": 15209,
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowLight_128x128",
       "Name": "Light Arrow",
@@ -10915,7 +10915,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 10016,
+      "NameID": 15210,
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowHeavy_128x128",
       "Name": "Heavy Arrow",
@@ -10933,7 +10933,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 10018,
+      "NameID": 15211,
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowCupid_128x128",
       "Name": "Cupid\u0027s Arrow",
@@ -10950,7 +10950,7 @@
       }
     },
     {
-      "NameID": 15000,
+      "NameID": 15212,
       "DescriptorName": "Standard",
       "Icon": "t_MagRifle_Standard_128x128",
       "Name": "Standard Mag",
@@ -10961,7 +10961,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15213,
       "DescriptorName": "Light",
       "Icon": "t_MagRifle_Light_128x128",
       "Name": "Light Mag",
@@ -10978,7 +10978,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15214,
       "DescriptorName": "Quick",
       "Icon": "t_MagRifle_Quick_128x128",
       "Name": "Quick Mag",
@@ -10995,7 +10995,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15215,
       "DescriptorName": "Extended",
       "Icon": "t_MagRifle_Extended_128x128",
       "Name": "Extended Mag",
@@ -11015,7 +11015,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15216,
       "DescriptorName": "Express",
       "Icon": "t_MagRifle_Express_128x128",
       "Name": "Express Mag",
@@ -11034,7 +11034,7 @@
       }
     },
     {
-      "NameID": 15005,
+      "NameID": 15217,
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
@@ -11049,7 +11049,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15006,
+      "NameID": 15218,
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
@@ -11064,7 +11064,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15007,
+      "NameID": 15219,
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
@@ -11079,7 +11079,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15008,
+      "NameID": 15220,
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
@@ -11094,7 +11094,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15000,
+      "NameID": 15221,
       "DescriptorName": "Standard",
       "Icon": "t_MagSniper_Standard_128x128",
       "Name": "Standard Mag",
@@ -11105,7 +11105,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15001,
+      "NameID": 15222,
       "DescriptorName": "Light",
       "Icon": "t_MagSR_Light_128x128",
       "Name": "Light Mag",
@@ -11122,7 +11122,7 @@
       }
     },
     {
-      "NameID": 15002,
+      "NameID": 15223,
       "DescriptorName": "Quick",
       "Icon": "t_MagSniper_Quick_128x128",
       "Name": "Quick Mag",
@@ -11139,7 +11139,7 @@
       }
     },
     {
-      "NameID": 15003,
+      "NameID": 15224,
       "DescriptorName": "Extended",
       "Icon": "t_MagSniper_Extended_128x128",
       "Name": "Extended Mag",
@@ -11159,7 +11159,7 @@
       }
     },
     {
-      "NameID": 15004,
+      "NameID": 15225,
       "DescriptorName": "Express",
       "Icon": "t_MagSR_LightQuick_128x128",
       "Name": "Express Mag",
@@ -11190,7 +11190,7 @@
       "WikiStats": {}
     },
     {
-      "NameID": 15226,
+      "NameID": 15227,
       "DescriptorName": "Standard",
       "Icon": "t_Gold_MagMP_Default_128x128",
       "Name": "Prestige Standard Mag",
@@ -12081,7 +12081,7 @@
       "LMID": 8,
       "NameID": 17009,
       "Icon": "t_SpecialtySkin_AK47_Tiger_01_256x128",
-      "Name": "AK470 - Tiger Stripes ORange Weapon Skin",
+      "Name": "AK470 - Tiger Stripes Orange Weapon Skin",
       "UID": 10008,
       "ValidFor": [
         40023
@@ -12171,7 +12171,7 @@
       "LMID": 17,
       "NameID": 17018,
       "Icon": "t_SpecialtySkin_AR2_Tiger_01_256x128",
-      "Name": "Heavy Assault Rifle - Tiger Stripes ORange Weapon Skin",
+      "Name": "Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin",
       "UID": 10017,
       "ValidFor": [
         40017
@@ -12331,7 +12331,7 @@
       "LMID": 36,
       "NameID": 17034,
       "Icon": "t_SpecialtySkin_AR3_Tiger_01_256x128",
-      "Name": "Tactical Assault Rifle - Tiger Stripes ORange Weapon Skin",
+      "Name": "Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin",
       "UID": 10033,
       "ValidFor": [
         40025
@@ -12441,7 +12441,7 @@
       "LMID": 47,
       "NameID": 17045,
       "Icon": "t_SpecialtySkin_AR_Tiger_01_256x128",
-      "Name": "Assault Rifle - Tiger Stripes ORange Weapon Skin",
+      "Name": "Assault Rifle - Tiger Stripes Orange Weapon Skin",
       "UID": 10044,
       "ValidFor": [
         40003
@@ -12531,7 +12531,7 @@
       "LMID": 56,
       "NameID": 17054,
       "Icon": "t_SpecialtySkin_BKT_Tiger_01_256x128",
-      "Name": "Light Machine Gun - Tiger Stripes ORange Weapon Skin",
+      "Name": "Light Machine Gun - Tiger Stripes Orange Weapon Skin",
       "UID": 10053,
       "ValidFor": [
         40011
@@ -12621,7 +12621,7 @@
       "LMID": 65,
       "NameID": 17063,
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_01_256x128",
-      "Name": "Bolt-Action - Tiger Stripes ORange Weapon Skin",
+      "Name": "Bolt-Action - Tiger Stripes Orange Weapon Skin",
       "UID": 10062,
       "ValidFor": [
         40007
@@ -12711,7 +12711,7 @@
       "LMID": 74,
       "NameID": 17072,
       "Icon": "t_SpecialtySkin_BP2_Tiger_01_256x128",
-      "Name": "Bullpup Full Auto - Tiger Stripes ORange Weapon Skin",
+      "Name": "Bullpup Full Auto - Tiger Stripes Orange Weapon Skin",
       "UID": 10071,
       "ValidFor": [
         40020
@@ -12801,7 +12801,7 @@
       "LMID": 83,
       "NameID": 17081,
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_01_256x128",
-      "Name": "Burstfire Rifle - Tiger Stripes ORange Weapon Skin",
+      "Name": "Burstfire Rifle - Tiger Stripes Orange Weapon Skin",
       "UID": 10080,
       "ValidFor": [
         40009
@@ -12891,7 +12891,7 @@
       "LMID": 92,
       "NameID": 17090,
       "Icon": "t_SpecialtySkin_LMG2_Tiger_01_256x128",
-      "Name": "LMG Recon - Tiger Stripes ORange Weapon Skin",
+      "Name": "LMG Recon - Tiger Stripes Orange Weapon Skin",
       "UID": 10089,
       "ValidFor": [
         40014
@@ -12981,7 +12981,7 @@
       "LMID": 101,
       "NameID": 17099,
       "Icon": "t_SpecialtySkin_M4_Tiger_01_256x128",
-      "Name": "M4X - Tiger Stripes ORange Weapon Skin",
+      "Name": "M4X - Tiger Stripes Orange Weapon Skin",
       "UID": 10098,
       "ValidFor": [
         40022
@@ -13071,7 +13071,7 @@
       "LMID": 110,
       "NameID": 17108,
       "Icon": "t_SpecialtySkin_SMG_Tiger_01_256x128",
-      "Name": "Submachine Gun - Tiger Stripes ORange Weapon Skin",
+      "Name": "Submachine Gun - Tiger Stripes Orange Weapon Skin",
       "UID": 10107,
       "ValidFor": [
         40010
@@ -13161,7 +13161,7 @@
       "LMID": 119,
       "NameID": 17117,
       "Icon": "t_SpecialtySkin_SMG2_Tiger_01_256x128",
-      "Name": "Tactical SMG - Tiger Stripes ORange Weapon Skin",
+      "Name": "Tactical SMG - Tiger Stripes Orange Weapon Skin",
       "UID": 10116,
       "ValidFor": [
         40013
@@ -13251,7 +13251,7 @@
       "LMID": 128,
       "NameID": 17126,
       "Icon": "t_SpecialtySkin_SMGi_Tiger_01_256x128",
-      "Name": "Burstfire SMG - Tiger Stripes ORange Weapon Skin",
+      "Name": "Burstfire SMG - Tiger Stripes Orange Weapon Skin",
       "UID": 10125,
       "ValidFor": [
         40018
@@ -13341,7 +13341,7 @@
       "LMID": 137,
       "NameID": 17135,
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_01_256x128",
-      "Name": "Combat Rifle - Tiger Stripes ORange Weapon Skin",
+      "Name": "Combat Rifle - Tiger Stripes Orange Weapon Skin",
       "UID": 10134,
       "ValidFor": [
         40008
@@ -13431,7 +13431,7 @@
       "LMID": 146,
       "NameID": 17144,
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_01_256x128",
-      "Name": "Light Recon - Tiger Stripes ORange Weapon Skin",
+      "Name": "Light Recon - Tiger Stripes Orange Weapon Skin",
       "UID": 10143,
       "ValidFor": [
         40026
@@ -13521,7 +13521,7 @@
       "LMID": 155,
       "NameID": 17153,
       "Icon": "t_SpecialtySkin_20mm_Tiger_01_256x128",
-      "Name": "Anti-Materiel - Tiger Stripes ORange Weapon Skin",
+      "Name": "Anti-Materiel - Tiger Stripes Orange Weapon Skin",
       "UID": 10152,
       "ValidFor": [
         40019
@@ -20678,63 +20678,63 @@
       "UID": 20001
     },
     {
-      "NameID": 21012,
+      "NameID": 22002,
       "Icon": "t_Depot_Flamethrower_128x128",
       "Name": "Flamethrower",
       "CP": 350.0,
       "UID": 20003
     },
     {
-      "NameID": 21019,
+      "NameID": 22003,
       "Icon": "t_Depot_RocketLauncherArmor_128x128",
       "Name": "Rocket Stinger",
       "CP": 400.0,
       "UID": 20011
     },
     {
-      "NameID": 21014,
+      "NameID": 22004,
       "Icon": "t_Depot_HardSuit_128x128",
       "Name": "Rhino Hardsuit",
       "CP": 1300.0,
       "UID": 20004
     },
     {
-      "NameID": 21018,
+      "NameID": 22005,
       "Icon": "t_Depot_RocketLauncherSwarm_128x128",
       "Name": "Rocket Swarm",
       "CP": 1000.0,
       "UID": 20002
     },
     {
-      "NameID": 21010,
+      "NameID": 22006,
       "Icon": "t_Depot_Airstrike_128x128",
       "Name": "Airstrike",
       "CP": 600.0,
       "UID": 20006
     },
     {
-      "NameID": 21017,
+      "NameID": 22007,
       "Icon": "t_Depot_Railgun_128x128",
       "Name": "Railgun",
       "CP": 750.0,
       "UID": 20005
     },
     {
-      "NameID": 21013,
+      "NameID": 22008,
       "Icon": "t_Depot_GrenadeLauncher_128x128",
       "Name": "Grenade Launcher",
       "CP": 500.0,
       "UID": 20007
     },
     {
-      "NameID": 21016,
+      "NameID": 22009,
       "Icon": "t_Depot_MiniGun_128x128",
       "Name": "Minigun",
       "CP": 750.0,
       "UID": 20008
     },
     {
-      "NameID": 21011,
+      "NameID": 22010,
       "Icon": "t_Depot_Turret_128x128",
       "Name": "Turret",
       "CP": 600.0,
@@ -20748,28 +20748,28 @@
       "UID": 20012
     },
     {
-      "NameID": 21021,
+      "NameID": 22012,
       "Icon": "t_Depot_Katana_128x128",
       "Name": "Katana",
       "CP": 350.0,
       "UID": 20010
     },
     {
-      "NameID": 21020,
+      "NameID": 22013,
       "Icon": "t_Depot_HardsuitHRVDecoy_128x128",
       "Name": "Hardsuit HRV Decoy",
       "CP": 200.0,
       "UID": 20013
     },
     {
-      "NameID": 21022,
+      "NameID": 22014,
       "Icon": "t_Depot_AssaultBot_128x128",
       "Name": "MK1 Assault AI",
       "CP": 500.0,
       "UID": 200013
     },
     {
-      "NameID": 21015,
+      "NameID": 22015,
       "Icon": "t_Depot_LightHardSuit_128x128",
       "Name": "Gunman Hardsuit",
       "CP": 975.0,

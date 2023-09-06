@@ -134,6 +134,11 @@
                 </TabControl>
                 
             </TabItem>
+
+            <TabItem Name="ProfileListTab" Header="Profiles" >
+                <ui:ProfileListControl DataContext="{Binding Path=Profiles}"/>
+            </TabItem>
+            
         </TabControl>
         <Grid HorizontalAlignment="Right" Width="400" Margin="400,0,0,0" IsHitTestVisible="False" Focusable="False">
             <ListBox HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="400" Background="Transparent" Name="AlertList" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">

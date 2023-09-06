@@ -42,12 +42,12 @@ public sealed class BLRItem : INotifyPropertyChanged
     public string? Name { get; set; }
     public double CP { get; set; } = 0;
 
-    [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(NameID.ToString()); } }
+    [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(NameID.ToString("000000")); } }
     [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 
     public BLRPawnModifiers? PawnModifiers { get; set; }
     public List<string>? SupportedMods { get; set; }
-    [JsonIgnore] public string DisplayTooltip { get { return ItemTooltips.ResourceManager.GetString(NameID.ToString()); } }
+    [JsonIgnore] public string DisplayTooltip { get { return ItemTooltips.ResourceManager.GetString(NameID.ToString("000000")); } }
     public int UID { get; set; }
     public List<int>? ValidFor { get; set; }
     public BLRWeaponModifiers? WeaponModifiers { get; set; }

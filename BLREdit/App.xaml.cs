@@ -164,20 +164,22 @@ public partial class App : System.Windows.Application
 
             GenerateNameIDs();
 
-            TestNameDuplication();
+            //TestNameDuplication();
 
             using (ResXResourceWriter resx = new("newItemNames.resx"))
             {
                 foreach (var item in NameList)
                 {
-                    resx.AddResource(item.Key.NameID.ToString(), item.Value);
+                    var node = new ResXDataNode(item.Key.NameID.ToString("000000"), item.Value) { Comment = item.Key.Category };
+                    resx.AddResource(node);
                 }
             }
             using (ResXResourceWriter resx = new("newItemTooltips.resx"))
             {
                 foreach (var item in TooltipList)
                 {
-                    resx.AddResource(item.Key.NameID.ToString(), item.Value);
+                    var node = new ResXDataNode(item.Key.NameID.ToString("000000"), item.Value) { Comment = item.Key.Category };
+                    resx.AddResource(node);
                 }
             }
 
