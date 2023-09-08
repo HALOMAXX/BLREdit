@@ -172,7 +172,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         weapon.Skin = GetSkin();
     }
 
-    public void Write(BLRWeapon weapon)
+    public void Write(BLRWeapon weapon, bool triggerEvent = true)
     {
         Receiver = weapon.Reciever?.Name ?? "Assault Rifle";
         Barrel = weapon.Barrel?.Name ?? "No Barrel Mod";
@@ -185,6 +185,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         Camo = BLRItem.GetMagicCowsID(weapon.Camo);
         Ammo = BLRItem.GetMagicCowsID(weapon.Ammo);
         Skin = BLRItem.GetMagicCowsID(weapon.Skin);
+        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
     }
 
     public ShareableWeapon ConvertToShareable()
@@ -262,4 +263,6 @@ public sealed class MagiCowsWeapon : IBLRWeapon
     public const string DefaultBarrel = "Frontier Standard Barrel";
     public const string DefaultStock = "Silverwood Standard Stock";
     public const string DefaultBullPupStock = "MMRS BP-SR Tactical";
+
+    public event EventHandler? WasWrittenTo;
 }

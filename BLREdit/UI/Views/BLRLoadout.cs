@@ -554,10 +554,17 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
 
     public void SetLoadout(IBLRLoadout loadout, bool registerReadBackEvent = false)
-    { 
+    {
+        if (_loadout is not null) { _loadout.WasWrittenTo -= ReadCallback; }
         _loadout = loadout;
         Primary.SetWeapon(loadout.GetPrimary(), registerReadBackEvent);
         Secondary.SetWeapon(loadout.GetSecondary(), registerReadBackEvent);
+        if (registerReadBackEvent) { _loadout.WasWrittenTo += ReadCallback; }
+    }
+
+    private void ReadCallback(object sender, EventArgs e)
+    {
+        Read();
     }
 
     public void Read()
@@ -570,105 +577,11 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         _loadout?.Write(this);
     }
 
-    //public void WriteMagiCowsLoadout(MagiCowsLoadout loadout, bool overwriteLimits = false)
-    //{
-    //    if (UndoRedoSystem.BlockUpdate) return;
-
-    //    Primary.WriteMagiCowsWeapon(loadout.Primary);
-    //    Secondary.WriteMagiCowsWeapon(loadout.Secondary);
-
-    //    loadout.Tactical = BLRItem.GetMagicCowsID(Tactical);
-    //    loadout.Helmet = BLRItem.GetMagicCowsID(Helmet);
-    //    loadout.UpperBody = BLRItem.GetMagicCowsID(UpperBody);
-    //    loadout.LowerBody = BLRItem.GetMagicCowsID(LowerBody);
-
-    //    loadout.Camo = BLRItem.GetMagicCowsID(BodyCamo);
-    //    loadout.Skin = BLRItem.GetMagicCowsID(Avatar, 99);
-    //    loadout.Trophy = BLRItem.GetMagicCowsID(Trophy);
-
-    //    loadout.IsFemale = IsFemale;
-
-    //    if (GearSlots > 0 || overwriteLimits) loadout.Gear1 = BLRItem.GetMagicCowsID(Gear1);
-    //    if (GearSlots > 1 || overwriteLimits) loadout.Gear2 = BLRItem.GetMagicCowsID(Gear2);
-    //    if (GearSlots > 2 || overwriteLimits) loadout.Gear3 = BLRItem.GetMagicCowsID(Gear3);
-    //    if (GearSlots > 3 || overwriteLimits) loadout.Gear4 = BLRItem.GetMagicCowsID(Gear4); 
-
-    //    loadout.Taunts = new int[] { BLRItem.GetMagicCowsID(Taunt1,0), BLRItem.GetMagicCowsID(Taunt2,1), BLRItem.GetMagicCowsID(Taunt3, 2), BLRItem.GetMagicCowsID(Taunt4, 3), BLRItem.GetMagicCowsID(Taunt5, 4), BLRItem.GetMagicCowsID(Taunt6, 5), BLRItem.GetMagicCowsID(Taunt7, 6), BLRItem.GetMagicCowsID(Taunt8, 7) };
-    //    loadout.Depot = new int[] { BLRItem.GetMagicCowsID(Depot1), BLRItem.GetMagicCowsID(Depot2, 1), BLRItem.GetMagicCowsID(Depot3, 2), BLRItem.GetMagicCowsID(Depot4,3), BLRItem.GetMagicCowsID(Depot5, 3) };
-    //}
-    //public void LoadMagicCowsLoadout(MagiCowsLoadout loadout)
-    //{
-    //    _internalLoadout = loadout;
-    //    Primary.LoadMagicCowsWeapon(loadout.Primary);
-    //    Primary.IsPrimary = true;
-
-    //    Secondary.LoadMagicCowsWeapon(loadout.Secondary);
-
-    //    helmet = loadout.GetHelmet();
-    //    upperBody = loadout.GetUpperBody();
-    //    lowerBody = loadout.GetLowerBody();
-
-    //    tactical = loadout.GetTactical();
-
-    //    gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear1);
-    //    gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear2);
-    //    gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear3);
-    //    gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, loadout.Gear4);
-
-    //    if (loadout.Taunts.Length > 0) taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[0]); else taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 0);
-    //    if (loadout.Taunts.Length > 1) taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[1]); else taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 1);
-    //    if (loadout.Taunts.Length > 2) taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[2]); else taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 2);
-    //    if (loadout.Taunts.Length > 3) taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[3]); else taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 3);
-    //    if (loadout.Taunts.Length > 4) taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[4]); else taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 4);
-    //    if (loadout.Taunts.Length > 5) taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[5]); else taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 5);
-    //    if (loadout.Taunts.Length > 6) taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[6]); else taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 6);
-    //    if (loadout.Taunts.Length > 7) taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, loadout.Taunts[7]); else taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7);
-
-    //    if (loadout.Depot.Length > 0) depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[0]); else depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0);
-    //    if (loadout.Depot.Length > 1) depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[1]); else depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 1);
-    //    if (loadout.Depot.Length > 2) depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[2]); else depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 2);
-    //    if (loadout.Depot.Length > 3) depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[3]); else depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 3);
-    //    if (loadout.Depot.Length > 4) depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, loadout.Depot[4]); else depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 4);
-
-    //    trophy = loadout.GetTrophy();
-    //    avatar = loadout.GetSkin();
-    //    camo = loadout.GetCamo();
-
-    //    IsFemale = loadout.IsFemale;
-
-    //    ItemChanged(nameof(Helmet));
-    //    ItemChanged(nameof(UpperBody));
-    //    ItemChanged(nameof(LowerBody));
-    //    ItemChanged(nameof(Tactical));
-    //    ItemChanged(nameof(Gear1));
-    //    ItemChanged(nameof(Gear2));
-    //    ItemChanged(nameof(Gear3));
-    //    ItemChanged(nameof(Gear4));
-    //    ItemChanged(nameof(Trophy));
-    //    ItemChanged(nameof(Avatar));
-    //    ItemChanged(nameof(BodyCamo));
-
-    //    ItemChanged(nameof(Depot1));
-    //    ItemChanged(nameof(Depot2));
-    //    ItemChanged(nameof(Depot3));
-    //    ItemChanged(nameof(Depot4));
-    //    ItemChanged(nameof(Depot5));
-
-    //    ItemChanged(nameof(Taunt1));
-    //    ItemChanged(nameof(Taunt2));
-    //    ItemChanged(nameof(Taunt3));
-    //    ItemChanged(nameof(Taunt4));
-    //    ItemChanged(nameof(Taunt5));
-    //    ItemChanged(nameof(Taunt6));
-    //    ItemChanged(nameof(Taunt7));
-    //    ItemChanged(nameof(Taunt8));
-    //}
     static readonly Random rng = new();
     public void Randomize()
     {
         Primary.Randomize();
         Secondary.Randomize();
-
 
         var helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.HELMETS_CATEGORY)?.Length ?? 0));
         var upperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.UPPER_BODIES_CATEGORY)?.Length ?? 0));
@@ -677,8 +590,6 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY)?.Length ?? 0));
         var camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_BODIES_CATEGORY)?.Length ?? 0));
         var tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.TACTICAL_CATEGORY)?.Length ?? 0));
-
-        //UndoRedoSystem.DoAction(profile.PlayerName, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
 
         UndoRedoSystem.DoAction(helmet, this.GetType().GetProperty(nameof(Helmet)), this);
         UndoRedoSystem.DoAction(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this);

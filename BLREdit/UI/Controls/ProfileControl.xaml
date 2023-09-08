@@ -11,9 +11,20 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContextChanged="UserControl_DataContextChanged">
     <Grid x:Name="ShareableProfileGrid" d:DataContext="{d:DesignInstance Type=export:ShareableProfile}">
-        <Label Content="{Binding Path=Name}"/>
+        <Label Content="{Binding Path=Name}" Style="{StaticResource DescriptorLabel}"/>
         <Grid x:Name="BLRProfileGrid" d:DataContext="{d:DesignInstance Type=views:BLRProfile}">
-            <Image Source="{Binding Path=Loadout1.Primary.Reciever.Image.IconFileInfo.FullName}"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:LoadoutViewControl DataContext="{Binding Path=Loadout1}" Grid.Column="0" Grid.Row="1"/>
+            <local:LoadoutViewControl DataContext="{Binding Path=Loadout2}" Grid.Column="1" Grid.Row="1"/>
+            <local:LoadoutViewControl DataContext="{Binding Path=Loadout3}" Grid.Column="2" Grid.Row="1"/>
         </Grid>
     </Grid>
 </UserControl>

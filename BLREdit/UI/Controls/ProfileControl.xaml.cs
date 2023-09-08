@@ -37,7 +37,6 @@ namespace BLREdit.UI.Controls
         public ProfileControl()
         {
             InitializeComponent();
-            BLRProfileGrid.DataContext = Profile;
         }
 
         private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -45,7 +44,8 @@ namespace BLREdit.UI.Controls
             if (e.NewValue is ShareableProfile profile)
             { 
                 Profile = profile.ToBLRProfile();
-                Profile.SetProfile(profile);
+                Profile.CalculateStats();
+                Profile.SetProfile(profile, true);
                 BLRProfileGrid.DataContext = Profile;
             }
         }

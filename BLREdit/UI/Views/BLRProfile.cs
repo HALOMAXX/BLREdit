@@ -1,4 +1,6 @@
 ﻿using BLREdit.Export;
+
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
@@ -54,11 +56,18 @@ public sealed class BLRProfile
     }
 
     public void SetProfile(IBLRProfile profile, bool registerReadBackEvent = false)
-    { 
+    {
+        if (_profile is not null) { _profile.WasWrittenTo -= ReadCallback; }
         _profile = profile;
         Loadout1.SetLoadout(profile.GetLoadout(0), registerReadBackEvent);
         Loadout2.SetLoadout(profile.GetLoadout(1), registerReadBackEvent);
         Loadout3.SetLoadout(profile.GetLoadout(2), registerReadBackEvent);
+        if (registerReadBackEvent) { _profile.WasWrittenTo += ReadCallback; }
+    }
+
+    private void ReadCallback(object sender, EventArgs e)
+    {
+        Read();
     }
 
     public void Write()
@@ -84,21 +93,24 @@ public sealed class BLRProfile
 
 public interface IBLRProfile
 {
+    public event EventHandler? WasWrittenTo;
     public IBLRLoadout GetLoadout(int index);
     public void Read(BLRProfile profile);
-    public void Write(BLRProfile profile);
+    public void Write(BLRProfile profile, bool triggerEvent = true);
 }
 
 public interface IBLRLoadout
 {
+    public event EventHandler? WasWrittenTo;
     public IBLRWeapon GetPrimary();
     public IBLRWeapon GetSecondary();
     public void Read(BLRLoadout loadout);
-    public void Write(BLRLoadout loadout);
+    public void Write(BLRLoadout loadout, bool triggerEvent = true);
 }
 
 public interface IBLRWeapon
 {
+    public event EventHandler? WasWrittenTo;
     public void Read(BLRWeapon weapon);
-    public void Write(BLRWeapon weapon);
+    public void Write(BLRWeapon weapon, bool triggerEvent = true);
 }

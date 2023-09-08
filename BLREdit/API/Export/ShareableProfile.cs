@@ -1,5 +1,6 @@
 ﻿using BLREdit.Export;
 using BLREdit.Import;
+using BLREdit.UI;
 using BLREdit.UI.Views;
 
 using System;
@@ -17,6 +18,8 @@ public sealed class ShareableProfile : INotifyPropertyChanged, IBLRProfile
 {
     #region Events
     public event PropertyChangedEventHandler? PropertyChanged;
+    public event EventHandler? WasWrittenTo;
+
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -78,11 +81,12 @@ public sealed class ShareableProfile : INotifyPropertyChanged, IBLRProfile
         Loadouts[2].Read(profile.Loadout3);
     }
 
-    public void Write(BLRProfile profile)
+    public void Write(BLRProfile profile, bool triggerEvent = true)
     {
-        Loadouts[0].Write(profile.Loadout1);
-        Loadouts[1].Write(profile.Loadout2);
-        Loadouts[2].Write(profile.Loadout3);
+        Loadouts[0].Write(profile.Loadout1, false);
+        Loadouts[1].Write(profile.Loadout2, false);
+        Loadouts[2].Write(profile.Loadout3, false);
+        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
     }
 }
 
@@ -99,6 +103,8 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
         Loadout2 = new ShareableLoadout(profile.Loadout2);
         Loadout3 = new ShareableLoadout(profile.Loadout3);
     }
+
+    public event EventHandler? WasWrittenTo;
 
     public BLRProfile ToBLRProfile()
     {
@@ -128,11 +134,12 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
         Loadout3.Read(profile.Loadout3);
     }
 
-    public void Write(BLRProfile profile)
+    public void Write(BLRProfile profile, bool triggerEvent = true)
     {
-        Loadout1.Write(profile.Loadout1);
-        Loadout2.Write(profile.Loadout2);
-        Loadout3.Write(profile.Loadout3);
+        Loadout1.Write(profile.Loadout1, false);
+        Loadout2.Write(profile.Loadout2, false);
+        Loadout3.Write(profile.Loadout3, false);
+        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
     }
 }
 
@@ -202,6 +209,8 @@ public sealed class ShareableLoadout : IBLRLoadout
         Primary = new(loadout.Primary);
         Secondary = new(loadout.Secondary);
     }
+
+    public event EventHandler? WasWrittenTo;
 
     public BLRLoadout ToBLRLoadout()
     {
@@ -296,6 +305,7 @@ public sealed class ShareableLoadout : IBLRLoadout
     {
         Primary.Read(loadout.Primary);
         Secondary.Read(loadout.Secondary);
+        UndoRedoSystem.BlockUpdate = true;
         loadout.IsFemale = Female;
         loadout.IsBot = Bot;
 
@@ -330,12 +340,13 @@ public sealed class ShareableLoadout : IBLRLoadout
         loadout.Taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[7]);
 
         loadout.Trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Badge);
+        UndoRedoSystem.BlockUpdate = false;
     }
 
-    public void Write(BLRLoadout loadout)
+    public void Write(BLRLoadout loadout, bool triggerEvent = true)
     {
-        Primary.Write(loadout.Primary);
-        Secondary.Write(loadout.Secondary);
+        Primary.Write(loadout.Primary, false);
+        Secondary.Write(loadout.Secondary, false);
         Female = loadout.IsFemale;
         Bot = loadout.IsBot;
 
@@ -370,6 +381,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         Taunts[7] = BLRItem.GetMagicCowsID(loadout.Taunt8);
 
         Badge = BLRItem.GetMagicCowsID(loadout.Trophy);
+        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
     }
 }
 
@@ -388,6 +400,9 @@ public sealed class ShareableWeapon : IBLRWeapon
     [JsonPropertyName("T1")] public int Tag { get; set; } = 0;
 
     private static Dictionary<string, PropertyInfo> Properties { get; } = GetAllProperties();
+
+    public event EventHandler? WasWrittenTo;
+
     private static Dictionary<string, PropertyInfo> GetAllProperties()
     {
         var props = new Dictionary<string, PropertyInfo>();
@@ -440,6 +455,7 @@ public sealed class ShareableWeapon : IBLRWeapon
 
     public void Read(BLRWeapon weapon)
     {
+        UndoRedoSystem.BlockUpdate = true;
         weapon.Reciever = ImportSystem.GetItemByIDAndType(weapon.IsPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Reciever);
         weapon.Barrel = ImportSystem.GetItemByIDAndType(ImportSystem.BARRELS_CATEGORY, Barrel);
         weapon.Muzzle = ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);
@@ -451,9 +467,10 @@ public sealed class ShareableWeapon : IBLRWeapon
         weapon.Tag = ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, Tag);
         weapon.Camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, Camo);
         weapon.Skin = ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, Skin);
+        UndoRedoSystem.BlockUpdate = false;
     }
 
-    public void Write(BLRWeapon weapon)
+    public void Write(BLRWeapon weapon, bool triggerEvent = true)
     {
         Reciever = BLRItem.GetMagicCowsID(weapon.Reciever);
         Barrel = BLRItem.GetMagicCowsID(weapon.Barrel);
@@ -466,5 +483,6 @@ public sealed class ShareableWeapon : IBLRWeapon
         Tag = BLRItem.GetMagicCowsID(weapon.Tag);
         Camo = BLRItem.GetMagicCowsID(weapon.Camo);
         Skin = BLRItem.GetMagicCowsID(weapon.Skin);
+        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
     }
 }

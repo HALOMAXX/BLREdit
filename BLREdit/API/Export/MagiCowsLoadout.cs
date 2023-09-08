@@ -58,6 +58,9 @@ public sealed class MagiCowsLoadout : IBLRLoadout
     public int[] Depot { get { return depot; } set { if (depot != value) { depot = value; isDirty = true; } } }
 
     [JsonIgnore] private bool isDirty = true;
+
+    public event EventHandler? WasWrittenTo;
+
     [JsonIgnore] public bool IsDirty { get { return (isDirty || primary.IsDirty || secondary.IsDirty); } set { isDirty = value; primary.IsDirty = value; secondary.IsDirty = value; } }
 
 
@@ -170,10 +173,10 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         loadout.BodyCamo = GetCamo();
     }
 
-    public void Write(BLRLoadout loadout)
+    public void Write(BLRLoadout loadout, bool triggerEvent = true)
     {
-        Primary.Write(loadout.Primary);
-        Secondary.Write(loadout.Secondary);
+        Primary.Write(loadout.Primary, false);
+        Secondary.Write(loadout.Secondary, false);
 
         IsFemale = loadout.IsFemale;
 
@@ -194,6 +197,7 @@ public sealed class MagiCowsLoadout : IBLRLoadout
 
         Taunts = new int[] { BLRItem.GetMagicCowsID(loadout.Taunt1, 0), BLRItem.GetMagicCowsID(loadout.Taunt2, 1), BLRItem.GetMagicCowsID(loadout.Taunt3, 2), BLRItem.GetMagicCowsID(loadout.Taunt4, 3), BLRItem.GetMagicCowsID(loadout.Taunt5, 4), BLRItem.GetMagicCowsID(loadout.Taunt6, 5), BLRItem.GetMagicCowsID(loadout.Taunt7, 6), BLRItem.GetMagicCowsID(loadout.Taunt8, 7) };
         Depot = new int[] { BLRItem.GetMagicCowsID(loadout.Depot1), BLRItem.GetMagicCowsID(loadout.Depot2, 1), BLRItem.GetMagicCowsID(loadout.Depot3, 2), BLRItem.GetMagicCowsID(loadout.Depot4, 3), BLRItem.GetMagicCowsID(loadout.Depot5, 3) };
+        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
     }
 
     public ShareableLoadout ConvertToShareable()

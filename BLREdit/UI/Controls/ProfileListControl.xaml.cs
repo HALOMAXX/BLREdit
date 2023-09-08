@@ -1,4 +1,7 @@
-﻿using BLREdit.Game;
+﻿using BLREdit.API.Export;
+using BLREdit.Export;
+using BLREdit.Game;
+using BLREdit.UI.Views;
 
 using System;
 using System.Collections.Generic;
@@ -51,11 +54,10 @@ namespace BLREdit.UI.Controls
                 if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
                    Math.Abs(position.Y - StartPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
                 {
-                    //TODO: Change Server top profile type
-                    if (sender is ListView listView && listView.SelectedItem is BLRServer server)
+                    if (sender is ListView listView && listView.SelectedItem is ShareableProfile profile)
                     {
                         isDragging = true;
-                        DragDrop.DoDragDrop(listView, server, DragDropEffects.Move);
+                        DragDrop.DoDragDrop(listView, profile, DragDropEffects.Move);
                         isDragging = false;
                     }
                 }
@@ -64,17 +66,16 @@ namespace BLREdit.UI.Controls
 
         private void ProfileListView_Drop(object sender, DragEventArgs e)
         {
-            //TODO: Change Server top profile type
-            BLRServer? droppedData = e.Data.GetData(typeof(BLRServer)) as BLRServer;
+            ShareableProfile? droppedData = e.Data.GetData(typeof(ShareableProfile)) as ShareableProfile;
             object targetData = e.OriginalSource;
-            while (targetData != null && targetData.GetType() != typeof(ServerControl))
+            while (targetData != null && targetData.GetType() != typeof(ProfileControl))
             {
                 targetData = ((FrameworkElement)targetData).Parent;
             }
-            if (targetData is not null && droppedData is not null && targetData is ServerControl sControl && sControl.DataContext is BLRServer targetServer) { MainWindow.View.ServerList.Move(MainWindow.View.ServerList.IndexOf(droppedData), MainWindow.View.ServerList.IndexOf(targetServer)); }
+            if (targetData is not null && droppedData is not null && targetData is ProfileControl sControl && sControl.DataContext is ShareableProfile targetProfile) { ExportSystem.Profiles.Move(ExportSystem.Profiles.IndexOf(droppedData), ExportSystem.Profiles.IndexOf(targetProfile)); }
             else
             {
-                LoggingSystem.Log("failed to reorder ServerListView!");
+                LoggingSystem.Log("failed to reorder ProfileListView!");
             }
         }
     }

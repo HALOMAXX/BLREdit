@@ -15,6 +15,9 @@ public class MagiCowsProfile : IBLRProfile
     public MagiCowsLoadout Loadout2 { get; set; } = MagiCowsLoadout.DefaultLoadout2.Clone();
     public MagiCowsLoadout Loadout3 { get; set; } = MagiCowsLoadout.DefaultLoadout3.Clone();
     [JsonIgnore] bool isDirty = true;
+
+    public event EventHandler? WasWrittenTo;
+
     [JsonIgnore] public bool IsDirty { get { return (isDirty || Loadout1.IsDirty || Loadout2.IsDirty || Loadout3.IsDirty); } set { isDirty = value; Loadout1.IsDirty = value; Loadout2.IsDirty = value; Loadout3.IsDirty = value; } }
 
     public override string ToString()
@@ -68,10 +71,11 @@ public class MagiCowsProfile : IBLRProfile
         Loadout3.Read(profile.Loadout3);
     }
 
-    public void Write(BLRProfile profile)
+    public void Write(BLRProfile profile, bool triggerEvent = true)
     {
-        Loadout1.Write(profile.Loadout1);
-        Loadout2.Write(profile.Loadout2);
-        Loadout3.Write(profile.Loadout3);
+        Loadout1.Write(profile.Loadout1, false);
+        Loadout2.Write(profile.Loadout2, false);
+        Loadout3.Write(profile.Loadout3, false);
+        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
     }
 }

@@ -1570,7 +1570,14 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public void SetWeapon(IBLRWeapon weapon, bool registerReadBackEvent = false)
     {
+        if (_weapon is not null) { _weapon.WasWrittenTo -= ReadCallback; }
         _weapon = weapon;
+        if (registerReadBackEvent) { _weapon.WasWrittenTo += ReadCallback; }
+    }
+
+    private void ReadCallback(object sender, EventArgs e)
+    {
+        Read();
     }
 
     public void Read()

@@ -488,14 +488,15 @@ public sealed partial class MainWindow : Window
         
         if (ProfileComboBox.SelectedValue is ShareableProfile profile)
         {
-            UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, true);
-            UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null);
-            UndoRedoSystem.DoAction(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
+            UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, true, true);
+            UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null, true, true);
+            UndoRedoSystem.DoAction(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox, true, true);
             UndoRedoSystem.EndAction();
         }
         View.IsPlayerProfileChanging = false;
         BlockChangeNotif = false;
         View.Profile.IsChanged = true;
+        
     }
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
@@ -504,7 +505,7 @@ public sealed partial class MainWindow : Window
         View.IsPlayerNameChanging = true;
 
         int index = ProfileComboBox.SelectedIndex;
-        ExportSystem.RemoveActiveProfileFromDisk();
+        //ExportSystem.RemoveActiveProfileFromDisk();
         ExportSystem.ActiveProfile.Name = PlayerNameTextBox.Text;
         ProfileComboBox.SelectedIndex = index;
         ExportSystem.ActiveProfile.RefreshInfo();

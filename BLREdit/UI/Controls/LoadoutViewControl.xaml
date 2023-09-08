@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.LoadoutViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:views="clr-namespace:BLREdit.UI.Views"
+             xmlns:export="clr-namespace:BLREdit.API.Export" xmlns:utils="clr-namespace:BLREdit.API.Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <utils:BooleanToNotVisibilityConverter x:Key="BoolToNotVis" />
+    </UserControl.Resources>
+    
+    <Grid d:DataContext="{d:DesignInstance Type=views:BLRLoadout}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="{Binding Path=Helmet.Image.IconFileInfo.FullName}" Grid.Row="0"/>
+
+            <Image Source="{Binding Path=UpperBody.MaleIcon.IconFileInfo.FullName}" Grid.Row="1" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToNotVis}}"/>
+            <Image Source="{Binding Path=UpperBody.FemaleIcon.IconFileInfo.FullName}" Grid.Row="1" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToVis}}"/>
+
+            <Image Source="{Binding Path=LowerBody.MaleIcon.IconFileInfo.FullName}" Grid.Row="2" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToNotVis}}"/>
+            <Image Source="{Binding Path=LowerBody.FemaleIcon.IconFileInfo.FullName}" Grid.Row="2" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToVis}}"/>
+            
+        </Grid>
+        
+        <local:WeaponViewControl DataContext="{Binding Path=Primary}" Grid.Row="1"/>
+        <local:WeaponViewControl DataContext="{Binding Path=Secondary}" Grid.Row="2"/>
+
+    </Grid>
+</UserControl>
