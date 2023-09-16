@@ -29,6 +29,7 @@
   },
   {
     "ServerAddress": "lasandia.serveminecraft.net",
+    "Hidden": true,
     "Region": "LATAM"
   },
   {
