@@ -49,6 +49,12 @@
     "Region": "EU"
   },
   {
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7783,
+    "InfoPort": 7784,
+    "Region": "EU"
+  },
+  {
     "ServerAddress": "violence.ddns.net",
     "Hidden": true
   },
