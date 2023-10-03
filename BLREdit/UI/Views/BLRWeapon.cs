@@ -1619,14 +1619,15 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         var grip = ImportSystem.GetItemByIDAndType(ImportSystem.GRIPS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY)?.Length ?? 0));
 
-        UndoRedoSystem.DoAction(reciever, this.GetType().GetProperty(nameof(Reciever)), this);
-        UndoRedoSystem.DoAction(barrel, this.GetType().GetProperty(nameof(Barrel)), this);
-        UndoRedoSystem.DoAction(scope, this.GetType().GetProperty(nameof(Scope)), this);
-        UndoRedoSystem.DoAction(stock, this.GetType().GetProperty(nameof(Stock)), this);
-        UndoRedoSystem.DoAction(muzzle, this.GetType().GetProperty(nameof(Muzzle)), this);
-        UndoRedoSystem.DoAction(magazine, this.GetType().GetProperty(nameof(Magazine)), this);
-        UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(Camo)), this);
-        UndoRedoSystem.DoAction(hanger, this.GetType().GetProperty(nameof(Tag)), this);
-        if(ammo is not null) UndoRedoSystem.DoAction(ammo, this.GetType().GetProperty(nameof(Ammo)), this);
+        UndoRedoSystem.DoAction(reciever, this.GetType().GetProperty(nameof(Reciever)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(barrel, this.GetType().GetProperty(nameof(Barrel)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(scope, this.GetType().GetProperty(nameof(Scope)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(stock, this.GetType().GetProperty(nameof(Stock)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(muzzle, this.GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(magazine, this.GetType().GetProperty(nameof(Magazine)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(Camo)), this, BlockEvents.All);
+        if (ammo is not null) UndoRedoSystem.DoAction(ammo, this.GetType().GetProperty(nameof(Ammo)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(hanger, this.GetType().GetProperty(nameof(Tag)), this, BlockEvents.None);
+        
     }
 }

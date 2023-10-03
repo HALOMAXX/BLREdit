@@ -624,35 +624,38 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_BODIES_CATEGORY)?.Length ?? 0));
         var tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.TACTICAL_CATEGORY)?.Length ?? 0));
 
-        UndoRedoSystem.DoAction(helmet, this.GetType().GetProperty(nameof(Helmet)), this);
-        UndoRedoSystem.DoAction(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this);
-        UndoRedoSystem.DoAction(lowerBody, this.GetType().GetProperty(nameof(LowerBody)), this);
-        UndoRedoSystem.DoAction(avatar, this.GetType().GetProperty(nameof(Avatar)), this);
-        UndoRedoSystem.DoAction(trophy, this.GetType().GetProperty(nameof(Trophy)), this);
-        UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(BodyCamo)), this);
-        UndoRedoSystem.DoAction(tactical, this.GetType().GetProperty(nameof(Tactical)), this);
-        UndoRedoSystem.DoAction(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
+        UndoRedoSystem.DoAction(helmet, this.GetType().GetProperty(nameof(Helmet)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(lowerBody, this.GetType().GetProperty(nameof(LowerBody)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(avatar, this.GetType().GetProperty(nameof(Avatar)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(trophy, this.GetType().GetProperty(nameof(Trophy)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(BodyCamo)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(tactical, this.GetType().GetProperty(nameof(Tactical)), this, BlockEvents.All);
+        
 
         if (GearSlots > 0)
         { 
             var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
-            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear1)), this);
+            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear1)), this, BlockEvents.All);
         }
         if (GearSlots > 1)
         {
             var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
-            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear2)), this);
+            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear2)), this, BlockEvents.All);
         }
         if (GearSlots > 2)
         {
             var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
-            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear3)), this);
+            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear3)), this, BlockEvents.All);
         }
         if (GearSlots > 3)
         {
             var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
-            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear4)), this);
+            UndoRedoSystem.DoAction(gear, this.GetType().GetProperty(nameof(Gear4)), this, BlockEvents.All);
         }
+
+        UndoRedoSystem.DoAction(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
+
         UndoRedoSystem.EndAction();
     }
 
