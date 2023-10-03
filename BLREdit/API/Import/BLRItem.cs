@@ -130,7 +130,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool IsValidFor(BLRItem? item)
     {
-        if (item is null) return true;
+        if (item is null || (this.Category == ImportSystem.PRIMARY_CATEGORY || this.Category == ImportSystem.SECONDARY_CATEGORY)) return true;
 
         if (BLREditSettings.Settings.AdvancedModding.Is)
         {

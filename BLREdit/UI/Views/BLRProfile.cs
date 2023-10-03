@@ -55,23 +55,36 @@ public sealed class BLRProfile
         Loadout3.CalculateStats();
     }
 
-    public void SetProfile(IBLRProfile profile, bool registerReadBackEvent = false)
+    public void SetProfile(IBLRProfile? profile, bool registerReadBackEvent = false)
     {
         if (_profile is not null) { _profile.WasWrittenTo -= ReadCallback; }
         _profile = profile;
-        Loadout1.SetLoadout(profile.GetLoadout(0), registerReadBackEvent);
-        Loadout2.SetLoadout(profile.GetLoadout(1), registerReadBackEvent);
-        Loadout3.SetLoadout(profile.GetLoadout(2), registerReadBackEvent);
-        if (registerReadBackEvent) { _profile.WasWrittenTo += ReadCallback; }
+        if (_profile is not null)
+        {
+            Loadout1.SetLoadout(_profile.GetLoadout(0), registerReadBackEvent);
+            Loadout2.SetLoadout(_profile.GetLoadout(1), registerReadBackEvent);
+            Loadout3.SetLoadout(_profile.GetLoadout(2), registerReadBackEvent);
+            if (registerReadBackEvent) { _profile.WasWrittenTo += ReadCallback; }
+        }
+        else 
+        {
+            Loadout1.SetLoadout(null, registerReadBackEvent);
+            Loadout2.SetLoadout(null, registerReadBackEvent);
+            Loadout3.SetLoadout(null, registerReadBackEvent);
+        }
     }
 
     private void ReadCallback(object sender, EventArgs e)
     {
-        Read();
+        if (sender != this)
+        {
+            Read();
+        }
     }
 
     public void Write()
     {
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteProfile)) return;
         _profile?.Write(this);
     }
 
@@ -82,6 +95,7 @@ public sealed class BLRProfile
 
     public void Read()
     {
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ReadProfile)) return;
         _profile?.Read(this);
     }
 
@@ -96,7 +110,7 @@ public interface IBLRProfile
     public event EventHandler? WasWrittenTo;
     public IBLRLoadout GetLoadout(int index);
     public void Read(BLRProfile profile);
-    public void Write(BLRProfile profile, bool triggerEvent = true);
+    public void Write(BLRProfile profile);
 }
 
 public interface IBLRLoadout
@@ -105,12 +119,12 @@ public interface IBLRLoadout
     public IBLRWeapon GetPrimary();
     public IBLRWeapon GetSecondary();
     public void Read(BLRLoadout loadout);
-    public void Write(BLRLoadout loadout, bool triggerEvent = true);
+    public void Write(BLRLoadout loadout);
 }
 
 public interface IBLRWeapon
 {
     public event EventHandler? WasWrittenTo;
     public void Read(BLRWeapon weapon);
-    public void Write(BLRWeapon weapon, bool triggerEvent = true);
+    public void Write(BLRWeapon weapon);
 }

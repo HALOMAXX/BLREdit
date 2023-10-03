@@ -1,5 +1,6 @@
 ﻿using BLREdit.API.Export;
 using BLREdit.Import;
+using BLREdit.UI;
 using BLREdit.UI.Views;
 
 using System;
@@ -137,6 +138,8 @@ public sealed class MagiCowsLoadout : IBLRLoadout
 
     public void Read(BLRLoadout loadout)
     {
+        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
+
         Primary.Read(loadout.Primary);
         Secondary.Read(loadout.Secondary);
 
@@ -171,12 +174,14 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         loadout.Trophy = GetTrophy();
         loadout.Avatar = GetSkin();
         loadout.BodyCamo = GetCamo();
+
+        UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRLoadout loadout, bool triggerEvent = true)
+    public void Write(BLRLoadout loadout)
     {
-        Primary.Write(loadout.Primary, false);
-        Secondary.Write(loadout.Secondary, false);
+        Primary.Write(loadout.Primary);
+        Secondary.Write(loadout.Secondary);
 
         IsFemale = loadout.IsFemale;
 
@@ -197,7 +202,7 @@ public sealed class MagiCowsLoadout : IBLRLoadout
 
         Taunts = new int[] { BLRItem.GetMagicCowsID(loadout.Taunt1, 0), BLRItem.GetMagicCowsID(loadout.Taunt2, 1), BLRItem.GetMagicCowsID(loadout.Taunt3, 2), BLRItem.GetMagicCowsID(loadout.Taunt4, 3), BLRItem.GetMagicCowsID(loadout.Taunt5, 4), BLRItem.GetMagicCowsID(loadout.Taunt6, 5), BLRItem.GetMagicCowsID(loadout.Taunt7, 6), BLRItem.GetMagicCowsID(loadout.Taunt8, 7) };
         Depot = new int[] { BLRItem.GetMagicCowsID(loadout.Depot1), BLRItem.GetMagicCowsID(loadout.Depot2, 1), BLRItem.GetMagicCowsID(loadout.Depot3, 2), BLRItem.GetMagicCowsID(loadout.Depot4, 3), BLRItem.GetMagicCowsID(loadout.Depot5, 3) };
-        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
+        if (WasWrittenTo is not null) { WasWrittenTo(loadout, EventArgs.Empty); }
     }
 
     public ShareableLoadout ConvertToShareable()

@@ -7,13 +7,14 @@
              xmlns:views="clr-namespace:BLREdit.UI.Views"
              xmlns:export="clr-namespace:BLREdit.API.Export"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid d:DataContext="{d:DesignInstance Type=views:BLRWeapon}">
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance Type=views:BLRWeapon}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border BorderThickness="1,1,1,0" Grid.Row="0">
+        <Border BorderThickness="0,2,0,0" Background="Transparent" Grid.Row="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -27,7 +28,7 @@
                 <Image Source="{Binding Path=Camo.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="16,0,0,0"/>
             </Grid>
         </Border>
-        <Border BorderThickness="1,0,1,1" Grid.Row="1">
+        <Border BorderThickness="0,0,0,0" Background="Transparent" Grid.Row="1">
             <Label Content="{Binding Path=WeaponDescriptor}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Center"/>
         </Border>
     </Grid>

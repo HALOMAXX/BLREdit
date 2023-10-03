@@ -1,5 +1,6 @@
 ﻿using BLREdit.API.Export;
 using BLREdit.Import;
+using BLREdit.UI;
 using BLREdit.UI.Views;
 
 using System;
@@ -159,6 +160,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
 
     public void Read(BLRWeapon weapon)
     {
+        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
         weapon.Reciever = GetReciever();
         weapon.Barrel = GetBarrel();
         weapon.Magazine = GetMagazine();
@@ -170,9 +172,10 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         weapon.Camo = GetCamo();
         weapon.Ammo = GetAmmo();
         weapon.Skin = GetSkin();
+        UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRWeapon weapon, bool triggerEvent = true)
+    public void Write(BLRWeapon weapon)
     {
         Receiver = weapon.Reciever?.Name ?? "Assault Rifle";
         Barrel = weapon.Barrel?.Name ?? "No Barrel Mod";
@@ -185,7 +188,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         Camo = BLRItem.GetMagicCowsID(weapon.Camo);
         Ammo = BLRItem.GetMagicCowsID(weapon.Ammo);
         Skin = BLRItem.GetMagicCowsID(weapon.Skin);
-        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
+        if (WasWrittenTo is not null) { WasWrittenTo(weapon, EventArgs.Empty); }
     }
 
     public ShareableWeapon ConvertToShareable()

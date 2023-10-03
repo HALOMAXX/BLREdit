@@ -39,7 +39,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
     public  Border? LastSelectedItemBorder { get { return lastSelectedItemBorder; } set { SetBorderColor(lastSelectedItemBorder, DefaultBorderColor); lastSelectedItemBorder = value; SetBorderColor(lastSelectedItemBorder, ActiveBorderColor); } }
     private Border? lastSelectedItemBorder = null;
-    public  IBLRProfile? ActiveLoadoutSet { get { return activeLoadoutSet; } set { activeLoadoutSet = value; Profile.SetProfile(value); Profile.Read(); } }
+    public  IBLRProfile? ActiveLoadoutSet { get { return activeLoadoutSet; } set { activeLoadoutSet = value; Profile.SetProfile(value, true); Profile.Read(); } }
     private IBLRProfile? activeLoadoutSet = null;
 
     public ObservableCollection<ShareableProfile> Profiles { get { return ExportSystem.Profiles; } }
@@ -76,5 +76,31 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public static void SetBorderColor(Border? border, Color color)
     {
         if (border is not null) border.BorderBrush = new SolidColorBrush(color);
+    }
+
+
+    public void RefreshPrimaryWeapons()
+    {
+        Profile.Loadout1.Primary.Read();
+        Profile.Loadout2.Primary.Read();
+        Profile.Loadout3.Primary.Read();
+    }
+
+    public void RefreshSecondaryWeapons()
+    {
+        Profile.Loadout1.Secondary.Read();
+        Profile.Loadout2.Secondary.Read();
+        Profile.Loadout3.Secondary.Read();
+    }
+
+    public void RefreshWeapons()
+    { 
+        RefreshPrimaryWeapons();
+        RefreshSecondaryWeapons();
+    }
+
+    public void RefreshLoadouts()
+    {
+        Profile.Read();
     }
 }

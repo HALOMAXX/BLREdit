@@ -37,12 +37,9 @@ public sealed class ShareableProfile : INotifyPropertyChanged, IBLRProfile
 
     public BLRProfile ToBLRProfile()
     {
-        var profile = new BLRProfile
-        {
-            Loadout1 = Loadouts[0].ToBLRLoadout(),
-            Loadout2 = Loadouts[1].ToBLRLoadout(),
-            Loadout3 = Loadouts[2].ToBLRLoadout()
-        };
+        var profile = new BLRProfile();
+        profile.SetProfile(this, true);
+        profile.Read();
         return profile;
     }
 
@@ -76,17 +73,21 @@ public sealed class ShareableProfile : INotifyPropertyChanged, IBLRProfile
 
     public void Read(BLRProfile profile)
     {
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ReadProfile)) return;
+        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All & ~BlockEvents.ReadAll;
         Loadouts[0].Read(profile.Loadout1);
         Loadouts[1].Read(profile.Loadout2);
         Loadouts[2].Read(profile.Loadout3);
+        UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRProfile profile, bool triggerEvent = true)
+    public void Write(BLRProfile profile)
     {
-        Loadouts[0].Write(profile.Loadout1, false);
-        Loadouts[1].Write(profile.Loadout2, false);
-        Loadouts[2].Write(profile.Loadout3, false);
-        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteProfile)) return;
+        Loadouts[0].Write(profile.Loadout1);
+        Loadouts[1].Write(profile.Loadout2);
+        Loadouts[2].Write(profile.Loadout3);
+        if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(profile, EventArgs.Empty); }
     }
 }
 
@@ -129,17 +130,21 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
 
     public void Read(BLRProfile profile)
     {
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ReadProfile)) return;
+        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
         Loadout1.Read(profile.Loadout1);
         Loadout2.Read(profile.Loadout2);
         Loadout3.Read(profile.Loadout3);
+        UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRProfile profile, bool triggerEvent = true)
+    public void Write(BLRProfile profile)
     {
-        Loadout1.Write(profile.Loadout1, false);
-        Loadout2.Write(profile.Loadout2, false);
-        Loadout3.Write(profile.Loadout3, false);
-        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteProfile)) return;
+        Loadout1.Write(profile.Loadout1);
+        Loadout2.Write(profile.Loadout2);
+        Loadout3.Write(profile.Loadout3);
+        if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(profile, EventArgs.Empty); }
     }
 }
 
@@ -305,7 +310,10 @@ public sealed class ShareableLoadout : IBLRLoadout
     {
         Primary.Read(loadout.Primary);
         Secondary.Read(loadout.Secondary);
-        UndoRedoSystem.BlockUpdate = true;
+
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ReadLoadout)) return;
+        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
+
         loadout.IsFemale = Female;
         loadout.IsBot = Bot;
 
@@ -319,10 +327,10 @@ public sealed class ShareableLoadout : IBLRLoadout
         loadout.Depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[3]);
         loadout.Depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[4]);
 
-        loadout.Gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_R1);
-        loadout.Gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_R2);
-        loadout.Gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_L1);
-        loadout.Gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_L2);
+        loadout.Gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_L1);
+        loadout.Gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_L2);
+        loadout.Gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_R1);
+        loadout.Gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_R2);
 
         loadout.Helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
         loadout.UpperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
@@ -340,17 +348,18 @@ public sealed class ShareableLoadout : IBLRLoadout
         loadout.Taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[7]);
 
         loadout.Trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Badge);
-        UndoRedoSystem.BlockUpdate = false;
+        UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRLoadout loadout, bool triggerEvent = true)
+    public void Write(BLRLoadout loadout)
     {
-        Primary.Write(loadout.Primary, false);
-        Secondary.Write(loadout.Secondary, false);
+        Primary.Write(loadout.Primary);
+        Secondary.Write(loadout.Secondary);
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteLoadout)) return;
         Female = loadout.IsFemale;
         Bot = loadout.IsBot;
 
-        Avatar = BLRItem.GetMagicCowsID(loadout.Avatar, 99);
+        Avatar = BLRItem.GetMagicCowsID(loadout.Avatar, -1);
 
         BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
 
@@ -381,7 +390,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         Taunts[7] = BLRItem.GetMagicCowsID(loadout.Taunt8);
 
         Badge = BLRItem.GetMagicCowsID(loadout.Trophy);
-        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
+        if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(loadout, EventArgs.Empty); }
     }
 }
 
@@ -421,7 +430,7 @@ public sealed class ShareableWeapon : IBLRWeapon
     /// <param name="weapon"></param>
     public ShareableWeapon(BLRWeapon weapon)
     {
-        foreach (var part in BLRWeapon.WeaponParts)
+        foreach (var part in BLRWeapon.WeaponPartInfo)
         {
             if (Properties.TryGetValue(part.Name, out PropertyInfo info))
             {
@@ -432,7 +441,7 @@ public sealed class ShareableWeapon : IBLRWeapon
 
     public BLRWeapon ToBLRWeapon(bool isPrimary, BLRLoadout loadout) 
     {
-        return new BLRWeapon(isPrimary, loadout, this);
+        return new BLRWeapon(isPrimary, loadout, this, true);
     }
 
     public ShareableWeapon Clone()
@@ -455,7 +464,9 @@ public sealed class ShareableWeapon : IBLRWeapon
 
     public void Read(BLRWeapon weapon)
     {
-        UndoRedoSystem.BlockUpdate = true;
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ReadWeapon)) return;
+        LoggingSystem.Log("Reading Weapon!");
+        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
         weapon.Reciever = ImportSystem.GetItemByIDAndType(weapon.IsPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Reciever);
         weapon.Barrel = ImportSystem.GetItemByIDAndType(ImportSystem.BARRELS_CATEGORY, Barrel);
         weapon.Muzzle = ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);
@@ -467,22 +478,24 @@ public sealed class ShareableWeapon : IBLRWeapon
         weapon.Tag = ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, Tag);
         weapon.Camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, Camo);
         weapon.Skin = ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, Skin);
-        UndoRedoSystem.BlockUpdate = false;
+        UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRWeapon weapon, bool triggerEvent = true)
+    public void Write(BLRWeapon weapon)
     {
-        Reciever = BLRItem.GetMagicCowsID(weapon.Reciever);
-        Barrel = BLRItem.GetMagicCowsID(weapon.Barrel);
-        Muzzle = BLRItem.GetMagicCowsID(weapon.Muzzle);
-        Magazine = BLRItem.GetMagicCowsID(weapon.Magazine);
-        Stock = BLRItem.GetMagicCowsID(weapon.Stock);
-        Scope = BLRItem.GetMagicCowsID(weapon.Scope);
-        Grip = BLRItem.GetMagicCowsID(weapon.Grip);
-        Ammo = BLRItem.GetMagicCowsID(weapon.Ammo);
-        Tag = BLRItem.GetMagicCowsID(weapon.Tag);
-        Camo = BLRItem.GetMagicCowsID(weapon.Camo);
-        Skin = BLRItem.GetMagicCowsID(weapon.Skin);
-        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
+        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteWeapon)) return;
+        LoggingSystem.Log("Writing Weapon!");
+        Reciever = BLRItem.GetMagicCowsID(weapon.Reciever, -1);
+        Barrel = BLRItem.GetMagicCowsID(weapon.Barrel, -1);
+        Muzzle = BLRItem.GetMagicCowsID(weapon.Muzzle, -1);
+        Magazine = BLRItem.GetMagicCowsID(weapon.Magazine, -1);
+        Stock = BLRItem.GetMagicCowsID(weapon.Stock, -1);
+        Scope = BLRItem.GetMagicCowsID(weapon.Scope, -1);
+        Grip = BLRItem.GetMagicCowsID(weapon.Grip, -1);
+        Ammo = BLRItem.GetMagicCowsID(weapon.Ammo, -1);
+        Tag = BLRItem.GetMagicCowsID(weapon.Tag, -1);
+        Camo = BLRItem.GetMagicCowsID(weapon.Camo, -1);
+        Skin = BLRItem.GetMagicCowsID(weapon.Skin, -1);
+        if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(weapon, EventArgs.Empty); }
     }
 }

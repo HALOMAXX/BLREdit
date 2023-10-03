@@ -45,7 +45,6 @@ namespace BLREdit.UI.Controls
             { 
                 Profile = profile.ToBLRProfile();
                 Profile.CalculateStats();
-                Profile.SetProfile(profile, true);
                 BLRProfileGrid.DataContext = Profile;
             }
         }

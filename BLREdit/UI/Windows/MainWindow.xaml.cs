@@ -468,19 +468,19 @@ public sealed partial class MainWindow : Window
         if (border is null) { LoggingSystem.Log($"Missing Border in MainWindow.SetItemToBorder"); return; }
         if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
         {
-            UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon, blockEvent, blockUpdate);
+            UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon, BlockEvents.None);
             UndoRedoSystem.EndAction();
         }
         else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
         {
-            UndoRedoSystem.DoAction(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout, blockEvent, blockUpdate);
+            UndoRedoSystem.DoAction(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout, BlockEvents.None);
             UndoRedoSystem.EndAction();
         }
     }
 
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (View.IsPlayerNameChanging || UndoRedoSystem.BlockEvent) return;
+        if (View.IsPlayerNameChanging || UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.Update)) return;
         View.IsPlayerProfileChanging = true;
         BlockChangeNotif = true;
 
@@ -488,9 +488,9 @@ public sealed partial class MainWindow : Window
         
         if (ProfileComboBox.SelectedValue is ShareableProfile profile)
         {
-            UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, true, true);
-            UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null, true, true);
-            UndoRedoSystem.DoAction(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox, true, true);
+            UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox, BlockEvents.All);
+            UndoRedoSystem.DoAction(profile, typeof(ExportSystem).GetProperty(nameof(ExportSystem.ActiveProfile)), null, BlockEvents.All);
+            UndoRedoSystem.DoAction(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox, BlockEvents.All);
             UndoRedoSystem.EndAction();
         }
         View.IsPlayerProfileChanging = false;
@@ -500,7 +500,7 @@ public sealed partial class MainWindow : Window
     }
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (View.IsPlayerProfileChanging || UndoRedoSystem.BlockEvent) return;
+        if (View.IsPlayerProfileChanging || UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.Update)) return;
 
         View.IsPlayerNameChanging = true;
 
@@ -654,14 +654,35 @@ public sealed partial class MainWindow : Window
                                 if (gearControl.DataContext is BLRLoadout gearLoadout)
                                 { 
                                     View.GearCopy = gearLoadout.CopyGear();
-                                    MainWindow.ShowAlert($"Copied Gear!");
+                                    ShowAlert($"Copied Gear!");
                                 }
                                 break;
                             case ExtraControl extraControl:
                                 if (extraControl.DataContext is BLRLoadout extraLoadout)
                                 {
                                     View.ExtraCopy = extraLoadout.CopyExtra();
-                                    MainWindow.ShowAlert($"Copied Extra!");
+                                    ShowAlert($"Copied Extra!");
+                                }
+                                break;
+                            case LoadoutViewControl loadoutViewControl:
+                                if (loadoutViewControl.DataContext is BLRLoadout viewLoadout)
+                                {
+                                    View.ExtraCopy = viewLoadout.CopyExtra();
+                                    View.GearCopy = viewLoadout.CopyGear();
+                                    ShowAlert($"Copied Gear & Extra!");
+                                }
+                                break;
+                            case WeaponViewControl weaponViewControl:
+                                if (weaponViewControl.DataContext is BLRWeapon viewWeapon)
+                                {
+                                    if (viewWeapon.IsPrimary)
+                                    {
+                                        View.PrimaryWeaponCopy = viewWeapon.Copy();
+                                    }
+                                    else
+                                    {
+                                        View.SecondaryWeaponCopy = viewWeapon.Copy();
+                                    }
                                 }
                                 break;
                         }                        
@@ -693,13 +714,32 @@ public sealed partial class MainWindow : Window
                             case GearControl gearControl:
                                 if (gearControl.DataContext is BLRLoadout gearLoadout)
                                 {
-                                    gearLoadout.ApplyGearCopy(View.GearCopy);
+                                    gearLoadout.ApplyExtraGearCopy(null,View.GearCopy);
                                 }
                                 break;
                             case ExtraControl extraControl:
                                 if (extraControl.DataContext is BLRLoadout extraLoadout)
                                 {
-                                    extraLoadout.ApplyExtraCopy(View.ExtraCopy);
+                                    extraLoadout.ApplyExtraGearCopy(View.ExtraCopy);
+                                }
+                                break;
+                            case LoadoutViewControl loadoutViewControl:
+                                if (loadoutViewControl.DataContext is BLRLoadout viewLoadout)
+                                {
+                                    viewLoadout.ApplyExtraGearCopy(View.ExtraCopy, View.GearCopy);
+                                }
+                                break;
+                            case WeaponViewControl weaponViewControl:
+                                if (weaponViewControl.DataContext is BLRWeapon viewWeapon)
+                                {
+                                    if (viewWeapon.IsPrimary)
+                                    {
+                                        viewWeapon.ApplyCopy(View.PrimaryWeaponCopy);
+                                    }
+                                    else
+                                    {
+                                        viewWeapon.ApplyCopy(View.SecondaryWeaponCopy);
+                                    }
                                 }
                                 break;
                         }
@@ -727,6 +767,8 @@ public sealed partial class MainWindow : Window
         var AllExtras = FindVisualChildren<ExtraControl>(depObj).ToList();
         var AllGears = FindVisualChildren<GearControl>(depObj).ToList();
         var AllWeapons = FindVisualChildren<WeaponControl>(depObj).ToList();
+        var AllLoadoutViews = FindVisualChildren<LoadoutViewControl>(depObj).ToList();
+        var AllWeaponViews = FindVisualChildren<WeaponViewControl>(depObj).ToList();
 
         if (AllExtras.Count > 0)
         {
@@ -755,6 +797,30 @@ public sealed partial class MainWindow : Window
         if (AllWeapons.Count > 0)
         {
             foreach (var weapon in AllWeapons)
+            {
+                var pos = this.TranslatePoint(p, weapon);
+                if (VisualTreeHelper.GetDescendantBounds(weapon).Contains(pos))
+                {
+                    return weapon;
+                }
+            }
+        }
+
+        if (AllLoadoutViews.Count > 0)
+        {
+            foreach (var weapon in AllLoadoutViews)
+            {
+                var pos = this.TranslatePoint(p, weapon);
+                if (VisualTreeHelper.GetDescendantBounds(weapon).Contains(pos))
+                {
+                    return weapon;
+                }
+            }
+        }
+
+        if (AllWeaponViews.Count > 0)
+        {
+            foreach (var weapon in AllWeaponViews)
             {
                 var pos = this.TranslatePoint(p, weapon);
                 if (VisualTreeHelper.GetDescendantBounds(weapon).Contains(pos))
@@ -814,15 +880,15 @@ public sealed partial class MainWindow : Window
             switch (control.SelectedIndex)
             {
                 case 0:
-                    View.Profile.Loadout1.IsFemale = View.Profile.Loadout1.IsFemale;
+                    ImportSystem.UpdateArmorImages(View.Profile.Loadout1.IsFemale);
                     lastLoadoutBorder = DetailsBorderLoadout1; 
                     break;
                 case 1:
-                    View.Profile.Loadout2.IsFemale = View.Profile.Loadout2.IsFemale;
+                    ImportSystem.UpdateArmorImages(View.Profile.Loadout2.IsFemale);
                     lastLoadoutBorder = DetailsBorderLoadout2;
                     break;
                 case 2:
-                    View.Profile.Loadout3.IsFemale = View.Profile.Loadout3.IsFemale;
+                    ImportSystem.UpdateArmorImages(View.Profile.Loadout3.IsFemale);
                     lastLoadoutBorder = DetailsBorderLoadout3;
                     break;
             }
@@ -876,19 +942,25 @@ public sealed partial class MainWindow : Window
         PlayerNameTextBox.Text = ExportSystem.ActiveProfile.Name;
         ProfileComboBox.ItemsSource = ExportSystem.Profiles;
         ProfileComboBox.SelectedIndex = 0;
+        LoggingSystem.Log("Setting Active Loadout");
 
-        UndoRedoSystem.BlockUpdate = true;
-        UndoRedoSystem.BlockEvent = true;
+        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All & ~BlockEvents.ReadAll;
+
         View.ActiveLoadoutSet = ExportSystem.ActiveProfile;
-        UndoRedoSystem.BlockUpdate = false;
-        UndoRedoSystem.BlockEvent = false;
+
+        UndoRedoSystem.RestoreBlockedEvents();
+
+        LoggingSystem.Log("Finished Setting Active Loadout");
 
         View.IsPlayerProfileChanging = false;
         View.IsPlayerNameChanging = false;
 
+        LoggingSystem.Log("Setting Last Selected Item Border");
         View.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
+        LoggingSystem.Log("Setting Weapon Filter");
         ItemFilters.Instance.WeaponFilter = View.Profile.Loadout1.Primary.Reciever;
 
+        LoggingSystem.Log("Setting DataContext to MainWindow.View");
         this.DataContext = View;
         #endregion Frontend Init
 
@@ -960,7 +1032,7 @@ public sealed partial class MainWindow : Window
         }
         BLREditSettings.SyncDefaultClient();
 
-        View.Profile.Loadout1.IsFemale = View.Profile.Loadout1.IsFemale;
+        //View.Profile.Loadout1.IsFemale = View.Profile.Loadout1.IsFemale;
 
         BLREditPipe.ProcessArgs(Args);
 

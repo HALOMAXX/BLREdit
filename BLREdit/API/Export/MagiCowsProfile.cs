@@ -1,4 +1,5 @@
-﻿using BLREdit.UI.Views;
+﻿using BLREdit.UI;
+using BLREdit.UI.Views;
 
 using System;
 using System.ComponentModel;
@@ -66,16 +67,18 @@ public class MagiCowsProfile : IBLRProfile
 
     public void Read(BLRProfile profile)
     {
+        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
         Loadout1.Read(profile.Loadout1);
         Loadout2.Read(profile.Loadout2);
         Loadout3.Read(profile.Loadout3);
+        UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRProfile profile, bool triggerEvent = true)
+    public void Write(BLRProfile profile)
     {
-        Loadout1.Write(profile.Loadout1, false);
-        Loadout2.Write(profile.Loadout2, false);
-        Loadout3.Write(profile.Loadout3, false);
-        if (WasWrittenTo is not null && triggerEvent) { WasWrittenTo(this, EventArgs.Empty); }
+        Loadout1.Write(profile.Loadout1);
+        Loadout2.Write(profile.Loadout2);
+        Loadout3.Write(profile.Loadout3);
+        if (WasWrittenTo is not null) { WasWrittenTo(profile, EventArgs.Empty); }
     }
 }

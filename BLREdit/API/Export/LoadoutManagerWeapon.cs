@@ -82,7 +82,7 @@ public sealed class LoadoutManagerWeapon
     /// <param name="weapon"></param>
     public LoadoutManagerWeapon(BLRWeapon weapon)
     {
-        foreach (var part in BLRWeapon.WeaponParts)
+        foreach (var part in BLRWeapon.WeaponPartInfo)
         {
             switch (part.Name)
             {
