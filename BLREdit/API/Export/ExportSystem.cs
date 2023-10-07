@@ -1,17 +1,14 @@
 using BLREdit.API.Export;
 using BLREdit.Game;
 using BLREdit.Import;
-using BLREdit.UI;
 using BLREdit.UI.Views;
-
-using PeNet;
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
+using System.Threading;
 
 namespace BLREdit.Export;
 
@@ -19,55 +16,31 @@ public sealed class ExportSystem
 {
     private static DirectoryInfo? _currentBackupFolder = null;
     public static DirectoryInfo CurrentBackupFolder { get { _currentBackupFolder ??= Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\"); return _currentBackupFolder; } }
-    public static ObservableCollection<ShareableProfile> Profiles { get; private set; } = LoadAllProfiles();
 
-    private static int currentProfile = 0;
-    public static ShareableProfile ActiveProfile { get { return GetCurrentProfile(); } set { SetCurrentProfile(value); } }
-    static Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get; set; } = LoadSettingProfiles();
-
-    private static ShareableProfile GetCurrentProfile()
+    static ExportSystem()
     {
-        if (currentProfile <= 0 && currentProfile >= Profiles.Count)
-        {
-            AddProfile();
-            currentProfile = 0;
-        }
-        else if (currentProfile < 0)
-        {
-            currentProfile = 0;
-        }
-        else if (currentProfile >= Profiles.Count)
-        {
-            currentProfile = Profiles.Count - 1;
-        }
-        return Profiles[currentProfile];
+        var thread = new Thread(SlowLoadProfiles)
+        { Name = $"{nameof(SlowLoadProfiles)}", IsBackground = true, Priority = ThreadPriority.Lowest };
+        App.AppThreads.Add(thread);
+        thread.Start();
     }
 
-    private static void SetCurrentProfile(ShareableProfile profile)
+    private static void SlowLoadProfiles()
     {
-        if (profile == null)
+        LoggingSystem.Log("Started loading all Profiles");
+        for (int i = 0; i < DataStorage.Loadouts.Count; i++)
         {
-            LoggingSystem.Log("Profile was null when settings currentProfile");
-            throw new ArgumentNullException(nameof(profile), "target profile can't be null for currentProfile");
+            var blr = DataStorage.Loadouts[i].BLR;
         }
-        int tempProfileIndex = Profiles.IndexOf(profile);
-        if (tempProfileIndex < 0)
-        {
-            currentProfile = 0;
-        }
-        else
-        {
-            currentProfile = tempProfileIndex;
-        }
-        MainWindow.View.ActiveLoadoutSet = profile;
+        LoggingSystem.Log("Finished loading all Profiles");
     }
 
-    public static void CopyMagiCowToClipboard(BLRProfile profile)
+    public static void CopyMagiCowToClipboard(BLRLoadoutStorage loadout)
     {
-        var magiProfile = new MagiCowsProfile { PlayerName = ActiveProfile.Name };
-        profile.Write(magiProfile);
+        var magiProfile = new MagiCowsProfile { PlayerName = loadout.Shareable.Name };
+        loadout.BLR.Write(magiProfile);
 
-        string clipboard = $"register {Environment.NewLine}{IOResources.Serialize(profile, true)}";
+        string clipboard = $"register{Environment.NewLine}{IOResources.RemoveWhiteSpacesFromJson.Replace(IOResources.Serialize(magiProfile, true), "$1")}";
 
         try
         {
@@ -100,8 +73,9 @@ public sealed class ExportSystem
         return;
     }
 
-    private static Dictionary<string, BLRProfileSettingsWrapper> LoadSettingProfiles()
+    public static Dictionary<string, BLRProfileSettingsWrapper> LoadSettingProfiles()
     {
+        LoggingSystem.Log("Started Loading Profile settings");
         var dict = new Dictionary<string, BLRProfileSettingsWrapper>();
         try
         {
@@ -123,69 +97,30 @@ public sealed class ExportSystem
             }
         }
         catch { }
-
+        LoggingSystem.Log("Finished Loading Profile settings");
         return dict;
     }
 
-    public static void UpdateOrAddProfileSettings(string profileName, BLRProfileSettingsWrapper settings)
+    public static ObservableCollection<BLRLoadoutStorage> LoadStorage()
     {
-        if (settings is null) return;
-
-        if (ProfileSettings.TryGetValue(profileName, out var oldProfile))
+        LoggingSystem.Log("Started Loading Shareable and BLR Profile Combos");
+        BLRLoadoutStorage[] storage = new BLRLoadoutStorage[DataStorage.ShareableProfiles.Count];
+        for (int i = 0; i < DataStorage.ShareableProfiles.Count; i++)
         {
-            if (settings.PlayTime >= oldProfile.PlayTime)
-            {
-                ProfileSettings[profileName] = settings;
-            }  
+            storage[i] = new(DataStorage.ShareableProfiles[i]);
         }
-        else
-        {
-            ProfileSettings.Add(profileName, settings);
-        }
+        LoggingSystem.Log("Finished Loading Shareable and BLR Profile Combos");
+        return new(storage);
     }
 
-    public static BLRProfileSettingsWrapper GetOrAddProfileSettings(string profileName)
+    public static ObservableCollection<ShareableProfile> LoadShareableProfiles()
     {
-        if (ProfileSettings.TryGetValue(profileName, out var value))
-        {
-            return value;
-        }
-        else
-        {
-            List<BLRProfileSettingsWrapper> settingsWrappers = new();
-            foreach (var client in MainWindow.View.GameClients)
-            {
-                client.UpdateProfileSettings();
-            }
-            if (settingsWrappers.Count > 0)
-            {
-                foreach (var filteredSetting in settingsWrappers)
-                {
-                    ProfileSettings.Add(filteredSetting.ProfileName, filteredSetting);
-                }
-            }
-
-            if (ProfileSettings.TryGetValue(profileName, out var valu))
-            {
-                return valu;
-            }
-            else
-            {
-                LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");
-                var newProfile = new BLRProfileSettingsWrapper(profileName, null, null);
-                ProfileSettings.Add(profileName, newProfile);
-                return newProfile;
-            }
-        }
-    }
-
-    private static ObservableCollection<ShareableProfile> LoadAllProfiles()
-    {
+        LoggingSystem.Log("Started Loading ShareableProfiles");
         ImportSystem.Initialize();
 
         LoggingSystem.Log($"Backup folder:{CurrentBackupFolder.FullName}");
 
-        var profiles = IOResources.DeserializeFile<ObservableCollection<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();        
+        var profiles = IOResources.DeserializeFile<ObservableCollection<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();
 
         LoggingSystem.Log("Copying all Profiles to Backup folder!");
         foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
@@ -213,37 +148,89 @@ public sealed class ExportSystem
                 File.Delete(file);
             }
         }
-
+        LoggingSystem.Log("Finished Loading ShareableProfiles");
         return profiles;
     }
 
-    public static void SaveProfiles()
+    public static void UpdateOrAddProfileSettings(string profileName, BLRProfileSettingsWrapper settings)
     {
-        IOResources.SerializeFile($"{IOResources.PROFILE_DIR}profileList.json", Profiles);
+        if (settings is null) return;
 
-        foreach (var profileSettings in ProfileSettings)
+        if (DataStorage.ProfileSettings.TryGetValue(profileName, out var oldProfile))
         {
-            Directory.CreateDirectory($"{IOResources.PROFILE_DIR}GameSettings\\{profileSettings.Value.ProfileName}");
-
-            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}GameSettings\\{profileSettings.Value.ProfileName}\\UE3_online_profile.json", profileSettings.Value.Settings.Values.ToArray());
-            IOResources.SerializeFile($"{IOResources.PROFILE_DIR}GameSettings\\{profileSettings.Value.ProfileName}\\keybinding.json", profileSettings.Value.KeyBindings);
+            if (settings.PlayTime >= oldProfile.PlayTime)
+            {
+                DataStorage.ProfileSettings[profileName] = settings;
+            }  
+        }
+        else
+        {
+            DataStorage.ProfileSettings.Add(profileName, settings);
         }
     }
 
-    public static void RemoveActiveProfileFromDisk()
+    public static BLRProfileSettingsWrapper GetOrAddProfileSettings(string profileName)
     {
-        File.Delete($"{IOResources.PROFILE_DIR}{ActiveProfile.Name}.json");
+        if (DataStorage.ProfileSettings.TryGetValue(profileName, out var value))
+        {
+            return value;
+        }
+        else
+        {
+            List<BLRProfileSettingsWrapper> settingsWrappers = new();
+            foreach (var client in DataStorage.GameClients)
+            {
+                client.UpdateProfileSettings();
+            }
+            if (settingsWrappers.Count > 0)
+            {
+                foreach (var filteredSetting in settingsWrappers)
+                {
+                    DataStorage.ProfileSettings.Add(filteredSetting.ProfileName, filteredSetting);
+                }
+            }
+
+            if (DataStorage.ProfileSettings.TryGetValue(profileName, out var valu))
+            {
+                return valu;
+            }
+            else
+            {
+                LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");
+                var newProfile = new BLRProfileSettingsWrapper(profileName, null, null);
+                DataStorage.ProfileSettings.Add(profileName, newProfile);
+                return newProfile;
+            }
+        }
+    }
+}
+
+public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = null)
+{
+    public ShareableProfile Shareable { get; } = share;
+    private BLRProfile? blr = blr;
+    public BLRProfile BLR { get { blr ??= Shareable.ToBLRProfile(); return blr; } }
+
+    public void Remove()
+    {
+        DataStorage.ShareableProfiles.Remove(this.Shareable);
+        DataStorage.Loadouts.Remove(this);
     }
 
-    public static ShareableProfile AddProfile(string Name)
+    public static void Move(int from, int to)
     {
-        var prof = new ShareableProfile() { Name = Name };
-        Profiles.Add(prof);
-        return prof;
+        DataStorage.ShareableProfiles.Move(from, to);
+        DataStorage.Loadouts.Move(from, to);
     }
 
-    public static ShareableProfile AddProfile()
+    public static BLRLoadoutStorage AddNewLoadoutSet(string Name = "New Loadout Set!", BLRProfile? profile = null, ShareableProfile? shareable = null)
     {
-        return AddProfile("New Profile!");
+        var share = shareable ?? new ShareableProfile() { Name = Name };
+        var blr = profile ?? share.ToBLRProfile();
+        profile?.Write(share);
+        var loadout = new BLRLoadoutStorage(share, blr);
+        DataStorage.ShareableProfiles.Add(share);
+        DataStorage.Loadouts.Add(loadout);
+        return loadout;
     }
 }

@@ -57,6 +57,7 @@ public partial class App : System.Windows.Application
 
     private void Application_Startup(object sender, StartupEventArgs e)
     {
+        LoggingSystem.Log("App StartupEvent Start");
         string[] argList = e.Args;
         Dictionary<string, string> argDict = new();
 
@@ -308,17 +309,27 @@ public partial class App : System.Windows.Application
         Directory.CreateDirectory("downloads\\localizations");
     }
 
-    public App()
+    static App()
     {
-
         Directory.SetCurrentDirectory(BLREditLocation);
 
         Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));
-        
+
         Trace.AutoFlush = true;
 
         LoggingSystem.Log($"BLREdit {CurrentVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
 
+        if (DataStorage.Settings.SelectedCulture is null)
+        {
+            DataStorage.Settings.SelectedCulture = CultureInfo.CurrentCulture;
+        }
+
+        Thread.CurrentThread.CurrentUICulture = DataStorage.Settings.SelectedCulture;
+    }
+
+    public App()
+    {
+        LoggingSystem.Log("App Constructor Start");
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
 
         SetUpdateFilePath();
@@ -338,13 +349,6 @@ public partial class App : System.Windows.Application
                 }
             }
         }
-
-        if (BLREditSettings.Settings.SelectedCulture is null)
-        {
-            BLREditSettings.Settings.SelectedCulture = CultureInfo.CurrentCulture;
-        }
-
-        Thread.CurrentThread.CurrentUICulture = BLREditSettings.Settings.SelectedCulture;
     }
 
     void UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -675,7 +679,7 @@ public partial class App : System.Windows.Application
                     { 
                         if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
                         LoggingSystem.Log($"[Update]: Downloading {dl}");
-                        IOResources.DownloadFile(dl, pack.Info.FullName);
+                        WebResources.DownloadFile(dl, pack.Info.FullName);
 
                         if (Directory.Exists(targetFolder)) { LoggingSystem.Log($"[Update]: Deleting {targetFolder}"); Directory.Delete(targetFolder, true); }
                         LoggingSystem.Log($"[Update]: Extracting {pack.Info.FullName} to {targetFolder}");
@@ -836,7 +840,7 @@ public partial class App : System.Windows.Application
         var current = CultureInfo.CurrentCulture;
         if (!AvailableLocalizations.TryGetValue(current.Name, out var _))
         {
-            BLREditSettings.Settings.SelectedCulture = DefaultCulture;
+            DataStorage.Settings.SelectedCulture = DefaultCulture;
             return;
         }
         if (current != DefaultCulture)
@@ -869,7 +873,7 @@ public partial class App : System.Windows.Application
     private static void DownloadLocale(string locale)
     {
         string targetZip = $"downloads\\localizations\\{locale}.zip";
-        IOResources.DownloadFile($"https://github.com/{CurrentOwner}/{CurrentRepo}/raw/master/Resources/Localizations/{locale}.zip", targetZip);
+        WebResources.DownloadFile($"https://github.com/{CurrentOwner}/{CurrentRepo}/raw/master/Resources/Localizations/{locale}.zip", targetZip);
         if (Directory.Exists(locale)) { Directory.Delete(locale, true); Directory.CreateDirectory(locale); }
         ZipFile.ExtractToDirectory(targetZip, $"{locale}");
         Restart();

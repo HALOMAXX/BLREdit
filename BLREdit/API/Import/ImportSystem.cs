@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -42,28 +43,34 @@ public static class ImportSystem
     public const string SHOP_CATEGORY = "shop";
     public const string PRIMARY_SKIN_CATEGORY = "primarySkins";
 
-    public static readonly FoxIcon[] ScopePreviews = LoadAllScopePreviews();
+    public static List<FoxIcon> ScopePreviews { get; } = new();
 
     public static Dictionary<string?, ObservableCollection<BLRItem>> ItemLists { get; private set; } = new();
 
     static bool IsInitialized = false;
+    static readonly object initLock = new();
     public static void Initialize()
     {
-        if (IsInitialized) return;
-        IsInitialized = true;
-        
-        LoggingSystem.Log("Initializing Import System");
-
-        var watch = Stopwatch.StartNew();
-        LoadItems();
-        LoggingSystem.Log($"[ImportSystem]:Finished loading items in {watch.ElapsedMilliseconds}ms");
-        watch.Restart();
-        UpdateImages();
-        LoggingSystem.Log($"[ImportSystem]:Finished loading images in {watch.ElapsedMilliseconds}ms");
-        watch.Restart();
-        ApplyDisplayStats();
-        LoggingSystem.Log($"[ImportSystem]:Finished loading stats in {watch.ElapsedMilliseconds}ms");
-        watch.Stop();
+        lock (initLock)
+        {
+            if (IsInitialized) return;
+            IsInitialized = true;
+            LoggingSystem.Log("Initializing Import System");
+            var watch = Stopwatch.StartNew();
+            LoadAllScopePreviews();
+            LoggingSystem.Log($"[ImportSystem]:Finished loading ScopePreviews in {watch.ElapsedMilliseconds}ms");
+            watch.Restart();
+            LoadItems();
+            LoggingSystem.Log($"[ImportSystem]:Finished loading items in {watch.ElapsedMilliseconds}ms");
+            watch.Restart();
+            UpdateImages();
+            LoggingSystem.Log($"[ImportSystem]:Finished loading images in {watch.ElapsedMilliseconds}ms");
+            watch.Restart();
+            ApplyDisplayStats();
+            LoggingSystem.Log($"[ImportSystem]:Finished loading stats in {watch.ElapsedMilliseconds}ms");
+            watch.Stop();
+            LoggingSystem.Log("Initializing Import System Finished");
+        }
     }
 
     private static void LoadItems()
@@ -587,14 +594,11 @@ public static class ImportSystem
         }
     }
 
-    private static FoxIcon[] LoadAllScopePreviews()
+    private static void LoadAllScopePreviews()
     {
-        LoggingSystem.Log("Loading All Crosshairs");
-        var icons = new List<FoxIcon>();
         foreach (var icon in Directory.EnumerateFiles($"Assets\\crosshairs"))
         {
-            icons.Add(new FoxIcon(icon));
+            ScopePreviews.Add(new FoxIcon(icon));
         }
-        return icons.ToArray();
     }
 }

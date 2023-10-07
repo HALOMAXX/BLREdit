@@ -17,7 +17,7 @@ public sealed class RESTAPIClient(RepositoryProvider APIProvider, string baseAdd
     {
         try
         {
-            var response = await IOResources.HttpClient.GetAsync($"{baseAddress}{api}");
+            var response = await WebResources.HttpClient.GetAsync($"{baseAddress}{api}");
             string fail = "";
             if (!response.IsSuccessStatusCode) { fail = $"\n {await response.Content.ReadAsStringAsync()}"; }
             LoggingSystem.Log($"[{APIProvider}]({response.StatusCode}): GET {api}{fail}");

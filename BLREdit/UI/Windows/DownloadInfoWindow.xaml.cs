@@ -51,15 +51,15 @@ public partial class DownloadInfoWindow : INotifyPropertyChanged
 
     public void DownloadFinished(object sender, AsyncCompletedEventArgs args)
     {
-        IOResources.WebClient.DownloadProgressChanged -= DownloadProgressChanged;
-        IOResources.WebClient.DownloadFileCompleted -= DownloadFinished;
+        WebResources.WebClient.DownloadProgressChanged -= DownloadProgressChanged;
+        WebResources.WebClient.DownloadFileCompleted -= DownloadFinished;
         this.Close();
     }
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-        IOResources.WebClient.DownloadProgressChanged += DownloadProgressChanged;
-        IOResources.WebClient.DownloadFileCompleted += DownloadFinished;
-        IOResources.WebClient.DownloadFileTaskAsync(URL, Filename);
+        WebResources.WebClient.DownloadProgressChanged += DownloadProgressChanged;
+        WebResources.WebClient.DownloadFileCompleted += DownloadFinished;
+        WebResources.WebClient.DownloadFileTaskAsync(URL, Filename);
     }
 }

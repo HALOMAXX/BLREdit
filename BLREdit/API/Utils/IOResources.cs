@@ -21,6 +21,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace BLREdit;
@@ -61,36 +62,10 @@ public sealed class IOResources
     public static string Steam32InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string ?? string.Empty;
     public static string Steam6432InstallFolder { get; private set; } = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath", "") as string ?? string.Empty;
     public static readonly List<string> GameFolders = new();
-
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
 
-    public static WebClient WebClient { get; } = new WebClient();
-    public static HttpClient HttpClient { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
-    public static HttpClient HttpClientWeb { get; } = new HttpClient() { Timeout = new TimeSpan(0, 0, 10) };
-
-    static IOResources()
-    {
-        System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-        WebClient.Headers.Add(HttpRequestHeader.UserAgent, $"BLREdit-{App.CurrentVersion}");
-        if (!HttpClient.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { LoggingSystem.Log($"Failed to add {HttpRequestHeader.UserAgent} to HttpClient"); };
-        HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
-        if (!HttpClientWeb.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { LoggingSystem.Log($"Failed to add {HttpRequestHeader.UserAgent} to HttpClientWeb"); };
-        HttpClientWeb.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("text/html"));
-        Thread downloadClient = new(DownloadFiles);
-        App.AppThreads.Add(downloadClient);
-        downloadClient.Start();
-    }
-
-
-
-    private static BlockingCollection<DownloadRequest> DownloadRequests { get; } = new();
-    public static void DownloadFile(string url, string filename)
-    {
-        DownloadRequest req = new(url, filename);
-        DownloadRequests.Add(req);
-        WaitHandle.WaitAll(new WaitHandle[] { req.locked });
-    }
+    public static Regex RemoveWhiteSpacesFromJson { get; } = new Regex("(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+");
 
     public static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
     {
@@ -125,29 +100,7 @@ public sealed class IOResources
         }
     }
 
-    private static void DownloadFiles()
-    {
-        while (App.IsRunning)
-        {
-            var request = DownloadRequests.Take();
-            try
-            {
-                WebClient.DownloadFile(request.url, request.filename);
-            }
-            catch (Exception error)
-            {
-                LoggingSystem.Log($"[WebClient]Failed to Download({request.url})\nReason:{error}");
-            }
-            finally 
-            { request.locked.Set(); }
-        }
-    }
-
-    private class DownloadRequest(string url, string filename)
-    {
-        public string url = url, filename = filename;
-        public AutoResetEvent locked = new(false);
-    }
+    
 
     public static void GetGameLocationsFromSteam()
     {

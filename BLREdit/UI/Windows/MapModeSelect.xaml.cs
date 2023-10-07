@@ -51,7 +51,7 @@ public sealed partial class MapModeSelect : Window
         InitializeComponent();
         this.MapList.Items.Filter += new Predicate<object>(o =>
         {
-            if(BLREditSettings.Settings.AdvancedModding.Is) return true;
+            if(DataStorage.Settings.AdvancedModding.Is) return true;
             if (clientVersion == "Unknown") return true;
             if (o is BLRMap map)
             {
@@ -81,7 +81,7 @@ public sealed partial class MapModeSelect : Window
 
     private void Window_Initialized(object sender, EventArgs e)
     {
-        this.DataContext = BLREditSettings.Settings;
+        this.DataContext = DataStorage.Settings;
         this.MapList.ItemsSource = Maps;
     }
 }

@@ -67,7 +67,7 @@ public class MagiCowsProfile : IBLRProfile
 
     public void Read(BLRProfile profile)
     {
-        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
+        UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
         Loadout1.Read(profile.Loadout1);
         Loadout2.Read(profile.Loadout2);
         Loadout3.Read(profile.Loadout3);

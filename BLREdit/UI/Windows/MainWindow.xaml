@@ -28,7 +28,7 @@
         <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static p:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
         <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
-        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="420" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged" DataContext="{Binding Path=Profile}">
+        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="420" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged" DataContext="{Binding Path=Profile.BLR}">
             <TabItem Header="{x:Static p:Resources.ti_Loadout1}" Name="Loadout1Tab">
                 <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Loadout1}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
             </TabItem>
@@ -67,7 +67,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Name="DetailedInfoTab" Header="{x:Static p:Resources.ti_DetailedInfo}" DataContext="{Binding Path=Profile}">
+            <TabItem Name="DetailedInfoTab" Header="{x:Static p:Resources.ti_DetailedInfo}" DataContext="{Binding Path=Profile.BLR}">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <Grid MinWidth="1400">
                         <Grid.ColumnDefinitions>
@@ -136,7 +136,7 @@
             </TabItem>
 
             <TabItem Name="ProfileListTab" Header="Profiles" >
-                <ui:ProfileListControl DataContext="{Binding Path=Profiles}"/>
+                <ui:ProfileListControl DataContext="{Binding Path=Loadouts}"/>
             </TabItem>
             
         </TabControl>

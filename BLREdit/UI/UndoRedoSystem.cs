@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace BLREdit.UI;
 
@@ -14,22 +15,18 @@ public static class UndoRedoSystem
     public static int CurrentActionCount { get { return CurrentAction.Actions.Count; } }
     public static int AfterActionCount { get { return AfterActions.Count; } }
     public static bool UndoRedoSystemWorking { get; private set; } = false;
-    private static BlockEvents currentlyBlockedEvents = BlockEvents.None;
-    public static BlockEvents CurrentlyBlockedEvents { get { return currentlyBlockedEvents; } set { BlockedEventHistory.Push(currentlyBlockedEvents); currentlyBlockedEvents = value; } }
-    private static Stack<BlockEvents> BlockedEventHistory { get; } = new();
+    private static ThreadLocal<BlockEvents> currentlyBlockedEvents = new(() => { return BlockEvents.None; });
+    public static ThreadLocal<BlockEvents> CurrentlyBlockedEvents { get { return currentlyBlockedEvents; } set { BlockedEventHistory.Value.Push(currentlyBlockedEvents.Value); currentlyBlockedEvents = value; } }
+    private static ThreadLocal<Stack<BlockEvents>> BlockedEventHistory { get; } = new(() => { return new(); });
 
     public static void RestoreBlockedEvents()
     {
-        if (BlockedEventHistory.Count <= 0)
-        {
-            CurrentlyBlockedEvents = BlockEvents.None;
-            LoggingSystem.Log("Tried to Restore BlockedEventState but no History is left! returning to Blank State");
-        }
+        if (BlockedEventHistory.Value.Count <= 0) { CurrentlyBlockedEvents.Value = BlockEvents.None; }
         else
         {
-            var was = currentlyBlockedEvents;
-            currentlyBlockedEvents = BlockedEventHistory.Pop();
-            if (BLREditSettings.Settings.Debugging.Is) { LoggingSystem.Log($"Restored BlockedEventState was[{was}] now is[{currentlyBlockedEvents}]!"); }
+            var was = currentlyBlockedEvents.Value;
+            currentlyBlockedEvents.Value = BlockedEventHistory.Value.Pop();
+            if (DataStorage.Settings.Debugging.Is) { LoggingSystem.Log($"Thread[{Environment.CurrentManagedThreadId}]: Restored BlockedEventState was[{was}] now is[{currentlyBlockedEvents.Value}]!"); }
         }
     }
 
@@ -39,11 +36,11 @@ public static class UndoRedoSystem
     public static void Undo()
     {
         if (UndoStack.Count <= 0) { MainWindow.ShowAlert($"No Undo's left"); return; }
-        //UndoRedoSystemWorking = true;
+        UndoRedoSystemWorking = true;
         var action = UndoStack.Pop();
         foreach (var sub in action.Actions)
         {
-            CurrentlyBlockedEvents = sub.BlockedEvents;
+            CurrentlyBlockedEvents.Value = sub.BlockedEvents;
             sub.PropertyInfo.SetValue(sub.Target, sub.Before, null);
             RestoreBlockedEvents();
         }
@@ -58,11 +55,11 @@ public static class UndoRedoSystem
     public static void Redo()
     {
         if (RedoStack.Count <= 0) { MainWindow.ShowAlert($"No Redo's left"); return; }
-        //UndoRedoSystemWorking = true;
+        UndoRedoSystemWorking = true;
         var action = RedoStack.Pop();
         foreach (var sub in action.Actions)
         {
-            CurrentlyBlockedEvents = sub.BlockedEvents;
+            CurrentlyBlockedEvents.Value = sub.BlockedEvents;
             sub.PropertyInfo.SetValue(sub.Target, sub.After);
             RestoreBlockedEvents();
         }
@@ -100,7 +97,7 @@ public static class UndoRedoSystem
     public static void DoAction(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
         if (CurrentAction.Actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); return; }
-        CurrentlyBlockedEvents = blockedEvents;
+        CurrentlyBlockedEvents.Value = blockedEvents;
         object before = propertyInfo.GetValue(target);
         CurrentAction.Actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, blockedEvents, callName));
         propertyInfo.SetValue(target, after);
@@ -109,7 +106,7 @@ public static class UndoRedoSystem
 
     public static void DoActionAfter(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
-        CurrentlyBlockedEvents = blockedEvents;
+        CurrentlyBlockedEvents.Value = blockedEvents;
         object before = propertyInfo.GetValue(target);
         AfterActions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, blockedEvents, callName));
         propertyInfo.SetValue(target, after);
@@ -127,7 +124,7 @@ public static class UndoRedoSystem
     public static void CreateAction(object? before, object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
         if (CurrentAction.Actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); return; }
-        CurrentlyBlockedEvents = blockedEvents;
+        CurrentlyBlockedEvents.Value = blockedEvents;
         CurrentAction.Actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, blockedEvents, callName));
         RestoreBlockedEvents();
     }
@@ -171,4 +168,5 @@ public enum BlockEvents
     AddMissing = 512,
     ScopeUpdate = 1024,
     GenderUpdate = 2048,
+    SetValueTest = 4096,
 }

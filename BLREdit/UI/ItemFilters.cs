@@ -69,7 +69,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
             case ImportSystem.SECONDARY_CATEGORY:
                 return !(item.Icon?.Contains("Depot") ?? false);
             case ImportSystem.SHOP_CATEGORY:
-                if (BLREditSettings.Settings.AdvancedModding.Is) return true;
+                if (DataStorage.Settings.AdvancedModding.Is) return true;
                 return item.Name != "HRV Jammer";
             default:
                 return item.IsValidFor(Instance.WeaponFilter);

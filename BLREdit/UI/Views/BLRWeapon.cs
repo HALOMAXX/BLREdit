@@ -19,13 +19,14 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     static readonly Type thisClassType = typeof(BLRWeapon);
     public static PropertyInfo[] WeaponPartInfo { get; } = ((from property in thisClassType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property).ToArray());
-    private static readonly Dictionary<string?, PropertyInfo> WeaponPartInfoDictonary = GetWeaponPartPropertyInfo();
-    private static Dictionary<string?, PropertyInfo> GetWeaponPartPropertyInfo()
+    private static readonly Dictionary<string?, Tuple<PropertyInfo, BLRItemAttribute>> WeaponPartInfoDictonary = GetWeaponPartPropertyInfo();
+    private static Dictionary<string?, Tuple<PropertyInfo, BLRItemAttribute>> GetWeaponPartPropertyInfo()
     {
-        var dict = new Dictionary<string?, PropertyInfo>();
+        var dict = new Dictionary<string?, Tuple<PropertyInfo, BLRItemAttribute>>();
         foreach (var sett in WeaponPartInfo)
         {
-            dict.Add(sett.Name, sett);
+            var attri = sett.GetCustomAttribute<BLRItemAttribute>();
+            dict.Add(sett.Name, new(sett, attri));
         }
         return dict;
     }
@@ -35,13 +36,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
-    private void ItemChanged(BLRItem? newItem, [CallerMemberName] string? propertyName = null)
+    private void ItemChanged([CallerMemberName] string? propertyName = null)
     {
-        LoggingSystem.Log($"{propertyName} has been set to {newItem?.Name}");
-        if (!UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteWeapon)) Write();
-        if (!UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.Calculate)) CalculateStats();
-        OnPropertyChanged(propertyName);
-        IsChanged = true;
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteWeapon)) Write();
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Calculate)) CalculateStats();
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) OnPropertyChanged(propertyName);
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) IsChanged = true;
     }
     #endregion Event
 
@@ -52,7 +52,17 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     private bool isChanged = false;
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
 
-    private readonly Dictionary<int, BLRItem?> WeaponParts = new();
+    private readonly Dictionary<int, BLRItem?> WeaponParts = InitDict();
+
+    private static Dictionary<int, BLRItem?> InitDict()
+    {
+        Dictionary<int, BLRItem?> dict = new();
+        foreach (var info in WeaponPartInfoDictonary)
+        {
+            dict.Add(info.Value.Item2.PropertyOrder, null);
+        }
+        return dict;
+    }
 
     #region Weapon Parts
     [BLRItem($"{ImportSystem.PRIMARY_CATEGORY}|{ImportSystem.SECONDARY_CATEGORY}")] public BLRItem? Reciever { get { return GetValueOf(); } set { if (AllowReciever(value)) { SetValueOf(value); RemoveIncompatibleMods(); AddMissingDefaultParts(); UpdateScopeIcons(); } } }
@@ -72,9 +82,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         if (string.IsNullOrEmpty(name)) return null;
 
-        var property = WeaponPartInfoDictonary[name];
-        var attribute = property.GetCustomAttribute<BLRItemAttribute>();
-        if (WeaponParts.TryGetValue(attribute.PropertyOrder, out var value))
+        var propAndAttri = WeaponPartInfoDictonary[name];
+        if (WeaponParts.TryGetValue(propAndAttri.Item2.PropertyOrder, out var value))
         { return value; }
         else
         { return null; }
@@ -85,20 +94,15 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         //TODO: Item Validation
         if (string.IsNullOrEmpty(name)) return;
 
-        var property = WeaponPartInfoDictonary[name];
-        var attribute = property.GetCustomAttribute<BLRItemAttribute>();
-        var reciever = GetValueOf(nameof(Reciever));
-        if (value is not null && ( !value.IsValidFor(reciever) || !attribute.ItemType.Contains(value.Category))) 
-        { return; }
-        if (WeaponParts.ContainsKey(attribute.PropertyOrder))
+        var propAndAttri = WeaponPartInfoDictonary[name];
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.SetValueTest))
         {
-            WeaponParts[attribute.PropertyOrder] = value;
+            var reciever = GetValueOf(nameof(Reciever));
+            if (value is not null && (!value.IsValidFor(reciever) || !propAndAttri.Item2.ItemType.Contains(value.Category)))
+            { return; }
         }
-        else
-        { 
-            WeaponParts.Add(attribute.PropertyOrder, value);
-        }
-        ItemChanged(value,name);
+        WeaponParts[propAndAttri.Item2.PropertyOrder] = value;
+        ItemChanged(name);
     }
 
     public BLRWeapon Copy()
@@ -128,7 +132,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                     UndoRedoSystem.DoAction(item, property, this, BlockEvents.All);
                 }
             }
-            UndoRedoSystem.DoAction(Ammo, WeaponPartInfoDictonary[nameof(Ammo)], this); //to Trigger all Events at the end of the Sequence
+            UndoRedoSystem.DoAction(Ammo, WeaponPartInfoDictonary[nameof(Ammo)].Item1, this); //to Trigger all Events at the end of the Sequence
             LoggingSystem.Log($"Current:{UndoRedoSystem.CurrentActionCount} After:{UndoRedoSystem.AfterActionCount}");
 
             UndoRedoSystem.EndAction(true);
@@ -159,7 +163,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     private void AddMissingDefaultParts()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.AddMissing)) { return; }
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.AddMissing)) { return; }
         if (Reciever is null) { LoggingSystem.Log($"can't check for default setup of Weapons as Reciever is missing!"); return; }
         var wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
         if (wpn is null) { LoggingSystem.Log($"missing default setup for {Reciever?.Name}"); return; }
@@ -273,7 +277,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     private bool AllowStock(BLRItem? item)
     {
         if (item is null || item.Name == "No Stock") return true;
-        if (!IsPrimary && BLREditSettings.Settings.AdvancedModding.IsNot)
+        if (!IsPrimary && DataStorage.Settings.AdvancedModding.IsNot)
         {
             if (IsPistol() && (Barrel?.Name ?? MagiCowsWeapon.NoBarrel) == MagiCowsWeapon.NoBarrel)
             {
@@ -287,7 +291,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     private void UpdateScopeIcons()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ScopeUpdate)) { return; }
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ScopeUpdate)) { return; }
         OnPropertyChanged(nameof(ScopePreview));
     }
 
@@ -841,7 +845,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     #endregion DisplayStats
     private void RemoveIncompatibleMods()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.Remove)) return;
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Remove)) return;
         if (Reciever is null) return;
         MagiCowsWeapon? wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
         if (Reciever.IsValidModType(ImportSystem.MUZZELS_CATEGORY))
@@ -933,7 +937,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     #region Calulations
     public void CalculateStats()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.Calculate)) { return; }
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Calculate)) { return; }
         if (Reciever is null) return;
         CockRateMultiplier = CalculateCockRate(Reciever, RecoilPercentage);
         (DamageClose, DamageFar) = CalculateDamage(Reciever, DamagePercentage);
@@ -1531,13 +1535,13 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public void Read()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ReadWeapon)) return;
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadWeapon)) return;
         _weapon?.Read(this);
     }
 
     public void Write() 
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteWeapon)) return;
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteWeapon)) return;
         _weapon?.Write(this);
     }
 

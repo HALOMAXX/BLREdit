@@ -10,9 +10,6 @@ namespace BLREdit.Game.Proxy;
 
 public sealed class ProxyModule
 {
-    public static void Save() { IOResources.SerializeFile($"ModuleCache.json", CachedModules); }
-    public static ObservableCollection<ProxyModule> CachedModules { get; set; } = IOResources.DeserializeFile<ObservableCollection<ProxyModule>>($"ModuleCache.json") ?? new();
-
     private string? installName = null;
     public string InstallName { get { installName ??= $"{ModuleName}-{RepoName}"; return installName; } set { installName = value; } }
     public string RepoName { get; set; } = "";

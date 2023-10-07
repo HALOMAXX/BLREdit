@@ -26,13 +26,12 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     private bool isChanged = false;
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
 
-    private void ItemChanged(BLRItem? newItem = null, [CallerMemberName] string? propertyName = null)
+    private void ItemChanged([CallerMemberName] string? propertyName = null)
     {
-        LoggingSystem.Log($"{propertyName} has been set to {newItem?.Name}");
-        if (!UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteLoadout)) Write();
-        if (!UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.Calculate)) CalculateStats();
-        OnPropertyChanged(propertyName);
-        IsChanged = true;
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteLoadout)) Write();
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Calculate)) CalculateStats();
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) OnPropertyChanged(propertyName);
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) IsChanged = true;
     }
     #endregion Event
 
@@ -66,9 +65,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     private void SetValueOf(BLRItem? value, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? name = null)
     {
-        //TODO: Item Validation
         if (string.IsNullOrEmpty(name)) return;
-
         var property = LoadoutPartInfoDictonary[name];
         var attribute = property.GetCustomAttribute<BLRItemAttribute>();
         if (value is not null && !attribute.ItemType.Contains(value.Category))
@@ -81,7 +78,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         {
             LoadoutParts.Add(attribute.PropertyOrder, value);
         }
-        ItemChanged(value, name);
+        ItemChanged(name);
     }
     #region Gear
     [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value); } }
@@ -96,6 +93,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     [BLRItem(ImportSystem.AVATARS_CATEGORY)] public BLRItem? Avatar { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
     [BLRItem(ImportSystem.BADGES_CATEGORY)] public BLRItem? Trophy { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
     #endregion Gear
+
     #region Depot
     [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot1 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
     [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot2 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
@@ -600,13 +598,13 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public void Read()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ReadLoadout)) return;
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadLoadout)) return;
         _loadout?.Read(this);
     }
 
     public void Write() 
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteLoadout)) return;
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteLoadout)) return;
         _loadout?.Write(this);
     }
 

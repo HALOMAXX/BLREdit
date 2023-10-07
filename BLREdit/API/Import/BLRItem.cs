@@ -132,7 +132,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         if (item is null || (this.Category == ImportSystem.PRIMARY_CATEGORY || this.Category == ImportSystem.SECONDARY_CATEGORY)) return true;
 
-        if (BLREditSettings.Settings.AdvancedModding.Is)
+        if (DataStorage.Settings.AdvancedModding.Is)
         {
             return AdvancedFilter(this, item);
         }

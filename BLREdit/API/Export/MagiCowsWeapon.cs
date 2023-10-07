@@ -160,7 +160,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
 
     public void Read(BLRWeapon weapon)
     {
-        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
+        UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
         weapon.Reciever = GetReciever();
         weapon.Barrel = GetBarrel();
         weapon.Magazine = GetMagazine();

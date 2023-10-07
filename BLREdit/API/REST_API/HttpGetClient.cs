@@ -14,7 +14,7 @@ public sealed class HttpGetClient
         try
         {
             Uri uri = new($"{server}{api}");
-            var response = await IOResources.HttpClient.GetAsync(uri);
+            var response = await WebResources.HttpClient.GetAsync(uri);
             LoggingSystem.Log($"[Http]({response.StatusCode}): GET {server}{api}");
             return response;
         }

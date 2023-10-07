@@ -61,7 +61,7 @@ public partial class ServerListControl : UserControl
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if (targetData is not null && droppedData is not null && targetData is ServerControl sControl && sControl.DataContext is BLRServer targetServer) { MainWindow.View.ServerList.Move(MainWindow.View.ServerList.IndexOf(droppedData), MainWindow.View.ServerList.IndexOf(targetServer)); }
+        if (targetData is not null && droppedData is not null && targetData is ServerControl sControl && sControl.DataContext is BLRServer targetServer) { DataStorage.ServerList.Move(DataStorage.ServerList.IndexOf(droppedData), DataStorage.ServerList.IndexOf(targetServer)); }
         else
         {
             LoggingSystem.Log("failed to reorder ServerListView!");
@@ -87,7 +87,7 @@ public partial class ServerListControl : UserControl
         {
             view.Filter += new Predicate<object>((o) => 
                 { 
-                    if (o is BLRServer server && (BLREditSettings.Settings.ShowHiddenServers.Is || !server.Hidden || server.IsOnline.Is)) 
+                    if (o is BLRServer server && (DataStorage.Settings.ShowHiddenServers.Is || !server.Hidden || server.IsOnline.Is)) 
                     { return true; } 
                     else 
                     { return false; } 
@@ -98,12 +98,12 @@ public partial class ServerListControl : UserControl
 
     private void QuickMatch_Click(object sender, RoutedEventArgs e)
     {
-        LoggingSystem.Log($"Started Matchmaking with Region:{BLREditSettings.Settings.Region}, Pinging {MainWindow.View.ServerList.Count} Servers");
+        LoggingSystem.Log($"Started Matchmaking with Region:{DataStorage.Settings.Region}, Pinging {DataStorage.ServerList.Count} Servers");
         MainWindow.RefreshPing();
         BLRServer.ServersToPing.WaitForEmpty();
         LoggingSystem.Log("Finished Pinging Servers!");
 
-        var playerCountSortedServers = MainWindow.View.ServerList.OrderByDescending(x => x.PlayerCount);
+        var playerCountSortedServers = DataStorage.ServerList.OrderByDescending(x => x.PlayerCount);
 
         Dictionary<string, List<BLRServer>> RegionServers = new();
 
@@ -123,7 +123,7 @@ public partial class ServerListControl : UserControl
             }
         }
 
-        if (RegionServers.TryGetValue(BLREditSettings.Settings.Region, out var list))
+        if (RegionServers.TryGetValue(DataStorage.Settings.Region, out var list))
         {
             foreach (var server in list)
             {
@@ -135,7 +135,7 @@ public partial class ServerListControl : UserControl
             }
         }
 
-        LoggingSystem.Log($"No Server Available for Region:{BLREditSettings.Settings.Region}, now trying to find the highest populated server available to connect to!");
+        LoggingSystem.Log($"No Server Available for Region:{DataStorage.Settings.Region}, now trying to find the highest populated server available to connect to!");
 
         BLRServer? highestPop = null;
 

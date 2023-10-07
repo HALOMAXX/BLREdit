@@ -57,7 +57,7 @@ public partial class ClientListControl : UserControl
         {
             targetData = ((FrameworkElement)targetData).Parent;
         }
-        if (targetData is not null && droppedData is not null && targetData is ClientControl cControl && cControl.DataContext is BLRClient targetClient) { MainWindow.View.GameClients.Move(MainWindow.View.GameClients.IndexOf(droppedData), MainWindow.View.GameClients.IndexOf(targetClient)); }
+        if (targetData is not null && droppedData is not null && targetData is ClientControl cControl && cControl.DataContext is BLRClient targetClient) { DataStorage.GameClients.Move(DataStorage.GameClients.IndexOf(droppedData), DataStorage.GameClients.IndexOf(targetClient)); }
         else
         {
             LoggingSystem.Log("failed to reorder ClientListView!");

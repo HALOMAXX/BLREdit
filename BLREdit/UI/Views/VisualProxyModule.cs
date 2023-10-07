@@ -114,7 +114,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 api = $"https://gitlab.com/{RepositoryProxyModule.Owner}/{RepositoryProxyModule.Repository}";
             }
 
-            var site = await IOResources.HttpClientWeb.GetStringAsync(api);
+            var site = await WebResources.HttpClientWeb.GetStringAsync(api);
             HtmlDocument doc = new();
             doc.LoadHtml(site);
 
@@ -249,7 +249,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}]");
 
             ProxyModule? module = null;
-            foreach (var cachedModule in ProxyModule.CachedModules)
+            foreach (var cachedModule in DataStorage.CachedModules)
             {
                 if (cachedModule.InstallName == RepositoryProxyModule.InstallName && cachedModule.Published >= ReleaseDate)
                 {
@@ -266,7 +266,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 } 
                 else 
                 { 
-                    module = null; ProxyModule.CachedModules.Clear();
+                    module = null; DataStorage.CachedModules.Clear();
                 } 
             } 
             else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in cache");

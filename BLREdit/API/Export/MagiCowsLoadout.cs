@@ -138,7 +138,7 @@ public sealed class MagiCowsLoadout : IBLRLoadout
 
     public void Read(BLRLoadout loadout)
     {
-        UndoRedoSystem.CurrentlyBlockedEvents = BlockEvents.All;
+        UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
 
         Primary.Read(loadout.Primary);
         Secondary.Read(loadout.Secondary);

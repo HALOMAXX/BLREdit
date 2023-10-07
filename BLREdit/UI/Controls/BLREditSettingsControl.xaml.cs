@@ -32,14 +32,14 @@ public sealed partial class BLREditSettingsControl : UserControl
     {
         InitializeComponent();
         PlayerNameBorder.Background = SolidColorBrush;
-        //DataContext = BLREditSettings.Settings;
+        //DataContext = DataStorage.Settings;
         App.AvailableProxyModuleCheck();
         AvailableCultures.Add(App.DefaultCulture);
         foreach (var locale in App.AvailableLocalizations)
         {
             AvailableCultures.Add(CultureInfo.CreateSpecificCulture(locale.Key));
         }
-        LanguageComboBox.SelectedItem = BLREditSettings.Settings.SelectedCulture;
+        LanguageComboBox.SelectedItem = DataStorage.Settings.SelectedCulture;
     }
 
     private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

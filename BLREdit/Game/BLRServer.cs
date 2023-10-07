@@ -48,7 +48,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     #endregion Overrides
 
     [JsonIgnore] public UIBool IsOnline { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo.IsOnline); } else { return new(MagiInfo.IsOnline); } } }
-    [JsonIgnore] public bool IsDefaultServer { get { return Equals(BLREditSettings.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
+    [JsonIgnore] public bool IsDefaultServer { get { return Equals(DataStorage.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
     [JsonIgnore] public UIBool IsPinging { get; } = new(false);
     [JsonIgnore] public MagiCowServerInfo MagiInfo { get; private set; } = new();
@@ -75,6 +75,7 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     static BLRServer()
     {
+        LoggingSystem.Log("Starting Ping Workers!");
         for (int i = Environment.ProcessorCount; i > 0; i--)
         {
             var thread = new Thread(PingWorker)
@@ -82,6 +83,7 @@ public sealed class BLRServer : INotifyPropertyChanged
             App.AppThreads.Add(thread);
             thread.Start();
         }
+        LoggingSystem.Log("Finished Starting Ping Workers!");
     }
 
     static void PingWorker()
@@ -91,7 +93,7 @@ public sealed class BLRServer : INotifyPropertyChanged
             ServersToPing.WaitForFill();
             var server = ServersToPing.Take();
             if (server is null || string.IsNullOrEmpty(server.ServerAddress) || string.IsNullOrEmpty(server.IPAddress)) continue;
-            if (BLREditSettings.Settings.PingHiddenServers.IsNot) { if (server.Hidden) { LoggingSystem.Log($"Skipping Hidden Server:{server}"); continue; } }
+            if (DataStorage.Settings.PingHiddenServers.IsNot) { if (server.Hidden) { LoggingSystem.Log($"Skipping Hidden Server:{server}"); continue; } }
             server.IsPinging.Set(true);
             server.InternalPing();
             server.IsPinging.Set(false);
@@ -244,13 +246,13 @@ public sealed class BLRServer : INotifyPropertyChanged
     }
 
     public void RemoveServer()
-    { 
-        MainWindow.View.ServerList.Remove(this);
+    {
+        DataStorage.ServerList.Remove(this);
     }
 
     public void LaunchClient()
     {
-        if (BLREditSettings.Settings.DefaultClient is not null)
-        { BLREditSettings.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = BLREditSettings.Settings.PlayerName, Server = this }); }
+        if (DataStorage.Settings.DefaultClient is not null)
+        { DataStorage.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = this }); }
     }
 }

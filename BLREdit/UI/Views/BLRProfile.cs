@@ -84,7 +84,7 @@ public sealed class BLRProfile
 
     public void Write()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.WriteProfile)) return;
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteProfile)) return;
         _profile?.Write(this);
     }
 
@@ -95,7 +95,7 @@ public sealed class BLRProfile
 
     public void Read()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.HasFlag(BlockEvents.ReadProfile)) return;
+        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadProfile)) return;
         _profile?.Read(this);
     }
 

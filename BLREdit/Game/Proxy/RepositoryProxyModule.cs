@@ -143,7 +143,7 @@ public sealed class RepositoryProxyModule
         string dlTarget = $"downloads\\{InstallName}.dll";
         if (File.Exists(dlTarget)) { LoggingSystem.Log($"Deleting {dlTarget}"); File.Delete(dlTarget); }
         LoggingSystem.Log($"Downloading ({dl}) to ({dlTarget})");
-        IOResources.DownloadFile(dl, dlTarget);
+        WebResources.DownloadFile(dl, dlTarget);
         LoggingSystem.Log($"Finished Downloading {dl}");
 
         ProxyModule? module = null;
@@ -155,7 +155,7 @@ public sealed class RepositoryProxyModule
         if (module is null) return module;
 
         ProxyModule? toRemoveModule = null;
-        foreach (var mod in ProxyModule.CachedModules)
+        foreach (var mod in DataStorage.CachedModules)
         {
             if (mod.InstallName == module.InstallName)
             {
@@ -164,9 +164,9 @@ public sealed class RepositoryProxyModule
             }
         }
 
-        if (toRemoveModule is not null) ProxyModule.CachedModules.Remove(toRemoveModule);
+        if (toRemoveModule is not null) DataStorage.CachedModules.Remove(toRemoveModule);
 
-        ProxyModule.CachedModules.Add(module);
+        DataStorage.CachedModules.Add(module);
 
         lockDownload = false;
         return module;

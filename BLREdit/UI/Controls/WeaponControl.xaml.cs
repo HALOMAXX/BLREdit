@@ -75,7 +75,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     public WeaponControl()
     {
         InitializeComponent();
-        BLREditSettings.Settings.AdvancedModding.PropertyChanged += SettingsChanged;
+        DataStorage.Settings.AdvancedModding.PropertyChanged += SettingsChanged;
         UIKeys.Keys[Key.LeftShift].PropertyChanged += SkinModifierChanged;
     }
 
@@ -157,47 +157,47 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         {
             CurrentWeapon = weapon;
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.AMMO_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.AMMO_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { AmmoVisibility = Visibility.Visible; }
             else
             { AmmoVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.BARRELS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.BARRELS_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { BarrelVisibility = Visibility.Visible; }
             else
             { BarrelVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.CAMOS_WEAPONS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.CAMOS_WEAPONS_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { CamoVisibility = Visibility.Visible; }
             else
             { CamoVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.HANGERS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.HANGERS_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { TagVisibility = Visibility.Visible; }
             else
             { TagVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.MAGAZINES_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.MAGAZINES_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { MagazineVisibility = Visibility.Visible; }
             else
             { MagazineVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.MUZZELS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.MUZZELS_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { MuzzleVisibility = Visibility.Visible; }
             else
             { MuzzleVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.SCOPES_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.SCOPES_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { ScopeVisibility = Visibility.Visible; }
             else
             { ScopeVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.STOCKS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.STOCKS_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { StockVisibility = Visibility.Visible; }
             else
             { StockVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.GRIPS_CATEGORY) || BLREditSettings.Settings.AdvancedModding.Is)
+            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.GRIPS_CATEGORY) || DataStorage.Settings.AdvancedModding.Is)
             { GripVisibility = Visibility.Visible; }
             else
             { GripVisibility = Visibility.Collapsed; }

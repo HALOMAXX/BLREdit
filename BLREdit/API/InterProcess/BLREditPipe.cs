@@ -1,4 +1,5 @@
 ﻿using BLREdit.API.Export;
+using BLREdit.API.Utils;
 using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
@@ -28,7 +29,7 @@ public sealed class BLREditPipe
     {
         ValidateServerState();
 
-        if (BLREditSettings.Settings.EnableAPI.Is)
+        if (DataStorage.Settings.EnableAPI.Is)
         {
             if (IsServer || IsElevated())
             {
@@ -219,7 +220,7 @@ public sealed class BLREditPipe
             else
             {
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to ServerAddress ({json})");
-                foreach (var server in MainWindow.View.ServerList)
+                foreach (var server in DataStorage.ServerList)
                 {
                     if (server.ServerAddress == json)
                     { 
@@ -236,9 +237,9 @@ public sealed class BLREditPipe
                 var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json) ?? new();
                 BLRClient? client;
                 if (serverConfig.ClientId < 0)
-                { client = BLREditSettings.Settings.DefaultClient; }
+                { client = DataStorage.Settings.DefaultClient; }
                 else
-                { client = MainWindow.View.GameClients[serverConfig.ClientId]; }
+                { client = DataStorage.GameClients[serverConfig.ClientId]; }
                 if (client is null)
                 { LoggingSystem.Log("No client Available to launch server!"); return; }
 
@@ -260,9 +261,8 @@ public sealed class BLREditPipe
             var sharedProfile = IOResources.Deserialize<Shareable3LoadoutSet>(json);
             if (sharedProfile is null) { LoggingSystem.Log("[BLREdit API](import-profile): failed to deserialize shareable profile!"); return; }
             var profile = sharedProfile.ToBLRProfile();
-            var newProfile = ExportSystem.AddProfile("Imported-Profile");
-            profile.Write(newProfile);
-            //MainWindow.ShowAlert($"Import-Profile({newProfile}) has been Imported!");
+            var newProfile = BLRLoadoutStorage.AddNewLoadoutSet($"Imported-Profile{DataStorage.Loadouts.Count}", profile);
+            MainWindow.ShowAlert($"{newProfile.Shareable.Name} has been Imported!");
         });
         //TODO: Add more api endpoints like add-weapon, import-loadout, select-loadout(for tournaments) and more
     }
@@ -278,7 +278,7 @@ public sealed class BLREditPipe
         catch 
         {
             LoggingSystem.Log("Failed to Launch BLREdit as Admin will have to do without the API");
-            BLREditSettings.Settings.EnableAPI.Set(false);
+            DataStorage.Settings.EnableAPI.Set(false);
             BLREditSettings.Save();
         }
     }

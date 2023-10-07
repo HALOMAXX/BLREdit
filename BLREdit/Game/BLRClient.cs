@@ -272,23 +272,15 @@ public sealed class BLRClient : INotifyPropertyChanged
         LoggingSystem.Log($"Removing All Modules from client:[{this}]");
         CustomModules.Clear();
         InstalledModules.Clear();
-
-        //var dirInfo = new DirectoryInfo(ModulesFolder);
-        //var files = dirInfo.GetFiles();
-        //foreach (var file in files)
-        //{ 
-        //    file.Delete();
-        //}
-
         Invalidate();
         LoggingSystem.Log("Finished Removing all modules and invalidating client");
     }
 
     public void ValidateProxy()
     {
-        if (BLREditSettings.Settings?.SelectedProxyVersion?.Equals(ProxyVersion) ?? true) return;
+        if (DataStorage.Settings?.SelectedProxyVersion?.Equals(ProxyVersion) ?? true) return;
         RemoveAllModules();
-        var proxySource = $"{IOResources.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.{BLREditSettings.Settings.SelectedProxyVersion}.dll";
+        var proxySource = $"{IOResources.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.{DataStorage.Settings.SelectedProxyVersion}.dll";
         var proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll";
         if (File.Exists(proxySource) && File.Exists(proxyTarget))
         {
@@ -303,7 +295,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             File.Copy(proxySource, proxyTarget);
         }
-        ProxyVersion = BLREditSettings.Settings.SelectedProxyVersion;
+        ProxyVersion = DataStorage.Settings.SelectedProxyVersion;
     }
 
     public bool ValidatePatches()
@@ -343,7 +335,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         List<Task> moduleInstallTasks = new();
         foreach (var availableModule in App.AvailableProxyModules)
         {
-            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(BLREditSettings.Settings.SelectedProxyVersion) && !IsModuleInstalledAndUpToDate(availableModule))
+            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(DataStorage.Settings.SelectedProxyVersion) && !IsModuleInstalledAndUpToDate(availableModule))
             {
                 moduleInstallTasks.Add(Task.Run(() => { availableModule.InstallModule(this); }));
             }
@@ -369,16 +361,16 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         var count = InstalledModules.Count;
         var customCount = CustomModules.Count;
-        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count}, StrictModuleCheck:{BLREditSettings.Settings.StrictModuleChecks}, AllowCustomModules:{BLREditSettings.Settings.AllowCustomModules}, InstallRequiredModules:{BLREditSettings.Settings.InstallRequiredModules}");
+        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count}, StrictModuleCheck:{DataStorage.Settings.StrictModuleChecks}, AllowCustomModules:{DataStorage.Settings.AllowCustomModules}, InstallRequiredModules:{DataStorage.Settings.InstallRequiredModules}");
 
-        if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.InstallRequiredModules.Is)
+        if (App.AvailableProxyModules.Count > 0 && DataStorage.Settings.InstallRequiredModules.Is)
         {
             LoggingSystem.Log($"Started Installing Required Modules");
             InstallRequiredModules();
             LoggingSystem.Log($"Finished Installing Required Modules!");
         }
 
-        if (App.AvailableProxyModules.Count > 0 && BLREditSettings.Settings.StrictModuleChecks.Is)
+        if (App.AvailableProxyModules.Count > 0 && DataStorage.Settings.StrictModuleChecks.Is)
         {
             LoggingSystem.Log($"Filtering Installed Modules");
             InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); 
@@ -396,7 +388,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     if (name == module.InstallName)
                     { isInstalled = true; break; }
                 }
-                if (BLREditSettings.Settings.AllowCustomModules.Is && !isInstalled)
+                if (DataStorage.Settings.AllowCustomModules.Is && !isInstalled)
                 {
                     bool isNew = true;
                     foreach (var module in CustomModules)
@@ -427,7 +419,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (enabledModules is null)
         {
             enabledModules = InstalledModules.ToList();
-            if (BLREditSettings.Settings.AllowCustomModules.Is)
+            if (DataStorage.Settings.AllowCustomModules.Is)
             {
                 enabledModules.AddRange(CustomModules.ToList());
             }
@@ -546,17 +538,17 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
-        string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}?SingleMatch";
-        StartProcess(launchArgs, true, BLREditSettings.Settings.ServerWatchDog.Is);
-        LaunchClient(new LaunchOptions() { UserName= BLREditSettings.Settings.PlayerName, Server=LocalHost });
+        string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}?SingleMatch";
+        StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
+        LaunchClient(new LaunchOptions() { UserName= DataStorage.Settings.PlayerName, Server=LocalHost });
     }
 
     private void LaunchServer()
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
-        string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={BLREditSettings.Settings.BotCount}?MaxPlayers={BLREditSettings.Settings.PlayerCount}";
-        StartProcess(launchArgs, true, BLREditSettings.Settings.ServerWatchDog.Is);
+        string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
+        StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
     }
 
     public void LaunchClient()
@@ -604,8 +596,8 @@ public sealed class BLRClient : INotifyPropertyChanged
         LoggingSystem.Log($"Setting Current Client:{this}");
         if (this.Patched.Is)
         {
-            BLREditSettings.Settings.DefaultClient = this;
-            foreach (BLRClient c in MainWindow.View.GameClients)
+            DataStorage.Settings.DefaultClient = this;
+            foreach (BLRClient c in DataStorage.GameClients)
             {
                 c.CurrentClient.Set(false);
             }

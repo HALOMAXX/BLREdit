@@ -1,11 +1,15 @@
 ﻿using BLREdit.API.Export;
+using BLREdit.API.Utils;
 using BLREdit.Export;
 using BLREdit.Game;
 
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -24,25 +28,20 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private string windowTitle = "";
     public string WindowTitle { get { return windowTitle; } set { windowTitle = value; OnPropertyChanged(); } }
 
-    public BLRProfile Profile { get; } = new();
+    private BLRLoadoutStorage profile = DataStorage.Loadouts.FirstOrDefault();
+    public BLRLoadoutStorage Profile { get { return profile; } set { profile = value; OnPropertyChanged(); } }
 
 #pragma warning disable CA1822 // Mark members as static
-    public BLREditSettings BLRESettings => BLREditSettings.Settings;
+    public BLREditSettings BLRESettings => DataStorage.Settings;
+    public ObservableCollection<BLRClient> GameClients => DataStorage.GameClients;
+    public ObservableCollection<BLRServer> ServerList => DataStorage.ServerList;
+    public ObservableCollection<BLRLoadoutStorage> Loadouts => DataStorage.Loadouts;
 #pragma warning restore CA1822 // Mark members as static
-
-    private ObservableCollection<BLRClient>? _gameClients;
-    private ObservableCollection<BLRServer>? _servers;
-    public ObservableCollection<BLRClient> GameClients { get { _gameClients ??= IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new(); return _gameClients; } }
-    public ObservableCollection<BLRServer> ServerList { get { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new(); return _servers; } }
 
     public readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
     public readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
-    public  Border? LastSelectedItemBorder { get { return lastSelectedItemBorder; } set { SetBorderColor(lastSelectedItemBorder, DefaultBorderColor); lastSelectedItemBorder = value; SetBorderColor(lastSelectedItemBorder, ActiveBorderColor); } }
+    public Border? LastSelectedItemBorder { get { return lastSelectedItemBorder; } set { SetBorderColor(lastSelectedItemBorder, DefaultBorderColor); lastSelectedItemBorder = value; SetBorderColor(lastSelectedItemBorder, ActiveBorderColor); } }
     private Border? lastSelectedItemBorder = null;
-    public  IBLRProfile? ActiveLoadoutSet { get { return activeLoadoutSet; } set { activeLoadoutSet = value; Profile.SetProfile(value, true); Profile.Read(); } }
-    private IBLRProfile? activeLoadoutSet = null;
-
-    public ObservableCollection<ShareableProfile> Profiles { get { return ExportSystem.Profiles; } }
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
     public Type? CurrentSortingEnumType { get; set; }
@@ -56,6 +55,16 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public BLRGear? GearCopy { get; set; } = null;
     public BLRExtra? ExtraCopy { get; set; } = null;
 
+    static MainWindowView()
+    {
+        LoggingSystem.Log("MainWindowView Static Constructor Start");
+    }
+
+    public MainWindowView()
+    {
+        LoggingSystem.Log("MainWindowView Constructor Start");
+    }
+
     public void UpdateWindowTitle()
     {
         string BuildTag = "";
@@ -68,39 +77,13 @@ public sealed class MainWindowView : INotifyPropertyChanged
         BuildTag = "[Release Build]:";
 #endif
 
-        var PlayerProfile = ExportSystem.GetOrAddProfileSettings(BLREditSettings.Settings?.PlayerName ?? "");
+        var PlayerProfile = ExportSystem.GetOrAddProfileSettings(DataStorage.Settings?.PlayerName ?? "");
 
-        WindowTitle = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}, {BLREditSettings.Settings?.PlayerName} Playtime:[{new TimeSpan(0,0, PlayerProfile.PlayTime)}]";
+        WindowTitle = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}, {DataStorage.Settings?.PlayerName} Playtime:[{new TimeSpan(0,0, PlayerProfile.PlayTime)}]";
     }
 
     public static void SetBorderColor(Border? border, Color color)
     {
         if (border is not null) border.BorderBrush = new SolidColorBrush(color);
-    }
-
-
-    public void RefreshPrimaryWeapons()
-    {
-        Profile.Loadout1.Primary.Read();
-        Profile.Loadout2.Primary.Read();
-        Profile.Loadout3.Primary.Read();
-    }
-
-    public void RefreshSecondaryWeapons()
-    {
-        Profile.Loadout1.Secondary.Read();
-        Profile.Loadout2.Secondary.Read();
-        Profile.Loadout3.Secondary.Read();
-    }
-
-    public void RefreshWeapons()
-    { 
-        RefreshPrimaryWeapons();
-        RefreshSecondaryWeapons();
-    }
-
-    public void RefreshLoadouts()
-    {
-        Profile.Read();
     }
 }
