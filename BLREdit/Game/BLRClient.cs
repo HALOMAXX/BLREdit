@@ -199,7 +199,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         if (!OriginalFileValidation())
         {
-            LoggingSystem.MessageLog($"Client is not valid, original file is missing!\nMaybe client got moved or deleted\nCLient can't be patched!");
+            LoggingSystem.MessageLog($"Client is not valid, original file is missing!\nMaybe client got moved or deleted\nClient can't be patched!", "Error"); //TODO: Add Localization
             return false;
         }
 
@@ -209,7 +209,6 @@ public sealed class BLRClient : INotifyPropertyChanged
             OriginalHash = NewOriginalHash;
             return PatchClient();
         }
-
 
         if (!PatchedFileValidation())
         {
@@ -262,7 +261,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         catch (Exception error)
         {
-            LoggingSystem.MessageLog($"Failed to remove {moduleInstallName} reason:\n{error.Message}");
+            LoggingSystem.MessageLog($"Failed to remove {moduleInstallName} reason:\n{error.Message}", "Error"); //TODO: Add Localization
             LoggingSystem.Log(error.StackTrace);
         }
     }
@@ -680,7 +679,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         catch (Exception error)
         {
-            LoggingSystem.MessageLog($"[{this}]Client Patch Failed: {error}");
+            LoggingSystem.MessageLog($"[{this}]Patching failed: {error}", "Error"); //TODO: Add Localization
             return false;
         }
         return true;

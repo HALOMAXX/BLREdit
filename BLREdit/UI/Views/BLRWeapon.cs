@@ -69,7 +69,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLRItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.MAGAZINES_CATEGORY)] public BLRItem? Magazine { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.MUZZELS_CATEGORY)] public BLRItem? Muzzle { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.STOCKS_CATEGORY)] public BLRItem? Stock { get { return GetValueOf(); } set { if (AllowStock(value)) { SetValueOf(value); } } }
+    [BLRItem(ImportSystem.STOCKS_CATEGORY)] public BLRItem? Stock { get { return GetValueOf(); } set { if (AllowStock(Reciever, Barrel, value, true)) { SetValueOf(value); } } }
     [BLRItem(ImportSystem.SCOPES_CATEGORY)] public BLRItem? Scope { get { return GetValueOf(); } set { SetValueOf(value); UpdateScopeIcons(); } }
     [BLRItem(ImportSystem.GRIPS_CATEGORY)] public BLRItem? Grip { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.HANGERS_CATEGORY)] public BLRItem? Tag { get { return GetValueOf(); } set { SetValueOf(value); } }
@@ -91,7 +91,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     private void SetValueOf(BLRItem? value, [CallerMemberName] string? name = null)
     {
-        //TODO: Item Validation
         if (string.IsNullOrEmpty(name)) return;
 
         var propAndAttri = WeaponPartInfoDictonary[name];
@@ -198,10 +197,10 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         Skin ??= ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0);
     }
 
-    private bool IsPistol()
+    private bool IsPistol(BLRItem? reciever)
     {
-        if (Reciever == null) return false;
-        return Reciever.Name == "Light Pistol" || Reciever.Name == "Heavy Pistol" || Reciever.Name == "Prestige Light Pistol";
+        if (reciever == null) return false;
+        return reciever.Name == "Light Pistol" || reciever.Name == "Heavy Pistol" || reciever.Name == "Prestige Light Pistol";
     }
     private bool AllowReciever(BLRItem? item)
     {
@@ -274,14 +273,14 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
     }
 
-    private bool AllowStock(BLRItem? item)
+    private bool AllowStock(BLRItem? reciever, BLRItem? barrel, BLRItem? stock, bool displayMessage = false)
     {
-        if (item is null || item.Name == "No Stock") return true;
+        if (stock is null || stock.Name == "No Stock") return true;
         if (!IsPrimary && DataStorage.Settings.AdvancedModding.IsNot)
         {
-            if (IsPistol() && (Barrel?.Name ?? MagiCowsWeapon.NoBarrel) == MagiCowsWeapon.NoBarrel)
+            if (IsPistol(reciever) && (barrel?.Name ?? MagiCowsWeapon.NoBarrel) == MagiCowsWeapon.NoBarrel)
             {
-                MainWindow.ShowAlert("Can't set Stock\nno Barrel is attached!"); //TODO: Add Localization Support for Alert
+                if(displayMessage) MainWindow.ShowAlert("Can't set Stock\nwhen no Barrel is attached!"); //TODO: Add Localization Support for Alert
                 return false;
             }
         }
@@ -870,7 +869,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         if (Reciever.IsValidModType(ImportSystem.STOCKS_CATEGORY))
         {
-            if (Stock is null || !Stock.IsValidFor(Reciever) || (IsPistol() && (Barrel is null || Barrel == ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY,MagiCowsWeapon.NoBarrel))))
+            if (Stock is null || !Stock.IsValidFor(Reciever) || AllowStock(Reciever, Barrel, wpn?.GetStock()))
             { UndoRedoSystem.DoActionAfter(wpn?.GetStock(), GetType().GetProperty(nameof(Stock)), this); }
         }
         else
@@ -937,7 +936,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     #region Calulations
     public void CalculateStats()
     {
-        if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Calculate)) { return; }
         if (Reciever is null) return;
         CockRateMultiplier = CalculateCockRate(Reciever, RecoilPercentage);
         (DamageClose, DamageFar) = CalculateDamage(Reciever, DamagePercentage);
@@ -1548,28 +1546,20 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     static readonly Random rng = new();
     public void Randomize()
     {
-        BLRItem reciever;
-        if (IsPrimary)
-        {
-            var filtered = ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_CATEGORY).Where(ItemFilters.PartialFilter).ToArray();
-            reciever = filtered[rng.Next(0, filtered.Length)];
-        }
-        else
-        {
-            var filtered = ImportSystem.GetItemArrayOfType(ImportSystem.SECONDARY_CATEGORY).Where(ItemFilters.PartialFilter).ToArray();
-            reciever = filtered[rng.Next(0, filtered.Length)];
-        }
+        var FilteredRecievers = ImportSystem.GetItemArrayOfType(IsPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY).Where(ItemFilters.PartialFilter).ToArray();
+        
+        BLRItem reciever = FilteredRecievers[rng.Next(0, FilteredRecievers.Length)];
 
         var FilteredBarrels = ImportSystem.GetItemArrayOfType(ImportSystem.BARRELS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredScopes = ImportSystem.GetItemArrayOfType(ImportSystem.SCOPES_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredMagazines = ImportSystem.GetItemArrayOfType(ImportSystem.MAGAZINES_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        //Dependant of Barrel on secondarioes
         var FilteredMuzzles = ImportSystem.GetItemArrayOfType(ImportSystem.MUZZELS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredStocks = ImportSystem.GetItemArrayOfType(ImportSystem.STOCKS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredCamos = ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_WEAPONS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredHangers = ImportSystem.GetItemArrayOfType(ImportSystem.HANGERS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
         var FilteredAmmo = ImportSystem.GetItemArrayOfType(ImportSystem.AMMO_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-
+        var FilteredGrips = ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY).Where(o=> o.IsValidFor(reciever)).ToArray();
+        var FilteredSkins = ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_SKIN_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
 
         BLRItem? barrel = null;
         if (FilteredBarrels.Length > 0)
@@ -1586,7 +1576,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             magazine = FilteredMagazines[rng.Next(0, FilteredMagazines.Length)];
         }
-
         BLRItem? stock = null;
         if (FilteredStocks.Length > 0)
         {
@@ -1598,7 +1587,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             muzzle = FilteredMuzzles[rng.Next(0, FilteredMuzzles.Length)];
         }
         BLRItem? hanger = null;
-        if (FilteredHangers.Length > 0)
+        if (FilteredHangers.Length > 0 && IsPrimary)
         {
             hanger = FilteredHangers[rng.Next(0, FilteredHangers.Length)];
         }
@@ -1607,7 +1596,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             camo = FilteredCamos[rng.Next(0, FilteredCamos.Length)];
         }
-
         BLRItem? ammo = null;
         if (FilteredAmmo.Length > 0)
         {
@@ -1616,22 +1604,31 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                 ammo = FilteredAmmo[rng.Next(0, FilteredAmmo.Length)];
             }
         }
-
-        //TODO: Randomize Ammo(we first need to generate the weapon then we can properly randomize the Ammo according to the reciever and magazine we also need to be carefull of Element mags as they have the elemental effect priority eg it doesn't mater what ammo type is equipped)
-        //TODO: Randomize Grip(we need to generate the grip for weapons that have a Grip slot)
+        BLRItem? grip = null;
+        if (FilteredGrips.Length > 0)
+        { 
+            grip = FilteredGrips[rng.Next(0, FilteredGrips.Length)];
+        }
+        BLRItem? skin = null;
+        if (FilteredSkins.Length > 0 && IsPrimary)
+        {
+            skin = FilteredSkins[rng.Next(0, FilteredSkins.Length)];
+        }
         //TODO: Use the text filter to theme Randomization where possible(when the list is not empty after filtering).
 
-        var grip = ImportSystem.GetItemByIDAndType(ImportSystem.GRIPS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY)?.Length ?? 0));
+        if (!AllowStock(reciever, barrel, stock)) 
+        { stock = null; }
 
-        UndoRedoSystem.DoAction(reciever, this.GetType().GetProperty(nameof(Reciever)), this, BlockEvents.All);
-        UndoRedoSystem.DoAction(barrel, this.GetType().GetProperty(nameof(Barrel)), this, BlockEvents.All);
-        UndoRedoSystem.DoAction(scope, this.GetType().GetProperty(nameof(Scope)), this, BlockEvents.All);
-        UndoRedoSystem.DoAction(stock, this.GetType().GetProperty(nameof(Stock)), this, BlockEvents.All);
-        UndoRedoSystem.DoAction(muzzle, this.GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.All);
-        UndoRedoSystem.DoAction(magazine, this.GetType().GetProperty(nameof(Magazine)), this, BlockEvents.All);
-        UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(Camo)), this, BlockEvents.All);
-        if (ammo is not null) UndoRedoSystem.DoAction(ammo, this.GetType().GetProperty(nameof(Ammo)), this, BlockEvents.All);
+        UndoRedoSystem.DoAction(reciever, this.GetType().GetProperty(nameof(Reciever)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoAction(barrel, this.GetType().GetProperty(nameof(Barrel)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoAction(scope, this.GetType().GetProperty(nameof(Scope)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoAction(stock, this.GetType().GetProperty(nameof(Stock)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoAction(muzzle, this.GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoAction(magazine, this.GetType().GetProperty(nameof(Magazine)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoAction(camo, this.GetType().GetProperty(nameof(Camo)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoAction(grip, this.GetType().GetProperty(nameof(Grip)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoAction(skin, this.GetType().GetProperty(nameof(Skin)), this, BlockEvents.AllExceptUpdate);
+        if (ammo is not null) UndoRedoSystem.DoAction(ammo, this.GetType().GetProperty(nameof(Ammo)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoAction(hanger, this.GetType().GetProperty(nameof(Tag)), this, BlockEvents.None);
-        
     }
 }

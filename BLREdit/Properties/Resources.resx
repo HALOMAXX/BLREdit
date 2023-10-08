@@ -513,20 +513,50 @@
   <data name="lbl_ZoomFirerate" xml:space="preserve">
     <value>Zoomfirerate:</value>
   </data>
+  <data name="msgT_Error" xml:space="preserve">
+    <value>BLREdit encountered an Error!</value>
+  </data>
+  <data name="msgT_Info" xml:space="preserve">
+    <value>Notice!</value>
+  </data>
+  <data name="msgT_ResetConfig" xml:space="preserve">
+    <value>Reset BLRedit Config</value>
+  </data>
   <data name="msg_AdvancedModding" xml:space="preserve">
     <value>AdvancedModding:</value>
   </data>
   <data name="msg_ChangePlayerName" xml:space="preserve">
     <value>Please change your player name!</value>
   </data>
+  <data name="msg_FailedToStartServer" xml:space="preserve">
+    <value>failed to start server:\n{0}</value>
+    <comment>0. Exception Message</comment>
+  </data>
   <data name="msg_MisingFiles" xml:space="preserve">
     <value>BLREdit will now Download Missing Files!</value>
+  </data>
+  <data name="msg_OpenPackagingFolder" xml:space="preserve">
+    <value>Open Packaging folder?</value>
+  </data>
+  <data name="msg_PackagingFailed" xml:space="preserve">
+    <value>failed to package release:\n{0}</value>
+    <comment>0. Exception Message</comment>
+  </data>
+  <data name="msg_ResetConfig" xml:space="preserve">
+    <value>Are you sure you want to return to Default Config?</value>
+  </data>
+  <data name="msg_ResetConfigInfo" xml:space="preserve">
+    <value>Now Returning to Defaults. this will also restart BLREdit!</value>
   </data>
   <data name="msg_Update" xml:space="preserve">
     <value>BLREdit will now Update!</value>
   </data>
   <data name="msg_UpdateMissingFiles" xml:space="preserve">
     <value>BLREdit will now Download Missing Files and Update!</value>
+  </data>
+  <data name="msg_VDFGamePathError" xml:space="preserve">
+    <value>Failed reading {0}, found Folders:{1}, steam library parsing aborted reason:\n{2}</value>
+    <comment>0.GamePath, 1.Folder Count, 2. Exception Message </comment>
   </data>
   <data name="tbtn_AdvancedModding" xml:space="preserve">
     <value>AdvancedModding</value>

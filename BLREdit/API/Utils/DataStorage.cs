@@ -2,15 +2,11 @@
 using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
-using BLREdit.Import;
+using BLREdit.UI;
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace BLREdit;
 
@@ -46,12 +42,7 @@ public static class DataStorage
     public static BLREditSettings Settings { get { lock (settingsLock) { _settings ??=  IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new(); } return _settings; } set { _settings = value; } }
     #endregion Properties
 
-    static DataStorage()
-    {
-        AppDomain.CurrentDomain.ProcessExit += Save;
-    }
-
-    public static void Save(object sender, EventArgs e)
+    public static void Save()
     {
         IOResources.SerializeFile($"{IOResources.PROFILE_DIR}profileList.json", _shareableProfiles);
         IOResources.SerializeFile($"GameClients.json", _gameClients);

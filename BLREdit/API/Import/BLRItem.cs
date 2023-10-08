@@ -34,6 +34,12 @@ public sealed class BLRItem : INotifyPropertyChanged
     }
     #endregion Events
 
+    #region Overrides
+    public override string ToString()
+    {
+        return DisplayName;
+    }
+    #endregion Overrides
     public int LMID { get; set; } = -69;
     public int NameID { get; set; } = -1;
     [JsonIgnore] public string? Category { get; set; }

@@ -57,7 +57,6 @@ public partial class App : System.Windows.Application
 
     private void Application_Startup(object sender, StartupEventArgs e)
     {
-        LoggingSystem.Log("App StartupEvent Start");
         string[] argList = e.Args;
         Dictionary<string, string> argDict = new();
 
@@ -93,9 +92,8 @@ public partial class App : System.Windows.Application
                 PackageAssets();
                 LoggingSystem.Log($"Finished Packaging");
             }
-            catch (Exception error) { LoggingSystem.MessageLog($"failed to package release:\n{error}"); }
-            var result = MessageBox.Show("Open Package folder?", "", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
+            catch (Exception error) { LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error); }
+            if (LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_OpenPackagingFolder, BLREdit.Properties.Resources.msgT_Info, MessageBoxButton.YesNo))
             {
                 Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\packaged");
             }
@@ -121,7 +119,7 @@ public partial class App : System.Windows.Application
             }
             catch (Exception error)
             {
-                LoggingSystem.MessageLog($"failed to start server:\n{error}");
+                LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error);
             }
 
             BLRProcess.KillAll();
@@ -513,7 +511,7 @@ public partial class App : System.Windows.Application
 
                 if (newVersionAvailable && assetFolderMissing)
                 {
-                    MessageBox.Show(BLREdit.Properties.Resources.msg_UpdateMissingFiles);
+                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_UpdateMissingFiles, "Info"); //TODO: Add Localization
                     DownloadAssetFolder();
 
                     UpdateEXE();
@@ -521,7 +519,7 @@ public partial class App : System.Windows.Application
                 }
                 else if (newVersionAvailable && !assetFolderMissing)
                 {
-                    MessageBox.Show(BLREdit.Properties.Resources.msg_Update);
+                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_Update, "Info"); //TODO: Add Localization
                     UpdateAllAssetPacks();
 
                     UpdateEXE();
@@ -529,14 +527,14 @@ public partial class App : System.Windows.Application
                 }
                 else if (!newVersionAvailable && assetFolderMissing)
                 {
-                    MessageBox.Show(BLREdit.Properties.Resources.msg_MisingFiles);
+                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_MisingFiles, "Info"); //TODO: Add Localization
                     DownloadAssetFolder();
                     return true;
                 }
             }
         }
         catch (Exception error)
-        { LoggingSystem.MessageLog($"Failed to Update to Newest Version\n{error}"); return false; }
+        { LoggingSystem.MessageLog($"Failed to Update to Newest Version\n{error}", "Error"); return false; } //TODO: Add Localization
         return false;
     }
 
@@ -564,6 +562,10 @@ public partial class App : System.Windows.Application
 
     public static void Restart()
     {
+        if (IsWindowOpen<MainWindow>(UI.MainWindow.Instance?.Name ?? "")) 
+        {
+            UI.MainWindow.Instance?.Close();
+        }
         LoggingSystem.Log($"Restarting BLREdit!");
 
         Process newApp = new()
@@ -580,6 +582,13 @@ public partial class App : System.Windows.Application
         Environment.Exit(0);
     }
 
+    public static bool IsWindowOpen<T>(string name = "") where T : Window
+    {
+        return string.IsNullOrEmpty(name)
+           ? Application.Current.Windows.OfType<T>().Any()
+           : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
+    }
+
     private static void DownloadAssetFolder()
     {
         if (assetZip is null) { LoggingSystem.Log("[DownloadAssetFolder] failed assetZip was null!"); return; }
@@ -590,7 +599,7 @@ public partial class App : System.Windows.Application
             ZipFile.ExtractToDirectory(assetZip.Info.FullName, IOResources.ASSET_DIR);
         }
         else
-        { LoggingSystem.MessageLog("No Asset folder for download available!"); }
+        { LoggingSystem.MessageLog("No Asset folder for download available!", "Error"); } //TODO: Add Localization
     }
 
     private static void UpdateAllAssetPacks()
@@ -725,7 +734,7 @@ public partial class App : System.Windows.Application
             }
         }
         catch (Exception error)
-        { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}"); }
+        { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}", "Error"); } //TODO: Add Localization
         return Array.Empty<RepositoryProxyModule>();
     }
 
@@ -742,7 +751,7 @@ public partial class App : System.Windows.Application
             }
         }
         catch (Exception error)
-        { LoggingSystem.MessageLog($"Can't get Localization list from Github\n{error}"); }
+        { LoggingSystem.MessageLog($"Can't get Localization list from Github\n{error}", "Error"); } //TODO: Add Localization
         return new();
     }
 
@@ -759,7 +768,7 @@ public partial class App : System.Windows.Application
             }
         }
         catch (Exception error)
-        { LoggingSystem.MessageLog($"Can't get server list from Github\n{error}"); }
+        { LoggingSystem.MessageLog($"Can't get server list from Github\n{error}", "Error"); } //TODO: Add Localization
         return new() 
         { //Only localhost is needed as most likely we are offline so there is no need to add anyother default servers
             new() { ServerAddress = "localhost", Port = 7777 } //Local User Server

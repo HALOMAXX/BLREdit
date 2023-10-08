@@ -1267,11 +1267,56 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to failed to start server:\n{0}.
+        /// </summary>
+        public static string msg_FailedToStartServer {
+            get {
+                return ResourceManager.GetString("msg_FailedToStartServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BLREdit will now Download Missing Files!.
         /// </summary>
         public static string msg_MisingFiles {
             get {
                 return ResourceManager.GetString("msg_MisingFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Packaging folder?.
+        /// </summary>
+        public static string msg_OpenPackagingFolder {
+            get {
+                return ResourceManager.GetString("msg_OpenPackagingFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to failed to package release:\n{0}.
+        /// </summary>
+        public static string msg_PackagingFailed {
+            get {
+                return ResourceManager.GetString("msg_PackagingFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to return to Default Config?.
+        /// </summary>
+        public static string msg_ResetConfig {
+            get {
+                return ResourceManager.GetString("msg_ResetConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now Returning to Defaults. this will also restart BLREdit!.
+        /// </summary>
+        public static string msg_ResetConfigInfo {
+            get {
+                return ResourceManager.GetString("msg_ResetConfigInfo", resourceCulture);
             }
         }
         
@@ -1290,6 +1335,42 @@ namespace BLREdit.Properties {
         public static string msg_UpdateMissingFiles {
             get {
                 return ResourceManager.GetString("msg_UpdateMissingFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed reading {0}, found Folders:{1}, steam library parsing aborted reason:\n{2}.
+        /// </summary>
+        public static string msg_VDFGamePathError {
+            get {
+                return ResourceManager.GetString("msg_VDFGamePathError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BLREdit encountered an Error!.
+        /// </summary>
+        public static string msgT_Error {
+            get {
+                return ResourceManager.GetString("msgT_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notice!.
+        /// </summary>
+        public static string msgT_Info {
+            get {
+                return ResourceManager.GetString("msgT_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset BLRedit Config.
+        /// </summary>
+        public static string msgT_ResetConfig {
+            get {
+                return ResourceManager.GetString("msgT_ResetConfig", resourceCulture);
             }
         }
         

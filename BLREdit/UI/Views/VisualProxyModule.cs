@@ -289,7 +289,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
         catch (Exception error)
         {
-            LoggingSystem.MessageLog($"failed to install module:{RepositoryProxyModule.InstallName} reason:{error}");
+            LoggingSystem.MessageLog($"failed to install module:{RepositoryProxyModule.InstallName} reason:{error}", "Error"); //TODO: Add Localization
         }
         finally
         {

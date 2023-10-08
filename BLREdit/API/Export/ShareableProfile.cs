@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using System.Xml.Linq;
 
 namespace BLREdit.API.Export;
 
@@ -50,6 +51,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
         {
             Name = Name,
         };
+        dup.Loadouts.Clear();
         foreach (var loadout in Loadouts)
         {
             dup.Loadouts.Add(loadout.Clone());
@@ -81,7 +83,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
         Loadouts[1].Read(profile.Loadout2);
         Loadouts[2].Read(profile.Loadout3);
         UndoRedoSystem.RestoreBlockedEvents();
-        LoggingSystem.PrintElapsedTime("Profile Read took {0}ms");
+        LoggingSystem.PrintElapsedTime($"Profile Read took {"{0}"}ms ({Name})");
     }
 
     public void Write(BLRProfile profile)
@@ -92,7 +94,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
         Loadouts[1].Write(profile.Loadout2);
         Loadouts[2].Write(profile.Loadout3);
         if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(profile, EventArgs.Empty); }
-        LoggingSystem.PrintElapsedTime("Profile Write took {0}ms");
+        LoggingSystem.PrintElapsedTime($"Profile Write took {"{0}"}ms ({Name})");
     }
 }
 
@@ -142,7 +144,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
         Loadout2.Read(profile.Loadout2);
         Loadout3.Read(profile.Loadout3);
         UndoRedoSystem.RestoreBlockedEvents();
-        LoggingSystem.PrintElapsedTime("Profile Read took {0}ms");
+        LoggingSystem.PrintElapsedTime("Profile Read took {0}ms (3L)");
     }
 
     public void Write(BLRProfile profile)
@@ -153,7 +155,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
         Loadout2.Write(profile.Loadout2);
         Loadout3.Write(profile.Loadout3);
         if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(profile, EventArgs.Empty); }
-        LoggingSystem.PrintElapsedTime("Profile Write took {0}ms");
+        LoggingSystem.PrintElapsedTime("Profile Write took {0}ms (3L)");
     }
 }
 

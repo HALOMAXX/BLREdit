@@ -24,6 +24,8 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public static ObservableCollection<string?> AvailableProxyVersions { get; } = new() { "v1.0.0-beta.2", "v1.0.0-beta.3" };
 
     #region Settings
+    public int SelectedLoadout { get; set; } = 0;
+    [JsonIgnore] public int CurrentlyAppliedLoadout { get { return SelectedLoadout; } set { SelectedLoadout = value; OnPropertyChanged(); } }
     public int SelectedClient { get; set; } = 0;
     [JsonIgnore] public BLRClient? DefaultClient { get { if (SelectedClient >= DataStorage.GameClients.Count || SelectedClient < 0) { return null; } else { return DataStorage.GameClients[SelectedClient]; } } set { if (value is not null) { SelectedClient = DataStorage.GameClients.IndexOf(value); } else { SelectedClient = 0; } OnPropertyChanged(); } }
     public int SelectedServer { get; set; } = 0;
@@ -86,8 +88,10 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     public static void ResetSettings()
     {
-        if (MessageBox.Show("Are you sure you want to reset all BLREdit Config", "this is a caption", MessageBoxButton.YesNo) != MessageBoxResult.Yes) { return; }
-        LoggingSystem.MessageLog("Now Returning to Defaults. this will also restart BLREdit!");
+        if (!LoggingSystem.MessageLog(Properties.Resources.msg_ResetConfig, Properties.Resources.msgT_ResetConfig, MessageBoxButton.YesNo)) { return; }
+
+        LoggingSystem.MessageLog(Properties.Resources.msg_ResetConfigInfo, Properties.Resources.msgT_ResetConfig);
+
         DataStorage.Settings = new BLREditSettings();
 
         DataStorage.GameClients.Clear();

@@ -157,7 +157,7 @@ public partial class ServerListControl : UserControl
         }
         else
         {
-            LoggingSystem.MessageLog($"Unable to find suitable server!\ntry again later or manually connect to one from the server list!");
+            LoggingSystem.MessageLog($"Unable to find suitable server!\ntry again later or manually connect to one from the server list!", "Info"); //TODO: Add Localization
         }
     }
 }

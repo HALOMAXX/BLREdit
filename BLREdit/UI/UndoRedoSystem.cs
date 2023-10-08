@@ -68,6 +68,12 @@ public static class UndoRedoSystem
         UndoRedoSystemWorking = false;
     }
 
+    public static void ClearUndoRedoStack()
+    { 
+        UndoStack.Clear();
+        RedoStack.Clear();
+    }
+
     /// <summary>
     /// Ends an Action Chain
     /// </summary>
@@ -154,6 +160,7 @@ public enum BlockEvents
 { 
     None = 0,
     All = ~0,
+    AllExceptUpdate = All & ~Update,
     WriteAll = 7,
     WriteProfile = 1,
     WriteLoadout = 2,

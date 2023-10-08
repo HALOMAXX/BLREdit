@@ -137,9 +137,9 @@ public sealed class IOResources
 
     private static void GetGamePathFromVDF(string vdfPath, string appID)
     {
-        if (string.IsNullOrEmpty(vdfPath) || string.IsNullOrEmpty(appID)) { LoggingSystem.Log($"vdfPath or AppID is empty"); return; }
-        if (!File.Exists(vdfPath)) { LoggingSystem.Log($"vdfPath file doesn't exist"); return; }
-        
+        if (string.IsNullOrEmpty(vdfPath) || string.IsNullOrEmpty(appID)) { return; }
+        if (!File.Exists(vdfPath)) { return; }
+
         try
         {
             string data;
@@ -157,7 +157,7 @@ public sealed class IOResources
         }
         catch (Exception error)
         {
-            LoggingSystem.MessageLog($"failed reading {vdfPath}, found Folders:{GameFolders.Count}, steam library parsing aborted reason:\n{error}");
+            LoggingSystem.MessageLog(string.Format(Properties.Resources.msg_VDFGamePathError, vdfPath, GameFolders.Count, error), Properties.Resources.msgT_Error);
             GameFolders.Clear();
             return;
         }
@@ -171,7 +171,7 @@ public sealed class IOResources
 
     public static string? CreateFileHash(string? path)
     {
-        if (string.IsNullOrEmpty(path) || !File.Exists(path)) { LoggingSystem.Log($"[BLRClient]: Hashing failed reason: Can't find {path}"); return null; }
+        if (string.IsNullOrEmpty(path) || !File.Exists(path)) { return null; }
         using var stream = File.OpenRead(path);
         using var crypto = SHA256.Create();
         return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
@@ -236,42 +236,17 @@ public sealed class IOResources
 
     public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
     {
-        if (string.IsNullOrEmpty(filePath)) { LoggingSystem.Log("[Serializer]: filePath was empty!"); return; }
-        if (obj is null) { LoggingSystem.Log("[Serializer]: obj was null!"); return; }
-
-        bool writeFile;
-        if (obj is ExportSystemProfile prof)
-        {
-            if (prof.IsDirty)
-            {
-                LoggingSystem.Log($"[Serializer]: {prof.Name}❕");
-                writeFile = true;
-                if (File.Exists(filePath)) { File.Delete(filePath); }
-            }
-            else
-            {
-                LoggingSystem.Log($"[Serializer]: {prof.Name}✔");
-                writeFile = false;
-            }
-        }
-        else
-        {
-            writeFile = true;
-            if (File.Exists(filePath)) { File.Delete(filePath); }
-        }
-
-        if (writeFile)
-        {
-            using var file = new StreamWriter(File.Open(filePath, FileMode.Create), Encoding.UTF8);
-            file.Write(Serialize(obj, compact));
-            file.Close();
-            LoggingSystem.Log($"[Serializer]: {typeof(T).Name} serialize succes!");
-        }
+        if (string.IsNullOrEmpty(filePath)) { return; }
+        if (obj is null) { return; }
+        using var file = new StreamWriter(File.Open(filePath, FileMode.Create), Encoding.UTF8);
+        file.Write(Serialize(obj, compact));
+        file.Close();
+        LoggingSystem.Log($"[Serializer]: {typeof(T).Name} serialize succes!");
     }
 
     public static string Serialize<T>(T obj, bool compact = false)
     {
-        if (obj == null) { LoggingSystem.Log("[Serializer]: object was null!"); return ""; }
+        if (obj == null) { return ""; }
         if (compact)
         {
             return JsonSerializer.Serialize<T>(obj, JSOCompacted);
@@ -295,7 +270,6 @@ public sealed class IOResources
 
         if (!File.Exists("BLREdit.exe")) { Directory.SetCurrentDirectory(App.BLREditLocation); }
 
-        //check if file exist's before we try to read it if it doesn't exist return and Write an error to log
         if (!File.Exists(filePath))
         { LoggingSystem.Log($"[Serializer]: File({filePath}) was not found for Deserialization!"); return temp; }
 
