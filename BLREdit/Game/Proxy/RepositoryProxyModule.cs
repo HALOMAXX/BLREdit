@@ -141,33 +141,33 @@ public sealed class RepositoryProxyModule
             }
         }
         string dlTarget = $"downloads\\{InstallName}.dll";
+        ProxyModule? module = null;
         if (File.Exists(dlTarget)) { LoggingSystem.Log($"Deleting {dlTarget}"); File.Delete(dlTarget); }
         LoggingSystem.Log($"Downloading ({dl}) to ({dlTarget})");
-        WebResources.DownloadFile(dl, dlTarget);
-        LoggingSystem.Log($"Finished Downloading {dl}");
-
-        ProxyModule? module = null;
-        if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
-        { module = new ProxyModule(GitHubRelease, ModuleName, Owner, Repository, Client, Server); }
-        else if(GitlabRelease is not null)
-        { module = new ProxyModule(GitlabRelease, ModuleName, Owner, Repository, Client, Server); }
-
-        if (module is null) return module;
-
-        ProxyModule? toRemoveModule = null;
-        foreach (var mod in DataStorage.CachedModules)
+        if (WebResources.DownloadFile(dl, dlTarget))
         {
-            if (mod.InstallName == module.InstallName)
+            LoggingSystem.Log($"Finished Downloading {dl}");
+            if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
+            { module = new ProxyModule(GitHubRelease, ModuleName, Owner, Repository, Client, Server); }
+            else if (GitlabRelease is not null)
+            { module = new ProxyModule(GitlabRelease, ModuleName, Owner, Repository, Client, Server); }
+
+            if (module is null) return module;
+
+            ProxyModule? toRemoveModule = null;
+            foreach (var mod in DataStorage.CachedModules)
             {
-                toRemoveModule = mod;
-                break;
+                if (mod.InstallName == module.InstallName)
+                {
+                    toRemoveModule = mod;
+                    break;
+                }
             }
+
+            if (toRemoveModule is not null) DataStorage.CachedModules.Remove(toRemoveModule);
+
+            DataStorage.CachedModules.Add(module);
         }
-
-        if (toRemoveModule is not null) DataStorage.CachedModules.Remove(toRemoveModule);
-
-        DataStorage.CachedModules.Add(module);
-
         lockDownload = false;
         return module;
     }

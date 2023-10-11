@@ -32,11 +32,13 @@ public sealed class WebResources
     }
 
     private static BlockingCollection<DownloadRequest> DownloadRequests { get; } = new();
-    public static void DownloadFile(string url, string filename)
+    public static bool DownloadFile(string url, string filename)
     {
+        if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(filename)) { LoggingSystem.Log($"Failed to download file({filename}) from url({url})!"); return false; }
         DownloadRequest req = new(url, filename);
         DownloadRequests.Add(req);
         WaitHandle.WaitAll(new WaitHandle[] { req.locked });
+        return true;
     }
 
     private static void DownloadFiles()
