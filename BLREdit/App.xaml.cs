@@ -882,10 +882,12 @@ public partial class App : System.Windows.Application
     private static void DownloadLocale(string locale)
     {
         string targetZip = $"downloads\\localizations\\{locale}.zip";
-        WebResources.DownloadFile($"https://github.com/{CurrentOwner}/{CurrentRepo}/raw/master/Resources/Localizations/{locale}.zip", targetZip);
-        if (Directory.Exists(locale)) { Directory.Delete(locale, true); Directory.CreateDirectory(locale); }
-        ZipFile.ExtractToDirectory(targetZip, $"{locale}");
-        Restart();
+        if (WebResources.DownloadFile($"https://github.com/{CurrentOwner}/{CurrentRepo}/raw/master/Resources/Localizations/{locale}.zip", targetZip))
+        {
+            if (Directory.Exists(locale)) { Directory.Delete(locale, true); Directory.CreateDirectory(locale); }
+            ZipFile.ExtractToDirectory(targetZip, $"{locale}");
+            Restart();
+        }
     }
 
     public static void CheckAppUpdate()
