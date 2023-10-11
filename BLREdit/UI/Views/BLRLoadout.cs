@@ -90,7 +90,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear3 { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear4 { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.AVATARS_CATEGORY)] public BLRItem? Avatar { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.AVATARS_CATEGORY)] public BLRItem? Avatar { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); OnPropertyChanged(nameof(HasAvatar)); } }
     [BLRItem(ImportSystem.BADGES_CATEGORY)] public BLRItem? Trophy { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
     #endregion Gear
 
@@ -117,7 +117,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(value); ItemChanged(); } }
     private bool isBot;
     public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
-    
+
+    [JsonIgnore] public bool HasAvatar { get { return Avatar is not null && Avatar.Name != "No Avatar"; } }
+
     public BLRGear CopyGear()
     {
         return new BLRGear

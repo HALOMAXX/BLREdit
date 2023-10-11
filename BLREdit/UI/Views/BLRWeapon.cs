@@ -47,6 +47,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public bool IsPrimary { get; set; } = false;
 
+    [JsonIgnore] public bool HasSkinEquipped { get { return Skin is not null && Skin.Name != "No Weapon Skin"; } }
+
     private BLRLoadout? Loadout { get; set; }
 
     private bool isChanged = false;
@@ -75,7 +77,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     [BLRItem(ImportSystem.HANGERS_CATEGORY)] public BLRItem? Tag { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.CAMOS_WEAPONS_CATEGORY)] public BLRItem? Camo { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.AMMO_CATEGORY)] public BLRItem? Ammo { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.PRIMARY_SKIN_CATEGORY)] public BLRItem? Skin { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.PRIMARY_SKIN_CATEGORY)] public BLRItem? Skin { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasSkinEquipped)); } }
     #endregion Weapon Parts
 
     private BLRItem? GetValueOf([CallerMemberName] string? name = null)

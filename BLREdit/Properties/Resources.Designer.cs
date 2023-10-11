@@ -1701,8 +1701,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Player Name can&apos;t contain any of the following characters:
-        ///\ / : * ? &quot; &lt; &gt; |.
+        ///   Looks up a localized string similar to PlayerName can only contain: [a-z], [A-Z], [0-9], dash(-) and underscore(_)..
         /// </summary>
         public static string txt_TT_PlayerName {
             get {

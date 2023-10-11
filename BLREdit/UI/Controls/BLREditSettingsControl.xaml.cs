@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Provider;
@@ -27,6 +28,8 @@ namespace BLREdit.UI.Controls;
 public sealed partial class BLREditSettingsControl : UserControl
 {
     public static ObservableCollection<CultureInfo> AvailableCultures { get; } = new();
+
+    public static Regex PlayerNameFilter { get; } = new(@"^[a-zA-Z0-9\-_]*$");
 
     public BLREditSettingsControl()
     {
@@ -95,7 +98,7 @@ public sealed partial class BLREditSettingsControl : UserControl
             var text = textBox.Text;
             text = text.Remove(textBox.SelectionStart, textBox.SelectionLength);
             text = text.Insert(textBox.CaretIndex, e.Text);
-            e.Handled = !text.Equals(SimpleTextFilter(text));
+            e.Handled = !PlayerNameFilter.IsMatch(text);
             if (e.Handled)
             {
                 if (PlayerNameTextBox.Text != "BLREdit-Player")
@@ -117,12 +120,5 @@ public sealed partial class BLREditSettingsControl : UserControl
                 }
             }
         }
-    }
-
-
-    private static readonly char[] invalidChars = (new string(System.IO.Path.GetInvalidPathChars()) + new string(System.IO.Path.GetInvalidFileNameChars())).ToArray();
-    public static string SimpleTextFilter(string input)
-    { 
-        return new string(input.Where(x => !invalidChars.Contains(x)).ToArray());
     }
 }

@@ -669,8 +669,7 @@ Needs a Restart to Install Protocol!</value>
     <value>Weapons</value>
   </data>
   <data name="txt_TT_PlayerName" xml:space="preserve">
-    <value>Player Name can't contain any of the following characters:
-\ / : * ? " &lt; &gt; |</value>
+    <value>PlayerName can only contain: [a-z], [A-Z], [0-9], dash(-) and underscore(_).</value>
   </data>
   <data name="txt_TT_Region" xml:space="preserve">
     <value>Region examples (EU-West, US-West, AU, OCE)</value>

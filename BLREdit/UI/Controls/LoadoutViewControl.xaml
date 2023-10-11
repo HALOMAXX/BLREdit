@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
-             xmlns:export="clr-namespace:BLREdit.API.Export" xmlns:utils="clr-namespace:BLREdit.API.Utils"
+             xmlns:export="clr-namespace:BLREdit.API.Export"
+             xmlns:utils="clr-namespace:BLREdit.API.Utils"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -33,13 +34,18 @@
             <Image Source="{Binding Path=UpperBody.FemaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToVis}}"/>
             <Image Source="{Binding Path=Tactical.MaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Right"/>
 
-            <Image Source="{Binding Path=LowerBody.MaleIcon.IconFileInfo.FullName}" Grid.Row="2" HorizontalAlignment="Center" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToNotVis}}"/>
-            <Image Source="{Binding Path=LowerBody.FemaleIcon.IconFileInfo.FullName}" Grid.Row="2" HorizontalAlignment="Center" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToVis}}"/>
+            <Image Source="{Binding Path=LowerBody.MaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToNotVis}}"/>
+            <Image Source="{Binding Path=LowerBody.FemaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToVis}}"/>
             
         </Grid>
 
         <Image Source="{Binding Path=BodyCamo.Image.IconFileInfo.FullName}" Width="64" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0"/>
-        <Image Source="{Binding Path=Avatar.Image.IconFileInfo.FullName}" Width="64" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
+        <Image Source="{Binding Path=Avatar.Image.IconFileInfo.FullName}" Width="64" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Margin="0,0,0,64"/>
+
+        <Image Source="{Binding Path=Gear1.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,64,64" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
+        <Image Source="{Binding Path=Gear2.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,0,64" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
+        <Image Source="{Binding Path=Gear3.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
+        <Image Source="{Binding Path=Gear4.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,64,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
 
     </Grid>
 </UserControl>

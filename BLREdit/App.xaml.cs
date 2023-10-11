@@ -511,7 +511,7 @@ public partial class App : System.Windows.Application
 
                 if (newVersionAvailable && assetFolderMissing)
                 {
-                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_UpdateMissingFiles, "Info"); //TODO: Add Localization
+                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_UpdateMissingFiles, BLREdit.Properties.Resources.msgT_Info);
                     DownloadAssetFolder();
 
                     UpdateEXE();
@@ -519,7 +519,7 @@ public partial class App : System.Windows.Application
                 }
                 else if (newVersionAvailable && !assetFolderMissing)
                 {
-                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_Update, "Info"); //TODO: Add Localization
+                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_Update, BLREdit.Properties.Resources.msgT_Info);
                     UpdateAllAssetPacks();
 
                     UpdateEXE();
@@ -527,14 +527,14 @@ public partial class App : System.Windows.Application
                 }
                 else if (!newVersionAvailable && assetFolderMissing)
                 {
-                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_MisingFiles, "Info"); //TODO: Add Localization
+                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_MisingFiles, BLREdit.Properties.Resources.msgT_Info);
                     DownloadAssetFolder();
                     return true;
                 }
             }
         }
         catch (Exception error)
-        { LoggingSystem.MessageLog($"Failed to Update to Newest Version\n{error}", "Error"); return false; } //TODO: Add Localization
+        { LoggingSystem.MessageLog($"Failed to Update to Newest Version\n{error}", BLREdit.Properties.Resources.msgT_Error); return false; } //TODO: Add Localization
         return false;
     }
 

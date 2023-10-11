@@ -1,14 +1,20 @@
 ﻿<UserControl x:Class="BLREdit.UI.Controls.WeaponViewControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
              xmlns:export="clr-namespace:BLREdit.API.Export"
+             xmlns:utils="clr-namespace:BLREdit.API.Utils"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance Type=views:BLRWeapon}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <utils:BooleanToNotVisibilityConverter x:Key="BoolToNotVis" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -24,10 +30,49 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="{Binding Path=Reciever.Image.IconFileInfo.FullName}" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <Image Source="{Binding Path=Camo.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="16,0,0,0"/>
+                <Image Source="{Binding Path=Reciever.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToNotVis}}" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,32,0,32"/>
+                <Image Source="{Binding Path=Skin.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToVis}}" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,32,0,32"/>
+                <Image Source="{Binding Path=Camo.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+                <Image Source="{Binding Path=Magazine.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="64,0,0,0"/>
+                <Image Source="{Binding Path=Ammo.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="128,0,0,0"/>
+                <Image Source="{Binding Path=Tag.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="192,0,0,0"/>
+                <Image Source="{Binding Path=Scope.Image.IconFileInfo.FullName}" Width="64" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,64,0"/>
             </Grid>
         </Border>
+
+        <Grid Grid.RowSpan="1" Grid.ColumnSpan="2" Background="#ff000000" VerticalAlignment="Bottom" Name="StatPercentageGrid" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="{x:Static p:Resources.lbl_Damage}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=DamagePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModDamageLabel"/>
+
+            <Label Grid.Column="2" Grid.Row="0" Content="{x:Static p:Resources.lbl_Accuracy}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="0" Content="{Binding Path=AccuracyPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModAccuracyLabel"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Content="{x:Static p:Resources.lbl_Range}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=RangePercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRangeLabel"/>
+
+            <Label Grid.Column="2" Grid.Row="1" Content="{x:Static p:Resources.lbl_ReloadEmpty}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="1" Content="{Binding Path=ReloadPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModReloadLabel"/>
+
+            <Label Grid.Column="0" Grid.Row="2" Content="{x:Static p:Resources.lbl_Recoil}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=RecoilPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRecoilLabel"/>
+
+            <Label Grid.Column="2" Grid.Row="2" Content="{x:Static p:Resources.lbl_Run}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            <Label Grid.Column="3" Grid.Row="2" Content="{Binding Path=RunPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRunLabel"/>
+        </Grid>
+
         <Border BorderThickness="0,0,0,0" Background="Transparent" Grid.Row="1">
             <Label Content="{Binding Path=WeaponDescriptor}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Center"/>
         </Border>
