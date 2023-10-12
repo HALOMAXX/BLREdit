@@ -238,6 +238,8 @@ public sealed class IOResources
     {
         if (string.IsNullOrEmpty(filePath)) { return; }
         if (obj is null) { return; }
+        var info = new FileInfo(filePath);
+        if (!info.Directory.Exists) { info.Directory.Create(); }
         using var file = new StreamWriter(File.Open(filePath, FileMode.Create), Encoding.UTF8);
         file.Write(Serialize(obj, compact));
         file.Close();

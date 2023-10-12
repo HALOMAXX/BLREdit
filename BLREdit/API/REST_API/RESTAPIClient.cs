@@ -7,13 +7,39 @@ using System.Threading.Tasks;
 
 namespace BLREdit.API.REST_API;
 
-public sealed class RESTAPIClient(RepositoryProvider APIProvider, string baseAddress)
+public sealed class RESTAPIClient
 {
     readonly Dictionary<string, object> RequestCache = new();
+    readonly Dictionary<string, object> OldRequestCache;
 
-#pragma warning disable CA1822 // Mark members as static
+    readonly string baseAddress;
+    readonly RepositoryProvider APIProvider;
+
+    public RESTAPIClient(RepositoryProvider APIProvider, string baseAddress)
+    {
+        this.baseAddress = baseAddress;
+        this.APIProvider = APIProvider;
+        OldRequestCache = IOResources.DeserializeFile<Dictionary<string, object>>($"Cache\\{IOResources.JsonToBase64($"{APIProvider}\\{baseAddress}")}.json") ?? new();
+        DataStorage.DataSaving += SaveCache;
+    }
+
+    private void SaveCache(object? sender, EventArgs args)
+    {
+        foreach (var cache in RequestCache)
+        {
+            if (OldRequestCache.ContainsKey(cache.Key))
+            {
+                OldRequestCache[cache.Key] = cache.Value;
+            }
+            else
+            { 
+                OldRequestCache.Add(cache.Key, cache.Value);
+            }
+        }
+        IOResources.SerializeFile($"Cache\\{IOResources.JsonToBase64($"{APIProvider}\\{baseAddress}")}.json", OldRequestCache);
+    }
+
     private async Task<HttpResponseMessage?> GetAsync(string api)
-#pragma warning restore CA1822 // Mark members as static
     {
         try
         {
@@ -55,7 +81,15 @@ public sealed class RESTAPIClient(RepositoryProvider APIProvider, string baseAdd
         {
             var content = await response.Content.ReadAsStringAsync();
             var releases = IOResources.Deserialize<T[]>(content);
-            if(releases is not null) RequestCache.Add(api, releases);
+            if (releases is not null) { RequestCache.Add(api, releases); }
+            else
+            { 
+                if (OldRequestCache.TryGetValue(api, out var cache)) 
+                {
+                    LoggingSystem.Log($"[OldCache]:({typeof(T).Name}) {api}");
+                    return (T[])cache;
+                }
+            }
             return releases;
         }
         return default;

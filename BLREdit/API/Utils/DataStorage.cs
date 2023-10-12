@@ -7,11 +7,14 @@ using BLREdit.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace BLREdit;
 
 public static class DataStorage
 {
+    public static event EventHandler? DataSaving;
+
     #region Fields
     private static ObservableCollection<BLRClient>? _gameClients;
     private static ObservableCollection<BLRServer>? _servers;
@@ -44,6 +47,7 @@ public static class DataStorage
 
     public static void Save()
     {
+        DataSaving?.Invoke(null, EventArgs.Empty);
         IOResources.SerializeFile($"{IOResources.PROFILE_DIR}profileList.json", _shareableProfiles);
         IOResources.SerializeFile($"GameClients.json", _gameClients);
         IOResources.SerializeFile($"ServerList.json", _servers);
