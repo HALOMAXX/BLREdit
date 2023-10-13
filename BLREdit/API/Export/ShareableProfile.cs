@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace BLREdit.API.Export;
@@ -31,6 +32,9 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
     public string Name { get { return name; } set { name = value; OnPropertyChanged(); } }
     public ObservableCollection<ShareableLoadout> Loadouts { get; set; } = new() { MagiCowsLoadout.DefaultLoadout1.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout2.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout3.ConvertToShareable() };
 
+    private static readonly Regex CopyWithCount = new(@".* - Copy \([0-9]*\)$");
+    private static readonly Regex CopyWithoutCount = new(@".* - Copy$");
+
     public void RefreshInfo()
     {
         OnPropertyChanged(nameof(Name));
@@ -47,9 +51,30 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
 
     public ShareableProfile Clone()
     {
+        string name = Name;
+
+        if (CopyWithCount.IsMatch(Name))
+        {
+            var lastOpeningBracketIndex = Name.LastIndexOf('(');
+            var lastClosingBracketIndex = Name.LastIndexOf(')');
+            var numberPartOfName = Name.Substring(lastOpeningBracketIndex+1, lastClosingBracketIndex - (lastOpeningBracketIndex+1));
+            var copyNumber = int.Parse(numberPartOfName);
+            var cutName = Name.Substring(0, lastOpeningBracketIndex);
+            name = cutName + $"({++copyNumber})";
+        }
+        else if (CopyWithoutCount.IsMatch(Name))
+        {
+            name += " (1)";
+        }
+        else
+        {
+            name += " - Copy";
+        }
+        
+
         var dup = new ShareableProfile()
         {
-            Name = Name,
+            Name = name,
         };
         dup.Loadouts.Clear();
         foreach (var loadout in Loadouts)

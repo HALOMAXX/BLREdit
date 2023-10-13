@@ -369,17 +369,26 @@ public sealed partial class MainWindow : Window
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (View.IsPlayerNameChanging || UndoRedoSystem.UndoRedoSystemWorking || UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) return;
-        View.IsPlayerProfileChanging = true;
-        BlockChangeNotif = true;
         if (ProfileComboBox.SelectedValue is ShareableProfile profile)
         {
+#if DEBUG
+            if (UIKeys.Keys[Key.LeftShift].Is)
+            {
+                var loadout = DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)];
+                LoggingSystem.Log($"Removing Loadout[{loadout.Shareable.Name}]");
+                loadout.Remove();
+                return;
+            }
+#endif
+            View.IsPlayerProfileChanging = true;
+            BlockChangeNotif = true;
             UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
             UndoRedoSystem.DoAction(DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)], typeof(MainWindowView).GetProperty(nameof(View.Profile)), View);
             UndoRedoSystem.DoAction(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
             UndoRedoSystem.EndAction();
+            View.IsPlayerProfileChanging = false;
+            BlockChangeNotif = false;
         }
-        View.IsPlayerProfileChanging = false;
-        BlockChangeNotif = false;
     }
 
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)

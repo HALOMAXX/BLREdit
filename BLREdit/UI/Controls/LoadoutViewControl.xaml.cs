@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,19 @@ namespace BLREdit.UI.Controls
         public LoadoutViewControl()
         {
             InitializeComponent();
+            UIKeys.Keys[Key.LeftShift].PropertyChanged += SkinModifierChanged;
+        }
+
+        public void SkinModifierChanged(object sender, PropertyChangedEventArgs args)
+        {
+            if (UIKeys.Keys[Key.LeftShift].Is)
+            {
+                this.StatPercentageGrid.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                this.StatPercentageGrid.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

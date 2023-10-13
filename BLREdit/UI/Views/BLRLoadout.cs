@@ -489,8 +489,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     private string? hrvRechargeDisplay;
     public string HRVRechargeDisplay { get { return hrvRechargeDisplay ?? string.Empty; } private set { hrvRechargeDisplay = value; OnPropertyChanged(); } }
 
-    private string? gearSlotsDsiplay;
-    public string GearSlotsDsiplay { get { return gearSlotsDsiplay ?? string.Empty; } private set { gearSlotsDsiplay = value; OnPropertyChanged(); } }
+    private string? gearSlotsDisplay;
+    public string GearSlotsDisplay { get { return gearSlotsDisplay ?? string.Empty; } private set { gearSlotsDisplay = value; OnPropertyChanged(); } }
 
 
     private string? electroProtectionDisplay;
@@ -557,7 +557,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
         HRVDurationDisplay = HRVDuration.ToString("0.0") + 'u';
         HRVRechargeDisplay = HRVRechargeRate.ToString("0.0") + "u/s";
-        GearSlotsDsiplay = GearSlots.ToString("0");
+        GearSlotsDisplay = GearSlots.ToString("0");
 
         ElectroProtectionDisplay = RawElectroProtection.ToString("0") + '%';
         ExplosionProtectionDisplay = RawExplosiveProtection.ToString("0") + '%';
