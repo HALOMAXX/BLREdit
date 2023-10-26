@@ -213,7 +213,7 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
 
     public void Remove()
     {
-        DataStorage.ShareableProfiles.Remove(this.Shareable);
+        DataStorage.ShareableProfiles.Remove(Shareable);
         DataStorage.Loadouts.Remove(this);
     }
 

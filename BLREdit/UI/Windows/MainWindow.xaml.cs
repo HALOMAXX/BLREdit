@@ -374,9 +374,16 @@ public sealed partial class MainWindow : Window
 #if DEBUG
             if (UIKeys.Keys[Key.LeftShift].Is)
             {
+                View.IsPlayerNameChanging = true;
+                BlockChangeNotif = true;
                 var loadout = DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)];
                 LoggingSystem.Log($"Removing Loadout[{loadout.Shareable.Name}]");
                 loadout.Remove();
+
+                ProfileComboBox.SelectedValue = e.RemovedItems[0];
+
+                View.IsPlayerNameChanging = false;
+                BlockChangeNotif = false;
                 return;
             }
 #endif

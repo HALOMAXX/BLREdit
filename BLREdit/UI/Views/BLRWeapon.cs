@@ -10,6 +10,7 @@ using System.Numerics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using System.Windows.Data;
 
 namespace BLREdit.UI.Views;
 
@@ -99,6 +100,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.SetValueTest))
         {
             var reciever = GetValueOf(nameof(Reciever));
+            if(DataStorage.Settings.AdvancedModding.IsNot) value ??= MagiCowsWeapon.GetDefaultSetupOfReciever(reciever)?.GetItemByType(propAndAttri.Item2.ItemType) ?? null;
             if (value is not null && (!value.IsValidFor(reciever) || !propAndAttri.Item2.ItemType.Contains(value.Category)))
             { return; }
         }

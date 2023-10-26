@@ -101,6 +101,24 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         return null;
     }
 
+    public BLRItem? GetItemByType(string type)
+    {
+        return type switch
+        {
+            ImportSystem.CAMOS_WEAPONS_CATEGORY => GetCamo(),
+            ImportSystem.HANGERS_CATEGORY => GetTag(),
+            ImportSystem.MAGAZINES_CATEGORY => GetMagazine(),
+            ImportSystem.BARRELS_CATEGORY => GetBarrel(),
+            ImportSystem.SCOPES_CATEGORY => GetScope(),
+            ImportSystem.STOCKS_CATEGORY => GetStock(),
+            ImportSystem.AMMO_CATEGORY => GetAmmo(),
+            ImportSystem.PRIMARY_SKIN_CATEGORY => GetSkin(),
+            ImportSystem.GRIPS_CATEGORY => GetGrip(),
+            ImportSystem.MUZZELS_CATEGORY => GetMuzzle(),
+            _ => null,
+        };
+    }
+
     public BLRItem? GetCamo()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, Camo);
@@ -144,13 +162,14 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         return ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, Grip);
     }
 
-    public static MagiCowsWeapon? GetDefaultSetupOfReciever(BLRItem item)
+    public static MagiCowsWeapon? GetDefaultSetupOfReciever(BLRItem? item)
     {
+        if (item is null) return null;
         var tuple = DefaultWeapons as ITuple;
+
         for (int i = 0; i < tuple.Length; i++)
         {
-            MagiCowsWeapon wpn = (tuple[i] as MagiCowsWeapon ?? new());
-            if (wpn.Receiver == item.Name)
+            if (tuple[i] is MagiCowsWeapon wpn && wpn.Receiver == item.Name)
             {
                 return wpn.Clone();
             }
