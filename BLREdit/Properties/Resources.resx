@@ -570,8 +570,14 @@
   <data name="tbtn_EnableAPI" xml:space="preserve">
     <value>Enable BLREdit API</value>
   </data>
+  <data name="tbtn_EnableFramerateSmoothing" xml:space="preserve">
+    <value>Framerate Smoothing</value>
+  </data>
   <data name="tbtn_ForceRuntimeCheck" xml:space="preserve">
     <value>ForceRuntimeCheck</value>
+  </data>
+  <data name="tbtn_FramerateSmoothingVSync" xml:space="preserve">
+    <value>Framerate Smoothing VSync</value>
   </data>
   <data name="tbtn_InstallRequiredModules" xml:space="preserve">
     <value>Install Required Modules</value>
@@ -608,8 +614,14 @@
 Important needs Admin priviliges to install the Protocol into the Windows Registry. 
 Needs a Restart to Install Protocol!</value>
   </data>
+  <data name="tbtn_TT_EnableFramerateSmoothing" xml:space="preserve">
+    <value>Enables Framerate Smoothing and removes the framerate cap</value>
+  </data>
   <data name="tbtn_TT_ForceRuntimeCheck" xml:space="preserve">
     <value>Forces the Runtime Check Dialog to display</value>
+  </data>
+  <data name="tbtn_TT_FramerateSmoothingVSync" xml:space="preserve">
+    <value>Set the Framerate cap to the Display Refreshrate</value>
   </data>
   <data name="tbtn_TT_InstallRequiredModules" xml:space="preserve">
     <value>Installs all Required Modules just before launch</value>

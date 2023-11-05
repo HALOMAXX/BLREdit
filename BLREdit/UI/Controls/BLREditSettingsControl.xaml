@@ -41,6 +41,16 @@
                 </StackPanel>
             </Border>
             <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=EnableFramerateSmoothing}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_EnableFramerateSmoothing }" ToolTip="{x:Static p:Resources.tbtn_TT_EnableFramerateSmoothing }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <!--<Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=FramerateSmoothingToDisplayRefreshrate}">
+                    <ToggleButton Content="{x:Static p:Resources.tbtn_FramerateSmoothingVSync }" ToolTip="{x:Static p:Resources.tbtn_TT_FramerateSmoothingVSync }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>-->
+            <Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AllowCustomModules}">
                     <ToggleButton Content="{x:Static p:Resources.tbtn_AllowCustomModules }" ToolTip="{x:Static p:Resources.tbtn_TT_AllowCustomModules }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
                 </StackPanel>

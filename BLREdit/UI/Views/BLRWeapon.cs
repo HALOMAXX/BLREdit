@@ -17,6 +17,7 @@ namespace BLREdit.UI.Views;
 public sealed class BLRWeapon : INotifyPropertyChanged
 {
     private IBLRWeapon? _weapon;
+    public IBLRWeapon? InternalWeapon { get { return _weapon; } }
 
     static readonly Type thisClassType = typeof(BLRWeapon);
     public static PropertyInfo[] WeaponPartInfo { get; } = ((from property in thisClassType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property).ToArray());
@@ -110,7 +111,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public BLRWeapon Copy()
     {
-        BLRWeapon wpn = new(IsPrimary, null);
+        BLRWeapon wpn = new(IsPrimary);
         foreach (var property in WeaponPartInfo)
         {
             if (property.GetValue(this) is BLRItem item)
@@ -118,8 +119,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                 property.SetValue(wpn, item);
             }
         }
-        var wpnCat = IsPrimary ? "Primary" : "Secondary";
-        MainWindow.ShowAlert($"Copied {wpnCat} Weapon!");
         return wpn;
     }
 
@@ -132,7 +131,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             {
                 if (property.GetValue(weapon) is BLRItem item)
                 {
-                    UndoRedoSystem.DoAction(item, property, this, BlockEvents.All);
+                    UndoRedoSystem.DoAction(item, property, this, BlockEvents.AllExceptUpdate);
                 }
             }
             UndoRedoSystem.DoAction(Ammo, WeaponPartInfoDictonary[nameof(Ammo)].Item1, this); //to Trigger all Events at the end of the Sequence
@@ -298,7 +297,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         OnPropertyChanged(nameof(ScopePreview));
     }
 
-    public BLRWeapon(bool isPrimary, BLRLoadout? loadout = null, ShareableWeapon? weapon = null, bool readBackEvent = false)
+    public BLRWeapon(bool isPrimary, BLRLoadout? loadout = null, IBLRWeapon? weapon = null, bool readBackEvent = false)
     {
         IsPrimary = isPrimary;
         Loadout = loadout;

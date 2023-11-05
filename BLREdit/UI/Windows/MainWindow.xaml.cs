@@ -21,6 +21,8 @@ using BLREdit.API.InterProcess;
 using BLREdit.API.Export;
 using BLREdit.API.Utils;
 using BLREdit.Game;
+using System.Drawing.Imaging;
+using System.Text;
 
 namespace BLREdit.UI;
 
@@ -426,7 +428,7 @@ public sealed partial class MainWindow : Window
         }
         else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
         {
-            string link = $"<blredit://import-profile/{IOResources.JsonToBase64(IOResources.RemoveWhiteSpacesFromJson.Replace(IOResources.Serialize(new Shareable3LoadoutSet(View.Profile.BLR), true), "$1"))}>";
+            string link = $"<blredit://import-profile/{IOResources.DataToBase64(IOResources.Zip(IOResources.RemoveWhiteSpacesFromJson.Replace(IOResources.Serialize(new Shareable3LoadoutSet(View.Profile.BLR), true), "$1")))}>";
             ExportSystem.SetClipboard(link);
             ShowAlert($"{View.Profile.Shareable.Name} Share Link Created!"); //TODO: Add Localization
         }
@@ -513,13 +515,22 @@ public sealed partial class MainWindow : Window
                             case WeaponControl weaponControl:
                                 if (weaponControl.DataContext is BLRWeapon weapon)
                                 {
+                                    var copy = weapon.Copy();
                                     if (weapon.IsPrimary)
                                     {
-                                        View.PrimaryWeaponCopy = weapon.Copy();
+                                        View.PrimaryWeaponCopy = copy;
+                                        ShowAlert($"Copied Primary Weapon!"); //TODO: Add Localization
                                     }
                                     else
                                     {
-                                        View.SecondaryWeaponCopy = weapon.Copy();
+                                        View.SecondaryWeaponCopy = copy;
+                                        ShowAlert($"Copied Secondary Weapon!"); //TODO: Add Localization
+                                    }
+                                    if (weapon.InternalWeapon is ShareableWeapon wpn)
+                                    {
+                                        string json = IOResources.Serialize(wpn, true);
+                                        string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
+                                        ExportSystem.SetClipboard(jsonNoWhitespaces);
                                     }
                                 }
                                 break;
@@ -528,6 +539,12 @@ public sealed partial class MainWindow : Window
                                 {
                                     View.GearCopy = gearLoadout.CopyGear();
                                     ShowAlert($"Copied Gear!"); //TODO: Add Localization
+                                    if (gearLoadout.InternalLoadout is ShareableLoadout ldt)
+                                    {
+                                        string json = IOResources.Serialize(ldt, true);
+                                        string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
+                                        ExportSystem.SetClipboard(jsonNoWhitespaces);
+                                    }
                                 }
                                 break;
                             case ExtraControl extraControl:
@@ -535,6 +552,12 @@ public sealed partial class MainWindow : Window
                                 {
                                     View.ExtraCopy = extraLoadout.CopyExtra();
                                     ShowAlert($"Copied Extra!"); //TODO: Add Localization
+                                    if (extraLoadout.InternalLoadout is ShareableLoadout ldt)
+                                    {
+                                        string json = IOResources.Serialize(ldt, true);
+                                        string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
+                                        ExportSystem.SetClipboard(jsonNoWhitespaces);
+                                    }
                                 }
                                 break;
                             case LoadoutViewControl loadoutViewControl:
@@ -543,6 +566,12 @@ public sealed partial class MainWindow : Window
                                     View.ExtraCopy = viewLoadout.CopyExtra();
                                     View.GearCopy = viewLoadout.CopyGear();
                                     ShowAlert($"Copied Gear & Extra!"); //TODO: Add Localization
+                                    if (viewLoadout.InternalLoadout is ShareableLoadout ldt)
+                                    {
+                                        string json = IOResources.Serialize(ldt, true);
+                                        string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
+                                        ExportSystem.SetClipboard(jsonNoWhitespaces);
+                                    }
                                 }
                                 break;
                             case WeaponViewControl weaponViewControl:
@@ -551,10 +580,18 @@ public sealed partial class MainWindow : Window
                                     if (viewWeapon.IsPrimary)
                                     {
                                         View.PrimaryWeaponCopy = viewWeapon.Copy();
+                                        ShowAlert($"Copied Primary Weapon!"); //TODO: Add Localization
                                     }
                                     else
                                     {
                                         View.SecondaryWeaponCopy = viewWeapon.Copy();
+                                        ShowAlert($"Copied Secondary Weapon!"); //TODO: Add Localization
+                                    }
+                                    if (viewWeapon.InternalWeapon is ShareableWeapon wpn)
+                                    {
+                                        string json = IOResources.Serialize(wpn, true);
+                                        string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
+                                        ExportSystem.SetClipboard(jsonNoWhitespaces);
                                     }
                                 }
                                 break;
@@ -569,6 +606,7 @@ public sealed partial class MainWindow : Window
 
                     if (HitTestLoadoutControls(this, p) is FrameworkElement target)
                     {
+                        var clip = ExportSystem.GetClipboard();
                         switch (target)
                         {
                             case WeaponControl weaponControl:
@@ -576,10 +614,18 @@ public sealed partial class MainWindow : Window
                                 {
                                     if (weapon.IsPrimary)
                                     {
+                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
+                                        {
+                                            View.PrimaryWeaponCopy = wpn.ToBLRWeapon(true);
+                                        }
                                         weapon.ApplyCopy(View.PrimaryWeaponCopy);
                                     }
                                     else
                                     {
+                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
+                                        {
+                                            View.SecondaryWeaponCopy = wpn.ToBLRWeapon(false);
+                                        }
                                         weapon.ApplyCopy(View.SecondaryWeaponCopy);
                                     }
                                 }
@@ -587,18 +633,31 @@ public sealed partial class MainWindow : Window
                             case GearControl gearControl:
                                 if (gearControl.DataContext is BLRLoadout gearLoadout)
                                 {
+                                    if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
+                                    {
+                                        View.GearCopy = ldt.ToBLRLoadout().CopyGear();
+                                    }
                                     gearLoadout.ApplyExtraGearCopy(null, View.GearCopy);
                                 }
                                 break;
                             case ExtraControl extraControl:
                                 if (extraControl.DataContext is BLRLoadout extraLoadout)
                                 {
+                                    if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
+                                    {
+                                        View.ExtraCopy = ldt.ToBLRLoadout().CopyExtra();
+                                    }
                                     extraLoadout.ApplyExtraGearCopy(View.ExtraCopy);
                                 }
                                 break;
                             case LoadoutViewControl loadoutViewControl:
                                 if (loadoutViewControl.DataContext is BLRLoadout viewLoadout)
                                 {
+                                    if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
+                                    {
+                                        View.GearCopy = ldt.ToBLRLoadout().CopyGear();
+                                        View.ExtraCopy = ldt.ToBLRLoadout().CopyExtra();
+                                    }
                                     viewLoadout.ApplyExtraGearCopy(View.ExtraCopy, View.GearCopy);
                                 }
                                 break;
@@ -607,10 +666,18 @@ public sealed partial class MainWindow : Window
                                 {
                                     if (viewWeapon.IsPrimary)
                                     {
+                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
+                                        {
+                                            View.PrimaryWeaponCopy = wpn.ToBLRWeapon(true);
+                                        }
                                         viewWeapon.ApplyCopy(View.PrimaryWeaponCopy);
                                     }
                                     else
                                     {
+                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
+                                        {
+                                            View.SecondaryWeaponCopy = wpn.ToBLRWeapon(false);
+                                        }
                                         viewWeapon.ApplyCopy(View.SecondaryWeaponCopy);
                                     }
                                 }

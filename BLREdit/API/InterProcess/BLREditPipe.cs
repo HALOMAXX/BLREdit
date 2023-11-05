@@ -256,7 +256,8 @@ public sealed class BLREditPipe
         ApiEndPoints.Add("import-profile", (compressedBase64) => {
             LoggingSystem.Log($"[BLREdit API](import-profile): Importing Profile");
             if (string.IsNullOrEmpty(compressedBase64)) { LoggingSystem.Log($"[BLREdit API](import-profile): Recieved Empty string!"); return; }
-            var json = IOResources.Base64ToJson(compressedBase64);
+            var compressedData = IOResources.Base64ToData(compressedBase64);
+            var json = IOResources.Unzip(compressedData);
             if (string.IsNullOrEmpty(json) || (!json.StartsWith("{") && !json.StartsWith("["))) { LoggingSystem.Log("[BLREdit API](import-profile): Recieved invalid json"); return; }
             var sharedProfile = IOResources.Deserialize<Shareable3LoadoutSet>(json);
             if (sharedProfile is null) { LoggingSystem.Log("[BLREdit API](import-profile): failed to deserialize shareable profile!"); return; }

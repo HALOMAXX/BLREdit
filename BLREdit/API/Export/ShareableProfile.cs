@@ -473,7 +473,7 @@ public sealed class ShareableWeapon : IBLRWeapon
         }
     }
 
-    public BLRWeapon ToBLRWeapon(bool isPrimary, BLRLoadout loadout) 
+    public BLRWeapon ToBLRWeapon(bool isPrimary, BLRLoadout? loadout = null) 
     {
         return new BLRWeapon(isPrimary, loadout, this, true);
     }

@@ -14,6 +14,7 @@ namespace BLREdit.UI.Views;
 public sealed class BLRLoadout : INotifyPropertyChanged
 {
     private IBLRLoadout? _loadout;
+    public IBLRLoadout? InternalLoadout { get { return _loadout; } }
 
     #region Event
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -169,38 +170,38 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
         if (gear is not null)
         {
-            UndoRedoSystem.DoAction(gear.Helmet, loadoutType.GetProperty(nameof(Helmet)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.UpperBody, loadoutType.GetProperty(nameof(UpperBody)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.LowerBody, loadoutType.GetProperty(nameof(LowerBody)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.Tactical, loadoutType.GetProperty(nameof(Tactical)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.Gear1, loadoutType.GetProperty(nameof(Gear1)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.Gear2, loadoutType.GetProperty(nameof(Gear2)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.Gear3, loadoutType.GetProperty(nameof(Gear3)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.Gear4, loadoutType.GetProperty(nameof(Gear4)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.BodyCamo, loadoutType.GetProperty(nameof(BodyCamo)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.Avatar, loadoutType.GetProperty(nameof(Avatar)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.Trophy, loadoutType.GetProperty(nameof(Trophy)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.IsFemale, loadoutType.GetProperty(nameof(IsFemale)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(gear.IsBot, loadoutType.GetProperty(nameof(IsBot)), this, BlockEvents.All);
+            UndoRedoSystem.DoAction(gear.Helmet, loadoutType.GetProperty(nameof(Helmet)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.UpperBody, loadoutType.GetProperty(nameof(UpperBody)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.LowerBody, loadoutType.GetProperty(nameof(LowerBody)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.Tactical, loadoutType.GetProperty(nameof(Tactical)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.Gear1, loadoutType.GetProperty(nameof(Gear1)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.Gear2, loadoutType.GetProperty(nameof(Gear2)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.Gear3, loadoutType.GetProperty(nameof(Gear3)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.Gear4, loadoutType.GetProperty(nameof(Gear4)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.BodyCamo, loadoutType.GetProperty(nameof(BodyCamo)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.Avatar, loadoutType.GetProperty(nameof(Avatar)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.Trophy, loadoutType.GetProperty(nameof(Trophy)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.IsFemale, loadoutType.GetProperty(nameof(IsFemale)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(gear.IsBot, loadoutType.GetProperty(nameof(IsBot)), this, BlockEvents.AllExceptUpdate);
             message += " Gear";
             
         }
         if (extra is not null)
         {
-            UndoRedoSystem.DoAction(extra.Depot1, loadoutType.GetProperty(nameof(Depot1)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Depot2, loadoutType.GetProperty(nameof(Depot2)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Depot3, loadoutType.GetProperty(nameof(Depot3)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Depot4, loadoutType.GetProperty(nameof(Depot4)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Depot5, loadoutType.GetProperty(nameof(Depot5)), this, BlockEvents.All);
+            UndoRedoSystem.DoAction(extra.Depot1, loadoutType.GetProperty(nameof(Depot1)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Depot2, loadoutType.GetProperty(nameof(Depot2)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Depot3, loadoutType.GetProperty(nameof(Depot3)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Depot4, loadoutType.GetProperty(nameof(Depot4)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Depot5, loadoutType.GetProperty(nameof(Depot5)), this, BlockEvents.AllExceptUpdate);
 
-            UndoRedoSystem.DoAction(extra.Taunt1, loadoutType.GetProperty(nameof(Taunt1)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Taunt2, loadoutType.GetProperty(nameof(Taunt2)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Taunt3, loadoutType.GetProperty(nameof(Taunt3)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Taunt4, loadoutType.GetProperty(nameof(Taunt4)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Taunt5, loadoutType.GetProperty(nameof(Taunt5)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Taunt6, loadoutType.GetProperty(nameof(Taunt6)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Taunt7, loadoutType.GetProperty(nameof(Taunt7)), this, BlockEvents.All);
-            UndoRedoSystem.DoAction(extra.Taunt8, loadoutType.GetProperty(nameof(Taunt8)), this, BlockEvents.All);
+            UndoRedoSystem.DoAction(extra.Taunt1, loadoutType.GetProperty(nameof(Taunt1)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Taunt2, loadoutType.GetProperty(nameof(Taunt2)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Taunt3, loadoutType.GetProperty(nameof(Taunt3)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Taunt4, loadoutType.GetProperty(nameof(Taunt4)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Taunt5, loadoutType.GetProperty(nameof(Taunt5)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Taunt6, loadoutType.GetProperty(nameof(Taunt6)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Taunt7, loadoutType.GetProperty(nameof(Taunt7)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoAction(extra.Taunt8, loadoutType.GetProperty(nameof(Taunt8)), this, BlockEvents.AllExceptUpdate);
             if (gear is not null) { message += " & Extra"; }
             else { message += " Extra"; }
         }

@@ -187,6 +187,22 @@ public sealed class BLRClient : INotifyPropertyChanged
         IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\UE3_online_profile.json", profileSettings.Settings.Values.ToArray());
         IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\keybinding.json", profileSettings.KeyBindings);
     }
+
+    public void ApplyConfigs()
+    {
+        var info = new FileInfo($"{BasePath}\\FoxGame\\Config\\PCConsole\\Cooked\\PCConsole-FoxEngine.ini");
+        var file = File.ReadAllText(info.FullName);
+        string replaced;
+        if (DataStorage.Settings.EnableFramerateSmoothing.Is)
+        {
+            replaced = file.Replace("MaxSmoothedFrameRate=62", "MaxSmoothedFrameRate=1000");   
+        }
+        else
+        {
+            replaced = file.Replace("MaxSmoothedFrameRate=1000", "MaxSmoothedFrameRate=62");
+        }
+        File.WriteAllText(info.FullName, replaced);
+    }
     #endregion ProfileSettings
 
     #region ClientValidation
@@ -558,7 +574,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public void LaunchClient(LaunchOptions options)
     {
         ApplyProfileSetting(ExportSystem.GetOrAddProfileSettings(options.UserName));
-
+        ApplyConfigs();
         string launchArgs = options.Server.IPAddress + ':' + options.Server.Port;
         launchArgs += $"?Name={options.UserName}";
         StartProcess(launchArgs);

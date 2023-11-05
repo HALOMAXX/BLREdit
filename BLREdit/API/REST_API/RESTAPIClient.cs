@@ -19,7 +19,7 @@ public sealed class RESTAPIClient
     {
         this.baseAddress = baseAddress;
         this.APIProvider = APIProvider;
-        OldRequestCache = IOResources.DeserializeFile<Dictionary<string, object>>($"Cache\\{IOResources.JsonToBase64($"{APIProvider}\\{baseAddress}")}.json") ?? new();
+        OldRequestCache = IOResources.DeserializeFile<Dictionary<string, object>>($"Cache\\{IOResources.DataToBase64(IOResources.Zip($"{APIProvider}\\{baseAddress}"))}.json") ?? new();
         DataStorage.DataSaving += SaveCache;
     }
 
@@ -36,7 +36,7 @@ public sealed class RESTAPIClient
                 OldRequestCache.Add(cache.Key, cache.Value);
             }
         }
-        IOResources.SerializeFile($"Cache\\{IOResources.JsonToBase64($"{APIProvider}\\{baseAddress}")}.json", OldRequestCache);
+        IOResources.SerializeFile($"Cache\\{IOResources.DataToBase64(IOResources.Zip($"{APIProvider}\\{baseAddress}"))}.json", OldRequestCache);
     }
 
     private async Task<HttpResponseMessage?> GetAsync(string api)

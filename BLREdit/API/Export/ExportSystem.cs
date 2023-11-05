@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using System.Windows;
 
 namespace BLREdit.Export;
 
@@ -69,8 +70,15 @@ public sealed class ExportSystem
 
         clipboardExecutable.StandardInput.Write(value);
         clipboardExecutable.StandardInput.Close();
+    }
 
-        return;
+    public static string? GetClipboard()
+    {
+        if (Clipboard.ContainsText(TextDataFormat.Text))
+        {
+            return Clipboard.GetText(TextDataFormat.Text);
+        }
+        return null;
     }
 
     public static Dictionary<string, BLRProfileSettingsWrapper> LoadSettingProfiles()

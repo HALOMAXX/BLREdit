@@ -186,14 +186,14 @@ public sealed class IOResources
         File.Copy(file, targetDir.FullName + info.Name, true);
     }
 
-    public static string JsonToBase64(string json)
+    public static string DataToBase64(byte[] data)
     {
-        return Base64UrlEncoder.Encode(IOResources.Zip(json));
+        return Base64UrlEncoder.Encode(data);
     }
 
-    public static string Base64ToJson(string base64)
+    public static byte[] Base64ToData(string base64)
     {
-        return IOResources.Unzip(Base64UrlEncoder.DecodeBytes(base64));
+        return Base64UrlEncoder.DecodeBytes(base64);
     }
 
     public static byte[] Zip(string str)

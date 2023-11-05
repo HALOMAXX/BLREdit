@@ -1411,11 +1411,29 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Framerate Smoothing.
+        /// </summary>
+        public static string tbtn_EnableFramerateSmoothing {
+            get {
+                return ResourceManager.GetString("tbtn_EnableFramerateSmoothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ForceRuntimeCheck.
         /// </summary>
         public static string tbtn_ForceRuntimeCheck {
             get {
                 return ResourceManager.GetString("tbtn_ForceRuntimeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Framerate Smoothing VSync.
+        /// </summary>
+        public static string tbtn_FramerateSmoothingVSync {
+            get {
+                return ResourceManager.GetString("tbtn_FramerateSmoothingVSync", resourceCulture);
             }
         }
         
@@ -1521,11 +1539,29 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enables Framerate Smoothing and removes the framerate cap.
+        /// </summary>
+        public static string tbtn_TT_EnableFramerateSmoothing {
+            get {
+                return ResourceManager.GetString("tbtn_TT_EnableFramerateSmoothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forces the Runtime Check Dialog to display.
         /// </summary>
         public static string tbtn_TT_ForceRuntimeCheck {
             get {
                 return ResourceManager.GetString("tbtn_TT_ForceRuntimeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the Framerate cap to the Display Refreshrate.
+        /// </summary>
+        public static string tbtn_TT_FramerateSmoothingVSync {
+            get {
+                return ResourceManager.GetString("tbtn_TT_FramerateSmoothingVSync", resourceCulture);
             }
         }
         
