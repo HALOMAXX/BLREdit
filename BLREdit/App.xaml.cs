@@ -32,7 +32,7 @@ namespace BLREdit;
 public partial class App : System.Windows.Application
 {
     public const string CurrentVersion = "v0.11.7";
-    public const string CurrentVersionTitle = "Better Loadout Management";
+    public const string CurrentVersionTitle = "Loadout Managment Preview";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 

@@ -19,7 +19,7 @@
         <TabControl BorderThickness="0,1,0,0" >
             <TabItem Header="{x:Static p:Resources.ti_ProxyModuleList}">
                 <Grid>
-                    <ListView Name="ModuleList" ItemsSource="{Binding Path=AvailabeModules}">
+                    <ListView Name="ModuleList" ItemsSource="{Binding Path=AvailableModules}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="2"/>

@@ -5,18 +5,11 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime;
 using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media.Converters;
 using System.Windows.Media.Imaging;
-using System.Xml.Linq;
 
 using BLREdit.Export;
 using BLREdit.Game.Proxy;
@@ -93,7 +86,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public ObservableCollection<ProxyModule> CustomModules { get; set; } = new();
 
-    [JsonIgnore] public static ObservableCollection<VisualProxyModule> AvailabeModules { get { return App.AvailableProxyModules; } }
+    [JsonIgnore] public static ObservableCollection<VisualProxyModule> AvailableModules { get { return App.AvailableProxyModules; } }
 
     public BLRClient()
     {

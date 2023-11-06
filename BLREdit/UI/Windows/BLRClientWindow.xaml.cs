@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
+
 namespace BLREdit.UI.Windows;
 
 /// <summary>
@@ -28,6 +30,10 @@ public sealed partial class BLRClientWindow : Window, INotifyPropertyChanged
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        if (CollectionViewSource.GetDefaultView(ModuleList.ItemsSource) is CollectionView view)
+        {
+            view.Filter += new Predicate<object>(ModuleFilters.FullFilter);
+        }
     }
     #endregion Events
 
