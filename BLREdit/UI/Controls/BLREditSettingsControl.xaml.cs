@@ -30,12 +30,12 @@ public sealed partial class BLREditSettingsControl : UserControl
     public static ObservableCollection<CultureInfo> AvailableCultures { get; } = new();
 
     public static Regex PlayerNameFilter { get; } = new(@"^[a-zA-Z0-9\-_]*$");
+    public static Regex PlayerNameSanitizer { get; } = new(@"[^a-zA-Z0-9\-_]*");
 
     public BLREditSettingsControl()
     {
         InitializeComponent();
         PlayerNameBorder.Background = SolidColorBrush;
-        //DataContext = DataStorage.Settings;
         App.AvailableProxyModuleCheck();
         AvailableCultures.Add(App.DefaultCulture);
         foreach (var locale in App.AvailableLocalizations)
@@ -43,6 +43,7 @@ public sealed partial class BLREditSettingsControl : UserControl
             AvailableCultures.Add(CultureInfo.CreateSpecificCulture(locale.Key));
         }
         LanguageComboBox.SelectedItem = DataStorage.Settings.SelectedCulture;
+        DataStorage.Settings.PlayerName = PlayerNameSanitizer.Replace(DataStorage.Settings.PlayerName, string.Empty);
     }
 
     private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
