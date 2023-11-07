@@ -311,10 +311,10 @@ public sealed class ShareableLoadout : IBLRLoadout
             Bot = Bot,
             ButtPack = ButtPack,
             Female = Female,
-            Gear_L1 = Gear_L1,
-            Gear_L2 = Gear_L2,
             Gear_R1 = Gear_R1,
             Gear_R2 = Gear_R2,
+            Gear_L1 = Gear_L1,
+            Gear_L2 = Gear_L2,
             Hanger = Hanger,
             Helmet = Helmet,
             LowerBody = LowerBody,
@@ -403,10 +403,10 @@ public sealed class ShareableLoadout : IBLRLoadout
         Depot[3] = BLRItem.GetMagicCowsID(loadout.Depot4);
         Depot[4] = BLRItem.GetMagicCowsID(loadout.Depot5);
 
-        Gear_L1 = BLRItem.GetMagicCowsID(loadout.Gear1);
-        Gear_L2 = BLRItem.GetMagicCowsID(loadout.Gear2);
-        Gear_R1 = BLRItem.GetMagicCowsID(loadout.Gear3);
-        Gear_R2 = BLRItem.GetMagicCowsID(loadout.Gear4);
+        Gear_R1 = BLRItem.GetMagicCowsID(loadout.Gear1);
+        Gear_R2 = BLRItem.GetMagicCowsID(loadout.Gear2);
+        Gear_L1 = BLRItem.GetMagicCowsID(loadout.Gear3);
+        Gear_L2 = BLRItem.GetMagicCowsID(loadout.Gear4);
 
         Helmet = BLRItem.GetMagicCowsID(loadout.Helmet);
         UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);

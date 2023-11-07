@@ -230,10 +230,10 @@ public sealed class MagiCowsLoadout : IBLRLoadout
 
             Tactical = Tactical,
 
-            Gear_L1 = Gear1,
-            Gear_L2 = Gear2,
-            Gear_R1 = Gear3,
-            Gear_R2 = Gear4,
+            Gear_R1 = Gear1,
+            Gear_R2 = Gear2,
+            Gear_L1 = Gear3,
+            Gear_L2 = Gear4,
 
             Taunts = taunts,
             Depot = depot,
