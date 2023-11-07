@@ -209,13 +209,13 @@ public sealed partial class MainWindow : Window
             {
                 if (parent.DataContext is BLRWeapon weapon)
                 {
-                    UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
-                    UndoRedoSystem.EndAction();
+                    UndoRedoSystem.DoValueChange(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
+                    UndoRedoSystem.EndUndoRecord();
                 }
                 else if(parent.DataContext is BLRLoadout loadout)
                 {
-                    UndoRedoSystem.DoAction(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
-                    UndoRedoSystem.EndAction();
+                    UndoRedoSystem.DoValueChange(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
+                    UndoRedoSystem.EndUndoRecord();
                 }
             }
         }
@@ -357,13 +357,13 @@ public sealed partial class MainWindow : Window
         {
             if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
             {
-                UndoRedoSystem.DoAction(null, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
-                UndoRedoSystem.EndAction();
+                UndoRedoSystem.DoValueChange(null, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
+                UndoRedoSystem.EndUndoRecord();
             }
             else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
             {
-                UndoRedoSystem.DoAction(null, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
-                UndoRedoSystem.EndAction();
+                UndoRedoSystem.DoValueChange(null, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
+                UndoRedoSystem.EndUndoRecord();
             }
         }
     }
@@ -391,10 +391,10 @@ public sealed partial class MainWindow : Window
 #endif
             View.IsPlayerProfileChanging = true;
             BlockChangeNotif = true;
-            UndoRedoSystem.CreateAction(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
-            UndoRedoSystem.DoAction(DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)], typeof(MainWindowView).GetProperty(nameof(View.Profile)), View);
-            UndoRedoSystem.DoAction(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
-            UndoRedoSystem.EndAction();
+            UndoRedoSystem.CreateValueChange(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
+            UndoRedoSystem.DoValueChange(DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)], typeof(MainWindowView).GetProperty(nameof(View.Profile)), View);
+            UndoRedoSystem.DoValueChange(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
+            UndoRedoSystem.EndUndoRecord();
             View.IsPlayerProfileChanging = false;
             BlockChangeNotif = false;
         }
@@ -1032,13 +1032,13 @@ public sealed partial class MainWindow : Window
         {
             if (parent.DataContext is BLRWeapon weapon)
             {
-                UndoRedoSystem.DoAction(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon, BlockEvents.None);
-                UndoRedoSystem.EndAction();
+                UndoRedoSystem.DoValueChange(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon, BlockEvents.None);
+                UndoRedoSystem.EndUndoRecord();
             }
             if (parent.DataContext is BLRLoadout loadout)
             {
-                UndoRedoSystem.DoAction(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout, BlockEvents.None);
-                UndoRedoSystem.EndAction();
+                UndoRedoSystem.DoValueChange(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout, BlockEvents.None);
+                UndoRedoSystem.EndUndoRecord();
             }
         }
     }

@@ -17,7 +17,16 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border Background="Transparent" BorderThickness="0,0,0,1" Grid.Row="0">
-                <TextBox Text="{Binding Path=Shareable.Name, Mode=TwoWay}" Height="24" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="128" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="128" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Apply" ToolTip="" Height="24" Command="{Binding Path=ApplyLoadoutCommand}"/>
+                    <TextBox Grid.Column="1" Text="{Binding Path=Shareable.Name, Mode=TwoWay}" Height="24" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                    <Button Grid.Column="2" Content="Delete" ToolTip="" Height="24" Command="{Binding Path=RemoveLoadoutCommand}"/>
+                </Grid>
             </Border>
             <Grid x:Name="BLRProfileGrid" d:DataContext="{d:DesignInstance Type=views:BLRProfile}" Grid.Row="1">
                 <Grid.ColumnDefinitions>

@@ -1,6 +1,7 @@
 using BLREdit.API.Export;
 using BLREdit.Game;
 using BLREdit.Import;
+using BLREdit.UI;
 using BLREdit.UI.Views;
 
 using System;
@@ -8,8 +9,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 
 namespace BLREdit.Export;
 
@@ -63,7 +66,8 @@ public sealed class ExportSystem
             {
                 RedirectStandardInput = true,
                 FileName = @"clip",
-                UseShellExecute = false
+                UseShellExecute = false,
+                CreateNoWindow = true,
             }
         };
         clipboardExecutable.Start();
@@ -221,14 +225,58 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
 
     public void Remove()
     {
-        DataStorage.ShareableProfiles.Remove(Shareable);
-        DataStorage.Loadouts.Remove(this);
+        int indexShare = DataStorage.ShareableProfiles.IndexOf(Shareable);
+        int indexLoadout = DataStorage.Loadouts.IndexOf(this);
+        UndoRedoSystem.DoAction(() => { DataStorage.ShareableProfiles.Remove(Shareable); }, () => { DataStorage.ShareableProfiles.Insert(indexShare, Shareable); });
+        UndoRedoSystem.DoAction(() => { DataStorage.Loadouts.Remove(this); }, () => { DataStorage.Loadouts.Insert(indexLoadout, this); });
+        UndoRedoSystem.EndUndoRecord();
     }
 
     public static void Move(int from, int to)
     {
         DataStorage.ShareableProfiles.Move(from, to);
         DataStorage.Loadouts.Move(from, to);
+    }
+
+    public void ApplyLoadout()
+    {
+        if (DataStorage.Settings.DefaultClient is not null)
+        {
+            var directory = $"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\";
+            Directory.CreateDirectory(directory);
+            IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(BLR.Loadout1), new LoadoutManagerLoadout(BLR.Loadout2), new LoadoutManagerLoadout(BLR.Loadout3) });
+            MainWindow.ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+
+            MainWindow.Instance.ProfileComboBox.SelectedIndex = MainWindow.Instance.ProfileComboBox.Items.IndexOf(Shareable);
+
+            DataStorage.Settings.CurrentlyAppliedLoadout = MainWindow.Instance.ProfileComboBox.SelectedIndex;
+        }
+    }
+
+    private ICommand? applyLoadoutCommand;
+    [JsonIgnore]
+    public ICommand ApplyLoadoutCommand
+    {
+        get
+        {
+            applyLoadoutCommand ??= new RelayCommand(
+                    param => ApplyLoadout()
+                );
+            return applyLoadoutCommand;
+        }
+    }
+
+    private ICommand? removeLoadoutCommand;
+    [JsonIgnore]
+    public ICommand RemoveLoadoutCommand
+    {
+        get
+        {
+            removeLoadoutCommand ??= new RelayCommand(
+                    param => Remove()
+                );
+            return removeLoadoutCommand;
+        }
     }
 
     public static BLRLoadoutStorage AddNewLoadoutSet(string Name = "New Loadout Set!", BLRProfile? profile = null, ShareableProfile? shareable = null)

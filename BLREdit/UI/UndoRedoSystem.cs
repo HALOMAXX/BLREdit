@@ -41,7 +41,16 @@ public static class UndoRedoSystem
         foreach (var sub in action.Actions)
         {
             CurrentlyBlockedEvents.Value = sub.BlockedEvents;
-            sub.PropertyInfo.SetValue(sub.Target, sub.Before, null);
+            switch(sub.Type)
+            {
+                case 0:
+                    sub.PropertyInfo.SetValue(sub.Target, sub.Before, null);
+                    break;
+                case 1:
+                    sub.UndoAction?.Invoke();
+                    break;
+            }
+            
             RestoreBlockedEvents();
         }
         RedoStack.Push(action);
@@ -60,7 +69,16 @@ public static class UndoRedoSystem
         foreach (var sub in action.Actions)
         {
             CurrentlyBlockedEvents.Value = sub.BlockedEvents;
-            sub.PropertyInfo.SetValue(sub.Target, sub.After);
+            switch (sub.Type)
+            {
+                case 0:
+                    sub.PropertyInfo.SetValue(sub.Target, sub.After);
+                    break;
+                case 1:
+                    sub.DoAction?.Invoke();
+                    break;
+            }
+            
             RestoreBlockedEvents();
         }
         UndoStack.Push(action);
@@ -77,7 +95,7 @@ public static class UndoRedoSystem
     /// <summary>
     /// Ends an Action Chain
     /// </summary>
-    public static void EndAction(bool ignoreAfterActions = false)
+    public static void EndUndoRecord(bool ignoreAfterActions = false)
     {
         if (CurrentAction.Actions is not null)
         {
@@ -100,7 +118,7 @@ public static class UndoRedoSystem
     /// <param name="propertyInfo">the property that is modified</param>
     /// <param name="target">the target object if the target is static type then just give it null</param>
     /// <param name="shouldBlockEvent">should it block possible UI Events</param>
-    public static void DoAction(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
+    public static void DoValueChange(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
         if (CurrentAction.Actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); return; }
         CurrentlyBlockedEvents.Value = blockedEvents;
@@ -110,7 +128,23 @@ public static class UndoRedoSystem
         RestoreBlockedEvents();
     }
 
-    public static void DoActionAfter(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
+    /// <summary>
+    /// Creates an action and does it it will get the before state by itself
+    /// </summary>
+    /// <param name="after">how it is after this action</param>
+    /// <param name="propertyInfo">the property that is modified</param>
+    /// <param name="target">the target object if the target is static type then just give it null</param>
+    /// <param name="shouldBlockEvent">should it block possible UI Events</param>
+    public static void DoAction(Action DoAction, Action UndoAction, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
+    {
+        if (CurrentAction.Actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); return; }
+        CurrentlyBlockedEvents.Value = blockedEvents;
+        CurrentAction.Actions.Add(new SubUndoRedoAction(null, null, null, null, blockedEvents, callName, 1, DoAction, UndoAction));
+        DoAction.Invoke();
+        RestoreBlockedEvents();
+    }
+
+    public static void DoValueChangeAfter(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
         CurrentlyBlockedEvents.Value = blockedEvents;
         object before = propertyInfo.GetValue(target);
@@ -127,7 +161,7 @@ public static class UndoRedoSystem
     /// <param name="propertyInfo">the property that is modified</param>
     /// <param name="target">the target object if the target is static type then just give it null</param>
     /// <param name="shouldBlockEvent">should it block possible UI Events</param>
-    public static void CreateAction(object? before, object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
+    public static void CreateValueChange(object? before, object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
         if (CurrentAction.Actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); return; }
         CurrentlyBlockedEvents.Value = blockedEvents;
@@ -136,23 +170,22 @@ public static class UndoRedoSystem
     }
 }
 
-public struct UndoRedoAction
+public struct UndoRedoAction()
 {
-    internal List<SubUndoRedoAction> Actions { get; private set; }
-    public UndoRedoAction()
-    { 
-        Actions = new List<SubUndoRedoAction>();
-    }
+    internal List<SubUndoRedoAction> Actions { get; private set; } = new List<SubUndoRedoAction>();
 }
 
-public struct SubUndoRedoAction(object? before, object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents, string? callName)
+public struct SubUndoRedoAction(object? before, object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents, string? callName, int type = 0, Action? doAction = null, Action? undoAction = null)
 {
+    internal int Type { get; private set; } = type;
     internal object? Before { get; private set; } = before;
     internal object? After { get; private set; } = after;
     internal PropertyInfo PropertyInfo { get; private set; } = propertyInfo;
     internal object? Target { get; private set; } = target;
     internal BlockEvents BlockedEvents { get; private set; } = blockedEvents;
     internal string? CallName { get; private set; } = callName;
+    internal Action? DoAction { get; private set; } = doAction;
+    internal Action? UndoAction { get; private set; } = undoAction;
 }
 
 [Flags]
