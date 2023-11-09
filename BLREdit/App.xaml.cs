@@ -2,6 +2,7 @@
 using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.API.Utils;
+using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
@@ -72,6 +73,66 @@ public partial class App : System.Windows.Application
         if (argDict.TryGetValue("-forceStart", out var _))
         {
             ForceStart = true;
+        }
+
+        if (argDict.TryGetValue("-validateWeapons", out var _))
+        {
+            ImportSystem.Initialize();
+
+            var weapons = ImportSystem.GetItemListOfType(ImportSystem.PRIMARY_CATEGORY).Concat(ImportSystem.GetItemListOfType(ImportSystem.SECONDARY_CATEGORY));
+
+            var noBarrel = ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, MagiCowsWeapon.NoBarrel);
+            var noCamo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, MagiCowsWeapon.NoCamo);
+            var noGrip = ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, MagiCowsWeapon.NoGrip);
+            var noMagazine = ImportSystem.GetItemByIDAndType(ImportSystem.MAGAZINES_CATEGORY, MagiCowsWeapon.NoMagazine);
+            var noMuzzle = ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, MagiCowsWeapon.NoMuzzle);
+            var noScope = ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, MagiCowsWeapon.NoScope);
+            var noStock = ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, MagiCowsWeapon.NoStock);
+            var noTag = ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, MagiCowsWeapon.NoTag);
+
+            foreach (var primary in weapons)
+            {
+                LoggingSystem.Log($"{primary.Name}:{primary.UID}");
+                if (!primary.SupportedMods.Contains("ammos"))
+                {
+                    LoggingSystem.Log($"doesn't support ammos");
+                }
+                if (!primary.SupportedMods.Contains("barrels") && (!noBarrel?.IsValidFor(primary) ?? false))
+                {
+                    LoggingSystem.Log($"doesn't support barrels and\t\tHasValidEntry:{noBarrel?.IsValidFor(primary)}");
+                }
+                if (!primary.SupportedMods.Contains("camosWeapon") && (!noCamo?.IsValidFor(primary) ?? false))
+                {
+                    LoggingSystem.Log($"doesn't support camos and\t\tHasValidEntry:{noCamo?.IsValidFor(primary)}");
+                }
+                if (!primary.SupportedMods.Contains("hangers") && (!noTag?.IsValidFor(primary) ?? false))
+                {
+                    LoggingSystem.Log($"doesn't support hangers and\t\tHasValidEntry:{noTag?.IsValidFor(primary)}");
+                }
+                if (!primary.SupportedMods.Contains("magazines") && (!noMagazine?.IsValidFor(primary) ?? false))
+                {
+                    LoggingSystem.Log($"doesn't support magazines and\tHasValidEntry:{noMagazine?.IsValidFor(primary)}");
+                }
+                if (!primary.SupportedMods.Contains("muzzles") && (!noMuzzle?.IsValidFor(primary) ?? false))
+                {
+                    LoggingSystem.Log($"doesn't support muzzles and\t\tHasValidEntry:{noMuzzle?.IsValidFor(primary)}");
+                }
+                if (!primary.SupportedMods.Contains("scopes") && (!noScope?.IsValidFor(primary) ?? false))
+                {
+                    LoggingSystem.Log($"doesn't support scopes and\t\tHasValidEntry:{noScope?.IsValidFor(primary)}");
+                }
+                if (!primary.SupportedMods.Contains("stocks") && (!noStock?.IsValidFor(primary) ?? false))
+                {
+                    LoggingSystem.Log($"doesn't support stocks and\t\tHasValidEntry:{noStock?.IsValidFor(primary)}");
+                }
+                if (!primary.SupportedMods.Contains("grips") && (!noGrip?.IsValidFor(primary) ?? false))
+                {
+                    LoggingSystem.Log($"doesn't support grips and\t\tHasValidEntry:{noGrip?.IsValidFor(primary)}");
+                }
+                LoggingSystem.Log($"");
+            }
+            Application.Current.Shutdown();
+            return;
         }
 
         if (argDict.TryGetValue("-exportItemList", out var _))

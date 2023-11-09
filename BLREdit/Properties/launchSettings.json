@@ -7,6 +7,10 @@
     "Debug": {
       "commandName": "Project"
     },
+    "ValidateWeapons": {
+      "commandName": "Project",
+      "commandLineArgs": "-validateWeapons"
+    },
     "Package": {
       "commandName": "Project",
       "commandLineArgs": "-package"

@@ -120,7 +120,6 @@ public static class UndoRedoSystem
     /// <param name="shouldBlockEvent">should it block possible UI Events</param>
     public static void DoValueChange(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
-        if (CurrentAction.Actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); return; }
         CurrentlyBlockedEvents.Value = blockedEvents;
         object before = propertyInfo.GetValue(target);
         CurrentAction.Actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, blockedEvents, callName));
