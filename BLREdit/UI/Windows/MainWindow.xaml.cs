@@ -403,7 +403,14 @@ public sealed partial class MainWindow : Window
 
             View.IsPlayerProfileChanging = true;
             BlockChangeNotif = true;
-            UndoRedoSystem.CreateValueChange(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
+
+            object? removed = null;
+            if (e.RemovedItems.Count > 0)
+            { removed = e.RemovedItems[0]; }
+            else
+            { LoggingSystem.Log("GG Empty"); }
+
+            UndoRedoSystem.CreateValueChange(removed, ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
             UndoRedoSystem.DoValueChange(DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)], typeof(MainWindowView).GetProperty(nameof(View.Profile)), View);
             UndoRedoSystem.DoValueChange(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
             UndoRedoSystem.EndUndoRecord();
@@ -419,6 +426,15 @@ public sealed partial class MainWindow : Window
             };
             ApplySearchAndFilter();
         }
+        else
+        {
+            View.IsPlayerNameChanging = true;
+
+            if (e.RemovedItems.Count > 0)
+            { ProfileComboBox.SelectedValue = e.RemovedItems[0]; }
+
+            View.IsPlayerNameChanging = false;
+        }
     }
 
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -427,9 +443,9 @@ public sealed partial class MainWindow : Window
 
         View.IsPlayerNameChanging = true;
 
-        int index = ProfileComboBox.SelectedIndex;
+        //int index = ProfileComboBox.SelectedIndex;
         View.Profile.Shareable.Name = PlayerNameTextBox.Text;
-        ProfileComboBox.SelectedIndex = index;
+        //ProfileComboBox.SelectedIndex = index;
         View.Profile.Shareable.RefreshInfo();
 
         View.IsPlayerNameChanging = false;

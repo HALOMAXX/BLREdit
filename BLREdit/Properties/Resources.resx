@@ -264,6 +264,9 @@
   <data name="enum_Zoom" xml:space="preserve">
     <value>Zoom</value>
   </data>
+  <data name="img_TT_AdvancedInfo" xml:space="preserve">
+    <value>This profile has Advanced Modding enabled</value>
+  </data>
   <data name="img_TT_AdvancedModeWarning" xml:space="preserve">
     <value>This item might not work properly on this weapon</value>
   </data>

@@ -6,11 +6,12 @@
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
              xmlns:export="clr-namespace:BLREdit.Export"
+             xmlns:p="clr-namespace:BLREdit.Properties"
              mc:Ignorable="d"
              
              d:DesignHeight="450" d:DesignWidth="800"
              DataContextChanged="UserControl_DataContextChanged">
-    <Border Padding="0" Margin="0,0,0,0">
+    <Border Padding="0" Margin="0,0,0,0" MouseDown="Border_MouseDown">
         <Grid x:Name="ShareableProfileGrid" d:DataContext="{d:DesignInstance Type=export:BLRLoadoutStorage}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -25,6 +26,7 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="Apply" ToolTip="" Height="24" Command="{Binding Path=ApplyLoadoutCommand}"/>
                     <TextBox Grid.Column="1" Text="{Binding Path=Shareable.Name, Mode=TwoWay}" Height="24" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                    <Image Grid.Column="1" HorizontalAlignment="Left" Source="../Resources/invaliditem.png" Height="24" Visibility="{Binding Path=BLR.IsAdvanced.Visibility}" ToolTip="{x:Static p:Resources.img_TT_AdvancedInfo}"/>
                     <Button Grid.Column="2" Content="Delete" ToolTip="" Height="24" Command="{Binding Path=RemoveLoadoutCommand}"/>
                 </Grid>
             </Border>

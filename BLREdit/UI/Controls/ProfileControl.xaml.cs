@@ -1,15 +1,7 @@
-﻿using BLREdit.API.Export;
-using BLREdit.Export;
-using BLREdit.UI.Views;
+﻿using BLREdit.Export;
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -33,6 +25,17 @@ public partial class ProfileControl : UserControl, INotifyPropertyChanged
         if (e.NewValue is BLRLoadoutStorage loadout)
         {
             BLRProfileGrid.DataContext = loadout.BLR;
+        }
+    }
+
+    private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        if (e.ClickCount >= 2)
+        {
+            if (sender is FrameworkElement element && element.DataContext is BLRLoadoutStorage loadoutStorage)
+            {
+                MainWindow.Instance.ProfileComboBox.SelectedValue = loadoutStorage.Shareable;
+            }
         }
     }
 }

@@ -502,6 +502,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This profile has Advanced Modding enabled.
+        /// </summary>
+        public static string img_TT_AdvancedInfo {
+            get {
+                return ResourceManager.GetString("img_TT_AdvancedInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This item might not work properly on this weapon.
         /// </summary>
         public static string img_TT_AdvancedModeWarning {

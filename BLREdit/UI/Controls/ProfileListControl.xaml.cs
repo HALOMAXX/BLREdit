@@ -2,7 +2,10 @@
 using BLREdit.API.Utils;
 using BLREdit.Export;
 using BLREdit.Game;
+using BLREdit.Import;
 using BLREdit.UI.Views;
+
+using Microsoft.IdentityModel.Abstractions;
 
 using System;
 using System.Collections.Generic;
@@ -65,7 +68,10 @@ namespace BLREdit.UI.Controls
             {
                 targetData = ((FrameworkElement)targetData).Parent;
             }
-            if (targetData is not null && droppedData is not null && targetData is ProfileControl sControl && sControl.DataContext is BLRLoadoutStorage targetProfile) { BLRLoadoutStorage.Move(DataStorage.Loadouts.IndexOf(droppedData), DataStorage.Loadouts.IndexOf(targetProfile)); }
+            if (targetData is not null && droppedData is not null && targetData is ProfileControl sControl && sControl.DataContext is BLRLoadoutStorage targetProfile) 
+            {
+                BLRLoadoutStorage.Move(DataStorage.Loadouts.IndexOf(droppedData), DataStorage.Loadouts.IndexOf(targetProfile));
+            }
             else
             {
                 LoggingSystem.Log("failed to reorder ProfileListView!");
