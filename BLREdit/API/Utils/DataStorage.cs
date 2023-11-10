@@ -2,12 +2,10 @@
 using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
-using BLREdit.UI;
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace BLREdit;
 

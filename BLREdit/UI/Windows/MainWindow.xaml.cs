@@ -254,7 +254,7 @@ public sealed partial class MainWindow : Window
 
             var weapon = ((FrameworkElement)border.Parent)?.DataContext as BLRWeapon;
 
-            ItemFilters.Instance.WeaponFilter = weapon?.Reciever;
+            ItemFilters.Instance.WeaponFilter = weapon;
             View.LastSelectedItemBorder = border;
             wasLastImageScopePreview = false;
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
@@ -428,7 +428,14 @@ public sealed partial class MainWindow : Window
         }
         else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
         {
-            string link = $"<blredit://import-profile/{IOResources.DataToBase64(IOResources.Zip(IOResources.RemoveWhiteSpacesFromJson.Replace(IOResources.Serialize(new Shareable3LoadoutSet(View.Profile.BLR), true), "$1")))}>";
+            var json = IOResources.Serialize(new Shareable3LoadoutSet(View.Profile.BLR), true);
+            var jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
+            var zipedJson = IOResources.Zip(jsonNoWhitespaces);
+            var base64 = IOResources.DataToBase64(zipedJson);
+
+            LoggingSystem.Log($"{View.Profile.Shareable.Name} Profile Compression: {jsonNoWhitespaces.Length} vs {base64.Length}");
+
+            string link = $"<blredit://import-profile/{base64}>";
             ExportSystem.SetClipboard(link);
             ShowAlert($"{View.Profile.Shareable.Name} Share Link Created!"); //TODO: Add Localization
         }
@@ -492,9 +499,12 @@ public sealed partial class MainWindow : Window
             case Key.A:
                 if ((UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is) && (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is) && !SearchBox.IsFocused)
                 {
-                    DataStorage.Settings.AdvancedModding.Set(!DataStorage.Settings.AdvancedModding.Is);
-                    BLREditSettings.Save();
-                    ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{DataStorage.Settings.AdvancedModding.Is}");
+                    View.Profile.BLR.IsAdvanced.Set(!View.Profile.BLR.IsAdvanced.Is);
+                    View.Profile.BLR.Write();
+                    View.Profile = View.Profile;
+                    MainWindow.View.Profile.BLR.CalculateStats();
+                    MainWindow.Instance?.SetItemList();
+                    ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{(View.Profile.BLR.IsAdvanced.Is ? "On" : "Off")}");
                 }
                 break;
             case Key.Z:
@@ -788,7 +798,7 @@ public sealed partial class MainWindow : Window
         ProfileComboBox.SelectedIndex = DataStorage.Settings.CurrentlyAppliedLoadout;
 
         View.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
-        ItemFilters.Instance.WeaponFilter = View.Profile.BLR.Loadout1.Primary.Reciever;
+        ItemFilters.Instance.WeaponFilter = View.Profile.BLR.Loadout1.Primary;
 
         this.DataContext = View;
         #endregion Frontend Init

@@ -1,4 +1,5 @@
 ﻿using BLREdit.Import;
+using BLREdit.UI.Views;
 
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -15,8 +16,8 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static ItemFilters Instance { get; private set; } = new ItemFilters();
 
-    private BLRItem? weaponFilter;
-    public BLRItem? WeaponFilter { get { return weaponFilter; } set { weaponFilter = value; OnPropertyChanged(); } }
+    private BLRWeapon? weaponFilter;
+    public BLRWeapon? WeaponFilter { get { return weaponFilter; } set { weaponFilter = value; OnPropertyChanged(); } }
     private string searchFilter = "";
     public string SearchFilter { get { return searchFilter; } set { searchFilter = value; MainWindow.Instance?.ApplySearchAndFilter(); OnPropertyChanged(); } }
 
@@ -53,7 +54,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
     public static bool FilterByValidity(BLRItem item)
     {
         if (item is null) { return false; }
-        item.IsValid.Set(item.ValidForTest(Instance.WeaponFilter));
+        item.IsValid.Set(item.ValidForTest(Instance?.WeaponFilter?.Reciever ?? null));
         switch ( item.Category )
         {
             case ImportSystem.EMOTES_CATEGORY:
@@ -63,10 +64,10 @@ public sealed class ItemFilters : INotifyPropertyChanged
             case ImportSystem.SECONDARY_CATEGORY:
                 return !(item.Icon?.Contains("Depot") ?? false);
             case ImportSystem.SHOP_CATEGORY:
-                if (DataStorage.Settings.AdvancedModding.Is) return true;
+                if (Instance?.WeaponFilter?.Loadout?.Profile?.IsAdvanced.Is ?? false) return true;
                 return item.Name != "HRV Jammer";
             default:
-                return item.IsValidFor(Instance.WeaponFilter);
+                return item.IsValidFor(Instance?.WeaponFilter?.Reciever ?? null, Instance?.WeaponFilter?.Loadout?.Profile?.IsAdvanced.Is ?? false);
         };
     }
 

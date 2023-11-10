@@ -35,11 +35,11 @@
                     <ComboBox Height="32" Name="LanguageComboBox" DisplayMemberPath="DisplayName" SelectionChanged="LanguageComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.AvailableCultures)}"/>
                 </StackPanel>
             </Border>
-            <Border>
+            <!--<Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=AdvancedModding}">
                     <ToggleButton Content="{x:Static p:Resources.tbtn_AdvancedModding }" ToolTip="{x:Static p:Resources.tbtn_TT_AdvancedModding }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
                 </StackPanel>
-            </Border>
+            </Border>-->
             <Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=EnableFramerateSmoothing}">
                     <ToggleButton Content="{x:Static p:Resources.tbtn_EnableFramerateSmoothing }" ToolTip="{x:Static p:Resources.tbtn_TT_EnableFramerateSmoothing }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>

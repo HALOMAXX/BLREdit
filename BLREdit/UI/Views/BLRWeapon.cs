@@ -51,7 +51,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     [JsonIgnore] public bool HasSkinEquipped { get { return Skin is not null && Skin.Name != "No Weapon Skin"; } }
 
-    private BLRLoadout? Loadout { get; set; }
+    public BLRLoadout? Loadout { get; private set; }
 
     private bool isChanged = false;
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
@@ -101,8 +101,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.SetValueTest))
         {
             var reciever = GetValueOf(nameof(Reciever));
-            if(DataStorage.Settings.AdvancedModding.IsNot) value ??= MagiCowsWeapon.GetDefaultSetupOfReciever(reciever)?.GetItemByType(propAndAttri.Item2.ItemType) ?? null;
-            if (value is not null && (!value.IsValidFor(reciever) || !propAndAttri.Item2.ItemType.Contains(value.Category)))
+            if(Loadout?.Profile?.IsAdvanced.IsNot ?? false) value ??= MagiCowsWeapon.GetDefaultSetupOfReciever(reciever)?.GetItemByType(propAndAttri.Item2.ItemType) ?? null;
+            if (value is not null && (!value.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) || !propAndAttri.Item2.ItemType.Contains(value.Category)))
             { return; }
         }
         WeaponParts[propAndAttri.Item2.PropertyOrder] = value;
@@ -279,7 +279,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     private bool AllowStock(BLRItem? reciever, BLRItem? barrel, BLRItem? stock, bool displayMessage = false)
     {
         if (stock is null || stock.Name == "No Stock") return true;
-        if (!IsPrimary && DataStorage.Settings.AdvancedModding.IsNot)
+        if (!IsPrimary && (Loadout?.Profile?.IsAdvanced.IsNot ?? false))
         {
             if (IsPistol(reciever) && (barrel?.Name ?? MagiCowsWeapon.NoBarrel) == MagiCowsWeapon.NoBarrel)
             {
@@ -313,12 +313,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.Accuracy ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.Accuracy ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.Accuracy ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.Accuracy ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.Accuracy ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.Accuracy ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.Accuracy ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.Accuracy ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.Accuracy ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.Accuracy ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.Accuracy ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.Accuracy ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.Accuracy ?? 0;
             return total;
         }
     }
@@ -328,12 +328,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.Ammo ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.Ammo ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.Ammo ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.Ammo ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.Ammo ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.Ammo ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.Ammo ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.Ammo ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.Ammo ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.Ammo ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.Ammo ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.Ammo ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.Ammo ?? 0;
             return total;
         }
     }
@@ -343,12 +343,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.Damage ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.Damage ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.Damage ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.Damage ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.Damage ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.Damage ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.Damage ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.Damage ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.Damage ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.Damage ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.Damage ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.Damage ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.Damage ?? 0;
 
             // arrows don't directly affect damage and were set by the projectile, my modifiers were causing misleading damage changes on other guns, so here's a hacky fix
             if (Reciever?.UID == 40024)
@@ -382,12 +382,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.MovementSpeed ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.MovementSpeed ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.MovementSpeed ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.MovementSpeed ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.MovementSpeed ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.MovementSpeed ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.MovementSpeed ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.MovementSpeed ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.MovementSpeed ?? 0;
             return total;
         }
     }
@@ -397,12 +397,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.Range ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.Range ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.Range ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.Range ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.Range ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.Range ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.Range ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.Range ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.Range ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.Range ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.Range ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.Range ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.Range ?? 0;
             return total;
         }
     }
@@ -412,12 +412,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.RateOfFire ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.RateOfFire ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.RateOfFire ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.RateOfFire ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.RateOfFire ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.RateOfFire ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.RateOfFire ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.RateOfFire ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.RateOfFire ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.RateOfFire ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.RateOfFire ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.RateOfFire ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.RateOfFire ?? 0;
             return total;
         }
     }
@@ -427,12 +427,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.Rating ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.Rating ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.Rating ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.Rating ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.Rating ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.Rating ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.Rating ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.Rating ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.Rating ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.Rating ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.Rating ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.Rating ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.Rating ?? 0;
             return total;
         }
     }
@@ -442,12 +442,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.Recoil ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.Recoil ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.Recoil ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.Recoil ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.Recoil ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.Recoil ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.Recoil ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.Recoil ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.Recoil ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.Recoil ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.Recoil ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.Recoil ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.Recoil ?? 0;
             return total;
         }
     }
@@ -457,12 +457,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.ReloadSpeed ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.ReloadSpeed ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.ReloadSpeed ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.ReloadSpeed ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.ReloadSpeed ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.ReloadSpeed ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.ReloadSpeed ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.ReloadSpeed ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.ReloadSpeed ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.ReloadSpeed ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.ReloadSpeed ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.ReloadSpeed ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.ReloadSpeed ?? 0;
             return total;
         }
     }
@@ -472,12 +472,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.SwitchWeaponSpeed ?? 0;
             return total;
         }
     }
@@ -487,12 +487,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WeaponModifiers?.WeaponWeight ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WeaponModifiers?.WeaponWeight ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WeaponModifiers?.WeaponWeight ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WeaponModifiers?.WeaponWeight ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WeaponModifiers?.WeaponWeight ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WeaponModifiers?.WeaponWeight ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WeaponModifiers?.WeaponWeight ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WeaponModifiers?.WeaponWeight ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WeaponModifiers?.WeaponWeight ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WeaponModifiers?.WeaponWeight ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WeaponModifiers?.WeaponWeight ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WeaponModifiers?.WeaponWeight ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WeaponModifiers?.WeaponWeight ?? 0;
             return total;
         }
     }
@@ -555,12 +555,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WikiStats?.Reload ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WikiStats?.Reload ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WikiStats?.Reload ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WikiStats?.Reload ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WikiStats?.Reload ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WikiStats?.Reload ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WikiStats?.Reload ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WikiStats?.Reload ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.Reload ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WikiStats?.Reload ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WikiStats?.Reload ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.Reload ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WikiStats?.Reload ?? 0;
 
             // Corrected the reload rate multiplier calc and changed the ranges from zeros in the BPFA and BFR so they can now correctly use the reloadspeed percentage instead of flat wiki value add/sub
             // Will eventually fix all guns but I am still uncertain about a few cases that don't go along with it for whatever reason
@@ -682,12 +682,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             double total = 0;
             total += Reciever?.WikiStats?.ScopeInTime ?? 0;
-            if (Barrel?.IsValidFor(Reciever) ?? false) total += Barrel?.WikiStats?.ScopeInTime ?? 0;
-            if (Magazine?.IsValidFor(Reciever) ?? false) total += Magazine?.WikiStats?.ScopeInTime ?? 0;
-            if (Muzzle?.IsValidFor(Reciever) ?? false) total += Muzzle?.WikiStats?.ScopeInTime ?? 0;
-            if (Stock?.IsValidFor(Reciever) ?? false) total += Stock?.WikiStats?.ScopeInTime ?? 0;
-            if (Scope?.IsValidFor(Reciever) ?? false) total += Scope?.WikiStats?.ScopeInTime ?? 0;
-            if (Grip?.IsValidFor(Reciever) ?? false) total += Grip?.WikiStats?.ScopeInTime ?? 0;
+            if (Barrel?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WikiStats?.ScopeInTime ?? 0;
+            if (Magazine?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.ScopeInTime ?? 0;
+            if (Muzzle?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WikiStats?.ScopeInTime ?? 0;
+            if (Stock?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WikiStats?.ScopeInTime ?? 0;
+            if (Scope?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.ScopeInTime ?? 0;
+            if (Grip?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WikiStats?.ScopeInTime ?? 0;
             return total;
         }
     }
@@ -851,34 +851,34 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Reciever is null) return;
         MagiCowsWeapon? wpn = MagiCowsWeapon.GetDefaultSetupOfReciever(Reciever);
 
-        if (Muzzle is null || !Muzzle.IsValidFor(Reciever))
+        if (Muzzle is null || !Muzzle.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzle(), GetType().GetProperty(nameof(Muzzle)), this); }
 
-        if (Barrel is null || !Barrel.IsValidFor(Reciever))
+        if (Barrel is null || !Barrel.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrel(), GetType().GetProperty(nameof(Barrel)), this); }
 
-        if (Stock is null || !Stock.IsValidFor(Reciever) || AllowStock(Reciever, Barrel, wpn?.GetStock()))
+        if (Stock is null || !Stock.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) || AllowStock(Reciever, Barrel, wpn?.GetStock()))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStock(), GetType().GetProperty(nameof(Stock)), this); }
 
-        if (Scope is null || !Scope.IsValidFor(Reciever))
+        if (Scope is null || !Scope.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScope(), GetType().GetProperty(nameof(Scope)), this); }
 
-        if (Magazine is null || !Magazine.IsValidFor(Reciever))
+        if (Magazine is null || !Magazine.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazine(), GetType().GetProperty(nameof(Magazine)), this); }
 
-        if (Ammo is null || !Ammo.IsValidFor(Reciever))
+        if (Ammo is null || !Ammo.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmo(), GetType().GetProperty(nameof(Ammo)), this); }
 
-        if (Grip is null || !Grip.IsValidFor(Reciever))
+        if (Grip is null || !Grip.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGrip(), GetType().GetProperty(nameof(Grip)), this); }
 
-        if (Camo is null || !Camo.IsValidFor(Reciever))
+        if (Camo is null || !Camo.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamo(), GetType().GetProperty(nameof(Camo)), this); }
 
-        if (Tag is null || !Tag.IsValidFor(Reciever))
+        if (Tag is null || !Tag.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTag(), GetType().GetProperty(nameof(Tag)), this); }
 
-        if (!Skin?.IsValidFor(Reciever) ?? true)
+        if (!Skin?.IsValidFor(Reciever, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? true)
         { UndoRedoSystem.DoValueChangeAfter(ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0), GetType().GetProperty(nameof(Skin)), this); }
     }
 
@@ -1499,16 +1499,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         
         BLRItem reciever = FilteredRecievers[rng.Next(0, FilteredRecievers.Length)];
 
-        var FilteredBarrels = ImportSystem.GetItemArrayOfType(ImportSystem.BARRELS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        var FilteredScopes = ImportSystem.GetItemArrayOfType(ImportSystem.SCOPES_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        var FilteredMagazines = ImportSystem.GetItemArrayOfType(ImportSystem.MAGAZINES_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        var FilteredMuzzles = ImportSystem.GetItemArrayOfType(ImportSystem.MUZZELS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        var FilteredStocks = ImportSystem.GetItemArrayOfType(ImportSystem.STOCKS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        var FilteredCamos = ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_WEAPONS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        var FilteredHangers = ImportSystem.GetItemArrayOfType(ImportSystem.HANGERS_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        var FilteredAmmo = ImportSystem.GetItemArrayOfType(ImportSystem.AMMO_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
-        var FilteredGrips = ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY).Where(o=> o.IsValidFor(reciever)).ToArray();
-        var FilteredSkins = ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_SKIN_CATEGORY).Where(o => o.IsValidFor(reciever)).ToArray();
+        var FilteredBarrels = ImportSystem.GetItemArrayOfType(ImportSystem.BARRELS_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredScopes = ImportSystem.GetItemArrayOfType(ImportSystem.SCOPES_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredMagazines = ImportSystem.GetItemArrayOfType(ImportSystem.MAGAZINES_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredMuzzles = ImportSystem.GetItemArrayOfType(ImportSystem.MUZZELS_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredStocks = ImportSystem.GetItemArrayOfType(ImportSystem.STOCKS_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredCamos = ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_WEAPONS_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredHangers = ImportSystem.GetItemArrayOfType(ImportSystem.HANGERS_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredAmmo = ImportSystem.GetItemArrayOfType(ImportSystem.AMMO_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredGrips = ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY).Where(o=> o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
+        var FilteredSkins = ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_SKIN_CATEGORY).Where(o => o.IsValidFor(reciever, Loadout?.Profile?.IsAdvanced.Is ?? false)).ToArray();
 
         BLRItem? barrel = null;
         if (FilteredBarrels.Length > 0)

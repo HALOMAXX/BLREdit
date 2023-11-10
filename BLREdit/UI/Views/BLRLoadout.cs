@@ -38,6 +38,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     static readonly Type loadoutType = typeof(BLRLoadout);
 
+    public BLRProfile? Profile { get; private set; }
+
     public static PropertyInfo[] LoadoutPartInfo { get; } = ((from property in loadoutType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property).ToArray());
     private static readonly Dictionary<string?, PropertyInfo> LoadoutPartInfoDictonary = GetLoadoutPartPropertyInfo();
     private static Dictionary<string?, PropertyInfo> GetLoadoutPartPropertyInfo()
@@ -212,8 +214,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         MainWindow.ShowAlert($"{message}!");
     }
 
-    public BLRLoadout() 
+    public BLRLoadout(BLRProfile? profile) 
     {
+        Profile = profile;
         Primary = new(true, this);
         Secondary = new(false, this);
     }

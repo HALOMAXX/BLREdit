@@ -17,15 +17,20 @@ public sealed class BLRProfile
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Event
 
-    public BLRLoadout Loadout1 { get; set; } = new();
-    public BLRLoadout Loadout2 { get; set; } = new();
-    public BLRLoadout Loadout3 { get; set; } = new();
+    public UIBool IsAdvanced { get; set; } = new UIBool(false);
+    public BLRLoadout Loadout1 { get; set; }
+    public BLRLoadout Loadout2 { get; set; }
+    public BLRLoadout Loadout3 { get; set; }
 
 
     private bool isChanged = false;
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
 
     public BLRProfile() {
+        Loadout1 = new(this);
+        Loadout2 = new(this);
+        Loadout3 = new(this);
+
         Loadout1.PropertyChanged += LoadoutChanged;
         Loadout2.PropertyChanged += LoadoutChanged;
         Loadout3.PropertyChanged += LoadoutChanged;

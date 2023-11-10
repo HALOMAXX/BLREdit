@@ -134,11 +134,11 @@ public sealed class BLRItem : INotifyPropertyChanged
         return false;
     }
 
-    public bool IsValidFor(BLRItem? item)
+    public bool IsValidFor(BLRItem? item, bool advanced = false)
     {
         if (item is null || (this.Category == ImportSystem.PRIMARY_CATEGORY || this.Category == ImportSystem.SECONDARY_CATEGORY)) return true;
 
-        if (DataStorage.Settings.AdvancedModding.Is)
+        if (advanced)
         {
             return AdvancedFilter(this, item);
         }

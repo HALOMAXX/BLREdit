@@ -30,6 +30,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
 
     [JsonIgnore] private string name = name;
     public string Name { get { return name; } set { name = value; OnPropertyChanged(); } }
+    public UIBool IsAdvanced { get; set; } = new(false);
     public ObservableCollection<ShareableLoadout> Loadouts { get; set; } = new() { MagiCowsLoadout.DefaultLoadout1.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout2.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout3.ConvertToShareable() };
 
     private static readonly Regex CopyWithCount = new(@".* - Copy \([0-9]*\)$");
@@ -104,6 +105,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadProfile)) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All & ~BlockEvents.ReadAll;
+        profile.IsAdvanced.Set(IsAdvanced.Is);
         Loadouts[0].Read(profile.Loadout1);
         Loadouts[1].Read(profile.Loadout2);
         Loadouts[2].Read(profile.Loadout3);
@@ -115,6 +117,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
     {
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteProfile)) return;
+        IsAdvanced.Set(profile.IsAdvanced.Is);
         Loadouts[0].Write(profile.Loadout1);
         Loadouts[1].Write(profile.Loadout2);
         Loadouts[2].Write(profile.Loadout3);
@@ -125,13 +128,15 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
 
 public sealed class Shareable3LoadoutSet : IBLRProfile
 {
+    [JsonPropertyName("A")] public UIBool IsAdvanced { get; set; } = new(false);
     [JsonPropertyName("L1")] public ShareableLoadout Loadout1 { get; set; } = new();
     [JsonPropertyName("L2")] public ShareableLoadout Loadout2 { get; set; } = new();
     [JsonPropertyName("L3")] public ShareableLoadout Loadout3 { get; set; } = new();
 
     public Shareable3LoadoutSet() { }
     public Shareable3LoadoutSet(BLRProfile profile)
-    { 
+    {
+        IsAdvanced.Set(profile.IsAdvanced.Is);
         Loadout1 = new ShareableLoadout(profile.Loadout1);
         Loadout2 = new ShareableLoadout(profile.Loadout2);
         Loadout3 = new ShareableLoadout(profile.Loadout3);
@@ -141,12 +146,11 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
 
     public BLRProfile ToBLRProfile()
     {
-        var profile = new BLRProfile
-        {
-            Loadout1 = Loadout1.ToBLRLoadout(),
-            Loadout2 = Loadout2.ToBLRLoadout(),
-            Loadout3 = Loadout3.ToBLRLoadout()
-        };
+        var profile = new BLRProfile();
+        profile.IsAdvanced.Set(IsAdvanced.Is);
+        profile.Loadout1 = Loadout1.ToBLRLoadout(profile);
+        profile.Loadout2 = Loadout2.ToBLRLoadout(profile);
+        profile.Loadout3 = Loadout3.ToBLRLoadout(profile);
         return profile;
     }
 
@@ -165,6 +169,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadProfile)) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
+        profile.IsAdvanced.Set(IsAdvanced.Is);
         Loadout1.Read(profile.Loadout1);
         Loadout2.Read(profile.Loadout2);
         Loadout3.Read(profile.Loadout3);
@@ -176,6 +181,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
     {
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteProfile)) return;
+        IsAdvanced.Set(profile.IsAdvanced.Is);
         Loadout1.Write(profile.Loadout1);
         Loadout2.Write(profile.Loadout2);
         Loadout3.Write(profile.Loadout3);
@@ -253,9 +259,9 @@ public sealed class ShareableLoadout : IBLRLoadout
 
     public event EventHandler? WasWrittenTo;
 
-    public BLRLoadout ToBLRLoadout()
+    public BLRLoadout ToBLRLoadout(BLRProfile? profile = null)
     {
-        var loadout = new BLRLoadout
+        var loadout = new BLRLoadout(profile)
         {
             IsFemale = Female,
             IsBot = Bot,
