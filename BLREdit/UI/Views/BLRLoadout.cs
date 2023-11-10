@@ -547,10 +547,10 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     private void UpdateGearSlots()
     {
-        GearSlot1Bool.Set(GearSlots > 0);
-        GearSlot2Bool.Set(GearSlots > 1);
-        GearSlot3Bool.Set(GearSlots > 2);
-        GearSlot4Bool.Set(GearSlots > 3);
+        GearSlot1Bool.Set(GearSlots > 0 || (Profile?.IsAdvanced.Is ?? false));
+        GearSlot2Bool.Set(GearSlots > 1 || (Profile?.IsAdvanced.Is ?? false));
+        GearSlot3Bool.Set(GearSlots > 2 || (Profile?.IsAdvanced.Is ?? false));
+        GearSlot4Bool.Set(GearSlots > 3 || (Profile?.IsAdvanced.Is ?? false));
     }
 
     private void CreateDisplay()

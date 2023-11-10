@@ -23,6 +23,7 @@ using BLREdit.API.Utils;
 using BLREdit.Game;
 using System.Drawing.Imaging;
 using System.Text;
+using PeNet;
 
 namespace BLREdit.UI;
 
@@ -40,6 +41,7 @@ public sealed partial class MainWindow : Window
     private readonly static char[] InvalidNameChars = Path.GetInvalidPathChars().Concat(Path.GetInvalidFileNameChars()).ToArray();
 
     public bool wasLastImageScopePreview = false;
+    public bool wasLastSelectedBorderPrimary = true;
     private string lastSelectedType = "";
     static readonly Stopwatch PingWatch = Stopwatch.StartNew();
     static bool firstStart = true;
@@ -252,18 +254,27 @@ public sealed partial class MainWindow : Window
                 }
             }
 
-            var weapon = ((FrameworkElement)border.Parent)?.DataContext as BLRWeapon;
+            var parent = ((FrameworkElement)border.Parent);
 
-            ItemFilters.Instance.WeaponFilter = weapon;
+            var weapon = parent?.DataContext as BLRWeapon;
+            var loadout = parent?.DataContext as BLRLoadout;
+            var profile = parent?.DataContext as BLRProfile;
+
+            if (weapon is not null) { ItemFilters.Instance.WeaponFilter = weapon; }
+            else
+            {
+                if (loadout is not null) ItemFilters.Instance.WeaponFilter = loadout.Primary;
+                else if(profile is not null) ItemFilters.Instance.WeaponFilter = profile.Loadout1.Primary;
+            }
             View.LastSelectedItemBorder = border;
             wasLastImageScopePreview = false;
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
                 case "Reciever":
                     if (weapon?.IsPrimary ?? true)
-                    { SetItemList(ImportSystem.PRIMARY_CATEGORY); }
+                    { SetItemList(ImportSystem.PRIMARY_CATEGORY); wasLastSelectedBorderPrimary = true; }
                     else
-                    { SetItemList(ImportSystem.SECONDARY_CATEGORY); }
+                    { SetItemList(ImportSystem.SECONDARY_CATEGORY); wasLastSelectedBorderPrimary = false; }
                     break;
                 case "Muzzle":
                     SetItemList(ImportSystem.MUZZELS_CATEGORY);
@@ -389,6 +400,7 @@ public sealed partial class MainWindow : Window
                 return;
             }
 #endif
+
             View.IsPlayerProfileChanging = true;
             BlockChangeNotif = true;
             UndoRedoSystem.CreateValueChange(e.RemovedItems[0], ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
@@ -397,6 +409,15 @@ public sealed partial class MainWindow : Window
             UndoRedoSystem.EndUndoRecord();
             View.IsPlayerProfileChanging = false;
             BlockChangeNotif = false;
+
+            ItemFilters.Instance.WeaponFilter = LoadoutControl.SelectedIndex switch
+            {
+                0 => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout1.Primary : View.Profile.BLR.Loadout1.Secondary,
+                1 => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout2.Primary : View.Profile.BLR.Loadout2.Secondary,
+                2 => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout3.Primary : View.Profile.BLR.Loadout3.Secondary,
+                _ => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout1.Primary : View.Profile.BLR.Loadout1.Secondary,
+            };
+            ApplySearchAndFilter();
         }
     }
 
@@ -501,9 +522,10 @@ public sealed partial class MainWindow : Window
                 {
                     View.Profile.BLR.IsAdvanced.Set(!View.Profile.BLR.IsAdvanced.Is);
                     View.Profile.BLR.Write();
-                    View.Profile = View.Profile;
+                    //View.Profile = View.Profile;
                     MainWindow.View.Profile.BLR.CalculateStats();
-                    MainWindow.Instance?.SetItemList();
+                    //MainWindow.Instance?.SetItemList();
+                    ApplySearchAndFilter();
                     ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{(View.Profile.BLR.IsAdvanced.Is ? "On" : "Off")}");
                 }
                 break;
@@ -936,8 +958,8 @@ public sealed partial class MainWindow : Window
 
     public void SetItemList(string? Type = null)
     {
-        if (Type is null) { Type = lastSelectedType; }
-        else { lastSelectedType = Type; }
+        Type ??= lastSelectedType;
+        lastSelectedType = Type;
         var list = ImportSystem.GetItemListOfType(Type);
         if (list is not null && list.Count > 0)
         {

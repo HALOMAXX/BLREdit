@@ -45,10 +45,11 @@ public sealed class LoadoutManagerGear
         else 
         { Avatar = avatar; }
 
-        if (loadout.GearSlot1Bool.Is || (loadout.Profile?.IsAdvanced.Is ?? false)) Gear_R1 = BLRItem.GetLMID(loadout.Gear1);
-        if (loadout.GearSlot2Bool.Is || (loadout.Profile?.IsAdvanced.Is ?? false)) Gear_R2 = BLRItem.GetLMID(loadout.Gear2);
-        if (loadout.GearSlot3Bool.Is || (loadout.Profile?.IsAdvanced.Is ?? false)) Gear_L1 = BLRItem.GetLMID(loadout.Gear3);
-        if (loadout.GearSlot4Bool.Is || (loadout.Profile?.IsAdvanced.Is ?? false)) Gear_L2 = BLRItem.GetLMID(loadout.Gear4);
+        if (loadout.GearSlot1Bool.Is) Gear_R1 = BLRItem.GetLMID(loadout.Gear1);
+        if (loadout.GearSlot2Bool.Is) Gear_R2 = BLRItem.GetLMID(loadout.Gear2);
+        if (loadout.GearSlot3Bool.Is) Gear_L1 = BLRItem.GetLMID(loadout.Gear3);
+        if (loadout.GearSlot4Bool.Is) Gear_L2 = BLRItem.GetLMID(loadout.Gear4);
+        //if (loadout.GearSlot4Bool.Is || (loadout.Profile?.IsAdvanced.Is ?? false))
 
         //TODO: Hanger, Icon, IconColor, PatchShape, PatchColor, ButtPack   
     }
