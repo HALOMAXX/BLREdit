@@ -306,6 +306,10 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     /// </summary>
     [ProfileSetting(1201)] public int FriendClanStatus { get { return GetValueOf(); } set { SetValueOf(Clamp(value, 4, 7)); } }
     /// <summary>
+    /// Recoil Reset ID:1202 is inverted ingame
+    /// </summary>
+    [ProfileSetting(1202)] public bool RecoilReset { get { return GetValueOf() > 0; } set { SetValueOf(value ? 1 : 0); } }
+    /// <summary>
     /// LeftStick Deadzone ID:1300 ValueRange 1500-55000 Base = ?? (0=0+Base / 25=75000+Base / 50=150000+Base)
     /// 
     /// Ingame Settings Scale 3x

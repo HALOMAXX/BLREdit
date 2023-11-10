@@ -28,6 +28,7 @@
                 <RowDefinition Height="64"/>
                 <RowDefinition Height="64"/>
                 <RowDefinition Height="64"/>
+                <RowDefinition Height="64"/>
             </Grid.RowDefinitions>
             
             
@@ -40,6 +41,7 @@
             <ToggleButton Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" IsChecked="{Binding Path=TightAimToggle}" Content="Tight Aim Toggle"/>
             <ToggleButton Grid.Column="0" Grid.Row="7" HorizontalAlignment="Right" IsChecked="{Binding Path=TightAimBlur}" Content="Tight Aim Blur"/>
             <ToggleButton Grid.Column="0" Grid.Row="8" HorizontalAlignment="Right" IsChecked="{Binding Path=SprintToggle}" Content="Sprint Toggle"/>
+            <ToggleButton Grid.Column="0" Grid.Row="9" HorizontalAlignment="Right" IsChecked="{Binding Path=RecoilReset}" Content="Recoil Reset"/>
 
             <Label              Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Content="Mouse Sensitivity:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
             <local:NumberUpDown Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" MinNumber="1000" NumberChange="1000" MaxNumber="105000" Number="{Binding Path=MouseSensitivity}"/>

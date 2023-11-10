@@ -55,7 +55,7 @@
             </StackPanel>
 
             <ToggleButton Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" IsChecked="{Binding Path=ScoreboardToggle}" Content="Scoreboard Toggle"/>
-            
+
             <StackPanel Grid.Column="1" Grid.Row="11" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Label Content="Gore" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
                 <local:NumberUpDown Number="{Binding Path=Gore}" NumberChange="1" MinNumber="0" MaxNumber="3" Overflow="True"/>
