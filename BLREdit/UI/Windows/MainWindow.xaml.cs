@@ -410,8 +410,10 @@ public sealed partial class MainWindow : Window
             else
             { LoggingSystem.Log("GG Empty"); }
 
+            var index = DataStorage.ShareableProfiles.IndexOf(profile);
+
             UndoRedoSystem.CreateValueChange(removed, ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
-            UndoRedoSystem.DoValueChange(DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)], typeof(MainWindowView).GetProperty(nameof(View.Profile)), View);
+            UndoRedoSystem.DoValueChange(DataStorage.Loadouts[index], typeof(MainWindowView).GetProperty(nameof(View.Profile)), View);
             UndoRedoSystem.DoValueChange(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
             UndoRedoSystem.EndUndoRecord();
             View.IsPlayerProfileChanging = false;
@@ -424,15 +426,18 @@ public sealed partial class MainWindow : Window
                 2 => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout3.Primary : View.Profile.BLR.Loadout3.Secondary,
                 _ => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout1.Primary : View.Profile.BLR.Loadout1.Secondary,
             };
+
             ApplySearchAndFilter();
+
+            if (index != DataStorage.Settings.CurrentlyAppliedLoadout)
+            { View.Profile.BLR.IsChanged = true; }
+            else
+            { View.Profile.BLR.IsChanged = false; }
         }
         else
         {
             View.IsPlayerNameChanging = true;
-
-            if (e.RemovedItems.Count > 0)
-            { ProfileComboBox.SelectedValue = e.RemovedItems[0]; }
-
+            if (e.RemovedItems.Count > 0) { ProfileComboBox.SelectedValue = e.RemovedItems[0]; }
             View.IsPlayerNameChanging = false;
         }
     }
@@ -443,9 +448,7 @@ public sealed partial class MainWindow : Window
 
         View.IsPlayerNameChanging = true;
 
-        //int index = ProfileComboBox.SelectedIndex;
         View.Profile.Shareable.Name = PlayerNameTextBox.Text;
-        //ProfileComboBox.SelectedIndex = index;
         View.Profile.Shareable.RefreshInfo();
 
         View.IsPlayerNameChanging = false;
@@ -554,9 +557,7 @@ public sealed partial class MainWindow : Window
             case Key.C:
                 if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
                 {
-                    Point p = Mouse.GetPosition(this);
-
-                    if (HitTestLoadoutControls(this, p) is FrameworkElement target)
+                    if (HitTestLoadoutControls(this) is FrameworkElement target)
                     {
                         switch (target)
                         {
@@ -650,9 +651,7 @@ public sealed partial class MainWindow : Window
             case Key.V:
                 if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
                 {
-                    Point p = Mouse.GetPosition(this);
-
-                    if (HitTestLoadoutControls(this, p) is FrameworkElement target)
+                    if (HitTestLoadoutControls(this) is FrameworkElement target)
                     {
                         var clip = ExportSystem.GetClipboard();
                         switch (target)
@@ -916,7 +915,6 @@ public sealed partial class MainWindow : Window
         ApplyLoadoutBorder.Background = SolidColorBrush;
         SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
         lastAnim = CalmAnim;
-        View.Profile.BLR.PropertyChanged += LoadoutChanged;
 
         View.UpdateWindowTitle();
 
@@ -925,7 +923,7 @@ public sealed partial class MainWindow : Window
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
     }
 
-    private void LoadoutChanged(object sender, PropertyChangedEventArgs e)
+    public void LoadoutChanged(object sender, PropertyChangedEventArgs e)
     {
         if (BlockChangeNotif) return;
         if (View.Profile.BLR.IsChanged && lastAnim != AlertAnim)
@@ -1126,7 +1124,26 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public FrameworkElement? HitTestLoadoutControls(DependencyObject depObj, Point p)
+    public FrameworkElement? HitTestProfileControls(DependencyObject depObj, Point p)
+    {
+        var AllProfiles = FindVisualChildren<ProfileControl>(depObj).ToList();
+
+        if (AllProfiles.Count > 0)
+        {
+            foreach (var profile in AllProfiles)
+            {
+                var bounds = VisualTreeHelper.GetDescendantBounds(profile);
+                var pos = this.TranslatePoint(p, profile);
+                if (bounds.Contains(pos))
+                {
+                    return profile;
+                }
+            }
+        }
+        return null;
+    }
+
+    public FrameworkElement? HitTestLoadoutControls(DependencyObject depObj)
     {
         var AllExtras = FindVisualChildren<ExtraControl>(depObj).ToList();
         var AllGears = FindVisualChildren<GearControl>(depObj).ToList();
@@ -1134,11 +1151,13 @@ public sealed partial class MainWindow : Window
         var AllLoadoutViews = FindVisualChildren<LoadoutViewControl>(depObj).ToList();
         var AllWeaponViews = FindVisualChildren<WeaponViewControl>(depObj).ToList();
 
+
+
         if (AllExtras.Count > 0)
         {
             foreach (var extra in AllExtras)
             {
-                var pos = this.TranslatePoint(p, extra);
+                var pos = Mouse.GetPosition(extra);
                 if (VisualTreeHelper.GetDescendantBounds(extra).Contains(pos))
                 { 
                     return extra;
@@ -1150,7 +1169,7 @@ public sealed partial class MainWindow : Window
         {
             foreach (var gear in AllGears)
             {
-                var pos = this.TranslatePoint(p, gear);
+                var pos = Mouse.GetPosition(gear);
                 if (VisualTreeHelper.GetDescendantBounds(gear).Contains(pos))
                 {
                     return gear;
@@ -1162,7 +1181,7 @@ public sealed partial class MainWindow : Window
         {
             foreach (var weapon in AllWeapons)
             {
-                var pos = this.TranslatePoint(p, weapon);
+                var pos = Mouse.GetPosition(weapon);
                 if (VisualTreeHelper.GetDescendantBounds(weapon).Contains(pos))
                 {
                     return weapon;
@@ -1174,7 +1193,7 @@ public sealed partial class MainWindow : Window
         {
             foreach (var weapon in AllLoadoutViews)
             {
-                var pos = this.TranslatePoint(p, weapon);
+                var pos = Mouse.GetPosition(weapon);
                 if (VisualTreeHelper.GetDescendantBounds(weapon).Contains(pos))
                 {
                     return weapon;
@@ -1186,7 +1205,7 @@ public sealed partial class MainWindow : Window
         {
             foreach (var weapon in AllWeaponViews)
             {
-                var pos = this.TranslatePoint(p, weapon);
+                var pos = Mouse.GetPosition(weapon);
                 if (VisualTreeHelper.GetDescendantBounds(weapon).Contains(pos))
                 {
                     return weapon;

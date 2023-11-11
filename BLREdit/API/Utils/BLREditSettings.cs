@@ -31,7 +31,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public int SelectedServer { get; set; } = 0;
     [JsonIgnore] public BLRServer? DefaultServer { get { if (SelectedServer >= DataStorage.ServerList.Count || SelectedServer < 0) { return null; } else { return DataStorage.ServerList[SelectedServer]; } } set { if (value is not null) { SelectedServer = DataStorage.ServerList.IndexOf(value); } else { SelectedServer = 0; } OnPropertyChanged(); } }
     public UIBool EnableAPI { get; set; } = new(true);
-    //public UIBool AdvancedModding { get; set; } = new(false);
     public UIBool EnableFramerateSmoothing { get; set; } = new(true);
     public UIBool FramerateSmoothingToDisplayRefreshrate { get; set; } = new(false); //TODO: Change to false before release
     public UIBool Debugging { get; set; } = new(false);

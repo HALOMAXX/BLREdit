@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Media;
 
 namespace BLREdit.UI.Views;
@@ -25,13 +26,13 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public string WindowTitle { get { return windowTitle; } set { windowTitle = value; OnPropertyChanged(); } }
 
     private BLRLoadoutStorage profile = DataStorage.Loadouts.FirstOrDefault();
-    public BLRLoadoutStorage Profile { get { return profile; } set { profile = value; OnPropertyChanged(); } }
+    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= MainWindow.Instance.LoadoutChanged; profile = value; profile.BLR.PropertyChanged += MainWindow.Instance.LoadoutChanged; OnPropertyChanged(); } }
 
 #pragma warning disable CA1822 // Mark members as static
     public BLREditSettings BLRESettings => DataStorage.Settings;
     public ObservableCollection<BLRClient> GameClients => DataStorage.GameClients;
     public ObservableCollection<BLRServer> ServerList => DataStorage.ServerList;
-    public ObservableCollection<BLRLoadoutStorage> Loadouts => DataStorage.Loadouts;
+    public ObservableCollectionExtended<BLRLoadoutStorage> Loadouts => DataStorage.Loadouts;
 #pragma warning restore CA1822 // Mark members as static
 
     public readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);

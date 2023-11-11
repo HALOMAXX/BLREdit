@@ -6,7 +6,6 @@ using BLREdit.UI.Views;
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json.Serialization;
@@ -113,7 +112,7 @@ public sealed class ExportSystem
         return dict;
     }
 
-    public static ObservableCollection<BLRLoadoutStorage> LoadStorage()
+    public static ObservableCollectionExtended<BLRLoadoutStorage> LoadStorage()
     {
         LoggingSystem.Log("Started Loading Shareable and BLR Profile Combos");
         BLRLoadoutStorage[] storage = new BLRLoadoutStorage[DataStorage.ShareableProfiles.Count];
@@ -125,14 +124,14 @@ public sealed class ExportSystem
         return new(storage);
     }
 
-    public static ObservableCollection<ShareableProfile> LoadShareableProfiles()
+    public static ObservableCollectionExtended<ShareableProfile> LoadShareableProfiles()
     {
         LoggingSystem.Log("Started Loading ShareableProfiles");
         ImportSystem.Initialize();
 
         LoggingSystem.Log($"Backup folder:{CurrentBackupFolder.FullName}");
 
-        var profiles = IOResources.DeserializeFile<ObservableCollection<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();
+        var profiles = IOResources.DeserializeFile<ObservableCollectionExtended<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();
 
         LoggingSystem.Log("Copying all Profiles to Backup folder!");
         foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
@@ -222,7 +221,7 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
     public ShareableProfile Shareable { get; } = share;
     private BLRProfile? blr = blr;
     public BLRProfile BLR { get { blr ??= Shareable.ToBLRProfile(); return blr; } }
-
+    static bool isExchanging = false;
     public void Remove()
     {
         int indexShare = DataStorage.ShareableProfiles.IndexOf(Shareable);
@@ -232,10 +231,16 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
         UndoRedoSystem.EndUndoRecord();
     }
 
-    public static void Move(int from, int to)
+    public static void Exchange(int from, int to)
     {
-        DataStorage.ShareableProfiles.Move(from, to);
-        DataStorage.Loadouts.Move(from, to);
+        if (from == to) return;
+        if (isExchanging) return;
+        isExchanging = true;
+        DataStorage.ShareableProfiles.Exchange(from, to);
+        DataStorage.Loadouts.Exchange(from, to);
+        DataStorage.ShareableProfiles.SignalExchange();
+        DataStorage.Loadouts.SignalExchange();
+        isExchanging = false;
     }
 
     public void ApplyLoadout()

@@ -63,18 +63,28 @@ namespace BLREdit.UI.Controls
         private void ProfileListView_Drop(object sender, DragEventArgs e)
         {
             BLRLoadoutStorage? droppedData = e.Data.GetData(typeof(BLRLoadoutStorage)) as BLRLoadoutStorage;
-            object targetData = e.OriginalSource;
-            while (targetData != null && targetData.GetType() != typeof(ProfileControl))
+
+            var pos = e.GetPosition(MainWindow.Instance);
+
+            var hitResult = MainWindow.Instance.HitTestProfileControls(ProfileListView, pos);
+
+            if (droppedData is not null && hitResult is ProfileControl sControl && sControl.DataContext is BLRLoadoutStorage targetProfile)
             {
-                targetData = ((FrameworkElement)targetData).Parent;
-            }
-            if (targetData is not null && droppedData is not null && targetData is ProfileControl sControl && sControl.DataContext is BLRLoadoutStorage targetProfile) 
-            {
-                BLRLoadoutStorage.Move(DataStorage.Loadouts.IndexOf(droppedData), DataStorage.Loadouts.IndexOf(targetProfile));
-            }
-            else
-            {
-                LoggingSystem.Log("failed to reorder ProfileListView!");
+                var droppedIndex = DataStorage.Loadouts.IndexOf(droppedData);
+                var targetIndex = DataStorage.Loadouts.IndexOf(targetProfile);
+
+                if (droppedIndex < 0 || targetIndex < 0)
+                { return; }
+
+                BLRLoadoutStorage.Exchange(droppedIndex, targetIndex);
+                if (droppedIndex == DataStorage.Settings.CurrentlyAppliedLoadout)
+                {
+                    DataStorage.Settings.CurrentlyAppliedLoadout = targetIndex;
+                }
+                else if (targetIndex == DataStorage.Settings.CurrentlyAppliedLoadout)
+                {
+                    DataStorage.Settings.CurrentlyAppliedLoadout = droppedIndex;
+                }
             }
         }
     }
