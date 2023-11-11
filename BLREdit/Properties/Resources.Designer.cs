@@ -214,6 +214,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start Training.
+        /// </summary>
+        public static string btn_StartTraining {
+            get {
+                return ResourceManager.GetString("btn_StartTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modify the Blacklight:Retribution Game Client.
         /// </summary>
         public static string btn_TT_ConfigureClient {

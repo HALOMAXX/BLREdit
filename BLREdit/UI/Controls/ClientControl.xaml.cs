@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,21 @@ namespace BLREdit.UI.Controls
         public ClientControl()
         {
             InitializeComponent();
+            UIKeys.Keys[Key.LeftShift].PropertyChanged += ShiftKeyModifier;
+        }
+
+        public void ShiftKeyModifier(object sender, PropertyChangedEventArgs args)
+        {
+            if (UIKeys.Keys[Key.LeftShift].Is)
+            {
+                this.BotMachButton.Visibility = Visibility.Collapsed;
+                this.TrainingButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                this.BotMachButton.Visibility = Visibility.Visible;
+                this.TrainingButton.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

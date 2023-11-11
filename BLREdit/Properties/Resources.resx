@@ -168,6 +168,9 @@
   <data name="btn_StartServer" xml:space="preserve">
     <value>Start Server</value>
   </data>
+  <data name="btn_StartTraining" xml:space="preserve">
+    <value>Start Training</value>
+  </data>
   <data name="btn_TT_ConfigureClient" xml:space="preserve">
     <value>Modify the Blacklight:Retribution Game Client</value>
   </data>

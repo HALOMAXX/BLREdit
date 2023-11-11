@@ -514,6 +514,21 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
+    private ICommand? launchTrainingCommand;
+    [JsonIgnore]
+    public ICommand LaunchTrainingCommand
+    {
+        get
+        {
+            launchTrainingCommand ??= new RelayCommand((param) => {
+                string launchArgs = $"server gunrange_persistent?Game=FoxGame.FoxGameMP_BO?ServerName=Training?Port=7777?NumBots=0?MaxPlayers=1?SingleMatch";
+                StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
+                LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
+            });
+            return launchTrainingCommand;
+        }
+    }
+
     private ICommand? modifyClientCommand;
     [JsonIgnore]
     public ICommand ModifyClientCommand
