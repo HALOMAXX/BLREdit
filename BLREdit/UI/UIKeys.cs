@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BLREdit.UI;
@@ -37,17 +32,33 @@ public sealed class UIKeys
 
     public void KeyDown(object sender, KeyEventArgs e)
     {
-        if (Keys.TryGetValue(e.Key, out UIBool b))
+        if (e.Key == Key.System)
         {
-            b.Set(true);
+            SetKey(e.SystemKey, true);
+        }
+        else
+        {
+            SetKey(e.Key, true);
         }
     }
 
     public void KeyUp(object sender, KeyEventArgs e)
     {
-        if (Keys.TryGetValue(e.Key, out UIBool b))
+        if (e.Key == Key.System)
         {
-            b.Set(false);
+            SetKey(e.SystemKey, false);
+        }
+        else
+        {
+            SetKey(e.Key, false);
+        }
+    }
+
+    static void SetKey(Key key, bool down)
+    {
+        if (Keys.TryGetValue(key, out UIBool b))
+        {
+            b.Set(down);
         }
     }
 }

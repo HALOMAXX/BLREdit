@@ -10,7 +10,7 @@
         xmlns:game="clr-namespace:BLREdit.Game"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=views:MainWindowView}"
-        Height="1032" Width="1920" MinWidth="830" Title="{Binding Path=WindowTitle}" Initialized="Window_Initialized" Deactivated="Window_Deactivated" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered" Closed="Window_Closed" Closing="Window_Closing" Foreground="Red" PreviewKeyUp="PreviewKeyUpMainWindow">
+        Height="1032" Width="1920" MinWidth="830" Title="{Binding Path=WindowTitle}" Initialized="Window_Initialized" Deactivated="Window_Deactivated" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered" Closed="Window_Closed" Closing="Window_Closing" Foreground="Red">
 
 
     <Window.Background>

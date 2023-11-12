@@ -42,6 +42,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
     public Type? CurrentSortingEnumType { get; set; }
+    public string LastSortingPropertyName { get; set; } = "None";
     public string CurrentSortingPropertyName { get; set; } = "None";
     public bool IsPlayerNameChanging { get; set; } = false;
     public bool IsPlayerProfileChanging { get; set; } = false;

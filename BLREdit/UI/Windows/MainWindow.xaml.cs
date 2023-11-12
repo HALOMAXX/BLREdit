@@ -80,6 +80,7 @@ public sealed partial class MainWindow : Window
 
         PreviewKeyDown += UIKeys.Instance.KeyDown;
         PreviewKeyUp += UIKeys.Instance.KeyUp;
+        PreviewKeyUp += PreviewKeyUpMainWindow;
 
         InitializeComponent();
 
@@ -541,9 +542,7 @@ public sealed partial class MainWindow : Window
                 {
                     View.Profile.BLR.IsAdvanced.Set(!View.Profile.BLR.IsAdvanced.Is);
                     View.Profile.BLR.Write();
-                    //View.Profile = View.Profile;
                     MainWindow.View.Profile.BLR.CalculateStats();
-                    //MainWindow.Instance?.SetItemList();
                     ApplySearchAndFilter();
                     ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{(View.Profile.BLR.IsAdvanced.Is ? "On" : "Off")}");
                 }
