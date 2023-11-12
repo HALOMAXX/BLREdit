@@ -26,7 +26,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public string WindowTitle { get { return windowTitle; } set { windowTitle = value; OnPropertyChanged(); } }
 
     private BLRLoadoutStorage profile = DataStorage.Loadouts.FirstOrDefault();
-    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= MainWindow.Instance.LoadoutChanged; profile = value; profile.BLR.PropertyChanged += MainWindow.Instance.LoadoutChanged; OnPropertyChanged(); } }
+    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
 
 #pragma warning disable CA1822 // Mark members as static
     public BLREditSettings BLRESettings => DataStorage.Settings;
@@ -52,14 +52,15 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public BLRGear? GearCopy { get; set; } = null;
     public BLRExtra? ExtraCopy { get; set; } = null;
 
-    static MainWindowView()
-    {
-        LoggingSystem.Log("MainWindowView Static Constructor Start");
-    }
-
     public MainWindowView()
     {
-        LoggingSystem.Log("MainWindowView Constructor Start");
+        profile.BLR.PropertyChanged += LoadoutChangedRelay;
+    }
+
+    void LoadoutChangedRelay(object sender, PropertyChangedEventArgs e)
+    {
+        if (MainWindow.Instance is null) return;
+        MainWindow.Instance.LoadoutChanged(sender, e);
     }
 
     public void UpdateWindowTitle()

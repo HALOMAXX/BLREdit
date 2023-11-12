@@ -27,6 +27,8 @@ public sealed class BLRProfile
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
 
     public BLRProfile() {
+        IsAdvanced.PropertyChanged += AdvancedChanged;
+        
         Loadout1 = new(this);
         Loadout2 = new(this);
         Loadout3 = new(this);
@@ -43,9 +45,16 @@ public sealed class BLRProfile
         Loadout3.Secondary.PropertyChanged += LoadoutChanged;
     }
 
+    void AdvancedChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if(e.PropertyName == nameof(IsAdvanced.Is))
+            IsChanged = true;
+    }
+
     void LoadoutChanged(object sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(IsChanged)) IsChanged = true;
+        if (e.PropertyName == nameof(IsChanged))
+            IsChanged = true;
     }
 
     public static void UpdateSearchAndFilter()
