@@ -1095,7 +1095,38 @@ public sealed partial class MainWindow : Window
             }
             if (parent.DataContext is BLRLoadout loadout)
             {
-                UndoRedoSystem.DoValueChange(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout, BlockEvents.None);
+                var property = border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName;
+                if (item.Category == ImportSystem.ATTACHMENTS_CATEGORY && (loadout.Profile?.IsAdvanced.IsNot ?? true))
+                {
+                    switch (property)
+                    {
+                        case nameof(loadout.Gear1):
+                            //if (loadout.Gear1?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 1!", "Info"); return; }
+                            if (loadout.Gear2?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 2!", "Info"); return; }
+                            if (loadout.Gear3?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 3!", "Info"); return; }
+                            if (loadout.Gear4?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 4!", "Info"); return; }
+                            break;
+                        case nameof(loadout.Gear2):
+                            if (loadout.Gear1?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 1!", "Info"); return; }
+                            //if (loadout.Gear2?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 2!", "Info"); return; }
+                            if (loadout.Gear3?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 3!", "Info"); return; }
+                            if (loadout.Gear4?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 4!", "Info"); return; }
+                            break;
+                        case nameof(loadout.Gear3):
+                            if (loadout.Gear1?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 1!", "Info"); return; }
+                            if (loadout.Gear2?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 2!", "Info"); return; }
+                            //if (loadout.Gear3?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 3!", "Info"); return; }
+                            if (loadout.Gear4?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 4!", "Info"); return; }
+                            break;
+                        case nameof(loadout.Gear4):
+                            if (loadout.Gear1?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 1!", "Info"); return; }
+                            if (loadout.Gear2?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 2!", "Info"); return; }
+                            if (loadout.Gear3?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 3!", "Info"); return; }
+                            //if (loadout.Gear4?.UID == item.UID) { LoggingSystem.MessageLog($"You already have {item.Name} equipped in Slot 4!", "Info"); return; }
+                            break;
+                    }
+                }
+                UndoRedoSystem.DoValueChange(item, loadout.GetType().GetProperty(property), loadout, BlockEvents.None);
                 UndoRedoSystem.EndUndoRecord();
             }
         }

@@ -97,7 +97,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
 
     private void ProcessExit(object sender, EventArgs args)
     {
-        LoggingSystem.Log($"[{this.Client}]: has Exited with {GameProcess.ExitCode}");
+        LoggingSystem.Log($"[{this.Client}]({(this.IsServer ? "Server" : "Client")}): has Exited with {GameProcess.ExitCode}");
         if (!IsServer)
         {
             Client.UpdateProfileSettings();

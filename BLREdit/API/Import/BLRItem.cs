@@ -148,6 +148,8 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool ValidForTest(BLRItem? filter)
     {
+        if (UID == 12096 || UID == 12097 || UID == 12098 || UID == 12099 || UID == 46050) { return false; }
+
         if (filter is null || ValidFor == null || ValidFor.Count <= 0) { return true; }
 
         foreach (int id in ValidFor)
