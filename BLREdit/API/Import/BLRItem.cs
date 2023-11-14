@@ -160,7 +160,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     private static bool AdvancedFilter(BLRItem item, BLRItem filter)
     {
-        if(item is null) return false;
+        if (item is null || item.UID == 45012) return false;
         switch (item.Category)
         {
             case ImportSystem.MAGAZINES_CATEGORY:

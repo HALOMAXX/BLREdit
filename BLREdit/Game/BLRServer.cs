@@ -20,6 +20,8 @@ namespace BLREdit.Game;
 
 public sealed class BLRServer : INotifyPropertyChanged
 {
+    public static AwaitableCollection<BLRServer> ServersToPing { get; } = new();
+
     #region Events
     public event PropertyChangedEventHandler? PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
@@ -69,9 +71,13 @@ public sealed class BLRServer : INotifyPropertyChanged
     public ushort InfoPort { get { return infoPort; } set { infoPort = value; OnPropertyChanged(); } }
     [JsonIgnore] private bool hidden = false;
     public bool Hidden { get { return hidden; } set { hidden = value; OnPropertyChanged(); } }
-    [JsonIgnore] private string region = "EU-North";
+    [JsonIgnore] private string region = string.Empty;
     public string Region { get { return region; } set { region = value; OnPropertyChanged(); } }
-    public static AwaitableCollection<BLRServer> ServersToPing { get; } = new();
+    [JsonIgnore] private bool advanced = false;
+    public bool AllowAdvanced { get { return advanced; } set { advanced = value; OnPropertyChanged(); } }
+    [JsonIgnore] private bool lmgr = false;
+    public bool AllowLMGR { get { return lmgr; } set { lmgr = value; OnPropertyChanged(); } }
+
 
     static BLRServer()
     {

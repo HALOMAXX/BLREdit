@@ -24,16 +24,18 @@ public sealed class BLRProcess : INotifyPropertyChanged
     }
     #endregion Events
 
-    private static ObservableCollection<BLRProcess> RunningGames { get; } = new();
+    public static ObservableCollection<BLRProcess> RunningGames { get; } = new();
 
     private Process gameProcess;
-    private Process GameProcess { get { return gameProcess; }  set { gameProcess = value; OnPropertyChanged(); } }
+    public Process GameProcess { get { return gameProcess; } private set { gameProcess = value; OnPropertyChanged(); } }
     private BLRClient client;
-    private BLRClient Client { get { return client; } set { client = value; OnPropertyChanged(); } }
+    public BLRClient Client { get { return client; } private set { client = value; OnPropertyChanged(); } }
     private bool isServer = false;
-    private bool IsServer { get { return isServer; } set { isServer = value; OnPropertyChanged(); } }
+    public bool IsServer { get { return isServer; } private set { isServer = value; OnPropertyChanged(); } }
     private bool watchdog = false;
-    private bool Watchdog { get { return watchdog; } set { watchdog = value; OnPropertyChanged(); } }
+    public bool Watchdog { get { return watchdog; } private set { watchdog = value; OnPropertyChanged(); } }
+    private BLRServer? connectedServer;
+    public BLRServer? ConnectedServer { get { return connectedServer; } private set { connectedServer = value; OnPropertyChanged(); } }
 
     static BLRProcess()
     {
@@ -59,8 +61,9 @@ public sealed class BLRProcess : INotifyPropertyChanged
         }
     }
 
-    private BLRProcess(string launchArgs, BLRClient client,bool isServer, bool watchdog = false)
+    private BLRProcess(string launchArgs, BLRClient client,bool isServer, bool watchdog = false, BLRServer? server = null)
     {
+        ConnectedServer = server;
         IsServer= isServer;
         this.client = client;
         Watchdog = watchdog;
@@ -79,9 +82,9 @@ public sealed class BLRProcess : INotifyPropertyChanged
         GameProcess.Exited += ProcessExit;
     }
 
-    public static void CreateProcess(string launchArgs, BLRClient client, bool isServer, bool watchdog = false)
+    public static void CreateProcess(string launchArgs, BLRClient client, bool isServer, bool watchdog = false, BLRServer? server = null)
     {
-        RunningGames.Add(new BLRProcess(launchArgs, client, isServer, watchdog));
+        RunningGames.Add(new BLRProcess(launchArgs, client, isServer, watchdog, server));
     }
 
     public static void KillAll()

@@ -133,6 +133,8 @@ public sealed partial class MainWindow : Window
         if (index == -1) { DataStorage.ServerList.Add(server); return; }
         DataStorage.ServerList[index].Hidden = server.Hidden;
         DataStorage.ServerList[index].Region = server.Region;
+        DataStorage.ServerList[index].AllowAdvanced = server.AllowAdvanced;
+        DataStorage.ServerList[index].AllowLMGR = server.AllowLMGR;
     }
 
     public static void AddServer(BLRServer server, bool forceAdd = false)
@@ -484,9 +486,20 @@ public sealed partial class MainWindow : Window
         {
             if (DataStorage.Settings.DefaultClient is not null)
             {
+                foreach (var process in BLRProcess.RunningGames)
+                {
+                    if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
+                    {
+                        if (!BLRClient.ValidLoadout(View.Profile.BLR, process.ConnectedServer, out string message))
+                        {
+                            LoggingSystem.MessageLog(message, "warning");
+                            return;
+                        }
+                    }
+                }
                 var directory = $"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\";
                 Directory.CreateDirectory(directory);
-                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(View.Profile.BLR.Loadout1), new LoadoutManagerLoadout(View.Profile.BLR.Loadout2), new LoadoutManagerLoadout(View.Profile.BLR.Loadout3) });
+                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(View.Profile.BLR.Loadout1, View.Profile.BLR.IsAdvanced.Is), new LoadoutManagerLoadout(View.Profile.BLR.Loadout2, View.Profile.BLR.IsAdvanced.Is), new LoadoutManagerLoadout(View.Profile.BLR.Loadout3, View.Profile.BLR.IsAdvanced.Is) });
                 ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
                 DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;
                 View.Profile.BLR.IsChanged = false;

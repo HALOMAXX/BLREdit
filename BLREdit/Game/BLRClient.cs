@@ -8,11 +8,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Xml;
 
+using BLREdit.API.Export;
 using BLREdit.Export;
 using BLREdit.Game.Proxy;
+using BLREdit.Import;
 using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
@@ -32,7 +36,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     #endregion Events
     private bool hasBeenValidated = false;
 
-    [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port = 7777 };
+    [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port = 7777, AllowAdvanced = true, AllowLMGR = true };
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
@@ -76,7 +80,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public string? ProxyVersion { get { return _proxyVersion; } set { _proxyVersion = value; OnPropertyChanged(); } }
 
     private string? _configFolder;
-    public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}\\FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if(Directory.Exists(value)) _configFolder = value; } }
+    public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}\\FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if (Directory.Exists(value)) _configFolder = value; } }
     private string? _modulesFolder;
     public string ModulesFolder { get { _modulesFolder ??= Directory.CreateDirectory($"{BasePath}\\Binaries\\Win32\\Modules\\").FullName; return _modulesFolder; } set { if (Directory.Exists(value)) _modulesFolder = value; } }
 
@@ -188,7 +192,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         string replaced;
         if (DataStorage.Settings.EnableFramerateSmoothing.Is)
         {
-            replaced = file.Replace("MaxSmoothedFrameRate=62", "MaxSmoothedFrameRate=1000");   
+            replaced = file.Replace("MaxSmoothedFrameRate=62", "MaxSmoothedFrameRate=1000");
         }
         else
         {
@@ -348,7 +352,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                 moduleInstallTasks.Add(Task.Run(() => { availableModule.InstallModule(this); }));
             }
         }
-        if(moduleInstallTasks.Count > 0) Task.WaitAll(moduleInstallTasks.ToArray());
+        if (moduleInstallTasks.Count > 0) Task.WaitAll(moduleInstallTasks.ToArray());
     }
 
     public bool IsModuleInstalledAndUpToDate(VisualProxyModule module)
@@ -381,7 +385,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (App.AvailableProxyModules.Count > 0 && DataStorage.Settings.StrictModuleChecks.Is)
         {
             LoggingSystem.Log($"Filtering Installed Modules");
-            InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; })); 
+            InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; }));
         }
 
         foreach (var file in Directory.EnumerateFiles(ModulesFolder))
@@ -410,7 +414,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
         }
 
-        List<ProxyModule> toRemove= new();
+        List<ProxyModule> toRemove = new();
 
         foreach (var module in CustomModules) { if (module.FileAppearances <= 0) { toRemove.Add(module); } }
 
@@ -479,7 +483,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore]
     public ICommand LaunchClientCommand
     {
-        get 
+        get
         {
             launchClientCommand ??= new RelayCommand(
                     param => this.LaunchClient()
@@ -563,7 +567,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
         string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}?SingleMatch";
         StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
-        LaunchClient(new LaunchOptions() { UserName= DataStorage.Settings.PlayerName, Server=LocalHost });
+        LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
     }
 
     private void LaunchServer()
@@ -581,14 +585,156 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchClient(LaunchOptions options)
     {
+        if (options.Server.AllowAdvanced && !options.Server.AllowLMGR)
+        {
+            var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
+            bool hasLMGR = false;
+            string message = "Please Remove the LMGR Mag from";
+            if (diskLoadout is not null)
+            {
+                int i = 1;
+                foreach (var loadout in diskLoadout)
+                {
+                    if (PrimaryHasLMGR(loadout) && SecondaryHasLMGR(loadout))
+                    {
+                        hasLMGR = true;
+                        message += $" Loadout{i}: Primary and Secondary";
+                    }
+                    else if (PrimaryHasLMGR(loadout))
+                    {
+                        hasLMGR = true;
+                        message += $" Loadout{i}: Primary";
+                    }
+                    else if (SecondaryHasLMGR(loadout))
+                    {
+                        hasLMGR = true;
+                        message += $" Loadout{i}: Secondary";
+                    }
+                    i++;
+                }
+            }
+
+            if (hasLMGR)
+            {
+                hasLMGR = false;
+                message = "Please Remove the LMGR Mag from";
+                var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
+                if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
+                {
+                    if (CheckLoadout(currentlyAppliedLoadout.BLR.Loadout1, ref message, 1)) hasLMGR = true;
+                    if (CheckLoadout(currentlyAppliedLoadout.BLR.Loadout2, ref message, 2)) hasLMGR = true;
+                    if (CheckLoadout(currentlyAppliedLoadout.BLR.Loadout3, ref message, 3)) hasLMGR = true;
+                    if (hasLMGR)
+                    {
+                        LoggingSystem.MessageLog($"Current loadout is not supported on this server:\n{message}\nOr apply a non Advanced or modify current loadout!", "Warning");
+                        return;
+                    }
+                    else
+                    {
+                        currentlyAppliedLoadout.ApplyLoadout(this);
+                    }
+                }
+                else
+                {
+                    currentlyAppliedLoadout.ApplyLoadout(this);
+                }
+            }
+        }
+        else if(!options.Server.AllowAdvanced)
+        {
+            var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
+            bool isAdvanced = false;
+
+            foreach (var loadout in diskLoadout)
+            {
+                if (loadout.IsAdvanced)
+                {
+                    isAdvanced = true;
+                }
+            }
+
+            if (isAdvanced)
+            {
+                isAdvanced = false;
+                var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
+                if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
+                {
+                    if (currentlyAppliedLoadout.BLR.IsAdvanced.Is) isAdvanced = true;
+                    if (isAdvanced)
+                    {
+                        LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!", "Warning");
+                        return;
+                    }
+                    else
+                    {
+                        currentlyAppliedLoadout.ApplyLoadout(this);
+                    }
+                }
+                else
+                {
+                    currentlyAppliedLoadout.ApplyLoadout(this);
+                }
+
+            }
+        }
         ApplyProfileSetting(ExportSystem.GetOrAddProfileSettings(options.UserName));
         ApplyConfigs();
         string launchArgs = options.Server.IPAddress + ':' + options.Server.Port;
         launchArgs += $"?Name={options.UserName}";
-        StartProcess(launchArgs);
+        StartProcess(launchArgs, false, false, null, options.Server);
     }
 
-    public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null)
+    public static bool ValidLoadout(BLRProfile profile, BLRServer server, out string message)
+    {
+        var isValidLoadout = true;
+        message = "";
+        if (server.AllowAdvanced && !server.AllowLMGR)
+        {
+            message = "Please Remove the LMGR Magazine from:";
+            if (profile.IsAdvanced.Is)
+            {
+                if (CheckLoadout(profile.Loadout1, ref message, 1)) isValidLoadout = false;
+                if (CheckLoadout(profile.Loadout2, ref message, 2)) isValidLoadout = false;
+                if (CheckLoadout(profile.Loadout3, ref message, 3)) isValidLoadout = false;
+                if (!isValidLoadout)
+                {
+                    message = $"Current loadout is not supported on this server!\n{message}\nOr apply a non Advanced loadout!";
+                }
+            }
+        }
+        else if (!server.AllowAdvanced)
+        {
+            if (profile.IsAdvanced.Is)
+            {
+                isValidLoadout = false;
+                message = $"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced loadout!";
+            }
+        }
+        return isValidLoadout;
+    }
+
+    public static bool CheckLoadout(BLRLoadout loadout, ref string message, int i)
+    {
+        bool hasLMGR = false;
+        if (PrimaryHasLMGR(loadout) && SecondaryHasLMGR(loadout))
+        {
+            hasLMGR = true;
+            message += $"\n\tLoadout{i}: Primary and Secondary";
+        }
+        else if (PrimaryHasLMGR(loadout))
+        {
+            hasLMGR = true;
+            message += $"\n\tLoadout{i}: Primary";
+        }
+        else if (SecondaryHasLMGR(loadout))
+        {
+            hasLMGR = true;
+            message += $"\n\tLoadout{i}: Secondary";
+        }
+        return hasLMGR;
+    }
+
+    public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
     {
         ValidateProxy();
         if (!hasBeenValidated)
@@ -602,10 +748,45 @@ public sealed class BLRClient : INotifyPropertyChanged
             LoggingSystem.Log($"[{this}]: has already been validated!");
         }
 
-        BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog);
+        BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog, server);
     }
 
     #endregion Launch/Exit
+
+    static BLRItem? lmgrReciver;
+    static BLRItem? LMGReciever { get{ lmgrReciver ??= ImportSystem.GetItemByUIDAndType(ImportSystem.PRIMARY_CATEGORY, 40014); return lmgrReciver; } }
+    static BLRItem? lmgrMagazine;
+    static BLRItem? LMGRMagazine { get { lmgrMagazine ??= ImportSystem.GetItemByUIDAndType(ImportSystem.MAGAZINES_CATEGORY, 44106); return lmgrMagazine; } }
+
+    public static bool PrimaryHasLMGR(ShareableLoadout loadout)
+    {
+        return (loadout.Primary.Reciever != LMGReciever.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine));
+    }
+
+    public static bool SecondaryHasLMGR(ShareableLoadout loadout)
+    {
+        return (loadout.Secondary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine));
+    }
+
+    public static bool PrimaryHasLMGR(LoadoutManagerLoadout loadout)
+    {
+        return (loadout.Primary.Receiver != LMGReciever.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine));
+    }
+
+    public static bool SecondaryHasLMGR(LoadoutManagerLoadout loadout)
+    {
+        return (loadout.Secondary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine));
+    }
+
+    public static bool PrimaryHasLMGR(BLRLoadout loadout)
+    {
+        return (loadout.Primary.Reciever.LMID != LMGReciever.LMID && loadout.Primary.Magazine.UID == LMGRMagazine.UID);
+    }
+
+    public static bool SecondaryHasLMGR(BLRLoadout loadout)
+    {
+        return (loadout.Secondary.Magazine.UID == LMGRMagazine.UID);
+    }
 
     private void ModifyClient()
     {

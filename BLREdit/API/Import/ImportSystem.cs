@@ -554,6 +554,26 @@ public static class ImportSystem
         }
     }
 
+    public static BLRItem? GetItemByUIDAndType(string Type, int UID)
+    {
+        if (string.IsNullOrEmpty(Type)) return null;
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        {
+            foreach (var item in items)
+            {
+                if (item.UID == UID)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public static int GetIDByNameAndType(string? Type, string? Name)
     {
         if (Type is null || Name is null || string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;

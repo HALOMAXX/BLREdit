@@ -5,6 +5,7 @@ namespace BLREdit.Export;
 
 public sealed class LoadoutManagerLoadout
 {
+    public bool IsAdvanced { get; set; } = false;
     public LoadoutManagerWeapon? Primary { get; set; }
     public LoadoutManagerWeapon? Secondary { get; set; }
     public LoadoutManagerGear? Gear { get; set; }
@@ -15,8 +16,9 @@ public sealed class LoadoutManagerLoadout
     public LoadoutManagerLoadout()
     {}
 
-    public LoadoutManagerLoadout(BLRLoadout loadout)
+    public LoadoutManagerLoadout(BLRLoadout loadout, bool isAdvanced)
     {
+        IsAdvanced = isAdvanced;
         Primary = new(loadout.Primary);
         Secondary = new(loadout.Secondary);
         Gear = new(loadout);

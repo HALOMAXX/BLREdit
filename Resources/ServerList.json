@@ -1,6 +1,8 @@
 [
   {
-    "ServerAddress": "localhost"
+    "ServerAddress": "localhost",
+    "AllowAdvanced": true,
+    "AllowLMGR": true
   },
   {
     "ServerAddress": "mooserver.ddns.net",
@@ -10,18 +12,23 @@
     "ServerAddress": "mooserver.ddns.net",
     "Port": 7779,
     "InfoPort": 7780,
-    "Region": "EU-North"
+    "Region": "EU-North",
+    "AllowAdvanced": true,
+    "AllowLMGR": true
   },
   {
     "ServerAddress": "blrevive.northamp.fr",
     "InfoPort": 80,
-    "Region": "EU-West"
+    "Region": "EU-West",
+    "AllowLMGR": true
   },
   {
     "ServerAddress": "blrevive-staging.northamp.fr",
     "InfoPort": 80,
     "Hidden": true,
-    "Region": "EU-West"
+    "Region": "EU-West",
+    "AllowAdvanced": true,
+    "AllowLMGR": true
   },
   {
     "ServerAddress": "kameron.cloud",

@@ -24,7 +24,9 @@ public sealed class BLRProfile
 
 
     private bool isChanged = false;
-    [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
+    [JsonIgnore] public bool IsChanged { 
+        get { return isChanged; } 
+        set { isChanged = value; OnPropertyChanged(); } }
 
     public BLRProfile() {
         IsAdvanced.PropertyChanged += AdvancedChanged;

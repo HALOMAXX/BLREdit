@@ -16093,7 +16093,6 @@
       "Icon": "t_AntiMaterialRifle_256x128",
       "Name": "Anti-Materiel Rifle",
       "SupportedMods": [
-        "ammos",
         "camosWeapon",
         "hangers",
         "scopes",
