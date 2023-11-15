@@ -80,9 +80,9 @@ public sealed class BLRClient : INotifyPropertyChanged
     public string? ProxyVersion { get { return _proxyVersion; } set { _proxyVersion = value; OnPropertyChanged(); } }
 
     private string? _configFolder;
-    public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}\\FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if (Directory.Exists(value)) _configFolder = value; } }
+    public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if (Directory.Exists(value)) _configFolder = value; } }
     private string? _modulesFolder;
-    public string ModulesFolder { get { _modulesFolder ??= Directory.CreateDirectory($"{BasePath}\\Binaries\\Win32\\Modules\\").FullName; return _modulesFolder; } set { if (Directory.Exists(value)) _modulesFolder = value; } }
+    public string ModulesFolder { get { _modulesFolder ??= Directory.CreateDirectory($"{BasePath}Binaries\\Win32\\Modules\\").FullName; return _modulesFolder; } set { if (Directory.Exists(value)) _modulesFolder = value; } }
 
     public ObservableCollection<BLRClientPatch> AppliedPatches { get; set; } = new();
 
@@ -187,7 +187,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ApplyConfigs()
     {
-        var info = new FileInfo($"{BasePath}\\FoxGame\\Config\\PCConsole\\Cooked\\PCConsole-FoxEngine.ini");
+        var info = new FileInfo($"{BasePath}FoxGame\\Config\\PCConsole\\Cooked\\PCConsole-FoxEngine.ini");
         var file = File.ReadAllText(info.FullName);
         string replaced;
         if (DataStorage.Settings.EnableFramerateSmoothing.Is)
@@ -821,7 +821,9 @@ public sealed class BLRClient : INotifyPropertyChanged
             basePath = $"{pathParts[i]}\\{basePath}";
         }
 
-        _patchedPath = $"{basePath}\\Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
+        if (!basePath.EndsWith("\\")) { basePath += "\\"; }
+
+        _patchedPath = $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
 
         return basePath;
     }
@@ -884,7 +886,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         catch (Exception error)
         {
-            LoggingSystem.MessageLog($"[{this}]Patching failed: {error}", "Error"); //TODO: Add Localization
+            LoggingSystem.MessageLog($"[{this}]: Patching failed:\n{error.Message}", "Error"); //TODO: Add Localization
             return false;
         }
         return true;

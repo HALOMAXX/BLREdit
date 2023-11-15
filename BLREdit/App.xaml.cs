@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -827,27 +828,7 @@ public partial class App : System.Windows.Application
             }
             catch (Exception error) 
             { 
-                LoggingSystem.Log($"Failed to Unpack {pack.Name} reason:{error}");
-                bool tryagain = true;
-                int tries = 0;
-                while (tryagain)
-                {
-                    if (tries >= 3) { UpdatePanic = true; return; }
-                    tries++;
-                    try
-                    { 
-                        if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
-                        LoggingSystem.Log($"[Update]: Downloading {dl}");
-                        WebResources.DownloadFile(dl, pack.Info.FullName);
-
-                        if (Directory.Exists(targetFolder)) { LoggingSystem.Log($"[Update]: Deleting {targetFolder}"); Directory.Delete(targetFolder, true); }
-                        LoggingSystem.Log($"[Update]: Extracting {pack.Info.FullName} to {targetFolder}");
-                        ZipFile.ExtractToDirectory(pack.Info.FullName, targetFolder);
-
-                        tryagain = false;
-                    }
-                    catch { }
-                }
+                LoggingSystem.MessageLog($"Failed to Unpack {pack.Name} reason:{error}", "Error");
             }
         }
         else

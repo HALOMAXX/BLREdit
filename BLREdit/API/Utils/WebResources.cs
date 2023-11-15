@@ -34,10 +34,17 @@ public sealed class WebResources
     private static BlockingCollection<DownloadRequest> DownloadRequests { get; } = new();
     public static bool DownloadFile(string url, string filename)
     {
-        if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(filename)) { LoggingSystem.MessageLog($"Failed to download file({filename}) from url({url})!", "Error"); return false; }
+        if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(filename)) { LoggingSystem.Log($"Failed to download ({filename}) from:\n<{url}>"); return false; }
+        LoggingSystem.Log($"Downloading ({filename}) to ({url})");
         DownloadRequest req = new(url, filename);
         DownloadRequests.Add(req);
         WaitHandle.WaitAll(new WaitHandle[] { req.locked });
+        if (req.Error is not null)
+        {
+            LoggingSystem.MessageLog($"Failed to download ({filename}) from:\n<{url}>\n{req.Error.Message}", "Error");
+            return false;
+        }
+        LoggingSystem.Log($"Finished downloading ({filename}) from:\n<{url}>");
         return true;
     }
 
@@ -52,7 +59,8 @@ public sealed class WebResources
             }
             catch (Exception error)
             {
-                LoggingSystem.Log($"[WebClient]Failed to Download({request.url})\nReason:{error}");
+                request.Error = error;
+                LoggingSystem.Log($"[WebClient]: Failed to download ({request.filename}) from:\n<{request.url}>\nReason:{error}");
             }
             finally
             { request.locked.Set(); }
@@ -63,5 +71,6 @@ public sealed class WebResources
 class DownloadRequest(string url, string filename)
 {
     public string url = url, filename = filename;
+    public Exception? Error { get; set; }
     public AutoResetEvent locked = new(false);
 }

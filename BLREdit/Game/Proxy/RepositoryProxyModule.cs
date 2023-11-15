@@ -143,10 +143,8 @@ public sealed class RepositoryProxyModule
         string dlTarget = $"downloads\\{InstallName}.dll";
         ProxyModule? module = null;
         if (File.Exists(dlTarget)) { LoggingSystem.Log($"Deleting {dlTarget}"); File.Delete(dlTarget); }
-        LoggingSystem.Log($"Downloading ({dl}) to ({dlTarget})");
         if (WebResources.DownloadFile(dl, dlTarget))
         {
-            LoggingSystem.Log($"Finished Downloading {dl}");
             if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
             { module = new ProxyModule(GitHubRelease, ModuleName, Owner, Repository, Client, Server); }
             else if (GitlabRelease is not null)
