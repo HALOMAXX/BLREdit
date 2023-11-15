@@ -47,7 +47,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     public string Icon { get; set; } = "";
     public string? Name { get; set; }
     public double CP { get; set; } = 0;
-
+    public int AmmoType { get; set; } = -1;
     [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(NameID.ToString("000000")); } }
     [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 

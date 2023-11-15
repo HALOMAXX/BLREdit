@@ -7553,6 +7553,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSMG_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44005,
       "ValidFor": [
         40010
@@ -7568,6 +7569,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSMG_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44006,
       "ValidFor": [
         40010
@@ -7583,6 +7585,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSMG_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44007,
       "ValidFor": [
         40010
@@ -7598,6 +7601,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSMG_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44008,
       "ValidFor": [
         40010
@@ -7748,6 +7752,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44016,
       "ValidFor": [
         40003,
@@ -7764,6 +7769,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44017,
       "ValidFor": [
         40003,
@@ -7780,6 +7786,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44018,
       "ValidFor": [
         40003,
@@ -7796,6 +7803,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44019,
       "ValidFor": [
         40003,
@@ -7896,6 +7904,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSniper_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44025,
       "ValidFor": [
         40008
@@ -7911,6 +7920,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSniper_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44026,
       "ValidFor": [
         40008
@@ -7926,6 +7936,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSniper_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44027,
       "ValidFor": [
         40008
@@ -7941,6 +7952,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSniper_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44028,
       "ValidFor": [
         40008
@@ -8069,6 +8081,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagShell_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44035,
       "ValidFor": [
         40005
@@ -8084,6 +8097,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagShell_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44036,
       "ValidFor": [
         40005
@@ -8099,6 +8113,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagShell_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44037,
       "ValidFor": [
         40005
@@ -8114,6 +8129,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagShell_Corrosive_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44038,
       "ValidFor": [
         40005
@@ -8159,6 +8175,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagBKT_Electro_128x128",
       "Name": "Electro Ammo Belt",
+      "AmmoType": 90001,
       "UID": 44041,
       "ValidFor": [
         40011
@@ -8174,6 +8191,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagBKT_Explosive_128x128",
       "Name": "Explosive Ammo Belt",
+      "AmmoType": 90002,
       "UID": 44042,
       "ValidFor": [
         40011
@@ -8189,6 +8207,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagBKT_Incendiary_128x128",
       "Name": "Incendiary Ammo Belt",
+      "AmmoType": 90003,
       "UID": 44043,
       "ValidFor": [
         40011
@@ -8204,6 +8223,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagBKT_Toxic_128x128",
       "Name": "Toxic Ammo Belt",
+      "AmmoType": 90004,
       "UID": 44044,
       "ValidFor": [
         40011
@@ -8303,6 +8323,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_Mag45_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44050,
       "ValidFor": [
         40000
@@ -8318,6 +8339,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_Mag45_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44051,
       "ValidFor": [
         40000
@@ -8333,6 +8355,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag45_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44052,
       "ValidFor": [
         40000
@@ -8348,6 +8371,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_Mag45_Corrosive_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44053,
       "ValidFor": [
         40000
@@ -8452,6 +8476,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44059,
       "ValidFor": [
         40001,
@@ -8468,6 +8493,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44060,
       "ValidFor": [
         40001,
@@ -8484,6 +8510,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44061,
       "ValidFor": [
         40001,
@@ -8500,6 +8527,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44062,
       "ValidFor": [
         40001,
@@ -8600,6 +8628,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44068,
       "ValidFor": [
         40004
@@ -8615,6 +8644,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44069,
       "ValidFor": [
         40004
@@ -8630,6 +8660,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44070,
       "ValidFor": [
         40004
@@ -8645,6 +8676,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44071,
       "ValidFor": [
         40004
@@ -8744,6 +8776,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_Mag9mm_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44077,
       "ValidFor": [
         40006
@@ -8759,6 +8792,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_Mag9mm_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44078,
       "ValidFor": [
         40006
@@ -8774,6 +8808,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_Mag9mm_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44079,
       "ValidFor": [
         40006
@@ -8789,6 +8824,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_Mag9mm_Corrosive_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44080,
       "ValidFor": [
         40006
@@ -8888,6 +8924,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44086,
       "ValidFor": [
         40009
@@ -8903,6 +8940,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44087,
       "ValidFor": [
         40009
@@ -8918,6 +8956,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44088,
       "ValidFor": [
         40009
@@ -8933,6 +8972,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44089,
       "ValidFor": [
         40009
@@ -9032,6 +9072,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSniper_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44095,
       "ValidFor": [
         40007
@@ -9047,6 +9088,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSniper_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44096,
       "ValidFor": [
         40007
@@ -9062,6 +9104,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSniper_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44097,
       "ValidFor": [
         40007
@@ -9077,6 +9120,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSniper_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44098,
       "ValidFor": [
         40007
@@ -9103,6 +9147,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRevolver_Electro_128x128",
       "Name": "Electro Cylinder",
+      "AmmoType": 90001,
       "UID": 44099,
       "ValidFor": [
         40002
@@ -9118,6 +9163,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRevolver_Explosive_128x128",
       "Name": "Explosive Cylinder",
+      "AmmoType": 90002,
       "UID": 44100,
       "ValidFor": [
         40002
@@ -9133,6 +9179,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRevolver_Incendiary_128x128",
       "Name": "Incendiary Cylinder",
+      "AmmoType": 90003,
       "UID": 44101,
       "ValidFor": [
         40002
@@ -9148,6 +9195,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRevolver_Toxic_128x128",
       "Name": "Toxic Cylinder",
+      "AmmoType": 90004,
       "UID": 44102,
       "ValidFor": [
         40002
@@ -9288,6 +9336,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSMG2_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44112,
       "ValidFor": [
         40013
@@ -9303,6 +9352,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSMG2_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44113,
       "ValidFor": [
         40013
@@ -9318,6 +9368,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSMG2_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44114,
       "ValidFor": [
         40013
@@ -9333,6 +9384,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSMG2_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44115,
       "ValidFor": [
         40013
@@ -9432,6 +9484,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44121,
       "ValidFor": [
         40017
@@ -9447,6 +9500,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44122,
       "ValidFor": [
         40017
@@ -9462,6 +9516,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44123,
       "ValidFor": [
         40017
@@ -9477,6 +9532,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44124,
       "ValidFor": [
         40017
@@ -9587,6 +9643,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagShell_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44130,
       "ValidFor": [
         40016
@@ -9602,6 +9659,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagShell_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44131,
       "ValidFor": [
         40016
@@ -9617,6 +9675,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagShell_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44132,
       "ValidFor": [
         40016
@@ -9632,6 +9691,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagShell_Corrosive_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44133,
       "ValidFor": [
         40016
@@ -9669,6 +9729,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSlug_Flare_128x128",
       "Name": "High Explosive Round Bore",
+      "AmmoType": 90009,
       "UID": 44135,
       "ValidFor": [
         40015
@@ -9683,6 +9744,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSlug_Incendiary_128x128",
       "Name": "Incendiary Round Bore",
+      "AmmoType": 90008,
       "UID": 44136,
       "ValidFor": [
         40015
@@ -9697,6 +9759,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagLMG2_Electro_128x128",
       "Name": "Electro Ammo Box",
+      "AmmoType": 90001,
       "UID": 44137,
       "ValidFor": [
         40014
@@ -9708,6 +9771,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagLMG2_Explosive_128x128",
       "Name": "Explosive Ammo Box",
+      "AmmoType": 90002,
       "UID": 44138,
       "ValidFor": [
         40014
@@ -9719,6 +9783,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagLMG2_Incendiary_128x128",
       "Name": "Incendiary Ammo Box",
+      "AmmoType": 90003,
       "UID": 44139,
       "ValidFor": [
         40014
@@ -9730,6 +9795,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagLMG2_Toxic_128x128",
       "Name": "Toxic Ammo Box",
+      "AmmoType": 90004,
       "UID": 44140,
       "ValidFor": [
         40014
@@ -9825,6 +9891,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagSMG_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44146,
       "ValidFor": [
         40018
@@ -9840,6 +9907,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagSMG_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44147,
       "ValidFor": [
         40018
@@ -9855,6 +9923,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagSMG_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44148,
       "ValidFor": [
         40018
@@ -9870,6 +9939,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagSMG_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44149,
       "ValidFor": [
         40018
@@ -9969,6 +10039,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44155,
       "ValidFor": [
         40020
@@ -9984,6 +10055,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44156,
       "ValidFor": [
         40020
@@ -9999,6 +10071,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44157,
       "ValidFor": [
         40020
@@ -10014,6 +10087,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44158,
       "ValidFor": [
         40020
@@ -10029,6 +10103,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSMG_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44159,
       "ValidFor": [
         40010
@@ -10047,6 +10122,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSMG_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44160,
       "ValidFor": [
         40018
@@ -10065,6 +10141,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44161,
       "ValidFor": [
         40003,
@@ -10084,6 +10161,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44162,
       "ValidFor": [
         40009
@@ -10102,6 +10180,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44163,
       "ValidFor": [
         40017
@@ -10120,6 +10199,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44164,
       "ValidFor": [
         40020
@@ -10138,6 +10218,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSniper_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44165,
       "ValidFor": [
         40008
@@ -10156,6 +10237,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSniper_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44166,
       "ValidFor": [
         40007
@@ -10175,6 +10257,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagShell_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44167,
       "ValidFor": [
         40005
@@ -10193,6 +10276,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagShell_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44168,
       "ValidFor": [
         40016
@@ -10211,6 +10295,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagBKT_Magnum_128x128",
       "Name": "Magnum Ammo Belt",
+      "AmmoType": 90005,
       "UID": 44169,
       "ValidFor": [
         40011
@@ -10229,6 +10314,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44170,
       "ValidFor": [
         40000
@@ -10247,6 +10333,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44171,
       "ValidFor": [
         40001,
@@ -10266,6 +10353,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44172,
       "ValidFor": [
         40004
@@ -10284,6 +10372,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_Mag45_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44173,
       "ValidFor": [
         40006
@@ -10302,6 +10391,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRevolver_Magnum_128x128",
       "Name": "Magnum Cylinder",
+      "AmmoType": 90005,
       "UID": 44174,
       "ValidFor": [
         40002
@@ -10320,6 +10410,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagSMG2_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44175,
       "ValidFor": [
         40013
@@ -10338,6 +10429,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagLMG2_Magnum_128x128",
       "Name": "Magnum Ammo Box",
+      "AmmoType": 90005,
       "UID": 44176,
       "ValidFor": [
         40014
@@ -10356,6 +10448,7 @@
       "DescriptorName": "Scattershot",
       "Icon": "t_MagSlug_DgnBth_128x128",
       "Name": "Flechette Chamber Boring",
+      "AmmoType": 90010,
       "UID": 44177,
       "ValidFor": [
         40015
@@ -10441,6 +10534,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagCylinder_08Incendiary_128x128",
       "Name": "Incendiary Cylinder",
+      "AmmoType": 90003,
       "UID": 44182,
       "ValidFor": [
         40021
@@ -10456,6 +10550,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagCylinder_08Electro_128x128",
       "Name": "Electro Cylinder",
+      "AmmoType": 90001,
       "UID": 44183,
       "ValidFor": [
         40021
@@ -10471,6 +10566,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagCylinder_08Explosive_128x128",
       "Name": "Explosive Cylinder",
+      "AmmoType": 90002,
       "UID": 44184,
       "ValidFor": [
         40021
@@ -10486,6 +10582,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagCylinder_08Toxic_128x128",
       "Name": "Toxic Cylinder",
+      "AmmoType": 90004,
       "UID": 44185,
       "ValidFor": [
         40021
@@ -10500,6 +10597,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagCylinger_08Magnum_128x128",
       "Name": "Magnum Cylinder",
+      "AmmoType": 90005,
       "UID": 44186,
       "ValidFor": [
         40021
@@ -10600,6 +10698,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44192,
       "ValidFor": [
         40022
@@ -10615,6 +10714,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44193,
       "ValidFor": [
         40022
@@ -10630,6 +10730,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44194,
       "ValidFor": [
         40022
@@ -10645,6 +10746,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44195,
       "ValidFor": [
         40022
@@ -10660,6 +10762,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44196,
       "ValidFor": [
         40022
@@ -10762,6 +10865,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44202,
       "ValidFor": [
         40023
@@ -10777,6 +10881,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44203,
       "ValidFor": [
         40023
@@ -10792,6 +10897,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44204,
       "ValidFor": [
         40023
@@ -10807,6 +10913,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44205,
       "ValidFor": [
         40023
@@ -10822,6 +10929,7 @@
       "DescriptorName": "Magnum",
       "Icon": "t_MagRifle_Magnum_128x128",
       "Name": "Magnum Mag",
+      "AmmoType": 90005,
       "UID": 44206,
       "ValidFor": [
         40023
@@ -10840,6 +10948,7 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowStandard_128x128",
       "Name": "Standard Arrow",
+      "AmmoType": 90017,
       "UID": 44210,
       "ValidFor": [
         40024
@@ -10857,6 +10966,7 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowExplosive_128x128",
       "Name": "Exploding Arrow",
+      "AmmoType": 90012,
       "UID": 44211,
       "ValidFor": [
         40024
@@ -10875,6 +10985,7 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowStun_128x128",
       "Name": "Stun Arrow",
+      "AmmoType": 90013,
       "UID": 44212,
       "ValidFor": [
         40024
@@ -10893,6 +11004,7 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowToxic_128x128",
       "Name": "Poison Arrow",
+      "AmmoType": 90014,
       "UID": 44213,
       "ValidFor": [
         40024
@@ -10908,6 +11020,7 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowLight_128x128",
       "Name": "Light Arrow",
+      "AmmoType": 90015,
       "UID": 44214,
       "ValidFor": [
         40024
@@ -10926,6 +11039,7 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowHeavy_128x128",
       "Name": "Heavy Arrow",
+      "AmmoType": 90016,
       "UID": 44215,
       "ValidFor": [
         40024
@@ -10944,6 +11058,7 @@
       "DescriptorName": "Standard",
       "Icon": "t_Bow_ArrowCupid_128x128",
       "Name": "Cupid\u0027s Arrow",
+      "AmmoType": 90018,
       "UID": 44230,
       "ValidFor": [
         40024
@@ -11045,6 +11160,7 @@
       "DescriptorName": "Electro",
       "Icon": "t_MagRifle_Electro_128x128",
       "Name": "Electro Mag",
+      "AmmoType": 90001,
       "UID": 44221,
       "ValidFor": [
         40025
@@ -11060,6 +11176,7 @@
       "DescriptorName": "Explosive",
       "Icon": "t_MagRifle_Explosive_128x128",
       "Name": "Explosive Mag",
+      "AmmoType": 90002,
       "UID": 44222,
       "ValidFor": [
         40025
@@ -11075,6 +11192,7 @@
       "DescriptorName": "Incendiary",
       "Icon": "t_MagRifle_Incendiary_128x128",
       "Name": "Incendiary Mag",
+      "AmmoType": 90003,
       "UID": 44223,
       "ValidFor": [
         40025
@@ -11090,6 +11208,7 @@
       "DescriptorName": "Toxic",
       "Icon": "t_MagRifle_Toxic_128x128",
       "Name": "Toxic Mag",
+      "AmmoType": 90004,
       "UID": 44224,
       "ValidFor": [
         40025

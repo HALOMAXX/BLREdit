@@ -139,6 +139,95 @@ public partial class App : System.Windows.Application
         {
             ImportSystem.Initialize();
 
+            var magazines = ImportSystem.GetItemArrayOfType(ImportSystem.MAGAZINES_CATEGORY);
+            var magnumRounds = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Magnum Rounds");
+            var APRounds = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Armor Piercing Rounds");
+            var standardRounds = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Standard Rounds");
+            var electroRounds = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Electro Rounds");
+            var exploRounds = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Explosive Rounds");
+            var HPRounds = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Hollow Point Rounds");
+            var incendiaryRounds = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Incendiary Rounds");
+            var toxicRounds = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Toxic Rounds");
+            var incendiaryFlare = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Incendiary Flare");
+            var explosiveFlare = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Explosive Flare");
+            var canister = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Canister");
+            var thumperFlare = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Thumper Flare");
+            var explodingArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Exploding Arrow");
+            var stunArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Stun Arrow");
+            var poisonArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Poison Arrow");
+            var lightArrow= ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Light Arrow");
+            var heavyArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Heavy Arrow");
+            var standardArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Standard Arrow");
+            var cupidArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Cupid's Arrow");
+
+            foreach (var mag in magazines)
+            {
+                if (mag.Name.Contains("Electro"))
+                {
+                    mag.AmmoType = electroRounds.UID;
+                }
+                else if (mag.Name.Contains("Explosive"))
+                {
+                    mag.AmmoType = exploRounds.UID;
+                }
+                else if (mag.Name.Contains("Toxic"))
+                {
+                    mag.AmmoType = toxicRounds.UID;
+                }
+                else if (mag.Name.Contains("Incendiary"))
+                {
+                    mag.AmmoType = incendiaryRounds.UID;
+                }
+                else if (mag.Name.Contains("Magnum"))
+                {
+                    mag.AmmoType = magnumRounds.UID;
+                }
+                else
+                {
+                    mag.AmmoType = -1;
+                }
+                if (mag.Name.Contains("Heavy Arrow"))
+                {
+                    mag.AmmoType = heavyArrow.UID;
+                }
+                else if (mag.Name.Contains("Light Arrow"))
+                {
+                    mag.AmmoType = lightArrow.UID;
+                }
+                else if (mag.Name.Contains("Poison Arrow"))
+                {
+                    mag.AmmoType = poisonArrow.UID;
+                }
+                else if (mag.Name.Contains("Stun Arrow"))
+                {
+                    mag.AmmoType = stunArrow.UID;
+                }
+                else if (mag.Name.Contains("Exploding Arrow"))
+                {
+                    mag.AmmoType = explodingArrow.UID;
+                }
+                else if (mag.Name.Contains("Standard Arrow"))
+                {
+                    mag.AmmoType = standardArrow.UID;
+                }
+                else if (mag.Name.Contains("Cupid's Arrow"))
+                {
+                    mag.AmmoType = cupidArrow.UID;
+                }
+                else if (mag.Name.Contains("High Explosive Round Bore"))
+                {
+                    mag.AmmoType = explosiveFlare.UID;
+                }
+                else if (mag.Name.Contains("Incendiary Round Bore"))
+                {
+                    mag.AmmoType = incendiaryFlare.UID;
+                }
+                else if (mag.Name.Contains("Flechette Chamber Boring"))
+                {
+                    mag.AmmoType = canister.UID;
+                }
+            }
+
             IOResources.SerializeFile("itemList.json", ImportSystem.ItemLists);
 
             Application.Current.Shutdown();

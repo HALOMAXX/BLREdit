@@ -66,6 +66,29 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         { return null; }
     }
 
+    public bool HasDuplicatedGear 
+    { 
+        get
+        {
+            if (Gear1 is not null && Gear1.UID != 12015)
+            { 
+                if (Gear2 is not null && Gear2.UID == Gear1.UID) return true;
+                if (Gear3 is not null && Gear3.UID == Gear1.UID) return true;
+                if (Gear4 is not null && Gear4.UID == Gear1.UID) return true;
+            }
+            if (Gear2 is not null && Gear2.UID != 12015)
+            {
+                if (Gear3 is not null && Gear3.UID == Gear2.UID) return true;
+                if (Gear4 is not null && Gear4.UID == Gear2.UID) return true;
+            }
+            if (Gear3 is not null && Gear3.UID != 12015)
+            {
+                if (Gear4 is not null && Gear4.UID == Gear3.UID) return true;
+            }
+            return false;
+        }
+    }
+
     private void SetValueOf(BLRItem? value, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? name = null)
     {
         if (string.IsNullOrEmpty(name)) return;

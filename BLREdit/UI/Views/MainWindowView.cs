@@ -55,6 +55,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
 
     public MainWindowView()
     {
+        if (profile is null || profile.BLR is null) return;
         profile.BLR.IsChanged = false;
         profile.BLR.PropertyChanged += LoadoutChangedRelay;
     }

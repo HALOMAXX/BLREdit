@@ -71,14 +71,14 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     #region Weapon Parts
     [BLRItem($"{ImportSystem.PRIMARY_CATEGORY}|{ImportSystem.SECONDARY_CATEGORY}")] public BLRItem? Reciever { get { return GetValueOf(); } set { if (AllowReciever(value)) { SetValueOf(value); RemoveIncompatibleMods(); AddMissingDefaultParts(); UpdateScopeIcons(); } } }
     [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLRItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.MAGAZINES_CATEGORY)] public BLRItem? Magazine { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.MAGAZINES_CATEGORY)] public BLRItem? Magazine { get { return GetValueOf(); } set { SetValueOf(value); var ammo = Ammo; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } else { ammo = null; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } } } }
     [BLRItem(ImportSystem.MUZZELS_CATEGORY)] public BLRItem? Muzzle { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.STOCKS_CATEGORY)] public BLRItem? Stock { get { return GetValueOf(); } set { if (AllowStock(Reciever, Barrel, value, true)) { SetValueOf(value); } } }
     [BLRItem(ImportSystem.SCOPES_CATEGORY)] public BLRItem? Scope { get { return GetValueOf(); } set { SetValueOf(value); UpdateScopeIcons(); } }
     [BLRItem(ImportSystem.GRIPS_CATEGORY)] public BLRItem? Grip { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.HANGERS_CATEGORY)] public BLRItem? Tag { get { return GetValueOf(); } set { SetValueOf(value); } }
     [BLRItem(ImportSystem.CAMOS_WEAPONS_CATEGORY)] public BLRItem? Camo { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.AMMO_CATEGORY)] public BLRItem? Ammo { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.AMMO_CATEGORY)] public BLRItem? Ammo { get { return GetValueOf(); } set { if (IsAmmoOk(ref value)) { SetValueOf(value); } } }
     [BLRItem(ImportSystem.PRIMARY_SKIN_CATEGORY)] public BLRItem? Skin { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasSkinEquipped)); } }
     #endregion Weapon Parts
 
@@ -163,6 +163,22 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         return new FoxIcon(string.Empty);
     }
 
+    private bool IsAmmoOk(ref BLRItem? ammo)
+    {
+        if (Magazine is null) return true;
+        if (ammo is null)
+        {
+            var uid = Magazine?.AmmoType ?? -1;
+            if (uid == -1) { uid = 90000; }
+            ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, uid);
+            return true;
+        }
+        if (Magazine.AmmoType == -1) return true;
+        if (Magazine.AmmoType == ammo.UID) return true;
+        if (Loadout?.Profile?.IsAdvanced.Is ?? false) return true;
+        return false;
+    }
+
     private void AddMissingDefaultParts()
     {
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.AddMissing)) { return; }
@@ -194,11 +210,15 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Magazine is null || BLRItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
         {
             Magazine = wpn.GetMagazine();
-            ApplyCorrectAmmo();
+            var uid = Magazine?.UID ?? -1;
+            if (uid == -1) { uid = 90000; }
+            Ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, uid);
         }
 
         Skin ??= ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0);
     }
+
+
 
     private bool IsPistol(BLRItem? reciever)
     {
@@ -223,57 +243,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             }
         }
         return true;
-    }
-
-    private void ApplyCorrectAmmo()
-    {
-        if (Reciever is null) return;
-        switch (Reciever.UID)
-        {
-            case 40024:
-                Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, Magazine?.Name ?? string.Empty);
-                break;
-            case 40015:
-                switch (Magazine?.Name ?? string.Empty)
-                {
-                    case "Flechette Chamber Boring":
-                        Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Canister");
-                        break;
-                    case "High Explosive Round Bore":
-                        Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Explosive Flare");
-                        break;
-                    case "Incendiary Round Bore":
-                        Ammo = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Incendiary Flare");
-                        break;
-                }
-                break;
-            default:
-                if ((Magazine?.Name?.Contains("Magnum") ?? false))
-                {
-                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 0);
-                }
-                else if ((Magazine?.Name?.Contains("Electro") ?? false))
-                {
-                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 3);
-                }
-                else if ((Magazine?.Name?.Contains("Explosive") ?? false))
-                {
-                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 4);
-                }
-                else if ((Magazine?.Name?.Contains("Incendiary") ?? false))
-                {
-                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 6);
-                }
-                else if ((Magazine?.Name?.Contains("Toxic") ?? false))
-                {
-                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 7);
-                }
-                else
-                {
-                    Ammo = ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, 2);
-                }
-                break;
-        }
     }
 
     private bool AllowStock(BLRItem? reciever, BLRItem? barrel, BLRItem? stock, bool displayMessage = false)

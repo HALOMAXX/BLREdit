@@ -553,6 +553,32 @@ public sealed partial class MainWindow : Window
             case Key.A:
                 if ((UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is) && (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is) && !SearchBox.IsFocused)
                 {
+                    if (View.Profile.BLR.IsAdvanced.Is)
+                    {
+                        string message = "Can't disable Advanced mode!\nplease remove any duplicate gears:";
+                        bool hasDupes = false;
+                        if (View.Profile.BLR.Loadout1.HasDuplicatedGear)
+                        {
+                            message += "\nLoadout1";
+                            hasDupes = true; 
+                        }
+                        if (View.Profile.BLR.Loadout2.HasDuplicatedGear)
+                        {
+                            message += "\nLoadout2";
+                            hasDupes = true;
+                        }
+                        if (View.Profile.BLR.Loadout3.HasDuplicatedGear)
+                        {
+                            message += "\nLoadout3";
+                            hasDupes = true;
+                        }
+                        if (hasDupes)
+                        {
+                            LoggingSystem.MessageLog($"{message}", "Info");
+                            return;
+                        }
+                    }
+
                     View.Profile.BLR.IsAdvanced.Set(!View.Profile.BLR.IsAdvanced.Is);
                     View.Profile.BLR.Write();
                     MainWindow.View.Profile.BLR.CalculateStats();
