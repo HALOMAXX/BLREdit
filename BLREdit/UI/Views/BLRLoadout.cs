@@ -96,7 +96,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var property = LoadoutPartInfoDictonary[name];
         var attribute = property.GetCustomAttribute<BLRItemAttribute>();
         if (value is not null && !attribute.ItemType.Contains(value.Category)) { return; }
-        if (name == nameof(Helmet) || name == nameof(UpperBody) || name == nameof(LowerBody) || name == nameof(BodyCamo)) { value = defaultItem; }
+        if (value is null && (name == nameof(Helmet) || name == nameof(UpperBody) || name == nameof(LowerBody) || name == nameof(BodyCamo))) { value = defaultItem; }
         if ((Profile?.IsAdvanced.IsNot ?? false) && value is null && defaultItem is not null) { value = defaultItem; }
         if (LoadoutParts.ContainsKey(attribute.PropertyOrder))
         {
