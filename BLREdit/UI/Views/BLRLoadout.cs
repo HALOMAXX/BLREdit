@@ -1,4 +1,5 @@
-﻿using BLREdit.Import;
+﻿using BLREdit.Export;
+using BLREdit.Import;
 
 using System;
 using System.Collections.Generic;
@@ -89,13 +90,13 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         }
     }
 
-    private void SetValueOf(BLRItem? value, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? name = null)
+    private void SetValueOf(BLRItem? value, BlockEvents blockedEvents = BlockEvents.None, BLRItem? defaultItem = null,[CallerMemberName] string? name = null)
     {
         if (string.IsNullOrEmpty(name)) return;
         var property = LoadoutPartInfoDictonary[name];
         var attribute = property.GetCustomAttribute<BLRItemAttribute>();
-        if (value is not null && !attribute.ItemType.Contains(value.Category))
-        { return; }
+        if (value is not null && !attribute.ItemType.Contains(value.Category)) { return; }
+        if (value is null && defaultItem is not null && (Profile?.IsAdvanced.IsNot ?? false)) { value = defaultItem; }
         if (LoadoutParts.ContainsKey(attribute.PropertyOrder))
         {
             LoadoutParts[attribute.PropertyOrder] = value;
@@ -107,36 +108,36 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         ItemChanged(name);
     }
     #region Gear
-    [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.UPPER_BODIES_CATEGORY)] public BLRItem? UpperBody { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.LOWER_BODIES_CATEGORY)] public BLRItem? LowerBody { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, MagiCowsLoadout.DefaultLoadout1.GetHelmet()); } }
+    [BLRItem(ImportSystem.UPPER_BODIES_CATEGORY)] public BLRItem? UpperBody { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, MagiCowsLoadout.DefaultLoadout1.GetUpperBody()); } }
+    [BLRItem(ImportSystem.LOWER_BODIES_CATEGORY)] public BLRItem? LowerBody { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, MagiCowsLoadout.DefaultLoadout1.GetLowerBody()); } }
     [BLRItem(ImportSystem.TACTICAL_CATEGORY)] public BLRItem? Tactical { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear1 { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear2 { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear3 { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear4 { get { return GetValueOf(); } set { SetValueOf(value); } }
-    [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear1 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear1)); } }
+    [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear2 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear2)); } }
+    [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear3 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear3)); } }
+    [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear4 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear4)); } }
+    [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, MagiCowsLoadout.DefaultLoadout1.GetCamo()); } }
     [BLRItem(ImportSystem.AVATARS_CATEGORY)] public BLRItem? Avatar { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); OnPropertyChanged(nameof(HasAvatar)); } }
     [BLRItem(ImportSystem.BADGES_CATEGORY)] public BLRItem? Trophy { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
     #endregion Gear
 
     #region Depot
-    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot1 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot2 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot3 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot4 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot5 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot1 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0)); } }
+    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot2 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 1)); } }
+    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot3 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 2)); } }
+    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot4 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 3)); } }
+    [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot5 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 4)); } }
     #endregion Depot
 
     #region Taunts
-    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt1 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt2 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt3 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt4 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt5 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt6 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt7 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
-    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt8 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt1 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 0)); } }
+    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt2 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 1)); } }
+    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt3 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 2)); } }
+    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt4 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 3)); } }
+    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt5 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 4)); } }
+    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt6 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 5)); } }
+    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt7 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 6)); } }
+    [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt8 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7)); } }
     #endregion Taunts
 
     private bool isFemale;
