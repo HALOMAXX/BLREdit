@@ -555,19 +555,19 @@ public sealed partial class MainWindow : Window
                 {
                     if (View.Profile.BLR.IsAdvanced.Is)
                     {
-                        string message = "Can't disable Advanced mode!\nplease remove any duplicate gears:";
+                        string message = "Can't disable Advanced mode!\nplease remove any duplicate gears or fix missing armor:";
                         bool hasDupes = false;
-                        if (View.Profile.BLR.Loadout1.HasDuplicatedGear)
+                        if (View.Profile.BLR.Loadout1.HasDuplicatedGear || View.Profile.BLR.Loadout1.Helmet is null || View.Profile.BLR.Loadout1.UpperBody is null || View.Profile.BLR.Loadout1.LowerBody is null)
                         {
                             message += "\nLoadout1";
                             hasDupes = true; 
                         }
-                        if (View.Profile.BLR.Loadout2.HasDuplicatedGear)
+                        if (View.Profile.BLR.Loadout2.HasDuplicatedGear || View.Profile.BLR.Loadout2.Helmet is null || View.Profile.BLR.Loadout2.UpperBody is null || View.Profile.BLR.Loadout2.LowerBody is null)
                         {
                             message += "\nLoadout2";
                             hasDupes = true;
                         }
-                        if (View.Profile.BLR.Loadout3.HasDuplicatedGear)
+                        if (View.Profile.BLR.Loadout3.HasDuplicatedGear || View.Profile.BLR.Loadout3.Helmet is null || View.Profile.BLR.Loadout3.UpperBody is null || View.Profile.BLR.Loadout3.LowerBody is null)
                         {
                             message += "\nLoadout3";
                             hasDupes = true;

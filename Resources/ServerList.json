@@ -19,8 +19,7 @@
   {
     "ServerAddress": "blrevive.northamp.fr",
     "InfoPort": 80,
-    "Region": "EU-West",
-    "AllowLMGR": true
+    "Region": "EU-West"
   },
   {
     "ServerAddress": "blrevive-staging.northamp.fr",

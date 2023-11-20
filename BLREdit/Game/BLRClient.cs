@@ -595,21 +595,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                 int i = 1;
                 foreach (var loadout in diskLoadout)
                 {
-                    if (PrimaryHasLMGR(loadout) && SecondaryHasLMGR(loadout))
-                    {
-                        hasLMGR = true;
-                        message += $" Loadout{i}: Primary and Secondary";
-                    }
-                    else if (PrimaryHasLMGR(loadout))
-                    {
-                        hasLMGR = true;
-                        message += $" Loadout{i}: Primary";
-                    }
-                    else if (SecondaryHasLMGR(loadout))
-                    {
-                        hasLMGR = true;
-                        message += $" Loadout{i}: Secondary";
-                    }
+                    CheckLoadout(loadout, ref message, ref hasLMGR, i);
                     i++;
                 }
             }
@@ -621,9 +607,9 @@ public sealed class BLRClient : INotifyPropertyChanged
                 var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
                 if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
                 {
-                    if (CheckLoadout(currentlyAppliedLoadout.BLR.Loadout1, ref message, 1)) hasLMGR = true;
-                    if (CheckLoadout(currentlyAppliedLoadout.BLR.Loadout2, ref message, 2)) hasLMGR = true;
-                    if (CheckLoadout(currentlyAppliedLoadout.BLR.Loadout3, ref message, 3)) hasLMGR = true;
+                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout1, ref message, ref hasLMGR, 1);
+                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout2, ref message, ref hasLMGR, 2);
+                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout3, ref message, ref hasLMGR, 3);
                     if (hasLMGR)
                     {
                         LoggingSystem.MessageLog($"Current loadout is not supported on this server:\n{message}\nOr apply a non Advanced or modify current loadout!", "Warning");
@@ -693,9 +679,11 @@ public sealed class BLRClient : INotifyPropertyChanged
             message = "Please Remove the LMGR Magazine from:";
             if (profile.IsAdvanced.Is)
             {
-                if (CheckLoadout(profile.Loadout1, ref message, 1)) isValidLoadout = false;
-                if (CheckLoadout(profile.Loadout2, ref message, 2)) isValidLoadout = false;
-                if (CheckLoadout(profile.Loadout3, ref message, 3)) isValidLoadout = false;
+                bool invalid = false;
+                CheckLoadout(profile.Loadout1, ref message, ref invalid, 1);
+                CheckLoadout(profile.Loadout2, ref message, ref invalid, 2);
+                CheckLoadout(profile.Loadout3, ref message, ref invalid, 3);
+                if (invalid) { isValidLoadout = false; }
                 if (!isValidLoadout)
                 {
                     message = $"Current loadout is not supported on this server!\n{message}\nOr apply a non Advanced loadout!";
@@ -713,25 +701,28 @@ public sealed class BLRClient : INotifyPropertyChanged
         return isValidLoadout;
     }
 
-    public static bool CheckLoadout(BLRLoadout loadout, ref string message, int i)
+    public static void CheckLoadout(BLRLoadout loadout, ref string message, ref bool invalid,int i)
     {
-        bool hasLMGR = false;
-        if (PrimaryHasLMGR(loadout) && SecondaryHasLMGR(loadout))
-        {
-            hasLMGR = true;
-            message += $"\n\tLoadout{i}: Primary and Secondary";
-        }
-        else if (PrimaryHasLMGR(loadout))
-        {
-            hasLMGR = true;
-            message += $"\n\tLoadout{i}: Primary";
-        }
-        else if (SecondaryHasLMGR(loadout))
-        {
-            hasLMGR = true;
-            message += $"\n\tLoadout{i}: Secondary";
-        }
-        return hasLMGR;
+        message += $"\n\tLoadout{i}:";
+        PrimaryHasLMGR(loadout, ref message, ref invalid);
+        SecondaryHasLMGR(loadout, ref message, ref invalid);
+        MissingArmor(loadout, ref message, ref invalid);
+    }
+
+    public static void CheckLoadout(LoadoutManagerLoadout loadout, ref string message, ref bool invalid, int i)
+    {
+        message += $"\n\tLoadout{i}:";
+        PrimaryHasLMGR(loadout, ref message, ref invalid);
+        SecondaryHasLMGR(loadout, ref message, ref invalid);
+        MissingArmor(loadout, ref message, ref invalid);
+    }
+
+    public static void CheckLoadout(ShareableLoadout loadout, ref string message, ref bool invalid, int i)
+    {
+        message += $"\n\tLoadout{i}:";
+        PrimaryHasLMGR(loadout, ref message, ref invalid);
+        SecondaryHasLMGR(loadout, ref message, ref invalid);
+        MissingArmor(loadout, ref message, ref invalid);
     }
 
     public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
@@ -758,34 +749,53 @@ public sealed class BLRClient : INotifyPropertyChanged
     static BLRItem? lmgrMagazine;
     static BLRItem? LMGRMagazine { get { lmgrMagazine ??= ImportSystem.GetItemByUIDAndType(ImportSystem.MAGAZINES_CATEGORY, 44106); return lmgrMagazine; } }
 
-    public static bool PrimaryHasLMGR(ShareableLoadout loadout)
+    public static void PrimaryHasLMGR(ShareableLoadout loadout, ref string message, ref bool invalid)
     {
-        return (loadout.Primary.Reciever != LMGReciever.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine));
+        if (loadout.Primary.Reciever != LMGReciever.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Primary"; }
     }
 
-    public static bool SecondaryHasLMGR(ShareableLoadout loadout)
+    public static void SecondaryHasLMGR(ShareableLoadout loadout, ref string message, ref bool invalid)
     {
-        return (loadout.Secondary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine));
+        if (loadout.Secondary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Secondary"; }
     }
 
-    public static bool PrimaryHasLMGR(LoadoutManagerLoadout loadout)
+    public static void PrimaryHasLMGR(LoadoutManagerLoadout loadout, ref string message, ref bool invalid)
     {
-        return (loadout.Primary.Receiver != LMGReciever.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine));
+        if (loadout.Primary.Receiver != LMGReciever.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Primary"; }
     }
 
-    public static bool SecondaryHasLMGR(LoadoutManagerLoadout loadout)
+    public static void SecondaryHasLMGR(LoadoutManagerLoadout loadout, ref string message, ref bool invalid)
     {
-        return (loadout.Secondary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine));
+        if (loadout.Secondary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Secondary"; }
     }
 
-    public static bool PrimaryHasLMGR(BLRLoadout loadout)
+    public static void PrimaryHasLMGR(BLRLoadout loadout, ref string message, ref bool invalid)
     {
-        return (loadout.Primary.Reciever.LMID != LMGReciever.LMID && loadout.Primary.Magazine.UID == LMGRMagazine.UID);
+        if (loadout.Primary.Reciever.LMID != LMGReciever.LMID && loadout.Primary.Magazine.UID == LMGRMagazine.UID) { invalid = true; message += " Primary"; }
     }
 
-    public static bool SecondaryHasLMGR(BLRLoadout loadout)
+    public static void SecondaryHasLMGR(BLRLoadout loadout, ref string message, ref bool invalid)
     {
-        return (loadout.Secondary.Magazine.UID == LMGRMagazine.UID);
+        if (loadout.Secondary.Magazine.UID == LMGRMagazine.UID) { invalid = true; message += " Secondary"; }
+    }
+
+    public static void MissingArmor(BLRLoadout loadout, ref string message, ref bool invalid)
+    {
+        if (loadout.Helmet is null) { invalid = true; message += " Helmet"; }
+        if (loadout.Helmet is null) { invalid = true; message += " UpperBody"; }
+        if (loadout.Helmet is null) { invalid = true; message += " LowerBody"; }
+    }
+    public static void MissingArmor(LoadoutManagerLoadout loadout, ref string message, ref bool invalid)
+    {
+        if (loadout.Gear.Helmet == -1) { invalid = true; message += " Helmet"; }
+        if (loadout.Gear.Helmet == -1) { invalid = true; message += " UpperBody"; }
+        if (loadout.Gear.Helmet == -1) { invalid = true; message += " LowerBody"; }
+    }
+    public static void MissingArmor(ShareableLoadout loadout, ref string message, ref bool invalid)
+    {
+        if (loadout.Helmet == -1) { invalid = true; message += " Helmet"; }
+        if (loadout.Helmet == -1) { invalid = true; message += " UpperBody"; }
+        if (loadout.Helmet == -1) { invalid = true; message += " LowerBody"; }
     }
 
     private void ModifyClient()
