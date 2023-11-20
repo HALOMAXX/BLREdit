@@ -17,26 +17,30 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="208"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="26"/>
         </Grid.RowDefinitions>
         <Border BorderThickness="0,2,0,0" Background="Transparent" Grid.Row="0">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="96"/>
+                    <RowDefinition Height="64"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="64"/>
+                    <ColumnDefinition Width="64"/>
+                    <ColumnDefinition Width="64"/>
+                    <ColumnDefinition Width="64"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="{Binding Path=Reciever.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToNotVis}}" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,32,0,32"/>
-                <Image Source="{Binding Path=Skin.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToVis}}" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,32,0,32"/>
-                <Image Source="{Binding Path=Camo.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,0"/>
-                <Image Source="{Binding Path=Magazine.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="64,0,0,0"/>
-                <Image Source="{Binding Path=Ammo.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="128,0,0,0"/>
-                <Image Source="{Binding Path=Tag.Image.IconFileInfo.FullName}" Width="64" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="192,0,0,0"/>
-                <Image Source="{Binding Path=Scope.Image.IconFileInfo.FullName}" Width="64" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,64,0"/>
+                <Image Source="{Binding Path=Reciever.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToNotVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
+                <Image Source="{Binding Path=Skin.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
+                <Image Source="{Binding Path=Camo.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
+                <Image Source="{Binding Path=Magazine.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
+                <Image Source="{Binding Path=Ammo.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
+                <Image Source="{Binding Path=Tag.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64" Margin="0,0,0,0"/>
+                <Image Source="{Binding Path=Scope.Image.IconFileInfo.FullName}" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
             </Grid>
         </Border>
 
@@ -73,8 +77,6 @@
             <Label Grid.Column="3" Grid.Row="2" Content="{Binding Path=RunPercentageDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRunLabel"/>
         </Grid>
 
-        <Border BorderThickness="0,0,0,0" Background="Transparent" Grid.Row="1">
-            <Label Content="{Binding Path=WeaponDescriptor}" Style="{StaticResource DescriptorLabel}" HorizontalAlignment="Center"/>
-        </Border>
+        <Label Grid.Row="2" Content="{Binding Path=WeaponDescriptor}" Style="{StaticResource DescriptorLabel}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>

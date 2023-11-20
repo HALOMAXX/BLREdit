@@ -7,10 +7,11 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListView Name="ProfileListView" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ProfileListControl}}, Path=DataContext}" SelectionMode="Single" PreviewMouseDown="ProfileListView_PreviewMouseDown" PreviewMouseMove="ProfileListView_PreviewMouseMove" AllowDrop="True" Drop="ProfileListView_Drop">
+        <TextBox Name="SearchBox" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" TextChanged="SearchBox_TextChanged"/>
+        <ListView Name="ProfileListView" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ProfileListControl}}, Path=DataContext}" DataContextChanged="ProfileListView_DataContextChanged" SelectionMode="Single" Margin="0,24,0,0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="2" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <local:VirtualizedUniformGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 

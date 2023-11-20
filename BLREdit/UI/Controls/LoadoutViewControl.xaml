@@ -16,17 +16,11 @@
     </UserControl.Resources>
     
     <Grid d:DataContext="{d:DesignInstance Type=views:BLRLoadout}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="128"/>
+                <RowDefinition Height="128"/>
+                <RowDefinition Height="128"/>
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=Helmet.Image.IconFileInfo.FullName}" HorizontalAlignment="Left" Grid.Row="0"/>
             <Image Source="{Binding Path=Trophy.Image.IconFileInfo.FullName}" HorizontalAlignment="Right" Grid.Row="0"/>
@@ -40,13 +34,13 @@
             
         </Grid>
 
-        <Image Source="{Binding Path=BodyCamo.Image.IconFileInfo.FullName}" Width="64" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0"/>
-        <Image Source="{Binding Path=Avatar.Image.IconFileInfo.FullName}" Width="64" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Margin="0,0,0,64"/>
+        <Image Source="{Binding Path=BodyCamo.Image.IconFileInfo.FullName}" Width="64" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Image Source="{Binding Path=Avatar.Image.IconFileInfo.FullName}" Width="64" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,64"/>
 
-        <Image Source="{Binding Path=Gear1.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,64,64" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
-        <Image Source="{Binding Path=Gear2.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,0,64" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
-        <Image Source="{Binding Path=Gear3.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
-        <Image Source="{Binding Path=Gear4.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,64,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0"/>
+        <Image Source="{Binding Path=Gear1.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,64,64" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Image Source="{Binding Path=Gear2.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,0,64" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Image Source="{Binding Path=Gear3.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Image Source="{Binding Path=Gear4.Image.IconFileInfo.FullName}" Width="64" Margin="0,0,64,0" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
 
         <Grid Background="#ff000000" VerticalAlignment="Bottom" Name="StatPercentageGrid" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
@@ -80,6 +74,5 @@
             <Label Grid.Column="2" Grid.Row="2" Content="{x:Static p:Resources.lbl_GearSlots}" HorizontalAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
             <Label Grid.Column="3" Grid.Row="2" Content="{Binding Path=GearSlotsDisplay}" Style="{StaticResource DisplayLabel}" HorizontalAlignment="Left" Name="PrimaryModRunLabel"/>
         </Grid>
-
     </Grid>
 </UserControl>

@@ -1,26 +1,10 @@
-﻿using BLREdit.API.Export;
-using BLREdit.API.Utils;
-using BLREdit.Export;
-using BLREdit.Game;
-using BLREdit.Import;
-using BLREdit.UI.Views;
-
-using Microsoft.IdentityModel.Abstractions;
+﻿using BLREdit.Export;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BLREdit.UI.Controls
 {
@@ -29,6 +13,11 @@ namespace BLREdit.UI.Controls
         public ProfileListControl()
         {
             InitializeComponent();
+            if (CollectionViewSource.GetDefaultView(ProfileListView.ItemsSource) is CollectionView view)
+            {
+                view.Filter += new Predicate<object>(ProfileFilter.Instance.FullFilter);
+            }
+            ProfileFilter.Instance.RefreshItemLists += ApplySearchAndFilter;
         }
 
         Point StartPoint;
@@ -85,6 +74,24 @@ namespace BLREdit.UI.Controls
                 {
                     DataStorage.Settings.CurrentlyAppliedLoadout = droppedIndex;
                 }
+            }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ProfileFilter.Instance.SearchFilter = SearchBox.Text;
+        }
+
+        public void ApplySearchAndFilter(object sender, EventArgs e)
+        {
+            if (CollectionViewSource.GetDefaultView(ProfileListView.ItemsSource) is CollectionView view) { view.Filter ??= new Predicate<object>(ProfileFilter.Instance.FullFilter); view.Refresh(); }
+        }
+
+        private void ProfileListView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (CollectionViewSource.GetDefaultView(ProfileListView.ItemsSource) is CollectionView view)
+            {
+                view.Filter += new Predicate<object>(ProfileFilter.Instance.FullFilter);
             }
         }
     }
