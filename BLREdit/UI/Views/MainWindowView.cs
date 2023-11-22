@@ -26,7 +26,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public string WindowTitle { get { return windowTitle; } set { windowTitle = value; OnPropertyChanged(); } }
 
     private BLRLoadoutStorage profile = DataStorage.Loadouts.FirstOrDefault();
-    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
+    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; profile.Shareable.LastViewed = DateTime.Now; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
 
 #pragma warning disable CA1822 // Mark members as static
     public BLREditSettings BLRESettings => DataStorage.Settings;
@@ -41,7 +41,10 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private Border? lastSelectedItemBorder = null;
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
+    public ListSortDirection ProfileListSortingDirection { get; set; } = ListSortDirection.Descending;
+    public string CurrentProfileSortingPropertyName { get; set; } = "None";
     public Type? CurrentSortingEnumType { get; set; }
+    public Type? CurrentProfileSortingEnumType { get; set; }
     public string LastSortingPropertyName { get; set; } = "None";
     public string CurrentSortingPropertyName { get; set; } = "None";
     public bool IsPlayerNameChanging { get; set; } = false;

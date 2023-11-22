@@ -115,11 +115,18 @@ public sealed class ExportSystem
     public static ObservableCollectionExtended<BLRLoadoutStorage> LoadStorage()
     {
         LoggingSystem.Log("Started Loading Shareable and BLR Profile Combos");
+        if (DataStorage.ShareableProfiles.Count < 1)
+        {
+            DataStorage.ShareableProfiles.Add(new ShareableProfile());
+        }
         BLRLoadoutStorage[] storage = new BLRLoadoutStorage[DataStorage.ShareableProfiles.Count];
         for (int i = 0; i < DataStorage.ShareableProfiles.Count; i++)
         {
+            DataStorage.ShareableProfiles[i].TimeOfCreation = i;
+            DataStorage.ShareableProfiles[i].RegisterWithChildren();
             storage[i] = new(DataStorage.ShareableProfiles[i]);
         }
+
         LoggingSystem.Log("Finished Loading Shareable and BLR Profile Combos");
         return new(storage);
     }
@@ -222,13 +229,17 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
     private BLRProfile? blr = blr;
     public BLRProfile BLR { get { blr ??= Shareable.ToBLRProfile(); return blr; } }
     static bool isExchanging = false;
+    public static event EventHandler? ProfileGotRemoved;
     public void Remove()
     {
+        
         int indexShare = DataStorage.ShareableProfiles.IndexOf(Shareable);
         int indexLoadout = DataStorage.Loadouts.IndexOf(this);
+        LoggingSystem.Log($"Removing({indexShare}, {indexLoadout}): {Shareable.Name}");
         UndoRedoSystem.DoAction(() => { DataStorage.ShareableProfiles.Remove(Shareable); }, () => { DataStorage.ShareableProfiles.Insert(indexShare, Shareable); });
         UndoRedoSystem.DoAction(() => { DataStorage.Loadouts.Remove(this); }, () => { DataStorage.Loadouts.Insert(indexLoadout, this); });
         UndoRedoSystem.EndUndoRecord();
+        ProfileGotRemoved?.Invoke(this, new EventArgs());
     }
 
     public static void Exchange(int from, int to)
@@ -286,6 +297,7 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
     public static BLRLoadoutStorage AddNewLoadoutSet(string Name = "New Loadout Set!", BLRProfile? profile = null, ShareableProfile? shareable = null)
     {
         var share = shareable ?? new ShareableProfile() { Name = Name };
+        share.RegisterWithChildren();
         var blr = profile ?? share.ToBLRProfile();
         profile?.Write(share);
         var loadout = new BLRLoadoutStorage(share, blr);

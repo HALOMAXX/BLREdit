@@ -34,7 +34,7 @@ namespace BLREdit.UI.Controls
                 if (e.ClickCount >= 2)
                 {
                     LoggingSystem.Log($"Double Clicking:{item.Name}");
-                    MainWindow.SetItemToBorder(MainWindow.View.LastSelectedItemBorder, item);
+                    MainWindow.SetItemToBorder(MainWindow.MainView.LastSelectedItemBorder, item);
                 }
                 else
                 {

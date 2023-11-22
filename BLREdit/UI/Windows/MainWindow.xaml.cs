@@ -21,9 +21,6 @@ using BLREdit.API.InterProcess;
 using BLREdit.API.Export;
 using BLREdit.API.Utils;
 using BLREdit.Game;
-using System.Drawing.Imaging;
-using System.Text;
-using PeNet;
 
 namespace BLREdit.UI;
 
@@ -33,7 +30,7 @@ namespace BLREdit.UI;
 public sealed partial class MainWindow : Window
 {
     public static readonly BLRClientWindow ClientWindow = new();
-    public static MainWindowView View { get; } = new();
+    public static MainWindowView MainView { get; } = new();
     public static MainWindow? Instance { get; private set; } = null;
 
     private readonly string[] Args;
@@ -75,8 +72,8 @@ public sealed partial class MainWindow : Window
     public MainWindow(string[] args)
     {
         Args = args;
-        View.IsPlayerProfileChanging = true;
-        View.IsPlayerNameChanging = true;
+        MainView.IsPlayerProfileChanging = true;
+        MainView.IsPlayerNameChanging = true;
 
         PreviewKeyDown += UIKeys.Instance.KeyDown;
         PreviewKeyUp += UIKeys.Instance.KeyUp;
@@ -84,8 +81,8 @@ public sealed partial class MainWindow : Window
 
         InitializeComponent();
 
-        View.IsPlayerProfileChanging = false;
-        View.IsPlayerNameChanging = false;
+        MainView.IsPlayerProfileChanging = false;
+        MainView.IsPlayerNameChanging = false;
     }
 
     public void ApplySearchAndFilter()
@@ -269,7 +266,7 @@ public sealed partial class MainWindow : Window
                 if (loadout is not null) ItemFilters.Instance.WeaponFilter = loadout.Primary;
                 else if(profile is not null) ItemFilters.Instance.WeaponFilter = profile.Loadout1.Primary;
             }
-            View.LastSelectedItemBorder = border;
+            MainView.LastSelectedItemBorder = border;
             wasLastImageScopePreview = false;
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
@@ -384,13 +381,13 @@ public sealed partial class MainWindow : Window
 
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (View.IsPlayerNameChanging || UndoRedoSystem.UndoRedoSystemWorking || UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) return;
+        if (MainView.IsPlayerNameChanging || UndoRedoSystem.UndoRedoSystemWorking || UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) return;
         if (ProfileComboBox.SelectedValue is ShareableProfile profile)
         {
 #if DEBUG
             if (UIKeys.Keys[Key.LeftShift].Is)
             {
-                View.IsPlayerNameChanging = true;
+                MainView.IsPlayerNameChanging = true;
                 BlockChangeNotif = true;
                 var loadout = DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)];
                 LoggingSystem.Log($"Removing Loadout[{loadout.Shareable.Name}]");
@@ -398,13 +395,13 @@ public sealed partial class MainWindow : Window
 
                 ProfileComboBox.SelectedValue = e.RemovedItems[0];
 
-                View.IsPlayerNameChanging = false;
+                MainView.IsPlayerNameChanging = false;
                 BlockChangeNotif = false;
                 return;
             }
 #endif
 
-            View.IsPlayerProfileChanging = true;
+            MainView.IsPlayerProfileChanging = true;
             BlockChangeNotif = true;
 
             object? removed = null;
@@ -416,71 +413,71 @@ public sealed partial class MainWindow : Window
             var index = DataStorage.ShareableProfiles.IndexOf(profile);
 
             UndoRedoSystem.CreateValueChange(removed, ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
-            UndoRedoSystem.DoValueChange(DataStorage.Loadouts[index], typeof(MainWindowView).GetProperty(nameof(View.Profile)), View);
+            UndoRedoSystem.DoValueChange(DataStorage.Loadouts[index], typeof(MainWindowView).GetProperty(nameof(MainView.Profile)), MainView);
             UndoRedoSystem.DoValueChange(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
             UndoRedoSystem.EndUndoRecord();
-            View.IsPlayerProfileChanging = false;
+            MainView.IsPlayerProfileChanging = false;
             BlockChangeNotif = false;
 
             ItemFilters.Instance.WeaponFilter = LoadoutControl.SelectedIndex switch
             {
-                0 => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout1.Primary : View.Profile.BLR.Loadout1.Secondary,
-                1 => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout2.Primary : View.Profile.BLR.Loadout2.Secondary,
-                2 => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout3.Primary : View.Profile.BLR.Loadout3.Secondary,
-                _ => wasLastSelectedBorderPrimary ? View.Profile.BLR.Loadout1.Primary : View.Profile.BLR.Loadout1.Secondary,
+                0 => wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Loadout1.Primary : MainView.Profile.BLR.Loadout1.Secondary,
+                1 => wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Loadout2.Primary : MainView.Profile.BLR.Loadout2.Secondary,
+                2 => wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Loadout3.Primary : MainView.Profile.BLR.Loadout3.Secondary,
+                _ => wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Loadout1.Primary : MainView.Profile.BLR.Loadout1.Secondary,
             };
 
             ApplySearchAndFilter();
 
             if (index != DataStorage.Settings.CurrentlyAppliedLoadout)
-            { View.Profile.BLR.IsChanged = true; }
+            { MainView.Profile.BLR.IsChanged = true; }
             else
-            { View.Profile.BLR.IsChanged = false; }
+            { MainView.Profile.BLR.IsChanged = false; }
         }
         else
         {
-            View.IsPlayerNameChanging = true;
+            MainView.IsPlayerNameChanging = true;
             if (e.RemovedItems.Count > 0) { ProfileComboBox.SelectedValue = e.RemovedItems[0]; }
-            View.IsPlayerNameChanging = false;
+            MainView.IsPlayerNameChanging = false;
         }
     }
 
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (View.IsPlayerProfileChanging || UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) return;
+        if (MainView.IsPlayerProfileChanging || UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) return;
 
-        View.IsPlayerNameChanging = true;
+        MainView.IsPlayerNameChanging = true;
 
-        View.Profile.Shareable.Name = PlayerNameTextBox.Text;
-        View.Profile.Shareable.RefreshInfo();
+        MainView.Profile.Shareable.Name = PlayerNameTextBox.Text;
+        MainView.Profile.Shareable.RefreshInfo();
 
-        View.IsPlayerNameChanging = false;
+        MainView.IsPlayerNameChanging = false;
     }
 
     private void AddProfileButton_Click(object sender, RoutedEventArgs e)
     {
-        BLRLoadoutStorage.AddNewLoadoutSet();
+        MainView.Profile = BLRLoadoutStorage.AddNewLoadoutSet();
     }
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
         if (UIKeys.Keys[Key.LeftShift].Is || UIKeys.Keys[Key.RightShift].Is)
         {
-            ExportSystem.CopyMagiCowToClipboard(View.Profile);
-            ShowAlert($"MagiCow Profile: {View.Profile.Shareable.Name} Copied!"); //TODO: Add Localization
+            ExportSystem.CopyMagiCowToClipboard(MainView.Profile);
+            ShowAlert($"MagiCow Profile: {MainView.Profile.Shareable.Name} Copied!"); //TODO: Add Localization
         }
         else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
         {
-            var json = IOResources.Serialize(new Shareable3LoadoutSet(View.Profile.BLR), true);
+            var json = IOResources.Serialize(new Shareable3LoadoutSet(MainView.Profile.BLR), true);
             var jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
             var zipedJson = IOResources.Zip(jsonNoWhitespaces);
             var base64 = IOResources.DataToBase64(zipedJson);
 
-            LoggingSystem.Log($"{View.Profile.Shareable.Name} Profile Compression: {jsonNoWhitespaces.Length} vs {base64.Length}");
+            LoggingSystem.Log($"{MainView.Profile.Shareable.Name} Profile Compression: {jsonNoWhitespaces.Length} vs {base64.Length}");
 
             string link = $"<blredit://import-profile/{base64}>";
             ExportSystem.SetClipboard(link);
-            ShowAlert($"{View.Profile.Shareable.Name} Share Link Created!"); //TODO: Add Localization
+            ShowAlert($"{MainView.Profile.Shareable.Name} Share Link Created!"); //TODO: Add Localization
         }
         else
         {
@@ -490,7 +487,7 @@ public sealed partial class MainWindow : Window
                 {
                     if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
                     {
-                        if (!BLRClient.ValidLoadout(View.Profile.BLR, process.ConnectedServer, out string message))
+                        if (!BLRClient.ValidLoadout(MainView.Profile.BLR, process.ConnectedServer, out string message))
                         {
                             LoggingSystem.MessageLog(message, "warning");
                             return;
@@ -499,10 +496,11 @@ public sealed partial class MainWindow : Window
                 }
                 var directory = $"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\";
                 Directory.CreateDirectory(directory);
-                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(View.Profile.BLR.Loadout1, View.Profile.BLR.IsAdvanced.Is), new LoadoutManagerLoadout(View.Profile.BLR.Loadout2, View.Profile.BLR.IsAdvanced.Is), new LoadoutManagerLoadout(View.Profile.BLR.Loadout3, View.Profile.BLR.IsAdvanced.Is) });
+                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout1, MainView.Profile.BLR.IsAdvanced.Is), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout2, MainView.Profile.BLR.IsAdvanced.Is), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout3, MainView.Profile.BLR.IsAdvanced.Is) });
                 ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+                MainView.Profile.Shareable.LastApplied = DateTime.Now;
                 DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;
-                View.Profile.BLR.IsChanged = false;
+                MainView.Profile.BLR.IsChanged = false;
             }
         }
     }
@@ -553,21 +551,21 @@ public sealed partial class MainWindow : Window
             case Key.A:
                 if ((UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is) && (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is) && !SearchBox.IsFocused)
                 {
-                    if (View.Profile.BLR.IsAdvanced.Is)
+                    if (MainView.Profile.BLR.IsAdvanced.Is)
                     {
                         string message = "Can't disable Advanced mode!\nplease remove any duplicate gears or fix missing armor:";
                         bool hasDupes = false;
-                        if (View.Profile.BLR.Loadout1.HasDuplicatedGear || View.Profile.BLR.Loadout1.Helmet is null || View.Profile.BLR.Loadout1.UpperBody is null || View.Profile.BLR.Loadout1.LowerBody is null)
+                        if (MainView.Profile.BLR.Loadout1.HasDuplicatedGear || MainView.Profile.BLR.Loadout1.Helmet is null || MainView.Profile.BLR.Loadout1.UpperBody is null || MainView.Profile.BLR.Loadout1.LowerBody is null)
                         {
                             message += "\nLoadout1";
                             hasDupes = true; 
                         }
-                        if (View.Profile.BLR.Loadout2.HasDuplicatedGear || View.Profile.BLR.Loadout2.Helmet is null || View.Profile.BLR.Loadout2.UpperBody is null || View.Profile.BLR.Loadout2.LowerBody is null)
+                        if (MainView.Profile.BLR.Loadout2.HasDuplicatedGear || MainView.Profile.BLR.Loadout2.Helmet is null || MainView.Profile.BLR.Loadout2.UpperBody is null || MainView.Profile.BLR.Loadout2.LowerBody is null)
                         {
                             message += "\nLoadout2";
                             hasDupes = true;
                         }
-                        if (View.Profile.BLR.Loadout3.HasDuplicatedGear || View.Profile.BLR.Loadout3.Helmet is null || View.Profile.BLR.Loadout3.UpperBody is null || View.Profile.BLR.Loadout3.LowerBody is null)
+                        if (MainView.Profile.BLR.Loadout3.HasDuplicatedGear || MainView.Profile.BLR.Loadout3.Helmet is null || MainView.Profile.BLR.Loadout3.UpperBody is null || MainView.Profile.BLR.Loadout3.LowerBody is null)
                         {
                             message += "\nLoadout3";
                             hasDupes = true;
@@ -579,11 +577,11 @@ public sealed partial class MainWindow : Window
                         }
                     }
 
-                    View.Profile.BLR.IsAdvanced.Set(!View.Profile.BLR.IsAdvanced.Is);
-                    View.Profile.BLR.Write();
-                    MainWindow.View.Profile.BLR.CalculateStats();
+                    MainView.Profile.BLR.IsAdvanced.Set(!MainView.Profile.BLR.IsAdvanced.Is);
+                    MainView.Profile.BLR.Write();
+                    MainWindow.MainView.Profile.BLR.CalculateStats();
                     ApplySearchAndFilter();
-                    ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{(View.Profile.BLR.IsAdvanced.Is ? "On" : "Off")}");
+                    ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{(MainView.Profile.BLR.IsAdvanced.Is ? "On" : "Off")}");
                 }
                 break;
             case Key.Z:
@@ -605,12 +603,12 @@ public sealed partial class MainWindow : Window
                                     var copy = weapon.Copy();
                                     if (weapon.IsPrimary)
                                     {
-                                        View.PrimaryWeaponCopy = copy;
+                                        MainView.PrimaryWeaponCopy = copy;
                                         ShowAlert($"Copied Primary Weapon!"); //TODO: Add Localization
                                     }
                                     else
                                     {
-                                        View.SecondaryWeaponCopy = copy;
+                                        MainView.SecondaryWeaponCopy = copy;
                                         ShowAlert($"Copied Secondary Weapon!"); //TODO: Add Localization
                                     }
                                     if (weapon.InternalWeapon is ShareableWeapon wpn)
@@ -624,7 +622,7 @@ public sealed partial class MainWindow : Window
                             case GearControl gearControl:
                                 if (gearControl.DataContext is BLRLoadout gearLoadout)
                                 {
-                                    View.GearCopy = gearLoadout.CopyGear();
+                                    MainView.GearCopy = gearLoadout.CopyGear();
                                     ShowAlert($"Copied Gear!"); //TODO: Add Localization
                                     if (gearLoadout.InternalLoadout is ShareableLoadout ldt)
                                     {
@@ -637,7 +635,7 @@ public sealed partial class MainWindow : Window
                             case ExtraControl extraControl:
                                 if (extraControl.DataContext is BLRLoadout extraLoadout)
                                 {
-                                    View.ExtraCopy = extraLoadout.CopyExtra();
+                                    MainView.ExtraCopy = extraLoadout.CopyExtra();
                                     ShowAlert($"Copied Extra!"); //TODO: Add Localization
                                     if (extraLoadout.InternalLoadout is ShareableLoadout ldt)
                                     {
@@ -650,8 +648,8 @@ public sealed partial class MainWindow : Window
                             case LoadoutViewControl loadoutViewControl:
                                 if (loadoutViewControl.DataContext is BLRLoadout viewLoadout)
                                 {
-                                    View.ExtraCopy = viewLoadout.CopyExtra();
-                                    View.GearCopy = viewLoadout.CopyGear();
+                                    MainView.ExtraCopy = viewLoadout.CopyExtra();
+                                    MainView.GearCopy = viewLoadout.CopyGear();
                                     ShowAlert($"Copied Gear & Extra!"); //TODO: Add Localization
                                     if (viewLoadout.InternalLoadout is ShareableLoadout ldt)
                                     {
@@ -666,12 +664,12 @@ public sealed partial class MainWindow : Window
                                 {
                                     if (viewWeapon.IsPrimary)
                                     {
-                                        View.PrimaryWeaponCopy = viewWeapon.Copy();
+                                        MainView.PrimaryWeaponCopy = viewWeapon.Copy();
                                         ShowAlert($"Copied Primary Weapon!"); //TODO: Add Localization
                                     }
                                     else
                                     {
-                                        View.SecondaryWeaponCopy = viewWeapon.Copy();
+                                        MainView.SecondaryWeaponCopy = viewWeapon.Copy();
                                         ShowAlert($"Copied Secondary Weapon!"); //TODO: Add Localization
                                     }
                                     if (viewWeapon.InternalWeapon is ShareableWeapon wpn)
@@ -701,17 +699,17 @@ public sealed partial class MainWindow : Window
                                     {
                                         if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
                                         {
-                                            View.PrimaryWeaponCopy = wpn.ToBLRWeapon(true);
+                                            MainView.PrimaryWeaponCopy = wpn.ToBLRWeapon(true);
                                         }
-                                        weapon.ApplyCopy(View.PrimaryWeaponCopy);
+                                        weapon.ApplyCopy(MainView.PrimaryWeaponCopy);
                                     }
                                     else
                                     {
                                         if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
                                         {
-                                            View.SecondaryWeaponCopy = wpn.ToBLRWeapon(false);
+                                            MainView.SecondaryWeaponCopy = wpn.ToBLRWeapon(false);
                                         }
-                                        weapon.ApplyCopy(View.SecondaryWeaponCopy);
+                                        weapon.ApplyCopy(MainView.SecondaryWeaponCopy);
                                     }
                                 }
                                 break;
@@ -720,9 +718,9 @@ public sealed partial class MainWindow : Window
                                 {
                                     if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
                                     {
-                                        View.GearCopy = ldt.ToBLRLoadout().CopyGear();
+                                        MainView.GearCopy = ldt.ToBLRLoadout().CopyGear();
                                     }
-                                    gearLoadout.ApplyExtraGearCopy(null, View.GearCopy);
+                                    gearLoadout.ApplyExtraGearCopy(null, MainView.GearCopy);
                                 }
                                 break;
                             case ExtraControl extraControl:
@@ -730,9 +728,9 @@ public sealed partial class MainWindow : Window
                                 {
                                     if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
                                     {
-                                        View.ExtraCopy = ldt.ToBLRLoadout().CopyExtra();
+                                        MainView.ExtraCopy = ldt.ToBLRLoadout().CopyExtra();
                                     }
-                                    extraLoadout.ApplyExtraGearCopy(View.ExtraCopy);
+                                    extraLoadout.ApplyExtraGearCopy(MainView.ExtraCopy);
                                 }
                                 break;
                             case LoadoutViewControl loadoutViewControl:
@@ -740,10 +738,10 @@ public sealed partial class MainWindow : Window
                                 {
                                     if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
                                     {
-                                        View.GearCopy = ldt.ToBLRLoadout().CopyGear();
-                                        View.ExtraCopy = ldt.ToBLRLoadout().CopyExtra();
+                                        MainView.GearCopy = ldt.ToBLRLoadout().CopyGear();
+                                        MainView.ExtraCopy = ldt.ToBLRLoadout().CopyExtra();
                                     }
-                                    viewLoadout.ApplyExtraGearCopy(View.ExtraCopy, View.GearCopy);
+                                    viewLoadout.ApplyExtraGearCopy(MainView.ExtraCopy, MainView.GearCopy);
                                 }
                                 break;
                             case WeaponViewControl weaponViewControl:
@@ -753,17 +751,17 @@ public sealed partial class MainWindow : Window
                                     {
                                         if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
                                         {
-                                            View.PrimaryWeaponCopy = wpn.ToBLRWeapon(true);
+                                            MainView.PrimaryWeaponCopy = wpn.ToBLRWeapon(true);
                                         }
-                                        viewWeapon.ApplyCopy(View.PrimaryWeaponCopy);
+                                        viewWeapon.ApplyCopy(MainView.PrimaryWeaponCopy);
                                     }
                                     else
                                     {
                                         if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
                                         {
-                                            View.SecondaryWeaponCopy = wpn.ToBLRWeapon(false);
+                                            MainView.SecondaryWeaponCopy = wpn.ToBLRWeapon(false);
                                         }
-                                        viewWeapon.ApplyCopy(View.SecondaryWeaponCopy);
+                                        viewWeapon.ApplyCopy(MainView.SecondaryWeaponCopy);
                                     }
                                 }
                                 break;
@@ -777,7 +775,7 @@ public sealed partial class MainWindow : Window
 
     private void DuplicateProfile_Click(object sender, RoutedEventArgs e)
     {
-        ProfileComboBox.SelectedItem = View.Profile.Shareable.Duplicate();
+        ProfileComboBox.SelectedItem = MainView.Profile.Shareable.Duplicate();
     }
 
     private void PlayerNameTextBox_PreviewInput(object sender, TextCompositionEventArgs e)
@@ -800,23 +798,23 @@ public sealed partial class MainWindow : Window
                 }
             }
 
-            MainWindowView.SetBorderColor(lastLoadoutBorder, View.DefaultBorderColor);
+            MainWindowView.SetBorderColor(lastLoadoutBorder, MainView.DefaultBorderColor);
             switch (control.SelectedIndex)
             {
                 case 0:
-                    ImportSystem.UpdateArmorImages(View.Profile.BLR.Loadout1.IsFemale);
+                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.Loadout1.IsFemale);
                     lastLoadoutBorder = DetailsBorderLoadout1;
                     break;
                 case 1:
-                    ImportSystem.UpdateArmorImages(View.Profile.BLR.Loadout2.IsFemale);
+                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.Loadout2.IsFemale);
                     lastLoadoutBorder = DetailsBorderLoadout2;
                     break;
                 case 2:
-                    ImportSystem.UpdateArmorImages(View.Profile.BLR.Loadout3.IsFemale);
+                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.Loadout3.IsFemale);
                     lastLoadoutBorder = DetailsBorderLoadout3;
                     break;
             }
-            MainWindowView.SetBorderColor(lastLoadoutBorder, View.ActiveBorderColor);
+            MainWindowView.SetBorderColor(lastLoadoutBorder, MainView.ActiveBorderColor);
         }
         BlockChangeNotif = false;
     }
@@ -860,22 +858,24 @@ public sealed partial class MainWindow : Window
 
         #region Frontend Init
         Instance = this;
-        View.IsPlayerProfileChanging = true;
-        View.IsPlayerNameChanging = true;
+        MainView.IsPlayerProfileChanging = true;
+        MainView.IsPlayerNameChanging = true;
 
-        PlayerNameTextBox.Text = View.Profile.Shareable.Name;
+        MainView.Profile = DataStorage.Loadouts.FirstOrDefault();
+
+        PlayerNameTextBox.Text = MainView.Profile.Shareable.Name;
         ProfileComboBox.ItemsSource = DataStorage.ShareableProfiles;
         
 
-        View.IsPlayerProfileChanging = false;
-        View.IsPlayerNameChanging = false;
+        MainView.IsPlayerProfileChanging = false;
+        MainView.IsPlayerNameChanging = false;
 
         ProfileComboBox.SelectedIndex = DataStorage.Settings.CurrentlyAppliedLoadout;
 
-        View.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
-        ItemFilters.Instance.WeaponFilter = View.Profile.BLR.Loadout1.Primary;
+        MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
+        ItemFilters.Instance.WeaponFilter = MainView.Profile.BLR.Loadout1.Primary;
 
-        this.DataContext = View;
+        this.DataContext = MainView;
         #endregion Frontend Init
 
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
@@ -954,7 +954,7 @@ public sealed partial class MainWindow : Window
         SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
         lastAnim = CalmAnim;
 
-        View.UpdateWindowTitle();
+        MainView.UpdateWindowTitle();
 
         UndoRedoSystem.ClearUndoRedoStack();
 
@@ -964,12 +964,12 @@ public sealed partial class MainWindow : Window
     public void LoadoutChanged(object sender, PropertyChangedEventArgs e)
     {
         if (BlockChangeNotif) return;
-        if (View.Profile.BLR.IsChanged && lastAnim != AlertAnim)
+        if (MainView.Profile.BLR.IsChanged && lastAnim != AlertAnim)
         {
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, AlertAnim, HandoffBehavior.Compose);
             lastAnim = AlertAnim;
         }
-        else if (!View.Profile.BLR.IsChanged && lastAnim != CalmAnim)
+        else if (!MainView.Profile.BLR.IsChanged && lastAnim != CalmAnim)
         {
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
             lastAnim = CalmAnim;
@@ -1081,8 +1081,8 @@ public sealed partial class MainWindow : Window
 
             if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
             {
-                View.CurrentSortingPropertyName = Enum.GetName(View.CurrentSortingEnumType, Enum.GetValues(View.CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
-                view.SortDescriptions.Add(new SortDescription(View.CurrentSortingPropertyName, View.ItemListSortingDirection));
+                MainView.CurrentSortingPropertyName = Enum.GetName(MainView.CurrentSortingEnumType, Enum.GetValues(MainView.CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
+                view.SortDescriptions.Add(new SortDescription(MainView.CurrentSortingPropertyName, MainView.ItemListSortingDirection));
             }
         }
     }
@@ -1094,7 +1094,7 @@ public sealed partial class MainWindow : Window
             lastSelectedSortingType = SortingEnumType;
             int index = SortComboBox1.SelectedIndex;
 
-            View.CurrentSortingEnumType = SortingEnumType;
+            MainView.CurrentSortingEnumType = SortingEnumType;
             SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = LanguageResources.GetWordsOfEnum(SortingEnumType) });
 
             if (index > SortComboBox1.Items.Count)
@@ -1160,14 +1160,14 @@ public sealed partial class MainWindow : Window
 
     private void ChangeSortingDirection(object sender, RoutedEventArgs e)
     {
-        if (View.ItemListSortingDirection == ListSortDirection.Ascending)
+        if (MainView.ItemListSortingDirection == ListSortDirection.Ascending)
         {
-            View.ItemListSortingDirection = ListSortDirection.Descending;
+            MainView.ItemListSortingDirection = ListSortDirection.Descending;
             SortDirectionButton.Content = Properties.Resources.btn_Descending;
         }
         else
         {
-            View.ItemListSortingDirection = ListSortDirection.Ascending;
+            MainView.ItemListSortingDirection = ListSortDirection.Ascending;
             SortDirectionButton.Content = Properties.Resources.btn_Ascending;
         }
         ApplySorting();

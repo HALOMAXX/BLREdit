@@ -33,8 +33,8 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.11.7";
-    public const string CurrentVersionTitle = "Loadout Managment Preview";
+    public const string CurrentVersion = "v0.11.8";
+    public const string CurrentVersionTitle = "Hotfix";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
 

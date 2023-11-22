@@ -48,9 +48,9 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     [JsonPropertyName("SelectedLanguage")] public string? SelectedLanguage = null;
     [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return CultureInfo.InvariantCulture; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
     [JsonPropertyName("PlayerName")] public string jsonPlayerName = "BLREdit-Player";
-    [JsonIgnore] public string PlayerName { get { return jsonPlayerName; } set { if (jsonPlayerName != value) { MainWindow.View.Profile.BLR.IsChanged = true; } jsonPlayerName = value; OnPropertyChanged(); OnPropertyChanged(nameof(ProfileSettings)); MainWindow.View.UpdateWindowTitle(); } }
+    [JsonIgnore] public string PlayerName { get { return jsonPlayerName; } set { if (jsonPlayerName != value) { MainWindow.MainView.Profile.BLR.IsChanged = true; } jsonPlayerName = value; OnPropertyChanged(); OnPropertyChanged(nameof(ProfileSettings)); MainWindow.MainView.UpdateWindowTitle(); } }
     [JsonPropertyName("Region")] public string jsonRegion = string.Empty;
-    [JsonIgnore] public string Region { get { return jsonRegion; } set { jsonRegion = value; OnPropertyChanged(); MainWindow.View.UpdateWindowTitle(); } }
+    [JsonIgnore] public string Region { get { return jsonRegion; } set { jsonRegion = value; OnPropertyChanged(); MainWindow.MainView.UpdateWindowTitle(); } }
     [JsonIgnore] private string lastplayerName = "BLREdit-Player";
     [JsonIgnore] public string LastPlayerName { get { return lastplayerName; } set { lastplayerName = value; OnPropertyChanged(); } }
     [JsonIgnore] public BLRProfileSettingsWrapper ProfileSettings => ExportSystem.GetOrAddProfileSettings(PlayerName);
@@ -124,7 +124,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     {
         if (e.PropertyName == "Is")
         {
-            MainWindow.View.Profile.BLR.CalculateStats();
+            MainWindow.MainView.Profile.BLR.CalculateStats();
             MainWindow.Instance?.SetItemList();
         }
     }

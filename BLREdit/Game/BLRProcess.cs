@@ -101,7 +101,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         if (!IsServer)
         {
             Client.UpdateProfileSettings();
-            MainWindow.View.UpdateWindowTitle();
+            MainWindow.MainView.UpdateWindowTitle();
             LoggingSystem.Log($"[{this.Client}]: Grabbing Settings from client!");
         }
 
@@ -131,7 +131,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         if (!IsServer)
         {
             Client.UpdateProfileSettings();
-            MainWindow.View.UpdateWindowTitle();
+            MainWindow.MainView.UpdateWindowTitle();
         }
     }
 }

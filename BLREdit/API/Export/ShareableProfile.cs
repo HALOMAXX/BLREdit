@@ -31,10 +31,23 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
     [JsonIgnore] private string name = name;
     public string Name { get { return name; } set { name = value; OnPropertyChanged(); } }
     public UIBool IsAdvanced { get; set; } = new(false);
+    [JsonIgnore] public int TimeOfCreation { get; set; }
+    public DateTime LastApplied { get; set; } = DateTime.MinValue;
+    public DateTime LastModified { get; set; } = DateTime.MinValue;
+    public DateTime LastViewed { get; set; } = DateTime.MinValue;
     public ObservableCollection<ShareableLoadout> Loadouts { get; set; } = new() { MagiCowsLoadout.DefaultLoadout1.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout2.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout3.ConvertToShareable() };
+    
 
     private static readonly Regex CopyWithCount = new(@".* - Copy \([0-9]*\)$");
     private static readonly Regex CopyWithoutCount = new(@".* - Copy$");
+
+    public void RegisterWithChildren()
+    {
+        foreach (var loadout in Loadouts)
+        {
+            loadout.RegisterWithChildren(this);
+        }
+    }
 
     public void RefreshInfo()
     {
@@ -117,6 +130,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
     {
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteProfile)) return;
+        LastModified = DateTime.Now;
         IsAdvanced.Set(profile.IsAdvanced.Is);
         Loadouts[0].Write(profile.Loadout1);
         Loadouts[1].Write(profile.Loadout2);
@@ -129,17 +143,17 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
 public sealed class Shareable3LoadoutSet : IBLRProfile
 {
     [JsonPropertyName("A")] public UIBool IsAdvanced { get; set; } = new(false);
-    [JsonPropertyName("L1")] public ShareableLoadout Loadout1 { get; set; } = new();
-    [JsonPropertyName("L2")] public ShareableLoadout Loadout2 { get; set; } = new();
-    [JsonPropertyName("L3")] public ShareableLoadout Loadout3 { get; set; } = new();
+    [JsonPropertyName("L1")] public ShareableLoadout Loadout1 { get; set; } = new(null);
+    [JsonPropertyName("L2")] public ShareableLoadout Loadout2 { get; set; } = new(null);
+    [JsonPropertyName("L3")] public ShareableLoadout Loadout3 { get; set; } = new(null);
 
     public Shareable3LoadoutSet() { }
     public Shareable3LoadoutSet(BLRProfile profile)
     {
         IsAdvanced.Set(profile.IsAdvanced.Is);
-        Loadout1 = new ShareableLoadout(profile.Loadout1);
-        Loadout2 = new ShareableLoadout(profile.Loadout2);
-        Loadout3 = new ShareableLoadout(profile.Loadout3);
+        Loadout1 = new ShareableLoadout(profile.Loadout1, null);
+        Loadout2 = new ShareableLoadout(profile.Loadout2, null);
+        Loadout3 = new ShareableLoadout(profile.Loadout3, null);
     }
 
     public event EventHandler? WasWrittenTo;
@@ -192,6 +206,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
 
 public sealed class ShareableLoadout : IBLRLoadout
 {
+    [JsonIgnore] public ShareableProfile? Profile { get; set; } = null;
     [JsonPropertyName("R1")] public ShareableWeapon Primary { get; set; } = new();
     [JsonPropertyName("R2")] public ShareableWeapon Secondary { get; set; } = new();
     [JsonPropertyName("F1")] public bool Female { get; set; } = false;
@@ -218,11 +233,16 @@ public sealed class ShareableLoadout : IBLRLoadout
     [JsonPropertyName("T1")] public int Tactical { get; set; } = 0;
     [JsonPropertyName("T2")] public int[] Taunts { get; set; } = new int[8];
 
+
     public ShareableLoadout()
     { }
 
-    public ShareableLoadout(BLRLoadout loadout)
+    public ShareableLoadout(ShareableProfile? profile)
+    { Profile = profile; }
+
+    public ShareableLoadout(BLRLoadout loadout, ShareableProfile? profile)
     {
+        Profile = profile;
         Female = loadout.IsFemale;
         BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
         UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
@@ -307,7 +327,7 @@ public sealed class ShareableLoadout : IBLRLoadout
 
     public ShareableLoadout Clone()
     {
-        var clone = new ShareableLoadout
+        var clone = new ShareableLoadout(null)
         {
             Primary = Primary.Clone(),
             Secondary = Secondary.Clone(),
@@ -397,6 +417,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         Primary.Write(loadout.Primary);
         Secondary.Write(loadout.Secondary);
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteLoadout)) return;
+        if (Profile is not null) { Profile.LastModified = DateTime.Now; }
 
         Female = loadout.IsFemale;
         Bot = loadout.IsBot;
@@ -432,10 +453,21 @@ public sealed class ShareableLoadout : IBLRLoadout
         Badge = BLRItem.GetMagicCowsID(loadout.Trophy);
         if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(loadout, EventArgs.Empty); }
     }
+
+    public void RegisterWithChildren(ShareableProfile shareableProfile)
+    {
+        Profile = shareableProfile;
+        Primary.Profile = shareableProfile;
+        Secondary.Profile = shareableProfile;
+        Primary.Loadout = this;
+        Secondary.Loadout = this;
+    }
 }
 
 public sealed class ShareableWeapon : IBLRWeapon
 {
+    [JsonIgnore] public ShareableProfile? Profile { get; set; } = null;
+    [JsonIgnore] public ShareableLoadout? Loadout { get; set; } = null;
     [JsonPropertyName("A1")] public int Ammo { get; set; } = 0;
     [JsonPropertyName("B1")] public int Barrel { get; set; } = 0;
     [JsonPropertyName("C1")] public int Camo { get; set; } = 0;
@@ -523,6 +555,7 @@ public sealed class ShareableWeapon : IBLRWeapon
     public void Write(BLRWeapon weapon)
     {
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteWeapon)) return;
+        if (Profile is not null) { Profile.LastModified = DateTime.Now; }
         Reciever = BLRItem.GetMagicCowsID(weapon.Reciever, -1);
         Barrel = BLRItem.GetMagicCowsID(weapon.Barrel, -1);
         Muzzle = BLRItem.GetMagicCowsID(weapon.Muzzle, -1);

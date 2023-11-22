@@ -2,12 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" IsVisibleChanged="UserControl_IsVisibleChanged">
     <Grid>
-        <TextBox Name="SearchBox" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" TextChanged="SearchBox_TextChanged"/>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" Height="22">
+            <Button Name="SortDirectionButton" Content="{x:Static p:Resources.btn_Descending}" Width="120" Click="ChangeSortingDirection"/>
+            <ComboBox Name="SortComboBox1" Width="120" SelectionChanged="SortComboBox1_SelectionChanged"/>
+            <TextBox Name="SearchBox" Text="" Width="120" TextChanged="SearchBox_TextChanged"/>
+        </StackPanel>
         <ListView Name="ProfileListView" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ProfileListControl}}, Path=DataContext}" DataContextChanged="ProfileListView_DataContextChanged" SelectionMode="Single" Margin="0,24,0,0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
