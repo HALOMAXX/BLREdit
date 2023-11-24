@@ -33,7 +33,7 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.11.9";
+    public const string CurrentVersion = "v0.11.10";
     public const string CurrentVersionTitle = "Hotfix";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
@@ -347,6 +347,10 @@ public partial class App : System.Windows.Application
             return;
         }
 
+        var watch = Stopwatch.StartNew();
+        App.CheckAppUpdate();
+        LoggingSystem.Log($"[MainWindow]: Update Check took {watch.ElapsedMilliseconds}ms");
+
         new MainWindow(argList).Show();
     }
 
@@ -614,8 +618,15 @@ public partial class App : System.Windows.Application
     private static FileInfoExtension? crosshairsZip;
     private static FileInfoExtension? patchesZip;
 
+    static bool versionCheckDone = false;
     public static bool VersionCheck()
     {
+        if (versionCheckDone)
+        {
+            LoggingSystem.Log("Version Check gon run again");
+            return false;
+        }
+        versionCheckDone = true;
         LoggingSystem.Log("Running Version Check!");
 
         try
@@ -634,7 +645,7 @@ public partial class App : System.Windows.Application
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
 
-            if (BLREditLatestRelease is not null && BLREditLatestRelease.Assets is not null)
+            if (BLREditLatestRelease is not null && BLREditLatestRelease.Assets is not null )
             {
                 foreach (var asset in BLREditLatestRelease.Assets)
                 {

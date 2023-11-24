@@ -18,8 +18,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>9999</WarningLevel>
   </PropertyGroup>
-	
-	<ItemGroup>
+
+  <ItemGroup>
 		<ContentWithTargetPath Include="Assets\**">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<TargetPath>Assets\%(RecursiveDir)\%(Filename)%(Extension)</TargetPath>
