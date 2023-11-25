@@ -851,10 +851,12 @@ public sealed partial class MainWindow : Window
         LoggingSystem.Log($"[MainWindow]: ImportSystem took {watch.ElapsedMilliseconds}ms");
         watch.Restart();
 
-        var thread = new Thread(ExportSystem.SlowLoadProfiles)
-        { Name = $"{nameof(ExportSystem.SlowLoadProfiles)}", IsBackground = true, Priority = ThreadPriority.Lowest };
-        App.AppThreads.Add(thread);
-        thread.Start();
+
+        
+        //var thread = new Thread(ExportSystem.SlowLoadProfiles)
+        //{ Name = $"{nameof(ExportSystem.SlowLoadProfiles)}", IsBackground = true, Priority = ThreadPriority.Lowest };
+        //App.AppThreads.Add(thread);
+        //thread.Start();
 
         #endregion Backend Init
 

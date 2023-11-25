@@ -917,7 +917,7 @@ public partial class App : System.Windows.Application
         };
     }
 
-    private static Task<T> StartSTATask<T>(Func<T> action)
+    public static Task<T> StartSTATask<T>(Func<T> action)
     {
         var tcs = new TaskCompletionSource<T>();
         Thread thread = new(() =>

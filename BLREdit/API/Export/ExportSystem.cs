@@ -20,6 +20,16 @@ public sealed class ExportSystem
     private static DirectoryInfo? _currentBackupFolder = null;
     public static DirectoryInfo CurrentBackupFolder { get { _currentBackupFolder ??= Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\"); return _currentBackupFolder; } }
 
+    static ExportSystem()
+    {
+        //App.StartSTATask(SlowLoadProfiles);
+
+        //var thread = new Thread(SlowLoadProfiles)
+        //{ Name = $"{nameof(SlowLoadProfiles)}", IsBackground = true, Priority = ThreadPriority.Lowest };
+        //App.AppThreads.Add(thread);
+        //thread.Start();
+    }
+
     public static void SlowLoadProfiles()
     {
         LoggingSystem.Log("Started loading all Profiles");
