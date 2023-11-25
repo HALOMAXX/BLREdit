@@ -351,9 +351,6 @@ public partial class App : System.Windows.Application
         App.CheckAppUpdate();
         LoggingSystem.Log($"[MainWindow]: Update Check took {watch.ElapsedMilliseconds}ms");
 
-        App.DownloadLocalization();
-        LoggingSystem.Log($"[MainWindow]: Localization took {watch.ElapsedMilliseconds}ms");
-
         new MainWindow(argList).Show();
     }
 

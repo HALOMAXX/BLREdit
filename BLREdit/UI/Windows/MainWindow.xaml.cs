@@ -838,6 +838,8 @@ public sealed partial class MainWindow : Window
 
         #region Backend Init
         var watch = Stopwatch.StartNew();
+        App.DownloadLocalization();
+        LoggingSystem.Log($"[MainWindow]: Localization took {watch.ElapsedMilliseconds}ms");
 
         watch.Restart();
         App.RuntimeCheck();
