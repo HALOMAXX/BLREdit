@@ -1547,6 +1547,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         UndoRedoSystem.DoValueChange(grip, this.GetType().GetProperty(nameof(Grip)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(skin, this.GetType().GetProperty(nameof(Skin)), this, BlockEvents.AllExceptUpdate);
         if (ammo is not null) UndoRedoSystem.DoValueChange(ammo, this.GetType().GetProperty(nameof(Ammo)), this, BlockEvents.AllExceptUpdate);
-        UndoRedoSystem.DoValueChange(hanger, this.GetType().GetProperty(nameof(Tag)), this, BlockEvents.None);
+        UndoRedoSystem.DoValueChange(hanger, this.GetType().GetProperty(nameof(Tag)), this);
     }
 }

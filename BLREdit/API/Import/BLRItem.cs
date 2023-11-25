@@ -136,7 +136,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool IsValidFor(BLRItem? item, bool advanced = false)
     {
-        if (item is null || (this.Category == ImportSystem.PRIMARY_CATEGORY || this.Category == ImportSystem.SECONDARY_CATEGORY)) return true;
+        if (this.Category == ImportSystem.PRIMARY_CATEGORY || this.Category == ImportSystem.SECONDARY_CATEGORY) return true;
 
         if (advanced)
         {
@@ -148,7 +148,25 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool ValidForTest(BLRItem? filter)
     {
-        if (UID == 12096 || UID == 12097 || UID == 12098 || UID == 12099 || UID == 46050) { return false; }
+        switch (UID)
+        {
+            case 300:
+            case 301:
+            case 302:
+            case 308:
+            case 309:
+            case 312:
+            case 313:
+            case 382:
+            case 410:
+            case 12096:
+            case 12097:
+            case 12098:
+            case 12099:
+            case 20015:
+            case 46050:
+                return false;
+        }
 
         if (filter is null || ValidFor == null || ValidFor.Count <= 0) { return true; }
 
@@ -160,7 +178,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         return false;
     }
 
-    private static bool AdvancedFilter(BLRItem item, BLRItem filter)
+    private static bool AdvancedFilter(BLRItem? item, BLRItem? filter)
     {
         if (item is null || item.UID == 45012) return false;
         switch (item.Category)

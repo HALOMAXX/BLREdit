@@ -649,42 +649,92 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var upperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.UPPER_BODIES_CATEGORY)?.Length ?? 0));
         var lowerBody = ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.LOWER_BODIES_CATEGORY)?.Length ?? 0));
         var avatar = ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.AVATARS_CATEGORY)?.Length ?? 0));
-        var trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY)?.Length ?? 0));
         var camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_BODIES_CATEGORY)?.Length ?? 0));
         var tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.TACTICAL_CATEGORY)?.Length ?? 0));
 
-        UndoRedoSystem.DoValueChange(helmet, this.GetType().GetProperty(nameof(Helmet)), this, BlockEvents.All);
-        UndoRedoSystem.DoValueChange(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this, BlockEvents.All);
-        UndoRedoSystem.DoValueChange(lowerBody, this.GetType().GetProperty(nameof(LowerBody)), this, BlockEvents.All);
-        UndoRedoSystem.DoValueChange(avatar, this.GetType().GetProperty(nameof(Avatar)), this, BlockEvents.All);
-        UndoRedoSystem.DoValueChange(trophy, this.GetType().GetProperty(nameof(Trophy)), this, BlockEvents.All);
-        UndoRedoSystem.DoValueChange(camo, this.GetType().GetProperty(nameof(BodyCamo)), this, BlockEvents.All);
-        UndoRedoSystem.DoValueChange(tactical, this.GetType().GetProperty(nameof(Tactical)), this, BlockEvents.All);
-        
+        var trophys = ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+
+        var gears = ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var taunts = ImportSystem.GetItemArrayOfType(ImportSystem.EMOTES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var depots = ImportSystem.GetItemArrayOfType(ImportSystem.SHOP_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+
+        UndoRedoSystem.DoValueChange(helmet, this.GetType().GetProperty(nameof(Helmet)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(lowerBody, this.GetType().GetProperty(nameof(LowerBody)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(avatar, this.GetType().GetProperty(nameof(Avatar)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(trophys[rng.Next(0, trophys.Count)], this.GetType().GetProperty(nameof(Trophy)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(camo, this.GetType().GetProperty(nameof(BodyCamo)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(tactical, this.GetType().GetProperty(nameof(Tactical)), this, BlockEvents.AllExceptUpdate);
 
         if (GearSlots > 0)
-        { 
-            var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
-            UndoRedoSystem.DoValueChange(gear, this.GetType().GetProperty(nameof(Gear1)), this, BlockEvents.All);
+        {
+            var gearIndex = rng.Next(0, gears.Count);
+            UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear1)), this, BlockEvents.AllExceptUpdate);
+            if(Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 1)
         {
-            var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
-            UndoRedoSystem.DoValueChange(gear, this.GetType().GetProperty(nameof(Gear2)), this, BlockEvents.All);
+            var gearIndex = rng.Next(0, gears.Count);
+            UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear2)), this, BlockEvents.AllExceptUpdate);
+            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 2)
         {
-            var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
-            UndoRedoSystem.DoValueChange(gear, this.GetType().GetProperty(nameof(Gear3)), this, BlockEvents.All);
+            var gearIndex = rng.Next(0, gears.Count);
+            UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear3)), this, BlockEvents.AllExceptUpdate);
+            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 3)
         {
-            var gear = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY)?.Length ?? 0));
-            UndoRedoSystem.DoValueChange(gear, this.GetType().GetProperty(nameof(Gear4)), this, BlockEvents.All);
+            var gearIndex = rng.Next(0, gears.Count);
+            UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear4)), this, BlockEvents.AllExceptUpdate);
+            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
         }
 
-        UndoRedoSystem.DoValueChange(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
 
+        //TODO: might want to change the anti duplicate behaviour for the emotes
+        var tauntIndex = rng.Next(0, taunts.Count);
+        UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt1)), this, BlockEvents.AllExceptUpdate);
+        taunts.RemoveAt(tauntIndex);
+        tauntIndex = rng.Next(0, taunts.Count);
+        UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt2)), this, BlockEvents.AllExceptUpdate);
+        taunts.RemoveAt(tauntIndex);
+        tauntIndex = rng.Next(0, taunts.Count);
+        UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt3)), this, BlockEvents.AllExceptUpdate);
+        taunts.RemoveAt(tauntIndex);
+        tauntIndex = rng.Next(0, taunts.Count);
+        UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt4)), this, BlockEvents.AllExceptUpdate);
+        taunts.RemoveAt(tauntIndex);
+        tauntIndex = rng.Next(0, taunts.Count);
+        UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt5)), this, BlockEvents.AllExceptUpdate);
+        taunts.RemoveAt(tauntIndex);
+        tauntIndex = rng.Next(0, taunts.Count);
+        UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt6)), this, BlockEvents.AllExceptUpdate);
+        taunts.RemoveAt(tauntIndex);
+        tauntIndex = rng.Next(0, taunts.Count);
+        UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt7)), this, BlockEvents.AllExceptUpdate);
+        taunts.RemoveAt(tauntIndex);
+        tauntIndex = rng.Next(0, taunts.Count);
+        UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt8)), this, BlockEvents.AllExceptUpdate);
+        taunts.RemoveAt(tauntIndex);
+
+        var depotIndex = rng.Next(0, depots.Count);
+        UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot1)), this, BlockEvents.AllExceptUpdate);
+        depots.RemoveAt(depotIndex);
+        depotIndex = rng.Next(0, depots.Count);
+        UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot2)), this, BlockEvents.AllExceptUpdate);
+        depots.RemoveAt(depotIndex);
+        depotIndex = rng.Next(0, depots.Count);
+        UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot3)), this, BlockEvents.AllExceptUpdate);
+        depots.RemoveAt(depotIndex);
+        depotIndex = rng.Next(0, depots.Count);
+        UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot4)), this, BlockEvents.AllExceptUpdate);
+        depots.RemoveAt(depotIndex);
+        depotIndex = rng.Next(0, depots.Count);
+        UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot5)), this, BlockEvents.AllExceptUpdate);
+        depots.RemoveAt(depotIndex);
+
+        UndoRedoSystem.DoValueChange(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
         UndoRedoSystem.EndUndoRecord();
     }
 
