@@ -629,35 +629,42 @@ public sealed class BLRClient : INotifyPropertyChanged
         else if(!options.Server.AllowAdvanced)
         {
             var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
-            bool isAdvanced = false;
+            bool isAdvanced = true;
 
-            foreach (var loadout in diskLoadout)
+            if (diskLoadout is not null)
             {
-                if (loadout.IsAdvanced)
+                isAdvanced = false;
+                foreach (var loadout in diskLoadout)
                 {
-                    isAdvanced = true;
+                    if (IsAdvanced(loadout.GetLoadout()))
+                    {
+                        isAdvanced = true;
+                    }
                 }
             }
 
             if (isAdvanced)
             {
-                isAdvanced = false;
                 var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
                 if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
                 {
-                    if (currentlyAppliedLoadout.BLR.IsAdvanced.Is) isAdvanced = true;
-                    if (isAdvanced)
-                    {
-                        LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!", "Warning");
-                        return;
-                    }
-                    else
-                    {
-                        currentlyAppliedLoadout.ApplyLoadout(this);
-                    }
+                    LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!", "Warning");
+                    return;
                 }
                 else
                 {
+                    isAdvanced = false;
+                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout1)) isAdvanced = true;
+                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout2)) isAdvanced = true;
+                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout3)) isAdvanced = true;
+
+                    if (isAdvanced)
+                    {
+                        currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
+                        LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!", "Warning");
+                        return;
+                    }
+
                     currentlyAppliedLoadout.ApplyLoadout(this);
                 }
 
@@ -668,6 +675,62 @@ public sealed class BLRClient : INotifyPropertyChanged
         string launchArgs = options.Server.IPAddress + ':' + options.Server.Port;
         launchArgs += $"?Name={options.UserName}";
         StartProcess(launchArgs, false, false, null, options.Server);
+    }
+
+    public static bool IsAdvanced(BLRLoadout? loadout)
+    {
+        if (loadout is null) return false;
+        if (IsAdvanced(loadout.Primary)) return true;
+        if (IsAdvanced(loadout.Secondary)) return true;
+
+        if (!(loadout.Helmet?.IsValidFor(null) ?? false)) return true;
+        if (!(loadout.UpperBody?.IsValidFor(null) ?? false)) return true;
+        if (!(loadout.LowerBody?.IsValidFor(null) ?? false)) return true;
+
+        if (!(loadout.Tactical?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Trophy?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Avatar?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.BodyCamo?.IsValidFor(null) ?? false)) return true;
+
+        if (!(loadout.Gear1?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Gear2?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Gear3?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Gear4?.IsValidFor(null) ?? true)) return true;
+
+        if (loadout.HasDuplicatedGear) return true;
+
+        if (!(loadout.Depot1?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Depot2?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Depot3?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Depot4?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Depot5?.IsValidFor(null) ?? true)) return true;
+
+        if (!(loadout.Taunt1?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Taunt2?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Taunt3?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Taunt4?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Taunt5?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Taunt6?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Taunt7?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Taunt8?.IsValidFor(null) ?? true)) return true;
+        return false;
+    }
+
+    public static bool IsAdvanced(BLRWeapon? weapon)
+    {
+        if(weapon is null || weapon.Reciever is null) return true;
+        if (!(weapon.Reciever?.IsValidFor(null) ?? false)) return true;
+        if (!(weapon.Barrel?.IsValidFor(weapon.Reciever) ?? true)) return true;
+        if (!(weapon.Muzzle?.IsValidFor(weapon.Reciever) ?? true)) return true;
+        if (!(weapon.Grip?.IsValidFor(weapon.Reciever) ?? true)) return true;
+        if (!(weapon.Camo?.IsValidFor(weapon.Reciever) ?? false)) return true;
+        if (!(weapon.Magazine?.IsValidFor(weapon.Reciever) ?? false)) return true;
+        if (!(weapon.Ammo?.IsValidFor(weapon.Reciever) ?? false)) return true;
+        if (!(weapon.Tag?.IsValidFor(weapon.Reciever) ?? true)) return true;
+        if (!(weapon.Stock?.IsValidFor(weapon.Reciever) ?? true)) return true;
+        if (!(weapon.Scope?.IsValidFor(weapon.Reciever) ?? false)) return true;
+        if (!(weapon.Skin?.IsValidFor(weapon.Reciever) ?? true)) return true;
+        return false;
     }
 
     public static bool ValidLoadout(BLRProfile profile, BLRServer server, out string message)

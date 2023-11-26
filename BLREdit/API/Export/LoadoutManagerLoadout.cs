@@ -1,11 +1,14 @@
 ﻿using BLREdit.Import;
 using BLREdit.UI.Views;
 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Threading;
+using System.Windows.Controls;
+
 namespace BLREdit.Export;
 
 public sealed class LoadoutManagerLoadout
 {
-    public bool IsAdvanced { get; set; } = false;
     public LoadoutManagerWeapon? Primary { get; set; }
     public LoadoutManagerWeapon? Secondary { get; set; }
     public LoadoutManagerGear? Gear { get; set; }
@@ -16,9 +19,8 @@ public sealed class LoadoutManagerLoadout
     public LoadoutManagerLoadout()
     {}
 
-    public LoadoutManagerLoadout(BLRLoadout loadout, bool isAdvanced)
+    public LoadoutManagerLoadout(BLRLoadout loadout)
     {
-        IsAdvanced = isAdvanced;
         Primary = new(loadout.Primary);
         Secondary = new(loadout.Secondary);
         Gear = new(loadout);
@@ -37,5 +39,42 @@ public sealed class LoadoutManagerLoadout
         Depot[2] = BLRItem.GetLMID(loadout.Depot3);
         Depot[3] = BLRItem.GetLMID(loadout.Depot4);
         Depot[4] = BLRItem.GetLMID(loadout.Depot5);
+    }
+
+    public BLRLoadout GetLoadout()
+    {
+        return new BLRLoadout(null)
+        {
+            Primary = this.Primary.GetWeapon(true),
+            Secondary = this.Secondary.GetWeapon(false),
+
+            Helmet = ImportSystem.GetItemByLMIDAndType(ImportSystem.HELMETS_CATEGORY, Gear.Helmet),
+            UpperBody = ImportSystem.GetItemByLMIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, Gear.UpperBody),
+            LowerBody = ImportSystem.GetItemByLMIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, Gear.LowerBody),
+            Tactical = ImportSystem.GetItemByLMIDAndType(ImportSystem.TACTICAL_CATEGORY, Gear.Tactical),
+            Trophy = ImportSystem.GetItemByLMIDAndType(ImportSystem.BADGES_CATEGORY, Gear.Badge),
+            BodyCamo = ImportSystem.GetItemByLMIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Gear.BodyCamo),
+            Avatar = ImportSystem.GetItemByLMIDAndType(ImportSystem.AVATARS_CATEGORY, Gear.Avatar),
+
+            Gear1 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.Gear_R1),
+            Gear2 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.Gear_R2),
+            Gear3 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.Gear_L1),
+            Gear4 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.Gear_L2),
+
+            Depot1 = ImportSystem.GetItemByLMIDAndType(ImportSystem.SHOP_CATEGORY, Depot[0]),
+            Depot2 = ImportSystem.GetItemByLMIDAndType(ImportSystem.SHOP_CATEGORY, Depot[1]),
+            Depot3 = ImportSystem.GetItemByLMIDAndType(ImportSystem.SHOP_CATEGORY, Depot[2]),
+            Depot4 = ImportSystem.GetItemByLMIDAndType(ImportSystem.SHOP_CATEGORY, Depot[3]),
+            Depot5 = ImportSystem.GetItemByLMIDAndType(ImportSystem.SHOP_CATEGORY, Depot[4]),
+
+            Taunt1 = ImportSystem.GetItemByLMIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[0]),
+            Taunt2 = ImportSystem.GetItemByLMIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[1]),
+            Taunt3 = ImportSystem.GetItemByLMIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[2]),
+            Taunt4 = ImportSystem.GetItemByLMIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[3]),
+            Taunt5 = ImportSystem.GetItemByLMIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[4]),
+            Taunt6 = ImportSystem.GetItemByLMIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[5]),
+            Taunt7 = ImportSystem.GetItemByLMIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[6]),
+            Taunt8 = ImportSystem.GetItemByLMIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[7])
+        };
     }
 }

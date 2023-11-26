@@ -497,7 +497,7 @@ public sealed partial class MainWindow : Window
                 }
                 var directory = $"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\";
                 Directory.CreateDirectory(directory);
-                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout1, MainView.Profile.BLR.IsAdvanced.Is), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout2, MainView.Profile.BLR.IsAdvanced.Is), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout3, MainView.Profile.BLR.IsAdvanced.Is) });
+                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout1), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout2), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout3) });
                 ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
                 MainView.Profile.Shareable.LastApplied = DateTime.Now;
                 DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;

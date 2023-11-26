@@ -262,7 +262,7 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
         {
             var directory = $"{client.ConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
-            IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(BLR.Loadout1, BLR.IsAdvanced.Is), new LoadoutManagerLoadout(BLR.Loadout2, BLR.IsAdvanced.Is), new LoadoutManagerLoadout(BLR.Loadout3, BLR.IsAdvanced.Is) });
+            IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(BLR.Loadout1), new LoadoutManagerLoadout(BLR.Loadout2), new LoadoutManagerLoadout(BLR.Loadout3) });
             MainWindow.ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
             MainWindow.Instance.ProfileComboBox.SelectedIndex = MainWindow.Instance.ProfileComboBox.Items.IndexOf(Shareable);
             DataStorage.Settings.CurrentlyAppliedLoadout = MainWindow.Instance.ProfileComboBox.SelectedIndex;

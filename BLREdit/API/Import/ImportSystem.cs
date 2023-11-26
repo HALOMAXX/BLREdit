@@ -554,6 +554,19 @@ public static class ImportSystem
         }
     }
 
+    public static BLRItem? GetItemByLMIDAndType(string Type, int LMID)
+    {
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].LMID == LMID) return items[i];
+                if (items[i].LMID == -69 && i == LMID) return items[i];
+            }
+        }
+        return null;
+    }
+
     public static BLRItem? GetItemByUIDAndType(string Type, int UID)
     {
         if (string.IsNullOrEmpty(Type)) return null;

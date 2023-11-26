@@ -101,4 +101,22 @@ public sealed class LoadoutManagerWeapon
             }
         }
     }
+
+    public BLRWeapon GetWeapon(bool isPrimary)
+    {
+        return new BLRWeapon(isPrimary)
+        {
+            Reciever = ImportSystem.GetItemByLMIDAndType(isPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Receiver),
+            Barrel = ImportSystem.GetItemByLMIDAndType(ImportSystem.BARRELS_CATEGORY, Barrel),
+            Muzzle = ImportSystem.GetItemByLMIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle),
+            Grip = ImportSystem.GetItemByLMIDAndType(ImportSystem.GRIPS_CATEGORY, Grip),
+            Magazine = ImportSystem.GetItemByLMIDAndType(ImportSystem.MAGAZINES_CATEGORY, Magazine),
+            Ammo = ImportSystem.GetItemByLMIDAndType(ImportSystem.AMMO_CATEGORY, Ammo),
+            Tag = ImportSystem.GetItemByLMIDAndType(ImportSystem.HANGERS_CATEGORY, Hanger),
+            Stock = ImportSystem.GetItemByLMIDAndType(ImportSystem.STOCKS_CATEGORY, Stock),
+            Scope = ImportSystem.GetItemByLMIDAndType(ImportSystem.SCOPES_CATEGORY, Scope),
+            Camo = ImportSystem.GetItemByLMIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, CamoIndex),
+            Skin = ImportSystem.GetItemByLMIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, Skin)
+        };
+    }
 }
