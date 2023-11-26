@@ -122,6 +122,16 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     [BLRItem(ImportSystem.BADGES_CATEGORY)] public BLRItem? Trophy { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
     #endregion Gear
 
+    [BLRItem(ImportSystem.EMBLEM_ALPHA_CATEGORY)] public BLRItem? EmblemAlpha { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.EMBLEM_BACKGROUND_CATEGORY)] public BLRItem? EmblemBackground { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.EMBLEM_COLOR_CATEGORY)] public BLRItem? EmblemColor { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.EMBLEM_ICON_CATEGORY)] public BLRItem? EmblemIcon { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.EMBLEM_SHAPE_CATEGORY)] public BLRItem? EmblemShape { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+
+    [BLRItem(ImportSystem.ANNOUNCER_VOICE_CATEGORY)] public BLRItem? AnnouncerVoice { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.PLAYER_VOICE_CATEGORY)] public BLRItem? PlayerVoice { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    [BLRItem(ImportSystem.TITLES_CATEGORY)] public BLRItem? Title { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+
     #region Depot
     [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot1 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 0)); } }
     [BLRItem(ImportSystem.SHOP_CATEGORY)] public BLRItem? Depot2 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, 1)); } }

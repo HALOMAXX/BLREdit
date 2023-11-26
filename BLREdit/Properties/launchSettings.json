@@ -11,6 +11,10 @@
       "commandName": "Project",
       "commandLineArgs": "-validateWeapons"
     },
+    "UpdateNameID": {
+      "commandName": "Project",
+      "commandLineArgs": "-importNewUIDs"
+    },
     "Package": {
       "commandName": "Project",
       "commandLineArgs": "-package"

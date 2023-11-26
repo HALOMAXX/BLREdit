@@ -20,26 +20,6 @@ public sealed class ExportSystem
     private static DirectoryInfo? _currentBackupFolder = null;
     public static DirectoryInfo CurrentBackupFolder { get { _currentBackupFolder ??= Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\"); return _currentBackupFolder; } }
 
-    static ExportSystem()
-    {
-        //App.StartSTATask(SlowLoadProfiles);
-
-        //var thread = new Thread(SlowLoadProfiles)
-        //{ Name = $"{nameof(SlowLoadProfiles)}", IsBackground = true, Priority = ThreadPriority.Lowest };
-        //App.AppThreads.Add(thread);
-        //thread.Start();
-    }
-
-    public static void SlowLoadProfiles()
-    {
-        LoggingSystem.Log("Started loading all Profiles");
-        for (int i = 0; i < DataStorage.Loadouts.Count; i++)
-        {
-            var blr = DataStorage.Loadouts[i].BLR;
-        }
-        LoggingSystem.Log("Finished loading all Profiles");
-    }
-
     public static void CopyMagiCowToClipboard(BLRLoadoutStorage loadout)
     {
         var magiProfile = new MagiCowsProfile { PlayerName = loadout.Shareable.Name };
@@ -72,7 +52,6 @@ public sealed class ExportSystem
             }
         };
         clipboardExecutable.Start();
-
         clipboardExecutable.StandardInput.Write(value);
         clipboardExecutable.StandardInput.Close();
     }
@@ -264,8 +243,11 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
             Directory.CreateDirectory(directory);
             IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(BLR.Loadout1), new LoadoutManagerLoadout(BLR.Loadout2), new LoadoutManagerLoadout(BLR.Loadout3) });
             MainWindow.ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
-            MainWindow.Instance.ProfileComboBox.SelectedIndex = MainWindow.Instance.ProfileComboBox.Items.IndexOf(Shareable);
-            DataStorage.Settings.CurrentlyAppliedLoadout = MainWindow.Instance.ProfileComboBox.SelectedIndex;
+            if (MainWindow.Instance is not null)
+            {
+                MainWindow.Instance.ProfileComboBox.SelectedIndex = MainWindow.Instance.ProfileComboBox.Items.IndexOf(Shareable);
+                DataStorage.Settings.CurrentlyAppliedLoadout = MainWindow.Instance.ProfileComboBox.SelectedIndex;
+            }
             BLR.IsChanged = false;
         }
     }

@@ -1,24 +1,19 @@
 ﻿using System.Collections.Generic;
-using System.Windows.Media.Imaging;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using BLREdit.UI.Views;
 using BLREdit.UI;
-using BLREdit.Export;
-using System.Text.Json;
-using System;
-using Gameloop.Vdf.Linq;
-using System.Buffers.Text;
 using BLREdit.Properties;
-using System.Globalization;
 
 namespace BLREdit.Import;
 
 [JsonConverter(typeof(JsonBLRItemConverter))]
 public sealed class BLRItem : INotifyPropertyChanged
 {
+    public const string UID_FORMAT = "000000";
+
     #region Events
     public event PropertyChangedEventHandler? PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
@@ -41,19 +36,18 @@ public sealed class BLRItem : INotifyPropertyChanged
     }
     #endregion Overrides
     public int LMID { get; set; } = -69;
-    public int NameID { get; set; } = -1;
     [JsonIgnore] public string? Category { get; set; }
     public string? DescriptorName { get; set; }
-    public string Icon { get; set; } = "";
+    public string Icon { get; set; } = string.Empty;
     public string? Name { get; set; }
     public double CP { get; set; } = 0;
     public int AmmoType { get; set; } = -1;
-    [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(NameID.ToString("000000")); } }
+    [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(UID.ToString(UID_FORMAT)); } }
     [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 
     public BLRPawnModifiers? PawnModifiers { get; set; }
     public List<string>? SupportedMods { get; set; }
-    [JsonIgnore] public string DisplayTooltip { get { return ItemTooltips.ResourceManager.GetString(NameID.ToString("000000")); } }
+    [JsonIgnore] public string DisplayTooltip { get { return ItemTooltips.ResourceManager.GetString(UID.ToString(UID_FORMAT)); } }
     public int UID { get; set; }
     public List<int>? ValidFor { get; set; }
     public BLRWeaponModifiers? WeaponModifiers { get; set; }

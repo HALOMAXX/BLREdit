@@ -6,15 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
-
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace BLREdit.Import;
 
@@ -42,6 +37,16 @@ public static class ImportSystem
     public const string EMOTES_CATEGORY = "emotes";
     public const string SHOP_CATEGORY = "shop";
     public const string PRIMARY_SKIN_CATEGORY = "primarySkins";
+    public const string ANNOUNCER_VOICE_CATEGORY = "dialogPackAnnouncers";
+    public const string PLAYER_VOICE_CATEGORY = "dialogPackPlayers";
+
+    public const string EMBLEM_ALPHA_CATEGORY = "emblem_alpha";
+    public const string EMBLEM_BACKGROUND_CATEGORY = "emblem_background";
+    public const string EMBLEM_COLOR_CATEGORY = "emblem_color";
+    public const string EMBLEM_ICON_CATEGORY = "emblem_icon";
+    public const string EMBLEM_SHAPE_CATEGORY = "emblem_shape";
+
+    public const string TITLES_CATEGORY = "titles";
 
     public static List<FoxIcon> ScopePreviews { get; } = new();
 

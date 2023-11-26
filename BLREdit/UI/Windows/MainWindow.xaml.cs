@@ -31,7 +31,8 @@ namespace BLREdit.UI;
 public sealed partial class MainWindow : Window
 {
     public static readonly BLRClientWindow ClientWindow = new();
-    public static MainWindowView MainView { get; } = new();
+    static MainWindowView? mainWindowView = null;
+    public static MainWindowView MainView { get { mainWindowView ??= new(); return mainWindowView; } }
     public static MainWindow? Instance { get; private set; } = null;
 
     private readonly string[] Args;
@@ -340,6 +341,33 @@ public sealed partial class MainWindow : Window
                     break;
                 case "Avatar":
                     SetItemList(ImportSystem.AVATARS_CATEGORY);
+                    break;
+
+                case "EmblemAlpha":
+                    SetItemList(ImportSystem.EMBLEM_ALPHA_CATEGORY);
+                    break;
+                case "EmblemBackground":
+                    SetItemList(ImportSystem.EMBLEM_BACKGROUND_CATEGORY);
+                    break;
+                case "EmblemColor":
+                    SetItemList(ImportSystem.EMBLEM_COLOR_CATEGORY);
+                    break;
+                case "EmblemIcon":
+                    SetItemList(ImportSystem.EMBLEM_ICON_CATEGORY);
+                    break;
+                case "EmblemShape":
+                    SetItemList(ImportSystem.EMBLEM_SHAPE_CATEGORY);
+                    break;
+
+                case "AnnouncerVoice":
+                    SetItemList(ImportSystem.ANNOUNCER_VOICE_CATEGORY);
+                    break;
+                case "PlayerVoice":
+                    SetItemList(ImportSystem.PLAYER_VOICE_CATEGORY);
+                    break;
+
+                case "Title":
+                    SetItemList(ImportSystem.TITLES_CATEGORY);
                     break;
 
                 case "Gear1":

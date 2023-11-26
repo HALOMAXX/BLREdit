@@ -39,5 +39,31 @@
         <Border DataContext="{Binding Path=Depot5}" Height="130" Width="130" Margin="130,560,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
+
+        <Label Margin="0,690,0,0" Content="New" Style="{StaticResource DescriptorLabel}"/>
+        <Border DataContext="{Binding Path=EmblemAlpha}" Height="130" Width="130" Margin="0,720,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=EmblemBackground}" Height="130" Width="130" Margin="130,720,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=EmblemColor}" Height="130" Width="130" Margin="260,720,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=EmblemIcon}" Height="130" Width="130" Margin="0,850,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=EmblemShape}" Height="130" Width="130" Margin="130,850,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=AnnouncerVoice}" Height="130" Width="130" Margin="0,980,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=PlayerVoice}" Height="130" Width="130" Margin="130,980,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=Title}" Height="130" Width="130" Margin="260,980,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
     </Grid>
 </local:EquipmentControl>

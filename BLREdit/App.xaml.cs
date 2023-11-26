@@ -23,6 +23,9 @@ using System.Linq;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -57,6 +60,16 @@ public partial class App : System.Windows.Application
 
     public static bool ForceStart { get; private set; }
 
+    static void AddNewItemList(string name, KeyValuePair<string, JsonNode?> array)
+    {
+        var newList = new ObservableCollection<BLRItem>();
+        foreach (var item in array.Value.AsObject())
+        {
+            newList.Add(new BLRItem() { UID = int.Parse(item.Key), Name = item.Value.ToString() });
+        }
+        ImportSystem.ItemLists.Add(name, newList);
+    }
+
     private void Application_Startup(object sender, StartupEventArgs e)
     {
         string[] argList = e.Args;
@@ -74,6 +87,102 @@ public partial class App : System.Windows.Application
         if (argDict.TryGetValue("-forceStart", out var _))
         {
             ForceStart = true;
+        }
+
+        if (argDict.TryGetValue("-importNewUIDs", out var _))
+        {
+            ImportSystem.Initialize();
+
+            //var misc = JsonNode.Parse(File.ReadAllText("Assets\\json\\misc.json"));
+            //var weapons = JsonNode.Parse(File.ReadAllText("Assets\\json\\weapons.json"));
+            //var gear = JsonNode.Parse(File.ReadAllText("Assets\\json\\gear.json"));
+
+            //foreach (var obj in misc.AsObject())
+            //{
+            //    switch (obj.Key)
+            //    {
+            //        case "dialogPackAnnouncers":
+            //            AddNewItemList("dialogPackAnnouncers", obj);
+            //            break;
+            //        case "dialogPackPlayers":
+            //            AddNewItemList("dialogPackPlayers", obj);
+            //            break;
+            //        case "emblem":
+            //            foreach (var subObj in obj.Value.AsObject())
+            //            {
+            //                switch (subObj.Key)
+            //                {
+            //                    case "alpha":
+            //                        AddNewItemList("emblem_alpha", subObj);
+            //                        break;
+            //                    case "background":
+            //                        AddNewItemList("emblem_background", subObj);
+            //                        break;
+            //                    case "color":
+            //                        AddNewItemList("emblem_color", subObj);
+            //                        break;
+            //                    case "icon":
+            //                        AddNewItemList("emblem_icon", subObj);
+            //                        break;
+            //                    case "shape":
+            //                        AddNewItemList("emblem_shape", subObj);
+            //                        break;
+            //                }
+            //            }
+            //            break;
+            //        case "titles":
+            //            AddNewItemList("titles", obj);
+            //            break;
+            //    }
+            //}
+
+            var NameList = new Dictionary<BLRItem, string>();
+            var TooltipList = new Dictionary<BLRItem, string>();
+
+            foreach (var category in ImportSystem.ItemLists)
+            {
+                foreach (var item in category.Value)
+                {
+                    if (!string.IsNullOrEmpty(item.DisplayName))
+                    {
+                        NameList.Add(item, item.DisplayName);
+                    }
+                    else
+                    {
+                        NameList.Add(item, item.Name ?? string.Empty);
+                    }
+
+                    if (!string.IsNullOrEmpty(item.DisplayTooltip))
+                    {
+                        TooltipList.Add(item, item.DisplayTooltip);
+                    }
+                    else
+                    {
+                        TooltipList.Add(item, string.Empty);
+                    }
+                }
+            }
+
+            using (ResXResourceWriter resx = new("ItemNames.resx"))
+            {
+                foreach (var item in NameList)
+                {
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                    resx.AddResource(node);
+                }
+            }
+            using (ResXResourceWriter resx = new("ItemTooltips.resx"))
+            {
+                foreach (var item in TooltipList)
+                {
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                    resx.AddResource(node);
+                }
+            }
+
+            IOResources.SerializeFile("itemList.json", ImportSystem.ItemLists);
+            Application.Current.Shutdown();
+            return;
         }
 
         if (argDict.TryGetValue("-validateWeapons", out var _))
@@ -312,23 +421,19 @@ public partial class App : System.Windows.Application
                 }
             }
 
-            GenerateNameIDs();
-
-            //TestNameDuplication();
-
-            using (ResXResourceWriter resx = new("newItemNames.resx"))
+            using (ResXResourceWriter resx = new("ItemNames.resx"))
             {
                 foreach (var item in NameList)
                 {
-                    var node = new ResXDataNode(item.Key.NameID.ToString("000000"), item.Value) { Comment = item.Key.Category };
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
                     resx.AddResource(node);
                 }
             }
-            using (ResXResourceWriter resx = new("newItemTooltips.resx"))
+            using (ResXResourceWriter resx = new("ItemTooltips.resx"))
             {
                 foreach (var item in TooltipList)
                 {
-                    var node = new ResXDataNode(item.Key.NameID.ToString("000000"), item.Value) { Comment = item.Key.Category };
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
                     resx.AddResource(node);
                 }
             }
@@ -352,83 +457,6 @@ public partial class App : System.Windows.Application
         LoggingSystem.Log($"[MainWindow]: Update Check took {watch.ElapsedMilliseconds}ms");
 
         new MainWindow(argList).Show();
-    }
-
-    private static void GenerateNameIDs(int categoryOffset = 1000)
-    {
-        int categoryIndex = categoryOffset;
-
-        foreach (var category in ImportSystem.ItemLists)
-        {
-            int itemIndex = 0;
-            foreach (var item in category.Value)
-            {
-                item.NameID = categoryIndex + itemIndex;
-                itemIndex++;
-            }
-            categoryIndex += categoryOffset;
-        }
-    }
-
-    private static void TestNameDuplication()
-    {
-        LoggingSystem.Log("Preparing Name Duplication Lists");
-        Dictionary<int, List<BLRItem>> NameIDList = new();
-        Dictionary<string?, List<BLRItem>> NameList = new();
-
-        foreach (var cat in ImportSystem.ItemLists)
-        {
-            foreach (var item in cat.Value)
-            {
-                if (!NameIDList.ContainsKey(item.NameID))
-                {
-                    NameIDList.Add(item.NameID, new() { item });
-                }
-                else
-                {
-                    NameIDList[item.NameID].Add(item);
-                }
-
-                if (!NameList.ContainsKey(item.Name))
-                {
-                    NameList.Add(item.Name, new() { item });
-                }
-                else
-                {
-                    NameList[item.Name].Add(item);
-                }
-
-            }
-        }
-
-        LoggingSystem.Log("Testing NameID Duplicates");
-        foreach (var itemList in NameIDList)
-        {
-            if (itemList.Value.Count > 1)
-            {
-                string items = $"[{itemList.Key}]:";
-                foreach (var item in itemList.Value)
-                {
-                    items += $" {item.Name},";
-                }
-                LoggingSystem.Log(items);
-            }
-        }
-
-        LoggingSystem.Log("Testing Name Duplicates");
-        foreach (var itemList in NameList)
-        {
-            if (itemList.Value.Count > 1)
-            {
-                string items = $"[{itemList.Key}]:";
-                foreach (var item in itemList.Value)
-                {
-                    items += $" {item.NameID},";
-                    item.NameID = itemList.Value[0].NameID;
-                }
-                LoggingSystem.Log(items);
-            }
-        }
     }
 
     private void Application_Exit(object sender, ExitEventArgs e)
