@@ -44,6 +44,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ContentWithTargetPath Remove="Assets\dlls\BLRevive.dll" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Include="BLREdit Logo (DraagonLizzard).ico" />
 	</ItemGroup>
 

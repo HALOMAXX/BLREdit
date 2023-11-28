@@ -11,8 +11,8 @@ namespace BLREdit.Export;
 
 public sealed class MagiCowsWeapon : IBLRWeapon
 {
-    [JsonIgnore] private string reciever = "Assault Rifle";
-    public string Receiver { get { return reciever; } set { if (reciever != value) { reciever = value; isDirty = true; } } }
+    [JsonIgnore] private string receiver = "Assault Rifle";
+    public string Receiver { get { return receiver; } set { if (receiver != value) { receiver = value; isDirty = true; } } }
 
     [JsonIgnore] private int muzzle = 8;
     public int Muzzle { get { return muzzle; } set { if (muzzle != value) { muzzle = value; isDirty = true; } } }
@@ -88,7 +88,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         return true;
     }
 
-    public BLRItem? GetReciever()
+    public BLRItem? GetReceiver()
     {
         var primary = ImportSystem.GetItemByNameAndType(ImportSystem.PRIMARY_CATEGORY, Receiver);
         if (primary is not null)
@@ -162,7 +162,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         return ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, Grip);
     }
 
-    public static MagiCowsWeapon? GetDefaultSetupOfReciever(BLRItem? item)
+    public static MagiCowsWeapon? GetDefaultSetupOfReceiver(BLRItem? item)
     {
         if (item is null) return null;
         var tuple = DefaultWeapons as ITuple;
@@ -180,7 +180,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
     public void Read(BLRWeapon weapon)
     {
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
-        weapon.Reciever = GetReciever();
+        weapon.Receiver = GetReceiver();
         weapon.Barrel = GetBarrel();
         weapon.Magazine = GetMagazine();
         weapon.Muzzle = GetMuzzle();
@@ -196,7 +196,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
 
     public void Write(BLRWeapon weapon)
     {
-        Receiver = weapon.Reciever?.Name ?? "Assault Rifle";
+        Receiver = weapon.Receiver?.Name ?? "Assault Rifle";
         Barrel = weapon.Barrel?.Name ?? "No Barrel Mod";
         Scope = weapon.Scope?.Name ?? "No Optic Mod";
         Stock = weapon.Stock?.Name ?? "No Stock";
@@ -214,7 +214,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
     {
         return new ShareableWeapon()
         {
-            Reciever = BLRItem.GetMagicCowsID(GetReciever()),
+            Receiver = BLRItem.GetMagicCowsID(GetReceiver()),
             Barrel = BLRItem.GetMagicCowsID(GetBarrel()),
             Scope = BLRItem.GetMagicCowsID(GetScope()),
             Stock = BLRItem.GetMagicCowsID(GetStock()),

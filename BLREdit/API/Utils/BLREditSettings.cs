@@ -26,10 +26,14 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     #region Settings
     public int SelectedLoadout { get; set; } = 0;
     [JsonIgnore] public int CurrentlyAppliedLoadout { get { return SelectedLoadout; } set { SelectedLoadout = value; OnPropertyChanged(); } }
-    public int SelectedClient { get; set; } = 0;
-    [JsonIgnore] public BLRClient? DefaultClient { get { if (SelectedClient >= DataStorage.GameClients.Count || SelectedClient < 0) { return null; } else { return DataStorage.GameClients[SelectedClient]; } } set { if (value is not null) { SelectedClient = DataStorage.GameClients.IndexOf(value); } else { SelectedClient = 0; } OnPropertyChanged(); } }
-    public int SelectedServer { get; set; } = 0;
-    [JsonIgnore] public BLRServer? DefaultServer { get { if (SelectedServer >= DataStorage.ServerList.Count || SelectedServer < 0) { return null; } else { return DataStorage.ServerList[SelectedServer]; } } set { if (value is not null) { SelectedServer = DataStorage.ServerList.IndexOf(value); } else { SelectedServer = 0; } OnPropertyChanged(); } }
+    public int SelectedClient { get; set; } = -1;
+    [JsonIgnore] public BLRClient? DefaultClient { 
+        get { if (SelectedClient >= 0 && SelectedClient < DataStorage.GameClients.Count) { return DataStorage.GameClients[SelectedClient]; } return null; } 
+        set { SelectedClient = DataStorage.FindIn(DataStorage.GameClients, value); OnPropertyChanged(); } }
+    public int SelectedServer { get; set; } = -1;
+    [JsonIgnore] public BLRServer? DefaultServer { 
+        get { if (SelectedServer >= 0 && SelectedServer < DataStorage.ServerList.Count) { return DataStorage.ServerList[SelectedServer]; } return null; } 
+        set { SelectedServer = DataStorage.FindIn(DataStorage.ServerList, value); OnPropertyChanged(); } }
     public UIBool EnableAPI { get; set; } = new(true);
     public UIBool EnableFramerateSmoothing { get; set; } = new(true);
     public UIBool FramerateSmoothingToDisplayRefreshrate { get; set; } = new(false); //TODO: Change to false before release
@@ -83,7 +87,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     private static void ApplyEvent()
     {
-        //DataStorage.Settings.AdvancedModding.PropertyChanged += DataStorage.Settings.AdvancedModdingChanged;
         DataStorage.Settings.ShowHiddenServers.PropertyChanged += DataStorage.Settings.ShowHiddenServersChanged;
     }
 
@@ -107,19 +110,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         return new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server= DataStorage.Settings.DefaultServer ?? new() };
     }
 
-    public static void SyncDefaultClient()
-    {
-        if(DataStorage.GameClients.Count <= 0 || DataStorage.Settings.DefaultClient is null) { return; }
-        foreach (var client in DataStorage.GameClients)
-        {
-            if (client.OriginalPath == DataStorage.Settings.DefaultClient.OriginalPath)
-            {
-                DataStorage.Settings.DefaultClient = client;
-                return;
-            }
-        }
-    }
-
     private void AdvancedModdingChanged(object sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == "Is")
@@ -136,18 +126,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     public static void Save()
     {
-        if (DataStorage.GameClients.Count > 0)
-        {
-            bool client = false;
-            foreach (var c in DataStorage.GameClients)
-            {
-                if (c.Equals(DataStorage.Settings.DefaultClient))
-                {
-                    client = true;
-                }
-            }
-            if (!client) { DataStorage.Settings.DefaultClient = null; }
-        }
         IOResources.SerializeFile($"{IOResources.SETTINGS_FILE}", DataStorage.Settings);
     }
 }

@@ -43,6 +43,15 @@ public static class DataStorage
     public static BLREditSettings Settings { get { lock (settingsLock) { _settings ??=  IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new(); } return _settings; } set { _settings = value; } }
     #endregion Properties
 
+    public static int FindIn<T>(IList<T> list, T item)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            if ((object)list[i] == (object)item) return i;
+        }
+        return -1;
+    }
+
     public static void Save()
     {
         DataSaving?.Invoke(null, EventArgs.Empty);

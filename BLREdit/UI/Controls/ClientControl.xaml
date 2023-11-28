@@ -17,10 +17,14 @@
             <Image Source="{Binding Path=ClientVersionPart2}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="74,0,0,0"/>
             <Image Source="{Binding Path=ClientVersionPart3}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="106,0,0,0"/>
             <Image Source="{Binding Path=ClientVersionPart4}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="138,0,0,0"/>
-            <TextBlock Text="{Binding Path=OriginalPath}" TextWrapping="Wrap" Foreground="#FF78AEBC" Margin="10,10,0,0" Width="418" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock Text="{Binding Path=OriginalPath}" TextWrapping="Wrap" Foreground="#FF78AEBC" Margin="8,6,0,0" Width="418" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <Button Width="64" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_ConfigureClient}" Command="{Binding Path=ModifyClientCommand}">
                 <Image Source="../Resources/settings.png"/>
             </Button>
+
+            <TextBlock Text="{Binding Path=PatchedFile.Name}" TextWrapping="Wrap" Foreground="#FFFFFFBC" Margin="10,44,0,0" Width="200" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            
+            <ToggleButton Content="Validate" ToolTip="Should the client be validate before launch.\nby default his is always on" Width="128" Height="32" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,148,0" IsChecked="{Binding Path=Validate.Is, Mode=TwoWay}"/>
             <Button Content="{x:Static p:Resources.btn_DefaultClient}" IsEnabled="{Binding Path=CurrentClient.IsNot}" Width="128" Height="32" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right" Command="{Binding Path=CurrentClientCommand}"/>
             <Button Name="BotMachButton" Content="{x:Static p:Resources.btn_StartBotMatch}" Width="128" Height="32" Margin="0,0,10,10" Command="{Binding Path=LaunchBotMatchCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <Button Name="TrainingButton" Content="{x:Static p:Resources.btn_StartTraining}" Width="128" Height="32" Margin="0,0,10,10" Command="{Binding Path=LaunchTrainingCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Visibility="Collapsed"/>

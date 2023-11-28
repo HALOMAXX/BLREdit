@@ -474,7 +474,7 @@ public sealed class ShareableWeapon : IBLRWeapon
     [JsonPropertyName("G1")] public int Grip { get; set; } = 0;
     [JsonPropertyName("M1")] public int Muzzle { get; set; } = 0;
     [JsonPropertyName("M2")] public int Magazine { get; set; } = 0;
-    [JsonPropertyName("R1")] public int Reciever { get; set; } = 1;
+    [JsonPropertyName("R1")] public int Receiver { get; set; } = 1;
     [JsonPropertyName("S1")] public int Scope { get; set; } = 0;
     [JsonPropertyName("S2")] public int Stock { get; set; } = 0;
     [JsonPropertyName("S3")] public int Skin { get; set; } = -1;
@@ -526,7 +526,7 @@ public sealed class ShareableWeapon : IBLRWeapon
             Grip = Grip,
             Magazine = Magazine,
             Muzzle = Muzzle,
-            Reciever = Reciever,
+            Receiver = Receiver,
             Scope = Scope,
             Skin = Skin,
             Stock = Stock,
@@ -538,7 +538,7 @@ public sealed class ShareableWeapon : IBLRWeapon
     {
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadWeapon)) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
-        weapon.Reciever = ImportSystem.GetItemByIDAndType(weapon.IsPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Reciever);
+        weapon.Receiver = ImportSystem.GetItemByIDAndType(weapon.IsPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Receiver);
         weapon.Barrel = ImportSystem.GetItemByIDAndType(ImportSystem.BARRELS_CATEGORY, Barrel);
         weapon.Muzzle = ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);
         weapon.Magazine = ImportSystem.GetItemByIDAndType(ImportSystem.MAGAZINES_CATEGORY, Magazine);
@@ -556,7 +556,7 @@ public sealed class ShareableWeapon : IBLRWeapon
     {
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteWeapon)) return;
         if (Profile is not null) { Profile.LastModified = DateTime.Now; }
-        Reciever = BLRItem.GetMagicCowsID(weapon.Reciever, -1);
+        Receiver = BLRItem.GetMagicCowsID(weapon.Receiver, -1);
         Barrel = BLRItem.GetMagicCowsID(weapon.Barrel, -1);
         Muzzle = BLRItem.GetMagicCowsID(weapon.Muzzle, -1);
         Magazine = BLRItem.GetMagicCowsID(weapon.Magazine, -1);

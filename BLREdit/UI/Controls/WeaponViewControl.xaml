@@ -34,7 +34,7 @@
                     <ColumnDefinition Width="64"/>
                     <ColumnDefinition Width="64"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="{Binding Path=Reciever.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToNotVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
+                <Image Source="{Binding Path=Receiver.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToNotVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
                 <Image Source="{Binding Path=Skin.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
                 <Image Source="{Binding Path=Camo.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
                 <Image Source="{Binding Path=Magazine.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>

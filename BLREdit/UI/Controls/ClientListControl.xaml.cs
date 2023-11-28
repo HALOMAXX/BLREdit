@@ -75,7 +75,7 @@ public partial class ClientListControl : UserControl
         dialog.ShowDialog();
         if (!string.IsNullOrEmpty(dialog.FileName))
         {
-            MainWindow.AddGameClient(new BLRClient() { OriginalPath = dialog.FileName });
+            DataStorage.GameClients.Add(new BLRClient() { OriginalPath = dialog.FileName });
         }
         MainWindow.CheckGameClients();
     }

@@ -32,7 +32,7 @@
             <Image Name="ScopePreviewImage" Source="{Binding Path=ScopePreview.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" ToolTip="{Binding Path=Scope.DisplayTooltip}" d:DataContext="{d:DesignInstance Type=views:BLRWeapon}" />
         </Border>
 
-        <Border Name="Reciever" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=RecieverVisibility}" DataContext="{Binding Path=Reciever}" DataContextChanged="Reciever_DataContextChanged" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Border Name="Receiver" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=ReceiverVisibility}" DataContext="{Binding Path=Receiver}" DataContextChanged="Receiver_DataContextChanged" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=SkinVisibility}" DataContext="{Binding Path=Skin}" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">

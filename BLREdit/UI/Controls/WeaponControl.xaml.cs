@@ -36,8 +36,8 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
     private BLRWeapon? CurrentWeapon { get; set; } = null;
 
-    private Visibility recieverVisibility = Visibility.Visible;
-    public Visibility RecieverVisibility { get { return recieverVisibility; } private set { recieverVisibility = value; OnPropertyChanged(); } }
+    private Visibility receiverVisibility = Visibility.Visible;
+    public Visibility ReceiverVisibility { get { return receiverVisibility; } private set { receiverVisibility = value; OnPropertyChanged(); } }
 
     private Visibility skinVisibility = Visibility.Collapsed;
     public Visibility SkinVisibility { get { return skinVisibility; } private set { skinVisibility = value; OnPropertyChanged(); } }
@@ -85,19 +85,19 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
             if (UIKeys.Keys[Key.LeftShift].Is)
             {
                 this.SkinVisibility = Visibility.Visible;
-                this.RecieverVisibility = Visibility.Collapsed;
+                this.ReceiverVisibility = Visibility.Collapsed;
             }
             else
             {
                 this.SkinVisibility = Visibility.Collapsed;
-                this.RecieverVisibility = Visibility.Visible;
+                this.ReceiverVisibility = Visibility.Visible;
             }
         }
     }
 
     public void SettingsChanged(object? sender, PropertyChangedEventArgs e)
     {
-        Reciever_DataContextChanged(sender, new DependencyPropertyChangedEventArgs());
+        Receiver_DataContextChanged(sender, new DependencyPropertyChangedEventArgs());
     }
 
     private void UserControl_DataContextChanged(object? sender, DependencyPropertyChangedEventArgs e)
@@ -150,9 +150,9 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
         }
     }
 
-    private void Reciever_DataContextChanged(object? sender, DependencyPropertyChangedEventArgs e)
+    private void Receiver_DataContextChanged(object? sender, DependencyPropertyChangedEventArgs e)
     {
-        if (DataContext is BLRWeapon weapon && weapon.Reciever is not null && weapon.Reciever.SupportedMods is not null)
+        if (DataContext is BLRWeapon weapon && weapon.Receiver is not null && weapon.Receiver.SupportedMods is not null)
         {
             if(CurrentWeapon is not null && CurrentWeapon.Loadout is not null && CurrentWeapon.Loadout.Profile is not null) CurrentWeapon.Loadout.Profile.IsAdvanced.PropertyChanged -= SettingsChanged;
 
@@ -160,47 +160,47 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
             if (CurrentWeapon is not null && CurrentWeapon.Loadout is not null && CurrentWeapon.Loadout.Profile is not null) CurrentWeapon.Loadout.Profile.IsAdvanced.PropertyChanged += SettingsChanged;
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.AMMO_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.AMMO_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { AmmoVisibility = Visibility.Visible; }
             else
             { AmmoVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.BARRELS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.BARRELS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { BarrelVisibility = Visibility.Visible; }
             else
             { BarrelVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.CAMOS_WEAPONS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.CAMOS_WEAPONS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { CamoVisibility = Visibility.Visible; }
             else
             { CamoVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.HANGERS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.HANGERS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { TagVisibility = Visibility.Visible; }
             else
             { TagVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.MAGAZINES_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.MAGAZINES_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { MagazineVisibility = Visibility.Visible; }
             else
             { MagazineVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.MUZZELS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.MUZZELS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { MuzzleVisibility = Visibility.Visible; }
             else
             { MuzzleVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.SCOPES_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.SCOPES_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { ScopeVisibility = Visibility.Visible; }
             else
             { ScopeVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.STOCKS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.STOCKS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { StockVisibility = Visibility.Visible; }
             else
             { StockVisibility = Visibility.Collapsed; }
 
-            if (weapon.Reciever.SupportedMods.Contains(ImportSystem.GRIPS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
+            if (weapon.Receiver.SupportedMods.Contains(ImportSystem.GRIPS_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { GripVisibility = Visibility.Visible; }
             else
             { GripVisibility = Visibility.Collapsed; }

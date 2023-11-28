@@ -8,12 +8,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Xml;
 
 using BLREdit.API.Export;
+using BLREdit.API.Utils;
 using BLREdit.Export;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
@@ -35,10 +34,12 @@ public sealed class BLRClient : INotifyPropertyChanged
     }
     #endregion Events
     private bool hasBeenValidated = false;
+    public UIBool Validate { get; set; } = new UIBool(true);
+    public string? ConfigName { get; set; }
 
     [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port = 7777, AllowAdvanced = true, AllowLMGR = true };
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
-    [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
+    [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false); //TODO: Apply after startup
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
     [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
     [JsonIgnore] private Dictionary<string?, BLRProfileSettingsWrapper>? profileSettings;
@@ -69,8 +70,13 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private string? _patchedPath;
     public string? PatchedPath {
-        get { if (_patchedPath is null) { _basePath = GetBasePath(); } return _patchedPath; }
-        set { if (File.Exists(value)) { _patchedPath = value; Patched.Set(true); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
+        get { return _patchedPath; }
+        set { if (File.Exists(value)) { _patchedPath = value; Patched.Set(true); OnPropertyChanged(); OnPropertyChanged(nameof(PatchedFile)); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
+    }
+
+    [JsonIgnore] public FileInfoExtension? PatchedFile
+    {
+        get { return new(PatchedPath); }
     }
 
     private string? _basePath;
@@ -125,7 +131,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         if (obj is BLRClient client)
         {
-            return (client.OriginalPath == OriginalPath && client.ClientVersion == ClientVersion && client.Patched.Is == Patched.Is);
+            return (client.OriginalPath == OriginalPath);
         }
         else
         {
@@ -525,7 +531,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         get
         {
             launchTrainingCommand ??= new RelayCommand((param) => {
-                string launchArgs = $"server gunrange_persistent?Game=FoxGame.FoxGameMP_BO?ServerName=Training?Port=7777?NumBots=0?MaxPlayers=1?SingleMatch";
+                string launchArgs = $"server gunrange_persistent{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}")}?Game=FoxGame.FoxGameMP_BO?ServerName=Training?Port=7777?NumBots=0?MaxPlayers=1?SingleMatch";
                 StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
                 LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
             });
@@ -565,7 +571,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
-        string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}?SingleMatch";
+        string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}?SingleMatch";
         StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
         LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
     }
@@ -574,7 +580,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
-        string launchArgs = $"server {map?.MapName ?? "helodeck"}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
+        string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
         StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
     }
 
@@ -629,11 +635,10 @@ public sealed class BLRClient : INotifyPropertyChanged
         else if(!options.Server.AllowAdvanced)
         {
             var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
-            bool isAdvanced = true;
+            bool isAdvanced = false;
 
             if (diskLoadout is not null)
             {
-                isAdvanced = false;
                 foreach (var loadout in diskLoadout)
                 {
                     if (IsAdvanced(loadout.GetLoadout()))
@@ -667,13 +672,12 @@ public sealed class BLRClient : INotifyPropertyChanged
 
                     currentlyAppliedLoadout.ApplyLoadout(this);
                 }
-
             }
         }
         ApplyProfileSetting(ExportSystem.GetOrAddProfileSettings(options.UserName));
         ApplyConfigs();
         string launchArgs = options.Server.IPAddress + ':' + options.Server.Port;
-        launchArgs += $"?Name={options.UserName}";
+        launchArgs += $"?Name={options.UserName}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}")}";
         StartProcess(launchArgs, false, false, null, options.Server);
     }
 
@@ -718,18 +722,18 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public static bool IsAdvanced(BLRWeapon? weapon)
     {
-        if(weapon is null || weapon.Reciever is null) return true;
-        if (!(weapon.Reciever?.IsValidFor(null) ?? false)) return true;
-        if (!(weapon.Barrel?.IsValidFor(weapon.Reciever) ?? true)) return true;
-        if (!(weapon.Muzzle?.IsValidFor(weapon.Reciever) ?? true)) return true;
-        if (!(weapon.Grip?.IsValidFor(weapon.Reciever) ?? true)) return true;
-        if (!(weapon.Camo?.IsValidFor(weapon.Reciever) ?? false)) return true;
-        if (!(weapon.Magazine?.IsValidFor(weapon.Reciever) ?? false)) return true;
-        if (!(weapon.Ammo?.IsValidFor(weapon.Reciever) ?? false)) return true;
-        if (!(weapon.Tag?.IsValidFor(weapon.Reciever) ?? true)) return true;
-        if (!(weapon.Stock?.IsValidFor(weapon.Reciever) ?? true)) return true;
-        if (!(weapon.Scope?.IsValidFor(weapon.Reciever) ?? false)) return true;
-        if (!(weapon.Skin?.IsValidFor(weapon.Reciever) ?? true)) return true;
+        if(weapon is null || weapon.Receiver is null) return true;
+        if (!(weapon.Receiver?.IsValidFor(null) ?? false)) return true;
+        if (!(weapon.Barrel?.IsValidFor(weapon.Receiver) ?? true)) return true;
+        if (!(weapon.Muzzle?.IsValidFor(weapon.Receiver) ?? true)) return true;
+        if (!(weapon.Grip?.IsValidFor(weapon.Receiver) ?? true)) return true;
+        if (!(weapon.Camo?.IsValidFor(weapon.Receiver) ?? false)) return true;
+        if (!(weapon.Magazine?.IsValidFor(weapon.Receiver) ?? false)) return true;
+        if (!(weapon.Ammo?.IsValidFor(weapon.Receiver) ?? false)) return true;
+        if (!(weapon.Tag?.IsValidFor(weapon.Receiver) ?? true)) return true;
+        if (!(weapon.Stock?.IsValidFor(weapon.Receiver) ?? true)) return true;
+        if (!(weapon.Scope?.IsValidFor(weapon.Receiver) ?? false)) return true;
+        if (!(weapon.Skin?.IsValidFor(weapon.Receiver) ?? true)) return true;
         return false;
     }
 
@@ -790,10 +794,10 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
     {
-        ValidateProxy();
-        if (!hasBeenValidated)
+        if (!hasBeenValidated && Validate.Is)
         {
             if (!ValidateClient()) { return; }
+            ValidateProxy();
             ValidateModules(enabledModules);
             hasBeenValidated = true;
         }
@@ -807,14 +811,14 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     #endregion Launch/Exit
 
-    static BLRItem? lmgrReciver;
-    static BLRItem? LMGReciever { get{ lmgrReciver ??= ImportSystem.GetItemByUIDAndType(ImportSystem.PRIMARY_CATEGORY, 40014); return lmgrReciver; } }
+    static BLRItem? lmgrReceiver;
+    static BLRItem? LMGReceiver { get{ lmgrReceiver ??= ImportSystem.GetItemByUIDAndType(ImportSystem.PRIMARY_CATEGORY, 40014); return lmgrReceiver; } }
     static BLRItem? lmgrMagazine;
     static BLRItem? LMGRMagazine { get { lmgrMagazine ??= ImportSystem.GetItemByUIDAndType(ImportSystem.MAGAZINES_CATEGORY, 44106); return lmgrMagazine; } }
 
     public static void PrimaryHasLMGR(ShareableLoadout loadout, ref string message, ref bool invalid)
     {
-        if (loadout.Primary.Reciever != LMGReciever.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Primary"; }
+        if (loadout.Primary.Receiver != LMGReceiver.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Primary"; }
     }
 
     public static void SecondaryHasLMGR(ShareableLoadout loadout, ref string message, ref bool invalid)
@@ -824,7 +828,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public static void PrimaryHasLMGR(LoadoutManagerLoadout loadout, ref string message, ref bool invalid)
     {
-        if (loadout.Primary.Receiver != LMGReciever.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Primary"; }
+        if (loadout.Primary.Receiver != LMGReceiver.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Primary"; }
     }
 
     public static void SecondaryHasLMGR(LoadoutManagerLoadout loadout, ref string message, ref bool invalid)
@@ -834,7 +838,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public static void PrimaryHasLMGR(BLRLoadout loadout, ref string message, ref bool invalid)
     {
-        if (loadout.Primary.Reciever.LMID != LMGReciever.LMID && loadout.Primary.Magazine.UID == LMGRMagazine.UID) { invalid = true; message += " Primary"; }
+        if (loadout.Primary.Receiver.LMID != LMGReceiver.LMID && loadout.Primary.Magazine.UID == LMGRMagazine.UID) { invalid = true; message += " Primary"; }
     }
 
     public static void SecondaryHasLMGR(BLRLoadout loadout, ref string message, ref bool invalid)
@@ -896,7 +900,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         if (!basePath.EndsWith("\\")) { basePath += "\\"; }
 
-        _patchedPath = $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
+        PatchedPath ??= $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
 
         return basePath;
     }
@@ -908,11 +912,11 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         try
         {
+            if (string.IsNullOrEmpty(PatchedPath)) { _basePath = GetBasePath(); }
             List<BLRClientPatch> toAppliedPatches = new();
             File.Copy(OriginalPath, PatchedPath, true);
             if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
             {
-                
                 using (var stream = File.Open(PatchedPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
                     List<byte> rawFile = new();

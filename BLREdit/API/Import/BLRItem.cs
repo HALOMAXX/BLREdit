@@ -216,22 +216,22 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public string GetSecondaryScope(BLRWeapon weapon)
     {
-        var recieverName = weapon?.Reciever?.Name ?? "";
+        var receiverName = weapon?.Receiver?.Name ?? "";
         switch (Name)
         {
             case "No Optic Mod":
 
-                if (recieverName.Contains("Prestige"))
+                if (receiverName.Contains("Prestige"))
                 {
                     return Name + " Light Pistol";
                 }
-                else if (recieverName.Contains("Rocket"))
+                else if (receiverName.Contains("Rocket"))
                 {
                     return "AV Rocket Launcher Scope"; //Not in use anymore as Rocketlaunchers are not selectable anymore
                 }
                 else
                 {
-                    return Name + " " + recieverName;
+                    return Name + " " + receiverName;
                 }
 
             //Pistols Only
@@ -242,14 +242,14 @@ public sealed class BLRItem : INotifyPropertyChanged
             case "EMI Electric Scope":
             case "ArmCom CQC Scope":
             case "Aim Point Ammo Counter":
-                return Name + GetSecondayScopePistol(recieverName);
+                return Name + GetSecondayScopePistol(receiverName);
 
             //Pistols and shotguns
             case "Titan Rail Sight":
             case "MMRS Flip-Up Rail Sight":
             case "Lightsky Red Dot Sight":
             case "Krane Holo Sight":
-                return Name + GetSecondayScopePistol(recieverName) + GetSecondayScopeShotgun(recieverName);
+                return Name + GetSecondayScopePistol(receiverName) + GetSecondayScopeShotgun(receiverName);
 
             default:
                 return Name ?? string.Empty;

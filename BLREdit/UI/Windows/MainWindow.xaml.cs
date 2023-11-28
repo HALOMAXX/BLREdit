@@ -21,7 +21,6 @@ using BLREdit.API.InterProcess;
 using BLREdit.API.Export;
 using BLREdit.API.Utils;
 using BLREdit.Game;
-using System.Threading;
 
 namespace BLREdit.UI;
 
@@ -272,7 +271,7 @@ public sealed partial class MainWindow : Window
             wasLastImageScopePreview = false;
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
-                case "Reciever":
+                case "Receiver":
                     if (weapon?.IsPrimary ?? true)
                     { SetItemList(ImportSystem.PRIMARY_CATEGORY); wasLastSelectedBorderPrimary = true; }
                     else
@@ -343,20 +342,19 @@ public sealed partial class MainWindow : Window
                     SetItemList(ImportSystem.AVATARS_CATEGORY);
                     break;
 
-                case "EmblemAlpha":
-                    SetItemList(ImportSystem.EMBLEM_ALPHA_CATEGORY);
-                    break;
                 case "EmblemBackground":
                     SetItemList(ImportSystem.EMBLEM_BACKGROUND_CATEGORY);
-                    break;
-                case "EmblemColor":
-                    SetItemList(ImportSystem.EMBLEM_COLOR_CATEGORY);
                     break;
                 case "EmblemIcon":
                     SetItemList(ImportSystem.EMBLEM_ICON_CATEGORY);
                     break;
                 case "EmblemShape":
                     SetItemList(ImportSystem.EMBLEM_SHAPE_CATEGORY);
+                    break;
+                case "EmblemBackgroundColor":
+                case "EmblemIconColor":
+                case "EmblemShapeColor":
+                    SetItemList(ImportSystem.EMBLEM_COLOR_CATEGORY);
                     break;
 
                 case "AnnouncerVoice":
@@ -507,6 +505,30 @@ public sealed partial class MainWindow : Window
             string link = $"<blredit://import-profile/{base64}>";
             ExportSystem.SetClipboard(link);
             ShowAlert($"{MainView.Profile.Shareable.Name} Share Link Created!"); //TODO: Add Localization
+        }
+        else if (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is)
+        {
+            if (DataStorage.Settings.DefaultClient is not null)
+            {
+                foreach (var process in BLRProcess.RunningGames)
+                {
+                    if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
+                    {
+                        if (!BLRClient.ValidLoadout(MainView.Profile.BLR, process.ConnectedServer, out string message))
+                        {
+                            LoggingSystem.MessageLog(message, "warning");
+                            return;
+                        }
+                    }
+                }
+                var directory = $"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\";
+                Directory.CreateDirectory(directory);
+                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LMLoadout(MainView.Profile.BLR.Loadout1, "Loadout 1"), new LMLoadout(MainView.Profile.BLR.Loadout2, "Loadout 2"), new LMLoadout(MainView.Profile.BLR.Loadout3, "Loadout 3") });
+                ShowAlert($"Applied LM Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+                MainView.Profile.Shareable.LastApplied = DateTime.Now;
+                DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;
+                MainView.Profile.BLR.IsChanged = false;
+            }
         }
         else
         {
@@ -861,6 +883,7 @@ public sealed partial class MainWindow : Window
     private void Window_Initialized(object sender, EventArgs e)
     {
         LoggingSystem.Log("MainWindow Initialized Start");
+
 #if DEBUGWAIT
         LoggingSystem.MessageLog("Waiting!", "Debug"); //TODO: Add Localization
 #endif
@@ -879,13 +902,6 @@ public sealed partial class MainWindow : Window
         LoggingSystem.Log($"[MainWindow]: ImportSystem took {watch.ElapsedMilliseconds}ms");
         watch.Restart();
 
-
-        
-        //var thread = new Thread(ExportSystem.SlowLoadProfiles)
-        //{ Name = $"{nameof(ExportSystem.SlowLoadProfiles)}", IsBackground = true, Priority = ThreadPriority.Lowest };
-        //App.AppThreads.Add(thread);
-        //thread.Start();
-
         #endregion Backend Init
 
         #region Frontend Init
@@ -897,14 +913,13 @@ public sealed partial class MainWindow : Window
 
         PlayerNameTextBox.Text = MainView.Profile.Shareable.Name;
         ProfileComboBox.ItemsSource = DataStorage.ShareableProfiles;
-        
 
         MainView.IsPlayerProfileChanging = false;
         MainView.IsPlayerNameChanging = false;
 
         ProfileComboBox.SelectedIndex = DataStorage.Settings.CurrentlyAppliedLoadout;
 
-        MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Reciever;
+        MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Receiver;
         ItemFilters.Instance.WeaponFilter = MainView.Profile.BLR.Loadout1.Primary;
 
         this.DataContext = MainView;
@@ -960,15 +975,18 @@ public sealed partial class MainWindow : Window
                 { DataStorage.GameClients.RemoveAt(i); i--; }
                 else
                 {
-                    LoggingSystem.Log($"{DataStorage.GameClients[i]} has {DataStorage.GameClients[i].InstalledModules.Count} installed modules");
+                    var beforeClean = DataStorage.GameClients[i].InstalledModules.Count;
                     if (DataStorage.GameClients[i].InstalledModules.Count > 0)
                     {
                         DataStorage.GameClients[i].InstalledModules = new ObservableCollection<ProxyModule>(DataStorage.GameClients[i].InstalledModules.Distinct(new ProxyModuleComparer()));
-                        LoggingSystem.Log($"{DataStorage.GameClients[i]} has {DataStorage.GameClients[i].InstalledModules.Count} installed modules");
+                        
                     }
+                    LoggingSystem.Log($"{DataStorage.GameClients[i]} has {DataStorage.GameClients[i].InstalledModules.Count}/{beforeClean} installed modules");
                 }
             }
         }
+
+        RefreshDefaultClient();
 
         AddOrUpdateDefaultServers();
 
@@ -976,7 +994,6 @@ public sealed partial class MainWindow : Window
         {
             DataStorage.Settings.DefaultServer = DataStorage.ServerList[0];
         }
-        BLREditSettings.SyncDefaultClient();
 
         BLREditPipe.ProcessArgs(Args);
 
@@ -991,6 +1008,16 @@ public sealed partial class MainWindow : Window
         UndoRedoSystem.ClearUndoRedoStack();
 
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
+    }
+
+    private static void RefreshDefaultClient()
+    {
+        foreach (var client in DataStorage.GameClients)
+        {
+            client.CurrentClient.Set(false);
+        }
+        if (DataStorage.Settings.SelectedClient >= 0 && DataStorage.Settings.SelectedClient < DataStorage.GameClients.Count)
+        { DataStorage.GameClients[DataStorage.Settings.SelectedClient].CurrentClient.Set(true); }
     }
 
     public void LoadoutChanged(object sender, PropertyChangedEventArgs e)

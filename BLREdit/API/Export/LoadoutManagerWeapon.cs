@@ -9,7 +9,7 @@ namespace BLREdit.Export;
 public sealed class LoadoutManagerWeapon
 {
     /// <summary>
-    /// Contains the Index of the Reciever
+    /// Contains the Index of the Receiver
     /// </summary>
     public int Receiver { get; set; } = 1;
 
@@ -86,14 +86,11 @@ public sealed class LoadoutManagerWeapon
         {
             switch (part.Name)
             {
-                case "Tag":
+                case nameof(weapon.Tag):
                     Properties["Hanger"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
                     break;
-                case "Camo":
+                case nameof(weapon.Camo):
                     Properties["CamoIndex"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
-                    break;
-                case "Reciever":
-                    Properties["Receiver"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
                     break;
                 default:
                     Properties[part.Name].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
@@ -106,7 +103,7 @@ public sealed class LoadoutManagerWeapon
     {
         return new BLRWeapon(isPrimary)
         {
-            Reciever = ImportSystem.GetItemByLMIDAndType(isPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Receiver),
+            Receiver = ImportSystem.GetItemByLMIDAndType(isPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Receiver),
             Barrel = ImportSystem.GetItemByLMIDAndType(ImportSystem.BARRELS_CATEGORY, Barrel),
             Muzzle = ImportSystem.GetItemByLMIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle),
             Grip = ImportSystem.GetItemByLMIDAndType(ImportSystem.GRIPS_CATEGORY, Grip),
