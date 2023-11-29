@@ -19941,168 +19941,209 @@
     },
     {
       "Name": "EMBLEM501",
+      "Icon": "t_emblem_bottom_00",
       "UID": 64741
     },
     {
       "Name": "EMBLEM502",
+      "Icon": "t_emblem_bottom_01",
       "UID": 64742
     },
     {
       "Name": "EMBLEM503",
+      "Icon": "t_emblem_bottom_02",
       "UID": 64743
     },
     {
       "Name": "EMBLEM504",
+      "Icon": "t_emblem_bottom_03",
       "UID": 64744
     },
     {
       "Name": "EMBLEM505",
+      "Icon": "t_emblem_bottom_04",
       "UID": 64745
     }
   ],
   "emblem_color": [
     {
       "Name": "EMBLEM750",
+      "Icon": "emblem_color_00",
       "UID": 64750
     },
     {
       "Name": "EMBLEM751",
+      "Icon": "emblem_color_01",
       "UID": 64751
     },
     {
       "Name": "EMBLEM752",
+      "Icon": "emblem_color_02",
       "UID": 64752
     },
     {
       "Name": "EMBLEM756",
+      "Icon": "emblem_color_03",
       "UID": 64756
     },
     {
       "Name": "EMBLEM757",
+      "Icon": "emblem_color_04",
       "UID": 64757
     },
     {
       "Name": "EMBLEM758",
+      "Icon": "emblem_color_05",
       "UID": 64758
     },
     {
       "Name": "EMBLEM762",
+      "Icon": "emblem_color_06",
       "UID": 64762
     },
     {
       "Name": "EMBLEM763",
+      "Icon": "emblem_color_07",
       "UID": 64763
     },
     {
       "Name": "EMBLEM764",
+      "Icon": "emblem_color_08",
       "UID": 64764
     },
     {
       "Name": "EMBLEM765",
+      "Icon": "emblem_color_09",
       "UID": 64765
     },
     {
       "Name": "EMBLEM766",
+      "Icon": "emblem_color_10",
       "UID": 64766
     },
     {
       "Name": "EMBLEM767",
+      "Icon": "emblem_color_11",
       "UID": 64767
     },
     {
       "Name": "EMBLEM771",
+      "Icon": "emblem_color_12",
       "UID": 64771
     },
     {
       "Name": "EMBLEM772",
+      "Icon": "emblem_color_13",
       "UID": 64772
     },
     {
       "Name": "EMBLEM773",
+      "Icon": "emblem_color_14",
       "UID": 64773
     },
     {
       "Name": "EMBLEM777",
+      "Icon": "emblem_color_15",
       "UID": 64777
     },
     {
       "Name": "EMBLEM778",
+      "Icon": "emblem_color_16",
       "UID": 64778
     },
     {
       "Name": "EMBLEM779",
+      "Icon": "emblem_color_17",
       "UID": 64779
     },
     {
       "Name": "EMBLEM780",
+      "Icon": "emblem_color_18",
       "UID": 64780
     },
     {
       "Name": "EMBLEM781",
+      "Icon": "emblem_color_19",
       "UID": 64781
     },
     {
       "Name": "EMBLEM782",
+      "Icon": "emblem_color_20",
       "UID": 64782
     },
     {
       "Name": "EMBLEM786",
+      "Icon": "emblem_color_21",
       "UID": 64786
     },
     {
       "Name": "EMBLEM787",
+      "Icon": "emblem_color_22",
       "UID": 64787
     },
     {
       "Name": "EMBLEM788",
+      "Icon": "emblem_color_23",
       "UID": 64788
     },
     {
       "Name": "EMBLEM792",
+      "Icon": "emblem_color_24",
       "UID": 64792
     },
     {
       "Name": "EMBLEM793",
+      "Icon": "emblem_color_25",
       "UID": 64793
     },
     {
       "Name": "EMBLEM794",
+      "Icon": "emblem_color_26",
       "UID": 64794
     },
     {
       "Name": "EMBLEM795",
+      "Icon": "emblem_color_27",
       "UID": 64795
     },
     {
       "Name": "EMBLEM796",
+      "Icon": "emblem_color_28",
       "UID": 64796
     },
     {
       "Name": "EMBLEM797",
+      "Icon": "emblem_color_29",
       "UID": 64797
     },
     {
       "Name": "EMBLEM801",
+      "Icon": "emblem_color_30",
       "UID": 64801
     },
     {
       "Name": "EMBLEM802",
+      "Icon": "emblem_color_31",
       "UID": 64802
     },
     {
       "Name": "EMBLEM803",
+      "Icon": "emblem_color_32",
       "UID": 64803
     },
     {
       "Name": "EMBLEM807",
+      "Icon": "emblem_color_33",
       "UID": 64807
     },
     {
       "Name": "EMBLEM808",
+      "Icon": "emblem_color_34",
       "UID": 64808
     },
     {
       "Name": "EMBLEM809",
+      "Icon": "emblem_color_35",
       "UID": 64809
     }
   ],
@@ -20113,630 +20154,787 @@
     },
     {
       "Name": "EMBLEM_SKULLNUCKLES",
+      "Icon": "t_emblem_top_00",
       "UID": 64001
     },
     {
       "Name": "EMBLEM_BRIAR",
+      "Icon": "t_emblem_top_01",
       "UID": 64002
     },
     {
       "Name": "EMBLEM_BOMBS",
+      "Icon": "t_emblem_top_02",
       "UID": 64003
     },
     {
       "Name": "EMBLEM_MMRS",
+      "Icon": "t_emblem_top_03",
       "UID": 64004
     },
     {
       "Name": "EMBLEM_BEE",
+      "Icon": "t_emblem_top_04",
       "UID": 64005
     },
     {
       "Name": "EMBLEM_HEXES",
+      "Icon": "t_emblem_top_05",
       "UID": 64006
     },
     {
       "Name": "EMBLEM_SOVEREIGN",
+      "Icon": "t_emblem_top_06",
       "UID": 64007
     },
     {
       "Name": "EMBLEM_SMILECENTER",
+      "Icon": "t_emblem_top_07",
       "UID": 64008
     },
     {
       "Name": "EMBLEM_SMILEHIGH",
+      "Icon": "t_emblem_top_08",
       "UID": 64009
     },
     {
       "Name": "EMBLEM_BULLETS",
+      "Icon": "t_emblem_top_09",
       "UID": 64010
     },
     {
       "Name": "EMBLEM_LOVEBULLETS",
+      "Icon": "t_emblem_top_10",
       "UID": 64011
     },
     {
       "Name": "EMBLEM_RETICULE",
+      "Icon": "t_emblem_top_11",
       "UID": 64012
     },
     {
       "Name": "EMBLEM_RETRIBUTIONFACE",
+      "Icon": "t_emblem_top_12",
       "UID": 64013
     },
     {
       "Name": "EMBLEM_RETRIBUTIONSKULL",
+      "Icon": "t_emblem_top_13",
       "UID": 64014
     },
     {
       "Name": "EMBLEM_CAUTION",
+      "Icon": "t_emblem_top_14",
       "UID": 64015
     },
     {
       "Name": "EMBLEM_RETRIBUTIONINVERSE",
+      "Icon": "t_emblem_top_15",
       "UID": 64016
     },
     {
       "Name": "EMBLEM_RETRIBUTIONLOGO",
+      "Icon": "t_emblem_top_16",
       "UID": 64017
     },
     {
       "Name": "EMBLEM_KRANE",
+      "Icon": "t_emblem_top_17",
       "UID": 64018
     },
     {
       "Name": "EMBLEM_BRASSKNUCKLES",
+      "Icon": "t_emblem_top_18",
       "UID": 64019
     },
     {
       "Name": "EMBLEM_HEARTBREAKER",
+      "Icon": "t_emblem_top_19",
       "UID": 64020
     },
     {
       "Name": "EMBLEM_MONSTERFACE",
+      "Icon": "t_emblem_top_20",
       "UID": 64021
     },
     {
       "Name": "EMBLEM_MONSTERTEETH",
+      "Icon": "t_emblem_top_21",
       "UID": 64022
     },
     {
       "Name": "EMBLEM_EVILFACE",
+      "Icon": "t_emblem_top_22",
       "UID": 64023
     },
     {
       "Name": "EMBLEM_SKULLFACEHIGH",
+      "Icon": "t_emblem_top_23",
       "UID": 64024
     },
     {
       "Name": "EMBLEM_SKULLFACECENTER",
+      "Icon": "t_emblem_top_24",
       "UID": 64025
     },
     {
       "Name": "EMBLEM_MUSTACHEFACE",
+      "Icon": "t_emblem_top_25",
       "UID": 64026
     },
     {
       "Name": "EMBLEM_STOICFACE",
+      "Icon": "t_emblem_top_26",
       "UID": 64027
     },
     {
       "Name": "EMBLEM_FIRE",
+      "Icon": "t_emblem_top_27",
       "UID": 64028
     },
     {
       "Name": "EMBLEM_BIOHAZARD",
+      "Icon": "t_emblem_top_28",
       "UID": 64029
     },
     {
       "Name": "EMBLEM_PIGGY",
+      "Icon": "t_emblem_top_29",
       "UID": 64030
     },
     {
       "Name": "EMBLEM_BETATESTER",
+      "Icon": "t_emblem_top_30",
       "UID": 64031
     },
     {
       "Name": "EMBLEM_ALPHA",
+      "Icon": "t_emblem_top_31",
       "UID": 64032
     },
     {
       "Name": "EMBLEM_BETA",
+      "Icon": "t_emblem_top_32",
       "UID": 64033
     },
     {
       "Name": "EMBLEM_OMEGA",
+      "Icon": "t_emblem_top_33",
       "UID": 64034
     },
     {
       "Name": "EMBLEM_DELTA",
+      "Icon": "t_emblem_top_34",
       "UID": 64035
     },
     {
       "Name": "EMBLEM_ARMCOM",
+      "Icon": "t_emblem_top_143",
       "UID": 64036
     },
     {
       "Name": "EMBLEM_HRV",
+      "Icon": "t_emblem_top_144",
       "UID": 64037
     },
     {
       "Name": "EMBLEM_FOXCAT",
+      "Icon": "t_emblem_top_145",
       "UID": 64038
     },
     {
       "Name": "EMBLEM_4K",
+      "Icon": "t_emblem_top_147",
       "UID": 64039
     },
     {
       "Name": "EMBLEM_FLEUR",
+      "Icon": "t_emblem_top_148",
       "UID": 64040
     },
     {
       "Name": "EMBLEM_LIGHTSKY",
+      "Icon": "t_emblem_top_149",
       "UID": 64041
     },
     {
       "Name": "EMBLEM_FRONTIER",
+      "Icon": "t_emblem_top_150",
       "UID": 64042
     },
     {
       "Name": "EMBLEM_REDSAND",
+      "Icon": "t_emblem_top_152",
       "UID": 64043
     },
     {
       "Name": "EMBLEM_SURSCOR",
+      "Icon": "t_emblem_top_154",
       "UID": 64044
     },
     {
       "Name": "EMBLEM_PROST",
+      "Icon": "t_emblem_top_155",
       "UID": 64045
     },
     {
       "Name": "EMBLEM_LLAME",
+      "Icon": "t_emblem_top_157",
       "UID": 64046
     },
     {
       "Name": "EMBLEM_EON",
+      "Icon": "t_emblem_top_159",
       "UID": 64047
     },
     {
       "Name": "EMBLEM_GDR",
+      "Icon": "t_emblem_top_160",
       "UID": 64048
     },
     {
       "Name": "EMBLEM_GDR2",
+      "Icon": "t_emblem_top_171",
       "UID": 64049
     },
     {
       "Name": "EMBLEM_FOICHE",
+      "Icon": "t_emblem_top_173",
       "UID": 64050
     },
     {
       "Name": "EMBLEM_FOXCAT2",
+      "Icon": "t_emblem_top_146",
       "UID": 64051
     },
     {
       "Name": "EMBLEM_AV",
+      "Icon": "t_emblem_top_153",
       "UID": 64052
     },
     {
       "Name": "EMBLEM_HULLBREACH",
+      "Icon": "t_emblem_top_156",
       "UID": 64053
     },
     {
       "Name": "EMBLEM_EMI",
+      "Icon": "t_emblem_top_158",
       "UID": 64054
     },
     {
       "Name": "EMBLEM_EMI2",
+      "Icon": "t_emblem_top_170",
       "UID": 64055
     },
     {
       "Name": "EMBLEM_HT",
+      "Icon": "t_emblem_top_161",
       "UID": 64056
     },
     {
       "Name": "EMBLEM_C4",
+      "Icon": "t_emblem_top_162",
       "UID": 64057
     },
     {
       "Name": "EMBLEM_OPRL",
+      "Icon": "t_emblem_top_163",
       "UID": 64058
     },
     {
       "Name": "EMBLEM_OPRL2",
+      "Icon": "t_emblem_top_168",
       "UID": 64059
     },
     {
       "Name": "EMBLEM_JJJ",
+      "Icon": "t_emblem_top_164",
       "UID": 64060
     },
     {
       "Name": "EMBLEM_LUCID",
+      "Icon": "t_emblem_top_165",
       "UID": 64061
     },
     {
       "Name": "EMBLEM_OVERMATCH",
+      "Icon": "t_emblem_top_166",
       "UID": 64062
     },
     {
       "Name": "EMBLEM_ARK",
+      "Icon": "t_emblem_top_167",
       "UID": 64063
     },
     {
       "Name": "EMBLEM_DATALUXE",
+      "Icon": "t_emblem_top_169",
       "UID": 64064
     },
     {
       "Name": "EMBLEM_SASAKI",
+      "Icon": "t_emblem_top_172",
       "UID": 64065
     },
     {
       "Name": "EMBLEM_AR",
+      "Icon": "t_emblem_top_174",
       "UID": 64066
     },
     {
       "Name": "EMBLEM_SMG",
+      "Icon": "t_emblem_top_175",
       "UID": 64067
     },
     {
       "Name": "EMBLEM_BR",
+      "Icon": "t_emblem_top_176",
       "UID": 64068
     },
     {
       "Name": "EMBLEM_CR",
+      "Icon": "t_emblem_top_177",
       "UID": 64069
     },
     {
       "Name": "EMBLEM_LMG",
+      "Icon": "t_emblem_top_178",
       "UID": 64070
     },
     {
       "Name": "EMBLEM_SNIPER",
+      "Icon": "t_emblem_top_179",
       "UID": 64071
     },
     {
       "Name": "EMBLEM_SHOTGUN",
+      "Icon": "t_emblem_top_180",
       "UID": 64072
     },
     {
       "Name": "EMBLEM_9MM",
+      "Icon": "t_emblem_top_181",
       "UID": 64073
     },
     {
       "Name": "EMBLEM_45",
+      "Icon": "t_emblem_top_182",
       "UID": 64074
     },
     {
       "Name": "EMBLEM_REVOLVER",
+      "Icon": "t_emblem_top_183",
       "UID": 64075
     },
     {
       "Name": "EMBLEM_MACHINEPISTOL",
+      "Icon": "t_emblem_top_184",
       "UID": 64076
     },
     {
       "Name": "EMBLEM_BURSTPISTOL",
+      "Icon": "t_emblem_top_185",
       "UID": 64077
     },
     {
       "Name": "EMBLEM_HAMMER",
+      "Icon": "t_emblem_top_186",
       "UID": 64078
     },
     {
       "Name": "EMBLEM_MACHETE",
+      "Icon": "t_emblem_top_187",
       "UID": 64079
     },
     {
       "Name": "EMBLEM_SONICKNIFE",
+      "Icon": "t_emblem_top_188",
       "UID": 64080
     },
     {
       "Name": "EMBLEM_KNIFE",
+      "Icon": "t_emblem_top_189",
       "UID": 64081
     },
     {
       "Name": "EMBLEM_RAILGUN",
+      "Icon": "t_emblem_top_190",
       "UID": 64082
     },
     {
       "Name": "EMBLEM_MINIGUN",
+      "Icon": "t_emblem_top_191",
       "UID": 64083
     },
     {
       "Name": "EMBLEM_STINGER",
+      "Icon": "t_emblem_top_192",
       "UID": 64084
     },
     {
       "Name": "EMBLEM_SWARM",
+      "Icon": "t_emblem_top_193",
       "UID": 64085
     },
     {
       "Name": "EMBLEM_GRENADELAUNCHER",
+      "Icon": "t_emblem_top_194",
       "UID": 64086
     },
     {
       "Name": "EMBLEM_FLAMETHROWER",
+      "Icon": "t_emblem_top_195",
       "UID": 64087
     },
     {
       "Name": "EMBLEM_TURRET",
+      "Icon": "t_emblem_top_196",
       "UID": 64088
     },
     {
       "Name": "EMBLEM_AIRSTRIKE",
+      "Icon": "t_emblem_top_197",
       "UID": 64089
     },
     {
       "Name": "EMBLEM_HARDSUIT",
+      "Icon": "t_emblem_top_198",
       "UID": 64090
     },
     {
       "Name": "EMBLEM_HEAL",
+      "Icon": "t_emblem_top_199",
       "UID": 64091
     },
     {
       "Name": "EMBLEM_AMMO",
+      "Icon": "t_emblem_top_200",
       "UID": 64092
     },
     {
       "Name": "EMBLEM_HEAVYAMMO",
+      "Icon": "t_emblem_top_201",
       "UID": 64093
     },
     {
       "Name": "EMBLEM_SHOCKMINE",
+      "Icon": "t_emblem_top_202",
       "UID": 64094
     },
     {
       "Name": "EMBLEM_FRAG",
+      "Icon": "t_emblem_top_203",
       "UID": 64095
     },
     {
       "Name": "EMBLEM_DECOY",
+      "Icon": "t_emblem_top_204",
       "UID": 64096
     },
     {
       "Name": "EMBLEM_DIGI",
+      "Icon": "t_emblem_top_205",
       "UID": 64097
     },
     {
       "Name": "EMBLEM_EMP",
+      "Icon": "t_emblem_top_206",
       "UID": 64098
     },
     {
       "Name": "EMBLEM_ELECTROGRENADE",
+      "Icon": "t_emblem_top_207",
       "UID": 64099
     },
     {
       "Name": "EMBLEM_JAMMER",
+      "Icon": "t_emblem_top_208",
       "UID": 64100
     },
     {
       "Name": "EMBLEM_HE",
+      "Icon": "t_emblem_top_209",
       "UID": 64101
     },
     {
       "Name": "EMBLEM_HEALPACK",
+      "Icon": "t_emblem_top_210",
       "UID": 64102
     },
     {
       "Name": "EMBLEM_AMMOPACK",
+      "Icon": "t_emblem_top_211",
       "UID": 64103
     },
     {
       "Name": "EMBLEM_REVIVEPACK",
+      "Icon": "t_emblem_top_212",
       "UID": 64104
     },
     {
       "Name": "EMBLEM_TOXICGRENADE",
+      "Icon": "t_emblem_top_213",
       "UID": 64105
     },
     {
       "Name": "EMBLEM_BARRIER",
+      "Icon": "t_emblem_top_214",
       "UID": 64106
     },
     {
       "Name": "EMBLEM_REPAIR",
+      "Icon": "t_emblem_top_215",
       "UID": 64107
     },
     {
       "Name": "EMBLEM_HRVRESET",
+      "Icon": "t_emblem_top_216",
       "UID": 64108
     },
     {
       "Name": "EMBLEM_PROXMINE",
+      "Icon": "t_emblem_top_217",
       "UID": 64109
     },
     {
       "Name": "EMBLEM_HRVPING",
+      "Icon": "t_emblem_top_218",
       "UID": 64110
     },
     {
       "Name": "EMBLEM_CLOAK",
+      "Icon": "t_emblem_top_219",
       "UID": 64111
     },
     {
       "Name": "EMBLEM_EXPLOSIVEAMMO",
+      "Icon": "t_emblem_top_220",
       "UID": 64112
     },
     {
       "Name": "EMBLEM_TOXICAMMO",
+      "Icon": "t_emblem_top_221",
       "UID": 64113
     },
     {
       "Name": "EMBLEM_INCINDIARYAMMO",
+      "Icon": "t_emblem_top_222",
       "UID": 64114
     },
     {
       "Name": "EMBLEM_SHOCKAMMO",
+      "Icon": "t_emblem_top_223",
       "UID": 64115
     },
     {
       "Name": "EMBLEM_30DAYSFIGHT",
+      "Icon": "t_emblem_top_224",
       "UID": 64116
     },
     {
       "Name": "EMBLEM_LEVEL_40",
+      "Icon": "t_emblem_top_231",
       "UID": 64117
     },
     {
       "Name": "EMBLEM_LEVEL_45",
+      "Icon": "t_emblem_top_232",
       "UID": 64118
     },
     {
       "Name": "EMBLEM_LEVEL_50",
+      "Icon": "t_emblem_top_233",
       "UID": 64119
     },
     {
       "Name": "EMBLEM_HEROGRENDEL",
+      "Icon": "t_emblem_top_225",
       "UID": 64120
     },
     {
       "Name": "EMBLEM_HEROVIPER",
+      "Icon": "t_emblem_top_226",
       "UID": 64121
     },
     {
       "Name": "EMBLEM_HERODUCHESS",
+      "Icon": "t_emblem_top_227",
       "UID": 64122
     },
     {
       "Name": "EMBLEM_HERODEACON",
+      "Icon": "t_emblem_top_228",
       "UID": 64123
     },
     {
       "Name": "EMBLEM_HEROMARS",
+      "Icon": "t_emblem_top_229",
       "UID": 64124
     },
     {
       "Name": "EMBLEM_HEROCHRONOS",
+      "Icon": "t_emblem_top_230",
       "UID": 64125
     },
     {
       "Name": "EMBLEM_HEROLAZARUS",
+      "Icon": "t_emblem_top_257",
       "UID": 64126
     },
     {
       "Name": "EMBLEM_HEROARTEMIS",
+      "Icon": "t_emblem_top_258",
       "UID": 64127
     },
     {
       "Name": "EMBLEM_HEROCRUSHER",
+      "Icon": "t_emblem_top_259",
       "UID": 64128
     },
     {
       "Name": "EMBLEM_HEROLILITH",
+      "Icon": "t_emblem_top_260",
       "UID": 64129
     },
     {
       "Name": "EMBLEM_HEROWHITEKNIGHT",
+      "Icon": "t_emblem_top_261",
       "UID": 64130
     },
     {
       "Name": "EMBLEM_KATANA",
+      "Icon": "t_emblem_top_234",
       "UID": 64131
     },
     {
       "Name": "EMBLEM_HSDECOY",
+      "Icon": "t_emblem_top_235",
       "UID": 64132
     },
     {
       "Name": "EMBLEM_THROWINGAXE",
+      "Icon": "t_emblem_top_236",
       "UID": 64133
     },
     {
       "Name": "EMBLEM_THROWINGKNIFE",
+      "Icon": "t_emblem_top_237",
       "UID": 64134
     },
     {
       "Name": "EMBLEM_CROWBAR",
+      "Icon": "t_emblem_top_238",
       "UID": 64135
     },
     {
       "Name": "EMBLEM_RESPAWN",
+      "Icon": "t_emblem_top_239",
       "UID": 64136
     },
     {
       "Name": "EMBLEM_EXPLOSIVEGEAR",
+      "Icon": "t_emblem_top_240",
       "UID": 64137
     },
     {
       "Name": "EMBLEM_TOXICGEAR",
+      "Icon": "t_emblem_top_241",
       "UID": 64138
     },
     {
       "Name": "EMBLEM_INCENDIARYGEAR",
+      "Icon": "t_emblem_top_242",
       "UID": 64139
     },
     {
       "Name": "EMBLEM_SHOCKGEAR",
+      "Icon": "t_emblem_top_243",
       "UID": 64140
     },
     {
       "Name": "EMBLEM_MELEEGEAR",
+      "Icon": "t_emblem_top_262",
       "UID": 64141
     },
     {
       "Name": "EMBLEM_HOLODECOY",
+      "Icon": "t_emblem_top_244",
       "UID": 64142
     },
     {
       "Name": "EMBLEM_SCORPION",
+      "Icon": "t_emblem_top_245",
       "UID": 64143
     },
     {
       "Name": "EMBLEM_ROBOTPOD",
+      "Icon": "t_emblem_top_246",
       "UID": 64144
     },
     {
       "Name": "EMBLEM_NINJASTARS",
+      "Icon": "t_emblem_top_248",
       "UID": 64146
     },
     {
       "Name": "EMBLEM_FLAREGUN",
+      "Icon": "t_emblem_top_249",
       "UID": 64147
     },
     {
       "Name": "EMBLEM_HMG",
+      "Icon": "t_emblem_top_250",
       "UID": 64148
     },
     {
       "Name": "EMBLEM_SARK",
+      "Icon": "t_emblem_top_251",
       "UID": 64149
     },
     {
       "Name": "EMBLEM_SMG2",
+      "Icon": "t_emblem_top_252",
       "UID": 64150
     },
     {
       "Name": "EMBLEM_HAR",
+      "Icon": "t_emblem_top_253",
       "UID": 64151
     },
     {
       "Name": "EMBLEM_AMR",
+      "Icon": "t_emblem_top_254",
       "UID": 64152
     },
     {
       "Name": "EMBLEM_SMGi",
+      "Icon": "t_emblem_top_255",
       "UID": 64153
     },
     {
       "Name": "EMBLEM_BPFA",
+      "Icon": "t_emblem_top_256",
       "UID": 64154
     },
     {
       "Name": "EMBLEM_SOON",
+      "Icon": "t_emblem_top_263",
       "UID": 64155
     },
     {
       "Name": "EMBLEM_HSLBOT",
+      "Icon": "t_hslbot",
       "UID": 64156
     },
     {
       "Name": "EMBLEM_HSLWHITE",
+      "Icon": "t_hslwhite",
       "UID": 64157
     },
     {
       "Name": "EMBLEM_HSLBOTISOLATED",
+      "Icon": "t_hslbotisolated",
       "UID": 64158
     },
     {
@@ -20771,170 +20969,212 @@
     },
     {
       "Name": "EMBLEM251",
+      "Icon": "t_emblem_middle_00",
       "UID": 64641
     },
     {
       "Name": "EMBLEM252",
+      "Icon": "t_emblem_middle_01",
       "UID": 64642
     },
     {
       "Name": "EMBLEM253",
+      "Icon": "t_emblem_middle_02",
       "UID": 64643
     },
     {
       "Name": "EMBLEM254",
+      "Icon": "t_emblem_middle_03",
       "UID": 64644
     },
     {
       "Name": "EMBLEM255",
+      "Icon": "t_emblem_middle_04",
       "UID": 64645
     },
     {
       "Name": "EMBLEM256",
+      "Icon": "t_emblem_middle_05",
       "UID": 64646
     },
     {
       "Name": "EMBLEM257",
+      "Icon": "t_emblem_middle_06",
       "UID": 64647
     },
     {
       "Name": "EMBLEM258",
+      "Icon": "t_emblem_middle_07",
       "UID": 64648
     },
     {
       "Name": "EMBLEM259",
+      "Icon": "t_emblem_middle_08",
       "UID": 64649
     },
     {
       "Name": "EMBLEM260",
+      "Icon": "t_emblem_middle_09",
       "UID": 64650
     },
     {
       "Name": "EMBLEM261",
+      "Icon": "t_emblem_middle_10",
       "UID": 64651
     },
     {
       "Name": "EMBLEM262",
+      "Icon": "t_emblem_middle_11",
       "UID": 64652
     },
     {
       "Name": "EMBLEM263",
+      "Icon": "t_emblem_middle_12",
       "UID": 64653
     },
     {
       "Name": "EMBLEM264",
+      "Icon": "t_emblem_middle_13",
       "UID": 64654
     },
     {
       "Name": "EMBLEM265",
+      "Icon": "t_emblem_middle_14",
       "UID": 64655
     },
     {
       "Name": "EMBLEM266",
+      "Icon": "t_emblem_middle_15",
       "UID": 64656
     },
     {
       "Name": "EMBLEM267",
+      "Icon": "t_emblem_middle_16",
       "UID": 64657
     },
     {
       "Name": "EMBLEM268",
+      "Icon": "t_emblem_middle_17",
       "UID": 64658
     },
     {
       "Name": "EMBLEM269",
+      "Icon": "t_emblem_middle_18",
       "UID": 64659
     },
     {
       "Name": "EMBLEM270",
+      "Icon": "t_emblem_middle_19",
       "UID": 64660
     },
     {
       "Name": "EMBLEM271",
+      "Icon": "t_emblem_middle_20",
       "UID": 64661
     },
     {
       "Name": "EMBLEM272",
+      "Icon": "t_emblem_middle_21",
       "UID": 64662
     },
     {
       "Name": "EMBLEM273",
+      "Icon": "t_emblem_middle_22",
       "UID": 64663
     },
     {
       "Name": "EMBLEM274",
+      "Icon": "t_emblem_middle_23",
       "UID": 64664
     },
     {
       "Name": "EMBLEM275",
+      "Icon": "t_emblem_middle_24",
       "UID": 64665
     },
     {
       "Name": "EMBLEM276",
+      "Icon": "t_emblem_middle_25",
       "UID": 64666
     },
     {
       "Name": "EMBLEM277",
+      "Icon": "t_emblem_middle_26",
       "UID": 64667
     },
     {
       "Name": "EMBLEM278",
+      "Icon": "t_emblem_middle_27",
       "UID": 64668
     },
     {
       "Name": "EMBLEM279",
+      "Icon": "t_emblem_middle_28",
       "UID": 64669
     },
     {
       "Name": "EMBLEM280",
+      "Icon": "t_emblem_middle_29",
       "UID": 64670
     },
     {
       "Name": "EMBLEM281",
+      "Icon": "t_emblem_middle_30",
       "UID": 64671
     },
     {
       "Name": "EMBLEM282",
+      "Icon": "t_emblem_middle_31",
       "UID": 64672
     },
     {
       "Name": "EMBLEM283",
+      "Icon": "t_emblem_middle_32",
       "UID": 64673
     },
     {
       "Name": "EMBLEM284",
+      "Icon": "t_emblem_middle_33",
       "UID": 64674
     },
     {
       "Name": "EMBLEM285",
+      "Icon": "t_emblem_middle_34",
       "UID": 64675
     },
     {
       "Name": "EMBLEM286",
+      "Icon": "t_emblem_middle_35",
       "UID": 64676
     },
     {
       "Name": "EMBLEM287",
+      "Icon": "t_emblem_middle_36",
       "UID": 64677
     },
     {
       "Name": "EMBLEM288",
+      "Icon": "t_emblem_middle_37",
       "UID": 64678
     },
     {
       "Name": "EMBLEM289",
+      "Icon": "t_emblem_middle_38",
       "UID": 64679
     },
     {
       "Name": "EMBLEM290",
+      "Icon": "t_emblem_middle_39",
       "UID": 64680
     },
     {
       "Name": "EMBLEM291",
+      "Icon": "t_emblem_middle_40",
       "UID": 64681
     },
     {
       "Name": "EMBLEM292",
+      "Icon": "t_emblem_middle_41",
       "UID": 64682
     }
   ],
