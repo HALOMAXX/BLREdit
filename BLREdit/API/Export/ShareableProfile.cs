@@ -230,6 +230,13 @@ public sealed class ShareableLoadout : IBLRLoadout
     [JsonPropertyName("P2")] public int PatchIconColor { get; set; } = 0;
     [JsonPropertyName("P3")] public int PatchShape { get; set; } = 0;
     [JsonPropertyName("P4")] public int PatchShapeColor { get; set; } = 0;
+    [JsonPropertyName("P5")] public int PatchBackground { get; set; } = 0;
+    [JsonPropertyName("P6")] public int PatchBackgroundColor { get; set; } = 0;
+
+    [JsonPropertyName("A2")] public int AnnouncerVoice { get; set; } = 0;
+    [JsonPropertyName("P7")] public int PlayerVoice { get; set; } = 0;
+    [JsonPropertyName("T3")] public int Title { get; set; } = 0;
+
     [JsonPropertyName("T1")] public int Tactical { get; set; } = 0;
     [JsonPropertyName("T2")] public int[] Taunts { get; set; } = new int[8];
 
@@ -273,6 +280,17 @@ public sealed class ShareableLoadout : IBLRLoadout
         Depot[3] = BLRItem.GetMagicCowsID(loadout.Depot4);
         Depot[4] = BLRItem.GetMagicCowsID(loadout.Depot5);
 
+        PatchIcon = BLRItem.GetUID(loadout.EmblemIcon);
+        PatchIconColor = BLRItem.GetUID(loadout.EmblemIconColor);
+        PatchShape = BLRItem.GetUID(loadout.EmblemShape);
+        PatchShapeColor = BLRItem.GetUID(loadout.EmblemShapeColor);
+        PatchBackground = BLRItem.GetUID(loadout.EmblemBackground);
+        PatchBackgroundColor = BLRItem.GetUID(loadout.EmblemBackgroundColor);
+
+        AnnouncerVoice = BLRItem.GetUID(loadout.AnnouncerVoice);
+        PlayerVoice = BLRItem.GetUID(loadout.PlayerVoice);
+        Title = BLRItem.GetUID(loadout.Title);
+
         Primary = new(loadout.Primary);
         Secondary = new(loadout.Secondary);
     }
@@ -315,6 +333,17 @@ public sealed class ShareableLoadout : IBLRLoadout
             Taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[6]),
             Taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[7]),
 
+            EmblemIcon = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_ICON_CATEGORY, PatchIcon),
+            EmblemIconColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchIconColor),
+            EmblemShape = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_SHAPE_CATEGORY, PatchShape),
+            EmblemShapeColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchShapeColor),
+            EmblemBackground = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY, PatchBackground),
+            EmblemBackgroundColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchBackgroundColor),
+
+            AnnouncerVoice = ImportSystem.GetItemByUIDAndType(ImportSystem.ANNOUNCER_VOICE_CATEGORY, AnnouncerVoice),
+            PlayerVoice = ImportSystem.GetItemByUIDAndType(ImportSystem.PLAYER_VOICE_CATEGORY, PlayerVoice),
+            Title = ImportSystem.GetItemByUIDAndType(ImportSystem.TITLES_CATEGORY, Title),
+
             Trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Badge),
             UpperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody)
         };
@@ -348,6 +377,13 @@ public sealed class ShareableLoadout : IBLRLoadout
             PatchIconColor = PatchIconColor,
             PatchShape = PatchShape,
             PatchShapeColor = PatchShapeColor,
+            PatchBackground = PatchBackground,
+            PatchBackgroundColor = PatchBackgroundColor,
+
+            AnnouncerVoice = AnnouncerVoice,
+            PlayerVoice = PlayerVoice,
+            Title = Title,
+
             Tactical = Tactical,
             UpperBody = UpperBody,
             Depot = new int[Depot.Length],
@@ -408,6 +444,17 @@ public sealed class ShareableLoadout : IBLRLoadout
         loadout.Taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[6]);
         loadout.Taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[7]);
 
+        loadout.EmblemIcon = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_ICON_CATEGORY, PatchIcon);
+        loadout.EmblemIconColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchIconColor);
+        loadout.EmblemShape = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_SHAPE_CATEGORY, PatchShape);
+        loadout.EmblemShapeColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchShapeColor);
+        loadout.EmblemBackground = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY, PatchBackground);
+        loadout.EmblemBackgroundColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchBackgroundColor);
+
+        loadout.AnnouncerVoice = ImportSystem.GetItemByUIDAndType(ImportSystem.ANNOUNCER_VOICE_CATEGORY, AnnouncerVoice);
+        loadout.PlayerVoice = ImportSystem.GetItemByUIDAndType(ImportSystem.PLAYER_VOICE_CATEGORY, PlayerVoice);
+        loadout.Title = ImportSystem.GetItemByUIDAndType(ImportSystem.TITLES_CATEGORY, Title);
+
         loadout.Trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Badge);
         UndoRedoSystem.RestoreBlockedEvents();
     }
@@ -449,6 +496,17 @@ public sealed class ShareableLoadout : IBLRLoadout
         Taunts[5] = BLRItem.GetMagicCowsID(loadout.Taunt6);
         Taunts[6] = BLRItem.GetMagicCowsID(loadout.Taunt7);
         Taunts[7] = BLRItem.GetMagicCowsID(loadout.Taunt8);
+
+        PatchIcon = BLRItem.GetUID(loadout.EmblemIcon);
+        PatchIconColor = BLRItem.GetUID(loadout.EmblemIconColor);
+        PatchShape = BLRItem.GetUID(loadout.EmblemShape);
+        PatchShapeColor = BLRItem.GetUID(loadout.EmblemShapeColor);
+        PatchBackground = BLRItem.GetUID(loadout.EmblemBackground);
+        PatchBackgroundColor = BLRItem.GetUID(loadout.EmblemBackgroundColor);
+
+        AnnouncerVoice = BLRItem.GetUID(loadout.AnnouncerVoice);
+        PlayerVoice = BLRItem.GetUID(loadout.PlayerVoice);
+        Title = BLRItem.GetUID(loadout.Title);
 
         Badge = BLRItem.GetMagicCowsID(loadout.Trophy);
         if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(loadout, EventArgs.Empty); }

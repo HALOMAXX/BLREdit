@@ -198,6 +198,17 @@ public sealed class BLRLoadout : INotifyPropertyChanged
             Taunt6 = this.Taunt6,
             Taunt7 = this.Taunt7,
             Taunt8 = this.Taunt8,
+
+            TopIcon = this.EmblemIcon,
+            TopColor = this.EmblemIconColor,
+            MiddleIcon = this.EmblemShape,
+            MiddleColor = this.EmblemShapeColor,
+            BottomIcon = this.EmblemBackground,
+            BottomColor = this.EmblemBackgroundColor,
+
+            AnnouncerVoice = this.AnnouncerVoice,
+            PlayerVoice = this.PlayerVoice,
+            Title = this.Title,
         };
     }
 
@@ -241,6 +252,17 @@ public sealed class BLRLoadout : INotifyPropertyChanged
             UndoRedoSystem.DoValueChange(extra.Taunt6, loadoutType.GetProperty(nameof(Taunt6)), this, BlockEvents.AllExceptUpdate);
             UndoRedoSystem.DoValueChange(extra.Taunt7, loadoutType.GetProperty(nameof(Taunt7)), this, BlockEvents.AllExceptUpdate);
             UndoRedoSystem.DoValueChange(extra.Taunt8, loadoutType.GetProperty(nameof(Taunt8)), this, BlockEvents.AllExceptUpdate);
+
+            UndoRedoSystem.DoValueChange(extra.TopIcon, loadoutType.GetProperty(nameof(EmblemIcon)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoValueChange(extra.TopColor, loadoutType.GetProperty(nameof(EmblemIconColor)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoValueChange(extra.MiddleIcon, loadoutType.GetProperty(nameof(EmblemShape)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoValueChange(extra.MiddleColor, loadoutType.GetProperty(nameof(EmblemShapeColor)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoValueChange(extra.BottomIcon, loadoutType.GetProperty(nameof(EmblemBackground)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoValueChange(extra.BottomColor, loadoutType.GetProperty(nameof(EmblemBackgroundColor)), this, BlockEvents.AllExceptUpdate);
+
+            UndoRedoSystem.DoValueChange(extra.AnnouncerVoice, loadoutType.GetProperty(nameof(AnnouncerVoice)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoValueChange(extra.PlayerVoice, loadoutType.GetProperty(nameof(PlayerVoice)), this, BlockEvents.AllExceptUpdate);
+            UndoRedoSystem.DoValueChange(extra.Title, loadoutType.GetProperty(nameof(Title)), this, BlockEvents.AllExceptUpdate);
             if (gear is not null) { message += " & Extra"; }
             else { message += " Extra"; }
         }

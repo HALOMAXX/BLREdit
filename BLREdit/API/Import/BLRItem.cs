@@ -47,7 +47,10 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public BLRPawnModifiers? PawnModifiers { get; set; }
     public List<string>? SupportedMods { get; set; }
-    [JsonIgnore] public string DisplayTooltip { get { return ItemTooltips.ResourceManager.GetString(UID.ToString(UID_FORMAT)); } }
+    [JsonIgnore] public string DisplayTooltip { 
+        get { 
+            var tt = ItemTooltips.ResourceManager.GetString(UID.ToString(UID_FORMAT)); 
+            return string.IsNullOrEmpty(tt) ? DisplayName : tt; } }
     public int UID { get; set; }
     public List<int>? ValidFor { get; set; }
     public BLRWeaponModifiers? WeaponModifiers { get; set; }
@@ -283,6 +286,12 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         if(item is null) return defaultID;
         return ImportSystem.GetIDOfItem(item);
+    }
+
+    public static int GetUID(BLRItem? item, int defaultUID = 0)
+    {
+        if (item is null) return defaultUID;
+        return item.UID;
     }
 
     public static FoxIcon GetBitmapCrosshair(string name)

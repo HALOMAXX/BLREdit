@@ -18,4 +18,15 @@ public sealed class BLRExtra
     public BLRItem? Taunt6 { get; set; }
     public BLRItem? Taunt7 { get; set; }
     public BLRItem? Taunt8 { get; set; }
+
+    public BLRItem? TopIcon { get; set; }
+    public BLRItem? TopColor { get; set; }
+    public BLRItem? MiddleIcon { get; set; }
+    public BLRItem? MiddleColor { get; set; }
+    public BLRItem? BottomIcon { get; set; }
+    public BLRItem? BottomColor { get; set; }
+
+    public BLRItem? AnnouncerVoice { get; set; }
+    public BLRItem? PlayerVoice { get; set; }
+    public BLRItem? Title { get; set; }
 }
