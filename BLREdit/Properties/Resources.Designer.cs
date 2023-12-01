@@ -412,6 +412,33 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last  Applied.
+        /// </summary>
+        public static string enum_LastApplied {
+            get {
+                return ResourceManager.GetString("enum_LastApplied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Modified.
+        /// </summary>
+        public static string enum_LastModified {
+            get {
+                return ResourceManager.GetString("enum_LastModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Viewed.
+        /// </summary>
+        public static string enum_LastViewed {
+            get {
+                return ResourceManager.GetString("enum_LastViewed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Melee Prot.
         /// </summary>
         public static string enum_MeleeProtection {
@@ -489,6 +516,15 @@ namespace BLREdit.Properties {
         public static string enum_ScopeInTime {
             get {
                 return ResourceManager.GetString("enum_ScopeInTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time of Creation.
+        /// </summary>
+        public static string enum_TimeOfCreation {
+            get {
+                return ResourceManager.GetString("enum_TimeOfCreation", resourceCulture);
             }
         }
         
@@ -1755,7 +1791,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PlayerName can only contain: [a-z], [A-Z], [0-9], dash(-) and underscore(_)..
+        ///   Looks up a localized string similar to PlayerName can only contain: [a-z], [A-Z], [0-9], dash( - ), underscore( _ ) and dot( . )..
         /// </summary>
         public static string txt_TT_PlayerName {
             get {
@@ -1764,7 +1800,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Region examples (EU-West, US-West, AU, OCE).
+        ///   Looks up a localized string similar to Region examples (EU-West, US-West, AU, OCE, LATAM).
         /// </summary>
         public static string txt_TT_Region {
             get {
@@ -1773,8 +1809,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Available ProxyVersions: 
-        ///    v1.0.0-beta.2, v1.0.0-beta.3
+        ///   Looks up a localized string similar to Available ProxyVersions: v1.0.0-beta.2, v1.0.0-beta.3
         ///Info:
         ///beta3 will only start in windowed mode but you can ALT+Enter to go to fullscreen
         ///and might also be still very buggy.

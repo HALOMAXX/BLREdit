@@ -147,20 +147,19 @@ public sealed class BLRItem : INotifyPropertyChanged
     {
         switch (UID)
         {
-            case 300:
-            case 301:
-            case 302:
-            case 308:
-            case 309:
-            case 312:
-            case 313:
-            case 382:
-            case 410:
+            case 324:
+            case 349:
+            case 362:
+            case 363:
+            case 369:
+            case 370:
+            case 373:
+            case 374:
             case 12096:
             case 12097:
             case 12098:
             case 12099:
-            case 20015:
+            case 20016:
             case 46050:
                 return false;
         }

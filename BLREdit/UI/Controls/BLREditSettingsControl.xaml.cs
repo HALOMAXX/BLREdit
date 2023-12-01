@@ -29,8 +29,8 @@ public sealed partial class BLREditSettingsControl : UserControl
 {
     public static ObservableCollection<CultureInfo> AvailableCultures { get; } = new();
 
-    public static Regex PlayerNameFilter { get; } = new(@"^[a-zA-Z0-9\-_]*$");
-    public static Regex PlayerNameSanitizer { get; } = new(@"[^a-zA-Z0-9\-_]*");
+    public static Regex PlayerNameFilter { get; } = new(@"^[a-zA-Z0-9\-_.]*$");
+    public static Regex PlayerNameSanitizer { get; } = new(@"[^a-zA-Z0-9\-_.]*");
 
     public BLREditSettingsControl()
     {

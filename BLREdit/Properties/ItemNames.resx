@@ -685,527 +685,527 @@
     <value>Golden Crown of Prestige</value>
     <comment>badges</comment>
   </data>
-  <data name="000350" xml:space="preserve">
+  <data name="000300" xml:space="preserve">
     <value>Bow</value>
     <comment>emotes</comment>
   </data>
-  <data name="000351" xml:space="preserve">
+  <data name="000301" xml:space="preserve">
     <value>Caution</value>
     <comment>emotes</comment>
   </data>
-  <data name="000352" xml:space="preserve">
+  <data name="000302" xml:space="preserve">
     <value>Clap</value>
     <comment>emotes</comment>
   </data>
-  <data name="000353" xml:space="preserve">
+  <data name="000303" xml:space="preserve">
     <value>Crane</value>
     <comment>emotes</comment>
   </data>
-  <data name="000354" xml:space="preserve">
+  <data name="000304" xml:space="preserve">
     <value>Salute</value>
     <comment>emotes</comment>
   </data>
-  <data name="000355" xml:space="preserve">
+  <data name="000305" xml:space="preserve">
     <value>Robot Dance</value>
     <comment>emotes</comment>
   </data>
-  <data name="000356" xml:space="preserve">
+  <data name="000306" xml:space="preserve">
     <value>TeaBag</value>
     <comment>emotes</comment>
   </data>
-  <data name="000357" xml:space="preserve">
+  <data name="000307" xml:space="preserve">
     <value>Roar</value>
     <comment>emotes</comment>
   </data>
-  <data name="000358" xml:space="preserve">
+  <data name="000308" xml:space="preserve">
     <value>Flex</value>
     <comment>emotes</comment>
   </data>
-  <data name="000359" xml:space="preserve">
+  <data name="000309" xml:space="preserve">
     <value>The Kneebow</value>
     <comment>emotes</comment>
   </data>
-  <data name="000360" xml:space="preserve">
+  <data name="000310" xml:space="preserve">
     <value>Fancy Bow</value>
     <comment>emotes</comment>
   </data>
-  <data name="000361" xml:space="preserve">
+  <data name="000311" xml:space="preserve">
     <value>Bring It</value>
     <comment>emotes</comment>
   </data>
-  <data name="000364" xml:space="preserve">
+  <data name="000312" xml:space="preserve">
     <value>Gun Wave</value>
     <comment>emotes</comment>
   </data>
-  <data name="000365" xml:space="preserve">
+  <data name="000313" xml:space="preserve">
     <value>Muahaha</value>
     <comment>emotes</comment>
   </data>
-  <data name="000366" xml:space="preserve">
+  <data name="000314" xml:space="preserve">
     <value>Posed Point</value>
     <comment>emotes</comment>
   </data>
-  <data name="000367" xml:space="preserve">
+  <data name="000315" xml:space="preserve">
     <value>Kiss</value>
     <comment>emotes</comment>
   </data>
-  <data name="000368" xml:space="preserve">
+  <data name="000316" xml:space="preserve">
     <value>Ground Pound</value>
     <comment>emotes</comment>
   </data>
-  <data name="000375" xml:space="preserve">
+  <data name="000317" xml:space="preserve">
     <value>Rock</value>
     <comment>emotes</comment>
   </data>
-  <data name="000376" xml:space="preserve">
+  <data name="000318" xml:space="preserve">
     <value>Paper</value>
     <comment>emotes</comment>
   </data>
-  <data name="000377" xml:space="preserve">
+  <data name="000319" xml:space="preserve">
     <value>Scissors</value>
     <comment>emotes</comment>
   </data>
-  <data name="000378" xml:space="preserve">
+  <data name="000320" xml:space="preserve">
     <value>Suck it</value>
     <comment>emotes</comment>
   </data>
-  <data name="000379" xml:space="preserve">
+  <data name="000321" xml:space="preserve">
     <value>Rocket Fist</value>
     <comment>emotes</comment>
   </data>
-  <data name="000380" xml:space="preserve">
+  <data name="000322" xml:space="preserve">
     <value>Step Off</value>
     <comment>emotes</comment>
   </data>
-  <data name="000381" xml:space="preserve">
+  <data name="000323" xml:space="preserve">
     <value>Flight</value>
     <comment>emotes</comment>
   </data>
-  <data name="000382" xml:space="preserve">
-    <value />
-    <comment>emotes</comment>
-  </data>
-  <data name="000383" xml:space="preserve">
-    <value>Bow Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000384" xml:space="preserve">
-    <value>Caution Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000385" xml:space="preserve">
-    <value>Clap Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000388" xml:space="preserve">
-    <value>Crane Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000390" xml:space="preserve">
-    <value>Salute Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000391" xml:space="preserve">
-    <value>TeaBag Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000392" xml:space="preserve">
-    <value>Roar Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000393" xml:space="preserve">
-    <value>Robot Dance Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000394" xml:space="preserve">
-    <value>Flex Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000395" xml:space="preserve">
-    <value>The Kneebow Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000396" xml:space="preserve">
-    <value>Fancy Bow Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000397" xml:space="preserve">
-    <value>Bring it Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000398" xml:space="preserve">
-    <value>Gun Wave Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000399" xml:space="preserve">
-    <value>Muahaha Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000400" xml:space="preserve">
-    <value>Posed Point Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000401" xml:space="preserve">
-    <value>Kiss Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000402" xml:space="preserve">
-    <value>Ground Pound Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000403" xml:space="preserve">
-    <value>Rock Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000404" xml:space="preserve">
-    <value>Paper Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000405" xml:space="preserve">
-    <value>Scissors Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000406" xml:space="preserve">
-    <value>Suck it Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000407" xml:space="preserve">
-    <value>Rocket Fist Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000408" xml:space="preserve">
-    <value>Step Off Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000409" xml:space="preserve">
-    <value>Flight Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000410" xml:space="preserve">
-    <value />
-    <comment>emotes</comment>
-  </data>
-  <data name="000411" xml:space="preserve">
-    <value>Go</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000412" xml:space="preserve">
-    <value>Pump</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000413" xml:space="preserve">
-    <value>Cut It</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000414" xml:space="preserve">
-    <value>Throat Slit</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000420" xml:space="preserve">
-    <value>Thumbs Down</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000415" xml:space="preserve">
-    <value>Thumbs Up</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000416" xml:space="preserve">
-    <value>A-OK</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000417" xml:space="preserve">
-    <value>Metal</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000418" xml:space="preserve">
-    <value>Point</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000419" xml:space="preserve">
-    <value>Rainbow</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000422" xml:space="preserve">
-    <value>Wag</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000300" xml:space="preserve">
-    <value>Hush</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000301" xml:space="preserve">
-    <value />
-    <comment>emotes</comment>
-  </data>
-  <data name="000302" xml:space="preserve">
-    <value />
-    <comment>emotes</comment>
-  </data>
-  <data name="000303" xml:space="preserve">
-    <value>Airplane</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000304" xml:space="preserve">
-    <value>Gun Pump</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000305" xml:space="preserve">
-    <value>Up Yours</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000306" xml:space="preserve">
-    <value>Shhh</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000307" xml:space="preserve">
-    <value>Veteran War Mask</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000308" xml:space="preserve">
-    <value />
-    <comment>emotes</comment>
-  </data>
-  <data name="000309" xml:space="preserve">
-    <value />
-    <comment>emotes</comment>
-  </data>
-  <data name="000310" xml:space="preserve">
-    <value>Giddy Up</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000311" xml:space="preserve">
-    <value>Hip Shimmy</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000312" xml:space="preserve">
-    <value />
-    <comment>emotes</comment>
-  </data>
-  <data name="000313" xml:space="preserve">
-    <value />
-    <comment>emotes</comment>
-  </data>
-  <data name="000314" xml:space="preserve">
-    <value>Go Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000315" xml:space="preserve">
-    <value>Pump Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000316" xml:space="preserve">
-    <value>Cut It Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000317" xml:space="preserve">
-    <value>Throat Slit Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000318" xml:space="preserve">
-    <value>Thumbs Down Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000319" xml:space="preserve">
-    <value>Thumbs Up Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000320" xml:space="preserve">
-    <value>A-OK Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000321" xml:space="preserve">
-    <value>Metal Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000322" xml:space="preserve">
-    <value>Point Digital</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000323" xml:space="preserve">
-    <value>Rainbow Digital</value>
-    <comment>emotes</comment>
-  </data>
   <data name="000324" xml:space="preserve">
-    <value>Wag Digital</value>
+    <value />
     <comment>emotes</comment>
   </data>
   <data name="000325" xml:space="preserve">
-    <value>Uppercut Digital</value>
+    <value>Bow Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000326" xml:space="preserve">
-    <value>Crane Kick Digital</value>
+    <value>Caution Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000327" xml:space="preserve">
-    <value>Camera Digital</value>
+    <value>Clap Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000328" xml:space="preserve">
-    <value>Hush Digital</value>
+    <value>Crane Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000329" xml:space="preserve">
-    <value>Troll Face</value>
+    <value>Salute Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000330" xml:space="preserve">
-    <value>Airplane Digital</value>
+    <value>TeaBag Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000331" xml:space="preserve">
-    <value>Gun Pump Digital</value>
+    <value>Roar Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000332" xml:space="preserve">
-    <value>Up Yours Digital</value>
+    <value>Robot Dance Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000333" xml:space="preserve">
-    <value>Shhh Digital</value>
+    <value>Flex Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000334" xml:space="preserve">
-    <value>War Dog</value>
+    <value>The Kneebow Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000335" xml:space="preserve">
-    <value>Lasso</value>
+    <value>Fancy Bow Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000336" xml:space="preserve">
-    <value>Classy Salute</value>
+    <value>Bring it Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000337" xml:space="preserve">
-    <value>Metal Skull</value>
+    <value>Gun Wave Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000338" xml:space="preserve">
-    <value>Sad Panda</value>
+    <value>Muahaha Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000339" xml:space="preserve">
-    <value>Shrug and Laugh</value>
+    <value>Posed Point Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000340" xml:space="preserve">
-    <value>Die die die!</value>
+    <value>Kiss Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000341" xml:space="preserve">
-    <value>Loser</value>
+    <value>Ground Pound Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000342" xml:space="preserve">
-    <value>Broken Heart</value>
+    <value>Rock Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000343" xml:space="preserve">
-    <value>Hahaha</value>
+    <value>Paper Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000344" xml:space="preserve">
-    <value>Pelvic Thrust</value>
+    <value>Scissors Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000345" xml:space="preserve">
-    <value>Super Charge</value>
+    <value>Suck it Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000346" xml:space="preserve">
-    <value>Tea-time Digital</value>
+    <value>Rocket Fist Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000347" xml:space="preserve">
-    <value>Exclamation Digital</value>
+    <value>Step Off Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000348" xml:space="preserve">
-    <value>Chicken Dance</value>
+    <value>Flight Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000349" xml:space="preserve">
-    <value>Captain Digital</value>
+    <value />
     <comment>emotes</comment>
   </data>
-  <data name="000423" xml:space="preserve">
-    <value>Backflip</value>
+  <data name="000350" xml:space="preserve">
+    <value>Go</value>
     <comment>emotes</comment>
   </data>
-  <data name="000424" xml:space="preserve">
-    <value>Party Thrust</value>
+  <data name="000351" xml:space="preserve">
+    <value>Pump</value>
     <comment>emotes</comment>
   </data>
-  <data name="000425" xml:space="preserve">
-    <value>Pumpkin Head Digital</value>
+  <data name="000352" xml:space="preserve">
+    <value>Cut It</value>
     <comment>emotes</comment>
   </data>
-  <data name="000426" xml:space="preserve">
-    <value>Pumpking Laugh Digital</value>
+  <data name="000353" xml:space="preserve">
+    <value>Throat Slit</value>
     <comment>emotes</comment>
   </data>
-  <data name="000427" xml:space="preserve">
-    <value>Skull Mask Digital</value>
+  <data name="000354" xml:space="preserve">
+    <value>Thumbs Down</value>
     <comment>emotes</comment>
   </data>
-  <data name="000428" xml:space="preserve">
-    <value>Devil Laugh Digital</value>
+  <data name="000355" xml:space="preserve">
+    <value>Thumbs Up</value>
     <comment>emotes</comment>
   </data>
-  <data name="000429" xml:space="preserve">
-    <value>Head Bop</value>
+  <data name="000356" xml:space="preserve">
+    <value>A-OK</value>
     <comment>emotes</comment>
   </data>
-  <data name="000430" xml:space="preserve">
-    <value>Dust Off</value>
+  <data name="000357" xml:space="preserve">
+    <value>Metal</value>
     <comment>emotes</comment>
   </data>
-  <data name="000389" xml:space="preserve">
-    <value>Flash Point</value>
+  <data name="000358" xml:space="preserve">
+    <value>Point</value>
     <comment>emotes</comment>
   </data>
-  <data name="000421" xml:space="preserve">
-    <value>Fireworks</value>
+  <data name="000359" xml:space="preserve">
+    <value>Rainbow</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000360" xml:space="preserve">
+    <value>Wag</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000361" xml:space="preserve">
+    <value>Hush</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000362" xml:space="preserve">
+    <value />
+    <comment>emotes</comment>
+  </data>
+  <data name="000363" xml:space="preserve">
+    <value />
+    <comment>emotes</comment>
+  </data>
+  <data name="000364" xml:space="preserve">
+    <value>Airplane</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000365" xml:space="preserve">
+    <value>Gun Pump</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000366" xml:space="preserve">
+    <value>Up Yours</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000367" xml:space="preserve">
+    <value>Shhh</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000368" xml:space="preserve">
+    <value>Veteran War Mask</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000369" xml:space="preserve">
+    <value />
+    <comment>emotes</comment>
+  </data>
+  <data name="000370" xml:space="preserve">
+    <value />
     <comment>emotes</comment>
   </data>
   <data name="000371" xml:space="preserve">
-    <value>Snowball Juggle</value>
+    <value>Giddy Up</value>
     <comment>emotes</comment>
   </data>
   <data name="000372" xml:space="preserve">
-    <value>Unusal Dance</value>
+    <value>Hip Shimmy</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000373" xml:space="preserve">
+    <value />
+    <comment>emotes</comment>
+  </data>
+  <data name="000374" xml:space="preserve">
+    <value />
+    <comment>emotes</comment>
+  </data>
+  <data name="000375" xml:space="preserve">
+    <value>Go Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000376" xml:space="preserve">
+    <value>Pump Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000377" xml:space="preserve">
+    <value>Cut It Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000378" xml:space="preserve">
+    <value>Throat Slit Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000379" xml:space="preserve">
+    <value>Thumbs Down Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000380" xml:space="preserve">
+    <value>Thumbs Up Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000381" xml:space="preserve">
+    <value>A-OK Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000382" xml:space="preserve">
+    <value>Metal Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000383" xml:space="preserve">
+    <value>Point Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000384" xml:space="preserve">
+    <value>Rainbow Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000385" xml:space="preserve">
+    <value>Wag Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000386" xml:space="preserve">
-    <value>Creepy Thrust</value>
+    <value>Uppercut Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000387" xml:space="preserve">
+    <value>Crane Kick Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000388" xml:space="preserve">
+    <value>Camera Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000389" xml:space="preserve">
+    <value>Hush Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000390" xml:space="preserve">
+    <value>Troll Face</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000391" xml:space="preserve">
+    <value>Airplane Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000392" xml:space="preserve">
+    <value>Gun Pump Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000393" xml:space="preserve">
+    <value>Up Yours Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000394" xml:space="preserve">
+    <value>Shhh Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000395" xml:space="preserve">
+    <value>War Dog</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000396" xml:space="preserve">
+    <value>Lasso</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000397" xml:space="preserve">
+    <value>Classy Salute</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000398" xml:space="preserve">
+    <value>Metal Skull</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000399" xml:space="preserve">
+    <value>Sad Panda</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000400" xml:space="preserve">
+    <value>Shrug and Laugh</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000401" xml:space="preserve">
+    <value>Die die die!</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000402" xml:space="preserve">
+    <value>Loser</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000403" xml:space="preserve">
+    <value>Broken Heart</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000404" xml:space="preserve">
+    <value>Hahaha</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000405" xml:space="preserve">
+    <value>Pelvic Thrust</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000406" xml:space="preserve">
+    <value>Super Charge</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000407" xml:space="preserve">
+    <value>Tea-time Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000408" xml:space="preserve">
+    <value>Exclamation Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000409" xml:space="preserve">
+    <value>Chicken Dance</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000410" xml:space="preserve">
+    <value>Captain Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000411" xml:space="preserve">
+    <value>Backflip</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000412" xml:space="preserve">
+    <value>Party Thrust</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000413" xml:space="preserve">
+    <value>Pumpkin Head Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000414" xml:space="preserve">
+    <value>Pumpking Laugh Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000415" xml:space="preserve">
+    <value>Skull Mask Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000416" xml:space="preserve">
+    <value>Devil Laugh Digital</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000417" xml:space="preserve">
+    <value>Head Bop</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000418" xml:space="preserve">
+    <value>Dust Off</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000319" xml:space="preserve">
+    <value>Flash Point</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000420" xml:space="preserve">
+    <value>Fireworks</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000421" xml:space="preserve">
+    <value>Snowball Juggle</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000422" xml:space="preserve">
+    <value>Unusal Dance</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000423" xml:space="preserve">
+    <value>Creepy Thrust</value>
+    <comment>emotes</comment>
+  </data>
+  <data name="000424" xml:space="preserve">
     <value>Bell Kick</value>
     <comment>emotes</comment>
   </data>
-  <data name="000497" xml:space="preserve">
+  <data name="000425" xml:space="preserve">
     <value>Irish Jig</value>
     <comment>emotes</comment>
   </data>
-  <data name="000498" xml:space="preserve">
+  <data name="000426" xml:space="preserve">
     <value>Punch Wind</value>
     <comment>emotes</comment>
   </data>
-  <data name="000499" xml:space="preserve">
+  <data name="000427" xml:space="preserve">
     <value>Punch Earth</value>
     <comment>emotes</comment>
   </data>
-  <data name="000500" xml:space="preserve">
+  <data name="000428" xml:space="preserve">
     <value>Punch Fire</value>
     <comment>emotes</comment>
   </data>
-  <data name="000501" xml:space="preserve">
+  <data name="000429" xml:space="preserve">
     <value>Punch Water</value>
     <comment>emotes</comment>
   </data>
-  <data name="000502" xml:space="preserve">
+  <data name="000430" xml:space="preserve">
     <value>Punch Heart</value>
     <comment>emotes</comment>
   </data>
@@ -5710,15 +5710,15 @@
     <comment>secondary</comment>
   </data>
   <data name="020009" xml:space="preserve">
-    <value>Turret</value>
+    <value>Minigun</value>
     <comment>secondary</comment>
   </data>
   <data name="020003" xml:space="preserve">
-    <value>Flamethrower</value>
+    <value>Rocket Stinger</value>
     <comment>secondary</comment>
   </data>
   <data name="020007" xml:space="preserve">
-    <value>Grenade Launcher</value>
+    <value>Railgun</value>
     <comment>secondary</comment>
   </data>
   <data name="020004" xml:space="preserve">
@@ -5730,19 +5730,19 @@
     <comment>secondary</comment>
   </data>
   <data name="020008" xml:space="preserve">
-    <value>Minigun</value>
+    <value>Grenade Launcher</value>
     <comment>secondary</comment>
   </data>
   <data name="020005" xml:space="preserve">
-    <value>Railgun</value>
+    <value>Rocket Swarm</value>
     <comment>secondary</comment>
   </data>
   <data name="020002" xml:space="preserve">
-    <value>Rocket Stinger</value>
+    <value>Flamethrower</value>
     <comment>secondary</comment>
   </data>
   <data name="020011" xml:space="preserve">
-    <value>Rocket Swarm</value>
+    <value>Heavy Weapon Refill</value>
     <comment>secondary</comment>
   </data>
   <data name="020013" xml:space="preserve">
@@ -5750,26 +5750,26 @@
     <comment>secondary</comment>
   </data>
   <data name="020010" xml:space="preserve">
-    <value>Heavy Weapon Refill</value>
+    <value>Turret</value>
     <comment>secondary</comment>
   </data>
   <data name="200013" xml:space="preserve">
     <value>MK1 Assault AI</value>
     <comment>secondary</comment>
   </data>
-  <data name="020001" xml:space="preserve">
+  <data name="020000" xml:space="preserve">
     <value>Health Refill</value>
     <comment>shop</comment>
   </data>
-  <data name="020000" xml:space="preserve">
+  <data name="020001" xml:space="preserve">
     <value>Ammo Refill</value>
     <comment>shop</comment>
   </data>
-  <data name="020003" xml:space="preserve">
+  <data name="020002" xml:space="preserve">
     <value>Flamethrower</value>
     <comment>shop</comment>
   </data>
-  <data name="020002" xml:space="preserve">
+  <data name="020003" xml:space="preserve">
     <value>Rocket Stinger</value>
     <comment>shop</comment>
   </data>
@@ -5777,7 +5777,7 @@
     <value>Rhino Hardsuit</value>
     <comment>shop</comment>
   </data>
-  <data name="020011" xml:space="preserve">
+  <data name="020005" xml:space="preserve">
     <value>Rocket Swarm</value>
     <comment>shop</comment>
   </data>
@@ -5785,23 +5785,23 @@
     <value>Airstrike</value>
     <comment>shop</comment>
   </data>
-  <data name="020005" xml:space="preserve">
+  <data name="020007" xml:space="preserve">
     <value>Railgun</value>
     <comment>shop</comment>
   </data>
-  <data name="020007" xml:space="preserve">
+  <data name="020008" xml:space="preserve">
     <value>Grenade Launcher</value>
     <comment>shop</comment>
   </data>
-  <data name="020008" xml:space="preserve">
+  <data name="020009" xml:space="preserve">
     <value>Minigun</value>
     <comment>shop</comment>
   </data>
-  <data name="020009" xml:space="preserve">
+  <data name="020010" xml:space="preserve">
     <value>Turret</value>
     <comment>shop</comment>
   </data>
-  <data name="020010" xml:space="preserve">
+  <data name="020011" xml:space="preserve">
     <value>Heavy Weapon Refill</value>
     <comment>shop</comment>
   </data>
@@ -5817,1630 +5817,2168 @@
     <value>MK1 Assault AI</value>
     <comment>shop</comment>
   </data>
-  <data name="020016" xml:space="preserve">
+  <data name="020015" xml:space="preserve">
     <value>Gunman Hardsuit</value>
     <comment>shop</comment>
   </data>
-  <data name="020015" xml:space="preserve">
+  <data name="020016" xml:space="preserve">
     <value>HRV Jammer</value>
     <comment>shop</comment>
   </data>
-  <data name="020019" xml:space="preserve">
+  <data name="020017" xml:space="preserve">
     <value>Toxic Antidote</value>
     <comment>shop</comment>
   </data>
   <data name="063000" xml:space="preserve">
     <value>ANNOUNCER00</value>
+    <comment>dialogPackAnnouncers</comment>
   </data>
   <data name="063001" xml:space="preserve">
     <value>ANNOUNCER01</value>
+    <comment>dialogPackAnnouncers</comment>
   </data>
   <data name="063002" xml:space="preserve">
     <value>ANNOUNCER02</value>
+    <comment>dialogPackAnnouncers</comment>
   </data>
   <data name="063050" xml:space="preserve">
     <value>PLAYER00</value>
+    <comment>dialogPackPlayers</comment>
   </data>
   <data name="063051" xml:space="preserve">
     <value>PLAYER01</value>
+    <comment>dialogPackPlayers</comment>
   </data>
   <data name="063052" xml:space="preserve">
     <value>PLAYER_SEANANNERS</value>
+    <comment>dialogPackPlayers</comment>
   </data>
   <data name="063053" xml:space="preserve">
     <value>PLAYER_ROBOT</value>
+    <comment>dialogPackPlayers</comment>
   </data>
   <data name="063054" xml:space="preserve">
     <value>PLAYER_SARK</value>
+    <comment>dialogPackPlayers</comment>
   </data>
   <data name="064280" xml:space="preserve">
     <value>EMBLEM_STENCIL_A</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064281" xml:space="preserve">
     <value>EMBLEM_STENCIL_B</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064282" xml:space="preserve">
     <value>EMBLEM_STENCIL_C</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064283" xml:space="preserve">
     <value>EMBLEM_STENCIL_D</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064284" xml:space="preserve">
     <value>EMBLEM_STENCIL_E</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064285" xml:space="preserve">
     <value>EMBLEM_STENCIL_F</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064286" xml:space="preserve">
     <value>EMBLEM_STENCIL_G</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064287" xml:space="preserve">
     <value>EMBLEM_STENCIL_H</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064288" xml:space="preserve">
     <value>EMBLEM_STENCIL_I</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064289" xml:space="preserve">
     <value>EMBLEM_STENCIL_J</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064290" xml:space="preserve">
     <value>EMBLEM_STENCIL_K</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064291" xml:space="preserve">
     <value>EMBLEM_STENCIL_L</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064292" xml:space="preserve">
     <value>EMBLEM_STENCIL_M</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064293" xml:space="preserve">
     <value>EMBLEM_STENCIL_N</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064294" xml:space="preserve">
     <value>EMBLEM_STENCIL_O</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064295" xml:space="preserve">
     <value>EMBLEM_STENCIL_P</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064296" xml:space="preserve">
     <value>EMBLEM_STENCIL_Q</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064297" xml:space="preserve">
     <value>EMBLEM_STENCIL_R</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064298" xml:space="preserve">
     <value>EMBLEM_STENCIL_S</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064299" xml:space="preserve">
     <value>EMBLEM_STENCIL_T</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064300" xml:space="preserve">
     <value>EMBLEM_STENCIL_U</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064301" xml:space="preserve">
     <value>EMBLEM_STENCIL_V</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064302" xml:space="preserve">
     <value>EMBLEM_STENCIL_W</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064303" xml:space="preserve">
     <value>EMBLEM_STENCIL_X</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064304" xml:space="preserve">
     <value>EMBLEM_STENCIL_Y</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064305" xml:space="preserve">
     <value>EMBLEM_STENCIL_Z</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064306" xml:space="preserve">
     <value>EMBLEM_STENCIL_0</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064307" xml:space="preserve">
     <value>EMBLEM_STENCIL_1</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064308" xml:space="preserve">
     <value>EMBLEM_STENCIL_2</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064309" xml:space="preserve">
     <value>EMBLEM_STENCIL_3</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064310" xml:space="preserve">
     <value>EMBLEM_STENCIL_4</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064311" xml:space="preserve">
     <value>EMBLEM_STENCIL_5</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064312" xml:space="preserve">
     <value>EMBLEM_STENCIL_6</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064313" xml:space="preserve">
     <value>EMBLEM_STENCIL_7</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064314" xml:space="preserve">
     <value>EMBLEM_STENCIL_8</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064315" xml:space="preserve">
     <value>EMBLEM_STENCIL_9</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064316" xml:space="preserve">
     <value>EMBLEM_HAND_A</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064317" xml:space="preserve">
     <value>EMBLEM_HAND_B</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064318" xml:space="preserve">
     <value>EMBLEM_HAND_C</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064319" xml:space="preserve">
     <value>EMBLEM_HAND_D</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064320" xml:space="preserve">
     <value>EMBLEM_HAND_E</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064321" xml:space="preserve">
     <value>EMBLEM_HAND_F</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064322" xml:space="preserve">
     <value>EMBLEM_HAND_G</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064323" xml:space="preserve">
     <value>EMBLEM_HAND_H</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064324" xml:space="preserve">
     <value>EMBLEM_HAND_I</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064325" xml:space="preserve">
     <value>EMBLEM_HAND_J</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064326" xml:space="preserve">
     <value>EMBLEM_HAND_K</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064327" xml:space="preserve">
     <value>EMBLEM_HAND_L</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064328" xml:space="preserve">
     <value>EMBLEM_HAND_M</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064329" xml:space="preserve">
     <value>EMBLEM_HAND_N</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064330" xml:space="preserve">
     <value>EMBLEM_HAND_O</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064331" xml:space="preserve">
     <value>EMBLEM_HAND_P</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064332" xml:space="preserve">
     <value>EMBLEM_HAND_Q</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064333" xml:space="preserve">
     <value>EMBLEM_HAND_R</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064334" xml:space="preserve">
     <value>EMBLEM_HAND_S</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064335" xml:space="preserve">
     <value>EMBLEM_HAND_T</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064336" xml:space="preserve">
     <value>EMBLEM_HAND_U</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064337" xml:space="preserve">
     <value>EMBLEM_HAND_V</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064338" xml:space="preserve">
     <value>EMBLEM_HAND_W</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064339" xml:space="preserve">
     <value>EMBLEM_HAND_X</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064340" xml:space="preserve">
     <value>EMBLEM_HAND_Y</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064341" xml:space="preserve">
     <value>EMBLEM_HAND_Z</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064342" xml:space="preserve">
     <value>EMBLEM_HAND_0</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064343" xml:space="preserve">
     <value>EMBLEM_HAND_1</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064344" xml:space="preserve">
     <value>EMBLEM_HAND_2</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064345" xml:space="preserve">
     <value>EMBLEM_HAND_3</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064346" xml:space="preserve">
     <value>EMBLEM_HAND_4</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064347" xml:space="preserve">
     <value>EMBLEM_HAND_5</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064348" xml:space="preserve">
     <value>EMBLEM_HAND_6</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064349" xml:space="preserve">
     <value>EMBLEM_HAND_7</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064350" xml:space="preserve">
     <value>EMBLEM_HAND_8</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064351" xml:space="preserve">
     <value>EMBLEM_HAND_9</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064352" xml:space="preserve">
     <value>EMBLEM_PRINT_A</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064353" xml:space="preserve">
     <value>EMBLEM_PRINT_B</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064354" xml:space="preserve">
     <value>EMBLEM_PRINT_C</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064355" xml:space="preserve">
     <value>EMBLEM_PRINT_D</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064356" xml:space="preserve">
     <value>EMBLEM_PRINT_E</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064357" xml:space="preserve">
     <value>EMBLEM_PRINT_F</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064358" xml:space="preserve">
     <value>EMBLEM_PRINT_G</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064359" xml:space="preserve">
     <value>EMBLEM_PRINT_H</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064360" xml:space="preserve">
     <value>EMBLEM_PRINT_I</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064361" xml:space="preserve">
     <value>EMBLEM_PRINT_J</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064362" xml:space="preserve">
     <value>EMBLEM_PRINT_K</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064363" xml:space="preserve">
     <value>EMBLEM_PRINT_L</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064364" xml:space="preserve">
     <value>EMBLEM_PRINT_M</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064365" xml:space="preserve">
     <value>EMBLEM_PRINT_N</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064366" xml:space="preserve">
     <value>EMBLEM_PRINT_O</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064367" xml:space="preserve">
     <value>EMBLEM_PRINT_P</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064368" xml:space="preserve">
     <value>EMBLEM_PRINT_Q</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064369" xml:space="preserve">
     <value>EMBLEM_PRINT_R</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064370" xml:space="preserve">
     <value>EMBLEM_PRINT_S</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064371" xml:space="preserve">
     <value>EMBLEM_PRINT_T</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064372" xml:space="preserve">
     <value>EMBLEM_PRINT_U</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064373" xml:space="preserve">
     <value>EMBLEM_PRINT_V</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064374" xml:space="preserve">
     <value>EMBLEM_PRINT_W</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064375" xml:space="preserve">
     <value>EMBLEM_PRINT_X</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064376" xml:space="preserve">
     <value>EMBLEM_PRINT_Y</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064377" xml:space="preserve">
     <value>EMBLEM_PRINT_Z</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064378" xml:space="preserve">
     <value>EMBLEM_PRINT_0</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064379" xml:space="preserve">
     <value>EMBLEM_PRINT_1</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064380" xml:space="preserve">
     <value>EMBLEM_PRINT_2</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064381" xml:space="preserve">
     <value>EMBLEM_PRINT_3</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064382" xml:space="preserve">
     <value>EMBLEM_PRINT_4</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064383" xml:space="preserve">
     <value>EMBLEM_PRINT_5</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064384" xml:space="preserve">
     <value>EMBLEM_PRINT_6</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064385" xml:space="preserve">
     <value>EMBLEM_PRINT_7</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064386" xml:space="preserve">
     <value>EMBLEM_PRINT_8</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064387" xml:space="preserve">
     <value>EMBLEM_PRINT_9</value>
+    <comment>emblem_alpha</comment>
   </data>
   <data name="064740" xml:space="preserve">
     <value>EMBLEM500</value>
+    <comment>emblem_background</comment>
   </data>
   <data name="064741" xml:space="preserve">
     <value>EMBLEM501</value>
+    <comment>emblem_background</comment>
   </data>
   <data name="064742" xml:space="preserve">
     <value>EMBLEM502</value>
+    <comment>emblem_background</comment>
   </data>
   <data name="064743" xml:space="preserve">
     <value>EMBLEM503</value>
+    <comment>emblem_background</comment>
   </data>
   <data name="064744" xml:space="preserve">
     <value>EMBLEM504</value>
+    <comment>emblem_background</comment>
   </data>
   <data name="064745" xml:space="preserve">
     <value>EMBLEM505</value>
+    <comment>emblem_background</comment>
   </data>
   <data name="064750" xml:space="preserve">
     <value>EMBLEM750</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064751" xml:space="preserve">
     <value>EMBLEM751</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064752" xml:space="preserve">
     <value>EMBLEM752</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064756" xml:space="preserve">
     <value>EMBLEM756</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064757" xml:space="preserve">
     <value>EMBLEM757</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064758" xml:space="preserve">
     <value>EMBLEM758</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064762" xml:space="preserve">
     <value>EMBLEM762</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064763" xml:space="preserve">
     <value>EMBLEM763</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064764" xml:space="preserve">
     <value>EMBLEM764</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064765" xml:space="preserve">
     <value>EMBLEM765</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064766" xml:space="preserve">
     <value>EMBLEM766</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064767" xml:space="preserve">
     <value>EMBLEM767</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064771" xml:space="preserve">
     <value>EMBLEM771</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064772" xml:space="preserve">
     <value>EMBLEM772</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064773" xml:space="preserve">
     <value>EMBLEM773</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064777" xml:space="preserve">
     <value>EMBLEM777</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064778" xml:space="preserve">
     <value>EMBLEM778</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064779" xml:space="preserve">
     <value>EMBLEM779</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064780" xml:space="preserve">
     <value>EMBLEM780</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064781" xml:space="preserve">
     <value>EMBLEM781</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064782" xml:space="preserve">
     <value>EMBLEM782</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064786" xml:space="preserve">
     <value>EMBLEM786</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064787" xml:space="preserve">
     <value>EMBLEM787</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064788" xml:space="preserve">
     <value>EMBLEM788</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064792" xml:space="preserve">
     <value>EMBLEM792</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064793" xml:space="preserve">
     <value>EMBLEM793</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064794" xml:space="preserve">
     <value>EMBLEM794</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064795" xml:space="preserve">
     <value>EMBLEM795</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064796" xml:space="preserve">
     <value>EMBLEM796</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064797" xml:space="preserve">
     <value>EMBLEM797</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064801" xml:space="preserve">
     <value>EMBLEM801</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064802" xml:space="preserve">
     <value>EMBLEM802</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064803" xml:space="preserve">
     <value>EMBLEM803</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064807" xml:space="preserve">
     <value>EMBLEM807</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064808" xml:space="preserve">
     <value>EMBLEM808</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064809" xml:space="preserve">
     <value>EMBLEM809</value>
+    <comment>emblem_color</comment>
   </data>
   <data name="064000" xml:space="preserve">
     <value>EMBLEM_NONE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064001" xml:space="preserve">
     <value>EMBLEM_SKULLNUCKLES</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064002" xml:space="preserve">
     <value>EMBLEM_BRIAR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064003" xml:space="preserve">
     <value>EMBLEM_BOMBS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064004" xml:space="preserve">
     <value>EMBLEM_MMRS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064005" xml:space="preserve">
     <value>EMBLEM_BEE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064006" xml:space="preserve">
     <value>EMBLEM_HEXES</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064007" xml:space="preserve">
     <value>EMBLEM_SOVEREIGN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064008" xml:space="preserve">
     <value>EMBLEM_SMILECENTER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064009" xml:space="preserve">
     <value>EMBLEM_SMILEHIGH</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064010" xml:space="preserve">
     <value>EMBLEM_BULLETS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064011" xml:space="preserve">
     <value>EMBLEM_LOVEBULLETS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064012" xml:space="preserve">
     <value>EMBLEM_RETICULE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064013" xml:space="preserve">
     <value>EMBLEM_RETRIBUTIONFACE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064014" xml:space="preserve">
     <value>EMBLEM_RETRIBUTIONSKULL</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064015" xml:space="preserve">
     <value>EMBLEM_CAUTION</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064016" xml:space="preserve">
     <value>EMBLEM_RETRIBUTIONINVERSE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064017" xml:space="preserve">
     <value>EMBLEM_RETRIBUTIONLOGO</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064018" xml:space="preserve">
     <value>EMBLEM_KRANE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064019" xml:space="preserve">
     <value>EMBLEM_BRASSKNUCKLES</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064020" xml:space="preserve">
     <value>EMBLEM_HEARTBREAKER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064021" xml:space="preserve">
     <value>EMBLEM_MONSTERFACE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064022" xml:space="preserve">
     <value>EMBLEM_MONSTERTEETH</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064023" xml:space="preserve">
     <value>EMBLEM_EVILFACE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064024" xml:space="preserve">
     <value>EMBLEM_SKULLFACEHIGH</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064025" xml:space="preserve">
     <value>EMBLEM_SKULLFACECENTER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064026" xml:space="preserve">
     <value>EMBLEM_MUSTACHEFACE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064027" xml:space="preserve">
     <value>EMBLEM_STOICFACE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064028" xml:space="preserve">
     <value>EMBLEM_FIRE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064029" xml:space="preserve">
     <value>EMBLEM_BIOHAZARD</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064030" xml:space="preserve">
     <value>EMBLEM_PIGGY</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064031" xml:space="preserve">
     <value>EMBLEM_BETATESTER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064032" xml:space="preserve">
     <value>EMBLEM_ALPHA</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064033" xml:space="preserve">
     <value>EMBLEM_BETA</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064034" xml:space="preserve">
     <value>EMBLEM_OMEGA</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064035" xml:space="preserve">
     <value>EMBLEM_DELTA</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064036" xml:space="preserve">
     <value>EMBLEM_ARMCOM</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064037" xml:space="preserve">
     <value>EMBLEM_HRV</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064038" xml:space="preserve">
     <value>EMBLEM_FOXCAT</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064039" xml:space="preserve">
     <value>EMBLEM_4K</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064040" xml:space="preserve">
     <value>EMBLEM_FLEUR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064041" xml:space="preserve">
     <value>EMBLEM_LIGHTSKY</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064042" xml:space="preserve">
     <value>EMBLEM_FRONTIER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064043" xml:space="preserve">
     <value>EMBLEM_REDSAND</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064044" xml:space="preserve">
     <value>EMBLEM_SURSCOR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064045" xml:space="preserve">
     <value>EMBLEM_PROST</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064046" xml:space="preserve">
     <value>EMBLEM_LLAME</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064047" xml:space="preserve">
     <value>EMBLEM_EON</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064048" xml:space="preserve">
     <value>EMBLEM_GDR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064049" xml:space="preserve">
     <value>EMBLEM_GDR2</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064050" xml:space="preserve">
     <value>EMBLEM_FOICHE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064051" xml:space="preserve">
     <value>EMBLEM_FOXCAT2</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064052" xml:space="preserve">
     <value>EMBLEM_AV</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064053" xml:space="preserve">
     <value>EMBLEM_HULLBREACH</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064054" xml:space="preserve">
     <value>EMBLEM_EMI</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064055" xml:space="preserve">
     <value>EMBLEM_EMI2</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064056" xml:space="preserve">
     <value>EMBLEM_HT</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064057" xml:space="preserve">
     <value>EMBLEM_C4</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064058" xml:space="preserve">
     <value>EMBLEM_OPRL</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064059" xml:space="preserve">
     <value>EMBLEM_OPRL2</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064060" xml:space="preserve">
     <value>EMBLEM_JJJ</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064061" xml:space="preserve">
     <value>EMBLEM_LUCID</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064062" xml:space="preserve">
     <value>EMBLEM_OVERMATCH</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064063" xml:space="preserve">
     <value>EMBLEM_ARK</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064064" xml:space="preserve">
     <value>EMBLEM_DATALUXE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064065" xml:space="preserve">
     <value>EMBLEM_SASAKI</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064066" xml:space="preserve">
     <value>EMBLEM_AR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064067" xml:space="preserve">
     <value>EMBLEM_SMG</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064068" xml:space="preserve">
     <value>EMBLEM_BR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064069" xml:space="preserve">
     <value>EMBLEM_CR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064070" xml:space="preserve">
     <value>EMBLEM_LMG</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064071" xml:space="preserve">
     <value>EMBLEM_SNIPER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064072" xml:space="preserve">
     <value>EMBLEM_SHOTGUN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064073" xml:space="preserve">
     <value>EMBLEM_9MM</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064074" xml:space="preserve">
     <value>EMBLEM_45</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064075" xml:space="preserve">
     <value>EMBLEM_REVOLVER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064076" xml:space="preserve">
     <value>EMBLEM_MACHINEPISTOL</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064077" xml:space="preserve">
     <value>EMBLEM_BURSTPISTOL</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064078" xml:space="preserve">
     <value>EMBLEM_HAMMER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064079" xml:space="preserve">
     <value>EMBLEM_MACHETE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064080" xml:space="preserve">
     <value>EMBLEM_SONICKNIFE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064081" xml:space="preserve">
     <value>EMBLEM_KNIFE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064082" xml:space="preserve">
     <value>EMBLEM_RAILGUN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064083" xml:space="preserve">
     <value>EMBLEM_MINIGUN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064084" xml:space="preserve">
     <value>EMBLEM_STINGER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064085" xml:space="preserve">
     <value>EMBLEM_SWARM</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064086" xml:space="preserve">
     <value>EMBLEM_GRENADELAUNCHER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064087" xml:space="preserve">
     <value>EMBLEM_FLAMETHROWER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064088" xml:space="preserve">
     <value>EMBLEM_TURRET</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064089" xml:space="preserve">
     <value>EMBLEM_AIRSTRIKE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064090" xml:space="preserve">
     <value>EMBLEM_HARDSUIT</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064091" xml:space="preserve">
     <value>EMBLEM_HEAL</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064092" xml:space="preserve">
     <value>EMBLEM_AMMO</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064093" xml:space="preserve">
     <value>EMBLEM_HEAVYAMMO</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064094" xml:space="preserve">
     <value>EMBLEM_SHOCKMINE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064095" xml:space="preserve">
     <value>EMBLEM_FRAG</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064096" xml:space="preserve">
     <value>EMBLEM_DECOY</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064097" xml:space="preserve">
     <value>EMBLEM_DIGI</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064098" xml:space="preserve">
     <value>EMBLEM_EMP</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064099" xml:space="preserve">
     <value>EMBLEM_ELECTROGRENADE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064100" xml:space="preserve">
     <value>EMBLEM_JAMMER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064101" xml:space="preserve">
     <value>EMBLEM_HE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064102" xml:space="preserve">
     <value>EMBLEM_HEALPACK</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064103" xml:space="preserve">
     <value>EMBLEM_AMMOPACK</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064104" xml:space="preserve">
     <value>EMBLEM_REVIVEPACK</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064105" xml:space="preserve">
     <value>EMBLEM_TOXICGRENADE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064106" xml:space="preserve">
     <value>EMBLEM_BARRIER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064107" xml:space="preserve">
     <value>EMBLEM_REPAIR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064108" xml:space="preserve">
     <value>EMBLEM_HRVRESET</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064109" xml:space="preserve">
     <value>EMBLEM_PROXMINE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064110" xml:space="preserve">
     <value>EMBLEM_HRVPING</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064111" xml:space="preserve">
     <value>EMBLEM_CLOAK</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064112" xml:space="preserve">
     <value>EMBLEM_EXPLOSIVEAMMO</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064113" xml:space="preserve">
     <value>EMBLEM_TOXICAMMO</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064114" xml:space="preserve">
     <value>EMBLEM_INCINDIARYAMMO</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064115" xml:space="preserve">
     <value>EMBLEM_SHOCKAMMO</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064116" xml:space="preserve">
     <value>EMBLEM_30DAYSFIGHT</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064117" xml:space="preserve">
     <value>EMBLEM_LEVEL_40</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064118" xml:space="preserve">
     <value>EMBLEM_LEVEL_45</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064119" xml:space="preserve">
     <value>EMBLEM_LEVEL_50</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064120" xml:space="preserve">
     <value>EMBLEM_HEROGRENDEL</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064121" xml:space="preserve">
     <value>EMBLEM_HEROVIPER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064122" xml:space="preserve">
     <value>EMBLEM_HERODUCHESS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064123" xml:space="preserve">
     <value>EMBLEM_HERODEACON</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064124" xml:space="preserve">
     <value>EMBLEM_HEROMARS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064125" xml:space="preserve">
     <value>EMBLEM_HEROCHRONOS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064126" xml:space="preserve">
     <value>EMBLEM_HEROLAZARUS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064127" xml:space="preserve">
     <value>EMBLEM_HEROARTEMIS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064128" xml:space="preserve">
     <value>EMBLEM_HEROCRUSHER</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064129" xml:space="preserve">
     <value>EMBLEM_HEROLILITH</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064130" xml:space="preserve">
     <value>EMBLEM_HEROWHITEKNIGHT</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064131" xml:space="preserve">
     <value>EMBLEM_KATANA</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064132" xml:space="preserve">
     <value>EMBLEM_HSDECOY</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064133" xml:space="preserve">
     <value>EMBLEM_THROWINGAXE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064134" xml:space="preserve">
     <value>EMBLEM_THROWINGKNIFE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064135" xml:space="preserve">
     <value>EMBLEM_CROWBAR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064136" xml:space="preserve">
     <value>EMBLEM_RESPAWN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064137" xml:space="preserve">
     <value>EMBLEM_EXPLOSIVEGEAR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064138" xml:space="preserve">
     <value>EMBLEM_TOXICGEAR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064139" xml:space="preserve">
     <value>EMBLEM_INCENDIARYGEAR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064140" xml:space="preserve">
     <value>EMBLEM_SHOCKGEAR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064141" xml:space="preserve">
     <value>EMBLEM_MELEEGEAR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064142" xml:space="preserve">
     <value>EMBLEM_HOLODECOY</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064143" xml:space="preserve">
     <value>EMBLEM_SCORPION</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064144" xml:space="preserve">
     <value>EMBLEM_ROBOTPOD</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064146" xml:space="preserve">
     <value>EMBLEM_NINJASTARS</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064147" xml:space="preserve">
     <value>EMBLEM_FLAREGUN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064148" xml:space="preserve">
     <value>EMBLEM_HMG</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064149" xml:space="preserve">
     <value>EMBLEM_SARK</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064150" xml:space="preserve">
     <value>EMBLEM_SMG2</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064151" xml:space="preserve">
     <value>EMBLEM_HAR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064152" xml:space="preserve">
     <value>EMBLEM_AMR</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064153" xml:space="preserve">
     <value>EMBLEM_SMGi</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064154" xml:space="preserve">
     <value>EMBLEM_BPFA</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064155" xml:space="preserve">
     <value>EMBLEM_SOON</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064156" xml:space="preserve">
     <value>EMBLEM_HSLBOT</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064157" xml:space="preserve">
     <value>EMBLEM_HSLWHITE</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064158" xml:space="preserve">
     <value>EMBLEM_HSLBOTISOLATED</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064159" xml:space="preserve">
     <value>EMBLEM_PARITY_PATCH</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064200" xml:space="preserve">
     <value>EMBLEM_ANIM_LAUGHPUMPKIN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064201" xml:space="preserve">
     <value>EMBLEM_ANIM_GRAYZOMBIELOGO</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064202" xml:space="preserve">
     <value>EMBLEM_ANIM_BLRLOGO_SPIN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064203" xml:space="preserve">
     <value>EMBLEM_ANIM_MLG_FallLOGO_SPIN</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064204" xml:space="preserve">
     <value>EMBLEM_ANIM_HSLBOT_HSL</value>
+    <comment>emblem_icon</comment>
   </data>
   <data name="064640" xml:space="preserve">
     <value>EMBLEM250</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064641" xml:space="preserve">
     <value>EMBLEM251</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064642" xml:space="preserve">
     <value>EMBLEM252</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064643" xml:space="preserve">
     <value>EMBLEM253</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064644" xml:space="preserve">
     <value>EMBLEM254</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064645" xml:space="preserve">
     <value>EMBLEM255</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064646" xml:space="preserve">
     <value>EMBLEM256</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064647" xml:space="preserve">
     <value>EMBLEM257</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064648" xml:space="preserve">
     <value>EMBLEM258</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064649" xml:space="preserve">
     <value>EMBLEM259</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064650" xml:space="preserve">
     <value>EMBLEM260</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064651" xml:space="preserve">
     <value>EMBLEM261</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064652" xml:space="preserve">
     <value>EMBLEM262</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064653" xml:space="preserve">
     <value>EMBLEM263</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064654" xml:space="preserve">
     <value>EMBLEM264</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064655" xml:space="preserve">
     <value>EMBLEM265</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064656" xml:space="preserve">
     <value>EMBLEM266</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064657" xml:space="preserve">
     <value>EMBLEM267</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064658" xml:space="preserve">
     <value>EMBLEM268</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064659" xml:space="preserve">
     <value>EMBLEM269</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064660" xml:space="preserve">
     <value>EMBLEM270</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064661" xml:space="preserve">
     <value>EMBLEM271</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064662" xml:space="preserve">
     <value>EMBLEM272</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064663" xml:space="preserve">
     <value>EMBLEM273</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064664" xml:space="preserve">
     <value>EMBLEM274</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064665" xml:space="preserve">
     <value>EMBLEM275</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064666" xml:space="preserve">
     <value>EMBLEM276</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064667" xml:space="preserve">
     <value>EMBLEM277</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064668" xml:space="preserve">
     <value>EMBLEM278</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064669" xml:space="preserve">
     <value>EMBLEM279</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064670" xml:space="preserve">
     <value>EMBLEM280</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064671" xml:space="preserve">
     <value>EMBLEM281</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064672" xml:space="preserve">
     <value>EMBLEM282</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064673" xml:space="preserve">
     <value>EMBLEM283</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064674" xml:space="preserve">
     <value>EMBLEM284</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064675" xml:space="preserve">
     <value>EMBLEM285</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064676" xml:space="preserve">
     <value>EMBLEM286</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064677" xml:space="preserve">
     <value>EMBLEM287</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064678" xml:space="preserve">
     <value>EMBLEM288</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064679" xml:space="preserve">
     <value>EMBLEM289</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064680" xml:space="preserve">
     <value>EMBLEM290</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064681" xml:space="preserve">
     <value>EMBLEM291</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="064682" xml:space="preserve">
     <value>EMBLEM292</value>
+    <comment>emblem_shape</comment>
   </data>
   <data name="061000" xml:space="preserve">
     <value>None</value>
+    <comment>titles</comment>
   </data>
   <data name="061001" xml:space="preserve">
     <value>Headhunter</value>
+    <comment>titles</comment>
   </data>
   <data name="061002" xml:space="preserve">
     <value>TheDestroyer</value>
+    <comment>titles</comment>
   </data>
   <data name="061003" xml:space="preserve">
     <value>BulletVendor</value>
+    <comment>titles</comment>
   </data>
   <data name="061004" xml:space="preserve">
     <value>OnceBitten</value>
+    <comment>titles</comment>
   </data>
   <data name="061005" xml:space="preserve">
     <value>BlacklightVeteran</value>
+    <comment>titles</comment>
   </data>
   <data name="061006" xml:space="preserve">
     <value>TheCleaner</value>
+    <comment>titles</comment>
   </data>
   <data name="061007" xml:space="preserve">
     <value>TheBearClaw</value>
+    <comment>titles</comment>
   </data>
   <data name="061008" xml:space="preserve">
     <value>StreetBrawler</value>
+    <comment>titles</comment>
   </data>
   <data name="061009" xml:space="preserve">
     <value>Vindicator</value>
+    <comment>titles</comment>
   </data>
   <data name="061010" xml:space="preserve">
     <value>Assassin</value>
+    <comment>titles</comment>
   </data>
   <data name="061011" xml:space="preserve">
     <value>InternationalMerc</value>
+    <comment>titles</comment>
   </data>
   <data name="061012" xml:space="preserve">
     <value>GunForHire</value>
+    <comment>titles</comment>
   </data>
   <data name="061013" xml:space="preserve">
     <value>Exterminator</value>
+    <comment>titles</comment>
   </data>
   <data name="061014" xml:space="preserve">
     <value>DataScout</value>
+    <comment>titles</comment>
   </data>
   <data name="061015" xml:space="preserve">
     <value>TangoDown</value>
+    <comment>titles</comment>
   </data>
   <data name="061016" xml:space="preserve">
     <value>OnFire</value>
+    <comment>titles</comment>
   </data>
   <data name="061017" xml:space="preserve">
     <value>Loser</value>
+    <comment>titles</comment>
   </data>
   <data name="061018" xml:space="preserve">
     <value>Zombie</value>
+    <comment>titles</comment>
   </data>
   <data name="061019" xml:space="preserve">
     <value>TheDoctor</value>
+    <comment>titles</comment>
   </data>
   <data name="061020" xml:space="preserve">
     <value>ThePhantom</value>
+    <comment>titles</comment>
   </data>
   <data name="061021" xml:space="preserve">
     <value>BetaTester</value>
+    <comment>titles</comment>
   </data>
   <data name="061022" xml:space="preserve">
     <value>Pyromaniac</value>
+    <comment>titles</comment>
   </data>
   <data name="061023" xml:space="preserve">
     <value>Railed</value>
+    <comment>titles</comment>
   </data>
   <data name="061024" xml:space="preserve">
     <value>SpinToWin</value>
+    <comment>titles</comment>
   </data>
   <data name="061025" xml:space="preserve">
     <value>AbsentKiller</value>
+    <comment>titles</comment>
   </data>
   <data name="061026" xml:space="preserve">
     <value>BoobyTrapper</value>
+    <comment>titles</comment>
   </data>
   <data name="061027" xml:space="preserve">
     <value>Laser</value>
+    <comment>titles</comment>
   </data>
   <data name="061028" xml:space="preserve">
     <value>MedicalNecessity</value>
+    <comment>titles</comment>
   </data>
   <data name="061029" xml:space="preserve">
     <value>SoreLoser</value>
+    <comment>titles</comment>
   </data>
   <data name="061030" xml:space="preserve">
     <value>DataTheif</value>
+    <comment>titles</comment>
   </data>
   <data name="061031" xml:space="preserve">
     <value>Unavoidable</value>
+    <comment>titles</comment>
   </data>
   <data name="061032" xml:space="preserve">
     <value>Arsonist</value>
+    <comment>titles</comment>
   </data>
   <data name="061033" xml:space="preserve">
     <value>SilentSentinel</value>
+    <comment>titles</comment>
   </data>
   <data name="061034" xml:space="preserve">
     <value>ForwardObserver</value>
+    <comment>titles</comment>
   </data>
   <data name="061035" xml:space="preserve">
     <value>EvilHAL</value>
+    <comment>titles</comment>
   </data>
   <data name="061036" xml:space="preserve">
     <value>GotCrushed</value>
+    <comment>titles</comment>
   </data>
   <data name="061037" xml:space="preserve">
     <value>BringsDeathFromAbove</value>
+    <comment>titles</comment>
   </data>
   <data name="061038" xml:space="preserve">
     <value>RoadKill</value>
+    <comment>titles</comment>
   </data>
   <data name="061039" xml:space="preserve">
     <value>Lover</value>
+    <comment>titles</comment>
   </data>
   <data name="061040" xml:space="preserve">
     <value>MrMoneyBags</value>
+    <comment>titles</comment>
   </data>
   <data name="061041" xml:space="preserve">
     <value>DeepPockets</value>
+    <comment>titles</comment>
   </data>
   <data name="061042" xml:space="preserve">
     <value>PatientZero</value>
+    <comment>titles</comment>
   </data>
   <data name="061043" xml:space="preserve">
     <value>AirSupremacy</value>
+    <comment>titles</comment>
   </data>
   <data name="061044" xml:space="preserve">
     <value>FullThrottle</value>
+    <comment>titles</comment>
   </data>
   <data name="061045" xml:space="preserve">
     <value>RottenToTheCore</value>
+    <comment>titles</comment>
   </data>
   <data name="061046" xml:space="preserve">
     <value>DirtyThirty</value>
+    <comment>titles</comment>
   </data>
   <data name="061047" xml:space="preserve">
     <value>AndAllIGotWasThisHardsuit</value>
+    <comment>titles</comment>
   </data>
   <data name="061048" xml:space="preserve">
     <value>HarbingerOfDeath</value>
+    <comment>titles</comment>
   </data>
   <data name="061049" xml:space="preserve">
     <value>LikeABoss</value>
+    <comment>titles</comment>
   </data>
   <data name="061050" xml:space="preserve">
     <value>EggHunter</value>
+    <comment>titles</comment>
   </data>
   <data name="061051" xml:space="preserve">
     <value>AllIGotWasThisTitle</value>
+    <comment>titles</comment>
   </data>
   <data name="061052" xml:space="preserve">
     <value>REFERAL_1</value>
+    <comment>titles</comment>
   </data>
   <data name="061053" xml:space="preserve">
     <value>REFERAL_3</value>
+    <comment>titles</comment>
   </data>
   <data name="061054" xml:space="preserve">
     <value>REFERAL_5</value>
+    <comment>titles</comment>
   </data>
   <data name="061055" xml:space="preserve">
     <value>REFERAL_10</value>
+    <comment>titles</comment>
   </data>
   <data name="061056" xml:space="preserve">
     <value>REFERAL_20</value>
+    <comment>titles</comment>
   </data>
   <data name="061057" xml:space="preserve">
     <value>REFERAL_50</value>
+    <comment>titles</comment>
   </data>
   <data name="061058" xml:space="preserve">
     <value>REFERAL_100</value>
+    <comment>titles</comment>
   </data>
   <data name="061059" xml:space="preserve">
     <value>REFERAL_500</value>
+    <comment>titles</comment>
   </data>
   <data name="061060" xml:space="preserve">
     <value>REFERAL_1000</value>
+    <comment>titles</comment>
   </data>
   <data name="061061" xml:space="preserve">
     <value>REFERAL_2000</value>
+    <comment>titles</comment>
   </data>
   <data name="061062" xml:space="preserve">
     <value>HIGH_ROLLER</value>
+    <comment>titles</comment>
   </data>
   <data name="061063" xml:space="preserve">
     <value>30_DAYS_OF_FIGHT_PARTICIPANT</value>
+    <comment>titles</comment>
   </data>
   <data name="061064" xml:space="preserve">
     <value>30_DAYS_OF_FIGHT_WINNER</value>
+    <comment>titles</comment>
   </data>
   <data name="061065" xml:space="preserve">
     <value>EMPTY</value>
+    <comment>titles</comment>
   </data>
   <data name="061066" xml:space="preserve">
     <value>AUSSIE</value>
+    <comment>titles</comment>
   </data>
   <data name="061067" xml:space="preserve">
     <value>KIWI</value>
+    <comment>titles</comment>
   </data>
   <data name="061068" xml:space="preserve">
     <value>BATTLEHARDENED</value>
+    <comment>titles</comment>
   </data>
   <data name="061069" xml:space="preserve">
     <value>LOYALIST</value>
+    <comment>titles</comment>
   </data>
   <data name="061070" xml:space="preserve">
     <value>LEVEL_40</value>
+    <comment>titles</comment>
   </data>
   <data name="061071" xml:space="preserve">
     <value>LEVEL_45</value>
+    <comment>titles</comment>
   </data>
   <data name="061072" xml:space="preserve">
     <value>LEVEL_50</value>
+    <comment>titles</comment>
   </data>
   <data name="061073" xml:space="preserve">
     <value>LEVEL_55</value>
+    <comment>titles</comment>
   </data>
   <data name="061074" xml:space="preserve">
     <value>LEVEL_60</value>
+    <comment>titles</comment>
   </data>
   <data name="061075" xml:space="preserve">
     <value>LEVEL_65</value>
+    <comment>titles</comment>
   </data>
   <data name="061076" xml:space="preserve">
     <value>LEVEL_70</value>
+    <comment>titles</comment>
   </data>
   <data name="061077" xml:space="preserve">
     <value>DogOfWar</value>
+    <comment>titles</comment>
   </data>
   <data name="061078" xml:space="preserve">
     <value>HighwayRobber</value>
+    <comment>titles</comment>
   </data>
   <data name="061079" xml:space="preserve">
     <value>BLRPrime</value>
+    <comment>titles</comment>
   </data>
   <data name="061080" xml:space="preserve">
     <value>TotalJerkFace</value>
+    <comment>titles</comment>
   </data>
   <data name="061081" xml:space="preserve">
     <value>Community1</value>
+    <comment>titles</comment>
   </data>
   <data name="061082" xml:space="preserve">
     <value>Streamer1</value>
+    <comment>titles</comment>
   </data>
   <data name="061083" xml:space="preserve">
     <value>Supporter1</value>
+    <comment>titles</comment>
   </data>
   <data name="061084" xml:space="preserve">
     <value>Supporter2</value>
+    <comment>titles</comment>
   </data>
   <data name="061085" xml:space="preserve">
     <value>Supporter3</value>
+    <comment>titles</comment>
   </data>
   <data name="061086" xml:space="preserve">
     <value>Supporter4</value>
+    <comment>titles</comment>
   </data>
   <data name="061087" xml:space="preserve">
     <value>Supporter5</value>
+    <comment>titles</comment>
   </data>
   <data name="061088" xml:space="preserve">
     <value>Youtuber</value>
+    <comment>titles</comment>
   </data>
   <data name="061089" xml:space="preserve">
     <value>TheButcher</value>
+    <comment>titles</comment>
   </data>
   <data name="061090" xml:space="preserve">
     <value>Oathbreaker</value>
+    <comment>titles</comment>
   </data>
   <data name="061091" xml:space="preserve">
     <value>Oathkeeper</value>
+    <comment>titles</comment>
   </data>
   <data name="061092" xml:space="preserve">
     <value>Hearteater</value>
+    <comment>titles</comment>
   </data>
   <data name="061093" xml:space="preserve">
     <value>TheReaper</value>
+    <comment>titles</comment>
   </data>
   <data name="061094" xml:space="preserve">
     <value>TheCursed</value>
+    <comment>titles</comment>
   </data>
   <data name="061095" xml:space="preserve">
     <value>ThePunisher</value>
+    <comment>titles</comment>
   </data>
   <data name="061096" xml:space="preserve">
     <value>TheSlayer</value>
+    <comment>titles</comment>
   </data>
   <data name="061097" xml:space="preserve">
     <value>TheInsane</value>
+    <comment>titles</comment>
   </data>
   <data name="061098" xml:space="preserve">
     <value>ofManyTalents</value>
+    <comment>titles</comment>
   </data>
   <data name="061099" xml:space="preserve">
     <value>BaronVonAwesome</value>
+    <comment>titles</comment>
   </data>
   <data name="061100" xml:space="preserve">
     <value>Mr.Sir</value>
+    <comment>titles</comment>
   </data>
   <data name="061101" xml:space="preserve">
     <value>LadyKiller</value>
+    <comment>titles</comment>
   </data>
   <data name="061102" xml:space="preserve">
     <value>TheCrippler</value>
+    <comment>titles</comment>
   </data>
   <data name="061103" xml:space="preserve">
     <value>CrazyLegs</value>
+    <comment>titles</comment>
   </data>
   <data name="061104" xml:space="preserve">
     <value>TheBlackWidow</value>
+    <comment>titles</comment>
   </data>
   <data name="061105" xml:space="preserve">
     <value>TheHurricane</value>
+    <comment>titles</comment>
   </data>
   <data name="061106" xml:space="preserve">
     <value>TheTeddyBear</value>
+    <comment>titles</comment>
   </data>
   <data name="061107" xml:space="preserve">
     <value>ThePeacemaker</value>
+    <comment>titles</comment>
   </data>
   <data name="061108" xml:space="preserve">
     <value>BoneSnapper</value>
+    <comment>titles</comment>
   </data>
   <data name="061109" xml:space="preserve">
     <value>ThePolitician</value>
+    <comment>titles</comment>
   </data>
   <data name="061110" xml:space="preserve">
     <value>TheDude</value>
+    <comment>titles</comment>
   </data>
   <data name="061111" xml:space="preserve">
     <value>RapidFire</value>
+    <comment>titles</comment>
   </data>
   <data name="061112" xml:space="preserve">
     <value>Unbreakable</value>
+    <comment>titles</comment>
   </data>
   <data name="061113" xml:space="preserve">
     <value>TheAnimal</value>
+    <comment>titles</comment>
   </data>
   <data name="061114" xml:space="preserve">
     <value>Lucky</value>
+    <comment>titles</comment>
   </data>
   <data name="061115" xml:space="preserve">
     <value>TheShadow</value>
+    <comment>titles</comment>
   </data>
   <data name="061116" xml:space="preserve">
     <value>Community2</value>
+    <comment>titles</comment>
   </data>
   <data name="061117" xml:space="preserve">
     <value>Anniversary_2014</value>
+    <comment>titles</comment>
   </data>
   <data name="061118" xml:space="preserve">
     <value>Season1_First</value>
+    <comment>titles</comment>
   </data>
   <data name="061119" xml:space="preserve">
     <value>Season1_Second</value>
+    <comment>titles</comment>
   </data>
   <data name="061120" xml:space="preserve">
     <value>Season1_Third</value>
+    <comment>titles</comment>
   </data>
   <data name="061121" xml:space="preserve">
     <value>WebLocTitle1</value>
+    <comment>titles</comment>
   </data>
   <data name="061122" xml:space="preserve">
     <value>WebLocTitle2</value>
+    <comment>titles</comment>
   </data>
   <data name="061123" xml:space="preserve">
     <value>WebLocTitle3</value>
+    <comment>titles</comment>
   </data>
   <data name="061124" xml:space="preserve">
     <value>WebLocTitle4</value>
+    <comment>titles</comment>
   </data>
   <data name="061125" xml:space="preserve">
     <value>WebLocTitle5</value>
+    <comment>titles</comment>
   </data>
   <data name="061126" xml:space="preserve">
     <value>WebLocTitle6</value>
+    <comment>titles</comment>
   </data>
   <data name="061127" xml:space="preserve">
     <value>WebLocTitle7</value>
+    <comment>titles</comment>
   </data>
   <data name="061128" xml:space="preserve">
     <value>WebLocTitle8</value>
+    <comment>titles</comment>
   </data>
   <data name="061129" xml:space="preserve">
     <value>WebLocTitle9</value>
+    <comment>titles</comment>
   </data>
   <data name="061130" xml:space="preserve">
     <value>WebLocTitle10</value>
+    <comment>titles</comment>
   </data>
   <data name="061131" xml:space="preserve">
     <value>WebLocTitle11</value>
+    <comment>titles</comment>
   </data>
   <data name="061132" xml:space="preserve">
     <value>WebLocTitle12</value>
+    <comment>titles</comment>
   </data>
   <data name="061133" xml:space="preserve">
     <value>WebLocTitle13</value>
+    <comment>titles</comment>
   </data>
   <data name="061134" xml:space="preserve">
     <value>WebLocTitle14</value>
+    <comment>titles</comment>
   </data>
   <data name="061135" xml:space="preserve">
     <value>WebLocTitle15</value>
+    <comment>titles</comment>
   </data>
   <data name="061136" xml:space="preserve">
     <value>WebLocTitle16</value>
+    <comment>titles</comment>
   </data>
   <data name="061137" xml:space="preserve">
     <value>WebLocTitle17</value>
+    <comment>titles</comment>
   </data>
   <data name="061138" xml:space="preserve">
     <value>WebLocTitle18</value>
+    <comment>titles</comment>
   </data>
   <data name="061139" xml:space="preserve">
     <value>WebLocTitle19</value>
+    <comment>titles</comment>
   </data>
   <data name="061140" xml:space="preserve">
     <value>ArchonRedemption</value>
+    <comment>titles</comment>
   </data>
   <data name="061141" xml:space="preserve">
     <value>TheBurningSensation</value>
+    <comment>titles</comment>
   </data>
   <data name="061142" xml:space="preserve">
     <value>TheRegulator</value>
+    <comment>titles</comment>
   </data>
   <data name="061143" xml:space="preserve">
     <value>SourceCode</value>
+    <comment>titles</comment>
   </data>
   <data name="061144" xml:space="preserve">
     <value>HVK 44 Thumper</value>
+    <comment>titles</comment>
   </data>
   <data name="061145" xml:space="preserve">
     <value>TacticalTryhard</value>
+    <comment>titles</comment>
   </data>
   <data name="061146" xml:space="preserve">
     <value>FT-90Fortune</value>
+    <comment>titles</comment>
   </data>
   <data name="061147" xml:space="preserve">
     <value>DesertGrave</value>
+    <comment>titles</comment>
   </data>
   <data name="061148" xml:space="preserve">
     <value>Sub-Shock</value>
+    <comment>titles</comment>
   </data>
   <data name="061149" xml:space="preserve">
     <value>DesertFox</value>
+    <comment>titles</comment>
   </data>
   <data name="061151" xml:space="preserve">
     <value>Marmotton</value>
+    <comment>titles</comment>
   </data>
   <data name="061152" xml:space="preserve">
     <value>Ruffzmc01</value>
+    <comment>titles</comment>
   </data>
   <data name="061153" xml:space="preserve">
     <value>BugBasher</value>
+    <comment>titles</comment>
   </data>
   <data name="061154" xml:space="preserve">
     <value>ParityPatchVeteran</value>
+    <comment>titles</comment>
   </data>
   <data name="061155" xml:space="preserve">
     <value>CommunityAppreciation01</value>
+    <comment>titles</comment>
   </data>
   <data name="061156" xml:space="preserve">
     <value>CommunityAppreciation02</value>
+    <comment>titles</comment>
   </data>
   <data name="061157" xml:space="preserve">
     <value>CommunityAppreciation03</value>
+    <comment>titles</comment>
   </data>
   <data name="061158" xml:space="preserve">
     <value>CommunityAppreciation04</value>
+    <comment>titles</comment>
   </data>
   <data name="061159" xml:space="preserve">
     <value>CommunityAppreciation05</value>
+    <comment>titles</comment>
   </data>
   <data name="061160" xml:space="preserve">
     <value>CommunityAppreciation06</value>
+    <comment>titles</comment>
   </data>
   <data name="061161" xml:space="preserve">
     <value>Roughneck</value>
+    <comment>titles</comment>
   </data>
   <data name="061162" xml:space="preserve">
     <value>Translator_F</value>
+    <comment>titles</comment>
   </data>
   <data name="061163" xml:space="preserve">
     <value>Translator_I</value>
+    <comment>titles</comment>
   </data>
   <data name="061164" xml:space="preserve">
     <value>Translator_G</value>
+    <comment>titles</comment>
   </data>
   <data name="061165" xml:space="preserve">
     <value>Translator_S</value>
+    <comment>titles</comment>
   </data>
   <data name="061166" xml:space="preserve">
     <value>Translator_R</value>
+    <comment>titles</comment>
   </data>
   <data name="061167" xml:space="preserve">
     <value>Translator_Gen</value>
+    <comment>titles</comment>
   </data>
   <data name="061168" xml:space="preserve">
     <value>ArtContestWinners</value>
+    <comment>titles</comment>
   </data>
   <data name="061169" xml:space="preserve">
     <value>BloodVengeance</value>
+    <comment>titles</comment>
   </data>
   <data name="061170" xml:space="preserve">
     <value>Duplicity</value>
+    <comment>titles</comment>
   </data>
   <data name="061171" xml:space="preserve">
     <value>lovekills</value>
+    <comment>titles</comment>
   </data>
   <data name="061172" xml:space="preserve">
     <value>CommunityAppreciation07</value>
+    <comment>titles</comment>
   </data>
   <data name="061173" xml:space="preserve">
     <value>CommunityAppreciation08</value>
+    <comment>titles</comment>
   </data>
 </root>

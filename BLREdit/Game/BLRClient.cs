@@ -900,7 +900,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         if (!basePath.EndsWith("\\")) { basePath += "\\"; }
 
-        PatchedPath ??= $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
+        _patchedPath ??= $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
 
         return basePath;
     }

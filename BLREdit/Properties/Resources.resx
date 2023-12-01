@@ -234,6 +234,15 @@
   <data name="enum_InfraredProtection" xml:space="preserve">
     <value>Infrared Prot</value>
   </data>
+  <data name="enum_LastApplied" xml:space="preserve">
+    <value>Last  Applied</value>
+  </data>
+  <data name="enum_LastModified" xml:space="preserve">
+    <value>Last Modified</value>
+  </data>
+  <data name="enum_LastViewed" xml:space="preserve">
+    <value>Last Viewed</value>
+  </data>
   <data name="enum_MeleeProtection" xml:space="preserve">
     <value>Melee Prot</value>
   </data>
@@ -260,6 +269,9 @@
   </data>
   <data name="enum_ScopeInTime" xml:space="preserve">
     <value>ScopeInTime</value>
+  </data>
+  <data name="enum_TimeOfCreation" xml:space="preserve">
+    <value>Time of Creation</value>
   </data>
   <data name="enum_ToxicProtection" xml:space="preserve">
     <value>Toxic Prot</value>
@@ -687,14 +699,13 @@ Needs a Restart to Install Protocol!</value>
     <value>Weapons</value>
   </data>
   <data name="txt_TT_PlayerName" xml:space="preserve">
-    <value>PlayerName can only contain: [a-z], [A-Z], [0-9], dash(-) and underscore(_).</value>
+    <value>PlayerName can only contain: [a-z], [A-Z], [0-9], dash( - ), underscore( _ ) and dot( . ).</value>
   </data>
   <data name="txt_TT_Region" xml:space="preserve">
-    <value>Region examples (EU-West, US-West, AU, OCE)</value>
+    <value>Region examples (EU-West, US-West, AU, OCE, LATAM)</value>
   </data>
   <data name="txt_TT_SelectedProxyVersion" xml:space="preserve">
-    <value>Available ProxyVersions: 
-    v1.0.0-beta.2, v1.0.0-beta.3
+    <value>Available ProxyVersions: v1.0.0-beta.2, v1.0.0-beta.3
 Info:
 beta3 will only start in windowed mode but you can ALT+Enter to go to fullscreen
 and might also be still very buggy</value>

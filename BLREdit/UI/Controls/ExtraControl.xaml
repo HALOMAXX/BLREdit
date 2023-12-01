@@ -30,13 +30,13 @@
         <Border DataContext="{Binding Path=Depot2}" Height="130" Width="130" Margin="130,430,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Depot3}" Height="130" Width="130" Margin="260,430,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Depot3}" Height="130" Width="130" Margin="0,560,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Depot4}" Height="130" Width="130" Margin="0,560,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Depot4}" Height="130" Width="130" Margin="130,560,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=Depot5}" Height="130" Width="130" Margin="130,560,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+        <Border DataContext="{Binding Path=Depot5}" Height="130" Width="130" Margin="260,560,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
 

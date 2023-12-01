@@ -57,8 +57,6 @@ public sealed class ItemFilters : INotifyPropertyChanged
         item.IsValid.Set(item.ValidForTest(Instance?.WeaponFilter?.Receiver ?? null));
         switch ( item.Category )
         {
-            case ImportSystem.EMOTES_CATEGORY:
-                return !string.IsNullOrEmpty(item.Name);
             case ImportSystem.PRIMARY_CATEGORY: 
                 return true;
             case ImportSystem.SECONDARY_CATEGORY:

@@ -733,649 +733,649 @@
     {
       "Icon": "t_Taunt_Bow_128x128",
       "Name": "Bow",
-      "UID": 350
+      "UID": 300
     },
     {
       "Icon": "t_Taunt_Caution_128x128",
       "Name": "Caution",
-      "UID": 351
+      "UID": 301
     },
     {
       "Icon": "t_Taunt_Clap_128x128",
       "Name": "Clap",
-      "UID": 352
+      "UID": 302
     },
     {
       "Icon": "t_Taunt_Crane_128x128",
       "Name": "Crane",
-      "UID": 353
+      "UID": 303
     },
     {
       "Icon": "t_Taunt_Salute_128x128",
       "Name": "Salute",
-      "UID": 354
+      "UID": 304
     },
     {
       "Icon": "t_Taunt_RobotDance_128x128",
       "Name": "Robot Dance",
-      "UID": 355
+      "UID": 305
     },
     {
       "Icon": "t_Taunt_TeaBag_128x128",
       "Name": "TeaBag",
-      "UID": 356
+      "UID": 306
     },
     {
       "Icon": "t_Taunt_Roar_128x128",
       "Name": "Roar",
-      "UID": 357
+      "UID": 307
     },
     {
       "Icon": "t_Taunts_Flex_128x128",
       "Name": "Flex",
-      "UID": 358
+      "UID": 308
     },
     {
       "Icon": "t_Taunt_TheKneeBow_128x128",
       "Name": "The Kneebow",
-      "UID": 359
+      "UID": 309
     },
     {
       "Icon": "t_Taunt_FancyBow_128x128",
       "Name": "Fancy Bow",
-      "UID": 360
+      "UID": 310
     },
     {
       "Icon": "t_Taunt_BringIt_128x128",
       "Name": "Bring It",
-      "UID": 361
+      "UID": 311
     },
     {
       "Icon": "t_Taunt_GunWave_128x128",
       "Name": "Gun Wave",
-      "UID": 364
+      "UID": 312
     },
     {
       "Icon": "t_Taunt_Muahaha_128x128",
       "Name": "Muahaha",
-      "UID": 365
+      "UID": 313
     },
     {
       "Icon": "t_Taunt_PolsedPoint_128x128",
       "Name": "Posed Point",
-      "UID": 366
+      "UID": 314
     },
     {
       "Icon": "t_Taunt_Kiss_128x128",
       "Name": "Kiss",
-      "UID": 367
+      "UID": 315
     },
     {
       "Icon": "t_Taunt_GroundPound_128x128",
       "Name": "Ground Pound",
-      "UID": 368
+      "UID": 316
     },
     {
       "Icon": "t_Taunt_Rock_128x128",
       "Name": "Rock",
-      "UID": 375
+      "UID": 317
     },
     {
       "Icon": "t_Taunt_Paper_128x128",
       "Name": "Paper",
-      "UID": 376
+      "UID": 318
     },
     {
       "Icon": "t_Taunt_Scissors_128x128",
       "Name": "Scissors",
-      "UID": 377
+      "UID": 319
     },
     {
       "Icon": "t_Taunt_SuckIt_128x128",
       "Name": "Suck it",
-      "UID": 378
+      "UID": 320
     },
     {
       "Icon": "t_Taunt_RocketFist_128x128",
       "Name": "Rocket Fist",
-      "UID": 379
+      "UID": 321
     },
     {
       "Icon": "t_Taunt_StepOff_128x128",
       "Name": "Step Off",
-      "UID": 380
+      "UID": 322
     },
     {
       "Icon": "t_Taunt_Flight_128x128",
       "Name": "Flight",
-      "UID": 381
+      "UID": 323
     },
     {
       "Name": "",
-      "UID": 382
+      "UID": 324
     },
     {
       "Icon": "t_Taunt_DigitalBow_128x128",
       "Name": "Bow Digital",
-      "UID": 383
+      "UID": 325
     },
     {
       "Icon": "t_Taunt_CautionDigital_128x128",
       "Name": "Caution Digital",
-      "UID": 384
+      "UID": 326
     },
     {
       "Icon": "t_Taunt_ClapDigital_128x128",
       "Name": "Clap Digital",
-      "UID": 385
+      "UID": 327
     },
     {
       "Icon": "t_Taunt_CraneDigital_128x128",
       "Name": "Crane Digital",
-      "UID": 388
+      "UID": 328
     },
     {
       "Icon": "t_Taunt_SaluteDigital_128x128",
       "Name": "Salute Digital",
-      "UID": 390
+      "UID": 329
     },
     {
       "Icon": "t_Taunt_TeaBagDigital_128x128",
       "Name": "TeaBag Digital",
-      "UID": 391
+      "UID": 330
     },
     {
       "Icon": "t_Taunt_DragonRoarl_128x128",
       "Name": "Roar Digital",
-      "UID": 392
+      "UID": 331
     },
     {
       "Icon": "t_Taunt_RobotDance_128x128",
       "Name": "Robot Dance Digital",
-      "UID": 393
+      "UID": 332
     },
     {
       "Icon": "t_Taunts_FlexDigital_128x128",
       "Name": "Flex Digital",
-      "UID": 394
+      "UID": 333
     },
     {
       "Icon": "t_Taunt_KneeBowDigital_128x128",
       "Name": "The Kneebow Digital",
-      "UID": 395
+      "UID": 334
     },
     {
       "Icon": "t_Taunt_FancyBowDigital_128x128",
       "Name": "Fancy Bow Digital",
-      "UID": 396
+      "UID": 335
     },
     {
       "Icon": "t_Taunt_BringItDigital_128x128",
       "Name": "Bring it Digital",
-      "UID": 397
+      "UID": 336
     },
     {
       "Icon": "t_Taunt_GunWaveDigital_128x128",
       "Name": "Gun Wave Digital",
-      "UID": 398
+      "UID": 337
     },
     {
       "Icon": "t_Taunt_MwahahaDigital_128x128",
       "Name": "Muahaha Digital",
-      "UID": 399
+      "UID": 338
     },
     {
       "Icon": "t_Taunt_PosedPointDigital_128x128",
       "Name": "Posed Point Digital",
-      "UID": 400
+      "UID": 339
     },
     {
       "Icon": "t_Taunt_KissDigital_128x128",
       "Name": "Kiss Digital",
-      "UID": 401
+      "UID": 340
     },
     {
       "Icon": "t_Taunt_GroundPound_128x128",
       "Name": "Ground Pound Digital",
-      "UID": 402
+      "UID": 341
     },
     {
       "Icon": "t_Taunt_RockDigital_128x128",
       "Name": "Rock Digital",
-      "UID": 403
+      "UID": 342
     },
     {
       "Icon": "t_Taunt_PaperDigital_128x128",
       "Name": "Paper Digital",
-      "UID": 404
+      "UID": 343
     },
     {
       "Icon": "t_Taunt_SissorsDigital_128x128",
       "Name": "Scissors Digital",
-      "UID": 405
+      "UID": 344
     },
     {
       "Icon": "t_Taunt_SuckItDigital_128x128",
       "Name": "Suck it Digital",
-      "UID": 406
+      "UID": 345
     },
     {
       "Icon": "t_Taunt_RocketFistDigital_128x128",
       "Name": "Rocket Fist Digital",
-      "UID": 407
+      "UID": 346
     },
     {
       "Icon": "t_Taunt_StepOff_128x128",
       "Name": "Step Off Digital",
-      "UID": 408
+      "UID": 347
     },
     {
       "Icon": "t_Taunt_AirplaneDigital_128x128",
       "Name": "Flight Digital",
-      "UID": 409
+      "UID": 348
     },
     {
       "Name": "",
-      "UID": 410
+      "UID": 349
     },
     {
       "Icon": "t_Taunt_Go_128x128",
       "Name": "Go",
-      "UID": 411
+      "UID": 350
     },
     {
       "Icon": "t_Taunt_Pump_128x128",
       "Name": "Pump",
-      "UID": 412
+      "UID": 351
     },
     {
       "Icon": "t_Taunt_CutIt_128x128",
       "Name": "Cut It",
-      "UID": 413
+      "UID": 352
     },
     {
       "Icon": "t_Taunt_ThroatSlit_128x128",
       "Name": "Throat Slit",
-      "UID": 414
+      "UID": 353
     },
     {
       "Icon": "t_Taunt_ThumbsDown_128x128",
       "Name": "Thumbs Down",
-      "UID": 420
+      "UID": 354
     },
     {
       "Icon": "t_Taunt_ThumbsUp_128x128",
       "Name": "Thumbs Up",
-      "UID": 415
+      "UID": 355
     },
     {
       "Icon": "t_Taunt_AOKl_128x128",
       "Name": "A-OK",
-      "UID": 416
+      "UID": 356
     },
     {
       "Icon": "t_Taunt_Metal_128x128",
       "Name": "Metal",
-      "UID": 417
+      "UID": 357
     },
     {
       "Icon": "t_Taunt_Point_128x128",
       "Name": "Point",
-      "UID": 418
+      "UID": 358
     },
     {
       "Icon": "t_Taunt_Rainbow_128x128",
       "Name": "Rainbow",
-      "UID": 419
+      "UID": 359
     },
     {
       "Icon": "t_Taunt_Wag_128x128",
       "Name": "Wag",
-      "UID": 422
+      "UID": 360
     },
     {
       "Icon": "t_Taunt_Hush_128x128",
       "Name": "Hush",
-      "UID": 300
+      "UID": 361
     },
     {
       "Name": "",
-      "UID": 301
+      "UID": 362
     },
     {
       "Name": "",
-      "UID": 302
+      "UID": 363
     },
     {
       "Icon": "t_Taunt_AirPlane_128x128",
       "Name": "Airplane",
-      "UID": 303
+      "UID": 364
     },
     {
       "Icon": "t_Taunt_GunPumpl_128x128",
       "Name": "Gun Pump",
-      "UID": 304
+      "UID": 365
     },
     {
       "Icon": "t_Taunt_UpYours_128x128",
       "Name": "Up Yours",
-      "UID": 305
+      "UID": 366
     },
     {
       "Icon": "t_Taunt_Shh_128x128",
       "Name": "Shhh",
-      "UID": 306
+      "UID": 367
     },
     {
       "Icon": "t_Taunt_Veteran_128x128",
       "Name": "Veteran War Mask",
-      "UID": 307
+      "UID": 368
     },
     {
       "Name": "",
-      "UID": 308
+      "UID": 369
     },
     {
       "Name": "",
-      "UID": 309
+      "UID": 370
     },
     {
       "Icon": "t_Taunt_GiddyUpt_128x128",
       "Name": "Giddy Up",
-      "UID": 310
+      "UID": 371
     },
     {
       "Icon": "t_Taunt_HipShimmy_128x128",
       "Name": "Hip Shimmy",
-      "UID": 311
+      "UID": 372
     },
     {
       "Name": "",
-      "UID": 312
+      "UID": 373
     },
     {
       "Name": "",
-      "UID": 313
+      "UID": 374
     },
     {
       "Icon": "t_Taunt_GoDigital_128x128",
       "Name": "Go Digital",
-      "UID": 314
+      "UID": 375
     },
     {
       "Icon": "t_Taunt_PumpDigital_128x128",
       "Name": "Pump Digital",
-      "UID": 315
+      "UID": 376
     },
     {
       "Icon": "t_Taunt_CutItDigital_128x128",
       "Name": "Cut It Digital",
-      "UID": 316
+      "UID": 377
     },
     {
       "Icon": "t_Taunt_ThroatSlitDigital_128x128",
       "Name": "Throat Slit Digital",
-      "UID": 317
+      "UID": 378
     },
     {
       "Icon": "t_Taunt_ThumbsDownDigital_128x128",
       "Name": "Thumbs Down Digital",
-      "UID": 318
+      "UID": 379
     },
     {
       "Icon": "t_Taunt_ThumbsUpDigital_128x128",
       "Name": "Thumbs Up Digital",
-      "UID": 319
+      "UID": 380
     },
     {
       "Icon": "t_Taunt_AOKDigital_128x128",
       "Name": "A-OK Digital",
-      "UID": 320
+      "UID": 381
     },
     {
       "Icon": "t_Taunt_MetalDigital_128x128",
       "Name": "Metal Digital",
-      "UID": 321
+      "UID": 382
     },
     {
       "Icon": "t_Taunt_DigitalPoint_128x128",
       "Name": "Point Digital",
-      "UID": 322
+      "UID": 383
     },
     {
       "Icon": "t_Taunt_RainbowDigital_128x128",
       "Name": "Rainbow Digital",
-      "UID": 323
+      "UID": 384
     },
     {
       "Icon": "t_Taunt_WagDigital_128x128",
       "Name": "Wag Digital",
-      "UID": 324
+      "UID": 385
     },
     {
       "Icon": "t_Taunt_UppercutDigitall_128x128",
       "Name": "Uppercut Digital",
-      "UID": 325
+      "UID": 386
     },
     {
       "Icon": "t_Taunt_CraneKickDigitall_128x128",
       "Name": "Crane Kick Digital",
-      "UID": 326
+      "UID": 387
     },
     {
       "Icon": "t_Taunt_CameraDigital_128x128",
       "Name": "Camera Digital",
-      "UID": 327
+      "UID": 388
     },
     {
       "Icon": "t_Taunt_HushDigital_128x128",
       "Name": "Hush Digital",
-      "UID": 328
+      "UID": 389
     },
     {
       "Icon": "t_Taunt_ShrugTroll_128x128",
       "Name": "Troll Face",
-      "UID": 329
+      "UID": 390
     },
     {
       "Icon": "t_Taunt_AirplaneDigital_128x128",
       "Name": "Airplane Digital",
-      "UID": 330
+      "UID": 391
     },
     {
       "Icon": "t_Taunt_GunPumpDigital_128x128",
       "Name": "Gun Pump Digital",
-      "UID": 331
+      "UID": 392
     },
     {
       "Icon": "t_Taunt_UpYoursDigital_128x128",
       "Name": "Up Yours Digital",
-      "UID": 332
+      "UID": 393
     },
     {
       "Icon": "t_Taunt_ShhDigital_128x128",
       "Name": "Shhh Digital",
-      "UID": 333
+      "UID": 394
     },
     {
       "Icon": "t_Taunt_WarDogs_128x128",
       "Name": "War Dog",
-      "UID": 334
+      "UID": 395
     },
     {
       "Icon": "t_Taunt_Lasso_128x128",
       "Name": "Lasso",
-      "UID": 335
+      "UID": 396
     },
     {
       "Icon": "t_Taunt_ClassySalute_128x128",
       "Name": "Classy Salute",
-      "UID": 336
+      "UID": 397
     },
     {
       "Icon": "t_Taunt_MetalSkull_128x128",
       "Name": "Metal Skull",
-      "UID": 337
+      "UID": 398
     },
     {
       "Icon": "t_Taunt_SaltyPanda_128x128",
       "Name": "Sad Panda",
-      "UID": 338
+      "UID": 399
     },
     {
       "Icon": "t_Taunt_ShrugAndLaugh_128x128",
       "Name": "Shrug and Laugh",
-      "UID": 339
+      "UID": 400
     },
     {
       "Icon": "t_Taunt_DieDieDie_128x128",
       "Name": "Die die die!",
-      "UID": 340
+      "UID": 401
     },
     {
       "Icon": "t_Taunt_ThumbsDownLoser_128x128",
       "Name": "Loser",
-      "UID": 341
+      "UID": 402
     },
     {
       "Icon": "t_Taunt_KeepItComing_128x128",
       "Name": "Broken Heart",
-      "UID": 342
+      "UID": 403
     },
     {
       "Icon": "t_Taunt_Muahaha_128x128",
       "Name": "Hahaha",
-      "UID": 343
+      "UID": 404
     },
     {
       "Icon": "t_Taunt_PelvicThrust_128x128",
       "Name": "Pelvic Thrust",
-      "UID": 344
+      "UID": 405
     },
     {
       "Icon": "t_Taunt_PowerUp_128x128",
       "Name": "Super Charge",
-      "UID": 345
+      "UID": 406
     },
     {
       "Icon": "t_Taunt_TeaTime_128x128",
       "Name": "Tea-time Digital",
-      "UID": 346
+      "UID": 407
     },
     {
       "Icon": "t_Taunt_ExcalmationDigital_128x128",
       "Name": "Exclamation Digital",
-      "UID": 347
+      "UID": 408
     },
     {
       "Icon": "t_Taunt_ChickenDance_128x128",
       "Name": "Chicken Dance",
-      "UID": 348
+      "UID": 409
     },
     {
       "Icon": "t_Taunt_CaprainDigital_128x128",
       "Name": "Captain Digital",
-      "UID": 349
+      "UID": 410
     },
     {
       "Icon": "t_Taunt_BackFlip_128x128",
       "Name": "Backflip",
-      "UID": 423
+      "UID": 411
     },
     {
       "Icon": "t_Taunt_PelvicThrust_128x128",
       "Name": "Party Thrust",
-      "UID": 424
+      "UID": 412
     },
     {
       "Icon": "t_Taunt_Hallowen_PumpkinHead_128x128",
       "Name": "Pumpkin Head Digital",
-      "UID": 425
+      "UID": 413
     },
     {
       "Icon": "t_Taunt_Halloween_PumpkinLaugh_128x128",
       "Name": "Pumpking Laugh Digital",
-      "UID": 426
+      "UID": 414
     },
     {
       "Icon": "t_Taunt_Halloween_SkullMask_128x128",
       "Name": "Skull Mask Digital",
-      "UID": 427
+      "UID": 415
     },
     {
       "Icon": "t_Taunt_DevilFace_128x128",
       "Name": "Devil Laugh Digital",
-      "UID": 428
+      "UID": 416
     },
     {
       "Icon": "t_Taunt_HeadBop_128x128",
       "Name": "Head Bop",
-      "UID": 429
+      "UID": 417
     },
     {
       "Icon": "t_Taunt_DustOff_128x128",
       "Name": "Dust Off",
-      "UID": 430
+      "UID": 418
     },
     {
       "Icon": "t_Taunt_FlashPoint_128x128",
       "Name": "Flash Point",
-      "UID": 389
+      "UID": 319
     },
     {
       "Icon": "t_tauntPack",
       "Name": "Fireworks",
-      "UID": 421
+      "UID": 420
     },
     {
       "Icon": "t_Taunts_SnowballDigital_128x128",
       "Name": "Snowball Juggle",
-      "UID": 371
+      "UID": 421
     },
     {
       "Icon": "t_Taunts_UnusualDance_128x128",
       "Name": "Unusal Dance",
-      "UID": 372
+      "UID": 422
     },
     {
       "Icon": "t_Taunt_PelvicThrust_128x128",
       "Name": "Creepy Thrust",
-      "UID": 386
+      "UID": 423
     },
     {
       "Icon": "t_Taunt_BellKick_128x128",
       "Name": "Bell Kick",
-      "UID": 387
+      "UID": 424
     },
     {
       "Icon": "t_Taunt_IrishJig_128x128",
       "Name": "Irish Jig",
-      "UID": 497
+      "UID": 425
     },
     {
       "Icon": "t_Taunt_PowerPunch_Wind_128x128",
       "Name": "Punch Wind",
-      "UID": 498
+      "UID": 426
     },
     {
       "Icon": "t_Taunt_PowerPunch_Earth_128x128",
       "Name": "Punch Earth",
-      "UID": 499
+      "UID": 427
     },
     {
       "Icon": "t_Taunt_PowerPunch_Fire_128x128",
       "Name": "Punch Fire",
-      "UID": 500
+      "UID": 428
     },
     {
       "Icon": "t_Taunt_PowerPunch_Water_128x128",
       "Name": "Punch Water",
-      "UID": 501
+      "UID": 429
     },
     {
       "Icon": "t_Taunt_PowerPunch_Heart_128x128",
       "Name": "Punch Heart",
-      "UID": 502
+      "UID": 430
     }
   ],
   "hangers": [
@@ -19359,25 +19359,25 @@
       "Icon": "t_Depot_HealthRefill_128x128",
       "Name": "Health Refill",
       "CP": 100.0,
-      "UID": 20001
+      "UID": 20000
     },
     {
       "Icon": "t_Depot_ExtraAmmo_128x128",
       "Name": "Ammo Refill",
       "CP": 100.0,
-      "UID": 20000
+      "UID": 20001
     },
     {
       "Icon": "t_Depot_Flamethrower_128x128",
       "Name": "Flamethrower",
       "CP": 350.0,
-      "UID": 20003
+      "UID": 20002
     },
     {
       "Icon": "t_Depot_RocketLauncherArmor_128x128",
       "Name": "Rocket Stinger",
       "CP": 400.0,
-      "UID": 20002
+      "UID": 20003
     },
     {
       "Icon": "t_Depot_HardSuit_128x128",
@@ -19389,7 +19389,7 @@
       "Icon": "t_Depot_RocketLauncherSwarm_128x128",
       "Name": "Rocket Swarm",
       "CP": 1000.0,
-      "UID": 20011
+      "UID": 20005
     },
     {
       "Icon": "t_Depot_Airstrike_128x128",
@@ -19401,31 +19401,31 @@
       "Icon": "t_Depot_Railgun_128x128",
       "Name": "Railgun",
       "CP": 750.0,
-      "UID": 20005
+      "UID": 20007
     },
     {
       "Icon": "t_Depot_GrenadeLauncher_128x128",
       "Name": "Grenade Launcher",
       "CP": 500.0,
-      "UID": 20007
+      "UID": 20008
     },
     {
       "Icon": "t_Depot_MiniGun_128x128",
       "Name": "Minigun",
       "CP": 750.0,
-      "UID": 20008
+      "UID": 20009
     },
     {
       "Icon": "t_Depot_Turret_128x128",
       "Name": "Turret",
       "CP": 600.0,
-      "UID": 20009
+      "UID": 20010
     },
     {
       "Icon": "t_Depot_HeavyAmmunition_128x128",
       "Name": "Heavy Weapon Refill",
       "CP": 250.0,
-      "UID": 20010
+      "UID": 20011
     },
     {
       "Icon": "t_Depot_Katana_128x128",
@@ -19449,19 +19449,19 @@
       "Icon": "t_Depot_LightHardSuit_128x128",
       "Name": "Gunman Hardsuit",
       "CP": 975.0,
-      "UID": 20016
+      "UID": 20015
     },
     {
       "Icon": "t_Depot_EMPMine_128x128",
       "Name": "HRV Jammer",
       "CP": 1000.0,
-      "UID": 20015
+      "UID": 20016
     },
     {
       "Icon": "t_Depot_HealthRefill_128x128",
       "Name": "Toxic Antidote",
       "CP": 200.0,
-      "UID": 20019
+      "UID": 20017
     }
   ],
   "dialogPackAnnouncers": [
