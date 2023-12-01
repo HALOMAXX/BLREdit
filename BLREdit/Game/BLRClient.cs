@@ -639,9 +639,10 @@ public sealed class BLRClient : INotifyPropertyChanged
 
             if (diskLoadout is not null)
             {
+                string message = "";
                 foreach (var loadout in diskLoadout)
                 {
-                    if (IsAdvanced(loadout.GetLoadout()))
+                    if (IsAdvanced(loadout.GetLoadout(), ref message))
                     {
                         isAdvanced = true;
                     }
@@ -659,14 +660,17 @@ public sealed class BLRClient : INotifyPropertyChanged
                 else
                 {
                     isAdvanced = false;
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout1)) isAdvanced = true;
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout2)) isAdvanced = true;
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout3)) isAdvanced = true;
+                    string message = "Loadout 1:";
+                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout1, ref message)) isAdvanced = true;
+                    message += "\nLoadout 2:";
+                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout2, ref message)) isAdvanced = true;
+                    message += "\nLoadout 3:";
+                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout3, ref message)) isAdvanced = true;
 
                     if (isAdvanced)
                     {
                         currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
-                        LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!", "Warning");
+                        LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n{message}", "Warning");
                         return;
                     }
 
@@ -681,60 +685,66 @@ public sealed class BLRClient : INotifyPropertyChanged
         StartProcess(launchArgs, false, false, null, options.Server);
     }
 
-    public static bool IsAdvanced(BLRLoadout? loadout)
+    public static bool IsAdvanced(BLRLoadout? loadout, ref string message)
     {
         if (loadout is null) return false;
-        if (IsAdvanced(loadout.Primary)) return true;
-        if (IsAdvanced(loadout.Secondary)) return true;
+        bool advanced = false;
+        message += $"\n\tPrimary:";
+        if (IsAdvanced(loadout.Primary, ref message)) advanced = true;
+        message += $"\n\tSecondary:";
+        if (IsAdvanced(loadout.Secondary, ref message)) advanced = true;
 
-        if (!(loadout.Helmet?.IsValidFor(null) ?? false)) return true;
-        if (!(loadout.UpperBody?.IsValidFor(null) ?? false)) return true;
-        if (!(loadout.LowerBody?.IsValidFor(null) ?? false)) return true;
+        message += $"\n\tGear:";
+        if (!(loadout.Helmet?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tHelmet is invalid"; }
+        if (!(loadout.UpperBody?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tUpperBody is invalid"; }
+        if (!(loadout.LowerBody?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tLowerBody is invalid"; }
 
-        if (!(loadout.Tactical?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Trophy?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Avatar?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.BodyCamo?.IsValidFor(null) ?? false)) return true;
+        if (!(loadout.Tactical?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTactical is invalid"; }
+        if (!(loadout.Trophy?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTrophy is invalid"; }
+        if (!(loadout.Avatar?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tAvatar is invalid"; }
+        if (!(loadout.BodyCamo?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tBodyCamo is invalid"; }
 
-        if (!(loadout.Gear1?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Gear2?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Gear3?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Gear4?.IsValidFor(null) ?? true)) return true;
+        if (!(loadout.Gear1?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tGear1 is invalid"; }
+        if (!(loadout.Gear2?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tGear2 is invalid"; }
+        if (!(loadout.Gear3?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tGear3 is invalid"; }
+        if (!(loadout.Gear4?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tGear4 is invalid"; }
 
-        if (loadout.HasDuplicatedGear) return true;
+        if (loadout.HasDuplicatedGear) { advanced = true; message += $"\n\t\tGear duplicates are not allowed!"; }
 
-        if (!(loadout.Depot1?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Depot2?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Depot3?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Depot4?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Depot5?.IsValidFor(null) ?? true)) return true;
+        message += $"\n\tExtra:";
+        if (!(loadout.Depot1?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot1 is invalid"; }
+        if (!(loadout.Depot2?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot2 is invalid"; }
+        if (!(loadout.Depot3?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot3 is invalid"; }
+        if (!(loadout.Depot4?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot4 is invalid"; }
+        if (!(loadout.Depot5?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot5 is invalid"; }
 
-        if (!(loadout.Taunt1?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Taunt2?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Taunt3?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Taunt4?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Taunt5?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Taunt6?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Taunt7?.IsValidFor(null) ?? true)) return true;
-        if (!(loadout.Taunt8?.IsValidFor(null) ?? true)) return true;
-        return false;
+        if (!(loadout.Taunt1?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt1 is invalid"; }
+        if (!(loadout.Taunt2?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt2 is invalid"; }
+        if (!(loadout.Taunt3?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt3 is invalid"; }
+        if (!(loadout.Taunt4?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt4 is invalid"; }
+        if (!(loadout.Taunt5?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt5 is invalid"; }
+        if (!(loadout.Taunt6?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt6 is invalid"; }
+        if (!(loadout.Taunt7?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt7 is invalid"; }
+        if (!(loadout.Taunt8?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt8 is invalid"; }
+        return advanced;
     }
 
-    public static bool IsAdvanced(BLRWeapon? weapon)
+    public static bool IsAdvanced(BLRWeapon? weapon, ref string message)
     {
-        if(weapon is null || weapon.Receiver is null) return true;
-        if (!(weapon.Receiver?.IsValidFor(null) ?? false)) return true;
-        if (!(weapon.Barrel?.IsValidFor(weapon.Receiver) ?? true)) return true;
-        if (!(weapon.Muzzle?.IsValidFor(weapon.Receiver) ?? true)) return true;
-        if (!(weapon.Grip?.IsValidFor(weapon.Receiver) ?? true)) return true;
-        if (!(weapon.Camo?.IsValidFor(weapon.Receiver) ?? false)) return true;
-        if (!(weapon.Magazine?.IsValidFor(weapon.Receiver) ?? false)) return true;
-        if (!(weapon.Ammo?.IsValidFor(weapon.Receiver) ?? false)) return true;
-        if (!(weapon.Tag?.IsValidFor(weapon.Receiver) ?? true)) return true;
-        if (!(weapon.Stock?.IsValidFor(weapon.Receiver) ?? true)) return true;
-        if (!(weapon.Scope?.IsValidFor(weapon.Receiver) ?? false)) return true;
-        if (!(weapon.Skin?.IsValidFor(weapon.Receiver) ?? true)) return true;
-        return false;
+        bool advanced = false;
+        if(weapon is null || weapon.Receiver is null) { message += $"\n\t\tNo Receiver Equipped"; return true; }
+        if (!(weapon.Receiver?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tReceiver is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Barrel, weapon.Receiver)) { advanced = true; message += $"\n\t\tBarrel is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Muzzle, weapon.Receiver)) { advanced = true; message += $"\n\t\tMuzzle is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Grip, weapon.Receiver)) { advanced = true; message += $"\n\t\tGrip is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Camo, weapon.Receiver)) { advanced = true; message += $"\n\t\tCamo is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Magazine, weapon.Receiver)) { advanced = true; message += $"\n\t\tMagazine is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Ammo, weapon.Receiver)) { advanced = true; message += $"\n\t\tAmmo is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Tag, weapon.Receiver)) { advanced = true; message += $"\n\t\tTag is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Stock, weapon.Receiver)) { advanced = true; message += $"\n\t\tStock is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Scope, weapon.Receiver)) { advanced = true; message += $"\n\t\tScope is invalid"; }
+        if (!BLRItem.IsValidFor(weapon.Skin, weapon.Receiver)) { advanced = true; message += $"\n\t\tSkin is invalid"; }
+        return advanced;
     }
 
     public static bool ValidLoadout(BLRProfile profile, BLRServer server, out string message)

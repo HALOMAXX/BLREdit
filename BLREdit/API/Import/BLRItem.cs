@@ -143,6 +143,18 @@ public sealed class BLRItem : INotifyPropertyChanged
         return ValidForTest(item);
     }
 
+    public static bool IsValidFor(BLRItem? item, BLRItem? filter, bool advanced = false)
+    {
+        if (item == null || item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY) return true;
+
+        if (advanced)
+        {
+            return AdvancedFilter(item, filter);
+        }
+
+        return item.ValidForTest(filter);
+    }
+
     public bool ValidForTest(BLRItem? filter)
     {
         switch (UID)
