@@ -591,90 +591,93 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchClient(LaunchOptions options)
     {
-        if (options.Server.AllowAdvanced && !options.Server.AllowLMGR)
+        if (Validate.Is)
         {
-            var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
-            bool hasLMGR = false;
-            string message = "Please Remove the LMGR Mag from";
-            if (diskLoadout is not null)
+            if (options.Server.AllowAdvanced && !options.Server.AllowLMGR)
             {
-                int i = 1;
-                foreach (var loadout in diskLoadout)
+                var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
+                bool hasLMGR = false;
+                string message = "Please Remove the LMGR Mag from";
+                if (diskLoadout is not null)
                 {
-                    CheckLoadout(loadout, ref message, ref hasLMGR, i);
-                    i++;
-                }
-            }
-
-            if (hasLMGR)
-            {
-                hasLMGR = false;
-                message = "Please Remove the LMGR Mag from";
-                var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
-                if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
-                {
-                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout1, ref message, ref hasLMGR, 1);
-                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout2, ref message, ref hasLMGR, 2);
-                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout3, ref message, ref hasLMGR, 3);
-                    if (hasLMGR)
+                    int i = 1;
+                    foreach (var loadout in diskLoadout)
                     {
-                        LoggingSystem.MessageLog($"Current loadout is not supported on this server:\n{message}\nOr apply a non Advanced or modify current loadout!", "Warning");
-                        return;
+                        CheckLoadout(loadout, ref message, ref hasLMGR, i);
+                        i++;
+                    }
+                }
+
+                if (hasLMGR)
+                {
+                    hasLMGR = false;
+                    message = "Please Remove the LMGR Mag from";
+                    var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
+                    if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
+                    {
+                        CheckLoadout(currentlyAppliedLoadout.BLR.Loadout1, ref message, ref hasLMGR, 1);
+                        CheckLoadout(currentlyAppliedLoadout.BLR.Loadout2, ref message, ref hasLMGR, 2);
+                        CheckLoadout(currentlyAppliedLoadout.BLR.Loadout3, ref message, ref hasLMGR, 3);
+                        if (hasLMGR)
+                        {
+                            LoggingSystem.MessageLog($"Current loadout is not supported on this server:\n{message}\nOr apply a non Advanced or modify current loadout!", "Warning");
+                            return;
+                        }
+                        else
+                        {
+                            currentlyAppliedLoadout.ApplyLoadout(this);
+                        }
                     }
                     else
                     {
                         currentlyAppliedLoadout.ApplyLoadout(this);
                     }
                 }
-                else
-                {
-                    currentlyAppliedLoadout.ApplyLoadout(this);
-                }
             }
-        }
-        else if(!options.Server.AllowAdvanced)
-        {
-            var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
-            bool isAdvanced = false;
-
-            if (diskLoadout is not null)
+            else if (!options.Server.AllowAdvanced)
             {
-                string message = "";
-                foreach (var loadout in diskLoadout)
+                var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
+                bool isAdvanced = false;
+
+                if (diskLoadout is not null)
                 {
-                    if (IsAdvanced(loadout.GetLoadout(), ref message))
+                    string message = "";
+                    foreach (var loadout in diskLoadout)
                     {
-                        isAdvanced = true;
+                        if (IsAdvanced(loadout.GetLoadout(), ref message))
+                        {
+                            isAdvanced = true;
+                        }
                     }
                 }
-            }
 
-            if (isAdvanced)
-            {
-                var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
-                if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
+                if (isAdvanced)
                 {
-                    LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!", "Warning");
-                    return;
-                }
-                else
-                {
-                    isAdvanced = false;
-                    string message = "Loadout 1:";
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout1, ref message)) isAdvanced = true;
-                    message += "\nLoadout 2:";
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout2, ref message)) isAdvanced = true;
-                    message += "\nLoadout 3:";
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout3, ref message)) isAdvanced = true;
-
-                    if (isAdvanced)
+                    var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
+                    if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
                     {
-                        currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
-                        LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n{message}", "Warning");
+                        LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!", "Warning");
                         return;
                     }
+                    else
+                    {
+                        isAdvanced = false;
+                        string message = "Loadout 1:";
+                        if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout1, ref message)) isAdvanced = true;
+                        message += "\nLoadout 2:";
+                        if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout2, ref message)) isAdvanced = true;
+                        message += "\nLoadout 3:";
+                        if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout3, ref message)) isAdvanced = true;
 
-                    currentlyAppliedLoadout.ApplyLoadout(this);
+                        if (isAdvanced)
+                        {
+                            currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
+                            LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n{message}", "Warning");
+                            return;
+                        }
+
+                        currentlyAppliedLoadout.ApplyLoadout(this);
+                    }
                 }
             }
         }
