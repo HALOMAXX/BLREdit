@@ -40,11 +40,12 @@ public partial class App : System.Windows.Application
     public const string CurrentVersionTitle = "Preview";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
+    public static readonly int CurrentVersionNumber = CreateVersion(CurrentVersion);
 
     public static bool IsNewVersionAvailable { get; private set; } = false;
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
-    public static GitHubRelease? BLREditLatestRelease { get; private set; } = null;
+    public static GitHubRelease? LatestRelease { get; private set; } = null;
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = new();
 
@@ -647,6 +648,57 @@ public partial class App : System.Windows.Application
     private static FileInfoExtension? patchesZip;
 
     static bool versionCheckDone = false;
+
+    private static bool AddAssets(GitHubRelease release)
+    {
+        if (release.Assets is null || release.Assets.Length < 1) return false;
+
+        bool ass = false, exe = false, jso = false, dll = false, tex = false, cro = false, pat = false;
+
+        foreach (var asset in release.Assets)
+        {
+            if (exeZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(exeZip.Info.Name))
+            { 
+                if (DownloadLinks.ContainsKey(exeZip)) { exe = true; } else { DownloadLinks.Add(exeZip, asset.BrowserDownloadURL); exe = true; }
+            }
+
+            if (assetZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(assetZip.Info.Name))
+            {
+                if (DownloadLinks.ContainsKey(assetZip)) { ass = true; } else { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); ass = true; }
+            }
+
+            if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name))
+            {
+                if (DownloadLinks.ContainsKey(jsonZip)) { jso = true; } else { DownloadLinks.Add(jsonZip, asset.BrowserDownloadURL); jso = true; }
+            }
+
+            if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(dllsZip.Info.Name))
+            {
+                if (DownloadLinks.ContainsKey(dllsZip)) { dll = true; } else { DownloadLinks.Add(dllsZip, asset.BrowserDownloadURL); dll = true; }
+            }
+
+            if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(texturesZip.Info.Name))
+            {
+                if (DownloadLinks.ContainsKey(texturesZip)) { tex = true; } else { DownloadLinks.Add(texturesZip, asset.BrowserDownloadURL); tex = true; }
+            }
+
+            if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(crosshairsZip.Info.Name))
+            {
+                if (DownloadLinks.ContainsKey(crosshairsZip)) { cro = true; } else { DownloadLinks.Add(crosshairsZip, asset.BrowserDownloadURL); cro = true; }
+            }
+
+            if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(patchesZip.Info.Name))
+            {
+                if (DownloadLinks.ContainsKey(patchesZip)) { pat = true; } else { DownloadLinks.Add(patchesZip, asset.BrowserDownloadURL); pat = true; }
+            }
+        }
+
+        if (jso && dll && tex && cro && pat) 
+            return true;
+        else
+            return false;
+    }
+
     public static bool VersionCheck()
     {
         if (versionCheckDone)
@@ -659,68 +711,47 @@ public partial class App : System.Windows.Application
 
         try
         {
-            var task = GitHubClient.GetLatestRelease(CurrentOwner, CurrentRepo);
+            using var task = GitHubClient.GetReleases(CurrentOwner, CurrentRepo);
             task.Wait();
-            BLREditLatestRelease = task.Result;
-            if (BLREditLatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
-            LoggingSystem.Log($"Newest Version: {BLREditLatestRelease.TagName} of {BLREditLatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
+            var releases = task.Result;
+            if (releases is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
 
-            var remoteVersion = CreateVersion(BLREditLatestRelease?.TagName ?? string.Empty);
-            var localVersion = CreateVersion(CurrentVersion);
+            LatestRelease = releases[0];
+            
+            LoggingSystem.Log($"Newest Version: {LatestRelease.TagName} of {LatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-            bool newVersionAvailable = remoteVersion > localVersion;
+            bool newVersionAvailable = (LatestRelease?.Version ?? -1) > CurrentVersionNumber;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
 
-            if (BLREditLatestRelease is not null && BLREditLatestRelease.Assets is not null )
+            foreach (var release in releases)
             {
-                foreach (var asset in BLREditLatestRelease.Assets)
-                {
-                    if (exeZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(exeZip.Name) && asset.Name.EndsWith(exeZip.Info.Extension))
-                    { DownloadLinks.Add(exeZip, asset.BrowserDownloadURL); }
+                if (release.Version <= CurrentVersionNumber) break;
+                if (AddAssets(release)) { assetFolderMissing = true; break; }
+            }
 
-                    if (assetZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(assetZip.Name) && asset.Name.EndsWith(assetZip.Info.Extension))
-                    { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
+            if (newVersionAvailable && assetFolderMissing)
+            {
+                LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_UpdateMissingFiles, BLREdit.Properties.Resources.msgT_Info);
+                DownloadAssetFolder();
 
-                    if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(jsonZip.Name) && asset.Name.EndsWith(jsonZip.Info.Extension))
-                    { DownloadLinks.Add(jsonZip, asset.BrowserDownloadURL); }
+                UpdateEXE();
+                return true;
+            }
+            else if (newVersionAvailable && !assetFolderMissing)
+            {
+                LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_Update, BLREdit.Properties.Resources.msgT_Info);
+                UpdateAllAssetPacks();
 
-                    if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(dllsZip.Name) && asset.Name.EndsWith(dllsZip.Info.Extension))
-                    { DownloadLinks.Add(dllsZip, asset.BrowserDownloadURL); }
-
-                    if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(texturesZip.Name) && asset.Name.EndsWith(texturesZip.Info.Extension))
-                    { DownloadLinks.Add(texturesZip, asset.BrowserDownloadURL); }
-
-                    if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(crosshairsZip.Name) && asset.Name.EndsWith(crosshairsZip.Info.Extension))
-                    { DownloadLinks.Add(crosshairsZip, asset.BrowserDownloadURL); }
-
-                    if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.StartsWith(patchesZip.Name) && asset.Name.EndsWith(patchesZip.Info.Extension))
-                    { DownloadLinks.Add(patchesZip, asset.BrowserDownloadURL); }
-                }
-
-                if (newVersionAvailable && assetFolderMissing)
-                {
-                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_UpdateMissingFiles, BLREdit.Properties.Resources.msgT_Info);
-                    DownloadAssetFolder();
-
-                    UpdateEXE();
-                    return true;
-                }
-                else if (newVersionAvailable && !assetFolderMissing)
-                {
-                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_Update, BLREdit.Properties.Resources.msgT_Info);
-                    UpdateAllAssetPacks();
-
-                    UpdateEXE();
-                    return true;
-                }
-                else if (!newVersionAvailable && assetFolderMissing)
-                {
-                    LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_MisingFiles, BLREdit.Properties.Resources.msgT_Info);
-                    DownloadAssetFolder();
-                    return true;
-                }
+                UpdateEXE();
+                return true;
+            }
+            else if (!newVersionAvailable && assetFolderMissing)
+            {
+                LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_MisingFiles, BLREdit.Properties.Resources.msgT_Info);
+                DownloadAssetFolder();
+                return true;
             }
         }
         catch (Exception error)
@@ -874,8 +905,9 @@ public partial class App : System.Windows.Application
         { LoggingSystem.Log($"No {pack.Info.Name} to Unpack!"); }
     }
 
-    private static int CreateVersion(string versionTag)
+    public static int CreateVersion(string? versionTag)
     {
+        if (versionTag is null) return -1;
         var splitTag = versionTag.Split('v');
         var stringVersionParts = splitTag[splitTag.Length - 1].Split('.');
         int version = 0;

@@ -39,7 +39,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port = 7777, AllowAdvanced = true, AllowLMGR = true };
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
-    [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false); //TODO: Apply after startup
+    [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
     [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
     [JsonIgnore] private Dictionary<string?, BLRProfileSettingsWrapper>? profileSettings;

@@ -288,7 +288,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             }
             else
             {
-                LoggingSystem.MessageLog($"failed to install module:{RepositoryProxyModule.InstallName} you might want to use a Different BLRevive/Proxy version!", BLREdit.Properties.Resources.msgT_Error); //TODO: Localization
+                LoggingSystem.MessageLog($"failed to install module:{RepositoryProxyModule.InstallName} you might want to use a Different BLRevive/Proxy version!", BLREdit.Properties.Resources.msgT_Error); //TODO: Add Localization
             }
         }
         catch (Exception error)

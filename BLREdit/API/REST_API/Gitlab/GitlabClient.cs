@@ -12,9 +12,9 @@ public static class GitlabClient
         return await Client.GetLatestRelease<GitlabRelease>(owner, repo);
     }
 
-    public static async Task<GitlabRelease[]?> GetReleases(string owner, string repo)
+    public static async Task<GitlabRelease[]?> GetReleases(string owner, string repo, int amount = 10, int page = 1)
     {
-        return await Client.GetReleases<GitlabRelease>(owner, repo);
+        return await Client.GetReleases<GitlabRelease>(owner, repo, amount, page);
     }
 
     public static async Task<GitlabFile?> GetFile(string owner, string repo, string branch, string file)

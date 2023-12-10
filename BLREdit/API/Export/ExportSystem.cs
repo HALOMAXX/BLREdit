@@ -8,8 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Text.Json.Serialization;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
@@ -19,6 +19,8 @@ public sealed class ExportSystem
 {
     private static DirectoryInfo? _currentBackupFolder = null;
     public static DirectoryInfo CurrentBackupFolder { get { _currentBackupFolder ??= Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\"); return _currentBackupFolder; } }
+    private static FileInfo? _currentBackupFile;
+    public static FileInfo CurrentBackupFile { get { _currentBackupFile ??= new FileInfo($"Backup\\{DateTime.Now:yy-MM-dd-HH-mm}.zip"); return _currentBackupFile; } }
 
     public static void CopyMagiCowToClipboard(BLRLoadoutStorage loadout)
     {
@@ -117,16 +119,13 @@ public sealed class ExportSystem
         LoggingSystem.Log("Started Loading ShareableProfiles");
         ImportSystem.Initialize();
 
-        LoggingSystem.Log($"Backup folder:{CurrentBackupFolder.FullName}");
+        LoggingSystem.Log($"Backup:{CurrentBackupFile.FullName}");
+        LoggingSystem.Log("Compressing Profile folder!");
+        LoggingSystem.ResetWatch();
+        ZipFile.CreateFromDirectory($"{IOResources.PROFILE_DIR}", CurrentBackupFile.FullName, CompressionLevel.Optimal, false);
+        LoggingSystem.PrintElapsedTime("Finished Compressing in {0}ms");
 
         var profiles = IOResources.DeserializeFile<ObservableCollectionExtended<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();
-
-        LoggingSystem.Log("Copying all Profiles to Backup folder!");
-        foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
-        {
-            IOResources.CopyToBackup(file);
-        }
-        LoggingSystem.Log("Finished Copying!");
 
         foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
         {

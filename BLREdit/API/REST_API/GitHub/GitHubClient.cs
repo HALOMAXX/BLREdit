@@ -12,9 +12,9 @@ public static class GitHubClient
         return await Client.GetLatestRelease<GitHubRelease>(owner, repo);
     }
 
-    public static async Task<GitHubRelease[]?> GetReleases(string owner, string repo)
+    public static async Task<GitHubRelease[]?> GetReleases(string owner, string repo, int amount = 10, int page = 1)
     {
-        return await Client.GetReleases<GitHubRelease>(owner, repo);
+        return await Client.GetReleases<GitHubRelease>(owner, repo, amount, page);
     }
 
     public static async Task<GitHubFile?> GetFile(string owner, string repo, string branch, string file)

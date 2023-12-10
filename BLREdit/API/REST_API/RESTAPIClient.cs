@@ -9,6 +9,8 @@ namespace BLREdit.API.REST_API;
 
 public sealed class RESTAPIClient
 {
+    private string CacheFile { get; }
+
     readonly Dictionary<string, object> RequestCache = new();
     readonly Dictionary<string, object> OldRequestCache;
 
@@ -19,8 +21,33 @@ public sealed class RESTAPIClient
     {
         this.baseAddress = baseAddress;
         this.APIProvider = APIProvider;
-        OldRequestCache = IOResources.DeserializeFile<Dictionary<string, object>>($"Cache\\{IOResources.DataToBase64(IOResources.Zip($"{APIProvider}\\{baseAddress}"))}.json") ?? new();
+        CacheFile = $"Cache\\{IOResources.DataToBase64(IOResources.Zip($"{APIProvider}\\{baseAddress}"))}.json";
+        OldRequestCache = IOResources.DeserializeFile<Dictionary<string, object>>(CacheFile) ?? new();
         DataStorage.DataSaving += SaveCache;
+    }
+
+    private async Task<(bool, T)> TryGetAPI<T>(string api)
+    {
+        if (RequestCache.TryGetValue(api, out var newCache))
+        {
+            LoggingSystem.Log($"[Cache]({typeof(T).Name}): {api}");
+            return (true, (T)newCache);
+        }
+
+        using var response = await GetAsync(api);
+        if (response is not null && response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            var value = IOResources.Deserialize<T>(content);
+            if (value is not null) { RequestCache.Add(api, value); return (true, value); }
+        }
+
+        if (OldRequestCache.TryGetValue(api, out var oldCache))
+        {
+            LoggingSystem.Log($"[OldCache]({typeof(T).Name}): {api}");
+            return (true, (T)oldCache);
+        }
+        return (false, default);
     }
 
     private void SaveCache(object? sender, EventArgs args)
@@ -36,7 +63,7 @@ public sealed class RESTAPIClient
                 OldRequestCache.Add(cache.Key, cache.Value);
             }
         }
-        IOResources.SerializeFile($"Cache\\{IOResources.DataToBase64(IOResources.Zip($"{APIProvider}\\{baseAddress}"))}.json", OldRequestCache);
+        IOResources.SerializeFile(CacheFile, OldRequestCache);
     }
 
     private async Task<HttpResponseMessage?> GetAsync(string api)
@@ -66,31 +93,14 @@ public sealed class RESTAPIClient
     {
         string api;
         if (APIProvider == RepositoryProvider.GitHub)
-        { api = $"repos/{owner}/{repository}/releases?per_page={per_page}&page={page}"; }
+        { api = $"repos/{owner}/{repository}/releases?page={page}&per_page={per_page}"; }
         else
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/releases?page={page}&per_page={per_page}"; }
 
-        if (RequestCache.TryGetValue(api, out object value))
+        var result = await TryGetAPI<T[]>(api);
+        if (result.Item1)
         {
-            LoggingSystem.Log($"[Cache]:({typeof(T).Name}) {api}");
-            return (T[])value;
-        }
-
-        using var response = await GetAsync(api);
-        if (response is not null && response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            var releases = IOResources.Deserialize<T[]>(content);
-            if (releases is not null) { RequestCache.Add(api, releases); }
-            else
-            { 
-                if (OldRequestCache.TryGetValue(api, out var cache)) 
-                {
-                    LoggingSystem.Log($"[OldCache]:({typeof(T).Name}) {api}");
-                    return (T[])cache;
-                }
-            }
-            return releases;
+            return result.Item2;
         }
         return default;
     }
@@ -103,21 +113,10 @@ public sealed class RESTAPIClient
         else
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/repository/files/{file.Replace("/", "%2F").Replace(".", "%2E")}?ref={branch}"; }
 
-        if (RequestCache.TryGetValue(api, out object value))
+        var result = await TryGetAPI<T>(api);
+        if (result.Item1)
         {
-            LoggingSystem.Log($"[Cache]:({typeof(T).Name}) {api}");
-            return (T)value;
-        }
-
-        using (var response = await GetAsync(api))
-        {
-            if (response is not null && response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                var fileData = IOResources.Deserialize<T>(content);
-                if(fileData is not null) RequestCache.Add(api, fileData);
-                return fileData;
-            }
+            return result.Item2;
         }
         return default;
     }
