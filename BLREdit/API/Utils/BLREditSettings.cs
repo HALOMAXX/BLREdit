@@ -24,6 +24,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public static ObservableCollection<string?> AvailableProxyVersions { get; } = new() { "v1.0.0-beta.2", "v1.0.0-beta.3" };
 
     #region Settings
+    public string? LastRunVersion { get; set; } = null;
     public int SelectedLoadout { get; set; } = 0;
     [JsonIgnore] public int CurrentlyAppliedLoadout { get { return SelectedLoadout; } set { SelectedLoadout = value; OnPropertyChanged(); } }
     public int SelectedClient { get; set; } = -1;
@@ -96,7 +97,10 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
         LoggingSystem.MessageLog(Properties.Resources.msg_ResetConfigInfo, Properties.Resources.msgT_ResetConfig);
 
-        DataStorage.Settings = new BLREditSettings();
+        DataStorage.Settings = new BLREditSettings
+        {
+            LastRunVersion = App.CurrentVersion
+        };
 
         DataStorage.GameClients.Clear();
         DataStorage.ServerList.Clear();

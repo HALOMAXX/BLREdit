@@ -703,7 +703,7 @@ public partial class App : System.Windows.Application
     {
         if (versionCheckDone)
         {
-            LoggingSystem.Log("Version Check gon run again");
+            LoggingSystem.Log("Version Check got run again");
             return false;
         }
         versionCheckDone = true;
@@ -722,22 +722,24 @@ public partial class App : System.Windows.Application
 
             bool newVersionAvailable = (LatestRelease?.Version ?? -1) > CurrentVersionNumber;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
+            if (DataStorage.Settings.LastRunVersion is null) { assetFolderMissing = true; }
+            DataStorage.Settings.LastRunVersion = CurrentVersion;
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
 
             foreach (var release in releases)
             {
-                if (release.Version <= CurrentVersionNumber) break;
+                if (release.Version < CurrentVersionNumber) break;
                 if (AddAssets(release)) { assetFolderMissing = true; break; }
             }
 
             if (newVersionAvailable && assetFolderMissing)
             {
                 LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_UpdateMissingFiles, BLREdit.Properties.Resources.msgT_Info);
-                DownloadAssetFolder();
+                bool dl = DownloadAssetFolder();
 
                 UpdateEXE();
-                return true;
+                return dl;
             }
             else if (newVersionAvailable && !assetFolderMissing)
             {
@@ -750,8 +752,7 @@ public partial class App : System.Windows.Application
             else if (!newVersionAvailable && assetFolderMissing)
             {
                 LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_MisingFiles, BLREdit.Properties.Resources.msgT_Info);
-                DownloadAssetFolder();
-                return true;
+                return DownloadAssetFolder();
             }
         }
         catch (Exception error)
@@ -810,17 +811,18 @@ public partial class App : System.Windows.Application
            : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
     }
 
-    private static void DownloadAssetFolder()
+    private static bool DownloadAssetFolder()
     {
-        if (assetZip is null) { LoggingSystem.Log("[DownloadAssetFolder] failed assetZip was null!"); return; }
+        if (assetZip is null) { LoggingSystem.Log("[DownloadAssetFolder] failed assetZip was null!"); return false; }
         if (DownloadLinks.TryGetValue(assetZip, out string assetDL))
         {
             if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
             IOResources.DownloadFileMessageBox(assetDL, assetZip.Info.FullName);
             ZipFile.ExtractToDirectory(assetZip.Info.FullName, IOResources.ASSET_DIR);
+            return true;
         }
         else
-        { LoggingSystem.MessageLog("No Asset folder for download available!", "Error"); } //TODO: Add Localization
+        { LoggingSystem.MessageLog("No Asset folder for download available!", "Error"); return false; } //TODO: Add Localization
     }
 
     private static void UpdateAllAssetPacks()
