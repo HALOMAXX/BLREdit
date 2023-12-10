@@ -131,16 +131,9 @@ public sealed class BLRItem : INotifyPropertyChanged
         return false;
     }
 
-    public bool IsValidFor(BLRItem? item, bool advanced = false)
+    public bool IsValidFor(BLRItem? filter, bool advanced = false)
     {
-        if (this.Category == ImportSystem.PRIMARY_CATEGORY || this.Category == ImportSystem.SECONDARY_CATEGORY) return true;
-
-        if (advanced)
-        {
-            return AdvancedFilter(this, item);
-        }
-
-        return ValidForTest(item);
+        return IsValidFor(this, filter, advanced);
     }
 
     public static bool IsValidFor(BLRItem? item, BLRItem? filter, bool advanced = false)

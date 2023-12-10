@@ -1,4 +1,5 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.Export;
+using BLREdit.Export;
 using BLREdit.Game;
 
 using System;
@@ -6,7 +7,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Media;
 
@@ -35,10 +38,16 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public ObservableCollectionExtended<BLRLoadoutStorage> Loadouts => DataStorage.Loadouts;
 #pragma warning restore CA1822 // Mark members as static
 
-    public readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
-    public readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
-    public Border? LastSelectedItemBorder { get { return lastSelectedItemBorder; } set { SetBorderColor(lastSelectedItemBorder, DefaultBorderColor); lastSelectedItemBorder = value; SetBorderColor(lastSelectedItemBorder, ActiveBorderColor); } }
-    private Border? lastSelectedItemBorder = null;
+    public static readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
+    public static readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
+
+    public Color LastSelectedBorderColor = Color.FromArgb(14, 158, 158, 158);
+
+    
+    public Border? LastSelectedItemBorder { get { return lastSelectedItemBorder; } set { ResetLastBorder(); SetNewBorder(value); } }
+    private Border? lastSelectedItemBorder;
+    private BindingExpression? lastBindingExpression;
+    private Color? lastSelectedBorderColor;
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
     public ListSortDirection ProfileListSortingDirection { get; set; } = ListSortDirection.Descending;
@@ -86,8 +95,40 @@ public sealed class MainWindowView : INotifyPropertyChanged
         WindowTitle = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}, {DataStorage.Settings?.PlayerName} Playtime:[{new TimeSpan(0,0, PlayerProfile.PlayTime)}]";
     }
 
-    public static void SetBorderColor(Border? border, Color color)
+    public void ResetLastBorder()
     {
-        if (border is not null) border.BorderBrush = new SolidColorBrush(color);
+        if (lastSelectedItemBorder is null) return;
+        if (lastBindingExpression is not null)
+        {
+            lastSelectedItemBorder.SetBinding(Border.BorderBrushProperty, lastBindingExpression.ParentBindingBase);
+        }
+        else
+        {
+            lastSelectedItemBorder.BorderBrush = new SolidColorBrush(lastSelectedBorderColor ?? DefaultBorderColor);
+        }
+    }
+
+    public void SetNewBorder(Border? border)
+    {
+        if (border is not null)
+        {
+            if (border.GetBindingExpression(Border.BorderBrushProperty) is BindingExpression bindingExp)
+            {
+                lastBindingExpression = bindingExp;
+                lastSelectedBorderColor = null;
+            }
+            else
+            {
+                if (border.BorderBrush is SolidColorBrush brush)
+                { lastSelectedBorderColor = brush.Color; }
+                else 
+                { lastSelectedBorderColor = null; }
+
+                lastBindingExpression = null;
+            }
+
+            border.BorderBrush = new SolidColorBrush(ActiveBorderColor);
+            lastSelectedItemBorder = border;
+        }
     }
 }

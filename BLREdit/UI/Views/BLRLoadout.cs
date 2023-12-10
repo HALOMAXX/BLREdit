@@ -10,6 +10,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
+
 namespace BLREdit.UI.Views;
 
 public sealed class BLRLoadout : INotifyPropertyChanged
@@ -98,6 +100,91 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         if (value is not null && !attribute.ItemType.Contains(value.Category)) { return; }
         if (value is null && (name == nameof(Helmet) || name == nameof(UpperBody) || name == nameof(LowerBody) || name == nameof(BodyCamo))) { value = defaultItem; }
         if ((Profile?.IsAdvanced.IsNot ?? false) && value is null && defaultItem is not null) { value = defaultItem; }
+        BLRItem? gear1 = Gear1, gear2 = Gear2, gear3 = Gear3, gear4 = Gear4;
+        switch ($"IsValid{name}")
+        {
+            case nameof(IsValidGear1):
+                gear1 = value;
+                break;
+            case nameof(IsValidGear2):
+                gear2 = value;
+                break;
+            case nameof(IsValidGear3):
+                gear3 = value;
+                break;
+            case nameof(IsValidGear4):
+                gear4 = value;
+                break;
+        }
+        bool isValid = BLRItem.IsValidFor(value, null);
+        switch ($"IsValid{name}")
+        {
+            case nameof(IsValidHelmet):
+                IsValidHelmet.Set(isValid);
+                break;
+            case nameof(IsValidUpperBody):
+                IsValidUpperBody.Set(isValid);
+                break;
+            case nameof(IsValidLowerBody):
+                IsValidLowerBody.Set(isValid);
+                break;
+            case nameof(IsValidTactical):
+                IsValidTactical.Set(isValid);
+                break;
+            case nameof(IsValidGear1):
+            case nameof(IsValidGear2):
+            case nameof(IsValidGear3):
+            case nameof(IsValidGear4):
+                bool gear1valid = BLRItem.IsValidFor(gear1, null), gear2valid = BLRItem.IsValidFor(gear2, null), gear3valid = BLRItem.IsValidFor(gear3, null), gear4valid = BLRItem.IsValidFor(gear4, null);
+                if (gear4 is not null && gear4.UID != 12015)
+                {
+                    if (gear1 is not null && gear1.UID == gear4.UID) { gear4valid = false; }
+                    if (gear2 is not null && gear2.UID == gear4.UID) { gear4valid = false; }
+                    if (gear3 is not null && gear3.UID == gear4.UID) { gear4valid = false; }
+                }
+
+                if (gear3 is not null && gear3.UID != 12015)
+                {
+                    if (gear1 is not null && gear1.UID == gear3.UID) { gear3valid = false; }
+                    if (gear2 is not null && gear2.UID == gear3.UID) { gear3valid = false; }
+                    if (gear4 is not null && gear4.UID == gear3.UID) { gear3valid = false; }
+                }
+
+                if (gear2 is not null && gear2.UID != 12015)
+                {
+                    if (gear1 is not null && gear1.UID == gear2.UID) { gear2valid = false; }
+                    if (gear3 is not null && gear3.UID == gear2.UID) { gear2valid = false; }
+                    if (gear4 is not null && gear4.UID == gear2.UID) { gear2valid = false; }
+                }
+
+                if (gear1 is not null && gear1.UID != 12015)
+                {
+                    if (gear2 is not null && gear2.UID == gear1.UID) { gear1valid = false; }
+                    if (gear3 is not null && gear3.UID == gear1.UID) { gear1valid = false; }
+                    if (gear4 is not null && gear4.UID == gear1.UID) { gear1valid = false; }
+                }
+
+                if ((Profile?.IsAdvanced.IsNot ?? false) && (!gear1valid || !gear2valid || !gear3valid || !gear4valid))
+                {
+                    MainWindow.ShowAlert("Duplicate Gears are not Allowed!");
+                    return;
+                }
+
+                IsValidGear1.Set(gear1valid);
+                IsValidGear2.Set(gear2valid);
+                IsValidGear3.Set(gear3valid);
+                IsValidGear4.Set(gear4valid);
+                break;
+            case nameof(IsValidBodyCamo):
+                IsValidBodyCamo.Set(isValid);
+                break;
+            case nameof(IsValidAvatar):
+                IsValidAvatar.Set(isValid);
+                break;
+            case nameof(IsValidTrophy):
+                IsValidTrophy.Set(isValid);
+                break;
+        }
         if (LoadoutParts.ContainsKey(attribute.PropertyOrder))
         {
             LoadoutParts[attribute.PropertyOrder] = value;
@@ -110,16 +197,27 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
     #region Gear
     [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, MagiCowsLoadout.DefaultLoadout1.GetHelmet()); } }
+    public UIBool? IsValidHelmet { get; } = new(true);
     [BLRItem(ImportSystem.UPPER_BODIES_CATEGORY)] public BLRItem? UpperBody { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, MagiCowsLoadout.DefaultLoadout1.GetUpperBody()); } }
+    public UIBool? IsValidUpperBody { get; } = new(true);
     [BLRItem(ImportSystem.LOWER_BODIES_CATEGORY)] public BLRItem? LowerBody { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, MagiCowsLoadout.DefaultLoadout1.GetLowerBody()); } }
+    public UIBool? IsValidLowerBody { get; } = new(true);
     [BLRItem(ImportSystem.TACTICAL_CATEGORY)] public BLRItem? Tactical { get { return GetValueOf(); } set { SetValueOf(value); } }
+    public UIBool? IsValidTactical { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear1 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear1)); } }
+    public UIBool? IsValidGear1 { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear2 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear2)); } }
+    public UIBool? IsValidGear2 { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear3 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear3)); } }
+    public UIBool? IsValidGear3 { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear4 { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.None, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear4)); } }
+    public UIBool? IsValidGear4 { get; } = new(true);
     [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate, MagiCowsLoadout.DefaultLoadout1.GetCamo()); } }
+    public UIBool? IsValidBodyCamo { get; } = new(true);
     [BLRItem(ImportSystem.AVATARS_CATEGORY)] public BLRItem? Avatar { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); OnPropertyChanged(nameof(HasAvatar)); } }
+    public UIBool? IsValidAvatar { get; } = new(true);
     [BLRItem(ImportSystem.BADGES_CATEGORY)] public BLRItem? Trophy { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }
+    public UIBool? IsValidTrophy { get; } = new(true);
     #endregion Gear
 
     [BLRItem(ImportSystem.EMBLEM_BACKGROUND_CATEGORY)] public BLRItem? EmblemBackground { get { return GetValueOf(); } set { SetValueOf(value, BlockEvents.Calculate); } }

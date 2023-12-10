@@ -69,15 +69,25 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     #region Weapon Parts
     [BLRItem($"{ImportSystem.PRIMARY_CATEGORY}|{ImportSystem.SECONDARY_CATEGORY}")] public BLRItem? Receiver { get { return GetValueOf(); } set { if (AllowReceiver(value)) { SetValueOf(value); RemoveIncompatibleMods(); AddMissingDefaultParts(); UpdateScopeIcons(); } } }
     [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLRItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); } }
+    public UIBool? IsValidBarrel { get; } = new(true);
     [BLRItem(ImportSystem.MAGAZINES_CATEGORY)] public BLRItem? Magazine { get { return GetValueOf(); } set { SetValueOf(value); var ammo = Ammo; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } else { ammo = null; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } } } }
+    public UIBool? IsValidMagazine { get; } = new(true);
     [BLRItem(ImportSystem.MUZZELS_CATEGORY)] public BLRItem? Muzzle { get { return GetValueOf(); } set { SetValueOf(value); } }
+    public UIBool? IsValidMuzzle { get; } = new(true);
     [BLRItem(ImportSystem.STOCKS_CATEGORY)] public BLRItem? Stock { get { return GetValueOf(); } set { if (AllowStock(Receiver, Barrel, value, true)) { SetValueOf(value); } } }
+    public UIBool? IsValidStock { get; } = new(true);
     [BLRItem(ImportSystem.SCOPES_CATEGORY)] public BLRItem? Scope { get { return GetValueOf(); } set { SetValueOf(value); UpdateScopeIcons(); } }
+    public UIBool? IsValidScope { get; } = new(true);
     [BLRItem(ImportSystem.GRIPS_CATEGORY)] public BLRItem? Grip { get { return GetValueOf(); } set { SetValueOf(value); } }
+    public UIBool? IsValidGrip { get; } = new(true);
     [BLRItem(ImportSystem.HANGERS_CATEGORY)] public BLRItem? Tag { get { return GetValueOf(); } set { SetValueOf(value); } }
+    public UIBool? IsValidTag { get; } = new(true);
     [BLRItem(ImportSystem.CAMOS_WEAPONS_CATEGORY)] public BLRItem? Camo { get { return GetValueOf(); } set { SetValueOf(value); } }
+    public UIBool? IsValidCamo { get; } = new(true);
     [BLRItem(ImportSystem.AMMO_CATEGORY)] public BLRItem? Ammo { get { return GetValueOf(); } set { if (IsAmmoOk(ref value)) { SetValueOf(value); } } }
+    public UIBool? IsValidAmmo { get; } = new(true);
     [BLRItem(ImportSystem.PRIMARY_SKIN_CATEGORY)] public BLRItem? Skin { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasSkinEquipped)); } }
+    public UIBool? IsValidSkin { get; } = new(true);
     #endregion Weapon Parts
 
     private BLRItem? GetValueOf([CallerMemberName] string? name = null)
@@ -99,9 +109,43 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.SetValueTest))
         {
             var receiver = GetValueOf(nameof(Receiver));
-            if(Loadout?.Profile?.IsAdvanced.IsNot ?? false) value ??= MagiCowsWeapon.GetDefaultSetupOfReceiver(receiver)?.GetItemByType(propAndAttri.Item2.ItemType) ?? null;
+            if (value is null && (Loadout?.Profile?.IsAdvanced.IsNot ?? false)) value = MagiCowsWeapon.GetDefaultSetupOfReceiver(receiver)?.GetItemByType(propAndAttri.Item2.ItemType) ?? null;
             if (value is not null && (!value.IsValidFor(receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || !propAndAttri.Item2.ItemType.Contains(value.Category)))
             { return; }
+            bool isValid = BLRItem.IsValidFor(value, receiver, false);
+            switch ($"IsValid{name}")
+            {
+                case nameof(IsValidBarrel):
+                    IsValidBarrel.Set(isValid);
+                    break;
+                case nameof(IsValidMagazine):
+                    IsValidMagazine.Set(isValid);
+                    break;
+                case nameof(IsValidMuzzle):
+                    IsValidMuzzle.Set(isValid);
+                    break;
+                case nameof(IsValidStock):
+                    IsValidStock.Set(isValid);
+                    break;
+                case nameof(IsValidScope):
+                    IsValidScope.Set(isValid);
+                    break;
+                case nameof(IsValidGrip):
+                    IsValidGrip.Set(isValid);
+                    break;
+                case nameof(IsValidTag):
+                    IsValidTag.Set(isValid);
+                    break;
+                case nameof(IsValidCamo):
+                    IsValidCamo.Set(isValid);
+                    break;
+                case nameof(IsValidAmmo):
+                    IsValidAmmo.Set(isValid);
+                    break;
+                case nameof(IsValidSkin):
+                    IsValidSkin.Set(isValid);
+                    break;
+            }
         }
         WeaponParts[propAndAttri.Item2.PropertyOrder] = value;
         ItemChanged(name);
