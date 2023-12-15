@@ -35,7 +35,7 @@ public sealed class WebResources
     public static bool DownloadFile(string url, string filename)
     {
         if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(filename)) { LoggingSystem.Log($"Failed to download ({filename}) from:\n<{url}>"); return false; }
-        LoggingSystem.Log($"Downloading ({filename}) to ({url})");
+        LoggingSystem.Log($"Downloading ({filename}) from ({url})");
         DownloadRequest req = new(url, filename);
         DownloadRequests.Add(req);
         WaitHandle.WaitAll(new WaitHandle[] { req.locked });

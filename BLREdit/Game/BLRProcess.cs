@@ -36,6 +36,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
     public bool Watchdog { get { return watchdog; } private set { watchdog = value; OnPropertyChanged(); } }
     private BLRServer? connectedServer;
     public BLRServer? ConnectedServer { get { return connectedServer; } private set { connectedServer = value; OnPropertyChanged(); } }
+    private string? launchArguments;
 
     static BLRProcess()
     {
@@ -112,6 +113,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
 
     private void Start()
     {
+        LoggingSystem.Log($"Starting client:\nArgs: {GameProcess.StartInfo.Arguments}");
         GameProcess.Start();
     }
 

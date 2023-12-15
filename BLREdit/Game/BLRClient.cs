@@ -301,13 +301,17 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         if (DataStorage.Settings?.SelectedProxyVersion?.Equals(ProxyVersion) ?? true) return;
         RemoveAllModules();
+        
         var proxySource = string.Empty;
         var proxyTarget = string.Empty;
         if (DataStorage.Settings.SelectedProxyVersion == "BLRevive")
         {
-            var task = GitlabClient.GetLatestRelease("blrevive", "blrevive");
+            LoggingSystem.Log($"Getting latest BLRevive release!");
+            var task = Task.Run(() => GitlabClient.GetLatestRelease("blrevive", "blrevive"));
             task.Wait();
+            LoggingSystem.Log($"Downloading latest BLRevive release!");
             var dl = GitlabClient.DownloadFileFromRelease(task.Result, "BLRevive.dll", "BLRevive");
+            LoggingSystem.Log($"Finished downloading latest BLRevive release!");
             if (dl.Item1)
             {
                 proxySource = $"{IOResources.BaseDirectory}{dl.Item2}";
@@ -491,6 +495,9 @@ public sealed class BLRClient : INotifyPropertyChanged
 
             foreach (var module in enabledModules)
             {
+                LoggingSystem.Log($"\t{module.InstallName}:");
+                LoggingSystem.Log($"\t\tClient:{module.Client}");
+                LoggingSystem.Log($"\t\tServer:{module.Server}");
                 if (module.Client)
                 {
                     configClient.Modules.Add(module.InstallName, new());
@@ -500,6 +507,8 @@ public sealed class BLRClient : INotifyPropertyChanged
                     configServer.Modules.Add(module.InstallName, new());
                 }
             }
+            IOResources.SerializeFile($"{ConfigFolder}{ConfigName}-Client.json", configClient);
+            IOResources.SerializeFile($"{ConfigFolder}{ConfigName}-Server.json", configServer);
         }
 
         LoggingSystem.Log($"Finished Validating Modules of {this}");
@@ -574,6 +583,22 @@ public sealed class BLRClient : INotifyPropertyChanged
                     param => this.LaunchBotMatch()
                 );
             return launchBotMatchCommand;
+        }
+    }
+
+    private ICommand? launchSafeMatchCommand;
+    [JsonIgnore]
+    public ICommand LaunchSafeMatchCommand
+    {
+        get
+        {
+            launchSafeMatchCommand ??= new RelayCommand(
+                    param => {
+                        string launchArgs = $"server containment containment containment containment";
+                        StartProcess(launchArgs, true, false);
+                    }
+                );
+            return launchSafeMatchCommand;
         }
     }
 
@@ -969,7 +994,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         MainWindow.ClientWindow.ShowDialog();
     }
 
-    private void SetCurrentClient()
+    public void SetCurrentClient()
     {
         LoggingSystem.Log($"Setting Current Client:{this}");
         if (this.Patched.Is)

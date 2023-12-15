@@ -899,7 +899,6 @@ public sealed partial class MainWindow : Window
         ImportSystem.Initialize();
         LoggingSystem.Log($"[MainWindow]: ImportSystem took {watch.ElapsedMilliseconds}ms");
         watch.Restart();
-
         #endregion Backend Init
 
         #region Frontend Init
@@ -982,6 +981,11 @@ public sealed partial class MainWindow : Window
                     LoggingSystem.Log($"{DataStorage.GameClients[i]} has {DataStorage.GameClients[i].InstalledModules.Count}/{beforeClean} installed modules");
                 }
             }
+            if (DataStorage.GameClients.Count > 0 && DataStorage.Settings.DefaultClient is null)
+            {
+                DataStorage.GameClients[0].SetCurrentClient();
+            }
+
         }
 
         RefreshDefaultClient();
@@ -1004,6 +1008,8 @@ public sealed partial class MainWindow : Window
         MainView.UpdateWindowTitle();
 
         UndoRedoSystem.ClearUndoRedoStack();
+
+
 
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
     }

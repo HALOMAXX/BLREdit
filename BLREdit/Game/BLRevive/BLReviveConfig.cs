@@ -8,10 +8,10 @@ namespace BLREdit.Game.BLRevive
 {
     public class BLReviveConfig
     {
-        public BLReviveConsoleConfig Console { get; set; } = new();
-        public BLReviveLoggerConfig Logger { get; set; } = new();
+        public BLReviveConsoleConfig? Console { get; set; } = new();
+        public BLReviveLoggerConfig? Logger { get; set; } = new();
         public Dictionary<string, object> Modules { get; set; } = new();
-        public BLReviveServerConfig Server { get; set; } = new();
+        public BLReviveServerConfig? Server { get; set; } = new();
     }
 
     public class BLReviveConsoleConfig
