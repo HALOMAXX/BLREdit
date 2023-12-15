@@ -762,7 +762,7 @@
     <comment>emotes</comment>
   </data>
   <data name="000319" xml:space="preserve">
-    <value>Scissors</value>
+    <value>Flash Point</value>
     <comment>emotes</comment>
   </data>
   <data name="000320" xml:space="preserve">
@@ -1159,10 +1159,6 @@
   </data>
   <data name="000418" xml:space="preserve">
     <value>Dust Off</value>
-    <comment>emotes</comment>
-  </data>
-  <data name="000319" xml:space="preserve">
-    <value>Flash Point</value>
     <comment>emotes</comment>
   </data>
   <data name="000420" xml:space="preserve">
@@ -4761,7 +4757,7 @@
     <value>Prestige Overmatch Muzzle Shroud</value>
     <comment>muzzles</comment>
   </data>
-  <data name="009999" xml:space="preserve">
+  <data name="-000001" xml:space="preserve">
     <value>No Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
@@ -5707,51 +5703,51 @@
   </data>
   <data name="020006" xml:space="preserve">
     <value>Airstrike</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020009" xml:space="preserve">
     <value>Minigun</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020003" xml:space="preserve">
     <value>Rocket Stinger</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020007" xml:space="preserve">
     <value>Railgun</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020004" xml:space="preserve">
     <value>Rhino Hardsuit</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020014" xml:space="preserve">
     <value>MK1 Assault AI</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020008" xml:space="preserve">
     <value>Grenade Launcher</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020005" xml:space="preserve">
     <value>Rocket Swarm</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020002" xml:space="preserve">
     <value>Flamethrower</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020011" xml:space="preserve">
     <value>Heavy Weapon Refill</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020013" xml:space="preserve">
     <value>Hardsuit HRV Decoy</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="020010" xml:space="preserve">
     <value>Turret</value>
-    <comment>secondary</comment>
+    <comment>shop</comment>
   </data>
   <data name="200013" xml:space="preserve">
     <value>MK1 Assault AI</value>
@@ -5765,56 +5761,8 @@
     <value>Ammo Refill</value>
     <comment>shop</comment>
   </data>
-  <data name="020002" xml:space="preserve">
-    <value>Flamethrower</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020003" xml:space="preserve">
-    <value>Rocket Stinger</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020004" xml:space="preserve">
-    <value>Rhino Hardsuit</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020005" xml:space="preserve">
-    <value>Rocket Swarm</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020006" xml:space="preserve">
-    <value>Airstrike</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020007" xml:space="preserve">
-    <value>Railgun</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020008" xml:space="preserve">
-    <value>Grenade Launcher</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020009" xml:space="preserve">
-    <value>Minigun</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020010" xml:space="preserve">
-    <value>Turret</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020011" xml:space="preserve">
-    <value>Heavy Weapon Refill</value>
-    <comment>shop</comment>
-  </data>
   <data name="020012" xml:space="preserve">
     <value>Katana</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020013" xml:space="preserve">
-    <value>Hardsuit HRV Decoy</value>
-    <comment>shop</comment>
-  </data>
-  <data name="020014" xml:space="preserve">
-    <value>MK1 Assault AI</value>
     <comment>shop</comment>
   </data>
   <data name="020015" xml:space="preserve">

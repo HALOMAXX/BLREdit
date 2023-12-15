@@ -1,31 +1,23 @@
 ﻿using BLREdit.API.InterProcess;
 using BLREdit.API.REST_API.GitHub;
-using BLREdit.API.REST_API.Gitlab;
 using BLREdit.API.Utils;
 using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
-using BLREdit.Properties;
 using BLREdit.UI;
 using BLREdit.UI.Views;
-using BLREdit.UI.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -456,6 +448,7 @@ public partial class App : System.Windows.Application
         var watch = Stopwatch.StartNew();
         App.CheckAppUpdate();
         LoggingSystem.Log($"[MainWindow]: Update Check took {watch.ElapsedMilliseconds}ms");
+
 
         new MainWindow(argList).Show();
     }

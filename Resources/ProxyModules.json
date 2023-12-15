@@ -6,7 +6,7 @@
     "ModuleName": "LoadoutManager",
     "Server": false,
     "Required": true,
-    "ProxyVersion": "v1.0.0-beta.3"
+    "ProxyVersion": "BLRevive"
   },
   {
     "RepositoryProvider": "Gitlab",
@@ -15,7 +15,7 @@
     "ModuleName": "settings-manager",
     "Server": false,
     "Required": true,
-    "ProxyVersion": "v1.0.0-beta.3"
+    "ProxyVersion": "BLRevive"
   },
   {
     "RepositoryProvider": "Gitlab",
@@ -24,7 +24,7 @@
     "ModuleName": "server-utils",
     "Client": false,
     "Required": true,
-    "ProxyVersion": "v1.0.0-beta.3"
+    "ProxyVersion": "BLRevive"
   },
 
 

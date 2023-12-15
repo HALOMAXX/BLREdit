@@ -17,10 +17,8 @@ namespace BLREdit.Export;
 
 public sealed class ExportSystem
 {
-    private static DirectoryInfo? _currentBackupFolder = null;
-    public static DirectoryInfo CurrentBackupFolder { get { _currentBackupFolder ??= Directory.CreateDirectory($"Backup\\{DateTime.Now:dd-MM-yy}\\{DateTime.Now:HH-mm}\\"); return _currentBackupFolder; } }
     private static FileInfo? _currentBackupFile;
-    public static FileInfo CurrentBackupFile { get { _currentBackupFile ??= new FileInfo($"Backup\\{DateTime.Now:yy-MM-dd-HH-mm}.zip"); return _currentBackupFile; } }
+    public static FileInfo CurrentBackupFile { get { _currentBackupFile ??= new FileInfo($"Backup\\{DateTime.Now:yy-MM-dd-HH-mm-ss}.zip"); return _currentBackupFile; } }
 
     public static void CopyMagiCowToClipboard(BLRLoadoutStorage loadout)
     {
@@ -65,34 +63,6 @@ public sealed class ExportSystem
             return Clipboard.GetText(TextDataFormat.Text);
         }
         return null;
-    }
-
-    public static Dictionary<string, BLRProfileSettingsWrapper> LoadSettingProfiles()
-    {
-        LoggingSystem.Log("Started Loading Profile settings");
-        var dict = new Dictionary<string, BLRProfileSettingsWrapper>();
-        try
-        {
-            var dirs = Directory.EnumerateDirectories($"{IOResources.PROFILE_DIR}GameSettings\\");
-            foreach (var dir in dirs)
-            {
-                var data = dir.Split('\\');
-                var name = data[data.Length - 1];
-
-                var onlineProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{dir}\\UE3_online_profile.json");
-                var keyBinds = IOResources.DeserializeFile<BLRKeyBindings>($"{dir}\\keybinding.json");
-
-                var profile = new BLRProfileSettingsWrapper(name, onlineProfile, keyBinds);
-
-                if(File.Exists($"{dir}\\UE3_online_profile.json")) IOResources.CopyToBackup($"{dir}\\UE3_online_profile.json", $"GameSettings\\{name}\\");
-                if(File.Exists($"{dir}\\keybinding.json")) IOResources.CopyToBackup($"{dir}\\keybinding.json", $"GameSettings\\{name}\\");
-
-                dict.Add(name, profile);
-            }
-        }
-        catch { }
-        LoggingSystem.Log("Finished Loading Profile settings");
-        return dict;
     }
 
     public static ObservableCollectionExtended<BLRLoadoutStorage> LoadStorage()
@@ -240,12 +210,22 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
         {
             var directory = $"{client.ConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
-            IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(BLR.Loadout1), new LoadoutManagerLoadout(BLR.Loadout2), new LoadoutManagerLoadout(BLR.Loadout3) });
-            MainWindow.ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+            if (client.ProxyVersion == "BLRevive")
+            {
+                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LMLoadout(BLR.Loadout1, "Loadout 1"), new LMLoadout(BLR.Loadout2, "Loadout 2"), new LMLoadout(BLR.Loadout3, "Loadout 3") });
+                MainWindow.ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+            }
+            else
+            {
+                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(BLR.Loadout1), new LoadoutManagerLoadout(BLR.Loadout2), new LoadoutManagerLoadout(BLR.Loadout3) });
+                MainWindow.ShowAlert($"Applied Proxy Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+            }
+            
             if (MainWindow.Instance is not null)
             {
                 MainWindow.Instance.ProfileComboBox.SelectedIndex = MainWindow.Instance.ProfileComboBox.Items.IndexOf(Shareable);
                 DataStorage.Settings.CurrentlyAppliedLoadout = MainWindow.Instance.ProfileComboBox.SelectedIndex;
+                Shareable.LastApplied = DateTime.Now;
             }
             BLR.IsChanged = false;
         }

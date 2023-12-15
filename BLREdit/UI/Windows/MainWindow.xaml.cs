@@ -97,7 +97,7 @@ public sealed partial class MainWindow : Window
     }
 
     public static void ResetPauseForPing()
-    { 
+    {
         firstStart = true;
     }
 
@@ -152,7 +152,7 @@ public sealed partial class MainWindow : Window
 
     public static void AddGameClient(BLRClient client)
     {
-        if(IsInCollection(DataStorage.GameClients, client) == -1)
+        if (IsInCollection(DataStorage.GameClients, client) == -1)
         {
             DataStorage.GameClients.Add(client);
         }
@@ -247,7 +247,7 @@ public sealed partial class MainWindow : Window
             else
             {
                 if (loadout is not null) ItemFilters.Instance.WeaponFilter = loadout.Primary;
-                else if(profile is not null) ItemFilters.Instance.WeaponFilter = profile.Loadout1.Primary;
+                else if (profile is not null) ItemFilters.Instance.WeaponFilter = profile.Loadout1.Primary;
             }
             MainView.LastSelectedItemBorder = border;
             wasLastImageScopePreview = false;
@@ -503,10 +503,11 @@ public sealed partial class MainWindow : Window
                         }
                     }
                 }
-                var directory = $"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\";
-                Directory.CreateDirectory(directory);
-                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LMLoadout(MainView.Profile.BLR.Loadout1, "Loadout 1"), new LMLoadout(MainView.Profile.BLR.Loadout2, "Loadout 2"), new LMLoadout(MainView.Profile.BLR.Loadout3, "Loadout 3") });
-                ShowAlert($"Applied LM Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+                if (DataStorage.Settings.SelectedProxyVersion == "BLRevive")
+                    ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);
+                else
+                    ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
+
                 MainView.Profile.Shareable.LastApplied = DateTime.Now;
                 DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;
                 MainView.Profile.BLR.IsChanged = false;
@@ -527,15 +528,33 @@ public sealed partial class MainWindow : Window
                         }
                     }
                 }
-                var directory = $"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\";
-                Directory.CreateDirectory(directory);
-                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout1), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout2), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout3) });
-                ShowAlert($"Applied Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+
+                if(DataStorage.Settings.SelectedProxyVersion == "BLRevive")
+                    ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
+                else
+                    ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);
+
                 MainView.Profile.Shareable.LastApplied = DateTime.Now;
                 DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;
                 MainView.Profile.BLR.IsChanged = false;
             }
         }
+    }
+
+    public void ApplyProxyLoadouts(BLRClient client)
+    {
+        var directory = $"{client.ConfigFolder}profiles\\";
+        Directory.CreateDirectory(directory);
+        IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout1), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout2), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout3) });
+        ShowAlert($"Applied Proxy Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+    }
+
+    public void ApplyBLReviveLoadouts(BLRClient client)
+    {
+        var directory = $"{client.ConfigFolder}profiles\\";
+        Directory.CreateDirectory(directory);
+        IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LMLoadout(MainView.Profile.BLR.Loadout1, "Loadout 1"), new LMLoadout(MainView.Profile.BLR.Loadout2, "Loadout 2"), new LMLoadout(MainView.Profile.BLR.Loadout3, "Loadout 3") });
+        ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)

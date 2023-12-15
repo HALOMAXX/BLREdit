@@ -61,6 +61,1194 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Avatar.
+        /// </summary>
+        public static string _000000 {
+            get {
+                return ResourceManager.GetString("000000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Weapon Skin.
+        /// </summary>
+        public static string _000001 {
+            get {
+                return ResourceManager.GetString("-000001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bow.
+        /// </summary>
+        public static string _000300 {
+            get {
+                return ResourceManager.GetString("000300", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Caution.
+        /// </summary>
+        public static string _000301 {
+            get {
+                return ResourceManager.GetString("000301", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clap.
+        /// </summary>
+        public static string _000302 {
+            get {
+                return ResourceManager.GetString("000302", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crane.
+        /// </summary>
+        public static string _000303 {
+            get {
+                return ResourceManager.GetString("000303", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salute.
+        /// </summary>
+        public static string _000304 {
+            get {
+                return ResourceManager.GetString("000304", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Robot Dance.
+        /// </summary>
+        public static string _000305 {
+            get {
+                return ResourceManager.GetString("000305", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TeaBag.
+        /// </summary>
+        public static string _000306 {
+            get {
+                return ResourceManager.GetString("000306", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roar.
+        /// </summary>
+        public static string _000307 {
+            get {
+                return ResourceManager.GetString("000307", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flex.
+        /// </summary>
+        public static string _000308 {
+            get {
+                return ResourceManager.GetString("000308", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Kneebow.
+        /// </summary>
+        public static string _000309 {
+            get {
+                return ResourceManager.GetString("000309", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fancy Bow.
+        /// </summary>
+        public static string _000310 {
+            get {
+                return ResourceManager.GetString("000310", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bring It.
+        /// </summary>
+        public static string _000311 {
+            get {
+                return ResourceManager.GetString("000311", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gun Wave.
+        /// </summary>
+        public static string _000312 {
+            get {
+                return ResourceManager.GetString("000312", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muahaha.
+        /// </summary>
+        public static string _000313 {
+            get {
+                return ResourceManager.GetString("000313", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posed Point.
+        /// </summary>
+        public static string _000314 {
+            get {
+                return ResourceManager.GetString("000314", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kiss.
+        /// </summary>
+        public static string _000315 {
+            get {
+                return ResourceManager.GetString("000315", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ground Pound.
+        /// </summary>
+        public static string _000316 {
+            get {
+                return ResourceManager.GetString("000316", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock.
+        /// </summary>
+        public static string _000317 {
+            get {
+                return ResourceManager.GetString("000317", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paper.
+        /// </summary>
+        public static string _000318 {
+            get {
+                return ResourceManager.GetString("000318", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flash Point.
+        /// </summary>
+        public static string _000319 {
+            get {
+                return ResourceManager.GetString("000319", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suck it.
+        /// </summary>
+        public static string _000320 {
+            get {
+                return ResourceManager.GetString("000320", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocket Fist.
+        /// </summary>
+        public static string _000321 {
+            get {
+                return ResourceManager.GetString("000321", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step Off.
+        /// </summary>
+        public static string _000322 {
+            get {
+                return ResourceManager.GetString("000322", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flight.
+        /// </summary>
+        public static string _000323 {
+            get {
+                return ResourceManager.GetString("000323", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _000324 {
+            get {
+                return ResourceManager.GetString("000324", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bow Digital.
+        /// </summary>
+        public static string _000325 {
+            get {
+                return ResourceManager.GetString("000325", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Caution Digital.
+        /// </summary>
+        public static string _000326 {
+            get {
+                return ResourceManager.GetString("000326", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clap Digital.
+        /// </summary>
+        public static string _000327 {
+            get {
+                return ResourceManager.GetString("000327", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crane Digital.
+        /// </summary>
+        public static string _000328 {
+            get {
+                return ResourceManager.GetString("000328", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salute Digital.
+        /// </summary>
+        public static string _000329 {
+            get {
+                return ResourceManager.GetString("000329", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TeaBag Digital.
+        /// </summary>
+        public static string _000330 {
+            get {
+                return ResourceManager.GetString("000330", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roar Digital.
+        /// </summary>
+        public static string _000331 {
+            get {
+                return ResourceManager.GetString("000331", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Robot Dance Digital.
+        /// </summary>
+        public static string _000332 {
+            get {
+                return ResourceManager.GetString("000332", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flex Digital.
+        /// </summary>
+        public static string _000333 {
+            get {
+                return ResourceManager.GetString("000333", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Kneebow Digital.
+        /// </summary>
+        public static string _000334 {
+            get {
+                return ResourceManager.GetString("000334", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fancy Bow Digital.
+        /// </summary>
+        public static string _000335 {
+            get {
+                return ResourceManager.GetString("000335", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bring it Digital.
+        /// </summary>
+        public static string _000336 {
+            get {
+                return ResourceManager.GetString("000336", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gun Wave Digital.
+        /// </summary>
+        public static string _000337 {
+            get {
+                return ResourceManager.GetString("000337", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muahaha Digital.
+        /// </summary>
+        public static string _000338 {
+            get {
+                return ResourceManager.GetString("000338", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posed Point Digital.
+        /// </summary>
+        public static string _000339 {
+            get {
+                return ResourceManager.GetString("000339", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kiss Digital.
+        /// </summary>
+        public static string _000340 {
+            get {
+                return ResourceManager.GetString("000340", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ground Pound Digital.
+        /// </summary>
+        public static string _000341 {
+            get {
+                return ResourceManager.GetString("000341", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rock Digital.
+        /// </summary>
+        public static string _000342 {
+            get {
+                return ResourceManager.GetString("000342", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paper Digital.
+        /// </summary>
+        public static string _000343 {
+            get {
+                return ResourceManager.GetString("000343", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scissors Digital.
+        /// </summary>
+        public static string _000344 {
+            get {
+                return ResourceManager.GetString("000344", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suck it Digital.
+        /// </summary>
+        public static string _000345 {
+            get {
+                return ResourceManager.GetString("000345", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocket Fist Digital.
+        /// </summary>
+        public static string _000346 {
+            get {
+                return ResourceManager.GetString("000346", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step Off Digital.
+        /// </summary>
+        public static string _000347 {
+            get {
+                return ResourceManager.GetString("000347", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flight Digital.
+        /// </summary>
+        public static string _000348 {
+            get {
+                return ResourceManager.GetString("000348", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _000349 {
+            get {
+                return ResourceManager.GetString("000349", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go.
+        /// </summary>
+        public static string _000350 {
+            get {
+                return ResourceManager.GetString("000350", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pump.
+        /// </summary>
+        public static string _000351 {
+            get {
+                return ResourceManager.GetString("000351", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cut It.
+        /// </summary>
+        public static string _000352 {
+            get {
+                return ResourceManager.GetString("000352", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Throat Slit.
+        /// </summary>
+        public static string _000353 {
+            get {
+                return ResourceManager.GetString("000353", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumbs Down.
+        /// </summary>
+        public static string _000354 {
+            get {
+                return ResourceManager.GetString("000354", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumbs Up.
+        /// </summary>
+        public static string _000355 {
+            get {
+                return ResourceManager.GetString("000355", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A-OK.
+        /// </summary>
+        public static string _000356 {
+            get {
+                return ResourceManager.GetString("000356", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metal.
+        /// </summary>
+        public static string _000357 {
+            get {
+                return ResourceManager.GetString("000357", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point.
+        /// </summary>
+        public static string _000358 {
+            get {
+                return ResourceManager.GetString("000358", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rainbow.
+        /// </summary>
+        public static string _000359 {
+            get {
+                return ResourceManager.GetString("000359", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wag.
+        /// </summary>
+        public static string _000360 {
+            get {
+                return ResourceManager.GetString("000360", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hush.
+        /// </summary>
+        public static string _000361 {
+            get {
+                return ResourceManager.GetString("000361", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _000362 {
+            get {
+                return ResourceManager.GetString("000362", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _000363 {
+            get {
+                return ResourceManager.GetString("000363", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Airplane.
+        /// </summary>
+        public static string _000364 {
+            get {
+                return ResourceManager.GetString("000364", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gun Pump.
+        /// </summary>
+        public static string _000365 {
+            get {
+                return ResourceManager.GetString("000365", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up Yours.
+        /// </summary>
+        public static string _000366 {
+            get {
+                return ResourceManager.GetString("000366", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shhh.
+        /// </summary>
+        public static string _000367 {
+            get {
+                return ResourceManager.GetString("000367", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Veteran War Mask.
+        /// </summary>
+        public static string _000368 {
+            get {
+                return ResourceManager.GetString("000368", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _000369 {
+            get {
+                return ResourceManager.GetString("000369", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _000370 {
+            get {
+                return ResourceManager.GetString("000370", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giddy Up.
+        /// </summary>
+        public static string _000371 {
+            get {
+                return ResourceManager.GetString("000371", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hip Shimmy.
+        /// </summary>
+        public static string _000372 {
+            get {
+                return ResourceManager.GetString("000372", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _000373 {
+            get {
+                return ResourceManager.GetString("000373", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _000374 {
+            get {
+                return ResourceManager.GetString("000374", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go Digital.
+        /// </summary>
+        public static string _000375 {
+            get {
+                return ResourceManager.GetString("000375", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pump Digital.
+        /// </summary>
+        public static string _000376 {
+            get {
+                return ResourceManager.GetString("000376", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cut It Digital.
+        /// </summary>
+        public static string _000377 {
+            get {
+                return ResourceManager.GetString("000377", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Throat Slit Digital.
+        /// </summary>
+        public static string _000378 {
+            get {
+                return ResourceManager.GetString("000378", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumbs Down Digital.
+        /// </summary>
+        public static string _000379 {
+            get {
+                return ResourceManager.GetString("000379", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumbs Up Digital.
+        /// </summary>
+        public static string _000380 {
+            get {
+                return ResourceManager.GetString("000380", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A-OK Digital.
+        /// </summary>
+        public static string _000381 {
+            get {
+                return ResourceManager.GetString("000381", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metal Digital.
+        /// </summary>
+        public static string _000382 {
+            get {
+                return ResourceManager.GetString("000382", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point Digital.
+        /// </summary>
+        public static string _000383 {
+            get {
+                return ResourceManager.GetString("000383", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rainbow Digital.
+        /// </summary>
+        public static string _000384 {
+            get {
+                return ResourceManager.GetString("000384", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wag Digital.
+        /// </summary>
+        public static string _000385 {
+            get {
+                return ResourceManager.GetString("000385", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uppercut Digital.
+        /// </summary>
+        public static string _000386 {
+            get {
+                return ResourceManager.GetString("000386", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crane Kick Digital.
+        /// </summary>
+        public static string _000387 {
+            get {
+                return ResourceManager.GetString("000387", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera Digital.
+        /// </summary>
+        public static string _000388 {
+            get {
+                return ResourceManager.GetString("000388", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hush Digital.
+        /// </summary>
+        public static string _000389 {
+            get {
+                return ResourceManager.GetString("000389", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Troll Face.
+        /// </summary>
+        public static string _000390 {
+            get {
+                return ResourceManager.GetString("000390", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Airplane Digital.
+        /// </summary>
+        public static string _000391 {
+            get {
+                return ResourceManager.GetString("000391", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gun Pump Digital.
+        /// </summary>
+        public static string _000392 {
+            get {
+                return ResourceManager.GetString("000392", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up Yours Digital.
+        /// </summary>
+        public static string _000393 {
+            get {
+                return ResourceManager.GetString("000393", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shhh Digital.
+        /// </summary>
+        public static string _000394 {
+            get {
+                return ResourceManager.GetString("000394", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to War Dog.
+        /// </summary>
+        public static string _000395 {
+            get {
+                return ResourceManager.GetString("000395", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lasso.
+        /// </summary>
+        public static string _000396 {
+            get {
+                return ResourceManager.GetString("000396", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classy Salute.
+        /// </summary>
+        public static string _000397 {
+            get {
+                return ResourceManager.GetString("000397", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metal Skull.
+        /// </summary>
+        public static string _000398 {
+            get {
+                return ResourceManager.GetString("000398", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sad Panda.
+        /// </summary>
+        public static string _000399 {
+            get {
+                return ResourceManager.GetString("000399", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shrug and Laugh.
+        /// </summary>
+        public static string _000400 {
+            get {
+                return ResourceManager.GetString("000400", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Die die die!.
+        /// </summary>
+        public static string _000401 {
+            get {
+                return ResourceManager.GetString("000401", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loser.
+        /// </summary>
+        public static string _000402 {
+            get {
+                return ResourceManager.GetString("000402", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broken Heart.
+        /// </summary>
+        public static string _000403 {
+            get {
+                return ResourceManager.GetString("000403", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hahaha.
+        /// </summary>
+        public static string _000404 {
+            get {
+                return ResourceManager.GetString("000404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pelvic Thrust.
+        /// </summary>
+        public static string _000405 {
+            get {
+                return ResourceManager.GetString("000405", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Super Charge.
+        /// </summary>
+        public static string _000406 {
+            get {
+                return ResourceManager.GetString("000406", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tea-time Digital.
+        /// </summary>
+        public static string _000407 {
+            get {
+                return ResourceManager.GetString("000407", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclamation Digital.
+        /// </summary>
+        public static string _000408 {
+            get {
+                return ResourceManager.GetString("000408", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chicken Dance.
+        /// </summary>
+        public static string _000409 {
+            get {
+                return ResourceManager.GetString("000409", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Captain Digital.
+        /// </summary>
+        public static string _000410 {
+            get {
+                return ResourceManager.GetString("000410", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backflip.
+        /// </summary>
+        public static string _000411 {
+            get {
+                return ResourceManager.GetString("000411", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Party Thrust.
+        /// </summary>
+        public static string _000412 {
+            get {
+                return ResourceManager.GetString("000412", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pumpkin Head Digital.
+        /// </summary>
+        public static string _000413 {
+            get {
+                return ResourceManager.GetString("000413", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pumpking Laugh Digital.
+        /// </summary>
+        public static string _000414 {
+            get {
+                return ResourceManager.GetString("000414", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skull Mask Digital.
+        /// </summary>
+        public static string _000415 {
+            get {
+                return ResourceManager.GetString("000415", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devil Laugh Digital.
+        /// </summary>
+        public static string _000416 {
+            get {
+                return ResourceManager.GetString("000416", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Head Bop.
+        /// </summary>
+        public static string _000417 {
+            get {
+                return ResourceManager.GetString("000417", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dust Off.
+        /// </summary>
+        public static string _000418 {
+            get {
+                return ResourceManager.GetString("000418", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fireworks.
+        /// </summary>
+        public static string _000420 {
+            get {
+                return ResourceManager.GetString("000420", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snowball Juggle.
+        /// </summary>
+        public static string _000421 {
+            get {
+                return ResourceManager.GetString("000421", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unusal Dance.
+        /// </summary>
+        public static string _000422 {
+            get {
+                return ResourceManager.GetString("000422", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creepy Thrust.
+        /// </summary>
+        public static string _000423 {
+            get {
+                return ResourceManager.GetString("000423", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bell Kick.
+        /// </summary>
+        public static string _000424 {
+            get {
+                return ResourceManager.GetString("000424", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Irish Jig.
+        /// </summary>
+        public static string _000425 {
+            get {
+                return ResourceManager.GetString("000425", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Punch Wind.
+        /// </summary>
+        public static string _000426 {
+            get {
+                return ResourceManager.GetString("000426", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Punch Earth.
+        /// </summary>
+        public static string _000427 {
+            get {
+                return ResourceManager.GetString("000427", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Punch Fire.
+        /// </summary>
+        public static string _000428 {
+            get {
+                return ResourceManager.GetString("000428", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Punch Water.
+        /// </summary>
+        public static string _000429 {
+            get {
+                return ResourceManager.GetString("000429", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Punch Heart.
+        /// </summary>
+        public static string _000430 {
+            get {
+                return ResourceManager.GetString("000430", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Weapon Tag.
         /// </summary>
         public static string _005000 {
@@ -1290,15 +2478,6 @@ namespace BLREdit.Properties {
         public static string _005143 {
             get {
                 return ResourceManager.GetString("005143", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Weapon Skin.
-        /// </summary>
-        public static string _009999 {
-            get {
-                return ResourceManager.GetString("009999", resourceCulture);
             }
         }
         

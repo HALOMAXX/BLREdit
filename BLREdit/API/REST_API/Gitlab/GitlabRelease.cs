@@ -5,6 +5,8 @@ namespace BLREdit.API.REST_API.Gitlab;
 
 public sealed class GitlabRelease
 {
+    public string Owner { get; set; } = string.Empty;
+    public string Repository { get; set; } = string.Empty;
     [JsonPropertyName("tag_name")]
     public string? TagName { get; set; }
     [JsonPropertyName("description")]

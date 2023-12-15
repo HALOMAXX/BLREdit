@@ -177,15 +177,6 @@ public sealed class IOResources
         return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
     }
 
-    public static void CopyToBackup(string file, string subfolder = "")
-    {
-        if (string.IsNullOrEmpty(file)) return;
-        var targetDir = new DirectoryInfo(ExportSystem.CurrentBackupFolder.FullName + subfolder);
-        if (!targetDir.Exists) targetDir.Create();
-        FileInfo info = new(file);
-        File.Copy(file, targetDir.FullName + info.Name, true);
-    }
-
     public static string DataToBase64(byte[] data)
     {
         return Base64UrlEncoder.Encode(data);

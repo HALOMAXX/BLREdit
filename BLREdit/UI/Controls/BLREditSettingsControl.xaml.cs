@@ -28,6 +28,7 @@ namespace BLREdit.UI.Controls;
 public sealed partial class BLREditSettingsControl : UserControl
 {
     public static ObservableCollection<CultureInfo> AvailableCultures { get; } = new();
+    public static ObservableCollection<string?> ProxyVersions => BLREditSettings.AvailableProxyVersions;
 
     public static Regex PlayerNameFilter { get; } = new(@"^[a-zA-Z0-9\-_.]*$");
     public static Regex PlayerNameSanitizer { get; } = new(@"[^a-zA-Z0-9\-_.]*");
@@ -43,6 +44,7 @@ public sealed partial class BLREditSettingsControl : UserControl
             AvailableCultures.Add(CultureInfo.CreateSpecificCulture(locale.Key));
         }
         LanguageComboBox.SelectedItem = DataStorage.Settings.SelectedCulture;
+        ProxyComboBox.SelectedItem = DataStorage.Settings.SelectedProxyVersion;
         DataStorage.Settings.PlayerName = PlayerNameSanitizer.Replace(DataStorage.Settings.PlayerName, string.Empty);
     }
 
@@ -120,6 +122,14 @@ public sealed partial class BLREditSettingsControl : UserControl
                     };
                 }
             }
+        }
+    }
+
+    private void ProxyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (DataContext is BLREditSettings settings && e.AddedItems.Count > 0 && e.AddedItems[0] is string version)
+        {
+            settings.SelectedProxyVersion = version;
         }
     }
 }

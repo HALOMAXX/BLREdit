@@ -94,56 +94,18 @@ public sealed class RepositoryProxyModule
         if (lockDownload) return null;
         lockDownload = true;
 
-        string dl = "";
+        (bool, string) dl;
         if (RepositoryProvider == RepositoryProvider.GitHub)
         {
-            if (GitHubRelease is null || GitHubRelease.Assets is null) return null;
-            foreach (var asset in GitHubRelease.Assets)
-            {
-                if (asset.Name is not null && asset.Name.StartsWith(ModuleName) && asset.Name.EndsWith(".dll"))
-                {
-                    dl = asset.BrowserDownloadURL ?? string.Empty;
-                    break;
-                }
-            }
+            dl = GitHubClient.DownloadFileFromRelease(GitHubRelease, $"{InstallName}.dll", ModuleName);
         }
         else
         {
-            if (GitlabRelease is null || GitlabRelease.Assets?.Links is null) return null;
-            foreach (var asset in GitlabRelease.Assets.Links)
-            {
-                if (asset.Name is not null && asset.Name.StartsWith(ModuleName) && asset.Name.EndsWith(".dll"))
-                {
-                    dl = asset.URL ?? string.Empty;
-                    break;
-                }
-            }
-
-            if (string.IsNullOrEmpty(dl))
-            {
-                LoggingSystem.Log($"No file found in Asset links gonna go down the deep end!");
-                Regex regex = new($@"(\/uploads\/\w+\/{ModuleName}.dll)");
-                if (regex.Match(GitlabRelease.Description) is Match match)
-                {
-                    LoggingSystem.Log($"Found {match.Captures.Count} matches");
-                    if (match.Captures.Count > 0)
-                    {
-                        foreach (var capture in match.Captures)
-                        {
-                            LoggingSystem.Log($"\t{capture}");
-                            if (string.IsNullOrEmpty(dl))
-                            {
-                                dl = $"https://gitlab.com/{Owner}/{Repository}{capture}";
-                            }
-                        }
-                    }
-                }
-            }
+            dl = GitlabClient.DownloadFileFromRelease(GitlabRelease, $"{InstallName}.dll", ModuleName);
         }
-        string dlTarget = $"downloads\\{InstallName}.dll";
+
         ProxyModule? module = null;
-        if (File.Exists(dlTarget)) { LoggingSystem.Log($"Deleting {dlTarget}"); File.Delete(dlTarget); }
-        if (WebResources.DownloadFile(dl, dlTarget))
+        if (dl.Item1)
         {
             if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
             { module = new ProxyModule(GitHubRelease, ModuleName, Owner, Repository, Client, Server); }

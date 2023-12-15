@@ -5,6 +5,8 @@ namespace BLREdit.API.REST_API.GitHub;
 
 public sealed class GitHubRelease
 {
+    public string Owner { get; set; } = string.Empty;
+    public string Repository { get; set; } = string.Empty;
     [JsonPropertyName("url")] public string? URL { get; set; }
     [JsonPropertyName("assets_url")] public string? AssetsURL { get; set; }
     [JsonPropertyName("upload_url")] public string? UploadURL { get; set; }

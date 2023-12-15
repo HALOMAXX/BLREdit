@@ -1,4 +1,6 @@
-﻿using BLREdit.Game.Proxy;
+﻿using BLREdit.API.REST_API.GitHub;
+using BLREdit.API.REST_API.Gitlab;
+using BLREdit.Game.Proxy;
 
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,9 @@ namespace BLREdit.API.REST_API;
 
 public sealed class RESTAPIClient
 {
+    public const string CACHE = "Cache\\";
+    public const string DOWNLOAD = "downloads\\";
+
     private string CacheFile { get; }
 
     readonly Dictionary<string, object> RequestCache = new();
@@ -21,7 +26,7 @@ public sealed class RESTAPIClient
     {
         this.baseAddress = baseAddress;
         this.APIProvider = APIProvider;
-        CacheFile = $"Cache\\{IOResources.DataToBase64(IOResources.Zip($"{APIProvider}\\{baseAddress}"))}.json";
+        CacheFile = $"{CACHE}{IOResources.DataToBase64(IOResources.Zip($"{APIProvider}\\{baseAddress}"))}.json";
         OldRequestCache = IOResources.DeserializeFile<Dictionary<string, object>>(CacheFile) ?? new();
         DataStorage.DataSaving += SaveCache;
     }
@@ -98,8 +103,25 @@ public sealed class RESTAPIClient
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/releases?page={page}&per_page={per_page}"; }
 
         var result = await TryGetAPI<T[]>(api);
+
         if (result.Item1)
         {
+            if (result.Item2 is GitlabRelease[] glRel)
+            {
+                foreach (var rel in glRel)
+                {
+                    rel.Owner = owner;
+                    rel.Repository = repository;
+                }
+            }
+            if (result.Item2 is GitHubRelease[] ghRel)
+            {
+                foreach (var rel in ghRel)
+                {
+                    rel.Owner = owner;
+                    rel.Repository = repository;
+                }
+            }
             return result.Item2;
         }
         return default;
