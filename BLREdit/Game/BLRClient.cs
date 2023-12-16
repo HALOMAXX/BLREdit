@@ -307,14 +307,14 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (DataStorage.Settings.SelectedProxyVersion == "BLRevive")
         {
             LoggingSystem.Log($"Getting latest BLRevive release!");
-            var task = Task.Run(() => GitlabClient.GetLatestRelease("blrevive", "blrevive"));
+            var task = Task.Run(() => GitlabClient.GetGenericPackages("blrevive", "blrevive", "blrevive"));
             task.Wait();
             LoggingSystem.Log($"Downloading latest BLRevive release!");
-            var dl = GitlabClient.DownloadFileFromRelease(task.Result, "BLRevive.dll", "BLRevive");
+            var result = GitlabClient.DownloadPackage(task.Result[0], "BLRevive.dll", "BLRevive");
             LoggingSystem.Log($"Finished downloading latest BLRevive release!");
-            if (dl.Item1)
+            if (result.Item1)
             {
-                proxySource = $"{IOResources.BaseDirectory}{dl.Item2}";
+                proxySource = $"{IOResources.BaseDirectory}{result.Item2}";
                 proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\BLRevive.dll";
             }
         }

@@ -101,7 +101,22 @@ public sealed class RepositoryProxyModule
         }
         else
         {
-            dl = GitlabClient.DownloadFileFromRelease(GitlabRelease, $"{InstallName}.dll", ModuleName);
+            var packages = GitlabClient.GetGenericPackages(Owner, Repository, ModuleName);
+            packages.Wait();
+            var result = GitlabClient.DownloadPackage(packages.Result[0], $"{InstallName}.dll", ModuleName);
+            if (result.Item1)
+            {
+                var rel = new GitlabRelease() { Owner = Owner, Repository = Repository, ReleasedAt = packages.Result[0].CreatedAt };
+                ProxyModule mod = new(rel, ModuleName, Owner, Repository, Client, Server);
+                UpdateModuleCache(mod);
+                lockDownload = false;
+                return mod;
+            }
+            else
+            {
+                lockDownload = false;
+                return null;
+            }
         }
 
         ProxyModule? module = null;
@@ -109,26 +124,28 @@ public sealed class RepositoryProxyModule
         {
             if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
             { module = new ProxyModule(GitHubRelease, ModuleName, Owner, Repository, Client, Server); }
-            else if (GitlabRelease is not null)
-            { module = new ProxyModule(GitlabRelease, ModuleName, Owner, Repository, Client, Server); }
 
             if (module is null) return module;
 
-            ProxyModule? toRemoveModule = null;
-            foreach (var mod in DataStorage.CachedModules)
-            {
-                if (mod.InstallName == module.InstallName)
-                {
-                    toRemoveModule = mod;
-                    break;
-                }
-            }
-
-            if (toRemoveModule is not null) DataStorage.CachedModules.Remove(toRemoveModule);
-
-            DataStorage.CachedModules.Add(module);
+            UpdateModuleCache(module);
         }
         lockDownload = false;
         return module;
+    }
+
+    private static void UpdateModuleCache(ProxyModule module)
+    {
+        ProxyModule? toRemoveModule = null;
+        foreach (var mod in DataStorage.CachedModules)
+        {
+            if (mod.InstallName == module.InstallName)
+            {
+                toRemoveModule = mod;
+                break;
+            }
+        }
+
+        if (toRemoveModule is not null) DataStorage.CachedModules.Remove(toRemoveModule);
+        DataStorage.CachedModules.Add(module);
     }
 }

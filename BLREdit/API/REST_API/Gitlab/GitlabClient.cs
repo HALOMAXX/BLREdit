@@ -1,8 +1,10 @@
-﻿using BLREdit.Game.Proxy;
+﻿using BLREdit.API.REST_API.GitHub;
+using BLREdit.Game.Proxy;
 
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace BLREdit.API.REST_API.Gitlab;
 
@@ -64,5 +66,43 @@ public static class GitlabClient
         if (File.Exists(downloadTarget)) File.Delete(downloadTarget);
 
         return (WebResources.DownloadFile(downloadLink, downloadTarget), downloadTarget);
+    }
+
+    public static async Task<GitlabPackage[]?> GetGenericPackages(string owner, string repository, string packageName)
+    {
+        string api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/packages?package_name={packageName}&order_by=version&sort=desc";
+
+        var result = await Client.TryGetAPI<GitlabPackage[]>(api);
+        if (result.Item1)
+        {
+            if (result.Item2 is GitlabPackage[] glPack)
+            {
+                foreach (var pack in glPack)
+                {
+                    pack.Owner = owner;
+                    pack.Repository = repository;
+                }
+            }
+            return result.Item2;
+        }
+        return default;
+    }
+
+    public static (bool, string) DownloadPackage(GitlabPackage package, string destFile, string file, string fileExt = ".dll")
+    {
+        string api = $"projects/{package.Owner.Replace("/", "%2F")}%2F{package.Repository.Replace("/", "%2F")}/packages/generic/{file}/{package.Version}/{file}{fileExt}";
+        var task = Task.Run(() => Client.TryGetBytes(api));
+        task.Wait();
+        var result = task.Result;
+
+        if (result.Item1)
+        {
+            Directory.CreateDirectory(RESTAPIClient.DOWNLOAD);
+            string downloadTarget = $"{RESTAPIClient.DOWNLOAD}{destFile}";
+            if (File.Exists(downloadTarget)) File.Delete(downloadTarget);
+            File.WriteAllBytes(downloadTarget, result.Item2);
+            return (true, downloadTarget);
+        }
+        return (false, "");
     }
 }

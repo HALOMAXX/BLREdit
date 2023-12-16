@@ -16,4 +16,6 @@ public sealed class GitlabAuthor
     public string? AvatarURL { get; set; }
     [JsonPropertyName("web_url")]
     public string? WebURL { get; set; }
+    [JsonPropertyName("locked")]
+    public bool Locked { get; set; }
 }

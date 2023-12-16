@@ -5,7 +5,10 @@ using BLREdit.Game.Proxy;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace BLREdit.API.REST_API;
 
@@ -31,7 +34,7 @@ public sealed class RESTAPIClient
         DataStorage.DataSaving += SaveCache;
     }
 
-    private async Task<(bool, T)> TryGetAPI<T>(string api)
+    public async Task<(bool, T)> TryGetAPI<T>(string api)
     {
         if (RequestCache.TryGetValue(api, out var newCache))
         {
@@ -42,9 +45,17 @@ public sealed class RESTAPIClient
         using var response = await GetAsync(api);
         if (response is not null && response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
-            var value = IOResources.Deserialize<T>(content);
-            if (value is not null) { RequestCache.Add(api, value); return (true, value); }
+            switch (response.Content.Headers.ContentType.MediaType)
+            {
+                case "application/json":
+                    var content = await response.Content.ReadAsStringAsync();
+                    var value = IOResources.Deserialize<T>(content);
+                    if (value is not null) { RequestCache.Add(api, value); return (true, value); }
+                    break;
+                default:
+                    LoggingSystem.Log($"Wrong HeaderType: {response.Content.Headers.ContentType.MediaType}");
+                    break;
+            }
         }
 
         if (OldRequestCache.TryGetValue(api, out var oldCache))
@@ -53,6 +64,37 @@ public sealed class RESTAPIClient
             return (true, (T)oldCache);
         }
         return (false, default);
+    }
+
+    public async Task<(bool, byte[])> TryGetBytes(string api)
+    {
+        if (RequestCache.TryGetValue(api, out var newCache))
+        {
+            LoggingSystem.Log($"[Cache](byte[]): {api}");
+            return (true, (byte[])newCache);
+        }
+
+        using var response = await GetAsync(api);
+        if (response is not null && response.IsSuccessStatusCode)
+        {
+            switch (response.Content.Headers.ContentType.MediaType)
+            {
+                case "application/octet-stream":
+                    var bytes = await response.Content.ReadAsByteArrayAsync();
+                    if (bytes is not null) { RequestCache.Add(api, bytes); return (true, bytes); }
+                    break;
+                default:
+                    LoggingSystem.Log($"Wrong HeaderType: {response.Content.Headers.ContentType.MediaType}");
+                    break;
+            }
+        }
+
+        if (OldRequestCache.TryGetValue(api, out var oldCache))
+        {
+            LoggingSystem.Log($"[OldCache](byte[]): {api}");
+            return (true, (byte[])oldCache);
+        }
+        return (false, Array.Empty<byte>());
     }
 
     private void SaveCache(object? sender, EventArgs args)
