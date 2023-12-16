@@ -85,8 +85,9 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? _basePath;
     public string? BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
 
-    private string? _proxyVersion = "v1.0.0-beta.2";
-    public string? ProxyVersion { get { return _proxyVersion; } set { _proxyVersion = value; OnPropertyChanged(); } }
+    private string? _sdkType = "v1.0.0-beta.2";
+    public string? SDKType { get { return _sdkType; } set { _sdkType = value; OnPropertyChanged(); } }
+    public DateTime? SDKVersionDate { get; set; }
 
     private string? _configFolder;
     public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if (Directory.Exists(value)) _configFolder = value; } }
@@ -297,30 +298,57 @@ public sealed class BLRClient : INotifyPropertyChanged
         LoggingSystem.Log("Finished Removing all modules and invalidating client");
     }
 
+    private GitlabPackage GetLatestBLRevivePackages()
+    {
+        var task = Task.Run(() => GitlabClient.GetGenericPackages("blrevive", "blrevive", "blrevive"));
+        task.Wait();
+        return task.Result[0];
+    }
+
+    GitlabPackage? _latestBLRevivePackage;
+    GitlabPackage LatestBLRevivePackage { get { _latestBLRevivePackage ??= GetLatestBLRevivePackages(); return _latestBLRevivePackage; } }
+    private bool CheckProxyUpdate()
+    {
+        if (DataStorage.Settings.SelectedSDKType == "BLRevive")
+        {
+            if (DataStorage.Settings.SDKVersionDate is not null)
+            {
+                return LatestBLRevivePackage.CreatedAt > DataStorage.Settings.SDKVersionDate;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return !File.Exists($"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll");
+        }
+    }
+    //
     public void ValidateProxy()
     {
-        if (DataStorage.Settings?.SelectedProxyVersion?.Equals(ProxyVersion) ?? true) return;
+        if (!CheckProxyUpdate()) return;
         RemoveAllModules();
         
         var proxySource = string.Empty;
         var proxyTarget = string.Empty;
-        if (DataStorage.Settings.SelectedProxyVersion == "BLRevive")
+        if (DataStorage.Settings.SelectedSDKType == "BLRevive")
         {
-            LoggingSystem.Log($"Getting latest BLRevive release!");
-            var task = Task.Run(() => GitlabClient.GetGenericPackages("blrevive", "blrevive", "blrevive"));
-            task.Wait();
             LoggingSystem.Log($"Downloading latest BLRevive release!");
-            var result = GitlabClient.DownloadPackage(task.Result[0], "BLRevive.dll", "BLRevive");
+            var result = GitlabClient.DownloadPackage(LatestBLRevivePackage, "BLRevive.dll", "BLRevive");
             LoggingSystem.Log($"Finished downloading latest BLRevive release!");
             if (result.Item1)
             {
+                LoggingSystem.Log($"Installing latest BLRevive version ({LatestBLRevivePackage.CreatedAt}) before ({DataStorage.Settings.SDKVersionDate})");
+                DataStorage.Settings.SDKVersionDate = LatestBLRevivePackage.CreatedAt;
                 proxySource = $"{IOResources.BaseDirectory}{result.Item2}";
                 proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\BLRevive.dll";
             }
         }
         else
         { 
-            proxySource = $"{IOResources.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.{DataStorage.Settings.SelectedProxyVersion}.dll";
+            proxySource = $"{IOResources.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.{DataStorage.Settings.SelectedSDKType}.dll";
             proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll";
         }
          
@@ -337,7 +365,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             File.Copy(proxySource, proxyTarget);
         }
-        ProxyVersion = DataStorage.Settings.SelectedProxyVersion;
+        SDKType = DataStorage.Settings.SelectedSDKType;
     }
 
     public bool ValidatePatches()
@@ -377,7 +405,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         List<Task> moduleInstallTasks = new();
         foreach (var availableModule in App.AvailableProxyModules)
         {
-            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(DataStorage.Settings.SelectedProxyVersion) && !IsModuleInstalledAndUpToDate(availableModule))
+            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(DataStorage.Settings.SelectedSDKType) && !IsModuleInstalledAndUpToDate(availableModule))
             {
                 moduleInstallTasks.Add(Task.Run(() => { availableModule.InstallModule(this); }));
             }
@@ -453,7 +481,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         LoggingSystem.Log($"Validating Modules Installed({count}/{InstalledModules.Count}) and Custom({customCount}/{CustomModules.Count}) of {this}");
 
-        if (ProxyVersion != "BLRevive")
+        if (SDKType != "BLRevive")
         {
             var config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}default.json") ?? new();
             config.Proxy.Modules.Server.Clear();
@@ -1056,7 +1084,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     }
 
                     PeFile peFile = new(rawFile.ToArray());
-                    peFile.AddImport($"{(DataStorage.Settings.SelectedProxyVersion == "BLRevive" ? "BLRevive" : "Proxy")}.dll", "InitializeThread");
+                    peFile.AddImport($"{(DataStorage.Settings.SelectedSDKType == "BLRevive" ? "BLRevive" : "Proxy")}.dll", "InitializeThread");
                     stream.Position = 0;
                     stream.SetLength(peFile.RawFile.Length);
                     using var writer = new BinaryWriter(stream);
@@ -1076,7 +1104,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                     AppliedPatches.Add(patch);
                 }
                 PatchedHash = IOResources.CreateFileHash(PatchedPath);
-                ProxyVersion = null;
+                SDKType = null;
             }
             else
             {

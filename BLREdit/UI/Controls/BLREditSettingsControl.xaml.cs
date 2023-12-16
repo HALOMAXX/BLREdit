@@ -44,7 +44,7 @@ public sealed partial class BLREditSettingsControl : UserControl
             AvailableCultures.Add(CultureInfo.CreateSpecificCulture(locale.Key));
         }
         LanguageComboBox.SelectedItem = DataStorage.Settings.SelectedCulture;
-        ProxyComboBox.SelectedItem = DataStorage.Settings.SelectedProxyVersion;
+        ProxyComboBox.SelectedItem = DataStorage.Settings.SelectedSDKType;
         DataStorage.Settings.PlayerName = PlayerNameSanitizer.Replace(DataStorage.Settings.PlayerName, string.Empty);
     }
 
@@ -129,7 +129,7 @@ public sealed partial class BLREditSettingsControl : UserControl
     {
         if (DataContext is BLREditSettings settings && e.AddedItems.Count > 0 && e.AddedItems[0] is string version)
         {
-            settings.SelectedProxyVersion = version;
+            settings.SelectedSDKType = version;
         }
     }
 }

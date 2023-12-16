@@ -2,6 +2,7 @@
 using BLREdit.Game;
 using BLREdit.UI;
 
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
@@ -47,8 +48,9 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public UIBool InstallRequiredModules { get; set; } = new(true);
     public UIBool PingHiddenServers { get; set; } = new(true);
     public UIBool ShowHiddenServers { get; set; } = new(false);
-    [JsonPropertyName("SelectedProxyVersion")] public string? jsonSelectedProxyVersion;
-    [JsonIgnore] public string? SelectedProxyVersion { get { jsonSelectedProxyVersion ??= AvailableProxyVersions.First(); return jsonSelectedProxyVersion; } set { if (AvailableProxyVersions.Contains(value)) { jsonSelectedProxyVersion = value; } } }
+    [JsonPropertyName("SelectedProxyVersion")] public string? _selectedSDKType;
+    public DateTime? SDKVersionDate { get; set; }
+    [JsonIgnore] public string? SelectedSDKType { get { _selectedSDKType ??= AvailableProxyVersions.First(); return _selectedSDKType; } set { if (AvailableProxyVersions.Contains(value)) { _selectedSDKType = value; } } }
     [JsonPropertyName("SelectedLanguage")] public string? SelectedLanguage = null;
     [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return CultureInfo.InvariantCulture; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
     [JsonPropertyName("PlayerName")] public string jsonPlayerName = "BLREdit-Player";

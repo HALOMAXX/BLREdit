@@ -2,6 +2,7 @@
 using BLREdit.Game.Proxy;
 
 using System.IO;
+using System.IO.Packaging;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Markup;
@@ -90,7 +91,7 @@ public static class GitlabClient
 
     public static (bool, string) DownloadPackage(GitlabPackage package, string destFile, string file, string fileExt = ".dll")
     {
-        string api = $"projects/{package.Owner.Replace("/", "%2F")}%2F{package.Repository.Replace("/", "%2F")}/packages/generic/{file}/{package.Version}/{file}{fileExt}";
+        string api = $"projects/{package.Owner.Replace("/", "%2F")}%2F{package.Repository.Replace("/", "%2F")}/packages/generic/{package.Name}/{package.Version}/{file}{fileExt}";
         var task = Task.Run(() => Client.TryGetBytes(api));
         task.Wait();
         var result = task.Result;

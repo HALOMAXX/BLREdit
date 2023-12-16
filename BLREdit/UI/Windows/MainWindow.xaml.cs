@@ -503,7 +503,7 @@ public sealed partial class MainWindow : Window
                         }
                     }
                 }
-                if (DataStorage.Settings.SelectedProxyVersion == "BLRevive")
+                if (DataStorage.Settings.SelectedSDKType == "BLRevive")
                     ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);
                 else
                     ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
@@ -529,7 +529,7 @@ public sealed partial class MainWindow : Window
                     }
                 }
 
-                if(DataStorage.Settings.SelectedProxyVersion == "BLRevive")
+                if(DataStorage.Settings.SelectedSDKType == "BLRevive")
                     ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
                 else
                     ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);

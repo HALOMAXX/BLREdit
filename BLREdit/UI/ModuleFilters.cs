@@ -8,7 +8,7 @@ public sealed class ModuleFilters
     {
         if (o is VisualProxyModule item)
         {
-            return item.RepositoryProxyModule.ProxyVersion == DataStorage.Settings.SelectedProxyVersion;
+            return item.RepositoryProxyModule.ProxyVersion == DataStorage.Settings.SelectedSDKType;
         }
         return false;
     }

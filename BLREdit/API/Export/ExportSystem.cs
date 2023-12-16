@@ -210,7 +210,7 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
         {
             var directory = $"{client.ConfigFolder}profiles\\";
             Directory.CreateDirectory(directory);
-            if (client.ProxyVersion == "BLRevive")
+            if (client.SDKType == "BLRevive")
             {
                 IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LMLoadout(BLR.Loadout1, "Loadout 1"), new LMLoadout(BLR.Loadout2, "Loadout 2"), new LMLoadout(BLR.Loadout3, "Loadout 3") });
                 MainWindow.ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
