@@ -106,7 +106,7 @@ public sealed class RepositoryProxyModule
             var result = GitlabClient.DownloadPackage(packages.Result[0], $"{InstallName}.dll", ModuleName);
             if (result.Item1)
             {
-                var rel = new GitlabRelease() { Owner = Owner, Repository = Repository, ReleasedAt = packages.Result[0].CreatedAt };
+                var rel = new GitlabRelease() { Owner = Owner, Repository = Repository, ReleasedAt = result.Item3 };
                 ProxyModule mod = new(rel, ModuleName, Owner, Repository, Client, Server);
                 UpdateModuleCache(mod);
                 lockDownload = false;
@@ -135,17 +135,13 @@ public sealed class RepositoryProxyModule
 
     private static void UpdateModuleCache(ProxyModule module)
     {
-        ProxyModule? toRemoveModule = null;
-        foreach (var mod in DataStorage.CachedModules)
+        if (DataStorage.CachedModules.ContainsKey(module.InstallName))
         {
-            if (mod.InstallName == module.InstallName)
-            {
-                toRemoveModule = mod;
-                break;
-            }
+            DataStorage.CachedModules[module.InstallName] = module;
         }
-
-        if (toRemoveModule is not null) DataStorage.CachedModules.Remove(toRemoveModule);
-        DataStorage.CachedModules.Add(module);
+        else
+        {
+            DataStorage.CachedModules.Add(module.InstallName, module);
+        }
     }
 }

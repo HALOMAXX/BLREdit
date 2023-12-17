@@ -66,12 +66,12 @@ public sealed class RESTAPIClient
         return (false, default);
     }
 
-    public async Task<(bool, byte[])> TryGetBytes(string api)
+    public async Task<(bool, (byte[], DateTime))> TryGetBytes(string api)
     {
         if (RequestCache.TryGetValue(api, out var newCache))
         {
             LoggingSystem.Log($"[Cache](byte[]): {api}");
-            return (true, (byte[])newCache);
+            return (true, ((byte[], DateTime))newCache);
         }
 
         using var response = await GetAsync(api);
@@ -81,7 +81,8 @@ public sealed class RESTAPIClient
             {
                 case "application/octet-stream":
                     var bytes = await response.Content.ReadAsByteArrayAsync();
-                    if (bytes is not null) { RequestCache.Add(api, bytes); return (true, bytes); }
+                    var date = response.Content.Headers.LastModified.Value.DateTime;
+                    if (bytes is not null) { RequestCache.Add(api, (bytes, date)); return (true, (bytes, date)); }
                     break;
                 default:
                     LoggingSystem.Log($"Wrong HeaderType: {response.Content.Headers.ContentType.MediaType}");
@@ -92,9 +93,9 @@ public sealed class RESTAPIClient
         if (OldRequestCache.TryGetValue(api, out var oldCache))
         {
             LoggingSystem.Log($"[OldCache](byte[]): {api}");
-            return (true, (byte[])oldCache);
+            return (true, ((byte[], DateTime))oldCache);
         }
-        return (false, Array.Empty<byte>());
+        return (false, (Array.Empty<byte>(), DateTime.MinValue));
     }
 
     private void SaveCache(object? sender, EventArgs args)

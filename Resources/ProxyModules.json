@@ -3,7 +3,7 @@
     "RepositoryProvider": "Gitlab",
     "Owner": "blrevive/modules",
     "Repository": "loadout-manager",
-    "ModuleName": "LoadoutManager",
+    "ModuleName": "loadout-manager",
     "Server": false,
     "Required": true,
     "ProxyVersion": "BLRevive"

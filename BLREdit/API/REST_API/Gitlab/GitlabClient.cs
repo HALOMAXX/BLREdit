@@ -1,6 +1,7 @@
 ﻿using BLREdit.API.REST_API.GitHub;
 using BLREdit.Game.Proxy;
 
+using System;
 using System.IO;
 using System.IO.Packaging;
 using System.Text.RegularExpressions;
@@ -89,7 +90,36 @@ public static class GitlabClient
         return default;
     }
 
-    public static (bool, string) DownloadPackage(GitlabPackage package, string destFile, string file, string fileExt = ".dll")
+    public static async Task<GitlabPackageFile[]?> GetPackageFiles(GitlabPackage package)
+    {
+        string api = $"projects/{package.Owner.Replace("/", "%2F")}%2F{package.Repository.Replace("/", "%2F")}/packages/{package.ID}/package_files";
+        var result = await Client.TryGetAPI<GitlabPackageFile[]>(api);
+        if (result.Item1)
+        {
+            return result.Item2;
+        }
+        return default;
+    }
+
+    public static async Task<GitlabPackageFile?> GetLatestPackageFile(GitlabPackage package, string fileName)
+    {
+        var result = await GetPackageFiles(package);
+        if (result is null) return default;
+        GitlabPackageFile? f = default;
+        foreach (var file in result)
+        {
+            if (file.FileName == fileName)
+            {
+                if (f is null || f.CreatedAt < file.CreatedAt)
+                {
+                    f = file;
+                }
+            }
+        }
+        return f;
+    }
+
+    public static (bool, string, DateTime) DownloadPackage(GitlabPackage package, string destFile, string file, string fileExt = ".dll")
     {
         string api = $"projects/{package.Owner.Replace("/", "%2F")}%2F{package.Repository.Replace("/", "%2F")}/packages/generic/{package.Name}/{package.Version}/{file}{fileExt}";
         var task = Task.Run(() => Client.TryGetBytes(api));
@@ -101,9 +131,12 @@ public static class GitlabClient
             Directory.CreateDirectory(RESTAPIClient.DOWNLOAD);
             string downloadTarget = $"{RESTAPIClient.DOWNLOAD}{destFile}";
             if (File.Exists(downloadTarget)) File.Delete(downloadTarget);
-            File.WriteAllBytes(downloadTarget, result.Item2);
-            return (true, downloadTarget);
+            File.WriteAllBytes(downloadTarget, result.Item2.Item1);
+            return (true, downloadTarget, result.Item2.Item2);
         }
-        return (false, "");
+        return (false, "", DateTime.MinValue);
     }
+
+
+
 }

@@ -246,16 +246,11 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.InstallName}");
 
-            LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}]");
-
             ProxyModule? module = null;
-            foreach (var cachedModule in DataStorage.CachedModules)
+            if (DataStorage.CachedModules.TryGetValue(RepositoryProxyModule.InstallName, out var value))
             {
-                if (cachedModule.InstallName == RepositoryProxyModule.InstallName && cachedModule.Published >= ReleaseDate)
-                {
-                    module = cachedModule;
-                    break;
-                }
+                LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}] / [{value.Published}]");
+                module = value;
             }
 
             if (module is not null) 
@@ -359,8 +354,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
         else
         {
-            var releaseInfo = await GitlabClient.GetLatestRelease(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository);
-            return releaseInfo?.ReleasedAt ?? DateTime.MinValue;
+            var packages = await GitlabClient.GetGenericPackages(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository, RepositoryProxyModule.ModuleName);
+            return (await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.ModuleName}.dll"))?.CreatedAt ?? DateTime.MinValue;
         }
     }
 

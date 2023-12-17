@@ -298,22 +298,29 @@ public sealed class BLRClient : INotifyPropertyChanged
         LoggingSystem.Log("Finished Removing all modules and invalidating client");
     }
 
-    private GitlabPackage GetLatestBLRevivePackages()
+    private void GetLatestBLRevivePackages()
     {
         var task = Task.Run(() => GitlabClient.GetGenericPackages("blrevive", "blrevive", "blrevive"));
         task.Wait();
-        return task.Result[0];
+        _latestBLRevivePackage = task.Result[0];
+
+        var task2 = Task.Run(() => GitlabClient.GetLatestPackageFile(_latestBLRevivePackage, $"BLRevive.dll"));
+        task2.Wait();
+        _latestBLRevivePackageFile = task2.Result;
     }
 
-    GitlabPackage? _latestBLRevivePackage;
-    GitlabPackage LatestBLRevivePackage { get { _latestBLRevivePackage ??= GetLatestBLRevivePackages(); return _latestBLRevivePackage; } }
+    GitlabPackage _latestBLRevivePackage;
+    GitlabPackage? LatestBLRevivePackage { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackage; } }
+
+    GitlabPackageFile _latestBLRevivePackageFile;
+    GitlabPackageFile? LatestBLRevivePackageFile { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackageFile; } }
     private bool CheckProxyUpdate()
     {
         if (DataStorage.Settings.SelectedSDKType == "BLRevive")
         {
             if (DataStorage.Settings.SDKVersionDate is not null)
             {
-                return LatestBLRevivePackage.CreatedAt > DataStorage.Settings.SDKVersionDate;
+                return LatestBLRevivePackageFile.CreatedAt > DataStorage.Settings.SDKVersionDate;
             }
             else
             {
@@ -340,8 +347,8 @@ public sealed class BLRClient : INotifyPropertyChanged
             LoggingSystem.Log($"Finished downloading latest BLRevive release!");
             if (result.Item1)
             {
-                LoggingSystem.Log($"Installing latest BLRevive version ({LatestBLRevivePackage.CreatedAt}) before ({DataStorage.Settings.SDKVersionDate})");
-                DataStorage.Settings.SDKVersionDate = LatestBLRevivePackage.CreatedAt;
+                LoggingSystem.Log($"Installing latest BLRevive version ({result.Item3}) before ({DataStorage.Settings.SDKVersionDate})");
+                DataStorage.Settings.SDKVersionDate = result.Item3;
                 proxySource = $"{IOResources.BaseDirectory}{result.Item2}";
                 proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\BLRevive.dll";
             }
@@ -1025,15 +1032,12 @@ public sealed class BLRClient : INotifyPropertyChanged
     public void SetCurrentClient()
     {
         LoggingSystem.Log($"Setting Current Client:{this}");
-        if (this.Patched.Is)
+        DataStorage.Settings.DefaultClient = this;
+        foreach (BLRClient c in DataStorage.GameClients)
         {
-            DataStorage.Settings.DefaultClient = this;
-            foreach (BLRClient c in DataStorage.GameClients)
-            {
-                c.CurrentClient.Set(false);
-            }
-            this.CurrentClient.Set(true);
+            c.CurrentClient.Set(false);
         }
+        this.CurrentClient.Set(true);
     }
 
     private string? GetBasePath()
