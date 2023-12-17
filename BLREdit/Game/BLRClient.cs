@@ -320,7 +320,8 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             if (DataStorage.Settings.SDKVersionDate is not null)
             {
-                return LatestBLRevivePackageFile.CreatedAt > DataStorage.Settings.SDKVersionDate;
+                var d = LatestBLRevivePackageFile.CreatedAt;
+                return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second) > DataStorage.Settings.SDKVersionDate;
             }
             else
             {

@@ -4,6 +4,7 @@
     "Owner": "blrevive/modules",
     "Repository": "loadout-manager",
     "ModuleName": "loadout-manager",
+    "FileName": "LoadoutManager",
     "Server": false,
     "Required": true,
     "ProxyVersion": "BLRevive"

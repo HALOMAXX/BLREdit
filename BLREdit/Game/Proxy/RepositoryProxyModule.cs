@@ -22,6 +22,7 @@ public sealed class RepositoryProxyModule
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
+    public string? FileName { get; set; } = null;
     public bool Client { get; set; } = true;
     public bool Server { get; set; } = true;
     public bool Required { get; set; } = false;
@@ -103,7 +104,7 @@ public sealed class RepositoryProxyModule
         {
             var packages = GitlabClient.GetGenericPackages(Owner, Repository, ModuleName);
             packages.Wait();
-            var result = GitlabClient.DownloadPackage(packages.Result[0], $"{InstallName}.dll", ModuleName);
+            var result = GitlabClient.DownloadPackage(packages.Result[0], $"{InstallName}.dll", FileName ?? ModuleName);
             if (result.Item1)
             {
                 var rel = new GitlabRelease() { Owner = Owner, Repository = Repository, ReleasedAt = result.Item3 };
