@@ -18,11 +18,12 @@ namespace BLREdit.Game.Proxy;
 public sealed class RepositoryProxyModule
 {
     public RepositoryProvider RepositoryProvider { get; set; } = RepositoryProvider.Gitlab;
-    [JsonIgnore] public string InstallName { get { return $"{ModuleName}-{Owner}-{Repository}".Replace('/', '-'); } }
+    [JsonIgnore] public string InstallName { get { return $"{PackageFileName}-{Owner}-{Repository}".Replace('/', '-'); } }
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
     public string? FileName { get; set; } = null;
+    [JsonIgnore] public string PackageFileName { get { if (FileName is null) { return ModuleName; } else { return FileName; } } }
     public bool Client { get; set; } = true;
     public bool Server { get; set; } = true;
     public bool Required { get; set; } = false;
@@ -104,11 +105,12 @@ public sealed class RepositoryProxyModule
         {
             var packages = GitlabClient.GetGenericPackages(Owner, Repository, ModuleName);
             packages.Wait();
-            var result = GitlabClient.DownloadPackage(packages.Result[0], $"{InstallName}.dll", FileName ?? ModuleName);
+
+            var result = GitlabClient.DownloadPackage(packages.Result[0], $"{InstallName}.dll", PackageFileName);
             if (result.Item1)
             {
                 var rel = new GitlabRelease() { Owner = Owner, Repository = Repository, ReleasedAt = result.Item3 };
-                ProxyModule mod = new(rel, ModuleName, Owner, Repository, Client, Server);
+                ProxyModule mod = new(rel, Owner, Repository, ModuleName, FileName, Client, Server);
                 UpdateModuleCache(mod);
                 lockDownload = false;
                 return mod;
@@ -124,7 +126,7 @@ public sealed class RepositoryProxyModule
         if (dl.Item1)
         {
             if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
-            { module = new ProxyModule(GitHubRelease, ModuleName, Owner, Repository, Client, Server); }
+            { module = new ProxyModule(GitHubRelease, Owner, Repository, ModuleName, FileName, Client, Server); }
 
             if (module is null) return module;
 
@@ -136,13 +138,16 @@ public sealed class RepositoryProxyModule
 
     private static void UpdateModuleCache(ProxyModule module)
     {
-        if (DataStorage.CachedModules.ContainsKey(module.InstallName))
+        var index = DataStorage.CachedModules.IndexOf(module);
+        if (index >= 0)
         {
-            DataStorage.CachedModules[module.InstallName] = module;
+            if (module is null) 
+            { LoggingSystem.Log("What the h happened"); }
+            DataStorage.CachedModules[index] = module;
         }
         else
         {
-            DataStorage.CachedModules.Add(module.InstallName, module);
+            DataStorage.CachedModules.Add(module);
         }
     }
 }

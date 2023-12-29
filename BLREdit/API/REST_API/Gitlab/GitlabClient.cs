@@ -72,7 +72,7 @@ public static class GitlabClient
 
     public static async Task<GitlabPackage[]?> GetGenericPackages(string owner, string repository, string packageName)
     {
-        string api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/packages?package_name={packageName}&order_by=version&sort=desc";
+        string api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/packages?package_name={packageName}&order_by=created_at&sort=desc";
 
         var result = await Client.TryGetAPI<GitlabPackage[]>(api);
         if (result.Item1)

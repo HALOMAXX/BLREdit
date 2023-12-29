@@ -10,11 +10,13 @@ namespace BLREdit.Game.Proxy;
 
 public sealed class ProxyModule
 {
-    private string? installName = null;
-    public string InstallName { get { installName ??= $"{ModuleName}-{RepoName}"; return installName; } set { installName = value; } }
-    public string RepoName { get; set; } = "";
-    public string AuthorName { get; set; } = "SuperEwald";
+    public string InstallName { get { return $"{PackageFileName}-{Owner}-{Repository}".Replace('/', '-'); } }
+    public string Owner { get; set; } = "blrevive";
+    public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
+    public string? FileName { get; set; } = null;
+    [JsonIgnore] public string PackageFileName { get { if (FileName is null) { return ModuleName; } else { return FileName; } } }
+    public string AuthorName { get; set; } = "SuperEwald";
     public DateTime Published { get; set; } = DateTime.MinValue;
     public string ReleaseID { get; set; } = string.Empty;
     public bool Client { get; set; } = true;
@@ -22,10 +24,12 @@ public sealed class ProxyModule
     [JsonIgnore] public int FileAppearances { get; set; } = 0;
 
     public ProxyModule() { }
-    public ProxyModule(string customInstallName) { Client = true; Server = true; FileAppearances = 1; installName = customInstallName; }
-    public ProxyModule(GitHubRelease? release, string moduleName, string owner, string repo, bool client, bool server)
+    public ProxyModule(string owner, string repo) { Client = true; Server = true; FileAppearances = 1; Owner = owner; Repository = repo; }
+    public ProxyModule(GitHubRelease? release, string owner, string repo, string moduleName, string? fileName, bool client, bool server)
     {
-        RepoName = $"{owner}/{repo}".Replace('/', '-');
+        Owner = owner;
+        Repository = repo;
+        FileName = fileName;
         AuthorName = release?.Author?.URL ?? string.Empty;
         ModuleName = moduleName;
         Published = release?.PublishedAt ?? DateTime.MinValue;
@@ -33,9 +37,11 @@ public sealed class ProxyModule
         Server = server;
     }
 
-    public ProxyModule(GitlabRelease? release, string moduleName, string owner, string repo, bool client, bool server)
+    public ProxyModule(GitlabRelease? release, string owner, string repo, string moduleName, string? fileName,bool client, bool server)
     {
-        RepoName = $"{owner}/{repo}".Replace('/', '-');
+        Owner = owner;
+        Repository = repo;
+        FileName = fileName;
         AuthorName = release?.Author?.WebURL ?? string.Empty;
         ModuleName = moduleName;
         Published = release?.ReleasedAt ?? DateTime.MinValue;

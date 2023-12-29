@@ -72,7 +72,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
         {
             CreateNoWindow = true,
             UseShellExecute = false,
-            FileName = Client.PatchedPath,
+            FileName = Client.SDKType == "BLRevive" ? Client.OriginalPath : Client.PatchedPath,
             Arguments = launchArgs
         };
         this.gameProcess = new()

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 
 namespace BLREdit.Game;
@@ -45,18 +46,28 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         return dict;
     }
 
-    public BLRProfileSettingsWrapper(string profileName, BLRProfileSettings[]? settings, BLRKeyBindings? keyBindings)
+    public BLRProfileSettingsWrapper() 
     {
-        foreach (var setting in settings ?? defaultProfile)
+        foreach (var setting in defaultProfile)
         {
             if (setting.ProfileSetting is null) continue;
             Settings.Add(setting.ProfileSetting.PropertyId, setting);
         }
+        KeyBindings ??= new();
+    }
 
-        keyBindings ??= new();
+    public BLRProfileSettingsWrapper(string ProfileName, BLRProfileSettings[]? Settings, BLRKeyBindings? KeyBindings)
+    {
+        foreach (var setting in Settings ?? defaultProfile)
+        {
+            if (setting.ProfileSetting is null) continue;
+            this.Settings.Add(setting.ProfileSetting.PropertyId, setting);
+        }
 
-        ProfileName = profileName;
-        KeyBindings = keyBindings;
+        KeyBindings ??= new();
+
+        this.ProfileName = ProfileName;
+        this.KeyBindings = KeyBindings;
     }
 
     public void UpdateFromFile(BLRProfileSettings[] settings)
@@ -84,9 +95,14 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 
         var property = SettingPropertiesString[name];
         var attribute = property.GetCustomAttribute<ProfileSettingAttribute>();
-        var setting = Settings[attribute.ID];
-
-        return setting?.ProfileSetting?.Data?.Value1 ?? defaultValue;
+        if (Settings.TryGetValue(attribute.ID, out var value))
+        {
+            return value?.ProfileSetting?.Data?.Value1 ?? defaultValue;
+        }
+        else
+        {
+            return defaultValue;
+        }
     }
 
     private void SetValueOf(int Value, [CallerMemberName] string? name = null)

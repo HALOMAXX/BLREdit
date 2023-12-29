@@ -236,6 +236,15 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
+    public static bool TryGet(string installName, out ProxyModule? module)
+    {
+        module = null;
+        for (int i = 0; i < DataStorage.CachedModules.Count; i++)
+        {
+            if (DataStorage.CachedModules[i].InstallName == installName) module = DataStorage.CachedModules[i]; return true;
+        }
+        return false;
+    }
 
     [JsonIgnore] public UIBool LockInstall { get; } = new(false);
     public void InstallModule(BLRClient? client)
@@ -244,34 +253,37 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         LockInstall.Set(true);
         try
         {
-            LoggingSystem.Log($"Begun Installing {RepositoryProxyModule.InstallName}");
-
             ProxyModule? module = null;
-            if (DataStorage.CachedModules.TryGetValue(RepositoryProxyModule.InstallName, out var value))
+
+            if (TryGet(RepositoryProxyModule.InstallName, out var value))
             {
-                LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}] / [{value.Published}]");
+                LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}] / [{value?.Published}] for {RepositoryProxyModule.InstallName}");
                 module = value;
+            }
+            else
+            {
+                LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}] / [---]");
             }
 
             if (module is not null) 
             { 
                 if (File.Exists($"downloads\\{module.InstallName}")) 
                 { 
-                    LoggingSystem.Log($"Found {module.InstallName} in cache");
+                    LoggingSystem.Log($"Found {module.InstallName} in downloadCache");
                 } 
                 else 
                 { 
                     module = null; DataStorage.CachedModules.Clear();
                 } 
             } 
-            else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in cache");
+            else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in downloadCache");
 
             module ??= RepositoryProxyModule.DownloadLatest();
 
             if (module is not null)
             {
                 File.Copy($"downloads\\{module.InstallName}.dll", $"{client.ModulesFolder}\\{module.InstallName}.dll", true);
-                LoggingSystem.Log($"Copied {module.InstallName} from Cache to client module location");
+                LoggingSystem.Log($"Copied {module.InstallName} from downloadCache to client module location");
                 for (int i = 0; i < client.InstalledModules.Count; i++)
                 {
                     if (client.InstalledModules[i].InstallName == module.InstallName)
@@ -292,14 +304,19 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
         finally
         {
-            CheckForInstall(client);
-            CheckForUpdate(client);
-            OnPropertyChanged(nameof(InstalledModule));
-            OnPropertyChanged(nameof(Installed));
-            OnPropertyChanged(nameof(UpToDate));
             LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.InstallName}");
             LockInstall.Set(false);
         }
+    }
+
+    public void FinalizeInstall(BLRClient? client)
+    {
+        if (client is null) return;
+        CheckForInstall(client);
+        CheckForUpdate(client);
+        OnPropertyChanged(nameof(InstalledModule));
+        OnPropertyChanged(nameof(Installed));
+        OnPropertyChanged(nameof(UpToDate));
     }
 
     [JsonIgnore] public UIBool LockRemove { get; } = new(false);
@@ -355,7 +372,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         else
         {
             var packages = await GitlabClient.GetGenericPackages(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository, RepositoryProxyModule.ModuleName);
-            return (await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.ModuleName}.dll"))?.CreatedAt ?? DateTime.MinValue;
+            return (await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.PackageFileName}.dll")).CreatedAt;
         }
     }
 
