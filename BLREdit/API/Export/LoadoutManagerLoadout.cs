@@ -1,10 +1,6 @@
 ﻿using BLREdit.Import;
 using BLREdit.UI.Views;
 
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Threading;
-using System.Windows.Controls;
-
 namespace BLREdit.Export;
 
 public sealed class LoadoutManagerLoadout

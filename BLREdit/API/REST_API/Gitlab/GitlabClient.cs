@@ -1,12 +1,9 @@
-﻿using BLREdit.API.REST_API.GitHub;
-using BLREdit.Game.Proxy;
+﻿using BLREdit.Game.Proxy;
 
 using System;
 using System.IO;
-using System.IO.Packaging;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Markup;
 
 namespace BLREdit.API.REST_API.Gitlab;
 

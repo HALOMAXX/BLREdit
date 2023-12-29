@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 using BLREdit.API.Export;
-using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.API.Utils;
 using BLREdit.Export;
@@ -694,7 +693,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
-        string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}?SingleMatch";
+        string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
         StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
         LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
     }
@@ -714,8 +713,8 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchClient(LaunchOptions options)
     {
-        var ProxyLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
-        var BLReviveLoadout = IOResources.DeserializeFile<LMLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
+        var ProxyLoadout = SDKType != "BLRevive" ? IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json") : null;
+        var BLReviveLoadout = SDKType == "BLRevive" ? IOResources.DeserializeFile<LMLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json") : null;
         if (options.Server.AllowAdvanced && !options.Server.AllowLMGR)
         {
             bool hasLMGR = false;
@@ -767,13 +766,24 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         else if (!options.Server.AllowAdvanced)
         {
-            var diskLoadout = IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json");
             bool isAdvanced = false;
 
-            if (diskLoadout is not null)
+            if (ProxyLoadout is not null)
             {
                 string message = "";
-                foreach (var loadout in diskLoadout)
+                foreach (var loadout in ProxyLoadout)
+                {
+                    if (IsAdvanced(loadout.GetLoadout(), ref message))
+                    {
+                        isAdvanced = true;
+                    }
+                }
+            }
+
+            if (BLReviveLoadout is not null)
+            {
+                string message = "";
+                foreach (var loadout in BLReviveLoadout)
                 {
                     if (IsAdvanced(loadout.GetLoadout(), ref message))
                     {

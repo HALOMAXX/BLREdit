@@ -1,4 +1,9 @@
-﻿using BLREdit.UI.Views;
+﻿using BLREdit.Import;
+using BLREdit.UI.Views;
+
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Threading;
+using System.Windows.Controls;
 
 namespace BLREdit.API.Export;
 
@@ -57,6 +62,62 @@ public class LMLoadout
         DialogAnnouncer = loadout.AnnouncerVoice?.UID ?? -1;
         DialogPlayer = loadout.PlayerVoice?.UID ?? -1;
     }
+
+    public BLRLoadout GetLoadout()
+    {
+        var loadout = new BLRLoadout(null)
+        {
+            Primary = this.Primary.GetWeapon(true),
+            Secondary = this.Secondary.GetWeapon(false),
+
+            Helmet = ImportSystem.GetItemByUIDAndType(ImportSystem.HELMETS_CATEGORY, Body.Helmet),
+            UpperBody = ImportSystem.GetItemByUIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, Body.UpperBody),
+            LowerBody = ImportSystem.GetItemByUIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, Body.LowerBody),
+
+            Trophy = ImportSystem.GetItemByUIDAndType(ImportSystem.BADGES_CATEGORY, Body.Badge),
+            BodyCamo = ImportSystem.GetItemByUIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Body.Camo),
+            Avatar = ImportSystem.GetItemByUIDAndType(ImportSystem.AVATARS_CATEGORY, Body.Avatar),
+            IsFemale = Body.Female,
+
+            Tactical = ImportSystem.GetItemByUIDAndType(ImportSystem.TACTICAL_CATEGORY, Gear.Tactical),
+            Gear1 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.R1),
+            Gear2 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.R2),
+            Gear3 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.L1),
+            Gear4 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.L2),
+
+            Depot1 = ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, Depot[0]),
+            Depot2 = ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, Depot[1]),
+            Depot3 = ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, Depot[2]),
+            Depot4 = ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, Depot[3]),
+            Depot5 = ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, Depot[4]),
+
+            Taunt1 = ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[0]),
+            Taunt2 = ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[1]),
+            Taunt3 = ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[2]),
+            Taunt4 = ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[3]),
+            Taunt5 = ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[4]),
+            Taunt6 = ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[5]),
+            Taunt7 = ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[6]),
+            Taunt8 = ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[7]),
+
+            Title = ImportSystem.GetItemByUIDAndType(ImportSystem.TITLES_CATEGORY, Title),
+
+            AnnouncerVoice = ImportSystem.GetItemByUIDAndType(ImportSystem.ANNOUNCER_VOICE_CATEGORY, DialogAnnouncer),
+            PlayerVoice = ImportSystem.GetItemByUIDAndType(ImportSystem.PLAYER_VOICE_CATEGORY, DialogPlayer),
+
+            EmblemIcon = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_ICON_CATEGORY, Emblem.TopIcon),
+            EmblemShape = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_SHAPE_CATEGORY, Emblem.MiddleIcon),
+            EmblemBackground = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY, Emblem.BottomIcon),
+
+            EmblemIconColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, Emblem.TopColor),
+            EmblemShapeColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, Emblem.MiddleColor),
+            EmblemBackgroundColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, Emblem.BottomColor)
+        };
+
+        loadout.Primary.Tag = ImportSystem.GetItemByUIDAndType(ImportSystem.HANGERS_CATEGORY, Gear.Hanger);
+
+        return loadout;
+    }
 }
 
 public class LMWeapon
@@ -85,6 +146,22 @@ public class LMWeapon
         Magazine = weapon?.Magazine?.UID ?? -1;
         Skin = weapon?.Skin?.UID ?? -1;
         Camo = weapon?.Camo?.UID ?? -1;
+    }
+
+    public BLRWeapon GetWeapon(bool isPrimary)
+    {
+        return new BLRWeapon(isPrimary)
+        {
+            Receiver = ImportSystem.GetItemByUIDAndType(isPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Receiver),
+            Barrel = ImportSystem.GetItemByUIDAndType(ImportSystem.BARRELS_CATEGORY, Barrel),
+            Muzzle = ImportSystem.GetItemByUIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle),
+            Grip = ImportSystem.GetItemByUIDAndType(ImportSystem.GRIPS_CATEGORY, Grip),
+            Magazine = ImportSystem.GetItemByUIDAndType(ImportSystem.MAGAZINES_CATEGORY, Magazine),
+            Ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, Ammo),
+            Stock = ImportSystem.GetItemByUIDAndType(ImportSystem.STOCKS_CATEGORY, Stock),
+            Scope = ImportSystem.GetItemByUIDAndType(ImportSystem.SCOPES_CATEGORY, Scope),
+            Skin = ImportSystem.GetItemByUIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, Skin)
+        };
     }
 }
 

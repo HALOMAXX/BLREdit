@@ -2,19 +2,14 @@
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
-using BLREdit.UI;
 
 using HtmlAgilityPack;
 
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
