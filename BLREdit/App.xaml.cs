@@ -478,6 +478,7 @@ public partial class App : System.Windows.Application
         Directory.CreateDirectory("logs\\Proxy");
 
         Directory.CreateDirectory("Profiles");
+        Directory.CreateDirectory("Backup");
 
         Directory.CreateDirectory(IOResources.UPDATE_DIR);
         Directory.CreateDirectory("downloads");

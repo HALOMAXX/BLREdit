@@ -26,36 +26,5 @@
     "Client": false,
     "Required": true,
     "ProxyVersion": "BLRevive"
-  },
-
-
-
-
-  {
-    "RepositoryProvider": "Gitlab",
-    "Owner": "Kethen",
-    "Repository": "loadout-manager",
-    "ModuleName": "LoadoutManager",
-    "Server": false,
-    "Required": true,
-    "ProxyVersion": "v1.0.0-beta.2"
-  },
-  {
-    "RepositoryProvider": "GitHub",
-    "Owner": "Kethen",
-    "Repository": "BLRE-settings-manager",
-    "ModuleName": "settings-manager",
-    "Server": false,
-    "Required": true,
-    "ProxyVersion": "v1.0.0-beta.2"
-  },
-  {
-    "RepositoryProvider": "GitHub",
-    "Owner": "Kethen",
-    "Repository": "BLRE-server-utils",
-    "ModuleName": "server-utils",
-    "Client": false,
-    "Required": true,
-    "ProxyVersion": "v1.0.0-beta.2"
   }
 ]

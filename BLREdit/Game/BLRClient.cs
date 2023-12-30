@@ -78,13 +78,13 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     [JsonIgnore] public FileInfoExtension? PatchedFile
     {
-        get { return new(PatchedPath); }
+        get { return PatchedPath != null ? new FileInfoExtension(PatchedPath) : null; }
     }
 
     private string? _basePath;
     public string? BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
 
-    private string? _sdkType = "v1.0.0-beta.2";
+    private string? _sdkType = "BLRevive";
     public string? SDKType { get { return _sdkType; } set { _sdkType = value; OnPropertyChanged(); } }
     public DateTime? SDKVersionDate { get; set; }
 
