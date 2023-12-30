@@ -811,8 +811,9 @@ public partial class App : System.Windows.Application
         {
             if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
             IOResources.DownloadFileMessageBox(assetDL, assetZip.Info.FullName);
+            if (Directory.Exists(IOResources.ASSET_DIR)) { Directory.Delete(IOResources.ASSET_DIR, true); }
             ZipFile.ExtractToDirectory(assetZip.Info.FullName, IOResources.ASSET_DIR);
-            return true;
+            return false;
         }
         else
         { LoggingSystem.MessageLog("No Asset folder for download available!", "Error"); return false; } //TODO: Add Localization
