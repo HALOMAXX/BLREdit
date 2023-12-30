@@ -23,7 +23,7 @@
   },
   {
     "ServerAddress": "blrevive-staging.northamp.fr",
-    "InfoPort": 80,
+    "InfoPort": 7777,
     "Hidden": true,
     "Region": "EU-West",
     "AllowAdvanced": true,
