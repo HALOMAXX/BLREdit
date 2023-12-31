@@ -21,6 +21,7 @@ using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace BLREdit;
 /// <summary>
@@ -923,6 +924,11 @@ public partial class App : System.Windows.Application
     private static async Task<RepositoryProxyModule[]?> GetAvailableProxyModules()
     {
         LoggingSystem.Log("Downloading AvailableProxyModule List!");
+#if DEBUG
+        var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(File.ReadAllText("../../../../Resources/ProxyModules.json"));
+        LoggingSystem.Log("Loaded AvailableProxyModule from local file!");
+        return moduleList;
+#else
         try
         {
             if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json") is GitHubFile file)
@@ -935,11 +941,17 @@ public partial class App : System.Windows.Application
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}", "Error"); } //TODO: Add Localization
         return Array.Empty<RepositoryProxyModule>();
+#endif
     }
 
     private static async Task<Dictionary<string, string>?> GetAvailableLocalizations()
     {
         LoggingSystem.Log("Downloading AvailableLocalization List!");
+#if DEBUG
+        var localizations = IOResources.Deserialize<Dictionary<string, string>>(File.ReadAllText("../../../../Resources/Localizations.json"));
+        LoggingSystem.Log("Loaded AvailableLocalizations from local file!");
+        return localizations;
+#else
         try
         {
             if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/Localizations.json") is GitHubFile file)
@@ -952,11 +964,18 @@ public partial class App : System.Windows.Application
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get Localization list from Github\n{error}", "Error"); } //TODO: Add Localization
         return new();
+#endif
     }
 
     private static async Task<List<BLRServer>?> GetDefaultServers()
     {
         LoggingSystem.Log($"Downloading Default Server List!");
+
+#if DEBUG
+        var servers = IOResources.Deserialize<List<BLRServer>>(File.ReadAllText("../../../../Resources/ServerList.json"));
+        LoggingSystem.Log("Loaded Available Servers from local file!");
+        return servers;
+#else
         try
         {
             if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ServerList.json") is GitHubFile file)
@@ -972,6 +991,7 @@ public partial class App : System.Windows.Application
         { //Only localhost is needed as most likely we are offline so there is no need to add anyother default servers
             new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
         };
+#endif
     }
 
     public static Task<T> StartSTATask<T>(Func<T> action)

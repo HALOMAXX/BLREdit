@@ -18,7 +18,7 @@ namespace BLREdit.Game.Proxy;
 public sealed class RepositoryProxyModule
 {
     public RepositoryProvider RepositoryProvider { get; set; } = RepositoryProvider.Gitlab;
-    [JsonIgnore] public string InstallName { get { return $"{PackageFileName}-{Owner}-{Repository}".Replace('/', '-'); } }
+    [JsonIgnore] public string InstallName { get { return $"{PackageFileName}"; } }
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";

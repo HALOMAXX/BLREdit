@@ -10,7 +10,7 @@ namespace BLREdit.Game.Proxy;
 
 public sealed class ProxyModule
 {
-    public string InstallName { get { return $"{PackageFileName}-{Owner}-{Repository}".Replace('/', '-'); } }
+    public string InstallName { get { return $"{PackageFileName}"; } }
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
