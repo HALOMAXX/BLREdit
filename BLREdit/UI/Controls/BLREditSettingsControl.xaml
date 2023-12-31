@@ -105,6 +105,11 @@
                         <ToggleButton Content="{x:Static p:Resources.tbtn_ShowHiddenServers }" ToolTip="{x:Static p:Resources.tbtn_TT_ShowHiddenServers }" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
                 </StackPanel>
             </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=ApplyMergedProfiles}">
+                    <ToggleButton Content="Apply Merged Profiles" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
 
             <Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">

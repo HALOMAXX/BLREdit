@@ -29,13 +29,22 @@
         <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
         <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="420" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged" DataContext="{Binding Path=Profile.BLR}">
-            <TabItem Header="{x:Static p:Resources.ti_Loadout1}" Name="Loadout1Tab">
+            <TabItem Name="Loadout1Tab">
+                <TabItem.Header>
+                    <TextBox x:Name="Loadout1Name" Text="{Binding Path=Loadout1.Name}" Width="102" BorderThickness="0" Height="17" Background="Transparent"/>
+                </TabItem.Header>
                 <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Loadout1}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
             </TabItem>
-            <TabItem Header="{x:Static p:Resources.ti_Loadout2}" Name="Loadout2Tab">
+            <TabItem Name="Loadout2Tab">
+                <TabItem.Header>
+                    <TextBox x:Name="Loadout2Name" Text="{Binding Path=Loadout2.Name}" Width="102" BorderThickness="0" Height="17" Background="Transparent"/>
+                </TabItem.Header>
                 <ui:LoadoutControl x:Name="Loadout2" DataContext="{Binding Path=Loadout2}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
             </TabItem>
-            <TabItem Header="{x:Static p:Resources.ti_Loadout3}" Name="Loadout3Tab">
+            <TabItem Name="Loadout3Tab">
+                <TabItem.Header>
+                    <TextBox x:Name="Loadout3Name" Text="{Binding Path=Loadout3.Name}" Width="102" BorderThickness="0" Height="17" Background="Transparent"/>
+                </TabItem.Header>
                 <ui:LoadoutControl x:Name="Loadout3" DataContext="{Binding Path=Loadout3}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
             </TabItem>
         </TabControl>

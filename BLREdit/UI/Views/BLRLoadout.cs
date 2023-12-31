@@ -28,6 +28,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public BLRWeapon Secondary { get; set; }
 
     private bool isChanged = false;
+    
+    private string name = "";
+    public string Name { get { return name; } set { name = value; Write(); } }
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
 
     private void ItemChanged([CallerMemberName] string? propertyName = null)
