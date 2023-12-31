@@ -48,6 +48,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public UIBool InstallRequiredModules { get; set; } = new(true);
     public UIBool PingHiddenServers { get; set; } = new(true);
     public UIBool ShowHiddenServers { get; set; } = new(false);
+    public UIBool ApplyMergedProfiles { get; set; } = new(true);
     [JsonPropertyName("SelectedProxyVersion")] public string? _selectedSDKType;
     public DateTime? SDKVersionDate { get; set; }
     [JsonIgnore] public string? SelectedSDKType { get { _selectedSDKType ??= AvailableProxyVersions.First(); return _selectedSDKType; } set { if (AvailableProxyVersions.Contains(value)) { _selectedSDKType = value; } } }

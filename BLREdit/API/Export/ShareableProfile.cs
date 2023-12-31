@@ -2,7 +2,7 @@
 using BLREdit.Import;
 using BLREdit.UI;
 using BLREdit.UI.Views;
-
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -207,6 +207,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
 public sealed class ShareableLoadout : IBLRLoadout
 {
     [JsonIgnore] public ShareableProfile? Profile { get; set; } = null;
+    [JsonPropertyName("Name")] public string Name { get; set; } = String.Empty;
     [JsonPropertyName("R1")] public ShareableWeapon Primary { get; set; } = new();
     [JsonPropertyName("R2")] public ShareableWeapon Secondary { get; set; } = new();
     [JsonPropertyName("F1")] public bool Female { get; set; } = false;
@@ -249,6 +250,7 @@ public sealed class ShareableLoadout : IBLRLoadout
 
     public ShareableLoadout(BLRLoadout loadout, ShareableProfile? profile)
     {
+        Name = loadout.Name;
         Profile = profile;
         Female = loadout.IsFemale;
         BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
@@ -301,6 +303,7 @@ public sealed class ShareableLoadout : IBLRLoadout
     {
         var loadout = new BLRLoadout(profile)
         {
+            Name = Name,
             IsFemale = Female,
             IsBot = Bot,
 
@@ -358,6 +361,7 @@ public sealed class ShareableLoadout : IBLRLoadout
     {
         var clone = new ShareableLoadout(null)
         {
+            Name = Name,
             Primary = Primary.Clone(),
             Secondary = Secondary.Clone(),
             Avatar = Avatar,
@@ -411,6 +415,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadLoadout)) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
 
+        loadout.Name = Name.IsNullOrEmpty() ? $"Loadout {Profile?.Loadouts.IndexOf(this) + 1}" : Name;
         loadout.IsFemale = Female;
         loadout.IsBot = Bot;
 
@@ -466,6 +471,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteLoadout)) return;
         if (Profile is not null) { Profile.LastModified = DateTime.Now; }
 
+        Name = loadout.Name;
         Female = loadout.IsFemale;
         Bot = loadout.IsBot;
         Avatar = BLRItem.GetMagicCowsID(loadout.Avatar, -1);

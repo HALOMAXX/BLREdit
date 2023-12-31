@@ -212,7 +212,31 @@ public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = 
             Directory.CreateDirectory(directory);
             if (client.SDKType == "BLRevive")
             {
-                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LMLoadout(BLR.Loadout1, "Loadout 1"), new LMLoadout(BLR.Loadout2, "Loadout 2"), new LMLoadout(BLR.Loadout3, "Loadout 3") });
+                if (DataStorage.Settings.ApplyMergedProfiles.Is)
+                {
+                    List<LMLoadout> loadouts = new List<LMLoadout>();
+
+
+                    int profileIndex = 0;
+                    foreach (var profile in DataStorage.Loadouts)
+                    {
+                        var profileName = DataStorage.ShareableProfiles[profileIndex].Name;
+                        loadouts.Add(new LMLoadout(profile.BLR.Loadout1, $"{profileName} {profile.BLR.Loadout1.Name}"));
+                        loadouts.Add(new LMLoadout(profile.BLR.Loadout2, $"{profileName} {profile.BLR.Loadout2.Name}"));
+                        loadouts.Add(new LMLoadout(profile.BLR.Loadout3, $"{profileName} {profile.BLR.Loadout3.Name}"));
+                        profileIndex++;
+                    }
+
+                    IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
+                }
+                else
+                {
+                    IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] {
+                        new LMLoadout(BLR.Loadout1, BLR.Loadout1.Name),
+                        new LMLoadout(BLR.Loadout2, BLR.Loadout2.Name),
+                        new LMLoadout(BLR.Loadout3, BLR.Loadout3.Name)
+                    });
+                }
                 MainWindow.ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
             }
             else
