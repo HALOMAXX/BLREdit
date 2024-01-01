@@ -139,6 +139,7 @@ public class LMWeapon
         Receiver = weapon?.Receiver?.UID ?? -1;
         Barrel = weapon?.Barrel?.UID ?? -1;
         Scope = weapon?.Scope?.UID ?? -1;
+        if (Scope == 45018) { Scope = -1; }        
         Grip = weapon?.Grip?.UID ?? -1;
         Stock = weapon?.Stock?.UID ?? -1;
         Ammo = weapon?.Ammo?.UID ?? -1;

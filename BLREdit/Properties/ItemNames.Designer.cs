@@ -8710,6 +8710,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Optic Mod.
+        /// </summary>
+        public static string _044999 {
+            get {
+                return ResourceManager.GetString("044999", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lightsky Red Dot Sight.
         /// </summary>
         public static string _045000 {
@@ -8809,7 +8818,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MMRS Flip-Up Rail Sight.
+        ///   Looks up a localized string similar to invalid scope.
         /// </summary>
         public static string _045011 {
             get {
@@ -8818,7 +8827,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to invalid scope.
+        ///   Looks up a localized string similar to MMRS Flip-Up Rail Sight.
         /// </summary>
         public static string _045012 {
             get {
@@ -8872,7 +8881,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Optic Mod.
+        ///   Looks up a localized string similar to EMI Infrared Scope Mk. 2.
         /// </summary>
         public static string _045018 {
             get {
@@ -8881,7 +8890,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMI Infrared Scope Mk. 2.
+        ///   Looks up a localized string similar to EMI Infrared Scope.
         /// </summary>
         public static string _045019 {
             get {
@@ -8890,7 +8899,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMI Infrared Scope.
+        ///   Looks up a localized string similar to ArmCom Infrared Scope.
         /// </summary>
         public static string _045020 {
             get {
@@ -8899,7 +8908,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArmCom Infrared Scope.
+        ///   Looks up a localized string similar to Aim Point Ammo Counter.
         /// </summary>
         public static string _045021 {
             get {
@@ -8908,7 +8917,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aim Point Ammo Counter.
+        ///   Looks up a localized string similar to 4X Ammo Counter Scope.
         /// </summary>
         public static string _045022 {
             get {
@@ -8917,20 +8926,11 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4X Ammo Counter Scope.
+        ///   Looks up a localized string similar to Prestige Titan Rail Sight.
         /// </summary>
         public static string _045023 {
             get {
                 return ResourceManager.GetString("045023", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prestige Titan Rail Sight.
-        /// </summary>
-        public static string _045024 {
-            get {
-                return ResourceManager.GetString("045024", resourceCulture);
             }
         }
         

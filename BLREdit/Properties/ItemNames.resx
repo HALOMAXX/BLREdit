@@ -5401,23 +5401,23 @@
     <value>Cupid's QT Pi Bow</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="045019" xml:space="preserve">
+  <data name="045018" xml:space="preserve">
     <value>EMI Infrared Scope Mk. 2</value>
     <comment>scopes</comment>
   </data>
-  <data name="045020" xml:space="preserve">
+  <data name="045019" xml:space="preserve">
     <value>EMI Infrared Scope</value>
     <comment>scopes</comment>
   </data>
-  <data name="045022" xml:space="preserve">
+  <data name="045021" xml:space="preserve">
     <value>Aim Point Ammo Counter</value>
     <comment>scopes</comment>
   </data>
-  <data name="045023" xml:space="preserve">
+  <data name="045022" xml:space="preserve">
     <value>4X Ammo Counter Scope</value>
     <comment>scopes</comment>
   </data>
-  <data name="045021" xml:space="preserve">
+  <data name="045020" xml:space="preserve">
     <value>ArmCom Infrared Scope</value>
     <comment>scopes</comment>
   </data>
@@ -5434,11 +5434,11 @@
     <comment>scopes</comment>
   </data>
   <data name="045011" xml:space="preserve">
-    <value>MMRS Flip-Up Rail Sight</value>
+    <value>invalid scope</value>
     <comment>scopes</comment>
   </data>
   <data name="045012" xml:space="preserve">
-    <value>invalid scope</value>
+    <value>MMRS Flip-Up Rail Sight</value>
     <comment>scopes</comment>
   </data>
   <data name="045013" xml:space="preserve">
@@ -5493,11 +5493,11 @@
     <value>Titan Rail Sight</value>
     <comment>scopes</comment>
   </data>
-  <data name="045018" xml:space="preserve">
+  <data name="044999" xml:space="preserve">
     <value>No Optic Mod</value>
     <comment>scopes</comment>
   </data>
-  <data name="045024" xml:space="preserve">
+  <data name="045023" xml:space="preserve">
     <value>Prestige Titan Rail Sight</value>
     <comment>scopes</comment>
   </data>

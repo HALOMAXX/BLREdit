@@ -12387,7 +12387,7 @@
       "DescriptorName": "Infrared",
       "Icon": "t_Sight_18IR_128x128",
       "Name": "EMI Infrared Scope Mk. 2",
-      "UID": 45019,
+      "UID": 45018,
       "ValidFor": [
         40010,
         40003,
@@ -12431,7 +12431,7 @@
       "DescriptorName": "Infrared",
       "Icon": "t_Sight_19IR_128x128",
       "Name": "EMI Infrared Scope",
-      "UID": 45020,
+      "UID": 45019,
       "ValidFor": [
         40010,
         40003,
@@ -12475,7 +12475,7 @@
       "DescriptorName": "AmmoCounter",
       "Icon": "t_Sight_18_128x128",
       "Name": "Aim Point Ammo Counter",
-      "UID": 45022,
+      "UID": 45021,
       "ValidFor": [
         40010,
         40003,
@@ -12520,7 +12520,7 @@
       "DescriptorName": "AmmoCounter",
       "Icon": "t_Sight_19_128x128",
       "Name": "4X Ammo Counter Scope",
-      "UID": 45023,
+      "UID": 45022,
       "ValidFor": [
         40010,
         40003,
@@ -12564,7 +12564,7 @@
       "DescriptorName": "Infrared",
       "Icon": "t_Sight_16IR_128x128",
       "Name": "ArmCom Infrared Scope",
-      "UID": 45021,
+      "UID": 45020,
       "ValidFor": [
         40010,
         40003,
@@ -12738,7 +12738,7 @@
       "DescriptorName": "Flip-Up",
       "Icon": "t_Sight_11_128x128",
       "Name": "MMRS Flip-Up Rail Sight",
-      "UID": 45011,
+      "UID": 45012,
       "ValidFor": [
         40010,
         40003,
@@ -12780,7 +12780,7 @@
       "DescriptorName": "Holo",
       "Icon": "t_Sight_12_128x128",
       "Name": "invalid scope",
-      "UID": 45012,
+      "UID": 45011,
       "ValidFor": [
         -1
       ]
@@ -13359,7 +13359,7 @@
       "LMID": 11,
       "DescriptorName": "Basic",
       "Name": "No Optic Mod",
-      "UID": 45018,
+      "UID": 44999,
       "ValidFor": [
         40001,
         40000,
@@ -13377,7 +13377,7 @@
       "DescriptorName": "Spy",
       "Icon": "t_Gold_Sight_09_128x128",
       "Name": "Prestige Titan Rail Sight",
-      "UID": 45024,
+      "UID": 45023,
       "ValidFor": [
         40010,
         40003,
