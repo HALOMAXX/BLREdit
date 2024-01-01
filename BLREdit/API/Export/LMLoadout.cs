@@ -81,8 +81,8 @@ public class LMLoadout
 
             Tactical = ImportSystem.GetItemByUIDAndType(ImportSystem.TACTICAL_CATEGORY, Gear.Tactical),
             Gear1 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.R1),
-            Gear2 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.R2),
-            Gear3 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.L1),
+            Gear2 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.L1),
+            Gear3 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.R2),
             Gear4 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.L2),
 
             Depot1 = ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, Depot[0]),
@@ -177,8 +177,8 @@ public class LMGear
     public LMGear(BLRLoadout loadout)
     {
         R1 = loadout?.Gear1?.UID ?? -1;
-        R2 = loadout?.Gear2?.UID ?? -1;
-        L1 = loadout?.Gear3?.UID ?? -1;
+        R2 = loadout?.Gear3?.UID ?? -1;
+        L1 = loadout?.Gear2?.UID ?? -1;
         L2 = loadout?.Gear4?.UID ?? -1;
         Tactical = loadout?.Tactical?.UID ?? -1;
         Hanger = -1;
