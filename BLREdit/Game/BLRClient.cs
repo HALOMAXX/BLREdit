@@ -334,7 +334,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ValidateProxy()
     {
-        if (!CheckProxyUpdate()) return;
+        if (!CheckProxyUpdate()) { LoggingSystem.Log($"Proxy / BLRevive is uptodate!"); return; }
         RemoveAllModules();
         
         var proxySource = string.Empty;
@@ -351,7 +351,11 @@ public sealed class BLRClient : INotifyPropertyChanged
                 DataStorage.Settings.SDKVersionDate = reiveResult.Item3;
                 SDKVersionDate = reiveResult.Item3;
 
-                File.Copy($"{IOResources.BaseDirectory}{dInputResult.Item2}", $"{Path.GetDirectoryName(PatchedPath)}\\DINPUT8.dll", true);
+                try
+                {
+                    File.Copy($"{IOResources.BaseDirectory}{dInputResult.Item2}", $"{Path.GetDirectoryName(PatchedPath)}\\DINPUT8.dll", true);
+                }
+                catch {}
 
                 proxySource = $"{IOResources.BaseDirectory}{reiveResult.Item2}";
                 proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\BLRevive.dll";
@@ -365,7 +369,11 @@ public sealed class BLRClient : INotifyPropertyChanged
          
         if (File.Exists(proxySource))
         {
-            File.Copy(proxySource, proxyTarget, true);
+            try
+            {
+                File.Copy(proxySource, proxyTarget, true);
+            }
+            catch { }
         }
         SDKType = DataStorage.Settings.SelectedSDKType;
     }
@@ -414,6 +422,8 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
         }
         if (moduleInstallTasks.Count > 0) Task.WaitAll(moduleInstallTasks.ToArray());
+
+        LoggingSystem.Log("Finalizing install of BLRevive Modules");
 
         foreach (var availableModule in App.AvailableProxyModules)
         {
@@ -715,108 +725,51 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         var ProxyLoadout = SDKType != "BLRevive" ? IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json") : null;
         var BLReviveLoadout = SDKType == "BLRevive" ? IOResources.DeserializeFile<LMLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json") : null;
-        if (options.Server.AllowAdvanced && !options.Server.AllowLMGR)
+        if (!options.Server.AllowAdvanced)
         {
-            bool hasLMGR = false;
-            string message = "Please Remove the LMGR Mag from";
-            if (ProxyLoadout is not null)
-            {
-                int i = 1;
-                foreach (var loadout in ProxyLoadout)
-                {
-                    CheckLoadout(loadout, ref message, ref hasLMGR, i);
-                    i++;
-                }
-            }
-            if (BLReviveLoadout is not null)
-            {
-                int i = 1;
-                foreach (var loadout in BLReviveLoadout)
-                {
-                    CheckLoadout(loadout, ref message, ref hasLMGR, i);
-                    i++;
-                }
-            }
-
-            if (hasLMGR)
-            {
-                hasLMGR = false;
-                message = "Please Remove the LMGR Mag from";
-                var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
-                if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
-                {
-                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout1, ref message, ref hasLMGR, 1);
-                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout2, ref message, ref hasLMGR, 2);
-                    CheckLoadout(currentlyAppliedLoadout.BLR.Loadout3, ref message, ref hasLMGR, 3);
-                    if (hasLMGR)
-                    {
-                        LoggingSystem.MessageLog($"Current loadout is not supported on this server:\n{message}\nOr apply a non Advanced or modify current loadout!", "Warning");
-                        return;
-                    }
-                    else
-                    {
-                        currentlyAppliedLoadout.ApplyLoadout(this);
-                    }
-                }
-                else
-                {
-                    currentlyAppliedLoadout.ApplyLoadout(this);
-                }
-            }
-        }
-        else if (!options.Server.AllowAdvanced)
-        {
-            bool isAdvanced = false;
+            bool isValid = true;
 
             if (ProxyLoadout is not null)
             {
-                string message = "";
+                string message = string.Empty;
                 foreach (var loadout in ProxyLoadout)
                 {
-                    if (IsAdvanced(loadout.GetLoadout(), ref message))
+                    if (!loadout.GetLoadout().ValidateLoadout(ref message))
                     {
-                        isAdvanced = true;
+                        isValid = false;
                     }
                 }
             }
 
             if (BLReviveLoadout is not null)
             {
-                string message = "";
+                string message = string.Empty;
                 foreach (var loadout in BLReviveLoadout)
                 {
-                    if (IsAdvanced(loadout.GetLoadout(), ref message))
+                    if (!loadout.GetLoadout().ValidateLoadout(ref message))
                     {
-                        isAdvanced = true;
+                        isValid = false;
                     }
                 }
             }
 
-            if (isAdvanced)
+            if (!isValid)
             {
                 var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
-                if (currentlyAppliedLoadout.BLR.IsAdvanced.Is)
+                isValid = true;
+                string message = string.Empty;
+                if (!currentlyAppliedLoadout.BLR.Loadout1.ValidateLoadout(ref message)) isValid = false;
+                if (!currentlyAppliedLoadout.BLR.Loadout2.ValidateLoadout(ref message)) isValid = false;
+                if (!currentlyAppliedLoadout.BLR.Loadout3.ValidateLoadout(ref message)) isValid = false;
+
+                if (!isValid)
                 {
-                    LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!", "Warning");
+                    currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
+                    LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n{message}", "Warning");
                     return;
                 }
                 else
                 {
-                    isAdvanced = false;
-                    string message = "Loadout 1:";
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout1, ref message)) isAdvanced = true;
-                    message += "\nLoadout 2:";
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout2, ref message)) isAdvanced = true;
-                    message += "\nLoadout 3:";
-                    if (IsAdvanced(currentlyAppliedLoadout.BLR.Loadout3, ref message)) isAdvanced = true;
-
-                    if (isAdvanced)
-                    {
-                        currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
-                        LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n{message}", "Warning");
-                        return;
-                    }
-
                     currentlyAppliedLoadout.ApplyLoadout(this);
                 }
             }
@@ -828,129 +781,16 @@ public sealed class BLRClient : INotifyPropertyChanged
         StartProcess(launchArgs, false, false, null, options.Server);
     }
 
-    public static bool IsAdvanced(BLRLoadout? loadout, ref string message)
+    public static bool ValidProfile(BLRProfile profile, BLRServer server, ref string message)
     {
-        if (loadout is null) return false;
-        bool advanced = false;
-        message += $"\n\tPrimary:";
-        if (IsAdvanced(loadout.Primary, ref message)) advanced = true;
-        message += $"\n\tSecondary:";
-        if (IsAdvanced(loadout.Secondary, ref message)) advanced = true;
-
-        message += $"\n\tGear:";
-        if (!(loadout.Helmet?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tHelmet is invalid"; }
-        if (!(loadout.UpperBody?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tUpperBody is invalid"; }
-        if (!(loadout.LowerBody?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tLowerBody is invalid"; }
-
-        if (!(loadout.Tactical?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTactical is invalid"; }
-        if (!(loadout.Trophy?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTrophy is invalid"; }
-        if (!(loadout.Avatar?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tAvatar is invalid"; }
-        if (!(loadout.BodyCamo?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tBodyCamo is invalid"; }
-
-        if (!(loadout.Gear1?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tGear1 is invalid"; }
-        if (!(loadout.Gear2?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tGear2 is invalid"; }
-        if (!(loadout.Gear3?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tGear3 is invalid"; }
-        if (!(loadout.Gear4?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tGear4 is invalid"; }
-
-        if (loadout.HasDuplicatedGear) { advanced = true; message += $"\n\t\tGear duplicates are not allowed!"; }
-
-        message += $"\n\tExtra:";
-        if (!(loadout.Depot1?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot1 is invalid"; }
-        if (!(loadout.Depot2?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot2 is invalid"; }
-        if (!(loadout.Depot3?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot3 is invalid"; }
-        if (!(loadout.Depot4?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot4 is invalid"; }
-        if (!(loadout.Depot5?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tDepot5 is invalid"; }
-
-        if (!(loadout.Taunt1?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt1 is invalid"; }
-        if (!(loadout.Taunt2?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt2 is invalid"; }
-        if (!(loadout.Taunt3?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt3 is invalid"; }
-        if (!(loadout.Taunt4?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt4 is invalid"; }
-        if (!(loadout.Taunt5?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt5 is invalid"; }
-        if (!(loadout.Taunt6?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt6 is invalid"; }
-        if (!(loadout.Taunt7?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt7 is invalid"; }
-        if (!(loadout.Taunt8?.IsValidFor(null) ?? true)) { advanced = true; message += $"\n\t\tTaunt8 is invalid"; }
-        return advanced;
-    }
-
-    public static bool IsAdvanced(BLRWeapon? weapon, ref string message)
-    {
-        bool advanced = false;
-        if(weapon is null || weapon.Receiver is null) { message += $"\n\t\tNo Receiver Equipped"; return true; }
-        if (!(weapon.Receiver?.IsValidFor(null) ?? false)) { advanced = true; message += $"\n\t\tReceiver is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Barrel, weapon.Receiver)) { advanced = true; message += $"\n\t\tBarrel is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Muzzle, weapon.Receiver)) { advanced = true; message += $"\n\t\tMuzzle is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Grip, weapon.Receiver)) { advanced = true; message += $"\n\t\tGrip is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Camo, weapon.Receiver)) { advanced = true; message += $"\n\t\tCamo is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Magazine, weapon.Receiver)) { advanced = true; message += $"\n\t\tMagazine is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Ammo, weapon.Receiver)) { advanced = true; message += $"\n\t\tAmmo is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Tag, weapon.Receiver)) { advanced = true; message += $"\n\t\tTag is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Stock, weapon.Receiver)) { advanced = true; message += $"\n\t\tStock is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Scope, weapon.Receiver)) { advanced = true; message += $"\n\t\tScope is invalid"; }
-        if (!BLRItem.IsValidFor(weapon.Skin, weapon.Receiver)) { advanced = true; message += $"\n\t\tSkin is invalid"; }
-        return advanced;
-    }
-
-    public static bool ValidLoadout(BLRProfile profile, BLRServer server, out string message)
-    {
-        var isValidLoadout = true;
-        message = "";
-        if (server.AllowAdvanced && !server.AllowLMGR)
+        var isValid = true;
+        if (!server.AllowAdvanced)
         {
-            message = "Please Remove the LMGR Magazine from:";
-            if (profile.IsAdvanced.Is)
-            {
-                bool invalid = false;
-                CheckLoadout(profile.Loadout1, ref message, ref invalid, 1);
-                CheckLoadout(profile.Loadout2, ref message, ref invalid, 2);
-                CheckLoadout(profile.Loadout3, ref message, ref invalid, 3);
-                if (invalid) { isValidLoadout = false; }
-                if (!isValidLoadout)
-                {
-                    message = $"Current loadout is not supported on this server!\n{message}\nOr apply a non Advanced loadout!";
-                }
-            }
+            if (!profile.Loadout1.ValidateLoadout(ref message)) isValid = false;
+            if (!profile.Loadout2.ValidateLoadout(ref message)) isValid = false;
+            if (!profile.Loadout3.ValidateLoadout(ref message)) isValid = false;
         }
-        else if (!server.AllowAdvanced)
-        {
-            if (profile.IsAdvanced.Is)
-            {
-                isValidLoadout = false;
-                message = $"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced loadout!";
-            }
-        }
-        return isValidLoadout;
-    }
-
-    public static void CheckLoadout(BLRLoadout loadout, ref string message, ref bool invalid,int i)
-    {
-        message += $"\n\tLoadout{i}:";
-        PrimaryHasLMGR(loadout, ref message, ref invalid);
-        SecondaryHasLMGR(loadout, ref message, ref invalid);
-        MissingArmor(loadout, ref message, ref invalid);
-    }
-
-    public static void CheckLoadout(LMLoadout loadout, ref string message, ref bool invalid, int i)
-    {
-        message += $"\n\tLoadout{i}:";
-        PrimaryHasLMGR(loadout, ref message, ref invalid);
-        SecondaryHasLMGR(loadout, ref message, ref invalid);
-        MissingArmor(loadout, ref message, ref invalid);
-    }
-
-    public static void CheckLoadout(LoadoutManagerLoadout loadout, ref string message, ref bool invalid, int i)
-    {
-        message += $"\n\tLoadout{i}:";
-        PrimaryHasLMGR(loadout, ref message, ref invalid);
-        SecondaryHasLMGR(loadout, ref message, ref invalid);
-        MissingArmor(loadout, ref message, ref invalid);
-    }
-
-    public static void CheckLoadout(ShareableLoadout loadout, ref string message, ref bool invalid, int i)
-    {
-        message += $"\n\tLoadout{i}:";
-        PrimaryHasLMGR(loadout, ref message, ref invalid);
-        SecondaryHasLMGR(loadout, ref message, ref invalid);
-        MissingArmor(loadout, ref message, ref invalid);
+        return isValid;
     }
 
     public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
@@ -960,6 +800,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             if (!ValidateClient()) { return; }
             ValidateProxy();
             ValidateModules(enabledModules);
+            DataStorage.Save();
             hasBeenValidated = true;
         }
         else
@@ -971,76 +812,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     }
 
     #endregion Launch/Exit
-
-    static BLRItem? lmgrReceiver;
-    static BLRItem? LMGReceiver { get{ lmgrReceiver ??= ImportSystem.GetItemByUIDAndType(ImportSystem.PRIMARY_CATEGORY, 40014); return lmgrReceiver; } }
-    static BLRItem? lmgrMagazine;
-    static BLRItem? LMGRMagazine { get { lmgrMagazine ??= ImportSystem.GetItemByUIDAndType(ImportSystem.MAGAZINES_CATEGORY, 44106); return lmgrMagazine; } }
-
-    public static void PrimaryHasLMGR(ShareableLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Primary.Receiver != LMGReceiver.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Primary"; }
-    }
-
-    public static void SecondaryHasLMGR(ShareableLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Secondary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Secondary"; }
-    }
-
-    public static void PrimaryHasLMGR(LMLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Primary.Receiver != LMGReceiver.UID && loadout.Primary.Magazine == LMGRMagazine.UID) { invalid = true; message += " Primary"; }
-    }
-
-    public static void SecondaryHasLMGR(LMLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Secondary.Magazine == LMGRMagazine.UID) { invalid = true; message += " Secondary"; }
-    }
-
-    public static void PrimaryHasLMGR(LoadoutManagerLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Primary.Receiver != LMGReceiver.LMID && loadout.Primary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Primary"; }
-    }
-
-    public static void SecondaryHasLMGR(LoadoutManagerLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Secondary.Magazine == ImportSystem.GetIDOfItem(LMGRMagazine)) { invalid = true; message += " Secondary"; }
-    }
-
-    public static void PrimaryHasLMGR(BLRLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Primary.Receiver.LMID != LMGReceiver.LMID && loadout.Primary.Magazine.UID == LMGRMagazine.UID) { invalid = true; message += " Primary"; }
-    }
-
-    public static void SecondaryHasLMGR(BLRLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Secondary.Magazine.UID == LMGRMagazine.UID) { invalid = true; message += " Secondary"; }
-    }
-
-    public static void MissingArmor(BLRLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Helmet is null) { invalid = true; message += " Helmet"; }
-        if (loadout.UpperBody is null) { invalid = true; message += " UpperBody"; }
-        if (loadout.LowerBody is null) { invalid = true; message += " LowerBody"; }
-    }
-    public static void MissingArmor(LMLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Body.Helmet == -1) { invalid = true; message += " Helmet"; }
-        if (loadout.Body.UpperBody == -1) { invalid = true; message += " UpperBody"; }
-        if (loadout.Body.LowerBody == -1) { invalid = true; message += " LowerBody"; }
-    }
-    public static void MissingArmor(LoadoutManagerLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Gear.Helmet == -1) { invalid = true; message += " Helmet"; }
-        if (loadout.Gear.UpperBody == -1) { invalid = true; message += " UpperBody"; }
-        if (loadout.Gear.LowerBody == -1) { invalid = true; message += " LowerBody"; }
-    }
-    public static void MissingArmor(ShareableLoadout loadout, ref string message, ref bool invalid)
-    {
-        if (loadout.Helmet == -1) { invalid = true; message += " Helmet"; }
-        if (loadout.UpperBody == -1) { invalid = true; message += " UpperBody"; }
-        if (loadout.LowerBody == -1) { invalid = true; message += " LowerBody"; }
-    }
 
     private void ModifyClient()
     {
@@ -1142,7 +913,6 @@ public sealed class BLRClient : INotifyPropertyChanged
             LoggingSystem.MessageLog($"[{this}]: Patching failed:\n{error.Message}", "Error"); //TODO: Add Localization
             return false;
         }
-        SDKType = null;
         return true;
     }
 

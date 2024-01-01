@@ -1591,4 +1591,35 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (ammo is not null) UndoRedoSystem.DoValueChange(ammo, this.GetType().GetProperty(nameof(Ammo)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(hanger, this.GetType().GetProperty(nameof(Tag)), this);
     }
+
+    /// <summary>
+    /// Check if the weapon is vanilla conform
+    /// </summary>
+    /// <returns>true if its valid and flase if its invalid</returns>
+    public bool ValidateWeapon(ref string message)
+    {
+        bool valid = true;
+
+        string attachment = "";
+
+        if (Receiver is null) { message += $"\n\t\tNo Receiver Equipped"; return false; }
+        if (!(Receiver?.IsValidFor(null) ?? false)) { valid = false; attachment += $"\n\t\tReceiver is invalid"; }
+        if (!BLRItem.IsValidFor(Barrel, Receiver)) { valid = false; attachment += $"\n\t\tBarrel is invalid"; }
+        if (!BLRItem.IsValidFor(Muzzle, Receiver)) { valid = false; attachment += $"\n\t\tMuzzle is invalid"; }
+        if (!BLRItem.IsValidFor(Grip, Receiver)) { valid = false; attachment += $"\n\t\tGrip is invalid"; }
+        if (!BLRItem.IsValidFor(Camo, Receiver)) { valid = false; attachment += $"\n\t\tCamo is invalid"; }
+        if (!BLRItem.IsValidFor(Magazine, Receiver)) { valid = false; attachment += $"\n\t\tMagazine is invalid"; }
+        if (!BLRItem.IsValidFor(Ammo, Receiver)) { valid = false; attachment += $"\n\t\tAmmo is invalid"; }
+        if (!BLRItem.IsValidFor(Tag, Receiver)) { valid = false; attachment += $"\n\t\tTag is invalid"; }
+        if (!BLRItem.IsValidFor(Stock, Receiver)) { valid = false; attachment += $"\n\t\tStock is invalid"; }
+        if (!BLRItem.IsValidFor(Scope, Receiver)) { valid = false; attachment += $"\n\t\tScope is invalid"; }
+        if (!BLRItem.IsValidFor(Skin, Receiver)) { valid = false; attachment += $"\n\t\tSkin is invalid"; }
+
+        if (valid)
+            message += " ✔️" + attachment;
+        else
+            message += " ❌" + attachment;
+
+        return valid;
+    }
 }

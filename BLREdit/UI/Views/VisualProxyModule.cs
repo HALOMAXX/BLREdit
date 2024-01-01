@@ -236,7 +236,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         module = null;
         for (int i = 0; i < DataStorage.CachedModules.Count; i++)
         {
-            if (DataStorage.CachedModules[i].InstallName == installName) module = DataStorage.CachedModules[i]; return true;
+            if (DataStorage.CachedModules[i].InstallName.Equals(installName)) { module = DataStorage.CachedModules[i]; return true; }
         }
         return false;
     }
@@ -367,7 +367,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         else
         {
             var packages = await GitlabClient.GetGenericPackages(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository, RepositoryProxyModule.ModuleName);
-            return (await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.PackageFileName}.dll")).CreatedAt;
+            if (packages is null || packages.Length <= 0) { return DateTime.MinValue; }
+            return (await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.PackageFileName}.dll"))?.CreatedAt ?? DateTime.MinValue;
         }
     }
 

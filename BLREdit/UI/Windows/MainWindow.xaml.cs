@@ -496,7 +496,8 @@ public sealed partial class MainWindow : Window
                 {
                     if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
                     {
-                        if (!BLRClient.ValidLoadout(MainView.Profile.BLR, process.ConnectedServer, out string message))
+                        string message = "Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n";
+                        if (!BLRClient.ValidProfile(MainView.Profile.BLR, process.ConnectedServer, ref message))
                         {
                             LoggingSystem.MessageLog(message, "warning");
                             return;
@@ -521,7 +522,8 @@ public sealed partial class MainWindow : Window
                 {
                     if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
                     {
-                        if (!BLRClient.ValidLoadout(MainView.Profile.BLR, process.ConnectedServer, out string message))
+                        string message = "Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n";
+                        if (!BLRClient.ValidProfile(MainView.Profile.BLR, process.ConnectedServer, ref message))
                         {
                             LoggingSystem.MessageLog(message, "warning");
                             return;
