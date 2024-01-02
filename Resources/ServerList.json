@@ -18,7 +18,7 @@
   },
   {
     "ServerAddress": "blrevive.northamp.fr",
-    "InfoPort": 80,
+    "InfoPort": 7777,
     "Region": "EU-West"
   },
   {
