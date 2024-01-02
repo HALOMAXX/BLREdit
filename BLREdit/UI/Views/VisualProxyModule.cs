@@ -252,26 +252,30 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
             if (TryGet(RepositoryProxyModule.InstallName, out var value))
             {
-                LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}] / [{value?.Published}] for {RepositoryProxyModule.InstallName}");
-                module = value;
+                LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate?.ToString("yyyy/MM/dd HH:mm:ss:ff")}] / [{value?.Published.ToString("yyyy/MM/dd HH:mm:ss:ff")}] for {RepositoryProxyModule.InstallName}");
+                if(ReleaseDate <= (value?.Published ?? DateTime.MinValue)) module = value;
             }
             else
             {
                 LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}] / [---]");
             }
 
-            if (module is not null) 
-            { 
-                if (File.Exists($"downloads\\{module.InstallName}")) 
-                { 
+            if (module is not null)
+            {
+                if (File.Exists($"downloads\\{module.InstallName}"))
+                {
                     LoggingSystem.Log($"Found {module.InstallName} in downloadCache");
-                } 
-                else 
-                { 
-                    module = null; DataStorage.CachedModules.Clear();
-                } 
-            } 
-            else LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in downloadCache");
+                }
+                else
+                {
+                    DataStorage.CachedModules.Remove(module);
+                    module = null;
+                }
+            }
+            else
+            {
+                LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in downloadCache");
+            }
 
             module ??= RepositoryProxyModule.DownloadLatest();
 
@@ -362,13 +366,15 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         if (RepositoryProxyModule.RepositoryProvider == RepositoryProvider.GitHub)
         {
             var releaseInfo = await GitHubClient.GetLatestRelease(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository);
-            return releaseInfo?.PublishedAt ?? DateTime.MinValue;
+            var d = releaseInfo?.PublishedAt ?? DateTime.MinValue;
+            return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
         }
         else
         {
             var packages = await GitlabClient.GetGenericPackages(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository, RepositoryProxyModule.ModuleName);
             if (packages is null || packages.Length <= 0) { return DateTime.MinValue; }
-            return (await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.PackageFileName}.dll"))?.CreatedAt ?? DateTime.MinValue;
+            var d = (await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.PackageFileName}.dll"))?.CreatedAt ?? DateTime.MinValue;
+            return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
         }
     }
 
