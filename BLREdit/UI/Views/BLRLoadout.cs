@@ -4,13 +4,10 @@ using BLREdit.Import;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
-
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace BLREdit.UI.Views;
 
@@ -70,6 +67,81 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         { return value; }
         else
         { return null; }
+    }
+
+    /// <summary>
+    /// Check if the loadout is vanilla conform
+    /// </summary>
+    /// <returns>true if its valid and flase if its invalid</returns>
+    public bool ValidateLoadout(ref string message)
+    {
+        bool valid = true;
+
+        message += $"\n{Name}:";
+        message += $"\n\tPrimary:";
+        if (!Primary.ValidateWeapon(ref message)) valid = false;
+        message += $"\n\tSecondary:";
+        if (!Secondary.ValidateWeapon(ref message)) valid = false;
+
+
+        bool gear = true;
+        message += $"\n\tGear:";
+        string attach = "";
+        if (!(Helmet?.IsValidFor(null) ?? false)) { gear = false; attach += $"\n\t\tHelmet is invalid"; }
+        if (!(UpperBody?.IsValidFor(null) ?? false)) { gear = false; attach += $"\n\t\tUpperBody is invalid"; }
+        if (!(LowerBody?.IsValidFor(null) ?? false)) { gear = false; attach += $"\n\t\tLowerBody is invalid"; }
+
+        if (!(Tactical?.IsValidFor(null) ?? true)) { gear = false; attach += $"\n\t\tTactical is invalid"; }
+        if (!(Trophy?.IsValidFor(null) ?? true)) { gear = false; attach += $"\n\t\tTrophy is invalid"; }
+        if (!(Avatar?.IsValidFor(null) ?? true)) { gear = false; attach += $"\n\t\tAvatar is invalid"; }
+        if (!(BodyCamo?.IsValidFor(null) ?? false)) { gear = false; attach += $"\n\t\tBodyCamo is invalid"; }
+
+        if (!(Gear1?.IsValidFor(null) ?? true)) { gear = false; attach += $"\n\t\tGear1 is invalid"; }
+        if (!(Gear2?.IsValidFor(null) ?? true)) { gear = false; attach += $"\n\t\tGear2 is invalid"; }
+        if (!(Gear3?.IsValidFor(null) ?? true)) { gear = false; attach += $"\n\t\tGear3 is invalid"; }
+        if (!(Gear4?.IsValidFor(null) ?? true)) { gear = false; attach += $"\n\t\tGear4 is invalid"; }
+
+        if (HasDuplicatedGear) { gear = false; attach += $"\n\t\tGear duplicates are not allowed!"; }
+
+        if (gear)
+        {
+            message += " ✔️" + attach;
+        }
+        else
+        {
+            message += " ❌" + attach;
+            valid = false;
+        }
+
+        bool extra = true;
+        message += $"\n\tExtra:";
+        attach = "";
+        if (!(Depot1?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tDepot1 is invalid"; }
+        if (!(Depot2?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tDepot2 is invalid"; }
+        if (!(Depot3?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tDepot3 is invalid"; }
+        if (!(Depot4?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tDepot4 is invalid"; }
+        if (!(Depot5?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tDepot5 is invalid"; }
+
+        if (!(Taunt1?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tTaunt1 is invalid"; }
+        if (!(Taunt2?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tTaunt2 is invalid"; }
+        if (!(Taunt3?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tTaunt3 is invalid"; }
+        if (!(Taunt4?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tTaunt4 is invalid"; }
+        if (!(Taunt5?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tTaunt5 is invalid"; }
+        if (!(Taunt6?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tTaunt6 is invalid"; }
+        if (!(Taunt7?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tTaunt7 is invalid"; }
+        if (!(Taunt8?.IsValidFor(null) ?? true)) { extra = false; attach += $"\n\t\tTaunt8 is invalid"; }
+
+        if (extra)
+        {
+            message += " ✔️" + attach;
+        }
+        else
+        {
+            message += " ❌" + attach;
+            valid = false;
+        }
+
+        return valid;
     }
 
     public bool HasDuplicatedGear 

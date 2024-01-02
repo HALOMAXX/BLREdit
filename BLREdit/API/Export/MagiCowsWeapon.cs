@@ -218,7 +218,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
             Barrel = BLRItem.GetMagicCowsID(GetBarrel()),
             Scope = BLRItem.GetMagicCowsID(GetScope()),
             Stock = BLRItem.GetMagicCowsID(GetStock()),
-            Grip = BLRItem.GetMagicCowsID(GetGrip()),
+            Grip = BLRItem.GetMagicCowsID(GetGrip(), -1),
             Muzzle = Muzzle,
             Magazine = Magazine,
             Tag = Tag,
