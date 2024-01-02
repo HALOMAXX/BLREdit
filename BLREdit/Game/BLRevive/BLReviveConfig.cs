@@ -24,13 +24,13 @@ namespace BLREdit.Game.BLRevive
     public class BLReviveLoggerConfig
     {
         public string FilePath { get; set; } = "blrevive-{server}{timestamp}.log";
-        public string Level { get; set; } = "trace";
+        public string Level { get; set; } = "info";
         public string Target { get; set; } = "file";
     }
 
     public class BLReviveServerConfig
     {
-        public bool AuthenticateUsers { get; set; } = true;
+        public bool AuthenticateUsers { get; set; } = false;
         public bool Enable { get; set; } = true;
     }
 }
