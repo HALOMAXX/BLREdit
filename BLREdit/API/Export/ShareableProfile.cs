@@ -101,7 +101,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
     public ShareableProfile Duplicate()
     {
         var dup = this.Clone();
-        BLRLoadoutStorage.AddNewLoadoutSet("", null,dup);
+        //BLRLoadoutStorage.AddNewLoadoutSet("", null, dup);
         return dup;
     }
 
@@ -206,8 +206,13 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
 
 public sealed class ShareableLoadout : IBLRLoadout
 {
+    public DateTime TimeOfCreation { get; set; } = DateTime.Now;
+    public DateTime LastApplied { get; set; } = DateTime.MinValue;
+    public DateTime LastModified { get; set; } = DateTime.MinValue;
+    public DateTime LastViewed { get; set; } = DateTime.MinValue;
     [JsonIgnore] public ShareableProfile? Profile { get; set; } = null;
-    [JsonPropertyName("Name")] public string Name { get; set; } = String.Empty;
+    [JsonPropertyName("Name")] public string Name { get; set; } = string.Empty;
+    [JsonPropertyName("E")] public bool Apply { get; set; } = false;
     [JsonPropertyName("R1")] public ShareableWeapon Primary { get; set; } = new();
     [JsonPropertyName("R2")] public ShareableWeapon Secondary { get; set; } = new();
     [JsonPropertyName("F1")] public bool Female { get; set; } = false;
@@ -241,7 +246,6 @@ public sealed class ShareableLoadout : IBLRLoadout
     [JsonPropertyName("T1")] public int Tactical { get; set; } = 0;
     [JsonPropertyName("T2")] public int[] Taunts { get; set; } = new int[8];
 
-
     public ShareableLoadout()
     { }
 
@@ -253,6 +257,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         Name = loadout.Name;
         Profile = profile;
         Female = loadout.IsFemale;
+        Apply = loadout.Apply;
         BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
         UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
         LowerBody = BLRItem.GetMagicCowsID(loadout.LowerBody);
@@ -301,60 +306,18 @@ public sealed class ShareableLoadout : IBLRLoadout
 
     public BLRLoadout ToBLRLoadout(BLRProfile? profile = null)
     {
-        var loadout = new BLRLoadout(profile)
-        {
-            Name = Name,
-            IsFemale = Female,
-            IsBot = Bot,
-
-            Avatar = ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, Avatar),
-
-            BodyCamo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, BodyCamo),
-
-            Depot1 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[0]),
-            Depot2 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[1]),
-            Depot3 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[2]),
-            Depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[3]),
-            Depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[4]),
-
-            Gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_R1),
-            Gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_R2),
-            Gear3 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_L1),
-            Gear4 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear_L2),
-
-            Helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, Helmet),
-            LowerBody = ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody),
-
-            Tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, Tactical),
-
-            Taunt1 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[0]),
-            Taunt2 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[1]),
-            Taunt3 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[2]),
-            Taunt4 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[3]),
-            Taunt5 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[4]),
-            Taunt6 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[5]),
-            Taunt7 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[6]),
-            Taunt8 = ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, Taunts[7]),
-
-            EmblemIcon = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_ICON_CATEGORY, PatchIcon),
-            EmblemIconColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchIconColor),
-            EmblemShape = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_SHAPE_CATEGORY, PatchShape),
-            EmblemShapeColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchShapeColor),
-            EmblemBackground = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY, PatchBackground),
-            EmblemBackgroundColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, PatchBackgroundColor),
-
-            AnnouncerVoice = ImportSystem.GetItemByUIDAndType(ImportSystem.ANNOUNCER_VOICE_CATEGORY, AnnouncerVoice),
-            PlayerVoice = ImportSystem.GetItemByUIDAndType(ImportSystem.PLAYER_VOICE_CATEGORY, PlayerVoice),
-            Title = ImportSystem.GetItemByUIDAndType(ImportSystem.TITLES_CATEGORY, Title),
-
-            Trophy = ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Badge),
-            UpperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody)
-        };
-
-        loadout.Primary = Primary.ToBLRWeapon(true, loadout);
-        loadout.Secondary = Secondary.ToBLRWeapon(false, loadout);
-
+        var loadout = new BLRLoadout(profile);
+        loadout.SetLoadout(this, true);
+        loadout.Read();
+        loadout.CalculateStats();
         return loadout;
+    }
+
+    public ShareableLoadout Duplicate()
+    {
+        var dup = this.Clone();
+        BLRLoadoutStorage.AddNewLoadoutSet($"Duplicate of {dup.Name}", null, dup);
+        return dup;
     }
 
     public ShareableLoadout Clone()
@@ -362,6 +325,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         var clone = new ShareableLoadout(null)
         {
             Name = Name,
+            Apply = Apply,
             Primary = Primary.Clone(),
             Secondary = Secondary.Clone(),
             Avatar = Avatar,
@@ -419,6 +383,8 @@ public sealed class ShareableLoadout : IBLRLoadout
         loadout.IsFemale = Female;
         loadout.IsBot = Bot;
 
+        loadout.Apply = Apply;
+
         loadout.Avatar = ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, Avatar);
 
         loadout.BodyCamo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, BodyCamo);
@@ -474,6 +440,9 @@ public sealed class ShareableLoadout : IBLRLoadout
         Name = loadout.Name;
         Female = loadout.IsFemale;
         Bot = loadout.IsBot;
+
+        Apply = loadout.Apply;
+
         Avatar = BLRItem.GetMagicCowsID(loadout.Avatar, -1);
         BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
 
@@ -518,7 +487,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(loadout, EventArgs.Empty); }
     }
 
-    public void RegisterWithChildren(ShareableProfile shareableProfile)
+    public void RegisterWithChildren(ShareableProfile? shareableProfile)
     {
         Profile = shareableProfile;
         Primary.Profile = shareableProfile;

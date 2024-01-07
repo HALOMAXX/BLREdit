@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:export="clr-namespace:BLREdit.Export"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
-             xmlns:export="clr-namespace:BLREdit.API.Export"
              xmlns:utils="clr-namespace:BLREdit.API.Utils"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -14,9 +14,14 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <utils:BooleanToNotVisibilityConverter x:Key="BoolToNotVis" />
     </UserControl.Resources>
-    
+
     <Grid d:DataContext="{d:DesignInstance Type=views:BLRLoadout}">
-        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="384"/>
+            <RowDefinition Height="234"/>
+            <RowDefinition Height="234"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="128"/>
                 <RowDefinition Height="128"/>
@@ -31,7 +36,7 @@
 
             <Image Source="{Binding Path=LowerBody.MaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToNotVis}}"/>
             <Image Source="{Binding Path=LowerBody.FemaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToVis}}"/>
-            
+
         </Grid>
 
         <Image Source="{Binding Path=BodyCamo.Image.IconFileInfo.FullName}" Width="64" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>

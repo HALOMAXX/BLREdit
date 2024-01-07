@@ -20,7 +20,7 @@
             <Border Background="Transparent" BorderThickness="0,0,0,1" Grid.Row="0">
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="128" />
+                        <ColumnDefinition Width="12" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="128" />
                     </Grid.ColumnDefinitions>
@@ -43,7 +43,7 @@
                             <RowDefinition Height="234"/>
                             <RowDefinition Height="234"/>
                         </Grid.RowDefinitions>
-                        <local:LoadoutViewControl Grid.Row="0"/>
+                        <local:BLRLoadoutStorageView Grid.Row="0"/>
                         <local:WeaponViewControl DataContext="{Binding Path=Primary}" Grid.Row="1"/>
                         <local:WeaponViewControl DataContext="{Binding Path=Secondary}" Grid.Row="2"/>
                     </Grid>
@@ -55,7 +55,7 @@
                             <RowDefinition Height="234"/>
                             <RowDefinition Height="234"/>
                         </Grid.RowDefinitions>
-                        <local:LoadoutViewControl Grid.Row="0"/>
+                        <local:BLRLoadoutStorageView Grid.Row="0"/>
                         <local:WeaponViewControl DataContext="{Binding Path=Primary}" Grid.Row="1"/>
                         <local:WeaponViewControl DataContext="{Binding Path=Secondary}" Grid.Row="2"/>
                     </Grid>
@@ -67,7 +67,7 @@
                             <RowDefinition Height="234"/>
                             <RowDefinition Height="234"/>
                         </Grid.RowDefinitions>
-                        <local:LoadoutViewControl Grid.Row="0"/>
+                        <local:BLRLoadoutStorageView Grid.Row="0"/>
                         <local:WeaponViewControl DataContext="{Binding Path=Primary}" Grid.Row="1"/>
                         <local:WeaponViewControl DataContext="{Binding Path=Secondary}" Grid.Row="2"/>
                     </Grid>

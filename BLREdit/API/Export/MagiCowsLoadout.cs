@@ -237,6 +237,16 @@ public sealed class MagiCowsLoadout : IBLRLoadout
 
             Taunts = taunts,
             Depot = depot,
+
+            AnnouncerVoice = 63000,
+            PlayerVoice = 63050,
+            Title = 61000,
+            PatchIcon = 64017,
+            PatchIconColor = 64752,
+            PatchShape = 64640,
+            PatchShapeColor = 64762,
+            PatchBackground = 64740,
+            PatchBackgroundColor = 64762
         };
     }
 }

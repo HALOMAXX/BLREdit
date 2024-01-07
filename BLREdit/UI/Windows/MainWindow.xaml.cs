@@ -390,65 +390,59 @@ public sealed partial class MainWindow : Window
 
     private void ProfileComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (MainView.IsPlayerNameChanging || UndoRedoSystem.UndoRedoSystemWorking || UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) return;
-        if (ProfileComboBox.SelectedValue is ShareableProfile profile)
-        {
-#if DEBUG
-            if (UIKeys.Keys[Key.LeftShift].Is)
-            {
-                MainView.IsPlayerNameChanging = true;
-                BlockChangeNotif = true;
-                var loadout = DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)];
-                LoggingSystem.Log($"Removing Loadout[{loadout.Shareable.Name}]");
-                loadout.Remove();
+//        if (MainView.IsPlayerNameChanging || UndoRedoSystem.UndoRedoSystemWorking || UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) return;
+//        if (ProfileComboBox.SelectedValue is ShareableProfile profile)
+//        {
+//#if DEBUG
+//            if (UIKeys.Keys[Key.LeftShift].Is)
+//            {
+//                MainView.IsPlayerNameChanging = true;
+//                BlockChangeNotif = true;
+//                var loadout = DataStorage.Loadouts[DataStorage.ShareableProfiles.IndexOf(profile)];
+//                LoggingSystem.Log($"Removing Loadout[{loadout.Shareable.Name}]");
+//                loadout.Remove();
 
-                ProfileComboBox.SelectedValue = e.RemovedItems[0];
+//                ProfileComboBox.SelectedValue = e.RemovedItems[0];
 
-                MainView.IsPlayerNameChanging = false;
-                BlockChangeNotif = false;
-                return;
-            }
-#endif
+//                MainView.IsPlayerNameChanging = false;
+//                BlockChangeNotif = false;
+//                return;
+//            }
+//#endif
 
-            MainView.IsPlayerProfileChanging = true;
-            BlockChangeNotif = true;
+//            MainView.IsPlayerProfileChanging = true;
+//            BlockChangeNotif = true;
 
-            object? removed = null;
-            if (e.RemovedItems.Count > 0)
-            { removed = e.RemovedItems[0]; }
-            else
-            { LoggingSystem.Log("GG Empty"); }
+//            object? removed = null;
+//            if (e.RemovedItems.Count > 0)
+//            { removed = e.RemovedItems[0]; }
+//            else
+//            { LoggingSystem.Log("GG Empty"); }
 
-            var index = DataStorage.ShareableProfiles.IndexOf(profile);
+//            var index = DataStorage.ShareableProfiles.IndexOf(profile);
 
-            UndoRedoSystem.CreateValueChange(removed, ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
-            UndoRedoSystem.DoValueChange(DataStorage.Loadouts[index], typeof(MainWindowView).GetProperty(nameof(MainView.Profile)), MainView);
-            UndoRedoSystem.DoValueChange(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
-            UndoRedoSystem.EndUndoRecord();
-            MainView.IsPlayerProfileChanging = false;
-            BlockChangeNotif = false;
+//            UndoRedoSystem.CreateValueChange(removed, ProfileComboBox.SelectedValue, ProfileComboBox.GetType().GetProperty(nameof(ProfileComboBox.SelectedValue)), ProfileComboBox);
+//            UndoRedoSystem.DoValueChange(DataStorage.Loadouts[index], typeof(MainWindowView).GetProperty(nameof(MainView.Profile)), MainView);
+//            UndoRedoSystem.DoValueChange(profile.Name, PlayerNameTextBox.GetType().GetProperty(nameof(PlayerNameTextBox.Text)), PlayerNameTextBox);
+//            UndoRedoSystem.EndUndoRecord();
+//            MainView.IsPlayerProfileChanging = false;
+//            BlockChangeNotif = false;
 
-            ItemFilters.Instance.WeaponFilter = LoadoutControl.SelectedIndex switch
-            {
-                0 => wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Loadout1.Primary : MainView.Profile.BLR.Loadout1.Secondary,
-                1 => wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Loadout2.Primary : MainView.Profile.BLR.Loadout2.Secondary,
-                2 => wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Loadout3.Primary : MainView.Profile.BLR.Loadout3.Secondary,
-                _ => wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Loadout1.Primary : MainView.Profile.BLR.Loadout1.Secondary,
-            };
+//            ItemFilters.Instance.WeaponFilter = wasLastSelectedBorderPrimary ? MainView.Profile.BLR.Primary : MainView.Profile.BLR.Secondary;
 
-            ApplySearchAndFilter();
+//            ApplySearchAndFilter();
 
-            if (index != DataStorage.Settings.CurrentlyAppliedLoadout)
-            { MainView.Profile.BLR.IsChanged = true; }
-            else
-            { MainView.Profile.BLR.IsChanged = false; }
-        }
-        else
-        {
-            MainView.IsPlayerNameChanging = true;
-            if (e.RemovedItems.Count > 0) { ProfileComboBox.SelectedValue = e.RemovedItems[0]; }
-            MainView.IsPlayerNameChanging = false;
-        }
+//            if (index != DataStorage.Settings.CurrentlyAppliedLoadout)
+//            { MainView.Profile.BLR.IsChanged = true; }
+//            else
+//            { MainView.Profile.BLR.IsChanged = false; }
+//        }
+//        else
+//        {
+//            MainView.IsPlayerNameChanging = true;
+//            if (e.RemovedItems.Count > 0) { ProfileComboBox.SelectedValue = e.RemovedItems[0]; }
+//            MainView.IsPlayerNameChanging = false;
+//        }
     }
 
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -457,8 +451,8 @@ public sealed partial class MainWindow : Window
 
         MainView.IsPlayerNameChanging = true;
 
-        MainView.Profile.Shareable.Name = PlayerNameTextBox.Text;
-        MainView.Profile.Shareable.RefreshInfo();
+        //MainView.Profile.Shareable.Name = PlayerNameTextBox.Text;
+        //MainView.Profile.Shareable.RefreshInfo();
 
         MainView.IsPlayerNameChanging = false;
     }
@@ -475,45 +469,45 @@ public sealed partial class MainWindow : Window
             ExportSystem.CopyMagiCowToClipboard(MainView.Profile);
             ShowAlert($"MagiCow Profile: {MainView.Profile.Shareable.Name} Copied!"); //TODO: Add Localization
         }
-        else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
-        {
-            var json = IOResources.Serialize(new Shareable3LoadoutSet(MainView.Profile.BLR), true);
-            var jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
-            var zipedJson = IOResources.Zip(jsonNoWhitespaces);
-            var base64 = IOResources.DataToBase64(zipedJson);
+        //else if (UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is)
+        //{
+        //    var json = IOResources.Serialize(new Shareable3LoadoutSet(MainView.Profile.BLR), true);
+        //    var jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
+        //    var zipedJson = IOResources.Zip(jsonNoWhitespaces);
+        //    var base64 = IOResources.DataToBase64(zipedJson);
 
-            LoggingSystem.Log($"{MainView.Profile.Shareable.Name} Profile Compression: {jsonNoWhitespaces.Length} vs {base64.Length}");
+        //    LoggingSystem.Log($"{MainView.Profile.Shareable.Name} Profile Compression: {jsonNoWhitespaces.Length} vs {base64.Length}");
 
-            string link = $"<blredit://import-profile/{base64}>";
-            ExportSystem.SetClipboard(link);
-            ShowAlert($"{MainView.Profile.Shareable.Name} Share Link Created!"); //TODO: Add Localization
-        }
-        else if (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is)
-        {
-            if (DataStorage.Settings.DefaultClient is not null)
-            {
-                foreach (var process in BLRProcess.RunningGames)
-                {
-                    if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
-                    {
-                        string message = "Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n";
-                        if (!BLRClient.ValidProfile(MainView.Profile.BLR, process.ConnectedServer, ref message))
-                        {
-                            LoggingSystem.MessageLog(message, "warning");
-                            return;
-                        }
-                    }
-                }
-                if (DataStorage.Settings.SelectedSDKType == "BLRevive")
-                    ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);
-                else
-                    ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
+        //    string link = $"<blredit://import-profile/{base64}>";
+        //    ExportSystem.SetClipboard(link);
+        //    ShowAlert($"{MainView.Profile.Shareable.Name} Share Link Created!"); //TODO: Add Localization
+        //}
+        //else if (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is)
+        //{
+        //    if (DataStorage.Settings.DefaultClient is not null)
+        //    {
+        //        foreach (var process in BLRProcess.RunningGames)
+        //        {
+        //            if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
+        //            {
+        //                string message = "Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n";
+        //                if (!BLRClient.ValidProfile(MainView.Profile.BLR, process.ConnectedServer, ref message))
+        //                {
+        //                    LoggingSystem.MessageLog(message, "warning");
+        //                    return;
+        //                }
+        //            }
+        //        }
+        //        if (DataStorage.Settings.SelectedSDKType == "BLRevive")
+        //            ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);
+        //        else
+        //            ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
 
-                MainView.Profile.Shareable.LastApplied = DateTime.Now;
-                DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;
-                MainView.Profile.BLR.IsChanged = false;
-            }
-        }
+        //        MainView.Profile.Shareable.LastApplied = DateTime.Now;
+        //        DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;
+        //        MainView.Profile.BLR.IsChanged = false;
+        //    }
+        //}
         else
         {
             if (DataStorage.Settings.DefaultClient is not null)
@@ -523,7 +517,7 @@ public sealed partial class MainWindow : Window
                     if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
                     {
                         string message = "Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n";
-                        if (!BLRClient.ValidProfile(MainView.Profile.BLR, process.ConnectedServer, ref message))
+                        if (!MainView.Profile.BLR.ValidateLoadout(ref message))
                         {
                             LoggingSystem.MessageLog(message, "warning");
                             return;
@@ -535,10 +529,6 @@ public sealed partial class MainWindow : Window
                     ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
                 else
                     ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);
-
-                MainView.Profile.Shareable.LastApplied = DateTime.Now;
-                DataStorage.Settings.CurrentlyAppliedLoadout = ProfileComboBox.SelectedIndex;
-                MainView.Profile.BLR.IsChanged = false;
             }
         }
     }
@@ -547,7 +537,26 @@ public sealed partial class MainWindow : Window
     {
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
-        IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout1), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout2), new LoadoutManagerLoadout(MainView.Profile.BLR.Loadout3) });
+
+        List<LoadoutManagerLoadout> loadouts = new();
+
+        string message = string.Empty;
+        int count = 0;
+        foreach (var profile in DataStorage.Loadouts)
+        {
+            if (profile.BLR.Apply && profile.BLR.ValidateLoadout(ref message))
+            {
+                loadouts.Add(new LoadoutManagerLoadout(profile.BLR));
+                profile.Shareable.LastApplied = DateTime.Now;
+                profile.BLR.IsChanged = false;
+                count++;
+            }
+            else
+            { profile.BLR.Apply = false; }
+            if (count >= 2) break;
+        }
+
+        IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
         ShowAlert($"Applied Proxy Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
     }
 
@@ -555,31 +564,23 @@ public sealed partial class MainWindow : Window
     {
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
-        if (DataStorage.Settings.ApplyMergedProfiles.Is)
-        {
-            List<LMLoadout> loadouts = new List<LMLoadout>();
+        List<LMLoadout> loadouts = new();
 
-            
-            int profileIndex = 0;
-            foreach (var profile in DataStorage.Loadouts)
-            {
-                var profileName = DataStorage.ShareableProfiles[profileIndex].Name;
-                loadouts.Add(new LMLoadout(profile.BLR.Loadout1, $"{profileName} {profile.BLR.Loadout1.Name}"));
-                loadouts.Add(new LMLoadout(profile.BLR.Loadout2, $"{profileName} {profile.BLR.Loadout2.Name}"));
-                loadouts.Add(new LMLoadout(profile.BLR.Loadout3, $"{profileName} {profile.BLR.Loadout3.Name}"));
-                profileIndex++;
+        string message = string.Empty;
+
+        foreach (var profile in DataStorage.Loadouts)
+        {
+            if (profile.BLR.Apply && profile.BLR.ValidateLoadout(ref message))
+            { 
+                loadouts.Add(new LMLoadout(profile.BLR, profile.BLR.Name));
+                profile.Shareable.LastApplied = DateTime.Now;
+                profile.BLR.IsChanged = false;
             }
+            else
+            { profile.BLR.Apply = false; }
+        }
 
-            IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
-        }
-        else
-        {
-            IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { 
-                new LMLoadout(MainView.Profile.BLR.Loadout1, MainView.Profile.BLR.Loadout1.Name), 
-                new LMLoadout(MainView.Profile.BLR.Loadout2, MainView.Profile.BLR.Loadout2.Name), 
-                new LMLoadout(MainView.Profile.BLR.Loadout3, MainView.Profile.BLR.Loadout3.Name) 
-            });
-        }
+        IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
         ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
     }
 
@@ -590,16 +591,7 @@ public sealed partial class MainWindow : Window
 
     private void RandomLoadout_Click(object sender, RoutedEventArgs e)
     {
-        if (LoadoutTabs.SelectedItem is TabItem item)
-        {
-            if (item.Content is LoadoutControl control)
-            {
-                if (control.DataContext is BLRLoadout loadout)
-                {
-                    loadout.Randomize();
-                }
-            }
-        }
+        MainView?.Profile?.BLR?.Randomize();
     }
 
     #region Hotkeys
@@ -629,30 +621,11 @@ public sealed partial class MainWindow : Window
             case Key.A:
                 if ((UIKeys.Keys[Key.LeftCtrl].Is || UIKeys.Keys[Key.RightCtrl].Is) && (UIKeys.Keys[Key.LeftAlt].Is || UIKeys.Keys[Key.RightAlt].Is) && !SearchBox.IsFocused)
                 {
-                    if (MainView.Profile.BLR.IsAdvanced.Is)
+                    string message = "Can't disable Advanced mode!\n";
+                    if (!MainView.Profile.BLR.ValidateLoadout(ref message))
                     {
-                        string message = "Can't disable Advanced mode!\nplease remove any duplicate gears or fix missing armor:";
-                        bool hasDupes = false;
-                        if (MainView.Profile.BLR.Loadout1.HasDuplicatedGear || MainView.Profile.BLR.Loadout1.Helmet is null || MainView.Profile.BLR.Loadout1.UpperBody is null || MainView.Profile.BLR.Loadout1.LowerBody is null)
-                        {
-                            message += "\nLoadout1";
-                            hasDupes = true; 
-                        }
-                        if (MainView.Profile.BLR.Loadout2.HasDuplicatedGear || MainView.Profile.BLR.Loadout2.Helmet is null || MainView.Profile.BLR.Loadout2.UpperBody is null || MainView.Profile.BLR.Loadout2.LowerBody is null)
-                        {
-                            message += "\nLoadout2";
-                            hasDupes = true;
-                        }
-                        if (MainView.Profile.BLR.Loadout3.HasDuplicatedGear || MainView.Profile.BLR.Loadout3.Helmet is null || MainView.Profile.BLR.Loadout3.UpperBody is null || MainView.Profile.BLR.Loadout3.LowerBody is null)
-                        {
-                            message += "\nLoadout3";
-                            hasDupes = true;
-                        }
-                        if (hasDupes)
-                        {
-                            LoggingSystem.MessageLog($"{message}", "Info");
-                            return;
-                        }
+                        LoggingSystem.MessageLog(message, "warning");
+                        return;
                     }
 
                     MainView.Profile.BLR.IsAdvanced.Set(!MainView.Profile.BLR.IsAdvanced.Is);
@@ -723,20 +696,6 @@ public sealed partial class MainWindow : Window
                                     }
                                 }
                                 break;
-                            case LoadoutViewControl loadoutViewControl:
-                                if (loadoutViewControl.DataContext is BLRLoadout viewLoadout)
-                                {
-                                    MainView.ExtraCopy = viewLoadout.CopyExtra();
-                                    MainView.GearCopy = viewLoadout.CopyGear();
-                                    ShowAlert($"Copied Gear & Extra!"); //TODO: Add Localization
-                                    if (viewLoadout.InternalLoadout is ShareableLoadout ldt)
-                                    {
-                                        string json = IOResources.Serialize(ldt, true);
-                                        string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
-                                        ExportSystem.SetClipboard(jsonNoWhitespaces);
-                                    }
-                                }
-                                break;
                             case WeaponViewControl weaponViewControl:
                                 if (weaponViewControl.DataContext is BLRWeapon viewWeapon)
                                 {
@@ -753,6 +712,20 @@ public sealed partial class MainWindow : Window
                                     if (viewWeapon.InternalWeapon is ShareableWeapon wpn)
                                     {
                                         string json = IOResources.Serialize(wpn, true);
+                                        string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
+                                        ExportSystem.SetClipboard(jsonNoWhitespaces);
+                                    }
+                                }
+                                break;
+                            case LoadoutViewControl loadoutViewControl:
+                                if (loadoutViewControl.DataContext is BLRLoadout viewLoadout)
+                                {
+                                    MainView.ExtraCopy = viewLoadout.CopyExtra();
+                                    MainView.GearCopy = viewLoadout.CopyGear();
+                                    ShowAlert($"Copied Gear & Extra!"); //TODO: Add Localization
+                                    if (viewLoadout.InternalLoadout is ShareableLoadout ldt)
+                                    {
+                                        string json = IOResources.Serialize(ldt, true);
                                         string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
                                         ExportSystem.SetClipboard(jsonNoWhitespaces);
                                     }
@@ -853,7 +826,8 @@ public sealed partial class MainWindow : Window
 
     private void DuplicateProfile_Click(object sender, RoutedEventArgs e)
     {
-        ProfileComboBox.SelectedItem = MainView.Profile.Shareable.Duplicate();
+        //ProfileComboBox.SelectedItem = MainView.Profile.Shareable.Duplicate();
+        //TODO: Change to Duplicate
     }
 
     private void PlayerNameTextBox_PreviewInput(object sender, TextCompositionEventArgs e)
@@ -880,13 +854,7 @@ public sealed partial class MainWindow : Window
             switch (control.SelectedIndex)
             {
                 case 0:
-                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.Loadout1.IsFemale);
-                    break;
-                case 1:
-                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.Loadout2.IsFemale);
-                    break;
-                case 2:
-                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.Loadout3.IsFemale);
+                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.IsFemale);
                     break;
             }
             //MainWindowView.SetBorderColor(lastLoadoutBorder, MainWindowView.ActiveBorderColor);
@@ -932,18 +900,25 @@ public sealed partial class MainWindow : Window
         MainView.IsPlayerProfileChanging = true;
         MainView.IsPlayerNameChanging = true;
 
-        MainView.Profile = DataStorage.Loadouts.FirstOrDefault();
-
-        PlayerNameTextBox.Text = MainView.Profile.Shareable.Name;
-        ProfileComboBox.ItemsSource = DataStorage.ShareableProfiles;
+        if (DataStorage.Loadouts.Count >= DataStorage.Settings.CurrentlyAppliedLoadout)
+        {
+            MainView.Profile = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
+        }
+        else
+        {
+            MainView.Profile = DataStorage.Loadouts.FirstOrDefault();
+        }
+        //PlayerNameTextBox.Text = MainView.Profile.Shareable.Name;
+        //ProfileComboBox.ItemsSource = DataStorage.ShareableProfiles;
 
         MainView.IsPlayerProfileChanging = false;
         MainView.IsPlayerNameChanging = false;
 
-        ProfileComboBox.SelectedIndex = DataStorage.Settings.CurrentlyAppliedLoadout;
+        
 
-        MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Receiver;
-        ItemFilters.Instance.WeaponFilter = MainView.Profile.BLR.Loadout1.Primary;
+        //MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Receiver;
+        MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)(Loadout1.Content)).Children[0]).Items[0]).Content).Content).Children[0]).Receiver;
+        ItemFilters.Instance.WeaponFilter = MainView.Profile.BLR.Primary;
 
         this.DataContext = MainView;
         #endregion Frontend Init
@@ -1067,7 +1042,7 @@ public sealed partial class MainWindow : Window
 
     private void MainWindowTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (e.AddedItems.Contains(LauncherTab))
+        if (e.AddedItems.Contains(ServerListTab))
         {
             RefreshPing();
         }

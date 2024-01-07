@@ -22,9 +22,10 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:ProfileControl/>
+                    <local:BLRLoadoutStorageView/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Name="ToggleLoadouts" Content="Toggle Loadout Apply" Width="128" Height="64" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="ToggleLoadouts_Click"/>
     </Grid>
 </UserControl>

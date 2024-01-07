@@ -177,5 +177,18 @@ namespace BLREdit.UI.Controls
             SetSortingType(typeof(ProfileSortingType));
             ApplySorting();
         }
+
+        private void ToggleLoadouts_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataStorage.Loadouts is not null && DataStorage.Loadouts.Count > 0)
+                foreach (var loadout in DataStorage.Loadouts)
+                {
+                    string message = string.Empty;
+                    if (loadout.BLR.ValidateLoadout(ref message))
+                    {
+                        loadout.BLR.Apply = true;
+                    }
+                }
+        }
     }
 }

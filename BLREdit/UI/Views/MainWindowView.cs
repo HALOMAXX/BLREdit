@@ -29,7 +29,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public string WindowTitle { get { return windowTitle; } set { windowTitle = value; OnPropertyChanged(); } }
 
     private BLRLoadoutStorage profile = DataStorage.Loadouts.FirstOrDefault();
-    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; profile.Shareable.LastViewed = DateTime.Now; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
+    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; DataStorage.Settings.CurrentlyAppliedLoadout = DataStorage.Loadouts.IndexOf(value); profile.Shareable.LastViewed = DateTime.Now; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
 
 #pragma warning disable CA1822 // Mark members as static
     public BLREditSettings BLRESettings => DataStorage.Settings;

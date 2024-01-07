@@ -43,6 +43,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public BLRProfile? Profile { get; private set; }
 
+    public UIBool IsAdvanced { get; set; } = new(false);
+
     public static PropertyInfo[] LoadoutPartInfo { get; } = ((from property in loadoutType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property).ToArray());
     private static readonly Dictionary<string?, PropertyInfo> LoadoutPartInfoDictonary = GetLoadoutPartPropertyInfo();
     private static Dictionary<string?, PropertyInfo> GetLoadoutPartPropertyInfo()
@@ -330,6 +332,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(value); ItemChanged(); } }
     private bool isBot;
     public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
+
+    private bool apply;
+    public bool Apply { get { return apply; } set { apply = value; Write(); OnPropertyChanged(); } }
 
     [JsonIgnore] public bool HasAvatar { get { return Avatar is not null && Avatar.Name != "No Avatar"; } }
 

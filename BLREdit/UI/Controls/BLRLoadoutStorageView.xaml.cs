@@ -21,23 +21,21 @@ namespace BLREdit.UI.Controls
     /// <summary>
     /// Interaction logic for LoadoutViewControl.xaml
     /// </summary>
-    public partial class LoadoutViewControl : UserControl
+    public partial class BLRLoadoutStorageView : UserControl
     {
-        public LoadoutViewControl()
+        public BLRLoadoutStorageView()
         {
             InitializeComponent();
-            UIKeys.Keys[Key.LeftShift].PropertyChanged += SkinModifierChanged;
         }
 
-        public void SkinModifierChanged(object sender, PropertyChangedEventArgs args)
+        private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (UIKeys.Keys[Key.LeftShift].Is)
+            if (e.ClickCount >= 2)
             {
-                this.StatPercentageGrid.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                this.StatPercentageGrid.Visibility = Visibility.Collapsed;
+                if (sender is FrameworkElement element && element.DataContext is BLRLoadoutStorage loadoutStorage)
+                {
+                    MainWindow.MainView.Profile = loadoutStorage;
+                }
             }
         }
 

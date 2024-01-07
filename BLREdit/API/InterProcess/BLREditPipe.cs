@@ -262,7 +262,9 @@ public sealed class BLREditPipe
             var sharedProfile = IOResources.Deserialize<Shareable3LoadoutSet>(json);
             if (sharedProfile is null) { LoggingSystem.Log("[BLREdit API](import-profile): failed to deserialize shareable profile!"); return; }
             var profile = sharedProfile.ToBLRProfile();
-            var newProfile = BLRLoadoutStorage.AddNewLoadoutSet($"Imported-Profile{DataStorage.Loadouts.Count}", profile);
+            var newProfile = BLRLoadoutStorage.AddNewLoadoutSet($"{profile.Loadout1.Name}", profile.Loadout1);
+            BLRLoadoutStorage.AddNewLoadoutSet($"{profile.Loadout2.Name}", profile.Loadout2);
+            BLRLoadoutStorage.AddNewLoadoutSet($"{profile.Loadout3.Name}", profile.Loadout3);
             MainWindow.ShowAlert($"{newProfile.Shareable.Name} has been Imported!");
         });
         //TODO: Add more api endpoints like add-weapon, import-loadout, select-loadout(for tournaments) and more

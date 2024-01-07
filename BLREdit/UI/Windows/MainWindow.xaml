@@ -17,8 +17,6 @@
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
     </Window.Background>
     <Grid Name="BLREditMainGrid" AllowDrop="True">
-        <ComboBox Width="120" Height="22" Margin="10,5,0,0" Name="ProfileComboBox" DisplayMemberPath="Name" SelectedIndex="0"  HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ProfileComboBox_SelectionChanged"/>
-        <TextBox Width="120" Height="22" Margin="140,5,0,0" Name="PlayerNameTextBox"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" PreviewTextInput="PlayerNameTextBox_PreviewInput" TextChanged="PlayerNameTextBox_TextChanged"/>
         <Button Width="120" Height="22" Margin="270,5,0,0" Name="AddProfileButton" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
 
         <Border Name="ApplyLoadoutBorder" Width="130" Height="32" Margin="5,30,0,0" HorizontalAlignment="Left" BorderThickness="0"  VerticalAlignment="Top" CornerRadius="5">
@@ -28,26 +26,11 @@
         <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static p:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
         <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
-        <TabControl Name="LoadoutTabs" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Width="420" Margin="0,64,0,0" SelectionChanged="LoadoutTabs_SelectionChanged" DataContext="{Binding Path=Profile.BLR}">
-            <TabItem Name="Loadout1Tab">
-                <TabItem.Header>
-                    <TextBox x:Name="Loadout1Name" Text="{Binding Path=Loadout1.Name}" Width="102" BorderThickness="0" Height="17" Background="Transparent"/>
-                </TabItem.Header>
-                <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Loadout1}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
-            </TabItem>
-            <TabItem Name="Loadout2Tab">
-                <TabItem.Header>
-                    <TextBox x:Name="Loadout2Name" Text="{Binding Path=Loadout2.Name}" Width="102" BorderThickness="0" Height="17" Background="Transparent"/>
-                </TabItem.Header>
-                <ui:LoadoutControl x:Name="Loadout2" DataContext="{Binding Path=Loadout2}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
-            </TabItem>
-            <TabItem Name="Loadout3Tab">
-                <TabItem.Header>
-                    <TextBox x:Name="Loadout3Name" Text="{Binding Path=Loadout3.Name}" Width="102" BorderThickness="0" Height="17" Background="Transparent"/>
-                </TabItem.Header>
-                <ui:LoadoutControl x:Name="Loadout3" DataContext="{Binding Path=Loadout3}" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
-            </TabItem>
-        </TabControl>
+        <Grid HorizontalAlignment="Left" Width="420" Margin="0,64,0,0">
+            <TextBox x:Name="LoadoutNameBox" Text="{Binding Path=Profile.BLR.Name, Mode=TwoWay}" Height="20" VerticalAlignment="Top"/>
+            <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Profile.BLR}" Margin="0,20,0,0" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
+        </Grid>
+
 
         <TabControl Name="MainWindowTabs" SelectionChanged="MainWindowTabs_SelectionChanged" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="420,0,0,0">
             <TabItem Header="{x:Static p:Resources.ti_ItemList}" Name="ItemListTab">
@@ -76,47 +59,12 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Name="DetailedInfoTab" Header="{x:Static p:Resources.ti_DetailedInfo}" DataContext="{Binding Path=Profile.BLR}">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                    <Grid MinWidth="1400">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Border Name="DetailsBorderLoadout1" HorizontalAlignment="Stretch" Grid.Column="0" Padding="0">
-                            <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
-                                <Label Content="{x:Static p:Resources.ti_Loadout1}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                                <ui:DetailedInfosControl  DataContext="{Binding Path=Loadout1}"/>
-                            </StackPanel>
-                        </Border>
-
-                        <Border Name="DetailsBorderLoadout2" HorizontalAlignment="Stretch" Grid.Column="1" Padding="0">
-                            <StackPanel Orientation="Vertical">
-                                <Label Content="{x:Static p:Resources.ti_Loadout2}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                                <ui:DetailedInfosControl DataContext="{Binding Path=Loadout2}"/>
-                            </StackPanel>
-                        </Border>
-
-                        <Border Name="DetailsBorderLoadout3" HorizontalAlignment="Stretch" Grid.Column="2" Padding="0">
-                            <StackPanel Orientation="Vertical">
-                                <Label Content="{x:Static p:Resources.ti_Loadout3}" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
-                                <ui:DetailedInfosControl DataContext="{Binding Path=Loadout3}"/>
-                            </StackPanel>
-                        </Border>
-                    </Grid>
-                </ScrollViewer>
+            <TabItem Name="ServerListTab"  Header="Server List" DataContext="{Binding Path=ServerList}">
+                <ui:ServerListControl x:Name="ServerListView"/>
             </TabItem>
 
-            <TabItem Name="LauncherTab" Header="{x:Static p:Resources.ti_Launcher}">
-                <TabControl BorderThickness="0,1,0,0">
-                    <TabItem Header="Server List" DataContext="{Binding Path=ServerList}">
-                        <ui:ServerListControl x:Name="ServerListView"/>
-                    </TabItem>
-                    <TabItem Header="Client List" DataContext="{Binding Path=GameClients}">
-                        <ui:ClientListControl x:Name="ClientListView"/>
-                    </TabItem>
-                </TabControl>
+            <TabItem Name="ClientListTab" Header="Client List" DataContext="{Binding Path=GameClients}">
+                <ui:ClientListControl x:Name="ClientListView"/>
             </TabItem>
 
             <TabItem Name="SettingsTab" Header="{x:Static p:Resources.ti_Settings}" DataContext="{Binding Path=BLRESettings}">

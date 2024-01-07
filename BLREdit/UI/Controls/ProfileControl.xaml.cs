@@ -34,7 +34,8 @@ public partial class ProfileControl : UserControl, INotifyPropertyChanged
         {
             if (sender is FrameworkElement element && element.DataContext is BLRLoadoutStorage loadoutStorage)
             {
-                MainWindow.Instance.ProfileComboBox.SelectedValue = loadoutStorage.Shareable;
+                MainWindow.MainView.Profile = loadoutStorage;
+                //MainWindow.Instance.ProfileComboBox.SelectedValue = loadoutStorage.Shareable;
             }
         }
     }

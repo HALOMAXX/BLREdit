@@ -1,17 +1,13 @@
 using BLREdit.API.Export;
 using BLREdit.Game;
 using BLREdit.Import;
-using BLREdit.UI;
-using BLREdit.UI.Views;
 
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Text.Json.Serialization;
 using System.Windows;
-using System.Windows.Input;
 
 namespace BLREdit.Export;
 
@@ -23,8 +19,8 @@ public sealed class ExportSystem
     public static void CopyMagiCowToClipboard(BLRLoadoutStorage loadout)
     {
         var magiProfile = new MagiCowsProfile { PlayerName = loadout.Shareable.Name };
-        loadout.BLR.Write(magiProfile);
-
+        //loadout.BLR.Write(magiProfile);
+        //TODO: Broke MagiCow Export
         string clipboard = $"register{Environment.NewLine}{IOResources.RemoveWhiteSpacesFromJson.Replace(IOResources.Serialize(magiProfile, true), "$1")}";
 
         try
@@ -68,16 +64,11 @@ public sealed class ExportSystem
     public static ObservableCollectionExtended<BLRLoadoutStorage> LoadStorage()
     {
         LoggingSystem.Log("Started Loading Shareable and BLR Profile Combos");
-        if (DataStorage.ShareableProfiles.Count < 1)
+        BLRLoadoutStorage[] storage = new BLRLoadoutStorage[DataStorage.ShareableLoadouts.Count];
+        for (int i = 0; i < DataStorage.ShareableLoadouts.Count; i++)
         {
-            DataStorage.ShareableProfiles.Add(new ShareableProfile());
-        }
-        BLRLoadoutStorage[] storage = new BLRLoadoutStorage[DataStorage.ShareableProfiles.Count];
-        for (int i = 0; i < DataStorage.ShareableProfiles.Count; i++)
-        {
-            DataStorage.ShareableProfiles[i].TimeOfCreation = i;
-            DataStorage.ShareableProfiles[i].RegisterWithChildren();
-            storage[i] = new(DataStorage.ShareableProfiles[i]);
+            DataStorage.ShareableLoadouts[i].RegisterWithChildren(null);
+            storage[i] = new(DataStorage.ShareableLoadouts[i]);
         }
 
         LoggingSystem.Log("Finished Loading Shareable and BLR Profile Combos");
@@ -118,6 +109,37 @@ public sealed class ExportSystem
         }
         LoggingSystem.Log("Finished Loading ShareableProfiles");
         return profiles;
+    }
+
+    public static ObservableCollectionExtended<ShareableLoadout> LoadShareableLoadouts()
+    {
+        LoggingSystem.Log("Started Loading ShareableLoadouts");
+        ImportSystem.Initialize();
+
+        var loadouts = IOResources.DeserializeFile<ObservableCollectionExtended<ShareableLoadout>>($"{IOResources.PROFILE_DIR}loadoutList.json") ?? new();
+
+        if(DataStorage.ShareableProfiles is not null && DataStorage.ShareableProfiles.Count > 0)
+            foreach (var profile in DataStorage.ShareableProfiles)
+            {
+                int loadoutID = 0;
+                if (profile.Loadouts is not null && profile.Loadouts.Count > 0)
+                    foreach (var loadout in profile.Loadouts)
+                    {
+                        loadout.Name = $"{profile.Name} Loadout{loadoutID}";
+                        loadouts.Add(loadout);
+                        loadoutID++;
+                    }
+            }
+
+        if (File.Exists($"{IOResources.PROFILE_DIR}profileList.json")) File.Delete($"{IOResources.PROFILE_DIR}profileList.json");
+
+        if (loadouts.Count <= 0)
+        { 
+            //TODO: Create Default Loadouts!!!!!!!!!!!!!!!!!!!!!!!
+        }
+
+        LoggingSystem.Log("Finished Loading ShareableLoadouts");
+        return loadouts;
     }
 
     public static void UpdateOrAddProfileSettings(string profileName, BLRProfileSettingsWrapper settings)
@@ -170,126 +192,5 @@ public sealed class ExportSystem
                 return newProfile;
             }
         }
-    }
-}
-
-public sealed class BLRLoadoutStorage(ShareableProfile share, BLRProfile? blr = null)
-{
-    public ShareableProfile Shareable { get; } = share;
-    private BLRProfile? blr = blr;
-    public BLRProfile BLR { get { blr ??= Shareable.ToBLRProfile(); return blr; } }
-    static bool isExchanging = false;
-    public static event EventHandler? ProfileGotRemoved;
-    public void Remove()
-    {
-        
-        int indexShare = DataStorage.ShareableProfiles.IndexOf(Shareable);
-        int indexLoadout = DataStorage.Loadouts.IndexOf(this);
-        LoggingSystem.Log($"Removing({indexShare}, {indexLoadout}): {Shareable.Name}");
-        UndoRedoSystem.DoAction(() => { DataStorage.ShareableProfiles.Remove(Shareable); }, () => { DataStorage.ShareableProfiles.Insert(indexShare, Shareable); });
-        UndoRedoSystem.DoAction(() => { DataStorage.Loadouts.Remove(this); }, () => { DataStorage.Loadouts.Insert(indexLoadout, this); });
-        UndoRedoSystem.EndUndoRecord();
-        ProfileGotRemoved?.Invoke(this, new EventArgs());
-    }
-
-    public static void Exchange(int from, int to)
-    {
-        if (from == to) return;
-        if (isExchanging) return;
-        isExchanging = true;
-        DataStorage.ShareableProfiles.Exchange(from, to);
-        DataStorage.Loadouts.Exchange(from, to);
-        DataStorage.ShareableProfiles.SignalExchange();
-        DataStorage.Loadouts.SignalExchange();
-        isExchanging = false;
-    }
-
-    public void ApplyLoadout(BLRClient? client)
-    {
-        if (client is not null)
-        {
-            var directory = $"{client.ConfigFolder}profiles\\";
-            Directory.CreateDirectory(directory);
-            if (client.SDKType == "BLRevive")
-            {
-                if (DataStorage.Settings.ApplyMergedProfiles.Is)
-                {
-                    List<LMLoadout> loadouts = new List<LMLoadout>();
-
-
-                    int profileIndex = 0;
-                    foreach (var profile in DataStorage.Loadouts)
-                    {
-                        var profileName = DataStorage.ShareableProfiles[profileIndex].Name;
-                        loadouts.Add(new LMLoadout(profile.BLR.Loadout1, $"{profileName} {profile.BLR.Loadout1.Name}"));
-                        loadouts.Add(new LMLoadout(profile.BLR.Loadout2, $"{profileName} {profile.BLR.Loadout2.Name}"));
-                        loadouts.Add(new LMLoadout(profile.BLR.Loadout3, $"{profileName} {profile.BLR.Loadout3.Name}"));
-                        profileIndex++;
-                    }
-
-                    IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
-                }
-                else
-                {
-                    IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] {
-                        new LMLoadout(BLR.Loadout1, BLR.Loadout1.Name),
-                        new LMLoadout(BLR.Loadout2, BLR.Loadout2.Name),
-                        new LMLoadout(BLR.Loadout3, BLR.Loadout3.Name)
-                    });
-                }
-                MainWindow.ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
-            }
-            else
-            {
-                IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", new[] { new LoadoutManagerLoadout(BLR.Loadout1), new LoadoutManagerLoadout(BLR.Loadout2), new LoadoutManagerLoadout(BLR.Loadout3) });
-                MainWindow.ShowAlert($"Applied Proxy Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
-            }
-            
-            if (MainWindow.Instance is not null)
-            {
-                MainWindow.Instance.ProfileComboBox.SelectedIndex = MainWindow.Instance.ProfileComboBox.Items.IndexOf(Shareable);
-                DataStorage.Settings.CurrentlyAppliedLoadout = MainWindow.Instance.ProfileComboBox.SelectedIndex;
-                Shareable.LastApplied = DateTime.Now;
-            }
-            BLR.IsChanged = false;
-        }
-    }
-
-    private ICommand? applyLoadoutCommand;
-    [JsonIgnore]
-    public ICommand ApplyLoadoutCommand
-    {
-        get
-        {
-            applyLoadoutCommand ??= new RelayCommand(
-                    param => ApplyLoadout(DataStorage.Settings.DefaultClient)
-                );
-            return applyLoadoutCommand;
-        }
-    }
-
-    private ICommand? removeLoadoutCommand;
-    [JsonIgnore]
-    public ICommand RemoveLoadoutCommand
-    {
-        get
-        {
-            removeLoadoutCommand ??= new RelayCommand(
-                    param => Remove()
-                );
-            return removeLoadoutCommand;
-        }
-    }
-
-    public static BLRLoadoutStorage AddNewLoadoutSet(string Name = "New Loadout Set!", BLRProfile? profile = null, ShareableProfile? shareable = null)
-    {
-        var share = shareable ?? new ShareableProfile() { Name = Name };
-        share.RegisterWithChildren();
-        var blr = profile ?? share.ToBLRProfile();
-        profile?.Write(share);
-        var loadout = new BLRLoadoutStorage(share, blr);
-        DataStorage.ShareableProfiles.Add(share);
-        DataStorage.Loadouts.Add(loadout);
-        return loadout;
     }
 }

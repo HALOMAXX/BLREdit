@@ -18,6 +18,7 @@ public static class DataStorage
     private static ObservableCollection<BLRServer>? _servers;
     private static Dictionary<string, BLRProfileSettingsWrapper>? _profileSettings;
     private static ObservableCollectionExtended<ShareableProfile>? _shareableProfiles;
+    private static ObservableCollectionExtended<ShareableLoadout>? _shareableLoadouts;
     private static ObservableCollectionExtended<BLRLoadoutStorage>? _blrProfile;
     private static BLREditSettings? _settings;
     private static ObservableCollection<ProxyModule>? _cachedModules;
@@ -29,6 +30,7 @@ public static class DataStorage
     private static readonly object serverListLock = new();
     private static readonly object profileSettingLock = new();
     private static readonly object shareableLock = new();
+    private static readonly object shareableLoadoutLock = new();
     private static readonly object loadoutLock = new();
     private static readonly object settingsLock = new();
     #endregion Locks
@@ -39,6 +41,7 @@ public static class DataStorage
     public static ObservableCollection<BLRServer> ServerList { get { lock (serverListLock) { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new(); } return _servers; } }
     public static Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get { lock (profileSettingLock) { _profileSettings ??= IOResources.DeserializeFile<Dictionary<string, BLRProfileSettingsWrapper>>($"PlayerSettings.json") ?? new(); } return _profileSettings; } }
     public static ObservableCollectionExtended<ShareableProfile> ShareableProfiles { get { lock (shareableLock) { _shareableProfiles ??= ExportSystem.LoadShareableProfiles(); } return _shareableProfiles; } }
+    public static ObservableCollectionExtended<ShareableLoadout> ShareableLoadouts { get { lock (shareableLoadoutLock) { _shareableLoadouts ??= ExportSystem.LoadShareableLoadouts(); } return _shareableLoadouts; } }
     public static ObservableCollectionExtended<BLRLoadoutStorage> Loadouts { get { lock (loadoutLock) { _blrProfile ??= ExportSystem.LoadStorage(); } return _blrProfile; } }
     public static BLREditSettings Settings { get { lock (settingsLock) { _settings ??=  IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new(); } return _settings; } set { _settings = value; } }
     #endregion Properties
@@ -56,7 +59,8 @@ public static class DataStorage
     {
         DataSaving?.Invoke(null, EventArgs.Empty);
         IOResources.SerializeFile($"PlayerSettings.json", _profileSettings);
-        IOResources.SerializeFile($"{IOResources.PROFILE_DIR}profileList.json", _shareableProfiles);
+        //IOResources.SerializeFile($"{IOResources.PROFILE_DIR}profileList.json", _shareableProfiles);
+        IOResources.SerializeFile($"{IOResources.PROFILE_DIR}loadoutList.json", _shareableLoadouts);
         IOResources.SerializeFile($"GameClients.json", _gameClients);
         IOResources.SerializeFile($"ServerList.json", _servers);
         IOResources.SerializeFile($"ModuleCache.json", _cachedModules);

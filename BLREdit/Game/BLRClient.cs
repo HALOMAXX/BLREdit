@@ -758,19 +758,19 @@ public sealed class BLRClient : INotifyPropertyChanged
                 var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
                 isValid = true;
                 string message = string.Empty;
-                if (!currentlyAppliedLoadout.BLR.Loadout1.ValidateLoadout(ref message)) isValid = false;
-                if (!currentlyAppliedLoadout.BLR.Loadout2.ValidateLoadout(ref message)) isValid = false;
-                if (!currentlyAppliedLoadout.BLR.Loadout3.ValidateLoadout(ref message)) isValid = false;
+                //if (!currentlyAppliedLoadout.BLR.Loadout1.ValidateLoadout(ref message)) isValid = false;
+                //if (!currentlyAppliedLoadout.BLR.Loadout2.ValidateLoadout(ref message)) isValid = false;
+                //if (!currentlyAppliedLoadout.BLR.Loadout3.ValidateLoadout(ref message)) isValid = false;
 
                 if (!isValid)
                 {
-                    currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
+                    //currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
                     LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n{message}", "Warning");
                     return;
                 }
                 else
                 {
-                    currentlyAppliedLoadout.ApplyLoadout(this);
+                    //currentlyAppliedLoadout.ApplyLoadout(this);
                 }
             }
         }
