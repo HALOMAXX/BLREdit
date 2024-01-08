@@ -34,10 +34,8 @@ public sealed class BLRServer : INotifyPropertyChanged
     public override bool Equals(object? obj)
     {
         if (obj is BLRServer server)
-        { return 
-                ServerAddress.Equals(server.ServerAddress) && 
-                Port.Equals(server.Port) &&
-                InfoPort.Equals(server.InfoPort);
+        {
+            return ID.Equals(server.ID);
         }
         else
         { return false; }
@@ -64,19 +62,20 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.PlayerCount; } else { return -1; } } }
     [JsonIgnore] public int MaxPlayers { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.MaxPlayers; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.MaxPlayers; } else { return -1; } } }
 
-    public string ServerAddress { get; set; } = "localhost";
+    [JsonIgnore] private string id = string.Empty;
+    public string ID { get { return id; } set { id = value; OnPropertyChanged(); } }
+    [JsonIgnore] private string serverAddress = "localhost";
+    public string ServerAddress { get { return serverAddress; } set { serverAddress = value; OnPropertyChanged(); } }
     [JsonIgnore] private ushort port = 7777;
     public ushort Port { get { return port; } set { port = value; OnPropertyChanged(); } }
-    [JsonIgnore] private ushort infoPort = 7778;
+    [JsonIgnore] private ushort infoPort = 7777;
     public ushort InfoPort { get { return infoPort; } set { infoPort = value; OnPropertyChanged(); } }
     [JsonIgnore] private bool hidden = false;
     public bool Hidden { get { return hidden; } set { hidden = value; OnPropertyChanged(); } }
     [JsonIgnore] private string region = string.Empty;
     public string Region { get { return region; } set { region = value; OnPropertyChanged(); } }
-    [JsonIgnore] private bool advanced = false;
-    public bool AllowAdvanced { get { return advanced; } set { advanced = value; OnPropertyChanged(); } }
-    [JsonIgnore] private bool lmgr = false;
-    public bool AllowLMGR { get { return lmgr; } set { lmgr = value; OnPropertyChanged(); } }
+    [JsonIgnore] private bool validatesLoadout = true;
+    public bool ValidatesLoadout { get { return validatesLoadout; } set { validatesLoadout = value; OnPropertyChanged(); } }
 
 
     static BLRServer()

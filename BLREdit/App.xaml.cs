@@ -54,7 +54,9 @@ public partial class App : System.Windows.Application
 
     public static bool ForceStart { get; private set; }
 
+#pragma warning disable IDE0051 // Remove unused private members
     static void AddNewItemList(string name, KeyValuePair<string, JsonNode?> array)
+#pragma warning restore IDE0051 // Remove unused private members
     {
         var newList = new ObservableCollection<BLRItem>();
         foreach (var item in array.Value.AsObject())
@@ -648,18 +650,18 @@ public partial class App : System.Windows.Application
     {
         if (release.Assets is null || release.Assets.Length < 1) return false;
 
-        bool ass = false, exe = false, jso = false, dll = false, tex = false, cro = false, pat = false;
+        bool jso = false, dll = false, tex = false, cro = false, pat = false;
 
         foreach (var asset in release.Assets)
         {
             if (exeZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(exeZip.Info.Name))
             { 
-                if (DownloadLinks.ContainsKey(exeZip)) { exe = true; } else { DownloadLinks.Add(exeZip, asset.BrowserDownloadURL); exe = true; }
+                if (!DownloadLinks.ContainsKey(exeZip)) { DownloadLinks.Add(exeZip, asset.BrowserDownloadURL); }
             }
 
             if (assetZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(assetZip.Info.Name))
             {
-                if (DownloadLinks.ContainsKey(assetZip)) { ass = true; } else { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); ass = true; }
+                if (!DownloadLinks.ContainsKey(assetZip)) { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
             }
 
             if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name))
@@ -845,29 +847,29 @@ public partial class App : System.Windows.Application
 
         Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask).Wait();
 
-        if (UpdatePanic) 
-        {
-            LoggingSystem.Log("Update failed cleaning BLREdit folder and restarting!");
-            var dirs = Directory.EnumerateDirectories(BLREditLocation);
-            foreach (var dir in dirs)
-            {
-                if (!dir.EndsWith("Profile") && !dir.EndsWith("logs") && !dir.EndsWith("ServerConfigs"))
-                { 
-                    Directory.Delete(dir, true);
-                }
-            }
+        //if (UpdatePanic) 
+        //{
+        //    LoggingSystem.Log("Update failed cleaning BLREdit folder and restarting!");
+        //    var dirs = Directory.EnumerateDirectories(BLREditLocation);
+        //    foreach (var dir in dirs)
+        //    {
+        //        if (!dir.EndsWith("Profile") && !dir.EndsWith("logs") && !dir.EndsWith("ServerConfigs"))
+        //        { 
+        //            Directory.Delete(dir, true);
+        //        }
+        //    }
 
-            var files = Directory.EnumerateFiles(BLREditLocation);
-            foreach (var file in files)
-            {
-                if (!file.EndsWith("BLREdit.exe") && !file.EndsWith("settings.json") && !file.EndsWith("GameClients.json") && !file.EndsWith("ServerList.json"))
-                {
-                    File.Delete(file);
-                }
-            }
+        //    var files = Directory.EnumerateFiles(BLREditLocation);
+        //    foreach (var file in files)
+        //    {
+        //        if (!file.EndsWith("BLREdit.exe") && !file.EndsWith("settings.json") && !file.EndsWith("GameClients.json") && !file.EndsWith("ServerList.json"))
+        //        {
+        //            File.Delete(file);
+        //        }
+        //    }
 
-            Restart();
-        }
+        //    Restart();
+        //}
     }
     private static void DownloadAssetPack(FileInfoExtension? pack)
     {
@@ -882,11 +884,9 @@ public partial class App : System.Windows.Application
         { LoggingSystem.Log($"No {pack.Info.Name} for download available!"); }
     }
 
-    static bool UpdatePanic = false;
-
     private static void UpdateAssetPack(FileInfoExtension pack, string targetFolder)
     {
-        if (DownloadLinks.TryGetValue(pack, out string dl))
+        if (DownloadLinks.TryGetValue(pack, out _))
         {
             try
             {

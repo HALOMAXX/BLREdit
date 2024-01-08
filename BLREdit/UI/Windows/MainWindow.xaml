@@ -17,20 +17,19 @@
         <ImageBrush ImageSource="../Resources/Default_2016.png" />
     </Window.Background>
     <Grid Name="BLREditMainGrid" AllowDrop="True">
-        <Button Width="120" Height="22" Margin="270,5,0,0" Name="AddProfileButton" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
 
-        <Border Name="ApplyLoadoutBorder" Width="130" Height="32" Margin="5,30,0,0" HorizontalAlignment="Left" BorderThickness="0"  VerticalAlignment="Top" CornerRadius="5">
-            <Button Height="22" Width="120" Name="CopyToClipboardButton" Content="{x:Static p:Resources.btn_ExportProfile}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CopyToClipboardButton_Click"/>
+        <Border Name="ApplyLoadoutBorder" Width="130" Height="32" Margin="5,5,0,0" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" CornerRadius="5">
+            <Button Width="120" Height="22" Name="CopyToClipboardButton" Content="{x:Static p:Resources.btn_ExportProfile}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CopyToClipboardButton_Click"/>
         </Border>
-        
-        <Button Width="120" Height="22" Margin="140,35,0,0" Name="DuplicateButton" Content="{x:Static p:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
-        <Button Width="120" Height="22" Margin="270,35,0,0" Name="RandomLoadout" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
 
-        <Grid HorizontalAlignment="Left" Width="420" Margin="0,64,0,0">
-            <TextBox x:Name="LoadoutNameBox" Text="{Binding Path=Profile.BLR.Name, Mode=TwoWay}" Height="20" VerticalAlignment="Top"/>
-            <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Profile.BLR}" Margin="0,20,0,0" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
+        <Button Name="RandomLoadout" Width="120" Height="22" Margin="140,10,0,0" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left" VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
+
+        <Button Name="AddProfileButton" Width="120" Height="22" Margin="270,10,0,0" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
+
+        <Grid HorizontalAlignment="Left" Width="420" Margin="0,42,0,0">
+            <TextBox x:Name="LoadoutNameBox" Text="{Binding Path=Profile.BLR.Name, Mode=TwoWay}" Height="20" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Profile.BLR}" Margin="0,22,0,0" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
         </Grid>
-
 
         <TabControl Name="MainWindowTabs" SelectionChanged="MainWindowTabs_SelectionChanged" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="420,0,0,0">
             <TabItem Header="{x:Static p:Resources.ti_ItemList}" Name="ItemListTab">
@@ -57,6 +56,10 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
+            </TabItem>
+
+            <TabItem Name="ProfileListTab" Header="Loadouts" >
+                <ui:ProfileListControl DataContext="{Binding Path=Loadouts}"/>
             </TabItem>
 
             <TabItem Name="ServerListTab"  Header="Server List" DataContext="{Binding Path=ServerList}">
@@ -89,14 +92,11 @@
                         <ui:GameSettingsControl/>
                     </TabItem>
                 </TabControl>
-                
             </TabItem>
-
-            <TabItem Name="ProfileListTab" Header="Profiles" >
-                <ui:ProfileListControl DataContext="{Binding Path=Loadouts}"/>
-            </TabItem>
-            
         </TabControl>
+        
+        
+        <!--Alert Stack-->
         <Grid HorizontalAlignment="Right" Width="400" Margin="400,0,0,0" IsHitTestVisible="False" Focusable="False">
             <ListBox HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="400" Background="Transparent" Name="AlertList" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListBox.ItemContainerStyle>

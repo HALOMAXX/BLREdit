@@ -67,7 +67,7 @@ public sealed class ExportSystem
         BLRLoadoutStorage[] storage = new BLRLoadoutStorage[DataStorage.ShareableLoadouts.Count];
         for (int i = 0; i < DataStorage.ShareableLoadouts.Count; i++)
         {
-            DataStorage.ShareableLoadouts[i].RegisterWithChildren(null);
+            DataStorage.ShareableLoadouts[i].RegisterWithChildren();
             storage[i] = new(DataStorage.ShareableLoadouts[i]);
         }
 

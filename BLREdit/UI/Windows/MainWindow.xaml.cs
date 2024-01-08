@@ -21,6 +21,7 @@ using BLREdit.API.InterProcess;
 using BLREdit.API.Export;
 using BLREdit.API.Utils;
 using BLREdit.Game;
+using System.IO.Ports;
 
 namespace BLREdit.UI;
 
@@ -116,6 +117,20 @@ public sealed partial class MainWindow : Window
 
     private static void AddOrUpdateDefaultServers()
     {
+        List<BLRServer> remove = new();
+        foreach (var server in DataStorage.ServerList)
+        {
+            if (server.ID.Equals(string.Empty))
+            { 
+                remove.Add(server);
+            }
+        }
+
+        foreach (var rem in remove)
+        { 
+            DataStorage.ServerList.Remove(rem);
+        }
+
         foreach (BLRServer defaultServer in App.DefaultServers)
         {
             AddOrUpdateDefaultServer(defaultServer);
@@ -126,10 +141,12 @@ public sealed partial class MainWindow : Window
     {
         var index = IsInCollection(DataStorage.ServerList, server);
         if (index == -1) { DataStorage.ServerList.Add(server); return; }
+        DataStorage.ServerList[index].ServerAddress = server.ServerAddress;
+        DataStorage.ServerList[index].Port = server.Port;
+        DataStorage.ServerList[index].InfoPort = server.InfoPort;
         DataStorage.ServerList[index].Hidden = server.Hidden;
         DataStorage.ServerList[index].Region = server.Region;
-        DataStorage.ServerList[index].AllowAdvanced = server.AllowAdvanced;
-        DataStorage.ServerList[index].AllowLMGR = server.AllowLMGR;
+        DataStorage.ServerList[index].ValidatesLoadout = server.ValidatesLoadout;
     }
 
     public static void AddServer(BLRServer server, bool forceAdd = false)
@@ -140,6 +157,13 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    /// <summary>
+    /// Returns first occurrence other wise returns -1 if it didn't contain item
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="collection"></param>
+    /// <param name="item"></param>
+    /// <returns></returns>
     public static int IsInCollection<T>(ObservableCollection<T> collection, T item)
     {
         if (item is null) return -1;
@@ -533,7 +557,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public void ApplyProxyLoadouts(BLRClient client)
+    public static void ApplyProxyLoadouts(BLRClient client)
     {
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
@@ -560,7 +584,7 @@ public sealed partial class MainWindow : Window
         ShowAlert($"Applied Proxy Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
     }
 
-    public void ApplyBLReviveLoadouts(BLRClient client)
+    public static void ApplyBLReviveLoadouts(BLRClient client)
     {
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
@@ -629,7 +653,7 @@ public sealed partial class MainWindow : Window
                     }
 
                     MainView.Profile.BLR.IsAdvanced.Set(!MainView.Profile.BLR.IsAdvanced.Is);
-                    MainView.Profile.BLR.Write();
+                    MainView.Profile.BLR.WriteToBackingStructure();
                     MainWindow.MainView.Profile.BLR.CalculateStats();
                     ApplySearchAndFilter();
                     ShowAlert($"{Properties.Resources.msg_AdvancedModding}:{(MainView.Profile.BLR.IsAdvanced.Is ? "On" : "Off")}");
@@ -1010,8 +1034,6 @@ public sealed partial class MainWindow : Window
 
         UndoRedoSystem.ClearUndoRedoStack();
 
-
-
         LoggingSystem.Log($"Window Init took {watch.ElapsedMilliseconds}ms");
     }
 
@@ -1058,7 +1080,9 @@ public sealed partial class MainWindow : Window
 
     private void Window_ContentRendered(object sender, EventArgs e)
     {
-        BringWindowIntoBounds();
+        ProfileListTab.IsSelected = true;
+        this.WindowState = WindowState.Maximized;
+        ItemListTab.IsSelected = true;
         if (DataStorage.Settings.PlayerName == "BLREdit-Player")
         {
             SettingsTab.IsSelected = true;
@@ -1226,26 +1250,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public FrameworkElement? HitTestProfileControls(DependencyObject depObj, Point p)
-    {
-        var AllProfiles = FindVisualChildren<ProfileControl>(depObj).ToList();
-
-        if (AllProfiles.Count > 0)
-        {
-            foreach (var profile in AllProfiles)
-            {
-                var bounds = VisualTreeHelper.GetDescendantBounds(profile);
-                var pos = this.TranslatePoint(p, profile);
-                if (bounds.Contains(pos))
-                {
-                    return profile;
-                }
-            }
-        }
-        return null;
-    }
-
-    public FrameworkElement? HitTestLoadoutControls(DependencyObject depObj)
+    public static FrameworkElement? HitTestLoadoutControls(DependencyObject depObj)
     {
         var AllExtras = FindVisualChildren<ExtraControl>(depObj).ToList();
         var AllGears = FindVisualChildren<GearControl>(depObj).ToList();

@@ -26,6 +26,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Name="ToggleLoadouts" Content="Toggle Loadout Apply" Width="128" Height="64" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="ToggleLoadouts_Click"/>
+        <Button Name="ToggleLoadouts" Content="Toggle Loadout Apply" Width="256" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="ToggleLoadouts_Click"/>
     </Grid>
 </UserControl>

@@ -33,52 +33,19 @@ public partial class ServerListControl : UserControl
         InitializeComponent();
     }
 
-    Point StartPoint;
-    bool isDragging= false;
-    private void ServerListView_PreviewMouseMove(object sender, MouseEventArgs e)
-    {
-        if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
-        {
-            Point position = e.GetPosition(null);
-            if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
-               Math.Abs(position.Y - StartPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
-            {
-                if (sender is ListView listView && listView.SelectedItem is BLRServer server)
-                {
-                    isDragging = true;
-                    DragDrop.DoDragDrop(listView, server, DragDropEffects.Move);
-                    isDragging = false;
-                }
-            }
-        }
-    }
-
-    private void ServerListView_Drop(object sender, DragEventArgs e)
-    {
-        BLRServer? droppedData = e.Data.GetData(typeof(BLRServer)) as BLRServer;
-        object targetData = e.OriginalSource;
-        while (targetData != null && targetData.GetType() != typeof(ServerControl))
-        {
-            targetData = ((FrameworkElement)targetData).Parent;
-        }
-        if (targetData is not null && droppedData is not null && targetData is ServerControl sControl && sControl.DataContext is BLRServer targetServer) { DataStorage.ServerList.Move(DataStorage.ServerList.IndexOf(droppedData), DataStorage.ServerList.IndexOf(targetServer)); }
-        else
-        {
-            LoggingSystem.Log("failed to reorder ServerListView!");
-        }
-    }
-
     private void AddNewServer_Click(object sender, RoutedEventArgs e)
     {
-        MainWindow.AddServer(new BLRServer(), true);
+        MainWindow.AddServer(new BLRServer() { ID = $"custom {GetCustomServerCount()}"}, true);
     }
 
-    private void ServerListView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-    {
-        if (e.LeftButton == MouseButtonState.Pressed)
-        { 
-            StartPoint = e.GetPosition(null);
+    public static int GetCustomServerCount()
+    { 
+        int count = 0;
+        foreach (var server in DataStorage.ServerList)
+        {
+            if (server.ID.StartsWith("custom")) count++;
         }
+        return count;
     }
 
     private void ServerListView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)

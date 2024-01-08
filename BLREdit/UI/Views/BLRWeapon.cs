@@ -262,7 +262,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
 
 
-    private bool IsPistol(BLRItem? receiver)
+    private static bool IsPistol(BLRItem? receiver)
     {
         if (receiver == null) return false;
         return receiver.Name == "Light Pistol" || receiver.Name == "Heavy Pistol" || receiver.Name == "Prestige Light Pistol";

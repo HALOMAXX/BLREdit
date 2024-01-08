@@ -24,63 +24,6 @@ namespace BLREdit.UI.Controls
             BLRLoadoutStorage.ProfileGotRemoved += Refresh;
         }
 
-        Point StartPoint;
-        bool isDragging = false;
-
-        private void ProfileListView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                StartPoint = e.GetPosition(null);
-            }
-        }
-
-        private void ProfileListView_PreviewMouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
-            {
-                Point position = e.GetPosition(null);
-                if (Math.Abs(position.X - StartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
-                   Math.Abs(position.Y - StartPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
-                {
-                    if (sender is ListView listView && listView.SelectedItem is BLRLoadoutStorage profile)
-                    {
-                        isDragging = true;
-                        DragDrop.DoDragDrop(listView, profile, DragDropEffects.Move);
-                        isDragging = false;
-                    }
-                }
-            }
-        }
-
-        private void ProfileListView_Drop(object sender, DragEventArgs e)
-        {
-            BLRLoadoutStorage? droppedData = e.Data.GetData(typeof(BLRLoadoutStorage)) as BLRLoadoutStorage;
-
-            var pos = e.GetPosition(MainWindow.Instance);
-
-            var hitResult = MainWindow.Instance.HitTestProfileControls(ProfileListView, pos);
-
-            if (droppedData is not null && hitResult is ProfileControl sControl && sControl.DataContext is BLRLoadoutStorage targetProfile)
-            {
-                var droppedIndex = DataStorage.Loadouts.IndexOf(droppedData);
-                var targetIndex = DataStorage.Loadouts.IndexOf(targetProfile);
-
-                if (droppedIndex < 0 || targetIndex < 0)
-                { return; }
-
-                BLRLoadoutStorage.Exchange(droppedIndex, targetIndex);
-                if (droppedIndex == DataStorage.Settings.CurrentlyAppliedLoadout)
-                {
-                    DataStorage.Settings.CurrentlyAppliedLoadout = targetIndex;
-                }
-                else if (targetIndex == DataStorage.Settings.CurrentlyAppliedLoadout)
-                {
-                    DataStorage.Settings.CurrentlyAppliedLoadout = droppedIndex;
-                }
-            }
-        }
-
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ProfileFilter.Instance.SearchFilter = SearchBox.Text;
@@ -97,6 +40,8 @@ namespace BLREdit.UI.Controls
             {
                 view.Filter += new Predicate<object>(ProfileFilter.Instance.FullFilter);
             }
+            SetSortingType(typeof(ProfileSortingType));
+            ApplySorting();
         }
 
         private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -134,18 +79,7 @@ namespace BLREdit.UI.Controls
                 if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
                 {
                     MainWindow.MainView.CurrentProfileSortingPropertyName = $"Shareable.{Enum.GetName(MainWindow.MainView.CurrentProfileSortingEnumType, Enum.GetValues(MainWindow.MainView.CurrentProfileSortingEnumType).GetValue(SortComboBox1.SelectedIndex))}";
-                    var sortDir = MainWindow.MainView.ProfileListSortingDirection;
-                    switch (MainWindow.MainView.CurrentProfileSortingPropertyName)
-                    {
-                        case "Shareable.LastApplied":
-                        case "Shareable.LastModified":
-                        case "Shareable.LastViewed":
-                            break;
-                        default:
-                            sortDir = sortDir == ListSortDirection.Ascending ? ListSortDirection.Descending : ListSortDirection.Ascending;
-                            break;
-                    }
-                    view.SortDescriptions.Add(new SortDescription(MainWindow.MainView.CurrentProfileSortingPropertyName, sortDir));
+                    view.SortDescriptions.Add(new SortDescription(MainWindow.MainView.CurrentProfileSortingPropertyName, MainWindow.MainView.ProfileListSortingDirection));
                 }
             }
         }

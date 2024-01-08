@@ -39,7 +39,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public UIBool Validate { get; set; } = new UIBool(true);
     public string ConfigName { get; set; } = "default";
 
-    [JsonIgnore] private readonly BLRServer LocalHost = new() { ServerAddress = "localhost", Port = 7777, AllowAdvanced = true, AllowLMGR = true };
+    [JsonIgnore] private readonly BLRServer LocalHost = new();
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
@@ -723,57 +723,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchClient(LaunchOptions options)
     {
-        var ProxyLoadout = SDKType != "BLRevive" ? IOResources.DeserializeFile<LoadoutManagerLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json") : null;
-        var BLReviveLoadout = SDKType == "BLRevive" ? IOResources.DeserializeFile<LMLoadout[]>($"{DataStorage.Settings.DefaultClient.ConfigFolder}profiles\\{DataStorage.Settings.PlayerName}.json") : null;
-        if (!options.Server.AllowAdvanced)
-        {
-            bool isValid = true;
-
-            if (ProxyLoadout is not null)
-            {
-                string message = string.Empty;
-                foreach (var loadout in ProxyLoadout)
-                {
-                    if (!loadout.GetLoadout().ValidateLoadout(ref message))
-                    {
-                        isValid = false;
-                    }
-                }
-            }
-
-            if (BLReviveLoadout is not null)
-            {
-                string message = string.Empty;
-                foreach (var loadout in BLReviveLoadout)
-                {
-                    if (!loadout.GetLoadout().ValidateLoadout(ref message))
-                    {
-                        isValid = false;
-                    }
-                }
-            }
-
-            if (!isValid)
-            {
-                var currentlyAppliedLoadout = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
-                isValid = true;
-                string message = string.Empty;
-                //if (!currentlyAppliedLoadout.BLR.Loadout1.ValidateLoadout(ref message)) isValid = false;
-                //if (!currentlyAppliedLoadout.BLR.Loadout2.ValidateLoadout(ref message)) isValid = false;
-                //if (!currentlyAppliedLoadout.BLR.Loadout3.ValidateLoadout(ref message)) isValid = false;
-
-                if (!isValid)
-                {
-                    //currentlyAppliedLoadout.BLR.IsAdvanced.Set(true);
-                    LoggingSystem.MessageLog($"Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n{message}", "Warning");
-                    return;
-                }
-                else
-                {
-                    //currentlyAppliedLoadout.ApplyLoadout(this);
-                }
-            }
-        }
+        MainWindow.ApplyBLReviveLoadouts(this);
         ApplyProfileSetting(ExportSystem.GetOrAddProfileSettings(options.UserName));
         ApplyConfigs();
         string launchArgs = options.Server.IPAddress + ':' + options.Server.Port;
@@ -784,7 +734,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public static bool ValidProfile(BLRProfile profile, BLRServer server, ref string message)
     {
         var isValid = true;
-        if (!server.AllowAdvanced)
+        if (!server.ValidatesLoadout)
         {
             if (!profile.Loadout1.ValidateLoadout(ref message)) isValid = false;
             if (!profile.Loadout2.ValidateLoadout(ref message)) isValid = false;

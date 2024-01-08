@@ -31,7 +31,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
     public bool Watchdog { get { return watchdog; } private set { watchdog = value; OnPropertyChanged(); } }
     private BLRServer? connectedServer;
     public BLRServer? ConnectedServer { get { return connectedServer; } private set { connectedServer = value; OnPropertyChanged(); } }
-    private string? launchArguments;
+    public string? LaunchArgs { get { return GameProcess.StartInfo.Arguments; } }
 
     static BLRProcess()
     {
@@ -70,7 +70,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
             FileName = Client.SDKType == "BLRevive" ? Client.OriginalPath : Client.PatchedPath,
             Arguments = launchArgs
         };
-        this.gameProcess = new()
+        gameProcess = new()
         {
             EnableRaisingEvents = true,
             StartInfo = psi

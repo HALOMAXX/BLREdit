@@ -34,13 +34,13 @@
                     <ColumnDefinition Width="64"/>
                     <ColumnDefinition Width="64"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="{Binding Path=Receiver.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToNotVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
-                <Image Source="{Binding Path=Skin.Image.IconFileInfo.FullName}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
-                <Image Source="{Binding Path=Camo.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
-                <Image Source="{Binding Path=Magazine.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
-                <Image Source="{Binding Path=Ammo.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
-                <Image Source="{Binding Path=Tag.Image.IconFileInfo.FullName}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64" Margin="0,0,0,0"/>
-                <Image Source="{Binding Path=Scope.Image.IconFileInfo.FullName}" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
+                <Image Source="{Binding Path=Receiver.Image.IconFileInfo.FullName, IsAsync=True}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToNotVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
+                <Image Source="{Binding Path=Skin.Image.IconFileInfo.FullName, IsAsync=True}" Visibility="{Binding Path=HasSkinEquipped, Converter={StaticResource BoolToVis}}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="128" Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="4"/>
+                <Image Source="{Binding Path=Camo.Image.IconFileInfo.FullName, IsAsync=True}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
+                <Image Source="{Binding Path=Magazine.Image.IconFileInfo.FullName, IsAsync=True}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
+                <Image Source="{Binding Path=Ammo.Image.IconFileInfo.FullName, IsAsync=True}" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
+                <Image Source="{Binding Path=Tag.Image.IconFileInfo.FullName, IsAsync=True}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64" Margin="0,0,0,0"/>
+                <Image Source="{Binding Path=Scope.Image.IconFileInfo.FullName, IsAsync=True}" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Height="64"/>
             </Grid>
         </Border>
 

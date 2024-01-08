@@ -13,10 +13,10 @@
             <Button Content="{Binding Source={x:Static p:Resources.btn_QuickMatch}}" Width="240" Click="QuickMatch_Click"/>
         </StackPanel>
         
-        <ListView Name="ServerListView" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ServerListControl}}, Path=DataContext}" DataContextChanged="ServerListView_DataContextChanged" Margin="0,0,0,40" SelectionMode="Single" PreviewMouseDown="ServerListView_PreviewMouseDown" PreviewMouseMove="ServerListView_PreviewMouseMove" AllowDrop="True" Drop="ServerListView_Drop">
+        <ListView Name="ServerListView" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ServerListControl}}, Path=DataContext}" DataContextChanged="ServerListView_DataContextChanged" Margin="0,0,0,40" SelectionMode="Single">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid HorizontalAlignment="Left" VerticalAlignment="Top" Columns="2"/>
+                    <local:VirtualizedUniformGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 

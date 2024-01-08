@@ -1,90 +1,106 @@
 [
   {
+    "ID": "localhost",
     "ServerAddress": "localhost",
-    "AllowAdvanced": true,
-    "AllowLMGR": true
+    "Port": 7777,
+    "InfoPort": 7777
   },
   {
-    "ServerAddress": "mooserver.ddns.net",
+    "ID": "majikau 0",
+    "ServerAddress": "blr.majikau.com",
+    "InfoPort": 7778,
     "Region": "EU-North"
   },
   {
-    "ServerAddress": "mooserver.ddns.net",
+    "ID": "majikau 1",
+    "ServerAddress": "blr.majikau.com",
     "Port": 7779,
     "InfoPort": 7780,
-    "Region": "EU-North",
-    "AllowAdvanced": true,
-    "AllowLMGR": true
+    "Region": "EU-North"
   },
   {
+    "ID": "a.lt 0",
     "ServerAddress": "blrevive.northamp.fr",
-    "InfoPort": 7777,
     "Region": "EU-West"
   },
   {
+    "ID": "a.lt 1",
     "ServerAddress": "blrevive-staging.northamp.fr",
-    "InfoPort": 7777,
     "Hidden": true,
-    "Region": "EU-West",
-    "AllowAdvanced": true,
-    "AllowLMGR": true
+    "Region": "EU-West"
   },
   {
+    "ID": "xmutantson 0",
     "ServerAddress": "kameron.cloud",
+    "InfoPort": 7778,
     "Region": "US-West"
   },
   {
+    "ID": "zonaqvga 0",
     "ServerAddress": "lasandia.serveminecraft.net",
+    "InfoPort": 7778,
     "Hidden": true,
     "Region": "LATAM"
   },
   {
+    "ID": "craftman_96_alex 0",
     "ServerAddress": "blrrevive.ddd-game.de",
+    "InfoPort": 7778,
     "Region": "EU"
   },
   {
+    "ID": "craftman_96_alex 1",
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7779,
     "InfoPort": 7780,
     "Region": "EU"
   },  
   {
+    "ID": "craftman_96_alex 2",
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7781,
     "InfoPort": 7782,
     "Region": "EU"
   },
   {
+    "ID": "craftman_96_alex 3",
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7783,
     "InfoPort": 7784,
     "Region": "EU"
   },
   {
+    "ID": "icebreakr. 0",
     "ServerAddress": "violence.ddns.net",
+    "InfoPort": 7778,
     "Hidden": true
   },
   {
+    "ID": "icebreakr. 1",
     "ServerAddress": "violence.ddns.net",
     "Port": 7778,
     "InfoPort": 7779,
     "Hidden": true
   },
   {
+    "ID": "icebreakr. 2",
     "ServerAddress": "violence.ddns.net",
     "Port": 7779,
     "InfoPort": 7780,
     "Hidden": true
   },
   {
+    "ID": "vivigar 0",
     "ServerAddress": "aegiworks.com",
     "Hidden": true
   },
   {
+    "ID": "akoot_ 0",
     "ServerAddress": "blr.akoot.me",
     "Hidden": true
   },
   {
+    "ID": "ike753z 0",
     "ServerAddress": "blr.753z.net",
     "Hidden": true
   }
