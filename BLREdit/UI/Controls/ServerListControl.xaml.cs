@@ -5,6 +5,7 @@ using PeNet.Header.Resource;
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,14 +53,17 @@ public partial class ServerListControl : UserControl
     {
         if (CollectionViewSource.GetDefaultView(ServerListView.Items) is CollectionView view)
         {
-            view.Filter += new Predicate<object>((o) => 
-                { 
-                    if (o is BLRServer server && (DataStorage.Settings.ShowHiddenServers.Is || !server.Hidden || server.IsOnline.Is)) 
-                    { return true; } 
-                    else 
-                    { return false; } 
-                }
-                );
+            view.Filter += new Predicate<object>(ServerFilter.Instance.FullFilter);
+        }
+        ApplySorting();
+    }
+
+    public void ApplySorting()
+    {
+        if (CollectionViewSource.GetDefaultView(ServerListView.ItemsSource) is CollectionView view)
+        {
+            view.SortDescriptions.Clear();
+            view.SortDescriptions.Add(new SortDescription("PlayerCount", ListSortDirection.Descending));
         }
     }
 
@@ -126,5 +130,10 @@ public partial class ServerListControl : UserControl
         {
             LoggingSystem.MessageLog($"Unable to find suitable server!\ntry again later or manually connect to one from the server list!", "Info"); //TODO: Add Localization
         }
+    }
+
+    private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
+        ApplySorting();
     }
 }
