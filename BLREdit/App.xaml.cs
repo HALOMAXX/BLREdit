@@ -663,30 +663,32 @@ public partial class App : System.Windows.Application
             {
                 if (!DownloadLinks.ContainsKey(assetZip)) { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
             }
-
-            if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name))
+            if (release.Version > CurrentVersionNumber)
             {
-                if (DownloadLinks.ContainsKey(jsonZip)) { jso = true; } else { DownloadLinks.Add(jsonZip, asset.BrowserDownloadURL); jso = true; }
-            }
+                if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name))
+                {
+                    if (DownloadLinks.ContainsKey(jsonZip)) { jso = true; } else { DownloadLinks.Add(jsonZip, asset.BrowserDownloadURL); jso = true; }
+                }
 
-            if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(dllsZip.Info.Name))
-            {
-                if (DownloadLinks.ContainsKey(dllsZip)) { dll = true; } else { DownloadLinks.Add(dllsZip, asset.BrowserDownloadURL); dll = true; }
-            }
+                if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(dllsZip.Info.Name))
+                {
+                    if (DownloadLinks.ContainsKey(dllsZip)) { dll = true; } else { DownloadLinks.Add(dllsZip, asset.BrowserDownloadURL); dll = true; }
+                }
 
-            if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(texturesZip.Info.Name))
-            {
-                if (DownloadLinks.ContainsKey(texturesZip)) { tex = true; } else { DownloadLinks.Add(texturesZip, asset.BrowserDownloadURL); tex = true; }
-            }
+                if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(texturesZip.Info.Name))
+                {
+                    if (DownloadLinks.ContainsKey(texturesZip)) { tex = true; } else { DownloadLinks.Add(texturesZip, asset.BrowserDownloadURL); tex = true; }
+                }
 
-            if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(crosshairsZip.Info.Name))
-            {
-                if (DownloadLinks.ContainsKey(crosshairsZip)) { cro = true; } else { DownloadLinks.Add(crosshairsZip, asset.BrowserDownloadURL); cro = true; }
-            }
+                if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(crosshairsZip.Info.Name))
+                {
+                    if (DownloadLinks.ContainsKey(crosshairsZip)) { cro = true; } else { DownloadLinks.Add(crosshairsZip, asset.BrowserDownloadURL); cro = true; }
+                }
 
-            if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(patchesZip.Info.Name))
-            {
-                if (DownloadLinks.ContainsKey(patchesZip)) { pat = true; } else { DownloadLinks.Add(patchesZip, asset.BrowserDownloadURL); pat = true; }
+                if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(patchesZip.Info.Name))
+                {
+                    if (DownloadLinks.ContainsKey(patchesZip)) { pat = true; } else { DownloadLinks.Add(patchesZip, asset.BrowserDownloadURL); pat = true; }
+                }
             }
         }
 
@@ -726,7 +728,6 @@ public partial class App : System.Windows.Application
 
             foreach (var release in releases)
             {
-                if (release.Version < CurrentVersionNumber) break;
                 if (AddAssets(release)) { assetFolderMissing = true; break; }
             }
 

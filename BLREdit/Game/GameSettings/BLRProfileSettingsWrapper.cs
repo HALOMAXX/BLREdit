@@ -20,7 +20,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     static readonly BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json") ?? Array.Empty<BLRProfileSettings>();
 
     public Dictionary<int, BLRProfileSettings> Settings { get; } = new();
-    public BLRKeyBindings KeyBindings { get; set; }
+    //public BLRKeyBindings KeyBindings { get; set; }
     public string ProfileName { get; set; }
 
     public static Dictionary<string?, PropertyInfo> SettingPropertiesString { get; } = GetSettingsProperties();
@@ -53,10 +53,10 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
             if (setting.ProfileSetting is null) continue;
             Settings.Add(setting.ProfileSetting.PropertyId, setting);
         }
-        KeyBindings ??= new();
+        //KeyBindings ??= new();
     }
 
-    public BLRProfileSettingsWrapper(string ProfileName, BLRProfileSettings[]? Settings, BLRKeyBindings? KeyBindings)
+    public BLRProfileSettingsWrapper(string ProfileName, BLRProfileSettings[]? Settings)
     {
         foreach (var setting in Settings ?? defaultProfile)
         {
@@ -64,10 +64,10 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
             this.Settings.Add(setting.ProfileSetting.PropertyId, setting);
         }
 
-        KeyBindings ??= new();
+        //KeyBindings ??= new();
 
         this.ProfileName = ProfileName;
-        this.KeyBindings = KeyBindings;
+        //this.KeyBindings = KeyBindings;
     }
 
     public void UpdateFromFile(BLRProfileSettings[] settings)

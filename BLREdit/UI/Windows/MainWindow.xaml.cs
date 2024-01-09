@@ -873,15 +873,12 @@ public sealed partial class MainWindow : Window
                     lcontrol.ApplyBorder();
                 }
             }
-
-            //MainWindowView.SetBorderColor(lastLoadoutBorder, MainWindowView.DefaultBorderColor);
             switch (control.SelectedIndex)
             {
                 case 0:
                     ImportSystem.UpdateArmorImages(MainView.Profile.BLR.IsFemale);
                     break;
             }
-            //MainWindowView.SetBorderColor(lastLoadoutBorder, MainWindowView.ActiveBorderColor);
         }
         BlockChangeNotif = false;
     }
@@ -921,26 +918,7 @@ public sealed partial class MainWindow : Window
 
         #region Frontend Init
         Instance = this;
-        MainView.IsPlayerProfileChanging = true;
-        MainView.IsPlayerNameChanging = true;
 
-        if (DataStorage.Loadouts.Count >= DataStorage.Settings.CurrentlyAppliedLoadout)
-        {
-            MainView.Profile = DataStorage.Loadouts[DataStorage.Settings.CurrentlyAppliedLoadout];
-        }
-        else
-        {
-            MainView.Profile = DataStorage.Loadouts.FirstOrDefault();
-        }
-        //PlayerNameTextBox.Text = MainView.Profile.Shareable.Name;
-        //ProfileComboBox.ItemsSource = DataStorage.ShareableProfiles;
-
-        MainView.IsPlayerProfileChanging = false;
-        MainView.IsPlayerNameChanging = false;
-
-        
-
-        //MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)((LoadoutControl)((TabItem)LoadoutTabs.Items[0]).Content).Content).Children[0]).Items[0]).Content).Content).Children[0]).Receiver;
         MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)(Loadout1.Content)).Children[0]).Items[0]).Content).Content).Children[0]).Receiver;
         ItemFilters.Instance.WeaponFilter = MainView.Profile.BLR.Primary;
 

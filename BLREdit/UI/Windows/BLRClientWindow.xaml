@@ -29,7 +29,7 @@
                             <DataTemplate>
                                 <Grid Background="White">
                                     <Grid Name="ImageGrid" VerticalAlignment="Top" Width="600" Height="300" Background="Transparent">
-                                        <Image Source="{Binding Path=Image, IsAsync=True}" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                                        <Image Source="{Binding Path=Image}" VerticalAlignment="Center" Stretch="UniformToFill"/>
                                     </Grid>
                                     <Border BorderThickness="0,1,0,0" Background="Transparent" Margin="0,300,0,0" Height="100">
                                         <Grid Name="DescriptionGrid" Width="600">

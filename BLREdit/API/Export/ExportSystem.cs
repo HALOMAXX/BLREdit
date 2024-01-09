@@ -187,7 +187,7 @@ public sealed class ExportSystem
             else
             {
                 LoggingSystem.Log($"[ProfileSettings]({profileName}): creating new profile");
-                var newProfile = new BLRProfileSettingsWrapper(profileName, null, null);
+                var newProfile = new BLRProfileSettingsWrapper(profileName, null);
                 DataStorage.ProfileSettings.Add(profileName, newProfile);
                 return newProfile;
             }

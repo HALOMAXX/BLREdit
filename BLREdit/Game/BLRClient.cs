@@ -160,9 +160,9 @@ public sealed class BLRClient : INotifyPropertyChanged
                 var name = data[data.Length - 1].Substring(17);
 
                 var onlineProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{dir}\\UE3_online_profile.json");
-                var keyBinds = IOResources.DeserializeFile<BLRKeyBindings>($"{dir}\\keybinding.json");
+                //var keyBinds = IOResources.DeserializeFile<BLRKeyBindings>($"{dir}\\keybinding.json");
 
-                var profile = new BLRProfileSettingsWrapper(name, onlineProfile, keyBinds);
+                var profile = new BLRProfileSettingsWrapper(name, onlineProfile);
                 dict.Add(name, profile);
             }
         }
@@ -191,7 +191,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             ProfileSettings.Add(profileSettings.ProfileName, profileSettings);
         }
         IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\UE3_online_profile.json", profileSettings.Settings.Values.ToArray());
-        IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\keybinding.json", profileSettings.KeyBindings);
+        //IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\keybinding.json", profileSettings.KeyBindings);
     }
 
     public void ApplyConfigs()

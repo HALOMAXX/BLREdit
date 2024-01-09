@@ -28,7 +28,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private string windowTitle = "";
     public string WindowTitle { get { return windowTitle; } set { windowTitle = value; OnPropertyChanged(); } }
 
-    private BLRLoadoutStorage profile = DataStorage.Loadouts.FirstOrDefault();
+    private BLRLoadoutStorage profile = GetLoadout();
     public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; DataStorage.Settings.CurrentlyAppliedLoadout = DataStorage.Loadouts.IndexOf(value); profile.Shareable.LastViewed = DateTime.Now; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
 
 #pragma warning disable CA1822 // Mark members as static
@@ -43,7 +43,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
 
     public Color LastSelectedBorderColor = Color.FromArgb(14, 158, 158, 158);
 
-    
+
     public Border? LastSelectedItemBorder { get { return lastSelectedItemBorder; } set { ResetLastBorder(); SetNewBorder(value); } }
     private Border? lastSelectedItemBorder;
     private BindingExpression? lastBindingExpression;
@@ -72,7 +72,28 @@ public sealed class MainWindowView : INotifyPropertyChanged
         profile.BLR.PropertyChanged += LoadoutChangedRelay;
     }
 
-    void LoadoutChangedRelay(object sender, PropertyChangedEventArgs e)
+    static BLRLoadoutStorage GetLoadout()
+    {
+        if (DataStorage.Loadouts.Count <= 0)
+        {
+            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout1.ConvertToShareable()));
+            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout2.ConvertToShareable()));
+            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout3.ConvertToShareable()));
+            string message = string.Empty;
+            DataStorage.Loadouts[0].BLR.Name = "Default Loadout 1";
+            DataStorage.Loadouts[0].BLR.Apply = DataStorage.Loadouts[0].BLR.ValidateLoadout(ref message);
+            DataStorage.Loadouts[1].BLR.Name = "Default Loadout 2";
+            DataStorage.Loadouts[1].BLR.Apply = DataStorage.Loadouts[1].BLR.ValidateLoadout(ref message);
+            DataStorage.Loadouts[2].BLR.Name = "Default Loadout 3";
+            DataStorage.Loadouts[2].BLR.Apply = DataStorage.Loadouts[2].BLR.ValidateLoadout(ref message);
+        }
+
+        var loadout = DataStorage.Loadouts[DataStorage.Loadouts.Count > DataStorage.Settings.CurrentlyAppliedLoadout ? DataStorage.Settings.CurrentlyAppliedLoadout : 0];
+        loadout.BLR.PropertyChanged += LoadoutChangedRelay;
+        return loadout;
+    }
+
+    static void LoadoutChangedRelay(object sender, PropertyChangedEventArgs e)
     {
         if (MainWindow.Instance is null) return;
         MainWindow.Instance.LoadoutChanged(sender, e);

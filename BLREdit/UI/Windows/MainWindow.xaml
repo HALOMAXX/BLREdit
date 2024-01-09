@@ -76,9 +76,6 @@
 
             <TabItem Name="ProfileSettingsTab" Header="Game Settings" DataContext="{Binding Path=BLRESettings.ProfileSettings}">
                 <TabControl BorderThickness="0,1,0,0">
-                    <TabItem Header="Key Binds">
-                        <ui:KeyBindControl/>
-                    </TabItem>
                     <TabItem Header="Audio">
                         <ui:AudioSettingsControl/>
                     </TabItem>

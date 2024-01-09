@@ -213,7 +213,7 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         Array.Copy(Taunts, taunts, Taunts.Length);
         Array.Copy(Depot, depot, Depot.Length);
 
-        return new ShareableLoadout(null) 
+        return new ShareableLoadout() 
         {
             Primary = Primary.ConvertToShareable(),
             Secondary = Secondary.ConvertToShareable(),
