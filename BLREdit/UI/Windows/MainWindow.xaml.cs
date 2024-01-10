@@ -588,20 +588,15 @@ public sealed partial class MainWindow : Window
     {
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
+        string message = string.Empty;
         List<LMLoadout> loadouts = new();
 
-        string message = string.Empty;
+        var exportLoadouts = DataStorage.Loadouts.Where(l => l.BLR.ValidateLoadout(ref message)).Where(l => l.BLR.Apply).OrderBy(l => l.BLR.Name);
 
-        foreach (var profile in DataStorage.Loadouts)
+        foreach (var profile in exportLoadouts)
         {
-            if (profile.BLR.Apply && profile.BLR.ValidateLoadout(ref message))
-            { 
-                loadouts.Add(new LMLoadout(profile.BLR, profile.BLR.Name));
-                profile.Shareable.LastApplied = DateTime.Now;
-                profile.BLR.IsChanged = false;
-            }
-            else
-            { profile.BLR.Apply = false; }
+            loadouts.Add(new(profile.BLR, profile.BLR.Name));
+            profile.Shareable.LastApplied = DateTime.Now;
         }
 
         IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
