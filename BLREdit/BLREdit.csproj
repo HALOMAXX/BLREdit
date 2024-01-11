@@ -32,11 +32,15 @@
 	    <!--<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
 	  </PackageReference>
 	  <PackageReference Include="Gameloop.Vdf" Version="0.6.2" />
-	  <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
-	  <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.26.0" />
-	  <PackageReference Include="PeNet" Version="3.0.0" />
+	  <PackageReference Include="GitInfo" Version="3.3.3">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="HtmlAgilityPack" Version="1.11.57" />
+	  <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.2.0" />
+	  <PackageReference Include="PeNet" Version="4.0.4" />
 	  <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-	  <PackageReference Include="System.Text.Json" Version="7.0.1" />
+	  <PackageReference Include="System.Text.Json" Version="8.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -961,15 +961,16 @@ public partial class App : System.Windows.Application
 
     private static async Task<RepositoryProxyModule[]?> GetAvailableProxyModules()
     {
-        LoggingSystem.Log("Downloading AvailableProxyModule List!");
+        LoggingSystem.Log($"Downloading AvailableProxyModule List!");
 #if DEBUG
         var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(File.ReadAllText("../../../../Resources/ProxyModules.json"));
         LoggingSystem.Log("Loaded AvailableProxyModule from local file!");
         return moduleList;
+        //TODO: make the branch dynamic
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, {ThisAssembly.Git.Branch}, "Resources/ProxyModules.json") is GitHubFile file)
             {
                 var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
@@ -992,7 +993,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/Localizations.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, {ThisAssembly.Git.Branch}, "Resources/Localizations.json") is GitHubFile file)
             {
                 var localizations = IOResources.Deserialize<Dictionary<string, string>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableLocalization List!");
@@ -1016,7 +1017,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ServerList.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, {ThisAssembly.Git.Branch}, "Resources/ServerList.json") is GitHubFile file)
             {
                 var serverList = IOResources.Deserialize<List<BLRServer>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading Server List!");
