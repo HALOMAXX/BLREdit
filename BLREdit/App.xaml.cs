@@ -30,9 +30,14 @@ namespace BLREdit;
 public partial class App : System.Windows.Application
 {
     public static readonly BLREditVersion CurrentVersion = new($"v0.12.2");
+    public static string RepositoryBaseURL { get; } = new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray());
+    public static string CurrentOwner { get; } = RepositoryBaseURL.Split('/').Reverse().Skip(1).First();
+    public static string CurrentRepo { get; } = RepositoryBaseURL.Split('/').Last();
+
     public const string CurrentVersionTitle = "Fixes";
-    public const string CurrentOwner = "HALOMAXX";
-    public const string CurrentRepo = "BLREdit";
+
+
+    
     
 
     public static bool IsNewVersionAvailable { get; private set; } = false;
@@ -1140,7 +1145,7 @@ public partial class App : System.Windows.Application
     private static void DownloadLocale(string locale)
     {
         string targetZip = $"downloads\\localizations\\{locale}.zip";
-        if (WebResources.DownloadFile($"https://github.com/{CurrentOwner}/{CurrentRepo}/raw/master/Resources/Localizations/{locale}.zip", targetZip))
+        if (WebResources.DownloadFile($"{RepositoryBaseURL}/raw/{ThisAssembly.Git.Branch}/Resources/Localizations/{locale}.zip", targetZip))
         {
             if (Directory.Exists(locale)) { Directory.Delete(locale, true); Directory.CreateDirectory(locale); }
             ZipFile.ExtractToDirectory(targetZip, $"{locale}");

@@ -931,7 +931,7 @@ public sealed partial class MainWindow : Window
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && DataStorage.Settings.ShowUpdateNotice.Is)
         {
-            Process.Start($"https://github.com/{App.CurrentOwner}/{App.CurrentRepo}/releases");
+            Process.Start($"{App.RepositoryBaseURL}/releases");
         }
         if (DataStorage.Settings.DoRuntimeCheck.Is || DataStorage.Settings.ForceRuntimeCheck.Is)
         {
