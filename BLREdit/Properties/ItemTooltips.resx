@@ -521,7 +521,7 @@ A Modified Frag Grenade with custom Heart Candy HRV display modifications.
     <comment>avatars</comment>
   </data>
   <data name="000000" xml:space="preserve">
-    <value />
+    <value>No Avatar</value>
     <comment>avatars</comment>
   </data>
   <data name="046000" xml:space="preserve">
@@ -741,99 +741,99 @@ A Modified Frag Grenade with custom Heart Candy HRV display modifications.
     <comment>badges</comment>
   </data>
   <data name="000300" xml:space="preserve">
-    <value />
+    <value>Bow</value>
     <comment>emotes</comment>
   </data>
   <data name="000301" xml:space="preserve">
-    <value />
+    <value>Caution</value>
     <comment>emotes</comment>
   </data>
   <data name="000302" xml:space="preserve">
-    <value />
+    <value>Clap</value>
     <comment>emotes</comment>
   </data>
   <data name="000303" xml:space="preserve">
-    <value />
+    <value>Crane</value>
     <comment>emotes</comment>
   </data>
   <data name="000304" xml:space="preserve">
-    <value />
+    <value>Salute</value>
     <comment>emotes</comment>
   </data>
   <data name="000305" xml:space="preserve">
-    <value />
+    <value>Robot Dance</value>
     <comment>emotes</comment>
   </data>
   <data name="000306" xml:space="preserve">
-    <value />
+    <value>TeaBag</value>
     <comment>emotes</comment>
   </data>
   <data name="000307" xml:space="preserve">
-    <value />
+    <value>Roar</value>
     <comment>emotes</comment>
   </data>
   <data name="000308" xml:space="preserve">
-    <value />
+    <value>Flex</value>
     <comment>emotes</comment>
   </data>
   <data name="000309" xml:space="preserve">
-    <value />
+    <value>The Kneebow</value>
     <comment>emotes</comment>
   </data>
   <data name="000310" xml:space="preserve">
-    <value />
+    <value>Fancy Bow</value>
     <comment>emotes</comment>
   </data>
   <data name="000311" xml:space="preserve">
-    <value />
+    <value>Bring It</value>
     <comment>emotes</comment>
   </data>
   <data name="000312" xml:space="preserve">
-    <value />
+    <value>Gun Wave</value>
     <comment>emotes</comment>
   </data>
   <data name="000313" xml:space="preserve">
-    <value />
+    <value>Muahaha</value>
     <comment>emotes</comment>
   </data>
   <data name="000314" xml:space="preserve">
-    <value />
+    <value>Posed Point</value>
     <comment>emotes</comment>
   </data>
   <data name="000315" xml:space="preserve">
-    <value />
+    <value>Kiss</value>
     <comment>emotes</comment>
   </data>
   <data name="000316" xml:space="preserve">
-    <value />
+    <value>Ground Pound</value>
     <comment>emotes</comment>
   </data>
   <data name="000317" xml:space="preserve">
-    <value />
+    <value>Rock</value>
     <comment>emotes</comment>
   </data>
   <data name="000318" xml:space="preserve">
-    <value />
+    <value>Paper</value>
     <comment>emotes</comment>
   </data>
   <data name="000319" xml:space="preserve">
-    <value />
+    <value>Flash Point</value>
     <comment>emotes</comment>
   </data>
   <data name="000320" xml:space="preserve">
-    <value />
+    <value>Suck it</value>
     <comment>emotes</comment>
   </data>
   <data name="000321" xml:space="preserve">
-    <value />
+    <value>Rocket Fist</value>
     <comment>emotes</comment>
   </data>
   <data name="000322" xml:space="preserve">
-    <value />
+    <value>Step Off</value>
     <comment>emotes</comment>
   </data>
   <data name="000323" xml:space="preserve">
-    <value />
+    <value>Flight</value>
     <comment>emotes</comment>
   </data>
   <data name="000324" xml:space="preserve">
@@ -841,99 +841,99 @@ A Modified Frag Grenade with custom Heart Candy HRV display modifications.
     <comment>emotes</comment>
   </data>
   <data name="000325" xml:space="preserve">
-    <value />
+    <value>Bow Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000326" xml:space="preserve">
-    <value />
+    <value>Caution Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000327" xml:space="preserve">
-    <value />
+    <value>Clap Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000328" xml:space="preserve">
-    <value />
+    <value>Crane Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000329" xml:space="preserve">
-    <value />
+    <value>Salute Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000330" xml:space="preserve">
-    <value />
+    <value>TeaBag Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000331" xml:space="preserve">
-    <value />
+    <value>Roar Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000332" xml:space="preserve">
-    <value />
+    <value>Robot Dance Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000333" xml:space="preserve">
-    <value />
+    <value>Flex Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000334" xml:space="preserve">
-    <value />
+    <value>The Kneebow Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000335" xml:space="preserve">
-    <value />
+    <value>Fancy Bow Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000336" xml:space="preserve">
-    <value />
+    <value>Bring it Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000337" xml:space="preserve">
-    <value />
+    <value>Gun Wave Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000338" xml:space="preserve">
-    <value />
+    <value>Muahaha Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000339" xml:space="preserve">
-    <value />
+    <value>Posed Point Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000340" xml:space="preserve">
-    <value />
+    <value>Kiss Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000341" xml:space="preserve">
-    <value />
+    <value>Ground Pound Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000342" xml:space="preserve">
-    <value />
+    <value>Rock Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000343" xml:space="preserve">
-    <value />
+    <value>Paper Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000344" xml:space="preserve">
-    <value />
+    <value>Scissors Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000345" xml:space="preserve">
-    <value />
+    <value>Suck it Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000346" xml:space="preserve">
-    <value />
+    <value>Rocket Fist Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000347" xml:space="preserve">
-    <value />
+    <value>Step Off Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000348" xml:space="preserve">
-    <value />
+    <value>Flight Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000349" xml:space="preserve">
@@ -941,51 +941,51 @@ A Modified Frag Grenade with custom Heart Candy HRV display modifications.
     <comment>emotes</comment>
   </data>
   <data name="000350" xml:space="preserve">
-    <value />
+    <value>Go</value>
     <comment>emotes</comment>
   </data>
   <data name="000351" xml:space="preserve">
-    <value />
+    <value>Pump</value>
     <comment>emotes</comment>
   </data>
   <data name="000352" xml:space="preserve">
-    <value />
+    <value>Cut It</value>
     <comment>emotes</comment>
   </data>
   <data name="000353" xml:space="preserve">
-    <value />
+    <value>Throat Slit</value>
     <comment>emotes</comment>
   </data>
   <data name="000354" xml:space="preserve">
-    <value />
+    <value>Thumbs Down</value>
     <comment>emotes</comment>
   </data>
   <data name="000355" xml:space="preserve">
-    <value />
+    <value>Thumbs Up</value>
     <comment>emotes</comment>
   </data>
   <data name="000356" xml:space="preserve">
-    <value />
+    <value>A-OK</value>
     <comment>emotes</comment>
   </data>
   <data name="000357" xml:space="preserve">
-    <value />
+    <value>Metal</value>
     <comment>emotes</comment>
   </data>
   <data name="000358" xml:space="preserve">
-    <value />
+    <value>Point</value>
     <comment>emotes</comment>
   </data>
   <data name="000359" xml:space="preserve">
-    <value />
+    <value>Rainbow</value>
     <comment>emotes</comment>
   </data>
   <data name="000360" xml:space="preserve">
-    <value />
+    <value>Wag</value>
     <comment>emotes</comment>
   </data>
   <data name="000361" xml:space="preserve">
-    <value />
+    <value>Hush</value>
     <comment>emotes</comment>
   </data>
   <data name="000362" xml:space="preserve">
@@ -997,23 +997,23 @@ A Modified Frag Grenade with custom Heart Candy HRV display modifications.
     <comment>emotes</comment>
   </data>
   <data name="000364" xml:space="preserve">
-    <value />
+    <value>Airplane</value>
     <comment>emotes</comment>
   </data>
   <data name="000365" xml:space="preserve">
-    <value />
+    <value>Gun Pump</value>
     <comment>emotes</comment>
   </data>
   <data name="000366" xml:space="preserve">
-    <value />
+    <value>Up Yours</value>
     <comment>emotes</comment>
   </data>
   <data name="000367" xml:space="preserve">
-    <value />
+    <value>Shhh</value>
     <comment>emotes</comment>
   </data>
   <data name="000368" xml:space="preserve">
-    <value />
+    <value>Veteran War Mask</value>
     <comment>emotes</comment>
   </data>
   <data name="000369" xml:space="preserve">
@@ -1025,11 +1025,11 @@ A Modified Frag Grenade with custom Heart Candy HRV display modifications.
     <comment>emotes</comment>
   </data>
   <data name="000371" xml:space="preserve">
-    <value />
+    <value>Giddy Up</value>
     <comment>emotes</comment>
   </data>
   <data name="000372" xml:space="preserve">
-    <value />
+    <value>Hip Shimmy</value>
     <comment>emotes</comment>
   </data>
   <data name="000373" xml:space="preserve">
@@ -1041,227 +1041,227 @@ A Modified Frag Grenade with custom Heart Candy HRV display modifications.
     <comment>emotes</comment>
   </data>
   <data name="000375" xml:space="preserve">
-    <value />
+    <value>Go Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000376" xml:space="preserve">
-    <value />
+    <value>Pump Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000377" xml:space="preserve">
-    <value />
+    <value>Cut It Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000378" xml:space="preserve">
-    <value />
+    <value>Throat Slit Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000379" xml:space="preserve">
-    <value />
+    <value>Thumbs Down Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000380" xml:space="preserve">
-    <value />
+    <value>Thumbs Up Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000381" xml:space="preserve">
-    <value />
+    <value>A-OK Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000382" xml:space="preserve">
-    <value />
+    <value>Metal Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000383" xml:space="preserve">
-    <value />
+    <value>Point Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000384" xml:space="preserve">
-    <value />
+    <value>Rainbow Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000385" xml:space="preserve">
-    <value />
+    <value>Wag Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000386" xml:space="preserve">
-    <value />
+    <value>Uppercut Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000387" xml:space="preserve">
-    <value />
+    <value>Crane Kick Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000388" xml:space="preserve">
-    <value />
+    <value>Camera Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000389" xml:space="preserve">
-    <value />
+    <value>Hush Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000390" xml:space="preserve">
-    <value />
+    <value>Troll Face</value>
     <comment>emotes</comment>
   </data>
   <data name="000391" xml:space="preserve">
-    <value />
+    <value>Airplane Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000392" xml:space="preserve">
-    <value />
+    <value>Gun Pump Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000393" xml:space="preserve">
-    <value />
+    <value>Up Yours Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000394" xml:space="preserve">
-    <value />
+    <value>Shhh Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000395" xml:space="preserve">
-    <value />
+    <value>War Dog</value>
     <comment>emotes</comment>
   </data>
   <data name="000396" xml:space="preserve">
-    <value />
+    <value>Lasso</value>
     <comment>emotes</comment>
   </data>
   <data name="000397" xml:space="preserve">
-    <value />
+    <value>Classy Salute</value>
     <comment>emotes</comment>
   </data>
   <data name="000398" xml:space="preserve">
-    <value />
+    <value>Metal Skull</value>
     <comment>emotes</comment>
   </data>
   <data name="000399" xml:space="preserve">
-    <value />
+    <value>Sad Panda</value>
     <comment>emotes</comment>
   </data>
   <data name="000400" xml:space="preserve">
-    <value />
+    <value>Shrug and Laugh</value>
     <comment>emotes</comment>
   </data>
   <data name="000401" xml:space="preserve">
-    <value />
+    <value>Die die die!</value>
     <comment>emotes</comment>
   </data>
   <data name="000402" xml:space="preserve">
-    <value />
+    <value>Loser</value>
     <comment>emotes</comment>
   </data>
   <data name="000403" xml:space="preserve">
-    <value />
+    <value>Broken Heart</value>
     <comment>emotes</comment>
   </data>
   <data name="000404" xml:space="preserve">
-    <value />
+    <value>Hahaha</value>
     <comment>emotes</comment>
   </data>
   <data name="000405" xml:space="preserve">
-    <value />
+    <value>Pelvic Thrust</value>
     <comment>emotes</comment>
   </data>
   <data name="000406" xml:space="preserve">
-    <value />
+    <value>Super Charge</value>
     <comment>emotes</comment>
   </data>
   <data name="000407" xml:space="preserve">
-    <value />
+    <value>Tea-time Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000408" xml:space="preserve">
-    <value />
+    <value>Exclamation Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000409" xml:space="preserve">
-    <value />
+    <value>Chicken Dance</value>
     <comment>emotes</comment>
   </data>
   <data name="000410" xml:space="preserve">
-    <value />
+    <value>Captain Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000411" xml:space="preserve">
-    <value />
+    <value>Backflip</value>
     <comment>emotes</comment>
   </data>
   <data name="000412" xml:space="preserve">
-    <value />
+    <value>Party Thrust</value>
     <comment>emotes</comment>
   </data>
   <data name="000413" xml:space="preserve">
-    <value />
+    <value>Pumpkin Head Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000414" xml:space="preserve">
-    <value />
+    <value>Pumpking Laugh Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000415" xml:space="preserve">
-    <value />
+    <value>Skull Mask Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000416" xml:space="preserve">
-    <value />
+    <value>Devil Laugh Digital</value>
     <comment>emotes</comment>
   </data>
   <data name="000417" xml:space="preserve">
-    <value />
+    <value>Head Bop</value>
     <comment>emotes</comment>
   </data>
   <data name="000418" xml:space="preserve">
-    <value />
+    <value>Dust Off</value>
     <comment>emotes</comment>
   </data>
   <data name="000319" xml:space="preserve">
-    <value />
+    <value>Flash Point</value>
     <comment>emotes</comment>
   </data>
   <data name="000420" xml:space="preserve">
-    <value />
+    <value>Fireworks</value>
     <comment>emotes</comment>
   </data>
   <data name="000421" xml:space="preserve">
-    <value />
+    <value>Snowball Juggle</value>
     <comment>emotes</comment>
   </data>
   <data name="000422" xml:space="preserve">
-    <value />
+    <value>Unusal Dance</value>
     <comment>emotes</comment>
   </data>
   <data name="000423" xml:space="preserve">
-    <value />
+    <value>Creepy Thrust</value>
     <comment>emotes</comment>
   </data>
   <data name="000424" xml:space="preserve">
-    <value />
+    <value>Bell Kick</value>
     <comment>emotes</comment>
   </data>
   <data name="000425" xml:space="preserve">
-    <value />
+    <value>Irish Jig</value>
     <comment>emotes</comment>
   </data>
   <data name="000426" xml:space="preserve">
-    <value />
+    <value>Punch Wind</value>
     <comment>emotes</comment>
   </data>
   <data name="000427" xml:space="preserve">
-    <value />
+    <value>Punch Earth</value>
     <comment>emotes</comment>
   </data>
   <data name="000428" xml:space="preserve">
-    <value />
+    <value>Punch Fire</value>
     <comment>emotes</comment>
   </data>
   <data name="000429" xml:space="preserve">
-    <value />
+    <value>Punch Water</value>
     <comment>emotes</comment>
   </data>
   <data name="000430" xml:space="preserve">
-    <value />
+    <value>Punch Heart</value>
     <comment>emotes</comment>
   </data>
   <data name="005000" xml:space="preserve">
@@ -2690,331 +2690,331 @@ No stat modifications. An all-around balanced barrel.</value>
     <comment>barrels</comment>
   </data>
   <data name="630100" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Standard Issue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630101" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Dust Digital</value>
     <comment>camosBody</comment>
   </data>
   <data name="630102" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rockwall</value>
     <comment>camosBody</comment>
   </data>
   <data name="630103" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Sandstorm</value>
     <comment>camosBody</comment>
   </data>
   <data name="630104" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Red</value>
     <comment>camosBody</comment>
   </data>
   <data name="630105" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Digital</value>
     <comment>camosBody</comment>
   </data>
   <data name="630106" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Dust Gray</value>
     <comment>camosBody</comment>
   </data>
   <data name="630107" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hillside Brown</value>
     <comment>camosBody</comment>
   </data>
   <data name="630108" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Brown Tiger</value>
     <comment>camosBody</comment>
   </data>
   <data name="630109" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Ragnarok</value>
     <comment>camosBody</comment>
   </data>
   <data name="630110" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mud Flare</value>
     <comment>camosBody</comment>
   </data>
   <data name="630111" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Dust</value>
     <comment>camosBody</comment>
   </data>
   <data name="630112" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Red Leopard</value>
     <comment>camosBody</comment>
   </data>
   <data name="630113" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Winter Rock</value>
     <comment>camosBody</comment>
   </data>
   <data name="630114" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digi Tundra</value>
     <comment>camosBody</comment>
   </data>
   <data name="630115" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Spotted Ground</value>
     <comment>camosBody</comment>
   </data>
   <data name="630116" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Dark Brown</value>
     <comment>camosBody</comment>
   </data>
   <data name="630117" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Gray Operation</value>
     <comment>camosBody</comment>
   </data>
   <data name="630118" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Orange Tiger</value>
     <comment>camosBody</comment>
   </data>
   <data name="630119" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hillside Operation</value>
     <comment>camosBody</comment>
   </data>
   <data name="630120" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Broken Rock</value>
     <comment>camosBody</comment>
   </data>
   <data name="630121" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Shadow</value>
     <comment>camosBody</comment>
   </data>
   <data name="630122" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Bloodsport</value>
     <comment>camosBody</comment>
   </data>
   <data name="630123" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Sahara</value>
     <comment>camosBody</comment>
   </data>
   <data name="630124" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Forest</value>
     <comment>camosBody</comment>
   </data>
   <data name="630125" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mountain Lion</value>
     <comment>camosBody</comment>
   </data>
   <data name="630126" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Ice Hex</value>
     <comment>camosBody</comment>
   </data>
   <data name="630127" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Winter</value>
     <comment>camosBody</comment>
   </data>
   <data name="630128" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Nest</value>
     <comment>camosBody</comment>
   </data>
   <data name="630129" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Tactical Infil</value>
     <comment>camosBody</comment>
   </data>
   <data name="630130" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Avalanche</value>
     <comment>camosBody</comment>
   </data>
   <data name="630131" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Olive</value>
     <comment>camosBody</comment>
   </data>
   <data name="630132" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Tactical Winter</value>
     <comment>camosBody</comment>
   </data>
   <data name="630133" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Wrath</value>
     <comment>camosBody</comment>
   </data>
   <data name="630134" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Drifter</value>
     <comment>camosBody</comment>
   </data>
   <data name="630135" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Ocean Fury</value>
     <comment>camosBody</comment>
   </data>
   <data name="630136" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Gray</value>
     <comment>camosBody</comment>
   </data>
   <data name="630137" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Marked Hunter</value>
     <comment>camosBody</comment>
   </data>
   <data name="630138" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Snow Leopard</value>
     <comment>camosBody</comment>
   </data>
   <data name="630139" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Forest Combat</value>
     <comment>camosBody</comment>
   </data>
   <data name="630140" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Seized</value>
     <comment>camosBody</comment>
   </data>
   <data name="630141" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Concrete Gray</value>
     <comment>camosBody</comment>
   </data>
   <data name="630142" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Green Plankton</value>
     <comment>camosBody</comment>
   </data>
   <data name="630143" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mountain Peak</value>
     <comment>camosBody</comment>
   </data>
   <data name="630144" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Gray Leaf</value>
     <comment>camosBody</comment>
   </data>
   <data name="630145" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Snowstorm</value>
     <comment>camosBody</comment>
   </data>
   <data name="630146" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Dark Gray</value>
     <comment>camosBody</comment>
   </data>
   <data name="630147" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Snowdrift</value>
     <comment>camosBody</comment>
   </data>
   <data name="630148" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Grassland Hex</value>
     <comment>camosBody</comment>
   </data>
   <data name="630149" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Hex</value>
     <comment>camosBody</comment>
   </data>
   <data name="630150" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Shattered Poles</value>
     <comment>camosBody</comment>
   </data>
   <data name="630151" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Bronze</value>
     <comment>camosBody</comment>
   </data>
   <data name="630152" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Silver</value>
     <comment>camosBody</comment>
   </data>
   <data name="630153" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Gold</value>
     <comment>camosBody</comment>
   </data>
   <data name="630154" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Pink</value>
     <comment>camosBody</comment>
   </data>
   <data name="630155" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Orange</value>
     <comment>camosBody</comment>
   </data>
   <data name="630156" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Cobalt Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630157" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Toxic Green</value>
     <comment>camosBody</comment>
   </data>
   <data name="630158" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Pink</value>
     <comment>camosBody</comment>
   </data>
   <data name="630159" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Orange</value>
     <comment>camosBody</comment>
   </data>
   <data name="630160" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Red</value>
     <comment>camosBody</comment>
   </data>
   <data name="630161" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Dark Red</value>
     <comment>camosBody</comment>
   </data>
   <data name="630162" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Baby Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630163" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Dark Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630164" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Black</value>
     <comment>camosBody</comment>
   </data>
   <data name="630165" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>White</value>
     <comment>camosBody</comment>
   </data>
   <data name="630166" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Dark Purple</value>
     <comment>camosBody</comment>
   </data>
   <data name="630167" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Green</value>
     <comment>camosBody</comment>
   </data>
   <data name="630168" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Yellow</value>
     <comment>camosBody</comment>
   </data>
   <data name="630169" xml:space="preserve">
-    <value>Zombie Studio Dev Camo</value>
+    <value>Super Secret</value>
     <comment>camosBody</comment>
   </data>
   <data name="630170" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>FPSGuru.com Partner Camo</value>
     <comment>camosBody</comment>
   </data>
   <data name="630171" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>IGN.com Partner Camo</value>
     <comment>camosBody</comment>
   </data>
   <data name="630172" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>MMOBomb.com Partner Camo</value>
     <comment>camosBody</comment>
   </data>
   <data name="630173" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Secret Silver</value>
     <comment>camosBody</comment>
   </data>
   <data name="630174" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Cash</value>
     <comment>camosBody</comment>
   </data>
   <data name="630175" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>The Benjamins</value>
     <comment>camosBody</comment>
   </data>
   <data name="630176" xml:space="preserve">
-    <value>Extra Life Charity is a weapon and armor camo that was available on October 25th, 2014 and obtained by donating $50 for charity to help sick kids. Free 7 day versions of them were given away prior that date.</value>
+    <value>Extra Life Charity</value>
     <comment>camosBody</comment>
   </data>
   <data name="630177" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>KBMOD.com Vintage</value>
     <comment>camosBody</comment>
   </data>
   <data name="630178" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
+    <value>Astro Graffiti Autumn</value>
     <comment>camosBody</comment>
   </data>
   <data name="630179" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
+    <value>Astro Graffiti</value>
     <comment>camosBody</comment>
   </data>
   <data name="630180" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
+    <value>Astro Graffiti Black</value>
     <comment>camosBody</comment>
   </data>
   <data name="630181" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Science</value>
     <comment>camosBody</comment>
   </data>
   <data name="630182" xml:space="preserve">
@@ -3022,943 +3022,943 @@ No stat modifications. An all-around balanced barrel.</value>
     <comment>camosBody</comment>
   </data>
   <data name="630183" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hardsuit Pilot Orange</value>
     <comment>camosBody</comment>
   </data>
   <data name="630184" xml:space="preserve">
-    <value>?</value>
+    <value>Hardsuit Pilot Yellow</value>
     <comment>camosBody</comment>
   </data>
   <data name="630185" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hardsuit Pilot Green</value>
     <comment>camosBody</comment>
   </data>
   <data name="630186" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hardsuit Pilot Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630187" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hardsuit Pilot Purple</value>
     <comment>camosBody</comment>
   </data>
   <data name="630188" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hardsuit Pilot Pink</value>
     <comment>camosBody</comment>
   </data>
   <data name="630189" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hardsuit Pilot White</value>
     <comment>camosBody</comment>
   </data>
   <data name="630190" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630191" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Yellow</value>
     <comment>camosBody</comment>
   </data>
   <data name="630192" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Emergency Relief</value>
     <comment>camosBody</comment>
   </data>
   <data name="630193" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Medic 2</value>
     <comment>camosBody</comment>
   </data>
   <data name="630194" xml:space="preserve">
-    <value>?</value>
+    <value>Vector</value>
     <comment>camosBody</comment>
   </data>
   <data name="630195" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Veteran</value>
     <comment>camosBody</comment>
   </data>
   <data name="630196" xml:space="preserve">
-    <value>Originally, this camo could only be obtained as an extra reward for buying the Blacklight T-Shirt.</value>
+    <value>Retribution Elite</value>
     <comment>camosBody</comment>
   </data>
   <data name="630197" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Tiger Elite</value>
     <comment>camosBody</comment>
   </data>
   <data name="630198" xml:space="preserve">
-    <value>Daylight is a promotional Camo Zombie Studios Released In 2014 For The Release Of The Game Daylight. Daylight was given to all players during this previous time.</value>
+    <value>Daylight</value>
     <comment>camosBody</comment>
   </data>
   <data name="630199" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Winter Operations</value>
     <comment>camosBody</comment>
   </data>
   <data name="630200" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Bearded Operations</value>
     <comment>camosBody</comment>
   </data>
   <data name="630201" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>BCL TourNament</value>
     <comment>camosBody</comment>
   </data>
   <data name="630202" xml:space="preserve">
-    <value>This camo can be won from the Valentines Day Lotto Box, available during the month of February.</value>
+    <value>XXOO</value>
     <comment>camosBody</comment>
   </data>
   <data name="630203" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Beta</value>
     <comment>camosBody</comment>
   </data>
   <data name="630204" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2012</value>
     <comment>camosBody</comment>
   </data>
   <data name="630205" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2013</value>
     <comment>camosBody</comment>
   </data>
   <data name="630206" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2014</value>
     <comment>camosBody</comment>
   </data>
   <data name="630207" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2015</value>
     <comment>camosBody</comment>
   </data>
   <data name="630208" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2016</value>
     <comment>camosBody</comment>
   </data>
   <data name="630209" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2017</value>
     <comment>camosBody</comment>
   </data>
   <data name="630210" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Candy Cane</value>
     <comment>camosBody</comment>
   </data>
   <data name="630211" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Gingerbread</value>
     <comment>camosBody</comment>
   </data>
   <data name="630212" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Green Wrapping Paper</value>
     <comment>camosBody</comment>
   </data>
   <data name="630213" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Red Wrapping Paper</value>
     <comment>camosBody</comment>
   </data>
   <data name="630214" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Snowflake</value>
     <comment>camosBody</comment>
   </data>
   <data name="630215" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Love Fool</value>
     <comment>camosBody</comment>
   </data>
   <data name="630216" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630217" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Green</value>
     <comment>camosBody</comment>
   </data>
   <data name="630218" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Pink</value>
     <comment>camosBody</comment>
   </data>
   <data name="630219" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Purple</value>
     <comment>camosBody</comment>
   </data>
   <data name="630220" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Yellow</value>
     <comment>camosBody</comment>
   </data>
   <data name="630221" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>KBMOD.com New</value>
     <comment>camosBody</comment>
   </data>
   <data name="630222" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>EBL Tourney</value>
     <comment>camosBody</comment>
   </data>
   <data name="630223" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Bloodmoney</value>
     <comment>camosBody</comment>
   </data>
   <data name="630224" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Bloodmoney 2</value>
     <comment>camosBody</comment>
   </data>
   <data name="630225" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Cracked Apple</value>
     <comment>camosBody</comment>
   </data>
   <data name="630226" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Cracked Apple Pink</value>
     <comment>camosBody</comment>
   </data>
   <data name="630227" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Cracked Apple Red</value>
     <comment>camosBody</comment>
   </data>
   <data name="630228" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digiplex</value>
     <comment>camosBody</comment>
   </data>
   <data name="630229" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digiplex 2</value>
     <comment>camosBody</comment>
   </data>
   <data name="630230" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Scatter</value>
     <comment>camosBody</comment>
   </data>
   <data name="630231" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Scatter Green</value>
     <comment>camosBody</comment>
   </data>
   <data name="630232" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Scatter Orange</value>
     <comment>camosBody</comment>
   </data>
   <data name="630233" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Fluffy Punk</value>
     <comment>camosBody</comment>
   </data>
   <data name="630234" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>GoFast</value>
     <comment>camosBody</comment>
   </data>
   <data name="630235" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Jagged Metallic</value>
     <comment>camosBody</comment>
   </data>
   <data name="630236" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Jagged Metallic Green</value>
     <comment>camosBody</comment>
   </data>
   <data name="630237" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Jagged Metallic Red</value>
     <comment>camosBody</comment>
   </data>
   <data name="630238" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Molten Shards</value>
     <comment>camosBody</comment>
   </data>
   <data name="630239" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mud Rough</value>
     <comment>camosBody</comment>
   </data>
   <data name="630240" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mud Rough Pink</value>
     <comment>camosBody</comment>
   </data>
   <data name="630241" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mud Rough Red</value>
     <comment>camosBody</comment>
   </data>
   <data name="630242" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Quiet Sand</value>
     <comment>camosBody</comment>
   </data>
   <data name="630243" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Quiet Sand Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630244" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Quiet Sand Green</value>
     <comment>camosBody</comment>
   </data>
   <data name="630245" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rock Matal</value>
     <comment>camosBody</comment>
   </data>
   <data name="630246" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rock Metal Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630247" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rock Metal Orange</value>
     <comment>camosBody</comment>
   </data>
   <data name="630248" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rocked Scuff</value>
     <comment>camosBody</comment>
   </data>
   <data name="630249" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rocked Scuff Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630250" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rocked Scuff Yellow</value>
     <comment>camosBody</comment>
   </data>
   <data name="630251" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Scarred Stone</value>
     <comment>camosBody</comment>
   </data>
   <data name="630252" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Scarred Stone Orange</value>
     <comment>camosBody</comment>
   </data>
   <data name="630253" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Scarred Stone Pink</value>
     <comment>camosBody</comment>
   </data>
   <data name="630254" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Scarred Stone Teal</value>
     <comment>camosBody</comment>
   </data>
   <data name="630255" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splatter Smudge</value>
     <comment>camosBody</comment>
   </data>
   <data name="630256" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splatter Smudge Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630257" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splatter Smudge Red</value>
     <comment>camosBody</comment>
   </data>
   <data name="630258" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splinter Bark</value>
     <comment>camosBody</comment>
   </data>
   <data name="630259" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splinter Bark Blue</value>
     <comment>camosBody</comment>
   </data>
   <data name="630260" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splinter Bark Green</value>
     <comment>camosBody</comment>
   </data>
   <data name="630261" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splinter Bark Red</value>
     <comment>camosBody</comment>
   </data>
   <data name="630262" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Surfer Panic</value>
     <comment>camosBody</comment>
   </data>
   <data name="630263" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Arc</value>
     <comment>camosBody</comment>
   </data>
   <data name="630300" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Standard Issue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630301" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Dust Digital</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630302" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rockwall</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630303" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Sandstorm</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630304" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630305" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Digital</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630306" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Dust Gray</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630307" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hillside Brown</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630308" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Brown Tiger</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630309" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Ragnarok</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630310" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mud Flare</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630311" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Dust</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630312" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Red Leopard</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630313" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Winter Rock</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630314" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digi Tundra</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630315" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Spotted Ground</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630316" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Dark Brown</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630317" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Gray Operation</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630318" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Orange Tiger</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630319" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Hillside Operation</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630320" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Broken Rock</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630321" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Shadow</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630322" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Bloodsport</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630323" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Sahara</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630324" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Forest</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630325" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mountain Lion</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630326" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Ice Hex</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630327" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Winter</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630328" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Nest</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630329" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Tactical Infil</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630330" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Avalanche</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630331" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Olive</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630332" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Tactical Winter</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630333" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Wrath</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630334" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Drifter</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630335" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Ocean Fury</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630336" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Gray</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630337" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Marked Hunter</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630338" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Snow Leopard</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630339" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Forest Combat</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630340" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Seized</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630341" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Concrete Gray</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630342" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Green Plankton</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630343" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mountain Peak</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630344" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Gray Leaf</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630345" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Snowstorm</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630346" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Dark Gray</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630347" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Snowdrift</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630348" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Grassland Hex</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630349" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Urban Hex</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630350" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Shattered Poles</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630351" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Bronze</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630352" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Silver</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630353" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Gold</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630354" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Pink</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630355" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Orange</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630356" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Cobalt Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630357" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Toxic Green</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630358" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Pink</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630359" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Orange</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630360" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630361" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Dark Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630362" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Baby Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630363" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Dark Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630364" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Black</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630365" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>White</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630366" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Dark Purple</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630367" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Green</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630368" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Matte Yellow</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630369" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>FPSGuru.com Partner Camo</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630370" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>IGN.com Partner Camo</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630371" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>MMOBomb.com Partner Camo</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630372" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630373" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Maroon</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630374" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630375" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Black</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630376" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic White</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630377" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Dark Purple</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630378" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Green</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630379" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Metallic Yellow</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630380" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Secret Silver</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630381" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Cash Flow</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630382" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>The Benjamins</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630383" xml:space="preserve">
-    <value>Extra Life Charity is a weapon and armor camo that was available on October 25th, 2014 and obtained by donating $50 for charity to help sick kids. Free 7 day versions of them were given away prior that date.</value>
+    <value>Extra Life Charity</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630384" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>KBMOD.com Vintage</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630385" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
+    <value>Astro Graffiti Autumn</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630386" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
+    <value>Astro Graffiti</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630387" xml:space="preserve">
-    <value>Astro Graffiti Camos were given away on PAX EAST 2013 as redeemable codes. So far there have not been any more redeemable codes.</value>
+    <value>Astro Graffiti Black</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630388" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Veteran</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630389" xml:space="preserve">
-    <value>Originally, this camo could only be obtained as an extra reward for buying the Blacklight T-Shirt.</value>
+    <value>Retribution Elite</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630390" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Tiger Elite</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630391" xml:space="preserve">
-    <value>Daylight is a promotional Camo Zombie Studios Released In 2014 For The Release Of The Game Daylight. Daylight was given to all players during this previous time.</value>
+    <value>Daylight</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630392" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Winter Operations</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630393" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Bearded Ops</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630394" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>BCL TourNament</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630395" xml:space="preserve">
-    <value>This camo can be won from the Valentines Day Lotto Box, available during the month of February.</value>
+    <value>XXOO</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630396" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Malaysia Flag</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630397" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Singapore Flag</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630398" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Beta</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630399" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2012</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630400" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2013</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630401" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2014</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630402" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2015</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630403" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2016</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630404" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Class of 2017</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630405" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Love Fool</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630406" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630407" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Green</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630408" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Pink</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630409" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Purple</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630410" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Easter Yellow</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630411" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>KBMOD.com New</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630412" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>EBL Tourney</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630413" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Bloodmoney</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630414" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Bloodmoney 2</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630415" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Cracked Apple</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630416" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Cracked Apple Pink</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630417" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Cracked Apple Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630418" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digiplex</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630419" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digiplex 2</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630420" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Scatter</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630421" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Scatter Green</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630422" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Digital Scatter Orange</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630423" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Fluffy Punk</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630424" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>GoFast</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630425" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Jagged Metallic</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630426" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Jagged Metallic Green</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630427" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Jagged Metallic Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630428" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Molten Shards</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630429" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mud Rough</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630430" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mud Rough Pink</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630431" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Mud Rough Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630432" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Quiet Sand</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630433" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Quiet Sand Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630434" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Quiet Sand Green</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630435" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rock Matal</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630436" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rock Metal Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630437" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rock Metal Orange</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630438" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rocked Scuff</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630439" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rocked Scuff Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630440" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Rocked Scuff Yellow</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630441" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Scarred Stone</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630442" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Scarred Stone Orange</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630443" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Scarred Stone Pink</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630444" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Scarred Stone Teal</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630445" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splatter Smudge</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630446" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splatter Smudge Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630447" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splatter Smudge Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630448" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splinter Bark</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630449" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splinter Bark Blue</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630450" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splinter Bark Green</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630451" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Splinter Bark Red</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630452" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Surfer Panic</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="630453" xml:space="preserve">
-    <value>CamoDesc</value>
+    <value>Arc</value>
     <comment>camosWeapon</comment>
   </data>
   <data name="062000" xml:space="preserve">
@@ -4977,8 +4977,8 @@ Improves damage, spread, and range, but impairs recoil.</value>
 Standard issue muzzle with no enhancements.</value>
     <comment>muzzles</comment>
   </data>
-  <data name="009999" xml:space="preserve">
-    <value>No Fancy Pants Weapon Skin</value>
+  <data name="-000001" xml:space="preserve">
+    <value>No Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
   <data name="010000" xml:space="preserve">

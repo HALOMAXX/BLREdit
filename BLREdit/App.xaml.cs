@@ -85,6 +85,43 @@ public partial class App : System.Windows.Application
             ForceStart = true;
         }
 
+        if (argDict.TryGetValue("-updateCamoTT", out var _))
+        {
+            ImportSystem.Initialize();
+            var TooltipList = new Dictionary<BLRItem, string>();
+
+            foreach (var category in ImportSystem.ItemLists)
+            {
+                foreach (var item in category.Value)
+                {
+                    if (item.Category == ImportSystem.CAMOS_BODIES_CATEGORY || item.Category == ImportSystem.CAMOS_WEAPONS_CATEGORY)
+                    {
+                        TooltipList.Add(item, item.DisplayName);
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(item.DisplayTooltip))
+                        {
+                            TooltipList.Add(item, item.DisplayTooltip);
+                        }
+                        else
+                        {
+                            TooltipList.Add(item, string.Empty);
+                        }
+                    }
+                }
+            }
+
+            using (ResXResourceWriter resx = new("ItemTooltips.resx"))
+            {
+                foreach (var item in TooltipList)
+                {
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                    resx.AddResource(node);
+                }
+            }
+        }
+
         if (argDict.TryGetValue("-importNewUIDs", out var _))
         {
             ImportSystem.Initialize();

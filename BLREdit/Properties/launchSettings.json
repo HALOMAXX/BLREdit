@@ -26,6 +26,10 @@
     "Export Item List": {
       "commandName": "Project",
       "commandLineArgs": "-exportItemList"
+    },
+    "UpdateCamoTT": {
+      "commandName": "Project",
+      "commandLineArgs": "-updateCamoTT"
     }
   }
 }
