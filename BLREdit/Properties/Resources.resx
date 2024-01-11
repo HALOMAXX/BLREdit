@@ -444,6 +444,9 @@
   <data name="lbl_Secondary" xml:space="preserve">
     <value>Secondary:</value>
   </data>
+  <data name="lbl_SelectedBLREditVersion" xml:space="preserve">
+    <value>BLREdit Build:</value>
+  </data>
   <data name="lbl_SelectedProxyVersion" xml:space="preserve">
     <value>ProxyVersion:</value>
   </data>

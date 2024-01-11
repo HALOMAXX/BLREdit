@@ -29,11 +29,11 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.12.2";
+    public static readonly BLREditVersion CurrentVersion = new($"v0.12.2");
     public const string CurrentVersionTitle = "Fixes";
     public const string CurrentOwner = "HALOMAXX";
     public const string CurrentRepo = "BLREdit";
-    public static readonly int CurrentVersionNumber = CreateVersion(CurrentVersion);
+    
 
     public static bool IsNewVersionAvailable { get; private set; } = false;
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
@@ -84,6 +84,52 @@ public partial class App : System.Windows.Application
         {
             ForceStart = true;
         }
+
+        if (argDict.TryGetValue("-package", out string _))
+        {
+            try
+            {
+                LoggingSystem.Log($"Started Packaging BLREdit Release");
+                PackageAssets();
+                LoggingSystem.Log($"Finished Packaging");
+            }
+            catch (Exception error) { LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error); }
+            if (LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_OpenPackagingFolder, BLREdit.Properties.Resources.msgT_Info, MessageBoxButton.YesNo))
+            {
+                Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\packaged");
+            }
+            Application.Current.Shutdown();
+            return;
+        }
+
+        if (argDict.TryGetValue("-server", out string configFile))
+        {
+            try
+            {
+                IOResources.SpawnConsole();
+                Console.Title = $"[Watchdog(BLREdit:{CurrentVersion})]: Starting!";
+
+                App.AvailableProxyModuleCheck();
+
+                string command = "blredit://start-server/" + Uri.EscapeDataString(File.ReadAllText(configFile));
+
+                BLREditPipe.ProcessArgs(new string[] { command });
+
+                Console.WriteLine("Press Q to Exit and Kill all Server Processes");
+                while (Console.ReadKey().Key != ConsoleKey.Q) { }
+            }
+            catch (Exception error)
+            {
+                LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error);
+            }
+
+            BLRProcess.KillAll();
+
+            Application.Current.Shutdown();
+            return;
+        }
+
+#if DEBUG
 
         if (argDict.TryGetValue("-updateCamoTT", out var _))
         {
@@ -377,52 +423,6 @@ public partial class App : System.Windows.Application
             return;
         }
 
-        if (argDict.TryGetValue("-package", out string _))
-        {
-            try
-            {
-                LoggingSystem.Log($"Started Packaging BLREdit Release");
-                PackageAssets();
-                LoggingSystem.Log($"Finished Packaging");
-            }
-            catch (Exception error) { LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error); }
-            if (LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_OpenPackagingFolder, BLREdit.Properties.Resources.msgT_Info, MessageBoxButton.YesNo))
-            {
-                Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\packaged");
-            }
-            Application.Current.Shutdown();
-            return;
-        }
-
-        if (argDict.TryGetValue("-server", out string configFile))
-        {
-            try
-            {
-                IOResources.SpawnConsole();
-                Console.Title = $"[Watchdog(BLREdit:{CurrentVersion})]: Starting!";
-
-                App.AvailableProxyModuleCheck();
-
-                string command = "blredit://start-server/" + Uri.EscapeDataString(File.ReadAllText(configFile));
-
-                BLREditPipe.ProcessArgs(new string[] { command });
-
-                Console.WriteLine("Press Q to Exit and Kill all Server Processes");
-                while (Console.ReadKey().Key != ConsoleKey.Q) { }
-            }
-            catch (Exception error)
-            {
-                LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error);
-            }
-
-            BLRProcess.KillAll();
-
-            Application.Current.Shutdown();
-            return;
-        }
-
-#if DEBUG
-
         if (argDict.TryGetValue("-localize", out string _))
         {
             ImportSystem.Initialize();
@@ -477,7 +477,7 @@ public partial class App : System.Windows.Application
             Application.Current.Shutdown();
             return;
         }
-        #endif
+#endif
 
         if (BLREditPipe.ForwardLaunchArgs(argList))
         {
@@ -685,7 +685,7 @@ public partial class App : System.Windows.Application
 
     private static bool AddAssets(GitHubRelease release)
     {
-        if (release.Assets is null || release.Assets.Length < 1) return false;
+        if (release.Assets is null || release.Assets.Length < 1 || (DataStorage.Settings.SelectedBLREditVersion == "Release" && release.PreRelease)) return false;
 
         bool jso = false, dll = false, tex = false, cro = false, pat = false;
 
@@ -700,7 +700,7 @@ public partial class App : System.Windows.Application
             {
                 if (!DownloadLinks.ContainsKey(assetZip)) { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
             }
-            if (release.Version > CurrentVersionNumber)
+            if (release.Version > CurrentVersion)
             {
                 if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name))
                 {
@@ -756,10 +756,10 @@ public partial class App : System.Windows.Application
             
             LoggingSystem.Log($"Newest Version: {LatestRelease.TagName} of {LatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-            bool newVersionAvailable = (LatestRelease?.Version ?? -1) > CurrentVersionNumber;
+            bool newVersionAvailable = (LatestRelease?.Version ?? new("")) > CurrentVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
             if (DataStorage.Settings.LastRunVersion is null) { assetFolderMissing = true; }
-            DataStorage.Settings.LastRunVersion = CurrentVersion;
+            DataStorage.Settings.LastRunVersion = CurrentVersion.ToString();
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
 
@@ -1027,7 +1027,7 @@ public partial class App : System.Windows.Application
         { LoggingSystem.MessageLog($"Can't get server list from Github\n{error}", "Error"); } //TODO: Add Localization
         return new() 
         { //Only localhost is needed as most likely we are offline so there is no need to add anyother default servers
-            new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
+            new() { ID = "localhost" } //Local User Server
         };
 #endif
     }

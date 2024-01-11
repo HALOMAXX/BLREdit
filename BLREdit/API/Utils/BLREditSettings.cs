@@ -22,6 +22,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
+    public static ObservableCollection<string?> AvailableBLREditVersions { get; } = new() { "Release", "Beta" };
     public static ObservableCollection<string?> AvailableProxyVersions { get; } = new() { "BLRevive" };
     #region Settings
     public string? LastRunVersion { get; set; } = null;
@@ -49,9 +50,13 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public UIBool PingHiddenServers { get; set; } = new(true);
     public UIBool ShowHiddenServers { get; set; } = new(false);
     public UIBool ApplyMergedProfiles { get; set; } = new(true);
-    [JsonPropertyName("SelectedProxyVersion")] public string? _selectedSDKType;
     public DateTime? SDKVersionDate { get; set; }
+    [JsonPropertyName("SelectedProxyVersion")] public string? _selectedSDKType;
     [JsonIgnore] public string? SelectedSDKType { get { _selectedSDKType ??= AvailableProxyVersions.First(); return _selectedSDKType; } set { if (AvailableProxyVersions.Contains(value)) { _selectedSDKType = value; } } }
+
+    [JsonPropertyName("SelectedBLREditVersion")] public string? _selectedBLREditVersion;
+    [JsonIgnore] public string? SelectedBLREditVersion { get { _selectedBLREditVersion ??= AvailableBLREditVersions.First(); return _selectedBLREditVersion; } set { if (AvailableBLREditVersions.Contains(value)) { _selectedBLREditVersion = value; } } }
+
     [JsonPropertyName("SelectedLanguage")] public string? SelectedLanguage = null;
     [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return CultureInfo.InvariantCulture; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
     [JsonPropertyName("PlayerName")] public string jsonPlayerName = "BLREdit-Player";
@@ -101,7 +106,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
         DataStorage.Settings = new BLREditSettings
         {
-            LastRunVersion = App.CurrentVersion
+            LastRunVersion = App.CurrentVersion.ToString()
         };
 
         DataStorage.GameClients.Clear();

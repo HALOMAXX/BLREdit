@@ -1042,6 +1042,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BLREdit Build:.
+        /// </summary>
+        public static string lbl_SelectedBLREditVersion {
+            get {
+                return ResourceManager.GetString("lbl_SelectedBLREditVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ProxyVersion:.
         /// </summary>
         public static string lbl_SelectedProxyVersion {

@@ -29,6 +29,7 @@ public sealed partial class BLREditSettingsControl : UserControl
 {
     public static ObservableCollection<CultureInfo> AvailableCultures { get; } = new();
     public static ObservableCollection<string?> ProxyVersions => BLREditSettings.AvailableProxyVersions;
+    public static ObservableCollection<string?> BLREditVersions => BLREditSettings.AvailableBLREditVersions;
 
     public static Regex PlayerNameFilter { get; } = new(@"^[a-zA-Z0-9\-_.]*$");
     public static Regex PlayerNameSanitizer { get; } = new(@"[^a-zA-Z0-9\-_.]*");
@@ -44,7 +45,7 @@ public sealed partial class BLREditSettingsControl : UserControl
             AvailableCultures.Add(CultureInfo.CreateSpecificCulture(locale.Key));
         }
         LanguageComboBox.SelectedItem = DataStorage.Settings.SelectedCulture;
-        ProxyComboBox.SelectedItem = DataStorage.Settings.SelectedSDKType;
+        BLREditVersionComboBox.SelectedItem = DataStorage.Settings.SelectedBLREditVersion;
         DataStorage.Settings.PlayerName = PlayerNameSanitizer.Replace(DataStorage.Settings.PlayerName, string.Empty);
     }
 
@@ -130,6 +131,14 @@ public sealed partial class BLREditSettingsControl : UserControl
         if (DataContext is BLREditSettings settings && e.AddedItems.Count > 0 && e.AddedItems[0] is string version)
         {
             settings.SelectedSDKType = version;
+        }
+    }
+
+    private void BLREditVersionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (DataContext is BLREditSettings settings && e.AddedItems.Count > 0 && e.AddedItems[0] is string version)
+        {
+            settings.SelectedBLREditVersion = version;
         }
     }
 }

@@ -68,7 +68,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     #region Weapon Parts
     [BLRItem($"{ImportSystem.PRIMARY_CATEGORY}|{ImportSystem.SECONDARY_CATEGORY}")] public BLRItem? Receiver { get { return GetValueOf(); } set { if (AllowReceiver(value)) { SetValueOf(value); RemoveIncompatibleMods(); AddMissingDefaultParts(); UpdateScopeIcons(); } } }
-    [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLRItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLRItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); RemoveIncompatibleMods(); } }
     public UIBool? IsValidBarrel { get; } = new(true);
     [BLRItem(ImportSystem.MAGAZINES_CATEGORY)] public BLRItem? Magazine { get { return GetValueOf(); } set { SetValueOf(value); var ammo = Ammo; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } else { ammo = null; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } } } }
     public UIBool? IsValidMagazine { get; } = new(true);
@@ -290,7 +290,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     private bool AllowStock(BLRItem? receiver, BLRItem? barrel, BLRItem? stock, bool displayMessage = false)
     {
         if (stock is null || stock.Name == "No Stock") return true;
-        if (!IsPrimary && (Loadout?.Profile?.IsAdvanced.IsNot ?? false))
+        if (!IsPrimary)
         {
             if (IsPistol(receiver) && (barrel?.Name ?? MagiCowsWeapon.NoBarrel) == MagiCowsWeapon.NoBarrel)
             {
@@ -868,7 +868,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Barrel is null || !Barrel.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrel(), GetType().GetProperty(nameof(Barrel)), this); }
 
-        if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || AllowStock(Receiver, Barrel, wpn?.GetStock()))
+        if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || !AllowStock(Receiver, Barrel, Stock))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStock(), GetType().GetProperty(nameof(Stock)), this); }
 
         if (Scope is null || !Scope.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))

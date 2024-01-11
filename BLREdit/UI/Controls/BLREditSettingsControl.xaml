@@ -25,8 +25,8 @@
             </Border>
             <Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
-                    <Label Content="{x:Static p:Resources.lbl_SelectedProxyVersion}" ToolTip="{x:Static p:Resources.txt_TT_SelectedProxyVersion }" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
-                    <ComboBox Height="32" Name="ProxyComboBox" SelectionChanged="ProxyComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.ProxyVersions)}"/>
+                    <Label Content="{x:Static p:Resources.lbl_SelectedBLREditVersion}" ToolTip="{x:Static p:Resources.txt_TT_SelectedProxyVersion }" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                    <ComboBox Height="32" Name="BLREditVersionComboBox" SelectionChanged="BLREditVersionComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.BLREditVersions)}"/>
                 </StackPanel>
             </Border>
             <Border>
