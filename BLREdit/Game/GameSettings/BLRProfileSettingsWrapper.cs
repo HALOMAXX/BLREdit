@@ -19,7 +19,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 
     static readonly BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json") ?? Array.Empty<BLRProfileSettings>();
 
-    public Dictionary<int, BLRProfileSettings> Settings { get; } = new();
+    public Dictionary<int, BLRProfileSettings> Settings { get; set; } = new();
     //public BLRKeyBindings KeyBindings { get; set; }
     public string ProfileName { get; set; }
 
