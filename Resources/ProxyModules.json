@@ -15,6 +15,15 @@
     "Repository": "settings-manager",
     "ModuleName": "settings-manager",
     "Server": false,
+    "Required": false,
+    "ProxyVersion": "BLRevive"
+  },
+  {
+    "RepositoryProvider": "Gitlab",
+    "Owner": "alt4",
+    "Repository": "settings-manager",
+    "ModuleName": "settings-manager",
+    "Server": false,
     "Required": true,
     "ProxyVersion": "BLRevive"
   },
