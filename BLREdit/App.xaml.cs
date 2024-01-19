@@ -30,9 +30,9 @@ namespace BLREdit;
 public partial class App : System.Windows.Application
 {
     public static readonly BLREditVersion CurrentVersion = new($"v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}");
-    public static string RepositoryBaseURL { get; } = new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray());
-    public static string CurrentOwner { get; } = "HALOMAXX";
-    public static string CurrentRepo { get; } = "BLREdit";
+    public static string RepositoryBaseURL { get; } = ThisAssembly.Git.RepositoryUrl.EndsWith(".git") ? new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length-4).ToArray()) : ThisAssembly.Git.RepositoryUrl;
+    public static string CurrentOwner { get; } = RepositoryBaseURL.Split('/').Reverse().Skip(1).First();
+    public static string CurrentRepo { get; } = RepositoryBaseURL.Split('/').Last();
 
     public const string CurrentVersionTitle = "Fixes";
 
