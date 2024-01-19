@@ -31,8 +31,8 @@ public partial class App : System.Windows.Application
 {
     public static readonly BLREditVersion CurrentVersion = new($"v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}");
     public static string RepositoryBaseURL { get; } = new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray());
-    public static string CurrentOwner { get; } = RepositoryBaseURL.Split('/').Reverse().Skip(1).First();
-    public static string CurrentRepo { get; } = RepositoryBaseURL.Split('/').Last();
+    public static string CurrentOwner { get; } = "HALOMAXX";
+    public static string CurrentRepo { get; } = "BLREdit";
 
     public const string CurrentVersionTitle = "Fixes";
 
@@ -589,7 +589,7 @@ public partial class App : System.Windows.Application
 
         Trace.AutoFlush = true;
 
-        LoggingSystem.Log($"BLREdit {CurrentVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()} GitHub repo: <{RepositoryBaseURL}>");
+        LoggingSystem.Log($"BLREdit {CurrentVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()} GitHub repo: <{RepositoryBaseURL}> / <{ThisAssembly.Git.RepositoryUrl}>");
 
         if (DataStorage.Settings.SelectedCulture is null)
         {
