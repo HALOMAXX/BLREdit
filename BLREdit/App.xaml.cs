@@ -119,6 +119,7 @@ public partial class App : System.Windows.Application
                 LoggingSystem.Log($"Finished Packaging");
             }
             catch (Exception error) { LoggingSystem.Log(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error)); }
+
             Application.Current.Shutdown();
             return;
         }
@@ -541,6 +542,7 @@ public partial class App : System.Windows.Application
             catch { }
         }
         LoggingSystem.Log("BLREdit Closed!");
+        Trace.Flush();
     }
 
     private static void CreateAllDirectories()
@@ -603,6 +605,7 @@ public partial class App : System.Windows.Application
     void UnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
         LoggingSystem.Log($"[Unhandled]: {e.ExceptionObject}");
+        Trace.Flush();
         Environment.Exit(666);
     }
 
