@@ -23,6 +23,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
       
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1.3.1
@@ -36,13 +38,10 @@ jobs:
       - name: Package App
         run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent
 
-      - name: List Files
-        run: tree "BLREdit\bin\Release\net48\" /f
-
       - name: Upload Logs Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: logs
+          name: log
           path: BLREdit\bin\Release\net48\logs
         
       - name: Upload BLREdit Artifact
