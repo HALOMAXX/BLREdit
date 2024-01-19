@@ -118,7 +118,7 @@ public partial class App : System.Windows.Application
                 GitHubAssets();
                 LoggingSystem.Log($"Finished Packaging");
             }
-            catch (Exception error) { LoggingSystem.Log(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error)); }
+            catch { }
 
             Application.Current.Shutdown();
             return;
@@ -564,6 +564,27 @@ public partial class App : System.Windows.Application
     {
         Directory.SetCurrentDirectory(BLREditLocation);
 
+        SetUpdateFilePath();
+
+        CreateAllDirectories();
+
+        foreach (var file in Directory.EnumerateFiles("logs\\BLREdit"))
+        {
+            var fileInfo = new FileInfo(file);
+            var creationDelta = DateTime.Now - fileInfo.CreationTime;
+            if (creationDelta.Days >= 1)
+            {
+                try
+                {
+                    fileInfo.Delete();
+                }
+                catch (Exception e)
+                {
+                    LoggingSystem.Log($"[ERROR] Failed to delete old log file {fileInfo.Name}:\n {e}");
+                }
+            }
+        }
+
         Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));
 
         Trace.AutoFlush = true;
@@ -582,24 +603,6 @@ public partial class App : System.Windows.Application
     {
         LoggingSystem.Log("App Constructor Start");
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
-
-        SetUpdateFilePath();
-
-        CreateAllDirectories();
-
-        foreach (var file in Directory.EnumerateFiles("logs\\BLREdit"))
-        {
-            var fileInfo = new FileInfo(file);
-            var creationDelta = DateTime.Now - fileInfo.CreationTime;
-            if (creationDelta.Days >= 1)
-            {
-                try {
-                    fileInfo.Delete();
-                } catch(Exception e) {
-                    LoggingSystem.Log($"[ERROR] Failed to delete old log file {fileInfo.Name}:\n {e}");
-                }
-            }
-        }
     }
 
     void UnhandledException(object sender, UnhandledExceptionEventArgs e)
