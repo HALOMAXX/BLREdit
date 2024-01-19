@@ -589,7 +589,7 @@ public partial class App : System.Windows.Application
 
         Trace.AutoFlush = true;
 
-        LoggingSystem.Log($"BLREdit {CurrentVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+        LoggingSystem.Log($"BLREdit {CurrentVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()} GitHub repo: <{RepositoryBaseURL}>");
 
         if (DataStorage.Settings.SelectedCulture is null)
         {
