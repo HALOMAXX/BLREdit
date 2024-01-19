@@ -13,6 +13,7 @@ namespace BLREdit.API.Export;
 public sealed class ShareableWeapon : IBLRWeapon
 {
     [JsonIgnore] public ShareableLoadout? Loadout { get; set; } = null;
+    [JsonPropertyName("IsPrimary")] public bool? IsPrimary { get; set; }
     [JsonPropertyName("A1")] public int Ammo { get; set; } = 0;
     [JsonPropertyName("B1")] public int Barrel { get; set; } = 0;
     [JsonPropertyName("C1")] public int Camo { get; set; } = 0;

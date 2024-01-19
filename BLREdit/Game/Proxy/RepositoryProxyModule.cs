@@ -105,7 +105,7 @@ public sealed class RepositoryProxyModule
         {
             var packages = GitlabClient.GetGenericPackages(Owner, Repository, ModuleName);
             packages.Wait();
-
+            if (packages.Result is null || packages.Result.Length <= 0) { LoggingSystem.Log($"Failed to to get generic package list for ({Owner}/{Repository}/{ModuleName})"); return null; }
             var result = GitlabClient.DownloadPackage(packages.Result[0], $"{InstallName}.dll", PackageFileName);
             if (result.Item1)
             {
@@ -141,13 +141,11 @@ public sealed class RepositoryProxyModule
         var index = DataStorage.CachedModules.IndexOf(module);
         if (index >= 0)
         {
-            if (module is null) 
-            { LoggingSystem.Log("What the h happened"); }
-            DataStorage.CachedModules[index] = module;
+            if (module is not null) DataStorage.CachedModules[index] = module;
         }
         else
         {
-            DataStorage.CachedModules.Add(module);
+            if (module is not null) DataStorage.CachedModules.Add(module);
         }
     }
 }

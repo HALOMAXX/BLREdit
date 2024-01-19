@@ -683,6 +683,7 @@ public sealed partial class MainWindow : Window
                                     }
                                     if (weapon.InternalWeapon is ShareableWeapon wpn)
                                     {
+                                        wpn.IsPrimary = weapon.IsPrimary;
                                         string json = IOResources.Serialize(wpn, true);
                                         string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
                                         ExportSystem.SetClipboard(jsonNoWhitespaces);
@@ -730,6 +731,7 @@ public sealed partial class MainWindow : Window
                                     }
                                     if (viewWeapon.InternalWeapon is ShareableWeapon wpn)
                                     {
+                                        wpn.IsPrimary = viewWeapon.IsPrimary;
                                         string json = IOResources.Serialize(wpn, true);
                                         string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
                                         ExportSystem.SetClipboard(jsonNoWhitespaces);
@@ -767,7 +769,7 @@ public sealed partial class MainWindow : Window
                                 {
                                     if (weapon.IsPrimary)
                                     {
-                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
+                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn && wpn.IsPrimary is not null && wpn.IsPrimary == true)
                                         {
                                             MainView.PrimaryWeaponCopy = wpn.ToBLRWeapon(true);
                                         }
@@ -775,7 +777,7 @@ public sealed partial class MainWindow : Window
                                     }
                                     else
                                     {
-                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
+                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn && wpn.IsPrimary is not null && wpn.IsPrimary == false)
                                         {
                                             MainView.SecondaryWeaponCopy = wpn.ToBLRWeapon(false);
                                         }
@@ -819,7 +821,7 @@ public sealed partial class MainWindow : Window
                                 {
                                     if (viewWeapon.IsPrimary)
                                     {
-                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
+                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn && wpn.IsPrimary is not null && wpn.IsPrimary == true)
                                         {
                                             MainView.PrimaryWeaponCopy = wpn.ToBLRWeapon(true);
                                         }
@@ -827,7 +829,7 @@ public sealed partial class MainWindow : Window
                                     }
                                     else
                                     {
-                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn)
+                                        if (clip is not null && IOResources.Deserialize<ShareableWeapon>(clip) is ShareableWeapon wpn && wpn.IsPrimary is not null && wpn.IsPrimary == false)
                                         {
                                             MainView.SecondaryWeaponCopy = wpn.ToBLRWeapon(false);
                                         }
@@ -923,7 +925,7 @@ public sealed partial class MainWindow : Window
         SetItemList(ImportSystem.PRIMARY_CATEGORY);
         if (App.IsNewVersionAvailable && DataStorage.Settings.ShowUpdateNotice.Is)
         {
-            Process.Start($"https://github.com/{App.CurrentOwner}/{App.CurrentRepo}/releases");
+            Process.Start($"{App.RepositoryBaseURL}/releases");
         }
         if (DataStorage.Settings.DoRuntimeCheck.Is || DataStorage.Settings.ForceRuntimeCheck.Is)
         {

@@ -19,6 +19,10 @@
       "commandName": "Project",
       "commandLineArgs": "-package"
     },
+    "Github Package": {
+      "commandName": "Project",
+      "commandLineArgs": "-packageSilent"
+    },
     "CLI Server": {
       "commandName": "Project",
       "commandLineArgs": "-server example_server_config.json"

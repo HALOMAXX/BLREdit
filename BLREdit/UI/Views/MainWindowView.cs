@@ -35,7 +35,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public BLREditSettings BLRESettings => DataStorage.Settings;
     public ObservableCollection<BLRClient> GameClients => DataStorage.GameClients;
     public ObservableCollection<BLRServer> ServerList => DataStorage.ServerList;
-    public ObservableCollectionExtended<BLRLoadoutStorage> Loadouts => DataStorage.Loadouts;
+    public ObservableCollection<BLRLoadoutStorage> Loadouts => DataStorage.Loadouts;
 #pragma warning restore CA1822 // Mark members as static
 
     public static readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);

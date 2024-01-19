@@ -4,6 +4,7 @@ using BLREdit.Import;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -61,7 +62,7 @@ public sealed class ExportSystem
         return null;
     }
 
-    public static ObservableCollectionExtended<BLRLoadoutStorage> LoadStorage()
+    public static ObservableCollection<BLRLoadoutStorage> LoadStorage()
     {
         LoggingSystem.Log("Started Loading Shareable and BLR Profile Combos");
         BLRLoadoutStorage[] storage = new BLRLoadoutStorage[DataStorage.ShareableLoadouts.Count];
@@ -75,7 +76,7 @@ public sealed class ExportSystem
         return new(storage);
     }
 
-    public static ObservableCollectionExtended<ShareableProfile> LoadShareableProfiles()
+    public static ObservableCollection<ShareableProfile> LoadShareableProfiles()
     {
         LoggingSystem.Log("Started Loading ShareableProfiles");
         ImportSystem.Initialize();
@@ -86,7 +87,7 @@ public sealed class ExportSystem
         ZipFile.CreateFromDirectory($"{IOResources.PROFILE_DIR}", CurrentBackupFile.FullName, CompressionLevel.Optimal, false);
         LoggingSystem.PrintElapsedTime("Finished Compressing in {0}ms");
 
-        var profiles = IOResources.DeserializeFile<ObservableCollectionExtended<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();
+        var profiles = IOResources.DeserializeFile<ObservableCollection<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();
 
         foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
         {
@@ -111,12 +112,12 @@ public sealed class ExportSystem
         return profiles;
     }
 
-    public static ObservableCollectionExtended<ShareableLoadout> LoadShareableLoadouts()
+    public static ObservableCollection<ShareableLoadout> LoadShareableLoadouts()
     {
         LoggingSystem.Log("Started Loading ShareableLoadouts");
         ImportSystem.Initialize();
 
-        var loadouts = IOResources.DeserializeFile<ObservableCollectionExtended<ShareableLoadout>>($"{IOResources.PROFILE_DIR}loadoutList.json") ?? new();
+        var loadouts = IOResources.DeserializeFile<ObservableCollection<ShareableLoadout>>($"{IOResources.PROFILE_DIR}loadoutList.json") ?? new();
 
         if(DataStorage.ShareableProfiles is not null && DataStorage.ShareableProfiles.Count > 0)
             foreach (var profile in DataStorage.ShareableProfiles)
