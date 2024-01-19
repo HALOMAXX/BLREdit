@@ -758,13 +758,28 @@ public partial class App : System.Windows.Application
         var assetsSource = new DirectoryInfo("Assets");
         var assetsSym = new DirectoryInfo("packaged/Assets");
 
+        var jsonSource = new DirectoryInfo("Assets/json");
+        var jsonSym = new DirectoryInfo("packaged/json");
+
+        var dllsSource = new DirectoryInfo("Assets/dlls");
+        var dllsSym = new DirectoryInfo("packaged/dlls");
+
+        var texturesSource = new DirectoryInfo("Assets/textures");
+        var texturesSym = new DirectoryInfo("packaged/textures");
+
+        var crosshairsSource = new DirectoryInfo("Assets/crosshairs");
+        var crosshairsSym = new DirectoryInfo("packaged/crosshairs");
+
+        var patchesSource = new DirectoryInfo("Assets/patches");
+        var patchesSym = new DirectoryInfo("packaged/patches");
+
         var taskExe = Task.Run(() => { return IOResources.CreateSymbolicLink(exeSym, exeSource); });
         var taskAsset = Task.Run(() => { return IOResources.CreateSymbolicLink(assetsSym, assetsSource); });
-        var taskJson = Task.Run(() => { if (json) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/json", IOResources.SymbolicLink.Directory); return false; });
-        var taskDlls = Task.Run(() => { if (dlls) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/dlls", IOResources.SymbolicLink.Directory); return false; });
-        var taskTexture = Task.Run(() => { if (textures) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/textures", IOResources.SymbolicLink.Directory); return false; });
-        var taskPreview = Task.Run(() => { if (crosshairs) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/crosshairs", IOResources.SymbolicLink.Directory); return false; });
-        var taskPatches = Task.Run(() => { if (patches) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/patches", IOResources.SymbolicLink.Directory); return false; });
+        var taskJson = Task.Run(() => { if (json) return IOResources.CreateSymbolicLink(jsonSym, jsonSource); return false; });
+        var taskDlls = Task.Run(() => { if (dlls) return IOResources.CreateSymbolicLink(dllsSym, dllsSource); return false; });
+        var taskTexture = Task.Run(() => { if (textures) return IOResources.CreateSymbolicLink(texturesSym, texturesSource); return false; });
+        var taskPreview = Task.Run(() => { if (crosshairs) return IOResources.CreateSymbolicLink(crosshairsSym, crosshairsSource); return false; });
+        var taskPatches = Task.Run(() => { if (patches) return IOResources.CreateSymbolicLink(patchesSym, patchesSource); return false; });
 
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait(); //
 
