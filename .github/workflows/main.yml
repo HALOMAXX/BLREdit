@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-2019
+    runs-on: windows-latest
     env:
       Solution_Name: BLREdit.sln                        # Replace with your solution name, i.e. MyWpfApp.sln.
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -35,6 +35,9 @@ jobs:
 
       - name: Package App
         run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent
+
+      - name: List Files
+        run: tree "BLREdit\bin\Release\net48\" /f
 
       - name: Upload Logs Artifact
         uses: actions/upload-artifact@v3
