@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: windows-2019
     env:
       Solution_Name: BLREdit.sln                        # Replace with your solution name, i.e. MyWpfApp.sln.
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -26,11 +26,6 @@ jobs:
       
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1.3.1
-
-      - name: Setup .NET Framework
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '4.8'
         
       - name: Restore NuGet
         run: msbuild $env:Solution_Name /t:Restore /p:Configuration=Release /p:DeployOnBuild=true
