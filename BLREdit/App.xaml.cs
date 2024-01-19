@@ -110,6 +110,19 @@ public partial class App : System.Windows.Application
             return;
         }
 
+        if (argDict.TryGetValue("-packageSilent", out string _))
+        {
+            try
+            {
+                LoggingSystem.Log($"Started Packaging BLREdit Release");
+                GitHubAssets();
+                LoggingSystem.Log($"Finished Packaging");
+            }
+            catch (Exception error) { LoggingSystem.Log(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error)); }
+            Application.Current.Shutdown();
+            return;
+        }
+
         if (argDict.TryGetValue("-server", out string configFile))
         {
             try
@@ -670,26 +683,26 @@ public partial class App : System.Windows.Application
         if (crosshairsZip is null) { LoggingSystem.Log("[PackageAssets]: crosshairsZip was null"); return; }
         if (patchesZip is null) { LoggingSystem.Log("[PackageAssets]: patchesZip was null"); return; }
 
-        var taskLocalize = Task.Run(() => {
-            Dictionary<string, string?> LocalePairs = new();
-            var dirs = Directory.EnumerateDirectories(BLREditLocation);
-            foreach (var dir in dirs)
-            {
-                string resourceFile = $"{dir}\\BLREdit.resources.dll";
-                if (File.Exists(resourceFile))
-                { 
-                    var hash = IOResources.CreateFileHash(resourceFile);
-                    string locale = dir.Substring(dir.Length - 5, 5);
-                    string targetZip = $"{IOResources.PACKAGE_DIR}\\locale\\Localizations\\{locale}.zip";
-                    LocalePairs.Add(locale, hash);
-                    File.WriteAllText($"{dir}\\manifest.hash", hash);
-                    if (File.Exists(targetZip)) { File.Delete(targetZip); }
-                    ZipFile.CreateFromDirectory(dir, targetZip);
-                }
-            }
+        //var taskLocalize = Task.Run(() => {
+        //    Dictionary<string, string?> LocalePairs = new();
+        //    var dirs = Directory.EnumerateDirectories(BLREditLocation);
+        //    foreach (var dir in dirs)
+        //    {
+        //        string resourceFile = $"{dir}\\BLREdit.resources.dll";
+        //        if (File.Exists(resourceFile))
+        //        { 
+        //            var hash = IOResources.CreateFileHash(resourceFile);
+        //            string locale = dir.Substring(dir.Length - 5, 5);
+        //            string targetZip = $"{IOResources.PACKAGE_DIR}\\locale\\Localizations\\{locale}.zip";
+        //            LocalePairs.Add(locale, hash);
+        //            File.WriteAllText($"{dir}\\manifest.hash", hash);
+        //            if (File.Exists(targetZip)) { File.Delete(targetZip); }
+        //            ZipFile.CreateFromDirectory(dir, targetZip);
+        //        }
+        //    }
 
-            IOResources.SerializeFile($"{IOResources.PACKAGE_DIR}\\locale\\Localizations.json", LocalePairs);
-        });
+        //    IOResources.SerializeFile($"{IOResources.PACKAGE_DIR}\\locale\\Localizations.json", LocalePairs);
+        //});
 
 
         var taskExe = Task.Run(() => 
@@ -704,7 +717,56 @@ public partial class App : System.Windows.Application
         var taskPreview = Task.Run(() => { if (crosshairs) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
         var taskPatches = Task.Run(() => { if (patches) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
 
-        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches, taskLocalize).Wait();
+        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
+
+        SetUpdateFilePath();
+    }
+
+    public static void GitHubAssets()
+    {
+        Directory.CreateDirectory(IOResources.PACKAGE_DIR);
+        //Directory.CreateDirectory($"{IOResources.PACKAGE_DIR}\\locale\\Localizations");
+
+        SetPackageFilePath();
+
+        CleanPackageOrUpdateDirectory();
+
+        var task = StartSTATask<bool>(GetLatestRelease);
+        task.Wait();
+
+
+        if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
+        var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
+        gitProcess.WaitForExit();
+
+        bool json = false, dlls = false, textures = false, crosshairs = false, patches = false;
+
+        var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+        foreach (var line in result)
+        {
+            if (line.Contains("Assets/json")) { json = true; }
+            if (line.Contains("Assets/dlls")) { dlls = true; }
+            if (line.Contains("Assets/textures")) { textures = true; }
+            if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
+            if (line.Contains("Assets/patches")) { patches = true; }
+        }
+
+        var exeSource = new FileInfo("BLREdit.exe");
+        var exeSym = new FileInfo("packaged/BLREdit.exe");
+
+        var assetsSource = new DirectoryInfo("Assets");
+        var assetsSym = new DirectoryInfo("packaged/Assets");
+
+        var taskExe = Task.Run(() => { return IOResources.CreateSymbolicLink(exeSym, exeSource); });
+        var taskAsset = Task.Run(() => { return IOResources.CreateSymbolicLink(assetsSym, assetsSource); });
+        var taskJson = Task.Run(() => { if (json) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/json", IOResources.SymbolicLink.Directory); return false; });
+        var taskDlls = Task.Run(() => { if (dlls) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/dlls", IOResources.SymbolicLink.Directory); return false; });
+        var taskTexture = Task.Run(() => { if (textures) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/textures", IOResources.SymbolicLink.Directory); return false; });
+        var taskPreview = Task.Run(() => { if (crosshairs) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/crosshairs", IOResources.SymbolicLink.Directory); return false; });
+        var taskPatches = Task.Run(() => { if (patches) return IOResources.CreateSymbolicLink($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", $"{IOResources.PACKAGE_DIR}/Assets/patches", IOResources.SymbolicLink.Directory); return false; });
+
+        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait(); //
 
         SetUpdateFilePath();
     }
