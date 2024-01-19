@@ -28,18 +28,6 @@ public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLRLoadout? bl
         ProfileGotRemoved?.Invoke(this, new EventArgs());
     }
 
-    public static void Exchange(int from, int to)
-    {
-        if (from == to) return;
-        if (isExchanging) return;
-        isExchanging = true;
-        DataStorage.ShareableProfiles.Exchange(from, to);
-        DataStorage.Loadouts.Exchange(from, to);
-        DataStorage.ShareableProfiles.SignalExchange();
-        DataStorage.Loadouts.SignalExchange();
-        isExchanging = false;
-    }
-
     private ICommand? removeLoadoutCommand;
     [JsonIgnore]
     public ICommand RemoveLoadoutCommand

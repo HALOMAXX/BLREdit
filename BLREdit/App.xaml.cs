@@ -44,6 +44,7 @@ public partial class App : System.Windows.Application
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
     public static GitHubRelease? LatestRelease { get; private set; } = null;
+    public static GitHubRelease[]? Releases { get; private set; } = null;
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = new();
 
@@ -640,6 +641,27 @@ public partial class App : System.Windows.Application
 
         CleanPackageOrUpdateDirectory();
 
+        var task = StartSTATask<bool>(GetLatestRelease);
+        task.Wait();
+
+
+        if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
+        var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
+        gitProcess.WaitForExit();
+
+        bool json = false, dlls = false, textures = false, crosshairs = false, patches = false;
+
+        var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+        foreach (var line in result)
+        {
+            if (line.Contains("Assets/json")){ json = true; }
+            if (line.Contains("Assets/dlls")) { dlls = true; }
+            if (line.Contains("Assets/textures")) { textures = true; }
+            if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
+            if (line.Contains("Assets/patches")) { patches = true; }
+        }
+
         if (exeZip is null) { LoggingSystem.Log("[PackageAssets]: exeZip was null"); return; }
         if (assetZip is null) { LoggingSystem.Log("[PackageAssets]: assetZip was null"); return; }
         if (jsonZip is null) { LoggingSystem.Log("[PackageAssets]: jsonZip was null"); return; }
@@ -676,11 +698,11 @@ public partial class App : System.Windows.Application
             var entry = archive.CreateEntryFromFile("BLREdit.exe", "BLREdit.exe");
         });
         var taskAsset = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName); });
-        var taskJson = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName); });
-        var taskDlls = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName); });
-        var taskTexture = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName); });
-        var taskPreview = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
-        var taskPatches = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
+        var taskJson = Task.Run(() => { if(json) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName); });
+        var taskDlls = Task.Run(() => { if (dlls) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName); });
+        var taskTexture = Task.Run(() => { if (textures) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName); });
+        var taskPreview = Task.Run(() => { if (crosshairs) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
+        var taskPatches = Task.Run(() => { if (patches) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
 
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches, taskLocalize).Wait();
 
@@ -754,6 +776,39 @@ public partial class App : System.Windows.Application
             return false;
     }
 
+    public static bool GetLatestRelease()
+    {
+        if (LatestRelease is not null) { return true; }
+        try
+        {
+            using var task = GitHubClient.GetReleases(CurrentOwner, CurrentRepo);
+            task.Wait();
+            Releases = task.Result;
+            if (Releases is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
+            if (DataStorage.Settings.SelectedBLREditVersion == "Release")
+            {
+                foreach (var release in Releases)
+                {
+                    if (!release.PreRelease)
+                    {
+                        LatestRelease = release;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                LatestRelease = Releases[0];
+            }
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.Log($"{error.Message}\n{error.StackTrace}");
+            return false;
+        }
+        return true;
+    }
+
     public static bool VersionCheck()
     {
         if (versionCheckDone)
@@ -766,25 +821,7 @@ public partial class App : System.Windows.Application
 
         try
         {
-            using var task = GitHubClient.GetReleases(CurrentOwner, CurrentRepo);
-            task.Wait();
-            var releases = task.Result;
-            if (releases is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
-            if (DataStorage.Settings.SelectedBLREditVersion == "Release")
-            {
-                foreach (var release in releases)
-                {
-                    if (!release.PreRelease)
-                    { 
-                        LatestRelease = release;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                LatestRelease = releases[0];
-            }
+            GetLatestRelease();
 
             if (LatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
             LoggingSystem.Log($"Newest Version: {LatestRelease.TagName} of {LatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
@@ -796,9 +833,12 @@ public partial class App : System.Windows.Application
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
 
-            foreach (var release in releases)
+            if (Releases is not null)
             {
-                if (AddAssets(release)) { assetFolderMissing = true; break; }
+                foreach (var release in Releases)
+                {
+                    if (AddAssets(release)) { assetFolderMissing = true; break; }
+                }
             }
 
             if (newVersionAvailable && assetFolderMissing)
