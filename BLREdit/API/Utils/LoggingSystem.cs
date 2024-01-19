@@ -39,18 +39,12 @@ public static class LoggingSystem
         var result = MessageBox.Show(message, title, buttonType);
         Log($"[MessageBox]({title})({result}): {message}");
 
-        switch (result)
+        return result switch
         {
-            case MessageBoxResult.OK:
-            case MessageBoxResult.Yes:
-                return true;
-            case MessageBoxResult.None:
-            case MessageBoxResult.Cancel:
-            case MessageBoxResult.No:
-                return false;
-            default:
-                return false;
-        }
+            MessageBoxResult.OK or MessageBoxResult.Yes => true,
+            MessageBoxResult.None or MessageBoxResult.Cancel or MessageBoxResult.No => false,
+            _ => false,
+        };
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

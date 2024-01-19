@@ -29,7 +29,7 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public static readonly BLREditVersion CurrentVersion = new($"v0.12.2");
+    public static readonly BLREditVersion CurrentVersion = new($"v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}");
     public static string RepositoryBaseURL { get; } = new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray());
     public static string CurrentOwner { get; } = RepositoryBaseURL.Split('/').Reverse().Skip(1).First();
     public static string CurrentRepo { get; } = RepositoryBaseURL.Split('/').Last();
@@ -63,10 +63,12 @@ public partial class App : System.Windows.Application
     static void AddNewItemList(string name, KeyValuePair<string, JsonNode?> array)
 #pragma warning restore IDE0051 // Remove unused private members
     {
+        if (array.Value is null) return;
         var newList = new ObservableCollection<BLRItem>();
         foreach (var item in array.Value.AsObject())
         {
-            newList.Add(new BLRItem() { UID = int.Parse(item.Key), Name = item.Value.ToString() });
+            if(item.Value is not null)
+                newList.Add(new BLRItem() { UID = int.Parse(item.Key), Name = item.Value.ToString() });
         }
         ImportSystem.ItemLists.Add(name, newList);
     }
@@ -163,13 +165,11 @@ public partial class App : System.Windows.Application
                 }
             }
 
-            using (ResXResourceWriter resx = new("ItemTooltips.resx"))
+            using ResXResourceWriter resx = new("ItemTooltips.resx");
+            foreach (var item in TooltipList)
             {
-                foreach (var item in TooltipList)
-                {
-                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
-                    resx.AddResource(node);
-                }
+                var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                resx.AddResource(node);
             }
         }
 
@@ -274,6 +274,8 @@ public partial class App : System.Windows.Application
             ImportSystem.Initialize();
 
             var weapons = ImportSystem.GetItemListOfType(ImportSystem.PRIMARY_CATEGORY).Concat(ImportSystem.GetItemListOfType(ImportSystem.SECONDARY_CATEGORY));
+            if (weapons is null) { LoggingSystem.MessageLog("Failed to get Weapon list", "Error"); Application.Current.Shutdown(); return; }
+
 
             var noBarrel = ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, MagiCowsWeapon.NoBarrel);
             var noCamo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, MagiCowsWeapon.NoCamo);
@@ -284,9 +286,12 @@ public partial class App : System.Windows.Application
             var noStock = ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, MagiCowsWeapon.NoStock);
             var noTag = ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, MagiCowsWeapon.NoTag);
 
+            
+
             foreach (var primary in weapons)
             {
                 LoggingSystem.Log($"{primary.Name}:{primary.UID}");
+                if (primary.SupportedMods is null || primary.SupportedMods.Count <= 0) { LoggingSystem.Log(""); continue; }
                 if (!primary.SupportedMods.Contains("ammos"))
                 {
                     LoggingSystem.Log($"doesn't support ammos");
@@ -349,13 +354,22 @@ public partial class App : System.Windows.Application
             var explodingArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Exploding Arrow");
             var stunArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Stun Arrow");
             var poisonArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Poison Arrow");
-            var lightArrow= ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Light Arrow");
+            var lightArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Light Arrow");
             var heavyArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Heavy Arrow");
             var standardArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Standard Arrow");
             var cupidArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Cupid's Arrow");
 
+            if (
+                magazines is null || magnumRounds is null || APRounds is null || standardRounds is null || electroRounds is null ||
+                exploRounds is null || HPRounds is null || incendiaryRounds is null || toxicRounds is null || incendiaryFlare is null ||
+                explosiveFlare is null || canister is null || thumperFlare is null || explodingArrow is null || stunArrow is null || 
+                poisonArrow is null || lightArrow is null || heavyArrow is null || standardArrow is null || cupidArrow is null 
+                ) { LoggingSystem.MessageLog("Failed to get needed items", "Error"); Application.Current.Shutdown(); return; }
+            
+
             foreach (var mag in magazines)
             {
+                if (mag.Name is null) { continue; }
                 if (mag.Name.Contains("Electro"))
                 {
                     mag.AmmoType = electroRounds.UID;
@@ -756,12 +770,26 @@ public partial class App : System.Windows.Application
             task.Wait();
             var releases = task.Result;
             if (releases is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
+            if (DataStorage.Settings.SelectedBLREditVersion == "Release")
+            {
+                foreach (var release in releases)
+                {
+                    if (!release.PreRelease)
+                    { 
+                        LatestRelease = release;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                LatestRelease = releases[0];
+            }
 
-            LatestRelease = releases[0];
-            
+            if (LatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
             LoggingSystem.Log($"Newest Version: {LatestRelease.TagName} of {LatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-            bool newVersionAvailable = (LatestRelease?.Version ?? new("")) > CurrentVersion;
+            bool newVersionAvailable = (LatestRelease.Version ?? new("")) > CurrentVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
             if (DataStorage.Settings.LastRunVersion is null) { assetFolderMissing = true; }
             DataStorage.Settings.LastRunVersion = CurrentVersion.ToString();
@@ -975,7 +1003,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, {ThisAssembly.Git.Branch}, "Resources/ProxyModules.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/ProxyModules.json") is GitHubFile file)
             {
                 var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
@@ -998,7 +1026,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, {ThisAssembly.Git.Branch}, "Resources/Localizations.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/Localizations.json") is GitHubFile file)
             {
                 var localizations = IOResources.Deserialize<Dictionary<string, string>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableLocalization List!");
@@ -1022,7 +1050,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, {ThisAssembly.Git.Branch}, "Resources/ServerList.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/ServerList.json") is GitHubFile file)
             {
                 var serverList = IOResources.Deserialize<List<BLRServer>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading Server List!");

@@ -21,7 +21,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 
     public Dictionary<int, BLRProfileSettings> Settings { get; set; } = new();
     //public BLRKeyBindings KeyBindings { get; set; }
-    public string ProfileName { get; set; }
+    public string ProfileName { get; set; } = "BLREdit-Player";
 
     public static Dictionary<string?, PropertyInfo> SettingPropertiesString { get; } = GetSettingsProperties();
     public static Dictionary<int, PropertyInfo> SettingPropertiesInt { get; } = GetSettingsPropertiesID();
@@ -53,7 +53,6 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
             if (setting.ProfileSetting is null) continue;
             Settings.Add(setting.ProfileSetting.PropertyId, setting);
         }
-        //KeyBindings ??= new();
     }
 
     public BLRProfileSettingsWrapper(string ProfileName, BLRProfileSettings[]? Settings)
@@ -64,10 +63,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
             this.Settings.Add(setting.ProfileSetting.PropertyId, setting);
         }
 
-        //KeyBindings ??= new();
-
         this.ProfileName = ProfileName;
-        //this.KeyBindings = KeyBindings;
     }
 
     public void UpdateFromFile(BLRProfileSettings[] settings)

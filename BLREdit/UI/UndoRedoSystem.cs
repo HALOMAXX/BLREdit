@@ -44,7 +44,7 @@ public static class UndoRedoSystem
             switch(sub.Type)
             {
                 case 0:
-                    sub.PropertyInfo.SetValue(sub.Target, sub.Before, null);
+                    sub.PropertyInfo?.SetValue(sub.Target, sub.Before, null);
                     break;
                 case 1:
                     sub.UndoAction?.Invoke();
@@ -72,7 +72,7 @@ public static class UndoRedoSystem
             switch (sub.Type)
             {
                 case 0:
-                    sub.PropertyInfo.SetValue(sub.Target, sub.After);
+                    sub.PropertyInfo?.SetValue(sub.Target, sub.After);
                     break;
                 case 1:
                     sub.DoAction?.Invoke();
@@ -174,12 +174,12 @@ public struct UndoRedoAction()
     internal List<SubUndoRedoAction> Actions { get; private set; } = new List<SubUndoRedoAction>();
 }
 
-public struct SubUndoRedoAction(object? before, object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents, string? callName, int type = 0, Action? doAction = null, Action? undoAction = null)
+public struct SubUndoRedoAction(object? before, object? after, PropertyInfo? propertyInfo, object? target, BlockEvents blockedEvents, string? callName, int type = 0, Action? doAction = null, Action? undoAction = null)
 {
     internal int Type { get; private set; } = type;
     internal object? Before { get; private set; } = before;
     internal object? After { get; private set; } = after;
-    internal PropertyInfo PropertyInfo { get; private set; } = propertyInfo;
+    internal PropertyInfo? PropertyInfo { get; private set; } = propertyInfo;
     internal object? Target { get; private set; } = target;
     internal BlockEvents BlockedEvents { get; private set; } = blockedEvents;
     internal string? CallName { get; private set; } = callName;

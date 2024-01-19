@@ -34,7 +34,7 @@ public sealed class RESTAPIClient
         DataStorage.DataSaving += SaveCache;
     }
 
-    public async Task<(bool, T)> TryGetAPI<T>(string api)
+    public async Task<(bool, T?)> TryGetAPI<T>(string api)
     {
         if (RequestCache.TryGetValue(api, out var newCache))
         {
@@ -81,7 +81,7 @@ public sealed class RESTAPIClient
             {
                 case "application/octet-stream":
                     var bytes = await response.Content.ReadAsByteArrayAsync();
-                    var date = response.Content.Headers.LastModified.Value.DateTime;
+                    var date = response.Content.Headers.LastModified?.DateTime ?? DateTime.MinValue;
                     if (bytes is not null) { RequestCache.Add(api, (bytes, date)); return (true, (bytes, date)); }
                     break;
                 default:

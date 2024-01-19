@@ -670,23 +670,20 @@ public sealed partial class MainWindow : Window
                             case WeaponControl weaponControl:
                                 if (weaponControl.DataContext is BLRWeapon weapon)
                                 {
-                                    bool isPrimary = false;
                                     var copy = weapon.Copy();
                                     if (weapon.IsPrimary)
                                     {
-                                        isPrimary = true;
                                         MainView.PrimaryWeaponCopy = copy;
                                         ShowAlert($"Copied Primary Weapon!"); //TODO: Add Localization
                                     }
                                     else
                                     {
-                                        isPrimary = false;
                                         MainView.SecondaryWeaponCopy = copy;
                                         ShowAlert($"Copied Secondary Weapon!"); //TODO: Add Localization
                                     }
                                     if (weapon.InternalWeapon is ShareableWeapon wpn)
                                     {
-                                        wpn.IsPrimary = isPrimary;
+                                        wpn.IsPrimary = weapon.IsPrimary;
                                         string json = IOResources.Serialize(wpn, true);
                                         string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
                                         ExportSystem.SetClipboard(jsonNoWhitespaces);
@@ -722,22 +719,19 @@ public sealed partial class MainWindow : Window
                             case WeaponViewControl weaponViewControl:
                                 if (weaponViewControl.DataContext is BLRWeapon viewWeapon)
                                 {
-                                    bool isPrimary = false;
                                     if (viewWeapon.IsPrimary)
                                     {
-                                        isPrimary = true;
                                         MainView.PrimaryWeaponCopy = viewWeapon.Copy();
                                         ShowAlert($"Copied Primary Weapon!"); //TODO: Add Localization
                                     }
                                     else
                                     {
-                                        isPrimary = false;
                                         MainView.SecondaryWeaponCopy = viewWeapon.Copy();
                                         ShowAlert($"Copied Secondary Weapon!"); //TODO: Add Localization
                                     }
                                     if (viewWeapon.InternalWeapon is ShareableWeapon wpn)
                                     {
-                                        wpn.IsPrimary = isPrimary;
+                                        wpn.IsPrimary = viewWeapon.IsPrimary;
                                         string json = IOResources.Serialize(wpn, true);
                                         string jsonNoWhitespaces = IOResources.RemoveWhiteSpacesFromJson.Replace(json, "$1");
                                         ExportSystem.SetClipboard(jsonNoWhitespaces);

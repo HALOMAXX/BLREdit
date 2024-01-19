@@ -274,27 +274,27 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
     #region Gear
     [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetHelmet()); } }
-    public UIBool? IsValidHelmet { get; } = new(true);
+    public UIBool IsValidHelmet { get; } = new(true);
     [BLRItem(ImportSystem.UPPER_BODIES_CATEGORY)] public BLRItem? UpperBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetUpperBody()); } }
-    public UIBool? IsValidUpperBody { get; } = new(true);
+    public UIBool IsValidUpperBody { get; } = new(true);
     [BLRItem(ImportSystem.LOWER_BODIES_CATEGORY)] public BLRItem? LowerBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetLowerBody()); } }
-    public UIBool? IsValidLowerBody { get; } = new(true);
+    public UIBool IsValidLowerBody { get; } = new(true);
     [BLRItem(ImportSystem.TACTICAL_CATEGORY)] public BLRItem? Tactical { get { return GetValueOf(); } set { SetValueOf(value); } }
-    public UIBool? IsValidTactical { get; } = new(true);
+    public UIBool IsValidTactical { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear1 { get { return GetValueOf(); } set { SetValueOf(value, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear1)); } }
-    public UIBool? IsValidGear1 { get; } = new(true);
+    public UIBool IsValidGear1 { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear2 { get { return GetValueOf(); } set { SetValueOf(value, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear2)); } }
-    public UIBool? IsValidGear2 { get; } = new(true);
+    public UIBool IsValidGear2 { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear3 { get { return GetValueOf(); } set { SetValueOf(value, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear3)); } }
-    public UIBool? IsValidGear3 { get; } = new(true);
+    public UIBool IsValidGear3 { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear4 { get { return GetValueOf(); } set { SetValueOf(value, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear4)); } }
-    public UIBool? IsValidGear4 { get; } = new(true);
+    public UIBool IsValidGear4 { get; } = new(true);
     [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetCamo()); } }
-    public UIBool? IsValidBodyCamo { get; } = new(true);
+    public UIBool IsValidBodyCamo { get; } = new(true);
     [BLRItem(ImportSystem.AVATARS_CATEGORY)] public BLRItem? Avatar { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasAvatar)); } }
-    public UIBool? IsValidAvatar { get; } = new(true);
+    public UIBool IsValidAvatar { get; } = new(true);
     [BLRItem(ImportSystem.BADGES_CATEGORY)] public BLRItem? Trophy { get { return GetValueOf(); } set { SetValueOf(value); } }
-    public UIBool? IsValidTrophy { get; } = new(true);
+    public UIBool IsValidTrophy { get; } = new(true);
     #endregion Gear
 
     [BLRItem(ImportSystem.EMBLEM_BACKGROUND_CATEGORY)] public BLRItem? EmblemBackground { get { return GetValueOf(); } set { SetValueOf(value); } }
