@@ -17,9 +17,9 @@ public static class DataStorage
     private static ObservableCollection<BLRClient>? _gameClients;
     private static ObservableCollection<BLRServer>? _servers;
     private static Dictionary<string, BLRProfileSettingsWrapper>? _profileSettings;
-    private static ObservableCollectionExtended<ShareableProfile>? _shareableProfiles;
-    private static ObservableCollectionExtended<ShareableLoadout>? _shareableLoadouts;
-    private static ObservableCollectionExtended<BLRLoadoutStorage>? _blrProfile;
+    private static ObservableCollection<ShareableProfile>? _shareableProfiles;
+    private static ObservableCollection<ShareableLoadout>? _shareableLoadouts;
+    private static ObservableCollection<BLRLoadoutStorage>? _blrProfile;
     private static BLREditSettings? _settings;
     private static ObservableCollection<ProxyModule>? _cachedModules;
     #endregion Fields
@@ -40,17 +40,18 @@ public static class DataStorage
     public static ObservableCollection<BLRClient> GameClients { get { lock (gameClientsLock) { _gameClients ??= IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? new(); } return _gameClients; } }
     public static ObservableCollection<BLRServer> ServerList { get { lock (serverListLock) { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? new(); } return _servers; } }
     public static Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get { lock (profileSettingLock) { _profileSettings ??= IOResources.DeserializeFile<Dictionary<string, BLRProfileSettingsWrapper>>($"PlayerSettings.json") ?? new(); } return _profileSettings; } }
-    public static ObservableCollectionExtended<ShareableProfile> ShareableProfiles { get { lock (shareableLock) { _shareableProfiles ??= ExportSystem.LoadShareableProfiles(); } return _shareableProfiles; } }
-    public static ObservableCollectionExtended<ShareableLoadout> ShareableLoadouts { get { lock (shareableLoadoutLock) { _shareableLoadouts ??= ExportSystem.LoadShareableLoadouts(); } return _shareableLoadouts; } }
-    public static ObservableCollectionExtended<BLRLoadoutStorage> Loadouts { get { lock (loadoutLock) { _blrProfile ??= ExportSystem.LoadStorage(); } return _blrProfile; } }
+    public static ObservableCollection<ShareableProfile> ShareableProfiles { get { lock (shareableLock) { _shareableProfiles ??= ExportSystem.LoadShareableProfiles(); } return _shareableProfiles; } }
+    public static ObservableCollection<ShareableLoadout> ShareableLoadouts { get { lock (shareableLoadoutLock) { _shareableLoadouts ??= ExportSystem.LoadShareableLoadouts(); } return _shareableLoadouts; } }
+    public static ObservableCollection<BLRLoadoutStorage> Loadouts { get { lock (loadoutLock) { _blrProfile ??= ExportSystem.LoadStorage(); } return _blrProfile; } }
     public static BLREditSettings Settings { get { lock (settingsLock) { _settings ??=  IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new(); } return _settings; } set { _settings = value; } }
     #endregion Properties
 
-    public static int FindIn<T>(IList<T> list, T item)
+    public static int FindIn<T>(IList<T> list, T? item)
     {
+        if (item is null) { return -1; }
         for (int i = 0; i < list.Count; i++)
         {
-            if ((object)list[i] == (object)item) return i;
+            if ((object)item == list[i] as object) return i;
         }
         return -1;
     }

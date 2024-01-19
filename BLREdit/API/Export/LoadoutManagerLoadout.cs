@@ -41,21 +41,21 @@ public sealed class LoadoutManagerLoadout
     {
         return new BLRLoadout(null)
         {
-            Primary = this.Primary.GetWeapon(true),
-            Secondary = this.Secondary.GetWeapon(false),
+            Primary = Primary?.GetWeapon(true) ?? new(true),
+            Secondary = Secondary?.GetWeapon(false) ?? new(false),
 
-            Helmet = ImportSystem.GetItemByLMIDAndType(ImportSystem.HELMETS_CATEGORY, Gear.Helmet),
-            UpperBody = ImportSystem.GetItemByLMIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, Gear.UpperBody),
-            LowerBody = ImportSystem.GetItemByLMIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, Gear.LowerBody),
-            Tactical = ImportSystem.GetItemByLMIDAndType(ImportSystem.TACTICAL_CATEGORY, Gear.Tactical),
-            Trophy = ImportSystem.GetItemByLMIDAndType(ImportSystem.BADGES_CATEGORY, Gear.Badge),
-            BodyCamo = ImportSystem.GetItemByLMIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Gear.BodyCamo),
-            Avatar = ImportSystem.GetItemByLMIDAndType(ImportSystem.AVATARS_CATEGORY, Gear.Avatar),
+            Helmet = ImportSystem.GetItemByLMIDAndType(ImportSystem.HELMETS_CATEGORY, Gear?.Helmet ?? -1),
+            UpperBody = ImportSystem.GetItemByLMIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, Gear?.UpperBody ?? -1),
+            LowerBody = ImportSystem.GetItemByLMIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, Gear?.LowerBody ?? -1),
+            Tactical = ImportSystem.GetItemByLMIDAndType(ImportSystem.TACTICAL_CATEGORY, Gear?.Tactical ?? -1),
+            Trophy = ImportSystem.GetItemByLMIDAndType(ImportSystem.BADGES_CATEGORY, Gear?.Badge ?? -1),
+            BodyCamo = ImportSystem.GetItemByLMIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Gear?.BodyCamo ?? -1),
+            Avatar = ImportSystem.GetItemByLMIDAndType(ImportSystem.AVATARS_CATEGORY, Gear?.Avatar ?? -1),
 
-            Gear1 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.Gear_R1),
-            Gear2 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.Gear_R2),
-            Gear3 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.Gear_L1),
-            Gear4 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.Gear_L2),
+            Gear1 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear?.Gear_R1 ?? -1),
+            Gear2 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear?.Gear_R2 ?? -1),
+            Gear3 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear?.Gear_L1 ?? -1),
+            Gear4 = ImportSystem.GetItemByLMIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear?.Gear_L2 ?? -1),
 
             Depot1 = ImportSystem.GetItemByLMIDAndType(ImportSystem.SHOP_CATEGORY, Depot[0]),
             Depot2 = ImportSystem.GetItemByLMIDAndType(ImportSystem.SHOP_CATEGORY, Depot[1]),

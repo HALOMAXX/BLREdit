@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.API.Utils;
+
+using System;
 using System.Text.Json.Serialization;
 
 namespace BLREdit.API.REST_API.GitHub;
@@ -26,5 +28,6 @@ public sealed class GitHubRelease
     [JsonPropertyName("zipball_url")] public string? ZipballURL { get; set; }
     [JsonPropertyName("body")] public string? Body { get; set; }
     [JsonPropertyName("mentions_count")] public int MentionsCount { get; set; }
-    [JsonIgnore] public int Version { get { return App.CreateVersion(TagName); } }
+    [JsonIgnore] private BLREditVersion? _version;
+    [JsonIgnore] public BLREditVersion Version { get { _version ??= new(TagName); return _version; } }
 }

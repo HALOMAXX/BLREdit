@@ -29,16 +29,22 @@ namespace BLREdit;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    public const string CurrentVersion = "v0.12.2";
+    public static readonly BLREditVersion CurrentVersion = new($"v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}");
+    public static string RepositoryBaseURL { get; } = ThisAssembly.Git.RepositoryUrl.EndsWith(".git") ? new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length-4).ToArray()) : ThisAssembly.Git.RepositoryUrl;
+    public static string CurrentOwner { get; } = RepositoryBaseURL.Split('/').Reverse().Skip(1).First();
+    public static string CurrentRepo { get; } = RepositoryBaseURL.Split('/').Last();
+
     public const string CurrentVersionTitle = "Fixes";
-    public const string CurrentOwner = "HALOMAXX";
-    public const string CurrentRepo = "BLREdit";
-    public static readonly int CurrentVersionNumber = CreateVersion(CurrentVersion);
+
+
+    
+    
 
     public static bool IsNewVersionAvailable { get; private set; } = false;
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
     public static GitHubRelease? LatestRelease { get; private set; } = null;
+    public static GitHubRelease[]? Releases { get; private set; } = null;
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = new();
 
@@ -58,10 +64,12 @@ public partial class App : System.Windows.Application
     static void AddNewItemList(string name, KeyValuePair<string, JsonNode?> array)
 #pragma warning restore IDE0051 // Remove unused private members
     {
+        if (array.Value is null) return;
         var newList = new ObservableCollection<BLRItem>();
         foreach (var item in array.Value.AsObject())
         {
-            newList.Add(new BLRItem() { UID = int.Parse(item.Key), Name = item.Value.ToString() });
+            if(item.Value is not null)
+                newList.Add(new BLRItem() { UID = int.Parse(item.Key), Name = item.Value.ToString() });
         }
         ImportSystem.ItemLists.Add(name, newList);
     }
@@ -84,6 +92,66 @@ public partial class App : System.Windows.Application
         {
             ForceStart = true;
         }
+
+        if (argDict.TryGetValue("-package", out string _))
+        {
+            try
+            {
+                LoggingSystem.Log($"Started Packaging BLREdit Release");
+                PackageAssets();
+                LoggingSystem.Log($"Finished Packaging");
+            }
+            catch (Exception error) { LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error); }
+            if (LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_OpenPackagingFolder, BLREdit.Properties.Resources.msgT_Info, MessageBoxButton.YesNo))
+            {
+                Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\packaged");
+            }
+            Application.Current.Shutdown();
+            return;
+        }
+
+        if (argDict.TryGetValue("-packageSilent", out string _))
+        {
+            try
+            {
+                LoggingSystem.Log($"Started Packaging BLREdit Release");
+                GitHubAssets();
+                LoggingSystem.Log($"Finished Packaging");
+            }
+            catch { }
+
+            Application.Current.Shutdown();
+            return;
+        }
+
+        if (argDict.TryGetValue("-server", out string configFile))
+        {
+            try
+            {
+                IOResources.SpawnConsole();
+                Console.Title = $"[Watchdog(BLREdit:{CurrentVersion})]: Starting!";
+
+                App.AvailableProxyModuleCheck();
+
+                string command = "blredit://start-server/" + Uri.EscapeDataString(File.ReadAllText(configFile));
+
+                BLREditPipe.ProcessArgs(new string[] { command });
+
+                Console.WriteLine("Press Q to Exit and Kill all Server Processes");
+                while (Console.ReadKey().Key != ConsoleKey.Q) { }
+            }
+            catch (Exception error)
+            {
+                LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error);
+            }
+
+            BLRProcess.KillAll();
+
+            Application.Current.Shutdown();
+            return;
+        }
+
+#if DEBUG
 
         if (argDict.TryGetValue("-updateCamoTT", out var _))
         {
@@ -112,13 +180,11 @@ public partial class App : System.Windows.Application
                 }
             }
 
-            using (ResXResourceWriter resx = new("ItemTooltips.resx"))
+            using ResXResourceWriter resx = new("ItemTooltips.resx");
+            foreach (var item in TooltipList)
             {
-                foreach (var item in TooltipList)
-                {
-                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
-                    resx.AddResource(node);
-                }
+                var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                resx.AddResource(node);
             }
         }
 
@@ -223,6 +289,8 @@ public partial class App : System.Windows.Application
             ImportSystem.Initialize();
 
             var weapons = ImportSystem.GetItemListOfType(ImportSystem.PRIMARY_CATEGORY).Concat(ImportSystem.GetItemListOfType(ImportSystem.SECONDARY_CATEGORY));
+            if (weapons is null) { LoggingSystem.MessageLog("Failed to get Weapon list", "Error"); Application.Current.Shutdown(); return; }
+
 
             var noBarrel = ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, MagiCowsWeapon.NoBarrel);
             var noCamo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, MagiCowsWeapon.NoCamo);
@@ -233,9 +301,12 @@ public partial class App : System.Windows.Application
             var noStock = ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, MagiCowsWeapon.NoStock);
             var noTag = ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, MagiCowsWeapon.NoTag);
 
+            
+
             foreach (var primary in weapons)
             {
                 LoggingSystem.Log($"{primary.Name}:{primary.UID}");
+                if (primary.SupportedMods is null || primary.SupportedMods.Count <= 0) { LoggingSystem.Log(""); continue; }
                 if (!primary.SupportedMods.Contains("ammos"))
                 {
                     LoggingSystem.Log($"doesn't support ammos");
@@ -298,13 +369,22 @@ public partial class App : System.Windows.Application
             var explodingArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Exploding Arrow");
             var stunArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Stun Arrow");
             var poisonArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Poison Arrow");
-            var lightArrow= ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Light Arrow");
+            var lightArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Light Arrow");
             var heavyArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Heavy Arrow");
             var standardArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Standard Arrow");
             var cupidArrow = ImportSystem.GetItemByNameAndType(ImportSystem.AMMO_CATEGORY, "Cupid's Arrow");
 
+            if (
+                magazines is null || magnumRounds is null || APRounds is null || standardRounds is null || electroRounds is null ||
+                exploRounds is null || HPRounds is null || incendiaryRounds is null || toxicRounds is null || incendiaryFlare is null ||
+                explosiveFlare is null || canister is null || thumperFlare is null || explodingArrow is null || stunArrow is null || 
+                poisonArrow is null || lightArrow is null || heavyArrow is null || standardArrow is null || cupidArrow is null 
+                ) { LoggingSystem.MessageLog("Failed to get needed items", "Error"); Application.Current.Shutdown(); return; }
+            
+
             foreach (var mag in magazines)
             {
+                if (mag.Name is null) { continue; }
                 if (mag.Name.Contains("Electro"))
                 {
                     mag.AmmoType = electroRounds.UID;
@@ -377,52 +457,6 @@ public partial class App : System.Windows.Application
             return;
         }
 
-        if (argDict.TryGetValue("-package", out string _))
-        {
-            try
-            {
-                LoggingSystem.Log($"Started Packaging BLREdit Release");
-                PackageAssets();
-                LoggingSystem.Log($"Finished Packaging");
-            }
-            catch (Exception error) { LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error); }
-            if (LoggingSystem.MessageLog(BLREdit.Properties.Resources.msg_OpenPackagingFolder, BLREdit.Properties.Resources.msgT_Info, MessageBoxButton.YesNo))
-            {
-                Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\packaged");
-            }
-            Application.Current.Shutdown();
-            return;
-        }
-
-        if (argDict.TryGetValue("-server", out string configFile))
-        {
-            try
-            {
-                IOResources.SpawnConsole();
-                Console.Title = $"[Watchdog(BLREdit:{CurrentVersion})]: Starting!";
-
-                App.AvailableProxyModuleCheck();
-
-                string command = "blredit://start-server/" + Uri.EscapeDataString(File.ReadAllText(configFile));
-
-                BLREditPipe.ProcessArgs(new string[] { command });
-
-                Console.WriteLine("Press Q to Exit and Kill all Server Processes");
-                while (Console.ReadKey().Key != ConsoleKey.Q) { }
-            }
-            catch (Exception error)
-            {
-                LoggingSystem.MessageLog(string.Format(BLREdit.Properties.Resources.msg_PackagingFailed, error), BLREdit.Properties.Resources.msgT_Error);
-            }
-
-            BLRProcess.KillAll();
-
-            Application.Current.Shutdown();
-            return;
-        }
-
-#if DEBUG
-
         if (argDict.TryGetValue("-localize", out string _))
         {
             ImportSystem.Initialize();
@@ -477,7 +511,7 @@ public partial class App : System.Windows.Application
             Application.Current.Shutdown();
             return;
         }
-        #endif
+#endif
 
         if (BLREditPipe.ForwardLaunchArgs(argList))
         {
@@ -508,6 +542,7 @@ public partial class App : System.Windows.Application
             catch { }
         }
         LoggingSystem.Log("BLREdit Closed!");
+        Trace.Flush();
     }
 
     private static void CreateAllDirectories()
@@ -529,11 +564,32 @@ public partial class App : System.Windows.Application
     {
         Directory.SetCurrentDirectory(BLREditLocation);
 
+        SetUpdateFilePath();
+
+        CreateAllDirectories();
+
+        foreach (var file in Directory.EnumerateFiles("logs\\BLREdit"))
+        {
+            var fileInfo = new FileInfo(file);
+            var creationDelta = DateTime.Now - fileInfo.CreationTime;
+            if (creationDelta.Days >= 1)
+            {
+                try
+                {
+                    fileInfo.Delete();
+                }
+                catch (Exception e)
+                {
+                    LoggingSystem.Log($"[ERROR] Failed to delete old log file {fileInfo.Name}:\n {e}");
+                }
+            }
+        }
+
         Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));
 
         Trace.AutoFlush = true;
 
-        LoggingSystem.Log($"BLREdit {CurrentVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()}");
+        LoggingSystem.Log($"BLREdit {CurrentVersion} {CultureInfo.CurrentCulture.Name} @{BLREditLocation} or {Directory.GetCurrentDirectory()} GitHub repo: <{RepositoryBaseURL}> / <{ThisAssembly.Git.RepositoryUrl}>");
 
         if (DataStorage.Settings.SelectedCulture is null)
         {
@@ -547,29 +603,12 @@ public partial class App : System.Windows.Application
     {
         LoggingSystem.Log("App Constructor Start");
         AppDomain.CurrentDomain.UnhandledException += UnhandledException;
-
-        SetUpdateFilePath();
-
-        CreateAllDirectories();
-
-        foreach (var file in Directory.EnumerateFiles("logs\\BLREdit"))
-        {
-            var fileInfo = new FileInfo(file);
-            var creationDelta = DateTime.Now - fileInfo.CreationTime;
-            if (creationDelta.Days >= 1)
-            {
-                try {
-                    fileInfo.Delete();
-                } catch(Exception e) {
-                    LoggingSystem.Log($"[ERROR] Failed to delete old log file {fileInfo.Name}:\n {e}");
-                }
-            }
-        }
     }
 
     void UnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
         LoggingSystem.Log($"[Unhandled]: {e.ExceptionObject}");
+        Trace.Flush();
         Environment.Exit(666);
     }
 
@@ -621,6 +660,27 @@ public partial class App : System.Windows.Application
 
         CleanPackageOrUpdateDirectory();
 
+        var task = StartSTATask<bool>(GetLatestRelease);
+        task.Wait();
+
+
+        if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
+        var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
+        gitProcess.WaitForExit();
+
+        bool json = false, dlls = false, textures = false, crosshairs = false, patches = false;
+
+        var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+        foreach (var line in result)
+        {
+            if (line.Contains("Assets/json")){ json = true; }
+            if (line.Contains("Assets/dlls")) { dlls = true; }
+            if (line.Contains("Assets/textures")) { textures = true; }
+            if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
+            if (line.Contains("Assets/patches")) { patches = true; }
+        }
+
         if (exeZip is null) { LoggingSystem.Log("[PackageAssets]: exeZip was null"); return; }
         if (assetZip is null) { LoggingSystem.Log("[PackageAssets]: assetZip was null"); return; }
         if (jsonZip is null) { LoggingSystem.Log("[PackageAssets]: jsonZip was null"); return; }
@@ -629,26 +689,26 @@ public partial class App : System.Windows.Application
         if (crosshairsZip is null) { LoggingSystem.Log("[PackageAssets]: crosshairsZip was null"); return; }
         if (patchesZip is null) { LoggingSystem.Log("[PackageAssets]: patchesZip was null"); return; }
 
-        var taskLocalize = Task.Run(() => {
-            Dictionary<string, string?> LocalePairs = new();
-            var dirs = Directory.EnumerateDirectories(BLREditLocation);
-            foreach (var dir in dirs)
-            {
-                string resourceFile = $"{dir}\\BLREdit.resources.dll";
-                if (File.Exists(resourceFile))
-                { 
-                    var hash = IOResources.CreateFileHash(resourceFile);
-                    string locale = dir.Substring(dir.Length - 5, 5);
-                    string targetZip = $"{IOResources.PACKAGE_DIR}\\locale\\Localizations\\{locale}.zip";
-                    LocalePairs.Add(locale, hash);
-                    File.WriteAllText($"{dir}\\manifest.hash", hash);
-                    if (File.Exists(targetZip)) { File.Delete(targetZip); }
-                    ZipFile.CreateFromDirectory(dir, targetZip);
-                }
-            }
+        //var taskLocalize = Task.Run(() => {
+        //    Dictionary<string, string?> LocalePairs = new();
+        //    var dirs = Directory.EnumerateDirectories(BLREditLocation);
+        //    foreach (var dir in dirs)
+        //    {
+        //        string resourceFile = $"{dir}\\BLREdit.resources.dll";
+        //        if (File.Exists(resourceFile))
+        //        { 
+        //            var hash = IOResources.CreateFileHash(resourceFile);
+        //            string locale = dir.Substring(dir.Length - 5, 5);
+        //            string targetZip = $"{IOResources.PACKAGE_DIR}\\locale\\Localizations\\{locale}.zip";
+        //            LocalePairs.Add(locale, hash);
+        //            File.WriteAllText($"{dir}\\manifest.hash", hash);
+        //            if (File.Exists(targetZip)) { File.Delete(targetZip); }
+        //            ZipFile.CreateFromDirectory(dir, targetZip);
+        //        }
+        //    }
 
-            IOResources.SerializeFile($"{IOResources.PACKAGE_DIR}\\locale\\Localizations.json", LocalePairs);
-        });
+        //    IOResources.SerializeFile($"{IOResources.PACKAGE_DIR}\\locale\\Localizations.json", LocalePairs);
+        //});
 
 
         var taskExe = Task.Run(() => 
@@ -657,13 +717,77 @@ public partial class App : System.Windows.Application
             var entry = archive.CreateEntryFromFile("BLREdit.exe", "BLREdit.exe");
         });
         var taskAsset = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName); });
-        var taskJson = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName); });
-        var taskDlls = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName); });
-        var taskTexture = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName); });
-        var taskPreview = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
-        var taskPatches = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
+        var taskJson = Task.Run(() => { if(json) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName); });
+        var taskDlls = Task.Run(() => { if (dlls) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName); });
+        var taskTexture = Task.Run(() => { if (textures) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName); });
+        var taskPreview = Task.Run(() => { if (crosshairs) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
+        var taskPatches = Task.Run(() => { if (patches) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
 
-        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches, taskLocalize).Wait();
+        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
+
+        SetUpdateFilePath();
+    }
+
+    public static void GitHubAssets()
+    {
+        Directory.CreateDirectory(IOResources.PACKAGE_DIR);
+        //Directory.CreateDirectory($"{IOResources.PACKAGE_DIR}\\locale\\Localizations");
+
+        SetPackageFilePath();
+
+        CleanPackageOrUpdateDirectory();
+
+        var task = StartSTATask<bool>(GetLatestRelease);
+        task.Wait();
+
+
+        if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
+        var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
+        gitProcess.WaitForExit();
+
+        bool json = false, dlls = false, textures = false, crosshairs = false, patches = false;
+
+        var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+        foreach (var line in result)
+        {
+            if (line.Contains("Assets/json")) { json = true; }
+            if (line.Contains("Assets/dlls")) { dlls = true; }
+            if (line.Contains("Assets/textures")) { textures = true; }
+            if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
+            if (line.Contains("Assets/patches")) { patches = true; }
+        }
+
+        var exeSource = new FileInfo("BLREdit.exe");
+        var exeSym = new FileInfo("packaged/BLREdit.exe");
+
+        var assetsSource = new DirectoryInfo("Assets");
+        var assetsSym = new DirectoryInfo("packaged/Assets");
+
+        var jsonSource = new DirectoryInfo("Assets/json");
+        var jsonSym = new DirectoryInfo("packaged/json");
+
+        var dllsSource = new DirectoryInfo("Assets/dlls");
+        var dllsSym = new DirectoryInfo("packaged/dlls");
+
+        var texturesSource = new DirectoryInfo("Assets/textures");
+        var texturesSym = new DirectoryInfo("packaged/textures");
+
+        var crosshairsSource = new DirectoryInfo("Assets/crosshairs");
+        var crosshairsSym = new DirectoryInfo("packaged/crosshairs");
+
+        var patchesSource = new DirectoryInfo("Assets/patches");
+        var patchesSym = new DirectoryInfo("packaged/patches");
+
+        var taskExe = Task.Run(() => { return IOResources.CreateSymbolicLink(exeSym, exeSource); });
+        var taskAsset = Task.Run(() => { return IOResources.CreateSymbolicLink(assetsSym, assetsSource); });
+        var taskJson = Task.Run(() => { if (json) return IOResources.CreateSymbolicLink(jsonSym, jsonSource); return false; });
+        var taskDlls = Task.Run(() => { if (dlls) return IOResources.CreateSymbolicLink(dllsSym, dllsSource); return false; });
+        var taskTexture = Task.Run(() => { if (textures) return IOResources.CreateSymbolicLink(texturesSym, texturesSource); return false; });
+        var taskPreview = Task.Run(() => { if (crosshairs) return IOResources.CreateSymbolicLink(crosshairsSym, crosshairsSource); return false; });
+        var taskPatches = Task.Run(() => { if (patches) return IOResources.CreateSymbolicLink(patchesSym, patchesSource); return false; });
+
+        Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait(); //
 
         SetUpdateFilePath();
     }
@@ -685,7 +809,7 @@ public partial class App : System.Windows.Application
 
     private static bool AddAssets(GitHubRelease release)
     {
-        if (release.Assets is null || release.Assets.Length < 1) return false;
+        if (release.Assets is null || release.Assets.Length < 1 || (DataStorage.Settings.SelectedBLREditVersion == "Release" && release.PreRelease)) return false;
 
         bool jso = false, dll = false, tex = false, cro = false, pat = false;
 
@@ -700,7 +824,7 @@ public partial class App : System.Windows.Application
             {
                 if (!DownloadLinks.ContainsKey(assetZip)) { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
             }
-            if (release.Version > CurrentVersionNumber)
+            if (release.Version > CurrentVersion)
             {
                 if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name))
                 {
@@ -735,6 +859,39 @@ public partial class App : System.Windows.Application
             return false;
     }
 
+    public static bool GetLatestRelease()
+    {
+        if (LatestRelease is not null) { return true; }
+        try
+        {
+            using var task = GitHubClient.GetReleases(CurrentOwner, CurrentRepo);
+            task.Wait();
+            Releases = task.Result;
+            if (Releases is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
+            if (DataStorage.Settings.SelectedBLREditVersion == "Release")
+            {
+                foreach (var release in Releases)
+                {
+                    if (!release.PreRelease)
+                    {
+                        LatestRelease = release;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                LatestRelease = Releases[0];
+            }
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.Log($"{error.Message}\n{error.StackTrace}");
+            return false;
+        }
+        return true;
+    }
+
     public static bool VersionCheck()
     {
         if (versionCheckDone)
@@ -747,25 +904,24 @@ public partial class App : System.Windows.Application
 
         try
         {
-            using var task = GitHubClient.GetReleases(CurrentOwner, CurrentRepo);
-            task.Wait();
-            var releases = task.Result;
-            if (releases is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
+            GetLatestRelease();
 
-            LatestRelease = releases[0];
-            
+            if (LatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
             LoggingSystem.Log($"Newest Version: {LatestRelease.TagName} of {LatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-            bool newVersionAvailable = (LatestRelease?.Version ?? -1) > CurrentVersionNumber;
+            bool newVersionAvailable = (LatestRelease.Version ?? new("")) > CurrentVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
             if (DataStorage.Settings.LastRunVersion is null) { assetFolderMissing = true; }
-            DataStorage.Settings.LastRunVersion = CurrentVersion;
+            DataStorage.Settings.LastRunVersion = CurrentVersion.ToString();
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
 
-            foreach (var release in releases)
+            if (Releases is not null)
             {
-                if (AddAssets(release)) { assetFolderMissing = true; break; }
+                foreach (var release in Releases)
+                {
+                    if (AddAssets(release)) { assetFolderMissing = true; break; }
+                }
             }
 
             if (newVersionAvailable && assetFolderMissing)
@@ -961,15 +1117,16 @@ public partial class App : System.Windows.Application
 
     private static async Task<RepositoryProxyModule[]?> GetAvailableProxyModules()
     {
-        LoggingSystem.Log("Downloading AvailableProxyModule List!");
+        LoggingSystem.Log($"Downloading AvailableProxyModule List!");
 #if DEBUG
         var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(File.ReadAllText("../../../../Resources/ProxyModules.json"));
         LoggingSystem.Log("Loaded AvailableProxyModule from local file!");
         return moduleList;
+        //TODO: make the branch dynamic
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ProxyModules.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/ProxyModules.json") is GitHubFile file)
             {
                 var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
@@ -992,7 +1149,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/Localizations.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/Localizations.json") is GitHubFile file)
             {
                 var localizations = IOResources.Deserialize<Dictionary<string, string>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableLocalization List!");
@@ -1016,7 +1173,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "master", "Resources/ServerList.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/ServerList.json") is GitHubFile file)
             {
                 var serverList = IOResources.Deserialize<List<BLRServer>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading Server List!");
@@ -1027,7 +1184,7 @@ public partial class App : System.Windows.Application
         { LoggingSystem.MessageLog($"Can't get server list from Github\n{error}", "Error"); } //TODO: Add Localization
         return new() 
         { //Only localhost is needed as most likely we are offline so there is no need to add anyother default servers
-            new() { ServerAddress = "localhost", Port = 7777 } //Local User Server
+            new() { ID = "localhost" } //Local User Server
         };
 #endif
     }
@@ -1139,7 +1296,7 @@ public partial class App : System.Windows.Application
     private static void DownloadLocale(string locale)
     {
         string targetZip = $"downloads\\localizations\\{locale}.zip";
-        if (WebResources.DownloadFile($"https://github.com/{CurrentOwner}/{CurrentRepo}/raw/master/Resources/Localizations/{locale}.zip", targetZip))
+        if (WebResources.DownloadFile($"{RepositoryBaseURL}/raw/{ThisAssembly.Git.Branch}/Resources/Localizations/{locale}.zip", targetZip))
         {
             if (Directory.Exists(locale)) { Directory.Delete(locale, true); Directory.CreateDirectory(locale); }
             ZipFile.ExtractToDirectory(targetZip, $"{locale}");

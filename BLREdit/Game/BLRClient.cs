@@ -297,28 +297,30 @@ public sealed class BLRClient : INotifyPropertyChanged
         LoggingSystem.Log("Finished Removing all modules and invalidating client");
     }
 
-    private void GetLatestBLRevivePackages()
+    private static void GetLatestBLRevivePackages()
     {
         var task = Task.Run(() => GitlabClient.GetGenericPackages("blrevive", "blrevive", "blrevive"));
         task.Wait();
+        if(task.Result is null || task.Result.Length <= 0) { LoggingSystem.Log("Failed to get BLRevive packages"); return; }
         _latestBLRevivePackage = task.Result[0];
         var task2 = Task.Run(() => GitlabClient.GetLatestPackageFile(_latestBLRevivePackage, $"BLRevive.dll"));
         task2.Wait();
+        if (task2.Result is null) { LoggingSystem.Log("Failed to get BLRevive package file"); return; }
         _latestBLRevivePackageFile = task2.Result;
     }
 
-    GitlabPackage _latestBLRevivePackage;
-    GitlabPackage? LatestBLRevivePackage { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackage; } }
+    static GitlabPackage? _latestBLRevivePackage;
+    static GitlabPackage? LatestBLRevivePackage { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackage; } }
 
-    GitlabPackageFile _latestBLRevivePackageFile;
-    GitlabPackageFile? LatestBLRevivePackageFile { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackageFile; } }
+    static GitlabPackageFile? _latestBLRevivePackageFile;
+    static GitlabPackageFile? LatestBLRevivePackageFile { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackageFile; } }
     private bool CheckProxyUpdate()
     {
         if (DataStorage.Settings.SelectedSDKType == "BLRevive")
         {
             if (SDKVersionDate is not null && SDKType is not null)
             {
-                var d = LatestBLRevivePackageFile.CreatedAt;
+                var d = LatestBLRevivePackageFile?.CreatedAt ?? DateTime.MinValue;
                 return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second) > SDKVersionDate;
             }
             else
@@ -342,6 +344,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (DataStorage.Settings.SelectedSDKType == "BLRevive")
         {
             LoggingSystem.Log($"Downloading latest BLRevive release!");
+            if (LatestBLRevivePackage is null) { LoggingSystem.Log("Can't update BLRevive no packages available!"); return; }
             var reiveResult = GitlabClient.DownloadPackage(LatestBLRevivePackage, "BLRevive.dll", "BLRevive");
             var dInputResult = GitlabClient.DownloadPackage(LatestBLRevivePackage, "DINPUT8.dll", "DINPUT8");
             LoggingSystem.Log($"Finished downloading latest BLRevive release!");

@@ -67,6 +67,26 @@ public sealed class IOResources
 
     public static Regex RemoveWhiteSpacesFromJson { get; } = new Regex("(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+");
 
+    [DllImport("kernel32.dll", SetLastError = true)]
+    static extern bool CreateSymbolicLink(
+        string lpSymlinkFileName, string lpTargetFileName, SymbolicLink dwFlags);
+
+    enum SymbolicLink
+    {
+        File = 0,
+        Directory = 1
+    }
+
+    public static bool CreateSymbolicLink(FileInfo SymLink, FileInfo Source)
+    {
+        return CreateSymbolicLink(SymLink.FullName, Source.FullName, SymbolicLink.File);
+    }
+
+    public static bool CreateSymbolicLink(DirectoryInfo SymLink, DirectoryInfo Source)
+    {
+        return CreateSymbolicLink(SymLink.FullName, Source.FullName, SymbolicLink.Directory);
+    }
+
     public static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
     {
         // Get information about the source directory

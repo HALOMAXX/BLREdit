@@ -68,26 +68,26 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     #region Weapon Parts
     [BLRItem($"{ImportSystem.PRIMARY_CATEGORY}|{ImportSystem.SECONDARY_CATEGORY}")] public BLRItem? Receiver { get { return GetValueOf(); } set { if (AllowReceiver(value)) { SetValueOf(value); RemoveIncompatibleMods(); AddMissingDefaultParts(); UpdateScopeIcons(); } } }
-    [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLRItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); } }
-    public UIBool? IsValidBarrel { get; } = new(true);
+    [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLRItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); RemoveIncompatibleMods(); } }
+    public UIBool IsValidBarrel { get; } = new(true);
     [BLRItem(ImportSystem.MAGAZINES_CATEGORY)] public BLRItem? Magazine { get { return GetValueOf(); } set { SetValueOf(value); var ammo = Ammo; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } else { ammo = null; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } } } }
-    public UIBool? IsValidMagazine { get; } = new(true);
+    public UIBool IsValidMagazine { get; } = new(true);
     [BLRItem(ImportSystem.MUZZELS_CATEGORY)] public BLRItem? Muzzle { get { return GetValueOf(); } set { SetValueOf(value); } }
-    public UIBool? IsValidMuzzle { get; } = new(true);
+    public UIBool IsValidMuzzle { get; } = new(true);
     [BLRItem(ImportSystem.STOCKS_CATEGORY)] public BLRItem? Stock { get { return GetValueOf(); } set { if (AllowStock(Receiver, Barrel, value, true)) { SetValueOf(value); } } }
-    public UIBool? IsValidStock { get; } = new(true);
+    public UIBool IsValidStock { get; } = new(true);
     [BLRItem(ImportSystem.SCOPES_CATEGORY)] public BLRItem? Scope { get { return GetValueOf(); } set { SetValueOf(value); UpdateScopeIcons(); } }
-    public UIBool? IsValidScope { get; } = new(true);
+    public UIBool IsValidScope { get; } = new(true);
     [BLRItem(ImportSystem.GRIPS_CATEGORY)] public BLRItem? Grip { get { return GetValueOf(); } set { SetValueOf(value); } }
-    public UIBool? IsValidGrip { get; } = new(true);
+    public UIBool IsValidGrip { get; } = new(true);
     [BLRItem(ImportSystem.HANGERS_CATEGORY)] public BLRItem? Tag { get { return GetValueOf(); } set { SetValueOf(value); } }
-    public UIBool? IsValidTag { get; } = new(true);
+    public UIBool IsValidTag { get; } = new(true);
     [BLRItem(ImportSystem.CAMOS_WEAPONS_CATEGORY)] public BLRItem? Camo { get { return GetValueOf(); } set { SetValueOf(value); } }
-    public UIBool? IsValidCamo { get; } = new(true);
+    public UIBool IsValidCamo { get; } = new(true);
     [BLRItem(ImportSystem.AMMO_CATEGORY)] public BLRItem? Ammo { get { return GetValueOf(); } set { if (IsAmmoOk(ref value)) { SetValueOf(value); } } }
-    public UIBool? IsValidAmmo { get; } = new(true);
+    public UIBool IsValidAmmo { get; } = new(true);
     [BLRItem(ImportSystem.PRIMARY_SKIN_CATEGORY)] public BLRItem? Skin { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasSkinEquipped)); } }
-    public UIBool? IsValidSkin { get; } = new(true);
+    public UIBool IsValidSkin { get; } = new(true);
     #endregion Weapon Parts
 
     private BLRItem? GetValueOf([CallerMemberName] string? name = null)
@@ -290,7 +290,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     private bool AllowStock(BLRItem? receiver, BLRItem? barrel, BLRItem? stock, bool displayMessage = false)
     {
         if (stock is null || stock.Name == "No Stock") return true;
-        if (!IsPrimary && (Loadout?.Profile?.IsAdvanced.IsNot ?? false))
+        if (!IsPrimary)
         {
             if (IsPistol(receiver) && (barrel?.Name ?? MagiCowsWeapon.NoBarrel) == MagiCowsWeapon.NoBarrel)
             {
@@ -868,7 +868,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         if (Barrel is null || !Barrel.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrel(), GetType().GetProperty(nameof(Barrel)), this); }
 
-        if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || AllowStock(Receiver, Barrel, wpn?.GetStock()))
+        if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || !AllowStock(Receiver, Barrel, Stock))
         { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStock(), GetType().GetProperty(nameof(Stock)), this); }
 
         if (Scope is null || !Scope.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
