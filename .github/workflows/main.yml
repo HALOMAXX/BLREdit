@@ -32,14 +32,48 @@ jobs:
         
       - name: Build App
         run: msbuild $env:Solution_Name /p:Configuration=Release /p:DeployOnBuild=true
+
+      - name: Package App
+        run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent
         
-#      - name: ListFiles
-#        shell: pwsh
-#        run: |
-#          Get-ChildItem -Recurse
-        
-      - name: Upload Artifact
+      - name: Upload BLREdit Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: release_build
-          path: BLREdit\bin\Release\net48\
+          name: BLREdit
+          path: BLREdit\bin\Release\net48\packaged\BLREdit.exe
+        
+      - name: Upload Assets Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Asstes
+          path: BLREdit\bin\Release\net48\packaged\Assets
+
+      - name: Upload DLLs Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dlls
+          path: BLREdit\bin\Release\net48\packaged\dlls
+
+      - name: Upload JSON Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: json
+          path: BLREdit\bin\Release\net48\packaged\json
+
+      - name: Upload Icons Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: textures
+          path: BLREdit\bin\Release\net48\packaged\textures
+
+      - name: Upload Scopes Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: crosshairs
+          path: BLREdit\bin\Release\net48\packaged\crosshairs
+
+      - name: Upload Patches Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: patches
+          path: BLREdit\bin\Release\net48\packaged\patches
