@@ -12,7 +12,7 @@ public sealed class BLREditVersion
     public BLREditVersion(string? versionTag, string? subName = null)
     {
         if (versionTag is null) return;
-        if (!string.IsNullOrEmpty(subName)) { Name = subName; }
+        if (!string.IsNullOrEmpty(subName) && subName is not null) { Name = subName; }
         var fullVersion = string.Join("v", versionTag.Split('v').Skip(1));
         var splitFullVersion = fullVersion.Split('-');
         var subVersion = $"v{string.Join("-", splitFullVersion.Skip(1))}";

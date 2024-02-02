@@ -37,9 +37,6 @@ public partial class App : System.Windows.Application
     public const string CurrentVersionTitle = "Fixes";
 
 
-    
-    
-
     public static bool IsNewVersionAvailable { get; private set; } = false;
     public static bool IsBaseRuntimeMissing { get; private set; } = true;
     public static bool IsUpdateRuntimeMissing { get; private set; } = true;
@@ -660,27 +657,6 @@ public partial class App : System.Windows.Application
 
         CleanPackageOrUpdateDirectory();
 
-        var task = StartSTATask<bool>(GetLatestRelease);
-        task.Wait();
-
-
-        if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
-        var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
-        gitProcess.WaitForExit();
-
-        bool json = false, dlls = false, textures = false, crosshairs = false, patches = false;
-
-        var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-
-        foreach (var line in result)
-        {
-            if (line.Contains("Assets/json")){ json = true; }
-            if (line.Contains("Assets/dlls")) { dlls = true; }
-            if (line.Contains("Assets/textures")) { textures = true; }
-            if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
-            if (line.Contains("Assets/patches")) { patches = true; }
-        }
-
         if (exeZip is null) { LoggingSystem.Log("[PackageAssets]: exeZip was null"); return; }
         if (assetZip is null) { LoggingSystem.Log("[PackageAssets]: assetZip was null"); return; }
         if (jsonZip is null) { LoggingSystem.Log("[PackageAssets]: jsonZip was null"); return; }
@@ -710,6 +686,7 @@ public partial class App : System.Windows.Application
         //    IOResources.SerializeFile($"{IOResources.PACKAGE_DIR}\\locale\\Localizations.json", LocalePairs);
         //});
 
+        var (json, dlls, textures, crosshairs, patches) = ChangedAssestCheck();
 
         var taskExe = Task.Run(() => 
         {
@@ -728,6 +705,37 @@ public partial class App : System.Windows.Application
         SetUpdateFilePath();
     }
 
+    public static (bool json, bool dlls, bool textures, bool crosshairs, bool patches) ChangedAssestCheck()
+    {
+        bool json = true, dlls = true, textures = true, crosshairs = true, patches = true;
+
+        if (LatestRelease is null)
+        {
+            var task = StartSTATask<bool>(GetLatestRelease);
+            task.Wait();
+        }
+
+        if (LatestRelease is not null)
+        {
+            json = false; dlls = false; textures = false; crosshairs = false; patches = false;
+            if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
+            var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
+            gitProcess.WaitForExit();
+
+            var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+            foreach (var line in result)
+            {
+                if (line.Contains("Assets/json")) { json = true; }
+                if (line.Contains("Assets/dlls")) { dlls = true; }
+                if (line.Contains("Assets/textures")) { textures = true; }
+                if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
+                if (line.Contains("Assets/patches")) { patches = true; }
+            }
+        }
+        return (json, dlls, textures, crosshairs, patches);
+    }
+
     public static void GitHubAssets()
     {
         Directory.CreateDirectory(IOResources.PACKAGE_DIR);
@@ -737,26 +745,7 @@ public partial class App : System.Windows.Application
 
         CleanPackageOrUpdateDirectory();
 
-        var task = StartSTATask<bool>(GetLatestRelease);
-        task.Wait();
-
-
-        if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
-        var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
-        gitProcess.WaitForExit();
-
-        bool json = false, dlls = false, textures = false, crosshairs = false, patches = false;
-
-        var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-
-        foreach (var line in result)
-        {
-            if (line.Contains("Assets/json")) { json = true; }
-            if (line.Contains("Assets/dlls")) { dlls = true; }
-            if (line.Contains("Assets/textures")) { textures = true; }
-            if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
-            if (line.Contains("Assets/patches")) { patches = true; }
-        }
+        var (json, dlls, textures, crosshairs, patches) = ChangedAssestCheck();
 
         var exeSource = new FileInfo("BLREdit.exe");
         var exeSym = new FileInfo("packaged/BLREdit.exe");
