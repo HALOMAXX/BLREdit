@@ -48,9 +48,9 @@ public static class ImportSystem
 
     public const string TITLES_CATEGORY = "titles";
 
-    public static List<FoxIcon> ScopePreviews { get; } = new();
+    public static List<FoxIcon> ScopePreviews { get; } = [];
 
-    public static Dictionary<string?, ObservableCollection<BLRItem>> ItemLists { get; private set; } = new();
+    public static Dictionary<string?, ObservableCollection<BLRItem>> ItemLists { get; private set; } = [];
 
     static bool IsInitialized = false;
     static readonly object initLock = new();
@@ -80,7 +80,7 @@ public static class ImportSystem
 
     private static void LoadItems()
     {
-        ItemLists = IOResources.DeserializeFile<Dictionary<string?, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? new();
+        ItemLists = IOResources.DeserializeFile<Dictionary<string?, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? [];
     }
 
     public static void ApplyDisplayStats()

@@ -76,7 +76,7 @@ public partial class ServerListControl : UserControl
 
         var playerCountSortedServers = DataStorage.ServerList.OrderByDescending(x => x.PlayerCount);
 
-        Dictionary<string, List<BLRServer>> RegionServers = new();
+        Dictionary<string, List<BLRServer>> RegionServers = [];
 
         foreach (var server in playerCountSortedServers)
         {
@@ -86,10 +86,10 @@ public partial class ServerListControl : UserControl
             }
             else
             {
-                List<BLRServer> regionlist = new()
-                {
+                List<BLRServer> regionlist =
+                [
                     server
-                };
+                ];
                 RegionServers.Add(server.Region, regionlist);
             }
         }

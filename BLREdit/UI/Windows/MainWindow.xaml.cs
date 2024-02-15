@@ -37,7 +37,7 @@ public sealed partial class MainWindow : Window
 
     private readonly string[] Args;
 
-    private readonly static char[] InvalidNameChars = Path.GetInvalidPathChars().Concat(Path.GetInvalidFileNameChars()).ToArray();
+    private readonly static char[] InvalidNameChars = [.. Path.GetInvalidPathChars(), .. Path.GetInvalidFileNameChars()];
 
     public bool wasLastImageScopePreview = false;
     public bool wasLastSelectedBorderPrimary = true;
@@ -117,10 +117,10 @@ public sealed partial class MainWindow : Window
 
     private static void AddOrUpdateDefaultServers()
     {
-        List<BLRServer> remove = new();
+        List<BLRServer> remove = [];
         foreach (var server in DataStorage.ServerList)
         {
-            if (server.ID.Equals(string.Empty))
+            if (server.ID.Equals(string.Empty, StringComparison.Ordinal))
             { 
                 remove.Add(server);
             }
@@ -137,8 +137,9 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public static void AddOrUpdateDefaultServer(BLRServer server)
+    public static void AddOrUpdateDefaultServer(BLRServer? server)
     {
+        if (server is null) return;
         var index = IsInCollection(DataStorage.ServerList, server);
         if (index == -1) { DataStorage.ServerList.Add(server); return; }
         DataStorage.ServerList[index].ServerAddress = server.ServerAddress;
@@ -562,7 +563,7 @@ public sealed partial class MainWindow : Window
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
 
-        List<LoadoutManagerLoadout> loadouts = new();
+        List<LoadoutManagerLoadout> loadouts = [];
 
         string message = string.Empty;
         int count = 0;
@@ -589,7 +590,7 @@ public sealed partial class MainWindow : Window
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
         string message = string.Empty;
-        List<LMLoadout> loadouts = new();
+        List<LMLoadout> loadouts = [];
 
         var exportLoadouts = DataStorage.Loadouts.Where(l => l.BLR.ValidateLoadout(ref message)).Where(l => l.BLR.Apply).OrderBy(l => l.BLR.Name);
 

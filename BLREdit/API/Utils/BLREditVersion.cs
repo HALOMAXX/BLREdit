@@ -7,12 +7,12 @@ namespace BLREdit.API.Utils;
 public sealed class BLREditVersion
 {
     public string Name { get; private set; } = "v";
-    public List<short> VersionParts { get; } = new();
+    public List<short> VersionParts { get; } = [];
     public BLREditVersion? SubVersion { get; private set; }
     public BLREditVersion(string? versionTag, string? subName = null)
     {
         if (versionTag is null) return;
-        if (!string.IsNullOrEmpty(subName) && subName is not null) { Name = subName; }
+        if (subName is not null && !string.IsNullOrEmpty(subName)) { Name = subName; }
         var fullVersion = string.Join("v", versionTag.Split('v').Skip(1));
         var splitFullVersion = fullVersion.Split('-');
         var subVersion = $"v{string.Join("-", splitFullVersion.Skip(1))}";

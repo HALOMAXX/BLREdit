@@ -21,7 +21,7 @@ public sealed class JsonDoubleConverter : JsonConverter<double>
         Span<byte> utf8bytes = stackalloc byte[33]; // JsonConstants.MaximumFormatDecimalLength + 2, https://github.com/dotnet/runtime/blob/v6.0.11/src/libraries/System.Text.Json/src/System/Text/Json/JsonConstants.cs#L85
         if (!(!double.IsInfinity(value) && !double.IsNaN(value)))
             // Utf8JsonWriter does not take into account JsonSerializerOptions.NumberHandling so we have to make a recursive call to serialize
-            JsonSerializer.Serialize(writer, value, new JsonSerializerOptions { NumberHandling = options.NumberHandling });
+            JsonSerializer.Serialize(writer, value, options);
         else if (Utf8Formatter.TryFormat(value, utf8bytes.Slice(0, utf8bytes.Length - 2), out var bytesWritten))
         {
             // Check to make sure the value was actually serialized as an integer and not, say, using scientific notation for large values.
@@ -61,7 +61,7 @@ public sealed class JsonFloatConverter : JsonConverter<float>
         Span<byte> utf8bytes = stackalloc byte[33]; // JsonConstants.MaximumFormatDecimalLength + 2, https://github.com/dotnet/runtime/blob/v6.0.11/src/libraries/System.Text.Json/src/System/Text/Json/JsonConstants.cs#L85
         if (!(!float.IsInfinity(value) && !float.IsNaN(value)))
             // Utf8JsonWriter does not take into account JsonSerializerOptions.NumberHandling so we have to make a recursive call to serialize
-            JsonSerializer.Serialize(writer, value, new JsonSerializerOptions { NumberHandling = options.NumberHandling });
+            JsonSerializer.Serialize(writer, value, options);
         else if (Utf8Formatter.TryFormat(value, utf8bytes.Slice(0, utf8bytes.Length - 2), out var bytesWritten))
         {
             // Check to make sure the value was actually serialized as an integer and not, say, using scientific notation for large values.

@@ -96,12 +96,7 @@ public sealed class RepositoryProxyModule
         if (lockDownload) return null;
         lockDownload = true;
 
-        (bool, string) dl;
-        if (RepositoryProvider == RepositoryProvider.GitHub)
-        {
-            dl = GitHubClient.DownloadFileFromRelease(GitHubRelease, $"{InstallName}.dll", ModuleName);
-        }
-        else
+        if (RepositoryProvider == RepositoryProvider.Gitlab)
         {
             var packages = GitlabClient.GetGenericPackages(Owner, Repository, ModuleName);
             packages.Wait();
@@ -121,6 +116,8 @@ public sealed class RepositoryProxyModule
                 return null;
             }
         }
+
+        (bool, string) dl = GitHubClient.DownloadFileFromRelease(GitHubRelease, $"{InstallName}.dll", ModuleName);
 
         ProxyModule? module = null;
         if (dl.Item1)

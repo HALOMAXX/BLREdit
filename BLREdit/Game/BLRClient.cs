@@ -43,7 +43,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
-    [JsonIgnore] public ObservableCollection<Process> RunningClients = new();
+    [JsonIgnore] public ObservableCollection<Process> RunningClients = [];
     [JsonIgnore] private Dictionary<string?, BLRProfileSettingsWrapper>? profileSettings;
     [JsonIgnore] public Dictionary<string?, BLRProfileSettingsWrapper> ProfileSettings { get { profileSettings ??= LoadProfiles(); return profileSettings; } }
     [JsonIgnore] public static BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/UI/Resources/V.png", UriKind.Absolute)); } }
@@ -93,11 +93,11 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? _modulesFolder;
     public string ModulesFolder { get { _modulesFolder ??= Directory.CreateDirectory($"{BasePath}Binaries\\Win32\\Modules\\").FullName; return _modulesFolder; } set { if (Directory.Exists(value)) _modulesFolder = value; } }
 
-    public ObservableCollection<BLRClientPatch> AppliedPatches { get; set; } = new();
+    [JsonInclude] public ObservableCollection<BLRClientPatch> AppliedPatches { get; set; } = [];
 
-    public ObservableCollection<ProxyModule> InstalledModules { get; set; } = new();
+    [JsonInclude] public ObservableCollection<ProxyModule> InstalledModules { get; set; } = [];
 
-    public ObservableCollection<ProxyModule> CustomModules { get; set; } = new();
+    [JsonInclude] public ObservableCollection<ProxyModule> CustomModules { get; set; } = [];
 
     [JsonIgnore] public static ObservableCollection<VisualProxyModule> AvailableModules { get { return App.AvailableProxyModules; } }
 
@@ -416,21 +416,21 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private void InstallRequiredModules()
     {
-        List<Task> moduleInstallTasks = new();
+        List<Task> moduleInstallTasks = [];
         foreach (var availableModule in App.AvailableProxyModules)
         {
-            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(DataStorage.Settings.SelectedSDKType))
+            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(DataStorage.Settings.SelectedSDKType, StringComparison.Ordinal))
             {
                 moduleInstallTasks.Add(Task.Run(() => { availableModule.InstallModule(this); }));
             }
         }
-        if (moduleInstallTasks.Count > 0) Task.WaitAll(moduleInstallTasks.ToArray());
+        if (moduleInstallTasks.Count > 0) Task.WaitAll([.. moduleInstallTasks]);
 
         LoggingSystem.Log("Finalizing install of BLRevive Modules");
 
         foreach (var availableModule in App.AvailableProxyModules)
         {
-            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(DataStorage.Settings.SelectedSDKType))
+            if (availableModule.RepositoryProxyModule.Required && availableModule.RepositoryProxyModule.ProxyVersion.Equals(DataStorage.Settings.SelectedSDKType, StringComparison.Ordinal))
             {
                 availableModule.FinalizeInstall(this);
             }
@@ -497,7 +497,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
         }
 
-        List<ProxyModule> toRemove = new();
+        List<ProxyModule> toRemove = [];
 
         foreach (var module in CustomModules) { if (module.FileAppearances <= 0) { toRemove.Add(module); } }
 
@@ -515,10 +515,10 @@ public sealed class BLRClient : INotifyPropertyChanged
 
             if (enabledModules is null)
             {
-                enabledModules = InstalledModules.ToList();
+                enabledModules = [.. InstalledModules];
                 if (DataStorage.Settings.AllowCustomModules.Is)
                 {
-                    enabledModules.AddRange(CustomModules.ToList());
+                    enabledModules.AddRange([.. CustomModules]);
                 }
             }
 
@@ -541,10 +541,10 @@ public sealed class BLRClient : INotifyPropertyChanged
 
             if (enabledModules is null)
             {
-                enabledModules = InstalledModules.ToList();
+                enabledModules = [.. InstalledModules];
                 if (DataStorage.Settings.AllowCustomModules.Is)
                 {
-                    enabledModules.AddRange(CustomModules.ToList());
+                    enabledModules.AddRange([.. CustomModules]);
                 }
             }
 
@@ -583,9 +583,9 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public static bool ValidateClientHash(string? currentHash, string? fileLocation, out string? newHash)
     {
-        if (string.IsNullOrEmpty(currentHash) || string.IsNullOrEmpty(fileLocation)) { newHash = null; return false; }
+        if (currentHash is null || string.IsNullOrEmpty(currentHash) || string.IsNullOrEmpty(fileLocation)) { newHash = null; return false; }
         newHash = IOResources.CreateFileHash(fileLocation);
-        return currentHash?.Equals(newHash) ?? false;
+        return currentHash.Equals(newHash, StringComparison.Ordinal);
     }
 
     #endregion ClientValidation
@@ -796,7 +796,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             basePath = $"{pathParts[i]}\\{basePath}";
         }
 
-        if (!basePath.EndsWith("\\")) { basePath += "\\"; }
+        if (!basePath.EndsWith("\\", StringComparison.Ordinal)) { basePath += "\\"; }
 
         _patchedPath ??= $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
 
@@ -813,14 +813,14 @@ public sealed class BLRClient : INotifyPropertyChanged
             if (string.IsNullOrEmpty(PatchedPath)) { _basePath = GetBasePath(); }
             if (DataStorage.Settings.SelectedSDKType != "BLRevive")
             {
-                List<BLRClientPatch> toAppliedPatches = new();
+                List<BLRClientPatch> toAppliedPatches = [];
                 File.Copy(OriginalPath, PatchedPath, true);
                 AppliedPatches.Clear();
                 if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
                 {
                     using (var stream = File.Open(PatchedPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
                     {
-                        List<byte> rawFile = new();
+                        List<byte> rawFile = [];
                         using var reader = new BinaryReader(stream);
                         rawFile.AddRange(reader.ReadBytes((int)stream.Length));
 
@@ -829,7 +829,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                             LoggingSystem.Log($"Applying Patch:{patch.PatchName} to Client:{OriginalHash}");
                             foreach (var part in patch.PatchParts)
                             {
-                                OverwriteBytes(rawFile, part.Key, part.Value.ToArray());
+                                OverwriteBytes(rawFile, part.Key, [.. part.Value]);
                             }
                             toAppliedPatches.Add(patch);
                         }

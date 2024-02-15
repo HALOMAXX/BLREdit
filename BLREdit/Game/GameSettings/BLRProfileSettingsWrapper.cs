@@ -17,9 +17,9 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
-    static readonly BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json") ?? Array.Empty<BLRProfileSettings>();
+    static readonly BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json") ?? [];
 
-    public Dictionary<int, BLRProfileSettings> Settings { get; set; } = new();
+    public Dictionary<int, BLRProfileSettings> Settings { get; set; } = [];
     //public BLRKeyBindings KeyBindings { get; set; }
     public string ProfileName { get; set; } = "BLREdit-Player";
 
@@ -77,12 +77,12 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 
     public BLRProfileSettings[] GetSettings()
     {
-        List<BLRProfileSettings> settings = new();
+        List<BLRProfileSettings> settings = [];
         foreach (var setting in Settings)
         {
             settings.Add(setting.Value);
         }
-        return settings.ToArray();
+        return [.. settings];
     }
 
     private int GetValueOf(int defaultValue = 0, [CallerMemberName] string? name = null)

@@ -27,15 +27,13 @@ public sealed class ServerUtilsInfo : ServerInfo
         return LoggingSystem.ObjectToTextWall(this);
     }
 
-    
-
     private BLRMap? map;
     [JsonIgnore]
     public BLRMap? BLRMap
     {
         get
         {
-            if (map is null) { foreach (var m in MapModeSelect.Maps) { if (m.MapName.ToLower() == Map.ToLower()) { map = m; break; } } }
+            if (map is null) { foreach (var m in MapModeSelect.Maps) { if (m.MapName.Equals(Map, StringComparison.OrdinalIgnoreCase)) { map = m; break; } } }
             return map;
         }
     }
@@ -46,7 +44,7 @@ public sealed class ServerUtilsInfo : ServerInfo
     {
         get 
         {
-            if (mode is null) { foreach (var m in MapModeSelect.Modes) { if (m.ModeName.ToLower() == GameMode.ToLower()) { mode = m; break; } } }
+            if (mode is null) { foreach (var m in MapModeSelect.Modes) { if (m.ModeName.Equals(GameMode, StringComparison.OrdinalIgnoreCase)) { mode = m; break; } } }
             return mode;
         }
     }
@@ -57,7 +55,7 @@ public sealed class ServerUtilsInfo : ServerInfo
     {
         get
         {
-            if (list is null) { list = new() { $"{PlayerCount}/{MaxPlayers} Players" }; foreach (var team in TeamList) { foreach (var player in team.PlayerList) { list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } } }
+            if (list is null) { list = [$"{PlayerCount}/{MaxPlayers} Players"]; foreach (var team in TeamList) { foreach (var player in team.PlayerList) { list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } } }
             return list;
         }
     }
@@ -68,7 +66,7 @@ public sealed class ServerUtilsInfo : ServerInfo
     {
         get
         {
-            if (team1list is null && TeamList.Count > 0) { team1list = new() { $"{TeamList[0].PlayerCount}/{MaxPlayers/2} Team 1" };  foreach (var player in TeamList[0].PlayerList) { team1list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
+            if (team1list is null && TeamList.Count > 0) { team1list = [$"{TeamList[0].PlayerCount}/{MaxPlayers/2} Team 1"];  foreach (var player in TeamList[0].PlayerList) { team1list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
             return team1list;
         }
     }
@@ -79,7 +77,7 @@ public sealed class ServerUtilsInfo : ServerInfo
     {
         get
         {
-            if (team2list is null && TeamList.Count > 1) { team2list = new() { $"{TeamList[1].PlayerCount}/{MaxPlayers/2} Team 2" }; foreach (var player in TeamList[1].PlayerList) { team2list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
+            if (team2list is null && TeamList.Count > 1) { team2list = [$"{TeamList[1].PlayerCount}/{MaxPlayers/2} Team 2"]; foreach (var player in TeamList[1].PlayerList) { team2list.Add($"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}"); } }
             return team2list;
         }
     }
@@ -88,9 +86,9 @@ public sealed class ServerUtilsInfo : ServerInfo
 public sealed class ServerTeam
 { 
     public int BotCount { get; set; } = 0;
-    public ObservableCollection<ServerAgent> BotList { get; set; } = new();
+    public ObservableCollection<ServerAgent> BotList { get; set; } = [];
     public int PlayerCount { get; set; } = 0;
-    public ObservableCollection<ServerAgent> PlayerList { get; set; } = new();
+    public ObservableCollection<ServerAgent> PlayerList { get; set; } = [];
     public int TeamScore { get; set; } = 0;
 }
 

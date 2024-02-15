@@ -52,10 +52,10 @@ public sealed class MagiCowsLoadout : IBLRLoadout
     [JsonIgnore] private int trophy = 0;
     public int Trophy { get { return trophy; } set { if (trophy != value) { trophy = value; isDirty = true; } } }
 
-    [JsonIgnore] private int[] taunts = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
+    [JsonIgnore] private int[] taunts = [0, 1, 2, 3, 4, 5, 6, 7];
     public int[] Taunts { get { return taunts; } set { if (taunts != value) { taunts = value; isDirty = true; } } }
 
-    [JsonIgnore] private int[] depot = new int[] { 0, 1, 2, 3, 4 };
+    [JsonIgnore] private int[] depot = [0, 1, 2, 3, 4];
     public int[] Depot { get { return depot; } set { if (depot != value) { depot = value; isDirty = true; } } }
 
     [JsonIgnore] private bool isDirty = true;
@@ -200,8 +200,8 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         Gear3 = BLRItem.GetMagicCowsID(loadout.Gear3);
         Gear4 = BLRItem.GetMagicCowsID(loadout.Gear4);
 
-        Taunts = new int[] { BLRItem.GetMagicCowsID(loadout.Taunt1, 0), BLRItem.GetMagicCowsID(loadout.Taunt2, 1), BLRItem.GetMagicCowsID(loadout.Taunt3, 2), BLRItem.GetMagicCowsID(loadout.Taunt4, 3), BLRItem.GetMagicCowsID(loadout.Taunt5, 4), BLRItem.GetMagicCowsID(loadout.Taunt6, 5), BLRItem.GetMagicCowsID(loadout.Taunt7, 6), BLRItem.GetMagicCowsID(loadout.Taunt8, 7) };
-        Depot = new int[] { BLRItem.GetMagicCowsID(loadout.Depot1), BLRItem.GetMagicCowsID(loadout.Depot2, 1), BLRItem.GetMagicCowsID(loadout.Depot3, 2), BLRItem.GetMagicCowsID(loadout.Depot4, 3), BLRItem.GetMagicCowsID(loadout.Depot5, 3) };
+        Taunts = [BLRItem.GetMagicCowsID(loadout.Taunt1, 0), BLRItem.GetMagicCowsID(loadout.Taunt2, 1), BLRItem.GetMagicCowsID(loadout.Taunt3, 2), BLRItem.GetMagicCowsID(loadout.Taunt4, 3), BLRItem.GetMagicCowsID(loadout.Taunt5, 4), BLRItem.GetMagicCowsID(loadout.Taunt6, 5), BLRItem.GetMagicCowsID(loadout.Taunt7, 6), BLRItem.GetMagicCowsID(loadout.Taunt8, 7)];
+        Depot = [BLRItem.GetMagicCowsID(loadout.Depot1), BLRItem.GetMagicCowsID(loadout.Depot2, 1), BLRItem.GetMagicCowsID(loadout.Depot3, 2), BLRItem.GetMagicCowsID(loadout.Depot4, 3), BLRItem.GetMagicCowsID(loadout.Depot5, 3)];
         if (WasWrittenTo is not null) { WasWrittenTo(loadout, EventArgs.Empty); }
     }
 

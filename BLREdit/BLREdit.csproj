@@ -6,7 +6,7 @@
     <TargetFramework>net48</TargetFramework>
     <UseWPF>true</UseWPF>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisLevel>latest-all</AnalysisLevel>
     <ApplicationIcon>BLREdit Logo (DraagonLizzard).ico</ApplicationIcon>
     <Nullable>enable</Nullable>
     <Configurations>Debug;Release;</Configurations>

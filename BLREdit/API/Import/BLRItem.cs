@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using BLREdit.UI.Views;
 using BLREdit.UI;
 using BLREdit.Properties;
+using System;
 
 namespace BLREdit.Import;
 
@@ -304,7 +305,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             foreach (FoxIcon icon in ImportSystem.ScopePreviews)
             {
-                if (icon.IconName.Equals(name))
+                if (icon.IconName.Equals(name, StringComparison.Ordinal))
                 {
                     return icon;
                 }
@@ -729,7 +730,7 @@ public sealed class BLRWeaponStats
     public double RecoilZoomMultiplier { get; set; } = 0.5f;
     public double ReloadShortMultiplier { get; set; } = 1.0f; // not actually a thing, but this is currently the easiest way with how we do the reload numbers
     public double ROF { get; set; } = 0;
-    public StatDecriptor[] StatDecriptors { get; set; } = new StatDecriptor[] { new StatDecriptor() };
+    public StatDecriptor[] StatDecriptors { get; set; } = [new()];
     public double TABaseSpread { get; set; } = 0;
     public double TightAimTime { get; set; } = 0.0f;
     public bool UseTABaseSpread { get; set; } = false;

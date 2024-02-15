@@ -87,7 +87,7 @@ public sealed class ExportSystem
         ZipFile.CreateFromDirectory($"{IOResources.PROFILE_DIR}", CurrentBackupFile.FullName, CompressionLevel.Optimal, false);
         LoggingSystem.PrintElapsedTime("Finished Compressing in {0}ms");
 
-        var profiles = IOResources.DeserializeFile<ObservableCollection<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? new();
+        var profiles = IOResources.DeserializeFile<ObservableCollection<ShareableProfile>>($"{IOResources.PROFILE_DIR}profileList.json") ?? [];
 
         foreach (string file in Directory.EnumerateFiles($"{IOResources.PROFILE_DIR}"))
         {
@@ -117,7 +117,7 @@ public sealed class ExportSystem
         LoggingSystem.Log("Started Loading ShareableLoadouts");
         ImportSystem.Initialize();
 
-        var loadouts = IOResources.DeserializeFile<ObservableCollection<ShareableLoadout>>($"{IOResources.PROFILE_DIR}loadoutList.json") ?? new();
+        var loadouts = IOResources.DeserializeFile<ObservableCollection<ShareableLoadout>>($"{IOResources.PROFILE_DIR}loadoutList.json") ?? [];
 
         if(DataStorage.ShareableProfiles is not null && DataStorage.ShareableProfiles.Count > 0)
             foreach (var profile in DataStorage.ShareableProfiles)
@@ -168,7 +168,7 @@ public sealed class ExportSystem
         }
         else
         {
-            List<BLRProfileSettingsWrapper> settingsWrappers = new();
+            List<BLRProfileSettingsWrapper> settingsWrappers = [];
             foreach (var client in DataStorage.GameClients)
             {
                 client.UpdateProfileSettings();

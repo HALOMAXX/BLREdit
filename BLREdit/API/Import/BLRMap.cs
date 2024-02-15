@@ -34,7 +34,7 @@ public sealed class BLRMap
             return IOResources.BaseDirectory + "Assets\\textures\\" + SquareImageName;
         }
     }
-    public List<string> Available { get; set; } = new();
-    public List<string> SupportedPlaylists { get; set; } = new() { "DM", "KC", "TDM", "LMS", "LTS", "CTF", "KOTH","DOM", "SND", "OS_Medium", "OS_Easy", "OS_Hard" };
-    [JsonIgnore] public List<BLRMode> SupportedGameModes { get; } = new();
+    public List<string> Available { get; set; } = [];
+    public List<string> SupportedPlaylists { get; set; } = ["DM", "KC", "TDM", "LMS", "LTS", "CTF", "KOTH","DOM", "SND", "OS_Medium", "OS_Easy", "OS_Hard"];
+    [JsonIgnore] public List<BLRMode> SupportedGameModes { get; } = [];
 }

@@ -33,7 +33,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     public RepositoryProxyModule RepositoryProxyModule { get; set; }
 
     #region MetaData
-    private readonly Dictionary<string, string> metaData = new();
+    private readonly Dictionary<string, string> metaData = [];
     public Dictionary<string, string> MetaData
     {
         get
@@ -236,7 +236,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         module = null;
         for (int i = 0; i < DataStorage.CachedModules.Count; i++)
         {
-            if (DataStorage.CachedModules[i].InstallName.Equals(installName)) { module = DataStorage.CachedModules[i]; return true; }
+            if (DataStorage.CachedModules[i].InstallName.Equals(installName, StringComparison.Ordinal)) { module = DataStorage.CachedModules[i]; return true; }
         }
         return false;
     }

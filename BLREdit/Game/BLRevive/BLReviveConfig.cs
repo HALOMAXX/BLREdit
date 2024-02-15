@@ -10,14 +10,14 @@ namespace BLREdit.Game.BLRevive
     {
         public BLReviveConsoleConfig? Console { get; set; } = new();
         public BLReviveLoggerConfig? Logger { get; set; } = new();
-        public Dictionary<string, object> Modules { get; set; } = new();
+        public Dictionary<string, object> Modules { get; set; } = [];
         public BLReviveServerConfig? Server { get; set; } = new();
     }
 
     public class BLReviveConsoleConfig
     {
-        public List<string> CmdBlacklist { get; set; } = new();
-        public List<string> CmdWhitelist { get; set; } = new();
+        public List<string> CmdBlacklist { get; set; } = [];
+        public List<string> CmdWhitelist { get; set; } = [];
         public bool Enable { get; set; } = false;
     }
 

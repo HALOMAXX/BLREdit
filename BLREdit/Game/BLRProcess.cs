@@ -19,7 +19,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
     }
     #endregion Events
 
-    public static ObservableCollection<BLRProcess> RunningGames { get; } = new();
+    public static ObservableCollection<BLRProcess> RunningGames { get; } = [];
 
     private Process gameProcess;
     public Process GameProcess { get { return gameProcess; } private set { gameProcess = value; OnPropertyChanged(); } }
