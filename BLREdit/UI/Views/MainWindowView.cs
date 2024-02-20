@@ -76,16 +76,9 @@ public sealed class MainWindowView : INotifyPropertyChanged
     {
         if (DataStorage.Loadouts.Count <= 0)
         {
-            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout1.ConvertToShareable()));
-            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout2.ConvertToShareable()));
-            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout3.ConvertToShareable()));
-            string message = string.Empty;
-            DataStorage.Loadouts[0].BLR.Name = "Default Loadout 1";
-            DataStorage.Loadouts[0].BLR.Apply = DataStorage.Loadouts[0].BLR.ValidateLoadout(ref message);
-            DataStorage.Loadouts[1].BLR.Name = "Default Loadout 2";
-            DataStorage.Loadouts[1].BLR.Apply = DataStorage.Loadouts[1].BLR.ValidateLoadout(ref message);
-            DataStorage.Loadouts[2].BLR.Name = "Default Loadout 3";
-            DataStorage.Loadouts[2].BLR.Apply = DataStorage.Loadouts[2].BLR.ValidateLoadout(ref message);
+            BLRLoadoutStorage.AddNewLoadoutSet("Default Loadout 1", null, MagiCowsLoadout.DefaultLoadout1.ConvertToShareable());
+            BLRLoadoutStorage.AddNewLoadoutSet("Default Loadout 2", null, MagiCowsLoadout.DefaultLoadout2.ConvertToShareable());
+            BLRLoadoutStorage.AddNewLoadoutSet("Default Loadout 3", null, MagiCowsLoadout.DefaultLoadout3.ConvertToShareable());
         }
 
         var loadout = DataStorage.Loadouts[DataStorage.Loadouts.Count > DataStorage.Settings.CurrentlyAppliedLoadout ? DataStorage.Settings.CurrentlyAppliedLoadout : 0];

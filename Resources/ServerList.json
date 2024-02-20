@@ -19,13 +19,33 @@
     "Region": "EU-North"
   },
   {
-    "ID": "a.lt 0",
-    "ServerAddress": "blrevive.northamp.fr",
+    "ID": "a.lt main 1",
+    "ServerAddress": "main-001.blrevive.northamp.fr",
+    "Port": 30111,
+    "InfoPort": 30111,
     "Region": "EU-West"
   },
   {
-    "ID": "a.lt 1",
-    "ServerAddress": "blrevive-staging.northamp.fr",
+    "ID": "a.lt main 2",
+    "ServerAddress": "main-002.blrevive.northamp.fr",
+    "Port": 30121,
+    "InfoPort": 30121,
+    "Hidden": true,
+    "Region": "EU-West"
+  },
+  {
+    "ID": "a.lt main 3",
+    "ServerAddress": "main-003.blrevive.northamp.fr",
+    "Port": 30131,
+    "InfoPort": 30131,
+    "Hidden": true,
+    "Region": "EU-West"
+  },
+  {
+    "ID": "a.lt staging 1",
+    "ServerAddress": "staging-001.blrevive.northamp.fr",
+    "Port": 30211,
+    "InfoPort": 30211,
     "Hidden": true,
     "Region": "EU-West"
   },
