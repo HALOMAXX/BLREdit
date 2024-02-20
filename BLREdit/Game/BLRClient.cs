@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-using BLREdit.API.Export;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.API.Utils;
 using BLREdit.Export;
@@ -43,7 +42,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
-    [JsonIgnore] public ObservableCollection<Process> RunningClients = [];
+    [JsonIgnore] public ObservableCollection<Process> RunningClients { get; } = [];
     [JsonIgnore] private Dictionary<string?, BLRProfileSettingsWrapper>? profileSettings;
     [JsonIgnore] public Dictionary<string?, BLRProfileSettingsWrapper> ProfileSettings { get { profileSettings ??= LoadProfiles(); return profileSettings; } }
     [JsonIgnore] public static BitmapImage ClientVersionPart0 { get { return new BitmapImage(new Uri(@"pack://application:,,,/UI/Resources/V.png", UriKind.Absolute)); } }
