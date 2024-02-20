@@ -19,7 +19,7 @@ public sealed class WebResources
     static WebResources()
     {
         LoggingSystem.Log($"[{nameof(WebResources)}]: Initializing!");
-        System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+        ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12;
         WebClient.Headers.Add(HttpRequestHeader.UserAgent, $"BLREdit-{App.CurrentVersion}");
         if (!HttpClient.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { LoggingSystem.Log($"Failed to add {HttpRequestHeader.UserAgent} to HttpClient"); };
         HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
@@ -31,14 +31,14 @@ public sealed class WebResources
         LoggingSystem.Log($"[{nameof(WebResources)}]: Finished Initializing!");
     }
 
-    private static BlockingCollection<DownloadRequest> DownloadRequests { get; } = new();
+    private static BlockingCollection<DownloadRequest> DownloadRequests { get; } = [];
     public static bool DownloadFile(string url, string filename)
     {
         if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(filename)) { LoggingSystem.Log($"Failed to download ({filename}) from:\n<{url}>"); return false; }
         LoggingSystem.Log($"Downloading ({filename}) from ({url})");
         DownloadRequest req = new(url, filename);
         DownloadRequests.Add(req);
-        WaitHandle.WaitAll(new WaitHandle[] { req.locked });
+        WaitHandle.WaitAll([req.locked]);
         if (req.Error is not null)
         {
             LoggingSystem.MessageLog($"Failed to download ({filename}) from:\n<{url}>\n{req.Error.Message}", "Error");

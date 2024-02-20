@@ -11,7 +11,7 @@ public static class UndoRedoSystem
     private static readonly Stack<UndoRedoAction> UndoStack = new();
     private static readonly Stack<UndoRedoAction> RedoStack = new();
     private static UndoRedoAction CurrentAction = new();
-    private static readonly List<SubUndoRedoAction> AfterActions = new();
+    private static readonly List<SubUndoRedoAction> AfterActions = [];
     public static int CurrentActionCount { get { return CurrentAction.Actions.Count; } }
     public static int AfterActionCount { get { return AfterActions.Count; } }
     public static bool UndoRedoSystemWorking { get; private set; } = false;
@@ -171,7 +171,7 @@ public static class UndoRedoSystem
 
 public struct UndoRedoAction()
 {
-    internal List<SubUndoRedoAction> Actions { get; private set; } = new List<SubUndoRedoAction>();
+    internal List<SubUndoRedoAction> Actions { get; private set; } = [];
 }
 
 public struct SubUndoRedoAction(object? before, object? after, PropertyInfo? propertyInfo, object? target, BlockEvents blockedEvents, string? callName, int type = 0, Action? doAction = null, Action? undoAction = null)

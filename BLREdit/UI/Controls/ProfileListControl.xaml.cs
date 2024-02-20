@@ -80,6 +80,7 @@ namespace BLREdit.UI.Controls
                 {
                     MainWindow.MainView.CurrentProfileSortingPropertyName = $"Shareable.{Enum.GetName(MainWindow.MainView.CurrentProfileSortingEnumType, Enum.GetValues(MainWindow.MainView.CurrentProfileSortingEnumType).GetValue(SortComboBox1.SelectedIndex))}";
                     view.SortDescriptions.Add(new SortDescription(MainWindow.MainView.CurrentProfileSortingPropertyName, MainWindow.MainView.ProfileListSortingDirection));
+                    //view.SortDescriptions.Add(new SortDescription("Shareable.Name", ListSortDirection.Ascending));
                 }
             }
         }

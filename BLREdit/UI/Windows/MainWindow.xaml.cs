@@ -37,7 +37,7 @@ public sealed partial class MainWindow : Window
 
     private readonly string[] Args;
 
-    private readonly static char[] InvalidNameChars = Path.GetInvalidPathChars().Concat(Path.GetInvalidFileNameChars()).ToArray();
+    private readonly static char[] InvalidNameChars = [.. Path.GetInvalidPathChars(), .. Path.GetInvalidFileNameChars()];
 
     public bool wasLastImageScopePreview = false;
     public bool wasLastSelectedBorderPrimary = true;
@@ -47,8 +47,8 @@ public sealed partial class MainWindow : Window
     private Type? lastSelectedSortingType = null;
     private int buttonIndex = 0;
 
-    private SolidColorBrush SolidColorBrush { get; } = new(Colors.Blue);
-    private ColorAnimation AlertAnim { get; } = new()
+    private static SolidColorBrush SolidColorBrush { get; } = new(Colors.Blue);
+    private static ColorAnimation AlertAnim { get; } = new()
     {
         From = Color.FromArgb(32, 0, 0, 0),
         To = Color.FromArgb(255, 255, 0, 0),
@@ -57,7 +57,7 @@ public sealed partial class MainWindow : Window
         RepeatBehavior = RepeatBehavior.Forever
     };
 
-    private ColorAnimation CalmAnim { get; } = new()
+    private static ColorAnimation CalmAnim { get; } = new()
     {
         From = Color.FromArgb(255, 255, 0, 0),
         To = Color.FromArgb(32, 0, 0, 0),
@@ -117,10 +117,10 @@ public sealed partial class MainWindow : Window
 
     private static void AddOrUpdateDefaultServers()
     {
-        List<BLRServer> remove = new();
+        List<BLRServer> remove = [];
         foreach (var server in DataStorage.ServerList)
         {
-            if (server.ID.Equals(string.Empty))
+            if (server.ID.Equals(string.Empty, StringComparison.Ordinal))
             { 
                 remove.Add(server);
             }
@@ -137,8 +137,9 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public static void AddOrUpdateDefaultServer(BLRServer server)
+    public static void AddOrUpdateDefaultServer(BLRServer? server)
     {
+        if (server is null) return;
         var index = IsInCollection(DataStorage.ServerList, server);
         if (index == -1) { DataStorage.ServerList.Add(server); return; }
         DataStorage.ServerList[index].ServerAddress = server.ServerAddress;
@@ -562,7 +563,7 @@ public sealed partial class MainWindow : Window
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
 
-        List<LoadoutManagerLoadout> loadouts = new();
+        List<LoadoutManagerLoadout> loadouts = [];
 
         string message = string.Empty;
         int count = 0;
@@ -582,6 +583,10 @@ public sealed partial class MainWindow : Window
 
         IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
         ShowAlert($"Applied Proxy Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+        if (Instance is not null && Instance.lastAnim != CalmAnim)
+        {
+            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+        }
     }
 
     public static void ApplyBLReviveLoadouts(BLRClient client)
@@ -589,7 +594,7 @@ public sealed partial class MainWindow : Window
         var directory = $"{client.ConfigFolder}profiles\\";
         Directory.CreateDirectory(directory);
         string message = string.Empty;
-        List<LMLoadout> loadouts = new();
+        List<LMLoadout> loadouts = [];
 
         var exportLoadouts = DataStorage.Loadouts.Where(l => l.BLR.ValidateLoadout(ref message)).Where(l => l.BLR.Apply).OrderBy(l => l.BLR.Name);
 
@@ -601,6 +606,10 @@ public sealed partial class MainWindow : Window
 
         IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
         ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+        if (Instance is not null && Instance.lastAnim != CalmAnim)
+        {
+            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+        }
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1030,11 +1039,11 @@ public sealed partial class MainWindow : Window
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, AlertAnim, HandoffBehavior.Compose);
             lastAnim = AlertAnim;
         }
-        else if (!MainView.Profile.BLR.IsChanged && lastAnim != CalmAnim)
-        {
-            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
-            lastAnim = CalmAnim;
-        }
+        //else if (!MainView.Profile.BLR.IsChanged && lastAnim != CalmAnim)
+        //{
+        //    SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+        //    lastAnim = CalmAnim;
+        //}
     }
 
     private void MainWindowTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)

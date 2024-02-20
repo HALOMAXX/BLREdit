@@ -14,7 +14,6 @@ public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLRLoadout? bl
     public ShareableLoadout Shareable { get; } = shareable;
     private BLRLoadout? blr = blr;
     public BLRLoadout BLR { get { if (blr is null) { blr = Shareable.ToBLRLoadout(); string message = string.Empty; blr.Apply = blr.ValidateLoadout(ref message); } return blr; } }
-    static bool isExchanging = false;
     public static event EventHandler? ProfileGotRemoved;
 
     public void Remove()

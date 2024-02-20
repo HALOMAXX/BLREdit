@@ -50,7 +50,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private Color? lastSelectedBorderColor;
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
-    public ListSortDirection ProfileListSortingDirection { get; set; } = ListSortDirection.Descending;
+    public ListSortDirection ProfileListSortingDirection { get; set; } = ListSortDirection.Ascending;
     public string CurrentProfileSortingPropertyName { get; set; } = "None";
     public Type? CurrentSortingEnumType { get; set; }
     public Type? CurrentProfileSortingEnumType { get; set; }

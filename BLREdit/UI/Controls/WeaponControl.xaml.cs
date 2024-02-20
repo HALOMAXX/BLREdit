@@ -34,7 +34,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     }
     #endregion Events
 
-    private BLRWeapon? CurrentWeapon { get; set; } = null;
+    private BLRWeapon? CurrentWeapon { get; set; }
 
     private Visibility receiverVisibility = Visibility.Visible;
     public Visibility ReceiverVisibility { get { return receiverVisibility; } private set { receiverVisibility = value; OnPropertyChanged(); } }
@@ -158,7 +158,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
             CurrentWeapon = weapon;
 
-            if (CurrentWeapon is not null && CurrentWeapon.Loadout is not null && CurrentWeapon.Loadout.Profile is not null) CurrentWeapon.Loadout.Profile.IsAdvanced.PropertyChanged += SettingsChanged;
+            if (CurrentWeapon.Loadout is not null && CurrentWeapon.Loadout.Profile is not null) CurrentWeapon.Loadout.Profile.IsAdvanced.PropertyChanged += SettingsChanged;
 
             if (weapon.Receiver.SupportedMods.Contains(ImportSystem.AMMO_CATEGORY) || (weapon.Loadout?.Profile?.IsAdvanced.Is ?? false))
             { AmmoVisibility = Visibility.Visible; }

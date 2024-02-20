@@ -11,14 +11,14 @@ namespace BLREdit.API.Utils;
 
 public sealed class LanguageResources
 {
-    private static ObservableCollection<string> EmptyStringCollection { get; } = new();
-    private static Dictionary<string, ObservableCollection<string>> EnumList { get; } = new();
+    private static ObservableCollection<string> EmptyStringCollection { get; } = [];
+    private static Dictionary<string, ObservableCollection<string>> EnumList { get; } = [];
 
     public static ObservableCollection<string> GetWordsOfEnum(Type enumType)
     {
         if(!enumType.IsEnum) return EmptyStringCollection;
         if (EnumList.TryGetValue(enumType.Name, out ObservableCollection<string> value)) { return value; }
-        ObservableCollection<string> words = new();
+        ObservableCollection<string> words = [];
         foreach (var num in Enum.GetValues(enumType))
         {
             string enumName = Enum.GetName(enumType, num);

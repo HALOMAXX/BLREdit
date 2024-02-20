@@ -6,7 +6,7 @@ namespace BLREdit.UI;
 
 public sealed class UIKeys
 {
-    public static Dictionary<Key, UIBool> Keys { get; } = new Dictionary<Key, UIBool>();
+    public static Dictionary<Key, UIBool> Keys { get; } = [];
     public static UIKeys Instance { get; } = new();
 
     public static void SetAll(bool pressed)

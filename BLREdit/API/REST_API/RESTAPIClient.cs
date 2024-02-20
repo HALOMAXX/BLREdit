@@ -19,7 +19,7 @@ public sealed class RESTAPIClient
 
     private string CacheFile { get; }
 
-    readonly Dictionary<string, object> RequestCache = new();
+    readonly Dictionary<string, object> RequestCache = [];
     readonly Dictionary<string, object> OldRequestCache;
 
     readonly string baseAddress;
@@ -30,7 +30,7 @@ public sealed class RESTAPIClient
         this.baseAddress = baseAddress;
         this.APIProvider = APIProvider;
         CacheFile = $"{CACHE}{IOResources.DataToBase64(IOResources.Zip($"{APIProvider}\\{baseAddress}"))}.json";
-        OldRequestCache = IOResources.DeserializeFile<Dictionary<string, object>>(CacheFile) ?? new();
+        OldRequestCache = IOResources.DeserializeFile<Dictionary<string, object>>(CacheFile) ?? [];
         DataStorage.DataSaving += SaveCache;
     }
 

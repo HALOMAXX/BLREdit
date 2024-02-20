@@ -45,7 +45,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public UIBool IsAdvanced { get; set; } = new(false);
 
-    public static PropertyInfo[] LoadoutPartInfo { get; } = ((from property in loadoutType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property).ToArray());
+    public static PropertyInfo[] LoadoutPartInfo { get; } = ([.. (from property in loadoutType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property)]);
     private static readonly Dictionary<string?, PropertyInfo> LoadoutPartInfoDictonary = GetLoadoutPartPropertyInfo();
     private static Dictionary<string?, PropertyInfo> GetLoadoutPartPropertyInfo()
     {
@@ -57,7 +57,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         return dict;
     }
 
-    private readonly Dictionary<int, BLRItem?> LoadoutParts = new();
+    private readonly Dictionary<int, BLRItem?> LoadoutParts = [];
 
     private BLRItem? GetValueOf([CallerMemberName] string? name = null)
     {

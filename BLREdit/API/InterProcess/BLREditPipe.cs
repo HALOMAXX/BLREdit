@@ -23,7 +23,7 @@ public sealed class BLREditPipe
     public const string API = "blredit://";
     public static bool IsServer { get; private set; } = true;
     private static Process Self { get; } = Process.GetCurrentProcess();
-    public static Dictionary<string, Action<string>> ApiEndPoints { get; } = new();
+    public static Dictionary<string, Action<string>> ApiEndPoints { get; } = [];
 
     static BLREditPipe()
     {
@@ -312,7 +312,7 @@ public sealed class BLREditPipe
                 {
                     LoggingSystem.Log($"[{Thread.CurrentThread.Name}]:{line}");
                 }
-                App.Current.Dispatcher.Invoke(() => { ProcessArgs(args.ToArray()); });
+                App.Current.Dispatcher.Invoke(() => { ProcessArgs([.. args]); });
             }
             catch (Exception error)
             {
@@ -329,7 +329,7 @@ public sealed class BLREditPipe
     {
         AddApiEndpoints();
         if (args.Length <= 0) { return; }
-        Dictionary<string, string> argDict = new();
+        Dictionary<string, string> argDict = [];
 
         foreach (var arg in args)
         {

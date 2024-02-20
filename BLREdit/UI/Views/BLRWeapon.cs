@@ -18,7 +18,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public IBLRWeapon? InternalWeapon { get { return _weapon; } }
 
     static readonly Type thisClassType = typeof(BLRWeapon);
-    public static PropertyInfo[] WeaponPartInfo { get; } = ((from property in thisClassType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property).ToArray());
+    public static PropertyInfo[] WeaponPartInfo { get; } = ([.. (from property in thisClassType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property)]);
     private static readonly Dictionary<string?, Tuple<PropertyInfo, BLRItemAttribute>> WeaponPartInfoDictonary = GetWeaponPartPropertyInfo();
     private static Dictionary<string?, Tuple<PropertyInfo, BLRItemAttribute>> GetWeaponPartPropertyInfo()
     {
@@ -58,7 +58,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     private static Dictionary<int, BLRItem?> InitDict()
     {
-        Dictionary<int, BLRItem?> dict = new();
+        Dictionary<int, BLRItem?> dict = [];
         foreach (var info in WeaponPartInfoDictonary)
         {
             dict.Add(info.Value.Item2.PropertyOrder, null);
@@ -196,7 +196,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             foreach (FoxIcon icon in ImportSystem.ScopePreviews)
             {
-                if (icon.IconName.Equals(name))
+                if (icon.IconName.Equals(name, StringComparison.Ordinal))
                 {
                     return icon;
                 }
@@ -1182,7 +1182,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
 
         // Average spread over multiple shots to account for random center weight multiplier
-        double[] averageSpread = { 0, 0, 0 };
+        double[] averageSpread = [0, 0, 0];
         double magsize = Math.Min(receiver.WeaponStats.MagSize, 15.0f);
         if (magsize <= 1)
         {

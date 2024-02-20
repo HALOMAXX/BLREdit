@@ -20,6 +20,8 @@ namespace BLREdit.Game;
 
 public sealed class BLRServer : INotifyPropertyChanged
 {
+    public static string EmptyServer { get; } = "?/? Players";
+
     public static AwaitableCollection<BLRServer> ServersToPing { get; } = new();
 
     #region Events
@@ -35,7 +37,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     {
         if (obj is BLRServer server)
         {
-            return ID.Equals(server.ID);
+            return ID.Equals(server.ID, StringComparison.Ordinal);
         }
         else
         { return false; }
@@ -56,10 +58,12 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.TeamList.Count >= 2); } else if (MagiInfo?.IsOnline ?? false) { return new(MagiInfo?.TeamList?.Count >= 2); } else { return new(false); } } }
     [JsonIgnore] public string ServerDescription { get { return GetServerDescription(); } }
     [JsonIgnore] public BitmapImage MapImage { get { if (ServerInfo?.IsOnline ?? false) { return new(new Uri(ServerInfo?.BLRMap?.SquareImage)); } else if (MagiInfo?.IsOnline ?? false) { return new(new Uri(MagiInfo?.BLRMap?.SquareImage)); } else { return new(new Uri($"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png")); } } }
-    [JsonIgnore] public StringCollection PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
-    [JsonIgnore] public StringCollection Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team1List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team1List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
-    [JsonIgnore] public StringCollection Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team2List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team2List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
+    [JsonIgnore] public StringCollection PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return [EmptyServer]; } } }
+    [JsonIgnore] public StringCollection Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team1List ?? [EmptyServer]; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team1List ?? [EmptyServer]; } else { return [EmptyServer]; } } }
+    [JsonIgnore] public StringCollection Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team2List ?? [EmptyServer]; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team2List ?? [EmptyServer]; } else { return [EmptyServer]; } } }
     [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.PlayerCount; } else { return -1; } } }
+    [JsonIgnore] public int BotCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.BotCount; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.BotCount; } else { return -1; } } }
+    [JsonIgnore] public UIBool HasBots { get; } = new(false);
     [JsonIgnore] public int MaxPlayers { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.MaxPlayers; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.MaxPlayers; } else { return -1; } } }
 
     [JsonIgnore] private string id = string.Empty;
@@ -167,6 +171,15 @@ public sealed class BLRServer : INotifyPropertyChanged
         OnPropertyChanged(nameof(PlayerList));
         OnPropertyChanged(nameof(Team1List));
         OnPropertyChanged(nameof(Team2List));
+        if (BotCount > 0)
+        {
+            HasBots.Set(true);
+        }
+        else
+        {
+            HasBots.Set(false);
+        }
+
         MainWindow.Instance?.Dispatcher.Invoke(MainWindow.Instance.RefreshServerList);
     }
 

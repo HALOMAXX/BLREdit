@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1822 // Mark members as static
-
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 
 namespace BLREdit;
@@ -14,11 +12,8 @@ public sealed class BLRItemAttribute(string itemType, [CallerLineNumber] int pro
 }
 
 [AttributeUsage(AttributeTargets.Property)]
-public sealed class ProfileSettingAttribute(int id, [CallerMemberName] string? name = null) : Attribute
+public sealed class ProfileSettingAttribute(int id, [CallerMemberName] string? property = null) : Attribute
 {
-    public string MemberName => name ?? string.Empty;
+    public string Property => property ?? string.Empty;
     public int ID => id;
 }
-
-
-#pragma warning restore CA1822 // Mark members as static

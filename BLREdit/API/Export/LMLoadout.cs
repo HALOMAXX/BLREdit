@@ -38,15 +38,15 @@ public class LMLoadout
         WeaponHanger = loadout.Primary?.Tag?.UID ?? -1;
         Gear = new(loadout);
         Body = new(loadout);
-        Depot = new int[] { 
+        Depot = [ 
             loadout.Depot1?.UID ?? -1,
             loadout.Depot2?.UID ?? -1,
             loadout.Depot3?.UID ?? -1,
             loadout.Depot4?.UID ?? -1,
             loadout.Depot5?.UID ?? -1
-        };
+        ];
 
-        Taunts = new int[] {
+        Taunts = [
             loadout.Taunt1?.UID ?? -1,
             loadout.Taunt2?.UID ?? -1,
             loadout.Taunt3?.UID ?? -1,
@@ -55,7 +55,7 @@ public class LMLoadout
             loadout.Taunt6?.UID ?? -1,
             loadout.Taunt7?.UID ?? -1,
             loadout.Taunt8?.UID ?? -1
-        };
+        ];
 
         Emblem = new(loadout);
 

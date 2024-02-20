@@ -8,7 +8,7 @@ namespace BLREdit.API.Utils;
 
 public sealed class AwaitableCollection<T>
 {
-    private readonly BlockingCollection<T> collection = new();
+    private readonly BlockingCollection<T> collection = [];
     private readonly ManualResetEvent emptyEvent = new(true);
     private readonly ManualResetEvent filledEvent = new(false);
     public void Add(T item)
