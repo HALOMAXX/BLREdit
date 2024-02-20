@@ -5,6 +5,7 @@ using BLREdit.UI.Views;
 
 using System;
 using System.Text.Json.Serialization;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace BLREdit.Export;
@@ -42,11 +43,12 @@ public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLRLoadout? bl
 
     public static BLRLoadoutStorage AddNewLoadoutSet(string Name = "New Loadout", BLRLoadout? loadout = null, ShareableLoadout? share = null)
     {
+        string message = "";
         var shar = share ?? MagiCowsLoadout.DefaultLoadout1.ConvertToShareable();
         shar.Name = Name;
         shar.Apply = true;
         var blr = loadout ?? shar.ToBLRLoadout();
-        //blr?.Write(share);
+        blr.Apply = blr.ValidateLoadout(ref message);
         var load = new BLRLoadoutStorage(shar, blr);
         DataStorage.ShareableLoadouts.Add(shar);
         DataStorage.Loadouts.Add(load);

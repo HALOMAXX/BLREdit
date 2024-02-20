@@ -6,6 +6,7 @@ using BLREdit.Game.Proxy;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace BLREdit;
 
@@ -43,7 +44,7 @@ public static class DataStorage
     public static ObservableCollection<ShareableProfile> ShareableProfiles { get { lock (shareableLock) { _shareableProfiles ??= ExportSystem.LoadShareableProfiles(); } return _shareableProfiles; } }
     public static ObservableCollection<ShareableLoadout> ShareableLoadouts { get { lock (shareableLoadoutLock) { _shareableLoadouts ??= ExportSystem.LoadShareableLoadouts(); } return _shareableLoadouts; } }
     public static ObservableCollection<BLRLoadoutStorage> Loadouts { get { lock (loadoutLock) { _blrProfile ??= ExportSystem.LoadStorage(); } return _blrProfile; } }
-    public static BLREditSettings Settings { get { lock (settingsLock) { _settings ??=  IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new(); } return _settings; } set { _settings = value; } }
+    public static BLREditSettings Settings { get { lock (settingsLock) { _settings ??= LoadBLREditSettings(); } return _settings; } set { _settings = value; } }
     #endregion Properties
 
     public static int FindIn<T>(IList<T> list, T? item)
@@ -66,5 +67,17 @@ public static class DataStorage
         IOResources.SerializeFile($"ServerList.json", _servers);
         IOResources.SerializeFile($"ModuleCache.json", _cachedModules);
         BLREditSettings.Save();
+    }
+
+    private static BLREditSettings LoadBLREditSettings()
+    { 
+        var settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
+
+        if (!BLREditSettings.AvailableProxyVersions.Contains(settings.SelectedSDKType))
+        {
+            settings.SelectedSDKType = BLREditSettings.AvailableProxyVersions.First();
+        }
+
+        return settings;
     }
 }
