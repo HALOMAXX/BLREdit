@@ -97,16 +97,14 @@ public sealed class MainWindowView : INotifyPropertyChanged
         string BuildTag = "";
 
 #if DEBUG
-        BuildTag = "[Debug Build]:";
+        BuildTag = $"[Debug]:";
 #elif RELEASE
-        BuildTag = "[Release Build]:";
-#elif PUBLISH
-        BuildTag = "[Release Build]:";
+        BuildTag = $"[Release]:";
 #endif
 
         var PlayerProfile = ExportSystem.GetOrAddProfileSettings(DataStorage.Settings?.PlayerName ?? "");
 
-        WindowTitle = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}, {DataStorage.Settings?.PlayerName} Playtime:[{new TimeSpan(0,0, PlayerProfile.PlayTime)}]";
+        WindowTitle = $"{BuildTag}{App.CurrentRepo}-{App.CurrentVersion}+{ThisAssembly.Git.Branch}, {DataStorage.Settings?.PlayerName} Playtime:[{new TimeSpan(0,0, PlayerProfile.PlayTime)}], SDK:[{DataStorage.Settings?.SDKVersionDate:yyyy.MM.dd(HH:mm:ss)}]";
     }
 
     public void ResetLastBorder()

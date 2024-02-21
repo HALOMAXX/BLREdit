@@ -112,6 +112,12 @@
             </Border>
 
             <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" DataContext="{Binding Path=SteamAwareToggle}">
+                    <ToggleButton Content="Steam Aware" ToolTip="Adds a file next to the client which allows SteamAPI/UI to be aware of the game even when launched externaly" IsChecked="{Binding Path=Is, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+
+            <Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                     <Button Content="{x:Static p:Resources.btn_ResetToDefaults }" ToolTip="{x:Static p:Resources.btn_TT_ResetToDefaults }" Command="{Binding Path=ResetConfigCommand}"/>
                 </StackPanel>
