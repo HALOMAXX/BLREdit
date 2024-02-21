@@ -582,7 +582,7 @@ public partial class App : System.Windows.Application
             }
         }
 
-        Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));
+        Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:yyyy.MM.dd(HHmmss)}.log", "loggingListener"));
 
         Trace.AutoFlush = true;
 
@@ -900,7 +900,7 @@ public partial class App : System.Windows.Application
 
             bool newVersionAvailable = (LatestRelease.Version ?? new("")) > CurrentVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
-            if (DataStorage.Settings.LastRunVersion is null) { assetFolderMissing = true; }
+            if (DataStorage.Settings.LastRunVersion is null || new BLREditVersion(DataStorage.Settings.LastRunVersion) < new BLREditVersion("v0.12.0") || !File.Exists($"Assets\\textures\\emblem_color_00.png")) { assetFolderMissing = true; }
             DataStorage.Settings.LastRunVersion = CurrentVersion.ToString();
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
