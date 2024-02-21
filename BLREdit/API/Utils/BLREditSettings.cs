@@ -50,6 +50,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public UIBool PingHiddenServers { get; set; } = new(true);
     public UIBool ShowHiddenServers { get; set; } = new(false);
     public UIBool ApplyMergedProfiles { get; set; } = new(true);
+    public UIBool SteamAwareToggle { get; set; } = new(true);
     public DateTime? SDKVersionDate { get; set; }
     [JsonPropertyName("SelectedProxyVersion"), JsonInclude] private string? _selectedSDKType;
     [JsonIgnore] public string? SelectedSDKType { get { _selectedSDKType ??= AvailableProxyVersions.First(); return _selectedSDKType; } set { if (AvailableProxyVersions.Contains(value)) { _selectedSDKType = value; } } }
