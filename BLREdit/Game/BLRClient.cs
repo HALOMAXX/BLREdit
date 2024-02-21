@@ -249,6 +249,14 @@ public sealed class BLRClient : INotifyPropertyChanged
             return PatchClient();
         }
 
+        var info = new FileInfo(new FileInfo(OriginalPath).Directory.FullName + "\\steam_appid.txt");
+        if (DataStorage.Settings?.SteamAwareToggle.Is ?? false && !info.Exists)
+        {
+            using var file = info.CreateText();
+            file.Write("209870");
+            file.Close();
+        }
+
         LoggingSystem.Log($"Client is in Good Health!");
         return true;
     }
@@ -759,7 +767,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             LoggingSystem.Log($"[{this}]: has already been validated!");
         }
-
         BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog, server);
     }
 
