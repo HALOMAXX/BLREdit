@@ -883,6 +883,9 @@ public partial class App : System.Windows.Application
 
     public static bool VersionCheck()
     {
+#if DEBUG
+        return false;
+#endif
         if (versionCheckDone)
         {
             LoggingSystem.Log("Version Check got run again");
