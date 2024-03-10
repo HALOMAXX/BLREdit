@@ -13,7 +13,8 @@
   {
     "ID": "majikau 1",
     "ServerAddress": "blr.majikau.com",
-    "Port": 7779,
+    "Port": 7778,
+    "InfoPort": 7778,
     "Region": "EU-North"
   },
   {
