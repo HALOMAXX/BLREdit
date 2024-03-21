@@ -15,6 +15,7 @@
     "ServerAddress": "blr.majikau.com",
     "Port": 7778,
     "InfoPort": 7778,
+    "Hidden": true,
     "Region": "EU-North"
   },
   {
@@ -65,6 +66,7 @@
     "ID": "craftman_96_alex 0",
     "ServerAddress": "blrrevive.ddd-game.de",
     "InfoPort": 7778,
+    "Hidden": true,
     "Region": "EU"
   },
   {
@@ -72,6 +74,7 @@
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7779,
     "InfoPort": 7780,
+    "Hidden": true,
     "Region": "EU"
   },  
   {
@@ -79,6 +82,7 @@
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7781,
     "InfoPort": 7782,
+    "Hidden": true,
     "Region": "EU"
   },
   {
@@ -86,6 +90,7 @@
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7783,
     "InfoPort": 7784,
+    "Hidden": true,
     "Region": "EU"
   },
   {

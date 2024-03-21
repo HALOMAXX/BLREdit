@@ -29,7 +29,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public string WindowTitle { get { return windowTitle; } set { windowTitle = value; OnPropertyChanged(); } }
 
     private BLRLoadoutStorage profile = GetLoadout();
-    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; DataStorage.Settings.CurrentlyAppliedLoadout = DataStorage.Loadouts.IndexOf(value); profile.Shareable.LastViewed = DateTime.Now; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
+    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; UpdateProfileBorders(); DataStorage.Settings.CurrentlyAppliedLoadout = DataStorage.Loadouts.IndexOf(value); profile.Shareable.LastViewed = DateTime.Now; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
 
 #pragma warning disable CA1822 // Mark members as static
     public BLREditSettings BLRESettings => DataStorage.Settings;
@@ -84,6 +84,18 @@ public sealed class MainWindowView : INotifyPropertyChanged
         var loadout = DataStorage.Loadouts[DataStorage.Loadouts.Count > DataStorage.Settings.CurrentlyAppliedLoadout ? DataStorage.Settings.CurrentlyAppliedLoadout : 0];
         loadout.BLR.PropertyChanged += LoadoutChangedRelay;
         return loadout;
+    }
+
+    void UpdateProfileBorders()
+    {
+        try
+        {
+            foreach (var l in DataStorage.Loadouts)
+            {
+                l.TriggerChangeNotify();
+            }
+        }
+        catch { }
     }
 
     static void LoadoutChangedRelay(object sender, PropertyChangedEventArgs e)
