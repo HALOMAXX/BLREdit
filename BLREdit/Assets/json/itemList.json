@@ -18729,7 +18729,7 @@
         "hangers",
         "scopes"
       ],
-      "UID": 20009
+      "UID": 20010
     },
     {
       "Icon": "t_Depot_Flamethrower_128x128",
@@ -18744,7 +18744,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20003,
+      "UID": 20002,
       "WikiStats": {
         "Reload": 2.0,
         "Swaprate": 20.0
@@ -18763,7 +18763,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20007,
+      "UID": 20008,
       "WeaponStats": {
         "Accuracy": 0.05,
         "Range": 10000.0,
@@ -18937,7 +18937,7 @@
         "hangers",
         "scopes"
       ],
-      "UID": 20014
+      "UID": 20015
     },
     {
       "Icon": "t_Depot_MiniGun_128x128",
@@ -18953,7 +18953,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20008,
+      "UID": 20009,
       "WeaponStats": {
         "Accuracy": 0.03,
         "Damage": 50.0,
@@ -19124,7 +19124,7 @@
         "hangers",
         "scopes"
       ],
-      "UID": 20005,
+      "UID": 20007,
       "WeaponStats": {
         "Accuracy": 0.01,
         "Damage": 1000.0,
@@ -19298,7 +19298,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20002,
+      "UID": 20005,
       "WikiStats": {
         "Reload": 2.5,
         "Swaprate": 20.0
@@ -19318,7 +19318,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20011,
+      "UID": 20003,
       "WikiStats": {
         "Reload": 3.1667,
         "Swaprate": 20.0
@@ -19340,7 +19340,7 @@
         "ammos",
         "hangers"
       ],
-      "UID": 20010
+      "UID": 20012
     },
     {
       "Icon": "t_Depot_AssaultBot_128x128",
@@ -19351,7 +19351,7 @@
         "hangers",
         "scopes"
       ],
-      "UID": 200013
+      "UID": 20014
     }
   ],
   "shop": [

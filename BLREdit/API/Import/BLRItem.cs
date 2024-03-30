@@ -139,7 +139,10 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public static bool IsValidFor(BLRItem? item, BLRItem? filter, bool advanced = false)
     {
-        if (item == null || item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY) return true;
+        if (item == null) return true;
+
+        if ((item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY) && (item.UID < 20000 || item.UID > 20100)) { return true; }
+        else if ((item.Category == ImportSystem.PRIMARY_CATEGORY || item.Category == ImportSystem.SECONDARY_CATEGORY) && (item.UID > 20000 || item.UID < 20100)) { return false; }
 
         if (advanced)
         {

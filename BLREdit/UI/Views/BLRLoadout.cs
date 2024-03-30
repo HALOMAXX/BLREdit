@@ -9,6 +9,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
+using static BLREdit.API.Utils.HelperFunctions;
+
 namespace BLREdit.UI.Views;
 
 public sealed class BLRLoadout : INotifyPropertyChanged
@@ -36,6 +38,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Calculate)) CalculateStats();
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) OnPropertyChanged(propertyName);
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) IsChanged = true;
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) OnPropertyChanged(nameof(LoadoutReport));
     }
     #endregion Event
 
@@ -70,6 +73,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         else
         { return null; }
     }
+
+    private LoadoutErrorReport? loadoutReport;
+    public LoadoutErrorReport LoadoutReport { get { if (loadoutReport is null || isChanged) { loadoutReport = GenerateLoadoutReport(); } return (LoadoutErrorReport)loadoutReport; } }
 
     /// <summary>
     /// Check if the loadout is vanilla conform
@@ -146,28 +152,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         return valid;
     }
 
-    public bool HasDuplicatedGear 
-    { 
-        get
-        {
-            if (Gear1 is not null && Gear1.UID != 12015)
-            { 
-                if (Gear2 is not null && Gear2.UID == Gear1.UID) return true;
-                if (Gear3 is not null && Gear3.UID == Gear1.UID) return true;
-                if (Gear4 is not null && Gear4.UID == Gear1.UID) return true;
-            }
-            if (Gear2 is not null && Gear2.UID != 12015)
-            {
-                if (Gear3 is not null && Gear3.UID == Gear2.UID) return true;
-                if (Gear4 is not null && Gear4.UID == Gear2.UID) return true;
-            }
-            if (Gear3 is not null && Gear3.UID != 12015)
-            {
-                if (Gear4 is not null && Gear4.UID == Gear3.UID) return true;
-            }
-            return false;
-        }
-    }
+    public bool HasDuplicatedGear { get { return LoadoutReport.GearReport.HasDuplicates; } }
 
     private void SetValueOf(BLRItem? value, BLRItem? defaultItem = null, [CallerMemberName] string? name = null)
     {
@@ -955,4 +940,127 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         return rng.Next() > (Int32.MaxValue / 2);
         // Next() returns an int in the range [0..Int32.MaxValue]
     }
+
+    private GearErrorReport GenerateGearReport()
+    {
+        bool g1dup = false, g1frag = false, g1missing = false;
+        bool g2dup = false, g2frag = false, g2missing = false;
+        bool g3dup = false, g3frag = false, g3missing = false;
+        bool g4dup = false, g4frag = false, g4missing = false;
+
+        if (Gear4 is not null && Gear4.UID != 12015)
+        {
+            if (Gear3 is not null && Gear3.UID == Gear4.UID) g4dup = true;
+            if (Gear2 is not null && Gear2.UID == Gear4.UID) g4dup = true;
+            if (Gear1 is not null && Gear1.UID == Gear4.UID) g4dup = true;
+
+            if (Gear4.Name is not null) g4frag = Gear4.Name.Contains("Frag") || Gear4.Name.Contains("I Heart U") || Gear4.Name.Contains("Snowpocalypse");
+        }
+        else
+        {
+            g4missing = Gear4 is null;
+        }
+
+        if (Gear3 is not null && Gear3.UID != 12015)
+        {
+            if (Gear2 is not null && Gear2.UID == Gear3.UID) g3dup = true;
+            if (Gear1 is not null && Gear1.UID == Gear3.UID) g3dup = true;
+
+            if (Gear3.Name is not null) g3frag = Gear3.Name.Contains("Frag") || Gear3.Name.Contains("I Heart U") || Gear3.Name.Contains("Snowpocalypse");
+        }
+        else
+        {
+            g3missing = Gear3 is null;
+        }
+
+        if (Gear2 is not null && Gear2.UID != 12015)
+        {
+            if (Gear1 is not null && Gear1.UID == Gear2.UID) g2dup = true;
+
+            if (Gear2.Name is not null) g2frag = Gear2.Name.Contains("Frag") || Gear2.Name.Contains("I Heart U") || Gear2.Name.Contains("Snowpocalypse");
+        }
+        else
+        {
+            g2missing = Gear2 is null;
+        }
+
+        if (Gear1 is not null && Gear1.UID != 12015)
+        {
+            if (Gear1.Name is not null) g1frag = Gear1.Name.Contains("Frag") || Gear1.Name.Contains("I Heart U") || Gear1.Name.Contains("Snowpocalypse");
+        }
+        else
+        {
+            g1missing = Gear1 is null;
+        }
+
+        g4dup = (g4frag && (g3frag || g2frag || g1frag));
+        g3dup = (g3frag && (g2frag || g1frag));
+        g2dup = (g2frag && g1frag);
+
+        return new GearErrorReport(
+            ItemCheck(Helmet, null),
+            ItemCheck(UpperBody, null),
+            ItemCheck(LowerBody, null),
+            ItemCheck(Tactical, null),
+            ItemCheck(BodyCamo, null),
+            ItemCheck(Avatar, null),
+            ItemCheck(Trophy, null),
+            ItemCheck(Gear4, g4dup, g4missing),
+            ItemCheck(Gear3, g3dup, g3missing),
+            ItemCheck(Gear2, g2dup, g2missing),
+            ItemCheck(Gear1, g1dup, g1missing)
+            );
+    }
+
+    private ExtraErrorReport GenerateExtraReport()
+    {
+        return new ExtraErrorReport(
+            ItemCheck(Depot1, null),
+            ItemCheck(Depot2, null),
+            ItemCheck(Depot3, null),
+            ItemCheck(Depot4, null),
+            ItemCheck(Depot5, null),
+
+            ItemCheck(Taunt1, null),
+            ItemCheck(Taunt2, null),
+            ItemCheck(Taunt3, null),
+            ItemCheck(Taunt4, null),
+            ItemCheck(Taunt5, null),
+            ItemCheck(Taunt6, null),
+            ItemCheck(Taunt7, null),
+            ItemCheck(Taunt8, null),
+
+            ItemCheck(EmblemIcon, null),
+            ItemCheck(EmblemIconColor, null),
+
+            ItemCheck(EmblemShape, null),
+            ItemCheck(EmblemShapeColor, null),
+
+            ItemCheck(EmblemBackground, null),
+            ItemCheck(EmblemBackgroundColor, null),
+
+            ItemCheck(AnnouncerVoice, null),
+            ItemCheck(PlayerVoice, null),
+            ItemCheck(Title, null)
+            );
+    }
+
+    public LoadoutErrorReport GenerateLoadoutReport()
+    {
+        return new(
+                Primary.GenerateReport(),
+                Secondary.GenerateReport(),
+                GenerateGearReport(),
+                GenerateExtraReport()
+            );
+    }
+}
+
+public struct LoadoutErrorReport(WeaponErrorReport primary, WeaponErrorReport secondary, GearErrorReport gear, ExtraErrorReport extra)
+{
+    public bool IsValid { get { return (PrimaryReport.IsValid && SecondaryReport.IsValid && GearReport.IsValid && ExtraReport.IsValid); } }
+    public WeaponErrorReport PrimaryReport { get; } = primary;
+    public WeaponErrorReport SecondaryReport { get; } = secondary;
+    public GearErrorReport GearReport { get; } = gear;
+    public ExtraErrorReport ExtraReport { get; } = extra;
 }

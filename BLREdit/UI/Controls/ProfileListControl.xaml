@@ -26,6 +26,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Name="ToggleLoadouts" Content="Toggle Loadout Apply" Width="256" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="ToggleLoadouts_Click"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button Name="ToggleLoadouts" Content="Apply all Loadouts" Width="256" Height="48" Click="ToggleLoadouts_Click"/>
+            <Button Name="RepairLoadouts" Content="Repair all Loadouts" Width="256" Height="48" Click="RepairLoadouts_Click"/>
+        </StackPanel>
+            
     </Grid>
 </UserControl>
