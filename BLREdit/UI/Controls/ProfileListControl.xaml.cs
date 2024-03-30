@@ -15,7 +15,7 @@ namespace BLREdit.UI.Controls
 {
     public partial class ProfileListControl : UserControl
     {
-        private Type? lastSelectedSortingType = null;
+        private Type? lastSelectedSortingType;
         public ProfileListControl()
         {
             InitializeComponent();
@@ -119,24 +119,33 @@ namespace BLREdit.UI.Controls
         private void ToggleLoadouts_Click(object sender, RoutedEventArgs e)
         {
             if (DataStorage.Loadouts is null || DataStorage.Loadouts.Count <= 0) { return; }
+            int appliedCount = 0;
             foreach (var loadout in DataStorage.Loadouts)
             {
                 string message = string.Empty;
                 if (loadout.BLR.ValidateLoadout(ref message))
                 {
                     loadout.BLR.Apply = true;
+                    appliedCount++;
                 }
             }
+            LoggingSystem.MessageLog($"Applied: {appliedCount}/{DataStorage.Loadouts.Count}", "Info");
         }
 
         private void RepairLoadouts_Click(object sender, RoutedEventArgs e)
         {
+            if (!LoggingSystem.MessageLog("Are you sure you want to Repair all Loadouts?\nthis might be a destructive operation you can still revert some changes with the Undo/Redo feature!", "Warning", MessageBoxButton.YesNo)) return;
+
             int primariesRepaired = 0;
             int secondariesRepaired = 0;
             int gear4Dup = 0, gear3Dup = 0, gear2Dup = 0, gear1Dup = 0;
             int missingDep1 = 0, missingDep2 = 0, missingDep3 = 0, missingDep4 = 0, missingDep5 = 0;
             int missingTaunt1 = 0, missingTaunt2 = 0, missingTaunt3 = 0, missingTaunt4 = 0, missingTaunt5 = 0, missingTaunt6 = 0, missingTaunt7 = 0, missingTaunt8 = 0;
             int topIcon = 0, topColor = 0, middleIcon = 0, middleColor = 0, bottomIcon = 0, bottomColor = 0;
+            int announcer = 0, player = 0, title = 0;
+
+            int helmet = 0, upper = 0, lower = 0;
+            int tactical = 0, trophy = 0, avatar = 0, camo = 0;
 
             if (DataStorage.Loadouts is null || DataStorage.Loadouts.Count <= 0) { return; }
             foreach (var loadout in DataStorage.Loadouts)
@@ -287,24 +296,90 @@ namespace BLREdit.UI.Controls
                         }
                         #endregion EmblemCheck
 
-                        //TODO: Announcer, Player, Title Checks Fix De-Duplication
+                        #region ExtraETC
+                        if (HasAnyFlags(report.ExtraReport.AnnouncerReport, ItemReport.Invalid, ItemReport.Missing))
+                        {
+                            loadout.BLR.AnnouncerVoice = ImportSystem.GetItemByIDAndType(ImportSystem.ANNOUNCER_VOICE_CATEGORY, 0);
+                            announcer++;
+                        }
+                        if (HasAnyFlags(report.ExtraReport.PlayerReport, ItemReport.Invalid, ItemReport.Missing))
+                        {
+                            loadout.BLR.PlayerVoice = ImportSystem.GetItemByIDAndType(ImportSystem.PLAYER_VOICE_CATEGORY, 0);
+                            player++;
+                        }
+                        if (HasAnyFlags(report.ExtraReport.TitleReport, ItemReport.Invalid, ItemReport.Missing))
+                        {
+                            loadout.BLR.Title = ImportSystem.GetItemByIDAndType(ImportSystem.TITLES_CATEGORY, 0);
+                            title++;
+                        }
+                        #endregion ExtraETC
+
+                        #region Armor
+                        if (HasAnyFlags(report.GearReport.HelmetReport, ItemReport.Invalid, ItemReport.Missing))
+                        {
+                            loadout.BLR.Helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, 0);
+                            helmet++;
+                        }
+                        if (HasAnyFlags(report.GearReport.UpperBodyReport, ItemReport.Invalid, ItemReport.Missing))
+                        {
+                            loadout.BLR.UpperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, 0);
+                            upper++;
+                        }
+                        if (HasAnyFlags(report.GearReport.LowerBodyReport, ItemReport.Invalid, ItemReport.Missing))
+                        {
+                            loadout.BLR.LowerBody = ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, 0);
+                            lower++;
+                        }
+
+                        if (HasAnyFlags(report.GearReport.TacticalReport, ItemReport.Invalid))
+                        {
+                            loadout.BLR.Tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, 0);
+                            tactical++;
+                        }
+                        if (HasAnyFlags(report.GearReport.AvatarReport, ItemReport.Invalid))
+                        {
+                            loadout.BLR.Avatar = null;
+                            avatar++;
+                        }
+                        if (HasAnyFlags(report.GearReport.BodyCamoReport, ItemReport.Invalid, ItemReport.Missing))
+                        {
+                            loadout.BLR.BodyCamo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, 0);
+                            camo++;
+                        }
+                        if (HasAnyFlags(report.GearReport.TrophyReport, ItemReport.Invalid))
+                        {
+                            loadout.BLR.Trophy = null;
+                            trophy++;
+                        }
+                        #endregion Armor
+                        //TODO: Add Repair for Gear: Trophies, Tactical, Helmet, UpperBody, LowerBody, Avatar, BodyCamo
                     }
                 }
             }
 
+            var count = DataStorage.Loadouts.Count;
+
             LoggingSystem.MessageLog(
-                $"Primaries Repaired: {primariesRepaired}/{DataStorage.Loadouts.Count}\n" +
-                $"Secondaries Repaired: {secondariesRepaired}/{DataStorage.Loadouts.Count}\n" +
-                $"Gear4 Duplicates: {gear4Dup}/{DataStorage.Loadouts.Count}\n" +
-                $"Gear3 Duplicates: {gear3Dup}/{DataStorage.Loadouts.Count}\n" +
-                $"Gear2 Duplicates: {gear2Dup}/{DataStorage.Loadouts.Count}\n" +
-                $"Gear1 Duplicates: {gear1Dup}/{DataStorage.Loadouts.Count}\n" +
-                $"Depot N/A:\n1:{missingDep1}/{DataStorage.Loadouts.Count} | 2:{missingDep2}/{DataStorage.Loadouts.Count} | 3:{missingDep3}/{DataStorage.Loadouts.Count} | 4:{missingDep4}/{DataStorage.Loadouts.Count} | 5:{missingDep5}/{DataStorage.Loadouts.Count}\n" +
-                $"Taunt N/A:\n1:{missingTaunt1}/{DataStorage.Loadouts.Count} | 2:{missingTaunt2}/{DataStorage.Loadouts.Count} | 3:{missingTaunt3}/{DataStorage.Loadouts.Count} | 4:{missingTaunt4}/{DataStorage.Loadouts.Count} | 5:{missingTaunt5}/{DataStorage.Loadouts.Count} | 6:{missingTaunt6}/{DataStorage.Loadouts.Count} | 7:{missingTaunt7}/{DataStorage.Loadouts.Count} | 8:{missingTaunt8}/{DataStorage.Loadouts.Count}\n" +
+                $"Primaries Repaired: {primariesRepaired}/{count}\n" +
+                $"Secondaries Repaired: {secondariesRepaired}/{count}\n" +
+                $"Gear4 Duplicates: {gear4Dup}/{count}\n" +
+                $"Gear3 Duplicates: {gear3Dup}/{count}\n" +
+                $"Gear2 Duplicates: {gear2Dup}/{count}\n" +
+                $"Gear1 Duplicates: {gear1Dup}/{count}\n" +
+                $"Armor:\n" +
+                    $"\tHelmet:{helmet}/{count} | Upper:{upper}/{count} | Lower:{lower}/{count}\n" +
+                    $"\tTactical:{tactical}/{count} | Trophy:{trophy}/{count}\n" +
+                    $"\tCamo:{camo}/{count} | Avatar:{avatar}/{count}\n" +
+                $"Depot N/A:\n" +
+                    $"\t1:{missingDep1}/{count} | 2:{missingDep2}/{count} | 3:{missingDep3}/{count} | 4:{missingDep4}/{count} | 5:{missingDep5}/{count}\n" +
+                $"Taunt N/A:\n" +
+                    $"\t1:{missingTaunt1}/{count} | 2:{missingTaunt2}/{count} | 3:{missingTaunt3}/{count} | 4:{missingTaunt4}/{count}\n" +
+                    $"\t5:{missingTaunt5}/{count} | 6:{missingTaunt6}/{count} | 7:{missingTaunt7}/{count} | 8:{missingTaunt8}/{count}\n" +
                 $"Emblem:\n" +
-                $"\tTop:{topIcon}/{DataStorage.Loadouts.Count} | TopColor:{topColor}/{DataStorage.Loadouts.Count}\n" +
-                $"\tMiddle:{middleIcon}/{DataStorage.Loadouts.Count} | MiddleColor: {middleColor}/{DataStorage.Loadouts.Count}\n" +
-                $"\tBottom:{bottomIcon}/{DataStorage.Loadouts.Count} | BottomColor:{bottomColor}/{DataStorage.Loadouts.Count}", "Info");
+                    $"\tTop:{topIcon}/{count} | TopColor:{topColor}/{count}\n" +
+                    $"\tMiddle:{middleIcon}/{count} | MiddleColor: {middleColor}/{count}\n" +
+                    $"\tBottom:{bottomIcon}/{count} | BottomColor:{bottomColor}/{count}\n" +
+                $"Announcer:{announcer}/{count} | Player:{player}/{count} | Title:{title}/{count}", "Info");
         }
     }
 }

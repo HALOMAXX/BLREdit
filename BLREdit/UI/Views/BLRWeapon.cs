@@ -233,28 +233,28 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         if (Barrel is null || Barrel.Name == MagiCowsWeapon.NoBarrel)
         {
-            Barrel = wpn.GetBarrel();
+            Barrel = wpn.GetBarrelBLRItem();
         }
         if (Scope is null || Scope.Name == MagiCowsWeapon.NoScope)
         {
-            Scope = wpn.GetScope();
+            Scope = wpn.GetScopeBLRItem();
         }
         if (Stock is null || Stock.Name == MagiCowsWeapon.NoStock)
         {
-            Stock = wpn.GetStock();
+            Stock = wpn.GetStockBLRItem();
         }
         if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
         {
-            Grip = wpn.GetGrip();
+            Grip = wpn.GetGripBLRItem();
         }
 
         if (Muzzle is null || BLRItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
         {
-            Muzzle = wpn.GetMuzzle();
+            Muzzle = wpn.GetMuzzleBLRItem();
         }
         if (Magazine is null || BLRItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
         {
-            Magazine = wpn.GetMagazine();
+            Magazine = wpn.GetMagazineBLRItem();
             var uid = Magazine?.UID ?? -1;
             if (uid == -1) { uid = 90000; }
             Ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, uid);
@@ -867,31 +867,31 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         MagiCowsWeapon ? wpn = MagiCowsWeapon.GetDefaultSetupOfReceiver(Receiver);
 
         if (Muzzle is null || !Muzzle.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzle(), GetType().GetProperty(nameof(Muzzle)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzleBLRItem(), GetType().GetProperty(nameof(Muzzle)), this); }
 
         if (Barrel is null || !Barrel.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrel(), GetType().GetProperty(nameof(Barrel)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrelBLRItem(), GetType().GetProperty(nameof(Barrel)), this); }
 
         if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || !AllowStock(Receiver, Barrel, Stock))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStock(), GetType().GetProperty(nameof(Stock)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStockBLRItem(), GetType().GetProperty(nameof(Stock)), this); }
 
         if (Scope is null || !Scope.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScope(), GetType().GetProperty(nameof(Scope)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScopeBLRItem(), GetType().GetProperty(nameof(Scope)), this); }
 
         if (Magazine is null || !Magazine.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazine(), GetType().GetProperty(nameof(Magazine)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazineBLRItem(), GetType().GetProperty(nameof(Magazine)), this); }
 
         if (Ammo is null || !Ammo.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmo(), GetType().GetProperty(nameof(Ammo)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmoBLRItem(), GetType().GetProperty(nameof(Ammo)), this); }
 
         if (Grip is null || !Grip.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGrip(), GetType().GetProperty(nameof(Grip)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGripBLRItem(), GetType().GetProperty(nameof(Grip)), this); }
 
         if (Camo is null || !Camo.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamo(), GetType().GetProperty(nameof(Camo)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamoBLRItem(), GetType().GetProperty(nameof(Camo)), this); }
 
         if (Tag is null || !Tag.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTag(), GetType().GetProperty(nameof(Tag)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTagBLRItem(), GetType().GetProperty(nameof(Tag)), this); }
 
         if (!Skin?.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? true)
         { UndoRedoSystem.DoValueChangeAfter(ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0), GetType().GetProperty(nameof(Skin)), this); }
@@ -917,31 +917,31 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
 
         if (Muzzle is null || !Muzzle.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzle(), GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzleBLRItem(), GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Barrel is null || !Barrel.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrel(), GetType().GetProperty(nameof(Barrel)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrelBLRItem(), GetType().GetProperty(nameof(Barrel)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || !AllowStock(Receiver, Barrel, Stock))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStock(), GetType().GetProperty(nameof(Stock)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStockBLRItem(), GetType().GetProperty(nameof(Stock)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Scope is null || !Scope.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScope(), GetType().GetProperty(nameof(Scope)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScopeBLRItem(), GetType().GetProperty(nameof(Scope)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Magazine is null || !Magazine.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazine(), GetType().GetProperty(nameof(Magazine)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazineBLRItem(), GetType().GetProperty(nameof(Magazine)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Ammo is null || !Ammo.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmo(), GetType().GetProperty(nameof(Ammo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmoBLRItem(), GetType().GetProperty(nameof(Ammo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Grip is null || !Grip.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGrip(), GetType().GetProperty(nameof(Grip)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGripBLRItem(), GetType().GetProperty(nameof(Grip)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Camo is null || !Camo.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamo(), GetType().GetProperty(nameof(Camo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamoBLRItem(), GetType().GetProperty(nameof(Camo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Tag is null || !Tag.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTag(), GetType().GetProperty(nameof(Tag)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTagBLRItem(), GetType().GetProperty(nameof(Tag)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (!Skin?.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? true)
         { UndoRedoSystem.DoValueChangeAfter(ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0), GetType().GetProperty(nameof(Skin)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
@@ -962,28 +962,28 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         if (Barrel is null || Barrel.Name == MagiCowsWeapon.NoBarrel)
         {
-            Barrel = wpn.GetBarrel();
+            Barrel = wpn.GetBarrelBLRItem();
         }
         if (Scope is null || Scope.Name == MagiCowsWeapon.NoScope)
         {
-            Scope = wpn.GetScope();
+            Scope = wpn.GetScopeBLRItem();
         }
         if (Stock is null || Stock.Name == MagiCowsWeapon.NoStock)
         {
-            Stock = wpn.GetStock();
+            Stock = wpn.GetStockBLRItem();
         }
         if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
         {
-            Grip = wpn.GetGrip();
+            Grip = wpn.GetGripBLRItem();
         }
 
         if (Muzzle is null || BLRItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
         {
-            Muzzle = wpn.GetMuzzle();
+            Muzzle = wpn.GetMuzzleBLRItem();
         }
         if (Magazine is null || BLRItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
         {
-            Magazine = wpn.GetMagazine();
+            Magazine = wpn.GetMagazineBLRItem();
             var uid = Magazine?.UID ?? -1;
             if (uid == -1) { uid = 90000; }
             Ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, uid);

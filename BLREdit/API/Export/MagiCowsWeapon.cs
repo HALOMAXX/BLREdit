@@ -105,59 +105,59 @@ public sealed class MagiCowsWeapon : IBLRWeapon
     {
         return type switch
         {
-            ImportSystem.CAMOS_WEAPONS_CATEGORY => GetCamo(),
-            ImportSystem.HANGERS_CATEGORY => GetTag(),
-            ImportSystem.MAGAZINES_CATEGORY => GetMagazine(),
-            ImportSystem.BARRELS_CATEGORY => GetBarrel(),
-            ImportSystem.SCOPES_CATEGORY => GetScope(),
-            ImportSystem.STOCKS_CATEGORY => GetStock(),
-            ImportSystem.AMMO_CATEGORY => GetAmmo(),
-            ImportSystem.PRIMARY_SKIN_CATEGORY => GetSkin(),
-            ImportSystem.GRIPS_CATEGORY => GetGrip(),
-            ImportSystem.MUZZELS_CATEGORY => GetMuzzle(),
+            ImportSystem.CAMOS_WEAPONS_CATEGORY => GetCamoBLRItem(),
+            ImportSystem.HANGERS_CATEGORY => GetTagBLRItem(),
+            ImportSystem.MAGAZINES_CATEGORY => GetMagazineBLRItem(),
+            ImportSystem.BARRELS_CATEGORY => GetBarrelBLRItem(),
+            ImportSystem.SCOPES_CATEGORY => GetScopeBLRItem(),
+            ImportSystem.STOCKS_CATEGORY => GetStockBLRItem(),
+            ImportSystem.AMMO_CATEGORY => GetAmmoBLRItem(),
+            ImportSystem.PRIMARY_SKIN_CATEGORY => GetSkinBLRItem(),
+            ImportSystem.GRIPS_CATEGORY => GetGripBLRItem(),
+            ImportSystem.MUZZELS_CATEGORY => GetMuzzleBLRItem(),
             _ => null,
         };
     }
 
-    public BLRItem? GetCamo()
+    public BLRItem? GetCamoBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, Camo);
     }
-    public BLRItem? GetTag()
+    public BLRItem? GetTagBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, Tag);
     }
-    public BLRItem? GetMagazine()
+    public BLRItem? GetMagazineBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MAGAZINES_CATEGORY, Magazine);
     }
-    public BLRItem? GetAmmo()
+    public BLRItem? GetAmmoBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, Ammo);
     }
-    public BLRItem? GetSkin()
+    public BLRItem? GetSkinBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, Skin);
     }
 
-    public BLRItem? GetMuzzle()
+    public BLRItem? GetMuzzleBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);
     }
-    public BLRItem? GetStock()
+    public BLRItem? GetStockBLRItem()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, Stock) ?? ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, NoStock);
     }
-    public BLRItem? GetBarrel()
+    public BLRItem? GetBarrelBLRItem()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, Barrel) ?? ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, NoBarrel);
     }
-    public BLRItem? GetScope()
+    public BLRItem? GetScopeBLRItem()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, Scope) ?? ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, NoScope);
     }
 
-    public BLRItem? GetGrip()
+    public BLRItem? GetGripBLRItem()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, Grip);
     }
@@ -179,23 +179,25 @@ public sealed class MagiCowsWeapon : IBLRWeapon
 
     public void Read(BLRWeapon weapon)
     {
+        if (weapon is null) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
         weapon.Receiver = GetReceiver();
-        weapon.Barrel = GetBarrel();
-        weapon.Magazine = GetMagazine();
-        weapon.Muzzle = GetMuzzle();
-        weapon.Stock = GetStock();
-        weapon.Scope = GetScope();
-        weapon.Grip = GetGrip();
-        weapon.Tag = GetTag();
-        weapon.Camo = GetCamo();
-        weapon.Ammo = GetAmmo();
-        weapon.Skin = GetSkin();
+        weapon.Barrel = GetBarrelBLRItem();
+        weapon.Magazine = GetMagazineBLRItem();
+        weapon.Muzzle = GetMuzzleBLRItem();
+        weapon.Stock = GetStockBLRItem();
+        weapon.Scope = GetScopeBLRItem();
+        weapon.Grip = GetGripBLRItem();
+        weapon.Tag = GetTagBLRItem();
+        weapon.Camo = GetCamoBLRItem();
+        weapon.Ammo = GetAmmoBLRItem();
+        weapon.Skin = GetSkinBLRItem();
         UndoRedoSystem.RestoreBlockedEvents();
     }
 
     public void Write(BLRWeapon weapon)
     {
+        if(weapon is null) return;
         Receiver = weapon.Receiver?.Name ?? "Assault Rifle";
         Barrel = weapon.Barrel?.Name ?? "No Barrel Mod";
         Scope = weapon.Scope?.Name ?? "No Optic Mod";
@@ -215,10 +217,10 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         return new ShareableWeapon()
         {
             Receiver = BLRItem.GetMagicCowsID(GetReceiver()),
-            Barrel = BLRItem.GetMagicCowsID(GetBarrel()),
-            Scope = BLRItem.GetMagicCowsID(GetScope()),
-            Stock = BLRItem.GetMagicCowsID(GetStock()),
-            Grip = BLRItem.GetMagicCowsID(GetGrip(), -1),
+            Barrel = BLRItem.GetMagicCowsID(GetBarrelBLRItem()),
+            Scope = BLRItem.GetMagicCowsID(GetScopeBLRItem()),
+            Stock = BLRItem.GetMagicCowsID(GetStockBLRItem()),
+            Grip = BLRItem.GetMagicCowsID(GetGripBLRItem(), -1),
             Muzzle = Muzzle,
             Magazine = Magazine,
             Tag = Tag,
@@ -236,7 +238,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         AntiMaterielRifle: new() { Barrel = NoBarrel, Grip = "", Magazine = -1, Ammo = 2, Muzzle = NoMuzzle, Receiver = "Anti-Materiel Rifle", Stock = DefaultStock, Scope = "Titan Rail Sight", Tag = 0, Camo = 0 },             // 4  Anti-Materiel Rifle
         BullpupFullAuto: new() { Barrel = "No Grip", Grip = "", Magazine = 149, Ammo = 2, Muzzle = 9, Receiver = "Bullpup Full Auto", Stock = DefaultBullPupStock, Scope = "Titan Rail Sight", Tag = 0, Camo = 0 },             // 5  Bullpup Full Auto
         AK470Rifle: new() { Barrel = DefaultBarrel, Grip = "", Magazine = 195, Ammo = 2, Muzzle = 9, Receiver = "AK470 Rifle", Stock = DefaultStock, Scope = "Titan Rail Sight", Tag = 0, Camo = 0 },             // 6  AK470 Rifle
-        CompoundBow: new() { Barrel = NoBarrel, Grip = "", Magazine = 205, Ammo = 17, Muzzle = 0, Receiver = "Compound Bow", Stock = NoStock, Scope = "No Optic Mod", Tag = 0, Camo = 0 },             // 7  Compound Bow
+        CompoundBow: new() { Barrel = NoBarrel, Grip = "", Magazine = 205, Ammo = 17, Muzzle = 0, Receiver = "Compound Bow", Stock = NoStock, Scope = "Titan Rail Sight", Tag = 0, Camo = 0 },             // 7  Compound Bow
         M4XRifle: new() { Barrel = DefaultBarrel, Grip = "", Magazine = 185, Ammo = 2, Muzzle = 9, Receiver = "M4X Rifle", Stock = DefaultStock, Scope = "Titan Rail Sight", Tag = 0, Camo = 0 },             // 8  M4X Rifle
         TacticalAssaultRifle: new() { Barrel = DefaultBarrel, Grip = "", Ammo = 2, Magazine = 212, Muzzle = 9, Receiver = "Tactical Assault Rifle", Stock = DefaultStock, Scope = "Titan Rail Sight", Tag = 0, Camo = 0 },             // 9  Tactical Assault Rifle
         AssaultRifle: new() { Barrel = DefaultBarrel, Grip = "", Magazine = 9, Ammo = 2, Muzzle = 9, Receiver = "Assault Rifle", Stock = DefaultStock, Scope = "Titan Rail Sight", Tag = 0, Camo = 0 },             // 10 Assault Rifle

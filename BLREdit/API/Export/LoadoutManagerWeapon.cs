@@ -16,37 +16,37 @@ public sealed class LoadoutManagerWeapon
     /// <summary>
     /// Contains the Index of the Barrel
     /// </summary>
-    public int Barrel { get; set; } = 0;
+    public int Barrel { get; set; }
 
     /// <summary>
     /// Contains the Index of the Scope
     /// </summary>
-    public int Scope { get; set; } = 0;
+    public int Scope { get; set; }
 
     /// <summary>
     /// Contains the Index of the Grip
     /// </summary>
-    public int Grip { get; set; } = 0;
+    public int Grip { get; set; }
 
     /// <summary>
     /// Contains the Index of the Stock
     /// </summary>
-    public int Stock { get; set; } = 0;
+    public int Stock { get; set; }
 
     /// <summary>
     /// Contains the Index of the Ammo
     /// </summary>
-    public int Ammo { get; set; } = 0;
+    public int Ammo { get; set; }
 
     /// <summary>
     /// Contains the Index of the Muzzle
     /// </summary>
-    public int Muzzle { get; set; } = 0;
+    public int Muzzle { get; set; }
 
     /// <summary>
     /// Contains the Index of the Magazine
     /// </summary>
-    public int Magazine { get; set; } = 0;
+    public int Magazine { get; set; }
 
     /// <summary>
     /// Contains the Index of the Skin
@@ -56,12 +56,12 @@ public sealed class LoadoutManagerWeapon
     /// <summary>
     /// Contains the Index of the CamoIndex
     /// </summary>
-    public int CamoIndex { get; set; } = 0;
+    public int CamoIndex { get; set; }
 
     /// <summary>
     /// Contains the Index of the Hanger
     /// </summary>
-    public int Hanger { get; set; } = 0;
+    public int Hanger { get; set; }
 
     private static Dictionary<string, PropertyInfo> Properties { get; } = GetAllProperties();
     private static Dictionary<string, PropertyInfo> GetAllProperties()

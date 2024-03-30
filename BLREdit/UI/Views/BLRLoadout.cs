@@ -258,11 +258,11 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         ItemChanged(name);
     }
     #region Gear
-    [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetHelmet()); } }
+    [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetHelmetBLRItem()); } }
     public UIBool IsValidHelmet { get; } = new(true);
-    [BLRItem(ImportSystem.UPPER_BODIES_CATEGORY)] public BLRItem? UpperBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetUpperBody()); } }
+    [BLRItem(ImportSystem.UPPER_BODIES_CATEGORY)] public BLRItem? UpperBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetUpperBodyBLRItem()); } }
     public UIBool IsValidUpperBody { get; } = new(true);
-    [BLRItem(ImportSystem.LOWER_BODIES_CATEGORY)] public BLRItem? LowerBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetLowerBody()); } }
+    [BLRItem(ImportSystem.LOWER_BODIES_CATEGORY)] public BLRItem? LowerBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetLowerBodyBLRItem()); } }
     public UIBool IsValidLowerBody { get; } = new(true);
     [BLRItem(ImportSystem.TACTICAL_CATEGORY)] public BLRItem? Tactical { get { return GetValueOf(); } set { SetValueOf(value); } }
     public UIBool IsValidTactical { get; } = new(true);
@@ -274,7 +274,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public UIBool IsValidGear3 { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear4 { get { return GetValueOf(); } set { SetValueOf(value, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear4)); } }
     public UIBool IsValidGear4 { get; } = new(true);
-    [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetCamo()); } }
+    [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetCamoBLRItem()); } }
     public UIBool IsValidBodyCamo { get; } = new(true);
     [BLRItem(ImportSystem.AVATARS_CATEGORY)] public BLRItem? Avatar { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasAvatar)); } }
     public UIBool IsValidAvatar { get; } = new(true);
@@ -805,8 +805,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         _loadout = loadout;
         if (_loadout is not null)
         {
-            Primary.SetWeapon(_loadout.GetPrimary(), registerReadBackEvent);
-            Secondary.SetWeapon(_loadout.GetSecondary(), registerReadBackEvent);
+            Primary.SetWeapon(_loadout.GetPrimaryWeaponInterface(), registerReadBackEvent);
+            Secondary.SetWeapon(_loadout.GetSecondaryWeaponInterface(), registerReadBackEvent);
             if (registerReadBackEvent) { _loadout.WasWrittenTo += ReadCallback; }
         }
         else
@@ -954,7 +954,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
             if (Gear2 is not null && Gear2.UID == Gear4.UID) g4dup = true;
             if (Gear1 is not null && Gear1.UID == Gear4.UID) g4dup = true;
 
-            if (Gear4.Name is not null) g4frag = Gear4.Name.Contains("Frag") || Gear4.Name.Contains("I Heart U") || Gear4.Name.Contains("Snowpocalypse");
+            if (Gear4.Name is not null) 
+                g4frag = Gear4.Name.Contains("Frag") || Gear4.Name.Contains("I Heart U") || Gear4.Name.Contains("Snowpocalypse");
         }
         else
         {
@@ -1005,10 +1006,10 @@ public sealed class BLRLoadout : INotifyPropertyChanged
             ItemCheck(BodyCamo, null),
             ItemCheck(Avatar, null),
             ItemCheck(Trophy, null),
-            ItemCheck(Gear4, g4dup, g4missing),
-            ItemCheck(Gear3, g3dup, g3missing),
+            ItemCheck(Gear1, g1dup, g1missing),
             ItemCheck(Gear2, g2dup, g2missing),
-            ItemCheck(Gear1, g1dup, g1missing)
+            ItemCheck(Gear3, g3dup, g3missing),
+            ItemCheck(Gear4, g4dup, g4missing)
             );
     }
 
