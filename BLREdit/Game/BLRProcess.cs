@@ -1,10 +1,12 @@
-﻿using BLREdit.UI;
+﻿using BLREdit.API.Utils;
+using BLREdit.UI;
 
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.CompilerServices;
 
 namespace BLREdit.Game;
@@ -25,9 +27,9 @@ public sealed class BLRProcess : INotifyPropertyChanged
     public Process GameProcess { get { return gameProcess; } private set { gameProcess = value; OnPropertyChanged(); } }
     private BLRClient client;
     public BLRClient Client { get { return client; } private set { client = value; OnPropertyChanged(); } }
-    private bool isServer = false;
+    private bool isServer;
     public bool IsServer { get { return isServer; } private set { isServer = value; OnPropertyChanged(); } }
-    private bool watchdog = false;
+    private bool watchdog;
     public bool Watchdog { get { return watchdog; } private set { watchdog = value; OnPropertyChanged(); } }
     private BLRServer? connectedServer;
     public BLRServer? ConnectedServer { get { return connectedServer; } private set { connectedServer = value; OnPropertyChanged(); } }
@@ -99,7 +101,33 @@ public sealed class BLRProcess : INotifyPropertyChanged
             Client.UpdateProfileSettings();
             MainWindow.MainView.UpdateWindowTitle();
             LoggingSystem.Log($"[{this.Client}]: Grabbing Settings from client!");
+            foreach (var clientLog in Client.LogsDirectoryInfo.EnumerateFiles("blrevive-??????????.log"))
+            {
+                try
+                {
+                    var logPath = new FileInfo($"{App.BLREditLocation}\\logs\\Client\\{clientLog.Name}");
+                    if (!logPath.Directory.Exists) { logPath.Directory.Create(); }
+                    clientLog.MoveTo(logPath.FullName);
+                }
+                catch { }
+            }
+            LoggingSystem.Log($"[{this.Client}]: Moved Client Logs to BLREdit logs");
         }
+        else
+        {
+            foreach (var clientLog in Client.LogsDirectoryInfo.EnumerateFiles("blrevive-server-??????????.log"))
+            {
+                try
+                {
+                    var logPath = new FileInfo($"{App.BLREditLocation}\\logs\\Server\\{clientLog.Name}");
+                    if (!logPath.Directory.Exists) { logPath.Directory.Create(); }
+                    clientLog.MoveTo(logPath.FullName); //TODO: Fix Will Crash
+                }
+                catch { }
+            }
+            LoggingSystem.Log($"[{this.Client}]: Moved Server Logs to BLREdit logs");
+        }
+        
 
         if (!Watchdog) { this.Remove(); }
         else

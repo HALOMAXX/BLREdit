@@ -41,5 +41,13 @@ namespace BLREdit.UI.Controls
                 GenderButton.Content = BLREdit.Properties.Resources.btn_GenderToggle_Male;
             }
         }
+
+        private void Randomize_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is BLRLoadout loadout)
+            {
+                loadout.RandomizeGear();
+            }
+        }
     }
 }

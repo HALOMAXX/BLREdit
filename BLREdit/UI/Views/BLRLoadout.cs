@@ -8,8 +8,10 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using System.Windows.Media;
 
 using static BLREdit.API.Utils.HelperFunctions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace BLREdit.UI.Views;
 
@@ -837,11 +839,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
 
     static readonly Random rng = new();
-    public void Randomize()
-    {
-        Primary.Randomize();
-        Secondary.Randomize();
 
+    public void RandomizeGear()
+    {
         var helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.HELMETS_CATEGORY)?.Length ?? 0));
         var upperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.UPPER_BODIES_CATEGORY)?.Length ?? 0));
         var lowerBody = ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.LOWER_BODIES_CATEGORY)?.Length ?? 0));
@@ -852,8 +852,6 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var trophys = ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
 
         var gears = ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var taunts = ImportSystem.GetItemArrayOfType(ImportSystem.EMOTES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var depots = ImportSystem.GetItemArrayOfType(ImportSystem.SHOP_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
 
         UndoRedoSystem.DoValueChange(helmet, this.GetType().GetProperty(nameof(Helmet)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this, BlockEvents.AllExceptUpdate);
@@ -867,7 +865,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear1)), this, BlockEvents.AllExceptUpdate);
-            if(Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 1)
         {
@@ -887,7 +885,23 @@ public sealed class BLRLoadout : INotifyPropertyChanged
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear4)), this, BlockEvents.AllExceptUpdate);
             if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
         }
+        UndoRedoSystem.DoValueChange(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
+        UndoRedoSystem.EndUndoRecord();
+    }
 
+    public void RandomizeExtra()
+    {
+        RandomizeTaunts();
+        RandomizeDepot();
+        RandomizeEmblem();
+        RandomizeVoices();
+
+        //TODO: Add Emblem, Voices and Title to Randomization
+    }
+
+    public void RandomizeTaunts()
+    {
+        var taunts = ImportSystem.GetItemArrayOfType(ImportSystem.EMOTES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
 
         //TODO: might want to change the anti duplicate behaviour for the emotes
         var tauntIndex = rng.Next(0, taunts.Count);
@@ -914,7 +928,12 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         tauntIndex = rng.Next(0, taunts.Count);
         UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt8)), this, BlockEvents.AllExceptUpdate);
         taunts.RemoveAt(tauntIndex);
+        UndoRedoSystem.EndUndoRecord();
+    }
 
+    public void RandomizeDepot()
+    {
+        var depots = ImportSystem.GetItemArrayOfType(ImportSystem.SHOP_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
         var depotIndex = rng.Next(0, depots.Count);
         UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot1)), this, BlockEvents.AllExceptUpdate);
         depots.RemoveAt(depotIndex);
@@ -930,9 +949,55 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         depotIndex = rng.Next(0, depots.Count);
         UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot5)), this, BlockEvents.AllExceptUpdate);
         depots.RemoveAt(depotIndex);
-
-        UndoRedoSystem.DoValueChange(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
         UndoRedoSystem.EndUndoRecord();
+    }
+
+    public void RandomizeEmblem()
+    {
+        var icons = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_ICON_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var shapes = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_SHAPE_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var backgrounds = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var colors = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_COLOR_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+
+        var inconIndex = rng.Next(0, icons.Count);
+        var inconColor = rng.Next(0, colors.Count);
+        UndoRedoSystem.DoValueChange(icons[inconIndex], this.GetType().GetProperty(nameof(EmblemIcon)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(colors[inconColor], this.GetType().GetProperty(nameof(EmblemIconColor)), this, BlockEvents.AllExceptUpdate);
+
+        var shapeIndex = rng.Next(0, shapes.Count);
+        var shapeColor = rng.Next(0, colors.Count);
+        UndoRedoSystem.DoValueChange(shapes[shapeIndex], this.GetType().GetProperty(nameof(EmblemShape)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(colors[shapeColor], this.GetType().GetProperty(nameof(EmblemShapeColor)), this, BlockEvents.AllExceptUpdate);
+
+        var backgroundIndex = rng.Next(0, backgrounds.Count);
+        var backgroundColor = rng.Next(0, colors.Count);
+        UndoRedoSystem.DoValueChange(backgrounds[backgroundIndex], this.GetType().GetProperty(nameof(EmblemBackground)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(colors[backgroundColor], this.GetType().GetProperty(nameof(EmblemBackgroundColor)), this);
+        UndoRedoSystem.EndUndoRecord();
+    }
+
+    public void RandomizeVoices()
+    { 
+        var announcers = ImportSystem.GetItemArrayOfType(ImportSystem.ANNOUNCER_VOICE_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var players = ImportSystem.GetItemArrayOfType(ImportSystem.PLAYER_VOICE_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var titles = ImportSystem.GetItemArrayOfType(ImportSystem.TITLES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+
+        var announcerIndex = rng.Next(0, announcers.Count);
+        var playerIndex = rng.Next(0, players.Count);
+        var titleIndex = rng.Next(0, titles.Count);
+
+        UndoRedoSystem.DoValueChange(announcers[announcerIndex], this.GetType().GetProperty(nameof(AnnouncerVoice)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(players[playerIndex], this.GetType().GetProperty(nameof(PlayerVoice)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(titles[titleIndex], this.GetType().GetProperty(nameof(Title)), this);
+        UndoRedoSystem.EndUndoRecord();
+    }
+
+    public void Randomize()
+    {
+        Primary.Randomize();
+        Secondary.Randomize();
+        RandomizeGear();
+        RandomizeExtra();
     }
 
     public static bool NextBoolean()

@@ -58,6 +58,11 @@ public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLRLoadout? bl
         }
     }
 
+    public BLRLoadoutStorage Duplicate()
+    {
+        return AddNewLoadoutSet($"{Shareable.Name} Duplicate", null, Shareable.Duplicate());
+    }
+
     public static BLRLoadoutStorage AddNewLoadoutSet(string Name = "New Loadout", BLRLoadout? loadout = null, ShareableLoadout? share = null)
     {
         string message = "";

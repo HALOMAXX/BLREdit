@@ -1683,7 +1683,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         UndoRedoSystem.DoValueChange(receiver, this.GetType().GetProperty(nameof(Receiver)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(barrel, this.GetType().GetProperty(nameof(Barrel)), this, BlockEvents.AllExceptUpdate);
-        UndoRedoSystem.DoValueChange(scope, this.GetType().GetProperty(nameof(Scope)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(stock, this.GetType().GetProperty(nameof(Stock)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(muzzle, this.GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(magazine, this.GetType().GetProperty(nameof(Magazine)), this, BlockEvents.AllExceptUpdate);
@@ -1691,7 +1690,9 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         UndoRedoSystem.DoValueChange(grip, this.GetType().GetProperty(nameof(Grip)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(skin, this.GetType().GetProperty(nameof(Skin)), this, BlockEvents.AllExceptUpdate);
         if (ammo is not null) UndoRedoSystem.DoValueChange(ammo, this.GetType().GetProperty(nameof(Ammo)), this, BlockEvents.AllExceptUpdate);
-        UndoRedoSystem.DoValueChange(hanger, this.GetType().GetProperty(nameof(Tag)), this);
+        UndoRedoSystem.DoValueChange(hanger, this.GetType().GetProperty(nameof(Tag)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(scope, this.GetType().GetProperty(nameof(Scope)), this);
+        UndoRedoSystem.EndUndoRecord();
     }
 
     /// <summary>

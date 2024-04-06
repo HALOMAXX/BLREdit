@@ -56,14 +56,15 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public Type? CurrentProfileSortingEnumType { get; set; }
     public string LastSortingPropertyName { get; set; } = "None";
     public string CurrentSortingPropertyName { get; set; } = "None";
-    public bool IsPlayerNameChanging { get; set; } = false;
-    public bool IsPlayerProfileChanging { get; set; } = false;
-    public bool IsCheckingGameClient { get; set; } = false;
+    public bool IsPlayerNameChanging { get; set; }
+    public bool IsPlayerProfileChanging { get; set; }
+    public bool IsCheckingGameClient { get; set; }
+    public UIBool IsScopePreviewVisible { get; } = new(false);
 
-    public BLRWeapon? PrimaryWeaponCopy { get; set; } = null;
-    public BLRWeapon? SecondaryWeaponCopy { get; set; } = null;
-    public BLRGear? GearCopy { get; set; } = null;
-    public BLRExtra? ExtraCopy { get; set; } = null;
+    public BLRWeapon? PrimaryWeaponCopy { get; set; }
+    public BLRWeapon? SecondaryWeaponCopy { get; set; }
+    public BLRGear? GearCopy { get; set; }
+    public BLRExtra? ExtraCopy { get; set; }
 
     public MainWindowView()
     {

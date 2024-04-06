@@ -15,7 +15,7 @@
                 <Image Visibility="{Binding Path=IsValid.VisibilityInverted}" ToolTip="{x:Static p:Resources.img_TT_AdvancedModeWarning}" Source="../Resources/invaliditem.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="32" Height="32" Margin="2,0,0,2"/>
             </Grid>
         </Border>
-        <Image Source="{Binding Path=ScopePreview.IconFileInfo.FullName}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" />
+        <Image Source="{Binding Path=ScopePreview.IconFileInfo.FullName}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill" MaxWidth="1280" MaxHeight="720" Visibility="{Binding Path=ScopePreviewBool.Visibility}"/>
         <Border BorderThickness="1,0,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TextBlock Text="{Binding DisplayName}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TextBlock}" />
         </Border>

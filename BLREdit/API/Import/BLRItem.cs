@@ -225,6 +225,9 @@ public sealed class BLRItem : INotifyPropertyChanged
         ScopePreview = GetBitmapCrosshair(GetSecondaryScope(weapon));
     }
 
+    static readonly UIBool scopePreview = new UIBool(false);
+    public UIBool ScopePreviewBool { get { return MainWindow.MainView?.IsScopePreviewVisible ?? scopePreview; } }
+
     public string GetSecondaryScope(BLRWeapon weapon)
     {
         var receiverName = weapon?.Receiver?.Name ?? "";
