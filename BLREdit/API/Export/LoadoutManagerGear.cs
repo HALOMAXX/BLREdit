@@ -5,25 +5,27 @@ namespace BLREdit.Export;
 
 public sealed class LoadoutManagerGear
 {
-    public bool Female { get; set; } = false;
-    public bool Bot { get; set; } = false;
-    public int BodyCamo { get; set; } = 0;
-    public int UpperBody { get; set; } = 0;
-    public int LowerBody { get; set; } = 0;
-    public int Helmet { get; set; } = 0;
-    public int Badge { get; set; } = 0;
-    public int Gear_R1 { get; set; } = 0;
-    public int Gear_R2 { get; set; } = 0;
-    public int Gear_L1 { get; set; } = 0;
-    public int Gear_L2 { get; set; } = 0;
-    public int Tactical { get; set; } = 0;
-    public int ButtPack { get; set; } = 0;
+    public bool Female { get; set; }
+    public bool Bot { get; set; }
+    public int BodyCamo { get; set; }
+    public int UpperBody { get; set; }
+    public int LowerBody { get; set; }
+    public int Helmet { get; set; }
+    public int Badge { get; set; }
+#pragma warning disable CA1707 // Identifiers should not contain underscores
+    public int Gear_R1 { get; set; }
+    public int Gear_R2 { get; set; }
+    public int Gear_L1 { get; set; }
+    public int Gear_L2 { get; set; }
+#pragma warning restore CA1707 // Identifiers should not contain underscores
+    public int Tactical { get; set; }
+    public int ButtPack { get; set; }
     public int Avatar { get; set; } = -1;
-    public int PatchIcon { get; set; } = 0;
-    public int PatchIconColor { get; set; } = 0;
-    public int PatchShape { get; set; } = 0;
-    public int PatchShapeColor { get; set; } = 0;
-    public int Hanger { get; set; } = 0;
+    public int PatchIcon { get; set; }
+    public int PatchIconColor { get; set; }
+    public int PatchShape { get; set; }
+    public int PatchShapeColor { get; set; }
+    public int Hanger { get; set; }
 
     public LoadoutManagerGear()
     { }

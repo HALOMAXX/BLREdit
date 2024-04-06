@@ -72,12 +72,36 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? _patchedPath;
     public string? PatchedPath {
         get { return _patchedPath; }
-        set { if (File.Exists(value)) { _patchedPath = value; Patched.Set(true); OnPropertyChanged(); OnPropertyChanged(nameof(PatchedFile)); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
+        set { if (File.Exists(value)) { _patchedPath = value; Patched.Set(true); OnPropertyChanged(); OnPropertyChanged(nameof(PatchedFileInfo)); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
     }
 
-    [JsonIgnore] public FileInfoExtension? PatchedFile
+    [JsonIgnore]
+    public FileInfoExtension? OriginalFileInfo
+    {
+        get { return OriginalPath != null ? new FileInfoExtension(OriginalPath) : null; }
+    }
+
+    [JsonIgnore] public FileInfoExtension? PatchedFileInfo
     {
         get { return PatchedPath != null ? new FileInfoExtension(PatchedPath) : null; }
+    }
+
+    [JsonIgnore]
+    public DirectoryInfo? ModulesDirectoryInfo
+    {
+        get { return ModulesPath != null ? new DirectoryInfo(ModulesPath) : null; }
+    }
+
+    [JsonIgnore]
+    public DirectoryInfo? BLReviveConfigsDirectoryInfo
+    {
+        get { return BLReviveConfigsPath != null ? new DirectoryInfo(BLReviveConfigsPath) : null; }
+    }
+
+    [JsonIgnore]
+    public DirectoryInfo? LogsDirectoryInfo
+    {
+        get { return LogsPath != null ? new DirectoryInfo(LogsPath) : null; }
     }
 
     private string? _basePath;
@@ -87,10 +111,12 @@ public sealed class BLRClient : INotifyPropertyChanged
     public string? SDKType { get { return _sdkType; } set { _sdkType = value; OnPropertyChanged(); } }
     public DateTime? SDKVersionDate { get; set; }
 
-    private string? _configFolder;
-    public string ConfigFolder { get { _configFolder ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\BLRevive\\").FullName; return _configFolder; } set { if (Directory.Exists(value)) _configFolder = value; } }
-    private string? _modulesFolder;
-    public string ModulesFolder { get { _modulesFolder ??= Directory.CreateDirectory($"{BasePath}Binaries\\Win32\\Modules\\").FullName; return _modulesFolder; } set { if (Directory.Exists(value)) _modulesFolder = value; } }
+    private string? _logsPath;
+    public string LogsPath { get { _logsPath ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Logs\\").FullName; return _logsPath; } set { if (Directory.Exists(value)) _logsPath = value; } }
+    private string? _configsPath;
+    public string BLReviveConfigsPath { get { _configsPath ??= Directory.CreateDirectory($"{BasePath}FoxGame\\Config\\BLRevive\\").FullName; return _configsPath; } set { if (Directory.Exists(value)) _configsPath = value; } }
+    private string? _modulesPath;
+    public string ModulesPath { get { _modulesPath ??= Directory.CreateDirectory($"{BasePath}Binaries\\Win32\\Modules\\").FullName; return _modulesPath; } set { if (Directory.Exists(value)) _modulesPath = value; } }
 
     [JsonInclude] public ObservableCollection<BLRClientPatch> AppliedPatches { get; set; } = [];
 
@@ -150,7 +176,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     private Dictionary<string?, BLRProfileSettingsWrapper> LoadProfiles()
     {
         var dict = new Dictionary<string?, BLRProfileSettingsWrapper>();
-        var dirs = Directory.EnumerateDirectories($"{ConfigFolder}");
+        var dirs = Directory.EnumerateDirectories($"{BLReviveConfigsPath}");
         foreach (var dir in dirs)
         {
             if (dir.Contains("settings_manager_"))
@@ -186,10 +212,10 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         else
         {
-            Directory.CreateDirectory($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}");
+            Directory.CreateDirectory($"{BLReviveConfigsPath}settings_manager_{profileSettings.ProfileName}");
             ProfileSettings.Add(profileSettings.ProfileName, profileSettings);
         }
-        IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\UE3_online_profile.json", profileSettings.Settings.Values.ToArray());
+        IOResources.SerializeFile($"{BLReviveConfigsPath}settings_manager_{profileSettings.ProfileName}\\UE3_online_profile.json", profileSettings.Settings.Values.ToArray());
         //IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\keybinding.json", profileSettings.KeyBindings);
     }
 
@@ -283,7 +309,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                 {
                     InstalledModules.Remove(module);
                     Invalidate();
-                    File.Delete($"{ModulesFolder}\\{module.InstallName}.dll");
+                    File.Delete($"{ModulesPath}\\{module.InstallName}.dll");
                     break;
                 }
             }
@@ -478,7 +504,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; }));
         }
 
-        foreach (var file in Directory.EnumerateFiles(ModulesFolder))
+        foreach (var file in Directory.EnumerateFiles(ModulesPath))
         {
             var info = new FileInfo(file);
             if (info.Extension == ".dll")
@@ -515,7 +541,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         if (SDKType != "BLRevive")
         {
-            var config = IOResources.DeserializeFile<ProxyConfig>($"{ConfigFolder}default.json") ?? new();
+            var config = IOResources.DeserializeFile<ProxyConfig>($"{BLReviveConfigsPath}default.json") ?? new();
             config.Proxy.Modules.Server.Clear();
             config.Proxy.Modules.Client.Clear();
             LoggingSystem.Log($"Applying Installed Modules:");
@@ -534,13 +560,13 @@ public sealed class BLRClient : INotifyPropertyChanged
                 SetModuleInProxyConfig(config, module);
             }
 
-            IOResources.SerializeFile($"{ConfigFolder}default.json", config);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}default.json", config);
         }
         else
         { 
-            var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{ConfigFolder}{ConfigName}-Client.json") ?? new();
-            var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{ConfigFolder}{ConfigName}-Server.json") ?? new();
-            var config = IOResources.DeserializeFile<BLReviveConfig>($"{ConfigFolder}{ConfigName}.json") ?? new();
+            var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
+            var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
+            var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
             configClient.Modules.Clear();
             configServer.Modules.Clear();
             config.Modules.Clear();
@@ -570,9 +596,9 @@ public sealed class BLRClient : INotifyPropertyChanged
                 }
                 config.Modules.Add(module.InstallName, new());
             }
-            IOResources.SerializeFile($"{ConfigFolder}{ConfigName}-Client.json", configClient);
-            IOResources.SerializeFile($"{ConfigFolder}{ConfigName}-Server.json", configServer);
-            IOResources.SerializeFile($"{ConfigFolder}{ConfigName}.json", config);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
         }
 
         LoggingSystem.Log($"Finished Validating Modules of {this}");

@@ -19,6 +19,7 @@ public sealed class ExportSystem
 
     public static void CopyMagiCowToClipboard(BLRLoadoutStorage loadout)
     {
+        if (loadout is null) return;
         var magiProfile = new MagiCowsProfile { PlayerName = loadout.Shareable.Name };
         //loadout.BLR.Write(magiProfile);
         //TODO: Broke MagiCow Export

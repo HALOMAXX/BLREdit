@@ -97,47 +97,48 @@ public sealed class MagiCowsLoadout : IBLRLoadout
     public static MagiCowsLoadout DefaultLoadout1 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.AssaultRifle.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
     public static MagiCowsLoadout DefaultLoadout2 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.SubmachineGun.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
     public static MagiCowsLoadout DefaultLoadout3 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.BoltActionRifle.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
-    public BLRItem? GetTactical()
+    public BLRItem? GetTacticalBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, Tactical);
     }
-    public BLRItem? GetHelmet()
+    public BLRItem? GetHelmetBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
     }
-    public BLRItem? GetUpperBody()
+    public BLRItem? GetUpperBodyBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
     }
-    public BLRItem? GetLowerBody()
+    public BLRItem? GetLowerBodyBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody);
     }
-    public BLRItem? GetCamo()
+    public BLRItem? GetCamoBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Camo);
     }
-    public BLRItem? GetSkin()
+    public BLRItem? GetSkinBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, Skin);
     }
-    public BLRItem? GetTrophy()
+    public BLRItem? GetTrophyBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Trophy);
     }
 
-    public IBLRWeapon GetPrimary()
+    public IBLRWeapon GetPrimaryWeaponInterface()
     {
         return Primary;
     }
 
-    public IBLRWeapon GetSecondary()
+    public IBLRWeapon GetSecondaryWeaponInterface()
     {
         return Secondary;
     }
 
     public void Read(BLRLoadout loadout)
     {
+        if (loadout is null) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
 
         Primary.Read(loadout.Primary);
@@ -145,11 +146,11 @@ public sealed class MagiCowsLoadout : IBLRLoadout
 
         loadout.IsFemale = IsFemale;
 
-        loadout.Helmet = GetHelmet();
-        loadout.UpperBody = GetUpperBody();
-        loadout.LowerBody = GetLowerBody();
+        loadout.Helmet = GetHelmetBLRItem();
+        loadout.UpperBody = GetUpperBodyBLRItem();
+        loadout.LowerBody = GetLowerBodyBLRItem();
 
-        loadout.Tactical = GetTactical();
+        loadout.Tactical = GetTacticalBLRItem();
 
         loadout.Gear1 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear1);
         loadout.Gear2 = ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear2);
@@ -171,15 +172,16 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         loadout.Depot4 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[3]);
         loadout.Depot5 = ImportSystem.GetItemByIDAndType(ImportSystem.SHOP_CATEGORY, Depot[4]);
 
-        loadout.Trophy = GetTrophy();
-        loadout.Avatar = GetSkin();
-        loadout.BodyCamo = GetCamo();
+        loadout.Trophy = GetTrophyBLRItem();
+        loadout.Avatar = GetSkinBLRItem();
+        loadout.BodyCamo = GetCamoBLRItem();
 
         UndoRedoSystem.RestoreBlockedEvents();
     }
 
     public void Write(BLRLoadout loadout)
     {
+        if (loadout is null) return;
         Primary.Write(loadout.Primary);
         Secondary.Write(loadout.Secondary);
 

@@ -1,11 +1,14 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.Utils;
+using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.UI;
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
@@ -92,11 +95,144 @@ public sealed class BLREditSettings : INotifyPropertyChanged
             return resetConfigCommand;
         }
     }
+    private ICommand? fixClientsCommand;
+    [JsonIgnore]
+    public ICommand FixClientsCommand
+    {
+        get
+        {
+            fixClientsCommand ??= new RelayCommand(
+                    param => FixClients()
+                );
+            return fixClientsCommand;
+        }
+    }
+    private ICommand? fixServersCommand;
+    [JsonIgnore]
+    public ICommand FixServersCommand
+    {
+        get
+        {
+            fixServersCommand ??= new RelayCommand(
+                    param => FixServerList()
+                );
+            return fixServersCommand;
+        }
+    }
     #endregion Commands
 
     private static void ApplyEvent()
     {
         DataStorage.Settings.ShowHiddenServers.PropertyChanged += DataStorage.Settings.ShowHiddenServersChanged;
+    }
+
+    public static void FixClients()
+    {
+        if (!LoggingSystem.MessageLog("Are you sure you want to Fix the Clients", "Fix Game Clients", MessageBoxButton.YesNo)) { return; }
+        int clientCount = DataStorage.GameClients.Count;
+        List<BLRClient> repairedClients = [];
+        foreach (var client in DataStorage.GameClients)
+        {
+            bool contains = false;
+            foreach (var reClient in repairedClients)
+            {
+                if (reClient.OriginalPath?.Equals(client.OriginalPath, StringComparison.OrdinalIgnoreCase) ?? false) { contains = true; break; }
+            }
+            if (contains) { continue; } //skip entry as we already have it repaired
+            var path = client.OriginalPath;
+            if (File.Exists(client.PatchedPath)) { File.Delete(client.PatchedPath); }
+
+            #region BinariesDirectoryCleanup
+            if (client.OriginalFileInfo is not null)
+            {
+                foreach (var file in client.OriginalFileInfo.Info.Directory.EnumerateFiles())
+                {
+                    try
+                    {
+                        if (file.Name.Contains("BLREdit") || file.Name.Contains("DINPUT8") || file.Name.Contains("Proxy") || file.Name.Contains("BLRevive")) { file.Delete(); }
+                    }
+                    catch { }
+                }
+
+                foreach (var modulesFolder in client.OriginalFileInfo.Info.Directory.EnumerateDirectories("Modules"))
+                {
+                    try
+                    {
+                        modulesFolder.Delete(true);
+                    }
+                    catch { }
+                }
+            }
+            #endregion BinariesDirectoryCleanup
+
+            #region BLReviveConfigDirectoryCleanup
+            if (client.BLReviveConfigsDirectoryInfo is not null)
+            {
+                foreach (var file in client.BLReviveConfigsDirectoryInfo.EnumerateFiles())
+                {
+                    try
+                    {
+                        file.Delete();
+                    }
+                    catch { }
+                }
+                foreach (var dir in client.BLReviveConfigsDirectoryInfo.EnumerateDirectories())
+                {
+                    try
+                    {
+                        dir.Delete(true);
+                    }
+                    catch { }
+                }
+            }
+            #endregion BLReviveConfigDirectoryCleanup
+
+            #region LogDirectoryBackupAndCleanup
+            if (client.LogsDirectoryInfo is not null)
+            {
+                foreach (var file in client.LogsDirectoryInfo.EnumerateFiles())
+                {
+                    try
+                    {
+                        var filePath = new FileInfoExtension($"{App.BLREditLocation}\\logs\\BackupAndClean\\{file.Name}");
+                        if (!filePath.Info.Directory.Exists) { filePath.Info.Directory.Create(); }
+                        file.MoveTo(filePath.Info.FullName);
+                    }
+                    catch { }
+                }
+                foreach (var dir in client.LogsDirectoryInfo.EnumerateDirectories())
+                {
+                    try
+                    {
+                        var dirPath = new DirectoryInfo($"{App.BLREditLocation}\\logs\\BackupAndClean\\{dir.Name}");
+                        if (dirPath.Exists) { dirPath.Delete(); }
+                        IOResources.CopyDirectory(dir.FullName, dirPath.FullName, true);
+                        dir.Delete();
+                    }
+                    catch { }
+                }
+            }
+            #endregion LogDirectoryBackupAndCleanup
+            repairedClients.Add(new BLRClient() { OriginalPath = path });
+        }
+
+        DataStorage.GameClients.Clear();
+        foreach (var reClient in repairedClients)
+        {
+            DataStorage.GameClients.Add(reClient);
+        }
+        LoggingSystem.MessageLog(
+            $"Reset Clients:{repairedClients.Count}\n" +
+            $"Removed Duplicates:{(clientCount-repairedClients.Count)}", "Client Repair Result");
+    }
+
+    public static void FixServerList()
+    { 
+        DataStorage.ServerList.Clear();
+        foreach (BLRServer defaultServer in App.DefaultServers)
+        {
+            MainWindow.AddOrUpdateDefaultServer(defaultServer);
+        }
     }
 
     public static void ResetSettings()

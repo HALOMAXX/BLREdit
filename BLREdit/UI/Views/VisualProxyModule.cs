@@ -281,7 +281,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
             if (module is not null)
             {
-                File.Copy($"downloads\\{module.InstallName}.dll", $"{client.ModulesFolder}\\{module.InstallName}.dll", true);
+                File.Copy($"downloads\\{module.InstallName}.dll", $"{client.ModulesPath}\\{module.InstallName}.dll", true);
                 LoggingSystem.Log($"Copied {module.InstallName} from downloadCache to client module location");
                 for (int i = 0; i < client.InstalledModules.Count; i++)
                 {

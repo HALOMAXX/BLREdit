@@ -9,7 +9,8 @@
              d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
              mc:Ignorable="d">
     <Grid x:Name="ExtraControlGrid" Border.MouseUp="Grid_MouseUp" IsHitTestVisible="True">
-        <Label Content="{x:Static p:Resources.lbl_Taunt}" Style="{StaticResource DescriptorLabel}" ToolTip="Why"/>
+        <Label Content="{x:Static p:Resources.lbl_Taunt}" Style="{StaticResource DescriptorLabel}"/>
+        <Button Name="RandomizeTaunts" Content="Randomize" Click="RandomizeTaunts_Click" Width="128" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,24,0,0"/>
         <Border DataContext="{Binding Path=Taunt1}" Height="130" Width="130" Margin="130,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
@@ -24,6 +25,7 @@
         </Border>
 
         <Label Margin="0,400,0,0" Content="{x:Static p:Resources.lbl_Depot}" Style="{StaticResource DescriptorLabel}"/>
+        <Button Name="RandomizeDepot" Content="Randomize" Click="RandomizeDepot_Click" Width="128" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="48,402,0,0"/>
         <Border DataContext="{Binding Path=Depot1}" Height="130" Width="130" Margin="0,430,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
@@ -40,7 +42,8 @@
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
 
-        <Label Margin="0,690,0,0" Content="Emblem, Title, Voice Packs" Style="{StaticResource DescriptorLabel}"/>
+        <Label Margin="0,690,0,0" Content="Emblem, Title, Voice Packs:" Style="{StaticResource DescriptorLabel}"/>
+        <Button Name="RandomizeEmblem" Content="Randomize" Click="RandomizeEmblem_Click" Width="128" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="148,692,0,0"/>
         <Border DataContext="{Binding Path=EmblemBackground}" Height="130" Width="130" Margin="0,720,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
@@ -86,6 +89,8 @@
         </Border>
         <Label Content="{Binding Path=Title.DisplayName}" Margin="260,1110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
+        <Button Name="RandomizeVoices" Content="Randomize" Click="RandomizeVoices_Click" Width="128" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="260,1082,0,0"/>
+        
         <Image Height="130" Width="130" Margin="260,850,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Source="{Binding Path=EmblemBackgroundColor.Image.IconFileInfo.FullName}">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="{Binding Path=EmblemBackground.Image.IconFileInfo.FullName}"/>

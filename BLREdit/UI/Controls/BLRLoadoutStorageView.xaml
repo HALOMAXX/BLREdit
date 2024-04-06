@@ -8,42 +8,42 @@
              xmlns:export="clr-namespace:BLREdit.Export"
              xmlns:utils="clr-namespace:BLREdit.API.Utils"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" MouseDown="Border_MouseDown">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <utils:BooleanToNotVisibilityConverter x:Key="BoolToNotVis" />
     </UserControl.Resources>
 
-    <Border>
-    <Grid d:DataContext="{d:DesignInstance Type=export:BLRLoadoutStorage}" MouseDown="Border_MouseDown">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="22"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Border Background="Transparent" BorderThickness="0,0,0,1" Grid.Row="0">
-            <Grid HorizontalAlignment="Stretch">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="64" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="64" />
-                </Grid.ColumnDefinitions>
-                <ToggleButton Grid.Column="0" Content="Apply" ToolTip="" IsChecked="{Binding Path=BLR.Apply, Mode=TwoWay}" Click="ToggleButton_Click"/>
-                <TextBox Grid.Column="1" Text="{Binding Path=BLR.Name, Mode=TwoWay}" Width="138" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
-                <Image Grid.Column="1" HorizontalAlignment="Left" Source="../Resources/invaliditem.png" Visibility="{Binding Path=BLR.IsAdvanced.Visibility}" ToolTip="{x:Static p:Resources.img_TT_AdvancedInfo}"/>
-                <Button Grid.Column="2" Content="Delete" ToolTip="" Command="{Binding Path=RemoveLoadoutCommand}"/>
-            </Grid>
-        </Border>
-
-        <Grid Grid.Row="1">
+    <Border BorderBrush="{Binding Path=ActiveProfileBorder}" BorderThickness="2,2,2,2">
+        <Grid d:DataContext="{d:DesignInstance Type=export:BLRLoadoutStorage}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="384"/>
-                <RowDefinition Height="234"/>
-                <RowDefinition Height="234"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <local:LoadoutViewControl DataContext="{Binding Path=BLR}" Grid.Row="0"/>
-            <local:WeaponViewControl DataContext="{Binding Path=BLR.Primary}" Grid.Row="1"/>
-            <local:WeaponViewControl DataContext="{Binding Path=BLR.Secondary}" Grid.Row="2"/>
+            <Border Background="Transparent" BorderThickness="0,0,0,1" Grid.Row="0">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="64" />
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton Grid.Column="0" Content="Apply" ToolTip="" IsChecked="{Binding Path=BLR.Apply, Mode=TwoWay}" Click="ToggleButton_Click"/>
+                    <TextBox Grid.Column="1" Text="{Binding Path=BLR.Name, Mode=TwoWay}" Width="138" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                    <Image Grid.Column="1" HorizontalAlignment="Left" Source="../Resources/invaliditem.png" Visibility="{Binding Path=BLR.IsAdvanced.Visibility}" ToolTip="{x:Static p:Resources.img_TT_AdvancedInfo}"/>
+                    <Button Grid.Column="2" Content="Delete" ToolTip="" Command="{Binding Path=RemoveLoadoutCommand}"/>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="384"/>
+                    <RowDefinition Height="234"/>
+                    <RowDefinition Height="234"/>
+                </Grid.RowDefinitions>
+                <local:LoadoutViewControl DataContext="{Binding Path=BLR}" Grid.Row="0"/>
+                <local:WeaponViewControl DataContext="{Binding Path=BLR.Primary}" Grid.Row="1"/>
+                <local:WeaponViewControl DataContext="{Binding Path=BLR.Secondary}" Grid.Row="2"/>
+            </Grid>
         </Grid>
-    </Grid>
     </Border>
 </UserControl>

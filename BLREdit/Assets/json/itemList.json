@@ -18729,7 +18729,7 @@
         "hangers",
         "scopes"
       ],
-      "UID": 20009
+      "UID": 20010
     },
     {
       "Icon": "t_Depot_Flamethrower_128x128",
@@ -18744,7 +18744,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20003,
+      "UID": 20002,
       "WikiStats": {
         "Reload": 2.0,
         "Swaprate": 20.0
@@ -18763,7 +18763,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20007,
+      "UID": 20008,
       "WeaponStats": {
         "Accuracy": 0.05,
         "Range": 10000.0,
@@ -18937,7 +18937,7 @@
         "hangers",
         "scopes"
       ],
-      "UID": 20014
+      "UID": 20015
     },
     {
       "Icon": "t_Depot_MiniGun_128x128",
@@ -18953,7 +18953,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20008,
+      "UID": 20009,
       "WeaponStats": {
         "Accuracy": 0.03,
         "Damage": 50.0,
@@ -19124,7 +19124,7 @@
         "hangers",
         "scopes"
       ],
-      "UID": 20005,
+      "UID": 20007,
       "WeaponStats": {
         "Accuracy": 0.01,
         "Damage": 1000.0,
@@ -19298,7 +19298,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20002,
+      "UID": 20005,
       "WikiStats": {
         "Reload": 2.5,
         "Swaprate": 20.0
@@ -19318,7 +19318,7 @@
         "scopes",
         "stocks"
       ],
-      "UID": 20011,
+      "UID": 20003,
       "WikiStats": {
         "Reload": 3.1667,
         "Swaprate": 20.0
@@ -19340,7 +19340,7 @@
         "ammos",
         "hangers"
       ],
-      "UID": 20010
+      "UID": 20012
     },
     {
       "Icon": "t_Depot_AssaultBot_128x128",
@@ -19351,7 +19351,7 @@
         "hangers",
         "scopes"
       ],
-      "UID": 200013
+      "UID": 20014
     }
   ],
   "shop": [
@@ -19498,440 +19498,6 @@
     {
       "Name": "PLAYER_SARK",
       "UID": 63054
-    }
-  ],
-  "emblem_alpha": [
-    {
-      "Name": "EMBLEM_STENCIL_A",
-      "UID": 64280
-    },
-    {
-      "Name": "EMBLEM_STENCIL_B",
-      "UID": 64281
-    },
-    {
-      "Name": "EMBLEM_STENCIL_C",
-      "UID": 64282
-    },
-    {
-      "Name": "EMBLEM_STENCIL_D",
-      "UID": 64283
-    },
-    {
-      "Name": "EMBLEM_STENCIL_E",
-      "UID": 64284
-    },
-    {
-      "Name": "EMBLEM_STENCIL_F",
-      "UID": 64285
-    },
-    {
-      "Name": "EMBLEM_STENCIL_G",
-      "UID": 64286
-    },
-    {
-      "Name": "EMBLEM_STENCIL_H",
-      "UID": 64287
-    },
-    {
-      "Name": "EMBLEM_STENCIL_I",
-      "UID": 64288
-    },
-    {
-      "Name": "EMBLEM_STENCIL_J",
-      "UID": 64289
-    },
-    {
-      "Name": "EMBLEM_STENCIL_K",
-      "UID": 64290
-    },
-    {
-      "Name": "EMBLEM_STENCIL_L",
-      "UID": 64291
-    },
-    {
-      "Name": "EMBLEM_STENCIL_M",
-      "UID": 64292
-    },
-    {
-      "Name": "EMBLEM_STENCIL_N",
-      "UID": 64293
-    },
-    {
-      "Name": "EMBLEM_STENCIL_O",
-      "UID": 64294
-    },
-    {
-      "Name": "EMBLEM_STENCIL_P",
-      "UID": 64295
-    },
-    {
-      "Name": "EMBLEM_STENCIL_Q",
-      "UID": 64296
-    },
-    {
-      "Name": "EMBLEM_STENCIL_R",
-      "UID": 64297
-    },
-    {
-      "Name": "EMBLEM_STENCIL_S",
-      "UID": 64298
-    },
-    {
-      "Name": "EMBLEM_STENCIL_T",
-      "UID": 64299
-    },
-    {
-      "Name": "EMBLEM_STENCIL_U",
-      "UID": 64300
-    },
-    {
-      "Name": "EMBLEM_STENCIL_V",
-      "UID": 64301
-    },
-    {
-      "Name": "EMBLEM_STENCIL_W",
-      "UID": 64302
-    },
-    {
-      "Name": "EMBLEM_STENCIL_X",
-      "UID": 64303
-    },
-    {
-      "Name": "EMBLEM_STENCIL_Y",
-      "UID": 64304
-    },
-    {
-      "Name": "EMBLEM_STENCIL_Z",
-      "UID": 64305
-    },
-    {
-      "Name": "EMBLEM_STENCIL_0",
-      "UID": 64306
-    },
-    {
-      "Name": "EMBLEM_STENCIL_1",
-      "UID": 64307
-    },
-    {
-      "Name": "EMBLEM_STENCIL_2",
-      "UID": 64308
-    },
-    {
-      "Name": "EMBLEM_STENCIL_3",
-      "UID": 64309
-    },
-    {
-      "Name": "EMBLEM_STENCIL_4",
-      "UID": 64310
-    },
-    {
-      "Name": "EMBLEM_STENCIL_5",
-      "UID": 64311
-    },
-    {
-      "Name": "EMBLEM_STENCIL_6",
-      "UID": 64312
-    },
-    {
-      "Name": "EMBLEM_STENCIL_7",
-      "UID": 64313
-    },
-    {
-      "Name": "EMBLEM_STENCIL_8",
-      "UID": 64314
-    },
-    {
-      "Name": "EMBLEM_STENCIL_9",
-      "UID": 64315
-    },
-    {
-      "Name": "EMBLEM_HAND_A",
-      "UID": 64316
-    },
-    {
-      "Name": "EMBLEM_HAND_B",
-      "UID": 64317
-    },
-    {
-      "Name": "EMBLEM_HAND_C",
-      "UID": 64318
-    },
-    {
-      "Name": "EMBLEM_HAND_D",
-      "UID": 64319
-    },
-    {
-      "Name": "EMBLEM_HAND_E",
-      "UID": 64320
-    },
-    {
-      "Name": "EMBLEM_HAND_F",
-      "UID": 64321
-    },
-    {
-      "Name": "EMBLEM_HAND_G",
-      "UID": 64322
-    },
-    {
-      "Name": "EMBLEM_HAND_H",
-      "UID": 64323
-    },
-    {
-      "Name": "EMBLEM_HAND_I",
-      "UID": 64324
-    },
-    {
-      "Name": "EMBLEM_HAND_J",
-      "UID": 64325
-    },
-    {
-      "Name": "EMBLEM_HAND_K",
-      "UID": 64326
-    },
-    {
-      "Name": "EMBLEM_HAND_L",
-      "UID": 64327
-    },
-    {
-      "Name": "EMBLEM_HAND_M",
-      "UID": 64328
-    },
-    {
-      "Name": "EMBLEM_HAND_N",
-      "UID": 64329
-    },
-    {
-      "Name": "EMBLEM_HAND_O",
-      "UID": 64330
-    },
-    {
-      "Name": "EMBLEM_HAND_P",
-      "UID": 64331
-    },
-    {
-      "Name": "EMBLEM_HAND_Q",
-      "UID": 64332
-    },
-    {
-      "Name": "EMBLEM_HAND_R",
-      "UID": 64333
-    },
-    {
-      "Name": "EMBLEM_HAND_S",
-      "UID": 64334
-    },
-    {
-      "Name": "EMBLEM_HAND_T",
-      "UID": 64335
-    },
-    {
-      "Name": "EMBLEM_HAND_U",
-      "UID": 64336
-    },
-    {
-      "Name": "EMBLEM_HAND_V",
-      "UID": 64337
-    },
-    {
-      "Name": "EMBLEM_HAND_W",
-      "UID": 64338
-    },
-    {
-      "Name": "EMBLEM_HAND_X",
-      "UID": 64339
-    },
-    {
-      "Name": "EMBLEM_HAND_Y",
-      "UID": 64340
-    },
-    {
-      "Name": "EMBLEM_HAND_Z",
-      "UID": 64341
-    },
-    {
-      "Name": "EMBLEM_HAND_0",
-      "UID": 64342
-    },
-    {
-      "Name": "EMBLEM_HAND_1",
-      "UID": 64343
-    },
-    {
-      "Name": "EMBLEM_HAND_2",
-      "UID": 64344
-    },
-    {
-      "Name": "EMBLEM_HAND_3",
-      "UID": 64345
-    },
-    {
-      "Name": "EMBLEM_HAND_4",
-      "UID": 64346
-    },
-    {
-      "Name": "EMBLEM_HAND_5",
-      "UID": 64347
-    },
-    {
-      "Name": "EMBLEM_HAND_6",
-      "UID": 64348
-    },
-    {
-      "Name": "EMBLEM_HAND_7",
-      "UID": 64349
-    },
-    {
-      "Name": "EMBLEM_HAND_8",
-      "UID": 64350
-    },
-    {
-      "Name": "EMBLEM_HAND_9",
-      "UID": 64351
-    },
-    {
-      "Name": "EMBLEM_PRINT_A",
-      "UID": 64352
-    },
-    {
-      "Name": "EMBLEM_PRINT_B",
-      "UID": 64353
-    },
-    {
-      "Name": "EMBLEM_PRINT_C",
-      "UID": 64354
-    },
-    {
-      "Name": "EMBLEM_PRINT_D",
-      "UID": 64355
-    },
-    {
-      "Name": "EMBLEM_PRINT_E",
-      "UID": 64356
-    },
-    {
-      "Name": "EMBLEM_PRINT_F",
-      "UID": 64357
-    },
-    {
-      "Name": "EMBLEM_PRINT_G",
-      "UID": 64358
-    },
-    {
-      "Name": "EMBLEM_PRINT_H",
-      "UID": 64359
-    },
-    {
-      "Name": "EMBLEM_PRINT_I",
-      "UID": 64360
-    },
-    {
-      "Name": "EMBLEM_PRINT_J",
-      "UID": 64361
-    },
-    {
-      "Name": "EMBLEM_PRINT_K",
-      "UID": 64362
-    },
-    {
-      "Name": "EMBLEM_PRINT_L",
-      "UID": 64363
-    },
-    {
-      "Name": "EMBLEM_PRINT_M",
-      "UID": 64364
-    },
-    {
-      "Name": "EMBLEM_PRINT_N",
-      "UID": 64365
-    },
-    {
-      "Name": "EMBLEM_PRINT_O",
-      "UID": 64366
-    },
-    {
-      "Name": "EMBLEM_PRINT_P",
-      "UID": 64367
-    },
-    {
-      "Name": "EMBLEM_PRINT_Q",
-      "UID": 64368
-    },
-    {
-      "Name": "EMBLEM_PRINT_R",
-      "UID": 64369
-    },
-    {
-      "Name": "EMBLEM_PRINT_S",
-      "UID": 64370
-    },
-    {
-      "Name": "EMBLEM_PRINT_T",
-      "UID": 64371
-    },
-    {
-      "Name": "EMBLEM_PRINT_U",
-      "UID": 64372
-    },
-    {
-      "Name": "EMBLEM_PRINT_V",
-      "UID": 64373
-    },
-    {
-      "Name": "EMBLEM_PRINT_W",
-      "UID": 64374
-    },
-    {
-      "Name": "EMBLEM_PRINT_X",
-      "UID": 64375
-    },
-    {
-      "Name": "EMBLEM_PRINT_Y",
-      "UID": 64376
-    },
-    {
-      "Name": "EMBLEM_PRINT_Z",
-      "UID": 64377
-    },
-    {
-      "Name": "EMBLEM_PRINT_0",
-      "UID": 64378
-    },
-    {
-      "Name": "EMBLEM_PRINT_1",
-      "UID": 64379
-    },
-    {
-      "Name": "EMBLEM_PRINT_2",
-      "UID": 64380
-    },
-    {
-      "Name": "EMBLEM_PRINT_3",
-      "UID": 64381
-    },
-    {
-      "Name": "EMBLEM_PRINT_4",
-      "UID": 64382
-    },
-    {
-      "Name": "EMBLEM_PRINT_5",
-      "UID": 64383
-    },
-    {
-      "Name": "EMBLEM_PRINT_6",
-      "UID": 64384
-    },
-    {
-      "Name": "EMBLEM_PRINT_7",
-      "UID": 64385
-    },
-    {
-      "Name": "EMBLEM_PRINT_8",
-      "UID": 64386
-    },
-    {
-      "Name": "EMBLEM_PRINT_9",
-      "UID": 64387
     }
   ],
   "emblem_background": [
@@ -20960,6 +20526,546 @@
     {
       "Name": "EMBLEM_ANIM_HSLBOT_HSL",
       "UID": 64204
+    },
+    {
+      "Name": "EMBLEM_STENCIL_A",
+      "Icon": "t_emblem_top_35",
+      "UID": 64280
+    },
+    {
+      "Name": "EMBLEM_STENCIL_B",
+      "Icon": "t_emblem_top_36",
+      "UID": 64281
+    },
+    {
+      "Name": "EMBLEM_STENCIL_C",
+      "Icon": "t_emblem_top_37",
+      "UID": 64282
+    },
+    {
+      "Name": "EMBLEM_STENCIL_D",
+      "Icon": "t_emblem_top_38",
+      "UID": 64283
+    },
+    {
+      "Name": "EMBLEM_STENCIL_E",
+      "Icon": "t_emblem_top_39",
+      "UID": 64284
+    },
+    {
+      "Name": "EMBLEM_STENCIL_F",
+      "Icon": "t_emblem_top_40",
+      "UID": 64285
+    },
+    {
+      "Name": "EMBLEM_STENCIL_G",
+      "Icon": "t_emblem_top_41",
+      "UID": 64286
+    },
+    {
+      "Name": "EMBLEM_STENCIL_H",
+      "Icon": "t_emblem_top_42",
+      "UID": 64287
+    },
+    {
+      "Name": "EMBLEM_STENCIL_I",
+      "Icon": "t_emblem_top_43",
+      "UID": 64288
+    },
+    {
+      "Name": "EMBLEM_STENCIL_J",
+      "Icon": "t_emblem_top_44",
+      "UID": 64289
+    },
+    {
+      "Name": "EMBLEM_STENCIL_K",
+      "Icon": "t_emblem_top_45",
+      "UID": 64290
+    },
+    {
+      "Name": "EMBLEM_STENCIL_L",
+      "Icon": "t_emblem_top_46",
+      "UID": 64291
+    },
+    {
+      "Name": "EMBLEM_STENCIL_M",
+      "Icon": "t_emblem_top_47",
+      "UID": 64292
+    },
+    {
+      "Name": "EMBLEM_STENCIL_N",
+      "Icon": "t_emblem_top_48",
+      "UID": 64293
+    },
+    {
+      "Name": "EMBLEM_STENCIL_O",
+      "Icon": "t_emblem_top_49",
+      "UID": 64294
+    },
+    {
+      "Name": "EMBLEM_STENCIL_P",
+      "Icon": "t_emblem_top_50",
+      "UID": 64295
+    },
+    {
+      "Name": "EMBLEM_STENCIL_Q",
+      "Icon": "t_emblem_top_51",
+      "UID": 64296
+    },
+    {
+      "Name": "EMBLEM_STENCIL_R",
+      "Icon": "t_emblem_top_52",
+      "UID": 64297
+    },
+    {
+      "Name": "EMBLEM_STENCIL_S",
+      "Icon": "t_emblem_top_53",
+      "UID": 64298
+    },
+    {
+      "Name": "EMBLEM_STENCIL_T",
+      "Icon": "t_emblem_top_54",
+      "UID": 64299
+    },
+    {
+      "Name": "EMBLEM_STENCIL_U",
+      "Icon": "t_emblem_top_55",
+      "UID": 64300
+    },
+    {
+      "Name": "EMBLEM_STENCIL_V",
+      "Icon": "t_emblem_top_56",
+      "UID": 64301
+    },
+    {
+      "Name": "EMBLEM_STENCIL_W",
+      "Icon": "t_emblem_top_57",
+      "UID": 64302
+    },
+    {
+      "Name": "EMBLEM_STENCIL_X",
+      "Icon": "t_emblem_top_58",
+      "UID": 64303
+    },
+    {
+      "Name": "EMBLEM_STENCIL_Y",
+      "Icon": "t_emblem_top_59",
+      "UID": 64304
+    },
+    {
+      "Name": "EMBLEM_STENCIL_Z",
+      "Icon": "t_emblem_top_60",
+      "UID": 64305
+    },
+    {
+      "Name": "EMBLEM_STENCIL_0",
+      "Icon": "t_emblem_top_61",
+      "UID": 64306
+    },
+    {
+      "Name": "EMBLEM_STENCIL_1",
+      "Icon": "t_emblem_top_62",
+      "UID": 64307
+    },
+    {
+      "Name": "EMBLEM_STENCIL_2",
+      "Icon": "t_emblem_top_63",
+      "UID": 64308
+    },
+    {
+      "Name": "EMBLEM_STENCIL_3",
+      "Icon": "t_emblem_top_64",
+      "UID": 64309
+    },
+    {
+      "Name": "EMBLEM_STENCIL_4",
+      "Icon": "t_emblem_top_65",
+      "UID": 64310
+    },
+    {
+      "Name": "EMBLEM_STENCIL_5",
+      "Icon": "t_emblem_top_66",
+      "UID": 64311
+    },
+    {
+      "Name": "EMBLEM_STENCIL_6",
+      "Icon": "t_emblem_top_67",
+      "UID": 64312
+    },
+    {
+      "Name": "EMBLEM_STENCIL_7",
+      "Icon": "t_emblem_top_68",
+      "UID": 64313
+    },
+    {
+      "Name": "EMBLEM_STENCIL_8",
+      "Icon": "t_emblem_top_69",
+      "UID": 64314
+    },
+    {
+      "Name": "EMBLEM_STENCIL_9",
+      "Icon": "t_emblem_top_70",
+      "UID": 64315
+    },
+    {
+      "Name": "EMBLEM_HAND_A",
+      "Icon": "t_emblem_top_71",
+      "UID": 64316
+    },
+    {
+      "Name": "EMBLEM_HAND_B",
+      "Icon": "t_emblem_top_72",
+      "UID": 64317
+    },
+    {
+      "Name": "EMBLEM_HAND_C",
+      "Icon": "t_emblem_top_73",
+      "UID": 64318
+    },
+    {
+      "Name": "EMBLEM_HAND_D",
+      "Icon": "t_emblem_top_74",
+      "UID": 64319
+    },
+    {
+      "Name": "EMBLEM_HAND_E",
+      "Icon": "t_emblem_top_75",
+      "UID": 64320
+    },
+    {
+      "Name": "EMBLEM_HAND_F",
+      "Icon": "t_emblem_top_76",
+      "UID": 64321
+    },
+    {
+      "Name": "EMBLEM_HAND_G",
+      "Icon": "t_emblem_top_77",
+      "UID": 64322
+    },
+    {
+      "Name": "EMBLEM_HAND_H",
+      "Icon": "t_emblem_top_78",
+      "UID": 64323
+    },
+    {
+      "Name": "EMBLEM_HAND_I",
+      "Icon": "t_emblem_top_79",
+      "UID": 64324
+    },
+    {
+      "Name": "EMBLEM_HAND_J",
+      "Icon": "t_emblem_top_80",
+      "UID": 64325
+    },
+    {
+      "Name": "EMBLEM_HAND_K",
+      "Icon": "t_emblem_top_81",
+      "UID": 64326
+    },
+    {
+      "Name": "EMBLEM_HAND_L",
+      "Icon": "t_emblem_top_82",
+      "UID": 64327
+    },
+    {
+      "Name": "EMBLEM_HAND_M",
+      "Icon": "t_emblem_top_83",
+      "UID": 64328
+    },
+    {
+      "Name": "EMBLEM_HAND_N",
+      "Icon": "t_emblem_top_84",
+      "UID": 64329
+    },
+    {
+      "Name": "EMBLEM_HAND_O",
+      "Icon": "t_emblem_top_85",
+      "UID": 64330
+    },
+    {
+      "Name": "EMBLEM_HAND_P",
+      "Icon": "t_emblem_top_86",
+      "UID": 64331
+    },
+    {
+      "Name": "EMBLEM_HAND_Q",
+      "Icon": "t_emblem_top_87",
+      "UID": 64332
+    },
+    {
+      "Name": "EMBLEM_HAND_R",
+      "Icon": "t_emblem_top_88",
+      "UID": 64333
+    },
+    {
+      "Name": "EMBLEM_HAND_S",
+      "Icon": "t_emblem_top_89",
+      "UID": 64334
+    },
+    {
+      "Name": "EMBLEM_HAND_T",
+      "Icon": "t_emblem_top_90",
+      "UID": 64335
+    },
+    {
+      "Name": "EMBLEM_HAND_U",
+      "Icon": "t_emblem_top_91",
+      "UID": 64336
+    },
+    {
+      "Name": "EMBLEM_HAND_V",
+      "Icon": "t_emblem_top_92",
+      "UID": 64337
+    },
+    {
+      "Name": "EMBLEM_HAND_W",
+      "Icon": "t_emblem_top_93",
+      "UID": 64338
+    },
+    {
+      "Name": "EMBLEM_HAND_X",
+      "Icon": "t_emblem_top_94",
+      "UID": 64339
+    },
+    {
+      "Name": "EMBLEM_HAND_Y",
+      "Icon": "t_emblem_top_95",
+      "UID": 64340
+    },
+    {
+      "Name": "EMBLEM_HAND_Z",
+      "Icon": "t_emblem_top_96",
+      "UID": 64341
+    },
+    {
+      "Name": "EMBLEM_HAND_0",
+      "Icon": "t_emblem_top_142",
+      "UID": 64342
+    },
+    {
+      "Name": "EMBLEM_HAND_1",
+      "Icon": "t_emblem_top_97",
+      "UID": 64343
+    },
+    {
+      "Name": "EMBLEM_HAND_2",
+      "Icon": "t_emblem_top_98",
+      "UID": 64344
+    },
+    {
+      "Name": "EMBLEM_HAND_3",
+      "Icon": "t_emblem_top_99",
+      "UID": 64345
+    },
+    {
+      "Name": "EMBLEM_HAND_4",
+      "Icon": "t_emblem_top_100",
+      "UID": 64346
+    },
+    {
+      "Name": "EMBLEM_HAND_5",
+      "Icon": "t_emblem_top_101",
+      "UID": 64347
+    },
+    {
+      "Name": "EMBLEM_HAND_6",
+      "Icon": "t_emblem_top_102",
+      "UID": 64348
+    },
+    {
+      "Name": "EMBLEM_HAND_7",
+      "Icon": "t_emblem_top_103",
+      "UID": 64349
+    },
+    {
+      "Name": "EMBLEM_HAND_8",
+      "Icon": "t_emblem_top_104",
+      "UID": 64350
+    },
+    {
+      "Name": "EMBLEM_HAND_9",
+      "Icon": "t_emblem_top_105",
+      "UID": 64351
+    },
+    {
+      "Name": "EMBLEM_PRINT_A",
+      "Icon": "t_emblem_top_106",
+      "UID": 64352
+    },
+    {
+      "Name": "EMBLEM_PRINT_B",
+      "Icon": "t_emblem_top_107",
+      "UID": 64353
+    },
+    {
+      "Name": "EMBLEM_PRINT_C",
+      "Icon": "t_emblem_top_108",
+      "UID": 64354
+    },
+    {
+      "Name": "EMBLEM_PRINT_D",
+      "Icon": "t_emblem_top_109",
+      "UID": 64355
+    },
+    {
+      "Name": "EMBLEM_PRINT_E",
+      "Icon": "t_emblem_top_110",
+      "UID": 64356
+    },
+    {
+      "Name": "EMBLEM_PRINT_F",
+      "Icon": "t_emblem_top_111",
+      "UID": 64357
+    },
+    {
+      "Name": "EMBLEM_PRINT_G",
+      "Icon": "t_emblem_top_112",
+      "UID": 64358
+    },
+    {
+      "Name": "EMBLEM_PRINT_H",
+      "Icon": "t_emblem_top_113",
+      "UID": 64359
+    },
+    {
+      "Name": "EMBLEM_PRINT_I",
+      "Icon": "t_emblem_top_114",
+      "UID": 64360
+    },
+    {
+      "Name": "EMBLEM_PRINT_J",
+      "Icon": "t_emblem_top_115",
+      "UID": 64361
+    },
+    {
+      "Name": "EMBLEM_PRINT_K",
+      "Icon": "t_emblem_top_116",
+      "UID": 64362
+    },
+    {
+      "Name": "EMBLEM_PRINT_L",
+      "Icon": "t_emblem_top_117",
+      "UID": 64363
+    },
+    {
+      "Name": "EMBLEM_PRINT_M",
+      "Icon": "t_emblem_top_118",
+      "UID": 64364
+    },
+    {
+      "Name": "EMBLEM_PRINT_N",
+      "Icon": "t_emblem_top_119",
+      "UID": 64365
+    },
+    {
+      "Name": "EMBLEM_PRINT_O",
+      "Icon": "t_emblem_top_120",
+      "UID": 64366
+    },
+    {
+      "Name": "EMBLEM_PRINT_P",
+      "Icon": "t_emblem_top_121",
+      "UID": 64367
+    },
+    {
+      "Name": "EMBLEM_PRINT_Q",
+      "Icon": "t_emblem_top_122",
+      "UID": 64368
+    },
+    {
+      "Name": "EMBLEM_PRINT_R",
+      "Icon": "t_emblem_top_123",
+      "UID": 64369
+    },
+    {
+      "Name": "EMBLEM_PRINT_S",
+      "Icon": "t_emblem_top_124",
+      "UID": 64370
+    },
+    {
+      "Name": "EMBLEM_PRINT_T",
+      "Icon": "t_emblem_top_125",
+      "UID": 64371
+    },
+    {
+      "Name": "EMBLEM_PRINT_U",
+      "Icon": "t_emblem_top_126",
+      "UID": 64372
+    },
+    {
+      "Name": "EMBLEM_PRINT_V",
+      "Icon": "t_emblem_top_127",
+      "UID": 64373
+    },
+    {
+      "Name": "EMBLEM_PRINT_W",
+      "Icon": "t_emblem_top_128",
+      "UID": 64374
+    },
+    {
+      "Name": "EMBLEM_PRINT_X",
+      "Icon": "t_emblem_top_129",
+      "UID": 64375
+    },
+    {
+      "Name": "EMBLEM_PRINT_Y",
+      "Icon": "t_emblem_top_130",
+      "UID": 64376
+    },
+    {
+      "Name": "EMBLEM_PRINT_Z",
+      "Icon": "t_emblem_top_131",
+      "UID": 64377
+    },
+    {
+      "Name": "EMBLEM_PRINT_0",
+      "Icon": "t_emblem_top_132",
+      "UID": 64378
+    },
+    {
+      "Name": "EMBLEM_PRINT_1",
+      "Icon": "t_emblem_top_133",
+      "UID": 64379
+    },
+    {
+      "Name": "EMBLEM_PRINT_2",
+      "Icon": "t_emblem_top_134",
+      "UID": 64380
+    },
+    {
+      "Name": "EMBLEM_PRINT_3",
+      "Icon": "t_emblem_top_135",
+      "UID": 64381
+    },
+    {
+      "Name": "EMBLEM_PRINT_4",
+      "Icon": "t_emblem_top_136",
+      "UID": 64382
+    },
+    {
+      "Name": "EMBLEM_PRINT_5",
+      "Icon": "t_emblem_top_137",
+      "UID": 64383
+    },
+    {
+      "Name": "EMBLEM_PRINT_6",
+      "Icon": "t_emblem_top_138",
+      "UID": 64384
+    },
+    {
+      "Name": "EMBLEM_PRINT_7",
+      "Icon": "t_emblem_top_139",
+      "UID": 64385
+    },
+    {
+      "Name": "EMBLEM_PRINT_8",
+      "Icon": "t_emblem_top_140",
+      "UID": 64386
+    },
+    {
+      "Name": "EMBLEM_PRINT_9",
+      "Icon": "t_emblem_top_141",
+      "UID": 64387
     }
   ],
   "emblem_shape": [

@@ -218,4 +218,9 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
             GripVisibility = Visibility.Visible;
         }
     }
+
+    private void Randomize_Click(object sender, RoutedEventArgs e)
+    {
+        if (DataContext is BLRWeapon weapon) { weapon.Randomize(); }
+    }
 }

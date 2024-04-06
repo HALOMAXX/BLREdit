@@ -252,12 +252,11 @@ public sealed partial class MainWindow : Window
         {
             if (wasLastImageScopePreview)
             {
-                var itemlist = ImportSystem.GetItemListOfType(ImportSystem.SCOPES_CATEGORY);
-                if (itemlist is not null)
+                if (ItemList.ItemsSource is not null)
                 {
-                    foreach (var item in itemlist)
+                    foreach (var i in ItemList.ItemsSource)
                     {
-                        item.RemoveCrosshair();
+                        if(i is BLRItem item) item.RemoveCrosshair();
                     }
                 }
             }
@@ -275,7 +274,7 @@ public sealed partial class MainWindow : Window
                 else if (profile is not null) ItemFilters.Instance.WeaponFilter = profile.Loadout1.Primary;
             }
             MainView.LastSelectedItemBorder = border;
-            wasLastImageScopePreview = false;
+            MainView.IsScopePreviewVisible.Set(false);
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
                 case "Receiver":
@@ -303,8 +302,8 @@ public sealed partial class MainWindow : Window
                         if (weapon?.Scope is not null)
                         {
                             weapon.Scope.LoadCrosshair(weapon);
-                            wasLastImageScopePreview = true;
                             ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
+                            MainView.IsScopePreviewVisible.Set(true);
                         }
                     }
                     break;
@@ -560,7 +559,7 @@ public sealed partial class MainWindow : Window
 
     public static void ApplyProxyLoadouts(BLRClient client)
     {
-        var directory = $"{client.ConfigFolder}profiles\\";
+        var directory = $"{client.BLReviveConfigsPath}profiles\\";
         Directory.CreateDirectory(directory);
 
         List<LoadoutManagerLoadout> loadouts = [];
@@ -591,7 +590,7 @@ public sealed partial class MainWindow : Window
 
     public static void ApplyBLReviveLoadouts(BLRClient client)
     {
-        var directory = $"{client.ConfigFolder}profiles\\";
+        var directory = $"{client.BLReviveConfigsPath}profiles\\";
         Directory.CreateDirectory(directory);
         string message = string.Empty;
         List<LMLoadout> loadouts = [];
@@ -856,8 +855,8 @@ public sealed partial class MainWindow : Window
 
     private void DuplicateProfile_Click(object sender, RoutedEventArgs e)
     {
-        //ProfileComboBox.SelectedItem = MainView.Profile.Shareable.Duplicate();
-        //TODO: Change to Duplicate
+        var duplicateLoadout = MainView.Profile.Duplicate();
+        MainView.Profile = duplicateLoadout;
     }
 
     private void PlayerNameTextBox_PreviewInput(object sender, TextCompositionEventArgs e)
@@ -938,12 +937,11 @@ public sealed partial class MainWindow : Window
         }
         if (DataStorage.Settings.DoRuntimeCheck.Is || DataStorage.Settings.ForceRuntimeCheck.Is)
         {
-            if (App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || DataStorage.Settings.ForceRuntimeCheck.Is)
+            if (App.IsVC2015x89Missing || App.IsVC2012Update4x89Missing || DataStorage.Settings.ForceRuntimeCheck.Is)
             {
                 var info = new InfoPopups.DownloadRuntimes();
-                if (!App.IsUpdateRuntimeMissing)
+                if (!App.IsVC2012Update4x89Missing)
                 {
-                    info.Link2012Update4.IsEnabled = false;
                     info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!"; //TODO: Add Localization
                 }
                 info.ShowDialog();
@@ -1134,9 +1132,8 @@ public sealed partial class MainWindow : Window
                     SetSortingType(typeof(ImportModificationSortingType));
                     break;
             }
-
             ItemList.ItemsSource = list;
-            ApplySorting();
+            ApplySorting(true);
             if (!ItemListTab.IsFocused) ItemListTab.Focus();
         }
         else
@@ -1145,7 +1142,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public void ApplySorting()
+    public void ApplySorting(bool resetView = false)
     {
         if (CollectionViewSource.GetDefaultView(ItemList.ItemsSource) is CollectionView view)
         {
@@ -1155,6 +1152,10 @@ public sealed partial class MainWindow : Window
             {
                 MainView.CurrentSortingPropertyName = Enum.GetName(MainView.CurrentSortingEnumType, Enum.GetValues(MainView.CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
                 view.SortDescriptions.Add(new SortDescription(MainView.CurrentSortingPropertyName, MainView.ItemListSortingDirection));
+            }
+            if (resetView)
+            { 
+                view.Refresh();
             }
         }
     }

@@ -120,6 +120,8 @@
             <Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                     <Button Content="{x:Static p:Resources.btn_ResetToDefaults }" ToolTip="{x:Static p:Resources.btn_TT_ResetToDefaults }" Command="{Binding Path=ResetConfigCommand}"/>
+                    <Button Content="Fix Clients" ToolTip="Try to fix Game Clients" Command="{Binding Path=FixClientsCommand}"/>
+                    <Button Content="Reset Server List" ToolTip="Reset the Server List with Default Servers" Command="{Binding Path=FixServersCommand}"/>
                 </StackPanel>
             </Border>
         </StackPanel>
