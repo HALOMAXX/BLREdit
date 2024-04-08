@@ -65,32 +65,43 @@
   {
     "ID": "craftman_96_alex 0",
     "ServerAddress": "blrrevive.ddd-game.de",
-    "InfoPort": 7778,
-    "Hidden": true,
+    "Port": 7777,
+    "InfoPort": 7777,
     "Region": "EU"
   },
   {
     "ID": "craftman_96_alex 1",
     "ServerAddress": "blrrevive.ddd-game.de",
-    "Port": 7779,
-    "InfoPort": 7780,
-    "Hidden": true,
+    "Port": 7778,
+    "InfoPort": 7778,
     "Region": "EU"
   },  
   {
     "ID": "craftman_96_alex 2",
     "ServerAddress": "blrrevive.ddd-game.de",
-    "Port": 7781,
-    "InfoPort": 7782,
-    "Hidden": true,
+    "Port": 7779,
+    "InfoPort": 7779,
     "Region": "EU"
   },
   {
     "ID": "craftman_96_alex 3",
     "ServerAddress": "blrrevive.ddd-game.de",
-    "Port": 7783,
-    "InfoPort": 7784,
-    "Hidden": true,
+    "Port": 7780,
+    "InfoPort": 7780,
+    "Region": "EU"
+  },
+  {
+    "ID": "craftman_96_alex 4",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7781,
+    "InfoPort": 7781,
+    "Region": "EU"
+  },
+  {
+    "ID": "craftman_96_alex 5",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7782,
+    "InfoPort": 7782,
     "Region": "EU"
   },
   {
