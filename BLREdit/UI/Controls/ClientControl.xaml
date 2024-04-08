@@ -22,7 +22,7 @@
                 <Image Source="../Resources/settings.png"/>
             </Button>
 
-            <TextBlock Text="{Binding Path=PatchedFile.Name}" TextWrapping="Wrap" Foreground="#FFFFFFBC" Margin="10,44,0,0" Width="200" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock Text="{Binding Path=PatchedFileInfo.Name}" TextWrapping="Wrap" Foreground="#FFFFFFBC" Margin="10,44,0,0" Width="200" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             
             <ToggleButton Content="Validate" ToolTip="Should the client be validate before launch.\nby default his is always on" Width="128" Height="32" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,148,0" IsChecked="{Binding Path=Validate.Is, Mode=TwoWay}"/>
             <Button Content="{x:Static p:Resources.btn_DefaultClient}" IsEnabled="{Binding Path=CurrentClient.IsNot}" Width="128" Height="32" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right" Command="{Binding Path=CurrentClientCommand}"/>

@@ -11,29 +11,12 @@
     <Border BorderThickness="1,1,1,1" Height="256" Width="512">
         <Grid MouseDown="Grid_MouseDown">
             <Canvas ClipToBounds="True" >
-                <Image Name="MapImage" Source="{Binding Path=MapImage}" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0" >
-                    <!--
-                    <Image.Triggers>
-                        <EventTrigger RoutedEvent="Image.Loaded">
-
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="MapImage" Storyboard.TargetProperty="(Canvas.Top)" RepeatBehavior="Forever" AutoReverse="True">
-                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="-256" />
-                                            <SplineDoubleKeyFrame KeyTime="00:00:00.5" Value="-256" />
-                                            <SplineDoubleKeyFrame KeyTime="00:00:05.5" Value="0" />
-                                            <SplineDoubleKeyFrame KeyTime="00:00:06" Value="0" />
-                                        </DoubleAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-
-                        </EventTrigger>
-                    </Image.Triggers>
-                    -->
-                </Image>
+                <Image Name="MapImage" Source="{Binding Path=MapImage}" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0"/>
             </Canvas>
+
+            <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
+                <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </Border>
 
             <Button Width="64" Height="32" Margin="10,10,10,10" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_PingServer}" Command="{Binding Path=RefreshPingCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/refresh.png"/>
@@ -59,9 +42,7 @@
             </Border>
             
 
-            <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
-                <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            </Border>
+
 
             <Border BorderThickness="0" Background="#9f000000" HorizontalAlignment="Stretch" IsHitTestVisible="False" VerticalAlignment="Stretch" Visibility="{Binding Path=IsOnline.VisibilityInverted}"/>
         </Grid>

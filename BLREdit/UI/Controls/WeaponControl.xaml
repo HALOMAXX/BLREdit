@@ -15,6 +15,7 @@
     </UserControl.Resources>
 
     <Grid x:Name="ControlGrid" Border.MouseUp="Grid_MouseUp">
+        <Button Name="Randomize" Content="Randomize" Click="Randomize_Click" Width="128" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="14,2,0,0"/>
         <Label Content="{Binding Path=WeaponDescriptor}" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptorLabel}"/>
         <Border Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=MuzzleVisibility}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=DataContext.IsValidMuzzle.Brush}" DataContext="{Binding Path=Muzzle}" Height="78" Width="78" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" AllowDrop="True">
             <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>

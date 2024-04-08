@@ -1,4 +1,5 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.Utils;
+using BLREdit.Export;
 using BLREdit.Import;
 
 using System;
@@ -9,6 +10,8 @@ using System.Numerics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+
+using static BLREdit.API.Utils.HelperFunctions;
 
 namespace BLREdit.UI.Views;
 
@@ -230,28 +233,28 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         if (Barrel is null || Barrel.Name == MagiCowsWeapon.NoBarrel)
         {
-            Barrel = wpn.GetBarrel();
+            Barrel = wpn.GetBarrelBLRItem();
         }
         if (Scope is null || Scope.Name == MagiCowsWeapon.NoScope)
         {
-            Scope = wpn.GetScope();
+            Scope = wpn.GetScopeBLRItem();
         }
         if (Stock is null || Stock.Name == MagiCowsWeapon.NoStock)
         {
-            Stock = wpn.GetStock();
+            Stock = wpn.GetStockBLRItem();
         }
         if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
         {
-            Grip = wpn.GetGrip();
+            Grip = wpn.GetGripBLRItem();
         }
 
         if (Muzzle is null || BLRItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
         {
-            Muzzle = wpn.GetMuzzle();
+            Muzzle = wpn.GetMuzzleBLRItem();
         }
         if (Magazine is null || BLRItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
         {
-            Magazine = wpn.GetMagazine();
+            Magazine = wpn.GetMagazineBLRItem();
             var uid = Magazine?.UID ?? -1;
             if (uid == -1) { uid = 90000; }
             Ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, uid);
@@ -860,37 +863,136 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Remove)) return;
         if (Receiver is null) return;
-        MagiCowsWeapon? wpn = MagiCowsWeapon.GetDefaultSetupOfReceiver(Receiver);
+
+        MagiCowsWeapon ? wpn = MagiCowsWeapon.GetDefaultSetupOfReceiver(Receiver);
 
         if (Muzzle is null || !Muzzle.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzle(), GetType().GetProperty(nameof(Muzzle)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzleBLRItem(), GetType().GetProperty(nameof(Muzzle)), this); }
 
         if (Barrel is null || !Barrel.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrel(), GetType().GetProperty(nameof(Barrel)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrelBLRItem(), GetType().GetProperty(nameof(Barrel)), this); }
 
         if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || !AllowStock(Receiver, Barrel, Stock))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStock(), GetType().GetProperty(nameof(Stock)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStockBLRItem(), GetType().GetProperty(nameof(Stock)), this); }
 
         if (Scope is null || !Scope.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScope(), GetType().GetProperty(nameof(Scope)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScopeBLRItem(), GetType().GetProperty(nameof(Scope)), this); }
 
         if (Magazine is null || !Magazine.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazine(), GetType().GetProperty(nameof(Magazine)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazineBLRItem(), GetType().GetProperty(nameof(Magazine)), this); }
 
         if (Ammo is null || !Ammo.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmo(), GetType().GetProperty(nameof(Ammo)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmoBLRItem(), GetType().GetProperty(nameof(Ammo)), this); }
 
         if (Grip is null || !Grip.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGrip(), GetType().GetProperty(nameof(Grip)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGripBLRItem(), GetType().GetProperty(nameof(Grip)), this); }
 
         if (Camo is null || !Camo.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamo(), GetType().GetProperty(nameof(Camo)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamoBLRItem(), GetType().GetProperty(nameof(Camo)), this); }
 
         if (Tag is null || !Tag.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTag(), GetType().GetProperty(nameof(Tag)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTagBLRItem(), GetType().GetProperty(nameof(Tag)), this); }
 
         if (!Skin?.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? true)
         { UndoRedoSystem.DoValueChangeAfter(ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0), GetType().GetProperty(nameof(Skin)), this); }
+    }
+
+    public void RemoveIncompatibleAttachments()
+    {
+        if (Receiver is null) return;
+
+        UndoRedoSystem.CurrentlyBlockedEvents.Value |= BlockEvents.Remove;
+        UndoRedoSystem.CurrentlyBlockedEvents.Value |= BlockEvents.AddMissing;
+
+        MagiCowsWeapon? wpn;
+
+        if (!BLRItem.IsValidFor(Receiver, null))
+        {
+            wpn = IsPrimary ? MagiCowsWeapon.DefaultWeapons.AssaultRifle : MagiCowsWeapon.DefaultWeapons.LightPistol;
+            UndoRedoSystem.DoValueChange(wpn?.GetReceiver(), GetType().GetProperty(nameof(Receiver)), this, BlockEvents.Remove | BlockEvents.AddMissing);
+        }
+        else
+        { 
+            wpn = MagiCowsWeapon.GetDefaultSetupOfReceiver(Receiver);
+        }
+
+        if (Muzzle is null || !Muzzle.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzleBLRItem(), GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (Barrel is null || !Barrel.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrelBLRItem(), GetType().GetProperty(nameof(Barrel)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) || !AllowStock(Receiver, Barrel, Stock))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStockBLRItem(), GetType().GetProperty(nameof(Stock)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (Scope is null || !Scope.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScopeBLRItem(), GetType().GetProperty(nameof(Scope)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (Magazine is null || !Magazine.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazineBLRItem(), GetType().GetProperty(nameof(Magazine)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (Ammo is null || !Ammo.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmoBLRItem(), GetType().GetProperty(nameof(Ammo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (Grip is null || !Grip.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGripBLRItem(), GetType().GetProperty(nameof(Grip)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (Camo is null || !Camo.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamoBLRItem(), GetType().GetProperty(nameof(Camo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (Tag is null || !Tag.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false))
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTagBLRItem(), GetType().GetProperty(nameof(Tag)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        if (!Skin?.IsValidFor(Receiver, Loadout?.Profile?.IsAdvanced.Is ?? false) ?? true)
+        { UndoRedoSystem.DoValueChangeAfter(ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0), GetType().GetProperty(nameof(Skin)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+
+        UndoRedoSystem.CurrentlyBlockedEvents.Value ^= BlockEvents.Remove;
+        UndoRedoSystem.CurrentlyBlockedEvents.Value ^= BlockEvents.AddMissing;
+    }
+
+    public void AddMissingDefaultAttachments()
+    {
+        if (Receiver is null) { LoggingSystem.Log($"can't check for default setup of weapon as receiver is missing!"); return; }
+        var wpn = MagiCowsWeapon.GetDefaultSetupOfReceiver(Receiver);
+
+        UndoRedoSystem.CurrentlyBlockedEvents.Value |= BlockEvents.Remove;
+        UndoRedoSystem.CurrentlyBlockedEvents.Value |= BlockEvents.AddMissing;
+
+        if (wpn is null) { LoggingSystem.Log($"missing default setup for {Receiver?.Name}"); return; }
+
+        if (Barrel is null || Barrel.Name == MagiCowsWeapon.NoBarrel)
+        {
+            Barrel = wpn.GetBarrelBLRItem();
+        }
+        if (Scope is null || Scope.Name == MagiCowsWeapon.NoScope)
+        {
+            Scope = wpn.GetScopeBLRItem();
+        }
+        if (Stock is null || Stock.Name == MagiCowsWeapon.NoStock)
+        {
+            Stock = wpn.GetStockBLRItem();
+        }
+        if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
+        {
+            Grip = wpn.GetGripBLRItem();
+        }
+
+        if (Muzzle is null || BLRItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
+        {
+            Muzzle = wpn.GetMuzzleBLRItem();
+        }
+        if (Magazine is null || BLRItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
+        {
+            Magazine = wpn.GetMagazineBLRItem();
+            var uid = Magazine?.UID ?? -1;
+            if (uid == -1) { uid = 90000; }
+            Ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, uid);
+        }
+
+        Skin ??= ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0);
+
+        UndoRedoSystem.CurrentlyBlockedEvents.Value ^= BlockEvents.Remove;
+        UndoRedoSystem.CurrentlyBlockedEvents.Value ^= BlockEvents.AddMissing;
     }
 
     #region Calulations
@@ -1581,7 +1683,6 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         UndoRedoSystem.DoValueChange(receiver, this.GetType().GetProperty(nameof(Receiver)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(barrel, this.GetType().GetProperty(nameof(Barrel)), this, BlockEvents.AllExceptUpdate);
-        UndoRedoSystem.DoValueChange(scope, this.GetType().GetProperty(nameof(Scope)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(stock, this.GetType().GetProperty(nameof(Stock)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(muzzle, this.GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(magazine, this.GetType().GetProperty(nameof(Magazine)), this, BlockEvents.AllExceptUpdate);
@@ -1589,7 +1690,9 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         UndoRedoSystem.DoValueChange(grip, this.GetType().GetProperty(nameof(Grip)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(skin, this.GetType().GetProperty(nameof(Skin)), this, BlockEvents.AllExceptUpdate);
         if (ammo is not null) UndoRedoSystem.DoValueChange(ammo, this.GetType().GetProperty(nameof(Ammo)), this, BlockEvents.AllExceptUpdate);
-        UndoRedoSystem.DoValueChange(hanger, this.GetType().GetProperty(nameof(Tag)), this);
+        UndoRedoSystem.DoValueChange(hanger, this.GetType().GetProperty(nameof(Tag)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(scope, this.GetType().GetProperty(nameof(Scope)), this);
+        UndoRedoSystem.EndUndoRecord();
     }
 
     /// <summary>
@@ -1621,5 +1724,77 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             message += " ❌" + attachment;
 
         return valid;
+    }
+
+    public WeaponErrorReport GenerateReport()
+    {
+        return new(
+            ItemCheck(Receiver, null),
+            ItemCheck(Barrel, Receiver),
+            ItemCheck(Muzzle, Receiver),
+            ItemCheck(Grip, Receiver),
+            ItemCheck(Camo, Receiver),
+            ItemCheck(Magazine, Receiver),
+            ItemCheck(Ammo, Receiver),
+            ItemCheck(Tag, Receiver),
+            ItemCheck(Stock, Receiver),
+            ItemCheck(Scope, Receiver),
+            ItemCheck(Skin, Receiver)
+            );
+    }
+}
+public readonly struct WeaponErrorReport(ItemReport receiver, ItemReport barrel, ItemReport muzzle, ItemReport grip, ItemReport camo, ItemReport magazine, ItemReport ammo, ItemReport tag, ItemReport stock, ItemReport scope, ItemReport skin) : IEquatable<WeaponErrorReport>
+{
+    public readonly bool IsValid { get { return AllTruth(ItemReport.Valid, ReceiverReport, BarrelReport, MuzzleReport, GripReport, CamoReport, MagazineReport, AmmoReport, TagReport, StockReport, ScopeReport, SkinReport); } }
+    public ItemReport ReceiverReport { get; } = receiver;
+    public ItemReport BarrelReport { get; } = barrel;
+    public ItemReport MuzzleReport { get; } = muzzle;
+    public ItemReport GripReport { get; } = grip;
+    public ItemReport CamoReport { get; } = camo;
+    public ItemReport MagazineReport { get; } = magazine;
+    public ItemReport AmmoReport { get; } = ammo;
+    public ItemReport TagReport { get; } = tag;
+    public ItemReport StockReport { get; } = stock;
+    public ItemReport ScopeReport { get; } = scope;
+    public ItemReport SkinReport { get; } = skin;
+
+    public override bool Equals(object obj)
+    {
+        if (obj is WeaponErrorReport r)
+        {
+            return Equals(r);
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return (ReceiverReport, BarrelReport, MuzzleReport, GripReport, CamoReport, MagazineReport, AmmoReport, TagReport, StockReport, ScopeReport, SkinReport).GetHashCode();
+    }
+
+    public static bool operator ==(WeaponErrorReport left, WeaponErrorReport right)
+    {
+        return left.Equals(right);
+    }
+
+    public static bool operator !=(WeaponErrorReport left, WeaponErrorReport right)
+    {
+        return !(left == right);
+    }
+
+    public bool Equals(WeaponErrorReport other)
+    {
+        return
+            ReceiverReport.Equals(other.ReceiverReport) &&
+            BarrelReport.Equals(other.BarrelReport) &&
+            MuzzleReport.Equals(other.MuzzleReport) &&
+            GripReport.Equals(other.GripReport) &&
+            CamoReport.Equals(other.CamoReport) &&
+            MagazineReport.Equals(other.MagazineReport) &&
+            AmmoReport.Equals(other.AmmoReport) &&
+            TagReport.Equals(other.TagReport) &&
+            StockReport.Equals(other.StockReport) &&
+            ScopeReport.Equals(other.ScopeReport) &&
+            SkinReport.Equals(other.SkinReport);
     }
 }

@@ -18,7 +18,7 @@ public sealed class ExportSystemProfile : MagiCowsProfile, INotifyPropertyChange
     }
     #endregion Events
 
-    [JsonIgnore] public string Name { get { return '(' + Index.ToString() + ')' + PlayerName; } }
+    [JsonIgnore] public string Name { get { return $"({Index}){PlayerName}"; } }
     public int Index { get; set; }
 
     public void RefreshInfo()

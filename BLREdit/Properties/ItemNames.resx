@@ -6242,171 +6242,171 @@
     <comment>emblem_alpha</comment>
   </data>
   <data name="064740" xml:space="preserve">
-    <value>EMBLEM500</value>
+    <value>Empty Background</value>
     <comment>emblem_background</comment>
   </data>
   <data name="064741" xml:space="preserve">
-    <value>EMBLEM501</value>
+    <value>Diagonal Stripes 1</value>
     <comment>emblem_background</comment>
   </data>
   <data name="064742" xml:space="preserve">
-    <value>EMBLEM502</value>
+    <value>Horizontal Stripes</value>
     <comment>emblem_background</comment>
   </data>
   <data name="064743" xml:space="preserve">
-    <value>EMBLEM503</value>
+    <value>Diagonal Stripes 2</value>
     <comment>emblem_background</comment>
   </data>
   <data name="064744" xml:space="preserve">
-    <value>EMBLEM504</value>
+    <value>Vertical Stripes</value>
     <comment>emblem_background</comment>
   </data>
   <data name="064745" xml:space="preserve">
-    <value>EMBLEM505</value>
+    <value>Filled Background</value>
     <comment>emblem_background</comment>
   </data>
   <data name="064750" xml:space="preserve">
-    <value>EMBLEM750</value>
+    <value>White</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064751" xml:space="preserve">
-    <value>EMBLEM751</value>
+    <value>Red</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064752" xml:space="preserve">
-    <value>EMBLEM752</value>
+    <value>Orange</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064756" xml:space="preserve">
-    <value>EMBLEM756</value>
+    <value>Gray</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064757" xml:space="preserve">
-    <value>EMBLEM757</value>
+    <value>Dark Red</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064758" xml:space="preserve">
-    <value>EMBLEM758</value>
+    <value>Dark Orange</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064762" xml:space="preserve">
-    <value>EMBLEM762</value>
+    <value>Black</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064763" xml:space="preserve">
-    <value>EMBLEM763</value>
+    <value>Very Dark Red</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064764" xml:space="preserve">
-    <value>EMBLEM764</value>
+    <value>Brown</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064765" xml:space="preserve">
-    <value>EMBLEM765</value>
+    <value>Yellow</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064766" xml:space="preserve">
-    <value>EMBLEM766</value>
+    <value>Dark Yellow</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064767" xml:space="preserve">
-    <value>EMBLEM767</value>
+    <value>Green</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064771" xml:space="preserve">
-    <value>EMBLEM771</value>
+    <value>Dark Olive</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064772" xml:space="preserve">
-    <value>EMBLEM772</value>
+    <value>Olive</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064773" xml:space="preserve">
-    <value>EMBLEM773</value>
+    <value>Dark Green</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064777" xml:space="preserve">
-    <value>EMBLEM777</value>
+    <value>Brown</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064778" xml:space="preserve">
-    <value>EMBLEM778</value>
+    <value>Very Dark Olive</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064779" xml:space="preserve">
-    <value>EMBLEM779</value>
+    <value>Very Dark Green</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064780" xml:space="preserve">
-    <value>EMBLEM780</value>
+    <value>Cyan</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064781" xml:space="preserve">
-    <value>EMBLEM781</value>
+    <value>Bright Cyan</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064782" xml:space="preserve">
-    <value>EMBLEM782</value>
+    <value>Sky Blue</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064786" xml:space="preserve">
-    <value>EMBLEM786</value>
+    <value>Dark Cyan</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064787" xml:space="preserve">
-    <value>EMBLEM787</value>
+    <value>Teal</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064788" xml:space="preserve">
-    <value>EMBLEM788</value>
+    <value>Dark Blue</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064792" xml:space="preserve">
-    <value>EMBLEM792</value>
+    <value>Very Dark Cyan</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064793" xml:space="preserve">
-    <value>EMBLEM793</value>
+    <value>Dark Teal</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064794" xml:space="preserve">
-    <value>EMBLEM794</value>
+    <value>Very Dark Blue</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064795" xml:space="preserve">
-    <value>EMBLEM795</value>
+    <value>Blue</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064796" xml:space="preserve">
-    <value>EMBLEM796</value>
+    <value>Violet</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064797" xml:space="preserve">
-    <value>EMBLEM797</value>
+    <value>Magenta</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064801" xml:space="preserve">
-    <value>EMBLEM801</value>
+    <value>Dark Blue</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064802" xml:space="preserve">
-    <value>EMBLEM802</value>
+    <value>Dark Violet</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064803" xml:space="preserve">
-    <value>EMBLEM803</value>
+    <value>Dark Magenta</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064807" xml:space="preserve">
-    <value>EMBLEM807</value>
+    <value>Very Dark Blue</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064808" xml:space="preserve">
-    <value>EMBLEM808</value>
+    <value>Very Dark Violet</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064809" xml:space="preserve">
-    <value>EMBLEM809</value>
+    <value>Very Dark Magenta</value>
     <comment>emblem_color</comment>
   </data>
   <data name="064000" xml:space="preserve">

@@ -8,6 +8,7 @@
         xmlns:old="clr-namespace:BLREdit.UI"
         xmlns:views="clr-namespace:BLREdit.UI.Views"
         xmlns:game="clr-namespace:BLREdit.Game"
+        xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=views:MainWindowView}"
         Height="1032" Width="1920" MinWidth="830" Title="{Binding Path=WindowTitle}" Initialized="Window_Initialized" Deactivated="Window_Deactivated" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered" Closed="Window_Closed" Closing="Window_Closing" Foreground="Red">
@@ -22,7 +23,7 @@
             <Button Width="120" Height="22" Name="CopyToClipboardButton" Content="{x:Static p:Resources.btn_ExportProfile}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CopyToClipboardButton_Click"/>
         </Border>
 
-        <Button Name="RandomLoadout" Width="120" Height="22" Margin="140,10,0,0" Content="{x:Static p:Resources.btn_RandomizeLoadout}" HorizontalAlignment="Left" VerticalAlignment="Top"  Click="RandomLoadout_Click"/>
+        <Button Name="DuplicateLoadout" Width="120" Height="22" Margin="140,10,0,0" Content="{x:Static p:Resources.btn_DuplicateCurrentProfile}" HorizontalAlignment="Left" VerticalAlignment="Top"  Click="DuplicateProfile_Click"/>
 
         <Button Name="AddProfileButton" Width="120" Height="22" Margin="270,10,0,0" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
 
@@ -46,7 +47,7 @@
                         </ListView.ItemContainerStyle>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ui:VirtualizedUniformGrid Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsItemsHost="True"/>
+                                <vwp:VirtualizingWrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SpacingMode="StartAndEndOnly" AllowDifferentSizedItems="false" StretchItems="false" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ListView.ItemTemplate>

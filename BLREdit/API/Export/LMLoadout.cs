@@ -1,10 +1,6 @@
 ﻿using BLREdit.Import;
 using BLREdit.UI.Views;
 
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Threading;
-using System.Windows.Controls;
-
 namespace BLREdit.API.Export;
 
 //TODO: Change defaults
@@ -187,7 +183,7 @@ public class LMGear
 
 public class LMBody
 {
-    public bool Female { get; set; } = false;
+    public bool Female { get; set; }
     public int Camo { get; set; } = -1;
     public int UpperBody { get; set; } = -1;
     public int LowerBody { get; set; } = -1;

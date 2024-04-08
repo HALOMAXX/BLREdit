@@ -14020,7 +14020,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM500.
+        ///   Looks up a localized string similar to Empty Background.
         /// </summary>
         public static string _064740 {
             get {
@@ -14029,7 +14029,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM501.
+        ///   Looks up a localized string similar to Diagonal Stripes 1.
         /// </summary>
         public static string _064741 {
             get {
@@ -14038,7 +14038,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM502.
+        ///   Looks up a localized string similar to Horizontal Stripes.
         /// </summary>
         public static string _064742 {
             get {
@@ -14047,7 +14047,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM503.
+        ///   Looks up a localized string similar to Diagonal Stripes 2.
         /// </summary>
         public static string _064743 {
             get {
@@ -14056,7 +14056,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM504.
+        ///   Looks up a localized string similar to Vertical Stripes.
         /// </summary>
         public static string _064744 {
             get {
@@ -14065,7 +14065,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM505.
+        ///   Looks up a localized string similar to Filled Background.
         /// </summary>
         public static string _064745 {
             get {
@@ -14074,7 +14074,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM750.
+        ///   Looks up a localized string similar to White.
         /// </summary>
         public static string _064750 {
             get {
@@ -14083,7 +14083,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM751.
+        ///   Looks up a localized string similar to Red.
         /// </summary>
         public static string _064751 {
             get {
@@ -14092,7 +14092,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM752.
+        ///   Looks up a localized string similar to Orange.
         /// </summary>
         public static string _064752 {
             get {
@@ -14101,7 +14101,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM756.
+        ///   Looks up a localized string similar to Gray.
         /// </summary>
         public static string _064756 {
             get {
@@ -14110,7 +14110,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM757.
+        ///   Looks up a localized string similar to Dark Red.
         /// </summary>
         public static string _064757 {
             get {
@@ -14119,7 +14119,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM758.
+        ///   Looks up a localized string similar to Dark Orange.
         /// </summary>
         public static string _064758 {
             get {
@@ -14128,7 +14128,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM762.
+        ///   Looks up a localized string similar to Black.
         /// </summary>
         public static string _064762 {
             get {
@@ -14137,7 +14137,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM763.
+        ///   Looks up a localized string similar to Very Dark Red.
         /// </summary>
         public static string _064763 {
             get {
@@ -14146,7 +14146,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM764.
+        ///   Looks up a localized string similar to Brown.
         /// </summary>
         public static string _064764 {
             get {
@@ -14155,7 +14155,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM765.
+        ///   Looks up a localized string similar to Yellow.
         /// </summary>
         public static string _064765 {
             get {
@@ -14164,7 +14164,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM766.
+        ///   Looks up a localized string similar to Dark Yellow.
         /// </summary>
         public static string _064766 {
             get {
@@ -14173,7 +14173,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM767.
+        ///   Looks up a localized string similar to Green.
         /// </summary>
         public static string _064767 {
             get {
@@ -14182,7 +14182,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM771.
+        ///   Looks up a localized string similar to Dark Olive.
         /// </summary>
         public static string _064771 {
             get {
@@ -14191,7 +14191,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM772.
+        ///   Looks up a localized string similar to Olive.
         /// </summary>
         public static string _064772 {
             get {
@@ -14200,7 +14200,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM773.
+        ///   Looks up a localized string similar to Dark Green.
         /// </summary>
         public static string _064773 {
             get {
@@ -14209,7 +14209,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM777.
+        ///   Looks up a localized string similar to Brown.
         /// </summary>
         public static string _064777 {
             get {
@@ -14218,7 +14218,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM778.
+        ///   Looks up a localized string similar to Very Dark Olive.
         /// </summary>
         public static string _064778 {
             get {
@@ -14227,7 +14227,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM779.
+        ///   Looks up a localized string similar to Very Dark Green.
         /// </summary>
         public static string _064779 {
             get {
@@ -14236,7 +14236,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM780.
+        ///   Looks up a localized string similar to Cyan.
         /// </summary>
         public static string _064780 {
             get {
@@ -14245,7 +14245,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM781.
+        ///   Looks up a localized string similar to Bright Cyan.
         /// </summary>
         public static string _064781 {
             get {
@@ -14254,7 +14254,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM782.
+        ///   Looks up a localized string similar to Sky Blue.
         /// </summary>
         public static string _064782 {
             get {
@@ -14263,7 +14263,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM786.
+        ///   Looks up a localized string similar to Dark Cyan.
         /// </summary>
         public static string _064786 {
             get {
@@ -14272,7 +14272,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM787.
+        ///   Looks up a localized string similar to Teal.
         /// </summary>
         public static string _064787 {
             get {
@@ -14281,7 +14281,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM788.
+        ///   Looks up a localized string similar to Dark Blue.
         /// </summary>
         public static string _064788 {
             get {
@@ -14290,7 +14290,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM792.
+        ///   Looks up a localized string similar to Very Dark Cyan.
         /// </summary>
         public static string _064792 {
             get {
@@ -14299,7 +14299,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM793.
+        ///   Looks up a localized string similar to Dark Teal.
         /// </summary>
         public static string _064793 {
             get {
@@ -14308,7 +14308,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM794.
+        ///   Looks up a localized string similar to Very Dark Blue.
         /// </summary>
         public static string _064794 {
             get {
@@ -14317,7 +14317,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM795.
+        ///   Looks up a localized string similar to Blue.
         /// </summary>
         public static string _064795 {
             get {
@@ -14326,7 +14326,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM796.
+        ///   Looks up a localized string similar to Violet.
         /// </summary>
         public static string _064796 {
             get {
@@ -14335,7 +14335,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM797.
+        ///   Looks up a localized string similar to Magenta.
         /// </summary>
         public static string _064797 {
             get {
@@ -14344,7 +14344,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM801.
+        ///   Looks up a localized string similar to Dark Blue.
         /// </summary>
         public static string _064801 {
             get {
@@ -14353,7 +14353,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM802.
+        ///   Looks up a localized string similar to Dark Violet.
         /// </summary>
         public static string _064802 {
             get {
@@ -14362,7 +14362,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM803.
+        ///   Looks up a localized string similar to Dark Magenta.
         /// </summary>
         public static string _064803 {
             get {
@@ -14371,7 +14371,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM807.
+        ///   Looks up a localized string similar to Very Dark Blue.
         /// </summary>
         public static string _064807 {
             get {
@@ -14380,7 +14380,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM808.
+        ///   Looks up a localized string similar to Very Dark Violet.
         /// </summary>
         public static string _064808 {
             get {
@@ -14389,7 +14389,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMBLEM809.
+        ///   Looks up a localized string similar to Very Dark Magenta.
         /// </summary>
         public static string _064809 {
             get {
