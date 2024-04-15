@@ -52,6 +52,7 @@
   {
     "ID": "xmutantson 0",
     "ServerAddress": "kameron.cloud",
+    "Port": 7778,
     "InfoPort": 7778,
     "Region": "US-West"
   },
