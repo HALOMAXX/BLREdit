@@ -3303,6 +3303,7 @@
       "Icon": "t_GuardianWarmongerL1_128x128",
       "Name": "Guardian WarmongerL1",
       "PawnModifiers": {
+        "GearSlots": 1.0,
         "Health": 40.0,
         "MovementSpeed": -40.0
       },
@@ -7992,7 +7993,7 @@
         "ReloadSpeed": 100.0
       },
       "WikiStats": {
-        "Reload": -0.610000014305115
+        "Reload": -1.01
       }
     },
     {
