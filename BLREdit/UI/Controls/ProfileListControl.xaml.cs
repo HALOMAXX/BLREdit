@@ -352,7 +352,7 @@ namespace BLREdit.UI.Controls
                             trophy++;
                         }
                         #endregion Armor
-                        //TODO: Add Repair for Gear: Trophies, Tactical, Helmet, UpperBody, LowerBody, Avatar, BodyCamo
+                        loadout.BLR.IsAdvanced.Set(false);
                     }
                 }
             }

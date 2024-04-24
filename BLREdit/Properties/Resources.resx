@@ -415,7 +415,7 @@
     <value>Recoil Aim:</value>
   </data>
   <data name="lbl_RecoilHip" xml:space="preserve">
-    <value>Recoil Hip:</value>
+    <value>Recoil:</value>
   </data>
   <data name="lbl_RecoilRecoveryTime" xml:space="preserve">
     <value>Recoil Recovery:</value>

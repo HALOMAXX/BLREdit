@@ -59,7 +59,7 @@ public sealed class ShareableLoadout : IBLRLoadout
     public ShareableLoadout(BLRLoadout loadout)
     {
         Name = loadout.Name;
-        Female = loadout.IsFemale;
+        Female = loadout.IsFemale.Is;
         Apply = loadout.Apply;
         BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
         UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
@@ -183,7 +183,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
 
         loadout.Name = Name;
-        loadout.IsFemale = Female;
+        loadout.IsFemale.Is = Female;
         loadout.IsBot = Bot;
 
         loadout.Apply = Apply;
@@ -241,7 +241,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         LastModified = DateTime.Now;
 
         Name = loadout.Name;
-        Female = loadout.IsFemale;
+        Female = loadout.IsFemale.Is;
         Bot = loadout.IsBot;
 
         Apply = loadout.Apply;
