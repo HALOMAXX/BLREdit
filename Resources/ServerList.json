@@ -17,7 +17,6 @@
     "ServerAddress": "blr.majikau.com",
     "Port": 7778,
     "InfoPort": 7778,
-    "Hidden": true,
     "Region": "EU-North"
   },
   {
