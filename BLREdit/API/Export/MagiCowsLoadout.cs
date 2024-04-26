@@ -144,7 +144,7 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         Primary.Read(loadout.Primary);
         Secondary.Read(loadout.Secondary);
 
-        loadout.IsFemale = IsFemale;
+        loadout.IsFemale.Is = IsFemale;
 
         loadout.Helmet = GetHelmetBLRItem();
         loadout.UpperBody = GetUpperBodyBLRItem();
@@ -185,7 +185,7 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         Primary.Write(loadout.Primary);
         Secondary.Write(loadout.Secondary);
 
-        IsFemale = loadout.IsFemale;
+        IsFemale = loadout.IsFemale.Is;
 
         Tactical = BLRItem.GetMagicCowsID(loadout.Tactical);
         Helmet = BLRItem.GetMagicCowsID(loadout.Helmet);

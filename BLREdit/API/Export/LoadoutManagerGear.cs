@@ -32,7 +32,7 @@ public sealed class LoadoutManagerGear
 
     public LoadoutManagerGear(BLRLoadout loadout)
     {
-        Female = loadout.IsFemale;
+        Female = loadout.IsFemale.Is;
         BodyCamo = BLRItem.GetLMID(loadout.BodyCamo);
         UpperBody = BLRItem.GetLMID(loadout.UpperBody);
         LowerBody = BLRItem.GetLMID(loadout.LowerBody);

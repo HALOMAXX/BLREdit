@@ -30,12 +30,12 @@
             <Image Source="{Binding Path=Helmet.Image.IconFileInfo.FullName}" HorizontalAlignment="Left" Grid.Row="0"/>
             <Image Source="{Binding Path=Trophy.Image.IconFileInfo.FullName}" HorizontalAlignment="Right" Grid.Row="0"/>
 
-            <Image Source="{Binding Path=UpperBody.MaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToNotVis}}"/>
-            <Image Source="{Binding Path=UpperBody.FemaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToVis}}"/>
+            <Image Source="{Binding Path=UpperBody.MaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale.VisibilityInverted}"/>
+            <Image Source="{Binding Path=UpperBody.FemaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale.Visibility}"/>
             <Image Source="{Binding Path=Tactical.MaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Right"/>
 
-            <Image Source="{Binding Path=LowerBody.MaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToNotVis}}"/>
-            <Image Source="{Binding Path=LowerBody.FemaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale, Converter={StaticResource BoolToVis}}"/>
+            <Image Source="{Binding Path=LowerBody.MaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale.VisibilityInverted}"/>
+            <Image Source="{Binding Path=LowerBody.FemaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale.Visibility}"/>
 
         </Grid>
 

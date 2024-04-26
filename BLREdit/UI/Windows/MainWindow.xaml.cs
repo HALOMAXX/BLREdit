@@ -878,12 +878,6 @@ public sealed partial class MainWindow : Window
                     lcontrol.ApplyBorder();
                 }
             }
-            switch (control.SelectedIndex)
-            {
-                case 0:
-                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.IsFemale);
-                    break;
-            }
         }
         BlockChangeNotif = false;
     }

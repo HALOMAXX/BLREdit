@@ -163,7 +163,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var attribute = property.GetCustomAttribute<BLRItemAttribute>();
         if (value is not null && !attribute.ItemType.Contains(value.Category)) { return; }
         if (value is null && (name == nameof(Helmet) || name == nameof(UpperBody) || name == nameof(LowerBody) || name == nameof(BodyCamo))) { value = defaultItem; }
-        if ((Profile?.IsAdvanced.IsNot ?? false) && value is null && defaultItem is not null) { value = defaultItem; }
+        if (IsAdvanced.IsNot && value is null && defaultItem is not null) { value = defaultItem; }
         BLRItem? gear1 = Gear1, gear2 = Gear2, gear3 = Gear3, gear4 = Gear4;
         switch ($"IsValid{name}")
         {
@@ -228,7 +228,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
                     if (gear4 is not null && gear4.UID == gear1.UID) { gear1valid = false; }
                 }
 
-                if ((Profile?.IsAdvanced.IsNot ?? false) && (!gear1valid || !gear2valid || !gear3valid || !gear4valid))
+                if (IsAdvanced.IsNot && (!gear1valid || !gear2valid || !gear3valid || !gear4valid))
                 {
                     MainWindow.ShowAlert("Duplicate Gears are not Allowed!");
                     return;
@@ -315,8 +315,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt8 { get { return GetValueOf(); } set { SetValueOf(value, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7)); } }
     #endregion Taunts
 
-    private bool isFemale;
-    public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(value); ItemChanged(); } }
+    public UIBool IsFemale { get; } = new();
     private bool isBot;
     public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
 
@@ -340,7 +339,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
             BodyCamo = this.BodyCamo,
             Avatar = this.Avatar,
             Trophy = this.Trophy,
-            IsFemale = this.IsFemale,
+            IsFemale = this.IsFemale.Is,
             IsBot = this.IsBot,
         };
     }
@@ -438,7 +437,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         MainWindow.ShowAlert($"{message}!");
     }
 
-    public BLRLoadout(BLRProfile? profile) 
+    public BLRLoadout(BLRProfile? profile = null) 
     {
         Profile = profile;
         Primary = new(true, this);
@@ -771,10 +770,10 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     private void UpdateGearSlots()
     {
-        GearSlot1Bool.Set(GearSlots > 0 || (Profile?.IsAdvanced.Is ?? false));
-        GearSlot2Bool.Set(GearSlots > 1 || (Profile?.IsAdvanced.Is ?? false));
-        GearSlot3Bool.Set(GearSlots > 2 || (Profile?.IsAdvanced.Is ?? false));
-        GearSlot4Bool.Set(GearSlots > 3 || (Profile?.IsAdvanced.Is ?? false));
+        GearSlot1Bool.Set(GearSlots > 0 || IsAdvanced.Is);
+        GearSlot2Bool.Set(GearSlots > 1 || IsAdvanced.Is);
+        GearSlot3Bool.Set(GearSlots > 2 || IsAdvanced.Is);
+        GearSlot4Bool.Set(GearSlots > 3 || IsAdvanced.Is);
     }
 
     private void CreateDisplay()
@@ -849,9 +848,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_BODIES_CATEGORY)?.Length ?? 0));
         var tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.TACTICAL_CATEGORY)?.Length ?? 0));
 
-        var trophys = ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var trophys = ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
 
-        var gears = ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var gears = ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
 
         UndoRedoSystem.DoValueChange(helmet, this.GetType().GetProperty(nameof(Helmet)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this, BlockEvents.AllExceptUpdate);
@@ -865,25 +864,25 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear1)), this, BlockEvents.AllExceptUpdate);
-            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (IsAdvanced.IsNot) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 1)
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear2)), this, BlockEvents.AllExceptUpdate);
-            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (IsAdvanced.IsNot) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 2)
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear3)), this, BlockEvents.AllExceptUpdate);
-            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (IsAdvanced.IsNot) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 3)
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear4)), this, BlockEvents.AllExceptUpdate);
-            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (IsAdvanced.IsNot) gears.RemoveAt(gearIndex);
         }
         UndoRedoSystem.DoValueChange(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
         UndoRedoSystem.EndUndoRecord();
@@ -901,7 +900,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public void RandomizeTaunts()
     {
-        var taunts = ImportSystem.GetItemArrayOfType(ImportSystem.EMOTES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var taunts = ImportSystem.GetItemArrayOfType(ImportSystem.EMOTES_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
 
         //TODO: might want to change the anti duplicate behaviour for the emotes
         var tauntIndex = rng.Next(0, taunts.Count);
@@ -933,7 +932,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public void RandomizeDepot()
     {
-        var depots = ImportSystem.GetItemArrayOfType(ImportSystem.SHOP_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var depots = ImportSystem.GetItemArrayOfType(ImportSystem.SHOP_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
         var depotIndex = rng.Next(0, depots.Count);
         UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot1)), this, BlockEvents.AllExceptUpdate);
         depots.RemoveAt(depotIndex);
@@ -954,10 +953,10 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public void RandomizeEmblem()
     {
-        var icons = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_ICON_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var shapes = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_SHAPE_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var backgrounds = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var colors = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_COLOR_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var icons = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_ICON_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var shapes = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_SHAPE_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var backgrounds = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var colors = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_COLOR_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
 
         var inconIndex = rng.Next(0, icons.Count);
         var inconColor = rng.Next(0, colors.Count);
@@ -978,9 +977,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public void RandomizeVoices()
     { 
-        var announcers = ImportSystem.GetItemArrayOfType(ImportSystem.ANNOUNCER_VOICE_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var players = ImportSystem.GetItemArrayOfType(ImportSystem.PLAYER_VOICE_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var titles = ImportSystem.GetItemArrayOfType(ImportSystem.TITLES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var announcers = ImportSystem.GetItemArrayOfType(ImportSystem.ANNOUNCER_VOICE_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var players = ImportSystem.GetItemArrayOfType(ImportSystem.PLAYER_VOICE_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var titles = ImportSystem.GetItemArrayOfType(ImportSystem.TITLES_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
 
         var announcerIndex = rng.Next(0, announcers.Count);
         var playerIndex = rng.Next(0, players.Count);
