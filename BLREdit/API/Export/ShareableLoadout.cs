@@ -32,10 +32,12 @@ public sealed class ShareableLoadout : IBLRLoadout
     [JsonPropertyName("H1")] public int Helmet { get; set; } = 0;
     [JsonPropertyName("H2")] public int Hanger { get; set; } = 0;
 
+#pragma warning disable CA1707 // Identifiers should not contain underscores
     [JsonPropertyName("G1")] public int Gear_R1 { get; set; } = 0;
     [JsonPropertyName("G2")] public int Gear_R2 { get; set; } = 0;
     [JsonPropertyName("G3")] public int Gear_L1 { get; set; } = 0;
     [JsonPropertyName("G4")] public int Gear_L2 { get; set; } = 0;
+#pragma warning restore CA1707 // Identifiers should not contain underscores
 
     [JsonPropertyName("P1")] public int PatchIcon { get; set; } = 0;
     [JsonPropertyName("P2")] public int PatchIconColor { get; set; } = 0;
@@ -57,7 +59,7 @@ public sealed class ShareableLoadout : IBLRLoadout
     public ShareableLoadout(BLRLoadout loadout)
     {
         Name = loadout.Name;
-        Female = loadout.IsFemale;
+        Female = loadout.IsFemale.Is;
         Apply = loadout.Apply;
         BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
         UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
@@ -163,12 +165,12 @@ public sealed class ShareableLoadout : IBLRLoadout
         return clone;
     }
 
-    public IBLRWeapon GetPrimary()
+    public IBLRWeapon GetPrimaryWeaponInterface()
     {
         return Primary;
     }
 
-    public IBLRWeapon GetSecondary()
+    public IBLRWeapon GetSecondaryWeaponInterface()
     {
         return Secondary;
     }
@@ -181,7 +183,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
 
         loadout.Name = Name;
-        loadout.IsFemale = Female;
+        loadout.IsFemale.Is = Female;
         loadout.IsBot = Bot;
 
         loadout.Apply = Apply;
@@ -239,7 +241,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         LastModified = DateTime.Now;
 
         Name = loadout.Name;
-        Female = loadout.IsFemale;
+        Female = loadout.IsFemale.Is;
         Bot = loadout.IsBot;
 
         Apply = loadout.Apply;

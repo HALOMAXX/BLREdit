@@ -9,20 +9,27 @@
              d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
              mc:Ignorable="d">
     <Grid x:Name="ControlGrid" Border.MouseUp="Grid_MouseUp">
+        <Button Name="Randomize" Content="Randomize" Click="Randomize_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Height="28" Width="128" Margin="0,0,0,0"/>
         <Border DataContext="{Binding Path=Helmet}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidHelmet.Brush}" Height="130" Width="130" Margin="130,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=UpperBody}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidUpperBody.Brush}" Height="130" Width="130" Margin="130,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        <Border DataContext="{Binding Path=UpperBody}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidUpperBody.Brush}" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:GearControl}, Path=DataContext.IsFemale.Visibility}" Height="130" Width="130" Margin="130,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=FemaleIcon.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
-        <Border DataContext="{Binding Path=LowerBody}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidLowerBody.Brush}" Height="130" Width="130" Margin="130,260,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
-            <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        <Border DataContext="{Binding Path=UpperBody}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidUpperBody.Brush}" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:GearControl}, Path=DataContext.IsFemale.VisibilityInverted}" Height="130" Width="130" Margin="130,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=MaleIcon.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=LowerBody}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidLowerBody.Brush}" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:GearControl}, Path=DataContext.IsFemale.Visibility}" Height="130" Width="130" Margin="130,260,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=FemaleIcon.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
+        </Border>
+        <Border DataContext="{Binding Path=LowerBody}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidLowerBody.Brush}" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:GearControl}, Path=DataContext.IsFemale.VisibilityInverted}" Height="130" Width="130" Margin="130,260,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=MaleIcon.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border DataContext="{Binding Path=Tactical}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidTactical.Brush}" Height="130" Width="130" Margin="260,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
 
-        <ToggleButton Width="120" Height="22" Margin="5,105,0,0" Name="GenderButton" Content="{x:Static p:Resources.btn_GenderToggle_Male}" IsChecked="{Binding Path=IsFemale, Mode=TwoWay}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        <ToggleButton Width="120" Height="22" Margin="5,105,0,0" Name="GenderButton" Content="{x:Static p:Resources.btn_GenderToggle_Male}" IsChecked="{Binding Path=IsFemale.Is, Mode=TwoWay}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
 
         <Border DataContext="{Binding Path=BodyCamo}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EquipmentControl}, Path=DataContext.IsValidBodyCamo.Brush}" Height="130" Width="130" Margin="0,260,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True">
             <Image HorizontalAlignment="Left" Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Top" Stretch="Fill" ToolTip="{Binding Path=DisplayTooltip}"/>

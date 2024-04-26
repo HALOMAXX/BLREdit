@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.UI.Views;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +26,39 @@ namespace BLREdit.UI.Controls
         {
             InitializeComponent();
             EquipmentControlGrid = ExtraControlGrid;
+        }
+
+        private void RandomizeTaunts_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is BLRLoadout loadout)
+            {
+                loadout.RandomizeTaunts();
+            }
+        }
+
+        private void RandomizeDepot_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is BLRLoadout loadout)
+            {
+                loadout.RandomizeDepot();
+            }
+        }
+
+        private void RandomizeEmblem_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is BLRLoadout loadout)
+            {
+                loadout.RandomizeEmblem();
+            }
+        }
+
+        private void RandomizeVoices_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is BLRLoadout loadout)
+            {
+                loadout.RandomizeVoices();
+            }
+
         }
     }
 }

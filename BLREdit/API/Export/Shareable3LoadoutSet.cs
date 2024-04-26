@@ -46,6 +46,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
 
     public void Read(BLRProfile profile)
     {
+        if (profile is null) return;
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadProfile)) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
@@ -59,6 +60,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
 
     public void Write(BLRProfile profile)
     {
+        if (profile is null) return;
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteProfile)) return;
         IsAdvanced.Set(profile.IsAdvanced.Is);

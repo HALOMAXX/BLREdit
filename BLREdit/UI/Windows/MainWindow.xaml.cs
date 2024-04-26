@@ -37,7 +37,7 @@ public sealed partial class MainWindow : Window
 
     private readonly string[] Args;
 
-    private readonly static char[] InvalidNameChars = Path.GetInvalidPathChars().Concat(Path.GetInvalidFileNameChars()).ToArray();
+    private readonly static char[] InvalidNameChars = [.. Path.GetInvalidPathChars(), .. Path.GetInvalidFileNameChars()];
 
     public bool wasLastImageScopePreview = false;
     public bool wasLastSelectedBorderPrimary = true;
@@ -47,8 +47,8 @@ public sealed partial class MainWindow : Window
     private Type? lastSelectedSortingType = null;
     private int buttonIndex = 0;
 
-    private SolidColorBrush SolidColorBrush { get; } = new(Colors.Blue);
-    private ColorAnimation AlertAnim { get; } = new()
+    private static SolidColorBrush SolidColorBrush { get; } = new(Colors.Blue);
+    private static ColorAnimation AlertAnim { get; } = new()
     {
         From = Color.FromArgb(32, 0, 0, 0),
         To = Color.FromArgb(255, 255, 0, 0),
@@ -57,7 +57,7 @@ public sealed partial class MainWindow : Window
         RepeatBehavior = RepeatBehavior.Forever
     };
 
-    private ColorAnimation CalmAnim { get; } = new()
+    private static ColorAnimation CalmAnim { get; } = new()
     {
         From = Color.FromArgb(255, 255, 0, 0),
         To = Color.FromArgb(32, 0, 0, 0),
@@ -117,10 +117,10 @@ public sealed partial class MainWindow : Window
 
     private static void AddOrUpdateDefaultServers()
     {
-        List<BLRServer> remove = new();
+        List<BLRServer> remove = [];
         foreach (var server in DataStorage.ServerList)
         {
-            if (server.ID.Equals(string.Empty))
+            if (server.ID.Equals(string.Empty, StringComparison.Ordinal))
             { 
                 remove.Add(server);
             }
@@ -137,8 +137,9 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public static void AddOrUpdateDefaultServer(BLRServer server)
+    public static void AddOrUpdateDefaultServer(BLRServer? server)
     {
+        if (server is null) return;
         var index = IsInCollection(DataStorage.ServerList, server);
         if (index == -1) { DataStorage.ServerList.Add(server); return; }
         DataStorage.ServerList[index].ServerAddress = server.ServerAddress;
@@ -251,12 +252,11 @@ public sealed partial class MainWindow : Window
         {
             if (wasLastImageScopePreview)
             {
-                var itemlist = ImportSystem.GetItemListOfType(ImportSystem.SCOPES_CATEGORY);
-                if (itemlist is not null)
+                if (ItemList.ItemsSource is not null)
                 {
-                    foreach (var item in itemlist)
+                    foreach (var i in ItemList.ItemsSource)
                     {
-                        item.RemoveCrosshair();
+                        if(i is BLRItem item) item.RemoveCrosshair();
                     }
                 }
             }
@@ -274,7 +274,7 @@ public sealed partial class MainWindow : Window
                 else if (profile is not null) ItemFilters.Instance.WeaponFilter = profile.Loadout1.Primary;
             }
             MainView.LastSelectedItemBorder = border;
-            wasLastImageScopePreview = false;
+            MainView.IsScopePreviewVisible.Set(false);
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
                 case "Receiver":
@@ -302,8 +302,8 @@ public sealed partial class MainWindow : Window
                         if (weapon?.Scope is not null)
                         {
                             weapon.Scope.LoadCrosshair(weapon);
-                            wasLastImageScopePreview = true;
                             ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
+                            MainView.IsScopePreviewVisible.Set(true);
                         }
                     }
                     break;
@@ -559,10 +559,10 @@ public sealed partial class MainWindow : Window
 
     public static void ApplyProxyLoadouts(BLRClient client)
     {
-        var directory = $"{client.ConfigFolder}profiles\\";
+        var directory = $"{client.BLReviveConfigsPath}profiles\\";
         Directory.CreateDirectory(directory);
 
-        List<LoadoutManagerLoadout> loadouts = new();
+        List<LoadoutManagerLoadout> loadouts = [];
 
         string message = string.Empty;
         int count = 0;
@@ -582,14 +582,18 @@ public sealed partial class MainWindow : Window
 
         IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
         ShowAlert($"Applied Proxy Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+        if (Instance is not null && Instance.lastAnim != CalmAnim)
+        {
+            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+        }
     }
 
     public static void ApplyBLReviveLoadouts(BLRClient client)
     {
-        var directory = $"{client.ConfigFolder}profiles\\";
+        var directory = $"{client.BLReviveConfigsPath}profiles\\";
         Directory.CreateDirectory(directory);
         string message = string.Empty;
-        List<LMLoadout> loadouts = new();
+        List<LMLoadout> loadouts = [];
 
         var exportLoadouts = DataStorage.Loadouts.Where(l => l.BLR.ValidateLoadout(ref message)).Where(l => l.BLR.Apply).OrderBy(l => l.BLR.Name);
 
@@ -601,6 +605,10 @@ public sealed partial class MainWindow : Window
 
         IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
         ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+        if (Instance is not null && Instance.lastAnim != CalmAnim)
+        {
+            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+        }
     }
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -847,8 +855,8 @@ public sealed partial class MainWindow : Window
 
     private void DuplicateProfile_Click(object sender, RoutedEventArgs e)
     {
-        //ProfileComboBox.SelectedItem = MainView.Profile.Shareable.Duplicate();
-        //TODO: Change to Duplicate
+        var duplicateLoadout = MainView.Profile.Duplicate();
+        MainView.Profile = duplicateLoadout;
     }
 
     private void PlayerNameTextBox_PreviewInput(object sender, TextCompositionEventArgs e)
@@ -869,12 +877,6 @@ public sealed partial class MainWindow : Window
                 {
                     lcontrol.ApplyBorder();
                 }
-            }
-            switch (control.SelectedIndex)
-            {
-                case 0:
-                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.IsFemale);
-                    break;
             }
         }
         BlockChangeNotif = false;
@@ -929,12 +931,11 @@ public sealed partial class MainWindow : Window
         }
         if (DataStorage.Settings.DoRuntimeCheck.Is || DataStorage.Settings.ForceRuntimeCheck.Is)
         {
-            if (App.IsBaseRuntimeMissing || App.IsUpdateRuntimeMissing || DataStorage.Settings.ForceRuntimeCheck.Is)
+            if (App.IsVC2015x89Missing || App.IsVC2012Update4x89Missing || DataStorage.Settings.ForceRuntimeCheck.Is)
             {
                 var info = new InfoPopups.DownloadRuntimes();
-                if (!App.IsUpdateRuntimeMissing)
+                if (!App.IsVC2012Update4x89Missing)
                 {
-                    info.Link2012Update4.IsEnabled = false;
                     info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!"; //TODO: Add Localization
                 }
                 info.ShowDialog();
@@ -1030,11 +1031,11 @@ public sealed partial class MainWindow : Window
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, AlertAnim, HandoffBehavior.Compose);
             lastAnim = AlertAnim;
         }
-        else if (!MainView.Profile.BLR.IsChanged && lastAnim != CalmAnim)
-        {
-            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
-            lastAnim = CalmAnim;
-        }
+        //else if (!MainView.Profile.BLR.IsChanged && lastAnim != CalmAnim)
+        //{
+        //    SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
+        //    lastAnim = CalmAnim;
+        //}
     }
 
     private void MainWindowTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1125,9 +1126,8 @@ public sealed partial class MainWindow : Window
                     SetSortingType(typeof(ImportModificationSortingType));
                     break;
             }
-
             ItemList.ItemsSource = list;
-            ApplySorting();
+            ApplySorting(true);
             if (!ItemListTab.IsFocused) ItemListTab.Focus();
         }
         else
@@ -1136,7 +1136,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public void ApplySorting()
+    public void ApplySorting(bool resetView = false)
     {
         if (CollectionViewSource.GetDefaultView(ItemList.ItemsSource) is CollectionView view)
         {
@@ -1146,6 +1146,10 @@ public sealed partial class MainWindow : Window
             {
                 MainView.CurrentSortingPropertyName = Enum.GetName(MainView.CurrentSortingEnumType, Enum.GetValues(MainView.CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
                 view.SortDescriptions.Add(new SortDescription(MainView.CurrentSortingPropertyName, MainView.ItemListSortingDirection));
+            }
+            if (resetView)
+            { 
+                view.Refresh();
             }
         }
     }

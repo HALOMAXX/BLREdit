@@ -7,6 +7,8 @@ using BLREdit.Game.Proxy;
 using BLREdit.Import;
 using BLREdit.UI;
 using BLREdit.UI.Views;
+using Microsoft.Win32;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +20,7 @@ using System.Linq;
 using System.Reflection;
 using System.Resources;
 using System.Text.Json.Nodes;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,20 +38,17 @@ public partial class App : System.Windows.Application
     public static string CurrentRepo { get; } = RepositoryBaseURL.Split('/').Last();
 
     public const string CurrentVersionTitle = "Fixes";
-
-
-    
-    
+    private static readonly string[] separator = ["\r\n", "\r", "\n"];
 
     public static bool IsNewVersionAvailable { get; private set; } = false;
-    public static bool IsBaseRuntimeMissing { get; private set; } = true;
-    public static bool IsUpdateRuntimeMissing { get; private set; } = true;
+    public static bool IsVC2012Update4x89Missing { get; private set; } = true;
+    public static bool IsVC2015x89Missing { get; private set; } = true;
     public static GitHubRelease? LatestRelease { get; private set; } = null;
     public static GitHubRelease[]? Releases { get; private set; } = null;
-    public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = new();
-    public static Dictionary<string, string> AvailableLocalizations { get; set; } = new();
+    public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = [];
+    public static Dictionary<string, string> AvailableLocalizations { get; set; } = [];
 
-    public static List<BLRServer> DefaultServers { get; set; } = new();
+    public static List<BLRServer> DefaultServers { get; set; } = [];
 
     public static readonly string BLREditLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
 
@@ -56,7 +56,7 @@ public partial class App : System.Windows.Application
 
     public static bool IsRunning { get; private set; } = true;
 
-    public static List<Thread> AppThreads { get; private set; } = new();
+    public static List<Thread> AppThreads { get; private set; } = [];
 
     public static bool ForceStart { get; private set; }
 
@@ -77,7 +77,7 @@ public partial class App : System.Windows.Application
     private void Application_Startup(object sender, StartupEventArgs e)
     {
         string[] argList = e.Args;
-        Dictionary<string, string> argDict = new();
+        Dictionary<string, string> argDict = [];
 
         for (var i = 0; i < argList.Length; i++)
         {
@@ -135,7 +135,7 @@ public partial class App : System.Windows.Application
 
                 string command = "blredit://start-server/" + Uri.EscapeDataString(File.ReadAllText(configFile));
 
-                BLREditPipe.ProcessArgs(new string[] { command });
+                BLREditPipe.ProcessArgs([command]);
 
                 Console.WriteLine("Press Q to Exit and Kill all Server Processes");
                 while (Console.ReadKey().Key != ConsoleKey.Q) { }
@@ -550,7 +550,7 @@ public partial class App : System.Windows.Application
         Directory.CreateDirectory("logs");
         Directory.CreateDirectory("logs\\BLREdit");
         Directory.CreateDirectory("logs\\Client");
-        Directory.CreateDirectory("logs\\Proxy");
+        Directory.CreateDirectory("logs\\Server");
 
         Directory.CreateDirectory("Profiles");
         Directory.CreateDirectory("Backup");
@@ -585,7 +585,7 @@ public partial class App : System.Windows.Application
             }
         }
 
-        Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:MM.dd.yyyy(HHmmss)}.log", "loggingListener"));
+        Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:yyyy.MM.dd(HHmmss)}.log", "loggingListener"));
 
         Trace.AutoFlush = true;
 
@@ -660,27 +660,6 @@ public partial class App : System.Windows.Application
 
         CleanPackageOrUpdateDirectory();
 
-        var task = StartSTATask<bool>(GetLatestRelease);
-        task.Wait();
-
-
-        if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
-        var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
-        gitProcess.WaitForExit();
-
-        bool json = false, dlls = false, textures = false, crosshairs = false, patches = false;
-
-        var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-
-        foreach (var line in result)
-        {
-            if (line.Contains("Assets/json")){ json = true; }
-            if (line.Contains("Assets/dlls")) { dlls = true; }
-            if (line.Contains("Assets/textures")) { textures = true; }
-            if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
-            if (line.Contains("Assets/patches")) { patches = true; }
-        }
-
         if (exeZip is null) { LoggingSystem.Log("[PackageAssets]: exeZip was null"); return; }
         if (assetZip is null) { LoggingSystem.Log("[PackageAssets]: assetZip was null"); return; }
         if (jsonZip is null) { LoggingSystem.Log("[PackageAssets]: jsonZip was null"); return; }
@@ -689,27 +668,7 @@ public partial class App : System.Windows.Application
         if (crosshairsZip is null) { LoggingSystem.Log("[PackageAssets]: crosshairsZip was null"); return; }
         if (patchesZip is null) { LoggingSystem.Log("[PackageAssets]: patchesZip was null"); return; }
 
-        //var taskLocalize = Task.Run(() => {
-        //    Dictionary<string, string?> LocalePairs = new();
-        //    var dirs = Directory.EnumerateDirectories(BLREditLocation);
-        //    foreach (var dir in dirs)
-        //    {
-        //        string resourceFile = $"{dir}\\BLREdit.resources.dll";
-        //        if (File.Exists(resourceFile))
-        //        { 
-        //            var hash = IOResources.CreateFileHash(resourceFile);
-        //            string locale = dir.Substring(dir.Length - 5, 5);
-        //            string targetZip = $"{IOResources.PACKAGE_DIR}\\locale\\Localizations\\{locale}.zip";
-        //            LocalePairs.Add(locale, hash);
-        //            File.WriteAllText($"{dir}\\manifest.hash", hash);
-        //            if (File.Exists(targetZip)) { File.Delete(targetZip); }
-        //            ZipFile.CreateFromDirectory(dir, targetZip);
-        //        }
-        //    }
-
-        //    IOResources.SerializeFile($"{IOResources.PACKAGE_DIR}\\locale\\Localizations.json", LocalePairs);
-        //});
-
+        var (json, dlls, textures, crosshairs, patches) = ChangedAssestCheck();
 
         var taskExe = Task.Run(() => 
         {
@@ -728,6 +687,37 @@ public partial class App : System.Windows.Application
         SetUpdateFilePath();
     }
 
+    public static (bool json, bool dlls, bool textures, bool crosshairs, bool patches) ChangedAssestCheck()
+    {
+        bool json = true, dlls = true, textures = true, crosshairs = true, patches = true;
+
+        if (LatestRelease is null)
+        {
+            var task = StartSTATask<bool>(GetLatestRelease);
+            task.Wait();
+        }
+
+        if (LatestRelease is not null)
+        {
+            json = false; dlls = false; textures = false; crosshairs = false; patches = false;
+            if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
+            var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
+            gitProcess.WaitForExit();
+
+            var result = File.ReadAllText("changes.txt").Split(separator, StringSplitOptions.None);
+
+            foreach (var line in result)
+            {
+                if (line.Contains("Assets/json")) { json = true; }
+                if (line.Contains("Assets/dlls")) { dlls = true; }
+                if (line.Contains("Assets/textures")) { textures = true; }
+                if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
+                if (line.Contains("Assets/patches")) { patches = true; }
+            }
+        }
+        return (json, dlls, textures, crosshairs, patches);
+    }
+
     public static void GitHubAssets()
     {
         Directory.CreateDirectory(IOResources.PACKAGE_DIR);
@@ -737,26 +727,7 @@ public partial class App : System.Windows.Application
 
         CleanPackageOrUpdateDirectory();
 
-        var task = StartSTATask<bool>(GetLatestRelease);
-        task.Wait();
-
-
-        if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
-        var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
-        gitProcess.WaitForExit();
-
-        bool json = false, dlls = false, textures = false, crosshairs = false, patches = false;
-
-        var result = File.ReadAllText("changes.txt").Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-
-        foreach (var line in result)
-        {
-            if (line.Contains("Assets/json")) { json = true; }
-            if (line.Contains("Assets/dlls")) { dlls = true; }
-            if (line.Contains("Assets/textures")) { textures = true; }
-            if (line.Contains("Assets/crosshairs")) { crosshairs = true; }
-            if (line.Contains("Assets/patches")) { patches = true; }
-        }
+        var (json, dlls, textures, crosshairs, patches) = ChangedAssestCheck();
 
         var exeSource = new FileInfo("BLREdit.exe");
         var exeSym = new FileInfo("packaged/BLREdit.exe");
@@ -792,7 +763,7 @@ public partial class App : System.Windows.Application
         SetUpdateFilePath();
     }
 
-    private readonly static Dictionary<FileInfoExtension?, string> DownloadLinks = new();
+    private readonly static Dictionary<FileInfoExtension?, string> DownloadLinks = [];
 
     private static FileInfoExtension? currentExe;
     private static FileInfoExtension? backupExe;
@@ -815,38 +786,38 @@ public partial class App : System.Windows.Application
 
         foreach (var asset in release.Assets)
         {
-            if (exeZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(exeZip.Info.Name))
+            if (exeZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(exeZip.Info.Name, StringComparison.Ordinal))
             { 
                 if (!DownloadLinks.ContainsKey(exeZip)) { DownloadLinks.Add(exeZip, asset.BrowserDownloadURL); }
             }
 
-            if (assetZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(assetZip.Info.Name))
+            if (assetZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(assetZip.Info.Name, StringComparison.Ordinal))
             {
                 if (!DownloadLinks.ContainsKey(assetZip)) { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
             }
             if (release.Version > CurrentVersion)
             {
-                if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name))
+                if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(jsonZip)) { jso = true; } else { DownloadLinks.Add(jsonZip, asset.BrowserDownloadURL); jso = true; }
                 }
 
-                if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(dllsZip.Info.Name))
+                if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(dllsZip.Info.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(dllsZip)) { dll = true; } else { DownloadLinks.Add(dllsZip, asset.BrowserDownloadURL); dll = true; }
                 }
 
-                if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(texturesZip.Info.Name))
+                if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(texturesZip.Info.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(texturesZip)) { tex = true; } else { DownloadLinks.Add(texturesZip, asset.BrowserDownloadURL); tex = true; }
                 }
 
-                if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(crosshairsZip.Info.Name))
+                if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(crosshairsZip.Info.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(crosshairsZip)) { cro = true; } else { DownloadLinks.Add(crosshairsZip, asset.BrowserDownloadURL); cro = true; }
                 }
 
-                if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(patchesZip.Info.Name))
+                if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(patchesZip.Info.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(patchesZip)) { pat = true; } else { DownloadLinks.Add(patchesZip, asset.BrowserDownloadURL); pat = true; }
                 }
@@ -894,6 +865,9 @@ public partial class App : System.Windows.Application
 
     public static bool VersionCheck()
     {
+#if DEBUG
+        return false;
+#endif
         if (versionCheckDone)
         {
             LoggingSystem.Log("Version Check got run again");
@@ -911,7 +885,7 @@ public partial class App : System.Windows.Application
 
             bool newVersionAvailable = (LatestRelease.Version ?? new("")) > CurrentVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
-            if (DataStorage.Settings.LastRunVersion is null) { assetFolderMissing = true; }
+            if (DataStorage.Settings.LastRunVersion is null || new BLREditVersion(DataStorage.Settings.LastRunVersion) < new BLREditVersion("v0.12.0") || !File.Exists($"Assets\\textures\\emblem_color_00.png")) { assetFolderMissing = true; }
             DataStorage.Settings.LastRunVersion = CurrentVersion.ToString();
 
             LoggingSystem.Log($"New Version Available:{newVersionAvailable} AssetFolderMissing:{assetFolderMissing}");
@@ -999,7 +973,7 @@ public partial class App : System.Windows.Application
     {
         return string.IsNullOrEmpty(name)
            ? Application.Current.Windows.OfType<T>().Any()
-           : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
+           : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name, StringComparison.Ordinal));
     }
 
     private static bool DownloadAssetFolder()
@@ -1040,30 +1014,6 @@ public partial class App : System.Windows.Application
         var patchesTask = Task.Run(() => { UpdateAssetPack(patchesZip, $"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}"); });
 
         Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask).Wait();
-
-        //if (UpdatePanic) 
-        //{
-        //    LoggingSystem.Log("Update failed cleaning BLREdit folder and restarting!");
-        //    var dirs = Directory.EnumerateDirectories(BLREditLocation);
-        //    foreach (var dir in dirs)
-        //    {
-        //        if (!dir.EndsWith("Profile") && !dir.EndsWith("logs") && !dir.EndsWith("ServerConfigs"))
-        //        { 
-        //            Directory.Delete(dir, true);
-        //        }
-        //    }
-
-        //    var files = Directory.EnumerateFiles(BLREditLocation);
-        //    foreach (var file in files)
-        //    {
-        //        if (!file.EndsWith("BLREdit.exe") && !file.EndsWith("settings.json") && !file.EndsWith("GameClients.json") && !file.EndsWith("ServerList.json"))
-        //        {
-        //            File.Delete(file);
-        //        }
-        //    }
-
-        //    Restart();
-        //}
     }
     private static void DownloadAssetPack(FileInfoExtension? pack)
     {
@@ -1211,18 +1161,50 @@ public partial class App : System.Windows.Application
     public static void RuntimeCheck()
     {
         LoggingSystem.Log("Checking for Runtime Libraries!");
-        var x86 = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\{33d1fd90-4274-48a1-9bc1-97e33d9c2d6f}", "Version", "-1");
         var x86Update = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\Microsoft.VS.VC_RuntimeAdditional_x86,v11", "Version", "-1");
-        if (x86 is string VC32Bit && x86Update is string VC32BitUpdate4)
+        if (x86Update is string VC32BitUpdate4)
         {
-            IsBaseRuntimeMissing = (VC32Bit != "11.0.61030.0");
-            IsUpdateRuntimeMissing = (VC32BitUpdate4 != "11.0.61030");
+            IsVC2012Update4x89Missing = (VC32BitUpdate4 != "11.0.61030");
 
-            if (!IsBaseRuntimeMissing && !IsUpdateRuntimeMissing)
+
+        }
+
+        IsVC2015x89Missing = !IsVC2015x86Installed();
+
+        if (!IsVC2012Update4x89Missing)
+        {
+            LoggingSystem.Log("VC++ 2012 Update 4 Runtime is installed!");
+        }
+        if (!IsVC2015x89Missing)
+        {
+            LoggingSystem.Log("VC++ 2015 Runtime is installed!");
+        }
+    }
+
+    public static bool IsVC2015x86Installed()
+    {
+        string dependenciesPath = @"SOFTWARE\Classes\Installer\Dependencies";
+
+        using (RegistryKey dependencies = Registry.LocalMachine.OpenSubKey(dependenciesPath))
+        {
+            if (dependencies == null) return false;
+
+            foreach (string subKeyName in dependencies.GetSubKeyNames().Where(n => !n.ToLower().Contains("dotnet") && !n.ToLower().Contains("microsoft")))
             {
-                LoggingSystem.Log("Both VC++ 2012 Runtimes are installed for BLRevive!");
+                using (RegistryKey subDir = Registry.LocalMachine.OpenSubKey(dependenciesPath + "\\" + subKeyName))
+                {
+                    var value = subDir.GetValue("DisplayName")?.ToString() ?? null;
+                    if (string.IsNullOrEmpty(value)) continue;
+
+                    if (Regex.IsMatch(value, @"C\+\+ 2015.*\(x86\)")) //here u can specify your version.
+                    {
+                        return true;
+                    }
+                }
             }
         }
+
+        return false;
     }
 
     static bool checkedForModules = false;
@@ -1276,7 +1258,7 @@ public partial class App : System.Windows.Application
                     string hash = File.ReadAllText(manifestFileName);
                     if (AvailableLocalizations.TryGetValue(current.Name, out string availableHash))
                     {
-                        if (!hash.Equals(availableHash))
+                        if (!hash.Equals(availableHash, StringComparison.Ordinal))
                         {
                             DownloadLocale(current.Name);
                         }

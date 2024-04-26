@@ -51,8 +51,8 @@ public sealed class BLRClientPatch
     private static Dictionary<string?, List<BLRClientPatch>> LoadPatches()
     {
         Stopwatch sw = Stopwatch.StartNew();
-        List<BLRClientPatch> loadedPatches = new();
-        Dictionary<string?, List<BLRClientPatch>> sortedPatches = new();
+        List<BLRClientPatch> loadedPatches = [];
+        Dictionary<string?, List<BLRClientPatch>> sortedPatches = [];
         string[] patches = Directory.GetFiles($"{IOResources.ASSET_DIR}patches\\");
         foreach (string file in patches)
         {
@@ -72,7 +72,7 @@ public sealed class BLRClientPatch
             }
             else
             {
-                sortedPatches.Add(loadedPatch.ClientHash, new() { loadedPatch });
+                sortedPatches.Add(loadedPatch.ClientHash, [loadedPatch]);
             }
         }
         sw.Stop();

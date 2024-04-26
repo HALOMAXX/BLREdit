@@ -13,7 +13,10 @@
                 <Section>
                     <Paragraph>
                         <Hyperlink Name="Link2012Update4" NavigateUri="https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe" Click="Link_Click">
-                            <TextBlock Name="Link2012Updatet4Content" Text="Microsoft Visual C++ 2012 Update 4(x86/32bit) is missing!" ToolTip="this runtime is an essential piece for [BlackLight Retribution] and [BLRevive]"/> <!-- TODO: Add translation -->
+                            <TextBlock Name="Link2012Updatet4Content" Text="Microsoft Visual C++ 2012 Update 4(x86/32bit) is missing!" ToolTip="this runtime is an essential piece for [BlackLight Retribution]"/>
+                        </Hyperlink>
+                        <Hyperlink Name="Link2015" NavigateUri="https://aka.ms/vs/17/release/vc_redist.x86.exe" Click="Link_Click">
+                            <TextBlock Name="Link2015Content" Text="Microsoft Visual C++ 2015-2022(x86/32bit) is missing!" ToolTip="this runtime is an essential piece for [BLRevive]"/>
                         </Hyperlink>
                     </Paragraph>
                 </Section>

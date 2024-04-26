@@ -12,7 +12,7 @@ namespace BLREdit;
 public class ServerInfo
 {
     public string? GameModeFullName { get; set; }
-    public ObservableCollection<ServerTeam> TeamList { get; set; } = new();
+    public ObservableCollection<ServerTeam> TeamList { get; set; } = [];
     public int TimeLimit { get; set; }
     public int RemainingTime { get; set; }
 

@@ -32,13 +32,21 @@ namespace BLREdit.UI.Controls
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (DataContext is BLRLoadout loadout && loadout.IsFemale)
+            if (DataContext is BLRLoadout loadout && loadout.IsFemale.Is)
             {
                 GenderButton.Content = BLREdit.Properties.Resources.btn_GenderToggle_Female;
             }
             else
             {
                 GenderButton.Content = BLREdit.Properties.Resources.btn_GenderToggle_Male;
+            }
+        }
+
+        private void Randomize_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is BLRLoadout loadout)
+            {
+                loadout.RandomizeGear();
             }
         }
     }

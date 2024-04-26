@@ -29,7 +29,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public string WindowTitle { get { return windowTitle; } set { windowTitle = value; OnPropertyChanged(); } }
 
     private BLRLoadoutStorage profile = GetLoadout();
-    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; DataStorage.Settings.CurrentlyAppliedLoadout = DataStorage.Loadouts.IndexOf(value); profile.Shareable.LastViewed = DateTime.Now; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
+    public BLRLoadoutStorage Profile { get { return profile; } set { profile.BLR.PropertyChanged -= LoadoutChangedRelay; profile = value; UpdateProfileBorders(); DataStorage.Settings.CurrentlyAppliedLoadout = DataStorage.Loadouts.IndexOf(value); profile.Shareable.LastViewed = DateTime.Now; profile.BLR.PropertyChanged += LoadoutChangedRelay; OnPropertyChanged(); } }
 
 #pragma warning disable CA1822 // Mark members as static
     public BLREditSettings BLRESettings => DataStorage.Settings;
@@ -50,20 +50,21 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private Color? lastSelectedBorderColor;
 
     public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
-    public ListSortDirection ProfileListSortingDirection { get; set; } = ListSortDirection.Descending;
+    public ListSortDirection ProfileListSortingDirection { get; set; } = ListSortDirection.Ascending;
     public string CurrentProfileSortingPropertyName { get; set; } = "None";
     public Type? CurrentSortingEnumType { get; set; }
     public Type? CurrentProfileSortingEnumType { get; set; }
     public string LastSortingPropertyName { get; set; } = "None";
     public string CurrentSortingPropertyName { get; set; } = "None";
-    public bool IsPlayerNameChanging { get; set; } = false;
-    public bool IsPlayerProfileChanging { get; set; } = false;
-    public bool IsCheckingGameClient { get; set; } = false;
+    public bool IsPlayerNameChanging { get; set; }
+    public bool IsPlayerProfileChanging { get; set; }
+    public bool IsCheckingGameClient { get; set; }
+    public UIBool IsScopePreviewVisible { get; } = new(false);
 
-    public BLRWeapon? PrimaryWeaponCopy { get; set; } = null;
-    public BLRWeapon? SecondaryWeaponCopy { get; set; } = null;
-    public BLRGear? GearCopy { get; set; } = null;
-    public BLRExtra? ExtraCopy { get; set; } = null;
+    public BLRWeapon? PrimaryWeaponCopy { get; set; }
+    public BLRWeapon? SecondaryWeaponCopy { get; set; }
+    public BLRGear? GearCopy { get; set; }
+    public BLRExtra? ExtraCopy { get; set; }
 
     public MainWindowView()
     {
@@ -76,21 +77,26 @@ public sealed class MainWindowView : INotifyPropertyChanged
     {
         if (DataStorage.Loadouts.Count <= 0)
         {
-            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout1.ConvertToShareable()));
-            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout2.ConvertToShareable()));
-            DataStorage.Loadouts.Add(new(MagiCowsLoadout.DefaultLoadout3.ConvertToShareable()));
-            string message = string.Empty;
-            DataStorage.Loadouts[0].BLR.Name = "Default Loadout 1";
-            DataStorage.Loadouts[0].BLR.Apply = DataStorage.Loadouts[0].BLR.ValidateLoadout(ref message);
-            DataStorage.Loadouts[1].BLR.Name = "Default Loadout 2";
-            DataStorage.Loadouts[1].BLR.Apply = DataStorage.Loadouts[1].BLR.ValidateLoadout(ref message);
-            DataStorage.Loadouts[2].BLR.Name = "Default Loadout 3";
-            DataStorage.Loadouts[2].BLR.Apply = DataStorage.Loadouts[2].BLR.ValidateLoadout(ref message);
+            BLRLoadoutStorage.AddNewLoadoutSet("Default Loadout 1", null, MagiCowsLoadout.DefaultLoadout1.ConvertToShareable());
+            BLRLoadoutStorage.AddNewLoadoutSet("Default Loadout 2", null, MagiCowsLoadout.DefaultLoadout2.ConvertToShareable());
+            BLRLoadoutStorage.AddNewLoadoutSet("Default Loadout 3", null, MagiCowsLoadout.DefaultLoadout3.ConvertToShareable());
         }
 
         var loadout = DataStorage.Loadouts[DataStorage.Loadouts.Count > DataStorage.Settings.CurrentlyAppliedLoadout ? DataStorage.Settings.CurrentlyAppliedLoadout : 0];
         loadout.BLR.PropertyChanged += LoadoutChangedRelay;
         return loadout;
+    }
+
+    void UpdateProfileBorders()
+    {
+        try
+        {
+            foreach (var l in DataStorage.Loadouts)
+            {
+                l.TriggerChangeNotify();
+            }
+        }
+        catch { }
     }
 
     static void LoadoutChangedRelay(object sender, PropertyChangedEventArgs e)
@@ -104,16 +110,14 @@ public sealed class MainWindowView : INotifyPropertyChanged
         string BuildTag = "";
 
 #if DEBUG
-        BuildTag = "[Debug Build]:";
+        BuildTag = $"[Debug]:";
 #elif RELEASE
-        BuildTag = "[Release Build]:";
-#elif PUBLISH
-        BuildTag = "[Release Build]:";
+        BuildTag = $"[Release]:";
 #endif
 
         var PlayerProfile = ExportSystem.GetOrAddProfileSettings(DataStorage.Settings?.PlayerName ?? "");
 
-        WindowTitle = $"{BuildTag}{App.CurrentRepo} - {App.CurrentVersion}, {DataStorage.Settings?.PlayerName} Playtime:[{new TimeSpan(0,0, PlayerProfile.PlayTime)}]";
+        WindowTitle = $"{BuildTag}{App.CurrentRepo}-{App.CurrentVersion}+{ThisAssembly.Git.Branch}, {DataStorage.Settings?.PlayerName} Playtime:[{new TimeSpan(0,0, PlayerProfile.PlayTime)}], SDK:[{DataStorage.Settings?.SDKVersionDate:yyyy.MM.dd(HH:mm:ss)}]";
     }
 
     public void ResetLastBorder()

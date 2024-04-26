@@ -11,29 +11,12 @@
     <Border BorderThickness="1,1,1,1" Height="256" Width="512">
         <Grid MouseDown="Grid_MouseDown">
             <Canvas ClipToBounds="True" >
-                <Image Name="MapImage" Source="{Binding Path=MapImage}" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0" >
-                    <!--
-                    <Image.Triggers>
-                        <EventTrigger RoutedEvent="Image.Loaded">
-
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="MapImage" Storyboard.TargetProperty="(Canvas.Top)" RepeatBehavior="Forever" AutoReverse="True">
-                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="-256" />
-                                            <SplineDoubleKeyFrame KeyTime="00:00:00.5" Value="-256" />
-                                            <SplineDoubleKeyFrame KeyTime="00:00:05.5" Value="0" />
-                                            <SplineDoubleKeyFrame KeyTime="00:00:06" Value="0" />
-                                        </DoubleAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-
-                        </EventTrigger>
-                    </Image.Triggers>
-                    -->
-                </Image>
+                <Image Name="MapImage" Source="{Binding Path=MapImage}" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0"/>
             </Canvas>
+
+            <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
+                <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </Border>
 
             <Button Width="64" Height="32" Margin="10,10,10,10" IsEnabled="{Binding Path=IsPinging.IsNot}" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_PingServer}" Command="{Binding Path=RefreshPingCommand}">
                 <Image Margin="0,0,0,3" Source="../Resources/refresh.png"/>
@@ -48,13 +31,18 @@
                 <ComboBox ItemsSource="{Binding Path=Team1List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
                 <ComboBox ItemsSource="{Binding Path=Team2List}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Width="132" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,52,10,10"/>
             </StackPanel>
-                     
             
             <Button Width="128" Height="32" Margin="10,10,10,10" Content="{x:Static p:Resources.btn_ConnectToServer}" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_ConnectToServer}" Command="{Binding Path=ConnectToServerCommand}"/>
-            
-            <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="#ef000000">
-                <TextBlock Margin="5,2,5,2" Text="{Binding Path=ServerDescription}" Foreground="#FF78AEBC" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+            <Border Height="32" Margin="10,10,170,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Visibility="{Binding Path=HasBots.Visibility}" BorderThickness="0,0,0,0" Background="Black">
+                <StackPanel Orientation="Horizontal" Background="Black">
+                    <Image Source="../Resources/bot.png"/>
+                    <Label VerticalAlignment="Center" Content="{Binding Path=BotCount}" Style="{StaticResource DescriptorLabel}"/>
+                </StackPanel>
             </Border>
+            
+
+
 
             <Border BorderThickness="0" Background="#9f000000" HorizontalAlignment="Stretch" IsHitTestVisible="False" VerticalAlignment="Stretch" Visibility="{Binding Path=IsOnline.VisibilityInverted}"/>
         </Grid>

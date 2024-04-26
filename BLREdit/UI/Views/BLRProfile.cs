@@ -130,8 +130,8 @@ public interface IBLRProfile
 public interface IBLRLoadout
 {
     public event EventHandler? WasWrittenTo;
-    public IBLRWeapon GetPrimary();
-    public IBLRWeapon GetSecondary();
+    public IBLRWeapon GetPrimaryWeaponInterface();
+    public IBLRWeapon GetSecondaryWeaponInterface();
     public void Read(BLRLoadout loadout);
     public void Write(BLRLoadout loadout);
 }

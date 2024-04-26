@@ -27,7 +27,7 @@ namespace BLREdit.UI.Controls;
 /// </summary>
 public sealed partial class BLREditSettingsControl : UserControl
 {
-    public static ObservableCollection<CultureInfo> AvailableCultures { get; } = new();
+    public static ObservableCollection<CultureInfo> AvailableCultures { get; } = [];
     public static ObservableCollection<string?> ProxyVersions => BLREditSettings.AvailableProxyVersions;
     public static ObservableCollection<string?> BLREditVersions => BLREditSettings.AvailableBLREditVersions;
 

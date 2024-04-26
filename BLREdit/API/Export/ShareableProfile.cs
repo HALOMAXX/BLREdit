@@ -31,7 +31,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
     public DateTime LastApplied { get; set; } = DateTime.MinValue;
     public DateTime LastModified { get; set; } = DateTime.MinValue;
     public DateTime LastViewed { get; set; } = DateTime.MinValue;
-    public ObservableCollection<ShareableLoadout> Loadouts { get; set; } = new() { MagiCowsLoadout.DefaultLoadout1.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout2.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout3.ConvertToShareable() };
+    public ObservableCollection<ShareableLoadout> Loadouts { get; set; } = [MagiCowsLoadout.DefaultLoadout1.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout2.ConvertToShareable(), MagiCowsLoadout.DefaultLoadout3.ConvertToShareable()];
     
 
     private static readonly Regex CopyWithCount = new(@".* - Copy \([0-9]*\)$");

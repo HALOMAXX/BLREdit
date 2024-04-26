@@ -8,6 +8,10 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using System.Windows.Media;
+
+using static BLREdit.API.Utils.HelperFunctions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace BLREdit.UI.Views;
 
@@ -36,6 +40,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Calculate)) CalculateStats();
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) OnPropertyChanged(propertyName);
         if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) IsChanged = true;
+        if (!UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.Update)) OnPropertyChanged(nameof(LoadoutReport));
     }
     #endregion Event
 
@@ -45,7 +50,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     public UIBool IsAdvanced { get; set; } = new(false);
 
-    public static PropertyInfo[] LoadoutPartInfo { get; } = ((from property in loadoutType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property).ToArray());
+    public static PropertyInfo[] LoadoutPartInfo { get; } = ([.. (from property in loadoutType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property)]);
     private static readonly Dictionary<string?, PropertyInfo> LoadoutPartInfoDictonary = GetLoadoutPartPropertyInfo();
     private static Dictionary<string?, PropertyInfo> GetLoadoutPartPropertyInfo()
     {
@@ -57,7 +62,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         return dict;
     }
 
-    private readonly Dictionary<int, BLRItem?> LoadoutParts = new();
+    private readonly Dictionary<int, BLRItem?> LoadoutParts = [];
 
     private BLRItem? GetValueOf([CallerMemberName] string? name = null)
     {
@@ -70,6 +75,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         else
         { return null; }
     }
+
+    private LoadoutErrorReport? loadoutReport;
+    public LoadoutErrorReport LoadoutReport { get { if (loadoutReport is null || isChanged) { loadoutReport = GenerateLoadoutReport(); } return (LoadoutErrorReport)loadoutReport; } }
 
     /// <summary>
     /// Check if the loadout is vanilla conform
@@ -146,28 +154,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         return valid;
     }
 
-    public bool HasDuplicatedGear 
-    { 
-        get
-        {
-            if (Gear1 is not null && Gear1.UID != 12015)
-            { 
-                if (Gear2 is not null && Gear2.UID == Gear1.UID) return true;
-                if (Gear3 is not null && Gear3.UID == Gear1.UID) return true;
-                if (Gear4 is not null && Gear4.UID == Gear1.UID) return true;
-            }
-            if (Gear2 is not null && Gear2.UID != 12015)
-            {
-                if (Gear3 is not null && Gear3.UID == Gear2.UID) return true;
-                if (Gear4 is not null && Gear4.UID == Gear2.UID) return true;
-            }
-            if (Gear3 is not null && Gear3.UID != 12015)
-            {
-                if (Gear4 is not null && Gear4.UID == Gear3.UID) return true;
-            }
-            return false;
-        }
-    }
+    public bool HasDuplicatedGear { get { return LoadoutReport.GearReport.HasDuplicates; } }
 
     private void SetValueOf(BLRItem? value, BLRItem? defaultItem = null, [CallerMemberName] string? name = null)
     {
@@ -176,7 +163,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var attribute = property.GetCustomAttribute<BLRItemAttribute>();
         if (value is not null && !attribute.ItemType.Contains(value.Category)) { return; }
         if (value is null && (name == nameof(Helmet) || name == nameof(UpperBody) || name == nameof(LowerBody) || name == nameof(BodyCamo))) { value = defaultItem; }
-        if ((Profile?.IsAdvanced.IsNot ?? false) && value is null && defaultItem is not null) { value = defaultItem; }
+        if (IsAdvanced.IsNot && value is null && defaultItem is not null) { value = defaultItem; }
         BLRItem? gear1 = Gear1, gear2 = Gear2, gear3 = Gear3, gear4 = Gear4;
         switch ($"IsValid{name}")
         {
@@ -241,7 +228,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
                     if (gear4 is not null && gear4.UID == gear1.UID) { gear1valid = false; }
                 }
 
-                if ((Profile?.IsAdvanced.IsNot ?? false) && (!gear1valid || !gear2valid || !gear3valid || !gear4valid))
+                if (IsAdvanced.IsNot && (!gear1valid || !gear2valid || !gear3valid || !gear4valid))
                 {
                     MainWindow.ShowAlert("Duplicate Gears are not Allowed!");
                     return;
@@ -273,11 +260,11 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         ItemChanged(name);
     }
     #region Gear
-    [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetHelmet()); } }
+    [BLRItem(ImportSystem.HELMETS_CATEGORY)] public BLRItem? Helmet { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetHelmetBLRItem()); } }
     public UIBool IsValidHelmet { get; } = new(true);
-    [BLRItem(ImportSystem.UPPER_BODIES_CATEGORY)] public BLRItem? UpperBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetUpperBody()); } }
+    [BLRItem(ImportSystem.UPPER_BODIES_CATEGORY)] public BLRItem? UpperBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetUpperBodyBLRItem()); } }
     public UIBool IsValidUpperBody { get; } = new(true);
-    [BLRItem(ImportSystem.LOWER_BODIES_CATEGORY)] public BLRItem? LowerBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetLowerBody()); } }
+    [BLRItem(ImportSystem.LOWER_BODIES_CATEGORY)] public BLRItem? LowerBody { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetLowerBodyBLRItem()); } }
     public UIBool IsValidLowerBody { get; } = new(true);
     [BLRItem(ImportSystem.TACTICAL_CATEGORY)] public BLRItem? Tactical { get { return GetValueOf(); } set { SetValueOf(value); } }
     public UIBool IsValidTactical { get; } = new(true);
@@ -289,7 +276,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     public UIBool IsValidGear3 { get; } = new(true);
     [BLRItem(ImportSystem.ATTACHMENTS_CATEGORY)] public BLRItem? Gear4 { get { return GetValueOf(); } set { SetValueOf(value, ImportSystem.GetItemByIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, MagiCowsLoadout.DefaultLoadout1.Gear4)); } }
     public UIBool IsValidGear4 { get; } = new(true);
-    [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetCamo()); } }
+    [BLRItem(ImportSystem.CAMOS_BODIES_CATEGORY)] public BLRItem? BodyCamo { get { return GetValueOf(); } set { SetValueOf(value, MagiCowsLoadout.DefaultLoadout1.GetCamoBLRItem()); } }
     public UIBool IsValidBodyCamo { get; } = new(true);
     [BLRItem(ImportSystem.AVATARS_CATEGORY)] public BLRItem? Avatar { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasAvatar)); } }
     public UIBool IsValidAvatar { get; } = new(true);
@@ -328,8 +315,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     [BLRItem(ImportSystem.EMOTES_CATEGORY)] public BLRItem? Taunt8 { get { return GetValueOf(); } set { SetValueOf(value, ImportSystem.GetItemByIDAndType(ImportSystem.EMOTES_CATEGORY, 7)); } }
     #endregion Taunts
 
-    private bool isFemale;
-    public bool IsFemale { get { return isFemale; } set { isFemale = value; ImportSystem.UpdateArmorImages(value); ItemChanged(); } }
+    public UIBool IsFemale { get; } = new();
     private bool isBot;
     public bool IsBot { get { return isBot; } set { isBot = value; ItemChanged(); } }
 
@@ -353,7 +339,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
             BodyCamo = this.BodyCamo,
             Avatar = this.Avatar,
             Trophy = this.Trophy,
-            IsFemale = this.IsFemale,
+            IsFemale = this.IsFemale.Is,
             IsBot = this.IsBot,
         };
     }
@@ -451,7 +437,7 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         MainWindow.ShowAlert($"{message}!");
     }
 
-    public BLRLoadout(BLRProfile? profile) 
+    public BLRLoadout(BLRProfile? profile = null) 
     {
         Profile = profile;
         Primary = new(true, this);
@@ -784,10 +770,10 @@ public sealed class BLRLoadout : INotifyPropertyChanged
 
     private void UpdateGearSlots()
     {
-        GearSlot1Bool.Set(GearSlots > 0 || (Profile?.IsAdvanced.Is ?? false));
-        GearSlot2Bool.Set(GearSlots > 1 || (Profile?.IsAdvanced.Is ?? false));
-        GearSlot3Bool.Set(GearSlots > 2 || (Profile?.IsAdvanced.Is ?? false));
-        GearSlot4Bool.Set(GearSlots > 3 || (Profile?.IsAdvanced.Is ?? false));
+        GearSlot1Bool.Set(GearSlots > 0 || IsAdvanced.Is);
+        GearSlot2Bool.Set(GearSlots > 1 || IsAdvanced.Is);
+        GearSlot3Bool.Set(GearSlots > 2 || IsAdvanced.Is);
+        GearSlot4Bool.Set(GearSlots > 3 || IsAdvanced.Is);
     }
 
     private void CreateDisplay()
@@ -820,8 +806,8 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         _loadout = loadout;
         if (_loadout is not null)
         {
-            Primary.SetWeapon(_loadout.GetPrimary(), registerReadBackEvent);
-            Secondary.SetWeapon(_loadout.GetSecondary(), registerReadBackEvent);
+            Primary.SetWeapon(_loadout.GetPrimaryWeaponInterface(), registerReadBackEvent);
+            Secondary.SetWeapon(_loadout.GetSecondaryWeaponInterface(), registerReadBackEvent);
             if (registerReadBackEvent) { _loadout.WasWrittenTo += ReadCallback; }
         }
         else
@@ -852,11 +838,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
     }
 
     static readonly Random rng = new();
-    public void Randomize()
-    {
-        Primary.Randomize();
-        Secondary.Randomize();
 
+    public void RandomizeGear()
+    {
         var helmet = ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.HELMETS_CATEGORY)?.Length ?? 0));
         var upperBody = ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.UPPER_BODIES_CATEGORY)?.Length ?? 0));
         var lowerBody = ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.LOWER_BODIES_CATEGORY)?.Length ?? 0));
@@ -864,11 +848,9 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         var camo = ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.CAMOS_BODIES_CATEGORY)?.Length ?? 0));
         var tactical = ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, rng.Next(0, ImportSystem.GetItemArrayOfType(ImportSystem.TACTICAL_CATEGORY)?.Length ?? 0));
 
-        var trophys = ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var trophys = ImportSystem.GetItemArrayOfType(ImportSystem.BADGES_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
 
-        var gears = ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var taunts = ImportSystem.GetItemArrayOfType(ImportSystem.EMOTES_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
-        var depots = ImportSystem.GetItemArrayOfType(ImportSystem.SHOP_CATEGORY).Where(o => o.IsValidFor(null, Profile?.IsAdvanced.Is ?? false)).ToList();
+        var gears = ImportSystem.GetItemArrayOfType(ImportSystem.ATTACHMENTS_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
 
         UndoRedoSystem.DoValueChange(helmet, this.GetType().GetProperty(nameof(Helmet)), this, BlockEvents.AllExceptUpdate);
         UndoRedoSystem.DoValueChange(upperBody, this.GetType().GetProperty(nameof(UpperBody)), this, BlockEvents.AllExceptUpdate);
@@ -882,27 +864,43 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear1)), this, BlockEvents.AllExceptUpdate);
-            if(Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (IsAdvanced.IsNot) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 1)
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear2)), this, BlockEvents.AllExceptUpdate);
-            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (IsAdvanced.IsNot) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 2)
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear3)), this, BlockEvents.AllExceptUpdate);
-            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (IsAdvanced.IsNot) gears.RemoveAt(gearIndex);
         }
         if (GearSlots > 3)
         {
             var gearIndex = rng.Next(0, gears.Count);
             UndoRedoSystem.DoValueChange(gears[gearIndex], this.GetType().GetProperty(nameof(Gear4)), this, BlockEvents.AllExceptUpdate);
-            if (Profile?.IsAdvanced.IsNot ?? true) gears.RemoveAt(gearIndex);
+            if (IsAdvanced.IsNot) gears.RemoveAt(gearIndex);
         }
+        UndoRedoSystem.DoValueChange(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
+        UndoRedoSystem.EndUndoRecord();
+    }
 
+    public void RandomizeExtra()
+    {
+        RandomizeTaunts();
+        RandomizeDepot();
+        RandomizeEmblem();
+        RandomizeVoices();
+
+        //TODO: Add Emblem, Voices and Title to Randomization
+    }
+
+    public void RandomizeTaunts()
+    {
+        var taunts = ImportSystem.GetItemArrayOfType(ImportSystem.EMOTES_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
 
         //TODO: might want to change the anti duplicate behaviour for the emotes
         var tauntIndex = rng.Next(0, taunts.Count);
@@ -929,7 +927,12 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         tauntIndex = rng.Next(0, taunts.Count);
         UndoRedoSystem.DoValueChange(taunts[tauntIndex], this.GetType().GetProperty(nameof(Taunt8)), this, BlockEvents.AllExceptUpdate);
         taunts.RemoveAt(tauntIndex);
+        UndoRedoSystem.EndUndoRecord();
+    }
 
+    public void RandomizeDepot()
+    {
+        var depots = ImportSystem.GetItemArrayOfType(ImportSystem.SHOP_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
         var depotIndex = rng.Next(0, depots.Count);
         UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot1)), this, BlockEvents.AllExceptUpdate);
         depots.RemoveAt(depotIndex);
@@ -945,9 +948,55 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         depotIndex = rng.Next(0, depots.Count);
         UndoRedoSystem.DoValueChange(depots[depotIndex], this.GetType().GetProperty(nameof(Depot5)), this, BlockEvents.AllExceptUpdate);
         depots.RemoveAt(depotIndex);
-
-        UndoRedoSystem.DoValueChange(NextBoolean(), this.GetType().GetProperty(nameof(IsFemale)), this);
         UndoRedoSystem.EndUndoRecord();
+    }
+
+    public void RandomizeEmblem()
+    {
+        var icons = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_ICON_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var shapes = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_SHAPE_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var backgrounds = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var colors = ImportSystem.GetItemArrayOfType(ImportSystem.EMBLEM_COLOR_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+
+        var inconIndex = rng.Next(0, icons.Count);
+        var inconColor = rng.Next(0, colors.Count);
+        UndoRedoSystem.DoValueChange(icons[inconIndex], this.GetType().GetProperty(nameof(EmblemIcon)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(colors[inconColor], this.GetType().GetProperty(nameof(EmblemIconColor)), this, BlockEvents.AllExceptUpdate);
+
+        var shapeIndex = rng.Next(0, shapes.Count);
+        var shapeColor = rng.Next(0, colors.Count);
+        UndoRedoSystem.DoValueChange(shapes[shapeIndex], this.GetType().GetProperty(nameof(EmblemShape)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(colors[shapeColor], this.GetType().GetProperty(nameof(EmblemShapeColor)), this, BlockEvents.AllExceptUpdate);
+
+        var backgroundIndex = rng.Next(0, backgrounds.Count);
+        var backgroundColor = rng.Next(0, colors.Count);
+        UndoRedoSystem.DoValueChange(backgrounds[backgroundIndex], this.GetType().GetProperty(nameof(EmblemBackground)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(colors[backgroundColor], this.GetType().GetProperty(nameof(EmblemBackgroundColor)), this);
+        UndoRedoSystem.EndUndoRecord();
+    }
+
+    public void RandomizeVoices()
+    { 
+        var announcers = ImportSystem.GetItemArrayOfType(ImportSystem.ANNOUNCER_VOICE_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var players = ImportSystem.GetItemArrayOfType(ImportSystem.PLAYER_VOICE_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+        var titles = ImportSystem.GetItemArrayOfType(ImportSystem.TITLES_CATEGORY).Where(o => o.IsValidFor(null, IsAdvanced.Is)).ToList();
+
+        var announcerIndex = rng.Next(0, announcers.Count);
+        var playerIndex = rng.Next(0, players.Count);
+        var titleIndex = rng.Next(0, titles.Count);
+
+        UndoRedoSystem.DoValueChange(announcers[announcerIndex], this.GetType().GetProperty(nameof(AnnouncerVoice)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(players[playerIndex], this.GetType().GetProperty(nameof(PlayerVoice)), this, BlockEvents.AllExceptUpdate);
+        UndoRedoSystem.DoValueChange(titles[titleIndex], this.GetType().GetProperty(nameof(Title)), this);
+        UndoRedoSystem.EndUndoRecord();
+    }
+
+    public void Randomize()
+    {
+        Primary.Randomize();
+        Secondary.Randomize();
+        RandomizeGear();
+        RandomizeExtra();
     }
 
     public static bool NextBoolean()
@@ -955,4 +1004,128 @@ public sealed class BLRLoadout : INotifyPropertyChanged
         return rng.Next() > (Int32.MaxValue / 2);
         // Next() returns an int in the range [0..Int32.MaxValue]
     }
+
+    private GearErrorReport GenerateGearReport()
+    {
+        bool g1dup = false, g1frag = false, g1missing = false;
+        bool g2dup = false, g2frag = false, g2missing = false;
+        bool g3dup = false, g3frag = false, g3missing = false;
+        bool g4dup = false, g4frag = false, g4missing = false;
+
+        if (Gear4 is not null && Gear4.UID != 12015)
+        {
+            if (Gear3 is not null && Gear3.UID == Gear4.UID) g4dup = true;
+            if (Gear2 is not null && Gear2.UID == Gear4.UID) g4dup = true;
+            if (Gear1 is not null && Gear1.UID == Gear4.UID) g4dup = true;
+
+            if (Gear4.Name is not null) 
+                g4frag = Gear4.Name.Contains("Frag") || Gear4.Name.Contains("I Heart U") || Gear4.Name.Contains("Snowpocalypse");
+        }
+        else
+        {
+            g4missing = Gear4 is null;
+        }
+
+        if (Gear3 is not null && Gear3.UID != 12015)
+        {
+            if (Gear2 is not null && Gear2.UID == Gear3.UID) g3dup = true;
+            if (Gear1 is not null && Gear1.UID == Gear3.UID) g3dup = true;
+
+            if (Gear3.Name is not null) g3frag = Gear3.Name.Contains("Frag") || Gear3.Name.Contains("I Heart U") || Gear3.Name.Contains("Snowpocalypse");
+        }
+        else
+        {
+            g3missing = Gear3 is null;
+        }
+
+        if (Gear2 is not null && Gear2.UID != 12015)
+        {
+            if (Gear1 is not null && Gear1.UID == Gear2.UID) g2dup = true;
+
+            if (Gear2.Name is not null) g2frag = Gear2.Name.Contains("Frag") || Gear2.Name.Contains("I Heart U") || Gear2.Name.Contains("Snowpocalypse");
+        }
+        else
+        {
+            g2missing = Gear2 is null;
+        }
+
+        if (Gear1 is not null && Gear1.UID != 12015)
+        {
+            if (Gear1.Name is not null) g1frag = Gear1.Name.Contains("Frag") || Gear1.Name.Contains("I Heart U") || Gear1.Name.Contains("Snowpocalypse");
+        }
+        else
+        {
+            g1missing = Gear1 is null;
+        }
+
+        g4dup = (g4frag && (g3frag || g2frag || g1frag));
+        g3dup = (g3frag && (g2frag || g1frag));
+        g2dup = (g2frag && g1frag);
+
+        return new GearErrorReport(
+            ItemCheck(Helmet, null),
+            ItemCheck(UpperBody, null),
+            ItemCheck(LowerBody, null),
+            ItemCheck(Tactical, null),
+            ItemCheck(BodyCamo, null),
+            ItemCheck(Avatar, null),
+            ItemCheck(Trophy, null),
+            ItemCheck(Gear1, g1dup, g1missing),
+            ItemCheck(Gear2, g2dup, g2missing),
+            ItemCheck(Gear3, g3dup, g3missing),
+            ItemCheck(Gear4, g4dup, g4missing)
+            );
+    }
+
+    private ExtraErrorReport GenerateExtraReport()
+    {
+        return new ExtraErrorReport(
+            ItemCheck(Depot1, null),
+            ItemCheck(Depot2, null),
+            ItemCheck(Depot3, null),
+            ItemCheck(Depot4, null),
+            ItemCheck(Depot5, null),
+
+            ItemCheck(Taunt1, null),
+            ItemCheck(Taunt2, null),
+            ItemCheck(Taunt3, null),
+            ItemCheck(Taunt4, null),
+            ItemCheck(Taunt5, null),
+            ItemCheck(Taunt6, null),
+            ItemCheck(Taunt7, null),
+            ItemCheck(Taunt8, null),
+
+            ItemCheck(EmblemIcon, null),
+            ItemCheck(EmblemIconColor, null),
+
+            ItemCheck(EmblemShape, null),
+            ItemCheck(EmblemShapeColor, null),
+
+            ItemCheck(EmblemBackground, null),
+            ItemCheck(EmblemBackgroundColor, null),
+
+            ItemCheck(AnnouncerVoice, null),
+            ItemCheck(PlayerVoice, null),
+            ItemCheck(Title, null)
+            );
+    }
+
+    public LoadoutErrorReport GenerateLoadoutReport()
+    {
+        return new(
+                Primary.GenerateReport(),
+                Secondary.GenerateReport(),
+                GenerateGearReport(),
+                GenerateExtraReport()
+            );
+    }
+}
+
+public struct LoadoutErrorReport(WeaponErrorReport primary, WeaponErrorReport secondary, GearErrorReport gear, ExtraErrorReport extra)
+{
+    public bool IsValid { get { return (PrimaryReport.IsValid && SecondaryReport.IsValid && GearReport.IsValid && ExtraReport.IsValid); } }
+    public WeaponErrorReport PrimaryReport { get; } = primary;
+    public WeaponErrorReport SecondaryReport { get; } = secondary;
+    public GearErrorReport GearReport { get; } = gear;
+    public ExtraErrorReport ExtraReport { get; } = extra;
 }

@@ -1,9 +1,8 @@
 ﻿using BLREdit.Import;
 using BLREdit.UI.Views;
 
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Threading;
-using System.Windows.Controls;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace BLREdit.API.Export;
 
@@ -38,15 +37,15 @@ public class LMLoadout
         WeaponHanger = loadout.Primary?.Tag?.UID ?? -1;
         Gear = new(loadout);
         Body = new(loadout);
-        Depot = new int[] { 
+        Depot = [ 
             loadout.Depot1?.UID ?? -1,
             loadout.Depot2?.UID ?? -1,
             loadout.Depot3?.UID ?? -1,
             loadout.Depot4?.UID ?? -1,
             loadout.Depot5?.UID ?? -1
-        };
+        ];
 
-        Taunts = new int[] {
+        Taunts = [
             loadout.Taunt1?.UID ?? -1,
             loadout.Taunt2?.UID ?? -1,
             loadout.Taunt3?.UID ?? -1,
@@ -55,7 +54,7 @@ public class LMLoadout
             loadout.Taunt6?.UID ?? -1,
             loadout.Taunt7?.UID ?? -1,
             loadout.Taunt8?.UID ?? -1
-        };
+        ];
 
         Emblem = new(loadout);
 
@@ -77,7 +76,6 @@ public class LMLoadout
             Trophy = ImportSystem.GetItemByUIDAndType(ImportSystem.BADGES_CATEGORY, Body.Badge),
             BodyCamo = ImportSystem.GetItemByUIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Body.Camo),
             Avatar = ImportSystem.GetItemByUIDAndType(ImportSystem.AVATARS_CATEGORY, Body.Avatar),
-            IsFemale = Body.Female,
 
             Tactical = ImportSystem.GetItemByUIDAndType(ImportSystem.TACTICAL_CATEGORY, Gear.Tactical),
             Gear1 = ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, Gear.R1),
@@ -113,7 +111,7 @@ public class LMLoadout
             EmblemShapeColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, Emblem.MiddleColor),
             EmblemBackgroundColor = ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, Emblem.BottomColor)
         };
-
+        loadout.IsFemale.Is = Body.Female;
         loadout.Primary.Tag = ImportSystem.GetItemByUIDAndType(ImportSystem.HANGERS_CATEGORY, Gear.Hanger);
 
         return loadout;
@@ -167,27 +165,56 @@ public class LMWeapon
 
 public class LMGear
 {
-    public int R1 { get; set; } = -1;
-    public int R2 { get; set; } = -1;
-    public int L1 { get; set; } = -1;
-    public int L2 { get; set; } = -1;
+
+    //1 Is Upper, 2 Is Lower, L is first slot, R is second slot.
+    public int R1 { get; set; } = 255;
+    public int R2 { get; set; } = 255;
+    public int L1 { get; set; } = 255;
+    public int L2 { get; set; } = 255;
     public int Tactical { get; set; } = -1;
     public int Hanger { get; set; } = -1;
     public LMGear() { }
     public LMGear(BLRLoadout loadout)
     {
-        R1 = loadout?.Gear1?.UID ?? -1;
-        R2 = loadout?.Gear3?.UID ?? -1;
-        L1 = loadout?.Gear2?.UID ?? -1;
-        L2 = loadout?.Gear4?.UID ?? -1;
-        Tactical = loadout?.Tactical?.UID ?? -1;
-        Hanger = -1;
+        if (loadout is null) return;
+
+        Queue<int> GearUIDList = new();
+
+        GearUIDList.Enqueue(loadout.Gear1?.UID ?? 255);
+        GearUIDList.Enqueue(loadout.Gear2?.UID ?? 255);
+        GearUIDList.Enqueue(loadout.Gear3?.UID ?? 255);
+        GearUIDList.Enqueue(loadout.Gear4?.UID ?? 255);
+
+        if (loadout.UpperBody is not null)
+        {
+            if (loadout.UpperBody.GearSlots > 0)
+            {
+                L1 = GearUIDList.Dequeue();
+            }
+            if (loadout.UpperBody.GearSlots > 1)
+            {
+                R1 = GearUIDList.Dequeue();
+            }
+        }
+        if(loadout.LowerBody is not null)
+        {
+            if (loadout.LowerBody.GearSlots > 0)
+            {
+                L2 = GearUIDList.Dequeue();
+            }
+            if (loadout.LowerBody.GearSlots > 1)
+            {
+                R2 = GearUIDList.Dequeue();
+            }
+        }
+        Tactical = loadout.Tactical?.UID ?? -1;
+        Hanger = loadout.Primary?.Tag?.UID ?? -1;
     }
 }
 
 public class LMBody
 {
-    public bool Female { get; set; } = false;
+    public bool Female { get; set; }
     public int Camo { get; set; } = -1;
     public int UpperBody { get; set; } = -1;
     public int LowerBody { get; set; } = -1;
@@ -198,7 +225,7 @@ public class LMBody
     public LMBody() { }
     public LMBody(BLRLoadout loadout)
     {
-        Female = loadout.IsFemale;
+        Female = loadout.IsFemale.Is;
         Camo = loadout?.BodyCamo?.UID ?? -1;
         UpperBody = loadout?.UpperBody?.UID ?? -1;
         LowerBody = loadout?.LowerBody?.UID ?? -1;

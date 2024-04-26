@@ -952,7 +952,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recoil Hip:.
+        ///   Looks up a localized string similar to Recoil:.
         /// </summary>
         public static string lbl_RecoilHip {
             get {

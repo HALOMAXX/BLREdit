@@ -1,11 +1,9 @@
-using BLREdit.API.REST_API.MagiCow;
 using BLREdit.API.REST_API.Server;
 using BLREdit.API.Utils;
 using BLREdit.UI;
 using BLREdit.UI.Windows;
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Net;
@@ -20,6 +18,8 @@ namespace BLREdit.Game;
 
 public sealed class BLRServer : INotifyPropertyChanged
 {
+    public static string EmptyServer { get; } = "?/? Players";
+
     public static AwaitableCollection<BLRServer> ServersToPing { get; } = new();
 
     #region Events
@@ -35,7 +35,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     {
         if (obj is BLRServer server)
         {
-            return ID.Equals(server.ID);
+            return ID.Equals(server.ID, StringComparison.Ordinal);
         }
         else
         { return false; }
@@ -47,20 +47,21 @@ public sealed class BLRServer : INotifyPropertyChanged
     }
     #endregion Overrides
 
-    [JsonIgnore] public UIBool IsOnline { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo.IsOnline); } else { return new(MagiInfo.IsOnline); } } }
+    [JsonIgnore] public UIBool IsOnline { get { return new(ServerInfo?.IsOnline ?? false); } }
     [JsonIgnore] public bool IsDefaultServer { get { return Equals(DataStorage.Settings.DefaultServer); } set { IsNotDefaultServer = value; OnPropertyChanged(); } }
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
     [JsonIgnore] public UIBool IsPinging { get; } = new(false);
-    [JsonIgnore] public MagiCowServerInfo MagiInfo { get; private set; } = new();
     [JsonIgnore] public ServerUtilsInfo ServerInfo { get; private set; } = new();
-    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.TeamList.Count >= 2); } else if (MagiInfo?.IsOnline ?? false) { return new(MagiInfo?.TeamList?.Count >= 2); } else { return new(false); } } }
+    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.TeamList.Count >= 2); } else { return new(false); } } }
     [JsonIgnore] public string ServerDescription { get { return GetServerDescription(); } }
-    [JsonIgnore] public BitmapImage MapImage { get { if (ServerInfo?.IsOnline ?? false) { return new(new Uri(ServerInfo?.BLRMap?.SquareImage)); } else if (MagiInfo?.IsOnline ?? false) { return new(new Uri(MagiInfo?.BLRMap?.SquareImage)); } else { return new(new Uri($"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png")); } } }
-    [JsonIgnore] public StringCollection PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.List; } else { return new() { $"?/? Players" }; } } }
-    [JsonIgnore] public StringCollection Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team1List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team1List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
-    [JsonIgnore] public StringCollection Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team2List ?? new() { $"?/? Players" }; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.Team2List ?? new() { $"?/? Players" }; } else { return new() { $"?/? Players" }; } } }
-    [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.PlayerCount; } else { return -1; } } }
-    [JsonIgnore] public int MaxPlayers { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.MaxPlayers; } else if (MagiInfo?.IsOnline ?? false) { return MagiInfo.MaxPlayers; } else { return -1; } } }
+    [JsonIgnore] public BitmapImage MapImage { get { if ((ServerInfo?.IsOnline ?? false) && (ServerInfo.BLRMap?.SquareImage is not null)) { return new(new Uri(ServerInfo?.BLRMap?.SquareImage)); } else { return new(new Uri($"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png")); } } }
+    [JsonIgnore] public StringCollection PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else { return [EmptyServer]; } } }
+    [JsonIgnore] public StringCollection Team1List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team1List ?? [EmptyServer]; } else { return [EmptyServer]; } } }
+    [JsonIgnore] public StringCollection Team2List { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo?.Team2List ?? [EmptyServer]; } else { return [EmptyServer]; } } }
+    [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else { return -1; } } }
+    [JsonIgnore] public int BotCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.BotCount; } else { return -1; } } }
+    [JsonIgnore] public UIBool HasBots { get; } = new(false);
+    [JsonIgnore] public int MaxPlayers { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.MaxPlayers; } else { return -1; } } }
 
     [JsonIgnore] private string id = string.Empty;
     public string ID { get { return id; } set { id = value; OnPropertyChanged(); } }
@@ -131,7 +132,6 @@ public sealed class BLRServer : INotifyPropertyChanged
             }
             catch (Exception error)
             {
-                MagiInfo = new();
                 ServerInfo = new();
                 RefreshInfo();
                 LoggingSystem.Log($"Failed to get IPAddress for {ServerAddress}\n{error}");
@@ -145,15 +145,11 @@ public sealed class BLRServer : INotifyPropertyChanged
         string desc;
         if (ServerInfo?.IsOnline ?? false)
         {
-            desc = $"{ServerInfo.ServerName}\n{ServerInfo.GetTimeDisplay()}\nMVP: {ServerInfo.GetScoreDisplay()}\n{ServerInfo.GameModeFullName}/{ServerInfo.Playlist}\n{ServerInfo?.BLRMap?.DisplayName ?? string.Empty}";
-        }
-        else if (MagiInfo?.IsOnline ?? false)
-        {
-            desc = $"{MagiInfo.ServerName}\n{MagiInfo.GetTimeDisplay()}\nMVP: {MagiInfo.GetScoreDisplay()}\n{MagiInfo.GameModeFullName}/{MagiInfo.Playlist}\n{MagiInfo?.BLRMap?.DisplayName ?? string.Empty}";
+            desc = $"{ServerInfo.ServerName}\n{ServerInfo.GetTimeDisplay()}\nMVP: {ServerInfo.GetScoreDisplay()}\n{ServerInfo.GameModeFullName}/{ServerInfo.Playlist}\n{ServerInfo?.BLRMap?.DisplayName ?? ServerInfo?.Map}";
         }
         else
         {
-            desc = $"{ServerAddress}\n{ServerInfo?.BLRMap?.DisplayName}";
+            desc = $"{ServerAddress}\n{ServerInfo?.BLRMap?.DisplayName ?? ServerInfo?.Map}";
         }
         return desc;
     }
@@ -167,6 +163,15 @@ public sealed class BLRServer : INotifyPropertyChanged
         OnPropertyChanged(nameof(PlayerList));
         OnPropertyChanged(nameof(Team1List));
         OnPropertyChanged(nameof(Team2List));
+        if (BotCount > 0)
+        {
+            HasBots.Set(true);
+        }
+        else
+        {
+            HasBots.Set(false);
+        }
+
         MainWindow.Instance?.Dispatcher.Invoke(MainWindow.Instance.RefreshServerList);
     }
 
@@ -178,15 +183,12 @@ public sealed class BLRServer : INotifyPropertyChanged
     private void InternalPing()
     {
         var server = ServerUtilsClient.GetServerInfo(this);
-        var magi = MagiCowClient.GetServerInfo(ServerAddress);
 
-        Task.WaitAll(server, magi);
+        Task.WaitAll(server);
 
         var serverInfo = server.Result;
-        var magiInfo = magi.Result;
 
         if (serverInfo is null) { ServerInfo = new(); } else { serverInfo.IsOnline = true; ServerInfo = serverInfo; }
-        if (magiInfo is null) { MagiInfo = new(); } else { magiInfo.IsOnline = true; MagiInfo = magiInfo; }
 
         RefreshInfo();
     }
