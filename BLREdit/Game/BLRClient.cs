@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
+using BLREdit.API.Export;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.API.Utils;
 using BLREdit.Export;
@@ -22,6 +23,7 @@ using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
 
 using PeNet;
+using PeNet.Header.Net;
 
 namespace BLREdit.Game;
 
@@ -739,7 +741,14 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
-        string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}?blre.server.authenticateusers=false";
+        //string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}?blre.server.authenticateusers=false";
+
+        string launchArgs = $"server {(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Playlist=BLREditPlaylist?Port=7777?blre.server.authenticateusers=false";
+
+        List<BLRPlaylistEntry> entries = [new() { Map = map.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } }];
+
+        IOResources.SerializeFile($"{BLReviveConfigsPath}server_utils\\playlists\\BLREditPlaylist.json", entries);
+
         StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
         LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
     }
@@ -748,7 +757,14 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
         if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
-        string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
+        //string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
+
+        string launchArgs = $"server {(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Playlist=BLREditPlaylist?Port=7777?blre.server.authenticateusers=false";
+
+        List<BLRPlaylistEntry> entries = [new() { Map = map.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } }];
+
+        IOResources.SerializeFile($"{BLReviveConfigsPath}server_utils\\playlists\\BLREditPlaylist.json", entries);
+
         StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
     }
 
