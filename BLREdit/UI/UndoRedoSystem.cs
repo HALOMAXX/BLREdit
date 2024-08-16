@@ -35,7 +35,7 @@ public static class UndoRedoSystem
     /// </summary>
     public static void Undo()
     {
-        if (UndoStack.Count <= 0) { MainWindow.ShowAlert($"No Undo's left"); return; }
+        if (UndoStack.Count <= 0) { MainWindow.ShowAlert($"Nothing to Undo!"); return; }
         UndoRedoSystemWorking = true;
         var action = UndoStack.Pop();
         foreach (var sub in action.Actions)
@@ -63,7 +63,7 @@ public static class UndoRedoSystem
     /// </summary>
     public static void Redo()
     {
-        if (RedoStack.Count <= 0) { MainWindow.ShowAlert($"No Redo's left"); return; }
+        if (RedoStack.Count <= 0) { MainWindow.ShowAlert($"Nothing to Redo!"); return; }
         UndoRedoSystemWorking = true;
         var action = RedoStack.Pop();
         foreach (var sub in action.Actions)

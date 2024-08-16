@@ -16,13 +16,13 @@ public sealed class ServerUtilsClient
 
     public static async Task<ServerUtilsInfo?> GetServerInfo(BLRServer server)
     {
-        string serverAddress = $"http://{server.ServerAddress}:{server.InfoPort}";
+        string serverAddress = $"http://{server.IPAddress}:{server.InfoPort}";
         string api = "/server_info";
         ServerUtilsInfo? info = null;
         string fail = "";
         try
         {
-            using var response = await HttpGetClient.GetAsync(serverAddress, api);
+            using var response = await HttpGetClient.GetAsync(serverAddress, api, $"http://{server.ServerAddress}:{server.InfoPort}");
             if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
