@@ -73,9 +73,9 @@ public static class DataStorage
     { 
         var settings = IOResources.DeserializeFile<BLREditSettings>($"{IOResources.SETTINGS_FILE}") ?? new();
 
-        if (!BLREditSettings.AvailableProxyVersions.Contains(settings.SelectedSDKType))
+        if (!BLREditSettings.AvailableBLReviveVersions.Contains(settings.SelectedBLReviveVersion))
         {
-            settings.SelectedSDKType = BLREditSettings.AvailableProxyVersions.First();
+            settings.SelectedBLReviveVersion = BLREditSettings.AvailableBLReviveVersions.First();
         }
 
         return settings;

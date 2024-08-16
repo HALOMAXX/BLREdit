@@ -549,7 +549,7 @@ public sealed partial class MainWindow : Window
                     }
                 }
 
-                if(DataStorage.Settings.SelectedSDKType == "BLRevive")
+                if(DataStorage.Settings.SelectedBLReviveVersion == "BLRevive")
                     ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
                 else
                     ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);
@@ -877,12 +877,6 @@ public sealed partial class MainWindow : Window
                 {
                     lcontrol.ApplyBorder();
                 }
-            }
-            switch (control.SelectedIndex)
-            {
-                case 0:
-                    ImportSystem.UpdateArmorImages(MainView.Profile.BLR.IsFemale);
-                    break;
             }
         }
         BlockChangeNotif = false;

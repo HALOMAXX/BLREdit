@@ -28,7 +28,7 @@ namespace BLREdit.UI.Controls;
 public sealed partial class BLREditSettingsControl : UserControl
 {
     public static ObservableCollection<CultureInfo> AvailableCultures { get; } = [];
-    public static ObservableCollection<string?> ProxyVersions => BLREditSettings.AvailableProxyVersions;
+    public static ObservableCollection<string?> BLReviveVersions => BLREditSettings.AvailableBLReviveVersions;
     public static ObservableCollection<string?> BLREditVersions => BLREditSettings.AvailableBLREditVersions;
 
     public static Regex PlayerNameFilter { get; } = new(@"^[a-zA-Z0-9\-_.]*$");
@@ -46,6 +46,7 @@ public sealed partial class BLREditSettingsControl : UserControl
         }
         LanguageComboBox.SelectedItem = DataStorage.Settings.SelectedCulture;
         BLREditVersionComboBox.SelectedItem = DataStorage.Settings.SelectedBLREditVersion;
+        BLReviveVersionComboBox.SelectedItem = DataStorage.Settings.SelectedBLReviveVersion;
         DataStorage.Settings.PlayerName = PlayerNameSanitizer.Replace(DataStorage.Settings.PlayerName, string.Empty);
     }
 
@@ -80,7 +81,7 @@ public sealed partial class BLREditSettingsControl : UserControl
         Duration = new Duration(TimeSpan.FromSeconds(2))
     };
 
-    ColorAnimation? lastAnim = null;
+    ColorAnimation? lastAnim;
     private void PlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (PlayerNameTextBox.Text == "BLREdit-Player" && lastAnim != AlertAnim)
@@ -126,11 +127,11 @@ public sealed partial class BLREditSettingsControl : UserControl
         }
     }
 
-    private void ProxyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void BLReviveVersionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (DataContext is BLREditSettings settings && e.AddedItems.Count > 0 && e.AddedItems[0] is string version)
         {
-            settings.SelectedSDKType = version;
+            settings.SelectedBLReviveVersion = version;
         }
     }
 

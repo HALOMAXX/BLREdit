@@ -17,7 +17,7 @@
     <Border BorderBrush="{Binding Path=ActiveProfileBorder}" BorderThickness="2,2,2,2">
         <Grid d:DataContext="{d:DesignInstance Type=export:BLRLoadoutStorage}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="22"/>
+                <RowDefinition Height="44"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border Background="Transparent" BorderThickness="0,0,0,1" Grid.Row="0">
@@ -27,10 +27,15 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="64" />
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
                     <ToggleButton Grid.Column="0" Content="Apply" ToolTip="" IsChecked="{Binding Path=BLR.Apply, Mode=TwoWay}" Click="ToggleButton_Click"/>
                     <TextBox Grid.Column="1" Text="{Binding Path=BLR.Name, Mode=TwoWay}" Width="138" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
                     <Image Grid.Column="1" HorizontalAlignment="Left" Source="../Resources/invaliditem.png" Visibility="{Binding Path=BLR.IsAdvanced.Visibility}" ToolTip="{x:Static p:Resources.img_TT_AdvancedInfo}"/>
                     <Button Grid.Column="2" Content="Delete" ToolTip="" Command="{Binding Path=RemoveLoadoutCommand}"/>
+                    <Button Grid.Row="1" Grid.ColumnSpan="3" Width="128" Content="Repair" ToolTip="" Command="{Binding Path=RepairLoadoutCommand}"/>
                 </Grid>
             </Border>
 

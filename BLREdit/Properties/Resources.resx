@@ -415,7 +415,7 @@
     <value>Recoil Aim:</value>
   </data>
   <data name="lbl_RecoilHip" xml:space="preserve">
-    <value>Recoil Hip:</value>
+    <value>Recoil:</value>
   </data>
   <data name="lbl_RecoilRecoveryTime" xml:space="preserve">
     <value>Recoil Recovery:</value>
@@ -446,6 +446,9 @@
   </data>
   <data name="lbl_SelectedBLREditVersion" xml:space="preserve">
     <value>BLREdit Build:</value>
+  </data>
+  <data name="lbl_SelectedBLReviveVersion" xml:space="preserve">
+    <value>BLRevive Build:</value>
   </data>
   <data name="lbl_SelectedProxyVersion" xml:space="preserve">
     <value>ProxyVersion:</value>
@@ -706,6 +709,12 @@ Needs a Restart to Install Protocol!</value>
   </data>
   <data name="txt_TT_Region" xml:space="preserve">
     <value>Region examples (EU-West, US-West, AU, OCE, LATAM)</value>
+  </data>
+  <data name="txt_TT_SelectedBLREditVersion" xml:space="preserve">
+    <value>Here you can select which version of BLREdit you want to use.</value>
+  </data>
+  <data name="txt_TT_SelectedBLReviveVersion" xml:space="preserve">
+    <value>Here you can select which version of BLRevive you want to use.</value>
   </data>
   <data name="txt_TT_SelectedProxyVersion" xml:space="preserve">
     <value>Available ProxyVersions: v1.0.0-beta.2, v1.0.0-beta.3

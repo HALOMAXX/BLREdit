@@ -62,10 +62,10 @@ public sealed class ItemFilters : INotifyPropertyChanged
             case ImportSystem.SECONDARY_CATEGORY:
                 return !(item.Icon?.Contains("Depot") ?? false);
             case ImportSystem.SHOP_CATEGORY:
-                if (Instance?.WeaponFilter?.Loadout?.Profile?.IsAdvanced.Is ?? false) return true;
+                if (Instance?.WeaponFilter?.Loadout?.IsAdvanced.Is ?? false) return true;
                 return item.Name != "HRV Jammer";
             default:
-                return item.IsValidFor(Instance?.WeaponFilter?.Receiver ?? null, Instance?.WeaponFilter?.Loadout?.Profile?.IsAdvanced.Is ?? false);
+                return item.IsValidFor(Instance?.WeaponFilter?.Receiver ?? null, Instance?.WeaponFilter?.Loadout?.IsAdvanced.Is ?? false);
         };
     }
 

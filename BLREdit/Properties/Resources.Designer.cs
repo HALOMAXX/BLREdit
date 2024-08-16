@@ -952,7 +952,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recoil Hip:.
+        ///   Looks up a localized string similar to Recoil:.
         /// </summary>
         public static string lbl_RecoilHip {
             get {
@@ -1047,6 +1047,15 @@ namespace BLREdit.Properties {
         public static string lbl_SelectedBLREditVersion {
             get {
                 return ResourceManager.GetString("lbl_SelectedBLREditVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BLRevive Build:.
+        /// </summary>
+        public static string lbl_SelectedBLReviveVersion {
+            get {
+                return ResourceManager.GetString("lbl_SelectedBLReviveVersion", resourceCulture);
             }
         }
         
@@ -1814,6 +1823,24 @@ namespace BLREdit.Properties {
         public static string txt_TT_Region {
             get {
                 return ResourceManager.GetString("txt_TT_Region", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here you can select which version of BLREdit you want to use..
+        /// </summary>
+        public static string txt_TT_SelectedBLREditVersion {
+            get {
+                return ResourceManager.GetString("txt_TT_SelectedBLREditVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here you can select which version of BLRevive you want to use..
+        /// </summary>
+        public static string txt_TT_SelectedBLReviveVersion {
+            get {
+                return ResourceManager.GetString("txt_TT_SelectedBLReviveVersion", resourceCulture);
             }
         }
         

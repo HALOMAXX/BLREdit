@@ -235,11 +235,14 @@ public sealed class BLREditPipe
             {
                 LoggingSystem.Log($"[BLREdit API](start-server): Starting Server ({json})");
                 var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json) ?? new();
-                BLRClient? client;
+                BLRClient? client = null;
                 if (serverConfig.ClientId < 0)
                 { client = DataStorage.Settings.DefaultClient; }
                 else
-                { client = DataStorage.GameClients[serverConfig.ClientId]; }
+                {
+                    if(serverConfig.ClientId < DataStorage.GameClients.Count)
+                        client = DataStorage.GameClients[serverConfig.ClientId];
+                }
                 if (client is null)
                 { LoggingSystem.Log("No client Available to launch server!"); return; }
 
