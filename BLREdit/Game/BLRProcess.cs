@@ -107,11 +107,12 @@ public sealed class BLRProcess : INotifyPropertyChanged
                 {
                     var logPath = new FileInfo($"{App.BLREditLocation}\\logs\\Client\\{clientLog.Name}");
                     if (!logPath.Directory.Exists) { logPath.Directory.Create(); }
-                    clientLog.MoveTo(logPath.FullName);
+                    if (logPath.Exists && logPath.LastWriteTime > clientLog.LastWriteTime) { continue; } else if (logPath.Exists) { logPath.Delete(); }
+                    clientLog.CopyTo(logPath.FullName);
                 }
                 catch { }
             }
-            LoggingSystem.Log($"[{this.Client}]: Moved Client Logs to BLREdit logs");
+            LoggingSystem.Log($"[{this.Client}]: Copied Client Logs to BLREdit logs");
         }
         else
         {
@@ -121,11 +122,12 @@ public sealed class BLRProcess : INotifyPropertyChanged
                 {
                     var logPath = new FileInfo($"{App.BLREditLocation}\\logs\\Server\\{clientLog.Name}");
                     if (!logPath.Directory.Exists) { logPath.Directory.Create(); }
-                    clientLog.MoveTo(logPath.FullName); //TODO: Fix Will Crash
+                    if (logPath.Exists && logPath.LastWriteTime > clientLog.LastWriteTime) { continue; } else if (logPath.Exists) { logPath.Delete(); }
+                    clientLog.CopyTo(logPath.FullName);
                 }
                 catch { }
             }
-            LoggingSystem.Log($"[{this.Client}]: Moved Server Logs to BLREdit logs");
+            LoggingSystem.Log($"[{this.Client}]: Copied Server Logs to BLREdit logs");
         }
         
 
