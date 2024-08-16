@@ -20,7 +20,7 @@ public sealed class MagiCowClient
         string fail = "";
         try
         {
-            using var response = await HttpGetClient.GetAsync(serverAddress, api);
+            using var response = await HttpGetClient.GetAsync(serverAddress, api, $"http://{server}");
             if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
