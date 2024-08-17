@@ -121,7 +121,7 @@
     <value>Add Client</value>
   </data>
   <data name="btn_AddProfile" xml:space="preserve">
-    <value>New Profile</value>
+    <value>New Loadout</value>
   </data>
   <data name="btn_AddServer" xml:space="preserve">
     <value>Add Server</value>
