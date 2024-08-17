@@ -549,10 +549,12 @@ public sealed partial class MainWindow : Window
                     }
                 }
 
-                if(DataStorage.Settings.SelectedBLReviveVersion == "BLRevive")
+                // from @superewald: disabled because conflicts with current changes, is proxy support even necessary anymore?
+                /*if(DataStorage.Settings.SelectedBLReviveVersion == "BLRevive")
                     ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
                 else
-                    ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);
+                    ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);*/
+                ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
             }
         }
     }
