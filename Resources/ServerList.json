@@ -140,5 +140,11 @@
     "ID": "ike753z 0",
     "ServerAddress": "blr.753z.net",
     "Hidden": true
+  },
+  {
+    "ID": "sigmatell 0",
+    "ServerAddress": "type45.ddns.net",
+    "Port": 7777,
+    "Region": "RU"
   }
 ]
