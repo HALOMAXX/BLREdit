@@ -88,7 +88,7 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         return true;
     }
 
-    public BLRItem? GetReceiver()
+    public BLREditItem? GetReceiverItem()
     {
         var primary = ImportSystem.GetItemByNameAndType(ImportSystem.PRIMARY_CATEGORY, Receiver);
         if (primary is not null)
@@ -101,68 +101,68 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         return null;
     }
 
-    public BLRItem? GetItemByType(string type)
+    public BLREditItem? GetItemByType(string type)
     {
         return type switch
         {
-            ImportSystem.CAMOS_WEAPONS_CATEGORY => GetCamoBLRItem(),
-            ImportSystem.HANGERS_CATEGORY => GetTagBLRItem(),
-            ImportSystem.MAGAZINES_CATEGORY => GetMagazineBLRItem(),
-            ImportSystem.BARRELS_CATEGORY => GetBarrelBLRItem(),
-            ImportSystem.SCOPES_CATEGORY => GetScopeBLRItem(),
-            ImportSystem.STOCKS_CATEGORY => GetStockBLRItem(),
-            ImportSystem.AMMO_CATEGORY => GetAmmoBLRItem(),
-            ImportSystem.PRIMARY_SKIN_CATEGORY => GetSkinBLRItem(),
-            ImportSystem.GRIPS_CATEGORY => GetGripBLRItem(),
-            ImportSystem.MUZZELS_CATEGORY => GetMuzzleBLRItem(),
+            ImportSystem.CAMOS_WEAPONS_CATEGORY => GetCamoItem(),
+            ImportSystem.HANGERS_CATEGORY => GetTagItem(),
+            ImportSystem.MAGAZINES_CATEGORY => GetMagazineItem(),
+            ImportSystem.BARRELS_CATEGORY => GetBarrelItem(),
+            ImportSystem.SCOPES_CATEGORY => GetScopeItem(),
+            ImportSystem.STOCKS_CATEGORY => GetStockItem(),
+            ImportSystem.AMMO_CATEGORY => GetAmmoItem(),
+            ImportSystem.PRIMARY_SKIN_CATEGORY => GetSkinItem(),
+            ImportSystem.GRIPS_CATEGORY => GetGripItem(),
+            ImportSystem.MUZZELS_CATEGORY => GetMuzzleItem(),
             _ => null,
         };
     }
 
-    public BLRItem? GetCamoBLRItem()
+    public BLREditItem? GetCamoItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, Camo);
     }
-    public BLRItem? GetTagBLRItem()
+    public BLREditItem? GetTagItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.HANGERS_CATEGORY, Tag);
     }
-    public BLRItem? GetMagazineBLRItem()
+    public BLREditItem? GetMagazineItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MAGAZINES_CATEGORY, Magazine);
     }
-    public BLRItem? GetAmmoBLRItem()
+    public BLREditItem? GetAmmoItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.AMMO_CATEGORY, Ammo);
     }
-    public BLRItem? GetSkinBLRItem()
+    public BLREditItem? GetSkinItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, Skin);
     }
 
-    public BLRItem? GetMuzzleBLRItem()
+    public BLREditItem? GetMuzzleItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.MUZZELS_CATEGORY, Muzzle);
     }
-    public BLRItem? GetStockBLRItem()
+    public BLREditItem? GetStockItem()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, Stock) ?? ImportSystem.GetItemByNameAndType(ImportSystem.STOCKS_CATEGORY, NoStock);
     }
-    public BLRItem? GetBarrelBLRItem()
+    public BLREditItem? GetBarrelItem()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, Barrel) ?? ImportSystem.GetItemByNameAndType(ImportSystem.BARRELS_CATEGORY, NoBarrel);
     }
-    public BLRItem? GetScopeBLRItem()
+    public BLREditItem? GetScopeItem()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, Scope) ?? ImportSystem.GetItemByNameAndType(ImportSystem.SCOPES_CATEGORY, NoScope);
     }
 
-    public BLRItem? GetGripBLRItem()
+    public BLREditItem? GetGripItem()
     {
         return ImportSystem.GetItemByNameAndType(ImportSystem.GRIPS_CATEGORY, Grip);
     }
 
-    public static MagiCowsWeapon? GetDefaultSetupOfReceiver(BLRItem? item)
+    public static MagiCowsWeapon? GetDefaultSetupOfReceiver(BLREditItem? item)
     {
         if (item is null) return null;
         var tuple = DefaultWeapons as ITuple;
@@ -177,25 +177,25 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         return null;
     }
 
-    public void Read(BLRWeapon weapon)
+    public void Read(BLREditWeapon weapon)
     {
         if (weapon is null) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
-        weapon.Receiver = GetReceiver();
-        weapon.Barrel = GetBarrelBLRItem();
-        weapon.Magazine = GetMagazineBLRItem();
-        weapon.Muzzle = GetMuzzleBLRItem();
-        weapon.Stock = GetStockBLRItem();
-        weapon.Scope = GetScopeBLRItem();
-        weapon.Grip = GetGripBLRItem();
-        weapon.Tag = GetTagBLRItem();
-        weapon.Camo = GetCamoBLRItem();
-        weapon.Ammo = GetAmmoBLRItem();
-        weapon.Skin = GetSkinBLRItem();
+        weapon.Receiver = GetReceiverItem();
+        weapon.Barrel = GetBarrelItem();
+        weapon.Magazine = GetMagazineItem();
+        weapon.Muzzle = GetMuzzleItem();
+        weapon.Stock = GetStockItem();
+        weapon.Scope = GetScopeItem();
+        weapon.Grip = GetGripItem();
+        weapon.Tag = GetTagItem();
+        weapon.Camo = GetCamoItem();
+        weapon.Ammo = GetAmmoItem();
+        weapon.Skin = GetSkinItem();
         UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRWeapon weapon)
+    public void Write(BLREditWeapon weapon)
     {
         if(weapon is null) return;
         Receiver = weapon.Receiver?.Name ?? "Assault Rifle";
@@ -203,12 +203,12 @@ public sealed class MagiCowsWeapon : IBLRWeapon
         Scope = weapon.Scope?.Name ?? "No Optic Mod";
         Stock = weapon.Stock?.Name ?? "No Stock";
         Grip = weapon.Grip?.Name ?? "";
-        Muzzle = BLRItem.GetMagicCowsID(weapon.Muzzle, -1);
-        Magazine = BLRItem.GetMagicCowsID(weapon.Magazine, -1);
-        Tag = BLRItem.GetMagicCowsID(weapon.Tag);
-        Camo = BLRItem.GetMagicCowsID(weapon.Camo);
-        Ammo = BLRItem.GetMagicCowsID(weapon.Ammo);
-        Skin = BLRItem.GetMagicCowsID(weapon.Skin);
+        Muzzle = BLREditItem.GetMagicCowsID(weapon.Muzzle, -1);
+        Magazine = BLREditItem.GetMagicCowsID(weapon.Magazine, -1);
+        Tag = BLREditItem.GetMagicCowsID(weapon.Tag);
+        Camo = BLREditItem.GetMagicCowsID(weapon.Camo);
+        Ammo = BLREditItem.GetMagicCowsID(weapon.Ammo);
+        Skin = BLREditItem.GetMagicCowsID(weapon.Skin);
         if (WasWrittenTo is not null) { WasWrittenTo(weapon, EventArgs.Empty); }
     }
 
@@ -216,11 +216,11 @@ public sealed class MagiCowsWeapon : IBLRWeapon
     {
         return new ShareableWeapon()
         {
-            Receiver = BLRItem.GetMagicCowsID(GetReceiver()),
-            Barrel = BLRItem.GetMagicCowsID(GetBarrelBLRItem()),
-            Scope = BLRItem.GetMagicCowsID(GetScopeBLRItem()),
-            Stock = BLRItem.GetMagicCowsID(GetStockBLRItem()),
-            Grip = BLRItem.GetMagicCowsID(GetGripBLRItem(), -1),
+            Receiver = BLREditItem.GetMagicCowsID(GetReceiverItem()),
+            Barrel = BLREditItem.GetMagicCowsID(GetBarrelItem()),
+            Scope = BLREditItem.GetMagicCowsID(GetScopeItem()),
+            Stock = BLREditItem.GetMagicCowsID(GetStockItem()),
+            Grip = BLREditItem.GetMagicCowsID(GetGripItem(), -1),
             Muzzle = Muzzle,
             Magazine = Magazine,
             Tag = Tag,

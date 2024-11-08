@@ -31,21 +31,21 @@ namespace BLREdit.UI;
 public sealed partial class MainWindow : Window
 {
     public static readonly BLRClientWindow ClientWindow = new();
-    static MainWindowView? mainWindowView = null;
+    static MainWindowView? mainWindowView;
     public static MainWindowView MainView { get { mainWindowView ??= new(); return mainWindowView; } }
-    public static MainWindow? Instance { get; private set; } = null;
+    public static MainWindow? Instance { get; private set; }
 
     private readonly string[] Args;
 
     private readonly static char[] InvalidNameChars = [.. Path.GetInvalidPathChars(), .. Path.GetInvalidFileNameChars()];
 
-    public bool wasLastImageScopePreview = false;
-    public bool wasLastSelectedBorderPrimary = true;
+    public bool WasLastImageScopePreview { get; set; }
+    public bool WasLastSelectedBorderPrimary { get; set; } = true;
     private string lastSelectedType = "";
     static readonly Stopwatch PingWatch = Stopwatch.StartNew();
     static bool firstStart = true;
-    private Type? lastSelectedSortingType = null;
-    private int buttonIndex = 0;
+    private Type? lastSelectedSortingType;
+    private int buttonIndex;
 
     private static SolidColorBrush SolidColorBrush { get; } = new(Colors.Blue);
     private static ColorAnimation AlertAnim { get; } = new()
@@ -66,7 +66,7 @@ public sealed partial class MainWindow : Window
 
     ColorAnimation? lastAnim;
 
-    public bool BlockChangeNotif { get; set; } = false;
+    public bool BlockChangeNotif { get; set; }
 
     public MainWindow(string[] args)
     {
@@ -120,7 +120,7 @@ public sealed partial class MainWindow : Window
         List<BLRServer> remove = [];
         foreach (var server in DataStorage.ServerList)
         {
-            if (server.ID.Equals(string.Empty, StringComparison.Ordinal))
+            if (string.IsNullOrEmpty(server.ID))
             { 
                 remove.Add(server);
             }
@@ -213,7 +213,7 @@ public sealed partial class MainWindow : Window
 
     private void Border_Drop(object sender, DragEventArgs e)
     {
-        if (e.Data.GetData(typeof(BLRItem)) is BLRItem item)
+        if (e.Data.GetData(typeof(BLREditItem)) is BLREditItem item)
         {
             Border? border = null;
             if (e.OriginalSource is Image mage)
@@ -250,21 +250,21 @@ public sealed partial class MainWindow : Window
 
         if (e.ChangedButton == MouseButton.Left)
         {
-            if (wasLastImageScopePreview)
+            if (WasLastImageScopePreview)
             {
                 if (ItemList.ItemsSource is not null)
                 {
                     foreach (var i in ItemList.ItemsSource)
                     {
-                        if(i is BLRItem item) item.RemoveCrosshair();
+                        if(i is BLREditItem item) item.RemoveCrosshair();
                     }
                 }
             }
 
             var parent = ((FrameworkElement)border.Parent);
 
-            var weapon = parent?.DataContext as BLRWeapon;
-            var loadout = parent?.DataContext as BLRLoadout;
+            var weapon = parent?.DataContext as BLREditWeapon;
+            var loadout = parent?.DataContext as BLREditLoadout;
             var profile = parent?.DataContext as BLRProfile;
 
             if (weapon is not null) { ItemFilters.Instance.WeaponFilter = weapon; }
@@ -279,9 +279,9 @@ public sealed partial class MainWindow : Window
             {
                 case "Receiver":
                     if (weapon?.IsPrimary ?? true)
-                    { SetItemList(ImportSystem.PRIMARY_CATEGORY); wasLastSelectedBorderPrimary = true; }
+                    { SetItemList(ImportSystem.PRIMARY_CATEGORY); WasLastSelectedBorderPrimary = true; }
                     else
-                    { SetItemList(ImportSystem.SECONDARY_CATEGORY); wasLastSelectedBorderPrimary = false; }
+                    { SetItemList(ImportSystem.SECONDARY_CATEGORY); WasLastSelectedBorderPrimary = false; }
                     break;
                 case "Muzzle":
                     SetItemList(ImportSystem.MUZZELS_CATEGORY);
@@ -293,7 +293,7 @@ public sealed partial class MainWindow : Window
                     SetItemList(ImportSystem.BARRELS_CATEGORY);
                     break;
                 case "Scope":
-                    if (image.DataContext is not BLRWeapon)
+                    if (image.DataContext is not BLREditWeapon)
                     {
                         SetItemList(ImportSystem.SCOPES_CATEGORY);
                     }
@@ -302,7 +302,7 @@ public sealed partial class MainWindow : Window
                         if (weapon?.Scope is not null)
                         {
                             weapon.Scope.LoadCrosshair(weapon);
-                            ItemList.ItemsSource = new BLRItem[] { weapon.Scope };
+                            ItemList.ItemsSource = new BLREditItem[] { weapon.Scope };
                             MainView.IsScopePreviewVisible.Set(true);
                         }
                     }
@@ -399,12 +399,12 @@ public sealed partial class MainWindow : Window
         }
         else if (e.ChangedButton == MouseButton.Right)
         {
-            if (((FrameworkElement)border.Parent).DataContext is BLRWeapon weapon)
+            if (((FrameworkElement)border.Parent).DataContext is BLREditWeapon weapon)
             {
                 UndoRedoSystem.DoValueChange(null, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
                 UndoRedoSystem.EndUndoRecord();
             }
-            else if (((FrameworkElement)border.Parent).DataContext is BLRLoadout loadout)
+            else if (((FrameworkElement)border.Parent).DataContext is BLREditLoadout loadout)
             {
                 UndoRedoSystem.DoValueChange(null, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
                 UndoRedoSystem.EndUndoRecord();
@@ -564,7 +564,7 @@ public sealed partial class MainWindow : Window
         var directory = $"{client.BLReviveConfigsPath}profiles\\";
         Directory.CreateDirectory(directory);
 
-        List<LoadoutManagerLoadout> loadouts = [];
+        List<ProxyLoadoutManagerLoadout> loadouts = [];
 
         string message = string.Empty;
         int count = 0;
@@ -572,7 +572,7 @@ public sealed partial class MainWindow : Window
         {
             if (profile.BLR.Apply && profile.BLR.ValidateLoadout(ref message))
             {
-                loadouts.Add(new LoadoutManagerLoadout(profile.BLR));
+                loadouts.Add(new ProxyLoadoutManagerLoadout(profile.BLR));
                 profile.Shareable.LastApplied = DateTime.Now;
                 profile.BLR.IsChanged = false;
                 count++;
@@ -595,7 +595,7 @@ public sealed partial class MainWindow : Window
         var directory = $"{client.BLReviveConfigsPath}profiles\\";
         Directory.CreateDirectory(directory);
         string message = string.Empty;
-        List<LMLoadout> loadouts = [];
+        List<ReviveLoadoutManagerLoadout> loadouts = [];
 
         var exportLoadouts = DataStorage.Loadouts.Where(l => l.BLR.ValidateLoadout(ref message)).Where(l => l.BLR.Apply).OrderBy(l => l.BLR.Name);
 
@@ -678,7 +678,7 @@ public sealed partial class MainWindow : Window
                         switch (target)
                         {
                             case WeaponControl weaponControl:
-                                if (weaponControl.DataContext is BLRWeapon weapon)
+                                if (weaponControl.DataContext is BLREditWeapon weapon)
                                 {
                                     var copy = weapon.Copy();
                                     if (weapon.IsPrimary)
@@ -701,7 +701,7 @@ public sealed partial class MainWindow : Window
                                 }
                                 break;
                             case GearControl gearControl:
-                                if (gearControl.DataContext is BLRLoadout gearLoadout)
+                                if (gearControl.DataContext is BLREditLoadout gearLoadout)
                                 {
                                     MainView.GearCopy = gearLoadout.CopyGear();
                                     ShowAlert($"Copied Gear!"); //TODO: Add Localization
@@ -714,7 +714,7 @@ public sealed partial class MainWindow : Window
                                 }
                                 break;
                             case ExtraControl extraControl:
-                                if (extraControl.DataContext is BLRLoadout extraLoadout)
+                                if (extraControl.DataContext is BLREditLoadout extraLoadout)
                                 {
                                     MainView.ExtraCopy = extraLoadout.CopyExtra();
                                     ShowAlert($"Copied Extra!"); //TODO: Add Localization
@@ -727,7 +727,7 @@ public sealed partial class MainWindow : Window
                                 }
                                 break;
                             case WeaponViewControl weaponViewControl:
-                                if (weaponViewControl.DataContext is BLRWeapon viewWeapon)
+                                if (weaponViewControl.DataContext is BLREditWeapon viewWeapon)
                                 {
                                     if (viewWeapon.IsPrimary)
                                     {
@@ -749,7 +749,7 @@ public sealed partial class MainWindow : Window
                                 }
                                 break;
                             case LoadoutViewControl loadoutViewControl:
-                                if (loadoutViewControl.DataContext is BLRLoadout viewLoadout)
+                                if (loadoutViewControl.DataContext is BLREditLoadout viewLoadout)
                                 {
                                     MainView.ExtraCopy = viewLoadout.CopyExtra();
                                     MainView.GearCopy = viewLoadout.CopyGear();
@@ -775,7 +775,7 @@ public sealed partial class MainWindow : Window
                         switch (target)
                         {
                             case WeaponControl weaponControl:
-                                if (weaponControl.DataContext is BLRWeapon weapon)
+                                if (weaponControl.DataContext is BLREditWeapon weapon)
                                 {
                                     if (weapon.IsPrimary)
                                     {
@@ -796,7 +796,7 @@ public sealed partial class MainWindow : Window
                                 }
                                 break;
                             case GearControl gearControl:
-                                if (gearControl.DataContext is BLRLoadout gearLoadout)
+                                if (gearControl.DataContext is BLREditLoadout gearLoadout)
                                 {
                                     if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
                                     {
@@ -806,7 +806,7 @@ public sealed partial class MainWindow : Window
                                 }
                                 break;
                             case ExtraControl extraControl:
-                                if (extraControl.DataContext is BLRLoadout extraLoadout)
+                                if (extraControl.DataContext is BLREditLoadout extraLoadout)
                                 {
                                     if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
                                     {
@@ -816,7 +816,7 @@ public sealed partial class MainWindow : Window
                                 }
                                 break;
                             case LoadoutViewControl loadoutViewControl:
-                                if (loadoutViewControl.DataContext is BLRLoadout viewLoadout)
+                                if (loadoutViewControl.DataContext is BLREditLoadout viewLoadout)
                                 {
                                     if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
                                     {
@@ -827,7 +827,7 @@ public sealed partial class MainWindow : Window
                                 }
                                 break;
                             case WeaponViewControl weaponViewControl:
-                                if (weaponViewControl.DataContext is BLRWeapon viewWeapon)
+                                if (weaponViewControl.DataContext is BLREditWeapon viewWeapon)
                                 {
                                     if (viewWeapon.IsPrimary)
                                     {
@@ -1178,17 +1178,17 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public static void SetItemToBorder(Border? border, BLRItem item)
+    public static void SetItemToBorder(Border? border, BLREditItem item)
     {
         if (border is null) { return; }
         if (border.Parent is FrameworkElement parent)
         {
-            if (parent.DataContext is BLRWeapon weapon)
+            if (parent.DataContext is BLREditWeapon weapon)
             {
                 UndoRedoSystem.DoValueChange(item, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon, BlockEvents.None);
                 UndoRedoSystem.EndUndoRecord();
             }
-            if (parent.DataContext is BLRLoadout loadout)
+            if (parent.DataContext is BLREditLoadout loadout)
             {
                 UndoRedoSystem.DoValueChange(item, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout, BlockEvents.None);
                 UndoRedoSystem.EndUndoRecord();

@@ -3,7 +3,7 @@ using BLREdit.UI.Views;
 
 namespace BLREdit.Export;
 
-public sealed class LoadoutManagerGear
+public sealed class ProxyLoadoutManagerGear
 {
     public bool Female { get; set; }
     public bool Bot { get; set; }
@@ -27,32 +27,30 @@ public sealed class LoadoutManagerGear
     public int PatchShapeColor { get; set; }
     public int Hanger { get; set; }
 
-    public LoadoutManagerGear()
+    public ProxyLoadoutManagerGear()
     { }
 
-    public LoadoutManagerGear(BLRLoadout loadout)
+    public ProxyLoadoutManagerGear(BLREditLoadout? loadout)
     {
-        Female = loadout.IsFemale.Is;
-        BodyCamo = BLRItem.GetLMID(loadout.BodyCamo);
-        UpperBody = BLRItem.GetLMID(loadout.UpperBody);
-        LowerBody = BLRItem.GetLMID(loadout.LowerBody);
-        Helmet = BLRItem.GetLMID(loadout.Helmet);
-        Tactical = BLRItem.GetLMID(loadout.Tactical);
-        Badge = BLRItem.GetLMID(loadout.Trophy);
+        Female = loadout?.IsFemale?.Is ?? false;
+        BodyCamo = BLREditItem.GetLMID(loadout?.BodyCamo);
+        UpperBody = BLREditItem.GetLMID(loadout?.UpperBody);
+        LowerBody = BLREditItem.GetLMID(loadout?.LowerBody);
+        Helmet = BLREditItem.GetLMID(loadout?.Helmet);
+        Tactical = BLREditItem.GetLMID(loadout?.Tactical);
+        Badge = BLREditItem.GetLMID(loadout?.Trophy);
 
-        int avatar = BLRItem.GetLMID(loadout.Avatar);
+        int avatar = BLREditItem.GetLMID(loadout?.Avatar);
 
         if (avatar > 34) 
         { Avatar = -1; } 
         else 
         { Avatar = avatar; }
 
-        if (loadout.GearSlot1Bool.Is) Gear_R1 = BLRItem.GetLMID(loadout.Gear1);
-        if (loadout.GearSlot2Bool.Is) Gear_R2 = BLRItem.GetLMID(loadout.Gear2);
-        if (loadout.GearSlot3Bool.Is) Gear_L1 = BLRItem.GetLMID(loadout.Gear3);
-        if (loadout.GearSlot4Bool.Is) Gear_L2 = BLRItem.GetLMID(loadout.Gear4);
-        //if (loadout.GearSlot4Bool.Is || (loadout.Profile?.IsAdvanced.Is ?? false))
-
-        //TODO: Hanger, Icon, IconColor, PatchShape, PatchColor, ButtPack   
+        // first two gear slots are enabled because default loadout has a grenade and knife by default
+        if (loadout?.GearSlot1Bool?.Is ?? true) Gear_R1 = BLREditItem.GetLMID(loadout?.Gear1); 
+        if (loadout?.GearSlot2Bool?.Is ?? true) Gear_R2 = BLREditItem.GetLMID(loadout?.Gear2);
+        if (loadout?.GearSlot3Bool?.Is ?? false) Gear_L1 = BLREditItem.GetLMID(loadout.Gear3);
+        if (loadout?.GearSlot4Bool?.Is ?? false) Gear_L2 = BLREditItem.GetLMID(loadout.Gear4);
     }
 }

@@ -4,14 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:ui="clr-namespace:BLREdit.UI"
              xmlns:import="clr-namespace:BLREdit.Import"
              xmlns:p="clr-namespace:BLREdit.Properties"
-             d:DataContext="{d:DesignInstance Type=import:BLRItem}"
+             d:DataContext="{d:DesignInstance Type=import:BLREditItem}"
              mc:Ignorable="d">
     <VirtualizingStackPanel Orientation="Vertical" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-4,-1,-4,-1" ToolTip="{Binding DisplayTooltip}" MouseDown="ItemList_MouseDown">
         <Border BorderThickness="1,1,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid>
-                <Image Source="{Binding Path=Image.IconFileInfo.FullName}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Width="320" Height="160"/>
+                <Image Source="{Binding Path=MaleIcon.IconFileInfo.FullName}" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}, Path=DataContext.IsFemale.VisibilityInverted}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Width="320" Height="160"/>
+                <Image Source="{Binding Path=FemaleIcon.IconFileInfo.FullName}" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:MainWindow}, Path=DataContext.IsFemale.Visibility}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Width="320" Height="160"/>
                 <Image Visibility="{Binding Path=IsValid.VisibilityInverted}" ToolTip="{x:Static p:Resources.img_TT_AdvancedModeWarning}" Source="../Resources/invaliditem.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="32" Height="32" Margin="2,0,0,2"/>
             </Grid>
         </Border>

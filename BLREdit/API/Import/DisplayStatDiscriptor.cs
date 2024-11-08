@@ -43,10 +43,9 @@ public sealed class DisplayStatDiscriptor
     { }
 }
 
-[Flags]
-public enum StatsEnum
+public enum StatDisplayModifiers
 { 
-    None = 0,
-    Normal = 1,
-    Inverted = 2
+    None,
+    Normal,
+    Inverted,
 }

@@ -29,7 +29,7 @@ namespace BLREdit.UI.Controls
 
         private void ItemList_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is FrameworkElement element && element.DataContext is BLRItem item)
+            if (sender is FrameworkElement element && element.DataContext is BLREditItem item)
             {
                 if (e.ClickCount >= 2)
                 {

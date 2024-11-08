@@ -14,7 +14,7 @@ public static class UndoRedoSystem
     private static readonly List<SubUndoRedoAction> AfterActions = [];
     public static int CurrentActionCount { get { return CurrentAction.Actions.Count; } }
     public static int AfterActionCount { get { return AfterActions.Count; } }
-    public static bool UndoRedoSystemWorking { get; private set; } = false;
+    public static bool UndoRedoSystemWorking { get; private set; }
     private static ThreadLocal<BlockEvents> currentlyBlockedEvents = new(() => { return BlockEvents.None; });
     public static ThreadLocal<BlockEvents> CurrentlyBlockedEvents { get { return currentlyBlockedEvents; } set { BlockedEventHistory.Value.Push(currentlyBlockedEvents.Value); currentlyBlockedEvents = value; } }
     private static ThreadLocal<Stack<BlockEvents>> BlockedEventHistory { get; } = new(() => { return new(); });
@@ -188,19 +188,20 @@ public struct SubUndoRedoAction(object? before, object? after, PropertyInfo? pro
 }
 
 [Flags]
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2217:Do not mark enums with FlagsAttribute", Justification = "<Pending>")]
 public enum BlockEvents
 { 
     None = 0,
     All = ~0,
     AllExceptUpdate = All & ~Update,
-    WriteAll = 7,
     WriteProfile = 1,
     WriteLoadout = 2,
     WriteWeapon = 4,
-    ReadAll = 56,
+    WriteAll = WriteProfile | WriteLoadout | WriteWeapon,
     ReadProfile = 8,
     ReadLoadout = 16,
     ReadWeapon = 32,
+    ReadAll = ReadProfile | ReadLoadout | ReadWeapon,
     Update = 64,
     Calculate = 128,
     Remove = 256,

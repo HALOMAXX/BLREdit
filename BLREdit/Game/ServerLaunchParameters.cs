@@ -14,6 +14,6 @@ public sealed class ServerLaunchParameters
     public int BotCount = 2;
     public int MaxPlayers = 16;
     public int TimeLimit = 100;
-    public int SCP = 0;
+    public int SCP;
     public string[] RequiredModules = [];
 }

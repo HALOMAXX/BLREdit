@@ -78,6 +78,16 @@ public static class DataStorage
             settings.SelectedBLReviveVersion = BLREditSettings.AvailableBLReviveVersions.First();
         }
 
+        if (!BLREditSettings.AvailableBLREditVersions.Contains(settings.SelectedBLREditVersion))
+        {
+            settings.SelectedBLREditVersion = BLREditSettings.AvailableBLREditVersions.First();
+        }
+
+        if (!BLREditSettings.AvailableSDKTypes.Contains(settings.SelectedSDKType))
+        {
+            settings.SelectedSDKType = BLREditSettings.AvailableSDKTypes.First();
+        }
+
         return settings;
     }
 }

@@ -7,7 +7,7 @@
              xmlns:BLREdit="clr-namespace:BLREdit"
              xmlns:ui="clr-namespace:BLREdit.UI.Controls"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
-             d:DataContext="{d:DesignInstance Type=views:BLRWeapon}"
+             d:DataContext="{d:DesignInstance Type=views:BLREditWeapon}"
              DataContextChanged="UserControl_DataContextChanged"
              mc:Ignorable="d" d:DesignWidth="400">
     <UserControl.Resources>
@@ -30,7 +30,7 @@
             <Image Source="{Binding Path=Image.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" ToolTip="{Binding Path=DisplayTooltip}"/>
         </Border>
         <Border DataContext="{Binding Path=Scope}" Height="78" Width="78" HorizontalAlignment="Left" Margin="312,0,0,0" VerticalAlignment="Top" AllowDrop="True">
-            <Image Name="ScopePreviewImage" Source="{Binding Path=ScopePreview.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" ToolTip="{Binding Path=Scope.DisplayTooltip}" d:DataContext="{d:DesignInstance Type=views:BLRWeapon}" />
+            <Image Name="ScopePreviewImage" Source="{Binding Path=ScopePreview.IconFileInfo.FullName}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" ToolTip="{Binding Path=Scope.DisplayTooltip}" d:DataContext="{d:DesignInstance Type=views:BLREditWeapon}" />
         </Border>
 
         <Border Name="Receiver" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:WeaponControl}, Path=ReceiverVisibility}" DataContext="{Binding Path=Receiver}" DataContextChanged="Receiver_DataContextChanged" AllowDrop="True" Height="78" Width="156" Margin="156,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">

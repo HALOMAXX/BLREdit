@@ -27,7 +27,7 @@ public partial class DownloadInfoWindow : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    private int progress = 0;
+    private int progress;
 
     public int DownloadProgress { get { return progress; } set { progress = value; OnPropertyChanged(); } }
 

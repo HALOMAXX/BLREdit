@@ -7,12 +7,14 @@ using BLREdit.UI.Views;
 using BLREdit.UI;
 using BLREdit.Properties;
 using System;
+using System.Collections.ObjectModel;
 
 namespace BLREdit.Import;
 
 [JsonConverter(typeof(JsonBLRItemConverter))]
-public sealed class BLRItem : INotifyPropertyChanged
+public sealed class BLREditItem : INotifyPropertyChanged
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>")]
     public const string UID_FORMAT = "000000";
 
     #region Events
@@ -41,24 +43,26 @@ public sealed class BLRItem : INotifyPropertyChanged
     public string? DescriptorName { get; set; }
     public string Icon { get; set; } = string.Empty;
     public string? Name { get; set; }
-    public double CP { get; set; } = 0;
+    public double CP { get; set; }
     public int AmmoType { get; set; } = -1;
     [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(UID.ToString(UID_FORMAT)); } }
     [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 
     public BLRPawnModifiers? PawnModifiers { get; set; }
-    public List<string>? SupportedMods { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>")]
+    public Collection<string>? SupportedMods { get; set; }
     [JsonIgnore] public string DisplayTooltip { 
         get { 
             var tt = ItemTooltips.ResourceManager.GetString(UID.ToString(UID_FORMAT)); 
             return string.IsNullOrEmpty(tt) ? DisplayName : tt; } }
     public int UID { get; set; }
-    public List<int>? ValidFor { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>")]
+    public Collection<int>? ValidFor { get; set; }
     public BLRWeaponModifiers? WeaponModifiers { get; set; }
     public BLRWeaponStats? WeaponStats { get; set; }
     public BLRWikiStats? WikiStats { get; set; }
 
-    private bool female = false;
+    private bool female;
 
     [JsonIgnore] public FoxIcon? Image { get { if (this.female) { return FemaleIcon; } else { return MaleIcon; } } }
 
@@ -72,7 +76,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     /// </summary>
     /// <param name="item">The item to get the Loadout-Manager ID from</param>
     /// <returns>ID for Loadout-Manager</returns>
-    public static int GetLMID(BLRItem? item, int defaultLMID = -1)
+    public static int GetLMID(BLREditItem? item, int defaultLMID = -1)
     {
         return item?.GetLMID() ?? defaultLMID;
     }
@@ -91,7 +95,7 @@ public sealed class BLRItem : INotifyPropertyChanged
 
     public bool ItemNameContains(params string[] names)
     {
-        if (Name is null) return false;
+        if (Name is null || names is null || names.Length == 0) return false;
         foreach (var name in names)
         {
             if (Name.Contains(name)) return true;
@@ -99,7 +103,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         return false;
     }
 
-    public string GetDescriptorName(double points)
+    public string SelectDescriptorName(double points)
     {
         string currentbest = "";
         if (WeaponStats != null && WeaponStats.StatDecriptors != null)
@@ -119,6 +123,7 @@ public sealed class BLRItem : INotifyPropertyChanged
     public bool IsValidForItemIDS(params int[] uids)
     {
         if (ValidFor is null) return true;
+        if (uids is null || uids.Length == 0) return false;
         foreach (int valid in ValidFor)
         {
             foreach (int uid in uids)
@@ -132,12 +137,12 @@ public sealed class BLRItem : INotifyPropertyChanged
         return false;
     }
 
-    public bool IsValidFor(BLRItem? filter, bool advanced = false)
+    public bool IsValidFor(BLREditItem? filter, bool advanced = false)
     {
         return IsValidFor(this, filter, advanced);
     }
 
-    public static bool IsValidFor(BLRItem? item, BLRItem? filter, bool advanced = false)
+    public static bool IsValidFor(BLREditItem? item, BLREditItem? filter, bool advanced = false)
     {
         if (item == null) return true;
 
@@ -152,7 +157,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         return item.ValidForTest(filter);
     }
 
-    public bool ValidForTest(BLRItem? filter)
+    public bool ValidForTest(BLREditItem? filter)
     {
         switch (UID)
         {
@@ -183,7 +188,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         return false;
     }
 
-    private static bool AdvancedFilter(BLRItem? item, BLRItem? filter)
+    private static bool AdvancedFilter(BLREditItem? item, BLREditItem? filter)
     {
         if (item is null || item.UID == 45012) return false;
         switch (item.Category)
@@ -218,17 +223,18 @@ public sealed class BLRItem : INotifyPropertyChanged
         if (string.IsNullOrEmpty(Icon)) { return; }
         MaleIcon = new FoxIcon($"Assets\\textures\\{Icon}.png");
         if(Icon.Length > 8) FemaleIcon = new FoxIcon($"Assets\\textures\\{Icon.Insert(Icon.Length - 8, "_Female")}.png");
+        if (!FemaleIcon?.IconFileInfo?.Exists ?? true) { FemaleIcon = MaleIcon; }
     }
 
-    public void LoadCrosshair(BLRWeapon weapon)
+    public void LoadCrosshair(BLREditWeapon weapon)
     {
         ScopePreview = GetBitmapCrosshair(GetSecondaryScope(weapon));
     }
 
-    static readonly UIBool scopePreview = new UIBool(false);
-    public UIBool ScopePreviewBool { get { return MainWindow.MainView?.IsScopePreviewVisible ?? scopePreview; } }
+    static readonly UIBool scopePreviewDefault = new();
+    public UIBool ScopePreviewBool { get { return MainWindow.MainView?.IsScopePreviewVisible ?? scopePreviewDefault; } }
 
-    public string GetSecondaryScope(BLRWeapon weapon)
+    public string GetSecondaryScope(BLREditWeapon weapon)
     {
         var receiverName = weapon?.Receiver?.Name ?? "";
         switch (Name)
@@ -293,13 +299,13 @@ public sealed class BLRItem : INotifyPropertyChanged
         ScopePreview = null;
     }
 
-    public static int GetMagicCowsID(BLRItem? item, int defaultID = 0)
+    public static int GetMagicCowsID(BLREditItem? item, int defaultID = 0)
     {
         if(item is null) return defaultID;
         return ImportSystem.GetIDOfItem(item);
     }
 
-    public static int GetUID(BLRItem? item, int defaultUID = 0)
+    public static int GetUID(BLREditItem? item, int defaultUID = 0)
     {
         if (item is null) return defaultUID;
         return item.UID;
@@ -361,7 +367,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0, this, this).ZoomSpread,
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this).ZoomSpread,
                 _ => 0,
             };
         }
@@ -386,7 +392,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateDamage(this, 0).DamageIdeal,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateDamage(this, 0).DamageIdeal,
                 _ => WeaponModifiers?.Damage ?? 0,
             };
         }
@@ -459,7 +465,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0, this, this).HipSpread,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this).HipSpread,
                 _ => 0,
             };
         }
@@ -552,7 +558,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateSpread(this, 0, 0, this, this).MovmentSpread,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this).MovmentSpread,
                 _ => 0,
             };
         }
@@ -576,7 +582,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateReloadRate(this, 0, 0),
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateReloadRate(this, 0, 0),
                 _ => WeaponModifiers?.ReloadSpeed ?? 0,
             };
         }
@@ -589,7 +595,7 @@ public sealed class BLRItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLRWeapon.CalculateRecoil(this, 0).RecoilHip,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateRecoil(this, 0).RecoilHip,
                 _ => WeaponModifiers?.Recoil ?? 0,
             };
         }
@@ -649,42 +655,42 @@ public sealed class BLRItem : INotifyPropertyChanged
 [JsonConverter(typeof(JsonBLRPawnModifiersConverter))]
 public sealed class BLRPawnModifiers
 {
-    public double BodyDamageReduction { get; set; } = 0;
-    public double ElectroProtection { get; set; } = 0;
-    public double ExplosiveProtection { get; set; } = 0;
-    public double GearSlots { get; set; } = 0;
-    public double HRVDuration { get; set; } = 0;
-    public double HRVRechargeRate { get; set; } = 0;
-    public double Health { get; set; } = 0;
-    public double HealthRecharge { get; set; } = 0;
-    public double HelmetDamageReduction { get; set; } = 0;
-    public double IncendiaryProtection { get; set; } = 0;
-    public double InfraredProtection { get; set; } = 0;
-    public double LegsDamageReduction { get; set; } = 0;
-    public double MeleeProtection { get; set; } = 0;
-    public double MeleeRange { get; set; } = 0;
-    public double MovementSpeed { get; set; } = 0;
-    public double PermanentHealthProtection { get; set; } = 0;
+    public double BodyDamageReduction { get; set; }
+    public double ElectroProtection { get; set; }
+    public double ExplosiveProtection { get; set; }
+    public double GearSlots { get; set; }
+    public double HRVDuration { get; set; }
+    public double HRVRechargeRate { get; set; }
+    public double Health { get; set; }
+    public double HealthRecharge { get; set; }
+    public double HelmetDamageReduction { get; set; }
+    public double IncendiaryProtection { get; set; }
+    public double InfraredProtection { get; set; }
+    public double LegsDamageReduction { get; set; }
+    public double MeleeProtection { get; set; }
+    public double MeleeRange { get; set; }
+    public double MovementSpeed { get; set; }
+    public double PermanentHealthProtection { get; set; }
     public double SprintMultiplier { get; set; } = 1;
-    public double Stamina { get; set; } = 0;
-    public double SwitchWeaponSpeed { get; set; } = 0;
-    public double ToxicProtection { get; set; } = 0;
+    public double Stamina { get; set; }
+    public double SwitchWeaponSpeed { get; set; }
+    public double ToxicProtection { get; set; }
 }
 
 [JsonConverter(typeof(JsonBLRWeaponModifiersConverter))]
 public sealed class BLRWeaponModifiers
 {
-    public double Accuracy { get; set; } = 0;
-    public double Ammo { get; set; } = 0;
-    public double Damage { get; set; } = 0;
-    public double MovementSpeed { get; set; } = 0;
-    public double Range { get; set; } = 0;
-    public double RateOfFire { get; set; } = 0;
-    public double Rating { get; set; } = 0;
-    public double Recoil { get; set; } = 0;
-    public double ReloadSpeed { get; set; } = 0;
-    public double SwitchWeaponSpeed { get; set; } = 0;
-    public double WeaponWeight { get; set; } = 0;
+    public double Accuracy { get; set; }
+    public double Ammo { get; set; }
+    public double Damage { get; set; }
+    public double MovementSpeed { get; set; }
+    public double Range { get; set; }
+    public double RateOfFire { get; set; }
+    public double Rating { get; set; }
+    public double Recoil { get; set; }
+    public double ReloadSpeed { get; set; }
+    public double SwitchWeaponSpeed { get; set; }
+    public double WeaponWeight { get; set; }
 }
 
 [JsonConverter(typeof(JsonBLRWeaponStatsConverter))]
@@ -699,12 +705,12 @@ public sealed class BLRWeaponStats
     public double ReloadSpeed { get; set; }
     public double WeaponWeight { get; set; }
 
-    public double ApplyTime { get; set; } = 0;
-    public double RecoveryTime { get; set; } = 0;
+    public double ApplyTime { get; set; }
+    public double RecoveryTime { get; set; }
     public double BaseSpread { get; set; } = 0.04f;
-    public double Burst { get; set; } = 0;
+    public double Burst { get; set; }
     public double FragmentsPerShell { get; set; } = 1;
-    public double ZoomRateOfFire { get; set; } = 0;
+    public double ZoomRateOfFire { get; set; }
     public double CrouchSpreadMultiplier { get; set; } = 0.5f;
     public double InitialMagazines { get; set; } = 4;
     public double IdealDistance { get; set; } = 8000;
@@ -726,20 +732,20 @@ public sealed class BLRWeaponStats
     public Vector3 ModificationRangeRecoilReloadRate { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeTABaseSpread { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeWeightMultiplier { get; set; } = Vector3.Zero;
-    public double MovementSpreadConstant { get; set; } = 0.0f;
+    public double MovementSpreadConstant { get; set; }
     public double MovementSpreadMultiplier { get; set; } = 2.5f;
-    public double RecoilAccumulation { get; set; } = 0;
+    public double RecoilAccumulation { get; set; }
     public double RecoilAccumulationMultiplier { get; set; } = 0.95f;
-    public double RecoilSize { get; set; } = 0;
+    public double RecoilSize { get; set; }
     public Vector3 RecoilVector { get; set; } = Vector3.Zero;
     public Vector3 RecoilVectorMultiplier { get; set; } = Vector3.Zero;
     public double RecoilZoomMultiplier { get; set; } = 0.5f;
     public double ReloadShortMultiplier { get; set; } = 1.0f; // not actually a thing, but this is currently the easiest way with how we do the reload numbers
-    public double ROF { get; set; } = 0;
+    public double ROF { get; set; }
     public StatDecriptor[] StatDecriptors { get; set; } = [new()];
-    public double TABaseSpread { get; set; } = 0;
-    public double TightAimTime { get; set; } = 0.0f;
-    public bool UseTABaseSpread { get; set; } = false;
+    public double TABaseSpread { get; set; }
+    public double TightAimTime { get; set; }
+    public bool UseTABaseSpread { get; set; }
     public double Weight { get; set; } = 150.0f;
     public double ZoomSpreadMultiplier { get; set; } = 0.4f;
 }
@@ -747,7 +753,7 @@ public sealed class BLRWeaponStats
 public sealed class StatDecriptor
 {
     public string Name { get; set; } = "Classic";
-    public int Points { get; set; } = 0;
+    public int Points { get; set; }
 }
 
 [JsonConverter(typeof(JsonBLRWikiStatsConverter))]

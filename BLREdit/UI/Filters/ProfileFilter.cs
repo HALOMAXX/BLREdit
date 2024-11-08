@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace BLREdit.UI;
 
-class ProfileFilter : INotifyPropertyChanged
+sealed class ProfileFilter : INotifyPropertyChanged
 {
     #region Events
     public event PropertyChangedEventHandler? PropertyChanged;
