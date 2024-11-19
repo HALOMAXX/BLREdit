@@ -367,7 +367,7 @@ public sealed class BLREditItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this).ZoomSpread,
+                ImportSystem.SECONDARY_CATEGORY or ImportSystem.PRIMARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this, 0).ZoomSpread,
                 _ => 0,
             };
         }
@@ -465,7 +465,7 @@ public sealed class BLREditItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this).HipSpread,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this, 0).HipSpread,
                 _ => 0,
             };
         }
@@ -558,7 +558,7 @@ public sealed class BLREditItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this).MovmentSpread,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateSpread(this, 0, 0, this, this, 0).MovmentSpread,
                 _ => 0,
             };
         }
@@ -731,6 +731,7 @@ public sealed class BLRWeaponStats
     public Vector3 ModificationRangeReloadRate { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeRecoilReloadRate { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeTABaseSpread { get; set; } = Vector3.Zero;
+    public Vector3 ModificationRangeDamageAccuracyRange { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeWeightMultiplier { get; set; } = Vector3.Zero;
     public double MovementSpreadConstant { get; set; }
     public double MovementSpreadMultiplier { get; set; } = 2.5f;

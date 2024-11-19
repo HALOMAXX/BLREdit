@@ -40,7 +40,7 @@
 	  <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1" />
 	  <PackageReference Include="PeNet" Version="4.0.5" />
 	  <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-	  <PackageReference Include="System.Text.Json" Version="8.0.4" />
+	  <PackageReference Include="System.Text.Json" Version="9.0.0" />
 	  <PackageReference Include="VirtualizingWrapPanel" Version="2.0.10" />
 	</ItemGroup>
 

@@ -1009,7 +1009,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
         BarrelStockMovementSpeed += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
         ModifiedScopeInTime = CalculateScopeInTime(Receiver, Scope, BarrelStockMovementSpeed, RawScopeInTime);
-        (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Receiver, AccuracyPercentage, BarrelStockMovementSpeed, Magazine, Ammo);
+        (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Receiver, AccuracyPercentage, BarrelStockMovementSpeed, Magazine, Ammo, DamagePercentage);
         WeaponDescriptorPart1 = CompareItemDescriptor1(Barrel, Magazine);
         WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
         WeaponDescriptorPart3 = Receiver.SelectDescriptorName(TotalRatingPoints);
@@ -1210,7 +1210,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// <param name="AccuracyPercentage">all raw Accuracy modifiers</param>
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovmentSpeed modifiers</param>
     /// <returns></returns>
-    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLREditItem receiver, double AccuracyPercentage, double BarrelStockMovementSpeed, BLREditItem? Magazine, BLREditItem? Ammo)
+    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLREditItem receiver, double AccuracyPercentage, double BarrelStockMovementSpeed, BLREditItem? Magazine, BLREditItem? Ammo, double DamagePercentage)
     {
         if (receiver is null || receiver.WeaponStats is null) return (0, 0, 0);
         double allMoveSpeed = Percentage(BarrelStockMovementSpeed);
@@ -1234,6 +1234,15 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         if (receiver.WeaponStats.UseTABaseSpread)
         {
             aim = accuracyTABaseModifier * (float)(180 / Math.PI);
+        }
+
+        double damagealpha = Math.Abs(Percentage(DamagePercentage));
+        if (receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X > 0 && DamagePercentage > 0 && receiver.UID == 40007)
+        {
+            // Only the BAR can actually use this, and only cares about > 0 combined damage mods
+            // Seemingly replaces TABaseSpread value in SingleActionBase
+            // Currently unused in 3.02 (but still exists)
+            aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X, damagealpha) * (float)(180 / Math.PI);
         }
 
         double weight_alpha = Math.Abs(receiver.WeaponStats.Weight / 80.0);

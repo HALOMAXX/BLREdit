@@ -15957,6 +15957,11 @@
           "Y": 0.03,
           "Z": 0.12
         },
+        "ModificationRangeDamageAccuracyRange": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
         "ModificationRangeCockRate": {
           "X": 1.334,
           "Y": 0.667,
