@@ -24,6 +24,7 @@
     "ServerAddress": "main-001.blrevive.northamp.fr",
     "Port": 30111,
     "InfoPort": 30111,
+    "Hidden": true,
     "Region": "EU-West"
   },
   {
