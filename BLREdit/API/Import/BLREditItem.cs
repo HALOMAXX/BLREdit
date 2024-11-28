@@ -710,11 +710,13 @@ public sealed class BLRWeaponStats
     public double BaseSpread { get; set; } = 0.04f;
     public double Burst { get; set; }
     public double FragmentsPerShell { get; set; } = 1;
+    public double FragmentSpread { get; set; }
     public double ZoomRateOfFire { get; set; }
     public double CrouchSpreadMultiplier { get; set; } = 0.5f;
     public double InitialMagazines { get; set; } = 4;
     public double IdealDistance { get; set; } = 8000;
     public double JumpSpreadMultiplier { get; set; } = 4.0f;
+    public double SpreadJumpConstant { get; set; } = 0.05f;
     public double SpreadCenterWeight { get; set; } = 0.2f;
     public double SpreadCenter { get; set; } = 0.4f;
     public double MagSize { get; set; } = 30;
@@ -735,9 +737,9 @@ public sealed class BLRWeaponStats
     public Vector3 ModificationRangeWeightMultiplier { get; set; } = Vector3.Zero;
     public double MovementSpreadConstant { get; set; }
     public double MovementSpreadMultiplier { get; set; } = 2.5f;
-    public double RecoilAccumulation { get; set; }
+    public double RecoilAccumulation { get; set; } = 1.0f;
     public double RecoilAccumulationMultiplier { get; set; } = 0.95f;
-    public double RecoilSize { get; set; }
+    public double RecoilSize { get; set; } = 0.1f;
     public Vector3 RecoilVector { get; set; } = Vector3.Zero;
     public Vector3 RecoilVectorMultiplier { get; set; } = Vector3.Zero;
     public double RecoilZoomMultiplier { get; set; } = 0.5f;

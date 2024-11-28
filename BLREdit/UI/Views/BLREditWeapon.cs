@@ -676,6 +676,13 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             return Receiver?.WeaponStats?.FragmentsPerShell ?? 0;
         }
     }
+    public double FragmentSpread
+    {
+        get
+        {
+            return Receiver?.WeaponStats?.FragmentSpread ?? 0;
+        }
+    }
     public double SpreadCrouchMultiplier
     {
         get
@@ -688,6 +695,13 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         get
         {
             return Receiver?.WeaponStats?.JumpSpreadMultiplier ?? 0;
+        }
+    }
+    public double SpreadJumpConstant
+    {
+        get
+        {
+            return Receiver?.WeaponStats?.SpreadJumpConstant ?? 0;
         }
     }
     public double RawScopeInTime
@@ -1045,7 +1059,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         SpreadCenterDisplay = SpreadCenter.ToString("0.00");
         RecoilVerticalRatioDisplay = VerticalRecoilRatio.ToString("0.00");
         RecoilRecoveryTimeDisplay = RecoilRecoveryTime.ToString("0.00");
-        RecoilAccumulationDisplay = RecoilAccumulation.ToString("0.00");
+        RecoilAccumulationDisplay = RecoilAccumulation.ToString("0.000");
 
         DamagePercentageDisplay = DamagePercentage.ToString("0") + '%';
         AccuracyPercentageDisplay = AccuracyPercentage.ToString("0") + '%';
@@ -1141,6 +1155,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     public static void CalculateReloadSpeed(BLREditItem receiver)
     {
         // Placeholder so I don't forget
+        // It didn't help I ended up still forgetting
     }
 
     /// <summary>
@@ -1239,7 +1254,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         double damagealpha = Math.Abs(Percentage(DamagePercentage));
         if (receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X > 0 && DamagePercentage > 0 && receiver.UID == 40007)
         {
-            // Only the BAR can actually use this, and only cares about > 0 combined damage mods
+            // Only the BAR can actually use this, and only cares about > 0 combined damage modifier
             // Seemingly replaces TABaseSpread value in SingleActionBase
             // Currently unused in 3.02 (but still exists)
             aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X, damagealpha) * (float)(180 / Math.PI);
@@ -1293,6 +1308,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         }
 
         // Average spread over multiple shots to account for random center weight multiplier
+        // (Currently unused)
         double[] averageSpread = [0, 0, 0];
         double magsize = Math.Min(receiver.WeaponStats.MagSize, 15.0f);
         if (magsize <= 1)
@@ -1459,7 +1475,8 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             {
                 Vector3 newRecoil = new(0, 0, 0)
                 {
-                    X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * 0.5f / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
+                    // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
+                    X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * 0.5f / 2.0f,
                     Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * 0.3535f
                 };
 
@@ -1469,8 +1486,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                     accumExponent = (accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
                 }
 
-                double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / (receiver?.WeaponStats?.Burst ?? 0), accumExponent);
-                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / (receiver?.WeaponStats?.Burst ?? 0) + 1.0f, accumExponent);
+                // TODO: RecoilVectorOffset
+
+                double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / Math.Max(receiver?.WeaponStats?.Burst ?? 0, 1.0f), accumExponent);
+                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / Math.Max(receiver?.WeaponStats?.Burst ?? 0, 1.0f) + 1.0f, accumExponent);
                 double multiplier = currentMultiplier - previousMultiplier;
                 newRecoil *= (float)multiplier;
                 averageRecoil += newRecoil;
@@ -1492,7 +1511,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             }
             else
             {
-                averageRecoil.Y *= 1.005f;
+                averageRecoil.Y *= 1.0f;
             }
 
             if (averageShotCount > 0)
@@ -1511,8 +1530,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         }
         else
         {
-            return (RecoilHip: 0,
-                    RecoilZoom: 0);
+            double recoil = (receiver?.WeaponStats?.RecoilSize ?? 0) * recoilModifier;
+            recoil *= 180 / Math.PI;
+            return (RecoilHip: recoil,
+                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8D);
         }
     }
 
@@ -1683,7 +1704,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         BLREditItem? skin = null;
         if (FilteredSkins.Length > 0 && IsPrimary)
         {
-            skin = FilteredSkins[rng.Next(0, FilteredSkins.Length)];
+            // Temporarily disabling weapon skin randomization, skins are currently broken and inconvenient to manually remove on each randomization (especially with people not knowing how to begin with)
+            // Skins kinda defeat the fun of randomization anyway and have limited choices on most guns so I'm open to it staying like this for now
+
+            //skin = FilteredSkins[rng.Next(0, FilteredSkins.Length)];
         }
         //TODO: Use the text filter to theme Randomization where possible(when the list is not empty after filtering).
 
