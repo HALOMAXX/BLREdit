@@ -1441,10 +1441,29 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             idealRange = (int)Lerp(receiver?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0, receiver?.WeaponStats?.ModificationRangeIdealDistance.X ?? 0, alpha);
             maxRange = Lerp(receiver?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0, receiver?.WeaponStats?.ModificationRangeMaxDistance.X ?? 0, alpha);
         }
+        double traceRange = Math.Max(maxRange,(receiver?.WeaponStats?.MaxTraceDistance ?? 0));
 
         return (IdealRange: idealRange / 100.0D,
                 MaxRange: maxRange / 100.0D,
-                TracerRange: (receiver?.WeaponStats?.MaxTraceDistance ?? 0) / 100.0D);
+                TracerRange: traceRange / 100.0D);
+    }
+
+    /// <summary>
+    /// Calculates the range for weapon sorting
+    /// </summary>
+    /// <param name="receiver">Receiver</param>
+    /// <returns></returns>
+    public static double CalculateSortedRange(BLREditItem receiver)
+    {
+        double idealRange = receiver?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0;
+        double maxRange = receiver?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0;
+        //double traceRange = receiver?.WeaponStats?.MaxTraceDistance ?? 0; // NOTE: trace distance is apparently the max of tracerange and maxrange
+
+        // Might eventually try something more complicated, but this will do for now. Varying damage multipliers makes any serious range comparison a bit tricky
+        // Maybe we can additionally highlight the max range damage (separately from the main damage number on left) when sorting range to show that it's related to range
+        double sortedRange = Math.Max(idealRange, maxRange);
+
+        return sortedRange;
     }
 
     /// <summary>
