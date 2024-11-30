@@ -570,7 +570,6 @@ public sealed class BLREditItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                //ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => WeaponStats?.Range ?? 0,
                 ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateSortedRange(this),
                 _ => WeaponModifiers?.Range ?? 0,
             };
