@@ -15333,16 +15333,16 @@
         "SpreadCenter": 0.4,
         "MagSize": 1.0,
         "MaxDistance": 10000.0,
-        "MaxRangeDamageMultiplier": 0.1,
+        "MaxRangeDamageMultiplier": 1.0,
         "ModificationRangeBaseSpread": {
           "X": 0.03,
           "Y": 0.01,
           "Z": 0.02
         },
         "ModificationRangeTABaseSpread": {
-          "X": 0.03,
-          "Y": 0.01,
-          "Z": 0.02
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
         },
         "ModificationRangeCockRate": {
           "X": 2.5,

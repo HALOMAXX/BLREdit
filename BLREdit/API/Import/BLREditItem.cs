@@ -392,7 +392,8 @@ public sealed class BLREditItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateDamage(this, 0).DamageIdeal,
+                //ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateDamage(this, 0).DamageIdeal,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateSortedDamage(this),
                 _ => WeaponModifiers?.Damage ?? 0,
             };
         }

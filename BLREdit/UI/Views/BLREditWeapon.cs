@@ -1463,6 +1463,11 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         // Adding a small amount of the min range to account for cases of identical max ranges between receivers
         double sortedRange = (idealRange / 1000) + Math.Max(idealRange, maxRange);
 
+        if (receiver?.UID == 40024) // Bow; projectile not affected by range and can travel for a long time
+        {
+            sortedRange = 999999.0d;
+        }
+
         return sortedRange;
     }
 
@@ -1584,6 +1589,22 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
 
         return (DamageIdeal: damageModifier,
                 DamageMax: damageModifier * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d));
+    }
+
+    /// <summary>
+    /// Calculates the damage for weapon sorting
+    /// </summary>
+    /// <param name="receiver">Receiver</param>
+    /// <returns></returns>
+    public static double CalculateSortedDamage(BLREditItem receiver)
+    {
+        double baseDamage = receiver?.WeaponStats?.ModificationRangeDamage.Z ?? 0;
+        double minDamage = baseDamage * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d);
+
+        // Adding a small amount of the min damage at range to account for possible future cases of identical damages between receivers but differing range damage multipliers
+        double sortedDamage = (minDamage / 100) + baseDamage;
+
+        return sortedDamage;
     }
 
     public static BLREditItem? CompareItemRating(BLREditItem? item1, BLREditItem? item2)
