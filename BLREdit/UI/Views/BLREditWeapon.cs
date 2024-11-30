@@ -1476,6 +1476,8 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 Vector3 newRecoil = new(0, 0, 0)
                 {
                     // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
+                    // NOTE: in preparity, the order of operations for the raw offset go (RandXY + RecoilVectorOffset[]) * RecoilSizeVector
+                    // NOTE: in parity, the order of operations for the raw offset go (RandXY * RecoilSizeVector) + RecoilVectorOffset[]
                     X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * 0.5f / 2.0f,
                     Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * 0.3535f
                 };
@@ -1486,7 +1488,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                     accumExponent = (accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
                 }
 
-                // TODO: RecoilVectorOffset
+                // TODO: RecoilVectorOffset[]
 
                 double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / Math.Max(receiver?.WeaponStats?.Burst ?? 0, 1.0f), accumExponent);
                 double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / Math.Max(receiver?.WeaponStats?.Burst ?? 0, 1.0f) + 1.0f, accumExponent);
@@ -1500,18 +1502,22 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             if (receiver?.UID == 40011) // LMG
             {
                 averageRecoil.Y *= 1.1f;
+                averageRecoil.X *= 1.05f;
             }
             else if (receiver?.UID == 40014 || receiver?.UID == 40007 || receiver?.UID == 40008) // LMGR - BAR - CR
             {
                 averageRecoil.Y *= 1.3f;
+                averageRecoil.X *= 1.1f;
             }
             else if (receiver?.UID == 40021 || receiver?.UID == 40019 || receiver?.UID == 40015 || receiver?.UID == 40005 || receiver?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
             {
                 averageRecoil.Y *= 1.5f;
+                averageRecoil.X *= 1.15f;
             }
             else
             {
                 averageRecoil.Y *= 1.0f;
+                averageRecoil.X *= 1.0f;
             }
 
             if (averageShotCount > 0)
@@ -1526,7 +1532,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             recoil *= 180 / Math.PI;
 
             return (RecoilHip: recoil,
-                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8D);
+                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8D); // NOTE: the 0.8 zoom multiply did not exist in preparity
         }
         else
         {
