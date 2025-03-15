@@ -1260,6 +1260,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X, damagealpha) * (float)(180 / Math.PI);
         }
 
+        // all of this old stuff will likely be removed at some point, keeping it for now though because i'm lazy
         double weight_alpha = Math.Abs(receiver.WeaponStats.Weight / 80.0);
         double weight_clampalpha = Math.Min(Math.Max(weight_alpha, -1.0), 1.0); // Don't ask me why they clamp the absolute value with a negative, I have no idea.
         double weight_multiplier;
@@ -1273,7 +1274,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         }
 
         double move_alpha = Math.Abs(allMoveSpeed); // Combined movement speed modifiers from only barrel and stock, divided by 100
-        double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
+        double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far. <-- clueless
         if (allMoveSpeed > 0)
         {
             move_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.Y, move_alpha);
@@ -1286,7 +1287,24 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         double movemultiplier_current = 1.0 + (receiver.WeaponStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier);
         double moveconstant_current = receiver.WeaponStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
 
-        double move = (accuracyBaseModifier + moveconstant_current) * (180 / Math.PI) * movemultiplier_current;
+        double move = (accuracyBaseModifier + moveconstant_current) * (180 / Math.PI) * movemultiplier_current; // old, wrong, and horribly hacky
+
+        // the gun's actual move spread, confirmed by ingame testing
+        // customization menu's stat was wrong and improperly using the now known to be unused Weight value
+        // all of my prior hacks were to mimic the wrong values, creating a giant mess of wrong
+        double speed_alpha = Math.Min(Math.Abs(BarrelStockMovementSpeed) / 80, 1.0);
+        double funny_number = 0.425; // magic number that Zombie pulled out of their ass
+        double speed_multiplier;
+        if (BarrelStockMovementSpeed > 0)
+        {
+            speed_multiplier = Lerp(1.0, 0.5, speed_alpha);
+        }
+        else
+        {
+            speed_multiplier = Lerp(1.0, 2.0, speed_alpha);
+        }
+        double real_movespread = (accuracyBaseModifier * (1.0 + (receiver.WeaponStats.MovementSpreadMultiplier - 1.0) * funny_number * speed_multiplier)) + (Math.Max(receiver.WeaponStats.MovementSpreadConstant,0.0) * funny_number * speed_multiplier);
+        move = real_movespread * (180 / Math.PI);
 
         if (receiver.UID == 40015) // BLP
         {
@@ -1503,7 +1521,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                     // NOTE: in preparity, the order of operations for the raw offset go (RandXY + RecoilVectorOffset[]) * RecoilSizeVector
                     // NOTE: in parity, the order of operations for the raw offset go (RandXY * RecoilSizeVector) + RecoilVectorOffset[]
                     X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * 0.5f / 2.0f,
-                    Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * 0.3535f
+                    Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * 0.3535f / 2.0f
                 };
 
                 double accumExponent = receiver?.WeaponStats?.RecoilAccumulation ?? 0;
@@ -1523,25 +1541,26 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
 
             // Magic numbers because I can't yet figure out the weird and overcomplicated clamping system, these gun's set Min and MaxWeaponRecoil values cause more overall recoil than their other values suggest
             // So it might be a bit messy here until I figure it out (luckily many guns use the default values so I can ignore them)
+            // I'm disabling these magic numbers for now because they're too magic for me
             if (receiver?.UID == 40011) // LMG
             {
-                averageRecoil.Y *= 1.1f;
-                averageRecoil.X *= 1.05f;
+                //averageRecoil.Y *= 1.1f;
+                //averageRecoil.X *= 1.05f;
             }
             else if (receiver?.UID == 40014 || receiver?.UID == 40007 || receiver?.UID == 40008) // LMGR - BAR - CR
             {
-                averageRecoil.Y *= 1.3f;
-                averageRecoil.X *= 1.1f;
+                //averageRecoil.Y *= 1.3f;
+                //averageRecoil.X *= 1.1f;
             }
             else if (receiver?.UID == 40021 || receiver?.UID == 40019 || receiver?.UID == 40015 || receiver?.UID == 40005 || receiver?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
             {
-                averageRecoil.Y *= 1.5f;
-                averageRecoil.X *= 1.15f;
+                //averageRecoil.Y *= 1.5f;
+                //averageRecoil.X *= 1.15f;
             }
             else
             {
-                averageRecoil.Y *= 1.0f;
-                averageRecoil.X *= 1.0f;
+                //averageRecoil.Y *= 1.0f;
+                //averageRecoil.X *= 1.0f;
             }
 
             if (averageShotCount > 0)
