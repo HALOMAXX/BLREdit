@@ -1254,13 +1254,20 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         }
 
         double damagealpha = Math.Abs(Percentage(DamagePercentage));
-        if (receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X > 0 && DamagePercentage > 0 && receiver.UID == 40007)
+        if (receiver.UID == 40007)
         {
-            // Only the BAR can actually use this, and only cares about > 0 combined damage modifier
-            // Seemingly replaces TABaseSpread value in SingleActionBase
-            // Currently unused in 3.02 (but still exists)
-            // I do not currently know how this plays with MovementSpreadConstant, though luckily we don't need to know yet
-            aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X, damagealpha);
+            if (DamagePercentage > 0)
+            {
+                // Only the BAR can actually use this
+                // Seemingly replaces TABaseSpread value in SingleActionBase
+                // Currently unused in 3.02 (but still exists)
+                // I do not currently know how this plays with MovementSpreadConstant or MovementSpreadMultiplier, though luckily we don't need to know yet
+                aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X, damagealpha);
+            }
+            else
+            {
+                aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Y, damagealpha);
+            }
         }
 
         // The gun's actual move spread, confirmed by ingame testing
