@@ -1167,16 +1167,17 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     public static double CalculateMovementSpeed(BLREditItem receiver, double MovementSpeedPercentage)
     {
         if (receiver is null || receiver.WeaponStats is null) return 0;
-        double allMovementSpeed = MovementSpeedPercentage / 100; // Movement speed is apparently also uncapped
+        double allMovementSpeed = MovementSpeedPercentage / 100.0; // Weapon modifier is uncapped, but coalesced mods to the pawn are capped
         double move_alpha = Math.Abs(allMovementSpeed);
         double move_modifier;
+        // Is casted to an int in scripts, so I'm flooring it
         if (allMovementSpeed > 0)
         {
-            move_modifier = Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.Y, move_alpha);
+            move_modifier = Math.Floor(Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.Y, move_alpha));
         }
         else
         {
-            move_modifier = Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.X, move_alpha);
+            move_modifier = Math.Floor(Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.X, move_alpha));
         }
         return move_modifier;
         //return (765 + move_modifier * 0.9) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
@@ -1192,7 +1193,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     public static double CalculatePawnMovementSpeed(BLREditItem receiver, BLREditLoadout? Loadout, double WeapSpeedPercentage)
     {
         if (Loadout is null || receiver is null || receiver.WeaponStats is null) return 0;
-        double weap_alpha = Math.Abs(WeapSpeedPercentage) / 100;
+        double weap_alpha = Math.Abs(WeapSpeedPercentage) / 100.0;
         double weap_modifier;
         if (WeapSpeedPercentage > 0)
         {
@@ -1204,7 +1205,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         }
 
         double combined = (Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667);
-        double pawnalpha = Math.Min(Math.Abs(combined), 100) / 100;
+        double pawnalpha = Math.Min(Math.Abs(combined), 100) / 100.0;
         double pawnspeed;
         if (combined > 0)
         {
@@ -1215,7 +1216,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             pawnspeed = Lerp(765, 630, pawnalpha);
         }
 
-        return pawnspeed / 100;
+        return pawnspeed / 100.0;
     }
 
     /// <summary>
@@ -1233,6 +1234,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         double accuracyBaseModifier;
         double accuracyTABaseModifier;
         double alpha = Math.Abs(allAccuracy);
+        double Rad2Deg = 180.0 / Math.PI; // The amount of these was annoying me, also converted only at the very end now
         if (allAccuracy > 0)
         {
             accuracyBaseModifier = Lerp(receiver.WeaponStats.ModificationRangeBaseSpread.Z, receiver.WeaponStats.ModificationRangeBaseSpread.Y, alpha);
@@ -1244,11 +1246,11 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             accuracyTABaseModifier = Lerp(receiver.WeaponStats.ModificationRangeTABaseSpread.Z, receiver.WeaponStats.ModificationRangeTABaseSpread.X, alpha);
         }
 
-        double hip = accuracyBaseModifier * (180 / Math.PI);
-        double aim = accuracyBaseModifier * receiver.WeaponStats.ZoomSpreadMultiplier * (180 / Math.PI);
+        double hip = accuracyBaseModifier;
+        double aim = accuracyBaseModifier * receiver.WeaponStats.ZoomSpreadMultiplier;
         if (receiver.WeaponStats.UseTABaseSpread)
         {
-            aim = accuracyTABaseModifier * (float)(180 / Math.PI);
+            aim = accuracyTABaseModifier;
         }
 
         double damagealpha = Math.Abs(Percentage(DamagePercentage));
@@ -1257,43 +1259,15 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             // Only the BAR can actually use this, and only cares about > 0 combined damage modifier
             // Seemingly replaces TABaseSpread value in SingleActionBase
             // Currently unused in 3.02 (but still exists)
-            aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X, damagealpha) * (float)(180 / Math.PI);
+            // I do not currently know how this plays with MovementSpreadConstant, though luckily we don't need to know yet
+            aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X, damagealpha);
         }
 
-        // all of this old stuff will likely be removed at some point, keeping it for now though because i'm lazy
-        double weight_alpha = Math.Abs(receiver.WeaponStats.Weight / 80.0);
-        double weight_clampalpha = Math.Min(Math.Max(weight_alpha, -1.0), 1.0); // Don't ask me why they clamp the absolute value with a negative, I have no idea.
-        double weight_multiplier;
-        if (receiver.WeaponStats.Weight > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
-        {
-            weight_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.Y, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
-        }
-        else
-        {
-            weight_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.X, weight_clampalpha);
-        }
-
-        double move_alpha = Math.Abs(allMoveSpeed); // Combined movement speed modifiers from only barrel and stock, divided by 100
-        double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far. <-- clueless
-        if (allMoveSpeed > 0)
-        {
-            move_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.Y, move_alpha);
-        }
-        else
-        {
-            move_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.X, move_alpha);
-        }
-
-        double movemultiplier_current = 1.0 + (receiver.WeaponStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier);
-        double moveconstant_current = receiver.WeaponStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
-
-        double move = (accuracyBaseModifier + moveconstant_current) * (180 / Math.PI) * movemultiplier_current; // old, wrong, and horribly hacky
-
-        // the gun's actual move spread, confirmed by ingame testing
-        // customization menu's stat was wrong and improperly using the now known to be unused Weight value
-        // all of my prior hacks were to mimic the wrong values, creating a giant mess of wrong
+        // The gun's actual move spread, confirmed by ingame testing
+        // Customization menu's stat was wrong and improperly using the now known to be unused Weight value
+        // All of my prior hacks were to mimic the wrong values, creating a giant mess of wrong
         double speed_alpha = Math.Min(Math.Abs(BarrelStockMovementSpeed) / 80, 1.0);
-        double funny_number = 0.425; // magic number that Zombie pulled out of their ass
+        double funny_number = 0.425; // Magic number that Zombie pulled out of their ass
         double speed_multiplier;
         if (BarrelStockMovementSpeed > 0)
         {
@@ -1303,30 +1277,38 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         {
             speed_multiplier = Lerp(1.0, 2.0, speed_alpha);
         }
-        double real_movespread = (accuracyBaseModifier * (1.0 + (receiver.WeaponStats.MovementSpreadMultiplier - 1.0) * funny_number * speed_multiplier)) + (Math.Max(receiver.WeaponStats.MovementSpreadConstant,0.0) * funny_number * speed_multiplier);
-        move = real_movespread * (180 / Math.PI);
+        double move_mult = accuracyBaseModifier * (1.0 + (receiver.WeaponStats.MovementSpreadMultiplier - 1.0) * funny_number * speed_multiplier);
+        double move_const = Math.Max(receiver.WeaponStats.MovementSpreadConstant, 0.0) * funny_number * speed_multiplier;
+        double move = (move_mult + move_const);
 
-        if (receiver.UID == 40015) // BLP
+        // Add FragmentSpread to result for guns that use it
+        // The normal spread values only affect the fragment scatter placement, the whole scatter is treated as a single shot that the spread moves
+        if (receiver.UID == 40015) // BLP, only the scattershot uses FragmentSpread
         {
             if ((Magazine?.UID == 44177) || (Ammo?.UID == 90010)) {
-                aim += (0.2 * (180 / Math.PI));
-                hip += (0.2 * (180 / Math.PI));
-                move += (0.2 * (180 / Math.PI));
+                aim += 0.2;
+                hip += 0.2;
+                move += 0.2;
             }
         } else if (receiver.UID == 40005) // Shotgun
         {
-            aim += (0.1 * (180 / Math.PI));
-            hip += (0.1 * (180 / Math.PI));
-            move += (0.1 * (180 / Math.PI));
+            aim += 0.1;
+            hip += 0.1;
+            move += 0.1;
         } else if (receiver.UID == 40016) // Sark
         {
-            aim += (0.05 * (180 / Math.PI));
-            hip += (0.05 * (180 / Math.PI));
-            move += (0.05 * (180 / Math.PI));
+            aim += 0.05;
+            hip += 0.05;
+            move += 0.05;
         }
+
+        aim *= Rad2Deg;
+        hip *= Rad2Deg;
+        move *= Rad2Deg;
 
         // Average spread over multiple shots to account for random center weight multiplier
         // (Currently unused)
+        // Can probably be heavily simplified
         double[] averageSpread = [0, 0, 0];
         double magsize = Math.Min(receiver.WeaponStats.MagSize, 15.0f);
         if (magsize <= 1)
@@ -1527,13 +1509,18 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 double accumExponent = receiver?.WeaponStats?.RecoilAccumulation ?? 0;
                 if (accumExponent > 1)
                 {
-                    accumExponent = (accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
+                    accumExponent = (accumExponent - 1.0f) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0f; // Apparently this is how they apply the accumulation multiplier in the actual recoil
                 }
 
                 // TODO: RecoilVectorOffset[]
 
-                double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / Math.Max(receiver?.WeaponStats?.Burst ?? 0, 1.0f), accumExponent);
-                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / Math.Max(receiver?.WeaponStats?.Burst ?? 0, 1.0f) + 1.0f, accumExponent);
+                double adjustedShot = shot;
+                if (receiver?.WeaponStats?.Burst > 0)
+                {
+                    adjustedShot = Math.Floor(adjustedShot) / Math.Max(receiver?.WeaponStats?.Burst ?? 0,1.0f);
+                }
+                double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot, accumExponent);
+                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot + 1.0f, accumExponent);
                 double multiplier = currentMultiplier - previousMultiplier;
                 newRecoil *= (float)multiplier;
                 averageRecoil += newRecoil;
@@ -1567,7 +1554,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             {
                 averageRecoil /= (float)averageShotCount;
             }
-            if ((receiver?.WeaponStats?.ROF ?? 0) > 0 && (receiver?.WeaponStats?.ApplyTime ?? 0) > 60 / (receiver?.WeaponStats?.ROF ?? 999))
+            if ((receiver?.WeaponStats?.ROF ?? 0) > 0 && (receiver?.WeaponStats?.ApplyTime ?? 0) > 60 / (receiver?.WeaponStats?.ROF ?? 600))
             {
                 averageRecoil *= (float)(60 / ((receiver?.WeaponStats?.ROF ?? 0) * (receiver?.WeaponStats?.ApplyTime ?? 0)));
             }
