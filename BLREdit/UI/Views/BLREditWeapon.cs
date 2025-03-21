@@ -1047,7 +1047,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         AimRecoilDisplay = RecoilZoom.ToString("0.00") + '°';
         ScopeInTimeDisplay = ModifiedScopeInTime.ToString("0.000") + 's';
         RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTracer.ToString("0");
-        RunDisplay = ModifiedRunSpeed.ToString("0.00");
+        RunDisplay = ModifiedRunSpeed.ToString("0");
         PawnRunDisplay = ModifiedPawnRunSpeed.ToString("0.00");
         ZoomDisplay = ZoomMagnification.ToString("0.00") + 'x';
 
@@ -1143,7 +1143,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             }
         }
 
-        WeaponReloadRate = 1 / WeaponReloadRate;
+        WeaponReloadRate = 1.0 / WeaponReloadRate;
 
         return WeaponReloadRate;
     }
