@@ -748,7 +748,7 @@ public sealed partial class MainWindow : Window
                                     }
                                 }
                                 break;
-                            case LoadoutViewControl loadoutViewControl:
+                            case GearAndExtraViewControl loadoutViewControl:
                                 if (loadoutViewControl.DataContext is BLREditLoadout viewLoadout)
                                 {
                                     MainView.ExtraCopy = viewLoadout.CopyExtra();
@@ -815,7 +815,7 @@ public sealed partial class MainWindow : Window
                                     extraLoadout.ApplyExtraGearCopy(MainView.ExtraCopy);
                                 }
                                 break;
-                            case LoadoutViewControl loadoutViewControl:
+                            case GearAndExtraViewControl loadoutViewControl:
                                 if (loadoutViewControl.DataContext is BLREditLoadout viewLoadout)
                                 {
                                     if (clip is not null && IOResources.Deserialize<ShareableLoadout>(clip) is ShareableLoadout ldt)
@@ -1236,7 +1236,7 @@ public sealed partial class MainWindow : Window
         var AllExtras = FindVisualChildren<ExtraControl>(depObj).ToList();
         var AllGears = FindVisualChildren<GearControl>(depObj).ToList();
         var AllWeapons = FindVisualChildren<WeaponControl>(depObj).ToList();
-        var AllLoadoutViews = FindVisualChildren<LoadoutViewControl>(depObj).ToList();
+        var AllGearAndExtraViews = FindVisualChildren<GearAndExtraViewControl>(depObj).ToList();
         var AllWeaponViews = FindVisualChildren<WeaponViewControl>(depObj).ToList();
 
 
@@ -1277,9 +1277,9 @@ public sealed partial class MainWindow : Window
             }
         }
 
-        if (AllLoadoutViews.Count > 0)
+        if (AllGearAndExtraViews.Count > 0)
         {
-            foreach (var weapon in AllLoadoutViews)
+            foreach (var weapon in AllGearAndExtraViews)
             {
                 var pos = Mouse.GetPosition(weapon);
                 if (VisualTreeHelper.GetDescendantBounds(weapon).Contains(pos))
