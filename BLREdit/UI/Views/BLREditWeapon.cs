@@ -1204,16 +1204,16 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             weap_modifier = Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.X, weap_alpha);
         }
 
-        double combined = (Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667);
-        double pawnalpha = Math.Min(Math.Abs(combined), 100) / 100.0;
+        double combined = Math.Floor((Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667));
+        double pawnalpha = Math.Min(Math.Abs(combined), 100.0) / 100.0;
         double pawnspeed;
         if (combined > 0)
         {
-            pawnspeed = Lerp(765, 900, pawnalpha);
+            pawnspeed = Lerp(765.0, 900.0, pawnalpha);
         }
         else
         {
-            pawnspeed = Lerp(765, 630, pawnalpha);
+            pawnspeed = Lerp(765.0, 630.0, pawnalpha);
         }
 
         return pawnspeed / 100.0;
