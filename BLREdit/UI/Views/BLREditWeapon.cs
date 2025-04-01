@@ -1478,6 +1478,13 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         return sortedRange;
     }
 
+    public static double ClampRecoil(double currentrecoil, double newrecoil, double minrecoil, double maxrecoil, double minmult)
+    {
+        double maxRatio = ((currentrecoil + newrecoil) - maxrecoil) / (minrecoil - maxrecoil);
+        double newOffset = newrecoil * Lerp(1.0, minmult, Clamp(maxRatio,0.0,1.0));
+        return Clamp(newOffset,-1.0,1.0);
+    }
+
     /// <summary>
     /// Calculates the Hip and AimDownSight Recoil
     /// </summary>
@@ -1500,6 +1507,8 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         if ((receiver?.WeaponStats?.MagSize ?? 0) > 0)
         {
             double averageShotCount = Math.Min(receiver?.WeaponStats?.MagSize ?? 0, 15.0f);
+            double randX = 0.25;
+            double randY = Math.Abs(Math.Sqrt(0.5 - (randX*randX)) * 0.25);
             Vector3 averageRecoil = new(0, 0, 0);
 
             for (int shot = 1; shot <= averageShotCount; shot++)
@@ -1509,14 +1518,14 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                     // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
                     // NOTE: in preparity, the order of operations for the raw offset go (RandXY + RecoilVectorOffset[]) * RecoilSizeVector
                     // NOTE: in parity, the order of operations for the raw offset go (RandXY * RecoilSizeVector) + RecoilVectorOffset[]
-                    X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * 0.5f / 2.0f,
-                    Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * 0.3535f / 2.0f
+                    X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * (float)randX,
+                    Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * (float)randY
                 };
 
                 double accumExponent = receiver?.WeaponStats?.RecoilAccumulation ?? 0;
-                if (accumExponent > 1)
+                if (accumExponent > 1.0)
                 {
-                    accumExponent = (accumExponent - 1.0f) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0f; // Apparently this is how they apply the accumulation multiplier in the actual recoil
+                    accumExponent = (accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
                 }
 
                 // TODO: RecoilVectorOffset[]
@@ -1531,6 +1540,8 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 double multiplier = currentMultiplier - previousMultiplier;
                 newRecoil *= (float)multiplier;
                 averageRecoil += newRecoil;
+                //averageRecoil.Y += (float)ClampRecoil(averageRecoil.Y,newRecoil.Y,0.16,0.04,0.1);
+                //averageRecoil.X += (float)ClampRecoil(averageRecoil.X,newRecoil.X,0.1,0.025,0.1);
             }
 
             // Magic numbers because I can't yet figure out the weird and overcomplicated clamping system, these gun's set Min and MaxWeaponRecoil values cause more overall recoil than their other values suggest
@@ -1569,14 +1580,14 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             recoil *= 180 / Math.PI;
 
             return (RecoilHip: recoil,
-                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8D); // NOTE: the 0.8 zoom multiply did not exist in preparity
+                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8); // NOTE: the 0.8 zoom multiply did not exist in preparity
         }
         else
         {
             double recoil = (receiver?.WeaponStats?.RecoilSize ?? 0) * recoilModifier;
             recoil *= 180 / Math.PI;
             return (RecoilHip: recoil,
-                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8D);
+                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8);
         }
     }
 
