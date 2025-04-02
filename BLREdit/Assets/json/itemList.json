@@ -14449,6 +14449,16 @@
           "Y": 1.0,
           "Z": 0.0
         },
+        "MaxRecoilVector": {
+          "X": 0.1,
+          "Y": 0.3,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.2,
+          "Y": 0.5,
+          "Z": 0.0
+        },
         "RecoilZoomMultiplier": 0.25,
         "ROF": 450.0,
         "StatDecriptors": [
@@ -14922,6 +14932,16 @@
         "RecoilVectorMultiplier": {
           "X": 0.2,
           "Y": 0.2,
+          "Z": 0.0
+        },
+        "MaxRecoilVector": {
+          "X": 0.3,
+          "Y": 0.6,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.4,
+          "Y": 0.7,
           "Z": 0.0
         },
         "RecoilZoomMultiplier": 1.0,
@@ -16025,6 +16045,16 @@
           "Y": 1.0,
           "Z": 0.0
         },
+        "MaxRecoilVector": {
+          "X": 0.1,
+          "Y": 0.3,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.2,
+          "Y": 0.5,
+          "Z": 0.0
+        },
         "RecoilZoomMultiplier": 0.7,
         "ROF": 60.0,
         "StatDecriptors": [
@@ -16184,6 +16214,16 @@
         "RecoilVectorMultiplier": {
           "X": 0.5,
           "Y": 1.0,
+          "Z": 0.0
+        },
+        "MaxRecoilVector": {
+          "X": 0.025,
+          "Y": 0.08,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.05,
+          "Y": 0.25,
           "Z": 0.0
         },
         "RecoilZoomMultiplier": 0.4,
@@ -16826,6 +16866,16 @@
           "Y": 0.5,
           "Z": 0.0
         },
+        "MaxRecoilVector": {
+          "X": 0.1,
+          "Y": 0.3,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.2,
+          "Y": 0.5,
+          "Z": 0.0
+        },
         "ReloadShortMultiplier": 0.786,
         "ROF": 300.0,
         "StatDecriptors": [
@@ -17284,6 +17334,16 @@
           "Y": 1.0,
           "Z": 0.0
         },
+        "MaxRecoilVector": {
+          "X": 0.3,
+          "Y": 0.6,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.4,
+          "Y": 0.7,
+          "Z": 0.0
+        },
         "ROF": 400.0,
         "StatDecriptors": [
           {
@@ -17429,6 +17489,16 @@
         "RecoilVectorMultiplier": {
           "X": 1.0,
           "Y": 0.5,
+          "Z": 0.0
+        },
+        "MaxRecoilVector": {
+          "X": 0.3,
+          "Y": 0.6,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.4,
+          "Y": 0.7,
           "Z": 0.0
         },
         "ROF": 600.0,
@@ -18355,6 +18425,16 @@
           "Y": 0.5,
           "Z": 0.0
         },
+        "MaxRecoilVector": {
+          "X": 0.3,
+          "Y": 0.6,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.4,
+          "Y": 0.7,
+          "Z": 0.0
+        },
         "RecoilZoomMultiplier": 0.3,
         "ROF": 200.0,
         "StatDecriptors": [
@@ -18507,6 +18587,16 @@
         "RecoilVectorMultiplier": {
           "X": 0.5,
           "Y": 1.0,
+          "Z": 0.0
+        },
+        "MaxRecoilVector": {
+          "X": 0.3,
+          "Y": 0.6,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.4,
+          "Y": 0.7,
           "Z": 0.0
         },
         "RecoilZoomMultiplier": 1.0,

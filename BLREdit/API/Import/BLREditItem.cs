@@ -743,8 +743,11 @@ public sealed class BLRWeaponStats
     public double RecoilSize { get; set; } = 0.1f;
     public Vector3 RecoilVector { get; set; } = Vector3.Zero;
     public Vector3 RecoilVectorMultiplier { get; set; } = Vector3.Zero;
-    public double RecoilZoomMultiplier { get; set; } = 0.5f;
-    public double ReloadShortMultiplier { get; set; } = 1.0f; // not actually a thing, but this is currently the easiest way with how we do the reload numbers
+    public Vector3 MaxRecoilVector { get; set; } = new(0.025f, 0.04f, 0);
+    public Vector3 MinRecoilVector { get; set; } = new(0.1f, 0.16f, 0);
+    public double MinRecoilMultiplier { get; set; } = 0.1;
+    public double RecoilZoomMultiplier { get; set; } = 0.5;
+    public double ReloadShortMultiplier { get; set; } = 1.0; // not actually a thing, but this is currently the easiest way with how we do the reload numbers
     public double ROF { get; set; }
     public StatDecriptor[] StatDecriptors { get; set; } = [new()];
     public double TABaseSpread { get; set; }

@@ -1317,14 +1317,14 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         // (Currently unused)
         // Can probably be heavily simplified
         double[] averageSpread = [0, 0, 0];
-        double magsize = Math.Min(receiver.WeaponStats.MagSize, 15.0f);
+        double magsize = Math.Min(receiver.WeaponStats.MagSize, 15.0);
         if (magsize <= 1)
         {
             magsize = receiver.WeaponStats.InitialMagazines + 1.0;
         }
         if (magsize > 0)
         {
-            double averageShotCount = Math.Max(magsize, 5.0f);
+            double averageShotCount = Math.Max(magsize, 5.0);
             for (int shot = 1; shot <= averageShotCount; shot++)
             {
                 if (shot > averageShotCount - averageShotCount * receiver.WeaponStats.SpreadCenterWeight)
@@ -1359,10 +1359,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// <param name="Scope">Scope</param>
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovementSpeed modifier</param>
     /// <param name="RawScopeInTime">all raw ScopeInTime modifiers</param>
-    /// <returns></returns>
+    /// <returns>The FOV scope transition time</returns>
     public static double CalculateScopeInTime(BLREditItem receiver, BLREditItem? Scope, double BarrelStockMovementSpeed, double RawScopeInTime)
     {
-        double allMovementSpeed = Clamp(BarrelStockMovementSpeed / 80.0D, -1.0D, 1.0D);
+        double allMovementSpeed = Clamp(BarrelStockMovementSpeed / 80.0, -1.0, 1.0);
         double TTTA_alpha = Math.Abs(allMovementSpeed);
         double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMIACOGMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
 
@@ -1431,7 +1431,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// </summary>
     /// <param name="receiver">Receiver</param>
     /// <param name="RangePercentage">all Range modifiers</param>
-    /// <returns>1:Ideal Range, 2:Max Range, 3:Tracer Range</returns>
+    /// <returns>1:Ideal Range, 2:Max Range, 3:Trace Range</returns>
     public static (double IdealRange, double MaxRange, double TracerRange) CalculateRange(BLREditItem receiver, double RangePercentage)
     {
         double allRange = Percentage(RangePercentage);
@@ -1450,39 +1450,55 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         }
         double traceRange = Math.Max(maxRange,(receiver?.WeaponStats?.MaxTraceDistance ?? 0)); // NOTE: trace distance is apparently the max of tracerange and maxrange, so maxrange gets priority
 
-        return (IdealRange: idealRange / 100.0D,
-                MaxRange: maxRange / 100.0D,
-                TracerRange: traceRange / 100.0D);
+        return (IdealRange: idealRange / 100.0,
+                MaxRange: maxRange / 100.0,
+                TracerRange: traceRange / 100.0);
     }
 
     /// <summary>
     /// Calculates the range for weapon sorting
     /// </summary>
     /// <param name="receiver">Receiver</param>
-    /// <returns></returns>
+    /// <returns>Sorted range</returns>
     public static double CalculateSortedRange(BLREditItem receiver)
     {
         double idealRange = receiver?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0;
         double maxRange = receiver?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0;
 
+        double baseDamage = receiver?.WeaponStats?.ModificationRangeDamage.Z ?? 0;
+        double minDamage = baseDamage * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1);
+
         // Might eventually try something more complicated, but this will do for now. Varying damage multipliers makes any serious range comparison a bit tricky
         // Maybe we can additionally highlight the max range damage (separately from the main damage number on left) when sorting range to show that it's related to range
         // Adding a small amount of the min range to account for cases of identical max ranges between receivers
-        double sortedRange = (idealRange / 1000) + Math.Max(idealRange, maxRange);
+        // Additionally adding a small amount of min damage at range for cases of identical min and max ranges
+        double sortedRange = (idealRange / 1000.0) + Math.Max(idealRange, maxRange);
+        sortedRange += minDamage / 1000.0;
 
         if (receiver?.UID == 40024) // Bow; projectile not affected by range and can travel for a long time
         {
-            sortedRange = 999999.0d;
+            sortedRange = 999999.0;
         }
 
         return sortedRange;
     }
 
-    public static double ClampRecoil(double currentrecoil, double newrecoil, double minrecoil, double maxrecoil, double minmult)
+    /// <summary>
+    /// Calculates a clamped recoil offset based on accumulated recoil
+    /// </summary>
+    /// <param name="currentrecoil">Current accumulated recoil before offset</param>
+    /// <param name="newrecoil">Projected new recoil offset</param>
+    /// <param name="minrecoil">Vector for minimum recoil (ending point)</param>
+    /// <param name="maxrecoil">Vector for maximum recoil (starting point)</param>
+    /// <param name="minmult">Minimum recoil multiplier at minrecoil vector</param>
+    /// <param name="offsetblend">Fraction to blend between the old and new offset</param>
+    /// <returns>A new modified offset, scaled between min/max recoil</returns>
+    public static double ClampRecoil(double currentrecoil, double newrecoil, double minrecoil, double maxrecoil, double minmult, double offsetblend)
     {
+        maxrecoil = Math.Min(maxrecoil, minrecoil-0.0001); // trying to prevent accidental 0 divide, though if the values were set the same ingame too then we massively failed at balancing
         double maxRatio = ((currentrecoil + newrecoil) - maxrecoil) / (minrecoil - maxrecoil);
         double newOffset = newrecoil * Lerp(1.0, minmult, Clamp(maxRatio,0.0,1.0));
-        return Clamp(newOffset,-1.0,1.0);
+        return Clamp(Lerp(newrecoil, newOffset, offsetblend),-1.0,1.0);
     }
 
     /// <summary>
@@ -1496,6 +1512,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         double allRecoil = Percentage(RecoilPercentage);
         double recoilModifier;
         double alpha = Math.Abs(allRecoil);
+        double Rad2Deg = 180.0 / Math.PI;
         if (allRecoil > 0)
         {
             recoilModifier = Lerp(receiver?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, receiver?.WeaponStats?.ModificationRangeRecoil.Y ?? 0, alpha);
@@ -1506,9 +1523,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         }
         if ((receiver?.WeaponStats?.MagSize ?? 0) > 0)
         {
-            double averageShotCount = Math.Min(receiver?.WeaponStats?.MagSize ?? 0, 15.0f);
-            double randX = 0.25;
-            double randY = Math.Abs(Math.Sqrt(0.5 - (randX*randX)) * 0.25);
+            double randX = 0.25;                                            // 0.25 in place of X's Rand(0,1)-0.5
+            double randY = Math.Abs(Math.Sqrt(0.5 - (randX*randX)) * 0.25); // 0.25 in place of Y's Rand(0,1)-0.5
+
+            double averageShotCount = Math.Min(receiver?.WeaponStats?.MagSize ?? 0, 15.0);
             Vector3 averageRecoil = new(0, 0, 0);
 
             for (int shot = 1; shot <= averageShotCount; shot++)
@@ -1525,7 +1543,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 double accumExponent = receiver?.WeaponStats?.RecoilAccumulation ?? 0;
                 if (accumExponent > 1.0)
                 {
-                    accumExponent = (accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
+                    accumExponent = (accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0;
                 }
 
                 // TODO: RecoilVectorOffset[]
@@ -1533,39 +1551,16 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 double adjustedShot = shot;
                 if (receiver?.WeaponStats?.Burst > 0)
                 {
-                    adjustedShot = Math.Floor(adjustedShot) / Math.Max(receiver?.WeaponStats?.Burst ?? 0,1.0f);
+                    adjustedShot = Math.Floor(adjustedShot) / Math.Max(receiver?.WeaponStats?.Burst ?? 0,1.0);
                 }
                 double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot, accumExponent);
-                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot + 1.0f, accumExponent);
+                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot + 1.0, accumExponent);
                 double multiplier = currentMultiplier - previousMultiplier;
                 newRecoil *= (float)multiplier;
-                averageRecoil += newRecoil;
-                //averageRecoil.Y += (float)ClampRecoil(averageRecoil.Y,newRecoil.Y,0.16,0.04,0.1);
-                //averageRecoil.X += (float)ClampRecoil(averageRecoil.X,newRecoil.X,0.1,0.025,0.1);
-            }
-
-            // Magic numbers because I can't yet figure out the weird and overcomplicated clamping system, these gun's set Min and MaxWeaponRecoil values cause more overall recoil than their other values suggest
-            // So it might be a bit messy here until I figure it out (luckily many guns use the default values so I can ignore them)
-            // I'm disabling these magic numbers for now because they're too magic for me
-            if (receiver?.UID == 40011) // LMG
-            {
-                //averageRecoil.Y *= 1.1f;
-                //averageRecoil.X *= 1.05f;
-            }
-            else if (receiver?.UID == 40014 || receiver?.UID == 40007 || receiver?.UID == 40008) // LMGR - BAR - CR
-            {
-                //averageRecoil.Y *= 1.3f;
-                //averageRecoil.X *= 1.1f;
-            }
-            else if (receiver?.UID == 40021 || receiver?.UID == 40019 || receiver?.UID == 40015 || receiver?.UID == 40005 || receiver?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
-            {
-                //averageRecoil.Y *= 1.5f;
-                //averageRecoil.X *= 1.15f;
-            }
-            else
-            {
-                //averageRecoil.Y *= 1.0f;
-                //averageRecoil.X *= 1.0f;
+                double minRecoilInfluence = 0.1; // only 10% of the effect for now
+                double minRecoilMult = receiver?.WeaponStats?.MinRecoilMultiplier ?? 0.1;
+                averageRecoil.Y += (float)ClampRecoil(averageRecoil.Y,newRecoil.Y, receiver?.WeaponStats?.MinRecoilVector.Y ?? 0, receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0, minRecoilMult, minRecoilInfluence);
+                averageRecoil.X += (float)ClampRecoil(averageRecoil.X,newRecoil.X, receiver?.WeaponStats?.MinRecoilVector.X ?? 0, receiver?.WeaponStats?.MaxRecoilVector.X ?? 0, minRecoilMult, minRecoilInfluence);
             }
 
             if (averageShotCount > 0)
@@ -1574,10 +1569,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             }
             if ((receiver?.WeaponStats?.ROF ?? 0) > 0 && (receiver?.WeaponStats?.ApplyTime ?? 0) > 60 / (receiver?.WeaponStats?.ROF ?? 600))
             {
-                averageRecoil *= (float)(60 / ((receiver?.WeaponStats?.ROF ?? 0) * (receiver?.WeaponStats?.ApplyTime ?? 0)));
+                averageRecoil *= (float)(60 / ((receiver?.WeaponStats?.ROF ?? 600) * (receiver?.WeaponStats?.ApplyTime ?? 0)));
             }
             double recoil = averageRecoil.Length() * recoilModifier;
-            recoil *= 180 / Math.PI;
+            recoil *= Rad2Deg;
 
             return (RecoilHip: recoil,
                     RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8); // NOTE: the 0.8 zoom multiply did not exist in preparity
@@ -1585,7 +1580,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         else
         {
             double recoil = (receiver?.WeaponStats?.RecoilSize ?? 0) * recoilModifier;
-            recoil *= 180 / Math.PI;
+            recoil *= Rad2Deg;
             return (RecoilHip: recoil,
                     RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8);
         }
@@ -1596,7 +1591,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// </summary>
     /// <param name="receiver">Receiver</param>
     /// <param name="DamagePercentage">all raw Damage modifiers</param>
-    /// <returns></returns>
+    /// <returns>1:Damage 2:Damage at max range</returns>
     public static (double DamageIdeal, double DamageMax) CalculateDamage(BLREditItem receiver, double DamagePercentage)
     {
         double allDamage = Percentage(DamagePercentage);
@@ -1619,14 +1614,14 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// Calculates the damage for weapon sorting
     /// </summary>
     /// <param name="receiver">Receiver</param>
-    /// <returns></returns>
+    /// <returns>Sorted damage</returns>
     public static double CalculateSortedDamage(BLREditItem receiver)
     {
         double baseDamage = receiver?.WeaponStats?.ModificationRangeDamage.Z ?? 0;
         double minDamage = baseDamage * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d);
 
         // Adding a small amount of the min damage at range to account for possible future cases of identical damages between receivers but differing range damage multipliers
-        double sortedDamage = (minDamage / 100) + baseDamage;
+        double sortedDamage = (Math.Round(minDamage) / 100.0) + baseDamage;
 
         return sortedDamage;
     }
