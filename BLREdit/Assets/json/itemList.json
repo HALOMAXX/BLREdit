@@ -15269,6 +15269,16 @@
           "Y": 1.0,
           "Z": 0.0
         },
+        "MaxRecoilVector": {
+          "X": 0.025,
+          "Y": 0.04,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.1,
+          "Y": 0.16,
+          "Z": 0.0
+        },
         "RecoilZoomMultiplier": 0.425,
         "ReloadShortMultiplier": 0.625,
         "ROF": 650.0,
@@ -15574,6 +15584,16 @@
         "RecoilVectorMultiplier": {
           "X": 0.8,
           "Y": 0.5,
+          "Z": 0.0
+        },
+        "MaxRecoilVector": {
+          "X": 0.025,
+          "Y": 0.04,
+          "Z": 0.0
+        },
+        "MinRecoilVector": {
+          "X": 0.1,
+          "Y": 0.16,
           "Z": 0.0
         },
         "ReloadShortMultiplier": 0.625,

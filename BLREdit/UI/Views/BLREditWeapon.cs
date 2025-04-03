@@ -1495,10 +1495,15 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// <returns>A new modified offset, scaled between min/max recoil</returns>
     public static double ClampRecoil(double currentrecoil, double newrecoil, double minrecoil, double maxrecoil, double minmult, double offsetblend)
     {
-        maxrecoil = Math.Min(maxrecoil, minrecoil-0.0001); // trying to prevent accidental 0 divide, though if the values were set the same ingame too then we massively failed at balancing
-        double maxRatio = ((currentrecoil + newrecoil) - maxrecoil) / (minrecoil - maxrecoil);
-        double newOffset = newrecoil * Lerp(1.0, minmult, Clamp(maxRatio,0.0,1.0));
-        return Clamp(Lerp(newrecoil, newOffset, offsetblend),-1.0,1.0);
+        maxrecoil = Math.Min(maxrecoil, minrecoil - 0.0001); // trying to prevent accidental 0 divide, though if the values were set the same ingame too then we massively failed at balancing
+
+        double projectedNewRecoil = (currentrecoil + newrecoil);
+        double offsetDiff = Math.Abs(projectedNewRecoil) - maxrecoil;
+
+        double maxRatio = offsetDiff / (minrecoil - maxrecoil);
+        maxRatio = Lerp(1.0, minmult, Math.Min(maxRatio, 1.0));
+        double newOffset = newrecoil * maxRatio;
+        return Clamp(Lerp(newrecoil, newOffset, offsetblend), -1.0, 1.0);
     }
 
     /// <summary>
@@ -1551,16 +1556,17 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 double adjustedShot = shot;
                 if (receiver?.WeaponStats?.Burst > 0)
                 {
-                    adjustedShot = Math.Floor(adjustedShot) / Math.Max(receiver?.WeaponStats?.Burst ?? 0,1.0);
+                    adjustedShot = 1.0 + (Math.Floor(adjustedShot) / Math.Max(receiver?.WeaponStats?.Burst ?? 0,1.0));
                 }
-                double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot, accumExponent);
-                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot + 1.0, accumExponent);
+                double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot - 1.0, accumExponent);
+                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot + 0.0, accumExponent);
                 double multiplier = currentMultiplier - previousMultiplier;
                 newRecoil *= (float)multiplier;
-                double minRecoilInfluence = 0.1; // only 10% of the effect for now
+
+                double minRecoilInfluence = 0.0;
                 double minRecoilMult = receiver?.WeaponStats?.MinRecoilMultiplier ?? 0.1;
-                averageRecoil.Y += (float)ClampRecoil(averageRecoil.Y,newRecoil.Y, receiver?.WeaponStats?.MinRecoilVector.Y ?? 0, receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0, minRecoilMult, minRecoilInfluence);
-                averageRecoil.X += (float)ClampRecoil(averageRecoil.X,newRecoil.X, receiver?.WeaponStats?.MinRecoilVector.X ?? 0, receiver?.WeaponStats?.MaxRecoilVector.X ?? 0, minRecoilMult, minRecoilInfluence);
+                averageRecoil.Y += (float)ClampRecoil(averageRecoil.Y, newRecoil.Y, receiver?.WeaponStats?.MinRecoilVector.Y ?? 0.16f, receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0.04f, minRecoilMult, minRecoilInfluence);
+                averageRecoil.X += (float)ClampRecoil(averageRecoil.X, newRecoil.X, receiver?.WeaponStats?.MinRecoilVector.X ?? 0.1f, receiver?.WeaponStats?.MaxRecoilVector.X ?? 0.025f, minRecoilMult, minRecoilInfluence);
             }
 
             if (averageShotCount > 0)
