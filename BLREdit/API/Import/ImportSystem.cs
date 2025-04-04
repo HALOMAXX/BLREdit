@@ -99,7 +99,8 @@ public static class ImportSystem
                         item.Category = itemCategory.Key;
                         var (DamageIdeal, DamageMax) = BLREditWeapon.CalculateDamage(item, 0);
                         var (ZoomSpread, HipSpread, MovmentSpread) = BLREditWeapon.CalculateSpread(item, 0, 0, item, item, 0);
-                        var (RecoilHip, _RecoilZoom) = BLREditWeapon.CalculateRecoil(item, 0);
+                        var RecoilHip = BLREditWeapon.CalculateRecoil(item, 0, false);
+                        var _RecoilZoom = BLREditWeapon.CalculateRecoil(item, 0, true);
                         var (IdealRange, MaxRange, _TracerRange) = BLREditWeapon.CalculateRange(item, 0);
 
                         item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, new double[] { DamageIdeal, DamageMax }, StatDisplayModifiers.None, "0", "", "/");

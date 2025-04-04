@@ -596,7 +596,7 @@ public sealed class BLREditItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateRecoil(this, 0).RecoilHip,
+                ImportSystem.PRIMARY_CATEGORY or ImportSystem.SECONDARY_CATEGORY => BLREditWeapon.CalculateRecoil(this, 0, false),
                 _ => WeaponModifiers?.Recoil ?? 0,
             };
         }

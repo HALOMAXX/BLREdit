@@ -1018,7 +1018,8 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         ModifiedRunSpeed = CalculateMovementSpeed(Receiver, MovementSpeedPercentage);
         ModifiedPawnRunSpeed = CalculatePawnMovementSpeed(Receiver, Loadout, MovementSpeedPercentage);
         (RangeClose, RangeFar, RangeTracer) = CalculateRange(Receiver, RangePercentage);
-        (RecoilHip, RecoilZoom) = CalculateRecoil(Receiver, RecoilPercentage);
+        RecoilHip = CalculateRecoil(Receiver, RecoilPercentage, false);
+        RecoilZoom = CalculateRecoil(Receiver, RecoilPercentage, true);
         ReloadMultiplier = CalculateReloadRate(Receiver, ReloadSpeedPercentage, RecoilPercentage);
         double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
         BarrelStockMovementSpeed += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
@@ -1529,8 +1530,9 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// </summary>
     /// <param name="receiver">Receiver</param>
     /// <param name="RecoilPercentage">all Recoil modifiers</param>
-    /// <returns>1:HipRecoil 2:ZoomRecoil</returns>
-    public static (double RecoilHip, double RecoilZoom) CalculateRecoil(BLREditItem receiver, double RecoilPercentage)
+    /// <param name="isTightAim">Whether scoped in or not</param>
+    /// <returns>Recoil</returns>
+    public static double CalculateRecoil(BLREditItem receiver, double RecoilPercentage, bool isTightAim)
     {
         double allRecoil = Percentage(RecoilPercentage);
         double recoilModifier;
@@ -1550,6 +1552,12 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             double randX = 0.25;                                            // 0.25 in place of X's Rand(0,1)-0.5
             double randY = Math.Abs(Math.Sqrt(0.5 - (randX*randX)) * 0.25); // 0.25 in place of Y's Rand(0,1)-0.5
 
+            double multiplier = 1.0;
+            if (isTightAim)
+            {
+                multiplier = (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0.5) * 0.8; // NOTE: the 0.8 zoom multiply did not exist in preparity
+            }
+
             double averageShotCount = Math.Min(receiver?.WeaponStats?.MagSize ?? 0, 15.0);
             Vector3 averageRecoil = new(0, 0, 0);
 
@@ -1557,7 +1565,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             {
                 Vector3 newRecoil = new(0, 0, 0)
                 {
-                    // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
+                    // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and roughly 0.0/0.3535 range respectively
                     // NOTE: in preparity, the order of operations for the raw offset go (RandXY + RecoilVectorOffset[]) * RecoilSizeVector
                     // NOTE: in parity, the order of operations for the raw offset go (RandXY * RecoilSizeVector) + RecoilVectorOffset[]
                     X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * (float)randX,
@@ -1579,8 +1587,9 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 }
                 double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot - 1.0, accumExponent);
                 double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot + 0.0, accumExponent);
-                double multiplier = currentMultiplier - previousMultiplier;
-                newRecoil *= (float)multiplier;
+                double deltaRecoil = currentMultiplier - previousMultiplier;
+                double totalRecoil = multiplier * deltaRecoil;
+                newRecoil *= (float)totalRecoil * (float)recoilModifier;
 
                 double minRecoilMult = 0.9 + (receiver?.WeaponStats?.MinRecoilMultiplier ?? 0.1); // adding 0.9 to disable it for now
                 averageRecoil.Y += (float)ClampRecoilURot(averageRecoil.Y, newRecoil.Y * RadianToURot, (receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0.04f) * RadianToURot, (receiver?.WeaponStats?.MinRecoilVector.Y ?? 0.16f) * RadianToURot, minRecoilMult, 1.0);
@@ -1596,18 +1605,16 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             {
                 averageRecoil *= (float)(60 / ((receiver?.WeaponStats?.ROF ?? 600) * (receiver?.WeaponStats?.ApplyTime ?? 0)));
             }
-            double recoil = averageRecoil.Length() * recoilModifier;
+            double recoil = averageRecoil.Length();
             recoil *= Rad2Deg;
 
-            return (RecoilHip: recoil,
-                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8); // NOTE: the 0.8 zoom multiply did not exist in preparity
+            return recoil;
         }
         else
         {
-            double recoil = (receiver?.WeaponStats?.RecoilSize ?? 0) * recoilModifier;
+            double recoil = (receiver?.WeaponStats?.RecoilSize ?? 0);
             recoil *= Rad2Deg;
-            return (RecoilHip: recoil,
-                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8);
+            return recoil;
         }
     }
 
