@@ -1484,26 +1484,44 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Calculates a clamped recoil offset based on accumulated recoil
+    /// Calculates a clamped recoil offset based on accumulated recoil, expects newrecoil and vectors to be in URotation units
     /// </summary>
     /// <param name="currentrecoil">Current accumulated recoil before offset</param>
     /// <param name="newrecoil">Projected new recoil offset</param>
-    /// <param name="minrecoil">Vector for minimum recoil (ending point)</param>
-    /// <param name="maxrecoil">Vector for maximum recoil (starting point)</param>
+    /// <param name="maxvector">Vector for maximum recoil (starting point)</param>
+    /// <param name="minvector">Vector for minimum recoil (ending point)</param>
     /// <param name="minmult">Minimum recoil multiplier at minrecoil vector</param>
-    /// <param name="offsetblend">Fraction to blend between the old and new offset</param>
-    /// <returns>A new modified offset, scaled between min/max recoil</returns>
-    public static double ClampRecoil(double currentrecoil, double newrecoil, double minrecoil, double maxrecoil, double minmult, double offsetblend)
+    /// <param name="accuminfluence">Influence of accumulated recoil</param>
+    /// <returns>A new modified offset, scaled between min/max recoil towards minrecoilmultiplier</returns>
+    public static double ClampRecoilURot(double currentrecoil, double newrecoil, double maxvector, double minvector, double minmult, double accuminfluence)
     {
-        maxrecoil = Math.Min(maxrecoil, minrecoil - 0.0001); // trying to prevent accidental 0 divide, though if the values were set the same ingame too then we massively failed at balancing
+        double maxRatio = 1.0;
+        double baseDiff = 0.0;
 
-        double projectedNewRecoil = (currentrecoil + newrecoil);
-        double offsetDiff = Math.Abs(projectedNewRecoil) - maxrecoil;
+        double modifiedCurRecoil = currentrecoil * accuminfluence;
+        double newRecoilOffset = newrecoil;
+        double projectedOffset = modifiedCurRecoil + newRecoilOffset;
+        double offsetDiff = Math.Abs(projectedOffset) - maxvector;
 
-        double maxRatio = offsetDiff / (minrecoil - maxrecoil);
-        maxRatio = Lerp(1.0, minmult, Math.Min(maxRatio, 1.0));
-        double newOffset = newrecoil * maxRatio;
-        return Clamp(Lerp(newrecoil, newOffset, offsetblend), -1.0, 1.0);
+        if (offsetDiff > 0 && newRecoilOffset > 0)
+        {
+            maxRatio = offsetDiff / (minvector - maxvector);
+            maxRatio = Lerp2(1.0, minmult, Math.Min(1.0, maxRatio));
+            if (Math.Abs(modifiedCurRecoil) < maxvector)
+            {
+                baseDiff = maxvector - Math.Abs(modifiedCurRecoil);
+                baseDiff *= Clamp(projectedOffset, -1.0, 1.0);
+            }
+            else
+            {
+                offsetDiff += (maxvector - Math.Abs(modifiedCurRecoil));
+                baseDiff = 0.0;
+            }
+            offsetDiff *= Clamp(newRecoilOffset, -1.0, 1.0);
+            newRecoilOffset = Math.Floor(baseDiff + (offsetDiff * maxRatio));
+        }
+
+        return Math.Floor(newRecoilOffset);
     }
 
     /// <summary>
@@ -1518,6 +1536,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         double recoilModifier;
         double alpha = Math.Abs(allRecoil);
         double Rad2Deg = 180.0 / Math.PI;
+        double RadianToURot = 10430.3783505;
         if (allRecoil > 0)
         {
             recoilModifier = Lerp(receiver?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, receiver?.WeaponStats?.ModificationRangeRecoil.Y ?? 0, alpha);
@@ -1563,11 +1582,11 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 double multiplier = currentMultiplier - previousMultiplier;
                 newRecoil *= (float)multiplier;
 
-                double minRecoilInfluence = 0.0;
-                double minRecoilMult = receiver?.WeaponStats?.MinRecoilMultiplier ?? 0.1;
-                averageRecoil.Y += (float)ClampRecoil(averageRecoil.Y, newRecoil.Y, receiver?.WeaponStats?.MinRecoilVector.Y ?? 0.16f, receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0.04f, minRecoilMult, minRecoilInfluence);
-                averageRecoil.X += (float)ClampRecoil(averageRecoil.X, newRecoil.X, receiver?.WeaponStats?.MinRecoilVector.X ?? 0.1f, receiver?.WeaponStats?.MaxRecoilVector.X ?? 0.025f, minRecoilMult, minRecoilInfluence);
+                double minRecoilMult = 0.9 + (receiver?.WeaponStats?.MinRecoilMultiplier ?? 0.1); // adding 0.9 to disable it for now
+                averageRecoil.Y += (float)ClampRecoilURot(averageRecoil.Y, newRecoil.Y * RadianToURot, (receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0.04f) * RadianToURot, (receiver?.WeaponStats?.MinRecoilVector.Y ?? 0.16f) * RadianToURot, minRecoilMult, 1.0);
+                averageRecoil.X += (float)ClampRecoilURot(averageRecoil.X, newRecoil.X * RadianToURot, (receiver?.WeaponStats?.MaxRecoilVector.X ?? 0.025f) * RadianToURot, (receiver?.WeaponStats?.MinRecoilVector.X ?? 0.1f) * RadianToURot, minRecoilMult, 1.0);
             }
+            averageRecoil /= (float)RadianToURot; // convert back to radians from URotation
 
             if (averageShotCount > 0)
             {
@@ -1669,6 +1688,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     public static double Lerp(double start, double target, double time)
     {
         return start * (1.0d - time) + target * time;
+    }
+    public static double Lerp2(double start, double target, double alpha)
+    {
+        return start + (target - start) * Clamp(alpha,0,1);
     }
     public static double Clamp(double input, double min, double max)
     {
