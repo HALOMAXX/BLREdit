@@ -1367,13 +1367,26 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         double TTTA_alpha = Math.Abs(allMovementSpeed);
         double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMIACOGMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
 
+        // i might be on to something so im putting this stuff here to not forget, base scope-in offsets seem to be roughly a scope's ZoomTime config variable minus 0.11 (ignoring the speed mod scaling)
+        // gun at scope-in: 0.225:  0.3: 0.15:
+        // ZoomTime 0.25 -> +0.14 (~0.1, 0.17)
+        // ZoomTime 0.28 -> +0.17
+        // ZoomTime 0.30 -> +0.19 (~0.15, ~0.23)
+        // ZoomTime 0.35 -> +0.24 (0.2, ~0.28)
+        // ZoomTime 0.37 -> +0.26
+        // ZoomTime 0.385 -> +0.275 (~0.23, ~0.31)
+        // ZoomTime 0.45 -> +0.34 (~0.306, ~0.37)
+        // how speed scaling turns these into what they become with low or high speed still evades me, maybe it's the 0.11 subtraction that gets scaled? (possibly by 1.333 and 0.666?) nothing feels too consistent otherwise
+        // scope-in times in the customization menu get a decimal cut off so they're a bit tricky to go off of
+        // ScopeIn = ZoomTime - (0.11 * speedmod)
+
         // giant cheat incoming, please lord forgive me for what i am about to do
         if (allMovementSpeed > 0)
         {
             TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
             ComboScopeMod = Lerp(0.0, 0.032, TTTA_alpha);
-            FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            ArmComInfraredMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
+            FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.17, TTTA_alpha);
+            ArmComInfraredMod = Lerp(RawScopeInTime, 0.17, TTTA_alpha);
             EMIACOGMod = Lerp(RawScopeInTime, 0.19, TTTA_alpha);
             EMITechScopeMod = Lerp(RawScopeInTime, 0.2185, TTTA_alpha);
             EMIInfraredMod = Lerp(RawScopeInTime, 0.2185, TTTA_alpha);
@@ -1479,9 +1492,13 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         if (receiver?.UID == 40024) // Bow; projectile not affected by range and can travel for a long time
         {
             sortedRange = 999999.0;
+        } 
+        else if (receiver?.UID == 40015) // BLP
+        {
+            sortedRange = 99999.0;
         }
 
-        return sortedRange;
+            return sortedRange;
     }
 
     /// <summary>
@@ -1496,6 +1513,11 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// <returns>A new modified offset, scaled between min/max recoil towards minrecoilmultiplier</returns>
     public static double ClampRecoilURot(double currentrecoil, double newrecoil, double maxvector, double minvector, double minmult, double accuminfluence)
     {
+        if (minmult == 1.0)
+        {
+            return newrecoil;
+        }
+
         double maxRatio = 1.0;
         double baseDiff = 0.0;
 
@@ -1534,11 +1556,12 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// <returns>Recoil</returns>
     public static double CalculateRecoil(BLREditItem receiver, double RecoilPercentage, bool isTightAim)
     {
-        double allRecoil = Percentage(RecoilPercentage);
-        double recoilModifier;
-        double alpha = Math.Abs(allRecoil);
         double Rad2Deg = 180.0 / Math.PI;
-        double RadianToURot = 10430.3783505;
+        double Rad2URot = 10430.3783505;
+
+        double allRecoil = Percentage(RecoilPercentage);
+        double alpha = Math.Abs(allRecoil);
+        double recoilModifier;
         if (allRecoil > 0)
         {
             recoilModifier = Lerp(receiver?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, receiver?.WeaponStats?.ModificationRangeRecoil.Y ?? 0, alpha);
@@ -1547,6 +1570,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         {
             recoilModifier = Lerp(receiver?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, receiver?.WeaponStats?.ModificationRangeRecoil.X ?? 0, alpha);
         }
+
         if ((receiver?.WeaponStats?.MagSize ?? 0) > 0)
         {
             double randX = 0.25;                                            // 0.25 in place of X's Rand(0,1)-0.5
@@ -1556,6 +1580,12 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             if (isTightAim)
             {
                 multiplier = (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0.5) * 0.8; // NOTE: the 0.8 zoom multiply did not exist in preparity
+            }
+
+            double accumExponent = receiver?.WeaponStats?.RecoilAccumulation ?? 0;
+            if (accumExponent > 1.0)
+            {
+                accumExponent = ((accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0)) + 1.0;
             }
 
             double averageShotCount = Math.Min(receiver?.WeaponStats?.MagSize ?? 0, 15.0);
@@ -1572,12 +1602,6 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                     Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * (float)randY
                 };
 
-                double accumExponent = receiver?.WeaponStats?.RecoilAccumulation ?? 0;
-                if (accumExponent > 1.0)
-                {
-                    accumExponent = (accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0;
-                }
-
                 // TODO: RecoilVectorOffset[]
 
                 double adjustedShot = shot;
@@ -1592,10 +1616,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 newRecoil *= (float)totalRecoil * (float)recoilModifier;
 
                 double minRecoilMult = 0.9 + (receiver?.WeaponStats?.MinRecoilMultiplier ?? 0.1); // adding 0.9 to disable it for now
-                averageRecoil.Y += (float)ClampRecoilURot(averageRecoil.Y, newRecoil.Y * RadianToURot, (receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0.04f) * RadianToURot, (receiver?.WeaponStats?.MinRecoilVector.Y ?? 0.16f) * RadianToURot, minRecoilMult, 1.0);
-                averageRecoil.X += (float)ClampRecoilURot(averageRecoil.X, newRecoil.X * RadianToURot, (receiver?.WeaponStats?.MaxRecoilVector.X ?? 0.025f) * RadianToURot, (receiver?.WeaponStats?.MinRecoilVector.X ?? 0.1f) * RadianToURot, minRecoilMult, 1.0);
+                averageRecoil.Y += (float)ClampRecoilURot(averageRecoil.Y, newRecoil.Y * Rad2URot, (receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0.04f) * Rad2URot, (receiver?.WeaponStats?.MinRecoilVector.Y ?? 0.16f) * Rad2URot, minRecoilMult, 1.0);
+                averageRecoil.X += (float)ClampRecoilURot(averageRecoil.X, newRecoil.X * Rad2URot, (receiver?.WeaponStats?.MaxRecoilVector.X ?? 0.025f) * Rad2URot, (receiver?.WeaponStats?.MinRecoilVector.X ?? 0.1f) * Rad2URot, minRecoilMult, 1.0);
             }
-            averageRecoil /= (float)RadianToURot; // convert back to radians from URotation
+            averageRecoil /= (float)Rad2URot; // convert back to radians from URotation
 
             if (averageShotCount > 0)
             {
@@ -1690,15 +1714,15 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
 
     public static double Percentage(double input)
     {
-        return Clamp(input / 100.0D, -1.0D, 1.0D);
+        return Clamp(input / 100.0, -1.0, 1.0);
     }
     public static double Lerp(double start, double target, double time)
     {
-        return start * (1.0d - time) + target * time;
+        return start * (1.0 - time) + target * time;
     }
     public static double Lerp2(double start, double target, double alpha)
     {
-        return start + (target - start) * Clamp(alpha,0,1);
+        return start + (target - start) * Clamp(alpha,0.0,1.0);
     }
     public static double Clamp(double input, double min, double max)
     {
