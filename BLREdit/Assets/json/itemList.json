@@ -12447,8 +12447,9 @@
         "Rating": 11.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.340000003576279,
-        "Zoom": 2.70000004768372
+        "ScopeInTime": 0.45,
+        "EnableScope": true,
+        "Zoom": 2.7
       }
     },
     {
@@ -12491,8 +12492,9 @@
         "Rating": 9.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.189999997615814,
-        "Zoom": 1.70000004768372
+        "ScopeInTime": 0.3,
+        "EnableScope": true,
+        "Zoom": 1.7
       }
     },
     {
@@ -12537,7 +12539,7 @@
         "Rating": 11.0
       },
       "WikiStats": {
-        "Zoom": 0.699999988079071
+        "Zoom": 0.7
       }
     },
     {
@@ -12580,8 +12582,9 @@
         "Rating": 11.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.140000000596046,
-        "Zoom": 2.70000004768372
+        "ScopeInTime": 0.25,
+        "EnableScope": true,
+        "Zoom": 2.7
       }
     },
     {
@@ -12624,8 +12627,9 @@
         "Rating": 11.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.140000000596046,
-        "Zoom": 0.699999988079071
+        "ScopeInTime": 0.25,
+        "EnableScope": true,
+        "Zoom": 0.7
       }
     },
     {
@@ -12711,8 +12715,9 @@
         "Rating": 10.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.280000001192093,
-        "Zoom": 2.59999990463257
+        "ScopeInTime": 0.385,
+        "EnableScope": true,
+        "Zoom": 2.6
       }
     },
     {
@@ -12755,7 +12760,7 @@
         "Rating": 6.0
       },
       "WikiStats": {
-        "Zoom": 1.70000004768372
+        "Zoom": 1.7
       }
     },
     {
@@ -12850,7 +12855,7 @@
         "Rating": 4.0
       },
       "WikiStats": {
-        "Zoom": 2.59999990463257
+        "Zoom": 2.6
       }
     },
     {
@@ -12938,8 +12943,9 @@
         "Rating": 6.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.239999994635582,
-        "Zoom": 4.69999980926514
+        "ScopeInTime": 0.35,
+        "EnableScope": true,
+        "Zoom": 4.7
       }
     },
     {
@@ -13027,7 +13033,7 @@
         "Rating": 7.0
       },
       "WikiStats": {
-        "Zoom": 0.699999988079071
+        "Zoom": 0.7
       }
     },
     {
@@ -13070,8 +13076,9 @@
         "Rating": 8.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.170000001788139,
-        "Zoom": 1.70000004768372
+        "ScopeInTime": 0.28,
+        "EnableScope": true,
+        "Zoom": 1.7
       }
     },
     {
@@ -13114,7 +13121,7 @@
         "Rating": 5.0
       },
       "WikiStats": {
-        "Zoom": 1.20000004768372
+        "Zoom": 1.2
       }
     },
     {
@@ -13157,8 +13164,9 @@
         "Rating": 9.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.189999997615814,
-        "Zoom": 2.70000004768372
+        "ScopeInTime": 0.3,
+        "EnableScope": true,
+        "Zoom": 2.7
       }
     },
     {
@@ -13201,7 +13209,9 @@
         "Rating": 7.0
       },
       "WikiStats": {
-        "Zoom": 1.70000004768372
+        "ScopeInTime": 0.105,
+        "EnableScope": true,
+        "Zoom": 1.7
       }
     },
     {
@@ -13246,7 +13256,7 @@
         "Rating": 8.0
       },
       "WikiStats": {
-        "Zoom": 0.300000011920929
+        "Zoom": 0.3
       }
     },
     {
@@ -13289,8 +13299,9 @@
         "Rating": 6.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.239999994635582,
-        "Zoom": 3.09999990463257
+        "ScopeInTime": 0.37,
+        "EnableScope": true,
+        "Zoom": 3.1
       }
     },
     {
@@ -13333,8 +13344,9 @@
         "Rating": 10.0
       },
       "WikiStats": {
-        "ScopeInTime": 0.239999994635582,
-        "Zoom": 2.70000004768372
+        "ScopeInTime": 0.35,
+        "EnableScope": true,
+        "Zoom": 2.7
       }
     },
     {

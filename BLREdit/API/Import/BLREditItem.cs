@@ -621,7 +621,7 @@ public sealed class BLREditItem : INotifyPropertyChanged
         {
             return Category switch
             {
-                ImportSystem.SCOPES_CATEGORY => WikiStats?.ScopeInTime ?? 0,
+                ImportSystem.SCOPES_CATEGORY => WikiStats?.ScopeInTime ?? 0.105,
                 _ => 0,
             };
         }
@@ -778,7 +778,8 @@ public sealed class BLRWikiStats
     public double Recoil { get; set; }
     public double Reload { get; set; }
     public double Run { get; set; }
-    public double ScopeInTime { get; set; }
+    public double ScopeInTime { get; set; } = 0.11;
     public double Swaprate { get; set; }
     public double Zoom { get; set; }
+    public bool EnableScope { get; set; }
 }

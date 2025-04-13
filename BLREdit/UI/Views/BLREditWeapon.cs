@@ -708,15 +708,16 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     {
         get
         {
-            double total = 0;
-            total += Receiver?.WikiStats?.ScopeInTime ?? 0;
-            if (Barrel?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WikiStats?.ScopeInTime ?? 0;
-            if (Magazine?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.ScopeInTime ?? 0;
-            if (Muzzle?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WikiStats?.ScopeInTime ?? 0;
-            if (Stock?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WikiStats?.ScopeInTime ?? 0;
-            if (Scope?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.ScopeInTime ?? 0;
-            if (Grip?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WikiStats?.ScopeInTime ?? 0;
+            double total = 0.0;
+            if (Scope?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.ScopeInTime ?? 0.105;
             return total;
+        }
+    }
+    public bool ScopeEnabled
+    {
+        get
+        {
+            return Scope?.WikiStats?.EnableScope ?? false;
         }
     }
     #endregion Properties
@@ -1023,7 +1024,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         ReloadMultiplier = CalculateReloadRate(Receiver, ReloadSpeedPercentage, RecoilPercentage);
         double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
         BarrelStockMovementSpeed += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
-        ModifiedScopeInTime = CalculateScopeInTime(Receiver, Scope, BarrelStockMovementSpeed, RawScopeInTime);
+        ModifiedScopeInTime = CalculateScopeInTime(Receiver, Scope, BarrelStockMovementSpeed, RawScopeInTime, ScopeEnabled);
         (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Receiver, AccuracyPercentage, BarrelStockMovementSpeed, Magazine, Ammo, DamagePercentage);
         WeaponDescriptorPart1 = CompareItemDescriptor1(Barrel, Magazine);
         WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
@@ -1361,55 +1362,33 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovementSpeed modifier</param>
     /// <param name="RawScopeInTime">all raw ScopeInTime modifiers</param>
     /// <returns>The FOV scope transition time</returns>
-    public static double CalculateScopeInTime(BLREditItem receiver, BLREditItem? Scope, double BarrelStockMovementSpeed, double RawScopeInTime)
+    public static double CalculateScopeInTime(BLREditItem receiver, BLREditItem? Scope, double BarrelStockMovementSpeed, double RawScopeInTime, bool isScopeEnabled)
     {
         double allMovementSpeed = Clamp(BarrelStockMovementSpeed / 80.0, -1.0, 1.0);
         double TTTA_alpha = Math.Abs(allMovementSpeed);
-        double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMIACOGMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
 
-        // i might be on to something so im putting this stuff here to not forget, base scope-in offsets seem to be roughly a scope's ZoomTime config variable minus 0.11 (ignoring the speed mod scaling)
-        // gun at scope-in: 0.225:  0.3: 0.15:
-        // ZoomTime 0.25 -> +0.14 (~0.1, 0.17)
-        // ZoomTime 0.28 -> +0.17
-        // ZoomTime 0.30 -> +0.19 (~0.15, ~0.23)
-        // ZoomTime 0.35 -> +0.24 (0.2, ~0.28)
-        // ZoomTime 0.37 -> +0.26
-        // ZoomTime 0.385 -> +0.275 (~0.23, ~0.31)
-        // ZoomTime 0.45 -> +0.34 (~0.306, ~0.37)
-        // how speed scaling turns these into what they become with low or high speed still evades me, maybe it's the 0.11 subtraction that gets scaled? (possibly by 1.333 and 0.666?) nothing feels too consistent otherwise
-        // scope-in times in the customization menu get a decimal cut off so they're a bit tricky to go off of
-        // ScopeIn = ZoomTime - (0.11 * speedmod)
-
-        // giant cheat incoming, please lord forgive me for what i am about to do
+        // hardcoded wall of lerps removed, all is right in the world now
+        double TightAimTime;
+        double scopeInTime;
+        double speedMod;
         if (allMovementSpeed > 0)
         {
+            speedMod = Lerp(1.0, 0.66, TTTA_alpha);
             TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
-            ComboScopeMod = Lerp(0.0, 0.032, TTTA_alpha);
-            FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.17, TTTA_alpha);
-            ArmComInfraredMod = Lerp(RawScopeInTime, 0.17, TTTA_alpha);
-            EMIACOGMod = Lerp(RawScopeInTime, 0.19, TTTA_alpha);
-            EMITechScopeMod = Lerp(RawScopeInTime, 0.2185, TTTA_alpha);
-            EMIInfraredMod = Lerp(RawScopeInTime, 0.2185, TTTA_alpha);
-            EMIInfraredMK2Mod = Lerp(RawScopeInTime, 0.36, TTTA_alpha);
-            ArmComSniperMod = Lerp(RawScopeInTime, 0.275, TTTA_alpha);
-            KraneSniperScopeMod = Lerp(RawScopeInTime, 0.275, TTTA_alpha);
-            SilverwoodHeavyMod = Lerp(RawScopeInTime, 0.275, TTTA_alpha);
-            FrontierSniperMod = Lerp(RawScopeInTime, 0.315, TTTA_alpha);
         }
         else
         {
+            speedMod = Lerp(1.0, 1.34, TTTA_alpha);
             TightAimTime = Lerp(0.225, 0.30, TTTA_alpha);
-            ComboScopeMod = Lerp(0.0, -0.042, TTTA_alpha);
-            FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.105, TTTA_alpha);
-            ArmComInfraredMod = Lerp(RawScopeInTime, 0.105, TTTA_alpha);
-            EMIACOGMod = Lerp(RawScopeInTime, 0.14, TTTA_alpha);
-            EMITechScopeMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            EMIInfraredMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            EMIInfraredMK2Mod = Lerp(RawScopeInTime, 0.305, TTTA_alpha);
-            ArmComSniperMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
-            KraneSniperScopeMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
-            SilverwoodHeavyMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
-            FrontierSniperMod = Lerp(RawScopeInTime, 0.235, TTTA_alpha);
+        }
+
+        if (isScopeEnabled)
+        {
+            scopeInTime = RawScopeInTime - (0.11 * speedMod);
+        }
+        else
+        {
+            scopeInTime = 0.0;
         }
 
         if ((receiver?.WeaponStats?.TightAimTime ?? 0) > 0)
@@ -1418,26 +1397,8 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         }
         else
         {
-            if (TightAimTime > 0)
-            {
-                return (Scope?.UID) switch
-                {
-                    45005 => TightAimTime + ComboScopeMod + RawScopeInTime,
-                    45023 => TightAimTime + FourXAmmoCounterMod,
-                    45021 => TightAimTime + ArmComInfraredMod,
-                    45002 => TightAimTime + EMIACOGMod,
-                    45020 => TightAimTime + EMIInfraredMod,
-                    45019 => TightAimTime + EMIInfraredMK2Mod,
-                    45015 => TightAimTime + ArmComSniperMod,
-                    45008 => TightAimTime + SilverwoodHeavyMod,
-                    45007 => TightAimTime + KraneSniperScopeMod,
-                    45004 => TightAimTime + EMITechScopeMod,
-                    45001 => TightAimTime + FrontierSniperMod,
-                    _ => TightAimTime + RawScopeInTime,
-                };
-            }
+            return TightAimTime + scopeInTime;
         }
-        return 0.225;
     }
 
     /// <summary>
