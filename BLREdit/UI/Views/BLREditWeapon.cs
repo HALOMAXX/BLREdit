@@ -370,19 +370,19 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
                 switch (Magazine?.UID)
                 {
                     case 44211:
-                        total += -50;
+                        total += -50.0;
                         break;
                     case 44212:
                         total += -100;
                         break;
                     case 44213:
-                        total += 28.57D;
+                        total += 28.57;
                         break;
                     case 44214:
-                        total += -87.5D;
+                        total += -87.5;
                         break;
                     case 44215:
-                        total += 100;
+                        total += 100.0;
                         break;
                 }
             }
@@ -521,7 +521,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     {
         get
         {
-            return 1.3D + RawZoomMagnification;
+            return 1.3 + RawZoomMagnification;
         }
     }
 
@@ -567,27 +567,14 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     {
         get
         {
-            double total = 0;
+            double total = 0.0;
             total += Receiver?.WikiStats?.Reload ?? 0;
-            if (Barrel?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WikiStats?.Reload ?? 0;
-            if (Magazine?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.Reload ?? 0;
-            if (Muzzle?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WikiStats?.Reload ?? 0;
-            if (Stock?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WikiStats?.Reload ?? 0;
-            if (Scope?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.Reload ?? 0;
-            if (Grip?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WikiStats?.Reload ?? 0;
 
-            total = Receiver?.WikiStats?.Reload ?? 0;
-            if (Receiver?.UID == 40011 || Receiver?.UID == 40014 || Receiver?.UID == 40005 || Receiver?.UID == 40016) // LMG, LMGR, Shotgun, SARK
+            int wepID = Receiver?.UID ?? 0;
+            if (wepID == 40011 || wepID == 40014 || wepID == 40005 || wepID == 40016) // LMG, LMGR, Shotgun, SARK
             {
                 if (Magazine?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.Reload ?? 0;
             }
-
-            // Corrected the reload rate multiplier calc and changed the ranges from zeros in the BPFA and BFR so they can now correctly use the reloadspeed percentage instead of flat wiki value add/sub
-            // Will eventually fix all guns but I am still uncertain about a few cases that don't go along with it for whatever reason
-            //if (Receiver?.UID == 40020 || Receiver?.UID == 40009)
-            //{
-            //    return Receiver?.WikiStats?.Reload ?? 0;
-            //}
 
             return total;
         }
@@ -599,15 +586,18 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         {
             if (Receiver != null && Receiver.WeaponStats != null)
             {
-                double vertical = Receiver.WeaponStats.RecoilVector.Y * Receiver.WeaponStats.RecoilVectorMultiplier.Y * 0.3535;
-                double horizontal = Receiver.WeaponStats.RecoilVector.X * Receiver.WeaponStats.RecoilVectorMultiplier.X * 0.5;
+                double randX = 0.25;                                                // 0.25 in place of X's Rand(0,1)-0.5
+                double randY = Math.Abs(Math.Sqrt(0.5 - (randX * randX)) * 0.25);   // 0.25 in place of Y's Rand(0,1)-0.5
+
+                double vertical = Receiver.WeaponStats.RecoilVector.Y * Receiver.WeaponStats.RecoilVectorMultiplier.Y * randY;
+                double horizontal = Receiver.WeaponStats.RecoilVector.X * Receiver.WeaponStats.RecoilVectorMultiplier.X * randX;
                 if (vertical + horizontal != 0)
                 {
                     return vertical / (vertical + horizontal);
                 }
-                return 1;
+                return 1.0;
             }
-            return 1;
+            return 1.0;
         }
     }
 
@@ -731,7 +721,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     #region CalculatedProperties
     public double ModifiedReloadSpeed { 
         get { 
-            if (Receiver?.UID == 40005 || Receiver?.UID == 40016)
+            if (Receiver?.UID == 40005 || Receiver?.UID == 40016) // Shotgun, SARK
             {
                 return RawReloadSpeed;
             }
@@ -750,7 +740,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         {
             if (Magazine?.UID == 44014 || Magazine?.UID == 44015)
             {
-                return 1;
+                return 1.0;
             }
             return Receiver?.WeaponStats?.ReloadShortMultiplier ?? 0;
         }
@@ -768,8 +758,8 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     public double RangeClose { get { return rangeClose ?? 0; } private set { rangeClose = value; OnPropertyChanged(); } }
     private double? rangeFar;
     public double RangeFar { get { return rangeFar ?? 0; } private set { rangeFar = value; OnPropertyChanged(); } }
-    private double? rangeTracer;
-    public double RangeTracer { get { return rangeTracer ?? 0; } private set { rangeTracer = value; OnPropertyChanged(); } }
+    private double? rangeTrace;
+    public double RangeTrace { get { return rangeTrace ?? 0; } private set { rangeTrace = value; OnPropertyChanged(); } }
     #endregion Range
 
     #region Recoil
@@ -1032,7 +1022,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         (DamageClose, DamageFar) = CalculateDamage(Receiver, DamagePercentage);
         ModifiedRunSpeed = CalculateMovementSpeed(Receiver, MovementSpeedPercentage);
         ModifiedPawnRunSpeed = CalculatePawnMovementSpeed(Receiver, Loadout, MovementSpeedPercentage);
-        (RangeClose, RangeFar, RangeTracer) = CalculateRange(Receiver, RangePercentage);
+        (RangeClose, RangeFar, RangeTrace) = CalculateRange(Receiver, RangePercentage);
         RecoilHip = CalculateRecoil(Receiver, RecoilPercentage, false);
         RecoilZoom = CalculateRecoil(Receiver, RecoilPercentage, true);
         ReloadMultiplier = CalculateReloadRate(Receiver, ReloadSpeedPercentage, RecoilPercentage);
@@ -1050,7 +1040,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
 
     private void CreateDisplayProperties()
     {
-        DamageDisplay = Math.Round(DamageClose + 0.00001, MidpointRounding.AwayFromZero).ToString("0") + " / " + Math.Round(DamageFar + 0.00001, MidpointRounding.AwayFromZero).ToString("0");
+        DamageDisplay = DamageClose.ToString("0") + " / " + DamageFar.ToString("0");
         RateOfFireDisplay = ModifiedRateOfFire.ToString("0");
         AmmoDisplay = FinalAmmoMagazine.ToString("0") + " / " + ModifiedAmmoReserve.ToString("0");
         ReloadTimeDisplay = (ModifiedReloadSpeed * ShortReload).ToString("0.00") + 's'; // changed reload to short reload
@@ -1062,7 +1052,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         HipRecoilDisplay = RecoilHip.ToString("0.00") + '°';
         AimRecoilDisplay = RecoilZoom.ToString("0.00") + '°';
         ScopeInTimeDisplay = ModifiedScopeInTime.ToString("0.000") + 's';
-        RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTracer.ToString("0");
+        RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTrace.ToString("0");
         RunDisplay = ModifiedRunSpeed.ToString("0");
         PawnRunDisplay = ModifiedPawnRunSpeed.ToString("0.00");
         ZoomDisplay = ZoomMagnification.ToString("0.0") + 'x';
@@ -1074,7 +1064,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         SpreadCenterWeightDisplay = SpreadCenterWeight.ToString("0.00");
         SpreadCenterDisplay = SpreadCenter.ToString("0.00");
         RecoilVerticalRatioDisplay = VerticalRecoilRatio.ToString("0.00");
-        RecoilRecoveryTimeDisplay = RecoilRecoveryTime.ToString("0.00");
+        RecoilRecoveryTimeDisplay = RecoilRecoveryTime.ToString("0.00") + 's';
         RecoilAccumulationDisplay = RecoilAccumulation.ToString("0.000");
 
         DamagePercentageDisplay = DamagePercentage.ToString("0") + '%';
@@ -1172,6 +1162,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     {
         // Placeholder so I don't forget
         // It didn't help I ended up still forgetting
+        // I think CalculateReloadRate already handles this, why did I make this function? Though maybe I'll keep it for now in case I move some cheats I did recently elsewhere
     }
 
     /// <summary>
@@ -1196,7 +1187,6 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             move_modifier = Math.Floor(Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.X, move_alpha));
         }
         return move_modifier;
-        //return (765 + move_modifier * 0.9) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
     }
 
     /// <summary>
@@ -1220,7 +1210,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             weap_modifier = Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.X, weap_alpha);
         }
 
-        double combined = Math.Floor((Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667));
+        double combined = Math.Floor((Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667)); // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
         double pawnalpha = Math.Min(Math.Abs(combined), 100.0) / 100.0;
         double pawnspeed;
         if (combined > 0)
@@ -1375,6 +1365,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// <param name="Scope">Scope</param>
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovementSpeed modifier</param>
     /// <param name="RawScopeInTime">all raw ScopeInTime modifiers</param>
+    /// <param name="isScopeEnabled">whether it uses scope in times or not</param>
     /// <returns>The FOV scope transition time</returns>
     public static double CalculateScopeInTime(BLREditItem receiver, BLREditItem? Scope, double BarrelStockMovementSpeed, double RawScopeInTime, bool isScopeEnabled)
     {
@@ -1384,21 +1375,21 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         // hardcoded wall of lerps removed, all is right in the world now
         double TightAimTime;
         double scopeInTime;
-        double speedMod;
+        double speedModifier;
         if (allMovementSpeed > 0)
         {
-            speedMod = Lerp(1.0, 0.66, TTTA_alpha);
+            speedModifier = Lerp(1.0, 0.66, TTTA_alpha);
             TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
         }
         else
         {
-            speedMod = Lerp(1.0, 1.34, TTTA_alpha);
+            speedModifier = Lerp(1.0, 1.34, TTTA_alpha);
             TightAimTime = Lerp(0.225, 0.30, TTTA_alpha);
         }
 
         if (isScopeEnabled)
         {
-            scopeInTime = RawScopeInTime - (0.11 * speedMod);
+            scopeInTime = RawScopeInTime - (0.11 * speedModifier);
         }
         else
         {
@@ -1637,8 +1628,11 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             damageModifier = Lerp(receiver?.WeaponStats?.ModificationRangeDamage.Z ?? 0, receiver?.WeaponStats?.ModificationRangeDamage.X ?? 0, alpha);
         }
 
-        return (DamageIdeal: damageModifier,
-                DamageMax: damageModifier * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d));
+        double outDamage = Math.Round(damageModifier + 0.00001, MidpointRounding.AwayFromZero);
+        double outDamageFar = Math.Round((damageModifier * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d)) + 0.00001, MidpointRounding.AwayFromZero);
+
+        return (DamageIdeal: outDamage,
+                DamageMax: outDamageFar);
     }
 
     /// <summary>
@@ -1652,7 +1646,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         double minDamage = baseDamage * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d);
 
         // Adding a small amount of the min damage at range to account for possible future cases of identical damages between receivers but differing range damage multipliers
-        double sortedDamage = (Math.Round(minDamage) / 100.0) + baseDamage;
+        double sortedDamage = (Math.Round(minDamage + 0.00001, MidpointRounding.AwayFromZero) / 100.0) + baseDamage;
 
         return sortedDamage;
     }
