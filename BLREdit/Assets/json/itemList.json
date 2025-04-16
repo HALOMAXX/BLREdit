@@ -6639,7 +6639,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6654,7 +6655,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6669,7 +6671,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6684,7 +6687,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6828,7 +6832,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6844,7 +6849,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6860,7 +6866,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6876,7 +6883,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6970,7 +6978,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -6985,7 +6994,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7000,7 +7010,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7015,7 +7026,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7225,7 +7237,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 4.0
+        "Rating": 4.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7240,7 +7253,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7255,7 +7269,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7270,7 +7285,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7364,7 +7380,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7379,7 +7396,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7394,7 +7412,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7409,7 +7428,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7509,7 +7529,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7525,7 +7546,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7541,7 +7563,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7557,7 +7580,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7651,7 +7675,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7666,7 +7691,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7681,7 +7707,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7696,7 +7723,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7790,7 +7818,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7805,7 +7834,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7820,7 +7850,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7835,7 +7866,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7929,7 +7961,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7944,7 +7977,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7959,7 +7993,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -7974,7 +8009,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8068,7 +8104,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8083,7 +8120,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8098,7 +8136,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8113,7 +8152,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8316,7 +8356,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8331,7 +8372,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8346,7 +8388,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8361,7 +8404,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8455,7 +8499,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8470,7 +8515,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8485,7 +8531,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8500,7 +8547,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8837,7 +8885,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8852,7 +8901,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8867,7 +8917,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8882,7 +8933,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8976,7 +9028,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -8991,7 +9044,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9006,7 +9060,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9021,7 +9076,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9599,7 +9655,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9614,7 +9671,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9629,7 +9687,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9644,7 +9703,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9756,7 +9816,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9771,7 +9832,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9786,7 +9848,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -9801,7 +9864,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -10034,7 +10098,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -10049,7 +10114,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -10064,7 +10130,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },
@@ -10079,7 +10146,8 @@
       ],
       "WeaponModifiers": {
         "MovementSpeed": -5.0,
-        "Rating": 7.0
+        "Rating": 7.0,
+        "ReloadSpeed": -7.0
       },
       "WikiStats": {}
     },

@@ -731,7 +731,7 @@ public sealed class BLRWeaponStats
     public Vector3 ModificationRangeMaxDistance { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeMoveSpeed { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeRecoil { get; set; } = Vector3.Zero;
-    public Vector3 ModificationRangeReloadRate { get; set; } = Vector3.Zero;
+    public Vector3 ModificationRangeReloadRate { get; set; } = new(0.9f,1.3f,1.0f);
     public Vector3 ModificationRangeRecoilReloadRate { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeTABaseSpread { get; set; } = Vector3.Zero;
     public Vector3 ModificationRangeDamageAccuracyRange { get; set; } = Vector3.Zero;
@@ -753,7 +753,7 @@ public sealed class BLRWeaponStats
     public double TABaseSpread { get; set; }
     public double TightAimTime { get; set; }
     public bool UseTABaseSpread { get; set; }
-    public double Weight { get; set; } = 150.0f;
+    public double Weight { get; set; } = 150.0f; // unused
     public double ZoomSpreadMultiplier { get; set; } = 0.4f;
 }
 

@@ -1051,7 +1051,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTracer.ToString("0");
         RunDisplay = ModifiedRunSpeed.ToString("0");
         PawnRunDisplay = ModifiedPawnRunSpeed.ToString("0.00");
-        ZoomDisplay = ZoomMagnification.ToString("0.00") + 'x';
+        ZoomDisplay = ZoomMagnification.ToString("0.0") + 'x';
 
         FragmentsPerShellDisplay = FragmentsPerShell.ToString("0");
         ZoomFirerateDisplay = ZoomRateOfFire.ToString("0");

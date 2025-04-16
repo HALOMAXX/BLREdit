@@ -174,7 +174,7 @@ public static class ImportSystem
                     {
                         if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item.WikiStats?.Zoom ?? 0)), StatDisplayModifiers.Normal, "0.00", "x");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item.WikiStats?.Zoom ?? 0)), StatDisplayModifiers.Normal, "0.0", "x");
                         item.DisplayStat2 = FormatDisplayStat(nameof(item.ScopeInTime), Resources.lbl_ScopeInTime, (0.0 + ((item.WikiStats?.ScopeInTime ?? 0.11)-0.11)), StatDisplayModifiers.Inverted, "0.000", "s", "");
                         item.DisplayStat3 = FormatDisplayStat(nameof(item.Infrared), Resources.lbl_Infrared, item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatDisplayModifiers.Normal, "");
                     }
@@ -186,7 +186,8 @@ public static class ImportSystem
                         item.Category = itemCategory.Key;
                         double ammo = item.WeaponModifiers?.Ammo ?? 0;
                         double range = item.WeaponModifiers?.Range ?? 0;
-                        double reload = item.WikiStats?.Reload ?? 0;
+                        //double reload = item.WikiStats?.Reload ?? 0;
+                        double reload = item.WeaponModifiers?.ReloadSpeed ?? 0;
                         double movementSpeed = item.WeaponModifiers?.MovementSpeed ?? 0;
                         double damage = item.WeaponModifiers?.Damage ?? 0;
                         double recoil = item.WeaponModifiers?.Recoil ?? 0;
@@ -204,7 +205,8 @@ public static class ImportSystem
                         }
                         else
                         {
-                            item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Inverted, "0.00", "s");
+                            //item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Inverted, "0.00", "s");
+                            item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Normal, "0", "%");
                         }
                     }
                     break;
