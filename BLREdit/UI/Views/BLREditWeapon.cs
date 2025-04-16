@@ -1036,7 +1036,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
 
     private void CreateDisplayProperties()
     {
-        DamageDisplay = Math.Round(DamageClose).ToString("0") + " / " + Math.Round(DamageFar).ToString("0");
+        DamageDisplay = Math.Round(DamageClose + 0.00001, MidpointRounding.AwayFromZero).ToString("0") + " / " + Math.Round(DamageFar + 0.00001, MidpointRounding.AwayFromZero).ToString("0");
         RateOfFireDisplay = ModifiedRateOfFire.ToString("0");
         AmmoDisplay = FinalAmmoMagazine.ToString("0") + " / " + ModifiedAmmoReserve.ToString("0");
         ReloadTimeDisplay = (ModifiedReloadSpeed * ShortReload).ToString("0.00") + 's'; // changed reload to short reload
