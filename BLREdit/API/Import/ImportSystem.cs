@@ -205,8 +205,15 @@ public static class ImportSystem
                         }
                         else
                         {
-                            //item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Inverted, "0.00", "s");
-                            item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Normal, "0", "%");
+                            if (item.IsValidForItemIDS(40011, 40014)) // LMG, LMGR
+                            {
+                                reload = item.WikiStats?.Reload ?? 0;
+                                item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Inverted, "0.00", "s");
+                            }
+                            else
+                            {
+                                item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Normal, "0", "%");
+                            }
                         }
                     }
                     break;

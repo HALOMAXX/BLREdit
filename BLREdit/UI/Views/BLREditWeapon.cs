@@ -576,12 +576,18 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             if (Scope?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.Reload ?? 0;
             if (Grip?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WikiStats?.Reload ?? 0;
 
+            total = Receiver?.WikiStats?.Reload ?? 0;
+            if (Receiver?.UID == 40011 || Receiver?.UID == 40014 || Receiver?.UID == 40005 || Receiver?.UID == 40016) // LMG, LMGR, Shotgun, SARK
+            {
+                if (Magazine?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.Reload ?? 0;
+            }
+
             // Corrected the reload rate multiplier calc and changed the ranges from zeros in the BPFA and BFR so they can now correctly use the reloadspeed percentage instead of flat wiki value add/sub
             // Will eventually fix all guns but I am still uncertain about a few cases that don't go along with it for whatever reason
-            if (Receiver?.UID == 40020 || Receiver?.UID == 40009)
-            {
-                return Receiver?.WikiStats?.Reload ?? 0;
-            }
+            //if (Receiver?.UID == 40020 || Receiver?.UID == 40009)
+            //{
+            //    return Receiver?.WikiStats?.Reload ?? 0;
+            //}
 
             return total;
         }
@@ -723,7 +729,15 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     #endregion Properties
 
     #region CalculatedProperties
-    public double ModifiedReloadSpeed { get { return RawReloadSpeed * ReloadMultiplier; } }
+    public double ModifiedReloadSpeed { 
+        get { 
+            if (Receiver?.UID == 40005 || Receiver?.UID == 40016)
+            {
+                return RawReloadSpeed;
+            }
+            return RawReloadSpeed * ReloadMultiplier; 
+        } 
+    }
     private double? reloadMultiplier;
     public double ReloadMultiplier { get { return reloadMultiplier ?? 1; } private set { reloadMultiplier = value; OnPropertyChanged(); } }
     private double? cockRateMultiplier;
