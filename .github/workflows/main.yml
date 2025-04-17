@@ -39,6 +39,11 @@ jobs:
       - name: Package App
         run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent
 
+      - name: ListFiles
+        shell: pwsh
+        run: |
+          Get-ChildItem -Recurse
+
       - name: Get Version
         run: |
           echo "VERSION=$(cat bin\Release\net48\packaged\semver.txt)" >> $GITHUB_ENV
