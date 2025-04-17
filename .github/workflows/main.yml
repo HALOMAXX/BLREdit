@@ -28,17 +28,21 @@ jobs:
           fetch-tags: true
 
       - name: Get Next Semver Release Branch
+        id: semver-release
         uses: ietf-tools/semver-action@v1
         if: contains(github.ref, 'release')
         with:
           token: ${{ github.token }}
+          patchAll: true
           branch: release
 
       - name: Get Next Semver Beta Branch
+        id: semver-beta
         uses: ietf-tools/semver-action@v1
         if: contains(github.ref, 'beta')
         with:
           token: ${{ github.token }}
+          patchAll: true
           branch: beta
         
       - name: Setup MSBuild.exe
@@ -66,7 +70,7 @@ jobs:
           generate_release_notes: true
           draft: true
           prerelease: false
-          tag_name: ${{ steps.semver.outputs.next }}
+          tag_name: ${{ steps.semver-release.outputs.next }}
           files: |
             BLREdit\bin\Release\net48\packaged\BLREdit.zip
             BLREdit\bin\Release\net48\packaged\Assets.zip
@@ -83,7 +87,7 @@ jobs:
           generate_release_notes: true
           draft: true
           prerelease: true
-          tag_name: ${{ steps.semver.outputs.next }}
+          tag_name: ${{ steps.semver-beta.outputs.next }}
           files: |
             BLREdit\bin\Release\net48\packaged\BLREdit.zip
             BLREdit\bin\Release\net48\packaged\Assets.zip
