@@ -44,45 +44,17 @@ jobs:
         with:
           name: log
           path: BLREdit\bin\Release\net48\logs
-        
-      - name: Upload BLREdit Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: BLREdit
-          path: BLREdit\bin\Release\net48\packaged\BLREdit.exe
-        
-      - name: Upload Assets Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Asstes
-          path: BLREdit\bin\Release\net48\packaged\Assets
 
-      - name: Upload DLLs Artifact
-        uses: actions/upload-artifact@v4
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2.2.1
         with:
-          name: dlls
-          path: BLREdit\bin\Release\net48\packaged\dlls
-
-      - name: Upload JSON Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: json
-          path: BLREdit\bin\Release\net48\packaged\json
-
-      - name: Upload Icons Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: textures
-          path: BLREdit\bin\Release\net48\packaged\textures
-
-      - name: Upload Scopes Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: crosshairs
-          path: BLREdit\bin\Release\net48\packaged\crosshairs
-
-      - name: Upload Patches Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: patches
-          path: BLREdit\bin\Release\net48\packaged\patches
+          draft: true
+          files: |
+            BLREdit.zip
+            Assets.zip
+            crosshairs.zip
+            dlls.zip
+            json.zip
+            patches.zip
+            textures.zip            
+          
