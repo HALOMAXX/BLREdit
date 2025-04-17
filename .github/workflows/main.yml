@@ -59,40 +59,37 @@ jobs:
           VERSION: ${{ steps.semver.outputs.VERSION }}
         run: echo ${{ env.VERSION }}
 
+      - name: Get Files
+        id: files
+        run: echo "FILES=$(cat BLREdit\bin\Release\net48\packaged\files.txt)" >> "$ENV:GITHUB_OUTPUT"
+
+      - name: Print files
+        env:
+          FILES: ${{ steps.files.outputs.FILES }}
+        run: echo ${{ env.FILES }}
+
       - name: Publish Release
         uses: softprops/action-gh-release@v2.2.1
         env:
           VERSION: ${{ steps.semver.outputs.VERSION }}
+          FILES: ${{ steps.files.outputs.FILES }}
         if: contains(github.ref, 'release')
         with:
           generate_release_notes: true
           draft: true
           prerelease: false
           tag_name: ${{ env.VERSION }}
-          files: |
-            BLREdit\BLREdit\bin\Release\net48\packaged\BLREdit.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\Assets.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\crosshairs.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\dlls.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\json.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\patches.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\textures.zip            
+          files: ${{ env.FILES }}
           
       - name: Publish Beta
         uses: softprops/action-gh-release@v2.2.1
         env:
           VERSION: ${{ steps.semver.outputs.VERSION }}
+          FILES: ${{ steps.files.outputs.FILES }}
         if: contains(github.ref, 'beta')
         with:
           generate_release_notes: true
           draft: true
           prerelease: true
           tag_name: ${{ env.VERSION }}
-          files: |
-            BLREdit\BLREdit\bin\Release\net48\packaged\BLREdit.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\Assets.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\crosshairs.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\dlls.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\json.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\patches.zip
-            BLREdit\BLREdit\bin\Release\net48\packaged\textures.zip       
+          files: ${{ env.FILES }}
