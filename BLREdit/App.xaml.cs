@@ -120,7 +120,7 @@ public partial class App : System.Windows.Application
             try
             {
                 LoggingSystem.Log($"Started Packaging BLREdit Release");
-                GitHubAssets();
+                PackageAssets(); //GitHubAssets();
                 LoggingSystem.Log($"Finished Packaging");
             }
             catch { }
@@ -688,6 +688,8 @@ public partial class App : System.Windows.Application
         var taskPatches = Task.Run(() => { if (patches) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
 
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
+
+        File.WriteAllText($"{IOResources.PACKAGE_DIR}\\semver.txt", ThisAssembly.Git.BaseTag);
 
         SetUpdateFilePath();
     }
