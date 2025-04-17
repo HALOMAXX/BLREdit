@@ -16,7 +16,6 @@ jobs:
     runs-on: windows-latest
     env:
       Solution_Name: BLREdit.sln                        # Replace with your solution name, i.e. MyWpfApp.sln.
-      VERSION: 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
