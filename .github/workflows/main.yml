@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-2022
+    runs-on: windows-latest
     env:
       Solution_Name: BLREdit.sln                        # Replace with your solution name, i.e. MyWpfApp.sln.
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -26,7 +26,21 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-      
+
+      - name: Get Next Semver Release Branch
+        uses: ietf-tools/semver-action@v1
+        if: contains(github.ref, 'release')
+        with:
+          token: ${{ github.token }}
+          branch: release
+
+      - name: Get Next Semver Beta Branch
+        uses: ietf-tools/semver-action@v1
+        if: contains(github.ref, 'beta')
+        with:
+          token: ${{ github.token }}
+          branch: beta
+        
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v2
         
@@ -49,28 +63,32 @@ jobs:
         uses: softprops/action-gh-release@v2.2.1
         if: contains(github.ref, 'release')
         with:
+          generate_release_notes: true
           draft: true
           prerelease: false
+          tag_name: ${{ setps.semver.outputs.next }}
           files: |
-            BLREdit.zip
-            Assets.zip
-            crosshairs.zip
-            dlls.zip
-            json.zip
-            patches.zip
-            textures.zip            
+            BLREdit\bin\Release\net48\packaged\BLREdit.zip
+            BLREdit\bin\Release\net48\packaged\Assets.zip
+            BLREdit\bin\Release\net48\packaged\crosshairs.zip
+            BLREdit\bin\Release\net48\packaged\dlls.zip
+            BLREdit\bin\Release\net48\packaged\json.zip
+            BLREdit\bin\Release\net48\packaged\patches.zip
+            BLREdit\bin\Release\net48\packaged\textures.zip            
           
       - name: Publish Beta
         uses: softprops/action-gh-release@v2.2.1
         if: contains(github.ref, 'beta')
         with:
+          generate_release_notes: true
           draft: true
           prerelease: true
+          tag_name: ${{ setps.semver.outputs.next }}
           files: |
-            BLREdit.zip
-            Assets.zip
-            crosshairs.zip
-            dlls.zip
-            json.zip
-            patches.zip
-            textures.zip       
+            BLREdit\bin\Release\net48\packaged\BLREdit.zip
+            BLREdit\bin\Release\net48\packaged\Assets.zip
+            BLREdit\bin\Release\net48\packaged\crosshairs.zip
+            BLREdit\bin\Release\net48\packaged\dlls.zip
+            BLREdit\bin\Release\net48\packaged\json.zip
+            BLREdit\bin\Release\net48\packaged\patches.zip
+            BLREdit\bin\Release\net48\packaged\textures.zip       
