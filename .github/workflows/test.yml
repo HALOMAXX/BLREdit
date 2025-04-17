@@ -16,7 +16,7 @@ jobs:
     runs-on: windows-latest
     env:
       Solution_Name: BLREdit.sln                        # Replace with your solution name, i.e. MyWpfApp.sln.
-      VERSION: wtf
+      VERSION: 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -25,9 +25,11 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Get Version
-        run: |
-          echo "VERSION=gg" >> $GITHUB_ENV
+      - name: Get Semver
+        id: semver
+        run: echo "VERSION=$(cat BLREdit\semver.txt)" >> "$GITHUB_OUTPUT"
 
       - name: Print semver
-        run: echo "next version $VERSION"
+        env:
+          VERSION: ${{  steps.semver.outputs.VERSION }}
+        run: echo $VERSION
