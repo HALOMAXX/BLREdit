@@ -29,4 +29,4 @@ jobs:
           echo VERSION=$(cat BLREdit\semver.txt)
 
       - name: Print semver
-        run: echo ${VERSION}
+        run: echo $VERSION
