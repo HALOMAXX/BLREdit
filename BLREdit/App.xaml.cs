@@ -691,7 +691,7 @@ public partial class App : System.Windows.Application
 
         try
         {
-            File.WriteAllText($"{IOResources.PACKAGE_DIR}\\semver.txt", ThisAssembly.Git.BaseTag);
+            File.WriteAllText($"{IOResources.PACKAGE_DIR}\\semver.txt", CurrentVersion.ToString());
             LoggingSystem.Log("create semver.txt");
         }
         catch 
