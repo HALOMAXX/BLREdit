@@ -30,4 +30,4 @@ jobs:
           echo next version $VERSION
 
       - name: Print semver
-        run: echo next version $VERSION
+        run: echo next version ${{ env.VERSION}}
