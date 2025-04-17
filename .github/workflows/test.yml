@@ -29,6 +29,8 @@ jobs:
         run: |
           echo "VERSION=$(cat BLREdit\semver.txt)" >> $GITHUB_ENV
           echo next version $VERSION
+        env: 
+          VERSION: $(cat BLREdit\semver.txt)
 
       - name: Print semver
-        run: echo next version ${{ env.VERSION}}
+        run: echo next version ${{ env.VERSION }}
