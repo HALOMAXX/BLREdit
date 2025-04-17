@@ -41,7 +41,7 @@ jobs:
 
       - name: Get Version
         run: |
-          echo "VERSION=$(cat semver.txt)" >> $GITHUB_ENV
+          echo "VERSION=$(cat bin\Release\net48\packaged\semver.txt)" >> $GITHUB_ENV
 
       - name: Print semver
         run: echo ${{ env.VERSION }}
