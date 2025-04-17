@@ -31,7 +31,4 @@ jobs:
           draft: true
           files: |
             D:\a\BLREdit\BLREdit\BLREdit.sln
-            \a\BLREdit\BLREdit\BLREdit.sln
-            a\BLREdit\BLREdit\BLREdit.sln
-            \BLREdit\BLREdit\BLREdit.sln
-            BLREdit\BLREdit\BLREdit.sln
+            .\BLREdit\BLREdit\BLREdit.sln
