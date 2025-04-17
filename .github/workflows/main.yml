@@ -52,10 +52,10 @@ jobs:
 
       - name: Get Version
         run: |
-          echo "VERSION=$(cat BLREdit\bin\Release\net48\packaged\semver.txt)" >> $GITHUB_ENV
+          VERSION=$(cat BLREdit\bin\Release\net48\packaged\semver.txt)
 
       - name: Print semver
-        run: echo ${{ env.VERSION }}
+        run: echo ${VERSION}
 
       - name: Publish Release
         uses: softprops/action-gh-release@v2.2.1
@@ -64,7 +64,7 @@ jobs:
           generate_release_notes: true
           draft: true
           prerelease: false
-          tag_name: ${{ env.VERSION }}
+          tag_name: ${VERSION}
           files: |
             BLREdit\bin\Release\net48\packaged\BLREdit.zip
             BLREdit\bin\Release\net48\packaged\Assets.zip
@@ -81,7 +81,7 @@ jobs:
           generate_release_notes: true
           draft: true
           prerelease: true
-          tag_name: ${{ env.VERSION }}
+          tag_name: ${VERSION}
           files: |
             BLREdit\bin\Release\net48\packaged\BLREdit.zip
             BLREdit\bin\Release\net48\packaged\Assets.zip
