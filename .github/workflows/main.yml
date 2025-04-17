@@ -45,8 +45,6 @@ jobs:
           name: log
           path: BLREdit\bin\Release\net48\logs
 
-      - run: cat log.txt
-
 #      - name: ListFiles
 #        shell: pwsh
 #        run: |
