@@ -31,4 +31,4 @@ jobs:
       - name: Print semver
         env:
           VERSION: ${{ steps.semver.outputs.VERSION }}
-        run: echo $VERSION
+        run: echo ${{ env.VERSION }}
