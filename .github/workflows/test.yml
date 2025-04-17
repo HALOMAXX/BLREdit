@@ -27,7 +27,7 @@ jobs:
 
       - name: Get Version
         run: |
-          echo "VERSION=gg" >> "$GITHUB_ENV"
+          echo "VERSION=gg" >> $GITHUB_ENV
 
       - name: Print semver
         run: echo "next version $VERSION"
