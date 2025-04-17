@@ -26,12 +26,6 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-
-      - name: Print Semver Release Branch
-        if: contains(github.ref, 'release')
-        run: echo ${{ steps.semver-release.outputs.next }}
-
-
         
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v2
@@ -47,8 +41,7 @@ jobs:
 
       - name: Get Version
         run: |
-          VER=$(cat semver.txt)
-          echo "VERSION=$VER" >> $GITHUB_ENV
+          echo "VERSION=$(cat semver.txt)" >> $GITHUB_ENV
 
       - name: Print semver
         run: echo ${{ env.VERSION }}
