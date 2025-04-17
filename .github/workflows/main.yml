@@ -47,7 +47,7 @@ jobs:
 
       - name: Publish Release
         uses: softprops/action-gh-release@v2.2.1
-        if: github.branch == 'release'
+        if: contains(github.ref, "release")
         with:
           draft: true
           prerelease: false
@@ -62,7 +62,7 @@ jobs:
           
       - name: Publish Beta
         uses: softprops/action-gh-release@v2.2.1
-        if: github.branch == 'beta'
+        if: contains(github.ref, "beta")
         with:
           draft: true
           prerelease: true
