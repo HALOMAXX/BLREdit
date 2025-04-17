@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build
+name: Test
 
 # Controls when the workflow will run
 on:
@@ -24,11 +24,9 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Get Semver
-        id: semver
-        run: echo "VERSION=$(cat BLREdit\semver.txt)" >> "$ENV:GITHUB_OUTPUT"
-
-      - name: Print semver
-        env:
-          VERSION: ${{ steps.semver.outputs.VERSION }}
-        run: echo ${{ env.VERSION }}
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2.2.1
+        with:
+          generate_release_notes: true
+          draft: true
+          files: D:\a\BLREdit\BLREdit\BLREdit.sln
