@@ -59,14 +59,14 @@ jobs:
           VERSION: ${{ steps.semver.outputs.VERSION }}
         run: echo ${{ env.VERSION }}
 
-      - name: Get Files
-        id: files
-        run: echo "FILES=$(cat BLREdit\bin\Release\net48\packaged\files.txt)" >> "$ENV:GITHUB_OUTPUT"
+      # - name: Get Files
+      #   id: files
+      #   run: echo "FILES=$(cat BLREdit\bin\Release\net48\packaged\files.txt)" >> "$ENV:GITHUB_OUTPUT"
 
-      - name: Print files
-        env:
-          FILES: ${{ steps.files.outputs.FILES }}
-        run: echo ${{ env.FILES }}
+      # - name: Print files
+      #   env:
+      #     FILES: ${{ steps.files.outputs.FILES }}
+      #   run: echo ${{ env.FILES }}
 
       - name: Publish Release
         uses: softprops/action-gh-release@v2.2.1
