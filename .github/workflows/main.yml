@@ -39,10 +39,16 @@ jobs:
       - name: Package App
         run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent
 
-      - name: ListFiles
-        shell: pwsh
-        run: |
-          Get-ChildItem -Recurse
+      - name: Upload Logs Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: log
+          path: BLREdit\bin\Release\net48\logs
+
+#      - name: ListFiles
+#        shell: pwsh
+#        run: |
+#          Get-ChildItem -Recurse
 
       - name: Get Version
         run: |
@@ -50,12 +56,6 @@ jobs:
 
       - name: Print semver
         run: echo ${{ env.VERSION }}
-
-      - name: Upload Logs Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: log
-          path: BLREdit\bin\Release\net48\logs
 
       - name: Publish Release
         uses: softprops/action-gh-release@v2.2.1

@@ -689,7 +689,15 @@ public partial class App : System.Windows.Application
 
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
 
-        File.WriteAllText($"{IOResources.PACKAGE_DIR}\\semver.txt", ThisAssembly.Git.BaseTag);
+        try
+        {
+            File.WriteAllText($"{IOResources.PACKAGE_DIR}\\semver.txt", ThisAssembly.Git.BaseTag);
+            LoggingSystem.Log("create semver.txt");
+        }
+        catch 
+        {
+            LoggingSystem.Log("failed to write smever.txt");
+        }
 
         SetUpdateFilePath();
     }
