@@ -18,7 +18,7 @@ namespace BLREdit.Game.BLRevive
     {
         public List<string> CmdBlacklist { get; set; } = [];
         public List<string> CmdWhitelist { get; set; } = [];
-        public bool Enable { get; set; } = false;
+        public bool Enable { get; set; }
     }
 
     public class BLReviveLoggerConfig
@@ -30,7 +30,7 @@ namespace BLREdit.Game.BLRevive
 
     public class BLReviveServerConfig
     {
-        public bool AuthenticateUsers { get; set; } = false;
+        public bool AuthenticateUsers { get; set; }
         public bool Enable { get; set; } = true;
     }
 }

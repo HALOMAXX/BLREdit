@@ -16,12 +16,12 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static ItemFilters Instance { get; private set; } = new ItemFilters();
 
-    private BLRWeapon? weaponFilter;
-    public BLRWeapon? WeaponFilter { get { return weaponFilter; } set { weaponFilter = value; OnPropertyChanged(); } }
+    private BLREditWeapon? weaponFilter;
+    public BLREditWeapon? WeaponFilter { get { return weaponFilter; } set { weaponFilter = value; OnPropertyChanged(); } }
     private string searchFilter = "";
     public string SearchFilter { get { return searchFilter; } set { searchFilter = value; MainWindow.Instance?.ApplySearchAndFilter(); OnPropertyChanged(); } }
 
-    public static bool FilterBySearch(BLRItem item)
+    public static bool FilterBySearch(BLREditItem item)
     {
         string searchText = Instance.SearchFilter.Trim().ToLower();
         string itemName = item.Name?.ToLower() ?? string.Empty;
@@ -31,8 +31,8 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static bool FullFilter(object o)
     {
-        if (MainWindow.Instance?.wasLastImageScopePreview ?? true) { return true; }
-        if (o is BLRItem item)
+        if (MainWindow.Instance?.WasLastImageScopePreview ?? true) { return true; }
+        if (o is BLREditItem item)
         {
             if (FilterBySearch(item))
             {
@@ -44,14 +44,14 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static bool PartialFilter(object o)
     {
-        if (o is BLRItem item)
+        if (o is BLREditItem item)
         {
             return FilterByValidity(item);
         }
         return false;
     }
 
-    public static bool FilterByValidity(BLRItem item)
+    public static bool FilterByValidity(BLREditItem item)
     {
         if (item is null) { return false; }
         item.IsValid.Set(item.ValidForTest(Instance?.WeaponFilter?.Receiver ?? null));

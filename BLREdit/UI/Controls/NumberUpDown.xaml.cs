@@ -29,14 +29,14 @@ public sealed partial class NumberUpDown : UserControl
         set { SetValue(NumberProperty, value); }
     }
 
-    private int minNumber = 0;
+    private int minNumber;
     public int MinNumber
     {
         get { return (int)GetValue(MinNumberProperty); }
         set { SetValue(MinNumberProperty, value); }
     }
 
-    private int maxNumber = 0;
+    private int maxNumber;
     public int MaxNumber
     {
         get { return (int)GetValue(MaxNumberProperty); }
@@ -50,14 +50,14 @@ public sealed partial class NumberUpDown : UserControl
         set { SetValue(NumberChangeProperty, value); }
     }
 
-    private bool overflow = false;
+    private bool overflow;
     public bool Overflow 
     { 
         get { return (bool)GetValue(OverflowProperty); }
         set { SetValue(OverflowProperty, value); }
     }
 
-    public Orientation orientation = Orientation.Vertical;
+    private Orientation orientation = Orientation.Vertical;
     public Orientation Orientation
     {
         get { return (Orientation)GetValue(OrientationProperty); }
@@ -136,7 +136,7 @@ public sealed partial class NumberUpDown : UserControl
 
     public void ClampNumber()
     {
-        Number = BLRWeapon.Clamp(Number, MinNumber, MaxNumber);
+        Number = BLREditWeapon.Clamp(Number, MinNumber, MaxNumber);
     }
 
     private void NumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -183,7 +183,7 @@ public sealed partial class NumberUpDown : UserControl
                 }
             }
 
-            Number = BLRWeapon.Clamp(num, minNumber, maxNumber);
+            Number = BLREditWeapon.Clamp(num, minNumber, maxNumber);
         }
     }
 

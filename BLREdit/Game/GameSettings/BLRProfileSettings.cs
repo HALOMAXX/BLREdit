@@ -18,6 +18,6 @@ public class BLRProfileSettingData
 {
     public int Type { get; set; }
     public int Value1 { get; set; }
-    public int Value2 { get; set; } = 0;
+    public int Value2 { get; set; }
 }
 

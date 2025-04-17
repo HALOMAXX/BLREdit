@@ -46,20 +46,20 @@ public sealed class ShareableWeapon : IBLRWeapon
     /// Creates a Loadout-Manager readable Weapon
     /// </summary>
     /// <param name="weapon"></param>
-    public ShareableWeapon(BLRWeapon weapon)
+    public ShareableWeapon(BLREditWeapon weapon)
     {
-        foreach (var part in BLRWeapon.WeaponPartInfo)
+        foreach (var part in BLREditWeapon.WeaponPartInfo)
         {
             if (Properties.TryGetValue(part.Name, out PropertyInfo info))
             {
-                info.SetValue(this, BLRItem.GetMagicCowsID((BLRItem)part.GetValue(weapon)));
+                info.SetValue(this, BLREditItem.GetMagicCowsID((BLREditItem)part.GetValue(weapon)));
             }
         }
     }
 
-    public BLRWeapon ToBLRWeapon(bool isPrimary, BLRLoadout? loadout = null) 
+    public BLREditWeapon ToBLRWeapon(bool isPrimary, BLREditLoadout? loadout = null) 
     {
-        return new BLRWeapon(isPrimary, loadout, this, true);
+        return new BLREditWeapon(isPrimary, loadout, this, true);
     }
 
     public ShareableWeapon Clone()
@@ -80,7 +80,7 @@ public sealed class ShareableWeapon : IBLRWeapon
         };
     }
 
-    public void Read(BLRWeapon weapon)
+    public void Read(BLREditWeapon weapon)
     {
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadWeapon)) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
@@ -98,21 +98,21 @@ public sealed class ShareableWeapon : IBLRWeapon
         UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRWeapon weapon)
+    public void Write(BLREditWeapon weapon)
     {
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteWeapon)) return;
         if (Loadout is not null) { Loadout.LastModified = DateTime.Now; }
-        Receiver = BLRItem.GetMagicCowsID(weapon.Receiver, -1);
-        Barrel = BLRItem.GetMagicCowsID(weapon.Barrel, -1);
-        Muzzle = BLRItem.GetMagicCowsID(weapon.Muzzle, -1);
-        Magazine = BLRItem.GetMagicCowsID(weapon.Magazine, -1);
-        Stock = BLRItem.GetMagicCowsID(weapon.Stock, -1);
-        Scope = BLRItem.GetMagicCowsID(weapon.Scope, -1);
-        Grip = BLRItem.GetMagicCowsID(weapon.Grip, -1);
-        Ammo = BLRItem.GetMagicCowsID(weapon.Ammo, -1);
-        Tag = BLRItem.GetMagicCowsID(weapon.Tag, -1);
-        Camo = BLRItem.GetMagicCowsID(weapon.Camo, -1);
-        Skin = BLRItem.GetMagicCowsID(weapon.Skin, -1);
+        Receiver = BLREditItem.GetMagicCowsID(weapon.Receiver, -1);
+        Barrel = BLREditItem.GetMagicCowsID(weapon.Barrel, -1);
+        Muzzle = BLREditItem.GetMagicCowsID(weapon.Muzzle, -1);
+        Magazine = BLREditItem.GetMagicCowsID(weapon.Magazine, -1);
+        Stock = BLREditItem.GetMagicCowsID(weapon.Stock, -1);
+        Scope = BLREditItem.GetMagicCowsID(weapon.Scope, -1);
+        Grip = BLREditItem.GetMagicCowsID(weapon.Grip, -1);
+        Ammo = BLREditItem.GetMagicCowsID(weapon.Ammo, -1);
+        Tag = BLREditItem.GetMagicCowsID(weapon.Tag, -1);
+        Camo = BLREditItem.GetMagicCowsID(weapon.Camo, -1);
+        Skin = BLREditItem.GetMagicCowsID(weapon.Skin, -1);
         if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(weapon, EventArgs.Empty); }
     }
 }

@@ -25,8 +25,14 @@
             </Border>
             <Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
-                    <Label Content="{x:Static p:Resources.lbl_SelectedBLREditVersion}" ToolTip="{x:Static p:Resources.txt_TT_SelectedProxyVersion }" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                    <Label Content="{x:Static p:Resources.lbl_SelectedBLREditVersion}" ToolTip="{x:Static p:Resources.txt_TT_SelectedBLREditVersion }" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
                     <ComboBox Height="32" Name="BLREditVersionComboBox" SelectionChanged="BLREditVersionComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.BLREditVersions)}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                    <Label Content="{x:Static p:Resources.lbl_SelectedBLReviveVersion}" ToolTip="{x:Static p:Resources.txt_TT_SelectedBLReviveVersion }" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+                    <ComboBox Height="32" Name="BLReviveVersionComboBox" SelectionChanged="BLReviveVersionComboBox_SelectionChanged" ItemsSource="{Binding Path=(local:BLREditSettingsControl.BLReviveVersions)}"/>
                 </StackPanel>
             </Border>
             <Border>

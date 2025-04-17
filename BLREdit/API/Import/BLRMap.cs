@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,9 @@ public sealed class BLRMap
             return IOResources.BaseDirectory + "Assets\\textures\\" + SquareImageName;
         }
     }
-    public List<string> Available { get; set; } = [];
-    public List<string> SupportedPlaylists { get; set; } = ["DM", "KC", "TDM", "LMS", "LTS", "CTF", "KOTH","DOM", "SND", "OS_Medium", "OS_Easy", "OS_Hard"];
-    [JsonIgnore] public List<BLRMode> SupportedGameModes { get; } = [];
+#pragma warning disable CA2227 // Collection properties should be read only
+    public Collection<string> Available { get; set; } = [];
+    public Collection<string> SupportedPlaylists { get; set; } = ["DM", "KC", "TDM", "LMS", "LTS", "CTF", "KOTH","DOM", "SND", "OS_Medium", "OS_Easy", "OS_Hard"];
+    [JsonIgnore] public Collection<BLRMode> SupportedGameModes { get; } = [];
+#pragma warning restore CA2227 // Collection properties should be read only
 }

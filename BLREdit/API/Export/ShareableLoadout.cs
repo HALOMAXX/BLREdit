@@ -56,50 +56,50 @@ public sealed class ShareableLoadout : IBLRLoadout
     public ShareableLoadout()
     { }
 
-    public ShareableLoadout(BLRLoadout loadout)
+    public ShareableLoadout(BLREditLoadout loadout)
     {
         Name = loadout.Name;
         Female = loadout.IsFemale.Is;
         Apply = loadout.Apply;
-        BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
-        UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
-        LowerBody = BLRItem.GetMagicCowsID(loadout.LowerBody);
-        Helmet = BLRItem.GetMagicCowsID(loadout.Helmet);
-        Tactical = BLRItem.GetMagicCowsID(loadout.Tactical);
-        Badge = BLRItem.GetMagicCowsID(loadout.Trophy);
+        BodyCamo = BLREditItem.GetMagicCowsID(loadout.BodyCamo);
+        UpperBody = BLREditItem.GetMagicCowsID(loadout.UpperBody);
+        LowerBody = BLREditItem.GetMagicCowsID(loadout.LowerBody);
+        Helmet = BLREditItem.GetMagicCowsID(loadout.Helmet);
+        Tactical = BLREditItem.GetMagicCowsID(loadout.Tactical);
+        Badge = BLREditItem.GetMagicCowsID(loadout.Trophy);
 
-        Avatar = BLRItem.GetMagicCowsID(loadout.Avatar, 99);
+        Avatar = BLREditItem.GetMagicCowsID(loadout.Avatar, 99);
 
-        Gear_R1 = BLRItem.GetMagicCowsID(loadout.Gear1);
-        Gear_R2 = BLRItem.GetMagicCowsID(loadout.Gear2);
-        Gear_L1 = BLRItem.GetMagicCowsID(loadout.Gear3);
-        Gear_L2 = BLRItem.GetMagicCowsID(loadout.Gear4);
+        Gear_R1 = BLREditItem.GetMagicCowsID(loadout.Gear1);
+        Gear_R2 = BLREditItem.GetMagicCowsID(loadout.Gear2);
+        Gear_L1 = BLREditItem.GetMagicCowsID(loadout.Gear3);
+        Gear_L2 = BLREditItem.GetMagicCowsID(loadout.Gear4);
 
-        Taunts[0] = BLRItem.GetMagicCowsID(loadout.Taunt1);
-        Taunts[1] = BLRItem.GetMagicCowsID(loadout.Taunt2);
-        Taunts[2] = BLRItem.GetMagicCowsID(loadout.Taunt3);
-        Taunts[3] = BLRItem.GetMagicCowsID(loadout.Taunt4);
-        Taunts[4] = BLRItem.GetMagicCowsID(loadout.Taunt5);
-        Taunts[5] = BLRItem.GetMagicCowsID(loadout.Taunt6);
-        Taunts[6] = BLRItem.GetMagicCowsID(loadout.Taunt7);
-        Taunts[7] = BLRItem.GetMagicCowsID(loadout.Taunt8);
+        Taunts[0] = BLREditItem.GetMagicCowsID(loadout.Taunt1);
+        Taunts[1] = BLREditItem.GetMagicCowsID(loadout.Taunt2);
+        Taunts[2] = BLREditItem.GetMagicCowsID(loadout.Taunt3);
+        Taunts[3] = BLREditItem.GetMagicCowsID(loadout.Taunt4);
+        Taunts[4] = BLREditItem.GetMagicCowsID(loadout.Taunt5);
+        Taunts[5] = BLREditItem.GetMagicCowsID(loadout.Taunt6);
+        Taunts[6] = BLREditItem.GetMagicCowsID(loadout.Taunt7);
+        Taunts[7] = BLREditItem.GetMagicCowsID(loadout.Taunt8);
 
-        Depot[0] = BLRItem.GetMagicCowsID(loadout.Depot1);
-        Depot[1] = BLRItem.GetMagicCowsID(loadout.Depot2);
-        Depot[2] = BLRItem.GetMagicCowsID(loadout.Depot3);
-        Depot[3] = BLRItem.GetMagicCowsID(loadout.Depot4);
-        Depot[4] = BLRItem.GetMagicCowsID(loadout.Depot5);
+        Depot[0] = BLREditItem.GetMagicCowsID(loadout.Depot1);
+        Depot[1] = BLREditItem.GetMagicCowsID(loadout.Depot2);
+        Depot[2] = BLREditItem.GetMagicCowsID(loadout.Depot3);
+        Depot[3] = BLREditItem.GetMagicCowsID(loadout.Depot4);
+        Depot[4] = BLREditItem.GetMagicCowsID(loadout.Depot5);
 
-        PatchIcon = BLRItem.GetUID(loadout.EmblemIcon);
-        PatchIconColor = BLRItem.GetUID(loadout.EmblemIconColor);
-        PatchShape = BLRItem.GetUID(loadout.EmblemShape);
-        PatchShapeColor = BLRItem.GetUID(loadout.EmblemShapeColor);
-        PatchBackground = BLRItem.GetUID(loadout.EmblemBackground);
-        PatchBackgroundColor = BLRItem.GetUID(loadout.EmblemBackgroundColor);
+        PatchIcon = BLREditItem.GetUID(loadout.EmblemIcon);
+        PatchIconColor = BLREditItem.GetUID(loadout.EmblemIconColor);
+        PatchShape = BLREditItem.GetUID(loadout.EmblemShape);
+        PatchShapeColor = BLREditItem.GetUID(loadout.EmblemShapeColor);
+        PatchBackground = BLREditItem.GetUID(loadout.EmblemBackground);
+        PatchBackgroundColor = BLREditItem.GetUID(loadout.EmblemBackgroundColor);
 
-        AnnouncerVoice = BLRItem.GetUID(loadout.AnnouncerVoice);
-        PlayerVoice = BLRItem.GetUID(loadout.PlayerVoice);
-        Title = BLRItem.GetUID(loadout.Title);
+        AnnouncerVoice = BLREditItem.GetUID(loadout.AnnouncerVoice);
+        PlayerVoice = BLREditItem.GetUID(loadout.PlayerVoice);
+        Title = BLREditItem.GetUID(loadout.Title);
 
         Primary = new(loadout.Primary);
         Secondary = new(loadout.Secondary);
@@ -107,9 +107,9 @@ public sealed class ShareableLoadout : IBLRLoadout
 
     public event EventHandler? WasWrittenTo;
 
-    public BLRLoadout ToBLRLoadout(BLRProfile? profile = null)
+    public BLREditLoadout ToBLRLoadout(BLRProfile? profile = null)
     {
-        var loadout = new BLRLoadout(profile);
+        var loadout = new BLREditLoadout(profile);
         loadout.SetLoadout(this, true);
         loadout.Read();
         loadout.CalculateStats();
@@ -175,7 +175,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         return Secondary;
     }
 
-    public void Read(BLRLoadout loadout)
+    public void Read(BLREditLoadout loadout)
     {
         Primary.Read(loadout.Primary);
         Secondary.Read(loadout.Secondary);
@@ -233,7 +233,7 @@ public sealed class ShareableLoadout : IBLRLoadout
         UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRLoadout loadout)
+    public void Write(BLREditLoadout loadout)
     {
         Primary.Write(loadout.Primary);
         Secondary.Write(loadout.Secondary);
@@ -246,47 +246,47 @@ public sealed class ShareableLoadout : IBLRLoadout
 
         Apply = loadout.Apply;
 
-        Avatar = BLRItem.GetMagicCowsID(loadout.Avatar, -1);
-        BodyCamo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
+        Avatar = BLREditItem.GetMagicCowsID(loadout.Avatar, -1);
+        BodyCamo = BLREditItem.GetMagicCowsID(loadout.BodyCamo);
 
-        Depot[0] = BLRItem.GetMagicCowsID(loadout.Depot1);
-        Depot[1] = BLRItem.GetMagicCowsID(loadout.Depot2);
-        Depot[2] = BLRItem.GetMagicCowsID(loadout.Depot3);
-        Depot[3] = BLRItem.GetMagicCowsID(loadout.Depot4);
-        Depot[4] = BLRItem.GetMagicCowsID(loadout.Depot5);
+        Depot[0] = BLREditItem.GetMagicCowsID(loadout.Depot1);
+        Depot[1] = BLREditItem.GetMagicCowsID(loadout.Depot2);
+        Depot[2] = BLREditItem.GetMagicCowsID(loadout.Depot3);
+        Depot[3] = BLREditItem.GetMagicCowsID(loadout.Depot4);
+        Depot[4] = BLREditItem.GetMagicCowsID(loadout.Depot5);
 
-        Gear_R1 = BLRItem.GetMagicCowsID(loadout.Gear1);
-        Gear_R2 = BLRItem.GetMagicCowsID(loadout.Gear2);
-        Gear_L1 = BLRItem.GetMagicCowsID(loadout.Gear3);
-        Gear_L2 = BLRItem.GetMagicCowsID(loadout.Gear4);
+        Gear_R1 = BLREditItem.GetMagicCowsID(loadout.Gear1);
+        Gear_R2 = BLREditItem.GetMagicCowsID(loadout.Gear2);
+        Gear_L1 = BLREditItem.GetMagicCowsID(loadout.Gear3);
+        Gear_L2 = BLREditItem.GetMagicCowsID(loadout.Gear4);
 
-        Helmet = BLRItem.GetMagicCowsID(loadout.Helmet);
-        UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
-        LowerBody = BLRItem.GetMagicCowsID(loadout.LowerBody);
+        Helmet = BLREditItem.GetMagicCowsID(loadout.Helmet);
+        UpperBody = BLREditItem.GetMagicCowsID(loadout.UpperBody);
+        LowerBody = BLREditItem.GetMagicCowsID(loadout.LowerBody);
 
-        Tactical = BLRItem.GetMagicCowsID(loadout.Tactical);
+        Tactical = BLREditItem.GetMagicCowsID(loadout.Tactical);
 
-        Taunts[0] = BLRItem.GetMagicCowsID(loadout.Taunt1);
-        Taunts[1] = BLRItem.GetMagicCowsID(loadout.Taunt2);
-        Taunts[2] = BLRItem.GetMagicCowsID(loadout.Taunt3);
-        Taunts[3] = BLRItem.GetMagicCowsID(loadout.Taunt4);
-        Taunts[4] = BLRItem.GetMagicCowsID(loadout.Taunt5);
-        Taunts[5] = BLRItem.GetMagicCowsID(loadout.Taunt6);
-        Taunts[6] = BLRItem.GetMagicCowsID(loadout.Taunt7);
-        Taunts[7] = BLRItem.GetMagicCowsID(loadout.Taunt8);
+        Taunts[0] = BLREditItem.GetMagicCowsID(loadout.Taunt1);
+        Taunts[1] = BLREditItem.GetMagicCowsID(loadout.Taunt2);
+        Taunts[2] = BLREditItem.GetMagicCowsID(loadout.Taunt3);
+        Taunts[3] = BLREditItem.GetMagicCowsID(loadout.Taunt4);
+        Taunts[4] = BLREditItem.GetMagicCowsID(loadout.Taunt5);
+        Taunts[5] = BLREditItem.GetMagicCowsID(loadout.Taunt6);
+        Taunts[6] = BLREditItem.GetMagicCowsID(loadout.Taunt7);
+        Taunts[7] = BLREditItem.GetMagicCowsID(loadout.Taunt8);
 
-        PatchIcon = BLRItem.GetUID(loadout.EmblemIcon);
-        PatchIconColor = BLRItem.GetUID(loadout.EmblemIconColor);
-        PatchShape = BLRItem.GetUID(loadout.EmblemShape);
-        PatchShapeColor = BLRItem.GetUID(loadout.EmblemShapeColor);
-        PatchBackground = BLRItem.GetUID(loadout.EmblemBackground);
-        PatchBackgroundColor = BLRItem.GetUID(loadout.EmblemBackgroundColor);
+        PatchIcon = BLREditItem.GetUID(loadout.EmblemIcon);
+        PatchIconColor = BLREditItem.GetUID(loadout.EmblemIconColor);
+        PatchShape = BLREditItem.GetUID(loadout.EmblemShape);
+        PatchShapeColor = BLREditItem.GetUID(loadout.EmblemShapeColor);
+        PatchBackground = BLREditItem.GetUID(loadout.EmblemBackground);
+        PatchBackgroundColor = BLREditItem.GetUID(loadout.EmblemBackgroundColor);
 
-        AnnouncerVoice = BLRItem.GetUID(loadout.AnnouncerVoice);
-        PlayerVoice = BLRItem.GetUID(loadout.PlayerVoice);
-        Title = BLRItem.GetUID(loadout.Title);
+        AnnouncerVoice = BLREditItem.GetUID(loadout.AnnouncerVoice);
+        PlayerVoice = BLREditItem.GetUID(loadout.PlayerVoice);
+        Title = BLREditItem.GetUID(loadout.Title);
 
-        Badge = BLRItem.GetMagicCowsID(loadout.Trophy);
+        Badge = BLREditItem.GetMagicCowsID(loadout.Trophy);
         if (WasWrittenTo is not null && !UndoRedoSystem.UndoRedoSystemWorking) { WasWrittenTo(loadout, EventArgs.Empty); }
     }
 

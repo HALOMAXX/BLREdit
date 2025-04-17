@@ -30,7 +30,7 @@ namespace BLREdit.UI.Controls
 
         private void RandomizeTaunts_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is BLRLoadout loadout)
+            if (DataContext is BLREditLoadout loadout)
             {
                 loadout.RandomizeTaunts();
             }
@@ -38,7 +38,7 @@ namespace BLREdit.UI.Controls
 
         private void RandomizeDepot_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is BLRLoadout loadout)
+            if (DataContext is BLREditLoadout loadout)
             {
                 loadout.RandomizeDepot();
             }
@@ -46,7 +46,7 @@ namespace BLREdit.UI.Controls
 
         private void RandomizeEmblem_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is BLRLoadout loadout)
+            if (DataContext is BLREditLoadout loadout)
             {
                 loadout.RandomizeEmblem();
             }
@@ -54,7 +54,7 @@ namespace BLREdit.UI.Controls
 
         private void RandomizeVoices_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is BLRLoadout loadout)
+            if (DataContext is BLREditLoadout loadout)
             {
                 loadout.RandomizeVoices();
             }

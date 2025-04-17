@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
@@ -23,11 +24,11 @@ namespace BLREdit.UI.Windows;
 /// </summary>
 public sealed partial class MapModeSelect : Window
 {
-    public static List<BLRMap> Maps { get; } = IOResources.DeserializeFile<List<BLRMap>>($"Assets\\json\\maps.json") ?? [];
-    public static List<BLRMode> Modes { get; } = IOResources.DeserializeFile<List<BLRMode>>($"Assets\\json\\modes.json") ?? [];
+    public static Collection<BLRMap> Maps { get; } = IOResources.DeserializeFile<Collection<BLRMap>>($"Assets\\json\\maps.json") ?? [];
+    public static Collection<BLRMode> Modes { get; } = IOResources.DeserializeFile<Collection<BLRMode>>($"Assets\\json\\modes.json") ?? [];
 
-    private BLRMap? SelectedMap = null;
-    private BLRMode? SelectedMode = null;
+    private BLRMap? SelectedMap;
+    private BLRMode? SelectedMode;
     private bool IsCanceled = true;
 
     static MapModeSelect()

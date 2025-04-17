@@ -15,6 +15,7 @@ namespace BLREdit.Import;
 
 public static class ImportSystem
 {
+#pragma warning disable CA1707 // Identifiers should not contain underscores
     public const string PRIMARY_CATEGORY = "primary";           //primary
     public const string SECONDARY_CATEGORY = "secondary";       //secondary
     public const string MUZZELS_CATEGORY = "muzzles";           //muzzles
@@ -47,12 +48,13 @@ public static class ImportSystem
     public const string EMBLEM_SHAPE_CATEGORY = "emblem_shape";
 
     public const string TITLES_CATEGORY = "titles";
+#pragma warning restore CA1707 // Identifiers should not contain underscores
 
-    public static List<FoxIcon> ScopePreviews { get; } = [];
+    public static Collection<FoxIcon> ScopePreviews { get; } = [];
 
-    public static Dictionary<string?, ObservableCollection<BLRItem>> ItemLists { get; private set; } = [];
+    public static Dictionary<string?, ObservableCollection<BLREditItem>> ItemLists { get; private set; } = [];
 
-    static bool IsInitialized = false;
+    static bool IsInitialized;
     static readonly object initLock = new();
     public static void Initialize()
     {
@@ -80,7 +82,7 @@ public static class ImportSystem
 
     private static void LoadItems()
     {
-        ItemLists = IOResources.DeserializeFile<Dictionary<string?, ObservableCollection<BLRItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? [];
+        ItemLists = IOResources.DeserializeFile<Dictionary<string?, ObservableCollection<BLREditItem>>>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}{IOResources.ITEM_LIST_FILE}") ?? [];
     }
 
     public static void ApplyDisplayStats()
@@ -95,17 +97,18 @@ public static class ImportSystem
                     {
                         if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        var (DamageIdeal, DamageMax) = BLRWeapon.CalculateDamage(item, 0);
-                        var (ZoomSpread, HipSpread, MovmentSpread) = BLRWeapon.CalculateSpread(item, 0, 0, item, item);
-                        var (RecoilHip, _RecoilZoom) = BLRWeapon.CalculateRecoil(item, 0);
-                        var (IdealRange, MaxRange, _TracerRange) = BLRWeapon.CalculateRange(item, 0);
+                        var (DamageIdeal, DamageMax) = BLREditWeapon.CalculateDamage(item, 0);
+                        var (ZoomSpread, HipSpread, MovmentSpread) = BLREditWeapon.CalculateSpread(item, 0, 0, item, item, 0);
+                        var RecoilHip = BLREditWeapon.CalculateRecoil(item, 0, false);
+                        var _RecoilZoom = BLREditWeapon.CalculateRecoil(item, 0, true);
+                        var (IdealRange, MaxRange, _TracerRange) = BLREditWeapon.CalculateRange(item, 0);
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, new double[] { DamageIdeal, DamageMax }, StatsEnum.None, "0", "", "/");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Aim), Resources.lbl_SpreadAim, ZoomSpread, StatsEnum.None, "0.00", "°");
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Hip), Resources.lbl_SpreadHipfire, HipSpread, StatsEnum.None, "0.00", "°");
-                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Move), Resources.lbl_SpreadMove, MovmentSpread, StatsEnum.None, "0.00", "°");
-                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_RecoilHip, RecoilHip, StatsEnum.None, "0.00", "°");
-                        item.DisplayStat6 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, new double[] { IdealRange, MaxRange }, StatsEnum.None, "0", "", "/", 2);
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, new double[] { DamageIdeal, DamageMax }, StatDisplayModifiers.None, "0", "", "/");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Aim), Resources.lbl_SpreadAim, ZoomSpread, StatDisplayModifiers.None, "0.00", "°");
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Hip), Resources.lbl_SpreadHipfire, HipSpread, StatDisplayModifiers.None, "0.00", "°");
+                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Move), Resources.lbl_SpreadMove, MovmentSpread, StatDisplayModifiers.None, "0.00", "°");
+                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_RecoilHip, RecoilHip, StatDisplayModifiers.None, "0.00", "°");
+                        item.DisplayStat6 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, new double[] { IdealRange, MaxRange }, StatDisplayModifiers.None, "0", "", "/", 2);
                     }
                     break;
                 case MUZZELS_CATEGORY:
@@ -119,11 +122,11 @@ public static class ImportSystem
                         double range = item.WeaponModifiers?.Range ?? 0;
                         double run = item.WeaponModifiers?.MovementSpeed ?? 0;
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, range, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, run, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, range, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, run, StatDisplayModifiers.Normal, "0", "%");
                     }
                     break;
                 case STOCKS_CATEGORY:
@@ -138,14 +141,14 @@ public static class ImportSystem
                         double run = item.WeaponModifiers?.MovementSpeed ?? 0;
                         double reload = item.WeaponModifiers?.ReloadSpeed ?? 0;
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, range, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, run, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, range, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, run, StatDisplayModifiers.Normal, "0", "%");
 
                         if (item.IsValidForItemIDS(40020))
-                        { item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatsEnum.Normal, "0", "%"); }
+                        { item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Normal, "0", "%"); }
                     }
                     break;
                 case BARRELS_CATEGORY:
@@ -159,11 +162,11 @@ public static class ImportSystem
                         double range = item.WeaponModifiers?.Range ?? 0;
                         double run = item.WeaponModifiers?.MovementSpeed ?? 0;
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, range, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, run, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, spread, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, range, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, run, StatDisplayModifiers.Normal, "0", "%");
                     }
                     break;
                 case SCOPES_CATEGORY:
@@ -171,9 +174,9 @@ public static class ImportSystem
                     {
                         if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item.WikiStats?.Zoom ?? 0)), StatsEnum.Normal, "0.00", "x");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.ScopeInTime), Resources.lbl_ScopeInTime, (0.0 + (item.WikiStats?.ScopeInTime ?? 0)), StatsEnum.Normal, "0.00", "s", "+");
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Infrared), Resources.lbl_Infrared, item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatsEnum.Normal, "");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Zoom), Resources.lbl_Zoom, (1.3 + (item.WikiStats?.Zoom ?? 0)), StatDisplayModifiers.Normal, "0.0", "x");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.ScopeInTime), Resources.lbl_ScopeInTime, (0.0 + ((item.WikiStats?.ScopeInTime ?? 0.11)-0.11)), StatDisplayModifiers.Inverted, "0.000", "s", "");
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Infrared), Resources.lbl_Infrared, item.UID == 45019 || item.UID == 45020 || item.UID == 45021, StatDisplayModifiers.Normal, "");
                     }
                     break;
                 case MAGAZINES_CATEGORY:
@@ -183,25 +186,34 @@ public static class ImportSystem
                         item.Category = itemCategory.Key;
                         double ammo = item.WeaponModifiers?.Ammo ?? 0;
                         double range = item.WeaponModifiers?.Range ?? 0;
-                        double reload = item.WikiStats?.Reload ?? 0;
+                        //double reload = item.WikiStats?.Reload ?? 0;
+                        double reload = item.WeaponModifiers?.ReloadSpeed ?? 0;
                         double movementSpeed = item.WeaponModifiers?.MovementSpeed ?? 0;
                         double damage = item.WeaponModifiers?.Damage ?? 0;
                         double recoil = item.WeaponModifiers?.Recoil ?? 0;
                         double accuracy = item.WeaponModifiers?.Accuracy ?? 0;
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Ammo), Resources.lbl_Ammo, ammo, StatsEnum.Normal, "0");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movementSpeed, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, range, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Ammo), Resources.lbl_Ammo, ammo, StatDisplayModifiers.Normal, "0");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Damage), Resources.lbl_Damage, damage, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movementSpeed, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, range, StatDisplayModifiers.Normal, "0", "%");
 
                         if (item.IsValidForItemIDS(40021, 40002))
                         {
-                            item.DisplayStat6 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, accuracy, StatsEnum.Normal, "0", "%");
+                            item.DisplayStat6 = FormatDisplayStat(nameof(item.Accuracy), Resources.lbl_Accuracy, accuracy, StatDisplayModifiers.Normal, "0", "%");
                         }
                         else
                         {
-                            item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatsEnum.Inverted, "0.00", "s");
+                            if (item.IsValidForItemIDS(40011, 40014)) // LMG, LMGR
+                            {
+                                reload = item.WikiStats?.Reload ?? 0;
+                                item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Inverted, "0.00", "s");
+                            }
+                            else
+                            {
+                                item.DisplayStat6 = FormatDisplayStat(nameof(item.Reload), Resources.lbl_ReloadEmpty, reload, StatDisplayModifiers.Normal, "0", "%");
+                            }
                         }
                     }
                     break;
@@ -239,23 +251,23 @@ public static class ImportSystem
                                 break;
                         }
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Health), Resources.lbl_Health, health, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Health), Resources.lbl_Health, health, StatDisplayModifiers.Normal, "0", "%");
                         if (recharge >= 10)
                         {
-                            item.DisplayStat2 = FormatDisplayStat(nameof(item.HRVRecharge), Resources.lbl_HRVRecharge, recharge, StatsEnum.Normal, "0", " u/s", "", -1, 6.59);
+                            item.DisplayStat2 = FormatDisplayStat(nameof(item.HRVRecharge), Resources.lbl_HRVRecharge, recharge, StatDisplayModifiers.Normal, "0", " u/s", "", -1, 6.59);
                         }
                         else
                         {
-                            item.DisplayStat2 = FormatDisplayStat(nameof(item.HRVRecharge), Resources.lbl_HRVRecharge, recharge, StatsEnum.Normal, "0.0", " u/s", "", -1, 6.59);
+                            item.DisplayStat2 = FormatDisplayStat(nameof(item.HRVRecharge), Resources.lbl_HRVRecharge, recharge, StatDisplayModifiers.Normal, "0.0", " u/s", "", -1, 6.59);
                         }
                         
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.HeadProtection), Resources.lbl_HeadArmor, dmgReduction, StatsEnum.Normal, "0.0", "%");
-                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movement, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat5 = FormatDisplayStat(nameof(item.HRVDuration), Resources.lbl_HRVDuration, hrv, StatsEnum.Normal, "0.0", "u", "", -1, 69.9);
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.HeadProtection), Resources.lbl_HeadArmor, dmgReduction, StatDisplayModifiers.Normal, "0.0", "%");
+                        item.DisplayStat4 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movement, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat5 = FormatDisplayStat(nameof(item.HRVDuration), Resources.lbl_HRVDuration, hrv, StatDisplayModifiers.Normal, "0.0", "u", "", -1, 69.9);
 
                         if (value != 0)
                         {
-                            item.DisplayStat6 = FormatDisplayStat(prop, desc, value, StatsEnum.Normal, "0", "%");
+                            item.DisplayStat6 = FormatDisplayStat(prop, desc, value, StatDisplayModifiers.Normal, "0", "%");
                         }
                     }
                     break;
@@ -267,8 +279,8 @@ public static class ImportSystem
                         double hrv = item.PawnModifiers?.HRVDuration ?? 0;
                         double recharge = item.PawnModifiers?.HRVRechargeRate ?? 0;
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.HRVDuration), Resources.lbl_HRVDuration, hrv, StatsEnum.Normal, "0.0", "u", "", -1, 0);
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.HRVRecharge), Resources.lbl_HRVRecharge, recharge, StatsEnum.Normal, "0.0", "u/s", "", -1, 0);
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.HRVDuration), Resources.lbl_HRVDuration, hrv, StatDisplayModifiers.Normal, "0.0", "u", "", -1, 0);
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.HRVRecharge), Resources.lbl_HRVRecharge, recharge, StatDisplayModifiers.Normal, "0.0", "u/s", "", -1, 0);
                     }
                     break;
                 case UPPER_BODIES_CATEGORY:
@@ -281,9 +293,9 @@ public static class ImportSystem
                         double movement = item.PawnModifiers?.MovementSpeed ?? 0;
                         double gear = item.PawnModifiers?.GearSlots ?? 0;
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Health), Resources.lbl_Health, health, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movement, StatsEnum.Normal, "0", "%");
-                        item.DisplayStat3 = FormatDisplayStat(nameof(item.GearSlots), Resources.lbl_GearSlots, gear, StatsEnum.Normal, "0");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Health), Resources.lbl_Health, health, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat2 = FormatDisplayStat(nameof(item.Run), Resources.lbl_Run, movement, StatDisplayModifiers.Normal, "0", "%");
+                        item.DisplayStat3 = FormatDisplayStat(nameof(item.GearSlots), Resources.lbl_GearSlots, gear, StatDisplayModifiers.Normal, "0");
                     }
                     break;
                 case ATTACHMENTS_CATEGORY:
@@ -335,7 +347,7 @@ public static class ImportSystem
                                 value = InfraredProtection;
                                 break;
                         }
-                        item.DisplayStat1 = FormatDisplayStat(prop, desc, value, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(prop, desc, value, StatDisplayModifiers.Normal, "0", "%");
                     }
                     break;
                 case GRIPS_CATEGORY:
@@ -350,7 +362,7 @@ public static class ImportSystem
                         //FormatDisplayStat(ref desc1, "Damage", "Damage:", damage, "0", "%");
                         //FormatDisplayStat(ref desc3, "RateOfFire", "ROF:", rof, "0", "%");
 
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatsEnum.Normal, "0", "%");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_Recoil, recoil, StatDisplayModifiers.Normal, "0", "%");
                     }
                     break;
                 case SHOP_CATEGORY:
@@ -358,7 +370,7 @@ public static class ImportSystem
                     {
                         if (item is null) continue;
                         item.Category = itemCategory.Key;
-                        item.DisplayStat1 = FormatDisplayStat(nameof(item.CP), Resources.lbl_CP, item.CP, StatsEnum.None, "0");
+                        item.DisplayStat1 = FormatDisplayStat(nameof(item.CP), Resources.lbl_CP, item.CP, StatDisplayModifiers.None, "0");
                     }
                     break;
                 default:
@@ -396,7 +408,7 @@ public static class ImportSystem
 
     static readonly Brush defaultRed = new SolidColorBrush(Color.FromArgb(255, 200, 60, 50));
     static readonly Brush highlightRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-    private static DisplayStatDiscriptor? FormatDisplayStat(string propertyName, string description, object value, StatsEnum type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
+    private static DisplayStatDiscriptor? FormatDisplayStat(string propertyName, string description, object value, StatDisplayModifiers type, string format, string suffix = "", string prefix = "", int count = -1, double defaultval = 0)
     {
         if (string.IsNullOrEmpty(description)) return null;
         
@@ -457,9 +469,9 @@ public static class ImportSystem
                 break;
         }
 
-        if (type != StatsEnum.None)
+        if (type != StatDisplayModifiers.None)
         {
-            if (type == StatsEnum.Inverted)
+            if (type == StatDisplayModifiers.Inverted)
             {
                 isPositive = !isPositive;
             }
@@ -497,10 +509,10 @@ public static class ImportSystem
         });
     }
 
-    public static ObservableCollection<BLRItem>? GetItemListOfType(string Type)
+    public static ObservableCollection<BLREditItem>? GetItemListOfType(string Type)
     {
         if (string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLREditItem> items))
         {
             return items;
         }
@@ -510,12 +522,12 @@ public static class ImportSystem
         }
     }
 
-    public static BLRItem[]? GetItemArrayOfType(string Type)
+    public static BLREditItem[]? GetItemArrayOfType(string Type)
     {
         if (string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLREditItem> items))
         {
-            BLRItem[] array = new BLRItem[items.Count];
+            BLREditItem[] array = new BLREditItem[items.Count];
             items.CopyTo(array, 0);
             return array;
         }
@@ -525,10 +537,10 @@ public static class ImportSystem
         }
     }
 
-    public static int GetIDOfItem(BLRItem? item)
+    public static int GetIDOfItem(BLREditItem? item)
     {
         if (item is null) return -1;
-        if (ItemLists.TryGetValue(item.Category, out ObservableCollection<BLRItem> items))
+        if (ItemLists.TryGetValue(item.Category, out ObservableCollection<BLREditItem> items))
         {
             return items.IndexOf(item);
         }
@@ -538,10 +550,10 @@ public static class ImportSystem
         }
     }
 
-    public static BLRItem? GetItemByIDAndType(string Type, int ID)
+    public static BLREditItem? GetItemByIDAndType(string Type, int ID)
     {
         if (ID < 0 || string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLREditItem> items))
         {
             if (ID < items.Count)
             {
@@ -559,9 +571,9 @@ public static class ImportSystem
         }
     }
 
-    public static BLRItem? GetItemByLMIDAndType(string Type, int LMID)
+    public static BLREditItem? GetItemByLMIDAndType(string Type, int LMID)
     {
-        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLREditItem> items))
         {
             for (int i = 0; i < items.Count; i++)
             {
@@ -572,10 +584,10 @@ public static class ImportSystem
         return null;
     }
 
-    public static BLRItem? GetItemByUIDAndType(string Type, int UID)
+    public static BLREditItem? GetItemByUIDAndType(string Type, int UID)
     {
         if (string.IsNullOrEmpty(Type)) return null;
-        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLREditItem> items))
         {
             foreach (var item in items)
             {
@@ -595,9 +607,9 @@ public static class ImportSystem
     public static int GetIDByNameAndType(string? Type, string? Name)
     {
         if (Type is null || Name is null || string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return -1;
-        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLREditItem> items))
         {
-            foreach (BLRItem item in items)
+            foreach (BLREditItem item in items)
             {
                 if (item.Name == Name)
                 {
@@ -612,12 +624,12 @@ public static class ImportSystem
         }
     }
 
-    public static BLRItem? GetItemByNameAndType(string? Type, string? Name)
+    public static BLREditItem? GetItemByNameAndType(string? Type, string? Name)
     {
         if (Type is null || Name is null || string.IsNullOrEmpty(Type) || string.IsNullOrEmpty(Name)) return null;
-        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLRItem> items))
+        if (ItemLists.TryGetValue(Type, out ObservableCollection<BLREditItem> items))
         {
-            foreach (BLRItem item in items)
+            foreach (BLREditItem item in items)
             {
                 if (item.Name == Name)
                 {

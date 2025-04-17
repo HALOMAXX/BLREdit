@@ -1,70 +1,68 @@
 ﻿using BLREdit.Import;
 using BLREdit.UI.Views;
-
 using System.Collections.Generic;
-using System.Windows.Documents;
 
 namespace BLREdit.API.Export;
 
 //TODO: Change defaults
 
-public class LMLoadout
+public class ReviveLoadoutManagerLoadout
 {
     public string Name { get; set; } = string.Empty;
     public string PrimaryFriendlyName { get; set; } = string.Empty;
     public string SecondaryFriendlyName { get; set; } = string.Empty;
     public int Title { get; set; } = -1;
-    public LMWeapon Primary { get; set; } = new();
-    public LMWeapon Secondary { get; set; } = new();
+    public ReviveLoadoutManagerWeapon Primary { get; set; } = new();
+    public ReviveLoadoutManagerWeapon Secondary { get; set; } = new();
     public int WeaponHanger { get; set; } = -1;
-    public LMGear Gear { get; set; } = new();
-    public LMBody Body { get; set; } = new();
+    public ReviveLoadoutManagerGear Gear { get; set; } = new();
+    public ReviveLoadoutManagerBody Body { get; set; } = new();
     public int[] Depot { get; set; } = new int[5];
     public int[] Taunts { get; set; } = new int[8];
-    public LMEmblem Emblem { get; set; } = new();
+    public ReviveLoadoutManagerEmblem Emblem { get; set; } = new();
     public int DialogAnnouncer { get; set; } = -1;
     public int DialogPlayer { get; set; } = -1;
 
-    public LMLoadout() { }
-    public LMLoadout(BLRLoadout loadout, string name)
+    public ReviveLoadoutManagerLoadout() { }
+    public ReviveLoadoutManagerLoadout(BLREditLoadout loadout, string name)
     {
         Name = name;
-        PrimaryFriendlyName = loadout.Primary.WeaponDescriptor;
-        SecondaryFriendlyName = loadout.Secondary.WeaponDescriptor;
-        Title = loadout.Title?.UID ?? -1;
-        Primary = new(loadout.Primary);
-        Secondary = new(loadout.Secondary);
-        WeaponHanger = loadout.Primary?.Tag?.UID ?? -1;
+        PrimaryFriendlyName = loadout?.Primary?.WeaponDescriptor ?? "Null";
+        SecondaryFriendlyName = loadout?.Secondary?.WeaponDescriptor ?? "Null";
+        Title = loadout?.Title?.UID ?? -1;
+        Primary = new(loadout?.Primary);
+        Secondary = new(loadout?.Secondary);
+        WeaponHanger = loadout?.Primary?.Tag?.UID ?? -1;
         Gear = new(loadout);
         Body = new(loadout);
         Depot = [ 
-            loadout.Depot1?.UID ?? -1,
-            loadout.Depot2?.UID ?? -1,
-            loadout.Depot3?.UID ?? -1,
-            loadout.Depot4?.UID ?? -1,
-            loadout.Depot5?.UID ?? -1
+            loadout?.Depot1?.UID ?? -1,
+            loadout?.Depot2?.UID ?? -1,
+            loadout?.Depot3?.UID ?? -1,
+            loadout?.Depot4?.UID ?? -1,
+            loadout?.Depot5?.UID ?? -1
         ];
 
         Taunts = [
-            loadout.Taunt1?.UID ?? -1,
-            loadout.Taunt2?.UID ?? -1,
-            loadout.Taunt3?.UID ?? -1,
-            loadout.Taunt4?.UID ?? -1,
-            loadout.Taunt5?.UID ?? -1,
-            loadout.Taunt6?.UID ?? -1,
-            loadout.Taunt7?.UID ?? -1,
-            loadout.Taunt8?.UID ?? -1
+            loadout?.Taunt1?.UID ?? -1,
+            loadout?.Taunt2?.UID ?? -1,
+            loadout?.Taunt3?.UID ?? -1,
+            loadout?.Taunt4?.UID ?? -1,
+            loadout?.Taunt5?.UID ?? -1,
+            loadout?.Taunt6?.UID ?? -1,
+            loadout?.Taunt7?.UID ?? -1,
+            loadout?.Taunt8?.UID ?? -1
         ];
 
         Emblem = new(loadout);
 
-        DialogAnnouncer = loadout.AnnouncerVoice?.UID ?? -1;
-        DialogPlayer = loadout.PlayerVoice?.UID ?? -1;
+        DialogAnnouncer = loadout?.AnnouncerVoice?.UID ?? -1;
+        DialogPlayer = loadout?.PlayerVoice?.UID ?? -1;
     }
 
-    public BLRLoadout GetLoadout()
+    public BLREditLoadout GetLoadout()
     {
-        var loadout = new BLRLoadout(null)
+        var loadout = new BLREditLoadout(null)
         {
             Primary = this.Primary.GetWeapon(true),
             Secondary = this.Secondary.GetWeapon(false),
@@ -118,7 +116,7 @@ public class LMLoadout
     }
 }
 
-public class LMWeapon
+public class ReviveLoadoutManagerWeapon
 {
     public int Receiver { get; set; } = -1;
     public int Barrel { get; set; } = -1;
@@ -131,8 +129,8 @@ public class LMWeapon
     public int Skin { get; set; } = -1;
     public int Camo { get; set; } = -1;
 
-    public LMWeapon() { }
-    public LMWeapon(BLRWeapon weapon)
+    public ReviveLoadoutManagerWeapon() { }
+    public ReviveLoadoutManagerWeapon(BLREditWeapon? weapon)
     {
         Receiver = weapon?.Receiver?.UID ?? -1;
         Barrel = weapon?.Barrel?.UID ?? -1;
@@ -146,9 +144,9 @@ public class LMWeapon
         Camo = weapon?.Camo?.UID ?? -1;
     }
 
-    public BLRWeapon GetWeapon(bool isPrimary)
+    public BLREditWeapon GetWeapon(bool isPrimary)
     {
-        return new BLRWeapon(isPrimary)
+        return new BLREditWeapon(isPrimary)
         {
             Receiver = ImportSystem.GetItemByUIDAndType(isPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Receiver),
             Barrel = ImportSystem.GetItemByUIDAndType(ImportSystem.BARRELS_CATEGORY, Barrel),
@@ -163,7 +161,7 @@ public class LMWeapon
     }
 }
 
-public class LMGear
+public class ReviveLoadoutManagerGear
 {
 
     //1 Is Upper, 2 Is Lower, L is first slot, R is second slot.
@@ -173,8 +171,8 @@ public class LMGear
     public int L2 { get; set; } = 255;
     public int Tactical { get; set; } = -1;
     public int Hanger { get; set; } = -1;
-    public LMGear() { }
-    public LMGear(BLRLoadout loadout)
+    public ReviveLoadoutManagerGear() { }
+    public ReviveLoadoutManagerGear(BLREditLoadout? loadout)
     {
         if (loadout is null) return;
 
@@ -212,7 +210,7 @@ public class LMGear
     }
 }
 
-public class LMBody
+public class ReviveLoadoutManagerBody
 {
     public bool Female { get; set; }
     public int Camo { get; set; } = -1;
@@ -222,10 +220,10 @@ public class LMBody
     public int Badge { get; set; } = -1;
     public int Avatar { get; set; } = -1;
     public int ButtPack { get; set; } = -1;
-    public LMBody() { }
-    public LMBody(BLRLoadout loadout)
+    public ReviveLoadoutManagerBody() { }
+    public ReviveLoadoutManagerBody(BLREditLoadout? loadout)
     {
-        Female = loadout.IsFemale.Is;
+        Female = loadout?.IsFemale?.Is ?? false;
         Camo = loadout?.BodyCamo?.UID ?? -1;
         UpperBody = loadout?.UpperBody?.UID ?? -1;
         LowerBody = loadout?.LowerBody?.UID ?? -1;
@@ -236,7 +234,7 @@ public class LMBody
     }
 }
 
-public class LMEmblem
+public class ReviveLoadoutManagerEmblem
 {
     public int TopIcon { get; set; } = -1; //Icon
     public int TopColor { get; set; } = -1;
@@ -244,8 +242,8 @@ public class LMEmblem
     public int MiddleColor { get; set; } = -1;
     public int BottomIcon { get; set; } = -1; //Background
     public int BottomColor { get; set; } = -1;
-    public LMEmblem() { }
-    public LMEmblem(BLRLoadout loadout)
+    public ReviveLoadoutManagerEmblem() { }
+    public ReviveLoadoutManagerEmblem(BLREditLoadout? loadout)
     {
         TopIcon = loadout?.EmblemIcon?.UID ?? -1;
         MiddleIcon = loadout?.EmblemShape?.UID ?? -1;

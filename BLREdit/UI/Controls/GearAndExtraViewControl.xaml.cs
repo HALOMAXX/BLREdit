@@ -21,9 +21,9 @@ namespace BLREdit.UI.Controls
     /// <summary>
     /// Interaction logic for LoadoutViewControl.xaml
     /// </summary>
-    public partial class LoadoutViewControl : UserControl
+    public partial class GearAndExtraViewControl : UserControl
     {
-        public LoadoutViewControl()
+        public GearAndExtraViewControl()
         {
             InitializeComponent();
             UIKeys.Keys[Key.LeftShift].PropertyChanged += SkinModifierChanged;
@@ -52,6 +52,8 @@ namespace BLREdit.UI.Controls
                     e.Handled = true;
                     loadoutStorage.BLR.Apply = false;
                 }
+
+
             }
         }
     }

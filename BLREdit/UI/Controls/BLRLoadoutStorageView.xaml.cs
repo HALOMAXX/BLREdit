@@ -18,9 +18,6 @@ using System.Windows.Shapes;
 
 namespace BLREdit.UI.Controls
 {
-    /// <summary>
-    /// Interaction logic for LoadoutViewControl.xaml
-    /// </summary>
     public partial class BLRLoadoutStorageView : UserControl
     {
         public BLRLoadoutStorageView()

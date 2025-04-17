@@ -17,13 +17,11 @@ using BLREdit.API.Utils;
 using BLREdit.Export;
 using BLREdit.Game.BLRevive;
 using BLREdit.Game.Proxy;
-using BLREdit.Import;
 using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
 
 using PeNet;
-using PeNet.Header.Net;
 
 namespace BLREdit.Game;
 
@@ -36,7 +34,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     #endregion Events
-    private bool hasBeenValidated = false;
+    private bool hasBeenValidated;
     public UIBool Validate { get; set; } = new UIBool(true);
     public string ConfigName { get; set; } = "default";
 
@@ -109,8 +107,11 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? _basePath;
     public string? BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
 
-    private string? _sdkType = "BLRevive";
-    public string? SDKType { get { return _sdkType; } set { _sdkType = value; OnPropertyChanged(); } }
+    //private string? _sdkType = "BLRevive";
+    //public string? SDKType { get { return _sdkType; } set { _sdkType = value; OnPropertyChanged(); } }
+
+    private string? _BLReviveVersion;
+    public string? BLReviveVersion { get { return _BLReviveVersion; } set { _BLReviveVersion = value; OnPropertyChanged(); } }
     public DateTime? SDKVersionDate { get; set; }
 
     private string? _logsPath;
@@ -120,11 +121,14 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? _modulesPath;
     public string ModulesPath { get { _modulesPath ??= Directory.CreateDirectory($"{BasePath}Binaries\\Win32\\Modules\\").FullName; return _modulesPath; } set { if (Directory.Exists(value)) _modulesPath = value; } }
 
-    [JsonInclude] public ObservableCollection<BLRClientPatch> AppliedPatches { get; set; } = [];
+    [JsonInclude][System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Needed for Json Deserilization")]
+    public ObservableCollection<BLRClientPatch> AppliedPatches { get; set; } = [];
 
-    [JsonInclude] public ObservableCollection<ProxyModule> InstalledModules { get; set; } = [];
+    [JsonInclude][System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Needed for Json Deserilization")]
+    public ObservableCollection<ProxyModule> InstalledModules { get; set; } = [];
 
-    [JsonInclude] public ObservableCollection<ProxyModule> CustomModules { get; set; } = [];
+    [JsonInclude][System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Needed for Json Deserilization")]
+    public ObservableCollection<ProxyModule> CustomModules { get; set; } = [];
 
     [JsonIgnore] public static ObservableCollection<VisualProxyModule> AvailableModules { get { return App.AvailableProxyModules; } }
 
@@ -207,6 +211,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ApplyProfileSetting(BLRProfileSettingsWrapper profileSettings)
     {
+        if (profileSettings is null) return;
         if (ProfileSettings.TryGetValue(profileSettings.ProfileName, out var _))
         {
             ProfileSettings.Remove(profileSettings.ProfileName);
@@ -336,12 +341,23 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         var task = Task.Run(() => GitlabClient.GetGenericPackages("blrevive", "blrevive", "blrevive"));
         task.Wait();
-        if(task.Result is null || task.Result.Length <= 0) { LoggingSystem.Log("Failed to get BLRevive packages"); return; }
-        _latestBLRevivePackage = task.Result[0];
+        if (task.Result is null || task.Result.Length <= 0) { LoggingSystem.Log("Failed to get BLRevive packages"); return; }
+        _latestBLRevivePackage = SelectLatestPackage(task.Result);
         var task2 = Task.Run(() => GitlabClient.GetLatestPackageFile(_latestBLRevivePackage, $"BLRevive.dll"));
         task2.Wait();
         if (task2.Result is null) { LoggingSystem.Log("Failed to get BLRevive package file"); return; }
         _latestBLRevivePackageFile = task2.Result;
+    }
+
+    private static GitlabPackage SelectLatestPackage(GitlabPackage[] packages)
+    {
+        if (DataStorage.Settings.SelectedBLReviveVersion == "Beta") { return packages[0]; }
+        foreach (var package in packages)
+        {
+            if (package.Version.ToLower().Contains("beta")) { continue; }
+            else { return package; }
+        }
+        return packages[0];
     }
 
     static GitlabPackage? _latestBLRevivePackage;
@@ -349,60 +365,46 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     static GitlabPackageFile? _latestBLRevivePackageFile;
     static GitlabPackageFile? LatestBLRevivePackageFile { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackageFile; } }
-    private bool CheckProxyUpdate()
+    private bool CheckBLReviveVersion()
     {
-        if (DataStorage.Settings.SelectedSDKType == "BLRevive")
+        if (SDKVersionDate is not null && BLReviveVersion is not null)
         {
-            if (SDKVersionDate is not null && SDKType is not null)
-            {
-                var d = LatestBLRevivePackageFile?.CreatedAt ?? DateTime.MinValue;
-                return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second) > SDKVersionDate;
-            }
-            else
-            {
-                return true;
-            }
+            var d = LatestBLRevivePackageFile?.CreatedAt ?? DateTime.MinValue;
+            return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second) > SDKVersionDate;
         }
         else
         {
-            return !File.Exists($"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll");
+            return true;
         }
     }
 
     public void ValidateProxy()
     {
-        if (!CheckProxyUpdate()) { LoggingSystem.Log($"Proxy / BLRevive is uptodate!"); return; }
+        if (!CheckBLReviveVersion()) { LoggingSystem.Log($"BLRevive is Uptodate!"); return; } else { LoggingSystem.Log("BLRevive needs to Update!"); }
         RemoveAllModules();
         
         var proxySource = string.Empty;
         var proxyTarget = string.Empty;
-        if (DataStorage.Settings.SelectedSDKType == "BLRevive")
+
+        LoggingSystem.Log($"Downloading latest BLRevive release!");
+        if (LatestBLRevivePackage is null) { LoggingSystem.Log("Can't update BLRevive no packages available!"); return; }
+        var reiveResult = GitlabClient.DownloadPackage(LatestBLRevivePackage, "BLRevive.dll", "BLRevive");
+        var dInputResult = GitlabClient.DownloadPackage(LatestBLRevivePackage, "DINPUT8.dll", "DINPUT8");
+        LoggingSystem.Log($"Finished downloading latest BLRevive release!");
+        if (reiveResult.Item1 && dInputResult.Item1)
         {
-            LoggingSystem.Log($"Downloading latest BLRevive release!");
-            if (LatestBLRevivePackage is null) { LoggingSystem.Log("Can't update BLRevive no packages available!"); return; }
-            var reiveResult = GitlabClient.DownloadPackage(LatestBLRevivePackage, "BLRevive.dll", "BLRevive");
-            var dInputResult = GitlabClient.DownloadPackage(LatestBLRevivePackage, "DINPUT8.dll", "DINPUT8");
-            LoggingSystem.Log($"Finished downloading latest BLRevive release!");
-            if (reiveResult.Item1 && dInputResult.Item1)
+            LoggingSystem.Log($"Installing latest BLRevive version ({reiveResult.Item3}) before ({SDKVersionDate})");
+            DataStorage.Settings.SDKVersionDate = reiveResult.Item3;
+            SDKVersionDate = reiveResult.Item3;
+
+            try
             {
-                LoggingSystem.Log($"Installing latest BLRevive version ({reiveResult.Item3}) before ({SDKVersionDate})");
-                DataStorage.Settings.SDKVersionDate = reiveResult.Item3;
-                SDKVersionDate = reiveResult.Item3;
-
-                try
-                {
-                    File.Copy($"{IOResources.BaseDirectory}{dInputResult.Item2}", $"{Path.GetDirectoryName(PatchedPath)}\\DINPUT8.dll", true);
-                }
-                catch {}
-
-                proxySource = $"{IOResources.BaseDirectory}{reiveResult.Item2}";
-                proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\BLRevive.dll";
+                File.Copy($"{IOResources.BaseDirectory}{dInputResult.Item2}", $"{Path.GetDirectoryName(PatchedPath)}\\DINPUT8.dll", true);
             }
-        }
-        else
-        {
-            proxySource = $"{IOResources.BaseDirectory}{IOResources.ASSET_DIR}\\dlls\\Proxy.{DataStorage.Settings.SelectedSDKType}.dll";
-            proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\Proxy.dll";
+            catch {}
+
+            proxySource = $"{IOResources.BaseDirectory}{reiveResult.Item2}";
+            proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\BLRevive.dll";
         }
          
         if (File.Exists(proxySource))
@@ -413,12 +415,12 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             catch { }
         }
-        SDKType = DataStorage.Settings.SelectedSDKType;
+        BLReviveVersion = DataStorage.Settings.SelectedBLReviveVersion;
     }
 
     public bool ValidatePatches()
     {
-        if (DataStorage.Settings.SelectedSDKType == "BLRevive") return false;
+        if (DataStorage.Settings.SelectedBLReviveVersion == "BLRevive") return false;
         bool needUpdatedPatches = false;
 
         if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
@@ -475,6 +477,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public bool IsModuleInstalledAndUpToDate(VisualProxyModule module)
     {
+        if (module is null) return false;
         foreach (var installedModule in InstalledModules)
         {
             if (installedModule.InstallName == module.RepositoryProxyModule.InstallName && installedModule.Published >= module.ReleaseDate)
@@ -541,31 +544,31 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         LoggingSystem.Log($"Validating Modules Installed({count}/{InstalledModules.Count}) and Custom({customCount}/{CustomModules.Count}) of {this}");
 
-        if (SDKType != "BLRevive")
-        {
-            var config = IOResources.DeserializeFile<ProxyConfig>($"{BLReviveConfigsPath}default.json") ?? new();
-            config.Proxy.Modules.Server.Clear();
-            config.Proxy.Modules.Client.Clear();
-            LoggingSystem.Log($"Applying Installed Modules:");
+        //if (SDKType != "BLRevive")
+        //{
+        //    var config = IOResources.DeserializeFile<ProxyConfig>($"{BLReviveConfigsPath}default.json") ?? new();
+        //    config.Proxy.Modules.Server.Clear();
+        //    config.Proxy.Modules.Client.Clear();
+        //    LoggingSystem.Log($"Applying Installed Modules:");
 
-            if (enabledModules is null)
-            {
-                enabledModules = [.. InstalledModules];
-                if (DataStorage.Settings.AllowCustomModules.Is)
-                {
-                    enabledModules.AddRange([.. CustomModules]);
-                }
-            }
+        //    if (enabledModules is null)
+        //    {
+        //        enabledModules = [.. InstalledModules];
+        //        if (DataStorage.Settings.AllowCustomModules.Is)
+        //        {
+        //            enabledModules.AddRange([.. CustomModules]);
+        //        }
+        //    }
 
-            foreach (var module in enabledModules)
-            {
-                SetModuleInProxyConfig(config, module);
-            }
+        //    foreach (var module in enabledModules)
+        //    {
+        //        SetModuleInProxyConfig(config, module);
+        //    }
 
-            IOResources.SerializeFile($"{BLReviveConfigsPath}default.json", config);
-        }
-        else
-        { 
+        //    IOResources.SerializeFile($"{BLReviveConfigsPath}default.json", config);
+        //}
+        //else
+        //{ 
             var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
             var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
             var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
@@ -601,7 +604,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
             IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
             IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
-        }
+        //}
 
         LoggingSystem.Log($"Finished Validating Modules of {this}");
     }
@@ -626,18 +629,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     #endregion ClientValidation
 
     #region Commands
-    private ICommand? patchClientCommand;
-    [JsonIgnore]
-    public ICommand PatchClientCommand
-    {
-        get
-        {
-            patchClientCommand ??= new RelayCommand(
-                    param => this.PatchClient()
-                );
-            return patchClientCommand;
-        }
-    }
 
     private ICommand? launchClientCommand;
     [JsonIgnore]
@@ -770,7 +761,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchClient()
     {
-        LaunchClient(BLREditSettings.GetLaunchOptions());
+        LaunchClient(BLREditSettings.DefaultLaunchOptions);
     }
 
     public void LaunchClient(LaunchOptions options)
@@ -859,7 +850,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         try
         {
             if (string.IsNullOrEmpty(PatchedPath)) { _basePath = GetBasePath(); }
-            if (DataStorage.Settings.SelectedSDKType != "BLRevive")
+            if (DataStorage.Settings.SelectedBLReviveVersion != "BLRevive")
             {
                 List<BLRClientPatch> toAppliedPatches = [];
                 File.Copy(OriginalPath, PatchedPath, true);

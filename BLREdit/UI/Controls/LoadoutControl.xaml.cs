@@ -30,7 +30,7 @@ namespace BLREdit.UI.Controls
         }
         #endregion Event
 
-        public static int SelectedIndex { get; private set; } = 0;
+        public static int SelectedIndex { get; private set; }
 
         public LoadoutControl()
         {

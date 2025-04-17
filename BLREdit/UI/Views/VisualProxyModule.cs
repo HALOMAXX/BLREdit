@@ -39,7 +39,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         get
         {
             if (RepositoryProxyModule is not null && metaData.Count <= 0)
-            { Task.Run(GetMetaData); }
+            { Task.Run(AcquireMetaData); }
             return metaData;
         }
     }
@@ -93,8 +93,8 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
-    private bool lockMetaData = false;
-    public async void GetMetaData()
+    private bool lockMetaData;
+    public async void AcquireMetaData()
     {
         if (!lockMetaData)
         {

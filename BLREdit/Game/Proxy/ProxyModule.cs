@@ -14,7 +14,7 @@ public sealed class ProxyModule
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
-    public string? FileName { get; set; } = null;
+    public string? FileName { get; set; }
     [JsonIgnore] public string PackageFileName { get { if (FileName is null) { return ModuleName; } else { return FileName; } } }
     public string AuthorName { get; set; } = "SuperEwald";
     public DateTime Published { get; set; } = DateTime.MinValue;

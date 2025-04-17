@@ -16,11 +16,11 @@ using static BLREdit.API.Utils.HelperFunctions;
 
 namespace BLREdit.Export;
 
-public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLRLoadout? blr = null) : INotifyPropertyChanged
+public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLREditLoadout? blr = null) : INotifyPropertyChanged
 {
     public ShareableLoadout Shareable { get; } = shareable;
-    private BLRLoadout? blr = blr;
-    public BLRLoadout BLR { get { if (blr is null) { blr = Shareable.ToBLRLoadout(); string message = string.Empty; blr.Apply = blr.ValidateLoadout(ref message); } return blr; } }
+    private BLREditLoadout? blr = blr;
+    public BLREditLoadout BLR { get { if (blr is null) { blr = Shareable.ToBLRLoadout(); string message = string.Empty; blr.Apply = blr.ValidateLoadout(ref message); } return blr; } }
 
     private static Brush ActiveBrush = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0));
     private static Brush InactiveBrush = new SolidColorBrush(Color.FromArgb(14, 158, 158, 158));
@@ -51,7 +51,7 @@ public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLRLoadout? bl
 
     public void Repair()
     {
-        if (BLR is BLRLoadout l && l.LoadoutReport is LoadoutErrorReport report)
+        if (BLR is BLREditLoadout l && l.LoadoutReport is LoadoutErrorReport report)
         {
             if (!report.PrimaryReport.IsValid)
             {
@@ -254,7 +254,7 @@ public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLRLoadout? bl
         return AddNewLoadoutSet($"{Shareable.Name} Duplicate", null, Shareable.Duplicate());
     }
 
-    public static BLRLoadoutStorage AddNewLoadoutSet(string Name = "New Loadout", BLRLoadout? loadout = null, ShareableLoadout? share = null)
+    public static BLRLoadoutStorage AddNewLoadoutSet(string Name = "New Loadout", BLREditLoadout? loadout = null, ShareableLoadout? share = null)
     {
         string message = "";
         var shar = share ?? MagiCowsLoadout.DefaultLoadout1.ConvertToShareable();

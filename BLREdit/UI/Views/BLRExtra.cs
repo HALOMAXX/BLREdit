@@ -7,31 +7,31 @@ namespace BLREdit.UI.Views;
 
 public sealed class BLRExtra
 {
-    public BLRItem? Depot1 { get; set; }
-    public BLRItem? Depot2 { get; set; }
-    public BLRItem? Depot3 { get; set; }
-    public BLRItem? Depot4 { get; set; }
-    public BLRItem? Depot5 { get; set; }
+    public BLREditItem? Depot1 { get; set; }
+    public BLREditItem? Depot2 { get; set; }
+    public BLREditItem? Depot3 { get; set; }
+    public BLREditItem? Depot4 { get; set; }
+    public BLREditItem? Depot5 { get; set; }
 
-    public BLRItem? Taunt1 { get; set; }
-    public BLRItem? Taunt2 { get; set; }
-    public BLRItem? Taunt3 { get; set; }
-    public BLRItem? Taunt4 { get; set; }
-    public BLRItem? Taunt5 { get; set; }
-    public BLRItem? Taunt6 { get; set; }
-    public BLRItem? Taunt7 { get; set; }
-    public BLRItem? Taunt8 { get; set; }
+    public BLREditItem? Taunt1 { get; set; }
+    public BLREditItem? Taunt2 { get; set; }
+    public BLREditItem? Taunt3 { get; set; }
+    public BLREditItem? Taunt4 { get; set; }
+    public BLREditItem? Taunt5 { get; set; }
+    public BLREditItem? Taunt6 { get; set; }
+    public BLREditItem? Taunt7 { get; set; }
+    public BLREditItem? Taunt8 { get; set; }
 
-    public BLRItem? TopIcon { get; set; }
-    public BLRItem? TopColor { get; set; }
-    public BLRItem? MiddleIcon { get; set; }
-    public BLRItem? MiddleColor { get; set; }
-    public BLRItem? BottomIcon { get; set; }
-    public BLRItem? BottomColor { get; set; }
+    public BLREditItem? TopIcon { get; set; }
+    public BLREditItem? TopColor { get; set; }
+    public BLREditItem? MiddleIcon { get; set; }
+    public BLREditItem? MiddleColor { get; set; }
+    public BLREditItem? BottomIcon { get; set; }
+    public BLREditItem? BottomColor { get; set; }
 
-    public BLRItem? AnnouncerVoice { get; set; }
-    public BLRItem? PlayerVoice { get; set; }
-    public BLRItem? Title { get; set; }
+    public BLREditItem? AnnouncerVoice { get; set; }
+    public BLREditItem? PlayerVoice { get; set; }
+    public BLREditItem? Title { get; set; }
 }
 
 public struct ExtraErrorReport(ItemReport depot1, ItemReport depot2, ItemReport depot3, ItemReport depot4, ItemReport depot5, ItemReport taunt1, ItemReport taunt2, ItemReport taunt3, ItemReport taunt4, ItemReport taunt5, ItemReport taunt6, ItemReport taunt7, ItemReport taunt8, ItemReport topIcon, ItemReport topColor, ItemReport middleIcon, ItemReport middleColor, ItemReport bottomIcon, ItemReport bottomColor, ItemReport announcer, ItemReport player, ItemReport title)

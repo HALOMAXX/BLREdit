@@ -44,7 +44,7 @@ public sealed class IOResources
     public const string PROXY_MODULES_DIR = "Modules\\";
     #endregion DIRECTORIES
 
-    private static string? baseDirectory = null;
+    private static string? baseDirectory;
     public static string BaseDirectory { get { if (baseDirectory is null) { if (AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\")) { baseDirectory = AppDomain.CurrentDomain.BaseDirectory; } else { baseDirectory = $"{AppDomain.CurrentDomain.BaseDirectory}\\"; } } return baseDirectory; } }
 
     public const string GAME_APPID = "209870";

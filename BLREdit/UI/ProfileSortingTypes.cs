@@ -2,9 +2,8 @@
 
 public enum ProfileSortingType
 {
-    TimeOfCreation,
     Name,
-    LastApplied,
     LastModified,
     LastViewed,
+    TimeOfCreation,
 }

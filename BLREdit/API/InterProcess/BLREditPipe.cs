@@ -19,6 +19,7 @@ namespace BLREdit.API.InterProcess;
 
 public sealed class BLREditPipe
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>")]
     public const string PIPE_NAME = "BLREdit";
     public const string API = "blredit://";
     public static bool IsServer { get; private set; } = true;
@@ -186,7 +187,7 @@ public sealed class BLREditPipe
         }
     }
 
-    private static bool AddedApiEndpoints = false;
+    private static bool AddedApiEndpoints;
     static void AddApiEndpoints()
     {
         if (AddedApiEndpoints) { return; }

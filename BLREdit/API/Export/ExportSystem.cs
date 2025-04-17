@@ -36,8 +36,7 @@ public sealed class ExportSystem
 
     public static void SetClipboard(string value)
     {
-        if (value == null)
-            throw new ArgumentNullException(nameof(value), "value to beinserted into clipboard was null");
+        if(value is null) return;
 
         Process clipboardExecutable = new()
         {
@@ -52,6 +51,7 @@ public sealed class ExportSystem
         clipboardExecutable.Start();
         clipboardExecutable.StandardInput.Write(value);
         clipboardExecutable.StandardInput.Close();
+        clipboardExecutable.Dispose();
     }
 
     public static string? GetClipboard()

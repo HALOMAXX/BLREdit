@@ -26,10 +26,11 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     #endregion Events
 
     public static ObservableCollection<string?> AvailableBLREditVersions { get; } = ["Release", "Beta"];
-    public static ObservableCollection<string?> AvailableProxyVersions { get; } = ["BLRevive"];
+    public static ObservableCollection<string?> AvailableBLReviveVersions { get; } = ["Release", "Beta"];
+    public static ObservableCollection<string?> AvailableSDKTypes { get; } = ["BLRevive", "Proxy"];
     #region Settings
-    public string? LastRunVersion { get; set; } = null;
-    public int SelectedLoadout { get; set; } = 0;
+    public string? LastRunVersion { get; set; }
+    public int SelectedLoadout { get; set; }
     [JsonIgnore] public int CurrentlyAppliedLoadout { get { return SelectedLoadout; } set { SelectedLoadout = value; OnPropertyChanged(); } }
     public int SelectedClient { get; set; } = -1;
     [JsonIgnore] public BLRClient? DefaultClient { 
@@ -55,14 +56,18 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public UIBool ApplyMergedProfiles { get; set; } = new(true);
     public UIBool SteamAwareToggle { get; set; } = new(true);
     public DateTime? SDKVersionDate { get; set; }
-    [JsonPropertyName("SelectedProxyVersion"), JsonInclude] private string? _selectedSDKType;
-    [JsonIgnore] public string? SelectedSDKType { get { _selectedSDKType ??= AvailableProxyVersions.First(); return _selectedSDKType; } set { if (AvailableProxyVersions.Contains(value)) { _selectedSDKType = value; } } }
+
+    [JsonPropertyName("SelectedSDKType"), JsonInclude] private string? _selectedSDKType;
+    [JsonIgnore] public string? SelectedSDKType { get { _selectedSDKType ??= AvailableSDKTypes.First(); return _selectedSDKType; } set { if (AvailableSDKTypes.Contains(value)) { _selectedSDKType = value; } } }
+
+    [JsonPropertyName("SelectedBLReviveVersion"), JsonInclude] private string? _selectedBLRevive;
+    [JsonIgnore] public string? SelectedBLReviveVersion { get { _selectedBLRevive ??= AvailableBLReviveVersions.First(); return _selectedBLRevive; } set { if (AvailableBLReviveVersions.Contains(value)) { _selectedBLRevive = value; } } }
 
     [JsonPropertyName("SelectedBLREditVersion"), JsonInclude] private string? _selectedBLREditVersion;
     [JsonIgnore] public string? SelectedBLREditVersion { get { _selectedBLREditVersion ??= AvailableBLREditVersions.First(); return _selectedBLREditVersion; } set { if (AvailableBLREditVersions.Contains(value)) { _selectedBLREditVersion = value; } } }
 
     [JsonPropertyName("SelectedLanguage"), JsonInclude] private string? SelectedLanguage = null;
-    [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return CultureInfo.InvariantCulture; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { SelectedLanguage = value.Name; OnPropertyChanged(); } }
+    [JsonIgnore] public CultureInfo SelectedCulture { get { if (string.IsNullOrEmpty(SelectedLanguage)) { return CultureInfo.InvariantCulture; } else { return CultureInfo.CreateSpecificCulture(SelectedLanguage); } } set { if (value is not null) { SelectedLanguage = value.Name; OnPropertyChanged(); } } }
     [JsonPropertyName("PlayerName"), JsonInclude] private string jsonPlayerName = "BLREdit-Player";
     [JsonIgnore] public string PlayerName { get { return jsonPlayerName; } set { if (jsonPlayerName != value) { MainWindow.MainView.Profile.BLR.IsChanged = true; } jsonPlayerName = value; OnPropertyChanged(); OnPropertyChanged(nameof(ProfileSettings)); MainWindow.MainView.UpdateWindowTitle(); } }
     [JsonPropertyName("Region"), JsonInclude] private string jsonRegion = string.Empty;
@@ -253,10 +258,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         App.Restart();
     }
 
-    public static LaunchOptions GetLaunchOptions()
-    {
-        return new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server= DataStorage.Settings.DefaultServer ?? new() };
-    }
+    public static LaunchOptions DefaultLaunchOptions => new() { UserName = DataStorage.Settings.PlayerName, Server = DataStorage.Settings.DefaultServer ?? new() };
 
     private void AdvancedModdingChanged(object sender, PropertyChangedEventArgs e)
     {

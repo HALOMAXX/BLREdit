@@ -15,12 +15,12 @@ using static BLREdit.API.Utils.HelperFunctions;
 
 namespace BLREdit.UI.Views;
 
-public sealed class BLRWeapon : INotifyPropertyChanged
+public sealed class BLREditWeapon : INotifyPropertyChanged
 {
     private IBLRWeapon? _weapon;
     public IBLRWeapon? InternalWeapon { get { return _weapon; } }
 
-    static readonly Type thisClassType = typeof(BLRWeapon);
+    static readonly Type thisClassType = typeof(BLREditWeapon);
     public static PropertyInfo[] WeaponPartInfo { get; } = ([.. (from property in thisClassType.GetProperties() where Attribute.IsDefined(property, typeof(BLRItemAttribute)) orderby ((BLRItemAttribute)property.GetCustomAttributes(typeof(BLRItemAttribute), false).Single()).PropertyOrder select property)]);
     private static readonly Dictionary<string?, Tuple<PropertyInfo, BLRItemAttribute>> WeaponPartInfoDictonary = GetWeaponPartPropertyInfo();
     private static Dictionary<string?, Tuple<PropertyInfo, BLRItemAttribute>> GetWeaponPartPropertyInfo()
@@ -48,20 +48,20 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
     #endregion Event
 
-    public bool IsPrimary { get; set; } = false;
+    public bool IsPrimary { get; set; }
 
     [JsonIgnore] public bool HasSkinEquipped { get { return Skin is not null && Skin.Name != "No Weapon Skin"; } }
 
-    public BLRLoadout? Loadout { get; private set; }
+    public BLREditLoadout? Loadout { get; private set; }
 
-    private bool isChanged = false;
+    private bool isChanged;
     [JsonIgnore] public bool IsChanged { get { return isChanged; } set { isChanged = value; OnPropertyChanged(); } }
 
-    private readonly Dictionary<int, BLRItem?> WeaponParts = InitDict();
+    private readonly Dictionary<int, BLREditItem?> WeaponParts = InitDict();
 
-    private static Dictionary<int, BLRItem?> InitDict()
+    private static Dictionary<int, BLREditItem?> InitDict()
     {
-        Dictionary<int, BLRItem?> dict = [];
+        Dictionary<int, BLREditItem?> dict = [];
         foreach (var info in WeaponPartInfoDictonary)
         {
             dict.Add(info.Value.Item2.PropertyOrder, null);
@@ -70,30 +70,30 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     }
 
     #region Weapon Parts
-    [BLRItem($"{ImportSystem.PRIMARY_CATEGORY}|{ImportSystem.SECONDARY_CATEGORY}")] public BLRItem? Receiver { get { return GetValueOf(); } set { if (AllowReceiver(value)) { SetValueOf(value); RemoveIncompatibleMods(); AddMissingDefaultParts(); UpdateScopeIcons(); } } }
-    [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLRItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); RemoveIncompatibleMods(); } }
+    [BLRItem($"{ImportSystem.PRIMARY_CATEGORY}|{ImportSystem.SECONDARY_CATEGORY}")] public BLREditItem? Receiver { get { return GetValueOf(); } set { if (AllowReceiver(value)) { SetValueOf(value); RemoveIncompatibleMods(); AddMissingDefaultParts(); UpdateScopeIcons(); } } }
+    [BLRItem(ImportSystem.BARRELS_CATEGORY)] public BLREditItem? Barrel { get { return GetValueOf(); } set { SetValueOf(value); RemoveIncompatibleMods(); } }
     public UIBool IsValidBarrel { get; } = new(true);
-    [BLRItem(ImportSystem.MAGAZINES_CATEGORY)] public BLRItem? Magazine { get { return GetValueOf(); } set { SetValueOf(value); var ammo = Ammo; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } else { ammo = null; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } } } }
+    [BLRItem(ImportSystem.MAGAZINES_CATEGORY)] public BLREditItem? Magazine { get { return GetValueOf(); } set { SetValueOf(value); var ammo = Ammo; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } else { ammo = null; if (IsAmmoOk(ref ammo)) { SetValueOf(ammo, nameof(Ammo)); } } } }
     public UIBool IsValidMagazine { get; } = new(true);
-    [BLRItem(ImportSystem.MUZZELS_CATEGORY)] public BLRItem? Muzzle { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.MUZZELS_CATEGORY)] public BLREditItem? Muzzle { get { return GetValueOf(); } set { SetValueOf(value); } }
     public UIBool IsValidMuzzle { get; } = new(true);
-    [BLRItem(ImportSystem.STOCKS_CATEGORY)] public BLRItem? Stock { get { return GetValueOf(); } set { if (AllowStock(Receiver, Barrel, value, true)) { SetValueOf(value); } } }
+    [BLRItem(ImportSystem.STOCKS_CATEGORY)] public BLREditItem? Stock { get { return GetValueOf(); } set { if (AllowStock(Receiver, Barrel, value, true)) { SetValueOf(value); } } }
     public UIBool IsValidStock { get; } = new(true);
-    [BLRItem(ImportSystem.SCOPES_CATEGORY)] public BLRItem? Scope { get { return GetValueOf(); } set { SetValueOf(value); UpdateScopeIcons(); } }
+    [BLRItem(ImportSystem.SCOPES_CATEGORY)] public BLREditItem? Scope { get { return GetValueOf(); } set { SetValueOf(value); UpdateScopeIcons(); } }
     public UIBool IsValidScope { get; } = new(true);
-    [BLRItem(ImportSystem.GRIPS_CATEGORY)] public BLRItem? Grip { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.GRIPS_CATEGORY)] public BLREditItem? Grip { get { return GetValueOf(); } set { SetValueOf(value); } }
     public UIBool IsValidGrip { get; } = new(true);
-    [BLRItem(ImportSystem.HANGERS_CATEGORY)] public BLRItem? Tag { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.HANGERS_CATEGORY)] public BLREditItem? Tag { get { return GetValueOf(); } set { SetValueOf(value); } }
     public UIBool IsValidTag { get; } = new(true);
-    [BLRItem(ImportSystem.CAMOS_WEAPONS_CATEGORY)] public BLRItem? Camo { get { return GetValueOf(); } set { SetValueOf(value); } }
+    [BLRItem(ImportSystem.CAMOS_WEAPONS_CATEGORY)] public BLREditItem? Camo { get { return GetValueOf(); } set { SetValueOf(value); } }
     public UIBool IsValidCamo { get; } = new(true);
-    [BLRItem(ImportSystem.AMMO_CATEGORY)] public BLRItem? Ammo { get { return GetValueOf(); } set { if (IsAmmoOk(ref value)) { SetValueOf(value); } } }
+    [BLRItem(ImportSystem.AMMO_CATEGORY)] public BLREditItem? Ammo { get { return GetValueOf(); } set { if (IsAmmoOk(ref value)) { SetValueOf(value); } } }
     public UIBool IsValidAmmo { get; } = new(true);
-    [BLRItem(ImportSystem.PRIMARY_SKIN_CATEGORY)] public BLRItem? Skin { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasSkinEquipped)); } }
+    [BLRItem(ImportSystem.PRIMARY_SKIN_CATEGORY)] public BLREditItem? Skin { get { return GetValueOf(); } set { SetValueOf(value); OnPropertyChanged(nameof(HasSkinEquipped)); } }
     public UIBool IsValidSkin { get; } = new(true);
     #endregion Weapon Parts
 
-    private BLRItem? GetValueOf([CallerMemberName] string? name = null)
+    private BLREditItem? GetValueOf([CallerMemberName] string? name = null)
     {
         if (string.IsNullOrEmpty(name)) return null;
 
@@ -104,7 +104,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         { return null; }
     }
 
-    private void SetValueOf(BLRItem? value, [CallerMemberName] string? name = null)
+    private void SetValueOf(BLREditItem? value, [CallerMemberName] string? name = null)
     {
         if (string.IsNullOrEmpty(name)) return;
 
@@ -115,7 +115,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             if (value is null && (Loadout?.IsAdvanced.IsNot ?? false)) value = MagiCowsWeapon.GetDefaultSetupOfReceiver(receiver)?.GetItemByType(propAndAttri.Item2.ItemType) ?? null;
             if (value is not null && (!value.IsValidFor(receiver, Loadout?.IsAdvanced.Is ?? false) || !propAndAttri.Item2.ItemType.Contains(value.Category)))
             { return; }
-            bool isValid = BLRItem.IsValidFor(value, receiver, false);
+            bool isValid = BLREditItem.IsValidFor(value, receiver, false);
             switch ($"IsValid{name}")
             {
                 case nameof(IsValidBarrel):
@@ -154,12 +154,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         ItemChanged(name);
     }
 
-    public BLRWeapon Copy()
+    public BLREditWeapon Copy()
     {
-        BLRWeapon wpn = new(IsPrimary);
+        BLREditWeapon wpn = new(IsPrimary);
         foreach (var property in WeaponPartInfo)
         {
-            if (property.GetValue(this) is BLRItem item)
+            if (property.GetValue(this) is BLREditItem item)
             {
                 property.SetValue(wpn, item);
             }
@@ -167,14 +167,14 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         return wpn;
     }
 
-    public void ApplyCopy(BLRWeapon? weapon)
+    public void ApplyCopy(BLREditWeapon? weapon)
     {
         LoggingSystem.Log("Applying Weapon Copy!");
         if (weapon is not null && this.IsPrimary == weapon.IsPrimary)
         {
             foreach (var property in WeaponPartInfo)
             {
-                if (property.GetValue(weapon) is BLRItem item)
+                if (property.GetValue(weapon) is BLREditItem item)
                 {
                     UndoRedoSystem.DoValueChange(item, property, this, BlockEvents.AllExceptUpdate);
                 }
@@ -208,7 +208,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         return new FoxIcon(string.Empty);
     }
 
-    private bool IsAmmoOk(ref BLRItem? ammo)
+    private bool IsAmmoOk(ref BLREditItem? ammo)
     {
         if (Magazine is null) return true;
         if (ammo is null)
@@ -233,28 +233,28 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         if (Barrel is null || Barrel.Name == MagiCowsWeapon.NoBarrel)
         {
-            Barrel = wpn.GetBarrelBLRItem();
+            Barrel = wpn.GetBarrelItem();
         }
         if (Scope is null || Scope.Name == MagiCowsWeapon.NoScope)
         {
-            Scope = wpn.GetScopeBLRItem();
+            Scope = wpn.GetScopeItem();
         }
         if (Stock is null || Stock.Name == MagiCowsWeapon.NoStock)
         {
-            Stock = wpn.GetStockBLRItem();
+            Stock = wpn.GetStockItem();
         }
         if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
         {
-            Grip = wpn.GetGripBLRItem();
+            Grip = wpn.GetGripItem();
         }
 
-        if (Muzzle is null || BLRItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
+        if (Muzzle is null || BLREditItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
         {
-            Muzzle = wpn.GetMuzzleBLRItem();
+            Muzzle = wpn.GetMuzzleItem();
         }
-        if (Magazine is null || BLRItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
+        if (Magazine is null || BLREditItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
         {
-            Magazine = wpn.GetMagazineBLRItem();
+            Magazine = wpn.GetMagazineItem();
             var uid = Magazine?.UID ?? -1;
             if (uid == -1) { uid = 90000; }
             Ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, uid);
@@ -265,12 +265,12 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
 
 
-    private static bool IsPistol(BLRItem? receiver)
+    private static bool IsPistol(BLREditItem? receiver)
     {
         if (receiver == null) return false;
         return receiver.Name == "Light Pistol" || receiver.Name == "Heavy Pistol" || receiver.Name == "Prestige Light Pistol";
     }
-    private bool AllowReceiver(BLRItem? item)
+    private bool AllowReceiver(BLREditItem? item)
     {
         if (item is null) return true;
         if (IsPrimary)
@@ -290,7 +290,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         return true;
     }
 
-    private bool AllowStock(BLRItem? receiver, BLRItem? barrel, BLRItem? stock, bool displayMessage = false)
+    private bool AllowStock(BLREditItem? receiver, BLREditItem? barrel, BLREditItem? stock, bool displayMessage = false)
     {
         if (stock is null || stock.Name == "No Stock") return true;
         if (!IsPrimary)
@@ -311,7 +311,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         OnPropertyChanged(nameof(ScopePreview));
     }
 
-    public BLRWeapon(bool isPrimary, BLRLoadout? loadout = null, IBLRWeapon? weapon = null, bool readBackEvent = false)
+    public BLREditWeapon(bool isPrimary, BLREditLoadout? loadout = null, IBLRWeapon? weapon = null, bool readBackEvent = false)
     {
         IsPrimary = isPrimary;
         Loadout = loadout;
@@ -370,19 +370,19 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                 switch (Magazine?.UID)
                 {
                     case 44211:
-                        total += -50;
+                        total += -50.0;
                         break;
                     case 44212:
                         total += -100;
                         break;
                     case 44213:
-                        total += 28.57D;
+                        total += 28.57;
                         break;
                     case 44214:
-                        total += -87.5D;
+                        total += -87.5;
                         break;
                     case 44215:
-                        total += 100;
+                        total += 100.0;
                         break;
                 }
             }
@@ -521,7 +521,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         get
         {
-            return 1.3D + RawZoomMagnification;
+            return 1.3 + RawZoomMagnification;
         }
     }
 
@@ -567,20 +567,13 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         get
         {
-            double total = 0;
+            double total = 0.0;
             total += Receiver?.WikiStats?.Reload ?? 0;
-            if (Barrel?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WikiStats?.Reload ?? 0;
-            if (Magazine?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.Reload ?? 0;
-            if (Muzzle?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WikiStats?.Reload ?? 0;
-            if (Stock?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WikiStats?.Reload ?? 0;
-            if (Scope?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.Reload ?? 0;
-            if (Grip?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WikiStats?.Reload ?? 0;
 
-            // Corrected the reload rate multiplier calc and changed the ranges from zeros in the BPFA and BFR so they can now correctly use the reloadspeed percentage instead of flat wiki value add/sub
-            // Will eventually fix all guns but I am still uncertain about a few cases that don't go along with it for whatever reason
-            if (Receiver?.UID == 40020 || Receiver?.UID == 40009)
+            int wepID = Receiver?.UID ?? 0;
+            if (wepID == 40011 || wepID == 40014 || wepID == 40005 || wepID == 40016) // LMG, LMGR, Shotgun, SARK
             {
-                return Receiver?.WikiStats?.Reload ?? 0;
+                if (Magazine?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.Reload ?? 0;
             }
 
             return total;
@@ -593,15 +586,18 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             if (Receiver != null && Receiver.WeaponStats != null)
             {
-                double vertical = Receiver.WeaponStats.RecoilVector.Y * Receiver.WeaponStats.RecoilVectorMultiplier.Y * 0.3535;
-                double horizontal = Receiver.WeaponStats.RecoilVector.X * Receiver.WeaponStats.RecoilVectorMultiplier.X * 0.5;
+                double randX = 0.25;                                                // 0.25 in place of X's Rand(0,1)-0.5
+                double randY = Math.Abs(Math.Sqrt(0.5 - (randX * randX)) * 0.25);   // 0.25 in place of Y's Rand(0,1)-0.5
+
+                double vertical = Receiver.WeaponStats.RecoilVector.Y * Receiver.WeaponStats.RecoilVectorMultiplier.Y * randY;
+                double horizontal = Receiver.WeaponStats.RecoilVector.X * Receiver.WeaponStats.RecoilVectorMultiplier.X * randX;
                 if (vertical + horizontal != 0)
                 {
                     return vertical / (vertical + horizontal);
                 }
-                return 1;
+                return 1.0;
             }
-            return 1;
+            return 1.0;
         }
     }
 
@@ -676,6 +672,13 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             return Receiver?.WeaponStats?.FragmentsPerShell ?? 0;
         }
     }
+    public double FragmentSpread
+    {
+        get
+        {
+            return Receiver?.WeaponStats?.FragmentSpread ?? 0;
+        }
+    }
     public double SpreadCrouchMultiplier
     {
         get
@@ -690,25 +693,41 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             return Receiver?.WeaponStats?.JumpSpreadMultiplier ?? 0;
         }
     }
+    public double SpreadJumpConstant
+    {
+        get
+        {
+            return Receiver?.WeaponStats?.SpreadJumpConstant ?? 0;
+        }
+    }
     public double RawScopeInTime
     {
         get
         {
-            double total = 0;
-            total += Receiver?.WikiStats?.ScopeInTime ?? 0;
-            if (Barrel?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Barrel?.WikiStats?.ScopeInTime ?? 0;
-            if (Magazine?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Magazine?.WikiStats?.ScopeInTime ?? 0;
-            if (Muzzle?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Muzzle?.WikiStats?.ScopeInTime ?? 0;
-            if (Stock?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Stock?.WikiStats?.ScopeInTime ?? 0;
-            if (Scope?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.ScopeInTime ?? 0;
-            if (Grip?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Grip?.WikiStats?.ScopeInTime ?? 0;
+            double total = 0.0;
+            if (Scope?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? false) total += Scope?.WikiStats?.ScopeInTime ?? 0.105;
             return total;
+        }
+    }
+    public bool ScopeEnabled
+    {
+        get
+        {
+            return Scope?.WikiStats?.EnableScope ?? false;
         }
     }
     #endregion Properties
 
     #region CalculatedProperties
-    public double ModifiedReloadSpeed { get { return RawReloadSpeed * ReloadMultiplier; } }
+    public double ModifiedReloadSpeed { 
+        get { 
+            if (Receiver?.UID == 40005 || Receiver?.UID == 40016) // Shotgun, SARK
+            {
+                return RawReloadSpeed;
+            }
+            return RawReloadSpeed * ReloadMultiplier; 
+        } 
+    }
     private double? reloadMultiplier;
     public double ReloadMultiplier { get { return reloadMultiplier ?? 1; } private set { reloadMultiplier = value; OnPropertyChanged(); } }
     private double? cockRateMultiplier;
@@ -721,7 +740,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             if (Magazine?.UID == 44014 || Magazine?.UID == 44015)
             {
-                return 1;
+                return 1.0;
             }
             return Receiver?.WeaponStats?.ReloadShortMultiplier ?? 0;
         }
@@ -739,8 +758,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     public double RangeClose { get { return rangeClose ?? 0; } private set { rangeClose = value; OnPropertyChanged(); } }
     private double? rangeFar;
     public double RangeFar { get { return rangeFar ?? 0; } private set { rangeFar = value; OnPropertyChanged(); } }
-    private double? rangeTracer;
-    public double RangeTracer { get { return rangeTracer ?? 0; } private set { rangeTracer = value; OnPropertyChanged(); } }
+    private double? rangeTrace;
+    public double RangeTrace { get { return rangeTrace ?? 0; } private set { rangeTrace = value; OnPropertyChanged(); } }
     #endregion Range
 
     #region Recoil
@@ -775,7 +794,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public string WeaponDescriptorPart3 { get { return weaponDesc3 ?? string.Empty; } private set { weaponDesc3 = value; OnPropertyChanged(); } }
 
-    public string? weaponDescriptor;
+    private string? weaponDescriptor;
     public string WeaponDescriptor { get { return weaponDescriptor ?? string.Empty; } private set { weaponDescriptor = value; OnPropertyChanged(); } }
     #endregion Weapon Descriptor
 
@@ -867,31 +886,31 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         MagiCowsWeapon ? wpn = MagiCowsWeapon.GetDefaultSetupOfReceiver(Receiver);
 
         if (Muzzle is null || !Muzzle.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzleBLRItem(), GetType().GetProperty(nameof(Muzzle)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzleItem(), GetType().GetProperty(nameof(Muzzle)), this); }
 
         if (Barrel is null || !Barrel.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrelBLRItem(), GetType().GetProperty(nameof(Barrel)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrelItem(), GetType().GetProperty(nameof(Barrel)), this); }
 
         if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) || !AllowStock(Receiver, Barrel, Stock))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStockBLRItem(), GetType().GetProperty(nameof(Stock)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStockItem(), GetType().GetProperty(nameof(Stock)), this); }
 
         if (Scope is null || !Scope.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScopeBLRItem(), GetType().GetProperty(nameof(Scope)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScopeItem(), GetType().GetProperty(nameof(Scope)), this); }
 
         if (Magazine is null || !Magazine.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazineBLRItem(), GetType().GetProperty(nameof(Magazine)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazineItem(), GetType().GetProperty(nameof(Magazine)), this); }
 
         if (Ammo is null || !Ammo.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmoBLRItem(), GetType().GetProperty(nameof(Ammo)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmoItem(), GetType().GetProperty(nameof(Ammo)), this); }
 
         if (Grip is null || !Grip.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGripBLRItem(), GetType().GetProperty(nameof(Grip)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGripItem(), GetType().GetProperty(nameof(Grip)), this); }
 
         if (Camo is null || !Camo.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamoBLRItem(), GetType().GetProperty(nameof(Camo)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamoItem(), GetType().GetProperty(nameof(Camo)), this); }
 
         if (Tag is null || !Tag.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTagBLRItem(), GetType().GetProperty(nameof(Tag)), this); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTagItem(), GetType().GetProperty(nameof(Tag)), this); }
 
         if (!Skin?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? true)
         { UndoRedoSystem.DoValueChangeAfter(ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0), GetType().GetProperty(nameof(Skin)), this); }
@@ -906,10 +925,10 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         MagiCowsWeapon? wpn;
 
-        if (!BLRItem.IsValidFor(Receiver, null))
+        if (!BLREditItem.IsValidFor(Receiver, null))
         {
             wpn = IsPrimary ? MagiCowsWeapon.DefaultWeapons.AssaultRifle : MagiCowsWeapon.DefaultWeapons.LightPistol;
-            UndoRedoSystem.DoValueChange(wpn?.GetReceiver(), GetType().GetProperty(nameof(Receiver)), this, BlockEvents.Remove | BlockEvents.AddMissing);
+            UndoRedoSystem.DoValueChange(wpn?.GetReceiverItem(), GetType().GetProperty(nameof(Receiver)), this, BlockEvents.Remove | BlockEvents.AddMissing);
         }
         else
         { 
@@ -917,31 +936,31 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
 
         if (Muzzle is null || !Muzzle.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzleBLRItem(), GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMuzzleItem(), GetType().GetProperty(nameof(Muzzle)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Barrel is null || !Barrel.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrelBLRItem(), GetType().GetProperty(nameof(Barrel)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetBarrelItem(), GetType().GetProperty(nameof(Barrel)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Stock is null || !Stock.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) || !AllowStock(Receiver, Barrel, Stock))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStockBLRItem(), GetType().GetProperty(nameof(Stock)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetStockItem(), GetType().GetProperty(nameof(Stock)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Scope is null || !Scope.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScopeBLRItem(), GetType().GetProperty(nameof(Scope)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetScopeItem(), GetType().GetProperty(nameof(Scope)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Magazine is null || !Magazine.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazineBLRItem(), GetType().GetProperty(nameof(Magazine)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetMagazineItem(), GetType().GetProperty(nameof(Magazine)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Ammo is null || !Ammo.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmoBLRItem(), GetType().GetProperty(nameof(Ammo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetAmmoItem(), GetType().GetProperty(nameof(Ammo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Grip is null || !Grip.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGripBLRItem(), GetType().GetProperty(nameof(Grip)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetGripItem(), GetType().GetProperty(nameof(Grip)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Camo is null || !Camo.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamoBLRItem(), GetType().GetProperty(nameof(Camo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetCamoItem(), GetType().GetProperty(nameof(Camo)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (Tag is null || !Tag.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false))
-        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTagBLRItem(), GetType().GetProperty(nameof(Tag)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
+        { UndoRedoSystem.DoValueChangeAfter(wpn?.GetTagItem(), GetType().GetProperty(nameof(Tag)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
 
         if (!Skin?.IsValidFor(Receiver, Loadout?.IsAdvanced.Is ?? false) ?? true)
         { UndoRedoSystem.DoValueChangeAfter(ImportSystem.GetItemByIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, 0), GetType().GetProperty(nameof(Skin)), this, BlockEvents.Remove | BlockEvents.AddMissing); }
@@ -962,28 +981,28 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         if (Barrel is null || Barrel.Name == MagiCowsWeapon.NoBarrel)
         {
-            Barrel = wpn.GetBarrelBLRItem();
+            Barrel = wpn.GetBarrelItem();
         }
         if (Scope is null || Scope.Name == MagiCowsWeapon.NoScope)
         {
-            Scope = wpn.GetScopeBLRItem();
+            Scope = wpn.GetScopeItem();
         }
         if (Stock is null || Stock.Name == MagiCowsWeapon.NoStock)
         {
-            Stock = wpn.GetStockBLRItem();
+            Stock = wpn.GetStockItem();
         }
         if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
         {
-            Grip = wpn.GetGripBLRItem();
+            Grip = wpn.GetGripItem();
         }
 
-        if (Muzzle is null || BLRItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
+        if (Muzzle is null || BLREditItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
         {
-            Muzzle = wpn.GetMuzzleBLRItem();
+            Muzzle = wpn.GetMuzzleItem();
         }
-        if (Magazine is null || BLRItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
+        if (Magazine is null || BLREditItem.GetMagicCowsID(Magazine) == MagiCowsWeapon.NoMagazine)
         {
-            Magazine = wpn.GetMagazineBLRItem();
+            Magazine = wpn.GetMagazineItem();
             var uid = Magazine?.UID ?? -1;
             if (uid == -1) { uid = 90000; }
             Ammo = ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, uid);
@@ -1003,16 +1022,17 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         (DamageClose, DamageFar) = CalculateDamage(Receiver, DamagePercentage);
         ModifiedRunSpeed = CalculateMovementSpeed(Receiver, MovementSpeedPercentage);
         ModifiedPawnRunSpeed = CalculatePawnMovementSpeed(Receiver, Loadout, MovementSpeedPercentage);
-        (RangeClose, RangeFar, RangeTracer) = CalculateRange(Receiver, RangePercentage);
-        (RecoilHip, RecoilZoom) = CalculateRecoil(Receiver, RecoilPercentage);
+        (RangeClose, RangeFar, RangeTrace) = CalculateRange(Receiver, RangePercentage);
+        RecoilHip = CalculateRecoil(Receiver, RecoilPercentage, false);
+        RecoilZoom = CalculateRecoil(Receiver, RecoilPercentage, true);
         ReloadMultiplier = CalculateReloadRate(Receiver, ReloadSpeedPercentage, RecoilPercentage);
         double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
         BarrelStockMovementSpeed += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
-        ModifiedScopeInTime = CalculateScopeInTime(Receiver, Scope, BarrelStockMovementSpeed, RawScopeInTime);
-        (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Receiver, AccuracyPercentage, BarrelStockMovementSpeed, Magazine, Ammo);
+        ModifiedScopeInTime = CalculateScopeInTime(Receiver, Scope, BarrelStockMovementSpeed, RawScopeInTime, ScopeEnabled);
+        (SpreadWhileADS, SpreadWhileStanding, SpreadWhileMoving) = CalculateSpread(Receiver, AccuracyPercentage, BarrelStockMovementSpeed, Magazine, Ammo, DamagePercentage);
         WeaponDescriptorPart1 = CompareItemDescriptor1(Barrel, Magazine);
         WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
-        WeaponDescriptorPart3 = Receiver.GetDescriptorName(TotalRatingPoints);
+        WeaponDescriptorPart3 = Receiver.SelectDescriptorName(TotalRatingPoints);
         WeaponDescriptor = WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3;
 
         CreateDisplayProperties();
@@ -1020,7 +1040,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     private void CreateDisplayProperties()
     {
-        DamageDisplay = DamageClose.ToString("0.0") + " / " + DamageFar.ToString("0.0");
+        DamageDisplay = DamageClose.ToString("0") + " / " + DamageFar.ToString("0");
         RateOfFireDisplay = ModifiedRateOfFire.ToString("0");
         AmmoDisplay = FinalAmmoMagazine.ToString("0") + " / " + ModifiedAmmoReserve.ToString("0");
         ReloadTimeDisplay = (ModifiedReloadSpeed * ShortReload).ToString("0.00") + 's'; // changed reload to short reload
@@ -1032,10 +1052,10 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         HipRecoilDisplay = RecoilHip.ToString("0.00") + '°';
         AimRecoilDisplay = RecoilZoom.ToString("0.00") + '°';
         ScopeInTimeDisplay = ModifiedScopeInTime.ToString("0.000") + 's';
-        RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTracer.ToString("0");
-        RunDisplay = ModifiedRunSpeed.ToString("0.00");
+        RangeDisplay = RangeClose.ToString("0.0") + " / " + RangeFar.ToString("0.0") + " / " + RangeTrace.ToString("0");
+        RunDisplay = ModifiedRunSpeed.ToString("0");
         PawnRunDisplay = ModifiedPawnRunSpeed.ToString("0.00");
-        ZoomDisplay = ZoomMagnification.ToString("0.00") + 'x';
+        ZoomDisplay = ZoomMagnification.ToString("0.0") + 'x';
 
         FragmentsPerShellDisplay = FragmentsPerShell.ToString("0");
         ZoomFirerateDisplay = ZoomRateOfFire.ToString("0");
@@ -1044,8 +1064,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         SpreadCenterWeightDisplay = SpreadCenterWeight.ToString("0.00");
         SpreadCenterDisplay = SpreadCenter.ToString("0.00");
         RecoilVerticalRatioDisplay = VerticalRecoilRatio.ToString("0.00");
-        RecoilRecoveryTimeDisplay = RecoilRecoveryTime.ToString("0.00");
-        RecoilAccumulationDisplay = RecoilAccumulation.ToString("0.00");
+        RecoilRecoveryTimeDisplay = RecoilRecoveryTime.ToString("0.00") + 's';
+        RecoilAccumulationDisplay = RecoilAccumulation.ToString("0.000");
 
         DamagePercentageDisplay = DamagePercentage.ToString("0") + '%';
         AccuracyPercentageDisplay = AccuracyPercentage.ToString("0") + '%';
@@ -1061,7 +1081,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="receiver">Receiver</param>
     /// <param name="RecoilPercentage">all raw Recoil modifiers</param>
     /// <returns>CockRateMultiplier</returns>
-    public static double CalculateCockRate(BLRItem receiver, double RecoilPercentage)
+    public static double CalculateCockRate(BLREditItem receiver, double RecoilPercentage)
     {
         if (receiver is null || receiver.WeaponStats is null) return 0;
         double allRecoil = Percentage(RecoilPercentage);
@@ -1096,7 +1116,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="ReloadSpeedPercentage">all raw ReloadSpeed modifiers</param>
     /// <param name="RecoilPercentage"> all raw Recoil modifiers</param>
     /// <returns>calculated ReloadMultiplier</returns>
-    public static double CalculateReloadRate(BLRItem receiver, double ReloadSpeedPercentage, double RecoilPercentage)
+    public static double CalculateReloadRate(BLREditItem receiver, double ReloadSpeedPercentage, double RecoilPercentage)
     {
         if (receiver is null || receiver.WeaponStats is null) return 0;
         double allReloadSpeed = ReloadSpeedPercentage / 100; // Reload speed is actually seemingly unclamped
@@ -1129,7 +1149,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             }
         }
 
-        WeaponReloadRate = 1 / WeaponReloadRate;
+        WeaponReloadRate = 1.0 / WeaponReloadRate;
 
         return WeaponReloadRate;
     }
@@ -1138,9 +1158,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// Not yet Implemented
     /// </summary>
     /// <param name="receiver"></param>
-    public static void CalculateReloadSpeed(BLRItem receiver)
+    public static void CalculateReloadSpeed(BLREditItem receiver)
     {
         // Placeholder so I don't forget
+        // It didn't help I ended up still forgetting
+        // I think CalculateReloadRate already handles this, why did I make this function? Though maybe I'll keep it for now in case I move some cheats I did recently elsewhere
     }
 
     /// <summary>
@@ -1149,22 +1171,22 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="receiver">Receiver</param>
     /// <param name="MovementSpeedPercentage">all raw MovementSpeed modifiers</param>
     /// <returns>calculated Movementspeed</returns>
-    public static double CalculateMovementSpeed(BLRItem receiver, double MovementSpeedPercentage)
+    public static double CalculateMovementSpeed(BLREditItem receiver, double MovementSpeedPercentage)
     {
         if (receiver is null || receiver.WeaponStats is null) return 0;
-        double allMovementSpeed = MovementSpeedPercentage / 100; // Movement speed is apparently also uncapped
+        double allMovementSpeed = MovementSpeedPercentage / 100.0; // Weapon modifier is uncapped, but coalesced mods to the pawn are capped
         double move_alpha = Math.Abs(allMovementSpeed);
         double move_modifier;
+        // Is casted to an int in scripts, so I'm flooring it
         if (allMovementSpeed > 0)
         {
-            move_modifier = Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.Y, move_alpha);
+            move_modifier = Math.Floor(Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.Y, move_alpha));
         }
         else
         {
-            move_modifier = Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.X, move_alpha);
+            move_modifier = Math.Floor(Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.X, move_alpha));
         }
         return move_modifier;
-        //return (765 + move_modifier * 0.9) / 100.0f; // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
     }
 
     /// <summary>
@@ -1174,10 +1196,10 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="Loadout">Loadout</param>
     /// <param name="WeapSpeedPercentage">all raw weapon MovementSpeed modifiers</param>
     /// <returns>calculated Movementspeed</returns>
-    public static double CalculatePawnMovementSpeed(BLRItem receiver, BLRLoadout? Loadout, double WeapSpeedPercentage)
+    public static double CalculatePawnMovementSpeed(BLREditItem receiver, BLREditLoadout? Loadout, double WeapSpeedPercentage)
     {
         if (Loadout is null || receiver is null || receiver.WeaponStats is null) return 0;
-        double weap_alpha = Math.Abs(WeapSpeedPercentage) / 100;
+        double weap_alpha = Math.Abs(WeapSpeedPercentage) / 100.0;
         double weap_modifier;
         if (WeapSpeedPercentage > 0)
         {
@@ -1188,19 +1210,19 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             weap_modifier = Lerp(receiver.WeaponStats.ModificationRangeMoveSpeed.Z, receiver.WeaponStats.ModificationRangeMoveSpeed.X, weap_alpha);
         }
 
-        double combined = (Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667);
-        double pawnalpha = Math.Min(Math.Abs(combined), 100) / 100;
+        double combined = Math.Floor((Loadout.RawMoveSpeed * 0.9) + (weap_modifier * 0.667)); // Apparently percent of movement from gear is applied to weapons, and not percent of movement from weapons
+        double pawnalpha = Math.Min(Math.Abs(combined), 100.0) / 100.0;
         double pawnspeed;
         if (combined > 0)
         {
-            pawnspeed = Lerp(765, 900, pawnalpha);
+            pawnspeed = Lerp(765.0, 900.0, pawnalpha);
         }
         else
         {
-            pawnspeed = Lerp(765, 630, pawnalpha);
+            pawnspeed = Lerp(765.0, 630.0, pawnalpha);
         }
 
-        return pawnspeed / 100;
+        return pawnspeed / 100.0;
     }
 
     /// <summary>
@@ -1210,7 +1232,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="AccuracyPercentage">all raw Accuracy modifiers</param>
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovmentSpeed modifiers</param>
     /// <returns></returns>
-    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLRItem receiver, double AccuracyPercentage, double BarrelStockMovementSpeed, BLRItem? Magazine, BLRItem? Ammo)
+    public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLREditItem receiver, double AccuracyPercentage, double BarrelStockMovementSpeed, BLREditItem? Magazine, BLREditItem? Ammo, double DamagePercentage)
     {
         if (receiver is null || receiver.WeaponStats is null) return (0, 0, 0);
         double allMoveSpeed = Percentage(BarrelStockMovementSpeed);
@@ -1218,6 +1240,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         double accuracyBaseModifier;
         double accuracyTABaseModifier;
         double alpha = Math.Abs(allAccuracy);
+        double Rad2Deg = 180.0 / Math.PI; // The amount of these was annoying me, also converted only at the very end now
         if (allAccuracy > 0)
         {
             accuracyBaseModifier = Lerp(receiver.WeaponStats.ModificationRangeBaseSpread.Z, receiver.WeaponStats.ModificationRangeBaseSpread.Y, alpha);
@@ -1229,70 +1252,85 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             accuracyTABaseModifier = Lerp(receiver.WeaponStats.ModificationRangeTABaseSpread.Z, receiver.WeaponStats.ModificationRangeTABaseSpread.X, alpha);
         }
 
-        double hip = accuracyBaseModifier * (180 / Math.PI);
-        double aim = accuracyBaseModifier * receiver.WeaponStats.ZoomSpreadMultiplier * (180 / Math.PI);
+        double hip = accuracyBaseModifier;
+        double aim = accuracyBaseModifier * receiver.WeaponStats.ZoomSpreadMultiplier;
         if (receiver.WeaponStats.UseTABaseSpread)
         {
-            aim = accuracyTABaseModifier * (float)(180 / Math.PI);
+            aim = accuracyTABaseModifier;
         }
 
-        double weight_alpha = Math.Abs(receiver.WeaponStats.Weight / 80.0);
-        double weight_clampalpha = Math.Min(Math.Max(weight_alpha, -1.0), 1.0); // Don't ask me why they clamp the absolute value with a negative, I have no idea.
-        double weight_multiplier;
-        if (receiver.WeaponStats.Weight > 0)   // It was originally supposed to compare the total weight of equipped mods, but from what I can currently gather from the scripts, nothing modifies weapon weight so I'm just comparing base weight for now.
+        double damagealpha = Math.Abs(Percentage(DamagePercentage));
+        if (receiver.UID == 40007)
         {
-            weight_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.Y, weight_clampalpha);  // Originally supposed to be a weapon specific range, but they all set the same values so it's not worth setting elsewhere.
+            if (DamagePercentage > 0)
+            {
+                // Only the BAR can actually use this
+                // Seemingly replaces TABaseSpread value in SingleActionBase
+                // Currently unused in 3.02 (but still exists)
+                // I do not currently know how this plays with MovementSpreadConstant or MovementSpreadMultiplier, though luckily we don't need to know yet
+                aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.X, damagealpha);
+            }
+            else
+            {
+                aim = Lerp(receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Z, receiver.WeaponStats.ModificationRangeDamageAccuracyRange.Y, damagealpha);
+            }
+        }
+
+        // The gun's actual move spread, confirmed by ingame testing
+        // Customization menu's stat was wrong and improperly using the now known to be unused Weight value
+        // All of my prior hacks were to mimic the wrong values, creating a giant mess of wrong
+        double speed_alpha = Math.Min(Math.Abs(BarrelStockMovementSpeed) / 80, 1.0);
+        double funny_number = 0.425; // Magic number that Zombie pulled out of their ass
+        double speed_multiplier;
+        if (BarrelStockMovementSpeed > 0)
+        {
+            speed_multiplier = Lerp(1.0, 0.5, speed_alpha);
         }
         else
         {
-            weight_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.X, weight_clampalpha);
+            speed_multiplier = Lerp(1.0, 2.0, speed_alpha);
         }
+        double move_mult = accuracyBaseModifier * (1.0 + (receiver.WeaponStats.MovementSpreadMultiplier - 1.0) * funny_number * speed_multiplier);
+        double move_const = Math.Max(receiver.WeaponStats.MovementSpreadConstant, 0.0) * funny_number * speed_multiplier;
+        double move = (move_mult + move_const);
 
-        double move_alpha = Math.Abs(allMoveSpeed); // Combined movement speed modifiers from only barrel and stock, divided by 100
-        double move_multiplier; // Applying movement to it like this isn't how it's done to my current knowledge, but seems to be consistently closer to how it should be in most cases so far.
-        if (allMoveSpeed > 0)
-        {
-            move_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.Y, move_alpha);
-        }
-        else
-        {
-            move_multiplier = Lerp(receiver.WeaponStats.ModificationRangeWeightMultiplier.Z, receiver.WeaponStats.ModificationRangeWeightMultiplier.X, move_alpha);
-        }
-
-        double movemultiplier_current = 1.0 + (receiver.WeaponStats.MovementSpreadMultiplier - 1.0) * (weight_multiplier * move_multiplier);
-        double moveconstant_current = receiver.WeaponStats.MovementSpreadConstant * (weight_multiplier * move_multiplier);
-
-        double move = (accuracyBaseModifier + moveconstant_current) * (180 / Math.PI) * movemultiplier_current;
-
-        if (receiver.UID == 40015) // BLP
+        // Add FragmentSpread to result for guns that use it
+        // The normal spread values only affect the fragment scatter placement, the whole scatter is treated as a single shot that the spread moves
+        if (receiver.UID == 40015) // BLP, only the scattershot uses FragmentSpread
         {
             if ((Magazine?.UID == 44177) || (Ammo?.UID == 90010)) {
-                aim += (0.2 * (180 / Math.PI));
-                hip += (0.2 * (180 / Math.PI));
-                move += (0.2 * (180 / Math.PI));
+                aim += 0.2;
+                hip += 0.2;
+                move += 0.2;
             }
         } else if (receiver.UID == 40005) // Shotgun
         {
-            aim += (0.1 * (180 / Math.PI));
-            hip += (0.1 * (180 / Math.PI));
-            move += (0.1 * (180 / Math.PI));
+            aim += 0.1;
+            hip += 0.1;
+            move += 0.1;
         } else if (receiver.UID == 40016) // Sark
         {
-            aim += (0.05 * (180 / Math.PI));
-            hip += (0.05 * (180 / Math.PI));
-            move += (0.05 * (180 / Math.PI));
+            aim += 0.05;
+            hip += 0.05;
+            move += 0.05;
         }
 
+        aim *= Rad2Deg;
+        hip *= Rad2Deg;
+        move *= Rad2Deg;
+
         // Average spread over multiple shots to account for random center weight multiplier
+        // (Currently unused)
+        // Can probably be heavily simplified
         double[] averageSpread = [0, 0, 0];
-        double magsize = Math.Min(receiver.WeaponStats.MagSize, 15.0f);
+        double magsize = Math.Min(receiver.WeaponStats.MagSize, 15.0);
         if (magsize <= 1)
         {
             magsize = receiver.WeaponStats.InitialMagazines + 1.0;
         }
         if (magsize > 0)
         {
-            double averageShotCount = Math.Max(magsize, 5.0f);
+            double averageShotCount = Math.Max(magsize, 5.0);
             for (int shot = 1; shot <= averageShotCount; shot++)
             {
                 if (shot > averageShotCount - averageShotCount * receiver.WeaponStats.SpreadCenterWeight)
@@ -1327,43 +1365,35 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// <param name="Scope">Scope</param>
     /// <param name="BarrelStockMovementSpeed">Barrel and Stock raw MovementSpeed modifier</param>
     /// <param name="RawScopeInTime">all raw ScopeInTime modifiers</param>
-    /// <returns></returns>
-    public static double CalculateScopeInTime(BLRItem receiver, BLRItem? Scope, double BarrelStockMovementSpeed, double RawScopeInTime)
+    /// <param name="isScopeEnabled">whether it uses scope in times or not</param>
+    /// <returns>The FOV scope transition time</returns>
+    public static double CalculateScopeInTime(BLREditItem receiver, BLREditItem? Scope, double BarrelStockMovementSpeed, double RawScopeInTime, bool isScopeEnabled)
     {
-        double allMovementSpeed = Clamp(BarrelStockMovementSpeed / 80.0D, -1.0D, 1.0D);
+        double allMovementSpeed = Clamp(BarrelStockMovementSpeed / 80.0, -1.0, 1.0);
         double TTTA_alpha = Math.Abs(allMovementSpeed);
-        double TightAimTime, ComboScopeMod, FourXAmmoCounterMod, ArmComInfraredMod, EMIACOGMod, EMITechScopeMod, EMIInfraredMod, EMIInfraredMK2Mod, ArmComSniperMod, KraneSniperScopeMod, SilverwoodHeavyMod, FrontierSniperMod;
 
-        // giant cheat incoming, please lord forgive me for what i am about to do
+        // hardcoded wall of lerps removed, all is right in the world now
+        double TightAimTime;
+        double scopeInTime;
+        double speedModifier;
         if (allMovementSpeed > 0)
         {
+            speedModifier = Lerp(1.0, 0.66, TTTA_alpha);
             TightAimTime = Lerp(0.225, 0.15, TTTA_alpha);
-            ComboScopeMod = Lerp(0.0, 0.032, TTTA_alpha);
-            FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            ArmComInfraredMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            EMIACOGMod = Lerp(RawScopeInTime, 0.19, TTTA_alpha);
-            EMITechScopeMod = Lerp(RawScopeInTime, 0.2185, TTTA_alpha);
-            EMIInfraredMod = Lerp(RawScopeInTime, 0.2185, TTTA_alpha);
-            EMIInfraredMK2Mod = Lerp(RawScopeInTime, 0.36, TTTA_alpha);
-            ArmComSniperMod = Lerp(RawScopeInTime, 0.275, TTTA_alpha);
-            KraneSniperScopeMod = Lerp(RawScopeInTime, 0.275, TTTA_alpha);
-            SilverwoodHeavyMod = Lerp(RawScopeInTime, 0.275, TTTA_alpha);
-            FrontierSniperMod = Lerp(RawScopeInTime, 0.315, TTTA_alpha);
         }
         else
         {
+            speedModifier = Lerp(1.0, 1.34, TTTA_alpha);
             TightAimTime = Lerp(0.225, 0.30, TTTA_alpha);
-            ComboScopeMod = Lerp(0.0, -0.042, TTTA_alpha);
-            FourXAmmoCounterMod = Lerp(RawScopeInTime, 0.105, TTTA_alpha);
-            ArmComInfraredMod = Lerp(RawScopeInTime, 0.105, TTTA_alpha);
-            EMIACOGMod = Lerp(RawScopeInTime, 0.14, TTTA_alpha);
-            EMITechScopeMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            EMIInfraredMod = Lerp(RawScopeInTime, 0.16, TTTA_alpha);
-            EMIInfraredMK2Mod = Lerp(RawScopeInTime, 0.305, TTTA_alpha);
-            ArmComSniperMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
-            KraneSniperScopeMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
-            SilverwoodHeavyMod = Lerp(RawScopeInTime, 0.205, TTTA_alpha);
-            FrontierSniperMod = Lerp(RawScopeInTime, 0.235, TTTA_alpha);
+        }
+
+        if (isScopeEnabled)
+        {
+            scopeInTime = RawScopeInTime - (0.11 * speedModifier);
+        }
+        else
+        {
+            scopeInTime = 0.0;
         }
 
         if ((receiver?.WeaponStats?.TightAimTime ?? 0) > 0)
@@ -1372,26 +1402,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
         else
         {
-            if (TightAimTime > 0)
-            {
-                return (Scope?.UID) switch
-                {
-                    45005 => TightAimTime + ComboScopeMod + RawScopeInTime,
-                    45023 => TightAimTime + FourXAmmoCounterMod,
-                    45021 => TightAimTime + ArmComInfraredMod,
-                    45002 => TightAimTime + EMIACOGMod,
-                    45020 => TightAimTime + EMIInfraredMod,
-                    45019 => TightAimTime + EMIInfraredMK2Mod,
-                    45015 => TightAimTime + ArmComSniperMod,
-                    45008 => TightAimTime + SilverwoodHeavyMod,
-                    45007 => TightAimTime + KraneSniperScopeMod,
-                    45004 => TightAimTime + EMITechScopeMod,
-                    45001 => TightAimTime + FrontierSniperMod,
-                    _ => TightAimTime + RawScopeInTime,
-                };
-            }
+            return TightAimTime + scopeInTime;
         }
-        return 0.225;
     }
 
     /// <summary>
@@ -1399,8 +1411,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// </summary>
     /// <param name="receiver">Receiver</param>
     /// <param name="RangePercentage">all Range modifiers</param>
-    /// <returns>1:Ideal Range, 2:Max Range, 3:Tracer Range</returns>
-    public static (double IdealRange, double MaxRange, double TracerRange) CalculateRange(BLRItem receiver, double RangePercentage)
+    /// <returns>1:Ideal Range, 2:Max Range, 3:Trace Range</returns>
+    public static (double IdealRange, double MaxRange, double TracerRange) CalculateRange(BLREditItem receiver, double RangePercentage)
     {
         double allRange = Percentage(RangePercentage);
         double idealRange;
@@ -1416,10 +1428,89 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             idealRange = (int)Lerp(receiver?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0, receiver?.WeaponStats?.ModificationRangeIdealDistance.X ?? 0, alpha);
             maxRange = Lerp(receiver?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0, receiver?.WeaponStats?.ModificationRangeMaxDistance.X ?? 0, alpha);
         }
+        double traceRange = Math.Max(maxRange,(receiver?.WeaponStats?.MaxTraceDistance ?? 0)); // NOTE: trace distance is apparently the max of tracerange and maxrange, so maxrange gets priority
 
-        return (IdealRange: idealRange / 100.0D,
-                MaxRange: maxRange / 100.0D,
-                TracerRange: (receiver?.WeaponStats?.MaxTraceDistance ?? 0) / 100.0D);
+        return (IdealRange: idealRange / 100.0,
+                MaxRange: maxRange / 100.0,
+                TracerRange: traceRange / 100.0);
+    }
+
+    /// <summary>
+    /// Calculates the range for weapon sorting
+    /// </summary>
+    /// <param name="receiver">Receiver</param>
+    /// <returns>Sorted range</returns>
+    public static double CalculateSortedRange(BLREditItem receiver)
+    {
+        double idealRange = receiver?.WeaponStats?.ModificationRangeIdealDistance.Z ?? 0;
+        double maxRange = receiver?.WeaponStats?.ModificationRangeMaxDistance.Z ?? 0;
+
+        double baseDamage = receiver?.WeaponStats?.ModificationRangeDamage.Z ?? 0;
+        double minDamage = baseDamage * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1);
+
+        // Might eventually try something more complicated, but this will do for now. Varying damage multipliers makes any serious range comparison a bit tricky
+        // Maybe we can additionally highlight the max range damage (separately from the main damage number on left) when sorting range to show that it's related to range
+        // Adding a small amount of the min range to account for cases of identical max ranges between receivers
+        // Additionally adding a small amount of min damage at range for cases of identical min and max ranges
+        double sortedRange = (idealRange / 1000.0) + Math.Max(idealRange, maxRange);
+        sortedRange += minDamage / 1000.0;
+
+        if (receiver?.UID == 40024) // Bow; projectile not affected by range and can travel for a long time
+        {
+            sortedRange = 999999.0;
+        } 
+        else if (receiver?.UID == 40015) // BLP
+        {
+            sortedRange = 99999.0;
+        }
+
+            return sortedRange;
+    }
+
+    /// <summary>
+    /// Calculates a clamped recoil offset based on accumulated recoil, expects newrecoil and vectors to be in URotation units
+    /// </summary>
+    /// <param name="currentrecoil">Current accumulated recoil before offset</param>
+    /// <param name="newrecoil">Projected new recoil offset</param>
+    /// <param name="maxvector">Vector for maximum recoil (starting point)</param>
+    /// <param name="minvector">Vector for minimum recoil (ending point)</param>
+    /// <param name="minmult">Minimum recoil multiplier at minrecoil vector</param>
+    /// <param name="accuminfluence">Influence of accumulated recoil</param>
+    /// <returns>A new modified offset, scaled between min/max recoil towards minrecoilmultiplier</returns>
+    public static double ClampRecoilURot(double currentrecoil, double newrecoil, double maxvector, double minvector, double minmult, double accuminfluence)
+    {
+        if (minmult == 1.0)
+        {
+            return newrecoil;
+        }
+
+        double maxRatio = 1.0;
+        double baseDiff = 0.0;
+
+        double modifiedCurRecoil = currentrecoil * accuminfluence;
+        double newRecoilOffset = newrecoil;
+        double projectedOffset = modifiedCurRecoil + newRecoilOffset;
+        double offsetDiff = Math.Abs(projectedOffset) - maxvector;
+
+        if (offsetDiff > 0 && newRecoilOffset > 0)
+        {
+            maxRatio = offsetDiff / (minvector - maxvector);
+            maxRatio = Lerp2(1.0, minmult, Math.Min(1.0, maxRatio));
+            if (Math.Abs(modifiedCurRecoil) < maxvector)
+            {
+                baseDiff = maxvector - Math.Abs(modifiedCurRecoil);
+                baseDiff *= Clamp(projectedOffset, -1.0, 1.0);
+            }
+            else
+            {
+                offsetDiff += (maxvector - Math.Abs(modifiedCurRecoil));
+                baseDiff = 0.0;
+            }
+            offsetDiff *= Clamp(newRecoilOffset, -1.0, 1.0);
+            newRecoilOffset = Math.Floor(baseDiff + (offsetDiff * maxRatio));
+        }
+
+        return Math.Floor(newRecoilOffset);
     }
 
     /// <summary>
@@ -1427,12 +1518,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// </summary>
     /// <param name="receiver">Receiver</param>
     /// <param name="RecoilPercentage">all Recoil modifiers</param>
-    /// <returns>1:HipRecoil 2:ZoomRecoil</returns>
-    public static (double RecoilHip, double RecoilZoom) CalculateRecoil(BLRItem receiver, double RecoilPercentage)
+    /// <param name="isTightAim">Whether scoped in or not</param>
+    /// <returns>Recoil</returns>
+    public static double CalculateRecoil(BLREditItem receiver, double RecoilPercentage, bool isTightAim)
     {
+        double Rad2Deg = 180.0 / Math.PI;
+        double Rad2URot = 10430.3783505;
+
         double allRecoil = Percentage(RecoilPercentage);
-        double recoilModifier;
         double alpha = Math.Abs(allRecoil);
+        double recoilModifier;
         if (allRecoil > 0)
         {
             recoilModifier = Lerp(receiver?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, receiver?.WeaponStats?.ModificationRangeRecoil.Y ?? 0, alpha);
@@ -1441,69 +1536,75 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         {
             recoilModifier = Lerp(receiver?.WeaponStats?.ModificationRangeRecoil.Z ?? 0, receiver?.WeaponStats?.ModificationRangeRecoil.X ?? 0, alpha);
         }
+
         if ((receiver?.WeaponStats?.MagSize ?? 0) > 0)
         {
-            double averageShotCount = Math.Min(receiver?.WeaponStats?.MagSize ?? 0, 15.0f);
+            double randX = 0.25;                                            // 0.25 in place of X's Rand(0,1)-0.5
+            double randY = Math.Abs(Math.Sqrt(0.5 - (randX*randX)) * 0.25); // 0.25 in place of Y's Rand(0,1)-0.5
+
+            double multiplier = 1.0;
+            if (isTightAim)
+            {
+                multiplier = (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0.5) * 0.8; // NOTE: the 0.8 zoom multiply did not exist in preparity
+            }
+
+            double accumExponent = receiver?.WeaponStats?.RecoilAccumulation ?? 0;
+            if (accumExponent > 1.0)
+            {
+                accumExponent = ((accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0)) + 1.0;
+            }
+
+            double averageShotCount = Math.Min(receiver?.WeaponStats?.MagSize ?? 0, 15.0);
             Vector3 averageRecoil = new(0, 0, 0);
 
             for (int shot = 1; shot <= averageShotCount; shot++)
             {
                 Vector3 newRecoil = new(0, 0, 0)
                 {
-                    X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * 0.5f / 2.0f, // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and 0.0/0.3535 range respectively
-                    Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * 0.3535f
+                    // in the recoil, recoil vector is actually a multiplier on a random X and Y value in the -0.5/0.5 and roughly 0.0/0.3535 range respectively
+                    // NOTE: in preparity, the order of operations for the raw offset go (RandXY + RecoilVectorOffset[]) * RecoilSizeVector
+                    // NOTE: in parity, the order of operations for the raw offset go (RandXY * RecoilSizeVector) + RecoilVectorOffset[]
+                    X = (receiver?.WeaponStats?.RecoilVector.X ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.X ?? 0) * (float)randX,
+                    Y = (receiver?.WeaponStats?.RecoilVector.Y ?? 0) * (receiver?.WeaponStats?.RecoilVectorMultiplier.Y ?? 0) * (float)randY
                 };
 
-                double accumExponent = receiver?.WeaponStats?.RecoilAccumulation ?? 0;
-                if (accumExponent > 1)
+                // TODO: RecoilVectorOffset[]
+
+                double adjustedShot = shot;
+                if (receiver?.WeaponStats?.Burst > 0)
                 {
-                    accumExponent = (accumExponent - 1.0) * (receiver?.WeaponStats?.RecoilAccumulationMultiplier ?? 0) + 1.0; // Apparently this is how they apply the accumulation multiplier in the actual recoil
+                    adjustedShot = 1.0 + (Math.Floor(adjustedShot) / Math.Max(receiver?.WeaponStats?.Burst ?? 0,1.0));
                 }
+                double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot - 1.0, accumExponent);
+                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(adjustedShot + 0.0, accumExponent);
+                double deltaRecoil = currentMultiplier - previousMultiplier;
+                double totalRecoil = multiplier * deltaRecoil;
+                newRecoil *= (float)totalRecoil * (float)recoilModifier;
 
-                double previousMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / (receiver?.WeaponStats?.Burst ?? 0), accumExponent);
-                double currentMultiplier = (receiver?.WeaponStats?.RecoilSize ?? 0) * Math.Pow(shot / (receiver?.WeaponStats?.Burst ?? 0) + 1.0f, accumExponent);
-                double multiplier = currentMultiplier - previousMultiplier;
-                newRecoil *= (float)multiplier;
-                averageRecoil += newRecoil;
+                double minRecoilMult = 0.9 + (receiver?.WeaponStats?.MinRecoilMultiplier ?? 0.1); // adding 0.9 to disable it for now
+                averageRecoil.Y += (float)ClampRecoilURot(averageRecoil.Y, newRecoil.Y * Rad2URot, (receiver?.WeaponStats?.MaxRecoilVector.Y ?? 0.04f) * Rad2URot, (receiver?.WeaponStats?.MinRecoilVector.Y ?? 0.16f) * Rad2URot, minRecoilMult, 1.0);
+                averageRecoil.X += (float)ClampRecoilURot(averageRecoil.X, newRecoil.X * Rad2URot, (receiver?.WeaponStats?.MaxRecoilVector.X ?? 0.025f) * Rad2URot, (receiver?.WeaponStats?.MinRecoilVector.X ?? 0.1f) * Rad2URot, minRecoilMult, 1.0);
             }
-
-            // Magic numbers because I can't yet figure out the weird and overcomplicated clamping system, these gun's set Min and MaxWeaponRecoil values cause more overall recoil than their other values suggest
-            // So it might be a bit messy here until I figure it out (luckily many guns use the default values so I can ignore them)
-            if (receiver?.UID == 40011) // LMG
-            {
-                averageRecoil.Y *= 1.1f;
-            }
-            else if (receiver?.UID == 40014 || receiver?.UID == 40007 || receiver?.UID == 40008) // LMGR - BAR - CR
-            {
-                averageRecoil.Y *= 1.3f;
-            }
-            else if (receiver?.UID == 40021 || receiver?.UID == 40019 || receiver?.UID == 40015 || receiver?.UID == 40005 || receiver?.UID == 40002) // Snub - AMR - BLP - Shotgun - Revolver
-            {
-                averageRecoil.Y *= 1.5f;
-            }
-            else
-            {
-                averageRecoil.Y *= 1.005f;
-            }
+            averageRecoil /= (float)Rad2URot; // convert back to radians from URotation
 
             if (averageShotCount > 0)
             {
                 averageRecoil /= (float)averageShotCount;
             }
-            if ((receiver?.WeaponStats?.ROF ?? 0) > 0 && (receiver?.WeaponStats?.ApplyTime ?? 0) > 60 / (receiver?.WeaponStats?.ROF ?? 999))
+            if ((receiver?.WeaponStats?.ROF ?? 0) > 0 && (receiver?.WeaponStats?.ApplyTime ?? 0) > 60 / (receiver?.WeaponStats?.ROF ?? 600))
             {
-                averageRecoil *= (float)(60 / ((receiver?.WeaponStats?.ROF ?? 0) * (receiver?.WeaponStats?.ApplyTime ?? 0)));
+                averageRecoil *= (float)(60 / ((receiver?.WeaponStats?.ROF ?? 600) * (receiver?.WeaponStats?.ApplyTime ?? 0)));
             }
-            double recoil = averageRecoil.Length() * recoilModifier;
-            recoil *= 180 / Math.PI;
+            double recoil = averageRecoil.Length();
+            recoil *= Rad2Deg;
 
-            return (RecoilHip: recoil,
-                    RecoilZoom: recoil * (receiver?.WeaponStats?.RecoilZoomMultiplier ?? 0) * 0.8D);
+            return recoil;
         }
         else
         {
-            return (RecoilHip: 0,
-                    RecoilZoom: 0);
+            double recoil = (receiver?.WeaponStats?.RecoilSize ?? 0);
+            recoil *= Rad2Deg;
+            return recoil;
         }
     }
 
@@ -1512,8 +1613,8 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     /// </summary>
     /// <param name="receiver">Receiver</param>
     /// <param name="DamagePercentage">all raw Damage modifiers</param>
-    /// <returns></returns>
-    public static (double DamageIdeal, double DamageMax) CalculateDamage(BLRItem receiver, double DamagePercentage)
+    /// <returns>1:Damage 2:Damage at max range</returns>
+    public static (double DamageIdeal, double DamageMax) CalculateDamage(BLREditItem receiver, double DamagePercentage)
     {
         double allDamage = Percentage(DamagePercentage);
         double damageModifier;
@@ -1527,11 +1628,30 @@ public sealed class BLRWeapon : INotifyPropertyChanged
             damageModifier = Lerp(receiver?.WeaponStats?.ModificationRangeDamage.Z ?? 0, receiver?.WeaponStats?.ModificationRangeDamage.X ?? 0, alpha);
         }
 
-        return (DamageIdeal: damageModifier,
-                DamageMax: damageModifier * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d));
+        double outDamage = Math.Round(damageModifier + 0.00001, MidpointRounding.AwayFromZero);
+        double outDamageFar = Math.Round((damageModifier * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d)) + 0.00001, MidpointRounding.AwayFromZero);
+
+        return (DamageIdeal: outDamage,
+                DamageMax: outDamageFar);
     }
 
-    public static BLRItem? CompareItemRating(BLRItem? item1, BLRItem? item2)
+    /// <summary>
+    /// Calculates the damage for weapon sorting
+    /// </summary>
+    /// <param name="receiver">Receiver</param>
+    /// <returns>Sorted damage</returns>
+    public static double CalculateSortedDamage(BLREditItem receiver)
+    {
+        double baseDamage = receiver?.WeaponStats?.ModificationRangeDamage.Z ?? 0;
+        double minDamage = baseDamage * (receiver?.WeaponStats?.MaxRangeDamageMultiplier ?? 0.1d);
+
+        // Adding a small amount of the min damage at range to account for possible future cases of identical damages between receivers but differing range damage multipliers
+        double sortedDamage = (Math.Round(minDamage + 0.00001, MidpointRounding.AwayFromZero) / 100.0) + baseDamage;
+
+        return sortedDamage;
+    }
+
+    public static BLREditItem? CompareItemRating(BLREditItem? item1, BLREditItem? item2)
     {
         if ((item1?.WeaponModifiers?.Rating ?? -1) >= (item2?.WeaponModifiers?.Rating ?? -1))
         {
@@ -1543,11 +1663,11 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         }
     }
 
-    public static string CompareItemDescriptor1(BLRItem? itembarrel, BLRItem? itemmag)
+    public static string CompareItemDescriptor1(BLREditItem? itembarrel, BLREditItem? itemmag)
     {
         return CompareItemRating(itemmag, itembarrel)?.DescriptorName ?? "Standard";
     }
-    public static string CompareItemDescriptor2(BLRItem? itemstock, BLRItem? itemmuzzle, BLRItem? itemscope)
+    public static string CompareItemDescriptor2(BLREditItem? itemstock, BLREditItem? itemmuzzle, BLREditItem? itemscope)
     {
         var item = CompareItemRating(itemscope, itemstock);
         item = CompareItemRating(item, itemmuzzle);
@@ -1563,11 +1683,15 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
     public static double Percentage(double input)
     {
-        return Clamp(input / 100.0D, -1.0D, 1.0D);
+        return Clamp(input / 100.0, -1.0, 1.0);
     }
     public static double Lerp(double start, double target, double time)
     {
-        return start * (1.0d - time) + target * time;
+        return start * (1.0 - time) + target * time;
+    }
+    public static double Lerp2(double start, double target, double alpha)
+    {
+        return start + (target - start) * Clamp(alpha,0.0,1.0);
     }
     public static double Clamp(double input, double min, double max)
     {
@@ -1610,7 +1734,7 @@ public sealed class BLRWeapon : INotifyPropertyChanged
     {
         var FilteredReceivers = ImportSystem.GetItemArrayOfType(IsPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY).Where(ItemFilters.PartialFilter).ToArray();
         
-        BLRItem receiver = FilteredReceivers[rng.Next(0, FilteredReceivers.Length)];
+        BLREditItem receiver = FilteredReceivers[rng.Next(0, FilteredReceivers.Length)];
 
         var FilteredBarrels = ImportSystem.GetItemArrayOfType(ImportSystem.BARRELS_CATEGORY).Where(o => o.IsValidFor(receiver, Loadout?.IsAdvanced.Is ?? false)).ToArray();
         var FilteredScopes = ImportSystem.GetItemArrayOfType(ImportSystem.SCOPES_CATEGORY).Where(o => o.IsValidFor(receiver, Loadout?.IsAdvanced.Is ?? false)).ToArray();
@@ -1623,42 +1747,42 @@ public sealed class BLRWeapon : INotifyPropertyChanged
         var FilteredGrips = ImportSystem.GetItemArrayOfType(ImportSystem.GRIPS_CATEGORY).Where(o=> o.IsValidFor(receiver, Loadout?.IsAdvanced.Is ?? false)).ToArray();
         var FilteredSkins = ImportSystem.GetItemArrayOfType(ImportSystem.PRIMARY_SKIN_CATEGORY).Where(o => o.IsValidFor(receiver, Loadout?.IsAdvanced.Is ?? false)).ToArray();
 
-        BLRItem? barrel = null;
+        BLREditItem? barrel = null;
         if (FilteredBarrels.Length > 0)
         {
             barrel = FilteredBarrels[rng.Next(0, FilteredBarrels.Length)];
         }
-        BLRItem? scope = null;
+        BLREditItem? scope = null;
         if (FilteredScopes.Length > 0)
         {
             scope = FilteredScopes[rng.Next(0, FilteredScopes.Length)];
         }
-        BLRItem? magazine = null;
+        BLREditItem? magazine = null;
         if (FilteredMagazines.Length > 0)
         {
             magazine = FilteredMagazines[rng.Next(0, FilteredMagazines.Length)];
         }
-        BLRItem? stock = null;
+        BLREditItem? stock = null;
         if (FilteredStocks.Length > 0)
         {
             stock = FilteredStocks[rng.Next(0, FilteredStocks.Length)];
         }
-        BLRItem? muzzle = null;
+        BLREditItem? muzzle = null;
         if (FilteredMuzzles.Length > 0)
         {
             muzzle = FilteredMuzzles[rng.Next(0, FilteredMuzzles.Length)];
         }
-        BLRItem? hanger = null;
+        BLREditItem? hanger = null;
         if (FilteredHangers.Length > 0 && IsPrimary)
         {
             hanger = FilteredHangers[rng.Next(0, FilteredHangers.Length)];
         }
-        BLRItem? camo = null;
+        BLREditItem? camo = null;
         if (FilteredCamos.Length > 0)
         {
             camo = FilteredCamos[rng.Next(0, FilteredCamos.Length)];
         }
-        BLRItem? ammo = null;
+        BLREditItem? ammo = null;
         if (FilteredAmmo.Length > 0)
         {
             if ((magazine is not null && !magazine.ItemNameContains("Toxic", "Incendiary", "Electro", "Explosive", "Magnum")) || magazine is null)
@@ -1666,15 +1790,18 @@ public sealed class BLRWeapon : INotifyPropertyChanged
                 ammo = FilteredAmmo[rng.Next(0, FilteredAmmo.Length)];
             }
         }
-        BLRItem? grip = null;
+        BLREditItem? grip = null;
         if (FilteredGrips.Length > 0)
         { 
             grip = FilteredGrips[rng.Next(0, FilteredGrips.Length)];
         }
-        BLRItem? skin = null;
+        BLREditItem? skin = null;
         if (FilteredSkins.Length > 0 && IsPrimary)
         {
-            skin = FilteredSkins[rng.Next(0, FilteredSkins.Length)];
+            // Temporarily disabling weapon skin randomization, skins are currently broken and inconvenient to manually remove on each randomization (especially with people not knowing how to begin with)
+            // Skins kinda defeat the fun of randomization anyway and have limited choices on most guns so I'm open to it staying like this for now
+
+            //skin = FilteredSkins[rng.Next(0, FilteredSkins.Length)];
         }
         //TODO: Use the text filter to theme Randomization where possible(when the list is not empty after filtering).
 
@@ -1707,16 +1834,16 @@ public sealed class BLRWeapon : INotifyPropertyChanged
 
         if (Receiver is null) { message += $"\n\t\tNo Receiver Equipped"; return false; }
         if (!(Receiver?.IsValidFor(null) ?? false)) { valid = false; attachment += $"\n\t\tReceiver is invalid"; }
-        if (!BLRItem.IsValidFor(Barrel, Receiver)) { valid = false; attachment += $"\n\t\tBarrel is invalid"; }
-        if (!BLRItem.IsValidFor(Muzzle, Receiver)) { valid = false; attachment += $"\n\t\tMuzzle is invalid"; }
-        if (!BLRItem.IsValidFor(Grip, Receiver)) { valid = false; attachment += $"\n\t\tGrip is invalid"; }
-        if (!BLRItem.IsValidFor(Camo, Receiver)) { valid = false; attachment += $"\n\t\tCamo is invalid"; }
-        if (!BLRItem.IsValidFor(Magazine, Receiver)) { valid = false; attachment += $"\n\t\tMagazine is invalid"; }
-        if (!BLRItem.IsValidFor(Ammo, Receiver)) { valid = false; attachment += $"\n\t\tAmmo is invalid"; }
-        if (!BLRItem.IsValidFor(Tag, Receiver)) { valid = false; attachment += $"\n\t\tTag is invalid"; }
-        if (!BLRItem.IsValidFor(Stock, Receiver)) { valid = false; attachment += $"\n\t\tStock is invalid"; }
-        if (!BLRItem.IsValidFor(Scope, Receiver)) { valid = false; attachment += $"\n\t\tScope is invalid"; }
-        if (!BLRItem.IsValidFor(Skin, Receiver)) { valid = false; attachment += $"\n\t\tSkin is invalid"; }
+        if (!BLREditItem.IsValidFor(Barrel, Receiver)) { valid = false; attachment += $"\n\t\tBarrel is invalid"; }
+        if (!BLREditItem.IsValidFor(Muzzle, Receiver)) { valid = false; attachment += $"\n\t\tMuzzle is invalid"; }
+        if (!BLREditItem.IsValidFor(Grip, Receiver)) { valid = false; attachment += $"\n\t\tGrip is invalid"; }
+        if (!BLREditItem.IsValidFor(Camo, Receiver)) { valid = false; attachment += $"\n\t\tCamo is invalid"; }
+        if (!BLREditItem.IsValidFor(Magazine, Receiver)) { valid = false; attachment += $"\n\t\tMagazine is invalid"; }
+        if (!BLREditItem.IsValidFor(Ammo, Receiver)) { valid = false; attachment += $"\n\t\tAmmo is invalid"; }
+        if (!BLREditItem.IsValidFor(Tag, Receiver)) { valid = false; attachment += $"\n\t\tTag is invalid"; }
+        if (!BLREditItem.IsValidFor(Stock, Receiver)) { valid = false; attachment += $"\n\t\tStock is invalid"; }
+        if (!BLREditItem.IsValidFor(Scope, Receiver)) { valid = false; attachment += $"\n\t\tScope is invalid"; }
+        if (!BLREditItem.IsValidFor(Skin, Receiver)) { valid = false; attachment += $"\n\t\tSkin is invalid"; }
 
         if (valid)
             message += " ✔️" + attachment;
