@@ -61,7 +61,7 @@ jobs:
 
       - name: Get Files
         id: files
-        run: echo "FILES=$(cat BLREdit\bin\Release\net48\packaged\semver.txt)" >> "$ENV:GITHUB_OUTPUT"
+        run: echo "FILES=$(cat BLREdit\bin\Release\net48\packaged\files.txt)" >> "$ENV:GITHUB_OUTPUT"
 
       - name: Print files
         env:
