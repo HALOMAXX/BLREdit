@@ -37,13 +37,15 @@ jobs:
         run: msbuild $env:Solution_Name /p:Configuration=Release /p:DeployOnBuild=true
 
       - name: Package App
-        run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent
+        run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent | tee log.txt
 
       - name: Upload Logs Artifact
         uses: actions/upload-artifact@v4
         with:
           name: log
           path: BLREdit\bin\Release\net48\logs
+
+      - run: cat log.txt
 
 #      - name: ListFiles
 #        shell: pwsh
