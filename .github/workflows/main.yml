@@ -47,8 +47,10 @@ jobs:
 
       - name: Publish Release
         uses: softprops/action-gh-release@v2.2.1
+        if: github.branch == 'release'
         with:
           draft: true
+          prerelease: false
           files: |
             BLREdit.zip
             Assets.zip
@@ -58,3 +60,17 @@ jobs:
             patches.zip
             textures.zip            
           
+      - name: Publish Beta
+        uses: softprops/action-gh-release@v2.2.1
+        if: github.branch == 'beta'
+        with:
+          draft: true
+          prerelease: true
+          files: |
+            BLREdit.zip
+            Assets.zip
+            crosshairs.zip
+            dlls.zip
+            json.zip
+            patches.zip
+            textures.zip       
