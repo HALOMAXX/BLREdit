@@ -66,7 +66,7 @@ jobs:
           generate_release_notes: true
           draft: true
           prerelease: false
-          tag_name: ${{ setps.semver.outputs.next }}
+          tag_name: ${{ steps.semver.outputs.next }}
           files: |
             BLREdit\bin\Release\net48\packaged\BLREdit.zip
             BLREdit\bin\Release\net48\packaged\Assets.zip
@@ -83,7 +83,7 @@ jobs:
           generate_release_notes: true
           draft: true
           prerelease: true
-          tag_name: ${{ setps.semver.outputs.next }}
+          tag_name: ${{ steps.semver.outputs.next }}
           files: |
             BLREdit\bin\Release\net48\packaged\BLREdit.zip
             BLREdit\bin\Release\net48\packaged\Assets.zip
