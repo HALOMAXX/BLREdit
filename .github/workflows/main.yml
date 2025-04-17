@@ -80,7 +80,10 @@ jobs:
           prerelease: false
           tag_name: ${{ env.VERSION }}
           files: |
-            ${{ env.FILES }}
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\BLREdit.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\Assets.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\json.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\textures.zip
           
       - name: Publish Beta
         uses: softprops/action-gh-release@v2.2.1
@@ -94,4 +97,7 @@ jobs:
           prerelease: true
           tag_name: ${{ env.VERSION }}
           files: |
-            ${{ env.FILES }}
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\BLREdit.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\Assets.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\json.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\textures.zip

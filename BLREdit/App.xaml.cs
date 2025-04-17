@@ -699,16 +699,6 @@ public partial class App : System.Windows.Application
             LoggingSystem.Log("failed to write smever.txt");
         }
 
-        try
-        {
-            File.WriteAllText($"{IOResources.PACKAGE_DIR}\\files.txt", $"{exeZip.Info.FullName}\n{assetZip.Info.FullName}\n{(json ? $"{jsonZip.Info.FullName}\n" : "")}{(dlls ? $"{dllsZip.Info.FullName}\n" : "")}{(textures ? $"{texturesZip.Info.FullName}\n" : "")}{(crosshairs ? $"{crosshairsZip.Info.FullName}\n" : "")}{(patches ? $"{patchesZip.Info.FullName}\n" : "")}");
-            LoggingSystem.Log("create files.txt");
-        }
-        catch
-        {
-            LoggingSystem.Log("failed to write files.txt");
-        }
-
         SetUpdateFilePath();
     }
 
