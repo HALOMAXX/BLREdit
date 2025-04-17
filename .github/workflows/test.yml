@@ -29,4 +29,9 @@ jobs:
         with:
           generate_release_notes: true
           draft: true
-          files: D:\a\BLREdit\BLREdit\BLREdit.sln
+          files: |
+            D:\a\BLREdit\BLREdit\BLREdit.sln
+            \a\BLREdit\BLREdit\BLREdit.sln
+            a\BLREdit\BLREdit\BLREdit.sln
+            \BLREdit\BLREdit\BLREdit.sln
+            BLREdit\BLREdit\BLREdit.sln
