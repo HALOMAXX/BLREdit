@@ -27,6 +27,7 @@ jobs:
       - name: Get Version
         run: |
           echo "VERSION=$(cat BLREdit\semver.txt)" >> $GITHUB_ENV
+          echo next version $VERSION
 
       - name: Print semver
-        run: echo $VERSION
+        run: echo next version $VERSION
