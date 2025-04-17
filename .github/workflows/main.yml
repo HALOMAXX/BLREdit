@@ -79,7 +79,8 @@ jobs:
           draft: true
           prerelease: false
           tag_name: ${{ env.VERSION }}
-          files: ${{ env.FILES }}
+          files: |
+            ${{ env.FILES }}
           
       - name: Publish Beta
         uses: softprops/action-gh-release@v2.2.1
@@ -92,4 +93,5 @@ jobs:
           draft: true
           prerelease: true
           tag_name: ${{ env.VERSION }}
-          files: ${{ env.FILES }}
+          files: |
+            ${{ env.FILES }}
