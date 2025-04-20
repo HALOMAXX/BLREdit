@@ -16,12 +16,12 @@ public sealed class BLRProfile
     #endregion Event
 
     public UIBool IsAdvanced { get; set; } = new UIBool(false);
-    public BLRLoadout Loadout1 { get; set; }
-    public BLRLoadout Loadout2 { get; set; }
-    public BLRLoadout Loadout3 { get; set; }
+    public BLREditLoadout Loadout1 { get; set; }
+    public BLREditLoadout Loadout2 { get; set; }
+    public BLREditLoadout Loadout3 { get; set; }
 
 
-    private bool isChanged = false;
+    private bool isChanged;
     [JsonIgnore] public bool IsChanged { 
         get { return isChanged; } 
         set { isChanged = value; OnPropertyChanged(); } }
@@ -132,13 +132,13 @@ public interface IBLRLoadout
     public event EventHandler? WasWrittenTo;
     public IBLRWeapon GetPrimaryWeaponInterface();
     public IBLRWeapon GetSecondaryWeaponInterface();
-    public void Read(BLRLoadout loadout);
-    public void Write(BLRLoadout loadout);
+    public void Read(BLREditLoadout loadout);
+    public void Write(BLREditLoadout loadout);
 }
 
 public interface IBLRWeapon
 {
     public event EventHandler? WasWrittenTo;
-    public void Read(BLRWeapon weapon);
-    public void Write(BLRWeapon weapon);
+    public void Read(BLREditWeapon weapon);
+    public void Write(BLREditWeapon weapon);
 }

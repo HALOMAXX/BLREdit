@@ -30,7 +30,7 @@ public partial class ClientListControl : UserControl
     }
 
     Point StartPoint;
-    bool isDragging = false;
+    bool isDragging;
     private void ClientListView_PreviewMouseMove(object sender, MouseEventArgs e)
     {
         if (e.LeftButton == MouseButtonState.Pressed && !isDragging)

@@ -34,7 +34,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
     }
     #endregion Events
 
-    private BLRWeapon? CurrentWeapon { get; set; }
+    private BLREditWeapon? CurrentWeapon { get; set; }
 
     private Visibility receiverVisibility = Visibility.Visible;
     public Visibility ReceiverVisibility { get { return receiverVisibility; } private set { receiverVisibility = value; OnPropertyChanged(); } }
@@ -152,7 +152,7 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
     private void Receiver_DataContextChanged(object? sender, DependencyPropertyChangedEventArgs e)
     {
-        if (DataContext is BLRWeapon weapon && weapon.Receiver is not null && weapon.Receiver.SupportedMods is not null)
+        if (DataContext is BLREditWeapon weapon && weapon.Receiver is not null && weapon.Receiver.SupportedMods is not null)
         {
             if(CurrentWeapon is not null && CurrentWeapon.Loadout is not null) CurrentWeapon.Loadout.IsAdvanced.PropertyChanged -= SettingsChanged;
 
@@ -221,6 +221,6 @@ public sealed partial class WeaponControl : UserControl, INotifyPropertyChanged
 
     private void Randomize_Click(object sender, RoutedEventArgs e)
     {
-        if (DataContext is BLRWeapon weapon) { weapon.Randomize(); }
+        if (DataContext is BLREditWeapon weapon) { weapon.Randomize(); }
     }
 }

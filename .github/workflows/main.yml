@@ -26,7 +26,7 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-      
+        
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v2
         
@@ -37,52 +37,67 @@ jobs:
         run: msbuild $env:Solution_Name /p:Configuration=Release /p:DeployOnBuild=true
 
       - name: Package App
-        run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent
+        run: BLREdit\bin\Release\net48\BLREdit.exe -packageSilent | tee log.txt
 
       - name: Upload Logs Artifact
         uses: actions/upload-artifact@v4
         with:
           name: log
           path: BLREdit\bin\Release\net48\logs
-        
-      - name: Upload BLREdit Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: BLREdit
-          path: BLREdit\bin\Release\net48\packaged\BLREdit.exe
-        
-      - name: Upload Assets Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Asstes
-          path: BLREdit\bin\Release\net48\packaged\Assets
 
-      - name: Upload DLLs Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dlls
-          path: BLREdit\bin\Release\net48\packaged\dlls
+#      - name: ListFiles
+#        shell: pwsh
+#        run: |
+#          Get-ChildItem -Recurse
 
-      - name: Upload JSON Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: json
-          path: BLREdit\bin\Release\net48\packaged\json
+      - name: Get Version
+        id: semver
+        run: echo "VERSION=$(cat BLREdit\bin\Release\net48\packaged\semver.txt)" >> "$ENV:GITHUB_OUTPUT"
 
-      - name: Upload Icons Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: textures
-          path: BLREdit\bin\Release\net48\packaged\textures
+      - name: Print semver
+        env:
+          VERSION: ${{ steps.semver.outputs.VERSION }}
+        run: echo ${{ env.VERSION }}
 
-      - name: Upload Scopes Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: crosshairs
-          path: BLREdit\bin\Release\net48\packaged\crosshairs
+      # - name: Get Files
+      #   id: files
+      #   run: echo "FILES=$(cat BLREdit\bin\Release\net48\packaged\files.txt)" >> "$ENV:GITHUB_OUTPUT"
 
-      - name: Upload Patches Artifact
-        uses: actions/upload-artifact@v4
+      # - name: Print files
+      #   env:
+      #     FILES: ${{ steps.files.outputs.FILES }}
+      #   run: echo ${{ env.FILES }}
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2.2.1
+        env:
+          VERSION: ${{ steps.semver.outputs.VERSION }}
+          FILES: ${{ steps.files.outputs.FILES }}
+        if: contains(github.ref, 'release')
         with:
-          name: patches
-          path: BLREdit\bin\Release\net48\packaged\patches
+          generate_release_notes: true
+          draft: true
+          prerelease: false
+          tag_name: ${{ env.VERSION }}
+          files: |
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\BLREdit.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\Assets.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\json.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\textures.zip
+          
+      - name: Publish Beta
+        uses: softprops/action-gh-release@v2.2.1
+        env:
+          VERSION: ${{ steps.semver.outputs.VERSION }}
+          FILES: ${{ steps.files.outputs.FILES }}
+        if: contains(github.ref, 'beta')
+        with:
+          generate_release_notes: true
+          draft: true
+          prerelease: true
+          tag_name: ${{ env.VERSION }}
+          files: |
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\BLREdit.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\Assets.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\json.zip
+            D:\a\BLREdit\BLREdit\BLREdit\bin\Release\net48\packaged\textures.zip

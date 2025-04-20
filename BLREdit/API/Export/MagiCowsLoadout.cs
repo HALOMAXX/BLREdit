@@ -97,31 +97,31 @@ public sealed class MagiCowsLoadout : IBLRLoadout
     public static MagiCowsLoadout DefaultLoadout1 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.AssaultRifle.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
     public static MagiCowsLoadout DefaultLoadout2 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.SubmachineGun.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
     public static MagiCowsLoadout DefaultLoadout3 { get; } = new MagiCowsLoadout() { Primary = MagiCowsWeapon.DefaultWeapons.BoltActionRifle.Clone(), Secondary = MagiCowsWeapon.DefaultWeapons.LightPistol.Clone() };
-    public BLRItem? GetTacticalBLRItem()
+    public BLREditItem? GetTacticalBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.TACTICAL_CATEGORY, Tactical);
     }
-    public BLRItem? GetHelmetBLRItem()
+    public BLREditItem? GetHelmetBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.HELMETS_CATEGORY, Helmet);
     }
-    public BLRItem? GetUpperBodyBLRItem()
+    public BLREditItem? GetUpperBodyBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, UpperBody);
     }
-    public BLRItem? GetLowerBodyBLRItem()
+    public BLREditItem? GetLowerBodyBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, LowerBody);
     }
-    public BLRItem? GetCamoBLRItem()
+    public BLREditItem? GetCamoBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, Camo);
     }
-    public BLRItem? GetSkinBLRItem()
+    public BLREditItem? GetSkinBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.AVATARS_CATEGORY, Skin);
     }
-    public BLRItem? GetTrophyBLRItem()
+    public BLREditItem? GetTrophyBLRItem()
     {
         return ImportSystem.GetItemByIDAndType(ImportSystem.BADGES_CATEGORY, Trophy);
     }
@@ -136,7 +136,7 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         return Secondary;
     }
 
-    public void Read(BLRLoadout loadout)
+    public void Read(BLREditLoadout loadout)
     {
         if (loadout is null) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
@@ -179,7 +179,7 @@ public sealed class MagiCowsLoadout : IBLRLoadout
         UndoRedoSystem.RestoreBlockedEvents();
     }
 
-    public void Write(BLRLoadout loadout)
+    public void Write(BLREditLoadout loadout)
     {
         if (loadout is null) return;
         Primary.Write(loadout.Primary);
@@ -187,23 +187,23 @@ public sealed class MagiCowsLoadout : IBLRLoadout
 
         IsFemale = loadout.IsFemale.Is;
 
-        Tactical = BLRItem.GetMagicCowsID(loadout.Tactical);
-        Helmet = BLRItem.GetMagicCowsID(loadout.Helmet);
-        UpperBody = BLRItem.GetMagicCowsID(loadout.UpperBody);
-        LowerBody = BLRItem.GetMagicCowsID(loadout.LowerBody);
+        Tactical = BLREditItem.GetMagicCowsID(loadout.Tactical);
+        Helmet = BLREditItem.GetMagicCowsID(loadout.Helmet);
+        UpperBody = BLREditItem.GetMagicCowsID(loadout.UpperBody);
+        LowerBody = BLREditItem.GetMagicCowsID(loadout.LowerBody);
 
-        Camo = BLRItem.GetMagicCowsID(loadout.BodyCamo);
-        Skin = BLRItem.GetMagicCowsID(loadout.Avatar, 99);
-        Trophy = BLRItem.GetMagicCowsID(loadout.Trophy);
+        Camo = BLREditItem.GetMagicCowsID(loadout.BodyCamo);
+        Skin = BLREditItem.GetMagicCowsID(loadout.Avatar, 99);
+        Trophy = BLREditItem.GetMagicCowsID(loadout.Trophy);
 
 
-        Gear1 = BLRItem.GetMagicCowsID(loadout.Gear1);
-        Gear2 = BLRItem.GetMagicCowsID(loadout.Gear2);
-        Gear3 = BLRItem.GetMagicCowsID(loadout.Gear3);
-        Gear4 = BLRItem.GetMagicCowsID(loadout.Gear4);
+        Gear1 = BLREditItem.GetMagicCowsID(loadout.Gear1);
+        Gear2 = BLREditItem.GetMagicCowsID(loadout.Gear2);
+        Gear3 = BLREditItem.GetMagicCowsID(loadout.Gear3);
+        Gear4 = BLREditItem.GetMagicCowsID(loadout.Gear4);
 
-        Taunts = [BLRItem.GetMagicCowsID(loadout.Taunt1, 0), BLRItem.GetMagicCowsID(loadout.Taunt2, 1), BLRItem.GetMagicCowsID(loadout.Taunt3, 2), BLRItem.GetMagicCowsID(loadout.Taunt4, 3), BLRItem.GetMagicCowsID(loadout.Taunt5, 4), BLRItem.GetMagicCowsID(loadout.Taunt6, 5), BLRItem.GetMagicCowsID(loadout.Taunt7, 6), BLRItem.GetMagicCowsID(loadout.Taunt8, 7)];
-        Depot = [BLRItem.GetMagicCowsID(loadout.Depot1), BLRItem.GetMagicCowsID(loadout.Depot2, 1), BLRItem.GetMagicCowsID(loadout.Depot3, 2), BLRItem.GetMagicCowsID(loadout.Depot4, 3), BLRItem.GetMagicCowsID(loadout.Depot5, 3)];
+        Taunts = [BLREditItem.GetMagicCowsID(loadout.Taunt1, 0), BLREditItem.GetMagicCowsID(loadout.Taunt2, 1), BLREditItem.GetMagicCowsID(loadout.Taunt3, 2), BLREditItem.GetMagicCowsID(loadout.Taunt4, 3), BLREditItem.GetMagicCowsID(loadout.Taunt5, 4), BLREditItem.GetMagicCowsID(loadout.Taunt6, 5), BLREditItem.GetMagicCowsID(loadout.Taunt7, 6), BLREditItem.GetMagicCowsID(loadout.Taunt8, 7)];
+        Depot = [BLREditItem.GetMagicCowsID(loadout.Depot1), BLREditItem.GetMagicCowsID(loadout.Depot2, 1), BLREditItem.GetMagicCowsID(loadout.Depot3, 2), BLREditItem.GetMagicCowsID(loadout.Depot4, 3), BLREditItem.GetMagicCowsID(loadout.Depot5, 3)];
         if (WasWrittenTo is not null) { WasWrittenTo(loadout, EventArgs.Empty); }
     }
 

@@ -24,7 +24,7 @@ public sealed class MagiCowServerInfo : ServerInfo
     public string MatchStats { get { return $"Time: {GetTimeDisplay()}\nLeader: {GetScoreDisplay()}"; } }
 
 
-    public bool IsOnline { get; set; } = false;
+    public bool IsOnline { get; set; }
 
     private BLRMap? map;
     [JsonIgnore] public BLRMap? BLRMap

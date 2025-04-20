@@ -270,7 +270,7 @@ public class JsonGenericConverter<T> : JsonConverter<T>
     }
 }
 
-public sealed class JsonBLRItemConverter : JsonGenericConverter<BLRItem>
+public sealed class JsonBLRItemConverter : JsonGenericConverter<BLREditItem>
 {}
 
 public sealed class JsonBLRPawnModifiersConverter : JsonGenericConverter<BLRPawnModifiers>

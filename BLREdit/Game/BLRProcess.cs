@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BLREdit.Game;
 
@@ -52,8 +54,16 @@ public sealed class BLRProcess : INotifyPropertyChanged
                 break;
             case NotifyCollectionChangedAction.Add:
                 foreach (BLRProcess process in e.NewItems)
-                { 
-                    process.Start();
+                {
+                    try
+                    {
+                        process.Start();
+                    }
+                    catch (Exception error)
+                    {
+                        LoggingSystem.MessageLog($"Failed to start BlackLight: Retribution {(process.IsServer ? "Server" : "Client")}!\nReason: {error.Message}", "Failed to Start Client");
+                        RunningGames.Remove(process);
+                    }
                 }
                 break;
         }
@@ -72,6 +82,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
             FileName = Client.OriginalPath,
             Arguments = launchArgs
         };
+
         gameProcess = new()
         {
             EnableRaisingEvents = true,

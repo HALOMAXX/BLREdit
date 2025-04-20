@@ -150,7 +150,7 @@ namespace BLREdit.UI.Controls
             if (DataStorage.Loadouts is null || DataStorage.Loadouts.Count <= 0) { return; }
             foreach (var loadout in DataStorage.Loadouts)
             {
-                if (loadout.BLR is BLRLoadout l && l.LoadoutReport is LoadoutErrorReport report)
+                if (loadout.BLR is BLREditLoadout l && l.LoadoutReport is LoadoutErrorReport report)
                 {
                     if (!report.PrimaryReport.IsValid)
                     { 

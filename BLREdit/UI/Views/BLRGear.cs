@@ -7,17 +7,17 @@ namespace BLREdit.UI.Views;
 
 public sealed class BLRGear
 {
-    public BLRItem? Helmet { get; set; }
-    public BLRItem? UpperBody { get; set; }
-    public BLRItem? LowerBody { get; set; }
-    public BLRItem? Tactical { get; set; }
-    public BLRItem? Gear1 { get; set; }
-    public BLRItem? Gear2 { get; set; }
-    public BLRItem? Gear3 { get; set; }
-    public BLRItem? Gear4 { get; set; }
-    public BLRItem? BodyCamo { get; set; }
-    public BLRItem? Avatar { get; set; }
-    public BLRItem? Trophy { get; set; }
+    public BLREditItem? Helmet { get; set; }
+    public BLREditItem? UpperBody { get; set; }
+    public BLREditItem? LowerBody { get; set; }
+    public BLREditItem? Tactical { get; set; }
+    public BLREditItem? Gear1 { get; set; }
+    public BLREditItem? Gear2 { get; set; }
+    public BLREditItem? Gear3 { get; set; }
+    public BLREditItem? Gear4 { get; set; }
+    public BLREditItem? BodyCamo { get; set; }
+    public BLREditItem? Avatar { get; set; }
+    public BLREditItem? Trophy { get; set; }
     public bool IsFemale { get; set; }
     public bool IsBot { get; set; }
 }

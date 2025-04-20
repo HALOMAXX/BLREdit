@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
              xmlns:p="clr-namespace:BLREdit.Properties"
-             d:DataContext="{d:DesignInstance Type=views:BLRWeapon}"
+             d:DataContext="{d:DesignInstance Type=views:BLREditWeapon}"
              mc:Ignorable="d">
     <Border>
         <Grid>

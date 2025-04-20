@@ -8,7 +8,9 @@ public sealed class ModuleFilters
     {
         if (o is VisualProxyModule item)
         {
-            return item.RepositoryProxyModule.ProxyVersion == DataStorage.Settings.SelectedBLReviveVersion;
+            if (DataStorage.Settings.SelectedSDKType == "BLRevive" && item.RepositoryProxyModule.ProxyVersion == "BLRevive") { return true; } else if 
+                (DataStorage.Settings.SelectedSDKType == "Proxy" && item.RepositoryProxyModule.ProxyVersion != "BLRevive") { return true; } else
+                { return false; }
         }
         return false;
     }

@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace BLREdit.Export;
 
-public sealed class LoadoutManagerWeapon
+public sealed class ProxyLoadoutManagerWeapon
 {
     /// <summary>
     /// Contains the Index of the Receiver
@@ -67,41 +67,41 @@ public sealed class LoadoutManagerWeapon
     private static Dictionary<string, PropertyInfo> GetAllProperties()
     {
         var props = new Dictionary<string, PropertyInfo>();
-        var properties = typeof(LoadoutManagerWeapon).GetProperties().ToArray();
+        var properties = typeof(ProxyLoadoutManagerWeapon).GetProperties().ToArray();
         foreach (var prop in properties)
         { 
             props.Add(prop.Name, prop);
         }
         return props;
     }
-    public LoadoutManagerWeapon() { }
+    public ProxyLoadoutManagerWeapon() { }
 
     /// <summary>
     /// Creates a Loadout-Manager readable Weapon
     /// </summary>
     /// <param name="weapon"></param>
-    public LoadoutManagerWeapon(BLRWeapon weapon)
+    public ProxyLoadoutManagerWeapon(BLREditWeapon weapon)
     {
-        foreach (var part in BLRWeapon.WeaponPartInfo)
+        foreach (var part in BLREditWeapon.WeaponPartInfo)
         {
             switch (part.Name)
             {
                 case nameof(weapon.Tag):
-                    Properties["Hanger"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
+                    Properties["Hanger"].SetValue(this, BLREditItem.GetLMID((BLREditItem)part.GetValue(weapon)));
                     break;
                 case nameof(weapon.Camo):
-                    Properties["CamoIndex"].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
+                    Properties["CamoIndex"].SetValue(this, BLREditItem.GetLMID((BLREditItem)part.GetValue(weapon)));
                     break;
                 default:
-                    Properties[part.Name].SetValue(this, BLRItem.GetLMID((BLRItem)part.GetValue(weapon)));
+                    Properties[part.Name].SetValue(this, BLREditItem.GetLMID((BLREditItem)part.GetValue(weapon)));
                     break;
             }
         }
     }
 
-    public BLRWeapon GetWeapon(bool isPrimary)
+    public BLREditWeapon GetWeapon(bool isPrimary)
     {
-        return new BLRWeapon(isPrimary)
+        return new BLREditWeapon(isPrimary)
         {
             Receiver = ImportSystem.GetItemByLMIDAndType(isPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Receiver),
             Barrel = ImportSystem.GetItemByLMIDAndType(ImportSystem.BARRELS_CATEGORY, Barrel),

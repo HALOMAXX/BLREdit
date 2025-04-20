@@ -26,12 +26,12 @@ public static class HelperFunctions
         return Truth(flagsToCount, reports) == reports.Length;
     }
 
-    public static ItemReport ItemCheck(BLRItem? item, BLRItem? filter)
+    public static ItemReport ItemCheck(BLREditItem? item, BLREditItem? filter)
     {
-        return (BLRItem.IsValidFor(item, filter) ? ItemReport.Valid : ItemReport.Invalid) | (item is null ? ItemReport.Missing : ItemReport.None);
+        return (BLREditItem.IsValidFor(item, filter) ? ItemReport.Valid : ItemReport.Invalid) | (item is null ? ItemReport.Missing : ItemReport.None);
     }
 
-    public static ItemReport ItemCheck(BLRItem? item, bool duplicate, bool missing)
+    public static ItemReport ItemCheck(BLREditItem? item, bool duplicate, bool missing)
     {
         return ItemCheck(item, null) | (duplicate ? ItemReport.Duplicate : ItemReport.None) | (missing ? ItemReport.Missing : ItemReport.None);
     }

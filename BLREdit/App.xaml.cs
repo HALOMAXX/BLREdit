@@ -33,18 +33,23 @@ namespace BLREdit;
 public partial class App : System.Windows.Application
 {
     public static readonly BLREditVersion CurrentVersion = new($"v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}");
-    public static string RepositoryBaseURL { get; } = ThisAssembly.Git.RepositoryUrl.EndsWith(".git") ? new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length-4).ToArray()) : ThisAssembly.Git.RepositoryUrl;
-    public static string CurrentOwner { get; } = RepositoryBaseURL.Split('/').Reverse().Skip(1).First();
-    public static string CurrentRepo { get; } = RepositoryBaseURL.Split('/').Last();
+    private static string repositoryBaseURL = ThisAssembly.Git.RepositoryUrl.EndsWith(".git") ? new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray()) : ThisAssembly.Git.RepositoryUrl;
+    public static string RepositoryBaseURL { get { return repositoryBaseURL; } }
+    private static string[] splitRepositoryBaseURL = repositoryBaseURL.Split('/');
+    public static string[] SplitRepositoryBaseURL { get { return splitRepositoryBaseURL; } }
+    private static string currentOwner = splitRepositoryBaseURL[splitRepositoryBaseURL.Length - 2];
+    public static string CurrentOwner { get { return currentOwner; } }
+    private static string currentRepository = splitRepositoryBaseURL[splitRepositoryBaseURL.Length - 1];
+    public static string CurrentRepo { get { return currentRepository; } }
 
     public const string CurrentVersionTitle = "Fixes";
     private static readonly string[] separator = ["\r\n", "\r", "\n"];
 
-    public static bool IsNewVersionAvailable { get; private set; } = false;
+    public static bool IsNewVersionAvailable { get; private set; }
     public static bool IsVC2012Update4x89Missing { get; private set; } = true;
     public static bool IsVC2015x89Missing { get; private set; } = true;
-    public static GitHubRelease? LatestRelease { get; private set; } = null;
-    public static GitHubRelease[]? Releases { get; private set; } = null;
+    public static GitHubRelease? LatestRelease { get; private set; }
+    public static GitHubRelease[]? Releases { get; private set; }
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = [];
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = [];
 
@@ -65,11 +70,11 @@ public partial class App : System.Windows.Application
 #pragma warning restore IDE0051 // Remove unused private members
     {
         if (array.Value is null) return;
-        var newList = new ObservableCollection<BLRItem>();
+        var newList = new ObservableCollection<BLREditItem>();
         foreach (var item in array.Value.AsObject())
         {
             if(item.Value is not null)
-                newList.Add(new BLRItem() { UID = int.Parse(item.Key), Name = item.Value.ToString() });
+                newList.Add(new BLREditItem() { UID = int.Parse(item.Key), Name = item.Value.ToString() });
         }
         ImportSystem.ItemLists.Add(name, newList);
     }
@@ -115,7 +120,7 @@ public partial class App : System.Windows.Application
             try
             {
                 LoggingSystem.Log($"Started Packaging BLREdit Release");
-                GitHubAssets();
+                PackageAssets(); //GitHubAssets();
                 LoggingSystem.Log($"Finished Packaging");
             }
             catch { }
@@ -156,7 +161,7 @@ public partial class App : System.Windows.Application
         if (argDict.TryGetValue("-updateCamoTT", out var _))
         {
             ImportSystem.Initialize();
-            var TooltipList = new Dictionary<BLRItem, string>();
+            var TooltipList = new Dictionary<BLREditItem, string>();
 
             foreach (var category in ImportSystem.ItemLists)
             {
@@ -183,7 +188,7 @@ public partial class App : System.Windows.Application
             using ResXResourceWriter resx = new("ItemTooltips.resx");
             foreach (var item in TooltipList)
             {
-                var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                var node = new ResXDataNode(item.Key.UID.ToString(BLREditItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
                 resx.AddResource(node);
             }
         }
@@ -235,8 +240,8 @@ public partial class App : System.Windows.Application
             //    }
             //}
 
-            var NameList = new Dictionary<BLRItem, string>();
-            var TooltipList = new Dictionary<BLRItem, string>();
+            var NameList = new Dictionary<BLREditItem, string>();
+            var TooltipList = new Dictionary<BLREditItem, string>();
 
             foreach (var category in ImportSystem.ItemLists)
             {
@@ -266,7 +271,7 @@ public partial class App : System.Windows.Application
             {
                 foreach (var item in NameList)
                 {
-                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLREditItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
                     resx.AddResource(node);
                 }
             }
@@ -274,7 +279,7 @@ public partial class App : System.Windows.Application
             {
                 foreach (var item in TooltipList)
                 {
-                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLREditItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
                     resx.AddResource(node);
                 }
             }
@@ -461,8 +466,8 @@ public partial class App : System.Windows.Application
         {
             ImportSystem.Initialize();
 
-            var NameList = new Dictionary<BLRItem, string>();
-            var TooltipList = new Dictionary<BLRItem, string>();
+            var NameList = new Dictionary<BLREditItem, string>();
+            var TooltipList = new Dictionary<BLREditItem, string>();
 
             foreach (var category in ImportSystem.ItemLists)
             {
@@ -492,7 +497,7 @@ public partial class App : System.Windows.Application
             {
                 foreach (var item in NameList)
                 {
-                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLREditItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
                     resx.AddResource(node);
                 }
             }
@@ -500,7 +505,7 @@ public partial class App : System.Windows.Application
             {
                 foreach (var item in TooltipList)
                 {
-                    var node = new ResXDataNode(item.Key.UID.ToString(BLRItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
+                    var node = new ResXDataNode(item.Key.UID.ToString(BLREditItem.UID_FORMAT), item.Value) { Comment = item.Key.Category };
                     resx.AddResource(node);
                 }
             }
@@ -684,6 +689,16 @@ public partial class App : System.Windows.Application
 
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
 
+        try
+        {
+            File.WriteAllText($"{IOResources.PACKAGE_DIR}\\semver.txt", CurrentVersion.ToString());
+            LoggingSystem.Log("create semver.txt");
+        }
+        catch 
+        {
+            LoggingSystem.Log("failed to write smever.txt");
+        }
+
         SetUpdateFilePath();
     }
 
@@ -776,7 +791,7 @@ public partial class App : System.Windows.Application
     private static FileInfoExtension? crosshairsZip;
     private static FileInfoExtension? patchesZip;
 
-    static bool versionCheckDone = false;
+    static bool versionCheckDone;
 
     private static bool AddAssets(GitHubRelease release)
     {
@@ -1207,7 +1222,7 @@ public partial class App : System.Windows.Application
         return false;
     }
 
-    static bool checkedForModules = false;
+    static bool checkedForModules;
     public static void AvailableProxyModuleCheck()
     {
         if (checkedForModules) return;

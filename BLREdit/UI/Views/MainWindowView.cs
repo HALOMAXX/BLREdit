@@ -41,7 +41,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public static readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
     public static readonly Color ActiveBorderColor = Color.FromArgb(255, 255, 136, 0);
 
-    public Color LastSelectedBorderColor = Color.FromArgb(14, 158, 158, 158);
+    public Color LastSelectedBorderColor { get; set; } = DefaultBorderColor;
 
 
     public Border? LastSelectedItemBorder { get { return lastSelectedItemBorder; } set { ResetLastBorder(); SetNewBorder(value); } }
@@ -60,9 +60,11 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public bool IsPlayerProfileChanging { get; set; }
     public bool IsCheckingGameClient { get; set; }
     public UIBool IsScopePreviewVisible { get; } = new(false);
+    private UIBool BackupIsFemale = new(false);
+    public UIBool IsFemale { get { return Profile?.BLR?.IsFemale ?? BackupIsFemale; } }
 
-    public BLRWeapon? PrimaryWeaponCopy { get; set; }
-    public BLRWeapon? SecondaryWeaponCopy { get; set; }
+    public BLREditWeapon? PrimaryWeaponCopy { get; set; }
+    public BLREditWeapon? SecondaryWeaponCopy { get; set; }
     public BLRGear? GearCopy { get; set; }
     public BLRExtra? ExtraCopy { get; set; }
 
@@ -97,6 +99,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
             }
         }
         catch { }
+        OnPropertyChanged(nameof(IsFemale));
     }
 
     static void LoadoutChangedRelay(object sender, PropertyChangedEventArgs e)

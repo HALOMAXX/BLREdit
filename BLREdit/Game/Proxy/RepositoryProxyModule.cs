@@ -22,14 +22,14 @@ public sealed class RepositoryProxyModule
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
-    public string? FileName { get; set; } = null;
+    public string? FileName { get; set; }
     [JsonIgnore] public string PackageFileName { get { if (FileName is null) { return ModuleName; } else { return FileName; } } }
     public bool Client { get; set; } = true;
     public bool Server { get; set; } = true;
-    public bool Required { get; set; } = false;
+    public bool Required { get; set; }
     public string ProxyVersion { get; set; } = "v1.0.0-beta.2";
 
-    private GitHubRelease? hubRelease = null;
+    private GitHubRelease? hubRelease;
     [JsonIgnore]
     public GitHubRelease? GitHubRelease
     {
@@ -46,7 +46,7 @@ public sealed class RepositoryProxyModule
             }
         }
     }
-    private GitlabRelease? labRelease = null;
+    private GitlabRelease? labRelease;
     [JsonIgnore]
     public GitlabRelease? GitlabRelease
     {
@@ -64,7 +64,7 @@ public sealed class RepositoryProxyModule
         }
     }
 
-    private bool lockLatestReleaseInfo = false;
+    private bool lockLatestReleaseInfo;
     public async void GetLatestReleaseInfo()
     {
         if (!lockLatestReleaseInfo)
@@ -90,7 +90,7 @@ public sealed class RepositoryProxyModule
         }
     }
 
-    private bool lockDownload = false;
+    private bool lockDownload;
     public ProxyModule? DownloadLatest()
     {
         if (lockDownload) return null;
