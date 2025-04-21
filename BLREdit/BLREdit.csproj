@@ -36,6 +36,8 @@
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
+	  <PackageReference Include="HelixToolkit.SharpDX.Assimp" Version="2.27.0" />
+	  <PackageReference Include="HelixToolkit.Wpf.SharpDX" Version="2.27.0" />
 	  <PackageReference Include="HtmlAgilityPack" Version="1.11.62" />
 	  <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1" />
 	  <PackageReference Include="PeNet" Version="4.0.5" />

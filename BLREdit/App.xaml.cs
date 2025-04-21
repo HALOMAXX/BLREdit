@@ -7,6 +7,8 @@ using BLREdit.Game.Proxy;
 using BLREdit.Import;
 using BLREdit.UI;
 using BLREdit.UI.Views;
+using BLREdit.UI.Windows;
+
 using Microsoft.Win32;
 
 using System;
@@ -81,6 +83,9 @@ public partial class App : System.Windows.Application
 
     private void Application_Startup(object sender, StartupEventArgs e)
     {
+        new HelixTestWindow().Show();
+        return;
+
         string[] argList = e.Args;
         Dictionary<string, string> argDict = [];
 
