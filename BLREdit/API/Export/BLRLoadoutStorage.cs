@@ -24,7 +24,8 @@ public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLREditLoadout
 
     private static Brush ActiveBrush = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0));
     private static Brush InactiveBrush = new SolidColorBrush(Color.FromArgb(14, 158, 158, 158));
-    public Brush ActiveProfileBorder { get { return this.Equals(MainWindow.MainView.Profile) ? ActiveBrush : InactiveBrush; } set { } }
+    private static Brush DefaultBrush = new SolidColorBrush(Color.FromArgb(255, 255, 128, 128));
+    public Brush ActiveProfileBorder { get { return this.Equals(DataStorage.Settings.DefaultLoadout) ? DefaultBrush : (this.Equals(MainWindow.MainView.Profile) ? ActiveBrush : InactiveBrush); } set { } }
 
     #region Events
     public static event EventHandler? ProfileGotRemoved;

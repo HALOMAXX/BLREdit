@@ -30,8 +30,8 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     public static ObservableCollection<string?> AvailableSDKTypes { get; } = ["BLRevive", "Proxy"];
     #region Settings
     public string? LastRunVersion { get; set; }
-    public int SelectedLoadout { get; set; }
-    [JsonIgnore] public int CurrentlyAppliedLoadout { get { return SelectedLoadout; } set { SelectedLoadout = value; OnPropertyChanged(); } }
+    public int AppliedLoadout { get; set; }
+    [JsonIgnore] public int CurrentlyAppliedLoadout { get { return AppliedLoadout; } set { AppliedLoadout = value; OnPropertyChanged(); } }
     public int SelectedClient { get; set; } = -1;
     [JsonIgnore] public BLRClient? DefaultClient { 
         get { if (SelectedClient >= 0 && SelectedClient < DataStorage.GameClients.Count) { return DataStorage.GameClients[SelectedClient]; } return null; } 
@@ -40,6 +40,15 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     [JsonIgnore] public BLRServer? DefaultServer { 
         get { if (SelectedServer >= 0 && SelectedServer < DataStorage.ServerList.Count) { return DataStorage.ServerList[SelectedServer]; } return null; } 
         set { SelectedServer = DataStorage.FindIn(DataStorage.ServerList, value); OnPropertyChanged(); } }
+
+    public int SelectedLoadout { get; set; } = -1;
+    [JsonIgnore]
+    public BLRLoadoutStorage? DefaultLoadout
+    {
+        get { if (SelectedLoadout >= 0 && SelectedLoadout < DataStorage.Loadouts.Count) { return DataStorage.Loadouts[SelectedLoadout]; } return null; }
+        set { SelectedLoadout = DataStorage.FindIn(DataStorage.Loadouts, value); OnPropertyChanged(); }
+    }
+
     public UIBool EnableAPI { get; set; } = new(true);
     public UIBool EnableFramerateSmoothing { get; set; } = new(true);
     public UIBool FramerateSmoothingToDisplayRefreshrate { get; set; } = new(false); //TODO: Change to false before release
