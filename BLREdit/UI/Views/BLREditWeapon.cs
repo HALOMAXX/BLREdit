@@ -719,32 +719,16 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     #endregion Properties
 
     #region CalculatedProperties
-    public double ModifiedReloadSpeed { 
-        get { 
-            if (Receiver?.UID == 40005 || Receiver?.UID == 40016) // Shotgun, SARK
-            {
-                return RawReloadSpeed;
-            }
-            return RawReloadSpeed * ReloadMultiplier; 
-        } 
-    }
+    private double? modifiedShortReloadSpeed;
+    public double ModifiedShortReloadSpeed { get { return modifiedShortReloadSpeed ?? 1; } private set { modifiedShortReloadSpeed = value; OnPropertyChanged(); } }
+    private double? modifiedReloadSpeed;
+    public double ModifiedReloadSpeed { get { return modifiedReloadSpeed ?? 0; } private set { modifiedReloadSpeed = value; OnPropertyChanged(); } }
     private double? reloadMultiplier;
     public double ReloadMultiplier { get { return reloadMultiplier ?? 1; } private set { reloadMultiplier = value; OnPropertyChanged(); } }
     private double? cockRateMultiplier;
     public double CockRateMultiplier { get { return cockRateMultiplier ?? 1; } private set { cockRateMultiplier = value; OnPropertyChanged(); } }
     public double? RawSwapRate
     { get { return Receiver?.WikiStats?.Swaprate ?? 0; } }
-    public double ShortReload
-    {
-        get
-        {
-            if (Magazine?.UID == 44014 || Magazine?.UID == 44015)
-            {
-                return 1.0;
-            }
-            return Receiver?.WeaponStats?.ReloadShortMultiplier ?? 0;
-        }
-    }
 
     #region Damage
     private double? damageClose;
@@ -1026,6 +1010,8 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         RecoilHip = CalculateRecoil(Receiver, RecoilPercentage, false);
         RecoilZoom = CalculateRecoil(Receiver, RecoilPercentage, true);
         ReloadMultiplier = CalculateReloadRate(Receiver, ReloadSpeedPercentage, RecoilPercentage);
+        ModifiedReloadSpeed = CalculateReloadTime(Receiver, Magazine, RawReloadSpeed, false, ReloadMultiplier);
+        ModifiedShortReloadSpeed = CalculateReloadTime(Receiver, Magazine, RawReloadSpeed, true, ReloadMultiplier);
         double BarrelStockMovementSpeed = Barrel?.WeaponModifiers?.MovementSpeed ?? 0;
         BarrelStockMovementSpeed += Stock?.WeaponModifiers?.MovementSpeed ?? 0;
         ModifiedScopeInTime = CalculateScopeInTime(Receiver, Scope, BarrelStockMovementSpeed, RawScopeInTime, ScopeEnabled);
@@ -1043,7 +1029,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         DamageDisplay = DamageClose.ToString("0") + " / " + DamageFar.ToString("0");
         RateOfFireDisplay = ModifiedRateOfFire.ToString("0");
         AmmoDisplay = FinalAmmoMagazine.ToString("0") + " / " + ModifiedAmmoReserve.ToString("0");
-        ReloadTimeDisplay = (ModifiedReloadSpeed * ShortReload).ToString("0.00") + 's'; // changed reload to short reload
+        ReloadTimeDisplay = ModifiedShortReloadSpeed.ToString("0.00") + 's'; // short reload
         //SwapDisplay = RawSwapRate.ToString("0.00");
         SwapDisplay = ModifiedReloadSpeed.ToString("0.00") + 's'; // moved normal reload time to here, since the normal stat is the empty reload
         AimSpreadDisplay = SpreadWhileADS.ToString("0.00") + '°';
@@ -1155,14 +1141,36 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Not yet Implemented
+    /// Calculate reload time
     /// </summary>
-    /// <param name="receiver"></param>
-    public static void CalculateReloadSpeed(BLREditItem receiver)
+    /// <param name="receiver">current receiver</param>
+    /// <param name="magazine">current magazine</param>
+    /// <param name="rawReloadSpeed">raw reload time</param>
+    /// <param name="isShortReload">is this a short reload</param>
+    /// <param name="reloadMultiplier">results from mod reloadrate changes</param>
+    /// <returns>final reload time</returns>
+    public static double CalculateReloadTime(BLREditItem receiver, BLREditItem? magazine, double rawReloadSpeed, bool isShortReload, double reloadMultiplier)
     {
-        // Placeholder so I don't forget
-        // It didn't help I ended up still forgetting
-        // I think CalculateReloadRate already handles this, why did I make this function? Though maybe I'll keep it for now in case I move some cheats I did recently elsewhere
+        if (receiver?.UID == 40005 || receiver?.UID == 40016) // Shotgun, SARK
+        {
+            return rawReloadSpeed;
+        }
+
+        double shortMul = 1.0;
+        if (isShortReload) {
+            shortMul = receiver?.WeaponStats?.ReloadShortMultiplier ?? 0;
+        }
+
+        if (magazine?.UID == 44014) // force AR single drum to specific time
+        {
+            return 2.81;
+        }
+        else if (magazine?.UID == 44015) // force AR double drum to specific time
+        {
+            return 2.96;
+        }
+
+        return rawReloadSpeed * reloadMultiplier * shortMul;
     }
 
     /// <summary>

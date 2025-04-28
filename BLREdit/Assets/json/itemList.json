@@ -6794,7 +6794,7 @@
       "WikiStats": {
         "AmmoMag": 20.0,
         "AmmoReserve": 80.0,
-        "Reload": 0.409999996423721,
+        "Reload": 0.41,
         "Run": -0.159999996423721
       }
     },
@@ -6816,7 +6816,7 @@
       "WikiStats": {
         "AmmoMag": 40.0,
         "AmmoReserve": 160.0,
-        "Reload": 0.560000002384186,
+        "Reload": 0.56,
         "Run": -0.280000001192093
       }
     },
