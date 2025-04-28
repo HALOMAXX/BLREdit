@@ -119,7 +119,7 @@ public sealed class ShareableLoadout : IBLRLoadout
     public ShareableLoadout Duplicate()
     {
         var dup = this.Clone();
-        BLRLoadoutStorage.AddNewLoadoutSet($"Duplicate of {dup.Name}", null, dup);
+        //BLRLoadoutStorage.AddNewLoadoutSet($"Duplicate of {dup.Name}", null, dup);
         return dup;
     }
 
