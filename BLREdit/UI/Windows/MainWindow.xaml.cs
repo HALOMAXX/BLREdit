@@ -597,7 +597,7 @@ public sealed partial class MainWindow : Window
         string message = string.Empty;
         List<ReviveLoadoutManagerLoadout> loadouts = [];
 
-        var exportLoadouts = DataStorage.Loadouts.Where(l => l.BLR.ValidateLoadout(ref message)).Where(l => l.BLR.Apply).OrderBy(l => l.BLR.Name);
+        var exportLoadouts = DataStorage.Loadouts.Where(l => l.BLR.ValidateLoadout(ref message)).Where(l => l.BLR.Apply).OrderBy(l => l != DataStorage.Settings.DefaultLoadout).ThenBy(l => l.BLR.Name);
 
         foreach (var profile in exportLoadouts)
         {

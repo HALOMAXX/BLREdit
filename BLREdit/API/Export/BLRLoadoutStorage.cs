@@ -16,15 +16,27 @@ using static BLREdit.API.Utils.HelperFunctions;
 
 namespace BLREdit.Export;
 
-public sealed class BLRLoadoutStorage(ShareableLoadout shareable, BLREditLoadout? blr = null) : INotifyPropertyChanged
+public sealed class BLRLoadoutStorage : INotifyPropertyChanged
 {
-    public ShareableLoadout Shareable { get; } = shareable;
-    private BLREditLoadout? blr = blr;
+    public ShareableLoadout Shareable { get; }
+    private BLREditLoadout? blr;
     public BLREditLoadout BLR { get { if (blr is null) { blr = Shareable.ToBLRLoadout(); string message = string.Empty; blr.Apply = blr.ValidateLoadout(ref message); } return blr; } }
 
     private static Brush ActiveBrush = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0));
     private static Brush InactiveBrush = new SolidColorBrush(Color.FromArgb(14, 158, 158, 158));
-    public Brush ActiveProfileBorder { get { return this.Equals(MainWindow.MainView.Profile) ? ActiveBrush : InactiveBrush; } set { } }
+    private static Brush DefaultBrush = new SolidColorBrush(Color.FromArgb(255, 255, 128, 128));
+    public Brush ActiveProfileBorder { get { return this.Equals(DataStorage.Settings.DefaultLoadout) ? DefaultBrush : (this.Equals(MainWindow.MainView.Profile) ? ActiveBrush : InactiveBrush); } set { } }
+
+    public BLRLoadoutStorage(ShareableLoadout shareable, BLREditLoadout? blr = null)
+    {
+        Shareable = shareable;
+        this.blr = blr;
+        if (BLR is BLREditLoadout l && l.LoadoutReport is LoadoutErrorReport report && !report.IsValid)
+        {
+            BLR.IsAdvanced.Set(true);
+        }
+    }
+
 
     #region Events
     public static event EventHandler? ProfileGotRemoved;

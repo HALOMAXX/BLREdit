@@ -47,6 +47,14 @@ namespace BLREdit.UI.Controls
                     e.Handled = true;
                     loadoutStorage.BLR.Apply = false;
                 }
+                else if (UIKeys.Keys[Key.LeftShift].Is) {
+                    var oldDefaultLoadout = DataStorage.Settings.DefaultLoadout;
+                    DataStorage.Settings.DefaultLoadout = loadoutStorage;
+                    oldDefaultLoadout?.TriggerChangeNotify();
+                    loadoutStorage.TriggerChangeNotify();
+                    e.Handled = true;
+                    loadoutStorage.BLR.Apply = true;
+                }
             }
         }
     }
