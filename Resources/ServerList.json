@@ -153,5 +153,11 @@
     "ServerAddress": "80.112.74.6",
     "Port": 7777,
     "Region": "EU-North"
+  },
+  {
+    "ID": "superewald_0",
+    "ServerAddress": "89.168.86.217",
+    "Port": 7777,
+    "Region": "EU-West"
   }
 ]
