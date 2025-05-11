@@ -123,12 +123,12 @@ public sealed class BLRServer : INotifyPropertyChanged
 #if NET6_0_OR_GREATER
                     return Dns.GetHostEntry(ServerAddress, System.Net.Sockets.AddressFamily.InterNetwork).ToString();
 #else
-                    ip = Dns.GetHostEntry(ServerAddress);
-                    if (ip.AddressList.Length <= 0)
+                    var hostEntry = Dns.GetHostEntry(ServerAddress);
+                    if (hostEntry.AddressList.Length <= 0)
                     {
                         return ServerAddress;
                     }
-                    foreach (IPAddress address in ip.AddressList)
+                    foreach (IPAddress address in hostEntry.AddressList)
                     {
                         if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                         {
