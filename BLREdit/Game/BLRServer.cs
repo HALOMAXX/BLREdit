@@ -113,19 +113,27 @@ public sealed class BLRServer : INotifyPropertyChanged
         {
             try
             {
-#if NET6_0_OR_GREATER
-                return Dns.GetHostEntry(ServerAddress, System.Net.Sockets.AddressFamily.InterNetwork).ToString();
-#else
-                var ip = Dns.GetHostEntry(ServerAddress);
-                if (ip.AddressList.Length <= 0)
+                IPAddress ip;
+                if (System.Net.IPAddress.TryParse(ServerAddress, out ip))
                 {
-                    return ServerAddress;
+                    return ip; // Use directly
                 }
-                foreach (IPAddress address in ip.AddressList)
+                else
                 {
-                    if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+#if NET6_0_OR_GREATER
+                    return Dns.GetHostEntry(ServerAddress, System.Net.Sockets.AddressFamily.InterNetwork).ToString();
+#else
+                    ip = Dns.GetHostEntry(ServerAddress);
+                    if (ip.AddressList.Length <= 0)
                     {
-                        return address.ToString();
+                        return ServerAddress;
+                    }
+                    foreach (IPAddress address in ip.AddressList)
+                    {
+                        if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                        {
+                            return address.ToString();
+                        }
                     }
                 }
 #endif
