@@ -116,7 +116,7 @@ public sealed class BLRServer : INotifyPropertyChanged
                 IPAddress ip;
                 if (System.Net.IPAddress.TryParse(ServerAddress, out ip))
                 {
-                    return ip; // Use directly
+                    return ServerAddress; // Use directly
                 }
                 else
                 {
