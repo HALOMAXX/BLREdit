@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -22,6 +23,7 @@ using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
 
 using PeNet;
+using PeNet.Header.Resource;
 
 namespace BLREdit.Game;
 
@@ -569,44 +571,95 @@ public sealed class BLRClient : INotifyPropertyChanged
         //}
         //else
         //{ 
-            var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
-            var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
-            var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
-            configClient.Modules.Clear();
-            configServer.Modules.Clear();
-            config.Modules.Clear();
-            LoggingSystem.Log($"Applying Installed Modules:");
+        var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
+        var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
+        var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
 
-            if (enabledModules is null)
-            {
-                enabledModules = [.. InstalledModules];
-                if (DataStorage.Settings.AllowCustomModules.Is)
-                {
-                    enabledModules.AddRange([.. CustomModules]);
-                }
-            }
+        var configClientCopy = configClient.Copy();
+        var configServerCopy = configServer.Copy();
+        var configCopy = config.Copy();
+        
+        configClient.Modules.Clear();
+        configServer.Modules.Clear(); //TODO: Read module settings before clearing and add them back after!!!
+        config.Modules.Clear();
+        LoggingSystem.Log($"Applying Installed Modules:");
 
-            foreach (var module in enabledModules)
+        if (enabledModules is null)
+        {
+            enabledModules = [.. InstalledModules];
+            if (DataStorage.Settings.AllowCustomModules.Is)
             {
-                LoggingSystem.Log($"\t{module.InstallName}:");
-                LoggingSystem.Log($"\t\tClient:{module.Client}");
-                LoggingSystem.Log($"\t\tServer:{module.Server}");
-                if (module.Client)
-                {
-                    configClient.Modules.Add(module.InstallName, new());
-                }
-                if (module.Server)
-                {
-                    configServer.Modules.Add(module.InstallName, new());
-                }
-                config.Modules.Add(module.InstallName, new());
+                enabledModules.AddRange([.. CustomModules]);
             }
-            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
-            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
-            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
+        }
+
+        foreach (var module in enabledModules)
+        {
+            LoggingSystem.Log($"\t{module.InstallName}:");
+            LoggingSystem.Log($"\t\tClient:{module.Client}");
+            LoggingSystem.Log($"\t\tServer:{module.Server}");
+            if (module.Client)
+            {
+                AddModuleConfigAndKeepSettings(configClient, configClientCopy, module);
+            }
+            if (module.Server)
+            {
+                AddModuleConfigAndKeepSettings(configServer, configServerCopy, module);
+            }
+            AddModuleConfigAndKeepSettings(config, configCopy, module);
+        }
+        IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
+        IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
+        IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
         //}
 
         LoggingSystem.Log($"Finished Validating Modules of {this}");
+    }
+
+    private static void AddModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, ProxyModule module)
+    {
+        RepositoryProxyModule? moduleMeta = null;
+        foreach (var mod in App.AvailableProxyModules)
+        {
+            if (mod.RepositoryProxyModule.InstallName == module.InstallName) { moduleMeta = mod.RepositoryProxyModule; break; }
+        }
+        JsonObject? settings = null;
+        foreach (var mod in old.Modules)
+        {
+            if (mod.Key == module.InstallName) { settings = mod.Value; break; }
+        }
+
+        Dictionary<string, JsonNode?> newSettingsDictonary = [];
+
+        if (settings != null)
+        {
+            foreach (var setting in settings)
+            { 
+                newSettingsDictonary.Add(setting.Key, setting.Value.DeepClone());
+            }
+            
+        }
+        if (moduleMeta != null)
+        {
+            foreach (var moduleSetting in moduleMeta.ModuleSettings)
+            {
+                if (moduleSetting.CreateDefaultSetting() is KeyValuePair<string, JsonNode?> node)
+                {
+                    if (!newSettingsDictonary.ContainsKey(node.Key))
+                    {
+                        newSettingsDictonary.Add(node.Key, node.Value);
+                    }
+                }
+            }
+        }
+
+        var Settings = new JsonObject();
+        foreach (var setting in newSettingsDictonary)
+        {
+            Settings.Add(setting.Key, setting.Value);
+        }
+
+        config.Modules.Add(module.InstallName, Settings);
     }
 
     private static void SetModuleInProxyConfig(ProxyConfig config, ProxyModule module)

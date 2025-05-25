@@ -15,8 +15,11 @@
     "Repository": "settings-manager",
     "ModuleName": "settings-manager",
     "Server": false,
-    "Required": false,
-    "ProxyVersion": "BLRevive"
+    "Required": true,
+    "ProxyVersion": "BLRevive",
+    "ModuleSettings": [
+      {"Name": "FastGearSwitch", "Type": "Bool", "DefaultValue": false}
+    ]
   },
   {
     "RepositoryProvider": "Gitlab",
@@ -24,8 +27,11 @@
     "Repository": "settings-manager",
     "ModuleName": "settings-manager",
     "Server": false,
-    "Required": true,
-    "ProxyVersion": "BLRevive"
+    "Required": false,
+    "ProxyVersion": "BLRevive",
+    "ModuleSettings": [
+      {"Name": "FastGearSwitch", "Type": "Bool", "DefaultValue": false}
+    ]
   },
   {
     "RepositoryProvider": "Gitlab",

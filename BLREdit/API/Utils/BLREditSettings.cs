@@ -260,6 +260,31 @@ public sealed class BLREditSettings : INotifyPropertyChanged
             LastRunVersion = App.CurrentVersion.ToString()
         };
 
+        foreach (var client in DataStorage.GameClients)
+        {
+            #region BLReviveConfigDirectoryCleanup
+            if (client.BLReviveConfigsDirectoryInfo is not null)
+            {
+                foreach (var file in client.BLReviveConfigsDirectoryInfo.EnumerateFiles())
+                {
+                    try
+                    {
+                        file.Delete();
+                    }
+                    catch { }
+                }
+                foreach (var dir in client.BLReviveConfigsDirectoryInfo.EnumerateDirectories())
+                {
+                    try
+                    {
+                        dir.Delete(true);
+                    }
+                    catch { }
+                }
+            }
+            #endregion BLReviveConfigDirectoryCleanup
+        }
+
         DataStorage.GameClients.Clear();
         DataStorage.ServerList.Clear();
         DataStorage.CachedModules.Clear();
