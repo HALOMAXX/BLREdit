@@ -16,6 +16,7 @@ public sealed class ServerUtilsClient
 
     public static async Task<ServerUtilsInfo?> GetServerInfo(BLRServer server)
     {
+        if(server is null ) { LoggingSystem.FatalLog("BLRServer is null"); return null; }
         string serverAddress = $"http://{server.IPAddress}:{server.InfoPort}";
         string api = "/server_info";
         ServerUtilsInfo? info = null;

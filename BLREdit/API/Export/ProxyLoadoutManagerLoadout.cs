@@ -1,6 +1,8 @@
 ﻿using BLREdit.Import;
 using BLREdit.UI.Views;
 
+using PeNet;
+
 namespace BLREdit.Export;
 
 public sealed class ProxyLoadoutManagerLoadout
@@ -17,6 +19,7 @@ public sealed class ProxyLoadoutManagerLoadout
 
     public ProxyLoadoutManagerLoadout(BLREditLoadout loadout)
     {
+        if (loadout is null) { LoggingSystem.FatalLog("loadout was null in ProxyLoadoutManagerLoadout constructor"); return; }
         Primary = new(loadout.Primary);
         Secondary = new(loadout.Secondary);
         Gear = new(loadout);

@@ -67,6 +67,7 @@ namespace BLREdit.UI.Controls
 
         public void GlobalTabIndexChanged(object sender, PropertyChangedEventArgs args)
         {
+            if (args is null) { LoggingSystem.LogNull(); return; }
             if (args.PropertyName == nameof(SelectedIndex))
             {
                 this.LoadoutTabControl.SelectedIndex = SelectedIndex;

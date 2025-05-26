@@ -104,6 +104,7 @@ public sealed class BLRProfile
 
     public void Write(IBLRProfile profile)
     {
+        if (profile == null) { LoggingSystem.FatalLog("IBLRProfile is null"); return; }
         profile.Write(this);
     }
 
@@ -115,6 +116,7 @@ public sealed class BLRProfile
 
     public void Read(IBLRProfile profile)
     {
+        if (profile == null) { LoggingSystem.FatalLog("IBLRProfile is null"); return; }
         profile.Read(this);
     }
 }

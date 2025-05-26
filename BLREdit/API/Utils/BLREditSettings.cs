@@ -133,7 +133,25 @@ public sealed class BLREditSettings : INotifyPropertyChanged
             return fixServersCommand;
         }
     }
+
+    private ICommand? crashCommand;
+    [JsonIgnore]
+    public ICommand CrashCommand
+    {
+        get
+        {
+            crashCommand ??= new RelayCommand(
+                    param => Crash()
+                );
+            return crashCommand;
+        }
+    }
     #endregion Commands
+
+    private static void Crash()
+    {
+        LoggingSystem.FatalLog("RIP!");
+    }
 
     private static void ApplyEvent()
     {

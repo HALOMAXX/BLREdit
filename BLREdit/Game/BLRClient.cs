@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -153,14 +154,14 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public static Dictionary<string?, string> VersionHashes => new()
     {
-        {"0f4a732484f566d928c580afdae6ef01c002198dd7158cb6de29b9a4960064c7", "v302"},
-        {"de08147e419ed89d6db050b4c23fa772338132587f6b533b6233733f9bce46c3", "v301"},
-        {"1742df917761f9dc01b079ae2aad78ef2ff17562af1dad6ad6ea7cf3622fe7f6", "v300"},
-        {"4032ed1c45e717757a280e4cfe2408bb0c4e366676b785f0ffd177c3054c13a5", "v140"},
-        {"01890318303354f588d9b89bb1a34c5c49ff881d2515388fcc292b54eb036b58", "v130"},
-        {"d4f9cec736a83f7930f04438344d35ff9f0e57212755974bd51f48ff89d303c4", "v120"},
-        {"d0bc0ae14ab4dd9f407de400da4f333ee0b6dadf6d68b7504db3fc46c4baa59f", "v1100"},
-        {"9200705daddbbc10fee56db0586a20df1abf4c57a9384a630c578f772f1bd116", "v0993"}
+        {"0F4A732484F566D928C580AFDAE6EF01C002198DD7158CB6DE29B9A4960064C7", "v302"},
+        {"DE08147E419ED89D6DB050B4C23FA772338132587F6B533B6233733f9BCE46C3", "v301"},
+        {"1742DF917761F9DC01B079AE2AAD78EF2FF17562AF1DAD6AD6EA7CF3622FE7f6", "v300"},
+        {"4032ED1C45E717757A280E4CFE2408BB0C4E366676B785F0FFD177C3054C13A5", "v140"},
+        {"01890318303354F588D9B89BB1A34C5C49FF881D2515388FCC292B54EB036B58", "v130"},
+        {"D4F9CEC736A83F7930F04438344d35FF9F0E57212755974BD51F48FF89D303C4", "v120"},
+        {"D0BC0AE14AB4DD9F407DE400DA4F333EE0B6DADF6D68B7504DB3FC46C4BAA59F", "v1100"},
+        {"9200705DADDBBC10FEE56DB0586A20DF1ABF4C57A9384A630C578F772F1BD116", "v0993"}
     };
 
     public override bool Equals(object? obj)
@@ -224,7 +225,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             Directory.CreateDirectory($"{BLReviveConfigsPath}settings_manager_{profileSettings.ProfileName}");
             ProfileSettings.Add(profileSettings.ProfileName, profileSettings);
         }
-        IOResources.SerializeFile($"{BLReviveConfigsPath}settings_manager_{profileSettings.ProfileName}\\UE3_online_profile.json", profileSettings.Settings.Values.ToArray());
+        IOResources.SerializeFile($"{BLReviveConfigsPath}settings_manager_{profileSettings.ProfileName}\\UE3_online_profile.json", profileSettings.ProfileSettings.Values.ToArray());
         //IOResources.SerializeFile($"{ConfigFolder}settings_manager_{profileSettings.ProfileName}\\keybinding.json", profileSettings.KeyBindings);
     }
 
@@ -259,31 +260,6 @@ public sealed class BLRClient : INotifyPropertyChanged
             return false;
         }
 
-        if (!ValidateClientHash(OriginalHash, OriginalPath, out string? NewOriginalHash))
-        {
-            LoggingSystem.Log($"Original Client has changed was {OriginalHash} is now {NewOriginalHash}.");
-            OriginalHash = NewOriginalHash;
-            return PatchClient();
-        }
-
-        if (!PatchedFileValidation())
-        {
-            LoggingSystem.Log($"Client hasn't been patched yet!");
-            return PatchClient();
-        }
-
-        if (!ValidateClientHash(PatchedHash, PatchedPath, out string? NewPatchedHash))
-        {
-            LoggingSystem.Log($"Client hasn't been patched yet or is corrupted/changed. [{PatchedHash}]/[{NewPatchedHash}]");
-            return PatchClient();
-        }
-
-        if (ValidatePatches())
-        {
-            LoggingSystem.Log($"Available Patches has changed Repatching Client to update to new Patches!");
-            return PatchClient();
-        }
-
         var info = new FileInfo(new FileInfo(OriginalPath).Directory.FullName + "\\steam_appid.txt");
         if (DataStorage.Settings?.SteamAwareToggle.Is ?? false && !info.Exists)
         {
@@ -299,11 +275,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     public bool OriginalFileValidation()
     {
         return !string.IsNullOrEmpty(OriginalPath) && File.Exists(OriginalPath);
-    }
-
-    public bool PatchedFileValidation()
-    {
-        return !string.IsNullOrEmpty(PatchedPath) && File.Exists(PatchedPath);
     }
 
     public void RemoveModule(string moduleInstallName)
@@ -356,7 +327,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (DataStorage.Settings.SelectedBLReviveVersion == "Beta") { return packages[0]; }
         foreach (var package in packages)
         {
-            if (package.Version.ToLower().Contains("beta")) { continue; }
+            if (package is null || package.Version is null || package.Version.IndexOf("beta", StringComparison.OrdinalIgnoreCase) >= 0) { continue; }
             else { return package; }
         }
         return packages[0];
@@ -474,7 +445,6 @@ public sealed class BLRClient : INotifyPropertyChanged
                 availableModule.FinalizeInstall(this);
             }
         }
-        
     }
 
     public bool IsModuleInstalledAndUpToDate(VisualProxyModule module)
@@ -546,31 +516,6 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         LoggingSystem.Log($"Validating Modules Installed({count}/{InstalledModules.Count}) and Custom({customCount}/{CustomModules.Count}) of {this}");
 
-        //if (SDKType != "BLRevive")
-        //{
-        //    var config = IOResources.DeserializeFile<ProxyConfig>($"{BLReviveConfigsPath}default.json") ?? new();
-        //    config.Proxy.Modules.Server.Clear();
-        //    config.Proxy.Modules.Client.Clear();
-        //    LoggingSystem.Log($"Applying Installed Modules:");
-
-        //    if (enabledModules is null)
-        //    {
-        //        enabledModules = [.. InstalledModules];
-        //        if (DataStorage.Settings.AllowCustomModules.Is)
-        //        {
-        //            enabledModules.AddRange([.. CustomModules]);
-        //        }
-        //    }
-
-        //    foreach (var module in enabledModules)
-        //    {
-        //        SetModuleInProxyConfig(config, module);
-        //    }
-
-        //    IOResources.SerializeFile($"{BLReviveConfigsPath}default.json", config);
-        //}
-        //else
-        //{ 
         var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
         var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
         var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
@@ -580,7 +525,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         var configCopy = config.Copy();
         
         configClient.Modules.Clear();
-        configServer.Modules.Clear(); //TODO: Read module settings before clearing and add them back after!!!
+        configServer.Modules.Clear();
         config.Modules.Clear();
         LoggingSystem.Log($"Applying Installed Modules:");
 
@@ -611,7 +556,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
         IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
         IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
-        //}
 
         LoggingSystem.Log($"Finished Validating Modules of {this}");
     }
@@ -634,8 +578,8 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (settings != null)
         {
             foreach (var setting in settings)
-            { 
-                newSettingsDictonary.Add(setting.Key, setting.Value.DeepClone());
+            {
+                if (setting.Value != null) { newSettingsDictonary.Add(setting.Key, setting.Value.DeepClone()); }
             }
             
         }
@@ -660,16 +604,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
 
         config.Modules.Add(module.InstallName, Settings);
-    }
-
-    private static void SetModuleInProxyConfig(ProxyConfig config, ProxyModule module)
-    {
-        LoggingSystem.Log($"\t{module.InstallName}:");
-        LoggingSystem.Log($"\t\tClient:{module.Client}");
-        LoggingSystem.Log($"\t\tServer:{module.Server}");
-
-        if (module.Client) config.Proxy.Modules.Client.Add(module.InstallName);
-        if (module.Server) config.Proxy.Modules.Server.Add(module.InstallName);
     }
 
     public static bool ValidateClientHash(string? currentHash, string? fileLocation, out string? newHash)
@@ -781,35 +715,39 @@ public sealed class BLRClient : INotifyPropertyChanged
     #endregion Commands
 
     #region Launch/Exit
-    private void LaunchBotMatch()
+    private bool SelectMapAndMode(out string launchArgs)
     {
+        launchArgs = "";
         (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
-        if (canceled) { LoggingSystem.Log($"Canceled Botmatch Launch"); return; }
-        //string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}?blre.server.authenticateusers=false";
+        if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return false; }
+        //string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
 
-        string launchArgs = $"server {(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Playlist=BLREditPlaylist?Port=7777?blre.server.authenticateusers=false";
+        if (map is null || mode is null) { LoggingSystem.MessageLog($"Failed to launch server as no {((map is null && mode is null) ? "Map and Mode" : ((map is null) ? "Map" : ((mode is null) ? "Mode" : "")))} was selected!", "Failed to launch Server/Bot Match"); return false; }
+        if (string.IsNullOrEmpty(mode.ModeName)) { LoggingSystem.MessageLog("Faile to launch server ModeName is missing in files please send a error report in Discord!", "Failed to launch Server/Bot Match"); return false; }
+
+        launchArgs = $"server {(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?ServerName=BLREdit-{mode.ModeName}-Server?Playlist=BLREditPlaylist?Port=7777?blre.server.authenticateusers=false";
 
         List<BLRPlaylistEntry> entries = [new() { Map = map.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } }];
 
         IOResources.SerializeFile($"{BLReviveConfigsPath}server_utils\\playlists\\BLREditPlaylist.json", entries);
+        return true;
+    }
 
-        StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
-        LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
+    private void LaunchBotMatch()
+    {
+        if (SelectMapAndMode(out var launchArgs))
+        {
+            StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
+            LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
+        }        
     }
 
     private void LaunchServer()
     {
-        (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
-        if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return; }
-        //string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
-
-        string launchArgs = $"server {(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Playlist=BLREditPlaylist?Port=7777?blre.server.authenticateusers=false";
-
-        List<BLRPlaylistEntry> entries = [new() { Map = map.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } }];
-
-        IOResources.SerializeFile($"{BLReviveConfigsPath}server_utils\\playlists\\BLREditPlaylist.json", entries);
-
-        StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
+        if (SelectMapAndMode(out var launchArgs))
+        {
+            StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
+        }
     }
 
     public void LaunchClient()
@@ -819,6 +757,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchClient(LaunchOptions options)
     {
+        if(options is null) { LoggingSystem.LogNull(); return; }
         MainWindow.ApplyBLReviveLoadouts(this);
         ApplyProfileSetting(ExportSystem.GetOrAddProfileSettings(options.UserName));
         ApplyConfigs();
@@ -829,6 +768,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public static bool ValidProfile(BLRProfile profile, BLRServer server, ref string message)
     {
+        if (server is null || profile is null) { LoggingSystem.LogNull(); return false; }
         var isValid = true;
         if (!server.ValidatesLoadout)
         {
@@ -893,82 +833,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         _patchedPath ??= $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
 
         return basePath;
-    }
-
-    /// <summary>
-    /// Patch this GameClient
-    /// </summary>
-    public bool PatchClient()
-    {
-        try
-        {
-            if (string.IsNullOrEmpty(PatchedPath)) { _basePath = GetBasePath(); }
-            if (DataStorage.Settings.SelectedBLReviveVersion != "BLRevive")
-            {
-                List<BLRClientPatch> toAppliedPatches = [];
-                File.Copy(OriginalPath, PatchedPath, true);
-                AppliedPatches.Clear();
-                if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
-                {
-                    using (var stream = File.Open(PatchedPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
-                    {
-                        List<byte> rawFile = [];
-                        using var reader = new BinaryReader(stream);
-                        rawFile.AddRange(reader.ReadBytes((int)stream.Length));
-
-                        foreach (BLRClientPatch patch in patches)
-                        {
-                            LoggingSystem.Log($"Applying Patch:{patch.PatchName} to Client:{OriginalHash}");
-                            foreach (var part in patch.PatchParts)
-                            {
-                                OverwriteBytes(rawFile, part.Key, [.. part.Value]);
-                            }
-                            toAppliedPatches.Add(patch);
-                        }
-
-                        PeFile peFile = new(rawFile.ToArray());
-                        peFile.AddImport("Proxy.dll", "InitializeThread");
-                        stream.Position = 0;
-                        stream.SetLength(peFile.RawFile.Length);
-                        using var writer = new BinaryWriter(stream);
-
-                        writer.Write(peFile.RawFile.ToArray());
-
-                        reader.Close();
-                        writer.Close();
-                        stream.Close();
-                        reader.Dispose();
-                        writer.Dispose();
-                        stream.Dispose();
-                    }
-                    foreach (var patch in toAppliedPatches)
-                    {
-                        AppliedPatches.Add(patch);
-                    }
-                }
-                else
-                {
-                    LoggingSystem.Log($"No patches found for {OriginalHash}");
-                }
-                PatchedHash = IOResources.CreateFileHash(PatchedPath);
-            }
-        }
-        catch (Exception error)
-        {
-            LoggingSystem.MessageLog($"[{this}]: Patching failed:\n{error.Message}", "Error"); //TODO: Add Localization
-            return false;
-        }
-        return true;
-    }
-
-    private static void OverwriteBytes(List<byte> bytes, int offsetFromBegining, byte[] bytesToWrite)
-    {
-        int i2 = 0;
-        for (int i = offsetFromBegining; i < bytes.Count && i2 < bytesToWrite.Length; i++)
-        {
-            bytes[i] = bytesToWrite[i2];
-            i2++;
-        }
     }
 
     public override int GetHashCode()

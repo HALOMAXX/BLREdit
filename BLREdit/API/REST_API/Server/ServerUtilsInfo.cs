@@ -20,7 +20,7 @@ public sealed class ServerUtilsInfo : ServerInfo
     public string Playlist { get; set; } = "";
     public string ServerName { get; set; } = "";
 
-    public string MatchStats { get { return $"Time: {GetTimeDisplay()}\nLeader: {GetScoreDisplay()}"; } }
+    public string MatchStats { get { return $"Time: {TimeDisplay}\nLeader: {GetScoreDisplay()}"; } }
 
     public override string ToString()
     {

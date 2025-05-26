@@ -25,6 +25,7 @@ public sealed class BLREditItem : INotifyPropertyChanged
     }
     public void ExternalOnPropertyChanged(params string[] properties)
     {
+        if(properties is null) { LoggingSystem.LogNull(); return; }
         foreach (var prop in properties)
         {
             OnPropertyChanged(prop);
@@ -232,7 +233,7 @@ public sealed class BLREditItem : INotifyPropertyChanged
     }
 
     static readonly UIBool scopePreviewDefault = new();
-    public UIBool ScopePreviewBool { get { return MainWindow.MainView?.IsScopePreviewVisible ?? scopePreviewDefault; } }
+    public static UIBool ScopePreviewBool { get { return MainWindow.MainView?.IsScopePreviewVisible ?? scopePreviewDefault; } }
 
     public string GetSecondaryScope(BLREditWeapon weapon)
     {

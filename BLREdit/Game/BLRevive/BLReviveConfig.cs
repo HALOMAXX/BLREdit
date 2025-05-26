@@ -44,8 +44,8 @@ namespace BLREdit.Game.BLRevive
             this.CmdWhitelist.CopyTo(whitelist);
             var copy = new BLReviveConsoleConfig
             {
-                CmdBlacklist = blacklist.ToList(),
-                CmdWhitelist = whitelist.ToList(),
+                CmdBlacklist = [.. blacklist],
+                CmdWhitelist = [.. whitelist],
                 Enable = this.Enable
             };
             return copy;

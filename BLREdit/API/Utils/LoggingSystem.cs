@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLREdit.Export;
+
+using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -48,8 +50,32 @@ public static class LoggingSystem
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void FatalLog(string message, [CallerFilePath] string? path = null, [CallerLineNumber] int line = 0)
+    {
+        Log($"[FatalError]({path}:{line}): {message}\n\nStacktrace:\n{Environment.StackTrace}");
+        Trace.Flush();
+
+        IOResources.FileToClipboard = App.CurrentLogFile.FullName;
+        while (!string.IsNullOrEmpty(IOResources.FileToClipboard)) { Thread.Sleep(100); }
+
+        MessageBox.Show("A Fatal error has occured. Please DM the latest logfile to @HKN1 or post it on the BLRevive discord!\n\nThe Latest log file has been copied to your Clipboard!\nIt can also be found in the logs->BLREdit folder next the BLREdit Executable\nThe latest ", "FatalError", MessageBoxButton.OK);
+        Environment.Exit(69);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void LogNull([CallerFilePath] string? path = null, [CallerLineNumber] int line = 0)
+    {
+        Log($"[NullError]: {path}:{line}\n\tStacktrace:\n{Environment.StackTrace}");
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string ObjectToTextWall<T>(T obj)
     {
         return IOResources.Serialize(obj);
+    }
+
+    public static string GetSourceLocation([CallerFilePath] string? path = null, [CallerLineNumber] int line = 0)
+    {
+        return $"{path}:{line}";
     }
 }

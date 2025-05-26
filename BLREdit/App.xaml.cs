@@ -9,6 +9,8 @@ using BLREdit.UI;
 using BLREdit.UI.Views;
 using Microsoft.Win32;
 
+using PeNet.Header.Resource;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,13 +35,13 @@ namespace BLREdit;
 public partial class App : System.Windows.Application
 {
     public static readonly BLREditVersion CurrentVersion = new($"v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}");
-    private static string repositoryBaseURL = ThisAssembly.Git.RepositoryUrl.EndsWith(".git") ? new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray()) : ThisAssembly.Git.RepositoryUrl;
+    private static readonly string repositoryBaseURL = ThisAssembly.Git.RepositoryUrl.EndsWith(".git") ? new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray()) : ThisAssembly.Git.RepositoryUrl;
     public static string RepositoryBaseURL { get { return repositoryBaseURL; } }
-    private static string[] splitRepositoryBaseURL = repositoryBaseURL.Split('/');
+    private static readonly string[] splitRepositoryBaseURL = repositoryBaseURL.Split('/');
     public static string[] SplitRepositoryBaseURL { get { return splitRepositoryBaseURL; } }
-    private static string currentOwner = splitRepositoryBaseURL[splitRepositoryBaseURL.Length - 2];
+    private static readonly string currentOwner = splitRepositoryBaseURL[splitRepositoryBaseURL.Length - 2];
     public static string CurrentOwner { get { return currentOwner; } }
-    private static string currentRepository = splitRepositoryBaseURL[splitRepositoryBaseURL.Length - 1];
+    private static readonly string currentRepository = splitRepositoryBaseURL[splitRepositoryBaseURL.Length - 1];
     public static string CurrentRepo { get { return currentRepository; } }
 
     public const string CurrentVersionTitle = "Fixes";
@@ -48,7 +50,7 @@ public partial class App : System.Windows.Application
     public static bool IsNewVersionAvailable { get; private set; }
     public static bool IsVC2012Update4x89Missing { get; private set; } = true;
     public static bool IsVC2015x89Missing { get; private set; } = true;
-    public static GitHubRelease? LatestRelease { get; private set; }
+    public static GitHubRelease? LatestReleaseInfo { get; private set; }
     public static GitHubRelease[]? Releases { get; private set; }
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = [];
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = [];
@@ -565,6 +567,9 @@ public partial class App : System.Windows.Application
         Directory.CreateDirectory("downloads\\localizations");
     }
 
+    static FileInfo currentLogFile;
+    public static FileInfo CurrentLogFile { get { return currentLogFile; } }
+
     static App()
     {
         Directory.SetCurrentDirectory(BLREditLocation);
@@ -590,7 +595,9 @@ public partial class App : System.Windows.Application
             }
         }
 
-        Trace.Listeners.Add(new TextWriterTraceListener($"logs\\BLREdit\\{DateTime.Now:yyyy.MM.dd(HHmmss)}.log", "loggingListener"));
+        currentLogFile = new FileInfo($"logs\\BLREdit\\{DateTime.Now:yyyy.MM.dd(HHmmss)}.log");
+
+        Trace.Listeners.Add(new TextWriterTraceListener(currentLogFile.FullName, "loggingListener"));
 
         Trace.AutoFlush = true;
 
@@ -612,7 +619,7 @@ public partial class App : System.Windows.Application
 
     void UnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
-        LoggingSystem.Log($"[Unhandled]: {e.ExceptionObject}");
+        LoggingSystem.FatalLog($"[Unhandled]: {e.ExceptionObject}");
         Trace.Flush();
         Environment.Exit(666);
     }
@@ -706,17 +713,17 @@ public partial class App : System.Windows.Application
     {
         bool json = true, dlls = true, textures = true, crosshairs = true, patches = true;
 
-        if (LatestRelease is null)
+        if (LatestReleaseInfo is null)
         {
             var task = StartSTATask<bool>(GetLatestRelease);
             task.Wait();
         }
 
-        if (LatestRelease is not null)
+        if (LatestReleaseInfo is not null)
         {
             json = false; dlls = false; textures = false; crosshairs = false; patches = false;
             if (File.Exists("changes.txt")) { File.Delete("changes.txt"); }
-            var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestRelease.TagName} >> changes.txt");
+            var gitProcess = Process.Start("cmd", $"/c git diff --name-only HEAD {LatestReleaseInfo.TagName} >> changes.txt");
             gitProcess.WaitForExit();
 
             var result = File.ReadAllText("changes.txt").Split(separator, StringSplitOptions.None);
@@ -847,7 +854,7 @@ public partial class App : System.Windows.Application
 
     public static bool GetLatestRelease()
     {
-        if (LatestRelease is not null) { return true; }
+        if (LatestReleaseInfo is not null) { return true; }
         try
         {
             using var task = GitHubClient.GetReleases(CurrentOwner, CurrentRepo);
@@ -860,14 +867,14 @@ public partial class App : System.Windows.Application
                 {
                     if (!release.PreRelease)
                     {
-                        LatestRelease = release;
+                        LatestReleaseInfo = release;
                         break;
                     }
                 }
             }
             else
             {
-                LatestRelease = Releases[0];
+                LatestReleaseInfo = Releases[0];
             }
         }
         catch (Exception error)
@@ -895,10 +902,10 @@ public partial class App : System.Windows.Application
         {
             GetLatestRelease();
 
-            if (LatestRelease is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
-            LoggingSystem.Log($"Newest Version: {LatestRelease.TagName} of {LatestRelease.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
+            if (LatestReleaseInfo is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
+            LoggingSystem.Log($"Newest Version: {LatestReleaseInfo.TagName} of {LatestReleaseInfo.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
 
-            bool newVersionAvailable = (LatestRelease.Version ?? new("")) > CurrentVersion;
+            bool newVersionAvailable = (LatestReleaseInfo.Version ?? new("")) > CurrentVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);
             if (DataStorage.Settings.LastRunVersion is null || new BLREditVersion(DataStorage.Settings.LastRunVersion) < new BLREditVersion("v0.12.0") || !File.Exists($"Assets\\textures\\emblem_color_00.png")) { assetFolderMissing = true; }
             DataStorage.Settings.LastRunVersion = CurrentVersion.ToString();
@@ -970,6 +977,8 @@ public partial class App : System.Windows.Application
         }
         LoggingSystem.Log($"Restarting BLREdit!");
 
+        //We exit immediately after creation
+#pragma warning disable CA2000 // Dispose objects before losing scope
         Process newApp = new()
         {
             StartInfo = new()
@@ -978,6 +987,7 @@ public partial class App : System.Windows.Application
                 Arguments = "-forceStart"
             }
         };
+#pragma warning restore CA2000 // Dispose objects before losing scope
 
         newApp.Start();
 
@@ -1200,22 +1210,18 @@ public partial class App : System.Windows.Application
     {
         string dependenciesPath = @"SOFTWARE\Classes\Installer\Dependencies";
 
-        using (RegistryKey dependencies = Registry.LocalMachine.OpenSubKey(dependenciesPath))
+        using RegistryKey dependencies = Registry.LocalMachine.OpenSubKey(dependenciesPath);
+        if (dependencies == null) return false;
+
+        foreach (string subKeyName in dependencies.GetSubKeyNames().Where(n => !n.ToLower().Contains("dotnet") && !n.ToLower().Contains("microsoft")))
         {
-            if (dependencies == null) return false;
+            using RegistryKey subDir = Registry.LocalMachine.OpenSubKey(dependenciesPath + "\\" + subKeyName);
+            var value = subDir.GetValue("DisplayName")?.ToString() ?? null;
+            if (string.IsNullOrEmpty(value)) continue;
 
-            foreach (string subKeyName in dependencies.GetSubKeyNames().Where(n => !n.ToLower().Contains("dotnet") && !n.ToLower().Contains("microsoft")))
+            if (Regex.IsMatch(value, @"C\+\+ 2015.*\(x86\)")) //here u can specify your version.
             {
-                using (RegistryKey subDir = Registry.LocalMachine.OpenSubKey(dependenciesPath + "\\" + subKeyName))
-                {
-                    var value = subDir.GetValue("DisplayName")?.ToString() ?? null;
-                    if (string.IsNullOrEmpty(value)) continue;
-
-                    if (Regex.IsMatch(value, @"C\+\+ 2015.*\(x86\)")) //here u can specify your version.
-                    {
-                        return true;
-                    }
-                }
+                return true;
             }
         }
 

@@ -14,7 +14,7 @@ public class EquipmentControl : UserControl
     public static int SelectedBorder { get; private set; } = 1;
     protected void Grid_MouseUp(object sender, MouseButtonEventArgs e)
     {
-        if (EquipmentControlGrid is not null)
+        if (EquipmentControlGrid is not null && e is not null)
         {
             if (e.Source is Image image && image.Parent is Border border)
             {

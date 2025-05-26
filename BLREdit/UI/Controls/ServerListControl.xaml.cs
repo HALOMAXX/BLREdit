@@ -53,7 +53,7 @@ public partial class ServerListControl : UserControl
     {
         if (CollectionViewSource.GetDefaultView(ServerListView.Items) is CollectionView view)
         {
-            view.Filter += new Predicate<object>(ServerFilter.Instance.FullFilter);
+            view.Filter += new Predicate<object>(ServerFilter.FullFilter);
         }
         ApplySorting();
     }

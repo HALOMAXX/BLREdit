@@ -1002,24 +1002,20 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
 
     public static bool NextBoolean()
     {
-        return rng.Next() > (Int32.MaxValue / 2);
-        // Next() returns an int in the range [0..Int32.MaxValue]
+        return rng.Next() > (Int32.MaxValue / 2); // Next() returns an int in the range [0..Int32.MaxValue]
     }
 
     private GearErrorReport GenerateGearReport()
     {
         bool g1dup = false, g1frag = false, g1missing = false;
-        bool g2dup = false, g2frag = false, g2missing = false;
-        bool g3dup = false, g3frag = false, g3missing = false;
-        bool g4dup = false, g4frag = false, g4missing = false;
+        bool g2frag = false, g2missing = false;
+        bool g3frag = false, g3missing = false;
+        bool g4frag = false, g4missing = false;
 
+        bool g4dup;
         if (Gear4 is not null && Gear4.UID != 12015)
         {
-            if (Gear3 is not null && Gear3.UID == Gear4.UID) g4dup = true;
-            if (Gear2 is not null && Gear2.UID == Gear4.UID) g4dup = true;
-            if (Gear1 is not null && Gear1.UID == Gear4.UID) g4dup = true;
-
-            if (Gear4.Name is not null) 
+            if (Gear4.Name is not null)
                 g4frag = Gear4.Name.Contains("Frag") || Gear4.Name.Contains("I Heart U") || Gear4.Name.Contains("Snowpocalypse");
         }
         else
@@ -1027,11 +1023,9 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
             g4missing = Gear4 is null;
         }
 
+        bool g3dup;
         if (Gear3 is not null && Gear3.UID != 12015)
         {
-            if (Gear2 is not null && Gear2.UID == Gear3.UID) g3dup = true;
-            if (Gear1 is not null && Gear1.UID == Gear3.UID) g3dup = true;
-
             if (Gear3.Name is not null) g3frag = Gear3.Name.Contains("Frag") || Gear3.Name.Contains("I Heart U") || Gear3.Name.Contains("Snowpocalypse");
         }
         else
@@ -1039,10 +1033,9 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
             g3missing = Gear3 is null;
         }
 
+        bool g2dup;
         if (Gear2 is not null && Gear2.UID != 12015)
         {
-            if (Gear1 is not null && Gear1.UID == Gear2.UID) g2dup = true;
-
             if (Gear2.Name is not null) g2frag = Gear2.Name.Contains("Frag") || Gear2.Name.Contains("I Heart U") || Gear2.Name.Contains("Snowpocalypse");
         }
         else
@@ -1122,7 +1115,7 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
     }
 }
 
-public struct LoadoutErrorReport(WeaponErrorReport primary, WeaponErrorReport secondary, GearErrorReport gear, ExtraErrorReport extra)
+public readonly struct LoadoutErrorReport(WeaponErrorReport primary, WeaponErrorReport secondary, GearErrorReport gear, ExtraErrorReport extra)
 {
     public bool IsValid { get { return (PrimaryReport.IsValid && SecondaryReport.IsValid && GearReport.IsValid && ExtraReport.IsValid); } }
     public WeaponErrorReport PrimaryReport { get; } = primary;

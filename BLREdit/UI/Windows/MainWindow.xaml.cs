@@ -167,7 +167,7 @@ public sealed partial class MainWindow : Window
     /// <returns></returns>
     public static int IsInCollection<T>(ObservableCollection<T> collection, T item)
     {
-        if (item is null) return -1;
+        if (item is null || collection is null) return -1;
         for (int i = 0; i < collection.Count; i++)
         {
             if (item.Equals(collection[i])) return i;
@@ -225,7 +225,7 @@ public sealed partial class MainWindow : Window
                 border = order;
             }
 
-            if (border is null) { return; }
+            if (border is null) { LoggingSystem.LogNull(); return; }
 
             SetItemToBorder(border, item);
         }
@@ -246,7 +246,7 @@ public sealed partial class MainWindow : Window
             if (order.Child is Image mage2) image = mage2;
         }
 
-        if (image is null || border is null) { return; }
+        if (image is null || border is null) { LoggingSystem.LogNull(); return; }
 
         if (e.ChangedButton == MouseButton.Left)
         {
@@ -549,49 +549,14 @@ public sealed partial class MainWindow : Window
                     }
                 }
 
-                // from @superewald: disabled because conflicts with current changes, is proxy support even necessary anymore?
-                /*if(DataStorage.Settings.SelectedBLReviveVersion == "BLRevive")
-                    ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
-                else
-                    ApplyProxyLoadouts(DataStorage.Settings.DefaultClient);*/
                 ApplyBLReviveLoadouts(DataStorage.Settings.DefaultClient);
             }
         }
     }
 
-    public static void ApplyProxyLoadouts(BLRClient client)
-    {
-        var directory = $"{client.BLReviveConfigsPath}profiles\\";
-        Directory.CreateDirectory(directory);
-
-        List<ProxyLoadoutManagerLoadout> loadouts = [];
-
-        string message = string.Empty;
-        int count = 0;
-        foreach (var profile in DataStorage.Loadouts)
-        {
-            if (profile.BLR.Apply && profile.BLR.ValidateLoadout(ref message))
-            {
-                loadouts.Add(new ProxyLoadoutManagerLoadout(profile.BLR));
-                profile.Shareable.LastApplied = DateTime.Now;
-                profile.BLR.IsChanged = false;
-                count++;
-            }
-            else
-            { profile.BLR.Apply = false; }
-            if (count >= 2) break;
-        }
-
-        IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
-        ShowAlert($"Applied Proxy Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
-        if (Instance is not null && Instance.lastAnim != CalmAnim)
-        {
-            SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
-        }
-    }
-
     public static void ApplyBLReviveLoadouts(BLRClient client)
     {
+        if (client is null) { LoggingSystem.MessageLog("Failed to apply Loadouts no Client selected!", "Failed to apply Loadouts"); return; }
         var directory = $"{client.BLReviveConfigsPath}profiles\\";
         Directory.CreateDirectory(directory);
         string message = string.Empty;
@@ -1180,7 +1145,7 @@ public sealed partial class MainWindow : Window
 
     public static void SetItemToBorder(Border? border, BLREditItem item)
     {
-        if (border is null) { return; }
+        if (border is null) { LoggingSystem.LogNull(); return; }
         if (border.Parent is FrameworkElement parent)
         {
             if (parent.DataContext is BLREditWeapon weapon)

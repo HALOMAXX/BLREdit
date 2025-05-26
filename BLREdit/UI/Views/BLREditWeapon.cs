@@ -243,10 +243,12 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         {
             Stock = wpn.GetStockItem();
         }
+#pragma warning disable CA1820 // Test for empty strings using string length
         if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
         {
             Grip = wpn.GetGripItem();
         }
+#pragma warning restore CA1820 // Test for empty strings using string length
 
         if (Muzzle is null || BLREditItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
         {
@@ -975,10 +977,12 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         {
             Stock = wpn.GetStockItem();
         }
+#pragma warning disable CA1820 // Test for empty strings using string length
         if (Grip is null || Grip.Name == MagiCowsWeapon.NoGrip)
         {
             Grip = wpn.GetGripItem();
         }
+#pragma warning restore CA1820 // Test for empty strings using string length
 
         if (Muzzle is null || BLREditItem.GetMagicCowsID(Muzzle) == MagiCowsWeapon.NoMuzzle)
         {
@@ -1243,7 +1247,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     public static (double ZoomSpread, double HipSpread, double MovmentSpread) CalculateSpread(BLREditItem receiver, double AccuracyPercentage, double BarrelStockMovementSpeed, BLREditItem? Magazine, BLREditItem? Ammo, double DamagePercentage)
     {
         if (receiver is null || receiver.WeaponStats is null) return (0, 0, 0);
-        double allMoveSpeed = Percentage(BarrelStockMovementSpeed);
+        //double allMoveSpeed = Percentage(BarrelStockMovementSpeed); // Unused?
         double allAccuracy = Percentage(AccuracyPercentage);
         double accuracyBaseModifier;
         double accuracyTABaseModifier;
@@ -1375,7 +1379,9 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     /// <param name="RawScopeInTime">all raw ScopeInTime modifiers</param>
     /// <param name="isScopeEnabled">whether it uses scope in times or not</param>
     /// <returns>The FOV scope transition time</returns>
+#pragma warning disable IDE0060 // Remove unused parameter
     public static double CalculateScopeInTime(BLREditItem receiver, BLREditItem? Scope, double BarrelStockMovementSpeed, double RawScopeInTime, bool isScopeEnabled)
+#pragma warning restore IDE0060 // Remove unused parameter
     {
         double allMovementSpeed = Clamp(BarrelStockMovementSpeed / 80.0, -1.0, 1.0);
         double TTTA_alpha = Math.Abs(allMovementSpeed);
@@ -1492,8 +1498,10 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             return newrecoil;
         }
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
         double maxRatio = 1.0;
         double baseDiff = 0.0;
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
 
         double modifiedCurRecoil = currentrecoil * accuminfluence;
         double newRecoilOffset = newrecoil;

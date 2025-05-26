@@ -22,9 +22,9 @@ public sealed class BLRLoadoutStorage : INotifyPropertyChanged
     private BLREditLoadout? blr;
     public BLREditLoadout BLR { get { if (blr is null) { blr = Shareable.ToBLRLoadout(); string message = string.Empty; blr.Apply = blr.ValidateLoadout(ref message); } return blr; } }
 
-    private static Brush ActiveBrush = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0));
-    private static Brush InactiveBrush = new SolidColorBrush(Color.FromArgb(14, 158, 158, 158));
-    private static Brush DefaultBrush = new SolidColorBrush(Color.FromArgb(255, 255, 128, 128));
+    private static readonly Brush ActiveBrush = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0));
+    private static readonly Brush InactiveBrush = new SolidColorBrush(Color.FromArgb(14, 158, 158, 158));
+    private static readonly Brush DefaultBrush = new SolidColorBrush(Color.FromArgb(255, 255, 128, 128));
     public Brush ActiveProfileBorder { get { return this.Equals(DataStorage.Settings.DefaultLoadout) ? DefaultBrush : (this.Equals(MainWindow.MainView.Profile) ? ActiveBrush : InactiveBrush); } set { } }
 
     public BLRLoadoutStorage(ShareableLoadout shareable, BLREditLoadout? blr = null)

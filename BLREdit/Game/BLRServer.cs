@@ -113,8 +113,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         {
             try
             {
-                IPAddress ip;
-                if (System.Net.IPAddress.TryParse(ServerAddress, out ip))
+                if (System.Net.IPAddress.TryParse(ServerAddress, out IPAddress ip))
                 {
                     return ServerAddress; // Use directly
                 }
@@ -153,7 +152,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         string desc;
         if (ServerInfo?.IsOnline ?? false)
         {
-            desc = $"{ServerInfo.ServerName}\n{ServerInfo.GetTimeDisplay()}\nMVP: {ServerInfo.GetScoreDisplay()}\n{ServerInfo.GameModeFullName}/{ServerInfo.Playlist}\n{ServerInfo?.BLRMap?.DisplayName ?? ServerInfo?.Map}";
+            desc = $"{ServerInfo.ServerName}\n{ServerInfo.TimeDisplay}\nMVP: {ServerInfo.GetScoreDisplay()}\n{ServerInfo.GameModeFullName}/{ServerInfo.Playlist}\n{ServerInfo?.BLRMap?.DisplayName ?? ServerInfo?.Map}";
         }
         else
         {
@@ -192,7 +191,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     {
         var server = ServerUtilsClient.GetServerInfo(this);
 
-        Task.WaitAll(server);
+        server.Wait();
 
         var serverInfo = server.Result;
 

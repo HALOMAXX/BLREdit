@@ -155,22 +155,13 @@ public sealed class ProxyModuleSetting
     {
         get
         {
-            switch (SettingType)
+            return SettingType switch
             {
-                case ModuleSettingType.Number:
-                    return typeof(double);
-                case ModuleSettingType.String:
-                    return typeof(string);
-                case ModuleSettingType.Bool:
-                    return typeof(bool);
-                case ModuleSettingType.Array:
-                case ModuleSettingType.Object:
-                case ModuleSettingType.Undefined:
-                case ModuleSettingType.Null:
-                default:
-                    return typeof(object);
-
-            }
+                ModuleSettingType.Number => typeof(double),
+                ModuleSettingType.String => typeof(string),
+                ModuleSettingType.Bool => typeof(bool),
+                _ => typeof(object),
+            };
         }
     }
 
@@ -186,7 +177,7 @@ public sealed class ProxyModuleSetting
                 if (DefaultValue is JsonElement n2 && n2.ValueKind == JsonValueKind.String && n2.GetString() is string s) { return new(SettingName, JsonValue.Create(s)); }
                 return null;
             case ModuleSettingType.Bool:
-                if (DefaultValue is JsonElement n3 && n3.ValueKind == JsonValueKind.True && n3.ValueKind == JsonValueKind.True) { return new(SettingName, JsonValue.Create(true)); }
+                if (DefaultValue is JsonElement n3 && n3.ValueKind == JsonValueKind.True) { return new(SettingName, JsonValue.Create(true)); }
                 return new(SettingName, JsonValue.Create(false)); ;
             case ModuleSettingType.Array:
             case ModuleSettingType.Object:

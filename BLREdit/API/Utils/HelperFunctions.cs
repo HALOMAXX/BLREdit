@@ -18,11 +18,13 @@ public static class HelperFunctions
 
     public static bool AllTruth(params bool[] bools)
     {
+        if (bools is null) { LoggingSystem.LogNull(); return true; }
         return Truth(bools) == bools.Length;
     }
 
     public static bool AllTruth(ItemReport flagsToCount, params ItemReport[] reports)
     {
+        if (reports is null) { LoggingSystem.LogNull(); return true; }
         return Truth(flagsToCount, reports) == reports.Length;
     }
 
@@ -38,6 +40,7 @@ public static class HelperFunctions
 
     public static bool HasAnyFlags(ItemReport report, params ItemReport[] flags)
     {
+        if (flags is null) { LoggingSystem.LogNull(); return false; }
         foreach (var flag in flags)
         { 
             if(report.HasFlag(flag)) return true;
@@ -47,6 +50,7 @@ public static class HelperFunctions
 
     public static bool HasAllFlags(ItemReport report, params ItemReport[] flags)
     {
+        if (flags is null) { LoggingSystem.LogNull(); return true; }
         foreach (var flag in flags)
         {
             if (!report.HasFlag(flag)) return false;

@@ -60,7 +60,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public bool IsPlayerProfileChanging { get; set; }
     public bool IsCheckingGameClient { get; set; }
     public UIBool IsScopePreviewVisible { get; } = new(false);
-    private UIBool BackupIsFemale = new(false);
+    private readonly UIBool BackupIsFemale = new(false);
     public UIBool IsFemale { get { return Profile?.BLR?.IsFemale ?? BackupIsFemale; } }
 
     public BLREditWeapon? PrimaryWeaponCopy { get; set; }

@@ -1,4 +1,5 @@
-﻿using BLREdit.Export;
+﻿using BLREdit.API.Utils;
+using BLREdit.Export;
 using BLREdit.UI.Windows;
 
 using Gameloop.Vdf;
@@ -23,6 +24,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Windows;
 
 namespace BLREdit;
 
@@ -64,8 +66,8 @@ public sealed class IOResources
     public static readonly List<string> GameFolders = [];
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip, WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip, WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
-
     public static Regex RemoveWhiteSpacesFromJson { get; } = new Regex("(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+");
+    public static string FileToClipboard { get; set; } = "";
 
     [DllImport("kernel32.dll", SetLastError = true)]
     static extern bool CreateSymbolicLink(
@@ -79,11 +81,13 @@ public sealed class IOResources
 
     public static bool CreateSymbolicLink(FileInfo SymLink, FileInfo Source)
     {
+        if (SymLink is null || Source is null) { LoggingSystem.LogNull(); return false; }
         return CreateSymbolicLink(SymLink.FullName, Source.FullName, SymbolicLink.File);
     }
 
     public static bool CreateSymbolicLink(DirectoryInfo SymLink, DirectoryInfo Source)
     {
+        if (SymLink is null || Source is null) { LoggingSystem.LogNull(); return false; }
         return CreateSymbolicLink(SymLink.FullName, Source.FullName, SymbolicLink.Directory);
     }
 
@@ -194,7 +198,7 @@ public sealed class IOResources
         if (string.IsNullOrEmpty(path) || !File.Exists(path)) { return null; }
         using var stream = File.OpenRead(path);
         using var crypto = SHA256.Create();
-        return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
+        return BitConverter.ToString(crypto.ComputeHash(stream)).Replace("-", string.Empty).ToUpperInvariant();
     }
 
     public static string DataToBase64(byte[] data)
@@ -235,6 +239,7 @@ public sealed class IOResources
 
     public static void CopyStreamToStream(Stream src, Stream dest)
     {
+        if(src is null || dest is null) { LoggingSystem.FatalLog("either src or dest stream is null"); return; }
         byte[] bytes = new byte[4096];
 
         int cnt;
@@ -247,8 +252,8 @@ public sealed class IOResources
 
     public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
     {
-        if (string.IsNullOrEmpty(filePath)) { return; }
-        if (obj is null) { return; }
+        if (string.IsNullOrEmpty(filePath)) { LoggingSystem.LogNull(); return; }
+        if (obj is null) { LoggingSystem.LogNull(); return; }
         var info = new FileInfo(filePath);
         if (!info.Directory.Exists) { info.Directory.Create(); }
         using var file = new StreamWriter(File.Open(filePath, FileMode.Create), Encoding.UTF8);
@@ -311,5 +316,27 @@ public sealed class IOResources
             LoggingSystem.Log($"[Serializer]: {error}");
         }
         return default;
+    }
+
+    [STAThread]
+    public static void ClipboardThread()
+    {
+        while(App.IsRunning)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(FileToClipboard)) { continue; }
+
+                Clipboard.SetFileDropList([FileToClipboard]);
+                Clipboard.Flush();
+
+                FileToClipboard = "";
+            }
+            catch (Exception error)
+            {
+                LoggingSystem.Log($"{error.Message}\n{error.StackTrace}");
+                FileToClipboard = "";
+            }
+        }
     }
 }
