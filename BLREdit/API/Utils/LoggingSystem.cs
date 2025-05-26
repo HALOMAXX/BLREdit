@@ -56,7 +56,7 @@ public static class LoggingSystem
         Trace.Flush();
 
         IOResources.FileToClipboard = App.CurrentLogFile.FullName;
-        while (!string.IsNullOrEmpty(IOResources.FileToClipboard)) { Thread.Sleep(100); }
+        Thread.Sleep(100);
 
         MessageBox.Show("A Fatal error has occured. Please DM the latest logfile to @HKN1 or post it on the BLRevive discord!\n\nThe Latest log file has been copied to your Clipboard!\nIt can also be found in the logs->BLREdit folder next the BLREdit Executable\nThe latest ", "FatalError", MessageBoxButton.OK);
         Environment.Exit(69);

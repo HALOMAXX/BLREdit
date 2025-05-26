@@ -56,7 +56,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private string? _originalHash;
     public string? OriginalHash {
-        get { return _originalHash; }
+        get { return _originalHash?.ToUpperInvariant(); }
         set { if (_originalHash != value) { _originalHash = value; OnPropertyChanged(nameof(ClientVersion)); OnPropertyChanged(); } }
     }
 
@@ -553,9 +553,13 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             AddModuleConfigAndKeepSettings(config, configCopy, module);
         }
-        IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
-        IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
-        IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
+        try
+        {
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
+        }
+        catch { LoggingSystem.FatalLog("leg meine eier"); }
 
         LoggingSystem.Log($"Finished Validating Modules of {this}");
     }
@@ -610,7 +614,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         if (currentHash is null || string.IsNullOrEmpty(currentHash) || string.IsNullOrEmpty(fileLocation)) { newHash = null; return false; }
         newHash = IOResources.CreateFileHash(fileLocation);
-        return currentHash.Equals(newHash, StringComparison.Ordinal);
+        return currentHash.Equals(newHash, StringComparison.OrdinalIgnoreCase);
     }
 
     #endregion ClientValidation

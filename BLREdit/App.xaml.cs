@@ -620,8 +620,6 @@ public partial class App : System.Windows.Application
     void UnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
         LoggingSystem.FatalLog($"[Unhandled]: {e.ExceptionObject}");
-        Trace.Flush();
-        Environment.Exit(666);
     }
 
     private static void SetUpdateFilePath()
