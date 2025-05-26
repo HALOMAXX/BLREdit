@@ -559,7 +559,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
             IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
         }
-        catch { LoggingSystem.FatalLog("leg meine eier"); }
+        catch { LoggingSystem.Log("failed to write config files!"); }
 
         LoggingSystem.Log($"Finished Validating Modules of {this}");
     }
