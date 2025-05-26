@@ -82,6 +82,7 @@ public sealed class ShareableWeapon : IBLRWeapon
 
     public void Read(BLREditWeapon weapon)
     {
+        if (weapon is null) { LoggingSystem.FatalLog("weapon was null when Reading from ShareableWeapon"); return; }
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadWeapon)) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All;
         weapon.Receiver = ImportSystem.GetItemByIDAndType(weapon.IsPrimary ? ImportSystem.PRIMARY_CATEGORY : ImportSystem.SECONDARY_CATEGORY, Receiver);
@@ -100,6 +101,7 @@ public sealed class ShareableWeapon : IBLRWeapon
 
     public void Write(BLREditWeapon weapon)
     {
+        if (weapon is null) { LoggingSystem.FatalLog("weapon was null when writing to ShareableWeapon"); return; }
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteWeapon)) return;
         if (Loadout is not null) { Loadout.LastModified = DateTime.Now; }
         Receiver = BLREditItem.GetMagicCowsID(weapon.Receiver, -1);

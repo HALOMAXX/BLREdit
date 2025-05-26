@@ -19,7 +19,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 
     static readonly BLRProfileSettings[] defaultProfile = IOResources.DeserializeFile<BLRProfileSettings[]>($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}defaultProfile.json") ?? [];
 
-    public Dictionary<int, BLRProfileSettings> Settings { get; set; } = [];
+    public Dictionary<int, BLRProfileSettings> ProfileSettings { get; set; } = [];
     //public BLRKeyBindings KeyBindings { get; set; }
     public string ProfileName { get; set; } = "BLREdit-Player";
 
@@ -51,7 +51,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         foreach (var setting in defaultProfile)
         {
             if (setting.ProfileSetting is null) continue;
-            Settings.Add(setting.ProfileSetting.PropertyId, setting);
+            ProfileSettings.Add(setting.ProfileSetting.PropertyId, setting);
         }
     }
 
@@ -60,7 +60,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         foreach (var setting in Settings ?? defaultProfile)
         {
             if (setting.ProfileSetting is null) continue;
-            this.Settings.Add(setting.ProfileSetting.PropertyId, setting);
+            this.ProfileSettings.Add(setting.ProfileSetting.PropertyId, setting);
         }
 
         this.ProfileName = ProfileName;
@@ -68,6 +68,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 
     public void UpdateFromFile(BLRProfileSettings[] settings)
     {
+        if (settings is null) return;
         foreach (var setting in settings)
         {
             if (setting.ProfileSetting?.Data is null) continue;
@@ -78,7 +79,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     public BLRProfileSettings[] GetSettings()
     {
         List<BLRProfileSettings> settings = [];
-        foreach (var setting in Settings)
+        foreach (var setting in ProfileSettings)
         {
             settings.Add(setting.Value);
         }
@@ -91,7 +92,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
 
         var property = SettingPropertiesString[name];
         var attribute = property.GetCustomAttribute<ProfileSettingAttribute>();
-        if (Settings.TryGetValue(attribute.ID, out var value))
+        if (ProfileSettings.TryGetValue(attribute.ID, out var value))
         {
             return value?.ProfileSetting?.Data?.Value1 ?? defaultValue;
         }
@@ -106,7 +107,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
         if (string.IsNullOrEmpty(name)) return;
         var property = SettingPropertiesString[name];
         var attribute = property.GetCustomAttribute<ProfileSettingAttribute>();
-        var setting = Settings[attribute.ID];
+        var setting = ProfileSettings[attribute.ID];
         if (setting is not null && setting.ProfileSetting is not null && setting.ProfileSetting.Data is not null)
             setting.ProfileSetting.Data.Value1 = Value;
         OnPropertyChanged(name);

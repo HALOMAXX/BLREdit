@@ -21,7 +21,7 @@ public sealed class MagiCowServerInfo : ServerInfo
     public int PlayerCount { get; set; }
     public string Playlist { get; set; } = string.Empty;
     public string ServerName { get; set; } = string.Empty;
-    public string MatchStats { get { return $"Time: {GetTimeDisplay()}\nLeader: {GetScoreDisplay()}"; } }
+    public string MatchStats { get { return $"Time: {TimeDisplay}\nLeader: {GetScoreDisplay()}"; } }
 
 
     public bool IsOnline { get; set; }

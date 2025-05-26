@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Abstractions;
+
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -41,7 +43,7 @@ public static class UndoRedoSystem
         foreach (var sub in action.Actions)
         {
             CurrentlyBlockedEvents.Value = sub.BlockedEvents;
-            switch(sub.Type)
+            switch (sub.Type)
             {
                 case 0:
                     sub.PropertyInfo?.SetValue(sub.Target, sub.Before, null);
@@ -50,7 +52,7 @@ public static class UndoRedoSystem
                     sub.UndoAction?.Invoke();
                     break;
             }
-            
+
             RestoreBlockedEvents();
         }
         RedoStack.Push(action);
@@ -78,7 +80,7 @@ public static class UndoRedoSystem
                     sub.DoAction?.Invoke();
                     break;
             }
-            
+
             RestoreBlockedEvents();
         }
         UndoStack.Push(action);
@@ -87,7 +89,7 @@ public static class UndoRedoSystem
     }
 
     public static void ClearUndoRedoStack()
-    { 
+    {
         UndoStack.Clear();
         RedoStack.Clear();
     }
@@ -120,6 +122,7 @@ public static class UndoRedoSystem
     /// <param name="shouldBlockEvent">should it block possible UI Events</param>
     public static void DoValueChange(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
+        if (propertyInfo is null) { LoggingSystem.FatalLog($"Failed to DoValueChange"); return; }
         CurrentlyBlockedEvents.Value = blockedEvents;
         object before = propertyInfo.GetValue(target);
         CurrentAction.Actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, blockedEvents, callName));
@@ -136,7 +139,8 @@ public static class UndoRedoSystem
     /// <param name="shouldBlockEvent">should it block possible UI Events</param>
     public static void DoAction(Action DoAction, Action UndoAction, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
-        if (CurrentAction.Actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); return; }
+        if (CurrentAction.Actions is null) { LoggingSystem.FatalLog("CurrentAction is null which should never happen!"); return; }
+        if (DoAction is null || UndoAction is null) { LoggingSystem.FatalLog("Failed to DoAction, DoAction or UndoAction is null"); return; }
         CurrentlyBlockedEvents.Value = blockedEvents;
         CurrentAction.Actions.Add(new SubUndoRedoAction(null, null, null, null, blockedEvents, callName, 1, DoAction, UndoAction));
         DoAction.Invoke();
@@ -145,6 +149,7 @@ public static class UndoRedoSystem
 
     public static void DoValueChangeAfter(object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
+        if(propertyInfo is null) { LoggingSystem.FatalLog("Failed to DoValueChangeAfter"); return; }
         CurrentlyBlockedEvents.Value = blockedEvents;
         object before = propertyInfo.GetValue(target);
         AfterActions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, blockedEvents, callName));
@@ -162,7 +167,7 @@ public static class UndoRedoSystem
     /// <param name="shouldBlockEvent">should it block possible UI Events</param>
     public static void CreateValueChange(object? before, object? after, PropertyInfo propertyInfo, object? target, BlockEvents blockedEvents = BlockEvents.None, [CallerMemberName] string? callName = null)
     {
-        if (CurrentAction.Actions is null) { LoggingSystem.Log("CurrentAction is null which should never happen!"); return; }
+        if (CurrentAction.Actions is null) { LoggingSystem.FatalLog("CurrentAction is null which should never happen!"); return; }
         CurrentlyBlockedEvents.Value = blockedEvents;
         CurrentAction.Actions.Add(new SubUndoRedoAction(before, after, propertyInfo, target, blockedEvents, callName));
         RestoreBlockedEvents();

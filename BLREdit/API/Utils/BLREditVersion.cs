@@ -48,6 +48,10 @@ public sealed class BLREditVersion
 
     public static bool operator <(BLREditVersion v1, BLREditVersion v2)
     {
+        if (v1 is null && v2 is null) { LoggingSystem.LogNull(); return false; }
+        if (v1 is null) { LoggingSystem.LogNull(); return true; }
+        if (v2 is null) { LoggingSystem.LogNull(); return false; }
+
         if (v1.VersionParts.Count < v2.VersionParts.Count) { return true; }
         if (v1.VersionParts.Count > v2.VersionParts.Count) { return false; }
         for (int i = 0; i < v1.VersionParts.Count; i++)
@@ -63,6 +67,10 @@ public sealed class BLREditVersion
 
     public static bool operator >(BLREditVersion v1, BLREditVersion v2)
     {
+        if (v1 is null && v2 is null) { LoggingSystem.LogNull(); return false; }
+        if (v1 is null) { LoggingSystem.LogNull(); return false; }
+        if (v2 is null) { LoggingSystem.LogNull(); return true; }
+
         if (v1.VersionParts.Count < v2.VersionParts.Count) { return false; }
         if (v1.VersionParts.Count > v2.VersionParts.Count) { return true; }
         for (int i = 0; i < v1.VersionParts.Count; i++)
@@ -78,6 +86,10 @@ public sealed class BLREditVersion
 
     public static bool operator <=(BLREditVersion v1, BLREditVersion v2)
     {
+        if (v1 is null && v2 is null) { LoggingSystem.LogNull(); return true; }
+        if (v1 is null) { LoggingSystem.LogNull(); return true; }
+        if (v2 is null) { LoggingSystem.LogNull(); return false; }
+
         if (v1.VersionParts.Count < v2.VersionParts.Count) { return true; }
         if (v1.VersionParts.Count > v2.VersionParts.Count) { return false; }
         for (int i = 0; i < v1.VersionParts.Count; i++)
@@ -93,6 +105,10 @@ public sealed class BLREditVersion
 
     public static bool operator >=(BLREditVersion v1, BLREditVersion v2)
     {
+        if( v1 is null && v2 is null) { LoggingSystem.LogNull(); return true;}
+        if (v1 is null) { LoggingSystem.LogNull(); return false; }
+        if (v2 is null) { LoggingSystem.LogNull(); return true; }
+
         if (v1.VersionParts.Count < v2.VersionParts.Count) { return false; }
         if (v1.VersionParts.Count > v2.VersionParts.Count) { return true; }
         for (int i = 0; i < v1.VersionParts.Count; i++)

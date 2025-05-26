@@ -34,7 +34,7 @@ public sealed class BLRExtra
     public BLREditItem? Title { get; set; }
 }
 
-public struct ExtraErrorReport(ItemReport depot1, ItemReport depot2, ItemReport depot3, ItemReport depot4, ItemReport depot5, ItemReport taunt1, ItemReport taunt2, ItemReport taunt3, ItemReport taunt4, ItemReport taunt5, ItemReport taunt6, ItemReport taunt7, ItemReport taunt8, ItemReport topIcon, ItemReport topColor, ItemReport middleIcon, ItemReport middleColor, ItemReport bottomIcon, ItemReport bottomColor, ItemReport announcer, ItemReport player, ItemReport title)
+public readonly struct ExtraErrorReport(ItemReport depot1, ItemReport depot2, ItemReport depot3, ItemReport depot4, ItemReport depot5, ItemReport taunt1, ItemReport taunt2, ItemReport taunt3, ItemReport taunt4, ItemReport taunt5, ItemReport taunt6, ItemReport taunt7, ItemReport taunt8, ItemReport topIcon, ItemReport topColor, ItemReport middleIcon, ItemReport middleColor, ItemReport bottomIcon, ItemReport bottomColor, ItemReport announcer, ItemReport player, ItemReport title)
 {
     public bool IsValid { get { return AllTruth(ItemReport.Valid, Depot1Report, Depot2Report, Depot3Report, Depot4Report, Depot5Report, Taunt1Report, Taunt2Report, Taunt3Report, Taunt4Report, Taunt5Report, Taunt6Report, Taunt7Report, Taunt8Report, TopIconReport, TopColorReport, MiddleIconReport, MiddleColorReport, BottomIconReport, BottomColorReport, AnnouncerReport, PlayerReport, TitleReport); } }
 

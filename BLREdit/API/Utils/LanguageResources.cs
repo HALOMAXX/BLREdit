@@ -16,6 +16,7 @@ public sealed class LanguageResources
 
     public static ObservableCollection<string> GetWordsOfEnum(Type enumType)
     {
+        if(enumType == null) { LoggingSystem.FatalLog("enumType is null this should not happen!"); return []; }
         if(!enumType.IsEnum) return EmptyStringCollection;
         if (EnumList.TryGetValue(enumType.Name, out ObservableCollection<string> value)) { return value; }
         ObservableCollection<string> words = [];

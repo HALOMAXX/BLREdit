@@ -45,6 +45,7 @@ public partial class DownloadInfoWindow : INotifyPropertyChanged
 
     public void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs args)
     {
+        if (args is null) { LoggingSystem.Log("failed to update download progess as EventArgs where null"); return; }
         DownloadProgress = args.ProgressPercentage;
         InfoText = $"{(args.BytesReceived / 1024) / 1024}/{(args.TotalBytesToReceive / 1024) / 1024} MB";
     }

@@ -18,6 +18,7 @@ public sealed class JsonDoubleConverter : JsonConverter<double>
 
     public override void Write(Utf8JsonWriter writer, double value, JsonSerializerOptions options)
     {
+        if (writer is null) { LoggingSystem.FatalLog("Utf8JsonWriter is null"); return; }
         Span<byte> utf8bytes = stackalloc byte[33]; // JsonConstants.MaximumFormatDecimalLength + 2, https://github.com/dotnet/runtime/blob/v6.0.11/src/libraries/System.Text.Json/src/System/Text/Json/JsonConstants.cs#L85
         if (!(!double.IsInfinity(value) && !double.IsNaN(value)))
             // Utf8JsonWriter does not take into account JsonSerializerOptions.NumberHandling so we have to make a recursive call to serialize
@@ -58,6 +59,7 @@ public sealed class JsonFloatConverter : JsonConverter<float>
 
     public override void Write(Utf8JsonWriter writer, float value, JsonSerializerOptions options)
     {
+        if(writer is null) { LoggingSystem.FatalLog("Utf8JsonWriter is null"); return; }
         Span<byte> utf8bytes = stackalloc byte[33]; // JsonConstants.MaximumFormatDecimalLength + 2, https://github.com/dotnet/runtime/blob/v6.0.11/src/libraries/System.Text.Json/src/System/Text/Json/JsonConstants.cs#L85
         if (!(!float.IsInfinity(value) && !float.IsNaN(value)))
             // Utf8JsonWriter does not take into account JsonSerializerOptions.NumberHandling so we have to make a recursive call to serialize
@@ -101,7 +103,9 @@ public class JsonUIBoolConverter : JsonConverter<UIBool>
 
     public override void Write(Utf8JsonWriter writer, UIBool value, JsonSerializerOptions options)
     {
-        writer.WriteBooleanValue(value.Is);
+        if (writer is null) { LoggingSystem.FatalLog("Utf8JsonWriter is null"); return; }
+        if (value is null) { LoggingSystem.LogNull(); }
+        writer.WriteBooleanValue(value?.Is ?? false);
     }
 }
 
@@ -189,6 +193,7 @@ public class JsonGenericConverter<T> : JsonConverter<T>
 
     public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
     {
+        if(writer is null) { LoggingSystem.FatalLog("Utf8JsonWriter was null"); return; }
         writer.WriteStartObject();
         if (value != null)
         {

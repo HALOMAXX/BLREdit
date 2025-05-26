@@ -1,17 +1,12 @@
 ﻿using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
 
-using HtmlAgilityPack;
-
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Documents;
-using System.Windows.Media.Imaging;
 
 namespace BLREdit.Game.Proxy;
 
@@ -28,6 +23,7 @@ public sealed class RepositoryProxyModule
     public bool Server { get; set; } = true;
     public bool Required { get; set; }
     public string ProxyVersion { get; set; } = "v1.0.0-beta.2";
+    public List<ProxyModuleSetting> ModuleSettings { get; set; } = [];
 
     private GitHubRelease? hubRelease;
     [JsonIgnore]
@@ -145,4 +141,61 @@ public sealed class RepositoryProxyModule
             if (module is not null) DataStorage.CachedModules.Add(module);
         }
     }
+}
+
+public sealed class ProxyModuleSetting
+{
+    [JsonPropertyName("Name")]
+    public string SettingName { get; set; } = "SettingName";
+    [JsonPropertyName("Type")]
+    public ModuleSettingType SettingType { get; set; } = ModuleSettingType.String;
+    public object? DefaultValue { get; set; } = "value";
+    [JsonIgnore]
+    public Type ValueType
+    {
+        get
+        {
+            return SettingType switch
+            {
+                ModuleSettingType.Number => typeof(double),
+                ModuleSettingType.String => typeof(string),
+                ModuleSettingType.Bool => typeof(bool),
+                _ => typeof(object),
+            };
+        }
+    }
+
+    public KeyValuePair<string, JsonNode>? CreateDefaultSetting()
+    {
+        //LoggingSystem.Log($"{DefaultValue.GetType().Name}");
+        switch (SettingType)
+        {
+            case ModuleSettingType.Number:
+                if (DefaultValue is JsonElement n1 && n1.ValueKind == JsonValueKind.Number && n1.GetDouble() is double d) { return new(SettingName, JsonValue.Create(d)); }
+                return null;
+            case ModuleSettingType.String:
+                if (DefaultValue is JsonElement n2 && n2.ValueKind == JsonValueKind.String && n2.GetString() is string s) { return new(SettingName, JsonValue.Create(s)); }
+                return null;
+            case ModuleSettingType.Bool:
+                if (DefaultValue is JsonElement n3 && n3.ValueKind == JsonValueKind.True) { return new(SettingName, JsonValue.Create(true)); }
+                return new(SettingName, JsonValue.Create(false)); ;
+            case ModuleSettingType.Array:
+            case ModuleSettingType.Object:
+            case ModuleSettingType.Undefined:
+            case ModuleSettingType.Null:
+            default:
+                return null;
+        }
+    }
+}
+
+public enum ModuleSettingType
+{
+    Undefined,
+    Bool,
+    String,
+    Number,
+    Array,
+    Object,
+    Null,
 }

@@ -345,6 +345,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
     public void ActiveClientChanged(object sender, PropertyChangedEventArgs e)
     {
+        if (e is null) { LoggingSystem.Log("failed to change active client PropertyChangedEventArgs were null"); return; }
         if (e.PropertyName == "Client")
         {
             var client = MainWindow.ClientWindow.Client;

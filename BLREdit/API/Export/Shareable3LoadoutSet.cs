@@ -16,6 +16,7 @@ public sealed class Shareable3LoadoutSet : IBLRProfile
     public Shareable3LoadoutSet() { }
     public Shareable3LoadoutSet(BLRProfile profile)
     {
+        if (profile is null) { LoggingSystem.FatalLog("profile was null in Shareable3LoadoutSet constructor"); return; }
         IsAdvanced.Set(profile.IsAdvanced.Is);
         Loadout1 = new ShareableLoadout(profile.Loadout1);
         Loadout2 = new ShareableLoadout(profile.Loadout2);

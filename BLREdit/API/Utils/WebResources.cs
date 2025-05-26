@@ -19,7 +19,7 @@ public sealed class WebResources
     static WebResources()
     {
         LoggingSystem.Log($"[{nameof(WebResources)}]: Initializing!");
-        ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12;
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault;
         WebClient.Headers.Add(HttpRequestHeader.UserAgent, $"BLREdit-{App.CurrentVersion}");
         if (!HttpClient.DefaultRequestHeaders.UserAgent.TryParseAdd($"BLREdit-{App.CurrentVersion}")) { LoggingSystem.Log($"Failed to add {HttpRequestHeader.UserAgent} to HttpClient"); };
         HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
@@ -39,6 +39,7 @@ public sealed class WebResources
         DownloadRequest req = new(url, filename);
         DownloadRequests.Add(req);
         WaitHandle.WaitAll([req.locked]);
+        req.Dispose();
         if (req.Error is not null)
         {
             LoggingSystem.MessageLog($"Failed to download ({filename}) from:\n<{url}>\n{req.Error.Message}", "Error");
@@ -68,9 +69,14 @@ public sealed class WebResources
     }
 }
 
-class DownloadRequest(string url, string filename)
+sealed class DownloadRequest(string url, string filename) : IDisposable
 {
     public string url = url, filename = filename;
     public Exception? Error { get; set; }
     public AutoResetEvent locked = new(false);
+
+    public void Dispose()
+    {
+        locked.Dispose();
+    }
 }

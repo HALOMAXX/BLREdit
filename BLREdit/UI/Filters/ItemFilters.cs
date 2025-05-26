@@ -2,6 +2,7 @@
 using BLREdit.UI.Views;
 
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 namespace BLREdit.UI;
@@ -23,8 +24,9 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static bool FilterBySearch(BLREditItem item)
     {
-        string searchText = Instance.SearchFilter.Trim().ToLower();
-        string itemName = item.Name?.ToLower() ?? string.Empty;
+        if(item == null) return false;
+        string searchText = Instance.SearchFilter.Trim().ToUpperInvariant();
+        string itemName = item.Name?.ToUpperInvariant() ?? string.Empty;
         if (string.IsNullOrEmpty(searchText)) { return true; }
         return itemName.Contains(searchText);
     }
@@ -53,7 +55,7 @@ public sealed class ItemFilters : INotifyPropertyChanged
 
     public static bool FilterByValidity(BLREditItem item)
     {
-        if (item is null) { return false; }
+        if (item is null) { LoggingSystem.LogNull(); return false; }
         item.IsValid.Set(item.ValidForTest(Instance?.WeaponFilter?.Receiver ?? null));
         switch ( item.Category )
         {

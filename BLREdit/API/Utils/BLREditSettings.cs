@@ -133,7 +133,25 @@ public sealed class BLREditSettings : INotifyPropertyChanged
             return fixServersCommand;
         }
     }
+
+    private ICommand? crashCommand;
+    [JsonIgnore]
+    public ICommand CrashCommand
+    {
+        get
+        {
+            crashCommand ??= new RelayCommand(
+                    param => Crash()
+                );
+            return crashCommand;
+        }
+    }
     #endregion Commands
+
+    private static void Crash()
+    {
+        LoggingSystem.FatalLog("RIP!");
+    }
 
     private static void ApplyEvent()
     {
@@ -259,6 +277,31 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         {
             LastRunVersion = App.CurrentVersion.ToString()
         };
+
+        foreach (var client in DataStorage.GameClients)
+        {
+            #region BLReviveConfigDirectoryCleanup
+            if (client.BLReviveConfigsDirectoryInfo is not null)
+            {
+                foreach (var file in client.BLReviveConfigsDirectoryInfo.EnumerateFiles())
+                {
+                    try
+                    {
+                        file.Delete();
+                    }
+                    catch { }
+                }
+                foreach (var dir in client.BLReviveConfigsDirectoryInfo.EnumerateDirectories())
+                {
+                    try
+                    {
+                        dir.Delete(true);
+                    }
+                    catch { }
+                }
+            }
+            #endregion BLReviveConfigDirectoryCleanup
+        }
 
         DataStorage.GameClients.Clear();
         DataStorage.ServerList.Clear();

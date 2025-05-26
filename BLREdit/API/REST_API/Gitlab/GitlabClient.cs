@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using System.IO.Packaging;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -70,6 +71,7 @@ public static class GitlabClient
 
     public static async Task<GitlabPackage[]?> GetGenericPackages(string owner, string repository, string packageName)
     {
+        if (string.IsNullOrEmpty(owner) || string.IsNullOrEmpty(repository) || string.IsNullOrEmpty(packageName)) { LoggingSystem.FatalLog("owner, repository or packageName were null"); return null; }
         string api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/packages?package_name={packageName}&order_by=created_at&sort=desc";
 
         var result = await Client.TryGetAPI<GitlabPackage[]>(api);
@@ -90,6 +92,7 @@ public static class GitlabClient
 
     public static async Task<GitlabPackageFile[]?> GetPackageFiles(GitlabPackage package)
     {
+        if(package is null) { LoggingSystem.FatalLog("GitlabPackage was null"); return null; }
         string api = $"projects/{package.Owner.Replace("/", "%2F")}%2F{package.Repository.Replace("/", "%2F")}/packages/{package.ID}/package_files";
         var result = await Client.TryGetAPI<GitlabPackageFile[]>(api);
         if (result.Item1)
@@ -119,6 +122,7 @@ public static class GitlabClient
 
     public static (bool, string, DateTime) DownloadPackage(GitlabPackage package, string destFile, string file, string fileExt = ".dll")
     {
+        if (package is null) { LoggingSystem.FatalLog("package was null!"); return default; }
         string api = $"projects/{package.Owner.Replace("/", "%2F")}%2F{package.Repository.Replace("/", "%2F")}/packages/generic/{package.Name}/{package.Version}/{file}{fileExt}";
         var task = Task.Run(() => Client.TryGetBytes(api));
         task.Wait();

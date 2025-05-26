@@ -5,6 +5,8 @@ using BLREdit.UI.Views;
 
 using Microsoft.IdentityModel.Tokens;
 
+using PeNet;
+
 using System;
 using System.Text.Json.Serialization;
 
@@ -58,6 +60,7 @@ public sealed class ShareableLoadout : IBLRLoadout
 
     public ShareableLoadout(BLREditLoadout loadout)
     {
+        if (loadout is null) { LoggingSystem.FatalLog("loadout was null in ShareableLoadout constructor"); return; }
         Name = loadout.Name;
         Female = loadout.IsFemale.Is;
         Apply = loadout.Apply;
@@ -177,6 +180,7 @@ public sealed class ShareableLoadout : IBLRLoadout
 
     public void Read(BLREditLoadout loadout)
     {
+        if (loadout is null) { LoggingSystem.FatalLog("loadout was null when reading"); return; }
         Primary.Read(loadout.Primary);
         Secondary.Read(loadout.Secondary);
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadLoadout)) return;
@@ -235,6 +239,7 @@ public sealed class ShareableLoadout : IBLRLoadout
 
     public void Write(BLREditLoadout loadout)
     {
+        if (loadout is null) { LoggingSystem.FatalLog("loadout was null when writing"); return; }
         Primary.Write(loadout.Primary);
         Secondary.Write(loadout.Secondary);
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteLoadout)) return;

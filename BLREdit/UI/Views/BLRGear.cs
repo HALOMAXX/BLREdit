@@ -22,7 +22,7 @@ public sealed class BLRGear
     public bool IsBot { get; set; }
 }
 
-public struct GearErrorReport(ItemReport helmet,  ItemReport upper, ItemReport lower, ItemReport tactical, ItemReport camo, ItemReport avatar, ItemReport trophy, ItemReport gear1, ItemReport gear2, ItemReport gear3, ItemReport gear4)
+public readonly struct GearErrorReport(ItemReport helmet,  ItemReport upper, ItemReport lower, ItemReport tactical, ItemReport camo, ItemReport avatar, ItemReport trophy, ItemReport gear1, ItemReport gear2, ItemReport gear3, ItemReport gear4)
 { 
     public bool IsValid { get { return AllTruth(ItemReport.Valid, HelmetReport, UpperBodyReport, LowerBodyReport, TacticalReport, BodyCamoReport, AvatarReport, TrophyReport, Gear1Report, Gear2Report, Gear3Report, Gear4Report); } }
 

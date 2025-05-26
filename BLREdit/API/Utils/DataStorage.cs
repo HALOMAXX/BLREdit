@@ -49,6 +49,7 @@ public static class DataStorage
 
     public static int FindIn<T>(IList<T> list, T? item)
     {
+        if (list is null) { LoggingSystem.FatalLog("List is null"); return -1; }
         if (item is null) { return -1; }
         for (int i = 0; i < list.Count; i++)
         {

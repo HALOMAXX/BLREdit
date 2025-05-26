@@ -16,11 +16,14 @@ public class ServerInfo
     public int TimeLimit { get; set; }
     public int RemainingTime { get; set; }
 
-    public string GetTimeDisplay()
+    public string TimeDisplay
     {
-        var limit = new TimeSpan(0, 0, TimeLimit);
-        var remaining = new TimeSpan(0, 0, RemainingTime);
-        return $"{remaining} / {limit}";
+        get
+        {
+            var limit = new TimeSpan(0, 0, TimeLimit);
+            var remaining = new TimeSpan(0, 0, RemainingTime);
+            return $"{remaining} / {limit}";
+        }
     }
 
     public string GetScoreDisplay()
@@ -48,7 +51,7 @@ public class ServerInfo
                     if (agent.Score > player.Score)
                     { player = agent; }
                 }
-                if (player.Name == "" && player.Score == int.MinValue && player.Deaths == int.MinValue && player.Kills == int.MinValue)
+                if (string.IsNullOrEmpty(player.Name) && player.Score == int.MinValue && player.Deaths == int.MinValue && player.Kills == int.MinValue)
                 { return ""; }
                 return $"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}";
             case "Deathmatch":
@@ -66,7 +69,7 @@ public class ServerInfo
                             player = agent;
                     }
                 }
-                if (player.Name == "" && player.Score == int.MinValue && player.Deaths == int.MinValue && player.Kills == int.MinValue)
+                if (string.IsNullOrEmpty(player.Name) && player.Score == int.MinValue && player.Deaths == int.MinValue && player.Kills == int.MinValue)
                 { return ""; }
                 return $"[{player.Name}]: ({player.Score}) {player.Kills}/{player.Deaths}";
 

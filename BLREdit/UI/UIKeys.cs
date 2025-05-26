@@ -32,6 +32,7 @@ public sealed class UIKeys
 
     public void KeyDown(object sender, KeyEventArgs e)
     {
+        if (e is null) return;
         if (e.Key == Key.System)
         {
             SetKey(e.SystemKey, true);
@@ -44,6 +45,7 @@ public sealed class UIKeys
 
     public void KeyUp(object sender, KeyEventArgs e)
     {
+        if (e is null) return;
         if (e.Key == Key.System)
         {
             SetKey(e.SystemKey, false);

@@ -43,21 +43,27 @@ public sealed partial class NumberUpDown : UserControl
         set { SetValue(MaxNumberProperty, value); }
     }
 
+#pragma warning disable IDE0052 // Remove unread private members
     private int numberChange = 1;
+#pragma warning restore IDE0052 // Remove unread private members
     public int NumberChange
     {
         get { return (int)GetValue(NumberChangeProperty); }
         set { SetValue(NumberChangeProperty, value); }
     }
 
+#pragma warning disable IDE0052 // Remove unread private members
     private bool overflow;
+#pragma warning restore IDE0052 // Remove unread private members
     public bool Overflow 
     { 
         get { return (bool)GetValue(OverflowProperty); }
         set { SetValue(OverflowProperty, value); }
     }
 
+#pragma warning disable IDE0052 // Remove unread private members
     private Orientation orientation = Orientation.Vertical;
+#pragma warning restore IDE0052 // Remove unread private members
     public Orientation Orientation
     {
         get { return (Orientation)GetValue(OrientationProperty); }

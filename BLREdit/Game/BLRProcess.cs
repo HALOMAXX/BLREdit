@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace BLREdit.Game;
 
-public sealed class BLRProcess : INotifyPropertyChanged
+public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
 {
     #region Events
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -107,6 +107,7 @@ public sealed class BLRProcess : INotifyPropertyChanged
     private void ProcessExit(object sender, EventArgs args)
     {
         LoggingSystem.Log($"[{this.Client}]({(this.IsServer ? "Server" : "Client")}): has Exited with {GameProcess.ExitCode}");
+        if (Client == null || Client.LogsDirectoryInfo == null) { LoggingSystem.Log("Failed to Copy log files as Client log location is unknown because it's null or LogsDirectoryInfo is null!"); return; }
         if (!IsServer)
         {
             Client.UpdateProfileSettings();
@@ -171,5 +172,10 @@ public sealed class BLRProcess : INotifyPropertyChanged
             Client.UpdateProfileSettings();
             MainWindow.MainView.UpdateWindowTitle();
         }
+    }
+
+    public void Dispose()
+    {
+        gameProcess.Dispose();
     }
 }

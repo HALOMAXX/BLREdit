@@ -50,6 +50,10 @@ public sealed class BLREditPipe
                 App.AppThreads.Add(thread);
                 thread.Start();
             }
+            var clip = new Thread(IOResources.ClipboardThread) { IsBackground = true, Name = $"Clipboard Thread" };
+            clip.SetApartmentState(ApartmentState.STA);
+            App.AppThreads.Add(clip);
+            clip.Start();
         }
     }
 
@@ -332,11 +336,12 @@ public sealed class BLREditPipe
     public static void ProcessArgs(string[] args)
     {
         AddApiEndpoints();
-        if (args.Length <= 0) { return; }
+        if (args is null || args.Length <= 0) { return; }
         Dictionary<string, string> argDict = [];
 
         foreach (var arg in args)
         {
+            //if(string.IsNullOrEmpty(arg)) continue;
             if (!arg.StartsWith(API)) { continue; }
 
             int index = arg.IndexOf('/', API.Length);
@@ -369,36 +374,49 @@ public sealed class BLREditPipe
     public static bool ForwardLaunchArgs(string[] args)
     {
         if (IsServer || App.ForceStart) { SpawnPipes(); return false; }
-        while (true)
+        if (args is not null && args.Length > 0)
         {
-            using var client = new NamedPipeClientStream(".", PIPE_NAME, PipeDirection.Out);
-            try
+            while (true)
             {
-                LoggingSystem.Log("trying to forward launch args over Pipe");
-                client.Connect(100);
-                LoggingSystem.Log($"Connected to Pipe. Started to transfer launch args:");
-                using (var writer = new StreamWriter(client))
+
+                using var client = new NamedPipeClientStream(".", PIPE_NAME, PipeDirection.Out);
+                try
                 {
-                    foreach (var line in args)
+                    LoggingSystem.Log("trying to forward launch args over Pipe");
+                    client.Connect(100);
+                    LoggingSystem.Log($"Connected to Pipe. Started to transfer launch args:");
+                    using (var writer = new StreamWriter(client))
                     {
-                        writer.WriteLine(line);
+                        foreach (var line in args)
+                        {
+                            writer.WriteLine(line);
+                        }
+                    }
+                    LoggingSystem.Log("Finished transfering launch args");
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    LoggingSystem.Log(error.ToString());
+
+                    ValidateServerState();
+
+                    if (IsServer)
+                    {
+                        SpawnPipes();
+                        return false;
                     }
                 }
-                LoggingSystem.Log("Finished transfering launch args");
-                return true;
             }
-            catch (Exception error)
+        }
+        else
+        {
+            ValidateServerState();
+            if (IsServer)
             {
-                LoggingSystem.Log(error.ToString());
-
-                ValidateServerState();
-
-                if (IsServer)
-                {
-                    SpawnPipes();
-                    return false;
-                }
+                SpawnPipes();
             }
+            return false;
         }
     }
 }

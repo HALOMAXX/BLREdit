@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace BLREdit.UI;
 
-class ServerFilter : INotifyPropertyChanged
+sealed class ServerFilter : INotifyPropertyChanged
 {
     #region Events
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -21,7 +21,7 @@ class ServerFilter : INotifyPropertyChanged
     private string searchFilter = "";
     public string SearchFilter { get { return searchFilter; } set { searchFilter = value; RefreshItemLists?.Invoke(this, new EventArgs()); OnPropertyChanged(); } }
 
-    public bool FullFilter(object o)
+    public static bool FullFilter(object o)
     {
         if (o is BLRServer server && (DataStorage.Settings.ShowHiddenServers.Is || !server.Hidden || server.IsOnline.Is))
         { return true; }

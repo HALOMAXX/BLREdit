@@ -111,6 +111,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
 
     public void Read(BLRProfile profile)
     {
+        if (profile is null) { LoggingSystem.FatalLog("profile was null when reading"); return; }
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.ReadProfile)) return;
         UndoRedoSystem.CurrentlyBlockedEvents.Value = BlockEvents.All & ~BlockEvents.ReadAll;
@@ -124,6 +125,7 @@ public sealed class ShareableProfile(string name = "New Profile") : INotifyPrope
 
     public void Write(BLRProfile profile)
     {
+        if (profile is null) { LoggingSystem.FatalLog("profile was null when writing"); return; }
         LoggingSystem.ResetWatch();
         if (UndoRedoSystem.CurrentlyBlockedEvents.Value.HasFlag(BlockEvents.WriteProfile)) return;
         LastModified = DateTime.Now;

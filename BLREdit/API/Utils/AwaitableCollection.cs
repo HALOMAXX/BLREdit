@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace BLREdit.API.Utils;
 
-public sealed class AwaitableCollection<T>
+public sealed class AwaitableCollection<T> : System.IDisposable
 {
     private readonly BlockingCollection<T> collection = [];
     private readonly ManualResetEvent emptyEvent = new(true);
@@ -37,5 +37,12 @@ public sealed class AwaitableCollection<T>
     public void WaitForFill()
     {
         filledEvent.WaitOne();
+    }
+
+    public void Dispose()
+    {
+        collection.Dispose();
+        emptyEvent?.Dispose();
+        filledEvent?.Dispose();
     }
 }

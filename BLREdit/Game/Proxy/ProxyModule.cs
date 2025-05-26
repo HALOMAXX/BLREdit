@@ -50,7 +50,7 @@ public sealed class ProxyModule
     }
 }
 
-class ProxyModuleComparer : IEqualityComparer<ProxyModule>
+sealed class ProxyModuleComparer : IEqualityComparer<ProxyModule>
 {
     bool IEqualityComparer<ProxyModule>.Equals(ProxyModule x, ProxyModule y)
     {

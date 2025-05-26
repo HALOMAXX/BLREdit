@@ -139,6 +139,7 @@ public sealed class RESTAPIClient
     }
     public async Task<T[]?> GetReleases<T>(string owner, string repository, int per_page = 10, int page = 1)
     {
+        if (string.IsNullOrEmpty(owner) || string.IsNullOrEmpty(repository)) { LoggingSystem.FatalLog("owner or repository were null!"); return default; }
         string api;
         if (APIProvider == RepositoryProvider.GitHub)
         { api = $"repos/{owner}/{repository}/releases?page={page}&per_page={per_page}"; }
@@ -172,6 +173,7 @@ public sealed class RESTAPIClient
 
     public async Task<T?> GetFile<T>(string owner, string repository, string branch, string file)
     {
+        if(string.IsNullOrEmpty(owner) || string.IsNullOrEmpty(repository) || string.IsNullOrEmpty(file)) { LoggingSystem.FatalLog("owner, repository or file were null!"); return default; }
         string api;
         if (APIProvider == RepositoryProvider.GitHub)
         { api = $"repos/{owner}/{repository}/contents/{file}?ref={branch}"; }
