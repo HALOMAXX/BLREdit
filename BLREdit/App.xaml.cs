@@ -1110,7 +1110,7 @@ public partial class App : System.Windows.Application
         }
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get ProxyModule list from Github\n{error}", "Error"); } //TODO: Add Localization
-        return Array.Empty<RepositoryProxyModule>();
+        return [];
 #endif
     }
 
@@ -1133,7 +1133,7 @@ public partial class App : System.Windows.Application
         }
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get Localization list from Github\n{error}", "Error"); } //TODO: Add Localization
-        return new();
+        return [];
 #endif
     }
 
@@ -1157,10 +1157,10 @@ public partial class App : System.Windows.Application
         }
         catch (Exception error)
         { LoggingSystem.MessageLog($"Can't get server list from Github\n{error}", "Error"); } //TODO: Add Localization
-        return new() 
-        { //Only localhost is needed as most likely we are offline so there is no need to add anyother default servers
+        return
+        [ //Only localhost is needed as most likely we are offline so there is no need to add anyother default servers
             new() { ID = "localhost" } //Local User Server
-        };
+        ];
 #endif
     }
 
