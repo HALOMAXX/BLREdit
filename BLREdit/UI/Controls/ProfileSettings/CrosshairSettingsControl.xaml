@@ -41,7 +41,7 @@
             <local:NumberUpDown Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" MinNumber="0" NumberChange="2" MaxNumber="20" Number="{Binding Path=TickLength}"/>
 
             <Label              Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Content="Crosshair Rotation:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
-            <local:NumberUpDown Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" MinNumber="0" NumberChange="45" MaxNumber="315" Overflow="true" Number="{Binding Path=CrosshairRotation}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" MinNumber="0" NumberChange="45" MaxNumber="315" NumberWrap="true" Number="{Binding Path=CrosshairRotation}"/>
 
             <Label              Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Content="Crosshair Opacity:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
             <local:NumberUpDown Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" MinNumber="0" NumberChange="10" MaxNumber="100" Number="{Binding Path=CrosshairOpacity}"/>

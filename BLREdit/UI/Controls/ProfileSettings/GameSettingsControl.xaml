@@ -37,12 +37,12 @@
 
             <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Label Content="All Notifications" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
-                <local:NumberUpDown Number="{Binding Path=AllNotifications}" NumberChange="1" MinNumber="0" MaxNumber="4" Overflow="True"/>
+                <local:NumberUpDown Number="{Binding Path=AllNotifications}" NumberChange="1" MinNumber="0" MaxNumber="4" NumberWrap="True"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Label Content="Friend and Clan Status" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
-                <local:NumberUpDown Number="{Binding Path=FriendClanStatus}" NumberChange="1" MinNumber="4" MaxNumber="7" Overflow="True"/>
+                <local:NumberUpDown Number="{Binding Path=FriendClanStatus}" NumberChange="1" MinNumber="4" MaxNumber="7" NumberWrap="True"/>
             </StackPanel>
 
             <ToggleButton Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" IsChecked="{Binding Path=SpawnEffects}" Content="Spawn Effects"/>
@@ -51,14 +51,14 @@
 
             <StackPanel Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Label Content="FOV (Y-Axis)" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
-                <local:NumberUpDown Number="{Binding Path=FieldOfView}" NumberChange="1" MinNumber="30" MaxNumber="100" Overflow="False"/>
+                <local:NumberUpDown Number="{Binding Path=FieldOfView}" NumberChange="1" MinNumber="30" MaxNumber="100" NumberWrap="False"/>
             </StackPanel>
 
             <ToggleButton Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" IsChecked="{Binding Path=ScoreboardToggle}" Content="Scoreboard Toggle"/>
 
             <StackPanel Grid.Column="1" Grid.Row="11" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Label Content="Gore" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
-                <local:NumberUpDown Number="{Binding Path=Gore}" NumberChange="1" MinNumber="0" MaxNumber="3" Overflow="True"/>
+                <local:NumberUpDown Number="{Binding Path=Gore}" NumberChange="1" MinNumber="0" MaxNumber="3" NumberWrap="True"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

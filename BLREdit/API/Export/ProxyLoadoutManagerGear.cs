@@ -12,12 +12,10 @@ public sealed class ProxyLoadoutManagerGear
     public int LowerBody { get; set; }
     public int Helmet { get; set; }
     public int Badge { get; set; }
-#pragma warning disable CA1707 // Identifiers should not contain underscores
     public int Gear_R1 { get; set; }
     public int Gear_R2 { get; set; }
     public int Gear_L1 { get; set; }
     public int Gear_L2 { get; set; }
-#pragma warning restore CA1707 // Identifiers should not contain underscores
     public int Tactical { get; set; }
     public int ButtPack { get; set; }
     public int Avatar { get; set; } = -1;

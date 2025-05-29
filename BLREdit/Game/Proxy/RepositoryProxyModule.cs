@@ -3,10 +3,14 @@ using BLREdit.API.REST_API.Gitlab;
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BLREdit.Game.Proxy;
 
@@ -14,6 +18,8 @@ public sealed class RepositoryProxyModule
 {
     public RepositoryProvider RepositoryProvider { get; set; } = RepositoryProvider.Gitlab;
     [JsonIgnore] public string InstallName { get { return $"{PackageFileName}"; } }
+    [JsonIgnore] public string TrimedOwner { get { return Owner.Split(Path.GetInvalidFileNameChars())[0]; } }
+    [JsonIgnore] public string CacheName { get { return $"{InstallName}-{TrimedOwner}"; } }
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
@@ -79,7 +85,7 @@ public sealed class RepositoryProxyModule
             }
             catch(Exception error)
             {
-                LoggingSystem.Log($"failed to get release info for {InstallName}\n{error}");
+                LoggingSystem.Log($"failed to get release info for {CacheName}\n{error}");
             }
 
             lockLatestReleaseInfo = false;
@@ -97,7 +103,7 @@ public sealed class RepositoryProxyModule
             var packages = GitlabClient.GetGenericPackages(Owner, Repository, ModuleName);
             packages.Wait();
             if (packages.Result is null || packages.Result.Length <= 0) { LoggingSystem.Log($"Failed to to get generic package list for ({Owner}/{Repository}/{ModuleName})"); return null; }
-            var result = GitlabClient.DownloadPackage(packages.Result[0], $"{InstallName}.dll", PackageFileName);
+            var result = GitlabClient.DownloadPackage(packages.Result[0], $"{CacheName}.dll", PackageFileName);
             if (result.Item1)
             {
                 var rel = new GitlabRelease() { Owner = Owner, Repository = Repository, ReleasedAt = result.Item3 };
@@ -113,20 +119,21 @@ public sealed class RepositoryProxyModule
             }
         }
 
-        (bool, string) dl = GitHubClient.DownloadFileFromRelease(GitHubRelease, $"{InstallName}.dll", ModuleName);
-
-        ProxyModule? module = null;
-        if (dl.Item1)
+        if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
         {
-            if (RepositoryProvider == RepositoryProvider.GitHub && GitHubRelease is not null)
-            { module = new ProxyModule(GitHubRelease, Owner, Repository, ModuleName, FileName, Client, Server); }
+            (bool, string) dl = GitHubClient.DownloadFileFromRelease(GitHubRelease, $"{CacheName}.dll", ModuleName);
 
-            if (module is null) return module;
-
-            UpdateModuleCache(module);
+            ProxyModule? module = null;
+            if (dl.Item1)
+            {
+                module = new ProxyModule(GitHubRelease, Owner, Repository, ModuleName, FileName, Client, Server);
+                UpdateModuleCache(module);
+            }
+            lockDownload = false;
+            return module;
         }
         lockDownload = false;
-        return module;
+        return null;
     }
 
     private static void UpdateModuleCache(ProxyModule module)
@@ -143,13 +150,37 @@ public sealed class RepositoryProxyModule
     }
 }
 
-public sealed class ProxyModuleSetting
+public sealed class ProxyModuleSetting : INotifyPropertyChanged
 {
+    #region Events
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    #endregion Events
+
     [JsonPropertyName("Name")]
     public string SettingName { get; set; } = "SettingName";
     [JsonPropertyName("Type")]
     public ModuleSettingType SettingType { get; set; } = ModuleSettingType.String;
     public object? DefaultValue { get; set; } = "value";
+    [JsonIgnore]
+    public object? CurrentValue { get; set; }
+
+    [JsonIgnore]
+    public bool CurrentValueAsBool { get{ if (CurrentValue is bool b) { return b; } else { return false; } } set { CurrentValue = value; OnPropertyChanged(); } }
+    [JsonIgnore]
+    public string CurrentValueAsString { get { if (CurrentValue is string s) { return s; } else { return string.Empty; } } 
+        set { CurrentValue = value; OnPropertyChanged(); } }
+    [JsonIgnore]
+    public double CurrentValueAsDouble { get { if (CurrentValue is double d) { return d; } else { return 0; } } set { CurrentValue = value; OnPropertyChanged(); } }
+
+    [JsonIgnore]
+    public int MinNumberValue { get; set; } = int.MinValue;
+    [JsonIgnore]
+    public int MaxNumberValue { get; set; } = int.MaxValue;
+
     [JsonIgnore]
     public Type ValueType
     {
@@ -164,6 +195,13 @@ public sealed class ProxyModuleSetting
             };
         }
     }
+
+    [JsonIgnore]
+    public Visibility NumberVisibility { get { return SettingType switch { ModuleSettingType.Number => Visibility.Visible, _ => Visibility.Collapsed, }; } }
+    [JsonIgnore]
+    public Visibility ToggleVisibility { get { return SettingType switch { ModuleSettingType.Bool => Visibility.Visible, _ => Visibility.Collapsed, }; } }
+    [JsonIgnore]
+    public Visibility TextVisibility { get { return SettingType switch { ModuleSettingType.String => Visibility.Visible, _ => Visibility.Collapsed, }; } }
 
     public KeyValuePair<string, JsonNode>? CreateDefaultSetting()
     {
@@ -185,6 +223,58 @@ public sealed class ProxyModuleSetting
             case ModuleSettingType.Null:
             default:
                 return null;
+        }
+    }
+
+    internal JsonNode? CreateCurrentValue()
+    {
+        switch (SettingType)
+        {
+            case ModuleSettingType.Number:
+                if (CurrentValue is double d) { return JsonValue.Create(d); }
+                return 0;
+            case ModuleSettingType.String:
+                if (CurrentValue is string s) { return JsonValue.Create(s); }
+                return string.Empty;
+            case ModuleSettingType.Bool:
+                if (CurrentValue is bool b) { return JsonValue.Create(b); }
+                return JsonValue.Create(false); ;
+            case ModuleSettingType.Array:
+            case ModuleSettingType.Object:
+            case ModuleSettingType.Undefined:
+            case ModuleSettingType.Null:
+            default:
+                return null;
+        }
+    }
+
+    public ProxyModuleSetting() {}
+
+    public ProxyModuleSetting(ProxyModuleSetting origin, JsonNode? jsonData)
+    {
+        if (origin is null) { LoggingSystem.FatalLog("Original ProxyModuleSetting was null"); return; }
+        if (jsonData is null) { LoggingSystem.FatalLog("JsonData was null"); return; }
+        SettingName = origin.SettingName;
+        DefaultValue = origin.DefaultValue;
+        SettingType = origin.SettingType;
+
+        switch (SettingType)
+        {
+            case ModuleSettingType.Number:
+                if (jsonData.GetValueKind() == JsonValueKind.Number) { CurrentValue = jsonData.GetValue<double>(); }
+                break;
+            case ModuleSettingType.String:
+                if (jsonData.GetValueKind() == JsonValueKind.String) { CurrentValue = jsonData.GetValue<string>(); }
+                break;
+            case ModuleSettingType.Bool:
+                if (jsonData.GetValueKind() == JsonValueKind.True || jsonData.GetValueKind() == JsonValueKind.False) { CurrentValue = jsonData.GetValue<bool>(); }
+                break;
+            case ModuleSettingType.Array:
+            case ModuleSettingType.Object:
+            case ModuleSettingType.Undefined:
+            case ModuleSettingType.Null:
+            default:
+                break;
         }
     }
 }

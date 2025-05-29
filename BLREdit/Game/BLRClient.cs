@@ -277,15 +277,15 @@ public sealed class BLRClient : INotifyPropertyChanged
         return !string.IsNullOrEmpty(OriginalPath) && File.Exists(OriginalPath);
     }
 
-    public void RemoveModule(string moduleInstallName)
+    public void RemoveModule(string moduleCacheName)
     {
         try
         {
-            LoggingSystem.Log($"Removing {moduleInstallName}");
+            LoggingSystem.Log($"Removing {moduleCacheName}");
 
             foreach (var module in InstalledModules)
             {
-                if (module.InstallName == moduleInstallName)
+                if (module.CacheName == moduleCacheName)
                 {
                     InstalledModules.Remove(module);
                     Invalidate();
@@ -296,7 +296,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         catch (Exception error)
         {
-            LoggingSystem.MessageLog($"Failed to remove {moduleInstallName} reason:\n{error.Message}", "Error"); //TODO: Add Localization
+            LoggingSystem.MessageLog($"Failed to remove {moduleCacheName} reason:\n{error.Message}", "Error"); //TODO: Add Localization
             LoggingSystem.Log(error.StackTrace);
         }
     }
@@ -447,19 +447,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    public bool IsModuleInstalledAndUpToDate(VisualProxyModule module)
-    {
-        if (module is null) return false;
-        foreach (var installedModule in InstalledModules)
-        {
-            if (installedModule.InstallName == module.RepositoryProxyModule.InstallName && installedModule.Published >= module.ReleaseDate)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void ValidateModules(List<ProxyModule>? enabledModules = null)
     {
         App.AvailableProxyModuleCheck(); // Get Available Modules just in case
@@ -478,7 +465,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (App.AvailableProxyModules.Count > 0 && DataStorage.Settings.StrictModuleChecks.Is)
         {
             LoggingSystem.Log($"Filtering Installed Modules");
-            InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.InstallName == module.InstallName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; }));
+            InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.CacheName == module.CacheName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; }));
         }
 
         foreach (var file in Directory.EnumerateFiles(ModulesPath))
@@ -540,18 +527,18 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         foreach (var module in enabledModules)
         {
-            LoggingSystem.Log($"\t{module.InstallName}:");
+            LoggingSystem.Log($"\t{module.CacheName}:");
             LoggingSystem.Log($"\t\tClient:{module.Client}");
             LoggingSystem.Log($"\t\tServer:{module.Server}");
             if (module.Client)
             {
-                AddModuleConfigAndKeepSettings(configClient, configClientCopy, module);
+                AddModuleConfigAndKeepSettings(configClient, configClientCopy, module.InstallName);
             }
             if (module.Server)
             {
-                AddModuleConfigAndKeepSettings(configServer, configServerCopy, module);
+                AddModuleConfigAndKeepSettings(configServer, configServerCopy, module.InstallName);
             }
-            AddModuleConfigAndKeepSettings(config, configCopy, module);
+            AddModuleConfigAndKeepSettings(config, configCopy, module.InstallName);
         }
         try
         {
@@ -564,17 +551,17 @@ public sealed class BLRClient : INotifyPropertyChanged
         LoggingSystem.Log($"Finished Validating Modules of {this}");
     }
 
-    private static void AddModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, ProxyModule module)
+    private static void AddModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, string moduleName)
     {
         RepositoryProxyModule? moduleMeta = null;
         foreach (var mod in App.AvailableProxyModules)
         {
-            if (mod.RepositoryProxyModule.InstallName == module.InstallName) { moduleMeta = mod.RepositoryProxyModule; break; }
+            if (mod.RepositoryProxyModule.CacheName == moduleName) { moduleMeta = mod.RepositoryProxyModule; break; }
         }
         JsonObject? settings = null;
         foreach (var mod in old.Modules)
         {
-            if (mod.Key == module.InstallName) { settings = mod.Value; break; }
+            if (mod.Key == moduleName) { settings = mod.Value; break; }
         }
 
         Dictionary<string, JsonNode?> newSettingsDictonary = [];
@@ -606,8 +593,11 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             Settings.Add(setting.Key, setting.Value);
         }
-
-        config.Modules.Add(module.InstallName, Settings);
+        if (config.Modules.ContainsKey(moduleName))
+        { 
+            
+        }
+        config.Modules.Add(moduleName, Settings);
     }
 
     public static bool ValidateClientHash(string? currentHash, string? fileLocation, out string? newHash)
@@ -842,5 +832,50 @@ public sealed class BLRClient : INotifyPropertyChanged
     public override int GetHashCode()
     {
         return base.GetHashCode();
+    }
+
+    internal ObservableCollection<ProxyModuleSetting>? LoadModuleSettings(VisualProxyModule module)
+    {
+        var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
+        var copy = config.Copy();
+        config.Modules.Remove(module.RepositoryProxyModule.CacheName);
+        AddModuleConfigAndKeepSettings(config, copy, module.RepositoryProxyModule.CacheName);
+        ObservableCollection<ProxyModuleSetting> Settings = [];
+        if (config.Modules.TryGetValue(module.RepositoryProxyModule.CacheName, out var value) && value is not null)
+        {
+            foreach (var setting in value)
+            {
+                foreach (var availabeSetting in module.RepositoryProxyModule.ModuleSettings)
+                {
+                    if (setting.Key == availabeSetting.SettingName)
+                    {
+                        Settings.Add(new(availabeSetting, setting.Value));
+                    }
+                }
+            }
+        }
+
+        return Settings;
+    }
+
+    internal void SaveModuleSettings(VisualProxyModule module, Collection<ProxyModuleSetting> settings)
+    {
+        var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
+        if (config.Modules.TryGetValue(module.RepositoryProxyModule.CacheName, out var value) && value is not null)
+        {
+            foreach (var availabeSetting in settings)
+            {
+                value.Remove(availabeSetting.SettingName);
+                value.Add(availabeSetting.SettingName, availabeSetting.CreateCurrentValue());
+            }
+        }
+
+        try
+        {
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
+        }
+        catch (UnauthorizedAccessException notAuthorized) { LoggingSystem.MessageLog($"failed to write config file not Authorized!\nconfig file might be read only!\n{notAuthorized.Message}\n{notAuthorized.StackTrace}", "Error"); }
+        catch (Exception error) { LoggingSystem.MessageLog($"failed to write config file!\n{error.Message}\n{error.StackTrace}", "Error"); }
+
     }
 }
