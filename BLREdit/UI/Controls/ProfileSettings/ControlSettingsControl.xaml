@@ -56,10 +56,10 @@
             <local:NumberUpDown Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" MinNumber="1000" NumberChange="1000" MaxNumber="216000" Number="{Binding Path=GamepadTightAimSensitivity}"/>
 
             <Label              Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Content="LeftStick Deadzone:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
-            <local:NumberUpDown Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" MinNumber="1500" NumberChange="1000" MaxNumber="55000" Number="{Binding Path=LeftStickDeadzone}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" MinNumber="1500" NumberChange="500" MaxNumber="55000" Number="{Binding Path=LeftStickDeadzone}"/>
 
             <Label              Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Content="RightStick Deadzone:" VerticalAlignment="Center"  Style="{StaticResource DescriptorLabel}"/>
-            <local:NumberUpDown Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" MinNumber="1500" NumberChange="1000" MaxNumber="55000" Number="{Binding Path=RightStickDeadzone}"/>
+            <local:NumberUpDown Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" MinNumber="1500" NumberChange="500" MaxNumber="55000" Number="{Binding Path=RightStickDeadzone}"/>
         </Grid>
     </ScrollViewer>
 </UserControl>

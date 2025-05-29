@@ -133,7 +133,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     /// 
     /// Ingame Settings Scale 2x
     /// </summary>
-    [JsonIgnore, ProfileSetting(35)] public int GamepadSensitivity { get { return GetValueOf(); } set { SetValueOf(Clamp(value, 17000, 159500)); } }
+    [JsonIgnore, ProfileSetting(35)] public int GamepadSensitivity { get { return GetValueOf(); } set { SetValueOf(value); } }
     /// <summary>
     /// SwapSticks Toggle ID:40
     /// </summary>
@@ -159,7 +159,7 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     /// 
     /// Ingame Settings Scale 2x
     /// </summary>
-    [JsonIgnore, ProfileSetting(94)] public int GamepadTightAimSensitivity { get { return GetValueOf(); } set { SetValueOf(Clamp(value, 1000, 216000)); } }
+    [JsonIgnore, ProfileSetting(94)] public int GamepadTightAimSensitivity { get { return GetValueOf(); } set { SetValueOf(value); } }
     /// <summary>
     /// Sprint Toggle ID:95
     /// </summary>
@@ -297,13 +297,13 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     /// Best to keep it at or above 1000 below it skips mouse input
     /// Ingame Settings Scale 2x
     /// </summary>
-    [JsonIgnore, ProfileSetting(717)] public int MouseSensitivity { get { return GetValueOf(); } set { SetValueOf(Clamp(value, 1000, 105000)); } }
+    [JsonIgnore, ProfileSetting(717)] public int MouseSensitivity { get { return GetValueOf(); } set { SetValueOf(value); } }
     /// <summary>
     /// Mouse Tight Aim (ADS) Sensitivity ID:718 ValueRange 1000-151000 Base = 1000 (0=0+Base / 25=75000+Base / 50=150000+Base)
     /// Best to keep it at or above 5000 below it skips mouse input
     /// Ingame Settings Scale 3x
     /// </summary>
-    [JsonIgnore, ProfileSetting(718)] public int MouseTightAimSensitivity { get { return GetValueOf(); } set { SetValueOf(Clamp(value, 5000, 105000)); } }
+    [JsonIgnore, ProfileSetting(718)] public int MouseTightAimSensitivity { get { return GetValueOf(); } set { SetValueOf(value); } }
     /// <summary>
     /// Swap Loadout With Movement Keys ID:721
     /// </summary>
@@ -321,13 +321,13 @@ public sealed class BLRProfileSettingsWrapper : INotifyPropertyChanged
     /// 
     /// Ingame Settings Scale 3x
     /// </summary>
-    [JsonIgnore, ProfileSetting(1300)] public int LeftStickDeadzone { get { return GetValueOf(); } set { SetValueOf(Clamp(value, 5000, 105000)); } }
+    [JsonIgnore, ProfileSetting(1300)] public int LeftStickDeadzone { get { return GetValueOf(); } set { SetValueOf(value); } }
     /// <summary>
     /// LeftStick Deadzone ID:1301 ValueRange 1500-55000 Base = ?? (0=0+Base / 25=75000+Base / 50=150000+Base)
     /// 
     /// Ingame Settings Scale 3x
     /// </summary>
-    [JsonIgnore, ProfileSetting(1301)] public int RightStickDeadzone { get { return GetValueOf(); } set { SetValueOf(Clamp(value, 5000, 105000)); } }
+    [JsonIgnore, ProfileSetting(1301)] public int RightStickDeadzone { get { return GetValueOf(); } set { SetValueOf(value); } }
     #endregion Settings
 
 

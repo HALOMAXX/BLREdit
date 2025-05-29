@@ -2,12 +2,14 @@
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
+using BLREdit.UI.Windows;
 
 using HtmlAgilityPack;
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
@@ -179,6 +181,18 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
+    private ICommand? configureCommand;
+    public ICommand ConfigureCommand
+    {
+        get
+        {
+            configureCommand ??= new RelayCommand(
+                    param => ConfigureModule(MainWindow.ClientWindow.Client)
+                );
+            return configureCommand;
+        }
+    }
+
     private ProxyModule? installedModule;
     public ProxyModule? InstalledModule
     { get { return installedModule; } }
@@ -200,6 +214,14 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
+    private void ConfigureModule(BLRClient? client)
+    {
+        if (client is null) { LoggingSystem.LogNull(); return; }
+        var view = new ModuleConfigView(client, this);
+        var window = new ModuleConfigWindow(view);
+        window.ShowDialog();
+    }
+
     private void CheckForInstall(BLRClient? client)
     {
         Installed.Set(false);
@@ -207,7 +229,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
 
         foreach (var mod in client.InstalledModules)
         {
-            if (mod.InstallName == RepositoryProxyModule.InstallName)
+            if (mod.CacheName == RepositoryProxyModule.CacheName)
             {
                 installedModule = mod;
                 Installed.Set(true);
@@ -231,13 +253,18 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         }
     }
 
-    public static bool TryGet(string installName, out ProxyModule? module)
+    public static bool TryGet(string cacheName, out ProxyModule? module)
     {
         module = null;
-        for (int i = 0; i < DataStorage.CachedModules.Count; i++)
+        if (string.IsNullOrEmpty(cacheName)) { LoggingSystem.FatalLog("module cacheName or owner was null!"); return false; }
+
+        foreach (var mod in DataStorage.CachedModules)
         {
-            if (DataStorage.CachedModules[i].InstallName.Equals(installName, StringComparison.Ordinal)) { module = DataStorage.CachedModules[i]; return true; }
-        }
+            if (mod.InstallName.Equals(cacheName, StringComparison.Ordinal))
+            {
+                module = mod; return true;
+            }
+        }            
         return false;
     }
 
@@ -245,65 +272,65 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     public void InstallModule(BLRClient? client)
     {
         if (client is null || LockInstall.Is) return;
+        if (ReleaseDate is null) { LoggingSystem.MessageLog($"Failed to get Release Date of {RepositoryProxyModule.ModuleName}", BLREdit.Properties.Resources.msgT_Error); return; }
         LockInstall.Set(true);
         try
         {
             ProxyModule? module = null;
 
-            if (TryGet(RepositoryProxyModule.InstallName, out var value))
+            for (int i = DataStorage.CachedModules.Count - 1; i >= 0; i--)
             {
-                LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate?.ToString("yyyy/MM/dd HH:mm:ss:ff")}] / [{value?.Published.ToString("yyyy/MM/dd HH:mm:ss:ff")}] for {RepositoryProxyModule.InstallName}");
-                if(ReleaseDate <= (value?.Published ?? DateTime.MinValue)) module = value;
-            }
-            else
-            {
-                LoggingSystem.Log($"Got Latest Release Date:[{ReleaseDate}] / [---]");
+                if (DataStorage.CachedModules[i].CacheName == RepositoryProxyModule.CacheName) 
+                {
+                    if (ReleaseDate <= DataStorage.CachedModules[i].Published)
+                    {
+                        if (File.Exists($"downloads\\{DataStorage.CachedModules[i].InstallName}"))
+                        {
+                            LoggingSystem.Log($"Found Latest Release in Download Cache Date: Latest:[{ReleaseDate?.ToString("yyyy/MM/dd HH:mm:ss:ff")}] / Cache:[{DataStorage.CachedModules[i].Published.ToString("yyyy/MM/dd HH:mm:ss:ff")}] for {RepositoryProxyModule.CacheName}");
+                            module = DataStorage.CachedModules[i];
+                            break;
+                        }
+                        else
+                        {
+                            DataStorage.CachedModules.RemoveAt(i);
+                        }
+                    }
+                    else
+                    {
+                        DataStorage.CachedModules.RemoveAt(i);
+                    }
+                }
             }
 
-            if (module is not null)
-            {
-                if (File.Exists($"downloads\\{module.InstallName}"))
-                {
-                    LoggingSystem.Log($"Found {module.InstallName} in downloadCache");
-                }
-                else
-                {
-                    DataStorage.CachedModules.Remove(module);
-                    module = null;
-                }
-            }
-            else
-            {
-                LoggingSystem.Log($"{RepositoryProxyModule.InstallName} is not in downloadCache");
-            }
+            if (module is null) { LoggingSystem.Log($"{RepositoryProxyModule.CacheName} Latest Release was not Found in Download Cache"); }
 
             module ??= RepositoryProxyModule.DownloadLatest();
 
             if (module is not null)
             {
-                File.Copy($"downloads\\{module.InstallName}.dll", $"{client.ModulesPath}\\{module.InstallName}.dll", true);
-                LoggingSystem.Log($"Copied {module.InstallName} from downloadCache to client module location");
+                File.Copy($"downloads\\{module.CacheName}.dll", $"{client.ModulesPath}\\{module.InstallName}.dll", true);
+                LoggingSystem.Log($"Copied {module.CacheName} from downloadCache to client module location");
                 for (int i = 0; i < client.InstalledModules.Count; i++)
                 {
-                    if (client.InstalledModules[i].InstallName == module.InstallName)
-                    { LoggingSystem.Log($"Removing {client.InstalledModules[i]}"); client.InstalledModules.RemoveAt(i); client.Invalidate(); i--; }
+                    if (client.InstalledModules[i].InstallName == module.InstallName) //TODO: Sketchy (will overwrite the older) behaviour if two different modules have the same InstallName!!!
+                    { LoggingSystem.Log($"Removing {client.InstalledModules[i].CacheName} [{client.InstalledModules[i].Published}]"); client.InstalledModules.RemoveAt(i); i--; }
                 }
                 client.InstalledModules.Add(module);
                 client.Invalidate();
-                LoggingSystem.Log($"Added {RepositoryProxyModule.InstallName} to installed modules of {client}");
+                LoggingSystem.Log($"Added {RepositoryProxyModule.CacheName} to installed modules of {client}");
             }
             else
             {
-                LoggingSystem.MessageLog($"failed to install module:\n{RepositoryProxyModule.InstallName}\nyou might want to use a Different BLRevive/Proxy version!", BLREdit.Properties.Resources.msgT_Error); //TODO: Add Localization
+                LoggingSystem.MessageLog($"failed to download and install module:\n{RepositoryProxyModule.CacheName}", BLREdit.Properties.Resources.msgT_Error); //TODO: Add Localization
             }
         }
         catch (Exception error)
         {
-            LoggingSystem.MessageLog($"failed to install module:\n{RepositoryProxyModule.InstallName}\nreason:\n{error}", "Error"); //TODO: Add Localization
+            LoggingSystem.MessageLog($"failed to install module:\n{RepositoryProxyModule.CacheName}\nreason:\n{error}", BLREdit.Properties.Resources.msgT_Error); //TODO: Add Localization
         }
         finally
         {
-            LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.InstallName}");
+            LoggingSystem.Log($"Finished Installing {RepositoryProxyModule.CacheName}");
             LockInstall.Set(false);
         }
     }
@@ -325,11 +352,11 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         LockRemove.Set(true);
         try
         {
-            client.RemoveModule(RepositoryProxyModule.InstallName);
+            client.RemoveModule(RepositoryProxyModule.CacheName);
         }
         catch (Exception error)
         {
-            LoggingSystem.Log($"Failed to remove Module({RepositoryProxyModule.InstallName})\nReason: {error}");
+            LoggingSystem.Log($"Failed to remove Module({RepositoryProxyModule.CacheName})\nReason: {error}");
         }
         finally
         {
@@ -338,7 +365,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
             OnPropertyChanged(nameof(InstalledModule));
             OnPropertyChanged(nameof(Installed));
             OnPropertyChanged(nameof(UpToDate));
-            LoggingSystem.Log($"Finished removing {RepositoryProxyModule.InstallName}");
+            LoggingSystem.Log($"Finished removing {RepositoryProxyModule.CacheName}");
             LockRemove.Set(false);
         }
     }
@@ -374,7 +401,9 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             var packages = await GitlabClient.GetGenericPackages(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository, RepositoryProxyModule.ModuleName);
             if (packages is null || packages.Length <= 0) { return DateTime.MinValue; }
-            var d = (await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.PackageFileName}.dll"))?.CreatedAt ?? DateTime.MinValue;
+            //var package = await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.PackageFileName}.dll");
+            //var d = (package)?.CreatedAt ?? DateTime.MinValue;
+            var d = (packages[0])?.CreatedAt ?? DateTime.MinValue;
             return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
         }
     }

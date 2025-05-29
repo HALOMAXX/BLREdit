@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
+using System.Windows.Shapes;
 
 namespace BLREdit;
 
@@ -47,6 +48,18 @@ public static class LoggingSystem
             MessageBoxResult.None or MessageBoxResult.Cancel or MessageBoxResult.No => false,
             _ => false,
         };
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void MessageLogClipboard(string message, string title)
+    {
+        Log($"[MessageBox]({title})(OK): {message}");
+        Trace.Flush();
+
+        IOResources.FileToClipboard = App.CurrentLogFile.FullName;
+        Thread.Sleep(100);
+
+        MessageBox.Show(message, title, MessageBoxButton.OK);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

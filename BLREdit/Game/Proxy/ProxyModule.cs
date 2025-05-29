@@ -4,6 +4,7 @@ using BLREdit.API.REST_API.Gitlab;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Text.Json.Serialization;
 
 namespace BLREdit.Game.Proxy;
@@ -11,6 +12,8 @@ namespace BLREdit.Game.Proxy;
 public sealed class ProxyModule
 {
     public string InstallName { get { return $"{PackageFileName}"; } }
+    [JsonIgnore] public string TrimedOwner { get { return Owner.Split(Path.GetInvalidFileNameChars())[0]; } }
+    [JsonIgnore] public string CacheName { get { return $"{InstallName}-{TrimedOwner}"; } }
     public string Owner { get; set; } = "blrevive";
     public string Repository { get; set; } = "modules/loadout-manager";
     public string ModuleName { get; set; } = "LoadoutManager";
@@ -55,7 +58,7 @@ sealed class ProxyModuleComparer : IEqualityComparer<ProxyModule>
     bool IEqualityComparer<ProxyModule>.Equals(ProxyModule x, ProxyModule y)
     {
         if(x is null || y is null) return false;
-        return x.InstallName == y.InstallName;
+        return (x.CacheName == y.CacheName);
     }
 
     int IEqualityComparer<ProxyModule>.GetHashCode(ProxyModule obj)
@@ -64,7 +67,7 @@ sealed class ProxyModuleComparer : IEqualityComparer<ProxyModule>
         if (obj is null) return 0;
 
         //Get hash code for the Name field if it is not null.
-        int hashProductName = obj.InstallName == null ? 0 : obj.InstallName.GetHashCode();
+        int hashProductName = obj.CacheName == null ? 0 : obj.CacheName.GetHashCode();
 
         //Calculate the hash code for the product.
         return hashProductName;
