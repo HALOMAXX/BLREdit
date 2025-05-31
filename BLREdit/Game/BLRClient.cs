@@ -23,9 +23,6 @@ using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
 
-using PeNet;
-using PeNet.Header.Resource;
-
 namespace BLREdit.Game;
 
 public sealed class BLRClient : INotifyPropertyChanged
