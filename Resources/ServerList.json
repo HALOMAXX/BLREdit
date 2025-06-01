@@ -46,8 +46,8 @@
   {
     "ID": "a.lt staging 1",
     "ServerAddress": "staging-001.blrevive.northamp.fr",
-    "Port": 30211,
-    "InfoPort": 30211,
+    "Port": 7777,
+    "InfoPort": 7777,
     "Hidden": true,
     "Region": "EU-West"
   },
