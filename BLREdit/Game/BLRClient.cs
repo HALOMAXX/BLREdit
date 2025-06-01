@@ -23,9 +23,6 @@ using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
 
-using PeNet;
-using PeNet.Header.Resource;
-
 namespace BLREdit.Game;
 
 public sealed class BLRClient : INotifyPropertyChanged
@@ -532,13 +529,13 @@ public sealed class BLRClient : INotifyPropertyChanged
             LoggingSystem.Log($"\t\tServer:{module.Server}");
             if (module.Client)
             {
-                AddModuleConfigAndKeepSettings(configClient, configClientCopy, module.InstallName);
+                AddModuleConfigAndKeepSettings(configClient, configClientCopy, module.CacheName, module.InstallName);
             }
             if (module.Server)
             {
-                AddModuleConfigAndKeepSettings(configServer, configServerCopy, module.InstallName);
+                AddModuleConfigAndKeepSettings(configServer, configServerCopy, module.CacheName, module.InstallName);
             }
-            AddModuleConfigAndKeepSettings(config, configCopy, module.InstallName);
+            AddModuleConfigAndKeepSettings(config, configCopy, module.CacheName, module.InstallName);
         }
         try
         {
@@ -551,29 +548,30 @@ public sealed class BLRClient : INotifyPropertyChanged
         LoggingSystem.Log($"Finished Validating Modules of {this}");
     }
 
-    private static void AddModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, string moduleName)
+    private static void AddModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, string moduleName, string installName)
     {
         RepositoryProxyModule? moduleMeta = null;
         foreach (var mod in App.AvailableProxyModules)
         {
             if (mod.RepositoryProxyModule.CacheName == moduleName) { moduleMeta = mod.RepositoryProxyModule; break; }
         }
-        JsonObject? settings = null;
+        JsonObject? oldSettingsJsonObject = null;
         foreach (var mod in old.Modules)
         {
-            if (mod.Key == moduleName) { settings = mod.Value; break; }
+            if (mod.Key == installName) { oldSettingsJsonObject = mod.Value; break; }
         }
 
         Dictionary<string, JsonNode?> newSettingsDictonary = [];
 
-        if (settings != null)
+        if (oldSettingsJsonObject != null)
         {
-            foreach (var setting in settings)
+            foreach (var setting in oldSettingsJsonObject)
             {
                 if (setting.Value != null) { newSettingsDictonary.Add(setting.Key, setting.Value.DeepClone()); }
             }
             
         }
+
         if (moduleMeta != null)
         {
             foreach (var moduleSetting in moduleMeta.ModuleSettings)
@@ -588,16 +586,12 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
         }
 
-        var Settings = new JsonObject();
+        var newSettingsJsonObject = new JsonObject();
         foreach (var setting in newSettingsDictonary)
         {
-            Settings.Add(setting.Key, setting.Value);
+            newSettingsJsonObject.Add(setting.Key, setting.Value);
         }
-        if (config.Modules.ContainsKey(moduleName))
-        { 
-            
-        }
-        config.Modules.Add(moduleName, Settings);
+        config.Modules.Add(installName, newSettingsJsonObject);
     }
 
     public static bool ValidateClientHash(string? currentHash, string? fileLocation, out string? newHash)
@@ -838,10 +832,10 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
         var copy = config.Copy();
-        config.Modules.Remove(module.RepositoryProxyModule.CacheName);
-        AddModuleConfigAndKeepSettings(config, copy, module.RepositoryProxyModule.CacheName);
+        config.Modules.Remove(module.RepositoryProxyModule.InstallName);
+        AddModuleConfigAndKeepSettings(config, copy, module.RepositoryProxyModule.CacheName, module.RepositoryProxyModule.InstallName);
         ObservableCollection<ProxyModuleSetting> Settings = [];
-        if (config.Modules.TryGetValue(module.RepositoryProxyModule.CacheName, out var value) && value is not null)
+        if (config.Modules.TryGetValue(module.RepositoryProxyModule.InstallName, out var value) && value is not null)
         {
             foreach (var setting in value)
             {
@@ -860,8 +854,34 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     internal void SaveModuleSettings(VisualProxyModule module, Collection<ProxyModuleSetting> settings)
     {
+        var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
+        var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
         var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
-        if (config.Modules.TryGetValue(module.RepositoryProxyModule.CacheName, out var value) && value is not null)
+
+        if (module.RepositoryProxyModule.Client)
+        {
+            if (configClient.Modules.TryGetValue(module.RepositoryProxyModule.InstallName, out var client) && client is not null)
+            {
+                foreach (var availabeSetting in settings)
+                {
+                    client.Remove(availabeSetting.SettingName);
+                    client.Add(availabeSetting.SettingName, availabeSetting.CreateCurrentValue());
+                }
+            }
+        }
+        if (module.RepositoryProxyModule.Server)
+        {
+            if (configServer.Modules.TryGetValue(module.RepositoryProxyModule.InstallName, out var server) && server is not null)
+            {
+                foreach (var availabeSetting in settings)
+                {
+                    server.Remove(availabeSetting.SettingName);
+                    server.Add(availabeSetting.SettingName, availabeSetting.CreateCurrentValue());
+                }
+            }
+        }
+
+        if (config.Modules.TryGetValue(module.RepositoryProxyModule.InstallName, out var value) && value is not null)
         {
             foreach (var availabeSetting in settings)
             {
@@ -872,6 +892,8 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         try
         {
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
             IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
         }
         catch (UnauthorizedAccessException notAuthorized) { LoggingSystem.MessageLog($"failed to write config file not Authorized!\nconfig file might be read only!\n{notAuthorized.Message}\n{notAuthorized.StackTrace}", "Error"); }

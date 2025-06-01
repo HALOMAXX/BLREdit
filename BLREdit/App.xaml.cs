@@ -1256,6 +1256,36 @@ public partial class App : System.Windows.Application
         {
             AvailableProxyModules.Add(new VisualProxyModule(modules[i]));
         }
+
+        ModuleCacheCheck();
+    }
+
+    public static void ModuleCacheCheck()
+    {
+        foreach (var module in AvailableProxyModules)
+        {
+            for (int i = DataStorage.CachedModules.Count - 1; i >= 0; i--)
+            {
+                if (DataStorage.CachedModules[i].CacheName == module.RepositoryProxyModule.CacheName)
+                {
+                    if (module.ReleaseDate <= DataStorage.CachedModules[i].Published)
+                    {
+                        if (File.Exists($"downloads\\{DataStorage.CachedModules[i].CacheName}"))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            DataStorage.CachedModules.RemoveAt(i);
+                        }
+                    }
+                    else
+                    {
+                        DataStorage.CachedModules.RemoveAt(i);
+                    }
+                }
+            }
+        }
     }
 
     public static void DownloadLocalization()
