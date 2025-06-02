@@ -6,7 +6,6 @@ using BLREdit.UI;
 using BLREdit.Import;
 using System.Collections.Generic;
 using System.CodeDom;
-using PeNet.Header.Net.MetaDataTables;
 using System.Reflection;
 using System.Linq;
 

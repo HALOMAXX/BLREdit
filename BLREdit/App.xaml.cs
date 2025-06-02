@@ -9,8 +9,6 @@ using BLREdit.UI;
 using BLREdit.UI.Views;
 using Microsoft.Win32;
 
-using PeNet.Header.Resource;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
