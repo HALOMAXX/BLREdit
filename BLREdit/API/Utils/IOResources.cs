@@ -317,7 +317,7 @@ public sealed class IOResources
         return default;
     }
 
-    private static BlockingCollection<string> FilesToClipboard { get; } = [];
+    public static BlockingCollection<string> FilesToClipboard { get; } = [];
     [STAThread]
     public static void ClipboardThread()
     {
