@@ -67,6 +67,7 @@ public sealed class IOResources
     public static JsonSerializerOptions JSOFields { get; } = new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip, WriteIndented = true, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip, WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
     public static Regex RemoveWhiteSpacesFromJson { get; } = new Regex("(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+");
+    public static string FileToClipboard { get; set; } = "";
 
     [DllImport("kernel32.dll", SetLastError = true)]
     static extern bool CreateSymbolicLink(
@@ -317,26 +318,24 @@ public sealed class IOResources
         return default;
     }
 
-    public static BlockingCollection<string> FilesToClipboard { get; } = [];
-
     [STAThread]
     public static void ClipboardThread()
     {
-        /// fix cpu usage
         while(App.IsRunning)
         {
             try
             {
-                var file = FilesToClipboard.Take();
+                if (string.IsNullOrEmpty(FileToClipboard)) { continue; }
 
-                if (string.IsNullOrEmpty(file)) { continue; }
-
-                Clipboard.SetFileDropList([file]);
+                Clipboard.SetFileDropList([FileToClipboard]);
                 Clipboard.Flush();
+
+                FileToClipboard = "";
             }
             catch (Exception error)
             {
                 LoggingSystem.Log($"{error.Message}\n{error.StackTrace}");
+                FileToClipboard = "";
             }
         }
     }
