@@ -11,17 +11,17 @@ public static class GitHubClient
 
     public static async Task<GitHubRelease?> GetLatestRelease(string owner, string repo)
     {
-        return await Client.GetLatestRelease<GitHubRelease>(owner, repo);
+        return await Client.GetLatestRelease<GitHubRelease>(owner, repo).ConfigureAwait(false);
     }
 
     public static async Task<GitHubRelease[]?> GetReleases(string owner, string repo, int amount = 10, int page = 1)
     {
-        return await Client.GetReleases<GitHubRelease>(owner, repo, amount, page);
+        return await Client.GetReleases<GitHubRelease>(owner, repo, amount, page).ConfigureAwait(false);
     }
 
     public static async Task<GitHubFile?> GetFile(string owner, string repo, string branch, string file)
     {
-        return await Client.GetFile<GitHubFile>(owner, repo, branch, file);
+        return await Client.GetFile<GitHubFile>(owner, repo, branch, file).ConfigureAwait(false);
     }
 
     public static (bool, string) DownloadFileFromRelease(GitHubRelease? release, string destFile, string file, string fileExt = ".dll")

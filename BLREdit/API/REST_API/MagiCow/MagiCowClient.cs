@@ -20,10 +20,10 @@ public sealed class MagiCowClient
         string fail = "";
         try
         {
-            using var response = await HttpGetClient.GetAsync(serverAddress, api, $"http://{server}");
+            using var response = await HttpGetClient.GetAsync(serverAddress, api, $"http://{server}").ConfigureAwait(false);
             if (response is not null && response.IsSuccessStatusCode)
             {
-                var content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 if (content.StartsWith("{") || content.StartsWith("["))
                 { info = IOResources.Deserialize<MagiCowServerInfo>(content); }
                 else 

@@ -14,17 +14,17 @@ public static class GitlabClient
 
     public static async Task<GitlabRelease?> GetLatestRelease(string owner, string repo)
     {
-        return await Client.GetLatestRelease<GitlabRelease>(owner, repo);
+        return await Client.GetLatestRelease<GitlabRelease>(owner, repo).ConfigureAwait(false);
     }
 
     public static async Task<GitlabRelease[]?> GetReleases(string owner, string repo, int amount = 10, int page = 1)
     {
-        return await Client.GetReleases<GitlabRelease>(owner, repo, amount, page);
+        return await Client.GetReleases<GitlabRelease>(owner, repo, amount, page).ConfigureAwait(false);
     }
 
     public static async Task<GitlabFile?> GetFile(string owner, string repo, string branch, string file)
     {
-        return await Client.GetFile<GitlabFile>(owner, repo, branch, file);
+        return await Client.GetFile<GitlabFile>(owner, repo, branch, file).ConfigureAwait(false);
     }
 
     public static (bool, string) DownloadFileFromRelease(GitlabRelease? release, string destFile, string file, string fileExt = ".dll")
@@ -74,7 +74,7 @@ public static class GitlabClient
         if (string.IsNullOrEmpty(owner) || string.IsNullOrEmpty(repository) || string.IsNullOrEmpty(packageName)) { LoggingSystem.FatalLog("owner, repository or packageName were null"); return null; }
         string api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/packages?package_name={packageName}&order_by=created_at&sort=desc";
 
-        var result = await Client.TryGetAPI<GitlabPackage[]>(api);
+        var result = await Client.TryGetAPI<GitlabPackage[]>(api).ConfigureAwait(false);
         if (result.Item1)
         {
             if (result.Item2 is GitlabPackage[] glPack)
@@ -94,7 +94,7 @@ public static class GitlabClient
     {
         if(package is null) { LoggingSystem.FatalLog("GitlabPackage was null"); return null; }
         string api = $"projects/{package.Owner.Replace("/", "%2F")}%2F{package.Repository.Replace("/", "%2F")}/packages/{package.ID}/package_files";
-        var result = await Client.TryGetAPI<GitlabPackageFile[]>(api);
+        var result = await Client.TryGetAPI<GitlabPackageFile[]>(api).ConfigureAwait(false);
         if (result.Item1)
         {
             return result.Item2;
@@ -104,7 +104,7 @@ public static class GitlabClient
 
     public static async Task<GitlabPackageFile?> GetLatestPackageFile(GitlabPackage package, string fileName)
     {
-        var result = await GetPackageFiles(package);
+        var result = await GetPackageFiles(package).ConfigureAwait(false);
         if (result is null) return default;
         GitlabPackageFile? f = default;
         foreach (var file in result)

@@ -1,8 +1,6 @@
 ﻿using BLREdit.Import;
 using BLREdit.UI.Views;
 
-using PeNet;
-
 namespace BLREdit.Export;
 
 public sealed class ProxyLoadoutManagerLoadout

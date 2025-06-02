@@ -18,7 +18,7 @@
     "Required": true,
     "ProxyVersion": "BLRevive",
     "ModuleSettings": [
-      {"Name": "FastGearSwitch", "Type": "Bool", "DefaultValue": false}
+      {"Path": "FastGearSwitch", "Type": "Bool", "DefaultValue": false}
     ]
   },
   {
@@ -30,7 +30,7 @@
     "Required": false,
     "ProxyVersion": "BLRevive",
     "ModuleSettings": [
-      {"Name": "FastGearSwitch", "Type": "Bool", "DefaultValue": false}
+      {"Path": "FastGearSwitch", "Type": "Bool", "DefaultValue": false}
     ]
   },
   {

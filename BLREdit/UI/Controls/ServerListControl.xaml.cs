@@ -1,8 +1,6 @@
 ﻿using BLREdit.API.Utils;
 using BLREdit.Game;
 
-using PeNet.Header.Resource;
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

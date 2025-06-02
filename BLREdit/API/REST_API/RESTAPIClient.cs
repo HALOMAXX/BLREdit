@@ -42,13 +42,13 @@ public sealed class RESTAPIClient
             return (true, (T)newCache);
         }
 
-        using var response = await GetAsync(api);
+        using var response = await GetAsync(api).ConfigureAwait(false);
         if (response is not null && response.IsSuccessStatusCode)
         {
             switch (response.Content.Headers.ContentType.MediaType)
             {
                 case "application/json":
-                    var content = await response.Content.ReadAsStringAsync();
+                    var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var value = IOResources.Deserialize<T>(content);
                     if (value is not null) { RequestCache.Add(api, value); return (true, value); }
                     break;
@@ -74,13 +74,13 @@ public sealed class RESTAPIClient
             return (true, ((byte[], DateTime))newCache);
         }
 
-        using var response = await GetAsync(api);
+        using var response = await GetAsync(api).ConfigureAwait(false);
         if (response is not null && response.IsSuccessStatusCode)
         {
             switch (response.Content.Headers.ContentType.MediaType)
             {
                 case "application/octet-stream":
-                    var bytes = await response.Content.ReadAsByteArrayAsync();
+                    var bytes = await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
                     var date = response.Content.Headers.LastModified?.DateTime ?? DateTime.MinValue;
                     if (bytes is not null) { RequestCache.Add(api, (bytes, date)); return (true, (bytes, date)); }
                     break;
@@ -118,9 +118,9 @@ public sealed class RESTAPIClient
     {
         try
         {
-            var response = await WebResources.HttpClient.GetAsync($"{baseAddress}{api}");
+            var response = await WebResources.HttpClient.GetAsync($"{baseAddress}{api}").ConfigureAwait(false);
             string fail = "";
-            if (!response.IsSuccessStatusCode) { fail = $"\n {await response.Content.ReadAsStringAsync()}"; }
+            if (!response.IsSuccessStatusCode) { fail = $"\n {await response.Content.ReadAsStringAsync().ConfigureAwait(false)}"; }
             LoggingSystem.Log($"[{APIProvider}]({response.StatusCode}): GET {api}{fail}");
             return response;
         }
@@ -133,7 +133,7 @@ public sealed class RESTAPIClient
 
     public async Task<T?> GetLatestRelease<T>(string owner, string repository)
     {
-        var releases = await GetReleases<T>(owner, repository, 1, 1);
+        var releases = await GetReleases<T>(owner, repository, 1, 1).ConfigureAwait(false);
         if (releases is null || releases.Length <= 0) return default;
         return releases[0];
     }
@@ -146,7 +146,7 @@ public sealed class RESTAPIClient
         else
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/releases?page={page}&per_page={per_page}"; }
 
-        var result = await TryGetAPI<T[]>(api);
+        var result = await TryGetAPI<T[]>(api).ConfigureAwait(false);
 
         if (result.Item1)
         {
@@ -180,7 +180,7 @@ public sealed class RESTAPIClient
         else
         { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/repository/files/{file.Replace("/", "%2F").Replace(".", "%2E")}?ref={branch}"; }
 
-        var result = await TryGetAPI<T>(api);
+        var result = await TryGetAPI<T>(api).ConfigureAwait(false);
         if (result.Item1)
         {
             return result.Item2;

@@ -56,7 +56,7 @@ public static class LoggingSystem
         Log($"[MessageBox]({title})(OK): {message}");
         Trace.Flush();
 
-        IOResources.FileToClipboard = App.CurrentLogFile.FullName;
+        IOResources.FilesToClipboard.Add(App.CurrentLogFile.FullName);
         Thread.Sleep(100);
 
         MessageBox.Show(message, title, MessageBoxButton.OK);
@@ -68,7 +68,7 @@ public static class LoggingSystem
         Log($"[FatalError]({path}:{line}): {message}\n\nStacktrace:\n{Environment.StackTrace}");
         Trace.Flush();
 
-        IOResources.FileToClipboard = App.CurrentLogFile.FullName;
+        IOResources.FilesToClipboard.Add(App.CurrentLogFile.FullName);
         Thread.Sleep(100);
 
         MessageBox.Show("A Fatal error has occured. Please DM the latest logfile to @HKN1 or post it on the BLRevive discord!\n\nThe Latest log file has been copied to your Clipboard!\nIt can also be found in the logs->BLREdit folder next the BLREdit Executable\nThe latest ", "FatalError", MessageBoxButton.OK);
