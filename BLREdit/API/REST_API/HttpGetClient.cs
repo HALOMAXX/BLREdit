@@ -15,7 +15,7 @@ public sealed class HttpGetClient
         Uri logUri = new($"{(serverName is not null ? serverName : server)}{api}");
         try
         {
-            var response = await WebResources.HttpClient.GetAsync(uri);
+            var response = await WebResources.HttpClient.GetAsync(uri).ConfigureAwait(false);
             LoggingSystem.Log($"[Http]({response.StatusCode}): GET {logUri}");
             return response;
         }

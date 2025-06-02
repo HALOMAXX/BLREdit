@@ -111,7 +111,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 api = $"https://gitlab.com/{RepositoryProxyModule.Owner}/{RepositoryProxyModule.Repository}";
             }
 
-            var site = await WebResources.HttpClientWeb.GetStringAsync(api);
+            var site = await WebResources.HttpClientWeb.GetStringAsync(api).ConfigureAwait(false);
             HtmlDocument doc = new();
             doc.LoadHtml(site);
 
@@ -208,7 +208,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
         {
             if (releaseDate is null)
             {
-                Task.Run(async () => { releaseDate = await GetLatestReleaseDate(); }).Wait();
+                Task.Run(async () => { releaseDate = await GetLatestReleaseDate().ConfigureAwait(false); }).Wait();
             }
             return releaseDate; 
         }
@@ -385,13 +385,13 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     {
         if (RepositoryProxyModule.RepositoryProvider == RepositoryProvider.GitHub)
         {
-            var releaseInfo = await GitHubClient.GetLatestRelease(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository);
+            var releaseInfo = await GitHubClient.GetLatestRelease(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository).ConfigureAwait(false);
             var d = releaseInfo?.PublishedAt ?? DateTime.MinValue;
             return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
         }
         else
         {
-            var packages = await GitlabClient.GetGenericPackages(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository, RepositoryProxyModule.ModuleName);
+            var packages = await GitlabClient.GetGenericPackages(RepositoryProxyModule.Owner, RepositoryProxyModule.Repository, RepositoryProxyModule.ModuleName).ConfigureAwait(false);
             if (packages is null || packages.Length <= 0) { return DateTime.MinValue; }
             //var package = await GitlabClient.GetLatestPackageFile(packages[0], $"{RepositoryProxyModule.PackageFileName}.dll");
             //var d = (package)?.CreatedAt ?? DateTime.MinValue;

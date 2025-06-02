@@ -23,10 +23,10 @@ public sealed class ServerUtilsClient
         string fail = "";
         try
         {
-            using var response = await HttpGetClient.GetAsync(serverAddress, api, $"http://{server.ServerAddress}:{server.InfoPort}");
+            using var response = await HttpGetClient.GetAsync(serverAddress, api, $"http://{server.ServerAddress}:{server.InfoPort}").ConfigureAwait(false);
             if (response is not null && response.IsSuccessStatusCode)
             {
-                var content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 if (content.StartsWith("{"))
                 {
                     info = IOResources.Deserialize<ServerUtilsInfo>(content);
