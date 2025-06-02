@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
-
-using BLREdit.API.Export;
+﻿using BLREdit.API.Export;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.API.Utils;
 using BLREdit.Export;
@@ -22,6 +7,20 @@ using BLREdit.Game.Proxy;
 using BLREdit.UI;
 using BLREdit.UI.Views;
 using BLREdit.UI.Windows;
+
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace BLREdit.Game;
 
@@ -386,39 +385,6 @@ public sealed class BLRClient : INotifyPropertyChanged
             catch { }
         }
         BLReviveVersion = DataStorage.Settings.SelectedBLReviveVersion;
-    }
-
-    public bool ValidatePatches()
-    {
-        if (DataStorage.Settings.SelectedBLReviveVersion == "BLRevive") return false;
-        bool needUpdatedPatches = false;
-
-        if (BLRClientPatch.AvailablePatches.TryGetValue(this.OriginalHash, out List<BLRClientPatch> patches))
-        {
-            if (AppliedPatches.Count > 0)
-            {
-                foreach (var installedPatch in AppliedPatches)
-                {
-                    bool isValid = false;
-                    foreach (var patch in patches)
-                    {
-                        if (installedPatch.Equals(patch)) isValid = true;
-                    }
-                    if (!isValid) { needUpdatedPatches = true; LoggingSystem.Log($"found old patch {installedPatch.PatchName}"); }
-                }
-            }
-            else
-            {
-                LoggingSystem.Log($"no installed patches for {OriginalHash}");
-                needUpdatedPatches = true;
-            }
-        }
-        else
-        {
-            LoggingSystem.Log($"No patches found for {OriginalHash}");
-            needUpdatedPatches = true;
-        }
-        return needUpdatedPatches;
     }
 
     private void InstallRequiredModules()
@@ -831,28 +797,16 @@ public sealed class BLRClient : INotifyPropertyChanged
     internal ObservableCollection<ProxyModuleSetting>? LoadModuleSettings(VisualProxyModule module)
     {
         var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
-        var copy = config.Copy();
-        config.Modules.Remove(module.RepositoryProxyModule.InstallName);
-        AddModuleConfigAndKeepSettings(config, copy, module.RepositoryProxyModule.CacheName, module.RepositoryProxyModule.InstallName);
-        ObservableCollection<ProxyModuleSetting> Settings = [];
+
         if (config.Modules.TryGetValue(module.RepositoryProxyModule.InstallName, out var value) && value is not null)
         {
-            foreach (var setting in value)
-            {
-                foreach (var availabeSetting in module.RepositoryProxyModule.ModuleSettings)
-                {
-                    if (setting.Key == availabeSetting.SettingName)
-                    {
-                        Settings.Add(new(availabeSetting, setting.Value));
-                    }
-                }
-            }
+            module.RepositoryProxyModule.ReadSettings(value);
         }
 
-        return Settings;
+        return module.RepositoryProxyModule.ModuleSettings;
     }
 
-    internal void SaveModuleSettings(VisualProxyModule module, Collection<ProxyModuleSetting> settings)
+    internal void SaveModuleSettings(VisualProxyModule module)
     {
         var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
         var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
@@ -862,32 +816,30 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             if (configClient.Modules.TryGetValue(module.RepositoryProxyModule.InstallName, out var client) && client is not null)
             {
-                foreach (var availabeSetting in settings)
-                {
-                    client.Remove(availabeSetting.SettingName);
-                    client.Add(availabeSetting.SettingName, availabeSetting.CreateCurrentValue());
-                }
+                configClient.Modules.Remove(module.RepositoryProxyModule.InstallName);
+                var settings = module.RepositoryProxyModule.GetCurrentSettings();
+                module.RepositoryProxyModule.CombineSettings(settings, client);
+                configClient.Modules.Add(module.RepositoryProxyModule.InstallName, settings);
             }
         }
+
         if (module.RepositoryProxyModule.Server)
         {
             if (configServer.Modules.TryGetValue(module.RepositoryProxyModule.InstallName, out var server) && server is not null)
             {
-                foreach (var availabeSetting in settings)
-                {
-                    server.Remove(availabeSetting.SettingName);
-                    server.Add(availabeSetting.SettingName, availabeSetting.CreateCurrentValue());
-                }
+                configServer.Modules.Remove(module.RepositoryProxyModule.InstallName);
+                var settings = module.RepositoryProxyModule.GetCurrentSettings();
+                module.RepositoryProxyModule.CombineSettings(settings, server);
+                configServer.Modules.Add(module.RepositoryProxyModule.InstallName, settings);
             }
         }
 
         if (config.Modules.TryGetValue(module.RepositoryProxyModule.InstallName, out var value) && value is not null)
         {
-            foreach (var availabeSetting in settings)
-            {
-                value.Remove(availabeSetting.SettingName);
-                value.Add(availabeSetting.SettingName, availabeSetting.CreateCurrentValue());
-            }
+            config.Modules.Remove(module.RepositoryProxyModule.InstallName);
+            var settings = module.RepositoryProxyModule.GetCurrentSettings();
+            module.RepositoryProxyModule.CombineSettings(settings, value);
+            config.Modules.Add(module.RepositoryProxyModule.InstallName, settings);
         }
 
         try

@@ -42,7 +42,7 @@ namespace BLREdit.UI.Windows
                         settingControl.UpdateTextBox();
                     }
                 }
-                view.Client.SaveModuleSettings(view.Module, view.Settings);
+                view.Client.SaveModuleSettings(view.Module);
             }
         }
     }

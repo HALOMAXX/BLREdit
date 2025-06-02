@@ -3,8 +3,11 @@ using BLREdit.API.REST_API.Gitlab;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
+using System.Runtime;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -29,7 +32,201 @@ public sealed class RepositoryProxyModule
     public bool Server { get; set; } = true;
     public bool Required { get; set; }
     public string ProxyVersion { get; set; } = "v1.0.0-beta.2";
-    public List<ProxyModuleSetting> ModuleSettings { get; set; } = [];
+    public ObservableCollection<ProxyModuleSetting> ModuleSettings { get; set; } = [];
+
+    public JsonObject GetDefaultSettings()
+    {
+        JsonObject moduleSettings = [];
+
+        foreach (var setting in ModuleSettings)
+        {
+            var settingLocation = moduleSettings;
+            for (int i = 0; i < setting.SettingPathParts.Count - 1; i++)
+            {
+                bool found = false;
+                foreach (var path in settingLocation)
+                {
+                    if (path.Key == setting.SettingPathParts[i] && path.Value is not null && path.Value.AsObject() is JsonObject baseObj) { found = true; settingLocation = baseObj; break; }
+                }
+                if (!found)
+                {
+                    var newSettingLocation = new JsonObject();
+                    settingLocation.Add(setting.SettingPathParts[i], newSettingLocation);
+                    settingLocation = newSettingLocation;
+                }
+            }
+            settingLocation.Add(setting.SettingName, setting.CreateDefaultValue());
+        }
+
+        return moduleSettings;
+    }
+
+    public JsonObject GetCurrentSettings()
+    {
+        JsonObject moduleSettings = [];
+
+        foreach (var setting in ModuleSettings)
+        {
+            var settingLocation = moduleSettings;
+            for (int i = 0; i < setting.SettingPathParts.Count - 1; i++)
+            {
+                bool found = false;
+                foreach (var path in settingLocation)
+                {
+                    if (path.Key == setting.SettingPathParts[i] && path.Value is not null && path.Value.AsObject() is JsonObject baseObj) { found = true; settingLocation = baseObj; break; }
+                }
+                if (!found)
+                {
+                    var newSettingLocation = new JsonObject();
+                    settingLocation.Add(setting.SettingPathParts[i], newSettingLocation);
+                    settingLocation = newSettingLocation;
+                }
+            }
+            settingLocation.Add(setting.SettingName, setting.CreateCurrentValue());
+        }
+
+        return moduleSettings;
+    }
+
+    private static bool NeedToGoDeeperCheck(JsonValueKind baseValueKind, JsonValueKind newValueKind, ref bool skip)
+    {
+        bool deeper = false;
+        switch (newValueKind)
+        {
+            case JsonValueKind.Number:
+            case JsonValueKind.String:
+            case JsonValueKind.True:
+            case JsonValueKind.False:
+                // value kind check if base is also value kind if not we can overwrite it or have to skip
+                switch (baseValueKind)
+                {
+                    case JsonValueKind.Number:
+                    case JsonValueKind.String:
+                    case JsonValueKind.True:
+                    case JsonValueKind.False:
+                    case JsonValueKind.Object:
+                        //skip
+                        skip = true;
+                        break;
+                    default:
+                        //overwrite
+                        break;
+                }
+                break;
+            case JsonValueKind.Object:
+                // we have to check if we need to go deeper or skip
+                switch (baseValueKind)
+                {
+                    case JsonValueKind.Number:
+                    case JsonValueKind.String:
+                    case JsonValueKind.True:
+                    case JsonValueKind.False:
+                        //skip
+                        skip = true;
+                        break;
+                    case JsonValueKind.Object:
+                        //deeper and skip
+                        skip = true;
+                        deeper = true;
+                        break;
+                    default:
+                        //overwrite
+                        break;
+                }
+                break;
+            default:
+                //overwrite
+                break;
+        }
+        return deeper;
+    }
+
+    public void CombineSettings(JsonObject baseSettings, JsonObject newSettings) 
+    {
+        if (baseSettings is null || newSettings is null) { LoggingSystem.LogNull(); return; }
+
+        foreach (var newSetting in newSettings)
+        {
+            if (newSetting.Value is not null)
+            {
+                bool skip = false;
+                foreach (var baseSetting in baseSettings)
+                { 
+                    if (baseSetting.Key == newSetting.Key) 
+                    {
+                        if (baseSetting.Value is not null)
+                        {
+                            if(NeedToGoDeeperCheck(baseSetting.Value.GetValueKind(), newSetting.Value.GetValueKind(), ref skip))
+                            {
+                                CombineSettings(baseSetting.Value.AsObject(), newSetting.Value.AsObject());
+                            }
+
+                        }
+                        break;
+                    }                    
+                }
+                if (!skip)
+                {
+                    baseSettings.Remove(newSetting.Key);
+                    baseSettings.Add(newSetting.Key, newSetting.Value.DeepClone());
+                }
+            }
+
+            //var baseSettingLocation = baseSettings;
+            //var newSettingLocation = newSettings;
+            //for (int i = 0; i < setting.SettingPathParts.Count - 1; i++)
+            //{
+            //    bool baseFound = false;
+            //    bool newFound = false;
+            //    foreach (var basePath in baseSettingLocation)
+            //    {
+            //        if (basePath.Key == setting.SettingPathParts[i] && basePath.Value is not null && basePath.Value.AsObject() is JsonObject baseObj) { baseFound = true; baseSettingLocation = baseObj; break; }
+            //    }
+            //    foreach (var newPath in newSettingLocation)
+            //    {
+            //        if (newPath.Key == setting.SettingPathParts[i] && newPath.Value is not null && newPath.Value.AsObject() is JsonObject newObj) { newFound = true; newSettingLocation = newObj; break; }
+            //    }
+            //    if (!baseFound)
+            //    {
+            //        var settingLocation = new JsonObject();
+            //        baseSettingLocation.Add(setting.SettingPathParts[i], settingLocation);
+            //        baseSettingLocation = settingLocation;
+            //    }
+            //    if (!newFound)
+            //    {
+            //        var settingLocation = new JsonObject();
+            //        newSettingLocation.Add(setting.SettingPathParts[i], settingLocation);
+            //        newSettingLocation = settingLocation;
+            //    }
+            //}
+
+            //if (!newSettingLocation.ContainsKey(setting.SettingName)) { newSettingLocation.Add(setting.SettingName, setting.CreateDefaultValue()); } //TODO: will add default value to original JsonObject might be unwanted beghaviour!!!!
+            //if (!baseSettingLocation.ContainsKey(setting.SettingName) && newSettingLocation.TryGetPropertyValue(setting.SettingName, out var value)) { baseSettingLocation.Add(setting.SettingName, value); }
+        }
+    }
+
+    public void ReadSettings(JsonObject settings)
+    {
+        if(settings is null) { LoggingSystem.LogNull(); return; }
+        foreach (var setting in ModuleSettings)
+        {
+            var settingLocation = settings;
+            bool found = true;
+            for (int i = 0; i < setting.SettingPathParts.Count - 1; i++)
+            {
+                bool found2 = false;
+                foreach (var path in settingLocation)
+                {
+                    if (path.Key == setting.SettingPathParts[i] && path.Value is not null && path.Value.AsObject() is JsonObject baseObj) { found2 = true; settingLocation = baseObj; break; }
+                }
+                if (!found2) { found = false; break; }
+            }
+            if (found && settingLocation.TryGetPropertyValue(setting.SettingName, out var value) && value is not null)
+            {
+                setting.SetNodeData(value);
+            }
+        }
+    }
 
     private GitHubRelease? hubRelease;
     [JsonIgnore]
@@ -76,11 +273,11 @@ public sealed class RepositoryProxyModule
             {
                 if (RepositoryProvider == RepositoryProvider.GitHub)
                 {
-                    hubRelease ??= await GitHubClient.GetLatestRelease(Owner, Repository);
+                    hubRelease ??= await GitHubClient.GetLatestRelease(Owner, Repository).ConfigureAwait(false);
                 }
                 else
                 {
-                    labRelease ??= await GitlabClient.GetLatestRelease(Owner, Repository);
+                    labRelease ??= await GitlabClient.GetLatestRelease(Owner, Repository).ConfigureAwait(false);
                 }
             }
             catch(Exception error)
@@ -160,8 +357,11 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
     }
     #endregion Events
 
-    [JsonPropertyName("Name")]
-    public string SettingName { get; set; } = "SettingName";
+    [JsonPropertyName("Path")]
+    public string SettingPath { get; set; } = "SettingPath";
+    [JsonIgnore] ReadOnlyCollection<string>? settingPathParts;
+    [JsonIgnore] public ReadOnlyCollection<string> SettingPathParts { get { settingPathParts ??= new(SettingPath.Split('.')); return settingPathParts; } }
+    [JsonIgnore] public string SettingName { get { return SettingPathParts.Last(); } }
     [JsonPropertyName("Type")]
     public ModuleSettingType SettingType { get; set; } = ModuleSettingType.String;
     public object? DefaultValue { get; set; } = "value";
@@ -169,12 +369,17 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
     public object? CurrentValue { get; set; }
 
     [JsonIgnore]
-    public bool CurrentValueAsBool { get{ if (CurrentValue is bool b) { return b; } else { return false; } } set { CurrentValue = value; OnPropertyChanged(); } }
-    [JsonIgnore]
-    public string CurrentValueAsString { get { if (CurrentValue is string s) { return s; } else { return string.Empty; } } 
+    public bool CurrentValueAsBool { 
+        get{ if (CurrentValue is bool b) { return b; } else { return false; } } 
         set { CurrentValue = value; OnPropertyChanged(); } }
     [JsonIgnore]
-    public double CurrentValueAsDouble { get { if (CurrentValue is double d) { return d; } else { return 0; } } set { CurrentValue = value; OnPropertyChanged(); } }
+    public string CurrentValueAsString { 
+        get { if (CurrentValue is string s) { return s; } else { return string.Empty; } } 
+        set { CurrentValue = value; OnPropertyChanged(); } }
+    [JsonIgnore]
+    public double CurrentValueAsDouble { 
+        get { if (CurrentValue is double d) { return d; } else { return 0; } } 
+        set { CurrentValue = value; OnPropertyChanged(); } }
 
     [JsonIgnore]
     public int MinNumberValue { get; set; } = int.MinValue;
@@ -205,7 +410,6 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
 
     public KeyValuePair<string, JsonNode>? CreateDefaultSetting()
     {
-        //LoggingSystem.Log($"{DefaultValue.GetType().Name}");
         switch (SettingType)
         {
             case ModuleSettingType.Number:
@@ -226,7 +430,29 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
         }
     }
 
-    internal JsonNode? CreateCurrentValue()
+    public JsonNode? CreateDefaultValue()
+    {
+        switch (SettingType)
+        {
+            case ModuleSettingType.Number:
+                if (DefaultValue is double d) { return JsonValue.Create(d); }
+                return 0;
+            case ModuleSettingType.String:
+                if (DefaultValue is string s) { return JsonValue.Create(s); }
+                return string.Empty;
+            case ModuleSettingType.Bool:
+                if (DefaultValue is bool b) { return JsonValue.Create(b); }
+                return JsonValue.Create(false); ;
+            case ModuleSettingType.Array:
+            case ModuleSettingType.Object:
+            case ModuleSettingType.Undefined:
+            case ModuleSettingType.Null:
+            default:
+                return null;
+        }
+    }
+
+    public JsonNode? CreateCurrentValue()
     {
         switch (SettingType)
         {
@@ -248,13 +474,36 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
         }
     }
 
+    public void SetNodeData(JsonNode jsonData)
+    {
+        if (jsonData is null) { LoggingSystem.FatalLog("JsonData was null"); return; }
+        switch (SettingType)
+        {
+            case ModuleSettingType.Number:
+                if (jsonData.GetValueKind() == JsonValueKind.Number) { CurrentValue = jsonData.GetValue<double>(); }
+                break;
+            case ModuleSettingType.String:
+                if (jsonData.GetValueKind() == JsonValueKind.String) { CurrentValue = jsonData.GetValue<string>(); }
+                break;
+            case ModuleSettingType.Bool:
+                if (jsonData.GetValueKind() == JsonValueKind.True || jsonData.GetValueKind() == JsonValueKind.False) { CurrentValue = jsonData.GetValue<bool>(); }
+                break;
+            case ModuleSettingType.Array:
+            case ModuleSettingType.Object:
+            case ModuleSettingType.Undefined:
+            case ModuleSettingType.Null:
+            default:
+                break;
+        }
+    }
+
     public ProxyModuleSetting() {}
 
     public ProxyModuleSetting(ProxyModuleSetting origin, JsonNode? jsonData)
     {
         if (origin is null) { LoggingSystem.FatalLog("Original ProxyModuleSetting was null"); return; }
         if (jsonData is null) { LoggingSystem.FatalLog("JsonData was null"); return; }
-        SettingName = origin.SettingName;
+        SettingPath = origin.SettingPath;
         DefaultValue = origin.DefaultValue;
         SettingType = origin.SettingType;
 
