@@ -303,33 +303,42 @@ public sealed class BLREditPipe
 
     static void PipeServer()
     {
-        using var server = new NamedPipeServerStream(PIPE_NAME, PipeDirection.In, Environment.ProcessorCount);
-        using var reader = new StreamReader(server);
-        while (App.IsRunning)
+        try
         {
-            server.WaitForConnection();
-            LoggingSystem.Log($"[{Thread.CurrentThread.Name}]: Recieved Connection");
-            try
+            using var server = new NamedPipeServerStream(PIPE_NAME, PipeDirection.In, Environment.ProcessorCount);
+            using var reader = new StreamReader(server);
+            while (App.IsRunning)
             {
-                var args = new List<string>();
-                while (!reader.EndOfStream)
+                server.WaitForConnection();
+                LoggingSystem.Log($"[{Thread.CurrentThread.Name}]: Recieved Connection");
+                try
                 {
-                    args.Add(reader.ReadLine());
+                    var args = new List<string>();
+                    while (!reader.EndOfStream)
+                    {
+                        args.Add(reader.ReadLine());
+                    }
+                    foreach (var line in args)
+                    {
+                        LoggingSystem.Log($"[{Thread.CurrentThread.Name}]:{line}");
+                    }
+                    App.Current.Dispatcher.Invoke(() => { ProcessArgs([.. args]); });
                 }
-                foreach (var line in args)
+                catch (Exception error)
                 {
-                    LoggingSystem.Log($"[{Thread.CurrentThread.Name}]:{line}");
+                    LoggingSystem.Log($"[{Thread.CurrentThread.Name}](Error): {error}");
                 }
-                App.Current.Dispatcher.Invoke(() => { ProcessArgs([.. args]); });
+                finally
+                {
+                    server.Disconnect();
+                }
             }
-            catch (Exception error)
-            {
-                LoggingSystem.Log($"[{Thread.CurrentThread.Name}](Error): {error}");
-            }
-            finally
-            {
-                server.Disconnect();
-            }
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.Log($"[{Thread.CurrentThread.Name}](Error): {error}");
+            LoggingSystem.Log($"[{Thread.CurrentThread.Name}](Error): Exiting!");
+            //Remove thread
         }
     }
 
