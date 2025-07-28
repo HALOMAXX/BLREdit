@@ -681,7 +681,13 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         launchArgs = $"server {(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?ServerName=BLREdit-{mode.ModeName}-Server?Playlist=BLREditPlaylist?Port=7777?blre.server.authenticateusers=false";
 
-        List<BLRPlaylistEntry> entries = [new() { Map = map.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } }];
+        List<BLRPlaylistEntry> entries = [new() { Map = !string.IsNullOrEmpty(map.PlaylistProviderName) ? map.PlaylistProviderName : map.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } }];
+
+        //foreach (var maps in MapModeSelect.Maps)
+        //{
+        //    if(maps.Available.Contains(this.ClientVersion))
+        //    entries.Add(new() { Map = !string.IsNullOrEmpty(maps.PlaylistProviderName) ? maps.PlaylistProviderName : maps.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } });
+        //}
 
         IOResources.SerializeFile($"{BLReviveConfigsPath}server_utils\\playlists\\BLREditPlaylist.json", entries);
         return true;

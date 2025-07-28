@@ -395,6 +395,7 @@
   {
     "MapDisplayName": "Piledriver",
     "MapName": "piledriver1",
+    "PlaylistProviderName": "piledriver",
     "MagiCowName": "Piledriver",
     "LongImageName": "t_piledriver.png",
     "SquareImageName": "t_PileDriver_512x512.png",
@@ -649,6 +650,7 @@
   {
     "MapDisplayName": "Gun Range",
     "MapName": "gunrange_persistent",
+    "PlaylistProviderName": "GunRange",
     "MagiCowName": "Training",
     "LongImageName": "t_helodeck.png",
     "SquareImageName": "t_HeloDeck_512x512.png",
