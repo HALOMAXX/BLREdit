@@ -14,6 +14,7 @@ public sealed class BLRMap
     [JsonIgnore] public string DisplayName { get { if (string.IsNullOrEmpty(MapDisplayName)) { return MapName; } else { return MapDisplayName; } } }
     public string MapDisplayName { get; set; } = "";
     public string MapName { get; set; } = "";
+    public string PlaylistProviderName { get; set; } = "";
     public string MagiCowName { get; set; } = "";
     public string MapDescription { get; set; } = "";
 
