@@ -11109,25 +11109,25 @@
       "LMID": 8,
       "Icon": "t_SpecialtySkin_AK47_Tiger_01_256x128",
       "Name": "AK470 - Tiger Stripes Orange Weapon Skin",
-      "UID": 10008,
+      "UID": 10012,
       "ValidFor": [
-        -1
+        40023
       ]
     },
     {
       "LMID": 9,
       "Icon": "t_SpecialtySkin_AK47_Tiger_02_256x128",
       "Name": "AK470 - Tiger Stripes Blue Weapon Skin",
-      "UID": 10009,
+      "UID": 10072,
       "ValidFor": [
-        -1
+        40023
       ]
     },
     {
       "LMID": 10,
       "Icon": "t_SpecialtySkin_AK47_Clover_01_256x128",
       "Name": "AK470 - Clovers Weapon Skin",
-      "UID": 10010,
+      "UID": 10073,
       "ValidFor": [
         -1
       ]
@@ -11136,7 +11136,7 @@
       "LMID": 11,
       "Icon": "t_SpecialtySkin_AK47_Tiger_03_256x128",
       "Name": "AK470 - Tiger Stripes Pink Weapon Skin",
-      "UID": 10011,
+      "UID": 10210,
       "ValidFor": [
         -1
       ]
@@ -11145,7 +11145,7 @@
       "LMID": 12,
       "Icon": "t_SpecialtySkin_AK47_Tiger_04_256x128",
       "Name": "AK470 - Tiger Stripes Red Weapon Skin",
-      "UID": 10012,
+      "UID": 10230,
       "ValidFor": [
         -1
       ]
@@ -11154,7 +11154,7 @@
       "LMID": 13,
       "Icon": "t_SpecialtySkin_AK47_Tiger_05_256x128",
       "Name": "AK470 - Tiger Stripes Green Weapon Skin",
-      "UID": 10013,
+      "UID": 10250,
       "ValidFor": [
         -1
       ]
@@ -11163,7 +11163,7 @@
       "LMID": 14,
       "Icon": "t_SpecialtySkin_AK47_Tiger_06_256x128",
       "Name": "AK470 - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10014,
+      "UID": 10270,
       "ValidFor": [
         -1
       ]
@@ -11172,7 +11172,7 @@
       "LMID": 15,
       "Icon": "t_SpecialtySkin_AR2_BLRSkullHex_256x128",
       "Name": "Heavy Assault Rifle - Green Hex Weapon Skin",
-      "UID": 10015,
+      "UID": 10008,
       "ValidFor": [
         40017
       ]
@@ -11181,7 +11181,7 @@
       "LMID": 16,
       "Icon": "t_SpecialtySkin_AR2_America_256x128",
       "Name": "Heavy Assault Rifle - Stars And Stripes Weapon Skin",
-      "UID": 10016,
+      "UID": 10009,
       "ValidFor": [
         40017
       ]
@@ -11190,7 +11190,7 @@
       "LMID": 17,
       "Icon": "t_SpecialtySkin_AR2_Tiger_01_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin",
-      "UID": 10017,
+      "UID": 10014,
       "ValidFor": [
         40017
       ]
@@ -11199,7 +11199,7 @@
       "LMID": 18,
       "Icon": "t_SpecialtySkin_AR2_Tiger_02_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin",
-      "UID": 10018,
+      "UID": 10074,
       "ValidFor": [
         40017
       ]
@@ -11208,7 +11208,7 @@
       "LMID": 19,
       "Icon": "t_SpecialtySkin_AR2_Clover_01_256x128",
       "Name": "Heavy Assault Rifle - Clovers Weapon Skin",
-      "UID": 10019,
+      "UID": 10075,
       "ValidFor": [
         40017
       ]
@@ -11217,7 +11217,7 @@
       "LMID": 20,
       "Icon": "t_SpecialtySkin_AR2_Tiger_03_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin",
-      "UID": 10020,
+      "UID": 10211,
       "ValidFor": [
         40017
       ]
@@ -11226,7 +11226,7 @@
       "LMID": 21,
       "Icon": "t_SpecialtySkin_AR2_Tiger_04_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Red Weapon Skin",
-      "UID": 10021,
+      "UID": 10231,
       "ValidFor": [
         40017
       ]
@@ -11235,7 +11235,7 @@
       "LMID": 22,
       "Icon": "t_SpecialtySkin_AR2_Tiger_05_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Green Weapon Skin",
-      "UID": 10022,
+      "UID": 10251,
       "ValidFor": [
         40017
       ]
@@ -11244,7 +11244,7 @@
       "LMID": 23,
       "Icon": "t_SpecialtySkin_AR2_Tiger_06_256x128",
       "Name": "Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10023,
+      "UID": 10271,
       "ValidFor": [
         40017
       ]
@@ -11253,7 +11253,7 @@
       "LMID": 24,
       "Icon": "t_SpecialtySkin_AR3_BLRSkullHex_256x128",
       "Name": "Tactical Assault Rifle - Green Hex Weapon Skin",
-      "UID": 10024,
+      "UID": 10017,
       "ValidFor": [
         40025
       ]
@@ -11262,7 +11262,7 @@
       "LMID": 25,
       "Icon": "t_SpecialtySkin_AR3_America_256x128",
       "Name": "Tactical Assault Rifle - Stars and Stripes Weapon Skin",
-      "UID": 10025,
+      "UID": 10018,
       "ValidFor": [
         40025
       ]
@@ -11273,7 +11273,7 @@
       "Name": "Tactical Assault Rifle - Japanese Flag Weapon Skin",
       "UID": 10026,
       "ValidFor": [
-        40025
+        -1
       ]
     },
     {
@@ -11282,7 +11282,7 @@
       "Name": "Tactical Assault Rifle - Australian Flag Weapon Skin",
       "UID": 10027,
       "ValidFor": [
-        40025
+        -1
       ]
     },
     {
@@ -11291,7 +11291,7 @@
       "Name": "Tactical Assault Rifle - Malaysian Flag Weapon Skin",
       "UID": 10028,
       "ValidFor": [
-        40025
+        -1
       ]
     },
     {
@@ -11300,7 +11300,7 @@
       "Name": "Tactical Assault Rifle - New Zealand Weapon Skin",
       "UID": 10029,
       "ValidFor": [
-        40025
+        -1
       ]
     },
     {
@@ -11309,7 +11309,7 @@
       "Name": "Tactical Assault Rifle - Singapore Flag Weapon Skin",
       "UID": 10030,
       "ValidFor": [
-        40025
+        -1
       ]
     },
     {
@@ -11318,7 +11318,7 @@
       "Name": "Tactical Assault Rifle - Turkish Flag Weapon Skin",
       "UID": 10031,
       "ValidFor": [
-        40025
+        -1
       ]
     },
     {
@@ -11327,14 +11327,14 @@
       "Name": "Tactical Assault Rifle - MLG TourNament Weapon Skin",
       "UID": 10032,
       "ValidFor": [
-        40025
+        -1
       ]
     },
     {
       "LMID": 36,
       "Icon": "t_SpecialtySkin_AR3_Tiger_01_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin",
-      "UID": 10033,
+      "UID": 10057,
       "ValidFor": [
         40025
       ]
@@ -11343,7 +11343,7 @@
       "LMID": 37,
       "Icon": "t_SpecialtySkin_AR3_Tiger_02_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Blue Weapon Skin",
-      "UID": 10034,
+      "UID": 10076,
       "ValidFor": [
         40025
       ]
@@ -11352,7 +11352,7 @@
       "LMID": 38,
       "Icon": "t_SpecialtySkin_AR3_Clover_01_256x128",
       "Name": "Tactical Assault Rifle - Clovers Weapon Skin",
-      "UID": 10035,
+      "UID": 10077,
       "ValidFor": [
         40025
       ]
@@ -11361,7 +11361,7 @@
       "LMID": 39,
       "Icon": "t_SpecialtySkin_AR3_Tiger_03_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Pink Weapon Skin",
-      "UID": 10036,
+      "UID": 10212,
       "ValidFor": [
         40025
       ]
@@ -11370,7 +11370,7 @@
       "LMID": 40,
       "Icon": "t_SpecialtySkin_AR3_Tiger_04_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Red Weapon Skin",
-      "UID": 10037,
+      "UID": 10232,
       "ValidFor": [
         40025
       ]
@@ -11379,7 +11379,7 @@
       "LMID": 41,
       "Icon": "t_SpecialtySkin_AR3_Tiger_05_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Green Weapon Skin",
-      "UID": 10038,
+      "UID": 10252,
       "ValidFor": [
         40025
       ]
@@ -11388,7 +11388,7 @@
       "LMID": 42,
       "Icon": "t_SpecialtySkin_AR3_Tiger_06_256x128",
       "Name": "Tactical Assault Rifle - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10039,
+      "UID": 10272,
       "ValidFor": [
         40025
       ]
@@ -11397,7 +11397,7 @@
       "LMID": 43,
       "Icon": "t_AssultRifle_Vet_256x128",
       "Name": "Assault Rifle - The Droughtbreaker Weapon Skin",
-      "UID": 10040,
+      "UID": 10029,
       "ValidFor": [
         40003
       ]
@@ -11406,7 +11406,7 @@
       "LMID": 44,
       "Icon": "t_SpecialtySkin_AR_BLRSkullHex_256x128",
       "Name": "Assault Rifle - Green Hex Weapon Skin",
-      "UID": 10041,
+      "UID": 10056,
       "ValidFor": [
         40003
       ]
@@ -11415,7 +11415,7 @@
       "LMID": 45,
       "Icon": "t_SpecialtySkin_AR_America_256x128",
       "Name": "Assault Rifle - Stars and Stripes Weapon Skin",
-      "UID": 10042,
+      "UID": 10030,
       "ValidFor": [
         40003
       ]
@@ -11424,16 +11424,16 @@
       "LMID": 46,
       "Icon": "t_SpecialtySkin_AR_MLG_256x128",
       "Name": "Assault Rifle - Broken MLG Tournament Weapon Skin",
-      "UID": 10043,
+      "UID": 10031,
       "ValidFor": [
-        40003
+        -1
       ]
     },
     {
       "LMID": 47,
       "Icon": "t_SpecialtySkin_AR_Tiger_01_256x128",
       "Name": "Assault Rifle - Tiger Stripes Orange Weapon Skin",
-      "UID": 10044,
+      "UID": 10013,
       "ValidFor": [
         40003
       ]
@@ -11442,7 +11442,7 @@
       "LMID": 48,
       "Icon": "t_SpecialtySkin_AR_Tiger_02_256x128",
       "Name": "Assault Rifle - Tiger Stripes Blue Weapon Skin",
-      "UID": 10045,
+      "UID": 10078,
       "ValidFor": [
         40003
       ]
@@ -11451,7 +11451,7 @@
       "LMID": 49,
       "Icon": "t_SpecialtySkin_AR_Clover_01_256x128",
       "Name": "Assault Rifle - Clovers Weapon Skin",
-      "UID": 10046,
+      "UID": 10079,
       "ValidFor": [
         40003
       ]
@@ -11460,7 +11460,7 @@
       "LMID": 50,
       "Icon": "t_SpecialtySkin_AR_Tiger_03_256x128",
       "Name": "Assault Rifle - Tiger Stripes Pink Weapon Skin",
-      "UID": 10047,
+      "UID": 10213,
       "ValidFor": [
         40003
       ]
@@ -11469,7 +11469,7 @@
       "LMID": 51,
       "Icon": "t_SpecialtySkin_AR_Tiger_04_256x128",
       "Name": "Assault Rifle - Tiger Stripes Red Weapon Skin",
-      "UID": 10048,
+      "UID": 10233,
       "ValidFor": [
         40003
       ]
@@ -11478,7 +11478,7 @@
       "LMID": 52,
       "Icon": "t_SpecialtySkin_AR_Tiger_05_256x128",
       "Name": "Assault Rifle - Tiger Stripes Green Weapon Skin",
-      "UID": 10049,
+      "UID": 10253,
       "ValidFor": [
         40003
       ]
@@ -11487,7 +11487,7 @@
       "LMID": 53,
       "Icon": "t_SpecialtySkin_AR_Tiger_06_256x128",
       "Name": "Assault Rifle - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10050,
+      "UID": 10273,
       "ValidFor": [
         40003
       ]
@@ -11496,7 +11496,7 @@
       "LMID": 54,
       "Icon": "t_SpecialtySkin_BKT_BLRSkullHex_256x128",
       "Name": "Light Machine Gun - Green Hex Weapon Skin",
-      "UID": 10051,
+      "UID": 10032,
       "ValidFor": [
         40011
       ]
@@ -11505,7 +11505,7 @@
       "LMID": 55,
       "Icon": "t_SpecialtySkin_BKT_America_256x128",
       "Name": "Light Machine Gun - Stars and Stripes Weapon Skin",
-      "UID": 10052,
+      "UID": 10033,
       "ValidFor": [
         40011
       ]
@@ -11514,7 +11514,7 @@
       "LMID": 56,
       "Icon": "t_SpecialtySkin_BKT_Tiger_01_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Orange Weapon Skin",
-      "UID": 10053,
+      "UID": 10058,
       "ValidFor": [
         40011
       ]
@@ -11523,7 +11523,7 @@
       "LMID": 57,
       "Icon": "t_SpecialtySkin_BKT_Tiger_02_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Blue Weapon Skin",
-      "UID": 10054,
+      "UID": 10080,
       "ValidFor": [
         40011
       ]
@@ -11532,7 +11532,7 @@
       "LMID": 58,
       "Icon": "t_SpecialtySkin_BKT_Clover_01_256x128",
       "Name": "Light Machine Gun - Clovers Weapon Skin",
-      "UID": 10055,
+      "UID": 10081,
       "ValidFor": [
         40011
       ]
@@ -11541,7 +11541,7 @@
       "LMID": 59,
       "Icon": "t_SpecialtySkin_BKT_Tiger_03_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Pink Weapon Skin",
-      "UID": 10056,
+      "UID": 10214,
       "ValidFor": [
         40011
       ]
@@ -11550,7 +11550,7 @@
       "LMID": 60,
       "Icon": "t_SpecialtySkin_BKT_Tiger_04_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Red Weapon Skin",
-      "UID": 10057,
+      "UID": 10234,
       "ValidFor": [
         40011
       ]
@@ -11559,7 +11559,7 @@
       "LMID": 61,
       "Icon": "t_SpecialtySkin_BKT_Tiger_05_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Green Weapon Skin",
-      "UID": 10058,
+      "UID": 10254,
       "ValidFor": [
         40011
       ]
@@ -11568,7 +11568,7 @@
       "LMID": 62,
       "Icon": "t_SpecialtySkin_BKT_Tiger_06_256x128",
       "Name": "Light Machine Gun - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10059,
+      "UID": 10274,
       "ValidFor": [
         40011
       ]
@@ -11577,7 +11577,7 @@
       "LMID": 63,
       "Icon": "t_SpecialtySkin_BoltAction_BLRSkullHex_256x128",
       "Name": "Bolt-Action - Green Hex Weapon Skin",
-      "UID": 10060,
+      "UID": 10034,
       "ValidFor": [
         40007
       ]
@@ -11586,7 +11586,7 @@
       "LMID": 64,
       "Icon": "t_SpecialtySkin_BoltAction_America_256x128",
       "Name": "Bolt-Action - Stars and Stripes Weapon Skin",
-      "UID": 10061,
+      "UID": 10035,
       "ValidFor": [
         40007
       ]
@@ -11595,7 +11595,7 @@
       "LMID": 65,
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_01_256x128",
       "Name": "Bolt-Action - Tiger Stripes Orange Weapon Skin",
-      "UID": 10062,
+      "UID": 10059,
       "ValidFor": [
         40007
       ]
@@ -11604,7 +11604,7 @@
       "LMID": 66,
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_02_256x128",
       "Name": "Bolt-Action - Tiger Stripes Blue Weapon Skin",
-      "UID": 10063,
+      "UID": 10082,
       "ValidFor": [
         40007
       ]
@@ -11613,7 +11613,7 @@
       "LMID": 67,
       "Icon": "t_SpecialtySkin_BoltAction_Clover_01_256x128",
       "Name": "Bolt-Action - Clovers Weapon Skin",
-      "UID": 10064,
+      "UID": 10083,
       "ValidFor": [
         40007
       ]
@@ -11622,7 +11622,7 @@
       "LMID": 68,
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_03_256x128",
       "Name": "Bolt-Action - Tiger Stripes Pink Weapon Skin",
-      "UID": 10065,
+      "UID": 10215,
       "ValidFor": [
         40007
       ]
@@ -11631,7 +11631,7 @@
       "LMID": 69,
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_04_256x128",
       "Name": "Bolt-Action - Tiger Stripes Red Weapon Skin",
-      "UID": 10066,
+      "UID": 10235,
       "ValidFor": [
         40007
       ]
@@ -11640,7 +11640,7 @@
       "LMID": 70,
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_05_256x128",
       "Name": "Bolt-Action - Tiger Stripes Green Weapon Skin",
-      "UID": 10067,
+      "UID": 10255,
       "ValidFor": [
         40007
       ]
@@ -11649,7 +11649,7 @@
       "LMID": 71,
       "Icon": "t_SpecialtySkin_BoltAction_Tiger_06_256x128",
       "Name": "Bolt-Action - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10068,
+      "UID": 10275,
       "ValidFor": [
         40007
       ]
@@ -11658,7 +11658,7 @@
       "LMID": 72,
       "Icon": "t_SpecialtySkin_BP2_BLRSkullHex_256x128",
       "Name": "Bullpup Full Auto - Green Hex Weapon Skin",
-      "UID": 10069,
+      "UID": 10036,
       "ValidFor": [
         40020
       ]
@@ -11667,7 +11667,7 @@
       "LMID": 73,
       "Icon": "t_SpecialtySkin_BP2_America_256x128",
       "Name": "Bullpup Full Auto - Stars and Stripes Weapon Skin",
-      "UID": 10070,
+      "UID": 10037,
       "ValidFor": [
         40020
       ]
@@ -11676,7 +11676,7 @@
       "LMID": 74,
       "Icon": "t_SpecialtySkin_BP2_Tiger_01_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Orange Weapon Skin",
-      "UID": 10071,
+      "UID": 10060,
       "ValidFor": [
         40020
       ]
@@ -11685,7 +11685,7 @@
       "LMID": 75,
       "Icon": "t_SpecialtySkin_BP2_Tiger_02_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Blue Weapon Skin",
-      "UID": 10072,
+      "UID": 10084,
       "ValidFor": [
         40020
       ]
@@ -11694,7 +11694,7 @@
       "LMID": 76,
       "Icon": "t_SpecialtySkin_BP2_Clover_01_256x128",
       "Name": "Bullpup Full Auto - Clovers Weapon Skin",
-      "UID": 10073,
+      "UID": 10085,
       "ValidFor": [
         40020
       ]
@@ -11703,7 +11703,7 @@
       "LMID": 77,
       "Icon": "t_SpecialtySkin_BP2_Tiger_03_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Pink Weapon Skin",
-      "UID": 10074,
+      "UID": 10216,
       "ValidFor": [
         40020
       ]
@@ -11712,7 +11712,7 @@
       "LMID": 78,
       "Icon": "t_SpecialtySkin_BP2_Tiger_04_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Red Weapon Skin",
-      "UID": 10075,
+      "UID": 10236,
       "ValidFor": [
         40020
       ]
@@ -11721,7 +11721,7 @@
       "LMID": 79,
       "Icon": "t_SpecialtySkin_BP2_Tiger_05_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Green Weapon Skin",
-      "UID": 10076,
+      "UID": 10256,
       "ValidFor": [
         40020
       ]
@@ -11730,7 +11730,7 @@
       "LMID": 80,
       "Icon": "t_SpecialtySkin_BP2_Tiger_06_256x128",
       "Name": "Bullpup Full Auto - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10077,
+      "UID": 10276,
       "ValidFor": [
         40020
       ]
@@ -11739,7 +11739,7 @@
       "LMID": 81,
       "Icon": "t_SpecialtySkin_Bullpup_BLRSkullHex_256x128",
       "Name": "Burstfire Rifle - Green Hex Weapon Skin",
-      "UID": 10078,
+      "UID": 10038,
       "ValidFor": [
         40009
       ]
@@ -11748,7 +11748,7 @@
       "LMID": 82,
       "Icon": "t_SpecialtySkin_Bullpup_America_256x128",
       "Name": "Burstfire Rifle - Stars and Stripes Weapon Skin",
-      "UID": 10079,
+      "UID": 10039,
       "ValidFor": [
         40009
       ]
@@ -11757,7 +11757,7 @@
       "LMID": 83,
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_01_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Orange Weapon Skin",
-      "UID": 10080,
+      "UID": 10061,
       "ValidFor": [
         40009
       ]
@@ -11766,7 +11766,7 @@
       "LMID": 84,
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_02_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Blue Weapon Skin",
-      "UID": 10081,
+      "UID": 10086,
       "ValidFor": [
         40009
       ]
@@ -11775,7 +11775,7 @@
       "LMID": 85,
       "Icon": "t_SpecialtySkin_Bullpup_CLover_01_256x128",
       "Name": "Burstfire Rifle - Clovers Weapon Skin",
-      "UID": 10082,
+      "UID": 10200,
       "ValidFor": [
         40009
       ]
@@ -11784,7 +11784,7 @@
       "LMID": 86,
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_03_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Pink Weapon Skin",
-      "UID": 10083,
+      "UID": 10217,
       "ValidFor": [
         40009
       ]
@@ -11793,7 +11793,7 @@
       "LMID": 87,
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_04_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Red Weapon Skin",
-      "UID": 10084,
+      "UID": 10237,
       "ValidFor": [
         40009
       ]
@@ -11802,7 +11802,7 @@
       "LMID": 88,
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_05_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Green Weapon Skin",
-      "UID": 10085,
+      "UID": 10257,
       "ValidFor": [
         40009
       ]
@@ -11811,7 +11811,7 @@
       "LMID": 89,
       "Icon": "t_SpecialtySkin_Bullpup_Tiger_06_256x128",
       "Name": "Burstfire Rifle - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10086,
+      "UID": 10277,
       "ValidFor": [
         40009
       ]
@@ -11820,7 +11820,7 @@
       "LMID": 90,
       "Icon": "t_SpecialtySkin_LMG2_BLRSkullHex_256x128",
       "Name": "LMG Recon - Green Hex Weapon Skin",
-      "UID": 10087,
+      "UID": 10040,
       "ValidFor": [
         40014
       ]
@@ -11829,7 +11829,7 @@
       "LMID": 91,
       "Icon": "t_SpecialtySkin_LMG2_America_256x128",
       "Name": "LMG Recon - Stars and Stripes Weapon Skin",
-      "UID": 10088,
+      "UID": 10041,
       "ValidFor": [
         40014
       ]
@@ -11838,7 +11838,7 @@
       "LMID": 92,
       "Icon": "t_SpecialtySkin_LMG2_Tiger_01_256x128",
       "Name": "LMG Recon - Tiger Stripes Orange Weapon Skin",
-      "UID": 10089,
+      "UID": 10063,
       "ValidFor": [
         40014
       ]
@@ -11847,7 +11847,7 @@
       "LMID": 93,
       "Icon": "t_SpecialtySkin_LMG2_Tiger_02_256x128",
       "Name": "LMG Recon - Tiger Stripes Blue Weapon Skin",
-      "UID": 10090,
+      "UID": 10087,
       "ValidFor": [
         40014
       ]
@@ -11856,7 +11856,7 @@
       "LMID": 94,
       "Icon": "t_SpecialtySkin_LMG2_Clover_01_256x128",
       "Name": "LMG Recon - Clovers Weapon Skin",
-      "UID": 10091,
+      "UID": 10088,
       "ValidFor": [
         40014
       ]
@@ -11865,7 +11865,7 @@
       "LMID": 95,
       "Icon": "t_SpecialtySkin_LMG2_Tiger_03_256x128",
       "Name": "LMG Recon - Tiger Stripes Pink Weapon Skin",
-      "UID": 10092,
+      "UID": 10218,
       "ValidFor": [
         40014
       ]
@@ -11874,7 +11874,7 @@
       "LMID": 96,
       "Icon": "t_SpecialtySkin_LMG2_Tiger_04_256x128",
       "Name": "LMG Recon - Tiger Stripes Red Weapon Skin",
-      "UID": 10093,
+      "UID": 10238,
       "ValidFor": [
         40014
       ]
@@ -11883,7 +11883,7 @@
       "LMID": 97,
       "Icon": "t_SpecialtySkin_LMG2_Tiger_05_256x128",
       "Name": "LMG Recon - Tiger Stripes Green Weapon Skin",
-      "UID": 10094,
+      "UID": 10258,
       "ValidFor": [
         40014
       ]
@@ -11892,7 +11892,7 @@
       "LMID": 98,
       "Icon": "t_SpecialtySkin_LMG2_Tiger_06_256x128",
       "Name": "LMG Recon - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10095,
+      "UID": 10278,
       "ValidFor": [
         40014
       ]
@@ -11901,7 +11901,7 @@
       "LMID": 99,
       "Icon": "t_SpecialtySkin_M4_BLRSkullHex_256x128",
       "Name": "M4X - Green Hex Weapon Skin",
-      "UID": 10096,
+      "UID": 10042,
       "ValidFor": [
         40022
       ]
@@ -11910,7 +11910,7 @@
       "LMID": 100,
       "Icon": "t_SpecialtySkin_M4_America_256x128",
       "Name": "M4X - Stars and Stripes Weapon Skin",
-      "UID": 10097,
+      "UID": 10043,
       "ValidFor": [
         40022
       ]
@@ -11919,7 +11919,7 @@
       "LMID": 101,
       "Icon": "t_SpecialtySkin_M4_Tiger_01_256x128",
       "Name": "M4X - Tiger Stripes Orange Weapon Skin",
-      "UID": 10098,
+      "UID": 10064,
       "ValidFor": [
         40022
       ]
@@ -11928,7 +11928,7 @@
       "LMID": 102,
       "Icon": "t_SpecialtySkin_M4_Tiger_02_256x128",
       "Name": "M4X - Tiger Stripes Blue Weapon Skin",
-      "UID": 10099,
+      "UID": 10089,
       "ValidFor": [
         40022
       ]
@@ -11937,7 +11937,7 @@
       "LMID": 103,
       "Icon": "t_SpecialtySkin_M4_Clover_01_256x128",
       "Name": "M4X - Clovers Weapon Skin",
-      "UID": 10100,
+      "UID": 10090,
       "ValidFor": [
         40022
       ]
@@ -11946,7 +11946,7 @@
       "LMID": 104,
       "Icon": "t_SpecialtySkin_M4_Tiger_03_256x128",
       "Name": "M4X - Tiger Stripes Pink Weapon Skin",
-      "UID": 10101,
+      "UID": 10219,
       "ValidFor": [
         40022
       ]
@@ -11955,7 +11955,7 @@
       "LMID": 105,
       "Icon": "t_SpecialtySkin_M4_Tiger_04_256x128",
       "Name": "M4X - Tiger Stripes Red Weapon Skin",
-      "UID": 10102,
+      "UID": 10239,
       "ValidFor": [
         40022
       ]
@@ -11964,7 +11964,7 @@
       "LMID": 106,
       "Icon": "t_SpecialtySkin_M4_Tiger_05_256x128",
       "Name": "M4X - Tiger Stripes Green Weapon Skin",
-      "UID": 10103,
+      "UID": 10259,
       "ValidFor": [
         40022
       ]
@@ -11973,7 +11973,7 @@
       "LMID": 107,
       "Icon": "t_SpecialtySkin_M4_Tiger_06_256x128",
       "Name": "M4X - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10104,
+      "UID": 10279,
       "ValidFor": [
         40022
       ]
@@ -11982,7 +11982,7 @@
       "LMID": 108,
       "Icon": "t_SpecialtySkin_SMG_BLRSkullHex_256x128",
       "Name": "Submachine Gun - Green Hex Weapon Skin",
-      "UID": 10105,
+      "UID": 10044,
       "ValidFor": [
         40010
       ]
@@ -11991,7 +11991,7 @@
       "LMID": 109,
       "Icon": "t_SpecialtySkin_SMG_America_256x128",
       "Name": "Submachine Gun - Stars and Stripes Weapon Skin",
-      "UID": 10106,
+      "UID": 10045,
       "ValidFor": [
         40010
       ]
@@ -12000,7 +12000,7 @@
       "LMID": 110,
       "Icon": "t_SpecialtySkin_SMG_Tiger_01_256x128",
       "Name": "Submachine Gun - Tiger Stripes Orange Weapon Skin",
-      "UID": 10107,
+      "UID": 10065,
       "ValidFor": [
         40010
       ]
@@ -12009,7 +12009,7 @@
       "LMID": 111,
       "Icon": "t_SpecialtySkin_SMG_Tiger_02_256x128",
       "Name": "Submachine Gun - Tiger Stripes Blue Weapon Skin",
-      "UID": 10108,
+      "UID": 10091,
       "ValidFor": [
         40010
       ]
@@ -12018,7 +12018,7 @@
       "LMID": 112,
       "Icon": "t_SpecialtySkin_SMG_Clover_01_256x128",
       "Name": "Submachine Gun - Clovers Weapon Skin",
-      "UID": 10109,
+      "UID": 10201,
       "ValidFor": [
         40010
       ]
@@ -12027,7 +12027,7 @@
       "LMID": 113,
       "Icon": "t_SpecialtySkin_SMG_Tiger_03_256x128",
       "Name": "Submachine Gun - Tiger Stripes Pink Weapon Skin",
-      "UID": 10110,
+      "UID": 10220,
       "ValidFor": [
         40010
       ]
@@ -12036,7 +12036,7 @@
       "LMID": 114,
       "Icon": "t_SpecialtySkin_SMG_Tiger_04_256x128",
       "Name": "Submachine Gun - Tiger Stripes Red Weapon Skin",
-      "UID": 10111,
+      "UID": 10240,
       "ValidFor": [
         40010
       ]
@@ -12045,7 +12045,7 @@
       "LMID": 115,
       "Icon": "t_SpecialtySkin_SMG_Tiger_05_256x128",
       "Name": "Submachine Gun - Tiger Stripes Green Weapon Skin",
-      "UID": 10112,
+      "UID": 10260,
       "ValidFor": [
         40010
       ]
@@ -12054,7 +12054,7 @@
       "LMID": 116,
       "Icon": "t_SpecialtySkin_SMG_Tiger_06_256x128",
       "Name": "Submachine Gun - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10113,
+      "UID": 10280,
       "ValidFor": [
         40010
       ]
@@ -12063,7 +12063,7 @@
       "LMID": 117,
       "Icon": "t_SpecialtySkin_SMG2_BLRSkullHex_256x128",
       "Name": "Tactical SMG - Green Hex Weapon Skin",
-      "UID": 10114,
+      "UID": 10046,
       "ValidFor": [
         40013
       ]
@@ -12072,7 +12072,7 @@
       "LMID": 118,
       "Icon": "t_SpecialtySkin_SMG2_America_256x128",
       "Name": "Tactical SMG - Stars and Stripes Weapon Skin",
-      "UID": 10115,
+      "UID": 10047,
       "ValidFor": [
         40013
       ]
@@ -12081,7 +12081,7 @@
       "LMID": 119,
       "Icon": "t_SpecialtySkin_SMG2_Tiger_01_256x128",
       "Name": "Tactical SMG - Tiger Stripes Orange Weapon Skin",
-      "UID": 10116,
+      "UID": 10066,
       "ValidFor": [
         40013
       ]
@@ -12090,7 +12090,7 @@
       "LMID": 120,
       "Icon": "t_SpecialtySkin_SMG2_Tiger_02_256x128",
       "Name": "Tactical SMG - Tiger Stripes Blue Weapon Skin",
-      "UID": 10117,
+      "UID": 10092,
       "ValidFor": [
         40013
       ]
@@ -12099,7 +12099,7 @@
       "LMID": 121,
       "Icon": "t_SpecialtySkin_SMG2_Clover_01_256x128",
       "Name": "Tactical SMG - Clovers Weapon Skin",
-      "UID": 10118,
+      "UID": 10093,
       "ValidFor": [
         40013
       ]
@@ -12108,7 +12108,7 @@
       "LMID": 122,
       "Icon": "t_SpecialtySkin_SMG2_Tiger_03_256x128",
       "Name": "Tactical SMG - Tiger Stripes Pink Weapon Skin",
-      "UID": 10119,
+      "UID": 10221,
       "ValidFor": [
         40013
       ]
@@ -12117,7 +12117,7 @@
       "LMID": 123,
       "Icon": "t_SpecialtySkin_SMG2_Tiger_04_256x128",
       "Name": "Tactical SMG - Tiger Stripes Red Weapon Skin",
-      "UID": 10120,
+      "UID": 10241,
       "ValidFor": [
         40013
       ]
@@ -12126,7 +12126,7 @@
       "LMID": 124,
       "Icon": "t_SpecialtySkin_SMG2_Tiger_05_256x128",
       "Name": "Tactical SMG - Tiger Stripes Green Weapon Skin",
-      "UID": 10121,
+      "UID": 10261,
       "ValidFor": [
         40013
       ]
@@ -12135,7 +12135,7 @@
       "LMID": 125,
       "Icon": "t_SpecialtySkin_SMG2_Tiger_06_256x128",
       "Name": "Tactical SMG - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10122,
+      "UID": 10281,
       "ValidFor": [
         40013
       ]
@@ -12144,7 +12144,7 @@
       "LMID": 126,
       "Icon": "t_SpecialtySkin_SMGi_BLRSkullHex_256x128",
       "Name": "Burstfire SMG - Green Hex Weapon Skin",
-      "UID": 10123,
+      "UID": 10048,
       "ValidFor": [
         40018
       ]
@@ -12153,7 +12153,7 @@
       "LMID": 127,
       "Icon": "t_SpecialtySkin_SMGi_America_256x128",
       "Name": "Burstfire SMG - Stars and Stripes Weapon Skin",
-      "UID": 10124,
+      "UID": 10049,
       "ValidFor": [
         40018
       ]
@@ -12162,7 +12162,7 @@
       "LMID": 128,
       "Icon": "t_SpecialtySkin_SMGi_Tiger_01_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Orange Weapon Skin",
-      "UID": 10125,
+      "UID": 10067,
       "ValidFor": [
         40018
       ]
@@ -12171,7 +12171,7 @@
       "LMID": 129,
       "Icon": "t_SpecialtySkin_SMGi_Tiger_02_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Blue Weapon Skin",
-      "UID": 10126,
+      "UID": 10094,
       "ValidFor": [
         40018
       ]
@@ -12180,7 +12180,7 @@
       "LMID": 130,
       "Icon": "t_SpecialtySkin_SMGi_Clover_01_256x128",
       "Name": "Burstfire SMG - Clovers Weapon Skin",
-      "UID": 10127,
+      "UID": 10095,
       "ValidFor": [
         40018
       ]
@@ -12189,7 +12189,7 @@
       "LMID": 131,
       "Icon": "t_SpecialtySkin_SMGi_Tiger_03_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Pink Weapon Skin",
-      "UID": 10128,
+      "UID": 10222,
       "ValidFor": [
         40018
       ]
@@ -12198,7 +12198,7 @@
       "LMID": 132,
       "Icon": "t_SpecialtySkin_SMGi_Tiger_04_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Red Weapon Skin",
-      "UID": 10129,
+      "UID": 10242,
       "ValidFor": [
         40018
       ]
@@ -12207,7 +12207,7 @@
       "LMID": 133,
       "Icon": "t_SpecialtySkin_SMGi_Tiger_05_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Green Weapon Skin",
-      "UID": 10130,
+      "UID": 10262,
       "ValidFor": [
         40018
       ]
@@ -12216,7 +12216,7 @@
       "LMID": 134,
       "Icon": "t_SpecialtySkin_SMGi_Tiger_06_256x128",
       "Name": "Burstfire SMG - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10131,
+      "UID": 10282,
       "ValidFor": [
         40018
       ]
@@ -12225,7 +12225,7 @@
       "LMID": 135,
       "Icon": "t_SpecialtySkin_SniperRifle_BLRSkullHex_256x128",
       "Name": "Combat Rifle - Green Hex Weapon Skin",
-      "UID": 10132,
+      "UID": 10050,
       "ValidFor": [
         40008
       ]
@@ -12234,7 +12234,7 @@
       "LMID": 136,
       "Icon": "t_SpecialtySkin_SniperRifle_America_256x128",
       "Name": "Combat Rifle - Stars and Stripes Weapon Skin",
-      "UID": 10133,
+      "UID": 10051,
       "ValidFor": [
         40008
       ]
@@ -12243,7 +12243,7 @@
       "LMID": 137,
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_01_256x128",
       "Name": "Combat Rifle - Tiger Stripes Orange Weapon Skin",
-      "UID": 10134,
+      "UID": 10068,
       "ValidFor": [
         40008
       ]
@@ -12252,7 +12252,7 @@
       "LMID": 138,
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_02_256x128",
       "Name": "Combat Rifle - Tiger Stripes Blue Weapon Skin",
-      "UID": 10135,
+      "UID": 10096,
       "ValidFor": [
         40008
       ]
@@ -12261,7 +12261,7 @@
       "LMID": 139,
       "Icon": "t_SpecialtySkin_SniperRifle_Clover_01_256x128",
       "Name": "Combat Rifle - Clovers Weapon Skin",
-      "UID": 10136,
+      "UID": 10097,
       "ValidFor": [
         40008
       ]
@@ -12270,7 +12270,7 @@
       "LMID": 140,
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_03_256x128",
       "Name": "Combat Rifle - Tiger Stripes Pink Weapon Skin",
-      "UID": 10137,
+      "UID": 10223,
       "ValidFor": [
         40008
       ]
@@ -12279,7 +12279,7 @@
       "LMID": 141,
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_04_256x128",
       "Name": "Combat Rifle - Tiger Stripes Red Weapon Skin",
-      "UID": 10138,
+      "UID": 10243,
       "ValidFor": [
         40008
       ]
@@ -12288,7 +12288,7 @@
       "LMID": 142,
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_05_256x128",
       "Name": "Combat Rifle - Tiger Stripes Green Weapon Skin",
-      "UID": 10139,
+      "UID": 10263,
       "ValidFor": [
         40008
       ]
@@ -12297,7 +12297,7 @@
       "LMID": 143,
       "Icon": "t_SpecialtySkin_SniperRifle_Tiger_06_256x128",
       "Name": "Combat Rifle - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10140,
+      "UID": 10283,
       "ValidFor": [
         40008
       ]
@@ -12306,7 +12306,7 @@
       "LMID": 144,
       "Icon": "t_SpecialtySkin_SniperRifle2_BLRSkullHex_256x128",
       "Name": "Light Recon - Green Hex Weapon Skin",
-      "UID": 10141,
+      "UID": 10052,
       "ValidFor": [
         40026
       ]
@@ -12315,7 +12315,7 @@
       "LMID": 145,
       "Icon": "t_SpecialtySkin_SniperRifle2_America_256x128",
       "Name": "Light Recon - Stars and Stripes Weapon Skin",
-      "UID": 10142,
+      "UID": 10053,
       "ValidFor": [
         40026
       ]
@@ -12324,7 +12324,7 @@
       "LMID": 146,
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_01_256x128",
       "Name": "Light Recon - Tiger Stripes Orange Weapon Skin",
-      "UID": 10143,
+      "UID": 10069,
       "ValidFor": [
         40026
       ]
@@ -12333,7 +12333,7 @@
       "LMID": 147,
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_02_256x128",
       "Name": "Light Recon - Tiger Stripes Blue Weapon Skin",
-      "UID": 10144,
+      "UID": 10098,
       "ValidFor": [
         40026
       ]
@@ -12342,7 +12342,7 @@
       "LMID": 148,
       "Icon": "t_SpecialtySkin_SniperRifle2_Clover_01_256x128",
       "Name": "Light Recon - Clovers Weapon Skin",
-      "UID": 10145,
+      "UID": 10099,
       "ValidFor": [
         40026
       ]
@@ -12351,7 +12351,7 @@
       "LMID": 149,
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_03_256x128",
       "Name": "Light Recon - Tiger Stripes Pink Weapon Skin",
-      "UID": 10146,
+      "UID": 10224,
       "ValidFor": [
         40026
       ]
@@ -12360,7 +12360,7 @@
       "LMID": 150,
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_04_256x128",
       "Name": "Light Recon - Tiger Stripes Red Weapon Skin",
-      "UID": 10147,
+      "UID": 10244,
       "ValidFor": [
         40026
       ]
@@ -12369,7 +12369,7 @@
       "LMID": 151,
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_05_256x128",
       "Name": "Light Recon - Tiger Stripes Green Weapon Skin",
-      "UID": 10148,
+      "UID": 10264,
       "ValidFor": [
         40026
       ]
@@ -12378,7 +12378,7 @@
       "LMID": 152,
       "Icon": "t_SpecialtySkin_SniperRifle2_Tiger_06_256x128",
       "Name": "Light Recon - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10149,
+      "UID": 10284,
       "ValidFor": [
         40026
       ]
@@ -12387,7 +12387,7 @@
       "LMID": 153,
       "Icon": "t_SpecialtySkin_20mm_BLRSkullHex_256x128",
       "Name": "Anti-Materiel - Green Hex Weapon Skin",
-      "UID": 10150,
+      "UID": 10054,
       "ValidFor": [
         40019
       ]
@@ -12396,7 +12396,7 @@
       "LMID": 154,
       "Icon": "t_SpecialtySkin_20mm_America_256x128",
       "Name": "Anti-Materiel - Stars and Stripes Weapon Skin",
-      "UID": 10151,
+      "UID": 10055,
       "ValidFor": [
         40019
       ]
@@ -12405,7 +12405,7 @@
       "LMID": 155,
       "Icon": "t_SpecialtySkin_20mm_Tiger_01_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Orange Weapon Skin",
-      "UID": 10152,
+      "UID": 10062,
       "ValidFor": [
         40019
       ]
@@ -12414,7 +12414,7 @@
       "LMID": 156,
       "Icon": "t_SpecialtySkin_20mm_Tiger_02_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Blue Weapon Skin",
-      "UID": 10153,
+      "UID": 10070,
       "ValidFor": [
         40019
       ]
@@ -12423,7 +12423,7 @@
       "LMID": 157,
       "Icon": "t_SpecialtySkin_20mm_Clover_01_256x128",
       "Name": "Anti-Materiel - Clovers Weapon Skin",
-      "UID": 10154,
+      "UID": 10071,
       "ValidFor": [
         40019
       ]
@@ -12432,7 +12432,7 @@
       "LMID": 158,
       "Icon": "t_SpecialtySkin_20mm_Tiger_03_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Pink Weapon Skin",
-      "UID": 10155,
+      "UID": 10225,
       "ValidFor": [
         40019
       ]
@@ -12441,7 +12441,7 @@
       "LMID": 159,
       "Icon": "t_SpecialtySkin_20mm_Tiger_04_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Red Weapon Skin",
-      "UID": 10156,
+      "UID": 10245,
       "ValidFor": [
         40019
       ]
@@ -12450,7 +12450,7 @@
       "LMID": 160,
       "Icon": "t_SpecialtySkin_20mm_Tiger_05_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Green Weapon Skin",
-      "UID": 10157,
+      "UID": 10265,
       "ValidFor": [
         40019
       ]
@@ -12459,7 +12459,7 @@
       "LMID": 161,
       "Icon": "t_SpecialtySkin_20mm_Tiger_06_256x128",
       "Name": "Anti-Materiel - Tiger Stripes Yellow Weapon Skin",
-      "UID": 10158,
+      "UID": 10285,
       "ValidFor": [
         40019
       ]
@@ -12468,7 +12468,7 @@
       "LMID": 163,
       "Icon": "t_SpecialtySkin_CompoundBow_Cupid_256x128",
       "Name": "Cupid\u0027s QT Pi Bow",
-      "UID": 10159,
+      "UID": 10011,
       "ValidFor": [
         40024
       ]
