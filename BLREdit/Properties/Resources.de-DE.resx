@@ -183,6 +183,9 @@
   <data name="enum_Ammo" xml:space="preserve">
     <value>Ammo</value>
   </data>
+  <data name="enum_Character" xml:space="preserve">
+    <value />
+  </data>
   <data name="enum_CP" xml:space="preserve">
     <value>CP</value>
   </data>
