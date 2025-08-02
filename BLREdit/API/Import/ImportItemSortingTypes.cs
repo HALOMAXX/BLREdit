@@ -2,7 +2,6 @@
 
 public enum ImportWeaponSortingType
 {
-    None,
     Name,
     Ammo,
     Damage,
@@ -12,11 +11,11 @@ public enum ImportWeaponSortingType
     Move,
     Aim,
     Hip,
+    None,
 }
 
 public enum ImportModificationSortingType
 {
-    None,
     Name,
     Ammo,
     Damage,
@@ -25,20 +24,20 @@ public enum ImportModificationSortingType
     Range,
     Run,
     Accuracy,
+    None,
 }
 
 public enum ImportScopeSortingType
 { 
-    None,
     Name,
     Zoom,
     ScopeInTime,
-    Infrared
+    Infrared,
+    None,
 }
 
 public enum ImportGearSortingType
 {
-    None,
     Name,
     IncendiaryProtection,
     ToxicProtection,
@@ -46,30 +45,30 @@ public enum ImportGearSortingType
     ElectroProtection,
     MeleeProtection,
     InfraredProtection,
+    None,
 }
 
 public enum ImportGripSortingType
 {
-    None,
     Name,
     Recoil,
+    None,
 }
 
 public enum ImportNoStatsSortingType
 {
-    None,
     Name,
+    None,
 }
 public enum ImportShopSortingType
 {
-    None,
     Name,
     CP,
+    None,
 }
 
 public enum ImportHelmetSortingType
 {
-    None,
     Name,
     Run,
     Health,
@@ -79,20 +78,21 @@ public enum ImportHelmetSortingType
     ToxicProtection,
     IncendiaryProtection,
     ExplosiveProtection,
+    None,
 }
 
 public enum ImportArmorSortingType
 {
-    None,
     Name,
     Run,
     Health,
     GearSlots,
+    None,
 }
 
 public enum ImportAvatarSortingType
 {
-    None,
+    Character,
     Name,
-    Character
+    None,
 }
