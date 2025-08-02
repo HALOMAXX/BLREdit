@@ -70,7 +70,7 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Profile.
+        ///   Looks up a localized string similar to New Loadout.
         /// </summary>
         public static string btn_AddProfile {
             get {
@@ -291,6 +291,15 @@ namespace BLREdit.Properties {
         public static string enum_Ammo {
             get {
                 return ResourceManager.GetString("enum_Ammo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Character.
+        /// </summary>
+        public static string enum_Character {
+            get {
+                return ResourceManager.GetString("enum_Character", resourceCulture);
             }
         }
         

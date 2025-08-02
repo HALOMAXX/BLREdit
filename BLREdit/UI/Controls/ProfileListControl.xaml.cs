@@ -82,8 +82,15 @@ namespace BLREdit.UI.Controls
                 if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
                 {
                     MainWindow.MainView.CurrentProfileSortingPropertyName = $"Shareable.{Enum.GetName(MainWindow.MainView.CurrentProfileSortingEnumType, Enum.GetValues(MainWindow.MainView.CurrentProfileSortingEnumType).GetValue(SortComboBox1.SelectedIndex))}";
-                    view.SortDescriptions.Add(new SortDescription(MainWindow.MainView.CurrentProfileSortingPropertyName, MainWindow.MainView.ProfileListSortingDirection));
-                    //view.SortDescriptions.Add(new SortDescription("Shareable.Name", ListSortDirection.Ascending));
+                    switch (MainWindow.MainView.CurrentProfileSortingPropertyName)
+                    {
+                        case "Shareable.Name":
+                            view.SortDescriptions.Add(new SortDescription(MainWindow.MainView.CurrentProfileSortingPropertyName, MainWindow.MainView.ProfileListSortingDirection == ListSortDirection.Ascending ? ListSortDirection.Descending : ListSortDirection.Ascending));
+                            break;
+                        default:
+                            view.SortDescriptions.Add(new SortDescription(MainWindow.MainView.CurrentProfileSortingPropertyName, MainWindow.MainView.ProfileListSortingDirection));
+                            break;
+                    }
                 }
             }
         }

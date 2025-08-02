@@ -46,6 +46,7 @@ public sealed class BLREditItem : INotifyPropertyChanged
     public string? Name { get; set; }
     public double CP { get; set; }
     public int AmmoType { get; set; } = -1;
+    public string? Character { get; set; }
     [JsonIgnore] public string DisplayName { get { return ItemNames.ResourceManager.GetString(UID.ToString(UID_FORMAT)); } }
     [JsonIgnore] public UIBool IsValid { get; set; } = new(true);
 

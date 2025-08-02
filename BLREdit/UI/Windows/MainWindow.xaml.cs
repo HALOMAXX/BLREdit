@@ -1066,6 +1066,8 @@ public sealed partial class MainWindow : Window
                     break;
 
                 case ImportSystem.AVATARS_CATEGORY:
+                    SetSortingType(typeof(ImportAvatarSortingType));
+                    break;
                 case ImportSystem.CAMOS_BODIES_CATEGORY:
                 case ImportSystem.CAMOS_WEAPONS_CATEGORY:
                 case ImportSystem.HANGERS_CATEGORY:
@@ -1112,7 +1114,16 @@ public sealed partial class MainWindow : Window
             if (SortComboBox1.Items.Count > 0 && SortComboBox1.SelectedItem != null)
             {
                 MainView.CurrentSortingPropertyName = Enum.GetName(MainView.CurrentSortingEnumType, Enum.GetValues(MainView.CurrentSortingEnumType).GetValue(SortComboBox1.SelectedIndex));
-                view.SortDescriptions.Add(new SortDescription(MainView.CurrentSortingPropertyName, MainView.ItemListSortingDirection));
+                switch (MainView.CurrentSortingPropertyName)
+                {
+                    case "Character":
+                    case "Name":
+                        view.SortDescriptions.Add(new SortDescription(MainView.CurrentSortingPropertyName, MainView.ItemListSortingDirection == ListSortDirection.Ascending ? ListSortDirection.Descending : ListSortDirection.Ascending));
+                        break;
+                    default:
+                        view.SortDescriptions.Add(new SortDescription(MainView.CurrentSortingPropertyName, MainView.ItemListSortingDirection));
+                        break;
+                }             
             }
             if (resetView)
             { 
@@ -1121,16 +1132,35 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private readonly Dictionary<Type, int> SortingTypeIndexMemory = [];
+
     private void SetSortingType(Type SortingEnumType)
     {
         if (lastSelectedSortingType != SortingEnumType)
         {
+            if (lastSelectedSortingType is not null)
+            {
+                if (SortingTypeIndexMemory.ContainsKey(lastSelectedSortingType))
+                {
+                    SortingTypeIndexMemory[lastSelectedSortingType] = SortComboBox1.SelectedIndex;
+                }
+                else
+                {
+                    SortingTypeIndexMemory.Add(lastSelectedSortingType, SortComboBox1.SelectedIndex);
+                }
+            }
+
             lastSelectedSortingType = SortingEnumType;
             int index = SortComboBox1.SelectedIndex;
 
             MainView.CurrentSortingEnumType = SortingEnumType;
             SortComboBox1.SetBinding(ComboBox.ItemsSourceProperty, new Binding { Source = LanguageResources.GetWordsOfEnum(SortingEnumType) });
 
+            if (SortingTypeIndexMemory.TryGetValue(SortingEnumType, out int lastIndex))
+            {
+                index = lastIndex;
+            }
+            
             if (index > SortComboBox1.Items.Count)
             {
                 index = SortComboBox1.Items.Count - 1;
