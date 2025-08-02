@@ -89,3 +89,10 @@ public enum ImportArmorSortingType
     Health,
     GearSlots,
 }
+
+public enum ImportAvatarSortingType
+{
+    None,
+    Name,
+    Character
+}

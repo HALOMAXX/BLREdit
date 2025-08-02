@@ -1066,6 +1066,8 @@ public sealed partial class MainWindow : Window
                     break;
 
                 case ImportSystem.AVATARS_CATEGORY:
+                    SetSortingType(typeof(ImportAvatarSortingType));
+                    break;
                 case ImportSystem.CAMOS_BODIES_CATEGORY:
                 case ImportSystem.CAMOS_WEAPONS_CATEGORY:
                 case ImportSystem.HANGERS_CATEGORY:

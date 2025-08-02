@@ -282,177 +282,212 @@
     {
       "Icon": "t_Grendel_128x128",
       "Name": "Grendel - K. Moreau",
-      "UID": 50000
+      "UID": 50000,
+      "Character": "Grendel"
     },
     {
       "Icon": "t_Viper_128x128",
       "Name": "Viper - J. Vansaint",
-      "UID": 50001
+      "UID": 50001,
+      "Character": "Viper"
     },
     {
       "Icon": "t_Duchess_128x128",
       "Name": "Duchess - S. Bertolette",
-      "UID": 50002
+      "UID": 50002,
+      "Character": "Duchess"
     },
     {
       "Icon": "t_Deacon_128x128",
       "Name": "Deacon - T. Halsey",
-      "UID": 50003
+      "UID": 50003,
+      "Character": "Deacon"
     },
     {
       "Icon": "t_MARS_128x128",
       "Name": "MARS - ARK M.A.R.S.",
-      "UID": 50004
+      "UID": 50004,
+      "Character": "MARS"
     },
     {
       "Icon": "t_Chronos_128x128",
       "Name": "Chronos - R. O\u0027Conner",
-      "UID": 50005
+      "UID": 50005,
+      "Character": "Chronos"
     },
     {
       "Icon": "t_Lazarus_128x128",
       "Name": "Lazarus - B. Hinds",
-      "UID": 50006
+      "UID": 50006,
+      "Character": "Lazarus"
     },
     {
       "Icon": "t_Artemis_128x128",
       "Name": "Artemis - M. Akimoto",
-      "UID": 50007
+      "UID": 50007,
+      "Character": "Artemis"
     },
     {
       "Icon": "t_Crusher_128x128",
       "Name": "Crusher - A. Hernandez",
-      "UID": 50008
+      "UID": 50008,
+      "Character": "Crusher"
     },
     {
       "Icon": "t_ViperAlternate_128x128",
       "Name": "Urban Combat Viper",
-      "UID": 65006
+      "UID": 65006,
+      "Character": "Viper"
     },
     {
       "Icon": "t_GrendelPremium_128x128",
       "Name": "Mercenary Grendel",
-      "UID": 65007
+      "UID": 65007,
+      "Character": "Grendel"
     },
     {
       "Icon": "t_MARSPremium_128x128",
       "Name": "Peacekeeper MARS",
-      "UID": 65008
+      "UID": 65008,
+      "Character": "MARS"
     },
     {
       "Icon": "t_Lilith_128x128",
       "Name": "Lilith - S. Karalis",
-      "UID": 50009
+      "UID": 50009,
+      "Character": "Lilith"
     },
     {
       "Icon": "t_DuchessPremium_128x128",
       "Name": "Royal Duchess",
-      "UID": 65011
+      "UID": 65011,
+      "Character": "Duchess"
     },
     {
       "Icon": "t_ViperPremium_128x128",
       "Name": "Patient Zero Viper",
-      "UID": 65010
+      "UID": 65010,
+      "Character": "Viper"
     },
     {
       "Icon": "t_DuchessAlternate_128x128",
       "Name": "Ranger Duchess",
-      "UID": 65009
+      "UID": 65009,
+      "Character": "Duchess"
     },
     {
       "Icon": "t_DeaconAlternate_128x128",
       "Name": "Engineer Deacon",
-      "UID": 65012
+      "UID": 65012,
+      "Character": "Deacon"
     },
     {
       "Icon": "t_MARSAlternate_128x128",
       "Name": "Civil Defense MARS",
-      "UID": 65013
+      "UID": 65013,
+      "Character": "MARS"
     },
     {
       "Icon": "t_GrendelAlternate_128x128",
       "Name": "Platoon Grendel",
-      "UID": 65014
+      "UID": 65014,
+      "Character": "Grendel"
     },
     {
       "Icon": "t_WhiteKnight_128x128",
       "Name": "White Knight",
-      "UID": 50010
+      "UID": 50010,
+      "Character": "White Knight"
     },
     {
       "Icon": "t_DeaconPremium_128x128",
       "Name": "Full Exoframe Deacon",
-      "UID": 65015
+      "UID": 65015,
+      "Character": "Deacon"
     },
     {
       "Icon": "t_LazarusPremium_128x128",
       "Name": "Battle Triage Lazarus",
-      "UID": 65016
+      "UID": 65016,
+      "Character": "Lazarus"
     },
     {
       "Icon": "t_LazarusAlternate_128x128",
       "Name": "Rural Operations Lazarus",
-      "UID": 65017
+      "UID": 65017,
+      "Character": "Lazarus"
     },
     {
       "Icon": "t_ChronosAlternate_128x128",
       "Name": "Cyber Assault Chronos",
-      "UID": 65018
+      "UID": 65018,
+      "Character": "Chronos"
     },
     {
       "Icon": "t_ChronosPremium_128x128",
       "Name": "Electronic Warfare Chronos",
-      "UID": 65019
+      "UID": 65019,
+      "Character": "Chronos"
     },
     {
       "Icon": "t_MARS_128x128",
       "Name": "Urban MARS",
-      "UID": 50015
+      "UID": 50015,
+      "Character": "MARS"
     },
     {
       "Icon": "t_LilithPremium_128x128",
       "Name": "Battle Mode Suit Lilith",
-      "UID": 65020
+      "UID": 65020,
+      "Character": "Lilith"
     },
     {
       "Icon": "t_LilithAlternate_128x128",
       "Name": "Forest Dark Lilith",
-      "UID": 65021
+      "UID": 65021,
+      "Character": "Lilith"
     },
     {
       "Icon": "t_ArtemisPremium_128x128",
       "Name": "High Altitude System Artemis",
-      "UID": 65022
+      "UID": 65022,
+      "Character": "Artemis"
     },
     {
       "Icon": "t_GrendelAlternate2_128x128",
       "Name": "Glacial Grendel",
-      "UID": 65023
+      "UID": 65023,
+      "Character": "Grendel"
     },
     {
       "Icon": "t_ViperAlternate2_128x128",
       "Name": "Arid Light Viper",
-      "UID": 65024
+      "UID": 65024,
+      "Character": "Viper"
     },
     {
       "Icon": "t_DuchessAlternate2_128x128",
       "Name": "Temperate Camo Duchess",
-      "UID": 65025
+      "UID": 65025,
+      "Character": "Duchess"
     },
     {
       "Icon": "t_Ghost_128x128",
       "Name": "Ghost - J. Haussen",
-      "UID": 50018
+      "UID": 50018,
+      "Character": "Ghost"
     },
     {
       "Icon": "t_CrusherPremium_128x128",
       "Name": "Desert C.S.A.R. Crusher",
-      "UID": 65026
+      "UID": 65026,
+      "Character": "Crusher"
     },
     {
       "Icon": "t_GhostPremium_128x128",
       "Name": "Survival Suit Ghost",
-      "UID": 65027
+      "UID": 65027,
+      "Character": "Ghost"
     },
     {
       "Name": "No Avatar"
