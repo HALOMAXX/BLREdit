@@ -540,7 +540,7 @@ public sealed partial class MainWindow : Window
                 {
                     if (process.Client.Equals(DataStorage.Settings.DefaultClient) && process.ConnectedServer is not null)
                     {
-                        string message = "Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nApply a non Advanced or modify this loadout!\n";
+                        string message = "Current loadout is not supported on this server\nOnly Vanilla loadouts are allowed!\nEnable a non Advanced or modify this loadout!\n";
                         if (!MainView.Profile.BLR.ValidateLoadout(ref message))
                         {
                             LoggingSystem.MessageLog(message, "warning");
@@ -556,7 +556,7 @@ public sealed partial class MainWindow : Window
 
     public static void ApplyBLReviveLoadouts(BLRClient client)
     {
-        if (client is null) { LoggingSystem.MessageLog("Failed to apply Loadouts no Client selected!", "Failed to apply Loadouts"); return; }
+        if (client is null) { LoggingSystem.MessageLog("Failed to enable Loadouts no Client selected!", "Failed to enable Loadouts"); return; }
         var directory = $"{client.BLReviveConfigsPath}profiles\\";
         Directory.CreateDirectory(directory);
         string message = string.Empty;
@@ -571,7 +571,7 @@ public sealed partial class MainWindow : Window
         }
 
         IOResources.SerializeFile($"{directory}{DataStorage.Settings.PlayerName}.json", loadouts.ToArray());
-        ShowAlert($"Applied BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
+        ShowAlert($"Updated BLRevive Loadouts!\nScroll through your loadouts to\nrefresh ingame Loadouts!", 8); //TODO: Add Localization
         if (Instance is not null && Instance.lastAnim != CalmAnim)
         {
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
@@ -580,7 +580,7 @@ public sealed partial class MainWindow : Window
 
     private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        ApplySorting();
+        ApplySortingItemList();
     }
 
     private void RandomLoadout_Click(object sender, RoutedEventArgs e)
@@ -1096,7 +1096,7 @@ public sealed partial class MainWindow : Window
                     break;
             }
             ItemList.ItemsSource = list;
-            ApplySorting(true);
+            ApplySortingItemList(true);
             if (!ItemListTab.IsFocused) ItemListTab.Focus();
         }
         else
@@ -1105,7 +1105,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    public void ApplySorting(bool resetView = false)
+    public void ApplySortingItemList(bool resetView = false)
     {
         if (CollectionViewSource.GetDefaultView(ItemList.ItemsSource) is CollectionView view)
         {
@@ -1203,7 +1203,7 @@ public sealed partial class MainWindow : Window
             MainView.ItemListSortingDirection = ListSortDirection.Ascending;
             SortDirectionButton.Content = Properties.Resources.btn_Ascending;
         }
-        ApplySorting();
+        ApplySortingItemList();
     }
 
     #region Server UI

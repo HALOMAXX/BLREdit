@@ -53,10 +53,10 @@ public partial class ServerListControl : UserControl
         {
             view.Filter += new Predicate<object>(ServerFilter.FullFilter);
         }
-        ApplySorting();
+        ApplySortingServerList();
     }
 
-    public void ApplySorting()
+    public void ApplySortingServerList()
     {
         if (CollectionViewSource.GetDefaultView(ServerListView.ItemsSource) is CollectionView view)
         {
@@ -132,6 +132,6 @@ public partial class ServerListControl : UserControl
 
     private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
-        ApplySorting();
+        ApplySortingServerList();
     }
 }

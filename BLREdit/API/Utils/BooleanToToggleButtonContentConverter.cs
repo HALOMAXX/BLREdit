@@ -12,17 +12,17 @@ public sealed class BooleanToToggleButtonContentConverter : System.Windows.Data.
     {
         if (value is bool boolean && boolean)
         {
-            return "Applied";
+            return "Enabled";
         }
         else
         {
-            return "Apply";
+            return "Enable";
         }
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is string content && content == "Applied")
+        if (value is string content && content == "Enabled")
         {
             return true;
         }

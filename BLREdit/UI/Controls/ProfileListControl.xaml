@@ -28,7 +28,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Button Name="ToggleLoadouts" Content="Apply all Loadouts" Width="256" Height="48" Click="ToggleLoadouts_Click"/>
+            <Button Name="EnableAllLoadouts" Content="Enable all Loadouts" Width="256" Height="48" Click="EnableAlloadouts_Click"/>
+            <Button Name="DisableAllLoadouts" Content="Disable all Loadouts" Width="256" Height="48" Click="DisableAlloadouts_Click"/>
             <Button Name="RepairLoadouts" Content="Repair all Loadouts" Width="256" Height="48" Click="RepairLoadouts_Click"/>
         </StackPanel>
             
