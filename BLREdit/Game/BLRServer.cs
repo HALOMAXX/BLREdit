@@ -52,7 +52,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public bool IsNotDefaultServer { get { return !IsDefaultServer; } set { OnPropertyChanged(); } }
     [JsonIgnore] public UIBool IsPinging { get; } = new(false);
     [JsonIgnore] public ServerUtilsInfo ServerInfo { get; private set; } = new();
-    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.TeamList.Count >= 2); } else { return new(false); } } }
+    [JsonIgnore] public UIBool IsTeammode { get { if (ServerInfo?.IsOnline ?? false) { return new(ServerInfo?.BLRMode?.IsTeammode ?? ServerInfo?.TeamList.Count >= 2); } else { return new(false); } } }
     [JsonIgnore] public string ServerDescription { get { return GetServerDescription(); } }
     [JsonIgnore] public BitmapImage MapImage { get { if ((ServerInfo?.IsOnline ?? false) && (ServerInfo.BLRMap?.SquareImage is not null)) { return new(new Uri(ServerInfo?.BLRMap?.SquareImage)); } else { return new(new Uri($"{IOResources.BaseDirectory}Assets\\textures\\t_bluescreen2.png")); } } }
     [JsonIgnore] public StringCollection PlayerList { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.List; } else { return [EmptyServer]; } } }
