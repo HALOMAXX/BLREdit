@@ -21,6 +21,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace BLREdit.Game;
 
@@ -346,10 +347,13 @@ public sealed class BLRClient : INotifyPropertyChanged
             return true;
         }
     }
-
-    public void ValidateProxy()
+    
+    public void ValidateBLReviveModuleSDK()
     {
         if (!CheckBLReviveVersion()) { LoggingSystem.Log($"BLRevive is Uptodate!"); return; } else { LoggingSystem.Log("BLRevive needs to Update!"); }
+        LoggingSystem.ResetWatch();
+        MainWindow.BLREditAlert? SDKAnim = null;
+        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { SDKAnim = MainWindow.ShowAlert("Updating BLRevive SDK!", 60, 600); }));
         RemoveAllModules();
         
         var proxySource = string.Empty;
@@ -385,6 +389,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             catch { }
         }
         BLReviveVersion = DataStorage.Settings.SelectedBLReviveVersion;
+        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.UpdateAlert(SDKAnim, $"Finished Updating BLRevive SDK! Took: {LoggingSystem.GetElapsedSeconds()}", 8); }));
     }
 
     private void InstallRequiredModules()
@@ -412,8 +417,10 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ValidateModules(List<ProxyModule>? enabledModules = null)
     {
+        LoggingSystem.ResetWatch();
+        MainWindow.BLREditAlert? ModuleAnim = null;
+        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { ModuleAnim = MainWindow.ShowAlert("Validating BLRevive Modules!", 60, 600); }));
         App.AvailableProxyModuleCheck(); // Get Available Modules just in case
-
         var count = InstalledModules.Count;
         var customCount = CustomModules.Count;
         LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count}, StrictModuleCheck:{DataStorage.Settings.StrictModuleChecks}, AllowCustomModules:{DataStorage.Settings.AllowCustomModules}, InstallRequiredModules:{DataStorage.Settings.InstallRequiredModules}");
@@ -512,6 +519,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         catch { LoggingSystem.Log("failed to write config files!"); }
 
         LoggingSystem.Log($"Finished Validating Modules of {this}");
+        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.UpdateAlert(ModuleAnim, $"Finished Validating BLRevive Modules! Took: {LoggingSystem.GetElapsedSeconds()}", 8); }));
     }
 
     private static void AddModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, string moduleName, string installName)
@@ -607,22 +615,6 @@ public sealed class BLRClient : INotifyPropertyChanged
                     param => this.LaunchBotMatch()
                 );
             return launchBotMatchCommand;
-        }
-    }
-
-    private ICommand? launchSafeMatchCommand;
-    [JsonIgnore]
-    public ICommand LaunchSafeMatchCommand
-    {
-        get
-        {
-            launchSafeMatchCommand ??= new RelayCommand(
-                    param => {
-                        string launchArgs = $"server containment containment containment containment";
-                        StartProcess(launchArgs, true, false);
-                    }
-                );
-            return launchSafeMatchCommand;
         }
     }
 
@@ -741,10 +733,15 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void StartProcess(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
     {
+        Task.Run(() => { StartProcessAsync(launchArgs, isServer, watchDog, enabledModules, server); }).ConfigureAwait(false);
+    }
+
+    private async void StartProcessAsync(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
+    {
         if (!hasBeenValidated && Validate.Is)
         {
             if (!ValidateClient()) { return; }
-            ValidateProxy();
+            ValidateBLReviveModuleSDK();
             ValidateModules(enabledModules);
             DataStorage.Save();
             hasBeenValidated = true;
@@ -753,6 +750,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             LoggingSystem.Log($"[{this}]: has already been validated!");
         }
+        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.ShowAlert($"Starting BLR {(isServer ? "Server" : "Client")}!"); }));
         BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog, server);
     }
 

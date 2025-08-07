@@ -6,11 +6,12 @@
              xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:ui="clr-namespace:BLREdit.UI"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800" IsVisibleChanged="UserControl_IsVisibleChanged">
     <Grid>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" Height="22">
-            <Button Name="SortDirectionButton" Content="{x:Static p:Resources.btn_Descending}" Width="120" Click="ChangeSortingDirection"/>
+            <Button Name="SortDirectionButton" Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ui:MainWindow}}, Path=DataContext.ProfileListSortingDirectionString}" Width="120" Click="ChangeSortingDirection"/>
             <ComboBox Name="SortComboBox1" Width="120" SelectionChanged="SortComboBox1_SelectionChanged"/>
             <TextBox Name="SearchBox" Text="" Width="120" TextChanged="SearchBox_TextChanged"/>
         </StackPanel>

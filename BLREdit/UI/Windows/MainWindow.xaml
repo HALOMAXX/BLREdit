@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:p="clr-namespace:BLREdit.Properties"
         xmlns:ui="clr-namespace:BLREdit.UI.Controls"
-        xmlns:old="clr-namespace:BLREdit.UI"
+        xmlns:local="clr-namespace:BLREdit.UI"
         xmlns:views="clr-namespace:BLREdit.UI.Views"
         xmlns:game="clr-namespace:BLREdit.Game"
         xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
@@ -35,7 +35,7 @@
         <TabControl Name="MainWindowTabs" SelectionChanged="MainWindowTabs_SelectionChanged" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="420,0,0,0">
             <TabItem Header="{x:Static p:Resources.ti_ItemList}" Name="ItemListTab">
                 <Grid>
-                    <Button Name="SortDirectionButton" Content="{x:Static p:Resources.btn_Descending}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22"  Click="ChangeSortingDirection"/>
+                    <Button Name="SortDirectionButton" Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=DataContext.ItemListSortingDirectionString}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22"  Click="ChangeSortingDirection"/>
                     <ComboBox Name="SortComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="120,0,0,0" SelectionChanged="SortComboBox1_SelectionChanged"/>
                     <TextBox Name="SearchBox" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="240,0,0,0" TextChanged="SearchBox_TextChanged"/>
                     <ListView Name="ItemList" Margin="0,22,0,0" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
@@ -95,11 +95,11 @@
         
         
         <!--Alert Stack-->
-        <Grid HorizontalAlignment="Right" Width="400" Margin="400,0,0,0" IsHitTestVisible="False" Focusable="False">
-            <ListBox HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="400" Background="Transparent" Name="AlertList" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" IsHitTestVisible="False" Focusable="False">
+            <ListBox HorizontalAlignment="Right" VerticalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Background="Transparent" Name="AlertList" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                        <Setter Property="DockPanel.Dock" Value="Bottom"/>
+                        <Setter Property="DockPanel.Dock" Value="Top"/>
                     </Style>
                 </ListBox.ItemContainerStyle>
                 <ListBox.ItemsPanel>

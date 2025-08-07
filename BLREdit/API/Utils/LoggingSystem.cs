@@ -5,14 +5,13 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
-using System.Windows.Shapes;
 
 namespace BLREdit;
 
 public static class LoggingSystem
 {
     private static ThreadLocal<Stopwatch> ThreadLocalStopwatch { get; } = new();
-    private static readonly double Frequency = Stopwatch.Frequency * 0.001d;
+    private static readonly double Frequency = Stopwatch.Frequency * 0.01d;
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -34,6 +33,26 @@ public static class LoggingSystem
         {
             Log(string.Format(message, ThreadLocalStopwatch.Value.ElapsedTicks / Frequency));
         }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static string GetElapsedMiliseconds(string message = "{0:G2}ms")
+    {
+        if (ThreadLocalStopwatch.IsValueCreated)
+        {
+            return string.Format(message, ThreadLocalStopwatch.Value.ElapsedTicks / Frequency);
+        }
+        return "";
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static string GetElapsedSeconds(string message = "{0:G3}s")
+    {
+        if (ThreadLocalStopwatch.IsValueCreated)
+        {
+            return string.Format(message, (ThreadLocalStopwatch.Value.ElapsedTicks / Frequency) / 1000.0d);
+        }
+        return "";
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

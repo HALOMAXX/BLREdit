@@ -57,12 +57,10 @@ namespace BLREdit.UI.Controls
             if (MainWindow.MainView.ProfileListSortingDirection == ListSortDirection.Ascending)
             {
                 MainWindow.MainView.ProfileListSortingDirection = ListSortDirection.Descending;
-                SortDirectionButton.Content = Properties.Resources.btn_Descending;
             }
             else
             {
                 MainWindow.MainView.ProfileListSortingDirection = ListSortDirection.Ascending;
-                SortDirectionButton.Content = Properties.Resources.btn_Ascending;
             }
             ApplySortingProfileList();
         }

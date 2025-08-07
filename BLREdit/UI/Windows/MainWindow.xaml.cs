@@ -1196,12 +1196,10 @@ public sealed partial class MainWindow : Window
         if (MainView.ItemListSortingDirection == ListSortDirection.Ascending)
         {
             MainView.ItemListSortingDirection = ListSortDirection.Descending;
-            SortDirectionButton.Content = Properties.Resources.btn_Descending;
         }
         else
         {
             MainView.ItemListSortingDirection = ListSortDirection.Ascending;
-            SortDirectionButton.Content = Properties.Resources.btn_Ascending;
         }
         ApplySortingItemList();
     }
@@ -1299,13 +1297,32 @@ public sealed partial class MainWindow : Window
         return null;
     }
 
-    public static void ShowAlert(string message, double displayTime = 4, double displayWidth = 400)
+    public struct BLREditAlert
     {
-        //TODO: Add Localization for alerts
-        if (Instance is null) return;
-        var grid = CreateAlertGrid(message);
-        Instance.AlertList.Items.Add(grid);
-        new TripleAnimationDouble(0, displayWidth, 1, displayTime, 1, grid, Grid.WidthProperty, Instance.AlertList.Items).Begin(Instance.AlertList);
+        public TripleAnimationDouble? animation;
+        public Grid? grid;
+    }
+
+    public static BLREditAlert ShowAlert(string message, double displayTime = 4, double displayWidth = 400)
+    {
+        if (Instance is null) return default;
+        var alert = new BLREditAlert
+        {
+            grid = CreateAlertGrid(message)
+        };
+        alert.animation = new TripleAnimationDouble(0, displayWidth, 1, displayTime, 1, alert.grid, Grid.WidthProperty, Instance.AlertList.Items);
+        Instance.AlertList.Items.Add(alert.grid);
+        alert.animation.Begin(Instance.AlertList);
+        return alert;
+    }
+
+    public static void UpdateAlert(BLREditAlert? alert, string message, double displayTime = 4, double displayWidth = 400)
+    {
+        if (Instance is null || !alert.HasValue) return;
+        alert.Value.grid.Children.Clear();
+        TextBox alertText = new() { Text = message, TextAlignment = TextAlignment.Center, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0)), IsReadOnly = true, FontSize = 26 };
+        alert.Value.grid.Children.Add(alertText);
+        alert.Value.animation.MoveToEndWithOffset(61-displayTime);
     }
 
     private static Grid CreateAlertGrid(string Alert)
