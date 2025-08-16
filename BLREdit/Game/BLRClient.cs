@@ -335,25 +335,21 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     static GitlabPackageFile? _latestBLRevivePackageFile;
     static GitlabPackageFile? LatestBLRevivePackageFile { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackageFile; } }
-    private bool CheckBLReviveVersion()
+    private bool CheckBLReviveVersionIsUpToDateAndExists()
     {
-        if (SDKVersionDate is not null && BLReviveVersion is not null)
-        {
-            var d = LatestBLRevivePackageFile?.CreatedAt ?? DateTime.MinValue;
-            return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second) > SDKVersionDate;
-        }
-        else
-        {
-            return true;
-        }
+        if (SDKVersionDate is null || string.IsNullOrEmpty(BLReviveVersion)) return false;
+        var sdk = File.Exists($"{Path.GetDirectoryName(OriginalPath)}\\BLRevive.dll");
+        var loader = File.Exists($"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll");
+        if (!sdk || !loader) return false;
+        var d = LatestBLRevivePackageFile?.CreatedAt ?? DateTime.MinValue;
+        return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second) <= SDKVersionDate;
     }
     
     public void ValidateBLReviveModuleSDK()
     {
-        if (!CheckBLReviveVersion()) { LoggingSystem.Log($"BLRevive is Uptodate!"); return; } else { LoggingSystem.Log("BLRevive needs to Update!"); }
-        LoggingSystem.ResetWatch();
+        if (CheckBLReviveVersionIsUpToDateAndExists()) { LoggingSystem.Log($"BLRevive is Uptodate!"); return; } else { LoggingSystem.Log("BLRevive needs to Update!"); }
         MainWindow.BLREditAlert? SDKAnim = null;
-        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { SDKAnim = MainWindow.ShowAlert("Updating BLRevive SDK!", 60, 600); }));
+        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { LoggingSystem.ResetWatch(); SDKAnim = MainWindow.ShowAlert("Updating BLRevive SDK!", 60, 600); }));
         RemoveAllModules();
         
         var proxySource = string.Empty;
@@ -369,24 +365,15 @@ public sealed class BLRClient : INotifyPropertyChanged
             LoggingSystem.Log($"Installing latest BLRevive version ({reiveResult.Item3}) before ({SDKVersionDate})");
             DataStorage.Settings.SDKVersionDate = reiveResult.Item3;
             SDKVersionDate = reiveResult.Item3;
-
             try
             {
-                File.Copy($"{IOResources.BaseDirectory}{dInputResult.Item2}", $"{Path.GetDirectoryName(PatchedPath)}\\DINPUT8.dll", true);
+                File.Copy($"{IOResources.BaseDirectory}{dInputResult.Item2}", $"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll", true);
+                File.Copy($"{IOResources.BaseDirectory}{reiveResult.Item2}", $"{Path.GetDirectoryName(OriginalPath)}\\BLRevive.dll", true);
             }
-            catch {}
-
-            proxySource = $"{IOResources.BaseDirectory}{reiveResult.Item2}";
-            proxyTarget = $"{Path.GetDirectoryName(PatchedPath)}\\BLRevive.dll";
-        }
-         
-        if (File.Exists(proxySource))
-        {
-            try
+            catch (Exception error)
             {
-                File.Copy(proxySource, proxyTarget, true);
+                LoggingSystem.MessageLogClipboard($"Message:\n{error.Message}\nStacktrace:{error.StackTrace}\n", "Failed to copy essential dll files to BLR client!");
             }
-            catch { }
         }
         BLReviveVersion = DataStorage.Settings.SelectedBLReviveVersion;
         MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.UpdateAlert(SDKAnim, $"Finished Updating BLRevive SDK! Took: {LoggingSystem.GetElapsedSeconds()}", 8); }));
@@ -417,9 +404,9 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void ValidateModules(List<ProxyModule>? enabledModules = null)
     {
-        LoggingSystem.ResetWatch();
+        
         MainWindow.BLREditAlert? ModuleAnim = null;
-        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { ModuleAnim = MainWindow.ShowAlert("Validating BLRevive Modules!", 60, 600); }));
+        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { LoggingSystem.ResetWatch(); ModuleAnim = MainWindow.ShowAlert("Validating BLRevive Modules!", 60, 600); }));
         App.AvailableProxyModuleCheck(); // Get Available Modules just in case
         var count = InstalledModules.Count;
         var customCount = CustomModules.Count;

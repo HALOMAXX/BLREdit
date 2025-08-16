@@ -11,7 +11,7 @@ namespace BLREdit;
 public static class LoggingSystem
 {
     private static ThreadLocal<Stopwatch> ThreadLocalStopwatch { get; } = new();
-    private static readonly double Frequency = Stopwatch.Frequency * 0.01d;
+    private static readonly double Frequency = Stopwatch.Frequency * 0.001d;
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
