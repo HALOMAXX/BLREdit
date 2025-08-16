@@ -49,8 +49,12 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private BindingExpression? lastBindingExpression;
     private Color? lastSelectedBorderColor;
 
-    public ListSortDirection ItemListSortingDirection { get; set; } = ListSortDirection.Descending;
-    public ListSortDirection ProfileListSortingDirection { get; set; } = ListSortDirection.Descending;
+    private ListSortDirection itemListSortingDirection = ListSortDirection.Descending;
+    private ListSortDirection profileListSortingDirection = ListSortDirection.Descending;
+    public ListSortDirection ItemListSortingDirection { get { return itemListSortingDirection; } set { itemListSortingDirection = value; OnPropertyChanged(); OnPropertyChanged(nameof(ItemListSortingDirectionString)); } } 
+    public ListSortDirection ProfileListSortingDirection { get { return profileListSortingDirection; } set { profileListSortingDirection = value; OnPropertyChanged(); OnPropertyChanged(nameof(ProfileListSortingDirectionString)); } }
+    public string ItemListSortingDirectionString { get { return ItemListSortingDirection == ListSortDirection.Ascending ? Properties.Resources.btn_Ascending : Properties.Resources.btn_Descending; } }
+    public string ProfileListSortingDirectionString { get { return ProfileListSortingDirection == ListSortDirection.Ascending ? Properties.Resources.btn_Ascending : Properties.Resources.btn_Descending; } }
     public string CurrentProfileSortingPropertyName { get; set; } = "None";
     public Type? CurrentSortingEnumType { get; set; }
     public Type? CurrentProfileSortingEnumType { get; set; }

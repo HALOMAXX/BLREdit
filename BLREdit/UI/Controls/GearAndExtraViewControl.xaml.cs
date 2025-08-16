@@ -45,7 +45,7 @@ namespace BLREdit.UI.Controls
         {
             if (sender is FrameworkElement element && element.DataContext is BLRLoadoutStorage loadoutStorage)
             {
-                string message = "Can't apply loadout\n";
+                string message = "Can't enable loadout\n";
                 if (!loadoutStorage.BLR.ValidateLoadout(ref message))
                 {
                     LoggingSystem.MessageLog(message, "Info");

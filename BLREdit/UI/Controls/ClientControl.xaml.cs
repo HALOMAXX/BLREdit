@@ -34,14 +34,12 @@ namespace BLREdit.UI.Controls
                 this.BotMachButton.Visibility = Visibility.Collapsed;
                 this.TrainingButton.Visibility = Visibility.Visible;
                 this.StartServerButton.Visibility = Visibility.Collapsed;
-                this.SafeMatchButton.Visibility = Visibility.Visible;
             }
             else
             {
                 this.BotMachButton.Visibility = Visibility.Visible;
                 this.TrainingButton.Visibility = Visibility.Collapsed;
                 this.StartServerButton.Visibility = Visibility.Visible;
-                this.SafeMatchButton.Visibility = Visibility.Collapsed;
             }
         }
     }

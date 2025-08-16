@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,13 +17,15 @@ public sealed class TripleAnimationDouble
     readonly DoubleAnimation StayAnimation = new();
     readonly DoubleAnimation DisappearAnimation = new();
     readonly Storyboard AnimationFlow = new();
+    private FrameworkElement containingObject;
+    public bool RemoveAfterCompletion { get; set; } = true;
 
     public TripleAnimationDouble(double from, double to, double appearTime, double stayTime, double disappearTime, DependencyObject target, DependencyProperty property)
     {
         AnimationFlow.Children.Add(AppearAnimation);
         AnimationFlow.Children.Add(StayAnimation);
         AnimationFlow.Children.Add(DisappearAnimation);
-        AnimationFlow.Duration = new Duration(TimeSpan.FromSeconds(appearTime+stayTime+disappearTime));
+        //AnimationFlow.Duration = new Duration(TimeSpan.FromSeconds(appearTime+stayTime+disappearTime));
         SetSize(from, to);
         Storyboard.SetTarget(AppearAnimation, target);
         Storyboard.SetTarget(StayAnimation, target);
@@ -40,14 +44,20 @@ public sealed class TripleAnimationDouble
 
     public TripleAnimationDouble(double from, double to, double appearTime, double stayTime, double disappearTime, FrameworkElement target, DependencyProperty property, ItemCollection list) : this (from, to, appearTime, stayTime, disappearTime, target, property)
     {
-        AnimationFlow.Completed += (o, args) => {
-            list.Remove(target);
+        AnimationFlow.Completed += (s, e) => {
+            if (RemoveAfterCompletion) { list.Remove(target); } 
         };
     }
 
     public void Begin(FrameworkElement containingObject)
     {
-        AnimationFlow.Begin(containingObject);
+        this.containingObject = containingObject;
+        AnimationFlow.Begin(containingObject, true);
+    }
+
+    public void MoveToEndWithOffset(double offset)
+    {
+        AnimationFlow.Seek(this.containingObject, TimeSpan.FromSeconds(offset), TimeSeekOrigin.BeginTime);
     }
 
     public void SetSize(double from, double to)

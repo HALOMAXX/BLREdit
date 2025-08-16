@@ -44,12 +44,12 @@ namespace BLREdit.UI.Controls
                 view.Filter += new Predicate<object>(ProfileFilter.Instance.FullFilter);
             }
             SetSortingType(typeof(ProfileSortingType));
-            ApplySorting();
+            ApplySortingProfileList();
         }
 
         private void SortComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ApplySorting();
+            ApplySortingProfileList();
         }
 
         private void ChangeSortingDirection(object sender, RoutedEventArgs e)
@@ -57,14 +57,12 @@ namespace BLREdit.UI.Controls
             if (MainWindow.MainView.ProfileListSortingDirection == ListSortDirection.Ascending)
             {
                 MainWindow.MainView.ProfileListSortingDirection = ListSortDirection.Descending;
-                SortDirectionButton.Content = Properties.Resources.btn_Descending;
             }
             else
             {
                 MainWindow.MainView.ProfileListSortingDirection = ListSortDirection.Ascending;
-                SortDirectionButton.Content = Properties.Resources.btn_Ascending;
             }
-            ApplySorting();
+            ApplySortingProfileList();
         }
 
         public void Refresh(object? sender = null, EventArgs? e = null)
@@ -73,7 +71,7 @@ namespace BLREdit.UI.Controls
             { view.Refresh(); }
         }
 
-        public void ApplySorting()
+        public void ApplySortingProfileList()
         {
             if (CollectionViewSource.GetDefaultView(ProfileListView.ItemsSource) is CollectionView view)
             {
@@ -120,10 +118,10 @@ namespace BLREdit.UI.Controls
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             SetSortingType(typeof(ProfileSortingType));
-            ApplySorting();
+            ApplySortingProfileList();
         }
 
-        private void ToggleLoadouts_Click(object sender, RoutedEventArgs e)
+        private void EnableAlloadouts_Click(object sender, RoutedEventArgs e)
         {
             if (DataStorage.Loadouts is null || DataStorage.Loadouts.Count <= 0) { return; }
             int appliedCount = 0;
@@ -136,7 +134,23 @@ namespace BLREdit.UI.Controls
                     appliedCount++;
                 }
             }
-            LoggingSystem.MessageLog($"Applied: {appliedCount}/{DataStorage.Loadouts.Count}", "Info");
+            LoggingSystem.MessageLog($"Enabled: {appliedCount}/{DataStorage.Loadouts.Count}", "Info");
+        }
+
+        private void DisableAlloadouts_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataStorage.Loadouts is null || DataStorage.Loadouts.Count <= 0) { return; }
+            int appliedCount = 0;
+            foreach (var loadout in DataStorage.Loadouts)
+            {
+                string message = string.Empty;
+                if (loadout.BLR.Apply)
+                {
+                    loadout.BLR.Apply = false;
+                    appliedCount++;
+                }
+            }
+            LoggingSystem.MessageLog($"Disabled: {appliedCount}/{DataStorage.Loadouts.Count}", "Info");
         }
 
         private void RepairLoadouts_Click(object sender, RoutedEventArgs e)
