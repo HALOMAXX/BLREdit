@@ -50,7 +50,7 @@ public sealed class RESTAPIClient
                 case "application/json":
                     var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var value = IOResources.Deserialize<T>(content);
-                    if (value is not null) { RequestCache.Add(api, value); return (true, value); }
+                    if (value is not null) { try { RequestCache.Add(api, value); } catch(Exception error) { LoggingSystem.Log($"[Cache]: failed to add\n[Cache]ErrorMessage: {error.Message}\n[Cache]Stacktrace:{error.StackTrace}"); } return (true, value); }
                     break;
                 default:
                     LoggingSystem.Log($"Wrong HeaderType: {response.Content.Headers.ContentType.MediaType}");

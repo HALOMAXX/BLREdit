@@ -333,7 +333,7 @@ public sealed class IOResources
             }
             catch (Exception error)
             {
-                LoggingSystem.Log($"{error.Message}\n{error.StackTrace}");
+                LoggingSystem.Log($"[Clipboard Thread]Message:{error.Message}\n[ClipboardThread]Stacktrace:{error.StackTrace}");
             }
         }
     }
