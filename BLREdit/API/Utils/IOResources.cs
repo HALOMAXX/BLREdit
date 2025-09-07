@@ -1,5 +1,4 @@
-﻿using BLREdit.API.Utils;
-using BLREdit.Export;
+﻿using BLREdit.Export;
 using BLREdit.UI.Windows;
 
 using Gameloop.Vdf;
@@ -329,11 +328,11 @@ public sealed class IOResources
                 if (string.IsNullOrEmpty(file)) { continue; }
 
                 Clipboard.SetFileDropList([file]);
-                Clipboard.Flush();
+                //Clipboard.Flush();
             }
             catch (Exception error)
             {
-                LoggingSystem.Log($"{error.Message}\n{error.StackTrace}");
+                LoggingSystem.Log($"[Clipboard Thread]Message:{error.Message}\n[ClipboardThread]Stacktrace:{error.StackTrace}");
             }
         }
     }

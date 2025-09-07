@@ -1,5 +1,4 @@
-﻿using BLREdit.API.Utils;
-using BLREdit.UI;
+﻿using BLREdit.UI;
 
 using System;
 using System.Collections.ObjectModel;
@@ -8,8 +7,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BLREdit.Game;
 
