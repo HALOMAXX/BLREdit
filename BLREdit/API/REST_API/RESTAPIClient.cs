@@ -188,14 +188,15 @@ public sealed class RESTAPIClient
         return default;
     }
 
-    public async Task<T?> GetFile<T>(string owner, string repository, string branch, string file)
+    public async Task<T?> GetFile<T>(string owner, string repository, string @ref, string file)
     {
         if(string.IsNullOrEmpty(owner) || string.IsNullOrEmpty(repository) || string.IsNullOrEmpty(file)) { LoggingSystem.FatalLog("owner, repository or file were null!"); return default; }
         string api;
+        string apiRef = (string.IsNullOrEmpty(@ref) ? "" : $"?ref={@ref}");
         if (APIProvider == RepositoryProvider.GitHub)
-        { api = $"repos/{owner}/{repository}/contents/{file}?ref={branch}"; }
+        { api = $"repos/{owner}/{repository}/contents/{file}{apiRef}"; }
         else
-        { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/repository/files/{file.Replace("/", "%2F").Replace(".", "%2E")}?ref={branch}"; }
+        { api = $"projects/{owner.Replace("/", "%2F")}%2F{repository.Replace("/", "%2F")}/repository/files/{file.Replace("/", "%2F").Replace(".", "%2E")}{apiRef}"; }
 
         var result = await TryGetAPI<T>(api).ConfigureAwait(false);
         if (result.Item1)

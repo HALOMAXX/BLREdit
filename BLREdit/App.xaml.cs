@@ -1097,7 +1097,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/ProxyModules.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "Resources/ProxyModules.json") is GitHubFile file)
             {
                 var moduleList = IOResources.Deserialize<RepositoryProxyModule[]>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableProxyModule List!");
@@ -1120,7 +1120,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/Localizations.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "Resources/Localizations.json") is GitHubFile file)
             {
                 var localizations = IOResources.Deserialize<Dictionary<string, string>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading AvailableLocalization List!");

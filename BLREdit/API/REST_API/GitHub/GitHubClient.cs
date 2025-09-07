@@ -19,9 +19,9 @@ public static class GitHubClient
         return await Client.GetReleases<GitHubRelease>(owner, repo, amount, page).ConfigureAwait(false);
     }
 
-    public static async Task<GitHubFile?> GetFile(string owner, string repo, string branch, string file)
+    public static async Task<GitHubFile?> GetFile(string owner, string repo, string file, string @ref = null)
     {
-        return await Client.GetFile<GitHubFile>(owner, repo, branch, file).ConfigureAwait(false);
+        return await Client.GetFile<GitHubFile>(owner, repo, @ref, file).ConfigureAwait(false);
     }
 
     public static (bool, string) DownloadFileFromRelease(GitHubRelease? release, string destFile, string file, string fileExt = ".dll")
