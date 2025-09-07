@@ -74,7 +74,7 @@ jobs:
         env:
           VERSION: ${{ steps.semver.outputs.VERSION }}
           FILES: ${{ steps.files.outputs.FILES }}
-        if: !contains(github.ref, 'beta')
+        if: "!contains(github.ref, 'beta')"
         with:
           generate_release_notes: true
           draft: true
