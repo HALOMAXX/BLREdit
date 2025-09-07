@@ -329,7 +329,7 @@ public sealed class IOResources
                 if (string.IsNullOrEmpty(file)) { continue; }
 
                 Clipboard.SetFileDropList([file]);
-                Clipboard.Flush();
+                //Clipboard.Flush();
             }
             catch (Exception error)
             {

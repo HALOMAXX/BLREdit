@@ -2,6 +2,8 @@
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game.Proxy;
 
+using Gameloop.Vdf.Linq;
+
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -34,6 +36,26 @@ public sealed class RESTAPIClient
         DataStorage.DataSaving += SaveCache;
     }
 
+    private void SafeCacheAddOrUpdate(string api, object data, bool old = false)
+    {
+        var cache = old ? OldRequestCache : RequestCache;
+        try 
+        {
+            if (cache.ContainsKey(api))
+            {
+                cache[api] = data;
+            }
+            else
+            {
+                cache.Add(api, data);
+            }
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.Log($"[Cache]({(old ? "Old" : "New")}): failed to add or update [{api}]\n[Cache]ErrorMessage: {error.Message}\n[Cache]Stacktrace:{error.StackTrace}");
+        }
+    }
+
     public async Task<(bool, T?)> TryGetAPI<T>(string api)
     {
         if (RequestCache.TryGetValue(api, out var newCache))
@@ -50,7 +72,11 @@ public sealed class RESTAPIClient
                 case "application/json":
                     var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var value = IOResources.Deserialize<T>(content);
-                    if (value is not null) { try { RequestCache.Add(api, value); } catch(Exception error) { LoggingSystem.Log($"[Cache]: failed to add\n[Cache]ErrorMessage: {error.Message}\n[Cache]Stacktrace:{error.StackTrace}"); } return (true, value); }
+                    if (value is not null)
+                    {
+                        SafeCacheAddOrUpdate(api, value);
+                        return (true, value); 
+                    }
                     break;
                 default:
                     LoggingSystem.Log($"Wrong HeaderType: {response.Content.Headers.ContentType.MediaType}");
@@ -82,7 +108,11 @@ public sealed class RESTAPIClient
                 case "application/octet-stream":
                     var bytes = await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
                     var date = response.Content.Headers.LastModified?.DateTime ?? DateTime.MinValue;
-                    if (bytes is not null) { RequestCache.Add(api, (bytes, date)); return (true, (bytes, date)); }
+                    if (bytes is not null) 
+                    { 
+                        SafeCacheAddOrUpdate(api, (bytes, date));
+                        return (true, (bytes, date));
+                    }
                     break;
                 default:
                     LoggingSystem.Log($"Wrong HeaderType: {response.Content.Headers.ContentType.MediaType}");
@@ -102,14 +132,7 @@ public sealed class RESTAPIClient
     {
         foreach (var cache in RequestCache)
         {
-            if (OldRequestCache.ContainsKey(cache.Key))
-            {
-                OldRequestCache[cache.Key] = cache.Value;
-            }
-            else
-            { 
-                OldRequestCache.Add(cache.Key, cache.Value);
-            }
+            SafeCacheAddOrUpdate(cache.Key, cache.Value, true);
         }
         IOResources.SerializeFile(CacheFile, OldRequestCache);
     }
