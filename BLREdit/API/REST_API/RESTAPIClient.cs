@@ -1,16 +1,10 @@
 ﻿using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game.Proxy;
-
-using Gameloop.Vdf.Linq;
-
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
-
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace BLREdit.API.REST_API;
 
