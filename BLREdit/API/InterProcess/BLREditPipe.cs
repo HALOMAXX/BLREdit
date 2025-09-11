@@ -23,7 +23,7 @@ public sealed class BLREditPipe
     public const string PIPE_NAME = "BLREdit";
     public const string API = "blredit://";
     public static bool IsServer { get; private set; } = true;
-    private static Process Self { get; } = Process.GetCurrentProcess();
+    private static Process? Self { get; } = GetSelf();
     public static Dictionary<string, Action<string>> ApiEndPoints { get; } = [];
 
     static BLREditPipe()
@@ -37,6 +37,16 @@ public sealed class BLREditPipe
                 AddOrUpdateProtocol();
             }
         }
+    }
+
+    static Process? GetSelf() {
+        try
+        {
+            return Process.GetCurrentProcess();
+        }
+        catch(Exception error) { LoggingSystem.Log($"failed to get current Process!\n{error.Message}\n{error.StackTrace}"); }
+        return null;
+        
     }
 
     static void SpawnPipes()
@@ -57,22 +67,26 @@ public sealed class BLREditPipe
         }
     }
 
-    static DateTime LastTriedTime = Self.StartTime;
+    static DateTime LastTriedTime = Self?.StartTime ?? DateTime.UtcNow;
     static void ValidateServerState()
     {
-        var running = Process.GetProcessesByName("BLREdit");
-
-        if (running.Length <= 0) { IsServer = true; return; }
-        IsServer = true;
-        foreach (var run in running)
+        try
         {
-            if (run.StartTime < LastTriedTime)
+            var running = Process.GetProcessesByName("BLREdit");
+
+            if (running.Length <= 0) { IsServer = true; return; }
+            IsServer = true;
+            foreach (var run in running)
             {
-                LastTriedTime = run.StartTime;
-                IsServer = false;
-                return;
+                if (run.StartTime < LastTriedTime)
+                {
+                    LastTriedTime = run.StartTime;
+                    IsServer = false;
+                    return;
+                }
             }
         }
+        catch(Exception error) { LoggingSystem.Log($"failed to determine if we are the first/only BLREdit running!\n{error.Message}\n{error.StackTrace}"); IsServer = true; }
     }
 
     static void AddOrUpdateProtocol()
