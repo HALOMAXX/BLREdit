@@ -1144,7 +1144,7 @@ public partial class App : System.Windows.Application
 #else
         try
         {
-            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, ThisAssembly.Git.Branch, "Resources/ServerList.json") is GitHubFile file)
+            if (await GitHubClient.GetFile(CurrentOwner, CurrentRepo, "Resources/ServerList.json") is GitHubFile file)
             {
                 var serverList = IOResources.Deserialize<List<BLRServer>>(file.DecodedContent);
                 LoggingSystem.Log("Finished Downloading Server List!");
