@@ -70,42 +70,105 @@
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7777,
     "InfoPort": 7777,
-    "Region": "EU"
+    "Region": "EU-Central"
   },
   {
     "ID": "craftman_96_alex 1",
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7778,
     "InfoPort": 7778,
-    "Region": "EU"
+    "Region": "EU-Central"
   },  
   {
     "ID": "craftman_96_alex 2",
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7779,
     "InfoPort": 7779,
-    "Region": "EU"
+    "Region": "EU-Central"
   },
   {
     "ID": "craftman_96_alex 3",
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7780,
     "InfoPort": 7780,
-    "Region": "EU"
+    "Region": "EU-Central"
   },
   {
     "ID": "craftman_96_alex 4",
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7781,
     "InfoPort": 7781,
-    "Region": "EU"
+    "Region": "EU-Central"
   },
   {
     "ID": "craftman_96_alex 5",
     "ServerAddress": "blrrevive.ddd-game.de",
     "Port": 7782,
     "InfoPort": 7782,
-    "Region": "EU"
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 6",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7783,
+    "InfoPort": 7783,
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 7",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7784,
+    "InfoPort": 7784,
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 8",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7785,
+    "InfoPort": 7785,
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 9",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7786,
+    "InfoPort": 7786,
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 10",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7787,
+    "InfoPort": 7787,
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 11",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7788,
+    "InfoPort": 7788,
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 12",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7789,
+    "InfoPort": 7789,
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 13",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7790,
+    "InfoPort": 7790,
+    "Region": "EU-Central"
+  },
+  {
+    "ID": "craftman_96_alex 14",
+    "ServerAddress": "blrrevive.ddd-game.de",
+    "Port": 7791,
+    "InfoPort": 7791,
+    "Region": "EU-Central"
   },
   {
     "ID": "icebreakr. 0",
