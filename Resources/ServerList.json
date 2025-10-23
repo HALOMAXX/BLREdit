@@ -20,6 +20,13 @@
     "Region": "EU-North"
   },
   {
+    "ID": "majikau 2",
+    "ServerAddress": "blr-us.majikau.com",
+    "Port": 7777,
+    "InfoPort": 7777,
+    "Region": "US-West"
+  },
+  {
     "ID": "a.lt main 1",
     "ServerAddress": "main-001.blrevive.northamp.fr",
     "Port": 30111,
