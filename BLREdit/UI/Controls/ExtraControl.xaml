@@ -90,8 +90,26 @@
         <Label Content="{Binding Path=Title.DisplayName}" Margin="260,1110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         <Button Name="RandomizeVoices" Content="Randomize" Click="RandomizeVoices_Click" Width="128" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="260,1082,0,0"/>
+
+        <Grid Width="130" Margin="260,850,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Image Stretch="Uniform" Source="{Binding Path=EmblemBackgroundColor.Image.IconFileInfo.FullName}">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="{Binding Path=EmblemBackground.Image.IconFileInfo.FullName}"/>
+                </Image.OpacityMask>
+            </Image>
+            <Image Stretch="Uniform" Source="{Binding Path=EmblemShapeColor.Image.IconFileInfo.FullName}">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="{Binding Path=EmblemShape.Image.IconFileInfo.FullName}"/>
+                </Image.OpacityMask>
+            </Image>
+            <Image Stretch="Uniform" Source="{Binding Path=EmblemIconColor.Image.IconFileInfo.FullName}">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="{Binding Path=EmblemIcon.Image.IconFileInfo.FullName}"/>
+                </Image.OpacityMask>
+            </Image>
+        </Grid>
         
-        <Image Height="130" Width="130" Margin="260,850,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Source="{Binding Path=EmblemBackgroundColor.Image.IconFileInfo.FullName}">
+        <!--<Image Height="130" Width="130" Margin="260,850,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Source="{Binding Path=EmblemBackgroundColor.Image.IconFileInfo.FullName}">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="{Binding Path=EmblemBackground.Image.IconFileInfo.FullName}"/>
             </Image.OpacityMask>
@@ -105,7 +123,7 @@
             <Image.OpacityMask>
                 <ImageBrush ImageSource="{Binding Path=EmblemIcon.Image.IconFileInfo.FullName}"/>
             </Image.OpacityMask>
-        </Image>
+        </Image>-->
 
     </Grid>
 </local:EquipmentControl>

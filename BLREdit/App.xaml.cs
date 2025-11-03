@@ -42,7 +42,6 @@ public partial class App : System.Windows.Application
     private static readonly string currentRepository = splitRepositoryBaseURL[splitRepositoryBaseURL.Length - 1];
     public static string CurrentRepo { get { return currentRepository; } }
 
-    public const string CurrentVersionTitle = "Fixes";
     private static readonly string[] separator = ["\r\n", "\r", "\n"];
 
     public static bool IsNewVersionAvailable { get; private set; }
@@ -899,7 +898,7 @@ public partial class App : System.Windows.Application
             GetLatestRelease();
 
             if (LatestReleaseInfo is null) { LoggingSystem.Log("Can't connect to github to check for new Version"); return false; }
-            LoggingSystem.Log($"Newest Version: {LatestReleaseInfo.TagName} of {LatestReleaseInfo.Name} vs Current: {CurrentVersion} of {CurrentVersionTitle}");
+            LoggingSystem.Log($"Newest Version: {LatestReleaseInfo.TagName} of {LatestReleaseInfo.Name} vs Current: {CurrentVersion}");
 
             bool newVersionAvailable = (LatestReleaseInfo.Version ?? new("")) > CurrentVersion;
             bool assetFolderMissing = !Directory.Exists(IOResources.ASSET_DIR);

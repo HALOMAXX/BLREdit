@@ -24,10 +24,30 @@
                 <RowDefinition Height="128"/>
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=Helmet.Image.IconFileInfo.FullName}" HorizontalAlignment="Left" Grid.Row="0"/>
-            <Image Source="{Binding Path=Trophy.Image.IconFileInfo.FullName}" HorizontalAlignment="Right" Grid.Row="0"/>
+            
+            <Grid HorizontalAlignment="Right" Grid.Row="0">
+                <Image Stretch="Uniform" Source="{Binding Path=EmblemBackgroundColor.Image.IconFileInfo.FullName}">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="{Binding Path=EmblemBackground.Image.IconFileInfo.FullName}"/>
+                    </Image.OpacityMask>
+                </Image>
+                <Image Stretch="Uniform" Source="{Binding Path=EmblemShapeColor.Image.IconFileInfo.FullName}">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="{Binding Path=EmblemShape.Image.IconFileInfo.FullName}"/>
+                    </Image.OpacityMask>
+                </Image>
+                <Image Stretch="Uniform" Source="{Binding Path=EmblemIconColor.Image.IconFileInfo.FullName}">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="{Binding Path=EmblemIcon.Image.IconFileInfo.FullName}"/>
+                    </Image.OpacityMask>
+                </Image>
+            </Grid>
 
             <Image Source="{Binding Path=UpperBody.MaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale.VisibilityInverted}"/>
             <Image Source="{Binding Path=UpperBody.FemaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale.Visibility}"/>
+
+            <Image Height="64" Source="{Binding Path=Trophy.Image.IconFileInfo.FullName}" Grid.Row="1" VerticalAlignment="Top"/>
+
             <Image Source="{Binding Path=Tactical.MaleIcon.IconFileInfo.FullName}" Grid.Row="1" HorizontalAlignment="Right"/>
 
             <Image Source="{Binding Path=LowerBody.MaleIcon.IconFileInfo.FullName}" Margin="24,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Visibility="{Binding Path=IsFemale.VisibilityInverted}"/>
