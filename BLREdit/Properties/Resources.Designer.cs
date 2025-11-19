@@ -340,6 +340,15 @@ namespace BLREdit.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Favourite / PlayerCount.
+        /// </summary>
+        public static string enum_Favourite_PlayerCount {
+            get {
+                return ResourceManager.GetString("enum_Favourite_PlayerCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gear Slots.
         /// </summary>
         public static string enum_GearSlots {
@@ -480,6 +489,15 @@ namespace BLREdit.Properties {
         public static string enum_None {
             get {
                 return ResourceManager.GetString("enum_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PlayerCount / Favourite.
+        /// </summary>
+        public static string enum_PlayerCount_Favourite {
+            get {
+                return ResourceManager.GetString("enum_PlayerCount_Favourite", resourceCulture);
             }
         }
         

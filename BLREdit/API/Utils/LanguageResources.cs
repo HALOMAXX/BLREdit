@@ -23,7 +23,8 @@ public sealed class LanguageResources
         foreach (var num in Enum.GetValues(enumType))
         {
             string enumName = Enum.GetName(enumType, num);
-            words.Add(Resources.ResourceManager.GetString($"enum_{enumName}") ?? $"Missing: {enumName}");
+            string word = Resources.ResourceManager.GetString($"enum_{enumName}") ?? $"Missing: {enumName}";
+            words.Add(word);
         }
         EnumList.Add(enumType.Name, words);
         return words;

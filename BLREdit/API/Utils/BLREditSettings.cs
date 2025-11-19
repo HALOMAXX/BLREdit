@@ -86,9 +86,14 @@ public sealed class BLREditSettings : INotifyPropertyChanged
     [JsonIgnore] public BLRProfileSettingsWrapper ProfileSettings => ExportSystem.GetOrAddProfileSettings(PlayerName);
 
     [JsonPropertyName("BotCount"), JsonInclude] private int jsonBotCount = 8;
-    [JsonIgnore] public int BotCount { get { return jsonBotCount; } set { jsonBotCount = value; OnPropertyChanged(); } }
+    [JsonIgnore] public int BotCount { get { return jsonBotCount; } set { jsonBotCount = BLRProfileSettingsWrapper.Clamp(value, 0, 32); OnPropertyChanged(); } }
+
+    [JsonPropertyName("SelectedServerSortIndex"), JsonInclude] private int serverSortIndex = 0;
+    [JsonIgnore] public int ServerSortIndex { get { return serverSortIndex; } set { serverSortIndex = BLRProfileSettingsWrapper.Clamp(value, 0, 1); OnPropertyChanged(); } }
     [JsonPropertyName("PlayerCount"), JsonInclude] private int jsonPlayerCount = 16;
-    [JsonIgnore] public int PlayerCount { get { return jsonPlayerCount; } set { jsonPlayerCount = value; OnPropertyChanged(); } }
+    [JsonIgnore] public int PlayerCount { get { return jsonPlayerCount; } set { jsonPlayerCount = BLRProfileSettingsWrapper.Clamp(value, 1, 32); OnPropertyChanged(); } }
+    [JsonPropertyName("Timelimit"), JsonInclude] private int jsonTimelimit = 10;
+    [JsonIgnore] public int Timelimit { get { return jsonTimelimit; } set { jsonTimelimit = BLRProfileSettingsWrapper.Clamp(value, 1, 99); OnPropertyChanged(); } }
     #endregion Settings
 
     static BLREditSettings()

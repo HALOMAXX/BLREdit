@@ -1,12 +1,14 @@
 ﻿using BLREdit.UI;
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace BLREdit.Game;
 
@@ -21,6 +23,7 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
     #endregion Events
 
     public static ObservableCollection<BLRProcess> RunningGames { get; } = [];
+    public static BlockingCollection<BLRClient> RemoveD8 { get; } = [];
 
     private Process gameProcess;
     public Process GameProcess { get { return gameProcess; } private set { gameProcess = value; OnPropertyChanged(); } }
@@ -37,6 +40,18 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
     static BLRProcess()
     {
         RunningGames.CollectionChanged += RunningGamesChanged;
+        Task.Run(() => {
+            while (App.IsRunning) {
+                if (RemoveD8.Take() is BLRClient client)
+                {
+                    if (client.D8INPUT.Exists)
+                    {
+                        if (client.D8INPUTZCure.Exists) { client.D8INPUTZCure.Delete(); }
+                        client.D8INPUT.MoveTo(client.D8INPUTZCure.FullName);
+                    }
+                }
+            }
+        });
     }
 
     private static void RunningGamesChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -101,6 +116,8 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
         }
     }
 
+
+
     private void ProcessExit(object sender, EventArgs args)
     {
         LoggingSystem.Log($"[{this.Client}]({(this.IsServer ? "Server" : "Client")}): has Exited with {GameProcess.ExitCode}");
@@ -138,7 +155,9 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
             }
             LoggingSystem.Log($"[{this.Client}]: Copied Server Logs to BLREdit logs");
         }
-        
+
+
+        RemoveD8.Add(Client);        
 
         if (!Watchdog) { this.Remove(); }
         else

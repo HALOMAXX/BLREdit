@@ -19,6 +19,9 @@ public sealed class BLRMap
     public string MapDescription { get; set; } = "";
 
     public string LongImageName { get; set; } = "";
+
+    [JsonIgnore] public string PlaylistName { get { return string.IsNullOrEmpty(PlaylistProviderName) ? MapName : PlaylistProviderName; } }
+
     [JsonIgnore] public string LongImage 
     {
         get
@@ -41,4 +44,14 @@ public sealed class BLRMap
     public Collection<string> SupportedPlaylists { get; set; } = ["DM", "KC", "TDM", "LMS", "LTS", "CTF", "KOTH","DOM", "SND", "OS_Medium", "OS_Easy", "OS_Hard"];
     [JsonIgnore] public Collection<BLRMode> SupportedGameModes { get; } = [];
 #pragma warning restore CA2227 // Collection properties should be read only
+
+    public static BLRMap? FindPlaylistName(string mapName)
+    {
+        if (string.IsNullOrEmpty(mapName)) return null;
+        foreach (var map in DataStorage.Maps)
+        {
+            if (map.PlaylistName == mapName) return map;
+        }
+        return null;
+    }
 }

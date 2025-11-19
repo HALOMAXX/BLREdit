@@ -26,9 +26,8 @@
 
             <!--<Button Content="Validate" ToolTip="Validate Client!" Width="128" Height="32" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,148,0"/>-->
             <Button Content="{x:Static p:Resources.btn_DefaultClient}" IsEnabled="{Binding Path=CurrentClient.IsNot}" Width="128" Height="32" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right" Command="{Binding Path=CurrentClientCommand}"/>
-            <Button Name="BotMachButton" Content="{x:Static p:Resources.btn_StartBotMatch}" Width="128" Height="32" Margin="0,0,10,10" Command="{Binding Path=LaunchBotMatchCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-            <Button Name="TrainingButton" Content="{x:Static p:Resources.btn_StartTraining}" Width="128" Height="32" Margin="0,0,10,10" Command="{Binding Path=LaunchTrainingCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Visibility="Collapsed"/>
-            <Button Name="StartServerButton" Content="{x:Static p:Resources.btn_StartServer}" Width="128" Height="32" Margin="0,0,148,10" Command="{Binding Path=LaunchServerCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Button Name="StartZCureMode" Content="Start ZCure" Width="128" Height="32" Margin="0,0,10,10" Command="{Binding Path=LaunchZCure}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Button Name="TrainingButton" Content="{x:Static p:Resources.btn_StartTraining}" Width="128" Height="32" Margin="0,0,148,10" Command="{Binding Path=LaunchTrainingCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         </Grid>
     </Border>
 </UserControl>

@@ -8,15 +8,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" IsVisibleChanged="UserControl_IsVisibleChanged">
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0">
+            <!--Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=DataContext.ItemListSortingDirectionString}"-->
+            <Button Name="ServerSortDirection" Content="{Binding Path=ServerListSortingDirectionString}"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"  Click="ServerSortDirection_Click"/>
+            <ComboBox Name="ServerSortCombobox" ItemsSource="{Binding Path=SortTypes}" SelectedIndex="{Binding Path=ServerSortIndex, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" SelectionChanged="ServerSortCombobox_SelectionChanged"/>
+            <TextBox Name="ServerSearchBox" Text="" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Stretch" Width="240" TextChanged="ServerSearchBox_TextChanged" PreviewKeyDown="ServerSearchBox_PreviewKeyDown"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Grid.Row="1">
             <Button Content="{Binding Source={x:Static p:Resources.btn_AddServer}}" Width="240" Click="AddNewServer_Click"/>
             <Button Content="{Binding Source={x:Static p:Resources.btn_QuickMatch}}" Width="240" Click="QuickMatch_Click"/>
         </StackPanel>
-        
-        <ListView Name="ServerListView" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ServerListControl}}, Path=DataContext}" DataContextChanged="ServerListView_DataContextChanged" Margin="0,0,0,40" SelectionMode="Single">
+
+        <ListView Grid.Row="1" Name="ServerListView" ItemsSource="{Binding Path=ServerList}" DataContextChanged="ServerListView_DataContextChanged" Margin="0,0,0,40" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <local:VirtualizedUniformGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 

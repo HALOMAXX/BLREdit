@@ -25,6 +25,9 @@
             <controls:NumberUpDown x:Name="BotCount" Number="{Binding Path=BotCount}" Orientation="Vertical" MinNumber="0" MaxNumber="{Binding Path=PlayerCount}"/>
             <Label Content="{x:Static p:Resources.lbl_PlayerCount}" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
             <controls:NumberUpDown x:Name="PlayerCount" Number="{Binding Path=PlayerCount}" Orientation="Horizontal" MinNumber="0" MaxNumber="16"/>
+            <Label Content="Timelimit" VerticalAlignment="Center" Style="{StaticResource DescriptorLabel}"/>
+            <controls:NumberUpDown x:Name="Timelimit" Number="{Binding Path=Timelimit}" Orientation="Horizontal" MinNumber="1" MaxNumber="99"/>
+            <Button Name="ApplyButton" Content="Apply" Click="ApplyButton_Click"/>
         </StackPanel>
         <ListView Name="MapList" Grid.Row="1">
             <ItemsControl.ItemsPanel>

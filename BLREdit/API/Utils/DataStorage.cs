@@ -2,6 +2,7 @@
 using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
+using BLREdit.Import;
 
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ public static class DataStorage
     private static ObservableCollection<BLRLoadoutStorage>? _blrProfile;
     private static BLREditSettings? _settings;
     private static ObservableCollection<ProxyModule>? _cachedModules;
+    private static ObservableCollection<BLRPlaylist>? _playlists;
     #endregion Fields
 
     #region Locks
@@ -34,9 +36,14 @@ public static class DataStorage
     private static readonly object shareableLoadoutLock = new();
     private static readonly object loadoutLock = new();
     private static readonly object settingsLock = new();
+    private static readonly object playlistLock = new();
     #endregion Locks
 
     #region Properties
+
+    public static Collection<BLRMap> Maps { get; } = IOResources.DeserializeFile<Collection<BLRMap>>($"Assets\\json\\maps.json") ?? [];
+    public static Collection<BLRMode> Modes { get; } = IOResources.DeserializeFile<Collection<BLRMode>>($"Assets\\json\\modes.json") ?? [];
+
     public static ObservableCollection<ProxyModule> CachedModules { get { lock (cachedModulesLock) { _cachedModules ??= IOResources.DeserializeFile<ObservableCollection<ProxyModule>>($"ModuleCache.json") ?? []; } return _cachedModules; } }
     public static ObservableCollection<BLRClient> GameClients { get { lock (gameClientsLock) { _gameClients ??= IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? []; } return _gameClients; } }
     public static ObservableCollection<BLRServer> ServerList { get { lock (serverListLock) { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? []; } return _servers; } }
@@ -44,6 +51,7 @@ public static class DataStorage
     public static ObservableCollection<ShareableProfile> ShareableProfiles { get { lock (shareableLock) { _shareableProfiles ??= ExportSystem.LoadShareableProfiles(); } return _shareableProfiles; } }
     public static ObservableCollection<ShareableLoadout> ShareableLoadouts { get { lock (shareableLoadoutLock) { _shareableLoadouts ??= ExportSystem.LoadShareableLoadouts(); } return _shareableLoadouts; } }
     public static ObservableCollection<BLRLoadoutStorage> Loadouts { get { lock (loadoutLock) { _blrProfile ??= ExportSystem.LoadStorage(); } return _blrProfile; } }
+    public static ObservableCollection<BLRPlaylist> Playlists { get { lock (playlistLock) { _playlists ??= IOResources.DeserializeFile<ObservableCollection<BLRPlaylist>>($"Playlists.json") ?? []; } return _playlists; } }
     public static BLREditSettings Settings { get { lock (settingsLock) { _settings ??= LoadBLREditSettings(); } return _settings; } set { _settings = value; } }
     #endregion Properties
 
@@ -67,6 +75,7 @@ public static class DataStorage
         IOResources.SerializeFile($"GameClients.json", _gameClients);
         IOResources.SerializeFile($"ServerList.json", _servers);
         IOResources.SerializeFile($"ModuleCache.json", _cachedModules);
+        IOResources.SerializeFile($"Playlists.json", _playlists);
         BLREditSettings.Save();
     }
 

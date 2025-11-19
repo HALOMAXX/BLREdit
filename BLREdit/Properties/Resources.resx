@@ -210,6 +210,9 @@
   <data name="enum_ExplosiveProtection" xml:space="preserve">
     <value>Explosive Prot</value>
   </data>
+  <data name="enum_Favourite_PlayerCount" xml:space="preserve">
+    <value>Favourite / PlayerCount</value>
+  </data>
   <data name="enum_GearSlots" xml:space="preserve">
     <value>Gear Slots</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="enum_None" xml:space="preserve">
     <value>None</value>
+  </data>
+  <data name="enum_PlayerCount_Favourite" xml:space="preserve">
+    <value>PlayerCount / Favourite</value>
   </data>
   <data name="enum_Range" xml:space="preserve">
     <value>Range</value>

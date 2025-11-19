@@ -40,8 +40,10 @@
                     <Label VerticalAlignment="Center" Content="{Binding Path=BotCount}" Style="{StaticResource DescriptorLabel}"/>
                 </StackPanel>
             </Border>
-            
 
+            <ToggleButton IsChecked="{Binding Path=Favourite}" Width="64" Height="32" Margin="10,10,158,10" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="{x:Static p:Resources.btn_TT_OpenServerConfigWindow}">
+                <Image Margin="-2,0,0,2" Source="../Resources/fav.png"/>
+            </ToggleButton>
 
 
             <Border BorderThickness="0" Background="#9f000000" HorizontalAlignment="Stretch" IsHitTestVisible="False" VerticalAlignment="Stretch" Visibility="{Binding Path=IsOnline.VisibilityInverted}"/>

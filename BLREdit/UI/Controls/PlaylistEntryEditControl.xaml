@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="BLREdit.UI.Controls.PlaylistEntryEditControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BLREdit.UI.Controls"
+             xmlns:game="clr-namespace:BLREdit.API.Export"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=game:BLRPlaylistEntry}"
+             d:DesignHeight="512" d:DesignWidth="512">
+    <Grid Height="512" Width="512">
+        <Canvas ClipToBounds="True">
+            <Image Name="MapImage" Source="{Binding Path=MapImage}" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+        </Canvas>
+
+        <StackPanel>
+            <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="#FF78AEBC" Background="#ef000000" >
+
+                <Grid Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="{Binding Path=MapInfo.DisplayName}" Foreground="#FF78AEBC" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label Grid.Row="1" Content="{Binding Path=GameMode}" Foreground="#FF78AEBC" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                </Grid>
+            </Border>
+            <Border Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="#FF78AEBC" Background="#ef000000">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Margin="2,2,0,2" Content="BotCount:" Foreground="#FF78AEBC" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="0,2,2,2" Text="{Binding Path=Properties.NumBots, Mode=TwoWay}" Foreground="#FF78AEBC" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" PreviewKeyDown="NumericTextBox_PreviewKeyDown" PreviewTextInput="NumericTextBox_PreviewTextInput"/>
+                    <Label Grid.Row="1" Grid.Column="0" Margin="2,2,0,2" Content="MaxPlayers:" Foreground="#FF78AEBC" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="0,2,2,2" Text="{Binding Path=Properties.MaxPlayers, Mode=TwoWay}" Foreground="#FF78AEBC" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" PreviewKeyDown="NumericTextBox_PreviewKeyDown" PreviewTextInput="NumericTextBox_PreviewTextInput"/>
+                    <Label Grid.Row="2" Grid.Column="0" Margin="2,2,0,2" Content="Timelimit:" Foreground="#FF78AEBC" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="0,2,2,2" Text="{Binding Path=Properties.TimeLimit, Mode=TwoWay}" Foreground="#FF78AEBC" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" PreviewKeyDown="NumericTextBox_PreviewKeyDown" PreviewTextInput="NumericTextBox_PreviewTextInput"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <Button Width="64" Height="32" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Open Settings" Click="Edit_Playlist_Entry_Click">
+            <Image Margin="0,0,0,3" Source="../Resources/settings.png"/>
+        </Button>
+
+        <Button Content="  Remove" Width="84" Height="32" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" ToolTip="Open Settings" Click="Remove_PlaylistEntry_Click"/>
+    </Grid>
+</UserControl>

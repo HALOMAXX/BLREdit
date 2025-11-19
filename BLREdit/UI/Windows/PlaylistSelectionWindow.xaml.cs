@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BLREdit.UI.Controls
+namespace BLREdit.UI.Windows
 {
     /// <summary>
-    /// Interaction logic for ClientControl.xaml
+    /// Interaction logic for PlaylistSelectionWindow.xaml
     /// </summary>
-    public partial class ClientControl : UserControl
+    public partial class PlaylistSelectionWindow : Window
     {
-        public ClientControl()
+        public PlaylistSelectionWindow()
         {
             InitializeComponent();
         }

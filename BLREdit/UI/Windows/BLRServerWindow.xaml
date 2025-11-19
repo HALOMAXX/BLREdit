@@ -19,6 +19,12 @@
     <StackPanel>
         <Border>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
+                <Label Content="Server ID:" Width="120" HorizontalContentAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+                <Label Content="{Binding Path=ID}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32">
                 <Label Content="{x:Static p:Resources.lbl_ServerAddress}" Width="120" HorizontalContentAlignment="Right" Style="{StaticResource DescriptorLabel}"/>
                 <TextBox Text="{Binding Path=ServerAddress}" HorizontalAlignment="Stretch" PreviewKeyDown="TextBox_PreviewKeyDown"/>
             </StackPanel>

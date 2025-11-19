@@ -27,13 +27,26 @@ public sealed class ServerUtilsInfo : ServerInfo
         return LoggingSystem.ObjectToTextWall(this);
     }
 
+    public string GetAllPlayerNames()
+    {
+        string players = "";
+        foreach (var team in TeamList)
+        {
+            foreach(var player in team.PlayerList)
+            {
+                players += player.Name;
+            }
+        }
+        return players;
+    }
+
     private BLRMap? map;
     [JsonIgnore]
     public BLRMap? BLRMap
     {
         get
         {
-            if (map is null) { foreach (var m in MapModeSelect.Maps) { if (m.MapName.Equals(Map, StringComparison.OrdinalIgnoreCase)) { map = m; break; } } }
+            if (map is null) { foreach (var m in DataStorage.Maps) { if (m.MapName.Equals(Map, StringComparison.OrdinalIgnoreCase)) { map = m; break; } } }
             return map;
         }
     }
@@ -44,7 +57,7 @@ public sealed class ServerUtilsInfo : ServerInfo
     {
         get 
         {
-            if (mode is null) { foreach (var m in MapModeSelect.Modes) { if (m.ModeName.Equals(GameMode, StringComparison.OrdinalIgnoreCase)) { mode = m; break; } } }
+            if (mode is null) { foreach (var m in DataStorage.Modes) { if (m.ModeName.Equals(GameMode, StringComparison.OrdinalIgnoreCase)) { mode = m; break; } } }
             return mode;
         }
     }

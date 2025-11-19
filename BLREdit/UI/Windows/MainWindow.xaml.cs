@@ -898,10 +898,10 @@ public sealed partial class MainWindow : Window
         }
         if (DataStorage.Settings.DoRuntimeCheck.Is || DataStorage.Settings.ForceRuntimeCheck.Is)
         {
-            if (App.IsVC2015x89Missing || App.IsVC2012Update4x89Missing || DataStorage.Settings.ForceRuntimeCheck.Is)
+            if (App.IsVC2015x89Missing || App.IsVC2012Update4x86Missing || DataStorage.Settings.ForceRuntimeCheck.Is)
             {
                 var info = new InfoPopups.DownloadRuntimes();
-                if (!App.IsVC2012Update4x89Missing)
+                if (!App.IsVC2012Update4x86Missing)
                 {
                     info.Link2012Updatet4Content.Text = "Microsoft Visual C++ 2012 Update 4(x86/32bit) is already installed!"; //TODO: Add Localization
                 }
@@ -1372,6 +1372,15 @@ public sealed partial class MainWindow : Window
         if (ServerListView is ServerListControl serverControl && serverControl.ServerListView is ListView listView && CollectionViewSource.GetDefaultView(listView.ItemsSource) is CollectionView view)
         {
             view.Refresh();
+        }
+    }
+
+    private void LoadoutNameBox_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (sender is TextBox box && e.Key == Key.Return && box.GetBindingExpression(TextBox.TextProperty) is BindingExpression be)
+        {
+            be.UpdateSource();
+            Keyboard.ClearFocus();
         }
     }
 }

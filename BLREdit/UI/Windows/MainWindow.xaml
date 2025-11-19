@@ -28,7 +28,7 @@
         <Button Name="AddProfileButton" Width="120" Height="22" Margin="270,10,0,0" Content="{x:Static p:Resources.btn_AddProfile}"  HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddProfileButton_Click"/>
 
         <Grid HorizontalAlignment="Left" Width="420" Margin="0,42,0,0">
-            <TextBox x:Name="LoadoutNameBox" Text="{Binding Path=Profile.BLR.Name, Mode=TwoWay}" Height="20" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="LoadoutNameBox" Text="{Binding Path=Profile.BLR.Name, Mode=TwoWay}" Height="20" VerticalAlignment="Top" HorizontalContentAlignment="Center" PreviewKeyDown="LoadoutNameBox_PreviewKeyDown"/>
             <ui:LoadoutControl x:Name="Loadout1" DataContext="{Binding Path=Profile.BLR}" Margin="0,22,0,0" x:FieldModifier="public" Border.DragEnter="Border_DragEnter" Border.Drop="Border_Drop" Border.MouseUp="Border_MouseUp"/>
         </Grid>
 
@@ -63,7 +63,11 @@
                 <ui:ProfileListControl DataContext="{Binding Path=Loadouts}"/>
             </TabItem>
 
-            <TabItem Name="ServerListTab"  Header="Server List" DataContext="{Binding Path=ServerList}">
+            <TabItem Name="PlaylistTab" Header="Playlists" >
+                <ui:PlaylistPreviewListControl DataContext="{Binding Path=Playlists}"/>
+            </TabItem>
+
+            <TabItem Name="ServerListTab"  Header="Server List">
                 <ui:ServerListControl x:Name="ServerListView"/>
             </TabItem>
 

@@ -96,3 +96,9 @@ public enum ImportAvatarSortingType
     Name,
     None,
 }
+
+public enum ServerSortingType
+{
+    Favourite_PlayerCount,
+    PlayerCount_Favourite,
+}

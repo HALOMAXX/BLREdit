@@ -30,17 +30,18 @@ namespace BLREdit.UI.Windows
 
         private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (sender is TextBox textBox)
+            if (sender is TextBox textBox && textBox.GetBindingExpression(TextBox.TextProperty) is BindingExpression be)
             {
-                var binding = textBox.GetBindingExpression(TextBox.TextProperty);
-                switch (binding.ResolvedSourcePropertyName)
+                switch (be.ResolvedSourcePropertyName)
                 {
                     case "Port":
-                        ValidatePortInput(e, textBox, binding);
+                        ValidatePortInput(e, textBox, be);
                         break;
                     default:
                         break;
                 }
+                be.UpdateSource();
+                Keyboard.ClearFocus();
             }
         }
 

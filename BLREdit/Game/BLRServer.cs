@@ -63,6 +63,9 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public UIBool HasBots { get; } = new(false);
     [JsonIgnore] public int MaxPlayers { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.MaxPlayers; } else { return -1; } } }
 
+    [JsonIgnore] private int favourite = 0;
+    public int Favourite { get { return favourite; } set { favourite = value; OnPropertyChanged(); } }
+
     [JsonIgnore] private string id = string.Empty;
     public string ID { get { return id; } set { id = value; OnPropertyChanged(); } }
     [JsonIgnore] private string serverAddress = "localhost";
@@ -200,7 +203,7 @@ public sealed class BLRServer : INotifyPropertyChanged
         RefreshInfo();
     }
 
-    private void EditServer()
+    public void EditServer()
     {
         var window = new BLRServerWindow(this);
         window.ShowDialog();
@@ -266,7 +269,11 @@ public sealed class BLRServer : INotifyPropertyChanged
 
     public void LaunchClient()
     {
-        if (DataStorage.Settings.DefaultClient is not null)
-        { DataStorage.Settings?.DefaultClient?.LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = this }); }
+        if (DataStorage.Settings.DefaultClient is BLRClient client)
+        {
+            var options = new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = this };
+            client.PrepClientLaunch(options);
+            client.LaunchClient(options);
+        }
     }
 }

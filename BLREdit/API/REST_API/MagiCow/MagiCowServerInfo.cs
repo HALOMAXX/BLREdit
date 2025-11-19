@@ -31,7 +31,7 @@ public sealed class MagiCowServerInfo : ServerInfo
     {
         get
         {
-            if (map is null) { foreach (var m in MapModeSelect.Maps) { if (m.MagiCowName.Equals(Map, System.StringComparison.OrdinalIgnoreCase)) { map = m; break; } } }
+            if (map is null) { foreach (var m in DataStorage.Maps) { if (m.MagiCowName.Equals(Map, System.StringComparison.OrdinalIgnoreCase)) { map = m; break; } } }
             return map;
         }
     }
@@ -41,7 +41,7 @@ public sealed class MagiCowServerInfo : ServerInfo
     {
         get
         {
-            if (mode is null) { foreach (var m in MapModeSelect.Modes) { if (m.ModeName.Equals(GameMode, System.StringComparison.OrdinalIgnoreCase)) { mode = m; break; } } }
+            if (mode is null) { foreach (var m in DataStorage.Modes) { if (m.ModeName.Equals(GameMode, System.StringComparison.OrdinalIgnoreCase)) { mode = m; break; } } }
             return mode;
         }
     }

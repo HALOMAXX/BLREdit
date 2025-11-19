@@ -24,47 +24,50 @@ namespace BLREdit.UI.Windows;
 /// </summary>
 public sealed partial class MapModeSelect : Window
 {
-    public static Collection<BLRMap> Maps { get; } = IOResources.DeserializeFile<Collection<BLRMap>>($"Assets\\json\\maps.json") ?? [];
-    public static Collection<BLRMode> Modes { get; } = IOResources.DeserializeFile<Collection<BLRMode>>($"Assets\\json\\modes.json") ?? [];
-
     private BLRMap? SelectedMap;
     private BLRMode? SelectedMode;
     private bool IsCanceled = true;
 
     static MapModeSelect()
     {
-        foreach (var map in Maps)
+        foreach (var map in DataStorage.Maps)
         {
-            foreach (var mode in Modes)
+            foreach (var mode in DataStorage.Modes)
             {
                 if (map.SupportedPlaylists.Contains(mode.PlaylistName) || map.SupportedPlaylists.Contains(mode.ModeName))
                 {
                     map.SupportedGameModes.Add(mode);
-                    
                 }
             }
             LoggingSystem.Log($"{map.MapName} GameModes:({map.SupportedGameModes.Count}/{map.SupportedPlaylists.Count})");
         }
     }
 
-    public MapModeSelect(string clientVersion)
+    public MapModeSelect(string clientVersion, string? map, string? mode)
     {
         InitializeComponent();
-        this.MapList.Items.Filter += new Predicate<object>(o =>
-        {
-            //if(DataStorage.Settings.AdvancedModding.Is) return true;
-            if (clientVersion == "Unknown") return true;
-            if (o is BLRMap map)
+
+        if (map is null || mode is null) { this.ApplyButton.IsEnabled = false; Visibility = Visibility.Collapsed; }
+        else {
+            SelectedMode = BLRMode.FindPlaylistName(mode);
+            SelectedMap = BLRMap.FindPlaylistName(map);
+        }
+
+            this.MapList.Items.Filter += new Predicate<object>(o =>
             {
-                return map.Available.Contains(clientVersion);
-            }
-            return false;
-        });
+                //if(DataStorage.Settings.AdvancedModding.Is) return true;
+                if (clientVersion == "Unknown") return true;
+                if (o is BLRMap map)
+                {
+                    return map.Available.Contains(clientVersion);
+                }
+                return false;
+            });
     }
 
-    public static (BLRMode? Mode, BLRMap? Map, bool Canceled) SelectMapAndMode(string clientVersion)
+    public static (BLRMode? Mode, BLRMap? Map, bool Canceled) SelectMapAndMode(string clientVersion, string? map = null, string? mode = null)
     {
-        MapModeSelect window = new(clientVersion);
+        MapModeSelect window = new(clientVersion, map, mode);
         window.ShowDialog();
         return (window.SelectedMode, window.SelectedMap, window.IsCanceled);
     }
@@ -83,6 +86,12 @@ public sealed partial class MapModeSelect : Window
     private void Window_Initialized(object sender, EventArgs e)
     {
         this.DataContext = DataStorage.Settings;
-        this.MapList.ItemsSource = Maps;
+        this.MapList.ItemsSource = DataStorage.Maps;
+    }
+
+    private void ApplyButton_Click(object sender, RoutedEventArgs e)
+    {
+        IsCanceled = false;
+        this.Close();
     }
 }

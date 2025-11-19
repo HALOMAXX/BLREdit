@@ -36,6 +36,7 @@ public sealed class MainWindowView : INotifyPropertyChanged
     public ObservableCollection<BLRClient> GameClients => DataStorage.GameClients;
     public ObservableCollection<BLRServer> ServerList => DataStorage.ServerList;
     public ObservableCollection<BLRLoadoutStorage> Loadouts => DataStorage.Loadouts;
+    public ObservableCollection<BLRPlaylist> Playlists => DataStorage.Playlists;
 #pragma warning restore CA1822 // Mark members as static
 
     public static readonly Color DefaultBorderColor = Color.FromArgb(14, 158, 158, 158);
@@ -50,8 +51,9 @@ public sealed class MainWindowView : INotifyPropertyChanged
     private Color? lastSelectedBorderColor;
 
     private ListSortDirection itemListSortingDirection = ListSortDirection.Descending;
+    public ListSortDirection ItemListSortingDirection { get { return itemListSortingDirection; } set { itemListSortingDirection = value; OnPropertyChanged(); OnPropertyChanged(nameof(ItemListSortingDirectionString)); } }
+
     private ListSortDirection profileListSortingDirection = ListSortDirection.Descending;
-    public ListSortDirection ItemListSortingDirection { get { return itemListSortingDirection; } set { itemListSortingDirection = value; OnPropertyChanged(); OnPropertyChanged(nameof(ItemListSortingDirectionString)); } } 
     public ListSortDirection ProfileListSortingDirection { get { return profileListSortingDirection; } set { profileListSortingDirection = value; OnPropertyChanged(); OnPropertyChanged(nameof(ProfileListSortingDirectionString)); } }
     public string ItemListSortingDirectionString { get { return ItemListSortingDirection == ListSortDirection.Ascending ? Properties.Resources.btn_Ascending : Properties.Resources.btn_Descending; } }
     public string ProfileListSortingDirectionString { get { return ProfileListSortingDirection == ListSortDirection.Ascending ? Properties.Resources.btn_Ascending : Properties.Resources.btn_Descending; } }

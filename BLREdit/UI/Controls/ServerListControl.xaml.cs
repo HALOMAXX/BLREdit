@@ -1,10 +1,13 @@
 ﻿using BLREdit.API.Utils;
 using BLREdit.Game;
+using BLREdit.Import;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,11 +33,22 @@ public partial class ServerListControl : UserControl
     public ServerListControl()
     {
         InitializeComponent();
+        ServerFilter.Instance.RefreshItemLists += RefreshList;
+        DataContext = new ServerListView();
+    }
+
+    public void RefreshList(object sender, EventArgs e) {
+        if (CollectionViewSource.GetDefaultView(ServerListView.ItemsSource) is CollectionView view)
+        {
+            view.Refresh();
+        }
     }
 
     private void AddNewServer_Click(object sender, RoutedEventArgs e)
     {
-        MainWindow.AddServer(new BLRServer() { ID = $"custom {GetCustomServerCount()}"}, true);
+        var server = new BLRServer() { ID = $"custom {GetCustomServerCount()}" };
+        MainWindow.AddServer(server, true);
+        server.EditServer();
     }
 
     public static int GetCustomServerCount()
@@ -56,12 +70,17 @@ public partial class ServerListControl : UserControl
         ApplySortingServerList();
     }
 
-    public void ApplySortingServerList()
+    public void ApplySortingServerList(bool resetView = false)
     {
-        if (CollectionViewSource.GetDefaultView(ServerListView.ItemsSource) is CollectionView view)
+        if (CollectionViewSource.GetDefaultView(ServerListView.ItemsSource) is CollectionView view && DataContext is ServerListView mv)
         {
             view.SortDescriptions.Clear();
-            view.SortDescriptions.Add(new SortDescription("PlayerCount", ListSortDirection.Descending));
+            var props = Enum.GetName(typeof(ServerSortingType), Enum.GetValues(typeof(ServerSortingType)).GetValue(ServerSortCombobox.SelectedIndex)).Split('_');
+            if (props.Length > 1)
+            {
+                view.SortDescriptions.Add(new SortDescription(props[0], mv.ServerListSortingDirection));
+                view.SortDescriptions.Add(new SortDescription(props[1], mv.ServerListSortingDirection));
+            }
         }
     }
 
@@ -134,4 +153,56 @@ public partial class ServerListControl : UserControl
     {
         ApplySortingServerList();
     }
+
+    private void ServerSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        ServerFilter.Instance.SearchFilter = ServerSearchBox.Text;
+    }
+
+    private void ServerSortCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ApplySortingServerList();
+    }
+
+    private void ServerSortDirection_Click(object sender, RoutedEventArgs e)
+    {
+        if (DataContext is ServerListView view)
+        {
+            if (view.ServerListSortingDirection == ListSortDirection.Ascending)
+            {
+                view.ServerListSortingDirection = ListSortDirection.Descending;
+            }
+            else
+            {
+                view.ServerListSortingDirection = ListSortDirection.Ascending;
+            }
+        }
+
+        ApplySortingServerList();
+    }
+
+    private void ServerSearchBox_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (sender is TextBox box && e.Key == Key.Return)
+        {
+            Keyboard.ClearFocus();
+        }
+    }
+}
+
+public sealed class ServerListView : INotifyPropertyChanged
+{
+    #region Events
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
+    #endregion Events
+
+    public ObservableCollection<BLRServer> ServerList => DataStorage.ServerList;
+
+    private ListSortDirection serverListSortingDirection = ListSortDirection.Descending;
+    public ListSortDirection ServerListSortingDirection { get { return serverListSortingDirection; } set { serverListSortingDirection = value; OnPropertyChanged(); OnPropertyChanged(nameof(ServerListSortingDirectionString)); } }
+    public string ServerListSortingDirectionString { get { return ServerListSortingDirection == ListSortDirection.Ascending ? Properties.Resources.btn_Ascending : Properties.Resources.btn_Descending; } }
+    public ObservableCollection<string> SortTypes { get; } = LanguageResources.GetWordsOfEnum(typeof(ServerSortingType));
+    public int ServerSortIndex { get { return DataStorage.Settings.ServerSortIndex; } set { DataStorage.Settings.ServerSortIndex = value; OnPropertyChanged(); } }
 }

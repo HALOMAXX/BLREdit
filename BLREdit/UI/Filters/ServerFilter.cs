@@ -1,4 +1,5 @@
 ﻿using BLREdit.Game;
+using BLREdit.Properties;
 
 using System;
 using System.ComponentModel;
@@ -24,7 +25,26 @@ sealed class ServerFilter : INotifyPropertyChanged
     public static bool FullFilter(object o)
     {
         if (o is BLRServer server && (DataStorage.Settings.ShowHiddenServers.Is || !server.Hidden || server.IsOnline.Is))
-        { return true; }
+        {
+            string searchText = Instance.SearchFilter.Trim().ToUpperInvariant();
+            if (string.IsNullOrEmpty(searchText)) { return true; }
+
+            string serverName = server.ServerInfo.ServerName?.ToUpperInvariant() ?? string.Empty;
+            if(serverName.Contains(searchText)) { return true; }
+
+            string mapName = server.ServerInfo.Map?.ToUpperInvariant() ?? string.Empty;
+            if (mapName.Contains(searchText)) { return true; }
+
+            string modeName = server.ServerInfo.GameModeFullName?.ToUpperInvariant() ?? string.Empty;
+            if (modeName.Contains(searchText)) { return true; }
+
+            string mdName = server.ServerInfo.GameMode?.ToUpperInvariant() ?? string.Empty;
+            if (mdName.Contains(searchText)) { return true; }
+
+            string usrName = server.ServerInfo.GetAllPlayerNames()?.ToUpperInvariant() ?? string.Empty;
+            if (usrName.Contains(searchText)) { return true; }
+            return false;
+        }
         else
         { return false; }
     }

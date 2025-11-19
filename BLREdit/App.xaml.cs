@@ -45,7 +45,7 @@ public partial class App : System.Windows.Application
     private static readonly string[] separator = ["\r\n", "\r", "\n"];
 
     public static bool IsNewVersionAvailable { get; private set; }
-    public static bool IsVC2012Update4x89Missing { get; private set; } = true;
+    public static bool IsVC2012Update4x86Missing { get; private set; } = true;
     public static bool IsVC2015x89Missing { get; private set; } = true;
     public static GitHubRelease? LatestReleaseInfo { get; private set; }
     public static GitHubRelease[]? Releases { get; private set; }
@@ -1184,14 +1184,12 @@ public partial class App : System.Windows.Application
         var x86Update = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\Microsoft.VS.VC_RuntimeAdditional_x86,v11", "Version", "-1");
         if (x86Update is string VC32BitUpdate4)
         {
-            IsVC2012Update4x89Missing = (VC32BitUpdate4 != "11.0.61030");
-
-
+            IsVC2012Update4x86Missing = (VC32BitUpdate4 != "11.0.61030");
         }
 
         IsVC2015x89Missing = !IsVC2015x86Installed();
 
-        if (!IsVC2012Update4x89Missing)
+        if (!IsVC2012Update4x86Missing)
         {
             LoggingSystem.Log("VC++ 2012 Update 4 Runtime is installed!");
         }
@@ -1214,10 +1212,16 @@ public partial class App : System.Windows.Application
             var value = subDir.GetValue("DisplayName")?.ToString() ?? null;
             if (string.IsNullOrEmpty(value)) continue;
 
-            if (Regex.IsMatch(value, @"C\+\+ 2015.*\(x86\)")) //here u can specify your version.
+            if (Regex.IsMatch(value, @"C\+\+ (2015|2017|2019|2022|2026).*\(x86\)")) //here u can specify your version.
             {
                 return true;
             }
+        }
+
+        var x86_VCPP = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Dependencies\Microsoft.VS.VC_RuntimeAdditionalVSU_x86,v14", "Version", "-1");
+        if (x86_VCPP is string VC2022)
+        {
+            return true;
         }
 
         return false;

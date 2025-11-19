@@ -19,6 +19,7 @@ using System.Runtime.CompilerServices;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -38,7 +39,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public UIBool Validate { get; set; } = new UIBool(true);
     public string ConfigName { get; set; } = "default";
 
-    [JsonIgnore] private readonly BLRServer LocalHost = new();
+    [JsonIgnore] public static readonly BLRServer LocalHost = new();
     [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
@@ -106,6 +107,12 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     private string? _basePath;
     public string? BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
+
+    [JsonIgnore] private FileInfo _D8INPUT;
+    [JsonIgnore] public FileInfo D8INPUT { get { _D8INPUT ??= new($"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll"); return _D8INPUT; } }
+
+    [JsonIgnore] private FileInfo _D8INPUTZCure;
+    [JsonIgnore]public FileInfo D8INPUTZCure { get { _D8INPUTZCure ??= new($"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll"); return _D8INPUTZCure; } }
 
     //private string? _sdkType = "BLRevive";
     //public string? SDKType { get { return _sdkType; } set { _sdkType = value; OnPropertyChanged(); } }
@@ -339,8 +346,10 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         if (SDKVersionDate is null || string.IsNullOrEmpty(BLReviveVersion)) return false;
         var sdk = File.Exists($"{Path.GetDirectoryName(OriginalPath)}\\BLRevive.dll");
-        var loader = File.Exists($"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll");
-        if (!sdk || !loader) return false;
+
+        if (!D8INPUT.Exists && D8INPUTZCure.Exists) { D8INPUTZCure.MoveTo(D8INPUT.FullName); }
+
+        if (!sdk || !D8INPUT.Exists) return false;
         var d = LatestBLRevivePackageFile?.CreatedAt ?? DateTime.MinValue;
         return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second) <= SDKVersionDate;
     }
@@ -552,6 +561,8 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             newSettingsJsonObject.Add(setting.Key, setting.Value);
         }
+        if (config.Modules.ContainsKey(installName)) 
+        { LoggingSystem.Log("Wow!"); }
         config.Modules.Add(installName, newSettingsJsonObject);
     }
 
@@ -566,42 +577,16 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     #region Commands
 
-    private ICommand? launchClientCommand;
+    private ICommand? launchZCure;
     [JsonIgnore]
-    public ICommand LaunchClientCommand
+    public ICommand LaunchZCure
     {
         get
         {
-            launchClientCommand ??= new RelayCommand(
-                    param => this.LaunchClient()
+            launchZCure ??= new RelayCommand(
+                    param => this.LaunchZCureClient()
                 );
-            return launchClientCommand;
-        }
-    }
-
-    private ICommand? launchServerCommand;
-    [JsonIgnore]
-    public ICommand LaunchServerCommand
-    {
-        get
-        {
-            launchServerCommand ??= new RelayCommand(
-                    param => this.LaunchServer()
-                );
-            return launchServerCommand;
-        }
-    }
-
-    private ICommand? launchBotMatchCommand;
-    [JsonIgnore]
-    public ICommand LaunchBotMatchCommand
-    {
-        get
-        {
-            launchBotMatchCommand ??= new RelayCommand(
-                    param => this.LaunchBotMatch()
-                );
-            return launchBotMatchCommand;
+            return launchZCure;
         }
     }
 
@@ -613,8 +598,10 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             launchTrainingCommand ??= new RelayCommand((param) => {
                 string launchArgs = $"server gunrange_persistent{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_BO?ServerName=Training?Port=7777?NumBots=0?MaxPlayers=1?SingleMatch";
+                var options = new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost };
                 StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
-                LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
+                PrepClientLaunch(options);
+                LaunchClient(options);
             });
             return launchTrainingCommand;
         }
@@ -648,58 +635,31 @@ public sealed class BLRClient : INotifyPropertyChanged
     #endregion Commands
 
     #region Launch/Exit
-    private bool SelectMapAndMode(out string launchArgs)
-    {
-        launchArgs = "";
-        (var mode, var map, var canceled) = MapModeSelect.SelectMapAndMode(this.ClientVersion);
-        if (canceled) { LoggingSystem.Log($"Canceled Server Launch"); return false; }
-        //string launchArgs = $"server {map?.MapName ?? "helodeck"}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_{mode?.ModeName ?? "DM"}?ServerName=BLREdit-{mode?.ModeName ?? "DM"}-Server?Port=7777?NumBots={DataStorage.Settings.BotCount}?MaxPlayers={DataStorage.Settings.PlayerCount}";
-
-        if (map is null || mode is null) { LoggingSystem.MessageLog($"Failed to launch server as no {((map is null && mode is null) ? "Map and Mode" : ((map is null) ? "Map" : ((mode is null) ? "Mode" : "")))} was selected!", "Failed to launch Server/Bot Match"); return false; }
-        if (string.IsNullOrEmpty(mode.ModeName)) { LoggingSystem.MessageLog("Faile to launch server ModeName is missing in files please send a error report in Discord!", "Failed to launch Server/Bot Match"); return false; }
-
-        launchArgs = $"server {(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?ServerName=BLREdit-{mode.ModeName}-Server?Playlist=BLREditPlaylist?Port=7777?blre.server.authenticateusers=false";
-
-        List<BLRPlaylistEntry> entries = [new() { Map = !string.IsNullOrEmpty(map.PlaylistProviderName) ? map.PlaylistProviderName : map.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } }];
-
-        //foreach (var maps in MapModeSelect.Maps)
-        //{
-        //    if(maps.Available.Contains(this.ClientVersion))
-        //    entries.Add(new() { Map = !string.IsNullOrEmpty(maps.PlaylistProviderName) ? maps.PlaylistProviderName : maps.MapName, GameMode = mode.ModeName, Properties = new() { MaxPlayers = DataStorage.Settings.PlayerCount, MaxBotCount = DataStorage.Settings.BotCount, NumBots = DataStorage.Settings.BotCount } });
-        //}
-
-        IOResources.SerializeFile($"{BLReviveConfigsPath}server_utils\\playlists\\BLREditPlaylist.json", entries);
-        return true;
-    }
-
-    private void LaunchBotMatch()
-    {
-        if (SelectMapAndMode(out var launchArgs))
-        {
-            StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
-            LaunchClient(new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost });
-        }        
-    }
-
-    private void LaunchServer()
-    {
-        if (SelectMapAndMode(out var launchArgs))
-        {
-            StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
-        }
-    }
-
     public void LaunchClient()
     {
         LaunchClient(BLREditSettings.DefaultLaunchOptions);
     }
 
-    public void LaunchClient(LaunchOptions options)
+    public void LaunchZCureClient()
     {
+        if (D8INPUT.Exists)
+        {
+            if (D8INPUTZCure.Exists) { D8INPUTZCure.Delete(); }
+            D8INPUT.MoveTo(D8INPUTZCure.FullName);
+        }
+        BLRProcess.CreateProcess("-zcureurl=blrrevive.ddd-game.de -zcureport=80 -presenceurl=blrrevive.ddd-game.de -presenceport=9004", this, false);
+    }
+
+    public void PrepClientLaunch(LaunchOptions options) {
         if(options is null) { LoggingSystem.LogNull(); return; }
         MainWindow.ApplyBLReviveLoadouts(this);
         ApplyProfileSetting(ExportSystem.GetOrAddProfileSettings(options.UserName));
         ApplyConfigs();
+    }
+
+    public void LaunchClient(LaunchOptions options)
+    {
+        if (options is null) { LoggingSystem.LogNull(); return; }
         string launchArgs = options.Server.IPAddress + ':' + options.Server.Port;
         launchArgs += $"?Name={options.UserName}{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Client")}";
         StartProcess(launchArgs, false, false, null, options.Server);
@@ -723,7 +683,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         Task.Run(() => { StartProcessAsync(launchArgs, isServer, watchDog, enabledModules, server); }).ConfigureAwait(false);
     }
 
-    private async void StartProcessAsync(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
+    public async void StartProcessAsync(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
     {
         if (!hasBeenValidated && Validate.Is)
         {
