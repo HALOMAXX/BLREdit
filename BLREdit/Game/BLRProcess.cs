@@ -46,8 +46,7 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
                 {
                     if (client.D8INPUT.Exists)
                     {
-                        if (client.D8INPUTZCure.Exists) { client.D8INPUTZCure.Delete(); }
-                        client.D8INPUT.MoveTo(client.D8INPUTZCure.FullName);
+                        client.D8INPUT.Delete();
                     }
                 }
             }
@@ -112,6 +111,7 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
     {
         for (int i = RunningGames.Count - 1; i >= 0; i--)
         {
+            RunningGames[i].GameProcess.Kill();
             RunningGames.RemoveAt(i);
         }
     }

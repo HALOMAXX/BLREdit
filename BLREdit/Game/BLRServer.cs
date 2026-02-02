@@ -61,6 +61,7 @@ public sealed class BLRServer : INotifyPropertyChanged
     [JsonIgnore] public int PlayerCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.PlayerCount; } else { return -1; } } }
     [JsonIgnore] public int BotCount { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.BotCount; } else { return -1; } } }
     [JsonIgnore] public UIBool HasBots { get; } = new(false);
+    [JsonIgnore] public UIBool IsHealthy { get; } = new(false);
     [JsonIgnore] public int MaxPlayers { get { if (ServerInfo?.IsOnline ?? false) { return ServerInfo.MaxPlayers; } else { return -1; } } }
 
     [JsonIgnore] private int favourite = 0;
@@ -180,6 +181,15 @@ public sealed class BLRServer : INotifyPropertyChanged
         else
         {
             HasBots.Set(false);
+        }
+
+        if (ServerInfo is not null && ServerInfo.Map != "FoxEntry" && ServerInfo.PlayerCount > 0 && ServerInfo.RemainingTime == ServerInfo.TimeLimit)
+        {
+            IsHealthy.Set(false);
+        }
+        else
+        {
+            IsHealthy.Set(true);
         }
 
         MainWindow.Instance?.Dispatcher.Invoke(MainWindow.Instance.RefreshServerList);

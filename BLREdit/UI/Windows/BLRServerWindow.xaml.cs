@@ -48,7 +48,7 @@ namespace BLREdit.UI.Windows
         private static void ValidatePortInput(KeyEventArgs e, TextBox box, BindingExpression binding)
         {
             string selectedText = box.SelectedText;
-            string text = box.Text.Remove(box.Text.IndexOf(selectedText), selectedText.Length);
+            string text = box.Text.Remove(box.Text.IndexOf(selectedText, StringComparison.InvariantCulture), selectedText.Length);
             int number = NumberKeys(e);
             int numpad = NumPadKeys(e);
 

@@ -52,7 +52,7 @@ namespace BLREdit.UI.Windows
             else if (e.Key == Key.Space) { e.Handled = true; }
         }
 
-        private static readonly Regex _regex = new Regex("[^a-zA-Z0-9,._+!=;{}@#$%^&()\\]\\['\"-]+"); //regex that matches disallowed text
+        private static readonly Regex _regex = new("[^a-zA-Z0-9,._+!=;{}@#$%^&()\\]\\['\"-]+"); //regex that matches disallowed text
 
         private void PlaylistName_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

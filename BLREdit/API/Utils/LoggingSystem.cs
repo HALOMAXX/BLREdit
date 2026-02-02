@@ -19,6 +19,23 @@ public static class LoggingSystem
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [DebuggerHidden]
+    [Conditional("DEBUG")]
+    public static void DebugBreak()
+    {
+        if (Debugger.IsAttached)
+        {
+            Debugger.Break();
+        }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void LogWithSourceInfo(string info, [CallerFilePath] string path = "", [CallerMemberName] string member = "", [CallerLineNumber] int line = 0)
+    {
+        Trace.Write($"[{DateTime.Now}]: {info}@{path}:{member}:{line}\n");
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void ResetWatch()
     {
         if (ThreadLocalStopwatch.IsValueCreated) { ThreadLocalStopwatch.Value.Restart(); } else { ThreadLocalStopwatch.Value = Stopwatch.StartNew(); }

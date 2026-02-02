@@ -33,7 +33,7 @@ namespace BLREdit;
 public partial class App : System.Windows.Application
 {
     public static readonly BLREditVersion CurrentVersion = new($"v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}");
-    private static readonly string repositoryBaseURL = ThisAssembly.Git.RepositoryUrl.EndsWith(".git") ? new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray()) : ThisAssembly.Git.RepositoryUrl;
+    private static readonly string repositoryBaseURL = ThisAssembly.Git.RepositoryUrl.EndsWith(".git", StringComparison.InvariantCulture) ? new(ThisAssembly.Git.RepositoryUrl.AsSpan(0, ThisAssembly.Git.RepositoryUrl.Length - 4).ToArray()) : ThisAssembly.Git.RepositoryUrl;
     public static string RepositoryBaseURL { get { return repositoryBaseURL; } }
     private static readonly string[] splitRepositoryBaseURL = repositoryBaseURL.Split('/');
     public static string[] SplitRepositoryBaseURL { get { return splitRepositoryBaseURL; } }
@@ -87,8 +87,8 @@ public partial class App : System.Windows.Application
         {
             string name = argList[i];
             string value = "";
-            if (!name.StartsWith("-")) continue;
-            if (i + 1 < argList.Length && !argList[i + 1].StartsWith("-")) value = argList[i + 1];
+            if (!name.StartsWith("-", StringComparison.InvariantCulture)) continue;
+            if (i + 1 < argList.Length && !argList[i + 1].StartsWith("-", StringComparison.InvariantCulture)) value = argList[i + 1];
             argDict.Add(name, value);
         }
 
@@ -649,13 +649,13 @@ public partial class App : System.Windows.Application
 
     private static void CleanPackageOrUpdateDirectory()
     {
-        if (exeZip is not null && exeZip.Info.Exists) { exeZip.Info.Delete(); }
-        if (assetZip is not null && assetZip.Info.Exists) { assetZip.Info.Delete(); }
-        if (jsonZip is not null && jsonZip.Info.Exists) { jsonZip.Info.Delete(); }
-        if (dllsZip is not null && dllsZip.Info.Exists) { dllsZip.Info.Delete(); }
-        if (texturesZip is not null && texturesZip.Info.Exists) { texturesZip.Info.Delete(); }
-        if (crosshairsZip is not null && crosshairsZip.Info.Exists) { crosshairsZip.Info.Delete(); }
-        if (patchesZip is not null && patchesZip.Info.Exists) { patchesZip.Info.Delete(); }
+        if (exeZip is not null && exeZip.Exists) { exeZip.Delete(); }
+        if (assetZip is not null && assetZip.Exists) { assetZip.Delete(); }
+        if (jsonZip is not null && jsonZip.Exists) { jsonZip.Delete(); }
+        if (dllsZip is not null && dllsZip.Exists) { dllsZip.Delete(); }
+        if (texturesZip is not null && texturesZip.Exists) { texturesZip.Delete(); }
+        if (crosshairsZip is not null && crosshairsZip.Exists) { crosshairsZip.Delete(); }
+        if (patchesZip is not null && patchesZip.Exists) { patchesZip.Delete(); }
     }
 
     public static void PackageAssets()
@@ -679,15 +679,15 @@ public partial class App : System.Windows.Application
 
         var taskExe = Task.Run(() => 
         {
-            using var archive = ZipFile.Open(exeZip.Info.FullName, ZipArchiveMode.Create);
+            using var archive = ZipFile.Open(exeZip.FullName, ZipArchiveMode.Create);
             var entry = archive.CreateEntryFromFile("BLREdit.exe", "BLREdit.exe");
         });
-        var taskAsset = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.Info.FullName); });
-        var taskJson = Task.Run(() => { if(json) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.Info.FullName); });
-        var taskDlls = Task.Run(() => { if (dlls) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.Info.FullName); });
-        var taskTexture = Task.Run(() => { if (textures) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.Info.FullName); });
-        var taskPreview = Task.Run(() => { if (crosshairs) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.Info.FullName); });
-        var taskPatches = Task.Run(() => { if (patches) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.Info.FullName); });
+        var taskAsset = Task.Run(() => { ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}", assetZip.FullName); });
+        var taskJson = Task.Run(() => { if(json) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.JSON_DIR}", jsonZip.FullName); });
+        var taskDlls = Task.Run(() => { if (dlls) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.DLL_DIR}", dllsZip.FullName); });
+        var taskTexture = Task.Run(() => { if (textures) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.TEXTURE_DIR}", texturesZip.FullName); });
+        var taskPreview = Task.Run(() => { if (crosshairs) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PREVIEW_DIR}", crosshairsZip.FullName); });
+        var taskPatches = Task.Run(() => { if (patches) ZipFile.CreateFromDirectory($"{IOResources.ASSET_DIR}{IOResources.PATCH_DIR}", patchesZip.FullName); });
 
         Task.WhenAll(taskExe, taskAsset, taskJson, taskDlls, taskTexture, taskPreview, taskPatches).Wait();
 
@@ -780,18 +780,18 @@ public partial class App : System.Windows.Application
         SetUpdateFilePath();
     }
 
-    private readonly static Dictionary<FileInfoExtension?, string> DownloadLinks = [];
+    private readonly static Dictionary<FileInfo?, string> DownloadLinks = [];
 
-    private static FileInfoExtension? currentExe;
-    private static FileInfoExtension? backupExe;
+    private static FileInfo? currentExe;
+    private static FileInfo? backupExe;
     //Need to download 
-    private static FileInfoExtension? exeZip;
-    private static FileInfoExtension? assetZip;
-    private static FileInfoExtension? jsonZip;
-    private static FileInfoExtension? dllsZip;
-    private static FileInfoExtension? texturesZip;
-    private static FileInfoExtension? crosshairsZip;
-    private static FileInfoExtension? patchesZip;
+    private static FileInfo? exeZip;
+    private static FileInfo? assetZip;
+    private static FileInfo? jsonZip;
+    private static FileInfo? dllsZip;
+    private static FileInfo? texturesZip;
+    private static FileInfo? crosshairsZip;
+    private static FileInfo? patchesZip;
 
     static bool versionCheckDone;
 
@@ -803,38 +803,38 @@ public partial class App : System.Windows.Application
 
         foreach (var asset in release.Assets)
         {
-            if (exeZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(exeZip.Info.Name, StringComparison.Ordinal))
+            if (exeZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(exeZip.Name, StringComparison.Ordinal))
             { 
                 if (!DownloadLinks.ContainsKey(exeZip)) { DownloadLinks.Add(exeZip, asset.BrowserDownloadURL); }
             }
 
-            if (assetZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(assetZip.Info.Name, StringComparison.Ordinal))
+            if (assetZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(assetZip.Name, StringComparison.Ordinal))
             {
                 if (!DownloadLinks.ContainsKey(assetZip)) { DownloadLinks.Add(assetZip, asset.BrowserDownloadURL); }
             }
             if (release.Version > CurrentVersion)
             {
-                if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Info.Name, StringComparison.Ordinal))
+                if (jsonZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(jsonZip.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(jsonZip)) { jso = true; } else { DownloadLinks.Add(jsonZip, asset.BrowserDownloadURL); jso = true; }
                 }
 
-                if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(dllsZip.Info.Name, StringComparison.Ordinal))
+                if (dllsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(dllsZip.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(dllsZip)) { dll = true; } else { DownloadLinks.Add(dllsZip, asset.BrowserDownloadURL); dll = true; }
                 }
 
-                if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(texturesZip.Info.Name, StringComparison.Ordinal))
+                if (texturesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(texturesZip.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(texturesZip)) { tex = true; } else { DownloadLinks.Add(texturesZip, asset.BrowserDownloadURL); tex = true; }
                 }
 
-                if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(crosshairsZip.Info.Name, StringComparison.Ordinal))
+                if (crosshairsZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(crosshairsZip.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(crosshairsZip)) { cro = true; } else { DownloadLinks.Add(crosshairsZip, asset.BrowserDownloadURL); cro = true; }
                 }
 
-                if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(patchesZip.Info.Name, StringComparison.Ordinal))
+                if (patchesZip is not null && asset.Name is not null && asset.BrowserDownloadURL is not null && asset.Name.Equals(patchesZip.Name, StringComparison.Ordinal))
                 {
                     if (DownloadLinks.ContainsKey(patchesZip)) { pat = true; } else { DownloadLinks.Add(patchesZip, asset.BrowserDownloadURL); pat = true; }
                 }
@@ -950,15 +950,15 @@ public partial class App : System.Windows.Application
 
         if (DownloadLinks.TryGetValue(exeZip, out string exeDL))
         {
-            if (exeZip.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {exeZip.Info.FullName}"); exeZip.Info.Delete(); }
+            if (exeZip.Exists) { LoggingSystem.Log($"[Update]: Deleting {exeZip.FullName}"); exeZip.Delete(); }
             LoggingSystem.Log($"[Update]: Downloading {exeDL}");
-            IOResources.DownloadFileMessageBox(exeDL, exeZip.Info.FullName);
-            if (backupExe.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {backupExe.Info.FullName}"); backupExe.Info.Delete(); }
-            LoggingSystem.Log($"[Update]: Moving {currentExe.Info.FullName} to {backupExe.Info.FullName}");
-            currentExe.Info.MoveTo(backupExe.Info.FullName);
+            IOResources.DownloadFileMessageBox(exeDL, exeZip.FullName);
+            if (backupExe.Exists) { LoggingSystem.Log($"[Update]: Deleting {backupExe.FullName}"); backupExe.Delete(); }
+            LoggingSystem.Log($"[Update]: Moving {currentExe.FullName} to {backupExe.FullName}");
+            currentExe.MoveTo(backupExe.FullName);
             currentExe = new("BLREdit.exe");
-            LoggingSystem.Log($"[Update]: Unpacking {exeZip.Info.FullName} to BLREdit.exe");
-            ZipFile.ExtractToDirectory(exeZip.Info.FullName, ".\\");
+            LoggingSystem.Log($"[Update]: Unpacking {exeZip.FullName} to BLREdit.exe");
+            ZipFile.ExtractToDirectory(exeZip.FullName, ".\\");
         }
         else
         { LoggingSystem.Log("No new EXE Available!"); }
@@ -1001,10 +1001,10 @@ public partial class App : System.Windows.Application
         if (assetZip is null) { LoggingSystem.Log("[DownloadAssetFolder] failed assetZip was null!"); return false; }
         if (DownloadLinks.TryGetValue(assetZip, out string assetDL))
         {
-            if (assetZip.Info.Exists) { assetZip.Info.Delete(); }
-            IOResources.DownloadFileMessageBox(assetDL, assetZip.Info.FullName);
+            if (assetZip.Exists) { assetZip.Delete(); }
+            IOResources.DownloadFileMessageBox(assetDL, assetZip.FullName);
             if (Directory.Exists(IOResources.ASSET_DIR)) { Directory.Delete(IOResources.ASSET_DIR, true); }
-            ZipFile.ExtractToDirectory(assetZip.Info.FullName, IOResources.ASSET_DIR);
+            ZipFile.ExtractToDirectory(assetZip.FullName, IOResources.ASSET_DIR);
             return false;
         }
         else
@@ -1035,36 +1035,36 @@ public partial class App : System.Windows.Application
 
         Task.WhenAll(jsonTask, dllsTask, textureTask, crosshairTask, patchesTask).Wait();
     }
-    private static void DownloadAssetPack(FileInfoExtension? pack)
+    private static void DownloadAssetPack(FileInfo? pack)
     {
         if (pack is null) { LoggingSystem.Log("[DownloadAssetPack] failed pack was null!"); return; }
         if (DownloadLinks.TryGetValue(pack, out string dl))
         {
-            if (pack.Info.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.Info.FullName}"); pack.Info.Delete(); }
+            if (pack.Exists) { LoggingSystem.Log($"[Update]: Deleting {pack.FullName}"); pack.Delete(); }
             LoggingSystem.Log($"[Update]: Downloading {dl}");
-            IOResources.DownloadFileMessageBox(dl, pack.Info.FullName);
+            IOResources.DownloadFileMessageBox(dl, pack.FullName);
         }
         else
-        { LoggingSystem.Log($"No {pack.Info.Name} for download available!"); }
+        { LoggingSystem.Log($"No {pack.Name} for download available!"); }
     }
 
-    private static void UpdateAssetPack(FileInfoExtension pack, string targetFolder)
+    private static void UpdateAssetPack(FileInfo pack, string targetFolder)
     {
         if (DownloadLinks.TryGetValue(pack, out _))
         {
             try
             {
                 if (Directory.Exists(targetFolder)) { LoggingSystem.Log($"[Update]: Deleting {targetFolder}"); Directory.Delete(targetFolder, true); }
-                LoggingSystem.Log($"[Update]: Extracting {pack.Info.FullName} to {targetFolder}");
-                ZipFile.ExtractToDirectory(pack.Info.FullName, targetFolder);
+                LoggingSystem.Log($"[Update]: Extracting {pack.FullName} to {targetFolder}");
+                ZipFile.ExtractToDirectory(pack.FullName, targetFolder);
             }
             catch (Exception error) 
             { 
-                LoggingSystem.MessageLog($"Failed to Unpack {pack.Name} reason:{error}", "Error");
+                LoggingSystem.MessageLog($"Failed to Unpack {pack.GetNameWithoutExtension()} reason:{error}", "Error");
             }
         }
         else
-        { LoggingSystem.Log($"No {pack.Info.Name} to Unpack!"); }
+        { LoggingSystem.Log($"No {pack.Name} to Unpack!"); }
     }
 
     public static int CreateVersion(string? versionTag)

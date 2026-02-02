@@ -33,7 +33,7 @@ public static class GitlabClient
         if(release.Assets.Links is not null)
         foreach (var asset in release.Assets.Links)
         {
-            if (asset.Name is not null && asset.Name.StartsWith(file) && asset.Name.EndsWith(fileExt))
+            if (asset.Name is not null && asset.Name.StartsWith(file, StringComparison.InvariantCulture) && asset.Name.EndsWith(fileExt, StringComparison.InvariantCulture))
             {
                 downloadLink = asset.URL ?? string.Empty;
                 break;

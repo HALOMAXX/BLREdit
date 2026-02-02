@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
@@ -56,7 +57,7 @@ public sealed class BLRClientPatch
         string[] patches = Directory.GetFiles($"{IOResources.ASSET_DIR}patches\\");
         foreach (string file in patches)
         {
-            if (file.EndsWith(".json"))
+            if (file.EndsWith(".json", StringComparison.InvariantCulture))
             {
                 if (IOResources.DeserializeFile<BLRClientPatch>(file) is BLRClientPatch patch)
                 { 

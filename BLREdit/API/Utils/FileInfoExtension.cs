@@ -7,16 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLREdit.API.Utils;
 
-public sealed class FileInfoExtension(string file)
+public static class FileInfoExtension
 {
-    public readonly FileInfo Info = new(file);
-    private string? name;
-    public string Name
-    {
-        get
-        {
-            name ??= Info.Name.Substring(0, Info.Name.Length - Info.Extension.Length);
-            return name;
-        }
+    public static string GetNameWithoutExtension(this FileInfo info)
+    { 
+        return info.Name.Substring(0, info.Name.Length - info.Extension.Length);
     }
 }

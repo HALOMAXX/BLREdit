@@ -246,7 +246,7 @@ public sealed partial class MainWindow : Window
             if (order.Child is Image mage2) image = mage2;
         }
 
-        if (image is null || border is null) { LoggingSystem.LogNull(); return; }
+        if (image is null || border is null) { LoggingSystem.LogWithSourceInfo("Failed to acquire Image and Border for DataContext/ItemList Lookup"); return; }
 
         if (e.ChangedButton == MouseButton.Left)
         {
@@ -1297,32 +1297,46 @@ public sealed partial class MainWindow : Window
         return null;
     }
 
-    public struct BLREditAlert
+    public sealed class BLREditAlert
     {
-        public TripleAnimationDouble? animation;
-        public Grid? grid;
+        public TripleAnimationDouble? Animation { get; set; }
+        public Grid? Grid { get; set; }
     }
 
-    public static BLREditAlert ShowAlert(string message, double displayTime = 4, double displayWidth = 400)
+    public static void InvokeShowAlert(string message, out BLREditAlert? alert, double displayTime = 4, double displayWidth = 400)
     {
-        if (Instance is null) return default;
+        BLREditAlert? localAlert = null;
+        Instance?.Dispatcher.Invoke(new Action(() => { LoggingSystem.ResetWatch(); localAlert = ShowAlert(message, displayTime, displayWidth); }));
+        alert = localAlert;
+    }
+
+    public static void InvokeUpdateAlert(string message, BLREditAlert alert, double displayTime = 4, double displayWidth = 400)
+    {
+        if (alert is null) { return; }
+        Instance?.Dispatcher.Invoke(new Action(() => { UpdateAlert(alert, message, displayTime, displayWidth); }));
+    }
+
+    public static BLREditAlert? ShowAlert(string message, double displayTime = 4, double displayWidth = 400)
+    {
+        if (Instance is null) return null;
+        var grid = CreateAlertGrid(message);
         var alert = new BLREditAlert
         {
-            grid = CreateAlertGrid(message)
+            Grid = grid,
+            Animation = new TripleAnimationDouble(0, displayWidth, 1, displayTime, 1, grid, Grid.WidthProperty, Instance.AlertList.Items),
         };
-        alert.animation = new TripleAnimationDouble(0, displayWidth, 1, displayTime, 1, alert.grid, Grid.WidthProperty, Instance.AlertList.Items);
-        Instance.AlertList.Items.Add(alert.grid);
-        alert.animation.Begin(Instance.AlertList);
+        Instance.AlertList.Items.Add(alert.Grid);
+        alert.Animation.Begin(Instance.AlertList);
         return alert;
     }
 
-    public static void UpdateAlert(BLREditAlert? alert, string message, double displayTime = 4, double displayWidth = 400)
+    public static void UpdateAlert(BLREditAlert alert, string message, double displayTime = 4, double displayWidth = 400)
     {
-        if (Instance is null || !alert.HasValue) return;
-        alert.Value.grid.Children.Clear();
+        if (Instance is null || alert is null || alert.Grid is null || alert.Animation is null) return;
+        alert.Grid.Children.Clear();
         TextBox alertText = new() { Text = message, TextAlignment = TextAlignment.Center, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 136, 0)), IsReadOnly = true, FontSize = 26 };
-        alert.Value.grid.Children.Add(alertText);
-        alert.Value.animation.MoveToEndWithOffset(61-displayTime);
+        alert.Grid.Children.Add(alertText);
+        alert.Animation.MoveToEndWithOffset(61-displayTime);
     }
 
     private static Grid CreateAlertGrid(string Alert)

@@ -10,6 +10,7 @@
     <ApplicationIcon>BLREdit Logo (DraagonLizzard).ico</ApplicationIcon>
     <Nullable>enable</Nullable>
     <Configurations>Debug;Release;</Configurations>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

@@ -19,8 +19,8 @@ public sealed class ProxyConfigContainer
 
 public sealed class ModulesConfig
 {
-    public List<string> Server = [];
-    public List<string> Client = [];
+    public List<string> Server { get; set; } = [];
+    public List<string> Client { get; set; } = [];
 }
 
 public sealed class ServerConfig

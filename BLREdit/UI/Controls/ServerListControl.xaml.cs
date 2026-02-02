@@ -56,7 +56,7 @@ public partial class ServerListControl : UserControl
         int count = 0;
         foreach (var server in DataStorage.ServerList)
         {
-            if (server.ID.StartsWith("custom")) count++;
+            if (server.ID.StartsWith("custom", StringComparison.InvariantCulture)) count++;
         }
         return count;
     }

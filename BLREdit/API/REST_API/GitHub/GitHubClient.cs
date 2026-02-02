@@ -1,5 +1,6 @@
 ﻿using BLREdit.Game.Proxy;
 
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -30,7 +31,7 @@ public static class GitHubClient
         string downloadLink = string.Empty;
         foreach (var asset in release.Assets)
         {
-            if (asset.Name is not null && asset.Name.StartsWith(file) && asset.Name.EndsWith(fileExt))
+            if (asset.Name is not null && asset.Name.StartsWith(file, StringComparison.InvariantCulture) && asset.Name.EndsWith(fileExt, StringComparison.InvariantCulture))
             {
                 downloadLink = asset.BrowserDownloadURL ?? string.Empty;
                 break;

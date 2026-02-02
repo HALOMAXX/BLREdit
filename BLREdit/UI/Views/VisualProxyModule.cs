@@ -98,61 +98,65 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
     private bool lockMetaData;
     public async void AcquireMetaData()
     {
-        if (!lockMetaData)
+        try
         {
-            lockMetaData = true;
-            string api;
-            if (RepositoryProxyModule.RepositoryProvider == RepositoryProvider.GitHub)
+            if (!lockMetaData)
             {
-                api = $"https://github.com/{RepositoryProxyModule.Owner}/{RepositoryProxyModule.Repository}";
-            }
-            else
-            {
-                api = $"https://gitlab.com/{RepositoryProxyModule.Owner}/{RepositoryProxyModule.Repository}";
-            }
-
-            var site = await WebResources.HttpClientWeb.GetStringAsync(api).ConfigureAwait(false);
-            HtmlDocument doc = new();
-            doc.LoadHtml(site);
-
-            foreach (var docNode in doc.DocumentNode.ChildNodes)
-            {
-                switch (docNode.Name)
+                lockMetaData = true;
+                string api;
+                if (RepositoryProxyModule.RepositoryProvider == RepositoryProvider.GitHub)
                 {
-                    case "html":
-                        foreach (var htmlNode in docNode.ChildNodes)
-                        {
-                            switch (htmlNode.Name)
-                            {
-                                case "head":
-                                    foreach (var headNode in htmlNode.ChildNodes)
-                                    {
-                                        switch (headNode.Name)
-                                        {
-                                            case "meta":
-                                                if (headNode.Attributes.Count >= 2)
-                                                {
-                                                    if (RepositoryProxyModule.RepositoryProvider == RepositoryProvider.GitHub)
-                                                    {
-                                                        if (!metaData.ContainsKey(headNode.Attributes[0].Value)) { metaData.Add(headNode.Attributes[0].Value, headNode.Attributes[1].Value); }
-                                                    }
-                                                    else
-                                                    {
-                                                        if (!metaData.ContainsKey(headNode.Attributes[1].Value)) { metaData.Add(headNode.Attributes[1].Value, headNode.Attributes[0].Value); }
-                                                    }
-                                                }
-                                                break;
-                                        }
-                                    }
-                                    break;
-                            }
-                        }
-                        break;
+                    api = $"https://github.com/{RepositoryProxyModule.Owner}/{RepositoryProxyModule.Repository}";
                 }
+                else
+                {
+                    api = $"https://gitlab.com/{RepositoryProxyModule.Owner}/{RepositoryProxyModule.Repository}";
+                }
+
+                var site = await WebResources.HttpClientWeb.GetStringAsync(api).ConfigureAwait(false);
+                HtmlDocument doc = new();
+                doc.LoadHtml(site);
+
+                foreach (var docNode in doc.DocumentNode.ChildNodes)
+                {
+                    switch (docNode.Name)
+                    {
+                        case "html":
+                            foreach (var htmlNode in docNode.ChildNodes)
+                            {
+                                switch (htmlNode.Name)
+                                {
+                                    case "head":
+                                        foreach (var headNode in htmlNode.ChildNodes)
+                                        {
+                                            switch (headNode.Name)
+                                            {
+                                                case "meta":
+                                                    if (headNode.Attributes.Count >= 2)
+                                                    {
+                                                        if (RepositoryProxyModule.RepositoryProvider == RepositoryProvider.GitHub)
+                                                        {
+                                                            if (!metaData.ContainsKey(headNode.Attributes[0].Value)) { metaData.Add(headNode.Attributes[0].Value, headNode.Attributes[1].Value); }
+                                                        }
+                                                        else
+                                                        {
+                                                            if (!metaData.ContainsKey(headNode.Attributes[1].Value)) { metaData.Add(headNode.Attributes[1].Value, headNode.Attributes[0].Value); }
+                                                        }
+                                                    }
+                                                    break;
+                                            }
+                                        }
+                                        break;
+                                }
+                            }
+                            break;
+                    }
+                }
+                UpdateProperties();
+                lockMetaData = false;
             }
-            UpdateProperties();
-            lockMetaData = false;
         }
+        catch { lockMetaData = false; }
     }
     #endregion MetaData
 
@@ -286,7 +290,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                     {
                         if (File.Exists($"downloads\\{DataStorage.CachedModules[i].CacheName}"))
                         {
-                            LoggingSystem.Log($"Found Latest Release in Download Cache Date: Latest:[{ReleaseDate?.ToString("yyyy/MM/dd HH:mm:ss:ff")}] / Cache:[{DataStorage.CachedModules[i].Published.ToString("yyyy/MM/dd HH:mm:ss:ff")}] for {RepositoryProxyModule.CacheName}");
+                            LoggingSystem.Log($"Found Latest Release in Download Cache Date: Latest:[{ReleaseDate.Value:yyyy/MM/dd HH:mm:ss:ff}] / Cache:[{DataStorage.CachedModules[i].Published:yyyy/MM/dd HH:mm:ss:ff}] for {RepositoryProxyModule.CacheName}");
                             module = DataStorage.CachedModules[i];
                             break;
                         }

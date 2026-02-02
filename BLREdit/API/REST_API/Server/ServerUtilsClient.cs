@@ -27,11 +27,11 @@ public sealed class ServerUtilsClient
             if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                if (content.StartsWith("{"))
+                if (content.StartsWith("{", StringComparison.InvariantCulture))
                 {
                     info = IOResources.Deserialize<ServerUtilsInfo>(content);
                 }
-                else if (content.StartsWith("["))
+                else if (content.StartsWith("[", StringComparison.InvariantCulture))
                 {
                     var infos = IOResources.Deserialize<ServerUtilsInfo[]>(content);
                     if (infos is not null && infos.Length > 0)

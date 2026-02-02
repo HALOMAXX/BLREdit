@@ -4,6 +4,7 @@ using BLREdit.Game.Proxy;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BLREdit.API.REST_API;
@@ -81,7 +82,10 @@ public sealed class RESTAPIClient
         if (OldRequestCache.TryGetValue(api, out var oldCache))
         {
             LoggingSystem.Log($"[OldCache]({typeof(T).Name}): {api}");
-            return (true, (T)oldCache);
+            if (oldCache is JsonElement element)
+            {
+                return (true, element.Deserialize<T>(IOResources.JSOFields));
+            }
         }
         return (false, default);
     }
@@ -117,7 +121,11 @@ public sealed class RESTAPIClient
         if (OldRequestCache.TryGetValue(api, out var oldCache))
         {
             LoggingSystem.Log($"[OldCache](byte[]): {api}");
-            return (true, ((byte[], DateTime))oldCache);
+
+            if (oldCache is JsonElement element)
+            {
+                return (true, element.Deserialize<(byte[], DateTime)>(IOResources.JSOFields));
+            }
         }
         return (false, (Array.Empty<byte>(), DateTime.MinValue));
     }

@@ -182,7 +182,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
             #region BinariesDirectoryCleanup
             if (client.OriginalFileInfo is not null)
             {
-                foreach (var file in client.OriginalFileInfo.Info.Directory.EnumerateFiles())
+                foreach (var file in client.OriginalFileInfo.Directory.EnumerateFiles())
                 {
                     try
                     {
@@ -191,7 +191,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
                     catch { }
                 }
 
-                foreach (var modulesFolder in client.OriginalFileInfo.Info.Directory.EnumerateDirectories("Modules"))
+                foreach (var modulesFolder in client.OriginalFileInfo.Directory.EnumerateDirectories("Modules"))
                 {
                     try
                     {
@@ -231,9 +231,9 @@ public sealed class BLREditSettings : INotifyPropertyChanged
                 {
                     try
                     {
-                        var filePath = new FileInfoExtension($"{App.BLREditLocation}\\logs\\BackupAndClean\\{file.Name}");
-                        if (!filePath.Info.Directory.Exists) { filePath.Info.Directory.Create(); }
-                        file.MoveTo(filePath.Info.FullName);
+                        var filePath = new FileInfo($"{App.BLREditLocation}\\logs\\BackupAndClean\\{file.Name}");
+                        if (!filePath.Directory.Exists) { filePath.Directory.Create(); }
+                        file.MoveTo(filePath.FullName);
                     }
                     catch { }
                 }

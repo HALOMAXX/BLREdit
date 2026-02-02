@@ -20,6 +20,7 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -77,14 +78,20 @@ public sealed class BLRClient : INotifyPropertyChanged
     }
 
     [JsonIgnore]
-    public FileInfoExtension? OriginalFileInfo
+    public FileInfo? OriginalFileInfo
     {
-        get { return OriginalPath != null ? new FileInfoExtension(OriginalPath) : null; }
+        get { return OriginalPath != null ? new FileInfo(OriginalPath) : null; }
     }
 
-    [JsonIgnore] public FileInfoExtension? PatchedFileInfo
+    [JsonIgnore]
+    public FileInfo SteamAppIDTextFileInfo
+    { 
+        get { return new FileInfo( BasePath + "Binaries\\Win32\\steam_appid.txt"); }
+    }
+
+    [JsonIgnore] public FileInfo? PatchedFileInfo
     {
-        get { return PatchedPath != null ? new FileInfoExtension(PatchedPath) : null; }
+        get { return PatchedPath != null ? new FileInfo(PatchedPath) : null; }
     }
 
     [JsonIgnore]
@@ -108,11 +115,11 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? _basePath;
     public string? BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
 
-    [JsonIgnore] private FileInfo _D8INPUT;
+    [JsonIgnore] private FileInfo? _D8INPUT;
     [JsonIgnore] public FileInfo D8INPUT { get { _D8INPUT ??= new($"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll"); return _D8INPUT; } }
 
-    [JsonIgnore] private FileInfo _D8INPUTZCure;
-    [JsonIgnore]public FileInfo D8INPUTZCure { get { _D8INPUTZCure ??= new($"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll"); return _D8INPUTZCure; } }
+    [JsonIgnore] private FileInfo? _BLRevive;
+    [JsonIgnore]public FileInfo BLRevive { get { _BLRevive ??= new($"{Path.GetDirectoryName(OriginalPath)}\\BLRevive.dll"); return _BLRevive; } }
 
     //private string? _sdkType = "BLRevive";
     //public string? SDKType { get { return _sdkType; } set { _sdkType = value; OnPropertyChanged(); } }
@@ -252,30 +259,6 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     #region ClientValidation
 
-    /// <summary>
-    /// Validates the client
-    /// </summary>
-    /// <returns>Will return true if patching was succesful or is ready to use, false if patching failed or can't be used</returns>
-    public bool ValidateClient()
-    {
-        if (!OriginalFileValidation())
-        {
-            LoggingSystem.MessageLog($"Client is not valid, original file is missing!\nMaybe client got moved or deleted\nClient can't be patched!", "Error"); //TODO: Add Localization
-            return false;
-        }
-
-        var info = new FileInfo(new FileInfo(OriginalPath).Directory.FullName + "\\steam_appid.txt");
-        if (DataStorage.Settings?.SteamAwareToggle.Is ?? false && !info.Exists)
-        {
-            using var file = info.CreateText();
-            file.Write("209870");
-            file.Close();
-        }
-
-        LoggingSystem.Log($"Client is in Good Health!");
-        return true;
-    }
-
     public bool OriginalFileValidation()
     {
         return !string.IsNullOrEmpty(OriginalPath) && File.Exists(OriginalPath);
@@ -342,30 +325,13 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     static GitlabPackageFile? _latestBLRevivePackageFile;
     static GitlabPackageFile? LatestBLRevivePackageFile { get { if (_latestBLRevivePackage is null || _latestBLRevivePackageFile is null) { GetLatestBLRevivePackages(); } return _latestBLRevivePackageFile; } }
-    private bool CheckBLReviveVersionIsUpToDateAndExists()
+    static DateTime? LatestBLReviveReleaseDate { get { var d = LatestBLRevivePackageFile?.CreatedAt ?? DateTime.MinValue; return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second); } }
+
+    public void DownloadLatestBLReviveRelease()
     {
-        if (SDKVersionDate is null || string.IsNullOrEmpty(BLReviveVersion)) return false;
-        var sdk = File.Exists($"{Path.GetDirectoryName(OriginalPath)}\\BLRevive.dll");
-
-        if (!D8INPUT.Exists && D8INPUTZCure.Exists) { D8INPUTZCure.MoveTo(D8INPUT.FullName); }
-
-        if (!sdk || !D8INPUT.Exists) return false;
-        var d = LatestBLRevivePackageFile?.CreatedAt ?? DateTime.MinValue;
-        return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second) <= SDKVersionDate;
-    }
-    
-    public void ValidateBLReviveModuleSDK()
-    {
-        if (CheckBLReviveVersionIsUpToDateAndExists()) { LoggingSystem.Log($"BLRevive is Uptodate!"); return; } else { LoggingSystem.Log("BLRevive needs to Update!"); }
-        MainWindow.BLREditAlert? SDKAnim = null;
-        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { LoggingSystem.ResetWatch(); SDKAnim = MainWindow.ShowAlert("Updating BLRevive SDK!", 60, 600); }));
-        RemoveAllModules();
-        
-        var proxySource = string.Empty;
-        var proxyTarget = string.Empty;
-
+        if (LatestBLRevivePackage is null) { LoggingSystem.Log("Can't update BLRevive no packages available!"); MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.ShowAlert("Failed Updating BLRevive SDK!"); })); return; }
+        MainWindow.InvokeShowAlert("Updating BLRevive SDK!", out var SDKAnim, 60, 600);
         LoggingSystem.Log($"Downloading latest BLRevive release!");
-        if (LatestBLRevivePackage is null) { LoggingSystem.Log("Can't update BLRevive no packages available!"); return; }
         var reiveResult = GitlabClient.DownloadPackage(LatestBLRevivePackage, "BLRevive.dll", "BLRevive");
         var dInputResult = GitlabClient.DownloadPackage(LatestBLRevivePackage, "DINPUT8.dll", "DINPUT8");
         LoggingSystem.Log($"Finished downloading latest BLRevive release!");
@@ -385,7 +351,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
         }
         BLReviveVersion = DataStorage.Settings.SelectedBLReviveVersion;
-        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.UpdateAlert(SDKAnim, $"Finished Updating BLRevive SDK! Took: {LoggingSystem.GetElapsedSeconds()}", 8); }));
+        if (SDKAnim is not null) { MainWindow.InvokeUpdateAlert($"Finished Updating BLRevive SDK! Took: {LoggingSystem.GetElapsedSeconds()}", SDKAnim, 8); }
     }
 
     private void InstallRequiredModules()
@@ -411,111 +377,25 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    public void ValidateModules(List<ProxyModule>? enabledModules = null)
+    public List<VisualProxyModule> CheckModulesUpdateOrMissing()
     {
-        
-        MainWindow.BLREditAlert? ModuleAnim = null;
-        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { LoggingSystem.ResetWatch(); ModuleAnim = MainWindow.ShowAlert("Validating BLRevive Modules!", 60, 600); }));
-        App.AvailableProxyModuleCheck(); // Get Available Modules just in case
-        var count = InstalledModules.Count;
-        var customCount = CustomModules.Count;
-        LoggingSystem.Log($"Available Modules:{App.AvailableProxyModules.Count}, StrictModuleCheck:{DataStorage.Settings.StrictModuleChecks}, AllowCustomModules:{DataStorage.Settings.AllowCustomModules}, InstallRequiredModules:{DataStorage.Settings.InstallRequiredModules}");
-
-        if (App.AvailableProxyModules.Count > 0 && DataStorage.Settings.InstallRequiredModules.Is)
+        List<VisualProxyModule> toUpdateOrDownload = [];
+        foreach (var module in AvailableModules)
         {
-            LoggingSystem.Log($"Started Installing Required Modules");
-            InstallRequiredModules();
-            LoggingSystem.Log($"Finished Installing Required Modules!");
-        }
-
-        if (App.AvailableProxyModules.Count > 0 && DataStorage.Settings.StrictModuleChecks.Is)
-        {
-            LoggingSystem.Log($"Filtering Installed Modules");
-            InstalledModules = new(InstalledModules.Where((module) => { bool isAvailable = false; foreach (var available in App.AvailableProxyModules) { if (available.RepositoryProxyModule.CacheName == module.CacheName) { module.Server = available.RepositoryProxyModule.Server; module.Client = available.RepositoryProxyModule.Client; isAvailable = true; } } return isAvailable; }));
-        }
-
-        foreach (var file in Directory.EnumerateFiles(ModulesPath))
-        {
-            var info = new FileInfo(file);
-            if (info.Extension == ".dll")
+            bool update = false;
+            bool found = false;
+            foreach (var cachedModule in DataStorage.CachedModules)
             {
-                var name = info.Name.Split('.')[0];
-                bool isInstalled = false;
-                foreach (var module in InstalledModules)
+                if (module.RepositoryProxyModule.CacheName == cachedModule.CacheName)
                 {
-                    if (name == module.InstallName)
-                    { isInstalled = true; break; }
-                }
-                if (DataStorage.Settings.AllowCustomModules.Is && !isInstalled)
-                {
-                    bool isNew = true;
-                    foreach (var module in CustomModules)
-                    {
-                        if (name == module.InstallName)
-                        { isNew = false; module.FileAppearances++; break; }
-                    }
-                    if (isNew)
-                    { CustomModules.Add(new(name, "")); }
+                    found = true;
+                    if (module.ReleaseDate > cachedModule.Published) { update = true; }
+                    break;
                 }
             }
+            if (!found || update) { toUpdateOrDownload.Add(module); }
         }
-
-        List<ProxyModule> toRemove = [];
-
-        foreach (var module in CustomModules) { if (module.FileAppearances <= 0) { toRemove.Add(module); } }
-
-        foreach (var module in toRemove)
-        { CustomModules.Remove(module); }
-
-        LoggingSystem.Log($"Validating Modules Installed({count}/{InstalledModules.Count}) and Custom({customCount}/{CustomModules.Count}) of {this}");
-
-        var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
-        var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
-        var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
-
-        var configClientCopy = configClient.Copy();
-        var configServerCopy = configServer.Copy();
-        var configCopy = config.Copy();
-        
-        configClient.Modules.Clear();
-        configServer.Modules.Clear();
-        config.Modules.Clear();
-        LoggingSystem.Log($"Applying Installed Modules:");
-
-        if (enabledModules is null)
-        {
-            enabledModules = [.. InstalledModules];
-            if (DataStorage.Settings.AllowCustomModules.Is)
-            {
-                enabledModules.AddRange([.. CustomModules]);
-            }
-        }
-
-        foreach (var module in enabledModules)
-        {
-            LoggingSystem.Log($"\t{module.CacheName}:");
-            LoggingSystem.Log($"\t\tClient:{module.Client}");
-            LoggingSystem.Log($"\t\tServer:{module.Server}");
-            if (module.Client)
-            {
-                AddModuleConfigAndKeepSettings(configClient, configClientCopy, module.CacheName, module.InstallName);
-            }
-            if (module.Server)
-            {
-                AddModuleConfigAndKeepSettings(configServer, configServerCopy, module.CacheName, module.InstallName);
-            }
-            AddModuleConfigAndKeepSettings(config, configCopy, module.CacheName, module.InstallName);
-        }
-        try
-        {
-            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
-            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
-            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
-        }
-        catch { LoggingSystem.Log("failed to write config files!"); }
-
-        LoggingSystem.Log($"Finished Validating Modules of {this}");
-        MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.UpdateAlert(ModuleAnim, $"Finished Validating BLRevive Modules! Took: {LoggingSystem.GetElapsedSeconds()}", 8); }));
+        return toUpdateOrDownload;
     }
 
     private static void AddModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, string moduleName, string installName)
@@ -599,6 +479,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             launchTrainingCommand ??= new RelayCommand((param) => {
                 string launchArgs = $"server gunrange_persistent{(string.IsNullOrEmpty(ConfigName) ? "" : $"?config={ConfigName}-Server")}?Game=FoxGame.FoxGameMP_BO?ServerName=Training?Port=7777?NumBots=0?MaxPlayers=1?SingleMatch";
                 var options = new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = LocalHost };
+                BLRProcess.KillAll();
                 StartProcess(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is);
                 PrepClientLaunch(options);
                 LaunchClient(options);
@@ -643,10 +524,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public void LaunchZCureClient()
     {
         if (D8INPUT.Exists)
-        {
-            if (D8INPUTZCure.Exists) { D8INPUTZCure.Delete(); }
-            D8INPUT.MoveTo(D8INPUTZCure.FullName);
-        }
+        { D8INPUT.Delete(); }
         BLRProcess.CreateProcess("-zcureurl=blrrevive.ddd-game.de -zcureport=80 -presenceurl=blrrevive.ddd-game.de -presenceport=9004", this, false);
     }
 
@@ -683,13 +561,89 @@ public sealed class BLRClient : INotifyPropertyChanged
         Task.Run(() => { StartProcessAsync(launchArgs, isServer, watchDog, enabledModules, server); }).ConfigureAwait(false);
     }
 
+    public bool IsSteamClient()
+    {
+        if(OriginalFileInfo is null) { return false; }
+        foreach (var location in IOResources.GameFolders) {
+            var instance = new FileInfo($"{location}{IOResources.GAME_DEFAULT_EXE}");
+            if (instance.Exists)
+            { 
+                if(instance.FullName == OriginalFileInfo.FullName) return true;
+            }
+        }
+        return false;
+    }
+
+    //TODO: Improve Client Check and Validation!
+    /*
+     Split Client Checks to be able to use them at different times
+    List of needed Checks
+    - Check for update Once at launch?
+    - Does FoxGame.exe Exist?
+    - Does steam_appid.txt Exist? and is it wanted? and insert different id if it is from steam(209870) or external(480) dl
+    - Does D8Input.dll Exist?
+    - Does BLRevive.dll Exist?
+    - Does Module Folder Exist and All Expected Module dlls?
+    - Check File Integrity Two Different Modes needed one for game files and one for module dlls (Checksum(gamefiles), byte by byte(Modules & dlls)) Should Benchmark this! on SSD and HDD if there is a difference between hashing and straight byte by byte
+     
+     */
     public async void StartProcessAsync(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
     {
         if (!hasBeenValidated && Validate.Is)
         {
-            if (!ValidateClient()) { return; }
-            ValidateBLReviveModuleSDK();
-            ValidateModules(enabledModules);
+            if (OriginalFileInfo is null || !OriginalFileInfo.Exists) { LoggingSystem.MessageLog("Unable to launch Game because the .exe is missing!", "Error"); return; }
+
+            if (!SteamAppIDTextFileInfo.Exists)
+            {
+                using var file = SteamAppIDTextFileInfo.CreateText();
+                if (IsSteamClient())
+                { file.Write("209870"); }
+                else
+                { file.Write("480"); }
+                file.Close();
+            }
+            if (LatestBLReviveReleaseDate > SDKVersionDate)
+            {
+                MainWindow.InvokeShowAlert("Downloading BLRevive SDK!",out var ModuleAnim, 60, 600);
+                DownloadLatestBLReviveRelease();
+                if (ModuleAnim is not null) { MainWindow.InvokeUpdateAlert($"Finished Downloading BLRevive SDK! Took: {LoggingSystem.GetElapsedSeconds()}", ModuleAnim, 8); }
+            }
+
+            try
+            {
+                if (!BLRevive.Exists) 
+                { File.Copy($"{IOResources.BaseDirectory}\\downloads\\BLRevive.dll", BLRevive.FullName, true); }
+                if (!D8INPUT.Exists) 
+                { File.Copy($"{IOResources.BaseDirectory}\\downloads\\DINPUT8.dll", D8INPUT.FullName, true); }
+            }
+            catch (Exception error)
+            {
+                LoggingSystem.MessageLogClipboard($"Message:\n{error.Message}\nStacktrace:{error.StackTrace}\n", "Failed to copy essential dll files to BLR client!");
+            }
+            
+
+            var modulesToDownload = CheckModulesUpdateOrMissing();
+            if (modulesToDownload.Count > 0)
+            {
+                MainWindow.InvokeShowAlert("Downloading BLRevive Modules!", out var alert, 60, 600); 
+                foreach (var module in modulesToDownload)
+                {
+                    module.RepositoryProxyModule.DownloadLatest();
+                }
+                if (alert is not null) { MainWindow.InvokeUpdateAlert($"Finished Downloading Modules! Took: {LoggingSystem.GetElapsedSeconds()}", alert, 8); }
+            }
+
+            var modulesToCopy = CheckInstalledModules();
+            if (modulesToCopy.Count > 0)
+            {
+                foreach (var module in modulesToCopy)
+                {
+                    module.InstallModule(this);
+                    //module.FinalizeInstall(this); //UI Needed?
+                }
+            }
+            CheckCustomModules();
+            WriteModuleConfig(enabledModules);
             DataStorage.Save();
             hasBeenValidated = true;
         }
@@ -699,6 +653,110 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.ShowAlert($"Starting BLR {(isServer ? "Server" : "Client")}!"); }));
         BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog, server);
+    }
+
+    public void WriteModuleConfig(List<ProxyModule>? enabledModules = null)
+    {
+        var configClient = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Client.json") ?? new();
+        var configServer = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}-Server.json") ?? new();
+        var config = IOResources.DeserializeFile<BLReviveConfig>($"{BLReviveConfigsPath}{ConfigName}.json") ?? new();
+
+        var configClientCopy = configClient.Copy();
+        var configServerCopy = configServer.Copy();
+        var configCopy = config.Copy();
+
+        configClient.Modules.Clear();
+        configServer.Modules.Clear();
+        config.Modules.Clear();
+        LoggingSystem.Log($"Applying Installed Modules:");
+
+        if (enabledModules is null)
+        {
+            enabledModules = [.. InstalledModules];
+            if (DataStorage.Settings.AllowCustomModules.Is)
+            {
+                enabledModules.AddRange([.. CustomModules]);
+            }
+        }
+
+        foreach (var module in enabledModules)
+        {
+            LoggingSystem.Log($"\t{module.CacheName}:");
+            LoggingSystem.Log($"\t\tClient:{module.Client}");
+            LoggingSystem.Log($"\t\tServer:{module.Server}");
+            if (module.Client)
+            {
+                AddModuleConfigAndKeepSettings(configClient, configClientCopy, module.CacheName, module.InstallName);
+            }
+            if (module.Server)
+            {
+                AddModuleConfigAndKeepSettings(configServer, configServerCopy, module.CacheName, module.InstallName);
+            }
+            AddModuleConfigAndKeepSettings(config, configCopy, module.CacheName, module.InstallName);
+        }
+        try
+        {
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Server.json", configServer);
+            IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}.json", config);
+        }
+        catch { LoggingSystem.Log("failed to write config files!"); }
+    }
+
+    public void CheckCustomModules()
+    {
+        foreach (var file in Directory.EnumerateFiles(ModulesPath, "*.dll"))
+        {
+            var info = new FileInfo(file);
+            bool isInstalled = false;
+            foreach (var module in InstalledModules)
+            {
+                if (info.GetNameWithoutExtension() == module.InstallName)
+                { isInstalled = true; break; }
+            }
+            if (DataStorage.Settings.AllowCustomModules.Is && !isInstalled)
+            {
+                bool isNew = true;
+                foreach (var module in CustomModules)
+                {
+                    if (info.GetNameWithoutExtension() == module.InstallName)
+                    { isNew = false; module.FileAppearances++; break; }
+                }
+                if (isNew)
+                { CustomModules.Add(new(info.GetNameWithoutExtension(), "")); }
+            }
+        }
+
+        List<ProxyModule> toRemove = [];
+
+        foreach (var module in CustomModules) { if (module.FileAppearances <= 0) { toRemove.Add(module); } }
+
+        foreach (var module in toRemove)
+        { CustomModules.Remove(module); }
+    }
+
+    public List<VisualProxyModule> CheckInstalledModules()
+    {
+        List<VisualProxyModule> toInstall = [];
+        foreach (var module in AvailableModules)
+        {
+            if (module.RepositoryProxyModule.Required && module.RepositoryProxyModule.ProxyVersion.Equals(DataStorage.Settings.SelectedSDKType, StringComparison.Ordinal))
+            {
+                bool found = false;
+                bool update = false;
+                foreach (var installed in InstalledModules)
+                {
+                    if (installed.CacheName == module.RepositoryProxyModule.CacheName)
+                    {
+                        if (File.Exists($"{ModulesPath}{installed.InstallName}.dll")) { found = true; }
+                        if (module.ReleaseDate > installed.Published) { update = true; }
+                        break;
+                    }
+                }
+                if (!found || update) { toInstall.Add(module); }
+            }            
+        }
+        return toInstall;
     }
 
     #endregion Launch/Exit
@@ -735,7 +793,7 @@ public sealed class BLRClient : INotifyPropertyChanged
 
         if (!basePath.EndsWith("\\", StringComparison.Ordinal)) { basePath += "\\"; }
 
-        _patchedPath ??= $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}";
+        _patchedPath ??= $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}"; //TODO: Remove Patched exe!
 
         return basePath;
     }

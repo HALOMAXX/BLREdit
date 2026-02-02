@@ -211,7 +211,7 @@ public sealed class BLREditPipe
         if (AddedApiEndpoints) { return; }
         AddedApiEndpoints = true;
         ApiEndPoints.Add("add-server", (json) => {
-            if (json.StartsWith("{"))
+            if (json.StartsWith("{", StringComparison.InvariantCulture))
             {
                 LoggingSystem.Log($"[BLREdit API](add-server): Adding Server ({json})");
                 var server = IOResources.Deserialize<BLRServer>(json);
@@ -226,7 +226,7 @@ public sealed class BLREditPipe
             }
         });
         ApiEndPoints.Add("connect-server", (json) => {
-            if (json.StartsWith("{"))
+            if (json.StartsWith("{", StringComparison.InvariantCulture))
             {
                 LoggingSystem.Log($"[BLREdit API](connect-server): Connecting to Server ({json})");
                 var server = IOResources.Deserialize<BLRServer>(json);
@@ -250,7 +250,7 @@ public sealed class BLREditPipe
         });
         ApiEndPoints.Add("start-server", (json) => {
 
-            if (json.StartsWith("{"))
+            if (json.StartsWith("{", StringComparison.InvariantCulture))
             {
                 LoggingSystem.Log($"[BLREdit API](start-server): Starting Server ({json})");
                 var serverConfig = IOResources.Deserialize<ServerLaunchParameters>(json) ?? new();
@@ -280,7 +280,7 @@ public sealed class BLREditPipe
             if (string.IsNullOrEmpty(compressedBase64)) { LoggingSystem.Log($"[BLREdit API](import-profile): Recieved Empty string!"); return; }
             var compressedData = IOResources.Base64ToData(compressedBase64);
             var json = IOResources.Unzip(compressedData);
-            if (string.IsNullOrEmpty(json) || (!json.StartsWith("{") && !json.StartsWith("["))) { LoggingSystem.Log("[BLREdit API](import-profile): Recieved invalid json"); return; }
+            if (string.IsNullOrEmpty(json) || (!json.StartsWith("{", StringComparison.InvariantCulture) && !json.StartsWith("[", StringComparison.InvariantCulture))) { LoggingSystem.Log("[BLREdit API](import-profile): Recieved invalid json"); return; }
             var sharedProfile = IOResources.Deserialize<Shareable3LoadoutSet>(json);
             if (sharedProfile is null) { LoggingSystem.Log("[BLREdit API](import-profile): failed to deserialize shareable profile!"); return; }
             var profile = sharedProfile.ToBLRProfile();
@@ -365,11 +365,11 @@ public sealed class BLREditPipe
         foreach (var arg in args)
         {
             //if(string.IsNullOrEmpty(arg)) continue;
-            if (!arg.StartsWith(API)) { continue; }
+            if (!arg.StartsWith(API, StringComparison.InvariantCulture)) { continue; }
 
             int index = arg.IndexOf('/', API.Length);
             int offset = 1;
-            if (arg.EndsWith("/"))
+            if (arg.EndsWith("/", StringComparison.InvariantCulture))
             {
                 offset++;
             }

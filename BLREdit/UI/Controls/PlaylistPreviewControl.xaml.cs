@@ -53,7 +53,8 @@ namespace BLREdit.UI.Controls
                         var options = new LaunchOptions() { UserName = DataStorage.Settings.PlayerName, Server = BLRClient.LocalHost };
                         client.PrepClientLaunch(options);
 
-                        Task.Run(() => { 
+                        Task.Run(() => {
+                            BLRProcess.KillAll();
                             client.StartProcessAsync(launchArgs, true, DataStorage.Settings.ServerWatchDog.Is, null, null);
                             client.LaunchClient(options);
                         }).ConfigureAwait(false);

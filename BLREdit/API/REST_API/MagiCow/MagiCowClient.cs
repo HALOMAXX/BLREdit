@@ -24,7 +24,7 @@ public sealed class MagiCowClient
             if (response is not null && response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                if (content.StartsWith("{") || content.StartsWith("["))
+                if (content.StartsWith("{", StringComparison.InvariantCulture) || content.StartsWith("[", StringComparison.InvariantCulture))
                 { info = IOResources.Deserialize<MagiCowServerInfo>(content); }
                 else 
                 { fail = "Not a valid Json!"; }
