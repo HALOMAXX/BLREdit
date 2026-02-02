@@ -37,7 +37,7 @@ namespace BLREdit.UI.Windows
                 var children = MainWindow.FindVisualChildren<ModuleSettingControl>(this);
                 foreach (var settingControl in children)
                 {
-                    if (settingControl.DataContext is ProxyModuleSetting setting &&  setting.SettingType == ModuleSettingType.String)
+                    if (settingControl.DataContext is ProxyModuleSetting setting &&  setting.SettingType == ModuleSettingType.Text)
                     {
                         settingControl.UpdateTextBox();
                     }

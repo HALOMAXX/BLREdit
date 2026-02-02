@@ -115,6 +115,19 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private static void AddDefaultPlaylists()
+    {
+		foreach (var defPlaylist in BLRPlaylist.DefaultPlaylists)
+		{
+            bool found = false;
+            foreach (var playlist in DataStorage.Playlists)
+            {
+                if (playlist.Name == defPlaylist.Name) { found = true; break; }
+            }
+            if (!found) { DataStorage.Playlists.Add(defPlaylist); }
+		}
+	}
+
     private static void AddOrUpdateDefaultServers()
     {
         List<BLRServer> remove = [];
@@ -960,7 +973,10 @@ public sealed partial class MainWindow : Window
 
         AddOrUpdateDefaultServers();
 
-        if (DataStorage.Settings.DefaultServer is null)
+        AddDefaultPlaylists();
+
+
+		if (DataStorage.Settings.DefaultServer is null)
         {
             DataStorage.Settings.DefaultServer = DataStorage.ServerList[0];
         }
@@ -1301,6 +1317,7 @@ public sealed partial class MainWindow : Window
     {
         public TripleAnimationDouble? Animation { get; set; }
         public Grid? Grid { get; set; }
+        public Stopwatch Stopwatch { get; } = new Stopwatch();   
     }
 
     public static void InvokeShowAlert(string message, out BLREditAlert? alert, double displayTime = 4, double displayWidth = 400)
@@ -1308,7 +1325,8 @@ public sealed partial class MainWindow : Window
         BLREditAlert? localAlert = null;
         Instance?.Dispatcher.Invoke(new Action(() => { LoggingSystem.ResetWatch(); localAlert = ShowAlert(message, displayTime, displayWidth); }));
         alert = localAlert;
-    }
+		alert?.Stopwatch.Start();
+	}
 
     public static void InvokeUpdateAlert(string message, BLREditAlert alert, double displayTime = 4, double displayWidth = 400)
     {

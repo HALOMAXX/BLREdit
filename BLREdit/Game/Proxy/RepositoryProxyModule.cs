@@ -141,7 +141,7 @@ public sealed class RepositoryProxyModule
         return deeper;
     }
 
-    public void CombineSettings(JsonObject baseSettings, JsonObject newSettings) 
+    public static void CombineSettings(JsonObject baseSettings, JsonObject newSettings) 
     {
         if (baseSettings is null || newSettings is null) { LoggingSystem.LogNull(); return; }
 
@@ -363,7 +363,7 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
     [JsonIgnore] public ReadOnlyCollection<string> SettingPathParts { get { settingPathParts ??= new(SettingPath.Split('.')); return settingPathParts; } }
     [JsonIgnore] public string SettingName { get { return SettingPathParts.Last(); } }
     [JsonPropertyName("Type")]
-    public ModuleSettingType SettingType { get; set; } = ModuleSettingType.String;
+    public ModuleSettingType SettingType { get; set; } = ModuleSettingType.Text;
     public object? DefaultValue { get; set; } = "value";
     [JsonIgnore]
     public object? CurrentValue { get; set; }
@@ -394,7 +394,7 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
             return SettingType switch
             {
                 ModuleSettingType.Number => typeof(double),
-                ModuleSettingType.String => typeof(string),
+                ModuleSettingType.Text => typeof(string),
                 ModuleSettingType.Bool => typeof(bool),
                 _ => typeof(object),
             };
@@ -406,7 +406,7 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
     [JsonIgnore]
     public Visibility ToggleVisibility { get { return SettingType switch { ModuleSettingType.Bool => Visibility.Visible, _ => Visibility.Collapsed, }; } }
     [JsonIgnore]
-    public Visibility TextVisibility { get { return SettingType switch { ModuleSettingType.String => Visibility.Visible, _ => Visibility.Collapsed, }; } }
+    public Visibility TextVisibility { get { return SettingType switch { ModuleSettingType.Text => Visibility.Visible, _ => Visibility.Collapsed, }; } }
 
     public KeyValuePair<string, JsonNode>? CreateDefaultSetting()
     {
@@ -415,14 +415,14 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
             case ModuleSettingType.Number:
                 if (DefaultValue is JsonElement n1 && n1.ValueKind == JsonValueKind.Number && n1.GetDouble() is double d) { return new(SettingName, JsonValue.Create(d)); }
                 return null;
-            case ModuleSettingType.String:
+            case ModuleSettingType.Text:
                 if (DefaultValue is JsonElement n2 && n2.ValueKind == JsonValueKind.String && n2.GetString() is string s) { return new(SettingName, JsonValue.Create(s)); }
                 return null;
             case ModuleSettingType.Bool:
                 if (DefaultValue is JsonElement n3 && n3.ValueKind == JsonValueKind.True) { return new(SettingName, JsonValue.Create(true)); }
                 return new(SettingName, JsonValue.Create(false)); ;
             case ModuleSettingType.Array:
-            case ModuleSettingType.Object:
+            case ModuleSettingType.JsonObject:
             case ModuleSettingType.Undefined:
             case ModuleSettingType.Null:
             default:
@@ -437,14 +437,14 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
             case ModuleSettingType.Number:
                 if (DefaultValue is double d) { return JsonValue.Create(d); }
                 return 0;
-            case ModuleSettingType.String:
+            case ModuleSettingType.Text:
                 if (DefaultValue is string s) { return JsonValue.Create(s); }
                 return string.Empty;
             case ModuleSettingType.Bool:
                 if (DefaultValue is bool b) { return JsonValue.Create(b); }
                 return JsonValue.Create(false); ;
             case ModuleSettingType.Array:
-            case ModuleSettingType.Object:
+            case ModuleSettingType.JsonObject:
             case ModuleSettingType.Undefined:
             case ModuleSettingType.Null:
             default:
@@ -459,14 +459,14 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
             case ModuleSettingType.Number:
                 if (CurrentValue is double d) { return JsonValue.Create(d); }
                 return 0;
-            case ModuleSettingType.String:
+            case ModuleSettingType.Text:
                 if (CurrentValue is string s) { return JsonValue.Create(s); }
                 return string.Empty;
             case ModuleSettingType.Bool:
                 if (CurrentValue is bool b) { return JsonValue.Create(b); }
                 return JsonValue.Create(false); ;
             case ModuleSettingType.Array:
-            case ModuleSettingType.Object:
+            case ModuleSettingType.JsonObject:
             case ModuleSettingType.Undefined:
             case ModuleSettingType.Null:
             default:
@@ -482,14 +482,14 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
             case ModuleSettingType.Number:
                 if (jsonData.GetValueKind() == JsonValueKind.Number) { CurrentValue = jsonData.GetValue<double>(); }
                 break;
-            case ModuleSettingType.String:
+            case ModuleSettingType.Text:
                 if (jsonData.GetValueKind() == JsonValueKind.String) { CurrentValue = jsonData.GetValue<string>(); }
                 break;
             case ModuleSettingType.Bool:
                 if (jsonData.GetValueKind() == JsonValueKind.True || jsonData.GetValueKind() == JsonValueKind.False) { CurrentValue = jsonData.GetValue<bool>(); }
                 break;
             case ModuleSettingType.Array:
-            case ModuleSettingType.Object:
+            case ModuleSettingType.JsonObject:
             case ModuleSettingType.Undefined:
             case ModuleSettingType.Null:
             default:
@@ -512,14 +512,14 @@ public sealed class ProxyModuleSetting : INotifyPropertyChanged
             case ModuleSettingType.Number:
                 if (jsonData.GetValueKind() == JsonValueKind.Number) { CurrentValue = jsonData.GetValue<double>(); }
                 break;
-            case ModuleSettingType.String:
+            case ModuleSettingType.Text:
                 if (jsonData.GetValueKind() == JsonValueKind.String) { CurrentValue = jsonData.GetValue<string>(); }
                 break;
             case ModuleSettingType.Bool:
                 if (jsonData.GetValueKind() == JsonValueKind.True || jsonData.GetValueKind() == JsonValueKind.False) { CurrentValue = jsonData.GetValue<bool>(); }
                 break;
             case ModuleSettingType.Array:
-            case ModuleSettingType.Object:
+            case ModuleSettingType.JsonObject:
             case ModuleSettingType.Undefined:
             case ModuleSettingType.Null:
             default:
@@ -532,9 +532,9 @@ public enum ModuleSettingType
 {
     Undefined,
     Bool,
-    String,
+    Text,
     Number,
     Array,
-    Object,
+    JsonObject,
     Null,
 }

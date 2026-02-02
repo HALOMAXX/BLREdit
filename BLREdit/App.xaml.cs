@@ -1,4 +1,5 @@
-﻿using BLREdit.API.InterProcess;
+﻿using BLREdit.API.Export;
+using BLREdit.API.InterProcess;
 using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.Utils;
 using BLREdit.Export;
@@ -1206,7 +1207,7 @@ public partial class App : System.Windows.Application
         using RegistryKey dependencies = Registry.LocalMachine.OpenSubKey(dependenciesPath);
         if (dependencies == null) return false;
 
-        foreach (string subKeyName in dependencies.GetSubKeyNames().Where(n => !n.ToLower().Contains("dotnet") && !n.ToLower().Contains("microsoft")))
+        foreach (string subKeyName in dependencies.GetSubKeyNames().Where(n => !n.ToLowerInvariant().Contains("dotnet") && !n.ToLowerInvariant().Contains("microsoft")))
         {
             using RegistryKey subDir = Registry.LocalMachine.OpenSubKey(dependenciesPath + "\\" + subKeyName);
             var value = subDir.GetValue("DisplayName")?.ToString() ?? null;
@@ -1271,7 +1272,7 @@ public partial class App : System.Windows.Application
                 {
                     if (module.ReleaseDate <= DataStorage.CachedModules[i].Published)
                     {
-                        if (File.Exists($"downloads\\{DataStorage.CachedModules[i].CacheName}"))
+                        if (File.Exists($"downloads\\{DataStorage.CachedModules[i].CacheName}.dll"))
                         {
                             break;
                         }

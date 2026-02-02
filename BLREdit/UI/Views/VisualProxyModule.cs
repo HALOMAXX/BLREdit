@@ -288,7 +288,7 @@ public sealed class VisualProxyModule : INotifyPropertyChanged
                 {
                     if (ReleaseDate <= DataStorage.CachedModules[i].Published)
                     {
-                        if (File.Exists($"downloads\\{DataStorage.CachedModules[i].CacheName}"))
+                        if (File.Exists($"downloads\\{DataStorage.CachedModules[i].CacheName}.dll"))
                         {
                             LoggingSystem.Log($"Found Latest Release in Download Cache Date: Latest:[{ReleaseDate.Value:yyyy/MM/dd HH:mm:ss:ff}] / Cache:[{DataStorage.CachedModules[i].Published:yyyy/MM/dd HH:mm:ss:ff}] for {RepositoryProxyModule.CacheName}");
                             module = DataStorage.CachedModules[i];

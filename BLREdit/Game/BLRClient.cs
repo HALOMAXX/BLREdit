@@ -377,7 +377,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    public List<VisualProxyModule> CheckModulesUpdateOrMissing()
+    public static List<VisualProxyModule> CheckModulesUpdateOrMissing()
     {
         List<VisualProxyModule> toUpdateOrDownload = [];
         foreach (var module in AvailableModules)
@@ -604,9 +604,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             if (LatestBLReviveReleaseDate > SDKVersionDate)
             {
-                MainWindow.InvokeShowAlert("Downloading BLRevive SDK!",out var ModuleAnim, 60, 600);
                 DownloadLatestBLReviveRelease();
-                if (ModuleAnim is not null) { MainWindow.InvokeUpdateAlert($"Finished Downloading BLRevive SDK! Took: {LoggingSystem.GetElapsedSeconds()}", ModuleAnim, 8); }
             }
 
             try
@@ -630,7 +628,7 @@ public sealed class BLRClient : INotifyPropertyChanged
                 {
                     module.RepositoryProxyModule.DownloadLatest();
                 }
-                if (alert is not null) { MainWindow.InvokeUpdateAlert($"Finished Downloading Modules! Took: {LoggingSystem.GetElapsedSeconds()}", alert, 8); }
+                if (alert is not null) { MainWindow.InvokeUpdateAlert($"Finished Downloading Modules! Took: {(double)(alert.Stopwatch.ElapsedTicks/Stopwatch.Frequency):0.00}s", alert, 8); }
             }
 
             var modulesToCopy = CheckInstalledModules();
@@ -827,7 +825,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             {
                 configClient.Modules.Remove(module.RepositoryProxyModule.InstallName);
                 var settings = module.RepositoryProxyModule.GetCurrentSettings();
-                module.RepositoryProxyModule.CombineSettings(settings, client);
+                RepositoryProxyModule.CombineSettings(settings, client);
                 configClient.Modules.Add(module.RepositoryProxyModule.InstallName, settings);
             }
         }
@@ -838,7 +836,7 @@ public sealed class BLRClient : INotifyPropertyChanged
             {
                 configServer.Modules.Remove(module.RepositoryProxyModule.InstallName);
                 var settings = module.RepositoryProxyModule.GetCurrentSettings();
-                module.RepositoryProxyModule.CombineSettings(settings, server);
+                RepositoryProxyModule.CombineSettings(settings, server);
                 configServer.Modules.Add(module.RepositoryProxyModule.InstallName, settings);
             }
         }
@@ -847,7 +845,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             config.Modules.Remove(module.RepositoryProxyModule.InstallName);
             var settings = module.RepositoryProxyModule.GetCurrentSettings();
-            module.RepositoryProxyModule.CombineSettings(settings, value);
+            RepositoryProxyModule.CombineSettings(settings, value);
             config.Modules.Add(module.RepositoryProxyModule.InstallName, settings);
         }
 

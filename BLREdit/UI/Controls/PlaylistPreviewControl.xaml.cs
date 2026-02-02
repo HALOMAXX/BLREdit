@@ -42,7 +42,7 @@ namespace BLREdit.UI.Controls
 
         private void Play_Playlist(object sender, RoutedEventArgs e)
         {
-            if (DataContext is BLRPlaylist playlist) {
+            if (sender is Button btn && btn.DataContext is BLRPlaylist playlist) {
                 if (playlist.Entries.Count <= 0) { MainWindow.ShowAlert("Playlist has no Entries!"); return; }
                 if (DataStorage.Settings.DefaultClient is BLRClient client)
                 {

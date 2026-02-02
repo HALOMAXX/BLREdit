@@ -68,7 +68,8 @@ public sealed class IOResources
     public static JsonSerializerOptions JSOCompacted { get; } = new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip, WriteIndented = false, IncludeFields = true, Converters = { new JsonStringEnumConverter(), new JsonDoubleConverter(), new JsonFloatConverter() } };
     public static Regex RemoveWhiteSpacesFromJson { get; } = new Regex("(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+");
 
-    [DllImport("kernel32.dll", SetLastError = true)]
+    [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+    [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
     static extern bool CreateSymbolicLink(
         string lpSymlinkFileName, string lpTargetFileName, SymbolicLink dwFlags);
 
@@ -148,9 +149,11 @@ public sealed class IOResources
     }
 
     [DllImport("Kernel32")]
+    [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
     private static extern void AllocConsole();
 
     [DllImport("Kernel32")]
+    [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
     private static extern void FreeConsole();
     public static void SpawnConsole()
     { 

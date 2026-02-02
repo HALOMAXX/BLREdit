@@ -198,7 +198,7 @@ public sealed class ServerListView : INotifyPropertyChanged
     { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
     #endregion Events
 
-    public ObservableCollection<BLRServer> ServerList => DataStorage.ServerList;
+    public static ObservableCollection<BLRServer> ServerList => DataStorage.ServerList;
 
     private ListSortDirection serverListSortingDirection = ListSortDirection.Descending;
     public ListSortDirection ServerListSortingDirection { get { return serverListSortingDirection; } set { serverListSortingDirection = value; OnPropertyChanged(); OnPropertyChanged(nameof(ServerListSortingDirectionString)); } }

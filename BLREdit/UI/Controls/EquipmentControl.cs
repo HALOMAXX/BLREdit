@@ -10,7 +10,7 @@ namespace BLREdit.UI.Controls;
 
 public class EquipmentControl : UserControl
 {
-    protected Grid? EquipmentControlGrid;
+    protected Grid? EquipmentControlGrid { get; set; }
     public static int SelectedBorder { get; private set; } = 1;
     protected void Grid_MouseUp(object sender, MouseButtonEventArgs e)
     {

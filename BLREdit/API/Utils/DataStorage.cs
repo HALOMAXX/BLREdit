@@ -75,7 +75,19 @@ public static class DataStorage
         IOResources.SerializeFile($"GameClients.json", _gameClients);
         IOResources.SerializeFile($"ServerList.json", _servers);
         IOResources.SerializeFile($"ModuleCache.json", _cachedModules);
-        IOResources.SerializeFile($"Playlists.json", _playlists);
+
+        if (_playlists is not null)
+        {
+            BLRPlaylist[] tempArray = new BLRPlaylist[_playlists.Count];
+            _playlists.CopyTo(tempArray, 0);
+            var playlist = new List<BLRPlaylist>(tempArray);
+            foreach (var defPlaylist in BLRPlaylist.DefaultPlaylists)
+            {
+                playlist.Remove(defPlaylist);
+            }
+            IOResources.SerializeFile($"Playlists.json", playlist);
+        }
+        
         BLREditSettings.Save();
     }
 
