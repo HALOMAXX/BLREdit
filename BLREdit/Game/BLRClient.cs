@@ -243,6 +243,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public void ApplyConfigs()
     {
         var info = new FileInfo($"{BasePath}FoxGame\\Config\\PCConsole\\Cooked\\PCConsole-FoxEngine.ini");
+        if (!info.Exists) { LoggingSystem.MessageLog("Failed to acquire config file from client!\nHave you properly installed/unpacked BLR?", "Error"); return; }
         var file = File.ReadAllText(info.FullName);
         string replaced;
         if (DataStorage.Settings.EnableFramerateSmoothing.Is)
