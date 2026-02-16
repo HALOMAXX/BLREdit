@@ -44,9 +44,9 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
             while (App.IsRunning) {
                 if (RemoveD8.Take() is BLRClient client)
                 {
-                    if (client.D8INPUT.Exists)
+                    if (client.DINPUT8.Exists)
                     {
-                        client.D8INPUT.Delete();
+                        client.DINPUT8.Delete();
                     }
                 }
             }

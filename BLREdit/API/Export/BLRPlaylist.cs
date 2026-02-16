@@ -60,7 +60,7 @@ namespace BLREdit.API.Export
         public static Collection<BLRPlaylist> DefaultPlaylists { get; } =
         [
             new BLRPlaylist {
-                Name = "Capture the Flag",
+                Name = "Capture-the-Flag",
                 Entries = [
                     new BLRPlaylistEntry { Map = "containment", GameMode = "CTF", Properties = DefaultModeProperties },
                     new BLRPlaylistEntry { Map = "convoy", GameMode = "CTF", Properties = DefaultModeProperties },
@@ -103,7 +103,7 @@ namespace BLREdit.API.Export
                 ] 
             },
             new BLRPlaylist {
-                Name = "Team Deathmatch",
+                Name = "Team-Deathmatch",
                 Entries = [
                     new BLRPlaylistEntry { Map = "containment", GameMode = "TDM", Properties = DefaultModeProperties },
                     new BLRPlaylistEntry { Map = "convoy", GameMode = "TDM", Properties = DefaultModeProperties },
@@ -147,7 +147,7 @@ namespace BLREdit.API.Export
                 ]
             },
             new BLRPlaylist {
-                Name = "King of the Hill",
+                Name = "King-of-the-Hill",
                 Entries = [
                     new BLRPlaylistEntry { Map = "containment", GameMode = "KOTH", Properties = DefaultModeProperties },
                     new BLRPlaylistEntry { Map = "convoy", GameMode = "KOTH", Properties = DefaultModeProperties },
@@ -169,7 +169,7 @@ namespace BLREdit.API.Export
                 ]
             },
             new BLRPlaylist {
-                Name = "Last Man Standing",
+                Name = "Last-Man-Standing",
                 Entries = [
                     new BLRPlaylistEntry { Map = "containment", GameMode = "LMS", Properties = DefaultModeProperties },
                     new BLRPlaylistEntry { Map = "convoy", GameMode = "LMS", Properties = DefaultModeProperties },
@@ -191,7 +191,7 @@ namespace BLREdit.API.Export
                 ]
             },
             new BLRPlaylist {
-                Name = "Last Team Standing",
+                Name = "Last-Team-Standing",
                 Entries = [
                     new BLRPlaylistEntry { Map = "containment", GameMode = "LTS", Properties = DefaultModeProperties },
                     new BLRPlaylistEntry { Map = "convoy", GameMode = "LTS", Properties = DefaultModeProperties },
@@ -213,7 +213,7 @@ namespace BLREdit.API.Export
                 ]
             },
             new BLRPlaylist {
-                Name = "Search and Destroy",
+                Name = "Search-and-Destroy",
                 Entries = [
                     new BLRPlaylistEntry { Map = "containment", GameMode = "SND", Properties = DefaultModeProperties },
                     new BLRPlaylistEntry { Map = "convoy", GameMode = "SND", Properties = DefaultModeProperties },
@@ -235,7 +235,7 @@ namespace BLREdit.API.Export
                 ]
             },
             new BLRPlaylist {
-                Name = "Kill Confirmed",
+                Name = "Kill-Confirmed",
                 Entries = [
                     new BLRPlaylistEntry { Map = "containment", GameMode = "KC", Properties = DefaultModeProperties },
                     new BLRPlaylistEntry { Map = "convoy", GameMode = "KC", Properties = DefaultModeProperties },
@@ -260,7 +260,7 @@ namespace BLREdit.API.Export
             //------- Onslaught ----------//
             
             new BLRPlaylist {
-                Name = "Onslaught Easy",
+                Name = "Onslaught-Easy",
                 Entries = [
                     new BLRPlaylistEntry { Map = "centre", GameMode = "OS_Easy", Properties = DefaultOnslaughtProperties },
                     new BLRPlaylistEntry { Map = "deathmetal", GameMode = "OS_Easy", Properties = DefaultOnslaughtProperties },
@@ -270,7 +270,7 @@ namespace BLREdit.API.Export
                 ]
             },
             new BLRPlaylist {
-                Name = "Onslaught Medium",
+                Name = "Onslaught-Medium",
                 Entries = [
                     new BLRPlaylistEntry { Map = "centre", GameMode = "OS_Medium", Properties = DefaultOnslaughtProperties },
                     new BLRPlaylistEntry { Map = "deathmetal", GameMode = "OS_Medium", Properties = DefaultOnslaughtProperties },
@@ -280,7 +280,7 @@ namespace BLREdit.API.Export
                 ]
             },
             new BLRPlaylist {
-                Name = "Onslaught Hard",
+                Name = "Onslaught-Hard",
                 Entries = [
                     new BLRPlaylistEntry { Map = "centre", GameMode = "OS_Hard", Properties = DefaultOnslaughtProperties },
                     new BLRPlaylistEntry { Map = "deathmetal", GameMode = "OS_Hard", Properties = DefaultOnslaughtProperties},

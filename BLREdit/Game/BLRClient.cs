@@ -115,8 +115,8 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? _basePath;
     public string? BasePath { get { _basePath ??= GetBasePath(); return _basePath; } }
 
-    [JsonIgnore] private FileInfo? _D8INPUT;
-    [JsonIgnore] public FileInfo D8INPUT { get { _D8INPUT ??= new($"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll"); return _D8INPUT; } }
+    [JsonIgnore] private FileInfo? _DINPUT8;
+    [JsonIgnore] public FileInfo DINPUT8 { get { _DINPUT8 ??= new($"{Path.GetDirectoryName(OriginalPath)}\\DINPUT8.dll"); return _DINPUT8; } }
 
     [JsonIgnore] private FileInfo? _BLRevive;
     [JsonIgnore]public FileInfo BLRevive { get { _BLRevive ??= new($"{Path.GetDirectoryName(OriginalPath)}\\BLRevive.dll"); return _BLRevive; } }
@@ -524,8 +524,9 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchZCureClient()
     {
-        if (D8INPUT.Exists)
-        { D8INPUT.Delete(); }
+        if (DINPUT8.Exists)
+        { DINPUT8.Delete(); }
+        SteamAppIDCheck();
         BLRProcess.CreateProcess("-zcureurl=blrrevive.ddd-game.de -zcureport=80 -presenceurl=blrrevive.ddd-game.de -presenceport=9004", this, false);
     }
 
@@ -575,6 +576,19 @@ public sealed class BLRClient : INotifyPropertyChanged
         return false;
     }
 
+    private void SteamAppIDCheck()
+    {
+        if (!SteamAppIDTextFileInfo.Exists)
+        {
+            using var file = SteamAppIDTextFileInfo.CreateText();
+            if (IsSteamClient())
+            { file.Write("209870"); }
+            else
+            { file.Write("480"); }
+            file.Close();
+        }
+    }
+
     //TODO: Improve Client Check and Validation!
     /*
      Split Client Checks to be able to use them at different times
@@ -594,16 +608,11 @@ public sealed class BLRClient : INotifyPropertyChanged
         {
             if (OriginalFileInfo is null || !OriginalFileInfo.Exists) { LoggingSystem.MessageLog("Unable to launch Game because the .exe is missing!", "Error"); return; }
 
-            if (!SteamAppIDTextFileInfo.Exists)
-            {
-                using var file = SteamAppIDTextFileInfo.CreateText();
-                if (IsSteamClient())
-                { file.Write("209870"); }
-                else
-                { file.Write("480"); }
-                file.Close();
-            }
-            if (LatestBLReviveReleaseDate > SDKVersionDate)
+            SteamAppIDCheck();
+            var DownloadedBLRevive = new FileInfo($"{IOResources.BaseDirectory}downloads\\BLRevive.dll");
+            var DownloadedDINPUT8 = new FileInfo($"{IOResources.BaseDirectory}downloads\\DINPUT8.dll");
+            
+            if (LatestBLReviveReleaseDate > SDKVersionDate || !DownloadedBLRevive.Exists || !DownloadedDINPUT8.Exists)
             {
                 DownloadLatestBLReviveRelease();
             }
@@ -611,13 +620,14 @@ public sealed class BLRClient : INotifyPropertyChanged
             try
             {
                 if (!BLRevive.Exists) 
-                { File.Copy($"{IOResources.BaseDirectory}\\downloads\\BLRevive.dll", BLRevive.FullName, true); }
-                if (!D8INPUT.Exists) 
-                { File.Copy($"{IOResources.BaseDirectory}\\downloads\\DINPUT8.dll", D8INPUT.FullName, true); }
+                { File.Copy(DownloadedBLRevive.FullName, BLRevive.FullName, true); }
+                if (!DINPUT8.Exists) 
+                { File.Copy(DownloadedDINPUT8.FullName, DINPUT8.FullName, true); }
             }
             catch (Exception error)
             {
                 LoggingSystem.MessageLogClipboard($"Message:\n{error.Message}\nStacktrace:{error.StackTrace}\n", "Failed to copy essential dll files to BLR client!");
+                return;
             }
             
 
