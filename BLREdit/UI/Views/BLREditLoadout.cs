@@ -1015,8 +1015,7 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
         bool g4dup;
         if (Gear4 is not null && Gear4.UID != 12015)
         {
-            if (Gear4.Name is not null)
-                g4frag = Gear4.Name.Contains("Frag") || Gear4.Name.Contains("I Heart U") || Gear4.Name.Contains("Snowpocalypse");
+            //if (Gear4.Name is not null) g4frag = Gear4.Name.Contains("Frag") || Gear4.Name.Contains("I Heart U") || Gear4.Name.Contains("Snowpocalypse");
         }
         else
         {
@@ -1026,7 +1025,7 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
         bool g3dup;
         if (Gear3 is not null && Gear3.UID != 12015)
         {
-            if (Gear3.Name is not null) g3frag = Gear3.Name.Contains("Frag") || Gear3.Name.Contains("I Heart U") || Gear3.Name.Contains("Snowpocalypse");
+            //if (Gear3.Name is not null) g3frag = Gear3.Name.Contains("Frag") || Gear3.Name.Contains("I Heart U") || Gear3.Name.Contains("Snowpocalypse");
         }
         else
         {
@@ -1036,7 +1035,7 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
         bool g2dup;
         if (Gear2 is not null && Gear2.UID != 12015)
         {
-            if (Gear2.Name is not null) g2frag = Gear2.Name.Contains("Frag") || Gear2.Name.Contains("I Heart U") || Gear2.Name.Contains("Snowpocalypse");
+            //if (Gear2.Name is not null) g2frag = Gear2.Name.Contains("Frag") || Gear2.Name.Contains("I Heart U") || Gear2.Name.Contains("Snowpocalypse");
         }
         else
         {
@@ -1045,7 +1044,7 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
 
         if (Gear1 is not null && Gear1.UID != 12015)
         {
-            if (Gear1.Name is not null) g1frag = Gear1.Name.Contains("Frag") || Gear1.Name.Contains("I Heart U") || Gear1.Name.Contains("Snowpocalypse");
+            //if (Gear1.Name is not null) g1frag = Gear1.Name.Contains("Frag") || Gear1.Name.Contains("I Heart U") || Gear1.Name.Contains("Snowpocalypse");
         }
         else
         {
