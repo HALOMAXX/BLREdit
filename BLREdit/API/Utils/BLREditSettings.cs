@@ -333,6 +333,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
 
     public static void Save()
     {
-        IOResources.SerializeFile($"{IOResources.SETTINGS_FILE}", DataStorage.Settings);
+        while (!IOResources.SerializeFile($"{IOResources.SETTINGS_FILE}", DataStorage.Settings) && LoggingSystem.MessageLog("Failed to save BLREdit Settings!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning the settings.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
+        
     }
 }

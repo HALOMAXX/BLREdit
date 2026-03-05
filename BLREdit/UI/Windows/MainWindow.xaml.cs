@@ -1191,7 +1191,7 @@ public sealed partial class MainWindow : Window
 
     public static void SetItemToBorder(Border? border, BLREditItem item)
     {
-        if (border is null) { LoggingSystem.LogNull(); return; }
+        if (border is null || item is null) { LoggingSystem.LogNull(); return; }
         if (border.Parent is FrameworkElement parent)
         {
             if (parent.DataContext is BLREditWeapon weapon)

@@ -290,16 +290,21 @@ public sealed class IOResources
         }
     }
 
-    public static void SerializeFile<T>(string filePath, T obj, bool compact = false)
+    public static bool SerializeFile<T>(string filePath, T obj, bool compact = false)
     {
-        if (string.IsNullOrEmpty(filePath)) { LoggingSystem.LogNull(); return; }
-        if (obj is null) { LoggingSystem.LogNull(); return; }
+        if (string.IsNullOrEmpty(filePath)) { LoggingSystem.LogNull(); return false; }
+        if (obj is null) { LoggingSystem.LogNull(); return false; }
         var info = new FileInfo(filePath);
-        if (!info.Directory.Exists) { info.Directory.Create(); }
-        using var file = new StreamWriter(File.Open(filePath, FileMode.Create), Encoding.UTF8);
-        file.Write(Serialize(obj, compact));
-        file.Close();
-        LoggingSystem.Log($"[Serializer]: {typeof(T).Name} serialize succes!");
+        try
+        {
+            if (!info.Directory.Exists) { info.Directory.Create(); }
+            using var file = new StreamWriter(File.Open(filePath, FileMode.Create), Encoding.UTF8);
+            file.Write(Serialize(obj, compact));
+            file.Close();
+            LoggingSystem.Log($"[Serializer]: {typeof(T).Name} serialize succes!");
+            return true;
+        }
+        catch { return false; }
     }
 
     public static string Serialize<T>(T obj, bool compact = false)

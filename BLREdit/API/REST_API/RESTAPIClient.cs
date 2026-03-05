@@ -1,6 +1,8 @@
-﻿using BLREdit.API.REST_API.GitHub;
+﻿using BLREdit.API.Export;
+using BLREdit.API.REST_API.GitHub;
 using BLREdit.API.REST_API.Gitlab;
 using BLREdit.Game.Proxy;
+
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -136,7 +138,7 @@ public sealed class RESTAPIClient
         {
             SafeCacheAddOrUpdate(cache.Key, cache.Value, true);
         }
-        IOResources.SerializeFile(CacheFile, OldRequestCache);
+        while (!IOResources.SerializeFile(CacheFile, OldRequestCache) && LoggingSystem.MessageLog("Failed to save Loadout List!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning Profiles\\loadoutList.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
     }
 
     private async Task<HttpResponseMessage?> GetAsync(string api)

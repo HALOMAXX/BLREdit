@@ -69,12 +69,12 @@ public static class DataStorage
     public static void Save()
     {
         DataSaving?.Invoke(null, EventArgs.Empty);
-        IOResources.SerializeFile($"PlayerSettings.json", _profileSettings);
-        //IOResources.SerializeFile($"{IOResources.PROFILE_DIR}profileList.json", _shareableProfiles);
-        IOResources.SerializeFile($"{IOResources.PROFILE_DIR}loadoutList.json", _shareableLoadouts);
-        IOResources.SerializeFile($"GameClients.json", _gameClients);
-        IOResources.SerializeFile($"ServerList.json", _servers);
-        IOResources.SerializeFile($"ModuleCache.json", _cachedModules);
+
+        while (!IOResources.SerializeFile($"PlayerSettings.json", _profileSettings)                         && LoggingSystem.MessageLog("Failed to save Player Settings!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning PlayerSettings.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
+        while (!IOResources.SerializeFile($"{IOResources.PROFILE_DIR}loadoutList.json", _shareableLoadouts) && LoggingSystem.MessageLog("Failed to save Loadout List!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning Profiles\\loadoutList.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
+        while (!IOResources.SerializeFile($"GameClients.json", _gameClients)                                && LoggingSystem.MessageLog("Failed to save Game Clients!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning GameClients.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
+        while (!IOResources.SerializeFile($"ServerList.json", _servers)                                     && LoggingSystem.MessageLog("Failed to save Server List!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning ServerList.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
+        while (!IOResources.SerializeFile($"ModuleCache.json", _cachedModules)                              && LoggingSystem.MessageLog("Failed to save Module Cache!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning ModuleCache.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
 
         if (_playlists is not null)
         {
@@ -85,7 +85,7 @@ public static class DataStorage
             {
                 playlist.Remove(defPlaylist);
             }
-            IOResources.SerializeFile($"Playlists.json", playlist);
+            while (!IOResources.SerializeFile($"Playlists.json", playlist) && LoggingSystem.MessageLog("Failed to save Playlists!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning the Playlists.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
         }
         
         BLREditSettings.Save();
