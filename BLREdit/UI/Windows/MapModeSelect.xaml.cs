@@ -59,6 +59,7 @@ public sealed partial class MapModeSelect : Window
                 if (clientVersion == "Unknown") return true;
                 if (o is BLRMap map)
                 {
+                    if (map.MapName == "gunrange_persistent") { return false; }
                     return map.Available.Contains(clientVersion);
                 }
                 return false;
