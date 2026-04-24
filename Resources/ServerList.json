@@ -243,5 +243,11 @@
     "ServerAddress": "89.168.86.217",
     "Port": 7777,
     "Region": "EU-West"
+  },
+  {
+    "ID": "shoter 0",
+    "ServerAddress": "78.58.170.152",
+    "Port": 7777,
+    "Region": "EU-East"
   }
 ]
