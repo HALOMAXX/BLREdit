@@ -13,13 +13,6 @@
     "Region": "EU-North"
   },
   {
-    "ID": "Q8 Host Yzigl",
-    "ServerAddress": "yzigl.opik.net",
-    "Port": 7777,
-    "InfoPort": 7777,
-    "Region": "Middle-East"
-  },
-  {
     "ID": "majikau 1",
     "ServerAddress": "blr.majikau.com",
     "Port": 7778,
@@ -245,7 +238,7 @@
     "Port": 7777,
     "Region": "EU-North"
   },
-  {
+{
     "ID": "superewald_0",
     "ServerAddress": "89.168.86.217",
     "Port": 7777,
@@ -256,5 +249,12 @@
     "ServerAddress": "78.58.170.152",
     "Port": 7777,
     "Region": "EU-East"
+  },
+  {
+    "ID": "Q8 Host Yzigl",
+    "ServerAddress": "yzigl.opik.net",
+    "Port": 7777,
+    "InfoPort": 7777,
+    "Region": "Middle-East"
   }
 ]
