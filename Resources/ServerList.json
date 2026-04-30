@@ -249,5 +249,12 @@
     "ServerAddress": "78.58.170.152",
     "Port": 7777,
     "Region": "EU-East"
+  },
+  {
+    "ID": "Q8 Host Yzigl",
+    "ServerAddress": "yzigl.opik.net",
+    "Port": 7777,
+    "InfoPort": 7777,
+    "Region": "Middle-East"
   }
 ]
