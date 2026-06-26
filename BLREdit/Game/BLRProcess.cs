@@ -1,4 +1,5 @@
 ﻿using BLREdit.UI;
+using BLREdit.UI.Controls;
 
 using System;
 using System.Collections.Concurrent;
@@ -8,6 +9,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BLREdit.Game;
@@ -36,6 +38,8 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
     private BLRServer? connectedServer;
     public BLRServer? ConnectedServer { get { return connectedServer; } private set { connectedServer = value; OnPropertyChanged(); } }
     public string? LaunchArgs { get { return GameProcess.StartInfo.Arguments; } }
+    public static bool IsAtLeastOneClientRunning { get; set; }
+    public static int ClientCount { get; set; }
 
     static BLRProcess()
     {
@@ -51,6 +55,21 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
                 }
             }
         });
+        Task.Run(() =>
+        {
+            while (App.IsRunning)
+            {
+                Thread.Sleep(500);
+                if (IsAtLeastOneClientRunning)
+                {
+                    ServerControl.PauseAnimation();
+                }
+                else
+                {
+                    if (DataStorage.Settings.LastServerAnimationState.Is) { ServerControl.ResumeAnimation(); }
+                }
+            }
+        });
     }
 
     private static void RunningGamesChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -61,6 +80,7 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
                 foreach (BLRProcess process in e.OldItems)
                 { 
                     process.Cleanup();
+                    if(!process.IsServer) { ClientCount--; if (ClientCount <= 0) { IsAtLeastOneClientRunning = false; ClientCount = 0; } }
                 }
                 break;
             case NotifyCollectionChangedAction.Add:
@@ -69,10 +89,11 @@ public sealed class BLRProcess : INotifyPropertyChanged, IDisposable
                     try
                     {
                         process.Start();
+                        if(!process.IsServer) { IsAtLeastOneClientRunning = true; ClientCount++; }
                     }
                     catch (Exception error)
                     {
-                        LoggingSystem.MessageLog($"Failed to start BlackLight: Retribution {(process.IsServer ? "Server" : "Client")}!\nReason: {error.Message}", "Failed to Start Client");
+                        LoggingSystem.MessageLog($"Failed to start BlackLight: Retribution {(process.IsServer ? "Server" : "Client")}!\nReason: {error.Message}", $"Failed to Start {(process.IsServer ? "Server" : "Client")}!");
                         RunningGames.Remove(process);
                     }
                 }

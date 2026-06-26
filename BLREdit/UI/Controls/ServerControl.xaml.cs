@@ -25,7 +25,11 @@ namespace BLREdit.UI.Controls
     /// </summary>
     public partial class ServerControl : UserControl
     {
-        static readonly EventTrigger trigger;
+        static Storyboard storyboard;
+
+        static List<ServerControl> ServerControlList { get; } = [];
+
+        static bool isPaused = false;
 
         static ServerControl()
         {
@@ -40,22 +44,43 @@ namespace BLREdit.UI.Controls
             animation.KeyFrames.Add(new SplineDoubleKeyFrame(0, KeyTime.FromTimeSpan(new(0, 0, 0, 0, 5500))));
             animation.KeyFrames.Add(new SplineDoubleKeyFrame(0, KeyTime.FromTimeSpan(new(0, 0, 0, 0, 6000))));
 
-            var storyboard = new Storyboard();
+            storyboard = new Storyboard();
             storyboard.Children.Add(animation);
 
             Storyboard.SetTargetName(animation, "MapImage");
             Storyboard.SetTargetProperty(animation, new(Canvas.TopProperty));
+        }
 
-            var beginStoryboard = new BeginStoryboard() { Storyboard = storyboard };
-
-            trigger = new EventTrigger() { RoutedEvent = Image.LoadedEvent };
-            trigger.Actions.Add(beginStoryboard);
+        public static void PauseAnimation()
+        {
+            if (storyboard != null)
+            {
+                for(int i = ServerControlList.Count-1; i > 0; i--)
+                { storyboard.Pause(ServerControlList[i]); }
+                isPaused = true;
+            }
+        }
+        public static void ResumeAnimation()
+        {
+            if (storyboard != null && isPaused)
+            {
+                for (int i = ServerControlList.Count - 1; i > 0; i--)
+                { storyboard.Resume(ServerControlList[i]); }
+            }
         }
 
         public ServerControl()
         {
             InitializeComponent();
-            MapImage.Triggers.Add(trigger);
+            storyboard.Begin(this, true);
+            if (DataStorage.Settings.LastServerAnimationState.IsNot) { storyboard.Pause(this); }
+            ServerControlList.Add(this);
+        }
+
+        ~ServerControl()
+        {
+            storyboard.Remove(this);
+            ServerControlList.Remove(this);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

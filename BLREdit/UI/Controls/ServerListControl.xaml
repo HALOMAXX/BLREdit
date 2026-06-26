@@ -23,6 +23,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Grid.Row="1">
             <Button Content="{Binding Source={x:Static p:Resources.btn_AddServer}}" Width="240" Click="AddNewServer_Click"/>
             <Button Content="{Binding Source={x:Static p:Resources.btn_QuickMatch}}" Width="240" Click="QuickMatch_Click"/>
+            <ToggleButton Content="Pause / Play Animation" Width="240" IsChecked="{Binding Path=LastAnimationState.Is, Mode=TwoWay}" Checked="PausePlayButton_Checked" Unchecked="PausePlayButton_Unchecked"/>
         </StackPanel>
 
         <ListView Grid.Row="1" Name="ServerListView" ItemsSource="{Binding Path=ServerList}" DataContextChanged="ServerListView_DataContextChanged" Margin="0,0,0,40" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled">

@@ -188,6 +188,16 @@ public partial class ServerListControl : UserControl
             Keyboard.ClearFocus();
         }
     }
+
+    private void PausePlayButton_Checked(object sender, RoutedEventArgs e)
+    {
+        ServerControl.ResumeAnimation();
+    }
+
+    private void PausePlayButton_Unchecked(object sender, RoutedEventArgs e)
+    {
+        ServerControl.PauseAnimation();
+    }
 }
 
 public sealed class ServerListView : INotifyPropertyChanged
@@ -205,4 +215,5 @@ public sealed class ServerListView : INotifyPropertyChanged
     public string ServerListSortingDirectionString { get { return ServerListSortingDirection == ListSortDirection.Ascending ? Properties.Resources.btn_Ascending : Properties.Resources.btn_Descending; } }
     public ObservableCollection<string> SortTypes { get; } = LanguageResources.GetWordsOfEnum(typeof(ServerSortingType));
     public int ServerSortIndex { get { return DataStorage.Settings.ServerSortIndex; } set { DataStorage.Settings.ServerSortIndex = value; OnPropertyChanged(); } }
+    public UIBool LastAnimationState => DataStorage.Settings.LastServerAnimationState;
 }

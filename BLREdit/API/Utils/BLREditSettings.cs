@@ -49,6 +49,7 @@ public sealed class BLREditSettings : INotifyPropertyChanged
         set { SelectedLoadout = DataStorage.FindIn(DataStorage.Loadouts, value); OnPropertyChanged(); }
     }
 
+    public UIBool LastServerAnimationState { get; set; } = new(true);
     public UIBool EnableAPI { get; set; } = new(true);
     public UIBool EnableFramerateSmoothing { get; set; } = new(true);
     public UIBool FramerateSmoothingToDisplayRefreshrate { get; set; } = new(false); //TODO: Change to false before release

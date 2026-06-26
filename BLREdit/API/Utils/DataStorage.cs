@@ -3,6 +3,7 @@ using BLREdit.Export;
 using BLREdit.Game;
 using BLREdit.Game.Proxy;
 using BLREdit.Import;
+using BLREdit.UI;
 
 using System;
 using System.Collections.Generic;
