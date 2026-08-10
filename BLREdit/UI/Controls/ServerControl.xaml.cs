@@ -31,7 +31,7 @@ namespace BLREdit.UI.Controls
 
         static bool isPaused = false;
 
-        static ServerControl()
+        private static void InitStaticComponents()
         {
             var animation = new DoubleAnimationUsingKeyFrames()
             {
@@ -72,9 +72,14 @@ namespace BLREdit.UI.Controls
         public ServerControl()
         {
             InitializeComponent();
-            storyboard.Begin(this, true);
-            if (DataStorage.Settings.LastServerAnimationState.IsNot) { storyboard.Pause(this); }
-            ServerControlList.Add(this);
+            InitStaticComponents();
+            try
+            {
+                storyboard.Begin(this, true);
+                if (DataStorage.Settings.LastServerAnimationState.IsNot) { storyboard.Pause(this); }
+                ServerControlList.Add(this);
+            }
+            catch (Exception ex) { LoggingSystem.MessageLog($"{ex.Message}\n{ex.StackTrace}", "ServerControl Init Error"); }
         }
 
         ~ServerControl()
