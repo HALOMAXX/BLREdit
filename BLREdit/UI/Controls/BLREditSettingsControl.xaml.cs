@@ -132,6 +132,15 @@ public sealed partial class BLREditSettingsControl : UserControl
         if (DataContext is BLREditSettings settings && e.AddedItems.Count > 0 && e.AddedItems[0] is string version)
         {
             settings.SelectedBLReviveVersion = version;
+            settings.SDKVersionDate = DateTime.MinValue;
+            try
+            {
+                foreach(var c in DataStorage.GameClients)
+                {
+                    c.Invalidate();
+                }
+            }catch(Exception error)
+            { LoggingSystem.Log($"[Settings]BLRevive Selection Changed Error:{error.Message}\n{error.StackTrace}"); }
         }
     }
 

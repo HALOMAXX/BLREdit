@@ -612,8 +612,9 @@ public sealed class BLRClient : INotifyPropertyChanged
             var DownloadedBLRevive = new FileInfo($"{IOResources.BaseDirectory}downloads\\BLRevive.dll");
             var DownloadedDINPUT8 = new FileInfo($"{IOResources.BaseDirectory}downloads\\DINPUT8.dll");
             
-            if (LatestBLReviveReleaseDate > SDKVersionDate || !DownloadedBLRevive.Exists || !DownloadedDINPUT8.Exists)
+            if (LatestBLReviveReleaseDate > SDKVersionDate || !DownloadedBLRevive.Exists || !DownloadedDINPUT8.Exists || DataStorage.Settings.SDKVersionDate == DateTime.MinValue)
             {
+                GetLatestBLRevivePackages();
                 DownloadLatestBLReviveRelease();
             }
 
