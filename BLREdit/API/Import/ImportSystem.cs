@@ -108,7 +108,14 @@ public static class ImportSystem
                         item.DisplayStat3 = FormatDisplayStat(nameof(item.Hip), Resources.lbl_SpreadHipfire, HipSpread, StatDisplayModifiers.None, "0.00", "°");
                         item.DisplayStat4 = FormatDisplayStat(nameof(item.Move), Resources.lbl_SpreadMove, MovmentSpread, StatDisplayModifiers.None, "0.00", "°");
                         item.DisplayStat5 = FormatDisplayStat(nameof(item.Recoil), Resources.lbl_RecoilHip, RecoilHip, StatDisplayModifiers.None, "0.00", "°");
-                        item.DisplayStat6 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, new double[] { IdealRange, MaxRange }, StatDisplayModifiers.None, "0", "", "/", 2);
+                        if (item.UID == 40024) // special bow case
+                        {
+                            item.DisplayStat6 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, new double[] { 0.0, 0.0 }, StatDisplayModifiers.None, "0", "", "/", 2);
+                        }
+                        else
+                        {
+                            item.DisplayStat6 = FormatDisplayStat(nameof(item.Range), Resources.lbl_Range, new double[] { IdealRange, MaxRange }, StatDisplayModifiers.None, "0", "", "/", 2);
+                        }
                     }
                     break;
                 case MUZZELS_CATEGORY:

@@ -15503,6 +15503,7 @@
         "MagSize": 1.0,
         "MaxDistance": 10000.0,
         "MaxRangeDamageMultiplier": 1.0,
+        "MaxTraceDistance": 1200000.0,
         "ModificationRangeBaseSpread": {
           "X": 0.03,
           "Y": 0.01,
