@@ -524,10 +524,8 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void LaunchZCureClient()
     {
-        if (DINPUT8.Exists)
-        { DINPUT8.Delete(); }
-        SteamAppIDCheck();
-        BLRProcess.CreateProcess("-zcureurl=blrrevive.ddd-game.de -zcureport=80 -presenceurl=blrrevive.ddd-game.de -presenceport=9004", this, false);
+        string launchArgs = "-zcureurl=blrrevive.ddd-game.de -zcureport=80 -presenceurl=blrrevive.ddd-game.de -presenceport=9004";
+        Task.Run(() => { StartProcessAsync(launchArgs, false, false, null, null); }).ConfigureAwait(false);
     }
 
     public void PrepClientLaunch(LaunchOptions options) {
@@ -606,56 +604,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     {
         if (!hasBeenValidated && Validate.Is)
         {
-            if (OriginalFileInfo is null || !OriginalFileInfo.Exists) { LoggingSystem.MessageLog("Unable to launch Game because the .exe is missing!", "Error"); return; }
-
-            SteamAppIDCheck();
-            var DownloadedBLRevive = new FileInfo($"{IOResources.BaseDirectory}downloads\\BLRevive.dll");
-            var DownloadedDINPUT8 = new FileInfo($"{IOResources.BaseDirectory}downloads\\DINPUT8.dll");
-            
-            if (LatestBLReviveReleaseDate > SDKVersionDate || !DownloadedBLRevive.Exists || !DownloadedDINPUT8.Exists || DataStorage.Settings.SDKVersionDate == DateTime.MinValue)
-            {
-                GetLatestBLRevivePackages();
-                DownloadLatestBLReviveRelease();
-            }
-
-            try
-            {
-                if (!BLRevive.Exists) 
-                { File.Copy(DownloadedBLRevive.FullName, BLRevive.FullName, true); }
-                if (!DINPUT8.Exists) 
-                { File.Copy(DownloadedDINPUT8.FullName, DINPUT8.FullName, true); }
-            }
-            catch (Exception error)
-            {
-                LoggingSystem.MessageLogClipboard($"Message:\n{error.Message}\nStacktrace:{error.StackTrace}\n", "Failed to copy essential dll files to BLR client!");
-                return;
-            }
-            
-
-            var modulesToDownload = CheckModulesUpdateOrMissing();
-            if (modulesToDownload.Count > 0)
-            {
-                MainWindow.InvokeShowAlert("Downloading BLRevive Modules!", out var alert, 60, 600); 
-                foreach (var module in modulesToDownload)
-                {
-                    module.RepositoryProxyModule.DownloadLatest();
-                }
-                if (alert is not null) { MainWindow.InvokeUpdateAlert($"Finished Downloading Modules! Took: {(double)(alert.Stopwatch.ElapsedTicks/Stopwatch.Frequency):0.00}s", alert, 8); }
-            }
-
-            var modulesToCopy = CheckInstalledModules();
-            if (modulesToCopy.Count > 0)
-            {
-                foreach (var module in modulesToCopy)
-                {
-                    module.InstallModule(this);
-                    //module.FinalizeInstall(this); //UI Needed?
-                }
-            }
-            CheckCustomModules();
-            WriteModuleConfig(enabledModules);
-            DataStorage.Save();
-            hasBeenValidated = true;
+            ValidateClient(enabledModules);
         }
         else
         {
@@ -663,6 +612,60 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         MainWindow.Instance?.Dispatcher.Invoke(new Action(() => { MainWindow.ShowAlert($"Starting BLR {(isServer ? "Server" : "Client")}!"); }));
         BLRProcess.CreateProcess(launchArgs, this, isServer, watchDog, server);
+    }
+
+    public void ValidateClient(List<ProxyModule>? enabledModules = null)
+    {
+        if (OriginalFileInfo is null || !OriginalFileInfo.Exists) { LoggingSystem.MessageLog("Unable to launch Game because the .exe is missing!", "Error"); return; }
+
+        SteamAppIDCheck();
+        var DownloadedBLRevive = new FileInfo($"{IOResources.BaseDirectory}downloads\\BLRevive.dll");
+        var DownloadedDINPUT8 = new FileInfo($"{IOResources.BaseDirectory}downloads\\DINPUT8.dll");
+        
+        if (LatestBLReviveReleaseDate > SDKVersionDate || !DownloadedBLRevive.Exists || !DownloadedDINPUT8.Exists || DataStorage.Settings.SDKVersionDate == DateTime.MinValue)
+        {
+            GetLatestBLRevivePackages();
+            DownloadLatestBLReviveRelease();
+        }
+
+        try
+        {
+            if (!BLRevive.Exists) 
+            { File.Copy(DownloadedBLRevive.FullName, BLRevive.FullName, true); }
+            if (!DINPUT8.Exists) 
+            { File.Copy(DownloadedDINPUT8.FullName, DINPUT8.FullName, true); }
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.MessageLogClipboard($"Message:\n{error.Message}\nStacktrace:{error.StackTrace}\n", "Failed to copy essential dll files to BLR client!");
+            return;
+        }
+        
+
+        var modulesToDownload = CheckModulesUpdateOrMissing();
+        if (modulesToDownload.Count > 0)
+        {
+            MainWindow.InvokeShowAlert("Downloading BLRevive Modules!", out var alert, 60, 600); 
+            foreach (var module in modulesToDownload)
+            {
+                module.RepositoryProxyModule.DownloadLatest();
+            }
+            if (alert is not null) { MainWindow.InvokeUpdateAlert($"Finished Downloading Modules! Took: {(double)(alert.Stopwatch.ElapsedTicks/Stopwatch.Frequency):0.00}s", alert, 8); }
+        }
+
+        var modulesToCopy = CheckInstalledModules();
+        if (modulesToCopy.Count > 0)
+        {
+            foreach (var module in modulesToCopy)
+            {
+                module.InstallModule(this);
+                //module.FinalizeInstall(this); //UI Needed?
+            }
+        }
+        CheckCustomModules();
+        WriteModuleConfig(enabledModules);
+        DataStorage.Save();
+        hasBeenValidated = true;
     }
 
     public void WriteModuleConfig(List<ProxyModule>? enabledModules = null)
