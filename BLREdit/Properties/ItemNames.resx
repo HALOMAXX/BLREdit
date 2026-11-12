@@ -4793,75 +4793,75 @@
     <value>AK470 - Turkish Flag Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010008" xml:space="preserve">
+  <data name="010012" xml:space="preserve">
     <value>AK470 - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010009" xml:space="preserve">
+  <data name="010072" xml:space="preserve">
     <value>AK470 - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010010" xml:space="preserve">
+  <data name="010073" xml:space="preserve">
     <value>AK470 - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010011" xml:space="preserve">
+  <data name="010210" xml:space="preserve">
     <value>AK470 - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010012" xml:space="preserve">
+  <data name="010230" xml:space="preserve">
     <value>AK470 - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010013" xml:space="preserve">
+  <data name="010250" xml:space="preserve">
     <value>AK470 - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010014" xml:space="preserve">
+  <data name="010270" xml:space="preserve">
     <value>AK470 - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010015" xml:space="preserve">
+  <data name="010008" xml:space="preserve">
     <value>Heavy Assault Rifle - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010016" xml:space="preserve">
+  <data name="010009" xml:space="preserve">
     <value>Heavy Assault Rifle - Stars And Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010017" xml:space="preserve">
+  <data name="010014" xml:space="preserve">
     <value>Heavy Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010018" xml:space="preserve">
+  <data name="010074" xml:space="preserve">
     <value>Heavy Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010019" xml:space="preserve">
+  <data name="010075" xml:space="preserve">
     <value>Heavy Assault Rifle - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010020" xml:space="preserve">
+  <data name="010211" xml:space="preserve">
     <value>Heavy Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010021" xml:space="preserve">
+  <data name="010231" xml:space="preserve">
     <value>Heavy Assault Rifle - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010022" xml:space="preserve">
+  <data name="010251" xml:space="preserve">
     <value>Heavy Assault Rifle - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010023" xml:space="preserve">
+  <data name="010271" xml:space="preserve">
     <value>Heavy Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010024" xml:space="preserve">
+  <data name="010017" xml:space="preserve">
     <value>Tactical Assault Rifle - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010025" xml:space="preserve">
+  <data name="010018" xml:space="preserve">
     <value>Tactical Assault Rifle - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
@@ -4893,511 +4893,511 @@
     <value>Tactical Assault Rifle - MLG TourNament Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010033" xml:space="preserve">
+  <data name="010057" xml:space="preserve">
     <value>Tactical Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010034" xml:space="preserve">
+  <data name="010076" xml:space="preserve">
     <value>Tactical Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010035" xml:space="preserve">
+  <data name="010077" xml:space="preserve">
     <value>Tactical Assault Rifle - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010036" xml:space="preserve">
+  <data name="010212" xml:space="preserve">
     <value>Tactical Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010037" xml:space="preserve">
+  <data name="010232" xml:space="preserve">
     <value>Tactical Assault Rifle - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010038" xml:space="preserve">
+  <data name="010252" xml:space="preserve">
     <value>Tactical Assault Rifle - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010039" xml:space="preserve">
+  <data name="010272" xml:space="preserve">
     <value>Tactical Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010040" xml:space="preserve">
+  <data name="010029" xml:space="preserve">
     <value>Assault Rifle - The Droughtbreaker Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010041" xml:space="preserve">
+  <data name="010056" xml:space="preserve">
     <value>Assault Rifle - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010042" xml:space="preserve">
+  <data name="010030" xml:space="preserve">
     <value>Assault Rifle - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010043" xml:space="preserve">
+  <data name="010031" xml:space="preserve">
     <value>Assault Rifle - Broken MLG Tournament Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010044" xml:space="preserve">
+  <data name="010013" xml:space="preserve">
     <value>Assault Rifle - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010045" xml:space="preserve">
+  <data name="010078" xml:space="preserve">
     <value>Assault Rifle - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010046" xml:space="preserve">
+  <data name="010079" xml:space="preserve">
     <value>Assault Rifle - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010047" xml:space="preserve">
+  <data name="010213" xml:space="preserve">
     <value>Assault Rifle - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010048" xml:space="preserve">
+  <data name="010233" xml:space="preserve">
     <value>Assault Rifle - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010049" xml:space="preserve">
+  <data name="010253" xml:space="preserve">
     <value>Assault Rifle - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010050" xml:space="preserve">
+  <data name="010273" xml:space="preserve">
     <value>Assault Rifle - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010051" xml:space="preserve">
+  <data name="010032" xml:space="preserve">
     <value>Light Machine Gun - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010052" xml:space="preserve">
+  <data name="010033" xml:space="preserve">
     <value>Light Machine Gun - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010053" xml:space="preserve">
+  <data name="010058" xml:space="preserve">
     <value>Light Machine Gun - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010054" xml:space="preserve">
+  <data name="010080" xml:space="preserve">
     <value>Light Machine Gun - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010055" xml:space="preserve">
+  <data name="010081" xml:space="preserve">
     <value>Light Machine Gun - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010056" xml:space="preserve">
+  <data name="010214" xml:space="preserve">
     <value>Light Machine Gun - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010057" xml:space="preserve">
+  <data name="010234" xml:space="preserve">
     <value>Light Machine Gun - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010058" xml:space="preserve">
+  <data name="010254" xml:space="preserve">
     <value>Light Machine Gun - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010059" xml:space="preserve">
+  <data name="010274" xml:space="preserve">
     <value>Light Machine Gun - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010060" xml:space="preserve">
+  <data name="010034" xml:space="preserve">
     <value>Bolt-Action - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010061" xml:space="preserve">
+  <data name="010035" xml:space="preserve">
     <value>Bolt-Action - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010062" xml:space="preserve">
+  <data name="010059" xml:space="preserve">
     <value>Bolt-Action - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010063" xml:space="preserve">
+  <data name="010082" xml:space="preserve">
     <value>Bolt-Action - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010064" xml:space="preserve">
+  <data name="010083" xml:space="preserve">
     <value>Bolt-Action - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010065" xml:space="preserve">
+  <data name="010215" xml:space="preserve">
     <value>Bolt-Action - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010066" xml:space="preserve">
+  <data name="010235" xml:space="preserve">
     <value>Bolt-Action - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010067" xml:space="preserve">
+  <data name="010255" xml:space="preserve">
     <value>Bolt-Action - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010068" xml:space="preserve">
+  <data name="010275" xml:space="preserve">
     <value>Bolt-Action - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010069" xml:space="preserve">
+  <data name="010036" xml:space="preserve">
     <value>Bullpup Full Auto - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010070" xml:space="preserve">
+  <data name="010037" xml:space="preserve">
     <value>Bullpup Full Auto - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010071" xml:space="preserve">
+  <data name="010060" xml:space="preserve">
     <value>Bullpup Full Auto - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010072" xml:space="preserve">
+  <data name="010084" xml:space="preserve">
     <value>Bullpup Full Auto - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010073" xml:space="preserve">
+  <data name="010085" xml:space="preserve">
     <value>Bullpup Full Auto - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010074" xml:space="preserve">
+  <data name="010216" xml:space="preserve">
     <value>Bullpup Full Auto - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010075" xml:space="preserve">
+  <data name="010236" xml:space="preserve">
     <value>Bullpup Full Auto - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010076" xml:space="preserve">
+  <data name="010256" xml:space="preserve">
     <value>Bullpup Full Auto - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010077" xml:space="preserve">
+  <data name="010276" xml:space="preserve">
     <value>Bullpup Full Auto - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010078" xml:space="preserve">
+  <data name="010038" xml:space="preserve">
     <value>Burstfire Rifle - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010079" xml:space="preserve">
+  <data name="010039" xml:space="preserve">
     <value>Burstfire Rifle - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010080" xml:space="preserve">
+  <data name="010061" xml:space="preserve">
     <value>Burstfire Rifle - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010081" xml:space="preserve">
+  <data name="010086" xml:space="preserve">
     <value>Burstfire Rifle - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010082" xml:space="preserve">
+  <data name="010200" xml:space="preserve">
     <value>Burstfire Rifle - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010083" xml:space="preserve">
+  <data name="010217" xml:space="preserve">
     <value>Burstfire Rifle - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010084" xml:space="preserve">
+  <data name="010237" xml:space="preserve">
     <value>Burstfire Rifle - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010085" xml:space="preserve">
+  <data name="010257" xml:space="preserve">
     <value>Burstfire Rifle - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010086" xml:space="preserve">
+  <data name="010277" xml:space="preserve">
     <value>Burstfire Rifle - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010087" xml:space="preserve">
+  <data name="010040" xml:space="preserve">
     <value>LMG Recon - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010088" xml:space="preserve">
+  <data name="010041" xml:space="preserve">
     <value>LMG Recon - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010089" xml:space="preserve">
+  <data name="010063" xml:space="preserve">
     <value>LMG Recon - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010090" xml:space="preserve">
+  <data name="010087" xml:space="preserve">
     <value>LMG Recon - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010091" xml:space="preserve">
+  <data name="010088" xml:space="preserve">
     <value>LMG Recon - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010092" xml:space="preserve">
+  <data name="010218" xml:space="preserve">
     <value>LMG Recon - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010093" xml:space="preserve">
+  <data name="010238" xml:space="preserve">
     <value>LMG Recon - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010094" xml:space="preserve">
+  <data name="010258" xml:space="preserve">
     <value>LMG Recon - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010095" xml:space="preserve">
+  <data name="010278" xml:space="preserve">
     <value>LMG Recon - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010096" xml:space="preserve">
+  <data name="010042" xml:space="preserve">
     <value>M4X - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010097" xml:space="preserve">
+  <data name="010043" xml:space="preserve">
     <value>M4X - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010098" xml:space="preserve">
+  <data name="010064" xml:space="preserve">
     <value>M4X - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010099" xml:space="preserve">
+  <data name="010089" xml:space="preserve">
     <value>M4X - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010100" xml:space="preserve">
+  <data name="010090" xml:space="preserve">
     <value>M4X - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010101" xml:space="preserve">
+  <data name="010219" xml:space="preserve">
     <value>M4X - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010102" xml:space="preserve">
+  <data name="010239" xml:space="preserve">
     <value>M4X - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010103" xml:space="preserve">
+  <data name="010259" xml:space="preserve">
     <value>M4X - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010104" xml:space="preserve">
+  <data name="010279" xml:space="preserve">
     <value>M4X - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010105" xml:space="preserve">
+  <data name="010044" xml:space="preserve">
     <value>Submachine Gun - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010106" xml:space="preserve">
+  <data name="010045" xml:space="preserve">
     <value>Submachine Gun - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010107" xml:space="preserve">
+  <data name="010065" xml:space="preserve">
     <value>Submachine Gun - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010108" xml:space="preserve">
+  <data name="010091" xml:space="preserve">
     <value>Submachine Gun - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010109" xml:space="preserve">
+  <data name="010201" xml:space="preserve">
     <value>Submachine Gun - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010110" xml:space="preserve">
+  <data name="010220" xml:space="preserve">
     <value>Submachine Gun - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010111" xml:space="preserve">
+  <data name="010240" xml:space="preserve">
     <value>Submachine Gun - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010112" xml:space="preserve">
+  <data name="010260" xml:space="preserve">
     <value>Submachine Gun - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010113" xml:space="preserve">
+  <data name="010280" xml:space="preserve">
     <value>Submachine Gun - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010114" xml:space="preserve">
+  <data name="010046" xml:space="preserve">
     <value>Tactical SMG - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010115" xml:space="preserve">
+  <data name="010047" xml:space="preserve">
     <value>Tactical SMG - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010116" xml:space="preserve">
+  <data name="010066" xml:space="preserve">
     <value>Tactical SMG - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010117" xml:space="preserve">
+  <data name="010092" xml:space="preserve">
     <value>Tactical SMG - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010118" xml:space="preserve">
+  <data name="010093" xml:space="preserve">
     <value>Tactical SMG - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010119" xml:space="preserve">
+  <data name="010221" xml:space="preserve">
     <value>Tactical SMG - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010120" xml:space="preserve">
+  <data name="010241" xml:space="preserve">
     <value>Tactical SMG - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010121" xml:space="preserve">
+  <data name="010261" xml:space="preserve">
     <value>Tactical SMG - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010122" xml:space="preserve">
+  <data name="010281" xml:space="preserve">
     <value>Tactical SMG - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010123" xml:space="preserve">
+  <data name="010048" xml:space="preserve">
     <value>Burstfire SMG - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010124" xml:space="preserve">
+  <data name="010049" xml:space="preserve">
     <value>Burstfire SMG - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010125" xml:space="preserve">
+  <data name="010067" xml:space="preserve">
     <value>Burstfire SMG - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010126" xml:space="preserve">
+  <data name="010094" xml:space="preserve">
     <value>Burstfire SMG - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010127" xml:space="preserve">
+  <data name="010095" xml:space="preserve">
     <value>Burstfire SMG - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010128" xml:space="preserve">
+  <data name="010222" xml:space="preserve">
     <value>Burstfire SMG - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010129" xml:space="preserve">
+  <data name="010242" xml:space="preserve">
     <value>Burstfire SMG - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010130" xml:space="preserve">
+  <data name="010262" xml:space="preserve">
     <value>Burstfire SMG - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010131" xml:space="preserve">
+  <data name="010282" xml:space="preserve">
     <value>Burstfire SMG - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010132" xml:space="preserve">
+  <data name="010050" xml:space="preserve">
     <value>Combat Rifle - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010133" xml:space="preserve">
+  <data name="010051" xml:space="preserve">
     <value>Combat Rifle - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010134" xml:space="preserve">
+  <data name="010068" xml:space="preserve">
     <value>Combat Rifle - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010135" xml:space="preserve">
+  <data name="010096" xml:space="preserve">
     <value>Combat Rifle - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010136" xml:space="preserve">
+  <data name="010097" xml:space="preserve">
     <value>Combat Rifle - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010137" xml:space="preserve">
+  <data name="010223" xml:space="preserve">
     <value>Combat Rifle - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010138" xml:space="preserve">
+  <data name="010243" xml:space="preserve">
     <value>Combat Rifle - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010139" xml:space="preserve">
+  <data name="010263" xml:space="preserve">
     <value>Combat Rifle - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010140" xml:space="preserve">
+  <data name="010283" xml:space="preserve">
     <value>Combat Rifle - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010141" xml:space="preserve">
+  <data name="010052" xml:space="preserve">
     <value>Light Recon - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010142" xml:space="preserve">
+  <data name="010053" xml:space="preserve">
     <value>Light Recon - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010143" xml:space="preserve">
+  <data name="010069" xml:space="preserve">
     <value>Light Recon - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010144" xml:space="preserve">
+  <data name="010098" xml:space="preserve">
     <value>Light Recon - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010145" xml:space="preserve">
+  <data name="010099" xml:space="preserve">
     <value>Light Recon - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010146" xml:space="preserve">
+  <data name="010224" xml:space="preserve">
     <value>Light Recon - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010147" xml:space="preserve">
+  <data name="010244" xml:space="preserve">
     <value>Light Recon - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010148" xml:space="preserve">
+  <data name="010264" xml:space="preserve">
     <value>Light Recon - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010149" xml:space="preserve">
+  <data name="010284" xml:space="preserve">
     <value>Light Recon - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010150" xml:space="preserve">
+  <data name="010054" xml:space="preserve">
     <value>Anti-Materiel - Green Hex Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010151" xml:space="preserve">
+  <data name="010055" xml:space="preserve">
     <value>Anti-Materiel - Stars and Stripes Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010152" xml:space="preserve">
+  <data name="010062" xml:space="preserve">
     <value>Anti-Materiel - Tiger Stripes Orange Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010153" xml:space="preserve">
+  <data name="010070" xml:space="preserve">
     <value>Anti-Materiel - Tiger Stripes Blue Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010154" xml:space="preserve">
+  <data name="010071" xml:space="preserve">
     <value>Anti-Materiel - Clovers Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010155" xml:space="preserve">
+  <data name="010225" xml:space="preserve">
     <value>Anti-Materiel - Tiger Stripes Pink Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010156" xml:space="preserve">
+  <data name="010245" xml:space="preserve">
     <value>Anti-Materiel - Tiger Stripes Red Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010157" xml:space="preserve">
+  <data name="010265" xml:space="preserve">
     <value>Anti-Materiel - Tiger Stripes Green Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010158" xml:space="preserve">
+  <data name="010285" xml:space="preserve">
     <value>Anti-Materiel - Tiger Stripes Yellow Weapon Skin</value>
     <comment>primarySkins</comment>
   </data>
-  <data name="010159" xml:space="preserve">
+  <data name="010011" xml:space="preserve">
     <value>Cupid's QT Pi Bow</value>
     <comment>primarySkins</comment>
   </data>
