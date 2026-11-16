@@ -3,7 +3,13 @@ using BLREdit.UI;
 using BLREdit.UI.Views;
 
 using System;
+using System.Linq;
 using System.Text.Json.Serialization;
+using System.Threading;
+using System.Windows.Controls;
+using System.Xml;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BLREdit.API.Export;
 
@@ -101,6 +107,95 @@ public sealed class ShareableLoadout : IBLRLoadout
 
         Primary = new(loadout.Primary);
         Secondary = new(loadout.Secondary);
+    }
+
+
+    public ShareableLoadout(XElement loadout)
+    {
+
+        if (loadout is null) { LoggingSystem.FatalLog("loadout was null in ShareableLoadout constructor"); return; }
+
+        var data = loadout.Attribute("Data")?.Value;
+        if (data is null) { LoggingSystem.FatalLog("loadout data was null in ShareableLoadout constructor"); return; }
+        var dataDict = data.Split(',').Select(x => x.Split('=')).ToDictionary(x => x[0], x => x[1]);
+
+        Name = loadout.Attribute("Name")?.Value ?? "Unnamed Loadout";
+        try
+        {
+            Female = dataDict["bFemale"] == "1";
+            Apply = true;
+            BodyCamo = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.CAMOS_BODIES_CATEGORY, int.Parse(dataDict["BodyCamoID"])));
+            UpperBody = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.UPPER_BODIES_CATEGORY, int.Parse(dataDict["UpperBodyID"])));
+            LowerBody = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.LOWER_BODIES_CATEGORY, int.Parse(dataDict["LowerBodyID"])));
+            Helmet = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.HELMETS_CATEGORY, int.Parse(dataDict["HelmetID"])));
+            Tactical = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.TACTICAL_CATEGORY, int.Parse(dataDict["TacticalID"])));
+            Badge = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.BADGES_CATEGORY, int.Parse(dataDict["BadgeID"])));
+            Avatar = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.AVATARS_CATEGORY, int.Parse(dataDict["AvatarID"])), 99);
+            Gear_R1 = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, int.Parse(dataDict["Gear_R1ID"])));
+            Gear_R2 = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, int.Parse(dataDict["Gear_R2ID"])));
+            Gear_L1 = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, int.Parse(dataDict["Gear_L1ID"])));
+            Gear_L2 = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.ATTACHMENTS_CATEGORY, int.Parse(dataDict["Gear_L2ID"])));
+
+            Taunts[0] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, int.Parse(dataDict["TauntID0"])));
+            Taunts[1] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, int.Parse(dataDict["TauntID1"])));
+            Taunts[2] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, int.Parse(dataDict["TauntID2"])));
+            Taunts[3] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, int.Parse(dataDict["TauntID3"])));
+            Taunts[4] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, int.Parse(dataDict["TauntID4"])));
+            Taunts[5] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, int.Parse(dataDict["TauntID5"])));
+            Taunts[6] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, int.Parse(dataDict["TauntID6"])));
+            Taunts[7] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMOTES_CATEGORY, int.Parse(dataDict["TauntID7"])));
+
+            Depot[0] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, int.Parse(dataDict["DepotID0"])));
+            Depot[1] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, int.Parse(dataDict["DepotID1"])));
+            Depot[2] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, int.Parse(dataDict["DepotID2"])));
+            Depot[3] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, int.Parse(dataDict["DepotID3"])));
+            Depot[4] = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.SHOP_CATEGORY, int.Parse(dataDict["DepotID4"])));
+
+            PatchIcon = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_ICON_CATEGORY, int.Parse(dataDict["TopIconID"])));
+            PatchIconColor = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, int.Parse(dataDict["TopColorID"])));
+            PatchShape = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_SHAPE_CATEGORY, int.Parse(dataDict["MiddleIconID"])));
+            PatchShapeColor = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, int.Parse(dataDict["MiddleColorID"])));
+            PatchBackground = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_BACKGROUND_CATEGORY, int.Parse(dataDict["BottomIconID"])));
+            PatchBackgroundColor = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.EMBLEM_COLOR_CATEGORY, int.Parse(dataDict["BottomColorID"])));
+
+            AnnouncerVoice = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.ANNOUNCER_VOICE_CATEGORY, int.Parse(dataDict["DialogAnnouncerID"])));
+            PlayerVoice = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.PLAYER_VOICE_CATEGORY, int.Parse(dataDict["DialogPlayerID"])));
+            Title = BLREditItem.GetUID(ImportSystem.GetItemByUIDAndType(ImportSystem.TITLES_CATEGORY, int.Parse(dataDict["TitleID"])));
+
+            Primary = new();
+            Primary.Ammo = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, int.Parse(dataDict["PAmmoID"])), -1);
+            Primary.Barrel = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.BARRELS_CATEGORY, int.Parse(dataDict["PBarrelID"])), -1);
+            Primary.Camo = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, int.Parse(dataDict["PWeaponCamoID"])), -1);
+            Primary.Grip = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.GRIPS_CATEGORY, int.Parse(dataDict["PGripID"])), -1);
+            Primary.Magazine = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.MAGAZINES_CATEGORY, int.Parse(dataDict["PMagazineID"])), -1);
+            Primary.Muzzle = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.MUZZELS_CATEGORY, int.Parse(dataDict["PMuzzleID"])), -1);
+            Primary.Receiver = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.PRIMARY_CATEGORY, int.Parse(dataDict["PWeaponID"])), -1);
+            Primary.Scope = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.SCOPES_CATEGORY, int.Parse(dataDict["PScopeID"])), -1);
+            Primary.Skin = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, int.Parse(dataDict["PSkinID"])), -1);
+            Primary.Stock = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.STOCKS_CATEGORY, int.Parse(dataDict["PStockID"])), -1);
+            Primary.Tag = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.HANGERS_CATEGORY, int.Parse(dataDict["WeaponHangerID"])), -1);
+            
+            Secondary = new();
+            Secondary.Ammo = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.AMMO_CATEGORY, int.Parse(dataDict["SAmmoID"])), -1);
+            Secondary.Barrel = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.BARRELS_CATEGORY, int.Parse(dataDict["SBarrelID"])), -1);
+            Secondary.Camo = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.CAMOS_WEAPONS_CATEGORY, int.Parse(dataDict["SWeaponCamoID"])), -1);
+            Secondary.Grip = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.GRIPS_CATEGORY, int.Parse(dataDict["SGripID"])), -1);
+            Secondary.Magazine = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.MAGAZINES_CATEGORY, int.Parse(dataDict["SMagazineID"])), -1);
+            Secondary.Muzzle = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.MUZZELS_CATEGORY, int.Parse(dataDict["SMuzzleID"])), -1);
+            Secondary.Receiver = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.SECONDARY_CATEGORY, int.Parse(dataDict["SWeaponID"])), -1);
+            Secondary.Scope = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.SCOPES_CATEGORY, int.Parse(dataDict["SScopeID"])), -1);
+            Secondary.Skin = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.PRIMARY_SKIN_CATEGORY, int.Parse(dataDict["SSkinID"])), -1);
+            Secondary.Stock = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.STOCKS_CATEGORY, int.Parse(dataDict["SStockID"])), -1);
+            Secondary.Tag = BLREditItem.GetMagicCowsID(ImportSystem.GetItemByUIDAndType(ImportSystem.HANGERS_CATEGORY, int.Parse(dataDict["STagID"])), -1);
+
+        }
+        catch (Exception)
+        {
+            LoggingSystem.Log($"Error parsing loadout data for {Name}. Some items may not be set correctly.");
+        }
+
+
+
     }
 
     public event EventHandler? WasWrittenTo;

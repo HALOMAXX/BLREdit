@@ -1,14 +1,16 @@
 using BLREdit.API.Export;
 using BLREdit.Game;
 using BLREdit.Import;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Windows;
+using System.Windows.Markup;
+using System.Xml.Linq;
 
 namespace BLREdit.Export;
 
@@ -120,7 +122,18 @@ public sealed class ExportSystem
 
         var loadouts = IOResources.DeserializeFile<ObservableCollection<ShareableLoadout>>($"{IOResources.PROFILE_DIR}loadoutList.json") ?? [];
 
-        if(DataStorage.ShareableProfiles is not null && DataStorage.ShareableProfiles.Count > 0)
+        var importLoadoutsFilePath = $"{IOResources.PROFILE_DIR}import.xml";
+        if (File.Exists(importLoadoutsFilePath))
+        {
+
+            ObservableCollection<ShareableLoadout> importLoadouts = new(XDocument.Load(importLoadoutsFilePath).Descendants("Loadout").Select(x => new ShareableLoadout(x)));
+
+            loadouts = importLoadouts;
+
+            //File.Delete(importLoadoutsFilePath);
+        }
+
+        if (DataStorage.ShareableProfiles is not null && DataStorage.ShareableProfiles.Count > 0)
             foreach (var profile in DataStorage.ShareableProfiles)
             {
                 int loadoutID = 0;
