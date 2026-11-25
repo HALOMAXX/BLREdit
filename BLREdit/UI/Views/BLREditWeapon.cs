@@ -784,6 +784,13 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
     public string WeaponDescriptor { get { return weaponDescriptor ?? string.Empty; } private set { weaponDescriptor = value; OnPropertyChanged(); } }
     #endregion Weapon Descriptor
 
+    private string? friendlyReceiverName;
+    public string FriendlyReceiverName
+    {
+        get { return friendlyReceiverName ?? string.Empty; }
+        private set { friendlyReceiverName = value; OnPropertyChanged(); }
+    }
+
     #endregion CalculatedProperties
 
     #region DisplayStats
@@ -1024,6 +1031,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
         WeaponDescriptorPart2 = CompareItemDescriptor2(Stock, Muzzle, Scope);
         WeaponDescriptorPart3 = Receiver.SelectDescriptorName(TotalRatingPoints);
         WeaponDescriptor = WeaponDescriptorPart1 + ' ' + WeaponDescriptorPart2 + ' ' + WeaponDescriptorPart3;
+        FriendlyReceiverName = Receiver.Name ?? "Empty";
 
         CreateDisplayProperties();
     }
@@ -1320,6 +1328,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
 
         // Add FragmentSpread to result for guns that use it
         // The normal spread values only affect the fragment scatter placement, the whole scatter is treated as a single shot that the spread moves
+        // FragmentSpread affects spread of the individual pellets inside the scatter
         if (receiver.UID == 40015) // BLP, only the scattershot uses FragmentSpread
         {
             if ((Magazine?.UID == 44177) || (Ammo?.UID == 90010)) {
