@@ -906,6 +906,7 @@ public sealed partial class MainWindow : Window
         }
 
         IOResources.GetGameLocationsFromSteam();
+        IOResources.GetGameLocationsFromCustomInstaller();
         foreach (string folder in IOResources.GameFolders)
         {
             var GameInstance = $"{folder}{IOResources.GAME_DEFAULT_EXE}";

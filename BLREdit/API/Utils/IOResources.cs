@@ -127,6 +127,51 @@ public sealed class IOResources
     }
 
     
+    public static void GetGameLocationsFromCustomInstaller()
+    {
+        string gamePathSuffix = "\\blacklightretribution\\Binaries\\Win32\\";
+        string defaultGamePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\BLRevive" + gamePathSuffix;
+
+        GameFolders.Add(defaultGamePath);
+
+        string installerStatePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\BLRevive\\installer\\settings.json";
+        if (!File.Exists(installerStatePath))
+        {
+            LoggingSystem.Log("Custom installer state file not found");
+            return;
+        }
+        try
+        {
+            string data = File.ReadAllText(installerStatePath);
+            var settings = JsonSerializer.Deserialize<Dictionary<string, object>>(data);
+
+            if (settings is null)
+            {
+                LoggingSystem.Log("Custom installer state file is empty or invalid");
+                return;
+            }
+
+            settings.TryGetValue("last_destination", out object? lastDestinationObj);
+            string lastDestination = lastDestinationObj?.ToString() ?? string.Empty;
+            if (string.IsNullOrEmpty(lastDestination))
+            {
+                LoggingSystem.Log("Install location is empty in the custom installer state file");
+                return;
+            }
+
+            string gamePath = lastDestination + gamePathSuffix;
+            if(gamePath.Equals(defaultGamePath, StringComparison.OrdinalIgnoreCase)) // Skip adding the default path again
+            {
+                return;
+            }
+
+            GameFolders.Add(gamePath);
+        }
+        catch (Exception error)
+        {
+            LoggingSystem.MessageLog($"Failed to get game locations from custom installer\nError:{error.Message}\nStacktrace:{error.StackTrace}", "Error");
+        }
+    }
 
     public static void GetGameLocationsFromSteam()
     {
