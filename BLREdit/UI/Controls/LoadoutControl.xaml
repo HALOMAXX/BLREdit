@@ -6,7 +6,7 @@
              xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:ui="clr-namespace:BLREdit.UI.Controls"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
-             d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
+             d:DataContext="{d:DesignInstance Type=views:BLREditLoadout}"
              mc:Ignorable="d">
     <Grid>
         <TabControl Name="LoadoutTabControl" BorderThickness="0,1,0,0" SelectionChanged="LoadoutTabControl_Selected">

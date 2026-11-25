@@ -35,6 +35,7 @@ namespace BLREdit.UI.Controls
                 {
                     LoggingSystem.Log($"Double Clicking:{item.Name}");
                     MainWindow.SetItemToBorder(MainWindow.MainView.LastSelectedItemBorder, item);
+                    MainWindow.MainView.UpdateLastSelectedItem();
                 }
                 else
                 {

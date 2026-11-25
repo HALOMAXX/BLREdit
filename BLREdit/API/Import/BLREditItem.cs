@@ -8,6 +8,7 @@ using BLREdit.UI;
 using BLREdit.Properties;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Media;
 
 namespace BLREdit.Import;
 
@@ -72,6 +73,16 @@ public sealed class BLREditItem : INotifyPropertyChanged
     [JsonIgnore] public FoxIcon? FemaleIcon { get; private set; }
 
     [JsonIgnore] public FoxIcon? ScopePreview { get; private set; }
+    [JsonIgnore]
+    public SolidColorBrush ItemBorderBrush {
+        get {
+            if(MainWindow.MainView.LastSelectedItem == this) {
+				return new SolidColorBrush(MainWindowView.ActiveBorderColor);
+			} else {
+                return new SolidColorBrush(MainWindowView.DefaultBorderColor);
+            }
+        }
+    }
 
     /// <summary>
     /// Gets the Loadout-Manager ID for the item.

@@ -57,6 +57,7 @@ public static class UndoRedoSystem
         }
         RedoStack.Push(action);
         MainWindow.ShowAlert($"Undone! ({UndoStack.Count}/{RedoStack.Count})");
+        MainWindow.MainView.UpdateLastSelectedItem();
         UndoRedoSystemWorking = false;
     }
 
@@ -85,7 +86,8 @@ public static class UndoRedoSystem
         }
         UndoStack.Push(action);
         MainWindow.ShowAlert($"Redone! ({UndoStack.Count}/{RedoStack.Count})");
-        UndoRedoSystemWorking = false;
+		MainWindow.MainView.UpdateLastSelectedItem();
+		UndoRedoSystemWorking = false;
     }
 
     public static void ClearUndoRedoStack()

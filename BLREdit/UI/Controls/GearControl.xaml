@@ -6,7 +6,7 @@
              xmlns:p="clr-namespace:BLREdit.Properties"
              xmlns:local="clr-namespace:BLREdit.UI.Controls"
              xmlns:views="clr-namespace:BLREdit.UI.Views"
-             d:DataContext="{d:DesignInstance Type=views:BLRLoadout}"
+             d:DataContext="{d:DesignInstance Type=views:BLREditLoadout}"
              mc:Ignorable="d">
     <Grid x:Name="ControlGrid" Border.MouseUp="Grid_MouseUp">
         <Button Name="Randomize" Content="Randomize" Click="Randomize_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Height="28" Width="128" Margin="0,0,0,0"/>

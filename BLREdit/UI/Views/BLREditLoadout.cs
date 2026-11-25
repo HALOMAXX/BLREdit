@@ -437,7 +437,8 @@ public sealed class BLREditLoadout : INotifyPropertyChanged
 
         UndoRedoSystem.EndUndoRecord(true);
         MainWindow.ShowAlert($"{message}!");
-    }
+		MainWindow.MainView.UpdateLastSelectedItem();
+	}
 
     public BLREditLoadout(BLRProfile? profile = null) 
     {

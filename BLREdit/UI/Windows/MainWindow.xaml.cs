@@ -248,27 +248,20 @@ public sealed partial class MainWindow : Window
     {
         Image? image = null;
         Border? border = null;
-        if (e.OriginalSource is Image mage)
-        {
+        if (e.OriginalSource is Image mage) {
             image = mage;
             if (mage.Parent is Border order) border = order;
-        }
-        else if (e.OriginalSource is Border order)
-        {
+        } else if (e.OriginalSource is Border order) {
             border = order;
             if (order.Child is Image mage2) image = mage2;
         }
 
         if (image is null || border is null) { LoggingSystem.LogWithSourceInfo("Failed to acquire Image and Border for DataContext/ItemList Lookup"); return; }
 
-        if (e.ChangedButton == MouseButton.Left)
-        {
-            if (WasLastImageScopePreview)
-            {
-                if (ItemList.ItemsSource is not null)
-                {
-                    foreach (var i in ItemList.ItemsSource)
-                    {
+        if (e.ChangedButton == MouseButton.Left) {
+            if (WasLastImageScopePreview) {
+                if (ItemList.ItemsSource is not null) {
+                    foreach (var i in ItemList.ItemsSource) {
                         if(i is BLREditItem item) item.RemoveCrosshair();
                     }
                 }
@@ -281,12 +274,11 @@ public sealed partial class MainWindow : Window
             var profile = parent?.DataContext as BLRProfile;
 
             if (weapon is not null) { ItemFilters.Instance.WeaponFilter = weapon; }
-            else
-            {
-                if (loadout is not null) ItemFilters.Instance.WeaponFilter = loadout.Primary;
-                else if (profile is not null) ItemFilters.Instance.WeaponFilter = profile.Loadout1.Primary;
-            }
+            else if (loadout is not null) ItemFilters.Instance.WeaponFilter = loadout.Primary;
+            else if (profile is not null) ItemFilters.Instance.WeaponFilter = profile.Loadout1.Primary;
+
             MainView.LastSelectedItemBorder = border;
+            MainView.LastSelectedItem = GetItemFromBorder(border);
             MainView.IsScopePreviewVisible.Set(false);
             switch (border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName)
             {
@@ -306,14 +298,10 @@ public sealed partial class MainWindow : Window
                     SetItemList(ImportSystem.BARRELS_CATEGORY);
                     break;
                 case "Scope":
-                    if (image.DataContext is not BLREditWeapon)
-                    {
+                    if (image.DataContext is not BLREditWeapon) {
                         SetItemList(ImportSystem.SCOPES_CATEGORY);
-                    }
-                    else
-                    {
-                        if (weapon?.Scope is not null)
-                        {
+                    } else {
+                        if (weapon?.Scope is not null) {
                             weapon.Scope.LoadCrosshair(weapon);
                             ItemList.ItemsSource = new BLREditItem[] { weapon.Scope };
                             MainView.IsScopePreviewVisible.Set(true);
@@ -409,16 +397,12 @@ public sealed partial class MainWindow : Window
                     break;
             }
             return;
-        }
-        else if (e.ChangedButton == MouseButton.Right)
-        {
-            if (((FrameworkElement)border.Parent).DataContext is BLREditWeapon weapon)
-            {
+        } else if (e.ChangedButton == MouseButton.Right) {
+            if (((FrameworkElement)border.Parent).DataContext is BLREditWeapon weapon) {
                 UndoRedoSystem.DoValueChange(null, weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), weapon);
                 UndoRedoSystem.EndUndoRecord();
             }
-            else if (((FrameworkElement)border.Parent).DataContext is BLREditLoadout loadout)
-            {
+            else if (((FrameworkElement)border.Parent).DataContext is BLREditLoadout loadout) {
                 UndoRedoSystem.DoValueChange(null, loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName), loadout);
                 UndoRedoSystem.EndUndoRecord();
             }
@@ -900,7 +884,6 @@ public sealed partial class MainWindow : Window
 
         MainView.LastSelectedItemBorder = ((WeaponControl)((Grid)((ScrollViewer)((TabItem)((TabControl)((Grid)(Loadout1.Content)).Children[0]).Items[0]).Content).Content).Children[0]).Receiver;
         ItemFilters.Instance.WeaponFilter = MainView.Profile.BLR.Primary;
-
         this.DataContext = MainView;
         #endregion Frontend Init
 
@@ -1014,7 +997,7 @@ public sealed partial class MainWindow : Window
             SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, AlertAnim, HandoffBehavior.Compose);
             lastAnim = AlertAnim;
         }
-        //else if (!MainView.Profile.BLR.IsChanged && lastAnim != CalmAnim)
+        //else if (!MainView.Profile.BLR.IsChanged && lastAnim != CalmAnim) //Why was this commented out?
         //{
         //    SolidColorBrush.BeginAnimation(SolidColorBrush.ColorProperty, CalmAnim, HandoffBehavior.Compose);
         //    lastAnim = CalmAnim;
@@ -1039,6 +1022,8 @@ public sealed partial class MainWindow : Window
 
     private void Window_ContentRendered(object sender, EventArgs e)
     {
+        MainView.UpdateLastSelectedItem();
+
         ProfileListTab.IsSelected = true;
         this.WindowState = WindowState.Maximized;
         ItemListTab.IsSelected = true;
@@ -1207,7 +1192,30 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void ChangeSortingDirection(object sender, RoutedEventArgs e)
+	public static BLREditItem? GetItemFromBorder(Border? border) {
+		if(border is null) {
+			LoggingSystem.LogNull();
+			return null;
+		}
+        try {
+
+            if(border.Parent is FrameworkElement parent) {
+                if(parent.DataContext is BLREditWeapon weapon) {
+                    var propertyInfo = weapon.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName);
+                    return propertyInfo.GetValue(weapon) as BLREditItem;
+                }
+                if(parent.DataContext is BLREditLoadout loadout) {
+					var propertyInfo = loadout.GetType().GetProperty(border.GetBindingExpression(Border.DataContextProperty).ResolvedSourcePropertyName);
+					return propertyInfo.GetValue(loadout) as BLREditItem;
+                }
+            }
+            return null;
+        } catch { 
+            return null;
+        }
+	}
+
+	private void ChangeSortingDirection(object sender, RoutedEventArgs e)
     {
         if (MainView.ItemListSortingDirection == ListSortDirection.Ascending)
         {

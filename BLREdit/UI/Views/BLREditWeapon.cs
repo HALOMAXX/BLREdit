@@ -187,6 +187,7 @@ public sealed class BLREditWeapon : INotifyPropertyChanged
             MainWindow.ShowAlert($"Pasted { wpnCat } Weapon!");
         }
         LoggingSystem.Log("Finished Applying Weapon Copy!");
+        MainWindow.MainView.UpdateLastSelectedItem();
     }
 
     //TODO: Add Premade Weapon Setup's
