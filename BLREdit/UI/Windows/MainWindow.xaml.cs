@@ -950,7 +950,6 @@ public sealed partial class MainWindow : Window
             {
                 DataStorage.GameClients[0].SetCurrentClient();
             }
-
         }
 
         RefreshDefaultClient();
@@ -1025,10 +1024,20 @@ public sealed partial class MainWindow : Window
     {
         MainView.UpdateLastSelectedItem();
 
-        ProfileListTab.IsSelected = true;
+		ProfileListTab.IsSelected = true;
         this.WindowState = WindowState.Maximized;
         ItemListTab.IsSelected = true;
-        if (DataStorage.Settings.PlayerName == "BLREdit-Player")
+
+		if(App.NewCustomModules.Count > 0) {
+			var window = new NewCustomModuleWindow();
+			foreach(var module in App.NewCustomModules) {
+				window.DataContext = module;
+				window.ShowDialog();
+				DataStorage.CustomModules.Add(module);
+			}
+		}
+
+		if (DataStorage.Settings.PlayerName == "BLREdit-Player")
         {
             SettingsTab.IsSelected = true;
             LoggingSystem.MessageLog(Properties.Resources.msg_ChangePlayerName, "Info"); //TODO: Add Localization

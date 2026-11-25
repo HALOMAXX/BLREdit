@@ -52,6 +52,7 @@ public partial class App : System.Windows.Application
     public static GitHubRelease[]? Releases { get; private set; }
     public static ObservableCollection<VisualProxyModule> AvailableProxyModules { get; } = [];
     public static Dictionary<string, string> AvailableLocalizations { get; set; } = [];
+    public static List<CustomModule> NewCustomModules { get; } = [];
 
     public static List<BLRServer> DefaultServers { get; set; } = [];
 
@@ -559,6 +560,7 @@ public partial class App : System.Windows.Application
 
         Directory.CreateDirectory("Profiles");
         Directory.CreateDirectory("Backup");
+        Directory.CreateDirectory(IOResources.CUSTOM_MODULES_DIR);
 
         Directory.CreateDirectory(IOResources.UPDATE_DIR);
         Directory.CreateDirectory("downloads");
@@ -593,7 +595,7 @@ public partial class App : System.Windows.Application
             }
         }
 
-        currentLogFile = new FileInfo($"logs\\BLREdit\\{DateTime.Now:yyyy.MM.dd(HHmmss)}.log");
+		currentLogFile = new FileInfo($"logs\\BLREdit\\{DateTime.Now:yyyy.MM.dd(HHmmss)}.log");
 
         Trace.Listeners.Add(new TextWriterTraceListener(currentLogFile.FullName, "loggingListener"));
 
@@ -606,7 +608,31 @@ public partial class App : System.Windows.Application
             DataStorage.Settings.SelectedCulture = CultureInfo.CurrentCulture;
         }
 
-        Thread.CurrentThread.CurrentUICulture = DataStorage.Settings.SelectedCulture;
+		//TODO: Compare new modules with old modules and update settings accordingly!
+		foreach(var file in Directory.EnumerateFiles(IOResources.CUSTOM_MODULES_DIR, "*.dll")) {
+			
+			var fileInfo = new FileInfo(file);
+            var moduleName = fileInfo.GetNameWithoutExtension();
+			var configInfo = $"{IOResources.CUSTOM_MODULES_DIR}{moduleName}.json";
+            var configInfoFileExists = File.Exists(configInfo);
+
+            CustomModule? exists = null;
+            foreach(var module in DataStorage.CustomModules) {
+                if(module.ModuleName == moduleName) {
+                    exists = module;
+                    break;
+                }
+            }
+            ObservableCollection<ProxyModuleSetting>? config = IOResources.DeserializeFile<ObservableCollection<ProxyModuleSetting>>(configInfo);
+
+			if(exists is null) {
+                NewCustomModules.Add(new CustomModule() { ModuleName = moduleName, ModuleSettings = config });
+			} else if(configInfoFileExists && config is not null) {
+                exists.ModuleSettings = config;
+            }
+		}
+
+		Thread.CurrentThread.CurrentUICulture = DataStorage.Settings.SelectedCulture;
     }
 
     public App()

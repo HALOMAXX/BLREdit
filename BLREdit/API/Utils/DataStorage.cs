@@ -23,12 +23,13 @@ public static class DataStorage
     private static ObservableCollection<BLRLoadoutStorage>? _blrProfile;
     private static BLREditSettings? _settings;
     private static ObservableCollection<ProxyModule>? _cachedModules;
-    private static ObservableCollection<BLRPlaylist>? _playlists;
-    #endregion Fields
+	private static ObservableCollection<BLRPlaylist>? _playlists;
+	private static ObservableCollection<CustomModule>? _customModules;
+	#endregion Fields
 
-    #region Locks
-    private static readonly object cachedModulesLock = new();
-    private static readonly object gameClientsLock = new();
+	#region Locks
+	private static readonly object cachedModulesLock = new();
+	private static readonly object gameClientsLock = new();
     private static readonly object serverListLock = new();
     private static readonly object profileSettingLock = new();
     private static readonly object shareableLock = new();
@@ -36,14 +37,16 @@ public static class DataStorage
     private static readonly object loadoutLock = new();
     private static readonly object settingsLock = new();
     private static readonly object playlistLock = new();
-    #endregion Locks
+	private static readonly object customModulesLock = new();
+	#endregion Locks
 
-    #region Properties
+	#region Properties
 
-    public static Collection<BLRMap> Maps { get; } = IOResources.DeserializeFile<Collection<BLRMap>>($"Assets\\json\\maps.json") ?? [];
+	public static Collection<BLRMap> Maps { get; } = IOResources.DeserializeFile<Collection<BLRMap>>($"Assets\\json\\maps.json") ?? [];
     public static Collection<BLRMode> Modes { get; } = IOResources.DeserializeFile<Collection<BLRMode>>($"Assets\\json\\modes.json") ?? [];
 
-    public static ObservableCollection<ProxyModule> CachedModules { get { lock (cachedModulesLock) { _cachedModules ??= IOResources.DeserializeFile<ObservableCollection<ProxyModule>>($"ModuleCache.json") ?? []; } return _cachedModules; } }
+	public static ObservableCollection<ProxyModule> CachedModules { get { lock(cachedModulesLock) { _cachedModules ??= IOResources.DeserializeFile<ObservableCollection<ProxyModule>>($"ModuleCache.json") ?? []; } return _cachedModules; } }
+	public static ObservableCollection<CustomModule> CustomModules { get { lock (customModulesLock) { _customModules ??= IOResources.DeserializeFile<ObservableCollection<CustomModule>>($"CustomModules.json") ?? []; } return _customModules; } }
     public static ObservableCollection<BLRClient> GameClients { get { lock (gameClientsLock) { _gameClients ??= IOResources.DeserializeFile<ObservableCollection<BLRClient>>($"GameClients.json") ?? []; } return _gameClients; } }
     public static ObservableCollection<BLRServer> ServerList { get { lock (serverListLock) { _servers ??= IOResources.DeserializeFile<ObservableCollection<BLRServer>>($"ServerList.json") ?? []; } return _servers; } }
     public static Dictionary<string, BLRProfileSettingsWrapper> ProfileSettings { get { lock (profileSettingLock) { _profileSettings ??= IOResources.DeserializeFile<Dictionary<string, BLRProfileSettingsWrapper>>($"PlayerSettings.json") ?? []; } return _profileSettings; } }
@@ -68,7 +71,8 @@ public static class DataStorage
     public static void Save()
     {
         while (!IOResources.SerializeFile($"PlayerSettings.json", _profileSettings)                         && LoggingSystem.MessageLog("Failed to save Player Settings!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning PlayerSettings.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
-        while (!IOResources.SerializeFile($"{IOResources.PROFILE_DIR}loadoutList.json", _shareableLoadouts) && LoggingSystem.MessageLog("Failed to save Loadout List!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning Profiles\\loadoutList.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
+		while(!IOResources.SerializeFile($"CustomModules.json", _customModules)                             && LoggingSystem.MessageLog("Failed to save Custom Module List!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning CustomModules.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
+		while (!IOResources.SerializeFile($"{IOResources.PROFILE_DIR}loadoutList.json", _shareableLoadouts) && LoggingSystem.MessageLog("Failed to save Loadout List!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning Profiles\\loadoutList.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
         while (!IOResources.SerializeFile($"GameClients.json", _gameClients)                                && LoggingSystem.MessageLog("Failed to save Game Clients!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning GameClients.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
         while (!IOResources.SerializeFile($"ServerList.json", _servers)                                     && LoggingSystem.MessageLog("Failed to save Server List!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning ServerList.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };
         while (!IOResources.SerializeFile($"ModuleCache.json", _cachedModules)                              && LoggingSystem.MessageLog("Failed to save Module Cache!\nMake sure no other instance of BLREdit is still running! or Antivirus that is scanning ModuleCache.json\nPress Yes to retry or No to skip", "Info", System.Windows.MessageBoxButton.YesNo)) { };

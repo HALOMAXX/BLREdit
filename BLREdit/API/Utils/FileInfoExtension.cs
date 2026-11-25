@@ -13,4 +13,8 @@ public static class FileInfoExtension
     { 
         return info.Name.Substring(0, info.Name.Length - info.Extension.Length);
     }
+
+	public static string GetFullNameWithoutExtension(this FileInfo info) {
+		return info.FullName.Substring(0, info.Name.Length - info.Extension.Length);
+	}
 }

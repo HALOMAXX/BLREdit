@@ -41,7 +41,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     public string ConfigName { get; set; } = "default";
 
     [JsonIgnore] public static readonly BLRServer LocalHost = new();
-    [JsonIgnore] public UIBool Patched { get; private set; } = new UIBool(false);
     [JsonIgnore] public UIBool CurrentClient { get; private set; } = new UIBool(false);
     [JsonIgnore] public string ClientVersion { get { if (VersionHashes.TryGetValue(OriginalHash, out string version)) { return version; } else { return "Unknown"; } } }
     [JsonIgnore] public ObservableCollection<Process> RunningClients { get; } = [];
@@ -59,22 +58,10 @@ public sealed class BLRClient : INotifyPropertyChanged
         set { if (_originalHash != value) { _originalHash = value; OnPropertyChanged(nameof(ClientVersion)); OnPropertyChanged(); } }
     }
 
-    private string? _patchedHash;
-    public string? PatchedHash {
-        get { return _patchedHash; }
-        set { if (_patchedHash != value) { _patchedHash = value; OnPropertyChanged(); } }
-    }
-
     private string? _originalPath;
     public string? OriginalPath {
         get { return _originalPath; }
         set { if (File.Exists(value)) { _originalPath = value; OriginalHash ??= IOResources.CreateFileHash(value); OnPropertyChanged(); } else { LoggingSystem.Log($"[{this}]: not a valid Origin Client Path {value}"); } }
-    }
-
-    private string? _patchedPath;
-    public string? PatchedPath {
-        get { return _patchedPath; }
-        set { if (File.Exists(value)) { _patchedPath = value; Patched.Set(true); OnPropertyChanged(); OnPropertyChanged(nameof(PatchedFileInfo)); } else { LoggingSystem.Log($"[{this}]: not a valid Patched Client Path {value}"); } }
     }
 
     [JsonIgnore]
@@ -87,11 +74,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     public FileInfo SteamAppIDTextFileInfo
     { 
         get { return new FileInfo( BasePath + "Binaries\\Win32\\steam_appid.txt"); }
-    }
-
-    [JsonIgnore] public FileInfo? PatchedFileInfo
-    {
-        get { return PatchedPath != null ? new FileInfo(PatchedPath) : null; }
     }
 
     [JsonIgnore]
@@ -121,9 +103,6 @@ public sealed class BLRClient : INotifyPropertyChanged
     [JsonIgnore] private FileInfo? _BLRevive;
     [JsonIgnore]public FileInfo BLRevive { get { _BLRevive ??= new($"{Path.GetDirectoryName(OriginalPath)}\\BLRevive.dll"); return _BLRevive; } }
 
-    //private string? _sdkType = "BLRevive";
-    //public string? SDKType { get { return _sdkType; } set { _sdkType = value; OnPropertyChanged(); } }
-
     private string? _BLReviveVersion;
     public string? BLReviveVersion { get { return _BLReviveVersion; } set { _BLReviveVersion = value; OnPropertyChanged(); } }
     public DateTime? SDKVersionDate { get; set; }
@@ -142,7 +121,7 @@ public sealed class BLRClient : INotifyPropertyChanged
     public ObservableCollection<ProxyModule> InstalledModules { get; set; } = [];
 
     [JsonInclude][System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Needed for Json Deserilization")]
-    public ObservableCollection<ProxyModule> CustomModules { get; set; } = [];
+    public ObservableCollection<CustomModule> CustomModules { get; set; } = [];
 
     [JsonIgnore] public static ObservableCollection<VisualProxyModule> AvailableModules { get { return App.AvailableProxyModules; } }
 
@@ -289,6 +268,7 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
+    //TODO: Unused RemoveAllModules
     public void RemoveAllModules()
     {
         LoggingSystem.Log($"Removing All Modules from client:[{this}]");
@@ -398,6 +378,45 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
         return toUpdateOrDownload;
     }
+
+    private static void AddCustomModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, CustomModule module) {
+		JsonObject? oldSettingsJsonObject = null;
+		foreach(var mod in old.Modules) {
+			if(mod.Key == module.InstallModuleName) {
+				oldSettingsJsonObject = mod.Value;
+				break;
+			}
+		}
+
+		Dictionary<string, JsonNode?> newSettingsDictonary = [];
+
+		if(oldSettingsJsonObject != null) {
+			foreach(var setting in oldSettingsJsonObject) {
+				if(setting.Value != null) {
+					newSettingsDictonary.Add(setting.Key, setting.Value.DeepClone());
+				}
+			}
+
+		}
+        
+        if(module.ModuleSettings is not null)
+		    foreach(var moduleSetting in module.ModuleSettings) {
+			    if(moduleSetting.CreateDefaultSetting() is KeyValuePair<string, JsonNode?> node) {
+				    if(!newSettingsDictonary.ContainsKey(node.Key)) {
+					    newSettingsDictonary.Add(node.Key, node.Value);
+				    }
+			    }
+		    }
+
+		var newSettingsJsonObject = new JsonObject();
+		foreach(var setting in newSettingsDictonary) {
+			newSettingsJsonObject.Add(setting.Key, setting.Value);
+		}
+		if(config.Modules.ContainsKey(module.InstallModuleName)) {
+			LoggingSystem.Log("Custom Module Already in list this shouldn't have happened!");
+		}
+		config.Modules.Add(module.InstallModuleName, newSettingsJsonObject);
+	}
 
     private static void AddModuleConfigAndKeepSettings(BLReviveConfig config, BLReviveConfig old, string moduleName, string installName)
     {
@@ -587,19 +606,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         }
     }
 
-    //TODO: Improve Client Check and Validation!
-    /*
-     Split Client Checks to be able to use them at different times
-    List of needed Checks
-    - Check for update Once at launch?
-    - Does FoxGame.exe Exist?
-    - Does steam_appid.txt Exist? and is it wanted? and insert different id if it is from steam(209870) or external(480) dl
-    - Does D8Input.dll Exist?
-    - Does BLRevive.dll Exist?
-    - Does Module Folder Exist and All Expected Module dlls?
-    - Check File Integrity Two Different Modes needed one for game files and one for module dlls (Checksum(gamefiles), byte by byte(Modules & dlls)) Should Benchmark this! on SSD and HDD if there is a difference between hashing and straight byte by byte
-     
-     */
     public async void StartProcessAsync(string launchArgs, bool isServer = false, bool watchDog = false, List<ProxyModule>? enabledModules = null, BLRServer? server = null)
     {
         if (!hasBeenValidated && Validate.Is)
@@ -686,10 +692,6 @@ public sealed class BLRClient : INotifyPropertyChanged
         if (enabledModules is null)
         {
             enabledModules = [.. InstalledModules];
-            if (DataStorage.Settings.AllowCustomModules.Is)
-            {
-                enabledModules.AddRange([.. CustomModules]);
-            }
         }
 
         foreach (var module in enabledModules)
@@ -707,6 +709,15 @@ public sealed class BLRClient : INotifyPropertyChanged
             }
             AddModuleConfigAndKeepSettings(config, configCopy, module.CacheName, module.InstallName);
         }
+        foreach(var module in CustomModules) {
+			if(module.Client.Is) {
+				AddCustomModuleConfigAndKeepSettings(configClient, configClientCopy, module);
+			}
+			if(module.Server.Is) {
+				AddCustomModuleConfigAndKeepSettings(configServer, configServerCopy, module);
+			}
+			AddCustomModuleConfigAndKeepSettings(config, configCopy, module);
+		}
         try
         {
             IOResources.SerializeFile($"{BLReviveConfigsPath}{ConfigName}-Client.json", configClient);
@@ -718,34 +729,17 @@ public sealed class BLRClient : INotifyPropertyChanged
 
     public void CheckCustomModules()
     {
-        foreach (var file in Directory.EnumerateFiles(ModulesPath, "*.dll"))
-        {
-            var info = new FileInfo(file);
-            bool isInstalled = false;
-            foreach (var module in InstalledModules)
-            {
-                if (info.GetNameWithoutExtension() == module.InstallName)
-                { isInstalled = true; break; }
-            }
-            if (DataStorage.Settings.AllowCustomModules.Is && !isInstalled)
-            {
-                bool isNew = true;
-                foreach (var module in CustomModules)
-                {
-                    if (info.GetNameWithoutExtension() == module.InstallName)
-                    { isNew = false; module.FileAppearances++; break; }
+        foreach(var module in CustomModules) {
+            var dstPath = Path.Combine(ModulesPath, $"{module.InstallModuleName}.dll");
+			if(!File.Exists(dstPath)) {
+                var srcPath = Path.Combine(IOResources.CUSTOM_MODULES_DIR, $"{module.ModuleName}.dll");
+                try {
+                    File.Copy(srcPath, dstPath);
+                } 
+                catch {
                 }
-                if (isNew)
-                { CustomModules.Add(new(info.GetNameWithoutExtension(), "")); }
             }
         }
-
-        List<ProxyModule> toRemove = [];
-
-        foreach (var module in CustomModules) { if (module.FileAppearances <= 0) { toRemove.Add(module); } }
-
-        foreach (var module in toRemove)
-        { CustomModules.Remove(module); }
     }
 
     public List<VisualProxyModule> CheckInstalledModules()
@@ -795,18 +789,19 @@ public sealed class BLRClient : INotifyPropertyChanged
     private string? GetBasePath()
     {
         if (OriginalPath is null || string.IsNullOrEmpty(OriginalPath)) { return null; }
-        string[] pathParts = OriginalPath.Split('\\');
-        string[] fileParts = pathParts[pathParts.Length - 1].Split('.');
-        pathParts[pathParts.Length - 1] = fileParts[0] + "-BLREdit-Patched." + fileParts[1];
+        string path = Path.GetDirectoryName(OriginalPath);
+		if(!path.EndsWith("\\", StringComparison.Ordinal))
+			path += "\\";
+
+		string[] pathParts = path.Split('\\');
         string basePath = "";
         for (int i = pathParts.Length - 4; i >= 0; i--)
         {
             basePath = $"{pathParts[i]}\\{basePath}";
         }
 
-        if (!basePath.EndsWith("\\", StringComparison.Ordinal)) { basePath += "\\"; }
-
-        _patchedPath ??= $"{basePath}Binaries\\Win32\\{fileParts[0]}-BLREdit-Patched.{fileParts[1]}"; //TODO: Remove Patched exe!
+        if (!basePath.EndsWith("\\", StringComparison.Ordinal))
+            basePath += "\\";
 
         return basePath;
     }

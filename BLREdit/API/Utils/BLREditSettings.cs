@@ -178,7 +178,6 @@ public sealed class BLREditSettings : INotifyPropertyChanged
             }
             if (contains) { continue; } //skip entry as we already have it repaired
             var path = client.OriginalPath;
-            if (File.Exists(client.PatchedPath)) { File.Delete(client.PatchedPath); }
 
             #region BinariesDirectoryCleanup
             if (client.OriginalFileInfo is not null)

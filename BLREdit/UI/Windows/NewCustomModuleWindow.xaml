@@ -1,0 +1,34 @@
+﻿<Window x:Class="BLREdit.UI.Windows.NewCustomModuleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BLREdit.UI.Windows"
+        xmlns:proxy="clr-namespace:BLREdit.Game.Proxy"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=proxy:CustomModule}"
+        Title="NewCustomModuleWindow" Height="380" Width="400">
+    <Window.Background>
+        <ImageBrush ImageSource="../Resources/Default_2016.png" />
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="48"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label          Grid.Row="0" Content="First Time Custom Module Setup for:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Style="{StaticResource DescriptorLabel}"/>
+        <TextBox        Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Path=ModuleName}" IsReadOnly="True"/>
+        <Label          Grid.Row="2" Content="Enable Module for:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Style="{StaticResource DescriptorLabel}"/>
+        <ToggleButton   Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Client" IsChecked="{Binding Path=Client.Is, Mode=TwoWay}" Height="32" Width="128"/>
+        <ToggleButton   Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Server" IsChecked="{Binding Path=Server.Is, Mode=TwoWay}" Height="32" Width="128"/>
+        <Button         Grid.Row="5" HorizontalAlignment="Right"  Content="Enable for All Clients" Click="AllClientEnable_Click"/>
+    </Grid>
+</Window>
